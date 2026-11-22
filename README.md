@@ -96,7 +96,7 @@ CI verifies the data, flight regressions, production build, and a Chromium smoke
 
 These are in-engine development captures, not reference photographs. The
 [landmark notes](docs/landmarks/lighthouses.md) explain what is measured and
-what was interpreted.
+what was interpreted. See the [matched before-and-after evidence](docs/qa/LANDMARK-VISUAL-GATE.md).
 
 ## Credits and use
 

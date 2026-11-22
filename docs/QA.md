@@ -23,6 +23,10 @@ The province-wide geography, streaming, controls and route-level visual identity
 
 ## Month-one scenery and cockpit gates
 
+See the independent [landmark comparison](qa/LANDMARK-VISUAL-GATE.md)
+and the [full-atlas vegetation comparison](qa/VEGETATION-CLEARANCE-GATE.md)
+for fixed before-and-after views, counts and reproduction commands.
+
 - Fixed East and West Point comparison views hold position, 53° vertical FOV,
   125 m horizontal standoff and 45 m altitude above the camera start surface.
   In the East diagnostic, the sky is replaced with magenta to identify geometry
