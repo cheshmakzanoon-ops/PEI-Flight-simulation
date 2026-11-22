@@ -11,9 +11,9 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 > **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, most landmarks, close-range materials and training-grade aerodynamics are not part of this build.
 
-![Chase view above the fields and shoreline near Cavendish](docs/media/cavendish.webp)
+![Chase view above the fields and shoreline near Cavendish](docs/media/cavendish-low.webp)
 
-*An in-engine development capture over Cavendish.*
+*An in-engine low pass over the Cavendish coast.*
 
 ## Fly the province
 

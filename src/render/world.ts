@@ -71,6 +71,9 @@ const waterFrag=fp+skyFn+`
  float fres=.045+.78*pow(1.-ndv,3.6);
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
+ // Water must not overdraw surveyed land, including nearly flat coasts. A depth
+ // comparison alone between an ocean surface and land a few cm above it is fragile.
+ if(shore>=0.)discard;
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
  // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
@@ -145,7 +148,7 @@ export class World {
    const uniforms={rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
-   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=-.055;scene.add(ocean);
+   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=-.055;scene.add(ocean);
    this.mat=make(landFrag);
    const nx=32,nz=22,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){

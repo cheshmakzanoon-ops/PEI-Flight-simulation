@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 import { chromium } from 'playwright';
+import { PNG } from 'pngjs';
 
 const url = process.env.PREVIEW_URL ?? 'http://127.0.0.1:4173/';
 const out = process.env.SMOKE_OUTPUT ?? 'artifacts/smoke';
@@ -11,7 +12,7 @@ const browser = await chromium.launch({
   args:['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-dev-shm-usage', '--ignore-gpu-blocklist'],
 });
 try {
-  const page = await browser.newPage({viewport:{width:1280,height:720}});
+  const page = await browser.newPage({viewport:{width:1200,height:760}});
   const errors = [];
   page.setDefaultTimeout(60000);
   page.on('pageerror', error=>{errors.push(error.message); console.error(error.message);});
@@ -35,7 +36,7 @@ try {
   await page.keyboard.press('v');
   await page.waitForFunction(()=>window.islandAirDiagnostics?.camera==='Cockpit');
   await page.screenshot({path:`${out}/03-cockpit.png`});
-  for(const [option,id] of [['4','northcape'],['3','eastpoint'],['1','charlottetown']]){
+  for(const [option,id] of [['4','northcape'],['3','eastpoint'],['1','charlottetown'],['10','cavendish-low']]){
     await page.keyboard.press('m');
     await waitState('map');
     await page.locator('#map-site').selectOption(option);
@@ -43,6 +44,23 @@ try {
     await waitState('flight');
     assert.equal((await state()).site,id);
   }
+  await page.keyboard.press('v');
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.camera==='Wide chase');
+  await page.keyboard.press('v');
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.camera==='Chase');
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.detail?.ready>0 && window.islandAirDiagnostics?.detail?.loading===0);
+  const coast=PNG.sync.read(await page.screenshot({path:`${out}/04-cavendish-low.png`}));
+  // Sample under the fixed Cavendish chase view; exclude aircraft, sky and HUD.
+  // Previously this surveyed forest block was painted almost entirely blue by the sea.
+  let sampled=0, blue=0;
+  for(let y=Math.floor(coast.height*.78);y<coast.height*.91;y++){
+    for(let x=Math.floor(coast.width*.36);x<coast.width*.78;x++){
+      const i=(y*coast.width+x)*4,r=coast.data[i],g=coast.data[i+1],b=coast.data[i+2];
+      sampled++;
+      if(b>r+18 && g>r+13)blue++;
+    }
+  }
+  assert.ok(blue/sampled<.15,`Ocean obscures Cavendish terrain: ${(100*blue/sampled).toFixed(1)}% blue`);
   await page.keyboard.press('p'); await waitState('paused');
   const paused=await state();
   await page.waitForTimeout(250);
