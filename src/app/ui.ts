@@ -46,7 +46,7 @@ export class UI {
  }
  showSite(){const s=SITES[this.selected];$('site-note').textContent=s.note;$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;}
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
- setCamera(v:string){this.camera=v;$('view').innerHTML=v+' <kbd>V</kbd>';}
+ setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}
  setWarnings(xs:string[]){const e=$('layer-alert');e.textContent=xs.length?'Scenery unavailable: '+xs.join(', '):'';e.hidden=!xs.length;}
  setSound(on:boolean){this.silent=!on;$('nav-sound').textContent=on?'Sound on':'Sound off';$('nav-sound').setAttribute('aria-label',on?'Mute engine sound':'Enable engine sound');}
  stop(reason:string){this.message=reason;this.set('crash');}

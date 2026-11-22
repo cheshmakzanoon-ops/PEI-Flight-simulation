@@ -5,3 +5,7 @@
 @media(max-height:580px){.dispatch{max-height:calc(100% - 78px);overflow:auto;top:55%;padding:14px 20px}.dispatch h1{font-size:2.15rem;margin:.35rem 0}.dispatch h1 br{display:none}.standfirst,.brief-meta{display:none}.rule{margin:.6rem 0}.sitenote{min-height:1em}.dispatch .gold{margin-top:.4rem}.modal{max-height:calc(100% - 72px)}}
 
 .topnav button{white-space:nowrap}#layer-alert:not([hidden]){display:inline;color:#ffdfaa} @media(max-width:480px){.bar{gap:5px}.brand{gap:.34rem}.brand strong{font-size:.68rem;letter-spacing:.12em}.brandmark{width:25px}.topnav button{padding:.45rem .32rem;font-size:.66rem}.dispatch{transform:translateY(-46%)} }
+
+/* Keep the accessibility readout without obscuring the physical dials. */
+#telemetry.cockpit-telemetry{top:73px;bottom:auto}
+@media(max-width:720px){#telemetry.cockpit-telemetry{top:60px}}

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { DIALS, dialAngle } from './instruments.ts';
 
 /** Original high-wing survey aircraft. Local +Y up, -Z forward. All dimensions in metres. */
 export function createAircraft() {
@@ -105,12 +106,38 @@ export function createAircraft() {
  const dash=mesh(new THREE.BoxGeometry(1.13,.24,.26),dark,cockpit);dash.position.set(0,.37,-1.32);
  for(const s of [-1,1]){bar([.59*s,.39,-1.35],[.46*s,1.01,-.80],.031,dark,cockpit);}
  const needles:THREE.Group[]=[];
- const makeGauge=(i:number)=>{const c=document.createElement('canvas');c.width=c.height=160;
-  const ctx=c.getContext('2d')!;ctx.translate(80,80);ctx.fillStyle='#122122';ctx.beginPath();ctx.arc(0,0,76,0,2*Math.PI);ctx.fill();
-  ctx.strokeStyle='#809b92';ctx.lineWidth=6;ctx.stroke();ctx.lineWidth=2;for(let k=0;k<32;k++){const a=k*2*Math.PI/32;ctx.beginPath();ctx.moveTo(Math.sin(a)*64,Math.cos(a)*64);ctx.lineTo(Math.sin(a)*(k%4?60:53),Math.cos(a)*(k%4?60:53));ctx.stroke();}
-  ctx.fillStyle='#d3d7c9';ctx.font='13px sans-serif';ctx.textAlign='center';ctx.fillText(['KNOTS','ALT','RPM','V/S'][i],0,29);
-  const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;const o=mesh(new THREE.CircleGeometry(.079,32),new THREE.MeshBasicMaterial({map:tex}),cockpit);o.position.set((i-1.5)*.175,.39,-1.185);const needle=new THREE.Group();needle.position.copy(o.position);needle.position.z+=.002;cockpit.add(needle);const hand=mesh(new THREE.BoxGeometry(.004,.053,.003),new THREE.MeshBasicMaterial({color:0xf7bc70}),needle);hand.position.y=.023;needles.push(needle);};
- for(let i=0;i<4;i++)makeGauge(i);
+ const bezelMat=mat(0x232628,.44,.62),screwMat=mat(0x93999a,.39,.78);
+ const makeGauge=(i:number)=>{
+  const dial=DIALS[i],c=document.createElement('canvas');c.width=c.height=256;
+  const ctx=c.getContext('2d')!;ctx.translate(128,128);
+  const fill=ctx.createRadialGradient(-24,-29,5,0,0,126);
+  fill.addColorStop(0,'#222626');fill.addColorStop(.82,'#101313');fill.addColorStop(1,'#060708');
+  ctx.fillStyle=fill;ctx.fillRect(-128,-128,256,256);
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  for(let v=dial.min;v<=dial.max;v+=dial.minor){
+   if(dial.cyclic&&v===dial.max)break;
+   const a=dialAngle(dial,v),x=Math.sin(a),y=-Math.cos(a),major=(v-dial.min)%dial.major===0;
+   ctx.strokeStyle=major?'#f4efdb':'#9a9f95';ctx.lineWidth=major?3:1.5;
+   ctx.beginPath();ctx.moveTo(x*110,y*110);ctx.lineTo(x*(major?94:103),y*(major?94:103));ctx.stroke();
+   if(major){ctx.fillStyle='#ece6d4';ctx.font='600 18px sans-serif';ctx.fillText(dial.display?.(v)??String(v),x*80,y*80);}
+  }
+  ctx.fillStyle='#dfd9c5';ctx.font='600 14px sans-serif';ctx.fillText(dial.title,0,-27);
+  ctx.fillStyle='#a8afa4';ctx.font='11px sans-serif';ctx.fillText(dial.unit,0,32);
+  const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;
+  const o=mesh(new THREE.CircleGeometry(.076,48),new THREE.MeshBasicMaterial({map:tex}),cockpit);
+  o.position.set((i-1.5)*.175,.416,-1.185);
+  const bezel=mesh(new THREE.TorusGeometry(.076,.006,10,48),bezelMat,cockpit);
+  bezel.position.copy(o.position);bezel.position.z+=.002;
+  const needle=new THREE.Group();needle.position.copy(o.position);needle.position.z+=.007;cockpit.add(needle);
+  poly([[-.005,-.018,0],[.005,-.018,0],[.0014,.063,0],[-.0014,.063,0]],new THREE.MeshBasicMaterial({color:0xffdfaa,side:THREE.DoubleSide}),needle);
+  const hub=mesh(new THREE.SphereGeometry(.007,10,6),bezelMat,needle);hub.position.z=.002;
+  needles.push(needle);
+ };
+ for(let i=0;i<DIALS.length;i++)makeGauge(i);
+ for(const x of [-.49,.49])for(const y of [.30,.46]){
+  const screw=mesh(new THREE.SphereGeometry(.006,8,5),screwMat,cockpit);
+  screw.position.set(x,y,-1.187);screw.scale.z=.45;
+ }
  const cockpitOnly=new THREE.Group();cockpit.add(cockpitOnly);
  const nose=mesh(new THREE.SphereGeometry(1,20,12),pearl,cockpitOnly);nose.position.set(0,-.01,-2.65);nose.scale.set(.62,.56,1.40);
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}

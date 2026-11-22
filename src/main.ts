@@ -1,3 +1,4 @@
+import { DIALS, dialAngle } from './render/instruments.ts';
 import { equivalentAirspeed } from './sim/aerodynamics.ts';
 import * as THREE from 'three';
 import { loadAtlas, World } from './render/world.ts';
@@ -73,8 +74,10 @@ async function run(){
   aircraft.setInterior(!cinematic&&view===1);
   aircraft.prop.rotation.z+=(ui.mode==='flight'||cinematic)?delta*(20+155*f.throttle):0;
   aircraft.setProp(f.throttle);
-  aircraft.needles[0].rotation.z=1.8-equivalentAirspeed(f.speed,f.y)*.050;aircraft.needles[1].rotation.z=-f.y*3.28084/1000*Math.PI*2;
-  aircraft.needles[2].rotation.z=1.9-f.throttle*3.9;aircraft.needles[3].rotation.z=1.5-f.vertical*.12;
+  aircraft.needles[0].rotation.z=-dialAngle(DIALS[0],equivalentAirspeed(f.speed,f.y)*1.94384);
+  aircraft.needles[1].rotation.z=-dialAngle(DIALS[1],f.y*3.28084);
+  aircraft.needles[2].rotation.z=-dialAngle(DIALS[2],f.throttle*100);
+  aircraft.needles[3].rotation.z=-dialAngle(DIALS[3],f.vertical*196.85);
   rE.set(f.pitch,-f.heading,-f.bank+phase,'YXZ');rot.setFromEuler(rE);
   forward.set(Math.sin(f.heading),0,-Math.cos(f.heading));right.set(Math.cos(f.heading),0,Math.sin(f.heading));
   if(cinematic){
