@@ -122,3 +122,14 @@ const skyImage=asset(sky.asset);
 assert.equal(skyImage.toString('ascii',8,12),'WEBP');
 assert.equal(hash(skyImage),sky.fileSha256);
 console.log(`Land classes and coast distance OK: ${woodland} tree-cover samples; CC0 sky matched manifest hash.`);
+
+const mainland=json('mainland/context.json');
+const mainlandHeight=asset('mainland/'+mainland.file);
+const mainlandColor=asset('mainland/'+mainland.color);
+assert.equal(hash(mainlandHeight),mainland.files[mainland.file]);
+assert.equal(hash(mainlandColor),mainland.files[mainland.color]);
+const mainlandRaw=gunzipSync(mainlandHeight);
+assert.equal(mainlandRaw.length,mainland.width*mainland.height*2);
+assert.equal(hash(mainlandRaw),mainland.heightUncompressedSha256);
+assert.equal(mainlandColor.toString('ascii',8,12),'WEBP');
+console.log('Mainland backdrop OK: non-playable and provenance-checked.');

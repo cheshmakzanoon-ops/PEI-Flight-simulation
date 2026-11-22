@@ -1,6 +1,6 @@
 {
-  "width": 2048,
-  "height": 1360,
+  "width": 4096,
+  "height": 2720,
   "bounds": [
     -64.47,
     45.94,
@@ -14,12 +14,12 @@
   "encoding": "Int16LE",
   "water": -32768,
   "file": "height.bin.gz",
-  "sha256": "b25ada664a21d889730aed9950bda735e68f604be5e2f7fcf586769ebea8ef08",
-  "landCells": 634164,
-  "measuredLandCells": 634142,
-  "unobservedLandFilledAtSeaLevel": 22,
-  "minimumMeasuredMetres": -2.166567802429199,
-  "maximumMeasuredMetres": 136.81178283691406,
+  "sha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+  "landCells": 2536776,
+  "measuredLandCells": 2536619,
+  "unobservedLandFilledAtSeaLevel": 157,
+  "minimumMeasuredMetres": -2.1929900646209717,
+  "maximumMeasuredMetres": 137.39418029785156,
   "license": "Open Government Licence – Canada 2.0",
   "licenseUrl": "https://open.canada.ca/en/open-government-licence-canada",
   "attribution": "Contains information licensed under the Open Government Licence – Canada. Terrain: Natural Resources Canada, CanElevation HRDEM Mosaic. Land mask: Statistics Canada, 2021 Census Cartographic Boundary Files; adapted by this project.",
@@ -30,7 +30,7 @@
       "stac": "https://datacube.services.geo.ca/stac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
       "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
       "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
-      "resampling": "64 m overview; bilinear warp; rounded to metres; output spacing ~95 m in PEI, not 1 m terrain in-game"
+      "resampling": "32 m overview; bilinear warp; rounded to metres; output spacing ~47 m in PEI, not 1 m terrain in-game"
     },
     {
       "agency": "Statistics Canada",

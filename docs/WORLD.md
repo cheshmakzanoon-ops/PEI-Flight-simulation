@@ -8,8 +8,8 @@ registered. This is not a surveyed or navigation-grade projection.
 
 | Layer | Input | In-game representation |
 | --- | --- | --- |
-| Land and coast | Statistics Canada 2021 Census cartographic boundary, PRUID 11 | Rasterized coast mask at approximately 95 m spacing. Narrow sandbars and small islands can disappear at this spacing. |
-| Elevation | NRCan CanElevation HRDEM Mosaic, bare-earth LiDAR | 2,048 × 1,360 signed little-endian metre samples. Of 634,164 land cells, 634,142 have measured data. Twenty-two missing near-shore samples are filled at sea level. |
+| Land and coast | Statistics Canada 2021 Census cartographic boundary, PRUID 11 | Rasterized coast mask at approximately 47 m spacing. Narrow sandbars and small islands can disappear at this spacing. |
+| Elevation | NRCan CanElevation HRDEM Mosaic, bare-earth LiDAR | 4,096 × 2,720 signed little-endian metre samples. Of 2,536,776 land cells, 2,536,619 have measured data. 157 missing near-shore samples are filled at sea level. |
 | Surface colour | Copernicus Sentinel-2 L2A, nine scenes acquired in 2025 | Cloud-screened 4,096 × 3,072 natural-colour mosaic. All mask land pixels have an image value; 99.958% passed the accepted scene-class filter. Fine street and roof detail do not come from this texture. |
 | Roads | Statistics Canada National Road Network, PEI 22_1 | 19,465 source centreline segments. Width, grade and appearance are visual approximations. |
 | Buildings | NRCan Automatically Extracted Buildings, PEI 2020 airborne LiDAR | 85,866 detected footprints with measured roof heights across 295 chunks. Heights and footprints do not establish facade materials, signs, floor plans, occupancy or current businesses. |
@@ -82,3 +82,18 @@ the [operator](https://www.confederationbridge.com/about-us/),
 and [Transport Canada](https://tc.canada.ca/en/marine-transportation/publications/tp-13681-guidelines-navigation-under-confederation-bridge-04-2025).
 The deck profile and pier details are visual approximations, not a
 structural or navigation model.
+
+
+### Charlottetown and mainland context
+
+St. Dunstan's Basilica uses an original approximate exterior model. The
+nave centre and orientation follow the 2020 NRCan building footprint; the
+twin spires, roofline, sanctuary, and Gothic facade are based on the
+[Parks Canada heritage description](https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=581).
+No photographs are baked into the landmark.
+
+The bridge joins the visible Cape Jourimain shoreline. A low-detail
+New Brunswick and Nova Scotia backdrop provides the view across the
+strait; those provinces have no playable airfields or ground operations.
+The backdrop manifest records the source, resolution and fallback used
+for its colours and elevations.

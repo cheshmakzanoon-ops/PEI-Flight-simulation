@@ -3,23 +3,43 @@
 **Prince Edward Island, Canada, in a browser flight simulator.**  
 A province-wide, metre-scale world built in TypeScript and Three.js.
 
+[![Verify flight build](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml)
+
 Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or cross Kings County toward East Point. You can start in the air or depart from a runway, switch from chase view to the cockpit, and reposition from the in-flight atlas.
 
-[Run locally](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Production gates](docs/PRODUCTION.md)
+[Download web build](#download-the-web-build) · [Build from source](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Production gates](docs/PRODUCTION.md) · [QA record](docs/QA.md)
 
-> **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, landmarks, close-range materials and training-grade aerodynamics are not part of this build.
+> **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, most landmarks, close-range materials and training-grade aerodynamics are not part of this build.
+
+![Chase view above the fields and shoreline near Cavendish](docs/media/cavendish.webp)
+
+*An in-engine development capture over Cavendish.*
 
 ## Fly the province
 
 | System | What is in this build |
 | --- | --- |
-| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, coastlines and water, 19,465 road segments and 85,866 LiDAR-derived building footprints streamed in geographic chunks. |
+| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows a land-cover map. Confederation Bridge and St. Dunstan’s Basilica have custom models. |
 | **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, a modeled cockpit, instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, ground roll, lift and drag, stall cues and runway landings. Two runway departure presets and seven scenic starts. |
+| **Flight** | Fixed-step civilian flight model, ground roll, lift and drag, stall cues and runway landings. Two runway departure presets and nine scenic starts. |
 | **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
 | **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
 **A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md).
+
+## Download the web build
+
+[Download the latest successful build ZIP](https://nightly.link/cheshmakzanoon-ops/PEI-Flight-simulation/workflows/verify/main/pei-flight-sim-web.zip)
+or use the [GitHub Actions artifacts](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml?query=branch%3Amain+is%3Asuccess) while signed in.
+The direct link is a public mirror of the successful CI artifact; it is not a hosted game.
+
+Extract the ZIP and run a static server from the extracted directory. For example:
+
+```sh
+python3 -m http.server 8080 --bind 127.0.0.1
+```
+
+Open `http://127.0.0.1:8080` in a WebGL 2 browser. Do not open `index.html` as a file.
 
 ## Run locally
 
@@ -62,7 +82,13 @@ node tools/verify-world.mjs  # Asset hashes, formats, extents and counts
 | `tools/geodata/` | Reproducible geographic-data processing |
 | `test/` | Flight and terrain regressions |
 
-Next production targets are clearer low-altitude terrain and water transitions, modeled landmarks and airports, higher-resolution detail streaming, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
+CI verifies the data, flight regressions, production build, and a Chromium smoke route across all three counties. Next targets are richer close-range facades, airports beyond the current pair, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
+
+## Scenery gallery
+
+| Charlottetown Harbour | Confederation Bridge |
+| --- | --- |
+| ![Approach over Charlottetown Harbour](docs/media/charlottetown-harbour.webp) | ![Survey aircraft above the Confederation Bridge](docs/media/confederation-bridge.webp) |
 
 ## Credits and use
 

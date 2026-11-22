@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "dataRevision": 2,
+  "scope": "Non-playable mainland context: portions of New Brunswick and Nova Scotia for the PEI horizon and Confederation Bridge landfall. No additional province is simulated.",
+  "bounds": [
+    -65.1,
+    45.57,
+    -61.5,
+    47.28
+  ],
+  "width": 1536,
+  "height": 1032,
+  "crs": "EPSG:4326, pixel-edge bounds",
+  "verticalDatum": "CGVD2013, metres",
+  "nominalPixelMetres": 182,
+  "nodata": -32768,
+  "file": "height.bin.gz",
+  "color": "color.webp",
+  "colorEncoding": "north-up sRGB RGBA; alpha is land cover fraction from 4x4 subpixels. Treat nonzero data as partial shore; do not add as playable airports.",
+  "encoding": "north-first signed Int16LE, metres, -32768 water.",
+  "counts": {
+    "landAndPartialShoreCells": 380466,
+    "directDtmCells": 369016,
+    "mediumResolutionNationalDtm": 11450,
+    "extrapolatedTerrain": 0,
+    "clearNaturalColour": 216367,
+    "annual2021NaturalColour": 164099,
+    "classifiedColourFallback": 0
+  },
+  "files": {
+    "height.bin.gz": "b32f18e9c8af7b9a73b0ab95d4c7f2d1c61e7b3e433f9c79c0226ed7974d9d2b",
+    "color.webp": "4d401d8f8f00c57c9ccd7fc5c5c83647fc99c1d6dda7835c4143e8ee2b649ff8"
+  },
+  "heightUncompressedSha256": "2d0bf58587f2fb3ca4852edfd918375ad6dc9b583a47df5f9d2a505af2bcfcb6",
+  "sources": [
+    {
+      "product": "Statistics Canada 2021 Census cartographic boundary files",
+      "urls": [
+        "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query?where=PRUID%3D%2712%27&outFields=PRUID&returnGeometry=true&outSR=4326&geometryPrecision=5&maxAllowableOffset=0.00035&f=geojson",
+        "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query?where=PRUID%3D%2713%27&outFields=PRUID&returnGeometry=true&outSR=4326&geometryPrecision=5&maxAllowableOffset=0.00035&f=geojson"
+      ],
+      "sha256": {
+        "12": "0b566caf7d862d0e02d554dc7d99811531457989b8fb607cc58eaf875355ad09",
+        "13": "ce3166c86d0c84a0f0144026cd253e60ef2a5a367e234adf3ab6a66265645cc5"
+      },
+      "regions": [
+        "Nova Scotia",
+        "New Brunswick"
+      ],
+      "transformation": "Outer WGS84 bounds; 4× supersampled shoreline coverage."
+    },
+    {
+      "product": "NRCan CanElevation HRDEM 1m mosaic bare-earth DTM",
+      "stac": "https://datacube.services.geo.ca/stac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+      "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+      "resampling": "128 m overview, bilinear warp, rounded metres."
+    },
+    {
+      "product": "Copernicus Sentinel-2 L2A",
+      "scenes": [
+        {
+          "id": "S2B_20TLS_20250904_1_L2A",
+          "naturalColor": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LS/2025/9/S2B_20TLS_20250904_1_L2A/TCI.tif",
+          "sceneClassification": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LS/2025/9/S2B_20TLS_20250904_1_L2A/SCL.tif",
+          "pixelsUsed": 133014
+        },
+        {
+          "id": "S2B_20TLT_20250904_1_L2A",
+          "naturalColor": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LT/2025/9/S2B_20TLT_20250904_1_L2A/TCI.tif",
+          "sceneClassification": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LT/2025/9/S2B_20TLT_20250904_1_L2A/SCL.tif",
+          "pixelsUsed": 10962
+        },
+        {
+          "id": "S2B_20TMS_20250904_1_L2A",
+          "naturalColor": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/9/S2B_20TMS_20250904_1_L2A/TCI.tif",
+          "sceneClassification": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/9/S2B_20TMS_20250904_1_L2A/SCL.tif",
+          "pixelsUsed": 14240
+        },
+        {
+          "id": "S2B_20TNR_20250815_0_L2A",
+          "naturalColor": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NR/2025/8/S2B_20TNR_20250815_0_L2A/TCI.tif",
+          "sceneClassification": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NR/2025/8/S2B_20TNR_20250815_0_L2A/SCL.tif",
+          "pixelsUsed": 49406
+        },
+        {
+          "id": "S2C_20TMR_20250807_0_L2A",
+          "naturalColor": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MR/2025/8/S2C_20TMR_20250807_0_L2A/TCI.tif",
+          "sceneClassification": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MR/2025/8/S2C_20TMR_20250807_0_L2A/SCL.tif",
+          "pixelsUsed": 8745
+        }
+      ],
+      "processing": "Clear classes 4, 5, 6, 7; selected in listed order, reprojected to a ~180 m backdrop."
+    },
+    {
+      "product": "ESA WorldCover 10 m 2021 v200",
+      "doi": "https://doi.org/10.5281/zenodo.7254221",
+      "urls": [
+        "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N45W066_Map.tif",
+        "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N45W063_Map.tif"
+      ],
+      "transformation": "Where clear scene pixels are unavailable, classes assign representative artist colours. Not photographic in those cells."
+    },
+    {
+      "product": "NRCan CanElevation Medium Resolution Digital Terrain Model (MRDEM-30)",
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/mrdem-30/mrdem-30-dtm.tif",
+      "specification": "https://download-telecharger.services.geo.ca/pub/elevation/dem_mne/MRDEM_MNEMR/CanElevation-MRDEM-Product-Specifications.pdf",
+      "transformation": "National measured/modelled 30 m terrain where HRDEM is unavailable, warped to context grid. No nearest-neighbour extension of distant terrain."
+    },
+    {
+      "product": "ESA WorldCover Sentinel-2 2021 RGBNIR annual median",
+      "urls": [
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N45/ESA_WorldCover_10m_2021_v200_N45W066_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N45/ESA_WorldCover_10m_2021_v200_N45W065_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N45/ESA_WorldCover_10m_2021_v200_N45W064_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N45/ESA_WorldCover_10m_2021_v200_N45W063_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N45/ESA_WorldCover_10m_2021_v200_N45W062_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N46/ESA_WorldCover_10m_2021_v200_N46W066_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N46/ESA_WorldCover_10m_2021_v200_N46W065_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N46/ESA_WorldCover_10m_2021_v200_N46W064_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N46/ESA_WorldCover_10m_2021_v200_N46W062_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N47/ESA_WorldCover_10m_2021_v200_N47W066_S2RGBNIR.tif",
+        "https://esa-worldcover-s2.s3.eu-central-1.amazonaws.com/rgbnir/2021/N47/ESA_WorldCover_10m_2021_v200_N47W065_S2RGBNIR.tif"
+      ],
+      "information": "https://esa-worldcover.org/en/data-access",
+      "processing": "RGB bands from annual satellite composite cover 2025 gaps; per-band luminance quantiles matched to observed 2025 overlap. No invented storefront detail."
+    }
+  ],
+  "attribution": "Contains information licensed under the Open Government Licence – Canada (Statistics Canada; Natural Resources Canada). Contains modified Copernicus Sentinel data 2025. © ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium. Adapted; background only. MRDEM was produced in part using Copernicus WorldDEM-30 © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA; all rights reserved. The organisations in charge of the Copernicus programme by law or delegation incur no liability for use of the Copernicus WorldDEM-30. Natural Resources Canada retains copyright for HRDEM-derived portions.",
+  "licenses": [
+    "https://open.canada.ca/en/open-government-licence-canada",
+    "https://dataspace.copernicus.eu/terms-and-conditions",
+    "https://creativecommons.org/licenses/by/4.0/"
+  ]
+}

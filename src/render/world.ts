@@ -43,26 +43,43 @@ const skyFrag=fp+skyFn+`
  #include <logdepthbuf_fragment>
  gl_FragColor=vec4(skyAt(normalize(p-cameraPosition)),1.);`+out;
 const waterFrag=fp+skyFn+`
- uniform sampler2D imageMap,coverMap; uniform vec4 extent;
+ uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
  #include <logdepthbuf_fragment>
  vec3 eye=cameraPosition-p;float dist=length(eye);vec3 view=eye/max(dist,.01);
  vec2 q=p.xz;float t=clock*.72;
- float fade=1.-smoothstep(260.,5200.,dist);
- vec2 n=vec2(.69,.36)*filteredWave(q,vec2(.056,.026),t*.7)*.051+vec2(-.17,.91)*filteredWave(q,vec2(-.019,.082),-t)*.034;
- n+=vec2(.51,-.62)*filteredWave(q,vec2(.19,-.16),t*1.30)*.020*fade;
- n+=vec2(.31,.57)*filteredWave(q,vec2(.013,.009),-t*.248)*.027;
- n*=1.-smoothstep(1000.,18500.,dist);
+ // Compact, metre-scale wind ripples form the near field. At a distance they become
+ // roughness, not football-field-scale mirror bands or subpixel aliases.
+ float fade=1.-smoothstep(4000.,17000.,dist);
+ // Physically scaled synthetic slope spectrum. Mip derivatives integrate wave
+ // slopes over each screen pixel to avoid repeating sine-grid bands in harbours.
+ vec2 st=q/86.+t*vec2(.007,.002);
+ vec2 a=texture2D(rippleMap,st).rg-.5;
+ mat2 turn=mat2(.724,-.689,.689,.724);
+ vec2 b=turn*(texture2D(rippleMap,transpose(turn)*q/43.-t*vec2(.002,.009)).rg-.5);
+ float wind=1.5*noise(q*.018+vec2(t*.021,-t*.007));
+ vec2 n=(a*.95+b*.44)*fade;
+ n+=vec2(.71,.52)*filteredWave(q,vec2(.127,.059),t*.39+wind)*.006*fade;
  vec3 normal=normalize(vec3(-n.x,1.,-n.y));vec3 refl=reflect(-view,normal);
- float fres=.024+.91*pow(1.-max(dot(normal,view),0.),4.1);
+ float ndv=clamp(dot(normal,view),0.,1.);
+ // Reflection is filtered over a rough specular lobe, including the sky panorama's
+ // most oblique horizon. Do not mirror sharp individual cloud shapes from offshore.
+ vec2 envUV=vec2(1.012+atan(refl.z,refl.x)*.159154943,.5+asin(clamp(refl.y,.012,1.))*.3183099);
+ vec3 reflection=textureLod(skyMap,envUV,3.95+1.55*(1.-ndv)).rgb;
+ reflection=mix(vec3(.27,.37,.43),reflection*.86,.61);
+ float fres=.045+.78*pow(1.-ndv,3.6);
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
  float shallows=smoothstep(-175.,-7.,shore);
- vec3 deep=mix(vec3(.015,.070,.096),vec3(.094,.258,.228),shallows*.74);
- vec3 c=mix(deep,skyAt(normalize(vec3(refl.x,max(refl.y,.025),refl.z)))*.95,fres);
- float glitter=pow(clamp(dot(normal,normalize(view+sun)),0.,1.),130.);
- c+=vec3(1.5,1.05,.53)*glitter*(.65+.35*fade);
+ vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
+ // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
+ // modulate the reflection; large-scale swells scarcely change the surface normal.
+ float undulation=noise(q*.012+vec2(t*.012,t*.007))-.5;
+ deep*=1.+.17*undulation*fade;
+ vec3 c=mix(deep,reflection,fres);c*=1.+.38*(n.x+.45*n.y);
+ float glitter=pow(clamp(dot(normal,normalize(view+sun)),0.,1.),83.);
+ c+=vec3(.72,.61,.41)*glitter*(.32+.35*fade);
  float phase=shore*.51+t*1.4+3.*noise(q*.041);
  float foam=smoothstep(-37.,-4.,shore)*(1.-smoothstep(-4.,1.,shore))*(.25+.75*smoothstep(.30,.82,sin(phase)))*(1.-smoothstep(.9,4.,fwidth(phase)));
  c=mix(c,vec3(.55,.65,.58),foam*.69);
@@ -116,16 +133,16 @@ export async function loadAtlas(progress:(s:string)=>void){
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  return {terrain:new Terrain(spec,new Int16Array(data)),img,cover:new Cover(cs.width,cs.height,new Uint8Array(cb)),sky};
 }
-interface Patch { id:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing';detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
+interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing';detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
- private tiles:Patch[]=[];private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
+ private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
  constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture){
    const T=terrain;const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
-   const paint=runwayAtlas();
-   const uniforms={sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
+   const paint=runwayAtlas();const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
+   const uniforms={rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=-.055;scene.add(ocean);
@@ -138,7 +155,7 @@ export class World {
     let any=false;outer:for(let y=sy;y<ey;y++)for(let x=sx;x<ex;x++)if(T.samples[y*T.spec.width+x]!==-32768){any=true;break outer;}
     if(!any)continue;
     const local=new THREE.ShaderMaterial({uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag});
-    const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);this.tiles.push({id:i+'-'+j,local,status:'idle',coarse,x0,z0,w,d});
+    const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
    const light=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
@@ -154,7 +171,7 @@ export class World {
     pos.setY(i,this.terrain.meshElevation(x,z)+.12);
     const [u,v]=this.terrain.uv(x,z);uv.setXY(i,u,v);
   }
-  g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);return m;
+  g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);m.userData.subdiv=n;return m;
  }
  surface(x:number,z:number):Surface{
   return {height:this.terrain.elevation(x,z)+.12,land:this.cover.distance(this.terrain,x,z)>=0,runway:RUNWAYS.some(r=>{const dx=x-r.p.x,dz=z-r.p.z,a=dx*r.dx+dz*r.dz;return a>=0&&a<=r.length&&Math.abs(dx*r.dz-dz*r.dx)<r.width/2;})};
@@ -165,10 +182,33 @@ export class World {
   this.recent=clock;
   for(const tile of this.tiles){
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
-   const fine=dx*dx+dz*dz<10500**2;
-   if(fine&&!tile.fine){tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,56);tile.fine.material=tile.local;this.scene.add(tile.fine);}
-   if(tile.detail&&dx*dx+dz*dz>19000**2){tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;}
-   tile.coarse.visible=!fine;if(tile.fine){tile.fine.visible=fine;if(!fine&&dx*dx+dz*dz>15000**2){this.scene.remove(tile.fine);tile.fine.geometry.dispose();tile.fine=undefined;}}
+   const d2=dx*dx+dz*dz,old=tile.lod;
+   tile.lod=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
+   const fine=tile.lod>8;
+   if(fine&&tile.fine?.userData.subdiv!==tile.lod){
+     if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
+     tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,tile.lod);tile.fine.material=tile.local;this.scene.add(tile.fine);tile.seams=undefined;
+   }
+   if(tile.detail&&d2>19000**2){tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;}
+   tile.coarse.visible=!fine;if(tile.fine){tile.fine.visible=fine;if(!fine&&d2>15000**2){this.scene.remove(tile.fine);tile.fine.geometry.dispose();tile.fine=undefined;tile.seams=undefined;}}
+  }
+  // On each LOD transition, conform the fine boundary vertices to the adjacent
+  // coarser edge. This preserves the DEM's unsimplified edge when equally fine tiles
+  // meet and avoids vertical skirts appearing along coastline/harbour tiles.
+  for(const tile of this.tiles)if(tile.lod>8&&tile.fine){
+    const n=tile.lod,levels=[[0,-1],[1,0],[0,1],[-1,0]].map(([ox,oz])=>Math.min(n,this.byId.get((tile.i+ox)+'-'+(tile.j+oz))?.lod??n));
+    const key=n+':'+levels.join(',');if(tile.seams===key)continue;tile.seams=key;
+    const pos=tile.fine.geometry.getAttribute('position');
+    for(let side=0;side<4;side++){
+      const m=levels[side],ratio=n/m;let a=0,b=0;
+      const height=(t:number)=>this.terrain.meshElevation(tile.x0+tile.w*(side%2===0?t:side===1?1:0),tile.z0+tile.d*(side%2===1?t:side===2?1:0))+.12;
+      for(let k=0;k<=n;k++){
+        if(k%ratio===0){a=height(k/n);b=height(Math.min(1,(k+ratio)/n));}
+        const j=side===0?k:side===1?k*(n+1)+n:side===2?n*(n+1)+k:k*(n+1);
+        pos.setY(j,a+(b-a)*(k%ratio)/ratio);
+      }
+    }
+    pos.needsUpdate=true;
   }
   const near=this.tiles.filter(q=>q.status==='idle'&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)
    .sort((a,b)=>Math.hypot(pos.x-a.x0-a.w/2,pos.z-a.z0-a.d/2)-Math.hypot(pos.x-b.x0-b.w/2,pos.z-b.z0-b.d/2));

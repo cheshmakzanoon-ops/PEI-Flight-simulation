@@ -24,7 +24,7 @@ try {
   const waitState=(mode)=>page.waitForFunction(m=>window.islandAirDiagnostics?.mode===m,mode,{timeout:60000});
   await page.getByRole('button',{name:'Begin flight'}).waitFor({timeout:60000});
   console.log('Dispatch interface loaded');
-  await page.waitForFunction(()=>window.islandAirDiagnostics?.roads && window.islandAirDiagnostics?.buildings && window.islandAirDiagnostics?.drawCalls > 10,undefined,{timeout:60000});
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.roads && window.islandAirDiagnostics?.buildings && window.islandAirDiagnostics?.mainland && window.islandAirDiagnostics?.detail?.ready > 0 && window.islandAirDiagnostics?.drawCalls > 10,undefined,{timeout:60000});
   await page.screenshot({path:`${out}/01-dispatch.png`});
   await page.getByRole('button',{name:'Begin flight'}).click();
   await waitState('flight');
@@ -49,6 +49,7 @@ try {
   const frozen=await state();
   assert.equal(frozen.x,paused.x); assert.equal(frozen.z,paused.z);
   await page.getByRole('button',{name:'Resume flight'}).click(); await waitState('flight');
+  assert.deepEqual((await state()).layerWarnings, []);
   assert.deepEqual(errors, []);
   console.log('Browser smoke passed: hosted build, scenery layers, flight, three county routes, camera and pause.');
 } finally {

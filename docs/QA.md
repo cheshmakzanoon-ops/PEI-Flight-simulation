@@ -1,0 +1,22 @@
+# Independent flight/scenery acceptance record
+
+**Scope:** regional civilian exploration of Prince Edward Island, including the three counties. This is not proof of property-level fidelity, real navigation accuracy or a high-end game performance certification.
+
+## Verified
+
+- **Map scale.** Comparing the real WGS84 ellipsoidal distances with the local metre grid: West Point–East Point 187.888 km vs 188.023 km (+0.072%), North Cape–East Point 168.844 km vs 169.520 km (+0.400%), Charlottetown–Summerside 53.603 km vs 53.440 km (-0.305%), East Point–Souris 24.117 km vs 24.083 km (-0.140%), North Cape–Tignish 12.354 km vs 12.359 km (+0.039%). These controls establish regional scale, not high-precision surveying everywhere.
+- **Scenery evidence.** 85,866 LiDAR-derived footprints with source minimum/maximum roof estimates across all counties. Reprojected outlines and heights have intake checks; materials, roofs, vegetation positions and landmark artistic interpretations are not property surveys. Alpha and elevation checks keep mainland backdrop out of PEI and open water. At the NB bridge abutment the mainland grid records ~2 metres and subpixel shoreline coverage. Pictou is present in the backdrop, but Charlottetown is excluded from that secondary layer; NB and NS are not playable regions.
+- **Hosted build.** Independent actual WebGL2 game sessions under Google Chrome for Testing (Linux software renderer). 1200×760 desktop, 390×844 portrait and 844×390 landscape. Verified dispatch, scenic departures and both runway starts in the simulation; atlas repositioning sampled across all three counties; chase/cockpit/wide views; controls; pause/resume without position drift; conditional mobile controls and credits.
+- **Input.** Real browser events for keyboard and touchscreen, synthetic W3C standard gamepad state (not physical controller hardware). Observed aircraft banking +0.86 rad with keyboard, -1.09 rad with controller axis and +0.91 rad with on-screen stick. Triggers, throttle keys/touch, pause edge and audio controls changed state. Flight model tests select and rotate both CYYG and CYSU on actual terrain.
+- **Transport.** Real Vite static server returned 206 for 90 detail requests during representative all-county traversal; no missing detail at captured scenes. A separate no-range static server fetched each full pack once and reused it during five cases. Automatic content decoding vs verbatim gzip is handled for .gz layers.
+- **Defects corrected by iteration:** sustained keyboard rotation causing immediate stall after takeoff; merged geometry memory growth; roads disappearing when hosts label a file Content-Encoding: gzip; terrain visibly clipping through the runway; distant water moiré; opaque prop blades in front of pilot; panorama-longitude filtering seam; a bridge terminus previously appearing to end in open water. The final canopy pass replaced invalid multiply blending with a tested transparent contact shadow.
+
+The deterministic suite includes a continuous 182 km West Prince to East Point simulation, and a short-final flare, touchdown and braking on Charlottetown runway 03.
+
+## Release judgement
+
+The province-wide geography, streaming, controls and route-level visual identity pass an exploratory development-build gate. The following remain open for an AAA/photoreal claim:
+
+1. Compare multiple independently licensed reference viewpoints for each county in identical heading/altitude, not just satellite coverage. Verify street façades/roof geometry, port and airport signage, shoreline cliffs/sand, docks, tree canopies, the waterfront and recognizable landmark materials. Measured footprints plus generic façades are not equivalent to photographed streets.
+2. Bench frame-time distributions and memory on real integrated and dedicated GPUs, touch browsers and physical controllers. SwiftShader timing is not an end-user FPS estimate.
+3. Expand approach, crosswind and runway tolerance checks beyond the nominal short-final landing. Benchmark first-use loads and longer sessions, and cover tile boundaries and recovery on more hardware. Never promote this entertainment model to training claims.
