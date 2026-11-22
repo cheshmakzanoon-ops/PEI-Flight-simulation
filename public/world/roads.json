@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "source": "https://geo.statcan.gc.ca/nrn_rrn/pe/nrn_rrn_pe_GPKG.zip",
+  "sourceZipSha256": "c39fe4d569cc70090f14706b76a6626db03f1784e77988fe88225442e926f2bd",
+  "layer": "NRN_PE_22_1_ROADSEG",
+  "segments": 19465,
+  "points": 74616,
+  "sourceDescription": "Statistics Canada National Road Network, PEI, edition 22_1",
+  "licence": "Open Government Licence – Canada 2.0",
+  "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+  "sha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "gzipSha256": "27ea93f400d75b7f3f6673dfe7d91f0ef6e8ea5a207ba6e30908538fbeb3e0d0",
+  "notes": "Centreline geometry only. Approximate rendered widths, grades and surfaces. Some bridge centrelines not part of NRN PEI may be absent."
+}

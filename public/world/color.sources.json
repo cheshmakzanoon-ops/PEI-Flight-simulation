@@ -1,0 +1,84 @@
+{
+  "bounds": [
+    -64.47,
+    45.94,
+    -61.93,
+    47.1
+  ],
+  "dimensions": [
+    4096,
+    3072
+  ],
+  "landCoverage": 1.0,
+  "clearClassCoverage": 0.9995783639263812,
+  "sources": [
+    {
+      "id": "S2B_20TLS_20250904_1_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LS/2025/9/S2B_20TLS_20250904_1_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LS/2025/9/S2B_20TLS_20250904_1_L2A/SCL.tif",
+      "visualSha256": "4df29d74edff00fb4483d4784b6290c6f52d19f0cbe4322ded0717634d184fb1",
+      "classificationSha256": "75dd31003fadf8ce1dbc3b187da4b469f0026a58aa28f7c0cb7d6e601c9ef104"
+    },
+    {
+      "id": "S2B_20TLT_20250904_1_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LT/2025/9/S2B_20TLT_20250904_1_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/LT/2025/9/S2B_20TLT_20250904_1_L2A/SCL.tif",
+      "visualSha256": "8e6d620f35ada59441672f4904d7877d58d76483c7144347411847c2a40a196c",
+      "classificationSha256": "d0d9312a525d3c2d88681abdf95cc1f65bc9e29525c66461ff36a5b194c205a8"
+    },
+    {
+      "id": "S2B_20TMS_20250904_1_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/9/S2B_20TMS_20250904_1_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/9/S2B_20TMS_20250904_1_L2A/SCL.tif",
+      "visualSha256": "cbcd19b347416f5aaa49484ce5fa4604c748be523481bd9fe8e39f4b88e23e43",
+      "classificationSha256": "113d52a4ab823ba66037f1714e4ae0cd8a3aa5101310e9217abafba83aa9379a"
+    },
+    {
+      "id": "S2B_20TNS_20250904_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NS/2025/9/S2B_20TNS_20250904_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NS/2025/9/S2B_20TNS_20250904_0_L2A/SCL.tif",
+      "visualSha256": "144b72784670b065f74e63226bc781adf6d85863bad9c7973f6d677857bd95b6",
+      "classificationSha256": "396ff08b2f86bccf8bc7429c47563b8f2d2c6df3794ed58890c41ee57db2b0a5"
+    },
+    {
+      "id": "S2A_20TMT_20250904_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MT/2025/9/S2A_20TMT_20250904_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MT/2025/9/S2A_20TMT_20250904_0_L2A/SCL.tif",
+      "visualSha256": "56ebfeff35e4108174718420f612dfe7d8496b238f233e2b9cad19dc7507cfbb",
+      "classificationSha256": "531e4fc749f8cf9afd6aa4ace7454a5ffddd6a80a1b252094631ef3bafb2aa01"
+    },
+    {
+      "id": "S2B_20TNR_20250815_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NR/2025/8/S2B_20TNR_20250815_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NR/2025/8/S2B_20TNR_20250815_0_L2A/SCL.tif",
+      "visualSha256": "23b093f0485fb550948890561a6622a126a96ea63294565b5c9c23b4296fc78c",
+      "classificationSha256": "3fa29db6d041fe66baa168ac184a358794975ac79df58bbe3abeaa194eed9942"
+    },
+    {
+      "id": "S2C_20TMR_20250807_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MR/2025/8/S2C_20TMR_20250807_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MR/2025/8/S2C_20TMR_20250807_0_L2A/SCL.tif",
+      "visualSha256": "b2084ff0f98fc2ebd3a2fcf4441dd4c3c218e606d4f54dc1f80e7812ad360612",
+      "classificationSha256": "0a79321e88d8fbdaaad69f081848aebdf75feee16eb5951b10d775e2aa5818c4"
+    },
+    {
+      "id": "S2B_20TNS_20250616_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NS/2025/6/S2B_20TNS_20250616_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/NS/2025/6/S2B_20TNS_20250616_0_L2A/SCL.tif",
+      "visualSha256": "a4c0006243c18ba097eb5097b168e7ff6b15719b97044020a7f0b88129da339a",
+      "classificationSha256": "73f02ee8cb025ec2121470373465ddb755f0d414dec8e9aec3f1106848314cca"
+    },
+    {
+      "id": "S2B_20TMS_20250527_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/5/S2B_20TMS_20250527_0_L2A/TCI.tif",
+      "classificationUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/20/T/MS/2025/5/S2B_20TMS_20250527_0_L2A/SCL.tif",
+      "visualSha256": "88ee96a811175417fa088207068167202cf98480dfdf25ef6588f75b45edb395",
+      "classificationSha256": "1792b0c093af270497ffc436ee508229107ea713eeb1e5b39ece2fcb9728264f"
+    }
+  ],
+  "attribution": "Contains modified Copernicus Sentinel data 2025.",
+  "license": "https://ewds.climate.copernicus.eu/licences/ec-sentinel",
+  "provider": "European Union / Copernicus Sentinel-2; accessed through Element 84 Earth Search",
+  "transform": "Pixel area WGS84 longitude/latitude, north first. Bilinear TCI resampling, nearest SCL, first valid clear class 4/5/6/7; remaining land pixels use first valid RGB. Sea colour synthetic. Vector mask: Statistics Canada 2021 Cartographic Boundary Files, PRUID 11.",
+  "sha256": "a1ad586e9d166bc5fcd2935942642bdbf493b26436ce6f7047536a655615f89a"
+}

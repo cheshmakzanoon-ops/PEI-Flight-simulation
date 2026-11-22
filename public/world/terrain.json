@@ -1,0 +1,45 @@
+{
+  "width": 2048,
+  "height": 1360,
+  "bounds": [
+    -64.47,
+    45.94,
+    -61.93,
+    47.1
+  ],
+  "crs": "EPSG:4326",
+  "rasterRegistration": "pixel-area; bounds are outer pixel edges; row 0 north, column 0 west",
+  "verticalDatum": "CGVD2013",
+  "unit": "metre",
+  "encoding": "Int16LE",
+  "water": -32768,
+  "file": "height.bin.gz",
+  "sha256": "b25ada664a21d889730aed9950bda735e68f604be5e2f7fcf586769ebea8ef08",
+  "landCells": 634164,
+  "measuredLandCells": 634142,
+  "unobservedLandFilledAtSeaLevel": 22,
+  "minimumMeasuredMetres": -2.166567802429199,
+  "maximumMeasuredMetres": 136.81178283691406,
+  "license": "Open Government Licence – Canada 2.0",
+  "licenseUrl": "https://open.canada.ca/en/open-government-licence-canada",
+  "attribution": "Contains information licensed under the Open Government Licence – Canada. Terrain: Natural Resources Canada, CanElevation HRDEM Mosaic. Land mask: Statistics Canada, 2021 Census Cartographic Boundary Files; adapted by this project.",
+  "sources": [
+    {
+      "agency": "Natural Resources Canada",
+      "product": "HRDEM Mosaic 1 m airborne LiDAR bare-earth DTM",
+      "stac": "https://datacube.services.geo.ca/stac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
+      "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+      "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+      "resampling": "64 m overview; bilinear warp; rounded to metres; output spacing ~95 m in PEI, not 1 m terrain in-game"
+    },
+    {
+      "agency": "Statistics Canada",
+      "product": "2021 Census Cartographic Boundary Files, Province PRUID 11",
+      "asset": "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query?where=PRUID%3D%2711%27&outFields=PRUID&returnGeometry=true&outSR=4326&geometryPrecision=5&f=geojson",
+      "sha256": "b13b932509ccb4828eba54ed2753e3ad487d10c4ac9dd54f6ff188f0edfc1510",
+      "processing": "Rasterized by cell centres with islands and polygon holes. Features smaller than output pixels may disappear."
+    }
+  ],
+  "compression": "gzip",
+  "sha256RefersTo": "uncompressed Int16LE samples"
+}
