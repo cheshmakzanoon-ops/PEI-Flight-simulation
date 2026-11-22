@@ -79,3 +79,27 @@ for(const tile of buildings.tiles){
 assert.equal(offset,pack.length);
 assert.equal(sum,buildings.count);
 console.log(`World OK: ${land} elevation cells, ${color.landCoverage*100}% land imagery coverage, ${road.segments} road segments, ${sum} building footprints in ${buildings.tiles.length} tiles.`);
+
+const detail=json('detail/index.json');
+assert.deepEqual(detail.bounds,terrain.bounds);
+assert.ok(detail.landCoverage>=.995 && detail.clearClassCoverage>=.995);
+const buffers=detail.packs.map(p=>{
+  const blob=asset('detail/'+p.file);
+  assert.equal(blob.length,p.bytes);
+  assert.equal(hash(blob),p.sha256);
+  return blob;
+});
+const ends=Array(buffers.length).fill(0);
+for(const [key,tile] of Object.entries(detail.tiles)){
+  const [i,j]=key.split('-').map(Number);
+  assert.ok(i>=0&&i<detail.columns&&j>=0&&j<detail.rows);
+  const blob=buffers[tile.pack];
+  assert.equal(tile.offset,ends[tile.pack]);
+  const bytes=blob.subarray(tile.offset,tile.offset+tile.bytes);
+  assert.equal(hash(bytes),tile.sha256);
+  assert.equal(bytes.toString('ascii',0,4),'RIFF');
+  assert.equal(bytes.toString('ascii',8,12),'WEBP');
+  ends[tile.pack]+=tile.bytes;
+}
+assert.deepEqual(ends,detail.packs.map(p=>p.bytes));
+console.log(`Near-detail imagery OK: ${Object.keys(detail.tiles).length} full-raster land tiles, ${detail.landCoverage*100}% covered land.`);
