@@ -1,3 +1,4 @@
+import { aerodynamicPolar, airDensity } from './aerodynamics.ts';
 import { clamp, damp, wrap, project, RAD } from './geo.ts';
 import { RUNWAYS, runwayAt, type Site } from './places.ts';
 export type Controls = {pitch:number;roll:number;yaw:number;power:number;brake:boolean};
@@ -22,7 +23,7 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP) {
  f.time+=dt;
  const pitch=clamp(u.pitch,-1,1),roll=clamp(u.roll,-1,1),yaw=clamp(u.yaw,-1,1);
  f.throttle=clamp(f.throttle+clamp(u.power,-1,1)*.32*dt,0,1);
- const density=1.225*Math.exp(-Math.max(0,f.y)/9500),q=.5*density*f.speed*f.speed;
+ const q=.5*airDensity(f.y)*f.speed*f.speed;
  const thrust=Math.min(3600,188000/Math.max(f.speed,24))*f.throttle;
  const onGround=f.status!=='flying';
  const positiveAuthority=.22+.24*clamp((f.speed-36)/23,0,1);
@@ -30,11 +31,9 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP) {
  f.pitch=damp(f.pitch,targetPitch,onGround?1.7:1.2,dt);
  f.bank=damp(f.bank,onGround?0:roll*1.12,onGround?5:1.6,dt);
  f.alpha=f.pitch-f.gamma+.024;
- let cl=clamp(.24+4.6*f.alpha,-.85,1.5);
- const excess=Math.max(0,Math.abs(f.alpha)-.265);
- cl*=Math.max(.42,1-4.1*excess);
- f.stalled=!onGround&&(excess>.023||f.speed<28);
- const lift=q*S*cl, drag=q*S*(.033+.050*cl*cl+.57*excess);
+ const {cl,cd,separated}=aerodynamicPolar(f.alpha);
+ f.stalled=!onGround&&separated;
+ const lift=q*S*cl, drag=q*S*cd;
  if(onGround) {
   f.gamma=0; f.vertical=0;
   const rolling=(u.brake?4.5:.23)*Math.min(1,Math.max(0,1-lift/(MASS*G)));

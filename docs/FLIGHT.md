@@ -24,3 +24,16 @@ pull back gently near 65 kt. In flight, begin turns with bank and level
 the wings as you reach the new heading. A stall warning means lower the
 nose and recover airspeed before resuming the climb. This handbook applies
 to the fictional aircraft in this simulator, not to real aircraft.
+
+## Flight model in development
+
+The HUD and cockpit speed needle follow equivalent airspeed, an approximation
+of indicated airspeed for this low-speed aircraft. The simulation uses true
+airspeed for motion through the airmass. It computes density from the standard
+troposphere and blends lift and drag through separation as angle of attack
+increases. The stall cue follows separation instead of an arbitrary speed floor.
+
+This is still an assist-stabilized point-mass model for a fictional aircraft.
+It does not yet simulate rigid-body moments, independent control-surface
+deflections, flap schedules, propeller slipstream or validated crosswind
+handling. See [aircraft development and validation](AIRCRAFT.md).

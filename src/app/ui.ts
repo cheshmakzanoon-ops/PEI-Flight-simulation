@@ -1,3 +1,4 @@
+import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
 import type { Flight } from '../sim/flight.ts';
@@ -75,7 +76,7 @@ export class UI {
  }
  update(f:Flight,ground:number){
   this.frame++;if(this.frame%5!==0&&this.mode!=='map')return;
-  $('kt').textContent=''+Math.round(f.speed*1.94384);$('ft').textContent=Math.round(f.y*3.28084).toLocaleString('en-US');
+  $('kt').textContent=''+Math.round(equivalentAirspeed(f.speed,f.y)*1.94384);$('ft').textContent=Math.round(f.y*3.28084).toLocaleString('en-US');
   $('hdg').textContent=('00'+(Math.round(f.heading*DEG)%360)).slice(-3);$('pwr').textContent=''+Math.round(f.throttle*100);
   $('annun').textContent=f.stalled?'STALL • LOWER NOSE':f.status!=='flying'?f.status==='landed'?'TOUCHDOWN':'GROUND ROLL':f.y-ground<30?'LOW ALTITUDE':'';
   $('controller').textContent=this.input.gamepad?'● GAMEPAD':'';
