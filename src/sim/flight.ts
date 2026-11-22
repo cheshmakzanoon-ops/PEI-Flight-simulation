@@ -10,7 +10,29 @@ export interface Flight {
   throttle:number; time:number; vertical:number; alpha:number; stalled:boolean; status:Status; notice:string;
 }
 export const SURVEY_AIRFRAME=Object.freeze({gravity:9.80665,massKg:1450,areaM2:17.2,gearHeightM:1.40});
-const {gravity:G,massKg:MASS,areaM2:S,gearHeightM:GEAR}=SURVEY_AIRFRAME;
+const {gravity:G,areaM2:S,gearHeightM:GEAR}=SURVEY_AIRFRAME;
+
+/**
+ * Fixed mass for a run and uniform drift towards true east/north (m/s, not a
+ * meteorological "wind from" bearing). Wind presently advects airborne position
+ * only: it is not a crosswind tyre, sideslip, gust or takeoff aerodynamic model.
+ */
+export interface FlightConditions {
+ readonly massKg: number;
+ readonly windEastMps: number;
+ readonly windNorthMps: number;
+}
+export function flightConditions(
+ massKg: number, windEastMps = 0, windNorthMps = 0,
+): Readonly<FlightConditions> {
+ if (!(massKg > 0) || !Number.isFinite(massKg) ||
+     !Number.isFinite(windEastMps) || !Number.isFinite(windNorthMps)) {
+  throw new RangeError('Expected a positive finite mass and finite wind components.');
+ }
+ return Object.freeze({massKg, windEastMps, windNorthMps});
+}
+// Preserve the historical breeze and default mass for ordinary player flights.
+export const DEFAULT_FLIGHT_CONDITIONS = flightConditions(SURVEY_AIRFRAME.massKg, 1.9, -.35);
 export const FIXED_STEP=1/90;
 export function spawn(site:Site,surface:Sample):Flight{
  const rw=RUNWAYS.find(r=>r.id===site.runway), p=rw?{x:rw.p.x+rw.dx*18,z:rw.p.z+rw.dz*18}:project(site.lon,site.lat);
@@ -19,8 +41,9 @@ export function spawn(site:Site,surface:Sample):Flight{
 }
 export const neutral:Controls={pitch:0,roll:0,yaw:0,power:0,brake:false};
 /** Assist-stabilized, fixed-step point-mass model; visual entertainment, not certified flight dynamics. */
-export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP) {
+export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP,conditions:Readonly<FlightConditions>=DEFAULT_FLIGHT_CONDITIONS) {
  if(f.status==='stopped'||!(dt>0&&dt<=.05))return;
+ const MASS=conditions.massKg;
  f.time+=dt;
  const pitch=clamp(u.pitch,-1,1),roll=clamp(u.roll,-1,1),yaw=clamp(u.yaw,-1,1);
  f.throttle=clamp(f.throttle+clamp(u.power,-1,1)*.32*dt,0,1);
@@ -48,7 +71,7 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP) {
   f.vertical=f.speed*Math.sin(f.gamma); f.y+=f.vertical*dt;
  }
  const v=f.speed*Math.cos(f.gamma),air=f.status==='flying';
- f.x+=(v*Math.sin(f.heading)+(air?1.9:0))*dt;f.z+=(-v*Math.cos(f.heading)+(air?.35:0))*dt;
+ f.x+=(v*Math.sin(f.heading)+(air?conditions.windEastMps:0))*dt;f.z+=(-v*Math.cos(f.heading)-(air?conditions.windNorthMps:0))*dt;
  const ground=sample(f.x,f.z);const contact=ground.height+GEAR;
  if(f.status!=='flying') {
   f.y=contact;
