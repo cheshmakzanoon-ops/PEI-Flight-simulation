@@ -9,7 +9,8 @@ export interface Flight {
   x:number; y:number; z:number; heading:number; pitch:number; bank:number; gamma:number; speed:number;
   throttle:number; time:number; vertical:number; alpha:number; stalled:boolean; status:Status; notice:string;
 }
-const G=9.80665, MASS=1450, S=17.2, GEAR=1.40;
+export const SURVEY_AIRFRAME=Object.freeze({gravity:9.80665,massKg:1450,areaM2:17.2,gearHeightM:1.40});
+const {gravity:G,massKg:MASS,areaM2:S,gearHeightM:GEAR}=SURVEY_AIRFRAME;
 export const FIXED_STEP=1/90;
 export function spawn(site:Site,surface:Sample):Flight{
  const rw=RUNWAYS.find(r=>r.id===site.runway), p=rw?{x:rw.p.x+rw.dx*18,z:rw.p.z+rw.dz*18}:project(site.lon,site.lat);

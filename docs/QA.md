@@ -50,3 +50,16 @@ python tools/qa/coast-void-gate.py /tmp/pei-coast/east-close.png
 Remove `--void-probe` for normal visuals. The tool makes its camera and sky
 changes only in a temporary checkout. Its output is regression evidence,
 not proof of photorealism or of performance on a player's device.
+
+For an unmodified production player, the optional route test accepts the
+already-built `dist` directory and an explicit Chromium binary (also requires
+NumPy). It changes neither the camera nor any production shader:
+
+```sh
+npm run build
+python tools/qa/player-routes.py --dist dist --out /tmp/pei-routes \
+  --chromium /path/to/chromium
+```
+
+It starts both lighthouse approaches and records actual travel, then checks
+the original Cavendish coastal overdraw case after two relocations.

@@ -40,3 +40,26 @@ Current in-engine display: equivalent airspeed, hundreds of feet on the cyclic
 altimeter needle (full altitude on the HUD), throttle percentage and vertical
 speed. The instrument on the right of the altimeter is commanded power, not
 measured engine RPM. These are development gauges, not certified avionics.
+
+## Reference evidence to validate before tuning
+
+The Australian Transport Safety Bureau cites the 182T pilot handbook for
+54 KCAS with flaps up and 49 KCAS with full flap at idle power.
+See the [aircraft information in investigation AO-2025-028](https://www.atsb.gov.au/investigations/ao-2025-028).
+The same report differentiates calibrated and indicated airspeed and lists
+1,406 kg as the maximum weight used for the handbook's bank-angle stall data.
+
+The present fictional model predicts approximately 59.7 knots equivalent
+airspeed at maximum lift in a static level-flight calculation at its default
+1,450 kg. At the reference weight of 1,406 kg it predicts about 58.8 knots.
+These are analysis values, not measurements of the simulated stall transient.
+Flaps are not implemented, so there is no valid flaps-down comparison yet.
+Do not tune the stall flag to hit the reference number. Match the effective
+wing area, configuration, weight and force balance first; then verify the
+result with a repeatable dynamic approach and recovery.
+
+Regenerate this static analysis with:
+
+```sh
+node --experimental-strip-types tools/qa/airframe-baseline.mjs
+```

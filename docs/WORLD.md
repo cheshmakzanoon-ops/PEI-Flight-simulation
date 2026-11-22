@@ -109,3 +109,10 @@ additional meshes are culled.
 
 The [East and West Point light stations](landmarks/lighthouses.md) are
 original, site-specific exteriors with approximate local ground detail.
+
+## Woodland clearance
+
+The [building-aware vegetation pass](vegetation-clearance.md) excludes
+synthetic stems inside all shipped source roof footprints without applying a
+broad clearance buffer. Nearby natural-looking canopies may still overlap
+roof outlines; the pass is not a survey of individual trees.

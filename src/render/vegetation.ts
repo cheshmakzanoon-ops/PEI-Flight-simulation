@@ -3,8 +3,9 @@ import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
-const pitch=12,side=16,span=pitch*side,radius=1530,maxTrees=45000;
-function rand(x:number,z:number,s=0){let n=Math.imul(x^s,2246822519)^Math.imul(z,3266489917);n=Math.imul(n^(n>>>15),2246822519);return ((n^(n>>>13))>>>0)/4294967296;}
+import {TREE_PITCH as pitch,TREE_TILE_SIDE as side,treeRandom as rand} from '../sim/tree-layout.ts';
+import {fillRoofTile} from '../sim/tree-clearance.ts';
+const span=pitch*side,radius=1530,maxTrees=45000;
 const pars=`
  attribute vec3 stem;attribute vec4 shape;varying vec2 vUV;varying vec3 param;
  #include <common>
@@ -67,9 +68,12 @@ export class Vegetation {
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
  }
+ private readonly roofBits=new Uint32Array(8);
  private tile(tx:number,tz:number){
-  const a:number[]=[];
+  const a:number[]=[],hasRoofHits=fillRoofTile(tx,tz,this.roofBits);
   for(let dz=0;dz<side;dz++)for(let dx=0;dx<side;dx++){
+   const cell=dz*side+dx;
+   if(hasRoofHits&&(this.roofBits[cell>>>5]&(1<<(cell&31))))continue;
    const i=tx*side+dx,j=tz*side+dz;
    const x=(i+rand(i,j,11))*pitch,z=(j+rand(i,j,84))*pitch;
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
