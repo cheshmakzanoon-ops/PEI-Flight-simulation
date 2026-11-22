@@ -5,6 +5,7 @@ import { loadAtlas, World } from './render/world.ts';
 import { createAircraft } from './render/aircraft.ts';
 import { addMainland } from './render/mainland.ts';
 import type {Terrain} from './sim/terrain.ts';
+import { addLighthouseScenery } from './render/lighthouses.ts';
 import { addBasilica } from './render/basilica.ts';
 import { addConfederationBridge } from './render/confederation.ts';
 import { Vegetation } from './render/vegetation.ts';
@@ -25,7 +26,7 @@ async function run(){
  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,innerWidth/innerHeight,.08,350000),cameraUp=new THREE.Vector3(0,1,0);
- const {terrain,img,cover,sky}=await loadAtlas(loadMsg);const world=new World(scene,terrain,img,renderer,cover,sky);const vegetation=new Vegetation(scene,terrain,cover);addConfederationBridge(scene);addBasilica(scene,terrain);
+ const {terrain,img,cover,sky}=await loadAtlas(loadMsg);const world=new World(scene,terrain,img,renderer,cover,sky);const vegetation=new Vegetation(scene,terrain,cover);addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  let mainland:Terrain|undefined;
  const sceneSurface=(x:number,z:number)=>{const s=world.surface(x,z);if(!s.land&&mainland?.isLand(x,z)){s.height=mainland.elevation(x,z)+.18;s.land=true;}return s;};
  const aircraft=createAircraft();scene.add(aircraft.root);const audio=new EngineSound();

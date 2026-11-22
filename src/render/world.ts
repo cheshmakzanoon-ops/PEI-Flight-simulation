@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { Terrain, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import { Cover } from '../sim/cover.ts';
+import { coastSegments } from '../sim/shoreline.ts';
+import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { DetailImagery } from './detail.ts';
 import { runwayAtlas } from './runway-paint.ts';
 import { RUNWAYS } from '../sim/places.ts';
@@ -87,7 +89,15 @@ const waterFrag=fp+skyFn+`
  float foam=smoothstep(-37.,-4.,shore)*(1.-smoothstep(-4.,1.,shore))*(.25+.75*smoothstep(.30,.82,sin(phase)))*(1.-smoothstep(.9,4.,fwidth(phase)));
  c=mix(c,vec3(.55,.65,.58),foam*.69);
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
-const landFrag=fp+`
+const cliffFrag=fp+`
+ void main(){
+ #include <logdepthbuf_fragment>
+ float d=distance(cameraPosition,p), f=1.-smoothstep(250.,2200.,d);
+ float strata=sin(p.y*6.1+noise(p.xz*.045)*3.8)*.05*f;
+ vec3 col=mix(vec3(.31,.194,.116),vec3(.235,.094,.049),smoothstep(1.2,7.,p.y));
+ col*=.90+strata+.18*noise(p.xz*.14+vec2(0.,p.y*.11));
+ gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
+const landFrag=fp+lighthouseGroundGLSL+`
  uniform sampler2D imageMap,coverMap,detailMap,paintMap; uniform float hasDetail;uniform vec4 detailBox;
  uniform vec4 airport[3];uniform vec2 stripSize[3];
  void main(){
@@ -109,6 +119,7 @@ const landFrag=fp+`
  float phase=dot(p.xz,vec2(cos(angle),sin(angle)))*2.2;
  float rows=cos(phase)*(1.-smoothstep(.35,2.6,fwidth(phase)));
  col*=1.+detailFade*(.13*(noise(p.xz*.46)-.5)+.055*crop*rows);
+ col=stationGround(col,p.xz,coast);
  col*=.90+.31*light;
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
@@ -138,7 +149,7 @@ export async function loadAtlas(progress:(s:string)=>void){
 }
 interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing';detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
- private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
+ private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
  constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture){
@@ -150,6 +161,7 @@ export class World {
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=-.055;scene.add(ocean);
    this.mat=make(landFrag);
+   this.addShoreFaces(make(cliffFrag,THREE.DoubleSide));
    const nx=32,nz=22,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
     const x0=T.left+i*w,z0=T.top+j*d;
@@ -165,6 +177,23 @@ export class World {
    const env=sky.clone();env.mapping=THREE.EquirectangularReflectionMapping;env.needsUpdate=true;scene.environment=env;scene.environmentIntensity=.77;
    scene.environmentRotation.y=-.512*Math.PI*2;
    
+ }
+ private addShoreFaces(material:THREE.ShaderMaterial) {
+  const groups=new Map<string,number[]>();
+  const t=this.terrain;
+  for(const {ax,az,bx,bz} of coastSegments(this.cover,t)){
+   const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
+   let vertices=groups.get(key);if(!vertices){vertices=[];groups.set(key,vertices);}
+   const ah=t.meshElevation(ax,az)+.72,bh=t.meshElevation(bx,bz)+.72;
+   const bottom=-.14;
+   vertices.push(ax,bottom,az,bx,bottom,bz,ax,ah,az,ax,ah,az,bx,bottom,bz,bx,bh,bz);
+  }
+  for(const vertices of groups.values()){
+   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+   g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(vertices.length/3*2),2));
+   g.computeBoundingSphere();
+   const m=new THREE.Mesh(g,material);m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
+  }
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
   const g=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
@@ -183,6 +212,12 @@ export class World {
   this.sky.position.copy(pos);this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   if(Math.abs(clock-this.recent)<.25&&this.recent>0)return;
   this.recent=clock;
+  // The visible curtain fills close headlands. Beyond the horizon detail load
+  // radius it has negligible screen height, so do not send those meshes to GL.
+  for(const face of this.shoreFaces){
+   const b=face.geometry.boundingSphere!;
+   face.visible=Math.hypot(b.center.x-pos.x,b.center.z-pos.z)<17000+b.radius;
+  }
   for(const tile of this.tiles){
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
    const d2=dx*dx+dz*dz,old=tile.lod;

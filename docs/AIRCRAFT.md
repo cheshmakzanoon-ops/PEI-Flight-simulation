@@ -31,3 +31,12 @@ not evidence that the model matches the reference aircraft.
 Read the [FAA handbook](https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak)
 for definitions and the difference between flight principles, instrument
 indications and published aircraft performance.
+
+## Cockpit at the current milestone
+
+![Four graduated flight instruments installed in the survey aircraft cockpit](media/cockpit-instruments.webp)
+
+Current in-engine display: equivalent airspeed, hundreds of feet on the cyclic
+altimeter needle (full altitude on the HUD), throttle percentage and vertical
+speed. The instrument on the right of the altimeter is commanded power, not
+measured engine RPM. These are development gauges, not certified avionics.

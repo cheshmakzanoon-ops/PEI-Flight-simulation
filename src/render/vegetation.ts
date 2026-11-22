@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
+import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
 const pitch=12,side=16,span=pitch*side,radius=1530,maxTrees=45000;
 function rand(x:number,z:number,s=0){let n=Math.imul(x^s,2246822519)^Math.imul(z,3266489917);n=Math.imul(n^(n>>>15),2246822519);return ((n^(n>>>13))>>>0)/4294967296;}
@@ -74,6 +75,7 @@ export class Vegetation {
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
    const type=rand(i,j,43),variant=type<.15?3:type<.36?2:type<.68?1:0;
    const h=8.2+rand(i,j,35)*10.8,w=h*(.83+rand(i,j,9)*.35);
+   if(insideLighthouseYard(x,z,w*.5))continue;
    a.push(x,this.t.meshElevation(x,z)-.16,z,h,w,variant,.79+rand(i,j,21)*.45,rand(i,j,62));
   }
   return new Float32Array(a);

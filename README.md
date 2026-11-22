@@ -7,7 +7,7 @@ A province-wide, metre-scale world built in TypeScript and Three.js.
 
 Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or cross Kings County toward East Point. You can start in the air or depart from a runway, switch from chase view to the cockpit, and reposition from the in-flight atlas.
 
-[Download web build](#download-the-web-build) · [Build from source](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Production gates](docs/PRODUCTION.md) · [QA record](docs/QA.md)
+[Download web build](#download-the-web-build) · [Build from source](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Aircraft](docs/AIRCRAFT.md) · [Production gates](docs/PRODUCTION.md) · [QA record](docs/QA.md)
 
 > **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, most landmarks, close-range materials and training-grade aerodynamics are not part of this build.
 
@@ -19,9 +19,9 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 | System | What is in this build |
 | --- | --- |
-| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows a land-cover map. Confederation Bridge and St. Dunstan’s Basilica have custom models. |
-| **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, a modeled cockpit, instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, ground roll, lift and drag, stall cues and runway landings. Two runway departure presets and nine scenic starts. |
+| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows a land-cover map. Confederation Bridge, St. Dunstan’s Basilica and both [point light stations](docs/landmarks/lighthouses.md) have custom models. |
+| **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, a modeled cockpit, graduated flight instruments and synthesized engine audio. |
+| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and eleven scenic starts. |
 | **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
 | **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
@@ -82,13 +82,21 @@ node tools/verify-world.mjs  # Asset hashes, formats, extents and counts
 | `tools/geodata/` | Reproducible geographic-data processing |
 | `test/` | Flight and terrain regressions |
 
-CI verifies the data, flight regressions, production build, and a Chromium smoke route across all three counties. Next targets are richer close-range facades, airports beyond the current pair, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
+CI verifies the data, flight regressions, production build, and a Chromium smoke route across all three counties. Next targets are finer coastal terrain, province-wide building and vegetation overlap fixes, an externally benchmarked airframe, richer facades, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
 
 ## Scenery gallery
 
 | Charlottetown Harbour | Confederation Bridge |
 | --- | --- |
 | ![Approach over Charlottetown Harbour](docs/media/charlottetown-harbour.webp) | ![Survey aircraft above the Confederation Bridge](docs/media/confederation-bridge.webp) |
+
+| East Point Light Station | West Point Light Station |
+| --- | --- |
+| ![White octagonal lighthouse and fog house at East Point](docs/media/east-point-review.webp) | ![Striped lighthouse and adjoining inn at West Point](docs/media/west-point-review.webp) |
+
+These are in-engine development captures, not reference photographs. The
+[landmark notes](docs/landmarks/lighthouses.md) explain what is measured and
+what was interpreted.
 
 ## Credits and use
 

@@ -11,7 +11,9 @@ export const SITES: Site[] = [
  {id:'cyyg',name:'Charlottetown · runway 03',region:'Queens County',lon:-63.1274986,lat:46.2797012,heading:9.3,height:0,runway:'CYYG03',note:'Start on the runway. Advance throttle, then pull up around 65 knots.'},
  {id:'cysu',name:'Summerside · runway 05',region:'Prince County',lon:-63.8428,lat:46.4314,heading:36,height:0,runway:'CYSU05',note:'Depart runway 05 and head northeast over Prince County.'},
  {id:'harbour-low',name:'Charlottetown waterfront · low pass',region:'Queens County',lon:-63.1338,lat:46.2190,heading:34,height:115,note:'Cross the harbour approach at 115 metres above the starting surface; keep clear of land and buildings.'},
- {id:'cavendish-low',name:'Cavendish shore · low pass',region:'Queens County',lon:-63.422,lat:46.500,heading:105,height:130,note:'See the coast and dunes from a lower 130-metre starting altitude.'}
+ {id:'cavendish-low',name:'Cavendish shore · low pass',region:'Queens County',lon:-63.422,lat:46.500,heading:105,height:130,note:'See the coast and dunes from a lower 130-metre starting altitude.'},
+ {id:'east-light',name:'East Point · lighthouse pass',region:'Kings County',lon:-61.9679,lat:46.4507,heading:292,height:58,note:'Approach the red-roofed fog house and white octagonal light from offshore.'},
+ {id:'west-light',name:'West Point · lighthouse pass',region:'Prince County',lon:-64.3910,lat:46.6194,heading:61,height:58,note:'Follow the striped light onto the Cedar Dunes shoreline at the western entrance to the strait.'}
 ];
 /** Published threshold locations and widths from OurAirports, https://ourairports.com/data/ (public domain; 2026-11-22 snapshot). */
 export const RUNWAYS = [

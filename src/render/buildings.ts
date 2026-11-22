@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
 import type { Terrain } from '../sim/terrain.ts';
@@ -82,7 +83,7 @@ export class Buildings {
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[];
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);};
   for(const f of features){
-   if(f.footprint.length<3||!Number.isFinite(f.height))continue;
+   if(f.footprint.length<3||!Number.isFinite(f.height)||replacesLightBuilding(f.footprint))continue;
    const rings=[f.footprint,...(f.holes??[])].map(r=>r.map(([lon,lat])=>project(lon,lat)));
    const ring=rings[0],cx=ring.reduce((s,p)=>s+p.x,0)/ring.length,cz=ring.reduce((s,p)=>s+p.z,0)/ring.length;
    const ll=geographic(cx,cz);if(replacesBasilicaFootprint(ll.lon,ll.lat))continue;

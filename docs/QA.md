@@ -20,3 +20,33 @@ The province-wide geography, streaming, controls and route-level visual identity
 1. Compare multiple independently licensed reference viewpoints for each county in identical heading/altitude, not just satellite coverage. Verify street façades/roof geometry, port and airport signage, shoreline cliffs/sand, docks, tree canopies, the waterfront and recognizable landmark materials. Measured footprints plus generic façades are not equivalent to photographed streets.
 2. Bench frame-time distributions and memory on real integrated and dedicated GPUs, touch browsers and physical controllers. SwiftShader timing is not an end-user FPS estimate.
 3. Expand approach, crosswind and runway tolerance checks beyond the nominal short-final landing. Benchmark first-use loads and longer sessions, and cover tile boundaries and recovery on more hardware. Never promote this entertainment model to training claims.
+
+## Month-one scenery and cockpit gates
+
+- Fixed East and West Point comparison views hold position, 53° vertical FOV,
+  125 m horizontal standoff and 45 m altitude above the camera start surface.
+  In the East diagnostic, the sky is replaced with magenta to identify geometry
+  gaps independent of sky colour. The baseline revealed 4,976 of 108,000
+  pixels in the ground/water ROI; the distance-gated shore-face candidate
+  reduced the remaining gap to 0 of 108,000 pixels in that view. The same view went from 256 to 262 draws for the combined scenery change (software-rendered QA, not a player FPS benchmark). The existing Cavendish test separately
+  rejects ocean covering confirmed inland terrain.
+- The lighthouse tests confirm structure height, low/mid mesh budgets and
+  departure heading. Only three exact source extrusions are suppressed. No
+  formula verifies architectural appearance; matched views and source
+  references are required for the art review.
+- Check the physical cockpit instruments with the game running. Each dial uses
+  the same unit and angle mapping for the texture and its needle. The HUD
+  remains available and moves out of the panel's way in cockpit mode.
+
+With Python Playwright, Pillow, Chromium and the usual local npm dependencies
+installed, run the optional fixed-camera tool on a checkout:
+
+```sh
+python tools/qa/fixed-scenery.py --checkout . --out /tmp/pei-coast \
+  --chromium /path/to/chromium --void-probe --views east-close
+python tools/qa/coast-void-gate.py /tmp/pei-coast/east-close.png
+```
+
+Remove `--void-probe` for normal visuals. The tool makes its camera and sky
+changes only in a temporary checkout. Its output is regression evidence,
+not proof of photorealism or of performance on a player's device.

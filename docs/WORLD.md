@@ -97,3 +97,15 @@ New Brunswick and Nova Scotia backdrop provides the view across the
 strait; those provinces have no playable airfields or ground operations.
 The backdrop manifest records the source, resolution and fallback used
 for its colours and elevations.
+
+## Near-shore continuity
+
+Land, sea and the low-altitude shore mesh use the same province-wide
+signed-distance shoreline raster. The new faces connect the shoreline mask
+to sea level so raised sections cannot expose the sky beneath them. The
+cliff material and shoreline shape are approximations at the atlas resolution,
+not a survey of rock strata, beaches or tides. At longer distances these
+additional meshes are culled.
+
+The [East and West Point light stations](landmarks/lighthouses.md) are
+original, site-specific exteriors with approximate local ground detail.
