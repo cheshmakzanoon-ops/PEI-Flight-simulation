@@ -63,3 +63,6 @@ Regenerate this static analysis with:
 ```sh
 node --experimental-strip-types tools/qa/airframe-baseline.mjs
 ```
+
+For the measured power-off result, see the [dynamic clean-glide sweep](qa/GLIDE-BASELINE.md).
+It measures range against height lost instead of inferring glide distance from a polar.
