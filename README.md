@@ -1,23 +1,71 @@
 # PEI Flight Sim
 
-**A full-province browser flight simulator for Prince Edward Island, Canada.** Built in TypeScript and rendered with Three.js.
+**Prince Edward Island, Canada, in a browser flight simulator.**  
+A province-wide, metre-scale world built in TypeScript and Three.js.
 
-Fly from North Cape to East Point across Prince, Queens and Kings counties. The world uses metre-scale geography. The production goal is uninterrupted island-wide flight with natural coastlines, fields, towns and airports that remain recognizable on a close approach.
+Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or cross Kings County toward East Point. You can start in the air or depart from a runway, switch from chase view to the cockpit, and reposition from the in-flight atlas.
 
-> **Status: in production.** This repository is not a finished simulator. See the milestones below for what must pass before a playable release is marked ready.
+[Run locally](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Production gates](docs/PRODUCTION.md)
 
-## What we are building
+> **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, landmarks, close-range materials and training-grade aerodynamics are not part of this build.
 
-- **World:** Province-wide terrain, water and coastlines. More detailed tiles for cities, country roads, farms, landmarks and approaches.
-- **Flight:** Free flight with keyboard and gamepad, a stable chase camera and cockpit instrumentation. The flight model will be tested for takeoff, approach, stall recovery and landing.
-- **Rendering:** Outdoor lighting, atmospheric perspective, red sandstone cliffs, shallow coastal water and vegetation. Detailed meshes and materials stream near the player; distant scenery uses cheaper representations.
+## Fly the province
 
-## Production milestones
-
-| Milestone | Exit criteria |
+| System | What is in this build |
 | --- | --- |
-| Province-wide playable build | Fly over western, central and eastern PEI in one session; verify scale, coastline alignment and controls. |
-| Low-altitude scenery | Validate real approaches and key landmarks; replace approximate geometry where it fails side-by-side review. |
-| Release candidate | Pass repeatable visual, flight and streaming tests on documented desktop browsers and devices. |
+| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, coastlines and water, 19,465 road segments and 85,866 LiDAR-derived building footprints streamed in geographic chunks. |
+| **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, a modeled cockpit, instruments and synthesized engine audio. |
+| **Flight** | Fixed-step civilian flight model, ground roll, lift and drag, stall cues and runway landings. Two runway departure presets and seven scenic starts. |
+| **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
+| **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
-Read the [production and acceptance gates](docs/PRODUCTION.md) for our data, review and release rules. This simulator is for recreation, not aviation training or navigation.
+**A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md).
+
+## Run locally
+
+Use **Node.js 22.12 or later** and a WebGL 2 browser with hardware acceleration.
+
+```sh
+git clone https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation.git
+cd PEI-Flight-simulation
+npm ci
+npm run dev -- --host 127.0.0.1
+```
+
+Open the local address printed by Vite. The simulator loads its geographic assets from the project, without an API key. For a deployable build, run `npm run build` and serve `dist/` over HTTP(S). Opening the HTML file directly from disk is not supported.
+
+### Essential controls
+
+| Action | Keyboard | Gamepad |
+| --- | --- | --- |
+| Pitch / roll | Arrows or WASD | Left stick |
+| Rudder | Q / E | Right stick left/right |
+| Throttle | Hold + / − or ] / [ | Right / left trigger |
+| Ground brakes | B | South face button |
+| View / atlas / pause | V / M / P | Start pauses |
+
+Press a gamepad button while the simulator has focus to activate it in the browser.
+
+## Development
+
+```sh
+npm run check                # Flight tests, TypeScript and production build
+node tools/verify-world.mjs  # Asset hashes, formats, extents and counts
+```
+
+| Directory | Responsibility |
+| --- | --- |
+| `src/sim/` | Map scale, terrain queries, flight dynamics and runway data |
+| `src/render/` | Three.js world, aircraft, roads and streamed building geometry |
+| `src/app/` | Flight deck, controls, atlas, telemetry and sound |
+| `public/world/` | Runtime scenery packs and source manifests |
+| `tools/geodata/` | Reproducible geographic-data processing |
+| `test/` | Flight and terrain regressions |
+
+Next production targets are clearer low-altitude terrain and water transitions, modeled landmarks and airports, higher-resolution detail streaming, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
+
+## Credits and use
+
+Contains modified Copernicus Sentinel data 2025. Contains information licensed under the Open Government Licence – Canada. [Source, processing and attribution details](docs/WORLD.md). No Google Maps or Street View content is included.
+
+Built for exploration and recreation. Not for navigation, flight instruction, or airport operations.
