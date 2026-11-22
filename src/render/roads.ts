@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {unpackGzip} from '../sim/compression.ts';
 import { project } from '../sim/geo.ts';
 import type { Terrain } from '../sim/terrain.ts';
 
@@ -55,7 +56,7 @@ export class Roads {
   static async create(scene: THREE.Scene, terrain: Terrain) {
     const response = await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`);
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
-    const data = await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+    const data = await unpackGzip(await response.arrayBuffer());
     const tiles = new Map<string, Tile>();
     for (const {points, flags} of decodeRoads(data)) {
       for(let i=1; i<points.length; i++) {

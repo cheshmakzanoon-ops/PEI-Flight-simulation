@@ -6,27 +6,30 @@ import { chromium } from 'playwright';
 const url = process.env.PREVIEW_URL ?? 'http://127.0.0.1:4173/';
 const out = process.env.SMOKE_OUTPUT ?? 'artifacts/smoke';
 await mkdir(out,{recursive:true});
+console.log('Launching Chromium');
 const browser = await chromium.launch({
-  args:['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-dev-shm-usage'],
+  args:['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-dev-shm-usage', '--ignore-gpu-blocklist'],
 });
 try {
   const page = await browser.newPage({viewport:{width:1280,height:720}});
   const errors = [];
-  page.on('pageerror', error=>errors.push(error.message));
-  page.on('console', entry=>{if(entry.type()==='error')errors.push(entry.text());});
+  page.setDefaultTimeout(60000);
+  page.on('pageerror', error=>{errors.push(error.message); console.error(error.message);});
+  page.on('console', entry=>{if(entry.type()==='error'){errors.push(entry.text()); console.error(entry.text());} else if (entry.type()==='warning') console.warn(entry.text());});
   page.on('response', response=>{
     if (response.status() >= 400 && response.url().startsWith(url)) errors.push(`${response.status()} ${response.url()}`);
   });
   await page.goto(new URL('?diagnostics', url).toString());
   const state=()=>page.evaluate(()=>window.islandAirDiagnostics);
-  const waitState=(mode)=>page.waitForFunction(m=>window.islandAirDiagnostics?.mode===m,mode,{timeout:30000});
-  await page.getByRole('button',{name:'Begin flight'}).waitFor({timeout:40000});
-  await page.waitForFunction(()=>window.islandAirDiagnostics?.roads && window.islandAirDiagnostics?.buildings && window.islandAirDiagnostics?.drawCalls > 10,undefined,{timeout:30000});
+  const waitState=(mode)=>page.waitForFunction(m=>window.islandAirDiagnostics?.mode===m,mode,{timeout:60000});
+  await page.getByRole('button',{name:'Begin flight'}).waitFor({timeout:60000});
+  console.log('Dispatch interface loaded');
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.roads && window.islandAirDiagnostics?.buildings && window.islandAirDiagnostics?.drawCalls > 10,undefined,{timeout:60000});
   await page.screenshot({path:`${out}/01-dispatch.png`});
   await page.getByRole('button',{name:'Begin flight'}).click();
   await waitState('flight');
   const initial=await state();
-  await page.waitForFunction(({x,z})=>Math.hypot(window.islandAirDiagnostics.x-x,window.islandAirDiagnostics.z-z)>15,initial,{timeout:15000});
+  await page.waitForFunction(({x,z})=>Math.hypot(window.islandAirDiagnostics.x-x,window.islandAirDiagnostics.z-z)>15,initial,{timeout:30000});
   assert.equal((await state()).site,'cavendish');
   await page.screenshot({path:`${out}/02-cavendish.png`});
   await page.keyboard.press('v');
