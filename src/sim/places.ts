@@ -7,9 +7,11 @@ export const SITES: Site[] = [
  {id:'eastpoint',name:'East Point',region:'Kings County',lon:-62.012,lat:46.457,heading:71,height:390,note:'Fly the eastern tip where the Northumberland Strait meets the Gulf.'},
  {id:'northcape',name:'North Cape',region:'Prince County',lon:-64.026,lat:47.009,heading:338,height:380,note:'Trace the exposed shoreline toward the island’s northern tip.'},
  {id:'montague',name:'Montague River',region:'Kings County',lon:-62.614,lat:46.159,heading:260,height:360,note:'Follow the river inland from the Three Rivers estuary.'},
- {id:'bridge',name:'Borden-Carleton',region:'Prince County',lon:-63.718,lat:46.222,heading:350,height:380,note:'Explore the south shore at the island end of the Confederation Bridge.'},
+ {id:'bridge',name:'Confederation Bridge',region:'Prince County',lon:-63.7125,lat:46.243,heading:226,height:265,note:'Depart over Borden-Carleton and follow the 12.9-kilometre crossing toward New Brunswick.'},
  {id:'cyyg',name:'Charlottetown · runway 03',region:'Queens County',lon:-63.1274986,lat:46.2797012,heading:9.3,height:0,runway:'CYYG03',note:'Start on the runway. Advance throttle, then pull up around 65 knots.'},
- {id:'cysu',name:'Summerside · runway 05',region:'Prince County',lon:-63.8428,lat:46.4314,heading:36,height:0,runway:'CYSU05',note:'Depart runway 05 and head northeast over Prince County.'}
+ {id:'cysu',name:'Summerside · runway 05',region:'Prince County',lon:-63.8428,lat:46.4314,heading:36,height:0,runway:'CYSU05',note:'Depart runway 05 and head northeast over Prince County.'},
+ {id:'harbour-low',name:'Charlottetown waterfront · low pass',region:'Queens County',lon:-63.1338,lat:46.2190,heading:34,height:115,note:'Cross the harbour approach at 115 metres above the starting surface; keep clear of land and buildings.'},
+ {id:'cavendish-low',name:'Cavendish shore · low pass',region:'Queens County',lon:-63.422,lat:46.500,heading:105,height:130,note:'See the coast and dunes from a lower 130-metre starting altitude.'}
 ];
 /** Published threshold locations and widths from OurAirports, https://ourairports.com/data/ (public domain; 2026-11-22 snapshot). */
 export const RUNWAYS = [

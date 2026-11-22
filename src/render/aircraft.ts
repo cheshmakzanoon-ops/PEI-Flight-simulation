@@ -92,6 +92,14 @@ export function createAircraft() {
    poly([[-.04,.25,0],[-.10,.68,.01],[-.15,1.16,.05],[-.02,1.26,.06],[.075,.92,.02],[.08,.45,0]],dark,blade);
    poly([[-.15,1.16,.054],[-.025,1.265,.065],[.01,1.20,.058],[-.135,1.10,.049]],ochre,blade);
  }
+ const discCanvas=document.createElement('canvas');discCanvas.width=discCanvas.height=192;const ds=discCanvas.getContext('2d')!;
+ ds.translate(96,96);for(let i=0;i<48;i++){const r=24+i*1.46;
+ ds.strokeStyle='rgba(18,29,30,'+(.035+.026*(.5+.5*Math.sin(i*.65)))+')';ds.lineWidth=1.75;ds.beginPath();ds.arc(0,0,r,0,Math.PI*2);ds.stroke();}
+ for(let b=0;b<3;b++)for(let j=0;j<35;j++){const a=b*Math.PI*2/3+j*.030;ds.strokeStyle='rgba(52,56,52,'+(Math.sin(j/35*Math.PI)*.028)+')';ds.lineWidth=2;
+ ds.beginPath();ds.moveTo(Math.cos(a)*30,Math.sin(a)*30);ds.lineTo(Math.cos(a+.04)*89,Math.sin(a+.04)*89);ds.stroke();}
+ const blurMap=new THREE.CanvasTexture(discCanvas);blurMap.colorSpace=THREE.SRGBColorSpace;
+ const propDisc=mesh(new THREE.PlaneGeometry(2.6,2.6),new THREE.MeshBasicMaterial({map:blurMap,transparent:true,depthWrite:false,side:THREE.DoubleSide}));
+ propDisc.position.copy(prop.position);
  // Original cockpit framing and analog gauge deck used in the pilot camera.
  const cockpit=new THREE.Group();root.add(cockpit);
  const dash=mesh(new THREE.BoxGeometry(1.13,.24,.26),dark,cockpit);dash.position.set(0,.37,-1.32);
@@ -106,5 +114,7 @@ export function createAircraft() {
  const cockpitOnly=new THREE.Group();cockpit.add(cockpitOnly);
  const nose=mesh(new THREE.SphereGeometry(1,20,12),pearl,cockpitOnly);nose.position.set(0,-.01,-2.65);nose.scale.set(.62,.56,1.40);
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}
- return {root,prop,cockpit,needles,setInterior(on:boolean){for(const child of root.children)child.visible=!on||child===cockpit||child===prop;cockpit.visible=on;}};
+ let previousInside:boolean|undefined;
+ return {root,prop,cockpit,needles,setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ setProp(power:number){const blur=power>.15;prop.visible=!blur;propDisc.visible=blur;propDisc.rotation.z=prop.rotation.z*.32;}};
 }

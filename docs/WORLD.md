@@ -51,3 +51,34 @@ every scene photorealistic. The next visual pass adds higher-resolution
 terrain tiles, legally reusable regional aerial photography, detailed
 materials for sandstone and tidal flats, and surveyed or hand-modelled
 landmarks. Assess these at both cruise altitude and approach altitude.
+
+### Near-detail scenes
+
+The regional texture sits underneath **245** 640 × 640 WebP tiles with
+roughly 9–10 m ground sampling. Tiles share a common island-wide grid,
+are individually checksummed, and load around the aircraft instead of
+all at once. Range-aware static hosts send a single tile's bytes; other
+hosts can serve the same bundle as a fallback. Run `build_detail.py` with
+the pinned colour cache to regenerate them. The source is still
+satellite imagery, not street-level photography.
+
+### Additional environment sources
+
+- Land cover is adapted from [ESA WorldCover 2021 v200](https://doi.org/10.5281/zenodo.7254221),
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Contains modified
+  Copernicus Sentinel data (2021), processed by the ESA WorldCover consortium.
+  Broad classification informs vegetation placement, not exact tree positions.
+- The photographic sky is [Kloofendal 48d Partly Cloudy (Pure Sky)](https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky)
+  by Greg Zaal and Jarod Guest, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+  It's a lighting reference, not satellite weather or a photograph of PEI.
+
+### Confederation Bridge
+
+The visible bridge follows the [National Road Network](https://open.canada.ca/data/en/dataset/3d282116-e556-400c-9306-ca1a3cada77f)
+linework in the PEI 22_1 and New Brunswick 15_0 GeoPackages, joined at their
+shared endpoint. Mesh dimensions follow published design references from
+the [operator](https://www.confederationbridge.com/about-us/),
+[VINCI](https://www.vinci-construction-projets.com/en/realisations/confederation-bridge/)
+and [Transport Canada](https://tc.canada.ca/en/marine-transportation/publications/tp-13681-guidelines-navigation-under-confederation-bridge-04-2025).
+The deck profile and pier details are visual approximations, not a
+structural or navigation model.

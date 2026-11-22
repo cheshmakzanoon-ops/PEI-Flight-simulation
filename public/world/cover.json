@@ -1,0 +1,32 @@
+{
+  "width": 4096,
+  "height": 2720,
+  "bounds": [
+    -64.47,
+    45.94,
+    -61.93,
+    47.1
+  ],
+  "encoding": "Interleaved Uint8 RG. R = ESA WorldCover class (2021), G = approximate signed coast distance in 2 m units, biased by 128; positive is land. North row first.",
+  "treeClass": 10,
+  "nominalPixelMetres": 47,
+  "file": "cover.bin.gz",
+  "compressedSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+  "sourceSurveyYear": 2021,
+  "woodlandPixels": 1196576,
+  "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium. Shoreline: Statistics Canada, 2021 Census Cartographic Boundary Files, used under the Open Government Licence – Canada.",
+  "worldCoverLicense": "https://creativecommons.org/licenses/by/4.0/",
+  "worldCoverCitation": "Zanaga et al. (2022), ESA WorldCover 10 m 2021 v200, https://doi.org/10.5281/zenodo.7254221",
+  "sources": [
+    {
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N45W066_Map.tif",
+      "sha256": "a9ecfc04b044d75d68f5144af3240fa32792c3dcc77e7b429595935c610a80b0"
+    },
+    {
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N45W063_Map.tif",
+      "sha256": "54369b33af4459a37ad7eb6529da8fdf0bf7f102337ac760a200076f236cf941"
+    }
+  ],
+  "shorelineSourceSha256": "b13b932509ccb4828eba54ed2753e3ad487d10c4ac9dd54f6ff188f0edfc1510",
+  "limitations": "Source land cover is 10 m classification. Bundled classes have been resampled to ~47 m. Canopy positions, species mix and field microtextures are synthesized, not a tree survey; tide is not simulated."
+}

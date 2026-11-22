@@ -103,3 +103,22 @@ for(const [key,tile] of Object.entries(detail.tiles)){
 }
 assert.deepEqual(ends,detail.packs.map(p=>p.bytes));
 console.log(`Near-detail imagery OK: ${Object.keys(detail.tiles).length} full-raster land tiles, ${detail.landCoverage*100}% covered land.`);
+
+const cover=json('cover.json');
+assert.deepEqual(cover.bounds,terrain.bounds);
+const coverZip=asset(cover.file);
+assert.equal(hash(coverZip),cover.compressedSha256);
+const coverRaw=gunzipSync(coverZip);
+assert.equal(coverRaw.length,cover.width*cover.height*2);
+let woodland=0,water=0;
+for(let p=0;p<coverRaw.length;p+=2){
+  if(coverRaw[p]===cover.treeClass)woodland++;
+  if(coverRaw[p+1]<128)water++;
+}
+assert.equal(woodland,cover.woodlandPixels);
+assert.ok(water>cover.width*cover.height/2);
+const sky=json('sky.sources.json');
+const skyImage=asset(sky.asset);
+assert.equal(skyImage.toString('ascii',8,12),'WEBP');
+assert.equal(hash(skyImage),sky.fileSha256);
+console.log(`Land classes and coast distance OK: ${woodland} tree-cover samples; CC0 sky matched manifest hash.`);

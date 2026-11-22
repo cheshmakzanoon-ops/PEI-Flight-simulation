@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {unpackGzip} from '../sim/compression.ts';
+import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import type { Terrain } from '../sim/terrain.ts';
 
@@ -89,7 +90,8 @@ export class Roads {
       const isBridge=!!(flags&16), color=isBridge?bridge:(flags&8)?tarmac:gravel;
       for(let k=0;k<n;k++){
         const p=k/n,q=(k+1)/n,x=x0+p*dx,z=z0+p*dz,u=x0+q*dx,v=z0+q*dz;
-        if(!isBridge&&!this.terrain.isLand((x+u)/2,(z+v)/2))continue;
+        const mx=(x+u)/2,mz=(z+v)/2;
+        if(isBridge ? isConfederationBridge(mx,mz) : !this.terrain.isLand(mx,mz))continue;
         const lift=isBridge?3:0.55;
         const py=this.terrain.meshElevation(x,z)+lift, qy=this.terrain.meshElevation(u,v)+lift;
         const lx=x-tile.x,lz=z-tile.z,lu=u-tile.x,lv=v-tile.z;
