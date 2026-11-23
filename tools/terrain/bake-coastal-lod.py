@@ -16,11 +16,10 @@ import struct
 ROOT=Path(__file__).resolve().parents[2]
 TOL_CM=9
 BLOCK=16
-# At depth 8 the candidate is a single fine half-cell. Permit one final split
-# at its centre: alternating right triangles can oppose the reference diagonal.
-DEPTH=9
 
-def plan(values,nx,nz):
+def plan(values,nx,nz,block=BLOCK,boundary_step=1):
+    depth_limit=2*(block.bit_length()-1)+1
+    if block!=1<<(block.bit_length()-1):raise ValueError("Terrain blocks must be powers of two")
     width=2*nx-1
     idx=lambda x,z:z*width+x
     def height(p):
@@ -30,15 +29,15 @@ def plan(values,nx,nz):
             return .5*(values[k+nx]+values[k+1])  # actual NE–SW reference edge
         assert x%2==z%2==0
         return values[k]
-    levels=[[] for _ in range(DEPTH)]
+    levels=[[] for _ in range(depth_limit)]
     def inspect(a,b,c,depth):
         m=(a+b)//2
-        if depth==DEPTH:
-            return
+        if depth==depth_limit:
+            return False
         ax,az,bx,bz,cx,cz=a%width,a//width,b%width,b//width,c%width,c//width
         ha,hb,hc=height(a),height(b),height(c)
         max_error=abs(height(m)-.5*(ha+hb))
-        if depth<DEPTH-1:
+        if depth<depth_limit-1:
             sx,sz,tx,tz=bx-ax,bz-az,cx-ax,cz-az
             det=sx*tz-sz*tx
             for zz in range(min(az,bz,cz),max(az,bz,cz)+1):
@@ -49,12 +48,13 @@ def plan(values,nx,nz):
                     if min(u,v,1-u-v)>=0:
                         max_error=max(max_error,abs(height(idx(xx,zz))-ha-u*(hb-ha)-v*(hc-ha)))
         x,z=m%width,m//width
-        boundary=x in (0,2*nx-2) or z in (0,2*nz-2)
+        external=x in (0,2*nx-2) or z in (0,2*nz-2)
+        boundary=external and max(abs(ax-bx),abs(az-bz))>2*boundary_step
         levels[depth].append((a,b,c,m,(c+a)//2,(b+c)//2,max_error,boundary))
         inspect(c,a,m,depth+1);inspect(b,c,m,depth+1)
-    for z in range(0,nz-1,BLOCK):
-        for x in range(0,nx-1,BLOCK):
-            nw,ne,sw,se=(idx(2*(x+dx),2*(z+dz)) for dx,dz in ((0,0),(BLOCK,0),(0,BLOCK),(BLOCK,BLOCK)))
+    for z in range(0,nz-1,block):
+        for x in range(0,nx-1,block):
+            nw,ne,sw,se=(idx(2*(x+dx),2*(z+dz)) for dx,dz in ((0,0),(block,0),(0,block),(block,block)))
             inspect(sw,ne,nw,0);inspect(ne,sw,se,0)
     splits=set()
     for level in reversed(levels):
@@ -67,7 +67,7 @@ def plan(values,nx,nz):
     def emit(a,b,c,depth):
         nonlocal triangles
         m=(a+b)//2
-        if depth<DEPTH:
+        if depth<depth_limit:
             if m not in decided:
                 bits.append(int(m in splits))
                 decided.add(m)

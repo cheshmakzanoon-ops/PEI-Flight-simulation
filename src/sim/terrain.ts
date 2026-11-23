@@ -6,7 +6,7 @@ export interface TerrainSpec { width: number; height: number; bounds: [number,nu
 export class Terrain {
   readonly left: number; readonly right: number; readonly top: number; readonly bottom: number;
   readonly spec: TerrainSpec; readonly samples: Int16Array;
-  readonly coastalGrids: readonly CoastalGrid[]; readonly coastalSurveys: readonly string[];
+  readonly coastalGrids: readonly CoastalGrid[]; readonly coastalSurveys: readonly string[]; readonly coastalRefinements: readonly string[];
   constructor(spec: TerrainSpec, samples: Int16Array, surveys: readonly CoastalSource[] = []) {
     this.spec=spec;this.samples=samples;
     const {width:w,height:h,bounds:[W,S,E,N]}=spec;
@@ -14,6 +14,7 @@ export class Terrain {
     this.left=project(W,N).x; this.right=project(E,S).x; this.top=project(W,N).z; this.bottom=project(E,S).z;
     this.coastalGrids=surveys.map(s=>new CoastalGrid(this,s,(x,z)=>this.atlasElevation(x,z)));
     this.coastalSurveys=this.coastalGrids.map(g=>g.spec.id);
+    this.coastalRefinements=this.coastalGrids.flatMap(g=>g.cliff?[g.cliff.id]:[]);
   }
   uv(x:number,z:number){ return [(x-this.left)/(this.right-this.left),(z-this.top)/(this.bottom-this.top)] as const; }
   index(x:number,z:number){

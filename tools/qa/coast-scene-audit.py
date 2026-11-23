@@ -50,8 +50,12 @@ def source_fingerprint(repo):
         'public/world/cover.json','public/world/cover.bin.gz', 'data/coastal-elevation/index.json',
         'src/render/coastal-patch.ts','src/render/coastal-normals.ts','src/render/coastal-lod.ts',
         'src/render/coastal-lod.generated.ts','src/sim/coastal-terrain.ts','src/sim/coastal-surveys.generated.ts')]
+    files += sorted((repo/'src/render').glob('coastal*.ts'))
+    files += sorted((repo/'src/sim').glob('coastal*.ts'))
+    files += sorted((repo/'src/sim').glob('*cliff*.ts'))
+    files += sorted((repo/'src/render').glob('*cliff*.ts'))
     files += sorted((repo/'data/coastal-elevation').glob('*.gz'))
-    files += sorted((repo/'public/world/coastal').glob('**/*.gz'))
+    files += sorted(p for p in (repo/'public/world/coastal').glob('**/*') if p.is_file())
     return {p.relative_to(repo).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.is_file()}
 
 
@@ -89,7 +93,12 @@ def run(args):
                     browser=pw.chromium.launch(executable_path=args.chromium,args=FLAGS)
                     try:
                         page=browser.new_page()
-                        errors=[]
+                        errors=[];substitution=[]
+                        if args.refinement_fallback:
+                            def corrupt_refinement(route):
+                                substitution.append(route.request.url.rsplit('/',1)[-1])
+                                route.fulfill(status=200,body='intentionally invalid cliff response')
+                            page.route('**/world/coastal/v2/east-point-cliff.i16.gz',corrupt_refinement)
                         page.on('pageerror',lambda e:errors.append(str(e)))
                         page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
                         page.goto(base,wait_until='domcontentloaded')
@@ -100,6 +109,10 @@ def run(args):
                         if source_fingerprint(repo)!=digests:
                             raise RuntimeError('Candidate changed during the run: repeat against a stable checkout.')
                         report['sourceSHA256']=digests
+                        if args.refinement_fallback:
+                            if substitution!=['east-point-cliff.i16.gz']:
+                                raise RuntimeError(f'Expected exactly one substitute optional asset: {substitution}')
+                            report['browserSubstitutions']=substitution
                         report['chromium']=browser.version
                         return report
                     finally: browser.close()
@@ -107,6 +120,49 @@ def run(args):
                 proc.terminate()
                 try: proc.wait(timeout=5)
                 except subprocess.TimeoutExpired: proc.kill();proc.wait()
+
+
+def refinement_gates(candidate, baseline):
+    failures=[]
+    old={s['id']:s for s in baseline['sites']};new={s['id']:s for s in candidate['sites']}
+    def require(ok,msg):
+        if not ok: failures.append(msg)
+    require(candidate['settings']['stride']==baseline['settings']['stride']==1,'refinement requires the full native census')
+    require(set(old)==set(new)=={'east-point','west-point'},'both survey AOIs are required')
+    if failures:return failures
+    east,prev=new['east-point'],old['east-point']
+    c,b=east['coastalError'],prev['coastalError']
+    require(east['counts']['source']==65536 and east['counts']['coverLand']==43700,'East source or masked scope changed')
+    require(c['maximumPoint']['errorM']<=1.05 and not c['aboveOnePoint25M'],'East absolute error >1.05 m')
+    require(c['aboveOneM']<=5 and c['aboveOneM']<=.03*b['aboveOneM'],'unresolved >1 m East outliers')
+    require(c['aboveThreeQuarterM']<=20 and c['aboveThreeQuarterM']<=.05*b['aboveThreeQuarterM'],'unresolved >.75 m East outliers')
+    f=lambda a,k,q:a['groups'][k]['mesh'][q]
+    p=lambda a,k:f(a,k,'p90')
+    require(p(east,'allCoverLand')<=.84*p(prev,'allCoverLand'),'East whole window p90 improvement <16%')
+    require(f(east,'allCoverLand','p95')<=.65*f(prev,'allCoverLand','p95'),'East whole window p95 improvement <35%')
+    require(p(east,'offVertexOuter24m')<=p(prev,'offVertexOuter24m')+.035,'outer survey ring error regressed by >.035 m')
+    require(east['allCoverLandContactDiff']['max']<=.001,'refined mesh/simulation mismatch >1 mm')
+    for site in new:
+        s,prior=new[site],old[site]
+        require(s['oldMaskDigest']==prior['oldMaskDigest'],f'{site}: unexpected shore mask changes')
+        for a,d in zip(s['lod'],prior['lod'],strict=True):
+            if not a['offsetM']:
+                continue
+            if site=='west-point':
+                require(a['displayedDigestMillimetres']==d['displayedDigestMillimetres'],f"{site}: changed distant mesh at {a['offsetM']} m")
+                require(a['meshes']==d['meshes'],f"{site}: distant triangle budget changed at {a['offsetM']} m")
+            else:
+                limit=28000 if a['offsetM']==22000 else 34000
+                triangle_count=sum(m['totalTriangles'] for m in a['meshes'])
+                require(triangle_count<=limit,f"East distance patch exceeded {limit:,} triangles at {a['offsetM']} m")
+                require(a['screenDiffPxAt1080']['max']<=.025,f"East cross-LOD geometry moved by >0.025 px at {a['offsetM']} m")
+                require(a['maxChangeInDisplayedLandM']<=.12,f"East cross-LOD geometry differs by >0.12 m at {a['offsetM']} m")
+    west,west_before=new['west-point'],old['west-point']
+    require(west['meshAndContactDigestMillimetres']==west_before['meshAndContactDigestMillimetres'],'West control mesh/contact changed')
+    triangles=lambda s:sum(m['totalTriangles'] for m in s['meshes'])
+    require(0<triangles(east)-triangles(prev)<=19000,'East near extra triangle budget must be >0 and <=19,000')
+    require(east['nearEdges']['maxEdgeJumpM']<=.001,'fine edge discontinuity >1 mm')
+    return failures
 
 
 def gates(candidate, baseline):
@@ -153,12 +209,22 @@ if __name__=='__main__':
     p.add_argument('--stride',type=int,default=4,choices=[1,2,4,8])
     p.add_argument('--deps',type=Path)
     p.add_argument('--gate-against',type=Path,help='verify against a report generated with identical sampling')
+    check_mode=p.add_mutually_exclusive_group()
+    check_mode.add_argument('--refinement-against',type=Path,help='require targeted East improvement versus an R9 coastal geometry report')
+    check_mode.add_argument('--refinement-fallback',type=Path,help='serve a corrupt optional response and verify identical R9 geometry')
     args=p.parse_args();report=run(args);path=args.out.resolve()
     path.parent.mkdir(parents=True,exist_ok=True)
     if args.gate_against:
         baseline=json.loads(args.gate_against.read_text())
         if baseline['settings'] != report['settings']: raise SystemExit('Sampling settings differ from baseline')
         report['failedGates']=gates(report,baseline)
+    if args.refinement_against:
+        report.setdefault('failedGates',[]).extend(refinement_gates(report,json.loads(args.refinement_against.read_text())))
+    if args.refinement_fallback:
+        replay=json.loads(args.refinement_fallback.read_text())
+        for field in ('settings','cavendishControl','sites'):
+            if replay.get(field)!=report.get(field):
+                report.setdefault('failedGates',[]).append(f'Fallback did not reproduce baseline {field}.')
     path.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
     for site in report['sites']:
         g=site['groups'];edge=site['nearEdges']

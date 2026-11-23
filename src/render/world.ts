@@ -248,7 +248,10 @@ export class World {
   const site=this.terrain.coastalGrids.find(g=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d);
   if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
-  m.userData.subdiv=n;if(site)m.userData.coastalSurvey=site.spec.id;return m;
+  m.userData.subdiv=n;
+  if(site)m.userData.coastalSurvey=site.spec.id;
+  if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
+  return m;
  }
  groundHeight(x:number,z:number,land?:boolean){
   // Both shaders use the continuous Cover mask. A missing province DEM cell

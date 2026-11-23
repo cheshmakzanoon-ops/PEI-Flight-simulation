@@ -1,9 +1,11 @@
 import { COASTAL_SPECS } from './coastal-surveys.generated.ts';
-import { unpackGzip } from './compression.ts';
+import {readCoastalPack} from './coastal-packs.ts';
+import {CLIFF_SPLIT,decodeEastCliff,EastCliff,type CliffSource} from './east-cliff.ts';
+import {EAST_CLIFF} from './east-cliff.generated.ts';
 
 export const SURVEY_LOD=112, WORLD_COLS=32, WORLD_ROWS=22, GROUND_LIFT=.12;
 export type CoastalSpec=(typeof COASTAL_SPECS)[number];
-export type CoastalSource={spec:CoastalSpec;samples:Int16Array};
+export type CoastalSource={spec:CoastalSpec;samples:Int16Array;cliff?:CliffSource};
 type Extent={left:number;right:number;top:number;bottom:number};
 type Sampler=(x:number,z:number)=>number;
 const clamp01=(a:number)=>Math.max(0,Math.min(1,a));
@@ -16,6 +18,7 @@ export class CoastalGrid {
  readonly spec:CoastalSpec;readonly nx:number;readonly nz:number;readonly x0:number;readonly z0:number;
  readonly x1:number;readonly z1:number;readonly stepX:number;readonly stepZ:number;readonly heights:Float32Array;
  private readonly coarseX:number;private readonly coarseZ:number;private readonly tileX0:number;private readonly tileZ0:number;
+ readonly cliff:EastCliff|undefined;
  private readonly atlas:Sampler;
  constructor(ext:Extent,source:CoastalSource,atlas:Sampler){
   this.atlas=atlas;
@@ -33,6 +36,7 @@ export class CoastalGrid {
   // A centimetre-quantized value can differ from the inherited edge; share its unsnapped height.
   for(let j=0;j<this.nz;j++)for(let i=0;i<this.nx;i++)if(i===0||j===0||i===this.nx-1||j===this.nz-1)
    this.heights[j*this.nx+i]=this.originalFacet(this.x0+i*this.stepX,this.z0+j*this.stepZ);
+  if(s.id==='east-point'&&source.cliff)this.cliff=new EastCliff(this.nx-1,this.nz-1,source.cliff,(i,j)=>this.referenceHeight(i,j));
  }
  indexHeight(i:number,j:number){return this.heights[j*this.nx+i];}
  inside(x:number,z:number){return x>=this.x0&&x<=this.x1&&z>=this.z0&&z<=this.z1;}
@@ -43,14 +47,21 @@ export class CoastalGrid {
   const at=(a:number,b:number)=>this.atlas(this.tileX0+(i+a)*this.coarseX,this.tileZ0+(j+b)*this.coarseZ);
   return facet(fx-i,fz-j,at(0,0),at(1,0),at(0,1),at(1,1));
  }
- /** Interpolates the rendered NE–SW triangles, not the four samples bilinearly. */
+ /** Atlas-relative coordinates use the published ~3.3 m base grid, in both LODs. */
+ localHeight(a:number,b:number){return this.relativeHeight(a,b,true);}
+ referenceHeight(a:number,b:number){return this.relativeHeight(a,b,false);}
+ private relativeHeight(a:number,b:number,refined:boolean){
+  a=Math.max(0,Math.min(this.nx-1,a));b=Math.max(0,Math.min(this.nz-1,b));
+  const i=Math.min(this.nx-2,Math.floor(a)),j=Math.min(this.nz-2,Math.floor(b)),u=a-i,v=b-j;
+  if(refined){
+   const fine=this.cliff?.samples(i,j,u*CLIFF_SPLIT,v*CLIFF_SPLIT);if(fine!==undefined)return fine;
+  }
+  return facet(u,v,this.indexHeight(i,j),this.indexHeight(i+1,j),this.indexHeight(i,j+1),this.indexHeight(i+1,j+1));
+ }
+ /** Exact near mesh triangle, regardless of optional asset or camera history. */
  height(x:number,z:number):number|undefined{
   if(!this.near(x,z))return;
-  if(this.inside(x,z)){
-   const a=(x-this.x0)/this.stepX,b=(z-this.z0)/this.stepZ;
-   const i=Math.max(0,Math.min(this.nx-2,Math.floor(a))),j=Math.max(0,Math.min(this.nz-2,Math.floor(b)));
-   return facet(a-i,b-j,this.indexHeight(i,j),this.indexHeight(i+1,j),this.indexHeight(i,j+1),this.indexHeight(i+1,j+1));
-  }
+  if(this.inside(x,z))return this.localHeight((x-this.x0)/this.stepX,(z-this.z0)/this.stepZ);
   // One existing cell of exact parent geometry; only collision needs a second
   // cell to return continuously to the province's usual bilinear gameplay height.
   const distance=Math.max(this.x0-x,x-this.x1,0)/this.coarseX;
@@ -59,28 +70,19 @@ export class CoastalGrid {
   return this.originalFacet(x,z)*(1-back)+(back?this.atlas(x,z)*back:0);
  }
 }
-const crcTable=Uint32Array.from({length:256},(_,n)=>{let c=n;for(let k=0;k<8;k++)c=c&1?0xedb88320^(c>>>1):c>>>1;return c>>>0;});
-function crc32(b:Uint8Array){let c=0xffffffff;for(const x of b)c=crcTable[(c^x)&255]^(c>>>8);return ((~c)>>>0).toString(16).padStart(8,'0');}
-
-/** Failed, missing, corrupt or slow sources are optional: a flight keeps the province base surface for that site. */
+/** Each optional pack can fail without affecting the other site or the base province. */
 export async function loadCoastalSurveys(base:string,fetcher:typeof fetch=fetch,timeoutMs=1600):Promise<CoastalSource[]>{
- const sources=await Promise.all(COASTAL_SPECS.map(async spec=>{
-  const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
-  const read=async():Promise<CoastalSource|undefined>=>{
-   const r=await fetcher(base+'coastal/v1/'+spec.id+'.i16.gz',{signal:controller.signal});if(!r.ok)return;
-   const buffer=await unpackGzip(await r.arrayBuffer()), bytes=new Uint8Array(buffer);
-   if(bytes.length!==2*(spec.cellsX*spec.sub+1)*(spec.cellsZ*spec.sub+1)||crc32(bytes)!==spec.crc32)return;
-   if(globalThis.crypto?.subtle){
-    const hash=new Uint8Array(await crypto.subtle.digest('SHA-256',buffer));
-    if(Array.from(hash,b=>b.toString(16).padStart(2,'0')).join('')!==spec.sha256)return;
-   }
-   const data=new DataView(buffer),samples=new Int16Array(bytes.length/2);
-   for(let i=0;i<samples.length;i++)samples[i]=data.getInt16(i*2,true);
-   return {spec,samples};
-  };
-  try{return await Promise.race([read(),new Promise<undefined>(resolve=>{timer=setTimeout(()=>{controller.abort();resolve(undefined);},timeoutMs);})]);}
-  catch{return undefined;}
-  finally{if(timer!==undefined)clearTimeout(timer);}
+ const east=COASTAL_SPECS[0];
+ const refinement=readCoastalPack(base+'coastal/v2/east-point-cliff.i16.gz',fetcher,timeoutMs,EAST_CLIFF,
+    b=>decodeEastCliff(b,east.cellsX*east.sub,east.cellsZ*east.sub));
+ const installed=await Promise.all(COASTAL_SPECS.map(async (spec):Promise<CoastalSource|undefined>=>{
+  const decodedBytes=2*(spec.cellsX*spec.sub+1)*(spec.cellsZ*spec.sub+1);
+  const samples=await readCoastalPack(base+'coastal/v1/'+spec.id+'.i16.gz',fetcher,timeoutMs,{...spec,decodedBytes},buffer=>{
+   const data=new DataView(buffer),planes=new Int16Array(buffer.byteLength/2);
+   for(let i=0;i<planes.length;i++)planes[i]=data.getInt16(i*2,true);
+   return planes;
+  });
+  if(samples)return {spec,samples,cliff:spec.sha256===EAST_CLIFF.baseSha256?await refinement:undefined};
  }));
- return sources.filter((v):v is CoastalSource=>v!==undefined);
+ return installed.filter((v):v is CoastalSource=>v!==undefined);
 }

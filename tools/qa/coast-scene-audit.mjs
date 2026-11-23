@@ -21,7 +21,7 @@ function indexGround(scene,bounds){
     const verts=Array.from({length:arr.count},(_,i)=>new THREE.Vector3().fromBufferAttribute(arr,i).applyMatrix4(m.matrixWorld));
     const n=idx?.length??arr.count;const start=Math.max(0,g.drawRange.start),end=Math.min(n,start+g.drawRange.count);
     for(let i=start;i+2<end;i+=3)index.add(verts[idx?idx[i]:i],verts[idx?idx[i+1]:i+1],verts[idx?idx[i+2]:i+2]);
-    meshes.push(m);labels.push({segments:m.userData.subdiv,detail:m.userData.coastalSurvey??null,totalTriangles:(end-start)/3});
+    meshes.push(m);labels.push({segments:m.userData.subdiv,detail:m.userData.coastalSurvey??null,totalTriangles:(end-start)/3,...(m.userData.coastalRefinement?{refinement:m.userData.coastalRefinement}:{})});
   });
   if(!meshes.length)throw new Error('No visible terrain meshes in the survey box.');
   return {index,meshes,labels};
@@ -131,15 +131,19 @@ async function testWorld(){
   const move=(x,z)=>world.update(new THREE.Vector3(x,80,z),++clock);
   const out=[];
   for(const site of sites){
-    const points=site.points.map(([lon,lat,h,col,row])=>({...project(lon,lat),h,col,row}));
+    const points=site.points.map(([lon,lat,h,col,row])=>({...project(lon,lat),lon,lat,h,col,row}));
     const center=project(...site.reference),bounds=pointBounds(points,110);
     move(center.x,center.z);const {index,meshes,labels}=indexGround(scene,bounds);
     const groups={},rayDelta=[],wetHeight=[],allContactDiff=[],samples=[],allContacts=[];
+    const coastalError={aboveHalfM:0,aboveThreeQuarterM:0,aboveOneM:0,aboveOnePoint25M:0,maximumPoint:null};
+    const transects=new Map();
+    const displayedAndContact=[],allMask=[];
     const counts={source:0,coverLand:0,coarseLand:0,maskDisagree:0,wrongLand:0,negativeWet:0,negativeLand:0,
       nonVertexCoverLand:0,nearVertexCoverLand:0,holes:0,doubleCoverage:0,nonFinite:0};
     for(let i=0;i<points.length;i++){
-      const {x,z,h,col,row}=points[i],hits=index.hits(x,z);
+      const {x,z,lon,lat,h,col,row}=points[i],hits=index.hits(x,z);
       const surf=world.surface(x,z),shore=cover.distance(terrain,x,z),land=shore>=0,coarse=terrain.isLand(x,z);
+      allMask.push(+land);
       counts.source++;counts.coverLand+=+land;counts.coarseLand+=+coarse;counts.maskDisagree+=+(land!==coarse);
       counts.wrongLand+=+(land!==surf.land);
       counts.negativeWet+=+(h<0&&!land);counts.negativeLand+=+(h<0&&land);
@@ -150,11 +154,24 @@ async function testWorld(){
       if(!Number.isFinite(surf.height)||!Number.isFinite(y)){counts.nonFinite++;continue;}
       // True Three.Raycaster check exercises runtime material side, indices, transforms and drawn range.
       if(i%263===17){const actual=realRay(meshes,x,z);rayDelta.push(actual===undefined?1e6:Math.abs(actual-y));}
+      displayedAndContact.push(Math.round(y*1000),Math.round(surf.height*1000),+surf.land);
       allContacts.push(surf.height);
+      if(site.id==='east-point'&&[241,245].includes(row)&&col>=174&&col<=190){
+        const section=transects.get(row)??[];
+        section.push({col,land,sourceM:h,renderedM:+(y-DISPLAY_LIFT).toFixed(5),
+          contactM:+(surf.height-DISPLAY_LIFT).toFixed(5),absoluteErrorM:+Math.abs(y-DISPLAY_LIFT-h).toFixed(5)});
+        transects.set(row,section);
+      }
       if(land){
         samples.push(y);
         const error=Math.abs(y-DISPLAY_LIFT-h),contactError=Math.abs(surf.height-DISPLAY_LIFT-h),inter=Math.abs(surf.height-y);
         allContactDiff.push(inter);
+        coastalError.aboveHalfM+=+(error>.5);
+        coastalError.aboveThreeQuarterM+=+(error>.75);
+        coastalError.aboveOneM+=+(error>1);
+        coastalError.aboveOnePoint25M+=+(error>1.25);
+        if(!coastalError.maximumPoint||error>coastalError.maximumPoint.errorM)
+          coastalError.maximumPoint={col,row,lon,lat,errorM:error,sourceM:h,renderedM:y-DISPLAY_LIFT,coverDistanceM:shore,coarseLand:coarse};
         const add=label=>addGroup(groups,label,error,contactError,inter);
         add('allCoverLand');if(coarse)add('bothMasksLand');else add('coverOnlyLand');
         if(nearestVertexM(hits,x,z)<.02){counts.nearVertexCoverLand++;continue;}
@@ -184,11 +201,17 @@ async function testWorld(){
           display.push(visible);
         }
       }
-      lod.push({offsetM:offset,meshes:state.labels,contactDigest:await sha256(contact),screenDiffPxAt1080:describe(screen),
+      lod.push({offsetM:offset,meshes:state.labels,contactDigest:await sha256(contact),screenDiffPxAt1080:describe(screen),displayedDigestMillimetres:await sha256(display.map(h=>Math.round(h*1000))),
         maxChangeInDisplayedLandM:Math.max(...display.map((v,i)=>Math.abs(v-samples[i]))),
         ...(offset===0?{}:{edges:auditEdges(state.index)})});
     }
-    out.push({id:site.id,meshes:labels,counts,contactHandoff:contactHandoff(terrain,world,site.id),shoreWall:curtainGaps(scene,index,terrain),
+    const visibleTransects=Object.fromEntries([...transects].map(([row,pts])=>{
+      const gradientDifferences=[];
+      for(let i=1;i<pts.length;i++)if(pts[i].col===pts[i-1].col+1&&pts[i].land&&pts[i-1].land)
+        gradientDifferences.push(Math.abs((pts[i].renderedM-pts[i-1].renderedM)-(pts[i].sourceM-pts[i-1].sourceM)));
+      return [row,{points:pts,gradientErrors:describe(gradientDifferences)}];
+    }));
+    out.push({id:site.id,meshes:labels,counts,coastalError,visibleTransects,meshAndContactDigestMillimetres:await sha256(displayedAndContact),oldMaskDigest:await sha256(allMask),contactHandoff:contactHandoff(terrain,world,site.id),shoreWall:curtainGaps(scene,index,terrain),
       groups:finishGroups(groups),allCoverLandContactDiff:describe(allContactDiff),waterContactOffsetFromPlane:describe(wetHeight),
       threeRayVsIndex:describe(rayDelta),nearEdges:auditEdges(index),initialContactDigest:await sha256(allContacts),lod});
   }

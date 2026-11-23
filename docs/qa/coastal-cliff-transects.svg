@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="429" viewBox="0 0 1000 429" role="img">
+<title>East Point cliff terrain profiles: native data, previous rendering, and sparse-refined rendering</title>
+<desc>Two native raster rows show that the refined mesh reproduces the step down the cliff more closely than the previous model. Values are metres above the CGVD2013 datum.</desc>
+<style>text{fill:#dbe8f0;font:16px system-ui,sans-serif}.muted{fill:#9eb4c7;font-size:13px}.title{font-size:22px;font-weight:650}</style>
+<rect width="1000" height="429" rx="11" fill="#0d1924"/>
+<text x="72" y="33" class="title">East Point cliff · 1 m survey cross-sections</text>
+<text class="muted" x="27" y="235" text-anchor="middle" transform="rotate(-90 27 235)">Height above vertical datum (m)</text>
+<text x="500" y="395" text-anchor="middle" class="muted">Native column (1 m eastward per step)</text>
+<text x="500" y="416" text-anchor="middle" class="muted">Game-mesh heights from in-browser Three.js triangles; all samples share CGVD2013.</text>
+<path d="M72 124H465V341H72Z" fill="#101f2c" stroke="#344656"/>
+<text x="72" y="104">Native raster row 241</text>
+<path d="M72 341H465" stroke="#2b4051"/><text x="59" y="346" text-anchor="end" class="muted">0</text>
+<path d="M72 271H465" stroke="#2b4051"/><text x="59" y="276" text-anchor="end" class="muted">5</text>
+<path d="M72 201H465" stroke="#2b4051"/><text x="59" y="206" text-anchor="end" class="muted">10</text>
+<path d="M72 131H465" stroke="#2b4051"/><text x="59" y="136" text-anchor="end" class="muted">15</text>
+<text x="72.00" y="366" text-anchor="middle" class="muted">174</text>
+<text x="170.25" y="366" text-anchor="middle" class="muted">178</text>
+<text x="268.50" y="366" text-anchor="middle" class="muted">182</text>
+<text x="366.75" y="366" text-anchor="middle" class="muted">186</text>
+<text x="465.00" y="366" text-anchor="middle" class="muted">190</text>
+<polyline points="72.00,172.72 96.56,173.56 121.12,174.26 145.69,173.98 170.25,172.86 194.81,172.72 219.38,173.98 243.94,180.28 268.50,258.68 293.06,305.30 317.62,320.84 342.19,325.74 366.75,330.08 391.31,331.62 415.88,334.14 440.44,335.26 465.00,338.06" stroke="#dbe8f0" stroke-width="3" stroke-dasharray="5 4" fill="none"/>
+<polyline points="72.00,172.78 96.56,172.78 121.12,172.82 145.69,172.94 170.25,172.81 194.81,189.72 219.38,212.00 243.94,237.02 268.50,261.95 293.06,273.98 317.62,285.19 342.19,302.39 366.75,326.96 391.31,331.94 415.88,333.84 440.44,335.88 465.00,338.52" stroke="#e4a764" stroke-width="2" stroke-dasharray="" fill="none"/>
+<polyline points="72.00,172.78 96.56,172.89 121.12,173.46 145.69,173.61 170.25,172.93 194.81,172.99 219.38,175.28 243.94,193.04 268.50,256.77 293.06,300.08 317.62,319.59 342.19,325.71 366.75,329.67 391.31,331.72 415.88,333.93 440.44,335.77 465.00,338.52" stroke="#62dfba" stroke-width="3" stroke-dasharray="" fill="none"/>
+<circle cx="243.94" cy="180.28" fill="#dbe8f0" r="4.5"/><path d="M243.94 175.28v-17h28" stroke="#dbe8f0" stroke-width="1.5" fill="none"/><text x="279.94" y="162.28" class="muted">Prior worst cell</text>
+<path d="M545 124H938V341H545Z" fill="#101f2c" stroke="#344656"/>
+<text x="545" y="104">Native raster row 245</text>
+<path d="M545 341H938" stroke="#2b4051"/><text x="532" y="346" text-anchor="end" class="muted">0</text>
+<path d="M545 271H938" stroke="#2b4051"/><text x="532" y="276" text-anchor="end" class="muted">5</text>
+<path d="M545 201H938" stroke="#2b4051"/><text x="532" y="206" text-anchor="end" class="muted">10</text>
+<path d="M545 131H938" stroke="#2b4051"/><text x="532" y="136" text-anchor="end" class="muted">15</text>
+<text x="545.00" y="366" text-anchor="middle" class="muted">174</text>
+<text x="643.25" y="366" text-anchor="middle" class="muted">178</text>
+<text x="741.50" y="366" text-anchor="middle" class="muted">182</text>
+<text x="839.75" y="366" text-anchor="middle" class="muted">186</text>
+<text x="938.00" y="366" text-anchor="middle" class="muted">190</text>
+<polyline points="545.00,169.92 569.56,171.04 594.12,171.88 618.69,172.58 643.25,172.44 667.81,170.62 692.38,169.22 716.94,168.66 741.50,168.94 766.06,176.78 790.62,196.66 815.19,245.80 839.75,292.70 864.31,327.28 888.88,331.34 913.44,334.98 938.00,338.76" stroke="#dbe8f0" stroke-width="3" stroke-dasharray="5 4" fill="none"/>
+<polyline points="545.00,169.20 569.56,170.48 594.12,171.51 618.69,171.65 643.25,171.24 667.81,170.52 692.38,169.60 716.94,180.48 741.50,194.11 766.06,210.55 790.62,231.54 815.19,257.06 839.75,283.02 864.31,303.90 888.88,324.77 913.44,334.38 938.00,337.16" stroke="#e4a764" stroke-width="2" stroke-dasharray="" fill="none"/>
+<polyline points="545.00,169.20 569.56,170.48 594.12,171.51 618.69,171.72 643.25,171.48 667.81,170.52 692.38,169.46 716.94,169.09 741.50,172.36 766.06,182.15 790.62,210.59 815.19,249.59 839.75,294.13 864.31,320.74 888.88,329.87 913.44,334.43 938.00,338.00" stroke="#62dfba" stroke-width="3" stroke-dasharray="" fill="none"/>
+<path d="M72 56h28" stroke="#dbe8f0" stroke-dasharray="5 4" stroke-width="3"/><text x="112" y="61">NRCan DTM</text>
+<path d="M301 56h28" stroke="#e4a764" stroke-dasharray="" stroke-width="2"/><text x="341" y="61">Prior game mesh</text>
+<path d="M546 56h28" stroke="#62dfba" stroke-dasharray="" stroke-width="3"/><text x="586" y="61">Refined game mesh</text>
+</svg>

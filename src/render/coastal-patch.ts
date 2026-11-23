@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import {CoastalGrid, GROUND_LIFT, SURVEY_LOD} from '../sim/coastal-terrain.ts';
+import {CoastalGrid, facet, GROUND_LIFT, SURVEY_LOD} from '../sim/coastal-terrain.ts';
+import {cliffLayout,CLIFF_UNITS} from './coastal-cliff-patch.ts';
 import {distantCoast} from './coastal-lod.ts';
 import {surveyNormals} from './coastal-normals.ts';
 import type {Terrain} from '../sim/terrain.ts';
@@ -11,23 +12,40 @@ import type {Terrain} from '../sim/terrain.ts';
  */
 export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:number;z:number;w:number;d:number},t:Terrain,grid:CoastalGrid){
  const origPos=g.getAttribute('position'),origUv=g.getAttribute('uv'),k0=origPos.count;
- const {nx,nz,spec:s}=grid,near=n===SURVEY_LOD,layout=near?undefined:distantCoast(grid);
- const count=layout?layout.points.length/2:nx*nz,positions=new Float32Array((k0+count)*3),uv=new Float32Array((k0+count)*2);
+ const {nx,nz,spec:s}=grid,near=n===SURVEY_LOD,cliff=grid.cliff?cliffLayout(grid,near):undefined;
+ const layout=near||cliff?undefined:distantCoast(grid);
+ const count=cliff?cliff.points.length/2:layout?layout.points.length/2:nx*nz,positions=new Float32Array((k0+count)*3),uv=new Float32Array((k0+count)*2);
  const lighting=surveyNormals(grid),normal=new Int16Array((k0+count)*3),weight=new Uint8Array(k0+count);
  positions.set(origPos.array);uv.set(origUv.array);for(let i=0;i<k0;i++)normal[i*3+1]=32767;
  const {x,z,w,d}=shape,cx=x+w/2,cz=z+d/2;
  const vtx=(i:number,j:number)=>k0+(layout?layout.edgeVertex(i,j):j*nx+i);
  for(let k=0;k<count;k++){
-  const i=layout?layout.points[k*2]/2:k%nx,j=layout?layout.points[k*2+1]/2:Math.floor(k/nx);
+  const i=cliff?cliff.points[k*2]/CLIFF_UNITS:layout?layout.points[k*2]/2:k%nx;
+  const j=cliff?cliff.points[k*2+1]/CLIFF_UNITS:layout?layout.points[k*2+1]/2:Math.floor(k/nx);
   const wx=grid.x0+i*grid.stepX,wz=grid.z0+j*grid.stepZ,v=k0+k,p=Math.floor(j)*nx+Math.floor(i);
   // A half-cell vertex lies on the baseline NE–SW diagonal. Interpolating
   // the two fine endpoint heights and normals never invents new survey relief.
   const center=i!==Math.floor(i),a=center?p+1:p,b=center?p+nx:p;
-  const py=(grid.heights[a]+grid.heights[b])*.5;
+  const py=cliff?grid.localHeight(i,j):(grid.heights[a]+grid.heights[b])*.5;
   positions[v*3]=wx-cx;positions[v*3+1]=py+GROUND_LIFT;positions[v*3+2]=wz-cz;
   const [u,vv]=t.uv(wx,wz);uv[v*2]=u;uv[v*2+1]=vv;
-  for(let c=0;c<3;c++)normal[v*3+c]=Math.round((lighting.normals[a*3+c]+lighting.normals[b*3+c])*.5);
-  weight[v]=Math.round((lighting.weight[a]+lighting.weight[b])*.5);
+  if(cliff){
+   const x=Math.min(nx-2,Math.floor(i)),z=Math.min(nz-2,Math.floor(j)),p=z*nx+x;
+   const interp=(values:ArrayLike<number>,step:number,axis:number)=>facet(i-x,j-z,values[p*step+axis],
+      values[(p+1)*step+axis],values[(p+nx)*step+axis],values[(p+nx+1)*step+axis]);
+   // Interpolate the original smooth lighting then add the local slope
+   // difference across the reshaped cliff. The correction goes to zero
+   // beyond nearby refinements, with no change to off-island shading.
+   const y=interp(lighting.normals,3,1),d=(x:number,z:number)=>grid.localHeight(x,z)-grid.referenceHeight(x,z);
+   const sx=interp(lighting.normals,3,0)/y-(d(i+.5,j)-d(i-.5,j))/grid.stepX;
+   const sz=interp(lighting.normals,3,2)/y-(d(i,j+.5)-d(i,j-.5))/grid.stepZ;
+   const scale=32767/Math.hypot(sx,1,sz);
+   normal[v*3]=Math.round(sx*scale);normal[v*3+1]=Math.round(scale);normal[v*3+2]=Math.round(sz*scale);
+   weight[v]=Math.round(interp(lighting.weight,1,0));
+  }else{
+   for(let c=0;c<3;c++)normal[v*3+c]=Math.round((lighting.normals[a*3+c]+lighting.normals[b*3+c])*.5);
+   weight[v]=Math.round((lighting.weight[a]+lighting.weight[b])*.5);
+  }
  }
  const index:number[]=[];
  const old=(ix:number,iz:number)=>iz*(n+1)+ix;
@@ -60,10 +78,10 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
   if(near&&i>=left-1&&i<=right&&j>=top-1&&j<=bottom){baseTriangle(a,b,d);baseTriangle(b,c,d);}
   else index.push(a,b,d,b,c,d);
  }
- if(layout){for(const v of layout.indices)index.push(k0+v);}
+ if(cliff||layout){for(const v of (cliff??layout!).indices)index.push(k0+v);}
  else for(let j=0;j<nz-1;j++)for(let i=0;i<nx-1;i++)index.push(vtx(i,j),vtx(i,j+1),vtx(i+1,j),vtx(i,j+1),vtx(i+1,j+1),vtx(i+1,j));
  if(!near){
-  // Coarser LODs retain exactly the same surveyed interior. A ring replaces
+  // Coarser LODs retain the surveyed interior within its measured error bound. A ring replaces
   // complete old cells, reaching the existing coarse perimeter including any
   // shared tile edge. Zipper strips have no T-junctions or overlapping faces.
   const seq=(lo:number,hi:number,eq:(v:number)=>number)=>Array.from({length:Math.abs(hi-lo)+1},(_,i)=>eq(lo+i*Math.sign(hi-lo)));
@@ -79,10 +97,10 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
     }else{emit(outer[i],inner[j],inner[j+1]);j++;}
    }
   };
-  ring(seq(left,right,i=>old(i,top)),seq(0,nx-1,i=>vtx(i,0)));
-  ring(seq(top,bottom,j=>old(right,j)),seq(0,nz-1,j=>vtx(nx-1,j)));
-  ring(seq(left,right,i=>old(i,bottom)),seq(0,nx-1,i=>vtx(i,nz-1)));
-  ring(seq(top,bottom,j=>old(left,j)),seq(0,nz-1,j=>vtx(0,j)));
+  ring(seq(left,right,i=>old(i,top)),cliff?.edges?.[0].map(i=>k0+i)??seq(0,nx-1,i=>vtx(i,0)));
+  ring(seq(top,bottom,j=>old(right,j)),cliff?.edges?.[1].map(i=>k0+i)??seq(0,nz-1,j=>vtx(nx-1,j)));
+  ring(seq(left,right,i=>old(i,bottom)),cliff?.edges?.[2].map(i=>k0+i)??seq(0,nx-1,i=>vtx(i,nz-1)));
+  ring(seq(top,bottom,j=>old(left,j)),cliff?.edges?.[3].map(i=>k0+i)??seq(0,nz-1,j=>vtx(0,j)));
  }
  g.setAttribute('position',new THREE.BufferAttribute(positions,3));g.setAttribute('uv',new THREE.BufferAttribute(uv,2));
  // Ordinary land keeps the original derivative-based face shading. Only the
