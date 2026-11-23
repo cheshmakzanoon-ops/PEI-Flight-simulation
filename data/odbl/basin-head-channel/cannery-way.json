@@ -1,0 +1,25 @@
+{
+  "way": 361588784,
+  "license": "https://www.openstreetmap.org/copyright",
+  "copyright": "\u00a9 OpenStreetMap contributors",
+  "source": "prince-edward-island-261101.osm.pbf",
+  "sha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "outer": [
+    [
+      -62.1088309,
+      46.378029
+    ],
+    [
+      -62.1086468,
+      46.3780516
+    ],
+    [
+      -62.1086026,
+      46.3778802
+    ],
+    [
+      -62.1087868,
+      46.3778576
+    ]
+  ]
+}

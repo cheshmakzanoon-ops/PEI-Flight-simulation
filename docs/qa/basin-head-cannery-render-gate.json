@@ -1,0 +1,95 @@
+{
+  "singing-west-close": {
+    "old": {
+      "triangles": 257868,
+      "drawCalls": 156,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinCanneryVisible": false,
+      "basinFootbridgeVisible": true
+    },
+    "new": {
+      "triangles": 259328,
+      "drawCalls": 164,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinCanneryVisible": true,
+      "basinFootbridgeVisible": true
+    },
+    "pixels": 585600,
+    "exact": 374824,
+    "changesGt2": 184639
+  },
+  "singing-east-close": {
+    "old": {
+      "triangles": 303378,
+      "drawCalls": 222,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinCanneryVisible": false,
+      "basinFootbridgeVisible": true
+    },
+    "new": {
+      "triangles": 304838,
+      "drawCalls": 230,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinCanneryVisible": true,
+      "basinFootbridgeVisible": true
+    },
+    "pixels": 585600,
+    "exact": 535302,
+    "changesGt2": 35147
+  },
+  "east-close": {
+    "old": {
+      "triangles": 309279,
+      "drawCalls": 264,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "basinCanneryVisible": false,
+      "basinFootbridgeVisible": false
+    },
+    "new": {
+      "triangles": 309279,
+      "drawCalls": 264,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "basinCanneryVisible": false,
+      "basinFootbridgeVisible": false
+    },
+    "pixels": 585600,
+    "exact": 585600,
+    "changesGt2": 0
+  }
+}

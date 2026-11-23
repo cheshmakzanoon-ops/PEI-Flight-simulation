@@ -10,6 +10,7 @@ parser.add_argument('--world',type=Path,required=True)
 parser.add_argument('--channel-bake',type=Path,required=True)
 parser.add_argument('--out',type=Path,required=True);parser.add_argument('--generated',type=Path)
 parser.add_argument('--native-window',type=Path,help='checked optional cache rather than refetching native mosaic')
+parser.add_argument('--without-cannery',action='store_true',help='Rebuild prior inlet-only reference')
 args=parser.parse_args();world=args.world;args.out.mkdir(parents=True,exist_ok=True)
 root=Path(__file__).resolve().parents[2]
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -71,6 +72,20 @@ Wsrc=map_coordinates(sg[:,:,1].astype(float),[(z-t)/(b-t)*(r['height']-1),(x-l)/
 field=lo+Wsrc*(np.minimum(lo,boundary)-lo)
 edge=np.minimum.reduce((i-i0,i1-i,j-j0,j1-j))
 weight=smooth(edge,0,1.0)*smooth(Wsrc,.02,.86)*valid
+landmark=root/'data/odbl/basin-head-channel/cannery-way.json'
+includes_landmark=landmark.exists() and not args.without_cannery
+if includes_landmark:
+ witness=json.loads(landmark.read_text())
+ assert witness['way']==361588784 and len(witness['outer'])==4
+ a0,a1,a2,a3=np.asarray([project(lon,lat) for lon,lat in witness['outer']])
+ axes=np.column_stack([a1-a0,a3-a0])
+ u0,v0=np.linalg.solve(axes,(np.c_[x.ravel(),z.ravel()]-a0).T).reshape(2,*x.shape)
+ du=np.maximum.reduce([-u0,u0-1.23,np.zeros_like(u0)])*np.linalg.norm(axes[:,0])
+ dv=np.maximum.reduce([-v0,v0-1,np.zeros_like(v0)])*np.linalg.norm(axes[:,1])
+ # The surveyed dry grade beneath the Cannery was missing from the coarse
+ # game surface. Recover it without inheriting a new land/water classifier.
+ supported=(1-smooth(np.hypot(du,dv),.0,12.5))*smooth(edge,0,1.0)*valid
+ weight=np.maximum(weight,supported)
 # surveyed dry banks source only. Current height authority on visible dry
 # land never takes below-surface bathymetry as a new executable plateau.
 native=np.where(valid,np.maximum(.02,source),old)
@@ -112,10 +127,11 @@ a[(a==0)&(q!=0)]=1
 assert not np.any(q[[0,-1],:]) and not np.any(q[:,[0,-1]])
 raw=q.tobytes()+a.tobytes()
 archive=bytearray(gzip.compress(raw,9,mtime=0));archive[9]=255
+name='basin-bank-terrain-v2.cm.gz' if includes_landmark else 'basin-bank-terrain.cm.gz'
 plan=dict(id='basin-head-native-bank',kind='inland',relativeToParent=True,tileX=29,tileZ=13,
     firstX=int(i0%112),firstZ=int(j0%112),cellsX=int(i1-i0),cellsZ=int(j1-j0),sub=split,
     decodedBytes=len(raw),sha256=sha(raw),compressedSha256=sha(archive),crc32=f'{zlib.crc32(raw)&0xffffffff:08x}',
-    asset='harbour/odbl/v1/basin-bank-terrain.cm.gz',compressedBytes=len(archive),pinTerrainSha256=M['sha256'],pinBasinSha256=r['rawSha'])
-(args.out/'basin-bank-terrain.cm.gz').write_bytes(archive)
+    asset='harbour/odbl/v1/'+name,compressedBytes=len(archive),pinTerrainSha256=M['sha256'],pinBasinSha256=r['rawSha'])
+(args.out/name).write_bytes(archive)
 (args.out/'bank-native-bake.json').write_text(json.dumps(plan,indent=2)+'\n')
 if args.generated:args.generated.write_text('// Generated from pinned native HRDEM samples and exact parent-facet deltas.\nexport const BASIN_GROUND='+json.dumps(plan,indent=2)+' as const;\n')

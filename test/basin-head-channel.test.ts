@@ -73,6 +73,6 @@ test('native bank applies relative heights at near detail with exact untouched v
    if(mask[k]===255)assert(Math.abs(bank.height(x,z,grade)-visible)<eps);
   }
  }
- assert(weighted===4252&&unchanged>20000&&max>7.5);
+ assert(weighted===4283&&unchanged>20000&&max>7.5);
  assert.equal(bank.height(g.x0-10,g.z0+10,18.25),18.25);
 });

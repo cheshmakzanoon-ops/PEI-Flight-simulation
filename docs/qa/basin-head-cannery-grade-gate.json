@@ -1,0 +1,285 @@
+{
+  "directMeshHeight": {
+    "changedRawPlaneVertex": 54,
+    "rayCount": 272,
+    "holes": 0,
+    "maxRayDiff": 0.00015755590821253662,
+    "beforeTris": 41618,
+    "afterTris": 41618,
+    "nativeBounds": [
+      [
+        82255.91625141473,
+        0,
+        12429.830274298314
+      ],
+      [
+        82255.91625141473,
+        0,
+        12429.830274298314
+      ]
+    ],
+    "visualBoundsOfChangedY": {
+      "minX": 83751.97301411004,
+      "minY": 0.13810095191001892,
+      "minZ": 13551.237500860814,
+      "maxX": 83771.40209125848,
+      "maxY": 8.844239234924316,
+      "maxZ": 13588.617505743627
+    },
+    "extensionMarginsMetres": [
+      5,
+      0.3
+    ]
+  },
+  "protectedFootbridge": {
+    "before": true,
+    "after": true,
+    "n": 39836,
+    "different": 0,
+    "beforeSHA": "8506859963165d65ac1a8c484ec56a724b2de87d66a00816de541f97aaa7638c",
+    "afterSHA": "8506859963165d65ac1a8c484ec56a724b2de87d66a00816de541f97aaa7638c"
+  },
+  "deckTop": 2.068000078201294,
+  "banks": {
+    "before": "04ed900b8a0f178a6f10616294e09f67d76a91012c6ad69d1dded3e1c13346af",
+    "after": "6466b1b6b06c0c74324daff82fb69c697906b015dafe0b8b281f0cc3dd8fabb3",
+    "model": "9cc8e2699291d94de07df02532127bbf86bbc5c7b947254884c4b8fcf71375a8"
+  },
+  "band": {
+    "minX": 83748.09833164513,
+    "minZ": 13547.502411566518,
+    "maxX": 83775.27039491636,
+    "maxZ": 13592.330225511283,
+    "n": 138293,
+    "rawNeighbourMaxDiff": 0,
+    "physN": 138293
+  },
+  "fitStat": {
+    "newWet": 0,
+    "wetPhysDiff": 0,
+    "olderWet": 0,
+    "oldCross": 889,
+    "newCross": 889,
+    "actualRenderedDeckCross": 0,
+    "farthestDiffFromClampedFootprint": 16.815747701897266,
+    "maxOutsideError19": 0,
+    "oldWestIntersections": 9882,
+    "newWestIntersections": 0,
+    "maxEastGround": 2.013910455797888,
+    "maxWestFloorPoke": -0.28314738793094074,
+    "maxTerOffsite": 0,
+    "maxOutsideError": 0.007732520593139114,
+    "maxBoundaryError": 0,
+    "cavitySupportMismatch": 0
+  },
+  "footprintStats": {
+    "spanDepth": {
+      "n": 7938,
+      "vals": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "westUnderfloor": {
+      "n": 9882,
+      "vals": [
+        -5.743057447049484,
+        -3.9753650363276214,
+        -2.612612207254514,
+        -2.2049424308069496,
+        -2.1147467777874835
+      ]
+    },
+    "bodyHigh": {
+      "n": 0,
+      "vals": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "hiddenWaterTerrains": {
+      "n": 0,
+      "vals": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "westWitness": {
+      "n": 0,
+      "vals": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "supportedExact": {
+      "n": 0,
+      "vals": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "seawardGuard": {
+      "n": 0,
+      "vals": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  "mesh": [
+    {
+      "name": "Cannery cladding",
+      "n": 204,
+      "tris": 68,
+      "degenerate": 0,
+      "area": 501.0864757987119,
+      "min": [
+        83761.59973943459,
+        1.9600000381469727,
+        13556.29652123884
+      ],
+      "max": [
+        83777.98507344948,
+        9.313236236572266,
+        13576.719258360423
+      ]
+    },
+    {
+      "name": "Cannery trim",
+      "n": 1938,
+      "tris": 646,
+      "degenerate": 0,
+      "area": 55.46508096078698,
+      "min": [
+        83762.59252584206,
+        2.0450000762939453,
+        13556.22030930952
+      ],
+      "max": [
+        83778.21118486153,
+        10.029999732971191,
+        13576.795470289744
+      ]
+    },
+    {
+      "name": "Cannery roof",
+      "n": 84,
+      "tris": 28,
+      "degenerate": 0,
+      "area": 245.51271539565838,
+      "min": [
+        83761.41838777291,
+        4.53000020980835,
+        13557.412439398326
+      ],
+      "max": [
+        83777.54989087807,
+        10.029999732971191,
+        13576.761966757334
+      ]
+    },
+    {
+      "name": "Cannery harbourRoof",
+      "n": 12,
+      "tris": 4,
+      "degenerate": 0,
+      "area": 138.67675217222623,
+      "min": [
+        83768.45458102452,
+        4.986992835998535,
+        13556.258837751902
+      ],
+      "max": [
+        83778.19705331551,
+        9.347235679626465,
+        13575.58025651411
+      ]
+    },
+    {
+      "name": "Cannery timber",
+      "n": 1908,
+      "tris": 636,
+      "degenerate": 0,
+      "area": 605.5388193143699,
+      "min": [
+        83762.70337856041,
+        -0.20999999344348907,
+        13555.815015844859
+      ],
+      "max": [
+        83781.09926164376,
+        9.770000457763672,
+        13576.929886869944
+      ]
+    },
+    {
+      "name": "Cannery door",
+      "n": 30,
+      "tris": 10,
+      "degenerate": 0,
+      "area": 11.233491736331466,
+      "min": [
+        83775.13651836144,
+        2.059999942779541,
+        13558.327657751597
+      ],
+      "max": [
+        83777.31658017861,
+        4.210000038146973,
+        13570.597800306834
+      ]
+    },
+    {
+      "name": "Cannery glass",
+      "n": 168,
+      "tris": 56,
+      "degenerate": 0,
+      "area": 15.727868875208245,
+      "min": [
+        83763.58665359246,
+        3.180000066757202,
+        13556.83202844099
+      ],
+      "max": [
+        83777.51179540383,
+        6.940000057220459,
+        13576.281730703868
+      ]
+    },
+    {
+      "name": "Cannery gallery",
+      "n": 36,
+      "tris": 12,
+      "degenerate": 0,
+      "area": 114.5669179782403,
+      "min": [
+        83774.87204492318,
+        1.9579999446868896,
+        13555.901276640452
+      ],
+      "max": [
+        83781.0286020063,
+        2.068000078201294,
+        13574.376789621867
+      ]
+    }
+  ]
+}
