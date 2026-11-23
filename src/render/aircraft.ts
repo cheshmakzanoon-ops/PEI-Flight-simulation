@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import {makePropeller} from './propeller.ts';
 import {SURVEY_AIRFRAME} from '../sim/flight.ts';
-import { DIALS, dialAngle } from './instruments.ts';
+import { DIALS, dialAngle, altimeterAngles } from './instruments.ts';
 import { createCockpitTrim } from './cockpit-trim.ts';
 import { addFlightSurface, deflectionTarget, type SurfaceInput } from './flight-surfaces.ts';
 
@@ -197,6 +197,7 @@ export function createAircraft() {
  createCockpitTrim(cockpit);
  for(const s of [-1,1]){bar([.59*s,.39,-1.35],[.46*s,1.01,-.80],.031,dark,cockpit);}
  const needles:THREE.Group[]=[];
+ let altitudeHands:THREE.Group[]=[];
  const bezelMat=mat(0x232628,.44,.62),screwMat=mat(0x93999a,.39,.78);
  const makeGauge=(i:number)=>{
   const dial=DIALS[i],c=document.createElement('canvas');c.width=c.height=256;
@@ -222,6 +223,20 @@ export function createAircraft() {
   const needle=new THREE.Group();needle.position.copy(o.position);needle.position.z+=.007;cockpit.add(needle);
   poly([[-.005,-.018,0],[.005,-.018,0],[.0014,.063,0],[-.0014,.063,0]],new THREE.MeshBasicMaterial({color:0xffdfaa,side:THREE.DoubleSide}),needle);
   const hub=mesh(new THREE.SphereGeometry(.007,10,6),bezelMat,needle);hub.position.z=.002;
+  if(i===1){
+   const thousands=new THREE.Group(),tenThousands=new THREE.Group();
+   for(const [alt,z] of [[thousands,.005],[tenThousands,.0035]] as const){
+    alt.position.copy(o.position);alt.position.z+=z;cockpit.add(alt);
+   }
+   const white=new THREE.MeshBasicMaterial({color:0xf2e6cd,side:THREE.DoubleSide});
+   const pale=new THREE.MeshBasicMaterial({color:0xcac4b4,side:THREE.DoubleSide});
+   // The narrow outer pointer identifies decades without hiding numerals;
+   // the short, broad thousands pointer stays inside the long hundreds hand.
+   poly([[-.007,-.008,0],[.007,-.008,0],[.006,.027,0],[0,.046,0],[-.006,.027,0]],white,thousands);
+   poly([[-.001,-.01,0],[.001,-.01,0],[.001,.058,0],[-.001,.058,0]],pale,tenThousands);
+   poly([[-.006,.063,0],[.006,.063,0],[0,.054,0]],pale,tenThousands);
+   altitudeHands=[needle,thousands,tenThousands];
+  }
   needles.push(needle);
  };
  for(let i=0;i<DIALS.length;i++)makeGauge(i);
@@ -239,6 +254,10 @@ export function createAircraft() {
    c.aileron.update(a.aileron,dt);c.elevator.update(a.elevator,dt);
   }
  }
- return {root,prop,cockpit,needles,setControls,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ function setAltitude(feet:number){
+  const angles=altimeterAngles(feet);
+  altitudeHands.forEach((p,i)=>{p.rotation.z=angles[i];});
+ }
+ return {root,prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
  setProp};
 }

@@ -16,13 +16,14 @@ renderer.setSize(width,height);
 renderer.toneMapping=T.ACESFilmicToneMapping;
 renderer.shadowMap.enabled=true;
 document.body.append(renderer.domElement);
-const {root,prop,cockpit,setInterior,setProp,setControls,controlAngles}=createAircraft();
+const {root,prop,cockpit,setInterior,setProp,setControls,controlAngles,setAltitude,altitudeAngles}=createAircraft();
 const pose=params.get('pose');
 const amount=Math.max(0,Math.min(1,Number(params.get('prop')??0)));
 const inCockpit=pose==='cockpit';
 setInterior(inCockpit);
 if(['prop','prop-side','chase','cockpit'].includes(pose))prop.rotation.z=Math.PI;
 setProp(amount);scene.add(root);
+if(inCockpit)setAltitude(Number(params.get('altitude')??0));
 if(pose==='surfaces'){
   const roll=Number(params.get('roll')??0),pitch=Number(params.get('pitch')??0);
   for(let i=0;i<60;i++)setControls({roll,pitch},1/60);
@@ -60,7 +61,7 @@ prop.traverse(o=>{
 });
 const sweep=root.getObjectByName('Survey propeller • shutter sweep');
 window.aircraftPreview={
-    pose, controlAngles:controlAngles(), commandedProp:amount, cockpitVisible:cockpit.visible, solidVisible:prop.visible,
+    pose, altitudeAngles:altitudeAngles(), controlAngles:controlAngles(), commandedProp:amount, cockpitVisible:cockpit.visible, solidVisible:prop.visible,
     sweepVisible:sweep?.visible, bladeSweepM:2*radius,
     clearanceM:hub.y+SURVEY_AIRFRAME.gearHeightM-radius, solidTriangles,
     triangles:renderer.info.render.triangles,

@@ -36,9 +36,8 @@ indications and published aircraft performance.
 
 ![Four graduated flight instruments installed in the survey aircraft cockpit](media/cockpit-instruments.webp)
 
-Current in-engine display: equivalent airspeed, hundreds of feet on the cyclic
-altimeter needle (full altitude on the HUD), throttle percentage and vertical
-speed. The instrument on the right of the altimeter is commanded power, not
+Current in-engine display: equivalent airspeed, [three-hand geometric MSL altitude](qa/altimeter.md),
+throttle percentage and vertical speed. The HUD also shows altitude numerically. The instrument on the right of the altimeter is commanded power, not
 measured engine RPM. These are development gauges, not certified avionics.
 
 ## Reference evidence to validate before tuning
