@@ -76,6 +76,7 @@ async function run(){
   const phase=cinematic?(Math.sin(time*.14)*.009):0;
   aircraft.root.position.set(f.x,f.y,f.z);aircraft.root.rotation.set(f.pitch,-f.heading,-f.bank+phase,'YXZ');
   aircraft.setInterior(!cinematic&&view===1);
+  if(playing||cinematic)aircraft.setControls(playing?u:{pitch:0,roll:0},delta);
   const propSpeed=f.engineOut?windmillOmegaRadS(f.speed):20+155*f.throttle;
   aircraft.prop.rotation.z+=(ui.mode==='flight'||cinematic)?delta*propSpeed:0;
   aircraft.setProp(f.engineOut?clamp((propSpeed-20)/155,0,1):f.throttle);
@@ -107,7 +108,7 @@ async function run(){
   ui.update(f,world.groundHeight(f.x,f.z)-.12);audio.update(f.throttle,f.speed,playing&&!f.engineOut);renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    controlAngles:aircraft.controlAngles(),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

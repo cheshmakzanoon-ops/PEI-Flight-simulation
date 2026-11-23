@@ -4,6 +4,7 @@ import {makePropeller} from './propeller.ts';
 import {SURVEY_AIRFRAME} from '../sim/flight.ts';
 import { DIALS, dialAngle } from './instruments.ts';
 import { createCockpitTrim } from './cockpit-trim.ts';
+import { addFlightSurface, deflectionTarget, type SurfaceInput } from './flight-surfaces.ts';
 
 /** Original high-wing survey aircraft. Local +Y up, -Z forward. All dimensions in metres. */
 export function createAircraft() {
@@ -154,12 +155,15 @@ export function createAircraft() {
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vs,3));g.setIndex(ix);g.computeVertexNormals();mesh(g,material);
  }
  const outlines=[[.03,1.17,-1.22,1.98,.095,-.025],[.80,1.17,-1.25,2.00,.095,-.025],[2.5,1.21,-1.22,1.93,.093,-.025],[4.35,1.28,-1.13,1.70,.085,-.040],[5.64,1.34,-.98,1.32,.083,-.055],[5.97,1.37,-.79,.97,.078,-.06]];
+ const controls:{side:number;aileron:ReturnType<typeof addFlightSurface>;elevator:ReturnType<typeof addFlightSurface>}[]=[];
  for(const side of [-1,1]){
-  wing(side,outlines,ivory);wing(side,[[5.97,1.37,-.79,.97,.078,-.06],[6.13,1.39,-.52,.5,.06,-.06],[6.17,1.405,-.39,.2,.05,-.06]],teal);
-  wing(side,[[.06,.17,3.75,1.32,.08,-.01],[1.28,.20,4.00,1.13,.075,-.01],[2.22,.26,4.27,.75,.07,-.015],[2.33,.27,4.42,.48,.065,-.015]],ivory);
+  wing(side,outlines.slice(0,4),ivory);
+  wing(side,[[5.97,1.37,-.79,.97,.078,-.06],[6.13,1.39,-.52,.5,.06,-.06],[6.17,1.405,-.39,.2,.05,-.06]],teal);
+  const aileron=addFlightSurface(root,side,outlines.slice(3),ivory,.73,side<0?'Port aileron':'Starboard aileron');
+  const elevator=addFlightSurface(root,side,[[.06,.17,3.75,1.32,.08,-.01],[1.28,.20,4.00,1.13,.075,-.01],[2.22,.26,4.27,.75,.07,-.015],[2.33,.27,4.42,.48,.065,-.015]],ivory,.68,side<0?'Port elevator':'Starboard elevator');
+  controls.push({side,aileron,elevator});
   bar([side*.58,-.31,-.80],[side*3.74,1.26,-.50],.058,pearl);
   bar([side*.55,-.30,.34],[side*3.74,1.26,-.46],.043,pearl);
-  bar([side*2.72,1.30,.33],[side*5.40,1.34,.15],.014,dark);
   // Spring-steel main gear, axle mount and hydraulic line.
   const mainTop=[side*.53,-.30,.53],mainBend=[side*.95,-.82,.57],axleEnd=[side*1.25,-1.09,.55];
   bar(mainTop,mainBend,.072,pearl);bar(mainBend,axleEnd,.051,pearl);
@@ -229,6 +233,12 @@ export function createAircraft() {
  const nose=mesh(new THREE.SphereGeometry(1,20,12),pearl,cockpitOnly);nose.position.set(0,-.01,-2.65);nose.scale.set(.62,.56,1.40);
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}
  let previousInside:boolean|undefined;
- return {root,prop,cockpit,needles,setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ function setControls(input:SurfaceInput,dt:number){
+  for(const c of controls){
+   const a=deflectionTarget(input,c.side);
+   c.aileron.update(a.aileron,dt);c.elevator.update(a.elevator,dt);
+  }
+ }
+ return {root,prop,cockpit,needles,setControls,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
  setProp};
 }
