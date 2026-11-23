@@ -3,6 +3,7 @@ import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
 import type { Terrain } from '../sim/terrain.ts';
+import { PackedBytes } from '../sim/packed-bytes.ts';
 import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
 import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
@@ -50,17 +51,21 @@ const buildingF=`
  #include <colorspace_fragment>
  }`;
 export class Buildings {
- private tiles:BoundTile[]=[];private pack:ArrayBuffer;private t:Terrain;private scene:THREE.Scene;
+ private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF,vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:ArrayBuffer,private readonly fitted:boolean){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly fitted:boolean){
   this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
  static async create(scene:THREE.Scene,terrain:Terrain){
-  const path=import.meta.env.BASE_URL+'world/buildings/';const [mf,pk]=await Promise.all([fetch(path+'index.json'),fetch(path+'tiles.pack')]);if(!mf.ok||!pk.ok)throw Error('Building atlas not available.');
-  const a=(await mf.json()) as {tiles:Tile[];sha256?:string};const p=await pk.arrayBuffer();
-  if(!a.tiles?.length||a.tiles.some(t=>t.offset<0||t.bytes<=0||t.offset+t.bytes>p.byteLength))throw Error('Invalid building atlas index.');
-  return new Buildings(scene,terrain,a.tiles,p,supportedRoofAtlas(a.sha256));
+  const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
+  if(!mf.ok)throw Error('Building atlas not available.');
+  const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
+  if(a.file!=='tiles.pack'||!Number.isSafeInteger(a.bytes)||a.bytes<=0||!Array.isArray(a.tiles)||!a.tiles.length||
+     a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
+   throw Error('Invalid building atlas index.');
+  }
+  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),supportedRoofAtlas(a.sha256));
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -72,10 +77,15 @@ export class Buildings {
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
  }
+ diagnostics(){
+  let failed=0;
+  for(const id of this.failed)if(this.wanted.has(id))failed++;
+  return {wanted:this.wanted.size,ready:this.meshes.size,loading:this.loading.size,pending:this.work.length,failed};
+ }
  private async load(tile:BoundTile){
   this.loading.add(tile.id);
   try{
-   const part=this.pack.slice(tile.offset,tile.offset+tile.bytes);
+   const part=await this.pack.read(tile.offset,tile.bytes);
    const chunk=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
    if(!this.wanted.has(tile.id))return;
    const mesh=this.generate(chunk.features,tile);this.meshes.set(tile.id,mesh);this.scene.add(mesh);

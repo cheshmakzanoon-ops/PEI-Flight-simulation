@@ -52,6 +52,28 @@ terrain tiles, legally reusable regional aerial photography, detailed
 materials for sandstone and tidal flats, and surveyed or hand-modelled
 landmarks. Assess these at both cruise altitude and approach altitude.
 
+### Building streaming
+
+The building layer starts with the index and loads compressed tiles near the
+aircraft. On static hosts that support HTTP byte ranges, it transfers only the
+requested tile spans of the 3.84 MB pack. Simple servers that return the full
+file still work: a single shared download supplies all subsequent tile reads.
+The same geometry is used in both cases; the pack does not shrink or change.
+This is separate from the satellite imagery stream.
+
+The browser gate waited for every requested mesh at Cavendish, Charlottetown,
+Summerside and Montague, then flew from Montague. At the cold Cavendish
+departure it transferred 128,524 bytes over 8 range responses instead of the
+complete 3,844,984-byte pack (96.7% fewer building bytes). Across all four
+locations the range server delivered 1,242,972 bytes in 87 responses (67.7%
+fewer), while the fallback server delivered the full pack exactly once. Mesh,
+draw, and triangle counts matched between servers. These are building bytes,
+not total download size, frame rate, or a player throughput benchmark.
+
+Repeat the browser test locally with `npm run build`, Python Playwright and
+Chromium. Run `tools/qa/building-range-gate.py` for both `--mode 200` and
+`--mode 206`; see its command line help for paths.
+
 ### Survey-supported roofs
 
 Three fitted roofs are rendered from screened 1 m LiDAR samples, one per
