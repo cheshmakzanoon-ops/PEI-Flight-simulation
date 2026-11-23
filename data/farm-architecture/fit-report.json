@@ -1,0 +1,37 @@
+{
+  "atlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "profileSourceSha256": "ed904d573beec93a1d12562768912c015cb25e1ee86161aedb8d339877ba2e38",
+  "selectedRoofs": 929,
+  "consideredRoofs": 1490,
+  "tiles": 174,
+  "nativeRaster": "NRCan CanElevation High Resolution DEM mosaic 10_3-mosaic-1m, DSM and DTM; EPSG:3979 native 1 m grid",
+  "nativeDSMUrl": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+  "nativeDTMUrl": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+  "counties": {
+    "PRINCE": 376,
+    "QUEENS": 359,
+    "KINGS": 194
+  },
+  "forms": {
+    "gable": 866,
+    "gambrel": 43,
+    "shed": 14,
+    "flat": 6
+  },
+  "styleSizes": {
+    "9": 318,
+    "8": 547,
+    "7": 64
+  },
+  "inspectedSourcePixels": 287875,
+  "blindHoldoutPixels": 58700,
+  "heldoutP90BuildingMedianM": [
+    0.5627,
+    0.1041
+  ],
+  "heldoutP90UpperP90M": [
+    1.3510600000000008,
+    0.19762
+  ],
+  "shoreOrCollisionChanges": false
+}

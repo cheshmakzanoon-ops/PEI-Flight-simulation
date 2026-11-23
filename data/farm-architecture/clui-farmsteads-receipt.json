@@ -1,0 +1,28 @@
+{
+  "url": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/CLUI2020_OpenData/FeatureServer/0/query",
+  "where": "landuse = 'AGR' AND subuse = 'FM'",
+  "fields": "objectid,fieldid,landuse,subuse,hectares,county",
+  "nativeEPSG": 2954,
+  "count": 3107,
+  "objectIdsSHA256": "0a034d32ef2893e805877ea13ba8d29ba851df3c7f81ba74ddf911cc8267a398",
+  "pages": [
+    {
+      "name": "farm-00000.json.gz",
+      "count": 1500,
+      "sha256": "0a04a5e1713f7628fbe4893fcf8d453cef1f98658d8d5f5b1ed843c1fffa6b41",
+      "gzipBytes": 638657
+    },
+    {
+      "name": "farm-01500.json.gz",
+      "count": 1500,
+      "sha256": "5dc5c91062e1522d47c77aae6ec9034f0e26510cbc8ac189c920cb84f1bb5722",
+      "gzipBytes": 632012
+    },
+    {
+      "name": "farm-03000.json.gz",
+      "count": 107,
+      "sha256": "50f5224215aadee31c4303ab417b2d6ede06fe9ce0cc7cd3b63c12dee80e286d",
+      "gzipBytes": 49176
+    }
+  ]
+}

@@ -88,6 +88,11 @@ measurement method and unchanged fallbacks. This does not imply that other
 roofs or street-level details were surveyed at the same resolution. Larger
 complexes use separate roof planes where supported: [Charlottetown waterfront](qa/quartermaster-roof.md)
 and [Souris](qa/souris-roof.md).
+The [farm scenery pass](qa/farm-architecture.md) separately fits
+929 selected roofs from native LiDAR in all three counties and uses
+original agricultural cladding and joinery. It does not identify
+the use, façade, or current condition of a specific building.
+
 
 ### Near-detail scenes
 

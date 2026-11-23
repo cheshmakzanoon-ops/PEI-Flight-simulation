@@ -4,6 +4,8 @@ import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaste
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
 import { SOURIS_ROOF } from './souris-roof.generated.ts';
 import {sourisOcclusionGLSL,sourisMetalGLSL,type SourisLighting} from './souris-light.ts';
+import { emitFarmShell,farmRoofAtlas,readFarmShell } from './farm-shells.ts';
+import { farmMaterialGLSL } from './farm-material.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -45,13 +47,15 @@ const buildingF=(souris=false)=>`
  }
  ${downtownFacadeGLSL}
  ${souris?sourisOcclusionGLSL+sourisMetalGLSL:''}
+ ${farmMaterialGLSL}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
  vec3 c=tint,n=normalize(normalW);if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
- if(roof<.5&&facade>5.5){
+ if(facade>6.5){shadeFarm(c,uv2d,wp,n,facade,roof,k,fine,d);}
+ else if(roof<.5&&facade>5.5){
   // Neutral manufactured cladding for the one measured industrial shell;
   // no guessed windows, openings, branding or claim of actual material.
   ${sourisFrame}vec2 other=vec2(-basis.y,basis.x);
@@ -99,17 +103,17 @@ const buildingF=(souris=false)=>`
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
- private readonly fitted:boolean;
+ private readonly fitted:boolean;private readonly farms:boolean;private readonly atlasHash:string|undefined;
  private readonly sourisMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly atlasHash:string|undefined,sourisLight?:SourisLighting){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting){
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
    this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true),uniforms:sourisLight.uniforms,vertexColors:true,side:THREE.DoubleSide});
   }
-  this.fitted=supportedRoofAtlas(atlasHash);
-  this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
+  this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);
+  this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
  static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting){
   const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
@@ -152,7 +156,8 @@ export class Buildings {
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   let facade=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
-  for(const f of features){
+  for(let i=0;i<features.length;i++){
+   const f=features[i];
    if(f.footprint.length<3||!Number.isFinite(f.height)||replacesLightBuilding(f.footprint))continue;
    const rings=[f.footprint,...(f.holes??[])].map(r=>r.map(([lon,lat])=>project(lon,lat)));
    const ring=rings[0],cx=ring.reduce((s,p)=>s+p.x,0)/ring.length,cz=ring.reduce((s,p)=>s+p.z,0)/ring.length;
@@ -195,6 +200,12 @@ export class Buildings {
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
    const fit=this.fitted&&rings.length===1?lookupRoofFit(tile.id,f.footprint,{x:cx,z:cz}):undefined;
+   const farm=this.farms&&!fit&&rings.length===1?readFarmShell(tile.id,i,f.footprint):undefined;
+   if(farm){
+    facade=farm.style;
+    emitFarmShell(ring,{x:cx,z:cz},base,seed,farm,(x,z)=>this.t.meshElevation(x,z),vertex);
+    continue;
+   }
    const eave=base+(synthGable?low:h);
    const rim=(p:Pt)=>fit?base+roofHeight(p,fit):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number)=>{
