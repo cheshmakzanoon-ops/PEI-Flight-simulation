@@ -1,0 +1,140 @@
+{
+  "sameCameraOld": {
+    "land": 527,
+    "curtain": 264,
+    "face-gap": 43,
+    "water": 78
+  },
+  "actualR46Candidate": {
+    "land": 567,
+    "curtain": 263,
+    "water": 82
+  },
+  "actualFirstEligibleSurfaceTransitions": {
+    "land to land": 523,
+    "curtain to land": 44,
+    "land to curtain": 4,
+    "face-gap to curtain": 43,
+    "curtain to curtain": 216,
+    "water to water": 78,
+    "curtain to water": 4
+  },
+  "remainingMissingScreenRays": [],
+  "visibleTopOverhangM": 0.03158878748229421,
+  "sameObjectReuse": true,
+  "unchangedPhysicalContact": true,
+  "physicalContactProbes": 272,
+  "allAffineBreakpoints": {
+    "minimumWallToGroundM": 0.002903042889651264,
+    "probes": 5058,
+    "diagonalCuts": 15,
+    "negatives": 0,
+    "maximumActualSegmentM": 1.6390349903107286,
+    "firstNegativeCases": []
+  },
+  "productionHashes": {
+    "bank": "86cfd1ad6235d0f32df13b93a5174fa57f217d34bf49d34d8c28cc2ac9e34000",
+    "world": "830aa2420f7a2c86759063df72e7d4cdbed174f2fee31fa13abcbdcc34b351cc"
+  },
+  "globalOriginalAndCandidateFullShoreBatchBytesAndOrderingEqual": true,
+  "bankBatchCount": 2,
+  "bankLegacyTrianglesPersisted": 68,
+  "exactCandidateHelperVersusSubmittedMaxM": 6.4373016357421875e-06,
+  "filteredLegacyFanSegments": 34,
+  "newTriangles": 5010,
+  "traceFallbackSegments": 0,
+  "endpointHandoff": [
+    {
+      "xz": [
+        83695.87080384836,
+        13207.734943963718
+      ],
+      "before": 4.720000000000227,
+      "next": 4.71999979019165,
+      "delta": -2.0980857673436049e-07
+    },
+    {
+      "xz": [
+        83755.37305808115,
+        13207.734943963718
+      ],
+      "before": 1.72,
+      "next": 1.7200000286102295,
+      "delta": 2.8610229518832853e-08
+    },
+    {
+      "xz": [
+        84292.59341058295,
+        13349.95574229589
+      ],
+      "before": 0.72,
+      "next": 0.7200000286102295,
+      "delta": 2.8610229518832853e-08
+    },
+    {
+      "xz": [
+        83695.87080384836,
+        13729.21120451503
+      ],
+      "before": 10.719999999998636,
+      "next": 10.720000267028809,
+      "delta": 2.670301721963142e-07
+    }
+  ],
+  "originalJoinVerticalMargins": [
+    {
+      "loc": {
+        "lon": -62.109678955078124,
+        "lat": 46.38118382352941
+      },
+      "priorAboveActualGroundM": 1.561941614616595
+    },
+    {
+      "loc": {
+        "lon": -62.10890380859375,
+        "lat": 46.38118382352941
+      },
+      "priorAboveActualGroundM": 0.12586573812609836
+    },
+    {
+      "loc": {
+        "lon": -62.101905343191966,
+        "lat": 46.379904411764706
+      },
+      "priorAboveActualGroundM": 0.4220772944252149
+    },
+    {
+      "loc": {
+        "lon": -62.109678955078124,
+        "lat": 46.376492647058825
+      },
+      "priorAboveActualGroundM": 4.398004925597564
+    }
+  ],
+  "priorNegativeSubarcPointCount": 810,
+  "candidateOnlyNegativeSubarcPointCount": 0,
+  "candidateOnlyWorstFew": [],
+  "refinedSecantMaxSignedCoverM": 0.003435096613031874,
+  "refinedTopVsTerrainAllIncludingTransition": {
+    "minGrade": 0.003061933184332233,
+    "maxGrade": 4.3915673320346444,
+    "belowParentSurface": 0
+  },
+  "nearMediumNearVisibility": {
+    "stages": [
+      "near",
+      "medium",
+      "near"
+    ],
+    "originalBatchVisible": [
+      true,
+      true,
+      true
+    ],
+    "repairVisible": [
+      true,
+      false,
+      true
+    ]
+  }
+}

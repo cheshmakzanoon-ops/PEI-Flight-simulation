@@ -13,6 +13,8 @@ import {loadHarbourCover} from '../sim/harbour-cover.ts';
 import {harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
 import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
+import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank} from './basin-channel-bank.ts';
+import type {ShoreSegment} from '../sim/shoreline.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
@@ -302,7 +304,9 @@ async function loadCover(){
 type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
- private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
+ private shoreFaces:THREE.Mesh[]=[];
+ private bank?:{batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
+   close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private groundVersion=0;
  private reliefPacks?:ReliefPacks;
  private reliefSeed=new Map<string,ReliefSeed>();
@@ -317,7 +321,7 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false){
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
@@ -377,7 +381,7 @@ export class World {
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
    ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
    this.mat=make(landFrag(false));
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined);
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -414,13 +418,19 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
+  const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[];
+  const cuts=new Map<string,[number,number][]>();
+  const batches:NonNullable<World['bank']>['batches']=[];
   const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
-  for(const {ax,az,bx,bz} of coastSegments(this.cover,t)){
+  for(const segment of coastSegments(this.cover,t)){
+   const {ax,az,bx,bz}=segment;
+   const bank=showBank&&inBasinBank(segment);if(bank)segments.push(segment);else if(showBank)outside.push(segment);
    const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
    if(east&&Math.max(ax,bx)>=east.x0&&Math.min(ax,bx)<=east.x1&&Math.max(az,bz)>=east.z0&&Math.min(az,bz)<=east.z1)rockGroups.add(key);
    let vertices=groups.get(key);if(!vertices){vertices=[];groups.set(key,vertices);}
+   const start=vertices.length;
    // Follow the original shoreline segments, with finer vertical samples only where
    // measured relief exists. Neither survey coverage nor zero elevation defines coast.
    const local=t.coastalGrids.some(g=>Math.max(ax,bx)>=g.x0&&Math.min(ax,bx)<=g.x1&&Math.max(az,bz)>=g.z0&&Math.min(az,bz)<=g.z1);
@@ -434,13 +444,30 @@ export class World {
     vertices.push(px,bottom,pz,qx,bottom,qz,px,pTop,pz,px,pTop,pz,qx,bottom,qz,qx,qTop,qz);
     px=qx;pz=qz;ph=qh;
    }
+   if(bank){
+    const list=cuts.get(key)??[];list.push([start,vertices.length]);cuts.set(key,list);
+   }
   }
+  const shore=(v:number[])=>{
+   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+   g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(v.length/3*2),2));
+   g.computeBoundingSphere();return g;
+  };
   for(const [key,vertices] of groups){
-   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-   g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(vertices.length/3*2),2));
-   g.computeBoundingSphere();
-   const m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
+   const g=shore(vertices),m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
+   m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
+   const remove=cuts.get(key);
+   if(remove){
+    const trimmed:number[]=[];let cursor=0;
+    for(const [start,end] of remove){
+     while(cursor<start)trimmed.push(vertices[cursor++]);
+     cursor=end;
+    }
+    while(cursor<vertices.length)trimmed.push(vertices[cursor++]);
+    batches.push({mesh:m,full:g,near:shore(trimmed)});
+   }
   }
+  if(batches.length)this.bank={batches,segments,joins:basinBankJoins(segments,outside)};
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
   const g=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
@@ -624,6 +651,20 @@ export class World {
     }
     pos.needsUpdate=true;
     if(tile.relief)tile.relief.base.getAttribute('position').needsUpdate=true;
+  }
+  const bank=this.bank;
+  if(bank){
+   const near=this.byId.get(BANK_TILE)?.lod===112;
+   if(near&&!bank.close){
+    const p=basinBankGeometry(this.cover,this.terrain,bank.segments,(x,z)=>this.visualGroundHeight(x,z),bank.joins);
+    const g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(p,3));
+    g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(p.length/3*2),2));
+    g.computeBoundingSphere();const m=new THREE.Mesh(g,bank.batches[0].mesh.material);
+    m.name='seated Basin Head shore';bank.close=m;this.scene.add(m);
+   }
+   if(bank.close)bank.close.visible=near;
+   for(const b of bank.batches)b.mesh.geometry=near?b.near:b.full;
   }
   if(changedGround)this.groundVersion++;
   const now=performance.now();

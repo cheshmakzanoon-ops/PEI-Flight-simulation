@@ -42,7 +42,7 @@ async function run(){
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
  const worldBase=import.meta.env.BASE_URL+'world/';
  const dockPack=loadQuartermasterDocks(worldBase),mappedSidewalks=loadSidewalks(worldBase),mappedParking=loadParkingSurfaces(worldBase);
- const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg,new URLSearchParams(location.search).has('inlandRelief'));const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,showBuildingShadows,new URLSearchParams(location.search).has('forestFloor'));const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
+ const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg,new URLSearchParams(location.search).has('inlandRelief'));const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,showBuildingShadows,new URLSearchParams(location.search).has('forestFloor'),!new URLSearchParams(location.search).has('noBasinBank'));const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  const glCanopy=renderer.getContext();
  if(new URLSearchParams(location.search).has('woodland3D')&&glCanopy.getParameter(glCanopy.SAMPLES)>=2){
   void import('./render/woodland-volume.ts').then(({WoodlandVolume})=>

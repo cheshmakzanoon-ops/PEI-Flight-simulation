@@ -1,0 +1,65 @@
+{
+  "singing-west-close": {
+    "pixels": 459000,
+    "exact": 454302,
+    "gt2": 2710,
+    "max": 150,
+    "changedBounds": [
+      510,
+      49,
+      795,
+      152
+    ],
+    "old": {
+      "draws": 60,
+      "triangles": 206448,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      }
+    },
+    "new": {
+      "draws": 61,
+      "triangles": 211390,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      }
+    }
+  },
+  "east-close": {
+    "pixels": 459000,
+    "exact": 459000,
+    "gt2": 0,
+    "max": 0,
+    "changedBounds": null,
+    "old": {
+      "draws": 264,
+      "triangles": 305641,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      }
+    },
+    "new": {
+      "draws": 264,
+      "triangles": 305641,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      }
+    }
+  }
+}
