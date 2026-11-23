@@ -68,6 +68,12 @@ python tools/qa/player-routes.py --dist dist --out /tmp/pei-routes \
 It starts both lighthouse approaches and records actual travel, then checks
 the original Cavendish coastal overdraw case after two relocations.
 
+## Coastal terrain and materials
+
+- [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [East Point sandstone](qa/east-sandstone.md): matched terrain materials, a licensed reference and a West Point control.
+- [Nearshore breakers](qa/shore-foam.md) and [road materials](qa/road-material.md): fixed-camera appearance and material-isolation checks.
+
 ## Cache behavior when shipping scenery updates
 
 The static build preloads one content-addressed Three.js chunk and keeps

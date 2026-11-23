@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "measure": "These matched-render controls detect color localization, not photorealism.",
+  "views": [
+    {
+      "pose": "cliff-face",
+      "sameGeometry": true,
+      "submittedTriangles": 298438,
+      "drawCalls": 233,
+      "regions": {
+        "rock": {
+          "roi": [
+            315,
+            287,
+            680,
+            397
+          ],
+          "pixels": 40150,
+          "pixelsOver4Levels": 40141,
+          "maxChannelDifference": 104,
+          "medianBrightnessBefore": 132.333,
+          "medianBrightnessAfter": 85.0,
+          "medianRedVsYellowBefore": -10.0,
+          "medianRedVsYellowAfter": 21.0
+        },
+        "sea": {
+          "roi": [
+            490,
+            495,
+            970,
+            620
+          ],
+          "pixels": 60000,
+          "pixelsOver4Levels": 0,
+          "maxChannelDifference": 0,
+          "medianBrightnessBefore": 157.0,
+          "medianBrightnessAfter": 157.0,
+          "medianRedVsYellowBefore": -23.0,
+          "medianRedVsYellowAfter": -23.0
+        },
+        "sky": {
+          "roi": [
+            115,
+            26,
+            920,
+            80
+          ],
+          "pixels": 43470,
+          "pixelsOver4Levels": 0,
+          "maxChannelDifference": 0,
+          "medianBrightnessBefore": 185.667,
+          "medianBrightnessAfter": 185.667,
+          "medianRedVsYellowBefore": 5.0,
+          "medianRedVsYellowAfter": 5.0
+        }
+      },
+      "stripeProfiles": {
+        "before": [
+          {
+            "roi": [
+              370,
+              284,
+              650,
+              394
+            ],
+            "dominantPeriodPx": 13.75,
+            "peakPowerFraction": 0.10781,
+            "bandResidualRms": 0.17336
+          },
+          {
+            "roi": [
+              520,
+              284,
+              880,
+              394
+            ],
+            "dominantPeriodPx": 12.2222,
+            "peakPowerFraction": 0.12919,
+            "bandResidualRms": 0.18323
+          },
+          {
+            "roi": [
+              620,
+              284,
+              960,
+              394
+            ],
+            "dominantPeriodPx": 7.3333,
+            "peakPowerFraction": 0.12633,
+            "bandResidualRms": 0.18281
+          }
+        ],
+        "after": [
+          {
+            "roi": [
+              370,
+              284,
+              650,
+              394
+            ],
+            "dominantPeriodPx": 10.0,
+            "peakPowerFraction": 0.20451,
+            "bandResidualRms": 0.75355
+          },
+          {
+            "roi": [
+              520,
+              284,
+              880,
+              394
+            ],
+            "dominantPeriodPx": 9.1667,
+            "peakPowerFraction": 0.26222,
+            "bandResidualRms": 0.86669
+          },
+          {
+            "roi": [
+              620,
+              284,
+              960,
+              394
+            ],
+            "dominantPeriodPx": 9.1667,
+            "peakPowerFraction": 0.21622,
+            "bandResidualRms": 1.03507
+          }
+        ]
+      }
+    },
+    {
+      "pose": "cliff-reveal",
+      "sameGeometry": true,
+      "submittedTriangles": 237143,
+      "drawCalls": 76,
+      "regions": {
+        "rock": {
+          "roi": [
+            420,
+            264,
+            790,
+            378
+          ],
+          "pixels": 42180,
+          "pixelsOver4Levels": 30460,
+          "maxChannelDifference": 103,
+          "medianBrightnessBefore": 130.333,
+          "medianBrightnessAfter": 87.667,
+          "medianRedVsYellowBefore": -13.0,
+          "medianRedVsYellowAfter": 20.0
+        },
+        "sea": {
+          "roi": [
+            490,
+            530,
+            935,
+            620
+          ],
+          "pixels": 40050,
+          "pixelsOver4Levels": 0,
+          "maxChannelDifference": 0,
+          "medianBrightnessBefore": 148.667,
+          "medianBrightnessAfter": 148.667,
+          "medianRedVsYellowBefore": -31.0,
+          "medianRedVsYellowAfter": -31.0
+        },
+        "grassCap": {
+          "roi": [
+            585,
+            202,
+            690,
+            230
+          ],
+          "pixels": 2940,
+          "pixelsOver4Levels": 0,
+          "maxChannelDifference": 0,
+          "medianBrightnessBefore": 47.0,
+          "medianBrightnessAfter": 47.0,
+          "medianRedVsYellowBefore": -29.0,
+          "medianRedVsYellowAfter": -29.0
+        }
+      }
+    },
+    {
+      "pose": "west-control",
+      "sameGeometry": true,
+      "submittedTriangles": 337143,
+      "drawCalls": 119,
+      "regions": {
+        "offsite": {
+          "roi": [
+            0,
+            0,
+            1024,
+            640
+          ],
+          "pixels": 655360,
+          "pixelsOver4Levels": 0,
+          "maxChannelDifference": 0,
+          "medianBrightnessBefore": 144.333,
+          "medianBrightnessAfter": 144.333,
+          "medianRedVsYellowBefore": -13.0,
+          "medianRedVsYellowAfter": -13.0
+        }
+      }
+    }
+  ],
+  "failedGates": [],
+  "geometryRegression": {
+    "censusNativeCells": 131072,
+    "exactBrowserFieldEquality": [
+      "sites",
+      "settings",
+      "cavendishControl"
+    ],
+    "failures": []
+  },
+  "sourceSHA256": {
+    "src/render/world.ts": "7524c99f3759c29a43408054be30c547f9cfad4dff8920aed57a4f0eaec4e231",
+    "src/render/east-sandstone.ts": "b89a326decd96661e706ef4a077410d24a5ba671aa289d70f88465123f2d70f7"
+  }
+}

@@ -35,6 +35,14 @@ Maximum distant-to-near difference on the recorded land points is **0.08813 m**;
 [Before](coastal-cliff-before.json) · [After](coastal-cliff-after.json) · [Corrupt-pack fallback](coastal-cliff-fallback.json).
 The lists of SHA-256 hashes identify the tested inputs.
 
+## Browser and fallback checks
+
+Four matched player-camera frames use the same eye, aim, loaded imagery and scenery, with the renderer drawing **16,548 additional triangles** in each but the same draw-call counts. The small visible differences concentrate on the cliff: 1,014–1,793 of 655,360 pixels changed by more than eight RGB levels across the four views. A separate magenta-sky diagnostic found **zero** sky pixels across 117,120 known shoreline pixels, with a fully activated sky control. This pass improves the relief, not the rock material or lighting.
+
+Five cold production scenarios completed the East Point departure: intact pack, absent refinement, corrupted same-size decoded refinement, interrupted HTTP body, and absent East base. None generated browser errors beyond the injected missing-file responses. For the stalled response, the real Chromium network clock saw the abort at **6.21 s** during concurrent software rendering; the nominal 1.6 s main-thread timer is not a fixed wall-clock SLA. The game became flyable with both validated base layers while the refinement body was still held. Releasing the server's remainder later did not change the installed geometry. A healthy refinement never attaches without its matching base pack.
+
+[Matched camera and void checks](coastal-cliff-frames.json) · [Built-game HTTP and departure tests](coastal-cliff-assets.json).
+
 ## Reproduce
 
 Install Node dependencies and the [browser/GDAL prerequisites](coastal-runtime.md#reproduce). Replace `BEFORE` (Git `9247190`) and `AFTER` with the relevant checkouts; run from `AFTER`. Provide `CHROMIUM` with a Chromium executable. The JSON output paths are disposable.
@@ -49,4 +57,21 @@ python3 tools/qa/coast-scene-audit.py --checkout "$AFTER" --stride 1 \
   --refinement-fallback /tmp/pei-cliff-baseline.json --out /tmp/pei-cliff-fallback.json
 python3 tools/qa/coastal-cliff-transect.py --before /tmp/pei-cliff-baseline.json \
   --after /tmp/pei-cliff-candidate.json --out /tmp/pei-cliff-profile.svg
+```
+
+For the captures (Pillow and NumPy required) and the compiled-game HTTP gate:
+
+```sh
+python3 tools/qa/coastal-cliff-poses.py --checkout "$BEFORE" --out /tmp/pei-cliff-before
+python3 tools/qa/coastal-cliff-poses.py --checkout "$AFTER" --out /tmp/pei-cliff-after
+python3 tools/qa/coastal-cliff-poses.py --checkout "$BEFORE" --views cliff-face \
+  --void-probe --out /tmp/pei-cliff-void-before
+python3 tools/qa/coastal-cliff-poses.py --checkout "$AFTER" --views cliff-face \
+  --void-probe --out /tmp/pei-cliff-void-after
+python3 tools/qa/coastal-cliff-frame-gate.py --before /tmp/pei-cliff-before \
+  --after /tmp/pei-cliff-after --cliff-void-before /tmp/pei-cliff-void-before \
+  --cliff-void-after /tmp/pei-cliff-void-after --out /tmp/pei-cliff-frames.json
+(cd "$AFTER" && npm run build)
+python3 tools/qa/coastal-cliff-assets.py --dist "$AFTER/dist" --chromium "$CHROMIUM" \
+  --out /tmp/pei-cliff-assets.json
 ```

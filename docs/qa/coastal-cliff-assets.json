@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "scenarios": [
+    {
+      "scenario": "stalled-body",
+      "requests": [
+        "/world/coastal/v1/east-point.i16.gz",
+        "/world/coastal/v1/west-point.i16.gz",
+        "/world/coastal/v2/east-point-cliff.i16.gz"
+      ],
+      "installedBaseSurveys": [
+        "east-point",
+        "west-point"
+      ],
+      "installedRefinement": [],
+      "flightTravelM": 17.26,
+      "optionalRequestAbortedMs": 6210.9,
+      "browserErrors": []
+    },
+    {
+      "scenario": "base-east-missing",
+      "requests": [
+        "/world/coastal/v1/east-point.i16.gz",
+        "/world/coastal/v1/west-point.i16.gz",
+        "/world/coastal/v2/east-point-cliff.i16.gz"
+      ],
+      "installedBaseSurveys": [
+        "west-point"
+      ],
+      "installedRefinement": [],
+      "flightTravelM": 15.04,
+      "browserErrors": []
+    },
+    {
+      "scenario": "healthy",
+      "requests": [
+        "/world/coastal/v1/east-point.i16.gz",
+        "/world/coastal/v1/west-point.i16.gz",
+        "/world/coastal/v2/east-point-cliff.i16.gz"
+      ],
+      "installedBaseSurveys": [
+        "east-point",
+        "west-point"
+      ],
+      "installedRefinement": [
+        "east-cliff-v1"
+      ],
+      "flightTravelM": 15.59,
+      "browserErrors": []
+    },
+    {
+      "scenario": "missing",
+      "requests": [
+        "/world/coastal/v1/east-point.i16.gz",
+        "/world/coastal/v1/west-point.i16.gz",
+        "/world/coastal/v2/east-point-cliff.i16.gz"
+      ],
+      "installedBaseSurveys": [
+        "east-point",
+        "west-point"
+      ],
+      "installedRefinement": [],
+      "flightTravelM": 13.37,
+      "browserErrors": []
+    },
+    {
+      "scenario": "corrupt-decoded",
+      "requests": [
+        "/world/coastal/v1/east-point.i16.gz",
+        "/world/coastal/v1/west-point.i16.gz",
+        "/world/coastal/v2/east-point-cliff.i16.gz"
+      ],
+      "installedBaseSurveys": [
+        "east-point",
+        "west-point"
+      ],
+      "installedRefinement": [],
+      "flightTravelM": 15.04,
+      "browserErrors": []
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "imageMetric": "Submitted Three triangles and matched RGB pixels on SwiftShader; not GPU FPS or a realism score.",
+  "views": [
+    {
+      "view": "cliff-face",
+      "camera": {
+        "lon": -61.97195911804511,
+        "lat": 46.451417608605276,
+        "h": 0,
+        "fixedBaseH": 7.5,
+        "dist": 52,
+        "agl": 7.2,
+        "fixedEyeY": 7.2,
+        "east": 0.96,
+        "south": 0.28,
+        "site": "east"
+      },
+      "fullyLoadedOrthoTiles": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "triangleCountBefore": 281890,
+      "triangleCountAfter": 298438,
+      "drawCallsBefore": 233,
+      "drawCallsAfter": 233,
+      "pixels": 655360,
+      "pixelsOver8RgbLevels": 1793,
+      "cliffCenterPixelsOver8RgbLevels": 1561
+    },
+    {
+      "view": "cliff-reveal",
+      "camera": {
+        "lon": -61.97195911804511,
+        "lat": 46.451417608605276,
+        "h": 0,
+        "fixedBaseH": 7.5,
+        "dist": 72,
+        "agl": 42,
+        "fixedEyeY": 42,
+        "east": 0.72,
+        "south": 0.69,
+        "site": "east"
+      },
+      "fullyLoadedOrthoTiles": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "triangleCountBefore": 220595,
+      "triangleCountAfter": 237143,
+      "drawCallsBefore": 76,
+      "drawCallsAfter": 76,
+      "pixels": 655360,
+      "pixelsOver8RgbLevels": 1365,
+      "cliffCenterPixelsOver8RgbLevels": 1032
+    },
+    {
+      "view": "cliff-south",
+      "camera": {
+        "lon": -61.97195911804511,
+        "lat": 46.451417608605276,
+        "h": 0,
+        "fixedBaseH": 7.5,
+        "dist": 62,
+        "agl": 17,
+        "fixedEyeY": 17,
+        "east": 0.39,
+        "south": 0.92,
+        "site": "east"
+      },
+      "fullyLoadedOrthoTiles": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "triangleCountBefore": 206363,
+      "triangleCountAfter": 222911,
+      "drawCallsBefore": 17,
+      "drawCallsAfter": 17,
+      "pixels": 655360,
+      "pixelsOver8RgbLevels": 1470,
+      "cliffCenterPixelsOver8RgbLevels": 770
+    },
+    {
+      "view": "east-station",
+      "camera": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "h": 19.5,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "agl": 45,
+        "fixedEyeY": 45,
+        "fixedBaseH": 10.07,
+        "site": "east"
+      },
+      "fullyLoadedOrthoTiles": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "triangleCountBefore": 287603,
+      "triangleCountAfter": 304151,
+      "drawCallsBefore": 262,
+      "drawCallsAfter": 262,
+      "pixels": 655360,
+      "pixelsOver8RgbLevels": 1014,
+      "cliffCenterPixelsOver8RgbLevels": 48
+    }
+  ],
+  "failedGates": [],
+  "skyVoidProbe": {
+    "before": {
+      "positiveControlPixels": 76800,
+      "positiveControlSize": 76800,
+      "innerShoreSkyPixels": 0,
+      "innerShoreSize": 117120,
+      "innerShoreROI": [
+        32,
+        323,
+        992,
+        445
+      ]
+    },
+    "after": {
+      "positiveControlPixels": 76800,
+      "positiveControlSize": 76800,
+      "innerShoreSkyPixels": 0,
+      "innerShoreSize": 117120,
+      "innerShoreROI": [
+        32,
+        323,
+        992,
+        445
+      ]
+    }
+  }
+}

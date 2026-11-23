@@ -5,6 +5,7 @@ import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
+import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { shoreFoamGLSL } from './shore-foam.ts';
 import { DetailImagery } from './detail.ts';
@@ -100,15 +101,24 @@ const waterFrag=fp+skyFn+shoreFoamGLSL+`
  c+=vec3(.72,.61,.41)*glitter*(.32+.35*fade);
  c=mix(c,vec3(.49,.58,.56),shoreFoam(q,shore,t,dist,n,foamFootprint));
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
-const cliffFrag=fp+`
+const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(cameraPosition,p), f=1.-smoothstep(250.,2200.,d);
  float strata=sin(p.y*6.1+noise(p.xz*.045)*3.8)*.05*f;
  vec3 col=mix(vec3(.31,.194,.116),vec3(.235,.094,.049),smoothstep(1.2,7.,p.y));
  col*=.90+strata+.18*noise(p.xz*.14+vec2(0.,p.y*.11));
+ ${east?`
+ float eastCover=eastRockWall(p)*eastRockDistance(d);
+ vec3 rockPx=fwidth(p),face=normalize(cross(dFdx(p),dFdy(p)));
+ if(eastCover>.001){
+  if(dot(face,cameraPosition-p)<0.)face=-face;
+  vec3 lithology=eastSandstone(p,d,rockPx)*(.90+.31*max(0.,dot(face,sun)));
+  col=mix(col,lithology,eastCover);
+ }
+ `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=fp+lighthouseGroundGLSL+`
+const landFrag=(east:boolean)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -137,6 +147,11 @@ const landFrag=fp+lighthouseGroundGLSL+`
  float rows=cos(phase)*(1.-smoothstep(.35,2.6,fwidth(phase)));
  col*=1.+detailFade*(.13*(noise(p.xz*.46)-.5)+.055*crop*rows);
  col=stationGround(col,p.xz,coast);
+ ${east?`
+ vec3 rockPx=fwidth(p);
+ float eastCover=eastRockLand(p,n,coast,vSurveyWeight)*eastRockDistance(d);
+ if(eastCover>.001)col=mix(col,eastSandstone(p,d,rockPx),eastCover);
+ `:''}
  col*=.90+.31*light;
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
@@ -186,15 +201,17 @@ export class World {
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
  constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture){
-   const T=terrain;const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
+   const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
+   const eastRockBounds={value:east?new THREE.Vector4(east.x0,east.z0,1/(east.x1-east.x0),1/(east.z1-east.z0)):new THREE.Vector4()};
+   const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
    const paint=runwayAtlas();const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
-   const uniforms={rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
+   const uniforms={eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
-   this.mat=make(landFrag);
-   this.addShoreFaces(make(cliffFrag,THREE.DoubleSide));
+   this.mat=make(landFrag(false));
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
     const x0=T.left+i*w,z0=T.top+j*d;
@@ -203,7 +220,7 @@ export class World {
     let any=false;outer:for(let y=sy;y<ey;y++)for(let x=sx;x<ex;x++)if(T.samples[y*T.spec.width+x]!==-32768){any=true;break outer;}
     if(!any)continue;
     const survey=T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag});
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(i===east?.spec.tileX&&j===east.spec.tileZ)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
@@ -212,11 +229,12 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial) {
-  const groups=new Map<string,number[]>();
-  const t=this.terrain;
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial) {
+  const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
+  const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
   for(const {ax,az,bx,bz} of coastSegments(this.cover,t)){
    const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
+   if(east&&Math.max(ax,bx)>=east.x0&&Math.min(ax,bx)<=east.x1&&Math.max(az,bz)>=east.z0&&Math.min(az,bz)<=east.z1)rockGroups.add(key);
    let vertices=groups.get(key);if(!vertices){vertices=[];groups.set(key,vertices);}
    // Follow the original shoreline segments, with finer vertical samples only where
    // measured relief exists. Neither survey coverage nor zero elevation defines coast.
@@ -232,11 +250,11 @@ export class World {
     px=qx;pz=qz;ph=qh;
    }
   }
-  for(const vertices of groups.values()){
+  for(const [key,vertices] of groups){
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
    g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(vertices.length/3*2),2));
    g.computeBoundingSphere();
-   const m=new THREE.Mesh(g,material);m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
+   const m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
   }
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
