@@ -4,6 +4,10 @@ import {adaptiveGround} from './adaptive-ground.ts';
 import type {ReliefPacks} from '../sim/relief-pack.ts';
 import type {ReliefSeed} from '../sim/relief-seed.ts';
 import * as THREE from 'three';
+import {verifiedBaywalkRoadSupport,type RoadPoint} from './baywalk-road.ts';
+import {BaywalkGround,baywalkCourtOpticsGLSL,baywalkLandGLSL,baywalkUniforms} from './baywalk-land.ts';
+import {BaywalkNative,supportedBaywalkCourt,type BaywalkCourtData} from '../sim/baywalk-native.ts';
+import {verifiedBaywalkDeckClearance,type SpinnakersDeck} from './spinnakers-deck.ts';
 import {facet,loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
 import {insertCoastalGrid} from './coastal-patch.ts';
 import {alteredPatchHeight} from './render-patch-height.ts';
@@ -96,7 +100,7 @@ const skyFrag=skyFn+`
   if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
   vec3 c=skyAt(normalize(skyRay));
   gl_FragColor=vec4(c,1.);`+out;
-const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false)=>fp+skyFn+shoreFoamGLSL+(foamDetail?brokenShoreFoamGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
+const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false,baywalk=false)=>fp+skyFn+shoreFoamGLSL+(foamDetail?brokenShoreFoamGLSL:'')+(baywalk?baywalkLandGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -140,6 +144,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  ${harbour?'shore=harbourFrom(shore,quay);':''}
  ${basin?'vec2 inlet=basinChannelAt(p.xz);shore=mergeWharfToe(basinChannelFrom(shore,inlet),p.xz);float basinShelter=BasinWetReach(p.xz,inlet);':''}
  ${montague?'shore=montagueFrom(shore,reach);':''}
+ ${baywalk?'shore=northCourtDistance(shore,q);':''}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
  // Conservative phase footprint includes the spatial distortion from the
@@ -188,7 +193,9 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  ${montagueOptics?'if(riverCalm>0.)foam*=1.-smoothstep(0.,.255,riverCalm);':''}
  c=mix(c,vec3(.49,.58,.56),foam);
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
-const cliffFrag=(east:boolean,basin=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+`
+const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+
+  (baywalk?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+`
+ ${baywalk?'uniform sampler2D coverMap;uniform vec4 extent;':''}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(cameraPosition,p), f=1.-smoothstep(250.,2200.,d);
@@ -216,8 +223,13 @@ const cliffFrag=(east:boolean,basin=false)=>fp+(east?eastSandstoneGLSL:'')+(basi
  bank*=.91+.16*grain;
  col=mix(col,bank,use*.94);
  `:''}
+ ${baywalk?`
+ float old=(texture2D(coverMap,(p.xz-extent.xy)/extent.zw).g*255.-128.)*2.;
+ float northMix=smoothstep(.08,.65,-old)*(1.-smoothstep(.13,.46,abs(northCourtSigned(p.xz))));
+ if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
+ `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false)=>fp+lighthouseGroundGLSL+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false)=>fp+lighthouseGroundGLSL+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -230,7 +242,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${harbour?'coast=harbourDistance(coast,p.xz);':''}
  ${basin?'if(basinChannelDistance(coast,p.xz)<0.)discard;':''}
  ${montague?'if(montagueWaterDistance(coast,p.xz)<0.)discard;':''}
- if(coast<0.)discard;
+ ${baywalkCourt?'if(coast>=0.||northCourtSigned(p.xz)<=0.)discard;':'if(coast<0.)discard;'}
  vec2 uv=vec2(vuv.x,1.-vuv.y);
  vec2 q=(vuv-detailBox.xy)*detailBox.zw;
  float amount=hasDetail>.5?detailAmount(q):0.;
@@ -270,6 +282,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
  float cliff=(1.-smoothstep(3.,15.,coast))*smoothstep(3.,16.,p.y);
+ ${baywalkCourt?'col=northCourtDryOptics(p,coast);beach=0.;cliff=0.;':''}
  col=mix(col,vec3(.47,.34,.20)*(.89+.16*noise(p.xz*.057)),beach*.79);
  col=mix(col,vec3(.23,.091,.054),cliff*.7);
  float detailFade=1.-smoothstep(290.,1900.,d);
@@ -302,7 +315,9 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false){
+export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
+export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
+ baywalkRequested?:Promise<BaywalkRegistration|undefined>){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -314,7 +329,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
-  loadCover(tryBasinChannel,!!montagueRoadVerified),
+  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
@@ -327,10 +342,15 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const foundation=supportedMontagueFoundation(cover.sourceSha,elevation.spec.sha256,cover.sourceDecodedSha)&&await montagueRoadVerified?
   await foundationJob:undefined;
  const wharfToe=tryWharfToe&&!!basin;
- const committedCover=foundation||basin!==cover.basin||wharfToe?
+ const priorCover=foundation||basin!==cover.basin||wharfToe?
   new Cover(cover.width,cover.height,cover.bytes,cover.harbour,cover.sourceSha,basin,foundation?.water,cover.sourceDecodedSha,wharfToe):cover;
- return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),foundation?[...installed,foundation.ground]:installed,inland),
-   img,cover:committedCover,sky,bankGround,
+ const terrain=new Terrain(elevation.spec,new Int16Array(elevation.data),foundation?[...installed,foundation.ground]:installed,inland);
+ const requested=baywalkRequested&&supportedBaywalkCourt(priorCover.sourceSha,elevation.spec.sha256,priorCover.sourceDecodedSha)?await baywalkRequested:undefined;
+ const maybeCourt=requested?new BaywalkNative(requested.court):undefined;
+ const court=maybeCourt&&requested&&verifiedBaywalkDeckClearance(requested.deck,priorCover,terrain,maybeCourt)&&verifiedBaywalkRoadSupport(requested.road,priorCover,terrain,maybeCourt)?maybeCourt:undefined;
+ const committedCover=court?new Cover(priorCover.width,priorCover.height,priorCover.bytes,priorCover.harbour,priorCover.sourceSha,
+  priorCover.basin,priorCover.montague,priorCover.sourceDecodedSha,priorCover.wharfToe,court):priorCover;
+ return {terrain,img,cover:committedCover,sky,bankGround,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -348,7 +368,7 @@ async function loadElevation(progress:(s:string)=>void){
  }
  return {spec,data};
 }
-async function loadCover(tryBasin=false,checkForMontague=false){
+async function loadCover(tryBasin=false,verifyOptionalGeography=false){
  const land=fetch(base+'cover.json'),bytes=fetch(base+'cover.bin.gz');
  const [cmeta,coverData,harbour,basin]=await Promise.all([land,bytes,loadHarbourCover(base),tryBasin?loadBasinChannel(base):undefined]);
  if(!cmeta.ok||!coverData.ok)throw Error('The coastline and forest atlas could not be loaded.');
@@ -356,7 +376,7 @@ async function loadCover(tryBasin=false,checkForMontague=false){
  let checkedBasin:WaterInset|undefined,decodedSha:string|undefined;
  // Authenticate decoded data once for either optional geography. CDN
  // decompression cannot bypass a source pin.
- if((basin?.plan.pinCoverSha256===cs.compressedSha256||checkForMontague)&&globalThis.crypto?.subtle){
+ if((basin?.plan.pinCoverSha256===cs.compressedSha256||verifyOptionalGeography)&&globalThis.crypto?.subtle){
   const hash=new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',cb));
   decodedSha=Array.from(hash,x=>x.toString(16).padStart(2,'0')).join('');
   if(basin?.plan.pinCoverSha256===cs.compressedSha256&&decodedSha===BASIN_CHANNEL.pinCoverDecodedSha256)checkedBasin=basin;
@@ -370,6 +390,10 @@ export class World {
  private shoreFaces:THREE.Mesh[]=[];
  private legacyShore?:LegacyShoreCurtains;
  get legacyShoreState(){return this.legacyShore?.state??null;}
+ private northCourt?:BaywalkGround;
+ private northCurtain?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];signature?:string};
+ get baywalkActive(){return !!this.northCourt;}
+ get baywalkBounds(){return this.northCourt?.signatureBounds;}
  private montagueReviewShore?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];bounds:ReviewBounds;revision?:string};
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
@@ -435,9 +459,10 @@ export class World {
    };
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
-   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail));
+   const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
+   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
-   if(harbour||basin||montague)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms};
+   if(harbour||basin||montague||cover.baywalk)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms,...northCourtUniforms};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
     const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;
@@ -458,7 +483,12 @@ export class World {
     inletBank=make(cliffFrag(false,true),THREE.DoubleSide);inletBank.uniforms={...uniforms,...basinUniforms};
     if(cover.wharfToe)inletBank.defines.BASIN_WHARF_TOE=1;if(wharfFacade)inletBank.defines.BASIN_WHARF_FACADE=1;
    }
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore);
+   let northBank:THREE.ShaderMaterial|undefined;
+   if(cover.baywalk){
+    northBank=make(cliffFrag(false,false,true),THREE.DoubleSide);
+    northBank.uniforms={...uniforms,...northCourtUniforms};
+   }
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore,northBank);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -500,15 +530,25 @@ export class World {
       new THREE.ShaderMaterial({uniforms:local.uniforms,vertexShader:vertex,fragmentShader:local.fragmentShader}):local;
     scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
+   if(cover.baywalk){
+    const b=cover.baywalk,[uu,vv]=T.uv((b.x0+b.x1)*.5,(b.z0+b.z1)*.5);
+    const tile=this.byId.get(Math.floor(uu*nx)+'-'+Math.floor(vv*nz));
+    const m=new THREE.ShaderMaterial({vertexShader:vertex,
+     fragmentShader:landFrag(false,false,false,false,!!this.buildingShadows,false,false,false,false,false,true),
+     uniforms:{...(tile?.local.uniforms??uniforms),...this.buildingShadows?.uniforms,...northCourtUniforms}});
+    this.northCourt=new BaywalkGround(b,cover,T,m,(x,z)=>this.provinceVisualGroundHeight(x,z));
+    scene.add(this.northCourt.mesh);
+    this.refreshNorthCourt();
+   }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
    const light=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
    const env=sky.clone();env.mapping=THREE.EquirectangularReflectionMapping;env.needsUpdate=true;scene.environment=env;scene.environmentIntensity=.77;
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false,northBank?:THREE.ShaderMaterial) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
-  const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[],reviewed:ShoreSegment[]=[];
+  const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[],reviewed:ShoreSegment[]=[],courtShore:ShoreSegment[]=[];
   const review=montagueShoreReview(this.cover,this.terrain);
   const cuts=new Map<string,[number,number][]>();
   const batches:NonNullable<World['bank']>['batches']=[];
@@ -544,6 +584,7 @@ export class World {
    joins.add(keyOf(a.ax,a.az));joins.add(keyOf(a.bx,a.bz));
   }
   for(let segment of cfg){
+   if(segment.baywalk){courtShore.push(segment);continue;}
    if(review?.includes(segment)){reviewed.push(segment);continue;}
    if(joins.size&&!segment.seatedLegacyArc){
     const {ax,az,bx,bz}=segment,head=joins.has(keyOf(ax,az)),tail=joins.has(keyOf(bx,bz));
@@ -580,6 +621,11 @@ export class World {
    if(bank){
     const list=cuts.get(key)??[];list.push([start,vertices.length]);cuts.set(key,list);
    }
+  }
+  if(courtShore.length&&northBank){
+   const mesh=new THREE.Mesh(new THREE.BufferGeometry(),northBank);
+   mesh.name='Summerside measured court shoreline';this.northCurtain={mesh,segments:courtShore};
+   this.scene.add(mesh);
   }
   const shore=(v:number[])=>{
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
@@ -621,6 +667,23 @@ export class World {
   g.setAttribute('position',new THREE.BufferAttribute(p,3));
   g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(p.length/3*2),2));
   g.computeBoundingSphere();q.mesh.geometry.dispose();q.mesh.geometry=g;q.mesh.visible=true;q.revision=revision;
+ }
+ private refreshNorthCourt(){
+  const q=this.northCourt;if(!q)return;
+  const signature=this.visualGroundSignature(q.signatureBounds);
+  q.update(signature,(x,z)=>this.provinceVisualGroundHeight(x,z));
+  const wall=this.northCurtain;
+  if(wall&&wall.signature!==signature){
+   const pos=seatedMontagueCurtain(wall.segments,(x,z)=>{
+    if(q.source.inside(x,z)&&q.source.signed(x,z)>-.64&&this.cover.beforeBaywalk(this.terrain,x,z)<0)return q.height(x,z);
+    return this.provinceVisualGroundHeight(x,z);
+   });
+   const next=new THREE.BufferGeometry();
+   next.setAttribute('position',new THREE.BufferAttribute(pos,3));
+   next.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(pos.length/3*2),2));
+   next.computeBoundingSphere();
+   wall.mesh.geometry.dispose();wall.mesh.geometry=next;wall.signature=signature;
+  }
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
   let g:THREE.BufferGeometry=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
@@ -714,6 +777,13 @@ export class World {
  /** Height of the submitted regular grid (including sewn tile-edge vertices).
   * Decorative roots use this, not the map or aerodynamic contact sampler. */
  visualGroundHeight(x:number,z:number){
+  return this.restoredBaywalkY(x,z)??this.provinceVisualGroundHeight(x,z);
+ }
+ restoredBaywalkY(x:number,z:number){
+  const q=this.northCourt;
+  if(q?.source.inside(x,z)&&q.source.restored(this.cover.beforeBaywalk(this.terrain,x,z),x,z))return q.height(x,z);
+ }
+ private provinceVisualGroundHeight(x:number,z:number){
   const [u,v]=this.terrain.uv(x,z),i=Math.floor(u*WORLD_COLS),j=Math.floor(v*WORLD_ROWS);
   const tile=this.byId.get(i+'-'+j);
   if(!tile)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
@@ -758,6 +828,19 @@ export class World {
   // cannot revoke visible land, and even positive offshore survey samples
   // must not raise water contact above the rendered ocean.
   const covered=land??(this.cover.distance(this.terrain,x,z)>=0);
+  const baywalk=covered?this.restoredBaywalkY(x,z):undefined;
+  if(baywalk!==undefined){
+   // Rendering joins the active stock triangle. Flight joins stock
+   // contact (which may use a different elevation interpolation) at the
+   // same sign-zero. Ease their inherited difference on restored land
+   // only; far enough inside, both use the same submitted survey cap.
+   const prior=this.cover.beforeBaywalk(this.terrain,x,z),u=Math.max(0,Math.min(1,-prior/4.8));
+   const f=1-u*u*(3-2*u);
+   return f?baywalk+f*(this.provinceFlightHeight(x,z,true)-this.provinceVisualGroundHeight(x,z)):baywalk;
+  }
+  return this.provinceFlightHeight(x,z,covered);
+ }
+ private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
   if(!covered||!this.reliefActive.size||runwayAt(x,z))return baseline;
@@ -845,6 +928,7 @@ export class World {
    for(const b of bank.batches)b.mesh.geometry=near?b.near:b.full;
   }
   this.refreshMontagueReviewShore();
+  if(this.northCourt)this.refreshNorthCourt();
   this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
   const now=performance.now();

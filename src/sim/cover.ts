@@ -2,12 +2,13 @@ import {clamp} from './geo.ts';
 import {mergeWharfToe} from './basin-wharf-toe.ts';
 import type {HarbourCover,WaterInset} from './harbour-cover.ts';
 import type {Terrain} from './terrain.ts';
+import type {BaywalkNative} from './baywalk-native.ts';
 export class Cover {
- readonly sourceSha?:string;readonly wharfToe:boolean;
+ readonly sourceSha?:string;readonly wharfToe:boolean;readonly baywalk?:BaywalkNative;
  readonly width:number;readonly height:number;readonly bytes:Uint8Array;readonly harbour:HarbourCover|undefined;readonly basin?:WaterInset;readonly montague?:WaterInset;readonly sourceDecodedSha?:string;readonly waterInsets:readonly WaterInset[];
- constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset,montague?:WaterInset,sourceDecodedSha?:string,wharfToe=false){
+ constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset,montague?:WaterInset,sourceDecodedSha?:string,wharfToe=false,baywalk?:BaywalkNative){
   if(data.length!==width*height*2||width<2||height<2)throw Error('Invalid province ground-cover raster.');
-  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;this.montague=montague;this.sourceDecodedSha=sourceDecodedSha;this.wharfToe=wharfToe;
+  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;this.montague=montague;this.sourceDecodedSha=sourceDecodedSha;this.wharfToe=wharfToe;this.baywalk=baywalk;
   this.waterInsets=[...(harbour?[harbour]:[]),...(basin?[basin]:[]),...(montague?[montague]:[])];
  }
  sample(t:Terrain,x:number,z:number){
@@ -15,6 +16,10 @@ export class Cover {
   const i=Math.floor(u*this.width),j=Math.floor(v*this.height);return this.bytes[(j*this.width+i)*2];
  }
  distance(t:Terrain,x:number,z:number){
+  const prior=this.beforeBaywalk(t,x,z);
+  return this.baywalk?.distance(prior,x,z)??prior;
+ }
+ beforeBaywalk(t:Terrain,x:number,z:number){
   const old=this.legacyDistance(t,x,z);
   const prior=this.harbour?.distance(old,x,z)??old;
   const next=this.basin?.distance(prior,x,z)??prior;

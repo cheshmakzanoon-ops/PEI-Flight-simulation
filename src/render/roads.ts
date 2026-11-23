@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import {buildBaywalkRoad,type BaywalkRoad,type RoadPoint} from './baywalk-road.ts';
+import {BAYWALK_ROAD_SHA,BAYWALK_ROAD_ORDINAL,BAYWALK_ROAD_FLAGS} from '../sim/baywalk-native.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
@@ -93,6 +95,8 @@ export class Roads {
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
   private readonly previewBridge?:THREE.Group;
   private readonly previewOwners:readonly string[];
+  private readonly baywalkRoad?:BaywalkRoad;private readonly baywalkOwners:readonly string[];
+  get baywalkRoadActive(){return !!this.baywalkRoad;}
   get bridgePreviewActive(){return !!this.previewBridge;}
   private readonly nearPatches?:()=>readonly CoastalGrid[];
   private readonly seated?:World;
@@ -114,9 +118,14 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[]) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]}) {
     this.tiles=tiles;this.terrain=terrain;this.previewOwners=previewOwners;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
+    this.baywalkOwners=court?.owners??[];
+    if(court){
+     this.baywalkRoad=buildBaywalkRoad(court.points,court.world,this.material,tarmac);
+     if(this.baywalkRoad)this.root.add(this.baywalkRoad.mesh);
+    }
     this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
     addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
     if(Array.from(tiles.values()).some(t=>t.victoria)){
@@ -147,7 +156,9 @@ export class Roads {
     const {data,roads,digest,montagueVerified}=prepared??await roadNetwork();
     const tiles = new Map<string, Tile>(),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
     const register=!!preview?.cover.montague&&terrain.coastalSurveys.includes(MONTAGUE_GROUND_ID)&&montagueVerified;
-    const owners=new Set<string>();
+    const owners=new Set<string>(),courtOwners=new Set<string>();
+    const courtRow=preview?.baywalkActive&&digest===BAYWALK_ROAD_SHA&&roads[BAYWALK_ROAD_ORDINAL]?.flags===BAYWALK_ROAD_FLAGS
+      ?roads[BAYWALK_ROAD_ORDINAL].points:undefined;
     for (let ordinal=0;ordinal<roads.length;ordinal++) {
       const omit=register&&(MONTAGUE_CUTS as readonly number[]).includes(ordinal);
       const {points,flags:sourceFlags}=roads[ordinal];
@@ -164,6 +175,7 @@ export class Roads {
           const p=j/n, q=(j+1)/n, x=a.x+p*dx, z=a.z+p*dz, u=a.x+q*dx, v=a.z+q*dz;
           const tx=Math.floor((x+u)/2/TILE), tz=Math.floor((z+v)/2/TILE), key=`${tx},${tz}`;
           if(omit){owners.add(key);continue;}
+          if(courtRow&&ordinal===BAYWALK_ROAD_ORDINAL&&(i===2||i===3)){courtOwners.add(key);continue;}
           let tile=tiles.get(key);
           if(!tile) {
             tile={x:(tx+0.5)*TILE,z:(tz+0.5)*TILE,segments:[]};
@@ -174,7 +186,8 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners));
+    return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners),
+     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined);
   }
 
   private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){
@@ -272,7 +285,7 @@ export class Roads {
   }
 
   update(x: number, z: number, agl=Infinity) {
-    this.pavement.update(agl);
+    this.pavement.update(agl);this.baywalkRoad?.sync();
     const time=performance.now(),h=THREE.MathUtils.clamp((194-agl)/82,0,1);
     if(this.seat&&(agl>=209||Math.hypot(x-this.lastX,z-this.lastZ)>1600))this.seatedAt=Infinity;
     const fade=THREE.MathUtils.clamp((time-this.seatedAt)/725,0,1);
@@ -307,6 +320,9 @@ export class Roads {
       return i>=minX&&i<=maxX&&j>=minZ&&j<=maxZ;
      });
     }
+    if(this.baywalkRoad)this.baywalkRoad.mesh.visible=this.baywalkOwners.some(owner=>{
+     const [i,j]=owner.split(',').map(Number);return i>=minX&&i<=maxX&&j>=minZ&&j<=maxZ;
+    });
     const keep=new Set<string>();
     for(let tz=minZ;tz<=maxZ;tz++) for(let tx=minX;tx<=maxX;tx++) {
       const key=`${tx},${tz}`, t=this.tiles.get(key);

@@ -4,7 +4,7 @@ import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
 import type { Terrain } from './terrain.ts';
 
-export interface ShoreSegment { ax:number; az:number; bx:number; bz:number; seatedLegacyArc?:ShoreSegment; seatJoin?:readonly [boolean,boolean] }
+export interface ShoreSegment { ax:number; az:number; bx:number; bz:number; seatedLegacyArc?:ShoreSegment; seatJoin?:readonly [boolean,boolean];baywalk?:true }
 
 function contourCell(result:ShoreSegment[],x:number,z:number,stepX:number,stepZ:number,a:number,b:number,c:number,d:number){
  const mask=(a>=0?1:0)|(b>=0?2:0)|(c>=0?4:0)|(d>=0?8:0);
@@ -65,13 +65,36 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
  return {ix0,iz0,cols,rows,div,fields,blocks,x,z,dx,dz,nx};
 }
 
+/** Rebuild only cells containing a certified wet-to-dry change. March the
+ * continuous sign-equivalent union, not the possibly discontinuous material
+ * scalar (which deliberately keeps old wet/dry optics away from new land). */
+function baywalkShoreCells(cover:Cover,terrain:Terrain){
+ const bank=cover.baywalk,chosen=new Set<number>();
+ if(!bank)return chosen;
+ const {width:w,height:h}=cover,dx=(terrain.right-terrain.left)/w,dz=(terrain.bottom-terrain.top)/h;
+ const locate=(x:number,z:number)=>[(x-terrain.left)/dx-.5,(z-terrain.top)/dz-.5];
+ const mark=(i:number,j:number)=>{if(i>=0&&j>=0&&i<w-1&&j<h-1)chosen.add(j*w+i);};
+ for(let j=0;j<bank.height;j++)for(let i=0;i<bank.width;i++){
+  if(bank.data.shore[j*bank.width+i]<=128)continue;
+  const x=bank.x0+i*bank.step,z=bank.z0+j*bank.step,prior=cover.beforeBaywalk(terrain,x,z);
+  // Approaching either side of an inherited zero may change its local
+  // contour even when the nearest data node is already dry.
+  if(prior>1.6)continue;
+  const [u,v]=locate(x,z),a=Math.floor(u),b=Math.floor(v);mark(a,b);
+  const m=bank.step+.025;
+  if((u-a)*dx<m)mark(a-1,b);else if((a+1-u)*dx<m)mark(a+1,b);
+  if((v-b)*dz<m)mark(a,b-1);else if((b+1-v)*dz<m)mark(a,b+1);
+ }
+ return chosen;
+}
 /** March the same pixel-centred, signed-distance field the land and water shaders sample. */
 export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number)=>boolean;
 export const LEGACY_SHORE_MIN_CHORD_M=1.40;
 export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreSelection): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
  const stepX=(terrain.right-terrain.left)/w,stepZ=(terrain.bottom-terrain.top)/h,locally=cover.waterInsets.map(inset=>harbourSections(cover,terrain,inset));
- const inFine=(i:number,j:number)=>locally.some(fine=>{
+ const court=baywalkShoreCells(cover,terrain);
+ const inFine=(i:number,j:number)=>court.has(j*w+i)||locally.some(fine=>{
   const x=i-fine.ix0,z=j-fine.iz0;
   return x>=0&&z>=0&&x<fine.cols&&z<fine.rows&&fine.blocks[z*fine.cols+x]>0;
  });
@@ -123,6 +146,21 @@ export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreS
    const k=j*n+i;
    contourCell(result,x+i*dx,z+j*dz,dx,dz,sample[k],sample[k+1],sample[k+n+1],sample[k+n]);
   }
+ }
+ for(const cell of court){
+  const i=cell%w,j=Math.floor(cell/w),x=terrain.left+(i+.5)*stepX,z=terrain.top+(j+.5)*stepZ;
+  const div=Math.ceil(Math.max(stepX,stepZ)/.28),dx=stepX/div,dz=stepZ/div,n=div+1;
+  const sample=new Float64Array(n*n),first=result.length;
+  for(let b=0;b<=div;b++)for(let a=0;a<=div;a++){
+   const px=x+a*dx,pz=z+b*dz;
+   const old=cover.beforeBaywalk(terrain,px,pz);
+   sample[b*n+a]=Math.max(old,cover.baywalk!.signed(px,pz));
+  }
+  for(let b=0;b<div;b++)for(let a=0;a<div;a++){
+   const k=b*n+a;
+   contourCell(result,x+a*dx,z+b*dz,dx,dz,sample[k],sample[k+1],sample[k+n+1],sample[k+n]);
+  }
+  for(let i=first;i<result.length;i++)result[i].baywalk=true;
  }
  return result;
 }

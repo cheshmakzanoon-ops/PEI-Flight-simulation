@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import {readCoastalPack} from '../sim/coastal-packs.ts';
 import {OCEAN_Y,type Terrain} from '../sim/terrain.ts';
+import {GROUND_LIFT} from '../sim/coastal-terrain.ts';
+import type {BaywalkNative} from '../sim/baywalk-native.ts';
 import type {Cover} from '../sim/cover.ts';
 import {project} from '../sim/geo.ts';
 import {SPINNAKERS_DECK as spec} from './spinnakers-deck.generated.ts';
@@ -31,7 +33,7 @@ export function loadSpinnakersDeck(base:string,fetcher:typeof fetch=fetch,timeou
 
 const origin=project(...spec.anchor);
 const deckBase=new THREE.Color(0x7e796d);
-function weatheredTimber(opt:'deck'|'edge'|'post'|'rail',boardShade?:THREE.DataTexture){
+export function weatheredTimber(opt:'deck'|'edge'|'post'|'rail',boardShade?:THREE.DataTexture){
  const isDeck=opt==='deck',vertical=opt==='edge'||opt==='post';
  const mat=new THREE.MeshStandardMaterial({color:isDeck?deckBase:opt==='edge'?0x6b6052:opt==='post'?0x504638:0x938e80,
   metalness:0,roughness:isDeck?.91:.95,side:THREE.DoubleSide});
@@ -123,7 +125,7 @@ export function buildSpinnakersDeck(pack:SpinnakersDeck|undefined,cover:Cover,te
  // A reference geometry on a real over-water pier never creates a new
  // ground or aircraft contact surface. Refuse a changed underlying coast.
  for(let i=0;i<pack.top.length;i+=3){
-  if(cover.distance(terrain,origin.x+pack.top[i],origin.z+pack.top[i+2])>=0)return;
+  if(cover.beforeBaywalk(terrain,origin.x+pack.top[i],origin.z+pack.top[i+2])>=0)return;
  }
  const dock=new THREE.Group();dock.name='Spinnakers’ Landing measured weathered timber deck';dock.position.set(origin.x,0,origin.z);
  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pack.top,3));g.setIndex(new THREE.BufferAttribute(pack.indices,1));
@@ -230,4 +232,24 @@ export function spinnakersDeckSurface(pack:SpinnakersDeck){
    if(j>=-1e-6&&k>=-1e-6&&j+k<=1+1e-6)return a.y+j*(b.y-a.y)+k*(e.y-a.y);
   }
  };
+}
+
+
+/** Only the optional court may place corroborated grade below C. Keep strict
+ * old-water registration and prove there is room under the existing deck. */
+export function verifiedBaywalkDeckClearance(pack:SpinnakersDeck,cover:Cover,terrain:Terrain,bank:BaywalkNative){
+ for(let i=0;i<pack.top.length;i+=3){
+  const x=origin.x+pack.top[i],z=origin.z+pack.top[i+2],old=cover.beforeBaywalk(terrain,x,z);
+  if(old>=0)return false;
+  if(bank.restored(old,x,z)&&pack.top[i+1]-bank.heightM(x,z)-GROUND_LIFT<.36)return false;
+ }
+ const seat=spinnakersDeckSurface(pack);
+ for(let j=0;j<bank.height;j++)for(let i=0;i<bank.width;i++){
+  if(bank.data.shore[j*bank.width+i]<=128)continue;
+  const x=bank.x0+bank.step*i,z=bank.z0+bank.step*j;
+  if(cover.beforeBaywalk(terrain,x,z)>=0)continue;
+  const top=seat(x-origin.x,z-origin.z);
+  if(top!==undefined&&top-bank.heightM(x,z)-GROUND_LIFT<.36)return false;
+ }
+ return true;
 }

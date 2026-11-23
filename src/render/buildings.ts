@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import type {NorthBaywalk} from './north-baywalk.ts';
+import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
 import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINNAKERS_TILE,type WharfSurface} from './spinnakers-shells.ts';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
@@ -26,6 +28,7 @@ import { PackedBytes } from '../sim/packed-bytes.ts';
 import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
 import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
+type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[]};
 interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 interface Tile {id:string;bounds:[number,number,number,number];count:number;offset:number;bytes:number;}
 interface BoundTile extends Tile{x1:number;x2:number;z1:number;z2:number;}
@@ -130,7 +133,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`;
-export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembled?:THREE.Group};
+export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
@@ -141,9 +144,10 @@ export class Buildings {
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
  private readonly spinnakers?:SpinnakersScene;
+ private readonly pinnedSpinnakers?:Bldg[];
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene){
-  this.spinnakers=spinnakers;
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[]){
+  this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;
   if(casts){this.mat.fragmentShader=buildingF(false,true);Object.assign(this.mat.uniforms,casts.uniforms);}
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
@@ -164,17 +168,46 @@ export class Buildings {
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>){
-  const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
+ private static async openAtlas(signal?:AbortSignal):Promise<PreparedAtlas>{
+  const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json',signal?{signal}:undefined);
   if(!mf.ok)throw Error('Building atlas not available.');
   const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
   if(a.file!=='tiles.pack'||!Number.isSafeInteger(a.bytes)||a.bytes<=0||!Array.isArray(a.tiles)||!a.tiles.length||
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight,casts,spinnakers?await spinnakers:undefined);
+  return {atlas:a.tiles,pack:new PackedBytes(path+a.file,a.bytes,(input,init)=>fetch(input,signal?{...init,signal}:init)),atlasHash:a.sha256};
+ }
+ private static async decodeChunk(part:ArrayBuffer){
+  const result=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
+  return result.features;
+ }
+ private static async decode(tile:Tile,pack:PackedBytes){
+  return Buildings.decodeChunk(await pack.read(tile.offset,tile.bytes));
+ }
+ /** Bank activation and scene assembly use the same immutable verified
+  * q032001 bytes. A second network read cannot orphan the live bank. */
+ static async prepareBaywalk(){
+  const c=new AbortController(),timer=setTimeout(()=>c.abort(),2200);
+  try{
+   const ready=await Buildings.openAtlas(c.signal);
+   const tile=ready.atlas.find(t=>t.id===SPINNAKERS_TILE);
+   if(!tile||tile.bytes!==20163||!globalThis.crypto?.subtle)return;
+   const part=await ready.pack.read(tile.offset,tile.bytes);
+   const hash=new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',part));
+   const digest=Array.from(hash,b=>b.toString(16).padStart(2,'0')).join('');
+   if(digest!==SPINNAKERS_SHELLS.recordBytesHash)return;
+   const rows=await Buildings.decodeChunk(part);
+   if(matchesSpinnakersShells(ready.atlasHash,tile.id,rows))return {...ready,spinnakers:rows};
+  }catch{/** Ordinary C and stock still have their normal fallback. */}
+  finally{clearTimeout(timer);}
+ }
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>){
+  const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers);
  }
  update(x:number,z:number){
+  if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
@@ -192,6 +225,7 @@ export class Buildings {
   }
  }
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
+ get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
  get sourceAtlasSha256(){return this.atlasHash;}
  diagnostics(){
   let failed=0;
@@ -201,25 +235,26 @@ export class Buildings {
  private async load(tile:BoundTile){
   this.loading.add(tile.id);
   try{
-   const part=await this.pack.read(tile.offset,tile.bytes);
-   const chunk=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
+   const features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
    if(!this.wanted.has(tile.id))return;
    const sp=this.spinnakers;
    let wharf:THREE.Group|undefined;
-   if(sp&&matchesSpinnakersShells(this.atlasHash,tile.id,chunk.features)){
+   if(sp&&matchesSpinnakersShells(this.atlasHash,tile.id,features)){
     try{
      if(!sp.assembled){
       const roofs=buildSpinnakersShells(sp.seat);
       sp.assembled=new THREE.Group();sp.assembled.name='Summerside Spinnakers’ Landing visual preview';
       sp.assembled.add(sp.deck,roofs);
+      const north=sp.north=sp.assembleNorth?.();
+      if(north)sp.assembled.add(north.group);
      }
      wharf=sp.assembled;
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
-   const mesh=this.generate(chunk.features,tile,!!wharf);
+   const mesh=this.generate(features,tile,!!wharf);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
-    void this.sourisLight.setCaster(chunk.features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
+    void this.sourisLight.setCaster(features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }

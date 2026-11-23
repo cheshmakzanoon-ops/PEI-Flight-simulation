@@ -1,0 +1,2004 @@
+{
+  "geometry": {
+    "source": "cddf1eb27ace32d619de4e4bd05c582c117fb3a3eca191b6903dc1cd3c108a13",
+    "rev": "22a31d19f44e59545fb1365d672a2efe9de55ceb",
+    "lod": [
+      {
+        "n": 112,
+        "stockTerrainExact": true,
+        "capTris": 54296,
+        "wallTris": 1582,
+        "hasUV": true,
+        "uvm": 2.962404843653843e-08,
+        "actualRayToWorld": {
+          "n": 344,
+          "min": 0,
+          "med": 8.881784197001252e-16,
+          "p90": 2.6645352591003757e-15,
+          "p99": 3.552713678800501e-15,
+          "max": 4.218847493575595e-15
+        },
+        "contactJoinVisual": {
+          "n": 1082,
+          "min": 0,
+          "med": 0.0001351995635230363,
+          "p90": 0.0005784018383532263,
+          "p99": 0.0014383374066206933,
+          "max": 0.0022946140916011437
+        },
+        "contactJoinOldPhysics": {
+          "n": 1082,
+          "min": 9.325873406851315e-15,
+          "med": 0.0001431907782936115,
+          "p90": 0.0005847638723712745,
+          "p99": 0.0014383374593500697,
+          "max": 0.0022946140915944824
+        },
+        "interiorPhysicsVsVisual": {
+          "n": 262,
+          "min": 0,
+          "med": 0,
+          "p90": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "collarPhysicsVsVisual": {
+          "n": 82,
+          "min": 8.138423268633233e-11,
+          "med": 0.04216357796515946,
+          "p90": 0.2734484599502285,
+          "p99": 0.4062116174766084,
+          "max": 0.43139594398733605
+        },
+        "structure": {
+          "vertices": 54,
+          "missing": 0,
+          "feet": {
+            "n": 54,
+            "min": -0.028600057466302786,
+            "med": -0.015999973409407175,
+            "p90": -0.0096999573276495,
+            "p99": -0.004228295375298785,
+            "max": -0.003400021012101462
+          }
+        },
+        "road": {
+          "tris": 7910,
+          "owner": "-10,2",
+          "rays": 2107,
+          "missing": 3,
+          "water": 0,
+          "clearance": {
+            "n": 2107,
+            "min": 0.06186176180243108,
+            "med": 0.06200003623962402,
+            "p90": 0.33470117415590006,
+            "p99": 0.617409928620696,
+            "max": 0.6566417950435983
+          },
+          "edge": [
+            {
+              "p": [
+                86.698436,
+                -58.679592
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 1.1
+            },
+            {
+              "p": [
+                87.140659,
+                -57.51043
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 2.35
+            },
+            {
+              "p": [
+                -37.112376999999995,
+                -22.068538999999998
+              ],
+              "segment": 2,
+              "station": 20.51199999999999,
+              "off": -2.35
+            }
+          ],
+          "gapUnder": 0,
+          "wrongPairs": 0,
+          "failOldPairs": 0,
+          "joined": {
+            "n": 40,
+            "min": 4.1559125136814146e-06,
+            "med": 0.00011785186612911502,
+            "p90": 0.0008286053446120434,
+            "p99": 0.0011403787067862936,
+            "max": 0.001152165958298923
+          }
+        },
+        "ramp": {
+          "trianglePoints": 1904,
+          "missed": 0,
+          "wet": 0,
+          "numBuried": 0,
+          "numLoose": 922,
+          "clearance": {
+            "n": 1904,
+            "min": -0.014497764360299925,
+            "med": 0.7104002160650367,
+            "p90": 1.315237756421004,
+            "p99": 1.3991457234241622,
+            "max": 1.4135938579691223
+          },
+          "foot": {
+            "n": 56,
+            "min": 0.003089099384153915,
+            "med": 0.004000035432903282,
+            "p90": 0.004298342676598121,
+            "p99": 0.0046224435613866355,
+            "max": 0.004751868612064891
+          },
+          "missingDeck": 0,
+          "missingFoot": 0,
+          "seamDiff": {
+            "n": 56,
+            "min": 0.001999895256663109,
+            "med": 0.0020000209354194,
+            "p90": 0.002133041249951617,
+            "p99": 0.0025542868709527156,
+            "max": 0.002736188389108829
+          }
+        }
+      },
+      {
+        "n": 56,
+        "stockTerrainExact": true,
+        "capTris": 54296,
+        "wallTris": 1582,
+        "hasUV": true,
+        "uvm": 2.962404843653843e-08,
+        "actualRayToWorld": {
+          "n": 344,
+          "min": 0,
+          "med": 8.881784197001252e-16,
+          "p90": 2.886579864025407e-15,
+          "p99": 3.9968028886505635e-15,
+          "max": 4.440892098500626e-15
+        },
+        "contactJoinVisual": {
+          "n": 1082,
+          "min": 1.028223057808475e-07,
+          "med": 0.0001017924049051544,
+          "p90": 0.00035545302742190366,
+          "p99": 0.0009593899157172014,
+          "max": 0.001256778943978798
+        },
+        "contactJoinOldPhysics": {
+          "n": 1082,
+          "min": 9.080277418860305e-08,
+          "med": 9.507219128135347e-05,
+          "p90": 0.0003548161200908062,
+          "p99": 0.0009594222422841803,
+          "max": 0.0012568099585616999
+        },
+        "interiorPhysicsVsVisual": {
+          "n": 262,
+          "min": 0,
+          "med": 0,
+          "p90": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "collarPhysicsVsVisual": {
+          "n": 82,
+          "min": 3.715259973890994e-05,
+          "med": 0.05496030323422607,
+          "p90": 0.2045845968774449,
+          "p99": 0.2662166638350931,
+          "max": 0.2756254196667498
+        },
+        "structure": {
+          "vertices": 54,
+          "missing": 0,
+          "feet": {
+            "n": 54,
+            "min": -0.028600057466302786,
+            "med": -0.015999973409407175,
+            "p90": -0.0096999573276495,
+            "p99": -0.004228295375298785,
+            "max": -0.003400021012101462
+          }
+        },
+        "road": {
+          "tris": 7910,
+          "owner": "-10,2",
+          "rays": 2107,
+          "missing": 3,
+          "water": 0,
+          "clearance": {
+            "n": 2107,
+            "min": 0.0617867128610321,
+            "med": 0.06200003623962402,
+            "p90": 0.2942101632644827,
+            "p99": 0.5666492306818642,
+            "max": 0.6012221706081031
+          },
+          "edge": [
+            {
+              "p": [
+                86.698436,
+                -58.679592
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 1.1
+            },
+            {
+              "p": [
+                87.140659,
+                -57.51043
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 2.35
+            },
+            {
+              "p": [
+                -37.112376999999995,
+                -22.068538999999998
+              ],
+              "segment": 2,
+              "station": 20.51199999999999,
+              "off": -2.35
+            }
+          ],
+          "gapUnder": 0,
+          "wrongPairs": 0,
+          "failOldPairs": 0,
+          "joined": {
+            "n": 40,
+            "min": 4.147904974161065e-06,
+            "med": 0.0001050833883837754,
+            "p90": 0.0008058219015545376,
+            "p99": 0.0010200555835240266,
+            "max": 0.0010279698276320914
+          }
+        },
+        "ramp": {
+          "trianglePoints": 1904,
+          "missed": 0,
+          "wet": 0,
+          "numBuried": 0,
+          "numLoose": 922,
+          "clearance": {
+            "n": 1904,
+            "min": -0.014497764360299925,
+            "med": 0.7104002160650367,
+            "p90": 1.315237756421004,
+            "p99": 1.3991457234241622,
+            "max": 1.4135938579691223
+          },
+          "foot": {
+            "n": 56,
+            "min": 0.003089099384153915,
+            "med": 0.004000035432903282,
+            "p90": 0.004298342676598121,
+            "p99": 0.0046224435613866355,
+            "max": 0.004751868612064891
+          },
+          "missingDeck": 0,
+          "missingFoot": 0,
+          "seamDiff": {
+            "n": 56,
+            "min": 0.001999895256663109,
+            "med": 0.0020000209354194,
+            "p90": 0.002133041249951617,
+            "p99": 0.0025542868709527156,
+            "max": 0.002736188389108829
+          }
+        }
+      },
+      {
+        "n": 8,
+        "stockTerrainExact": true,
+        "capTris": 54296,
+        "wallTris": 1582,
+        "hasUV": true,
+        "uvm": 2.962404843653843e-08,
+        "actualRayToWorld": {
+          "n": 344,
+          "min": 0,
+          "med": 8.881784197001252e-16,
+          "p90": 2.6645352591003757e-15,
+          "p99": 3.9968028886505635e-15,
+          "max": 4.6629367034256575e-15
+        },
+        "contactJoinVisual": {
+          "n": 1082,
+          "min": 4.880558452935446e-07,
+          "med": 0.0002949655090880299,
+          "p90": 0.00238289944442327,
+          "p99": 0.004824904734371582,
+          "max": 0.006333878139294313
+        },
+        "contactJoinOldPhysics": {
+          "n": 1082,
+          "min": 4.722429149950358e-07,
+          "med": 0.00030064421416531317,
+          "p90": 0.0023828362743949505,
+          "p99": 0.004824851660711005,
+          "max": 0.00633381496786134
+        },
+        "interiorPhysicsVsVisual": {
+          "n": 262,
+          "min": 0,
+          "med": 0,
+          "p90": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "collarPhysicsVsVisual": {
+          "n": 82,
+          "min": 0.0005101340095745588,
+          "med": 0.2138572857828276,
+          "p90": 0.5568309943903125,
+          "p99": 0.9160974987226131,
+          "max": 0.9807454571899341
+        },
+        "structure": {
+          "vertices": 54,
+          "missing": 0,
+          "feet": {
+            "n": 54,
+            "min": -0.028600057466302786,
+            "med": -0.015999973409407175,
+            "p90": -0.0096999573276495,
+            "p99": -0.004228295375298785,
+            "max": -0.003400021012101462
+          }
+        },
+        "road": {
+          "tris": 7910,
+          "owner": "-10,2",
+          "rays": 2107,
+          "missing": 3,
+          "water": 0,
+          "clearance": {
+            "n": 2107,
+            "min": -0.029371392755548786,
+            "med": 0.0620000362396238,
+            "p90": 0.062000036239627576,
+            "p99": 0.07561178053942275,
+            "max": 0.09231738470617534
+          },
+          "edge": [
+            {
+              "p": [
+                86.698436,
+                -58.679592
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 1.1
+            },
+            {
+              "p": [
+                87.140659,
+                -57.51043
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 2.35
+            },
+            {
+              "p": [
+                -37.112376999999995,
+                -22.068538999999998
+              ],
+              "segment": 2,
+              "station": 20.51199999999999,
+              "off": -2.35
+            }
+          ],
+          "gapUnder": 11,
+          "wrongPairs": 0,
+          "failOldPairs": 0,
+          "joined": {
+            "n": 40,
+            "min": 1.8772883549900143e-06,
+            "med": 4.707275893522933e-05,
+            "p90": 0.0004044615925700157,
+            "p99": 0.0004508277251389359,
+            "max": 0.0004540403468844545
+          }
+        },
+        "ramp": {
+          "trianglePoints": 1904,
+          "missed": 0,
+          "wet": 0,
+          "numBuried": 0,
+          "numLoose": 922,
+          "clearance": {
+            "n": 1904,
+            "min": -0.014497764360299925,
+            "med": 0.7104002160650367,
+            "p90": 1.315237756421004,
+            "p99": 1.3991457234241622,
+            "max": 1.4135938579691223
+          },
+          "foot": {
+            "n": 56,
+            "min": 0.003089099384153915,
+            "med": 0.004000035432903282,
+            "p90": 0.004298342676598121,
+            "p99": 0.0046224435613866355,
+            "max": 0.004751868612064891
+          },
+          "missingDeck": 0,
+          "missingFoot": 0,
+          "seamDiff": {
+            "n": 56,
+            "min": 0.001999895256663109,
+            "med": 0.0020000209354194,
+            "p90": 0.002133041249951617,
+            "p99": 0.0025542868709527156,
+            "max": 0.002736188389108829
+          }
+        }
+      },
+      {
+        "n": 112,
+        "stockTerrainExact": true,
+        "capTris": 54296,
+        "wallTris": 1582,
+        "hasUV": true,
+        "uvm": 2.962404843653843e-08,
+        "actualRayToWorld": {
+          "n": 344,
+          "min": 0,
+          "med": 8.881784197001252e-16,
+          "p90": 2.6645352591003757e-15,
+          "p99": 3.552713678800501e-15,
+          "max": 4.218847493575595e-15
+        },
+        "contactJoinVisual": {
+          "n": 1082,
+          "min": 0,
+          "med": 0.0001351995635230363,
+          "p90": 0.0005784018383532263,
+          "p99": 0.0014383374066206933,
+          "max": 0.0022946140916011437
+        },
+        "contactJoinOldPhysics": {
+          "n": 1082,
+          "min": 9.325873406851315e-15,
+          "med": 0.0001431907782936115,
+          "p90": 0.0005847638723712745,
+          "p99": 0.0014383374593500697,
+          "max": 0.0022946140915944824
+        },
+        "interiorPhysicsVsVisual": {
+          "n": 262,
+          "min": 0,
+          "med": 0,
+          "p90": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "collarPhysicsVsVisual": {
+          "n": 82,
+          "min": 8.138423268633233e-11,
+          "med": 0.04216357796515946,
+          "p90": 0.2734484599502285,
+          "p99": 0.4062116174766084,
+          "max": 0.43139594398733605
+        },
+        "structure": {
+          "vertices": 54,
+          "missing": 0,
+          "feet": {
+            "n": 54,
+            "min": -0.028600057466302786,
+            "med": -0.015999973409407175,
+            "p90": -0.0096999573276495,
+            "p99": -0.004228295375298785,
+            "max": -0.003400021012101462
+          }
+        },
+        "road": {
+          "tris": 7910,
+          "owner": "-10,2",
+          "rays": 2107,
+          "missing": 3,
+          "water": 0,
+          "clearance": {
+            "n": 2107,
+            "min": 0.06186176180243108,
+            "med": 0.06200003623962402,
+            "p90": 0.33470117415590006,
+            "p99": 0.617409928620696,
+            "max": 0.6566417950435983
+          },
+          "edge": [
+            {
+              "p": [
+                86.698436,
+                -58.679592
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 1.1
+            },
+            {
+              "p": [
+                87.140659,
+                -57.51043
+              ],
+              "segment": 1,
+              "station": 0.052,
+              "off": 2.35
+            },
+            {
+              "p": [
+                -37.112376999999995,
+                -22.068538999999998
+              ],
+              "segment": 2,
+              "station": 20.51199999999999,
+              "off": -2.35
+            }
+          ],
+          "gapUnder": 0,
+          "wrongPairs": 0,
+          "failOldPairs": 0,
+          "joined": {
+            "n": 40,
+            "min": 4.1559125136814146e-06,
+            "med": 0.00011785186612911502,
+            "p90": 0.0008286053446120434,
+            "p99": 0.0011403787067862936,
+            "max": 0.001152165958298923
+          }
+        },
+        "ramp": {
+          "trianglePoints": 1904,
+          "missed": 0,
+          "wet": 0,
+          "numBuried": 0,
+          "numLoose": 922,
+          "clearance": {
+            "n": 1904,
+            "min": -0.014497764360299925,
+            "med": 0.7104002160650367,
+            "p90": 1.315237756421004,
+            "p99": 1.3991457234241622,
+            "max": 1.4135938579691223
+          },
+          "foot": {
+            "n": 56,
+            "min": 0.003089099384153915,
+            "med": 0.004000035432903282,
+            "p90": 0.004298342676598121,
+            "p99": 0.0046224435613866355,
+            "max": 0.004751868612064891
+          },
+          "missingDeck": 0,
+          "missingFoot": 0,
+          "seamDiff": {
+            "n": 56,
+            "min": 0.001999895256663109,
+            "med": 0.0020000209354194,
+            "p90": 0.002133041249951617,
+            "p99": 0.0025542868709527156,
+            "max": 0.002736188389108829
+          }
+        }
+      }
+    ],
+    "cases": [
+      {
+        "k": "default",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": false,
+        "building": true,
+        "courtRequests": 0,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "corrupt-court",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "missing-court",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "missing-deck",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": false,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "wrong-cover",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "reject-building-pre",
+        "court": false,
+        "ramp": false,
+        "road": false,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 2,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "reject-building-after-pre",
+        "court": true,
+        "ramp": true,
+        "road": true,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": 2.4959543850573027,
+            "next": 2.4959543850573027
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": null,
+        "basin": false,
+        "montague": false,
+        "wharf": false
+      },
+      {
+        "k": "all-flags",
+        "court": true,
+        "ramp": true,
+        "road": true,
+        "c": true,
+        "building": true,
+        "courtRequests": 1,
+        "tileRangeRequests": 1,
+        "outside": [
+          {
+            "lat": 46.1861,
+            "lon": -63.3691,
+            "now": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 46.054482758698775,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.1642,
+            "lon": -62.6475,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": 2.8822475106603673,
+              "land": true,
+              "runway": false
+            },
+            "prior": -3,
+            "next": -3
+          },
+          {
+            "lat": 46.3782,
+            "lon": -62.1127,
+            "now": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 24.363464566920012,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          },
+          {
+            "lat": 46.451,
+            "lon": -61.9702,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -124.73709475972464,
+            "next": -124.73709475972464
+          },
+          {
+            "lat": 46.6295,
+            "lon": -64.3974,
+            "now": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "plain": {
+              "height": -0.055,
+              "land": false,
+              "runway": false
+            },
+            "prior": -254,
+            "next": -254
+          },
+          {
+            "lat": 46.3698,
+            "lon": -63.4696,
+            "now": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "plain": {
+              "height": 87.37653543307204,
+              "land": true,
+              "runway": false
+            },
+            "prior": 254,
+            "next": 254
+          }
+        ],
+        "legacy": {
+          "chunks": 194,
+          "refined": 9
+        },
+        "basin": true,
+        "montague": true,
+        "wharf": true
+      }
+    ],
+    "notes": [],
+    "oldDeckExact": true,
+    "oldCBuildingExact": true,
+    "curtain": {
+      "registered": 791,
+      "otherA": 48862,
+      "stock": 48871,
+      "unexpectedRemaining": 0,
+      "outside": 0,
+      "removed": [
+        [
+          [
+            41.765147999999996,
+            -106.06174999999999
+          ],
+          [
+            11.473091,
+            -88.596038
+          ]
+        ],
+        [
+          [
+            59.302654,
+            -88.596038
+          ],
+          [
+            41.765147999999996,
+            -106.06174999999999
+          ]
+        ],
+        [
+          [
+            -5.836656,
+            -64.892571
+          ],
+          [
+            -23.146402,
+            -41.189105
+          ]
+        ],
+        [
+          [
+            11.473091,
+            -88.596038
+          ],
+          [
+            -5.836656,
+            -64.892571
+          ]
+        ],
+        [
+          [
+            59.302654,
+            -88.596038
+          ],
+          [
+            63.402331,
+            -41.189105
+          ]
+        ],
+        [
+          [
+            -23.146402,
+            -41.189105
+          ],
+          [
+            -31.468396,
+            6.217828
+          ]
+        ],
+        [
+          [
+            41.765147999999996,
+            -4.722233
+          ],
+          [
+            27.484607,
+            6.217828
+          ]
+        ],
+        [
+          [
+            63.402331,
+            -41.189105
+          ],
+          [
+            41.765147999999996,
+            -4.722233
+          ]
+        ],
+        [
+          [
+            -31.468396,
+            6.217828
+          ],
+          [
+            -43.238073,
+            53.624761
+          ]
+        ]
+      ]
+    },
+    "points": {
+      "restored": 50786,
+      "mismatch": 0,
+      "outside": 0,
+      "surfaceWrong": 0
+    }
+  },
+  "grid": {
+    "n": 4451760,
+    "restored": 2211436,
+    "areaGameM2": 6689.5939,
+    "relativeBboxGame": [
+      [
+        -31.17000000000003,
+        -106.01499999999913
+      ],
+      [
+        63.37499999999948,
+        5.5800000000147065
+      ]
+    ],
+    "markedCells": [
+      [
+        1099,
+        1664
+      ],
+      [
+        1099,
+        1665
+      ],
+      [
+        1099,
+        1666
+      ],
+      [
+        1100,
+        1663
+      ],
+      [
+        1100,
+        1664
+      ],
+      [
+        1100,
+        1665
+      ],
+      [
+        1101,
+        1663
+      ],
+      [
+        1101,
+        1664
+      ],
+      [
+        1101,
+        1665
+      ]
+    ],
+    "actualCPUChangedCellCounts": [
+      {
+        "cell": [
+          1099,
+          1664
+        ],
+        "marked": true,
+        "changed": 68776,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1099,
+          1665
+        ],
+        "marked": true,
+        "changed": 324276,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1100,
+          1663
+        ],
+        "marked": true,
+        "changed": 90553,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1100,
+          1664
+        ],
+        "marked": true,
+        "changed": 672748,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1100,
+          1665
+        ],
+        "marked": true,
+        "changed": 550969,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1101,
+          1663
+        ],
+        "marked": true,
+        "changed": 54476,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1101,
+          1664
+        ],
+        "marked": true,
+        "changed": 308194,
+        "coverMixed": true
+      },
+      {
+        "cell": [
+          1101,
+          1665
+        ],
+        "marked": true,
+        "changed": 141444,
+        "coverMixed": true
+      }
+    ],
+    "uncovered": 0,
+    "components": [
+      [
+        1,
+        2211436,
+        6689.5939
+      ]
+    ]
+  },
+  "production": [
+    {
+      "case": "fail-after",
+      "actualFlights": 72.265,
+      "targetRangeHits": 1,
+      "targetNetwork": [
+        [
+          206,
+          "bytes=710787-730949"
+        ]
+      ],
+      "device": "Chase",
+      "site": "spinnakers-low",
+      "height": 82.4271602935788,
+      "access": {
+        "spinnakersDeck": true,
+        "northBaywalkCourt": true,
+        "northBaywalkRamp": true,
+        "northBaywalkRoad": true,
+        "legacyShore": {
+          "chunks": 195,
+          "refined": 7
+        },
+        "shoreFoamDetail": true,
+        "buildingTiles": {
+          "wanted": 29,
+          "ready": 21,
+          "loading": 1,
+          "pending": 7,
+          "failed": 0
+        },
+        "layerWarnings": []
+      },
+      "errors": []
+    }
+  ],
+  "art": [
+    {
+      "name": "baywalk-aerial-close",
+      "dim": [
+        900,
+        564
+      ],
+      "bothCameraAndOrthos": {
+        "x": true,
+        "z": true,
+        "eyeY": true,
+        "baseH": true,
+        "orthoIds": true,
+        "physicalControls": true
+      },
+      "actualChangedAbove2": 73915,
+      "exactTop100": 90000,
+      "changedBounds": [
+        207,
+        125,
+        625,
+        563
+      ],
+      "directTriangles": [
+        390696,
+        459000
+      ],
+      "directCalls": [
+        68,
+        75
+      ]
+    },
+    {
+      "name": "baywalk-ramp-close",
+      "dim": [
+        900,
+        564
+      ],
+      "bothCameraAndOrthos": {
+        "x": true,
+        "z": true,
+        "eyeY": true,
+        "baseH": true,
+        "orthoIds": true,
+        "physicalControls": true
+      },
+      "actualChangedAbove2": 193258,
+      "exactTop100": 90000,
+      "changedBounds": [
+        0,
+        176,
+        899,
+        545
+      ],
+      "directTriangles": [
+        360373,
+        428677
+      ],
+      "directCalls": [
+        87,
+        94
+      ]
+    }
+  ],
+  "renderSettled": {
+    "baywalk-ramp-close": {
+      "cameraExact": true,
+      "lockedImageryTiles": 18,
+      "pixelsChanged8": 191966,
+      "differenceBox": [
+        0,
+        176,
+        899,
+        545
+      ],
+      "beforeDraws": 87,
+      "afterDraws": 94,
+      "beforeTriangles": 360373,
+      "afterTriangles": 428677,
+      "physicalControlsBefore": [
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          true,
+          1.6739310344777278,
+          1.6739310344777278
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ]
+      ],
+      "physicalControlsAfter": [
+        [
+          true,
+          1.2100000381469727,
+          1.2100000381469727
+        ],
+        [
+          true,
+          2.0008962253509512,
+          2.0008962253509512
+        ],
+        [
+          true,
+          1.6739310344777278,
+          1.6739310344777278
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ]
+      ],
+      "dryControl": {
+        "roi": [
+          126,
+          262,
+          324,
+          323
+        ],
+        "previousBlueGreenFraction": 1.0,
+        "newBlueGreenFraction": 0.0,
+        "previousMedianRGB": [
+          117.0,
+          145.0,
+          152.0
+        ],
+        "newMedianRGB": [
+          133.0,
+          129.0,
+          118.0
+        ]
+      }
+    },
+    "baywalk-aerial-close": {
+      "cameraExact": true,
+      "lockedImageryTiles": 18,
+      "pixelsChanged8": 73309,
+      "differenceBox": [
+        207,
+        125,
+        631,
+        563
+      ],
+      "beforeDraws": 68,
+      "afterDraws": 75,
+      "beforeTriangles": 390696,
+      "afterTriangles": 459000,
+      "physicalControlsBefore": [
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          true,
+          1.6739310344777278,
+          1.6739310344777278
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ]
+      ],
+      "physicalControlsAfter": [
+        [
+          true,
+          1.2100000381469727,
+          1.2100000381469727
+        ],
+        [
+          true,
+          2.0008962253509512,
+          2.0008962253509512
+        ],
+        [
+          true,
+          1.6739310344777278,
+          1.6739310344777278
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ],
+        [
+          false,
+          -0.055,
+          -0.055
+        ]
+      ]
+    }
+  }
+}
