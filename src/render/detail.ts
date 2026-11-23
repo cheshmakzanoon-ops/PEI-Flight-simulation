@@ -51,8 +51,9 @@ export class DetailImagery{
     if(h!==a.sha256)throw Error('Detail tile checksum mismatch');
   }
   const blob=new Blob([data],{type:'image/webp'});let t:THREE.Texture;
-  if('createImageBitmap'in globalThis){const im=await createImageBitmap(blob,{imageOrientation:'flipY',premultiplyAlpha:'none'});t=new THREE.Texture(im);t.flipY=false;}
+  if('createImageBitmap'in globalThis){const im=await createImageBitmap(blob,{imageOrientation:'flipY',premultiplyAlpha:'none',colorSpaceConversion:'none'});t=new THREE.Texture(im);t.flipY=false;}
   else{const u=URL.createObjectURL(blob);try{t=await new THREE.TextureLoader().loadAsync(u);}finally{URL.revokeObjectURL(u);}}
-  t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;t.needsUpdate=true;return t;
+  // This atlas stores scaled linear TCI values, not sRGB albedo.
+  t.colorSpace=THREE.NoColorSpace;t.anisotropy=4;t.needsUpdate=true;return t;
  }
 }

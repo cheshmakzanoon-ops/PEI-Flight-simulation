@@ -172,6 +172,10 @@ const landFrag=(east:boolean,bench=false,harbour=false)=>fp+lighthouseGroundGLSL
  vec2 uv=vec2(vuv.x,1.-vuv.y);
  vec3 col=texture2D(imageMap,uv).rgb;
  if(hasDetail>.5){vec2 q=(vuv-detailBox.xy)*detailBox.zw;col=texture2D(detailMap,vec2(q.x,1.-q.y)).rgb;}
+ // The Sentinel-2 TCI product linearly maps 0–25% BOA reflectance
+ // to display bytes. Interpret the same scale for both texture LODs
+ // before applying the scene's light and tone mapping.
+ col*=.25;
  vec3 n=normalize(cross(dFdx(p),dFdy(p)));if(n.y<0.)n=-n;
  #ifdef SURVEY_LIGHT
  n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
@@ -219,7 +223,7 @@ export async function loadAtlas(progress:(s:string)=>void){
   loadCover(),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp')
  ]);
- img.colorSpace=THREE.SRGBColorSpace;img.anisotropy=4;
+ img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  const installed=await surveys;
  return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed),img,cover,sky,
