@@ -1,0 +1,24 @@
+[
+  {
+    "site": "basin-head-low",
+    "startY": 95.95085471855919,
+    "afterY": 96.14060239846499,
+    "camera": "Chase",
+    "visualOption": "basinWharfVisible",
+    "active": true,
+    "movementM": 40.80080876797375,
+    "pauseSucceeded": true,
+    "errors": []
+  },
+  {
+    "site": "spinnakers-low",
+    "startY": 81.95000493500675,
+    "afterY": 82.21581394751432,
+    "camera": "Cockpit",
+    "visualOption": "spinnakersDeck",
+    "active": true,
+    "movementM": 51.53401585114343,
+    "pauseSucceeded": true,
+    "errors": []
+  }
+]

@@ -2,6 +2,8 @@
 
 Add `?spinnakersPreview` in the simulator and fly to **46.38913° N, 63.78736° W**. This preview replaces two stock building records that rendered as tall boxes in the water. It shows a raised wooden boardwalk with an upper and lower platform, seven fitted adjacent roof sections, and original aged timber, roofing, glazing and trim. The rest of the downtown waterfront remains base-atlas scenery.
 
+Choose **Summerside waterfront · low pass** in the simulator’s departure menu for a direct offshore approach.
+
 ## Registration and measurements
 
 - The pier perimeter is OpenStreetMap way **544428847**, tagged as a wooden pier. Seven nearby building outlines follow similarly scoped mapped ways. The [separate adapted source database](../../data/odbl/spinnakers) is © OpenStreetMap contributors, [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), based on the Geofabrik 1 November 2026 PEI snapshot. Field and roof evidence, not an OSM address, drives the 3D shapes. Names, businesses, colours, and exact contemporary storefronts are not inferred from these shapes.

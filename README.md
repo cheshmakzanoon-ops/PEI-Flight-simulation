@@ -21,11 +21,13 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 | --- | --- |
 | **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows land cover with [streamed provincial stand heights](docs/qa/forest-height-stream.md); [roof-centred tree stems are excluded](docs/vegetation-clearance.md). Confederation Bridge, St. Dunstan’s Basilica and both [point light stations](docs/landmarks/lighthouses.md) have custom models. Both lighthouse approaches use [higher-resolution measured coastal relief](docs/coastal-relief.md). [South Lake](docs/qa/south-lake.md) uses sheltered water shading without changing the shoreline. |
 | **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, [moving ailerons and elevators](docs/qa/control-surfaces.md), a modeled cockpit, graduated flight instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and eleven scenic starts. |
+| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and thirteen scenic starts. |
 | **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
 | **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
 **A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md).
+
+**Waterfront approaches:** Choose **Basin Head · low pass** or **Summerside waterfront · low pass** in the departure menu to start offshore facing the local scenery. [Flight checks](docs/qa/waterfront-departures.md).
 
 **Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Try `?legacyShoreArcs` for the [three-county coastline repair](docs/qa/legacy-shore-arcs.md). Use `?spinnakersPreview` for the surveyed [Spinnakers’ Landing boardwalk and waterfront buildings](docs/qa/spinnakers-landing.md) in Summerside. These previews leave the default scenery unchanged.
 

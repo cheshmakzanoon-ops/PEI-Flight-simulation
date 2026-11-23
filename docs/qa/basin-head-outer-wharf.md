@@ -41,6 +41,8 @@ Both comparison panels retain the measured toe and use the same camera. The
 also checks the default, both preview families together, the model-hidden
 comparison, and a missing Basin bank package.
 
+Choose **Basin Head · low pass** in the simulator’s departure menu for a direct offshore approach.
+
 ## Replay
 
 ```sh

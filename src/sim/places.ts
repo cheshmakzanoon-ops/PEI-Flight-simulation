@@ -14,7 +14,9 @@ export const SITES: Site[] = [
  {id:'harbour-low',name:'Charlottetown waterfront · low pass',region:'Queens County',lon:-63.1338,lat:46.2190,heading:34,height:115,note:'Cross the harbour approach at 115 metres above the starting surface; keep clear of land and buildings.'},
  {id:'cavendish-low',name:'Cavendish shore · low pass',region:'Queens County',lon:-63.422,lat:46.500,heading:105,height:130,note:'See the coast and dunes from a lower 130-metre starting altitude.'},
  {id:'east-light',name:'East Point · lighthouse pass',region:'Kings County',lon:-61.9679,lat:46.4507,heading:292,height:58,note:'Approach the red-roofed fog house and white octagonal light from offshore.'},
- {id:'west-light',name:'West Point · lighthouse pass',region:'Prince County',lon:-64.3910,lat:46.6194,heading:61,height:58,note:'Follow the striped light onto the Cedar Dunes shoreline at the western entrance to the strait.'}
+ {id:'west-light',name:'West Point · lighthouse pass',region:'Prince County',lon:-64.3910,lat:46.6194,heading:61,height:58,note:'Follow the striped light onto the Cedar Dunes shoreline at the western entrance to the strait.'},
+ {id:'basin-head-low',name:'Basin Head · low pass',region:'Kings County',lon:-62.10574,lat:46.37296,heading:338,height:96,note:'Follow the inlet towards the beach, footbridge and historic Cannery from offshore.'},
+ {id:'spinnakers-low',name:'Summerside waterfront · low pass',region:'Prince County',lon:-63.7813,lat:46.3849,heading:314,height:82,note:'Cross the harbour towards Spinnakers’ Landing and the Summerside waterfront.'}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);
