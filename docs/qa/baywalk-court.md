@@ -8,6 +8,8 @@ The stock mask put water where a real waterfront court and its street are locate
 
 The 2020 NRCan point cloud, independent modern OpenStreetMap coast/linework, and the official trail's gross registration serve different purposes. See the [input receipt and licensing](../../data/baywalk) and [separate ODbL geometry](../../data/odbl/spinnakers/north-baywalk.json). The satellite tile shows water-coloured pixels in the restored parcel; the dry surface is an original neutral material, not a reconstruction of the present-day paving or lawn. Timber rails, beams and material are interpretations; ramp height and street alignment have direct survey support. The ordinary sea plane and other flight surfaces are unchanged. Not for navigation, access or construction.
 
+For the separately mapped short concrete connection, add `&baywalkConcrete`. See the [concrete approach notes](baywalk-concrete.md).
+
 ## Check it locally
 
 ```sh

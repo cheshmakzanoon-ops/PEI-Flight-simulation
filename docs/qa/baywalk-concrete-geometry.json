@@ -1,0 +1,259 @@
+{
+  "geometry": {
+    "pathLocalLengthM": 38.30736390468324,
+    "triangles": 1180,
+    "areaGameM2": 59.75948926357421,
+    "seated3DRays": {
+      "hits": 4232,
+      "miss": 0,
+      "wet": 0,
+      "aboveGroundM": [
+        0.017723071279867497,
+        0.02366899384092913
+      ],
+      "endsOnStockLand": 345,
+      "rampFootLipM": [
+        0.017520276861954898,
+        0.019000038259465057
+      ]
+    },
+    "retainedRampGeometryExact": true,
+    "surfaceOnly": true
+  },
+  "mappedPlanClearance": {
+    "actualPlanGameM2": 59.75948926356919,
+    "recipe": "Union of exact submitted Float32 triangles against amenity polygons and conservative road widths within the audited local source window.",
+    "sidewalks": {
+      "nearby": 0,
+      "intersectionM2": 0.0,
+      "minClearanceM": null
+    },
+    "parking": {
+      "nearby": 0,
+      "intersectionM2": 0.0,
+      "minClearanceM": null
+    },
+    "buildings": {
+      "nearby": 16,
+      "intersectionM2": 0,
+      "minClearanceM": 10.163193347662364
+    },
+    "roads": {
+      "nearby": 3,
+      "intersectionM2": 0,
+      "minClearanceM": 11.092571401504214
+    }
+  },
+  "sources": {
+    "lengthGameM": 38.30736390468324,
+    "eastThroatM": 1.58,
+    "westToMappedJunctionM": 36.727363904683244,
+    "widthInterpretationM": 1.56,
+    "stockDryBeginsAt": 35.23841008452162,
+    "sampleCount": 5698,
+    "wetCount": 0,
+    "minSignedPhysical": 0.00458367764531431,
+    "surveyHeightExtent": [
+      1.6133885587267287,
+      1.8918189851195348
+    ],
+    "nearestRoadRim": [
+      [
+        2803,
+        11.094196252401549,
+        9
+      ]
+    ],
+    "restoredOnlyCenters": 5234,
+    "branchWgs84": [
+      [
+        -63.7872397,
+        46.3895074
+      ],
+      [
+        -63.7874512,
+        46.3894523
+      ],
+      [
+        -63.7876011,
+        46.3894115
+      ],
+      [
+        -63.7877352,
+        46.3893871
+      ],
+      [
+        -63.7878103,
+        46.3893834
+      ],
+      [
+        -63.7879135,
+        46.3893874
+      ]
+    ],
+    "terminalRealWay": 1222375516,
+    "source": 1461955022,
+    "shapeLocal": [
+      [
+        4.072872926473792,
+        -12.740961835248527
+      ],
+      [
+        2.594575649163744,
+        -12.183254779629351
+      ],
+      [
+        -8.912137068386073,
+        -7.647882562388986
+      ],
+      [
+        -19.20600081320299,
+        -4.935552118691703
+      ],
+      [
+        -24.970871560544765,
+        -4.524256108734335
+      ],
+      [
+        -32.8927711768265,
+        -4.9689004434185335
+      ]
+    ]
+  },
+  "lodSeating": [
+    {
+      "tier": 8,
+      "pathLocalLengthM": 38.30736390468324,
+      "triangles": 1180,
+      "areaGameM2": 59.75948926357421,
+      "seated3DRays": {
+        "hits": 4232,
+        "miss": 0,
+        "wet": 0,
+        "aboveGroundM": [
+          0.017773222788542986,
+          0.023027450545598516
+        ],
+        "endsOnStockLand": 345,
+        "rampFootLipM": [
+          0.017520276861954898,
+          0.019000038259465057
+        ]
+      },
+      "retainedRampGeometryExact": true,
+      "surfaceOnly": true
+    },
+    {
+      "tier": 56,
+      "pathLocalLengthM": 38.30736390468324,
+      "triangles": 1180,
+      "areaGameM2": 59.75948926357421,
+      "seated3DRays": {
+        "hits": 4232,
+        "miss": 0,
+        "wet": 0,
+        "aboveGroundM": [
+          0.017750048502741977,
+          0.02340661955192136
+        ],
+        "endsOnStockLand": 345,
+        "rampFootLipM": [
+          0.017520276861954898,
+          0.019000038259465057
+        ]
+      },
+      "retainedRampGeometryExact": true,
+      "surfaceOnly": true
+    },
+    {
+      "tier": 112,
+      "pathLocalLengthM": 38.30736390468324,
+      "triangles": 1180,
+      "areaGameM2": 59.75948926357421,
+      "seated3DRays": {
+        "hits": 4232,
+        "miss": 0,
+        "wet": 0,
+        "aboveGroundM": [
+          0.017723071279867497,
+          0.02366899384092913
+        ],
+        "endsOnStockLand": 345,
+        "rampFootLipM": [
+          0.017520276861954898,
+          0.019000038259465057
+        ]
+      },
+      "retainedRampGeometryExact": true,
+      "surfaceOnly": true
+    }
+  ],
+  "matchedWebGL": {
+    "concrete-approach-close": {
+      "lockedOrthoIds": 18,
+      "pitchAndCameraExact": true,
+      "physicsControlsIdentical": true,
+      "changedPixels": 28808,
+      "changedOverTwo": 28808,
+      "fullPixels": 507600,
+      "differenceBounds": [
+        364,
+        264,
+        899,
+        563
+      ],
+      "draws": [
+        220,
+        221
+      ],
+      "triangles": [
+        416623,
+        417803
+      ]
+    },
+    "concrete-court-close": {
+      "lockedOrthoIds": 18,
+      "pitchAndCameraExact": true,
+      "physicsControlsIdentical": true,
+      "changedPixels": 6698,
+      "changedOverTwo": 6698,
+      "fullPixels": 507600,
+      "differenceBounds": [
+        222,
+        267,
+        736,
+        330
+      ],
+      "draws": [
+        58,
+        59
+      ],
+      "triangles": [
+        328872,
+        330052
+      ]
+    },
+    "concrete-threshold-close": {
+      "lockedOrthoIds": 18,
+      "pitchAndCameraExact": true,
+      "physicsControlsIdentical": true,
+      "changedPixels": 75000,
+      "changedOverTwo": 74979,
+      "fullPixels": 507600,
+      "differenceBounds": [
+        99,
+        318,
+        765,
+        563
+      ],
+      "draws": [
+        209,
+        210
+      ],
+      "triangles": [
+        390053,
+        391233
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "attribution": "© OpenStreetMap contributors",
+  "snapshot": "Geofabrik PEI 2026-11-01, SHA256 a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "source": {
+    "way": 1461955022,
+    "tags": {
+      "footway": "sidewalk",
+      "surface": "concrete",
+      "highway": "footway"
+    },
+    "selectedConsecutivePointsEastToWest": [
+      [
+        -63.7872397,
+        46.3895074
+      ],
+      [
+        -63.7874512,
+        46.3894523
+      ],
+      [
+        -63.7876011,
+        46.3894115
+      ],
+      [
+        -63.7877352,
+        46.3893871
+      ],
+      [
+        -63.7878103,
+        46.3893834
+      ],
+      [
+        -63.7879135,
+        46.3893874
+      ]
+    ],
+    "originalVertexIndices": [
+      9,
+      8,
+      7,
+      6,
+      5,
+      4
+    ]
+  },
+  "sourceJunction": {
+    "way": 1222375516,
+    "touchingNode": [
+      -63.7879135,
+      46.3893874
+    ],
+    "notRendered": true
+  },
+  "derivation": "Only 1.58 scene metres of the real east segment are built east of the shared north ramp node. Westward path ends at the existing public junction. Modeled width 1.56m is not a measurement."
+}

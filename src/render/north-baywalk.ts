@@ -6,6 +6,7 @@ import { SPINNAKERS_DECK } from './spinnakers-deck.generated.ts';
 import { weatheredTimber } from './spinnakers-deck.ts';
 import type { WharfSurface } from './spinnakers-shells.ts';
 import type { World } from './world.ts';
+import {buildNorthConcrete,type NorthConcrete} from './north-baywalk-sidewalk.ts';
 
 const end=project(...BAYWALK_COURT.guideEnd),start=BAYWALK_ANCHOR;
 const dx=end.x-start.x,dz=end.z-start.z,length=Math.hypot(dx,dz),ux=dx/length,uz=dz/length;
@@ -14,9 +15,9 @@ const QUADS=7,RUN=34,HALF=.72,AXIS_OFFSET=.33;
 const shore=(s:number,t:number)=>({x:start.x+ux*s+cx*t,z:start.z+uz*s+cz*t});
 const smooth=(u:number)=>{const a=Math.max(0,Math.min(1,u));return a*a*(3-2*a);};
 const fit=(s:number)=>2.59690-.045630*s*(12.59/length);
-export type NorthBaywalk={group:THREE.Group;sync:()=>void;surface:THREE.Mesh};
+export type NorthBaywalk={group:THREE.Group;sync:()=>void;surface:THREE.Mesh;sidewalk?:NorthConcrete};
 
-export function buildNorthBaywalk(deck:WharfSurface,world:World):NorthBaywalk|undefined{
+export function buildNorthBaywalk(deck:WharfSurface,world:World,concrete=false):NorthBaywalk|undefined{
  if(!world.baywalkActive)return;
  const seam:number[]=[],footX:number[]=[],top0:number[]=[];
  for(let k=0;k<=QUADS;k++){
@@ -128,7 +129,10 @@ export function buildNorthBaywalk(deck:WharfSurface,world:World):NorthBaywalk|un
   side.setAttribute('position',new THREE.Float32BufferAttribute(faces,3));side.computeVertexNormals();side.computeBoundingSphere();
  }
  place(floor);
- return {group,surface,sync:()=>{
+ const sidewalk=concrete?buildNorthConcrete(world):undefined;
+ if(sidewalk)group.add(sidewalk.mesh);
+ return {group,surface,sidewalk,sync:()=>{
+  sidewalk?.sync();
   const rect=world.baywalkBounds;
   if(!rect)return;
   const next=world.visualGroundSignature(rect);

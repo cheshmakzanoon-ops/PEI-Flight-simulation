@@ -226,6 +226,7 @@ export class Buildings {
  }
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
  get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
+ get northConcreteActive(){return this.northBaywalkActive&&!!this.spinnakers?.north?.sidewalk;}
  get sourceAtlasSha256(){return this.atlasHash;}
  diagnostics(){
   let failed=0;

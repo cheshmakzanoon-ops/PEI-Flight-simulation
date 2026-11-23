@@ -22,6 +22,9 @@ def pose(eye,aim,height,centre):
 f.VIEWS.update({
     'baywalk-ramp':pose((-63.787588,46.389313),(-63.787450,46.3894145),5.25,2.01),
     'baywalk-aerial':pose((-63.78773,46.38876),(-63.78726,46.389605),88.6,1.75),
+    'concrete-approach':pose((-63.787929,46.3894241),(-63.787592,46.389416),4.15,1.94),
+    'concrete-court':pose((-63.787793,46.3897061),(-63.787646,46.389411),27.3,1.89),
+    'concrete-threshold':pose((-63.787503,46.389458),(-63.787432,46.389432),4.43,2.21),
 })
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--checkout',type=Path,default=repo)
@@ -32,6 +35,7 @@ p.add_argument('--pose-baseline',type=Path)
 p.add_argument('--mode',choices=['default','pier','court','corrupt'],default='court')
 p.add_argument('--with-foam',action='store_true')
 p.add_argument('--with-legacy-arcs',action='store_true')
+p.add_argument('--with-concrete',action='store_true')
 p.add_argument('--views',default='baywalk-ramp-close,baywalk-aerial-close')
 opts=p.parse_args()
 flags=[]
@@ -39,6 +43,7 @@ if opts.mode!='default':flags.append('spinnakersPreview')
 if opts.mode in ('court','corrupt'):flags.append('northBaywalkPreview')
 if opts.with_foam:flags.append('shoreFoamDetail')
 if opts.with_legacy_arcs:flags.append('legacyShoreArcs')
+if opts.with_concrete:flags.append('baywalkConcrete')
 oldstage=f.stage
 def stage(source,tmp,deps,void):
     oldstage(source,tmp,deps,void)
@@ -61,6 +66,7 @@ def ready(page,errors):
     for key in ('northBaywalkCourt','northBaywalkRamp','northBaywalkRoad'):
         assert bool(diag.get(key))==(opts.mode=='court'),key
     assert bool(diag.get('spinnakersDeck'))==(opts.mode!='default')
+    assert bool(diag.get('northBaywalkConcrete'))==(opts.mode=='court' and opts.with_concrete)
     return diag
 f.settle=ready
 capture=f.capture
