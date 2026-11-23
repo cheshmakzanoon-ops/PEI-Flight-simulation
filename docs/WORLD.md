@@ -18,7 +18,9 @@ registered. This is not a surveyed or navigation-grade projection.
 | Runways | OurAirports public-domain threshold coordinates | Three strips at Charlottetown and Summerside. Paint and ground detail are simplified. |
 
 [Water Street in Summerside](qa/water-street-shells.md) includes selected survey-fit
-commercial groupings and independently authored exterior materials.
+commercial groupings and independently authored exterior materials. [Victoria Row in
+Charlottetown](qa/victoria-row-shell.md) preserves one original block outline with
+measured attached roof volumes and original brick-and-stone frontage.
 
 ## Attribution
 

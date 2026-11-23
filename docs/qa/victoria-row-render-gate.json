@@ -1,0 +1,623 @@
+{
+  "publishedBase": "db9f8fa",
+  "flight": {
+    "site": "harbour-low",
+    "movedMetres": 212.49327709686028,
+    "detail": {
+      "ready": 18,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "buildings": {
+      "wanted": 43,
+      "ready": 43,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "errors": [],
+    "warnings": []
+  },
+  "mesh": {
+    "tile": "q12000111",
+    "ordinal": 3,
+    "neighborVertices": 19344,
+    "protectedAttributes": [
+      "position",
+      "uv",
+      "color",
+      "topFlag",
+      "facadeStyle",
+      "normal"
+    ],
+    "roleTriangles": {
+      "0": 4677,
+      "31": 362,
+      "32": 298,
+      "33": 1834,
+      "34": 5718,
+      "35": 1199,
+      "36": 4970,
+      "37": 138,
+      "38": 730,
+      "39": 170
+    },
+    "artTypesWithModeledOpenings": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "furthestOutsideMillimeters": 0.016590345889165165,
+    "tests": 622,
+    "missing": 0,
+    "ties": [],
+    "old": {
+      "p50": 2.666582107497266,
+      "p90": 6.635869979837264,
+      "p95": 9.396724700907265
+    },
+    "candidate": {
+      "p50": 0.19437736573403086,
+      "p90": 1.1807401817718939,
+      "p95": 1.5579289838216501
+    },
+    "maxModelDelta": 1.0621061257154452e-06,
+    "oldSceneTileTriangles": 6554,
+    "newSceneTileTriangles": 26544
+  },
+  "projection": {
+    "plan": {
+      "area": 3418.1501007867714,
+      "triangleArea": 3418.149847365134,
+      "union": 3418.149695257483,
+      "gap": 0.0009395849213124939,
+      "spill": 0.0005340556343480204,
+      "overlap": 0.00015210765104711754
+    },
+    "sharedRoofStations": 1245,
+    "closingTriangleSamples": 3735,
+    "missing": [],
+    "missingCount": 0
+  },
+  "views": [
+    {
+      "view": "victoria-front",
+      "pose": {
+        "lon": -63.12636045564491,
+        "lat": 46.2340311611955,
+        "h": 8.0,
+        "east": -18.231745346462418,
+        "south": 2.2278827666073298,
+        "dist": 18.36736235827017,
+        "agl": 2.7
+      },
+      "oldFrame": {
+        "calls": 143,
+        "triangles": 407066
+      },
+      "newFrame": {
+        "calls": 143,
+        "triangles": 427056
+      },
+      "oldMask": {
+        "calls": 143,
+        "triangles": 407066
+      },
+      "newMask": {
+        "calls": 143,
+        "triangles": 427056
+      },
+      "surface": [
+        {
+          "height": 9.072377975665512,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 9.157375193399156,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "markTriangles": 20096,
+      "roofTriangles": 362,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "details": [
+        "15-14",
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "camera": {
+        "eye": [
+          5634.530639736172,
+          11.737375193399156,
+          29567.612249037225
+        ],
+        "aim": [
+          5652.762385082634,
+          12.952377975665513,
+          29565.384366270617
+        ],
+        "orientation": [
+          0.12129573768688462,
+          0,
+          0.9926164133334662,
+          0,
+          -0.06551847842305057,
+          0.9978192367943601,
+          0.008006226842207528,
+          0,
+          -0.9904517519819543,
+          -0.06600583825026865,
+          0.12103122040513603,
+          0,
+          5634.530639736172,
+          11.737375193399156,
+          29567.612249037225,
+          1
+        ]
+      },
+      "changedPixels": 365782,
+      "perceptiblePixels": 365764,
+      "protectedPixels": 287910,
+      "outOfScopePixels": 0,
+      "outOfScopeMaxLevel": 0,
+      "commonFacadeMedianLuma": [
+        187.76,
+        97.21
+      ]
+    },
+    {
+      "view": "victoria-reverse",
+      "pose": {
+        "lon": -63.12628239326461,
+        "lat": 46.23407885052152,
+        "h": 8.5,
+        "east": 24.254749220148884,
+        "south": -37.261201540847914,
+        "dist": 44.459982006294155,
+        "agl": 4.2
+      },
+      "oldFrame": {
+        "calls": 46,
+        "triangles": 329525
+      },
+      "newFrame": {
+        "calls": 46,
+        "triangles": 349515
+      },
+      "oldMask": {
+        "calls": 46,
+        "triangles": 329525
+      },
+      "newMask": {
+        "calls": 46,
+        "triangles": 349515
+      },
+      "surface": [
+        {
+          "height": 9.14419721817386,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 9.873632424940533,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "markTriangles": 20096,
+      "roofTriangles": 362,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "details": [
+        "15-14",
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "camera": {
+        "eye": [
+          5683.009405043943,
+          13.953632424940533,
+          29522.82196756622
+        ],
+        "aim": [
+          5658.754655823794,
+          13.27419721817386,
+          29560.083169107067
+        ],
+        "orientation": [
+          -0.8380840445588327,
+          -1.734723475976807e-18,
+          -0.5455411389216294,
+          0,
+          -0.008335958896066326,
+          0.999883251455859,
+          0.012806062913424147,
+          0,
+          0.5454774477878912,
+          0.01528016551152129,
+          -0.8379861994667626,
+          0,
+          5683.009405043943,
+          13.953632424940533,
+          29522.82196756622,
+          1
+        ]
+      },
+      "changedPixels": 249789,
+      "perceptiblePixels": 249780,
+      "protectedPixels": 404098,
+      "outOfScopePixels": 0,
+      "outOfScopeMaxLevel": 0,
+      "commonFacadeMedianLuma": [
+        189.98,
+        91.94
+      ]
+    },
+    {
+      "view": "victoria-parapets",
+      "pose": {
+        "lon": -63.1262167052781,
+        "lat": 46.234055627013475,
+        "h": 13.0,
+        "east": -73.3116860559868,
+        "south": -9.37212289870508,
+        "dist": 73.90832158830291,
+        "agl": 30.0
+      },
+      "oldFrame": {
+        "calls": 144,
+        "triangles": 411591
+      },
+      "newFrame": {
+        "calls": 144,
+        "triangles": 431581
+      },
+      "oldMask": {
+        "calls": 144,
+        "triangles": 411591
+      },
+      "newMask": {
+        "calls": 144,
+        "triangles": 431581
+      },
+      "surface": [
+        {
+          "height": 9.124705659781627,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.177278248633337,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "markTriangles": 20096,
+      "roofTriangles": 362,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "details": [
+        "15-14",
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "camera": {
+        "eye": [
+          5590.485349953155,
+          40.05727824863334,
+          29553.29259653117
+        ],
+        "aim": [
+          5663.797036009141,
+          15.504705659781628,
+          29562.664719429875
+        ],
+        "orientation": [
+          -0.12680741082054814,
+          -2.7755575615628914e-17,
+          0.991927356493906,
+          0,
+          0.3127172544734571,
+          0.9490045895763518,
+          0.03997759019254685,
+          0,
+          -0.9413436138390547,
+          0.3152622542630502,
+          -0.12034081486099413,
+          0,
+          5590.485349953155,
+          40.05727824863334,
+          29553.29259653117,
+          1
+        ]
+      },
+      "changedPixels": 143689,
+      "perceptiblePixels": 143677,
+      "protectedPixels": 509581,
+      "outOfScopePixels": 0,
+      "outOfScopeMaxLevel": 0,
+      "commonFacadeMedianLuma": [
+        186.19,
+        91.68
+      ]
+    },
+    {
+      "view": "victoria-approach",
+      "pose": {
+        "lon": -63.12627117443303,
+        "lat": 46.233963201467844,
+        "h": 7.0,
+        "east": 58.75602989074321,
+        "south": -290.9376719358944,
+        "dist": 296.81138792169014,
+        "agl": 118.0
+      },
+      "oldFrame": {
+        "calls": 53,
+        "triangles": 357893
+      },
+      "newFrame": {
+        "calls": 53,
+        "triangles": 377883
+      },
+      "oldMask": {
+        "calls": 53,
+        "triangles": 357893
+      },
+      "newMask": {
+        "calls": 53,
+        "triangles": 377883
+      },
+      "surface": [
+        {
+          "height": 8.91302413150026,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 7.5347074184831415,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "markTriangles": 20096,
+      "roofTriangles": 362,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "details": [
+        "15-14",
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "camera": {
+        "eye": [
+          5718.371872319117,
+          125.41470741848315,
+          29282.001171312884
+        ],
+        "aim": [
+          5659.615842428374,
+          12.29302413150026,
+          29572.93884324878
+        ],
+        "orientation": [
+          -0.9802106110991087,
+          6.938893903907228e-18,
+          -0.19795746484715324,
+          0,
+          -0.07049951276743488,
+          0.9344346472369394,
+          0.34908696444114184,
+          0,
+          0.18497831383236843,
+          0.3561346515619854,
+          -0.9159427566003002,
+          0,
+          5718.371872319117,
+          125.41470741848315,
+          29282.001171312884,
+          1
+        ]
+      },
+      "changedPixels": 10078,
+      "perceptiblePixels": 10063,
+      "protectedPixels": 644738,
+      "outOfScopePixels": 0,
+      "outOfScopeMaxLevel": 0,
+      "commonFacadeMedianLuma": [
+        151.27,
+        92.71
+      ]
+    },
+    {
+      "view": "east-point-control",
+      "pose": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "h": 19.5,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "agl": 45
+      },
+      "oldFrame": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "newFrame": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "oldMask": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "newMask": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "surface": [
+        {
+          "height": 10.190152066160586,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": -0.055,
+          "land": false,
+          "runway": false
+        }
+      ],
+      "markTriangles": 0,
+      "roofTriangles": 0,
+      "tileState": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "details": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "camera": {
+        "eye": [
+          94390.98970978655,
+          44.121176197199524,
+          5225.1970733587705
+        ],
+        "aim": [
+          94277.2581896572,
+          19.82015206616059,
+          5277.06364572545
+        ],
+        "orientation": [
+          -0.4149325789334197,
+          1.3877787807814457e-17,
+          -0.9098521610347813,
+          0,
+          -0.17363197400304498,
+          0.9816220563283339,
+          0.0791838123200653,
+          0,
+          0.8931309492697402,
+          0.19083537022715,
+          -0.4073069713702422,
+          0,
+          94390.98970978655,
+          44.121176197199524,
+          5225.1970733587705,
+          1
+        ]
+      },
+      "changedPixels": 0,
+      "perceptiblePixels": 0,
+      "protectedPixels": 655360,
+      "outOfScopePixels": 0,
+      "outOfScopeMaxLevel": 0
+    }
+  ],
+  "renderer": "Chromium 158 headless / SwiftShader software WebGL; not a benchmark",
+  "checks": 139,
+  "pinnedFiles": {
+    "src/render/victoria-material.ts": "9e7749f45a57febfd83d6f193aaf91cf069a53625b200fe9c4a3a7040c28ebe9",
+    "src/render/victoria-row.ts": "a37508227cabe87c46f844466c6ee55aa3e80cf0eb727f9b1d2480b2659f99d6",
+    "src/render/victoria-row.generated.ts": "5965a2b3675418bb1c8621da8d75a25ea75d286c1a6e2ee01d483f5a5d7c044b",
+    "data/victoria-row/native-validation.json": "6e0085d99547755992d367166651c919193189b43d2efb9d1cd47affd7ad200f",
+    "data/odbl/victoria-row/building-part-witness.json": "8f90b5db0dd036cbaab4120ab6c1038067ea4c4ee0daa4a28731aa8f80d67019"
+  }
+}
