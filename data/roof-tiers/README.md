@@ -9,3 +9,5 @@ Each six-value little-endian `int16` record contains an integer column/row offse
 [Method and testing](../../docs/qa/quartermaster-roof.md).
 
 The [Souris manifest](souris-roof-cells.json) and [compressed census](souris-roof-cells.i16.gz) follow the same format for the Kings County footprint `q131 #221`. See the [Souris ridge and upper-tier gates](../../docs/qa/souris-roof.md).
+
+For the fixed-light Souris scene, the separate [one-metre ground-return census](souris-ground-strip.json) records aggregate class-2 intensity and count in the same 2020 flight strip, not RGB or ground material. See [the Souris daylight material gates](../../docs/qa/souris-daylight.md).

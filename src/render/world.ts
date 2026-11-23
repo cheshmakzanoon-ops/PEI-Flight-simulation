@@ -8,6 +8,7 @@ import {harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
+import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
@@ -158,7 +159,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -206,6 +207,7 @@ const landFrag=(east:boolean,bench=false,harbour=false)=>fp+lighthouseGroundGLSL
  }
  `:''}
  col*=.90+.31*light;
+ ${souris?'col=sourisSoil(col,p,detailFade,max(length(dFdx(p.xz)),length(dFdy(p.xz))));':''}
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
   float across=dot(delta,vec2(-axis.y,axis.x))/stripSize[i].y+.5;
@@ -217,8 +219,9 @@ export async function loadAtlas(progress:(s:string)=>void){
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
+ const elevationJob=loadElevation(progress);
  const [elevation,img,cover,sky]=await Promise.all([
-  loadElevation(progress),
+  elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
   loadCover(),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp')
@@ -227,7 +230,7 @@ export async function loadAtlas(progress:(s:string)=>void){
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  const installed=await surveys;
  return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed),img,cover,sky,
-   bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake};
+   bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
@@ -256,7 +259,7 @@ export class World {
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting){
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
    const benchMask=east?bench:undefined;
    let benchMap:THREE.DataTexture|undefined;
@@ -317,8 +320,9 @@ export class World {
     const rock=i===east?.spec.tileX&&j===east.spec.tileZ;
     const useBench=rock&&!!benchMap;
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
+    const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour)});
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);

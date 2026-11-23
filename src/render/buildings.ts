@@ -3,6 +3,7 @@ import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
 import { SOURIS_ROOF } from './souris-roof.generated.ts';
+import {sourisOcclusionGLSL,sourisMetalGLSL,type SourisLighting} from './souris-light.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -28,7 +29,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=`
+const buildingF=(souris=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -43,6 +44,7 @@ const buildingF=`
   return fract((h.x+h.y)*h.z);
  }
  ${downtownFacadeGLSL}
+ ${souris?sourisOcclusionGLSL+sourisMetalGLSL:''}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
@@ -53,6 +55,7 @@ const buildingF=`
   // Neutral manufactured cladding for the one measured industrial shell;
   // no guessed windows, openings, branding or claim of actual material.
   ${sourisFrame}vec2 other=vec2(-basis.y,basis.x);
+  ${souris?'if(sourisLightLive>.5){c=sourisClad(c,n,wp,local,basis,uv2d.y,0.,fine);}else{':''}
   float u=abs(dot(n.xz,basis))>.72?dot(local,other):dot(local,basis);
   float rib=band(u/.32,.06,.17),smallLip=band(u/.32,.17,.24);
   float panel=band(u/2.85,.03,.065),lap=band(uv2d.y/3.85,.055,.092);
@@ -62,6 +65,7 @@ const buildingF=`
   vec3 steel=mix(vec3(.92,.98,1.02),vec3(1.02,.99,.94),panelTone);
   c*=mix(vec3(1.),steel,crisp)* (1.-fine*(.10*rib+.19*panel+.16*lap)-.16*bottom);
   c+=vec3(.026,.030,.031)*smallLip*fine;
+  ${souris?'}':''}
  }else if(roof<.5&&facade>.5){harbourWalls(c,uv2d,wp,facade,k,fine);}
  else if(roof<.5){
   vec2 grid=uv2d/vec2(2.62,3.08);
@@ -74,12 +78,21 @@ const buildingF=`
   c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);
  }else if(facade>5.5){
   ${sourisFrame}
+  ${souris?'if(sourisLightLive>.5){c=sourisClad(c,n,wp,local,basis,uv2d.y,1.,fine);}else{':''}
   float u=dot(local,basis),v=dot(local,vec2(-basis.y,basis.x));
   float seam=band(u/1.15,.025,.056),lap=band(v/6.2+.5*mod(floor(u/1.15),2.),.05,.095);
   float polish=warmWindowHash(floor(vec2(u/2.5,v/7.)));
   c*=mix(.97,1.03,polish)*(1.-fine*(.18*seam+.07*lap));
+  ${souris?'}':''}
  }else{c*=1.-.11*fine*band(uv2d.x*1.8,.0,.17);}
- c*=.61+.51*k;float mist=1.-exp(-d*.000022);gl_FragColor=vec4(mix(c,vec3(.56,.68,.72),mist),1.);
+ c*=.61+.51*k;
+ ${souris?`
+ if(facade>5.5){
+  float shade=sourisCast(wp)*(.21+.79*smoothstep(.02,.63,k));
+  c*=mix(vec3(1.),vec3(.53,.62,.72),shade);
+ }
+ `:''}
+ float mist=1.-exp(-d*.000022);gl_FragColor=vec4(mix(c,vec3(.56,.68,.72),mist),1.);
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`;
@@ -87,12 +100,18 @@ export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
  private readonly fitted:boolean;
- private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF,vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly atlasHash:string|undefined){
+ private readonly sourisMat?:THREE.ShaderMaterial;
+ private readonly sourisLight?:SourisLighting;
+ private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly atlasHash:string|undefined,sourisLight?:SourisLighting){
+  if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
+   this.sourisLight=sourisLight;
+   this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true),uniforms:sourisLight.uniforms,vertexColors:true,side:THREE.DoubleSide});
+  }
   this.fitted=supportedRoofAtlas(atlasHash);
   this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
- static async create(scene:THREE.Scene,terrain:Terrain){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting){
   const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
   if(!mf.ok)throw Error('Building atlas not available.');
   const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
@@ -100,14 +119,14 @@ export class Buildings {
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256);
+  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight);
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
-   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);m.geometry.dispose();this.meshes.delete(id);}
+   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
@@ -124,6 +143,9 @@ export class Buildings {
    const chunk=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
    if(!this.wanted.has(tile.id))return;
    const mesh=this.generate(chunk.features,tile);this.meshes.set(tile.id,mesh);this.scene.add(mesh);
+   if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
+    void this.sourisLight.setCaster(chunk.features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
+   }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }
  private generate(features:Bldg[],tile:BoundTile){
@@ -205,6 +227,6 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,this.mat);mesh.position.set(ox,0,oz);return mesh;
+  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
  }
 }

@@ -34,7 +34,7 @@ async function run(){
  const woodland=loadForestHeights(import.meta.env.BASE_URL),forestStream=new ForestStream(import.meta.env.BASE_URL);
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
  const dockPack=loadQuartermasterDocks(import.meta.env.BASE_URL+'world/');
- const {terrain,img,cover,sky,bench,southLake}=await loadAtlas(loadMsg);const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream);addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
+ const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg);const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream);addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  let quartermasterDocks:ReturnType<typeof addQuartermasterDocks>;
  void dockPack.then(p=>quartermasterDocks=addQuartermasterDocks(scene,cover,world.sun,p));
  let mainland:Terrain|undefined;
@@ -65,7 +65,7 @@ async function run(){
  let roads:Roads|undefined,buildings:Buildings|undefined;
  void addMainland(scene).then(t=>mainland=t).catch(e=>warn('Mainland',e));
  void Roads.create(scene,terrain).then(v=>roads=v).catch(e=>warn('Road',e));
- void Buildings.create(scene,terrain).then(v=>buildings=v).catch(e=>warn('Building',e));
+ void Buildings.create(scene,terrain,sourisLighting).then(v=>buildings=v).catch(e=>warn('Building',e));
  const tgt=new THREE.Vector3(),eye=new THREE.Vector3(),forward=new THREE.Vector3(),up=new THREE.Vector3(),right=new THREE.Vector3(),rot=new THREE.Quaternion(),aim=new THREE.Vector3(),groundY=new THREE.Vector3();
  const diagnostic=import.meta.env.DEV||new URLSearchParams(location.search).has('diagnostics');
  const rE=new THREE.Euler(0,0,0,'YXZ');let oldMode=ui.mode;
@@ -117,7 +117,7 @@ async function run(){
   ui.update(f,world.groundHeight(f.x,f.z)-.12);audio.update(f.throttle,f.speed,playing&&!f.engineOut);renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

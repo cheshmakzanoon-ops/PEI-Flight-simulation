@@ -14,7 +14,9 @@ The prior Kings County scenery put the **maximum** recorded building height acro
 ![Souris in fixed 115 m and 43 m views, showing the old uniform-height block and the new shallow gable with narrow upper structures](souris-roof-comparison.webp)
 
 This is a massing correction. The bright source-image halo and the
-simplified lighting and cladding still limit the close-up appearance.
+simplified lighting and cladding still limit the close-up appearance. A
+[separate daylight pass](souris-daylight.md) improves contact without
+changing the roof geometry.
 
 ## Model and checks
 

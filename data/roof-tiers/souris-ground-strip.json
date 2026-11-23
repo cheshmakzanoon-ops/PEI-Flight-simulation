@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "file": "souris-ground-strip.u16.gz",
+  "title": "Souris class-2 one-metre relative intensity observations",
+  "license": "Open Government Licence \u2013 Canada",
+  "licenseURL": "https://open.canada.ca/en/open-government-licence-canada",
+  "sourceURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_458000_699000.copc.laz",
+  "tile": "pei_2020_458000_699000",
+  "quotedSourceTrack": 60611,
+  "groundPoints": 141398,
+  "sourceBoundsXY": [
+    558204.169714587,
+    5132724.39541329,
+    558437.575828637,
+    5132932.04231108
+  ],
+  "sourceHorizontalEPSG": 2961,
+  "rangeRequests": 17,
+  "rangeBytes": 4195802,
+  "note": "Intensity is uncalibrated and only used for bounded relative contrast within the same survey strip, not RGB/pavement classification.",
+  "grid": {
+    "leftTopXZ": [
+      73429,
+      16969
+    ],
+    "width": 209,
+    "height": 182,
+    "cellMetres": 1,
+    "sourceMinimumReturns": 3,
+    "layout": "Little-endian uint16: class-2 median raw intensity, number of contributing points; 0,0 for unsupported cell"
+  },
+  "keptCells": 23041,
+  "sha256": "69abc21819fb8695c2298db0c4c164e685184f84732b7ee88a833a25207736d1",
+  "compressedSha256": "5f0878749ee339073ac79887c2c84c2f9016a56696177ddef9d744c8516ace19",
+  "bytes": 152152,
+  "compressedBytes": 50946
+}
