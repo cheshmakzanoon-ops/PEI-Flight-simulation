@@ -1,0 +1,215 @@
+{
+  "nativeWindow": [
+    325206,
+    204708,
+    108,
+    82
+  ],
+  "nativeInputSha256": "01f063f87203f0c48382fbd661c10fc72315c2c5a41e5e7bf678ec6dd9bce0e0",
+  "mesh": {
+    "owner": "q032022/0",
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "withheld": 819,
+    "q": [
+      0.5,
+      0.9,
+      0.95,
+      1
+    ],
+    "absoluteErrors": {
+      "stock": [
+        3.342815399169936,
+        6.60382041931155,
+        9.787330627441406,
+        9.95671272277832
+      ],
+      "pilot": [
+        0.009703848149058558,
+        0.4952529563760355,
+        0.9538071701989492,
+        4.116323644170791
+      ]
+    },
+    "exactlyPreservedNeighbours": {
+      "vertices": 15231,
+      "attributes": 6,
+      "bytes": 746319
+    },
+    "triangles": [
+      34,
+      148
+    ],
+    "distinctRuntimePlacements": 1
+  },
+  "planFloat32": {
+    "area": 4360.420866300119,
+    "actualMissing": 0.011701670296621863,
+    "actualSpill": 0.00299049734712753,
+    "actualOverlap": -9.604264050722122e-10
+  },
+  "pixelGates": {
+    "hangar4-hangar-apron-close": {
+      "negativeControlPixels": 260103,
+      "changedOutside": 0,
+      "worstOutside": 0,
+      "changedInsideThreshold2": 63554,
+      "draws": [
+        45,
+        45
+      ],
+      "triangles": [
+        226586,
+        226700
+      ],
+      "msaa": 4
+    },
+    "hangar4-flyover-close": {
+      "negativeControlPixels": 311997,
+      "changedOutside": 0,
+      "worstOutside": 0,
+      "changedInsideThreshold2": 16235,
+      "draws": [
+        42,
+        42
+      ],
+      "triangles": [
+        234433,
+        234547
+      ],
+      "msaa": 4
+    }
+  },
+  "simulatorWallSeat": {
+    "sourceSha": "76d4260aa9bac6991d1511487bd0ff7347c1d79e7de1dd38f54e7f07e4ea5f6e",
+    "geometrySha": "39201eac99ce8a539a57171d1518f1e980299fdfe4e1a8f12644e7e14e2b7165",
+    "tile": "8-12",
+    "considered": 30,
+    "bottomMatchingVertices": 132,
+    "shaderStyleRoles": [
+      74,
+      72,
+      73
+    ],
+    "stages": [
+      {
+        "n": 112,
+        "allBorderSamples": 1593,
+        "meshCoveredDry": true,
+        "minBurialM": 0.4276776041566599,
+        "floatingSamples": 0,
+        "firstMisses": [],
+        "trueRegularMeshSamples": 17,
+        "maxReportedVsActualMesh": 1.5412398077785383e-06
+      },
+      {
+        "n": 56,
+        "allBorderSamples": 1593,
+        "meshCoveredDry": true,
+        "minBurialM": 0.4159042112746647,
+        "floatingSamples": 0,
+        "firstMisses": [],
+        "trueRegularMeshSamples": 17,
+        "maxReportedVsActualMesh": 1.2167540077712147e-06
+      },
+      {
+        "n": 8,
+        "allBorderSamples": 1593,
+        "meshCoveredDry": true,
+        "minBurialM": -1.6928474069106336,
+        "floatingSamples": 1593,
+        "firstMisses": [
+          {
+            "x": -48402.72991636634,
+            "z": 6704.124927531988,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.28195143262028,
+            "groundMinusFootM": -1.068048948849448,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.62472192189,
+            "z": 6703.976712717173,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.28222527570042,
+            "groundMinusFootM": -1.0677751057693072,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.51952747745,
+            "z": 6703.828497902358,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.282499118780503,
+            "groundMinusFootM": -1.0675012626892233,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.41433303301,
+            "z": 6703.680283087543,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.282772961860587,
+            "groundMinusFootM": -1.0672274196091394,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.309138588564,
+            "z": 6703.532068272729,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.283046804940728,
+            "groundMinusFootM": -1.0669535765289986,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.203944144116,
+            "z": 6703.383853457914,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.283320648020865,
+            "groundMinusFootM": -1.0666797334488614,
+            "role": "appendage"
+          },
+          {
+            "x": -48402.098749699675,
+            "z": 6703.235638643099,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.283594491100953,
+            "groundMinusFootM": -1.0664058903687739,
+            "role": "appendage"
+          },
+          {
+            "x": -48401.993555255234,
+            "z": 6703.087423828284,
+            "Y": 18.350000381469727,
+            "drawnGroundCGVD": 17.283868334181037,
+            "groundMinusFootM": -1.06613204728869,
+            "role": "appendage"
+          }
+        ],
+        "trueRegularMeshSamples": 17,
+        "maxReportedVsActualMesh": 5.016272766056318e-07
+      }
+    ]
+  },
+  "sourceBareEarthWallSeat": {
+    "report": "Positive values bury the actual emitted boundary wall base under source DTM, without changing the ground.",
+    "closestProjectedColumnDistanceToCropM": 44.54801767715253,
+    "nativeBilinearWitnessCount": 1593,
+    "burialQuantilesM": [
+      0.05872408548991004,
+      0.11800873166038812,
+      0.715463711665226,
+      1.2675803102379262,
+      1.3136641725580738
+    ],
+    "nativeElevationQuantilesM": [
+      19.529783248901367,
+      19.57351760864258,
+      19.633827209472656,
+      19.92417793273926,
+      19.99800682067871
+    ],
+    "pinnedNativeIndependentCropSha256": "46ce04fb212b733cd17997878df879c0979c04c16e41da019d1774759b4a31df",
+    "maxOwnerCornerDistanceToTerrainCentre": 3244.617108328283,
+    "worstOrdinaryEyeToTerrainTileCentreM": 8874.617108328282,
+    "N8EntryThresholdM": 10500,
+    "stockN8CanNormallyDrawOwner": false
+  }
+}

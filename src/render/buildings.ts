@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {matchesHangar4,emitHangar4,hangar4GLSL} from './hangar4.ts';
 import {readRoofTone} from './roof-tone.ts';
 import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
 import type {NorthBaywalk} from './north-baywalk.ts';
@@ -69,6 +70,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  ${hasBuildingShadows?buildingShadowGLSL:''}
  ${farmMaterialGLSL}
  ${homeMaterialGLSL}
+ ${hangar4GLSL}
  ${waterStreet?waterStreetMaterialGLSL:''}
  ${victoria?victoriaMaterialGLSL:''}
  ${montague?montagueHallMaterialGLSL+macdonaldMaterialGLSL:''}
@@ -82,6 +84,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  if(roof<.5&&!gl_FrontFacing)n=-n;
  ${waterStreet||victoria||montague||sourisMain?'}':''}
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
+ if(facade>71.5&&facade<74.5){shadeHangar4(c,wp,uv2d,facade,d);}else
  ${sourisMain?'if(facade>48.5){shadeSourisMclean(c,uv2d,wp,n,roof,d);}else':''}
  ${montague?'if(facade>47.5){shadeMacdonald(c,uv2d,wp,n,roof,k,d);}else if(facade>46.5){shadeMontagueHall(c,uv2d,wp,n,roof,k);}else':''}
  ${victoria?'if(facade>31.5){shadeVictoria(c,uv2d,wp,n,facade,roof,k,d);}else':''}
@@ -318,6 +321,12 @@ export class Buildings {
    }
    if(this.sourisMcleanMat&&sourisMcleanModel(this.atlasHash,tile.id,i,f.footprint,f.holes)){
     emitSourisMclean(ring,(x,z)=>this.t.meshElevation(x,z),(p,y,c,u,v,role,style)=>{
+     facade=style;vertex(p,y,c,u,v,role);
+    });
+    continue;
+   }
+   if(matchesHangar4(this.atlasHash,tile.id,i,f.footprint,f.holes)){
+    emitHangar4((x,z)=>this.t.meshElevation(x,z),readRoofTone(this.atlasHash,tile.id,i,f.footprint),(p,y,c,u,v,role,style)=>{
      facade=style;vertex(p,y,c,u,v,role);
     });
     continue;
