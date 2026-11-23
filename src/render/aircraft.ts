@@ -74,6 +74,37 @@ export function createAircraft() {
  arr.push(w*Math.sign(cs)*Math.pow(Math.abs(cs),.80),cy+h*Math.sign(sn)*Math.pow(Math.abs(sn),.82),z);}}
  for(let i=0;i<rings.length-1;i++)for(let j=0;j<sides;j++){const a=i*sides+j,b=i*sides+(j+1)%sides;ind.push(a,b,a+sides,b,b+sides,a+sides);}
  const hullG=new THREE.BufferGeometry();hullG.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));hullG.setIndex(ind);hullG.computeVertexNormals();mesh(hullG,pearl);
+ // Follow the same hull cross sections used by the renderer so glazing does not cut through
+ // exterior paint. A short standoff represents the thickness of the window frame.
+ function skin(z:number){let i=0;while(i<rings.length-2&&z>rings[i+1][0])i++;
+  const a=rings[i],b=rings[i+1],t=THREE.MathUtils.clamp((z-a[0])/(b[0]-a[0]),0,1);
+  return [THREE.MathUtils.lerp(a[1],b[1],t),THREE.MathUtils.lerp(a[2],b[2],t),THREE.MathUtils.lerp(a[3],b[3],t)];
+ }
+ const sideSkin=(s:number,y:number,z:number,lift=.014)=>{const [w,cy,h]=skin(z);
+  const fraction=Math.min(1,Math.abs((y-cy)/h));
+  return [s*(w*(1-fraction**(2/.82))**.40+lift),y,z];
+ };
+ const topSkin=(s:number,u:number,z:number,lift=.014)=>{const [w,cy,h]=skin(z);
+  return [s*w*u,cy+h*(1-u**(2/.80))**.41+lift,z];
+ };
+ function windowPatch(point:(u:number,v:number,lift?:number)=>number[],omitEdge=-1) {
+  const n=12,pos:number[]=[],indices:number[]=[];
+  for(let j=0;j<=n;j++)for(let i=0;i<=n;i++)pos.push(...point(i/n,j/n));
+  for(let j=0;j<n;j++)for(let i=0;i<n;i++){const a=j*(n+1)+i,b=a+n+1;indices.push(a,b,a+1,a+1,b,b+1);}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(indices);g.computeVertexNormals();
+  const glazed=mesh(g,glass);glazed.castShadow=false;
+  // Batch the four curved frame segments into one opaque trim mesh.
+  const parts:THREE.BufferGeometry[]=[];
+  const path=(u:number,v:number)=>new THREE.Vector3(...point(u,v,.019));
+  for(let edge=0;edge<4;edge++){
+   if(edge===omitEdge)continue;
+   const ps:THREE.Vector3[]=[];
+   for(let i=0;i<=n;i++){const t=i/n;ps.push(edge===0?path(t,0):edge===1?path(1,t):edge===2?path(t,1):path(0,t));}
+   parts.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(ps),n,.012,5,false));
+  }
+  const frame=mergeGeometries(parts);
+  if(frame){mesh(frame,ivory);for(const g of parts)g.dispose();}
+ }
  // Side livery bands hug the actual fuselage cross section.
  for(const side of [-1,1]){
    for(const [lo,hi,color] of [[-.065,.09,teal],[.11,.14,ochre]] as const){
@@ -84,17 +115,22 @@ export function createAircraft() {
      if(last)poly([last[0],cur[0],cur[1],last[1]],color);last=cur;
     }
    }
+   // Side glazing is parameterized on the cabin cross section, not flat plates.
    const panels=[
-    [[.685,.37,-1.65],[.505,1.00,-.78],[.658,1.00,-.13],[.745,.37,-.15]],
-    [[.75,.37,-.065],[.66,1.01,-.05],[.643,.99,.59],[.74,.38,.57]],
-    [[.737,.39,.67],[.636,.97,.66],[.59,.89,1.18],[.675,.40,1.42]]
+    [[.39,-1.50],[1.00,-.76],[1.01,-.13],[.39,-.15]],
+    [[.39,-.065],[1.01,-.05],[.99,.59],[.39,.57]],
+    [[.40,.67],[.97,.66],[.89,1.18],[.41,1.40]]
    ];
-   for(const pp of panels){const p=pp.map(([x,y,z])=>[side*(x+.013),y,z]);poly(p,glass);p.forEach((a,i)=>bar(a,p[(i+1)%p.length],.022,ivory));}
+   for(const a of panels){
+    windowPatch((u,v,lift)=>{
+     const q=(i:number)=>THREE.MathUtils.lerp(THREE.MathUtils.lerp(a[0][i],a[3][i],u),THREE.MathUtils.lerp(a[1][i],a[2][i],u),v);
+     return sideSkin(side,q(0),q(1),lift);
+    });
+   }
    bar([side*.735,.23,-.17],[side*.734,.24,-.40],.019,dark);
-   // Windshield comes down to the cowl; split panes share a centre post.
-   const wind=[[side*.68,.37,-1.65],[side*.505,1,-.78],[0,1.19,-.73],[0,.79,-1.82]];
-   poly(wind,glass);
-   for(let i=0;i<wind.length;i++)bar(wind[i],wind[(i+1)%wind.length],.018,pearl);
+   // Windshield follows the rising cowling stations; this avoids light-colored
+   // hull patches cutting through the glass in close outside camera views.
+   windowPatch((u,v,lift)=>topSkin(side,u*THREE.MathUtils.lerp(.89,.64,v),THREE.MathUtils.lerp(-1.82,-.78,v),lift),side===1?3:-1);
  }
  // NACA-like closed airfoil sections with washout, taper and swept tips.
  function wing(side:number,sections:number[][],material:THREE.Material) {
