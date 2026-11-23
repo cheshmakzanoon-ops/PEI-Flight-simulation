@@ -1,3 +1,4 @@
+// Browser fixture: coast-scene-audit.py stages this file at a throwaway Vite root.
 import * as THREE from 'three';
 import {project} from './src/sim/geo.ts';
 import {loadAtlas,World} from './src/render/world.ts';
@@ -87,7 +88,7 @@ function contactHandoff(terrain,world,id){
 // Terrain and water masks can meet where the signed ground is BELOW the water
 // plane. A curtain that only reaches the old assumed "above sea level" land
 // creates a slit, even if its two ground surfaces otherwise agree perfectly.
-function curtainGaps(scene,index,terrain,world,id){
+function curtainGaps(scene,index,terrain){
   const samples=[],toSea=[],toLand=[];let spans=0,unclassified=0,worst=null;
   const {x0,x1,z0,z1}=index.bounds;
   scene.traverseVisible(m=>{
@@ -168,16 +169,26 @@ async function testWorld(){
     // Distant LOD heights are allowed to simplify; collision must not change with a camera move.
     const lod=[];
     for(const offset of [22000,8500,0]){
-      move(center.x+offset,center.z);const state=indexGround(scene,bounds),contact=[],display=[];
+      move(center.x+offset,center.z);const state=indexGround(scene,bounds),contact=[],display=[],screen=[];
+      const cam=new THREE.PerspectiveCamera(53,16/9,.08,350000);
+      const east=site.id==='east-point';
+      if(offset){cam.position.set(center.x+offset,offset*.1,center.z);cam.lookAt(center.x,(east?10.07:1.79)+(east?19.5:20.62)/2,center.z);cam.updateMatrixWorld();}
       for(const p of points){
         const s=world.surface(p.x,p.z);contact.push(s.height);
-        if(s.land){const hits=state.index.hits(p.x,p.z);display.push(hits.length?Math.max(...hits.map(a=>a.y)):NaN);}
+        if(s.land){
+          const hits=state.index.hits(p.x,p.z),visible=hits.length?Math.max(...hits.map(a=>a.y)):NaN;
+          if(offset){
+            const a=new THREE.Vector3(p.x,samples[display.length],p.z).project(cam),b=new THREE.Vector3(p.x,visible,p.z).project(cam);
+            screen.push(Math.hypot((a.x-b.x)*960,(a.y-b.y)*540));
+          }
+          display.push(visible);
+        }
       }
-      lod.push({offsetM:offset,meshes:state.labels,contactDigest:await sha256(contact),
+      lod.push({offsetM:offset,meshes:state.labels,contactDigest:await sha256(contact),screenDiffPxAt1080:describe(screen),
         maxChangeInDisplayedLandM:Math.max(...display.map((v,i)=>Math.abs(v-samples[i]))),
         ...(offset===0?{}:{edges:auditEdges(state.index)})});
     }
-    out.push({id:site.id,meshes:labels,counts,contactHandoff:contactHandoff(terrain,world,site.id),shoreWall:curtainGaps(scene,index,terrain,world,site.id),
+    out.push({id:site.id,meshes:labels,counts,contactHandoff:contactHandoff(terrain,world,site.id),shoreWall:curtainGaps(scene,index,terrain),
       groups:finishGroups(groups),allCoverLandContactDiff:describe(allContactDiff),waterContactOffsetFromPlane:describe(wetHeight),
       threeRayVsIndex:describe(rayDelta),nearEdges:auditEdges(index),initialContactDigest:await sha256(allContacts),lod});
   }

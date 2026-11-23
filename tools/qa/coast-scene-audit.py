@@ -48,7 +48,8 @@ def source_fingerprint(repo):
         'src/main.ts', 'src/render/world.ts', 'src/sim/terrain.ts', 'src/sim/geo.ts',
         'src/sim/cover.ts', 'public/world/terrain.json', 'public/world/height.bin.gz',
         'public/world/cover.json','public/world/cover.bin.gz', 'data/coastal-elevation/index.json',
-        'src/render/coastal-patch.ts','src/render/coastal-normals.ts','src/sim/coastal-terrain.ts','src/sim/coastal-surveys.generated.ts')]
+        'src/render/coastal-patch.ts','src/render/coastal-normals.ts','src/render/coastal-lod.ts',
+        'src/render/coastal-lod.generated.ts','src/sim/coastal-terrain.ts','src/sim/coastal-surveys.generated.ts')]
     files += sorted((repo/'data/coastal-elevation').glob('*.gz'))
     files += sorted((repo/'public/world/coastal').glob('**/*.gz'))
     return {p.relative_to(repo).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.is_file()}
@@ -110,6 +111,9 @@ def run(args):
 
 def gates(candidate, baseline):
     failed=[]
+    expected={'east-point','west-point'}
+    if {s['id'] for s in candidate['sites']}!=expected or {s['id'] for s in baseline['sites']}!=expected:
+        return ['Both pinned survey windows must be present in both reports.']
     old={s['id']:s for s in baseline['sites']}
     for s in candidate['sites']:
         site=s['id'];g=s['groups'];c=s['counts'];before=old[site]['groups'];edges=[s['nearEdges']]+[r['edges'] for r in s['lod'] if 'edges' in r]
@@ -128,9 +132,13 @@ def gates(candidate, baseline):
         check(wall['spans']>0 and not wall['unclassified'] and wall['envelope'].get('max',1)<=.05,'shore wall leaves a >0.05 m water or ground gap')
         check(s['waterContactOffsetFromPlane']['max']<=.10,'water contact offset >0.10 m')
         check(all(r['profiles'] and not(r['gaps'] or r['overlaps'] or r['backfaces']) and r['maxEdgeJumpM']<=.05 for r in edges),'near/medium/far terrain crack, hole, overlap or reversed face')
+        visited={m['segments'] for state in s['lod'] for m in state['meshes']}
+        check({8,56,112}.issubset(visited),'probe must visit all three province LODs')
         check(s['threeRayVsIndex']['n']>=8 and s['threeRayVsIndex']['max']<=1e-5,'Three.Raycaster disagrees with index')
         check(all(r['contactDigest']==s['initialContactDigest'] for r in s['lod']),'contact depends on camera/LOD history')
         check(s['lod'][-1]['maxChangeInDisplayedLandM']<=.001,'near mesh did not round trip')
+        check(all(v['screenDiffPxAt1080']['max']<=.5 for v in s['lod'] if v['offsetM']),
+              'distant ground moved by >0.5 px at 1080p on the specified approach')
     if candidate['cavendishControl']['digestMillimetres']!=baseline['cavendishControl']['digestMillimetres']:
         failed.append('Cavendish: off-window ground/contact changed at millimetre precision')
     return failed

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {CoastalGrid, GROUND_LIFT, SURVEY_LOD} from '../sim/coastal-terrain.ts';
+import {distantCoast} from './coastal-lod.ts';
 import {surveyNormals} from './coastal-normals.ts';
 import type {Terrain} from '../sim/terrain.ts';
 
@@ -10,20 +11,28 @@ import type {Terrain} from '../sim/terrain.ts';
  */
 export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:number;z:number;w:number;d:number},t:Terrain,grid:CoastalGrid){
  const origPos=g.getAttribute('position'),origUv=g.getAttribute('uv'),k0=origPos.count;
- const {nx,nz,spec:s}=grid,positions=new Float32Array((k0+nx*nz)*3),uv=new Float32Array((k0+nx*nz)*2);
- positions.set(origPos.array);uv.set(origUv.array);
+ const {nx,nz,spec:s}=grid,near=n===SURVEY_LOD,layout=near?undefined:distantCoast(grid);
+ const count=layout?layout.points.length/2:nx*nz,positions=new Float32Array((k0+count)*3),uv=new Float32Array((k0+count)*2);
+ const lighting=surveyNormals(grid),normal=new Int16Array((k0+count)*3),weight=new Uint8Array(k0+count);
+ positions.set(origPos.array);uv.set(origUv.array);for(let i=0;i<k0;i++)normal[i*3+1]=32767;
  const {x,z,w,d}=shape,cx=x+w/2,cz=z+d/2;
- const vtx=(i:number,j:number)=>k0+j*nx+i;
- for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
-  const wx=grid.x0+i*grid.stepX,wz=grid.z0+j*grid.stepZ,v=vtx(i,j);
-  positions.set([wx-cx,grid.indexHeight(i,j)+GROUND_LIFT,wz-cz],v*3);
+ const vtx=(i:number,j:number)=>k0+(layout?layout.edgeVertex(i,j):j*nx+i);
+ for(let k=0;k<count;k++){
+  const i=layout?layout.points[k*2]/2:k%nx,j=layout?layout.points[k*2+1]/2:Math.floor(k/nx);
+  const wx=grid.x0+i*grid.stepX,wz=grid.z0+j*grid.stepZ,v=k0+k,p=Math.floor(j)*nx+Math.floor(i);
+  // A half-cell vertex lies on the baseline NE–SW diagonal. Interpolating
+  // the two fine endpoint heights and normals never invents new survey relief.
+  const center=i!==Math.floor(i),a=center?p+1:p,b=center?p+nx:p;
+  const py=(grid.heights[a]+grid.heights[b])*.5;
+  positions[v*3]=wx-cx;positions[v*3+1]=py+GROUND_LIFT;positions[v*3+2]=wz-cz;
   const [u,vv]=t.uv(wx,wz);uv[v*2]=u;uv[v*2+1]=vv;
+  for(let c=0;c<3;c++)normal[v*3+c]=Math.round((lighting.normals[a*3+c]+lighting.normals[b*3+c])*.5);
+  weight[v]=Math.round((lighting.weight[a]+lighting.weight[b])*.5);
  }
  const index:number[]=[];
  const old=(ix:number,iz:number)=>iz*(n+1)+ix;
  // Near-LOD boundaries lie on the province's own vertex grid. Preserve
  // the adjacent faces' old planes, splitting their edges at all new vertices.
- const near=n===SURVEY_LOD;
  const left=near?s.firstX:Math.max(0,Math.floor(s.firstX*n/SURVEY_LOD)-1);
  const right=near?s.firstX+s.cellsX:Math.min(n,Math.ceil((s.firstX+s.cellsX)*n/SURVEY_LOD)+1);
  const top=near?s.firstZ:Math.max(0,Math.floor(s.firstZ*n/SURVEY_LOD)-1);
@@ -51,7 +60,8 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
   if(near&&i>=left-1&&i<=right&&j>=top-1&&j<=bottom){baseTriangle(a,b,d);baseTriangle(b,c,d);}
   else index.push(a,b,d,b,c,d);
  }
- for(let j=0;j<nz-1;j++)for(let i=0;i<nx-1;i++)index.push(vtx(i,j),vtx(i,j+1),vtx(i+1,j),vtx(i,j+1),vtx(i+1,j+1),vtx(i+1,j));
+ if(layout){for(const v of layout.indices)index.push(k0+v);}
+ else for(let j=0;j<nz-1;j++)for(let i=0;i<nx-1;i++)index.push(vtx(i,j),vtx(i,j+1),vtx(i+1,j),vtx(i,j+1),vtx(i+1,j+1),vtx(i+1,j));
  if(!near){
   // Coarser LODs retain exactly the same surveyed interior. A ring replaces
   // complete old cells, reaching the existing coarse perimeter including any
@@ -77,9 +87,6 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
  g.setAttribute('position',new THREE.BufferAttribute(positions,3));g.setAttribute('uv',new THREE.BufferAttribute(uv,2));
  // Ordinary land keeps the original derivative-based face shading. Only the
  // small measured footprint receives interpolated survey normals.
- const lighting=surveyNormals(grid),normal=new Int16Array((k0+nx*nz)*3),weight=new Uint8Array(k0+nx*nz);
- for(let i=0;i<k0;i++)normal[i*3+1]=32767;
- normal.set(lighting.normals,k0*3);weight.set(lighting.weight,k0);
  g.setAttribute('normal',new THREE.BufferAttribute(normal,3,true));
  g.setAttribute('surveyWeight',new THREE.BufferAttribute(weight,1,true));g.setIndex(index);
 }

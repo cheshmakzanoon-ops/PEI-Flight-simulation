@@ -1,0 +1,909 @@
+{
+  "schema": 1,
+  "settings": {
+    "stride": 1,
+    "displayLiftM": 0.12,
+    "coreInsetM": 24,
+    "shoreBandM": 20,
+    "edgeProbePadM": 110,
+    "nonVertexDistanceM": 0.02,
+    "releaseView": "actual near terrain meshes and gameplay World.surface; no independent land survey"
+  },
+  "sites": [
+    {
+      "id": "east-point",
+      "meshes": [
+        {
+          "segments": 112,
+          "detail": "east-point",
+          "totalTriangles": 62318
+        }
+      ],
+      "counts": {
+        "source": 65536,
+        "coverLand": 43700,
+        "coarseLand": 43078,
+        "maskDisagree": 3958,
+        "wrongLand": 0,
+        "negativeWet": 20564,
+        "negativeLand": 6253,
+        "nonVertexCoverLand": 43693,
+        "nearVertexCoverLand": 7,
+        "holes": 0,
+        "doubleCoverage": 0,
+        "nonFinite": 0
+      },
+      "contactHandoff": {
+        "fineGrid": {
+          "land": {
+            "n": 997,
+            "p50": 2e-05,
+            "p90": 4e-05,
+            "p95": 6e-05,
+            "max": 0.0001
+          },
+          "water": {
+            "n": 1927,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 0
+          },
+          "changedMask": 0,
+          "worst": {
+            "delta": 0.000104,
+            "x": 94224.4447,
+            "z": 5521.9629,
+            "land": true
+          }
+        },
+        "outerOwnership": {
+          "land": {
+            "n": 1290,
+            "p50": 4e-05,
+            "p90": 0.00013,
+            "p95": 0.00025,
+            "max": 0.00025
+          },
+          "water": {
+            "n": 3012,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 0
+          },
+          "changedMask": 0,
+          "worst": {
+            "delta": 0.0002531,
+            "x": 94178.8772,
+            "z": 5626.6276,
+            "land": true
+          }
+        }
+      },
+      "shoreWall": {
+        "spans": 368,
+        "unclassified": 0,
+        "water": {
+          "n": 1469,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "ground": {
+          "n": 1469,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "envelope": {
+          "n": 1469,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "worst": {
+          "gap": 0,
+          "sea": -0.055,
+          "ground": 0.48278,
+          "curtain": [
+            -0.14,
+            1.52502
+          ],
+          "x": 94007.608,
+          "z": 5057.693
+        }
+      },
+      "groups": {
+        "allCoverLand": {
+          "mesh": {
+            "n": 43700,
+            "p50": 0.01999,
+            "p90": 0.11678,
+            "p95": 0.27114,
+            "max": 4.05252
+          },
+          "contact": {
+            "n": 43700,
+            "p50": 0.01999,
+            "p90": 0.11678,
+            "p95": 0.27113,
+            "max": 4.05253
+          },
+          "meshVsContact": {
+            "n": 43700,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 9e-05
+          }
+        },
+        "bothMasksLand": {
+          "mesh": {
+            "n": 41410,
+            "p50": 0.01971,
+            "p90": 0.10764,
+            "p95": 0.24405,
+            "max": 4.05252
+          },
+          "contact": {
+            "n": 41410,
+            "p50": 0.01971,
+            "p90": 0.10763,
+            "p95": 0.24405,
+            "max": 4.05253
+          },
+          "meshVsContact": {
+            "n": 41410,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 9e-05
+          }
+        },
+        "offVertexLand": {
+          "mesh": {
+            "n": 43693,
+            "p50": 0.02,
+            "p90": 0.1168,
+            "p95": 0.27114,
+            "max": 4.05252
+          },
+          "contact": {
+            "n": 43693,
+            "p50": 0.02,
+            "p90": 0.1168,
+            "p95": 0.27113,
+            "max": 4.05253
+          },
+          "meshVsContact": {
+            "n": 43693,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 9e-05
+          }
+        },
+        "offVertexOuter24m": {
+          "mesh": {
+            "n": 10235,
+            "p50": 0.02267,
+            "p90": 0.08992,
+            "p95": 0.15173,
+            "max": 4.05252
+          },
+          "contact": {
+            "n": 10235,
+            "p50": 0.02267,
+            "p90": 0.08992,
+            "p95": 0.15173,
+            "max": 4.05253
+          },
+          "meshVsContact": {
+            "n": 10235,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 7e-05
+          }
+        },
+        "offVertexShoreBand20m": {
+          "mesh": {
+            "n": 9017,
+            "p50": 0.02716,
+            "p90": 0.36183,
+            "p95": 0.61484,
+            "max": 4.05252
+          },
+          "contact": {
+            "n": 9017,
+            "p50": 0.02716,
+            "p90": 0.36181,
+            "p95": 0.61482,
+            "max": 4.05253
+          },
+          "meshVsContact": {
+            "n": 9017,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 2e-05,
+            "max": 8e-05
+          }
+        },
+        "offVertexNegativeLand": {
+          "mesh": {
+            "n": 6252,
+            "p50": 0.0166,
+            "p90": 0.07711,
+            "p95": 0.12603,
+            "max": 0.60259
+          },
+          "contact": {
+            "n": 6252,
+            "p50": 0.01661,
+            "p90": 0.07711,
+            "p95": 0.12603,
+            "max": 0.60259
+          },
+          "meshVsContact": {
+            "n": 6252,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 2e-05
+          }
+        },
+        "coverOnlyLand": {
+          "mesh": {
+            "n": 2290,
+            "p50": 0.02865,
+            "p90": 0.329,
+            "p95": 0.50282,
+            "max": 1.53341
+          },
+          "contact": {
+            "n": 2290,
+            "p50": 0.02865,
+            "p90": 0.329,
+            "p95": 0.50278,
+            "max": 1.5334
+          },
+          "meshVsContact": {
+            "n": 2290,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 2e-05,
+            "max": 7e-05
+          }
+        },
+        "offVertexCore24m": {
+          "mesh": {
+            "n": 33458,
+            "p50": 0.01918,
+            "p90": 0.12939,
+            "p95": 0.30681,
+            "max": 2.4645
+          },
+          "contact": {
+            "n": 33458,
+            "p50": 0.01917,
+            "p90": 0.12939,
+            "p95": 0.30679,
+            "max": 2.4645
+          },
+          "meshVsContact": {
+            "n": 33458,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 9e-05
+          }
+        },
+        "offVertexInland20m": {
+          "mesh": {
+            "n": 34676,
+            "p50": 0.01872,
+            "p90": 0.08911,
+            "p95": 0.152,
+            "max": 2.39287
+          },
+          "contact": {
+            "n": 34676,
+            "p50": 0.01872,
+            "p90": 0.08911,
+            "p95": 0.152,
+            "max": 2.39286
+          },
+          "meshVsContact": {
+            "n": 34676,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 9e-05
+          }
+        }
+      },
+      "allCoverLandContactDiff": {
+        "n": 43700,
+        "p50": 0,
+        "p90": 0,
+        "p95": 1e-05,
+        "max": 9e-05
+      },
+      "waterContactOffsetFromPlane": {
+        "n": 21836,
+        "p50": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "threeRayVsIndex": {
+        "n": 250,
+        "p50": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "nearEdges": {
+        "trianglesInProbe": 37518,
+        "backfaces": 0,
+        "profiles": 168449,
+        "gaps": 0,
+        "overlaps": 0,
+        "maxEdgeJumpM": 7e-06,
+        "worstXZ": [
+          94217.461,
+          5528.609
+        ]
+      },
+      "initialContactDigest": "bbf2bbc8541d95accd31c5e2210883332ef7073109ac48cad70756fabaa8b093",
+      "lod": [
+        {
+          "offsetM": 22000,
+          "meshes": [
+            {
+              "segments": 8,
+              "detail": "east-point",
+              "totalTriangles": 11544
+            }
+          ],
+          "contactDigest": "bbf2bbc8541d95accd31c5e2210883332ef7073109ac48cad70756fabaa8b093",
+          "screenDiffPxAt1080": {
+            "n": 43700,
+            "p50": 0.00027,
+            "p90": 0.0017,
+            "p95": 0.00223,
+            "max": 0.00428
+          },
+          "maxChangeInDisplayedLandM": 0.08812137549374732,
+          "edges": {
+            "trianglesInProbe": 11448,
+            "backfaces": 0,
+            "profiles": 49812,
+            "gaps": 0,
+            "overlaps": 0,
+            "maxEdgeJumpM": 0,
+            "worstXZ": [
+              94276.71,
+              5370.22
+            ]
+          }
+        },
+        {
+          "offsetM": 8500,
+          "meshes": [
+            {
+              "segments": 56,
+              "detail": "east-point",
+              "totalTriangles": 17634
+            }
+          ],
+          "contactDigest": "bbf2bbc8541d95accd31c5e2210883332ef7073109ac48cad70756fabaa8b093",
+          "screenDiffPxAt1080": {
+            "n": 43700,
+            "p50": 0.00069,
+            "p90": 0.00438,
+            "p95": 0.00575,
+            "max": 0.01105
+          },
+          "maxChangeInDisplayedLandM": 0.08812137549374732,
+          "edges": {
+            "trianglesInProbe": 11460,
+            "backfaces": 0,
+            "profiles": 50384,
+            "gaps": 0,
+            "overlaps": 0,
+            "maxEdgeJumpM": 0,
+            "worstXZ": [
+              94276.71,
+              5370.22
+            ]
+          }
+        },
+        {
+          "offsetM": 0,
+          "meshes": [
+            {
+              "segments": 112,
+              "detail": "east-point",
+              "totalTriangles": 62318
+            }
+          ],
+          "contactDigest": "bbf2bbc8541d95accd31c5e2210883332ef7073109ac48cad70756fabaa8b093",
+          "screenDiffPxAt1080": {
+            "n": 0
+          },
+          "maxChangeInDisplayedLandM": 0
+        }
+      ]
+    },
+    {
+      "id": "west-point",
+      "meshes": [
+        {
+          "segments": 112,
+          "detail": "west-point",
+          "totalTriangles": 62318
+        }
+      ],
+      "counts": {
+        "source": 65536,
+        "coverLand": 49386,
+        "coarseLand": 48322,
+        "maskDisagree": 2858,
+        "wrongLand": 0,
+        "negativeWet": 16150,
+        "negativeLand": 12090,
+        "nonVertexCoverLand": 49381,
+        "nearVertexCoverLand": 5,
+        "holes": 0,
+        "doubleCoverage": 0,
+        "nonFinite": 0
+      },
+      "contactHandoff": {
+        "fineGrid": {
+          "land": {
+            "n": 1655,
+            "p50": 1e-05,
+            "p90": 3e-05,
+            "p95": 4e-05,
+            "max": 4e-05
+          },
+          "water": {
+            "n": 1277,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 0
+          },
+          "changedMask": 0,
+          "worst": {
+            "delta": 3.76e-05,
+            "x": -91072.47,
+            "z": -13579.3369,
+            "land": true
+          }
+        },
+        "outerOwnership": {
+          "land": {
+            "n": 2335,
+            "p50": 0,
+            "p90": 8e-05,
+            "p95": 8e-05,
+            "max": 8e-05
+          },
+          "water": {
+            "n": 1973,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 0
+          },
+          "changedMask": 0,
+          "worst": {
+            "delta": 8.44e-05,
+            "x": -91276.082,
+            "z": -13684.0016,
+            "land": true
+          }
+        }
+      },
+      "shoreWall": {
+        "spans": 284,
+        "unclassified": 0,
+        "water": {
+          "n": 1131,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "ground": {
+          "n": 1131,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "envelope": {
+          "n": 1131,
+          "p50": 0,
+          "p90": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "worst": {
+          "gap": 0,
+          "sea": -0.055,
+          "ground": 0.12,
+          "curtain": [
+            -0.14,
+            0.72124
+          ],
+          "x": -91303.233,
+          "z": -13630.515
+        }
+      },
+      "groups": {
+        "allCoverLand": {
+          "mesh": {
+            "n": 49386,
+            "p50": 0.02459,
+            "p90": 0.08993,
+            "p95": 0.12896,
+            "max": 0.89329
+          },
+          "contact": {
+            "n": 49386,
+            "p50": 0.02459,
+            "p90": 0.08992,
+            "p95": 0.12897,
+            "max": 0.89328
+          },
+          "meshVsContact": {
+            "n": 49386,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 6e-05
+          }
+        },
+        "bothMasksLand": {
+          "mesh": {
+            "n": 47425,
+            "p50": 0.02475,
+            "p90": 0.09171,
+            "p95": 0.13162,
+            "max": 0.89329
+          },
+          "contact": {
+            "n": 47425,
+            "p50": 0.02475,
+            "p90": 0.09172,
+            "p95": 0.13162,
+            "max": 0.89328
+          },
+          "meshVsContact": {
+            "n": 47425,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 6e-05
+          }
+        },
+        "offVertexLand": {
+          "mesh": {
+            "n": 49381,
+            "p50": 0.02459,
+            "p90": 0.08993,
+            "p95": 0.12896,
+            "max": 0.89329
+          },
+          "contact": {
+            "n": 49381,
+            "p50": 0.02459,
+            "p90": 0.08992,
+            "p95": 0.12897,
+            "max": 0.89328
+          },
+          "meshVsContact": {
+            "n": 49381,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 6e-05
+          }
+        },
+        "offVertexOuter24m": {
+          "mesh": {
+            "n": 14342,
+            "p50": 0.02488,
+            "p90": 0.08076,
+            "p95": 0.10707,
+            "max": 0.3923
+          },
+          "contact": {
+            "n": 14342,
+            "p50": 0.02488,
+            "p90": 0.08076,
+            "p95": 0.10707,
+            "max": 0.39229
+          },
+          "meshVsContact": {
+            "n": 14342,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 4e-05
+          }
+        },
+        "offVertexInland20m": {
+          "mesh": {
+            "n": 42863,
+            "p50": 0.02533,
+            "p90": 0.0963,
+            "p95": 0.13907,
+            "max": 0.89329
+          },
+          "contact": {
+            "n": 42863,
+            "p50": 0.02532,
+            "p90": 0.0963,
+            "p95": 0.13908,
+            "max": 0.89328
+          },
+          "meshVsContact": {
+            "n": 42863,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 6e-05
+          }
+        },
+        "offVertexCore24m": {
+          "mesh": {
+            "n": 35039,
+            "p50": 0.02447,
+            "p90": 0.09513,
+            "p95": 0.14276,
+            "max": 0.89329
+          },
+          "contact": {
+            "n": 35039,
+            "p50": 0.02447,
+            "p90": 0.09513,
+            "p95": 0.14277,
+            "max": 0.89328
+          },
+          "meshVsContact": {
+            "n": 35039,
+            "p50": 0,
+            "p90": 1e-05,
+            "p95": 1e-05,
+            "max": 6e-05
+          }
+        },
+        "offVertexNegativeLand": {
+          "mesh": {
+            "n": 12088,
+            "p50": 0.01971,
+            "p90": 0.05492,
+            "p95": 0.06783,
+            "max": 0.15414
+          },
+          "contact": {
+            "n": 12088,
+            "p50": 0.01971,
+            "p90": 0.05492,
+            "p95": 0.06783,
+            "max": 0.15414
+          },
+          "meshVsContact": {
+            "n": 12088,
+            "p50": 0,
+            "p90": 0,
+            "p95": 1e-05,
+            "max": 2e-05
+          }
+        },
+        "offVertexShoreBand20m": {
+          "mesh": {
+            "n": 6518,
+            "p50": 0.02125,
+            "p90": 0.05629,
+            "p95": 0.06914,
+            "max": 0.15414
+          },
+          "contact": {
+            "n": 6518,
+            "p50": 0.02126,
+            "p90": 0.05629,
+            "p95": 0.06914,
+            "max": 0.15414
+          },
+          "meshVsContact": {
+            "n": 6518,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 1e-05
+          }
+        },
+        "coverOnlyLand": {
+          "mesh": {
+            "n": 1961,
+            "p50": 0.02156,
+            "p90": 0.05782,
+            "p95": 0.07023,
+            "max": 0.13144
+          },
+          "contact": {
+            "n": 1961,
+            "p50": 0.02156,
+            "p90": 0.05782,
+            "p95": 0.07023,
+            "max": 0.13144
+          },
+          "meshVsContact": {
+            "n": 1961,
+            "p50": 0,
+            "p90": 0,
+            "p95": 0,
+            "max": 0
+          }
+        }
+      },
+      "allCoverLandContactDiff": {
+        "n": 49386,
+        "p50": 0,
+        "p90": 1e-05,
+        "p95": 1e-05,
+        "max": 6e-05
+      },
+      "waterContactOffsetFromPlane": {
+        "n": 16150,
+        "p50": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "threeRayVsIndex": {
+        "n": 250,
+        "p50": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "nearEdges": {
+        "trianglesInProbe": 37494,
+        "backfaces": 0,
+        "profiles": 168286,
+        "gaps": 0,
+        "overlaps": 0,
+        "maxEdgeJumpM": 2e-06,
+        "worstXZ": [
+          -90905.844,
+          -13154.032
+        ]
+      },
+      "initialContactDigest": "5421b8d3b08db128456e1aae2e16f157622fbf84b83cd707219eedded2cda53b",
+      "lod": [
+        {
+          "offsetM": 22000,
+          "meshes": [
+            {
+              "segments": 8,
+              "detail": "west-point",
+              "totalTriangles": 11428
+            }
+          ],
+          "contactDigest": "5421b8d3b08db128456e1aae2e16f157622fbf84b83cd707219eedded2cda53b",
+          "screenDiffPxAt1080": {
+            "n": 49386,
+            "p50": 0.00029,
+            "p90": 0.0017,
+            "p95": 0.00219,
+            "max": 0.0043
+          },
+          "maxChangeInDisplayedLandM": 0.08790158631422706,
+          "edges": {
+            "trianglesInProbe": 11312,
+            "backfaces": 0,
+            "profiles": 49394,
+            "gaps": 0,
+            "overlaps": 0,
+            "maxEdgeJumpM": 0,
+            "worstXZ": [
+              -91086.483,
+              -13340.155
+            ]
+          }
+        },
+        {
+          "offsetM": 8500,
+          "meshes": [
+            {
+              "segments": 56,
+              "detail": "west-point",
+              "totalTriangles": 17516
+            }
+          ],
+          "contactDigest": "5421b8d3b08db128456e1aae2e16f157622fbf84b83cd707219eedded2cda53b",
+          "screenDiffPxAt1080": {
+            "n": 49386,
+            "p50": 0.00075,
+            "p90": 0.0044,
+            "p95": 0.00569,
+            "max": 0.01119
+          },
+          "maxChangeInDisplayedLandM": 0.08790158631422706,
+          "edges": {
+            "trianglesInProbe": 11328,
+            "backfaces": 0,
+            "profiles": 49932,
+            "gaps": 0,
+            "overlaps": 0,
+            "maxEdgeJumpM": 0,
+            "worstXZ": [
+              -91086.483,
+              -13340.155
+            ]
+          }
+        },
+        {
+          "offsetM": 0,
+          "meshes": [
+            {
+              "segments": 112,
+              "detail": "west-point",
+              "totalTriangles": 62318
+            }
+          ],
+          "contactDigest": "5421b8d3b08db128456e1aae2e16f157622fbf84b83cd707219eedded2cda53b",
+          "screenDiffPxAt1080": {
+            "n": 0
+          },
+          "maxChangeInDisplayedLandM": 0
+        }
+      ]
+    }
+  ],
+  "cavendishControl": {
+    "points": 576,
+    "digestMillimetres": "be90bb061e30497d09420101aea5c15468e4604aaa6fcb79af801b5ae0106276",
+    "meshVsContact": {
+      "n": 576,
+      "p50": 0.14901,
+      "p90": 0.45324,
+      "p95": 0.55988,
+      "max": 1.182
+    }
+  },
+  "sourceSHA256": {
+    "src/main.ts": "4cb974b6a6835bbba8bd840c9129ba037d7b8e417621433c7e4aea6dd9414f42",
+    "src/render/world.ts": "b7ea425e27139e330d41a2eb2708d7f7023f52ae13bbb3061947b8e285baa59e",
+    "src/sim/terrain.ts": "b55a1ba0912741cfebee587b5555a55fb3e05fe33127b0c036051b6359f11ef2",
+    "src/sim/geo.ts": "615dfa83789123f718109e32faf74334dc510139baa99639a62766ff9dfb4106",
+    "src/sim/cover.ts": "41b72f2021c43931fc82535f26b73d907dbd0eff376aeb03b8c91bcf5ce087da",
+    "public/world/terrain.json": "77c9417c6bd4f4286ea4ca86a4625be30f779f33272dd7a8a4af13e001de7e98",
+    "public/world/height.bin.gz": "02f3aa212664f267b013f476762940c5ffc0a4af74a5bbf7267e812ae4f3ffa4",
+    "public/world/cover.json": "4834b7598fe4c34fc9a1ac1f3a13229d4fe483a19361b2e90250adbf874c68ab",
+    "public/world/cover.bin.gz": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "data/coastal-elevation/index.json": "d032845d3be31d55e26d18cda39674b8d2c33997e5f4d44792656a55b3e94c35",
+    "src/render/coastal-patch.ts": "2ee7cc1b9cb4c94bc9935598b1ec5f5b3c5db6380f796959af8768a0d9a922d9",
+    "src/render/coastal-normals.ts": "c8246b6bbbd92178b129b2d0507c04f00744f60fd8115651696b2b41485b7087",
+    "src/render/coastal-lod.ts": "8a88392031e9b6a38716225f36abe299a65931aee95bc2813e696a99b804175b",
+    "src/render/coastal-lod.generated.ts": "1b42fa05869f38ce0ec157ea1064b07799842324f29ee085e3c04475ddd410e5",
+    "src/sim/coastal-terrain.ts": "15d5cce6c897134260f51382fb3926b5f4514d854d21eabb73eac2c9e3675c69",
+    "src/sim/coastal-surveys.generated.ts": "82faca1d2f6e1155dc7c7e31f137d756dbb190382a96e97ca649c67fe45bcbe9",
+    "data/coastal-elevation/east-point.cm.i16.gz": "3c775d4787668ad3dfe4a2a1152864cd7c6327006221071217253019a8489dfe",
+    "data/coastal-elevation/west-point.cm.i16.gz": "1a094729c355ca07d163328d37ed88165012dbba9be7be77d197e02b4870f309",
+    "public/world/coastal/v1/east-point.i16.gz": "161be9db74dfc2e48bdbe5ea4e647068a2fa423682dacd5a836ef613b1ef99db",
+    "public/world/coastal/v1/west-point.i16.gz": "2a054f0f4bb9d312a80c28532c2da953f40cce80255f4b378734cbe4b9b1649c"
+  },
+  "chromium": "158.0.8127.36",
+  "failedGates": []
+}

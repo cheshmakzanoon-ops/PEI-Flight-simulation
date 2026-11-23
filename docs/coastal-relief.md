@@ -27,9 +27,22 @@ survey was baked in this pass. A mismatch with a later photograph is not by
 itself evidence of a rendering fault; first check the capture date and overlap
 with the work.
 
+## Distant relief
+
+The complete 3.3 m grid remains in the close approach. At the two more distant terrain detail levels, a precomputed, watertight set of triangles follows the same surface to within **0.09 m** at both stations. This is an error relative to the **shipped close mesh**, not a survey accuracy claim. Every exterior vertex remains on the original fine grid, so the surrounding terrain can join at any detail level. The two plans total 3,089 packed decision bytes, compiled into the application; no additional network request or remote source is required.
+
+| Interior geometry only | Near triangles | Distant triangles |
+| --- | ---: | ---: |
+| East Point | 36,864 | 10,888 |
+| West Point | 36,864 | 10,758 |
+
+The terrain generator checks integer grid vertices and points where opposite triangle diagonals cross, rather than checking only the retained vertices. Those points include every possible maximum error between the two piecewise-planar surfaces. The runtime tests repeat the continuous bound on the decoded, edge-welded geometry and check that each interior edge has exactly two incident faces.
+
+See the [matched distant-view gate](qa/coastal-lod.md) for scene budgets and image comparisons.
+
 ## Reproduce
 
-With a local Python/GDAL installation, run `/usr/bin/python3 tools/terrain/bake-coastal-surveys.py` from the checkout. It uses only the two versioned native windows and the checked-in province atlas; no remote fetch, password or API key is required. `npm run check` covers pack decoding/failover, actual indexed Three.js meshes at every terrain LOD, contact and boundary continuity, and masking of the local normal field. The [legacy calibration](qa/COAST-ELEVATION-BASELINE.md) remains available for comparison. These are same-source interpolation checks, not independent survey accuracy or a claim of province-wide photorealism.
+With a local Python/GDAL installation, run `/usr/bin/python3 tools/terrain/bake-coastal-surveys.py` from the checkout, then run `python3 tools/terrain/bake-coastal-lod.py` to rebuild the distant topology. The bake uses only the two versioned native windows and the checked-in province atlas; no remote fetch, password or API key is required. `npm run check` covers pack decoding/failover, actual indexed Three.js meshes at every terrain LOD, contact and boundary continuity, and masking of the local normal field. The [legacy calibration](qa/COAST-ELEVATION-BASELINE.md) remains available for comparison. These are same-source interpolation checks, not independent survey accuracy or a claim of province-wide photorealism.
 
 See the [runtime release gate](qa/coastal-runtime.md) for the independent
 mesh/contact measurements, off-site controls, browser fault injection and

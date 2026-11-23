@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "render": "Chromium with SwiftShader; submitted triangles and matched-frame differences, not hardware FPS.",
+  "poses": [
+    {
+      "view": "east-8500",
+      "width": 960,
+      "height": 540,
+      "camera": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "h": 19.5,
+        "east": 1,
+        "south": 0,
+        "site": "east",
+        "dist": 8500,
+        "agl": 850,
+        "fixedEyeY": 850,
+        "fixedBaseH": 10.07
+      },
+      "fullyLoadedOrthoTiles": [
+        "30-12",
+        "31-12"
+      ],
+      "baselineTriangles": 240676,
+      "candidateTriangles": 188594,
+      "reductionPercent": 21.64,
+      "baselineDrawCalls": 260,
+      "candidateDrawCalls": 260,
+      "surveyDrawsBaseline": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 37534
+        },
+        {
+          "site": "east-point",
+          "lod": 56,
+          "triangles": 43610
+        }
+      ],
+      "surveyDrawsCandidate": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 11428
+        },
+        {
+          "site": "east-point",
+          "lod": 56,
+          "triangles": 17634
+        }
+      ],
+      "changedOfPixels": 59,
+      "pixels": 518400,
+      "over8Of255": 12,
+      "over32Of255": 0,
+      "maxChannelChange": 30
+    },
+    {
+      "view": "east-22000",
+      "width": 960,
+      "height": 540,
+      "camera": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "h": 19.5,
+        "east": 1,
+        "south": 0,
+        "site": "east",
+        "dist": 22000,
+        "agl": 2200,
+        "fixedEyeY": 2200,
+        "fixedBaseH": 10.07
+      },
+      "fullyLoadedOrthoTiles": [],
+      "baselineTriangles": 231634,
+      "candidateTriangles": 179552,
+      "reductionPercent": 22.485,
+      "baselineDrawCalls": 260,
+      "candidateDrawCalls": 260,
+      "surveyDrawsBaseline": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 37534
+        },
+        {
+          "site": "east-point",
+          "lod": 8,
+          "triangles": 37520
+        }
+      ],
+      "surveyDrawsCandidate": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 11428
+        },
+        {
+          "site": "east-point",
+          "lod": 8,
+          "triangles": 11544
+        }
+      ],
+      "changedOfPixels": 10,
+      "pixels": 518400,
+      "over8Of255": 1,
+      "over32Of255": 0,
+      "maxChannelChange": 9
+    },
+    {
+      "view": "west-8500",
+      "width": 960,
+      "height": 540,
+      "camera": {
+        "lon": -64.38675,
+        "lat": 46.620305556,
+        "h": 20.62,
+        "east": 1,
+        "south": 0,
+        "site": "west",
+        "dist": 8500,
+        "agl": 850,
+        "fixedEyeY": 850,
+        "fixedBaseH": 1.79
+      },
+      "fullyLoadedOrthoTiles": [
+        "0-8",
+        "0-9",
+        "1-7",
+        "1-8",
+        "1-9",
+        "2-7",
+        "2-8",
+        "2-9",
+        "3-7",
+        "3-8",
+        "3-9",
+        "4-8",
+        "4-9"
+      ],
+      "baselineTriangles": 231386,
+      "candidateTriangles": 205280,
+      "reductionPercent": 11.282,
+      "baselineDrawCalls": 22,
+      "candidateDrawCalls": 22,
+      "surveyDrawsBaseline": [
+        {
+          "site": "west-point",
+          "lod": 56,
+          "triangles": 43622
+        }
+      ],
+      "surveyDrawsCandidate": [
+        {
+          "site": "west-point",
+          "lod": 56,
+          "triangles": 17516
+        }
+      ],
+      "changedOfPixels": 62,
+      "pixels": 518400,
+      "over8Of255": 7,
+      "over32Of255": 0,
+      "maxChannelChange": 21
+    },
+    {
+      "view": "west-22000",
+      "width": 960,
+      "height": 540,
+      "camera": {
+        "lon": -64.38675,
+        "lat": 46.620305556,
+        "h": 20.62,
+        "east": 1,
+        "south": 0,
+        "site": "west",
+        "dist": 22000,
+        "agl": 2200,
+        "fixedEyeY": 2200,
+        "fixedBaseH": 1.79
+      },
+      "fullyLoadedOrthoTiles": [
+        "2-8",
+        "2-9",
+        "3-7",
+        "3-8",
+        "3-9",
+        "4-10",
+        "4-11",
+        "4-7",
+        "4-8",
+        "4-9",
+        "5-10",
+        "5-7",
+        "5-8",
+        "5-9",
+        "6-10",
+        "6-8",
+        "6-9"
+      ],
+      "baselineTriangles": 314487,
+      "candidateTriangles": 288381,
+      "reductionPercent": 8.301,
+      "baselineDrawCalls": 35,
+      "candidateDrawCalls": 35,
+      "surveyDrawsBaseline": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 37534
+        }
+      ],
+      "surveyDrawsCandidate": [
+        {
+          "site": "west-point",
+          "lod": 8,
+          "triangles": 11428
+        }
+      ],
+      "changedOfPixels": 7,
+      "pixels": 518400,
+      "over8Of255": 2,
+      "over32Of255": 0,
+      "maxChannelChange": 21
+    }
+  ],
+  "failures": []
+}
