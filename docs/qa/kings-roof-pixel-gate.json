@@ -1,0 +1,109 @@
+{
+  "morell-close": {
+    "negativeControlPixels": 345136,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 637,
+    "atlasTextures": [
+      "21-12",
+      "21-13",
+      "22-12",
+      "22-13",
+      "23-11",
+      "23-12",
+      "23-13"
+    ],
+    "buildingChunks": [
+      "q1212",
+      "q1213",
+      "q12301",
+      "q12303",
+      "q12310",
+      "q12311",
+      "q12312",
+      "q12313"
+    ],
+    "draws": [
+      24,
+      24
+    ],
+    "triangles": [
+      304167,
+      304201
+    ],
+    "msaa": 4
+  },
+  "souris-close": {
+    "negativeControlPixels": 338916,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 2665,
+    "atlasTextures": [
+      "26-13",
+      "26-14",
+      "26-15",
+      "27-13",
+      "27-14",
+      "28-13",
+      "28-14"
+    ],
+    "buildingChunks": [
+      "q13031",
+      "q130330",
+      "q130331",
+      "q130332",
+      "q130333",
+      "q131",
+      "q1321",
+      "q1330"
+    ],
+    "draws": [
+      42,
+      42
+    ],
+    "triangles": [
+      298999,
+      299067
+    ],
+    "msaa": 4
+  },
+  "montague-close": {
+    "negativeControlPixels": 301513,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 25027,
+    "atlasTextures": [
+      "21-16",
+      "21-17",
+      "21-18",
+      "22-16",
+      "22-17",
+      "22-18",
+      "23-16",
+      "23-17",
+      "23-18"
+    ],
+    "buildingChunks": [
+      "q1031",
+      "q103300",
+      "q103301",
+      "q103302",
+      "q103303",
+      "q103310",
+      "q103311",
+      "q103312",
+      "q103313",
+      "q10332",
+      "q10333"
+    ],
+    "draws": [
+      43,
+      43
+    ],
+    "triangles": [
+      297530,
+      297590
+    ],
+    "msaa": 4
+  }
+}

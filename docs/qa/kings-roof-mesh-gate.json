@@ -1,0 +1,608 @@
+{
+  "target": "KINGS; roof-only scout; no semantic façade or footprints",
+  "attempted": 38,
+  "accepted": 38,
+  "rejected": 0,
+  "cells": 831,
+  "chunks": 6,
+  "unrelated": {
+    "vertices": 172110,
+    "bytes": 8433390
+  },
+  "q": [
+    0.1,
+    0.5,
+    0.9,
+    0.99,
+    1
+  ],
+  "perBuildingAbsoluteRoofP90": {
+    "before": [
+      0.41428475902108913,
+      0.8139974117279181,
+      2.0163302612304563,
+      2.8047727489471477,
+      3.1312923431396484
+    ],
+    "after": [
+      0.0660433071260988,
+      0.12694317889136503,
+      0.25206859293809836,
+      0.32732700176083035,
+      0.337298331821745
+    ]
+  },
+  "rejectedNotPublished": [],
+  "acceptedProof": [
+    {
+      "tile": "q103301",
+      "i": 0,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 51,
+      "before": 1.2706890106201172,
+      "after": 0.2476621503736851,
+      "datumDiff": 0.22342542305549884,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 8,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 41,
+      "before": 1.7192611694335653,
+      "after": 0.09972210727832476,
+      "datumDiff": 0.4504776997810218,
+      "faces": [
+        22,
+        32
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 9,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 31,
+      "before": 3.1312923431396484,
+      "after": 0.17318523543161746,
+      "datumDiff": 0.3296933625723071,
+      "faces": [
+        22,
+        36
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 284,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 12,
+      "before": 1.572588348388672,
+      "after": 0.0988163711989529,
+      "datumDiff": 0.34706052921402986,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 372,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 32,
+      "before": 0.3781247130063861,
+      "after": 0.06672382774537766,
+      "datumDiff": 0.6090105558234065,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 385,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 16,
+      "before": 0.4144495324142099,
+      "after": 0.138727575758665,
+      "datumDiff": 0.37735692471376936,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 416,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 10,
+      "before": 0.9817456462947545,
+      "after": 0.15279614153460838,
+      "datumDiff": 0.7741205431383413,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 439,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 12,
+      "before": 0.91610496440139,
+      "after": 0.11468025542060048,
+      "datumDiff": 0.2954478267228353,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 561,
+      "city": "Montague",
+      "kind": "flat",
+      "points": 18,
+      "before": 0.7143356939758576,
+      "after": 0.07245988845824912,
+      "datumDiff": 0.11856866332962746,
+      "faces": [
+        14,
+        10
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q103301",
+      "i": 562,
+      "city": "Montague",
+      "kind": "gable",
+      "points": 34,
+      "before": 0.5792252635939462,
+      "after": 0.17038643609817256,
+      "datumDiff": 0.14743492718894302,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1100",
+      "i": 11,
+      "city": "MurrayHarbour",
+      "kind": "gable",
+      "points": 9,
+      "before": 2.2488069534301816,
+      "after": 0.23867487628264714,
+      "datumDiff": 0.049831584306835985,
+      "faces": [
+        22,
+        36
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1100",
+      "i": 197,
+      "city": "MurrayHarbour",
+      "kind": "gable",
+      "points": 8,
+      "before": 1.1317770004272631,
+      "after": 0.1479477463146253,
+      "datumDiff": 0.20666050004984537,
+      "faces": [
+        16,
+        24
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1100",
+      "i": 416,
+      "city": "MurrayHarbour",
+      "kind": "gable",
+      "points": 10,
+      "before": 0.7399014357751525,
+      "after": 0.20739455711282345,
+      "datumDiff": 0.11241277415372464,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1100",
+      "i": 501,
+      "city": "MurrayHarbour",
+      "kind": "gable",
+      "points": 27,
+      "before": 0.5983465387147362,
+      "after": 0.11632042364047379,
+      "datumDiff": 0.3052857496061665,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q11220",
+      "i": 65,
+      "city": "Georgetown",
+      "kind": "gable",
+      "points": 10,
+      "before": 0.8249854087829845,
+      "after": 0.12506695868038378,
+      "datumDiff": 0.37684242437471305,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q11220",
+      "i": 363,
+      "city": "Georgetown",
+      "kind": "gable",
+      "points": 44,
+      "before": 1.0554292504055809,
+      "after": 0.14723587999416451,
+      "datumDiff": 0.6566100657758067,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q11220",
+      "i": 406,
+      "city": "Georgetown",
+      "kind": "gable",
+      "points": 25,
+      "before": 0.6993278786632801,
+      "after": 0.09422050923111557,
+      "datumDiff": 0.35553015824155043,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12312",
+      "i": 34,
+      "city": "Morell",
+      "kind": "gable",
+      "points": 27,
+      "before": 0.3568584442138788,
+      "after": 0.23276165623239584,
+      "datumDiff": 0.49179160231587815,
+      "faces": [
+        16,
+        28
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12312",
+      "i": 136,
+      "city": "Morell",
+      "kind": "gable",
+      "points": 27,
+      "before": 0.8030094146728516,
+      "after": 0.20263339442003642,
+      "datumDiff": 0.34731752913591585,
+      "faces": [
+        22,
+        32
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12312",
+      "i": 199,
+      "city": "Morell",
+      "kind": "gable",
+      "points": 19,
+      "before": 0.5064001548041915,
+      "after": 0.05401782483649526,
+      "datumDiff": 0.28437310399588256,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12312",
+      "i": 207,
+      "city": "Morell",
+      "kind": "gable",
+      "points": 21,
+      "before": 0.7540148145394312,
+      "after": 0.08812507857183505,
+      "datumDiff": 0.4431429111559275,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12312",
+      "i": 262,
+      "city": "Morell",
+      "kind": "gable",
+      "points": 15,
+      "before": 0.5167774382261314,
+      "after": 0.05303067303623834,
+      "datumDiff": 0.18474839154507805,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12313",
+      "i": 42,
+      "city": "SaintPeters",
+      "kind": "gable",
+      "points": 8,
+      "before": 0.5817363739013672,
+      "after": 0.2621434381863736,
+      "datumDiff": 0.3779156612571333,
+      "faces": [
+        16,
+        28
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12313",
+      "i": 83,
+      "city": "SaintPeters",
+      "kind": "gable",
+      "points": 14,
+      "before": 0.8632332324981888,
+      "after": 0.11009970786295184,
+      "datumDiff": 0.12707164481137845,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12313",
+      "i": 121,
+      "city": "SaintPeters",
+      "kind": "gable",
+      "points": 24,
+      "before": 1.7103775978088378,
+      "after": 0.337298331821745,
+      "datumDiff": 0.4277140803553765,
+      "faces": [
+        22,
+        36
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12313",
+      "i": 191,
+      "city": "SaintPeters",
+      "kind": "gable",
+      "points": 15,
+      "before": 0.5331408849424463,
+      "after": 0.31034879111657004,
+      "datumDiff": 0.06886491601078681,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12313",
+      "i": 203,
+      "city": "SaintPeters",
+      "kind": "gable",
+      "points": 14,
+      "before": 0.44787642681329504,
+      "after": 0.06445542568111477,
+      "datumDiff": 0.2717963629653939,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 2,
+      "city": "Souris",
+      "kind": "flat",
+      "points": 39,
+      "before": 0.652889251708956,
+      "after": 0.09231758117675214,
+      "datumDiff": 0.6250527938783961,
+      "faces": [
+        16,
+        16
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 43,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 32,
+      "before": 2.046604919433571,
+      "after": 0.1319445629927344,
+      "datumDiff": 0.5418361201882806,
+      "faces": [
+        28,
+        38
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 44,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 59,
+      "before": 2.077166748046852,
+      "after": 0.07264486034591187,
+      "datumDiff": 0.17657863539163898,
+      "faces": [
+        22,
+        36
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 59,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 9,
+      "before": 1.0407600402831805,
+      "after": 0.03481822486356237,
+      "datumDiff": 0.27695954253018584,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 96,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 14,
+      "before": 2.0033554077148352,
+      "after": 0.3008013305351057,
+      "datumDiff": 0.7196510425387821,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 202,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 32,
+      "before": 1.0833135688012903,
+      "after": 0.09471491927181433,
+      "datumDiff": 0.4942740020446763,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 217,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 14,
+      "before": 0.7637026521083499,
+      "after": 0.12881939910234624,
+      "datumDiff": 0.4300347766341268,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 218,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 14,
+      "before": 1.7756499355675488,
+      "after": 0.15505347740120504,
+      "datumDiff": 0.4721642151074814,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 300,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 13,
+      "before": 0.378617357212562,
+      "after": 0.1213242262072186,
+      "datumDiff": 0.354995380878524,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 336,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 19,
+      "before": 0.41390028777047405,
+      "after": 0.07669964831068796,
+      "datumDiff": 0.28450287887605796,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q130331",
+      "i": 359,
+      "city": "Souris",
+      "kind": "gable",
+      "points": 12,
+      "before": 0.8502792788192324,
+      "after": 0.24775080211740885,
+      "datumDiff": 0.24042052447694928,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    }
+  ]
+}

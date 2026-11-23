@@ -7,7 +7,7 @@ from collections import defaultdict,Counter
 import numpy as np
 import argparse,json,math,threading,runpy,sys,time
 gdal.UseExceptions()
-ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=Path('.'));ap.add_argument('--scratch',type=Path,required=True);ap.add_argument('--max-groups',type=int,default=139);ap.add_argument('--jobs',type=int,default=4)
+ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=Path('.'));ap.add_argument('--scratch',type=Path,required=True);ap.add_argument('--max-groups',type=int,default=139);ap.add_argument('--jobs',type=int,default=4);ap.add_argument('--all-groups',action='store_true',help='read every spatial group of an already capped candidate sample')
 cfg=ap.parse_args();p=cfg.scratch
 if not 1<=cfg.jobs<=6:ap.error('Use one to six workers')
 O=runpy.run_path(str(cfg.root/'tools/qa/roof-fit-pilot.py'))
@@ -44,7 +44,7 @@ while any(outside.values()):
     for r in outside.values():
         if r:L.append(r.pop(0))
 if cfg.max_groups<=0:sys.exit(0)
-L=L[:cfg.max_groups]
+L=sorted(D.items()) if cfg.all_groups else L[:cfg.max_groups]
 print('Selected',sum(len(g)for _,g in L),len(L),Counter(c['county']for _,g in L for c in g),flush=True)
 P=p/'windows';P.mkdir(exist_ok=True)
 def window(B):

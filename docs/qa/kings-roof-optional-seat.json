@@ -1,0 +1,35 @@
+{
+  "meshOwnership": [
+    22,
+    17
+  ],
+  "trueSurveyGrid": "montague-bridgehead-dry-preview",
+  "levels": [
+    {
+      "lod": 8,
+      "nProbes": 246,
+      "maxBottomYMinusActualGround": -8.511768903585363,
+      "minRoofYMinusActualGround": -4.327252976056002,
+      "wet": 0,
+      "minCover": 39.087591535805245
+    },
+    {
+      "lod": 56,
+      "nProbes": 246,
+      "maxBottomYMinusActualGround": -1.1092313549677613,
+      "minRoofYMinusActualGround": 3.1307281919737013,
+      "wet": 0,
+      "montaguePatch": "montague-bridgehead-dry-preview",
+      "minCover": 39.087591535805245
+    },
+    {
+      "lod": 112,
+      "nProbes": 246,
+      "maxBottomYMinusActualGround": -0.6218202348254578,
+      "minRoofYMinusActualGround": 3.5252776715064433,
+      "wet": 0,
+      "montaguePatch": "montague-bridgehead-dry-preview",
+      "minCover": 39.087591535805245
+    }
+  ]
+}

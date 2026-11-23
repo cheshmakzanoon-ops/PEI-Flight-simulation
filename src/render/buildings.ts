@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
 import type {NorthBaywalk} from './north-baywalk.ts';
 import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
 import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINNAKERS_TILE,type WharfSurface} from './spinnakers-shells.ts';
@@ -363,8 +364,13 @@ export class Buildings {
     emitHomeEnvelope(ring,{x:cx,z:cz},base,seed,home,(x,z)=>this.t.meshElevation(x,z),vertex);
     continue;
    }
+   const center={x:cx,z:cz};
+   const neutralSource=!fit&&rings.length===1?readNeutralRoof(this.atlasHash,tile.id,i,f.footprint):undefined;
+   // The measured elevations are absolute. Reject material ground-datum conflicts
+   // and leave this exact outline on the ordinary legacy generator.
+   const neutral=neutralSource&&Math.abs(neutralSource.datum-base)<=.8?neutralSource:undefined;
    const eave=base+(synthGable?low:h);
-   const rim=(p:Pt)=>fit?base+roofHeight(p,fit):eave;
+   const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number)=>{
     const y0=this.t.meshElevation(p.x,p.z)-.6,y1=this.t.meshElevation(q.x,q.z)-.6,y2=rim(p),y3=rim(q);
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
@@ -373,12 +379,18 @@ export class Buildings {
    for(const rr of rings){for(let i=0;i<rr.length;i++){
     const a=rr[i],b=rr[(i+1)%rr.length],len=Math.hypot(b.x-a.x,b.z-a.z);
     if(len<.15)continue;
+    if(neutral){
+     const edges=neutralRoofEdge(a,b,center,neutral.planes);
+     const u=(t:Pt)=>Math.hypot(t.x-a.x,t.z-a.z);
+     for(let k=1;k<edges.length;k++)wall(edges[k-1],edges[k],u(edges[k-1]),u(edges[k]));
+     continue;
+    }
     const middle=fit?splitRoofEdge(a,b,fit)[1]:b;
     if(middle===b)wall(a,b,0,len);
     else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
    }}
    const roofVert=(p:Pt,y:number)=>vertex(p,y,cr,p.x-ox,p.z-oz,1);
-   if(synthGable&&!fit){
+   if(synthGable&&!fit&&!neutral){
     const length=(a:Pt,b:Pt)=>Math.hypot(a.x-b.x,a.z-b.z);
     let a=ring[0],b=ring[1],c=ring[2],d=ring[3];
     if(length(a,b)>length(b,c)){[a,b,c,d]=[b,c,d,a];}
@@ -391,6 +403,9 @@ export class Buildings {
     if(fit){for(const face of faces){
       const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
       for(const t of splitRoofTriangle(triangle,fit))for(const p of t)roofVert(p,rim(p));
+    }}else if(neutral){for(const face of faces){
+      const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
+      for(const cut of neutralRoofTriangles(triangle,center,neutral.planes))for(const p of cut)roofVert(p,rim(p));
     }}else{for(const face of faces)for(const idx of face)roofVert(flat[idx],eave);}
    }
   }
