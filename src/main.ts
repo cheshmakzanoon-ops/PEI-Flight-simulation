@@ -1,3 +1,4 @@
+import {ReliefPacks} from './sim/relief-pack.ts';
 import { DIALS, dialAngle } from './render/instruments.ts';
 import { equivalentAirspeed } from './sim/aerodynamics.ts';
 import * as THREE from 'three';
@@ -77,6 +78,15 @@ async function run(){
       structures.sourceAtlasSha256===SIDEWALKS.pinBuildingAtlasSha256)sidewalks=new Sidewalks(scene,world,paths);
   });
  }
+ if(new URLSearchParams(location.search).has('surveyRelief')&&/^e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384$/.test(SIDEWALKS.sha256)){
+  void Promise.all([roadReady,buildingReady]).then(async([street,structures])=>{
+   const {sha256}=terrain.spec as typeof terrain.spec&{sha256?:string};
+   if(!sha256||!street?.sourceGeometrySha256||!structures?.sourceAtlasSha256||!cover.sourceSha)return;
+   const stream=await ReliefPacks.open(import.meta.env.BASE_URL,{terrain:sha256,cover:cover.sourceSha,
+      road:street.sourceGeometrySha256,buildings:structures.sourceAtlasSha256});
+   if(stream)world.enableAdaptiveTerrain(stream);
+  });
+ }
  const tgt=new THREE.Vector3(),eye=new THREE.Vector3(),forward=new THREE.Vector3(),up=new THREE.Vector3(),right=new THREE.Vector3(),rot=new THREE.Quaternion(),aim=new THREE.Vector3(),groundY=new THREE.Vector3();
  const liveCasters=(x:number,z:number,d:number,out:THREE.Mesh[])=>buildings?.drawableCasters(x,z,d,out);
  const diagnostic=import.meta.env.DEV||new URLSearchParams(location.search).has('diagnostics');
@@ -86,6 +96,7 @@ async function run(){
   const u=input.poll(pause);
   if(ui.mode==='dispatch'&&ui.selected!==activeSite)reposition(ui.selected);
   const dispatch=ui.mode==='dispatch',playing=ui.mode==='flight';
+  world.prepareAdaptiveTerrain(f.x,f.z,f.y,performance.now());
   if(playing){
    acc+=delta;let n=0;while(acc>=FIXED_STEP&&n++<12){step(f,u,sceneSurface);acc-=FIXED_STEP;}
    if(f.status==='stopped')ui.stop(mainland?.isLand(f.x,f.z)?'Mainland scenery boundary':f.notice);
@@ -134,7 +145,7 @@ async function run(){
   renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,sidewalks:sidewalks?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    adaptiveTerrain:world.adaptiveState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,sidewalks:sidewalks?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

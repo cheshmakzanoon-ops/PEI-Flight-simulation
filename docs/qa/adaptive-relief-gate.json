@@ -1,0 +1,263 @@
+{
+  "matchedImages": {
+    "kensington-hills": {
+      "baseline": {
+        "calls": 67,
+        "tris": 302023
+      },
+      "measured": {
+        "calls": 67,
+        "tris": 358501
+      },
+      "restored": true,
+      "refined": 1640,
+      "pixels": {
+        "changed": 245276,
+        "over2": 95313,
+        "over8": 3109,
+        "max": 33
+      }
+    },
+    "bonshaw-valley": {
+      "baseline": {
+        "calls": 101,
+        "tris": 316849
+      },
+      "measured": {
+        "calls": 101,
+        "tris": 332851
+      },
+      "restored": true,
+      "refined": 459,
+      "pixels": {
+        "changed": 230551,
+        "over2": 62343,
+        "over8": 794,
+        "max": 15
+      }
+    }
+  },
+  "scopeCandidateHighWaterBeforeInnerRing": {
+    "protectedOverlapCells": [],
+    "canonicalForestRoots": [],
+    "cells": 52975,
+    "minimumContinuousSignedCoverM": 200.5974025973992,
+    "signedCoverUnder148": 0,
+    "cellOverlapsProtectedClass": 0,
+    "fullSupport": {
+      "tiles": 199,
+      "missingSupportCells": 0,
+      "eligibilityBytes": 59305582
+    },
+    "roads": {
+      "records": 19465,
+      "segments": 55151,
+      "actualIntersections": 0,
+      "bufferedIntersections": 0,
+      "capIntersections": 0
+    },
+    "buildings": {
+      "footprints": 85866,
+      "actualAABBIntersections": 0,
+      "bufferedAABBIntersections": 0
+    }
+  },
+  "hedgeAnchors": {
+    "tiles": 199,
+    "changedCells": 52975,
+    "hedgeRecords": 672176,
+    "hedgeRootsOverEnteringCells": 0,
+    "hedgeShadowConservativeSupport": 0,
+    "styles": {},
+    "affectedTileCount": 0,
+    "topAffected": [],
+    "examples": [],
+    "runways": {
+      "CYYG03": 0,
+      "CYYG10": 0,
+      "CYSU05": 0
+    }
+  },
+  "acceptedTerrainPlan": {
+    "inputCandidates": 52975,
+    "eligibleAfterLegacySeamMoat": 51441,
+    "coastalAndSidewalkTileGuardsAlsoApply": true
+  },
+  "localBuildProxy": [
+    {
+      "id": "11-11",
+      "timing": {
+        "medianMS": 30.120778000000087,
+        "p95MS": 45.76084199999991,
+        "maxMS": 77.07585199999994
+      },
+      "cells": 1640,
+      "vertices": 55149,
+      "tris": 81566,
+      "originalTris": 25088,
+      "indexType": "Uint16Array",
+      "geometryArrayBytes": 1592376,
+      "originalArrayBytes": 405908
+    },
+    {
+      "id": "13-16",
+      "timing": {
+        "medianMS": 5.13994300000013,
+        "p95MS": 12.423373999999967,
+        "maxMS": 17.944761999999855
+      },
+      "cells": 459,
+      "vertices": 24664,
+      "tris": 41090,
+      "originalTris": 25088,
+      "indexType": "Uint16Array",
+      "geometryArrayBytes": 739820,
+      "originalArrayBytes": 405908
+    },
+    {
+      "id": "22-20",
+      "timing": {
+        "medianMS": 11.947838000000047,
+        "p95MS": 27.382446999999956,
+        "maxMS": 34.22284200000013
+      },
+      "cells": 368,
+      "vertices": 22278,
+      "tris": 37748,
+      "originalTris": 25088,
+      "indexType": "Uint16Array",
+      "geometryArrayBytes": 672048,
+      "originalArrayBytes": 405908
+    }
+  ],
+  "browserMotion": [
+    {
+      "phase": "low",
+      "mode": "low",
+      "ready": 2,
+      "active": [],
+      "refined": 0,
+      "y": 37.10080521315477,
+      "visual": null,
+      "frame": 13
+    },
+    {
+      "phase": "high",
+      "mode": "high",
+      "ready": 2,
+      "active": [
+        "11-11",
+        "11-10"
+      ],
+      "refined": 2091,
+      "y": 37.620392970959244,
+      "visual": 37.620392970959244,
+      "frame": 17
+    },
+    {
+      "phase": "descended",
+      "mode": "descended",
+      "ready": 2,
+      "active": [
+        "11-11",
+        "11-10"
+      ],
+      "refined": 2091,
+      "y": 37.620392970959244,
+      "visual": 37.620392970959244,
+      "frame": 21
+    },
+    {
+      "phase": "far",
+      "mode": "far",
+      "ready": 0,
+      "active": [],
+      "refined": 0,
+      "y": 37.10080521315477,
+      "visual": null,
+      "frame": 26
+    }
+  ],
+  "unalteredFlight": {
+    "default": {
+      "active": null,
+      "site": "cavendish",
+      "mode": "flight",
+      "meshDraws": 258,
+      "triangles": 313581,
+      "travelled": 38.961,
+      "requests": []
+    },
+    "healthy": {
+      "active": {
+        "active": [
+          "13-11",
+          "12-11"
+        ],
+        "ready": 2,
+        "inflight": 0,
+        "failed": 0,
+        "refined": 275
+      },
+      "site": "cavendish",
+      "mode": "flight",
+      "meshDraws": 259,
+      "triangles": 349007,
+      "travelled": 35.364,
+      "requests": [
+        [
+          "/world/terrain-adaptive/v1/index.json",
+          null
+        ],
+        [
+          "/world/terrain-adaptive/v1/relief-05.pack",
+          "bytes=332451-393160"
+        ],
+        [
+          "/world/terrain-adaptive/v1/relief-07.pack",
+          "bytes=106331-209511"
+        ]
+      ]
+    }
+  },
+  "localTerrainContactRays": {
+    "sha": {
+      "world": "2ef248b02733605f07a5715e3ef634c2540458cd20e30e902a9a5edfb6dfefad",
+      "adaptive": "8b733b7cf2173a4dcf96845d1e45cbf14abd796ff1aa7a76c48e03f79dd01210",
+      "pure": "84d0c9c25ff3e813dbf55ffada8282ca971239da4952fabfccfdeaca25bb1cba"
+    },
+    "site": "11-11",
+    "selectedCellCount": 1640,
+    "submittedIndices": 244698,
+    "selectedRayPoints": 378,
+    "maxRayVsPhysicsM": 2.7782231619255526e-05,
+    "maxCorrectionM": 2.689920803156866,
+    "moatFormulaPoints": 8987,
+    "pointsExactAfterFullRelease": 1555,
+    "worstContactDifferenceAcrossAboutOneMillimetreM": 0.00018477522766602306,
+    "dynamicSeam": {
+      "adjacentLOD": [
+        112,
+        56
+      ],
+      "outerRingVertices": 113,
+      "rewrittenOuterVertices": 52,
+      "rayPoints": 35,
+      "outerMaxRayVsVisualM": 8.27867025599005e-06
+    },
+    "stages": {
+      "requestOnly": true,
+      "decodedWithoutGeometryMutation": true,
+      "reject174_999": true,
+      "admit175_001": true,
+      "stableAt38mAGL": true,
+      "waterExact": -0.055,
+      "withdrawRestoredBaseAndPhysics": true,
+      "disposeExactlyOnce": 1,
+      "lateReadNotApplied": true,
+      "activeMax": 2,
+      "requestsMax": 2,
+      "digestFailureRetainsOld": true
+    }
+  }
+}

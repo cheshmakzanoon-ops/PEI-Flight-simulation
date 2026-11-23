@@ -1,3 +1,6 @@
+import {adaptiveGround} from './adaptive-ground.ts';
+import type {ReliefPacks} from '../sim/relief-pack.ts';
+import type {ReliefSeed} from '../sim/relief-seed.ts';
 import * as THREE from 'three';
 import {facet,loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
 import {insertCoastalGrid} from './coastal-patch.ts';
@@ -272,10 +275,19 @@ async function loadCover(){
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
  return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined,cs.compressedSha256);
 }
-interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
+type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
+interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private groundVersion=0;
+ private reliefPacks?:ReliefPacks;
+ private reliefSeed=new Map<string,ReliefSeed>();
+ private reliefPending=new Set<string>();
+ private reliefFailed=new Set<string>();
+ private reliefEmpty=new Set<string>();
+ private reliefActive=new Set<Patch>();
+ private reliefRefresh=-Infinity;
+ private reliefX=Infinity;private reliefZ=Infinity;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
@@ -405,6 +417,59 @@ export class World {
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
  }
+ enableAdaptiveTerrain(stream:ReliefPacks){
+  this.reliefPacks=stream;
+ }
+ get adaptiveState(){return this.reliefPacks?{
+  active:Array.from(this.reliefActive,t=>t.id),ready:this.reliefSeed.size,inflight:this.reliefPending.size,failed:this.reliefFailed.size,
+  refined:Array.from(this.reliefActive,t=>t.relief!.mesh.relief.refinedCells).reduce((a,b)=>a+b,0),
+ }:null;}
+ private reliefTileSafe(t:Patch){
+  // On this exact sidewalk generation, the independently measured
+  // mitered paths intersect admission masks only in terrain tile 8-13.
+  if(t.id==='8-13')return false;
+  return !this.terrain.surveyGrids.some(g=>g.spec.tileX===t.i&&g.spec.tileZ===t.j);
+ }
+ /** Promote a coherent mesh and contact revision before this frame runs physics.
+  * The Promise callbacks only stage verified samples; they cannot move scenery. */
+ prepareAdaptiveTerrain(x:number,z:number,altitude:number,now:number){
+  const data=this.reliefPacks;if(!data)return;
+  this.reliefX=x;this.reliefZ=z;
+  const range=(t:Patch)=>Math.hypot(x-t.x0-t.w/2,z-t.z0-t.d/2);
+  for(const t of this.reliefActive)if(range(t)>6600)this.withdrawAdaptive(t);
+  if(now-this.reliefRefresh>420){
+   this.reliefRefresh=now;
+   const wanted=this.tiles.filter(t=>this.reliefTileSafe(t)&&data.has(t.id)&&!this.reliefEmpty.has(t.id)&&range(t)<7600).sort((a,b)=>range(a)-range(b)).slice(0,5);
+   const keep=new Set(wanted.map(t=>t.id));
+   for(const id of this.reliefSeed.keys())if(!keep.has(id)&&!this.byId.get(id)?.relief)this.reliefSeed.delete(id);
+   for(const t of wanted){
+    if(this.reliefPending.size>=2)break;
+    if(this.reliefPending.has(t.id)||this.reliefSeed.has(t.id)||t.relief||this.reliefFailed.has(t.id))continue;
+    this.reliefPending.add(t.id);
+    void data.load(t.id).then(seed=>{
+     if(seed&&Math.hypot(this.reliefX-t.x0-t.w/2,this.reliefZ-t.z0-t.d/2)<8100)this.reliefSeed.set(t.id,seed);
+    }).catch(()=>{this.reliefFailed.add(t.id);}).finally(()=>{this.reliefPending.delete(t.id);});
+   }
+  }
+  // Avoid moving the ground beneath an existing low pass, touchdown or
+  // restart. Already installed local geometry stays stable through descent.
+  if(this.reliefActive.size>=2||altitude-(this.terrain.contactHeight(x,z,this.cover.distance(this.terrain,x,z)>=0))<175)return;
+  const ready=this.tiles.filter(t=>t.lod===112&&t.fine&&!t.relief&&this.reliefSeed.has(t.id)&&range(t)<5300)
+   .sort((a,b)=>range(a)-range(b));
+  const t=ready[0];if(!t?.fine)return;
+  const seed=this.reliefSeed.get(t.id)!;this.reliefSeed.delete(t.id);
+  try{
+   const base=t.fine.geometry,mesh=adaptiveGround(base,seed,this.terrain,t.x0,t.z0,t.w,t.d);
+   if(!mesh.relief.refinedCells){mesh.geometry.dispose();this.reliefEmpty.add(t.id);return;}
+   t.relief={base,mesh};t.fine.geometry=mesh.geometry;
+   this.reliefActive.add(t);this.groundVersion++;
+  }catch{this.reliefFailed.add(t.id);}
+ }
+ private withdrawAdaptive(t:Patch){
+  const q=t.relief;if(!q)return;
+  q.mesh.geometry.dispose();if(t.fine)t.fine.geometry=q.base;
+  t.relief=undefined;this.reliefActive.delete(t);this.groundVersion++;
+ }
  /** Decorations fitted to terrain faces only refit when a relevant LOD changes. */
  get visualGroundEpoch(){return this.groundVersion;}
  visualGroundSignature(b:readonly [number,number,number,number]){
@@ -413,7 +478,7 @@ export class World {
   const i0=Math.max(0,Math.floor(a*WORLD_COLS)),i1=Math.min(WORLD_COLS-1,Math.floor(d*WORLD_COLS));
   let out='';
   for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){
-   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+';':'-;';
+   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+(q.relief?'*;':';'):'-;';
   }
   return out;
  }
@@ -423,6 +488,10 @@ export class World {
   const [u,v]=this.terrain.uv(x,z),i=Math.floor(u*WORLD_COLS),j=Math.floor(v*WORLD_ROWS);
   const tile=this.byId.get(i+'-'+j);
   if(!tile)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
+  if(tile.relief){
+   const m=tile.relief.mesh.relief,u=(x-tile.x0)/tile.w,v=(z-tile.z0)/tile.d;
+   if(m.supportDistance(u,v)===0)return m.height(u,v);
+  }
   const g=(tile.lod>8&&tile.fine?tile.fine:tile.coarse);
   const n=g.userData.subdiv as number,step=n+1;
   const grid=this.terrain.coastalGrids.find(a=>a.spec.tileX===i&&a.spec.tileZ===j);
@@ -443,7 +512,19 @@ export class World {
   // Both shaders use the continuous Cover mask. A missing province DEM cell
   // cannot revoke visible land, and even positive offshore survey samples
   // must not raise water contact above the rendered ocean.
-  return this.terrain.contactHeight(x,z,land??(this.cover.distance(this.terrain,x,z)>=0));
+  const covered=land??(this.cover.distance(this.terrain,x,z)>=0);
+  const baseline=this.terrain.contactHeight(x,z,covered);
+  if(!covered||!this.reliefActive.size||runwayAt(x,z))return baseline;
+  const [u,v]=this.terrain.uv(x,z);
+  const t=this.byId.get(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
+  if(!t?.relief)return baseline;
+  const mesh=t.relief.mesh.relief,localX=(x-t.x0)/t.w,localZ=(z-t.z0)/t.d;
+  const depth=mesh.supportDistance(localX,localZ);
+  // Outside the contact envelope, leave the pre-existing atlas interpolation
+  // intact. Within measured triangles, visual and physical Y share one field.
+  if(depth>=1)return baseline;
+  const amount=1-depth*depth*(3-2*depth);
+  return baseline+amount*(mesh.height(localX,localZ)-baseline);
  }
  surface(x:number,z:number):Surface{
   const land=this.cover.distance(this.terrain,x,z)>=0;
@@ -463,7 +544,7 @@ export class World {
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
    const d2=dx*dx+dz*dz,old=tile.lod;
    tile.lod=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
-   if(tile.lod!==old)changedGround=true;
+   if(tile.lod!==old){changedGround=true;if(tile.lod<112)this.withdrawAdaptive(tile);}
    const fine=tile.lod>8;
    if(fine&&tile.fine?.userData.subdiv!==tile.lod){
      if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
@@ -485,10 +566,12 @@ export class World {
       for(let k=0;k<=n;k++){
         if(k%ratio===0){a=height(k/n);b=height(Math.min(1,(k+ratio)/n));}
         const j=side===0?k:side===1?k*(n+1)+n:side===2?n*(n+1)+k:k*(n+1);
-        pos.setY(j,a+(b-a)*(k%ratio)/ratio);
+        const y=a+(b-a)*(k%ratio)/ratio;
+        pos.setY(j,y);tile.relief?.base.getAttribute('position').setY(j,y);
       }
     }
     pos.needsUpdate=true;
+    if(tile.relief)tile.relief.base.getAttribute('position').needsUpdate=true;
   }
   if(changedGround)this.groundVersion++;
   const now=performance.now();

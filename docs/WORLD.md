@@ -188,3 +188,6 @@ The [building-aware vegetation pass](vegetation-clearance.md) excludes
 synthetic stems inside all shipped source roof footprints without applying a
 broad clearance buffer. Nearby natural-looking canopies may still overlap
 roof outlines; the pass is not a survey of individual trees.
+
+- [Optional streamed 16 m inland relief](qa/adaptive-relief.md):
+  selected protected inland surfaces, exact runtime mesh/contact, source pins, and limitations.
