@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "title": "Quartermaster waterfront building: native roof evidence",
+  "license": "Open Government Licence \u2013 Canada",
+  "licenseURL": "https://open.canada.ca/en/open-government-licence-canada",
+  "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada.",
+  "buildingAtlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "tile": "q12000111",
+  "featureIndex": 22,
+  "sourceFootprint": [
+    [
+      -63.124163,
+      46.232355
+    ],
+    [
+      -63.123788,
+      46.232077
+    ],
+    [
+      -63.123767,
+      46.232091
+    ],
+    [
+      -63.123753,
+      46.23208
+    ],
+    [
+      -63.123781,
+      46.232063
+    ],
+    [
+      -63.123795,
+      46.232074
+    ],
+    [
+      -63.123848,
+      46.232041
+    ],
+    [
+      -63.123714,
+      46.231937
+    ],
+    [
+      -63.123591,
+      46.232012
+    ],
+    [
+      -63.123405,
+      46.231866
+    ],
+    [
+      -63.123521,
+      46.231792
+    ],
+    [
+      -63.122733,
+      46.23119
+    ],
+    [
+      -63.122716,
+      46.2312
+    ],
+    [
+      -63.12246,
+      46.231006
+    ],
+    [
+      -63.122475,
+      46.230994
+    ],
+    [
+      -63.12244,
+      46.23097
+    ],
+    [
+      -63.122426,
+      46.230979
+    ],
+    [
+      -63.122151,
+      46.230769
+    ],
+    [
+      -63.122622,
+      46.230474
+    ],
+    [
+      -63.124653,
+      46.232051
+    ]
+  ],
+  "atlasHeightAGLM": 40.51,
+  "atlasLowestRecordedReturnAGLM": 2.04,
+  "dsm": {
+    "collection": "NRCan CanElevation HRDEM Mosaic 1m",
+    "item": "10_3-mosaic-1m",
+    "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+    "dtmURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "windowSha256": "8cee16306c30ddbd1497193bccfbf7ef855c303eca6019fc53ad7c0fab697013",
+    "minimumFootprintInteriorDistanceM": 1.5
+  },
+  "class6": {
+    "project": "Prince Edward Island 2020",
+    "tile": "pei_2020_390000_686000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_390000_686000.copc.laz",
+    "sourceHorizontalEPSG": 2961,
+    "sourceURL": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "sourceBoundsXY": [
+      490385.097404099,
+      5119658.49781594,
+      490583.802208997,
+      5119873.68306142
+    ],
+    "class6UnwithheldUnique": 151115,
+    "transferredBytes": 4117240,
+    "requestCount": 14,
+    "objectBytes": 19287700
+  },
+  "grid": {
+    "horizontalEPSG": 3979,
+    "cellMetres": 1,
+    "offsetXY": [
+      2384660,
+      300775
+    ],
+    "centerSuffixMetres": 0.5
+  },
+  "layout": [
+    "column",
+    "row_northward",
+    "dsm_height_cm",
+    "class6_count",
+    "class6_median_cm",
+    "class6_p90_minus_p10_cm"
+  ],
+  "rows": 10844,
+  "missing": -32768,
+  "encoding": "little-endian signed int16 per field, gzip",
+  "file": "quartermaster-roof-cells.i16.gz",
+  "bytes": 130128,
+  "sha256": "0a8ad3cccf5ae2c462c3240f17e83a2ece25c4e28fe55285be55801c4ef7f1d3",
+  "compressedBytes": 64191,
+  "compressedSha256": "d2fe9732786c4a060fb7dfc95d0a95a13fa2f0420bff596b8600ba57c5005ca3"
+}

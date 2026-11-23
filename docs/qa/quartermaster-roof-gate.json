@@ -1,0 +1,127 @@
+{
+  "reviewSource": "1m DSM interior cross-checked with class-6 COPC; same capture, different representations",
+  "dsmInterior": 10844,
+  "with3PointReturns": 10581,
+  "copcAgreement3": {
+    "n": 10581,
+    "medianM": 0.03,
+    "p90M": 0.47,
+    "p95M": 1.53,
+    "within1m": 9905
+  },
+  "copcAgreementStable3": {
+    "n": 10112,
+    "medianM": 0.03,
+    "p90M": 0.25,
+    "p95M": 0.77,
+    "within1m": 9682
+  },
+  "admittedSeeds": 9019,
+  "suppressedOrUncertainInterior": 1825,
+  "noNearSeedInterior": 349,
+  "maxModelInfillDistanceM": 3.75,
+  "holdoutAllDSM": {
+    "n": 10844,
+    "medianM": 0.06,
+    "p90M": 1.56,
+    "p95M": 3.0,
+    "within1m": 9491
+  },
+  "holdoutStableConsensus": {
+    "n": 9019,
+    "medianM": 0.05,
+    "p90M": 0.22,
+    "p95M": 0.37,
+    "within1m": 8989
+  },
+  "tiers": [
+    {
+      "roofY": 9.11,
+      "class6CoreCells": 775,
+      "dsmInteriorPredicted": 1291,
+      "areaM2": 1496.178,
+      "components": 6
+    },
+    {
+      "roofY": 10.58,
+      "class6CoreCells": 628,
+      "dsmInteriorPredicted": 852,
+      "areaM2": 954.991,
+      "components": 1
+    },
+    {
+      "roofY": 13.96,
+      "class6CoreCells": 4247,
+      "dsmInteriorPredicted": 4543,
+      "areaM2": 4703.739,
+      "components": 8
+    },
+    {
+      "roofY": 14.92,
+      "class6CoreCells": 2005,
+      "dsmInteriorPredicted": 2373,
+      "areaM2": 2458.576,
+      "components": 1
+    },
+    {
+      "roofY": 28.68,
+      "class6CoreCells": 737,
+      "dsmInteriorPredicted": 884,
+      "areaM2": 932.588,
+      "components": 1
+    },
+    {
+      "roofY": 37.09,
+      "class6CoreCells": 384,
+      "dsmInteriorPredicted": 540,
+      "areaM2": 528.091,
+      "components": 4
+    },
+    {
+      "roofY": 42.55,
+      "class6CoreCells": 243,
+      "dsmInteriorPredicted": 361,
+      "areaM2": 354.887,
+      "components": 2
+    }
+  ],
+  "serializedModelAllDSM": {
+    "n": 10844,
+    "medianM": 0.06,
+    "p90M": 1.51,
+    "p95M": 2.96,
+    "within1m": 9535
+  },
+  "serializedModelStableDSM": {
+    "n": 9019,
+    "medianM": 0.05,
+    "p90M": 0.22,
+    "p95M": 0.35,
+    "within1m": 9017
+  },
+  "serializedModelStableCOPC": {
+    "n": 9019,
+    "medianM": 0.04,
+    "p90M": 0.16,
+    "p95M": 0.2,
+    "within1m": 9014
+  },
+  "sourceOutlineM2": 11429.05,
+  "qaProjection": {
+    "worldOriginXZ": [
+      5749.5714575145885,
+      29852.940488167253
+    ],
+    "eastStepXZ": [
+      0.8626788786892139,
+      0.4749226499648794
+    ],
+    "northStepXZ": [
+      0.47258163529255764,
+      -0.8669765290981595
+    ],
+    "maxErrorM": 0.0014146110003302205
+  },
+  "unknownRegions": "3.75m native nearest-core limit before 1m masking/generalization; otherwise use the supported lowest terrace within the exact original footprint",
+  "modelDataSha256": "cf2e8dc74b1b2287c902ca4c2805f8844c3a4acb7677a686497f4a424f4a9d22"
+}

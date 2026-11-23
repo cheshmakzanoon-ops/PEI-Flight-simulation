@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
+import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -61,8 +62,10 @@ const buildingF=`
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
+ private readonly fitted:boolean;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF,vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly fitted:boolean){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,private readonly atlasHash:string|undefined){
+  this.fitted=supportedRoofAtlas(atlasHash);
   this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
  static async create(scene:THREE.Scene,terrain:Terrain){
@@ -73,7 +76,7 @@ export class Buildings {
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),supportedRoofAtlas(a.sha256));
+  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256);
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -111,6 +114,21 @@ export class Buildings {
    const seed=Math.abs(Math.floor(cx*97+cz*53))>>>0,h=clamp(f.height,1.3,130);
    facade=downtownFacade(ll.lon,ll.lat,h,seed);
    const base=this.t.meshElevation(cx,cz)+.05, cw=bases[seed%bases.length],cr=tops[(seed>>>4)%tops.length];
+   if(supportedQuartermasterRoof(this.atlasHash,tile.id,f.footprint,f.holes)){
+    emitQuartermasterRoof({
+     roof:(a,b,c,y)=>{
+      vertex(a,y,cr,a.x-ox,a.z-oz,1);vertex(b,y,cr,b.x-ox,b.z-oz,1);vertex(c,y,cr,c.x-ox,c.z-oz,1);
+     },
+     riser:(a,b,below,y)=>{
+      const ga=this.t.meshElevation(a.x,a.z)-.6,gb=this.t.meshElevation(b.x,b.z)-.6;
+      const loA=below??ga,loB=below??gb,d=Math.hypot(a.x-b.x,a.z-b.z);
+      facade=downtownFacade(ll.lon,ll.lat,y-base,seed);
+      vertex(a,loA,cw,0,loA-ga,0);vertex(a,y,cw,0,y-ga,0);vertex(b,y,cw,d,y-gb,0);
+      vertex(a,loA,cw,0,loA-ga,0);vertex(b,y,cw,d,y-gb,0);vertex(b,loB,cw,d,loB-gb,0);
+     }
+    });
+    continue;
+   }
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
    const fit=this.fitted&&rings.length===1?lookupRoofFit(tile.id,f.footprint,{x:cx,z:cz}):undefined;
