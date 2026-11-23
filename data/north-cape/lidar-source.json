@@ -1,0 +1,150 @@
+[
+  {
+    "tile": "pei_2020_323000_777000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_323000_777000.copc.laz",
+    "etag": "\"06ef3fd9d3c376fbe6002a3853629336-5\"",
+    "crs": "PROJCS[\"NAD83(CSRS) / UTM zone 20N\",GEOGCS[\"NAD83(CSRS)\",DATUM[\"NAD83_Canadian_Spatial_Reference_System\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6140\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4617\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-63],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"2961\"]]",
+    "span": [
+      [
+        423023.33374310296,
+        5209952.678084027
+      ],
+      [
+        424023.059743103,
+        5210952.418084026
+      ]
+    ],
+    "B": 39335060,
+    "transfer": 12129,
+    "requests": 3,
+    "crops": [
+      {
+        "id": "NCW12",
+        "n": 2911
+      }
+    ]
+  },
+  {
+    "tile": "pei_2020_323000_778000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_323000_778000.copc.laz",
+    "etag": "\"a4b07a0411a166d90be335858adb351c-3\"",
+    "crs": "PROJCS[\"NAD83(CSRS) / UTM zone 20N\",GEOGCS[\"NAD83(CSRS)\",DATUM[\"NAD83_Canadian_Spatial_Reference_System\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6140\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4617\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-63],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"2961\"]]",
+    "span": [
+      [
+        423223.3847025601,
+        5210952.408140787
+      ],
+      [
+        424023.0387025601,
+        5211879.517140787
+      ]
+    ],
+    "B": 17875549,
+    "transfer": 4801,
+    "requests": 3,
+    "crops": [
+      {
+        "id": "NCW4",
+        "n": 2316
+      },
+      {
+        "id": "NCW5",
+        "n": 2509
+      },
+      {
+        "id": "NCW6",
+        "n": 2422
+      }
+    ]
+  },
+  {
+    "tile": "pei_2020_324000_777000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_324000_777000.copc.laz",
+    "etag": "\"9928e1f0498e76fb2578544e38ae0693-8\"",
+    "crs": "PROJCS[\"NAD83(CSRS) / UTM zone 20N\",GEOGCS[\"NAD83(CSRS)\",DATUM[\"NAD83_Canadian_Spatial_Reference_System\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6140\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4617\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-63],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"2961\"]]",
+    "span": [
+      [
+        424023.0417278497,
+        5209952.69814266
+      ],
+      [
+        425021.9947278497,
+        5210952.43314266
+      ]
+    ],
+    "B": 60232873,
+    "transfer": 9088542,
+    "requests": 26,
+    "crops": [
+      {
+        "id": "NCW8",
+        "n": 2832
+      },
+      {
+        "id": "NCW13",
+        "n": 3078
+      },
+      {
+        "id": "NCW14",
+        "n": 3059
+      },
+      {
+        "id": "NCW15",
+        "n": 3966
+      },
+      {
+        "id": "NCW16",
+        "n": 3510
+      }
+    ]
+  },
+  {
+    "tile": "pei_2020_324000_778000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_324000_778000.copc.laz",
+    "etag": "\"00c5c55fe54a66232a60c393c1f7f767-6\"",
+    "crs": "PROJCS[\"NAD83(CSRS) / UTM zone 20N\",GEOGCS[\"NAD83(CSRS)\",DATUM[\"NAD83_Canadian_Spatial_Reference_System\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6140\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4617\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-63],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"2961\"]]",
+    "span": [
+      [
+        424023.02393585,
+        5210952.420217567
+      ],
+      [
+        424973.33693585,
+        5211952.146217568
+      ]
+    ],
+    "B": 46365782,
+    "transfer": 10183743,
+    "requests": 32,
+    "crops": [
+      {
+        "id": "NCW1",
+        "n": 2661
+      },
+      {
+        "id": "NCW2",
+        "n": 5296
+      },
+      {
+        "id": "NCW3",
+        "n": 3327
+      },
+      {
+        "id": "NCW7",
+        "n": 2892
+      },
+      {
+        "id": "NCW9",
+        "n": 3805
+      },
+      {
+        "id": "NCW10",
+        "n": 3938
+      },
+      {
+        "id": "NCW11",
+        "n": 3877
+      }
+    ]
+  }
+]

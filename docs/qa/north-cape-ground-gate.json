@@ -1,0 +1,856 @@
+{
+  "notes": "Actual shipped no-new-opt Terrain/Cover and World.patch direct Three vertical rays. Forthcoming candidate at exact new anchors after independent COPC shaft selection; ground heights and bounding extents not engineering surveys.",
+  "atlasSha": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+  "coverCompressedSha": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+  "buildingsSha": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "records": [
+    {
+      "id": "NCW1",
+      "x": -60991.52650243991,
+      "z": -61621.32418694699,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 105.83449785630393,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 97.98280087024006,
+      "oldTerrain": 5.691636532837448,
+      "groundPhysics": [
+        true,
+        5.811636532837448
+      ],
+      "rawCoverClass": 30,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 5.7199093825985585,
+          "r2p5Range": [
+            5.663715656042228,
+            5.773911295866753
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 4.808990789265522,
+          "r2p5Range": [
+            4.7159358507158515,
+            4.902045727815192
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 4.085274868351121,
+          "r2p5Range": [
+            4.06311176721826,
+            4.107437969483982
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 3,
+        "dist": 20.521207421299987
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 10,
+        "height": 8.87,
+        "dist": 146.6157056142524
+      }
+    },
+    {
+      "id": "NCW2",
+      "x": -61155.82148061652,
+      "z": -61501.781557478316,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 9,
+      "groundPhysics": [
+        true,
+        9.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 9.001829261097242,
+          "r2p5Range": [
+            8.988913321527974,
+            9.014745200666482
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 8.838804062186625,
+          "r2p5Range": [
+            8.807642525383557,
+            8.869965598989722
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 4.5919841304052795,
+          "r2p5Range": [
+            4.5451204302249835,
+            4.638847830585604
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 2,
+        "dist": 222.40380436414142
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 3,
+        "height": 5.07,
+        "dist": 92.29021210261332
+      }
+    },
+    {
+      "id": "NCW3",
+      "x": -61339.97494164886,
+      "z": -61421.80115771713,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 252.01255257455398,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 249.977831243945,
+      "oldTerrain": 11,
+      "groundPhysics": [
+        true,
+        11.12
+      ],
+      "rawCoverClass": 30,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.016754729699926,
+          "r2p5Range": [
+            10.993024023589555,
+            11.040485435810297
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 10.893407844146822,
+          "r2p5Range": [
+            10.868800271241241,
+            10.918015417052402
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 4.879123750880751,
+          "r2p5Range": [
+            4.832260050700398,
+            4.925987451061019
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 2,
+        "dist": 421.466206263124
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 3,
+        "height": 5.07,
+        "dist": 101.92175242357067
+      }
+    },
+    {
+      "id": "NCW4",
+      "x": -61472.02195443178,
+      "z": -61283.63904671929,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 244.71908261097298,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 241.1242312511729,
+      "oldTerrain": 12,
+      "groundPhysics": [
+        true,
+        12.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 12.119999885559082,
+          "r2p5Range": [
+            12.119999885559054,
+            12.11999988555911
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 12.10012494179665,
+          "r2p5Range": [
+            12.078586578346062,
+            12.11999988555911
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 6.518928973831294,
+          "r2p5Range": [
+            6.472065273650969,
+            6.565792674011618
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 2,
+        "dist": 606.5367627004646
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 3,
+        "height": 5.07,
+        "dist": 292.54841297726824
+      }
+    },
+    {
+      "id": "NCW5",
+      "x": -61715.20584961724,
+      "z": -61171.75541592151,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 57.41134556404984,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 49.92055688834682,
+      "oldTerrain": 12.041448560412032,
+      "groundPhysics": [
+        true,
+        12.161448560412031
+      ],
+      "rawCoverClass": 30,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.031887922660019,
+          "r2p5Range": [
+            10.91882206287147,
+            11.144953782448539
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 10.391744815333453,
+          "r2p5Range": [
+            10.217378764841925,
+            10.566110865824982
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 6.755155272776165,
+          "r2p5Range": [
+            6.693615015858541,
+            6.816695529693789
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 2,
+        "dist": 871.6197320151649
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 3,
+        "height": 5.07,
+        "dist": 552.4267414197761
+      }
+    },
+    {
+      "id": "NCW6",
+      "x": -61820.35524975181,
+      "z": -60975.11145876055,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 70.59823258667916,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 63.085581482835494,
+      "oldTerrain": 11.519403286143355,
+      "groundPhysics": [
+        true,
+        11.639403286143354
+      ],
+      "rawCoverClass": 30,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.863721257102554,
+          "r2p5Range": [
+            11.646310773224457,
+            11.967345278668859
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 10.851469481656864,
+          "r2p5Range": [
+            10.745778027043883,
+            10.957160936269844
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 8.449593564065594,
+          "r2p5Range": [
+            8.38805330714797,
+            8.51113382098319
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9103,
+        "flags": 1,
+        "segment": 15,
+        "dist": 945.2778698993532
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 3,
+        "height": 5.07,
+        "dist": 757.7204595392302
+      }
+    },
+    {
+      "id": "NCW7",
+      "x": -61027.38998597195,
+      "z": -60973.610784129705,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 9.641497688210599,
+      "groundPhysics": [
+        true,
+        9.761497688210598
+      ],
+      "rawCoverClass": 30,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 9.807950704269274,
+          "r2p5Range": [
+            9.77068313559036,
+            9.84521827294813
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 9.902452699136461,
+          "r2p5Range": [
+            9.872551160099931,
+            9.932354238172877
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 9.157402095247306,
+          "r2p5Range": [
+            9.137349315123629,
+            9.177454875370955
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 17,
+        "dist": 297.6082594046088
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 23,
+        "height": 5.88,
+        "dist": 201.30605548441764
+      }
+    },
+    {
+      "id": "NCW8",
+      "x": -60997.65983363445,
+      "z": -60788.19409642877,
+      "projectedOwnerTile": "5-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 10,
+      "groundPhysics": [
+        true,
+        10.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 10.164934351794585,
+          "r2p5Range": [
+            10.156259318220918,
+            10.173609385368252
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 10.317385716502201,
+          "r2p5Range": [
+            10.293933799989816,
+            10.340837633014615
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 9.865036927757501,
+          "r2p5Range": [
+            9.853103446648419,
+            9.876970408866612
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 16,
+        "dist": 313.8674105076505
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 23,
+        "height": 5.88,
+        "dist": 235.26492579892408
+      }
+    },
+    {
+      "id": "NCW9",
+      "x": -61216.14920259476,
+      "z": -61196.822240307905,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 11.504832755907955,
+      "groundPhysics": [
+        true,
+        11.624832755907955
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.502948229410492,
+          "r2p5Range": [
+            11.46356109526559,
+            11.542335363555367
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 11.511111757735335,
+          "r2p5Range": [
+            11.499966266201056,
+            11.522257249269614
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 8.556911257843694,
+          "r2p5Range": [
+            8.536858477720074,
+            8.5769640379674
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 16403,
+        "flags": 10,
+        "segment": 0,
+        "dist": 405.171819896712
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 0,
+        "height": 5.09,
+        "dist": 271.45928897731136
+      }
+    },
+    {
+      "id": "NCW10",
+      "x": -61245.37272181737,
+      "z": -61047.766343102056,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 11,
+      "groundPhysics": [
+        true,
+        11.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.119999885559082,
+          "r2p5Range": [
+            11.119999885559054,
+            11.11999988555911
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 11.119999885559082,
+          "r2p5Range": [
+            11.119999885559054,
+            11.11999988555911
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 9.671449571323336,
+          "r2p5Range": [
+            9.651396791199687,
+            9.691502351446985
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 17,
+        "dist": 480.6824685482062
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 0,
+        "height": 5.09,
+        "dist": 359.7587764462947
+      }
+    },
+    {
+      "id": "NCW11",
+      "x": -61401.83791549005,
+      "z": -60947.47681333944,
+      "projectedOwnerTile": "5-0",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 12,
+      "groundPhysics": [
+        true,
+        12.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 12.119999885559082,
+          "r2p5Range": [
+            12.119999885559054,
+            12.11999988555911
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 12.42990725927811,
+          "r2p5Range": [
+            12.408571412777093,
+            12.451243105779156
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 11.050011031152621,
+          "r2p5Range": [
+            11.029958251028944,
+            11.07006381127627
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 17,
+        "dist": 660.921543382665
+      },
+      "closestBuilding": {
+        "tile": "q2232",
+        "ordinal": 0,
+        "height": 5.09,
+        "dist": 545.5355403053923
+      }
+    },
+    {
+      "id": "NCW12",
+      "x": -61516.905042662824,
+      "z": -60790.82861411372,
+      "projectedOwnerTile": "5-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 12.82299338582709,
+      "groundPhysics": [
+        true,
+        12.942993385827089
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 12.903814922081835,
+          "r2p5Range": [
+            12.858649448794353,
+            12.948980395369318
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 12.524924958035797,
+          "r2p5Range": [
+            12.508101521130328,
+            12.541748394941266
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 12.254778748220247,
+          "r2p5Range": [
+            12.242845267111164,
+            12.2667122293293
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 16,
+        "dist": 818.3895831328261
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 23,
+        "height": 5.88,
+        "dist": 708.3364640513948
+      }
+    },
+    {
+      "id": "NCW13",
+      "x": -61244.405513143494,
+      "z": -60741.450860709796,
+      "projectedOwnerTile": "5-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 11.0984302362275,
+      "groundPhysics": [
+        true,
+        11.2184302362275
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.39629537466746,
+          "r2p5Range": [
+            11.379883167939028,
+            11.412707581395864
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 11.43671933116309,
+          "r2p5Range": [
+            11.428513227798874,
+            11.443993019554739
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 10.935135123117533,
+          "r2p5Range": [
+            10.923201642008479,
+            10.947068604226644
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 16,
+        "dist": 564.7305385378326
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 23,
+        "height": 5.88,
+        "dist": 467.43997096306316
+      }
+    },
+    {
+      "id": "NCW14",
+      "x": -61209.37106561709,
+      "z": -60557.92391143264,
+      "projectedOwnerTile": "5-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 11.362440314960395,
+      "groundPhysics": [
+        true,
+        11.482440314960394
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.436142155071394,
+          "r2p5Range": [
+            11.400035361624248,
+            11.472248948518569
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 11.2695625040447,
+          "r2p5Range": [
+            11.22524958532071,
+            11.313875422768717
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 10.554555268345013,
+          "r2p5Range": [
+            10.548475862117868,
+            10.560634674572128
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 9,
+        "dist": 546.0058575942323
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 10,
+        "height": 9.14,
+        "dist": 511.98866236120995
+      }
+    },
+    {
+      "id": "NCW15",
+      "x": -61384.91943995408,
+      "z": -60377.18710535714,
+      "projectedOwnerTile": "5-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 12,
+      "groundPhysics": [
+        true,
+        12.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 12.119999885559054,
+          "r2p5Range": [
+            12.119999885559054,
+            12.11999988555911
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 12.119999885559082,
+          "r2p5Range": [
+            12.119999885559082,
+            12.11999988555911
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 11.155078144619068,
+          "r2p5Range": [
+            11.14899873839201,
+            11.161157550846184
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 8,
+        "dist": 670.6411905375495
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 45,
+        "height": 3.94,
+        "dist": 709.2560153266089
+      }
+    },
+    {
+      "id": "NCW16",
+      "x": -60881.29541863708,
+      "z": -60406.91157915276,
+      "projectedOwnerTile": "6-1",
+      "legacyDepth": 254,
+      "validAtlasRadius8": true,
+      "minimumStockCoverDistanceToRadius8": 254,
+      "oldTerrain": 11,
+      "groundPhysics": [
+        true,
+        11.12
+      ],
+      "rawCoverClass": 10,
+      "visualRenderedY": [
+        {
+          "n": 112,
+          "actualGroundCentreY": 11.119999885559082,
+          "r2p5Range": [
+            11.119999885559054,
+            11.11999988555911
+          ]
+        },
+        {
+          "n": 56,
+          "actualGroundCentreY": 10.766059010713178,
+          "r2p5Range": [
+            10.748005548251712,
+            10.784112473174645
+          ]
+        },
+        {
+          "n": 8,
+          "actualGroundCentreY": 9.885977075110588,
+          "r2p5Range": [
+            9.854394540581154,
+            9.917559609640051
+          ]
+        }
+      ],
+      "closestRoad": {
+        "ordinal": 9131,
+        "flags": 10,
+        "segment": 9,
+        "dist": 185.8651826730222
+      },
+      "closestBuilding": {
+        "tile": "q2233",
+        "ordinal": 10,
+        "height": 9.14,
+        "dist": 342.2553459145216
+      }
+    }
+  ]
+}

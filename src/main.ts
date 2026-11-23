@@ -1,3 +1,4 @@
+import {NorthCapeScenery} from './render/north-cape.ts';
 import {buildNorthBaywalk} from './render/north-baywalk.ts';
 import {loadBaywalkCourt,BAYWALK_ROAD_SHA,BAYWALK_ROAD_ORDINAL,BAYWALK_ROAD_FLAGS} from './sim/baywalk-native.ts';
 import {loadSpinnakersDeck,buildSpinnakersDeck,spinnakersDeckSurface} from './render/spinnakers-deck.ts';
@@ -61,9 +62,10 @@ async function run(){
    loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob);
  const forestHeights=await woodland;await warmForest;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
-   showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),options.has('shoreFoamDetail'));
+   showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),options.has('shoreFoamDetail'),options.has('northCapeWind'));
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,options.has('canopyLight')?world.sun:undefined);
+ const northCape=options.has('northCapeWind')?new NorthCapeScenery(scene,world):undefined;
  addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  const spinnakers=spinnakersJob?.then(pack=>{
   if(!pack)return;
@@ -115,7 +117,7 @@ async function run(){
  void addMainland(scene).then(t=>mainland=t).catch(e=>warn('Mainland',e));
  const startRoads=(prepared?:Awaited<typeof montagueRoadJob>)=>Roads.create(scene,terrain,world.buildingShadows,
   terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined,options.has('seatedRoads')?world:undefined,
-  cover.montague||cover.baywalk?world:undefined,prepared);
+  cover.montague||cover.baywalk?world:undefined,prepared,world.capeShadow);
  const roadReady=(preRoadJob?preRoadJob.then(startRoads):startRoads()).then(v=>roads=v).catch(e=>{warn('Road',e);});
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob).then(v=>buildings=v).catch(e=>{warn('Building',e);});
  if(cover.sourceSha===SIDEWALKS.pinCoverSha256){
@@ -188,7 +190,7 @@ async function run(){
     camera.position.lerp(eye,1-Math.exp(-delta*7));aim.lerp(tgt,1-Math.exp(-delta*10));
   }
   snap=false;camera.up.copy(up);camera.lookAt(aim);camera.updateMatrixWorld();
-  groundY.copy(aircraft.root.position);world.update(camera.position,time);
+  groundY.copy(aircraft.root.position);world.update(camera.position,time);northCape?.update(camera.position,time);
   if(basinFootbridge){
    const dx=camera.position.x-basinFootbridge.position.x,dz=camera.position.z-basinFootbridge.position.z;
    // A 10 m boardwalk needs no near-detail draw at the distant headlands.
@@ -206,7 +208,7 @@ async function run(){
   renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    legacyShore:world.legacyShoreState,shoreFoamDetail:options.has('shoreFoamDetail'),canopyLight:options.has('canopyLight'),adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandVolume:vegetation.volumeCount,woodlandGroundedShadows:vegetation.groundedShadowCount,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,montagueFoundation:cover.montague?.plan.id??null,montagueBridge:roads?.bridgePreviewActive??false,spinnakersDeck:buildings?.spinnakersActive??false,northBaywalkCourt:world.baywalkActive,northBaywalkRamp:buildings?.northBaywalkActive??false,northBaywalkRoad:roads?.baywalkRoadActive??false,northBaywalkConcrete:buildings?.northConcreteActive??false,basinShoreline:cover.basin?.plan.id??null,basinFootbridge:!!basinFootbridge,basinFootbridgeVisible:basinFootbridge?.visible??false,basinCanneryVisible:basinCannery?.visible??false,basinWharfVisible:basinWharf?.visible??false,basinWharfToe:cover.wharfToe,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,pavement:roads?.pavementStatus??null,seatedRoads:roads?.seatState??null,sidewalks:sidewalks?.state??null,parking:parking?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    legacyShore:world.legacyShoreState,shoreFoamDetail:options.has('shoreFoamDetail'),canopyLight:options.has('canopyLight'),northCape:northCape?.counts??null,adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandVolume:vegetation.volumeCount,woodlandGroundedShadows:vegetation.groundedShadowCount,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,montagueFoundation:cover.montague?.plan.id??null,montagueBridge:roads?.bridgePreviewActive??false,spinnakersDeck:buildings?.spinnakersActive??false,northBaywalkCourt:world.baywalkActive,northBaywalkRamp:buildings?.northBaywalkActive??false,northBaywalkRoad:roads?.baywalkRoadActive??false,northBaywalkConcrete:buildings?.northConcreteActive??false,basinShoreline:cover.basin?.plan.id??null,basinFootbridge:!!basinFootbridge,basinFootbridgeVisible:basinFootbridge?.visible??false,basinCanneryVisible:basinCannery?.visible??false,basinWharfVisible:basinWharf?.visible??false,basinWharfToe:cover.wharfToe,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,pavement:roads?.pavementStatus??null,seatedRoads:roads?.seatState??null,sidewalks:sidewalks?.state??null,parking:parking?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

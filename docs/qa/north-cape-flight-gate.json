@@ -1,0 +1,26 @@
+[
+  {
+    "option": false,
+    "site": "northcape",
+    "movementM": 45.902297731388764,
+    "northCape": null,
+    "startY": 385.1220276003034,
+    "afterY": 385.2512215541586,
+    "pauseSucceeded": true,
+    "errors": []
+  },
+  {
+    "option": true,
+    "site": "northcape",
+    "movementM": 47.0365105343097,
+    "northCape": {
+      "registered": 16,
+      "near": 0,
+      "cruise": 16
+    },
+    "startY": 385.12363421360664,
+    "afterY": 385.26210894101763,
+    "pauseSucceeded": true,
+    "errors": []
+  }
+]

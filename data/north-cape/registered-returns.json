@@ -1,0 +1,822 @@
+{
+  "notes": "Independent 2020 CanElevation point-cloud evidence against the federal wind turbine file. Bounded local crops may contain returns around both tested sites, but this published projection retains only federal source-position comparisons. A high return can be a tower, nacelle or blade. Do not infer an exact shaft or foundation. National elevation source attribution and exact object ranges are in lidar-source.json.",
+  "pointRowsTotal": 52399,
+  "nSites": 16,
+  "nElevatedUnder2MOfCWTD": 16,
+  "nNominalBandUnder2OfCWTD": 14,
+  "nExactShaftNotQualified": 12,
+  "registered": [
+    {
+      "id": "NCW1",
+      "pointRows": 2661,
+      "cropSha256": "6ea1877ef8bd8e992d63c1a446025695b73e93dcd6000b1f3f706e85f39f832b",
+      "relativeGroundCGVD2013": 6.337674617767334,
+      "localRawCWTDxy": [
+        424465.771706946,
+        5211681.8581114
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 373,
+          "within2OfCWTD": 52,
+          "nearestToCWTDM": 0.06384774961576156,
+          "relativeYMinMedMax": [
+            25.57733,
+            51.01933,
+            66.91033
+          ]
+        },
+        "nominalHubBand": {
+          "count": 287,
+          "within2OfCWTD": 31,
+          "nearestToCWTDM": 0.06384774961576156,
+          "relativeYMinMedMax": [
+            49.01933,
+            50.98133,
+            55.92733
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 56,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 4.984548766994879,
+          "relativeYMinMedMax": [
+            5.64633,
+            14.83783,
+            24.93433
+          ]
+        },
+        "groundClass2": {
+          "count": 1142,
+          "within2OfCWTD": 11,
+          "nearestToCWTDM": 1.3399025415573107,
+          "relativeYMinMedMax": [
+            -1.04767,
+            -0.18717,
+            0.37733
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW2",
+      "pointRows": 5296,
+      "cropSha256": "e266d732cd6213c0bdb0164b207ae51ee788080a0fb7b27fb8e75494e8347e3e",
+      "relativeGroundCGVD2013": 9.279644966125488,
+      "localRawCWTDxy": [
+        424301.699110178,
+        5211564.42080629
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 579,
+          "within2OfCWTD": 40,
+          "nearestToCWTDM": 0.22289076507191335,
+          "relativeYMinMedMax": [
+            25.01836,
+            50.79636,
+            70.73436
+          ]
+        },
+        "nominalHubBand": {
+          "count": 334,
+          "within2OfCWTD": 40,
+          "nearestToCWTDM": 0.22289076507191335,
+          "relativeYMinMedMax": [
+            46.04036,
+            50.95436,
+            55.96136
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 247,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 2.8990590047297258,
+          "relativeYMinMedMax": [
+            5.00436,
+            12.97936,
+            24.97536
+          ]
+        },
+        "groundClass2": {
+          "count": 1398,
+          "within2OfCWTD": 53,
+          "nearestToCWTDM": 0.30320523762160656,
+          "relativeYMinMedMax": [
+            -0.60264,
+            -0.12564,
+            0.41936
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW3",
+      "pointRows": 3327,
+      "cropSha256": "364c88802f27629c469968e45ecaf25f62046531f4bb573fbb6e56a8a4a1f9f9",
+      "relativeGroundCGVD2013": 11.38067626953125,
+      "localRawCWTDxy": [
+        424118.476424208,
+        5211486.78857155
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 400,
+          "within2OfCWTD": 35,
+          "nearestToCWTDM": 0.11447599200072167,
+          "relativeYMinMedMax": [
+            46.93132,
+            50.00032,
+            73.01532
+          ]
+        },
+        "nominalHubBand": {
+          "count": 373,
+          "within2OfCWTD": 35,
+          "nearestToCWTDM": 0.11447599200072167,
+          "relativeYMinMedMax": [
+            46.93132,
+            49.77032,
+            55.82832
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 0,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 999.0,
+          "relativeYMinMedMax": null
+        },
+        "groundClass2": {
+          "count": 1474,
+          "within2OfCWTD": 46,
+          "nearestToCWTDM": 0.3473736754941017,
+          "relativeYMinMedMax": [
+            -0.39168,
+            -0.09068,
+            0.40832
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW4",
+      "pointRows": 2316,
+      "cropSha256": "1672e40d56b0e04a561cac747cc91e97c77296a379114a5aa924d5bd3851734c",
+      "relativeGroundCGVD2013": 12.72540283203125,
+      "localRawCWTDxy": [
+        423986.060802151,
+        5211350.33903966
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 321,
+          "within2OfCWTD": 49,
+          "nearestToCWTDM": 0.3588772311264261,
+          "relativeYMinMedMax": [
+            43.4536,
+            51.0516,
+            62.8756
+          ]
+        },
+        "nominalHubBand": {
+          "count": 270,
+          "within2OfCWTD": 49,
+          "nearestToCWTDM": 0.3588772311264261,
+          "relativeYMinMedMax": [
+            46.1346,
+            51.0131,
+            55.9986
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 0,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 999.0,
+          "relativeYMinMedMax": null
+        },
+        "groundClass2": {
+          "count": 1030,
+          "within2OfCWTD": 53,
+          "nearestToCWTDM": 0.09440865906355346,
+          "relativeYMinMedMax": [
+            -0.7374,
+            -0.2249,
+            0.3586
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW5",
+      "pointRows": 2509,
+      "cropSha256": "29d28b9cfabc49339602034d4880106b53d06f7929c48f84a4075b57887ddc2a",
+      "relativeGroundCGVD2013": 13.444944381713867,
+      "localRawCWTDxy": [
+        423744.01034446,
+        5211241.57215942
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 289,
+          "within2OfCWTD": 28,
+          "nearestToCWTDM": 0.43309160833584115,
+          "relativeYMinMedMax": [
+            50.19406,
+            50.99306,
+            64.36906
+          ]
+        },
+        "nominalHubBand": {
+          "count": 261,
+          "within2OfCWTD": 15,
+          "nearestToCWTDM": 0.6021874024724879,
+          "relativeYMinMedMax": [
+            50.19406,
+            50.96606,
+            55.95906
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 0,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 999.0,
+          "relativeYMinMedMax": null
+        },
+        "groundClass2": {
+          "count": 1326,
+          "within2OfCWTD": 46,
+          "nearestToCWTDM": 0.4214354682544112,
+          "relativeYMinMedMax": [
+            -1.02494,
+            -0.17094,
+            0.28606
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW6",
+      "pointRows": 2422,
+      "cropSha256": "fb820814bc033ed0204f0717719f8515fc5d7fcdb2dc6d39720fbd45df4028be",
+      "relativeGroundCGVD2013": 12.747577667236328,
+      "localRawCWTDxy": [
+        423637.444434267,
+        5211046.32551246
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 361,
+          "within2OfCWTD": 41,
+          "nearestToCWTDM": 0.14226969324363922,
+          "relativeYMinMedMax": [
+            48.57842,
+            49.97842,
+            51.23342
+          ]
+        },
+        "nominalHubBand": {
+          "count": 361,
+          "within2OfCWTD": 41,
+          "nearestToCWTDM": 0.14226969324363922,
+          "relativeYMinMedMax": [
+            48.57842,
+            49.97842,
+            51.23342
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 0,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 999.0,
+          "relativeYMinMedMax": null
+        },
+        "groundClass2": {
+          "count": 913,
+          "within2OfCWTD": 22,
+          "nearestToCWTDM": 0.14896342389762465,
+          "relativeYMinMedMax": [
+            -0.33258,
+            -0.06258,
+            0.52742
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW7",
+      "pointRows": 2892,
+      "cropSha256": "60b47dcbe72dd328567ba477d48cb7dd00e6a712b5072f72533f9b64f395d077",
+      "relativeGroundCGVD2013": 10.253418922424316,
+      "localRawCWTDxy": [
+        424422.057269715,
+        5211034.79908287
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 341,
+          "within2OfCWTD": 34,
+          "nearestToCWTDM": 0.6248055222331438,
+          "relativeYMinMedMax": [
+            25.32858,
+            49.84858,
+            51.21758
+          ]
+        },
+        "nominalHubBand": {
+          "count": 306,
+          "within2OfCWTD": 34,
+          "nearestToCWTDM": 0.6248055222331438,
+          "relativeYMinMedMax": [
+            46.17858,
+            50.20408,
+            51.21758
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 53,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 6.341073122877654,
+          "relativeYMinMedMax": [
+            5.01758,
+            14.08058,
+            24.41858
+          ]
+        },
+        "groundClass2": {
+          "count": 1020,
+          "within2OfCWTD": 49,
+          "nearestToCWTDM": 0.4233284660861136,
+          "relativeYMinMedMax": [
+            -0.55442,
+            -0.08642,
+            0.46658
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW8",
+      "pointRows": 2832,
+      "cropSha256": "6f6c2f6138e109c89ced44244b2c83e62fe4a9af6a3739f706ad4d87635f5e88",
+      "relativeGroundCGVD2013": 10.15729808807373,
+      "localRawCWTDxy": [
+        424449.119622832,
+        5210849.06683713
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 388,
+          "within2OfCWTD": 40,
+          "nearestToCWTDM": 0.05941223668378343,
+          "relativeYMinMedMax": [
+            25.2397,
+            50.0502,
+            51.2347
+          ]
+        },
+        "nominalHubBand": {
+          "count": 331,
+          "within2OfCWTD": 40,
+          "nearestToCWTDM": 0.05941223668378343,
+          "relativeYMinMedMax": [
+            46.0337,
+            50.3027,
+            51.2347
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 47,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 6.123006653486843,
+          "relativeYMinMedMax": [
+            5.7747,
+            13.8497,
+            24.1527
+          ]
+        },
+        "groundClass2": {
+          "count": 1139,
+          "within2OfCWTD": 25,
+          "nearestToCWTDM": 0.3598971089468163,
+          "relativeYMinMedMax": [
+            -0.5533,
+            -0.0303,
+            0.5437
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW9",
+      "pointRows": 3805,
+      "cropSha256": "bad26396dc41db5e3e335388bf2cf60fca69eef74c103651a3ebcb0149e2fc81",
+      "relativeGroundCGVD2013": 12.027104377746582,
+      "localRawCWTDxy": [
+        424238.125367244,
+        5211260.31764251
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 410,
+          "within2OfCWTD": 32,
+          "nearestToCWTDM": 0.355461580595882,
+          "relativeYMinMedMax": [
+            25.0529,
+            50.7534,
+            68.7079
+          ]
+        },
+        "nominalHubBand": {
+          "count": 289,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 3.1189656527710667,
+          "relativeYMinMedMax": [
+            46.0899,
+            50.9239,
+            55.5879
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 490,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 3.6483821360916684,
+          "relativeYMinMedMax": [
+            5.0019,
+            6.3944,
+            24.2199
+          ]
+        },
+        "groundClass2": {
+          "count": 1277,
+          "within2OfCWTD": 41,
+          "nearestToCWTDM": 0.29666704526414,
+          "relativeYMinMedMax": [
+            -0.3361,
+            0.0149,
+            0.5059
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW10",
+      "pointRows": 3938,
+      "cropSha256": "976fee0cae2b87b1e9382c65ca370cc8fd13965791597e494a22a0aa552b52cb",
+      "relativeGroundCGVD2013": 11.311978340148926,
+      "localRawCWTDxy": [
+        424207.310349016,
+        5211111.67716541
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 458,
+          "within2OfCWTD": 55,
+          "nearestToCWTDM": 0.7180665282192241,
+          "relativeYMinMedMax": [
+            34.47502,
+            50.84202,
+            70.79302
+          ]
+        },
+        "nominalHubBand": {
+          "count": 316,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 3.3378497060857946,
+          "relativeYMinMedMax": [
+            46.01702,
+            51.06252,
+            55.94202
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 288,
+          "within2OfCWTD": 1,
+          "nearestToCWTDM": 1.9934913278411968,
+          "relativeYMinMedMax": [
+            5.00002,
+            5.95452,
+            24.04102
+          ]
+        },
+        "groundClass2": {
+          "count": 1241,
+          "within2OfCWTD": 39,
+          "nearestToCWTDM": 0.33444612018666325,
+          "relativeYMinMedMax": [
+            -0.73998,
+            -0.01798,
+            0.52302
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW11",
+      "pointRows": 3877,
+      "cropSha256": "f7faf1d351171917f9b319e68ebf5c8a63e6c4865f0c1c9669221284d3433c67",
+      "relativeGroundCGVD2013": 13.230982780456543,
+      "localRawCWTDxy": [
+        424051.210593779,
+        5211013.394935
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 455,
+          "within2OfCWTD": 31,
+          "nearestToCWTDM": 0.16851032595337145,
+          "relativeYMinMedMax": [
+            37.31502,
+            50.93102,
+            67.89802
+          ]
+        },
+        "nominalHubBand": {
+          "count": 299,
+          "within2OfCWTD": 31,
+          "nearestToCWTDM": 0.16851032595337145,
+          "relativeYMinMedMax": [
+            46.00902,
+            50.91702,
+            55.85302
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 297,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 4.761424271042115,
+          "relativeYMinMedMax": [
+            5.00002,
+            5.99902,
+            8.65702
+          ]
+        },
+        "groundClass2": {
+          "count": 1151,
+          "within2OfCWTD": 52,
+          "nearestToCWTDM": 0.24422624357493167,
+          "relativeYMinMedMax": [
+            -1.17098,
+            -0.17398,
+            0.26302
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW12",
+      "pointRows": 2911,
+      "cropSha256": "1699074ea33f96f7b4dc189c34bd2ebc870d06c4736bf2c36217117a71c12748",
+      "relativeGroundCGVD2013": 12.980165481567383,
+      "localRawCWTDxy": [
+        423935.348736579,
+        5210858.25162357
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 369,
+          "within2OfCWTD": 44,
+          "nearestToCWTDM": 0.10965656424860648,
+          "relativeYMinMedMax": [
+            40.01983,
+            50.58783,
+            60.16483
+          ]
+        },
+        "nominalHubBand": {
+          "count": 296,
+          "within2OfCWTD": 20,
+          "nearestToCWTDM": 0.3711851687971483,
+          "relativeYMinMedMax": [
+            46.07183,
+            50.71283,
+            55.23983
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 3,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 10.242183720050674,
+          "relativeYMinMedMax": [
+            5.15083,
+            5.24983,
+            5.31783
+          ]
+        },
+        "groundClass2": {
+          "count": 1247,
+          "within2OfCWTD": 45,
+          "nearestToCWTDM": 0.3179152551517259,
+          "relativeYMinMedMax": [
+            -0.80117,
+            -0.13817,
+            0.31083
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW13",
+      "pointRows": 3078,
+      "cropSha256": "23149e30b9a640369b6af709352b08dcc445c6a2cac60dc37f44a78a5401fe47",
+      "relativeGroundCGVD2013": 10.859599113464355,
+      "localRawCWTDxy": [
+        424204.363630114,
+        5210805.44586784
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 369,
+          "within2OfCWTD": 31,
+          "nearestToCWTDM": 0.052460097791807665,
+          "relativeYMinMedMax": [
+            25.6704,
+            50.1704,
+            71.9944
+          ]
+        },
+        "nominalHubBand": {
+          "count": 346,
+          "within2OfCWTD": 31,
+          "nearestToCWTDM": 0.052460097791807665,
+          "relativeYMinMedMax": [
+            46.3574,
+            50.1174,
+            55.8244
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 15,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 5.303049911167972,
+          "relativeYMinMedMax": [
+            12.9934,
+            18.0794,
+            24.4174
+          ]
+        },
+        "groundClass2": {
+          "count": 1519,
+          "within2OfCWTD": 55,
+          "nearestToCWTDM": 0.2625732744261058,
+          "relativeYMinMedMax": [
+            -0.6626,
+            -0.1196,
+            0.5784
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW14",
+      "pointRows": 3059,
+      "cropSha256": "b97bcd3d07d6805440896b1d31b7d88b769c4c21af6e3a093c2b1732b789d2fb",
+      "relativeGroundCGVD2013": 11.460713386535645,
+      "localRawCWTDxy": [
+        424236.693508024,
+        5210621.53489445
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 367,
+          "within2OfCWTD": 33,
+          "nearestToCWTDM": 0.08436774225432149,
+          "relativeYMinMedMax": [
+            25.07929,
+            49.71329,
+            68.82929
+          ]
+        },
+        "nominalHubBand": {
+          "count": 297,
+          "within2OfCWTD": 33,
+          "nearestToCWTDM": 0.08436774225432149,
+          "relativeYMinMedMax": [
+            46.00429,
+            49.78129,
+            55.65329
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 47,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 4.896567888159785,
+          "relativeYMinMedMax": [
+            5.00329,
+            13.58829,
+            24.08629
+          ]
+        },
+        "groundClass2": {
+          "count": 1505,
+          "within2OfCWTD": 51,
+          "nearestToCWTDM": 0.21363383993863697,
+          "relativeYMinMedMax": [
+            -1.04171,
+            -0.00671,
+            0.51329
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW15",
+      "pointRows": 3966,
+      "cropSha256": "d4dc65c2ce89f8452ef657c4503b5110033faacd6a1af4156e539e425c279fb1",
+      "relativeGroundCGVD2013": 11.818799018859863,
+      "localRawCWTDxy": [
+        424060.670367316,
+        5210443.07106827
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 379,
+          "within2OfCWTD": 26,
+          "nearestToCWTDM": 0.5379092761547029,
+          "relativeYMinMedMax": [
+            44.3692,
+            50.1252,
+            52.9882
+          ]
+        },
+        "nominalHubBand": {
+          "count": 317,
+          "within2OfCWTD": 11,
+          "nearestToCWTDM": 0.8074534383299051,
+          "relativeYMinMedMax": [
+            46.1132,
+            50.3332,
+            52.9882
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 15,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 7.141264823087793,
+          "relativeYMinMedMax": [
+            5.0072,
+            5.3552,
+            6.7502
+          ]
+        },
+        "groundClass2": {
+          "count": 1539,
+          "within2OfCWTD": 54,
+          "nearestToCWTDM": 0.34063766922764876,
+          "relativeYMinMedMax": [
+            -0.3488,
+            0.1002,
+            0.4592
+          ]
+        }
+      }
+    },
+    {
+      "id": "NCW16",
+      "pointRows": 3510,
+      "cropSha256": "05198227d40598d5a5619a07fc7a4181bdb0b10cf5a6c07a658bbe8ea02ccac1",
+      "relativeGroundCGVD2013": 11.126349449157715,
+      "localRawCWTDxy": [
+        424559.428890132,
+        5210466.44240023
+      ],
+      "classes": {
+        "rawElevated": {
+          "count": 338,
+          "within2OfCWTD": 34,
+          "nearestToCWTDM": 0.24209497665201177,
+          "relativeYMinMedMax": [
+            45.30265,
+            50.33415,
+            51.32665
+          ]
+        },
+        "nominalHubBand": {
+          "count": 332,
+          "within2OfCWTD": 34,
+          "nearestToCWTDM": 0.24209497665201177,
+          "relativeYMinMedMax": [
+            46.14465,
+            50.38615,
+            51.32665
+          ]
+        },
+        "rawMidShaftBand5to25m": {
+          "count": 0,
+          "within2OfCWTD": 0,
+          "nearestToCWTDM": 999.0,
+          "relativeYMinMedMax": null
+        },
+        "groundClass2": {
+          "count": 1425,
+          "within2OfCWTD": 49,
+          "nearestToCWTDM": 0.1705800201176437,
+          "relativeYMinMedMax": [
+            -0.44135,
+            0.00465,
+            0.56165
+          ]
+        }
+      }
+    }
+  ]
+}

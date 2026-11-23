@@ -1,3 +1,4 @@
+import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
 import {nativeBankMesh} from './native-bank-mesh.ts';
 import {adaptiveGround} from './adaptive-ground.ts';
@@ -229,7 +230,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false)=>fp+lighthouseGroundGLSL+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false)=>fp+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -308,6 +309,8 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${castBuildings?` float castShade=buildingShade(p,${bankSmooth?'bankShadowReceiver':showFloor?'receiverPlane':'n'},d);
  col*=mix(vec3(1.),vec3(.69,.74,.81),castShade*(.39+.61*light));`:''}
  col*=.90+.31*light;
+ ${cape?`float castCape=capeShade(p,sun,d);
+ col*=mix(vec3(1.),vec3(.54,.60,.65),castCape);`:''}
  ${souris?'col=sourisSoil(col,p,detailFade,max(length(dFdx(p.xz)),length(dFdy(p.xz))));':''}
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
@@ -411,8 +414,10 @@ export class World {
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
+ readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false){
+  this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
@@ -519,10 +524,11 @@ export class World {
        floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)},
        ...(localMontague&&montagueGround?{montagueGroundBounds:{value:new THREE.Vector4(
           montagueGround.x0,montagueGround.z0,montagueGround.x1,montagueGround.z1)}}:{})}:{};
+    const hasCape=this.capeShadow?.intersects(x0,z0,x0+w,z0+d)??false;
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.

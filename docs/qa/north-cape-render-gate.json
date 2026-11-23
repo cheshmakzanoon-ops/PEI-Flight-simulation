@@ -1,0 +1,126 @@
+{
+  "north-cape-cinematic": {
+    "counts": {
+      "registered": 16,
+      "near": 8,
+      "cruise": 8
+    },
+    "camera": [
+      -62177.9259715638,
+      470,
+      -61908.479017659825
+    ],
+    "before": {
+      "draws": 229,
+      "tris": 286104
+    },
+    "after": {
+      "draws": 233,
+      "tris": 310616
+    },
+    "unshaded": {
+      "draws": 233,
+      "tris": 310616
+    },
+    "exact": true,
+    "pixels": {
+      "over2": 1216,
+      "max": 196,
+      "shadowOnlyOver2": 0
+    },
+    "errors": []
+  },
+  "north-cape-reciprocal": {
+    "counts": {
+      "registered": 16,
+      "near": 6,
+      "cruise": 10
+    },
+    "camera": [
+      -60337.53788076553,
+      470,
+      -60131.23689708652
+    ],
+    "before": {
+      "draws": 15,
+      "tris": 242419
+    },
+    "after": {
+      "draws": 19,
+      "tris": 264035
+    },
+    "unshaded": {
+      "draws": 19,
+      "tris": 264035
+    },
+    "exact": true,
+    "pixels": {
+      "over2": 1262,
+      "max": 182,
+      "shadowOnlyOver2": 0
+    },
+    "errors": []
+  },
+  "queens-control": {
+    "counts": {
+      "registered": 0,
+      "near": 0,
+      "cruise": 0
+    },
+    "camera": [
+      -13255.589960261792,
+      189.14804233813956,
+      11155.142074408484
+    ],
+    "before": {
+      "draws": 16,
+      "tris": 296570
+    },
+    "after": {
+      "draws": 16,
+      "tris": 296570
+    },
+    "unshaded": {
+      "draws": 16,
+      "tris": 296570
+    },
+    "exact": true,
+    "pixels": {
+      "over2": 0,
+      "max": 0,
+      "shadowOnlyOver2": 0
+    },
+    "errors": []
+  },
+  "north-cape-close": {
+    "counts": {
+      "registered": 16,
+      "near": 14,
+      "cruise": 2
+    },
+    "camera": [
+      -61077.829797102015,
+      36.944374575654564,
+      -61701.796177915705
+    ],
+    "before": {
+      "draws": 222,
+      "tris": 310251
+    },
+    "after": {
+      "draws": 226,
+      "tris": 343451
+    },
+    "unshaded": {
+      "draws": 226,
+      "tris": 343451
+    },
+    "exact": true,
+    "pixels": {
+      "over2": 6444,
+      "max": 187,
+      "shadowOnlyOver2": 820
+    },
+    "errors": []
+  }
+}

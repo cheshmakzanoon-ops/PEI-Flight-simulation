@@ -13,6 +13,7 @@ import {sidewalkGrid} from './sidewalks.ts';
 import type {World} from './world.ts';
 import {RoadPavement} from './road-pavement.ts';
 import {matchesVictoriaPaving,VICTORIA_PAVER_FLAG,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
+import type {NorthCapeShadow} from './north-cape-shadow.ts';
 import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
@@ -91,6 +92,13 @@ export class Roads {
     polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
   });
   private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
+  private readonly capeMaterial?:THREE.MeshStandardMaterial;
+  private readonly cape?:NorthCapeShadow;
+  private tileMaterial(t:Tile){
+   if(t.victoria&&this.victoriaMaterial)return this.victoriaMaterial;
+   const half=TILE*.5+130;
+   return this.cape?.intersects(t.x-half,t.z-half,t.x+half,t.z+half)?this.capeMaterial!:this.material;
+  }
   private readonly visible = new Map<string, THREE.Mesh>();
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
   private readonly previewBridge?:THREE.Group;
@@ -118,7 +126,7 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]}) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]},cape?:NorthCapeShadow) {
     this.tiles=tiles;this.terrain=terrain;this.previewOwners=previewOwners;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
     this.baywalkOwners=court?.owners??[];
@@ -128,6 +136,11 @@ export class Roads {
     }
     this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
     addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
+    this.cape=cape;
+    if(cape){
+     this.capeMaterial=this.material.clone();
+     addRoadSurface(this.capeMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,false,cape);
+    }
     if(Array.from(tiles.values()).some(t=>t.victoria)){
       this.victoriaMaterial=this.material.clone();
       addRoadSurface(this.victoriaMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,true);
@@ -152,7 +165,7 @@ export class Roads {
    finally{clearTimeout(timer);}
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork,cape?:NorthCapeShadow) {
     const {data,roads,digest,montagueVerified}=prepared??await roadNetwork();
     const tiles = new Map<string, Tile>(),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
     const register=!!preview?.cover.montague&&terrain.coastalSurveys.includes(MONTAGUE_GROUND_ID)&&montagueVerified;
@@ -187,7 +200,7 @@ export class Roads {
       }
     }
     return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners),
-     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined);
+     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined,cape);
   }
 
   private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){
@@ -279,7 +292,7 @@ export class Roads {
       g.computeBoundingSphere();if(g.boundingSphere)g.boundingSphere.radius+=maxDrop;
      }
     }
-    const mesh=new THREE.Mesh(g,tile.victoria&&this.victoriaMaterial?this.victoriaMaterial:this.material);
+    const mesh=new THREE.Mesh(g,this.tileMaterial(tile));
     mesh.position.set(tile.x,0,tile.z);
     return mesh;
   }
@@ -360,7 +373,7 @@ export class Roads {
       if(!cached){cached=this.mesh(t,candidates,mode.includes('|seat:')).geometry;variants.set(mode,cached);}
       if(current){current.geometry=cached;current.userData.inlandMode=mode;}
       else{
-        const mesh=new THREE.Mesh(cached,t.victoria&&this.victoriaMaterial?this.victoriaMaterial:this.material);mesh.position.set(t.x,0,t.z);
+        const mesh=new THREE.Mesh(cached,this.tileMaterial(t));mesh.position.set(t.x,0,t.z);
         mesh.userData.inlandMode=mode;this.root.add(mesh);this.visible.set(key,mesh);
       }
       for(const [stale,geo] of variants)if(stale.includes('|seat:')&&stale!==mode){geo.dispose();variants.delete(stale);}

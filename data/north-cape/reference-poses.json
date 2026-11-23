@@ -1,0 +1,564 @@
+{
+  "purpose": "Exact independent camera locks from known WGS84 plan for visual qualification only.",
+  "frameRaster": {
+    "width": 930,
+    "height": 610,
+    "verticalFov": 53,
+    "principalPointCentered": true
+  },
+  "anchors": [
+    {
+      "sourceRow": 5471,
+      "sourceTurbineId": "NCW1",
+      "sourceTurbineOrdinal": 1,
+      "longitude": -63.9945475,
+      "latitude": 47.0543426,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 5.7199093825985585
+    },
+    {
+      "sourceRow": 5472,
+      "sourceTurbineId": "NCW2",
+      "sourceTurbineOrdinal": 2,
+      "longitude": -63.9966878,
+      "latitude": 47.0532672,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 9.001829261097242
+    },
+    {
+      "sourceRow": 5473,
+      "sourceTurbineId": "NCW3",
+      "sourceTurbineOrdinal": 3,
+      "longitude": -63.9990868,
+      "latitude": 47.0525477,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 11.016754729699926
+    },
+    {
+      "sourceRow": 5474,
+      "sourceTurbineId": "NCW4",
+      "sourceTurbineOrdinal": 4,
+      "longitude": -64.000807,
+      "latitude": 47.0513048,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 12.119999885559082
+    },
+    {
+      "sourceRow": 5475,
+      "sourceTurbineId": "NCW5",
+      "sourceTurbineOrdinal": 5,
+      "longitude": -64.003975,
+      "latitude": 47.0502983,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 11.031887922660019
+    },
+    {
+      "sourceRow": 5476,
+      "sourceTurbineId": "NCW6",
+      "sourceTurbineOrdinal": 6,
+      "longitude": -64.0053448,
+      "latitude": 47.0485293,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 11.863721257102554
+    },
+    {
+      "sourceRow": 5477,
+      "sourceTurbineId": "NCW7",
+      "sourceTurbineOrdinal": 7,
+      "longitude": -63.9950147,
+      "latitude": 47.0485158,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 9.807950704269274
+    },
+    {
+      "sourceRow": 5478,
+      "sourceTurbineId": "NCW8",
+      "sourceTurbineOrdinal": 8,
+      "longitude": -63.9946274,
+      "latitude": 47.0468478,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2001,
+      "nearBase": 10.164934351794585
+    },
+    {
+      "sourceRow": 5479,
+      "sourceTurbineId": "NCW9",
+      "sourceTurbineOrdinal": 9,
+      "longitude": -63.9974737,
+      "latitude": 47.0505238,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 11.502948229410492
+    },
+    {
+      "sourceRow": 5480,
+      "sourceTurbineId": "NCW10",
+      "sourceTurbineOrdinal": 10,
+      "longitude": -63.9978544,
+      "latitude": 47.0491829,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 11.119999885559082
+    },
+    {
+      "sourceRow": 5481,
+      "sourceTurbineId": "NCW11",
+      "sourceTurbineOrdinal": 11,
+      "longitude": -63.9998927,
+      "latitude": 47.0482807,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 12.119999885559082
+    },
+    {
+      "sourceRow": 5482,
+      "sourceTurbineId": "NCW12",
+      "sourceTurbineOrdinal": 12,
+      "longitude": -64.0013917,
+      "latitude": 47.0468715,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 12.903814922081835
+    },
+    {
+      "sourceRow": 5483,
+      "sourceTurbineId": "NCW13",
+      "sourceTurbineOrdinal": 13,
+      "longitude": -63.9978418,
+      "latitude": 47.0464273,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 11.39629537466746
+    },
+    {
+      "sourceRow": 5484,
+      "sourceTurbineId": "NCW14",
+      "sourceTurbineOrdinal": 14,
+      "longitude": -63.9973854,
+      "latitude": 47.0447763,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 11.436142155071394
+    },
+    {
+      "sourceRow": 5485,
+      "sourceTurbineId": "NCW15",
+      "sourceTurbineOrdinal": 15,
+      "longitude": -63.9996723,
+      "latitude": 47.0431504,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 12.119999885559054
+    },
+    {
+      "sourceRow": 5486,
+      "sourceTurbineId": "NCW16",
+      "sourceTurbineOrdinal": 16,
+      "longitude": -63.9931115,
+      "latitude": 47.0434178,
+      "hubHeightM": 50,
+      "rotorDiameterM": 47,
+      "unitNameplateKW": 660,
+      "manufacturer": "Vestas",
+      "model": "V47-660",
+      "commissioned": 2003,
+      "nearBase": 11.119999885559082
+    }
+  ],
+  "cinematicSeawardN": {
+    "eyeLL": [
+      -64.01000293760339,
+      47.0569258316582
+    ],
+    "aimLL": [
+      -63.99841965625,
+      47.0486427625
+    ],
+    "y": 470.0,
+    "aimY": 38.0,
+    "centersPx": [
+      [
+        104.3,
+        339.71
+      ],
+      [
+        208.89,
+        343.93
+      ],
+      [
+        305.31,
+        358.94
+      ],
+      [
+        420.82,
+        356.49
+      ],
+      [
+        581.75,
+        380.2
+      ],
+      [
+        703.8,
+        361.52
+      ],
+      [
+        393.54,
+        272.13
+      ],
+      [
+        439.09,
+        256.85
+      ],
+      [
+        368.25,
+        309.75
+      ],
+      [
+        431.49,
+        296.85
+      ],
+      [
+        516.58,
+        301.7
+      ],
+      [
+        603.71,
+        296.61
+      ],
+      [
+        520.26,
+        269.79
+      ],
+      [
+        552.47,
+        254.75
+      ],
+      [
+        642.92,
+        253.81
+      ],
+      [
+        498.63,
+        230.03
+      ]
+    ],
+    "minHubSeparationPx": 31.911082235821823,
+    "minEnclosingDiskMarginPx": 93.14273781264319,
+    "visibleAnchors": 16,
+    "radiusGameM": 1279.999999999998
+  },
+  "cinematicReciprocalS": {
+    "eyeLL": [
+      -63.986027873517806,
+      47.04093784323135
+    ],
+    "aimLL": [
+      -63.99841965625,
+      47.0486427625
+    ],
+    "y": 470.0,
+    "aimY": 38.0,
+    "centersPx": [
+      [
+        731.45,
+        272.49
+      ],
+      [
+        647.75,
+        266.86
+      ],
+      [
+        571.58,
+        258.1
+      ],
+      [
+        500.85,
+        257.19
+      ],
+      [
+        413.37,
+        248.52
+      ],
+      [
+        334.37,
+        252.67
+      ],
+      [
+        552.38,
+        328.64
+      ],
+      [
+        493.1,
+        359.91
+      ],
+      [
+        552.57,
+        283.64
+      ],
+      [
+        498.35,
+        293.93
+      ],
+      [
+        418.78,
+        287.0
+      ],
+      [
+        332.35,
+        289.17
+      ],
+      [
+        383.86,
+        326.73
+      ],
+      [
+        304.52,
+        358.41
+      ],
+      [
+        155.47,
+        355.75
+      ],
+      [
+        323.73,
+        482.02
+      ]
+    ],
+    "minHubSeparationPx": 25.534418159361508,
+    "minEnclosingDiskMarginPx": 108.39698917231755,
+    "visibleAnchors": 16,
+    "radiusGameM": 1280.0
+  },
+  "closeFaceNCW1": {
+    "eyeLL": [
+      -63.99591716151745,
+      47.05482452116485
+    ],
+    "aimLL": [
+      -63.9945475,
+      47.0543426
+    ],
+    "y": 38.71990938259856,
+    "aimY": 42.71990938259856,
+    "centersPx": [
+      [
+        465.0,
+        237.93
+      ],
+      [
+        4636.86,
+        -141.75
+      ],
+      [
+        -1568.39,
+        460.76
+      ],
+      [
+        -1571.11,
+        417.59
+      ],
+      [
+        -921.19,
+        368.18
+      ],
+      [
+        -1320.73,
+        369.17
+      ],
+      [
+        1418.77,
+        291.82
+      ],
+      [
+        1392.93,
+        299.01
+      ],
+      [
+        3104.66,
+        200.43
+      ],
+      [
+        2970.99,
+        236.05
+      ],
+      [
+        8609.26,
+        83.34
+      ],
+      [
+        22054.67,
+        -208.17
+      ],
+      [
+        2343.18,
+        278.32
+      ],
+      [
+        2036.96,
+        291.59
+      ],
+      [
+        2830.13,
+        282.71
+      ],
+      [
+        1287.17,
+        307.88
+      ]
+    ],
+    "minHubSeparationPx": 25.845374393268912,
+    "minEnclosingDiskMarginPx": -21139.35289411073,
+    "visibleAnchors": 1,
+    "radiusGameM": 117.99999999999636
+  },
+  "closeSideNCW5": {
+    "eyeLL": [
+      -64.00367023033702,
+      47.05120990038492
+    ],
+    "aimLL": [
+      -64.003975,
+      47.0502983
+    ],
+    "y": 43.03188792266002,
+    "aimY": 48.03188792266002,
+    "centersPx": [
+      [
+        1210.45,
+        350.09
+      ],
+      [
+        1306.55,
+        362.99
+      ],
+      [
+        1313.95,
+        383.82
+      ],
+      [
+        2670.75,
+        533.45
+      ],
+      [
+        465.0,
+        229.16
+      ],
+      [
+        576.37,
+        298.35
+      ],
+      [
+        -2593.02,
+        262.55
+      ],
+      [
+        -1051.78,
+        301.29
+      ],
+      [
+        9721.58,
+        690.56
+      ],
+      [
+        -2013.95,
+        241.98
+      ],
+      [
+        -396.41,
+        288.14
+      ],
+      [
+        69.15,
+        306.17
+      ],
+      [
+        -348.46,
+        307.49
+      ],
+      [
+        -190.85,
+        315.26
+      ],
+      [
+        84.09,
+        319.87
+      ],
+      [
+        -445.17,
+        317.67
+      ]
+    ],
+    "minHubSeparationPx": 14.94471741472438,
+    "minEnclosingDiskMarginPx": -8821.404342120839,
+    "visibleAnchors": 4,
+    "radiusGameM": 104.00000000000068
+  },
+  "proof": "In each candidate compare exact before/after camera XZ+Y, aim, sun/clock, tone mapping, same ready ortho IDs; isolate changes to submitted turbine masks plus 1px MSAA edge. An all-site frame sees 16 hubs well inside, but not exact matched when frozen wind heading/weather differ. Use two yaw angles and frame rotor along axis for physical clockwise sign, not comparison with clouds/placeholders."
+}
