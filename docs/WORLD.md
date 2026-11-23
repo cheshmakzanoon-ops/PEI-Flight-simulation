@@ -95,7 +95,8 @@ are individually checksummed, and load around the aircraft instead of
 all at once. Range-aware static hosts send a single tile's bytes; other
 hosts can serve the same bundle as a fallback. Run `build_detail.py` with
 the pinned colour cache to regenerate them. The source is still
-satellite imagery, not street-level photography.
+satellite imagery, not street-level photography. The terrain no longer draws
+[synthetic furrows](qa/field-surface.md) on the generic crop category.
 
 ### Additional environment sources
 

@@ -183,11 +183,10 @@ const landFrag=(east:boolean,bench=false,harbour=false)=>fp+lighthouseGroundGLSL
  col=mix(col,vec3(.47,.34,.20)*(.89+.16*noise(p.xz*.057)),beach*.79);
  col=mix(col,vec3(.23,.091,.054),cliff*.7);
  float detailFade=1.-smoothstep(290.,1900.,d);
- float crop=(1.-smoothstep(2.,10.,abs(cover.r*255.-40.)));
- float angle=floor(noise(floor(p.xz/245.))*7.)*.45;
- float phase=dot(p.xz,vec2(cos(angle),sin(angle)))*2.2;
- float rows=cos(phase)*(1.-smoothstep(.35,2.6,fwidth(phase)));
- col*=1.+detailFade*(.13*(noise(p.xz*.46)-.5)+.055*crop*rows);
+ // The cover category alone cannot establish a crop or a row bearing.
+ // Leave field patterns to the georeferenced imagery. The existing neutral
+ // surface grain is unchanged so unclassified land has no new styling.
+ col*=1.+detailFade*(.13*(noise(p.xz*.46)-.5));
  col=stationGround(col,p.xz,coast);
  ${east?`
  vec3 rockPx=fwidth(p);
