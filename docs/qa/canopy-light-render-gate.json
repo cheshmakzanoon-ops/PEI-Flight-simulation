@@ -1,0 +1,120 @@
+{
+  "queens-understory": {
+    "view": "queens-understory",
+    "localRenderer": {
+      "ready": 6,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "stats": {
+      "before": {
+        "draws": 97,
+        "triangles": 341177
+      },
+      "after": {
+        "draws": 97,
+        "triangles": 341177
+      },
+      "mask": {
+        "draws": 97,
+        "triangles": 341177
+      },
+      "exact": true
+    },
+    "markedCrownPixels": 158451,
+    "changedAboveTwo": 126245,
+    "offCrownAndAAAllowance": 0,
+    "errors": []
+  },
+  "prince-needle": {
+    "view": "prince-needle",
+    "localRenderer": {
+      "ready": 16,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "stats": {
+      "before": {
+        "draws": 39,
+        "triangles": 374472
+      },
+      "after": {
+        "draws": 39,
+        "triangles": 374472
+      },
+      "mask": {
+        "draws": 39,
+        "triangles": 374472
+      },
+      "exact": true
+    },
+    "markedCrownPixels": 282021,
+    "changedAboveTwo": 211253,
+    "offCrownAndAAAllowance": 0,
+    "errors": []
+  },
+  "kings-native": {
+    "view": "kings-native",
+    "localRenderer": {
+      "ready": 14,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "stats": {
+      "before": {
+        "draws": 47,
+        "triangles": 379780
+      },
+      "after": {
+        "draws": 47,
+        "triangles": 379780
+      },
+      "mask": {
+        "draws": 47,
+        "triangles": 379780
+      },
+      "exact": true
+    },
+    "markedCrownPixels": 285506,
+    "changedAboveTwo": 186583,
+    "offCrownAndAAAllowance": 0,
+    "errors": []
+  },
+  "woodland3DCoexistence": {
+    "view": "queens-understory",
+    "volumes": 76,
+    "groundedShadows": 76,
+    "localRenderer": {
+      "ready": 18,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "stats": {
+      "before": {
+        "draws": 102,
+        "triangles": 477507
+      },
+      "after": {
+        "draws": 102,
+        "triangles": 477507
+      },
+      "mask": {
+        "draws": 102,
+        "triangles": 477507
+      },
+      "exact": true
+    },
+    "markedCrownPixels": 36395,
+    "changedAboveTwo": 32874,
+    "offCrownAndAAAllowance": 0,
+    "errors": []
+  }
+}

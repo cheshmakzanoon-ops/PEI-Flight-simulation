@@ -1,0 +1,20 @@
+[
+  {
+    "option": false,
+    "site": "cavendish-low",
+    "movementM": 48.54441900090169,
+    "startY": 129.95156120755354,
+    "afterY": 130.16621811277287,
+    "pauseSucceeded": true,
+    "errors": []
+  },
+  {
+    "option": true,
+    "site": "cavendish-low",
+    "movementM": 49.743919680038765,
+    "startY": 129.95742285024494,
+    "afterY": 130.1910878907546,
+    "pauseSucceeded": true,
+    "errors": []
+  }
+]

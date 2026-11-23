@@ -42,6 +42,24 @@ const crownF=`
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`;
+/** Keep the published canopy atlas/silhouette, but shade an approximate
+ * crown lobe against the world sun instead of brightening every card alike. */
+const daylightVertex='uniform vec3 canopySun; varying vec3 cardSun;\n'+crownV.replace(
+ 'vec3 p=center+','cardSun=vec3(dot(canopySun,right),dot(canopySun,up),dot(canopySun,ray));\n  vec3 p=center+');
+const daylightFragment='varying vec3 cardSun;\n'+crownF.replace('gl_FragColor=vec4(c*param.z,',`
+ vec2 ellipse=(uv-.5)*vec2(1.55,1.68);
+ float dome=sqrt(max(.03,1.-dot(ellipse,ellipse)));
+ vec3 normal=normalize(vec3(ellipse,dome));
+ float sunward=clamp(dot(normal,cardSun),-.45,1.);
+ float response=.930+.154*smoothstep(-.27,.82,sunward);
+ float ambient=1.-.090*(1.-smoothstep(.05,.74,uv.y))*(1.-param.y);
+ vec3 chroma=mix(vec3(.957,.994,1.026),vec3(1.046,1.016,.956),smoothstep(.02,.77,sunward));
+ // A small backlit rim is limited to green leaf clusters and vanishes
+ // in top views. It does not change the measured silhouette/coverage.
+ float foliage=smoothstep(.008,.051,c.g-c.r);
+ float rim=(1.-smoothstep(.25,.82,dome))*smoothstep(.12,.78,-cardSun.z)*(1.-param.y)*foliage;
+ vec3 lit=c*param.z*response*ambient*chroma+c*vec3(.095,.078,.021)*rim;
+ gl_FragColor=vec4(lit,`);
 const shadowV=pars+`
  attribute vec4 hedgeGround;
  void main(){
@@ -69,6 +87,7 @@ const shadowF=`
 /** Both elevation views of each tree are baked from the same original branching model.
  * ESA WorldCover determines forest distribution; stand density, species and individual stems are inferred. */
 export class Vegetation {
+ private readonly crownVertex:string;private readonly crownFragment:string;
  private crown:THREE.Mesh;private shade:THREE.Mesh;private geom:THREE.InstancedBufferGeometry;
  private stems=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*3),3).setUsage(THREE.DynamicDrawUsage);
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
@@ -81,12 +100,14 @@ export class Vegetation {
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
-  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined){
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
-  const uniforms={canopy:{value:canopy}};
-  this.crown=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:crownV,fragmentShader:crownF,uniforms,side:THREE.DoubleSide,alphaToCoverage:true}));
+  this.crownVertex=canopySun?daylightVertex:crownV;
+  this.crownFragment=canopySun?daylightFragment:crownF;
+  const uniforms={canopy:{value:canopy},...(canopySun?{canopySun:{value:canopySun}}:{})};
+  this.crown=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:this.crownVertex,fragmentShader:this.crownFragment,uniforms,side:THREE.DoubleSide,alphaToCoverage:true}));
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
  }
@@ -95,10 +116,10 @@ export class Vegetation {
   const previous=this.crown.material as THREE.ShaderMaterial;
   const vert=`
     attribute float branchActive;uniform vec3 volumeFade;varying float branchWeight;
-  `+crownV.replace('void main(){',`void main(){
+  `+this.crownVertex.replace('void main(){',`void main(){
     branchWeight=branchActive*volumeFade.z*(1.-smoothstep(volumeFade.x,volumeFade.y,length(stem.xz-cameraPosition.xz)));
   `);
-  const frag='varying float branchWeight;\n'+crownF.replace('void main(){',`void main(){
+  const frag='varying float branchWeight;\n'+this.crownFragment.replace('void main(){',`void main(){
     if(branchWeight>.997)discard;
   `).replace('clamp((a-.30)*3.8,0.,1.)','clamp((a-.30)*3.8,0.,1.)*(1.-branchWeight)');
   this.crown.material=new THREE.ShaderMaterial({vertexShader:vert,fragmentShader:frag,
