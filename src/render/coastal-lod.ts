@@ -21,7 +21,9 @@ const cached=new WeakMap<CoastalGrid,SurveyLayout>();
  */
 export function distantCoast(g:CoastalGrid):SurveyLayout{
  const old=cached.get(g);if(old)return old;
- const {nx,nz,spec}=g,plan=DISTANT_COAST[spec.id],W=2*nx-1;
+ const {nx,nz,spec}=g;
+ if(spec.id!=='east-point'&&spec.id!=='west-point')throw Error('Unregistered coastal layout');
+ const plan=DISTANT_COAST[spec.id],W=2*nx-1;
  if(plan.nx!==nx||plan.nz!==nz||plan.sha256!==spec.sha256)throw Error('Distant topology does not match the measured terrain');
  const bits=atob(plan.stream),index=new Uint16Array(3*plan.triangles),lookup=new Int32Array(W*(2*nz-1));lookup.fill(-1);
  const points:number[]=[],decided=new Uint8Array(lookup.length);let bit=0,used=0;

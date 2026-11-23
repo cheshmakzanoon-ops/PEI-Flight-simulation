@@ -1,4 +1,4 @@
-import {CoastalGrid,GROUND_LIFT,type CoastalSource} from './coastal-terrain.ts';
+import {CoastalGrid,GROUND_LIFT,type CoastalSource,type MeshSurveySource} from './coastal-terrain.ts';
 import { project, clamp } from './geo.ts';
 export const OCEAN_Y=-.055;
 export interface TerrainSpec { width: number; height: number; bounds: [number,number,number,number]; }
@@ -6,13 +6,16 @@ export interface TerrainSpec { width: number; height: number; bounds: [number,nu
 export class Terrain {
   readonly left: number; readonly right: number; readonly top: number; readonly bottom: number;
   readonly spec: TerrainSpec; readonly samples: Int16Array;
+  readonly inlandGrids:readonly CoastalGrid[];readonly surveyGrids:readonly CoastalGrid[];
   readonly coastalGrids: readonly CoastalGrid[]; readonly coastalSurveys: readonly string[]; readonly coastalRefinements: readonly string[];
-  constructor(spec: TerrainSpec, samples: Int16Array, surveys: readonly CoastalSource[] = []) {
+  constructor(spec: TerrainSpec, samples: Int16Array, surveys: readonly CoastalSource[] = [],inland:readonly MeshSurveySource[]=[] ) {
     this.spec=spec;this.samples=samples;
     const {width:w,height:h,bounds:[W,S,E,N]}=spec;
     if(!Number.isInteger(w)||!Number.isInteger(h)||w<2||h<2||samples.length!==w*h||!(W<E&&S<N)) throw new Error('Invalid terrain dimensions or extent');
     this.left=project(W,N).x; this.right=project(E,S).x; this.top=project(W,N).z; this.bottom=project(E,S).z;
     this.coastalGrids=surveys.map(s=>new CoastalGrid(this,s,(x,z)=>this.atlasElevation(x,z)));
+    this.inlandGrids=inland.map(s=>new CoastalGrid(this,s,(x,z)=>this.atlasElevation(x,z)));
+    this.surveyGrids=[...this.coastalGrids,...this.inlandGrids];
     this.coastalSurveys=this.coastalGrids.map(g=>g.spec.id);
     this.coastalRefinements=this.coastalGrids.flatMap(g=>g.cliff?[g.cliff.id]:[]);
   }
@@ -25,7 +28,7 @@ export class Terrain {
   }
   isLand(x:number,z:number){const i=this.index(x,z);return i>=0&&this.samples[i]!==-32768;}
   detailElevation(x:number,z:number):number|undefined {
-    for(const grid of this.coastalGrids){const h=grid.height(x,z);if(h!==undefined)return h;}
+    for(const grid of this.surveyGrids){const h=grid.height(x,z);if(h!==undefined)return h;}
   }
   elevation(x:number,z:number) {
     return this.detailElevation(x,z)??(this.isLand(x,z)?this.atlasElevation(x,z):0);

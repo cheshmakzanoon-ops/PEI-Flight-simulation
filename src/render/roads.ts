@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import {unpackGzip} from '../sim/compression.ts';
 import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
+import {cutInlandRoad} from '../sim/inland-road.ts';
+import type {CoastalGrid} from '../sim/coastal-terrain.ts';
 import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
@@ -63,19 +65,22 @@ export class Roads {
     polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
   });
   private readonly visible = new Map<string, THREE.Mesh>();
+  private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
+  private readonly nearPatches?:()=>readonly CoastalGrid[];
+  private lastPatchKey='';
   private lastX = Infinity;
   private lastZ = Infinity;
 
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows) {
-    this.tiles=tiles;this.terrain=terrain;
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[]) {
+    this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;
     this.root.name = 'PEI National Road Network';
     addRoadSurface(this.material,casts);
     scene.add(this.root);
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[]) {
     const response = await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`);
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
     const data = await unpackGzip(await response.arrayBuffer());
@@ -103,11 +108,14 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain,casts);
+    return new Roads(scene,tiles,terrain,casts,nearPatches);
   }
 
-  private mesh(tile: Tile) {
+  private mesh(tile: Tile,patches:readonly CoastalGrid[] = []) {
     const pos:number[]=[], colors:number[]=[], surface:number[]=[];
+    const baselineHeight=this.terrain.inlandGrids.length
+      ?(x:number,z:number)=>this.terrain.coastalGrids.find(g=>g.near(x,z))?.height(x,z)??this.terrain.atlasElevation(x,z)
+      :(x:number,z:number)=>this.terrain.meshElevation(x,z);
     for(let i=0;i<tile.segments.length;i+=5){
       const [x0,z0,x1,z1,flags]=tile.segments.slice(i,i+5);
       const dx=x1-x0, dz=z1-z0, len=Math.hypot(dx,dz), width=HALF_WIDTH[flags&7];
@@ -118,13 +126,20 @@ export class Roads {
         const mx=(x+u)/2,mz=(z+v)/2;
         if(isBridge ? isConfederationBridge(mx,mz) : !this.terrain.isLand(mx,mz))continue;
         const lift=isBridge?3:0.55;
-        const py=this.terrain.meshElevation(x,z)+lift, qy=this.terrain.meshElevation(u,v)+lift;
+        const py=baselineHeight(x,z)+lift, qy=baselineHeight(u,v)+lift;
+        const kind=isBridge?127:(flags&8)?64:(flags&32)?-64:0;
+        const cuts=!isBridge&&patches.length?cutInlandRoad([
+          {x:x+rx,z:z+rz,y:py,edge:127},{x:x-rx,z:z-rz,y:py,edge:-127},
+          {x:u-rx,z:v-rz,y:qy,edge:-127},{x:u+rx,z:v+rz,y:qy,edge:127} ],patches):undefined;
+        if(cuts){
+         for(const v of cuts){pos.push(v.x-tile.x,v.y,v.z-tile.z);colors.push(color.r,color.g,color.b);surface.push(Math.round(v.edge),kind);}
+         continue;
+        }
         const lx=x-tile.x,lz=z-tile.z,lu=u-tile.x,lv=v-tile.z;
         pos.push(
           lx+rx,py,lz+rz, lx-rx,py,lz-rz, lu+rx,qy,lv+rz,
           lu+rx,qy,lv+rz, lx-rx,py,lz-rz, lu-rx,qy,lv-rz,
         );
-        const kind=isBridge?127:(flags&8)?64:(flags&32)?-64:0;
         for(let k=0;k<6;k++){
           colors.push(color.r,color.g,color.b);
           surface.push(k===1||k===4||k===5?-127:127,kind);
@@ -142,9 +157,11 @@ export class Roads {
   }
 
   update(x: number, z: number) {
-    if (Math.hypot(x-this.lastX,z-this.lastZ) < 420) return;
-    this.lastX=x;
-    this.lastZ=z;
+    const shown=this.nearPatches?.(),patchKey=shown?.map(g=>g.spec.id).join(',')??'';
+    const moved=Math.hypot(x-this.lastX,z-this.lastZ)>=420;
+    if(!moved&&patchKey===this.lastPatchKey)return;
+    if(!moved){x=this.lastX;z=this.lastZ;}else{this.lastX=x;this.lastZ=z;}
+    this.lastPatchKey=patchKey;
     const minX=Math.floor((x-VIEW)/TILE), maxX=Math.floor((x+VIEW)/TILE);
     const minZ=Math.floor((z-VIEW)/TILE), maxZ=Math.floor((z+VIEW)/TILE);
     const keep=new Set<string>();
@@ -152,15 +169,34 @@ export class Roads {
       const key=`${tx},${tz}`, t=this.tiles.get(key);
       if(!t) continue;
       keep.add(key);
-      if(this.visible.has(key)) continue;
-      const mesh=this.mesh(t);
-      this.root.add(mesh);
-      this.visible.set(key,mesh);
+      const bound=TILE*.5+265; // split half-length plus road width
+      const candidates=shown?.filter(q=>q.x1>t.x-bound&&q.x0<t.x+bound&&q.z1>t.z-bound&&q.z0<t.z+bound)??[];
+      const mode=candidates.map(g=>g.spec.id).join(',');
+      const current=this.visible.get(key);
+      if(current&&current.userData.inlandMode===mode)continue;
+      if(!this.nearPatches){
+        const mesh=this.mesh(t);mesh.userData.inlandMode='';
+        this.root.add(mesh);this.visible.set(key,mesh);continue;
+      }
+      // Keep both possible meshes for these few local tiles while visible;
+      // when the tile streams out both cached buffers are freed.
+      const variants=this.madeVariants.get(key)??new Map<string,THREE.BufferGeometry>();
+      this.madeVariants.set(key,variants);
+      let cached=variants.get(mode);
+      if(current){
+        if(!cached){cached=this.mesh(t,candidates).geometry;variants.set(mode,cached);}
+        current.geometry=cached;current.userData.inlandMode=mode;
+      }else{
+        const mesh=this.mesh(t,candidates);
+        variants.set(mode,mesh.geometry);mesh.userData.inlandMode=mode;
+        this.root.add(mesh);this.visible.set(key,mesh);
+      }
     }
     for(const [key,mesh] of this.visible) {
       if(keep.has(key)) continue;
       this.root.remove(mesh);
-      mesh.geometry.dispose();
+      for(const g of this.madeVariants.get(key)?.values()??[mesh.geometry])g.dispose();
+      this.madeVariants.delete(key);
       this.visible.delete(key);
     }
   }

@@ -6,6 +6,13 @@ import {EAST_CLIFF} from './east-cliff.generated.ts';
 export const SURVEY_LOD=112, WORLD_COLS=32, WORLD_ROWS=22, GROUND_LIFT=.12;
 export type CoastalSpec=(typeof COASTAL_SPECS)[number];
 export type CoastalSource={spec:CoastalSpec;samples:Int16Array;cliff?:CliffSource};
+export interface MeshSurveySpec {
+ readonly id:string; readonly tileX:number; readonly tileZ:number;
+ readonly firstX:number; readonly firstZ:number; readonly cellsX:number; readonly cellsZ:number;
+ readonly sub:number; readonly sha256:string;readonly kind?:'inland';
+ readonly nativeCorners?:readonly (readonly number[])[];readonly nativeShape?:readonly number[];
+}
+export type MeshSurveySource={spec:MeshSurveySpec;samples:Int16Array;cliff?:CliffSource};
 type Extent={left:number;right:number;top:number;bottom:number};
 type Sampler=(x:number,z:number)=>number;
 const clamp01=(a:number)=>Math.max(0,Math.min(1,a));
@@ -15,12 +22,12 @@ export function facet(u:number,v:number,nw:number,ne:number,sw:number,se:number)
 
 /** One exact piece of the province mesh. Heights have no land/water semantics. */
 export class CoastalGrid {
- readonly spec:CoastalSpec;readonly nx:number;readonly nz:number;readonly x0:number;readonly z0:number;
+ readonly spec:MeshSurveySpec;readonly nx:number;readonly nz:number;readonly x0:number;readonly z0:number;
  readonly x1:number;readonly z1:number;readonly stepX:number;readonly stepZ:number;readonly heights:Float32Array;
  private readonly coarseX:number;private readonly coarseZ:number;private readonly tileX0:number;private readonly tileZ0:number;
  readonly cliff:EastCliff|undefined;
  private readonly atlas:Sampler;
- constructor(ext:Extent,source:CoastalSource,atlas:Sampler){
+ constructor(ext:Extent,source:MeshSurveySource,atlas:Sampler){
   this.atlas=atlas;
   const s=this.spec=source.spec;
   this.coarseX=(ext.right-ext.left)/(WORLD_COLS*SURVEY_LOD);
@@ -47,6 +54,8 @@ export class CoastalGrid {
   const at=(a:number,b:number)=>this.atlas(this.tileX0+(i+a)*this.coarseX,this.tileZ0+(j+b)*this.coarseZ);
   return facet(fx-i,fz-j,at(0,0),at(1,0),at(0,1),at(1,1));
  }
+ /** Exact regular near terrain used before a refinement replaces the facets. */
+ parentHeight(x:number,z:number){return this.originalFacet(x,z);}
  /** Atlas-relative coordinates use the published ~3.3 m base grid, in both LODs. */
  localHeight(a:number,b:number){return this.relativeHeight(a,b,true);}
  referenceHeight(a:number,b:number){return this.relativeHeight(a,b,false);}

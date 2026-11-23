@@ -13,7 +13,7 @@ import type {Terrain} from '../sim/terrain.ts';
 export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:number;z:number;w:number;d:number},t:Terrain,grid:CoastalGrid){
  const origPos=g.getAttribute('position'),origUv=g.getAttribute('uv'),k0=origPos.count;
  const {nx,nz,spec:s}=grid,near=n===SURVEY_LOD,cliff=grid.cliff?cliffLayout(grid,near):undefined;
- const layout=near||cliff?undefined:distantCoast(grid);
+ const layout=near||cliff||grid.spec.kind==='inland'?undefined:distantCoast(grid);
  const count=cliff?cliff.points.length/2:layout?layout.points.length/2:nx*nz,positions=new Float32Array((k0+count)*3),uv=new Float32Array((k0+count)*2);
  const lighting=surveyNormals(grid),normal=new Int16Array((k0+count)*3),weight=new Uint8Array(k0+count);
  positions.set(origPos.array);uv.set(origUv.array);for(let i=0;i<k0;i++)normal[i*3+1]=32767;

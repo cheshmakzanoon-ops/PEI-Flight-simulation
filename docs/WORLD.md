@@ -105,6 +105,13 @@ The [building shadow preview](qa/local-building-shadows.md) adds cast
 shade on terrain, roads and buildings when the simulator URL has
 `?buildingShadows`. Standard rendering is unchanged without it.
 
+### Measured inland relief preview
+
+The [three-county near terrain preview](qa/inland-relief-preview.md)
+uses finer terrain and synchronized road surfaces at three test
+locations when the simulator URL includes `?inlandRelief`.
+Off by default; not a province-wide high-resolution terrain claim.
+
 ### Near-detail scenes
 
 The regional texture sits underneath **245** 640 × 640 WebP tiles with

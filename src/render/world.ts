@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import {facet,loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
 import {insertCoastalGrid} from './coastal-patch.ts';
+import {loadInlandSurveys} from '../sim/inland-terrain.ts';
+import {INLAND_TERRAIN_SHA,INLAND_COVER_SHA} from '../sim/inland-surveys.generated.ts';
 import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import {loadHarbourCover} from '../sim/harbour-cover.ts';
@@ -230,7 +232,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-export async function loadAtlas(progress:(s:string)=>void){
+export async function loadAtlas(progress:(s:string)=>void,tryInland=false){
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
@@ -245,7 +247,8 @@ export async function loadAtlas(progress:(s:string)=>void){
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  const installed=await surveys;
- return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed),img,cover,sky,
+ const inland=tryInland&&elevation.spec.sha256===INLAND_TERRAIN_SHA&&cover.sourceSha===INLAND_COVER_SHA?await loadInlandSurveys(base):[];
+ return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed,inland),img,cover,sky,
    bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -267,7 +270,7 @@ async function loadCover(){
  const [cmeta,coverData,harbour]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz'),loadHarbourCover(base)]);
  if(!cmeta.ok||!coverData.ok)throw Error('The coastline and forest atlas could not be loaded.');
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
- return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined);
+ return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined,cs.compressedSha256);
 }
 interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
@@ -393,7 +396,7 @@ export class World {
     pos.setY(i,this.terrain.atlasElevation(x,z)+GROUND_LIFT);
     const [u,v]=this.terrain.uv(x,z);uv.setXY(i,u,v);
   }
-  const site=this.terrain.coastalGrids.find(g=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d);
+  const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d);
   if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
   m.userData.subdiv=n;
@@ -413,10 +416,15 @@ export class World {
   // The mapped hedgerow layer skips survey insert tiles. Keep this helper
   // valid for the regular mesh; do not claim a survey renderer ray here.
   if(grid)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
+  const inland=this.terrain.inlandGrids.find(q=>q.spec.tileX===i&&q.spec.tileZ===j&&q.inside(x,z));
+  if(inland&&n===112)return inland.height(x,z)!+GROUND_LIFT;
   const sx=Math.max(0,Math.min(n,(x-tile.x0)/tile.w*n)),sz=Math.max(0,Math.min(n,(z-tile.z0)/tile.d*n));
   const p=Math.min(n-1,Math.floor(sx)),q=Math.min(n-1,Math.floor(sz)),k=q*step+p;
   const xyz=g.geometry.getAttribute('position');
   return facet(sx-p,sz-q,xyz.getY(k),xyz.getY(k+1),xyz.getY(k+step),xyz.getY(k+step+1));
+ }
+ nearInlandGrids(){
+  return this.terrain.inlandGrids.filter(g=>this.byId.get(g.spec.tileX+'-'+g.spec.tileZ)?.lod===112);
  }
  groundHeight(x:number,z:number,land?:boolean){
   // Both shaders use the continuous Cover mask. A missing province DEM cell
