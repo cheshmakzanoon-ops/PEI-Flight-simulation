@@ -85,6 +85,8 @@ Press a gamepad button while the simulator has focus to activate it in the brows
 
 ## Development
 
+The [Province House exterior art study](docs/qa/province-house-study.md) includes reproducible Three.js source and material tests. It is not installed in the live atlas.
+
 ```sh
 npm run check                # Flight tests, TypeScript and production build
 node tools/verify-world.mjs  # Asset hashes, formats, extents and counts

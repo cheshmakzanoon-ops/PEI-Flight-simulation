@@ -1,0 +1,47 @@
+{
+  "plan": "National Park Management Plan \u00a92005, p.14 Map 4 external projections only",
+  "scaleFull": "10m / 78.706 PDF pt",
+  "nominalExterior": {
+    "outerWingWidthApproximately": 42.6,
+    "bodyDepthApproximately": 16.4,
+    "southPorticoPlinthWidthApproximately": 12.7,
+    "projectionApproximately": 3.2
+  },
+  "postConservation": [
+    {
+      "url": "https://ruk.ca/content/province-house-no-fence",
+      "sha256": "8cde158bfa30d904a4434037ad1fefa099414d6354097d1bf407eb865865be57",
+      "date": "2026-10-13",
+      "orientation": "South, from Richmond Street"
+    },
+    {
+      "url": "https://thelmaphillips.ca/2026/10/23/legoislature/",
+      "sha256": "adc95b59c055ccff3aed936d4e9ab017d639e0d30a7a664c3135f7e47d374717",
+      "date": "2026-10-22",
+      "orientation": "South from foot of forecourt"
+    }
+  ],
+  "mappedCheck": {
+    "way": 28325869,
+    "wayVersion": 25,
+    "wayTime": "2026-10-17T14:08:01Z",
+    "pinnedCoordinatesMatch": true,
+    "allNodeDateCounts": {
+      "2013": 11,
+      "2014": 1,
+      "2026": 32
+    },
+    "comparisonWidthsM": {
+      "OSM": [
+        46.36315714060563,
+        26.920774991035042
+      ],
+      "AEBStock": [
+        50.343133520351536,
+        33.366795995662144
+      ]
+    },
+    "boundsOrientationNativeDegrees": 71.38749999999999
+  },
+  "sourceChecks": "Detached art qualified, not registered current exterior. The OSM 2026 tag change does not establish contemporary survey; AEB 2020 perimeter and surface heights during active conservation remain incompatible. No full real-site substitution."
+}

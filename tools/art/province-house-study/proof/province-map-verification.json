@@ -1,0 +1,85 @@
+{
+  "source": "https://gis.princeedwardisland.ca/server/rest/services/GeoLincData/Building_Footprints_2026/MapServer/0",
+  "layerSha256": "5a50b505b441b3192f8b139154e4699157c32a0962d436493702160c4e9ce387",
+  "recordEnvelopeSha256": "21981c9ea1e8f6b850342722396559fee9a096135dedeadd66a53a2794912edf",
+  "onlyAggregate": true,
+  "referenceGameSourceUnmodified": true,
+  "observations": [
+    {
+      "object_id": 141230,
+      "area_m2": 4320.469,
+      "queryPointInside": false,
+      "boundaryDistanceM": 34.342478393225186,
+      "osmIntersectionM2": 0.0,
+      "osmIoU": 0.0,
+      "legacyAreaM2": 0.0,
+      "legacyIoU": 0.0,
+      "rowCreate": 1740162566000,
+      "rowEdited": 1740162566000,
+      "sourceDate": null,
+      "source": null,
+      "centroid": [
+        -63.12688086372231,
+        46.234463894233016
+      ]
+    },
+    {
+      "object_id": 139138,
+      "area_m2": 835.648,
+      "queryPointInside": false,
+      "boundaryDistanceM": 42.49850067448891,
+      "osmIntersectionM2": 0.0,
+      "osmIoU": 0.0,
+      "legacyAreaM2": 0.0,
+      "legacyIoU": 0.0,
+      "rowCreate": 1740162566000,
+      "rowEdited": 1740162566000,
+      "sourceDate": null,
+      "source": null,
+      "centroid": [
+        -63.12679779639824,
+        46.2348420547385
+      ]
+    },
+    {
+      "object_id": 139145,
+      "area_m2": 477.698,
+      "queryPointInside": false,
+      "boundaryDistanceM": 41.444006941585315,
+      "osmIntersectionM2": 0.0,
+      "osmIoU": 0.0,
+      "legacyAreaM2": 0.0,
+      "legacyIoU": 0.0,
+      "rowCreate": 1740162566000,
+      "rowEdited": 1740162566000,
+      "sourceDate": null,
+      "source": null,
+      "centroid": [
+        -63.125465182571354,
+        46.235332665510875
+      ]
+    },
+    {
+      "object_id": 139144,
+      "area_m2": 857.554,
+      "queryPointInside": true,
+      "boundaryDistanceM": 9.401453101734454,
+      "osmIntersectionM2": 780.4293444643263,
+      "osmIoU": 0.7934928286421147,
+      "legacyAreaM2": 852.7878506593406,
+      "legacyIoU": 0.6512455530827003,
+      "rowCreate": 1740162566000,
+      "rowEdited": 1740162566000,
+      "sourceDate": null,
+      "source": null,
+      "centroid": [
+        -63.126026173206355,
+        46.23497622445923
+      ]
+    }
+  ],
+  "notes": [
+    "Source date and origin fields null for matched feature; name is service marketing year, not survey.",
+    "Copyright/licence not stated in supplied endpoint metadata; read-only comparisons do not consume its coordinates in game."
+  ]
+}

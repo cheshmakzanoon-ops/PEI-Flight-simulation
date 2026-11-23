@@ -1,0 +1,317 @@
+{
+  "street": {
+    "compare": {
+      "calls": 8,
+      "triangles": 1272,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "compare"
+    },
+    "detail": {
+      "calls": 28,
+      "triangles": 77084,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "hero"
+    },
+    "pixelsChangedAbove2": 208141,
+    "topRowStripUnchanged": 5440
+  },
+  "bay": {
+    "compare": {
+      "calls": 8,
+      "triangles": 1272,
+      "samples": 4,
+      "pose": "bay",
+      "cloudy": true,
+      "tier": "compare"
+    },
+    "detail": {
+      "calls": 28,
+      "triangles": 77084,
+      "samples": 4,
+      "pose": "bay",
+      "cloudy": true,
+      "tier": "hero"
+    },
+    "pixelsChangedAbove2": 447299,
+    "topRowStripUnchanged": 5440
+  },
+  "capital": {
+    "detail": {
+      "calls": 25,
+      "triangles": 76952,
+      "samples": 4,
+      "pose": "capital",
+      "cloudy": false,
+      "tier": "hero"
+    }
+  },
+  "fly": {
+    "compare": {
+      "calls": 8,
+      "triangles": 1272,
+      "samples": 4,
+      "pose": "fly",
+      "cloudy": false,
+      "tier": "compare"
+    },
+    "detail": {
+      "calls": 28,
+      "triangles": 77084,
+      "samples": 4,
+      "pose": "fly",
+      "cloudy": false,
+      "tier": "hero"
+    },
+    "pixelsChangedAbove2": 92977,
+    "topRowStripUnchanged": 5440
+  },
+  "distanceTiers": {
+    "street": {
+      "calls": 28,
+      "triangles": 26348,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "approach",
+      "pixelsDiffAbove2": 4098,
+      "pixelsDiffAbove16": 192,
+      "bgSame": true
+    },
+    "fly": {
+      "calls": 28,
+      "triangles": 26348,
+      "samples": 4,
+      "pose": "fly",
+      "cloudy": false,
+      "tier": "approach",
+      "pixelsDiffAbove2": 1577,
+      "pixelsDiffAbove16": 129,
+      "bgSame": true
+    }
+  },
+  "geometry": {
+    "detail": 38321,
+    "approach": 12953,
+    "control": 415,
+    "drawBatches": 13,
+    "finite": true,
+    "types": {
+      "wing/bay shell": 4472,
+      "three segmental arcade bays": 1230,
+      "portico upper windows": 1370,
+      "four smooth Ionic orders": 30664,
+      "flight approach Ionic orders": 5296,
+      "entablature and pediment": 273,
+      "exterior edgework": 312,
+      "unworked compare": 415,
+      "neutral display apron": 2
+    },
+    "transom": [
+      {
+        "x": -4.18,
+        "y": 1.3,
+        "firstFrontZ": 0.23800000548362732
+      },
+      {
+        "x": -4.18,
+        "y": 2.85,
+        "firstFrontZ": -0.007500003557652235
+      },
+      {
+        "x": -4.18,
+        "y": 3.18,
+        "firstFrontZ": 3.2709999084472656
+      },
+      {
+        "x": 0,
+        "y": 1.3,
+        "firstFrontZ": 0.1730000078678131
+      },
+      {
+        "x": 0,
+        "y": 2.85,
+        "firstFrontZ": -0.007500003557652235
+      },
+      {
+        "x": 0,
+        "y": 3.18,
+        "firstFrontZ": 3.2709999084472656
+      },
+      {
+        "x": 4.18,
+        "y": 1.3,
+        "firstFrontZ": 0.23800000548362732
+      },
+      {
+        "x": 4.18,
+        "y": 2.85,
+        "firstFrontZ": -0.007500003557652235
+      },
+      {
+        "x": 4.18,
+        "y": 3.18,
+        "firstFrontZ": 3.2709999084472656
+      }
+    ],
+    "insideBays": true,
+    "maxStairError": 3.5762787731208334e-09,
+    "stair": [
+      {
+        "x": -4.18,
+        "z": 4.79,
+        "expected": -0.01,
+        "y": -0.009999999776482582
+      },
+      {
+        "x": -4.18,
+        "z": 4.46,
+        "expected": 0.155,
+        "y": 0.1550000011920929
+      },
+      {
+        "x": -4.18,
+        "z": 4.01,
+        "expected": 0.31,
+        "y": 0.3100000023841858
+      },
+      {
+        "x": -4.18,
+        "z": 3.61,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": -4.18,
+        "z": 3.327,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": -4.18,
+        "z": 3.296,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": -4.18,
+        "z": 2.91,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": -4.18,
+        "z": 1.65,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": 0,
+        "z": 4.79,
+        "expected": -0.01,
+        "y": -0.009999999776482582
+      },
+      {
+        "x": 0,
+        "z": 4.46,
+        "expected": 0.155,
+        "y": 0.1550000011920929
+      },
+      {
+        "x": 0,
+        "z": 4.01,
+        "expected": 0.31,
+        "y": 0.3100000023841858
+      },
+      {
+        "x": 0,
+        "z": 3.61,
+        "expected": 0.465,
+        "y": 0.4650000035762786
+      },
+      {
+        "x": 0,
+        "z": 3.327,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": 0,
+        "z": 3.296,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": 0,
+        "z": 2.91,
+        "expected": 0.465,
+        "y": 0.4650000035762786
+      },
+      {
+        "x": 0,
+        "z": 1.65,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": 4.18,
+        "z": 4.79,
+        "expected": -0.01,
+        "y": -0.009999999776482582
+      },
+      {
+        "x": 4.18,
+        "z": 4.46,
+        "expected": 0.155,
+        "y": 0.1550000011920929
+      },
+      {
+        "x": 4.18,
+        "z": 4.01,
+        "expected": 0.31,
+        "y": 0.3100000023841858
+      },
+      {
+        "x": 4.18,
+        "z": 3.61,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": 4.18,
+        "z": 3.327,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": 4.18,
+        "z": 3.296,
+        "expected": 0.465,
+        "y": 0.4650000035762788
+      },
+      {
+        "x": 4.18,
+        "z": 2.91,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      },
+      {
+        "x": 4.18,
+        "z": 1.65,
+        "expected": 0.465,
+        "y": 0.4650000035762787
+      }
+    ]
+  },
+  "textures": {
+    "periodicHeightColor": 6.517009154549669e-14,
+    "roughness": 5.340172748447003e-14
+  },
+  "requests": [
+    "/",
+    "/assets/index-DtklFuAH.js"
+  ]
+}
