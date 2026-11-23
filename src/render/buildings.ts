@@ -3,6 +3,8 @@ import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
 import type { Terrain } from '../sim/terrain.ts';
+import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
+import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
 interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 interface Tile {id:string;bounds:[number,number,number,number];count:number;offset:number;bytes:number;}
@@ -51,14 +53,14 @@ export class Buildings {
  private tiles:BoundTile[]=[];private pack:ArrayBuffer;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF,vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:ArrayBuffer){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:ArrayBuffer,private readonly fitted:boolean){
   this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
  static async create(scene:THREE.Scene,terrain:Terrain){
   const path=import.meta.env.BASE_URL+'world/buildings/';const [mf,pk]=await Promise.all([fetch(path+'index.json'),fetch(path+'tiles.pack')]);if(!mf.ok||!pk.ok)throw Error('Building atlas not available.');
-  const a=(await mf.json()) as {tiles:Tile[]};const p=await pk.arrayBuffer();
+  const a=(await mf.json()) as {tiles:Tile[];sha256?:string};const p=await pk.arrayBuffer();
   if(!a.tiles?.length||a.tiles.some(t=>t.offset<0||t.bytes<=0||t.offset+t.bytes>p.byteLength))throw Error('Invalid building atlas index.');
-  return new Buildings(scene,terrain,a.tiles,p);
+  return new Buildings(scene,terrain,a.tiles,p,supportedRoofAtlas(a.sha256));
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -91,16 +93,23 @@ export class Buildings {
    const base=this.t.meshElevation(cx,cz)+.05, cw=bases[seed%bases.length],cr=tops[(seed>>>4)%tops.length];
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
+   const fit=this.fitted&&rings.length===1?lookupRoofFit(tile.id,f.footprint,{x:cx,z:cz}):undefined;
    const eave=base+(synthGable?low:h);
+   const rim=(p:Pt)=>fit?base+roofHeight(p,fit):eave;
+   const wall=(p:Pt,q:Pt,u0:number,u1:number)=>{
+    const y0=this.t.meshElevation(p.x,p.z)-.6,y1=this.t.meshElevation(q.x,q.z)-.6,y2=rim(p),y3=rim(q);
+    vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
+    vertex(p,y0,cw,u0,0,0);vertex(q,y3,cw,u1,y3-y1,0);vertex(q,y1,cw,u1,0,0);
+   };
    for(const rr of rings){for(let i=0;i<rr.length;i++){
     const a=rr[i],b=rr[(i+1)%rr.length],len=Math.hypot(b.x-a.x,b.z-a.z);
     if(len<.15)continue;
-    const y0=this.t.meshElevation(a.x,a.z)-.6,y1=this.t.meshElevation(b.x,b.z)-.6;
-    vertex(a,y0,cw,0,0,0);vertex(a,eave,cw,0,eave-y0,0);vertex(b,eave,cw,len,eave-y1,0);
-    vertex(a,y0,cw,0,0,0);vertex(b,eave,cw,len,eave-y1,0);vertex(b,y1,cw,len,0,0);
+    const middle=fit?splitRoofEdge(a,b,fit)[1]:b;
+    if(middle===b)wall(a,b,0,len);
+    else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
    }}
    const roofVert=(p:Pt,y:number)=>vertex(p,y,cr,p.x-ox,p.z-oz,1);
-   if(synthGable){
+   if(synthGable&&!fit){
     const length=(a:Pt,b:Pt)=>Math.hypot(a.x-b.x,a.z-b.z);
     let a=ring[0],b=ring[1],c=ring[2],d=ring[3];
     if(length(a,b)>length(b,c)){[a,b,c,d]=[b,c,d,a];}
@@ -109,7 +118,11 @@ export class Buildings {
     for(const [u,v,w] of [[a,b,ab],[c,d,cd]]){vertex(u,eave,cw,0,0,0);vertex(v,eave,cw,4,0,0);vertex(w,base+h,cw,2,h-low,0);}
    }else{
     const outline=rings.map(rr=>rr.map(p=>new THREE.Vector2(p.x-ox,-p.z+oz))),flat=rings.flat();
-    for(const face of THREE.ShapeUtils.triangulateShape(outline[0],outline.slice(1)))for(const idx of face)roofVert(flat[idx],eave);
+    const faces=THREE.ShapeUtils.triangulateShape(outline[0],outline.slice(1));
+    if(fit){for(const face of faces){
+      const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
+      for(const t of splitRoofTriangle(triangle,fit))for(const p of t)roofVert(p,rim(p));
+    }}else{for(const face of faces)for(const idx of face)roofVert(flat[idx],eave);}
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.computeVertexNormals();g.computeBoundingSphere();

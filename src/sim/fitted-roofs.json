@@ -1,0 +1,91 @@
+{
+  "atlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "localCoordinates": "X east; Z south; origin at unweighted footprint outer-ring vertex mean",
+  "surfaceEquation": "relativeHeightM = topAboveSurveyGroundM - risePerRun * abs(axisX*dx + axisZ*dz + signedAtCenterM)",
+  "roofs": [
+    {
+      "county": "Prince",
+      "place": "Summerside",
+      "tile": "q032001",
+      "featureIndex": 76,
+      "firstLonLat": [
+        -63.790051,
+        46.392799
+      ],
+      "vertices": 21,
+      "meanLonLat": [
+        -63.7902328095,
+        46.3926183333
+      ],
+      "surveyWindowSha256": "b567446bf1ef75c58a522cfb0a8030cd8076eb4bcf7b1458d2cc1384cff0d31e",
+      "interiorPixels": 349,
+      "axisX": 0.97402202,
+      "axisZ": 0.2264533,
+      "signedAtCenterM": 0.371387,
+      "topAboveSurveyGroundM": 12.683271,
+      "risePerRun": 0.28296201,
+      "surveyGroundM": 7.69577,
+      "surveyCrestM": 20.37904,
+      "minBoundaryAglM": 9.6218,
+      "maxBoundaryAglM": 12.6666,
+      "fullFitMedianAbsM": 0.1297,
+      "maxSceneTransformErrorM": 1.24e-05
+    },
+    {
+      "county": "Queens",
+      "place": "Cavendish",
+      "tile": "q03323",
+      "featureIndex": 4,
+      "firstLonLat": [
+        -63.408648,
+        46.483896
+      ],
+      "vertices": 10,
+      "meanLonLat": [
+        -63.4085664,
+        46.4838685
+      ],
+      "surveyWindowSha256": "bbf6a35108d6edca07ca0b645ac5b97128235a8402a25cd4f423b24a509a6d81",
+      "interiorPixels": 395,
+      "axisX": -0.60731379,
+      "axisZ": -0.79446206,
+      "signedAtCenterM": 1.622804,
+      "topAboveSurveyGroundM": 5.979111,
+      "risePerRun": 0.28033466,
+      "surveyGroundM": 24.05974,
+      "surveyCrestM": 30.03886,
+      "minBoundaryAglM": 2.9951,
+      "maxBoundaryAglM": 4.0294,
+      "fullFitMedianAbsM": 0.1036,
+      "maxSceneTransformErrorM": 1.02e-05
+    },
+    {
+      "county": "Kings",
+      "place": "Montague",
+      "tile": "q103301",
+      "featureIndex": 130,
+      "firstLonLat": [
+        -62.648924,
+        46.166113
+      ],
+      "vertices": 11,
+      "meanLonLat": [
+        -62.6489655455,
+        46.1659676364
+      ],
+      "surveyWindowSha256": "f97205a0f730269dc92ead17beb567af3da331e764fcd650c16f573d00a9667d",
+      "interiorPixels": 174,
+      "axisX": -0.27482075,
+      "axisZ": -0.96149548,
+      "signedAtCenterM": -8.09712,
+      "topAboveSurveyGroundM": 9.015248,
+      "risePerRun": 0.32027631,
+      "surveyGroundM": 11.81247,
+      "surveyCrestM": 20.82771,
+      "minBoundaryAglM": 4.0849,
+      "maxBoundaryAglM": 6.9133,
+      "fullFitMedianAbsM": 0.091,
+      "maxSceneTransformErrorM": 2.1e-06
+    }
+  ]
+}

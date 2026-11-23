@@ -52,6 +52,13 @@ terrain tiles, legally reusable regional aerial photography, detailed
 materials for sandstone and tidal flats, and surveyed or hand-modelled
 landmarks. Assess these at both cruise altitude and approach altitude.
 
+### Survey-supported roofs
+
+Three fitted roofs are rendered from screened 1 m LiDAR samples, one per
+county. Read the [geometry gate](qa/ROOF-GEOMETRY.md) for the exact coverage,
+measurement method and unchanged fallbacks. This does not imply that other
+roofs or street-level details were surveyed at the same resolution.
+
 ### Near-detail scenes
 
 The regional texture sits underneath **245** 640 × 640 WebP tiles with

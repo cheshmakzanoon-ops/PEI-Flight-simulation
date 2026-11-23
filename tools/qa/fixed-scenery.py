@@ -22,6 +22,9 @@ from playwright.sync_api import sync_playwright
 # Camera x is east, camera z is south; all distances are metres. The four lighthouse
 # camera poses have 53° vertical FOV and point halfway up the documented structure.
 VIEWS = {
+    'summerside': dict(lon=-63.790211,lat=46.392695,h=12.68,east=.68,south=.74,nearDist=44,nearAgl=44),
+    'cavendish': dict(lon=-63.408527,lat=46.483862,h=5.98,east=.75,south=.66,nearDist=43,nearAgl=34),
+    'montague': dict(lon=-62.649,lat=46.166011,h=9.02,east=.5,south=.866,nearDist=48,nearAgl=48),
     'east': dict(lon=-61.9718333333, lat=46.452527778, h=19.5, east=.91, south=-.415),
     'west': dict(lon=-64.38675, lat=46.620305556, h=20.62, east=-.88, south=.475),
     'town': dict(lon=-63.124747, lat=46.239085, h=10.77, east=.7, south=.7, nearDist=75, nearAgl=62),
