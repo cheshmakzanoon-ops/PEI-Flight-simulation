@@ -5,6 +5,7 @@ import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
+import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { shoreFoamGLSL } from './shore-foam.ts';
@@ -118,7 +119,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+`
+const landFrag=(east:boolean,bench=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -152,6 +153,14 @@ const landFrag=(east:boolean)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'
  float eastCover=eastRockLand(p,n,coast,vSurveyWeight)*eastRockDistance(d);
  if(eastCover>.001)col=mix(col,eastSandstone(p,d,rockPx),eastCover);
  `:''}
+ ${bench?`
+ // Evaluated only on land, after the unchanged shoreline rejection.
+ float benchCover=eastBenchWeight(p,d);
+ if(benchCover>.003){
+  vec4 benchColor=eastBenchColor(p,rockPx);
+  col=mix(col,benchColor.rgb,pow(benchCover,1.15)*benchColor.a);
+ }
+ `:''}
  col*=.90+.31*light;
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
@@ -160,7 +169,7 @@ const landFrag=(east:boolean)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export async function loadAtlas(progress:(s:string)=>void){
- const surveys=loadCoastalSurveys(base);
+ const surveys=loadCoastalSurveys(base),bench=loadEastBench(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
@@ -172,7 +181,9 @@ export async function loadAtlas(progress:(s:string)=>void){
  ]);
  img.colorSpace=THREE.SRGBColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
- return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),await surveys),img,cover,sky};
+ const installed=await surveys;
+ return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed),img,cover,sky,
+   bench:installed.some(s=>!!s.cliff)?await bench:undefined};
 }
 async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
@@ -199,9 +210,24 @@ interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THR
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
+ readonly coastalBenches:readonly string[];
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask){
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
+   const benchMask=east?bench:undefined;
+   let benchMap:THREE.DataTexture|undefined;
+   const benchBounds=new THREE.Vector4();
+   if(benchMask){
+    const {plan,values}=benchMask,[left,top,right,bottom]=plan.boundsXZ;
+    // Reuse the atlas's two-channel GPU format so an optional 1.4 kB
+    // mask change does not invalidate the larger, cached renderer module.
+    const pixels=new Uint8Array(values.length*2);
+    for(let i=0;i<values.length;i++)pixels[2*i]=values[i];
+    benchMap=new THREE.DataTexture(pixels,plan.width,plan.height,THREE.RGFormat);
+    benchMap.minFilter=benchMap.magFilter=THREE.LinearFilter;benchMap.needsUpdate=true;
+    benchBounds.set(left,top,1/(right-left),1/(bottom-top));
+   }
+   this.coastalBenches=benchMask?[benchMask.plan.id]:[];
    const eastRockBounds={value:east?new THREE.Vector4(east.x0,east.z0,1/(east.x1-east.x0),1/(east.z1-east.z0)):new THREE.Vector4()};
    const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
@@ -220,7 +246,10 @@ export class World {
     let any=false;outer:for(let y=sy;y<ey;y++)for(let x=sx;x<ex;x++)if(T.samples[y*T.spec.width+x]!==-32768){any=true;break outer;}
     if(!any)continue;
     const survey=T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(i===east?.spec.tileX&&j===east.spec.tileZ)});
+    const rock=i===east?.spec.tileX&&j===east.spec.tileZ;
+    const useBench=rock&&!!benchMap;
+    const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...benchUniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);

@@ -27,7 +27,7 @@ The East Point cliff has sharp features smaller than a base grid cell. An option
 | Largest error | 4.053 m | 0.995 m |
 | Native observations with more than 1 m error | 365 | 0 |
 
-These are differences from the same source used to fit the mesh, not a second survey. The [local sandstone material](qa/east-sandstone.md) uses original shading rather than photograph textures. The original shoreline mask limits visual fidelity near the coast; this is neither photogrammetry nor a survey of land/water boundaries.
+These are differences from the same source used to fit the mesh, not a second survey. The [local sandstone material](qa/east-sandstone.md) uses original shading rather than photograph textures. The [small tidal-rock pilot](qa/east-tidal-bench.md) applies original shelf shading only where the point cloud, DTM and current shoreline agree. The original shoreline mask limits visual fidelity near the coast; this is neither photogrammetry nor a survey of land/water boundaries.
 
 The West Point input predates the [Cedar Dunes shoreline works documented by
 the Province](https://www.princeedwardisland.ca/en/news/popular-pei-provincial-park-protected-for-generations),
