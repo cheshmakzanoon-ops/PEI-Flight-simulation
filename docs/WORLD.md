@@ -143,7 +143,10 @@ not a survey of rock strata, beaches or tides. At longer distances these
 additional meshes are culled.
 
 The [East and West Point light stations](landmarks/lighthouses.md) are
-original, site-specific exteriors with approximate local ground detail.
+original, site-specific exteriors. Near both lighthouses, [playable coastal
+relief](coastal-relief.md) replaces the regional terrain triangles with
+heights derived from native 1 m bare-earth LiDAR. It does not add a new
+shoreline or turn the remainder of PEI into a high-resolution survey.
 
 ## Woodland clearance
 

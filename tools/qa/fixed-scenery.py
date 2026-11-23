@@ -49,11 +49,11 @@ def stage(repo, root, deps, void_probe):
     main = root / 'src/main.ts'
     text = main.read_text()
     text = once(text, 'const diagnostic=', '''const qa=JSON.parse(new URLSearchParams(location.search).get('qa')!);
-      const center=project(qa.lon,qa.lat),baseH=terrain.elevation(center.x,center.z);let qaFrame=0; const diagnostic=''')
+      const center=project(qa.lon,qa.lat),baseH=qa.fixedBaseH??terrain.elevation(center.x,center.z);let qaFrame=0; const diagnostic=''')
     text = once(text, 'clamp, RAD, geographic', 'clamp, RAD, geographic, project')
     text = once(text, 'groundY.copy(aircraft.root.position);', '''
       const norm=Math.hypot(qa.east,qa.south),ex=center.x+qa.dist*qa.east/norm,ez=center.z+qa.dist*qa.south/norm;
-      f.x=ex;f.z=ez;f.y=terrain.elevation(ex,ez)+qa.agl;
+      f.x=ex;f.z=ez;f.y=qa.fixedEyeY??terrain.elevation(ex,ez)+qa.agl;
       camera.position.set(ex,f.y,ez);camera.up.set(0,1,0);camera.lookAt(center.x,baseH+qa.h*.5,center.z);
       camera.updateMatrixWorld();aircraft.root.visible=false;
       const screenY=(h:number)=>{const v=new THREE.Vector3(center.x,baseH+h,center.z).project(camera);return (1-v.y)*innerHeight*.5;};
@@ -97,6 +97,9 @@ def settle(page, errors):
 def capture(args, browser, url):
     width, height = map(int, args.size.split('x'))
     results = []
+    baseline = {}
+    if args.pose_baseline:
+        baseline = {r["name"]:r for r in json.loads(args.pose_baseline.read_text())}
     for name in args.views.split(','):
         site, distance = name.rsplit('-', 1)
         pose = dict(site=site, **VIEWS[site])
@@ -104,6 +107,17 @@ def capture(args, browser, url):
             raise ValueError(f'Unknown view {name}')
         pose.update(dist=pose.get('nearDist', 125) if distance == 'close' else 650,
                     agl=pose.get('nearAgl', 45) if distance == 'close' else 120)
+        if args.pose_baseline:
+            r = baseline.get(name)
+            if not r or (r["width"],r["height"]) != (width,height) or any(
+                r["pose"].get(k)!=v for k,v in pose.items()
+            ):
+                raise ValueError(f"Missing or incompatible baseline for {name}")
+            for field, diagnostic in (("fixedBaseH","baseH"),("fixedEyeY","eyeY")):
+                value = r["diag"][diagnostic]
+                if not isinstance(value,(int,float)) or not math.isfinite(value):
+                    raise ValueError(f"Invalid {diagnostic} for {name}")
+                pose[field] = value
         ctx = browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=1)
         page = ctx.new_page()
         page.set_default_timeout(90000)
@@ -176,4 +190,6 @@ if __name__ == '__main__':
     parser.add_argument('--void-probe', action='store_true')
     parser.add_argument('--views', default='east-close,west-close,east-approach,west-approach')
     parser.add_argument('--size', default='1024x640')
+    parser.add_argument('--pose-baseline', type=Path,
+                        help='Lock the eye and aim elevations to a baseline results.json.')
     run(parser.parse_args())

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "purpose": "Offline elevation review only; source coverage is not a shoreline.",
+  "purpose": "Pinned offline inputs for elevation review and two playable terrain derivatives. Source coverage is not a shoreline.",
   "source": {
     "publisher": "Natural Resources Canada, CanElevation",
     "product": "HRDEM Mosaic 1 m DTM",

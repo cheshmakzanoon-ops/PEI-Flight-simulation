@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-import { Terrain, type TerrainSpec } from '../sim/terrain.ts';
+import {loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
+import {insertCoastalGrid} from './coastal-patch.ts';
+import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
@@ -11,9 +13,16 @@ import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
 const vertex=`
  varying vec3 p; varying vec2 vuv;
+ #ifdef SURVEY_LIGHT
+ attribute float surveyWeight; varying float vSurveyWeight; varying vec3 vSurveyNormal;
+ #endif
  #include <common>
  #include <logdepthbuf_pars_vertex>
- void main(){vec4 w=modelMatrix*vec4(position,1.);p=w.xyz;vuv=uv;gl_Position=projectionMatrix*viewMatrix*w;
+ void main(){
+ #ifdef SURVEY_LIGHT
+ vSurveyWeight=surveyWeight;vSurveyNormal=mat3(modelMatrix)*normal;
+ #endif
+ vec4 w=modelMatrix*vec4(position,1.);p=w.xyz;vuv=uv;gl_Position=projectionMatrix*viewMatrix*w;
  #include <logdepthbuf_vertex>
  }`;
 const fp=`
@@ -98,6 +107,9 @@ const cliffFrag=fp+`
  col*=.90+strata+.18*noise(p.xz*.14+vec2(0.,p.y*.11));
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 const landFrag=fp+lighthouseGroundGLSL+`
+ #ifdef SURVEY_LIGHT
+ varying float vSurveyWeight; varying vec3 vSurveyNormal;
+ #endif
  uniform sampler2D imageMap,coverMap,detailMap,paintMap; uniform float hasDetail;uniform vec4 detailBox;
  uniform vec4 airport[3];uniform vec2 stripSize[3];
  void main(){
@@ -107,6 +119,9 @@ const landFrag=fp+lighthouseGroundGLSL+`
  vec3 col=texture2D(imageMap,uv).rgb;
  if(hasDetail>.5){vec2 q=(vuv-detailBox.xy)*detailBox.zw;col=texture2D(detailMap,vec2(q.x,1.-q.y)).rgb;}
  vec3 n=normalize(cross(dFdx(p),dFdy(p)));if(n.y<0.)n=-n;
+ #ifdef SURVEY_LIGHT
+ n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
+ #endif
  float d=distance(cameraPosition,p),light=clamp(dot(n,sun),0.,1.);
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
@@ -128,6 +143,7 @@ const landFrag=fp+lighthouseGroundGLSL+`
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export async function loadAtlas(progress:(s:string)=>void){
+ const surveys=loadCoastalSurveys(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
@@ -139,7 +155,7 @@ export async function loadAtlas(progress:(s:string)=>void){
  ]);
  img.colorSpace=THREE.SRGBColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
- return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data)),img,cover,sky};
+ return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),await surveys),img,cover,sky};
 }
 async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
@@ -174,17 +190,18 @@ export class World {
    const uniforms={rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
-   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=-.055;scene.add(ocean);
+   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
    this.mat=make(landFrag);
    this.addShoreFaces(make(cliffFrag,THREE.DoubleSide));
-   const nx=32,nz=22,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
+   const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
     const x0=T.left+i*w,z0=T.top+j*d;
     const sx=Math.floor(i*T.spec.width/nx),ex=Math.ceil((i+1)*T.spec.width/nx);
     const sy=Math.floor(j*T.spec.height/nz),ey=Math.ceil((j+1)*T.spec.height/nz);
     let any=false;outer:for(let y=sy;y<ey;y++)for(let x=sx;x<ex;x++)if(T.samples[y*T.spec.width+x]!==-32768){any=true;break outer;}
     if(!any)continue;
-    const local=new THREE.ShaderMaterial({uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag});
+    const survey=T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
@@ -199,9 +216,19 @@ export class World {
   for(const {ax,az,bx,bz} of coastSegments(this.cover,t)){
    const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
    let vertices=groups.get(key);if(!vertices){vertices=[];groups.set(key,vertices);}
-   const ah=t.meshElevation(ax,az)+.72,bh=t.meshElevation(bx,bz)+.72;
-   const bottom=-.14;
-   vertices.push(ax,bottom,az,bx,bottom,bz,ax,ah,az,ax,ah,az,bx,bottom,bz,bx,bh,bz);
+   // Follow the original shoreline segments, with finer vertical samples only where
+   // measured relief exists. Neither survey coverage nor zero elevation defines coast.
+   const local=t.coastalGrids.some(g=>Math.max(ax,bx)>=g.x0&&Math.min(ax,bx)<=g.x1&&Math.max(az,bz)>=g.z0&&Math.min(az,bz)<=g.z1);
+   const steps=local?Math.max(1,Math.ceil(Math.hypot(bx-ax,bz-az)/2)):1;
+   let px=ax,pz=az,ph=t.meshElevation(px,pz)+.72;
+   for(let j=1;j<=steps;j++){
+    const u=j/steps,qx=ax+(bx-ax)*u,qz=az+(bz-az)*u,qh=t.meshElevation(qx,qz)+.72;
+    // Signed CGVD2013 land can sit below sea level. The curtain joins both
+    // surfaces irrespective of which end is higher; do not clip the measured floor.
+    const bottom=Math.min(-.14,ph-.82,qh-.82),pTop=Math.max(OCEAN_Y+.03,ph),qTop=Math.max(OCEAN_Y+.03,qh);
+    vertices.push(px,bottom,pz,qx,bottom,qz,px,pTop,pz,px,pTop,pz,qx,bottom,qz,qx,qTop,qz);
+    px=qx;pz=qz;ph=qh;
+   }
   }
   for(const vertices of groups.values()){
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
@@ -215,13 +242,23 @@ export class World {
   const pos=g.getAttribute('position'),uv=g.getAttribute('uv');
   for(let i=0;i<pos.count;i++){
     const x=pos.getX(i)+x0+w/2,z=pos.getZ(i)+z0+d/2;
-    pos.setY(i,this.terrain.meshElevation(x,z)+.12);
+    pos.setY(i,this.terrain.atlasElevation(x,z)+GROUND_LIFT);
     const [u,v]=this.terrain.uv(x,z);uv.setXY(i,u,v);
   }
-  g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);m.userData.subdiv=n;return m;
+  const site=this.terrain.coastalGrids.find(g=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d);
+  if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
+  g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
+  m.userData.subdiv=n;if(site)m.userData.coastalSurvey=site.spec.id;return m;
+ }
+ groundHeight(x:number,z:number,land?:boolean){
+  // Both shaders use the continuous Cover mask. A missing province DEM cell
+  // cannot revoke visible land, and even positive offshore survey samples
+  // must not raise water contact above the rendered ocean.
+  return this.terrain.contactHeight(x,z,land??(this.cover.distance(this.terrain,x,z)>=0));
  }
  surface(x:number,z:number):Surface{
-  return {height:this.terrain.elevation(x,z)+.12,land:this.cover.distance(this.terrain,x,z)>=0,runway:RUNWAYS.some(r=>{const dx=x-r.p.x,dz=z-r.p.z,a=dx*r.dx+dz*r.dz;return a>=0&&a<=r.length&&Math.abs(dx*r.dz-dz*r.dx)<r.width/2;})};
+  const land=this.cover.distance(this.terrain,x,z)>=0;
+  return {height:this.groundHeight(x,z,land),land,runway:RUNWAYS.some(r=>{const dx=x-r.p.x,dz=z-r.p.z,a=dx*r.dx+dz*r.dz;return a>=0&&a<=r.length&&Math.abs(dx*r.dz-dz*r.dx)<r.width/2;})};
  }
  update(pos:THREE.Vector3,clock:number){
   this.sky.position.copy(pos);this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
@@ -254,7 +291,7 @@ export class World {
     const pos=tile.fine.geometry.getAttribute('position');
     for(let side=0;side<4;side++){
       const m=levels[side],ratio=n/m;let a=0,b=0;
-      const height=(t:number)=>this.terrain.meshElevation(tile.x0+tile.w*(side%2===0?t:side===1?1:0),tile.z0+tile.d*(side%2===1?t:side===2?1:0))+.12;
+      const height=(t:number)=>this.terrain.atlasElevation(tile.x0+tile.w*(side%2===0?t:side===1?1:0),tile.z0+tile.d*(side%2===1?t:side===2?1:0))+.12;
       for(let k=0;k<=n;k++){
         if(k%ratio===0){a=height(k/n);b=height(Math.min(1,(k+ratio)/n));}
         const j=side===0?k:side===1?k*(n+1)+n:side===2?n*(n+1)+k:k*(n+1);
