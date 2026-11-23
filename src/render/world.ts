@@ -10,6 +10,7 @@ import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { shoreFoamGLSL } from './shore-foam.ts';
 import { DetailImagery } from './detail.ts';
+import {detailRetryAt} from './detail-retry.ts';
 import { runwayAtlas } from './runway-paint.ts';
 import { RUNWAYS } from '../sim/places.ts';
 import type { Surface } from '../sim/flight.ts';
@@ -206,7 +207,7 @@ async function loadCover(){
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
  return new Cover(cs.width,cs.height,new Uint8Array(cb));
 }
-interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing';detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
+interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
@@ -352,18 +353,27 @@ export class World {
     }
     pos.needsUpdate=true;
   }
-  const near=this.tiles.filter(q=>q.status==='idle'&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)
+  const now=performance.now();
+  const near=this.tiles.filter(q=>q.status==='idle'&&(q.retryAt??0)<=now&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)
    .sort((a,b)=>Math.hypot(pos.x-a.x0-a.w/2,pos.z-a.z0-a.d/2)-Math.hypot(pos.x-b.x0-b.w/2,pos.z-b.z0-b.d/2));
   for(const q of near){if(this.loading>=3)break;this.request(q);}
 
  }
- detailState(){return {ready:this.tiles.filter(t=>t.status==='ready').length,loading:this.loading,missing:this.tiles.filter(t=>t.status==='missing').length};}
+ detailState(){return {ready:this.tiles.filter(t=>t.status==='ready').length,loading:this.loading,
+  missing:this.tiles.filter(t=>t.status==='missing').length,uncovered:this.tiles.filter(t=>t.status==='uncovered').length,
+  retrying:this.tiles.filter(t=>t.status==='idle'&&t.retryAt!==undefined).length};}
  private request(tile:Patch){
-  this.loading++;tile.status='loading';
-  void this.details.load(tile.id).then(tex=>{if(!tex){tile.status='missing';return;}
+  this.loading++;tile.status='loading';tile.retryAt=undefined;
+  void this.details.load(tile.id).then(tex=>{if(!tex){tile.status='uncovered';return;}
+   tile.failures=undefined;
    const dx=this.lastX-(tile.x0+tile.w/2),dz=this.lastZ-(tile.z0+tile.d/2);
    if(dx*dx+dz*dz>19000**2){tex.dispose();(tex.image as ImageBitmap)?.close?.();tile.status='idle';return;}
    tile.detail=tex;tile.status='ready';tile.local.uniforms.detailMap.value=tex;tile.local.uniforms.hasDetail.value=1;
-  }).catch(e=>{tile.status='missing';console.warn('Base atlas retained; detail tile unavailable',tile.id,e);}).finally(()=>this.loading--);
+  }).catch(e=>{
+   tile.failures=(tile.failures??0)+1;
+   tile.retryAt=detailRetryAt(e,tile.failures,performance.now());
+   tile.status=tile.retryAt===undefined?'missing':'idle';
+   if(tile.status==='missing')console.warn('Base atlas retained; detail tile unavailable',tile.id,e);
+  }).finally(()=>this.loading--);
  }
 }
