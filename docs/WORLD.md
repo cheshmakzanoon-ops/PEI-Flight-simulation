@@ -85,7 +85,9 @@ the range-less server still transferred the complete pack only once.
 Three fitted roofs are rendered from screened 1 m LiDAR samples, one per
 county. Read the [geometry gate](qa/ROOF-GEOMETRY.md) for the exact coverage,
 measurement method and unchanged fallbacks. This does not imply that other
-roofs or street-level details were surveyed at the same resolution.
+roofs or street-level details were surveyed at the same resolution. Larger
+complexes use separate roof planes where supported: [Charlottetown waterfront](qa/quartermaster-roof.md)
+and [Souris](qa/souris-roof.md).
 
 ### Near-detail scenes
 

@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
+import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
+import { SOURIS_ROOF } from './souris-roof.generated.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -13,6 +15,9 @@ interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 interface Tile {id:string;bounds:[number,number,number,number];count:number;offset:number;bytes:number;}
 interface BoundTile extends Tile{x1:number;x2:number;z1:number;z2:number;}
 const bases=[0xa9a69b,0x85948c,0xc1bda9,0x788c91,0x936d59,0xb7a98f,0x8e8073,0xadaa9a,0xbfc1b3].map(c=>new THREE.Color(c));
+const sourisCladding=new THREE.Color(0x889397),sourisRoof=new THREE.Color(0x7d898d);
+const sourisFrame='vec2 local=wp.xz-vec2('+SOURIS_ROOF.originXZ.map(n=>n.toFixed(1)).join(',')+
+ '),basis=vec2('+SOURIS_ROOF.mainRidge.normalXZ.map(n=>n.toFixed(8)).join(',')+');';
 const tops=[0x4a5559,0x726558,0x655e58,0x495851,0x826c58,0x777c75,0x526468].map(c=>new THREE.Color(c));
 type Pt={x:number;z:number};
 const buildingV=`
@@ -44,7 +49,20 @@ const buildingF=`
  vec3 c=tint,n=normalize(normalW);if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
- if(roof<.5&&facade>.5){harbourWalls(c,uv2d,wp,facade,k,fine);}
+ if(roof<.5&&facade>5.5){
+  // Neutral manufactured cladding for the one measured industrial shell;
+  // no guessed windows, openings, branding or claim of actual material.
+  ${sourisFrame}vec2 other=vec2(-basis.y,basis.x);
+  float u=abs(dot(n.xz,basis))>.72?dot(local,other):dot(local,basis);
+  float rib=band(u/.32,.06,.17),smallLip=band(u/.32,.17,.24);
+  float panel=band(u/2.85,.03,.065),lap=band(uv2d.y/3.85,.055,.092);
+  float crisp=1.-smoothstep(.055,.65,fwidth(u));
+  float panelTone=warmWindowHash(vec2(floor(u/2.85),floor(uv2d.y/3.85)));
+  float bottom=1.-smoothstep(.42,1.45,uv2d.y);
+  vec3 steel=mix(vec3(.92,.98,1.02),vec3(1.02,.99,.94),panelTone);
+  c*=mix(vec3(1.),steel,crisp)* (1.-fine*(.10*rib+.19*panel+.16*lap)-.16*bottom);
+  c+=vec3(.026,.030,.031)*smallLip*fine;
+ }else if(roof<.5&&facade>.5){harbourWalls(c,uv2d,wp,facade,k,fine);}
  else if(roof<.5){
   vec2 grid=uv2d/vec2(2.62,3.08);
   float glass=band(grid.x,.17,.79)*band(grid.y,.23,.82);
@@ -54,6 +72,12 @@ const buildingF=`
   vec3 glassCol=mix(vec3(.030,.054,.062),vec3(.12,.17,.18),.35+.5*k);
   c=mix(c,glassCol,glass*.88);c*=1.-reveal*.24;c+=vec3(.028)*(sill+mullion);
   c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);
+ }else if(facade>5.5){
+  ${sourisFrame}
+  float u=dot(local,basis),v=dot(local,vec2(-basis.y,basis.x));
+  float seam=band(u/1.15,.025,.056),lap=band(v/6.2+.5*mod(floor(u/1.15),2.),.05,.095);
+  float polish=warmWindowHash(floor(vec2(u/2.5,v/7.)));
+  c*=mix(.97,1.03,polish)*(1.-fine*(.18*seam+.07*lap));
  }else{c*=1.-.11*fine*band(uv2d.x*1.8,.0,.17);}
  c*=.61+.51*k;float mist=1.-exp(-d*.000022);gl_FragColor=vec4(mix(c,vec3(.56,.68,.72),mist),1.);
  #include <tonemapping_fragment>
@@ -125,6 +149,23 @@ export class Buildings {
       facade=downtownFacade(ll.lon,ll.lat,y-base,seed);
       vertex(a,loA,cw,0,loA-ga,0);vertex(a,y,cw,0,y-ga,0);vertex(b,y,cw,d,y-gb,0);
       vertex(a,loA,cw,0,loA-ga,0);vertex(b,y,cw,d,y-gb,0);vertex(b,loB,cw,d,loB-gb,0);
+     }
+    });
+    continue;
+   }
+   if(matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)){
+    facade=6;
+    emitSurveyRoof(SOURIS_ROOF,{
+     roof:(a,b,c,y)=>{
+      vertex(a,y[0],sourisRoof,a.x-ox,a.z-oz,1);
+      vertex(b,y[1],sourisRoof,b.x-ox,b.z-oz,1);
+      vertex(c,y[2],sourisRoof,c.x-ox,c.z-oz,1);
+     },
+     riser:(a,b,below,y)=>{
+      const ga=this.t.meshElevation(a.x,a.z)-.6,gb=this.t.meshElevation(b.x,b.z)-.6;
+      const loA=below?.[0]??ga,loB=below?.[1]??gb,d=Math.hypot(a.x-b.x,a.z-b.z);
+      vertex(a,loA,sourisCladding,0,loA-ga,0);vertex(a,y[0],sourisCladding,0,y[0]-ga,0);vertex(b,y[1],sourisCladding,d,y[1]-gb,0);
+      vertex(a,loA,sourisCladding,0,loA-ga,0);vertex(b,y[1],sourisCladding,d,y[1]-gb,0);vertex(b,loB,sourisCladding,d,loB-gb,0);
      }
     });
     continue;

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Paired images of the shipped roof triangle path with all other scene state held fixed."""
+"""Paired real Three.js roof geometry images for a measured footprint, with all non-target vertices checked."""
 import argparse
 import base64
 import importlib.util
@@ -11,11 +11,20 @@ from urllib.parse import quote
 s=importlib.util.spec_from_file_location('fixed',Path(__file__).with_name('fixed-scenery.py'))
 fixed=importlib.util.module_from_spec(s);s.loader.exec_module(fixed)
 base_stage=fixed.stage
-POSES={
+QUARTERMASTER={
  'harbour-aerial':dict(lon=-63.12218866308732,lat=46.231650691117366,dist=136.70732846082151,
   east=136.38569541381275,south=-9.372072416794254,fixedEyeY=88.053,fixedBaseH=3,h=0,agl=0),
  'harbour-low':dict(lon=-63.12178,lat=46.23146,dist=141,east=78,south=117,fixedEyeY=19,fixedBaseH=.5,h=0,agl=0),
 }
+SOURIS={
+ 'souris-aerial':dict(lon=-62.242203,lat=46.346414,dist=265,east=-110,south=241,fixedEyeY=115,fixedBaseH=25,h=0,agl=0),
+ 'souris-low':dict(lon=-62.242203,lat=46.346414,dist=182,east=155,south=95,fixedEyeY=43,fixedBaseH=25,h=0,agl=0),
+}
+PROFILES={
+ 'quartermaster':dict(poses=QUARTERMASTER,tile='q12000111',index=22,anchor='supportedQuartermasterRoof(this.atlasHash'),
+ 'souris':dict(poses=SOURIS,tile='q131',index=221,anchor='matchesSurveyRoof(SOURIS_ROOF,this.atlasHash'),
+}
+profile=PROFILES['quartermaster']
 
 def stage(repo,root,deps,void_probe):
     base_stage(repo,root,deps,void_probe)
@@ -23,7 +32,7 @@ def stage(repo,root,deps,void_probe):
     main.write_text(fixed.once(main.read_text(),'renderer.render(scene,camera);','''
       renderer.render(scene,camera);
       (window as any).captureRoof=()=>{
-        const pair=(window as any).quartermasterRoofQA;
+        const pair=(window as any).surveyRoofQA;
         if(!pair)throw Error('Measured target building tile has not loaded');
         const shots=[];
         for(const old of [true,false]){
@@ -37,14 +46,14 @@ def stage(repo,root,deps,void_probe):
     f=root/'src/render/buildings.ts'
     b=fixed.once(f.read_text(),'private generate(features:Bldg[],tile:BoundTile){',
                  'private generate(features:Bldg[],tile:BoundTile,fitTiers=true){')
-    b=fixed.once(b,'if(supportedQuartermasterRoof(this.atlasHash','if(fitTiers&&supportedQuartermasterRoof(this.atlasHash')
-    f.write_text(fixed.once(b,'this.meshes.set(tile.id,mesh);this.scene.add(mesh);','''
+    b=fixed.once(b,'if('+profile['anchor'],'if(fitTiers&&'+profile['anchor'])
+    patch='''
       this.meshes.set(tile.id,mesh);this.scene.add(mesh);
-      if(tile.id==='q12000111'){
+      if(tile.id==='__TILE__'){
         const original=this.generate(chunk.features,tile,false);
-        const prefix=this.generate(chunk.features.slice(0,22),tile,false).geometry;
-        const oldOne=this.generate(chunk.features.slice(22,23),tile,false).geometry;
-        const newOne=this.generate(chunk.features.slice(22,23),tile).geometry;
+        const prefix=this.generate(chunk.features.slice(0,__FEATURE__),tile,false).geometry;
+        const oldOne=this.generate(chunk.features.slice(__FEATURE__,__AFTER__),tile,false).geometry;
+        const newOne=this.generate(chunk.features.slice(__FEATURE__,__AFTER__),tile).geometry;
         const checked={};
         for(const n of Object.keys(mesh.geometry.attributes)){
           const a=original.geometry.attributes[n].array,b=mesh.geometry.attributes[n].array;
@@ -56,24 +65,27 @@ def stage(repo,root,deps,void_probe):
         }
         for(const h of [prefix,oldOne,newOne])h.dispose();
         original.visible=false;this.scene.add(original);
-        (window as any).quartermasterRoofQA={
+        (window as any).surveyRoofQA={
           referenced:tile.id,excludedVertices:checked,
           toggle:(old:boolean)=>{mesh.visible=!old;original.visible=old;}
         };
       }
-    '''))
+    '''
+    patch=patch.replace('__TILE__',profile['tile']).replace('__FEATURE__',str(profile['index'])).replace('__AFTER__',str(profile['index']+1))
+    f.write_text(fixed.once(b,'this.meshes.set(tile.id,mesh);this.scene.add(mesh);',patch))
 
 def capture(args,browser,url):
     reports=[]
+    poses=profile['poses']
     for name in args.views.split(','):
         context=browser.new_context(viewport={'width':1000,'height':600},device_scale_factor=1)
         try:
             page=context.new_page();page.set_default_timeout(90000);errors=[]
             page.on('pageerror',lambda e:errors.append(str(e)))
             page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
-            page.goto(url+'/?diagnostics&qa='+quote(json.dumps(POSES[name])),wait_until='domcontentloaded')
+            page.goto(url+'/?diagnostics&qa='+quote(json.dumps(poses[name])),wait_until='domcontentloaded')
             diag=fixed.settle(page,errors)
-            page.wait_for_function('window.quartermasterRoofQA?.referenced==="q12000111"')
+            page.wait_for_function('id=>window.surveyRoofQA?.referenced===id',arg=profile['tile'])
             data=page.evaluate('window.captureRoof()')
             readings=[]
             for label,shot in zip(('original','measured'),data['shots'],strict=True):
@@ -82,7 +94,7 @@ def capture(args,browser,url):
                 readings.append(shot)
             assert readings[0]['calls']==readings[1]['calls'],readings
             assert readings[0]['triangles']<readings[1]['triangles']<=readings[0]['triangles']+1250,readings
-            reports.append(dict(view=name,pose=POSES[name],detail=diag['detail'],render=readings,
+            reports.append(dict(view=name,pose=poses[name],detail=diag['detail'],render=readings,
                   unchangedNeighbourScalars=data['excludedVertices']))
             print(json.dumps(reports[-1]),flush=True)
         finally:
@@ -95,5 +107,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--checkout',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--chromium',default=os.getenv('CHROMIUM','chromium'));p.add_argument('--deps',type=Path)
-    p.add_argument('--views',default=','.join(POSES));p.set_defaults(void_probe=False)
-    fixed.run(p.parse_args())
+    p.add_argument('--site',choices=PROFILES,default='quartermaster');p.add_argument('--views')
+    p.set_defaults(void_probe=False)
+    args=p.parse_args();profile=PROFILES[args.site]
+    if not args.views:args.views=','.join(profile['poses'])
+    fixed.run(args)

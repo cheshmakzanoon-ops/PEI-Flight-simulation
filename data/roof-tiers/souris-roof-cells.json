@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "title": "Souris industrial building: native roof evidence",
+  "license": "Open Government Licence \u2013 Canada",
+  "licenseURL": "https://open.canada.ca/en/open-government-licence-canada",
+  "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada.",
+  "buildingAtlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "tile": "q131",
+  "featureIndex": 221,
+  "sourceFootprint": [
+    [
+      -62.242022,
+      46.347029
+    ],
+    [
+      -62.241834,
+      46.346923
+    ],
+    [
+      -62.241807,
+      46.346946
+    ],
+    [
+      -62.241775,
+      46.346928
+    ],
+    [
+      -62.2418,
+      46.346907
+    ],
+    [
+      -62.241173,
+      46.346547
+    ],
+    [
+      -62.241526,
+      46.346252
+    ],
+    [
+      -62.242004,
+      46.346527
+    ],
+    [
+      -62.24215,
+      46.346404
+    ],
+    [
+      -62.242182,
+      46.346421
+    ],
+    [
+      -62.242272,
+      46.34634
+    ],
+    [
+      -62.242252,
+      46.346329
+    ],
+    [
+      -62.242277,
+      46.346307
+    ],
+    [
+      -62.2423,
+      46.34632
+    ],
+    [
+      -62.242331,
+      46.346294
+    ],
+    [
+      -62.242359,
+      46.34631
+    ],
+    [
+      -62.242411,
+      46.346267
+    ],
+    [
+      -62.242579,
+      46.346365
+    ],
+    [
+      -62.242595,
+      46.346352
+    ],
+    [
+      -62.242408,
+      46.346243
+    ],
+    [
+      -62.242359,
+      46.346284
+    ],
+    [
+      -62.242318,
+      46.34626
+    ],
+    [
+      -62.242346,
+      46.346237
+    ],
+    [
+      -62.242286,
+      46.346203
+    ],
+    [
+      -62.24235,
+      46.346149
+    ],
+    [
+      -62.242411,
+      46.346184
+    ],
+    [
+      -62.242596,
+      46.346028
+    ],
+    [
+      -62.242963,
+      46.346237
+    ]
+  ],
+  "atlasHeightAGLM": 32.15,
+  "atlasLowestRecordedReturnAGLM": 3.9,
+  "dsm": {
+    "collection": "NRCan CanElevation HRDEM Mosaic 1m",
+    "item": "10_3-mosaic-1m",
+    "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+    "dtmURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "windowSha256": "eceab1515b3ce6293549895661ee4fb45f847a4beddfe6e1433ed7bccaf8af53",
+    "minimumFootprintInteriorDistanceM": 1.5
+  },
+  "class6": {
+    "project": "Prince Edward Island 2020",
+    "tile": "pei_2020_458000_699000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_458000_699000.copc.laz",
+    "sourceHorizontalEPSG": 2961,
+    "sourceURL": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "sourceBoundsXY": [
+      558249.169714587,
+      5132769.39541329,
+      558392.575828637,
+      5132887.04231108
+    ],
+    "class6UnwithheldUnique": 42869,
+    "transferredBytes": 2273119,
+    "requestCount": 12,
+    "objectBytes": 20043032
+  },
+  "grid": {
+    "horizontalEPSG": 3979,
+    "cellMetres": 1,
+    "offsetXY": [
+      2438451,
+      345492
+    ],
+    "centerSuffixMetres": 0.5
+  },
+  "layout": [
+    "column",
+    "row_northward",
+    "dsm_height_cm",
+    "class6_count",
+    "class6_median_cm",
+    "class6_p90_minus_p10_cm"
+  ],
+  "rows": 5595,
+  "missing": -32768,
+  "encoding": "little-endian signed int16 per field, gzip",
+  "file": "souris-roof-cells.i16.gz",
+  "bytes": 67140,
+  "sha256": "04b327d2f5a72e61cba10698162107b5afccfb40a9c6d0d0b98caf4b4c70f108",
+  "compressedBytes": 34895,
+  "compressedSha256": "2ddc49e0e60952fce9e8e0b9e4df1270c7089066dd32a21c59445819c6b454db"
+}
