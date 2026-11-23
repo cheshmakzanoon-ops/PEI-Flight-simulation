@@ -5,13 +5,13 @@ import {GROUND_LIFT} from '../sim/coastal-terrain.ts';
 import type {Terrain} from '../sim/terrain.ts';
 
 /** One indexed replacement; the original terrain owner and material survive. */
-export function adaptiveGround(original:THREE.BufferGeometry,seed:ReliefSeed,s:Terrain,
-  x0:number,z0:number,w:number,d:number,split=4){
+export function adaptiveGround(original:THREE.BufferGeometry,seed:Pick<ReliefSeed,'accepts'|'height'>,s:Terrain,
+  x0:number,z0:number,w:number,d:number,split=4,preFeathered=false){
  const old=original.getAttribute('position'),oldUV=original.getAttribute('uv');
  const n=PARENT_INTERVALS;
  if(old.count!==(n+1)**2||oldUV.count!==old.count)throw Error('Adaptive terrain requires the untouched near lattice');
  const baseline=Float32Array.from({length:old.count},(_,i)=>old.getY(i));
- const relief=new AdaptiveRelief({n,split,baseline,canRefine:(i,j)=>i>=2&&j>=2&&i<n-2&&j<n-2&&seed.accepts(i,j),
+ const relief=new AdaptiveRelief({n,split,baseline,preFeathered,canRefine:(i,j)=>i>=2&&j>=2&&i<n-2&&j<n-2&&seed.accepts(i,j),
   survey:(u,v)=>{const y=seed.height(u,v);return y===undefined?undefined:y+GROUND_LIFT;}});
  const pos=new Float32Array(relief.positions.length),uv=new Float32Array(pos.length/3*2);
  // Reproduce the actual old XYZ and UV buffers exactly outside changed triangles.

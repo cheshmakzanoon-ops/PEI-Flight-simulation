@@ -1,4 +1,5 @@
 import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
+import {nativeBankMesh} from './native-bank-mesh.ts';
 import {adaptiveGround} from './adaptive-ground.ts';
 import type {ReliefPacks} from '../sim/relief-pack.ts';
 import type {ReliefSeed} from '../sim/relief-seed.ts';
@@ -515,7 +516,7 @@ export class World {
   if(batches.length)this.bank={material:inletBank,batches,segments,joins:basinBankJoins(segments,outside,this.cover.basin)};
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
-  const g=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
+  let g:THREE.BufferGeometry=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
   const pos=g.getAttribute('position'),uv=g.getAttribute('uv');
   for(let i=0;i<pos.count;i++){
     const x=pos.getX(i)+x0+w/2,z=pos.getZ(i)+z0+d/2;
@@ -526,7 +527,9 @@ export class World {
   const localBank=this.bankGround?.grid;
   const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&meets(g))??
    (localBank&&n===112&&meets(localBank)?localBank:undefined);
-  if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
+  if(site&&this.bankGround&&site===localBank){
+   const original=g;g=nativeBankMesh(g,this.bankGround,this.terrain,x0,z0,w,d);original.dispose();
+  }else if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
   else if(localBank&&meets(localBank))g.setAttribute('surveyWeight',new THREE.BufferAttribute(new Uint8Array(pos.count),1,true));
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
   m.userData.subdiv=n;

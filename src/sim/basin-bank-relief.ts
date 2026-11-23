@@ -40,6 +40,14 @@ export class NativeBank {
   for(let j=iz;j<=ez;j++)for(let i=ix;i<=ex;i++)if(this.weights[j*g.nx+i])return true;
   return false;
  }
+ acceptsParent(i:number,j:number){
+  const g=this.grid,sub=g.spec.sub;
+  const x=i-g.spec.firstX,z=j-g.spec.firstZ;
+  if(x<0||x>=g.spec.cellsX||z<0||z>=g.spec.cellsZ)return false;
+  for(let b=z*sub;b<=(z+1)*sub;b++)for(let a=x*sub;a<=(x+1)*sub;a++)
+   if(this.weights[b*g.nx+a])return true;
+  return false;
+ }
  height(x:number,z:number,otherwise:number){
   const h=this.authority(x,z);
   if(!h)return otherwise;

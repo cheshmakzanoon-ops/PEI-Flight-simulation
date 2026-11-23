@@ -8,6 +8,8 @@ interface GridSpec{
  canRefine:(col:number,row:number)=>boolean;
  /** Finite terrain height where the source and vetted cover jointly support it. */
  survey:Survey;
+ /** An already-feathered, exactly parent-relative site height field. */
+ preFeathered?:boolean;
 }
 /**
  * Refine complete original cells rather than overlay a second mesh. At a
@@ -24,8 +26,8 @@ export class AdaptiveRelief{
  readonly indices:Uint32Array;
  readonly originalVertices:number;
  readonly refinedCells:number;
- constructor({n,split,baseline,canRefine,survey}:GridSpec){
-  if(!Number.isInteger(n)||n<2||n>112||!Number.isInteger(split)||split<2||split>8||
+ constructor({n,split,baseline,canRefine,survey,preFeathered=false}:GridSpec){
+  if(!Number.isInteger(n)||n<2||n>112||!Number.isInteger(split)||split<2||split>14||(!preFeathered&&split>8)||
      baseline.length!==(n+1)**2||baseline.some(h=>!Number.isFinite(h)))throw Error('Invalid adaptive relief lattice');
   this.n=n;this.split=split;
   const selected=this.selected=new Uint8Array(n*n);
@@ -35,6 +37,7 @@ export class AdaptiveRelief{
   let cells=0;
   // Keep the outer ring immutable, including existing coarse/fine sewn edges.
   for(let j=1;j<n-1;j++)for(let i=1;i<n-1;i++)if(canRefine(i,j)){selected[j*n+i]=1;cells++;}
+  if(preFeathered&&split>8&&cells>196)throw Error('Dense high-subdivision relief extent is not allowed');
   this.refinedCells=cells;
   const coarse=this.originalVertices=parent*parent;
   let free=coarse,extraFaces=0,centres=0;
@@ -97,7 +100,8 @@ export class AdaptiveRelief{
     const old=onX?(a===0?mix(nw,sw,z):mix(ne,se,z)):
      onZ?(b===0?mix(nw,ne,x):mix(sw,se,x)):facet(x,z,nw,ne,sw,se);
     let y=old;
-    if(measured!==undefined&&Number.isFinite(measured)){
+    if(preFeathered&&measured!==undefined&&Number.isFinite(measured))y=measured;
+    else if(measured!==undefined&&Number.isFinite(measured)){
      // Blend correction on the measured side over half of an inherited
      // cell. The same canonical distance at a shared node keeps both
      // copies identical and leaves all protected sides on the old grade.
