@@ -1,0 +1,89 @@
+{
+  "viewport": [
+    900,
+    564
+  ],
+  "renderer": "Chromium SwiftShader; no device performance claim",
+  "beforeAfter": [
+    {
+      "location": "queens-harbour",
+      "fixedCameraY": 28.8,
+      "readyImageTileCount": 16,
+      "matchingTileIDs": [
+        "14-16",
+        "14-17",
+        "14-18",
+        "15-15",
+        "15-16",
+        "15-17",
+        "15-18",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-17"
+      ],
+      "centerDiagnosticPureSky": [
+        8157,
+        0
+      ],
+      "fullFrameRemovedPureSky": 31563,
+      "fullFrameAddedPureSky": 0,
+      "addedBelowSkylineRow100": 0,
+      "drawCalls": [
+        21,
+        22
+      ],
+      "submittedTriangles": [
+        275276,
+        276186
+      ]
+    },
+    {
+      "location": "prince-summerside",
+      "fixedCameraY": 7.3,
+      "readyImageTileCount": 17,
+      "matchingTileIDs": null,
+      "centerDiagnosticPureSky": [
+        2700,
+        0
+      ],
+      "fullFrameRemovedPureSky": 13947,
+      "fullFrameAddedPureSky": 0,
+      "addedBelowSkylineRow100": 0,
+      "drawCalls": [
+        50,
+        56
+      ],
+      "submittedTriangles": [
+        279962,
+        283108
+      ]
+    },
+    {
+      "location": "kings-east-point",
+      "fixedCameraY": 14.5,
+      "readyImageTileCount": 9,
+      "matchingTileIDs": null,
+      "centerDiagnosticPureSky": [
+        2276,
+        0
+      ],
+      "fullFrameRemovedPureSky": 7408,
+      "fullFrameAddedPureSky": 0,
+      "addedBelowSkylineRow100": 0,
+      "drawCalls": [
+        169,
+        172
+      ],
+      "submittedTriangles": [
+        245868,
+        246132
+      ]
+    }
+  ]
+}

@@ -1,8 +1,9 @@
+import {strictArc} from './strict-shore-arc.ts';
 import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
 import type { Terrain } from './terrain.ts';
 
-export interface ShoreSegment { ax:number; az:number; bx:number; bz:number }
+export interface ShoreSegment { ax:number; az:number; bx:number; bz:number; seatedLegacyArc?:ShoreSegment; seatJoin?:readonly [boolean,boolean] }
 
 function contourCell(result:ShoreSegment[],x:number,z:number,stepX:number,stepZ:number,a:number,b:number,c:number,d:number){
  const mask=(a>=0?1:0)|(b>=0?2:0)|(c>=0?4:0)|(d>=0?8:0);
@@ -62,7 +63,9 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
 }
 
 /** March the same pixel-centred, signed-distance field the land and water shaders sample. */
-export function coastSegments(cover: Cover,terrain: Terrain): ShoreSegment[] {
+export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number)=>boolean;
+export const LEGACY_SHORE_MIN_CHORD_M=1.40;
+export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreSelection): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
  const stepX=(terrain.right-terrain.left)/w,stepZ=(terrain.bottom-terrain.top)/h,locally=cover.waterInsets.map(inset=>harbourSections(cover,terrain,inset));
  const inFine=(i:number,j:number)=>locally.some(fine=>{
@@ -83,7 +86,20 @@ export function coastSegments(cover: Cover,terrain: Terrain): ShoreSegment[] {
   const a=bytes[n]-128,b=bytes[n+2]-128,c=bytes[n+2*w+2]-128,d=bytes[n+2*w]-128;
   if((a>=0)===(b>=0)&&(b>=0)===(c>=0)&&(c>=0)===(d>=0))continue;
   if(inFine(i,j)||exteriorReview.has(j*w+i))continue;
-  contourCell(result,terrain.left+(i+.5)*stepX,terrain.top+(j+.5)*stepZ,stepX,stepZ,a,b,c,d);
+  const x=terrain.left+(i+.5)*stepX,z=terrain.top+(j+.5)*stepZ;
+  if(refine&&refine(x,z,x+stepX,z+stepZ,i,j)){
+   const arc=strictArc([a,b,c,d],stepX,stepZ,.047,96,LEGACY_SHORE_MIN_CHORD_M);
+   if(arc.mode==='exact'&&arc.points.length>2){
+    const a=arc.points[0],d=arc.points.at(-1)!;
+    const original={ax:x+a[0]*stepX,az:z+a[1]*stepZ,bx:x+d[0]*stepX,bz:z+d[1]*stepZ};
+    for(let k=1;k<arc.points.length;k++){
+     const p=arc.points[k-1],q=arc.points[k];
+     result.push({ax:x+p[0]*stepX,az:z+p[1]*stepZ,bx:x+q[0]*stepX,bz:z+q[1]*stepZ,seatedLegacyArc:original});
+    }
+    continue;
+   }
+  }
+  contourCell(result,x,z,stepX,stepZ,a,b,c,d);
  }
  for(const fine of locally){
   const {cols,rows,div,fields,blocks,x,z,dx,dz,nx}=fine;

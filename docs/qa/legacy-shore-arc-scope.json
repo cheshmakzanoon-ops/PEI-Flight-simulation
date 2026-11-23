@@ -1,0 +1,151 @@
+{
+  "engineWorldSHA256": "d94a1b1e3f247fd563c03619a784aea7fe37f80fcc206c48f9e66231097d891b",
+  "engineCurtainsSHA256": "e94dd374c5dbe6172e953faf08291b6dc29405b1add96429065054a85f48c299",
+  "scenarios": {
+    "no-surveys": {
+      "oldQuads": 48871,
+      "candidateQuads": 48871,
+      "different": 0,
+      "missing": 0,
+      "extras": 0,
+      "basin": {
+        "segmentCount": 34,
+        "oldJoins": 4,
+        "sameArcs": true,
+        "sameJoins": true,
+        "sameActualCloseCurtain": true,
+        "meshSHA": "b2d8917534618d0948e7d82ac0d0ce64640ccf699d6c4d2a6d905a1b58590c41"
+      },
+      "montagueArcsSame": true,
+      "overlaps": {
+        "protectedSurvey": 0,
+        "basin": 0,
+        "insets": 0
+      },
+      "nCurves": 12033,
+      "nJoins": 1197,
+      "chunks": 196
+    },
+    "stock": {
+      "oldQuads": 49486,
+      "candidateQuads": 49486,
+      "different": 0,
+      "missing": 0,
+      "extras": 0,
+      "basin": {
+        "segmentCount": 34,
+        "oldJoins": 4,
+        "sameArcs": true,
+        "sameJoins": true,
+        "sameActualCloseCurtain": true,
+        "meshSHA": "b2d8917534618d0948e7d82ac0d0ce64640ccf699d6c4d2a6d905a1b58590c41"
+      },
+      "montagueArcsSame": true,
+      "overlaps": {
+        "protectedSurvey": 0,
+        "basin": 0,
+        "insets": 0
+      },
+      "nCurves": 12033,
+      "nJoins": 1197,
+      "chunks": 196
+    },
+    "all-insets": {
+      "oldQuads": 51853,
+      "candidateQuads": 51853,
+      "different": 0,
+      "missing": 0,
+      "extras": 0,
+      "basin": {
+        "segmentCount": 1864,
+        "oldJoins": 4,
+        "sameArcs": true,
+        "sameJoins": true,
+        "sameActualCloseCurtain": true,
+        "meshSHA": "afd9f28ad69f23ffb1e427bcb6f584dac87c647bf7a649f56e8a6846436fe616"
+      },
+      "montagueArcsSame": true,
+      "overlaps": {
+        "protectedSurvey": 0,
+        "basin": 0,
+        "insets": 0
+      },
+      "nCurves": 11901,
+      "nJoins": 1190,
+      "chunks": 195
+    }
+  },
+  "fallbackOwnerSpheres": {
+    "n": 196,
+    "notFound": 0,
+    "centerErr": 0,
+    "radiusErr": 0
+  },
+  "lOD": [
+    {
+      "grid": 112,
+      "fullArcs": {
+        "count": 90933,
+        "failures": 0,
+        "minMargin": 0.06223002240206821
+      },
+      "shoulderComparedEvents": 114817,
+      "previouslyCoveredVerticalSpanLost": 0
+    },
+    {
+      "grid": 56,
+      "fullArcs": {
+        "count": 90096,
+        "failures": 0,
+        "minMargin": 0.07361440224818772
+      },
+      "shoulderComparedEvents": 113682,
+      "previouslyCoveredVerticalSpanLost": 0
+    },
+    {
+      "grid": 8,
+      "fullArcs": {
+        "count": 89397,
+        "failures": 0,
+        "minMargin": 0.09303478195051262
+      },
+      "shoulderComparedEvents": 112628,
+      "previouslyCoveredVerticalSpanLost": 0
+    }
+  ],
+  "opticalControls": {
+    "eastPoint": {
+      "rgbExact": 507600,
+      "viewport": [
+        900,
+        564
+      ],
+      "sameSurveyTriangles": 78866
+    },
+    "westPoint": {
+      "rgbExact": 507595,
+      "maxRgbChange": 6,
+      "changedRegion": "five distant horizon pixels",
+      "viewport": [
+        900,
+        564
+      ],
+      "sameSurveyTriangles": 62318,
+      "exactFrameStage": "earlier C image; final E excludes the same pinned owner"
+    }
+  },
+  "shoulderEligibility": {
+    "zeroTieKeptStock": 395,
+    "saddleKeptStock": 122,
+    "strongestPrinceCellRetained": [
+      1023,
+      1505
+    ],
+    "watchedSaddleCellRetainedExactly": [
+      1023,
+      1508
+    ],
+    "confirmedPreviouslyExposedMultisamplesNowClosed": 110,
+    "earlierGeometricAuditAppliesBySubset": "All remaining candidate shoulders retain identical analytic support and positions; excluded shoulders use the exact stock geometry."
+  }
+}

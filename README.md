@@ -27,7 +27,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 **A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md).
 
-**Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Each preview works independently and leaves the default scenery unchanged.
+**Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Try `?legacyShoreArcs` for the [three-county coastline repair](docs/qa/legacy-shore-arcs.md). These previews leave the default scenery unchanged.
 
 ## Download the web build
 

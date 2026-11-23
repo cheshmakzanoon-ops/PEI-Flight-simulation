@@ -7,6 +7,9 @@ import type {ShoreSegment} from '../sim/shoreline.ts';
 /** A local rendering repair to the pinned simulation contour, not a new shore survey. */
 const a=project(-62.1122,46.3815), b=project(-62.1015,46.3764);
 export const BANK_TILE='29-13';
+/** Preserve the standalone renderer and its join collar without a downloaded inlet. */
+export const intersectsBasinLegacyBank=(x0:number,z0:number,x1:number,z1:number)=>
+ x1>=a.x-1.5&&x0<=b.x+1.5&&z1>=a.z-1.5&&z0<=b.z+1.5;
 export const inBasinBank=(s:ShoreSegment,extra?:WaterInset)=>{
  const inside=(x:number,z:number)=>x>a.x&&x<b.x&&z>a.z&&z<b.z;
  return (inside(s.ax,s.az)&&inside(s.bx,s.bz))||!!(extra&&extra.intersects(s.ax,s.az,s.ax,s.az)&&extra.intersects(s.bx,s.bz,s.bx,s.bz));

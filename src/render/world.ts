@@ -12,6 +12,8 @@ import {loadInlandSurveys} from '../sim/inland-terrain.ts';
 import {INLAND_TERRAIN_SHA,INLAND_COVER_SHA} from '../sim/inland-surveys.generated.ts';
 import {loadMontagueFoundation,supportedMontagueFoundation} from '../sim/montague-foundation.ts';
 import {montagueBankGLSL} from './montague-bank.ts';
+import {COASTAL_SPECS} from '../sim/coastal-surveys.generated.ts';
+import {LegacyShoreCurtains,appendStockCurtain,stockShoreKey,stockShoreSphere} from './legacy-shore-curtains.ts';
 import {montagueShoreReview,seatedMontagueCurtain,type ReviewBounds} from './montague-shore.ts';
 import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
@@ -22,7 +24,7 @@ import {loadBasinChannel,loadHarbourCover,type WaterInset} from '../sim/harbour-
 import {basinChannelGLSL,harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
 import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
-import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank} from './basin-channel-bank.ts';
+import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank,intersectsBasinLegacyBank} from './basin-channel-bank.ts';
 import type {ShoreSegment} from '../sim/shoreline.ts';
 import {basinSandGLSL,basinSandIntersects,loadBasinSand,type BasinSand} from './basin-head-sand.ts';
 import { coastSegments } from '../sim/shoreline.ts';
@@ -363,6 +365,8 @@ type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeome
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];
+ private legacyShore?:LegacyShoreCurtains;
+ get legacyShoreState(){return this.legacyShore?.state??null;}
  private montagueReviewShore?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];bounds:ReviewBounds;revision?:string};
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
@@ -381,7 +385,7 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false){
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
@@ -449,7 +453,7 @@ export class World {
    if(basin){
     inletBank=make(cliffFrag(false,true),THREE.DoubleSide);inletBank.uniforms={...uniforms,...basinUniforms};
    }
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank);
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -497,15 +501,58 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
   const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[],reviewed:ShoreSegment[]=[];
   const review=montagueShoreReview(this.cover,this.terrain);
   const cuts=new Map<string,[number,number][]>();
   const batches:NonNullable<World['bank']>['batches']=[];
   const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
-  for(const segment of coastSegments(this.cover,t)){
+  const legacy:ShoreSegment[]=[],legacySeen=new Set<ShoreSegment>(),legacyStock=new Map<string,number[]>();
+  const legacyCulling=new Map<string,THREE.Sphere>();
+  const terrainTx=(t.right-t.left)/WORLD_COLS,terrainTz=(t.bottom-t.top)/WORLD_ROWS;
+  const protectedOwners=[...COASTAL_SPECS,...this.terrain.coastalGrids.map(g=>g.spec)];
+  const forbidden=(x0:number,z0:number,x1:number,z1:number)=>intersectsBasinLegacyBank(x0,z0,x1,z1)||this.cover.waterInsets.some(i=>i.intersects(x0,z0,x1,z1))
+   ||protectedOwners.some(g=>{
+    const l=t.left+g.tileX*terrainTx,n=t.top+g.tileZ*terrainTz;
+    return x1>=l&&x0<=l+terrainTx&&z1>=n&&z0<=n+terrainTz;
+   });
+  // Shoulders are a height-only handoff for the same supported topology.
+  // Do not recruit zero-tie or saddle contours through a shared endpoint:
+  // the old saddle wall can visually cover a separate neighboring opening.
+  const supportedShoulder=(s:ShoreSegment)=>{
+   const {width:w,height:h,bytes}=this.cover;
+   const x=((s.ax+s.bx)*.5-t.left)/(t.right-t.left)*w-.5;
+   const z=((s.az+s.bz)*.5-t.top)/(t.bottom-t.top)*h-.5;
+   if(Math.abs(x-Math.round(x))<1e-7||Math.abs(z-Math.round(z))<1e-7)return false;
+   const i=Math.floor(x),j=Math.floor(z);
+   if(i<0||j<0||i>=w-1||j>=h-1)return false;
+   const k=(j*w+i)*2+1, values=[bytes[k]-128,bytes[k+2]-128,bytes[k+2*w+2]-128,bytes[k+2*w]-128];
+   if(values.includes(0))return false;
+   const mask=values.reduce((m,v,j)=>m|(v>0?1<<j:0),0);
+   return mask!==5&&mask!==10&&mask!==0&&mask!==15;
+  };
+  const cfg=coastSegments(this.cover,t,legacyShore?(x0,z0,x1,z1)=>!forbidden(x0,z0,x1,z1):undefined);
+  const joins=new Set<string>(),keyOf=(x:number,z:number)=>x.toFixed(4)+','+z.toFixed(4);
+  if(legacyShore)for(const s of cfg){
+   const a=s.seatedLegacyArc;if(!a)continue;
+   joins.add(keyOf(a.ax,a.az));joins.add(keyOf(a.bx,a.bz));
+  }
+  for(let segment of cfg){
    if(review?.includes(segment)){reviewed.push(segment);continue;}
+   if(joins.size&&!segment.seatedLegacyArc){
+    const {ax,az,bx,bz}=segment,head=joins.has(keyOf(ax,az)),tail=joins.has(keyOf(bx,bz));
+    if((head||tail)&&supportedShoulder(segment)&&!forbidden(Math.min(ax,bx),Math.min(az,bz),Math.max(ax,bx),Math.max(az,bz)))
+     segment={...segment,seatedLegacyArc:segment,seatJoin:[head,tail]};
+   }
+   if(segment.seatedLegacyArc){
+    const stock=segment.seatedLegacyArc;
+    if(!legacySeen.has(stock)){
+     const key=stockShoreKey(stock),v=legacyStock.get(key)??[];
+     appendStockCurtain(stock,t,v);legacyStock.set(key,v);legacySeen.add(stock);
+    }
+    legacy.push(segment);continue;
+   }
    const {ax,az,bx,bz}=segment;
    const bank=showBank&&inBasinBank(segment,this.cover.basin);if(bank)segments.push(segment);else if(showBank)outside.push(segment);
    const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
@@ -534,9 +581,12 @@ export class World {
    g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(v.length/3*2),2));
    g.computeBoundingSphere();return g;
   };
+  for(const [key,verts] of legacyStock)
+   legacyCulling.set(key,stockShoreSphere(groups.get(key)??[],verts));
   for(const [key,vertices] of groups){
    const g=shore(vertices),m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
-   m.name='shore-to-sea surface';this.shoreFaces.push(m);this.scene.add(m);
+   m.name='shore-to-sea surface';if(legacyCulling.has(key))m.userData.stockCull=legacyCulling.get(key);
+   this.shoreFaces.push(m);this.scene.add(m);
    const remove=cuts.get(key);
    if(remove){
     const trimmed:number[]=[];let cursor=0;
@@ -549,6 +599,7 @@ export class World {
    }
   }
   if(batches.length)this.bank={material:inletBank,batches,segments,joins:basinBankJoins(segments,outside,this.cover.basin)};
+  if(legacy.length)this.legacyShore=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,legacy,legacyCulling);
   if(review&&reviewed.length){
    const geom=new THREE.BufferGeometry(),mesh=new THREE.Mesh(geom,material);
    mesh.name='reviewed Montague shoreline support';mesh.visible=false;
@@ -738,7 +789,7 @@ export class World {
   // radius it has negligible screen height, so do not send those meshes to GL.
   for(const face of this.shoreFaces){
    if(face===this.montagueReviewShore?.mesh)continue;
-   const b=face.geometry.boundingSphere!;
+   const b=(face.userData.stockCull as THREE.Sphere|undefined)??face.geometry.boundingSphere!;
    face.visible=Math.hypot(b.center.x-pos.x,b.center.z-pos.z)<17000+b.radius;
   }
   for(const tile of this.tiles){
@@ -789,6 +840,7 @@ export class World {
    for(const b of bank.batches)b.mesh.geometry=near?b.near:b.full;
   }
   this.refreshMontagueReviewShore();
+  this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
   const now=performance.now();
   const near=this.tiles.filter(q=>q.status==='idle'&&(q.retryAt??0)<=now&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)

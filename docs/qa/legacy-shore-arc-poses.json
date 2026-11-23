@@ -1,0 +1,101 @@
+[
+  {
+    "region": "queens-harbour",
+    "anchor": {
+      "lon": -63.181401329040526,
+      "lat": 46.187356221719455,
+      "errorM": 8.393574895602981,
+      "cell": [
+        2077,
+        2139
+      ],
+      "raw4": [
+        -4,
+        -4,
+        -4,
+        12
+      ],
+      "metresFromNamedApproach": 6419.921484547916
+    },
+    "pose": {
+      "site": "queens-harbour",
+      "lon": -63.181401329040526,
+      "lat": 46.187356221719455,
+      "h": 6.569182453106606,
+      "east": 0.3408740736570573,
+      "south": -0.9401089649122825,
+      "nearDist": 28,
+      "nearAgl": 28.8,
+      "fixedBaseH": 0,
+      "fixedEyeY": 28.8,
+      "dist": 28,
+      "agl": 28.8
+    }
+  },
+  {
+    "region": "prince-summerside",
+    "anchor": {
+      "lon": -63.834997018667366,
+      "lat": 46.457719167078594,
+      "errorM": 7.540558863723582,
+      "cell": [
+        1023,
+        1505
+      ],
+      "raw4": [
+        -4,
+        -4,
+        -3,
+        10
+      ],
+      "metresFromNamedApproach": 7810.536533945315
+    },
+    "pose": {
+      "site": "prince-summerside",
+      "lon": -63.834997018667366,
+      "lat": 46.457719167078594,
+      "h": 1.1310415722775133,
+      "east": 0.32636743979231925,
+      "south": -0.9452429815890764,
+      "nearDist": 28,
+      "nearAgl": 7.3,
+      "fixedBaseH": 0,
+      "fixedEyeY": 7.3,
+      "dist": 28,
+      "agl": 7.3
+    }
+  },
+  {
+    "region": "kings-east-point",
+    "anchor": {
+      "lon": -62.028551570347375,
+      "lat": 46.418836437908496,
+      "errorM": 3.3353196006759416,
+      "cell": [
+        3936,
+        1596
+      ],
+      "raw4": [
+        10,
+        10,
+        -10,
+        4
+      ],
+      "metresFromNamedApproach": 4846.035917851882
+    },
+    "pose": {
+      "site": "kings-east-point",
+      "lon": -62.028551570347375,
+      "lat": 46.418836437908496,
+      "h": 1.5990897735009464,
+      "east": 0.8594070429877344,
+      "south": 0.5112920246425505,
+      "nearDist": 28,
+      "nearAgl": 14.5,
+      "fixedBaseH": 0,
+      "fixedEyeY": 14.5,
+      "dist": 28,
+      "agl": 14.5
+    }
+  }
+]
