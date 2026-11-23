@@ -1,3 +1,7 @@
+const TRANSIENT_HTTP = new Set([408, 500, 502, 503, 504]);
+const RETRY_DELAYS_MS = [180, 480] as const;
+class InterruptedPackTransfer extends Error {}
+
 /**
  * Read independent chunks from an immutable, version-matched binary pack.
  * Range-capable hosts never have to transfer the complete file. A simple
@@ -29,9 +33,30 @@ export class PackedBytes {
   try{return await probe;}finally{this.probe=undefined;}
  }
  private async fetchRange(offset:number,size:number){
+  for(let attempt=0;;attempt++){
+   // Another range can have completed a full-pack fallback while this read waited.
+   if(this.full)return this.full.slice(offset,offset+size);
+   try{return await this.transfer(offset,size);}
+   catch(error){
+    if(!(error instanceof InterruptedPackTransfer)||attempt>=RETRY_DELAYS_MS.length)throw error;
+    await new Promise(resolve=>setTimeout(resolve,RETRY_DELAYS_MS[attempt]));
+   }
+  }
+ }
+ private async transfer(offset:number,size:number){
   const end=offset+size-1,range=offset+'-'+end;
-  const response=await this.request(this.url,{headers:{Range:'bytes='+range}});
-  if(!response.ok)throw Error('Pack transfer failed: '+response.status);
+  let response:Response;
+  try{response=await this.request(this.url,{headers:{Range:'bytes='+range}});}
+  catch(error){
+   if(error instanceof TypeError)throw new InterruptedPackTransfer('Pack connection failed',{cause:error});
+   throw error;
+  }
+  if(!response.ok){
+   void response.body?.cancel().catch(()=>{});
+   const message='Pack transfer failed: '+response.status;
+   if(TRANSIENT_HTTP.has(response.status))throw new InterruptedPackTransfer(message);
+   throw Error(message);
+  }
   // Check headers before reading the body of a malformed partial response.
   if(response.status===206&&response.headers.get('content-range')!=='bytes '+range+'/'+this.total){
    void response.body?.cancel().catch(()=>{});
@@ -41,7 +66,12 @@ export class PackedBytes {
    void response.body?.cancel().catch(()=>{});
    throw Error('Unsupported pack response: '+response.status);
   }
-  const bytes=await response.arrayBuffer();
+  let bytes:ArrayBuffer;
+  try{bytes=await response.arrayBuffer();}
+  catch(error){
+   if(error instanceof TypeError)throw new InterruptedPackTransfer('Pack response interrupted',{cause:error});
+   throw error;
+  }
   if(response.status===200&&bytes.byteLength===this.total){
    this.full=bytes;
    return bytes.slice(offset,offset+size);

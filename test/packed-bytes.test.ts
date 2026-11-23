@@ -42,3 +42,32 @@ test('rejects incomplete, mislabeled and out-of-bounds data, but a failed probe 
  for(const [start,length] of [[100,2],[-1,1],[1,0],[.5,1],[0,Infinity]])await assert.rejects(pack.read(start,length),/bounds/);
  assert.deepEqual(list(await pack.read(3,2)),[3,4]);assert.equal(n,4);
 });
+test('a transient failure holds the range probe until one whole-pack fallback succeeds',async()=>{
+ const seen:string[]=[];
+ const pack=new PackedBytes('/atlas',101,async(_url,init)=>{
+  seen.push(range(init)!);
+  return seen.length===1?new Response('temporarily unavailable',{status:503}):new Response(expected);
+ });
+ const result=await Promise.all([pack.read(0,2),pack.read(80,2),pack.read(100,1)]);
+ assert.deepEqual(result.map(list),[[0,1],[80,81],[100]]);
+ assert.deepEqual(seen,['bytes=0-1','bytes=0-1']);
+});
+test('retries interrupted bodies and bounds persistent unavailability',async()=>{
+ let attempts=0;
+ const pack=new PackedBytes('/atlas',101,async()=>{
+  if(++attempts===1) return new Response(new ReadableStream({start(c){c.error(new TypeError('connection lost'));}}));
+  return new Response(null,{status:503});
+ });
+ await assert.rejects(pack.read(3,2),/503/);
+ assert.equal(attempts,3);
+});
+test('permanent failures and throttling do not amplify requests',async()=>{
+ for(const status of [403,404,416,429]){
+  let attempts=0;
+  const pack=new PackedBytes('/atlas',101,async()=>{
+   attempts++;return new Response(null,{status});
+  });
+  await assert.rejects(pack.read(3,2),new RegExp(String(status)));
+  assert.equal(attempts,1);
+ }
+});

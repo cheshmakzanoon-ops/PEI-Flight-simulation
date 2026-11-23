@@ -27,7 +27,7 @@ def run(args):
     pack = (atlas / "tiles.pack").read_bytes()
     tiles = json.loads((atlas / "index.json").read_text())["tiles"]
     valid = {(t["offset"],t["offset"]+t["bytes"]-1) for t in tiles}
-    requests, lock = [], Lock()
+    requests, failed_once, lock = [], [], Lock()
     def snapshot():
         with lock:
             return list(requests)
@@ -45,6 +45,16 @@ def run(args):
                 self.send_error(416,"Expected one exact indexed member")
                 return
             lo, hi = map(int, match.groups())
+            with lock:
+                fail = args.first_pack_503 and not failed_once
+                if fail:
+                    failed_once.append([lo, hi])
+            if fail:
+                self.send_response(503)
+                self.send_header("Content-Length", "0")
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                return
             partial = args.mode == "206"
             status = 206 if partial else 200
             body = memoryview(pack)[lo:hi+1] if partial else memoryview(pack)
@@ -73,8 +83,21 @@ def run(args):
                 page.set_default_timeout(45000)
                 errors = []
                 page.on("pageerror",lambda err:errors.append(str(err)))
-                page.on("console",lambda m:errors.append(m.text) if m.type=="error" or "Building tile unavailable" in m.text else None)
-                page.on("response",lambda r:errors.append(f"{r.status} {r.url}") if r.status>=400 else None)
+                def console(m):
+                    if args.first_pack_503 and "503" in m.text and m.text.startswith("Failed to load resource:") and urlsplit(m.location.get("url", "")).path=="/world/buildings/tiles.pack":
+                        return
+                    if m.type=="error" or "Building tile unavailable" in m.text:
+                        errors.append(m.text)
+                page.on("console",console)
+                expected_errors = []
+                def response(r):
+                    if r.status < 400:
+                        return
+                    if args.first_pack_503 and r.status==503 and urlsplit(r.url).path=="/world/buildings/tiles.pack":
+                        expected_errors.append(r.status)
+                    else:
+                        errors.append(f"{r.status} {r.url}")
+                page.on("response",response)
                 page.goto(f"{url}/?diagnostics",wait_until="domcontentloaded")
                 rows=[]
                 for site,label in ROUTES:
@@ -115,11 +138,15 @@ def run(args):
                     raise AssertionError("Range mode did not demonstrate selective transfer.")
                 if errors or b["buildingTiles"]["failed"]:
                     raise RuntimeError((errors,b))
+                if args.first_pack_503 and (len(expected_errors)!=1 or not any(
+                    [r["first"],r["last"]]==failed_once[0] for r in records
+                )):
+                    raise AssertionError("The deliberately failed indexed read did not recover.")
                 args.out.parent.mkdir(parents=True,exist_ok=True)
                 args.out.write_text(json.dumps({"mode":args.mode,"fullPackBytes":len(pack),
                     "bytesForFourDispatchesAndFlightStart":total,"requestCount":len(records),
                     "states":rows,"flightMovementM":round(play_distance,2),"errors":errors,
-                    "requests":records},indent=2)+"\n")
+                    "deliberate503s":len(expected_errors),"requests":records},indent=2)+"\n")
                 print("PASS",args.mode,len(records),total,flush=True)
                 browser.close()
         finally:
@@ -132,4 +159,5 @@ if __name__ == "__main__":
     p.add_argument("--mode",choices=("200","206"),required=True)
     p.add_argument("--chromium",required=True)
     p.add_argument("--out",required=True,type=Path)
+    p.add_argument("--first-pack-503",action="store_true")
     run(p.parse_args())

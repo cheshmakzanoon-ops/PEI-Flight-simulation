@@ -73,6 +73,12 @@ not total download size, frame rate, or a player throughput benchmark.
 Repeat the browser test locally with `npm run build`, Python Playwright and
 Chromium. Run `tools/qa/building-range-gate.py` for both `--mode 200` and
 `--mode 206`; see its command line help for paths.
+Add `--first-pack-503` to deliberately interrupt the first tile request.
+The client keeps concurrent waiters behind the initial probe while it retries.
+Transient connections and selected temporary server errors get at most two
+retries; missing files, rate limits, and invalid ranges or lengths fail without
+retry. Both host modes recovered every requested building mesh in browser testing;
+the range-less server still transferred the complete pack only once.
 
 ### Survey-supported roofs
 
