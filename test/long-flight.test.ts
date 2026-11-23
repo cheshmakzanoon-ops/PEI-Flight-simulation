@@ -51,3 +51,26 @@ test('short final, flare and braking complete on the measured Charlottetown runw
   assert.ok(f.speed<.2);
   assert.equal(runwayAt(f.x,f.z)?.id,'CYYG03');
 });
+
+test('CYYG 10/28 uses the post-expansion strip and supports landing beyond the former 28 end',()=>{
+  const r=RUNWAYS.find(r=>r.id==='CYYG10')!;
+  assert.ok(Math.abs(r.length-2133.60)<1e-6 && Math.abs(r.width-45.72)<1e-6);
+  assert.ok(r.to[0]>-63.102 && r.from[0]<-63.128);
+  for(const s of [1,150,1700,2000,2132]){
+    const x=r.p.x+s*r.dx,z=r.p.z+s*r.dz;
+    assert.equal(runwayAt(x,z)?.id,r.id);
+    assert.notEqual(runwayAt(x+r.dz*24,z-r.dx*24)?.id,r.id);
+  }
+  const f=spawn(SITES.find(s=>s.id==='cyyg')!,surface);
+  const s=1970;
+  f.x=r.p.x+r.dx*s; f.z=r.p.z+r.dz*s;
+  f.y=surface(f.x,f.z).height+5.2; f.speed=37; f.throttle=.13;
+  f.status='flying'; f.heading=r.heading+Math.PI; f.gamma=-.045; f.pitch=.105;
+  for(let i=0;i<900&&f.status==='flying';i++)step(f,{...neutral,pitch:.25},surface);
+  assert.equal(f.status,'landed');
+  const station=(f.x-r.p.x)*r.dx+(f.z-r.p.z)*r.dz;
+  assert.ok(station>1535 && station<1970,station+'');
+  for(let i=0;i<2000&&f.speed>.2;i++)step(f,{...neutral,power:-1,brake:true},surface);
+  assert.equal(f.status,'landed');
+  assert.ok(f.speed<.2);
+});

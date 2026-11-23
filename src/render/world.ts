@@ -13,7 +13,7 @@ import { shoreFoamGLSL } from './shore-foam.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
 import { runwayAtlas } from './runway-paint.ts';
-import { RUNWAYS } from '../sim/places.ts';
+import { RUNWAYS,runwayAt } from '../sim/places.ts';
 import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
 const vertex=`
@@ -349,7 +349,7 @@ export class World {
  }
  surface(x:number,z:number):Surface{
   const land=this.cover.distance(this.terrain,x,z)>=0;
-  return {height:this.groundHeight(x,z,land),land,runway:RUNWAYS.some(r=>{const dx=x-r.p.x,dz=z-r.p.z,a=dx*r.dx+dz*r.dz;return a>=0&&a<=r.length&&Math.abs(dx*r.dz-dz*r.dx)<r.width/2;})};
+  return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
   this.sky.position.copy(pos);this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;

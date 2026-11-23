@@ -1,4 +1,5 @@
-import { project } from './geo.ts';
+import { geographic, project } from './geo.ts';
+import {CYYG_10_MAP_LINE,CYYG_10_SIZE} from './cyyg-runway-reference.ts';
 export type Site = {id:string;name:string;region:string;lon:number;lat:number;heading:number;height:number;note:string;runway?:string};
 export const SITES: Site[] = [
  {id:'cavendish',name:'Cavendish coast',region:'Queens County',lon:-63.423,lat:46.487,heading:101,height:440,note:'Follow sandstone headlands and the beach east toward North Rustico.'},
@@ -15,10 +16,18 @@ export const SITES: Site[] = [
  {id:'east-light',name:'East Point · lighthouse pass',region:'Kings County',lon:-61.9679,lat:46.4507,heading:292,height:58,note:'Approach the red-roofed fog house and white octagonal light from offshore.'},
  {id:'west-light',name:'West Point · lighthouse pass',region:'Prince County',lon:-64.3910,lat:46.6194,heading:61,height:58,note:'Follow the striped light onto the Cedar Dunes shoreline at the western entrance to the strait.'}
 ];
-/** Published threshold locations and widths from OurAirports, https://ourairports.com/data/ (public domain; 2026-11-22 snapshot). */
+function cyyg10SimulatorEnds(){
+ const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);
+ const dx=q.x-p.x,dz=q.z-p.z,k=CYYG_10_SIZE.length/(2*Math.hypot(dx,dz));
+ const x=(p.x+q.x)/2,z=(p.z+q.z)/2;
+ const a=geographic(x-dx*k,z-dz*k),b=geographic(x+dx*k,z+dz*k);
+ return {from:[a.lon,a.lat],to:[b.lon,b.lat]};
+}
+/** 03/21 and 05/23: OurAirports public-domain snapshot. 10/28 is separately
+ * registered to the post-extension map line and the declared pavement length. */
 export const RUNWAYS = [
  {id:'CYYG03',airport:'CYYG',ends:['03','21'],from:[-63.127498626708984,46.279701232910156],to:[-63.12310028076172,46.29859924316406],width:45.72},
- {id:'CYYG10',airport:'CYYG',ends:['10','28'],from:[-63.12900161743164,46.29389953613281],to:[-63.109500885009766,46.29650115966797],width:45.72},
+ {id:'CYYG10',airport:'CYYG',ends:['10','28'],...cyyg10SimulatorEnds(),width:CYYG_10_SIZE.width},
  {id:'CYSU05',airport:'CYSU',ends:['05','23'],from:[-63.8428,46.4314],to:[-63.8242,46.4492],width:60.96}
 ].map(r=>{
  const p=project(r.from[0],r.from[1]),q=project(r.to[0],r.to[1]);
