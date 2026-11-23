@@ -120,7 +120,7 @@ satellite imagery, not street-level photography. Both texture levels use the
   Broad classification informs vegetation placement, not exact tree positions.
 - The photographic sky is [Kloofendal 48d Partly Cloudy (Pure Sky)](https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky)
   by Greg Zaal and Jarod Guest, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-  It's a lighting reference, not satellite weather or a photograph of PEI.
+  It's a lighting reference, not satellite weather or a photograph of PEI. The [background coverage check](qa/sky-coverage.md) verifies its rendering in matched low-flight views.
 
 ### Confederation Bridge
 

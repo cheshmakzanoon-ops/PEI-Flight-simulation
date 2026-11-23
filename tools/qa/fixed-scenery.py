@@ -65,7 +65,7 @@ def stage(repo, root, deps, void_probe):
     text = once(world.read_text(), 'this.t.value=clock;', 'this.t.value=12;')
     if void_probe:
         anchor = 'this.sky.renderOrder=-10;'
-        text = once(text, anchor, 'this.sky.material=new THREE.MeshBasicMaterial({color:0xff00ff,side:THREE.BackSide,toneMapped:false});' + anchor)
+        text = once(text, anchor, '(this.sky.material as THREE.ShaderMaterial).uniforms.skyDiagnostic.value=1.;' + anchor)
     world.write_text(text)
     (root / 'vite.config.ts').write_text("import {defineConfig} from 'vite'; export default defineConfig({base:'./',cacheDir:" + json.dumps(str(root / 'cache')) + '});')
 

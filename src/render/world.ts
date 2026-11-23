@@ -58,10 +58,23 @@ const skyFn=`
   vec3 c=textureGrad(skyMap,suv,du,dv).rgb;
   return mix(vec3(.52,.65,.77),c*.90,smoothstep(-.025,.038,rd.y));
  }`;
-const skyFrag=fp+skyFn+`
+// The sky is an image of a viewing direction, not distant geometry.
+ // A screen surface avoids distant-sphere interpolation and never writes
+ // a land or ocean depth sample.
+const screenSkyV=`
+ uniform mat4 skyInverseProjection,skyEyeToWorld;
+ varying vec3 skyRay;
  void main(){
- #include <logdepthbuf_fragment>
- gl_FragColor=vec4(skyAt(normalize(p-cameraPosition)),1.);`+out;
+  vec4 dir=skyInverseProjection*vec4(position.xy,1.,1.);
+  skyRay=mat3(skyEyeToWorld)*dir.xyz;
+  gl_Position=vec4(position.xy,1.,1.);
+ }`;
+const skyFrag=skyFn+`
+ varying vec3 skyRay;uniform float skyDiagnostic;
+ void main(){
+  if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
+  vec3 c=skyAt(normalize(skyRay));
+  gl_FragColor=vec4(c,1.);`+out;
 const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
@@ -286,7 +299,15 @@ export class World {
    const paint=runwayAtlas();const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
    const uniforms={eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
-   this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
+   const skyInverseProjection={value:new THREE.Matrix4()},skyEyeToWorld={value:new THREE.Matrix4()};
+   const skyMaterial=new THREE.ShaderMaterial({vertexShader:screenSkyV,fragmentShader:skyFrag,
+     uniforms:{skyMap:{value:sky},skyInverseProjection,skyEyeToWorld,skyDiagnostic:{value:0}},
+     depthTest:false,depthWrite:false});
+   this.sky=new THREE.Mesh(new THREE.PlaneGeometry(2,2),skyMaterial);this.sky.renderOrder=-10;
+   this.sky.onBeforeRender=(_renderer,_s,view)=>{
+    skyInverseProjection.value.copy(view.projectionMatrixInverse);skyEyeToWorld.value.copy(view.matrixWorld);
+   };
+   this.sky.frustumCulled=false;scene.add(this.sky);
    const harbour=cover.harbour,harbourUniforms:Record<string,THREE.IUniform>={};
    if(harbour){
     const {width,height,boundsXZ}=harbour.plan;
@@ -408,7 +429,7 @@ export class World {
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
-  this.sky.position.copy(pos);this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
+  this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   if(Math.abs(clock-this.recent)<.25&&this.recent>0)return;
   this.recent=clock;
   // The visible curtain fills close headlands. Beyond the horizon detail load
