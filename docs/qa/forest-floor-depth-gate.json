@@ -1,0 +1,80 @@
+{
+  "queens-understory": {
+    "before": {
+      "calls": 100,
+      "tris": 463456
+    },
+    "after": {
+      "calls": 100,
+      "tris": 463456
+    },
+    "mask": {
+      "calls": 100,
+      "tris": 463456
+    },
+    "gain": 0.3698630136986301,
+    "exact": true,
+    "pixels": {
+      "n": 456192,
+      "change": 304467,
+      "over2": 189928,
+      "max": 26,
+      "outside": 0
+    },
+    "resources": [
+      "duff-1.webp",
+      "duff-2.webp"
+    ]
+  },
+  "prince-needle": {
+    "before": {
+      "calls": 42,
+      "tris": 486716
+    },
+    "after": {
+      "calls": 42,
+      "tris": 486716
+    },
+    "mask": {
+      "calls": 42,
+      "tris": 486716
+    },
+    "gain": 0.1167123287712058,
+    "exact": true,
+    "pixels": {
+      "n": 456192,
+      "change": 188363,
+      "over2": 137104,
+      "max": 23,
+      "outside": 0
+    },
+    "resources": [
+      "duff-1.webp",
+      "duff-2.webp"
+    ]
+  },
+  "queens-high-control": {
+    "before": {
+      "calls": 17,
+      "tris": 305215
+    },
+    "after": {
+      "calls": 17,
+      "tris": 305215
+    },
+    "mask": {
+      "calls": 17,
+      "tris": 305215
+    },
+    "gain": 0,
+    "exact": true,
+    "pixels": {
+      "n": 456192,
+      "change": 0,
+      "over2": 0,
+      "max": 0,
+      "outside": 0
+    },
+    "resources": []
+  }
+}

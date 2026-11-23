@@ -1,0 +1,22 @@
+[
+  {
+    "option": false,
+    "site": "west-light",
+    "movementM": 420.6222116190784,
+    "floor": null,
+    "startY": 57.95457775799572,
+    "afterY": 60.81934223101896,
+    "pauseSucceeded": true,
+    "errors": []
+  },
+  {
+    "option": true,
+    "site": "west-light",
+    "movementM": 421.2167770651026,
+    "floor": "ready",
+    "startY": 57.95335948306696,
+    "afterY": 60.81934223101896,
+    "pauseSucceeded": true,
+    "errors": []
+  }
+]

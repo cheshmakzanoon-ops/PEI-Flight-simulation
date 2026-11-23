@@ -57,3 +57,30 @@ npm run check
 python tools/qa/forest-floor-frames.py --checkout . --deps node_modules \
   --out /tmp/forest-floor-views --chromium /path/to/chromium
 ```
+
+## Connected cover at low altitude
+
+[Compare stock woodland duff with the broader material variation](forest-floor-depth-comparison.webp).
+The optional shader now varies damp litter and moss in metre-scale patches
+before adding the original two close textures. As the finer grain filters
+away, the broader variation preserves some surface contrast instead of
+revealing a flat green carpet. This represents plausible material variation,
+not mapped floor species, water content or forest management.
+
+In matched low scenes with `?forestFloor&woodland3D`, 189,928 Queens and
+137,104 Prince pixels changed by more than two RGB levels, all inside the
+eligible ground or its one-pixel edge. Draws and submitted triangles were
+identical. The 360 m Queens control held all 456,192 pixels and loaded no
+forest-floor textures. There are no new image downloads or geometry.
+See the [depth gate](forest-floor-depth-gate.json) for counts and replay with:
+
+```sh
+python tools/qa/forest-floor-depth.py --checkout . --deps node_modules \
+  --out /tmp/forest-floor-depth --crowns --chromium /path/to/chromium
+```
+
+A separate [compiled West Point departure](forest-floor-depth-flight-gate.json)
+entered the near forest after 421 m of ordinary flight, loaded the material,
+and paused without renderer errors. The default departure also passed and
+did not initialize the floor. Reproduce with `forest-floor-depth-flight.py`
+under `tools/qa`.

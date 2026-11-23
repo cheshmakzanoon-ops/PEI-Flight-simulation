@@ -13,7 +13,7 @@ async function readFloor(base:string,a:typeof FOREST_FLOOR_ASSETS[number]){
  t.colorSpace=THREE.NoColorSpace;t.anisotropy=8;t.needsUpdate=true;return t;
 }
 export class ForestFloor{
- readonly uniforms={forestFloorA:{value:null as THREE.Texture|null},forestFloorB:{value:null as THREE.Texture|null},forestFloorMix:{value:0}};
+ readonly uniforms={forestFloorA:{value:null as THREE.Texture|null},forestFloorB:{value:null as THREE.Texture|null},forestFloorMix:{value:0},forestFloorDepth:{value:1}};
  private readonly base:string;
  private mode:'idle'|'loading'|'ready'|'failed'='idle';
  private since=0;
@@ -38,7 +38,7 @@ export class ForestFloor{
 
 export const forestFloorGLSL=`
  uniform sampler2D forestFloorA,forestFloorB;
- uniform float forestFloorMix;
+ uniform float forestFloorMix,forestFloorDepth;
  uniform vec4 floorTileBounds;
  uniform int floorTileGuard;
  float safeForestTile(vec2 world){
@@ -85,8 +85,26 @@ export const forestFloorGLSL=`
   float footprint=max(length(dX),length(dY));
   if(preserve||forestFloorMix<.001||coast<92.||distanceM>260.||n.y<.68)return;
   float mask=woodlandInterior(cover,uv);
-  float weight=forestFloorMix*mask*safeForestTile(p)*smoothstep(92.,172.,coast)*
-    (1.-smoothstep(52.,260.,distanceM))*(1.-smoothstep(.15,.63,footprint));
+  float scopeWeight=forestFloorMix*mask*safeForestTile(p)*smoothstep(92.,172.,coast);
+  float weight=scopeWeight*(1.-smoothstep(52.,260.,distanceM))*(1.-smoothstep(.15,.63,footprint));
+  // Soft, metre-scale damp litter and moss retain contrast after the
+  // 2 m grain filters out. Not a claim of measured floor composition.
+  float layer=forestFloorDepth*scopeWeight*(1.-smoothstep(71.,260.,distanceM))*(1.-smoothstep(.28,1.13,footprint));
+  if(max(weight,layer)<.002)return;
+  if(layer>.002){
+   vec2 warp=vec2(noise(p*.071),noise(p*.093+vec2(3.1,-42.7)))-.5;
+   vec2 mosaic=p+warp*3.7;
+   float body=noise(mosaic*.224+vec2(31.0,-6.7));
+   float speckle=mix(.5,noise(mosaic*.61+vec2(-4.5,5.9)),1.-smoothstep(.18,.76,footprint));
+   float wet=smoothstep(.22,.77,.75*body+.25*speckle);
+   float clearing=smoothstep(.37,.88,noise(mosaic*.091+vec2(21.1,23.7))-.22*(wet-.47));
+   float Y=dot(col,vec3(.2126,.7152,.0722));
+   vec3 damp=col*vec3(.63,.80,.67);
+   vec3 litter=Y*vec3(1.51,1.08,.63);
+   vec3 moss=Y*vec3(.94,1.35,.63);
+   vec3 content=mix(mix(litter,moss,wet),damp,wet*.57)*(.93+.16*speckle);
+   col=mix(col,content,layer*(.39+.40*clearing));
+  }
   if(weight<.002)return;
   mat2 spin=mat2(.917,.399,-.399,.917);
   // Slow, continuous phase jitter separates the repeating two-metre

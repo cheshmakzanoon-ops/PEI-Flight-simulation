@@ -13,7 +13,7 @@ def stage(repo,root,deps,void):
  p=root/'src/render/forest-floor.ts';s=p.read_text()
  s=fixed.once(s,'readonly uniforms={','readonly uniforms={forestFloorQA:{value:0},')
  s=fixed.once(s,'uniform float forestFloorMix;','uniform float forestFloorMix,forestFloorQA;')
- s=fixed.once(s,'if(weight<.002)return;','if(weight<.002)return; if(forestFloorQA>.5){col=vec3(5.,0.,5.);return;}')
+ s=fixed.once(s,'if(max(weight,layer)<.002)return;','if(max(weight,layer)<.002)return; if(forestFloorQA>.5){col=vec3(5.,0.,5.);return;}')
  p.write_text(s)
  p=root/'src/main.ts';s=p.read_text()
  s=fixed.once(s,'\n  renderer.render(scene,camera);','''
