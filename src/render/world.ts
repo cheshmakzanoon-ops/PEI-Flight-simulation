@@ -3,6 +3,8 @@ import {loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coast
 import {insertCoastalGrid} from './coastal-patch.ts';
 import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
+import {loadHarbourCover} from '../sim/harbour-cover.ts';
+import {harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
@@ -58,7 +60,7 @@ const skyFrag=fp+skyFn+`
  void main(){
  #include <logdepthbuf_fragment>
  gl_FragColor=vec4(skyAt(normalize(p-cameraPosition)),1.);`+out;
-const waterFrag=(lake:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+`
+const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -91,6 +93,7 @@ const waterFrag=(lake:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+`
  float fres=.045+.78*pow(1.-ndv,3.6);
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
+ ${harbour?'shore=harbourDistance(shore,q);':''}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
  // Conservative phase footprint includes the spatial distortion from the
@@ -144,7 +147,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -152,7 +155,9 @@ const landFrag=(east:boolean,bench=false)=>fp+lighthouseGroundGLSL+(east?eastSan
  uniform vec4 airport[3];uniform vec2 stripSize[3];
  void main(){
  #include <logdepthbuf_fragment>
- vec2 cover=texture2D(coverMap,vuv).rg;float coast=(cover.g*255.-128.)*2.;if(coast<0.)discard;
+ vec2 cover=texture2D(coverMap,vuv).rg;float coast=(cover.g*255.-128.)*2.;
+ ${harbour?'coast=harbourDistance(coast,p.xz);':''}
+ if(coast<0.)discard;
  vec2 uv=vec2(vuv.x,1.-vuv.y);
  vec3 col=texture2D(imageMap,uv).rgb;
  if(hasDetail>.5){vec2 q=(vuv-detailBox.xy)*detailBox.zw;col=texture2D(detailMap,vec2(q.x,1.-q.y)).rgb;}
@@ -226,10 +231,10 @@ async function loadElevation(progress:(s:string)=>void){
  return {spec,data};
 }
 async function loadCover(){
- const [cmeta,coverData]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz')]);
+ const [cmeta,coverData,harbour]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz'),loadHarbourCover(base)]);
  if(!cmeta.ok||!coverData.ok)throw Error('The coastline and forest atlas could not be loaded.');
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
- return new Cover(cs.width,cs.height,new Uint8Array(cb));
+ return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined);
 }
 interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
@@ -260,7 +265,17 @@ export class World {
    const uniforms={eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
-   const oceanMaterial=make(waterFrag(!!southLake));
+   const harbour=cover.harbour,harbourUniforms:Record<string,THREE.IUniform>={};
+   if(harbour){
+    const {width,height,boundsXZ}=harbour.plan;
+    const map=new THREE.DataTexture(harbour.bytes,width,height,THREE.RGFormat);
+    map.magFilter=map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
+    harbourUniforms.harbourMask={value:map};
+    harbourUniforms.harbourBounds={value:new THREE.Vector4(...boundsXZ)};
+    harbourUniforms.harbourSize={value:new THREE.Vector2(width,height)};
+   }
+   const oceanMaterial=make(waterFrag(!!southLake,!!harbour));
+   if(harbour)oceanMaterial.uniforms={...uniforms,...harbourUniforms};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
     const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;
@@ -268,7 +283,7 @@ export class World {
     const bytes=new Uint8Array(values.length*2);for(let i=0;i<values.length;i++)bytes[i*2]=values[i];
     const map=new THREE.DataTexture(bytes,plan.width,plan.height,THREE.RGFormat);
     map.magFilter=map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
-    oceanMaterial.uniforms={...uniforms,southLakeMask:{value:map},
+    oceanMaterial.uniforms={...oceanMaterial.uniforms,southLakeMask:{value:map},
       southLakeAABB:{value:new THREE.Vector4(...plan.boundsXZ)},
       southLakeFrame:{value:new THREE.Vector4(...plan.worldAnchorXZ,...plan.rotationCS)},
       southLakeRect:{value:new THREE.Vector4(a,b,1/(c-a),1/(d-b))}};
@@ -287,8 +302,9 @@ export class World {
     const survey=T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
     const rock=i===east?.spec.tileX&&j===east.spec.tileZ;
     const useBench=rock&&!!benchMap;
+    const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...benchUniforms,hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench)});
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);

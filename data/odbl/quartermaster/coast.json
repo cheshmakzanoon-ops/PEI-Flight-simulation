@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "place": "Quartermaster Marina, Charlottetown, Prince Edward Island",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "licenseURL": "https://www.openstreetmap.org/copyright",
+  "sourceWay": "https://www.openstreetmap.org/way/251166158/history",
+  "sourceWayId": "251166158",
+  "sourceWayVersion": "30",
+  "connectedWayId": "1006048216",
+  "connectedWayVersion": "1",
+  "coordinates": "WGS84 longitude/latitude, original way direction",
+  "sourceNodeRangeZeroBasedInclusive": [
+    94,
+    115
+  ],
+  "archivedExtractSHA256": "d1bcbc4e9233204761db26ee5da436925c1c8cf719f1ec6e7cee6686eab41a29",
+  "edgeRule": "Land is left of the directed OSM shoreline. Segment from end to start is the derived, prior-water-only mouth cut.",
+  "coast": [
+    [
+      -63.1220296,
+      46.2306697
+    ],
+    [
+      -63.1220049,
+      46.2306888
+    ],
+    [
+      -63.1219867,
+      46.2307104
+    ],
+    [
+      -63.1219771,
+      46.2307327
+    ],
+    [
+      -63.1219755,
+      46.2307556
+    ],
+    [
+      -63.1219821,
+      46.2307788
+    ],
+    [
+      -63.1219969,
+      46.2307996
+    ],
+    [
+      -63.1220147,
+      46.2308176
+    ],
+    [
+      -63.1226417,
+      46.2312835
+    ],
+    [
+      -63.1226054,
+      46.2313036
+    ],
+    [
+      -63.1231022,
+      46.2316794
+    ],
+    [
+      -63.1229891,
+      46.2317537
+    ],
+    [
+      -63.1228271,
+      46.2317473
+    ],
+    [
+      -63.1228079,
+      46.2317466
+    ],
+    [
+      -63.1226459,
+      46.2316266
+    ],
+    [
+      -63.1223247,
+      46.231827
+    ],
+    [
+      -63.1225438,
+      46.2319966
+    ],
+    [
+      -63.1223241,
+      46.2321367
+    ],
+    [
+      -63.1223049,
+      46.232149
+    ],
+    [
+      -63.1221496,
+      46.2322122
+    ],
+    [
+      -63.1220965,
+      46.2322442
+    ],
+    [
+      -63.1205098,
+      46.2310788
+    ]
+  ]
+}

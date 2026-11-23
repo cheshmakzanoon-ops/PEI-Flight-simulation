@@ -77,6 +77,7 @@ export class Vegetation {
    const i=tx*side+dx,j=tz*side+dz;
    const x=(i+rand(i,j,11))*pitch,z=(j+rand(i,j,84))*pitch;
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
+   if(this.cover.harbour?.intersects(x,z,x,z)&&this.cover.distance(this.t,x,z)<0)continue;
    const type=rand(i,j,43),variant=type<.15?3:type<.36?2:type<.68?1:0;
    const h=8.2+rand(i,j,35)*10.8,w=h*(.83+rand(i,j,9)*.35);
    if(insideLighthouseYard(x,z,w*.5))continue;
