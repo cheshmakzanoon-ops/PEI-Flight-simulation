@@ -51,9 +51,15 @@ events. An independent Three.js ray check found no missed terrain seams and a
 maximum 0.011 mm residual from the intended visual separation at 1,888
 fully weighted road samples. The old and new near geometry submit the
 same draw calls at the fixed poses, but the preview needs more triangles.
-The slowest tested cold variant builds were approximately 81–93 ms on
-the local Node test host, so the feature remains opt-in while this work
-is moved away from the first low pass. No device frame rate is claimed.
+The original implementation could spend 81–93 ms building one dense
+variant in a single update. The preview now prepares that work in
+[short, resumable batches](road-build-budget-gate.json), including bounded
+attribute packing, normals and bounds. Preview variants wait for completion
+before appearing. Geometry and physics are unchanged by this scheduling
+change. The 4 ms slice target is not a strict worst-case guarantee:
+the Chromium approach maxed at 8.0 ms over 39 measured slices and dense
+Node replays reached 11.4 ms. Total CPU is not reduced. The preview
+remains opt-in; no device frame rate is claimed.
 
 ```sh
 npm run check
@@ -62,4 +68,6 @@ python tools/qa/seated-road-frames.py --checkout . --deps node_modules \
   --out /tmp/road-seat-views --chromium /path/to/chromium
 python tools/qa/seated-road-motion.py --checkout . --deps node_modules \
   --out /tmp/road-seat-motion --chromium /path/to/chromium
+python tools/qa/seated-road-budget.py --checkout . --deps node_modules \
+  --out /tmp/road-seat-budget --chromium /path/to/chromium
 ```

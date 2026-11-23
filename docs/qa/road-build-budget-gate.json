@@ -1,0 +1,2299 @@
+{
+  "browser": {
+    "high": {
+      "pending": false,
+      "gain": 0,
+      "lastSliceMS": 0,
+      "lastBuildSteps": 0,
+      "ready": 0,
+      "agl": 210,
+      "dx": 0,
+      "dz": 0,
+      "frame": 4,
+      "inView": 0,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "preload": {
+      "pending": false,
+      "gain": 0,
+      "lastSliceMS": 2.599999997764826,
+      "lastBuildSteps": 61,
+      "ready": 4,
+      "agl": 198,
+      "dx": 0,
+      "dz": 0,
+      "frame": 44,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "partial": {
+      "pending": false,
+      "gain": 0.5021951156831734,
+      "lastSliceMS": 0,
+      "lastBuildSteps": 0,
+      "ready": 4,
+      "agl": 153,
+      "dx": 0,
+      "dz": 0,
+      "frame": 47,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "ground": {
+      "pending": false,
+      "gain": 1,
+      "lastSliceMS": 0,
+      "lastBuildSteps": 0,
+      "ready": 4,
+      "agl": 42,
+      "dx": 0,
+      "dz": 0,
+      "frame": 48,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "move": {
+      "pending": false,
+      "gain": 1,
+      "lastSliceMS": 0,
+      "lastBuildSteps": 0,
+      "ready": 4,
+      "agl": 42,
+      "dx": 490,
+      "dz": -90,
+      "frame": 49,
+      "inView": 4,
+      "position": [
+        -44996.745890658814,
+        11945.826310102835
+      ]
+    },
+    "climb": {
+      "pending": false,
+      "gain": 0,
+      "lastSliceMS": 0,
+      "lastBuildSteps": 0,
+      "ready": 0,
+      "agl": 220,
+      "dx": 490,
+      "dz": -90,
+      "frame": 50,
+      "inView": 0,
+      "position": [
+        -44996.745890658814,
+        11945.826310102835
+      ]
+    },
+    "build": {
+      "samples": [
+        {
+          "ms": 4.099999997764826,
+          "steps": 37,
+          "gain": 0,
+          "agl": 198,
+          "frame": 6
+        },
+        {
+          "ms": 4,
+          "steps": 82,
+          "gain": 0,
+          "agl": 198,
+          "frame": 7
+        },
+        {
+          "ms": 4,
+          "steps": 68,
+          "gain": 0,
+          "agl": 198,
+          "frame": 8
+        },
+        {
+          "ms": 4,
+          "steps": 90,
+          "gain": 0,
+          "agl": 198,
+          "frame": 9
+        },
+        {
+          "ms": 5.899999998509884,
+          "steps": 70,
+          "gain": 0,
+          "agl": 198,
+          "frame": 10
+        },
+        {
+          "ms": 4,
+          "steps": 146,
+          "gain": 0,
+          "agl": 198,
+          "frame": 11
+        },
+        {
+          "ms": 3.899999998509884,
+          "steps": 120,
+          "gain": 0,
+          "agl": 198,
+          "frame": 12
+        },
+        {
+          "ms": 6.699999999254942,
+          "steps": 38,
+          "gain": 0,
+          "agl": 198,
+          "frame": 13
+        },
+        {
+          "ms": 4,
+          "steps": 105,
+          "gain": 0,
+          "agl": 198,
+          "frame": 14
+        },
+        {
+          "ms": 4,
+          "steps": 148,
+          "gain": 0,
+          "agl": 198,
+          "frame": 15
+        },
+        {
+          "ms": 4,
+          "steps": 78,
+          "gain": 0,
+          "agl": 198,
+          "frame": 16
+        },
+        {
+          "ms": 7.5,
+          "steps": 13,
+          "gain": 0,
+          "agl": 198,
+          "frame": 17
+        },
+        {
+          "ms": 6.100000001490116,
+          "steps": 12,
+          "gain": 0,
+          "agl": 198,
+          "frame": 18
+        },
+        {
+          "ms": 5.5,
+          "steps": 9,
+          "gain": 0,
+          "agl": 198,
+          "frame": 19
+        },
+        {
+          "ms": 5.300000000745058,
+          "steps": 18,
+          "gain": 0,
+          "agl": 198,
+          "frame": 20
+        },
+        {
+          "ms": 4,
+          "steps": 112,
+          "gain": 0,
+          "agl": 198,
+          "frame": 21
+        },
+        {
+          "ms": 4,
+          "steps": 99,
+          "gain": 0,
+          "agl": 198,
+          "frame": 22
+        },
+        {
+          "ms": 5,
+          "steps": 21,
+          "gain": 0,
+          "agl": 198,
+          "frame": 23
+        },
+        {
+          "ms": 5.800000000745058,
+          "steps": 41,
+          "gain": 0,
+          "agl": 198,
+          "frame": 24
+        },
+        {
+          "ms": 7.600000001490116,
+          "steps": 98,
+          "gain": 0,
+          "agl": 198,
+          "frame": 25
+        },
+        {
+          "ms": 4,
+          "steps": 182,
+          "gain": 0,
+          "agl": 198,
+          "frame": 26
+        },
+        {
+          "ms": 6.699999999254942,
+          "steps": 117,
+          "gain": 0,
+          "agl": 198,
+          "frame": 27
+        },
+        {
+          "ms": 4,
+          "steps": 47,
+          "gain": 0,
+          "agl": 198,
+          "frame": 28
+        },
+        {
+          "ms": 4,
+          "steps": 123,
+          "gain": 0,
+          "agl": 198,
+          "frame": 29
+        },
+        {
+          "ms": 4,
+          "steps": 136,
+          "gain": 0,
+          "agl": 198,
+          "frame": 30
+        },
+        {
+          "ms": 4,
+          "steps": 108,
+          "gain": 0,
+          "agl": 198,
+          "frame": 31
+        },
+        {
+          "ms": 4,
+          "steps": 142,
+          "gain": 0,
+          "agl": 198,
+          "frame": 32
+        },
+        {
+          "ms": 4,
+          "steps": 185,
+          "gain": 0,
+          "agl": 198,
+          "frame": 33
+        },
+        {
+          "ms": 4.099999997764826,
+          "steps": 192,
+          "gain": 0,
+          "agl": 198,
+          "frame": 34
+        },
+        {
+          "ms": 4,
+          "steps": 88,
+          "gain": 0,
+          "agl": 198,
+          "frame": 35
+        },
+        {
+          "ms": 4.699999999254942,
+          "steps": 79,
+          "gain": 0,
+          "agl": 198,
+          "frame": 36
+        },
+        {
+          "ms": 4,
+          "steps": 95,
+          "gain": 0,
+          "agl": 198,
+          "frame": 37
+        },
+        {
+          "ms": 7.300000000745058,
+          "steps": 157,
+          "gain": 0,
+          "agl": 198,
+          "frame": 38
+        },
+        {
+          "ms": 6.599999997764826,
+          "steps": 144,
+          "gain": 0,
+          "agl": 198,
+          "frame": 39
+        },
+        {
+          "ms": 8,
+          "steps": 149,
+          "gain": 0,
+          "agl": 198,
+          "frame": 40
+        },
+        {
+          "ms": 5.100000001490116,
+          "steps": 161,
+          "gain": 0,
+          "agl": 198,
+          "frame": 41
+        },
+        {
+          "ms": 4,
+          "steps": 117,
+          "gain": 0,
+          "agl": 198,
+          "frame": 42
+        },
+        {
+          "ms": 4,
+          "steps": 146,
+          "gain": 0,
+          "agl": 198,
+          "frame": 43
+        },
+        {
+          "ms": 2.599999997764826,
+          "steps": 61,
+          "gain": 0,
+          "agl": 198,
+          "frame": 44
+        }
+      ],
+      "cpuMs": 188.49999999254942,
+      "maxSliceMs": 8,
+      "frames": 39
+    }
+  },
+  "independentReplay": {
+    "source": {
+      "roadsBefore": "ba174a49739f7d6273f23e9307a78e8b2b6e696657ab92f722faaaf882e65ea7",
+      "roadsBudget": "4b6e77bf684aa26182f37425cc6d63001de7fa3f38c1c2e0ce17b24306d38af0",
+      "budgetFunction": "a552e628205a3dec62013eaf79cd1a79a1c448fda8624564d2a7198226653f26",
+      "bufferSlices": "5c51aa456f9e839ecd55a5a20dee1d6e64d6a4b04e40963ed6e8bdc79a652d1e",
+      "roadsPacked": "27ea93f400d75b7f3f6673dfe7d91f0ef6e8ea5a207ba6e30908538fbeb3e0d0",
+      "budgetMS": 4,
+      "coastal": 2,
+      "inland": 3
+    },
+    "sameGeometryTiming": [
+      {
+        "camera": {
+          "name": "Summerside",
+          "x": -45412.750123615544,
+          "z": 12026.517651333028,
+          "roadTile": "-10,2"
+        },
+        "sourceSegments": 643,
+        "triangles": 14032,
+        "oneShotMS": {
+          "count": 9,
+          "min": 24.695559000000003,
+          "median": 28.353966999999784,
+          "p95": 71.528052,
+          "max": 71.528052,
+          "total": 348.17004899999984
+        },
+        "resumedTotalMS": {
+          "count": 9,
+          "min": 24.87432399999966,
+          "median": 32.47137699999996,
+          "p95": 48.43959700000005,
+          "max": 48.43959700000005,
+          "total": 290.77029699999923
+        },
+        "resumedSliceMS": {
+          "count": 74,
+          "min": 0.600161000000071,
+          "median": 4.022017000000005,
+          "p95": 4.179221000000098,
+          "max": 10.566327000000001,
+          "total": 290.77029699999923
+        },
+        "resumedPeakMS": {
+          "count": 9,
+          "min": 4.04022400000008,
+          "median": 4.101464999999962,
+          "p95": 10.566327000000001,
+          "max": 10.566327000000001,
+          "total": 44.4097280000002
+        },
+        "singleUninterruptibleUnitMaxMS": {
+          "count": 9,
+          "min": 0.4789109999999255,
+          "median": 1.4405369999999493,
+          "p95": 7.255955999999969,
+          "max": 7.255955999999969,
+          "total": 19.788990999999783
+        },
+        "resumedSliceCount": {
+          "count": 9,
+          "min": 7,
+          "median": 8,
+          "p95": 12,
+          "max": 12,
+          "total": 74
+        },
+        "comparedLegacyAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 155880,
+            "sha": "36266d12e25959d58a83742db4ea84f142ed9c09d65cb356c7aca4474e0fbf0a"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 155880,
+            "sha": "2e2690d686665717cbc50f5caf317299280757ec7e563dd3f10ee42193aa2081"
+          },
+          "roadSurface": {
+            "type": "Int8Array",
+            "normalized": true,
+            "bytes": 25980,
+            "sha": "f0ee91385370decd3c4a1aa132948c2af8a0a42fba9ab831ae4c38c472a83105"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 155880,
+            "sha": "f45431eee125725870160800a6fc5de24044e5c48f03f9c0b659639212335d4a"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 51960,
+            "sha": "8a581d3c0f4a5f03b99b8bf73b3cec5ca94c33acbc757a9e01e6169ee2fff5e7"
+          }
+        },
+        "comparedAllOptionalAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 505152,
+            "sha": "ec5262f3047a37a1360a07367d2c4f317effdb14285f89566f099e06a3a93fcb"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 505152,
+            "sha": "50c6c26c1b256bc540a84400ec127e8d284028c200095563e71bc248725bb1b2"
+          },
+          "roadSurface": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 336768,
+            "sha": "2ad77ae2864f4b8ef539aad1f2e7787c4dbfb5d1e1350a4449b68a4596bd45c8"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 505152,
+            "sha": "4cf7cadbd75066fd09be0a7167d5e835ddb5ec00b3941fbb8a56d5d817faaabc"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 168384,
+            "sha": "f49ba7e18b059aefddb8b39038eff16ca2eab3ec3ab5d99b96efd26135812f0a"
+          }
+        },
+        "phaseDetail": [
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.2740769999999202,
+                "sum": 1.5488799999997127
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.6968030000000454,
+                "sum": 3.8499310000000833
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.023595000000000255,
+                "sum": 0.040579999999749816
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.533841999999936,
+                "sum": 2.366351999999779
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.023054000000001906,
+                "sum": 0.04646000000013828
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.03282899999999245,
+                "sum": 0.07472799999948165
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.25835299999994277,
+                "sum": 0.3684129999999186
+              },
+              "shape": {
+                "units": 839,
+                "max": 1.4972210000000814,
+                "sum": 39.53776000000062
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.101464999999962
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.07856699999990724,
+                "sum": 0.6290739999998323
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.37888200000008965,
+                "sum": 3.0236960000003137
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.016804999999976644,
+                "sum": 0.03277699999989636
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.1615199999999959,
+                "sum": 1.4141990000000533
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.022894000000064807,
+                "sum": 0.04265399999997044
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.029673999999999978,
+                "sum": 0.06236100000012357
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.0993270000000166,
+                "sum": 0.147431999999867
+              },
+              "shape": {
+                "units": 839,
+                "max": 0.934767000000079,
+                "sum": 26.780332000000726
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.861592999999971
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.059047999999961576,
+                "sum": 0.37866300000007413
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.1672680000000355,
+                "sum": 0.6083340000000135
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.013889999999946667,
+                "sum": 0.025266999999871587
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.07498099999997976,
+                "sum": 0.6339809999997215
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.022333000000003267,
+                "sum": 0.04512600000020939
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.031226000000060594,
+                "sum": 0.06561699999974735
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.06514700000002449,
+                "sum": 0.11681399999986297
+              },
+              "shape": {
+                "units": 839,
+                "max": 1.4405369999999493,
+                "sum": 24.696823999999197
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.045270999999957
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.1716550000001007,
+                "sum": 0.5765049999999974
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.08789999999999054,
+                "sum": 0.5899239999996553
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.06359500000007756,
+                "sum": 0.09432100000003629
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.41008800000008705,
+                "sum": 1.185018000000582
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.15111499999989064,
+                "sum": 0.22858900000005633
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.08482600000002094,
+                "sum": 0.28448100000014165
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.45270099999993363,
+                "sum": 0.790721000000076
+              },
+              "shape": {
+                "units": 839,
+                "max": 1.2887719999998808,
+                "sum": 28.799715000003175
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.179221000000098
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.0476410000001124,
+                "sum": 0.3455930000002354
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.055191999999806285,
+                "sum": 0.4646999999995387
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.01456200000006902,
+                "sum": 0.027120999999851847
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.07653299999992669,
+                "sum": 0.6408609999994042
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.022582999999940512,
+                "sum": 0.05079599999999118
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.03067600000008497,
+                "sum": 0.06687000000010812
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.06911299999978837,
+                "sum": 0.12012099999969905
+              },
+              "shape": {
+                "units": 839,
+                "max": 4.493316999999934,
+                "sum": 32.476491999999325
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.496070000000145
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.045266999999967084,
+                "sum": 0.34419199999979355
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.05394000000001142,
+                "sum": 0.46964799999977913
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.02064099999984137,
+                "sum": 0.04399599999965176
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.07472099999995407,
+                "sum": 0.6063700000004246
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.023224000000027445,
+                "sum": 0.04663699999991877
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.02976400000011381,
+                "sum": 0.06711899999959314
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.06579699999997501,
+                "sum": 0.1157700000001114
+              },
+              "shape": {
+                "units": 839,
+                "max": 1.5268149999999423,
+                "sum": 25.06149299999811
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.0508400000001075
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.04550799999992705,
+                "sum": 0.3438199999993685
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.05567199999995864,
+                "sum": 0.4791720000000623
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.01369099999988066,
+                "sum": 0.02567999999996573
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.07341900000005808,
+                "sum": 0.6377270000004955
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.02267400000005182,
+                "sum": 0.04559000000040214
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.03128700000002027,
+                "sum": 0.06642599999986487
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.07007400000020425,
+                "sum": 0.12142299999982242
+              },
+              "shape": {
+                "units": 839,
+                "max": 0.4789109999999255,
+                "sum": 22.95743100000368
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.04022400000008
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.07526200000006611,
+                "sum": 0.40336999999999534
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.059037999999873136,
+                "sum": 0.5013719999997193
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.013179999999920256,
+                "sum": 0.02460800000017116
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.07558199999994031,
+                "sum": 0.6389689999996335
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.037146000000120694,
+                "sum": 0.06064100000025974
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.0285630000000765,
+                "sum": 0.06477699999982178
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.06427500000017972,
+                "sum": 0.11402100000032078
+              },
+              "shape": {
+                "units": 839,
+                "max": 7.255955999999969,
+                "sum": 30.66476700000203
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 10.566327000000001
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 11,
+                "max": 0.1155109999999695,
+                "sum": 0.4311099999997623
+              },
+              "dropAndExtrema": {
+                "units": 11,
+                "max": 0.060810000000174114,
+                "sum": 0.4839179999996759
+              },
+              "delta": {
+                "units": 6,
+                "max": 0.01354999999989559,
+                "sum": 0.024455999999645428
+              },
+              "normals": {
+                "units": 14,
+                "max": 0.09123500000009699,
+                "sum": 0.6255960000003142
+              },
+              "normalizedSurface": {
+                "units": 11,
+                "max": 0.02225300000009156,
+                "sum": 0.0427150000000438
+              },
+              "colors": {
+                "units": 16,
+                "max": 0.030183999999962907,
+                "sum": 0.06389500000000226
+              },
+              "positions": {
+                "units": 16,
+                "max": 0.060800999999855776,
+                "sum": 0.10696799999959694
+              },
+              "shape": {
+                "units": 839,
+                "max": 0.8726950000000215,
+                "sum": 28.970898000003217
+              }
+            },
+            "phaseCount": 924,
+            "peakSlice": 4.068716999999879
+          }
+        ]
+      },
+      {
+        "camera": {
+          "name": "Charlottetown",
+          "x": 5242.885114000972,
+          "z": 27701.342071468716,
+          "roadTile": "1,5"
+        },
+        "sourceSegments": 2128,
+        "triangles": 40490,
+        "oneShotMS": {
+          "count": 9,
+          "min": 69.12902299999996,
+          "median": 77.1298939999997,
+          "p95": 136.8317300000001,
+          "max": 136.8317300000001,
+          "total": 780.6024369999998
+        },
+        "resumedTotalMS": {
+          "count": 9,
+          "min": 71.83817900000031,
+          "median": 83.29199500000004,
+          "p95": 116.40825999999879,
+          "max": 116.40825999999879,
+          "total": 761.8298410000016
+        },
+        "resumedSliceMS": {
+          "count": 185,
+          "min": 1.7367760000001908,
+          "median": 4.017340999999988,
+          "p95": 4.198037999999997,
+          "max": 11.38068499999963,
+          "total": 761.8298410000016
+        },
+        "resumedPeakMS": {
+          "count": 9,
+          "min": 4.052482999999938,
+          "median": 4.404665000000023,
+          "p95": 11.38068499999963,
+          "max": 11.38068499999963,
+          "total": 59.217356999999765
+        },
+        "singleUninterruptibleUnitMaxMS": {
+          "count": 9,
+          "min": 0.4199130000001787,
+          "median": 2.438658000000032,
+          "p95": 8.406192999999803,
+          "max": 8.406192999999803,
+          "total": 37.40236300000015
+        },
+        "resumedSliceCount": {
+          "count": 9,
+          "min": 18,
+          "median": 20,
+          "p95": 29,
+          "max": 29,
+          "total": 185
+        },
+        "comparedLegacyAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 447120,
+            "sha": "63a4d97c0b4fe9de43d833b85849c7674cbf19aa8ec27e3e1fc817171cf0f93a"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 447120,
+            "sha": "afe16cf51a0d082b62bc9fb858a96e243e1b2eea18e86493a86d7b2e83cc3fa5"
+          },
+          "roadSurface": {
+            "type": "Int8Array",
+            "normalized": true,
+            "bytes": 74520,
+            "sha": "4b9743ffcad9b946b36e03d0500af0a55ee20aada4b50001f6f2b128a46a6d53"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 447120,
+            "sha": "741a6565e96b1195c76295002e101c23f893998cfb8b867997221f9ebe067801"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 149040,
+            "sha": "30c72beec3a65068302e0fe903dc2da85c741a2b19ad44321dd8b365a9abd573"
+          }
+        },
+        "comparedAllOptionalAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 1457640,
+            "sha": "8b1abbe35dd71ab976188ad6855c20de729c005bbe8581799ac9abc97f659c9a"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 1457640,
+            "sha": "0fd9a0e6ec6f2fb56d5c5387d80828346f1f4c2ca69cbdf60bc0705137e5d993"
+          },
+          "roadSurface": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 971760,
+            "sha": "6d969c4b46f5a2b3f24175d3d0f29bf46ee2dee4cf89b04104a7b2bf14c141e9"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 1457640,
+            "sha": "633f5d337854e20260b712eb0fb3d4a7a2fdab5fac21efbac3d8686408a5bef4"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 485880,
+            "sha": "0f84af93e94027ea31561037996e2bb5aa67b6e57503405ea84c03eabc898262"
+          }
+        },
+        "phaseDetail": [
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06298399999991489,
+                "sum": 0.9593379999996614
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.07000400000015361,
+                "sum": 1.398674000000483
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.032458000000133325,
+                "sum": 0.16960400000039044
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.11721400000010362,
+                "sum": 2.0609830000003058
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.040781000000151835,
+                "sum": 0.33191300000135016
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.10400499999991553,
+                "sum": 0.28195100000084494
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.10201099999994767,
+                "sum": 0.26888699999949495
+              },
+              "shape": {
+                "units": 2657,
+                "max": 0.4587010000000191,
+                "sum": 68.72289999999794
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 4.082536000000118
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06316399999991518,
+                "sum": 0.9525110000008681
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.10889099999985774,
+                "sum": 1.415130000000545
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.05561200000011013,
+                "sum": 0.23494900000036978
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.17011200000001736,
+                "sum": 2.236478000000261
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.04150200000003679,
+                "sum": 0.3269769999997152
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.04673999999999978,
+                "sum": 0.5307400000001508
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.08984299999997347,
+                "sum": 0.8144669999990128
+              },
+              "shape": {
+                "units": 2657,
+                "max": 8.350438999999824,
+                "sum": 76.20193500000141
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 8.425561000000016
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.10696899999993548,
+                "sum": 1.0680849999989732
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.16705799999999726,
+                "sum": 1.6386139999999614
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.030626000000211206,
+                "sum": 0.07064600000057908
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.10470500000019456,
+                "sum": 1.7178730000009637
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.056102999999893655,
+                "sum": 0.13017200000012963
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.08373399999982212,
+                "sum": 0.196439000000737
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.12941200000022945,
+                "sum": 0.2633330000003298
+              },
+              "shape": {
+                "units": 2657,
+                "max": 7.441069999999854,
+                "sum": 83.22153299999127
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 8.977108000000044
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06175200000006953,
+                "sum": 0.935048000000279
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.05974900000001071,
+                "sum": 1.3335379999989527
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.030244000000038795,
+                "sum": 0.07068199999912395
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.11105499999985113,
+                "sum": 1.7668030000004364
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.05641400000013164,
+                "sum": 0.13764100000071267
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.07780600000023696,
+                "sum": 0.21076700000048731
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.1117749999998523,
+                "sum": 0.2781390000004649
+              },
+              "shape": {
+                "units": 2657,
+                "max": 0.6423330000002352,
+                "sum": 66.52966399999787
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 4.052482999999938
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06591800000023795,
+                "sum": 0.9257019999990916
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.12015900000005786,
+                "sum": 1.4693130000000565
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.023305000000164,
+                "sum": 0.06290400000079899
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.10343399999965186,
+                "sum": 1.7204479999991236
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.0410610000003544,
+                "sum": 0.12260100000048624
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.062431999999716936,
+                "sum": 0.18390899999985777
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.09725399999979345,
+                "sum": 0.24073400000042966
+              },
+              "shape": {
+                "units": 2657,
+                "max": 0.4199130000001787,
+                "sum": 66.87712400000282
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 4.404665000000023
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06332399999973859,
+                "sum": 0.947784999999385
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.06816200000002937,
+                "sum": 1.428319999998621
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.03683499999988271,
+                "sum": 0.16697999999905733
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.08194200000025376,
+                "sum": 2.0125059999995756
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.10716899999988527,
+                "sum": 0.4267140000006293
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.04157200000008743,
+                "sum": 0.4899180000011256
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.05067499999995562,
+                "sum": 0.6125539999989087
+              },
+              "shape": {
+                "units": 2657,
+                "max": 0.8941469999999754,
+                "sum": 68.79213200000049
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 4.0893770000002405
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.06754099999989194,
+                "sum": 0.966263999999228
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 6.3589850000003025,
+                "sum": 7.7698460000015075
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.055402000000412954,
+                "sum": 0.19182600000158345
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.11314800000036485,
+                "sum": 2.081289000000197
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.3823569999999563,
+                "sum": 0.7177399999995941
+              },
+              "colors": {
+                "units": 45,
+                "max": 8.350909000000229,
+                "sum": 8.850979999999254
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.08139100000016697,
+                "sum": 0.589867000000595
+              },
+              "shape": {
+                "units": 2657,
+                "max": 4.9963229999998475,
+                "sum": 71.927175000013
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 11.38068499999963
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.05779600000005303,
+                "sum": 0.9480780000012601
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.058387000000038825,
+                "sum": 1.341584000000239
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.02295400000002701,
+                "sum": 0.060922000000118715
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.12123899999960486,
+                "sum": 1.788355999999112
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.07942800000000716,
+                "sum": 0.16050200000108816
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.0766740000003665,
+                "sum": 0.19632299999966563
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.10195100000009916,
+                "sum": 0.246926000003441
+              },
+              "shape": {
+                "units": 2657,
+                "max": 8.406192999999803,
+                "sum": 80.31764099999282
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 9.581655999999839
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 30,
+                "max": 0.09360900000001493,
+                "sum": 1.1780659999994896
+              },
+              "dropAndExtrema": {
+                "units": 30,
+                "max": 0.11986799999976938,
+                "sum": 1.5815529999990758
+              },
+              "delta": {
+                "units": 15,
+                "max": 0.1689409999999043,
+                "sum": 0.28904099999999744
+              },
+              "normals": {
+                "units": 40,
+                "max": 0.14802899999995134,
+                "sum": 1.9281220000007124
+              },
+              "normalizedSurface": {
+                "units": 30,
+                "max": 0.06032999999979438,
+                "sum": 0.21373799999810217
+              },
+              "colors": {
+                "units": 45,
+                "max": 0.10211100000014994,
+                "sum": 0.29119200000195633
+              },
+              "positions": {
+                "units": 45,
+                "max": 0.37614799999983006,
+                "sum": 0.8525920000015503
+              },
+              "shape": {
+                "units": 2657,
+                "max": 2.438658000000032,
+                "sum": 108.87429900002007
+              }
+            },
+            "phaseCount": 2892,
+            "peakSlice": 4.223285999999916
+          }
+        ]
+      },
+      {
+        "camera": {
+          "name": "walls-road",
+          "x": -32967.64897378092,
+          "z": 17820.060098533053,
+          "roadTile": "-7,3"
+        },
+        "sourceSegments": 158,
+        "triangles": 8168,
+        "oneShotMS": {
+          "count": 3,
+          "min": 11.953836000000138,
+          "median": 12.419797000000017,
+          "p95": 12.733271000000059,
+          "max": 12.733271000000059,
+          "total": 37.10690400000021
+        },
+        "resumedTotalMS": {
+          "count": 3,
+          "min": 13.305579999999736,
+          "median": 13.678083000000242,
+          "p95": 14.849490999999944,
+          "max": 14.849490999999944,
+          "total": 41.83315399999992
+        },
+        "resumedSliceMS": {
+          "count": 12,
+          "min": 1.1970460000002277,
+          "median": 4.011831999999686,
+          "p95": 4.117878999999903,
+          "max": 4.117878999999903,
+          "total": 41.83315399999992
+        },
+        "resumedPeakMS": {
+          "count": 3,
+          "min": 4.025282000000061,
+          "median": 4.085370999999668,
+          "p95": 4.117878999999903,
+          "max": 4.117878999999903,
+          "total": 12.228531999999632
+        },
+        "singleUninterruptibleUnitMaxMS": {
+          "count": 3,
+          "min": 0.8565800000001218,
+          "median": 1.1132409999995616,
+          "p95": 1.353668000000198,
+          "max": 1.353668000000198,
+          "total": 3.3234889999998813
+        },
+        "resumedSliceCount": {
+          "count": 3,
+          "min": 4,
+          "median": 4,
+          "p95": 4,
+          "max": 4,
+          "total": 12
+        },
+        "comparedLegacyAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 134352,
+            "sha": "488d7fb402c44f1d054ab6741e0d036c11ef6c3aae8b4ded17b1754dfeeb4471"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 134352,
+            "sha": "e59d2c972e5f931030a6f3142cb40da29c365d0ca8ac8dc7a6f19c512970b694"
+          },
+          "roadSurface": {
+            "type": "Int8Array",
+            "normalized": true,
+            "bytes": 22392,
+            "sha": "c7efde071dabe9dad53f60d5254900f2436f13d92c9eaea17006e63a9d11bb1d"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 134352,
+            "sha": "a9d29e05e87460592958da20f1173e92287d7f5929c78b937073e963ac74273e"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 44784,
+            "sha": "725c0917a3ff9bba609da13d031c8d7eee5bc7e52d2a9a478cd7043d047a226e"
+          }
+        },
+        "comparedAllOptionalAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 294048,
+            "sha": "cc6643027a24ff01ec2b083d047161960bfaed96a895071aa64a6971c9bfa824"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 294048,
+            "sha": "6d30d1bf34e1ab4843dfdd6aed2a58b1d105ac2cf35efa5436a2c4ae68a101b2"
+          },
+          "roadSurface": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 196032,
+            "sha": "6e461f2d63fe027932927c443ba4cdfe454c5b31195a1ee99932a67aaa00f486"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 294048,
+            "sha": "fbe3d692808a0090e9c0acbc7238bebdced3b46078388a07ebe97b493dd04863"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 98016,
+            "sha": "6c9fcb5a14d26ac270426f24b9f6131cd79b0b0f0dc11b3a6da02e88f8d2c22c"
+          }
+        },
+        "phaseDetail": [
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.0741000000002714,
+                "sum": 0.287035000000742
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.10434500000019398,
+                "sum": 0.35272400000030757
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.0070909999999457796,
+                "sum": 0.011418000000048778
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.05682399999977861,
+                "sum": 0.3445310000001882
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.010574999999789725,
+                "sum": 0.01997899999969377
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.014130000000022847,
+                "sum": 0.02844199999981356
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.04025000000001455,
+                "sum": 0.06374300000061339
+              },
+              "shape": {
+                "units": 317,
+                "max": 1.353668000000198,
+                "sum": 13.694361999999728
+              }
+            },
+            "phaseCount": 364,
+            "peakSlice": 4.025282000000061
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.059117999999671156,
+                "sum": 0.20816999999988184
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.05796599999985119,
+                "sum": 0.28592499999967913
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.007441999999628024,
+                "sum": 0.01230799999939336
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.067058999999972,
+                "sum": 0.3755270000001474
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.018937999999707245,
+                "sum": 0.03584399999863308
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.019007999999757885,
+                "sum": 0.033279000000675296
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.041670999999951164,
+                "sum": 0.06608600000072329
+              },
+              "shape": {
+                "units": 317,
+                "max": 0.8565800000001218,
+                "sum": 12.239545999997517
+              }
+            },
+            "phaseCount": 364,
+            "peakSlice": 4.085370999999668
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.05887699999993856,
+                "sum": 0.20741699999916818
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.06296400000019275,
+                "sum": 0.2985439999997652
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.008281999999780965,
+                "sum": 0.01345999999966807
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.06511700000010023,
+                "sum": 0.37271400000008725
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.014341999999942345,
+                "sum": 0.022744000000329834
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.015362999999979365,
+                "sum": 0.028993999999784137
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.03685399999994843,
+                "sum": 0.06023899999900095
+              },
+              "shape": {
+                "units": 317,
+                "max": 1.1132409999995616,
+                "sum": 12.62406500000452
+              }
+            },
+            "phaseCount": 364,
+            "peakSlice": 4.117878999999903
+          }
+        ]
+      },
+      {
+        "camera": {
+          "name": "warburton-road",
+          "x": -17408.6595241086,
+          "z": 14156.797111189057,
+          "roadTile": "-4,2"
+        },
+        "sourceSegments": 196,
+        "triangles": 7637,
+        "oneShotMS": {
+          "count": 3,
+          "min": 11.587310999999772,
+          "median": 11.82375200000024,
+          "p95": 12.283254999999826,
+          "max": 12.283254999999826,
+          "total": 35.69431799999984
+        },
+        "resumedTotalMS": {
+          "count": 3,
+          "min": 12.988810999999714,
+          "median": 13.368645999999444,
+          "p95": 13.598364999999376,
+          "max": 13.598364999999376,
+          "total": 39.955821999998534
+        },
+        "resumedSliceMS": {
+          "count": 12,
+          "min": 0.8078590000000077,
+          "median": 4.0290579999996226,
+          "p95": 4.464925000000221,
+          "max": 4.464925000000221,
+          "total": 39.955821999998534
+        },
+        "resumedPeakMS": {
+          "count": 3,
+          "min": 4.1175789999997505,
+          "median": 4.117639000000054,
+          "p95": 4.464925000000221,
+          "max": 4.464925000000221,
+          "total": 12.700143000000025
+        },
+        "singleUninterruptibleUnitMaxMS": {
+          "count": 3,
+          "min": 0.9365790000001653,
+          "median": 0.9612860000002001,
+          "p95": 1.0913089999999102,
+          "max": 1.0913089999999102,
+          "total": 2.9891740000002756
+        },
+        "resumedSliceCount": {
+          "count": 3,
+          "min": 4,
+          "median": 4,
+          "p95": 4,
+          "max": 4,
+          "total": 12
+        },
+        "comparedLegacyAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 108180,
+            "sha": "65bcc501de508859bcca86ea75635c083993a905bb7801a4864fcfc288683c0f"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 108180,
+            "sha": "73e66dea46228871fad2011426e453652527bd3c773b752326a6e0127cf2dcf1"
+          },
+          "roadSurface": {
+            "type": "Int8Array",
+            "normalized": true,
+            "bytes": 18030,
+            "sha": "fcebe7561311b9237a694097fe2448ef027237a8a700498c2df070e713ba645f"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 108180,
+            "sha": "9a0bdcffef84658ccd1ed248f2f2e8b1cf42f0a2ba6ca2289c86db176d0bc08a"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 36060,
+            "sha": "ffed9e614d0bcd5c4974efe61303c3aa2a6a4fbce2685e0ce152c53f8a763ce1"
+          }
+        },
+        "comparedAllOptionalAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 274932,
+            "sha": "30e2f20d2fe8b534541ab25907149a6dee98e35d9a76cf5167399476d7c2ff29"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 274932,
+            "sha": "5a6ff92b620e91174fd1943b78c8825543adb752d328785abe25ebea9cc79277"
+          },
+          "roadSurface": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 183288,
+            "sha": "c91f740c1f45bd2c9dc848413e7a2f4472c3b975e2f56541b84ca28828ff336e"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 274932,
+            "sha": "fd449063646348bf7840b6d65f625688c7de8dc59ab94fa7476e3c8f103b3953"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 91644,
+            "sha": "29937169ff8fe6a148e245d3815f142c151caabc62707dd0441a8c1e8265ed7c"
+          }
+        },
+        "phaseDetail": [
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.05005499999970198,
+                "sum": 0.1999279999990904
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.11723399999982576,
+                "sum": 0.3233199999995122
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.007751000000098429,
+                "sum": 0.012559000000237575
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.07088500000008935,
+                "sum": 0.35462699999970937
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.010516000000279746,
+                "sum": 0.018668000000616303
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.01364000000012311,
+                "sum": 0.028593000000455504
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.03999999999996362,
+                "sum": 0.06571900000017195
+              },
+              "shape": {
+                "units": 334,
+                "max": 1.0913089999999102,
+                "sum": 12.315758999992795
+              }
+            },
+            "phaseCount": 381,
+            "peakSlice": 4.464925000000221
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.04972399999996924,
+                "sum": 0.2014789999993809
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.06044900000006237,
+                "sum": 0.2763180000001739
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.008702999999968597,
+                "sum": 0.014141000000108761
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.07346899999993184,
+                "sum": 0.37502699999959077
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.014161000000058266,
+                "sum": 0.021661000000221975
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.013690000000224245,
+                "sum": 0.02632000000039625
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.0385470000001078,
+                "sum": 0.06285399999933361
+              },
+              "shape": {
+                "units": 334,
+                "max": 0.9365790000001653,
+                "sum": 11.96292900000708
+              }
+            },
+            "phaseCount": 381,
+            "peakSlice": 4.117639000000054
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.06472599999960948,
+                "sum": 0.23989499999879627
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.05414999999993597,
+                "sum": 0.2608959999997751
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.008741999999983818,
+                "sum": 0.014670999999907508
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.10052899999982401,
+                "sum": 0.38790499999913663
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.010786000000280183,
+                "sum": 0.019289000000298984
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.015552999999727035,
+                "sum": 0.03112700000019686
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.04252400000041234,
+                "sum": 0.0717080000003989
+              },
+              "shape": {
+                "units": 334,
+                "max": 0.9612860000002001,
+                "sum": 12.523207000005641
+              }
+            },
+            "phaseCount": 381,
+            "peakSlice": 4.1175789999997505
+          }
+        ]
+      },
+      {
+        "camera": {
+          "name": "new-harmony-road",
+          "x": 75238.05038075833,
+          "z": 12220.500960735802,
+          "roadTile": "15,2"
+        },
+        "sourceSegments": 161,
+        "triangles": 7398,
+        "oneShotMS": {
+          "count": 3,
+          "min": 11.511128000000099,
+          "median": 12.313818999999967,
+          "p95": 19.714840000000095,
+          "max": 19.714840000000095,
+          "total": 43.53978700000016
+        },
+        "resumedTotalMS": {
+          "count": 3,
+          "min": 11.567082000000482,
+          "median": 12.931235999999899,
+          "p95": 13.527740999999878,
+          "max": 13.527740999999878,
+          "total": 38.02605900000026
+        },
+        "resumedSliceMS": {
+          "count": 11,
+          "min": 0.8888090000000375,
+          "median": 4.013535000000047,
+          "p95": 4.054105000000163,
+          "max": 4.054105000000163,
+          "total": 38.02605900000026
+        },
+        "resumedPeakMS": {
+          "count": 3,
+          "min": 4.013535000000047,
+          "median": 4.018411000000015,
+          "p95": 4.054105000000163,
+          "max": 4.054105000000163,
+          "total": 12.086051000000225
+        },
+        "singleUninterruptibleUnitMaxMS": {
+          "count": 3,
+          "min": 0.17287600000008752,
+          "median": 0.9261940000001232,
+          "p95": 1.2232750000002852,
+          "max": 1.2232750000002852,
+          "total": 2.322345000000496
+        },
+        "resumedSliceCount": {
+          "count": 3,
+          "min": 3,
+          "median": 4,
+          "p95": 4,
+          "max": 4,
+          "total": 11
+        },
+        "comparedLegacyAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 106920,
+            "sha": "1864cbbb9e023294e5a5790a19bbad4f821bd9d2f64f4b62935c4c697f6ecb13"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 106920,
+            "sha": "b85ca1297be78a7028a7dd56e10cfb9b7da7f038a4e87ebd4af4210a0407e4aa"
+          },
+          "roadSurface": {
+            "type": "Int8Array",
+            "normalized": true,
+            "bytes": 17820,
+            "sha": "e64a3b5a53bb26900cf876a210f90009ef77bfa82c29c09c27a4b6abfd0c4fd7"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 106920,
+            "sha": "b041130b653419553562e3598fa197685b65f4150c1554d15fd760ffc9e03cef"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 35640,
+            "sha": "703983bcce7c9641c5672f1bf2fd6605af732d3e972a93c5b1f0434c53cd505d"
+          }
+        },
+        "comparedAllOptionalAttributeBuffers": {
+          "position": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 266328,
+            "sha": "cd10aa2317e58cc32b108b526983b95f88c8705328eeebe1cfc02fd1bfbc41c1"
+          },
+          "color": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 266328,
+            "sha": "9b103bfa4e301ca80d1e60cf2193ba3defe6f5ac94f109238abe76d805d597d5"
+          },
+          "roadSurface": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 177552,
+            "sha": "04ac2f79453638a56f4ffa35d298165f80ccc595bba474dea5e49db35c5744ac"
+          },
+          "normal": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 266328,
+            "sha": "e319205bab6dcfad80acbc1da39c3e27f4ece289400a02ab939e9cfefcdcee61"
+          },
+          "roadSeatDelta": {
+            "type": "Float32Array",
+            "normalized": false,
+            "bytes": 88776,
+            "sha": "59d349a73b010037d02cf8add9bab65949182e4438c2da0fbd9d5990b3fc04a0"
+          }
+        },
+        "phaseDetail": [
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.04478599999993094,
+                "sum": 0.19473899999957212
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.06229299999995419,
+                "sum": 0.2660759999998845
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.007311000000299828,
+                "sum": 0.012028000000100292
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.05731500000001688,
+                "sum": 0.3159770000002027
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.013148999999884836,
+                "sum": 0.021560999999564956
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.01364000000012311,
+                "sum": 0.02730999999857886
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.039808999999877415,
+                "sum": 0.06391599999915343
+              },
+              "shape": {
+                "units": 318,
+                "max": 1.2232750000002852,
+                "sum": 12.577200000003359
+              }
+            },
+            "phaseCount": 365,
+            "peakSlice": 4.054105000000163
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.04732000000012704,
+                "sum": 0.19687299999986863
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.061710999999831984,
+                "sum": 0.2642119999991337
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.025377999999818712,
+                "sum": 0.031746999999541003
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.09726399999999558,
+                "sum": 0.3554760000006354
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.012489000000186934,
+                "sum": 0.020300000000588625
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.013910000000123546,
+                "sum": 0.02785999999878186
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.04702900000029331,
+                "sum": 0.0713660000001255
+              },
+              "shape": {
+                "units": 318,
+                "max": 0.9261940000001232,
+                "sum": 11.915673999993942
+              }
+            },
+            "phaseCount": 365,
+            "peakSlice": 4.018411000000015
+          },
+          {
+            "phases": {
+              "sphereRadius": {
+                "units": 6,
+                "max": 0.049482999999781896,
+                "sum": 0.20807799999874987
+              },
+              "dropAndExtrema": {
+                "units": 6,
+                "max": 0.1563019999998687,
+                "sum": 0.3596339999999145
+              },
+              "delta": {
+                "units": 3,
+                "max": 0.007811999999830732,
+                "sum": 0.013030000000071595
+              },
+              "normals": {
+                "units": 8,
+                "max": 0.06308400000034453,
+                "sum": 0.3359480000003714
+              },
+              "normalizedSurface": {
+                "units": 6,
+                "max": 0.011297000000013213,
+                "sum": 0.02206300000034389
+              },
+              "colors": {
+                "units": 9,
+                "max": 0.012889000000086526,
+                "sum": 0.027749999999286956
+              },
+              "positions": {
+                "units": 9,
+                "max": 0.038747999999941385,
+                "sum": 0.06949499999882391
+              },
+              "shape": {
+                "units": 318,
+                "max": 0.17287600000008752,
+                "sum": 10.483565999999882
+              }
+            },
+            "phaseCount": 365,
+            "peakSlice": 4.013535000000047
+          }
+        ]
+      }
+    ],
+    "scheduling": {
+      "defaultTiles": 18,
+      "defaultDidNotCooperate": true,
+      "baselineNothingPublishedDuringPartial": true,
+      "travelCanceled": "-10,1",
+      "climbCanceled": "0,5",
+      "travelKeptNothingStale": true,
+      "atomicInitialWarmFrames": 92,
+      "pendingShowedOnlyCompletedTiles": true,
+      "pendingVisibleGainZero": true,
+      "warmReady": {
+        "pending": false,
+        "gain": 0,
+        "lastSliceMS": 0.21500000000060027,
+        "lastBuildSteps": 4,
+        "ready": 4,
+        "phaseFrame": 91
+      },
+      "warmThenMonotonicGain": [
+        0.008963811520522133,
+        0.04287013707172067,
+        0.12553424034429617,
+        0.2576190931806749,
+        0.4553694201355386,
+        0.7456898472174242,
+        0.9916979150744824,
+        1,
+        1
+      ],
+      "neighborMotionSharedExact": [
+        "0,5",
+        "1,5",
+        "1,6"
+      ],
+      "climbDisposedAllVariantBuffersExactlyOnce": true,
+      "actualInlandSetChanged": {
+        "site": "walls-road",
+        "tile": "-7,3",
+        "intersects": true,
+        "staleJobCanceled": true
+      }
+    },
+    "statement": "Node real wall-clock checks compare old git-version source and actual resumable Three typed buffers. Scheduler tests actual NRN path and inspect attach/disable with a deterministic stage clock; not browser GPU/FPS."
+  }
+}

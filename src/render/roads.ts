@@ -4,6 +4,8 @@ import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import {cutInlandRoad} from '../sim/inland-road.ts';
 import type {CoastalGrid} from '../sim/coastal-terrain.ts';
+import {RoadFloatChunks,normalizeRoadTriangles,expandRoadBounds} from './road-buffer-slices.ts';
+import {advanceRoadBuild,ROAD_BUILD_SLICE_MS} from './road-build-budget.ts';
 import {roadContactAt,seatRibbon} from './road-contact.ts';
 import {sidewalkGrid} from './sidewalks.ts';
 import type {World} from './world.ts';
@@ -83,8 +85,11 @@ export class Roads {
   private readonly seatGain={value:0};
   private previousSeat='';
   private pendingSeat=false;
+  private seatBuild?:{key:string;mode:string;generator:Generator<void,THREE.Mesh>};
+  private lastSliceMS=0;
+  private lastBuildSteps=0;
   private seatedAt=Infinity;
-  get seatState(){return this.seat?{pending:this.pendingSeat,gain:this.seatGain.value,
+  get seatState(){return this.seat?{pending:this.pendingSeat,gain:this.seatGain.value,lastSliceMS:this.lastSliceMS,lastBuildSteps:this.lastBuildSteps,
     ready:Array.from(this.visible.values()).filter(q=>String(q.userData.inlandMode).includes('|seat:')).length}:null;}
 
   private lastPatchKey='';
@@ -133,18 +138,27 @@ export class Roads {
     return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated);
   }
 
-  private mesh(tile: Tile,patches:readonly CoastalGrid[] = [], seated=false) {
-    const pos:number[]=[], colors:number[]=[], surface:number[]=[],seatDelta:number[]=[];
+  private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){
+    const task=this.meshSteps(tile,patches,seated,false);
+    const next=task.next();
+    if(!next.done)throw Error('Unbudgeted road mesh must finish synchronously');
+    return next.value;
+  }
+  private *meshSteps(tile:Tile,patches:readonly CoastalGrid[],seated:boolean,cooperate:boolean):Generator<void,THREE.Mesh>{
+    const pos:RoadFloatChunks|number[]=cooperate?new RoadFloatChunks():[],colors:RoadFloatChunks|number[]=cooperate?new RoadFloatChunks():[],
+      surface:RoadFloatChunks|number[]=cooperate?new RoadFloatChunks(v=>v/127):[],seatDelta:RoadFloatChunks|number[]=cooperate?new RoadFloatChunks():[];
     const layout=seated?sidewalkGrid(this.terrain):null;
     const baselineHeight=this.terrain.inlandGrids.length
       ?(x:number,z:number)=>this.terrain.coastalGrids.find(g=>g.near(x,z))?.height(x,z)??this.terrain.atlasElevation(x,z)
       :(x:number,z:number)=>this.terrain.meshElevation(x,z);
     for(let i=0;i<tile.segments.length;i+=5){
+      if(cooperate&&i)yield;
       const [x0,z0,x1,z1,flags]=tile.segments.slice(i,i+5);
       const dx=x1-x0, dz=z1-z0, len=Math.hypot(dx,dz), width=HALF_WIDTH[flags&7];
       const rx=dz*width/len, rz=-dx*width/len, n=Math.ceil(len/28);
       const isBridge=!!(flags&16), color=isBridge?bridge:(flags&8)?tarmac:(flags&32)?dirt:gravel;
       for(let k=0;k<n;k++){
+        if(cooperate&&k>0&&(k&3)===0)yield;
         const p=k/n,q=(k+1)/n,x=x0+p*dx,z=z0+p*dz,u=x0+q*dx,v=z0+q*dz;
         const mx=(x+u)/2,mz=(z+v)/2;
         if(isBridge ? isConfederationBridge(mx,mz) : !this.terrain.isLand(mx,mz))continue;
@@ -189,17 +203,29 @@ export class Roads {
         }
       }
     }
+    if(cooperate)yield;
     const g=new THREE.BufferGeometry();
-    g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
-    g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
-    g.setAttribute('roadSurface',seated?new THREE.Float32BufferAttribute(surface.map(v=>v/127),2):new THREE.Int8BufferAttribute(surface,2,true));
-    g.computeVertexNormals();
-    if(this.seat){
-     const delta=new Float32Array(seatDelta);
-     let maxDrop=0;
-     for(const amount of delta)maxDrop=Math.max(maxDrop,Math.abs(amount));
-     g.setAttribute('roadSeatDelta',new THREE.BufferAttribute(delta,1));
-     g.computeBoundingSphere();if(g.boundingSphere)g.boundingSphere.radius+=maxDrop;
+    if(pos instanceof RoadFloatChunks&&colors instanceof RoadFloatChunks&&surface instanceof RoadFloatChunks&&seatDelta instanceof RoadFloatChunks){
+     g.setAttribute('position',new THREE.BufferAttribute(yield* pos.finish(),3));yield;
+     g.setAttribute('color',new THREE.BufferAttribute(yield* colors.finish(),3));yield;
+     g.setAttribute('roadSurface',new THREE.BufferAttribute(yield* surface.finish(),2));yield;
+     yield* normalizeRoadTriangles(g);yield;
+     const delta=yield* seatDelta.finish();
+     g.setAttribute('roadSeatDelta',new THREE.BufferAttribute(delta,1));yield;
+     yield* expandRoadBounds(g,delta);
+    }else{
+     g.setAttribute('position',new THREE.Float32BufferAttribute(pos as number[],3));
+     g.setAttribute('color',new THREE.Float32BufferAttribute(colors as number[],3));
+     const packed=surface as number[];
+     g.setAttribute('roadSurface',seated?new THREE.Float32BufferAttribute(packed.map(v=>v/127),2):new THREE.Int8BufferAttribute(packed,2,true));
+     g.computeVertexNormals();
+     if(this.seat){
+      const delta=new Float32Array(seatDelta as number[]);
+      let maxDrop=0;
+      for(const amount of delta)maxDrop=Math.max(maxDrop,Math.abs(amount));
+      g.setAttribute('roadSeatDelta',new THREE.BufferAttribute(delta,1));
+      g.computeBoundingSphere();if(g.boundingSphere)g.boundingSphere.radius+=maxDrop;
+     }
     }
     const mesh=new THREE.Mesh(g,this.material);
     mesh.position.set(tile.x,0,tile.z);
@@ -222,7 +248,11 @@ export class Roads {
     }
     const wanted=nearby.sort((a,b)=>a.d-b.d||a.id.localeCompare(b.id)).slice(0,4).map(t=>t.id);
     const seatKey=wanted.join(';');
-    let seatSlot=1;
+    const budgetStart=performance.now(),deadline=budgetStart+ROAD_BUILD_SLICE_MS;
+    this.lastSliceMS=0;this.lastBuildSteps=0;
+    if(this.seatBuild&&!wanted.includes(this.seatBuild.key)){
+     this.seatBuild.generator.return(undefined!);this.seatBuild=undefined;
+    }
     const shown=this.nearPatches?.(),patchKey=shown?.map(g=>g.spec.id).join(',')??'';
     const moved=Math.hypot(x-this.lastX,z-this.lastZ)>=420;
     if(!moved&&patchKey===this.lastPatchKey&&seatKey===this.previousSeat&&!this.pendingSeat)return;
@@ -251,7 +281,18 @@ export class Roads {
       const variants=this.madeVariants.get(key)??new Map<string,THREE.BufferGeometry>();
       this.madeVariants.set(key,variants);
       let cached=variants.get(mode);
-      if(opted&&!cached&&seatSlot--<=0){this.pendingSeat=true;mode=base;cached=variants.get(base);}
+      if(opted&&!cached){
+       if(this.seatBuild?.key===key&&this.seatBuild.mode!==mode){
+        this.seatBuild.generator.return(undefined!);this.seatBuild=undefined;
+       }
+       if(!this.seatBuild)this.seatBuild={key,mode,generator:this.meshSteps(t,candidates,true,true)};
+       if(this.seatBuild.key===key){
+        const at=performance.now(),result=advanceRoadBuild(this.seatBuild.generator,deadline);
+        this.lastBuildSteps+=result.steps;this.lastSliceMS+=performance.now()-at;
+        if(result.done){cached=result.value.geometry;variants.set(mode,cached);this.seatBuild=undefined;}
+       }
+       if(!cached){this.pendingSeat=true;mode=base;cached=variants.get(base);}
+      }
       if(current&&current.userData.inlandMode===mode)continue;
       if(!cached){cached=this.mesh(t,candidates,mode.includes('|seat:')).geometry;variants.set(mode,cached);}
       if(current){current.geometry=cached;current.userData.inlandMode=mode;}
