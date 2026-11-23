@@ -1,0 +1,5 @@
+{
+ "borden-large-roof":{"lon":-63.67939694117648,"lat":46.260020117647066,"h":11.0,"east":0.56,"south":0.83,"nearDist":145,"nearAgl":98,"owner":"q0300"},
+ "stratford-large-roof":{"lon":-63.072884666666674,"lat":46.218529999999994,"h":10.5,"east":0.66,"south":0.76,"nearDist":142,"nearAgl":99,"owner":"q102233"},
+ "georgetown-large-roof":{"lon":-62.54308471428572,"lat":46.19439985714286,"h":9.5,"east":0.64,"south":0.77,"nearDist":131,"nearAgl":92,"owner":"q11222"}
+}

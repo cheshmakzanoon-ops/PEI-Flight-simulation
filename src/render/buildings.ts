@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {readRoofTone} from './roof-tone.ts';
 import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
 import type {NorthBaywalk} from './north-baywalk.ts';
 import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
@@ -389,7 +390,9 @@ export class Buildings {
     if(middle===b)wall(a,b,0,len);
     else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
    }}
-   const roofVert=(p:Pt,y:number)=>vertex(p,y,cr,p.x-ox,p.z-oz,1);
+   const observed=rings.length===1?readRoofTone(this.atlasHash,tile.id,i,f.footprint):undefined;
+   const roofColor=observed?new THREE.Color().setRGB(...observed):cr;
+   const roofVert=(p:Pt,y:number)=>vertex(p,y,roofColor,p.x-ox,p.z-oz,1);
    if(synthGable&&!fit&&!neutral){
     const length=(a:Pt,b:Pt)=>Math.hypot(a.x-b.x,a.z-b.z);
     let a=ring[0],b=ring[1],c=ring[2],d=ring[3];

@@ -5,8 +5,8 @@ import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
-const [, , repoDir, preDir, witnessPath, posePath, out]=process.argv;
-if(!out)throw Error('KINGS_CANDIDATE_ROOT PREDECESSOR_ROOT EXACT_WITNESS_JSON POSE_RESULTS_JSON PROJECTED_OUT');
+const [, , repoDir, preDir, witnessPath, posePath, out, opt]=process.argv;
+if(!out||opt!==undefined&&opt!=='--roofs-only')throw Error('CANDIDATE_ROOT PREDECESSOR_ROOT EXACT_WITNESS_JSON POSE_RESULTS_JSON PROJECTED_OUT [--roofs-only]');
 const repo=path.resolve(repoDir),pre=path.resolve(preDir);
 const load=(r,f)=>import(pathToFileURL(path.join(r,f)));
 const j=p=>JSON.parse(fs.readFileSync(p));
@@ -46,6 +46,7 @@ for(const fixture of poses){
    const m=render.generate(list,tile);m.updateMatrixWorld();
    const pa=m.geometry.attributes.position;
    for(let k=0;k<pa.count;k+=3){
+    if(opt==='--roofs-only'&&m.geometry.attributes.topFlag.getX(k)!==1)continue;
     const clip=[0,1,2].map(i=>new three.Vector3().fromBufferAttribute(pa,k+i).applyMatrix4(m.matrixWorld));
     const valid=clip.map(p=>p.clone().applyMatrix4(cam.matrixWorldInverse).z<-.08);
     // These nearby source masks are off-camera if behind the camera.

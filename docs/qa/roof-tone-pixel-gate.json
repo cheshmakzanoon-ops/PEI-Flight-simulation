@@ -1,0 +1,132 @@
+{
+  "borden-large-roof-close": {
+    "negativeControlPixels": 334996,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 10940,
+    "atlasTextures": [
+      "10-14",
+      "10-15",
+      "10-16",
+      "8-14",
+      "8-15",
+      "9-14",
+      "9-15",
+      "9-16"
+    ],
+    "buildingChunks": [
+      "q012",
+      "q0300",
+      "q03010",
+      "q03012",
+      "q03021",
+      "q03030"
+    ],
+    "draws": [
+      57,
+      57
+    ],
+    "triangles": [
+      316337,
+      316337
+    ],
+    "msaa": 4
+  },
+  "stratford-large-roof-close": {
+    "negativeControlPixels": 328377,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 17076,
+    "atlasTextures": [
+      "16-15",
+      "16-16",
+      "16-17",
+      "17-15",
+      "17-16",
+      "17-17",
+      "18-15",
+      "18-16",
+      "18-17"
+    ],
+    "buildingChunks": [
+      "q10220",
+      "q10221",
+      "q10222",
+      "q1022300",
+      "q1022301",
+      "q1022302",
+      "q1022303",
+      "q102231",
+      "q1022320",
+      "q1022321",
+      "q1022322",
+      "q1022323",
+      "q102233",
+      "q10232",
+      "q12000110",
+      "q12000111",
+      "q12000112",
+      "q12000113",
+      "q12000130",
+      "q12000131",
+      "q12000133",
+      "q1200031",
+      "q120010",
+      "q120011",
+      "q1200120",
+      "q1200121",
+      "q1200122",
+      "q1200123",
+      "q120013",
+      "q12010"
+    ],
+    "draws": [
+      60,
+      60
+    ],
+    "triangles": [
+      450404,
+      450404
+    ],
+    "msaa": 4
+  },
+  "georgetown-large-roof-close": {
+    "negativeControlPixels": 327217,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 17976,
+    "atlasTextures": [
+      "23-16",
+      "23-17",
+      "23-18",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-16",
+      "25-17",
+      "25-18"
+    ],
+    "buildingChunks": [
+      "q1031",
+      "q103311",
+      "q103312",
+      "q103313",
+      "q10333",
+      "q1120",
+      "q11220",
+      "q11222",
+      "q11223",
+      "q1211",
+      "q1300"
+    ],
+    "draws": [
+      53,
+      53
+    ],
+    "triangles": [
+      352460,
+      352460
+    ],
+    "msaa": 4
+  }
+}
