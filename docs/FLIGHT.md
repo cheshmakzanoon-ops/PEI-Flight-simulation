@@ -47,3 +47,8 @@ This is still an assist-stabilized point-mass model for a fictional aircraft.
 It does not yet simulate rigid-body moments, independent control-surface
 deflections, flap schedules, propeller slipstream or validated crosswind
 handling. See [aircraft development and validation](AIRCRAFT.md).
+
+Engine power now falls as you climb into thinner air. Moving the lever to
+the same position does not guarantee the same climb rate at every altitude.
+See the [measured flight envelope](qa/POWERED-CLIMB.md) for what has and
+has not been matched to the reference.

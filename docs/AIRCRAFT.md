@@ -75,3 +75,7 @@ windmilling drag. Ordinary player flights and the normal-idle baseline remain un
 
 See the [propeller shape and ground-clearance review](qa/PROPELLER.md) for
 matched engine renders, the reference dimensions and the draw/geometry cost.
+
+The [powered-climb envelope](qa/POWERED-CLIMB.md) documents the
+naturally aspirated shaft-power ceiling, five comparison flights and a
+separate 90-KIAS check that still climbs too quickly.

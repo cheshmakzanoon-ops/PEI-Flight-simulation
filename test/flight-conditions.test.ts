@@ -7,17 +7,19 @@ const surface = () => ({height:0, land:true, runway:true});
 const airStart = () => spawn({...SITES[0], lon:-63.2, lat:46.5, heading:0, height:1200}, surface);
 const near = (a:number,b:number,tolerance=1e-8) => assert.ok(Math.abs(a-b)<=tolerance,`${a} ≠ ${b}`);
 
-test('default mass and wind reproduce the original fixed-step player trajectory', () => {
-  const f = airStart(), explicit = {...f};
+test('default mass and wind reproduce the original unpowered fixed-step trajectory', () => {
+  const f = airStart();f.throttle=0;
+  const explicit = {...f};
   const u = {...neutral, roll:.2, yaw:.04};
   for (let i=0; i<2700; i++) {
     step(f,u,surface);
     step(explicit,u,surface,FIXED_STEP,DEFAULT_FLIGHT_CONDITIONS);
   }
   assert.deepEqual(f,explicit);
-  // From the actual unmodified cf2d2ab production integrator, identical inputs.
+  // From the previous production integrator, with the exact same zero-thrust input:
+  // a clean control for the coordinate integrator while powered dynamics evolve.
   for (const [value,want] of [
-    [f.x,1034.30258659427],[f.y,1218.7795811148535],[f.z,-1236.8612091483046],[f.speed,59.189386125269195],[f.heading,1.3029238525801414],
+    [f.x,857.0422456511338],[f.y,1135.8337946833285],[f.z,-895.7378032142302],[f.speed,41.859133467751114],[f.heading,1.5895476880493735],
   ]) near(value,want);
 });
 

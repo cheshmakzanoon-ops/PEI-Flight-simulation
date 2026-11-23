@@ -44,7 +44,7 @@ resistive power is torque times angular velocity, bounded to 42% of the
 incident air power passing through the disk. At zero speed there is no
 windmilling force or rotation. These are quasi-steady game approximations,
 not measured propeller coefficients, governor response, mixture simulation,
-cylinder dynamics or feathering. The powered-airplane force curve is unchanged.
+cylinder dynamics or feathering. The failure bypasses the separate [powered thrust model](POWERED-CLIMB.md).
 
 Optional player-level test (Python Playwright and an installed Chromium):
 ```sh

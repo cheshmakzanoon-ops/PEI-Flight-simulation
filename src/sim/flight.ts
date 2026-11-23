@@ -1,3 +1,4 @@
+import {poweredThrustN} from './powerplant.ts';
 import {windmillDragN} from './windmilling.ts';
 import { aerodynamicPolar, airDensity } from './aerodynamics.ts';
 import { clamp, damp, wrap, project, RAD } from './geo.ts';
@@ -52,8 +53,8 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP,conditions:
  f.time+=dt;
  const pitch=clamp(u.pitch,-1,1),roll=clamp(u.roll,-1,1),yaw=clamp(u.yaw,-1,1);
  f.throttle=clamp(f.throttle+clamp(u.power,-1,1)*.32*dt,0,1);
- const q=.5*airDensity(f.y)*f.speed*f.speed;
- const thrust=f.engineOut?0:Math.min(3600,188000/Math.max(f.speed,24))*f.throttle;
+ const density=airDensity(f.y),q=.5*density*f.speed*f.speed;
+ const thrust=f.engineOut?0:poweredThrustN(f.speed,density,f.throttle);
  const onGround=f.status!=='flying';
  const positiveAuthority=.22+.24*clamp((f.speed-36)/23,0,1);
  const targetPitch=onGround?Math.max(0,pitch)*.24:.040+pitch*(pitch>0?positiveAuthority:.48);

@@ -14,8 +14,10 @@ const terrain = new Terrain(
 );
 const surface=(x:number,z:number)=>({height:terrain.elevation(x,z)+.12,land:terrain.isLand(x,z),runway:!!runwayAt(x,z)});
 
-test('province-scale flight crosses from West Prince to East Point in one continuous simulation', ()=>{
+for (const route of [{name:'default 56% lever',power:.56,minS:3100,maxS:3700},{name:'75% cruise lever',power:.75,minS:2400,maxS:2900}]) {
+test('province-scale flight crosses from West Prince to East Point continuously: '+route.name, ()=>{
   const f=spawn({id:'west',name:'Cross-island flight',region:'Prince County',lon:-64.34,lat:46.76,heading:106,height:1500,note:''},surface);
+  f.throttle=route.power;
   const target=project(-62.00,46.46);
   const sx=f.x,sz=f.z;
   for(let i=0;i<500000;i++){
@@ -31,8 +33,9 @@ test('province-scale flight crosses from West Prince to East Point in one contin
   assert.equal(f.status,'flying');
   assert.ok(Math.hypot(f.x-target.x,f.z-target.z)<700);
   assert.ok(Math.hypot(f.x-sx,f.z-sz)>180000);
-  assert.ok(f.time>2400&&f.time<2900);
+  assert.ok(f.time>route.minS&&f.time<route.maxS);
 });
+}
 
 test('short final, flare and braking complete on the measured Charlottetown runway', ()=>{
   const r=RUNWAYS[0];
