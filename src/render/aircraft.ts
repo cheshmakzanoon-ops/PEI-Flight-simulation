@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import {makePropeller} from './propeller.ts';
+import {SURVEY_AIRFRAME} from '../sim/flight.ts';
 import { DIALS, dialAngle } from './instruments.ts';
 
 /** Original high-wing survey aircraft. Local +Y up, -Z forward. All dimensions in metres. */
@@ -73,6 +75,11 @@ export function createAircraft() {
  for(const [z,w,cy,h] of rings){for(let j=0;j<sides;j++){const a=j*2*Math.PI/sides,cs=Math.cos(a),sn=Math.sin(a);
  arr.push(w*Math.sign(cs)*Math.pow(Math.abs(cs),.80),cy+h*Math.sign(sn)*Math.pow(Math.abs(sn),.82),z);}}
  for(let i=0;i<rings.length-1;i++)for(let j=0;j<sides;j++){const a=i*sides+j,b=i*sides+(j+1)%sides;ind.push(a,b,a+sides,b,b+sides,a+sides);}
+ // The smaller measured spinner no longer covers the whole first hull ring.
+ // Close the cowling with its own face normals instead of exposing an open shell.
+ const rim=arr.length/3;arr.push(...arr.slice(0,sides*3));
+ const noseCentre=arr.length/3;arr.push(0,rings[0][2],rings[0][0]);
+ for(let j=0;j<sides;j++)ind.push(noseCentre,rim+(j+1)%sides,rim+j);
  const hullG=new THREE.BufferGeometry();hullG.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));hullG.setIndex(ind);hullG.computeVertexNormals();mesh(hullG,pearl);
  // Follow the same hull cross sections used by the renderer so glazing does not cut through
  // exterior paint. A short standoff represents the thickness of the window frame.
@@ -178,20 +185,8 @@ export function createAircraft() {
  p.forEach((a,i)=>{const b=p[(i+1)%p.length];if(side===1)poly([a,b,[-b[0],b[1],b[2]],[-a[0],a[1],a[2]]],teal);});
  }
  navLens(0,.18,5.52,0xffecd1);
- const spinner=mesh(new THREE.ConeGeometry(.35,.64,24),teal);spinner.rotation.x=-Math.PI/2;spinner.position.set(0,-.06,-4.23);
- const prop=new THREE.Group();prop.position.set(0,-.06,-4.02);root.add(prop);
- for(let i=0;i<3;i++){const blade=new THREE.Group();blade.rotation.z=i*2*Math.PI/3;prop.add(blade);
-   poly([[-.04,.25,0],[-.10,.68,.01],[-.15,1.16,.05],[-.02,1.26,.06],[.075,.92,.02],[.08,.45,0]],dark,blade);
-   poly([[-.15,1.16,.054],[-.025,1.265,.065],[.01,1.20,.058],[-.135,1.10,.049]],ochre,blade);
- }
- const discCanvas=document.createElement('canvas');discCanvas.width=discCanvas.height=192;const ds=discCanvas.getContext('2d')!;
- ds.translate(96,96);for(let i=0;i<48;i++){const r=24+i*1.46;
- ds.strokeStyle='rgba(18,29,30,'+(.035+.026*(.5+.5*Math.sin(i*.65)))+')';ds.lineWidth=1.75;ds.beginPath();ds.arc(0,0,r,0,Math.PI*2);ds.stroke();}
- for(let b=0;b<3;b++)for(let j=0;j<35;j++){const a=b*Math.PI*2/3+j*.030;ds.strokeStyle='rgba(52,56,52,'+(Math.sin(j/35*Math.PI)*.028)+')';ds.lineWidth=2;
- ds.beginPath();ds.moveTo(Math.cos(a)*30,Math.sin(a)*30);ds.lineTo(Math.cos(a+.04)*89,Math.sin(a+.04)*89);ds.stroke();}
- const blurMap=new THREE.CanvasTexture(discCanvas);blurMap.colorSpace=THREE.SRGBColorSpace;
- const propDisc=mesh(new THREE.PlaneGeometry(2.6,2.6),new THREE.MeshBasicMaterial({map:blurMap,transparent:true,depthWrite:false,side:THREE.DoubleSide}));
- propDisc.position.copy(prop.position);
+ const {prop,propDisc,spinner,setProp}=makePropeller(SURVEY_AIRFRAME.gearHeightM);
+ root.add(spinner,prop,propDisc);
  // Original cockpit framing and analog gauge deck used in the pilot camera.
  const cockpit=new THREE.Group();root.add(cockpit);
  const dash=mesh(new THREE.BoxGeometry(1.13,.24,.26),dark,cockpit);dash.position.set(0,.37,-1.32);
@@ -234,5 +229,5 @@ export function createAircraft() {
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}
  let previousInside:boolean|undefined;
  return {root,prop,cockpit,needles,setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
- setProp(power:number){const blur=power>.15;prop.visible=!blur;propDisc.visible=blur;propDisc.rotation.z=prop.rotation.z*.32;}};
+ setProp};
 }

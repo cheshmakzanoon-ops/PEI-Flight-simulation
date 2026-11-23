@@ -72,3 +72,6 @@ coefficient and the later separation flag, then requires a sustained return to g
 
 A separate, opt-in [engine-out free-flight scenario](qa/ENGINE-OUT.md) adds
 windmilling drag. Ordinary player flights and the normal-idle baseline remain unchanged.
+
+See the [propeller shape and ground-clearance review](qa/PROPELLER.md) for
+matched engine renders, the reference dimensions and the draw/geometry cost.

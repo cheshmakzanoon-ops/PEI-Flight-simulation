@@ -1,10 +1,11 @@
+import {PROPELLER} from './propeller-spec.ts';
 /**
  * Passive propeller approximation for an explicit engine-failure scenario ONLY.
  * The 79-in disk is the reference 182T NAV III's published diameter. Advance
  * ratio, backdrive torque and low-speed engagement are simulator assumptions,
  * not measured prop data. See docs/qa/ENGINE-OUT.md for calibration and limits.
  */
-const DIAMETER_M = 79 * .0254;
+const DIAMETER_M = PROPELLER.diameterM;
 const DISK_AREA_M2 = Math.PI * DIAMETER_M ** 2 / 4;
 const ADVANCE_RATIO = .90;
 const EFFECTIVE_BACKDRIVE_TORQUE_NM = 130;
