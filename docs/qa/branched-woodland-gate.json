@@ -1,0 +1,151 @@
+{
+  "finalMatched": {
+    "prince-close": {
+      "before": {
+        "draws": 39,
+        "triangles": 376100
+      },
+      "after": {
+        "draws": 43,
+        "triangles": 499254
+      },
+      "bare": {
+        "draws": 38,
+        "triangles": 324332
+      },
+      "n": 69,
+      "exactRestored": true,
+      "pixels": {
+        "n": 533600,
+        "changed": 280422,
+        "over2": 278009,
+        "max": 220,
+        "outsideFoliage": 0
+      }
+    },
+    "queens-close": {
+      "before": {
+        "draws": 98,
+        "triangles": 340849
+      },
+      "after": {
+        "draws": 102,
+        "triangles": 468569
+      },
+      "bare": {
+        "draws": 97,
+        "triangles": 293165
+      },
+      "n": 72,
+      "exactRestored": true,
+      "pixels": {
+        "n": 533600,
+        "changed": 204744,
+        "over2": 202342,
+        "max": 179,
+        "outsideFoliage": 0
+      }
+    }
+  },
+  "highControl": {
+    "before": {
+      "draws": 18,
+      "triangles": 306052
+    },
+    "after": {
+      "draws": 18,
+      "triangles": 306052
+    },
+    "bare": {
+      "draws": 17,
+      "triangles": 258510
+    },
+    "n": 0,
+    "exactRestored": true,
+    "pixels": {
+      "n": 533600,
+      "changed": 0,
+      "over2": 0,
+      "max": 0,
+      "outsideFoliage": 0
+    }
+  },
+  "forcedNoMSAA": {
+    "before": {
+      "draws": 98,
+      "triangles": 340849
+    },
+    "after": {
+      "draws": 98,
+      "triangles": 340849
+    },
+    "bare": {
+      "draws": 97,
+      "triangles": 293165
+    },
+    "n": 0,
+    "exactRestored": true,
+    "pixels": {
+      "n": 533600,
+      "changed": 0,
+      "over2": 0,
+      "max": 0,
+      "outsideFoliage": 0
+    }
+  },
+  "earlierSameGeometryKings": {
+    "before": {
+      "draws": 44,
+      "triangles": 381240
+    },
+    "after": {
+      "draws": 48,
+      "triangles": 512442
+    },
+    "bare": {
+      "draws": 43,
+      "triangles": 312028
+    },
+    "n": 74,
+    "exactRestored": true,
+    "pixels": {
+      "n": 533600,
+      "changed": 264804,
+      "over2": 264460,
+      "max": 171,
+      "outsideFoliage": 0
+    }
+  },
+  "bundleFailure": {
+    "beforeFlagOff": {
+      "samples": 4,
+      "attached": false,
+      "n": 0,
+      "shapes": 0,
+      "pathCount": 0,
+      "requests": [],
+      "drawCalls": 100,
+      "triangles": 352405,
+      "loadedTerrain": 18,
+      "errors": [],
+      "canvasSha256": "b08f43619f8bf55859d6d22d20f556b19abfdec740dfd920e0cdebd9624d4c7f"
+    },
+    "branchAssetEvaluationError": {
+      "samples": 4,
+      "attached": false,
+      "n": 0,
+      "shapes": 0,
+      "pathCount": 1,
+      "requests": [
+        "/assets/woodland-volume-nly8udjp.js"
+      ],
+      "drawCalls": 100,
+      "triangles": 352405,
+      "loadedTerrain": 18,
+      "errors": [],
+      "canvasSha256": "b08f43619f8bf55859d6d22d20f556b19abfdec740dfd920e0cdebd9624d4c7f"
+    },
+    "canvasDiffPixels": 0,
+    "expectedSource": "runtime source, production Vite split, only fixture camera and fault injection customized"
+  }
+}

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import type {ForestHeights} from '../sim/forest-heights.ts';
+import type {WoodlandVolume} from './woodland-volume.ts';
 import type {HedgeStream} from '../sim/hedge-stream.ts';
 import type {ForestStream} from '../sim/forest-stream.ts';
 import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
@@ -70,6 +71,8 @@ export class Vegetation {
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private hedgeGround=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private hedgeStart=0;
+ private forestRevision=0;
+ private volume?:WoodlandVolume;
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
@@ -83,6 +86,26 @@ export class Vegetation {
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
  }
+ attachVolume(layer:WoodlandVolume){
+  this.volume=layer;this.geom.setAttribute('branchActive',layer.mask);
+  const previous=this.crown.material as THREE.ShaderMaterial;
+  const vert=`
+    attribute float branchActive;uniform vec3 volumeFade;varying float branchWeight;
+  `+crownV.replace('void main(){',`void main(){
+    branchWeight=branchActive*volumeFade.z*(1.-smoothstep(volumeFade.x,volumeFade.y,length(stem.xz-cameraPosition.xz)));
+  `);
+  const frag='varying float branchWeight;\n'+crownF.replace('void main(){',`void main(){
+    if(branchWeight>.997)discard;
+  `).replace('clamp((a-.30)*3.8,0.,1.)','clamp((a-.30)*3.8,0.,1.)*(1.-branchWeight)');
+  this.crown.material=new THREE.ShaderMaterial({vertexShader:vert,fragmentShader:frag,
+    uniforms:{...previous.uniforms,volumeFade:layer.fade},side:THREE.DoubleSide,alphaToCoverage:true});
+  previous.dispose();
+ }
+ updateVolume(x:number,z:number,agl:number){
+  const v=this.volume;if(!v)return;
+  v.update(this.stems.array as Float32Array,this.shapes.array as Float32Array,this.hedgeStart,x,z,agl,this.forestRevision);
+ }
+ get volumeCount(){return this.volume?.count??0;}
  private readonly roofBits=new Uint32Array(8);
  private tile(tx:number,tz:number){
   const a:number[]=[],hasRoofHits=fillRoofTile(tx,tz,this.roofBits);
@@ -155,6 +178,7 @@ export class Vegetation {
   this.hedgeStart=originalCount;
   this.lastHedges=count-originalCount;
   for(const key of this.cache.keys())if(!wanted.has(key))this.cache.delete(key);
+  this.forestRevision++;
   this.geom.instanceCount=count;this.stems.clearUpdateRanges();this.stems.addUpdateRange(0,count*3);this.stems.needsUpdate=true;
   this.shapes.clearUpdateRanges();this.shapes.addUpdateRange(0,count*4);this.shapes.needsUpdate=true;
  }

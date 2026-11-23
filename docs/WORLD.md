@@ -199,3 +199,5 @@ roof outlines; the pass is not a survey of individual trees.
 - [Close paved-road material](qa/paved-road-material.md): calibrated stock photographic aggregate, existing road ribbons only.
 
 - [Optional terrain-seated road preview](qa/seated-road-preview.md): original plan geometry and material classes, regular near contact only.
+
+- [Optional near branched woodland](qa/branched-woodland-preview.md): true 3D near canopy, source stem positions preserved.
