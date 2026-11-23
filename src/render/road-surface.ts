@@ -1,11 +1,13 @@
 import type {MeshStandardMaterial} from 'three';
+import type {RoadPavement} from './road-pavement.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
-export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows){
- material.customProgramCacheKey=()=> casts?'pei-road-surface-shadow-v2':'pei-road-surface-v2';
+export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement){
+ material.customProgramCacheKey=()=> 'pei-road-surface-v3'+(casts?'-cast':'')+(pavement?'-pavement':'');
  material.onBeforeCompile=(shader)=>{
   if(casts)Object.assign(shader.uniforms,casts.uniforms);
+  if(pavement)Object.assign(shader.uniforms,pavement.uniforms);
   shader.vertexShader=shader.vertexShader.replace('#include <common>',`
    #include <common>
    attribute vec2 roadSurface;
@@ -21,6 +23,8 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
    #include <common>
    varying vec2 vRoadSurface,vRoadWorld;
    ${casts?'varying vec3 localRoadReceiver;'+buildingShadowGLSL:''}
+   ${pavement?`uniform sampler2D roadPaveA,roadPaveB;
+   uniform float roadPaveBlend;`:''}
    float roadHash(vec2 p){
     vec3 h=fract(vec3(p.xyx)*vec3(.1031,.1030,.0973));
     h+=dot(h,h.yzx+33.33);
@@ -33,6 +37,7 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
    }
   `).replace('#include <color_fragment>',`
    #include <color_fragment>
+   ${pavement?'vec3 roadPaveBasis=diffuseColor.rgb;':''}
    float px=length(fwidth(vRoadWorld));
    float medium=1.-smoothstep(.72,4.1,px), fine=1.-smoothstep(.12,.75,px);
    float edgePx=fwidth(vRoadSurface.x);
@@ -76,6 +81,47 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
     vec3 dust=mix(vec3(.34,.22,.13),vec3(.21,.15,.11),paved);
     diffuseColor.rgb=mix(diffuseColor.rgb,dust,shoulder*medium*(.28*gravel+.17*paved));
     }
+   }
+   ${pavement?`
+   // At a grazing angle meter-per-screen-pixel filtering fades the material
+   // before individual stones alias. Only existing paved-class ribbons use it.
+   float paveClass=step(.22,vRoadSurface.y)*(1.-step(.76,vRoadSurface.y));
+   float roadPaveAmount=roadPaveBlend*paveClass*(1.-smoothstep(.06,.40,px));
+   vec3 roadPaveNormal=vec3(0.);
+   float roadPaveRough=.98;
+   mat2 rotatePave=mat2(.804617,.593794,-.593794,.804617);
+   vec2 auv=vRoadWorld/2.,buv=rotatePave*vRoadWorld/2.5+vec2(.31,.57);
+   vec2 adx=dFdx(auv),ady=dFdy(auv),bdx=dFdx(buv),bdy=dFdy(buv);
+   if(roadPaveAmount>.0001){
+    vec4 a=textureGrad(roadPaveA,auv,adx,ady);
+    vec4 b=textureGrad(roadPaveB,buv,bdx,bdy);
+    // Irregular slow blend between two distinct aggregate scans; no sampled
+    // crack/repair implies the state of any specific PEI road.
+    float up=(roadNoise(vRoadWorld*.171+vec2(8.2,2.3))*.70
+      +roadNoise(vRoadWorld*.053+vec2(1.2,7.7))*.30);
+    float variant=smoothstep(.18,.82,up);
+    float tone=mix(a.r,b.r,variant);
+    float subduedWear=1.+.075*(roadNoise(vRoadWorld*.087)-.5);
+    float useEdge=smoothstep(.72,.98,abs(vRoadSurface.x))*(1.-smoothstep(.10,.63,edgePx));
+    vec3 newer=mix(roadPaveBasis*subduedWear,vec3(.21,.15,.11),useEdge*.12);
+    diffuseColor.rgb=mix(diffuseColor.rgb,newer*exp((tone-.5)*2.21),roadPaveAmount);
+    // Bitmap rows run along +z/positive v. The original OpenGL green
+    // component points opposite increasing source rows.
+    vec2 alongRows=vec2(1.,-1.);
+    vec2 tangent=mix((a.gb*2.-1.)*alongRows,transpose(rotatePave)*((b.gb*2.-1.)*alongRows),variant);
+    roadPaveNormal=vec3(tangent.x,0.,tangent.y)*(.25*roadPaveAmount);
+    roadPaveRough=clamp(.79+.19*mix(a.a,b.a,variant),.79,.98);
+   }
+   `:''}
+  `);
+  if(pavement)shader.fragmentShader=shader.fragmentShader.replace('#include <roughnessmap_fragment>',`
+   #include <roughnessmap_fragment>
+   if(roadPaveAmount>.0001)roughnessFactor=mix(roughnessFactor,roadPaveRough,roadPaveAmount);
+  `).replace('#include <normal_fragment_maps>',`
+   #include <normal_fragment_maps>
+   if(roadPaveAmount>.0001){
+    vec3 tangentNormal=mat3(viewMatrix)*roadPaveNormal;
+    normal=normalize(normal+tangentNormal-normal*dot(normal,tangentNormal));
    }
   `);
   if(casts)shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_end>',`

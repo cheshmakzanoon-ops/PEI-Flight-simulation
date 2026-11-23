@@ -194,3 +194,5 @@ roof outlines; the pass is not a survey of individual trees.
 
 - [Optional streamed 16 m inland relief](qa/adaptive-relief.md):
   selected protected inland surfaces, exact runtime mesh/contact, source pins, and limitations.
+
+- [Close paved-road material](qa/paved-road-material.md): calibrated stock photographic aggregate, existing road ribbons only.

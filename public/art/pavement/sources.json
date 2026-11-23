@@ -1,0 +1,69 @@
+{
+  "encoding": "512x512 lossless WebP RGBA; R=median-centered log-luminance (0.875x plus 0.5); G and B=OpenGL tangent x and y; A=roughness",
+  "assets": [
+    {
+      "id": "asphalt_track",
+      "page": "https://polyhaven.com/a/asphalt_track",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 2.0,
+      "authors": [
+        "Dimitrios Savva"
+      ],
+      "raw": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_track/asphalt_track_diff_1k.jpg",
+          "bytes": 858925,
+          "sha256": "05c4e79cd99160075969d37bfc6ef72be262153a410bb45510b2c23f7303894c"
+        },
+        {
+          "kind": "nor_gl",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_track/asphalt_track_nor_gl_1k.jpg",
+          "bytes": 832851,
+          "sha256": "18caf02427a7cd9cd577ceae5aa9daa7bb3ffba60598e2df8aaf75d1925a8a94"
+        },
+        {
+          "kind": "Rough",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_track/asphalt_track_rough_1k.jpg",
+          "bytes": 459197,
+          "sha256": "0646d0cfbe6bf9ea4a8a9e43aec826e7ec32a10b8aff61bf5a4ec02b1bc3c363"
+        }
+      ],
+      "file": "asphalt_track.webp",
+      "bytes": 576000,
+      "sha256": "b34a984bfe508cd8326d77735c9ec7c156575645870d6d2c4cf882d4631a12a0"
+    },
+    {
+      "id": "asphalt_07",
+      "page": "https://polyhaven.com/a/asphalt_07",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 2.5,
+      "authors": [
+        "Charlotte Baglioni"
+      ],
+      "raw": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_07/asphalt_07_diff_1k.jpg",
+          "bytes": 912821,
+          "sha256": "ac1dd04834e969f76c63773fd3ce7fba75727e36abd4bddb2fbeb06098e0f810"
+        },
+        {
+          "kind": "nor_gl",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_07/asphalt_07_nor_gl_1k.jpg",
+          "bytes": 1161422,
+          "sha256": "63543f5c0cee136adfb748622227a11ce53d4de0bf65eb23098a0711de353893"
+        },
+        {
+          "kind": "Rough",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_07/asphalt_07_rough_1k.jpg",
+          "bytes": 310740,
+          "sha256": "6030181a0b84cd405e88b1ae6d9e69b3fbc88c608633d79f5dd2000b9c55b6cc"
+        }
+      ],
+      "file": "asphalt_07.webp",
+      "bytes": 621156,
+      "sha256": "4bbf912432c9877eacf4191d48412fad5ed73c70fba8394b52b80c573770c614"
+    }
+  ]
+}

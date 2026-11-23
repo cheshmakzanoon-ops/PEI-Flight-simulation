@@ -4,6 +4,7 @@ import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import {cutInlandRoad} from '../sim/inland-road.ts';
 import type {CoastalGrid} from '../sim/coastal-terrain.ts';
+import {RoadPavement} from './road-pavement.ts';
 import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
@@ -64,6 +65,8 @@ export async function classifiedDirt(data:ArrayBuffer,count:number,verifiedDiges
 type Tile = {x: number; z: number; segments: number[]};
 export class Roads {
   private readonly root = new THREE.Group();
+  private readonly pavement=new RoadPavement(import.meta.env?.BASE_URL??"/");
+  get pavementStatus(){return this.pavement.state;}
   private readonly material = new THREE.MeshStandardMaterial({
     vertexColors: true, roughness: 0.98, side: THREE.DoubleSide,
     alphaToCoverage: true,
@@ -82,7 +85,7 @@ export class Roads {
   private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string) {
     this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
-    addRoadSurface(this.material,casts);
+    addRoadSurface(this.material,casts,this.pavement);
     scene.add(this.root);
   }
 
@@ -162,7 +165,8 @@ export class Roads {
     return mesh;
   }
 
-  update(x: number, z: number) {
+  update(x: number, z: number, agl=Infinity) {
+    this.pavement.update(agl);
     const shown=this.nearPatches?.(),patchKey=shown?.map(g=>g.spec.id).join(',')??'';
     const moved=Math.hypot(x-this.lastX,z-this.lastZ)>=420;
     if(!moved&&patchKey===this.lastPatchKey)return;

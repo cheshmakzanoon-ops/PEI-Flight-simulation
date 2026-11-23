@@ -1,0 +1,302 @@
+{
+  "summerside-curb": {
+    "baseline": {
+      "draws": 98,
+      "tris": 281510
+    },
+    "candidate": {
+      "draws": 98,
+      "tris": 281510
+    },
+    "mask": {
+      "draws": 98,
+      "tris": 281510
+    },
+    "restored": true,
+    "gain": 0.7870769230792156,
+    "pixels": {
+      "seen": 108465,
+      "changed": 95984,
+      "over2": 60544,
+      "over7": 12480,
+      "maximum": 33,
+      "unadmittedChanges": 0,
+      "n": 495000
+    },
+    "resources": [
+      "asphalt_track.webp",
+      "asphalt_07.webp"
+    ]
+  },
+  "summerside-low": {
+    "baseline": {
+      "draws": 71,
+      "tris": 246771
+    },
+    "candidate": {
+      "draws": 71,
+      "tris": 246771
+    },
+    "mask": {
+      "draws": 71,
+      "tris": 246771
+    },
+    "restored": true,
+    "gain": 0.786923076923077,
+    "pixels": {
+      "seen": 67138,
+      "changed": 58567,
+      "over2": 42878,
+      "over7": 19152,
+      "maximum": 28,
+      "unadmittedChanges": 0,
+      "n": 495000
+    },
+    "resources": [
+      "asphalt_track.webp",
+      "asphalt_07.webp"
+    ]
+  },
+  "east-point-control": {
+    "baseline": {
+      "draws": 14,
+      "tris": 224505
+    },
+    "candidate": {
+      "draws": 14,
+      "tris": 224505
+    },
+    "mask": {
+      "draws": 14,
+      "tris": 224505
+    },
+    "restored": true,
+    "gain": 0,
+    "pixels": {
+      "seen": 4926,
+      "changed": 0,
+      "over2": 0,
+      "over7": 0,
+      "maximum": 0,
+      "unadmittedChanges": 0,
+      "n": 495000
+    },
+    "resources": []
+  },
+  "missingMapControl": {
+    "baseline": {
+      "draws": 96,
+      "tris": 254741
+    },
+    "candidate": {
+      "draws": 96,
+      "tris": 254741
+    },
+    "mask": {
+      "draws": 96,
+      "tris": 254741
+    },
+    "restored": true,
+    "gain": 0,
+    "pixels": {
+      "seen": 108465,
+      "changed": 0,
+      "over2": 0,
+      "over7": 0,
+      "maximum": 0,
+      "unadmittedChanges": 0,
+      "n": 495000
+    },
+    "resources": [
+      "asphalt_track.webp",
+      "asphalt_07.webp"
+    ]
+  },
+  "actualWebGLReadback": [
+    {
+      "asset": "asphalt_track",
+      "err": 0,
+      "framebufferComplete": true,
+      "rowsUploadedInSourceOrder": true,
+      "channelDiffGPUVsSource": {
+        "max": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "changedPixels": 0,
+        "perChannelChanged": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "verticalFlipComparison": {
+        "max": [
+          222,
+          34,
+          49,
+          15
+        ],
+        "changedPixels": 262142,
+        "perChannelChanged": [
+          259436,
+          239794,
+          245468,
+          202752
+        ]
+      },
+      "oneRowShiftComparison": {
+        "max": [
+          221,
+          31,
+          65,
+          15
+        ],
+        "changedPixels": 262126,
+        "perChannelChanged": [
+          258463,
+          233920,
+          242297,
+          195317
+        ]
+      }
+    },
+    {
+      "asset": "asphalt_07",
+      "err": 0,
+      "framebufferComplete": true,
+      "rowsUploadedInSourceOrder": true,
+      "channelDiffGPUVsSource": {
+        "max": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "changedPixels": 0,
+        "perChannelChanged": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "verticalFlipComparison": {
+        "max": [
+          185,
+          64,
+          73,
+          9
+        ],
+        "changedPixels": 262144,
+        "perChannelChanged": [
+          259366,
+          253182,
+          253712,
+          153802
+        ]
+      },
+      "oneRowShiftComparison": {
+        "max": [
+          193,
+          62,
+          78,
+          9
+        ],
+        "changedPixels": 262140,
+        "perChannelChanged": [
+          258686,
+          250944,
+          254060,
+          140385
+        ]
+      }
+    }
+  ],
+  "normalDirectionWitness": [
+    {
+      "id": "asphalt_track",
+      "bytes": 576000,
+      "sha256": "b34a984bfe508cd8326d77735c9ec7c156575645870d6d2c4cf882d4631a12a0",
+      "heightEvidenceSha256": "08f2b7352fdc6491c751405c09ff9171c80f40ad3dc6dc0b798b9cc7c5d302e5",
+      "PIXELS": 262144,
+      "normalSlopeCorrelation": {
+        "sourceColumnXCorrect": 0.6824357313529901,
+        "currentSourceRowZ": -0.7570599707082543,
+        "flippedSourceRowZ": 0.7570599707082543,
+        "unexpectedCrossAxisX": -0.21820117953391405,
+        "unexpectedCrossAxisZ": 0.08174679445261906
+      },
+      "roughnessPackedCodes": {
+        "min": 199,
+        "median": 212.0,
+        "max": 217
+      },
+      "medianCenteredLogLumaMapAlphaIndependent": 128.0,
+      "currentWorldNormalAngularPerturbationDegreesQuantilesBeforeLodFade": [
+        0.48320122231725604,
+        0.9952761551559185,
+        1.7632901399208942,
+        4.543530680691158
+      ]
+    },
+    {
+      "id": "asphalt_07",
+      "bytes": 621156,
+      "sha256": "4bbf912432c9877eacf4191d48412fad5ed73c70fba8394b52b80c573770c614",
+      "heightEvidenceSha256": "7f83d44b967b42f9509a7a55925bf583b1f37aae2409aac422dba304979ac5c6",
+      "PIXELS": 262144,
+      "normalSlopeCorrelation": {
+        "sourceColumnXCorrect": 0.7894419629458843,
+        "currentSourceRowZ": -0.8510817596853343,
+        "flippedSourceRowZ": 0.8510817596853343,
+        "unexpectedCrossAxisX": -0.25984079155142314,
+        "unexpectedCrossAxisZ": 0.11705316703700026
+      },
+      "roughnessPackedCodes": {
+        "min": 224,
+        "median": 233.0,
+        "max": 235
+      },
+      "medianCenteredLogLumaMapAlphaIndependent": 128.0,
+      "currentWorldNormalAngularPerturbationDegreesQuantilesBeforeLodFade": [
+        1.0447499844522379,
+        2.2359058709056865,
+        3.670718155843371,
+        7.518354479339869
+      ]
+    }
+  ],
+  "inlandDirtControl": {
+    "baseline": {
+      "draws": 110,
+      "tris": 281938
+    },
+    "candidate": {
+      "draws": 110,
+      "tris": 281938
+    },
+    "mask": {
+      "draws": 110,
+      "tris": 281938
+    },
+    "restored": true,
+    "gain": 1,
+    "pixels": {
+      "seen": 1,
+      "changed": 0,
+      "over2": 0,
+      "over7": 0,
+      "maximum": 0,
+      "unadmittedChanges": 0,
+      "n": 495000
+    },
+    "resources": [
+      "asphalt_track.webp",
+      "asphalt_07.webp"
+    ]
+  }
+}
