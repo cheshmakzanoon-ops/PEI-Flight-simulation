@@ -1,0 +1,573 @@
+{
+  "anchoredGeometryProbe": [
+    {
+      "n": "Prince",
+      "treeCount": 668,
+      "oldSamples": 16700,
+      "below": 1389,
+      "floating": 2526,
+      "oldGap": [
+        -0.20511830088286231,
+        0.021649430197310693,
+        0.2606580435847867,
+        0.5035636271045156,
+        0.7410814153845351
+      ],
+      "newSamples": 10368,
+      "maxErr": 2.2628766496377017e-06
+    },
+    {
+      "n": "Queens",
+      "treeCount": 640,
+      "oldSamples": 16000,
+      "below": 1922,
+      "floating": 10697,
+      "oldGap": [
+        -0.6791253492246767,
+        -0.06201187376990447,
+        0.7309111455833559,
+        1.67567597113473,
+        2.4215298388578645
+      ],
+      "newSamples": 9426,
+      "maxErr": 4.111744325484279e-06
+    },
+    {
+      "n": "Kings",
+      "treeCount": 670,
+      "oldSamples": 16750,
+      "below": 2320,
+      "floating": 687,
+      "oldGap": [
+        -0.24748107100345607,
+        -0.04455664987986552,
+        0.1782302984890336,
+        0.3630642360979053,
+        0.5573793314979696
+      ],
+      "newSamples": 9822,
+      "maxErr": 3.8033543754631416e-06
+    }
+  ],
+  "matchedBrowserViews": {
+    "queens-hill": {
+      "original": {
+        "draws": 99,
+        "tris": 456224
+      },
+      "ground": {
+        "draws": 100,
+        "tris": 456568
+      },
+      "bare": {
+        "draws": 98,
+        "tris": 410438
+      },
+      "pointCount": 71,
+      "verts": 1032,
+      "restored": true,
+      "image": {
+        "pixels": 382200,
+        "changed": 68865,
+        "over2": 23729,
+        "max": 15,
+        "outside": 0
+      }
+    },
+    "queens-understory": {
+      "original": {
+        "draws": 96,
+        "tris": 457262
+      },
+      "ground": {
+        "draws": 97,
+        "tris": 457596
+      },
+      "bare": {
+        "draws": 95,
+        "tris": 411250
+      },
+      "pointCount": 71,
+      "verts": 1002,
+      "restored": true,
+      "image": {
+        "pixels": 382200,
+        "changed": 261676,
+        "over2": 104931,
+        "max": 20,
+        "outside": 0
+      }
+    },
+    "queens-high-control": {
+      "original": {
+        "draws": 17,
+        "tris": 302706
+      },
+      "ground": {
+        "draws": 17,
+        "tris": 302706
+      },
+      "bare": {
+        "draws": 16,
+        "tris": 255090
+      },
+      "pointCount": 0,
+      "verts": 0,
+      "restored": true,
+      "image": {
+        "pixels": 382200,
+        "changed": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      }
+    }
+  },
+  "pairedFloorMaterial": {
+    "queens-understory": {
+      "original": {
+        "draws": 98,
+        "tris": 473993
+      },
+      "ground": {
+        "draws": 99,
+        "tris": 474327
+      },
+      "bare": {
+        "draws": 97,
+        "tris": 425965
+      },
+      "pointCount": 71,
+      "verts": 1002,
+      "restored": true,
+      "image": {
+        "pixels": 382200,
+        "changed": 265880,
+        "over2": 105702,
+        "max": 21,
+        "outside": 0
+      }
+    }
+  },
+  "adaptiveExclusionJustification": {
+    "indexSHA": "b459c10444b85a4b7fa33a7a0ccfbf6fa63162e5db4a6344dd08b9b72831dbf0",
+    "tileCount": 199,
+    "guardedAdaptiveCells": 52975,
+    "couldReachOneClass10RasterCellAtMaximumExtent": 20,
+    "mayIntersectFromActualOldGridAtHeight30M": 24,
+    "examplePotentialOverlap": [
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76770.375,
+          -22860.06640625
+        ],
+        "projectedLatticeCell": [
+          -6398,
+          -1906
+        ],
+        "maxDoorSupportWidthMetres": 27.028016439964993,
+        "nominalHeight": 10.746962937805801
+      },
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76746.4140625,
+          -22863.126953125
+        ],
+        "projectedLatticeCell": [
+          -6396,
+          -1906
+        ],
+        "maxDoorSupportWidthMetres": 31.91875552232377,
+        "nominalHeight": 13.503351683449
+      },
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76766.3125,
+          -22848.794921875
+        ],
+        "projectedLatticeCell": [
+          -6398,
+          -1905
+        ],
+        "maxDoorSupportWidthMetres": 28.81674337349832,
+        "nominalHeight": 18.641873867157848
+      },
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76753.15625,
+          -22856.65234375
+        ],
+        "projectedLatticeCell": [
+          -6397,
+          -1905
+        ],
+        "maxDoorSupportWidthMetres": 26.11639301755931,
+        "nominalHeight": 10.901274140644817
+      },
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76741.9375,
+          -22852.931640625
+        ],
+        "projectedLatticeCell": [
+          -6396,
+          -1905
+        ],
+        "maxDoorSupportWidthMetres": 27.791526142833753,
+        "nominalHeight": 18.528506736643614
+      },
+      {
+        "tile": "3-7",
+        "cell": [
+          45,
+          54
+        ],
+        "treeWorldXZ": [
+          -76737.546875,
+          -22848.794921875
+        ],
+        "projectedLatticeCell": [
+          -6395,
+          -1905
+        ],
+        "maxDoorSupportWidthMetres": 30.307985699130224,
+        "nominalHeight": 13.441198638454079
+      },
+      {
+        "tile": "11-12",
+        "cell": [
+          68,
+          61
+        ],
+        "treeWorldXZ": [
+          -26800.12890625,
+          6833.6171875
+        ],
+        "projectedLatticeCell": [
+          -2234,
+          569
+        ],
+        "maxDoorSupportWidthMetres": 33.58751143687405,
+        "nominalHeight": 11.005304887983947
+      },
+      {
+        "tile": "14-13",
+        "cell": [
+          18,
+          26
+        ],
+        "treeWorldXZ": [
+          -11240.046875,
+          10877.6806640625
+        ],
+        "projectedLatticeCell": [
+          -937,
+          906
+        ],
+        "maxDoorSupportWidthMetres": 30.854433534527196,
+        "nominalHeight": 10.369486437179148
+      },
+      {
+        "tile": "14-13",
+        "cell": [
+          18,
+          26
+        ],
+        "treeWorldXZ": [
+          -11243.943359375,
+          10904.859375
+        ],
+        "projectedLatticeCell": [
+          -937,
+          908
+        ],
+        "maxDoorSupportWidthMetres": 35.05796560398303,
+        "nominalHeight": 10.05975460782647
+      },
+      {
+        "tile": "14-13",
+        "cell": [
+          18,
+          27
+        ],
+        "treeWorldXZ": [
+          -11243.943359375,
+          10904.859375
+        ],
+        "projectedLatticeCell": [
+          -937,
+          908
+        ],
+        "maxDoorSupportWidthMetres": 35.05796560398303,
+        "nominalHeight": 10.05975460782647
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          86,
+          1
+        ],
+        "treeWorldXZ": [
+          -7452.19677734375,
+          15397.23046875
+        ],
+        "projectedLatticeCell": [
+          -622,
+          1283
+        ],
+        "maxDoorSupportWidthMetres": 26.479142318456432,
+        "nominalHeight": 13.024775439500807
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          86,
+          1
+        ],
+        "treeWorldXZ": [
+          -7452.21484375,
+          15410.0419921875
+        ],
+        "projectedLatticeCell": [
+          -622,
+          1284
+        ],
+        "maxDoorSupportWidthMetres": 26.37593287169002,
+        "nominalHeight": 17.54612549552694
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          86,
+          1
+        ],
+        "treeWorldXZ": [
+          -7443.37060546875,
+          15411.3095703125
+        ],
+        "projectedLatticeCell": [
+          -621,
+          1284
+        ],
+        "maxDoorSupportWidthMetres": 33.98354935760145,
+        "nominalHeight": 17.047429842501877
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7445.21728515625,
+          15393.376953125
+        ],
+        "projectedLatticeCell": [
+          -621,
+          1282
+        ],
+        "maxDoorSupportWidthMetres": 26.66228899124544,
+        "nominalHeight": 17.759208864998072
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7436.95654296875,
+          15393.7431640625
+        ],
+        "projectedLatticeCell": [
+          -620,
+          1282
+        ],
+        "maxDoorSupportWidthMetres": 26.526354178762993,
+        "nominalHeight": 9.641121083404869
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7452.19677734375,
+          15397.23046875
+        ],
+        "projectedLatticeCell": [
+          -622,
+          1283
+        ],
+        "maxDoorSupportWidthMetres": 26.479142318456432,
+        "nominalHeight": 13.024775439500807
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7444.453125,
+          15405.490234375
+        ],
+        "projectedLatticeCell": [
+          -621,
+          1283
+        ],
+        "maxDoorSupportWidthMetres": 25.63915553628467,
+        "nominalHeight": 10.770922546833752
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7431.8466796875,
+          15403.0478515625
+        ],
+        "projectedLatticeCell": [
+          -620,
+          1283
+        ],
+        "maxDoorSupportWidthMetres": 34.23968139917124,
+        "nominalHeight": 15.688831583969295
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7452.21484375,
+          15410.0419921875
+        ],
+        "projectedLatticeCell": [
+          -622,
+          1284
+        ],
+        "maxDoorSupportWidthMetres": 26.37593287169002,
+        "nominalHeight": 17.54612549552694
+      },
+      {
+        "tile": "14-14",
+        "cell": [
+          87,
+          1
+        ],
+        "treeWorldXZ": [
+          -7443.37060546875,
+          15411.3095703125
+        ],
+        "projectedLatticeCell": [
+          -621,
+          1284
+        ],
+        "maxDoorSupportWidthMetres": 33.98354935760145,
+        "nominalHeight": 17.047429842501877
+      },
+      {
+        "tile": "9-15",
+        "cell": [
+          53,
+          23
+        ],
+        "treeWorldXZ": [
+          -39802.9140625,
+          22451.244140625
+        ],
+        "projectedLatticeCell": [
+          -3317,
+          1870
+        ],
+        "maxDoorSupportWidthMetres": 33.241077930293976,
+        "nominalHeight": 15.001043489482253
+      },
+      {
+        "tile": "9-15",
+        "cell": [
+          53,
+          23
+        ],
+        "treeWorldXZ": [
+          -39800.97265625,
+          22453.42578125
+        ],
+        "projectedLatticeCell": [
+          -3317,
+          1871
+        ],
+        "maxDoorSupportWidthMetres": 29.90291890511289,
+        "nominalHeight": 16.04598177410662
+      },
+      {
+        "tile": "21-20",
+        "cell": [
+          54,
+          79
+        ],
+        "treeWorldXZ": [
+          33368.7265625,
+          54702.74609375
+        ],
+        "projectedLatticeCell": [
+          2780,
+          4558
+        ],
+        "maxDoorSupportWidthMetres": 30.66395481848158,
+        "nominalHeight": 15.407877082936466
+      },
+      {
+        "tile": "21-20",
+        "cell": [
+          54,
+          80
+        ],
+        "treeWorldXZ": [
+          33368.7265625,
+          54702.74609375
+        ],
+        "projectedLatticeCell": [
+          2780,
+          4558
+        ],
+        "maxDoorSupportWidthMetres": 30.66395481848158,
+        "nominalHeight": 15.407877082936466
+      }
+    ],
+    "rawCoverSignedDistanceMaximumGradient": 1.252016205335063,
+    "maxAuthorizedShadowCornerDistanceM": 32.79280294515856,
+    "minSignedCoastDerivedMetersFrom45Guard": 3.9428792943021023,
+    "note": "Full native published loaded/cell-mask only; projected source-forest height bound30m independent of survey/stream delivery. Any positive overlap is conservative and needs runtime geometry/actual height proof. G is bilinear raster distance (Harbour excluded by independent AABB)."
+  }
+}

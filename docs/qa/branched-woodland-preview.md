@@ -53,3 +53,5 @@ python tools/qa/woodland-volume-frames.py --checkout . --deps node_modules \
 python tools/qa/woodland-volume-frames.py --checkout . --deps node_modules \
   --out /tmp/woodland-fallback --chromium /path/to/chromium --views queens-close --no-msaa
 ```
+
+[Regular-terrain shadow seating](grounded-woodland-shadows.md) keeps the existing close forest shade footprints against the slope.

@@ -3,6 +3,8 @@ import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import type {ForestHeights} from '../sim/forest-heights.ts';
 import type {WoodlandVolume} from './woodland-volume.ts';
+import type {World} from './world.ts';
+import type {GroundedTreeShadows} from './grounded-tree-shadow.ts';
 import type {HedgeStream} from '../sim/hedge-stream.ts';
 import type {ForestStream} from '../sim/forest-stream.ts';
 import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
@@ -73,6 +75,7 @@ export class Vegetation {
  private hedgeStart=0;
  private forestRevision=0;
  private volume?:WoodlandVolume;
+ private groundedShadow?:GroundedTreeShadows;
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
@@ -86,7 +89,7 @@ export class Vegetation {
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
  }
- attachVolume(layer:WoodlandVolume){
+ attachVolume(layer:WoodlandVolume,world?:World,scene?:THREE.Scene){
   this.volume=layer;this.geom.setAttribute('branchActive',layer.mask);
   const previous=this.crown.material as THREE.ShaderMaterial;
   const vert=`
@@ -100,12 +103,31 @@ export class Vegetation {
   this.crown.material=new THREE.ShaderMaterial({vertexShader:vert,fragmentShader:frag,
     uniforms:{...previous.uniforms,volumeFade:layer.fade},side:THREE.DoubleSide,alphaToCoverage:true});
   previous.dispose();
+  if(world&&scene){
+   const oldShadow=this.shade.material as THREE.ShaderMaterial;
+   const fitting=this.groundedShadow=layer.makeGroundedShadows(scene,world,oldShadow.uniforms.canopy.value,maxTrees);
+   this.geom.setAttribute('groundedShadowActive',fitting.mask);
+   const sv='attribute float groundedShadowActive; uniform vec3 volumeFade; varying float fittedShadowWeight;\n'+
+     shadowV.replace('void main(){',`void main(){
+      fittedShadowWeight=groundedShadowActive*volumeFade.z*
+        (1.-smoothstep(volumeFade.x,volumeFade.y,length(stem.xz-cameraPosition.xz)));
+     `);
+   const sf='varying float fittedShadowWeight;\n'+shadowF.replace(
+     'ramp*(.10+.18*mask)','ramp*(.10+.18*mask)*(1.-fittedShadowWeight)');
+   this.shade.material=new THREE.ShaderMaterial({vertexShader:sv,fragmentShader:sf,
+    uniforms:{...oldShadow.uniforms,volumeFade:layer.fade},side:THREE.DoubleSide,
+    depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2});
+   oldShadow.dispose();
+  }
  }
  updateVolume(x:number,z:number,agl:number){
   const v=this.volume;if(!v)return;
   v.update(this.stems.array as Float32Array,this.shapes.array as Float32Array,this.hedgeStart,x,z,agl,this.forestRevision);
+  this.groundedShadow?.update(this.stems.array as Float32Array,this.shapes.array as Float32Array,
+    v.mask.array as Float32Array,this.hedgeStart,v.rosterVersion);
  }
  get volumeCount(){return this.volume?.count??0;}
+ get groundedShadowCount(){return this.groundedShadow?.count??0;}
  private readonly roofBits=new Uint32Array(8);
  private tile(tx:number,tz:number){
   const a:number[]=[],hasRoofHits=fillRoofTile(tx,tz,this.roofBits);

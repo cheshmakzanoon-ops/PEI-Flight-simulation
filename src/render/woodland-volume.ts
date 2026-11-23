@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import {branchedCrown} from './woodland-volume-geometry.ts';
+import type {World} from './world.ts';
+import {GroundedTreeShadows} from './grounded-tree-shadow.ts';
 // A 115.2m-wide interval intersects at most eleven 12m source cells in
 // each axis. Include all queried stems so there is no density-rank cutoff.
 const MAX_RANGE=50,QUERY_RADIUS=57.6;
@@ -94,6 +96,8 @@ export class WoodlandVolume{
  private readonly groups:Group[];
  private settledX=Infinity;private settledZ=Infinity;private forestRevision=-1;
  private prevCount=0;private selected=0;
+ private roster=0;
+ get rosterVersion(){return this.roster;}
  constructor(scene:THREE.Scene,maxInstances:number){
   this.mask=new THREE.InstancedBufferAttribute(new Float32Array(maxInstances),1).setUsage(THREE.DynamicDrawUsage);
   const material=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,
@@ -126,7 +130,7 @@ export class WoodlandVolume{
   p.sort((a,b)=>a.distance-b.distance||a.slot-b.slot);
   // Membership can change only outside the 50 m fade and its maximum
   // 7.5 m translation before rescan; camera motion cannot cut a live stem.
-  this.selected=0;
+  this.selected=0;this.roster++;
   const bits=this.mask.array as Float32Array;
   bits.fill(0,0,Math.max(this.prevCount,trees));this.prevCount=trees;
   const l=[0,0,0,0];
@@ -147,6 +151,9 @@ export class WoodlandVolume{
     a.clearUpdateRanges();a.addUpdateRange(0,l[i]*a.itemSize);a.needsUpdate=true;
    }
   }
+ }
+ makeGroundedShadows(scene:THREE.Scene,world:World,art:THREE.Texture,maxInstances:number){
+  return new GroundedTreeShadows(scene,world,art,this.fade,maxInstances);
  }
  get count(){return this.fade.value.z>0?this.selected:0;}
 }
