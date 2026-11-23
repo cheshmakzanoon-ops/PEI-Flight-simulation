@@ -1,3 +1,4 @@
+import type {WaterInset} from '../sim/harbour-cover.ts';
 import {project} from '../sim/geo.ts';
 import type {Cover} from '../sim/cover.ts';
 import type {Terrain} from '../sim/terrain.ts';
@@ -6,18 +7,21 @@ import type {ShoreSegment} from '../sim/shoreline.ts';
 /** A local rendering repair to the pinned simulation contour, not a new shore survey. */
 const a=project(-62.1122,46.3815), b=project(-62.1015,46.3764);
 export const BANK_TILE='29-13';
-export const inBasinBank=(s:ShoreSegment)=>{
+export const inBasinBank=(s:ShoreSegment,extra?:WaterInset)=>{
  const inside=(x:number,z:number)=>x>a.x&&x<b.x&&z>a.z&&z<b.z;
- return inside(s.ax,s.az)&&inside(s.bx,s.bz);
+ return (inside(s.ax,s.az)&&inside(s.bx,s.bz))||!!(extra&&extra.intersects(s.ax,s.az,s.ax,s.az)&&extra.intersects(s.bx,s.bz,s.bx,s.bz));
 };
 const mix=(a:number,b:number,r:number)=>a+(b-a)*r;
 const smooth=(q:number)=>{const p=Math.max(0,Math.min(1,q));return p*p*(3-2*p);};
 const endpointKey=(x:number,z:number)=>Math.round(x*1000)+','+Math.round(z*1000);
-const windowMargin=(x:number,z:number)=>Math.min(x-a.x,b.x-x,z-a.z,b.z-z);
-export function basinBankJoins(near:readonly ShoreSegment[],rest:readonly ShoreSegment[]){
+const windowMargin=(x:number,z:number,extra?:WaterInset)=>{
+ const base=Math.min(x-a.x,b.x-x,z-a.z,b.z-z),box=extra?.plan.boundsXZ;
+ return box?Math.max(base,Math.min(x-box[0],box[2]-x,z-box[1],box[3]-z)):base;
+};
+export function basinBankJoins(near:readonly ShoreSegment[],rest:readonly ShoreSegment[],extra?:WaterInset){
  const known=new Set<string>();
  for(const s of rest)for(const [x,z] of [[s.ax,s.az],[s.bx,s.bz]]){
-  if(windowMargin(x,z)>=-1)known.add(endpointKey(x,z));
+  if(windowMargin(x,z,extra)>=-1)known.add(endpointKey(x,z));
  }
  const joins=new Map<string,Point>();
  for(const s of near)for(const [x,z] of [[s.ax,s.az],[s.bx,s.bz]]){
@@ -25,8 +29,8 @@ export function basinBankJoins(near:readonly ShoreSegment[],rest:readonly ShoreS
  }
  return [...joins.values()];
 }
-const shoreWeight=(x:number,z:number,joins:readonly Point[])=>{
- let side=windowMargin(x,z);
+const shoreWeight=(x:number,z:number,joins:readonly Point[],extra?:WaterInset)=>{
+ let side=windowMargin(x,z,extra);
  for(const p of joins)side=Math.min(side,Math.hypot(x-p.x,z-p.z));
  return smooth(side/62);
 };
@@ -36,6 +40,10 @@ type Ground=(x:number,z:number)=>number;
 /** Trace the same pixel-centred, bilinear field as land and water. Keep both
  * inherited cell crossings exact. Degenerate source chords stay unmodified. */
 export function traceBasinBank(c:Cover,t:Terrain,s:ShoreSegment):Point[]|undefined{
+ // Inset contours are already finely subdivided. Their signed shore is no
+ // longer the raw province texture; never yank their nearby endpoints back.
+ if(c.basin?.intersects(Math.min(s.ax,s.bx),Math.min(s.az,s.bz),Math.max(s.ax,s.bx),Math.max(s.az,s.bz))&&
+   (Math.abs(c.legacyDistance(t,s.ax,s.az))>1e-4||Math.abs(c.legacyDistance(t,s.bx,s.bz))>1e-4))return;
  const [u,v]=t.uv((s.ax+s.bx)*.5,(s.az+s.bz)*.5);
  const i=Math.floor(u*c.width-.5),j=Math.floor(v*c.height-.5);
  if(i<0||j<0||i>=c.width-1||j>=c.height-1)return;
@@ -76,7 +84,7 @@ export function basinBankGeometry(c:Cover,t:Terrain,segs:readonly ShoreSegment[]
  for(const s of segs){
   const cut=traceBasinBank(c,t,s)??[{x:s.ax,z:s.az},{x:s.bx,z:s.bz}];
   const top=(p:Point)=>{
-   const q=shoreWeight(p.x,p.z,joins),old=t.meshElevation(p.x,p.z)+.72;
+   const q=shoreWeight(p.x,p.z,joins,c.basin),old=t.meshElevation(p.x,p.z)+.72;
    const floor=ground(p.x,p.z);
    // Do not inherit a known legacy gap in the blend collar. All four
    // measured splices already clear the new floor, preserving exact Y.

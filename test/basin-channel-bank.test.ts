@@ -13,7 +13,7 @@ test('Basin Head curtain traces the same cover and matches every external legacy
  const asset=(p:string)=>Uint8Array.from(gunzipSync(readFileSync(new URL(p,world))));
  const a=meta('terrain'),b=meta('cover');
  const t=new Terrain(a,new Int16Array(asset(a.file).buffer)),c=new Cover(b.width,b.height,asset(b.file));
- const s=coastSegments(c,t),target=s.filter(inBasinBank),ordinary=s.filter(x=>!inBasinBank(x));
+ const s=coastSegments(c,t),target=s.filter(x=>inBasinBank(x)),ordinary=s.filter(x=>!inBasinBank(x));
  const joins=basinBankJoins(target,ordinary);
  assert.equal(target.length,34);
  assert.equal(joins.length,4);

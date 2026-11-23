@@ -1,3 +1,4 @@
+import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
 import type { Terrain } from './terrain.ts';
 
@@ -28,8 +29,7 @@ function contourCell(result:ShoreSegment[],x:number,z:number,stepX:number,stepZ:
 /** Recompute only affected atlas cells. Border propagation uses exact prior
  * zero crossings so one unmodified neighbour cannot leave a visible crack.
  */
-function harbourSections(cover:Cover,terrain:Terrain){
- const harbour=cover.harbour;if(!harbour)return;
+function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
  const {baseGridIJ:[ix0,iz0,ix1,iz1],boundsXZ:[x,z,right,bottom],width:nx,height:nz,divisions:div}=harbour.plan;
  const cols=ix1-ix0,rows=iz1-iz0,dx=(right-x)/(nx-1),dz=(bottom-z)/(nz-1);
  const fields=new Float32Array(nx*nz),blocks=new Uint8Array(cols*rows);
@@ -60,18 +60,18 @@ function harbourSections(cover:Cover,terrain:Terrain){
 /** March the same pixel-centred, signed-distance field the land and water shaders sample. */
 export function coastSegments(cover: Cover,terrain: Terrain): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
- const stepX=(terrain.right-terrain.left)/w,stepZ=(terrain.bottom-terrain.top)/h,fine=harbourSections(cover,terrain);
+ const stepX=(terrain.right-terrain.left)/w,stepZ=(terrain.bottom-terrain.top)/h,locally=cover.waterInsets.map(inset=>harbourSections(cover,terrain,inset));
  for(let j=0;j<h-1;j++)for(let i=0;i<w-1;i++){
   const n=(j*w+i)*2+1;
   const a=bytes[n]-128,b=bytes[n+2]-128,c=bytes[n+2*w+2]-128,d=bytes[n+2*w]-128;
   if((a>=0)===(b>=0)&&(b>=0)===(c>=0)&&(c>=0)===(d>=0))continue;
-  if(fine){
+  if(locally.some(fine=>{
    const x=i-fine.ix0,z=j-fine.iz0;
-   if(x>=0&&z>=0&&x<fine.cols&&z<fine.rows&&fine.blocks[z*fine.cols+x])continue;
-  }
+   return x>=0&&z>=0&&x<fine.cols&&z<fine.rows&&fine.blocks[z*fine.cols+x]>0;
+  }))continue;
   contourCell(result,terrain.left+(i+.5)*stepX,terrain.top+(j+.5)*stepZ,stepX,stepZ,a,b,c,d);
  }
- if(fine){
+ for(const fine of locally){
   const {cols,rows,div,fields,blocks,x,z,dx,dz,nx}=fine;
   for(let b=0;b<rows;b++)for(let a=0;a<cols;a++){
    if(!blocks[b*cols+a])continue;

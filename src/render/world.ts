@@ -9,8 +9,11 @@ import {loadInlandSurveys} from '../sim/inland-terrain.ts';
 import {INLAND_TERRAIN_SHA,INLAND_COVER_SHA} from '../sim/inland-surveys.generated.ts';
 import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
-import {loadHarbourCover} from '../sim/harbour-cover.ts';
-import {harbourCoastGLSL} from './harbour-coast.ts';
+import {loadBasinGround,NativeBank,type NativeBankSource} from '../sim/basin-bank-relief.ts';
+import {BASIN_GROUND} from '../sim/basin-bank-relief.generated.ts';
+import {BASIN_CHANNEL} from '../sim/basin-head-channel.generated.ts';
+import {loadBasinChannel,loadHarbourCover,type WaterInset} from '../sim/harbour-cover.ts';
+import {basinChannelGLSL,harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
 import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
 import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank} from './basin-channel-bank.ts';
@@ -85,7 +88,7 @@ const skyFrag=skyFn+`
   if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
   vec3 c=skyAt(normalize(skyRay));
   gl_FragColor=vec4(c,1.);`+out;
-const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+`
+const waterFrag=(lake:boolean,harbour:boolean,basin:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -123,6 +126,7 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
  ${harbour?'shore=harbourFrom(shore,quay);':''}
+ ${basin?'vec2 inlet=basinChannelAt(p.xz);shore=basinChannelFrom(shore,inlet);float basinShelter=BasinWetReach(p.xz,inlet);':''}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
  // Conservative phase footprint includes the spatial distortion from the
@@ -140,6 +144,7 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
  ${harbour?`
  if(marinaCalm>0.)deep=mix(deep,vec3(.023,.065,.068),marinaCalm*.54);
  `:''}
+ ${basin?'deep=mix(deep,vec3(.037,.110,.090),.34*basinShelter);':''}
  // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
  // modulate the reflection; large-scale swells scarcely change the surface normal.
  float undulation=noise(q*.012+vec2(t*.012,t*.007))-.5;
@@ -164,9 +169,10 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
  }
  `:`float foam=shoreFoam(q,shore,t,dist,n,foamFootprint);`}
  ${harbour?`if(marinaCalm>0.)foam*=1.-smoothstep(0.,.23,marinaCalm);`:''}
+ ${basin?'foam*=1.-.86*basinShelter;':''}
  c=mix(c,vec3(.49,.58,.56),foam);
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
-const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
+const cliffFrag=(east:boolean,basin=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+`
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(cameraPosition,p), f=1.-smoothstep(250.,2200.,d);
@@ -182,8 +188,19 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
   col=mix(col,lithology,eastCover);
  }
  `:''}
+ ${basin?`
+ // A restrained sediment wall; no guessed piling or structural extents.
+ vec2 inlet=basinChannelAt(p.xz);
+ float use=BasinWetReach(p.xz,inlet);
+ vec3 rel=vec3(p.x,p.y,p.z);
+ float grain=noise(rel.xz*.83+vec2(0.,rel.y*.71));
+ float damp=1.-smoothstep(.13,.61,rel.y);
+ vec3 bank=mix(vec3(.24,.215,.156),vec3(.135,.126,.094),damp);
+ bank*=.91+.16*grain;
+ col=mix(col,bank,use*.94);
+ `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -193,6 +210,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  #include <logdepthbuf_fragment>
  vec2 cover=texture2D(coverMap,vuv).rg;float coast=(cover.g*255.-128.)*2.;
  ${harbour?'coast=harbourDistance(coast,p.xz);':''}
+ ${basin?'if(basinChannelDistance(coast,p.xz)<0.)discard;':''}
  if(coast<0.)discard;
  vec2 uv=vec2(vuv.x,1.-vuv.y);
  vec2 q=(vuv-detailBox.xy)*detailBox.zw;
@@ -212,8 +230,9 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  // before applying the scene's light and tone mapping.
  col*=.25;
  vec3 n=normalize(cross(dFdx(p),dFdy(p)));if(n.y<0.)n=-n;
+ ${bankSmooth&&castBuildings?'vec3 bankShadowReceiver=n;':''}
  #ifdef SURVEY_LIGHT
- n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
+ ${bankSmooth?'if(vSurveyWeight>0.)':''}n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
  #endif
  float d=distance(cameraPosition,p);
  ${showFloor&&castBuildings?'vec3 receiverPlane=n;':''}
@@ -253,7 +272,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   col=mix(col,benchColor.rgb,pow(benchCover,1.15)*benchColor.a);
  }
  `:''}
- ${castBuildings?` float castShade=buildingShade(p,${showFloor?'receiverPlane':'n'},d);
+ ${castBuildings?` float castShade=buildingShade(p,${bankSmooth?'bankShadowReceiver':showFloor?'receiverPlane':'n'},d);
  col*=mix(vec3(1.),vec3(.69,.74,.81),castShade*(.39+.61*light));`:''}
  col*=.90+.31*light;
  ${souris?'col=sourisSoil(col,p,detailFade,max(length(dFdx(p.xz)),length(dFdy(p.xz))));':''}
@@ -263,24 +282,28 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false){
+export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false){
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
  const localSand=tryBasin?loadBasinSand(base):Promise.resolve(undefined);
  const elevationJob=loadElevation(progress);
- const [elevation,img,cover,sky]=await Promise.all([
+ const bankJob=tryBasinChannel?loadBasinGround(base):Promise.resolve(undefined);
+ const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
-  loadCover(),
-  new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp')
+  loadCover(tryBasinChannel),
+  new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  const installed=await surveys;
  const inland=tryInland&&elevation.spec.sha256===INLAND_TERRAIN_SHA&&cover.sourceSha===INLAND_COVER_SHA?await loadInlandSurveys(base):[];
- return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed,inland),img,cover,sky,
+ const bankGround=cover.basin?.plan.sha256===BASIN_GROUND.pinBasinSha256&&elevation.spec.sha256===BASIN_GROUND.pinTerrainSha256?requestedBank:undefined;
+ // Geography and bank geometry are an atomic preview.
+ const committedCover=cover.basin&&!bankGround?new Cover(cover.width,cover.height,cover.bytes,cover.harbour,cover.sourceSha):cover;
+ return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed,inland),img,cover:committedCover,sky,bankGround,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -298,17 +321,27 @@ async function loadElevation(progress:(s:string)=>void){
  }
  return {spec,data};
 }
-async function loadCover(){
- const [cmeta,coverData,harbour]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz'),loadHarbourCover(base)]);
+async function loadCover(tryBasin=false){
+ const land=fetch(base+'cover.json'),bytes=fetch(base+'cover.bin.gz');
+ const [cmeta,coverData,harbour,basin]=await Promise.all([land,bytes,loadHarbourCover(base),tryBasin?loadBasinChannel(base):undefined]);
  if(!cmeta.ok||!coverData.ok)throw Error('The coastline and forest atlas could not be loaded.');
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
- return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined,cs.compressedSha256);
+ let checkedBasin:WaterInset|undefined;
+ // Unlike the ordinary start path, the preview authenticates the decoded
+ // bytes too. CDN decompression must not bypass the terrain/geography pin.
+ if(basin?.plan.pinCoverSha256===cs.compressedSha256&&globalThis.crypto?.subtle){
+  const hash=new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',cb));
+  const hex=Array.from(hash,x=>x.toString(16).padStart(2,'0')).join('');
+  if(hex===BASIN_CHANNEL.pinCoverDecodedSha256)checkedBasin=basin;
+ }
+ return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined,cs.compressedSha256,checkedBasin);
 }
 type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];
- private bank?:{batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
+ private readonly bankGround?:NativeBank;
+ private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
    close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private groundVersion=0;
  private reliefPacks?:ReliefPacks;
@@ -324,7 +357,8 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource){
+   if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
@@ -358,17 +392,18 @@ export class World {
     skyInverseProjection.value.copy(view.projectionMatrixInverse);skyEyeToWorld.value.copy(view.matrixWorld);
    };
    this.sky.frustumCulled=false;scene.add(this.sky);
-   const harbour=cover.harbour,harbourUniforms:Record<string,THREE.IUniform>={};
-   if(harbour){
-    const {width,height,boundsXZ}=harbour.plan;
-    const map=new THREE.DataTexture(harbour.bytes,width,height,THREE.RGFormat);
+   const harbour=cover.harbour,basin=cover.basin;
+   const insetUniforms=(local:WaterInset|undefined,prefix:string):Record<string,THREE.IUniform>=>{
+    if(!local)return {};
+    const {width,height,boundsXZ}=local.plan;
+    const map=new THREE.DataTexture(local.bytes,width,height,THREE.RGFormat);
     map.magFilter=map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
-    harbourUniforms.harbourMask={value:map};
-    harbourUniforms.harbourBounds={value:new THREE.Vector4(...boundsXZ)};
-    harbourUniforms.harbourSize={value:new THREE.Vector2(width,height)};
-   }
-   const oceanMaterial=make(waterFrag(!!southLake,!!harbour));
-   if(harbour)oceanMaterial.uniforms={...uniforms,...harbourUniforms};
+    return {[prefix+'Mask']:{value:map},[prefix+'Bounds']:{value:new THREE.Vector4(...boundsXZ)},
+      [prefix+'Size']:{value:new THREE.Vector2(width,height)}};
+   };
+   const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
+   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin));
+   if(harbour||basin)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
     const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;
@@ -384,7 +419,11 @@ export class World {
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
    ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
    this.mat=make(landFrag(false));
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank);
+   let inletBank:THREE.ShaderMaterial|undefined;
+   if(basin){
+    inletBank=make(cliffFrag(false,true),THREE.DoubleSide);inletBank.uniforms={...uniforms,...basinUniforms};
+   }
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -400,9 +439,11 @@ export class World {
     const sy=Math.floor(j*T.spec.height/nz),ey=Math.ceil((j+1)*T.spec.height/nz);
     let any=false;outer:for(let y=sy;y<ey;y++)for(let x=sx;x<ex;x++)if(T.samples[y*T.spec.width+x]!==-32768){any=true;break outer;}
     if(!any)continue;
-    const survey=T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
+    const surveyedBank=this.bankGround?.grid.spec.tileX===i&&this.bankGround.grid.spec.tileZ===j;
+    const survey=surveyedBank||T.coastalGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j);
     const rock=i===east?.spec.tileX&&j===east.spec.tileZ;
     const useBench=rock&&!!benchMap;
+    const localBasin=basin?.intersects(x0,z0,x0+w,z0+d)??false;
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
     const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
@@ -411,9 +452,9 @@ export class World {
     const floorUniforms=showLocalFloor?{...this.floor!.uniforms,floorTileGuard:{value:guard},
        floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
@@ -422,7 +463,7 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
   const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[];
   const cuts=new Map<string,[number,number][]>();
@@ -430,7 +471,7 @@ export class World {
   const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
   for(const segment of coastSegments(this.cover,t)){
    const {ax,az,bx,bz}=segment;
-   const bank=showBank&&inBasinBank(segment);if(bank)segments.push(segment);else if(showBank)outside.push(segment);
+   const bank=showBank&&inBasinBank(segment,this.cover.basin);if(bank)segments.push(segment);else if(showBank)outside.push(segment);
    const key=Math.floor(ax/12000)+','+Math.floor(az/12000);
    if(east&&Math.max(ax,bx)>=east.x0&&Math.min(ax,bx)<=east.x1&&Math.max(az,bz)>=east.z0&&Math.min(az,bz)<=east.z1)rockGroups.add(key);
    let vertices=groups.get(key);if(!vertices){vertices=[];groups.set(key,vertices);}
@@ -471,7 +512,7 @@ export class World {
     batches.push({mesh:m,full:g,near:shore(trimmed)});
    }
   }
-  if(batches.length)this.bank={batches,segments,joins:basinBankJoins(segments,outside)};
+  if(batches.length)this.bank={material:inletBank,batches,segments,joins:basinBankJoins(segments,outside,this.cover.basin)};
  }
  private patch(x0:number,z0:number,w:number,d:number,n:number){
   const g=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
@@ -481,8 +522,12 @@ export class World {
     pos.setY(i,this.terrain.atlasElevation(x,z)+GROUND_LIFT);
     const [u,v]=this.terrain.uv(x,z);uv.setXY(i,u,v);
   }
-  const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d);
+  const meets=(g:NonNullable<World['bankGround']>['grid'])=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d;
+  const localBank=this.bankGround?.grid;
+  const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&meets(g))??
+   (localBank&&n===112&&meets(localBank)?localBank:undefined);
   if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
+  else if(localBank&&meets(localBank))g.setAttribute('surveyWeight',new THREE.BufferAttribute(new Uint8Array(pos.count),1,true));
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
   m.userData.subdiv=n;
   if(site)m.userData.coastalSurvey=site.spec.id;
@@ -500,7 +545,7 @@ export class World {
  private reliefTileSafe(t:Patch){
   // On this exact sidewalk generation, the independently measured
   // mitered paths intersect admission masks only in terrain tile 8-13.
-  if(t.id==='8-13')return false;
+  if(t.id==='8-13'||(this.bankGround&&t.id===BANK_TILE))return false;
   return !this.terrain.surveyGrids.some(g=>g.spec.tileX===t.i&&g.spec.tileZ===t.j);
  }
  /** Promote a coherent mesh and contact revision before this frame runs physics.
@@ -573,10 +618,19 @@ export class World {
   if(grid)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
   const inland=this.terrain.inlandGrids.find(q=>q.spec.tileX===i&&q.spec.tileZ===j&&q.inside(x,z));
   if(inland&&n===112)return inland.height(x,z)!+GROUND_LIFT;
+  const bank=this.bankGround?.grid;
+  if(bank&&n===112&&bank.inside(x,z))return bank.height(x,z)!+GROUND_LIFT;
   const sx=Math.max(0,Math.min(n,(x-tile.x0)/tile.w*n)),sz=Math.max(0,Math.min(n,(z-tile.z0)/tile.d*n));
   const p=Math.min(n-1,Math.floor(sx)),q=Math.min(n-1,Math.floor(sz)),k=q*step+p;
   const xyz=g.geometry.getAttribute('position');
   return facet(sx-p,sz-q,xyz.getY(k),xyz.getY(k+1),xyz.getY(k+step),xyz.getY(k+step+1));
+ }
+ basinPlantedGround(x:number,z:number){
+  if(this.byId.get(BANK_TILE)?.lod!==112||!this.bankGround?.authority(x,z))return undefined;
+  return this.bankGround.grid.height(x,z);
+ }
+ bankGroundTouches(x0:number,z0:number,x1:number,z1:number){
+  return this.byId.get(BANK_TILE)?.lod===112&&(this.bankGround?.touches(x0,z0,x1,z1)??false);
  }
  nearInlandGrids(){
   return this.terrain.inlandGrids.filter(g=>this.byId.get(g.spec.tileX+'-'+g.spec.tileZ)?.lod===112);
@@ -586,7 +640,8 @@ export class World {
   // cannot revoke visible land, and even positive offshore survey samples
   // must not raise water contact above the rendered ocean.
   const covered=land??(this.cover.distance(this.terrain,x,z)>=0);
-  const baseline=this.terrain.contactHeight(x,z,covered);
+  let baseline=this.terrain.contactHeight(x,z,covered);
+  if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
   if(!covered||!this.reliefActive.size||runwayAt(x,z))return baseline;
   const [u,v]=this.terrain.uv(x,z);
   const t=this.byId.get(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
@@ -664,7 +719,7 @@ export class World {
     const g=new THREE.BufferGeometry();
     g.setAttribute('position',new THREE.BufferAttribute(p,3));
     g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(p.length/3*2),2));
-    g.computeBoundingSphere();const m=new THREE.Mesh(g,bank.batches[0].mesh.material);
+    g.computeBoundingSphere();const m=new THREE.Mesh(g,bank.material??bank.batches[0].mesh.material);
     m.name='seated Basin Head shore';bank.close=m;this.scene.add(m);
    }
    if(bank.close)bank.close.visible=near;

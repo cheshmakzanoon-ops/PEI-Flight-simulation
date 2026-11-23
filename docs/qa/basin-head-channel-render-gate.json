@@ -1,0 +1,118 @@
+{
+  "singing-west-close": {
+    "old": {
+      "triangles": 267854,
+      "drawCalls": 205,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinShoreline": null
+    },
+    "new": {
+      "triangles": 326608,
+      "drawCalls": 205,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinShoreline": "basin-head-channel-v1"
+    },
+    "exact": 175997,
+    "gt2": 124718,
+    "max": 133,
+    "geographicChangedPixels": [
+      0,
+      50,
+      839,
+      539
+    ]
+  },
+  "singing-east-close": {
+    "old": {
+      "triangles": 235364,
+      "drawCalls": 43,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinShoreline": null
+    },
+    "new": {
+      "triangles": 294118,
+      "drawCalls": 43,
+      "detail": {
+        "ready": 11,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "basinShoreline": "basin-head-channel-v1"
+    },
+    "exact": 379393,
+    "gt2": 40179,
+    "max": 163,
+    "geographicChangedPixels": [
+      0,
+      131,
+      711,
+      539
+    ]
+  },
+  "east-close": {
+    "old": {
+      "triangles": 305641,
+      "drawCalls": 264,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "basinShoreline": null
+    },
+    "new": {
+      "triangles": 309279,
+      "drawCalls": 264,
+      "detail": {
+        "ready": 7,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "basinShoreline": "basin-head-channel-v1"
+    },
+    "exact": 453585,
+    "gt2": 13,
+    "max": 22,
+    "geographicChangedPixels": [
+      282,
+      166,
+      300,
+      166
+    ]
+  },
+  "combinedOptionalSmoke": {
+    "site": "singing-west-close",
+    "basin": "basin-head-channel-v1",
+    "buildingShadows": true,
+    "flags": [
+      "basinChannel",
+      "basinSand",
+      "buildingShadows",
+      "woodland3D"
+    ]
+  }
+}

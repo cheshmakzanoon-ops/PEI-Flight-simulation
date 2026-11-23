@@ -42,7 +42,15 @@ async function run(){
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
  const worldBase=import.meta.env.BASE_URL+'world/';
  const dockPack=loadQuartermasterDocks(worldBase),mappedSidewalks=loadSidewalks(worldBase),mappedParking=loadParkingSurfaces(worldBase);
- const {terrain,img,cover,sky,bench,southLake,sourisLighting,basinSand}=await loadAtlas(loadMsg,new URLSearchParams(location.search).has('inlandRelief'),new URLSearchParams(location.search).has('basinSand'));const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,showBuildingShadows,new URLSearchParams(location.search).has('forestFloor'),!new URLSearchParams(location.search).has('noBasinBank'),basinSand);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
+ const options=new URLSearchParams(location.search),useBasinBank=!options.has('noBasinBank');
+ const {terrain,img,cover,sky,bench,southLake,sourisLighting,basinSand,bankGround}=await loadAtlas(
+   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'));
+ const forestHeights=await woodland;await warmForest;
+ const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
+   showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround);
+ const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
+   (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined);
+ addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  const glCanopy=renderer.getContext();
  if(new URLSearchParams(location.search).has('woodland3D')&&glCanopy.getParameter(glCanopy.SAMPLES)>=2){
   void import('./render/woodland-volume.ts').then(({WoodlandVolume})=>
@@ -161,7 +169,7 @@ async function run(){
   renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandVolume:vegetation.volumeCount,woodlandGroundedShadows:vegetation.groundedShadowCount,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,pavement:roads?.pavementStatus??null,seatedRoads:roads?.seatState??null,sidewalks:sidewalks?.state??null,parking:parking?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandVolume:vegetation.volumeCount,woodlandGroundedShadows:vegetation.groundedShadowCount,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,basinShoreline:cover.basin?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,pavement:roads?.pavementStatus??null,seatedRoads:roads?.seatState??null,sidewalks:sidewalks?.state??null,parking:parking?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

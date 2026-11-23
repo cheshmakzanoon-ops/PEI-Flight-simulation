@@ -36,7 +36,7 @@ export function groundedShadowGuard(world:World){
  }
  const safe=(box:Box)=>{
   if(boxes.some(b=>box[0]<b[2]&&box[2]>b[0]&&box[1]<b[3]&&box[3]>b[1]))return false;
-  if(world.cover.harbour?.intersects(...box))return false;
+  if(world.cover.harbour?.intersects(...box)||world.bankGroundTouches?.(...box))return false;
   if(world.adaptiveState?.active.length&&world.visualGroundSignature(box).includes('*'))return false;
   // Leave a conservative buffer from water. The entire candidate area is
   // also checked by each subdivided polygon against this elevation gate.

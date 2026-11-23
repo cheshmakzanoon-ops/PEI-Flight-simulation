@@ -1,3 +1,4 @@
+import {BASIN_CHANNEL} from '../sim/basin-head-channel.generated.ts';
 /** Must match HarbourCover.distance exactly. Keeps the province fallback
  * authoritative outside the reviewed water-only approach. */
 export const harbourCoastGLSL=/*glsl*/`
@@ -20,4 +21,13 @@ export const harbourCoastGLSL=/*glsl*/`
   return v.g*smoothstep(.10,8.,(128.-v.r*255.)*.25);
  }
 
+`;
+
+export const basinChannelGLSL=harbourCoastGLSL.replaceAll('harbour','basinChannel')+`
+ // Original optical treatment for a narrow inlet with some retained swell
+ // at its seaward opening. It does not imply a current or tide solution.
+ float BasinWetReach(vec2 xz,vec2 local){
+  float inward=${BASIN_CHANNEL.mouthZ.toFixed(4)}-xz.y;
+  return local.g*smoothstep(7.,58.,inward)*(1.-smoothstep(.08,1.25,(local.r*255.-128.)*.25));
+ }
 `;

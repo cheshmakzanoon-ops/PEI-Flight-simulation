@@ -10,9 +10,10 @@ export interface MeshSurveySpec {
  readonly id:string; readonly tileX:number; readonly tileZ:number;
  readonly firstX:number; readonly firstZ:number; readonly cellsX:number; readonly cellsZ:number;
  readonly sub:number; readonly sha256:string;readonly kind?:'inland';
+ readonly relativeToParent?:boolean;
  readonly nativeCorners?:readonly (readonly number[])[];readonly nativeShape?:readonly number[];
 }
-export type MeshSurveySource={spec:MeshSurveySpec;samples:Int16Array;cliff?:CliffSource};
+export type MeshSurveySource={spec:MeshSurveySpec;samples:Int16Array;cliff?:CliffSource;renderWeights?:Uint8Array};
 type Extent={left:number;right:number;top:number;bottom:number};
 type Sampler=(x:number,z:number)=>number;
 const clamp01=(a:number)=>Math.max(0,Math.min(1,a));
@@ -25,7 +26,7 @@ export class CoastalGrid {
  readonly spec:MeshSurveySpec;readonly nx:number;readonly nz:number;readonly x0:number;readonly z0:number;
  readonly x1:number;readonly z1:number;readonly stepX:number;readonly stepZ:number;readonly heights:Float32Array;
  private readonly coarseX:number;private readonly coarseZ:number;private readonly tileX0:number;private readonly tileZ0:number;
- readonly cliff:EastCliff|undefined;
+ readonly cliff:EastCliff|undefined;readonly renderWeights?:Uint8Array;
  private readonly atlas:Sampler;
  constructor(ext:Extent,source:MeshSurveySource,atlas:Sampler){
   this.atlas=atlas;
@@ -38,8 +39,13 @@ export class CoastalGrid {
   this.x0=this.tileX0+s.firstX*this.coarseX;this.z0=this.tileZ0+s.firstZ*this.coarseZ;
   this.nx=s.cellsX*s.sub+1;this.nz=s.cellsZ*s.sub+1;
   this.x1=this.x0+(this.nx-1)*this.stepX;this.z1=this.z0+(this.nz-1)*this.stepZ;
-  if(source.samples.length!==this.nx*this.nz)throw Error('Survey dimensions do not match the grid');
-  this.heights=Float32Array.from(source.samples,h=>h*.01);
+  if(source.samples.length!==this.nx*this.nz||source.renderWeights&&source.renderWeights.length!==source.samples.length)throw Error('Survey dimensions do not match the grid');
+  this.renderWeights=source.renderWeights;
+  this.heights=Float32Array.from(source.samples,(h,k)=>{
+   if(!s.relativeToParent)return h*.01;
+   const i=k%this.nx,j=Math.floor(k/this.nx);
+   return this.originalFacet(this.x0+i*this.stepX,this.z0+j*this.stepZ)+h*.01;
+  });
   // A centimetre-quantized value can differ from the inherited edge; share its unsnapped height.
   for(let j=0;j<this.nz;j++)for(let i=0;i<this.nx;i++)if(i===0||j===0||i===this.nx-1||j===this.nz-1)
    this.heights[j*this.nx+i]=this.originalFacet(this.x0+i*this.stepX,this.z0+j*this.stepZ);

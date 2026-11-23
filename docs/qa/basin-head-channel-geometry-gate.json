@@ -1,0 +1,181 @@
+{
+  "siteScope": "Basin Head only",
+  "baseTests": {
+    "n": 17990,
+    "oldPhysicalSignedOutside": 0,
+    "renderDeltaOutsideFit": 1.1176381484290232e-05,
+    "exactOutside": 110047,
+    "physExactPositive": 2628,
+    "physCoreAbsoluteMax": 2.4258550017641767e-06,
+    "exactWet": 31128,
+    "optRoads": 0,
+    "maxtile": 0,
+    "sectionPoint": 0
+  },
+  "mesh": {
+    "badProjectedOrientation": 0,
+    "wallEdgeNamesOne": 0,
+    "boundaryEdges": 448,
+    "nonManifold": 0,
+    "degenerateEdges": 0,
+    "inactiveNativeRays": 47452,
+    "inactiveNativeMaxPlaneDeltaM": 2.0733764971803126e-05,
+    "activeRawTriangles": 8996,
+    "maxActiveWeightCoordinateError": 1.0060626003505213e-05,
+    "signedWhenWetWeights": 5241
+  },
+  "nativeNormals": {
+    "newBaseVerticesZero": true,
+    "newDetailVertices": 28575,
+    "allDetailWeightsExact": true,
+    "detailWeightNonzero": 4252,
+    "normalUpInPositiveSupport": true,
+    "outsideEightNeighborsHasNoWeight": true,
+    "coarseAllWeightZero": true
+  },
+  "checkedBankHeight": {
+    "old": {
+      "point": [
+        83774.00625000003,
+        13531.324365234255
+      ],
+      "pointPlanDistanceToWallM": 1.8465206429779172e-10,
+      "topY": 7.661723613737889
+    },
+    "new": {
+      "point": [
+        83774.00625000003,
+        13531.324365234255
+      ],
+      "pointPlanDistanceToWallM": 1.8465206429779172e-10,
+      "topY": 0.1726740263402057
+    },
+    "noBankPolylineContainsNoClose": true
+  },
+  "terrainRays": {
+    "samples": 162,
+    "largestMeshAgainstQueryM": 6.684157643954691e-05,
+    "largestOldMeshAgainstQueryM": 5.6470299449884465e-06,
+    "worstActualMeshToPhysicalM": 1.1263158181094965
+  },
+  "protectedRoadProbe": 27001,
+  "protectedRoadMaxRenderDeltaM": 7.427111890834226e-06,
+  "protectedRoadMaxFlightDeltaM": 0,
+  "protectedBuildingProbe": 14254,
+  "sourceWithheldDryNative": {
+    "witnesses": 18182,
+    "beforeQuantilesM": [
+      0.000112,
+      0.117289,
+      1.128757,
+      3.86511,
+      5.04567,
+      6.709964,
+      7.804201
+    ],
+    "afterQuantilesM": [
+      6e-06,
+      0.022113,
+      0.426851,
+      2.312036,
+      3.040576,
+      4.241917,
+      6.360904
+    ],
+    "changedForWorseCount": 884,
+    "oldMinusNewAbsoluteError": [
+      -1.876016,
+      -0.045684,
+      0.278634,
+      2.497239,
+      4.230598,
+      6.114719,
+      7.698775
+    ],
+    "lowDryPlaneLimitHasPositiveObservedData": true
+  },
+  "sourceCoreWithheldDryNative": {
+    "witnesses": 6643,
+    "beforeQuantilesM": [
+      0.000112,
+      0.096128,
+      1.060566,
+      5.136225,
+      6.176877,
+      7.195977,
+      7.804201
+    ],
+    "afterQuantilesM": [
+      6e-06,
+      0.01016,
+      0.150055,
+      0.587109,
+      0.776568,
+      1.173009,
+      3.634846
+    ],
+    "changedForWorseCount": 400,
+    "oldMinusNewAbsoluteError": [
+      -1.876016,
+      -0.075964,
+      0.862455,
+      4.775328,
+      5.667299,
+      6.782931,
+      7.698775
+    ],
+    "lowDryPlaneLimitHasPositiveObservedData": true
+  },
+  "originalWaySummary": {
+    "worldApproxCentrelineM": 21.207282631059783,
+    "oldSignedRangeM": [
+      8.081983300998445,
+      9.416738062066429
+    ],
+    "newSignedRangeM": [
+      -4.094056472833138,
+      7.314112082301939
+    ],
+    "newWetLengthM": 8.533797809549176,
+    "wetSpanXZ": [
+      [
+        83811.3144479424,
+        13606.096156150497
+      ],
+      [
+        83818.89493632983,
+        13602.183633380739
+      ]
+    ]
+  },
+  "waterConnection": {
+    "resolutionM": 0.24691110821558546,
+    "legacyConnectedNorthSouth": [],
+    "newConnectedNorthSouth": [
+      1
+    ],
+    "componentOfAllNewlyWet": [
+      1
+    ],
+    "largestComponentWetContactsAtNorthProof": {
+      "spanSamples": 810,
+      "deepestSignedM": -55.99999999997817
+    },
+    "largestComponentWetContactsAtSouthProof": {
+      "spanSamples": 817,
+      "deepestSignedM": -88.00000000001
+    }
+  },
+  "waterShader": {
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "controlSamples": 178082,
+    "samplesOutsideRectangle": 105231,
+    "stations": 1843,
+    "normalOffsetsPerStation": 221,
+    "totalLocalCandidates": 407303,
+    "intersectionPositionsBothReject": 135,
+    "intersectionPositionsBothDraw": 90,
+    "largestTrueBoundaryMagnitudeWhereDisagree": 0.010378921580127098,
+    "waterOpticsOutsideBox": 0
+  }
+}

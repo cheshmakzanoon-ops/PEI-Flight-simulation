@@ -80,7 +80,7 @@ export class Vegetation {
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
-  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number){
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
@@ -137,7 +137,7 @@ export class Vegetation {
    const i=tx*side+dx,j=tz*side+dz;
    const x=(i+rand(i,j,11))*pitch,z=(j+rand(i,j,84))*pitch;
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
-   if(this.cover.harbour?.intersects(x,z,x,z)&&this.cover.distance(this.t,x,z)<0)continue;
+   if(this.cover.waterInsets.some(i=>i.intersects(x,z,x,z))&&this.cover.distance(this.t,x,z)<0)continue;
    const type=rand(i,j,43),variant=type<.15?3:type<.36?2:type<.68?1:0;
    const vary=rand(i,j,35),fallback=8.2+vary*10.8;
    const shapeRatio=.83+rand(i,j,9)*.35;
@@ -163,7 +163,8 @@ export class Vegetation {
    for(let i=0;i<a.length&&count<maxTrees;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
     if(d>radius**2||(d>1120**2&&a[i+7]>.70))continue;
-    this.stems.setXYZ(count,a[i],a[i+1],a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);count++;
+    const native=this.plantedY?.(a[i],a[i+2]);
+    this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);count++;
    }
   }
   const originalCount=count;
