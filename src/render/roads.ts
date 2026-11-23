@@ -10,6 +10,7 @@ import {roadContactAt,seatRibbon} from './road-contact.ts';
 import {sidewalkGrid} from './sidewalks.ts';
 import type {World} from './world.ts';
 import {RoadPavement} from './road-pavement.ts';
+import {matchesVictoriaPaving,VICTORIA_PAVER_FLAG,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
 import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
@@ -67,7 +68,7 @@ export async function classifiedDirt(data:ArrayBuffer,count:number,verifiedDiges
   return bits;
  }catch{return;}
 }
-type Tile = {x: number; z: number; segments: number[]};
+type Tile = {x: number; z: number; segments: number[]; victoria?:boolean};
 export class Roads {
   private readonly root = new THREE.Group();
   private readonly pavement=new RoadPavement(import.meta.env?.BASE_URL??"/");
@@ -77,6 +78,7 @@ export class Roads {
     alphaToCoverage: true,
     polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
   });
+  private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
   private readonly visible = new Map<string, THREE.Mesh>();
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
   private readonly nearPatches?:()=>readonly CoastalGrid[];
@@ -104,6 +106,10 @@ export class Roads {
     this.root.name = 'PEI National Road Network';
     this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
     addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
+    if(Array.from(tiles.values()).some(t=>t.victoria)){
+      this.victoriaMaterial=this.material.clone();
+      addRoadSurface(this.victoriaMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,true);
+    }
     scene.add(this.root);
   }
 
@@ -116,7 +122,8 @@ export class Roads {
     for (let ordinal=0;ordinal<roads.length;ordinal++) {
       const {points,flags:sourceFlags}=roads[ordinal];
       const isDirt=!!dirtBits&&!(sourceFlags&24)&&!!(dirtBits.charCodeAt(ordinal>>3)&(1<<(ordinal&7)));
-      const flags=isDirt?sourceFlags|32:sourceFlags;
+      const victoria=matchesVictoriaPaving(digest,ordinal,sourceFlags,points);
+      const flags=victoria?sourceFlags|VICTORIA_PAVER_FLAG:isDirt?sourceFlags|32:sourceFlags;
       for(let i=1; i<points.length; i++) {
         const a=points[i-1], b=points[i], dx=b.x-a.x, dz=b.z-a.z;
         const len=Math.hypot(dx,dz);
@@ -131,6 +138,7 @@ export class Roads {
             tile={x:(tx+0.5)*TILE,z:(tz+0.5)*TILE,segments:[]};
             tiles.set(key,tile);
           }
+          if(victoria)tile.victoria=true;
           tile.segments.push(x,z,u,v,flags);
         }
       }
@@ -164,7 +172,7 @@ export class Roads {
         if(isBridge ? isConfederationBridge(mx,mz) : !this.terrain.isLand(mx,mz))continue;
         const lift=isBridge?3:0.55;
         const py=baselineHeight(x,z)+lift, qy=baselineHeight(u,v)+lift;
-        const kind=isBridge?127:(flags&8)?64:(flags&32)?-64:0;
+        const kind=isBridge?127:(flags&VICTORIA_PAVER_FLAG)?VICTORIA_PAVER_KIND:(flags&8)?64:(flags&32)?-64:0;
         const cuts=!isBridge&&patches.length?cutInlandRoad([
           {x:x+rx,z:z+rz,y:py,edge:127},{x:x-rx,z:z-rz,y:py,edge:-127},
           {x:u-rx,z:v-rz,y:qy,edge:-127},{x:u+rx,z:v+rz,y:qy,edge:127} ],patches):undefined;
@@ -227,7 +235,7 @@ export class Roads {
       g.computeBoundingSphere();if(g.boundingSphere)g.boundingSphere.radius+=maxDrop;
      }
     }
-    const mesh=new THREE.Mesh(g,this.material);
+    const mesh=new THREE.Mesh(g,tile.victoria&&this.victoriaMaterial?this.victoriaMaterial:this.material);
     mesh.position.set(tile.x,0,tile.z);
     return mesh;
   }
@@ -297,7 +305,7 @@ export class Roads {
       if(!cached){cached=this.mesh(t,candidates,mode.includes('|seat:')).geometry;variants.set(mode,cached);}
       if(current){current.geometry=cached;current.userData.inlandMode=mode;}
       else{
-        const mesh=new THREE.Mesh(cached,this.material);mesh.position.set(t.x,0,t.z);
+        const mesh=new THREE.Mesh(cached,t.victoria&&this.victoriaMaterial?this.victoriaMaterial:this.material);mesh.position.set(t.x,0,t.z);
         mesh.userData.inlandMode=mode;this.root.add(mesh);this.visible.set(key,mesh);
       }
       for(const [stale,geo] of variants)if(stale.includes('|seat:')&&stale!==mode){geo.dispose();variants.delete(stale);}

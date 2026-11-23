@@ -1,0 +1,456 @@
+{
+  "base": "5d6586c",
+  "releaseOptics": "C",
+  "renderer": "Chromium 158 / SwiftShader software WebGL, not a benchmark",
+  "checks": 144,
+  "visibleGeometry": "Identical to material predecessor B in every road path; zero added scene draws or triangle submissions",
+  "releaseViews": [
+    {
+      "view": "curb-lenses",
+      "newFrame": {
+        "calls": 127,
+        "triangles": 538757
+      },
+      "oldFrame": {
+        "calls": 127,
+        "triangles": 538757
+      },
+      "maskFrame": {
+        "calls": 127,
+        "triangles": 538757
+      },
+      "replay": true,
+      "markedMeshes": 1,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "roadState": null,
+      "pose": {
+        "eye": [
+          5618.806254572834,
+          11.191258772058454,
+          29584.510361689794
+        ],
+        "motion": [
+          0.721985330268628,
+          -3.469446951953614e-18,
+          0.6919083630632745,
+          0,
+          0.04189118544621308,
+          0.9981655043615787,
+          -0.04371217775982081,
+          0,
+          -0.6906390601890477,
+          0.060544412645554574,
+          0.7206608513292461,
+          0,
+          5618.806254572834,
+          11.191258772058454,
+          29584.510361689794,
+          1
+        ]
+      },
+      "visibleSourcePixels": 160623,
+      "changed": 160371,
+      "noticeable": 159582,
+      "protected": 414093,
+      "outOfScope": 0
+    },
+    {
+      "view": "above-core",
+      "newFrame": {
+        "calls": 25,
+        "triangles": 316372
+      },
+      "oldFrame": {
+        "calls": 25,
+        "triangles": 316372
+      },
+      "maskFrame": {
+        "calls": 25,
+        "triangles": 316372
+      },
+      "replay": true,
+      "markedMeshes": 1,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "roadState": null,
+      "pose": {
+        "eye": [
+          5637.389531344031,
+          48.07193361766849,
+          29535.044370095577
+        ],
+        "motion": [
+          -0.7685313062907184,
+          0,
+          0.6398121843565365,
+          0,
+          0.547957768567567,
+          0.5162542983611593,
+          0.6581973741136317,
+          0,
+          -0.3303057903179046,
+          0.8564353445670182,
+          -0.3967575902977001,
+          0,
+          5637.389531344031,
+          48.07193361766849,
+          29535.044370095577,
+          1
+        ]
+      },
+      "visibleSourcePixels": 53038,
+      "changed": 52858,
+      "noticeable": 52264,
+      "protected": 520944,
+      "outOfScope": 0
+    }
+  ],
+  "sameGeometryPredecessorTests": {
+    "mode": "B tone only; program and guard unchanged in C",
+    "sourceGate": {
+      "rows": 49966,
+      "ranges": 14,
+      "transferredBytes": 3778697,
+      "witnessedSections": 29,
+      "classes": {
+        "1": 25863,
+        "2": 11940,
+        "6": 12162,
+        "18": 1
+      },
+      "cohortSHA256": "f612aa2cd3a1e8e580a22c50388055cea2cfc4fd240bc3850f4a87390c933d13"
+    },
+    "runtimeFlight": {
+      "site": "harbour-low",
+      "movedMetres": 231.87598130137485,
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "paverDefaultViews": [
+      {
+        "view": "curb-lenses",
+        "newFrame": {
+          "calls": 127,
+          "triangles": 538757
+        },
+        "oldFrame": {
+          "calls": 127,
+          "triangles": 538757
+        },
+        "maskFrame": {
+          "calls": 127,
+          "triangles": 538757
+        },
+        "replay": true,
+        "markedMeshes": 1,
+        "tileState": {
+          "wanted": 53,
+          "ready": 53,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "roadState": null,
+        "pose": {
+          "eye": [
+            5618.806254572834,
+            11.191258772058454,
+            29584.510361689794
+          ],
+          "motion": [
+            0.721985330268628,
+            -3.469446951953614e-18,
+            0.6919083630632745,
+            0,
+            0.04189118544621308,
+            0.9981655043615787,
+            -0.04371217775982081,
+            0,
+            -0.6906390601890477,
+            0.060544412645554574,
+            0.7206608513292461,
+            0,
+            5618.806254572834,
+            11.191258772058454,
+            29584.510361689794,
+            1
+          ]
+        },
+        "visibleSourcePixels": 160623,
+        "changed": 160472,
+        "noticeable": 159897,
+        "protected": 414093,
+        "outOfScope": 0
+      },
+      {
+        "view": "cross-lower",
+        "newFrame": {
+          "calls": 60,
+          "triangles": 363702
+        },
+        "oldFrame": {
+          "calls": 60,
+          "triangles": 363702
+        },
+        "maskFrame": {
+          "calls": 60,
+          "triangles": 363702
+        },
+        "replay": true,
+        "markedMeshes": 1,
+        "tileState": {
+          "wanted": 53,
+          "ready": 53,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "roadState": null,
+        "pose": {
+          "eye": [
+            5670.917930798009,
+            16.81839130547838,
+            29539.25969096576
+          ],
+          "motion": [
+            -0.6028139604740985,
+            -1.3877787807814457e-17,
+            -0.7978817763663565,
+            0,
+            -0.1855689074770383,
+            0.9725779988279277,
+            0.14020063043239822,
+            0,
+            0.7760022613596632,
+            0.23257694682806268,
+            -0.5862835953434362,
+            0,
+            5670.917930798009,
+            16.81839130547838,
+            29539.25969096576,
+            1
+          ]
+        },
+        "visibleSourcePixels": 68012,
+        "changed": 67848,
+        "noticeable": 67246,
+        "protected": 506840,
+        "outOfScope": 0
+      },
+      {
+        "view": "above-core",
+        "newFrame": {
+          "calls": 25,
+          "triangles": 316372
+        },
+        "oldFrame": {
+          "calls": 25,
+          "triangles": 316372
+        },
+        "maskFrame": {
+          "calls": 25,
+          "triangles": 316372
+        },
+        "replay": true,
+        "markedMeshes": 1,
+        "tileState": {
+          "wanted": 53,
+          "ready": 53,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "roadState": null,
+        "pose": {
+          "eye": [
+            5637.389531344031,
+            48.07193361766849,
+            29535.044370095577
+          ],
+          "motion": [
+            -0.7685313062907184,
+            0,
+            0.6398121843565365,
+            0,
+            0.547957768567567,
+            0.5162542983611593,
+            0.6581973741136317,
+            0,
+            -0.3303057903179046,
+            0.8564353445670182,
+            -0.3967575902977001,
+            0,
+            5637.389531344031,
+            48.07193361766849,
+            29535.044370095577,
+            1
+          ]
+        },
+        "visibleSourcePixels": 53038,
+        "changed": 52917,
+        "noticeable": 52517,
+        "protected": 520944,
+        "outOfScope": 0
+      }
+    ],
+    "offSite": {
+      "view": "east-control",
+      "newFrame": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "oldFrame": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "maskFrame": {
+        "calls": 265,
+        "triangles": 305769
+      },
+      "replay": true,
+      "markedMeshes": 0,
+      "tileState": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "roadState": null,
+      "pose": {
+        "eye": [
+          94390.98970978655,
+          44.121176197199524,
+          5225.1970733587705
+        ],
+        "motion": [
+          -0.4149325789334197,
+          1.3877787807814457e-17,
+          -0.9098521610347813,
+          0,
+          -0.17363197400304498,
+          0.9816220563283339,
+          0.0791838123200653,
+          0,
+          0.8931309492697402,
+          0.19083537022715,
+          -0.4073069713702422,
+          0,
+          94390.98970978655,
+          44.121176197199524,
+          5225.1970733587705,
+          1
+        ]
+      },
+      "visibleSourcePixels": 0,
+      "changed": 0,
+      "noticeable": 0,
+      "protected": 576000,
+      "outOfScope": 0
+    },
+    "seated": {
+      "view": "cross-lower",
+      "newFrame": {
+        "calls": 60,
+        "triangles": 441137
+      },
+      "oldFrame": {
+        "calls": 60,
+        "triangles": 441137
+      },
+      "maskFrame": {
+        "calls": 60,
+        "triangles": 441137
+      },
+      "replay": true,
+      "markedMeshes": 1,
+      "tileState": {
+        "wanted": 53,
+        "ready": 53,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "roadState": {
+        "pending": false,
+        "gain": 1,
+        "lastSliceMS": 0,
+        "lastBuildSteps": 0,
+        "ready": 4
+      },
+      "pose": {
+        "eye": [
+          5670.917930798009,
+          16.81839130547838,
+          29539.25969096576
+        ],
+        "motion": [
+          -0.6028139604740985,
+          -1.3877787807814457e-17,
+          -0.7978817763663565,
+          0,
+          -0.1855689074770383,
+          0.9725779988279277,
+          0.14020063043239822,
+          0,
+          0.7760022613596632,
+          0.23257694682806268,
+          -0.5862835953434362,
+          0,
+          5670.917930798009,
+          16.81839130547838,
+          29539.25969096576,
+          1
+        ]
+      },
+      "visibleSourcePixels": 64492,
+      "changed": 64343,
+      "noticeable": 63758,
+      "protected": 510386,
+      "outOfScope": 0
+    }
+  },
+  "publishedFiles": {
+    "src/render/victoria-pavers.ts": "ee8d60b2c2ad1159a77400b77358ea387f4820829c7bcf5b0fbf6b963ad91902",
+    "src/render/road-surface.ts": "6b7eddf42f216a813cf65ca87203ba12e82357fe78aede1ed0ad5e8e41a908cf",
+    "src/render/roads.ts": "4ee5354f246dd9f16f0cba5ed17a2114df3401bed97b9ea22b963d63a67760b6",
+    "data/victoria-pavers/public-geometry-witness.json": "3823e9c8dce002f9273a87c434f424b8273e4440b13380b8d1b82d44d82f3edf"
+  },
+  "curbPaverMaterialMedianRGB_B_then_C": [
+    [
+      137.0,
+      141.0,
+      149.5
+    ],
+    [
+      126.0,
+      126.0,
+      129.0
+    ]
+  ]
+}

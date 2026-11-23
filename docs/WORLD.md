@@ -20,7 +20,9 @@ registered. This is not a surveyed or navigation-grade projection.
 [Water Street in Summerside](qa/water-street-shells.md) includes selected survey-fit
 commercial groupings and independently authored exterior materials. [Victoria Row in
 Charlottetown](qa/victoria-row-shell.md) preserves one original block outline with
-measured attached roof volumes and original brick-and-stone frontage.
+measured attached roof volumes and original brick-and-stone frontage. The
+[guarded Victoria Row paver finish](qa/victoria-pavers.md) affects only the
+source-confirmed carriageway, not the nearby intersections or sidewalks.
 
 ## Attribution
 

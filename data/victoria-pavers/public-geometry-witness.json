@@ -1,0 +1,635 @@
+{
+  "id": "victoria-row-paved-core-v1",
+  "officialPointCloud": {
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_390000_687000.copc.laz",
+    "project": "Prince_Edward_Island_2020",
+    "license": "Open Government Licence \u2013 Canada",
+    "inputBands": [
+      "station",
+      "cross offset",
+      "orthometric source altitude",
+      "LAS class",
+      "intensity",
+      "point source ID",
+      "scan angle"
+    ],
+    "allUnwithheldClasses": {
+      "1": 25863,
+      "2": 11940,
+      "6": 12162,
+      "18": 1
+    },
+    "groundFlightlineId": 26975,
+    "worldProjectedCohortSHA256": "f612aa2cd3a1e8e580a22c50388055cea2cfc4fd240bc3850f4a87390c933d13"
+  },
+  "axisWGS84": [
+    [
+      -63.1269576,
+      46.2337761
+    ],
+    [
+      -63.1257269,
+      46.2345471
+    ]
+  ],
+  "runtimeScopeMetres": {
+    "along": [
+      8,
+      120
+    ],
+    "across": [
+      -2.88,
+      2.49
+    ]
+  },
+  "paveSurfaceState": {
+    "sourceSegment": 619,
+    "sourceFlags": 9,
+    "packedGeometry": {
+      "ordinal": 619,
+      "index": 0,
+      "flags": 9,
+      "width": 2.8,
+      "endpoints": [
+        [
+          -63.12709,
+          46.2337
+        ],
+        [
+          -63.12559,
+          46.23464
+        ]
+      ],
+      "alignedXZ": [
+        [
+          -13.211252650850717,
+          -0.56354663675149
+        ],
+        [
+          142.27691849010782,
+          -0.5874956612728736
+        ]
+      ]
+    },
+    "halfWidthMetres": 2.8,
+    "packedSha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "officialNID": "945ad7de4e214df08799f22a1a997a48",
+    "officialStreet": "Richmond St",
+    "officialMaterial": "Blocks",
+    "officialRevision": 202212
+  },
+  "method": "Each overlapping cross section uses unwithheld class-2 returns, a fitted along-grade trend within +/- 2.1 m of the axis, and robust inner/outer sample medians. Bounds are conservative, not a curb survey.",
+  "witnessScans": [
+    {
+      "stationMetres": 8.0,
+      "north": {
+        "edgeStepMetres": 0.095,
+        "inferredBoundaryOffsetMetres": -3.5,
+        "innerCount": 20,
+        "outerCount": 16,
+        "innerDetrendedY": 0.076,
+        "outerDetrendedY": 0.171
+      },
+      "south": {
+        "edgeStepMetres": 0.129,
+        "inferredBoundaryOffsetMetres": 3.2,
+        "innerCount": 28,
+        "outerCount": 7,
+        "innerDetrendedY": -0.027,
+        "outerDetrendedY": 0.102
+      }
+    },
+    {
+      "stationMetres": 12.0,
+      "north": {
+        "edgeStepMetres": 0.101,
+        "inferredBoundaryOffsetMetres": -3.55,
+        "innerCount": 13,
+        "outerCount": 9,
+        "innerDetrendedY": 0.058,
+        "outerDetrendedY": 0.158
+      },
+      "south": {
+        "edgeStepMetres": 0.118,
+        "inferredBoundaryOffsetMetres": 3.4,
+        "innerCount": 25,
+        "outerCount": 11,
+        "innerDetrendedY": 0.007,
+        "outerDetrendedY": 0.125
+      }
+    },
+    {
+      "stationMetres": 16.0,
+      "north": {
+        "edgeStepMetres": 0.145,
+        "inferredBoundaryOffsetMetres": -3.15,
+        "innerCount": 5,
+        "outerCount": 6,
+        "innerDetrendedY": 0.006,
+        "outerDetrendedY": 0.151
+      },
+      "south": {
+        "edgeStepMetres": 0.065,
+        "inferredBoundaryOffsetMetres": 3.05,
+        "innerCount": 18,
+        "outerCount": 15,
+        "innerDetrendedY": -0.024,
+        "outerDetrendedY": 0.041
+      }
+    },
+    {
+      "stationMetres": 20.0,
+      "north": {
+        "edgeStepMetres": 0.134,
+        "inferredBoundaryOffsetMetres": -3.5,
+        "innerCount": 12,
+        "outerCount": 11,
+        "innerDetrendedY": -0.001,
+        "outerDetrendedY": 0.133
+      },
+      "south": {
+        "edgeStepMetres": 0.068,
+        "inferredBoundaryOffsetMetres": 3.25,
+        "innerCount": 5,
+        "outerCount": 18,
+        "innerDetrendedY": -0.021,
+        "outerDetrendedY": 0.047
+      }
+    },
+    {
+      "stationMetres": 24.0,
+      "north": {
+        "edgeStepMetres": 0.131,
+        "inferredBoundaryOffsetMetres": -3.5,
+        "innerCount": 20,
+        "outerCount": 17,
+        "innerDetrendedY": -0.027,
+        "outerDetrendedY": 0.105
+      },
+      "south": {
+        "edgeStepMetres": 0.083,
+        "inferredBoundaryOffsetMetres": 2.95,
+        "innerCount": 9,
+        "outerCount": 13,
+        "innerDetrendedY": -0.038,
+        "outerDetrendedY": 0.045
+      }
+    },
+    {
+      "stationMetres": 28.0,
+      "north": {
+        "edgeStepMetres": 0.045,
+        "inferredBoundaryOffsetMetres": -3.45,
+        "innerCount": 20,
+        "outerCount": 18,
+        "innerDetrendedY": -0.035,
+        "outerDetrendedY": 0.01
+      },
+      "south": {
+        "edgeStepMetres": 0.082,
+        "inferredBoundaryOffsetMetres": 3.35,
+        "innerCount": 8,
+        "outerCount": 10,
+        "innerDetrendedY": -0.011,
+        "outerDetrendedY": 0.071
+      }
+    },
+    {
+      "stationMetres": 32.0,
+      "north": {
+        "edgeStepMetres": 0.045,
+        "inferredBoundaryOffsetMetres": -3.75,
+        "innerCount": 18,
+        "outerCount": 14,
+        "innerDetrendedY": -0.009,
+        "outerDetrendedY": 0.035
+      },
+      "south": {
+        "edgeStepMetres": 0.062,
+        "inferredBoundaryOffsetMetres": 4.45,
+        "innerCount": 4,
+        "outerCount": 9,
+        "innerDetrendedY": 0.013,
+        "outerDetrendedY": 0.075
+      }
+    },
+    {
+      "stationMetres": 36.0,
+      "north": {
+        "edgeStepMetres": 0.063,
+        "inferredBoundaryOffsetMetres": -3.75,
+        "innerCount": 21,
+        "outerCount": 11,
+        "innerDetrendedY": -0.018,
+        "outerDetrendedY": 0.045
+      },
+      "south": {
+        "edgeStepMetres": 0.088,
+        "inferredBoundaryOffsetMetres": 4.25,
+        "innerCount": 8,
+        "outerCount": 6,
+        "innerDetrendedY": 0.028,
+        "outerDetrendedY": 0.116
+      }
+    },
+    {
+      "stationMetres": 40.0,
+      "north": {
+        "edgeStepMetres": 0.053,
+        "inferredBoundaryOffsetMetres": -3.55,
+        "innerCount": 21,
+        "outerCount": 4,
+        "innerDetrendedY": -0.018,
+        "outerDetrendedY": 0.035
+      },
+      "south": {
+        "edgeStepMetres": 0.101,
+        "inferredBoundaryOffsetMetres": 3.45,
+        "innerCount": 13,
+        "outerCount": 10,
+        "innerDetrendedY": 0.021,
+        "outerDetrendedY": 0.123
+      }
+    },
+    {
+      "stationMetres": 44.0,
+      "north": {
+        "edgeStepMetres": 0.165,
+        "inferredBoundaryOffsetMetres": -3.85,
+        "innerCount": 9,
+        "outerCount": 4,
+        "innerDetrendedY": 0.034,
+        "outerDetrendedY": 0.199
+      },
+      "south": {
+        "edgeStepMetres": 0.102,
+        "inferredBoundaryOffsetMetres": 3.45,
+        "innerCount": 15,
+        "outerCount": 10,
+        "innerDetrendedY": 0.033,
+        "outerDetrendedY": 0.135
+      }
+    },
+    {
+      "stationMetres": 48.0,
+      "north": {
+        "edgeStepMetres": 0.11,
+        "inferredBoundaryOffsetMetres": -3.75,
+        "innerCount": 20,
+        "outerCount": 10,
+        "innerDetrendedY": 0.038,
+        "outerDetrendedY": 0.148
+      },
+      "south": {
+        "edgeStepMetres": 0.084,
+        "inferredBoundaryOffsetMetres": 3.95,
+        "innerCount": 11,
+        "outerCount": 15,
+        "innerDetrendedY": 0.045,
+        "outerDetrendedY": 0.129
+      }
+    },
+    {
+      "stationMetres": 52.0,
+      "north": {
+        "edgeStepMetres": 0.12,
+        "inferredBoundaryOffsetMetres": -3.65,
+        "innerCount": 25,
+        "outerCount": 12,
+        "innerDetrendedY": 0.028,
+        "outerDetrendedY": 0.149
+      },
+      "south": {
+        "edgeStepMetres": 0.084,
+        "inferredBoundaryOffsetMetres": 3.3,
+        "innerCount": 15,
+        "outerCount": 18,
+        "innerDetrendedY": -0.012,
+        "outerDetrendedY": 0.073
+      }
+    },
+    {
+      "stationMetres": 56.0,
+      "north": {
+        "edgeStepMetres": 0.116,
+        "inferredBoundaryOffsetMetres": -3.55,
+        "innerCount": 25,
+        "outerCount": 12,
+        "innerDetrendedY": 0.015,
+        "outerDetrendedY": 0.131
+      },
+      "south": {
+        "edgeStepMetres": 0.104,
+        "inferredBoundaryOffsetMetres": 3.3,
+        "innerCount": 18,
+        "outerCount": 18,
+        "innerDetrendedY": -0.014,
+        "outerDetrendedY": 0.09
+      }
+    },
+    {
+      "stationMetres": 60.0,
+      "north": {
+        "edgeStepMetres": 0.117,
+        "inferredBoundaryOffsetMetres": -4.1,
+        "innerCount": 15,
+        "outerCount": 14,
+        "innerDetrendedY": 0.027,
+        "outerDetrendedY": 0.144
+      },
+      "south": {
+        "edgeStepMetres": 0.123,
+        "inferredBoundaryOffsetMetres": 3.5,
+        "innerCount": 16,
+        "outerCount": 4,
+        "innerDetrendedY": -0.008,
+        "outerDetrendedY": 0.115
+      }
+    },
+    {
+      "stationMetres": 64.0,
+      "north": {
+        "edgeStepMetres": 0.051,
+        "inferredBoundaryOffsetMetres": -4.1,
+        "innerCount": 13,
+        "outerCount": 12,
+        "innerDetrendedY": 0.018,
+        "outerDetrendedY": 0.069
+      },
+      "south": {
+        "edgeStepMetres": 0.068,
+        "inferredBoundaryOffsetMetres": 4.4,
+        "innerCount": 6,
+        "outerCount": 4,
+        "innerDetrendedY": -0.001,
+        "outerDetrendedY": 0.067
+      }
+    },
+    {
+      "stationMetres": 68.0,
+      "north": {
+        "edgeStepMetres": 0.06,
+        "inferredBoundaryOffsetMetres": -3.6,
+        "innerCount": 17,
+        "outerCount": 6,
+        "innerDetrendedY": 0.003,
+        "outerDetrendedY": 0.063
+      },
+      "south": {
+        "edgeStepMetres": 0.065,
+        "inferredBoundaryOffsetMetres": 4.7,
+        "innerCount": 11,
+        "outerCount": 6,
+        "innerDetrendedY": 0.006,
+        "outerDetrendedY": 0.07
+      }
+    },
+    {
+      "stationMetres": 72.0,
+      "north": {
+        "edgeStepMetres": 0.093,
+        "inferredBoundaryOffsetMetres": -3.65,
+        "innerCount": 16,
+        "outerCount": 6,
+        "innerDetrendedY": 0.002,
+        "outerDetrendedY": 0.095
+      },
+      "south": {
+        "edgeStepMetres": 0.03,
+        "inferredBoundaryOffsetMetres": 4.45,
+        "innerCount": 16,
+        "outerCount": 7,
+        "innerDetrendedY": 0.001,
+        "outerDetrendedY": 0.032
+      }
+    },
+    {
+      "stationMetres": 76.0,
+      "north": {
+        "edgeStepMetres": 0.076,
+        "inferredBoundaryOffsetMetres": -3.7,
+        "innerCount": 15,
+        "outerCount": 5,
+        "innerDetrendedY": -0.003,
+        "outerDetrendedY": 0.073
+      },
+      "south": {
+        "edgeStepMetres": 0.031,
+        "inferredBoundaryOffsetMetres": 2.7,
+        "innerCount": 15,
+        "outerCount": 17,
+        "innerDetrendedY": -0.033,
+        "outerDetrendedY": -0.003
+      }
+    },
+    {
+      "stationMetres": 80.0,
+      "north": {
+        "edgeStepMetres": 0.108,
+        "inferredBoundaryOffsetMetres": -3.7,
+        "innerCount": 18,
+        "outerCount": 9,
+        "innerDetrendedY": 0.024,
+        "outerDetrendedY": 0.132
+      },
+      "south": {
+        "edgeStepMetres": 0.072,
+        "inferredBoundaryOffsetMetres": 3.2,
+        "innerCount": 21,
+        "outerCount": 11,
+        "innerDetrendedY": -0.002,
+        "outerDetrendedY": 0.07
+      }
+    },
+    {
+      "stationMetres": 84.0,
+      "north": {
+        "edgeStepMetres": 0.1,
+        "inferredBoundaryOffsetMetres": -3.65,
+        "innerCount": 19,
+        "outerCount": 8,
+        "innerDetrendedY": 0.053,
+        "outerDetrendedY": 0.153
+      },
+      "south": {
+        "edgeStepMetres": 0.079,
+        "inferredBoundaryOffsetMetres": 3.0,
+        "innerCount": 20,
+        "outerCount": 16,
+        "innerDetrendedY": -0.004,
+        "outerDetrendedY": 0.075
+      }
+    },
+    {
+      "stationMetres": 88.0,
+      "north": {
+        "edgeStepMetres": 0.112,
+        "inferredBoundaryOffsetMetres": -3.65,
+        "innerCount": 14,
+        "outerCount": 4,
+        "innerDetrendedY": 0.045,
+        "outerDetrendedY": 0.157
+      },
+      "south": {
+        "edgeStepMetres": 0.102,
+        "inferredBoundaryOffsetMetres": 3.0,
+        "innerCount": 16,
+        "outerCount": 12,
+        "innerDetrendedY": 0.004,
+        "outerDetrendedY": 0.106
+      }
+    },
+    {
+      "stationMetres": 92.0,
+      "north": {
+        "edgeStepMetres": 0.115,
+        "inferredBoundaryOffsetMetres": -3.85,
+        "innerCount": 13,
+        "outerCount": 4,
+        "innerDetrendedY": 0.006,
+        "outerDetrendedY": 0.121
+      },
+      "south": {
+        "edgeStepMetres": 0.065,
+        "inferredBoundaryOffsetMetres": 2.9,
+        "innerCount": 19,
+        "outerCount": 4,
+        "innerDetrendedY": 0.002,
+        "outerDetrendedY": 0.067
+      }
+    },
+    {
+      "stationMetres": 96.0,
+      "north": {
+        "edgeStepMetres": 0.107,
+        "inferredBoundaryOffsetMetres": -3.6,
+        "innerCount": 19,
+        "outerCount": 8,
+        "innerDetrendedY": -0.005,
+        "outerDetrendedY": 0.102
+      },
+      "south": {
+        "edgeStepMetres": 0.077,
+        "inferredBoundaryOffsetMetres": 3.0,
+        "innerCount": 17,
+        "outerCount": 4,
+        "innerDetrendedY": -0.03,
+        "outerDetrendedY": 0.047
+      }
+    },
+    {
+      "stationMetres": 100.0,
+      "north": {
+        "edgeStepMetres": 0.114,
+        "inferredBoundaryOffsetMetres": -3.6,
+        "innerCount": 16,
+        "outerCount": 6,
+        "innerDetrendedY": -0.013,
+        "outerDetrendedY": 0.101
+      },
+      "south": {
+        "edgeStepMetres": 0.07,
+        "inferredBoundaryOffsetMetres": 2.95,
+        "innerCount": 21,
+        "outerCount": 11,
+        "innerDetrendedY": -0.048,
+        "outerDetrendedY": 0.021
+      }
+    },
+    {
+      "stationMetres": 104.0,
+      "north": {
+        "edgeStepMetres": 0.067,
+        "inferredBoundaryOffsetMetres": -3.25,
+        "innerCount": 8,
+        "outerCount": 4,
+        "innerDetrendedY": -0.053,
+        "outerDetrendedY": 0.014
+      },
+      "south": {
+        "edgeStepMetres": 0.084,
+        "inferredBoundaryOffsetMetres": 3.05,
+        "innerCount": 16,
+        "outerCount": 13,
+        "innerDetrendedY": -0.034,
+        "outerDetrendedY": 0.05
+      }
+    },
+    {
+      "stationMetres": 108.0,
+      "north": {
+        "edgeStepMetres": 0.043,
+        "inferredBoundaryOffsetMetres": -3.2,
+        "innerCount": 9,
+        "outerCount": 4,
+        "innerDetrendedY": -0.055,
+        "outerDetrendedY": -0.012
+      },
+      "south": {
+        "edgeStepMetres": 0.097,
+        "inferredBoundaryOffsetMetres": 3.0,
+        "innerCount": 22,
+        "outerCount": 12,
+        "innerDetrendedY": -0.015,
+        "outerDetrendedY": 0.081
+      }
+    },
+    {
+      "stationMetres": 112.0,
+      "north": {
+        "edgeStepMetres": 0.103,
+        "inferredBoundaryOffsetMetres": -3.95,
+        "innerCount": 8,
+        "outerCount": 4,
+        "innerDetrendedY": -0.009,
+        "outerDetrendedY": 0.093
+      },
+      "south": {
+        "edgeStepMetres": 0.096,
+        "inferredBoundaryOffsetMetres": 2.9,
+        "innerCount": 23,
+        "outerCount": 12,
+        "innerDetrendedY": -0.011,
+        "outerDetrendedY": 0.085
+      }
+    },
+    {
+      "stationMetres": 116.0,
+      "north": {
+        "edgeStepMetres": 0.115,
+        "inferredBoundaryOffsetMetres": -3.85,
+        "innerCount": 13,
+        "outerCount": 4,
+        "innerDetrendedY": -0.028,
+        "outerDetrendedY": 0.087
+      },
+      "south": {
+        "edgeStepMetres": 0.102,
+        "inferredBoundaryOffsetMetres": 3.1,
+        "innerCount": 25,
+        "outerCount": 10,
+        "innerDetrendedY": -0.004,
+        "outerDetrendedY": 0.097
+      }
+    },
+    {
+      "stationMetres": 120.0,
+      "north": {
+        "edgeStepMetres": 0.102,
+        "inferredBoundaryOffsetMetres": -3.8,
+        "innerCount": 13,
+        "outerCount": 6,
+        "innerDetrendedY": 0.002,
+        "outerDetrendedY": 0.104
+      },
+      "south": {
+        "edgeStepMetres": 0.108,
+        "inferredBoundaryOffsetMetres": 3.1,
+        "innerCount": 24,
+        "outerCount": 10,
+        "innerDetrendedY": -0.004,
+        "outerDetrendedY": 0.104
+      }
+    }
+  ]
+}

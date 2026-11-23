@@ -1,10 +1,11 @@
 import type {MeshStandardMaterial} from 'three';
+import {victoriaPavingGLSL,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
 import type {RoadPavement} from './road-pavement.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
-export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement,seat?:{value:number}){
- material.customProgramCacheKey=()=> 'pei-road-surface-v3'+(casts?'-cast':'')+(pavement?'-pavement':'')+(seat?'-seat':'');
+export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement,seat?:{value:number},victoria=false){
+ material.customProgramCacheKey=()=> 'pei-road-surface-v3'+(casts?'-cast':'')+(pavement?'-pavement':'')+(seat?'-seat':'')+(victoria?'-victoria':'');
  material.onBeforeCompile=(shader)=>{
   if(casts)Object.assign(shader.uniforms,casts.uniforms);
   if(pavement)Object.assign(shader.uniforms,pavement.uniforms);
@@ -44,6 +45,7 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
     return mix(mix(roadHash(i),roadHash(i+vec2(1,0)),f.x),
                mix(roadHash(i+vec2(0,1)),roadHash(i+1.),f.x),f.y);
    }
+   ${victoria?victoriaPavingGLSL:''}
   `).replace('#include <color_fragment>',`
    #include <color_fragment>
    ${pavement?'vec3 roadPaveBasis=diffuseColor.rgb;':''}
@@ -91,11 +93,18 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
     diffuseColor.rgb=mix(diffuseColor.rgb,dust,shoulder*medium*(.28*gravel+.17*paved));
     }
    }
+   ${victoria?`
+   vec2 victoriaUV=victoriaLocal(vRoadWorld);
+   float victoriaMarker=1.-step(.002,abs(vRoadSurface.y-${(VICTORIA_PAVER_KIND/127).toFixed(8)}));
+   float victoriaBlend=victoriaMarker*victoriaWeight(victoriaUV);
+   vec3 victoriaNormal=vec3(0.);
+   float victoriaRough=.95;
+   `:''}
    ${pavement?`
    // At a grazing angle meter-per-screen-pixel filtering fades the material
    // before individual stones alias. Only existing paved-class ribbons use it.
    float paveClass=step(.22,vRoadSurface.y)*(1.-step(.76,vRoadSurface.y));
-   float roadPaveAmount=roadPaveBlend*paveClass*(1.-smoothstep(.06,.40,px));
+   float roadPaveAmount=roadPaveBlend*paveClass*(1.-smoothstep(.06,.40,px))${victoria?"*(1.-victoriaBlend)":""};
    vec3 roadPaveNormal=vec3(0.);
    float roadPaveRough=.98;
    mat2 rotatePave=mat2(.804617,.593794,-.593794,.804617);
@@ -122,6 +131,12 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
     roadPaveRough=clamp(.79+.19*mix(a.a,b.a,variant),.79,.98);
    }
    `:''}
+   ${victoria?`
+   if(victoriaBlend>.0001){
+    vec3 pavers=victoriaPaver(victoriaUV,px,victoriaNormal,victoriaRough);
+    diffuseColor.rgb=mix(diffuseColor.rgb,pavers,victoriaBlend);
+   }
+   `:''}
   `);
   if(seat)shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_begin>',`
    #include <normal_fragment_begin>
@@ -136,6 +151,16 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
    if(roadPaveAmount>.0001){
     vec3 tangentNormal=mat3(viewMatrix)*roadPaveNormal;
     normal=normalize(normal+tangentNormal-normal*dot(normal,tangentNormal));
+   }
+  `);
+  if(victoria)shader.fragmentShader=shader.fragmentShader.replace('#include <roughnessmap_fragment>',`
+   #include <roughnessmap_fragment>
+   if(victoriaBlend>.0001)roughnessFactor=mix(roughnessFactor,victoriaRough,victoriaBlend);
+  `).replace('#include <normal_fragment_maps>',`
+   #include <normal_fragment_maps>
+   if(victoriaBlend>.0001){
+    vec3 bump=mat3(viewMatrix)*(victoriaNormal*victoriaBlend);
+    normal=normalize(normal+bump-normal*dot(normal,bump));
    }
   `);
   if(casts)shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_end>',`
