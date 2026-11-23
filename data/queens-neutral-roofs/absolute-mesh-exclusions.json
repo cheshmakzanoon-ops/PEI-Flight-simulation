@@ -1,0 +1,107 @@
+[
+  {
+    "tile": "q031111",
+    "i": 321,
+    "city": "Cornwall",
+    "kind": "gable",
+    "points": 18,
+    "before": 1.0687010313221321,
+    "after": 1.0687010313221321,
+    "datumDiff": 0.832395709388134,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q031111",
+    "i": 329,
+    "city": "Cornwall",
+    "kind": "gable",
+    "points": 23,
+    "before": 0.7542212428192613,
+    "after": 0.7542212428192613,
+    "datumDiff": 1.1051300583536872,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q03132",
+    "i": 366,
+    "city": "HunterRiver",
+    "kind": "gable",
+    "points": 21,
+    "before": 0.34249904638804196,
+    "after": 0.34249904638804196,
+    "datumDiff": 0.8057908968487553,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q03330",
+    "i": 139,
+    "city": "NorthRustico",
+    "kind": "gable",
+    "points": 36,
+    "before": 1.1386590003967427,
+    "after": 1.1386590003967427,
+    "datumDiff": 1.4350162398944635,
+    "faces": [
+      22,
+      22
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q03330",
+    "i": 423,
+    "city": "NorthRustico",
+    "kind": "gable",
+    "points": 12,
+    "before": 0.6546300947127265,
+    "after": 0.6546300947127265,
+    "datumDiff": 0.9495277346729534,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q1022321",
+    "i": 167,
+    "city": "Stratford",
+    "kind": "hip",
+    "points": 39,
+    "before": 0.725628662109375,
+    "after": 0.725628662109375,
+    "datumDiff": 1.3266466447900136,
+    "faces": [
+      16,
+      16
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q1022321",
+    "i": 232,
+    "city": "Stratford",
+    "kind": "gable",
+    "points": 12,
+    "before": 1.8011806433787143,
+    "after": 1.8011806433787143,
+    "datumDiff": 1.7819196622681552,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  }
+]

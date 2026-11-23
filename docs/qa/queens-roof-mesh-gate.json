@@ -1,0 +1,473 @@
+{
+  "target": "QUEENS; roof-only scout; no semantic façade or footprints",
+  "attempted": 29,
+  "accepted": 29,
+  "rejected": 0,
+  "cells": 629,
+  "chunks": 5,
+  "unrelated": {
+    "vertices": 143466,
+    "bytes": 7029834
+  },
+  "q": [
+    0.1,
+    0.5,
+    0.9,
+    0.99,
+    1
+  ],
+  "perBuildingAbsoluteRoofP90": {
+    "before": [
+      0.4693418299397252,
+      0.8627773284911824,
+      1.3951544659006367,
+      1.9853426324567491,
+      2.2048347473144814
+    ],
+    "after": [
+      0.07900567108956408,
+      0.1357911954640656,
+      0.36080480315811486,
+      0.3952313060148778,
+      0.4052817026672216
+    ]
+  },
+  "rejectedNotPublished": [],
+  "acceptedProof": [
+    {
+      "tile": "q031111",
+      "i": 50,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 26,
+      "before": 1.0557041168212749,
+      "after": 0.30288350321455937,
+      "datumDiff": 0.47765633627494,
+      "faces": [
+        13,
+        23
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 82,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 21,
+      "before": 1.4024543762207031,
+      "after": 0.36938742890885123,
+      "datumDiff": 0.250312180901453,
+      "faces": [
+        16,
+        28
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 97,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 19,
+      "before": 1.2270114898681639,
+      "after": 0.10459520753948935,
+      "datumDiff": 0.3267804739851847,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 221,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 24,
+      "before": 0.8627773284911824,
+      "after": 0.0792035989835682,
+      "datumDiff": 0.7387261595255588,
+      "faces": [
+        16,
+        24
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 343,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 13,
+      "before": 1.420934337108298,
+      "after": 0.3599349965025226,
+      "datumDiff": 0.5175163444707316,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 403,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 25,
+      "before": 0.7955648382072866,
+      "after": 0.12252589799669522,
+      "datumDiff": 0.4519336873479034,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 408,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 8,
+      "before": 1.2019595766094624,
+      "after": 0.11859883985007684,
+      "datumDiff": 0.3408147814029121,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 426,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 14,
+      "before": 0.6854863723428509,
+      "after": 0.36428402978048385,
+      "datumDiff": 0.0010982399962919942,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q031111",
+      "i": 497,
+      "city": "Cornwall",
+      "kind": "gable",
+      "points": 34,
+      "before": 0.4863462954217567,
+      "after": 0.11512386601133073,
+      "datumDiff": 0.3356224450052885,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03132",
+      "i": 6,
+      "city": "HunterRiver",
+      "kind": "gable",
+      "points": 15,
+      "before": 2.2048347473144814,
+      "after": 0.3212663773079838,
+      "datumDiff": 0.16758468879617539,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03132",
+      "i": 141,
+      "city": "HunterRiver",
+      "kind": "gable",
+      "points": 11,
+      "before": 0.6090393066406534,
+      "after": 0.1357911954640656,
+      "datumDiff": 0.7595206152148393,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03132",
+      "i": 312,
+      "city": "HunterRiver",
+      "kind": "gable",
+      "points": 19,
+      "before": 0.4013239680115987,
+      "after": 0.16629454661233456,
+      "datumDiff": 0.7648190270230408,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03132",
+      "i": 458,
+      "city": "HunterRiver",
+      "kind": "hip",
+      "points": 37,
+      "before": 1.3933294883206202,
+      "after": 0.2548024688316616,
+      "datumDiff": 0.6542349761811863,
+      "faces": [
+        14,
+        32
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03330",
+      "i": 449,
+      "city": "NorthRustico",
+      "kind": "gable",
+      "points": 16,
+      "before": 0.5780170901105777,
+      "after": 0.0959356991199769,
+      "datumDiff": 0.22262460909091963,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03330",
+      "i": 518,
+      "city": "NorthRustico",
+      "kind": "gable",
+      "points": 17,
+      "before": 0.5868241757012015,
+      "after": 0.30252730156330476,
+      "datumDiff": 0.2923047723494161,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q03330",
+      "i": 540,
+      "city": "NorthRustico",
+      "kind": "gable",
+      "points": 15,
+      "before": 0.7431580435718558,
+      "after": 0.07601623294912088,
+      "datumDiff": 0.676495997169809,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 20,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 25,
+      "before": 1.3539096832275506,
+      "after": 0.10638571267434714,
+      "datumDiff": 0.24297547570738587,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 90,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 25,
+      "before": 1.1878665924072551,
+      "after": 0.08614456495253649,
+      "datumDiff": 0.13270301087102965,
+      "faces": [
+        28,
+        44
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 97,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 20,
+      "before": 1.0831186294555692,
+      "after": 0.4052817026672216,
+      "datumDiff": 0.18430300846683778,
+      "faces": [
+        16,
+        28
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 99,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 17,
+      "before": 1.003920745849598,
+      "after": 0.06690994944115687,
+      "datumDiff": 0.10796892445942419,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 128,
+      "city": "Stratford",
+      "kind": "shed",
+      "points": 13,
+      "before": 1.0787837982177735,
+      "after": 0.14273548232855549,
+      "datumDiff": 0.78586323066245,
+      "faces": [
+        16,
+        16
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 136,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 27,
+      "before": 1.066031265258789,
+      "after": 0.18689647258748332,
+      "datumDiff": 0.03551107221704797,
+      "faces": [
+        16,
+        26
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 150,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 19,
+      "before": 0.8721744537353289,
+      "after": 0.1748294146785497,
+      "datumDiff": 0.05377325697545743,
+      "faces": [
+        16,
+        28
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 221,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 24,
+      "before": 0.705510656754825,
+      "after": 0.2411545221100908,
+      "datumDiff": 0.6654477533468572,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 263,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 17,
+      "before": 0.7106533053979206,
+      "after": 0.08504038870878505,
+      "datumDiff": 0.5220219745731498,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 334,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 14,
+      "before": 0.6270141917917584,
+      "after": 0.07821395951354762,
+      "datumDiff": 0.6241801217764049,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 338,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 26,
+      "before": 0.28219747286595975,
+      "after": 0.09135449336648094,
+      "datumDiff": 0.007312236966530605,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q1022321",
+      "i": 373,
+      "city": "Stratford",
+      "kind": "gable",
+      "points": 38,
+      "before": 0.3196988544401393,
+      "after": 0.12817811885440739,
+      "datumDiff": 0.038958986337991774,
+      "faces": [
+        14,
+        18
+      ],
+      "highDouble": 0
+    },
+    {
+      "tile": "q12000131",
+      "i": 323,
+      "city": "Charlottetown",
+      "kind": "hip",
+      "points": 50,
+      "before": 0.5387099996383029,
+      "after": 0.15756426184169073,
+      "datumDiff": 0.07092411990282876,
+      "faces": [
+        14,
+        32
+      ],
+      "highDouble": 0
+    }
+  ]
+}

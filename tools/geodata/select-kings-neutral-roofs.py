@@ -7,7 +7,7 @@ from scipy.spatial import ConvexHull,QhullError
 cli=argparse.ArgumentParser(description=__doc__)
 cli.add_argument('--root',type=Path,default=Path.cwd())
 cli.add_argument('--scratch',type=Path,required=True)
-cli.add_argument('--region',choices=['kings','prince'],default='kings')
+cli.add_argument('--region',choices=['kings','prince','queens'],default='kings')
 arg=cli.parse_args()
 west=arg.region=='prince'
 P=arg.root/'public/world/buildings'
@@ -21,6 +21,9 @@ if west:town={'Tignish':(-64.031,46.949),'Alberton':(-64.066,46.815),
  'OLeary':(-64.231,46.709),'Wellington':(-64.003,46.455),
  'BordenCarleton':(-63.692,46.253),'Kensington':(-63.648,46.437)}
 
+if arg.region=='queens':town={'Victoria':(-63.4884,46.2143),'NorthRustico':(-63.3139,46.4570),
+ 'HunterRiver':(-63.3499,46.3561),'Cornwall':(-63.2192,46.2418),
+ 'Stratford':(-63.0881,46.2190),'Charlottetown':(-63.1277,46.23845)}
 c={n:(np.array(ll)-orig)*S for n,ll in town.items()}
 homes=(arg.root/'src/render/home-envelopes.generated.ts').read_text()
 d0=json.loads(homes.split('export const HOME_FORMS=',1)[1].split(' as const')[0])
@@ -46,7 +49,7 @@ for tile in index['tiles']:
         width,length=sorted((a[j],bw[j]))
         if not 6.2<width<20 or not 8.4<length<32 or area/(width*length)<.88:continue
         axis=u[j] if a[j]>bw[j] else v[j]
-        row=dict(tile=tile['id'],i=i,ctr=ctr.tolist(),fp=ll.tolist(),world=world.tolist(),county='PRINCE' if west else 'KINGS',
+        row=dict(tile=tile['id'],i=i,ctr=ctr.tolist(),fp=ll.tolist(),world=world.tolist(),county=arg.region.upper(),
                  city=hit[1],length=float(length),width=float(width),area=float(area),
                  axis=axis.tolist(),h=b['height'],lo=b['minHeight'],distance=float(hit[0]))
         lookup[hit[1]].append(row)
@@ -57,7 +60,7 @@ for n,a in lookup.items():
     count=Counter()
     for p in a:
         key=tuple((np.asarray(p['world'])//110).astype(int))
-        if count[key]>=6 or sum(count.values())>=(24 if west else 30):continue
+        if count[key]>=6 or sum(count.values())>=(30 if arg.region=='kings' else 24):continue
         count[key]+=1;rows.append(p)
     print(n,len(a),sum(count.values()))
 (W/'candidate-shells.json').write_text(json.dumps(rows,separators=(',',':'))+'\n')

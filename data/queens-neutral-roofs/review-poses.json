@@ -1,0 +1,5 @@
+{
+  "hunter-river":{"lon":-63.347015666666664,"lat":46.353943166666674,"h":7.0,"east":0.62,"south":0.79,"nearDist":62,"nearAgl":47,"owner":"q03132"},
+  "cornwall":{"lon":-63.21628575,"lat":46.23771075,"h":7.0,"east":0.60,"south":0.80,"nearDist":75,"nearAgl":43,"owner":"q031111"},
+  "stratford":{"lon":-63.089648333333336,"lat":46.22058033333334,"h":7.0,"east":0.66,"south":0.76,"nearDist":79,"nearAgl":49,"owner":"q1022321"}
+}
