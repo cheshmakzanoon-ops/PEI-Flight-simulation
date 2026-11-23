@@ -1,6 +1,6 @@
 # North Cape commercial wind farm
 
-Add `?northCapeWind` and choose **North Cape**. The same Western PEI map
+Add `?northCapeWind` and choose **North Cape**. For a closer view, select the [wind farm low pass](north-cape-departure.md). The same Western PEI map
 now shows the commercial array's 16 V47-660 turbines, not repeating props
 scattered on the landscape. The inland and coastal groups follow their
 attributed source positions. No map boundaries or aircraft handling change.

@@ -1,0 +1,26 @@
+[
+  {
+    "option": false,
+    "site": "northcape-wind-low",
+    "movementM": 183.25852294685689,
+    "northCape": null,
+    "startY": 121.95756070873678,
+    "afterY": 123.052006967964,
+    "pauseSucceeded": true,
+    "errors": []
+  },
+  {
+    "option": true,
+    "site": "northcape-wind-low",
+    "movementM": 180.28265887846683,
+    "northCape": {
+      "registered": 16,
+      "near": 15,
+      "cruise": 1
+    },
+    "startY": 121.95756070873678,
+    "afterY": 123.03295478502773,
+    "pauseSucceeded": true,
+    "errors": []
+  }
+]

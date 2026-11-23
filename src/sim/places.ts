@@ -16,7 +16,8 @@ export const SITES: Site[] = [
  {id:'east-light',name:'East Point · lighthouse pass',region:'Kings County',lon:-61.9679,lat:46.4507,heading:292,height:58,note:'Approach the red-roofed fog house and white octagonal light from offshore.'},
  {id:'west-light',name:'West Point · lighthouse pass',region:'Prince County',lon:-64.3910,lat:46.6194,heading:61,height:58,note:'Follow the striped light onto the Cedar Dunes shoreline at the western entrance to the strait.'},
  {id:'basin-head-low',name:'Basin Head · low pass',region:'Kings County',lon:-62.10574,lat:46.37296,heading:338,height:96,note:'Follow the inlet towards the beach, footbridge and historic Cannery from offshore.'},
- {id:'spinnakers-low',name:'Summerside waterfront · low pass',region:'Prince County',lon:-63.7813,lat:46.3849,heading:314,height:82,note:'Cross the harbour towards Spinnakers’ Landing and the Summerside waterfront.'}
+ {id:'spinnakers-low',name:'Summerside waterfront · low pass',region:'Prince County',lon:-63.7813,lat:46.3849,heading:314,height:82,note:'Cross the harbour towards Spinnakers’ Landing and the Summerside waterfront.'},
+ {id:'northcape-wind-low',name:'North Cape · wind farm low pass',region:'Prince County',lon:-64.0036036,lat:47.0544783,heading:139,height:122,note:'Begin over the Gulf and cross the commercial turbine array at 122 metres above the starting surface. The North Cape wind scenery preview renders the towers.'}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);
