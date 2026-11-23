@@ -8,6 +8,7 @@ import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
+import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
 import { shoreFoamGLSL } from './shore-foam.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
@@ -57,7 +58,7 @@ const skyFrag=fp+skyFn+`
  void main(){
  #include <logdepthbuf_fragment>
  gl_FragColor=vec4(skyAt(normalize(p-cameraPosition)),1.);`+out;
-const waterFrag=fp+skyFn+shoreFoamGLSL+`
+const waterFrag=(lake:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?southLakeGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -76,6 +77,10 @@ const waterFrag=fp+skyFn+shoreFoamGLSL+`
  float wind=1.5*noise(q*.018+vec2(t*.021,-t*.007));
  vec2 n=(a*.95+b*.44)*fade;
  n+=vec2(.71,.52)*filteredWave(q,vec2(.127,.059),t*.39+wind)*.006*fade;
+ ${lake?`
+ float shelter=southLakeShelter(q);
+ if(shelter>0.)n*=1.-.70*shelter;
+ `:''}
  vec3 normal=normalize(vec3(-n.x,1.,-n.y));vec3 refl=reflect(-view,normal);
  float ndv=clamp(dot(normal,view),0.,1.);
  // Reflection is filtered over a rough specular lobe, including the sky panorama's
@@ -94,6 +99,12 @@ const waterFrag=fp+skyFn+shoreFoamGLSL+`
  if(shore>=0.)discard;
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
+ ${lake?`
+ if(shelter>0.){
+  float optical=.48+.19*smoothstep(25.,145.,-shore);
+  deep=mix(deep,southLakeTint(q,shore),optical*shelter);
+ }
+ `:''}
  // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
  // modulate the reflection; large-scale swells scarcely change the surface normal.
  float undulation=noise(q*.012+vec2(t*.012,t*.007))-.5;
@@ -101,7 +112,20 @@ const waterFrag=fp+skyFn+shoreFoamGLSL+`
  vec3 c=mix(deep,reflection,fres);c*=1.+.38*(n.x+.45*n.y);
  float glitter=pow(clamp(dot(normal,normalize(view+sun)),0.,1.),83.);
  c+=vec3(.72,.61,.41)*glitter*(.32+.35*fade);
- c=mix(c,vec3(.49,.58,.56),shoreFoam(q,shore,t,dist,n,foamFootprint));
+ ${lake?`
+ // Keep a gradient at the safe inward mask edge; no breaking ocean waves
+ // in the basin interior. Derivatives of the original phase stay intact.
+ float foam=0.;
+ if(shelter<.999){
+  foam=shoreFoam(q,shore,t,dist,n,foamFootprint);
+  if(shelter>0.){
+   // Ocean breaker bands fade well before the stronger basin tint and
+   // ripple change. A narrow unsupported bank keeps its former optics.
+   float gain=1.-smoothstep(0.,.22,shelter);foam*=gain*gain;
+  }
+ }
+ c=mix(c,vec3(.49,.58,.56),foam);
+ `:`c=mix(c,vec3(.49,.58,.56),shoreFoam(q,shore,t,dist,n,foamFootprint));`}
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
 const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  void main(){
@@ -170,7 +194,7 @@ const landFrag=(east:boolean,bench=false)=>fp+lighthouseGroundGLSL+(east?eastSan
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export async function loadAtlas(progress:(s:string)=>void){
- const surveys=loadCoastalSurveys(base),bench=loadEastBench(base);
+ const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
@@ -184,7 +208,7 @@ export async function loadAtlas(progress:(s:string)=>void){
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
  const installed=await surveys;
  return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed),img,cover,sky,
-   bench:installed.some(s=>!!s.cliff)?await bench:undefined};
+   bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake};
 }
 async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
@@ -211,9 +235,9 @@ interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THR
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
- readonly coastalBenches:readonly string[];
+ readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask){
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
    const benchMask=east?bench:undefined;
    let benchMap:THREE.DataTexture|undefined;
@@ -236,7 +260,21 @@ export class World {
    const uniforms={eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    this.sky=new THREE.Mesh(new THREE.SphereGeometry(290000,32,20),make(skyFrag,THREE.BackSide));this.sky.renderOrder=-10;this.sky.material && ((this.sky.material as THREE.Material).depthWrite=false);this.sky.frustumCulled=false;scene.add(this.sky);
-   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),make(waterFrag));ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
+   const oceanMaterial=make(waterFrag(!!southLake));
+   this.shelteredWater=southLake?[southLake.plan.id]:[];
+   if(southLake){
+    const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;
+    // Reuse RG to keep the larger Three.js build cacheable across scenery changes.
+    const bytes=new Uint8Array(values.length*2);for(let i=0;i<values.length;i++)bytes[i*2]=values[i];
+    const map=new THREE.DataTexture(bytes,plan.width,plan.height,THREE.RGFormat);
+    map.magFilter=map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
+    oceanMaterial.uniforms={...uniforms,southLakeMask:{value:map},
+      southLakeAABB:{value:new THREE.Vector4(...plan.boundsXZ)},
+      southLakeFrame:{value:new THREE.Vector4(...plan.worldAnchorXZ,...plan.rotationCS)},
+      southLakeRect:{value:new THREE.Vector4(a,b,1/(c-a),1/(d-b))}};
+   }
+   const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
+   ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
    this.mat=make(landFrag(false));
    this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
