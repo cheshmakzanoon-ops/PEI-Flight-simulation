@@ -3,6 +3,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import {makePropeller} from './propeller.ts';
 import {SURVEY_AIRFRAME} from '../sim/flight.ts';
 import { DIALS, dialAngle } from './instruments.ts';
+import { createCockpitTrim } from './cockpit-trim.ts';
 
 /** Original high-wing survey aircraft. Local +Y up, -Z forward. All dimensions in metres. */
 export function createAircraft() {
@@ -189,7 +190,7 @@ export function createAircraft() {
  root.add(spinner,prop,propDisc);
  // Original cockpit framing and analog gauge deck used in the pilot camera.
  const cockpit=new THREE.Group();root.add(cockpit);
- const dash=mesh(new THREE.BoxGeometry(1.13,.24,.26),dark,cockpit);dash.position.set(0,.37,-1.32);
+ createCockpitTrim(cockpit);
  for(const s of [-1,1]){bar([.59*s,.39,-1.35],[.46*s,1.01,-.80],.031,dark,cockpit);}
  const needles:THREE.Group[]=[];
  const bezelMat=mat(0x232628,.44,.62),screwMat=mat(0x93999a,.39,.78);
