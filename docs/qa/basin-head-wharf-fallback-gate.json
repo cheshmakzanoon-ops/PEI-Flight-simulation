@@ -1,0 +1,62 @@
+[
+  {
+    "case": "default",
+    "basin": false,
+    "wharfToe": false,
+    "montague": false,
+    "quartermaster": true,
+    "activeStockArcs": false,
+    "bankRequests": 0,
+    "jsErrors": []
+  },
+  {
+    "case": "plain-basin",
+    "basin": true,
+    "wharfToe": false,
+    "montague": false,
+    "quartermaster": true,
+    "activeStockArcs": false,
+    "bankRequests": 1,
+    "jsErrors": []
+  },
+  {
+    "case": "all-previews",
+    "basin": true,
+    "wharfToe": true,
+    "montague": true,
+    "quartermaster": true,
+    "activeStockArcs": true,
+    "bankRequests": 1,
+    "jsErrors": []
+  },
+  {
+    "case": "model-hidden",
+    "basin": true,
+    "wharfToe": true,
+    "montague": true,
+    "quartermaster": true,
+    "activeStockArcs": true,
+    "bankRequests": 1,
+    "jsErrors": []
+  },
+  {
+    "case": "bank-absent",
+    "basin": false,
+    "wharfToe": false,
+    "montague": true,
+    "quartermaster": true,
+    "activeStockArcs": true,
+    "bankRequests": 1,
+    "jsErrors": []
+  },
+  {
+    "case": "inlet-unrequested",
+    "basin": false,
+    "wharfToe": false,
+    "montague": false,
+    "quartermaster": true,
+    "activeStockArcs": false,
+    "bankRequests": 0,
+    "jsErrors": []
+  }
+]

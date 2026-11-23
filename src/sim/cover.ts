@@ -1,12 +1,13 @@
 import {clamp} from './geo.ts';
+import {mergeWharfToe} from './basin-wharf-toe.ts';
 import type {HarbourCover,WaterInset} from './harbour-cover.ts';
 import type {Terrain} from './terrain.ts';
 export class Cover {
- readonly sourceSha?:string;
+ readonly sourceSha?:string;readonly wharfToe:boolean;
  readonly width:number;readonly height:number;readonly bytes:Uint8Array;readonly harbour:HarbourCover|undefined;readonly basin?:WaterInset;readonly montague?:WaterInset;readonly sourceDecodedSha?:string;readonly waterInsets:readonly WaterInset[];
- constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset,montague?:WaterInset,sourceDecodedSha?:string){
+ constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset,montague?:WaterInset,sourceDecodedSha?:string,wharfToe=false){
   if(data.length!==width*height*2||width<2||height<2)throw Error('Invalid province ground-cover raster.');
-  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;this.montague=montague;this.sourceDecodedSha=sourceDecodedSha;
+  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;this.montague=montague;this.sourceDecodedSha=sourceDecodedSha;this.wharfToe=wharfToe;
   this.waterInsets=[...(harbour?[harbour]:[]),...(basin?[basin]:[]),...(montague?[montague]:[])];
  }
  sample(t:Terrain,x:number,z:number){
@@ -19,7 +20,8 @@ export class Cover {
   const next=this.basin?.distance(prior,x,z)??prior;
   // An inlet can admit a wet hit but cannot recolor the dry surroundings
   // or shift distance-based yard, hedge and forest material cutoffs.
-  const fromBasin=next<0?next:prior;
+  const basinBase=next<0?next:prior;
+  const fromBasin=this.wharfToe?mergeWharfToe(basinBase,x,z):basinBase;
   const fromMontague=this.montague?.distance(fromBasin,x,z)??fromBasin;
   // Match the land shader: only wet samples may adopt the replacement
   // scalar. A still-dry sample keeps its old material and planting rules.

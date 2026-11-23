@@ -1,0 +1,28 @@
+{
+  "heldout": {
+    "actualThreeMeshRayCount": 383,
+    "p90AbsToSourceBeforeRendererLiftM": 0.032689256437226505,
+    "silhouetteNotGuaranteedOutsideCentreBand": true
+  },
+  "contact": {
+    "checked": 1111,
+    "outerEdgeMissesFromInverseProjection": 31,
+    "interiorMisses": 0,
+    "terrainIntrusions": 0,
+    "closestDeckToGroundM": 0.022137011900270842,
+    "wetAtSources": 273
+  },
+  "rendering": {
+    "meshes": [
+      {
+        "name": "Basin wharf: weathered deck",
+        "triangles": 24
+      },
+      {
+        "name": "Basin wharf: closed plank retaining face",
+        "triangles": 326
+      }
+    ],
+    "noOceanOrTerrainMutation": true
+  }
+}

@@ -138,7 +138,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
  ${harbour?'shore=harbourFrom(shore,quay);':''}
- ${basin?'vec2 inlet=basinChannelAt(p.xz);shore=basinChannelFrom(shore,inlet);float basinShelter=BasinWetReach(p.xz,inlet);':''}
+ ${basin?'vec2 inlet=basinChannelAt(p.xz);shore=mergeWharfToe(basinChannelFrom(shore,inlet),p.xz);float basinShelter=BasinWetReach(p.xz,inlet);':''}
  ${montague?'shore=montagueFrom(shore,reach);':''}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
@@ -204,6 +204,7 @@ const cliffFrag=(east:boolean,basin=false)=>fp+(east?eastSandstoneGLSL:'')+(basi
  }
  `:''}
  ${basin?`
+ if(underWharfFacade(p,cameraPosition))discard;
  // A restrained sediment wall; no guessed piling or structural extents.
  vec2 inlet=basinChannelAt(p.xz);
  float use=BasinWetReach(p.xz,inlet);
@@ -300,7 +301,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>){
+export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -324,8 +325,9 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const basin=bankGround?cover.basin:undefined;
  const foundation=supportedMontagueFoundation(cover.sourceSha,elevation.spec.sha256,cover.sourceDecodedSha)&&await montagueRoadVerified?
   await foundationJob:undefined;
- const committedCover=foundation||basin!==cover.basin?
-  new Cover(cover.width,cover.height,cover.bytes,cover.harbour,cover.sourceSha,basin,foundation?.water,cover.sourceDecodedSha):cover;
+ const wharfToe=tryWharfToe&&!!basin;
+ const committedCover=foundation||basin!==cover.basin||wharfToe?
+  new Cover(cover.width,cover.height,cover.bytes,cover.harbour,cover.sourceSha,basin,foundation?.water,cover.sourceDecodedSha,wharfToe):cover;
  return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),foundation?[...installed,foundation.ground]:installed,inland),
    img,cover:committedCover,sky,bankGround,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
@@ -385,7 +387,7 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false){
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
@@ -433,6 +435,7 @@ export class World {
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
    const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics));
+   if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
@@ -452,6 +455,7 @@ export class World {
    let inletBank:THREE.ShaderMaterial|undefined;
    if(basin){
     inletBank=make(cliffFrag(false,true),THREE.DoubleSide);inletBank.uniforms={...uniforms,...basinUniforms};
+    if(cover.wharfToe)inletBank.defines.BASIN_WHARF_TOE=1;if(wharfFacade)inletBank.defines.BASIN_WHARF_FACADE=1;
    }
    this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
@@ -485,7 +489,7 @@ export class World {
        ...(localMontague&&montagueGround?{montagueGroundBounds:{value:new THREE.Vector4(
           montagueGround.x0,montagueGround.z0,montagueGround.x1,montagueGround.z1)}}:{})}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague)});
     const coarse=this.patch(x0,z0,w,d,8);

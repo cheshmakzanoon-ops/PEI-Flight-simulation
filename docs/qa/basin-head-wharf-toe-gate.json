@@ -1,0 +1,31 @@
+{
+  "exactExteriorSegments": 50454,
+  "unchangedOldBankContact": 19380,
+  "checked": 2896,
+  "reclassified": 12,
+  "wetToeGeometry": 171,
+  "outsideExact": 2725,
+  "unchangedDry": 1885,
+  "y": [
+    -0.667,
+    -0.562
+  ],
+  "classes": {
+    "2": 12
+  },
+  "sourceInside": {
+    "1": 1,
+    "2": 79,
+    "9": 91
+  },
+  "independentRawCensus": {
+    "sourceReturnsChecked": 51645,
+    "newWetClass2Returns": 12,
+    "positiveHeightObservedReclassifications": 0,
+    "wholeCropOtherDatumUntouched": true,
+    "guardedRealCurtainFragments": 12142,
+    "guardedRealCurtainFragmentsWithOpaqueMeshSupport": 12142,
+    "shaderCullGuardNativeMetres": 2980,
+    "insideWharfDrawRangeMarginM": 101.62
+  }
+}

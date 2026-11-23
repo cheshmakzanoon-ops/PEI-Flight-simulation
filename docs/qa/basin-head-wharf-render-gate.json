@@ -1,0 +1,61 @@
+{
+  "chartViewport": [
+    900,
+    570
+  ],
+  "pose": {
+    "site": "wharf-cove",
+    "lon": -62.108062,
+    "lat": 46.377384,
+    "h": 1.97,
+    "east": 0.92,
+    "south": 0.3919,
+    "nearDist": 48,
+    "nearAgl": 16,
+    "fixedBaseH": 1.97,
+    "fixedEyeY": 17.4,
+    "dist": 48,
+    "agl": 16
+  },
+  "definition": "Actual Three.js in Chromium SwiftShader, not device performance",
+  "togglesShared": [
+    "basinChannel",
+    "basinWharf",
+    "legacyShoreArcs",
+    "montagueFoundationPreview"
+  ],
+  "comparison": [
+    "toe-only",
+    "toe with wharf and redundant curtain clipping"
+  ],
+  "submitCounts": [
+    {
+      "triangles": 326932,
+      "drawCalls": 248,
+      "readyDetailCount": 11,
+      "layerWarnings": []
+    },
+    {
+      "triangles": 327282,
+      "drawCalls": 250,
+      "readyDetailCount": 11,
+      "layerWarnings": []
+    }
+  ],
+  "separateLocalDiagnosticSky": [
+    {
+      "camera": "wharf-cove",
+      "previousBelowY170": 57,
+      "afterBelowY170": 2,
+      "fullFrameNewPureSky": 0,
+      "fullFrameRemovedPureSky": 55
+    },
+    {
+      "camera": "wharf-waterline",
+      "previousBelowY170": 802,
+      "afterBelowY170": 4,
+      "fullFrameNewPureSky": 0,
+      "fullFrameRemovedPureSky": 798
+    }
+  ]
+}

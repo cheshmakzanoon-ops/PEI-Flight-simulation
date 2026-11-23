@@ -43,6 +43,9 @@ than rendering newly carved water with wrong banks.
 `?basinChannel&noBasinCannery` can hide the model in the updated game;
 it retains the corrected grade, so it is a model-only comparison.
 
+The [separate outer wharf preview](basin-head-outer-wharf.md) uses its
+own surveyed crop and flag. It does not change the Cannery comparison.
+
 ## Replay
 
 ```sh

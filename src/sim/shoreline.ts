@@ -1,3 +1,4 @@
+import {mergeWharfToe} from './basin-wharf-toe.ts';
 import {strictArc} from './strict-shore-arc.ts';
 import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
@@ -34,9 +35,11 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
  const {baseGridIJ:[ix0,iz0,ix1,iz1],boundsXZ:[x,z,right,bottom],width:nx,height:nz,divisions:div}=harbour.plan;
  const cols=ix1-ix0,rows=iz1-iz0,dx=(right-x)/(nx-1),dz=(bottom-z)/(nz-1);
  const fields=new Float32Array(nx*nz),blocks=new Uint8Array(cols*rows);
+ const wetToe=cover.wharfToe&&cover.basin===harbour;
+ const local=(old:number,px:number,pz:number)=>wetToe?mergeWharfToe(harbour.distance(old,px,pz),px,pz):harbour.distance(old,px,pz);
  const mark=(i:number,j:number)=>{if(i>=0&&j>=0&&i<cols&&j<rows)blocks[j*cols+i]=1;};
  for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
-  const px=x+i*dx,pz=z+j*dz,old=cover.legacyDistance(terrain,px,pz),now=harbour.distance(old,px,pz);
+  const px=x+i*dx,pz=z+j*dz,old=cover.legacyDistance(terrain,px,pz),now=local(old,px,pz);
   fields[j*nx+i]=now;
   if(old<0||now>=0)continue;
   const a=Math.floor(i/div),b=Math.floor(j/div);
@@ -48,11 +51,11 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
   const a=prior(i,j);
   if(i<cols){
    const b=prior(i+1,j);
-   if((a>=0)!==(b>=0)&&harbour.distance(0,x+(i+a/(a-b))*dx*div,z+j*dz*div)<-1e-6){mark(i,j-1);mark(i,j);}
+   if((a>=0)!==(b>=0)&&local(0,x+(i+a/(a-b))*dx*div,z+j*dz*div)<-1e-6){mark(i,j-1);mark(i,j);}
   }
   if(j<rows){
    const b=prior(i,j+1);
-   if((a>=0)!==(b>=0)&&harbour.distance(0,x+i*dx*div,z+(j+a/(a-b))*dz*div)<-1e-6){mark(i-1,j);mark(i,j);}
+   if((a>=0)!==(b>=0)&&local(0,x+i*dx*div,z+(j+a/(a-b))*dz*div)<-1e-6){mark(i-1,j);mark(i,j);}
   }
  }
  // A pinned site can refine an independently witnessed aperture in an

@@ -1,0 +1,18 @@
+{
+  "source": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_468000_703000.copc.laz",
+  "ETag": "\"a862a07ee3a300d14645b3fb41749a81-5\"",
+  "bounds": [
+    [
+      568541.667415534,
+      5136329.66634539
+    ],
+    [
+      568619.172790484,
+      5136444.86482537
+    ]
+  ],
+  "size": 41285114,
+  "digest": "9e6d8be80889f8be68abf1c9732dc8049e07c8ec1acc4d2a3aa4c459ea72fba0",
+  "count": 51645,
+  "ranges": 14
+}

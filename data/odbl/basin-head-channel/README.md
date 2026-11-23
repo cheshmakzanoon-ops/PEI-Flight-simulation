@@ -19,3 +19,6 @@ The separate bank height pack uses the [NRCan HRDEM mosaic](https://open.canada.
 and the existing NRCan base terrain. The 960 × 960 native EPSG:3979
 DTM read is pinned by the bake; its elevations are not a channel survey
 or chart-datum conversion.
+
+The [outer wharf way](wharf-way.json) supplies station orientation for the
+[separately measured wharf crop](../../basin-wharf), not its surveyed lip.
