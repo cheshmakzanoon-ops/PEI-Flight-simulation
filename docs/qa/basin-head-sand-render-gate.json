@@ -1,0 +1,66 @@
+{
+  "east-close": {
+    "pixels": 453600,
+    "exact": 453600,
+    "gt2": 0,
+    "upper150RowsChanged": 0,
+    "max": 0,
+    "draws": 264,
+    "triangles": 305641,
+    "detail": {
+      "ready": 7,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    }
+  },
+  "singing-east-close": {
+    "pixels": 453600,
+    "exact": 320469,
+    "gt2": 131522,
+    "upper150RowsChanged": 0,
+    "max": 55,
+    "draws": 208,
+    "triangles": 268676,
+    "detail": {
+      "ready": 10,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    }
+  },
+  "singing-high-close": {
+    "pixels": 453600,
+    "exact": 453600,
+    "gt2": 0,
+    "upper150RowsChanged": 0,
+    "max": 0,
+    "draws": 42,
+    "triangles": 218524,
+    "detail": {
+      "ready": 10,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    }
+  },
+  "singing-west-close": {
+    "pixels": 453600,
+    "exact": 157298,
+    "gt2": 294275,
+    "upper150RowsChanged": 0,
+    "max": 67,
+    "draws": 59,
+    "triangles": 211134,
+    "detail": {
+      "ready": 11,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    }
+  }
+}

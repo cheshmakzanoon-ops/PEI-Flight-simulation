@@ -15,6 +15,7 @@ import { Cover } from '../sim/cover.ts';
 import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
 import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank} from './basin-channel-bank.ts';
 import type {ShoreSegment} from '../sim/shoreline.ts';
+import {basinSandGLSL,basinSandIntersects,loadBasinSand,type BasinSand} from './basin-head-sand.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
@@ -182,7 +183,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -237,6 +238,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  // Leave field patterns to the georeferenced imagery. The existing neutral
  // surface grain is unchanged so unclassified land has no new styling.
  col*=1.+detailFade*(.13*(noise(p.xz*.46)-.5));
+ ${showBasin?'col=basinSand(col,p,n,coast,d);':''}
  col=stationGround(col,p.xz,coast);
  ${east?`
  vec3 rockPx=fwidth(p);
@@ -261,11 +263,12 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-export async function loadAtlas(progress:(s:string)=>void,tryInland=false){
+export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false){
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
  // Start their independent reads together; keep all required failures attached
  // to one promise and establish the world only after every layer can be decoded.
+ const localSand=tryBasin?loadBasinSand(base):Promise.resolve(undefined);
  const elevationJob=loadElevation(progress);
  const [elevation,img,cover,sky]=await Promise.all([
   elevationJob,
@@ -278,7 +281,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false){
  const installed=await surveys;
  const inland=tryInland&&elevation.spec.sha256===INLAND_TERRAIN_SHA&&cover.sourceSha===INLAND_COVER_SHA?await loadInlandSurveys(base):[];
  return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data),installed,inland),img,cover,sky,
-   bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
+   basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
@@ -321,7 +324,7 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand){
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
@@ -402,14 +405,15 @@ export class World {
     const useBench=rock&&!!benchMap;
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
+    const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
     const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
     const guard=showLocalFloor?neighbours.reduce((m,[x,z],bit)=>protectsFloor(i+x,j+z)?m|(1<<bit):m,0):0;
     const floorUniforms=showLocalFloor?{...this.floor!.uniforms,floorTileGuard:{value:guard},
        floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
