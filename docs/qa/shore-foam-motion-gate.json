@@ -1,0 +1,28 @@
+{
+  "camera": [
+    1437.226686560849,
+    28.8,
+    34727.49817155767
+  ],
+  "frames": [
+    {
+      "mode": "stock",
+      "stages": 8,
+      "samplesCompared": 1844619,
+      "p50RgbStep": 0.0,
+      "p90RgbStep": 1.0,
+      "p99RgbStep": 5.0,
+      "maxRgbStep": 8
+    },
+    {
+      "mode": "broken",
+      "stages": 8,
+      "samplesCompared": 1844619,
+      "p50RgbStep": 0.0,
+      "p90RgbStep": 1.0,
+      "p99RgbStep": 3.0,
+      "maxRgbStep": 8
+    }
+  ],
+  "errors": []
+}

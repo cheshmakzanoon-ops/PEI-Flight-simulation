@@ -12,10 +12,11 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--dist',type=Path,required=True)
 p.add_argument('--chromium',required=True)
 p.add_argument('--out',type=Path,required=True)
+p.add_argument('--foam-detail',action='store_true')
 args=p.parse_args()
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(args.dist)))
 threading.Thread(target=server.serve_forever,daemon=True).start()
-url=f'http://127.0.0.1:{server.server_port}/?diagnostics&basinChannel&basinWharf&spinnakersPreview'
+url=f'http://127.0.0.1:{server.server_port}/?diagnostics&basinChannel&basinWharf&spinnakersPreview'+('&shoreFoamDetail' if args.foam_detail else '')
 views=[('Basin Head · low pass','basin-head-low',96,'basinWharfVisible','Chase'),
        ('Summerside waterfront · low pass','spinnakers-low',82,'spinnakersDeck','Cockpit')]
 rows=[]
@@ -40,6 +41,7 @@ with sync_playwright() as api:
       page.keyboard.press('v')
       page.wait_for_function('()=>window.islandAirDiagnostics?.camera==="Cockpit"')
     after=page.evaluate('window.islandAirDiagnostics')
+    if args.foam_detail:assert after['shoreFoamDetail'] is True
     assert not errors and not after['layerWarnings'],(errors,after['layerWarnings'])
     assert after['mode']=='flight' and abs(after['altitude']-y)<20
     page.keyboard.press('Escape')

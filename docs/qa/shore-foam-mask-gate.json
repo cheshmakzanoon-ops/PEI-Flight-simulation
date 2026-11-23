@@ -1,0 +1,24 @@
+{
+  "camera": [
+    1437.226686560849,
+    28.8,
+    34727.49817155767
+  ],
+  "frames": [
+    {
+      "phase": 12,
+      "waterPixels": 263517,
+      "pixelsChangedAboveTwo": 198146,
+      "outsideWaterOrOnePxEdge": 0,
+      "maximumOutsideChange": 0
+    },
+    {
+      "phase": 26,
+      "waterPixels": 263517,
+      "pixelsChangedAboveTwo": 212313,
+      "outsideWaterOrOnePxEdge": 0,
+      "maximumOutsideChange": 0
+    }
+  ],
+  "errors": []
+}

@@ -29,7 +29,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 **Waterfront approaches:** Choose **Basin Head · low pass** or **Summerside waterfront · low pass** in the departure menu to start offshore facing the local scenery. [Flight checks](docs/qa/waterfront-departures.md).
 
-**Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Try `?legacyShoreArcs` for the [three-county coastline repair](docs/qa/legacy-shore-arcs.md). Use `?spinnakersPreview` for the surveyed [Spinnakers’ Landing boardwalk and waterfront buildings](docs/qa/spinnakers-landing.md) in Summerside. These previews leave the default scenery unchanged.
+**Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Try `?legacyShoreArcs` for the [three-county coastline repair](docs/qa/legacy-shore-arcs.md). Use `?spinnakersPreview` for the surveyed [Spinnakers’ Landing boardwalk and waterfront buildings](docs/qa/spinnakers-landing.md) in Summerside. Use `?shoreFoamDetail` to compare the [shore-breaker treatment](docs/qa/shore-foam-detail.md). These previews leave the default scenery unchanged.
 
 ## Download the web build
 

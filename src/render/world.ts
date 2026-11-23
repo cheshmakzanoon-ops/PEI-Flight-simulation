@@ -33,7 +33,7 @@ import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type 
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
-import { shoreFoamGLSL } from './shore-foam.ts';
+import { shoreFoamGLSL,brokenShoreFoamGLSL } from './shore-foam.ts';
 import {BuildingShadows,buildingShadowGLSL} from './local-building-shadows.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
@@ -96,7 +96,7 @@ const skyFrag=skyFn+`
   if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
   vec3 c=skyAt(normalize(skyRay));
   gl_FragColor=vec4(c,1.);`+out;
-const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false)=>fp+skyFn+shoreFoamGLSL+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
+const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false)=>fp+skyFn+shoreFoamGLSL+(foamDetail?brokenShoreFoamGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -144,7 +144,8 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  // comparison alone between an ocean surface and land a few cm above it is fragile.
  // Conservative phase footprint includes the spatial distortion from the
  // foam field. Derivatives are evaluated before discard and the coastal branch.
- float foamFootprint=.69*fwidth(shore)+.42*length(fwidth(q));
+ float foamPixelM=length(fwidth(q));
+ float foamFootprint=.69*fwidth(shore)+.42*foamPixelM;
  if(shore>=0.)discard;
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
@@ -174,14 +175,14 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  // in the basin interior. Derivatives of the original phase stay intact.
  float foam=0.;
  if(shelter<.999){
-  foam=shoreFoam(q,shore,t,dist,n,foamFootprint);
+  foam=${foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)'};
   if(shelter>0.){
    // Ocean breaker bands fade well before the stronger basin tint and
    // ripple change. A narrow unsupported bank keeps its former optics.
    float gain=1.-smoothstep(0.,.22,shelter);foam*=gain*gain;
   }
  }
- `:`float foam=shoreFoam(q,shore,t,dist,n,foamFootprint);`}
+ `:`float foam=${foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)'};`}
  ${harbour?`if(marinaCalm>0.)foam*=1.-smoothstep(0.,.23,marinaCalm);`:''}
  ${basin?'foam*=1.-.86*basinShelter;':''}
  ${montagueOptics?'if(riverCalm>0.)foam*=1.-smoothstep(0.,.255,riverCalm);':''}
@@ -387,7 +388,7 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false){
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
@@ -434,7 +435,7 @@ export class World {
    };
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
-   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics));
+   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms};
    this.shelteredWater=southLake?[southLake.plan.id]:[];

@@ -26,3 +26,33 @@ export const shoreFoamGLSL=`
    return lod*(head*.39+wash*.16+remnant*.08);
  }
 `
+
+/** Original procedural detail; no chart depth, wind or tide is inferred. */
+export const brokenShoreFoamGLSL=`
+float brokenShoreFoam(vec2 q,float shore,float t,float dist,vec2 slope,float footprint,float pixelM){
+  if(shore<=-32.||dist>=4000.)return 0.;
+  vec2 drift=vec2(t*.031,-t*.019);
+  float reach=noise(q*.014+vec2(29.,13.));
+  float breaks=noise(q*.048+vec2(7.,19.)+drift);
+  float pools=noise(q*.173+vec2(-12.5,30.)+drift);
+  float foamAge=noise(q*.288+vec2(3.1,7.6)+drift*1.8);
+  float off=-shore;
+  float crestBand=(1.-smoothstep(mix(8.,21.,reach),mix(14.,30.,reach),off))*smoothstep(.11,1.55,off);
+  float phase=off*.72+t*1.63+3.35*breaks+3.65*reach+.93*pools;
+  float aa=1.-smoothstep(.62,2.82,footprint+pixelM*.11);
+  float ridge=smoothstep(mix(.67,.86,pools),.997,sin(phase));
+  float macroOpen=smoothstep(.42,.76,breaks*.57+reach*.29+pools*.14);
+  float mediumOpen=smoothstep(.26,.62,pools*.62+foamAge*.38);
+  float slopeFlash=clamp(.55+1.15*(slope.x+slope.y),.15,1.);
+  // Fine breakup is differential-filtered. At distance it tends to the mean
+  // brightness rather than a blinking binary mask.
+  float bubbleFade=1.-smoothstep(.26,1.58,pixelM);
+  float bubbles=noise(q*.81+vec2(5.3,18.7)+drift*2.65);
+  float pepper=mix(.72,.50+.42*smoothstep(.29,.78,bubbles),bubbleFade);
+  float crest=crestBand*ridge*macroOpen*mediumOpen*aa*pepper*(.67+.33*slopeFlash);
+  float swash=exp(-off*.38)*smoothstep(.27,.81,pools)*smoothstep(.08,.67,off);
+  float residue=crestBand*smoothstep(.45,.83,pools*.55+foamAge*.45)*(1.-aa*.49);
+  float range=1.-smoothstep(850.,4000.,dist);
+  return range*(crest*.44+swash*.095+residue*.065);
+}
+`
