@@ -16,7 +16,7 @@ renderer.setSize(width,height);
 renderer.toneMapping=T.ACESFilmicToneMapping;
 renderer.shadowMap.enabled=true;
 document.body.append(renderer.domElement);
-const {root,prop,cockpit,setInterior,setProp,setControls,controlAngles,setAltitude,altitudeAngles}=createAircraft();
+const {root,prop,cockpit,setInterior,setProp,setControls,controlAngles,setAltitude,altitudeAngles,rudderAngle}=createAircraft();
 const pose=params.get('pose');
 const amount=Math.max(0,Math.min(1,Number(params.get('prop')??0)));
 const inCockpit=pose==='cockpit';
@@ -24,9 +24,9 @@ setInterior(inCockpit);
 if(['prop','prop-side','chase','cockpit'].includes(pose))prop.rotation.z=Math.PI;
 setProp(amount);scene.add(root);
 if(inCockpit)setAltitude(Number(params.get('altitude')??0));
-if(pose==='surfaces'){
-  const roll=Number(params.get('roll')??0),pitch=Number(params.get('pitch')??0);
-  for(let i=0;i<60;i++)setControls({roll,pitch},1/60);
+if(pose==='surfaces'||pose==='rudder'){
+  const roll=Number(params.get('roll')??0),pitch=Number(params.get('pitch')??0),yaw=Number(params.get('yaw')??0);
+  for(let i=0;i<60;i++)setControls({roll,pitch,yaw},1/60);
 }
 scene.add(new T.HemisphereLight(0xd2e8ff,0x9c8f68,1.5));
 const sun=new T.DirectionalLight(0xffe1ab,2.5);
@@ -44,6 +44,7 @@ else if(pose==='cockpit'){camera.fov=53;camera.updateProjectionMatrix();camera.p
 else if(pose==='chase'){camera.fov=53;camera.updateProjectionMatrix();camera.position.set(0,4.2,16.8);camera.lookAt(0,1.18,-7.8);}
 else if(pose==='gear'){camera.position.set(-5,-.30,-1.6);camera.lookAt(-.42,-.78,-.60);}
 else if(pose==='surfaces'){camera.position.set(7.6,4.6,12.7);camera.lookAt(0,.35,.4);}
+else if(pose==='rudder'){camera.position.set(4.0,2.6,9.2);camera.lookAt(0,1.0,4.7);}
 else if(pose==='windshield'){camera.position.set(3.1,1.63,-5.3);camera.lookAt(0,.78,-.96);}
 else{camera.position.set(8,3.8,-11.5);camera.lookAt(0,-.15,-.15);}
 renderer.render(scene,camera);
@@ -61,7 +62,7 @@ prop.traverse(o=>{
 });
 const sweep=root.getObjectByName('Survey propeller • shutter sweep');
 window.aircraftPreview={
-    pose, altitudeAngles:altitudeAngles(), controlAngles:controlAngles(), commandedProp:amount, cockpitVisible:cockpit.visible, solidVisible:prop.visible,
+    pose, rudderAngle:rudderAngle(), altitudeAngles:altitudeAngles(), controlAngles:controlAngles(), commandedProp:amount, cockpitVisible:cockpit.visible, solidVisible:prop.visible,
     sweepVisible:sweep?.visible, bladeSweepM:2*radius,
     clearanceM:hub.y+SURVEY_AIRFRAME.gearHeightM-radius, solidTriangles,
     triangles:renderer.info.render.triangles,

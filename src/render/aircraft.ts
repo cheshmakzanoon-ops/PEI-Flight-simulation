@@ -3,6 +3,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import {makePropeller} from './propeller.ts';
 import {SURVEY_AIRFRAME} from '../sim/flight.ts';
 import { DIALS, dialAngle, altimeterAngles } from './instruments.ts';
+import { createRudder } from './rudder.ts';
 import { createCockpitTrim } from './cockpit-trim.ts';
 import { addFlightSurface, deflectionTarget, type SurfaceInput } from './flight-surfaces.ts';
 
@@ -182,13 +183,8 @@ export function createAircraft() {
   bar([side*.084,-1.01,-2.57],[side*.084,-1.15,-2.53],.032,pearl);
  }
  wheel(0,-1.15,-2.53,.25,.123,true);
- // Swept vertical tail with two-sided enclosed shell and rudder paint.
- const tail=[[0,.11,3.30],[0,.68,3.93],[0,1.94,4.66],[0,2.0,5.07],[0,1.79,5.34],[0,.18,5.43]];
- for(const side of [-1,1]){const p=tail.map(([,y,z])=>[side*(.09-.026*y),y,z]);poly(p,teal);
- poly([[side*.069,1.15,4.20],[side*.060,1.45,4.36],[side*.059,1.46,5.36],[side*.067,1.19,5.38]],ochre);
- poly([[side*.055,1.69,4.51],[side*.047,1.94,4.66],[side*.048,2.0,5.07],[side*.052,1.75,5.34]],pearl);
- p.forEach((a,i)=>{const b=p[(i+1)%p.length];if(side===1)poly([a,b,[-b[0],b[1],b[2]],[-a[0],a[1],a[2]]],teal);});
- }
+ // Separate closed tail and aft control. Colors stay attached across the hinge.
+ const rudder=createRudder(root,teal,ochre,pearl);
  navLens(0,.18,5.52,0xffecd1);
  const {prop,propDisc,spinner,setProp}=makePropeller(SURVEY_AIRFRAME.gearHeightM);
  root.add(spinner,prop,propDisc);
@@ -248,7 +244,8 @@ export function createAircraft() {
  const nose=mesh(new THREE.SphereGeometry(1,20,12),pearl,cockpitOnly);nose.position.set(0,-.01,-2.65);nose.scale.set(.62,.56,1.40);
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}
  let previousInside:boolean|undefined;
- function setControls(input:SurfaceInput,dt:number){
+ function setControls(input:SurfaceInput & {yaw?:number},dt:number){
+  rudder.update(input.yaw??0,dt);
   for(const c of controls){
    const a=deflectionTarget(input,c.side);
    c.aileron.update(a.aileron,dt);c.elevator.update(a.elevator,dt);
@@ -258,6 +255,6 @@ export function createAircraft() {
   const angles=altimeterAngles(feet);
   altitudeHands.forEach((p,i)=>{p.rotation.z=angles[i];});
  }
- return {root,prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ return {root,prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),rudderAngle:rudder.angle,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
  setProp};
 }

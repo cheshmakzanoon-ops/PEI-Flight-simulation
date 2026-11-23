@@ -42,7 +42,11 @@ with ThreadingHTTPServer(('127.0.0.1',0), partial(QuietServer,directory=str(args
               const c=window.islandAirDiagnostics?.controlAngles;
               return c&&c.flat().every(a=>Math.abs(a)<.005);
             }""",timeout=35000)
+            page.keyboard.down('e')
+            page.wait_for_function('window.islandAirDiagnostics?.rudderAngle>.075',timeout=35000)
+            page.keyboard.up('e')
+            page.wait_for_function('Math.abs(window.islandAirDiagnostics?.rudderAngle)<.005',timeout=35000)
             assert not errors, errors
-            print('Actual flight controls moved the correct mirrored groups and returned to neutral.',flush=True)
+            print('Actual flight controls moved the correct mirrored groups and rudder, then returned to neutral.',flush=True)
     finally:
         server.shutdown()

@@ -20,3 +20,15 @@ ranges, within 0.01°. Exact cockpit eye point and dials did not change.
 Run `python tools/qa/control-player.py --dist dist --chromium CHROMIUM`
 to verify that the normal build's keyboard input moves these surfaces and
 that release brings them back to neutral.
+
+## Vertical tail
+
+![Original vertical tail in the same locked view at neutral and full right rudder](rudder-comparison.webp)
+
+The vertical stabilizer keeps its original outline. A closed aft shell now
+turns about its hinge axis with yaw input, and the paint moves with the shell.
+`tools/qa/rudder-views.py` checks neutral and both commands in the Three.js
+fixture. Full right and left commands settle to ±22° within 0.01°. The
+production control test also uses **E** and verifies the rudder's return
+to neutral after release. This pass does not change yaw forces or establish
+the throw on a specific real aircraft.
