@@ -1,0 +1,542 @@
+{
+  "kind": "Same-survey native 1 m withheld blocks drawn from accepted-fit population. Real Three Float32 mesh rays; no new release assets.",
+  "atlasSha": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cells": 16669,
+  "buildings": 928,
+  "atlasChunks": 71,
+  "duplicate": 0,
+  "longestVerticalDiff": 0,
+  "q": [
+    0.1,
+    0.5,
+    0.9,
+    0.99,
+    1
+  ],
+  "perBuildingP90": {
+    "old": [
+      0.18567512402288003,
+      0.49343242848501023,
+      1.4539914586113976,
+      2.410362988104308,
+      3.6857047873847066
+    ],
+    "new": [
+      0.05849021728106827,
+      0.1090977352118494,
+      0.2615694850356593,
+      0.38675109168757504,
+      0.4108114565101284
+    ]
+  },
+  "modelToMeshP90AbsoluteDelta": {
+    "old": [
+      4.7200250870571565e-7,
+      0.0000027587931659134313,
+      0.0000061689621705773854,
+      0.00001609797218316917,
+      0.00003275061308133376
+    ],
+    "new": [
+      0.000024580084958812644,
+      0.00018223891460694697,
+      0.0004085117379078143,
+      0.0004977608205010932,
+      0.0005038795937100937
+    ]
+  },
+  "absolutePerBuildingP90": {
+    "old": [
+      0.2975906217705038,
+      0.683047114180555,
+      1.38915256175244,
+      2.1357579098564052,
+      3.582089456093732
+    ],
+    "new": [
+      0.15459567875099825,
+      0.4546243734675997,
+      0.9956298810613448,
+      1.5759408130593684,
+      2.1144789612272064
+    ]
+  },
+  "displayedBaseMinusNativeDatum": [
+    -0.8876627893209855,
+    -0.3249416259093234,
+    0.1862883399473725,
+    0.5922756819035909,
+    1.3883516081898293
+  ],
+  "actualBeforeToAfter": {
+    "relativeBetter": 923,
+    "relativeUnchanged": 0,
+    "relativeDegraded": 5,
+    "absoluteBetter": 706,
+    "absoluteDegraded": 222
+  },
+  "worstOld": [
+    {
+      "tile": "q1200302",
+      "i": 137,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 38,
+      "before": 3.6857047873847066,
+      "after": 0.16066064322793783,
+      "modelClaimsBefore": 3.6857,
+      "modelClaimsAfter": 0.16062,
+      "absoluteBefore": 3.582089456093732,
+      "absoluteAfter": 0.24331850370022262,
+      "datumGap": -0.10361533129097467,
+      "triangles": [
+        22,
+        186
+      ]
+    },
+    {
+      "tile": "q03022",
+      "i": 57,
+      "county": "PRINCE",
+      "kind": "hip",
+      "n": 42,
+      "before": 3.5744995738252876,
+      "after": 0.3221023620285076,
+      "modelClaimsBefore": 3.5745,
+      "modelClaimsAfter": 0.3223,
+      "absoluteBefore": 2.537750893032201,
+      "absoluteAfter": 1.3215050567294642,
+      "datumGap": -1.036748680793087,
+      "triangles": [
+        22,
+        200
+      ]
+    },
+    {
+      "tile": "q1022302",
+      "i": 221,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 27,
+      "before": 3.2853868466952236,
+      "after": 0.4020060805435836,
+      "modelClaimsBefore": 3.28539,
+      "modelClaimsAfter": 0.40224,
+      "absoluteBefore": 2.246778075410179,
+      "absoluteAfter": 1.198099474266104,
+      "datumGap": -1.0386087712850447,
+      "triangles": [
+        28,
+        226
+      ]
+    },
+    {
+      "tile": "q1200033",
+      "i": 83,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 24,
+      "before": 2.7146784783400877,
+      "after": 0.09676240694283961,
+      "modelClaimsBefore": 2.71468,
+      "modelClaimsAfter": 0.09707,
+      "absoluteBefore": 2.248603470410157,
+      "absoluteAfter": 0.5062600163818253,
+      "datumGap": -0.4660750079299305,
+      "triangles": [
+        22,
+        252
+      ]
+    },
+    {
+      "tile": "q12000132",
+      "i": 28,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 13,
+      "before": 2.671848299440489,
+      "after": 0.17382971416253562,
+      "modelClaimsBefore": 2.67185,
+      "modelClaimsAfter": 0.17356,
+      "absoluteBefore": 2.6012767737451394,
+      "absoluteAfter": 0.10947181643729707,
+      "datumGap": -0.07057152569534964,
+      "triangles": [
+        22,
+        204
+      ]
+    }
+  ],
+  "worstNew": [
+    {
+      "tile": "q1200012",
+      "i": 517,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 22,
+      "before": 0.7052121175695597,
+      "after": 0.4108114565101284,
+      "modelClaimsBefore": 0.70521,
+      "modelClaimsAfter": 0.41116,
+      "absoluteBefore": 0.8181155695918328,
+      "absoluteAfter": 0.5237149085324015,
+      "datumGap": -0.11290345202227314,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1022302",
+      "i": 221,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 27,
+      "before": 3.2853868466952236,
+      "after": 0.4020060805435836,
+      "modelClaimsBefore": 3.28539,
+      "modelClaimsAfter": 0.40224,
+      "absoluteBefore": 2.246778075410179,
+      "absoluteAfter": 1.198099474266104,
+      "datumGap": -1.0386087712850447,
+      "triangles": [
+        28,
+        226
+      ]
+    },
+    {
+      "tile": "q12002112",
+      "i": 153,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 19,
+      "before": 0.819917947971615,
+      "after": 0.40194136725312996,
+      "modelClaimsBefore": 0.81992,
+      "modelClaimsAfter": 0.40217,
+      "absoluteBefore": 1.2866803224753027,
+      "absoluteAfter": 1.0401274482399074,
+      "datumGap": -0.6381860809867774,
+      "triangles": [
+        14,
+        166
+      ]
+    },
+    {
+      "tile": "q12002112",
+      "i": 25,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 17,
+      "before": 1.8444827582801238,
+      "after": 0.4007055561496401,
+      "modelClaimsBefore": 1.84448,
+      "modelClaimsAfter": 0.40021,
+      "absoluteBefore": 1.0519279090624862,
+      "absoluteAfter": 1.1932604053672775,
+      "datumGap": -0.7925548492176375,
+      "triangles": [
+        16,
+        258
+      ]
+    },
+    {
+      "tile": "q1200302",
+      "i": 27,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 15,
+      "before": 1.5687036791131261,
+      "after": 0.39880134492683006,
+      "modelClaimsBefore": 1.5687,
+      "modelClaimsAfter": 0.39834,
+      "absoluteBefore": 1.2836990550830072,
+      "absoluteAfter": 0.683805968956949,
+      "datumGap": -0.28500462403011895,
+      "triangles": [
+        16,
+        164
+      ]
+    }
+  ],
+  "greatestDegradation": [
+    {
+      "tile": "q103301",
+      "i": 365,
+      "county": "KINGS",
+      "kind": "gable",
+      "n": 25,
+      "before": 0.08935304283577282,
+      "after": 0.13251316590046688,
+      "modelClaimsBefore": 0.08935,
+      "modelClaimsAfter": 0.13213,
+      "absoluteBefore": 0.6143318232761488,
+      "absoluteAfter": 0.6195391129183279,
+      "datumGap": -0.5339286394915845,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1200122",
+      "i": 391,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 19,
+      "before": 0.12073012301888111,
+      "after": 0.13251822432640026,
+      "modelClaimsBefore": 0.12073,
+      "modelClaimsAfter": 0.13264,
+      "absoluteBefore": 0.9900674427654692,
+      "absoluteAfter": 1.0297637830822879,
+      "datumGap": 0.8972455587558876,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1200122",
+      "i": 497,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 18,
+      "before": 0.13556744141038632,
+      "after": 0.14042134474435672,
+      "modelClaimsBefore": 0.13557,
+      "modelClaimsAfter": 0.14041,
+      "absoluteBefore": 0.15141967655921715,
+      "absoluteAfter": 0.12456910959552589,
+      "datumGap": 0.01585223514883083,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1200012",
+      "i": 509,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 10,
+      "before": 0.10886541785862351,
+      "after": 0.11276564821741263,
+      "modelClaimsBefore": 0.10886,
+      "modelClaimsAfter": 0.11298,
+      "absoluteBefore": 0.8469894759414698,
+      "absoluteAfter": 0.7564106451274518,
+      "datumGap": -0.7686514594980807,
+      "triangles": [
+        14,
+        156
+      ]
+    },
+    {
+      "tile": "q120032",
+      "i": 277,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 18,
+      "before": 0.059977846903525034,
+      "after": 0.06001867115093164,
+      "modelClaimsBefore": 0.05999,
+      "modelClaimsAfter": 0.06022,
+      "absoluteBefore": 0.1908711583715636,
+      "absoluteAfter": 0.17707507441443227,
+      "datumGap": -0.13361577142359238,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1200300",
+      "i": 273,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 26,
+      "before": 0.20007452413442373,
+      "after": 0.19678140764033003,
+      "modelClaimsBefore": 0.20008,
+      "modelClaimsAfter": 0.19648,
+      "absoluteBefore": 0.582434647655381,
+      "absoluteAfter": 0.6316190085119704,
+      "datumGap": -0.567147961531802,
+      "triangles": [
+        14,
+        156
+      ]
+    },
+    {
+      "tile": "q1200300",
+      "i": 397,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 32,
+      "before": 0.12525937401662687,
+      "after": 0.11925133788850388,
+      "modelClaimsBefore": 0.12526,
+      "modelClaimsAfter": 0.11957,
+      "absoluteBefore": 1.5105271950504506,
+      "absoluteAfter": 1.4701128704271138,
+      "datumGap": -1.3915396561032782,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q1200030",
+      "i": 455,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 21,
+      "before": 0.10486315110727418,
+      "after": 0.09621062713446094,
+      "modelClaimsBefore": 0.10486,
+      "modelClaimsAfter": 0.09664,
+      "absoluteBefore": 0.16335108399532317,
+      "absoluteAfter": 0.15415878611331735,
+      "datumGap": -0.10173170095483641,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q12002113",
+      "i": 127,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 18,
+      "before": 0.12913127212546735,
+      "after": 0.12041106737821501,
+      "modelClaimsBefore": 0.12913,
+      "modelClaimsAfter": 0.12015,
+      "absoluteBefore": 0.42115112772280944,
+      "absoluteAfter": 0.3184429905096092,
+      "datumGap": -0.2920198555973421,
+      "triangles": [
+        14,
+        164
+      ]
+    },
+    {
+      "tile": "q12000132",
+      "i": 208,
+      "county": "QUEENS",
+      "kind": "gable",
+      "n": 14,
+      "before": 0.14893604473818628,
+      "after": 0.13838129532777615,
+      "modelClaimsBefore": 0.14894,
+      "modelClaimsAfter": 0.13804,
+      "absoluteBefore": 0.8474979613087654,
+      "absoluteAfter": 0.7528770392192116,
+      "datumGap": -0.6985619165705792,
+      "triangles": [
+        14,
+        144
+      ]
+    }
+  ],
+  "counties": {
+    "PRINCE": {
+      "buildings": 111,
+      "cells": 2258,
+      "relativeOld": [
+        0.1861387906864916,
+        0.5881257339412223,
+        1.7819567566948038,
+        2.291050792581521,
+        3.5744995738252876
+      ],
+      "relativeNew": [
+        0.06285393360737146,
+        0.12622655891907897,
+        0.2885131952988672,
+        0.371806023001605,
+        0.3756482295042076
+      ],
+      "absoluteOld": [
+        0.30277810499384084,
+        0.6900611457572516,
+        1.5649677094660974,
+        2.270115676347658,
+        2.537750893032201
+      ],
+      "absoluteNew": [
+        0.20182807284608514,
+        0.5661687453452284,
+        1.202111533333479,
+        1.5524580620230806,
+        1.7421250585045325
+      ]
+    },
+    "QUEENS": {
+      "buildings": 812,
+      "cells": 14298,
+      "relativeOld": [
+        0.18571665835004958,
+        0.4854447919021519,
+        1.380158201078528,
+        2.420677500213313,
+        3.6857047873847066
+      ],
+      "relativeNew": [
+        0.05809662951345047,
+        0.10653572707220443,
+        0.25565992498602486,
+        0.38958619022125934,
+        0.4108114565101284
+      ],
+      "absoluteOld": [
+        0.2969795107774495,
+        0.6784256481895966,
+        1.3835605729299056,
+        2.1038431804049695,
+        3.582089456093732
+      ],
+      "absoluteNew": [
+        0.15061545539748805,
+        0.43220021851541085,
+        0.9704880917092387,
+        1.5763152369127724,
+        2.1144789612272064
+      ]
+    },
+    "KINGS": {
+      "buildings": 5,
+      "cells": 113,
+      "relativeOld": [
+        0.2012286628212509,
+        0.45321646224960227,
+        0.8184911940705062,
+        0.9175230630606686,
+        0.9285266040595754
+      ],
+      "relativeNew": [
+        0.09375821678731917,
+        0.13251316590046688,
+        0.2674314368579674,
+        0.27476598568302946,
+        0.2755809355524808
+      ],
+      "absoluteOld": [
+        0.494598252555583,
+        0.9615655417480278,
+        1.209504776245582,
+        1.211557971602315,
+        1.2117861044197298
+      ],
+      "absoluteNew": [
+        0.4180819047295725,
+        0.6195391129183279,
+        0.8280021765896466,
+        0.8666697215546608,
+        0.8709661154396624
+      ]
+    }
+  }
+}

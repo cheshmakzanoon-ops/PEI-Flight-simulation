@@ -1,0 +1,70 @@
+{
+  "url": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/CLUI2020_OpenData/FeatureServer/0/query",
+  "where": "landuse = 'RES' AND subuse IN ('SG','SG ')",
+  "fields": "objectid,fieldid,landuse,subuse,hectares,county",
+  "nativeEPSG": 2954,
+  "count": 13792,
+  "objectIdsSHA256": "1bb7f0bcb9adb96583cad5d43e7047eb67d3495963a5e962f508def68f5d39b7",
+  "pages": [
+    {
+      "name": "res-00000.json.gz",
+      "count": 1500,
+      "sha256": "f2ba530f5cfb915fb32ce4ac20288146a47ea144048ca03d5cf1a51445625ad7",
+      "gzipBytes": 475552
+    },
+    {
+      "name": "res-01500.json.gz",
+      "count": 1500,
+      "sha256": "449b908379e5595d9c840ab66cafde8a1d9b5277d2752deed27d653a2d0df9ee",
+      "gzipBytes": 590333
+    },
+    {
+      "name": "res-03000.json.gz",
+      "count": 1500,
+      "sha256": "791507828630c63b7af5dded2bcaacb4ab1dc6494803904ce0612955623b5056",
+      "gzipBytes": 575156
+    },
+    {
+      "name": "res-04500.json.gz",
+      "count": 1500,
+      "sha256": "efffc4d9066bb3baf8332d74da0f38edcb59bbed93e3110738a0b1b287f1a5b5",
+      "gzipBytes": 585176
+    },
+    {
+      "name": "res-06000.json.gz",
+      "count": 1500,
+      "sha256": "ab58e2f38cb42d0700bdec365b89253bc1325b8340a8456c6f73b2de497150ab",
+      "gzipBytes": 530090
+    },
+    {
+      "name": "res-07500.json.gz",
+      "count": 1500,
+      "sha256": "2061afbdfc92a9c3dcb0f314040f33b6b0c4097b260301382aa13749156e31a8",
+      "gzipBytes": 575826
+    },
+    {
+      "name": "res-09000.json.gz",
+      "count": 1500,
+      "sha256": "a6293b96a84976e258bc40c8c9ca8058d6b64dc087329875946d802e232280ea",
+      "gzipBytes": 535499
+    },
+    {
+      "name": "res-10500.json.gz",
+      "count": 1500,
+      "sha256": "c72418412876dab1375e5c2bcedb151e2fb1dd96a7812de1badd34c925d28141",
+      "gzipBytes": 531331
+    },
+    {
+      "name": "res-12000.json.gz",
+      "count": 1500,
+      "sha256": "1b93fbbdc6465d36b680ef3b5ac25c690e6c575dd62a495d47391e1b9f4c1f02",
+      "gzipBytes": 444782
+    },
+    {
+      "name": "res-13500.json.gz",
+      "count": 292,
+      "sha256": "5cc6b56fe9a2728b7621f07f5a0fab1d3d55cedde2ac871a7f70f3c46017e31b",
+      "gzipBytes": 103043
+    }
+  ]
+}

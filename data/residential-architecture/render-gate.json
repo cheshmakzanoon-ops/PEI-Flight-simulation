@@ -1,0 +1,230 @@
+{
+  "standard": [
+    {
+      "pose": "queens-house-low",
+      "camera": {
+        "lon": -63.10588925,
+        "lat": 46.2657475,
+        "h": 6.07,
+        "east": -31,
+        "south": 6,
+        "dist": 32,
+        "agl": 16
+      },
+      "calls": [
+        116,
+        116
+      ],
+      "triangles": [
+        353266,
+        408320
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 49152
+    },
+    {
+      "pose": "queens-neighborhood-air",
+      "camera": {
+        "lon": -63.106964,
+        "lat": 46.26511125,
+        "h": 5.56,
+        "east": -69,
+        "south": -58,
+        "dist": 97,
+        "agl": 43
+      },
+      "calls": [
+        89,
+        89
+      ],
+      "triangles": [
+        378184,
+        434136
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 22528
+    },
+    {
+      "pose": "prince-house-low",
+      "camera": {
+        "lon": -63.7970225,
+        "lat": 46.40764225,
+        "h": 4.94,
+        "east": 24,
+        "south": -7,
+        "dist": 32,
+        "agl": 16
+      },
+      "calls": [
+        40,
+        40
+      ],
+      "triangles": [
+        270684,
+        279692
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 4096
+    },
+    {
+      "pose": "kings-house-low",
+      "camera": {
+        "lon": -62.636780166666675,
+        "lat": 46.16462716666667,
+        "h": 6.99,
+        "east": 24,
+        "south": 17,
+        "dist": 30,
+        "agl": 16
+      },
+      "calls": [
+        216,
+        216
+      ],
+      "triangles": [
+        352571,
+        353025
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 0
+    },
+    {
+      "pose": "east-coast-control",
+      "camera": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "h": 19.5,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "agl": 45
+      },
+      "calls": [
+        265,
+        265
+      ],
+      "triangles": [
+        306983,
+        306983
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 97280,
+      "unchangedTotalPixels": 655360
+    }
+  ],
+  "buildingShadows": [
+    {
+      "pose": "queens-house-low",
+      "camera": {
+        "lon": -63.10588925,
+        "lat": 46.2657475,
+        "h": 6.07,
+        "east": -31,
+        "south": 6,
+        "dist": 32,
+        "agl": 16
+      },
+      "calls": [
+        116,
+        116
+      ],
+      "triangles": [
+        353266,
+        408320
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 49152,
+      "shadowDepthTriangles": [
+        27831,
+        82885
+      ]
+    },
+    {
+      "pose": "queens-neighborhood-air",
+      "camera": {
+        "lon": -63.106964,
+        "lat": 46.26511125,
+        "h": 5.56,
+        "east": -69,
+        "south": -58,
+        "dist": 97,
+        "agl": 43
+      },
+      "calls": [
+        89,
+        89
+      ],
+      "triangles": [
+        378184,
+        434136
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 22528,
+      "shadowDepthTriangles": [
+        27831,
+        82885
+      ]
+    },
+    {
+      "pose": "prince-house-low",
+      "camera": {
+        "lon": -63.7970225,
+        "lat": 46.40764225,
+        "h": 4.94,
+        "east": 24,
+        "south": -7,
+        "dist": 32,
+        "agl": 16
+      },
+      "calls": [
+        40,
+        40
+      ],
+      "triangles": [
+        270684,
+        279692
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 4096,
+      "shadowDepthTriangles": [
+        45420,
+        54802
+      ]
+    },
+    {
+      "pose": "kings-house-low",
+      "camera": {
+        "lon": -62.636780166666675,
+        "lat": 46.16462716666667,
+        "h": 6.99,
+        "east": 24,
+        "south": 17,
+        "dist": 30,
+        "agl": 16
+      },
+      "calls": [
+        216,
+        216
+      ],
+      "triangles": [
+        352571,
+        353025
+      ],
+      "matchedDetail": true,
+      "matchedWorldSurface": true,
+      "unchangedSkyPixels": 0,
+      "shadowDepthTriangles": [
+        33979,
+        34433
+      ]
+    }
+  ]
+}

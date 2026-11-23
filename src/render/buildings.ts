@@ -7,6 +7,8 @@ import {sourisOcclusionGLSL,sourisMetalGLSL,type SourisLighting} from './souris-
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 import { emitFarmShell,farmRoofAtlas,readFarmShell } from './farm-shells.ts';
 import { farmMaterialGLSL } from './farm-material.ts';
+import { homeRoofAtlas,readHomeEnvelope,emitHomeEnvelope } from './home-envelopes.ts';
+import { homeMaterialGLSL } from './home-material.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -50,13 +52,15 @@ const buildingF=(souris=false,hasBuildingShadows=false)=>`
  ${souris?sourisOcclusionGLSL+sourisMetalGLSL:''}
  ${hasBuildingShadows?buildingShadowGLSL:''}
  ${farmMaterialGLSL}
+ ${homeMaterialGLSL}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
  vec3 c=tint,n=normalize(normalW);if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
- if(facade>6.5){shadeFarm(c,uv2d,wp,n,facade,roof,k,fine,d);}
+ if(facade>9.5){shadeHome(c,uv2d,wp,n,facade,roof,k,d);}
+ else if(facade>6.5){shadeFarm(c,uv2d,wp,n,facade,roof,k,fine,d);}
  else if(roof<.5&&facade>5.5){
   // Neutral manufactured cladding for the one measured industrial shell;
   // no guessed windows, openings, branding or claim of actual material.
@@ -111,7 +115,7 @@ const buildingF=(souris=false,hasBuildingShadows=false)=>`
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
- private readonly fitted:boolean;private readonly farms:boolean;private readonly atlasHash:string|undefined;
+ private readonly fitted:boolean;private readonly farms:boolean;private readonly homes:boolean;private readonly atlasHash:string|undefined;
  private readonly sourisMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
@@ -121,7 +125,7 @@ export class Buildings {
    this.sourisLight=sourisLight;
    this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true,!!casts),uniforms:{...sourisLight.uniforms,...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
   }
-  this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);
+  this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
  static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows){
@@ -220,6 +224,12 @@ export class Buildings {
    if(farm){
     facade=farm.style;
     emitFarmShell(ring,{x:cx,z:cz},base,seed,farm,(x,z)=>this.t.meshElevation(x,z),vertex);
+    continue;
+   }
+   const home=this.homes&&!fit&&rings.length===1?readHomeEnvelope(tile.id,i,f.footprint):undefined;
+   if(home){
+    facade=home.style;
+    emitHomeEnvelope(ring,{x:cx,z:cz},base,seed,home,(x,z)=>this.t.meshElevation(x,z),vertex);
     continue;
    }
    const eave=base+(synthGable?low:h);

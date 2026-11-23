@@ -1,0 +1,39 @@
+{
+  "atlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "geofabrikSnapshot": "https://download.geofabrik.de/north-america/canada/prince-edward-island/prince-edward-island-261101.osm.pbf",
+  "geofabrikPbfSha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "geofabrikSupplierMD5": "ac6478285dde331b95cef66ab9a6f76f",
+  "data": {
+    "nativeWindowJSONSHA256": "1e4279899742c960917e75740c520c50e042e2aa4e2df5b63d1bcee5156e4c64",
+    "nativeWindowGzipSHA256": "234d812ccd20ae9faf61932e701e8030182acf235c4147083fe422ca5d263aa3",
+    "nativeWindowGzipBytes": 71067,
+    "osmDatabaseJSONSHA256": "00c17e994ff5ff8055fe02e58aec09f0f59ae13204f6297e8ba14b17e7941eea",
+    "osmDatabaseGzipSHA256": "99823cce29067218a007fbab42ae966d80d25ba5ad5584105eefb1e4d815bd39",
+    "osmDatabaseGzipBytes": 50749
+  },
+  "nativeRaster": "CanElevation mosaic 10_3-mosaic-1m, native DSM + DTM EPSG:3979",
+  "candidateCount": 4141,
+  "sampled": 2011,
+  "selected": 928,
+  "heldOutCells": 16669,
+  "forms": {
+    "gable": 887,
+    "hip": 22,
+    "flat": 9,
+    "shed": 10
+  },
+  "cities": {
+    "other": 76,
+    "Summerside": 83,
+    "Charlottetown": 766,
+    "Montague": 3
+  },
+  "nativeHeldoutShapePerBuildingP90MedianM": [
+    0.493435,
+    0.109285
+  ],
+  "nativeHeldoutShapePerBuildingP90UpperP90M": [
+    1.453997,
+    0.261655
+  ]
+}

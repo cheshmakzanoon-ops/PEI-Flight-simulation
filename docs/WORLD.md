@@ -92,6 +92,11 @@ The [farm scenery pass](qa/farm-architecture.md) separately fits
 929 selected roofs from native LiDAR in all three counties and uses
 original agricultural cladding and joinery. It does not identify
 the use, façade, or current condition of a specific building.
+The [residential scenery pass](qa/residential-envelopes.md) fits 928
+additional roof shapes and gives selected houses original-scale glazing,
+siding and joinery. The building types are matched external area/outline
+data, not verified current occupancy or ownership records.
+
 
 
 ### Optional close building shadows
