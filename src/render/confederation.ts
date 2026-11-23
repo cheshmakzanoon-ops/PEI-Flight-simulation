@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { bridgeAt, BRIDGE_LENGTH, NAV_SPAN } from '../sim/confederation.ts';
+import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, bridgeGirderDepth } from '../sim/confederation.ts';
 
 const WIDTH = 11;
 type Point = ReturnType<typeof bridgeAt>;
@@ -24,16 +24,16 @@ export function addConfederationBridge(scene: THREE.Scene) {
   }
   const asphalt:number[]=[], edges:number[]=[], stripe:number[]=[], under:number[]=[];
   const n=Math.ceil(BRIDGE_LENGTH/22);
-  const highSpanDepth=(distance:number)=> {
-    const d=(distance-NAV_SPAN+125)/250;
-    return 4.5+6.2*Math.pow(Math.abs(2*(d-Math.floor(d)) -1),2);
-  };
-  for(let i=0;i<n;i++){
-    const s=i*BRIDGE_LENGTH/n,t=(i+1)*BRIDGE_LENGTH/n,a=bridgeAt(s),b=bridgeAt(t),half=WIDTH/2;
+  // Include every support in the panel boundaries: a fixed interval can skip
+  // the deepest part of the girder and leave an above-water pier poking through.
+  const stations=[...Array.from({length:n+1},(_,i)=>i*BRIDGE_LENGTH/n),
+    ...BRIDGE_SUPPORTS.map(p=>p.station)].sort((a,b)=>a-b);
+  for(let i=1;i<stations.length;i++){
+    const s=stations[i-1],t=stations[i],a=bridgeAt(s),b=bridgeAt(t),half=WIDTH/2;
     push(asphalt,verts(a,-half,0),verts(b,-half,0),verts(b,half,0),verts(a,half,0));
-    push(under,verts(a,-2.65,-highSpanDepth(s)),verts(a,2.65,-highSpanDepth(s)),verts(b,2.65,-highSpanDepth(t)),verts(b,-2.65,-highSpanDepth(t)));
+    push(under,verts(a,-2.65,-bridgeGirderDepth(s)),verts(a,2.65,-bridgeGirderDepth(s)),verts(b,2.65,-bridgeGirderDepth(t)),verts(b,-2.65,-bridgeGirderDepth(t)));
     for(const sign of [-1,1]){
-      push(edges,verts(a,sign*half,-.18),verts(b,sign*half,-.18),verts(b,sign*2.65,-highSpanDepth(t)),verts(a,sign*2.65,-highSpanDepth(s)));
+      push(edges,verts(a,sign*half,-.18),verts(b,sign*half,-.18),verts(b,sign*2.65,-bridgeGirderDepth(t)),verts(a,sign*2.65,-bridgeGirderDepth(s)));
       push(edges,verts(a,sign*(half+.16),.96),verts(b,sign*(half+.16),.96),verts(b,sign*(half+.16),-.18),verts(a,sign*(half+.16),-.18));
       push(edges,verts(a,sign*(half-.26),.96),verts(b,sign*(half-.26),.96),verts(b,sign*(half+.16),.96),verts(a,sign*(half+.16),.96));
       push(edges,verts(a,sign*(half-.26),.96),verts(a,sign*(half-.26),-.03),verts(b,sign*(half-.26),-.03),verts(b,sign*(half-.26),.96));
@@ -44,22 +44,26 @@ export function addConfederationBridge(scene: THREE.Scene) {
     push(stripe,verts(a,-.11,.045),verts(b,-.11,.045),verts(b,.11,.045),verts(a,.11,.045));
   }
   paint(asphalt,deck);paint(edges,concrete);paint(under,dark);paint(stripe,line);
-  // Distinct approach spans graduate into regular main spans; deck has no collision in this development pass.
-  const pierDistances:number[]=[];
-  for(let d=56;d<NAV_SPAN-20*250-170;d+=96)pierDistances.push(d);
-  for(let i=-21;i<23;i++) {
-    const d=NAV_SPAN+(i+0.5)*250;
-    if(d>90&&d<BRIDGE_LENGTH-85)pierDistances.push(d);
-  }
-  for(let d=NAV_SPAN+22.5*250+103;d<BRIDGE_LENGTH-45;d+=96)pierDistances.push(d);
-  const shafts=new THREE.InstancedMesh(new THREE.CylinderGeometry(3.85,4.75,1,8),concrete,pierDistances.length);
-  const collars=new THREE.InstancedMesh(new THREE.CylinderGeometry(4.75,7.7,1,8),dark,pierDistances.length);
+  // Original visible shapes. No underwater footing survey or bridge collision.
   const m=new THREE.Matrix4(),q=new THREE.Quaternion(),v=new THREE.Vector3(),scale=new THREE.Vector3();
-  pierDistances.forEach((d,i)=>{
-    const p=bridgeAt(d),top=p.y-highSpanDepth(d)+.7;
-    v.set(p.x,(top-4)/2,p.z);scale.set(1,top+4,1);m.compose(v,q,scale);shafts.setMatrixAt(i,m);
-    v.set(p.x,1.5,p.z);scale.set(1,7,1);m.compose(v,q,scale);collars.setMatrixAt(i,m);
-  });
-  shafts.computeBoundingSphere();collars.computeBoundingSphere();
-  bridge.add(shafts,collars);scene.add(bridge);return bridge;
+  const up=new THREE.Vector3(0,1,0);
+  for(const section of ['main','approach'] as const){
+    const supports=BRIDGE_SUPPORTS.filter(p=>p.section===section);
+    const main=section==='main';
+    const shaft=main?new THREE.CylinderGeometry(3.85,4.35,1,8):new THREE.BoxGeometry(3.5,1,5.1);
+    const shield=new THREE.CylinderGeometry(main?4.35:3.2,main?9.8:5.8,1,main?12:8);
+    const shafts=new THREE.InstancedMesh(shaft,concrete,supports.length);
+    const collars=new THREE.InstancedMesh(shield,dark,supports.length);
+    shafts.name=section+' bridge shafts';collars.name=section+' bridge shields';
+    supports.forEach(({station},i)=>{
+      const p=bridgeAt(station),top=p.y-bridgeGirderDepth(station)+.35;
+      const shoulder=main?3.6:2.1;
+      q.setFromAxisAngle(up,-Math.atan2(p.dz,p.dx));
+      v.set(p.x,(top+shoulder)/2,p.z);scale.set(1,top-shoulder,1);m.compose(v,q,scale);shafts.setMatrixAt(i,m);
+      v.set(p.x,(shoulder-4)/2,p.z);scale.set(1,shoulder+4,1);m.compose(v,q,scale);collars.setMatrixAt(i,m);
+    });
+    shafts.computeBoundingSphere();collars.computeBoundingSphere();
+    bridge.add(shafts,collars);
+  }
+  scene.add(bridge);return bridge;
 }
