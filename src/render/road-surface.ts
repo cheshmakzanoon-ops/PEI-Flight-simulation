@@ -3,25 +3,34 @@ import type {RoadPavement} from './road-pavement.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
-export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement){
- material.customProgramCacheKey=()=> 'pei-road-surface-v3'+(casts?'-cast':'')+(pavement?'-pavement':'');
+export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement,seat?:{value:number}){
+ material.customProgramCacheKey=()=> 'pei-road-surface-v3'+(casts?'-cast':'')+(pavement?'-pavement':'')+(seat?'-seat':'');
  material.onBeforeCompile=(shader)=>{
   if(casts)Object.assign(shader.uniforms,casts.uniforms);
   if(pavement)Object.assign(shader.uniforms,pavement.uniforms);
+  if(seat)shader.uniforms.roadSeatGain=seat;
   shader.vertexShader=shader.vertexShader.replace('#include <common>',`
    #include <common>
    attribute vec2 roadSurface;
+   ${seat?`attribute float roadSeatDelta;uniform float roadSeatGain;
+   float roadSeatAmount(){
+    vec2 world=(modelMatrix*vec4(position,1.)).xz;
+    return roadSeatGain*(1.-smoothstep(350.,900.,length(world-cameraPosition.xz)));
+   }`:''}
    varying vec2 vRoadSurface,vRoadWorld;
+   ${seat?'varying float vSeatDisplaced;':''}
    ${casts?'varying vec3 localRoadReceiver;':''}
   `).replace('#include <begin_vertex>',`
    #include <begin_vertex>
+   ${seat?'float seatDelta=roadSeatAmount()*roadSeatDelta;transformed.y+=seatDelta;vSeatDisplaced=abs(seatDelta);':''}
    vRoadSurface=roadSurface;
    vRoadWorld=(modelMatrix*vec4(position,1.)).xz;
-   ${casts?'localRoadReceiver=(modelMatrix*vec4(position,1.)).xyz;':''}
+   ${casts?'localRoadReceiver=(modelMatrix*vec4(transformed,1.)).xyz;':''}
   `);
   shader.fragmentShader=shader.fragmentShader.replace('#include <common>',`
    #include <common>
    varying vec2 vRoadSurface,vRoadWorld;
+   ${seat?'varying float vSeatDisplaced;':''}
    ${casts?'varying vec3 localRoadReceiver;'+buildingShadowGLSL:''}
    ${pavement?`uniform sampler2D roadPaveA,roadPaveB;
    uniform float roadPaveBlend;`:''}
@@ -113,6 +122,11 @@ export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShad
     roadPaveRough=clamp(.79+.19*mix(a.a,b.a,variant),.79,.98);
    }
    `:''}
+  `);
+  if(seat)shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_begin>',`
+   #include <normal_fragment_begin>
+   vec3 physicalRoadNormal=normalize(cross(dFdx(vViewPosition),dFdy(vViewPosition)));
+   if(vSeatDisplaced>.000001)normal=dot(normal,physicalRoadNormal)<0.?-physicalRoadNormal:physicalRoadNormal;
   `);
   if(pavement)shader.fragmentShader=shader.fragmentShader.replace('#include <roughnessmap_fragment>',`
    #include <roughnessmap_fragment>

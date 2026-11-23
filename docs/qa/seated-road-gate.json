@@ -1,0 +1,368 @@
+{
+  "baseline": {
+    "quantileOrder": [
+      0.01,
+      0.1,
+      0.5,
+      0.9,
+      0.95,
+      0.99
+    ],
+    "caveat": "Legacy rendering geometry versus regular n112 atlas facets, not physical survey; land with Cover<110m and runways, bridges omitted.",
+    "samples": {
+      "paved": {
+        "count": 1540371,
+        "negative": 13359,
+        "above20cm": 1465760,
+        "above35cm": 1206885,
+        "above60cm": 203829,
+        "abs": [
+          0.0724,
+          0.2719,
+          0.4391,
+          0.629,
+          0.6969,
+          0.8689
+        ],
+        "gap": [
+          0.0193,
+          0.2703,
+          0.4389,
+          0.6287,
+          0.6964,
+          0.8672
+        ]
+      },
+      "unpaved": {
+        "count": 810534,
+        "negative": 9756,
+        "above20cm": 766592,
+        "above35cm": 631541,
+        "above60cm": 100638,
+        "abs": [
+          0.0645,
+          0.2679,
+          0.4338,
+          0.6236,
+          0.6964,
+          0.8868
+        ],
+        "gap": [
+          -0.0301,
+          0.2647,
+          0.4333,
+          0.6228,
+          0.695,
+          0.8821
+        ]
+      }
+    }
+  },
+  "browser": {
+    "summerside-curb": {
+      "base": {
+        "calls": 106,
+        "tris": 336675
+      },
+      "fitted": {
+        "calls": 106,
+        "tris": 336675
+      },
+      "baseMask": {
+        "calls": 106,
+        "tris": 336675
+      },
+      "fittedMask": {
+        "calls": 106,
+        "tris": 336675
+      },
+      "bare": {
+        "calls": 99,
+        "tris": 285021
+      },
+      "clean": true,
+      "target": 1,
+      "deformed": 161240,
+      "largest": 1.2140523195266724,
+      "pixels": {
+        "n": 456192,
+        "changed": 96002,
+        "over2": 58426,
+        "outside": 0,
+        "max": 69
+      }
+    },
+    "summerside-low": {
+      "base": {
+        "calls": 75,
+        "tris": 296900
+      },
+      "fitted": {
+        "calls": 75,
+        "tris": 296900
+      },
+      "baseMask": {
+        "calls": 75,
+        "tris": 296900
+      },
+      "fittedMask": {
+        "calls": 75,
+        "tris": 296900
+      },
+      "bare": {
+        "calls": 67,
+        "tris": 243798
+      },
+      "clean": true,
+      "target": 1,
+      "deformed": 161240,
+      "largest": 1.2140523195266724,
+      "pixels": {
+        "n": 456192,
+        "changed": 60728,
+        "over2": 31746,
+        "outside": 0,
+        "max": 54
+      }
+    },
+    "east-point-high": {
+      "base": {
+        "calls": 14,
+        "tris": 224505
+      },
+      "fitted": {
+        "calls": 14,
+        "tris": 224505
+      },
+      "baseMask": {
+        "calls": 14,
+        "tris": 224505
+      },
+      "fittedMask": {
+        "calls": 14,
+        "tris": 224505
+      },
+      "bare": {
+        "calls": 13,
+        "tris": 223875
+      },
+      "clean": true,
+      "target": 0,
+      "deformed": 0,
+      "largest": 0,
+      "pixels": {
+        "n": 456192,
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "max": 0
+      }
+    }
+  },
+  "controlledMotion": {
+    "high": {
+      "pending": false,
+      "gain": 0,
+      "ready": 0,
+      "agl": 210,
+      "dx": 0,
+      "dz": 0,
+      "frame": 4,
+      "inView": 0,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "preload": {
+      "pending": false,
+      "gain": 0,
+      "ready": 4,
+      "agl": 198,
+      "dx": 0,
+      "dz": 0,
+      "frame": 10,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "partial": {
+      "pending": false,
+      "gain": 0.4909779399593692,
+      "ready": 4,
+      "agl": 153,
+      "dx": 0,
+      "dz": 0,
+      "frame": 16,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "ground": {
+      "pending": false,
+      "gain": 0.999017597601652,
+      "ready": 4,
+      "agl": 42,
+      "dx": 0,
+      "dz": 0,
+      "frame": 19,
+      "inView": 4,
+      "position": [
+        -45486.745890658814,
+        12035.826310102835
+      ]
+    },
+    "move": {
+      "pending": false,
+      "gain": 1,
+      "ready": 4,
+      "agl": 42,
+      "dx": 490,
+      "dz": -90,
+      "frame": 21,
+      "inView": 4,
+      "position": [
+        -44996.745890658814,
+        11945.826310102835
+      ]
+    },
+    "climb": {
+      "pending": false,
+      "gain": 0,
+      "ready": 0,
+      "agl": 220,
+      "dx": 490,
+      "dz": -90,
+      "frame": 22,
+      "inView": 0,
+      "position": [
+        -44996.745890658814,
+        11945.826310102835
+      ]
+    }
+  },
+  "actualThreeRays": {
+    "code": [
+      "48da50b859bf742ae098434ffdc306c485e02bc06c0d142f3625b3a70498f7e4",
+      "6132da751be98cd1ab5b31ac3651fe1a3afc38f37f07478ac7c81efc78fbf269"
+    ],
+    "stats": [
+      {
+        "name": "Prince / Water Street",
+        "tile": "-10,2",
+        "oldFaces": 4330,
+        "newFaces": 14032,
+        "changedFaces": 13567,
+        "cpuSingleSampleMs": [
+          34.7,
+          80.9
+        ],
+        "traces": {
+          "candidates": 474,
+          "samples": 424,
+          "within900OfLandmark": 112,
+          "oldGapMedian": 0.4340298721629461,
+          "maxCanonicalVsActualRayM": 1.6697754290362354e-13,
+          "maxFinalRoadSurfaceLiftErrorM": 4.652421653872363e-06
+        },
+        "roundNonPositive": 0,
+        "immutables": {
+          "bridgeVertex": 0,
+          "belowCoastThresholdVertices": 1555,
+          "bridgeBad": 0,
+          "belowCoastBad": 0
+        }
+      },
+      {
+        "name": "Queens / Hunter River",
+        "tile": "-3,3",
+        "oldFaces": 1396,
+        "newFaces": 4822,
+        "changedFaces": 4820,
+        "cpuSingleSampleMs": [
+          2.4,
+          37.4
+        ],
+        "traces": {
+          "candidates": 168,
+          "samples": 168,
+          "within900OfLandmark": 50,
+          "oldGapMedian": 0.4494120207782899,
+          "maxCanonicalVsActualRayM": 1.1368683772161603e-13,
+          "maxFinalRoadSurfaceLiftErrorM": 1.0954160333198626e-05
+        },
+        "roundNonPositive": 0,
+        "immutables": {
+          "bridgeVertex": 6,
+          "belowCoastThresholdVertices": 0,
+          "bridgeBad": 0,
+          "belowCoastBad": 0
+        }
+      },
+      {
+        "name": "Kings / New Harmony",
+        "tile": "13,1",
+        "oldFaces": 390,
+        "newFaces": 1592,
+        "changedFaces": 1592,
+        "cpuSingleSampleMs": [
+          0.6,
+          5.9
+        ],
+        "traces": {
+          "candidates": 56,
+          "samples": 56,
+          "within900OfLandmark": 0,
+          "oldGapMedian": 0.4187300485846066,
+          "maxCanonicalVsActualRayM": 1.2079226507921703e-13,
+          "maxFinalRoadSurfaceLiftErrorM": 2.089321467224625e-06
+        },
+        "roundNonPositive": 0,
+        "immutables": {
+          "bridgeVertex": 0,
+          "belowCoastThresholdVertices": 0,
+          "bridgeBad": 0,
+          "belowCoastBad": 0
+        }
+      },
+      {
+        "name": "Queens / Charlottetown",
+        "tile": "1,5",
+        "oldFaces": 12420,
+        "newFaces": 40490,
+        "changedFaces": 39332,
+        "cpuSingleSampleMs": [
+          10.5,
+          92.6
+        ],
+        "traces": {
+          "candidates": 1364,
+          "samples": 1240,
+          "within900OfLandmark": 143,
+          "oldGapMedian": 0.4278234858920964,
+          "maxCanonicalVsActualRayM": 1.5631940186722204e-13,
+          "maxFinalRoadSurfaceLiftErrorM": 5.342853911571854e-06
+        },
+        "roundNonPositive": 0,
+        "immutables": {
+          "bridgeVertex": 72,
+          "belowCoastThresholdVertices": 3905,
+          "bridgeBad": 0,
+          "belowCoastBad": 0
+        }
+      }
+    ],
+    "actualNearTileSeamWitness": {
+      "sites": 4,
+      "raySamples": 448,
+      "expectedClosestOffsetM": 0.00012,
+      "missing": 0,
+      "maxGroundErrorM": 1.509903313490213e-13
+    },
+    "note": "Samples inside actual Float32-shaped seated road triangles at full correction and real n112 regular terrain rays. No ray at exact tile line, old terrain half-width rounding may undershoot by ~0.04mm itself. CPU values local single-run proxy, no game FPS."
+  }
+}

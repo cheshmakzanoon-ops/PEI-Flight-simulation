@@ -197,3 +197,5 @@ roof outlines; the pass is not a survey of individual trees.
   selected protected inland surfaces, exact runtime mesh/contact, source pins, and limitations.
 
 - [Close paved-road material](qa/paved-road-material.md): calibrated stock photographic aggregate, existing road ribbons only.
+
+- [Optional terrain-seated road preview](qa/seated-road-preview.md): original plan geometry and material classes, regular near contact only.

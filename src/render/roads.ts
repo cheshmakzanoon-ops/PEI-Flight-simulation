@@ -4,6 +4,9 @@ import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import {cutInlandRoad} from '../sim/inland-road.ts';
 import type {CoastalGrid} from '../sim/coastal-terrain.ts';
+import {roadContactAt,seatRibbon} from './road-contact.ts';
+import {sidewalkGrid} from './sidewalks.ts';
+import type {World} from './world.ts';
 import {RoadPavement} from './road-pavement.ts';
 import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
@@ -75,6 +78,15 @@ export class Roads {
   private readonly visible = new Map<string, THREE.Mesh>();
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
   private readonly nearPatches?:()=>readonly CoastalGrid[];
+  private readonly seated?:World;
+  private readonly seat?:ReturnType<typeof roadContactAt>;
+  private readonly seatGain={value:0};
+  private previousSeat='';
+  private pendingSeat=false;
+  private seatedAt=Infinity;
+  get seatState(){return this.seat?{pending:this.pendingSeat,gain:this.seatGain.value,
+    ready:Array.from(this.visible.values()).filter(q=>String(q.userData.inlandMode).includes('|seat:')).length}:null;}
+
   private lastPatchKey='';
   private lastX = Infinity;
   private lastZ = Infinity;
@@ -82,14 +94,15 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World) {
     this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
-    addRoadSurface(this.material,casts,this.pavement);
+    this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
+    addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
     scene.add(this.root);
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[]) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World) {
     const response = await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`);
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
     const data = await unpackGzip(await response.arrayBuffer());
@@ -117,11 +130,12 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain,casts,nearPatches,digest);
+    return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated);
   }
 
-  private mesh(tile: Tile,patches:readonly CoastalGrid[] = []) {
-    const pos:number[]=[], colors:number[]=[], surface:number[]=[];
+  private mesh(tile: Tile,patches:readonly CoastalGrid[] = [], seated=false) {
+    const pos:number[]=[], colors:number[]=[], surface:number[]=[],seatDelta:number[]=[];
+    const layout=seated?sidewalkGrid(this.terrain):null;
     const baselineHeight=this.terrain.inlandGrids.length
       ?(x:number,z:number)=>this.terrain.coastalGrids.find(g=>g.near(x,z))?.height(x,z)??this.terrain.atlasElevation(x,z)
       :(x:number,z:number)=>this.terrain.meshElevation(x,z);
@@ -141,7 +155,27 @@ export class Roads {
           {x:x+rx,z:z+rz,y:py,edge:127},{x:x-rx,z:z-rz,y:py,edge:-127},
           {x:u-rx,z:v-rz,y:qy,edge:-127},{x:u+rx,z:v+rz,y:qy,edge:127} ],patches):undefined;
         if(cuts){
-         for(const v of cuts){pos.push(v.x-tile.x,v.y,v.z-tile.z);colors.push(color.r,color.g,color.b);surface.push(Math.round(v.edge),kind);}
+         for(const v of cuts){pos.push(v.x-tile.x,v.y,v.z-tile.z);colors.push(color.r,color.g,color.b);surface.push(Math.round(v.edge),kind);if(this.seat)seatDelta.push(0);}
+         continue;
+        }
+        if(layout&&this.seat&&!isBridge){
+         const a={x:x+rx,z:z+rz,u:127,v:py},b={x:x-rx,z:z-rz,u:-127,v:py},
+          c={x:u+rx,z:v+rz,u:127,v:qy},d={x:u-rx,z:v-rz,u:-127,v:qy};
+         const pending:{x:number;z:number;q:typeof a;offset:number}[]=[];
+         const emit=(q:typeof a,offset:number)=>{
+          pending.push({x:Math.fround(q.x-tile.x),z:Math.fround(q.z-tile.z),q,offset});
+          if(pending.length<3)return;
+          const [a,b,c]=pending;
+          const signed=(b.x-a.x)*(c.z-a.z)-(b.z-a.z)*(c.x-a.x);
+          // Near-collinear clipped wedges can collapse in the final GPU
+          // Float32 lattice. Do not submit zero-area faces or flipped normals.
+          if(signed!==0)for(const v of (signed>0?[a,c,b]:pending)){
+           pos.push(v.x,v.q.v,v.z);colors.push(color.r,color.g,color.b);
+           surface.push(v.q.u,kind);seatDelta.push(v.offset);
+          }
+          pending.length=0;
+         };
+         seatRibbon([a,b,c],layout,this.seat,emit);seatRibbon([c,b,d],layout,this.seat,emit);
          continue;
         }
         const lx=x-tile.x,lz=z-tile.z,lu=u-tile.x,lv=v-tile.z;
@@ -151,15 +185,22 @@ export class Roads {
         );
         for(let k=0;k<6;k++){
           colors.push(color.r,color.g,color.b);
-          surface.push(k===1||k===4||k===5?-127:127,kind);
+          surface.push(k===1||k===4||k===5?-127:127,kind);if(this.seat)seatDelta.push(0);
         }
       }
     }
     const g=new THREE.BufferGeometry();
     g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
     g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
-    g.setAttribute('roadSurface',new THREE.Int8BufferAttribute(surface,2,true));
+    g.setAttribute('roadSurface',seated?new THREE.Float32BufferAttribute(surface.map(v=>v/127),2):new THREE.Int8BufferAttribute(surface,2,true));
     g.computeVertexNormals();
+    if(this.seat){
+     const delta=new Float32Array(seatDelta);
+     let maxDrop=0;
+     for(const amount of delta)maxDrop=Math.max(maxDrop,Math.abs(amount));
+     g.setAttribute('roadSeatDelta',new THREE.BufferAttribute(delta,1));
+     g.computeBoundingSphere();if(g.boundingSphere)g.boundingSphere.radius+=maxDrop;
+    }
     const mesh=new THREE.Mesh(g,this.material);
     mesh.position.set(tile.x,0,tile.z);
     return mesh;
@@ -167,11 +208,26 @@ export class Roads {
 
   update(x: number, z: number, agl=Infinity) {
     this.pavement.update(agl);
+    const time=performance.now(),h=THREE.MathUtils.clamp((194-agl)/82,0,1);
+    if(this.seat&&(agl>=209||Math.hypot(x-this.lastX,z-this.lastZ)>1600))this.seatedAt=Infinity;
+    const fade=THREE.MathUtils.clamp((time-this.seatedAt)/725,0,1);
+    this.seatGain.value=h*h*(3-2*h)*fade*fade*(3-2*fade);
+    const nearby:{id:string;d:number}[]=[];
+    if(this.seated&&agl<209){
+     const i=Math.floor(x/TILE),j=Math.floor(z/TILE);
+     for(let z0=j-2;z0<=j+2;z0++)for(let x0=i-2;x0<=i+2;x0++){
+      const id=x0+','+z0,t=this.tiles.get(id);if(!t)continue;
+      const d=Math.hypot(t.x-x,t.z-z);if(d<6100)nearby.push({id,d});
+     }
+    }
+    const wanted=nearby.sort((a,b)=>a.d-b.d||a.id.localeCompare(b.id)).slice(0,4).map(t=>t.id);
+    const seatKey=wanted.join(';');
+    let seatSlot=1;
     const shown=this.nearPatches?.(),patchKey=shown?.map(g=>g.spec.id).join(',')??'';
     const moved=Math.hypot(x-this.lastX,z-this.lastZ)>=420;
-    if(!moved&&patchKey===this.lastPatchKey)return;
+    if(!moved&&patchKey===this.lastPatchKey&&seatKey===this.previousSeat&&!this.pendingSeat)return;
     if(!moved){x=this.lastX;z=this.lastZ;}else{this.lastX=x;this.lastZ=z;}
-    this.lastPatchKey=patchKey;
+    this.lastPatchKey=patchKey;this.previousSeat=seatKey;this.pendingSeat=false;
     const minX=Math.floor((x-VIEW)/TILE), maxX=Math.floor((x+VIEW)/TILE);
     const minZ=Math.floor((z-VIEW)/TILE), maxZ=Math.floor((z+VIEW)/TILE);
     const keep=new Set<string>();
@@ -181,10 +237,12 @@ export class Roads {
       keep.add(key);
       const bound=TILE*.5+265; // split half-length plus road width
       const candidates=shown?.filter(q=>q.x1>t.x-bound&&q.x0<t.x+bound&&q.z1>t.z-bound&&q.z0<t.z+bound)??[];
-      const mode=candidates.map(g=>g.spec.id).join(',');
+      const base=candidates.map(g=>g.spec.id).join(',');
+      const opted=wanted.includes(key);
+      let mode=opted?base+'|seat:regular112':base;
       const current=this.visible.get(key);
       if(current&&current.userData.inlandMode===mode)continue;
-      if(!this.nearPatches){
+      if(!this.nearPatches&&!this.seat){
         const mesh=this.mesh(t);mesh.userData.inlandMode='';
         this.root.add(mesh);this.visible.set(key,mesh);continue;
       }
@@ -193,15 +251,17 @@ export class Roads {
       const variants=this.madeVariants.get(key)??new Map<string,THREE.BufferGeometry>();
       this.madeVariants.set(key,variants);
       let cached=variants.get(mode);
-      if(current){
-        if(!cached){cached=this.mesh(t,candidates).geometry;variants.set(mode,cached);}
-        current.geometry=cached;current.userData.inlandMode=mode;
-      }else{
-        const mesh=this.mesh(t,candidates);
-        variants.set(mode,mesh.geometry);mesh.userData.inlandMode=mode;
-        this.root.add(mesh);this.visible.set(key,mesh);
+      if(opted&&!cached&&seatSlot--<=0){this.pendingSeat=true;mode=base;cached=variants.get(base);}
+      if(current&&current.userData.inlandMode===mode)continue;
+      if(!cached){cached=this.mesh(t,candidates,mode.includes('|seat:')).geometry;variants.set(mode,cached);}
+      if(current){current.geometry=cached;current.userData.inlandMode=mode;}
+      else{
+        const mesh=new THREE.Mesh(cached,this.material);mesh.position.set(t.x,0,t.z);
+        mesh.userData.inlandMode=mode;this.root.add(mesh);this.visible.set(key,mesh);
       }
+      for(const [stale,geo] of variants)if(stale.includes('|seat:')&&stale!==mode){geo.dispose();variants.delete(stale);}
     }
+    if(wanted.length&&!this.pendingSeat&&this.seatedAt===Infinity)this.seatedAt=time;
     for(const [key,mesh] of this.visible) {
       if(keep.has(key)) continue;
       this.root.remove(mesh);
