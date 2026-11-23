@@ -12,6 +12,7 @@ import {unpackGzip} from '../sim/compression.ts';
 import {loadHarbourCover} from '../sim/harbour-cover.ts';
 import {harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
+import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
@@ -179,7 +180,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -191,8 +192,18 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${harbour?'coast=harbourDistance(coast,p.xz);':''}
  if(coast<0.)discard;
  vec2 uv=vec2(vuv.x,1.-vuv.y);
- vec3 col=texture2D(imageMap,uv).rgb;
- if(hasDetail>.5){vec2 q=(vuv-detailBox.xy)*detailBox.zw;col=texture2D(detailMap,vec2(q.x,1.-q.y)).rgb;}
+ vec2 q=(vuv-detailBox.xy)*detailBox.zw;
+ float amount=hasDetail>.5?detailAmount(q):0.;
+ // Use original unwrapped derivatives so crossing a feather boundary cannot
+ // switch mip levels on either image. Settled tiles take one texture sample.
+ vec2 detailUV=vec2(q.x,1.-q.y),du=dFdx(detailUV),dv=dFdy(detailUV);
+ vec2 bu=dFdx(uv),bv=dFdy(uv);
+ vec3 col;
+ if(amount<=0.)col=textureGrad(imageMap,uv,bu,bv).rgb;
+ else{
+  col=textureGrad(detailMap,detailUV,du,dv).rgb;
+  if(amount<1.)col=mix(textureGrad(imageMap,uv,bu,bv).rgb,col,amount);
+ }
  // The Sentinel-2 TCI product linearly maps 0–25% BOA reflectance
  // to display bytes. Interpret the same scale for both texture LODs
  // before applying the scene's light and tone mapping.
@@ -289,7 +300,7 @@ async function loadCover(){
  return new Cover(cs.width,cs.height,new Uint8Array(cb),harbour?.plan.pinCoverSha256===cs.compressedSha256?harbour:undefined,cs.compressedSha256);
 }
 type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
-interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
+interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
  private groundVersion=0;
@@ -301,7 +312,7 @@ export class World {
  private reliefActive=new Set<Patch>();
  private reliefRefresh=-Infinity;
  private reliefX=Infinity;private reliefZ=Infinity;
- private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
+ private t={value:0};private detailClock={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
@@ -328,7 +339,8 @@ export class World {
    const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
    const paint=runwayAtlas();const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
-   const uniforms={eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
+   const uniforms={detailClock:this.detailClock,detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(1,1)},
+       detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    const skyInverseProjection={value:new THREE.Matrix4()},skyEyeToWorld={value:new THREE.Matrix4()};
    const skyMaterial=new THREE.ShaderMaterial({vertexShader:screenSkyV,fragmentShader:skyFrag,
@@ -391,7 +403,9 @@ export class World {
     const floorUniforms=showLocalFloor?{...this.floor!.uniforms,floorTileGuard:{value:guard},
        floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor)});
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+     detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
@@ -559,7 +573,7 @@ export class World {
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
-  this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
+  this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   const art=this.floor;
   if(art){
    let near=false;
@@ -588,7 +602,7 @@ export class World {
      if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
      tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,tile.lod);tile.fine.material=tile.local;this.scene.add(tile.fine);tile.seams=undefined;
    }
-   if(tile.detail&&d2>19000**2){tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;}
+   if(tile.detail&&d2>19000**2){tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;this.refreshDetailOwner(tile,undefined);}
    tile.coarse.visible=!fine;if(tile.fine){tile.fine.visible=fine;if(!fine&&d2>15000**2){this.scene.remove(tile.fine);tile.fine.geometry.dispose();tile.fine=undefined;tile.seams=undefined;}}
   }
   // On each LOD transition, conform the fine boundary vertices to the adjacent
@@ -621,13 +635,26 @@ export class World {
  detailState(){return {ready:this.tiles.filter(t=>t.status==='ready').length,loading:this.loading,
   missing:this.tiles.filter(t=>t.status==='missing').length,uncovered:this.tiles.filter(t=>t.status==='uncovered').length,
   retrying:this.tiles.filter(t=>t.status==='idle'&&t.retryAt!==undefined).length};}
+ private refreshDetailOwner(tile:Patch,ready:number|undefined){
+  tile.detailSince=ready;tile.local.uniforms.detailReady.value=ready??DETAIL_NOT_READY;
+  const neighbour=(t:Patch,i:number,j:number)=>this.byId.get((t.i+i)+'-'+(t.j+j));
+  const refresh=(t:Patch)=>{
+   for(let k=0;k<DETAIL_NEIGHBOURS.length;k++){
+    const [i,j]=DETAIL_NEIGHBOURS[k];
+    const v=t.local.uniforms[k<4?'detailCardinal':'detailDiagonal'].value as THREE.Vector4;
+    v.setComponent(k%4,neighbour(t,i,j)?.detailSince??DETAIL_NOT_READY);
+   }
+  };
+  refresh(tile);
+  for(const [i,j] of DETAIL_NEIGHBOURS){const other=neighbour(tile,i,j);if(other)refresh(other);}
+ }
  private request(tile:Patch){
   this.loading++;tile.status='loading';tile.retryAt=undefined;
   void this.details.load(tile.id).then(tex=>{if(!tex){tile.status='uncovered';return;}
    tile.failures=undefined;
    const dx=this.lastX-(tile.x0+tile.w/2),dz=this.lastZ-(tile.z0+tile.d/2);
    if(dx*dx+dz*dz>19000**2){tex.dispose();(tex.image as ImageBitmap)?.close?.();tile.status='idle';return;}
-   tile.detail=tex;tile.status='ready';tile.local.uniforms.detailMap.value=tex;tile.local.uniforms.hasDetail.value=1;
+   tile.detail=tex;tile.status='ready';tile.local.uniforms.detailMap.value=tex;tile.local.uniforms.hasDetail.value=1;this.refreshDetailOwner(tile,this.detailClock.value);
   }).catch(e=>{
    tile.failures=(tile.failures??0)+1;
    tile.retryAt=detailRetryAt(e,tile.failures,performance.now());

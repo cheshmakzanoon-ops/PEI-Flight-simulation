@@ -1,0 +1,75 @@
+{
+  "old-full": {
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "triangles": 283635,
+    "drawCalls": 22
+  },
+  "old-mixed": {
+    "detail": {
+      "ready": 11,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "triangles": 283635,
+    "drawCalls": 22
+  },
+  "new-full": {
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "triangles": 283635,
+    "drawCalls": 22
+  },
+  "new-mixed": {
+    "detail": {
+      "ready": 11,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "triangles": 283635,
+    "drawCalls": 22
+  },
+  "full": {
+    "pixels": 476000,
+    "any": 0,
+    "gt2": 0,
+    "max": 0
+  },
+  "mixed": {
+    "pixels": 476000,
+    "any": 37750,
+    "gt2": 29441,
+    "max": 58
+  },
+  "new-scope": {
+    "detail": {
+      "ready": 11,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "triangles": 283635,
+    "drawCalls": 22
+  },
+  "scope": {
+    "supportPlus3px": 48805,
+    "outsideExact": 427195,
+    "outsideAny": 0,
+    "outsideGt2": 0
+  }
+}
