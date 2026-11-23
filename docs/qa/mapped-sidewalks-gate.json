@@ -1,0 +1,876 @@
+{
+  "format": 1,
+  "sourceScope": {
+    "sourceAlignmentSamples": 24825,
+    "landWholeStripIntervals": 184068,
+    "quads": 8275,
+    "paths": 2035,
+    "pathSpans": 8275,
+    "rejected": 0,
+    "topTris": 32500,
+    "wallTris": 71428,
+    "maxSlopeGroundError": 9.567765828916164e-07,
+    "wrongWinding": 0,
+    "minRoadSeparationM": 0.40964850703376643,
+    "minBuildingSeparationM": 0.831159445313703,
+    "maxSourceCentrelineErrorM": 0.006976431110612128,
+    "roundedSourceLengthM": 179419.24841300288,
+    "overlappingFootprints": [],
+    "protectedGeometryIntrusions": [],
+    "signedCoverProofFailures": []
+  },
+  "comparisons": [
+    {
+      "site": "summerside-pavers",
+      "pose": {
+        "lon": -63.7921925396,
+        "lat": 46.391678548,
+        "east": -0.9831342,
+        "south": -0.1828858,
+        "dist": 29,
+        "h": 0,
+        "agl": 18
+      },
+      "art": {
+        "triangles": 266231,
+        "calls": 74
+      },
+      "old": {
+        "triangles": 257759,
+        "calls": 68
+      },
+      "mask": {
+        "triangles": 266231,
+        "calls": 74
+      },
+      "surface": [
+        {
+          "height": 4.336638896562927,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 4.336638896562927,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 2.779091194867415,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 4.511631547147059,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 18,
+      "meshes": {
+        "wanted": 27,
+        "ready": 27,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "10-12",
+          "ready",
+          8
+        ],
+        [
+          "10-13",
+          "ready",
+          8
+        ],
+        [
+          "10-14",
+          "ready",
+          8
+        ],
+        [
+          "6-12",
+          "ready",
+          8
+        ],
+        [
+          "6-13",
+          "ready",
+          8
+        ],
+        [
+          "7-11",
+          "ready",
+          8
+        ],
+        [
+          "7-12",
+          "ready",
+          56
+        ],
+        [
+          "7-13",
+          "ready",
+          56
+        ],
+        [
+          "8-11",
+          "ready",
+          8
+        ],
+        [
+          "8-12",
+          "ready",
+          56
+        ],
+        [
+          "8-13",
+          "ready",
+          112
+        ],
+        [
+          "8-14",
+          "ready",
+          56
+        ],
+        [
+          "8-15",
+          "ready",
+          8
+        ],
+        [
+          "9-11",
+          "ready",
+          8
+        ],
+        [
+          "9-12",
+          "ready",
+          56
+        ],
+        [
+          "9-13",
+          "ready",
+          56
+        ],
+        [
+          "9-14",
+          "ready",
+          56
+        ],
+        [
+          "9-15",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 10,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 352,
+        "maxSeatError": 1.895034597534928e-06,
+        "maxAnalyticError": 1.9776561757112177e-06,
+        "minSigned": 14.542868606604713
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 19887,
+        "perceptible": 19866,
+        "unchangedOutside": 633242,
+        "aaFringePixels": 4,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "kensington-concrete",
+      "pose": {
+        "lon": -63.6368658433,
+        "lat": 46.436972277,
+        "east": -0.8459997,
+        "south": 0.5331834,
+        "dist": 19,
+        "h": 0,
+        "agl": 16
+      },
+      "art": {
+        "triangles": 244602,
+        "calls": 34
+      },
+      "old": {
+        "triangles": 244056,
+        "calls": 32
+      },
+      "mask": {
+        "triangles": 244602,
+        "calls": 34
+      },
+      "surface": [
+        {
+          "height": 35.9363155975714,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 35.94411762594544,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 35.129367975120424,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 35.72061264395676,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 25,
+      "meshes": {
+        "wanted": 13,
+        "ready": 13,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "10-10",
+          "ready",
+          8
+        ],
+        [
+          "10-11",
+          "ready",
+          56
+        ],
+        [
+          "10-12",
+          "ready",
+          112
+        ],
+        [
+          "10-13",
+          "ready",
+          56
+        ],
+        [
+          "10-14",
+          "ready",
+          8
+        ],
+        [
+          "11-10",
+          "ready",
+          8
+        ],
+        [
+          "11-11",
+          "ready",
+          56
+        ],
+        [
+          "11-12",
+          "ready",
+          56
+        ],
+        [
+          "11-13",
+          "ready",
+          56
+        ],
+        [
+          "11-14",
+          "ready",
+          8
+        ],
+        [
+          "12-11",
+          "ready",
+          8
+        ],
+        [
+          "12-12",
+          "ready",
+          8
+        ],
+        [
+          "12-13",
+          "ready",
+          8
+        ],
+        [
+          "8-11",
+          "ready",
+          8
+        ],
+        [
+          "8-12",
+          "ready",
+          8
+        ],
+        [
+          "8-13",
+          "ready",
+          8
+        ],
+        [
+          "9-10",
+          "ready",
+          8
+        ],
+        [
+          "9-11",
+          "ready",
+          56
+        ],
+        [
+          "9-12",
+          "ready",
+          56
+        ],
+        [
+          "9-13",
+          "ready",
+          56
+        ],
+        [
+          "9-14",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 3,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 16,
+        "maxSeatError": 1.1915766727349508e-06,
+        "maxAnalyticError": 5.61958707123722e-07,
+        "minSigned": 254
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 47169,
+        "perceptible": 47168,
+        "unchangedOutside": 604699,
+        "aaFringePixels": 37,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "east-coast-control",
+      "pose": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "h": 19.5,
+        "agl": 45
+      },
+      "art": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "old": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "mask": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "surface": [
+        {
+          "height": 10.190152066160586,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.170167200100517,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.824554499659728,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": -0.055,
+          "land": false,
+          "runway": false
+        }
+      ],
+      "roadBefore": 8,
+      "meshes": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "29-11",
+          "ready",
+          8
+        ],
+        [
+          "29-12",
+          "ready",
+          8
+        ],
+        [
+          "29-13",
+          "ready",
+          8
+        ],
+        [
+          "30-11",
+          "ready",
+          56
+        ],
+        [
+          "30-12",
+          "ready",
+          56
+        ],
+        [
+          "30-13",
+          "ready",
+          56
+        ],
+        [
+          "31-12",
+          "ready",
+          112
+        ]
+      ],
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 0,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 0,
+        "maxSeatError": 0,
+        "maxAnalyticError": 0,
+        "minSigned": null
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 0,
+        "perceptible": 0,
+        "unchangedOutside": 655360,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "charlottetown-concrete",
+      "pose": {
+        "lon": -63.1233501012,
+        "lat": 46.2419428722,
+        "east": 0.7339666,
+        "south": -0.6791855,
+        "dist": 30,
+        "h": 0,
+        "agl": 19
+      },
+      "art": {
+        "triangles": 400617,
+        "calls": 61
+      },
+      "old": {
+        "triangles": 375749,
+        "calls": 53
+      },
+      "mask": {
+        "triangles": 400617,
+        "calls": 61
+      },
+      "surface": [
+        {
+          "height": 9.014493903628699,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 8.972478688705559,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 9.014493903628699,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 8.551927416901544,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 24,
+      "meshes": {
+        "wanted": 54,
+        "ready": 54,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "15-14",
+          "ready",
+          8
+        ],
+        [
+          "15-15",
+          "ready",
+          56
+        ],
+        [
+          "15-16",
+          "ready",
+          56
+        ],
+        [
+          "15-17",
+          "ready",
+          8
+        ],
+        [
+          "16-14",
+          "ready",
+          8
+        ],
+        [
+          "16-15",
+          "ready",
+          56
+        ],
+        [
+          "16-16",
+          "ready",
+          112
+        ],
+        [
+          "16-17",
+          "ready",
+          56
+        ],
+        [
+          "16-18",
+          "ready",
+          8
+        ],
+        [
+          "17-14",
+          "ready",
+          8
+        ],
+        [
+          "17-15",
+          "ready",
+          56
+        ],
+        [
+          "17-16",
+          "ready",
+          112
+        ],
+        [
+          "17-17",
+          "ready",
+          56
+        ],
+        [
+          "17-18",
+          "ready",
+          8
+        ],
+        [
+          "18-14",
+          "ready",
+          8
+        ],
+        [
+          "18-15",
+          "ready",
+          56
+        ],
+        [
+          "18-16",
+          "ready",
+          56
+        ],
+        [
+          "18-17",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 13,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 1011,
+        "maxSeatError": 6.42866182436197e-06,
+        "maxAnalyticError": 6.60461105894683e-06,
+        "minSigned": 34.010665587465155
+      },
+      "shadows": {
+        "active": true,
+        "strength": 1,
+        "updates": 4,
+        "depthDraws": 7,
+        "depthTriangles": 56938
+      },
+      "pixels": {
+        "changed": 17953,
+        "perceptible": 17946,
+        "unchangedOutside": 634099,
+        "aaFringePixels": 15,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "charlottetown-residential",
+      "pose": {
+        "lon": -63.1283761169,
+        "lat": 46.2532569486,
+        "east": -0.4278601,
+        "south": -0.903845,
+        "dist": 31,
+        "h": 0,
+        "agl": 16
+      },
+      "art": {
+        "triangles": 469332,
+        "calls": 82
+      },
+      "old": {
+        "triangles": 456982,
+        "calls": 74
+      },
+      "mask": {
+        "triangles": 469332,
+        "calls": 82
+      },
+      "surface": [
+        {
+          "height": 23.1540769257393,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 23.194683175207917,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 23.12004730377369,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 23.570891939954205,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 19,
+      "meshes": {
+        "wanted": 54,
+        "ready": 54,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "15-14",
+          "ready",
+          8
+        ],
+        [
+          "15-15",
+          "ready",
+          56
+        ],
+        [
+          "15-16",
+          "ready",
+          56
+        ],
+        [
+          "15-17",
+          "ready",
+          8
+        ],
+        [
+          "16-14",
+          "ready",
+          56
+        ],
+        [
+          "16-15",
+          "ready",
+          112
+        ],
+        [
+          "16-16",
+          "ready",
+          112
+        ],
+        [
+          "16-17",
+          "ready",
+          56
+        ],
+        [
+          "17-14",
+          "ready",
+          56
+        ],
+        [
+          "17-15",
+          "ready",
+          112
+        ],
+        [
+          "17-16",
+          "ready",
+          112
+        ],
+        [
+          "17-17",
+          "ready",
+          56
+        ],
+        [
+          "18-14",
+          "ready",
+          8
+        ],
+        [
+          "18-15",
+          "ready",
+          56
+        ],
+        [
+          "18-16",
+          "ready",
+          56
+        ],
+        [
+          "18-17",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 18,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 1178,
+        "maxSeatError": 6.42866182436197e-06,
+        "maxAnalyticError": 6.60461105894683e-06,
+        "minSigned": 55.65715216354431
+      },
+      "shadows": {
+        "active": true,
+        "strength": 1,
+        "updates": 3,
+        "depthDraws": 4,
+        "depthTriangles": 32251
+      },
+      "pixels": {
+        "changed": 416,
+        "perceptible": 416,
+        "unchangedOutside": 654647,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    }
+  ],
+  "transferFaults": [
+    {
+      "case": "healthy",
+      "site": "cavendish",
+      "movedMetres": 35.36,
+      "installed": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 0,
+        "pending": 0,
+        "visible": false
+      },
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "missing",
+      "site": "cavendish",
+      "movedMetres": 39.56,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "corrupt",
+      "site": "cavendish",
+      "movedMetres": 39.56,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "stalled",
+      "site": "cavendish",
+      "movedMetres": 84.53,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [
+        "net::ERR_ABORTED"
+      ],
+      "errors": []
+    }
+  ]
+}

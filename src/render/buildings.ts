@@ -155,6 +155,7 @@ export class Buildings {
    if(Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
   }
  }
+ get sourceAtlasSha256(){return this.atlasHash;}
  diagnostics(){
   let failed=0;
   for(const id of this.failed)if(this.wanted.has(id))failed++;

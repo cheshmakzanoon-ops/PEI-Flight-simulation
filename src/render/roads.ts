@@ -46,11 +46,16 @@ export function decodeRoads(data: ArrayBuffer): Road[] {
 
 // These ordinal flags are safe only for the packed geometry record that was
 // replayed against the same official source. They never alter road geometry.
-export async function classifiedDirt(data:ArrayBuffer,count:number){
- if(count!==NRN_DIRT_SOURCE_COUNT||!globalThis.crypto?.subtle)return;
+async function roadHash(data:ArrayBuffer){
+ if(!globalThis.crypto?.subtle)return;
+ try{const r=new Uint8Array(await crypto.subtle.digest('SHA-256',data));
+  return Array.from(r,x=>x.toString(16).padStart(2,'0')).join('');
+ }catch{return;}
+}
+export async function classifiedDirt(data:ArrayBuffer,count:number,verifiedDigest?:string){
+ if(count!==NRN_DIRT_SOURCE_COUNT)return;
  try{
-  const r=new Uint8Array(await crypto.subtle.digest('SHA-256',data));
-  if(Array.from(r,x=>x.toString(16).padStart(2,'0')).join('')!==NRN_DIRT_SOURCE_SHA256)return;
+  if((verifiedDigest??await roadHash(data))!==NRN_DIRT_SOURCE_SHA256)return;
   const bits=atob(NRN_DIRT_SOURCE_BITS);
   if(bits.length!==Math.ceil(count/8))return;
   return bits;
@@ -73,8 +78,9 @@ export class Roads {
 
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[]) {
-    this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;
+  readonly sourceGeometrySha256?:string;
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string) {
+    this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
     addRoadSurface(this.material,casts);
     scene.add(this.root);
@@ -85,7 +91,7 @@ export class Roads {
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
     const data = await unpackGzip(await response.arrayBuffer());
     const tiles = new Map<string, Tile>();
-    const roads=decodeRoads(data),dirtBits=await classifiedDirt(data,roads.length);
+    const roads=decodeRoads(data),digest=await roadHash(data),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
     for (let ordinal=0;ordinal<roads.length;ordinal++) {
       const {points,flags:sourceFlags}=roads[ordinal];
       const isDirt=!!dirtBits&&!(sourceFlags&24)&&!!(dirtBits.charCodeAt(ordinal>>3)&(1<<(ordinal&7)));
@@ -108,7 +114,7 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain,casts,nearPatches);
+    return new Roads(scene,tiles,terrain,casts,nearPatches,digest);
   }
 
   private mesh(tile: Tile,patches:readonly CoastalGrid[] = []) {

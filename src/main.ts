@@ -15,6 +15,8 @@ import { addConfederationBridge } from './render/confederation.ts';
 import {addQuartermasterDocks,loadQuartermasterDocks} from './render/quartermaster-docks.ts';
 import { Vegetation } from './render/vegetation.ts';
 import { Roads } from './render/roads.ts';
+import {loadSidewalks,Sidewalks} from './render/sidewalks.ts';
+import {SIDEWALKS} from './render/sidewalks.generated.ts';
 import { Buildings } from './render/buildings.ts';
 import { Input } from './app/input.ts';
 import { EngineSound } from './app/sound.ts';
@@ -35,7 +37,8 @@ async function run(){
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,innerWidth/innerHeight,.08,350000),cameraUp=new THREE.Vector3(0,1,0);
  const woodland=loadForestHeights(import.meta.env.BASE_URL),forestStream=new ForestStream(import.meta.env.BASE_URL),hedgeStream=new HedgeStream(import.meta.env.BASE_URL);
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
- const dockPack=loadQuartermasterDocks(import.meta.env.BASE_URL+'world/');
+ const worldBase=import.meta.env.BASE_URL+'world/';
+ const dockPack=loadQuartermasterDocks(worldBase),mappedSidewalks=loadSidewalks(worldBase);
  const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg,new URLSearchParams(location.search).has('inlandRelief'));const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,showBuildingShadows);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  let quartermasterDocks:ReturnType<typeof addQuartermasterDocks>;
  void dockPack.then(p=>quartermasterDocks=addQuartermasterDocks(scene,cover,world.sun,p));
@@ -64,10 +67,16 @@ async function run(){
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
  const layerWarnings:string[]=[];const warn=(layer:string,e:unknown)=>{layerWarnings.push(layer);ui.setWarnings(layerWarnings);console.warn(layer+' layer unavailable',e);};
- let roads:Roads|undefined,buildings:Buildings|undefined;
+ let roads:Roads|undefined,buildings:Buildings|undefined,sidewalks:Sidewalks|undefined;
  void addMainland(scene).then(t=>mainland=t).catch(e=>warn('Mainland',e));
- void Roads.create(scene,terrain,world.buildingShadows,terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined).then(v=>roads=v).catch(e=>warn('Road',e));
- void Buildings.create(scene,terrain,sourisLighting,world.buildingShadows).then(v=>buildings=v).catch(e=>warn('Building',e));
+ const roadReady=Roads.create(scene,terrain,world.buildingShadows,terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined).then(v=>roads=v).catch(e=>{warn('Road',e);});
+ const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows).then(v=>buildings=v).catch(e=>{warn('Building',e);});
+ if(cover.sourceSha===SIDEWALKS.pinCoverSha256){
+  void Promise.all([mappedSidewalks,roadReady,buildingReady]).then(([paths,street,structures])=>{
+   if(paths&&street&&structures&&street.sourceGeometrySha256===SIDEWALKS.pinRoadGeometrySha256&&
+      structures.sourceAtlasSha256===SIDEWALKS.pinBuildingAtlasSha256)sidewalks=new Sidewalks(scene,world,paths);
+  });
+ }
  const tgt=new THREE.Vector3(),eye=new THREE.Vector3(),forward=new THREE.Vector3(),up=new THREE.Vector3(),right=new THREE.Vector3(),rot=new THREE.Quaternion(),aim=new THREE.Vector3(),groundY=new THREE.Vector3();
  const liveCasters=(x:number,z:number,d:number,out:THREE.Mesh[])=>buildings?.drawableCasters(x,z,d,out);
  const diagnostic=import.meta.env.DEV||new URLSearchParams(location.search).has('diagnostics');
@@ -116,7 +125,7 @@ async function run(){
     camera.position.lerp(eye,1-Math.exp(-delta*7));aim.lerp(tgt,1-Math.exp(-delta*10));
   }
   snap=false;camera.up.copy(up);camera.lookAt(aim);camera.updateMatrixWorld();
-  groundY.copy(aircraft.root.position);world.update(camera.position,time);roads?.update(f.x,f.z);buildings?.update(f.x,f.z);vegetation.update(f.x,f.z,f.y);
+  groundY.copy(aircraft.root.position);world.update(camera.position,time);roads?.update(f.x,f.z);buildings?.update(f.x,f.z);sidewalks?.update(camera.position.x,camera.position.z,camera.position.y-world.groundHeight(camera.position.x,camera.position.z));vegetation.update(f.x,f.z,f.y);
   ui.update(f,world.groundHeight(f.x,f.z)-.12);audio.update(f.throttle,f.speed,playing&&!f.engineOut);
   if(world.buildingShadows){
    world.buildingShadows.render(camera.position,world.groundHeight(camera.position.x,camera.position.z),
@@ -125,7 +134,7 @@ async function run(){
   renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,sidewalks:sidewalks?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

@@ -275,6 +275,7 @@ async function loadCover(){
 interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
+ private groundVersion=0;
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
@@ -404,6 +405,18 @@ export class World {
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
  }
+ /** Decorations fitted to terrain faces only refit when a relevant LOD changes. */
+ get visualGroundEpoch(){return this.groundVersion;}
+ visualGroundSignature(b:readonly [number,number,number,number]){
+  const [a,c]=this.terrain.uv(b[0],b[1]),[d,e]=this.terrain.uv(b[2],b[3]);
+  const j0=Math.max(0,Math.floor(c*WORLD_ROWS)),j1=Math.min(WORLD_ROWS-1,Math.floor(e*WORLD_ROWS));
+  const i0=Math.max(0,Math.floor(a*WORLD_COLS)),i1=Math.min(WORLD_COLS-1,Math.floor(d*WORLD_COLS));
+  let out='';
+  for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){
+   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+';':'-;';
+  }
+  return out;
+ }
  /** Height of the submitted regular grid (including sewn tile-edge vertices).
   * Decorative roots use this, not the map or aerodynamic contact sampler. */
  visualGroundHeight(x:number,z:number){
@@ -439,7 +452,7 @@ export class World {
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   if(Math.abs(clock-this.recent)<.25&&this.recent>0)return;
-  this.recent=clock;
+  this.recent=clock;let changedGround=false;
   // The visible curtain fills close headlands. Beyond the horizon detail load
   // radius it has negligible screen height, so do not send those meshes to GL.
   for(const face of this.shoreFaces){
@@ -450,6 +463,7 @@ export class World {
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
    const d2=dx*dx+dz*dz,old=tile.lod;
    tile.lod=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
+   if(tile.lod!==old)changedGround=true;
    const fine=tile.lod>8;
    if(fine&&tile.fine?.userData.subdiv!==tile.lod){
      if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
@@ -463,7 +477,7 @@ export class World {
   // meet and avoids vertical skirts appearing along coastline/harbour tiles.
   for(const tile of this.tiles)if(tile.lod>8&&tile.fine){
     const n=tile.lod,levels=[[0,-1],[1,0],[0,1],[-1,0]].map(([ox,oz])=>Math.min(n,this.byId.get((tile.i+ox)+'-'+(tile.j+oz))?.lod??n));
-    const key=n+':'+levels.join(',');if(tile.seams===key)continue;tile.seams=key;
+    const key=n+':'+levels.join(',');if(tile.seams===key)continue;tile.seams=key;changedGround=true;
     const pos=tile.fine.geometry.getAttribute('position');
     for(let side=0;side<4;side++){
       const m=levels[side],ratio=n/m;let a=0,b=0;
@@ -476,6 +490,7 @@ export class World {
     }
     pos.needsUpdate=true;
   }
+  if(changedGround)this.groundVersion++;
   const now=performance.now();
   const near=this.tiles.filter(q=>q.status==='idle'&&(q.retryAt??0)<=now&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)
    .sort((a,b)=>Math.hypot(pos.x-a.x0-a.w/2,pos.z-a.z0-a.d/2)-Math.hypot(pos.x-b.x0-b.w/2,pos.z-b.z0-b.d/2));

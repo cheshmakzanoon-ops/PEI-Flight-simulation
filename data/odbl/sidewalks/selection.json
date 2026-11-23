@@ -1,0 +1,258 @@
+{
+  "id": "mapped-sidewalks-v1",
+  "asset": "pedestrian/odbl/v1/sidewalks.bin.gz",
+  "projectedTileMetres": 850,
+  "tiles": 115,
+  "paths": 2035,
+  "points": 10310,
+  "decodedBytes": 64331,
+  "compressedBytes": 53470,
+  "sha256": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+  "crc32": "a0d8af40",
+  "pinCoverSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+  "pinBuildingAtlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "pinRoadGeometrySha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "source": "https://download.geofabrik.de/north-america/canada/prince-edward-island/prince-edward-island-261101.osm.pbf",
+  "sourceSha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "odblDerivativeSha256": "a28fd096372a197f1ca0168717657523564d10036e40143cb165c688b8a8b1fc",
+  "contributingSourceWays": 1390,
+  "byRegion": {
+    "Other PEI": {
+      "mappedWays": 132,
+      "mappedMetres": 18636.587,
+      "fragments": 158,
+      "acceptedMetres": 14894.653,
+      "taggedWidthMetres": 919.62,
+      "contributingWays": 104
+    },
+    "Summerside": {
+      "mappedWays": 400,
+      "mappedMetres": 67319.93,
+      "fragments": 547,
+      "acceptedMetres": 46270.361,
+      "taggedWidthMetres": 3771.287,
+      "contributingWays": 338
+    },
+    "Charlottetown": {
+      "mappedWays": 1050,
+      "mappedMetres": 143562.634,
+      "fragments": 1330,
+      "acceptedMetres": 118254.234,
+      "taggedWidthMetres": 0.0,
+      "contributingWays": 948
+    }
+  },
+  "acceptedMetresByKind": {
+    "0": 174648.256,
+    "1": 144.488,
+    "2": 1520.453,
+    "3": 18.153,
+    "4": 103.974,
+    "5": 2983.925
+  },
+  "longestAcceptedPaths": [
+    [
+      1235.325,
+      "Charlottetown",
+      1382420267,
+      [
+        6916.83,
+        25663.86
+      ],
+      "concrete"
+    ],
+    [
+      996.429,
+      "Charlottetown",
+      1267975967,
+      [
+        8764.91,
+        29535.600000000002
+      ],
+      "concrete"
+    ],
+    [
+      863.207,
+      "Charlottetown",
+      653533970,
+      [
+        1875.23,
+        25439.84
+      ],
+      "concrete"
+    ],
+    [
+      827.985,
+      "Summerside",
+      1227437252,
+      [
+        -45044.25,
+        9872.82
+      ],
+      "concrete"
+    ],
+    [
+      814.637,
+      "Summerside",
+      1250626702,
+      [
+        -41835.200000000004,
+        10895.32
+      ],
+      "concrete"
+    ],
+    [
+      794.624,
+      "Other PEI",
+      545688727,
+      [
+        -1169.6100000000001,
+        30344.74
+      ],
+      "concrete"
+    ],
+    [
+      786.201,
+      "Summerside",
+      1443820421,
+      [
+        -43155.99,
+        10452.09
+      ],
+      "concrete"
+    ],
+    [
+      738.891,
+      "Charlottetown",
+      1561264895,
+      [
+        1623.3600000000001,
+        23515.33
+      ],
+      "concrete"
+    ],
+    [
+      727.425,
+      "Charlottetown",
+      390615874,
+      [
+        4744.1,
+        27684.81
+      ],
+      "concrete"
+    ],
+    [
+      691.327,
+      "Summerside",
+      1252202702,
+      [
+        -46905.91,
+        8680.04
+      ],
+      "concrete"
+    ],
+    [
+      654.3,
+      "Charlottetown",
+      1267974895,
+      [
+        8739.66,
+        29392.75
+      ],
+      "concrete"
+    ],
+    [
+      647.634,
+      "Summerside",
+      1573784728,
+      [
+        -45980.72,
+        9750.62
+      ],
+      "concrete"
+    ],
+    [
+      634.193,
+      "Summerside",
+      1250626696,
+      [
+        -43454.71,
+        11669.11
+      ],
+      "concrete"
+    ],
+    [
+      621.438,
+      "Charlottetown",
+      1561264906,
+      [
+        2343.9500000000003,
+        24216.5
+      ],
+      "concrete"
+    ],
+    [
+      617.79,
+      "Charlottetown",
+      1543263257,
+      [
+        4137.03,
+        27838.75
+      ],
+      "concrete"
+    ],
+    [
+      606.526,
+      "Charlottetown",
+      1545177966,
+      [
+        3849.4700000000003,
+        29187.25
+      ],
+      "concrete"
+    ],
+    [
+      589.532,
+      "Charlottetown",
+      258814399,
+      [
+        4435.03,
+        27035.8
+      ],
+      "concrete"
+    ],
+    [
+      580.622,
+      "Charlottetown",
+      256446848,
+      [
+        5297.04,
+        28562.33
+      ],
+      "concrete"
+    ],
+    [
+      578.877,
+      "Charlottetown",
+      258814393,
+      [
+        4709.96,
+        27553.53
+      ],
+      "concrete"
+    ],
+    [
+      572.107,
+      "Other PEI",
+      1251017063,
+      [
+        -62110.8,
+        4595.58
+      ],
+      "concrete"
+    ]
+  ],
+  "compressedSha256": "6edf682da449ff8ead094135af7288346cb9255a852ffcb242ad3efd140d38b7",
+  "protectedRoadRectangles": 55151,
+  "protectedBuildings": 85866
+}
