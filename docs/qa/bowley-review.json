@@ -1,0 +1,436 @@
+{
+  "testedOnParentCommit": "6250f4c7d0535465fc12bb2fe0f560524fa243c8",
+  "runsWith": "bowleySurveyPreview",
+  "input": {
+    "collection": "July\u2013September 2020 airborne survey; not a current pond or boardwalk survey",
+    "levelCGVD2013Metres": 1.132,
+    "class9P10P90VerticalMetres": [
+      1.118,
+      1.147
+    ],
+    "admittedStrictSourceAreaSquareMetres": 51017.5,
+    "maskApproximateGameAreaSquareMetres": 48864.25,
+    "estimate": "Count of admitted half-metre texel centres times their cell area; not a survey polygon area.",
+    "compressedBytes": 49467,
+    "compressedSha256": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+    "decodedSha256": "d49750025bbbcc5416beefb3569e9aa6521c05f56a9cde40a098e49a17f6f622",
+    "allNegativeTexelTentsAreWithinNativeSupport": true,
+    "negativeTexelCentres": 195457,
+    "nativeDryClass2SamplesAtLeast1p302Metres": 1305365,
+    "suchDrySamplesReclassifiedWet": 0,
+    "imagery": "Other survey products corroborate coverage only. No reference photo, satellite pixel image, or excluded wet area is included in the new data."
+  },
+  "world": {
+    "tileXY": [
+      22,
+      12
+    ],
+    "gameBoundsXZ": [
+      37513,
+      5593,
+      37928,
+      5880
+    ],
+    "nativeSupportDryInputAuditIsNotACurrentShoreSurvey": true,
+    "sourceCurtainChordCount": 14846,
+    "maximumCurtainChordLengthMetres": 0.25,
+    "curtainChordChecks": 222690,
+    "worstCheckedClosestContourErrorMetres": 0.0014983566724733216,
+    "terrainDetailTiers": [
+      {
+        "n": 8,
+        "shorePoints": 192998,
+        "independentThreeRays": 346,
+        "minimumAboveTerrainOrPlaneOverlapMetres": 0.024862568935436258,
+        "minimumBelowTerrainOrPlaneOverlapMetres": 0.026999980926513567
+      },
+      {
+        "n": 56,
+        "shorePoints": 192998,
+        "independentThreeRays": 346,
+        "minimumAboveTerrainOrPlaneOverlapMetres": 0.024276746601617383,
+        "minimumBelowTerrainOrPlaneOverlapMetres": 0.02645890962334474
+      },
+      {
+        "n": 112,
+        "shorePoints": 192998,
+        "independentThreeRays": 346,
+        "minimumAboveTerrainOrPlaneOverlapMetres": 0.0246494205423895,
+        "minimumBelowTerrainOrPlaneOverlapMetres": 0.02623826917258043
+      },
+      {
+        "n": 8,
+        "shorePoints": 192998,
+        "independentThreeRays": 346,
+        "minimumAboveTerrainOrPlaneOverlapMetres": 0.024862568935436258,
+        "minimumBelowTerrainOrPlaneOverlapMetres": 0.026999980926513567
+      }
+    ],
+    "unchangedFieldAndGeometryChecks": {
+      "changed": 9358,
+      "required": 9358,
+      "wrong": 0,
+      "protectedExact": 20680,
+      "wrongProtected": 0,
+      "pureWaterRay": 57,
+      "minWetBefore": 1.12,
+      "maxDryAfterDelta": 0,
+      "nonlandMasks": 0
+    },
+    "gameSupport": "Under the same loaded mainland state, coast/flight surface returns land=false and +1.132m in supported wet core. Existing contact and vegetation outside keep prior rules."
+  },
+  "render": {
+    "test": "Matched true Three.js frames. Diagnostic recolors only the sky. Resolved partial multisamples count as newly exposed sky.",
+    "method": "The local visual terrain and the actual level plane classify the same pixel-centred eye ray. Existing terrain is only clipped when locally wet and a water replacement is admitted on the same pixel. Collision, tree removal and exact signed field do not use screen data.",
+    "renderer": "Headless Chromium WebGL2 / SwiftShader, not consumer hardware performance",
+    "canonicalCSSViewport": [
+      900,
+      564
+    ],
+    "canonicalSamples": 4,
+    "canonical47p6MWorldEye": {
+      "earlierDraftNewSkyAffectedPixels": 265,
+      "earlierDraftNewPureSkyPixels": 16,
+      "finalNewSkyAffectedPixels": 0,
+      "finalNewPureSkyPixels": 0,
+      "framePixelsCompared": 507600
+    },
+    "translatedPoseRun": [
+      {
+        "view": "greenwich-mainbody-close",
+        "offsetXZ": [
+          -4.0,
+          -2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-mainbody-close",
+        "offsetXZ": [
+          -2.0,
+          -1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-mainbody-close",
+        "offsetXZ": [
+          0.0,
+          0.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-mainbody-close",
+        "offsetXZ": [
+          2.0,
+          1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-mainbody-close",
+        "offsetXZ": [
+          4.0,
+          2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-waterline-close",
+        "offsetXZ": [
+          -4.0,
+          -2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-waterline-close",
+        "offsetXZ": [
+          -2.0,
+          -1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-waterline-close",
+        "offsetXZ": [
+          0.0,
+          0.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-waterline-close",
+        "offsetXZ": [
+          2.0,
+          1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-waterline-close",
+        "offsetXZ": [
+          4.0,
+          2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-wetface-close",
+        "offsetXZ": [
+          -4.0,
+          -2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-wetface-close",
+        "offsetXZ": [
+          -2.0,
+          -1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-wetface-close",
+        "offsetXZ": [
+          0.0,
+          0.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-wetface-close",
+        "offsetXZ": [
+          2.0,
+          1.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      },
+      {
+        "view": "greenwich-wetface-close",
+        "offsetXZ": [
+          4.0,
+          2.0
+        ],
+        "matchedTextures": 12,
+        "newBackgroundPixels": 0,
+        "newPureSkyPixels": 0,
+        "allRgbByteEqualSkyMasks": true
+      }
+    ],
+    "additionalDPRChecks": [
+      {
+        "relatedEarlierBelowStageRetentionDraft": "same projection plumbing",
+        "CSS": [
+          1024,
+          600
+        ],
+        "DPR": 1.5,
+        "buffer": [
+          1536,
+          900
+        ],
+        "samples": 4,
+        "localPondBackgroundPixels": 0
+      },
+      {
+        "releaseOutline": "final no blanket below-stage retention",
+        "CSS": [
+          620,
+          760
+        ],
+        "DPR": 1.25,
+        "buffer": [
+          775,
+          950
+        ],
+        "samples": 4,
+        "localPondBackgroundPixels": 0
+      }
+    ],
+    "costAtLocked47p6MWorldEye": {
+      "extraThreeDrawCalls": 2,
+      "extraThreeTriangles": 29694,
+      "totalDrawCallsPreview": 37,
+      "totalTrianglesPreview": 270562
+    },
+    "limits": "Authored calm-water reflections and bank color are not measured. Coarsest terrain inherits a larger bank relief, unmanaged shallow areas remain old terrain, and no boardwalk or bathymetry is provided.",
+    "fixedEastProtectedResult": {
+      "notes": "The image-difference test proves fixed-pose same streaming, rendering errors, exact protected images, and optionally indexes color-coded uncovered background. It is not evidence of photorealism or source correctness by itself. Both sides must use identical debug shaders when requesting the void test.",
+      "failures": [],
+      "records": [
+        {
+          "name": "east-close",
+          "maxChannel": 0,
+          "changeThresholds": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "24": 0,
+            "48": 0
+          },
+          "newIndexedVoid": 0,
+          "oldIndexedVoid": 0,
+          "newTotalIndexedVoid": 0,
+          "changedBoundsY0Y1X0X1": [],
+          "orthoTextures": [
+            "29-11",
+            "29-12",
+            "29-13",
+            "30-11",
+            "30-12",
+            "30-13",
+            "31-12"
+          ],
+          "drawDelta": 1,
+          "triangleDelta": 2,
+          "geometryDelta": 1
+        }
+      ]
+    }
+  },
+  "checks": {
+    "npmPass": 181,
+    "viteProductionBundle": true,
+    "compiledFlights": [
+      {
+        "case": "stock-cape",
+        "site": "northcape",
+        "bowley": null,
+        "bytesSHA256": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+        "requests": 0,
+        "simTravelMetres": 46.468244679006865,
+        "otherOptions": {
+          "northCape": null,
+          "spinnakersDeck": false,
+          "northBaywalkCourt": false,
+          "northBaywalkRamp": false,
+          "northBaywalkRoad": false,
+          "northBaywalkConcrete": false
+        },
+        "mainland": true,
+        "departureCockpitPause": true,
+        "errors": []
+      },
+      {
+        "case": "composed-cape",
+        "site": "northcape",
+        "bowley": "bowley-pond-survey-2020",
+        "bytesSHA256": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+        "requests": 1,
+        "simTravelMetres": 47.037735414837265,
+        "otherOptions": {
+          "northCape": {
+            "registered": 16,
+            "near": 0,
+            "cruise": 16
+          },
+          "spinnakersDeck": false,
+          "northBaywalkCourt": true,
+          "northBaywalkRamp": false,
+          "northBaywalkRoad": true,
+          "northBaywalkConcrete": false
+        },
+        "mainland": true,
+        "departureCockpitPause": true,
+        "errors": []
+      },
+      {
+        "case": "composed-baywalk",
+        "site": "spinnakers-low",
+        "bowley": "bowley-pond-survey-2020",
+        "bytesSHA256": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+        "requests": 1,
+        "simTravelMetres": 46.49311206690661,
+        "otherOptions": {
+          "northCape": {
+            "registered": 0,
+            "near": 0,
+            "cruise": 0
+          },
+          "spinnakersDeck": true,
+          "northBaywalkCourt": true,
+          "northBaywalkRamp": true,
+          "northBaywalkRoad": true,
+          "northBaywalkConcrete": true
+        },
+        "mainland": true,
+        "departureCockpitPause": true,
+        "errors": []
+      },
+      {
+        "case": "bowley-crc-baywalk",
+        "site": "spinnakers-low",
+        "bowley": null,
+        "bytesSHA256": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+        "requests": 1,
+        "simTravelMetres": 46.49311206690661,
+        "otherOptions": {
+          "northCape": {
+            "registered": 0,
+            "near": 0,
+            "cruise": 0
+          },
+          "spinnakersDeck": true,
+          "northBaywalkCourt": true,
+          "northBaywalkRamp": true,
+          "northBaywalkRoad": true,
+          "northBaywalkConcrete": true
+        },
+        "mainland": true,
+        "departureCockpitPause": true,
+        "errors": []
+      }
+    ]
+  },
+  "sourceFilesSha256": {
+    "src/render/bowley-pond.ts": "2c342eb2bf1bd6f627e9bb677e2108c06e8c6d71e483d1ac71b4b428cadd8d5a",
+    "src/render/world.ts": "5a6e9396100a13f847f295d4b96311b79da2c27bb0636d04cf35f3136740592b",
+    "src/sim/bowley-pond.ts": "2337331433f1edede2709397cd91dc55a56bc8083fbfd6d221db86bfde8afd63",
+    "src/main.ts": "58d4a64fcb95d03c300e841218511628a98af82b1e15948fd8ddaec8b3e4fbfc"
+  }
+}

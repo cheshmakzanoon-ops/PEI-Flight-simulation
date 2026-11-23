@@ -1,3 +1,4 @@
+import type {BowleyPond} from '../sim/bowley-pond.ts';
 import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
@@ -100,7 +101,7 @@ export class Vegetation {
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
-  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3){
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private bowley?:BowleyPond){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
@@ -159,6 +160,7 @@ export class Vegetation {
    const i=tx*side+dx,j=tz*side+dz;
    const x=(i+rand(i,j,11))*pitch,z=(j+rand(i,j,84))*pitch;
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
+   if(this.bowley?.water(x,z))continue;
    if(this.cover.waterInsets.some(i=>i.intersects(x,z,x,z))&&this.cover.distance(this.t,x,z)<0)continue;
    const type=rand(i,j,43),variant=type<.15?3:type<.36?2:type<.68?1:0;
    const vary=rand(i,j,35),fallback=8.2+vary*10.8;
@@ -192,6 +194,7 @@ export class Vegetation {
   const originalCount=count;
   this.hedges?.draw(x,z,(hx,hz,h,style)=>{
    if(count>=maxTrees)return false;
+   if(this.bowley?.water(hx,hz))return true;
    if(this.cover.distance(this.t,hx,hz)<6||runwayAt(hx,hz)||insideLighthouseYard(hx,hz,4))return true;
    if(this.t.coastalGrids.some(c=>c.spec.id!==MONTAGUE_GROUND_ID&&c.spec.tileX===Math.floor((hx-this.t.left)/(this.t.right-this.t.left)*32)&&
        c.spec.tileZ===Math.floor((hz-this.t.top)/(this.t.bottom-this.t.top)*22)))return true;

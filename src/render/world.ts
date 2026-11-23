@@ -1,4 +1,6 @@
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
+import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
+import {bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
 import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
 import {nativeBankMesh} from './native-bank-mesh.ts';
 import {adaptiveGround} from './adaptive-ground.ts';
@@ -230,7 +232,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false)=>fp+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false)=>fp+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -244,6 +246,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${basin?'if(basinChannelDistance(coast,p.xz)<0.)discard;':''}
  ${montague?'if(montagueWaterDistance(coast,p.xz)<0.)discard;':''}
  ${baywalkCourt?'if(coast>=0.||northCourtSigned(p.xz)<=0.)discard;':'if(coast<0.)discard;'}
+ ${bowley?'/* Do not remove terrain if this screen sample has no verified level-water replacement. */ if(bowleyDistance(p.xz)<0.&&bowleyRasterDistance()<0.)discard;':''}
  vec2 uv=vec2(vuv.x,1.-vuv.y);
  vec2 q=(vuv-detailBox.xy)*detailBox.zw;
  float amount=hasDetail>.5?detailAmount(q):0.;
@@ -320,7 +323,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
 export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
- baywalkRequested?:Promise<BaywalkRegistration|undefined>){
+ baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -332,7 +335,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
-  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested),
+  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
@@ -353,7 +356,8 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const court=maybeCourt&&requested&&verifiedBaywalkDeckClearance(requested.deck,priorCover,terrain,maybeCourt)&&verifiedBaywalkRoadSupport(requested.road,priorCover,terrain,maybeCourt)?maybeCourt:undefined;
  const committedCover=court?new Cover(priorCover.width,priorCover.height,priorCover.bytes,priorCover.harbour,priorCover.sourceSha,
   priorCover.basin,priorCover.montague,priorCover.sourceDecodedSha,priorCover.wharfToe,court):priorCover;
- return {terrain,img,cover:committedCover,sky,bankGround,
+ const bowley=bowleyRequested&&bowleyAtlasMatches(elevation.spec.sha256,committedCover.sourceSha,committedCover.sourceDecodedSha)?await bowleyRequested:undefined;
+ return {terrain,img,cover:committedCover,sky,bankGround,bowley,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -394,6 +398,9 @@ export class World {
  private legacyShore?:LegacyShoreCurtains;
  get legacyShoreState(){return this.legacyShore?.state??null;}
  private northCourt?:BaywalkGround;
+ private bowley?:BowleyWaterMesh;
+ get bowleyPond(){return this.bowley?.pond.spec.id??null;}
+ bowleyContains(x:number,z:number){return this.bowley?.pond.water(x,z)??false;}
  private northCurtain?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];signature?:string};
  get baywalkActive(){return !!this.northCourt;}
  get baywalkBounds(){return this.northCourt?.signatureBounds;}
@@ -416,7 +423,7 @@ export class World {
  private readonly floor?:ForestFloor;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond){
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -445,12 +452,14 @@ export class World {
        detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    const skyInverseProjection={value:new THREE.Matrix4()},skyEyeToWorld={value:new THREE.Matrix4()};
+   const bowleyViewport=bowley?{value:new THREE.Vector4(0,0,1,1)}:undefined;
    const skyMaterial=new THREE.ShaderMaterial({vertexShader:screenSkyV,fragmentShader:skyFrag,
      uniforms:{skyMap:{value:sky},skyInverseProjection,skyEyeToWorld,skyDiagnostic:{value:0}},
      depthTest:false,depthWrite:false});
    this.sky=new THREE.Mesh(new THREE.PlaneGeometry(2,2),skyMaterial);this.sky.renderOrder=-10;
    this.sky.onBeforeRender=(_renderer,_s,view)=>{
     skyInverseProjection.value.copy(view.projectionMatrixInverse);skyEyeToWorld.value.copy(view.matrixWorld);
+    if(bowleyViewport)_renderer.getCurrentViewport(bowleyViewport.value);
    };
    this.sky.frustumCulled=false;scene.add(this.sky);
    const harbour=cover.harbour,basin=cover.basin,montague=cover.montague;
@@ -465,6 +474,8 @@ export class World {
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
    const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
+   const localBowleyUniforms=bowley?{...bowleyUniforms(bowley),
+     bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}:undefined;
    const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague||cover.baywalk)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms,...northCourtUniforms};
@@ -517,6 +528,7 @@ export class World {
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const localMontague=montague?.intersects(x0,z0,x0+w,z0+d)??false;
     const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
+    const bowleyLocal=bowley?.intersects(x0,z0,x0+w,z0+d)??false;
     const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
     const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
     const guard=showLocalFloor?neighbours.reduce((m,[x,z],bit)=>protectsFloor(i+x,j+z)?m|(1<<bit):m,0):0;
@@ -526,9 +538,9 @@ export class World {
           montagueGround.x0,montagueGround.z0,montagueGround.x1,montagueGround.z1)}}:{})}:{};
     const hasCape=this.capeShadow?.intersects(x0,z0,x0+w,z0+d)??false;
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
@@ -545,6 +557,16 @@ export class World {
     this.northCourt=new BaywalkGround(b,cover,T,m,(x,z)=>this.provinceVisualGroundHeight(x,z));
     scene.add(this.northCourt.mesh);
     this.refreshNorthCourt();
+   }
+   if(bowley){
+    const water=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+skyFn+bowleyClipGLSL+bowleyWaterGLSL+out,
+      uniforms:{...uniforms,...localBowleyUniforms},side:THREE.DoubleSide});
+    const shore=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+bowleyShoreGLSL+out,
+      uniforms:{...uniforms,...localBowleyUniforms},side:THREE.DoubleSide});
+    this.bowley=new BowleyWaterMesh(bowley,T,water,shore);
+    scene.add(this.bowley.surface,this.bowley.rim);
+    const [left,top,right,bottom]=bowley.bounds;
+    this.refreshBowley((left+right)*.5,(top+bottom)*.5);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
    const light=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
@@ -830,6 +852,7 @@ export class World {
   return this.terrain.inlandGrids.filter(g=>this.byId.get(g.spec.tileX+'-'+g.spec.tileZ)?.lod===112);
  }
  groundHeight(x:number,z:number,land?:boolean){
+  if(this.bowley?.pond.water(x,z))return this.bowley.pond.spec.waterY;
   // Both shaders use the continuous Cover mask. A missing province DEM cell
   // cannot revoke visible land, and even positive offshore survey samples
   // must not raise water contact above the rendered ocean.
@@ -862,8 +885,12 @@ export class World {
   return baseline+amount*(mesh.height(localX,localZ)-baseline);
  }
  surface(x:number,z:number):Surface{
+  const pond=this.bowley?.pond;if(pond?.water(x,z))return {height:pond.spec.waterY,land:false,runway:false};
   const land=this.cover.distance(this.terrain,x,z)>=0;
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
+ }
+ private refreshBowley(x:number,z:number){
+  this.bowley?.update(x,z,b=>this.visualGroundSignature(b),(a,c)=>this.provinceVisualGroundHeight(a,c));
  }
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
@@ -935,6 +962,7 @@ export class World {
   }
   this.refreshMontagueReviewShore();
   if(this.northCourt)this.refreshNorthCourt();
+  if(this.bowley)this.refreshBowley(pos.x,pos.z);
   this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
   const now=performance.now();

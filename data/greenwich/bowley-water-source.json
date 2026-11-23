@@ -1,0 +1,165 @@
+{
+  "purpose": "Static dated reconstruction of only the largest verified open-water core within Bowley Pond. No deck, shore engineering, tide, flood model, depth, 1:1 current marsh or visitor-access claims.",
+  "authority": {
+    "agency": "Natural Resources Canada CanElevation, with Province of PEI 2020 classified airborne survey",
+    "dataset": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "license": "https://open.canada.ca/en/open-government-licence-canada",
+    "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada. CanElevation LiDAR Point Clouds, Prince Edward Island 2020.",
+    "collectedDateRange": "2020-07-15 to 2020-09-15, provincial survey metadata; not the later compressed file publication date.",
+    "metadata": "https://www.arcgis.com/home/item.html?id=8b6e350d228c49169b67b966af4f951e",
+    "nativeXY": "EPSG:2961",
+    "verticalDatum": "CGVD2013, orthometric metres",
+    "nativeTiles": [
+      {
+        "id": "pei_2020_421000_710000",
+        "URL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_421000_710000.copc.laz",
+        "etag": "b4845a4d545cac49b282c11046144f1c-6",
+        "sha256": "600eb2964f7c58944901000d9e9e3fd80847bdac1d7f1e87e6b8b37d5ef39b75",
+        "windowXY": [
+          [
+            521690.0,
+            5143470.0
+          ],
+          [
+            521992.0857507452,
+            5143975.278497857
+          ]
+        ],
+        "surveyNonWithheldCounts": {
+          "1": 585815,
+          "2": 555584,
+          "7": 34,
+          "9": 10225,
+          "18": 41
+        }
+      },
+      {
+        "id": "pei_2020_421000_711000",
+        "URL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_421000_711000.copc.laz",
+        "etag": "cb81a1eff830b8318c88da872998cbc1",
+        "sha256": "697d8d58ac398d7de81949812106d3b18395231f5e1cd419d8499680400cdf4e",
+        "windowXY": [
+          [
+            521690.0,
+            5143975.263142743
+          ],
+          [
+            521992.0899118181,
+            5144217.787142743
+          ]
+        ],
+        "surveyNonWithheldCounts": {
+          "1": 11820,
+          "2": 41786,
+          "7": 31,
+          "9": 282961,
+          "18": 287
+        }
+      },
+      {
+        "id": "pei_2020_422000_710000",
+        "URL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_422000_710000.copc.laz",
+        "etag": "561f4c5a13d98847f74e95394d785f03-8",
+        "sha256": "a3bc821fae602eb5a6e877459d3923ad1f89c0df7334223ac1fa41c64a0bc39e",
+        "windowXY": [
+          [
+            521992.0636929221,
+            5143470.0
+          ],
+          [
+            522991.7276929221,
+            5143975.259823436
+          ]
+        ],
+        "surveyNonWithheldCounts": {
+          "1": 3261829,
+          "2": 1161203,
+          "7": 172,
+          "9": 317163,
+          "17": 5753,
+          "18": 967
+        }
+      },
+      {
+        "id": "pei_2020_422000_711000",
+        "URL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_422000_711000.copc.laz",
+        "etag": "2a27ad1212de2679601e9e258d1d98b0-2",
+        "sha256": "b47bbe5528afaaf19fbbe21cd6b4fe0c8987783c8050a4956e8b676594f96daa",
+        "windowXY": [
+          [
+            521992.0903650883,
+            5143975.241826445
+          ],
+          [
+            522991.7413650883,
+            5144510.0
+          ]
+        ],
+        "surveyNonWithheldCounts": {
+          "1": 964805,
+          "2": 976199,
+          "6": 113,
+          "7": 142,
+          "9": 377987,
+          "18": 640
+        }
+      }
+    ]
+  },
+  "observations": {
+    "stage": {
+      "modeStageM": 1.1320000000000001,
+      "p10p90M": [
+        1.118,
+        1.147
+      ]
+    },
+    "unroundedHistoricalInterpretationCaveat": "A dated aggregate of retained returns. Present water level is not asserted.",
+    "class9StrictMaskNativeSquareMetres": 51017.5,
+    "packedMaskWorldTexelAreaEstimateSquareMetres": 48864.25,
+    "samples": 4888625,
+    "notes": "At each source node selected by class9 and dry veto, the output reserves another 1.12m before game registration; support follows only the dominant connected region. Preservation of actual ground observations is not a guarantee of the surveyed shoreline in reeds.",
+    "wholeTentSampleLargestSignedNativeMetres": -0.38083941767555574,
+    "historicalReport": "https://doi.org/10.1007/s11852-024-01050-5"
+  },
+  "corroborationOnly": {
+    "parksCanada": "https://parks.canada.ca/pn-np/pe/pei-ipe/activ/sentiers-trails/greenwich-dune",
+    "governmentDSW": "https://open.canada.ca/data/en/dataset/62de5952-a5eb-4859-b086-22a8ba8024b8",
+    "governmentDSW2023CoverageStrict": 0.9992992600578233,
+    "ESAWorldCover": "https://doi.org/10.5281/zenodo.7254221",
+    "scenes20mSCL": [
+      {
+        "date": "2023-06-12",
+        "id": "S2A_20TNS_20230612_0_L2A"
+      },
+      {
+        "date": "2023-10-02",
+        "id": "S2B_20TNS_20231002_0_L2A"
+      },
+      {
+        "date": "2024-07-03",
+        "id": "S2A_20TNS_20240703_0_L2A"
+      },
+      {
+        "date": "2024-08-30",
+        "id": "S2B_20TNS_20240830_0_L2A"
+      },
+      {
+        "date": "2025-06-16",
+        "id": "S2B_20TNS_20250616_0_L2A"
+      },
+      {
+        "date": "2025-09-29",
+        "id": "S2C_20TNS_20250929_0_L2A"
+      }
+    ],
+    "class6InAtLeast4SceneDatesStrict": 0.7873670799235556,
+    "limits": "Satellite class is coarser than the bank and only corroborates the retained main body. No optical edges were digitized; no source images supplied with the simulator."
+  },
+  "asset": {
+    "url": "greenwich/v0/bowley-2020-water.r8.gz",
+    "sha256Gzip": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+    "sha256Decoded": "d49750025bbbcc5416beefb3569e9aa6521c05f56a9cde40a098e49a17f6f622",
+    "nativeBuildTool": "tools/geodata/bake-bowley-survey.py"
+  }
+}

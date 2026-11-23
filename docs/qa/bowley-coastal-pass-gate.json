@@ -1,0 +1,10 @@
+{
+  "site": "greenwich-dunes-low",
+  "pond": "bowley-pond-survey-2020",
+  "movementM": 600.3285787668113,
+  "startingAltitudeM": 176.94525378286957,
+  "sampleAltitudeM": 180.401796002408,
+  "camera": "Chase",
+  "pause": true,
+  "errors": []
+}

@@ -5,7 +5,7 @@
 export const DETAIL_FLAGS=[
  'shoreFoamDetail','legacyShoreArcs','canopyLight','forestFloor','woodland3D',
  'spinnakersPreview','northBaywalkPreview','baywalkConcrete',
- 'basinChannel','basinWharf','montagueFoundationPreview','montagueReachOptics','northCapeWind',
+ 'basinChannel','basinWharf','montagueFoundationPreview','montagueReachOptics','northCapeWind','bowleySurveyPreview',
 ] as const;
 
 export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('scenery')==='detail';

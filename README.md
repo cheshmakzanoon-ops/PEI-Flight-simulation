@@ -21,7 +21,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 | --- | --- |
 | **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows land cover with [streamed provincial stand heights](docs/qa/forest-height-stream.md); [roof-centred tree stems are excluded](docs/vegetation-clearance.md). Confederation Bridge, St. Dunstan’s Basilica and both [point light stations](docs/landmarks/lighthouses.md) have custom models. Both lighthouse approaches use [higher-resolution measured coastal relief](docs/coastal-relief.md). [South Lake](docs/qa/south-lake.md) uses sheltered water shading without changing the shoreline. |
 | **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, [moving ailerons and elevators](docs/qa/control-surfaces.md), a modeled cockpit, graduated flight instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and fourteen scenic starts. |
+| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and fifteen scenic starts. |
 | **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
 | **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
@@ -39,15 +39,16 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Spinnakers’ Landing](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
 | Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-wharf.md). |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
+| Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). |
 
 Preview work is regional and does not change the Standard atlas.
 
 ## Download the web build
 
-[Download the latest successful build ZIP](https://nightly.link/cheshmakzanoon-ops/PEI-Flight-simulation/workflows/verify/main/pei-flight-sim-web.zip)
-or use the [GitHub Actions artifacts](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml?query=branch%3Amain+is%3Asuccess) while signed in.
-The direct link is a public mirror of the successful CI artifact; it is not a hosted game.
+Open the [successful GitHub builds for `main`](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml?query=branch%3Amain+is%3Asuccess).
+While signed in, select the newest successful run and download **pei-flight-sim-web** from its **Artifacts** section.
+For changes newer than that build, [run the current source locally](#run-locally). The ZIP is not a hosted game.
 
 Extract the ZIP and run a static server from the extracted directory. For example:
 
