@@ -83,6 +83,10 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
  float shelter=southLakeShelter(q);
  if(shelter>0.)n*=1.-.70*shelter;
  `:''}
+ ${harbour?`
+ vec2 quay=harbourAt(q);float marinaCalm=harbourOptics(quay);
+ if(marinaCalm>0.)n*=1.-.55*marinaCalm;
+ `:''}
  vec3 normal=normalize(vec3(-n.x,1.,-n.y));vec3 refl=reflect(-view,normal);
  float ndv=clamp(dot(normal,view),0.,1.);
  // Reflection is filtered over a rough specular lobe, including the sky panorama's
@@ -93,7 +97,7 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
  float fres=.045+.78*pow(1.-ndv,3.6);
  vec2 uv=(p.xz-extent.xy)/extent.zw;
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
- ${harbour?'shore=harbourDistance(shore,q);':''}
+ ${harbour?'shore=harbourFrom(shore,quay);':''}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
  // Conservative phase footprint includes the spatial distortion from the
@@ -108,12 +112,18 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
   deep=mix(deep,southLakeTint(q,shore),optical*shelter);
  }
  `:''}
+ ${harbour?`
+ if(marinaCalm>0.)deep=mix(deep,vec3(.023,.065,.068),marinaCalm*.54);
+ `:''}
  // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
  // modulate the reflection; large-scale swells scarcely change the surface normal.
  float undulation=noise(q*.012+vec2(t*.012,t*.007))-.5;
  deep*=1.+.17*undulation*fade;
  vec3 c=mix(deep,reflection,fres);c*=1.+.38*(n.x+.45*n.y);
  float glitter=pow(clamp(dot(normal,normalize(view+sun)),0.,1.),83.);
+ ${harbour?`
+ if(marinaCalm>0.)glitter*=1.-.34*marinaCalm;
+ `:''}
  c+=vec3(.72,.61,.41)*glitter*(.32+.35*fade);
  ${lake?`
  // Keep a gradient at the safe inward mask edge; no breaking ocean waves
@@ -127,8 +137,9 @@ const waterFrag=(lake:boolean,harbour:boolean)=>fp+skyFn+shoreFoamGLSL+(lake?sou
    float gain=1.-smoothstep(0.,.22,shelter);foam*=gain*gain;
   }
  }
+ `:`float foam=shoreFoam(q,shore,t,dist,n,foamFootprint);`}
+ ${harbour?`if(marinaCalm>0.)foam*=1.-smoothstep(0.,.23,marinaCalm);`:''}
  c=mix(c,vec3(.49,.58,.56),foam);
- `:`c=mix(c,vec3(.49,.58,.56),shoreFoam(q,shore,t,dist,n,foamFootprint));`}
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
 const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  void main(){
