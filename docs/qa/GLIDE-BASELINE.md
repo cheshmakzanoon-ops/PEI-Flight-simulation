@@ -48,3 +48,7 @@ cannot establish a match by comparing 78 **KEAS** to 76 **KIAS**. The
 [normal static calibration, Fig. 5-1](https://bankstownflying.com.au/wp-content/uploads/2022/08/MJB-C182_G1000-POH.pdf#page=163)
 is specified for a different power condition. A drag model must preserve
 positive-power behavior while improving measured zero-power range.
+
+The [opt-in failure scenario](ENGINE-OUT.md) now measures the same sweep
+with a passive propeller. This page preserves the zero-thrust, no-windmilling
+control case for paired tests.

@@ -1,7 +1,7 @@
 /** Deterministic engineering trial of the game's integrator, not flight training. */
 import {pathToFileURL} from 'node:url';
 import {equivalentAirspeed} from '../../src/sim/aerodynamics.ts';
-import {FIXED_STEP, flightConditions, neutral, spawn, step, SURVEY_AIRFRAME, type Flight} from '../../src/sim/flight.ts';
+import {FIXED_STEP, flightConditions, neutral, spawn, step, setEngineOut, SURVEY_AIRFRAME, type Flight} from '../../src/sim/flight.ts';
 import {clamp} from '../../src/sim/geo.ts';
 
 export const KNOTS_PER_MPS=3600/1852;
@@ -35,8 +35,9 @@ export function ticks(seconds:number,dt:number) {
 }
 
 /** Mean speed alone can conceal phugoid oscillations. Report full speed and sink spreads. */
-export function glideTrial(targetKeas:number, dt=FIXED_STEP) {
+export function glideTrial(targetKeas:number, dt=FIXED_STEP, engineOut=false) {
   const f=startTrial(targetKeas), pilot=speedPilot(), u={...neutral};
+  setEngineOut(f,engineOut);
   const advance=()=>{
     u.pitch=pilot(easKnots(f)-targetKeas,dt);
     step(f,u,surface,dt,reference);
@@ -67,13 +68,13 @@ export function glideTrial(targetKeas:number, dt=FIXED_STEP) {
   };
 }
 
-export function glideSweep() {
-  const trials=Array.from({length:18},(_,i)=>glideTrial(66+2*i));
+export function glideSweep(engineOut=false) {
+  const trials=Array.from({length:18},(_,i)=>glideTrial(66+2*i,FIXED_STEP,engineOut));
   const best=trials.reduce((a,b)=>b.rangeRatio>a.rangeRatio?b:a);
-  return {conditions:{...reference, flaps:'clean', thrust:'zero', windmillingDrag:'not modeled',
+  return {conditions:{...reference, flaps:'clean', thrust:'zero', windmillingDrag:engineOut?'enabled':'disabled (normal idle)',
     atmosphere:'ISA', startHeightM:1450, headingTrueDeg:0, settlingSeconds:85, fixedStepS:FIXED_STEP},
     best, trials};
 }
 
 if(process.argv[1] && pathToFileURL(process.argv[1]).href===import.meta.url)
-  console.log(JSON.stringify(glideSweep(),null,2));
+  console.log(JSON.stringify(glideSweep(process.argv.includes('--engine-out')),null,2));

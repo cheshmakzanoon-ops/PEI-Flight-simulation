@@ -69,3 +69,6 @@ It measures range against height lost instead of inferring glide distance from a
 
 The [dynamic clean-stall trial](qa/STALL-BASELINE.md) measures both the peak lift
 coefficient and the later separation flag, then requires a sustained return to glide.
+
+A separate, opt-in [engine-out free-flight scenario](qa/ENGINE-OUT.md) adds
+windmilling drag. Ordinary player flights and the normal-idle baseline remain unchanged.

@@ -18,7 +18,7 @@ export function failUI(message:string){
 export class UI {
  mode:Mode='dispatch';selected=0;previous:Mode='dispatch';private terrain:Terrain; private input:Input;
  private chartImage:HTMLImageElement;private frame=0;private siteNow=0;private camera='Chase';private silent=true;private message='';
- constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;}) {
+ constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;}) {
   this.terrain=t;this.input=input;
   const opts=SITES.map((s,i)=>`<option value="${i}">${s.name}</option>`).join('');
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>
@@ -26,7 +26,7 @@ export class UI {
   <section id="dispatch" class="dispatch panel" aria-labelledby="dispatch-title"><span class="eyebrow"><i></i> CANADA &nbsp; / &nbsp; ATLANTIC</span><h1 id="dispatch-title">Prince Edward<br><em>Island</em></h1><p class="standfirst">Free flight across the province, from red sandstone shores to patchwork farmland.</p>
   <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
   <div class="location" id="location"><span class="eyebrow"><i></i> ON LOCATION</span><strong id="loc-name"></strong><small id="loc-county"></small></div>
-  <section id="telemetry" aria-label="Flight instruments"><div class="flight-strip"><span><small>AIRSPEED</small><b id="kt">0</b><em>KT</em></span><span><small>ALTITUDE</small><b id="ft">0</b><em>FT MSL</em></span><span><small>HEADING</small><b id="hdg">000</b><em>°T</em></span><span><small>POWER</small><b id="pwr">0</b><em>%</em></span></div><div id="annun"></div></section>
+  <section id="telemetry" aria-label="Flight instruments"><div class="flight-strip"><span><small>AIRSPEED</small><b id="kt">0</b><em>KT</em></span><span><small>ALTITUDE</small><b id="ft">0</b><em>FT MSL</em></span><span><small>HEADING</small><b id="hdg">000</b><em>°T</em></span><span><small>THROTTLE</small><b id="pwr">0</b><em>%</em></span></div><div id="annun"></div></section>
   <div id="inflight" class="flightbtns"><button id="view">Chase <kbd>V</kbd></button><span id="controller"></span></div>
   <div id="modal" class="modal panel" role="dialog" aria-modal="true" aria-label="Flight panel"></div>
   <div id="touch"><div class="pad" id="stick" aria-label="Drag for pitch and roll"><i></i><small>STICK</small></div><div class="touchbuttons"><button id="upPower" aria-label="Increase throttle">PWR +</button><button id="dnPower" aria-label="Reduce throttle">PWR −</button></div></div>
@@ -61,7 +61,7 @@ export class UI {
   for(const [name,visible] of Object.entries({dispatch,location:dispatch,telemetry:flight,inflight:flight,touch:flight,'nav-pause':flight,scrim:!flight,modal:!dispatch&&!flight}))$(name).hidden=!visible;
   const modal=$('modal');if(dispatch||flight){modal.innerHTML='';return;}
   const closer='<button class="close" id="close" aria-label="Close panel">×</button>';
-  if(mode==='help')modal.innerHTML=closer+`<span class="eyebrow">PILOT HANDBOOK / 01</span><h2>Flight controls</h2><div class="binds"><div><b>Pitch & bank</b><span>Arrow keys or WASD</span></div><div><b>Rudder</b><span>Q / E</span></div><div><b>Throttle</b><span>Hold + / − or [ / ]</span></div><div><b>Wheel brakes</b><span>Hold B</span></div><div><b>View / pause / atlas</b><span>V / P / M</span></div></div><p>Pull back (↓ or S) to climb. Bank to turn; release to level. On a runway, hold + for full power, then pull back near 65 kt.</p><h3>Standard gamepad</h3><p>Left stick: pitch and bank. Right stick X: rudder. Triggers change power. South button brakes; Start pauses. Press a button on your controller to connect.</p>`;
+  if(mode==='help')modal.innerHTML=closer+`<span class="eyebrow">PILOT HANDBOOK / 01</span><h2>Flight controls</h2><div class="binds"><div><b>Pitch & bank</b><span>Arrow keys or WASD</span></div><div><b>Rudder</b><span>Q / E</span></div><div><b>Throttle</b><span>Hold + / − or [ / ]</span></div><div><b>Wheel brakes</b><span>Hold B</span></div><div><b>View / pause / atlas</b><span>V / P / M</span></div></div><p>Pull back (↓ or S) to climb. Bank to turn; release to level. On a runway, hold + for full power, then pull back near 65 kt.</p><h3>Standard gamepad</h3><p>Left stick: pitch and bank. Right stick X: rudder. Triggers change power. South button brakes; Start pauses. Press a button on your controller to connect.</p><h3>Engine-out practice</h3><p>While airborne, open Pause to simulate a power loss. You can restore power from the same panel. New departures always start normally.</p>`;
   if(mode==='map'){
    modal.innerHTML=closer+`<span class="eyebrow">NAVIGATION / PEI</span><h2>Flight atlas</h2><canvas id="chart" width="760" height="378"></canvas><label class="eyebrow" for="map-site">REPOSITION AIRCRAFT</label><select id="map-site">${SITES.map((s,i)=>`<option value="${i}">${s.name}</option>`).join('')}</select><button id="fly-here" class="gold">Fly from here <span>↗</span></button>`;
    ($('map-site') as HTMLSelectElement).value=''+this.siteNow;$('fly-here').onclick=()=>this.actions.start(Number(($('map-site') as HTMLSelectElement).value));
@@ -69,6 +69,17 @@ export class UI {
   if(mode==='credits')modal.innerHTML=closer+`<span class="eyebrow">CHART NOTES / SOURCES</span><h2>About this atlas</h2><p>Contains modified Copernicus Sentinel data 2025. Natural-colour imagery is a multi-date satellite mosaic. Terrain: Natural Resources Canada, CanElevation. Shoreline: Statistics Canada, 2021 Census.</p><p>Contains information licensed under the <a href="https://open.canada.ca/en/open-government-licence-canada" target="_blank" rel="noreferrer">Open Government Licence – Canada</a>. National Road Network: Statistics Canada. Building outlines and roof heights: Natural Resources Canada, PEI 2020 LiDAR survey. Building façades and roof forms are inferred, not photographed. St. Dunstan’s Basilica, the Confederation Bridge and the East and West Point light stations are original approximate exterior models. Nearby New Brunswick and Nova Scotia terrain provides non-playable shoreline context. Thresholds: OurAirports, public domain. <a href="https://dataspace.copernicus.eu/terms-and-conditions" target="_blank" rel="noreferrer">Copernicus terms</a>.</p><p>Metre-scale coordinates do not imply metre-resolution scenery. The terrain and coastline mask are sampled at roughly 47 m; the near satellite imagery is about 10 m per pixel. Sky environment: Greg Zaal and Jarod Guest, <a href="https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky" target="_blank" rel="noreferrer">Poly Haven</a> (CC0); it represents lighting, not current PEI weather. © ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium. <a href="https://doi.org/10.5281/zenodo.7254221" target="_blank" rel="noreferrer">WorldCover 2021 v200</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>. Forest classes are measured; individual trees and field detail are inferred. Not for real navigation.</p>`;
   if(mode==='paused'||mode==='crash'){
    modal.innerHTML=`<span class="eyebrow">PEI FLIGHT SIM / FREE FLIGHT</span><h2>${mode==='crash'?this.message:'Flight paused'}</h2><p>${mode==='crash'?'Choose a departure or restart your last flight.':'Your aircraft is held in place.'}</p><button class="gold" id="again">${mode==='crash'?'Restart flight':'Resume flight'} <span>↗</span></button><button class="outline" id="site-list">Choose departure</button>`;
+   if(mode==='paused'){
+    modal.insertAdjacentHTML('beforeend','<h3>Engine-out practice</h3><p id="practice-status" role="status"></p><button class="outline" id="practice-engine"></button>');
+    const button=$<HTMLButtonElement>('practice-engine');
+    const paint=()=>{
+     const s=this.actions.engineState();
+     $('practice-status').textContent=s.out?'Engine out. The windmilling prop adds drag. Restoring power uses your current throttle.':s.airborne?'Engine running. This optional scenario cuts thrust when you resume.':'This scenario is available once airborne.';
+     button.textContent=s.out?'Restore engine power':'Simulate engine failure';
+     button.disabled=!s.airborne&&!s.out;
+    };
+    paint();button.onclick=()=>{this.actions.practiceFailure(!this.actions.engineState().out);paint();};
+   }
    $('again').onclick=()=>mode==='crash'?this.actions.restart():this.actions.resume();
    $('site-list').onclick=()=>{this.set('dispatch');this.showSite();};
   }
@@ -78,7 +89,8 @@ export class UI {
   this.frame++;if(this.frame%5!==0&&this.mode!=='map')return;
   $('kt').textContent=''+Math.round(equivalentAirspeed(f.speed,f.y)*1.94384);$('ft').textContent=Math.round(f.y*3.28084).toLocaleString('en-US');
   $('hdg').textContent=('00'+(Math.round(f.heading*DEG)%360)).slice(-3);$('pwr').textContent=''+Math.round(f.throttle*100);
-  $('annun').textContent=f.stalled?'STALL • LOWER NOSE':f.status!=='flying'?f.status==='landed'?'TOUCHDOWN':'GROUND ROLL':f.y-ground<30?'LOW ALTITUDE':'';
+  const alert=f.stalled?'STALL • LOWER NOSE':f.status!=='flying'?f.status==='landed'?'TOUCHDOWN':'GROUND ROLL':f.y-ground<30?'LOW ALTITUDE':'';
+  $('annun').textContent=(f.engineOut?'ENGINE OUT'+(alert?' · ':''):'')+alert;
   $('controller').textContent=this.input.gamepad?'● GAMEPAD':'';
   if(this.mode==='map'){const c=$<HTMLCanvasElement>('chart'),g=c.getContext('2d')!;
    g.fillStyle='#17383b';g.fillRect(0,0,c.width,c.height);

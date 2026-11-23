@@ -25,6 +25,16 @@ the wings as you reach the new heading. A stall warning means lower the
 nose and recover airspeed before resuming the climb. This handbook applies
 to the fictional aircraft in this simulator, not to real aircraft.
 
+## Optional engine-out practice
+
+While airborne, open **Pause**, choose **Simulate engine failure**, then
+**Resume flight**. The engine no longer provides thrust, but the moving air
+keeps the propeller turning and the plane glides more steeply. **ENGINE OUT**
+stays on the HUD even when you move the throttle. To end the exercise, use
+**Pause → Restore engine power**, then resume; power returns at the current
+throttle. Choosing another departure always resets the engine. The
+[engineering comparison](qa/ENGINE-OUT.md) documents this game scenario.
+
 ## Flight model in development
 
 The HUD and cockpit speed needle follow equivalent airspeed, an approximation

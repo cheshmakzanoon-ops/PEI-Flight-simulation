@@ -1,3 +1,4 @@
+import {windmillDragN} from './windmilling.ts';
 import { aerodynamicPolar, airDensity } from './aerodynamics.ts';
 import { clamp, damp, wrap, project, RAD } from './geo.ts';
 import { RUNWAYS, runwayAt, type Site } from './places.ts';
@@ -7,7 +8,7 @@ export type Sample = (x:number,z:number)=>Surface;
 export type Status = 'flying'|'rolling'|'landed'|'stopped';
 export interface Flight {
   x:number; y:number; z:number; heading:number; pitch:number; bank:number; gamma:number; speed:number;
-  throttle:number; time:number; vertical:number; alpha:number; stalled:boolean; status:Status; notice:string;
+  throttle:number; engineOut:boolean; time:number; vertical:number; alpha:number; stalled:boolean; status:Status; notice:string;
 }
 export const SURVEY_AIRFRAME=Object.freeze({gravity:9.80665,massKg:1450,areaM2:17.2,gearHeightM:1.40});
 const {gravity:G,areaM2:S,gearHeightM:GEAR}=SURVEY_AIRFRAME;
@@ -37,7 +38,11 @@ export const FIXED_STEP=1/90;
 export function spawn(site:Site,surface:Sample):Flight{
  const rw=RUNWAYS.find(r=>r.id===site.runway), p=rw?{x:rw.p.x+rw.dx*18,z:rw.p.z+rw.dz*18}:project(site.lon,site.lat);
  const base=surface(p.x,p.z).height;
- return {...p,y:base+(rw?GEAR:site.height),heading:rw?rw.heading:site.heading*RAD,pitch:rw?0:.042,bank:0,gamma:0,speed:rw?0:52,throttle:rw?.03:.56,time:0,vertical:0,alpha:0,stalled:false,status:rw?'rolling':'flying',notice:''};
+ return {...p,y:base+(rw?GEAR:site.height),heading:rw?rw.heading:site.heading*RAD,pitch:rw?0:.042,bank:0,gamma:0,speed:rw?0:52,throttle:rw?.03:.56,engineOut:false,time:0,vertical:0,alpha:0,stalled:false,status:rw?'rolling':'flying',notice:''};
+}
+/* Opt-in scenario, not a real restart procedure. Latched until restored or respawned. */
+export function setEngineOut(f:Flight, enabled:boolean):void {
+ if (!enabled || f.status==='flying') f.engineOut=enabled;
 }
 export const neutral:Controls={pitch:0,roll:0,yaw:0,power:0,brake:false};
 /** Assist-stabilized, fixed-step point-mass model; visual entertainment, not certified flight dynamics. */
@@ -48,7 +53,7 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP,conditions:
  const pitch=clamp(u.pitch,-1,1),roll=clamp(u.roll,-1,1),yaw=clamp(u.yaw,-1,1);
  f.throttle=clamp(f.throttle+clamp(u.power,-1,1)*.32*dt,0,1);
  const q=.5*airDensity(f.y)*f.speed*f.speed;
- const thrust=Math.min(3600,188000/Math.max(f.speed,24))*f.throttle;
+ const thrust=f.engineOut?0:Math.min(3600,188000/Math.max(f.speed,24))*f.throttle;
  const onGround=f.status!=='flying';
  const positiveAuthority=.22+.24*clamp((f.speed-36)/23,0,1);
  const targetPitch=onGround?Math.max(0,pitch)*.24:.040+pitch*(pitch>0?positiveAuthority:.48);
@@ -57,7 +62,7 @@ export function step(f:Flight,u:Controls,sample:Sample,dt=FIXED_STEP,conditions:
  f.alpha=f.pitch-f.gamma+.024;
  const {cl,cd,separated}=aerodynamicPolar(f.alpha);
  f.stalled=!onGround&&separated;
- const lift=q*S*cl, drag=q*S*cd;
+ const lift=q*S*cl, drag=q*S*cd+(f.engineOut?windmillDragN(f.speed,q):0);
  if(onGround) {
   f.gamma=0; f.vertical=0;
   const rolling=(u.brake?4.5:.23)*Math.min(1,Math.max(0,1-lift/(MASS*G)));

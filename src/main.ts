@@ -14,7 +14,8 @@ import { Buildings } from './render/buildings.ts';
 import { Input } from './app/input.ts';
 import { EngineSound } from './app/sound.ts';
 import { UI, bootUI, loadMsg, failUI } from './app/ui.ts';
-import { spawn, step, FIXED_STEP } from './sim/flight.ts';
+import {windmillOmegaRadS} from './sim/windmilling.ts';
+import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import './app/style.css';
@@ -45,7 +46,9 @@ async function run(){
  });
  const reposition=(i:number)=>{activeSite=clamp(i,0,SITES.length-1);f=spawn(SITES[activeSite],sceneSurface);acc=0;snap=true;};
  const start=(i:number)=>{reposition(i);ui.departure(i);};
- ui=new UI(terrain,input,{start,resume:()=>ui.set('flight'),view:cameraCycle,sound:()=>void audio.toggle().then(v=>ui.setSound(v)).catch(()=>{}),pause,restart:()=>start(activeSite)});
+ ui=new UI(terrain,input,{start,resume:()=>ui.set('flight'),view:cameraCycle,sound:()=>void audio.toggle().then(v=>ui.setSound(v)).catch(()=>{}),pause,restart:()=>start(activeSite),
+  engineState:()=>({out:f.engineOut,airborne:f.status==='flying'}),
+  practiceFailure:(out:boolean)=>setEngineOut(f,out)});
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
@@ -73,8 +76,9 @@ async function run(){
   const phase=cinematic?(Math.sin(time*.14)*.009):0;
   aircraft.root.position.set(f.x,f.y,f.z);aircraft.root.rotation.set(f.pitch,-f.heading,-f.bank+phase,'YXZ');
   aircraft.setInterior(!cinematic&&view===1);
-  aircraft.prop.rotation.z+=(ui.mode==='flight'||cinematic)?delta*(20+155*f.throttle):0;
-  aircraft.setProp(f.throttle);
+  const propSpeed=f.engineOut?windmillOmegaRadS(f.speed):20+155*f.throttle;
+  aircraft.prop.rotation.z+=(ui.mode==='flight'||cinematic)?delta*propSpeed:0;
+  aircraft.setProp(f.engineOut?clamp((propSpeed-20)/155,0,1):f.throttle);
   aircraft.needles[0].rotation.z=-dialAngle(DIALS[0],equivalentAirspeed(f.speed,f.y)*1.94384);
   aircraft.needles[1].rotation.z=-dialAngle(DIALS[1],f.y*3.28084);
   aircraft.needles[2].rotation.z=-dialAngle(DIALS[2],f.throttle*100);
@@ -100,9 +104,9 @@ async function run(){
   }
   snap=false;camera.up.copy(up);camera.lookAt(aim);camera.updateMatrixWorld();
   groundY.copy(aircraft.root.position);world.update(camera.position,time);roads?.update(f.x,f.z);buildings?.update(f.x,f.z);vegetation.update(f.x,f.z,f.y);
-  ui.update(f,terrain.elevation(f.x,f.z));audio.update(f.throttle,f.speed,playing);renderer.render(scene,camera);
+  ui.update(f,terrain.elevation(f.x,f.z));audio.update(f.throttle,f.speed,playing&&!f.engineOut);renderer.render(scene,camera);
   if(diagnostic){
-   Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,
+   Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
     drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
