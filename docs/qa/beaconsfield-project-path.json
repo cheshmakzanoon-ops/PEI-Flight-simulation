@@ -1,0 +1,79 @@
+{
+  "case": "Unmodified built player. Actual Charlottetown low-pass flight on temporary test host at the project-relative path. Missing optional resource response is deliberate.",
+  "parent": "7908774c8d1025952a89a7ab4501894ed4db3552",
+  "cases": {
+    "stock": {
+      "mode": "flight",
+      "previewActive": false,
+      "metres": 199.57504674607597,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "artRequests": 0,
+      "artResponses": [],
+      "warnings": [],
+      "errors": []
+    },
+    "preview": {
+      "mode": "flight",
+      "previewActive": true,
+      "metres": 185.4806164004453,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 3
+      },
+      "artRequests": 1,
+      "artResponses": [
+        200
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "missing": {
+      "mode": "flight",
+      "previewActive": false,
+      "metres": 183.72318121559405,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "artRequests": 1,
+      "artResponses": [
+        404
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

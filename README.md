@@ -38,6 +38,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | North Cape | `?northCapeWind` | The [16 commercial turbines](docs/qa/north-cape-turbines.md) on the [wind farm low pass](docs/qa/north-cape-departure.md). |
 | Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Spinnakers’ Landing](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
 | Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-wharf.md). |
+| Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |

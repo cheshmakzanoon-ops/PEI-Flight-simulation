@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {BEACON_REVIEW} from './beaconsfield-review-spec.ts';
 import {matchesHangar4,emitHangar4,hangar4GLSL} from './hangar4.ts';
 import {readRoofTone} from './roof-tone.ts';
 import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
@@ -155,9 +156,12 @@ export class Buildings {
  private readonly sourisLight?:SourisLighting;
  private readonly spinnakers?:SpinnakersScene;
  private readonly pinnedSpinnakers?:Bldg[];
+ private readonly tryBeaconsfield:boolean;
+ private beacon?:THREE.Group;
+ private disposeBeacon?:(m:THREE.Group)=>void;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[]){
-  this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false){
+  this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;
   if(casts){this.mat.fragmentShader=buildingF(false,true);Object.assign(this.mat.uniforms,casts.uniforms);}
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
@@ -216,9 +220,9 @@ export class Buildings {
   }catch{/** Ordinary C and stock still have their normal fallback. */}
   finally{clearTimeout(timer);}
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield);
  }
  update(x:number,z:number){
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
@@ -226,7 +230,7 @@ export class Buildings {
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
-   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
+   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
@@ -238,6 +242,7 @@ export class Buildings {
    if(Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
   }
  }
+ get beaconsfieldPreviewActive(){return !!this.beacon?.parent;}
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
  get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
  get northConcreteActive(){return this.northBaywalkActive&&!!this.spinnakers?.north?.sidewalk;}
@@ -250,7 +255,16 @@ export class Buildings {
  private async load(tile:BoundTile){
   this.loading.add(tile.id);
   try{
-   const features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
+   const spec=BEACON_REVIEW,candidate=this.tryBeaconsfield&&this.atlasHash===spec.pack&&tile.id===spec.tile&&
+    tile.offset===spec.offset&&tile.bytes===spec.bytes&&!!globalThis.crypto?.subtle;
+   let features:Bldg[],ownerBytes:ArrayBuffer|undefined;
+   if(candidate){
+    const raw=await this.pack.read(tile.offset,tile.bytes);
+    features=await Buildings.decodeChunk(raw);
+    const f=features[spec.ordinal];
+    if(f&&f.height===spec.height&&f.minHeight===spec.minHeight&&!f.holes?.length&&
+       f.footprint.length===spec.footprint.length&&f.footprint.every((q,j)=>q[0]===spec.footprint[j][0]&&q[1]===spec.footprint[j][1]))ownerBytes=raw;
+   }else features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
    if(!this.wanted.has(tile.id))return;
    const sp=this.spinnakers;
    let wharf:THREE.Group|undefined;
@@ -266,18 +280,49 @@ export class Buildings {
      wharf=sp.assembled;
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
-   const mesh=this.generate(features,tile,!!wharf);
+   const mesh=this.generate(features,tile,!!wharf,!!ownerBytes);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   // The ordinary whole tile is already visible. Do not put buildings on the
+   // renderer's streaming queue behind an optional module or art response.
+   if(ownerBytes)void this.promoteBeaconsfield(tile,mesh,ownerBytes);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
     void this.sourisLight.setCaster(features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false){
+ private async promoteBeaconsfield(tile:BoundTile,mesh:THREE.Mesh,source:ArrayBuffer){
+  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh;
+  const range=mesh.userData.beaconTriangles as readonly [number,number]|undefined;
+  if(!range)return;
+  try{
+   const src=await crypto.subtle.digest('SHA-256',source);
+   if(!current()||Array.from(new Uint8Array(src),c=>c.toString(16).padStart(2,'0')).join('')!==BEACON_REVIEW.chunk)return;
+   let timer:ReturnType<typeof setTimeout>|undefined;
+   const mod=await Promise.race([
+    import('./beaconsfield-review.ts'),
+    new Promise<undefined>(r=>{timer=setTimeout(()=>r(undefined),1200);}),
+   ]).finally(()=>{if(timer!==undefined)clearTimeout(timer);});
+   if(!mod||!current())return;
+   const group=await mod.loadBeaconsfieldPreview(import.meta.env.BASE_URL+'art/');
+   if(!group)return;
+   if(!current()){mod.disposeBeaconsfieldPreview(group);return;}
+   // Omit only the recorded contiguous owner span from the *same* submitted
+   // attributes. All protected triangles retain their bytes and original order.
+   const g=mesh.geometry,n=g.getAttribute('position').count,[lo,hi]=range;
+   if(lo<0||hi<=lo||hi>n||lo%3||hi%3||n%3){mod.disposeBeaconsfieldPreview(group);return;}
+   const rest=n-(hi-lo),index=n<=65536?new Uint16Array(rest):new Uint32Array(rest);
+   for(let i=0;i<rest;i++)index[i]=i<lo?i:i+hi-lo;
+   g.setIndex(new THREE.BufferAttribute(index,1));
+   this.beacon=group;this.disposeBeacon=mod.disposeBeaconsfieldPreview;this.scene.add(group);
+  }catch{/** Unavailable optional art never hides the ordinary owner. */}
+ }
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,trackBeacon=false){
+  let beaconStart=-1,beaconEnd=-1;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   let facade=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
+   if(trackBeacon){if(i===BEACON_REVIEW.ordinal)beaconStart=P.length/3;if(i===BEACON_REVIEW.ordinal+1)beaconEnd=P.length/3;}
    if(replaceSpinnakers&&SPINNAKERS_OMISSIONS.has(i))continue;
    const f=features[i];
    if(f.footprint.length<3||!Number.isFinite(f.height)||replacesLightBuilding(f.footprint))continue;
@@ -422,6 +467,8 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
+  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  if(trackBeacon&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
+  return mesh;
  }
 }
