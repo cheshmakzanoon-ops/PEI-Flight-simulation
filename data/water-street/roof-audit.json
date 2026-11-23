@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "modelSha256": "8ebffd911ae916ebef9a01caa02270e930482773ff33cde4fc8c5eac8f736bc4",
+  "rasterWindowSha256": "97c73054cd2652ce529a9466208b38e951bbffe150d52d3ff603d37de65caee6",
+  "gates": [
+    {
+      "id": 108,
+      "old": {
+        "p50": 1.48275,
+        "p90": 1.81887,
+        "p95": 1.85139,
+        "count": 98
+      },
+      "candidate": {
+        "p50": 0.12959,
+        "p90": 0.36123,
+        "p95": 0.40789,
+        "count": 98
+      },
+      "training": 413,
+      "roofAreas": [
+        610.3708
+      ],
+      "sampleDigest": "53f383447f5b2ceb7a14e5a96a3e83f819428707f86f82ecf571f044b149f2db",
+      "accepted": true
+    },
+    {
+      "id": 132,
+      "old": {
+        "p50": 3.48982,
+        "p90": 7.90889,
+        "p95": 9.03922,
+        "count": 462
+      },
+      "candidate": {
+        "p50": 0.70368,
+        "p90": 2.91543,
+        "p95": 4.11085,
+        "count": 462
+      },
+      "training": 1833,
+      "roofAreas": [
+        2494.6603
+      ],
+      "sampleDigest": "fe0c337f31596c1bb86835c64f6d13d8042841e8aa0c65b46d9ed5903436b62e",
+      "accepted": false
+    },
+    {
+      "id": 137,
+      "old": {
+        "p50": 5.70605,
+        "p90": 6.0955,
+        "p95": 6.41458,
+        "count": 596
+      },
+      "candidate": {
+        "p50": 0.64611,
+        "p90": 1.50104,
+        "p95": 1.94793,
+        "count": 596
+      },
+      "training": 2347,
+      "roofAreas": [
+        3188.5142
+      ],
+      "sampleDigest": "8a692df0d44068fa1d9d4a27cb36ae0744efa1c0882a042cf83cfb61731998a7",
+      "accepted": true
+    },
+    {
+      "id": 172,
+      "old": {
+        "p50": 0.42034,
+        "p90": 3.99212,
+        "p95": 4.17489,
+        "count": 198
+      },
+      "candidate": {
+        "p50": 0.06982,
+        "p90": 0.20712,
+        "p95": 0.4308,
+        "count": 198
+      },
+      "training": 799,
+      "roofAreas": [
+        799.8091,
+        242.962,
+        97.3289
+      ],
+      "sampleDigest": "f15c59d9d07fb5e981d84ab74044e6fab4c531f57a68ec0064906d17cf446cb2",
+      "accepted": true
+    },
+    {
+      "id": 267,
+      "old": {
+        "p50": 5.10134,
+        "p90": 7.43507,
+        "p95": 9.36763,
+        "count": 472
+      },
+      "candidate": {
+        "p50": 0.39628,
+        "p90": 1.33945,
+        "p95": 1.63667,
+        "count": 472
+      },
+      "training": 1839,
+      "roofAreas": [
+        926.5907,
+        179.7477,
+        108.3763,
+        1352.084
+      ],
+      "sampleDigest": "9115d6f4355b79e425ab1a9b33e3e63ee7c80ef1f2856ebcd6ca1f83687fafa9",
+      "accepted": true
+    },
+    {
+      "id": 326,
+      "old": {
+        "p50": 0.76919,
+        "p90": 1.45682,
+        "p95": 1.56304,
+        "count": 11
+      },
+      "candidate": {
+        "p50": 0.13296,
+        "p90": 0.2615,
+        "p95": 0.27582,
+        "count": 11
+      },
+      "training": 61,
+      "roofAreas": [
+        111.0827
+      ],
+      "sampleDigest": "12470eed1dd850b4e7501a7214a486b975f214d678293958308a032d759e7838",
+      "accepted": true
+    }
+  ]
+}

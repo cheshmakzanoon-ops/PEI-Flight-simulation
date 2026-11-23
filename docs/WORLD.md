@@ -16,6 +16,9 @@ registered. This is not a surveyed or navigation-grade projection.
 | Buildings | NRCan Automatically Extracted Buildings, PEI 2020 airborne LiDAR | 85,866 detected footprints with measured roof heights across 295 chunks. Heights and footprints do not establish facade materials, signs, floor plans, occupancy or current businesses. |
 | Runways | OurAirports public-domain threshold coordinates | Three strips at Charlottetown and Summerside. Paint and ground detail are simplified. |
 
+[Water Street in Summerside](qa/water-street-shells.md) includes selected survey-fit
+commercial groupings and independently authored exterior materials.
+
 ## Attribution
 
 Contains modified Copernicus Sentinel data 2025. The source scenes were

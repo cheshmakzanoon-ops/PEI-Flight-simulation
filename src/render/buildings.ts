@@ -9,6 +9,8 @@ import { emitFarmShell,farmRoofAtlas,readFarmShell } from './farm-shells.ts';
 import { farmMaterialGLSL } from './farm-material.ts';
 import { homeRoofAtlas,readHomeEnvelope,emitHomeEnvelope } from './home-envelopes.ts';
 import { homeMaterialGLSL } from './home-material.ts';
+import {waterStreetMaterialGLSL} from './water-street-material.ts';
+import {emitWaterStreetShell,waterStreetModel,WATER_STREET_LAYER,WATER_STREET_TILE} from './water-street.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -34,7 +36,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=(souris=false,hasBuildingShadows=false)=>`
+const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -53,12 +55,17 @@ const buildingF=(souris=false,hasBuildingShadows=false)=>`
  ${hasBuildingShadows?buildingShadowGLSL:''}
  ${farmMaterialGLSL}
  ${homeMaterialGLSL}
+ ${waterStreet?waterStreetMaterialGLSL:''}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
- vec3 c=tint,n=normalize(normalW);if(roof>.5&&n.y<0.)n=-n;
+ vec3 c=tint,n=normalize(normalW);
+ ${waterStreet?'if(facade>12.5){if(!gl_FrontFacing)n=-n;}else{':''}
+ if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
+ ${waterStreet?'}':''}
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
+ ${waterStreet?'if(facade>12.5){shadeWaterStreet(c,uv2d,wp,n,facade,roof,k,fine,d);}else':''}
  if(facade>9.5){shadeHome(c,uv2d,wp,n,facade,roof,k,d);}
  else if(facade>6.5){shadeFarm(c,uv2d,wp,n,facade,roof,k,fine,d);}
  else if(roof<.5&&facade>5.5){
@@ -117,6 +124,7 @@ export class Buildings {
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
  private readonly fitted:boolean;private readonly farms:boolean;private readonly homes:boolean;private readonly atlasHash:string|undefined;
  private readonly sourisMat?:THREE.ShaderMaterial;
+ private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
  private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows){
@@ -124,6 +132,10 @@ export class Buildings {
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
    this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true,!!casts),uniforms:{...sourisLight.uniforms,...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
+  }
+  if(atlasHash===WATER_STREET_LAYER&&scene.environment){
+   this.waterStreetMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(false,!!casts,true),
+    uniforms:{waterStreetSky:{value:scene.environment},...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
   }
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
@@ -218,6 +230,13 @@ export class Buildings {
     });
     continue;
    }
+   const mainStreet=this.waterStreetMat?waterStreetModel(this.atlasHash,tile.id,i,f.footprint,f.holes):undefined;
+   if(mainStreet){
+    emitWaterStreetShell(mainStreet,(x,z)=>this.t.meshElevation(x,z),(p,y,c,u,v,role,style)=>{
+     facade=style;vertex(p,y,c,u,v,role);
+    });
+    continue;
+   }
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
    const fit=this.fitted&&rings.length===1?lookupRoofFit(tile.id,f.footprint,{x:cx,z:cz}):undefined;
@@ -265,6 +284,6 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
+  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
  }
 }
