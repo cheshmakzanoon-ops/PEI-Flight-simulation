@@ -1,0 +1,985 @@
+{
+  "visualBaseline": "d4360a9",
+  "scope": {
+    "tiles": 136,
+    "faces": 125761,
+    "points": 377283,
+    "maxSeatError": 8.230128205610754e-07,
+    "flips": 0,
+    "biggestTile": 13887,
+    "pieces": 565,
+    "totalActualAreaM2": 1110795.1739579977,
+    "minProtectedSeparationM": {
+      "roads": 0.2760913679136362,
+      "structures": 0.6938051944831661,
+      "sidewalks": 0.2561927543024518
+    },
+    "signedCoverExclusionsMissed": [],
+    "sourceOutlineEscapes": [],
+    "actualProtectedOverlaps": [],
+    "maxWithinRingOverlapM2": 4.044977686135098e-09,
+    "maxEarcutPlanDeltaM2": 0.003352794432430528,
+    "tilesWithPlanDeltaOver04": 0
+  },
+  "independentRuntime": {
+    "digest": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+    "worldLayer": "Uninstrumented Terrain and native World.patch 8, 56, 112 plane grids; source parking decoder and exact Three triangles with original Float32 XZ positions; no special survey replacement; generated app assumed unchanged.",
+    "sites": [
+      {
+        "tile": "-45,11",
+        "currentTriangles": 7756,
+        "refitProtocol": {
+          "identicalEpochNoWork": true,
+          "hiddenAtAdaptive": true,
+          "samePositionsWhileHidden": true,
+          "restoredAt56ByRefit": true,
+          "disposedExactlyOnce": true
+        },
+        "rows": [
+          {
+            "n": 8,
+            "counts": {
+              "core": 2013,
+              "rim": 1023
+            },
+            "worst": {
+              "core": 3.750500923160871e-07,
+              "rim": 4.050680308814725e-07
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 56,
+            "counts": {
+              "core": 2013,
+              "rim": 1023
+            },
+            "worst": {
+              "core": 6.804967256357486e-07,
+              "rim": 7.039836305011704e-07
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 112,
+            "counts": {
+              "core": 2013,
+              "rim": 1023
+            },
+            "worst": {
+              "core": 7.59134479721979e-07,
+              "rim": 8.962575748228119e-07
+            },
+            "miss": 0,
+            "wet": 0
+          }
+        ]
+      },
+      {
+        "tile": "5,28",
+        "currentTriangles": 5376,
+        "refitProtocol": {
+          "identicalEpochNoWork": true,
+          "hiddenAtAdaptive": true,
+          "samePositionsWhileHidden": true,
+          "restoredAt56ByRefit": true,
+          "disposedExactlyOnce": true
+        },
+        "rows": [
+          {
+            "n": 8,
+            "counts": {
+              "core": 1316,
+              "rim": 790
+            },
+            "worst": {
+              "core": 9.710348081171105e-07,
+              "rim": 1.0323828314520722e-06
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 56,
+            "counts": {
+              "core": 1316,
+              "rim": 790
+            },
+            "worst": {
+              "core": 3.2271069017042464e-06,
+              "rim": 3.178037059115707e-06
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 112,
+            "counts": {
+              "core": 1316,
+              "rim": 790
+            },
+            "worst": {
+              "core": 3.189233439115924e-06,
+              "rim": 3.1508399274578214e-06
+            },
+            "miss": 0,
+            "wet": 0
+          }
+        ]
+      },
+      {
+        "tile": "46,32",
+        "currentTriangles": 980,
+        "refitProtocol": {
+          "identicalEpochNoWork": true,
+          "hiddenAtAdaptive": true,
+          "samePositionsWhileHidden": true,
+          "restoredAt56ByRefit": true,
+          "disposedExactlyOnce": true
+        },
+        "rows": [
+          {
+            "n": 8,
+            "counts": {
+              "core": 270,
+              "rim": 117
+            },
+            "worst": {
+              "core": 4.2710996694950154e-07,
+              "rim": 3.880930989907938e-07
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 56,
+            "counts": {
+              "core": 270,
+              "rim": 117
+            },
+            "worst": {
+              "core": 2.810834928368422e-06,
+              "rim": 2.7937610411754576e-06
+            },
+            "miss": 0,
+            "wet": 0
+          },
+          {
+            "n": 112,
+            "counts": {
+              "core": 270,
+              "rim": 117
+            },
+            "worst": {
+              "core": 3.868719602451165e-06,
+              "rim": 4.0591660558676745e-06
+            },
+            "miss": 0,
+            "wet": 0
+          }
+        ]
+      }
+    ]
+  },
+  "visuals": [
+    {
+      "site": "water-street-asphalt",
+      "pose": {
+        "lon": -63.791293443,
+        "lat": 46.391106456,
+        "east": 0.4,
+        "south": 0.917,
+        "dist": 69,
+        "h": 0,
+        "agl": 53
+      },
+      "art": {
+        "triangles": 359888,
+        "calls": 65
+      },
+      "old": {
+        "triangles": 321183,
+        "calls": 58
+      },
+      "mask": {
+        "triangles": 359888,
+        "calls": 65
+      },
+      "surface": [
+        {
+          "height": 2.3868623448359996,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 2.3868623448359996,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 1.450513755470514,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 1.12,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 18,
+      "meshes": {
+        "wanted": 27,
+        "ready": 27,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "10-12",
+          "ready",
+          8
+        ],
+        [
+          "10-13",
+          "ready",
+          8
+        ],
+        [
+          "10-14",
+          "ready",
+          8
+        ],
+        [
+          "6-12",
+          "ready",
+          8
+        ],
+        [
+          "6-13",
+          "ready",
+          8
+        ],
+        [
+          "7-11",
+          "ready",
+          8
+        ],
+        [
+          "7-12",
+          "ready",
+          56
+        ],
+        [
+          "7-13",
+          "ready",
+          56
+        ],
+        [
+          "8-11",
+          "ready",
+          8
+        ],
+        [
+          "8-12",
+          "ready",
+          56
+        ],
+        [
+          "8-13",
+          "ready",
+          112
+        ],
+        [
+          "8-14",
+          "ready",
+          56
+        ],
+        [
+          "8-15",
+          "ready",
+          8
+        ],
+        [
+          "9-11",
+          "ready",
+          8
+        ],
+        [
+          "9-12",
+          "ready",
+          56
+        ],
+        [
+          "9-13",
+          "ready",
+          56
+        ],
+        [
+          "9-14",
+          "ready",
+          56
+        ],
+        [
+          "9-15",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 14,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 741,
+        "maxSeatError": 2.9794911669475677e-06,
+        "maxAnalyticError": 2.9564059307318757e-06,
+        "minSigned": 45.61469013576766
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 167006,
+        "perceptible": 166904,
+        "unchangedOutside": 483402,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "summerside-district",
+      "pose": {
+        "lon": -63.79129,
+        "lat": 46.391115,
+        "east": 0.37,
+        "south": 0.929,
+        "dist": 240,
+        "h": 0,
+        "agl": 118
+      },
+      "art": {
+        "triangles": 392959,
+        "calls": 127
+      },
+      "old": {
+        "triangles": 351354,
+        "calls": 117
+      },
+      "mask": {
+        "triangles": 392959,
+        "calls": 127
+      },
+      "surface": [
+        {
+          "height": 2.4068965517241123,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 2.4068965517241123,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 1.466492434049492,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": -0.055,
+          "land": false,
+          "runway": false
+        }
+      ],
+      "roadBefore": 18,
+      "meshes": {
+        "wanted": 27,
+        "ready": 27,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "10-12",
+          "ready",
+          8
+        ],
+        [
+          "10-13",
+          "ready",
+          8
+        ],
+        [
+          "10-14",
+          "ready",
+          8
+        ],
+        [
+          "6-12",
+          "ready",
+          8
+        ],
+        [
+          "6-13",
+          "ready",
+          8
+        ],
+        [
+          "7-11",
+          "ready",
+          8
+        ],
+        [
+          "7-12",
+          "ready",
+          56
+        ],
+        [
+          "7-13",
+          "ready",
+          56
+        ],
+        [
+          "8-11",
+          "ready",
+          8
+        ],
+        [
+          "8-12",
+          "ready",
+          56
+        ],
+        [
+          "8-13",
+          "ready",
+          112
+        ],
+        [
+          "8-14",
+          "ready",
+          56
+        ],
+        [
+          "8-15",
+          "ready",
+          8
+        ],
+        [
+          "9-11",
+          "ready",
+          8
+        ],
+        [
+          "9-12",
+          "ready",
+          56
+        ],
+        [
+          "9-13",
+          "ready",
+          56
+        ],
+        [
+          "9-14",
+          "ready",
+          56
+        ],
+        [
+          "9-15",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 14,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 741,
+        "maxSeatError": 2.9794911669475677e-06,
+        "maxAnalyticError": 2.9564059307318757e-06,
+        "minSigned": 45.61469013576766
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 30322,
+        "perceptible": 30007,
+        "unchangedOutside": 618819,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "east-coast-control",
+      "pose": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "h": 19.5,
+        "agl": 45
+      },
+      "art": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "old": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "mask": {
+        "triangles": 305769,
+        "calls": 265
+      },
+      "surface": [
+        {
+          "height": 10.190152066160586,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.170167200100517,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.824554499659728,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": -0.055,
+          "land": false,
+          "runway": false
+        }
+      ],
+      "roadBefore": 8,
+      "meshes": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "29-11",
+          "ready",
+          8
+        ],
+        [
+          "29-12",
+          "ready",
+          8
+        ],
+        [
+          "29-13",
+          "ready",
+          8
+        ],
+        [
+          "30-11",
+          "ready",
+          56
+        ],
+        [
+          "30-12",
+          "ready",
+          56
+        ],
+        [
+          "30-13",
+          "ready",
+          56
+        ],
+        [
+          "31-12",
+          "ready",
+          112
+        ]
+      ],
+      "state": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 0,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 0,
+        "maxSeatError": 0,
+        "maxAnalyticError": 0,
+        "minSigned": null
+      },
+      "shadows": null,
+      "pixels": {
+        "changed": 0,
+        "perceptible": 0,
+        "unchangedOutside": 655360,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "kings-gravel",
+      "pose": {
+        "lon": -62.68531215,
+        "lat": 46.4537084,
+        "east": 0.94,
+        "south": 0.342,
+        "dist": 38,
+        "h": 0,
+        "agl": 20
+      },
+      "art": {
+        "triangles": 254959,
+        "calls": 149
+      },
+      "old": {
+        "triangles": 253751,
+        "calls": 148
+      },
+      "mask": {
+        "triangles": 254959,
+        "calls": 149
+      },
+      "surface": [
+        {
+          "height": 4.1776275862001695,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 4.1776275862001695,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 3.228399332786121,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 3.9035677405964817,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 10,
+      "meshes": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "20-12",
+          "ready",
+          8
+        ],
+        [
+          "20-13",
+          "ready",
+          8
+        ],
+        [
+          "21-12",
+          "ready",
+          56
+        ],
+        [
+          "21-13",
+          "ready",
+          56
+        ],
+        [
+          "21-14",
+          "ready",
+          8
+        ],
+        [
+          "22-12",
+          "ready",
+          112
+        ],
+        [
+          "22-13",
+          "ready",
+          56
+        ],
+        [
+          "22-14",
+          "ready",
+          8
+        ],
+        [
+          "23-11",
+          "ready",
+          56
+        ],
+        [
+          "23-12",
+          "ready",
+          56
+        ],
+        [
+          "23-13",
+          "ready",
+          56
+        ],
+        [
+          "24-11",
+          "ready",
+          8
+        ],
+        [
+          "24-12",
+          "ready",
+          8
+        ],
+        [
+          "24-13",
+          "ready",
+          8
+        ]
+      ],
+      "state": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 1,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 17,
+        "maxSeatError": 7.646873943223387e-07,
+        "maxAnalyticError": 6.334958815301661e-07,
+        "minSigned": 236.35432956363184
+      },
+      "shadows": {
+        "active": true,
+        "strength": 1,
+        "updates": 1,
+        "depthDraws": 1,
+        "depthTriangles": 6018
+      },
+      "pixels": {
+        "changed": 341739,
+        "perceptible": 331832,
+        "unchangedOutside": 308460,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    },
+    {
+      "site": "south-shore-compacted",
+      "pose": {
+        "lon": -63.69060465,
+        "lat": 46.25495535,
+        "east": 0.54,
+        "south": -0.842,
+        "dist": 34,
+        "h": 0,
+        "agl": 18
+      },
+      "art": {
+        "triangles": 235861,
+        "calls": 24
+      },
+      "old": {
+        "triangles": 233395,
+        "calls": 22
+      },
+      "mask": {
+        "triangles": 235861,
+        "calls": 24
+      },
+      "surface": [
+        {
+          "height": 9.12,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 9.12,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 10.053235149955634,
+          "land": true,
+          "runway": false
+        },
+        {
+          "height": 9.12,
+          "land": true,
+          "runway": false
+        }
+      ],
+      "roadBefore": 17,
+      "meshes": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "groundSignature": [
+        [
+          "10-14",
+          "ready",
+          56
+        ],
+        [
+          "10-15",
+          "ready",
+          112
+        ],
+        [
+          "10-16",
+          "ready",
+          112
+        ],
+        [
+          "11-14",
+          "ready",
+          8
+        ],
+        [
+          "11-15",
+          "ready",
+          8
+        ],
+        [
+          "11-16",
+          "ready",
+          8
+        ],
+        [
+          "11-17",
+          "ready",
+          8
+        ],
+        [
+          "8-14",
+          "ready",
+          8
+        ],
+        [
+          "8-15",
+          "ready",
+          56
+        ],
+        [
+          "9-14",
+          "ready",
+          56
+        ],
+        [
+          "9-15",
+          "ready",
+          112
+        ],
+        [
+          "9-16",
+          "ready",
+          112
+        ]
+      ],
+      "state": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 3,
+        "pending": 0,
+        "visible": true
+      },
+      "stats": {
+        "checked": 37,
+        "maxSeatError": 2.483340069553419e-06,
+        "maxAnalyticError": 2.4506553693015576e-06,
+        "minSigned": 237.063496233965
+      },
+      "shadows": {
+        "active": true,
+        "strength": 1,
+        "updates": 2,
+        "depthDraws": 2,
+        "depthTriangles": 17123
+      },
+      "pixels": {
+        "changed": 135691,
+        "perceptible": 135662,
+        "unchangedOutside": 516457,
+        "aaFringePixels": 0,
+        "imageSize": [
+          1024,
+          640
+        ]
+      }
+    }
+  ],
+  "transferFaults": [
+    {
+      "case": "healthy",
+      "site": "cavendish",
+      "movedMetres": 35.96,
+      "installed": {
+        "id": "mapped-parking-surfaces-v1",
+        "tiles": 3,
+        "pending": 0,
+        "visible": true
+      },
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "missing",
+      "site": "cavendish",
+      "movedMetres": 39.56,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "corrupt",
+      "site": "cavendish",
+      "movedMetres": 36.56,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "stalled",
+      "site": "cavendish",
+      "movedMetres": 87.52,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [
+        "net::ERR_ABORTED"
+      ],
+      "errors": []
+    }
+  ]
+}

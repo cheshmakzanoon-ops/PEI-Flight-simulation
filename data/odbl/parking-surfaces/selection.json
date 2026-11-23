@@ -1,0 +1,77 @@
+{
+  "id": "mapped-parking-surfaces-v1",
+  "asset": "ground/odbl/v1/parking-surfaces.bin.gz",
+  "tiles": 136,
+  "lots": 539,
+  "pieces": 565,
+  "projectedTileMetres": 1024,
+  "decodedBytes": 244560,
+  "compressedBytes": 200124,
+  "sha256": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+  "crc32": "6d592859",
+  "pinCoverSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+  "pinBuildingAtlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "pinRoadGeometrySha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "pinSidewalkSha256": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+  "source": "https://download.geofabrik.de/north-america/canada/prince-edward-island/prince-edward-island-261101.osm.pbf",
+  "archiveSha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "eligibleBeforeClipping": 566,
+  "excluded": {
+    "untyped material": 1135,
+    "invalid outline": 2,
+    "explicit access exclusion": 194,
+    "above/below ground or ambiguous profile": 3,
+    "shape size/quality": 10,
+    "narrow/fractional remainder": 2,
+    "unreliable signed-land envelope": 25
+  },
+  "counts": {
+    "Summerside": {
+      "areaM2": 484567.35,
+      "pieces": 201,
+      "sourceLots": 196
+    },
+    "asphalt": {
+      "areaM2": 1044838.2,
+      "pieces": 499,
+      "sourceLots": 477
+    },
+    "Other PEI": {
+      "areaM2": 323646.66,
+      "pieces": 205,
+      "sourceLots": 188
+    },
+    "Charlottetown": {
+      "areaM2": 292363.04,
+      "pieces": 151,
+      "sourceLots": 148
+    },
+    "compacted": {
+      "areaM2": 19878.53,
+      "pieces": 26,
+      "sourceLots": 26
+    },
+    "gravel": {
+      "areaM2": 24569.89,
+      "pieces": 21,
+      "sourceLots": 20
+    },
+    "Montague": {
+      "areaM2": 10218.72,
+      "pieces": 8,
+      "sourceLots": 7
+    },
+    "paved": {
+      "areaM2": 4804.0,
+      "pieces": 6,
+      "sourceLots": 6
+    },
+    "unpaved": {
+      "areaM2": 16705.16,
+      "pieces": 13,
+      "sourceLots": 10
+    }
+  },
+  "compressedSha256": "2a048af5189beb73c9e107034b80640a8567f4049620a429e79fbfeb9cb30cc1",
+  "odblSha256": "37e5d54cec1586a6db56db0841efea6d98c295538bcd3992080567f9345cca18"
+}

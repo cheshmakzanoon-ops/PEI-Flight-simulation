@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""Capture the mapped parking surfaces before/after within one loaded Three.js frame."""
+import argparse
+import base64
+import importlib.util
+import json
+import os
+from pathlib import Path
+from urllib.parse import quote
+
+from PIL import Image
+import numpy as np
+
+q = importlib.util.spec_from_file_location('fixed',Path(__file__).with_name('fixed-scenery.py'))
+fixed = importlib.util.module_from_spec(q)
+q.loader.exec_module(fixed)
+base_stage = fixed.stage
+
+POSES = {
+ 'water-street-asphalt': dict(lon=-63.791293443,lat=46.391106456,east=.40,south=.917,dist=69,h=0,agl=53),
+ 'kings-gravel': dict(lon=-62.68531215,lat=46.45370840,east=.94,south=.342,dist=38,h=0,agl=20),
+ 'south-shore-compacted': dict(lon=-63.69060465,lat=46.25495535,east=.54,south=-.842,dist=34,h=0,agl=18),
+ 'summerside-district': dict(lon=-63.79129,lat=46.391115,east=.37,south=.929,dist=240,h=0,agl=118),
+ 'east-coast-control': dict(lon=-61.9718333333,lat=46.452527778,east=.91,south=-.415,dist=125,h=19.5,agl=45),
+}
+
+
+
+def stage(repo,root,deps,void_probe):
+    base_stage(repo,root,deps,void_probe)
+    main=root/'src/main.ts'
+    main.write_text(fixed.once(main.read_text(),'renderer.render(scene,camera);','''
+    renderer.render(scene,camera);
+    const regions=(world as any).tiles.filter((t:any)=>Math.hypot(camera.position.x-t.x0-t.w*.5,camera.position.z-t.z0-t.d*.5)<14500);
+    (window as any).parkingAtlasReady=regions.every((t:any)=>t.status==='ready'||t.status==='uncovered');
+    (window as any).captureParking=()=>{
+     const g=scene.getObjectByName('Mapped PEI parking surfaces');
+     const save=()=>{
+      renderer.render(scene,camera);
+      return {image:renderer.domElement.toDataURL('image/png'),triangles:renderer.info.render.triangles,calls:renderer.info.render.calls};
+     };
+     const samples=[[center.x,center.z],[center.x+2,center.z],[center.x,center.z+45],[f.x,f.z]];
+     const surface=samples.map(([x,z])=>world.surface(x,z));
+     const art=save();
+     if(g)g.visible=false;
+     const old=save();
+     if(g)g.visible=true;
+     const original=((g?.children[0] as THREE.Mesh|undefined)?.material) as THREE.ShaderMaterial|undefined;
+     const test=original?.clone();
+     if(test&&original){
+      test.uniforms=original.uniforms;
+      test.fragmentShader=test.fragmentShader.replace(
+        'gl_FragColor=vec4(mix(c,vec3(.56,.68,.72),1.-exp(-d*.000021)),alpha);',
+        'gl_FragColor=vec4(0.,1.,.06,alpha);');
+      g?.children.forEach(o=>(o as THREE.Mesh).material=test);
+     }
+     const mask=save();
+     if(original)g?.children.forEach(o=>(o as THREE.Mesh).material=original);
+     test?.dispose();
+     const tiles=(g?.children??[]) as THREE.Mesh[];
+     const ray=new THREE.Raycaster(),down=new THREE.Vector3(0,-1,0);
+     let checked=0,maxSeatError=0,maxAnalyticError=0,minSigned=Infinity;
+     for(const m of tiles){
+      const pos=m.geometry.getAttribute('position'),at=m.geometry.getAttribute('parkLayer'),n=Math.min(pos.count,m.geometry.drawRange.count);
+      for(let i=0;i+2<n;i+=3){
+       if(i%219)continue;
+       const x=m.position.x+(pos.getX(i)+pos.getX(i+1)+pos.getX(i+2))/3;
+       const y=(pos.getY(i)+pos.getY(i+1)+pos.getY(i+2))/3;
+       const z=m.position.z+(pos.getZ(i)+pos.getZ(i+1)+pos.getZ(i+2))/3;
+       const w=(world as any).tiles.find((p:any)=>x>p.x0&&x<p.x0+p.w&&z>p.z0&&z<p.z0+p.d);
+       if(!w)throw Error('No rendered parking polygon substrate');
+       ray.set(new THREE.Vector3(x,y+12,z),down);const k=ray.intersectObject((w.lod>8?w.fine:w.coarse),false)[0];
+       if(!k)throw Error('No terrain ray below a rendered parking polygon');
+       const p=world.visualGroundHeight(x,z),c=world.cover.distance(world.terrain,x,z);
+       const expected=.017+.023*(at.getY(i)+at.getY(i+1)+at.getY(i+2))/3;
+       if(maxSeatError<Math.abs(y-k.point.y-expected))maxSeatError=Math.abs(y-k.point.y-expected);
+       maxAnalyticError=Math.max(maxAnalyticError,Math.abs(p-k.point.y));minSigned=Math.min(c,minSigned);checked++;
+      }
+     }
+     return {art,old,mask,surface,roadBefore:scene.getObjectByName('PEI National Road Network')?.children.length??0,
+      meshes:buildings?.diagnostics(),groundSignature:regions.map((p:any)=>[p.id,p.status,p.lod]).sort(),
+      state:parking?.state??null,stats:{checked,maxSeatError,maxAnalyticError,minSigned:checked?minSigned:null},shadows:world.buildingShadows?.state??null};
+    };
+    '''))
+
+
+def capture(args,browser,url):
+    reports=[]
+    for site in args.views.split(','):
+        pose=POSES[site]
+        context=browser.new_context(viewport=dict(width=1024,height=640),device_scale_factor=1)
+        try:
+            page=context.new_page();page.set_default_timeout(100000);errors=[]
+            page.on('pageerror',lambda e:errors.append(str(e)))
+            page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
+            q='&buildingShadows' if args.shadows else ''
+            page.goto(url+'/?diagnostics'+q+'&qa='+quote(json.dumps(pose)),wait_until='domcontentloaded')
+            page.add_style_tag(content='body *{visibility:hidden!important} #world{visibility:visible!important}')
+            try:page.wait_for_function('''(()=>{
+               const d=window.islandAirDiagnostics,t=d?.buildingTiles,v=d?.parking;
+               return window.reviewCamera?.frame>30&&window.parkingAtlasReady&&d.roads&&d.mainland&&!d.detail.loading&&
+                 !d.detail.missing&&!d.layerWarnings.length&&t&&t.pending===0&&t.loading===0&&t.failed===0&&t.ready===t.wanted&&
+                 v?.pending===0&&(!d.hedgerows||!d.hedgerows.inflight)&&d.sidewalks?.pending===0;
+            })()''',timeout=190000,polling=250)
+            except Exception:
+                print(site,'unsettled',page.evaluate('({diag:window.islandAirDiagnostics,qa:window.reviewCamera,parkingAtlasReady:window.parkingAtlasReady,ui:document.body.innerText.slice(-250)})'),errors,flush=True)
+                raise
+            if args.shadows:page.wait_for_function('window.islandAirDiagnostics?.buildingShadows?.active',timeout=90000)
+            frame=page.evaluate('window.captureParking()')
+            if errors:raise RuntimeError(str(errors))
+            for art in ('old','art','mask'):
+                png=base64.b64decode(frame[art].pop('image').split(',',1)[1])
+                (args.out/f'{site}-{art}.png').write_bytes(png)
+            a,b,m=[np.asarray(Image.open(args.out/f'{site}-{x}.png').convert('RGB'),np.int16) for x in ('old','art','mask')]
+            diff=np.max(np.abs(a-b),axis=-1);eligible=np.max(np.abs(a-m),axis=-1)>0
+            # The semantic material and alpha-covered artwork can resolve
+            # differently across an AA fringe. Admit only the adjacent pixel.
+            front=eligible;pad=np.pad(front,1);h,w=front.shape
+            eligible=np.zeros_like(front)
+            for y in range(3):
+                for x in range(3):eligible |= pad[y:y+h,x:x+w]
+            if (diff[~eligible]>0).any():raise AssertionError((site,int((diff[~eligible]>0).sum())))
+            if site=='east-coast-control':
+                assert not diff.any() and not frame['state']['tiles'] and not frame['stats']['checked']
+            else:
+                assert (diff>4).sum()>300 and frame['stats']['checked']>0 and frame['stats']['maxSeatError']<.006,frame
+            frame['pixels']=dict(changed=int((diff>0).sum()),perceptible=int((diff>4).sum()),
+               unchangedOutside=int((~eligible).sum()),aaFringePixels=int(((diff>0)&(~front)).sum()),imageSize=list(a.shape[:2][::-1]))
+            reports.append(dict(site=site,pose=pose,**frame))
+            (args.out/'report.json').write_text(json.dumps(reports,indent=2)+'\n')
+            print(site,frame['old']['calls'],frame['art']['calls'],frame['old']['triangles'],frame['art']['triangles'],
+                  frame['pixels'],frame['stats'],flush=True)
+        finally:
+            context.close()
+
+
+fixed.stage,fixed.capture=stage,capture
+if __name__=='__main__':
+    a=argparse.ArgumentParser(description=__doc__)
+    a.add_argument('--checkout',type=Path,required=True);a.add_argument('--out',type=Path,required=True)
+    a.add_argument('--deps',type=Path);a.add_argument('--chromium',default=os.getenv('CHROMIUM','chromium'))
+    a.add_argument('--views',default=','.join(POSES));a.add_argument('--shadows',action='store_true')
+    a.set_defaults(void_probe=False)
+    fixed.run(a.parse_args())
