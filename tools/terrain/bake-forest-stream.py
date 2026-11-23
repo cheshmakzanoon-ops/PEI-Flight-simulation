@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Reproduce the optional province-wide forestry stream from the official archive."""
-import argparse,gzip,hashlib,json
+import argparse,gzip,hashlib,json,shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
@@ -10,6 +10,7 @@ import numpy as np
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--archive',type=Path,required=True,help='Official zipped EFI2020 Shapefile')
 p.add_argument('--out',type=Path,required=True,help='Output stream-v1 directory')
+p.add_argument('--native-grid',type=Path,help='Also save the unwarped 20 m EPSG:2954 stand grid for hedge generation')
 args=p.parse_args()
 expected='b00bf8767b67a8269cb69f7fe0df2540e657357cb1d82bd42477c0cbc20a893c'
 with args.archive.open('rb') as src:
@@ -29,6 +30,10 @@ with TemporaryDirectory(prefix='pei-efi-') as tmp:
       attribute='domht',where='domht >= 2 AND domht <= 50',noData=0,
       outputType=gdal.GDT_Float32,creationOptions=['TILED=YES','COMPRESS=DEFLATE','PREDICTOR=3']))
  assert native.RasterXSize==9344 and native.RasterYSize==6113
+ if args.native_grid:
+  native=None;args.native_grid.parent.mkdir(parents=True,exist_ok=True)
+  shutil.copyfile(t/'native.tif',args.native_grid)
+  native=gdal.Open(str(t/'native.tif'))
  atlas=gdal.Warp('',native,format='MEM',srcSRS='EPSG:2954',dstSRS='EPSG:4326',
     outputBounds=[-64.47,45.94,-61.93,47.1],width=10240,height=7040,
     srcNodata=0,dstNodata=0,resampleAlg='near',errorThreshold=0)

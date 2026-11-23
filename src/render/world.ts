@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
+import {facet,loadCoastalSurveys,GROUND_LIFT,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
 import {insertCoastalGrid} from './coastal-patch.ts';
 import { Terrain, OCEAN_Y, type TerrainSpec } from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
@@ -374,6 +374,23 @@ export class World {
   if(site)m.userData.coastalSurvey=site.spec.id;
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
+ }
+ /** Height of the submitted regular grid (including sewn tile-edge vertices).
+  * Decorative roots use this, not the map or aerodynamic contact sampler. */
+ visualGroundHeight(x:number,z:number){
+  const [u,v]=this.terrain.uv(x,z),i=Math.floor(u*WORLD_COLS),j=Math.floor(v*WORLD_ROWS);
+  const tile=this.byId.get(i+'-'+j);
+  if(!tile)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
+  const g=(tile.lod>8&&tile.fine?tile.fine:tile.coarse);
+  const n=g.userData.subdiv as number,step=n+1;
+  const grid=this.terrain.coastalGrids.find(a=>a.spec.tileX===i&&a.spec.tileZ===j);
+  // The mapped hedgerow layer skips survey insert tiles. Keep this helper
+  // valid for the regular mesh; do not claim a survey renderer ray here.
+  if(grid)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
+  const sx=Math.max(0,Math.min(n,(x-tile.x0)/tile.w*n)),sz=Math.max(0,Math.min(n,(z-tile.z0)/tile.d*n));
+  const p=Math.min(n-1,Math.floor(sx)),q=Math.min(n-1,Math.floor(sz)),k=q*step+p;
+  const xyz=g.geometry.getAttribute('position');
+  return facet(sx-p,sz-q,xyz.getY(k),xyz.getY(k+1),xyz.getY(k+step),xyz.getY(k+step+1));
  }
  groundHeight(x:number,z:number,land?:boolean){
   // Both shaders use the continuous Cover mask. A missing province DEM cell

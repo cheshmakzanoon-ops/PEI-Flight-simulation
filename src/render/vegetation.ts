@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import type {ForestHeights} from '../sim/forest-heights.ts';
+import type {HedgeStream} from '../sim/hedge-stream.ts';
 import type {ForestStream} from '../sim/forest-stream.ts';
 import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
@@ -38,9 +39,16 @@ const crownF=`
  #include <colorspace_fragment>
  }`;
 const shadowV=pars+`
+ attribute vec4 hedgeGround;
  void main(){
   vec2 off=vec2(.43,.21)*shape.x;
   vec3 p=stem+vec3(off.x+position.x*shape.y*1.42,.46,off.y+position.y*shape.y*1.19);
+  // Existing forest shadows retain their prior path. The appended hedge
+  // support follows the same regular terrain triangles as the roots.
+  if(any(notEqual(hedgeGround,vec4(0.)))){
+   vec2 st=position.xy+.5;
+   p.y=mix(mix(hedgeGround.x,hedgeGround.y,st.x),mix(hedgeGround.z,hedgeGround.w,st.x),st.y);
+  }
   gl_Position=projectionMatrix*viewMatrix*vec4(p,1.);vUV=uv;param=vec3(shape.z,0.,shape.w);
  #include <logdepthbuf_vertex>
  }`;
@@ -60,10 +68,15 @@ export class Vegetation {
  private crown:THREE.Mesh;private shade:THREE.Mesh;private geom:THREE.InstancedBufferGeometry;
  private stems=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*3),3).setUsage(THREE.DynamicDrawUsage);
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
+ private hedgeGround=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
+ private hedgeStart=0;
+ private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
+ get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
- constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream){
+ constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
-  g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.instanceCount=0;this.geom=g;
+  g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
   const uniforms={canopy:{value:canopy}};
   this.crown=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:crownV,fragmentShader:crownF,uniforms,side:THREE.DoubleSide,alphaToCoverage:true}));
@@ -92,8 +105,11 @@ export class Vegetation {
  }
  update(x:number,z:number,alt:number){
   this.crown.visible=this.shade.visible=alt<4200;
-  if(!this.crown.visible||Math.hypot(x-this.lastX,z-this.lastZ)<135)return;
-  this.forestStream?.update(x,z);
+  if(!this.crown.visible)return;
+  const move=Math.hypot(x-this.lastX,z-this.lastZ)>=135,now=performance.now(),hedgeRev=this.hedges?.revision??0;
+  if(!move&&(hedgeRev===this.hedgeRev||now-this.hedgeApply<350))return;
+  if(move){this.forestStream?.update(x,z);this.hedges?.move(x,z);}
+  this.hedgeRev=hedgeRev;this.hedgeApply=now;
   this.lastX=x;this.lastZ=z;let count=0;const wanted=new Set<string>();
   for(let tz=Math.floor((z-radius)/span);tz<=Math.floor((z+radius)/span);tz++)for(let tx=Math.floor((x-radius)/span);tx<=Math.floor((x+radius)/span);tx++){
    const key=tx+':'+tz,rx=tx*span-x,rz=tz*span-z;
@@ -105,6 +121,39 @@ export class Vegetation {
     this.stems.setXYZ(count,a[i],a[i+1],a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);count++;
    }
   }
+  const originalCount=count;
+  this.hedges?.draw(x,z,(hx,hz,h,style)=>{
+   if(count>=maxTrees)return false;
+   if(this.cover.distance(this.t,hx,hz)<6||runwayAt(hx,hz)||insideLighthouseYard(hx,hz,4))return true;
+   if(this.t.coastalGrids.some(c=>c.spec.tileX===Math.floor((hx-this.t.left)/(this.t.right-this.t.left)*32)&&
+       c.spec.tileZ===Math.floor((hz-this.t.top)/(this.t.bottom-this.t.top)*22)))return true;
+   const range=1-Math.max(0,Math.min(1,(Math.hypot(hx-x,hz-z)-1450)/370));
+   const fade=range*range*(3-2*range);if(fade<.004)return true;
+   const i=Math.floor(hx*2),j=Math.floor(hz*2),v=rand(i,j,43);
+   const variant=style===1?(v<.64?0:1):v<.16?2:v<.53?1:v<.92?0:3;
+   const span=h*(style===1?1.36+.32*rand(i,j,6):.87+.32*rand(i,j,6));
+   const ground=this.decorativeY??((x:number,z:number)=>this.t.meshElevation(x,z));
+   const y=ground(hx,hz)-(style===1?.22:.20);
+   const height=h*fade,width=span*fade;
+   const rx=hx+.43*height,rz=hz+.21*height,wx=width*.71,wz=width*.595;
+   const y0=ground(rx-wx,rz-wz),y1=ground(rx+wx,rz-wz),y2=ground(rx-wx,rz+wz),y3=ground(rx+wx,rz+wz);
+   // Render the quad against real sewn vertices. A sub-decimetre
+   // receiver offset covers a small crossing of the land's own diagonal.
+   const bias=.028+Math.max(0,Math.min(.12,ground(rx,rz)-Math.min((y1+y2)*.5,(y0+y3)*.5)));
+   this.hedgeGround.setXYZW(count,y0+bias,y1+bias,y2+bias,y3+bias);
+   this.stems.setXYZ(count,hx,y,hz);this.shapes.setXYZW(count,height,width,variant,.74+.42*rand(i,j,8));count++;return true;
+  });
+  // Re-used slots that become old forest instances cannot inherit stale
+  // hedge shadow corners, including after a relocation.
+  const changedStart=Math.min(originalCount,this.hedgeStart);
+  if(originalCount>this.hedgeStart)(this.hedgeGround.array as Float32Array).fill(0,this.hedgeStart*4,originalCount*4);
+  if(count>changedStart){
+   this.hedgeGround.clearUpdateRanges();
+   this.hedgeGround.addUpdateRange(changedStart*4,(count-changedStart)*4);
+   this.hedgeGround.needsUpdate=true;
+  }
+  this.hedgeStart=originalCount;
+  this.lastHedges=count-originalCount;
   for(const key of this.cache.keys())if(!wanted.has(key))this.cache.delete(key);
   this.geom.instanceCount=count;this.stems.clearUpdateRanges();this.stems.addUpdateRange(0,count*3);this.stems.needsUpdate=true;
   this.shapes.clearUpdateRanges();this.shapes.addUpdateRange(0,count*4);this.shapes.needsUpdate=true;
