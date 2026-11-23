@@ -2,7 +2,7 @@ import type {MeshStandardMaterial} from 'three';
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
 export function addRoadSurface(material:MeshStandardMaterial){
- material.customProgramCacheKey=()=> 'pei-road-surface-v1';
+ material.customProgramCacheKey=()=> 'pei-road-surface-v2';
  material.onBeforeCompile=(shader)=>{
   shader.vertexShader=shader.vertexShader.replace('#include <common>',`
    #include <common>
@@ -45,9 +45,32 @@ export function addRoadSurface(material:MeshStandardMaterial){
     float grain=(aggregate-.5)*fine*mix(.20,.40,gravel);
     float var=((wearPatch-.5)*.24+(weather-.5)*.11)*medium;
     float polish=wheel*edgeFade*mix(-.13,-.06,paved)*max(paved,gravel);
-    diffuseColor.rgb*=1.+grain+var+medium*polish;
+    if(vRoadSurface.y<-.22){
+     // Finer compacted soil and fine crumbs, not the old speckled aggregate.
+     // Keep wheel wear low contrast and break it into continuous terrain-space
+     // patches. These are visual cues, not measured wheel ruts or soil type.
+     float dustControl=roadNoise(vRoadWorld*.103+vec2(4.2,-1.5));
+     float use=smoothstep(.19,.75,dustControl);
+     vec3 soil=diffuseColor.rgb;
+     soil*=1.+medium*(.29*(wearPatch-.5)+.16*(weather-.5));
+     soil*=1.+fine*.29*(aggregate-.5);
+     soil*=1.-edgeFade*wheel*(.055+.076*use)*medium;
+     vec3 edgeDust=vec3(.245,.109,.047)*(1.+.22*(weather-.5));
+     soil=mix(soil,edgeDust,shoulder*medium*.21);
+     diffuseColor.rgb=soil;
+     // A fine and macroscopic edge interruption keeps the new dirt
+     // from reading like a painted rectangular ribbon at low altitude.
+     // Paved, aggregate and bridge alpha values remain exactly one.
+     float shoulderNoise=(weather-.5)*.09+(aggregate-.5)*.065;
+     float shoulderWeight=smoothstep(.76,.985,edge+shoulderNoise);
+     diffuseColor.a*=1.-shoulderWeight*edgeFade;
+     if(diffuseColor.a<.025)discard;
+
+    }else{
+         diffuseColor.rgb*=1.+grain+var+medium*polish;
     vec3 dust=mix(vec3(.34,.22,.13),vec3(.21,.15,.11),paved);
     diffuseColor.rgb=mix(diffuseColor.rgb,dust,shoulder*medium*(.28*gravel+.17*paved));
+    }
    }
   `);
  };

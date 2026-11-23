@@ -11,7 +11,7 @@ registered. This is not a surveyed or navigation-grade projection.
 | Land and coast | Statistics Canada 2021 Census cartographic boundary, PRUID 11 | Rasterized coast mask at approximately 47 m spacing. Narrow sandbars and small islands can disappear at this spacing. |
 | Elevation | NRCan CanElevation HRDEM Mosaic, bare-earth LiDAR | 4,096 × 2,720 signed little-endian metre samples. Of 2,536,776 land cells, 2,536,619 have measured data. 157 missing near-shore samples are filled at sea level. |
 | Surface colour | Copernicus Sentinel-2 L2A, nine scenes acquired in 2025 | Cloud-screened 4,096 × 3,072 natural-colour mosaic. All mask land pixels have an image value; 99.958% passed the accepted scene-class filter. Fine street and roof detail do not come from this texture. |
-| Roads | Statistics Canada National Road Network, PEI 22_1 | 19,465 source centreline segments. Width, grade and appearance are visual approximations. |
+| Roads | Statistics Canada National Road Network, PEI 22_1 | 19,465 source centreline segments. [Mapped dirt, gravel and paved surfaces](qa/road-surface-types.md) have distinct treatments; widths and grades remain visual approximations. |
 | Buildings | NRCan Automatically Extracted Buildings, PEI 2020 airborne LiDAR | 85,866 detected footprints with measured roof heights across 295 chunks. Heights and footprints do not establish facade materials, signs, floor plans, occupancy or current businesses. |
 | Runways | OurAirports public-domain threshold coordinates | Three strips at Charlottetown and Summerside. Paint and ground detail are simplified. |
 

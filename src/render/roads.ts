@@ -3,6 +3,7 @@ import {unpackGzip} from '../sim/compression.ts';
 import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import {addRoadSurface} from './road-surface.ts';
+import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
 import type { Terrain } from '../sim/terrain.ts';
 
 type Road = { flags: number; points: {x: number; z: number}[] };
@@ -11,6 +12,7 @@ const VIEW = 9500;
 const HALF_WIDTH = [2.0, 2.8, 3.6, 4.8, 6.4];
 const tarmac = new THREE.Color(0x5e5b52);
 const gravel = new THREE.Color(0x9f7658);
+const dirt = new THREE.Color(0x885d43);
 const bridge = new THREE.Color(0x757777);
 
 export function decodeRoads(data: ArrayBuffer): Road[] {
@@ -39,18 +41,34 @@ export function decodeRoads(data: ArrayBuffer): Road[] {
   return roads;
 }
 
+// These ordinal flags are safe only for the packed geometry record that was
+// replayed against the same official source. They never alter road geometry.
+export async function classifiedDirt(data:ArrayBuffer,count:number){
+ if(count!==NRN_DIRT_SOURCE_COUNT||!globalThis.crypto?.subtle)return;
+ try{
+  const r=new Uint8Array(await crypto.subtle.digest('SHA-256',data));
+  if(Array.from(r,x=>x.toString(16).padStart(2,'0')).join('')!==NRN_DIRT_SOURCE_SHA256)return;
+  const bits=atob(NRN_DIRT_SOURCE_BITS);
+  if(bits.length!==Math.ceil(count/8))return;
+  return bits;
+ }catch{return;}
+}
 type Tile = {x: number; z: number; segments: number[]};
 export class Roads {
   private readonly root = new THREE.Group();
   private readonly material = new THREE.MeshStandardMaterial({
     vertexColors: true, roughness: 0.98, side: THREE.DoubleSide,
+    alphaToCoverage: true,
     polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
   });
   private readonly visible = new Map<string, THREE.Mesh>();
   private lastX = Infinity;
   private lastZ = Infinity;
 
-  private constructor(scene: THREE.Scene, private readonly tiles: Map<string, Tile>, private readonly terrain: Terrain) {
+  private readonly tiles: Map<string, Tile>;
+  private readonly terrain: Terrain;
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain) {
+    this.tiles=tiles;this.terrain=terrain;
     this.root.name = 'PEI National Road Network';
     addRoadSurface(this.material);
     scene.add(this.root);
@@ -61,7 +79,11 @@ export class Roads {
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
     const data = await unpackGzip(await response.arrayBuffer());
     const tiles = new Map<string, Tile>();
-    for (const {points, flags} of decodeRoads(data)) {
+    const roads=decodeRoads(data),dirtBits=await classifiedDirt(data,roads.length);
+    for (let ordinal=0;ordinal<roads.length;ordinal++) {
+      const {points,flags:sourceFlags}=roads[ordinal];
+      const isDirt=!!dirtBits&&!(sourceFlags&24)&&!!(dirtBits.charCodeAt(ordinal>>3)&(1<<(ordinal&7)));
+      const flags=isDirt?sourceFlags|32:sourceFlags;
       for(let i=1; i<points.length; i++) {
         const a=points[i-1], b=points[i], dx=b.x-a.x, dz=b.z-a.z;
         const len=Math.hypot(dx,dz);
@@ -89,7 +111,7 @@ export class Roads {
       const [x0,z0,x1,z1,flags]=tile.segments.slice(i,i+5);
       const dx=x1-x0, dz=z1-z0, len=Math.hypot(dx,dz), width=HALF_WIDTH[flags&7];
       const rx=dz*width/len, rz=-dx*width/len, n=Math.ceil(len/28);
-      const isBridge=!!(flags&16), color=isBridge?bridge:(flags&8)?tarmac:gravel;
+      const isBridge=!!(flags&16), color=isBridge?bridge:(flags&8)?tarmac:(flags&32)?dirt:gravel;
       for(let k=0;k<n;k++){
         const p=k/n,q=(k+1)/n,x=x0+p*dx,z=z0+p*dz,u=x0+q*dx,v=z0+q*dz;
         const mx=(x+u)/2,mz=(z+v)/2;
@@ -101,7 +123,7 @@ export class Roads {
           lx+rx,py,lz+rz, lx-rx,py,lz-rz, lu+rx,qy,lv+rz,
           lu+rx,qy,lv+rz, lx-rx,py,lz-rz, lu-rx,qy,lv-rz,
         );
-        const kind=isBridge?127:(flags&8)?64:0;
+        const kind=isBridge?127:(flags&8)?64:(flags&32)?-64:0;
         for(let k=0;k<6;k++){
           colors.push(color.r,color.g,color.b);
           surface.push(k===1||k===4||k===5?-127:127,kind);
