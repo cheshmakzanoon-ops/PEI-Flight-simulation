@@ -42,3 +42,19 @@ For the reference frame, pass a separate checkout at `323f090` and keep this
 same capture script. The paired views run the full Three.js scene with the
 same pose and water phase. Rendering diagnostics add two draws and 1,584
 triangles at the New Brunswick approach and navigation span.
+
+## Concrete close-up
+
+![Same pier view before and after the marine-concrete material pass](confederation-concrete-comparison.webp)
+
+The concrete now has original procedural casting streaks, faint horizontal
+lift marks on the shafts, and darker waterline wear. Fine variations fade at
+distance. It does not ship reference photo pixels, add material downloads or
+change the bridge mesh. The visible joints, color variation, and waterline
+are modeled appearances, not a current inspection record.
+
+Run the pose tool with `--views nb-concrete,pei-concrete` and use
+`9035789` as the before version. These are fixed 1,000 × 600 screenshots of
+the actual renderer, sampled immediately after the frame. Counts are unchanged:
+17 draws and 137,731 triangles at the New Brunswick pier; 115 draws and 234,285
+triangles at the PEI pier. Browser shader compilation was checked for both.
