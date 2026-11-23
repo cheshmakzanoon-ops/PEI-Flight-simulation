@@ -1,0 +1,65 @@
+{
+  "encoding": "384 lossless RGBA; R normalized log luminance, G/B source tangent normal, A ambient occlusion",
+  "assets": [
+    {
+      "id": "forrest_ground_01",
+      "page": "https://polyhaven.com/a/forrest_ground_01",
+      "author": "Rob Tuytel",
+      "licence": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "widthMetres": 2,
+      "raw": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_01/forrest_ground_01_diff_1k.jpg",
+          "bytes": 833711,
+          "sha256": "3dd6875cb3908e022a3c45ebbffa5e84c670ff2691fbbb6dc9ea4bff88523800"
+        },
+        {
+          "kind": "nor_gl",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_01/forrest_ground_01_nor_gl_1k.jpg",
+          "bytes": 1428763,
+          "sha256": "32528a7cdee962cc0b248ee4023a74d0df175737ea90e1eb425122351e0bdab4"
+        },
+        {
+          "kind": "AO",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_01/forrest_ground_01_ao_1k.jpg",
+          "bytes": 660492,
+          "sha256": "a3632232fa080e28239d456526a3f0c83e0a404515581339b9d6633324dca6a4"
+        }
+      ],
+      "file": "duff-1.webp",
+      "bytes": 506038,
+      "sha256": "0d4e807eac9bc10f1a20ac27728c02688ce36789b2646135072d7fd03ba7ba99"
+    },
+    {
+      "id": "forrest_ground_03",
+      "page": "https://polyhaven.com/a/forrest_ground_03",
+      "author": "Rob Tuytel",
+      "licence": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "widthMetres": 2,
+      "raw": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_03/forrest_ground_03_diff_1k.jpg",
+          "bytes": 821191,
+          "sha256": "69c3ae8a40c70eecbb312c2ca1044b5dea4f48d37f2a6f84ca7ed56b95f04a7b"
+        },
+        {
+          "kind": "nor_gl",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_03/forrest_ground_03_nor_gl_1k.jpg",
+          "bytes": 1587102,
+          "sha256": "2f2a18622ff1fde203ad7b17f12da5e46608b77b27307f6a91cc5a016cc72e41"
+        },
+        {
+          "kind": "AO",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forrest_ground_03/forrest_ground_03_ao_1k.jpg",
+          "bytes": 668218,
+          "sha256": "2a97f472f48b2e823e14b6156dfb454e48b9ea5923f8ec96fedba79c135a283f"
+        }
+      ],
+      "file": "duff-2.webp",
+      "bytes": 482992,
+      "sha256": "b9350b6f8936ff16a134093f69dd728e75683a8203921679668975625cf128cd"
+    }
+  ]
+}

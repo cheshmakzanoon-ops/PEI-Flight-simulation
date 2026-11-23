@@ -1,3 +1,4 @@
+import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
 import {adaptiveGround} from './adaptive-ground.ts';
 import type {ReliefPacks} from '../sim/relief-pack.ts';
 import type {ReliefSeed} from '../sim/relief-seed.ts';
@@ -178,7 +179,7 @@ const cliffFrag=(east:boolean)=>fp+(east?eastSandstoneGLSL:'')+`
  }
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false)=>fp+lighthouseGroundGLSL+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -200,7 +201,19 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  #ifdef SURVEY_LIGHT
  n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
  #endif
- float d=distance(cameraPosition,p),light=clamp(dot(n,sun),0.,1.);
+ float d=distance(cameraPosition,p);
+ ${showFloor&&castBuildings?'vec3 receiverPlane=n;':''}
+ ${showFloor?`
+ bool preserveFloor=false;
+ if(forestFloorMix>.001&&d<260.){
+  for(int k=0;k<3;k++){
+   vec2 offs=p.xz-airport[k].xy,axis=airport[k].zw;
+   float along=dot(offs,axis), across=abs(dot(offs,vec2(-axis.y,axis.x)));
+   if(along>=-34.&&along<=stripSize[k].x+34.&&across<=stripSize[k].y*.5+34.)preserveFloor=true;
+  }
+ }
+ enrichWoodlandFloor(col,n,coverMap,vuv,p,d,coast,preserveFloor);`:''}
+ float light=clamp(dot(n,sun),0.,1.);
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
  float cliff=(1.-smoothstep(3.,15.,coast))*smoothstep(3.,16.,p.y);
@@ -225,7 +238,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   col=mix(col,benchColor.rgb,pow(benchCover,1.15)*benchColor.a);
  }
  `:''}
- ${castBuildings?` float castShade=buildingShade(p,n,d);
+ ${castBuildings?` float castShade=buildingShade(p,${showFloor?'receiverPlane':'n'},d);
  col*=mix(vec3(1.),vec3(.69,.74,.81),castShade*(.39+.61*light));`:''}
  col*=.90+.31*light;
  ${souris?'col=sourisSoil(col,p,detailFade,max(length(dFdx(p.xz)),length(dFdy(p.xz))));':''}
@@ -291,8 +304,10 @@ export class World {
  private t={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
+ private readonly floor?:ForestFloor;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false){
+   if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
    const benchMask=east?bench:undefined;
@@ -352,6 +367,14 @@ export class World {
    this.mat=make(landFrag(false));
    this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
+   const protectsFloor=(i:number,j:number)=>{
+    if(i<0||i>=nx||j<0||j>=nz)return true;
+    if(T.surveyGrids.some(g=>g.spec.tileX===i&&g.spec.tileZ===j))return true;
+    const x=T.left+i*w,z=T.top+j*d;
+    return !!(harbour?.intersects(x,z,x+w,z+d)||sourisLighting?.intersects(x,z,x+w,z+d));
+   };
+   const neighbours=[[0,-1],[1,0],[0,1],[-1,0],[-1,-1],[1,-1],[1,1],[-1,1]] as const;
+
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
     const x0=T.left+i*w,z0=T.top+j*d;
     const sx=Math.floor(i*T.spec.width/nx),ex=Math.ceil((i+1)*T.spec.width/nx);
@@ -363,8 +386,12 @@ export class World {
     const useBench=rock&&!!benchMap;
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
+    const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
+    const guard=showLocalFloor?neighbours.reduce((m,[x,z],bit)=>protectsFloor(i+x,j+z)?m|(1<<bit):m,0):0;
+    const floorUniforms=showLocalFloor?{...this.floor!.uniforms,floorTileGuard:{value:guard},
+       floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows)});
+    const local=new THREE.ShaderMaterial({defines:survey?{SURVEY_LIGHT:1}:{},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...floorUniforms,...benchUniforms,...(localHarbour?harbourUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor)});
     const coarse=this.patch(x0,z0,w,d,8);coarse.material=local;scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
@@ -420,6 +447,7 @@ export class World {
  enableAdaptiveTerrain(stream:ReliefPacks){
   this.reliefPacks=stream;
  }
+ get floorState(){return this.floor?.state??null;}
  get adaptiveState(){return this.reliefPacks?{
   active:Array.from(this.reliefActive,t=>t.id),ready:this.reliefSeed.size,inflight:this.reliefPending.size,failed:this.reliefFailed.size,
   refined:Array.from(this.reliefActive,t=>t.relief!.mesh.relief.refinedCells).reduce((a,b)=>a+b,0),
@@ -532,6 +560,16 @@ export class World {
  }
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
+  const art=this.floor;
+  if(art){
+   let near=false;
+   if(art.state==='idle'&&pos.y-this.terrain.atlasElevation(pos.x,pos.z)<122){
+    for(const x of [-55,0,55])for(const z of [-55,0,55]){
+     if(this.cover.sample(this.terrain,pos.x+x,pos.z+z)===10&&this.cover.distance(this.terrain,pos.x+x,pos.z+z)>122)near=true;
+    }
+   }
+   art.update(near);
+  }
   if(Math.abs(clock-this.recent)<.25&&this.recent>0)return;
   this.recent=clock;let changedGround=false;
   // The visible curtain fills close headlands. Beyond the horizon detail load

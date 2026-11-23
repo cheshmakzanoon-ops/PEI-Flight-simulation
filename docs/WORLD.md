@@ -203,3 +203,5 @@ roof outlines; the pass is not a survey of individual trees.
 - [Optional terrain-seated road preview](qa/seated-road-preview.md): original plan geometry and material classes, regular near contact only.
 
 - [Optional near branched woodland](qa/branched-woodland-preview.md): true 3D near canopy, source stem positions preserved.
+
+- [Optional woodland floor surface](qa/forest-floor-preview.md): exact forest category gating and licensed stock leaf litter, no added geometry.

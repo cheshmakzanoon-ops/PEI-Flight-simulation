@@ -1,0 +1,199 @@
+{
+  "matched": {
+    "queens-close-inspection": {
+      "before": {
+        "calls": 100,
+        "tris": 359149
+      },
+      "after": {
+        "calls": 100,
+        "tris": 359149
+      },
+      "mask": {
+        "calls": 100,
+        "tris": 359149
+      },
+      "gain": 1,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 322686,
+        "over2": 320154,
+        "max": 69,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ]
+    },
+    "prince-needle": {
+      "before": {
+        "calls": 39,
+        "tris": 374472
+      },
+      "after": {
+        "calls": 39,
+        "tris": 374472
+      },
+      "mask": {
+        "calls": 39,
+        "tris": 374472
+      },
+      "gain": 1,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 189371,
+        "over2": 187776,
+        "max": 39,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ]
+    },
+    "queens-high-control": {
+      "before": {
+        "calls": 15,
+        "tris": 297410
+      },
+      "after": {
+        "calls": 15,
+        "tris": 297410
+      },
+      "mask": {
+        "calls": 15,
+        "tris": 297410
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": []
+    }
+  },
+  "corruptMapFallback": {
+    "queens-understory": {
+      "before": {
+        "calls": 95,
+        "tris": 327126
+      },
+      "after": {
+        "calls": 95,
+        "tris": 327126
+      },
+      "mask": {
+        "calls": 95,
+        "tris": 327126
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ]
+    }
+  },
+  "pairedWithNearCrowns": {
+    "queens-close-inspection": {
+      "before": {
+        "calls": 102,
+        "tris": 471924
+      },
+      "after": {
+        "calls": 102,
+        "tris": 471924
+      },
+      "mask": {
+        "calls": 102,
+        "tris": 471924
+      },
+      "gain": 1,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 321349,
+        "over2": 318589,
+        "max": 69,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ]
+    }
+  },
+  "territoryBoundaryAudit": {
+    "world": "934da2a8faf2be279e30ae333b3665cfe0ee558880f0df47cfc50a750cc80451",
+    "material": "cc95dab45e5f0cbf518da5cf127682226650488f7a5caffb731a6e62ab3c658c",
+    "actualInputs": {
+      "coast": 2,
+      "inland": 3,
+      "harbour": "quartermaster-coast-v1",
+      "souris": "souris-daylight-contact-v2"
+    },
+    "summary": [
+      {
+        "includeInland": false,
+        "renderTiles": 246,
+        "guardedNeighbourTiles": 32,
+        "exemptedDrawTiles": [
+          "1-9",
+          "31-12",
+          "28-14",
+          "16-16",
+          "17-16"
+        ],
+        "protectedRectCount": 5,
+        "checkedActualWeightSamples": 41718,
+        "nearestProtectedDistanceOracleMaxAbs": 5.53113110868253e-13,
+        "float32ShaderProxyMaxAbs": 2.0120541937306436e-05,
+        "protectedSamples": 5,
+        "exactUnaffectedInteriorSamples": 35295,
+        "edgeJoinPairs": 75,
+        "edgePoints": 1275,
+        "edgeJoinExactWorldMaxError": 3.601497131132216e-25,
+        "edgeJoinFloat32ProxyMaxError": 0
+      },
+      {
+        "includeInland": true,
+        "renderTiles": 246,
+        "guardedNeighbourTiles": 50,
+        "exemptedDrawTiles": [
+          "1-9",
+          "31-12",
+          "13-13",
+          "28-13",
+          "10-14",
+          "28-14",
+          "16-16",
+          "17-16"
+        ],
+        "protectedRectCount": 8,
+        "checkedActualWeightSamples": 65046,
+        "nearestProtectedDistanceOracleMaxAbs": 5.53113110868253e-13,
+        "float32ShaderProxyMaxAbs": 2.0120541937306436e-05,
+        "protectedSamples": 8,
+        "exactUnaffectedInteriorSamples": 55804,
+        "edgeJoinPairs": 126,
+        "edgePoints": 2142,
+        "edgeJoinExactWorldMaxError": 3.601497131132216e-25,
+        "edgeJoinFloat32ProxyMaxError": 0
+      }
+    ]
+  }
+}
