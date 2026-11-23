@@ -1,0 +1,24 @@
+[
+  {
+    "lod": 8,
+    "stockMeshAttributesAndIndicesExact": true,
+    "raysExact": 899,
+    "physicalContactSourceUntouched": true
+  },
+  {
+    "lod": 56,
+    "exactUnchangedRegularProbes": 96763,
+    "raysOnActualPatch": 336,
+    "rayProbesOnSewing": 44,
+    "meshAttachmentMaxM": 7.904787935331115e-14,
+    "passedLiveBufferSew": true
+  },
+  {
+    "lod": 112,
+    "exactUnchangedRegularProbes": 97123,
+    "raysOnActualPatch": 351,
+    "rayProbesOnSewing": 6,
+    "meshAttachmentMaxM": 7.061018436615996e-14,
+    "passedLiveBufferSew": true
+  }
+]

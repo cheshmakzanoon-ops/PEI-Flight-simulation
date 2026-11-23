@@ -1,0 +1,14 @@
+{
+  "directSurveyRows": 2330,
+  "newWaterSourceReturns": 857,
+  "dryApproachActualRayCount": 738,
+  "maxRenderContactDeltaM": 0.000010812421003869588,
+  "oldDryP90": 2.969977834790966,
+  "prototypeDryP90": 0.026568065684688946,
+  "newLand": 0,
+  "misclassifiedDry": 0,
+  "priorFullProvinceCoastSegments": 48260,
+  "previewFullProvinceCoastSegments": 48737,
+  "fitTerrainTile": "22-17",
+  "correctCoverAndTerrainOptIn": true
+}

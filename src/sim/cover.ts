@@ -3,11 +3,11 @@ import type {HarbourCover,WaterInset} from './harbour-cover.ts';
 import type {Terrain} from './terrain.ts';
 export class Cover {
  readonly sourceSha?:string;
- readonly width:number;readonly height:number;readonly bytes:Uint8Array;readonly harbour:HarbourCover|undefined;readonly basin?:WaterInset;readonly waterInsets:readonly WaterInset[];
- constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset){
+ readonly width:number;readonly height:number;readonly bytes:Uint8Array;readonly harbour:HarbourCover|undefined;readonly basin?:WaterInset;readonly montague?:WaterInset;readonly sourceDecodedSha?:string;readonly waterInsets:readonly WaterInset[];
+ constructor(width:number,height:number,data:Uint8Array,harbour?:HarbourCover,sourceSha?:string,basin?:WaterInset,montague?:WaterInset,sourceDecodedSha?:string){
   if(data.length!==width*height*2||width<2||height<2)throw Error('Invalid province ground-cover raster.');
-  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;
-  this.waterInsets=[...(harbour?[harbour]:[]),...(basin?[basin]:[])];
+  this.width=width;this.height=height;this.bytes=data;this.harbour=harbour;this.sourceSha=sourceSha;this.basin=basin;this.montague=montague;this.sourceDecodedSha=sourceDecodedSha;
+  this.waterInsets=[...(harbour?[harbour]:[]),...(basin?[basin]:[]),...(montague?[montague]:[])];
  }
  sample(t:Terrain,x:number,z:number){
   const [u,v]=t.uv(x,z);if(u<0||v<0||u>=1||v>=1)return 0;
@@ -19,7 +19,11 @@ export class Cover {
   const next=this.basin?.distance(prior,x,z)??prior;
   // An inlet can admit a wet hit but cannot recolor the dry surroundings
   // or shift distance-based yard, hedge and forest material cutoffs.
-  return next<0?next:prior;
+  const fromBasin=next<0?next:prior;
+  const fromMontague=this.montague?.distance(fromBasin,x,z)??fromBasin;
+  // Match the land shader: only wet samples may adopt the replacement
+  // scalar. A still-dry sample keeps its old material and planting rules.
+  return fromMontague<0?fromMontague:fromBasin;
  }
  legacyDistance(t:Terrain,x:number,z:number){
   const [u,v]=t.uv(x,z);if(u<0||v<0||u>=1||v>=1)return -254;

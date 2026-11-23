@@ -54,6 +54,10 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
    if((a>=0)!==(b>=0)&&harbour.distance(0,x+i*dx*div,z+(j+a/(a-b))*dz*div)<-1e-6){mark(i-1,j);mark(i,j);}
   }
  }
+ // A pinned site can refine an independently witnessed aperture in an
+ // unchanged, mixed legacy cell. The wet/dry shader/CPU field itself,
+ // and every other inherited coarse chord, are untouched.
+ for(const [i,j] of harbour.plan.contourReviewCells??[])mark(i-ix0,j-iz0);
  return {ix0,iz0,cols,rows,div,fields,blocks,x,z,dx,dz,nx};
 }
 
@@ -61,14 +65,24 @@ function harbourSections(cover:Cover,terrain:Terrain,harbour:WaterInset){
 export function coastSegments(cover: Cover,terrain: Terrain): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
  const stepX=(terrain.right-terrain.left)/w,stepZ=(terrain.bottom-terrain.top)/h,locally=cover.waterInsets.map(inset=>harbourSections(cover,terrain,inset));
+ const inFine=(i:number,j:number)=>locally.some(fine=>{
+  const x=i-fine.ix0,z=j-fine.iz0;
+  return x>=0&&z>=0&&x<fine.cols&&z<fine.rows&&fine.blocks[z*fine.cols+x]>0;
+ });
+ // Rendering-only remeshing of literally enumerated original mixed cells.
+ // These can adjoin the wet island without extending the authoritative mask.
+ const exteriorReview=new Map<number,number>();
+ for(const inset of cover.waterInsets)for(const [i,j] of inset.plan.contourReviewCells??[]){
+  if(i<0||i>=w-1||j<0||j>=h-1||inFine(i,j))continue;
+  const k=(j*w+i)*2+1,dry=bytes[k]>=128;
+  if(dry===(bytes[k+2]>=128)&&dry===(bytes[k+w*2]>=128)&&dry===(bytes[k+w*2+2]>=128))continue;
+  exteriorReview.set(j*w+i,inset.plan.divisions);
+ }
  for(let j=0;j<h-1;j++)for(let i=0;i<w-1;i++){
   const n=(j*w+i)*2+1;
   const a=bytes[n]-128,b=bytes[n+2]-128,c=bytes[n+2*w+2]-128,d=bytes[n+2*w]-128;
   if((a>=0)===(b>=0)&&(b>=0)===(c>=0)&&(c>=0)===(d>=0))continue;
-  if(locally.some(fine=>{
-   const x=i-fine.ix0,z=j-fine.iz0;
-   return x>=0&&z>=0&&x<fine.cols&&z<fine.rows&&fine.blocks[z*fine.cols+x]>0;
-  }))continue;
+  if(inFine(i,j)||exteriorReview.has(j*w+i))continue;
   contourCell(result,terrain.left+(i+.5)*stepX,terrain.top+(j+.5)*stepZ,stepX,stepZ,a,b,c,d);
  }
  for(const fine of locally){
@@ -79,6 +93,16 @@ export function coastSegments(cover: Cover,terrain: Terrain): ShoreSegment[] {
     const k=j*nx+i;
     contourCell(result,x+i*dx,z+j*dz,dx,dz,fields[k],fields[k+1],fields[k+nx+1],fields[k+nx]);
    }
+  }
+ }
+ for(const [cell,div] of exteriorReview){
+  const i=cell%w,j=Math.floor(cell/w),x=terrain.left+(i+.5)*stepX,z=terrain.top+(j+.5)*stepZ;
+  const dx=stepX/div,dz=stepZ/div,n=div+1;
+  const sample=new Float64Array(n*n);
+  for(let j=0;j<n;j++)for(let i=0;i<n;i++)sample[j*n+i]=cover.distance(terrain,x+i*dx,z+j*dz);
+  for(let j=0;j<div;j++)for(let i=0;i<div;i++){
+   const k=j*n+i;
+   contourCell(result,x+i*dx,z+j*dz,dx,dz,sample[k],sample[k+1],sample[k+n+1],sample[k+n]);
   }
  }
  return result;

@@ -1,3 +1,4 @@
+import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
@@ -171,7 +172,7 @@ export class Vegetation {
   this.hedges?.draw(x,z,(hx,hz,h,style)=>{
    if(count>=maxTrees)return false;
    if(this.cover.distance(this.t,hx,hz)<6||runwayAt(hx,hz)||insideLighthouseYard(hx,hz,4))return true;
-   if(this.t.coastalGrids.some(c=>c.spec.tileX===Math.floor((hx-this.t.left)/(this.t.right-this.t.left)*32)&&
+   if(this.t.coastalGrids.some(c=>c.spec.id!==MONTAGUE_GROUND_ID&&c.spec.tileX===Math.floor((hx-this.t.left)/(this.t.right-this.t.left)*32)&&
        c.spec.tileZ===Math.floor((hz-this.t.top)/(this.t.bottom-this.t.top)*22)))return true;
    const range=1-Math.max(0,Math.min(1,(Math.hypot(hx-x,hz-z)-1450)/370));
    const fade=range*range*(3-2*range);if(fade<.004)return true;

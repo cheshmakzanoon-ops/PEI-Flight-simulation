@@ -1,4 +1,4 @@
-import {CoastalGrid,GROUND_LIFT,type CoastalSource,type MeshSurveySource} from './coastal-terrain.ts';
+import {CoastalGrid,GROUND_LIFT,type MeshSurveySource} from './coastal-terrain.ts';
 import { project, clamp } from './geo.ts';
 export const OCEAN_Y=-.055;
 export interface TerrainSpec { width: number; height: number; bounds: [number,number,number,number]; }
@@ -8,7 +8,7 @@ export class Terrain {
   readonly spec: TerrainSpec; readonly samples: Int16Array;
   readonly inlandGrids:readonly CoastalGrid[];readonly surveyGrids:readonly CoastalGrid[];
   readonly coastalGrids: readonly CoastalGrid[]; readonly coastalSurveys: readonly string[]; readonly coastalRefinements: readonly string[];
-  constructor(spec: TerrainSpec, samples: Int16Array, surveys: readonly CoastalSource[] = [],inland:readonly MeshSurveySource[]=[] ) {
+  constructor(spec: TerrainSpec, samples: Int16Array, surveys: readonly MeshSurveySource[] = [],inland:readonly MeshSurveySource[]=[] ) {
     this.spec=spec;this.samples=samples;
     const {width:w,height:h,bounds:[W,S,E,N]}=spec;
     if(!Number.isInteger(w)||!Number.isInteger(h)||w<2||h<2||samples.length!==w*h||!(W<E&&S<N)) throw new Error('Invalid terrain dimensions or extent');

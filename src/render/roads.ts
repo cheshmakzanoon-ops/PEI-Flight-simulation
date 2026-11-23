@@ -15,6 +15,8 @@ import {addRoadSurface} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
 import type { Terrain } from '../sim/terrain.ts';
+import {buildMontagueBridge} from './montague-bridge.ts';
+import {MONTAGUE_CUTS,MONTAGUE_GROUND_ID,montagueBridgeRows} from '../sim/montague-bridge.ts';
 
 type Road = { flags: number; points: {x: number; z: number}[] };
 const TILE = 5000;
@@ -68,6 +70,14 @@ export async function classifiedDirt(data:ArrayBuffer,count:number,verifiedDiges
   return bits;
  }catch{return;}
 }
+type PackedRoadNetwork={data:ArrayBuffer;roads:Road[];digest?:string;montagueVerified:boolean};
+async function roadNetwork(signal?:AbortSignal):Promise<PackedRoadNetwork>{
+ const response=await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`,{signal});
+ if(!response.ok||!response.body)throw new Error(`Road data request failed: ${response.status}`);
+ const data=await unpackGzip(await response.arrayBuffer());
+ const roads=decodeRoads(data),digest=await roadHash(data);
+ return {data,roads,digest,montagueVerified:montagueBridgeRows(digest,roads)};
+}
 type Tile = {x: number; z: number; segments: number[]; victoria?:boolean};
 export class Roads {
   private readonly root = new THREE.Group();
@@ -81,6 +91,9 @@ export class Roads {
   private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
   private readonly visible = new Map<string, THREE.Mesh>();
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
+  private readonly previewBridge?:THREE.Group;
+  private readonly previewOwners:readonly string[];
+  get bridgePreviewActive(){return !!this.previewBridge;}
   private readonly nearPatches?:()=>readonly CoastalGrid[];
   private readonly seated?:World;
   private readonly seat?:ReturnType<typeof roadContactAt>;
@@ -101,8 +114,8 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World) {
-    this.tiles=tiles;this.terrain=terrain;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[]) {
+    this.tiles=tiles;this.terrain=terrain;this.previewOwners=previewOwners;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
     this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
     addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
@@ -110,16 +123,33 @@ export class Roads {
       this.victoriaMaterial=this.material.clone();
       addRoadSurface(this.victoriaMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,true);
     }
+    if(bridge){
+     const h=terrain.inlandGrids.length
+       ?(x:number,z:number)=>terrain.coastalGrids.find(g=>g.near(x,z))?.height(x,z)??terrain.atlasElevation(x,z)
+       :(x:number,z:number)=>terrain.meshElevation(x,z);
+     this.previewBridge=buildMontagueBridge(this.material,h,(x,z)=>bridge.cover.distance(terrain,x,z));
+     this.root.add(this.previewBridge);
+    }
     scene.add(this.root);
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World) {
-    const response = await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`);
-    if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
-    const data = await unpackGzip(await response.arrayBuffer());
-    const tiles = new Map<string, Tile>();
-    const roads=decodeRoads(data),digest=await roadHash(data),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
+  /** Optional preflight only: no water or terrain preview when the
+   * corresponding full road replacement cannot be registered. A complete
+   * but changed road asset remains usable by the ordinary ribbon layer. */
+  static async prepareMontague(){
+   const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),2300);
+   try{return await roadNetwork(ctrl.signal);}
+   catch{return undefined;}
+   finally{clearTimeout(timer);}
+  }
+
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork) {
+    const {data,roads,digest,montagueVerified}=prepared??await roadNetwork();
+    const tiles = new Map<string, Tile>(),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
+    const register=!!preview?.cover.montague&&terrain.coastalSurveys.includes(MONTAGUE_GROUND_ID)&&montagueVerified;
+    const owners=new Set<string>();
     for (let ordinal=0;ordinal<roads.length;ordinal++) {
+      const omit=register&&(MONTAGUE_CUTS as readonly number[]).includes(ordinal);
       const {points,flags:sourceFlags}=roads[ordinal];
       const isDirt=!!dirtBits&&!(sourceFlags&24)&&!!(dirtBits.charCodeAt(ordinal>>3)&(1<<(ordinal&7)));
       const victoria=matchesVictoriaPaving(digest,ordinal,sourceFlags,points);
@@ -133,6 +163,7 @@ export class Roads {
         for(let j=0; j<n; j++) {
           const p=j/n, q=(j+1)/n, x=a.x+p*dx, z=a.z+p*dz, u=a.x+q*dx, v=a.z+q*dz;
           const tx=Math.floor((x+u)/2/TILE), tz=Math.floor((z+v)/2/TILE), key=`${tx},${tz}`;
+          if(omit){owners.add(key);continue;}
           let tile=tiles.get(key);
           if(!tile) {
             tile={x:(tx+0.5)*TILE,z:(tz+0.5)*TILE,segments:[]};
@@ -143,7 +174,7 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated);
+    return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners));
   }
 
   private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){
@@ -268,6 +299,14 @@ export class Roads {
     this.lastPatchKey=patchKey;this.previousSeat=seatKey;this.pendingSeat=false;
     const minX=Math.floor((x-VIEW)/TILE), maxX=Math.floor((x+VIEW)/TILE);
     const minZ=Math.floor((z-VIEW)/TILE), maxZ=Math.floor((z+VIEW)/TILE);
+    if(this.previewBridge){
+     // Exactly the stock road batch's square, tile padding and 420m
+     // position reuse. Omitting the three old rows cannot reveal a gap.
+     this.previewBridge.visible=this.previewOwners.some(owner=>{
+      const [i,j]=owner.split(',').map(Number);
+      return i>=minX&&i<=maxX&&j>=minZ&&j<=maxZ;
+     });
+    }
     const keep=new Set<string>();
     for(let tz=minZ;tz<=maxZ;tz++) for(let tx=minX;tx<=maxX;tx++) {
       const key=`${tx},${tz}`, t=this.tiles.get(key);

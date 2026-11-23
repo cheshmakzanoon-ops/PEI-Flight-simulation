@@ -1,0 +1,26 @@
+[
+  {
+    "lod": 112,
+    "batchTriangles": 1532,
+    "exactXZSourceSegments": 304,
+    "actualRendererEnvelopeProbes": 9958,
+    "largestGapM": 0,
+    "minimumOverlapM": 0.0920731993868742
+  },
+  {
+    "lod": 56,
+    "batchTriangles": 1532,
+    "exactXZSourceSegments": 304,
+    "actualRendererEnvelopeProbes": 9958,
+    "largestGapM": 0,
+    "minimumOverlapM": 0.09020813808101735
+  },
+  {
+    "lod": 8,
+    "batchTriangles": 1532,
+    "exactXZSourceSegments": 304,
+    "actualRendererEnvelopeProbes": 9958,
+    "largestGapM": 0,
+    "minimumOverlapM": 0.0949596992933266
+  }
+]

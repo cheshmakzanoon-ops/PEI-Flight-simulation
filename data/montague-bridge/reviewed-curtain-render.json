@@ -1,0 +1,24 @@
+{
+  "pose": "valmont-flight-close",
+  "size": [
+    900,
+    564
+  ],
+  "strictMagentaSkyStartY": 101,
+  "beforePureMagentaBelow": 743,
+  "afterPureMagentaBelow": 0,
+  "actualRayAperturesBefore": 718,
+  "actualRayAperturesAfter": 0,
+  "changedPixels": 1984,
+  "unchangedPixels": 505616,
+  "changedBounds": [
+    327,
+    119,
+    510,
+    215
+  ],
+  "hashes": [
+    "fd9a35d12c8ce3e127507e734b7b0c37aa8980ff752fd9d0568b8b101215e77b",
+    "404e87efb24d607374cde60f6e743b5ce72e8e32637bd5295ca2f2b24f39d661"
+  ]
+}

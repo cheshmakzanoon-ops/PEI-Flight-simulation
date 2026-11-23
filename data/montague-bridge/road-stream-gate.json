@@ -1,0 +1,160 @@
+{
+  "exactOwnerKeys": [
+    "8,7"
+  ],
+  "ownerAndHysteresisChecks": 25,
+  "casesPreservingVisibleRoadPastBroken9200M": 16,
+  "zeroSeatedRoadWeightCrosslineProbes": 242,
+  "states": [
+    {
+      "x": 42380,
+      "z": 37342,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 36131,
+      "z": 30395,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 30600,
+      "z": 25600,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 30200,
+      "z": 25600,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 30176,
+      "z": 25600,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 30750,
+      "z": 25550,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 30750,
+      "z": 25160,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 30750,
+      "z": 25120,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 30800,
+      "z": 26101,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54512,
+      "z": 49388,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 54070,
+      "z": 49388,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54450,
+      "z": 49388,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54499,
+      "z": 49499,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54850,
+      "z": 49900,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 53850,
+      "z": 48880,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54300,
+      "z": 49000,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54499,
+      "z": 49399,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 54500,
+      "z": 49400,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 55200,
+      "z": 50000,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 42380,
+      "z": 50000,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 42380,
+      "z": 49380,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 42380,
+      "z": 24500,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    },
+    {
+      "x": 42380,
+      "z": 25510,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 42380,
+      "z": 25350,
+      "stockRoadTileVisible": true,
+      "replacementVisible": true
+    },
+    {
+      "x": 42380,
+      "z": 25000,
+      "stockRoadTileVisible": false,
+      "replacementVisible": false
+    }
+  ]
+}

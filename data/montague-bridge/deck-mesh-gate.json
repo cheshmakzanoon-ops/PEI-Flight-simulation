@@ -1,0 +1,32 @@
+{
+  "rays": 789,
+  "misses": 0,
+  "distinctOverlaps": 0,
+  "nearDeckDatumP90": 0.027821934556400585,
+  "nearDeckRawP90": 0.1490217326759753,
+  "oldSharedCoreP90": 0.8927205144591914,
+  "newSharedCoreDatumP90": 0.025458539524286117,
+  "newSharedCoreRawP90": 0.15015750373095482,
+  "coreRows": 549,
+  "openWaterDeckRayCount": 567,
+  "nearestRealDeckAboveDrawnSeaM": 5.698530599661908,
+  "roadJointM": 0.0000020742573105367984,
+  "skirtWaterIntrusions": 0,
+  "walkWaterIntrusions": 0,
+  "dryWalkRuns": 76,
+  "actualTriangles": {
+    "surveyed deck and approaches": 5070,
+    "paired raised concrete walks": 2500,
+    "curved steel span profiles": 2974,
+    "open galvanized railing": 5496,
+    "single visible pier: approximate form": 24,
+    "land-qualified approach skirts": 342,
+    "paired yellow deck lines": 472,
+    "curb-edge markings": 348
+  },
+  "support": {
+    "station": 29.2,
+    "aboveWaterTriangles": 24,
+    "engineeringSurvey": false
+  }
+}

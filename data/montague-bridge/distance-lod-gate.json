@@ -1,0 +1,40 @@
+[
+  {
+    "lod": 112,
+    "innerTriangleCount": 32768,
+    "allTileTriangles": 58320,
+    "projectedAreaNativeCells": 16384.014139542185,
+    "exactSharedOuterEdgeDifferenceM": 0.000012205613757032552,
+    "orientationFailures": 0,
+    "probeHoles": 0,
+    "nativeHalfGridProbeCount": 66049,
+    "maxNativeHeightM": 0.00016188428463825844,
+    "exactEdgeIntersectionsTested": 319816,
+    "maxContinuousHeightM": 0.00016188428463825844,
+    "maxDuplicateNumericDifferenceM": 0.00017540670592675056,
+    "cameraMinimumM": null,
+    "conservativeProjectedHeightAt1080p": 0
+  },
+  {
+    "lod": 56,
+    "innerTriangleCount": 3502,
+    "allTileTriangles": 10264,
+    "projectedAreaNativeCells": 16384.014139543746,
+    "exactSharedOuterEdgeDifferenceM": 0.000011837970005146303,
+    "orientationFailures": 0,
+    "probeHoles": 0,
+    "nativeHalfGridProbeCount": 66049,
+    "maxNativeHeightM": 0.4725011103250951,
+    "exactEdgeIntersectionsTested": 73912,
+    "maxContinuousHeightM": 0.4725011103250951,
+    "maxDuplicateNumericDifferenceM": 0.00017540670592675056,
+    "cameraMinimumM": 1866.971295840749,
+    "conservativeProjectedHeightAt1080p": 0.4375523581936348
+  },
+  {
+    "lod": 8,
+    "coarseAtlasUnmodified": true,
+    "allTileTriangles": 128,
+    "dryInsertTriangles": 0
+  }
+]

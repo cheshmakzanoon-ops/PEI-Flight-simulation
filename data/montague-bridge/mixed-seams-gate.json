@@ -1,0 +1,23 @@
+[
+  {
+    "lod": 56,
+    "neighbor": 8,
+    "joinedEdgeSamples": 228,
+    "largestYDifferenceM": 0.000004904610769074225,
+    "largestXZDifferenceM": 0.00017465389250261422
+  },
+  {
+    "lod": 112,
+    "neighbor": 56,
+    "joinedEdgeSamples": 452,
+    "largestYDifferenceM": 0.000003814697265625,
+    "largestXZDifferenceM": 0.0001441270697796912
+  },
+  {
+    "lod": 112,
+    "neighbor": 8,
+    "joinedEdgeSamples": 452,
+    "largestYDifferenceM": 0.000004904610769074225,
+    "largestXZDifferenceM": 0.000214684374348476
+  }
+]

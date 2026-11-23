@@ -9,6 +9,8 @@ export interface WaterInsetPlan{
  readonly baseGridIJ:readonly [number,number,number,number];readonly width:number;readonly height:number;
  readonly divisions:number;readonly decodedBytes:number;readonly sha256:string;readonly crc32:string;
  readonly pinCoverSha256:string;
+ /** Reviewed legacy contour cells, independent of water classification. */
+ readonly contourReviewCells?:readonly (readonly [number,number])[];
 }
 export class WaterInset {
  readonly bytes:Uint8Array;readonly plan:WaterInsetPlan;

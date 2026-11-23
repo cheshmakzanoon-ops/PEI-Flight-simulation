@@ -1,0 +1,146 @@
+[
+  {
+    "case": "default",
+    "foundation": null,
+    "bridge": false,
+    "basin": null,
+    "basinBridge": false,
+    "departure": "montague",
+    "flightSpeed": 52.02075481892873,
+    "requests": {
+      "mont": 0,
+      "basin": 0,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "valid_both",
+    "foundation": "montague-bridge-channel-preview",
+    "bridge": true,
+    "basin": "basin-head-channel-v1",
+    "basinBridge": true,
+    "departure": "montague",
+    "flightSpeed": 52.02035769438032,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "missing_mont",
+    "foundation": null,
+    "bridge": false,
+    "basin": "basin-head-channel-v1",
+    "basinBridge": true,
+    "departure": "montague",
+    "flightSpeed": 52.01895675953674,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "corrupt_mont",
+    "foundation": null,
+    "bridge": false,
+    "basin": "basin-head-channel-v1",
+    "basinBridge": true,
+    "departure": "montague",
+    "flightSpeed": 52.02035769438032,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "changed_roads",
+    "foundation": null,
+    "bridge": false,
+    "basin": "basin-head-channel-v1",
+    "basinBridge": true,
+    "departure": "montague",
+    "flightSpeed": 52.01915807227682,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "changed_cover",
+    "foundation": null,
+    "bridge": false,
+    "basin": null,
+    "basinBridge": false,
+    "departure": "montague",
+    "flightSpeed": 52.02035769438032,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "changed_terrain",
+    "foundation": null,
+    "bridge": false,
+    "basin": null,
+    "basinBridge": false,
+    "departure": "montague",
+    "flightSpeed": 52.02035769438032,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  },
+  {
+    "case": "missing_basin",
+    "foundation": "montague-bridge-channel-preview",
+    "bridge": true,
+    "basin": null,
+    "basinBridge": false,
+    "departure": "montague",
+    "flightSpeed": 52.018755006667874,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": []
+  }
+]

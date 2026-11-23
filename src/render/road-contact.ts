@@ -1,3 +1,4 @@
+import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import {splitWalkCap} from './sidewalks.ts';
 import {RUNWAYS} from '../sim/places.ts';
 import {facet,GROUND_LIFT,SURVEY_LOD,WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
@@ -72,9 +73,16 @@ export function roadContactAt(w:World){
  const {terrain:t,cover}=w,dx=(t.right-t.left)/WORLD_COLS,dz=(t.bottom-t.top)/WORLD_ROWS;
  // Existing surveyed inserts keep their already reviewed separate grades.
  // Distance to a conservative whole tile protects their shoulders as well.
- const blocked:Rect[]=t.surveyGrids.map(({spec:g})=>({
-  left:t.left+dx*g.tileX,right:t.left+dx*(g.tileX+1),top:t.top+dz*g.tileZ,bottom:t.top+dz*(g.tileZ+1),
- }));
+ const blocked:Rect[]=t.surveyGrids.map(a=>{
+  const g=a.spec;
+  if(g.id===MONTAGUE_GROUND_ID){
+   // Only the actual registered insert and the neighbouring sewn faces
+   // need guarding here; the rest of the ordinary road tile still seats.
+   const x=a.stepX*g.sub,z=a.stepZ*g.sub;
+   return {left:a.x0-x,right:a.x1+x,top:a.z0-z,bottom:a.z1+z};
+  }
+  return {left:t.left+dx*g.tileX,right:t.left+dx*(g.tileX+1),top:t.top+dz*g.tileZ,bottom:t.top+dz*(g.tileZ+1)};
+ });
  // Extra room keeps interpolated ramps away from the painted runway strips.
  for(const r of RUNWAYS){
   const pad=r.width+18;

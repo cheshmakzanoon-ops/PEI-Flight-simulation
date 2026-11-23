@@ -1,0 +1,17 @@
+{
+  "basin": 246114,
+  "harbour": 86178,
+  "otherProvince": 416414,
+  "montague": 180975,
+  "newlyWet": 18219,
+  "unchangedOldWater": 21261,
+  "offMontagueSegmentsExactlyEqual": 50657,
+  "oldAllSegments": 50690,
+  "candidateAllSegments": 51465,
+  "reviewedRenderOnlyCells": 5,
+  "simultaneouslyVerifiedInsets": [
+    "quartermaster-coast-v1",
+    "basin-head-channel-v1",
+    "montague-bridge-channel-preview"
+  ]
+}

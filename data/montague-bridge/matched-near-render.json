@@ -1,0 +1,62 @@
+{
+  "sourceCandidate": "ce7dc507de4c8ec0b0e50c8bab6058d19e450a00",
+  "pose": {
+    "site": "valmont-down",
+    "lon": -62.647966,
+    "lat": 46.163924,
+    "h": 7.2,
+    "east": 55.03877930761301,
+    "south": -32.792519707537295,
+    "nearDist": 64.06728163767643,
+    "nearAgl": 5.7,
+    "fixedEyeY": 5.7,
+    "fixedBaseH": 0.0,
+    "dist": 64.06728163767643,
+    "agl": 5.7
+  },
+  "viewport": [
+    900,
+    564
+  ],
+  "matchingWorldCamera": true,
+  "before": {
+    "basinShoreline": null,
+    "drawCalls": 77,
+    "triangles": 335059,
+    "pavement": "ready",
+    "detail": {
+      "ready": 18,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "layerWarnings": [],
+    "montagueBridge": false
+  },
+  "preview": {
+    "montagueFoundation": "montague-bridge-channel-preview",
+    "montagueBridge": true,
+    "basinShoreline": "basin-head-channel-v1",
+    "drawCalls": 85,
+    "triangles": 401937,
+    "pavement": "ready",
+    "detail": {
+      "ready": 18,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "layerWarnings": []
+  },
+  "pixelsMovedOver2": 297696,
+  "capturedWith": "Chromium/SwiftShader; same camera, frozen scene time, no device benchmark",
+  "optionalAfter": [
+    "basinChannel",
+    "montagueFoundationPreview",
+    "montagueReachOptics",
+    "forestFloor",
+    "seatedRoads"
+  ]
+}

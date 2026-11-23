@@ -1,0 +1,37 @@
+{
+  "reviewCells": [
+    [
+      2932,
+      2196
+    ],
+    [
+      2933,
+      2197
+    ],
+    [
+      2934,
+      2196
+    ],
+    [
+      2935,
+      2196
+    ],
+    [
+      2936,
+      2195
+    ]
+  ],
+  "eachCellSizeM": [
+    47.60180338623522,
+    47.40693277739291
+  ],
+  "legacyExteriorSegmentsExact": 51161,
+  "wetAndDryScalarProbesExactlyEqual": 103828,
+  "oldChords": 6,
+  "lowerVarianceNewChords": 304,
+  "unchangedAdjacentArcJoinCount": 10,
+  "greatestAdjacentChordJoinGapM": 3.9317109872663557e-10,
+  "maxSampleSignedScalarAtNewChords": 0.004446640473815933,
+  "samplePlaneIsUnchanged": -0.055,
+  "illustratedRenderScopeOnly": true
+}

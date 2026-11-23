@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import {CoastalGrid, facet, GROUND_LIFT, SURVEY_LOD} from '../sim/coastal-terrain.ts';
 import {cliffLayout,CLIFF_UNITS} from './coastal-cliff-patch.ts';
 import {distantCoast} from './coastal-lod.ts';
+import {montagueSurveyLod} from './montague-lod.ts';
+import {indexRenderPatchHeight} from './render-patch-height.ts';
 import {surveyNormals} from './coastal-normals.ts';
 import type {Terrain} from '../sim/terrain.ts';
 
@@ -11,9 +13,14 @@ import type {Terrain} from '../sim/terrain.ts';
  * Original vertex indices stay valid for World’s neighbouring tile LOD seams.
  */
 export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:number;z:number;w:number;d:number},t:Terrain,grid:CoastalGrid){
+ // The most distant 8×8 province renderer has kilometre-scale parent
+ // faces. Keep those exact: a zipper would change terrain well outside
+ // the measured window. The local water sign stays independent.
+ if(n===8&&grid.spec.id==='montague-bridgehead-dry-preview')return;
  const origPos=g.getAttribute('position'),origUv=g.getAttribute('uv'),k0=origPos.count;
  const {nx,nz,spec:s}=grid,near=n===SURVEY_LOD,cliff=grid.cliff?cliffLayout(grid,near):undefined;
- const layout=near||cliff||grid.spec.kind==='inland'?undefined:distantCoast(grid);
+ const layout=near||cliff||grid.spec.kind==='inland'?undefined:
+  grid.spec.id==='montague-bridgehead-dry-preview'?montagueSurveyLod(grid,n):distantCoast(grid);
  const count=cliff?cliff.points.length/2:layout?layout.points.length/2:nx*nz,positions=new Float32Array((k0+count)*3),uv=new Float32Array((k0+count)*2);
  const lighting=surveyNormals(grid),normal=new Int16Array((k0+count)*3),weight=new Uint8Array(k0+count);
  positions.set(origPos.array);uv.set(origUv.array);for(let i=0;i<k0;i++)normal[i*3+1]=32767;
@@ -107,4 +114,5 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
  // small measured footprint receives interpolated survey normals.
  g.setAttribute('normal',new THREE.BufferAttribute(normal,3,true));
  g.setAttribute('surveyWeight',new THREE.BufferAttribute(weight,1,true));g.setIndex(index);
+ if(s.id==='montague-bridgehead-dry-preview')indexRenderPatchHeight(g,k0);
 }

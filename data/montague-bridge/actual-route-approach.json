@@ -1,0 +1,23 @@
+[
+  {
+    "case": "valid_both",
+    "foundation": "montague-bridge-channel-preview",
+    "bridge": true,
+    "basin": "basin-head-channel-v1",
+    "basinBridge": true,
+    "departure": "montague",
+    "flightSpeed": 52.326654264462086,
+    "requests": {
+      "mont": 1,
+      "basin": 1,
+      "road": 1,
+      "cover": 1,
+      "terrain": 1,
+      "manifest": 1
+    },
+    "errors": [],
+    "initialDistanceM": 2621.9895630306423,
+    "arrivalDistanceM": 526.2877716239224,
+    "altitudeM": 389.3062845158719
+  }
+]

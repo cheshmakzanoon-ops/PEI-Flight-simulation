@@ -1,0 +1,30 @@
+{
+  "width": 900,
+  "height": 564,
+  "protectedRGBPixels": 507600,
+  "differentPixels": 0,
+  "sameBinaryImageSha256": "225a04d3c6b4e4061235b69149a01264a212253039c988af6fcd71b90a15e371",
+  "exactReadyOrthoIds": [
+    "21-16",
+    "21-17",
+    "21-18",
+    "21-19",
+    "22-15",
+    "22-16",
+    "22-17",
+    "22-18",
+    "22-19",
+    "23-15",
+    "23-16",
+    "23-17",
+    "23-18",
+    "23-19",
+    "24-16",
+    "24-17",
+    "24-18",
+    "24-19"
+  ],
+  "drawCalls": 77,
+  "triangles": 335059,
+  "renderer": "Chromium / SwiftShader; not a device performance result"
+}
