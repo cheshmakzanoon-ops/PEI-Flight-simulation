@@ -148,7 +148,11 @@ relief](coastal-relief.md) replaces the regional terrain triangles with
 heights derived from native 1 m bare-earth LiDAR. It does not add a new
 shoreline or turn the remainder of PEI into a high-resolution survey.
 
-## Woodland clearance
+## Woodland height and clearance
+
+[Measured provincial stand heights](qa/forest-height-stream.md) set the
+local canopy scale where inventory coverage is available. The optional
+layer does not place individual trees or affect collision.
 
 The [building-aware vegetation pass](vegetation-clearance.md) excludes
 synthetic stems inside all shipped source roof footprints without applying a
