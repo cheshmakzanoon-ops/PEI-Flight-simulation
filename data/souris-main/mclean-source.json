@@ -1,0 +1,159 @@
+{
+  "site": "Matthew and McLean Heritage Building, 95 Main Street, Souris",
+  "datum": "EPSG:3979 horizontal, CGVD2013 orthometric height",
+  "dataOGL": "https://open.canada.ca/en/open-government-licence-canada",
+  "sourceStac": "https://datacube.services.geo.ca/stac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
+  "sourceMetadata": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+  "COGStem": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m",
+  "authorship": "Native CanElevation surface and ground data, original footprint from the existing AEB atlas; no photographs or OSM footprints in the renderer.",
+  "heritageRegistryContext": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=5983",
+  "municipalityVisualContext": "https://sourispei.com/wp-content/uploads/2026/03/Mousetales-Digital-APRIL-2026-.pdf",
+  "municipalityVisualContextPublication": "Mousetales, April 2026, page 17; observed form and subdued color only, photo date and exact dimensions not asserted.",
+  "training": "Roof regions assigned from documented geometry and visible profiles; spatial held-out cells do not fit coefficients but are not an independent acquisition.",
+  "atlas": {
+    "id": "q130331",
+    "ordinal": 170,
+    "atlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "gzipChunkSha256": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55",
+    "tileRangeBytes": [
+      3127037,
+      16254
+    ]
+  },
+  "pixelWindow": [
+    437235,
+    154022,
+    76,
+    77
+  ],
+  "rasterRawSha256": "da4e655310c38ea28ecda88d77b1986874daa2fae79f1add0b2526a08e579742",
+  "frontFootprintEdge": [
+    15,
+    14
+  ],
+  "actualSupportedSourceCellsInOutline": 438,
+  "stableInteriorTrainCandidates": 259,
+  "trainingPerPlane": [
+    129,
+    23,
+    27,
+    39
+  ],
+  "heldOutCells": 66,
+  "quantiles": [
+    0.5,
+    0.9,
+    0.95,
+    1.0
+  ],
+  "rawHeldOutAbsErrorMetres": {
+    "old": [
+      3.25065,
+      3.60597,
+      3.62706,
+      3.8338
+    ],
+    "new": [
+      0.03263,
+      0.1801,
+      0.22162,
+      0.27842
+    ]
+  },
+  "rawAllCoreAbsErrorMetres": {
+    "old": [
+      3.26977,
+      3.83138,
+      4.31901,
+      4.77081
+    ],
+    "new": [
+      0.02296,
+      0.16283,
+      0.22897,
+      0.47077
+    ]
+  },
+  "oldFlatHeightMetres": 27.98283912571005,
+  "nativeBasisRegistrationMaxErrorMetres": 0.00010673827103884701,
+  "uCutsAtV0And23p25Metres": [
+    [
+      10.367793,
+      10.182279
+    ],
+    [
+      13.579983,
+      13.686353
+    ],
+    [
+      17.292184,
+      17.379089
+    ]
+  ],
+  "nativeOutlineXZ": [
+    [
+      2437261.0712201,
+      345943.4582323
+    ],
+    [
+      2437272.1587037,
+      345945.9859083
+    ],
+    [
+      2437271.7473833,
+      345947.8192967
+    ],
+    [
+      2437274.5227344,
+      345946.5485187
+    ],
+    [
+      2437273.0804819,
+      345943.4082572
+    ],
+    [
+      2437274.6250981,
+      345942.7325227
+    ],
+    [
+      2437273.9039708,
+      345941.1623916
+    ],
+    [
+      2437277.5408399,
+      345939.4750831
+    ],
+    [
+      2437277.0585596,
+      345946.1752771
+    ],
+    [
+      2437288.1642117,
+      345948.1967477
+    ],
+    [
+      2437289.5691358,
+      345940.3398159
+    ],
+    [
+      2437281.0860425,
+      345938.8980899
+    ],
+    [
+      2437282.6379566,
+      345929.8330163
+    ],
+    [
+      2437281.4559372,
+      345929.5517093
+    ],
+    [
+      2437282.1249452,
+      345926.3145366
+    ],
+    [
+      2437265.6691836,
+      345922.6868696
+    ]
+  ]
+}

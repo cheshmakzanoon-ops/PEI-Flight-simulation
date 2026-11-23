@@ -1,0 +1,344 @@
+{
+  "testedBase": "21d21b83f708fcf2565baab7235dae8249652387",
+  "modelInputs": [
+    "Original AEB q130331 row 170 only",
+    "Natural Resources Canada 1-m DSM and DTM",
+    "Historic form per Canadian Register, recent appearance as art context only"
+  ],
+  "derivedFilesSHA256": {
+    "src/render/buildings.ts": "52e2cebd13624907445026538eb191a70b8c6d1d73b1252dd22a74dd0bb831e3",
+    "src/render/souris-mclean.ts": "daf5fe88066aad8a793daecf5c8ac2033ed638653ad987f1f4595aed232c263f",
+    "src/render/souris-mclean-material.ts": "b187ed54d1b34c9acd7a5f3a37d7f12d86872c3e2d06e7c47fa2946dffa54b1d",
+    "src/render/souris-mclean.generated.ts": "8d7a8d078d50da6142cdae74e874bc87f0bf5720322cefac3c90f15931a62c61"
+  },
+  "mesh": {
+    "owner": "q130331",
+    "ordinal": 170,
+    "features": 374,
+    "unchangedOtherVertices": 21045,
+    "attributes": [
+      "position",
+      "uv",
+      "color",
+      "topFlag",
+      "facadeStyle",
+      "normal"
+    ],
+    "outsidePlanMm": 0.03661531920665434,
+    "oldTriangles": 46,
+    "newTriangles": 4334,
+    "roofTriangles": 44,
+    "pinMismatchUsesStock": true,
+    "heldOutActualRoofRays": 66,
+    "errorQuantilesMetres": [
+      0.5,
+      0.9,
+      0.95,
+      1
+    ],
+    "oldErrors": [
+      3.250646584350582,
+      3.6059694343505875,
+      3.627060459350586,
+      3.833797484350587
+    ],
+    "newErrors": [
+      0.03263860140898345,
+      0.18009259553942947,
+      0.22163014719195218,
+      0.2784194127976427
+    ],
+    "explicitInboardEntryRays": [
+      {
+        "u": 1.2,
+        "marks": [
+          {
+            "d": 0.083,
+            "y": 16.04258918762207,
+            "lift": 0.25406272616396386
+          },
+          {
+            "d": 0.325,
+            "y": 16.176729202270508,
+            "lift": 0.3818282861921034
+          },
+          {
+            "d": 0.559,
+            "y": 16.310871124267578,
+            "lift": 0.5098064793414778
+          },
+          {
+            "d": 0.752,
+            "y": 16.445011138916016,
+            "lift": 0.638862734726219
+          }
+        ]
+      },
+      {
+        "u": 9.91,
+        "marks": [
+          {
+            "d": 0.083,
+            "y": 16.132064819335938,
+            "lift": 0.2227104837195384
+          },
+          {
+            "d": 0.325,
+            "y": 16.23638153076172,
+            "lift": 0.32065274052479076
+          },
+          {
+            "d": 0.559,
+            "y": 16.340696334838867,
+            "lift": 0.4188038157542451
+          },
+          {
+            "d": 0.752,
+            "y": 16.445011138916016,
+            "lift": 0.5180348605683776
+          }
+        ]
+      },
+      {
+        "u": 13.42,
+        "marks": [
+          {
+            "d": 0.083,
+            "y": 16.168636322021484,
+            "lift": 0.21059015652053859
+          },
+          {
+            "d": 0.325,
+            "y": 16.260761260986328,
+            "lift": 0.2963406408657665
+          },
+          {
+            "d": 0.559,
+            "y": 16.352886199951172,
+            "lift": 0.38230185098245784
+          },
+          {
+            "d": 0.752,
+            "y": 16.445011138916016,
+            "lift": 0.46934303068406
+          }
+        ]
+      }
+    ],
+    "trianglesByArtRole": {
+      "62": 1641,
+      "63": 31,
+      "64": 6,
+      "65": 7,
+      "66": 2056,
+      "67": 388,
+      "68": 89,
+      "69": 112,
+      "70": 4
+    }
+  },
+  "projectedRoof": {
+    "gameProjection": "same metric tangent plane as Three scene",
+    "sourceAreaM2": 426.0618745702086,
+    "emittedAreaM2": 426.06150358566083,
+    "originalPlanMissingM2": 0.001107083455470087,
+    "beyondOriginalPlanM2": 0.0007360987233779176,
+    "roofOverlapAreaM2": 0.0,
+    "roofTriangles": 44
+  },
+  "views": {
+    "mclean-shopfront-close": {
+      "sourceVerifiedCamera": {
+        "site": "mclean-shopfront",
+        "lon": -62.253396401092765,
+        "lat": 46.354704281583565,
+        "east": -4.42663892466993,
+        "south": 18.501965141014136,
+        "nearDist": 19.024138515283816,
+        "nearAgl": 17.3,
+        "h": 8.6,
+        "fixedEyeY": 17.3,
+        "fixedBaseH": 15.86,
+        "dist": 19.024138515283816,
+        "agl": 17.3
+      },
+      "matchedImageryIDs": [
+        "26-12",
+        "26-13",
+        "26-14",
+        "26-15",
+        "27-12",
+        "27-13",
+        "27-14",
+        "28-12",
+        "28-13",
+        "28-14",
+        "29-12",
+        "29-13"
+      ],
+      "rasterMsaaSamples": 4,
+      "matchedCanvas": [
+        1100,
+        684
+      ],
+      "drawsBeforeAfter": [
+        38,
+        38
+      ],
+      "trianglesBeforeAfter": [
+        291793,
+        296081
+      ],
+      "pixelsDifferentOver2": 292843,
+      "byteExactPixels": 459542,
+      "changeRect": [
+        244,
+        59,
+        1010,
+        497
+      ],
+      "stockPngSha256": "87ed6fc767e95a114fe34b6ca6c5ae5207a34499afefb7c24439f0d4c7bc306b",
+      "previewPngSha256": "91cb72700f4ead89a3b4ce6540751f7dc0c03137739f9a4482e65f25d98874ae"
+    },
+    "mclean-west-close": {
+      "sourceVerifiedCamera": {
+        "site": "mclean-west",
+        "lon": -62.25339470972538,
+        "lat": 46.35471416007534,
+        "east": -23.096538118560993,
+        "south": 15.44543593553046,
+        "nearDist": 27.785096082265337,
+        "nearAgl": 18.65,
+        "h": 9.4,
+        "fixedEyeY": 18.65,
+        "fixedBaseH": 15.86,
+        "dist": 27.785096082265337,
+        "agl": 18.65
+      },
+      "matchedImageryIDs": [
+        "26-12",
+        "26-13",
+        "26-14",
+        "26-15",
+        "27-12",
+        "27-13",
+        "27-14",
+        "28-12",
+        "28-13",
+        "28-14",
+        "29-12",
+        "29-13"
+      ],
+      "rasterMsaaSamples": 4,
+      "matchedCanvas": [
+        1100,
+        684
+      ],
+      "drawsBeforeAfter": [
+        36,
+        36
+      ],
+      "trianglesBeforeAfter": [
+        306392,
+        310680
+      ],
+      "pixelsDifferentOver2": 150582,
+      "byteExactPixels": 601809,
+      "changeRect": [
+        218,
+        97,
+        719,
+        478
+      ],
+      "stockPngSha256": "0a205e90129d5cfc279ede07e2a7555b30d59aa1ad4b162fae5f165b3a680611",
+      "previewPngSha256": "201e7c36366ac15bc7e2051b72dae841e5850001e86a07eee3831379de5c89ea"
+    },
+    "mclean-roofs-close": {
+      "sourceVerifiedCamera": {
+        "site": "mclean-roofs",
+        "lon": -62.253346588679,
+        "lat": 46.35478025116936,
+        "east": 5.286964072195017,
+        "south": 45.080878882649344,
+        "nearDist": 45.389840602636845,
+        "nearAgl": 38.2,
+        "h": 15.0,
+        "fixedEyeY": 38.2,
+        "fixedBaseH": 15.86,
+        "dist": 45.389840602636845,
+        "agl": 38.2
+      },
+      "matchedImageryIDs": [
+        "26-12",
+        "26-13",
+        "26-14",
+        "26-15",
+        "27-12",
+        "27-13",
+        "27-14",
+        "28-12",
+        "28-13",
+        "28-14",
+        "29-12",
+        "29-13"
+      ],
+      "rasterMsaaSamples": 4,
+      "matchedCanvas": [
+        1100,
+        684
+      ],
+      "drawsBeforeAfter": [
+        39,
+        39
+      ],
+      "trianglesBeforeAfter": [
+        291049,
+        295337
+      ],
+      "pixelsDifferentOver2": 107256,
+      "byteExactPixels": 645065,
+      "changeRect": [
+        341,
+        241,
+        837,
+        529
+      ],
+      "stockPngSha256": "94070765e1d3a4af062bfc394cb32cda71e442ba8ab81c3f4f9b31a03f67b7d5",
+      "previewPngSha256": "d7193ba3824341e17d453d0b01cb7174f4230ce3a492a76369efad1ad28a1b9a"
+    }
+  },
+  "fixtureNotes": "Existing imagery IDs are locked in both fixed views; no picture served as a material. Input camera inspections are not a survey of the exterior. No consumer GPU performance claims.",
+  "visualLimits": "Neighbour streets, generic non-target buildings and terrain are not redesigned. The front west bracket strip leaves only tiny inherited grazing-angle raster ticks, not the old diagonally exposed roof. The west side and rear remain conservatively finished. Glass/interior and steps are authored approximations.",
+  "compiledFlight": {
+    "privateRehearsalDispatchOnly": true,
+    "metres": 96.84,
+    "buildingTiles": {
+      "wanted": 8,
+      "ready": 8,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "owner206RangeRequested": true,
+    "buildingDownloadRequests": 1,
+    "allAtlasMayBeReused": false,
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "warn": [],
+    "rendererErrors": [],
+    "cockpitAndPausePassed": true
+  },
+  "verification": {
+    "serialNodeTestsPassed": 188,
+    "typescriptNoEmit": true,
+    "viteBuild": true,
+    "independentProtectedPixels": 1647330,
+    "independentProtectedPixelsChanged": 0,
+    "notes": "Measured with locked built-in texture inputs and the normal Three.js renderer. Floating-point surface seams at corbel joins affect less than 0.0002 square metres in planar QA."
+  }
+}
