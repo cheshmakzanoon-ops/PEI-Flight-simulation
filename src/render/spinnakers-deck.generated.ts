@@ -1,0 +1,2 @@
+// Measured deck pilot. Source and scope separately documented.
+export const SPINNAKERS_DECK={"id":"spinnakers-landing-boardwalk","asset":"spinnakers/v0/measured-deck.gz","sha256":"3ed6c903345bd1c79d3d6dbed6bf50c3e0d38d031579006015d141c0f65c7dee","crc32":"b6031f09","anchor":[-63.787304981817,46.389145047264],"decodedBytes":56204,"cover":"46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863","nodes":2385,"triangles":4507,"outline":261,"principle":"No land or aircraft collision, geometry only."} as const;

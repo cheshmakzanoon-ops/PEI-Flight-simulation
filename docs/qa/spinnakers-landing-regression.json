@@ -1,0 +1,40 @@
+{
+  "defaultAfterRebase": {
+    "pixels": 507600,
+    "changed": 0,
+    "maxRGB": 0,
+    "differenceEnvelope": null,
+    "meaningful": 0
+  },
+  "previewAfterRebase": {
+    "pixels": 507600,
+    "changed": 636,
+    "maxRGB": 44,
+    "differenceEnvelope": [
+      118,
+      169,
+      880,
+      214
+    ],
+    "meaningful": 320
+  },
+  "actual72PreviewAgainst72Stock": {
+    "pixels": 507600,
+    "changed": 74746,
+    "maxRGB": 170,
+    "differenceEnvelope": [
+      118,
+      169,
+      880,
+      380
+    ],
+    "meaningful": 72579
+  },
+  "corruptPreRebase": {
+    "pixels": 507600,
+    "changed": 0,
+    "maxRGB": 0,
+    "differenceEnvelope": null,
+    "meaningful": 0
+  }
+}

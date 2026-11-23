@@ -1,0 +1,56 @@
+[
+  {
+    "case": "default",
+    "exactBuildAssetSha256": "8be344743bfa4ae2c7f83bac8c44db9376928132ee896f9d39ad8503524f5cff",
+    "requests": 0,
+    "visualOverride": false,
+    "distanceM": 31.9044521453273,
+    "site": "summerside",
+    "startAltitude": 359.9509529409375,
+    "afterAltitude": 360.0435940161871,
+    "controls": [
+      "choose departure",
+      "fly",
+      "cockpit toggle",
+      "pause"
+    ],
+    "errors": [],
+    "layerWarnings": []
+  },
+  {
+    "case": "preview",
+    "exactBuildAssetSha256": "8be344743bfa4ae2c7f83bac8c44db9376928132ee896f9d39ad8503524f5cff",
+    "requests": 1,
+    "visualOverride": true,
+    "distanceM": 30.224940612306323,
+    "site": "summerside",
+    "startAltitude": 359.9501974638799,
+    "afterAltitude": 360.03507641739736,
+    "controls": [
+      "choose departure",
+      "fly",
+      "cockpit toggle",
+      "pause"
+    ],
+    "errors": [],
+    "layerWarnings": []
+  },
+  {
+    "case": "corrupt",
+    "exactBuildAssetSha256": "8be344743bfa4ae2c7f83bac8c44db9376928132ee896f9d39ad8503524f5cff",
+    "requests": 1,
+    "visualOverride": false,
+    "distanceM": 29.66569244707305,
+    "site": "summerside",
+    "startAltitude": 359.95348532208493,
+    "afterAltitude": 360.04144835437995,
+    "controls": [
+      "choose departure",
+      "fly",
+      "cockpit toggle",
+      "pause"
+    ],
+    "errors": [],
+    "layerWarnings": []
+  }
+]

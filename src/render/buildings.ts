@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINNAKERS_TILE,type WharfSurface} from './spinnakers-shells.ts';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
@@ -129,6 +130,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`;
+export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembled?:THREE.Group};
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
@@ -138,8 +140,10 @@ export class Buildings {
  private readonly victoriaMat?:THREE.ShaderMaterial;
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
+ private readonly spinnakers?:SpinnakersScene;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene){
+  this.spinnakers=spinnakers;
   if(casts){this.mat.fragmentShader=buildingF(false,true);Object.assign(this.mat.uniforms,casts.uniforms);}
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
@@ -160,7 +164,7 @@ export class Buildings {
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>){
   const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
   if(!mf.ok)throw Error('Building atlas not available.');
   const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
@@ -168,14 +172,14 @@ export class Buildings {
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight,casts);
+  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight,casts,spinnakers?await spinnakers:undefined);
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
-   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
+   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
@@ -187,6 +191,7 @@ export class Buildings {
    if(Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
   }
  }
+ get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
  get sourceAtlasSha256(){return this.atlasHash;}
  diagnostics(){
   let failed=0;
@@ -199,17 +204,31 @@ export class Buildings {
    const part=await this.pack.read(tile.offset,tile.bytes);
    const chunk=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
    if(!this.wanted.has(tile.id))return;
-   const mesh=this.generate(chunk.features,tile);this.meshes.set(tile.id,mesh);this.scene.add(mesh);
+   const sp=this.spinnakers;
+   let wharf:THREE.Group|undefined;
+   if(sp&&matchesSpinnakersShells(this.atlasHash,tile.id,chunk.features)){
+    try{
+     if(!sp.assembled){
+      const roofs=buildSpinnakersShells(sp.seat);
+      sp.assembled=new THREE.Group();sp.assembled.name='Summerside Spinnakers’ Landing visual preview';
+      sp.assembled.add(sp.deck,roofs);
+     }
+     wharf=sp.assembled;
+    }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
+   }
+   const mesh=this.generate(chunk.features,tile,!!wharf);
+   this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
     void this.sourisLight.setCaster(chunk.features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }
- private generate(features:Bldg[],tile:BoundTile){
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false){
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   let facade=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
+   if(replaceSpinnakers&&SPINNAKERS_OMISSIONS.has(i))continue;
    const f=features[i];
    if(f.footprint.length<3||!Number.isFinite(f.height)||replacesLightBuilding(f.footprint))continue;
    const rings=[f.footprint,...(f.holes??[])].map(r=>r.map(([lon,lat])=>project(lon,lat)));

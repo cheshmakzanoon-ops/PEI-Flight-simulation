@@ -1,0 +1,21 @@
+[
+  {
+    "case": "preview",
+    "exactBuildAssetSha256": "8be344743bfa4ae2c7f83bac8c44db9376928132ee896f9d39ad8503524f5cff",
+    "requests": 1,
+    "visualOverride": true,
+    "distanceM": 28.545193247941192,
+    "site": "summerside",
+    "startAltitude": 359.9482121397058,
+    "afterAltitude": 360.0226544295501,
+    "controls": [
+      "choose departure",
+      "fly",
+      "cockpit toggle",
+      "pause"
+    ],
+    "errors": [],
+    "layerWarnings": [],
+    "combined": true
+  }
+]

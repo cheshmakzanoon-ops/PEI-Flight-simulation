@@ -1,0 +1,197 @@
+{
+  "spinnakers-harbour-close": {
+    "sceneExactCamera": true,
+    "sameOrthoTileIds": 18,
+    "changePixelCount": 74110,
+    "wholeFramePixels": 507600,
+    "changeBoxPixels": [
+      185,
+      215,
+      850,
+      380
+    ],
+    "unchangedWaterContactControls": [
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ]
+    ],
+    "draws": [
+      111,
+      121
+    ],
+    "triangles": [
+      403826,
+      425189
+    ]
+  },
+  "spinnakers-flight-close": {
+    "sceneExactCamera": true,
+    "sameOrthoTileIds": 18,
+    "changePixelCount": 53214,
+    "wholeFramePixels": 507600,
+    "changeBoxPixels": [
+      300,
+      192,
+      716,
+      432
+    ],
+    "unchangedWaterContactControls": [
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ]
+    ],
+    "draws": [
+      42,
+      52
+    ],
+    "triangles": [
+      323408,
+      344771
+    ]
+  },
+  "spinnakers-rail-close": {
+    "sceneExactCamera": true,
+    "sameOrthoTileIds": 18,
+    "changePixelCount": 263725,
+    "wholeFramePixels": 507600,
+    "changeBoxPixels": [
+      0,
+      71,
+      899,
+      464
+    ],
+    "unchangedWaterContactControls": [
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ]
+    ],
+    "draws": [
+      113,
+      123
+    ],
+    "triangles": [
+      397906,
+      419269
+    ]
+  },
+  "spinnakers-inner-close": {
+    "sceneExactCamera": true,
+    "sameOrthoTileIds": 18,
+    "changePixelCount": 444334,
+    "wholeFramePixels": 507600,
+    "changeBoxPixels": [
+      0,
+      0,
+      899,
+      563
+    ],
+    "unchangedWaterContactControls": [
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ],
+      [
+        false,
+        -0.055,
+        -0.055
+      ]
+    ],
+    "draws": [
+      29,
+      39
+    ],
+    "triangles": [
+      206208,
+      227571
+    ]
+  },
+  "corruptHarbour": {
+    "identicalPNG": true,
+    "SHA256": [
+      "a0b87186fdd25c2f082be5932f1a7c35af63afd8b3f890816a13e193dfb62b4b",
+      "a0b87186fdd25c2f082be5932f1a7c35af63afd8b3f890816a13e193dfb62b4b"
+    ]
+  }
+}
