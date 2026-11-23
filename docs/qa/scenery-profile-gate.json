@@ -1,0 +1,53 @@
+{
+  "desktop": {
+    "copiedDeparture": true,
+    "workedWithKnownFlags": true,
+    "maskScope": true,
+    "montagueBridge": true,
+    "northCapeTurbines": 16,
+    "standardRestored": true,
+    "errors": []
+  },
+  "mobile": [
+    {
+      "viewport": [
+        390,
+        760
+      ],
+      "keyboardFocus": true,
+      "switchRect": {
+        "x": 213.59375,
+        "y": 495.068115234375,
+        "width": 115.40625,
+        "height": 44
+      },
+      "startRect": {
+        "x": 37,
+        "y": 601.755615234375,
+        "width": 292,
+        "height": 48.515625
+      },
+      "errors": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "keyboardFocus": true,
+      "switchRect": {
+        "x": 164.09375,
+        "y": 313.849365234375,
+        "width": 115.40625,
+        "height": 44
+      },
+      "startRect": {
+        "x": 61.5,
+        "y": 327.239990234375,
+        "width": 218,
+        "height": 48.515625
+      },
+      "errors": []
+    }
+  ]
+}

@@ -11,3 +11,10 @@
 @media(max-width:720px){#telemetry.cockpit-telemetry{top:60px}}
 
 footer>a{color:#f4dfb7;text-decoration:underline}
+
+/* Scenery choice remains in Dispatch and keeps the currently selected departure. */
+.scenery-option{display:flex;align-items:center;justify-content:space-between;gap:.58rem;margin:.72rem 0 0;padding:.60rem 0 0;border-top:1px solid var(--line)}
+.scenery-option .eyebrow{font-size:.54rem}.scenery-option p{color:var(--sub);font-size:.64rem;line-height:1.25;margin-top:.21rem}
+.scenery-switch{flex:none;min-height:30px;padding:.41rem .53rem;border:1px solid #f0c59372;border-radius:5px;color:#f6d29d;background:#f0c59314;font-size:.65rem;line-height:1.15}
+.scenery-switch:hover{background:#f0c59329}@media(min-height:581px){.dispatch{max-height:calc(100% - 112px);overflow:auto}}
+@media(pointer:coarse){.scenery-switch{min-height:44px}}

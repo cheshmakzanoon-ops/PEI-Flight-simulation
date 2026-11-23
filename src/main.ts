@@ -1,3 +1,4 @@
+import {sceneryOptions} from './app/scenery-profile.ts';
 import {NorthCapeScenery} from './render/north-cape.ts';
 import {buildNorthBaywalk} from './render/north-baywalk.ts';
 import {loadBaywalkCourt,BAYWALK_ROAD_SHA,BAYWALK_ROAD_ORDINAL,BAYWALK_ROAD_FLAGS} from './sim/baywalk-native.ts';
@@ -38,7 +39,7 @@ import { clamp, RAD, geographic } from './sim/geo.ts';
 import './app/style.css';
 bootUI();
 async function run(){
- const showBuildingShadows=new URLSearchParams(location.search).has('buildingShadows');
+ const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
  let renderer:THREE.WebGLRenderer;
  try{renderer=new THREE.WebGLRenderer({canvas:document.querySelector<HTMLCanvasElement>('#world')!,antialias:true,alpha:false,logarithmicDepthBuffer:true,powerPreference:'high-performance'});}
  catch{throw Error('WebGL 2 is required. Enable hardware acceleration or open this page in a WebGL 2 browser.');}
@@ -49,7 +50,7 @@ async function run(){
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
  const worldBase=import.meta.env.BASE_URL+'world/';
  const dockPack=loadQuartermasterDocks(worldBase),mappedSidewalks=loadSidewalks(worldBase),mappedParking=loadParkingSurfaces(worldBase);
- const options=new URLSearchParams(location.search),useBasinBank=!options.has('noBasinBank');
+ const useBasinBank=!options.has('noBasinBank');
  const useMontague=options.has('montagueFoundationPreview'),useBaywalk=options.has('spinnakersPreview')&&options.has('northBaywalkPreview');
  const preRoadJob=useMontague||useBaywalk?Roads.prepareMontague():undefined;
  const montagueRoadJob=useMontague?preRoadJob:undefined;
@@ -82,7 +83,7 @@ async function run(){
   createBasinWharf((x,z)=>world.basinCrossingGround(x,z),(x,z)=>cover.distance(terrain,x,z)>=0,OCEAN_Y):undefined;
  if(basinWharf)scene.add(basinWharf);
  const glCanopy=renderer.getContext();
- if(new URLSearchParams(location.search).has('woodland3D')&&glCanopy.getParameter(glCanopy.SAMPLES)>=2){
+ if(options.has('woodland3D')&&glCanopy.getParameter(glCanopy.SAMPLES)>=2){
   void import('./render/woodland-volume.ts').then(({WoodlandVolume})=>
      vegetation.attachVolume(new WoodlandVolume(scene,45000),world,scene)).catch(()=>{});
  }

@@ -1,3 +1,4 @@
+import {isDetailScenery,sceneryDeparture,switchSceneryURL} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -20,11 +21,15 @@ export class UI {
  private chartImage:HTMLImageElement;private frame=0;private siteNow=0;private camera='Chase';private silent=true;private message='';
  constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;}) {
   this.terrain=t;this.input=input;
+  this.selected=sceneryDeparture(location.search,SITES.map(x=>x.id));
+  const detail=isDetailScenery(location.search);
   const opts=SITES.map((s,i)=>`<option value="${i}">${s.name}</option>`).join('');
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>
   <div class="scrim" id="scrim"></div>
   <section id="dispatch" class="dispatch panel" aria-labelledby="dispatch-title"><span class="eyebrow"><i></i> CANADA &nbsp; / &nbsp; ATLANTIC</span><h1 id="dispatch-title">Prince Edward<br><em>Island</em></h1><p class="standfirst">Free flight across the province, from red sandstone shores to patchwork farmland.</p>
-  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
+  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p>
+  <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
+  <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
   <div class="location" id="location"><span class="eyebrow"><i></i> ON LOCATION</span><strong id="loc-name"></strong><small id="loc-county"></small></div>
   <section id="telemetry" aria-label="Flight instruments"><div class="flight-strip"><span><small>AIRSPEED</small><b id="kt">0</b><em>KT</em></span><span><small>ALTITUDE</small><b id="ft">0</b><em>FT MSL</em></span><span><small>HEADING</small><b id="hdg">000</b><em>°T</em></span><span><small>THROTTLE</small><b id="pwr">0</b><em>%</em></span></div><div id="annun"></div></section>
   <div id="inflight" class="flightbtns"><button id="view">Chase <kbd>V</kbd></button><span id="controller"></span></div>
@@ -34,6 +39,7 @@ export class UI {
   this.chartImage=new Image();this.chartImage.src=import.meta.env.BASE_URL+'world/color.webp';
   $('site').onchange=()=>{this.selected=Number(($('site') as HTMLSelectElement).value);this.showSite();};
   $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
+  $('switch-scenery').onclick=()=>location.assign(switchSceneryURL(location.href,!detail,SITES[this.selected].id));
   $('nav-map').onclick=()=>this.toggle('map');$('nav-help').onclick=()=>this.toggle('help');$('credits').onclick=()=>this.toggle('credits');
   $('nav-pause').onclick=()=>this.actions.pause();$('nav-sound').onclick=()=>this.actions.sound();
   const stick=$('stick'),knob=stick.querySelector('i')!;const stickMove=(e:PointerEvent)=>{

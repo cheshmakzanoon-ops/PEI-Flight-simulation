@@ -29,7 +29,19 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 **Waterfront approaches:** Choose **Basin Head · low pass** or **Summerside waterfront · low pass** in the departure menu to start offshore facing the local scenery. [Flight checks](docs/qa/waterfront-departures.md).
 
-**Scenery previews:** Add `?basinChannel` to see the measured [Basin Head inlet, bridge and Cannery](docs/qa/basin-head-cannery.md), or `?montagueFoundationPreview` to see the [Montague River and curved Main Street bridge](docs/montague-bridge-preview.md). Try `?legacyShoreArcs` for the [three-county coastline repair](docs/qa/legacy-shore-arcs.md). Use `?spinnakersPreview` for the surveyed [Spinnakers’ Landing boardwalk and waterfront buildings](docs/qa/spinnakers-landing.md) in Summerside. Combine it with `&northBaywalkPreview` for the surveyed [north Baywalk connection and court](docs/qa/baywalk-court.md). Append `&baywalkConcrete` for its [mapped concrete approach](docs/qa/baywalk-concrete.md). Use `?shoreFoamDetail` to compare the [shore-breaker treatment](docs/qa/shore-foam-detail.md). Use `?canopyLight` for [directional crown lighting](docs/qa/canopy-light-preview.md). Try `?northCapeWind` from North Cape to see the [16 documented commercial turbines](docs/qa/north-cape-turbines.md). The [North Cape wind farm low pass](docs/qa/north-cape-departure.md) starts offshore and crosses the array. These previews leave the default scenery unchanged.
+### Scenery previews
+
+In Dispatch, choose **Use detailed preview** to enable the [curated profile](docs/qa/scenery-profile.md). Use **Use standard** to return without losing your departure. For individual comparisons, these flags also work on their own:
+
+| Area | Preview flag | What to look for |
+| --- | --- | --- |
+| North Cape | `?northCapeWind` | The [16 commercial turbines](docs/qa/north-cape-turbines.md) on the [wind farm low pass](docs/qa/north-cape-departure.md). |
+| Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Spinnakers’ Landing](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
+| Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-wharf.md). |
+| Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
+| Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). |
+
+Preview work is regional and does not change the Standard atlas.
 
 ## Download the web build
 
