@@ -67,3 +67,25 @@ python tools/qa/player-routes.py --dist dist --out /tmp/pei-routes \
 
 It starts both lighthouse approaches and records actual travel, then checks
 the original Cavendish coastal overdraw case after two relocations.
+
+## Cache behavior when shipping scenery updates
+
+The static build preloads one content-addressed Three.js chunk and keeps
+application code in a separate content-addressed chunk. Initial downloads
+still need both, and changes to the renderer, its imports or the toolchain
+may change both hashes. This is not offline caching and depends on the host's
+normal HTTP cache policy.
+
+To check a routine application-only change, build twice from otherwise
+identical source with a different dispatch subtitle. The app chunk name must
+change while the Three.js chunk name and SHA-256 remain equal:
+
+```sh
+npm run build
+sha256sum dist/assets/three-*.js
+ls dist/assets/index-*.js
+```
+
+In the introduction test the unchanged Three.js chunk was 577.31 kB minified
+(146.08 kB gzip). This measures reusable bytes on subsequent matching builds,
+not a first-load reduction or browser throughput.
