@@ -6,6 +6,7 @@ import {unpackGzip} from '../sim/compression.ts';
 import { Cover } from '../sim/cover.ts';
 import { coastSegments } from '../sim/shoreline.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
+import { shoreFoamGLSL } from './shore-foam.ts';
 import { DetailImagery } from './detail.ts';
 import { runwayAtlas } from './runway-paint.ts';
 import { RUNWAYS } from '../sim/places.ts';
@@ -53,7 +54,7 @@ const skyFrag=fp+skyFn+`
  void main(){
  #include <logdepthbuf_fragment>
  gl_FragColor=vec4(skyAt(normalize(p-cameraPosition)),1.);`+out;
-const waterFrag=fp+skyFn+`
+const waterFrag=fp+skyFn+shoreFoamGLSL+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -84,6 +85,9 @@ const waterFrag=fp+skyFn+`
  float shore=-254.;if(all(greaterThanEqual(uv,vec2(0.)))&&all(lessThanEqual(uv,vec2(1.)))){shore=(texture2D(coverMap,uv).g*255.-128.)*2.;}
  // Water must not overdraw surveyed land, including nearly flat coasts. A depth
  // comparison alone between an ocean surface and land a few cm above it is fragile.
+ // Conservative phase footprint includes the spatial distortion from the
+ // foam field. Derivatives are evaluated before discard and the coastal branch.
+ float foamFootprint=.69*fwidth(shore)+.42*length(fwidth(q));
  if(shore>=0.)discard;
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
@@ -94,9 +98,7 @@ const waterFrag=fp+skyFn+`
  vec3 c=mix(deep,reflection,fres);c*=1.+.38*(n.x+.45*n.y);
  float glitter=pow(clamp(dot(normal,normalize(view+sun)),0.,1.),83.);
  c+=vec3(.72,.61,.41)*glitter*(.32+.35*fade);
- float phase=shore*.51+t*1.4+3.*noise(q*.041);
- float foam=smoothstep(-37.,-4.,shore)*(1.-smoothstep(-4.,1.,shore))*(.25+.75*smoothstep(.30,.82,sin(phase)))*(1.-smoothstep(.9,4.,fwidth(phase)));
- c=mix(c,vec3(.55,.65,.58),foam*.69);
+ c=mix(c,vec3(.49,.58,.56),shoreFoam(q,shore,t,dist,n,foamFootprint));
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
 const cliffFrag=fp+`
  void main(){

@@ -1,0 +1,291 @@
+[
+  {
+    "view": "east-close",
+    "clock": [
+      12.0,
+      12.4,
+      12.8,
+      13.2
+    ],
+    "tracked": 25,
+    "medianChangeM": -2.185,
+    "fractionToward": 1.0,
+    "tracks": [
+      {
+        "row": 341,
+        "startPixel": 47.5,
+        "proxyMetres": [
+          10.536,
+          9.851,
+          9.286,
+          8.69
+        ],
+        "signedChange": -1.846
+      },
+      {
+        "row": 341,
+        "startPixel": 89.5,
+        "proxyMetres": [
+          2.51,
+          2.008,
+          1.529,
+          1.02
+        ],
+        "signedChange": -1.49
+      },
+      {
+        "row": 358,
+        "startPixel": 55.5,
+        "proxyMetres": [
+          11.242,
+          10.562,
+          9.83,
+          9.333
+        ],
+        "signedChange": -1.908
+      },
+      {
+        "row": 375,
+        "startPixel": 67.5,
+        "proxyMetres": [
+          10.588,
+          9.882,
+          9.255,
+          8.56
+        ],
+        "signedChange": -2.028
+      },
+      {
+        "row": 375,
+        "startPixel": 114.0,
+        "proxyMetres": [
+          2.698,
+          2.118,
+          1.647,
+          1.333
+        ],
+        "signedChange": -1.365
+      },
+      {
+        "row": 392,
+        "startPixel": 62.0,
+        "proxyMetres": [
+          12.078,
+          11.373,
+          10.667,
+          10.118
+        ],
+        "signedChange": -1.961
+      },
+      {
+        "row": 409,
+        "startPixel": 68.5,
+        "proxyMetres": [
+          11.529,
+          10.858,
+          10.098,
+          9.333
+        ],
+        "signedChange": -2.196
+      },
+      {
+        "row": 409,
+        "startPixel": 128.0,
+        "proxyMetres": [
+          2.824,
+          2.118,
+          1.542,
+          1.176
+        ],
+        "signedChange": -1.647
+      },
+      {
+        "row": 426,
+        "startPixel": 72.0,
+        "proxyMetres": [
+          11.468,
+          10.771,
+          10.039,
+          9.208
+        ],
+        "signedChange": -2.261
+      },
+      {
+        "row": 443,
+        "startPixel": 77.0,
+        "proxyMetres": [
+          11.312,
+          10.61,
+          9.668,
+          8.889
+        ],
+        "signedChange": -2.423
+      },
+      {
+        "row": 460,
+        "startPixel": 90.0,
+        "proxyMetres": [
+          10.684,
+          9.961,
+          9.38,
+          8.767
+        ],
+        "signedChange": -1.917
+      },
+      {
+        "row": 460,
+        "startPixel": 162.5,
+        "proxyMetres": [
+          2.51,
+          1.851,
+          1.412,
+          1.059
+        ],
+        "signedChange": -1.451
+      },
+      {
+        "row": 477,
+        "startPixel": 95.5,
+        "proxyMetres": [
+          11.263,
+          10.62,
+          10.078,
+          9.569
+        ],
+        "signedChange": -1.694
+      },
+      {
+        "row": 494,
+        "startPixel": 15.0,
+        "proxyMetres": [
+          20.649,
+          19.869,
+          19.194,
+          18.462
+        ],
+        "signedChange": -2.187
+      },
+      {
+        "row": 494,
+        "startPixel": 101.5,
+        "proxyMetres": [
+          11.66,
+          11.043,
+          10.327,
+          9.46
+        ],
+        "signedChange": -2.2
+      },
+      {
+        "row": 511,
+        "startPixel": 19.5,
+        "proxyMetres": [
+          20.654,
+          19.897,
+          19.101,
+          18.305
+        ],
+        "signedChange": -2.349
+      },
+      {
+        "row": 511,
+        "startPixel": 118.5,
+        "proxyMetres": [
+          10.871,
+          10.185,
+          9.349,
+          8.483
+        ],
+        "signedChange": -2.388
+      },
+      {
+        "row": 528,
+        "startPixel": 27.0,
+        "proxyMetres": [
+          20.296,
+          19.582,
+          18.884,
+          18.065
+        ],
+        "signedChange": -2.23
+      },
+      {
+        "row": 528,
+        "startPixel": 134.5,
+        "proxyMetres": [
+          10.185,
+          9.497,
+          8.717,
+          7.89
+        ],
+        "signedChange": -2.295
+      },
+      {
+        "row": 545,
+        "startPixel": 35.5,
+        "proxyMetres": [
+          19.843,
+          19.342,
+          18.49,
+          17.537
+        ],
+        "signedChange": -2.306
+      },
+      {
+        "row": 545,
+        "startPixel": 144.5,
+        "proxyMetres": [
+          10.065,
+          9.497,
+          8.925,
+          8.392
+        ],
+        "signedChange": -1.673
+      },
+      {
+        "row": 562,
+        "startPixel": 40.5,
+        "proxyMetres": [
+          19.695,
+          18.956,
+          18.095,
+          17.224
+        ],
+        "signedChange": -2.471
+      },
+      {
+        "row": 562,
+        "startPixel": 143.5,
+        "proxyMetres": [
+          10.839,
+          10.431,
+          9.969,
+          9.524
+        ],
+        "signedChange": -1.315
+      },
+      {
+        "row": 579,
+        "startPixel": 41.5,
+        "proxyMetres": [
+          19.863,
+          19.118,
+          18.283,
+          17.412
+        ],
+        "signedChange": -2.451
+      },
+      {
+        "row": 596,
+        "startPixel": 38.5,
+        "proxyMetres": [
+          20.314,
+          19.566,
+          18.882,
+          18.129
+        ],
+        "signedChange": -2.185
+      }
+    ]
+  }
+]
