@@ -1,0 +1,55 @@
+{
+  "source": "NRCan HRDEM mosaic 10_3-mosaic-1m plus original 2020 COPC (related survey)",
+  "sourcePointCloud": "pei_2020_427000_679000",
+  "sourceTrack": 36675,
+  "atlasTile": "q103301",
+  "ordinal": 232,
+  "guardRawMetres": 0.53,
+  "nTrainingClass6": 763,
+  "nHeldoutClass6": 189,
+  "pointCloudCohortSHA256": "448b3c2c4a38bd16ea0d28fa14841f1281714dfffbd812eac07324e242fc08a9",
+  "dsmDtmCropSHA256": "077e083eeebc5421df55df6fb7cf015153571a5a9413f5a42385b484922d7587",
+  "dsmDtmCrop": [
+    2420994.5,
+    312204.5,
+    88,
+    70
+  ],
+  "oldFlatRoofY": 20.61855,
+  "outlineSquareMetres": 137.71,
+  "frontWidthMetres": 16.3425,
+  "verticalChecks": {
+    "blockedRawClass6": {
+      "old": {
+        "n": 189,
+        "p50": 4.93555,
+        "p90": 5.11475,
+        "p95": 5.14875,
+        "maximum": 5.22255
+      },
+      "built": {
+        "n": 189,
+        "p50": 0.026741,
+        "p90": 0.053084,
+        "p95": 0.065055,
+        "maximum": 1.169041
+      }
+    },
+    "interiorDSMThroughAllClasses": {
+      "old": {
+        "n": 107,
+        "p50": 4.546017,
+        "p90": 5.062439,
+        "p95": 5.099792,
+        "maximum": 5.185018
+      },
+      "built": {
+        "n": 107,
+        "p50": 0.299217,
+        "p90": 1.949584,
+        "p95": 3.570302,
+        "maximum": 5.577198
+      }
+    }
+  }
+}

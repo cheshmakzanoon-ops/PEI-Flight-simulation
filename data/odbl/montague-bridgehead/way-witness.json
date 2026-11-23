@@ -1,0 +1,54 @@
+{
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "upstream": "https://download.geofabrik.de/north-america/canada/prince-edward-island/prince-edward-island-261101.osm.pbf",
+  "upstreamSha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "buildingWay": {
+    "id": "652507973",
+    "rings": [
+      [
+        [
+          -62.6471952,
+          46.1635616
+        ],
+        [
+          -62.646971,
+          46.1635273
+        ],
+        [
+          -62.6469864,
+          46.163479
+        ],
+        [
+          -62.6470206,
+          46.1634842
+        ],
+        [
+          -62.6470387,
+          46.1634275
+        ],
+        [
+          -62.6472287,
+          46.1634566
+        ]
+      ]
+    ]
+  },
+  "streetPortion": {
+    "id": "208121569",
+    "points": [
+      [
+        -62.6473906,
+        46.1637104
+      ],
+      [
+        -62.6470734,
+        46.1636508
+      ],
+      [
+        -62.6467461,
+        46.163595
+      ]
+    ]
+  }
+}

@@ -9,6 +9,8 @@ import { emitFarmShell,farmRoofAtlas,readFarmShell } from './farm-shells.ts';
 import { farmMaterialGLSL } from './farm-material.ts';
 import { homeRoofAtlas,readHomeEnvelope,emitHomeEnvelope } from './home-envelopes.ts';
 import { homeMaterialGLSL } from './home-material.ts';
+import {montagueHallMaterialGLSL} from './montague-hall-material.ts';
+import {emitMontagueHall,montagueHallModel,MONTAGUE_HALL_TILE,MONTAGUE_HALL_ATLAS} from './montague-hall.ts';
 import {victoriaMaterialGLSL} from './victoria-material.ts';
 import {emitVictoriaRow,victoriaRowModel,VICTORIA_TILE,VICTORIA_ATLAS} from './victoria-row.ts';
 import {waterStreetMaterialGLSL} from './water-street-material.ts';
@@ -38,7 +40,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false)=>`
+const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false,montague=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -59,15 +61,17 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  ${homeMaterialGLSL}
  ${waterStreet?waterStreetMaterialGLSL:''}
  ${victoria?victoriaMaterialGLSL:''}
+ ${montague?montagueHallMaterialGLSL:''}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
  vec3 c=tint,n=normalize(normalW);
- ${waterStreet||victoria?'if(facade>12.5){if(!gl_FrontFacing)n=-n;}else{':''}
+ ${waterStreet||victoria||montague?'if(facade>12.5){if(!gl_FrontFacing)n=-n;}else{':''}
  if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
- ${waterStreet||victoria?'}':''}
+ ${waterStreet||victoria||montague?'}':''}
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
+ ${montague?'if(facade>46.5){shadeMontagueHall(c,uv2d,wp,n,roof,k);}else':''}
  ${victoria?'if(facade>31.5){shadeVictoria(c,uv2d,wp,n,facade,roof,k,d);}else':''}
  ${waterStreet?'if(facade>12.5){shadeWaterStreet(c,uv2d,wp,n,facade,roof,k,fine,d);}else':''}
  if(facade>9.5){shadeHome(c,uv2d,wp,n,facade,roof,k,d);}
@@ -128,6 +132,7 @@ export class Buildings {
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
  private readonly fitted:boolean;private readonly farms:boolean;private readonly homes:boolean;private readonly atlasHash:string|undefined;
  private readonly sourisMat?:THREE.ShaderMaterial;
+ private readonly montagueMat?:THREE.ShaderMaterial;
  private readonly victoriaMat?:THREE.ShaderMaterial;
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
@@ -145,6 +150,10 @@ export class Buildings {
   if(atlasHash===VICTORIA_ATLAS&&scene.environment){
    this.victoriaMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(false,!!casts,false,true),
     uniforms:{victoriaSky:{value:scene.environment},...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
+  }
+  if(atlasHash===MONTAGUE_HALL_ATLAS&&scene.environment){
+   this.montagueMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(false,!!casts,false,false,true),
+    uniforms:{montagueSky:{value:scene.environment},...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
   }
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
@@ -253,6 +262,13 @@ export class Buildings {
     });
     continue;
    }
+   const hall=this.montagueMat?montagueHallModel(this.atlasHash,tile.id,i,f.footprint,f.holes):undefined;
+   if(hall){
+    emitMontagueHall(hall,(x,z)=>this.t.meshElevation(x,z),(p,y,c,u,v,role,style)=>{
+     facade=style;vertex(p,y,c,u,v,role);
+    });
+    continue;
+   }
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
    const fit=this.fitted&&rings.length===1?lookupRoofFit(tile.id,f.footprint,{x:cx,z:cz}):undefined;
@@ -300,6 +316,6 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
+  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:this.mat);mesh.position.set(ox,0,oz);return mesh;
  }
 }

@@ -1,0 +1,57 @@
+{
+  "mesh": {
+    "tile": "q103301",
+    "ordinal": 232,
+    "neighborVertices": 35799,
+    "protectedAttributes": [
+      "position",
+      "uv",
+      "color",
+      "topFlag",
+      "facadeStyle",
+      "normal"
+    ],
+    "roleTriangles": {
+      "0": 74,
+      "40": 32,
+      "41": 5,
+      "42": 14,
+      "43": 28,
+      "44": 222,
+      "45": 30,
+      "46": 240
+    },
+    "formerFireBayGlassDepthsMetres": [
+      0.29001205524113116,
+      0.2899900640600903,
+      0.29000787475390877
+    ],
+    "furthestOutsideMillimeters": 0.05472700775169349,
+    "tests": 189,
+    "missing": 0,
+    "ties": [],
+    "old": {
+      "p50": 4.935549346923828,
+      "p90": 5.114749346923827,
+      "p95": 5.148749346923824
+    },
+    "candidate": {
+      "p50": 0.02674177534719746,
+      "p90": 0.0530842522976304,
+      "p95": 0.06505541427877863
+    },
+    "maxModelDelta": 1.3141054484577808e-06,
+    "oldSceneTileTriangles": 11952,
+    "newSceneTileTriangles": 12578
+  },
+  "projection": {
+    "planSquareMetres": {
+      "outline": 137.71003109720218,
+      "union": 137.70981704629958,
+      "gap": 0.00044017301973227547,
+      "spill": 0.00022612211713131557,
+      "overlap": 0.0
+    },
+    "closingInnerParapetSamples": 777
+  }
+}

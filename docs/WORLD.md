@@ -23,6 +23,8 @@ Charlottetown](qa/victoria-row-shell.md) preserves one original block outline wi
 measured attached roof volumes and original brick-and-stone frontage. The
 [guarded Victoria Row paver finish](qa/victoria-pavers.md) affects only the
 source-confirmed carriageway, not the nearby intersections or sidewalks.
+[Montague’s former first Town Hall](qa/montague-hall.md) retains its original
+outline with a measured shallow roof and independently authored recessed fire bays.
 
 ## Attribution
 
