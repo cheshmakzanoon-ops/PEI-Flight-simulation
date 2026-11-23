@@ -128,10 +128,24 @@ const landFrag=fp+lighthouseGroundGLSL+`
  }
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export async function loadAtlas(progress:(s:string)=>void){
+ // The elevation manifest does not describe the colour, cover, or sky assets.
+ // Start their independent reads together; keep all required failures attached
+ // to one promise and establish the world only after every layer can be decoded.
+ const [elevation,img,cover,sky]=await Promise.all([
+  loadElevation(progress),
+  new THREE.TextureLoader().loadAsync(base+'color.webp'),
+  loadCover(),
+  new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp')
+ ]);
+ img.colorSpace=THREE.SRGBColorSpace;img.anisotropy=4;
+ sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
+ return {terrain:new Terrain(elevation.spec,new Int16Array(elevation.data)),img,cover,sky};
+}
+async function loadElevation(progress:(s:string)=>void){
  const json=await fetch(base+'terrain.json');if(!json.ok)throw Error('The terrain manifest could not be loaded.');
  const spec:TerrainSpec&{file:string;sha256:string}=await json.json();
  progress('Reading surveyed elevations…');
- const [response,img]=await Promise.all([fetch(base+spec.file),new THREE.TextureLoader().loadAsync(base+'color.webp')]);
+ const response=await fetch(base+spec.file);
  if(!response.ok||!response.body)throw Error('The elevation archive could not be downloaded.');
  // Some static servers send Content-Encoding: gzip even for .gz assets and the browser has already decoded them.
  const data=await unpackGzip(await response.arrayBuffer());
@@ -140,12 +154,13 @@ export async function loadAtlas(progress:(s:string)=>void){
   const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',data));
   if(Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('')!==spec.sha256)throw Error('The terrain checksum does not match the manifest.');
  }
- img.colorSpace=THREE.SRGBColorSpace;img.anisotropy=4;
- const [cmeta,coverData,sky]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz'),new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp')]);
+ return {spec,data};
+}
+async function loadCover(){
+ const [cmeta,coverData]=await Promise.all([fetch(base+'cover.json'),fetch(base+'cover.bin.gz')]);
  if(!cmeta.ok||!coverData.ok)throw Error('The coastline and forest atlas could not be loaded.');
  const cs=await cmeta.json();const cb=await unpackGzip(await coverData.arrayBuffer());
- sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
- return {terrain:new Terrain(spec,new Int16Array(data)),img,cover:new Cover(cs.width,cs.height,new Uint8Array(cb)),sky};
+ return new Cover(cs.width,cs.height,new Uint8Array(cb));
 }
 interface Patch { id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing';detail?:THREE.Texture;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {

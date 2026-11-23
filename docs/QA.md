@@ -89,3 +89,15 @@ ls dist/assets/index-*.js
 In the introduction test the unchanged Three.js chunk was 577.31 kB minified
 (146.08 kB gzip). This measures reusable bytes on subsequent matching builds,
 not a first-load reduction or browser throughput.
+
+## Cold atlas startup
+
+`tools/qa/atlas-cold-gate.py` starts the unchanged production bundle in a
+fresh browser and delays each required atlas response by 600 ms. With
+`--expect parallel`, the colour, cover metadata, cover data and panorama
+requests must all arrive before the terrain manifest is released; elevation
+still waits for its manifest and existing validation. Dispatch must
+transition into flight with no browser or HTTP errors. In one matched
+software-rendered run this moved dispatch from 5.20 s to 3.45 s. The run
+proves the dependency change under a repeatable latency fixture, not typical
+startup speed, mobile CPU impact or a new download-size claim.
