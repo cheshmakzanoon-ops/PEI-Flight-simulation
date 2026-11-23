@@ -31,30 +31,34 @@ poses={
  'east-point-control':dict(lon=-61.9718333333,lat=46.452527778,h=19.5,east=.91,south=-.415,dist=125,agl=45)
 }
 
-def stage(repo,root,deps,void_probe):
+def stage_target(repo,root,deps,void_probe,matcher,anchor,style,roof_roles):
     base_stage(repo,root,deps,void_probe)
     p=root/'src/render/buildings.ts'
     p.write_text(fixed.once(p.read_text(),'const mesh=this.generate(chunk.features,tile);','''
       const mesh=this.generate(chunk.features,tile);
-      if(tile.id===MONTAGUE_HALL_TILE&&this.montagueMat){
-       const material=this.montagueMat;
-       try{(this as any).montagueMat=undefined;mesh.userData.priorShell=this.generate(chunk.features,tile);}
-       finally{(this as any).montagueMat=material;}
-      }
+      if(tile.id===MONTAGUE_HALL_TILE&&this.montagueMat)
+       mesh.userData.priorShell=this.generate(chunk.features,tile,false);
     '''))
     material=p.read_text()
+    material=fixed.once(material,'private generate(features:Bldg[],tile:BoundTile){',
+                        'private generate(features:Bldg[],tile:BoundTile,qaUseTarget=true){')
+    material=fixed.once(material,anchor,anchor.replace('this.montagueMat','qaUseTarget&&this.montagueMat'))
     material=fixed.once(material,'  let facade=0;','  let facade=0,qMark=0; const qPick:number[]=[];')
     material=fixed.once(material,'=>{P.push(p.x-ox,y,p.z-oz);','=>{qPick.push(qMark);P.push(p.x-ox,y,p.z-oz);')
     material=fixed.once(material,'   const f=features[i];','''   const f=features[i];
-     qMark=Number(!!montagueHallModel(this.atlasHash,tile.id,i,f.footprint,f.holes));''')
+     qMark=Number(!!'''+matcher+'''(this.atlasHash,tile.id,i,f.footprint,f.holes));''')
     material=fixed.once(material,'  const mesh=new THREE.Mesh(g,tile.id===','''  g.setAttribute('qaTarget',new THREE.Uint8BufferAttribute(qPick,1));
      const mesh=new THREE.Mesh(g,tile.id===''')
     p.write_text(material)
     m=root/'src/main.ts'
     m.write_text(fixed.once(m.read_text(),'renderer.render(scene,camera);','''
      renderer.render(scene,camera);
-     const regions=(world as any).tiles.filter((t:any)=>Math.hypot(camera.position.x-t.x0-t.w*.5,camera.position.z-t.z0-t.d*.5)<14500);
-     (window as any).buildingArtReady=regions.every((t:any)=>t.status==='ready'||t.status==='uncovered');
+     const ww=world as any;
+     const regions=ww.tiles.filter((t:any)=>Math.hypot(camera.position.x-t.x0-t.w*.5,camera.position.z-t.z0-t.d*.5)<14500);
+     // A decoded texture is still optically changing until the detail fade
+     // reaches 1. Capture after it, including in fast offsite controls.
+     (window as any).buildingArtReady=regions.every((t:any)=>t.status==='uncovered'||
+      (t.status==='ready'&&(t.detailSince===undefined||ww.detailClock?.value-t.detailSince>=.40)));
      (window as any).hallFrames=()=>{
       const block=scene.children.find(o=>o.userData.priorShell) as THREE.Mesh|undefined;
       const save=()=>{renderer.render(scene,camera);return {png:renderer.domElement.toDataURL('image/png'),
@@ -76,7 +80,7 @@ def stage(repo,root,deps,void_probe):
        const g=block.geometry,m=block.material;
        const attributes=g.getAttribute('facadeStyle').array;
        const flags=g.getAttribute('topFlag').array;
-       for(let i=0;i<attributes.length;i++)if(attributes[i]===47){mark++;if(flags[i]===41)roof++;}
+       for(let i=0;i<attributes.length;i++)if(attributes[i]===@STYLE@){mark++;if(@ROOFS@.includes(flags[i]))roof++;}
        newMask=saved(block);
        block.geometry=block.userData.priorShell.geometry;
        block.material=block.userData.priorShell.material;
@@ -86,7 +90,11 @@ def stage(repo,root,deps,void_probe):
        tileState:buildings?.diagnostics(),details:regions.filter((a:any)=>a.status==='ready').map((a:any)=>a.id).sort(),
        camera:{eye:camera.position.toArray(),aim:[center.x,baseH+qa.h*.5,center.z],orientation:camera.matrixWorld.elements}};
      };
-    '''))
+    '''.replace('@STYLE@',str(style)).replace('@ROOFS@',json.dumps(list(roof_roles)))))
+
+def stage(repo,root,deps,void_probe):
+    stage_target(repo,root,deps,void_probe,'montagueHallModel',
+                 'const hall=this.montagueMat?',47,(41,))
 
 def capture(args,browser,url):
     results=[]

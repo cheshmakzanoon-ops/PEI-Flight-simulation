@@ -1,0 +1,21 @@
+{
+  "site": "montague",
+  "metres": 112.16,
+  "buildingTiles": {
+    "wanted": 11,
+    "ready": 11,
+    "loading": 0,
+    "pending": 0,
+    "failed": 0
+  },
+  "detail": {
+    "ready": 18,
+    "loading": 0,
+    "missing": 0,
+    "uncovered": 0,
+    "retrying": 0
+  },
+  "warnings": [],
+  "rendererErrors": [],
+  "directMontagueAtlasTileRangeObserved": false
+}

@@ -24,7 +24,8 @@ measured attached roof volumes and original brick-and-stone frontage. The
 [guarded Victoria Row paver finish](qa/victoria-pavers.md) affects only the
 source-confirmed carriageway, not the nearby intersections or sidewalks.
 [Montague’s former first Town Hall](qa/montague-hall.md) retains its original
-outline with a measured shallow roof and independently authored recessed fire bays.
+outline with a measured shallow roof and independently authored recessed fire bays. Nearby [571 Main Street](qa/montague-macdonald.md)
+uses a separately fitted cross-gable, two lower roof planes and an original covered verandah.
 
 ## Attribution
 

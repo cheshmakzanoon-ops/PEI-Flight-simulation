@@ -1,0 +1,17 @@
+{
+  "rows": 11483,
+  "ranges": 9,
+  "transferredBytes": 2275218,
+  "extent2961": [
+    [
+      527281.556849558,
+      5112244.79219631
+    ],
+    [
+      527319.896891313,
+      5112279.6287075
+    ]
+  ],
+  "source": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_427000_679000.copc.laz",
+  "cohortSha256": "1fa899ee19c4c87bd663d9ad8b77634e297a5472359c14336306cc6a0b3f9ec1"
+}

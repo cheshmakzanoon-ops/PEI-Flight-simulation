@@ -10,6 +10,8 @@ import { farmMaterialGLSL } from './farm-material.ts';
 import { homeRoofAtlas,readHomeEnvelope,emitHomeEnvelope } from './home-envelopes.ts';
 import { homeMaterialGLSL } from './home-material.ts';
 import {montagueHallMaterialGLSL} from './montague-hall-material.ts';
+import {macdonaldMaterialGLSL} from './montague-macdonald-material.ts';
+import {montagueMacdonaldModel,emitMacdonaldShell} from './montague-macdonald.ts';
 import {emitMontagueHall,montagueHallModel,MONTAGUE_HALL_TILE,MONTAGUE_HALL_ATLAS} from './montague-hall.ts';
 import {victoriaMaterialGLSL} from './victoria-material.ts';
 import {emitVictoriaRow,victoriaRowModel,VICTORIA_TILE,VICTORIA_ATLAS} from './victoria-row.ts';
@@ -61,7 +63,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  ${homeMaterialGLSL}
  ${waterStreet?waterStreetMaterialGLSL:''}
  ${victoria?victoriaMaterialGLSL:''}
- ${montague?montagueHallMaterialGLSL:''}
+ ${montague?montagueHallMaterialGLSL+macdonaldMaterialGLSL:''}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
@@ -71,7 +73,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  if(roof<.5&&!gl_FrontFacing)n=-n;
  ${waterStreet||victoria||montague?'}':''}
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
- ${montague?'if(facade>46.5){shadeMontagueHall(c,uv2d,wp,n,roof,k);}else':''}
+ ${montague?'if(facade>47.5){shadeMacdonald(c,uv2d,wp,n,roof,k,d);}else if(facade>46.5){shadeMontagueHall(c,uv2d,wp,n,roof,k);}else':''}
  ${victoria?'if(facade>31.5){shadeVictoria(c,uv2d,wp,n,facade,roof,k,d);}else':''}
  ${waterStreet?'if(facade>12.5){shadeWaterStreet(c,uv2d,wp,n,facade,roof,k,fine,d);}else':''}
  if(facade>9.5){shadeHome(c,uv2d,wp,n,facade,roof,k,d);}
@@ -265,6 +267,13 @@ export class Buildings {
    const hall=this.montagueMat?montagueHallModel(this.atlasHash,tile.id,i,f.footprint,f.holes):undefined;
    if(hall){
     emitMontagueHall(hall,(x,z)=>this.t.meshElevation(x,z),(p,y,c,u,v,role,style)=>{
+     facade=style;vertex(p,y,c,u,v,role);
+    });
+    continue;
+   }
+   const macdonald=this.montagueMat?montagueMacdonaldModel(this.atlasHash,tile.id,i,f.footprint,f.holes):undefined;
+   if(macdonald){
+    emitMacdonaldShell(macdonald,(x,z)=>this.t.meshElevation(x,z),(p,y,c,u,v,role,style)=>{
      facade=style;vertex(p,y,c,u,v,role);
     });
     continue;

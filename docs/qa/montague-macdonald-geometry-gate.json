@@ -1,0 +1,82 @@
+{
+  "mesh": {
+    "features": 582,
+    "unaffectedVertices": 37692,
+    "attributes": [
+      "position",
+      "uv",
+      "color",
+      "topFlag",
+      "facadeStyle",
+      "normal"
+    ],
+    "outsidePlanMillimeters": 0.056441667578122766,
+    "roofRays": 180,
+    "oldAbsolute": {
+      "median": 0.7116940088328185,
+      "p90": 1.0078863504315951,
+      "p95": 2.3875313839643257,
+      "maximum": 5.463704304495128
+    },
+    "candidateAbsolute": {
+      "median": 0.026939029621175337,
+      "p90": 0.10601102147979304,
+      "p95": 0.1321531157044587,
+      "maximum": 3.916990716038981
+    },
+    "maxMeshHeightDeltaMetres": 2.7950116141539638e-05,
+    "newBuildingTriangles": 1219,
+    "oldBuildingTriangles": 14,
+    "candidateRoles": {
+      "50": 141,
+      "51": 8,
+      "52": 18,
+      "53": 4,
+      "54": 714,
+      "55": 36,
+      "56": 294,
+      "57": 2,
+      "58": 2
+    },
+    "verandahRays": [
+      {
+        "u": 4.35,
+        "depth": 1.0700052447524115,
+        "role": 50
+      },
+      {
+        "u": 6.56,
+        "depth": 1.06998638740318,
+        "role": 50
+      },
+      {
+        "u": 8.85,
+        "depth": 1.1930096333427842,
+        "role": 55
+      },
+      {
+        "u": 11.52,
+        "depth": 1.1930164788702753,
+        "role": 55
+      },
+      {
+        "u": 12.03,
+        "depth": 1.1930093278594922,
+        "role": 55
+      }
+    ]
+  },
+  "projection": {
+    "projectedPlanSquareMetres": {
+      "outline": 140.5899230327242,
+      "union": 140.58988831751049,
+      "gap": 0.0002740416140817811,
+      "spill": 0.00023932640040325067,
+      "overlap": 0.000238858163356781
+    },
+    "shoulderStations": 106,
+    "interiorStepSamples": 530,
+    "threeRoofTriangles": 24
+  },
+  "roofPlanAndStructureByteIdenticalToNeutralArt": true
+}
