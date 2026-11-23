@@ -1,0 +1,18 @@
+[
+  {
+    "meadowAndDetail": false,
+    "site": "cyyg",
+    "movementM": 15.473111150618976,
+    "groundY": 47.12,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "meadowAndDetail": true,
+    "site": "cyyg",
+    "movementM": 15.473575998111002,
+    "groundY": 47.12,
+    "pause": true,
+    "errors": []
+  }
+]

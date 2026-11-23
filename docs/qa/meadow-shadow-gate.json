@@ -1,0 +1,48 @@
+{
+  "prince": {
+    "before": {
+      "draws": 47,
+      "n": 245104
+    },
+    "after": {
+      "draws": 47,
+      "n": 245104
+    },
+    "noCast": {
+      "draws": 47,
+      "n": 245104
+    },
+    "state": {
+      "active": true,
+      "strength": 1,
+      "updates": 1,
+      "depthDraws": 1,
+      "depthTriangles": 14147
+    },
+    "visibleCastProofPixels": 266,
+    "allShadowProofPixelsExact": 402900
+  },
+  "kings": {
+    "before": {
+      "draws": 133,
+      "n": 399310
+    },
+    "after": {
+      "draws": 133,
+      "n": 399310
+    },
+    "noCast": {
+      "draws": 133,
+      "n": 399310
+    },
+    "state": {
+      "active": true,
+      "strength": 1,
+      "updates": 2,
+      "depthDraws": 2,
+      "depthTriangles": 13413
+    },
+    "visibleCastProofPixels": 0,
+    "allShadowProofPixelsExact": 402900
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "prince-step-0": {
+    "before": {
+      "draws": 47,
+      "tris": 245100
+    },
+    "after": {
+      "draws": 47,
+      "tris": 245100
+    },
+    "mask": {
+      "draws": 47,
+      "tris": 245100
+    },
+    "exact": true,
+    "camera": [
+      -69481.87445938658,
+      19.89146436875264,
+      6700.357121496102
+    ],
+    "pixels": {
+      "over2": 181153,
+      "offmask": 0,
+      "max": 19
+    },
+    "errors": []
+  },
+  "prince-step-1": {
+    "before": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "after": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "mask": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "exact": true,
+    "camera": [
+      -69481.64496905718,
+      19.894203389631816,
+      6700.6213830875395
+    ],
+    "pixels": {
+      "over2": 180693,
+      "offmask": 0,
+      "max": 19
+    },
+    "errors": []
+  },
+  "prince-step-2": {
+    "before": {
+      "draws": 47,
+      "tris": 245108
+    },
+    "after": {
+      "draws": 47,
+      "tris": 245108
+    },
+    "mask": {
+      "draws": 47,
+      "tris": 245108
+    },
+    "exact": true,
+    "camera": [
+      -69481.41547872777,
+      19.89699615861721,
+      6700.885644678977
+    ],
+    "pixels": {
+      "over2": 180129,
+      "offmask": 0,
+      "max": 19
+    },
+    "errors": []
+  },
+  "prince-step-3": {
+    "before": {
+      "draws": 47,
+      "tris": 245124
+    },
+    "after": {
+      "draws": 47,
+      "tris": 245124
+    },
+    "mask": {
+      "draws": 47,
+      "tris": 245124
+    },
+    "exact": true,
+    "camera": [
+      -69481.18598839837,
+      19.899842675708854,
+      6701.149906270414
+    ],
+    "pixels": {
+      "over2": 179725,
+      "offmask": 0,
+      "max": 19
+    },
+    "errors": []
+  }
+}

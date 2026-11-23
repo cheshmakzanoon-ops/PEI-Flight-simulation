@@ -1,0 +1,28 @@
+{
+  "meadowShaderSha256": "74ef0e1a10c3ef22ec1580a0f8ff0536e231d493e4fa6e4a0cd55f9ebc1a38da",
+  "worldSha256": "919a60558bb56459ad0e08d7a844b75cfea7ab992a248dce4020491552d8ad10",
+  "cells": 256,
+  "pointsAllCornersOfEveryPattern": 900,
+  "maxDifferenceFromEuclideanToOpaqueProtectedTileUnion": 7.105427357601002e-15,
+  "named22-13NorthGuardProbeDistanceN": [
+    0.0,
+    1.0,
+    4.0,
+    20.0,
+    41.0,
+    42.0,
+    43.0,
+    65.0
+  ],
+  "expectedNorthWeightColon": [
+    0.0,
+    0.0016736853471547347,
+    0.025483209156678538,
+    0.4643127092106683,
+    0.9983263146528453,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "proof": "42m is less than either tile dimension, so only 8 immediately adjacent tiles can influence. Guard mask equals exact distance to the union, saturated at42m. At shared edges adorned tiles agree with each other, and factor=0/zero slope if underlying neighbor is protected. Runtime field remains local and observational only."
+}

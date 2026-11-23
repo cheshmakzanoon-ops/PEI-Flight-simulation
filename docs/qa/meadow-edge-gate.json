@@ -1,0 +1,70 @@
+{
+  "south-guard-edge-bowley": {
+    "before": {
+      "draws": 161,
+      "triangles": 372115,
+      "deviceSamples": 4,
+      "sha256": "54fb03d6bfdcaf50ccfddcb600718e70f86767d735602f9a9eca3c19c028c838"
+    },
+    "after": {
+      "draws": 161,
+      "triangles": 372115,
+      "deviceSamples": 4,
+      "sha256": "131055a3b620860bd278b5da3bbef477af89dfea8ad6981baaa13ec69805c5d3"
+    },
+    "ownerUsesMeadow": false,
+    "ownerUsesBowley": true,
+    "tiles": [
+      [
+        "20-13",
+        8
+      ],
+      [
+        "21-12",
+        112
+      ],
+      [
+        "21-13",
+        112
+      ],
+      [
+        "21-14",
+        56
+      ],
+      [
+        "22-12",
+        112
+      ],
+      [
+        "22-13",
+        112
+      ],
+      [
+        "22-14",
+        56
+      ],
+      [
+        "23-12",
+        56
+      ],
+      [
+        "23-13",
+        56
+      ]
+    ],
+    "neighborSouthGuard": 1,
+    "neighborSouthBounds": [
+      36558.185000628946,
+      9499.219884423117,
+      42651.21583406706,
+      15360.440664173513
+    ],
+    "active": "bowley-pond-survey-2020",
+    "requests": 1,
+    "errors": [],
+    "pixelcount": 229200,
+    "anyChanged": 60398,
+    "over2": 7435,
+    "maxDelta": 9
+  }
+}

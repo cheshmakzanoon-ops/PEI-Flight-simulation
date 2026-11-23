@@ -1,0 +1,80 @@
+{
+  "cyyg-03": {
+    "before": {
+      "draws": 139,
+      "tris": 302760
+    },
+    "after": {
+      "draws": 139,
+      "tris": 302760
+    },
+    "mask": {
+      "draws": 139,
+      "tris": 302760
+    },
+    "exact": true,
+    "camera": [
+      5975.3556680854645,
+      56,
+      22822.88494746706
+    ],
+    "pixels": {
+      "runwayMarked": 265783,
+      "runwayChanged": 0,
+      "elsewhereOver2": 0
+    },
+    "errors": []
+  },
+  "cyyg-10": {
+    "before": {
+      "draws": 82,
+      "tris": 284160
+    },
+    "after": {
+      "draws": 82,
+      "tris": 284160
+    },
+    "mask": {
+      "draws": 82,
+      "tris": 284160
+    },
+    "exact": true,
+    "camera": [
+      5495.139227731591,
+      59.060272157245436,
+      23796.683542563194
+    ],
+    "pixels": {
+      "runwayMarked": 5488,
+      "runwayChanged": 0,
+      "elsewhereOver2": 90927
+    },
+    "errors": []
+  },
+  "cysu-05": {
+    "before": {
+      "draws": 90,
+      "tris": 264754
+    },
+    "after": {
+      "draws": 90,
+      "tris": 264754
+    },
+    "mask": {
+      "draws": 90,
+      "tris": 264754
+    },
+    "exact": true,
+    "camera": [
+      -48752.84481096165,
+      27.319373577356146,
+      7161.136604785389
+    ],
+    "pixels": {
+      "runwayMarked": 7389,
+      "runwayChanged": 0,
+      "elsewhereOver2": 85023
+    },
+    "errors": []
+  }
+}

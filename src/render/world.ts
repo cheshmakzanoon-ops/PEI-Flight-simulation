@@ -1,3 +1,4 @@
+import {meadowGLSL} from './meadow-optics.ts';
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
 import {bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
@@ -232,7 +233,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false)=>fp+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false)=>fp+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -271,6 +272,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  #endif
  float d=distance(cameraPosition,p);
  ${showFloor&&castBuildings?'vec3 receiverPlane=n;':''}
+ ${meadow&&castBuildings?'vec3 meadowReceiver=n;':''}
  ${showFloor?`
  bool preserveFloor=false;
  if(forestFloorMix>.001&&d<260.){
@@ -282,6 +284,20 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   }
  }
  enrichWoodlandFloor(col,n,coverMap,vuv,p,d,coast,preserveFloor);`:''}
+ ${meadow?`
+ // Also protect the inputs to the existing runway paint/light shader:
+ // exact cover class alone does not prove a grass pixel is off-runway.
+ float meadowFootprint=max(length(dFdx(p.xz)),length(dFdy(p.xz)));
+ bool awayFromRunway=true;
+ if(abs(meadowStrength)>.001&&d<180.&&coast>185.){
+  for(int i=0;i<3;i++){
+   vec2 off=p.xz-airport[i].xy,axis=airport[i].zw;
+   float along=dot(off,axis),across=abs(dot(off,vec2(-axis.y,axis.x)));
+   if(along>=-42.&&along<=stripSize[i].x+42.&&across<=stripSize[i].y*.5+30.)awayFromRunway=false;
+  }
+  if(awayFromRunway)decorateMeadow(col,n,p,vuv,coverMap,coast,d,meadowFootprint);
+ }
+ `:''}
  float light=clamp(dot(n,sun),0.,1.);
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
@@ -309,7 +325,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   col=mix(col,benchColor.rgb,pow(benchCover,1.15)*benchColor.a);
  }
  `:''}
- ${castBuildings?` float castShade=buildingShade(p,${bankSmooth?'bankShadowReceiver':showFloor?'receiverPlane':'n'},d);
+ ${castBuildings?` float castShade=buildingShade(p,${bankSmooth?'bankShadowReceiver':showFloor?'receiverPlane':meadow?'meadowReceiver':'n'},d);
  col*=mix(vec3(1.),vec3(.69,.74,.81),castShade*(.39+.61*light));`:''}
  col*=.90+.31*light;
  ${cape?`float castCape=capeShade(p,sun,d);
@@ -421,9 +437,10 @@ export class World {
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
+ readonly meadowStrength={value:1};
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false){
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -513,6 +530,11 @@ export class World {
     return !!(harbour?.intersects(x,z,x+w,z+d)||sourisLighting?.intersects(x,z,x+w,z+d));
    };
    const neighbours=[[0,-1],[1,0],[0,1],[-1,0],[-1,-1],[1,-1],[1,1],[-1,1]] as const;
+   const protectsMeadow=(i:number,j:number)=>{
+    if(protectsFloor(i,j))return true;
+    const x=T.left+i*w,z=T.top+j*d;
+    return !!(basin?.intersects(x,z,x+w,z+d)||montague?.intersects(x,z,x+w,z+d)||bowley?.intersects(x,z,x+w,z+d));
+   };
 
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
     const x0=T.left+i*w,z0=T.top+j*d;
@@ -537,10 +559,14 @@ export class World {
        ...(localMontague&&montagueGround?{montagueGroundBounds:{value:new THREE.Vector4(
           montagueGround.x0,montagueGround.z0,montagueGround.x1,montagueGround.z1)}}:{})}:{};
     const hasCape=this.capeShadow?.intersects(x0,z0,x0+w,z0+d)??false;
+    const showMeadow=meadow&&!protectsMeadow(i,j);
+    const meadowGuard=showMeadow?neighbours.reduce((m,[x,z],bit)=>protectsMeadow(i+x,j+z)?m|(1<<bit):m,0):0;
+    const meadowUniforms:Record<string,THREE.IUniform>=showMeadow?{meadowStrength:this.meadowStrength,meadowTileGuard:{value:meadowGuard},
+      meadowTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.

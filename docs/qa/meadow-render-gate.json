@@ -1,0 +1,106 @@
+{
+  "prince": {
+    "before": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "after": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "mask": {
+      "draws": 47,
+      "tris": 245104
+    },
+    "exact": true,
+    "camera": [
+      -69481.64496905718,
+      19.894203389631816,
+      6700.6213830875395
+    ],
+    "pixels": {
+      "over2": 180720,
+      "offmask": 0,
+      "max": 19
+    },
+    "errors": []
+  },
+  "queens": {
+    "before": {
+      "draws": 93,
+      "tris": 419388
+    },
+    "after": {
+      "draws": 93,
+      "tris": 419388
+    },
+    "mask": {
+      "draws": 93,
+      "tris": 419388
+    },
+    "exact": true,
+    "camera": [
+      -12430.039121159196,
+      58.03727938930024,
+      27832.552793101608
+    ],
+    "pixels": {
+      "over2": 147878,
+      "offmask": 0,
+      "max": 17
+    },
+    "errors": []
+  },
+  "kings": {
+    "before": {
+      "draws": 139,
+      "tris": 406222
+    },
+    "after": {
+      "draws": 139,
+      "tris": 406222
+    },
+    "mask": {
+      "draws": 139,
+      "tris": 406222
+    },
+    "exact": true,
+    "camera": [
+      72995.43716712778,
+      84,
+      8997.58874231695
+    ],
+    "pixels": {
+      "over2": 156272,
+      "offmask": 0,
+      "max": 16
+    },
+    "errors": []
+  },
+  "queens-high": {
+    "before": {
+      "draws": 15,
+      "tris": 337438
+    },
+    "after": {
+      "draws": 15,
+      "tris": 337438
+    },
+    "mask": {
+      "draws": 15,
+      "tris": 337438
+    },
+    "exact": true,
+    "camera": [
+      -12433.973241091873,
+      396.2728007031765,
+      27837.082991811963
+    ],
+    "pixels": {
+      "over2": 0,
+      "offmask": 0,
+      "max": 0
+    },
+    "errors": []
+  }
+}
