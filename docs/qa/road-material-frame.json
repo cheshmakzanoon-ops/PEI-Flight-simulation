@@ -1,0 +1,22 @@
+{
+  "kind": "road",
+  "rows": [
+    {
+      "view": "east-close",
+      "pixels": 655360,
+      "over8": 270,
+      "over8Outside": 0,
+      "draws": 262,
+      "triangles": 287603,
+      "settledOrthoIDs": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ]
+    }
+  ]
+}

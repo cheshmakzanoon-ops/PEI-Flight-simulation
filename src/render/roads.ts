@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {unpackGzip} from '../sim/compression.ts';
 import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
+import {addRoadSurface} from './road-surface.ts';
 import type { Terrain } from '../sim/terrain.ts';
 
 type Road = { flags: number; points: {x: number; z: number}[] };
@@ -51,6 +52,7 @@ export class Roads {
 
   private constructor(scene: THREE.Scene, private readonly tiles: Map<string, Tile>, private readonly terrain: Terrain) {
     this.root.name = 'PEI National Road Network';
+    addRoadSurface(this.material);
     scene.add(this.root);
   }
 
@@ -82,7 +84,7 @@ export class Roads {
   }
 
   private mesh(tile: Tile) {
-    const pos:number[]=[], colors:number[]=[];
+    const pos:number[]=[], colors:number[]=[], surface:number[]=[];
     for(let i=0;i<tile.segments.length;i+=5){
       const [x0,z0,x1,z1,flags]=tile.segments.slice(i,i+5);
       const dx=x1-x0, dz=z1-z0, len=Math.hypot(dx,dz), width=HALF_WIDTH[flags&7];
@@ -99,12 +101,17 @@ export class Roads {
           lx+rx,py,lz+rz, lx-rx,py,lz-rz, lu+rx,qy,lv+rz,
           lu+rx,qy,lv+rz, lx-rx,py,lz-rz, lu-rx,qy,lv-rz,
         );
-        for(let k=0;k<6;k++)colors.push(color.r,color.g,color.b);
+        const kind=isBridge?127:(flags&8)?64:0;
+        for(let k=0;k<6;k++){
+          colors.push(color.r,color.g,color.b);
+          surface.push(k===1||k===4||k===5?-127:127,kind);
+        }
       }
     }
     const g=new THREE.BufferGeometry();
     g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
     g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
+    g.setAttribute('roadSurface',new THREE.Int8BufferAttribute(surface,2,true));
     g.computeVertexNormals();
     const mesh=new THREE.Mesh(g,this.material);
     mesh.position.set(tile.x,0,tile.z);
