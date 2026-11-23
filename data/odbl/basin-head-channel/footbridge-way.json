@@ -1,0 +1,34 @@
+{
+  "license": "https://www.openstreetmap.org/copyright",
+  "copyright": "\u00a9 OpenStreetMap contributors",
+  "sourceFile": "prince-edward-island-261101.osm.pbf",
+  "sourceSha256": "a194019961a640669474f9679a23a8fb9a7522d3ff08f0852e61c4d20d6d4bd7",
+  "way": {
+    "id": 361588776,
+    "version": 3,
+    "modified": "2021-02-16 23:53:10+00:00",
+    "tags": {
+      "bridge": "yes",
+      "highway": "footway",
+      "layer": "1"
+    },
+    "connectedToBridgeNodeIDs": [
+      3660419891,
+      3660419897
+    ],
+    "nodes": [
+      [
+        3660419891,
+        -62.1082603,
+        46.3775698
+      ],
+      [
+        3660419897,
+        -62.1080148,
+        46.3776573
+      ]
+    ]
+  },
+  "context": "The complete mapped way is longer than the measured structural deck.",
+  "snapshot": "https://download.geofabrik.de/north-america/canada/prince-edward-island.html"
+}

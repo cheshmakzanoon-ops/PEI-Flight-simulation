@@ -1,0 +1,125 @@
+{
+  "scope": {
+    "moduleSHA": "5555edb403b45a08c22d5aebbba237978c748608945cee5b695cc9b567c1b76f",
+    "datumSHA": "206d8c6cf6776cf2f31db1b8876c7785b50aeadfe706fcdb28467f9e02867d57"
+  },
+  "metadata": [
+    {
+      "layer": "Survey-profile footbridge deck",
+      "tris": 864,
+      "verts": 1728,
+      "bounds": [
+        [
+          83810.45073587468,
+          1.892159342765808,
+          13601.155721807438
+        ],
+        [
+          83820.50107295086,
+          2.40496563911438,
+          13608.224193477588
+        ]
+      ]
+    },
+    {
+      "layer": "Authored open rail and bracing",
+      "tris": 3576,
+      "verts": 7152,
+      "bounds": [
+        [
+          83810.42835623791,
+          1.7409899234771729,
+          13601.159782314258
+        ],
+        [
+          83820.52396876385,
+          3.4816348552703857,
+          13608.219449424701
+        ]
+      ]
+    },
+    {
+      "layer": "Recessed rail connection plates",
+      "tris": 216,
+      "verts": 432,
+      "bounds": [
+        [
+          83810.47402030995,
+          2.0864837169647217,
+          13601.177326822239
+        ],
+        [
+          83820.47910029461,
+          2.6288866996765137,
+          13608.202241325336
+        ]
+      ]
+    },
+    {
+      "layer": "Shore-seated approach caps",
+      "tris": 312,
+      "verts": 624,
+      "bounds": [
+        [
+          83809.66658265164,
+          0.9723718166351318,
+          13600.755380058246
+        ],
+        [
+          83821.22423035672,
+          2.0340752601623535,
+          13608.658773088413
+        ]
+      ]
+    }
+  ],
+  "stats": {
+    "minDeckAboveFixedSeaM": 2.0608461242308382,
+    "actualHeldoutN": 34,
+    "heldoutPlanRays": 36,
+    "allActualN": 159,
+    "allPotentialN": 172,
+    "maxGeorefErrorM": 1.0683492394308238e-05,
+    "absoluteExposedDeckAllM": [
+      7.430065226232685e-05,
+      0.012391821601271502,
+      0.03381195834542794,
+      0.04619187644711875,
+      0.05282130507453697,
+      0.05984306908636672
+    ],
+    "absoluteExposedDeckHeldoutM": [
+      0.00039151763498024295,
+      0.010182177438351925,
+      0.03144920306886334,
+      0.03793217192641274,
+      0.03825942992304876,
+      0.04510345043747499
+    ],
+    "analyticBiasExcludedPlankGapsM": 0.04302620991048567
+  },
+  "actualDryCapContact": {
+    "denseProbes": 4446,
+    "wrongShore": 0,
+    "footingGapOver0point1mm": 0,
+    "maxFootingGapM": 0
+  },
+  "fallback": [
+    [
+      "land denied",
+      true
+    ],
+    [
+      "NaN ground",
+      true
+    ],
+    [
+      "incompatible height low",
+      true
+    ],
+    [
+      "incompatible height high",
+      true
+    ]
+  ]
+}

@@ -628,6 +628,10 @@ export class World {
   const xyz=g.geometry.getAttribute('position');
   return facet(sx-p,sz-q,xyz.getY(k),xyz.getY(k+1),xyz.getY(k+step),xyz.getY(k+step+1));
  }
+ basinCrossingGround(x:number,z:number){
+  const bank=this.bankGround?.grid;
+  return bank?.inside(x,z)?bank.height(x,z)!+GROUND_LIFT:this.terrain.contactHeight(x,z,this.cover.distance(this.terrain,x,z)>=0);
+ }
  basinPlantedGround(x:number,z:number){
   if(this.byId.get(BANK_TILE)?.lod!==112||!this.bankGround?.authority(x,z))return undefined;
   return this.bankGround.grid.height(x,z);

@@ -1,0 +1,98 @@
+[
+  {
+    "pose": "singing-west-close",
+    "pixels": 492800,
+    "differenceRGBBuckets": [
+      37260,
+      37260,
+      37260,
+      37028,
+      32338
+    ],
+    "anyChangedOutsideProjectedPatchWith2pxGuard": 0,
+    "aboveOneRGBOutsideProjectedPatchWith2pxGuard": 0,
+    "widthOf4SubmeshProjectedHullPx": 154462,
+    "protectedExactPixels": 334214,
+    "activeQuiteVisiblePixels": 36326,
+    "firstLargeOutsideCoordinatesYX": [],
+    "changedBoundsYX": [
+      [
+        242,
+        195
+      ],
+      [
+        413,
+        745
+      ]
+    ],
+    "triangles": [
+      256838,
+      261806
+    ],
+    "drawCalls": [
+      35,
+      39
+    ]
+  },
+  {
+    "pose": "singing-east-close",
+    "pixels": 492800,
+    "differenceRGBBuckets": [
+      4604,
+      4604,
+      4604,
+      4576,
+      3588
+    ],
+    "anyChangedOutsideProjectedPatchWith2pxGuard": 0,
+    "aboveOneRGBOutsideProjectedPatchWith2pxGuard": 0,
+    "widthOf4SubmeshProjectedHullPx": 15260,
+    "protectedExactPixels": 476210,
+    "activeQuiteVisiblePixels": 4425,
+    "firstLargeOutsideCoordinatesYX": [],
+    "changedBoundsYX": [
+      [
+        253,
+        349
+      ],
+      [
+        343,
+        479
+      ]
+    ],
+    "triangles": [
+      243480,
+      248448
+    ],
+    "drawCalls": [
+      63,
+      67
+    ]
+  },
+  {
+    "pose": "east-close",
+    "pixels": 492800,
+    "differenceRGBBuckets": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "anyChangedOutsideProjectedPatchWith2pxGuard": 0,
+    "aboveOneRGBOutsideProjectedPatchWith2pxGuard": 0,
+    "widthOf4SubmeshProjectedHullPx": 2,
+    "protectedExactPixels": 492770,
+    "activeQuiteVisiblePixels": 0,
+    "firstLargeOutsideCoordinatesYX": [],
+    "changedBoundsYX": [],
+    "triangles": [
+      309279,
+      309279
+    ],
+    "drawCalls": [
+      264,
+      264
+    ]
+  }
+]

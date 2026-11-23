@@ -1,0 +1,23 @@
+{
+  "project": "PEI 2020",
+  "source": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_468000_703000.copc.laz",
+  "etag": "\"a862a07ee3a300d14645b3fb41749a81-5\"",
+  "assetBytes": 41285114,
+  "ranges": 14,
+  "readBytes": 1713716,
+  "extent2961": [
+    [
+      568542.016378658,
+      5136348.77077844
+    ],
+    [
+      568632.748782633,
+      5136430.64998477
+    ]
+  ],
+  "rows": 45681,
+  "cohortSha256": "af71e4df0671605d3b90515008147faab0bbb5408d56fd83a1286ba290c0051f",
+  "nativeHorizontalCRS": "EPSG:2961",
+  "vertical": "CGVD2013 orthometric per NRCan product specification",
+  "datasetMetadata": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947"
+}
