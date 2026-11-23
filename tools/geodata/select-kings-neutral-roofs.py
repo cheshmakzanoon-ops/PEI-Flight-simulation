@@ -7,7 +7,9 @@ from scipy.spatial import ConvexHull,QhullError
 cli=argparse.ArgumentParser(description=__doc__)
 cli.add_argument('--root',type=Path,default=Path.cwd())
 cli.add_argument('--scratch',type=Path,required=True)
+cli.add_argument('--region',choices=['kings','prince'],default='kings')
 arg=cli.parse_args()
+west=arg.region=='prince'
 P=arg.root/'public/world/buildings'
 W=arg.scratch;W.mkdir(parents=True,exist_ok=True)
 index=json.loads((P/'index.json').read_text());pack=(P/'tiles.pack').read_bytes()
@@ -15,6 +17,10 @@ assert hashlib.sha256(pack).hexdigest()==index['sha256']
 d=math.pi/180.;m=6378137*d;k=1-.00669437999014*math.sin(46.5*d)**2
 S=np.array([m*math.cos(46.5*d)/math.sqrt(k),-m*(1-.00669437999014)/k**1.5]);orig=np.array([-63.2,46.5])
 town=dict(Souris=(-62.252,46.354),Montague=(-62.649,46.167),Georgetown=(-62.534,46.183),Morell=(-62.711,46.416),MurrayHarbour=(-62.527,46.007),SaintPeters=(-62.578,46.416))
+if west:town={'Tignish':(-64.031,46.949),'Alberton':(-64.066,46.815),
+ 'OLeary':(-64.231,46.709),'Wellington':(-64.003,46.455),
+ 'BordenCarleton':(-63.692,46.253),'Kensington':(-63.648,46.437)}
+
 c={n:(np.array(ll)-orig)*S for n,ll in town.items()}
 homes=(arg.root/'src/render/home-envelopes.generated.ts').read_text()
 d0=json.loads(homes.split('export const HOME_FORMS=',1)[1].split(' as const')[0])
@@ -40,7 +46,7 @@ for tile in index['tiles']:
         width,length=sorted((a[j],bw[j]))
         if not 6.2<width<20 or not 8.4<length<32 or area/(width*length)<.88:continue
         axis=u[j] if a[j]>bw[j] else v[j]
-        row=dict(tile=tile['id'],i=i,ctr=ctr.tolist(),fp=ll.tolist(),world=world.tolist(),county='KINGS',
+        row=dict(tile=tile['id'],i=i,ctr=ctr.tolist(),fp=ll.tolist(),world=world.tolist(),county='PRINCE' if west else 'KINGS',
                  city=hit[1],length=float(length),width=float(width),area=float(area),
                  axis=axis.tolist(),h=b['height'],lo=b['minHeight'],distance=float(hit[0]))
         lookup[hit[1]].append(row)
@@ -51,7 +57,7 @@ for n,a in lookup.items():
     count=Counter()
     for p in a:
         key=tuple((np.asarray(p['world'])//110).astype(int))
-        if count[key]>=6 or sum(count.values())>=30:continue
+        if count[key]>=6 or sum(count.values())>=(24 if west else 30):continue
         count[key]+=1;rows.append(p)
     print(n,len(a),sum(count.values()))
 (W/'candidate-shells.json').write_text(json.dumps(rows,separators=(',',':'))+'\n')

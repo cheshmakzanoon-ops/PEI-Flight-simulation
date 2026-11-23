@@ -1,4 +1,7 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
 import test from 'node:test';
 import {neutralRoofEdge,neutralRoofHeight,neutralRoofTriangles,readNeutralRoof,type RoofPlane} from '../src/render/neutral-roof.ts';
 import type {Triangle} from '../src/sim/roof-ridge.ts';
@@ -45,4 +48,33 @@ test('surveyed rows require the exact atlas, slot, and every ordered outline coo
   const altered:[number,number][]=[[ring[0][0]+5e-9,ring[0][1]],...ring.slice(1)];
   assert.equal(readNeutralRoof(NEUTRAL_ATLAS_SHA,tile,row[0],altered),undefined);
  }
+});
+
+
+test('every registered roof matches an actual row of its pinned streamed archive',()=>{
+ const base=new URL('../public/world/buildings/',import.meta.url);
+ const index=JSON.parse(readFileSync(new URL('index.json',base),'utf8'));
+ const archive=readFileSync(new URL('tiles.pack',base));
+ const sha=(bytes:Uint8Array)=>createHash('sha256').update(bytes).digest('hex');
+ assert.equal(sha(archive),NEUTRAL_ATLAS_SHA);
+ assert.equal(index.sha256,NEUTRAL_ATLAS_SHA);
+ let admitted=0;
+ for(const [tile,rows]of Object.entries(NEUTRAL_ROWS)){
+  const t=index.tiles.find((r:{id:string})=>r.id===tile);
+  assert.ok(t);
+  const bytes=archive.subarray(t.offset,t.offset+t.bytes);
+  assert.equal(sha(bytes),t.sha256);
+  const {features}=JSON.parse(gunzipSync(bytes).toString('utf8'));
+  assert.equal(features.length,t.count);
+  let previous=-1;
+  for(const [slot]of rows){
+   assert.ok(slot>previous,'Atlas ordinals must be sorted and non-overlapping');
+   previous=slot;
+   const f=features[slot];
+   assert.ok(f&&!f.holes?.length);
+   assert.ok(readNeutralRoof(NEUTRAL_ATLAS_SHA,tile,slot,f.footprint));
+   admitted++;
+  }
+ }
+ assert.equal(admitted,Object.values(NEUTRAL_ROWS).reduce((count,rows)=>count+rows.length,0));
 });

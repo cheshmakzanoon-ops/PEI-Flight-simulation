@@ -1,6 +1,6 @@
 const fs=require('node:fs'), path=require('node:path'), H=require('node:crypto'), Z=require('node:zlib'), A=require('node:assert/strict'),{pathToFileURL}=require('node:url');
 async function main(){
- const [, , previous, update, witness, out]=process.argv;
+ const [, , previous, update, witness, out, county='KINGS']=process.argv;
  if(!out)throw new Error('Usage: node tools/qa/kings-roof-rays.cjs PREVIOUS_ROOT CANDIDATE_ROOT WITNESS_JSON REPORT_JSON');
  const absolute=path.resolve(previous), candidate=path.resolve(update);
  const moduleAt=(root,f)=>import(pathToFileURL(path.join(root,f)));
@@ -78,7 +78,7 @@ async function main(){
  }
 
  const q=[.1,.5,.9,.99,1];
- const report={target:'KINGS; roof-only scout; no semantic façade or footprints',attempted:cases.length,accepted:tested.length,rejected:rejected.length,cells:cases.reduce((n,x)=>n+x.points.length,0),chunks:list.size,unrelated:{vertices,bytes},q,
+ const report={target:county+'; roof-only scout; no semantic façade or footprints',attempted:cases.length,accepted:tested.length,rejected:rejected.length,cells:cases.reduce((n,x)=>n+x.points.length,0),chunks:list.size,unrelated:{vertices,bytes},q,
   perBuildingAbsoluteRoofP90:{before:q.map(v=>percentile(tested.map(a=>a.before),v)),after:q.map(v=>percentile(tested.map(a=>a.after),v))},
   rejectedNotPublished:rejected,acceptedProof:tested};
  fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');

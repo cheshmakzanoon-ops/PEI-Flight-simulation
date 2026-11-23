@@ -1,0 +1,167 @@
+[
+  {
+    "tile": "q02321",
+    "i": 16,
+    "city": "Wellington",
+    "kind": "gable",
+    "points": 17,
+    "before": 1.0125791549682504,
+    "after": 1.0125791549682504,
+    "datumDiff": 0.8295952084346672,
+    "faces": [
+      16,
+      16
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q02321",
+    "i": 75,
+    "city": "Wellington",
+    "kind": "gable",
+    "points": 10,
+    "before": 0.33473978042602254,
+    "after": 0.26484443404887653,
+    "datumDiff": 0.6031655433500189,
+    "faces": [
+      16,
+      26
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q02321",
+    "i": 211,
+    "city": "Wellington",
+    "kind": "gable",
+    "points": 16,
+    "before": 1.088721752166748,
+    "after": 1.088721752166748,
+    "datumDiff": 1.3401929966215986,
+    "faces": [
+      16,
+      16
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q02321",
+    "i": 242,
+    "city": "Wellington",
+    "kind": "gable",
+    "points": 16,
+    "before": 1.0263127009502142,
+    "after": 1.0263127009502142,
+    "datumDiff": 0.8813320982883273,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q02321",
+    "i": 401,
+    "city": "Wellington",
+    "kind": "gable",
+    "points": 13,
+    "before": 1.0711786775914391,
+    "after": 1.0711786775914391,
+    "datumDiff": 1.0919298213392663,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q0300",
+    "i": 256,
+    "city": "BordenCarleton",
+    "kind": "gable",
+    "points": 23,
+    "before": 0.24127960205075283,
+    "after": 0.18544976935741037,
+    "datumDiff": 0.35429250081341834,
+    "faces": [
+      22,
+      36
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q0300",
+    "i": 537,
+    "city": "BordenCarleton",
+    "kind": "gable",
+    "points": 8,
+    "before": 1.2567377914499331,
+    "after": 1.2567377914499331,
+    "datumDiff": 0.852917630159368,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q032122",
+    "i": 232,
+    "city": "Kensington",
+    "kind": "gable",
+    "points": 38,
+    "before": 1.3373996734618858,
+    "after": 1.3373996734618858,
+    "datumDiff": 1.748036136576637,
+    "faces": [
+      22,
+      22
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q032122",
+    "i": 319,
+    "city": "Kensington",
+    "kind": "hip",
+    "points": 41,
+    "before": 1.596154534073321,
+    "after": 1.596154534073321,
+    "datumDiff": 1.521333657083467,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q20213",
+    "i": 4,
+    "city": "OLeary",
+    "kind": "gable",
+    "points": 44,
+    "before": 1.0103168487549028,
+    "after": 1.0103168487549028,
+    "datumDiff": 0.8193790927788598,
+    "faces": [
+      16,
+      16
+    ],
+    "highDouble": 0
+  },
+  {
+    "tile": "q221233",
+    "i": 271,
+    "city": "Tignish",
+    "kind": "gable",
+    "points": 28,
+    "before": 1.3229314213768704,
+    "after": 1.3229314213768704,
+    "datumDiff": 1.237444922796426,
+    "faces": [
+      14,
+      14
+    ],
+    "highDouble": 0
+  }
+]

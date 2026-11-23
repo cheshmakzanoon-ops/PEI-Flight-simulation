@@ -9,11 +9,6 @@ f.VIEWS={
  'souris':dict(lon=-62.25219097,lat=46.35408038,h=7.1,east=.54,south=.84,nearDist=132,nearAgl=92,owner='q130331'),
  'montague':dict(lon=-62.64890325,lat=46.16668150,h=6.9,east=.69,south=.72,nearDist=54,nearAgl=43,owner='q103301')
 }
-index=json.loads((ROOT/'public/world/detail/index.json').read_text())
-west,south,east,north=index['bounds']; cols,rows=index['columns'],index['rows']
-for v in f.VIEWS.values():
- i,j=math.floor((v['lon']-west)/(east-west)*cols),math.floor((north-v['lat'])/(north-south)*rows)
- v['tiles']=sorted((t for t in index['tiles'] if all(abs(int(k)-m)<2 for k,m in zip(t.split('-'),(i,j)))))
 old=f.stage
 def stage(repo,root,deps,void):
  old(repo,root,deps,False)
@@ -50,6 +45,15 @@ class CanvasSnapshot:
 def capture(a,b,u): return oldCapture(a,CanvasSnapshot(b),u)
 f.capture=capture
 p=argparse.ArgumentParser();p.add_argument('--checkout',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
-p.add_argument('--chromium',required=True);p.add_argument('--pose-baseline',type=Path);p.add_argument('--views',default='morell-close,souris-close,montague-close')
+p.add_argument('--chromium',required=True);p.add_argument('--pose-baseline',type=Path)
+p.add_argument('--poses',type=Path,help='Use this published geographic pose set instead.')
+p.add_argument('--views',help='Comma-separated entries with -close or -approach; defaults to all named close views.')
 a=p.parse_args();a.size='740x470';a.deps=None;a.void_probe=False
+if a.poses:f.VIEWS=json.loads(a.poses.read_text())
+if not a.views:a.views=','.join(name+'-close' for name in f.VIEWS)
+index=json.loads((ROOT/'public/world/detail/index.json').read_text())
+west,south,east,north=index['bounds']; cols,rows=index['columns'],index['rows']
+for v in f.VIEWS.values():
+ i,j=math.floor((v['lon']-west)/(east-west)*cols),math.floor((north-v['lat'])/(north-south)*rows)
+ v['tiles']=sorted((t for t in index['tiles'] if all(abs(int(k)-m)<2 for k,m in zip(t.split('-'),(i,j)))))
 f.run(a)

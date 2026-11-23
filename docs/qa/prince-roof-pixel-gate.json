@@ -1,0 +1,103 @@
+{
+  "alberton-close": {
+    "negativeControlPixels": 327226,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 9301,
+    "atlasTextures": [
+      "4-4",
+      "4-5",
+      "4-6",
+      "5-4",
+      "5-5",
+      "5-6",
+      "6-4",
+      "6-6"
+    ],
+    "buildingChunks": [
+      "q20320",
+      "q20322",
+      "q20323",
+      "q22100",
+      "q22101",
+      "q22102",
+      "q22103"
+    ],
+    "draws": [
+      38,
+      38
+    ],
+    "triangles": [
+      296719,
+      296759
+    ],
+    "msaa": 4
+  },
+  "borden-carleton-close": {
+    "negativeControlPixels": 338092,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 4383,
+    "atlasTextures": [
+      "10-15",
+      "10-16",
+      "8-15",
+      "9-15",
+      "9-16"
+    ],
+    "buildingChunks": [
+      "q012",
+      "q0300",
+      "q03010",
+      "q03012"
+    ],
+    "draws": [
+      52,
+      52
+    ],
+    "triangles": [
+      259393,
+      259447
+    ],
+    "msaa": 4
+  },
+  "tignish-close": {
+    "negativeControlPixels": 337109,
+    "changedOutside": 0,
+    "worstOutside": 0,
+    "changedInsideThreshold2": 3660,
+    "atlasTextures": [
+      "4-2",
+      "4-3",
+      "5-1",
+      "5-2",
+      "5-3",
+      "6-1",
+      "6-2",
+      "6-3"
+    ],
+    "buildingChunks": [
+      "q22120",
+      "q22121",
+      "q22122",
+      "q221230",
+      "q221231",
+      "q221232",
+      "q221233",
+      "q2213",
+      "q22300",
+      "q22301",
+      "q22303",
+      "q2231"
+    ],
+    "draws": [
+      29,
+      29
+    ],
+    "triangles": [
+      300053,
+      300111
+    ],
+    "msaa": 4
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "alberton": {
+    "lon": -64.06361016666666,
+    "lat": 46.813594,
+    "h": 6.2,
+    "east": 0.54,
+    "south": 0.84,
+    "nearDist": 58,
+    "nearAgl": 40,
+    "owner": "q22101"
+  },
+  "borden-carleton": {
+    "lon": -63.69344662500001,
+    "lat": 46.253736625,
+    "h": 7.2,
+    "east": 0.63,
+    "south": 0.78,
+    "nearDist": 70,
+    "nearAgl": 49,
+    "owner": "q0300"
+  },
+  "tignish": {
+    "lon": -64.03189,
+    "lat": 46.94833283333333,
+    "h": 7.0,
+    "east": 0.69,
+    "south": 0.72,
+    "nearDist": 91,
+    "nearAgl": 57,
+    "owner": "q221233"
+  }
+}
