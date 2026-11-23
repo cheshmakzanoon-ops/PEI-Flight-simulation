@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
+import type {ForestHeights} from '../sim/forest-heights.ts';
 import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
 import {TREE_PITCH as pitch,TREE_TILE_SIDE as side,treeRandom as rand} from '../sim/tree-layout.ts';
@@ -59,7 +60,7 @@ export class Vegetation {
  private stems=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*3),3).setUsage(THREE.DynamicDrawUsage);
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
- constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover){
+ constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
@@ -79,8 +80,10 @@ export class Vegetation {
    if(this.cover.sample(this.t,x,z)!==10||!this.t.isLand(x,z)||runwayAt(x,z))continue;
    if(this.cover.harbour?.intersects(x,z,x,z)&&this.cover.distance(this.t,x,z)<0)continue;
    const type=rand(i,j,43),variant=type<.15?3:type<.36?2:type<.68?1:0;
-   const h=8.2+rand(i,j,35)*10.8,w=h*(.83+rand(i,j,9)*.35);
-   if(insideLighthouseYard(x,z,w*.5))continue;
+   const vary=rand(i,j,35),fallback=8.2+vary*10.8;
+   const shapeRatio=.83+rand(i,j,9)*.35;
+   if(insideLighthouseYard(x,z,fallback*shapeRatio*.5))continue;
+   const h=this.forestHeights?.height(x,z,fallback,vary)??fallback,w=h*shapeRatio;
    a.push(x,this.t.meshElevation(x,z)-.16,z,h,w,variant,.79+rand(i,j,21)*.45,rand(i,j,62));
   }
   return new Float32Array(a);
