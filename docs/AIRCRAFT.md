@@ -66,3 +66,6 @@ node --experimental-strip-types tools/qa/airframe-baseline.mjs
 
 For the measured power-off result, see the [dynamic clean-glide sweep](qa/GLIDE-BASELINE.md).
 It measures range against height lost instead of inferring glide distance from a polar.
+
+The [dynamic clean-stall trial](qa/STALL-BASELINE.md) measures both the peak lift
+coefficient and the later separation flag, then requires a sustained return to glide.
