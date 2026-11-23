@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
 import { replacesBasilicaFootprint } from './basilica.ts';
 import { project,clamp,geographic } from '../sim/geo.ts';
@@ -14,15 +15,15 @@ const bases=[0xa9a69b,0x85948c,0xc1bda9,0x788c91,0x936d59,0xb7a98f,0x8e8073,0xad
 const tops=[0x4a5559,0x726558,0x655e58,0x495851,0x826c58,0x777c75,0x526468].map(c=>new THREE.Color(c));
 type Pt={x:number;z:number};
 const buildingV=`
- varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof;
- attribute float topFlag;
+ varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
+ attribute float topFlag, facadeStyle;
  #include <common>
  #include <logdepthbuf_pars_vertex>
- void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;gl_Position=projectionMatrix*viewMatrix*p;
+ void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
 const buildingF=`
- varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof;
+ varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
  // Analytically integrate a repeated interval over the projected footprint of a pixel.
@@ -30,13 +31,20 @@ const buildingF=`
  // instead of vanishing to a uniformly painted bright plane.
  float area(float p,float a,float b){return floor(p)*(b-a)+clamp(fract(p)-a,0.,b-a);}
  float band(float p,float a,float b){float w=max(fwidth(p),.001);return (area(p+w*.5,a,b)-area(p-w*.5,a,b))/w;}
+ float warmWindowHash(vec2 p){
+  vec3 h=fract(vec3(p.xyx)*vec3(.1031,.1030,.0973));
+  h+=dot(h,h.yzx+33.33);
+  return fract((h.x+h.y)*h.z);
+ }
+ ${downtownFacadeGLSL}
  void main(){
  #include <logdepthbuf_fragment>
  float d=distance(wp,cameraPosition),fine=1.-smoothstep(220.,1250.,d);
  vec3 c=tint,n=normalize(normalW);if(roof>.5&&n.y<0.)n=-n;
  if(roof<.5&&!gl_FrontFacing)n=-n;
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
- if(roof<.5){
+ if(roof<.5&&facade>.5){harbourWalls(c,uv2d,wp,facade,k,fine);}
+ else if(roof<.5){
   vec2 grid=uv2d/vec2(2.62,3.08);
   float glass=band(grid.x,.17,.79)*band(grid.y,.23,.82);
   float reveal=band(grid.y,.19,.24)*band(grid.x,.145,.815);
@@ -92,14 +100,16 @@ export class Buildings {
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }
  private generate(features:Bldg[],tile:BoundTile){
-  const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[];
-  const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);};
+  const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
+  let facade=0;
+  const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(const f of features){
    if(f.footprint.length<3||!Number.isFinite(f.height)||replacesLightBuilding(f.footprint))continue;
    const rings=[f.footprint,...(f.holes??[])].map(r=>r.map(([lon,lat])=>project(lon,lat)));
    const ring=rings[0],cx=ring.reduce((s,p)=>s+p.x,0)/ring.length,cz=ring.reduce((s,p)=>s+p.z,0)/ring.length;
    const ll=geographic(cx,cz);if(replacesBasilicaFootprint(ll.lon,ll.lat))continue;
    const seed=Math.abs(Math.floor(cx*97+cz*53))>>>0,h=clamp(f.height,1.3,130);
+   facade=downtownFacade(ll.lon,ll.lat,h,seed);
    const base=this.t.meshElevation(cx,cz)+.05, cw=bases[seed%bases.length],cr=tops[(seed>>>4)%tops.length];
    // Measured highest/lowest roof samples guide shading; an inferred ridge is NOT surveyed roof geometry.
    const low=clamp(f.minHeight??h,h*.55,h), synthGable=ring.length===4&&rings.length===1&&h-low>.65;
@@ -135,7 +145,7 @@ export class Buildings {
     }}else{for(const face of faces)for(const idx of face)roofVert(flat[idx],eave);}
    }
   }
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.computeVertexNormals();g.computeBoundingSphere();
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
   const mesh=new THREE.Mesh(g,this.mat);mesh.position.set(ox,0,oz);return mesh;
  }
 }
