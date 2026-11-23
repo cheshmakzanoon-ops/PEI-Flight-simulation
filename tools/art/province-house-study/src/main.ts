@@ -2,6 +2,7 @@ import * as T from 'three';
 import { porticoStudy } from './portico';
 import { stonePoint } from './masonry';
 
+const phaseStart=performance.now();
 const renderer = new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(innerWidth,innerHeight);
 renderer.toneMapping=T.ACESFilmicToneMapping;
@@ -24,7 +25,8 @@ const skyM=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,
  }`
 });
 const sky=new T.Mesh(skyGeo,skyM);sky.renderOrder=-55;scene.add(sky);
-const {stagedGeometry,nearOrders,approachOrders,unworked,neutral,finite}=porticoStudy();
+const {stagedGeometry,nearOrders,approachOrders,unworked,neutral,finite,layStone}=porticoStudy();
+const prepareEnd=performance.now();
 scene.add(stagedGeometry,unworked,neutral);
 const camera=new T.PerspectiveCamera(44,innerWidth/innerHeight,.055,430);
 const bounce=new T.HemisphereLight(0xe1e6ec,0x766253,1.40);scene.add(bounce);
@@ -41,7 +43,9 @@ const poses={
   capital:{p:[-4.05,9.34,7.83],target:[-3.69,9.53,3.16],fov:34},
   fly:{p:[-34.0,21.60,61.5],target:[1.67,5.27,-4.22],fov:41},
 } as const;
+let lastFrame:[boolean,keyof typeof poses,boolean,'hero'|'approach'|'auto'];
 function render(candidate:boolean,pose:keyof typeof poses,cloudy=false,lod:'hero'|'approach'|'auto'='hero'){
+  lastFrame=[candidate,pose,cloudy,lod];
   const def=poses[pose]; stagedGeometry.visible=candidate;unworked.visible=!candidate;
   const hero = lod==='hero'||(lod==='auto'&&Math.hypot(def.p[0],def.p[1]-6,def.p[2]-3.14)<20);
   nearOrders.visible=hero;approachOrders.visible=!hero;
@@ -87,5 +91,25 @@ function inspect(){
  const maxStairError=Math.max(...stair.map(a=>Math.abs((a.y??1e6)-a.expected)));
  return {...stat,transom,insideBays,maxStairError,stair};
 }
-Object.assign(window,{portico:{render,inspect,stonePoint}});
+async function geometryFingerprint(){
+ const chunks=[] as Uint8Array<ArrayBuffer>[];
+ const axes=['position','normal','uv','color'];
+ for(const root of [stagedGeometry,unworked,neutral])root.traverse(obj=>{
+   if(!(obj instanceof T.Mesh))return;
+   for(const axis of axes){
+      const a=obj.geometry.getAttribute(axis).array;
+      chunks.push(new Uint8Array(a.buffer as ArrayBuffer,a.byteOffset,a.byteLength));
+   }
+ });
+ const bytes=chunks.reduce((n,a)=>n+a.byteLength,0),values=new Uint8Array(bytes);
+ let o=0;for(const chunk of chunks){values.set(chunk,o);o+=chunk.byteLength;}
+ const hash=await crypto.subtle.digest('SHA-256',values);
+ return {bytes,views:chunks.length,sha256:Array.from(new Uint8Array(hash),c=>c.toString(16).padStart(2,'0')).join('')};
+}
+Object.assign(window,{portico:{render,inspect,stonePoint,geometryFingerprint}});
+const firstRenderStart=performance.now();
 render(true,'street',true,'auto');
+const firstRenderEnd=performance.now();
+const boot={phaseStart,prepareEnd,firstRenderStart,firstRenderEnd,texturedEnd:0, result:null as Awaited<ReturnType<typeof layStone>>|null,ready:Promise.resolve()};
+boot.ready=layStone().then(result=>{boot.result=result;if(result.status==='ready') render(...lastFrame);boot.texturedEnd=performance.now();});
+Object.assign(window,{porticoBoot:boot});

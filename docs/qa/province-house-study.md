@@ -20,7 +20,18 @@ The approach mesh uses **12,953 model triangles vs. 38,321 close up**, a
 66% reduction. At the fixed 37 m and 70 m views, the approach mesh matched
 most pixels in the close mesh render and preserved the background.
 The nominal arcade threshold was tested in actual Three.js; it is not an
-as-built measurement. Generated textures still need a smaller live
-budget. See the [technical receipt](../../tools/art/province-house-study/proof/report.json),
+as-built measurement.
+
+The detached viewer now packs three maps per stone family into one and
+generates the five maps off the display thread. It measures about **18 MiB**
+of allocated texture mip levels, down from 54 MiB. The model can render
+with average stone colours before the maps arrive; a failed worker leaves
+the same geometry on screen. The [matched material replay](../../tools/art/province-house-study/proof/packed/comparison.json) stayed
+within four RGB codes in five fixed views, with exact mesh buffers.
+Those checks describe the authoring viewer, not simulator performance or
+a guarantee across graphics drivers. The figure excludes retained CPU
+arrays, geometry, shadows and framebuffers. A separate GPU filter check
+across 22 mip and fractional filter levels confirmed small differences in
+the packed stone normals rather than exact mathematical equivalence. See the [technical receipt](../../tools/art/province-house-study/proof/report.json),
 [paired tier renders](../../tools/art/province-house-study/proof/approach-hero-pair.webp),
 and [build instructions and source links](../../tools/art/province-house-study/README.md).

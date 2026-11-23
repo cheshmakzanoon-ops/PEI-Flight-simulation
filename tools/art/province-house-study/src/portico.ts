@@ -1,6 +1,7 @@
 import * as T from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { ashlarMaps, stoneSpan } from './masonry';
+import { stoneSpan } from './masonry';
+import { stoneMaterials } from './stone-material';
 
 /** Detached original study of a lower rusticated arcade, smooth Ionic columns and slate.
  * Nominal metres; no floor plan, geographic registration, or source imagery. */
@@ -11,12 +12,9 @@ const π = Math.PI;
 
 export function porticoStudy() {
   const plain = (color:number,roughness=.83)=>new T.MeshStandardMaterial({color,roughness});
-  const surface = (family:Parameters<typeof ashlarMaps>[0], size:number, bump:number) => {
-    const { map,normalMap,roughnessMap } = ashlarMaps(family,size);
-    return new T.MeshStandardMaterial({map,normalMap,roughnessMap,roughness:1,normalScale:new T.Vector2(bump,bump), vertexColors:true});
-  };
-  const wall=surface('ashlar',1536,.87), lower=surface('rustic',1536,1.15), cut=surface('cut',512,.76);
-  const slate=surface('slate',1024,.7), apron=surface('apron',1024,.72);
+  const stone=stoneMaterials();
+  const wall=stone.create('ashlar',.87), lower=stone.create('rustic',1.15), cut=stone.create('cut',.76);
+  const slate=stone.create('slate',.7), apron=stone.create('apron',.72);
   const bark=plain(0x53372b), windowTrim=plain(0x9a9686), windowEdge=plain(0x594f40), recess=plain(0x2e2721), lead=plain(0x423e3b,.56);
   const copper=plain(0x3b352e,.76), hall=plain(0x68554a), pewter=plain(0x554b44,.62), pipe=plain(0x4a443d,.61);
   const glass=new T.ShaderMaterial({
@@ -366,5 +364,5 @@ export function porticoStudy() {
     }
     return g;
   }
-  return {stagedGeometry,nearOrders,approachOrders,unworked,neutral,finite};
+  return {stagedGeometry,nearOrders,approachOrders,unworked,neutral,finite,layStone:stone.start};
 }

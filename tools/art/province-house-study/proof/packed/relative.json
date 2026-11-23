@@ -1,0 +1,20 @@
+{
+  "subpath": "/repo/public-studies/portico/",
+  "actualRequests": [
+    "/repo/public-studies/portico/",
+    "/repo/public-studies/portico/assets/index-Dx6rKTv5.js",
+    "/repo/public-studies/portico/assets/masonry.worker-CBjKpQ8p.js"
+  ],
+  "sameFRenderedPixels": 745280,
+  "sameFFrameSHA256": "349b4b144e66dbf2559ec06abae2adbe069421765fcc78ee6ec9be00fa8404c0",
+  "render": {
+    "calls": 28,
+    "triangles": 26348,
+    "samples": 4,
+    "pose": "street",
+    "cloudy": true,
+    "tier": "approach"
+  },
+  "actualMipBytes": 18874356,
+  "noErrors": true
+}

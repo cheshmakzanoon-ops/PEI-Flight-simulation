@@ -16,7 +16,7 @@
       "cloudy": true,
       "tier": "hero"
     },
-    "pixelsChangedAbove2": 208141,
+    "pixelsChangedAbove2": 208122,
     "topRowStripUnchanged": 5440
   },
   "bay": {
@@ -36,7 +36,7 @@
       "cloudy": true,
       "tier": "hero"
     },
-    "pixelsChangedAbove2": 447299,
+    "pixelsChangedAbove2": 447286,
     "topRowStripUnchanged": 5440
   },
   "capital": {
@@ -66,7 +66,7 @@
       "cloudy": false,
       "tier": "hero"
     },
-    "pixelsChangedAbove2": 92977,
+    "pixelsChangedAbove2": 92973,
     "topRowStripUnchanged": 5440
   },
   "distanceTiers": {
@@ -77,8 +77,8 @@
       "pose": "street",
       "cloudy": true,
       "tier": "approach",
-      "pixelsDiffAbove2": 4098,
-      "pixelsDiffAbove16": 192,
+      "pixelsDiffAbove2": 4097,
+      "pixelsDiffAbove16": 191,
       "bgSame": true
     },
     "fly": {
@@ -88,7 +88,7 @@
       "pose": "fly",
       "cloudy": false,
       "tier": "approach",
-      "pixelsDiffAbove2": 1577,
+      "pixelsDiffAbove2": 1582,
       "pixelsDiffAbove16": 129,
       "bgSame": true
     }
@@ -312,6 +312,7 @@
   },
   "requests": [
     "/",
-    "/assets/index-DtklFuAH.js"
+    "/assets/index-BsvPxsIc.js",
+    "/assets/masonry.worker-CBjKpQ8p.js"
   ]
 }

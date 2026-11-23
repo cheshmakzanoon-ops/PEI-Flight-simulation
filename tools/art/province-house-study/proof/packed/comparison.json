@@ -1,0 +1,1709 @@
+{
+  "timing": {
+    "E": [
+      {
+        "firstMs": 5044.30000000447,
+        "prepareMs": 4842.30000000447,
+        "firstDrawMs": 201.5,
+        "finishedMs": 5044.30000000447,
+        "firstFromNavigationMs": 5071.89999999851,
+        "texturedFromNavigationMs": 5071.89999999851,
+        "decodeMs": 4703.19999999553,
+        "detail": null,
+        "gl": {
+          "maps": 15,
+          "bytes": 56623068,
+          "base": 42467328,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 35907,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-Dy6OiuG8.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 5042.39999999851,
+        "prepareMs": 4927.69999999553,
+        "firstDrawMs": 114.10000000149012,
+        "finishedMs": 5042.39999999851,
+        "firstFromNavigationMs": 5063.80000000447,
+        "texturedFromNavigationMs": 5063.80000000447,
+        "decodeMs": 4827.799999989569,
+        "detail": null,
+        "gl": {
+          "maps": 15,
+          "bytes": 56623068,
+          "base": 42467328,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 35907,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-Dy6OiuG8.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 4924.60000000149,
+        "prepareMs": 4815.10000000149,
+        "firstDrawMs": 108.80000000447035,
+        "finishedMs": 4924.60000000149,
+        "firstFromNavigationMs": 4948.30000000447,
+        "texturedFromNavigationMs": 4948.30000000447,
+        "decodeMs": 4727.29999999702,
+        "detail": null,
+        "gl": {
+          "maps": 15,
+          "bytes": 56623068,
+          "base": 42467328,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 35907,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-Dy6OiuG8.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 4893.20000000298,
+        "prepareMs": 4775,
+        "firstDrawMs": 117.5,
+        "finishedMs": 4893.20000000298,
+        "firstFromNavigationMs": 4916,
+        "texturedFromNavigationMs": 4916,
+        "decodeMs": 4690.29999999702,
+        "detail": null,
+        "gl": {
+          "maps": 15,
+          "bytes": 56623068,
+          "base": 42467328,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 35907,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-Dy6OiuG8.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 4833.9000000059605,
+        "prepareMs": 4722.60000000149,
+        "firstDrawMs": 110.70000000298023,
+        "finishedMs": 4833.9000000059605,
+        "firstFromNavigationMs": 4855.9000000059605,
+        "texturedFromNavigationMs": 4855.9000000059605,
+        "decodeMs": 4637.899999991059,
+        "detail": null,
+        "gl": {
+          "maps": 15,
+          "bytes": 56623068,
+          "base": 42467328,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 512,
+              "height": 256,
+              "format": 35907,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 35907,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-Dy6OiuG8.js"
+          ]
+        ]
+      }
+    ],
+    "F": [
+      {
+        "firstMs": 177,
+        "prepareMs": 89.39999999850988,
+        "firstDrawMs": 87.20000000298023,
+        "finishedMs": 580.0999999940395,
+        "firstFromNavigationMs": 203.80000000447035,
+        "texturedFromNavigationMs": 606.8999999985099,
+        "decodeMs": 375,
+        "detail": {
+          "status": "ready",
+          "rawBytes": 14155776,
+          "mipBytes": 18874356,
+          "workerMs": 387.09999999403954,
+          "bakeMs": 375,
+          "scratchBytes": 19556054,
+          "byWidthMs": {
+            "512": 13.399999998509884,
+            "1024": 123.39999999850988,
+            "1536": 236.19999999552965
+          }
+        },
+        "gl": {
+          "maps": 5,
+          "bytes": 18874356,
+          "base": 14155776,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-BsvPxsIc.js"
+          ],
+          [
+            200,
+            "/assets/masonry.worker-CBjKpQ8p.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 163,
+        "prepareMs": 85.5,
+        "firstDrawMs": 77,
+        "finishedMs": 620.1000000014901,
+        "firstFromNavigationMs": 186.39999999850988,
+        "texturedFromNavigationMs": 643.5,
+        "decodeMs": 434.29999999701977,
+        "detail": {
+          "status": "ready",
+          "rawBytes": 14155776,
+          "mipBytes": 18874356,
+          "workerMs": 443.79999999701977,
+          "bakeMs": 434.29999999701977,
+          "scratchBytes": 19556054,
+          "byWidthMs": {
+            "512": 15.100000001490116,
+            "1024": 145.20000000298023,
+            "1536": 271.29999999701977
+          }
+        },
+        "gl": {
+          "maps": 5,
+          "bytes": 18874356,
+          "base": 14155776,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-BsvPxsIc.js"
+          ],
+          [
+            200,
+            "/assets/masonry.worker-CBjKpQ8p.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 153.60000000149012,
+        "prepareMs": 75.19999999552965,
+        "firstDrawMs": 77.90000000596046,
+        "finishedMs": 627.1000000014901,
+        "firstFromNavigationMs": 177,
+        "texturedFromNavigationMs": 650.5,
+        "decodeMs": 448.5,
+        "detail": {
+          "status": "ready",
+          "rawBytes": 14155776,
+          "mipBytes": 18874356,
+          "workerMs": 459,
+          "bakeMs": 448.5,
+          "scratchBytes": 19556054,
+          "byWidthMs": {
+            "512": 16.799999997019768,
+            "1024": 163.89999999850988,
+            "1536": 265.5
+          }
+        },
+        "gl": {
+          "maps": 5,
+          "bytes": 18874356,
+          "base": 14155776,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-BsvPxsIc.js"
+          ],
+          [
+            200,
+            "/assets/masonry.worker-CBjKpQ8p.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 148.30000000447035,
+        "prepareMs": 72.20000000298023,
+        "firstDrawMs": 75.60000000149012,
+        "finishedMs": 594.3000000044703,
+        "firstFromNavigationMs": 172.20000000298023,
+        "texturedFromNavigationMs": 618.2000000029802,
+        "decodeMs": 421.59999999403954,
+        "detail": {
+          "status": "ready",
+          "rawBytes": 14155776,
+          "mipBytes": 18874356,
+          "workerMs": 432.19999999552965,
+          "bakeMs": 421.59999999403954,
+          "scratchBytes": 19556054,
+          "byWidthMs": {
+            "512": 15.599999994039536,
+            "1024": 157.20000000298023,
+            "1536": 247
+          }
+        },
+        "gl": {
+          "maps": 5,
+          "bytes": 18874356,
+          "base": 14155776,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-BsvPxsIc.js"
+          ],
+          [
+            200,
+            "/assets/masonry.worker-CBjKpQ8p.js"
+          ]
+        ]
+      },
+      {
+        "firstMs": 192,
+        "prepareMs": 113.10000000149012,
+        "firstDrawMs": 78.39999999850988,
+        "finishedMs": 707.6999999955297,
+        "firstFromNavigationMs": 215.60000000149012,
+        "texturedFromNavigationMs": 731.2999999970198,
+        "decodeMs": 464.3999999985099,
+        "detail": {
+          "status": "ready",
+          "rawBytes": 14155776,
+          "mipBytes": 18874356,
+          "workerMs": 483.3999999985099,
+          "bakeMs": 464.3999999985099,
+          "scratchBytes": 19556054,
+          "byWidthMs": {
+            "512": 15.400000005960464,
+            "1024": 166,
+            "1536": 279.59999999403954
+          }
+        },
+        "gl": {
+          "maps": 5,
+          "bytes": 18874356,
+          "base": 14155776,
+          "records": [
+            {
+              "width": 512,
+              "height": 256,
+              "format": 32856,
+              "levels": 10,
+              "bytes": 699052,
+              "base": 524288,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1024,
+              "height": 512,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 2796204,
+              "base": 2097152,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            },
+            {
+              "width": 1536,
+              "height": 768,
+              "format": 32856,
+              "levels": 11,
+              "bytes": 6291448,
+              "base": 4718592,
+              "subUploads": 1
+            }
+          ]
+        },
+        "requests": [
+          [
+            200,
+            "/"
+          ],
+          [
+            200,
+            "/assets/index-BsvPxsIc.js"
+          ],
+          [
+            200,
+            "/assets/masonry.worker-CBjKpQ8p.js"
+          ]
+        ]
+      }
+    ]
+  },
+  "cameras": {
+    "street-hero": {
+      "E": {
+        "calls": 28,
+        "triangles": 77084,
+        "samples": 4,
+        "pose": "street",
+        "cloudy": true,
+        "tier": "hero"
+      },
+      "F": {
+        "calls": 28,
+        "triangles": 77084,
+        "samples": 4,
+        "pose": "street",
+        "cloudy": true,
+        "tier": "hero"
+      },
+      "delta": {
+        "total": 745280,
+        "exact": 454605,
+        "above2": 269,
+        "above5": 0,
+        "above12": 0,
+        "above24": 0,
+        "p50_90_95_99_999_max": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "rmseRGB": 0.481929801101997,
+        "psnrDB": 54.47112795652991,
+        "protectedUpperLeftCount": 5440,
+        "protectedUpperLeftDiff": 0
+      }
+    },
+    "bay-hero": {
+      "E": {
+        "calls": 28,
+        "triangles": 77084,
+        "samples": 4,
+        "pose": "bay",
+        "cloudy": true,
+        "tier": "hero"
+      },
+      "F": {
+        "calls": 28,
+        "triangles": 77084,
+        "samples": 4,
+        "pose": "bay",
+        "cloudy": true,
+        "tier": "hero"
+      },
+      "delta": {
+        "total": 745280,
+        "exact": 428543,
+        "above2": 303,
+        "above5": 0,
+        "above12": 0,
+        "above24": 0,
+        "p50_90_95_99_999_max": [
+          0.0,
+          1.0,
+          1.0,
+          2.0,
+          2.0,
+          4.0
+        ],
+        "rmseRGB": 0.49516771818080113,
+        "psnrDB": 54.23575713532543,
+        "protectedUpperLeftCount": 5440,
+        "protectedUpperLeftDiff": 0
+      }
+    },
+    "capital-hero": {
+      "E": {
+        "calls": 25,
+        "triangles": 76952,
+        "samples": 4,
+        "pose": "capital",
+        "cloudy": false,
+        "tier": "hero"
+      },
+      "F": {
+        "calls": 25,
+        "triangles": 76952,
+        "samples": 4,
+        "pose": "capital",
+        "cloudy": false,
+        "tier": "hero"
+      },
+      "delta": {
+        "total": 745280,
+        "exact": 472028,
+        "above2": 1,
+        "above5": 0,
+        "above12": 0,
+        "above24": 0,
+        "p50_90_95_99_999_max": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          3.0
+        ],
+        "rmseRGB": 0.3855001500377378,
+        "psnrDB": 56.410312580366366,
+        "protectedUpperLeftCount": 0,
+        "protectedUpperLeftDiff": 0
+      }
+    },
+    "street-approach": {
+      "E": {
+        "calls": 28,
+        "triangles": 26348,
+        "samples": 4,
+        "pose": "street",
+        "cloudy": true,
+        "tier": "approach"
+      },
+      "F": {
+        "calls": 28,
+        "triangles": 26348,
+        "samples": 4,
+        "pose": "street",
+        "cloudy": true,
+        "tier": "approach"
+      },
+      "delta": {
+        "total": 745280,
+        "exact": 454448,
+        "above2": 269,
+        "above5": 0,
+        "above12": 0,
+        "above24": 0,
+        "p50_90_95_99_999_max": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "rmseRGB": 0.48202816529709963,
+        "psnrDB": 54.46935530548963,
+        "protectedUpperLeftCount": 5440,
+        "protectedUpperLeftDiff": 0
+      }
+    },
+    "fly-approach": {
+      "E": {
+        "calls": 28,
+        "triangles": 26348,
+        "samples": 4,
+        "pose": "fly",
+        "cloudy": false,
+        "tier": "approach"
+      },
+      "F": {
+        "calls": 28,
+        "triangles": 26348,
+        "samples": 4,
+        "pose": "fly",
+        "cloudy": false,
+        "tier": "approach"
+      },
+      "delta": {
+        "total": 745280,
+        "exact": 357717,
+        "above2": 26,
+        "above5": 0,
+        "above12": 0,
+        "above24": 0,
+        "p50_90_95_99_999_max": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "rmseRGB": 0.5629050709801479,
+        "psnrDB": 53.122100387517115,
+        "protectedUpperLeftCount": 5440,
+        "protectedUpperLeftDiff": 0
+      }
+    }
+  },
+  "failover": {
+    "workerRequests": 1,
+    "timings": {
+      "firstMs": 145.70000000298023,
+      "prepareMs": 67.70000000298023,
+      "firstDrawMs": 77.39999999850988,
+      "finishedMs": 159.30000000447035,
+      "firstFromNavigationMs": 172.10000000149012,
+      "texturedFromNavigationMs": 185.70000000298023,
+      "decodeMs": 0,
+      "detail": {
+        "status": "fallback",
+        "rawBytes": 0,
+        "mipBytes": 0,
+        "workerMs": 13.100000001490116,
+        "bakeMs": 0,
+        "scratchBytes": 0,
+        "byWidthMs": {}
+      },
+      "gl": {
+        "maps": 0,
+        "bytes": 0,
+        "base": 0,
+        "records": []
+      }
+    },
+    "render": {
+      "calls": 28,
+      "triangles": 26348,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "approach"
+    },
+    "repeatedFrameExact": true,
+    "expectedNetworkErrors": []
+  },
+  "sameWitnessGeometry": true,
+  "actualBufferFingerprint": {
+    "bytes": 5812488,
+    "views": 72,
+    "sha256": "71820c993f55564831b3b72f454d0a804901bdce1246db05ca531f093379a3f8"
+  },
+  "median": {
+    "E": {
+      "firstMs": 4924.60000000149,
+      "prepareMs": 4815.10000000149,
+      "firstDrawMs": 114.10000000149012,
+      "finishedMs": 4924.60000000149,
+      "firstFromNavigationMs": 4948.30000000447,
+      "texturedFromNavigationMs": 4948.30000000447,
+      "decodeMs": 4703.19999999553
+    },
+    "F": {
+      "firstMs": 163,
+      "prepareMs": 85.5,
+      "firstDrawMs": 77.90000000596046,
+      "finishedMs": 620.1000000014901,
+      "firstFromNavigationMs": 186.39999999850988,
+      "texturedFromNavigationMs": 643.5,
+      "decodeMs": 434.29999999701977
+    }
+  },
+  "glMemoryMips": {
+    "E": {
+      "maps": 15,
+      "bytes": 56623068,
+      "base": 42467328,
+      "records": [
+        {
+          "width": 512,
+          "height": 256,
+          "format": 32856,
+          "levels": 10,
+          "bytes": 699052,
+          "base": 524288,
+          "subUploads": 1
+        },
+        {
+          "width": 512,
+          "height": 256,
+          "format": 32856,
+          "levels": 10,
+          "bytes": 699052,
+          "base": 524288,
+          "subUploads": 1
+        },
+        {
+          "width": 512,
+          "height": 256,
+          "format": 35907,
+          "levels": 10,
+          "bytes": 699052,
+          "base": 524288,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 35907,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 35907,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 35907,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 35907,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        }
+      ]
+    },
+    "F": {
+      "maps": 5,
+      "bytes": 18874356,
+      "base": 14155776,
+      "records": [
+        {
+          "width": 512,
+          "height": 256,
+          "format": 32856,
+          "levels": 10,
+          "bytes": 699052,
+          "base": 524288,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1024,
+          "height": 512,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 2796204,
+          "base": 2097152,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        },
+        {
+          "width": 1536,
+          "height": 768,
+          "format": 32856,
+          "levels": 11,
+          "bytes": 6291448,
+          "base": 4718592,
+          "subUploads": 1
+        }
+      ]
+    }
+  }
+}

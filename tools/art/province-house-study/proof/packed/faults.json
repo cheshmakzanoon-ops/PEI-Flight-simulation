@@ -1,0 +1,56 @@
+{
+  "bad-shape": {
+    "workerRequests": 1,
+    "detail": {
+      "status": "fallback",
+      "rawBytes": 0,
+      "mipBytes": 0,
+      "workerMs": 21.30000000447035,
+      "bakeMs": 0,
+      "scratchBytes": 0,
+      "byWidthMs": {}
+    },
+    "actualResidentLargeBytes": 0,
+    "render": {
+      "calls": 28,
+      "triangles": 26348,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "approach"
+    },
+    "geometry": {
+      "bytes": 5812488,
+      "views": 72,
+      "sha256": "71820c993f55564831b3b72f454d0a804901bdce1246db05ca531f093379a3f8"
+    },
+    "stableRGB": "39f012648ec78820f12843117e9edf0a38c52ed394c5e46225de713cca9d28c3"
+  },
+  "late-no-payload": {
+    "workerRequests": 1,
+    "detail": {
+      "status": "fallback",
+      "rawBytes": 0,
+      "mipBytes": 0,
+      "workerMs": 7502.39999999851,
+      "bakeMs": 0,
+      "scratchBytes": 0,
+      "byWidthMs": {}
+    },
+    "actualResidentLargeBytes": 0,
+    "render": {
+      "calls": 28,
+      "triangles": 26348,
+      "samples": 4,
+      "pose": "street",
+      "cloudy": true,
+      "tier": "approach"
+    },
+    "geometry": {
+      "bytes": 5812488,
+      "views": 72,
+      "sha256": "71820c993f55564831b3b72f454d0a804901bdce1246db05ca531f093379a3f8"
+    },
+    "stableRGB": "39f012648ec78820f12843117e9edf0a38c52ed394c5e46225de713cca9d28c3"
+  }
+}

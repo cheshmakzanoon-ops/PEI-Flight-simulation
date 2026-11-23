@@ -21,7 +21,9 @@ try:
   page.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
   page.on('response',lambda e: loaded.append(e.url))
   page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='networkidle',timeout=50000)
-  page.wait_for_function('()=>!!window.portico',timeout=20000)
+  page.wait_for_function('()=>!!window.porticoBoot',timeout=20000)
+  page.evaluate('()=>porticoBoot.ready')
+  assert page.evaluate("()=>porticoBoot.result.status") == 'ready'
   poses=['street','bay','capital','fly']
   for pose in poses:
    frames=[]

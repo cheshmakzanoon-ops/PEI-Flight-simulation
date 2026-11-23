@@ -1,4 +1,4 @@
-# Province House: detached south exterior study
+# Province House: detached south exterior study, packed material revision F
 
 Original Three.js / TypeScript model and material test, **not** a registered building, exact modern survey, or a production simulator update. It shows only the public-facing architectural envelope. The back and neutral foreground are deliberately generic. No photos, plan graphics, external texture files, interiors, site/access system, collision, elevation or ground modifications are served by the viewer.
 
@@ -8,7 +8,7 @@ Original Three.js / TypeScript model and material test, **not** a registered bui
 2. `npm run build` runs strict TypeScript and an actual production Vite build.
 3. With Python 3 and `numpy`, `Pillow`, `playwright`, run `python render.py`. It serves only the built `dist/` on loopback and captures real WebGL. Set `CHROMIUM_EXECUTABLE` to an installed headless Chromium binary, or use a Chromium browser installed by Playwright.
 
-`proof/report.json` records the exact run at 1096 × 680 with 4 samples. `proof/portico-study.webp` shows the unworked comparison shape, the exterior artwork at the same fixed eye, the closer view of the arcade, and a detail of the original sculptural capital. “Unworked” is this study's simple control, **not** the simulator's stock building. The gallery and compiled response are generated artwork, not donor images.
+`proof/report.json` records the exact run at 1096 × 680 with 4 samples. `proof/portico-study.webp` shows the unworked comparison shape, the exterior artwork at the same fixed eye, the closer view of the arcade, and a detail of the original sculptural capital. “Unworked” is this study's simple control, **not** the simulator's stock building. The gallery and compiled response are generated artwork, not donor images. The packed material comparison and timings are in `proof/packed/`.
 
 ## Exterior evidence
 
@@ -21,6 +21,30 @@ Original Three.js / TypeScript model and material test, **not** a registered bui
 ## Scope and checks
 
 - Clear, extruded segmental arches and three physically recessed openings, beveled voussoirs and stone/timber inner surfaces. Four smooth tapered drums with authored shallow course joints, sculptural mirrored volutes and shallow hipped slate. Distinct sandstone roles (dressed, rusticated/plinth and turned profiles), original analytic reflected light, recessed muntins and real stone return geometry. Nominal model stair geometry has a shared .465 m top threshold; 24 real Three.js rays check apron, three step tops, seam and vestibule. This is not an accessibility measurement or a representation of the current ramp.
-- Original periodic sRGB color, linear normal and roughness maps; exact periodic error below 1e-11. The production lab serves only HTML and its bundled JS. No remote imagery or browser service dependencies.
-- Authored Hero (38,321 triangles) and Approach (12,953 triangles) have the same masonry shell, arcade and windows; only the number of carved/tapered-order details changes. The study switches to Approach beyond 20 m. Locked 37 m/70 m views stayed under 192 pixels per 745,280 with a channel difference greater than 16 versus Hero; optical difference mostly local to the column joints, broad shadows and capitals. This is triangle/draw evidence, not a hardware-FPS claim. The detached texture set still builds ~40.5 MiB RGBA input and ~54 MiB fully mipmapped, excluding transient arrays. Reduce/share/stream it before mounting real scenes.
+- Original periodic material construction with exact reference periodic error below 1e-11. The built lab serves its HTML, renderer JS and one local worker JS. No remote imagery or browser service dependencies.
+- Authored Hero (38,321 triangles) and Approach (12,953 triangles) have the same masonry shell, arcade and windows; only the number of carved/tapered-order details changes. The study switches to Approach beyond 20 m. Locked 37 m/70 m views stayed under 192 pixels per 745,280 with a channel difference greater than 16 versus Hero; optical difference mostly local to the column joints, broad shadows and capitals. This is triangle/draw evidence, not a hardware-FPS claim. This packed revision replaces E’s 15 resident textures with five. See the texture replay below; keep deferred loading around future scene mounting.
 - The architectural art is usable as a reference. Keep it detached until a public post-conservation measured exterior, high-quality independently registered control photographs or comparable corroboration resolves **current** coordinates, roof heights, and local grade. The unverified rear, new paving, accessibility rail and land seating are intentionally not inferred.
+
+## Packed original sandstone and replay
+
+- E used independent RGBA8 albedo, tangent normal and roughness maps for each family. In F the same original texel spacing fits one RGBA8 texture per family: narrow-range scalar tone, relative warmth, and authored tangent X/Y. The shader restores the two-dimensional color expression and sRGB transfer, recovers the normal’s positive Z and uses a bounded tone-correlated matte roughness in place of the third map. Roughness is approximate; the original separately filtered RGB and encoded normal Z are not claimed bit-identical. There is only one authored texture sample in this material shader.
+- A local worker caches eight small noise lattices, precomputes the masonry course boundaries, and reuses each interpolated row across same-size families. It transfers the `ArrayBuffer`s once (no duplicate message payload). The viewer can first display unchanged geometry with stable 1×1 average stone colors; it applies the five validated textures as one replacement after the worker completes. A missing, invalid or late worker leaves that fallback and never touches the geometry, camera or stairs. This is a detached application lifecycle, not a simulator or geographic loading change.
+- `node --experimental-strip-types texture-math.mjs` independently inverts the old scalar color from its RGB formula and checks the packed field against the reference at 44,871 actual periodic texel locations. Original tangent X/Y bytes are all identical and color reconstructed and byte-rounded differs at most 1. Changes from interpolating two packed lanes instead of old independent channels and from approximating roughness are separately tested in the actual WebGL screenshots. No photos or model textures are bundled.
+- Check out [the original E asset revision](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/tree/78ccb9a649cdd7ccca47e3e505785a8ae68378d2/tools/art/province-house-study). Run `python prepare-baseline.py /path/to/E/tools/art/province-house-study /empty/dir` to verify the pinned source input and add timing and geometry probes. The same tool also accepts the original frozen E archive. Build both directories separately (`npm ci && npm run build`). Run `python texture-replay.py /empty/dir/dist ./dist --trials 5` for alternating fresh-browser-context trials, five fixed comparison cameras, and the real blocked-worker check. This requires Python, Playwright, NumPy, Pillow and an installed headless Chromium as above. Shader count, actual buffer hashes, first submitted render, texture-ready render, and format/levels fed to WebGL are all checked. Reported timings are for the cloud SwiftShader replay only, not hardware FPS or guaranteed end-user latency.
+
+### Exact cloud result (five alternating pairs)
+
+| Scoped measurement | E | F |
+| --- | ---: | ---: |
+| Authored full-size textures across five stone families | 15 | 5 |
+| Base level, bytes | 42,467,328 | 14,155,776 |
+| All allocated mip levels, bytes | 56,623,068 | 18,874,356 |
+| Median first submitted model frame from module entry | 4,925 ms, textured | 163 ms, average stone colors |
+| Median complete textured model submission from module entry | 4,925 ms | 620 ms |
+| Median procedural preparation | 4,703 ms synchronous | 434 ms worker bake |
+
+Texture-storage counts use the actual immutable WebGL2 formats, dimensions and levels, not a claim about physical driver allocations. Other GPU resources (shadow map, buffers, and framebuffer) are excluded. All 5,812,488 bytes of actual typed geometry buffers matched for both façade tiers and the control. Per-pose maximum difference in any RGB channel was 4/255: 269, 303, 1, 269, and 26 pixels exceeded 2/255 in the fixed front, bay, capital, 37 m, and 70 m poses, respectively (745,280 pixels per image). Both draw and triangle counts were exact. Real Chromium network denial, an invalid worker result, and a worker silent across the 7.5 s deadline each left the same repeatable fallback with zero full-size allocations. The F viewer is ready to reuse as a detached art source only; it is not merged into any flight runtime.
+
+### Portable relative hosting (F2)
+
+F2 adds a relative Vite base; the F renderer, material code and worker remain unchanged. `python relative-replay.py` serves actual F2 under a nested `/repo/public-studies/portico/` fixture with no root `/assets` directory. The compiled module and exactly one worker resolve inside that nested path. The real 745,280-pixel flight approach capture is byte-identical to original F (same network-ready layers, shader, geometry fingerprint and mip allocation), and the browser reports no errors. The five matched timing trials above are the root-hosted F runs, not a second timing benchmark for F2.

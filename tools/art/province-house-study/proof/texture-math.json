@@ -1,0 +1,105 @@
+{
+  "samples": 44871,
+  "families": {
+    "ashlar": {
+      "points": 12251,
+      "toneBias": 0.0010391410819036162,
+      "warmBias": 0.0005479137639164341,
+      "albedo8Error": 1,
+      "normalErrors": 0,
+      "normal8max": 0,
+      "maxClipped": 0,
+      "jointSamples": 3327,
+      "range": {
+        "tone": [
+          0.4543566043876466,
+          0.6753049269596892
+        ],
+        "warm": [
+          0.02185929778436181,
+          0.12183830612463438
+        ]
+      }
+    },
+    "rustic": {
+      "points": 12251,
+      "toneBias": 0.0010391351029099272,
+      "warmBias": 0.0005464185893181567,
+      "albedo8Error": 1,
+      "normalErrors": 0,
+      "normal8max": 0,
+      "maxClipped": 0,
+      "jointSamples": 3331,
+      "range": {
+        "tone": [
+          0.4384974452456302,
+          0.6511185186691943
+        ],
+        "warm": [
+          0.03175257567019511,
+          0.1015756448705394
+        ]
+      }
+    },
+    "cut": {
+      "points": 4059,
+      "toneBias": 0.0010391159172176145,
+      "warmBias": 0.00031372549019664797,
+      "albedo8Error": 1,
+      "normalErrors": 0,
+      "normal8max": 0,
+      "maxClipped": 0,
+      "jointSamples": 0,
+      "range": {
+        "tone": [
+          0.5378777104943807,
+          0.6497451234859594
+        ],
+        "warm": [
+          0.07999999999999945,
+          0.08000000000000049
+        ]
+      }
+    },
+    "slate": {
+      "points": 8155,
+      "toneBias": 0.0010390815008891607,
+      "warmBias": 0.00029411764705931584,
+      "albedo8Error": 1,
+      "normalErrors": 0,
+      "normal8max": 0,
+      "maxClipped": 0,
+      "jointSamples": 2353,
+      "range": {
+        "tone": [
+          0.2617816472708545,
+          0.41049362144224794
+        ],
+        "warm": [
+          -0.027000000000000798,
+          0
+        ]
+      }
+    },
+    "apron": {
+      "points": 8155,
+      "toneBias": 0.0010390537618274465,
+      "warmBias": 0.0002352941176477774,
+      "albedo8Error": 1,
+      "normalErrors": 0,
+      "normal8max": 0,
+      "maxClipped": 0,
+      "jointSamples": 2066,
+      "range": {
+        "tone": [
+          0.42457450728003016,
+          0.5672699021496473
+        ],
+        "warm": [
+          0.17999999999999927,
+          0.18000000000000083
+        ]
+      }
+    }
+  }
+}
