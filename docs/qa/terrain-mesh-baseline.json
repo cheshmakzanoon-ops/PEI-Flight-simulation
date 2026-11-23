@@ -1,0 +1,100 @@
+{
+  "model": "32×22 patch grid, 112 subdivisions, same-detail neighbors; 0.12 m display lift removed for survey errors",
+  "note": "Selected source cell centers; bins conditioned on both existing game masks, not verified coastline.",
+  "sites": [
+    {
+      "id": "east-point",
+      "coverage": {
+        "validSource": 4096,
+        "negativeSource": 1671,
+        "currentCoverLand": 2725,
+        "coarseMaskLand": 2691,
+        "maskDisagreements": 248
+      },
+      "existingLand": {
+        "mesh": {
+          "count": 2584,
+          "p50": 1.4403,
+          "p90": 3.9027,
+          "p95": 4.5248,
+          "max": 6.6353
+        },
+        "collision": {
+          "count": 2584,
+          "p50": 1.2914,
+          "p90": 3.8347,
+          "p95": 4.2901,
+          "max": 7.1031
+        },
+        "meshVsCollision": {
+          "count": 2584,
+          "p50": 0.2203,
+          "p90": 0.6247,
+          "p95": 0.7739,
+          "max": 2.3999
+        },
+        "lessThan20mFromCurrentMask": {
+          "count": 421,
+          "p50": 3.3976,
+          "p90": 5.2263,
+          "p95": 6.2014,
+          "max": 6.6353
+        },
+        "atLeast20mFromCurrentMask": {
+          "count": 2163,
+          "p50": 1.0865,
+          "p90": 3.5027,
+          "p95": 4.1143,
+          "max": 5.8742
+        }
+      }
+    },
+    {
+      "id": "west-point",
+      "coverage": {
+        "validSource": 4096,
+        "negativeSource": 1767,
+        "currentCoverLand": 3082,
+        "coarseMaskLand": 3021,
+        "maskDisagreements": 181
+      },
+      "existingLand": {
+        "mesh": {
+          "count": 2961,
+          "p50": 0.5643,
+          "p90": 1.1535,
+          "p95": 1.336,
+          "max": 2.9345
+        },
+        "collision": {
+          "count": 2961,
+          "p50": 0.5408,
+          "p90": 1.0807,
+          "p95": 1.2329,
+          "max": 2.9466
+        },
+        "meshVsCollision": {
+          "count": 2961,
+          "p50": 0.087,
+          "p90": 0.2567,
+          "p95": 0.328,
+          "max": 0.5375
+        },
+        "lessThan20mFromCurrentMask": {
+          "count": 288,
+          "p50": 0.8927,
+          "p90": 1.0612,
+          "p95": 1.1,
+          "max": 1.2295
+        },
+        "atLeast20mFromCurrentMask": {
+          "count": 2673,
+          "p50": 0.495,
+          "p90": 1.1643,
+          "p95": 1.3592,
+          "max": 2.9345
+        }
+      }
+    }
+  ]
+}

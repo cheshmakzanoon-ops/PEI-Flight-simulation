@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "purpose": "Offline elevation review only; source coverage is not a shoreline.",
+  "source": {
+    "publisher": "Natural Resources Canada, CanElevation",
+    "product": "HRDEM Mosaic 1 m DTM",
+    "stacItem": "https://datacube.services.geo.ca/pgstac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
+    "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "specification": "https://download-telecharger.services.geo.ca/pub/elevation/dem_mne/HRDEMmosaic_mosaiqueMNEHR/HRDEM_Mosaic_Product_Specification.pdf",
+    "attribution": "Contains information licensed under the Open Government Licence – Canada.",
+    "licence": "https://open.canada.ca/en/open-government-licence-canada",
+    "sourceNoData": -32767
+  },
+  "grid": {
+    "horizontalCRS": "EPSG:3979",
+    "verticalCRS": "EPSG:6647",
+    "verticalDatum": "CGVD2013",
+    "pixelRegistration": "PixelIsArea, sample at cell centre",
+    "metresPerPixel": [
+      1,
+      -1
+    ],
+    "encoding": "int16 little-endian, row-major, gzip",
+    "heightScaleMetres": 0.01,
+    "noData": -32768
+  },
+  "windows": [
+    {
+      "id": "east-point",
+      "name": "East Point Light Station, Kings County",
+      "file": "east-point.cm.i16.gz",
+      "cols": 256,
+      "rows": 256,
+      "sourcePixelOffset": [
+        450738,
+        133572
+      ],
+      "upperLeftOuterEdgeM": [
+        2450738,
+        366428
+      ],
+      "referenceLonLat": [
+        -61.9718333333,
+        46.4525277778
+      ],
+      "referenceCell": [
+        128,
+        128
+      ],
+      "validCells": 65536,
+      "noDataCells": 0,
+      "rangeCm": [
+        -100,
+        1522
+      ],
+      "referenceHeightCm": 1007,
+      "bytesDecoded": 131072,
+      "sha256Decoded": "c9cfe1eaba78009e95440c95a8e1323cc36fd6229a06ea0c3c73ebce156916e2",
+      "sha256SourceFloat32LE": "aa8dc4b7bc2649b7e7fb6a75ade0e4a2b5e721531495186c8969574d625a1997"
+    },
+    {
+      "id": "west-point",
+      "name": "West Point Light Station, Prince County",
+      "file": "west-point.cm.i16.gz",
+      "cols": 256,
+      "rows": 256,
+      "sourcePixelOffset": [
+        277491,
+        206809
+      ],
+      "upperLeftOuterEdgeM": [
+        2277491,
+        293191
+      ],
+      "referenceLonLat": [
+        -64.38675,
+        46.6203055556
+      ],
+      "referenceCell": [
+        128,
+        128
+      ],
+      "validCells": 65536,
+      "noDataCells": 0,
+      "rangeCm": [
+        -97,
+        387
+      ],
+      "referenceHeightCm": 179,
+      "bytesDecoded": 131072,
+      "sha256Decoded": "c2947d5882686e76dc352096714e1b3f0205b1e3945d5fc4bc07db30a1848356",
+      "sha256SourceFloat32LE": "dbcf6beea3c1f21225c762a75a6561da95e7210274d6a4c2170e178865dd4037"
+    }
+  ]
+}
