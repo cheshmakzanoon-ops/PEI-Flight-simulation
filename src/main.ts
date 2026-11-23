@@ -26,6 +26,7 @@ import { clamp, RAD, geographic } from './sim/geo.ts';
 import './app/style.css';
 bootUI();
 async function run(){
+ const showBuildingShadows=new URLSearchParams(location.search).has('buildingShadows');
  let renderer:THREE.WebGLRenderer;
  try{renderer=new THREE.WebGLRenderer({canvas:document.querySelector<HTMLCanvasElement>('#world')!,antialias:true,alpha:false,logarithmicDepthBuffer:true,powerPreference:'high-performance'});}
  catch{throw Error('WebGL 2 is required. Enable hardware acceleration or open this page in a WebGL 2 browser.');}
@@ -35,7 +36,7 @@ async function run(){
  const woodland=loadForestHeights(import.meta.env.BASE_URL),forestStream=new ForestStream(import.meta.env.BASE_URL),hedgeStream=new HedgeStream(import.meta.env.BASE_URL);
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(startPoint.x,startPoint.z);
  const dockPack=loadQuartermasterDocks(import.meta.env.BASE_URL+'world/');
- const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg);const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
+ const {terrain,img,cover,sky,bench,southLake,sourisLighting}=await loadAtlas(loadMsg);const forestHeights=await woodland;await warmForest;const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,showBuildingShadows);const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,(x,z)=>world.visualGroundHeight(x,z));addConfederationBridge(scene);addBasilica(scene,terrain);addLighthouseScenery(scene,terrain);
  let quartermasterDocks:ReturnType<typeof addQuartermasterDocks>;
  void dockPack.then(p=>quartermasterDocks=addQuartermasterDocks(scene,cover,world.sun,p));
  let mainland:Terrain|undefined;
@@ -65,9 +66,10 @@ async function run(){
  const layerWarnings:string[]=[];const warn=(layer:string,e:unknown)=>{layerWarnings.push(layer);ui.setWarnings(layerWarnings);console.warn(layer+' layer unavailable',e);};
  let roads:Roads|undefined,buildings:Buildings|undefined;
  void addMainland(scene).then(t=>mainland=t).catch(e=>warn('Mainland',e));
- void Roads.create(scene,terrain).then(v=>roads=v).catch(e=>warn('Road',e));
- void Buildings.create(scene,terrain,sourisLighting).then(v=>buildings=v).catch(e=>warn('Building',e));
+ void Roads.create(scene,terrain,world.buildingShadows).then(v=>roads=v).catch(e=>warn('Road',e));
+ void Buildings.create(scene,terrain,sourisLighting,world.buildingShadows).then(v=>buildings=v).catch(e=>warn('Building',e));
  const tgt=new THREE.Vector3(),eye=new THREE.Vector3(),forward=new THREE.Vector3(),up=new THREE.Vector3(),right=new THREE.Vector3(),rot=new THREE.Quaternion(),aim=new THREE.Vector3(),groundY=new THREE.Vector3();
+ const liveCasters=(x:number,z:number,d:number,out:THREE.Mesh[])=>buildings?.drawableCasters(x,z,d,out);
  const diagnostic=import.meta.env.DEV||new URLSearchParams(location.search).has('diagnostics');
  const rE=new THREE.Euler(0,0,0,'YXZ');let oldMode=ui.mode;
  renderer.setAnimationLoop((now:number)=>{
@@ -115,10 +117,15 @@ async function run(){
   }
   snap=false;camera.up.copy(up);camera.lookAt(aim);camera.updateMatrixWorld();
   groundY.copy(aircraft.root.position);world.update(camera.position,time);roads?.update(f.x,f.z);buildings?.update(f.x,f.z);vegetation.update(f.x,f.z,f.y);
-  ui.update(f,world.groundHeight(f.x,f.z)-.12);audio.update(f.throttle,f.speed,playing&&!f.engineOut);renderer.render(scene,camera);
+  ui.update(f,world.groundHeight(f.x,f.z)-.12);audio.update(f.throttle,f.speed,playing&&!f.engineOut);
+  if(world.buildingShadows){
+   world.buildingShadows.render(camera.position,world.groundHeight(camera.position.x,camera.position.z),
+    buildings?liveCasters:undefined);
+  }
+  renderer.render(scene,camera);
   if(diagnostic){
    Object.assign(window,{islandAirDiagnostics:{site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
-    hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
+    buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,woodlandHeights:forestHeights?.ids??[],rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,harbourShoreline:cover.harbour?.plan.id??null,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }
  });
 }

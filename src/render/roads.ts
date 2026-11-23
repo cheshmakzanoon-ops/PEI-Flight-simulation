@@ -3,6 +3,7 @@ import {unpackGzip} from '../sim/compression.ts';
 import {isConfederationBridge} from '../sim/confederation.ts';
 import { project } from '../sim/geo.ts';
 import {addRoadSurface} from './road-surface.ts';
+import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
 import type { Terrain } from '../sim/terrain.ts';
 
@@ -67,14 +68,14 @@ export class Roads {
 
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows) {
     this.tiles=tiles;this.terrain=terrain;
     this.root.name = 'PEI National Road Network';
-    addRoadSurface(this.material);
+    addRoadSurface(this.material,casts);
     scene.add(this.root);
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows) {
     const response = await fetch(`${import.meta.env.BASE_URL}world/roads.bin.gz`);
     if (!response.ok || !response.body) throw new Error(`Road data request failed: ${response.status}`);
     const data = await unpackGzip(await response.arrayBuffer());
@@ -102,7 +103,7 @@ export class Roads {
         }
       }
     }
-    return new Roads(scene,tiles,terrain);
+    return new Roads(scene,tiles,terrain,casts);
   }
 
   private mesh(tile: Tile) {

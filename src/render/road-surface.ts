@@ -1,21 +1,26 @@
 import type {MeshStandardMaterial} from 'three';
+import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
-export function addRoadSurface(material:MeshStandardMaterial){
- material.customProgramCacheKey=()=> 'pei-road-surface-v2';
+export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows){
+ material.customProgramCacheKey=()=> casts?'pei-road-surface-shadow-v2':'pei-road-surface-v2';
  material.onBeforeCompile=(shader)=>{
+  if(casts)Object.assign(shader.uniforms,casts.uniforms);
   shader.vertexShader=shader.vertexShader.replace('#include <common>',`
    #include <common>
    attribute vec2 roadSurface;
    varying vec2 vRoadSurface,vRoadWorld;
+   ${casts?'varying vec3 localRoadReceiver;':''}
   `).replace('#include <begin_vertex>',`
    #include <begin_vertex>
    vRoadSurface=roadSurface;
    vRoadWorld=(modelMatrix*vec4(position,1.)).xz;
+   ${casts?'localRoadReceiver=(modelMatrix*vec4(position,1.)).xyz;':''}
   `);
   shader.fragmentShader=shader.fragmentShader.replace('#include <common>',`
    #include <common>
    varying vec2 vRoadSurface,vRoadWorld;
+   ${casts?'varying vec3 localRoadReceiver;'+buildingShadowGLSL:''}
    float roadHash(vec2 p){
     vec3 h=fract(vec3(p.xyx)*vec3(.1031,.1030,.0973));
     h+=dot(h,h.yzx+33.33);
@@ -72,6 +77,13 @@ export function addRoadSurface(material:MeshStandardMaterial){
     diffuseColor.rgb=mix(diffuseColor.rgb,dust,shoulder*medium*(.28*gravel+.17*paved));
     }
    }
+  `);
+  if(casts)shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_end>',`
+   #include <lights_fragment_end>
+   vec3 localRoadNormal=normalize(cross(dFdx(localRoadReceiver),dFdy(localRoadReceiver)));
+   float roadCast=buildingShade(localRoadReceiver,localRoadNormal,distance(cameraPosition,localRoadReceiver));
+   reflectedLight.directDiffuse*=mix(vec3(1.),vec3(.22,.29,.38),roadCast);
+   reflectedLight.directSpecular*=1.-.82*roadCast;
   `);
  };
 }

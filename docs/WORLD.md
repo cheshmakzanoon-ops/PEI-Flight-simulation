@@ -94,6 +94,12 @@ original agricultural cladding and joinery. It does not identify
 the use, façade, or current condition of a specific building.
 
 
+### Optional close building shadows
+
+The [building shadow preview](qa/local-building-shadows.md) adds cast
+shade on terrain, roads and buildings when the simulator URL has
+`?buildingShadows`. Standard rendering is unchanged without it.
+
 ### Near-detail scenes
 
 The regional texture sits underneath **245** 640 × 640 WebP tiles with

@@ -4,6 +4,7 @@ import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaste
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
 import { SOURIS_ROOF } from './souris-roof.generated.ts';
 import {sourisOcclusionGLSL,sourisMetalGLSL,type SourisLighting} from './souris-light.ts';
+import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 import { emitFarmShell,farmRoofAtlas,readFarmShell } from './farm-shells.ts';
 import { farmMaterialGLSL } from './farm-material.ts';
 import { replacesLightBuilding } from '../sim/lighthouse-sites.ts';
@@ -31,7 +32,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=(souris=false)=>`
+const buildingF=(souris=false,hasBuildingShadows=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -47,6 +48,7 @@ const buildingF=(souris=false)=>`
  }
  ${downtownFacadeGLSL}
  ${souris?sourisOcclusionGLSL+sourisMetalGLSL:''}
+ ${hasBuildingShadows?buildingShadowGLSL:''}
  ${farmMaterialGLSL}
  void main(){
  #include <logdepthbuf_fragment>
@@ -90,6 +92,12 @@ const buildingF=(souris=false)=>`
   ${souris?'}':''}
  }else{c*=1.-.11*fine*band(uv2d.x*1.8,.0,.17);}
  c*=.61+.51*k;
+ ${hasBuildingShadows?`
+ if(facade<5.5||facade>6.5){
+  float groundedCast=buildingShade(wp,n,d);
+  c*=mix(vec3(1.),vec3(.67,.73,.82),groundedCast*smoothstep(.05,.64,k));
+ }
+ `:''}
  ${souris?`
  if(facade>5.5){
   float shade=sourisCast(wp)*(.21+.79*smoothstep(.02,.63,k));
@@ -107,15 +115,16 @@ export class Buildings {
  private readonly sourisMat?:THREE.ShaderMaterial;
  private readonly sourisLight?:SourisLighting;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows){
+  if(casts){this.mat.fragmentShader=buildingF(false,true);Object.assign(this.mat.uniforms,casts.uniforms);}
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
-   this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true),uniforms:sourisLight.uniforms,vertexColors:true,side:THREE.DoubleSide});
+   this.sourisMat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(true,!!casts),uniforms:{...sourisLight.uniforms,...casts?.uniforms},vertexColors:true,side:THREE.DoubleSide});
   }
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows){
   const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json');
   if(!mf.ok)throw Error('Building atlas not available.');
   const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
@@ -123,7 +132,7 @@ export class Buildings {
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight);
+  return new Buildings(scene,terrain,a.tiles,new PackedBytes(path+a.file,a.bytes),a.sha256,sourisLight,casts);
  }
  update(x:number,z:number){
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -134,6 +143,13 @@ export class Buildings {
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
+ }
+ drawableCasters(x:number,z:number,r:number,out:THREE.Mesh[]){
+  for(const m of this.meshes.values()){
+   const b=m.geometry.boundingSphere;
+   if(!m.visible||!b)continue;
+   if(Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
+  }
  }
  diagnostics(){
   let failed=0;
