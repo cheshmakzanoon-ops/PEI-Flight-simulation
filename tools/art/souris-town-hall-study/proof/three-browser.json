@@ -1,0 +1,73 @@
+{
+  "viewer": {
+    "three": "0.187.0",
+    "renderedBy": "Chromium/WebGL 2 (SwiftShader)",
+    "viewport": [
+      620,
+      460
+    ],
+    "studioOnly": true,
+    "stockFlightSimulatorChanged": false,
+    "requests": "Only this compiled viewer and its one original project sky asset. No building photographs."
+  },
+  "sourceSha256": {
+    "src/hall.ts": "7f5afb80809ee716f825c81af0b3507e5741ee31e9938daa333096273d88bd22",
+    "src/materials.ts": "a2a1c3ac0676bc9302f8c1b4e2d146d5d755de7ea60e243a1cbcfaacbc6358bf",
+    "src/survey.ts": "b7c1943ea02804251ff4930be97de66ba60a1fa049da5ef151690f99509ce757"
+  },
+  "buildFiles": {
+    "assets/index-BfLLcggC.js": "be5ab7119b49e9a618db8faa3f8dc838135efa74d69385be5f23842aaf7c186d",
+    "assets/maritime-sky-WOUiMuKU.webp": "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d",
+    "index.html": "b6aca543dff1f783c111ad2739a24c62a59f8e20fa20c0d6a458425d454f369a"
+  },
+  "cases": {
+    "street": {
+      "lighting": "light",
+      "draw": {
+        "draws": 10,
+        "triangles": 4364
+      },
+      "detachedResources": {
+        "logicalAssetBytes": 8388608,
+        "textures": 8
+      },
+      "requests": [
+        "/?shot=street&light=light",
+        "/assets/index-BfLLcggC.js",
+        "/assets/maritime-sky-WOUiMuKU.webp"
+      ]
+    },
+    "air": {
+      "lighting": "sim",
+      "draw": {
+        "draws": 10,
+        "triangles": 4364
+      },
+      "detachedResources": {
+        "logicalAssetBytes": 8388608,
+        "textures": 8
+      },
+      "requests": [
+        "/?shot=air&light=sim",
+        "/assets/index-BfLLcggC.js",
+        "/assets/maritime-sky-WOUiMuKU.webp"
+      ]
+    },
+    "west": {
+      "lighting": "sim",
+      "draw": {
+        "draws": 10,
+        "triangles": 4364
+      },
+      "detachedResources": {
+        "logicalAssetBytes": 8388608,
+        "textures": 8
+      },
+      "requests": [
+        "/?shot=west&light=sim",
+        "/assets/index-BfLLcggC.js",
+        "/assets/maritime-sky-WOUiMuKU.webp"
+      ]
+    }
+  }
+}

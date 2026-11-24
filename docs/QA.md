@@ -71,6 +71,7 @@ the original Cavendish coastal overdraw case after two relocations.
 ## Coastal terrain and materials
 
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [Souris Town Hall authoring study](../tools/art/souris-town-hall-study/): detached scene checks for the original frontage and qualified roof surfaces.
 - [Souris waterfront departure](qa/souris-waterfront-pass.md): offshore start, unchanged controls and a measured transit past the town.
 - [Raw LiDAR roof check](qa/roof-copc-coherence.md): a bounded source check for secondary roof features that raster holdouts can miss.
 - [Charlottetown measured roof](qa/queens-survey-roof.md): original LiDAR points, blocked raster cells, wall seating and an in-game comparison.

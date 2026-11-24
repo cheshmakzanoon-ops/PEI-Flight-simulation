@@ -137,6 +137,8 @@ The narrow [Green Gables gravel fixture](docs/qa/gables-gravel.md) is retained a
 
 ## Scenery gallery
 
+The [Souris Town Hall exterior study](tools/art/souris-town-hall-study/) records the original frontage asset and its open verification issues. It is not enabled in the simulator.
+
 | Charlottetown Harbour | Confederation Bridge |
 | --- | --- |
 | ![Approach over Charlottetown Harbour](docs/media/charlottetown-harbour.webp) | ![Survey aircraft above the Confederation Bridge](docs/media/confederation-bridge.webp) |

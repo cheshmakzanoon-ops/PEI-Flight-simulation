@@ -1,0 +1,77 @@
+{
+  "qualifiedHeldCompare": {
+    "n": 95,
+    "sig": "actual Three Float32 roof rays, all tested source centres remain disjoint from train/rank",
+    "stock": [
+      1.5184019165039047,
+      1.755901916503909,
+      3.893701916503908,
+      4.803051916503905,
+      5.851401916503907
+    ],
+    "nativeLowerAndDeck": [
+      0.0004655798284378676,
+      0.029838679270328683,
+      0.1264280054481664,
+      0.2062699328129142,
+      0.8825830743293661
+    ],
+    "withAuthoredFront": [
+      0.00046587734031255934,
+      0.029838391253408147,
+      0.14209887887305309,
+      0.20626996154458224,
+      0.5542754683052262
+    ]
+  },
+  "shellProjection": {
+    "found": 11303,
+    "drop": 0,
+    "leak": 0,
+    "elevationDeltaMax": 7.423701831044127e-07,
+    "dualRoofDepthMax": 0,
+    "signedPolygonArea": 119.17206024268182,
+    "submissionRoofArea": 119.17206011500838,
+    "meshVerticesLargestApproxPlanLeakM": 2.99549801186068e-07
+  },
+  "facadeDirectAndOblique": {
+    "cast": 67818,
+    "hit": 67818,
+    "miss": 0,
+    "roles": {
+      "trim": 15506,
+      "wall": 39083,
+      "wood": 3914,
+      "shadow": 230,
+      "glass": 9046,
+      "letter": 39
+    },
+    "warning": "artwork in nominal front extends above thresholds; no measured aisle/door access claim"
+  },
+  "build": {
+    "reviewOnly": true,
+    "sourceGrid": "2020 NRCan CGVD2013",
+    "planOwner": "q130331/72",
+    "floorDatum": 13.1,
+    "mainRoofTriangleCount": 495,
+    "authoredGableTriangleCount": 31,
+    "exactFrontOpeningCount": 11,
+    "wallFaceDepths": [
+      0.092,
+      0.317
+    ],
+    "nominalAtticSill": 23.785,
+    "frontWallRange": [
+      -4.261741279601619,
+      4.262648965451351
+    ],
+    "centralBayU": [
+      -2.105,
+      2.105
+    ],
+    "physicalStairs": false,
+    "unknownHighEastFeature": "held; measured, role/location not claimed",
+    "layerLimits": "no original photographs, no live surface or game asset; threshold and lower rear shape remain authored/held"
+  },
+  "extras": "compact right high cap and lower rear/skirt require dedicated independent separated roles; stage only"
+}
