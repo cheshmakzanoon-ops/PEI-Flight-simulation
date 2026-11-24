@@ -61,6 +61,7 @@ import {windmillOmegaRadS} from './sim/windmilling.ts';
 import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
+import {observerView} from './sim/observer-view.ts';
 import './app/style.css';
 bootUI();
 async function run(){
@@ -238,7 +239,7 @@ async function run(){
  const sceneSurface=(x:number,z:number)=>{const s=world.surface(x,z);if(!s.land&&!world.freshwaterContains(x,z)&&mainland?.isLand(x,z)){s.height=mainland.elevation(x,z)+.18;s.land=true;}return s;};
  const aircraft=createAircraft();scene.add(aircraft.root);const audio=new EngineSound();
  let activeSite=0,f=spawn(SITES[0],sceneSurface),acc=0,view=0,time=0,last=performance.now(),snap=true;
- const names=['Chase','Cockpit','Wide chase'];let ui:UI;
+ const names=options.has('sceneryObserver')?['Chase','Cockpit','Wide chase','Scenery']:['Chase','Cockpit','Wide chase'];let ui:UI;
  const pause=()=>{if(ui?.mode==='flight')ui.set('paused');else if(ui?.mode==='paused')ui.set('flight');};
  const cameraCycle=()=>{view=(view+1)%names.length;ui.setCamera(names[view]);snap=true;};
  const input=new Input(code=>{if(!ui)return;
@@ -393,6 +394,9 @@ async function run(){
   }else if(view===1){
    eye.set(0,.73,-.36).applyQuaternion(rot).add(aircraft.root.position);
    tgt.set(0,-.02,-50).applyQuaternion(rot).add(eye);up.copy(cameraUp).applyQuaternion(rot);
+  }else if(view===3&&options.has('sceneryObserver')){
+   const v=observerView(f,camera.aspect);
+   eye.set(...v.eye);tgt.set(...v.target);up.copy(cameraUp);
   }else{
    const far=view===2;const distance=(far?37:16.8)*Math.max(1,1.05/camera.aspect);eye.copy(aircraft.root.position).addScaledVector(forward,-distance);eye.y+=far?11:4.2;
    tgt.copy(aircraft.root.position).addScaledVector(forward,far?9:7.8);tgt.y+=far?2.1:1.18+Math.sin(f.pitch)*4.5;

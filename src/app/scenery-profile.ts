@@ -30,9 +30,12 @@ export function cavendishPackageState(search:string){
 
 export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('scenery')==='detail';
 
+export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
+
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
+ if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
  if(q.has('woodlandBark')&&!sceneryReviewBlock('woodlandBark',q))q.set('woodland3D','');
  if(q.has('woodlandCrownBase')&&!sceneryReviewBlock('woodlandCrownBase',q))q.set('woodland3D','');
  if(q.has('sourceGrassNap')&&!sceneryReviewBlock('sourceGrassNap',q))q.set('sourceGrassStudy','');
@@ -62,6 +65,7 @@ export const SCENERY_REVIEWS=[
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
+ {flag:'woodlandView',name:'Woodland scenery view',scope:'Forest ground, close bark, conifers and a down-looking camera'},
  {flag:'woodlandBark',name:'Close bark grain',scope:'Close woodland material study'},
  {flag:'woodlandCrownBase',name:'Near conifer crown shape',scope:'Stand-informed close woodland'},
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
@@ -85,7 +89,7 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
- if(flag==='woodlandCrownBase'||flag==='woodlandBark'){
+ if(flag==='woodlandCrownBase'||flag==='woodlandBark'||flag==='woodlandView'){
   if(options.get('scenery')==='detail')return 'detail';
   return ['surveyRelief','inlandRelief','indianRiverReview','buildingShadows','seatedForestShadows',
    'duneReliefStudy','duneGrassSurface','duneSandDetail'].some(k=>options.has(k))?'terrain':undefined;

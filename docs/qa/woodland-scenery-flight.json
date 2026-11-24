@@ -1,0 +1,123 @@
+[
+  {
+    "county": "prince",
+    "mode": "stock",
+    "view": "Chase",
+    "ground": 22.57338256642458,
+    "altitude": 51.20433634152591,
+    "movementM": 240.055,
+    "bark": null,
+    "crown": null,
+    "groundArt": null,
+    "uses": [],
+    "pause": true
+  },
+  {
+    "county": "prince",
+    "mode": "bundle",
+    "view": "Scenery",
+    "ground": 22.57321850228197,
+    "altitude": 51.21279743871025,
+    "movementM": 243.396,
+    "bark": "ready",
+    "crown": {
+      "missing": false,
+      "inflight": 0,
+      "resident": 4,
+      "failed": 0,
+      "active": "2-8",
+      "activeReady": true,
+      "rosterEligible": 28
+    },
+    "groundArt": "ready",
+    "uses": [
+      "/world/woodland/crown-v1/index.json",
+      "/world/woodland/crown-v1/crown-01.pack",
+      "/art/forest-floor/duff-1.webp",
+      "/art/forest-floor/duff-2.webp",
+      "/art/bark/wood-v1.rgba.gz"
+    ],
+    "pause": true
+  },
+  {
+    "county": "queens",
+    "mode": "stock",
+    "view": "Chase",
+    "ground": 43.79229426632411,
+    "altitude": 80.14954787516898,
+    "movementM": 242.934,
+    "bark": null,
+    "crown": null,
+    "groundArt": null,
+    "uses": [],
+    "pause": true
+  },
+  {
+    "county": "queens",
+    "mode": "bundle",
+    "view": "Scenery",
+    "ground": 44.11769242360548,
+    "altitude": 80.1251784847875,
+    "movementM": 241.137,
+    "bark": "ready",
+    "crown": {
+      "missing": false,
+      "inflight": 0,
+      "resident": 1,
+      "failed": 0,
+      "active": "13-13",
+      "activeReady": true,
+      "rosterEligible": 23
+    },
+    "groundArt": "ready",
+    "uses": [
+      "/world/woodland/crown-v1/index.json",
+      "/world/woodland/crown-v1/crown-04.pack",
+      "/art/forest-floor/duff-1.webp",
+      "/art/forest-floor/duff-2.webp",
+      "/art/bark/wood-v1.rgba.gz"
+    ],
+    "pause": true
+  },
+  {
+    "county": "kings",
+    "mode": "stock",
+    "view": "Chase",
+    "ground": 39.12,
+    "altitude": 66.2660496615311,
+    "movementM": 242.82,
+    "bark": null,
+    "crown": null,
+    "groundArt": null,
+    "uses": [],
+    "pause": true
+  },
+  {
+    "county": "kings",
+    "mode": "bundle",
+    "view": "Scenery",
+    "ground": 39.12,
+    "altitude": 66.27847872128386,
+    "movementM": 245.704,
+    "bark": "ready",
+    "crown": {
+      "missing": false,
+      "inflight": 0,
+      "resident": 4,
+      "failed": 0,
+      "active": "29-12",
+      "activeReady": true,
+      "rosterEligible": 1
+    },
+    "groundArt": "ready",
+    "uses": [
+      "/world/woodland/crown-v1/index.json",
+      "/world/woodland/crown-v1/crown-04.pack",
+      "/world/woodland/crown-v1/crown-05.pack",
+      "/art/forest-floor/duff-1.webp",
+      "/art/forest-floor/duff-2.webp",
+      "/art/bark/wood-v1.rgba.gz"
+    ],
+    "pause": true
+  }
+]

@@ -1,0 +1,1575 @@
+{
+  "mass": 1450,
+  "defaultConditions": {
+    "massKg": 1450,
+    "windEastMps": 1.9,
+    "windNorthMps": -0.35
+  },
+  "surfacePins": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "building": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+  },
+  "stockSites": 34,
+  "allSites": 37,
+  "profileNegativeOrders": 18,
+  "defaultViewSequence": [
+    "Chase",
+    "Cockpit",
+    "Wide chase"
+  ],
+  "sourceSHAs": {
+    "src/main.ts": "26e8f605e8a1b9a2e8d17df0300f1123e3eb520d2bd639f00ae12edc33d441c1",
+    "src/sim/observer-view.ts": "0dc680a61a5e3d06aa4f51f2ab3cee35e005fd7ce105cd7babce0869714b0e55",
+    "src/sim/places.ts": "35ccedc8cd3fd8648836e6277ef40a931403eab06908a255502d8e470193edb0",
+    "src/app/scenery-profile.ts": "e7abdde449a32da06caa8dc2e56d59fa9ce582a3298a5e73e39bd1a178e10ea9"
+  },
+  "resultScope": "Actual shipped step/default scene surface and stock dataset AABB/volume upper bounds; canopy overlap bound not physically collidable. FOV wood vertices proxy ignores occlusion and stage timings.",
+  "sites": [
+    {
+      "site": {
+        "lon": -64.23357075932525,
+        "lat": 46.674377830069496,
+        "id": "prince-woodland-view",
+        "name": "Prince County · woodland view pass",
+        "heading": 270,
+        "height": 29,
+        "region": "Prince County",
+        "note": "Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."
+      },
+      "roofFootprints": 7,
+      "warmTrees": 18561,
+      "warmHedges": 207,
+      "pilotFallbackTrees": 18354,
+      "runs": [
+        {
+          "name": "gameDefault",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 1.9,
+            "windNorthMps": -0.35
+          },
+          "after": "flying",
+          "movementM": 651.9938887397462,
+          "fGroundMin": 26.86930575056495,
+          "fWingFloor": 24.882370944624842,
+          "fCrownBoundMin": 0.8625426096230839,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              -79360.7109375,
+              -19377.53125
+            ],
+            "H": 22.114015579223633,
+            "W": 24.609378814697266,
+            "body": [
+              -79339.5717179055,
+              49.49459302847684,
+              -19384.028573176183
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 132,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1018.8787194153688,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.44267228918844,
+              "crownBoundMin": 6.938817973206473,
+              "closestMappedRoof": 1018.995976856036,
+              "microFrames01": 81,
+              "microFrames025": 30,
+              "microFrames050": 2,
+              "maxWeight": 0.5971628703406778,
+              "minEyeAGL": 31.205039591901862
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.614724326382518,
+              "crownBoundMin": 7.02240385784305,
+              "closestMappedRoof": 1019.097676728449,
+              "microFrames01": 16,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.30978793943702265,
+              "minEyeAGL": 31.31113795817504
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.697297795738248,
+              "crownBoundMin": 7.065554873687238,
+              "closestMappedRoof": 1019.1464406936963,
+              "microFrames01": 6,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.2513315087240817,
+              "minEyeAGL": 31.391358835797323
+            }
+          ]
+        },
+        {
+          "name": "calm",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 676.6780122474302,
+          "fGroundMin": 26.696938441407337,
+          "fWingFloor": 24.591244905083723,
+          "fCrownBoundMin": 0.8625426096230839,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              -79360.7109375,
+              -19377.53125
+            ],
+            "H": 22.114015579223633,
+            "W": 24.609378814697266,
+            "body": [
+              -79339.5717179055,
+              49.49459302847684,
+              -19384.028573176183
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 171,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1018.6990611799556,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.110720657678332,
+              "crownBoundMin": 6.938817973206473,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 74,
+              "microFrames025": 31,
+              "microFrames050": 2,
+              "maxWeight": 0.5533629485985865,
+              "minEyeAGL": 31.02441629028645
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.282772956515984,
+              "crownBoundMin": 7.012087394515352,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 18,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.3619796779960609,
+              "minEyeAGL": 31.132046447003358
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.386436399584465,
+              "crownBoundMin": 7.054510843950813,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 10,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.3548303380194162,
+              "minEyeAGL": 31.18471029238943
+            }
+          ]
+        },
+        {
+          "name": "east4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 624.6780122476048,
+          "fGroundMin": 27.07366426117068,
+          "fWingFloor": 25.225231694524854,
+          "fCrownBoundMin": 0.8625426096230839,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              -79360.7109375,
+              -19377.53125
+            ],
+            "H": 22.114015579223633,
+            "W": 24.609378814697266,
+            "body": [
+              -79339.5717179055,
+              49.49459302847684,
+              -19384.028573176183
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 150,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1018.6990611799556,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.738711627363358,
+              "crownBoundMin": 6.946902566365883,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 86,
+              "microFrames025": 33,
+              "microFrames050": 3,
+              "maxWeight": 0.5185686409894164,
+              "minEyeAGL": 31.505132131132232
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.910763664557436,
+              "crownBoundMin": 7.032922496369982,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 21,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.39303327512990516,
+              "minEyeAGL": 31.811002895772365
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 32.006828269338826,
+              "crownBoundMin": 7.076749649207675,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 9,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.25240640774820844,
+              "minEyeAGL": 31.957800403216797
+            }
+          ]
+        },
+        {
+          "name": "west4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": -4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 728.678012247401,
+          "fGroundMin": 25.93564413962138,
+          "fWingFloor": 23.933926827323617,
+          "fCrownBoundMin": 0.8625426096230839,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              -79360.7109375,
+              -19377.53125
+            ],
+            "H": 22.114015579223633,
+            "W": 24.609378814697266,
+            "body": [
+              -79339.5717179055,
+              49.49459302847684,
+              -19384.028573176183
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 198,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1018.6990611799556,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.486167422891786,
+              "crownBoundMin": 6.931102667981816,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 69,
+              "microFrames025": 33,
+              "microFrames050": 4,
+              "maxWeight": 0.572274343121717,
+              "minEyeAGL": 30.34760545507499
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.67192631986757,
+              "crownBoundMin": 7.001988043902057,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 20,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.4220368333426593,
+              "minEyeAGL": 30.653130257965447
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.758444894184684,
+              "crownBoundMin": 7.032922496369982,
+              "closestMappedRoof": 1018.6990611799556,
+              "microFrames01": 9,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.3208681045937606,
+              "minEyeAGL": 30.79992776540988
+            }
+          ]
+        },
+        {
+          "name": "north4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 4
+          },
+          "after": "flying",
+          "movementM": 678.6730672857548,
+          "fGroundMin": 26.696938441407337,
+          "fWingFloor": 24.591244905083723,
+          "fCrownBoundMin": -0.9573664220260127,
+          "negativeCrown": {
+            "t": 4.53333333333332,
+            "root": [
+              -79597.5859375,
+              -19412.05078125
+            ],
+            "H": 22.423839569091797,
+            "W": 25.23017120361328,
+            "body": [
+              -79575.41621910341,
+              51.07321505227819,
+              -19402.161906509253
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 465,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1011.4124726065821,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.110720657678332,
+              "crownBoundMin": 5.220079319424447,
+              "closestMappedRoof": 1010.1260797589446,
+              "microFrames01": 85,
+              "microFrames025": 43,
+              "microFrames050": 6,
+              "maxWeight": 0.7503337815039197,
+              "minEyeAGL": 31.02441629028645
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.282772956515984,
+              "crownBoundMin": 5.334350438816512,
+              "closestMappedRoof": 1009.0107330218901,
+              "microFrames01": 26,
+              "microFrames025": 11,
+              "microFrames050": 1,
+              "maxWeight": 0.5085658117054987,
+              "minEyeAGL": 31.13204644700336
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.365346525011503,
+              "crownBoundMin": 5.385159306248203,
+              "closestMappedRoof": 1008.4755654581479,
+              "microFrames01": 12,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.4062847704143998,
+              "minEyeAGL": 31.184710292389433
+            }
+          ]
+        },
+        {
+          "name": "south4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": -4
+          },
+          "after": "flying",
+          "movementM": 678.6730672857548,
+          "fGroundMin": 26.76808493759111,
+          "fWingFloor": 24.635392032349248,
+          "fCrownBoundMin": 0.8625426096230839,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              -79360.7109375,
+              -19377.53125
+            ],
+            "H": 22.114015579223633,
+            "W": 24.609378814697266,
+            "body": [
+              -79339.5717179055,
+              49.49459302847684,
+              -19384.028573176183
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 87,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1019.1193349208479,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.315453708998714,
+              "crownBoundMin": 6.931102667981816,
+              "closestMappedRoof": 1019.7400470591634,
+              "microFrames01": 55,
+              "microFrames025": 16,
+              "microFrames050": 2,
+              "maxWeight": 0.6321428775343327,
+              "minEyeAGL": 31.39443285583861
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.557891340825627,
+              "crownBoundMin": 7.012087394515352,
+              "closestMappedRoof": 1020.5014309841561,
+              "microFrames01": 10,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.4877407218693305,
+              "minEyeAGL": 31.576112975884623
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.66944501230079,
+              "crownBoundMin": 7.054510843950813,
+              "closestMappedRoof": 1020.9403873812045,
+              "microFrames01": 6,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.49156373489500527,
+              "minEyeAGL": 31.66330728099037
+            }
+          ]
+        },
+        {
+          "name": "NE",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 3.5,
+            "windNorthMps": 3.5
+          },
+          "after": "flying",
+          "movementM": 632.8158761792275,
+          "fGroundMin": 27.024577596129173,
+          "fWingFloor": 25.127529714762904,
+          "fCrownBoundMin": -0.8304755861013291,
+          "negativeCrown": {
+            "t": 4.866666666666652,
+            "root": [
+              -79597.5859375,
+              -19412.05078125
+            ],
+            "H": 22.423839569091797,
+            "W": 25.23017120361328,
+            "body": [
+              -79575.73033544437,
+              51.20010588820287,
+              -19401.06190650927
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 432,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 1013.0636495051752,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.64175916100208,
+              "crownBoundMin": 5.372455706905339,
+              "closestMappedRoof": 1011.8550451672434,
+              "microFrames01": 91,
+              "microFrames025": 47,
+              "microFrames050": 6,
+              "maxWeight": 0.6699054679849257,
+              "minEyeAGL": 31.37026509127438
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.81381119819616,
+              "crownBoundMin": 5.474112131664929,
+              "closestMappedRoof": 1010.8076827709795,
+              "microFrames01": 28,
+              "microFrames025": 8,
+              "microFrames050": 0,
+              "maxWeight": 0.46890756770556763,
+              "minEyeAGL": 31.67613585591457
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.896384667551892,
+              "crownBoundMin": 5.524965363888083,
+              "closestMappedRoof": 1010.305059978211,
+              "microFrames01": 12,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.3379891472628974,
+              "minEyeAGL": 31.822933363358946
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": {
+        "lon": -63.37650018484735,
+        "lat": 46.400959210988596,
+        "id": "queens-woodland-view",
+        "name": "Queens County · woodland view pass",
+        "heading": 120,
+        "height": 29,
+        "region": "Queens County",
+        "note": "Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."
+      },
+      "roofFootprints": 83,
+      "warmTrees": 15335,
+      "warmHedges": 899,
+      "pilotFallbackTrees": 14436,
+      "runs": [
+        {
+          "name": "gameDefault",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 1.9,
+            "windNorthMps": -0.35
+          },
+          "after": "flying",
+          "movementM": 700.457002573663,
+          "fGroundMin": 26.776232591413745,
+          "fWingFloor": 24.20228080865151,
+          "fCrownBoundMin": 1.729965427320053,
+          "negativeCrown": {
+            "t": 0.6999999999999995,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13515.75350050916,
+              78.69428293983226,
+              11027.929363697327
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 310.8039856498191,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.233714949512205,
+              "crownBoundMin": 7.885070378954109,
+              "closestMappedRoof": 334.24326087368627,
+              "microFrames01": 53,
+              "microFrames025": 23,
+              "microFrames050": 4,
+              "maxWeight": 0.6826079343358913,
+              "minEyeAGL": 31.0755825510957
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.31698311752387,
+              "crownBoundMin": 7.979510921818002,
+              "closestMappedRoof": 348.69970107817505,
+              "microFrames01": 19,
+              "microFrames025": 8,
+              "microFrames050": 1,
+              "maxWeight": 0.5381324013619344,
+              "minEyeAGL": 31.158650578963893
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.35387843949737,
+              "crownBoundMin": 8.027779909088833,
+              "closestMappedRoof": 355.6408260610859,
+              "microFrames01": 14,
+              "microFrames025": 5,
+              "microFrames050": 1,
+              "maxWeight": 0.5489643647598614,
+              "minEyeAGL": 31.192951756983376
+            }
+          ]
+        },
+        {
+          "name": "calm",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 676.7406911601327,
+          "fGroundMin": 26.86278739692827,
+          "fWingFloor": 24.284048930045017,
+          "fCrownBoundMin": 1.740010295021463,
+          "negativeCrown": {
+            "t": 0.7333333333333327,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13515.581985312663,
+              78.70432780753367,
+              11028.551263900226
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 333.3017491049582,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.345482444078343,
+              "crownBoundMin": 7.896665653030891,
+              "closestMappedRoof": 356.6063760458654,
+              "microFrames01": 53,
+              "microFrames025": 21,
+              "microFrames050": 4,
+              "maxWeight": 0.7493790531835387,
+              "minEyeAGL": 31.182334694410237
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.446946554587413,
+              "crownBoundMin": 8.003583041251472,
+              "closestMappedRoof": 371.1087300347055,
+              "microFrames01": 16,
+              "microFrames025": 6,
+              "microFrames050": 1,
+              "maxWeight": 0.5901725352011433,
+              "minEyeAGL": 31.291275024108145
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.495654450614794,
+              "crownBoundMin": 8.052078616379545,
+              "closestMappedRoof": 378.07046358882906,
+              "microFrames01": 11,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.4552148054046309,
+              "minEyeAGL": 31.340078581637428
+            }
+          ]
+        },
+        {
+          "name": "east4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 722.2421509612373,
+          "fGroundMin": 26.618399747106885,
+          "fWingFloor": 24.065415894534034,
+          "fCrownBoundMin": 1.7201234971194452,
+          "negativeCrown": {
+            "t": 0.6666666666666663,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13515.918338523123,
+              78.68444100963166,
+              11026.817469565778
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 292.6711967435506,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.03225664617112,
+              "crownBoundMin": 7.873551722000468,
+              "closestMappedRoof": 316.0299381213415,
+              "microFrames01": 51,
+              "microFrames025": 22,
+              "microFrames050": 4,
+              "maxWeight": 0.6940611805553009,
+              "minEyeAGL": 30.872753966706114
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.0733788891096,
+              "crownBoundMin": 7.96752980901945,
+              "closestMappedRoof": 330.35328177894826,
+              "microFrames01": 19,
+              "microFrames025": 8,
+              "microFrames050": 1,
+              "maxWeight": 0.5759339803108813,
+              "minEyeAGL": 30.913058724760653
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.091633969355243,
+              "crownBoundMin": 8.015667395206803,
+              "closestMappedRoof": 337.23472696503353,
+              "microFrames01": 10,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.4639708853164851,
+              "minEyeAGL": 30.930419797298825
+            }
+          ]
+        },
+        {
+          "name": "west4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": -4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 632.2422016273937,
+          "fGroundMin": 27.159211398692904,
+          "fWingFloor": 24.556432003118807,
+          "fCrownBoundMin": 1.7502435484157104,
+          "negativeCrown": {
+            "t": 0.7666666666666659,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13517.147126628703,
+              78.71456106092792,
+              11029.418169965604
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 376.70145305239316,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.718041605400174,
+              "crownBoundMin": 7.931851765140562,
+              "closestMappedRoof": 399.67092896513293,
+              "microFrames01": 49,
+              "microFrames025": 22,
+              "microFrames050": 3,
+              "maxWeight": 0.6266318785488518,
+              "minEyeAGL": 31.565587951214034
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 31.890012820537862,
+              "crownBoundMin": 8.039917831884337,
+              "closestMappedRoof": 414.2289784763063,
+              "microFrames01": 16,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.33800715109147106,
+              "minEyeAGL": 31.734582529554046
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 31.975503074212867,
+              "crownBoundMin": 8.100905838647988,
+              "closestMappedRoof": 421.21591634346555,
+              "microFrames01": 8,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.29993009507447266,
+              "minEyeAGL": 31.814221979156514
+            }
+          ]
+        },
+        {
+          "name": "north4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 4
+          },
+          "after": "flying",
+          "movementM": 652.2970543636941,
+          "fGroundMin": 26.461533379681185,
+          "fWingFloor": 23.920108017797055,
+          "fCrownBoundMin": 1.740010295021463,
+          "negativeCrown": {
+            "t": 0.7333333333333327,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13515.581985312663,
+              78.70432780753367,
+              11025.61793056688
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 365.9113710392629,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.839130872964496,
+              "crownBoundMin": 7.920061880790439,
+              "closestMappedRoof": 388.4871934796335,
+              "microFrames01": 55,
+              "microFrames025": 23,
+              "microFrames050": 6,
+              "maxWeight": 0.6847034676541923,
+              "minEyeAGL": 30.674394272828707
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.845428632235283,
+              "crownBoundMin": 8.027779909088833,
+              "closestMappedRoof": 402.770000358124,
+              "microFrames01": 19,
+              "microFrames025": 9,
+              "microFrames050": 1,
+              "maxWeight": 0.5805352619672102,
+              "minEyeAGL": 30.681576700686165
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.85131997090157,
+              "crownBoundMin": 8.07645952175106,
+              "closestMappedRoof": 409.63172371849595,
+              "microFrames01": 12,
+              "microFrames025": 5,
+              "microFrames050": 0,
+              "maxWeight": 0.399731973598068,
+              "minEyeAGL": 30.68537984212609
+            }
+          ]
+        },
+        {
+          "name": "south4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": -4
+          },
+          "after": "flying",
+          "movementM": 704.1821348289205,
+          "fGroundMin": 27.26404141417263,
+          "fWingFloor": 24.64798984229109,
+          "fCrownBoundMin": 1.729965427320053,
+          "negativeCrown": {
+            "t": 0.6999999999999995,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13517.083500509158,
+              78.69428293983226,
+              11030.484363697326
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 306.0543786310722,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 31.85066330883759,
+              "crownBoundMin": 7.896665653030891,
+              "closestMappedRoof": 329.680866522681,
+              "microFrames01": 46,
+              "microFrames025": 15,
+              "microFrames050": 2,
+              "maxWeight": 0.5894894103681994,
+              "minEyeAGL": 31.690275115989955
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 32.04596146094088,
+              "crownBoundMin": 7.991529816160676,
+              "closestMappedRoof": 344.2314108316654,
+              "microFrames01": 13,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.33219803188936037,
+              "minEyeAGL": 31.8934508012455
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 32.13879602321835,
+              "crownBoundMin": 8.039917831884337,
+              "closestMappedRoof": 351.2149771516818,
+              "microFrames01": 10,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.30941865473633456,
+              "minEyeAGL": 31.98851259967271
+            }
+          ]
+        },
+        {
+          "name": "NE",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 3.5,
+            "windNorthMps": 3.5
+          },
+          "after": "flying",
+          "movementM": 696.1749442368417,
+          "fGroundMin": 26.320612214784546,
+          "fWingFloor": 23.785401321399696,
+          "fCrownBoundMin": 1.729965427320053,
+          "negativeCrown": {
+            "t": 0.6999999999999995,
+            "root": [
+              -13496.7509765625,
+              11037.4228515625
+            ],
+            "H": 19.66330337524414,
+            "W": 20.70282745361328,
+            "body": [
+              -13514.633500509148,
+              78.69428293983226,
+              11025.234363697327
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 328.9348008783285,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.64512436892639,
+              "crownBoundMin": 7.896665653030891,
+              "closestMappedRoof": 351.4178052561644,
+              "microFrames01": 62,
+              "microFrames025": 25,
+              "microFrames050": 5,
+              "maxWeight": 0.7022848564158535,
+              "minEyeAGL": 30.48694050842733
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.627623420106524,
+              "crownBoundMin": 7.991529816160676,
+              "closestMappedRoof": 365.47101409818345,
+              "microFrames01": 18,
+              "microFrames025": 6,
+              "microFrames050": 1,
+              "maxWeight": 0.5127015013712255,
+              "minEyeAGL": 30.461934331648997
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.62176789174464,
+              "crownBoundMin": 8.039917831884337,
+              "closestMappedRoof": 372.22944953784435,
+              "microFrames01": 9,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.39048500361535776,
+              "minEyeAGL": 30.45159683470832
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "site": {
+        "lon": -62.16750720087922,
+        "lat": 46.41638738574205,
+        "id": "kings-woodland-view",
+        "name": "Kings County · woodland view pass",
+        "heading": 195,
+        "height": 26,
+        "region": "Kings County",
+        "note": "Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."
+      },
+      "roofFootprints": 37,
+      "warmTrees": 21922,
+      "warmHedges": 94,
+      "pilotFallbackTrees": 21828,
+      "runs": [
+        {
+          "name": "gameDefault",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 1.9,
+            "windNorthMps": -0.35
+          },
+          "after": "flying",
+          "movementM": 675.1770122056008,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.093191233392382,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 45,
+              "microFrames025": 14,
+              "microFrames050": 1,
+              "maxWeight": 0.5148714212912924,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.147185383071978,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 15,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.3425606672835686,
+              "minEyeAGL": 30.09032217923903
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.182993047672184,
+              "crownBoundMin": 7.831966545359767,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 11,
+              "microFrames025": 0,
+              "microFrames050": 0,
+              "maxWeight": 0.24804610656083803,
+              "minEyeAGL": 30.104547835492447
+            }
+          ]
+        },
+        {
+          "name": "calm",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 676.7105451138673,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.094954647615545,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 49,
+              "microFrames025": 16,
+              "microFrames050": 1,
+              "maxWeight": 0.510833886274937,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.151351022134257,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 12,
+              "microFrames025": 3,
+              "microFrames050": 0,
+              "maxWeight": 0.3425953106918057,
+              "minEyeAGL": 30.097321771787783
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.188244533196418,
+              "crownBoundMin": 7.831966545359767,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 8,
+              "microFrames025": 0,
+              "microFrames050": 0,
+              "maxWeight": 0.22037387449629664,
+              "minEyeAGL": 30.117025220138892
+            }
+          ]
+        },
+        {
+          "name": "east4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 665.1511270757702,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.09233316924582,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 47,
+              "microFrames025": 14,
+              "microFrames050": 0,
+              "maxWeight": 0.4988794966766834,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.146014955971324,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 15,
+              "microFrames025": 4,
+              "microFrames050": 0,
+              "maxWeight": 0.33055378891289333,
+              "minEyeAGL": 30.08347875715443
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.18151752833777,
+              "crownBoundMin": 7.831966545359767,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 13,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.2804776772802676,
+              "minEyeAGL": 30.090757041934694
+            }
+          ]
+        },
+        {
+          "name": "west4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": -4,
+            "windNorthMps": 0
+          },
+          "after": "flying",
+          "movementM": 691.9944377568261,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.097283595273737,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 56,
+              "microFrames025": 14,
+              "microFrames050": 1,
+              "maxWeight": 0.5061514075080795,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.156687088297197,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 8,
+              "microFrames025": 2,
+              "microFrames050": 0,
+              "maxWeight": 0.3027809686420917,
+              "minEyeAGL": 30.11050131277063
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.194971538054958,
+              "crownBoundMin": 7.835305690100943,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 5,
+              "microFrames025": 0,
+              "microFrames050": 0,
+              "maxWeight": 0.21547423601152926,
+              "minEyeAGL": 30.14329339834172
+            }
+          ]
+        },
+        {
+          "name": "north4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": 4
+          },
+          "after": "flying",
+          "movementM": 626.6269495112408,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.095973424155225,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 59,
+              "microFrames025": 23,
+              "microFrames050": 1,
+              "maxWeight": 0.5338441748225773,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.165740545478407,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 21,
+              "microFrames025": 5,
+              "microFrames050": 0,
+              "maxWeight": 0.30799021968813123,
+              "minEyeAGL": 30.100091396606338
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.207502348787052,
+              "crownBoundMin": 7.835305690100943,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 14,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.26647391434375767,
+              "minEyeAGL": 30.131057253140703
+            }
+          ]
+        },
+        {
+          "name": "south4",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 0,
+            "windNorthMps": -4
+          },
+          "after": "flying",
+          "movementM": 727.0632640168229,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.0889430055191,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 37,
+              "microFrames025": 11,
+              "microFrames050": 0,
+              "maxWeight": 0.4900233864716764,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.14014096779885,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 14,
+              "microFrames025": 5,
+              "microFrames050": 0,
+              "maxWeight": 0.3819876722061283,
+              "minEyeAGL": 30.088958124469045
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.17497565790451,
+              "crownBoundMin": 7.831966545359767,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 9,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.2835918364182144,
+              "minEyeAGL": 30.106106785037674
+            }
+          ]
+        },
+        {
+          "name": "NE",
+          "conditions": {
+            "massKg": 1450,
+            "windEastMps": 3.5,
+            "windNorthMps": 3.5
+          },
+          "after": "flying",
+          "movementM": 621.8175494787367,
+          "fGroundMin": 26.000000000000007,
+          "fWingFloor": 23.836140044799997,
+          "fCrownBoundMin": 1.8126953380465451,
+          "negativeCrown": {
+            "t": 0,
+            "root": [
+              79267.8671875,
+              9278.349609375
+            ],
+            "H": 18.47986602783203,
+            "W": 20.446924209594727,
+            "body": [
+              79256.8246972692,
+              64.61626188925504,
+              9294.468816409564
+            ],
+            "hedge": false
+          },
+          "refinedOnly": 0,
+          "clearPrecise": null,
+          "exactFailure": null,
+          "closestMappedRoof": 713.9154488907411,
+          "roofTopBoundMin": null,
+          "gearContact": false,
+          "dryCount": 1170,
+          "raisedRunway": 0,
+          "cameras": [
+            {
+              "aspect": 1.72,
+              "groundMin": 30.092660854042045,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 704.5966610494845,
+              "microFrames01": 53,
+              "microFrames025": 18,
+              "microFrames050": 1,
+              "maxWeight": 0.5055788056705071,
+              "minEyeAGL": 30.10865556242853
+            },
+            {
+              "aspect": 0.5625,
+              "groundMin": 30.1582865401664,
+              "crownBoundMin": 7.822695338046548,
+              "closestMappedRoof": 696.7472650918671,
+              "microFrames01": 16,
+              "microFrames025": 5,
+              "microFrames050": 0,
+              "maxWeight": 0.3612921735333624,
+              "minEyeAGL": 30.085460762904475
+            },
+            {
+              "aspect": 0.46,
+              "groundMin": 30.19922322317457,
+              "crownBoundMin": 7.835305690100943,
+              "closestMappedRoof": 693.0571419679651,
+              "microFrames01": 12,
+              "microFrames025": 1,
+              "microFrames050": 0,
+              "maxWeight": 0.3106469336040707,
+              "minEyeAGL": 30.106487877151636
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

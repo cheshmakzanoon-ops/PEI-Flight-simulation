@@ -36,7 +36,10 @@ export const SITES: Site[] = [
  {id:"queens-sand-dunes",name:"Queens County · dry dune pass",region:"Queens County",lon:-63.4589346845,lat:46.5103707013,heading:175,height:58,note:"Fly south over one selected 2020 dune study. Enable Dry dune surface detail in Standard for the close sand treatment."},
  {id:"kings-sand-dunes",name:"Kings County · dry dune pass",region:"Kings County",lon:-62.0594249031,lat:46.4715531596,heading:175,height:58,note:"Fly south over one selected 2020 dune study. Enable Dry dune surface detail in Standard for the close sand treatment."},
  {id:'hog-island-west-pass',name:'Hog Island · west dune pass',region:'Pituamkek Sandhills',lon:-63.8444204973,lat:46.6466321746,heading:175,height:58,note:'Approach from offshore. Enable Hog Island aerial detail to see the September 2022 dry dune imagery.'},
- {id:'hog-island-east-pass',name:'Hog Island · east dune pass',region:'Pituamkek Sandhills',lon:-63.8232250243,lat:46.6356946663,heading:175,height:58,note:'Approach the eastern dry dune area from the Gulf. The aerial study does not alter terrain or water.'}
+ {id:'hog-island-east-pass',name:'Hog Island · east dune pass',region:'Pituamkek Sandhills',lon:-63.8232250243,lat:46.6356946663,heading:175,height:58,note:'Approach the eastern dry dune area from the Gulf. The aerial study does not alter terrain or water.'},
+ {"lon":-64.23357075932525,"lat":46.674377830069496,"id":"prince-woodland-view","name":"Prince County \u00b7 woodland view pass","heading":270,"height":29,"region":"Prince County","note":"Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."},
+ {"lon":-63.37650018484735,"lat":46.400959210988596,"id":"queens-woodland-view","name":"Queens County \u00b7 woodland view pass","heading":120,"height":29,"region":"Queens County","note":"Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."},
+ {"lon":-62.16750720087922,"lat":46.41638738574205,"id":"kings-woodland-view","name":"Kings County \u00b7 woodland view pass","heading":195,"height":26,"region":"Kings County","note":"Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);
