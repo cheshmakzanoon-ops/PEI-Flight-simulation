@@ -30,3 +30,27 @@ test('ambiguous, zero-tie, small-error and unbounded curves keep the old rendere
   assert.equal(r.mode,'unsupported');
  }
 });
+
+test('a pinned single zero can connect the same endpoints as the inherited mask rule without guessing joins',()=>{
+ const candidates=[
+  [-12,-19,0,10],[-19,-14,4,0],[0,-23,-10,4],[-14,-23,0,4],[0,-12,4,19],
+ ] as const;
+ for(const q of candidates){
+  const result=strictArc(q,...pitch,.047,96,.09,true);
+  assert.equal(strictArc(q,...pitch,.047,96,.09).mode,'unsupported');
+  assert.equal(result.mode,'exact');assert.ok(result.points.length>2&&result.boundM<=.047);
+  const [a,b,c,d]=q;
+  const evaluate=(u:number,v:number)=>(a*(1-u)+b*u)*(1-v)+(d*(1-u)+c*u)*v;
+  assert.ok(result.points.every(([u,v])=>Math.abs(evaluate(u,v))<1e-10));
+  const edges=[[a,b],[b,c],[d,c],[a,d]] as const;
+  const edgeHits=edges.flatMap(([v0,v1],i)=>{
+   if((v0>=0)===(v1>=0))return [];
+   const t=v0/(v0-v1);
+   return [[t,0],[1,t],[t,1],[0,t]].slice(i,i+1);
+  });
+  assert.deepEqual(result.points[0],edgeHits[0]);
+  assert.deepEqual(result.points.at(-1),edgeHits[1]);
+ }
+ for(const q of [[-4,0,0,13],[0,-12,-10,-19],[0,12,10,19],[0,-2,1,-3]] as const)
+  assert.equal(strictArc(q,...pitch,.047,96,0,true).mode,'unsupported');
+});

@@ -55,7 +55,7 @@ export class LegacyShoreCurtains {
  private readonly chunks:Chunk[]=[];
  private refined=0;
  private readonly terrain:Terrain;
- constructor(scene:THREE.Scene,material:THREE.ShaderMaterial,east:THREE.ShaderMaterial|undefined,eastGroups:ReadonlySet<string>,terrain:Terrain,arcs:readonly ShoreSegment[],owners:ReadonlyMap<string,THREE.Sphere>){
+ constructor(scene:THREE.Scene,material:THREE.ShaderMaterial,east:THREE.ShaderMaterial|undefined,eastGroups:ReadonlySet<string>,terrain:Terrain,arcs:readonly ShoreSegment[],owners:ReadonlyMap<string,THREE.Sphere>,private readonly additive=false){
   this.terrain=terrain;
   const groups=new Map<string,{owner:string;arcs:ShoreSegment[]; original:Set<ShoreSegment>}>();
   for(const q of arcs){
@@ -67,7 +67,7 @@ export class LegacyShoreCurtains {
   for(const g of groups.values()){
    const bounds:[number,number,number,number]=[Infinity,Infinity,-Infinity,-Infinity],p:number[]=[];
    for(const a of g.original){
-    appendStockCurtain(a,terrain,p);
+    if(!additive)appendStockCurtain(a,terrain,p);
     bounds[0]=Math.min(bounds[0],a.ax,a.bx);bounds[1]=Math.min(bounds[1],a.az,a.bz);
     bounds[2]=Math.max(bounds[2],a.ax,a.bx);bounds[3]=Math.max(bounds[3],a.az,a.bz);
    }
@@ -89,6 +89,7 @@ export class LegacyShoreCurtains {
    const dx=Math.max(a-x,0,x-c),dz=Math.max(b-z,0,z-d);
    if(!q.mesh.visible||dx*dx+dz*dz>(q.refined?keepDistance:registerDistance)**2){
     if(q.refined){q.mesh.geometry=q.original;q.refined.dispose();q.refined=undefined;q.revision=undefined;}
+    if(this.additive)q.mesh.visible=false;
     continue;
    }
    const id=signature(q.bounds);

@@ -1,5 +1,5 @@
 import {mergeWharfToe} from './basin-wharf-toe.ts';
-import {strictArc} from './strict-shore-arc.ts';
+import {strictArc,type Quad} from './strict-shore-arc.ts';
 import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
 import type { Terrain } from './terrain.ts';
@@ -88,7 +88,7 @@ function baywalkShoreCells(cover:Cover,terrain:Terrain){
  return chosen;
 }
 /** March the same pixel-centred, signed-distance field the land and water shaders sample. */
-export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number)=>boolean;
+export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number,corners:Quad)=>boolean|'pinned-zero';
 export const LEGACY_SHORE_MIN_CHORD_M=1.40;
 export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreSelection): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
@@ -113,8 +113,10 @@ export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreS
   if((a>=0)===(b>=0)&&(b>=0)===(c>=0)&&(c>=0)===(d>=0))continue;
   if(inFine(i,j)||exteriorReview.has(j*w+i))continue;
   const x=terrain.left+(i+.5)*stepX,z=terrain.top+(j+.5)*stepZ;
-  if(refine&&refine(x,z,x+stepX,z+stepZ,i,j)){
-   const arc=strictArc([a,b,c,d],stepX,stepZ,.047,96,LEGACY_SHORE_MIN_CHORD_M);
+  const mode=refine?.(x,z,x+stepX,z+stepZ,i,j,[a,b,c,d]);
+  if(mode){
+   const zero=mode==='pinned-zero';
+   const arc=strictArc([a,b,c,d],stepX,stepZ,.047,96,zero ? .09 : LEGACY_SHORE_MIN_CHORD_M,zero);
    if(arc.mode==='exact'&&arc.points.length>2){
     const a=arc.points[0],d=arc.points.at(-1)!;
     const original={ax:x+a[0]*stepX,az:z+a[1]*stepZ,bx:x+d[0]*stepX,bz:z+d[1]*stepZ};

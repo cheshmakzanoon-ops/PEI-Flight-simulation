@@ -52,6 +52,7 @@ import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank,intersectsBasinLe
 import type {ShoreSegment} from '../sim/shoreline.ts';
 import {basinSandGLSL,basinSandIntersects,loadBasinSand,type BasinSand} from './basin-head-sand.ts';
 import { coastSegments } from '../sim/shoreline.ts';
+import { allowOrbyZeroArc,ORBY_COVER_SHA } from '../sim/orby-shore-closure.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
@@ -518,7 +519,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false){
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
    const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
@@ -608,7 +609,7 @@ export class World {
     northBank=make(cliffFrag(false,false,true),THREE.DoubleSide);
     northBank.uniforms={...uniforms,...northCourtUniforms};
    }
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore,northBank);
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore,northBank,orbyClosure);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -708,7 +709,7 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false,northBank?:THREE.ShaderMaterial) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false,northBank?:THREE.ShaderMaterial,orbyClosure=false) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
   const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[],reviewed:ShoreSegment[]=[],courtShore:ShoreSegment[]=[];
   const review=montagueShoreReview(this.cover,this.terrain);
@@ -739,7 +740,11 @@ export class World {
    const mask=values.reduce((m,v,j)=>m|(v>0?1<<j:0),0);
    return mask!==5&&mask!==10&&mask!==0&&mask!==15;
   };
-  const cfg=coastSegments(this.cover,t,legacyShore?(x0,z0,x1,z1)=>!forbidden(x0,z0,x1,z1):undefined);
+  const orby=orbyClosure&&!legacyShore&&this.cover.sourceSha===ORBY_COVER_SHA;
+  const cfg=coastSegments(this.cover,t,legacyShore||orby?(x0,z0,x1,z1,i,j,q)=>{
+   if(orby&&allowOrbyZeroArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return 'pinned-zero';
+   return legacyShore&&!forbidden(x0,z0,x1,z1);
+  }:undefined);
   const joins=new Set<string>(),keyOf=(x:number,z:number)=>x.toFixed(4)+','+z.toFixed(4);
   if(legacyShore)for(const s of cfg){
    const a=s.seatedLegacyArc;if(!a)continue;
@@ -794,8 +799,12 @@ export class World {
    g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(v.length/3*2),2));
    g.computeBoundingSphere();return g;
   };
-  for(const [key,verts] of legacyStock)
+  for(const [key,verts] of legacyStock){
    legacyCulling.set(key,stockShoreSphere(groups.get(key)??[],verts));
+   // Unlike the old general arc trial, the isolated Orby closure adds only
+   // coverage: keep the exact old curtain to avoid uncovering mixed samples.
+   if(orby){const stock=groups.get(key)??[];stock.push(...verts);groups.set(key,stock);}
+  }
   for(const [key,vertices] of groups){
    const g=shore(vertices),m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
    m.name='shore-to-sea surface';if(legacyCulling.has(key))m.userData.stockCull=legacyCulling.get(key);
@@ -812,7 +821,7 @@ export class World {
    }
   }
   if(batches.length)this.bank={material:inletBank,batches,segments,joins:basinBankJoins(segments,outside,this.cover.basin)};
-  if(legacy.length)this.legacyShore=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,legacy,legacyCulling);
+  if(legacy.length)this.legacyShore=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,legacy,legacyCulling,orby);
   if(review&&reviewed.length){
    const geom=new THREE.BufferGeometry(),mesh=new THREE.Mesh(geom,material);
    mesh.name='reviewed Montague shoreline support';mesh.visible=false;

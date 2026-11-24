@@ -58,6 +58,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Gravel roads across PEI | `?gravelSurfaceStudy` | [Mapped gravel surface](docs/qa/gravel-surface-study.md): a close-flight material preview for 2,651 verified non-bridge gravel records. |
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?aerialPerspectiveStudy` | [Daylight haze and sea horizon](docs/qa/aerial-perspective-study.md): an opt-in optical treatment for distant coasts, the open ocean and the horizon. Standard only. |
+| Orby Head | `?orbyCoastClosure` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): a local preview that closes gaps through which the sky showed below the cliffs. Standard only. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 

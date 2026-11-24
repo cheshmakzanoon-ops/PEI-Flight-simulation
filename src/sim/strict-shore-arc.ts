@@ -4,16 +4,18 @@ const opposite=(a:number,b:number)=>(a>0)!==(b>0);
 type Arc={points:UV[];boundM:number;oldChordErrorM?:number;mode:'exact'|'unsupported'};
 /** Nondegenerate two-crossing prototype for the exact legacy bilinear field.
  * Never change which points the signed atlas classifies as wet. Zero/saddle
- * cells intentionally keep their old code path until independently audited. */
-export function strictArc(vals:Quad,width:number,height:number,errorM=.075,maxSegments=128,minimumErrorM=0):Arc{
+ * cells keep the old path unless a source-pinned caller admits one isolated
+ * zero corner with two distinct inherited endpoints. */
+export function strictArc(vals:Quad,width:number,height:number,errorM=.075,maxSegments=128,minimumErrorM=0,allowSingleZero=false):Arc{
  const [a,b,c,d]=vals;
- if(!vals.every(Number.isFinite)||vals.includes(0)||Math.min(width,height,errorM)<=0)return {points:[],boundM:Infinity,mode:'unsupported'};
+ if(!vals.every(Number.isFinite)||(vals.includes(0)&&(!allowSingleZero||vals.filter(v=>v===0).length!==1||!vals.some(v=>v>0)||!vals.some(v=>v<0)))||Math.min(width,height,errorM)<=0)return {points:[],boundM:Infinity,mode:'unsupported'};
  const cells:UV[]=[];
- if(opposite(a,b))cells.push([a/(a-b),0]);
- if(opposite(b,c))cells.push([1,b/(b-c)]);
- if(opposite(d,c))cells.push([d/(d-c),1]);
- if(opposite(a,d))cells.push([0,a/(a-d)]);
- if(cells.length!==2)return {points:[],boundM:Infinity,mode:'unsupported'};
+ const across=allowSingleZero?(a:number,b:number)=>(a>=0)!==(b>=0):opposite;
+ if(across(a,b))cells.push([a/(a-b),0]);
+ if(across(b,c))cells.push([1,b/(b-c)]);
+ if(across(d,c))cells.push([d/(d-c),1]);
+ if(across(a,d))cells.push([0,a/(a-d)]);
+ if(cells.length!==2||Math.hypot(cells[0][0]-cells[1][0],cells[0][1]-cells[1][1])<1e-12)return {points:[],boundM:Infinity,mode:'unsupported'};
  const [p,q]=cells;
  const B=b-a,C=d-a,D=a-b-d+c;
  const attempt=(transpose:boolean):Arc|undefined=>{
