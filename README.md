@@ -72,6 +72,8 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 Preview work is regional and does not change the Standard atlas.
 
+For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch.
+
 ## Download the web build
 
 Open the [successful GitHub builds for `main`](https://github.com/cheshmakzanoon-ops/PEI-Flight-simulation/actions/workflows/verify.yml?query=branch%3Amain+is%3Asuccess).

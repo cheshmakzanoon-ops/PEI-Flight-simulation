@@ -1,0 +1,63 @@
+{
+  "realBundle": "Standard",
+  "site": "souris-waterfront-pass",
+  "camera": "Cockpit",
+  "finish": "paused",
+  "route": {
+    "nearest": 32.55028632329059,
+    "distance": 826.2547516603533,
+    "frames": 165,
+    "nearAt": {
+      "x": 72572.1427729917,
+      "z": 16096.84266289465,
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    }
+  },
+  "worldAssets": [
+    "buildings/index.json",
+    "buildings/tiles.pack",
+    "coastal/v1/east-point.i16.gz",
+    "coastal/v1/west-point.i16.gz",
+    "coastal/v2/east-point-cliff.i16.gz",
+    "coastal/v3/east-point-bench.r8.gz",
+    "color.webp",
+    "cover.bin.gz",
+    "cover.json",
+    "detail/index.json",
+    "detail/sentinel-01.pack",
+    "detail/sentinel-02.pack",
+    "ground/odbl/v1/parking-surfaces.bin.gz",
+    "harbour/odbl/v1/quartermaster-coast.rg.gz",
+    "harbour/odbl/v1/quartermaster-docks.json.gz",
+    "height.bin.gz",
+    "lighting/v1/souris-daylight-fields.gz",
+    "mainland/color.webp",
+    "mainland/context.json",
+    "mainland/height.bin.gz",
+    "maritime-sky.webp",
+    "pedestrian/odbl/v1/sidewalks.bin.gz",
+    "roads.bin.gz",
+    "roads.json",
+    "terrain.json",
+    "water/v1/south-lake.r8.gz",
+    "woodland/hedgerows-v1/hedge-02.pack",
+    "woodland/hedgerows-v1/hedge-03.pack",
+    "woodland/hedgerows-v1/index.json",
+    "woodland/stream-v1/heights-02.pack",
+    "woodland/stream-v1/heights-03.pack",
+    "woodland/stream-v1/heights-05.pack",
+    "woodland/stream-v1/heights-06.pack",
+    "woodland/stream-v1/heights-07.pack",
+    "woodland/stream-v1/index.json",
+    "woodland/v1/efi-dominant-heights.r8.gz"
+  ],
+  "consoleErrors": [],
+  "warnings": [],
+  "fixtureNote": "Actual Chromium on SwiftShader. Stereotyped stock building appearance; no landmark opinions and no device speed claim. Browser logs record navigation and rendered route; terrain-clearance minima are in the deterministic test, not this browser probe."
+}
