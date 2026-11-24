@@ -6,6 +6,10 @@
 2. **Regional detail:** Refine imagery and terrain in tiles. Validate coast and rivers first, then field boundaries, roads, settlement footprints and tree cover. Put high-detail assets in the budget nearest the aircraft.
 3. **Landmark and approach detail:** Hand-author priority structures and calibrate them against independently licensed sources or original photography. Approximate buildings are not labelled as exact reproductions.
 
+The [Indian River Festival Pavilion](art/indian-river-pavilion-model.md)
+is an example of a vetted source and original art asset kept outside the
+live map until its independently measured placement can be proven.
+
 ## Data intake
 
 Record source URL, provider, acquisition/version date, licence, attribution, input and output checksums, spatial reference and transform for every derived dataset. Separate code and third-party data terms. Reject imagery with unclear redistribution or derivation rights. Do not use scraped Google Maps, Google Earth or Street View imagery or digitize models from it. Candidate sources include Statistics Canada's cartographic boundaries, Natural Resources Canada's HRDEM and Copernicus Sentinel-2. Name only material actually used in release credits.
