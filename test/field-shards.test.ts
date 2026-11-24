@@ -3,6 +3,7 @@ import {test} from 'node:test';
 import {createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import {FieldShardSource,FIELD_SHARD_BYTES,fieldCandidates,fieldKey,readFieldDirectory,type FieldCell} from '../src/sim/field-shards.ts';
+import {provinceGrass} from '../src/render/province-grass.ts';
 import {FieldStream} from '../src/render/field-stream.ts';
 const hash=(a:Uint8Array)=>createHash('sha256').update(a).digest();
 const raw=new Uint8Array(FIELD_SHARD_BYTES);
@@ -85,4 +86,24 @@ test('scenery movement cannot paint stale data into a recycled field layer',asyn
  assert.equal(stream.texture.image.data!.byteLength,4*FIELD_SHARD_BYTES);
  time+=300;stream.update(513,513,550);assert.equal(stream.state.ready,0);
  stream.dispose();
+});
+
+test('farm and grass remain independent even on the exact same signed shard',async()=>{
+ const dir=readFieldDirectory(directory())!;
+ const request:typeof fetch=async()=>new Response(body(pack));
+ const farm=new FieldStream(new FieldShardSource(dir,'https://assets.example/farm/',request));
+ const grass=provinceGrass(new FieldShardSource(dir,'https://assets.example/grass/',request));
+ try{
+  assert.notEqual(grass.uniforms.grassShardArray.value,farm.uniforms.fieldShardArray.value);
+  assert.notEqual(grass.uniforms.grassShardAreas.value,farm.uniforms.fieldShardAreas.value);
+  assert.equal(grass.uniforms.grassShardArray.value,grass.stream.texture);
+  farm.update(520,510,70);grass.stream.update(520,510,70);
+  const until=Date.now()+1600;
+  while((farm.state.ready!==1||grass.stream.state.ready!==1)&&Date.now()<until)
+   await new Promise(resolve=>setTimeout(resolve,10));
+  assert.equal(farm.state.ready,1);assert.equal(grass.stream.state.ready,1);
+  grass.dispose();
+  assert.equal(grass.stream.state.ready,0);assert.equal(farm.state.ready,1);
+  assert.equal(farm.uniforms.fieldShardAreas.value[0].w,1);
+ }finally{farm.dispose();grass.dispose();}
 });

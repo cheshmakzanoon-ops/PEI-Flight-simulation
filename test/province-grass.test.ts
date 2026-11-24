@@ -13,8 +13,11 @@ test('the optional classified grass study requires both trusted land pins and co
  assert(!grassSourceAllows(S.terrain,S.cover,undefined));
  assert(!sceneryOptions('?scenery=detail&cavendishDetail').has('sourceGrassStudy'));
  assert(!sceneryReviewBlock('sourceGrassStudy',sceneryOptions('?sourceGrassStudy')));
- for(const f of ['surveyRelief','inlandRelief','buildingShadows','provinceFieldsReview','cropRowsReview','meadowTexture','northCapeWind'])
+ for(const f of ['surveyRelief','inlandRelief','buildingShadows','cropRowsReview','meadowTexture','northCapeWind'])
   assert(sceneryReviewBlock('sourceGrassStudy',sceneryOptions('?sourceGrassStudy&'+f)));
+ const combined=sceneryOptions('?sourceGrassStudy&provinceFieldsReview');
+ assert(!sceneryReviewBlock('sourceGrassStudy',combined));
+ assert(!sceneryReviewBlock('provinceFieldsReview',combined));
  assert.equal(sceneryReviewBlock('sourceGrassStudy',sceneryOptions('?scenery=detail&sourceGrassStudy')),'detail');
 });
 test('the exact compiled archive uses bounded immutable regional packs',()=>{

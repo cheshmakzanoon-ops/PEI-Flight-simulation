@@ -1,0 +1,378 @@
+{
+  "testedCommitBase": "7e97332cd6ca1172d17e5ea696b3df4df01c697c",
+  "theTests": "251 Node tests; TypeScript and Vite build; three mode settings and nine matched WebGL frames, plus ordinary flight and two independent faults",
+  "spatialOverlap": {
+    "grassShards": 3331,
+    "farmlandShards": 1465,
+    "sameShard": 942,
+    "overlapExactCentres": 4084,
+    "overlapBilinearPatches": 5933,
+    "edgePatchOccurrences": 76,
+    "maxOverlapAreaSquareMetres": 94928
+  },
+  "matchedViews": {
+    "furrows-42-close": {
+      "sameGeometry": true,
+      "sameCamera": true,
+      "sameOrthoReadiness": true,
+      "each": {
+        "both": {
+          "drawCalls": 31,
+          "triangles": 274711,
+          "provinceGrass": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          }
+        },
+        "grass": {
+          "drawCalls": 31,
+          "triangles": 274711,
+          "provinceGrass": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": null
+        },
+        "farm": {
+          "drawCalls": 31,
+          "triangles": 274711,
+          "provinceGrass": null,
+          "provinceFields": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          }
+        }
+      },
+      "distance": {
+        "grass": {
+          "allChangedRgbPixels": 270187,
+          "allMeaningfulRgbPixels": 250697,
+          "maxChanDelta": 21,
+          "center48x48Changed": 2304,
+          "center48x48Meaningful": 2225,
+          "center48x48Max": 16
+        },
+        "farm": {
+          "allChangedRgbPixels": 0,
+          "allMeaningfulRgbPixels": 0,
+          "maxChanDelta": 0,
+          "center48x48Changed": 0,
+          "center48x48Meaningful": 0,
+          "center48x48Max": 0
+        }
+      }
+    },
+    "hay-42-close": {
+      "sameGeometry": true,
+      "sameCamera": true,
+      "sameOrthoReadiness": true,
+      "each": {
+        "both": {
+          "drawCalls": 32,
+          "triangles": 280005,
+          "provinceGrass": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          }
+        },
+        "grass": {
+          "drawCalls": 32,
+          "triangles": 280005,
+          "provinceGrass": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": null
+        },
+        "farm": {
+          "drawCalls": 32,
+          "triangles": 280005,
+          "provinceGrass": null,
+          "provinceFields": {
+            "active": true,
+            "ready": 3,
+            "pending": 0,
+            "slots": 4
+          }
+        }
+      },
+      "distance": {
+        "grass": {
+          "allChangedRgbPixels": 6342,
+          "allMeaningfulRgbPixels": 3584,
+          "maxChanDelta": 11,
+          "center48x48Changed": 0,
+          "center48x48Meaningful": 0,
+          "center48x48Max": 0
+        },
+        "farm": {
+          "allChangedRgbPixels": 276154,
+          "allMeaningfulRgbPixels": 122858,
+          "maxChanDelta": 10,
+          "center48x48Changed": 2154,
+          "center48x48Meaningful": 1123,
+          "center48x48Max": 9
+        }
+      }
+    },
+    "mixed-46-close": {
+      "sameGeometry": true,
+      "sameCamera": true,
+      "sameOrthoReadiness": true,
+      "each": {
+        "both": {
+          "drawCalls": 101,
+          "triangles": 337775,
+          "provinceGrass": {
+            "active": true,
+            "ready": 4,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": {
+            "active": true,
+            "ready": 1,
+            "pending": 0,
+            "slots": 4
+          }
+        },
+        "grass": {
+          "drawCalls": 101,
+          "triangles": 337775,
+          "provinceGrass": {
+            "active": true,
+            "ready": 4,
+            "pending": 0,
+            "slots": 4
+          },
+          "provinceFields": null
+        },
+        "farm": {
+          "drawCalls": 101,
+          "triangles": 337775,
+          "provinceGrass": null,
+          "provinceFields": {
+            "active": true,
+            "ready": 1,
+            "pending": 0,
+            "slots": 4
+          }
+        }
+      },
+      "distance": {
+        "grass": {
+          "allChangedRgbPixels": 286964,
+          "allMeaningfulRgbPixels": 250662,
+          "maxChanDelta": 25,
+          "center48x48Changed": 2304,
+          "center48x48Meaningful": 2216,
+          "center48x48Max": 17
+        },
+        "farm": {
+          "allChangedRgbPixels": 10860,
+          "allMeaningfulRgbPixels": 823,
+          "maxChanDelta": 6,
+          "center48x48Changed": 0,
+          "center48x48Meaningful": 0,
+          "center48x48Max": 0
+        }
+      }
+    }
+  },
+  "packagedFlights": {
+    "player-both": {
+      "normalDispatch": true,
+      "standardFetchedNeitherLayer": true,
+      "departure": "kings-grassland",
+      "corruptArchive": null,
+      "travelM": 154.5522916838283,
+      "activeLayers": {
+        "grass": {
+          "active": true,
+          "ready": 3,
+          "pending": 0,
+          "slots": 4
+        },
+        "fields": {
+          "active": true,
+          "ready": 1,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "requests": [
+        {
+          "asset": "index.fcr.gz",
+          "layer": "fields-province",
+          "status": 200
+        },
+        {
+          "asset": "index.fcr.gz",
+          "layer": "grass-study",
+          "status": 200
+        },
+        {
+          "asset": "crop-33.pack",
+          "layer": "grass-study",
+          "status": 200
+        },
+        {
+          "asset": "crop-34.pack",
+          "layer": "fields-province",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    "player-bad-grass": {
+      "normalDispatch": true,
+      "standardFetchedNeitherLayer": true,
+      "departure": "kings-grassland",
+      "corruptArchive": "grass",
+      "travelM": 150.99847062794134,
+      "activeLayers": {
+        "grass": null,
+        "fields": {
+          "active": true,
+          "ready": 1,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "requests": [
+        {
+          "asset": "index.fcr.gz",
+          "layer": "grass-study",
+          "status": 200
+        },
+        {
+          "asset": "index.fcr.gz",
+          "layer": "fields-province",
+          "status": 200
+        },
+        {
+          "asset": "crop-34.pack",
+          "layer": "fields-province",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    "player-bad-fields": {
+      "normalDispatch": true,
+      "standardFetchedNeitherLayer": true,
+      "departure": "kings-grassland",
+      "corruptArchive": "fields",
+      "travelM": 152.77537603910966,
+      "activeLayers": {
+        "grass": {
+          "active": true,
+          "ready": 3,
+          "pending": 0,
+          "slots": 4
+        },
+        "fields": null
+      },
+      "requests": [
+        {
+          "asset": "index.fcr.gz",
+          "layer": "fields-province",
+          "status": 200
+        },
+        {
+          "asset": "index.fcr.gz",
+          "layer": "grass-study",
+          "status": 200
+        },
+        {
+          "asset": "crop-33.pack",
+          "layer": "grass-study",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    "player-range": {
+      "normalDispatch": true,
+      "standardFetchedNeitherLayer": true,
+      "departure": "kings-grassland",
+      "corruptArchive": null,
+      "travelM": 427.12860459492236,
+      "activeLayers": {
+        "grass": {
+          "active": true,
+          "ready": 3,
+          "pending": 0,
+          "slots": 4
+        },
+        "fields": {
+          "active": true,
+          "ready": 1,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "requests": [
+        {
+          "asset": "index.fcr.gz",
+          "layer": "fields-province",
+          "status": 200,
+          "range": null
+        },
+        {
+          "asset": "index.fcr.gz",
+          "layer": "grass-study",
+          "status": 200,
+          "range": null
+        },
+        {
+          "asset": "crop-33.pack",
+          "layer": "grass-study",
+          "status": 206,
+          "range": "bytes 56869-57521/75636"
+        },
+        {
+          "asset": "crop-34.pack",
+          "layer": "fields-province",
+          "status": 206,
+          "range": "bytes 57814-59169/68067"
+        },
+        {
+          "asset": "crop-33.pack",
+          "layer": "grass-study",
+          "status": 206,
+          "range": "bytes 57522-58940/75636"
+        },
+        {
+          "asset": "crop-33.pack",
+          "layer": "grass-study",
+          "status": 206,
+          "range": "bytes 53183-53800/75636"
+        }
+      ],
+      "errors": []
+    }
+  }
+}

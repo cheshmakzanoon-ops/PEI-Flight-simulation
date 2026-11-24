@@ -10,8 +10,12 @@ inventory or a whole-province texture replacement. It adds original
 fibrous roughness and optical relief without generating blade geometry,
 altering ground height, changing collision, or recolouring the island's
 large-scale aerial image. This is distinct from **Expanded farmland**,
-which models a selected cultivated-surface pattern. The two studies, custom
-terrain and building-shadow modes are kept apart in this release.
+which models selected cultivated surfaces. The two may be enabled in the
+same Standard flight. Where the inventories overlap, the field rows take
+priority as their mask finishes loading; neither study replaces elevation.
+See [the combined study](province-land-surfaces.md) for the boundaries,
+memory budget and independent fallbacks. Custom terrain and building-shadow
+modes remain separate.
 
 ## Coverage
 

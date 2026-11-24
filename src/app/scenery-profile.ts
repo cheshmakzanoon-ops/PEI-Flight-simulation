@@ -75,7 +75,7 @@ export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'d
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
  if(flag==='sourceGrassStudy'){
   if(options.get('scenery')==='detail')return 'detail';
-  if(['surveyRelief','inlandRelief','buildingShadows','provinceFieldsReview','cropRowsReview','meadowTexture','northCapeWind'].some(f=>options.has(f)))return 'terrain';
+  if(['surveyRelief','inlandRelief','buildingShadows','cropRowsReview','meadowTexture','northCapeWind'].some(f=>options.has(f)))return 'terrain';
   return;
  }
  if(flag==='cropRowsReview')return;

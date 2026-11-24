@@ -54,7 +54,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. In Standard, enable **Expanded farmland** in Dispatch. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 
-**Optional scenery studies** in Dispatch offers the Beaconsfield and Green Gables exteriors, the Dunelands freshwater core, North Rustico lighthouse, Ground vegetation, and both farmland studies without editing the URL. Enable both Cavendish studies and choose **Cavendish Dunelands · coastal pass** to try them on the same route. Use the Prince, Queens or Kings County **fields low pass** to compare farmland relief.
+**Optional scenery studies** in Dispatch offers the Beaconsfield and Green Gables exteriors, the Dunelands freshwater core, North Rustico lighthouse, Ground vegetation, and both farmland studies without editing the URL. Enable both Cavendish studies and choose **Cavendish Dunelands · coastal pass** to try them on the same route. Use the Prince, Queens or Kings County **fields low pass** to compare farmland relief. In Standard, [Ground vegetation and Expanded farmland](docs/qa/province-land-surfaces.md) can be enabled together.
 
 Preview work is regional and does not change the Standard atlas.
 

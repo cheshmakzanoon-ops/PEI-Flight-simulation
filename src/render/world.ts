@@ -307,8 +307,8 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  }
  `:''}
  ${fieldPilot?'paintDatedFields(col,n,p,d,coast);':''}
- ${provinceFields?'paintProvinceFields(col,n,p,d,coast);':''}
- ${grassStudy?'shadeSourceGrass(col,n,p,d,coast);':''}
+ ${provinceFields?(grassStudy?'float liveField=':'')+'paintProvinceFields(col,n,p,d,coast);':''}
+ ${grassStudy?'shadeSourceGrass(col,n,p,d,coast,'+(provinceFields?'liveField':'0.')+');':''}
  ${gablesGravel?'paintGablesGravel(col,p,d,coast);':''}
  ${gablesFairway?'paintGablesFairway(col,p,d);':''}
  ${localTrail?'lowerHauntedTrail(col,p,d,coast);':''}
@@ -607,8 +607,8 @@ export class World {
     const useField=fieldPilot&&fieldPilot.covers(x0,z0,x0+w,z0+d);
     const localField:Record<string,THREE.IUniform>=useField?{cropPilotMap:fieldPilot.map,farmlandScan:fieldPilot.scan,cropPilotStrength:fieldPilot.strength,cropPilotBoxes:fieldPilot.boxes}:{};
     const provinceHere=provinceFields&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&provinceFields.stream.intersects(x0,z0,x0+w,z0+d);
-    const grassHere=grassStudy&&!provinceHere&&!localRusticoSoil&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&grassStudy.stream.intersects(x0,z0,x0+w,z0+d);
-    const grassUniforms:Record<string,THREE.IUniform>=grassHere?{...grassStudy.stream.uniforms,sourceGrassArtMap:grassStudy.art}:{};
+    const grassHere=grassStudy&&!localRusticoSoil&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&grassStudy.stream.intersects(x0,z0,x0+w,z0+d);
+    const grassUniforms:Record<string,THREE.IUniform>=grassHere?grassStudy.uniforms:{};
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
     const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},

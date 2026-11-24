@@ -13,13 +13,13 @@ export type ProvinceFieldStudy=ReturnType<typeof provinceFields>;
 export const provinceFieldOpticsGLSL=fieldStreamMaskGLSL+`
  uniform sampler2D provinceFurrowScan;
  uniform float provinceFieldStrength;
- void paintProvinceFields(inout vec3 col,inout vec3 normal,vec3 p,float d,float coast){
+ float paintProvinceFields(inout vec3 col,inout vec3 normal,vec3 p,float d,float coast){
   vec2 dx=dFdx(p.xz),dy=dFdy(p.xz);
-  if(abs(provinceFieldStrength)<.001||d>=330.||coast<190.||normal.y<.75)return;
+  if(abs(provinceFieldStrength)<.001||d>=330.||coast<190.||normal.y<.75)return 0.;
   vec3 mask=fieldShaderMask(p.xz);
   float influence=mask.z*smoothstep(190.,245.,coast)*(1.-smoothstep(165.,330.,d))*smoothstep(.75,.93,normal.y)*abs(provinceFieldStrength);
-  if(influence<.002)return;
-  if(provinceFieldStrength<0.){col=vec3(4.,0.,4.);return;}
+  if(influence<.002)return 0.;
+  if(provinceFieldStrength<0.){col=vec3(4.,0.,4.);return influence;}
   vec2 tangent=mask.xy,along=-tangent,cross=vec2(-tangent.y,tangent.x);
   vec2 coord=vec2(dot(p.xz,along),dot(p.xz,cross))/6.55;
   vec2 a=vec2(dot(dx,along),dot(dx,cross))/6.55,b=vec2(dot(dy,along),dot(dy,cross))/6.55;
@@ -38,5 +38,6 @@ export const provinceFieldOpticsGLSL=fieldStreamMaskGLSL+`
   vec2 sw=along*adjustment.x-cross*adjustment.y;
   vec3 detail=vec3(sw.x,0.,sw.y);
   normal=normalize(normal+detail-dot(normal,detail)*normal);
+  return influence;
  }
 `;
