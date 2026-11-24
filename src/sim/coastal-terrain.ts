@@ -10,7 +10,7 @@ export interface MeshSurveySpec {
  readonly id:string; readonly tileX:number; readonly tileZ:number;
  readonly firstX:number; readonly firstZ:number; readonly cellsX:number; readonly cellsZ:number;
  readonly sub:number; readonly sha256:string;readonly kind?:'inland';
- readonly relativeToParent?:boolean;
+ readonly relativeToParent?:boolean;readonly sparseRelative?:boolean;
  readonly nativeCorners?:readonly (readonly number[])[];readonly nativeShape?:readonly number[];
 }
 export type MeshSurveySource={spec:MeshSurveySpec;samples:Int16Array;cliff?:CliffSource;renderWeights?:Uint8Array};
@@ -26,6 +26,7 @@ export class CoastalGrid {
  readonly spec:MeshSurveySpec;readonly nx:number;readonly nz:number;readonly x0:number;readonly z0:number;
  readonly x1:number;readonly z1:number;readonly stepX:number;readonly stepZ:number;readonly heights:Float32Array;
  private readonly coarseX:number;private readonly coarseZ:number;private readonly tileX0:number;private readonly tileZ0:number;
+ readonly relativeSamples?:Int16Array;
  readonly cliff:EastCliff|undefined;readonly renderWeights?:Uint8Array;
  private readonly atlas:Sampler;
  constructor(ext:Extent,source:MeshSurveySource,atlas:Sampler){
@@ -41,6 +42,13 @@ export class CoastalGrid {
   this.x1=this.x0+(this.nx-1)*this.stepX;this.z1=this.z0+(this.nz-1)*this.stepZ;
   if(source.samples.length!==this.nx*this.nz||source.renderWeights&&source.renderWeights.length!==source.samples.length)throw Error('Survey dimensions do not match the grid');
   this.renderWeights=source.renderWeights;
+  // Thin only audited-size, power-of-two relative grids where enough
+  // vertices stay on the old surface to justify triangulation work.
+  if(s.relativeToParent&&s.sparseRelative&&s.sub>=2&&s.sub<=64&&!(s.sub&(s.sub-1))&&source.samples.length<=20000){
+   let moved=0;
+   for(const cm of source.samples)if(cm)moved++;
+   if(2*moved<=source.samples.length)this.relativeSamples=source.samples.slice();
+  }
   this.heights=Float32Array.from(source.samples,(h,k)=>{
    if(!s.relativeToParent)return h*.01;
    const i=k%this.nx,j=Math.floor(k/this.nx);

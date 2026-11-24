@@ -1,0 +1,41 @@
+{
+  "denseReference": "8ab419e8d5284a066e4572784187c4b00e628c2e",
+  "terrainRays": {
+    "baselineTriangles": 25088,
+    "denseTriangles": 33520,
+    "sparseTriangles": 27166,
+    "rays": 5041,
+    "coveredRays": 577,
+    "maxSparseDenseRayDeltaM": 6.358869526934541e-06,
+    "maxInside": 2.842170943040401e-14,
+    "maxOutside": 6.358869526934541e-06
+  },
+  "matchedScenes": [
+    {
+      "name": "gables-grade-low-close",
+      "pixelCount": 445632,
+      "pixelsWithAnyRgbDifference": 11052,
+      "largestPerChannelRgbDifference": 1,
+      "pixelsAboveOneRgb": 0,
+      "pixelsAboveTwoRgb": 0,
+      "denseTriangles": 283124,
+      "sparseTriangles": 276770,
+      "drawCallsEach": 33,
+      "groundAndFlightWitnessesExact": 15,
+      "identicalOrthoTileRoster": true
+    },
+    {
+      "name": "gables-grade-wide-close",
+      "pixelCount": 445632,
+      "pixelsWithAnyRgbDifference": 3826,
+      "largestPerChannelRgbDifference": 2,
+      "pixelsAboveOneRgb": 2,
+      "pixelsAboveTwoRgb": 0,
+      "denseTriangles": 284916,
+      "sparseTriangles": 278562,
+      "drawCallsEach": 33,
+      "groundAndFlightWitnessesExact": 15,
+      "identicalOrthoTileRoster": true
+    }
+  ]
+}

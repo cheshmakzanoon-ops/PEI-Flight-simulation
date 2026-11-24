@@ -10,6 +10,7 @@ export const GABLES_GRADE={
  "cellsZ": 2,
  "sub": 32,
  "relativeToParent": true,
+ "sparseRelative": true,
  "sha256": "9295fbc63b625396ba82f2294584a571c86a85154080f5a4a0a20cd09716a344",
  "nativeSampleReserveMetres": 3.0989624716401947,
  "file": "cavendish/v1/native-grade.g11.gz",

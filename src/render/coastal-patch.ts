@@ -5,6 +5,7 @@ import {distantCoast} from './coastal-lod.ts';
 import {montagueSurveyLod} from './montague-lod.ts';
 import {indexRenderPatchHeight} from './render-patch-height.ts';
 import {surveyNormals} from './coastal-normals.ts';
+import {sparseGradeIndex} from './sparse-grade-index.ts';
 import type {Terrain} from '../sim/terrain.ts';
 
 /**
@@ -85,7 +86,9 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
   if(near&&i>=left-1&&i<=right&&j>=top-1&&j<=bottom){baseTriangle(a,b,d);baseTriangle(b,c,d);}
   else index.push(a,b,d,b,c,d);
  }
- if(cliff||layout){for(const v of (cliff??layout!).indices)index.push(k0+v);}
+ if(near&&grid.relativeSamples&&!grid.renderWeights&&!cliff){
+  for(const ix of sparseGradeIndex(nx,nz,s.sub,(i,j)=>!!grid.relativeSamples![j*nx+i],vtx))index.push(ix);
+ }else if(cliff||layout){for(const v of (cliff??layout!).indices)index.push(k0+v);}
  else for(let j=0;j<nz-1;j++)for(let i=0;i<nx-1;i++)index.push(vtx(i,j),vtx(i,j+1),vtx(i+1,j),vtx(i,j+1),vtx(i+1,j+1),vtx(i+1,j));
  if(!near){
   // Coarser LODs retain the surveyed interior within its measured error bound. A ring replaces

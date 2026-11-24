@@ -66,7 +66,20 @@ frames and their local physical probes. The [ordinary flight check](gables-grade
 used the published Cavendish departure with both existing studies active,
 not a camera or flight override. This is not a device FPS result.
 
-The near tile adds 8,432 submitted triangles, including edge stitches, and
+The original dense near tile added 8,432 submitted triangles, including edge stitches, and
 no draw calls in these two scenes. The optional signed pack is 1,146 bytes
 compressed, independently verified before installation. No grade assets
 are requested in the Standard atlas without this flag.
+
+### Sparse near mesh
+
+The current renderer keeps every corrected microtriangle and replaces only
+coplanar subdivisions of the inherited terrain. At the unchanged outer
+border, all fine edge segments are retained to weld the insert to its
+neighbours. Lower terrain levels and collision data are unchanged.
+
+The [matched dense/sparse render and ray test](gables-grade-sparse.json)
+confirms 6,354 fewer triangles in both comparison views, with the same draw
+calls. The 5,041 terrain rays differed by at most 0.007 mm. Across the two
+locked browser views, two pixels changed by two values; no channel
+changed by more than two. This is a draw-work reduction, not a device FPS claim.

@@ -90,7 +90,7 @@ def bake(native,proposal,world,out):
     data=quant.tobytes()+groundweight.tobytes()
     out.write_bytes(gzip.compress(data,compresslevel=9,mtime=0))
     shape=dict(id='green-gables-southwest-measured-grade',kind='inland',tileX=i,tileZ=j,firstX=u0,firstZ=v0,cellsX=u1-u0,cellsZ=v1-v0,
-              sub=sub,relativeToParent=True,sha256=hashlib.sha256(data).hexdigest(),nativeSampleReserveMetres=reserve)
+              sub=sub,relativeToParent=True,sparseRelative=True,sha256=hashlib.sha256(data).hexdigest(),nativeSampleReserveMetres=reserve)
     actual_y=wind+quant*.01
     dsX=np.diff(actual_y,axis=1)/stepX;dsZ=np.diff(actual_y,axis=0)/stepZ
     positive=quant>0
