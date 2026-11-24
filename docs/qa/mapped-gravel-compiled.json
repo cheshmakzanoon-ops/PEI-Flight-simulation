@@ -1,0 +1,23 @@
+{
+  "existingDeparture": "prince-grassland",
+  "outOfDispatch": "flight",
+  "actualGainedMaterial": {
+    "status": "ready",
+    "near": true,
+    "active": true,
+    "gain": 1,
+    "attempts": 1,
+    "reason": null,
+    "requestDistance": 224.38305069195295
+  },
+  "actualSingleArtifactRequest": 1,
+  "video": false,
+  "physicsState": {
+    "x": -54557.41513102961,
+    "z": -16557.910962020196,
+    "altitude": 83.16583368608548,
+    "speed": 52.00980362001563,
+    "camera": "Chase"
+  },
+  "layerWarnings": []
+}

@@ -1,0 +1,296 @@
+{
+  "baselineRoadSHA256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "positiveBitsSHA256": "954ea4afb527dd858bb663e0e0888ebda2016951b822c1a85aa87edb12faa4ca",
+  "caveat": "Dated NRN packed rows only. Similar road names do not grant a material class; this does not assign a current surface or official heritage designation.",
+  "controls": [
+    {
+      "recordOrdinal": 5384,
+      "flags": 0,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -63.4236,
+          46.38645
+        ],
+        [
+          -63.41963,
+          46.38494
+        ]
+      ],
+      "originalRoadId": 5385,
+      "name": "Old Princetown Rd",
+      "place": "Fredericton",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 6501,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -63.45537,
+          46.39812
+        ],
+        [
+          -63.43432,
+          46.38994
+        ]
+      ],
+      "originalRoadId": 6502,
+      "name": "Old Princetown Rd",
+      "place": "Millvale",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 6502,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -63.43432,
+          46.38994
+        ],
+        [
+          -63.4259,
+          46.38738
+        ]
+      ],
+      "originalRoadId": 6503,
+      "name": "Old Princetown Rd",
+      "place": "Fredericton",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 8516,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -63.4259,
+          46.38738
+        ],
+        [
+          -63.425,
+          46.38702
+        ]
+      ],
+      "originalRoadId": 8517,
+      "name": "Old Princetown Rd",
+      "place": "Fredericton",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 8522,
+      "flags": 0,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -63.425,
+          46.38702
+        ],
+        [
+          -63.4236,
+          46.38645
+        ]
+      ],
+      "originalRoadId": 8523,
+      "name": "Old Princetown Rd",
+      "place": "Fredericton",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15919,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -62.74607,
+          46.15543
+        ],
+        [
+          -62.74823,
+          46.16075
+        ]
+      ],
+      "originalRoadId": 15920,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15920,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": true,
+      "endsWGS": [
+        [
+          -62.74823,
+          46.16075
+        ],
+        [
+          -62.74916,
+          46.16297
+        ]
+      ],
+      "originalRoadId": 15921,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Gravel",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15921,
+      "flags": 17,
+      "bridge": true,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -62.7459,
+          46.15503
+        ],
+        [
+          -62.74594,
+          46.15514
+        ]
+      ],
+      "originalRoadId": 15922,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Gravel",
+      "datedStructure": "Bridge",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15922,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": true,
+      "endsWGS": [
+        [
+          -62.74509,
+          46.153
+        ],
+        [
+          -62.7459,
+          46.15503
+        ]
+      ],
+      "originalRoadId": 15923,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Gravel",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15923,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -62.74312,
+          46.14817
+        ],
+        [
+          -62.74509,
+          46.153
+        ]
+      ],
+      "originalRoadId": 15924,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Dirt",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15924,
+      "flags": 9,
+      "bridge": false,
+      "paved": true,
+      "authorizedGravel": false,
+      "endsWGS": [
+        [
+          -62.74259,
+          46.14689
+        ],
+        [
+          -62.74312,
+          46.14817
+        ]
+      ],
+      "originalRoadId": 15925,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Paved",
+      "datedUnpavedMaterial": "None",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    },
+    {
+      "recordOrdinal": 15925,
+      "flags": 1,
+      "bridge": false,
+      "paved": false,
+      "authorizedGravel": true,
+      "endsWGS": [
+        [
+          -62.74594,
+          46.15514
+        ],
+        [
+          -62.74607,
+          46.15543
+        ]
+      ],
+      "originalRoadId": 15926,
+      "name": "County Line Rd",
+      "place": "Head Of Montague",
+      "datedSourcePavement": "Unpaved",
+      "datedUnpavedMaterial": "Gravel",
+      "datedStructure": "None",
+      "packedGeometryExact": true
+    }
+  ],
+  "sourceGpkgSHA256": "47dbfc17f20846fc1f077e214d0e6ac3f2676dfa2f79b754a2cd941e768a7e6a"
+}

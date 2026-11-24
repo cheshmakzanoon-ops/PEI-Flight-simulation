@@ -1,0 +1,167 @@
+[
+  {
+    "agl": 245,
+    "changed": 0,
+    "requested": 0,
+    "diagnostics": {
+      "status": "idle",
+      "near": false,
+      "active": false,
+      "gain": 0,
+      "attempts": 0,
+      "reason": null,
+      "requestDistance": null
+    },
+    "stateGain": 0
+  },
+  {
+    "agl": 183,
+    "changed": 0,
+    "requested": 0,
+    "diagnostics": {
+      "status": "idle",
+      "near": false,
+      "active": false,
+      "gain": 0,
+      "attempts": 0,
+      "reason": null,
+      "requestDistance": null
+    },
+    "stateGain": 0
+  },
+  {
+    "agl": 132,
+    "changed": 3094,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 0.6403187875350643,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 0.6403187875350643
+  },
+  {
+    "agl": 108,
+    "changed": 3009,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  },
+  {
+    "agl": 58,
+    "changed": 2115,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  },
+  {
+    "agl": 26,
+    "changed": 361,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  },
+  {
+    "agl": 98,
+    "changed": 2922,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  },
+  {
+    "agl": 159,
+    "changed": 3044,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  },
+  {
+    "agl": 221,
+    "changed": 0,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": false,
+      "active": false,
+      "gain": 0,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 0
+  },
+  {
+    "agl": 245,
+    "changed": 0,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": false,
+      "active": false,
+      "gain": 0,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 0
+  },
+  {
+    "agl": 58,
+    "changed": 2115,
+    "requested": 1,
+    "diagnostics": {
+      "status": "ready",
+      "near": true,
+      "active": true,
+      "gain": 1,
+      "attempts": 1,
+      "reason": null,
+      "requestDistance": 158.3879722955615
+    },
+    "stateGain": 1
+  }
+]

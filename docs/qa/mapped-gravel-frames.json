@@ -1,0 +1,320 @@
+[
+  {
+    "mode": "active vs neutral; same real game frame after Dispatch is exited; authorized texture previously loaded once",
+    "pose": "brookvale-near-northwest",
+    "eyeAglM": 34.88120417875382,
+    "recordedRequestDistanceM": 106.89944123666709,
+    "candidateRestoredExactlyAfterNeutral": true,
+    "tileImageryIds": [
+      "11-14",
+      "11-15",
+      "11-16",
+      "12-13",
+      "12-14",
+      "12-15",
+      "12-16",
+      "12-17",
+      "13-13",
+      "13-14",
+      "13-15",
+      "13-16",
+      "13-17",
+      "14-14",
+      "14-15",
+      "14-16",
+      "14-17",
+      "15-15"
+    ],
+    "optics": {
+      "view": "brookvale-near-northwest",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 825,
+      "medianChangedNeutralRGB": [
+        175.0,
+        135.0,
+        108.0
+      ],
+      "medianChangedCandidateRGB": [
+        154.0,
+        143.0,
+        138.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 1996,
+          "protected": 213044,
+          "changedProtected": 72,
+          "changedProtectedGt2": 18,
+          "maxProtected": 63
+        },
+        "1": {
+          "scope": 4017,
+          "protected": 211023,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 6084,
+          "protected": 208956,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 10228,
+          "protected": 204812,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 105,
+      "unmodifiedTriangleTotal": 378513
+    },
+    "positiveProjectedTriangles": 846,
+    "framingRawPngsSha256": [
+      "b6212d08322fb5bacb4c298ae44999afdc69d686ec0d07274afd621ceda839ff",
+      "ff147ac69e442353cfd81fa3ae0ac8ac07c9ca3298818b55b60d4193756af076"
+    ]
+  },
+  {
+    "mode": "active vs neutral; same real game frame after Dispatch is exited; authorized texture previously loaded once",
+    "pose": "prince-flight",
+    "eyeAglM": 57.79029811067164,
+    "recordedRequestDistanceM": 68.92172128304986,
+    "candidateRestoredExactlyAfterNeutral": true,
+    "tileImageryIds": [
+      "4-10",
+      "4-8",
+      "4-9",
+      "5-10",
+      "5-11",
+      "5-7",
+      "5-8",
+      "5-9",
+      "6-10",
+      "6-11",
+      "6-7",
+      "6-8",
+      "6-9",
+      "7-10",
+      "7-11",
+      "7-7",
+      "7-8",
+      "7-9",
+      "8-10",
+      "8-8",
+      "8-9"
+    ],
+    "optics": {
+      "view": "prince-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 6801,
+      "medianChangedNeutralRGB": [
+        174.0,
+        133.0,
+        104.0
+      ],
+      "medianChangedCandidateRGB": [
+        153.0,
+        143.0,
+        137.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 7830,
+          "protected": 207210,
+          "changedProtected": 96,
+          "changedProtectedGt2": 96,
+          "maxProtected": 55
+        },
+        "1": {
+          "scope": 9453,
+          "protected": 205587,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 11079,
+          "protected": 203961,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 14340,
+          "protected": 200700,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 41,
+      "unmodifiedTriangleTotal": 320104
+    },
+    "positiveProjectedTriangles": 84,
+    "framingRawPngsSha256": [
+      "9c2f735121564c40ce1e624d3cadcbedf8bdb15b3adcc017abdf11cae1f7ac54",
+      "5fa6b32f9e8bd535593a46579fb30936b56076fe382fb4c2ea55d46c63109cbd"
+    ]
+  },
+  {
+    "mode": "active vs neutral; same real game frame after Dispatch is exited; authorized texture previously loaded once",
+    "pose": "queens-flight",
+    "eyeAglM": 55.450525122015804,
+    "recordedRequestDistanceM": 62.910344171458405,
+    "candidateRestoredExactlyAfterNeutral": true,
+    "tileImageryIds": [
+      "10-15",
+      "11-14",
+      "11-15",
+      "11-16",
+      "11-17",
+      "12-13",
+      "12-14",
+      "12-15",
+      "12-16",
+      "12-17",
+      "13-13",
+      "13-14",
+      "13-15",
+      "13-16",
+      "13-17",
+      "14-14",
+      "14-15",
+      "14-16"
+    ],
+    "optics": {
+      "view": "queens-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 2850,
+      "medianChangedNeutralRGB": [
+        174.0,
+        134.0,
+        105.0
+      ],
+      "medianChangedCandidateRGB": [
+        152.0,
+        142.0,
+        135.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 10298,
+          "protected": 204742,
+          "changedProtected": 22,
+          "changedProtectedGt2": 18,
+          "maxProtected": 32
+        },
+        "1": {
+          "scope": 12156,
+          "protected": 202884,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 13985,
+          "protected": 201055,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 17577,
+          "protected": 197463,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 64,
+      "unmodifiedTriangleTotal": 310016
+    },
+    "positiveProjectedTriangles": 727,
+    "framingRawPngsSha256": [
+      "82c204da4567910fefa4e0caff2e4864537bdde41ba6f60402d20be7cdfa3983",
+      "5bd06cb0aae482fb3bbd9ca1b6afbd3c15fd9cac92fca8b980d64b17b23232f5"
+    ]
+  },
+  {
+    "mode": "active vs neutral; same real game frame after Dispatch is exited; authorized texture previously loaded once",
+    "pose": "kings-flight",
+    "eyeAglM": 57.38607967744838,
+    "recordedRequestDistanceM": 66.71726670460076,
+    "candidateRestoredExactlyAfterNeutral": true,
+    "tileImageryIds": [
+      "26-13",
+      "26-14",
+      "27-12",
+      "27-13",
+      "27-14",
+      "28-11",
+      "28-12",
+      "28-13",
+      "28-14",
+      "29-12",
+      "29-13",
+      "30-12",
+      "30-13"
+    ],
+    "optics": {
+      "view": "kings-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 8908,
+      "medianChangedNeutralRGB": [
+        175.0,
+        133.0,
+        104.0
+      ],
+      "medianChangedCandidateRGB": [
+        145.0,
+        138.0,
+        135.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 9902,
+          "protected": 205138,
+          "changedProtected": 142,
+          "changedProtectedGt2": 142,
+          "maxProtected": 50
+        },
+        "1": {
+          "scope": 11772,
+          "protected": 203268,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 13653,
+          "protected": 201387,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 17446,
+          "protected": 197594,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 25,
+      "unmodifiedTriangleTotal": 284088
+    },
+    "positiveProjectedTriangles": 381,
+    "framingRawPngsSha256": [
+      "725d1344eba0131d92e58b0726b89e5112d99233fbaf9f4708312f45afdd68fe",
+      "b8929b1e110981545b0863b21c7dba09237de35974f22afc9aaf62b83bdd4b6b"
+    ]
+  }
+]

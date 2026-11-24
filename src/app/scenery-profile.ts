@@ -69,6 +69,7 @@ export const SCENERY_REVIEWS=[
  {flag:'woodlandBark',name:'Close bark grain',scope:'Close woodland material study'},
  {flag:'woodlandCrownBase',name:'Near conifer crown shape',scope:'Stand-informed close woodland'},
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
+ {flag:'gravelSurfaceStudy',name:'Mapped gravel surfaces',scope:'Close mineral detail on explicitly mapped gravel roads in all three counties'},
  {flag:'sourceGrassNap',name:'Close grass detail',scope:'Includes Ground vegetation near the ground'},
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
  {flag:'duneReliefStudy',name:'Measured dune relief',scope:'Prince and Kings dry terrain'},
@@ -89,6 +90,7 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='gravelSurfaceStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='woodlandCrownBase'||flag==='woodlandBark'||flag==='woodlandView'){
   if(options.get('scenery')==='detail')return 'detail';
   return ['surveyRelief','inlandRelief','indianRiverReview','buildingShadows','seatedForestShadows',

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "name": "Original compact mineral optical study",
+  "imageImports": 0,
+  "licenseNote": "Original project material. The independent eligibility bitset is derived from NRN under the Open Government Licence \u2013 Canada 2.0.",
+  "art": {
+    "file": "compact-aggregate-v1.rgba.gz",
+    "wireBytes": 304552,
+    "sha256": "c193525c7b1e0d5fd36dc3fd166b04711da6c3fa94eb6115ed4b05702d3a139b",
+    "rawBytes": 409600,
+    "rawSha256": "c6fab144f5b34069c8993d452c67ab67d5328c05c2e3f2405693deb42d183548",
+    "layout": "RGBA8 linear: R is relative luminance encoded around byte 128; G/B are X/Z normal slope signals centred on 128; A is dry roughness; first row maps to positive increasing Z in unflipped upload.",
+    "width": 320,
+    "height": 320,
+    "tileMetres": 2,
+    "texelMetres": 0.00625,
+    "authoredChips": 8274,
+    "diameterQuantilesMm": [
+      7.484258030152967,
+      17.542502163684333,
+      25.51858501045275,
+      36.0
+    ],
+    "fractionStrongExposed": 0.35431640625,
+    "maximumAuthoredMicroReliefMM": 3.7639151893803757,
+    "generator": "tools/terrain/bake-compact-aggregate.py"
+  },
+  "physicalContext": {
+    "source": "https://www.princeedwardisland.ca/en/publication/general-provisions-and-contract-specifications-for-highway-bridge-construction",
+    "section": "401, factual aggregate size context only; no particular surface or roadbed is reproduced"
+  },
+  "authority": {
+    "source": "https://open.canada.ca/data/en/dataset/3d282116-e556-400c-9306-ca1a3cada77f",
+    "download": "https://geo.statcan.gc.ca/nrn_rrn/pe/nrn_rrn_pe_GPKG.zip",
+    "edi": "PEI 22_1 ROADSEG",
+    "gpkgSha256": "47dbfc17f20846fc1f077e214d0e6ac3f2676dfa2f79b754a2cd941e768a7e6a",
+    "decodedNetworkSha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "bitsetSha256": "954ea4afb527dd858bb663e0e0888ebda2016951b822c1a85aa87edb12faa4ca",
+    "bitsetBytes": 2434,
+    "condition": "Non-bridge; PAVSTATUS=Unpaved and UNPAVSURF=Gravel",
+    "selected": 2651,
+    "exactRows": 19465,
+    "gameCentrelineMetres": 817169.455,
+    "generator": "tools/geodata/bake-road-gravel-authority.py",
+    "license": "https://open.canada.ca/en/open-government-licence-canada"
+  }
+}

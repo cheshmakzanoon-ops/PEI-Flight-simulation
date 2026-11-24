@@ -12,6 +12,8 @@ import {roadContactAt,seatRibbon} from './road-contact.ts';
 import {sidewalkGrid} from './sidewalks.ts';
 import type {World} from './world.ts';
 import {RoadPavement} from './road-pavement.ts';
+import {applyGravelPilot,classifiedGravel,gravelAuthority,GRAVEL_INTERNAL_FLAG,GRAVEL_KIND,type GravelPilot} from './aggregate.ts';
+import {GRAVEL_DRAW_RANGE,nearestRegisteredGravel,type GravelEye,type GravelSeatGuard} from './aggregate-admission.ts';
 import {matchesVictoriaPaving,VICTORIA_PAVER_FLAG,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
 import type {NorthCapeShadow} from './north-cape-shadow.ts';
 import {addRoadSurface} from './road-surface.ts';
@@ -81,7 +83,7 @@ async function roadNetwork(signal?:AbortSignal):Promise<PackedRoadNetwork>{
  const roads=decodeRoads(data),digest=await roadHash(data);
  return {data,roads,digest,montagueVerified:montagueBridgeRows(digest,roads)};
 }
-type Tile = {x: number; z: number; segments: number[]; victoria?:boolean};
+type Tile = {x: number; z: number; segments: number[]; victoria?:boolean; gravel?:boolean};
 export class Roads {
   private readonly root = new THREE.Group();
   private readonly pavement=new RoadPavement(import.meta.env?.BASE_URL??"/");
@@ -94,6 +96,7 @@ export class Roads {
   private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
   private readonly capeMaterial?:THREE.MeshStandardMaterial;
   private readonly cape?:NorthCapeShadow;
+  readonly verifiedGravelSource:boolean;
   private tileMaterial(t:Tile){
    if(t.victoria&&this.victoriaMaterial)return this.victoriaMaterial;
    const half=TILE*.5+130;
@@ -126,7 +129,8 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]},cape?:NorthCapeShadow) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]},cape?:NorthCapeShadow,gravelPilot?:GravelPilot,verifiedGravel=false) {
+    this.verifiedGravelSource=verifiedGravel;
     this.tiles=tiles;this.terrain=terrain;this.previewOwners=previewOwners;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
     this.baywalkOwners=court?.owners??[];
@@ -136,14 +140,17 @@ export class Roads {
     }
     this.seated=seated;this.seat=seated?roadContactAt(seated):undefined;
     addRoadSurface(this.material,casts,this.pavement,this.seat?this.seatGain:undefined);
+    if(gravelPilot)applyGravelPilot(this.material,gravelPilot);
     this.cape=cape;
     if(cape){
      this.capeMaterial=this.material.clone();
      addRoadSurface(this.capeMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,false,cape);
+     if(gravelPilot)applyGravelPilot(this.capeMaterial,gravelPilot);
     }
     if(Array.from(tiles.values()).some(t=>t.victoria)){
       this.victoriaMaterial=this.material.clone();
       addRoadSurface(this.victoriaMaterial,casts,this.pavement,this.seat?this.seatGain:undefined,true);
+      if(gravelPilot)applyGravelPilot(this.victoriaMaterial,gravelPilot);
     }
     if(bridge){
      const h=terrain.inlandGrids.length
@@ -165,9 +172,10 @@ export class Roads {
    finally{clearTimeout(timer);}
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork,cape?:NorthCapeShadow) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork,cape?:NorthCapeShadow,gravelPilot?:GravelPilot) {
     const {data,roads,digest,montagueVerified}=prepared??await roadNetwork();
     const tiles = new Map<string, Tile>(),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
+    const gravelBits=gravelPilot&&gravelAuthority(roads.length,digest);
     const register=!!preview?.cover.montague&&terrain.coastalSurveys.includes(MONTAGUE_GROUND_ID)&&montagueVerified;
     const owners=new Set<string>(),courtOwners=new Set<string>();
     const courtRow=preview?.baywalkActive&&digest===BAYWALK_ROAD_SHA&&roads[BAYWALK_ROAD_ORDINAL]?.flags===BAYWALK_ROAD_FLAGS
@@ -177,7 +185,8 @@ export class Roads {
       const {points,flags:sourceFlags}=roads[ordinal];
       const isDirt=!!dirtBits&&!(sourceFlags&24)&&!!(dirtBits.charCodeAt(ordinal>>3)&(1<<(ordinal&7)));
       const victoria=matchesVictoriaPaving(digest,ordinal,sourceFlags,points);
-      const flags=victoria?sourceFlags|VICTORIA_PAVER_FLAG:isDirt?sourceFlags|32:sourceFlags;
+      const flags=victoria?sourceFlags|VICTORIA_PAVER_FLAG:isDirt?sourceFlags|32:
+        classifiedGravel(gravelBits,ordinal,sourceFlags)?sourceFlags|GRAVEL_INTERNAL_FLAG:sourceFlags;
       for(let i=1; i<points.length; i++) {
         const a=points[i-1], b=points[i], dx=b.x-a.x, dz=b.z-a.z;
         const len=Math.hypot(dx,dz);
@@ -195,12 +204,13 @@ export class Roads {
             tiles.set(key,tile);
           }
           if(victoria)tile.victoria=true;
+          if(flags&GRAVEL_INTERNAL_FLAG)tile.gravel=true;
           tile.segments.push(x,z,u,v,flags);
         }
       }
     }
     return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners),
-     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined,cape);
+     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined,cape,gravelPilot,!!gravelBits);
   }
 
   private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){
@@ -229,7 +239,7 @@ export class Roads {
         if(isBridge ? isConfederationBridge(mx,mz) : !this.terrain.isLand(mx,mz))continue;
         const lift=isBridge?3:0.55;
         const py=baselineHeight(x,z)+lift, qy=baselineHeight(u,v)+lift;
-        const kind=isBridge?127:(flags&VICTORIA_PAVER_FLAG)?VICTORIA_PAVER_KIND:(flags&8)?64:(flags&32)?-64:0;
+        const kind=isBridge?127:(flags&VICTORIA_PAVER_FLAG)?VICTORIA_PAVER_KIND:(flags&8)?64:(flags&32)?-64:(flags&GRAVEL_INTERNAL_FLAG)?GRAVEL_KIND:0;
         const cuts=!isBridge&&patches.length?cutInlandRoad([
           {x:x+rx,z:z+rz,y:py,edge:127},{x:x-rx,z:z-rz,y:py,edge:-127},
           {x:u-rx,z:v-rz,y:qy,edge:-127},{x:u+rx,z:v+rz,y:qy,edge:127} ],patches):undefined;
@@ -295,6 +305,25 @@ export class Roads {
     const mesh=new THREE.Mesh(g,this.tileMaterial(tile));
     mesh.position.set(tile.x,0,tile.z);
     return mesh;
+  }
+
+  /** True scene-space slant admission from the same submitted triangle buffers.
+   * Owner centres are 5 km apart; an accepted chord spans at most 500 m plus
+   * 6.4 m nominal half width, entirely within the 260 m owner apron. */
+  nearestGravel(eye:GravelEye,radius:number,dry:GravelSeatGuard){
+   if(!this.verifiedGravelSource||!(radius>0&&radius<=GRAVEL_DRAW_RANGE)||
+      !Number.isFinite(eye.x)||!Number.isFinite(eye.y)||!Number.isFinite(eye.z))return Infinity;
+   const apron=TILE*.5+260;
+   let best=radius*radius,found=false;
+   for(const [key,mesh] of this.visible){
+    const tile=this.tiles.get(key);
+    if(!mesh.visible||!tile?.gravel)continue;
+    const dx=Math.max(0,Math.abs(tile.x-eye.x)-apron),dz=Math.max(0,Math.abs(tile.z-eye.z)-apron);
+    if(dx*dx+dz*dz>=best)continue;
+    const hit=nearestRegisteredGravel(mesh.geometry,tile.x,tile.z,eye,best,this.seatGain.value,dry);
+    if(hit<best){best=hit;found=true;}
+   }
+   return found?Math.sqrt(best):Infinity;
   }
 
   update(x: number, z: number, agl=Infinity) {

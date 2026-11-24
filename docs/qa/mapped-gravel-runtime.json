@@ -1,0 +1,348 @@
+{
+  "scope": "Full simulator, normal Dispatch and virtual flight input; fixed fresh views for controlled fault/transport optics, plus separate neutral ordinary-character flight.",
+  "transportControls": [
+    {
+      "mode": "off",
+      "requestCount": 0,
+      "state": null,
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7"
+      ]
+    },
+    {
+      "mode": "active",
+      "requestCount": 1,
+      "state": {
+        "status": "ready",
+        "near": true,
+        "active": true,
+        "gain": 1,
+        "attempts": 1,
+        "reason": null,
+        "requestDistance": 106.89944123666709
+      },
+      "frozenNeutralExact": false,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "2e2992702ffc7628cae9e589e5be2536fff9f04fc82223a83b53f39340834ee2"
+      ]
+    },
+    {
+      "mode": "missing",
+      "requestCount": 1,
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "http",
+        "requestDistance": 106.89944123666709
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7"
+      ]
+    },
+    {
+      "mode": "corrupt",
+      "requestCount": 1,
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "decoded-hash",
+        "requestDistance": 106.89944123666709
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7"
+      ]
+    },
+    {
+      "mode": "oversize",
+      "requestCount": 1,
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "size",
+        "requestDistance": 106.89944123666709
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7"
+      ]
+    },
+    {
+      "mode": "held",
+      "requestCount": 1,
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "timeout",
+        "requestDistance": 106.89944123666709
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7",
+        "ab086f6af82c17957062faf6d42b2572b68f7b8909e97fd43a19f67b4cf043b7"
+      ]
+    },
+    {
+      "mode": "detail",
+      "requestCount": 0,
+      "state": null,
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 34.88120417875382,
+      "encodedReceiptFrames": [
+        "88a153e24092d0720d5d133cca53f0499b4361828582f50bf6f68b19c9fe5443",
+        "88a153e24092d0720d5d133cca53f0499b4361828582f50bf6f68b19c9fe5443"
+      ]
+    },
+    {
+      "mode": "high",
+      "requestCount": 0,
+      "state": {
+        "status": "idle",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 0,
+        "reason": null,
+        "requestDistance": null
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [
+        "11-14",
+        "11-15",
+        "11-16",
+        "12-13",
+        "12-14",
+        "12-15",
+        "12-16",
+        "12-17",
+        "13-13",
+        "13-14",
+        "13-15",
+        "13-16",
+        "13-17",
+        "14-14",
+        "14-15",
+        "14-16",
+        "14-17",
+        "15-15"
+      ],
+      "actualCameraAglM": 248.88120417875382,
+      "encodedReceiptFrames": [
+        "bbb1c69764a989027b4731af133db66256bfc07b7b1b9924b7544c39aa7a42de",
+        "bbb1c69764a989027b4731af133db66256bfc07b7b1b9924b7544c39aa7a42de"
+      ]
+    },
+    {
+      "mode": "far",
+      "requestCount": 0,
+      "state": {
+        "status": "idle",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 0,
+        "reason": null,
+        "requestDistance": null
+      },
+      "frozenNeutralExact": true,
+      "imageryTiles": [],
+      "actualCameraAglM": 30.055,
+      "encodedReceiptFrames": [
+        "79639f807d719e405e3f146263178aceecf9dd6f890634ad46ee103e4f6e33f0",
+        "79639f807d719e405e3f146263178aceecf9dd6f890634ad46ee103e4f6e33f0"
+      ]
+    }
+  ],
+  "regularVirtualFlight": [
+    {
+      "mode": "off",
+      "dist": 501.17519986652684,
+      "asset": null,
+      "requests": 0,
+      "noLayerWarnings": true,
+      "enteredCockpitAndPaused": true
+    },
+    {
+      "mode": "active",
+      "dist": 502.951720553163,
+      "asset": {
+        "status": "ready",
+        "near": true,
+        "active": true,
+        "gain": 1,
+        "attempts": 1,
+        "reason": null,
+        "requestDistance": 216.41018909683868
+      },
+      "requests": 1,
+      "noLayerWarnings": true,
+      "enteredCockpitAndPaused": true
+    }
+  ],
+  "heightCycleReceipt": "mapped-gravel-height-cycle.json"
+}
