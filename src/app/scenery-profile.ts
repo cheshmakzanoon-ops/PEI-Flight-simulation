@@ -44,6 +44,7 @@ export function sceneryOptions(search:string){
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
  if(q.has('stockNorthCapeWind'))q.delete('northCapeWind');
  if(q.has('stockCanopyLight'))q.delete('canopyLight');
+ if(q.has('stockDuneGrass'))q.delete('duneGrassSurface');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -209,6 +210,14 @@ export function orbyClosureRequested(q:URLSearchParams){
  if(q.has('stockOrbyCoast')||q.has('legacyShoreArcs')||q.get('scenery')==='detail')return false;
  if(q.has('orbyCoastClosure'))return true;
  return !['orthophotoSeamStudy','nearshoreFoamStudy','surveyRelief','inlandRelief','buildingShadows'].some(k=>q.has(k));
+}
+/** Ordinary optical treatment. Do not inject the explicit review flag:
+ * it has different dirt/relief interactions on historic comparison URLs. */
+export function standardDuneGrassRequested(q:URLSearchParams){
+ if(q.has('stockDuneGrass')||q.has('duneGrassSurface')||sceneryReviewBlock('duneGrassSurface',q))return false;
+ const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+  !['duneReliefStudy','pointPrimStudy','regionalCanopyStudy','orthophotoSeamStudy','nearshoreFoamStudy','legacyShoreArcs','seatedForestShadows','canopyLight','shoreToneStudy','kingsDryCrownStudy'].some(k=>q.has(k));
 }
 /** Appearance-only default. Preserve separately locked woodland, relief,
  * architecture and shadow comparisons unless directional light is explicit. */

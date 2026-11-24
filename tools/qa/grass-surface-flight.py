@@ -35,8 +35,10 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Static,di
   url=f'http://127.0.0.1:{server.server_port}'+PREFIX+'?diagnostics&departure='+route+'&stable=1'
   pg.goto(url,wait_until='domcontentloaded')
   pg.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'")
-  assert not reads and pg.evaluate('window.islandAirDiagnostics.grassCoast===null')
+  # The same route may already prefetch the qualified Standard material.
+  # Isolate traffic from the explicit study after its Dispatch reload.
   pg.locator('.scenery-reviews summary').click();pg.get_by_label('Coastal grass surface').check()
+  reads.clear()
   with pg.expect_navigation(wait_until='domcontentloaded'):pg.get_by_role('button',name='Apply studies').click()
   assert all(s in pg.url for s in ('duneGrassSurface',route,'stable=1')),pg.url
   pg.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics?.grassCoast?.authorized")
@@ -55,7 +57,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Static,di
   assert after['site']==route and after['altitude']-after['groundY']>45,(after['site'],after['altitude'],after['groundY'])
   assert sum(n=='sparse-grass-photometric.png' and s==200 for n,s in reads)==1
   assert sum(n=='authority.pack' and s==200 for n,s in reads)==1
-  out={'standardZeroOptionalRequests':True,'materialActive':not a.fault,'diagnostics':state,
+  out={'trafficAfterNamedStudyReload':True,'materialActive':not a.fault,'diagnostics':state,
        'ordinaryTravelM':math.hypot(after['x']-before['x'],after['z']-before['z']),
        'heightAGLM':after['altitude']-after['groundY'],'fault':a.fault,'requests':reads,'errors':erro,'route':route}
   (a.out/'report.json').write_text(json.dumps(out,indent=2)+'\n');print(out,flush=True)

@@ -1,0 +1,1344 @@
+{
+  "compiled": [
+    {
+      "mode": "prince",
+      "site": "prince-coastal-grass",
+      "motionM": 192.289,
+      "assets": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "grass": {
+        "authorized": true,
+        "active": [
+          [
+            7,
+            8
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "console": []
+    },
+    {
+      "mode": "queens",
+      "site": "queens-coastal-grass",
+      "motionM": 195.799,
+      "assets": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "grass": {
+        "authorized": true,
+        "active": [
+          [
+            18,
+            12
+          ],
+          [
+            18,
+            13
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "console": []
+    },
+    {
+      "mode": "kings",
+      "site": "kings-coastal-grass",
+      "motionM": 192.289,
+      "assets": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "grass": {
+        "authorized": true,
+        "active": [
+          [
+            29,
+            13
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "console": []
+    },
+    {
+      "mode": "stock",
+      "site": "queens-coastal-grass",
+      "motionM": 104.608,
+      "assets": [],
+      "grass": {},
+      "console": []
+    },
+    {
+      "mode": "cold-distant",
+      "site": "charlottetown",
+      "motionM": 116.234,
+      "assets": [],
+      "grass": {
+        "authorized": false,
+        "active": [],
+        "pending": 0,
+        "failed": 0
+      },
+      "console": []
+    },
+    {
+      "mode": "held-module",
+      "site": "queens-coastal-grass",
+      "motionM": 108.698,
+      "assets": [],
+      "grass": {},
+      "console": []
+    },
+    {
+      "mode": "bad-cover",
+      "site": "queens-coastal-grass",
+      "motionM": 113.378,
+      "assets": [],
+      "grass": {
+        "authorized": false,
+        "active": [],
+        "pending": 0,
+        "failed": 0
+      },
+      "console": []
+    },
+    {
+      "mode": "bad-photo",
+      "site": "queens-coastal-grass",
+      "motionM": 112.207,
+      "assets": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "grass": {
+        "authorized": true,
+        "active": [],
+        "pending": 0,
+        "failed": 2
+      },
+      "console": []
+    }
+  ],
+  "renderer": {
+    "prince": {
+      "before": {
+        "draws": 40,
+        "tris": 175995
+      },
+      "after": {
+        "draws": 40,
+        "tris": 175995
+      },
+      "maskA": {
+        "draws": 40,
+        "tris": 175995
+      },
+      "maskB": {
+        "draws": 40,
+        "tris": 175995
+      },
+      "stable": true,
+      "tiles": [
+        [
+          7,
+          8
+        ]
+      ],
+      "diff": {
+        "over2": 110330,
+        "outside": 0,
+        "protected": 42835
+      },
+      "requests": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "errors": [],
+      "pose": {
+        "lon": -63.87729594823629,
+        "lat": 46.659445640990455,
+        "dist": 27,
+        "east": 0.28,
+        "south": 0.96,
+        "agl": 9,
+        "h": 0
+      }
+    },
+    "queens": {
+      "before": {
+        "draws": 10,
+        "tris": 173155
+      },
+      "after": {
+        "draws": 10,
+        "tris": 173155
+      },
+      "maskA": {
+        "draws": 10,
+        "tris": 173155
+      },
+      "maskB": {
+        "draws": 10,
+        "tris": 173155
+      },
+      "stable": true,
+      "tiles": [
+        [
+          18,
+          12
+        ],
+        [
+          18,
+          13
+        ]
+      ],
+      "diff": {
+        "over2": 115496,
+        "outside": 0,
+        "protected": 37841
+      },
+      "requests": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "errors": [],
+      "pose": {
+        "lon": -62.99652841288281,
+        "lat": 46.414710711451335,
+        "dist": 25,
+        "east": 0.14,
+        "south": 0.989,
+        "agl": 10,
+        "h": 0
+      }
+    },
+    "kings": {
+      "before": {
+        "draws": 29,
+        "tris": 253716
+      },
+      "after": {
+        "draws": 29,
+        "tris": 253716
+      },
+      "maskA": {
+        "draws": 29,
+        "tris": 253716
+      },
+      "maskB": {
+        "draws": 29,
+        "tris": 253716
+      },
+      "stable": true,
+      "tiles": [
+        [
+          29,
+          13
+        ]
+      ],
+      "diff": {
+        "over2": 114488,
+        "outside": 0,
+        "protected": 38462
+      },
+      "requests": [
+        "authority.pack",
+        "sparse-grass-photometric.png"
+      ],
+      "errors": [],
+      "pose": {
+        "lon": -62.161160594445576,
+        "lat": 46.36725705391342,
+        "dist": 28,
+        "east": 0.35,
+        "south": 0.937,
+        "agl": 10,
+        "h": 0
+      }
+    },
+    "high": {
+      "before": {
+        "draws": 10,
+        "tris": 170401
+      },
+      "after": {
+        "draws": 10,
+        "tris": 170401
+      },
+      "maskA": {
+        "draws": 10,
+        "tris": 170401
+      },
+      "maskB": {
+        "draws": 10,
+        "tris": 170401
+      },
+      "stable": true,
+      "tiles": [],
+      "diff": {
+        "over2": 0,
+        "outside": 0,
+        "protected": 155480
+      },
+      "requests": [],
+      "errors": [],
+      "pose": {
+        "lon": -62.99652841288281,
+        "lat": 46.414710711451335,
+        "dist": 110,
+        "east": 0.14,
+        "south": 0.989,
+        "agl": 222,
+        "h": 0
+      }
+    }
+  },
+  "protectedRGB": 274618,
+  "dataProof": {
+    "mask-sand-grass-support": {
+      "grassOwners": 86,
+      "clippedMeasuredOwners": [
+        {
+          "tile": [
+            6,
+            7
+          ],
+          "registered": true,
+          "ownedCells": 9035
+        },
+        {
+          "tile": [
+            18,
+            19
+          ],
+          "registered": true,
+          "ownedCells": 50
+        },
+        {
+          "tile": [
+            30,
+            11
+          ],
+          "registered": true,
+          "ownedCells": 1654
+        }
+      ],
+      "removedCellCount": 10739,
+      "retainedCells": 169685,
+      "matchedSandGrassOwners": 29,
+      "measuredExcludedKingsCrown": {
+        "grassRowsOccur": true,
+        "nonzero": 360,
+        "positiveCentersInClosedRegion": 0,
+        "wholeBilinearTentIntersectsRegion": 0,
+        "minCentreDistanceM": 192.04008494617028,
+        "nearbyMinAxisMaxM": 192.04008494617028
+      },
+      "sameTileRemainingSandCentresAt": [
+        0,
+        0,
+        0,
+        3689
+      ],
+      "sameTileRemainingSandGrassNearest5MetersOwnerCount": 0,
+      "merge": [
+        {
+          "tile": [
+            0,
+            8
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1174,
+            50
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            28
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            4,
+            2
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            5109,
+            57
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            40
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            5,
+            1
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1212,
+            606
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            233
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            5,
+            2
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1641,
+            211
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            58
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            5,
+            5
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            13539,
+            612
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            292
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            5,
+            6
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            12822,
+            753
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            292
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            6,
+            3
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1585,
+            72
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            25
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            6,
+            6
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1603,
+            721
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            168
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            6,
+            7
+          ],
+          "grass": "protected",
+          "roleCentersUnionPixels": [
+            9165,
+            2173
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            968
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            7,
+            7
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1435,
+            78
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            60
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            7,
+            8
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            8349,
+            247
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            161
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            9,
+            10
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            7845,
+            82
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            29
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            10,
+            10
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            3041,
+            160
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            67
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            11,
+            10
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1021,
+            21
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            15
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            12,
+            11
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1963,
+            7808
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            357
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            13,
+            11
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            5195,
+            5833
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            780
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            15,
+            12
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            9229,
+            214
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            130
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            16,
+            12
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            10743,
+            241
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            108
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            18,
+            12
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            11909,
+            847
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            180
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            18,
+            13
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            6001,
+            2255
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            389
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            19,
+            12
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            11559,
+            16
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            15
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            22,
+            21
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            353,
+            12
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            7
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            25,
+            19
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            801,
+            105
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            41
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            27,
+            11
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            183,
+            55
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            33
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            28,
+            11
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            1874,
+            310
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            51
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": -0.0001220703125
+        },
+        {
+          "tile": [
+            29,
+            13
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            17518,
+            48
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            44
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            30,
+            11
+          ],
+          "grass": "protected",
+          "roleCentersUnionPixels": [
+            1872,
+            526
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            226
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            30,
+            12
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            7349,
+            135
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            84
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        },
+        {
+          "tile": [
+            30,
+            13
+          ],
+          "grass": "active",
+          "roleCentersUnionPixels": [
+            2554,
+            22
+          ],
+          "sandCentersWithinGrass5mSteps": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "xOriginFloat32DifferenceM": 0.0,
+          "zOriginFloat32DifferenceM": 0.0
+        }
+      ]
+    },
+    "actual-lifecycle": {
+      "network": [
+        "dune-grass/v1/authority.pack",
+        "dune-grass/v1/sparse-grass-photometric.png",
+        "dune-grass/v1/authority.pack",
+        "dune-grass/v1/sparse-grass-photometric.png"
+      ],
+      "creations": 1,
+      "closes": 0,
+      "states": [
+        {
+          "name": "distant, high and nonfinite do not touch source",
+          "time": 0,
+          "verifies": 0,
+          "numberNetwork": 0,
+          "creations": 0,
+          "diag": {
+            "authorized": false,
+            "active": [],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "near deferred cover only",
+          "time": 0,
+          "verifies": 1,
+          "numberNetwork": 0,
+          "creations": 0,
+          "diag": {
+            "authorized": false,
+            "active": [],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "valid cover completing while gone stays stock",
+          "time": 0,
+          "verifies": 1,
+          "numberNetwork": 0,
+          "creations": 0,
+          "diag": {
+            "authorized": true,
+            "active": [],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "one concurrent archive and photo read",
+          "time": 12,
+          "verifies": 1,
+          "numberNetwork": 2,
+          "creations": 0,
+          "diag": {
+            "authorized": true,
+            "active": [],
+            "pending": 1,
+            "failed": 0
+          }
+        },
+        {
+          "name": "valid network finishing while gone only retained immutable shared art",
+          "time": 12,
+          "verifies": 1,
+          "numberNetwork": 2,
+          "creations": 1,
+          "diag": {
+            "authorized": true,
+            "active": [],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "warm on 185ms half-bilinear lease",
+          "time": 207,
+          "verifies": 1,
+          "numberNetwork": 2,
+          "creations": 1,
+          "diag": {
+            "authorized": true,
+            "active": [
+              [
+                7,
+                8
+              ]
+            ],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "warm full",
+          "time": 392,
+          "verifies": 1,
+          "numberNetwork": 2,
+          "creations": 1,
+          "diag": {
+            "authorized": true,
+            "active": [
+              [
+                7,
+                8
+              ]
+            ],
+            "pending": 0,
+            "failed": 0
+          }
+        },
+        {
+          "name": "high withdraw",
+          "time": 392,
+          "verifies": 1,
+          "numberNetwork": 2,
+          "creations": 1,
+          "diag": {
+            "authorized": true,
+            "active": [],
+            "pending": 0,
+            "failed": 0
+          }
+        }
+      ],
+      "otherMaskRowsAtTest": [
+        [
+          7,
+          8
+        ]
+      ],
+      "authorities": {
+        "real": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+        "validRaw": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+        "mutatedRaw": "035ec123c4af314fcc469fce5170d561d408c2a01a202b21f73461dc9a57b302"
+      },
+      "rejected": {
+        "badTexture": {
+          "authorized": true,
+          "active": [],
+          "pending": 0,
+          "failed": 1
+        },
+        "badDecoded": {
+          "authorized": false,
+          "active": [],
+          "pending": 0,
+          "failed": 0
+        }
+      },
+      "routeMatrix": {
+        "": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "scenery=standard": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "scenery=detail": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "scenery=legacy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "stockDuneGrass": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "duneGrassSurface": {
+          "ordinary": false,
+          "explicit": true,
+          "sand": false,
+          "usualGrade": false
+        },
+        "duneGrassSurface&stockDuneGrass": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "stockDuneRelief": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": false
+        },
+        "stockDuneSand": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": true
+        },
+        "duneGrassSurface&duneSandDetail": {
+          "ordinary": false,
+          "explicit": true,
+          "sand": true,
+          "usualGrade": false
+        },
+        "duneSandDetail": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "coastalOptics": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "shoreToneStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "kingsDryCrownStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "seatedForestShadows": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "seatedRoads": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": false
+        },
+        "gablesGradeReview": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "greenGablesBarnReview": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "sceneryObserver": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "pointPrimStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "regionalCanopyStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "sourceGrassNap": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "rusticoMassingReview": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "baywalkConcrete": {
+          "ordinary": true,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "nearshoreFoamStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "townWallStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "beaconsfieldReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "greenGablesReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "cavendishWaterReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": true
+        },
+        "cropRowsReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": true
+        },
+        "northRusticoLighthouseStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "indianRiverReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "miscoucheCanopyStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "woodlandView": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "woodlandBark": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "woodlandCrownBase": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "sourceGrassStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "gravelSurfaceStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": true,
+          "usualGrade": true
+        },
+        "hogIslandPhotoStudy": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "hogIslandWestGround": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": false
+        },
+        "provinceFieldsReview": {
+          "ordinary": false,
+          "explicit": false,
+          "sand": false,
+          "usualGrade": true
+        }
+      }
+    }
+  },
+  "sourceHashes": {
+    "src/main.ts": "b40cf9130ad87dafe982f1b6e649cf775df772a6c1ed360c1be5ae8fd9947c0a",
+    "src/app/scenery-profile.ts": "9bfb1bbfe5c2af96b09822b2adabe0e29843bc3665c43e3f32c14434202cc779",
+    "src/render/dune-grass-surface.ts": "565f1f6d18577272bee7395c1b5dd1fec9e2cc64fdd8b725d782be677c4b49b9"
+  },
+  "explicitDispatchCompatibility": {
+    "trafficAfterNamedStudyReload": true,
+    "materialActive": true,
+    "diagnostics": {
+      "authorized": true,
+      "active": [
+        [
+          18,
+          13
+        ],
+        [
+          18,
+          12
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 381.74442129367947,
+    "heightAGLM": 55.54510998033658,
+    "fault": false,
+    "requests": [
+      [
+        "sparse-grass-photometric.png",
+        200
+      ],
+      [
+        "authority.pack",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "queens-coastal-grass"
+  }
+}

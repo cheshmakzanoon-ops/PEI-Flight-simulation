@@ -88,7 +88,7 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
@@ -147,8 +147,9 @@ async function run(){
  let rollingPreflight='off';
  if(rollingAsked)rollingPreflight='module';
 
- const grassCoastAsked=options.has('duneGrassSurface')&&!sceneryReviewBlock('duneGrassSurface',options);
- const grassCoastJob=grassCoastAsked?import('./render/dune-grass-surface.ts').catch(()=>undefined):undefined;
+ const grassCoastAsked=!options.has('stockDuneGrass')&&options.has('duneGrassSurface')&&!sceneryReviewBlock('duneGrassSurface',options);
+ const standardGrassCoast=standardDuneGrassRequested(options);
+ const grassCoastJob=grassCoastAsked||standardGrassCoast?loadAerialModule(()=>import('./render/dune-grass-surface.ts')):undefined;
  const duneAsked=duneSandRequested(options);
  const duneModuleJob=duneAsked?loadAerialModule(()=>import('./render/dune-sand.ts')):undefined;
  const hogGroundAsked=options.has('hogIslandWestGround')&&!sceneryReviewBlock('hogIslandWestGround',options);
@@ -252,7 +253,10 @@ async function run(){
   });
  })();
  const grassCoastModule=await grassCoastJob;
- const grassCoast=grassCoastModule?.duneGrassBase(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?new grassCoastModule.DuneGrassSurface(worldBase,terrain):undefined;
+ const grassCoastPin=grassCoastAsked?grassCoastModule?.duneGrassBase(terrainSha,cover.sourceSha,cover.sourceDecodedSha):
+  grassCoastModule?.duneGrassBaseMetadata(terrainSha,cover.sourceSha,terrain,[cover.width,cover.height]);
+ const grassCoast=grassCoastModule&&grassCoastPin?new grassCoastModule.DuneGrassSurface(worldBase,terrain,fetch,
+  standardGrassCoast?new Set(['18-19',...(standardDuneRelief?DUNE_RELIEF.map(s=>s.tileX+'-'+s.tileZ):[])]):undefined):undefined;
  const crownGround=await (async()=>{
   if(!crownGradeJob)return;
   const [[make,hedges],buildings,roads,sidewalks,parking]=await Promise.all([crownGradeJob,
@@ -443,7 +447,8 @@ async function run(){
   if(hogInfrastructureMatches(r?.sourceGeometrySha256,b?.sourceAtlasSha256))hog.opacity.value=1;
  });
  if(grassCoast&&grassCoastModule)void Promise.all([roadReady,buildingReady,mappedSidewalks,mappedParking]).then(([r,b,s,p])=>{
-  if(s&&p&&grassCoastModule.duneGrassInfrastructure(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))grassCoast.permit();
+  if(s&&p&&grassCoastModule.duneGrassInfrastructure(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))
+   grassCoast.permit(standardGrassCoast?async()=>grassCoastModule.duneGrassBase(terrainSha,cover.sourceSha,await verifyDecodedCover(cover)):undefined);
  });
  if(duneSand&&duneLibrary)void Promise.all([roadReady,buildingReady,mappedSidewalks,mappedParking]).then(([r,b,s,p])=>{
   if(s&&p&&duneLibrary.duneSandOverlays(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))

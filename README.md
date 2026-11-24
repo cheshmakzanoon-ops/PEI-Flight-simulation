@@ -69,6 +69,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Miscouche woodlot | `?miscoucheCanopyStudy` | [Measured woodland density study](docs/qa/miscouche-canopy.md) on the **Miscouche · woodland pass**. Standard only. |
 | Queens and Kings woodlots | `?regionalCanopyStudy` | [Regional canopy studies](docs/qa/regional-canopy.md) with two virtual woodland passes. Standard only. |
 | Standard woodland | `?stockCanopyLight` | Compare [directional tree-crown lighting](docs/qa/canopy-light-preview.md) with the original diffuse canopy. |
+| Qualified coastal grass | `?stockDuneGrass` | Compare [Standard’s close coastal grass material](docs/qa/coastal-grass-surface.md) with the original diffuse ground. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Standard uses broken shoreline crests; `?stockShoreFoam` restores the original foam. Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 

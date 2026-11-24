@@ -10,6 +10,12 @@ const key=(x:number,z:number)=>x+'-'+z;
 const none=new T.DataTexture(new Uint8Array([0]),1,1,T.RedFormat);none.needsUpdate=true;
 export const blendGrassSeam=(g:number,a:number,b:number,c:number,u:number,v:number)=>g*(1-u)*(1-v)+Math.min(g,a)*u*(1-v)+Math.min(g,b)*(1-u)*v+Math.min(g,a,b,c)*u*v;
 const outside=(v:number,l:number,h:number)=>v<l?l-v:v>h?v-h:0;
+export function duneGrassBaseMetadata(terrain:string|undefined,cover:string|undefined,t:Terrain,dimensions:readonly [number,number]){
+ const p=CANOPY_FENCE.pins,bounds=[-64.47,45.94,-61.93,47.1];
+ return terrain===p.terrain&&cover===p.cover&&t.spec.width===4096&&t.spec.height===2720&&
+  dimensions[0]===4096&&dimensions[1]===2720&&
+  t.spec.bounds.length===4&&bounds.every((x,i)=>t.spec.bounds[i]===x)&&!!globalThis.crypto?.subtle;
+}
 export function duneGrassBase(terrain?:string,cover?:string,decoded?:string){
  const p=CANOPY_FENCE.pins;return terrain===p.terrain&&cover===p.cover&&decoded===p.coverDecoded;
 }
@@ -44,12 +50,14 @@ export class DuneGrassSurface{
  private rows=new Map<string,Row>();
  private base:string;private get:typeof fetch;
  private authorized=false;
+ private verify?:()=>Promise<boolean>;private verificationPending=false;
  private data?:Promise<readonly [NonNullable<Awaited<ReturnType<typeof openDuneGrassAuthority>>>,T.Texture]|undefined>;
  private live=new Set<Row>();
  private lastX=Infinity;private lastZ=Infinity;private cameraY=Infinity;private refreshFrames=0;
- constructor(base:string,terrain:Terrain,get:typeof fetch=fetch){
+ constructor(base:string,terrain:Terrain,get:typeof fetch=fetch,protectedTiles:ReadonlySet<string>=new Set()){
   this.base=base;this.get=get;
   for(const s of A.index){
+   if(protectedTiles.has(key(s.tile[0],s.tile[1])))continue;
    const b=new T.Vector4(s.uvOrigin[0],s.uvOrigin[1],s.cells[0]*5,s.cells[1]*5);
    const fract=(v:number)=>v-Math.floor(v);
    this.rows.set(key(s.tile[0],s.tile[1]),{s,live:false,failed:false,visibleAt:Infinity,
@@ -61,7 +69,10 @@ export class DuneGrassSurface{
     duneTuftNeighbours:{value:new T.Vector4()},duneTuftCorners:{value:new T.Vector4()}}});
   }
  }
- permit(){this.authorized=true;}
+ permit(verify?:()=>Promise<boolean>){
+  if(!verify)this.authorized=true;
+  else this.verify=verify;
+ }
  uniforms(i:number,j:number){return this.rows.get(key(i,j))?.vars;}
  diagnostics(){return {authorized:this.authorized,active:[...this.live].filter(r=>r.vars.duneTuftGroundGain.value>0).map(r=>r.s.tile),
   pending:[...this.live].filter(r=>r.loading).length,failed:[...this.live].filter(r=>r.failed).length};}
@@ -85,7 +96,7 @@ export class DuneGrassSurface{
   })().catch(()=>{r.failed=true;}).finally(()=>{r.loading=undefined;});
  }
  update(x:number,y:number,z:number){
-  if(!this.authorized)return;
+  if((!this.authorized&&!this.verify)||this.verificationPending||!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z))return;
   const now=performance.now();
   if(Math.hypot(x-this.lastX,z-this.lastZ)>=20||Math.abs(y-this.cameraY)>10||this.refreshFrames++>=30){
    this.lastX=x;this.lastZ=z;this.cameraY=y;this.refreshFrames=0;
@@ -95,6 +106,16 @@ export class DuneGrassSurface{
    };
    const next=new Set([...this.rows.values()].map(r=>({r,dist:dist(r)})).filter(q=>q.dist<210&&y<q.r.s.terrainYMax+115)
     .sort((a,b)=>a.dist-b.dist).slice(0,4).map(q=>q.r));
+   if(!this.authorized){
+    if(next.size&&this.verify){
+     const verify=this.verify;this.verify=undefined;this.verificationPending=true;
+     // No texture, mask or live gain before the exact existing bytes match.
+     // Completion only authorizes data: the next eye position selects demand.
+     void Promise.resolve().then(verify).then(ok=>{this.authorized=ok===true;},()=>{})
+      .finally(()=>{this.verificationPending=false;this.lastX=Infinity;});
+    }
+    return;
+   }
    for(const r of this.live)if(!next.has(r)){
     r.live=false;r.loaded?.dispose();r.loaded=undefined;r.vars.duneTuftGroundMask.value=none;
     r.vars.duneTuftGroundGain.value=0;r.visibleAt=Infinity;
