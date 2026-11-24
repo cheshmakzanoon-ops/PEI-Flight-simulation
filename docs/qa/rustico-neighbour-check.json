@@ -1,0 +1,558 @@
+{
+  "exact-one-owner-full-integration": {
+    "independentEvidenceDigest": "bcbc368a3bac8c7a73eee236596b9853c14dea165e4d3d16fed88775f559db10",
+    "results": {
+      "fingerprint": {
+        "buildings.ts": "ba36adde8c888375e0d5c8879fbd4b04a664a78a29eec8884b78884d534ec9a9",
+        "rustico-neighbour.ts": "1946fa0638a6751fc4b1e79b8634126e338e88f7e6eaddc3fd4c5773f7cab8aa",
+        "rustico-neighbour.generated.ts": "36f7069643d0a61cb884544d2979f6da01db6466d74ca25b9fa8d153de20af06"
+      },
+      "noFlag": {
+        "read": 1,
+        "calls": 1,
+        "verts": 37950,
+        "triangles": 12650
+      },
+      "withFlag": {
+        "read": 1,
+        "calls": 1,
+        "verts": 38067,
+        "triangles": 12689
+      },
+      "pre": 18351,
+      "post": 19533,
+      "excluded": 66,
+      "added": 183,
+      "numOuter": 37884,
+      "countScopedBytes": 1856316,
+      "outAttrs": {
+        "position": {
+          "prefix": 220212,
+          "suffix": 234396,
+          "constructor": "Float32Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        },
+        "uv": {
+          "prefix": 146808,
+          "suffix": 156264,
+          "constructor": "Float32Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        },
+        "color": {
+          "prefix": 220212,
+          "suffix": 234396,
+          "constructor": "Float32Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        },
+        "topFlag": {
+          "prefix": 73404,
+          "suffix": 78132,
+          "constructor": "Float32Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        },
+        "facadeStyle": {
+          "prefix": 18351,
+          "suffix": 19533,
+          "constructor": "Uint8Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        },
+        "normal": {
+          "prefix": 220212,
+          "suffix": 234396,
+          "constructor": "Float32Array",
+          "stockTargetN": 66,
+          "optionalTargetN": 183
+        }
+      },
+      "oldBaselineExact": true,
+      "requestedOnly": true,
+      "optFaults": {
+        "noCrypto": {
+          "reads": 1,
+          "enabled": false,
+          "sameCompleteBuffers": true,
+          "sameStockMaterial": true
+        },
+        "rejectedCryptoDigest": {
+          "reads": 1,
+          "enabled": false,
+          "sameCompleteBuffers": true,
+          "sameStockMaterial": true
+        },
+        "falseIndexHash": {
+          "reads": 1,
+          "enabled": true,
+          "sameCompleteBuffers": false,
+          "warnings": 0,
+          "n": 38067,
+          "sameStockMaterial": false
+        },
+        "wrongAtlasHash": {
+          "reads": 1,
+          "enabled": false,
+          "sameCompleteBuffers": true,
+          "warnings": 0,
+          "n": 37398,
+          "sameStockMaterial": true
+        },
+        "sameDecodedWrongRawHash": {
+          "reads": 1,
+          "enabled": false,
+          "sameCompleteBuffers": true,
+          "warnings": 0,
+          "n": 37950,
+          "sameStockMaterial": true
+        }
+      },
+      "sourceDigest": "14fca913cea9bc4ef9c41072448765e8328dd4a91b26723ab0573c7e4b1ef9fa",
+      "missedFront": 0,
+      "missedBoth": 0,
+      "rayCount": 7108,
+      "neutralRole": {
+        "outsideAllExcluded": true,
+        "targetAll82": true,
+        "materialActive": true,
+        "stockActive": true
+      },
+      "ownXz": [
+        -9622.229436054933,
+        3889.8042232580183
+      ],
+      "sourceOrderedWorldRing": [
+        [
+          -7088.411379166132,
+          4948.891448722866
+        ],
+        [
+          -7082.040083932695,
+          4955.561113748637
+        ],
+        [
+          -7084.803537287187,
+          4958.228979758313
+        ],
+        [
+          -7082.961235050677,
+          4960.22987926557
+        ],
+        [
+          -7086.415551743656,
+          4963.564711778456
+        ],
+        [
+          -7087.106415082142,
+          4962.786584192563
+        ],
+        [
+          -7090.330443995625,
+          4965.899094537712
+        ],
+        [
+          -7097.929940720069,
+          4958.006657590577
+        ]
+      ]
+    }
+  },
+  "independent-ring-winding": {
+    "independentEvidenceDigest": "e29b30d1602583ddc80092f633d7aa9671521a93379617457831557a7a61497a",
+    "results": {
+      "stockShape": {
+        "roofUpAll": true,
+        "floorMin": 0.4000000059604645,
+        "roofMax": 7.809999942779541,
+        "winding": [],
+        "roofTris": 6,
+        "wallTris": 16,
+        "minFaceAreaM2": 2.495922088623047
+      },
+      "candidateShape": {
+        "roofUpAll": true,
+        "floorMin": 0.4000000059604645,
+        "roofMax": 7.475668430328369,
+        "winding": [
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999996740578854,
+            "worldNorm": [
+              -0.7324058767058785,
+              0.0,
+              0.680868292525576
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.999999629103449,
+            "worldNorm": [
+              -0.6916649364082963,
+              0.0,
+              -0.7222185373855391
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996615253234,
+            "worldNorm": [
+              -0.7203482808877123,
+              0.0,
+              0.6936125389741145
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999997142732594,
+            "worldNorm": [
+              -0.6915888622306944,
+              0.0,
+              -0.7222913855491104
+            ]
+          },
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999996696435549,
+            "worldNorm": [
+              0.7414637862308393,
+              0.0,
+              -0.6709928864810925
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996687195261,
+            "worldNorm": [
+              0.69454773862467,
+              -0.0,
+              0.7194466198206487
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996699749449,
+            "worldNorm": [
+              0.7230877829496364,
+              0.0,
+              -0.6907561495556733
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996946586955,
+            "worldNorm": [
+              0.735632758681683,
+              0.0,
+              -0.6773805757138128
+            ]
+          },
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999996691940896,
+            "worldNorm": [
+              0.6916303566031096,
+              -0.0,
+              0.7222516526980436
+            ]
+          },
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999996527065795,
+            "worldNorm": [
+              0.6916448184891398,
+              -0.0,
+              0.7222378036748872
+            ]
+          },
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999996150031434,
+            "worldNorm": [
+              0.7324535923710873,
+              0.0,
+              -0.6808169614681241
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996941783698,
+            "worldNorm": [
+              0.6945237002066021,
+              -0.0,
+              0.7194698255321971
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999997205417069,
+            "worldNorm": [
+              -0.7477457864534627,
+              0.0,
+              0.6639851194425163
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996629858681,
+            "worldNorm": [
+              0.6945523168483564,
+              -0.0,
+              0.7194422000137191
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.999999657197493,
+            "worldNorm": [
+              -0.6916409140051444,
+              0.0,
+              -0.7222415427501581
+            ]
+          },
+          {
+            "role": "interior",
+            "dotExpectedOutward": 0.9999997147244386,
+            "worldNorm": [
+              -0.7323703593850609,
+              0.0,
+              0.6809064962931377
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999987114905227,
+            "worldNorm": [
+              0.7340139444099378,
+              0.0,
+              -0.679134397164335
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999997062604573,
+            "worldNorm": [
+              0.6945135001796187,
+              -0.0,
+              0.719479671754703
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996505880921,
+            "worldNorm": [
+              -0.691646651569701,
+              0.0,
+              -0.7222360482366001
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999996538638247,
+            "worldNorm": [
+              0.6945596325048711,
+              -0.0,
+              0.7194351373784147
+            ]
+          },
+          {
+            "role": "exterior",
+            "dotExpectedOutward": 0.9999995334045935,
+            "worldNorm": [
+              -0.720447595985811,
+              0.0,
+              0.6935093809302552
+            ]
+          }
+        ],
+        "roofTris": 19,
+        "wallTris": 42,
+        "minFaceAreaM2": 0.06307129385672798
+      },
+      "planComparison": {
+        "newMissingVsExactOwner": 0.0010930443834880899,
+        "newSpillVsExactOwner": 0.0017418930185275905,
+        "newMissingVsStock": 0.0006988346594880568,
+        "newSpillVsStock": 0.0014482736537502205,
+        "exactOwnerArea": 142.31359163677917,
+        "newArea": 142.31424048543704,
+        "oldArea": 142.31349104642868
+      }
+    }
+  },
+  "integrated-native-ray-receipt": {
+    "independentEvidenceDigest": "2d5790c1de79fe48500777a473eda1f5658f4ef0f0c88a04ccefe957ba326446",
+    "results": {
+      "exactRuntimeRayCounts": {
+        "first-and-unpaired-inset": {
+          "n": 1614,
+          "oldAbsoluteM": [
+            0.6809999427795388,
+            3.360999942779544,
+            3.6527499427795393,
+            3.999999942779541
+          ],
+          "newAbsoluteM": [
+            0.014559625733570059,
+            0.04850502409468344,
+            0.15929061870010525,
+            2.526521761714169
+          ],
+          "newDeltaM_Above1": 18
+        },
+        "strict-eaves-top-visible": {
+          "n": 1453,
+          "oldAbsoluteM": [
+            0.6539999427795404,
+            3.3671999427795374,
+            3.682599942779538,
+            3.999999942779541
+          ],
+          "newAbsoluteM": [
+            0.013741709256381185,
+            0.0424083384933942,
+            0.06525207092743575,
+            0.39302628412801255
+          ],
+          "newDeltaM_Above1": 0
+        },
+        "strict-upper": {
+          "n": 918,
+          "oldAbsoluteM": [
+            0.5539999427795408,
+            0.7058999427795397,
+            0.7805999427795433,
+            0.8539999427795442
+          ],
+          "newAbsoluteM": [
+            0.015749702326925963,
+            0.03842482808015486,
+            0.045989953841055885,
+            0.09222623496969007
+          ],
+          "newDeltaM_Above1": 0
+        },
+        "strict-lower": {
+          "n": 535,
+          "oldAbsoluteM": [
+            3.2689999427795406,
+            3.7571999427795393,
+            3.8370999427795405,
+            3.999999942779541
+          ],
+          "newAbsoluteM": [
+            0.010510759421976879,
+            0.14076892502408592,
+            0.268046358660854,
+            0.39302628412801255
+          ],
+          "newDeltaM_Above1": 0
+        }
+      },
+      "nC6WholeInside": 1958,
+      "nWholeRoofHits": 1958,
+      "topRayFrontEqualDoubleSide": true,
+      "datasetSHA": "2d6842904e9b09ef6ead6c7b9036729c2414992469f493ac0f44ee7983890443",
+      "scope": "Actual emitted in-game final fit (not blocked fits). Separate q268-strict-pulse-gate.json keeps blind per-plane blocked-fold data and eave limits."
+    }
+  },
+  "exact-emitter-closure": {
+    "independentEvidenceDigest": "d44483883b8145a86a81fbef5ed46ab404c49537a13eebe4bc58faad2fc2dc0e",
+    "results": {
+      "exactPreBufferMissingM2": 4.6386719729896164e-05,
+      "exactPreBufferSpillM2": 9.477601973185266e-09,
+      "perimeterPreBufferMaxHorizontalSlipM": 6.902629495229609e-06,
+      "perimeterSamples": 1515,
+      "allStepAndOuterFaceSamples": 2121,
+      "maxStepAndOuterWallTopGapM": 2.6645352591003757e-15,
+      "maxInternalWallLowGapM": 2.6645352591003757e-15
+    }
+  },
+  "actualMatchedBrowserViews": [
+    {
+      "view": "massing-front-close",
+      "totalPixels": 470400,
+      "measuredOwnerEnvelopeXZScreenLTRB": [
+        0,
+        144,
+        610,
+        560
+      ],
+      "protectedPixelsByteExact": 216640,
+      "insidePixelsAbove2RGB": 56072,
+      "drawCallsEach": 78,
+      "triangleDelta": 39
+    },
+    {
+      "view": "massing-pass-close",
+      "totalPixels": 470400,
+      "measuredOwnerEnvelopeXZScreenLTRB": [
+        376,
+        247,
+        457,
+        321
+      ],
+      "protectedPixelsByteExact": 464406,
+      "insidePixelsAbove2RGB": 2965,
+      "drawCallsEach": 60,
+      "triangleDelta": 39
+    }
+  ],
+  "normalDispatchFlight": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": true,
+    "enabledThroughDispatch": true,
+    "corruptGroundFallsBackToStock": false,
+    "captures": [
+      {
+        "x": -6802.263368239293,
+        "z": 4933.358723505981,
+        "altitude": 74.02562500584276,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 330232,
+        "drawCalls": 246,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 302.88070947238236
+      },
+      {
+        "x": -6928.07702124858,
+        "z": 4969.304059237241,
+        "altitude": 74.99252127143282,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 331890,
+        "drawCalls": 243,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 433.72849295777144
+      },
+      {
+        "x": -7027.573548856298,
+        "z": 4997.730008360985,
+        "altitude": 75.76273364555696,
+        "groundY": 0.2525065215637551,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 336865,
+        "drawCalls": 229,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 537.2059957703073
+      }
+    ],
+    "errors": [],
+    "verifiedExactEnvelopeAtAllFlightCheckpoints": true
+  }
+}

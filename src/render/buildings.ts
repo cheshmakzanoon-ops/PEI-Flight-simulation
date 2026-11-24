@@ -1,3 +1,4 @@
+import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
 import * as THREE from 'three';
 import {BEACON_REVIEW} from './beaconsfield-review-spec.ts';
 import {CavendishBarnViews} from './cavendish-owner-views.ts';
@@ -61,7 +62,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false,montague=false,sourisMain=false)=>`
+const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false,montague=false,sourisMain=false,rusticoNeutral=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -94,6 +95,13 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  if(roof<.5&&!gl_FrontFacing)n=-n;
  ${waterStreet||victoria||montague||sourisMain?'}':''}
  float k=clamp(dot(n,normalize(vec3(-.60,.74,-.31))),0.,1.);
+ ${rusticoNeutral?`
+ if(facade>81.5&&facade<82.5){
+  // Neutral shape-study finish. No measured facade openings or materials.
+  float luma=dot(c,vec3(.2126,.7152,.0722));
+  c=mix(vec3(luma),c,roof>.5?.28:.53);
+  if(roof<.5)c*=.87+.13*smoothstep(.3,1.8,uv2d.y);
+ }else`:''}
  if(facade>71.5&&facade<74.5){shadeHangar4(c,wp,uv2d,facade,d);}else
  ${sourisMain?'if(facade>48.5){shadeSourisMclean(c,uv2d,wp,n,roof,d);}else':''}
  ${montague?'if(facade>47.5){shadeMacdonald(c,uv2d,wp,n,roof,k,d);}else if(facade>46.5){shadeMontagueHall(c,uv2d,wp,n,roof,k);}else':''}
@@ -162,6 +170,8 @@ export class Buildings {
  private readonly sourisMcleanMat?:THREE.ShaderMaterial;
  private readonly victoriaMat?:THREE.ShaderMaterial;
  private readonly waterStreetMat?:THREE.ShaderMaterial;
+ private readonly rusticoNeutralMat?:THREE.ShaderMaterial;
+ private readonly rusticoRoof:boolean;
  private readonly sourisLight?:SourisLighting;
  private readonly spinnakers?:SpinnakersScene;
  private readonly pinnedSpinnakers?:Bldg[];
@@ -173,8 +183,11 @@ export class Buildings {
  private beacon?:THREE.Group;
  private disposeBeacon?:(m:THREE.Group)=>void;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false){
+  this.rusticoRoof=rusticoRoof;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
+  if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
+   vertexShader:buildingV,fragmentShader:buildingF(false,false,false,false,false,false,true),vertexColors:true,side:THREE.DoubleSide});
   if(casts){this.mat.fragmentShader=buildingF(false,true);Object.assign(this.mat.uniforms,casts.uniforms);}
   if(sourisLight&&atlasHash===SOURIS_ROOF.atlasSha256){
    this.sourisLight=sourisLight;
@@ -233,10 +246,11 @@ export class Buildings {
   }catch{/** Ordinary C and stock still have their normal fallback. */}
   finally{clearTimeout(timer);}
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof);
  }
+ get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
  update(x:number,z:number){
   this.syncCavendish();
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
@@ -300,12 +314,18 @@ export class Buildings {
    const pinned=spec??barnSpec;
    const candidate=pinned&&this.atlasHash===pinned.pack&&tile.offset===pinned.offset&&
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
-   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined;
-   if(candidate){
+   const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
+   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
+   if(candidate||rusticoCandidate){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     features=await Buildings.decodeChunk(raw);
     if(spec&&matchesExterior(features,spec))ownerBytes=raw;
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
+    if(rusticoCandidate)try{
+     const digest=await crypto.subtle.digest('SHA-256',raw);
+     rusticoChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
+    }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
+
    }else features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
    if(!this.wanted.has(tile.id))return;
    const sp=this.spinnakers;
@@ -322,7 +342,7 @@ export class Buildings {
      wharf=sp.assembled;
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
-   const mesh=this.generate(features,tile,!!wharf,ownerBytes?spec?.ordinal:undefined,!!barnBytes);
+   const mesh=this.generate(features,tile,!!wharf,ownerBytes?spec?.ordinal:undefined,!!barnBytes,rusticoChunk);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    // The ordinary whole tile is already visible. Do not put buildings on the
    // renderer's streaming queue behind an optional module or art response.
@@ -409,8 +429,8 @@ export class Buildings {
    this.syncCavendish();
   }catch{/** Never withhold q72, q101, or their existing neighbours. */}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false){
-  let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1;
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,rusticoChunk?:string){
+  let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   let facade=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
@@ -426,6 +446,21 @@ export class Buildings {
    const seed=Math.abs(Math.floor(cx*97+cz*53))>>>0,h=clamp(f.height,1.3,130);
    facade=downtownFacade(ll.lon,ll.lat,h,seed);
    const base=this.t.meshElevation(cx,cz)+.05, cw=bases[seed%bases.length],cr=tops[(seed>>>4)%tops.length];
+   if(this.rusticoRoof&&matchesRusticoMassing(this.atlasHash,rusticoChunk,tile.id,i,f.footprint,f.height,f.minHeight,f.holes)){
+    actualRustico=true;facade=82;
+    emitRusticoMassing(ring,{
+     roof:(a,b,c,y)=>{
+      vertex(a,y[0],cr,a.x-ox,a.z-oz,1);vertex(b,y[1],cr,b.x-ox,b.z-oz,1);vertex(c,y[2],cr,c.x-ox,c.z-oz,1);
+     },
+     wall:(a,b,below,y)=>{
+      const ga=this.t.meshElevation(a.x,a.z)-.6,gb=this.t.meshElevation(b.x,b.z)-.6;
+      const loA=below?.[0]??ga,loB=below?.[1]??gb,L=Math.hypot(a.x-b.x,a.z-b.z);
+      vertex(a,loA,cw,0,loA-ga,0);vertex(b,y[1],cw,L,y[1]-gb,0);vertex(a,y[0],cw,0,y[0]-ga,0);
+      vertex(a,loA,cw,0,loA-ga,0);vertex(b,loB,cw,L,loB-gb,0);vertex(b,y[1],cw,L,y[1]-gb,0);
+     },
+    });
+    continue;
+   }
    if(supportedQuartermasterRoof(this.atlasHash,tile.id,f.footprint,f.holes)){
     emitQuartermasterRoof({
      roof:(a,b,c,y)=>{
@@ -561,7 +596,8 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  const mesh=new THREE.Mesh(g,actualRustico&&this.rusticoNeutralMat?this.rusticoNeutralMat:tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
   return mesh;
