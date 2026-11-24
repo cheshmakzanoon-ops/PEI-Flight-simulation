@@ -1,0 +1,84 @@
+[
+  {
+    "cx": -53807.804144237925,
+    "cz": 5754.344503483123,
+    "canopy": {
+      "total": 57921,
+      "present": 30146,
+      "share": 0.52047
+    },
+    "source": {
+      "per1": 5,
+      "per2": 2,
+      "per3": 1,
+      "hectares": 5.74455681,
+      "per4": 1,
+      "stocking": 0,
+      "per5": 1,
+      "landuse": "FOR",
+      "cover2": "WB",
+      "cover1": "RM",
+      "cover5": "BF",
+      "objectid": 696,
+      "cover4": "WS",
+      "covertype": "HH",
+      "fieldid": "0560971",
+      "cover3": "YB",
+      "height": 18,
+      "crown": 85
+    },
+    "bounds": [
+      -63.903937241857484,
+      46.44591870169364,
+      -63.89799049187726,
+      46.45054966098941
+    ],
+    "screenshotSize": [
+      483,
+      541
+    ],
+    "forestRostersInFrameAndApron": 1783,
+    "fixtureManifestSha256": "46a00e994e75a342523d284f30b36f4b7a7457b968f0335ec183d5ef46d9c5b7"
+  },
+  {
+    "cx": -54305.32522639642,
+    "cz": 6091.256586892949,
+    "canopy": {
+      "total": 74239,
+      "present": 27156,
+      "share": 0.36579
+    },
+    "source": {
+      "per1": 4,
+      "per2": 2,
+      "per3": 2,
+      "hectares": 7.38220136,
+      "per4": 1,
+      "stocking": 0,
+      "per5": 1,
+      "landuse": "FOR",
+      "cover2": "BF",
+      "cover1": "RM",
+      "cover5": "LA",
+      "objectid": 3419,
+      "cover4": "CE",
+      "covertype": "SH",
+      "fieldid": "0490312",
+      "cover3": "BS",
+      "height": 14,
+      "crown": 55
+    },
+    "bounds": [
+      -63.91014465719672,
+      46.44364102709972,
+      -63.904745668382986,
+      46.44676564435052
+    ],
+    "screenshotSize": [
+      441,
+      374
+    ],
+    "forestRostersInFrameAndApron": 1276,
+    "fixtureManifestSha256": "46a00e994e75a342523d284f30b36f4b7a7457b968f0335ec183d5ef46d9c5b7"
+  }
+]

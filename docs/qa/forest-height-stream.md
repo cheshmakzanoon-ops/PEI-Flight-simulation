@@ -61,3 +61,7 @@ The separate three-county routing check requested 34 ranges carrying
 support the same route fetched four whole packs (2,129,764 bytes).
 Missing-index and damaged-chunk tests both kept the aircraft and
 unrelated terrain active while falling back to existing tree heights.
+
+The [canopy closure audit](forest-canopy-closure.md) quantifies a separate
+limitation: sizing existing crowns from EFI does not recover the measured
+stand-level canopy cover.
