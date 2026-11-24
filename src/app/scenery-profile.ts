@@ -32,7 +32,7 @@ export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('s
 
 /** A Standard-scene shortcut for separately verified coastal optics.
  * Preserve explicit incompatible styles rather than silently replacing them. */
-export const COASTAL_OPTICS_FLAGS=['aerialPerspectiveStudy','shoreToneStudy','shoreFoamDetail','orbyCoastClosure'] as const;
+export const COASTAL_OPTICS_FLAGS=['shoreToneStudy','shoreFoamDetail','orbyCoastClosure'] as const;
 const COASTAL_OPTICS_CONFLICTS=['legacyShoreArcs','orthophotoSeamStudy','buildingShadows','surveyRelief','inlandRelief',
  'kingsDryCrownStudy','duneReliefStudy'] as const;
 export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
@@ -66,7 +66,7 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 
 /** Standalone art reviews. They are intentionally not in the bundled detail profile. */
 export const SCENERY_REVIEWS=[
- {flag:'coastalOptics',name:'Coastal optics',scope:'Daylight haze, breaking surf and scoped shore repairs in Standard'},
+ {flag:'coastalOptics',name:'Coastal optics',scope:'Breaking surf and scoped shore repairs in Standard'},
  {flag:'nearshoreFoamStudy',name:'Nearshore surf',scope:'Two exposed reaches in Prince and Kings counties'},
  {flag:'townWallStudy',name:'Expanded town façades',scope:'Wider close-range coverage in Charlottetown, Summerside and Souris'},
 

@@ -1,6 +1,6 @@
 # Daylight haze and the sea horizon
 
-**Preview:** use Standard scenery with `?aerialPerspectiveStudy&departure=eastpoint`. Omit the flag to return to the stock renderer. The study leaves close scenery, terrain and flight controls alone. It is not real weather or a model of current visibility.
+**Standard flight:** choose East Point for a clear far-horizon comparison, or add `?departure=eastpoint&stockAerialPerspective` to see the original mist. Close scenery, terrain and flight controls stay the same. This is not real weather or a model of current visibility.
 
 ![Matched simulator frames, stock on the left and the optical study on the right, from Prince North Shore, East Point and Souris](aerial-perspective-comparison.webp)
 
@@ -25,6 +25,24 @@ In the North Shore check the largest median step anywhere in the eight-row horiz
 
 ## Activation and fallback
 
-With the flag on, the existing sky file is fetched, hash-checked and decoded from those same bytes. The study waits for both the main and distant horizon shaders. New terrain tiles inherit the same gain; they do not fade into a different atmosphere. If the optional check fails, the viewer tries the original sky loader and leaves the effect off. Standard without the flag and Detail do not load the study module. Use `&diagnostics` and inspect `window.islandAirDiagnostics.aerialPerspective` to check whether it armed.
+In Standard, the existing sky file is fetched once, hash-checked and decoded from those same bytes. The study waits for both the main and distant horizon shaders. New terrain tiles inherit the same gain; they do not fade into a different atmosphere. If the optional check fails, the viewer tries the original sky loader and leaves the effect off. Detail and the explicit stock comparison do not load the optics module. The separate building-shadow and imagery-seam reviews keep their previous baselines unless `aerialPerspectiveStudy` is explicitly selected. Use `&diagnostics` and inspect `window.islandAirDiagnostics.aerialPerspective` to check whether it armed.
 
-In the compiled build, ordinary East Point flights with the study off and on each travelled over 500 m, switched to Cockpit and paused without layer warnings. Each fetched the original sky once. The Detail control loaded no study module. Returning a same-length file with the wrong hash on the first request triggered the stock loader and left the study disarmed. The 311-test suite, TypeScript and Vite build, and world provenance check all passed.
+In the original compiled study, East Point flights with optics off and on each travelled over 500 m, switched to Cockpit and paused without layer warnings. Each fetched the original sky once. The Detail control loaded no study module. Returning a same-length file with the wrong hash on the first request triggered the stock loader and left the study disarmed. The 311-test suite, TypeScript and Vite build, and world provenance check all passed.
+
+
+## Standard flight acceptance
+
+In compiled East Point flights, Standard, explicit stock, and Detail each
+fetched the bundled sky once. Only Standard loaded the separately compiled
+optics module. Corrupt sky bytes and an intentionally stalled optics module
+leave the optics off without stopping ordinary flight. All five configurations
+moved more than 100 m, entered Cockpit, and paused without layer warnings.
+
+New locked 600 × 395 captures reduced the largest median adjacent-row
+RGB step near the open-water horizon from 21 to 17 codes on the Prince
+north shore and from 13 to 8 at East Point. The close Queens view's
+237,000 pixels were identical. Each pair had exactly the same draw and
+triangle counts and restored the active frame byte-for-byte.
+[Scope receipt](aerial-standard-scope.json) ·
+[Visual replay](../../tools/qa/aerial-standard-frames.py) ·
+[Flight and fallback check](../../tools/qa/aerial-standard-flight.py).

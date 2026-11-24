@@ -1,0 +1,102 @@
+[
+  {
+    "view": "prince-north",
+    "changedPixels": 12640,
+    "changedGt3": 7918,
+    "maxChannelDelta": 12,
+    "draws": 75,
+    "triangles": 182683,
+    "tiles": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "activeRestored": true,
+    "imageSize": [
+      600,
+      395
+    ],
+    "pngSHA256": [
+      "09f4e50fa591824cf05dcc911d850bac7bec3a6df85c06b8bac473d26a51bc19",
+      "06d45bdeab7005214a1d1d75c2333d71b58ae9c8d1b4081f35950bf5024196f2"
+    ],
+    "peakMedianAdjacentRowDifference": {
+      "xRange": [
+        160,
+        440
+      ],
+      "rowDifferenceRange": [
+        178,
+        202
+      ],
+      "stockThenStandard": [
+        21,
+        17
+      ]
+    }
+  },
+  {
+    "view": "east-point",
+    "changedPixels": 49582,
+    "changedGt3": 28821,
+    "maxChannelDelta": 16,
+    "draws": 4,
+    "triangles": 126946,
+    "tiles": {
+      "ready": 6,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "activeRestored": true,
+    "imageSize": [
+      600,
+      395
+    ],
+    "pngSHA256": [
+      "e1b19cb680f6402db52cf18fb64219c2a64b416a055ffec30bd531de3514138f",
+      "fca0f70d71f3e940564340612d82b09d8125a28654af62699777f5302fd5c0cf"
+    ],
+    "peakMedianAdjacentRowDifference": {
+      "xRange": [
+        160,
+        440
+      ],
+      "rowDifferenceRange": [
+        130,
+        165
+      ],
+      "stockThenStandard": [
+        13,
+        8
+      ]
+    }
+  },
+  {
+    "view": "queens-land-close",
+    "changedPixels": 0,
+    "changedGt3": 0,
+    "maxChannelDelta": 0,
+    "draws": 20,
+    "triangles": 287844,
+    "tiles": {
+      "ready": 18,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "activeRestored": true,
+    "imageSize": [
+      600,
+      395
+    ],
+    "pngSHA256": [
+      "d26bb3f49ffd33d81dd9b612236104c07613489669ec9b526c7b32e78457abb4",
+      "d26bb3f49ffd33d81dd9b612236104c07613489669ec9b526c7b32e78457abb4"
+    ]
+  }
+]

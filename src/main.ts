@@ -1,5 +1,6 @@
 import {authenticateSummersideFrontage,SUMMERSIDE_FRONTAGE_ROOT,summersideFrontageCompatible} from './render/summerside-open-ground.ts';
 import {downtownSceneryCompatible} from './render/summerside-roof-source.ts';
+import {aerialPerspectiveRequested,loadAerialModule} from './render/aerial-profile.ts';
 import {sourisEastGround} from './render/souris-east/ground.ts';
 import {shoreToneRequested} from './render/shore-tone.ts';
 import {townWallMode,TOWN_WALL_CORE_AREAS} from './render/town-wall-optics.ts';
@@ -79,8 +80,8 @@ bootUI();
 async function run(){
  const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
  const orthoJob=options.has('orthophotoSeamStudy')&&options.get('scenery')!=='detail'?import('./render/orthophoto-seams.ts').catch(()=>undefined):undefined;
- const daylightWanted=options.has('aerialPerspectiveStudy')&&options.get('scenery')!=='detail';
- const daylightJob=daylightWanted?import('./render/aerial-perspective-lab.ts').catch(()=>undefined):undefined;
+ const daylightWanted=aerialPerspectiveRequested(options);
+ const daylightJob=daylightWanted?loadAerialModule(()=>import('./render/aerial-perspective-lab.ts')):undefined;
  const railAsked=railRequested(options),stDavidsAsked=stDavidsRequested(options);
  const frontageAllowed=summersideFrontageCompatible(options);
  let frontageProbe=false,frontageArmed=false;
@@ -157,9 +158,9 @@ async function run(){
  const rusticoJob=rusticoRequested?Promise.all([loadBoundedGrade(RUSTICO_GRADE,worldBase),import('./render/north-rustico/mount.ts')]).catch(()=>undefined):undefined;
  const gradeJob=options.has('gablesGradeReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows?loadBoundedGrade(GABLES_GRADE,worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
- const daylightModule=await daylightJob;
  const {terrain,terrainSha,img,cover,sky,certifiedSky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
-   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightModule?.loadVerifiedAerialSky);
+   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
+ const daylightModule=await daylightJob;
  const daylight=certifiedSky?daylightModule?.verifiedAerialOptics(certifiedSky):undefined;
  if(daylight)daylight.gain.value=0; // Require both independently loaded horizon meshes.
  const useTrail=tryTrail&&gablesGravelAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha);

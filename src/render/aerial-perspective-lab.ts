@@ -105,9 +105,6 @@ export function labAerialFragment(src:string):{role:AerialRole;fragment:string}|
     .replace(mainlandCall,'gl_FragColor=vec4(peiairSurface(mix(c.rgb*l,vec3(.56,.68,.72),min(haze,.91)),c.rgb*l,wp,cameraPosition,d),1.);')};
  }
 }
-export function aerialPerspectiveRequested(q:URLSearchParams){
- return q.has('aerialPerspectiveStudy')&&q.get('scenery')!=='detail';
-}
 export function stageAerialPerspective(scene:THREE.Scene,gain:{value:number},verifiedSkySha?:string){
  if(verifiedSkySha!==AIRLIGHT_CALIBRATION_SKY_SHA||!Number.isFinite(gain.value)||gain.value<0||gain.value>1)return;
  const passes=new Map<THREE.ShaderMaterial,NonNullable<ReturnType<typeof labAerialFragment>>>();

@@ -4,9 +4,10 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {ShaderMaterial,Texture} from 'three';
 import {
- AIRLIGHT_CALIBRATION_SKY_SHA,aerialPerspectiveRequested,labAerialFragment,loadVerifiedAerialSky,
+ AIRLIGHT_CALIBRATION_SKY_SHA,labAerialFragment,loadVerifiedAerialSky,
  pathMeanDensity,pathTransmission,verifiedAerialOptics,
 } from '../src/render/aerial-perspective-lab.ts';
+import {aerialPerspectiveRequested,loadAerialModule} from '../src/render/aerial-profile.ts';
 
 const skySource=readFileSync(new URL('../public/world/maritime-sky.webp',import.meta.url));
 test('slant column is reciprocal, altitude-sensitive, finite, and stable on equal heights',()=>{
@@ -22,11 +23,17 @@ test('slant column is reciprocal, altitude-sensitive, finite, and stable on equa
   for(let i=0;i<N;i++)integral+=Math.exp(-(a+(i+.5)/N*(b-a))/k)/N;
   assert(Math.abs(pathMeanDensity(a,b,k)-integral)<2e-10);
  }
- assert(!aerialPerspectiveRequested(new URLSearchParams()));
+ assert(aerialPerspectiveRequested(new URLSearchParams()));
+ assert(!aerialPerspectiveRequested(new URLSearchParams('stockAerialPerspective')));
+ assert(!aerialPerspectiveRequested(new URLSearchParams('buildingShadows')));
+ assert(!aerialPerspectiveRequested(new URLSearchParams('orthophotoSeamStudy')));
+ assert(aerialPerspectiveRequested(new URLSearchParams('orthophotoSeamStudy&aerialPerspectiveStudy')));
+ assert(!aerialPerspectiveRequested(new URLSearchParams('stockAerialPerspective&aerialPerspectiveStudy')));
+ assert(aerialPerspectiveRequested(new URLSearchParams('buildingShadows&aerialPerspectiveStudy')));
  assert(!aerialPerspectiveRequested(new URLSearchParams('scenery=detail&aerialPerspectiveStudy')));
  assert(aerialPerspectiveRequested(new URLSearchParams('aerialPerspectiveStudy')));
 });
-test('the same bounded authenticated sky bytes must back the actual climate-neutral preview texture',async()=>{
+test('the same bounded authenticated sky bytes must back the actual daylight panorama texture',async()=>{
  assert.equal(skySource.length,214798);
  assert.equal(createHash('sha256').update(skySource).digest('hex'),AIRLIGHT_CALIBRATION_SKY_SHA);
  const expected=new Texture({width:4096,height:2048});
@@ -64,4 +71,15 @@ test('bad HTTP, length, authenticating digest and decoded size never authorize o
  const late=await loadVerifiedAerialSky('/world/maritime-sky.webp',async()=>{decoded=true;return new Texture();},
   async()=>{await new Promise(r=>setTimeout(r,35));return new Response(skySource);},4);
  assert(!late&&!decoded);
+});
+test('optional optics code cannot hold Standard startup or activate on a late resolution',async()=>{
+ assert.equal(await loadAerialModule(async()=>17),17);
+ assert.equal(await loadAerialModule(async()=>{throw Error('module unavailable');}),undefined);
+ let deliver:(x:number)=>void=()=>{};
+ const source=new Promise<number>(r=>{deliver=r;});
+ const fallback=loadAerialModule(()=>source,10);
+ assert.equal(await fallback,undefined);
+ deliver(17);
+ assert.equal(await source,17);
+ assert.equal(await fallback,undefined);
 });
