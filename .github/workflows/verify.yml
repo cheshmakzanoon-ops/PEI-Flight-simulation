@@ -43,6 +43,7 @@ jobs:
           for try in {1..20}; do curl --silent --fail http://127.0.0.1:4173/ > /dev/null && break; sleep 0.3; done
           curl --fail --silent --show-error http://127.0.0.1:4173/world/terrain.json > /dev/null
           node tools/browser-smoke.mjs 2>&1 | tee artifacts/smoke/browser.log
+          node tools/indian-river-smoke.mjs 2>&1 | tee artifacts/smoke/indian-river.log
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         if: always()
         with:
