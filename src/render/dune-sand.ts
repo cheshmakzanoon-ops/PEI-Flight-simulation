@@ -9,9 +9,12 @@ const transparent=new T.DataTexture(new Uint8Array([0]),1,1,T.RedFormat);
 transparent.needsUpdate=true;
 const clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(x,b));
 const sha=(b:ArrayBuffer)=>crypto.subtle.digest('SHA-256',b).then(q=>Array.from(new Uint8Array(q),h=>h.toString(16).padStart(2,'0')).join(''));
-export function duneSandSources(terrain?:string,cover?:string,coverDecoded?:string){
+export function duneSandAtlas(terrain?:string,cover?:string){
  const p=CANOPY_FENCE.pins;
- return terrain===p.terrain&&cover===p.cover&&coverDecoded===p.coverDecoded;
+ return terrain===p.terrain&&cover===p.cover;
+}
+export function duneSandSources(terrain?:string,cover?:string,coverDecoded?:string){
+ return duneSandAtlas(terrain,cover)&&coverDecoded===CANOPY_FENCE.pins.coverDecoded;
 }
 export function duneSandOverlays(road?:string,building?:string,paths?:string,lots?:string){
  const p=CANOPY_FENCE.pins;
@@ -74,6 +77,8 @@ export class DuneSand{
  readonly rows=new Map<string,Row>();
  private base:string;private get:typeof fetch;
  private approved=false;private seenX=Infinity;private seenZ=Infinity;
+ private proof?:()=>Promise<boolean>;
+ private proofX=Infinity;private proofZ=Infinity;private proofStarted=false;
  private grain?:Promise<readonly [T.Texture,T.Texture]|undefined>;
  private frames=0;
  private current=new Set<Row>();
@@ -86,6 +91,8 @@ export class DuneSand{
   }
  }
  readonly allow=()=>{this.approved=true;};
+ /** Qualify locally; no cover work or surface downloads at a distant start. */
+ certifyNear(check:()=>Promise<boolean>){if(!this.approved&&!this.proofStarted&&!this.proof)this.proof=check;}
  uniforms(i:number,j:number){return this.rows.get(key(i,j))?.uniforms;}
  note(){
   return {approved:this.approved,active:Array.from(this.current).filter(r=>r.uniforms.duneResident.value===1).map(r=>r.stamp.tile),
@@ -109,7 +116,18 @@ export class DuneSand{
   })().catch(()=>{r.failed=true;}).finally(()=>{r.task=undefined;});
  }
  update(x:number,z:number,agl:number){
-  if(!this.approved)return;
+  if(!this.approved){
+   if(!this.proof||agl>215||Math.hypot(x-this.proofX,z-this.proofZ)<22)return;
+   this.proofX=x;this.proofZ=z;
+   for(const row of this.rows.values()){
+    const b=row.uniforms.duneBox.value;
+    if(Math.hypot(x-clamp(x,b.x,b.x+b.z),z-clamp(z,b.y,b.y+b.w))>=radius)continue;
+    const check=this.proof;this.proofStarted=true;this.proof=undefined;
+    void Promise.resolve().then(check).then(valid=>{if(valid)this.allow();}).catch(()=>{});
+    break;
+   }
+   return;
+  }
   if(agl>215) {
    for(const r of this.current){r.live=false;r.uniforms.duneResident.value=0;}
    this.seenX=Infinity;return;

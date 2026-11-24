@@ -39,6 +39,7 @@ export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandB
 
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
+ if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
@@ -85,7 +86,6 @@ export const SCENERY_REVIEWS=[
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
  {flag:'duneReliefStudy',name:'Measured dune relief',scope:'Prince and Kings dry terrain'},
  {flag:'duneGrassSurface',name:'Coastal grass surface',scope:'Source-qualified dune grassland in all three counties'},
- {flag:'duneSandDetail',name:'Dry dune surface detail',scope:'Source-qualified sand in all three counties'},
  {flag:'hogIslandWestGround',name:'Hog Island dune ground',scope:'Western measured relief and dated aerial colour'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
@@ -99,7 +99,7 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
  return PROVINCE_FIELD_CONFLICTS.some(flag=>options.has(flag))?'terrain':undefined;
 }
 
-export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
+export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail',options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='coastalOptics'){
   if(options.get('scenery')==='detail')return 'detail';
   return COASTAL_OPTICS_CONFLICTS.some(k=>options.has(k))?'terrain':undefined;
@@ -160,6 +160,12 @@ export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'d
  if((flag==='cavendishWaterReview'||flag==='northRusticoLighthouseStudy')&&options.has('inlandRelief'))return 'terrain';
 }
 
+/** Legacy explicit URLs retain the old supported combinations. */
+export function duneSandRequested(q:URLSearchParams){
+ if(q.has('stockDuneSand')||sceneryReviewBlock('duneSandDetail',q))return false;
+ return q.has('duneSandDetail')||!['duneGrassSurface','duneReliefStudy','seatedForestShadows',
+  'forestFloor','coastalOptics','shoreToneStudy','orthophotoSeamStudy','woodlandView'].some(k=>q.has(k));
+}
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);
  return SCENERY_REVIEWS.filter(row=>query.has(row.flag)).map(row=>row.flag);

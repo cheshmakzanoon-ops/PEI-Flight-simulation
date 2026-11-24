@@ -75,6 +75,8 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
+import {duneSandRequested} from './app/scenery-profile.ts';
+import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
 async function run(){
@@ -119,8 +121,8 @@ async function run(){
 
  const grassCoastAsked=options.has('duneGrassSurface')&&!sceneryReviewBlock('duneGrassSurface',options);
  const grassCoastJob=grassCoastAsked?import('./render/dune-grass-surface.ts').catch(()=>undefined):undefined;
- const duneAsked=options.has('duneSandDetail')&&!sceneryReviewBlock('duneSandDetail',options);
- const duneModuleJob=duneAsked?import('./render/dune-sand.ts').catch(()=>undefined):undefined;
+ const duneAsked=duneSandRequested(options);
+ const duneModuleJob=duneAsked?loadAerialModule(()=>import('./render/dune-sand.ts')):undefined;
  const hogGroundAsked=options.has('hogIslandWestGround')&&!sceneryReviewBlock('hogIslandWestGround',options);
  const duneReliefAsked=options.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',options);
  const crownGradeWanted=kingsDryCrownRequested(options);
@@ -159,7 +161,7 @@ async function run(){
  const gradeJob=options.has('gablesGradeReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows?loadBoundedGrade(GABLES_GRADE,worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
  const {terrain,terrainSha,img,cover,sky,certifiedSky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
-   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
+   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
  const daylightModule=await daylightJob;
  const daylight=certifiedSky?daylightModule?.verifiedAerialOptics(certifiedSky):undefined;
  if(daylight)daylight.gain.value=0; // Require both independently loaded horizon meshes.
@@ -208,7 +210,7 @@ async function run(){
   optics?.dispose();
  })();
  const duneLibrary=await duneModuleJob;
- const duneSand=duneLibrary?.duneSandSources(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?new duneLibrary.DuneSand(worldBase):undefined;
+ const duneSand=duneLibrary?.duneSandAtlas(terrainSha,cover.sourceSha)?new duneLibrary.DuneSand(worldBase):undefined;
  const dunesGround=await (async()=>{
   if(!duneReliefJob)return [];
   const [makers,pinned,roads]=await Promise.all([duneReliefJob,checkedGroundIndex,preRoadJob]);
@@ -348,7 +350,8 @@ async function run(){
   if(s&&p&&grassCoastModule.duneGrassInfrastructure(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))grassCoast.permit();
  });
  if(duneSand&&duneLibrary)void Promise.all([roadReady,buildingReady,mappedSidewalks,mappedParking]).then(([r,b,s,p])=>{
-  if(s&&p&&duneLibrary.duneSandOverlays(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))duneSand.allow();
+  if(s&&p&&duneLibrary.duneSandOverlays(r?.sourceGeometrySha256,b?.sourceAtlasSha256,SIDEWALKS.sha256,MAPPED_PARKING.sha256))
+   duneSand.certifyNear(async()=>duneLibrary.duneSandSources(terrainSha,cover.sourceSha,await verifyDecodedCover(cover)));
  });
  if(rollingModule){
    rollingPreflight='base layers';

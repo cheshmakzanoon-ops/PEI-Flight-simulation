@@ -5,11 +5,11 @@ import {gunzipSync} from 'node:zlib';
 import {CANOPY_FENCE as F} from '../src/render/canopy-fence.generated.ts';
 import {DUNE_SAND_MASK as M,DUNE_SAND_PHOTO as P} from '../src/render/dune-sand-pins.generated.ts';
 import {DuneSand,duneMaskBytes,duneSandSources,duneSandOverlays} from '../src/render/dune-sand.ts';
-import {sceneryOptions,sceneryReviewBlock} from '../src/app/scenery-profile.ts';
+import {duneSandRequested,sceneryOptions,sceneryReviewBlock} from '../src/app/scenery-profile.ts';
 const base=new URL('../public/world/dune-sand/v1/',import.meta.url);
 const wrap=(b:Uint8Array)=>new Response(new Uint8Array(b));
 
-test('dry dune material skips ordinary and conflicting terrain studies',()=>{
+test('dry dune material preserves protected and alternate terrain studies',()=>{
  assert(!sceneryOptions('?scenery=detail').has('duneSandDetail'));
  assert.equal(sceneryReviewBlock('duneSandDetail',sceneryOptions('?duneSandDetail&scenery=detail')),'detail');
  for(const conflict of ['sourceGrassNap','surveyRelief','hogIslandWestGround','hogIslandPhotoStudy','inlandRelief','buildingShadows','northCapeWind','cavendishDetail']){
@@ -63,4 +63,26 @@ test('no optional network from unauthorized, distant or high scenery',()=>{
  streamer.allow();streamer.update(s[0],s[1],239);assert.equal(reads,0);
  streamer.update(-1000000,-1000000,20);assert.equal(reads,0);
  assert.deepEqual(streamer.note().active,[]);
+});
+
+test('normal dry dunes preserve explicit stock and independent scenery profiles',()=>{
+ const want=(s:string)=>duneSandRequested(sceneryOptions(s));
+ assert(want(''));assert(want('?departure=prince-sand-dunes'));
+ for(const q of ['?stockDuneSand','?stockDuneSand&duneSandDetail','?scenery=detail','?buildingShadows',
+  '?duneGrassSurface','?duneReliefStudy','?coastalOptics','?orthophotoSeamStudy','?shoreToneStudy'])assert(!want(q),q);
+ assert(want('?duneSandDetail&duneReliefStudy'));
+ const canceled=sceneryOptions('?stockDuneSand&duneSandDetail&woodlandView');
+ assert(!canceled.has('duneSandDetail')&&canceled.has('woodland3D'));
+});
+test('no cover work until the first low approach and failed proof never requests art',async()=>{
+ let reads=0,checks=0;
+ const d=new DuneSand('',async()=>{reads++;return new Response(null,{status:404});});
+ const [x,z]=M.variants[0].outputOrigin;
+ d.certifyNear(async()=>{checks++;return false;});
+ d.update(x,z,244);d.update(-1000000,1000000,24);await Promise.resolve();
+ assert.equal(checks,0);assert.equal(reads,0);
+ d.update(x,z,23);await Promise.resolve();await Promise.resolve();
+ d.certifyNear(async()=>{checks++;return true;});
+ d.update(x+200,z,23);d.update(x,z,21);await Promise.resolve();
+ assert.equal(checks,1);assert.equal(reads,0);assert(!d.note().approved);
 });

@@ -1,8 +1,7 @@
 # Dry dune surface detail
 
-In **Standard**, enable **Dry dune surface detail** under Optional scenery
-studies, then choose one of the Prince, Queens or Kings County dry dune
-passes. The material adds close sand grain and surface lighting to
+In **Standard**, select one of the Prince, Queens or Kings County dry
+dune passes. Use `?stockDuneSand` to compare the original surface. The material adds close sand grain and surface lighting to
 source-checked dry patches. It does not build new dunes or change terrain
 height, collision, water, shorelines, or buildings.
 
@@ -38,8 +37,10 @@ of Prince Edward Island. Regional colour, the existing landscape texture, and
 lighting still come from the simulator. The addition fades to stock by 105 m
 from the camera.
 
-Standard makes no optional requests. With the study selected, only nearby
-authorities can load; at most three may be resident at once. The 29 gzip masks
+High or distant flight does not download a dune mask or texture. A low
+nearby approach first verifies the existing in-memory land-cover raster,
+building, road, sidewalk and parking sources. Only nearby masks can load;
+at most three may be resident at once. The 29 gzip masks
 total 14,669 bytes on the wire. The two packed CC0 textures total 576,239
 bytes and are requested once on the first qualified near approach. Missing
 or altered content leaves stock visible. These are sizes and renderer counts,
@@ -56,7 +57,8 @@ Sentinel data, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - [Sources and material fingerprints](dry-dune-surface-source.json)
 - [Independent physical sampler bounds](dry-dune-surface-support.json)
 - [Matched Three.js comparisons](dry-dune-surface-render.json)
-- [Packaged normal-control and corruption checks](dry-dune-surface-flight.json)
+- [Original packaged material and corruption checks](dry-dune-surface-flight.json)
+- [Standard render, ordinary flight, distance and fallback checks](dry-dune-standard-gate.json)
 
 The three low matched cameras added no draws or triangles. In each comparison,
 RGB outside the authorized screen mask remained unchanged. The high control

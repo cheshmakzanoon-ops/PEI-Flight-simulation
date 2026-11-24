@@ -40,10 +40,10 @@ def capture(args,browser,url):
   pg.on('pageerror',lambda e:err.append(str(e)));pg.on('console',lambda e:err.append(e.text)if e.type=='error'else None)
   pg.on('request',lambda r:reads.append(r.url.rsplit('/',1)[-1])if '/dune-sand/v1/' in r.url else None)
   pg.set_default_timeout(105000)
-  pg.goto(url+'/?diagnostics&duneSandDetail&qa='+quote(json.dumps(pose)),wait_until='domcontentloaded')
+  pg.goto(url+'/?diagnostics&qa='+quote(json.dumps(pose)),wait_until='domcontentloaded')
   fixed.settle(pg,err)
-  pg.wait_for_function('window.islandAirDiagnostics?.duneSand?.approved===true')
   if name!='high':
+   pg.wait_for_function('window.islandAirDiagnostics?.duneSand?.approved===true')
    pg.wait_for_function('window.islandAirDiagnostics?.duneSand?.active.length>0')
   q=pg.evaluate('window.duneCapture()')
   px={}
@@ -59,7 +59,7 @@ def capture(args,browser,url):
   (args.out/'report.json').write_text(json.dumps(out,indent=2)+'\n')
   assert q['returns'] and q['before']==q['after'] and not err and report['changesExterior']==0,report
   if name!='high':assert report['activeDeltaGT2']>600,report
-  else:assert not d.max() and not q['active'] and not reads,report
+  else:assert not d.max() and not q['active'] and not reads and not pg.evaluate('window.islandAirDiagnostics?.duneSand?.approved'),report
   pg.close()
 fixed.capture=capture
 p=argparse.ArgumentParser(description=__doc__)

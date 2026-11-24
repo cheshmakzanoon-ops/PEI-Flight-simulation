@@ -1,0 +1,337 @@
+{
+  "matchedStandardViews": {
+    "prince": {
+      "width": 460,
+      "height": 338,
+      "exactExterior": 49877,
+      "changesExterior": 0,
+      "activeDeltaGT2": 27903,
+      "maxRGBChange": 16,
+      "poses": {
+        "lon": -63.94210616105072,
+        "lat": 46.70280613944216,
+        "dist": 26,
+        "east": 0.22,
+        "south": 0.975,
+        "h": 0,
+        "agl": 10
+      },
+      "metrics": {
+        "before": {
+          "draws": 33,
+          "tris": 168320
+        },
+        "after": {
+          "draws": 33,
+          "tris": 168320
+        },
+        "mask": {
+          "draws": 33,
+          "tris": 168320
+        },
+        "returns": true,
+        "active": [
+          [
+            6,
+            7
+          ]
+        ]
+      },
+      "requests": [
+        "6-7.g05.gz",
+        "micro-photometric.png",
+        "macro-photometric.png"
+      ],
+      "errors": []
+    },
+    "queens": {
+      "width": 460,
+      "height": 338,
+      "exactExterior": 30547,
+      "changesExterior": 0,
+      "activeDeltaGT2": 113048,
+      "maxRGBChange": 23,
+      "poses": {
+        "lon": -63.45853729679512,
+        "lat": 46.50723409870771,
+        "dist": 26,
+        "east": 0.18,
+        "south": 0.99,
+        "h": 0,
+        "agl": 12
+      },
+      "metrics": {
+        "before": {
+          "draws": 21,
+          "tris": 166330
+        },
+        "after": {
+          "draws": 21,
+          "tris": 166330
+        },
+        "mask": {
+          "draws": 21,
+          "tris": 166330
+        },
+        "returns": true,
+        "active": [
+          [
+            12,
+            11
+          ]
+        ]
+      },
+      "requests": [
+        "12-11.g05.gz",
+        "micro-photometric.png",
+        "macro-photometric.png"
+      ],
+      "errors": []
+    },
+    "kings": {
+      "width": 460,
+      "height": 338,
+      "exactExterior": 63762,
+      "changesExterior": 0,
+      "activeDeltaGT2": 17447,
+      "maxRGBChange": 14,
+      "poses": {
+        "lon": -62.059027515357116,
+        "lat": 46.468416557044,
+        "dist": 25,
+        "east": 0.33,
+        "south": 0.944,
+        "h": 0,
+        "agl": 11
+      },
+      "metrics": {
+        "before": {
+          "draws": 13,
+          "tris": 192054
+        },
+        "after": {
+          "draws": 13,
+          "tris": 192054
+        },
+        "mask": {
+          "draws": 13,
+          "tris": 192054
+        },
+        "returns": true,
+        "active": [
+          [
+            30,
+            11
+          ]
+        ]
+      },
+      "requests": [
+        "30-11.g05.gz",
+        "micro-photometric.png",
+        "macro-photometric.png"
+      ],
+      "errors": []
+    },
+    "high": {
+      "width": 460,
+      "height": 338,
+      "exactExterior": 155480,
+      "changesExterior": 0,
+      "activeDeltaGT2": 0,
+      "maxRGBChange": 0,
+      "poses": {
+        "lon": -63.45853729679512,
+        "lat": 46.50723409870771,
+        "dist": 135,
+        "east": 0.18,
+        "south": 0.99,
+        "h": 0,
+        "agl": 245
+      },
+      "metrics": {
+        "before": {
+          "draws": 10,
+          "tris": 185378
+        },
+        "after": {
+          "draws": 10,
+          "tris": 185378
+        },
+        "mask": {
+          "draws": 10,
+          "tris": 185378
+        },
+        "returns": true,
+        "active": []
+      },
+      "requests": [],
+      "errors": []
+    }
+  },
+  "ordinaryCompiledFlights": {
+    "queens": {
+      "materialActive": true,
+      "diagnostics": {
+        "approved": true,
+        "active": [
+          [
+            12,
+            11
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "ordinaryTravelM": 381.51376806328864,
+      "heightAGLM": 59.351645602247224,
+      "fault": false,
+      "stock": false,
+      "far": false,
+      "requests": [
+        [
+          "12-11.g05.gz",
+          200
+        ],
+        [
+          "macro-photometric.png",
+          200
+        ],
+        [
+          "micro-photometric.png",
+          200
+        ]
+      ],
+      "errors": [],
+      "route": "queens-sand-dunes"
+    },
+    "prince": {
+      "materialActive": true,
+      "diagnostics": {
+        "approved": true,
+        "active": [
+          [
+            6,
+            7
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "ordinaryTravelM": 380.92923418807294,
+      "heightAGLM": 59.05660810403593,
+      "fault": false,
+      "stock": false,
+      "far": false,
+      "requests": [
+        [
+          "6-7.g05.gz",
+          200
+        ],
+        [
+          "micro-photometric.png",
+          200
+        ],
+        [
+          "macro-photometric.png",
+          200
+        ]
+      ],
+      "errors": [],
+      "route": "prince-sand-dunes"
+    },
+    "kings": {
+      "materialActive": true,
+      "diagnostics": {
+        "approved": true,
+        "active": [
+          [
+            30,
+            11
+          ]
+        ],
+        "pending": 0,
+        "failed": 0
+      },
+      "ordinaryTravelM": 382.09830271582484,
+      "heightAGLM": 57.51582736165589,
+      "fault": false,
+      "stock": false,
+      "far": false,
+      "requests": [
+        [
+          "micro-photometric.png",
+          200
+        ],
+        [
+          "macro-photometric.png",
+          200
+        ],
+        [
+          "30-11.g05.gz",
+          200
+        ]
+      ],
+      "errors": [],
+      "route": "kings-sand-dunes"
+    },
+    "far": {
+      "materialActive": false,
+      "diagnostics": {
+        "approved": false,
+        "active": [],
+        "pending": 0,
+        "failed": 0
+      },
+      "ordinaryTravelM": 384.2434790666049,
+      "heightAGLM": 359.56951686393177,
+      "fault": false,
+      "stock": false,
+      "far": true,
+      "requests": [],
+      "errors": [],
+      "route": "montague"
+    },
+    "fault": {
+      "materialActive": false,
+      "diagnostics": {
+        "approved": true,
+        "active": [],
+        "pending": 0,
+        "failed": 1
+      },
+      "ordinaryTravelM": 383.267374350638,
+      "heightAGLM": 59.32991837736228,
+      "fault": true,
+      "stock": false,
+      "far": false,
+      "requests": [
+        [
+          "12-11.g05.gz",
+          200
+        ],
+        [
+          "macro-photometric.png",
+          200
+        ],
+        [
+          "micro-photometric.png",
+          200
+        ]
+      ],
+      "errors": [],
+      "route": "queens-sand-dunes"
+    },
+    "stock": {
+      "materialActive": false,
+      "diagnostics": null,
+      "ordinaryTravelM": 384.43644908826315,
+      "heightAGLM": 59.31525034494596,
+      "fault": false,
+      "stock": true,
+      "far": false,
+      "requests": [],
+      "errors": [],
+      "route": "queens-sand-dunes"
+    }
+  }
+}
