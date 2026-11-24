@@ -1,14 +1,19 @@
 import type {Mesh} from 'three';
+import {verifyDecodedCover} from '../../sim/cover-proof.ts';
 import type {World} from '../world.ts';
 import {ST_DAVIDS as S} from './source.generated.ts';
 
 type Tile={id:string;bytes:number;offset:number;count:number;bounds:readonly number[]};
 type Row={footprint:readonly (readonly [number,number])[];holes?:readonly unknown[];height:number;minHeight?:number};
 const DRAW=[['position',3],['normal',3],['color',3],['uv',2],['topFlag',1],['facadeStyle',1]] as const;
-/** This remains a manual, bounded exterior preview, not an ordinary startup or Detail layer. */
+/** Explicit geometry-and-shadow comparison. */
 export function stDavidsRequested(options:URLSearchParams){
  return options.has('stDavidsChurchReview')&&options.has('buildingShadows')&&options.get('scenery')!=='detail'&&
   !['surveyRelief','inlandRelief','seatedRoads'].some(k=>options.has(k));
+}
+export function stDavidsStandardRequested(q:URLSearchParams){
+ return q.get('scenery')!=='detail'&&!['stockStDavidsExterior','stDavidsChurchReview','buildingShadows','surveyRelief',
+  'inlandRelief','seatedRoads','northBaywalkPreview','northBaywalkConcrete','spinnakersPreview'].some(k=>q.has(k));
 }
 export function stDavidsAtlasAllows(atlas:string|undefined,t:Tile){
  return !!globalThis.crypto?.subtle&&atlas===S.atlas&&t.id===S.tile&&t.count===S.count&&t.offset===S.offset&&t.bytes===S.size&&
@@ -44,8 +49,8 @@ export async function stDavidsDrawAllows(owner:Mesh,range:readonly [number,numbe
  try{return await stDavidsSha(bytes)===S.drawAttributesSha;}catch{return false;}
 }
 export function stDavidsGround(world:Pick<World,'rollingCanopyOwner'|'visualGroundHeight'|'surface'|'cover'|'terrain'>,
- terrainSha:string|undefined,road:()=>string|undefined){
- if(terrainSha!==S.terrain||world.cover.sourceSha!==S.cover||world.cover.sourceDecodedSha!==S.coverDecoded)return;
+ terrainSha:string|undefined,road:()=>string|undefined,certified=world.cover.sourceDecodedSha){
+ if(terrainSha!==S.terrain||world.cover.sourceSha!==S.cover||certified!==S.coverDecoded)return;
  let then:NonNullable<ReturnType<World['rollingCanopyOwner']>>['geometry']|undefined,verified=false;
  return ()=>{
   if(road()!==S.road)return false;
@@ -62,5 +67,20 @@ export function stDavidsGround(world:Pick<World,'rollingCanopyOwner'|'visualGrou
    });
   }
   return verified;
+ };
+}
+
+export function standardStDavidsGround(world:Pick<World,'rollingCanopyOwner'|'visualGroundHeight'|'surface'|'cover'|'terrain'>,
+ terrainSha:string|undefined,road:()=>string|undefined){
+ if(terrainSha!==S.terrain||world.cover.sourceSha!==S.cover||!globalThis.crypto?.subtle)return;
+ let checked=false,ground:(()=>boolean)|undefined;
+ return ()=>{
+  if(ground)return ground();
+  if(checked||road()!==S.road||world.rollingCanopyOwner(S.boundsXZ)?.key!==S.groundTile)return false;
+  checked=true;
+  void verifyDecodedCover(world.cover).then(s=>{
+   if(s===S.coverDecoded)ground=stDavidsGround(world,terrainSha,road,s);
+  });
+  return false;
  };
 }

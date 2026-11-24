@@ -1,6 +1,13 @@
 # Georgetown: St. David’s United Church exterior study
 
-Use Standard scenery with `?stDavidsChurchReview&buildingShadows`. This is an optional, one-owner 2020-era exterior study; it is not the default model, a claim of the church’s current exact appearance, an accessibility guide, or a flight plan. The regular choice of departure and #133 observer camera are unchanged. It does not run in the Detail profile or when adaptive survey relief, inland relief or seated roads would replace the validated context. No ordinary start downloads the artwork.
+Select **Georgetown harbour · low pass** in the departure menu to see
+the modeled church in Standard scenery. The simulated start is over
+the harbour, 61 m above the starting surface, facing the village.
+`?stockStDavidsExterior` keeps the original flat massing. The separate
+`?stDavidsChurchReview&buildingShadows` mode adds the original local
+shadow test. This one modeled exterior depicts the measured 2020 roof
+and interpreted finish. It is not a current building survey, an
+accessibility guide, or a flight plan.
 
 ## Measured geometry and authored exterior
 
@@ -10,9 +17,17 @@ The roof includes shallow nominal fascia and eaves rather than shearing them off
 
 ## Runtime lease and fallback
 
-Only source AEB `q11220` ordinal 203/FID 32980 is eligible. The compressed 24,504-byte original range, exact ordered record, original emitter transform and all six actual artwork-independent draw attributes are pinned. The intact batch ships first. An optional 374,243-byte compressed `SDAV` pack (1,792,460 bytes decoded) is requested only once the exact sampled original N112 ground context returns a matching lease. A late, missing or wrong digest cannot evict the prior visual or caster. On valid admission only its 66 indices are omitted; the other source triangle order and buffer objects do not change. On N56/N8, loss of the regular near lease or eviction, the entire previously visible stock row comes back. The optional material and translation-only shadow caster share the same 5,364 original triangles. The existing cast cache is invalidated at the atomic owner switch; no change to general terrain, road or other building receiver equations.
+Only source AEB `q11220` ordinal 203/FID 32980 is eligible. The compressed 24,504-byte original range, exact ordered record, original emitter transform and all six actual artwork-independent draw attributes are pinned. The intact batch ships first. A locally streamed 374,243-byte compressed `SDAV` pack (1,792,460 bytes decoded) is requested only once the exact sampled original N112 ground context returns a matching lease. A late, missing or wrong digest cannot evict the prior visual or caster. On valid admission only its 66 indices are omitted; the other source triangle order and buffer objects do not change. On N56/N8, loss of the regular near lease or eviction, the entire previously visible stock row comes back. The shaded preview material and translation-only shadow caster share the same 5,364 original triangles. The existing cast cache is invalidated at the atomic owner switch; no change to general terrain, road or other building receiver equations.
 
 Projected actual emitted vertices have no area overlap with 256 nearby stock building triangles (closest 10.149 m) or 32 road triangles (closest 10.777 m). No mapped sidewalk or parking mesh occurs in the checked local window. Natural vegetation is untouched; these are geometry-scope checks, not claims about exact real plant or vehicle positions. CSS/WebGL and current lighting performance depend on the viewer’s settings. The detached visual study is design evidence. The following app views exercise the real ground lease and cast path.
+
+Standard requests the authored exterior only within 2.25 km and after
+the checked ground lease is available. It restores the stock owner
+beyond 2.7 km, or earlier if the exact ground lease expires. The ordinary
+model renders 5,342 net additional triangles in thirteen extra draws
+when visible. It does not allocate or submit the experimental caster.
+`scenery=detail` and alternative ground or cast modes retain their
+own guards; no new world surfaces or flight physics ship with this change.
 
 ## Sources and reproducible art
 
@@ -22,8 +37,15 @@ Projected actual emitted vertices have no area overlap with 256 nearby stock bui
 
 ## Actual game views
 
-[Matched street and air images](st-davids-church-comparison.webp)
-show stock at left and the church at right. The comparison switches the
+[Matched Standard imagery](st-davids-standard.webp) shows the ordinary
+exterior, without experimental shadows. The two views switch the actual
+stock and authored owner in a single rendered scene; restoring the authored
+owner reproduces the same pixels. [Pixel-scope receipt](st-davids-standard-scope.json).
+[Compiled departure, no-download and corrupt-art checks](../../tools/qa/georgetown-standard-flight.py).
+
+The separate shadow preview also has [matched street and air images](st-davids-church-comparison.webp)
+
+with stock at left and the church at right. The comparison switches the
 actual owner and caster in one settled scene, with identical terrain
 imagery, water phase and camera between the frames. Restoring the candidate reproduces
 its original image exactly. The [protected-pixel audit](st-davids-church-scope.json)

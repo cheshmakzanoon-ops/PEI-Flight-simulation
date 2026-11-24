@@ -177,7 +177,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  #include <colorspace_fragment>
  }`;
 export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
-type LocalExteriorReview={ground:()=>boolean;shadows:BuildingShadows};
+type LocalExteriorReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 export type RailwayReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:ReturnType<typeof authenticatedOwnerVariant>;neighborsCaster:THREE.Mesh};
 export class Buildings {
@@ -212,7 +212,7 @@ export class Buildings {
  private station?:RailwayVariant;
  private pendingStandardRail?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private readonly tryStDavids?:LocalExteriorReview;
- private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
+ private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private sourisEastGround?:SourisEastGround;
  private summersideRoofCohort=false;
@@ -328,7 +328,7 @@ export class Buildings {
  update(x:number,z:number){
   this.syncCavendish();
   this.syncStation(x,z);
-  this.syncStDavids();
+  this.syncStDavids(x,z);
   this.syncSourisEast();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
@@ -349,7 +349,7 @@ export class Buildings {
     if(id===ST_DAVID.tile){
      const st=this.stDavids;
      if(st?.owner===m){
-      if(st.variant?.visible)this.tryStDavids?.shadows.leaseOwnerChanged();
+      if(st.variant?.visible)this.tryStDavids?.shadows?.leaseOwnerChanged();
       st.variant?.dispose();st.art.dispose();this.stDavids=undefined;
      }
      if(this.pendingStDavids?.owner===m)this.pendingStDavids=undefined;
@@ -379,8 +379,8 @@ export class Buildings {
    if(east?.owner===m&&east.variant.visible&&east.caster&&east.neighborsCaster){
     add(east.neighborsCaster);add(east.caster);continue;
    }
-   const exterior=this.station?.owner===m&&this.tryStation?.shadows?this.station:this.stDavids?.owner===m?this.stDavids:undefined;
-   if(exterior?.variant?.visible){
+   const exterior=this.station?.owner===m&&this.tryStation?.shadows?this.station:this.stDavids?.owner===m&&this.tryStDavids?.shadows?this.stDavids:undefined;
+   if(exterior?.variant?.visible&&exterior.art.caster&&exterior.neighborsCaster){
     // Distinct roster identities invalidate the former flat owner's depth
     // exactly when its visual owner view changes.
     add(exterior.neighborsCaster);add(exterior.art.caster);
@@ -404,15 +404,16 @@ export class Buildings {
   }
  }
  get stDavidsActive(){return this.stDavids?.variant?.visible??false;}
- private syncStDavids(){
+ private syncStDavids(x:number,z:number){
   const request=this.tryStDavids,art=this.stDavids,pending=this.pendingStDavids;
   if(!request||(!art&&!pending))return;
-  const seated=request.ground();
+  const inRange=!request.standard||Math.hypot(x-ST_DAVID.originXZ[0],z-ST_DAVID.originXZ[1])<(art?.variant?.visible?2700:2250);
+  const seated=inRange&&request.ground();
   if(art){
    const before=art.variant?.visible;
    art.variant?.sync(seated);
-   if(before!==art.variant?.visible)request.shadows.leaseOwnerChanged();
-   if(art.variant?.visible)art.neighborsCaster.geometry=art.owner.geometry;
+   if(before!==art.variant?.visible)request.shadows?.leaseOwnerChanged();
+   if(art.variant?.visible&&art.neighborsCaster)art.neighborsCaster.geometry=art.owner.geometry;
   }else if(pending&&seated){
    this.pendingStDavids=undefined;
    void this.promoteStDavids(pending,request);
@@ -600,8 +601,8 @@ export class Buildings {
    if(!current()){art.dispose();return;}
    const variant=authenticatedOwnerVariant(owner,art.group,range,ST_DAVID);
    if(!variant){art.dispose();return;}
-   const neighborsCaster=new THREE.Mesh(stock,owner.material);
-   neighborsCaster.position.copy(owner.position);
+   const neighborsCaster=art.caster?new THREE.Mesh(stock,owner.material):undefined;
+   neighborsCaster?.position.copy(owner.position);
    this.stDavids={owner,art,variant,neighborsCaster};
    // Until the next valid ground check, keep the original tile and old depth.
    this.scene.add(art.group);

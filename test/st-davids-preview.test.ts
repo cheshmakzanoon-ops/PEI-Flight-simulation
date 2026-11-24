@@ -7,14 +7,14 @@ import * as T from 'three';
 import {BuildingShadows} from '../src/render/local-building-shadows.ts';
 import {ST_DAVIDS as S} from '../src/render/st-davids/source.generated.ts';
 import {ST_DAVIDS_ART as A} from '../src/render/st-davids/art.generated.ts';
-import {stDavidsAtlasAllows,stDavidsGround,stDavidsOwnerAllows,stDavidsOwnerBytes,stDavidsRequested} from '../src/render/st-davids/admit.ts';
+import {stDavidsAtlasAllows,stDavidsGround,stDavidsOwnerAllows,stDavidsOwnerBytes,stDavidsRequested,stDavidsStandardRequested} from '../src/render/st-davids/admit.ts';
 import {decodeStDavids,loadStDavids} from '../src/render/st-davids/runtime.ts';
 const dir=new URL('../public/',import.meta.url),read=(p:string)=>fs.readFileSync(new URL(p,dir));
 const slice=(a:Uint8Array)=>Uint8Array.from(a).buffer;
 const sha=(a:Uint8Array)=>createHash('sha256').update(a).digest('hex');
 const wire=read('art/'+A.file),raw=gunzipSync(wire,{maxOutputLength:A.raw}),renderer=new BuildingShadows({} as T.WebGLRenderer,new T.Vector3(-.60,.74,-.31));
 const plain=(p:URLSearchParams)=>stDavidsRequested(p),want='buildingShadows&stDavidsChurchReview';
-test('St. David’s is a manual one-owner 2020 preview, never a global profile change',()=>{
+test('St. David’s explicit shadow mode is one-owner only',()=>{
  for(const q of ['', 'buildingShadows','stDavidsChurchReview',want+'&scenery=detail',want+'&surveyRelief',want+'&inlandRelief',want+'&seatedRoads'])assert(!plain(new URLSearchParams(q)),q);
  assert(plain(new URLSearchParams(want)));
  assert(plain(new URLSearchParams(want+'&summersideStationReview')));
@@ -66,7 +66,7 @@ test('valid raw/streamed gzip accepted; same-length damaged / oversized / wrong 
  const bad=[new Response('not here',{status:404}),new Response(slice(wire),{status:206}),new Response(slice(wire.subarray(0,-1))),
    new Response(mismatch),new Response(slice(gzipSync(mismatch))),new Response(new Uint8Array(A.raw+1))];
  for(const x of bad)assert.equal(await loadStDavids('/art/',renderer,async()=>x),undefined);
- const broken=raw.slice();broken[0]^=1;assert.equal(decodeStDavids(slice(broken),renderer),undefined);
+ const broken=Uint8Array.from(raw);broken[0]^=1;assert.equal(decodeStDavids(slice(broken),renderer),undefined);
  let aborted=false,replied=false;const pending=async(_href: unknown,init?:RequestInit)=>{
   init?.signal?.addEventListener('abort',()=>aborted=true);
   await new Promise(ok=>setTimeout(ok,48));replied=true;return new Response(slice(wire));
@@ -86,4 +86,22 @@ test('contact lease is locked to the same unaltered near geometry and surface fi
  const gate=stDavidsGround(actor as never,S.terrain,()=>road);assert(gate);assert(gate());assert(gate());assert.equal(checked,S.grade.length);
  road=undefined;assert(!gate());road=S.road;l=undefined;assert(!gate());l=other;offset=.21;assert(!gate());
  l=tile;offset=0;assert(gate());assert.equal(stDavidsGround(actor as never,'incorrect',()=>road),undefined);
+});
+test('the ordinary exterior skips the decoded caster but keeps the same exact art groups',()=>{
+ const enabled=(q:string)=>stDavidsStandardRequested(new URLSearchParams(q));
+ assert.equal(enabled(''),true);
+ assert.equal(enabled('departure=georgetown-low'),true);
+ for(const q of ['stockStDavidsExterior','stDavidsChurchReview','buildingShadows','scenery=detail','surveyRelief','inlandRelief',
+  'seatedRoads','northBaywalkPreview','northBaywalkConcrete','spinnakersPreview'])assert.equal(enabled(q),false,q);
+ const standard=decodeStDavids(slice(raw),undefined),preview=decodeStDavids(slice(raw),renderer);
+ assert(standard&&preview);assert.equal(standard.caster,undefined);assert(preview.caster);
+ const geometry=(g:T.Group)=>g.children.map(c=>{
+  const m=c as T.Mesh;return [m.name,m.geometry.index?.count,m.geometry.getAttribute('position').count] as const;
+ });
+ assert.deepEqual(geometry(standard.group),geometry(preview.group));
+ const m=standard.group.children.find(q=>q.name==='glass') as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
+ const opt={uniforms:{},vertexShader:'#include <worldpos_vertex>',fragmentShader:'#include <emissivemap_fragment>\n#include <lights_fragment_end>'};
+ m.material.onBeforeCompile(opt as never,{} as T.WebGLRenderer);
+ assert.match(opt.fragmentShader,/sdavFresnel/);assert.doesNotMatch(opt.fragmentShader,/railBuildingShade/);assert.deepEqual(opt.uniforms,{});
+ standard.dispose();preview.dispose();
 });

@@ -29,7 +29,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 **Cavendish scenery in one step:** Select **Cavendish Dunelands · coastal pass**, then **Enable Cavendish detail**. This selects six compatible local studies without changing the other scenery settings. [What the pack enables](docs/qa/cavendish-package.md).
 
-**Waterfront approaches:** Choose **Basin Head · low pass** or **Summerside waterfront · low pass** in the departure menu to start offshore facing the local scenery. [Flight checks](docs/qa/waterfront-departures.md).
+**Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](docs/qa/waterfront-departures.md) · [Georgetown exterior and flight check](docs/qa/st-davids-church-study.md).
 
 ### Scenery previews
 

@@ -62,16 +62,16 @@ def make_stage(repo, target, edition):
    if(sdavPose)(window as any).sdavPair=()=>{
     const church=(buildings as any).stDavids,shadows=world.buildingShadows!;
     const snap=()=>{
-     shadows.leaseOwnerChanged();
-     shadows.render(camera.position,world.groundHeight(camera.position.x,camera.position.z),liveCasters);
+     if(shadows){shadows.leaseOwnerChanged();
+     shadows.render(camera.position,world.groundHeight(camera.position.x,camera.position.z),liveCasters);}
      renderer.render(scene,camera);
      return {image:renderer.domElement.toDataURL('image/png'),draws:renderer.info.render.calls,
-      triangles:renderer.info.render.triangles,shadows:shadows.state,indexed:!!church.owner.geometry.index,visible:church.art.group.visible};
+      triangles:renderer.info.render.triangles,shadows:shadows?.state??null,indexed:!!church.owner.geometry.index,visible:church.art.group.visible};
     };
     if(!church.variant.visible)throw Error('Church preview not active at capture');
     const candidate=snap();
     church.variant.sync(false);const stock=snap();
-    church.variant.sync(true);church.neighborsCaster.geometry=church.owner.geometry;
+    church.variant.sync(true);if(church.neighborsCaster)church.neighborsCaster.geometry=church.owner.geometry;
     const restored=snap();
     return {candidate,stock,restored:restored.image===candidate.image,q:(window as any).stDavidsQA};
    };''');main.write_text(s)
@@ -87,7 +87,7 @@ def stable(page, expected, optical=True, timeout=110):
  prior=None;started=time.monotonic();steady=0
  while time.monotonic()-started<timeout:
   docket=page.evaluate('()=>({d:window.islandAirDiagnostics,s:window.stDavidsQA})');d=docket['d'];s=docket.get('s')
-  k=(d['buildingTiles']['ready'],d['buildingTiles']['failed'],d['triangles'],d['drawCalls'],tuple(s['sortedTileImages'] if s else []),d['buildingShadows']['updates'])
+  k=(d['buildingTiles']['ready'],d['buildingTiles']['failed'],d['triangles'],d['drawCalls'],tuple(s['sortedTileImages'] if s else []),(d['buildingShadows'] or {}).get('updates'))
   done=not d['detail']['loading'] and not d['detail'].get('retrying',0) and d['buildingTiles']['loading']==0 and not d['buildingTiles']['pending'] and d['stDavids'] is expected
   if done and k==prior:steady+=1
   else:steady=0
@@ -163,13 +163,22 @@ def paired_views(repo,browser,url,args):
    p=c.new_page();p.set_default_timeout(150000)
    p.add_init_script('window.sdavQaInit='+json.dumps(view));errors=[]
    p.on('pageerror',lambda e:errors.append(str(e)));p.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
-   p.goto(url+'/?'+OPT,wait_until='domcontentloaded')
+   p.goto(url+'/?'+('diagnostics' if args.standard else OPT),wait_until='domcontentloaded')
    stable(p,True);x=p.evaluate('window.sdavPair()')
    assert x['restored'] and not errors and x['candidate']['indexed'] and x['candidate']['visible'] and not x['stock']['indexed'] and not x['stock']['visible'],(x.get('restored'),errors)
    for v in ('stock','candidate'):
     image=x[v].pop('image')
     (args.out/f'{k}-{v}.png').write_bytes(base64.b64decode(image.split(',',1)[1]))
    y=ImageChops.difference(Image.open(args.out/f'{k}-stock.png').convert('RGB'),Image.open(args.out/f'{k}-candidate.png').convert('RGB'))
+   if args.standard:
+    mask={'street':(160,78,421,319),'air':(263,158,376,268)}[k]
+    # The protected windows are calibrated to the published comparison.
+    if (args.width,args.height)==(650,435):
+     x0,y0,x1,y1=mask; bb=y.getbbox()
+     assert bb and x0<=bb[0]<bb[2]<=x1 and y0<=bb[1]<bb[3]<=y1,(k,bb)
+     x['protectedPixels']=args.width*args.height-(x1-x0)*(y1-y0)
+    assert x['candidate']['triangles']-x['stock']['triangles']==5342 and x['candidate']['draws']-x['stock']['draws']==13,x
+    assert x['candidate']['shadows'] is None and x['stock']['shadows'] is None,x
    x['view']=k;x['changedRgbBoundingBox']=y.getbbox();rows.append(x)
    (args.out/'paired.json').write_text(json.dumps(rows,indent=2)+'\n')
    print(k,x['changedRgbBoundingBox'],x['stock']['triangles'],x['candidate']['triangles'],x['restored'],flush=True)
@@ -199,7 +208,8 @@ def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--checkout',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
  p.add_argument('--chromium',default=os.environ.get('CHROMIUM'));p.add_argument('--edition',choices=['views','paired','flight'],default='views')
  p.add_argument('--width',type=int,default=650);p.add_argument('--height',type=int,default=435);p.add_argument('--views',help='Comma-separated camera names; depends on edition')
- p.add_argument('--skip-faults',action='store_true');p.add_argument('--prepare-only',action='store_true');a=p.parse_args();a.checkout=a.checkout.resolve();a.out=a.out.resolve()
+ p.add_argument('--standard',action='store_true',help='Render the ordinary shadowless pair (paired edition only).');p.add_argument('--skip-faults',action='store_true');p.add_argument('--prepare-only',action='store_true');a=p.parse_args();a.checkout=a.checkout.resolve();a.out=a.out.resolve()
+ if a.standard and a.edition!='paired':p.error('--standard needs --edition paired')
  available=('street','air') if a.edition=='paired' else ('street','medium','coarse')
  a.views=a.views or ','.join(available)
  if not set(a.views.split(',')).issubset(available):p.error('Available views: '+', '.join(available))

@@ -4,7 +4,7 @@ import {sourisEastGround} from './render/souris-east/ground.ts';
 import {shoreToneRequested} from './render/shore-tone.ts';
 import {townWallMode,TOWN_WALL_CORE_AREAS} from './render/town-wall-optics.ts';
 import {nearshoreFoamRequested} from './render/nearshore-foam.ts';
-import {stDavidsRequested,stDavidsGround} from './render/st-davids/admit.ts';
+import {stDavidsRequested,stDavidsGround,stDavidsStandardRequested,standardStDavidsGround} from './render/st-davids/admit.ts';
 import {ST_DAVIDS} from './render/st-davids/source.generated.ts';
 import {railRequested,railGround,railStandardRequested,standardRailGround} from './render/summerside-station/admit.ts';
 import {SUMMERSIDE_STATION as RAIL} from './render/summerside-station/source.generated.ts';
@@ -325,7 +325,10 @@ async function run(){
   defaultRailSeat?{ground:defaultRailSeat,standard:true as const}:undefined;
  const stDavidsSeat=stDavidsAsked&&world.buildingShadows&&renderer.capabilities.maxTextureSize>=1536&&
   SIDEWALKS.sha256===ST_DAVIDS.sidewalk&&MAPPED_PARKING.sha256===ST_DAVIDS.parking?stDavidsGround(world,terrainSha,()=>roads?.sourceGeometrySha256):undefined;
- const stDavidsReview=stDavidsSeat&&world.buildingShadows?{ground:stDavidsSeat,shadows:world.buildingShadows}:undefined;
+ const standardStDavidsSeat=stDavidsStandardRequested(options)&&SIDEWALKS.sha256===ST_DAVIDS.sidewalk&&MAPPED_PARKING.sha256===ST_DAVIDS.parking?
+  standardStDavidsGround(world,terrainSha,()=>roads?.sourceGeometrySha256):undefined;
+ const stDavidsReview=stDavidsSeat&&world.buildingShadows?{ground:stDavidsSeat,shadows:world.buildingShadows}:
+  standardStDavidsSeat?{ground:standardStDavidsSeat,standard:true as const}:undefined;
  const wallMode=townWallMode(options);
  const townWallOptics=wallMode?{panorama:sky,gain:{value:1},mode:wallMode,areas:wallMode==='core'?TOWN_WALL_CORE_AREAS:undefined}:undefined;
  // The unqualified alternate light/ground paths keep the ordinary tile.

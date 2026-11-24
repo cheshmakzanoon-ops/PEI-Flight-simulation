@@ -1,0 +1,56 @@
+[
+  {
+    "view": "street",
+    "protectedMaskOutsidePixelsXYXY": [
+      160,
+      78,
+      421,
+      319
+    ],
+    "protectedPixels": 219849,
+    "changedProtectedPixels": 0,
+    "changedPixels": 36752,
+    "width": 650,
+    "height": 435,
+    "actualStockToNewDraws": [
+      47,
+      60
+    ],
+    "actualStockToNewTriangles": [
+      258828,
+      264170
+    ],
+    "restoredImageExact": true,
+    "pngSHA256": [
+      "c1d4c90dd399879522187b8e0702c136817947a40dbe95046dec8ddb5aff93d6",
+      "f8485e08da98fefcda3c75ee43a5924aa7f028d440929b398af727293d70c8eb"
+    ]
+  },
+  {
+    "view": "air",
+    "protectedMaskOutsidePixelsXYXY": [
+      263,
+      158,
+      376,
+      268
+    ],
+    "protectedPixels": 270320,
+    "changedProtectedPixels": 0,
+    "changedPixels": 5071,
+    "width": 650,
+    "height": 435,
+    "actualStockToNewDraws": [
+      45,
+      58
+    ],
+    "actualStockToNewTriangles": [
+      260968,
+      266310
+    ],
+    "restoredImageExact": true,
+    "pngSHA256": [
+      "d491611704a593fb7d285b44c84daeccffe43697e7ca2206c1867eb3f69f1426",
+      "689ffbf067d7f775de12e09bca5fe739b063462b7915c500381e2e41204c3535"
+    ]
+  }
+]
