@@ -1,0 +1,2 @@
+// Original art compiled offline; no donor images or point cloud bytes.
+export const GREEN_GABLES_ASSET={"asset":"green-gables-v3.bin.gz","wireBytes":136002,"decodedBytes":714380,"sha":"2884847d8ece27dbc8efbabc6a7dbc0a5d7b3462c2be9b84362b8a32eecf7887","wireSha":"467004c355406caeaaf90ebac733b21b52881e4e988925043dbc839835a88358","vertices":20419,"triangles":10131,"materials":["whitewood","soffit","whiteframe","green","greenTrim","roof","porchRoof","glass","door","dark","hardware","brick","capstone","stone"]} as const;

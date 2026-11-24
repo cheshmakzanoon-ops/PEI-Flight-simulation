@@ -1,0 +1,21 @@
+{
+  "baseline": {
+    "distanceMetres": 47.346,
+    "speedMps": 52.01851942354647,
+    "altitudeMetres": 130.15919410809911,
+    "requests": [],
+    "warnings": [],
+    "errors": []
+  },
+  "combined": {
+    "distanceMetres": 45.548,
+    "speedMps": 52.01875245262241,
+    "altitudeMetres": 130.16621811277287,
+    "requests": [
+      "/PEI-Flight-simulation/world/fields-province/index.fcr.gz",
+      "/PEI-Flight-simulation/art/green-gables-v3.bin.gz"
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

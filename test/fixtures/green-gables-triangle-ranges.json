@@ -1,0 +1,267 @@
+{
+  "main shingled body/whitewood": [
+    "whitewood",
+    0,
+    74
+  ],
+  "kitchen shingled ell/whitewood": [
+    "whitewood",
+    74,
+    138
+  ],
+  "east kitchen dormer/whitewood": [
+    "whitewood",
+    138,
+    151
+  ],
+  "west kitchen dormer/whitewood": [
+    "whitewood",
+    151,
+    164
+  ],
+  "public entry vestibule/whitewood": [
+    "whitewood",
+    164,
+    176
+  ],
+  "main surveyed roof/soffit": [
+    "soffit",
+    0,
+    17
+  ],
+  "kitchen surveyed roof/soffit": [
+    "soffit",
+    17,
+    38
+  ],
+  "main shingled body/soffit": [
+    "soffit",
+    38,
+    126
+  ],
+  "kitchen shingled ell/soffit": [
+    "soffit",
+    126,
+    198
+  ],
+  "east kitchen dormer/soffit": [
+    "soffit",
+    198,
+    206
+  ],
+  "west kitchen dormer/soffit": [
+    "soffit",
+    206,
+    214
+  ],
+  "public entry vestibule/soffit": [
+    "soffit",
+    214,
+    222
+  ],
+  "main surveyed roof/whiteframe": [
+    "whiteframe",
+    0,
+    120
+  ],
+  "kitchen surveyed roof/whiteframe": [
+    "whiteframe",
+    120,
+    216
+  ],
+  "main shingled body/whiteframe": [
+    "whiteframe",
+    216,
+    1800
+  ],
+  "kitchen shingled ell/whiteframe": [
+    "whiteframe",
+    1800,
+    3012
+  ],
+  "east kitchen dormer/whiteframe": [
+    "whiteframe",
+    3012,
+    3144
+  ],
+  "west kitchen dormer/whiteframe": [
+    "whiteframe",
+    3144,
+    3276
+  ],
+  "public entry vestibule/whiteframe": [
+    "whiteframe",
+    3276,
+    3432
+  ],
+  "main shingled body/green": [
+    "green",
+    0,
+    1904
+  ],
+  "kitchen shingled ell/green": [
+    "green",
+    1904,
+    3489
+  ],
+  "public entry vestibule/green": [
+    "green",
+    3489,
+    3585
+  ],
+  "main surveyed roof/greenTrim": [
+    "greenTrim",
+    0,
+    120
+  ],
+  "kitchen surveyed roof/greenTrim": [
+    "greenTrim",
+    120,
+    216
+  ],
+  "main shingled body/greenTrim": [
+    "greenTrim",
+    216,
+    816
+  ],
+  "kitchen shingled ell/greenTrim": [
+    "greenTrim",
+    816,
+    1332
+  ],
+  "east kitchen dormer/greenTrim": [
+    "greenTrim",
+    1332,
+    1380
+  ],
+  "west kitchen dormer/greenTrim": [
+    "greenTrim",
+    1380,
+    1428
+  ],
+  "public entry vestibule/greenTrim": [
+    "greenTrim",
+    1428,
+    1560
+  ],
+  "main surveyed roof/roof": [
+    "roof",
+    0,
+    17
+  ],
+  "kitchen surveyed roof/roof": [
+    "roof",
+    17,
+    38
+  ],
+  "east kitchen dormer/roof": [
+    "roof",
+    38,
+    42
+  ],
+  "west kitchen dormer/roof": [
+    "roof",
+    42,
+    46
+  ],
+  "public entry vestibule/porchRoof": [
+    "porchRoof",
+    0,
+    10
+  ],
+  "main shingled body/glass": [
+    "glass",
+    0,
+    22
+  ],
+  "kitchen shingled ell/glass": [
+    "glass",
+    22,
+    38
+  ],
+  "east kitchen dormer/glass": [
+    "glass",
+    38,
+    40
+  ],
+  "west kitchen dormer/glass": [
+    "glass",
+    40,
+    42
+  ],
+  "public entry vestibule/glass": [
+    "glass",
+    42,
+    44
+  ],
+  "kitchen shingled ell/door": [
+    "door",
+    0,
+    2
+  ],
+  "public entry vestibule/door": [
+    "door",
+    2,
+    4
+  ],
+  "kitchen shingled ell/dark": [
+    "dark",
+    0,
+    4
+  ],
+  "surveyed chimneys/dark": [
+    "dark",
+    4,
+    28
+  ],
+  "public entry vestibule/dark": [
+    "dark",
+    28,
+    32
+  ],
+  "main shingled body/hardware": [
+    "hardware",
+    0,
+    480
+  ],
+  "kitchen shingled ell/hardware": [
+    "hardware",
+    480,
+    876
+  ],
+  "surveyed chimneys/hardware": [
+    "hardware",
+    876,
+    900
+  ],
+  "public entry vestibule/hardware": [
+    "hardware",
+    900,
+    912
+  ],
+  "surveyed chimneys/brick": [
+    "brick",
+    0,
+    48
+  ],
+  "surveyed chimneys/capstone": [
+    "capstone",
+    0,
+    24
+  ],
+  "main shingled body/stone": [
+    "stone",
+    0,
+    12
+  ],
+  "kitchen shingled ell/stone": [
+    "stone",
+    12,
+    24
+  ],
+  "public entry vestibule/stone": [
+    "stone",
+    24,
+    36
+  ]
+}

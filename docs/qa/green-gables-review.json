@@ -1,0 +1,69 @@
+{
+  "gardenLockedCamera": {
+    "pixels": 475456,
+    "protected": {
+      "pixels": 273540,
+      "anyCodeChange": 0,
+      "maxDifference": 0
+    },
+    "allRgbChangesAbove2": 106955,
+    "draws": [
+      94,
+      108
+    ],
+    "triangles": [
+      257568,
+      267671
+    ]
+  },
+  "compilerFailures": {
+    "no-flag": {
+      "canvasRGBChanged": 0,
+      "statuses": [],
+      "requests": 0
+    },
+    "404": {
+      "canvasRGBChanged": 0,
+      "statuses": [
+        [
+          404,
+          null
+        ]
+      ],
+      "requests": 1
+    },
+    "decoded-corrupt": {
+      "canvasRGBChanged": 0,
+      "statuses": [
+        [
+          200,
+          null
+        ]
+      ],
+      "requests": 1
+    },
+    "valid-after-timeout": {
+      "canvasRGBChanged": 0,
+      "statuses": [],
+      "requests": 1
+    },
+    "http-gzip-valid-lod": {
+      "canvasRGBChanged": 16773,
+      "statuses": [
+        [
+          200,
+          "gzip"
+        ]
+      ],
+      "requests": 1,
+      "coarseRestoredStockAndNearReturned": true
+    }
+  },
+  "enclosedRoofMisses": {
+    "previousUnpublishedMesh": 211,
+    "submittedMesh": 0,
+    "screenSpaceConnectivity": 4,
+    "absoluteWitnessesInUnitTest": 5
+  },
+  "compiledFlightEvidence": "green-gables-flight.json"
+}

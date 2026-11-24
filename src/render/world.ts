@@ -343,7 +343,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
 export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
- baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>,tryCropField=false){
+ baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>,verifyCoverForReview=false){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -355,7 +355,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
-  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested||tryCropField),
+  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested||verifyCoverForReview),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
