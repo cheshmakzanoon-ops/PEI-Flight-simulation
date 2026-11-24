@@ -1,0 +1,14 @@
+{
+  "gables-fairway-near-close": {
+    "pixels": 453600,
+    "protectedPixels": 326687,
+    "protectedChangedPixels": 0,
+    "changedAbove2": 8988,
+    "samePhysicalProbes": true,
+    "sameDrawAndTriangles": true
+  },
+  "gables-fairway-long-close": {
+    "distanceFade": true,
+    "fullyUnchanged": 453600
+  }
+}

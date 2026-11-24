@@ -1,7 +1,7 @@
-# Packed gravel material at Green Gables
+# Green Gables packed gravel material fixture
 
 Add `?gablesGravelReview` (or `&gablesGravelReview` after other options)
-to preview one small, independently supported span of gravel near the Barn.
+to view the development fixture for one small, independently supported span of gravel near the Barn.
 The effect paints fine aggregate on the existing terrain. It neither
 constructs a walkway nor changes its height, position, lighting normal,
 route access, or collision. Outside the short section, the earlier ground

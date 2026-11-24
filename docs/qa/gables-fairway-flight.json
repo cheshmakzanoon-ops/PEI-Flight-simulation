@@ -1,0 +1,30 @@
+{
+  "stock": {
+    "distanceMetres": 75.91,
+    "site": "cavendish-dunelands-low",
+    "fairwayAdmitted": false,
+    "fairwayRequests": [],
+    "warnings": [],
+    "errors": []
+  },
+  "live": {
+    "distanceMetres": 79.44,
+    "site": "cavendish-dunelands-low",
+    "fairwayAdmitted": true,
+    "fairwayRequests": [
+      "/PEI-Flight-simulation/world/cavendish/v2/fairway-ground.r8.gz"
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "bad": {
+    "distanceMetres": 77.09,
+    "site": "cavendish-dunelands-low",
+    "fairwayAdmitted": false,
+    "fairwayRequests": [
+      "/PEI-Flight-simulation/world/cavendish/v2/fairway-ground.r8.gz"
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

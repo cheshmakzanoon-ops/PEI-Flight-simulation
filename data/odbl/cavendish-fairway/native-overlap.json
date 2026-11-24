@@ -1,0 +1,33 @@
+{
+  "mappedWay": 1353393025,
+  "sourceOpenGround": 2030,
+  "fairwayInsideQualifiedNative": 794,
+  "secondCoverageUnobserved": false,
+  "orthometricCellM": 1,
+  "candidateInteriorByReserveM": {
+    "1": 684,
+    "2": 582,
+    "3": 460,
+    "4": 374
+  },
+  "medianC1ReflectanceRGBspaceWithoutBlueRedGreenNIR": [
+    [
+      0.03620000000000001,
+      0.0676,
+      0.37440000000000007
+    ],
+    [
+      0.05149999999999999,
+      0.07769999999999999,
+      0.4397000000000001
+    ],
+    [
+      0.06440000000000001,
+      0.08660000000000001,
+      0.4680000000000001
+    ]
+  ],
+  "sourceSHA": "dcfcbc504a6a71fd9972201dc83516bf118b2e558c9766bed99d083a5be70194",
+  "rawWaySHA": "117032c92f3447844b64dedb96ebfa07c5d2791255790686d63affd53f9cd736",
+  "openGreenLevel2AQuorum": 6
+}
