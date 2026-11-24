@@ -1,0 +1,111 @@
+{
+  "cast": {
+    "samples": 7,
+    "triangles": 5364,
+    "sun": [
+      -0.5988930707832083,
+      0.7386347872992903,
+      -0.3094280865713243
+    ],
+    "spacing": 0.35,
+    "origin": [
+      51087,
+      35311
+    ],
+    "width": 195,
+    "height": 178,
+    "active": 2389,
+    "full": 2318,
+    "wet": 0,
+    "minDry": 215.84695147179804,
+    "heights": [
+      7.473583305248246,
+      7.707783147650047
+    ],
+    "limits": [
+      51106.25,
+      35330.6,
+      51124.45,
+      35353.7
+    ],
+    "wire": 262,
+    "rawSha": "d5e25ce2d817032596eec4f5469e8c08ace8181518da7ae1f097c116e0195421",
+    "wireSha": "503f901755fcac71f661e5f37d5bb7306958a6de3bec740334efcb7221093d22",
+    "localRoadTriangles": 12,
+    "minRoadDistanceAtCenterM": 11.023812742848559,
+    "conservativeMinRoadDistanceWithFullBilinearFootprintM": 10.528837996017975,
+    "centerRoadOverlap": 0,
+    "nearbyOtherOwners": 4,
+    "minOtherBuildingDistanceM": 9.986355820479682,
+    "maskCentersUnderOtherBuilding": 0
+  },
+  "views": [
+    {
+      "view": "close",
+      "changedPixels": 14255,
+      "boundsXYXY": [
+        164,
+        220,
+        441,
+        352
+      ],
+      "maxRgb": 14,
+      "draws": 225,
+      "triangles": 315562,
+      "restoredExact": true,
+      "requests": [
+        "georgetown-st-davids-ground-A.gz"
+      ],
+      "maskPixelsXYXY": [
+        152,
+        207,
+        454,
+        364
+      ],
+      "protectedPixels": 210506,
+      "changedProtectedPixels": 0,
+      "pngSHA256": [
+        "fd4df70317bb0967a0f7c299eb265ec3caf244ef45c66054ba851792e17e098d",
+        "941ac0a67d539fec66a23b8c317118de8366a700feb352a321ed57abe2b10eaa"
+      ]
+    },
+    {
+      "view": "approach",
+      "changedPixels": 728,
+      "boundsXYXY": [
+        276,
+        209,
+        339,
+        245
+      ],
+      "maxRgb": 14,
+      "draws": 84,
+      "triangles": 264814,
+      "restoredExact": true,
+      "requests": [
+        "georgetown-st-davids-ground-A.gz"
+      ],
+      "maskPixelsXYXY": [
+        263,
+        197,
+        354,
+        258
+      ],
+      "protectedPixels": 252369,
+      "changedProtectedPixels": 0,
+      "pngSHA256": [
+        "b02bc209e118ee01a95f7a321e55e6ab4fe4907d493a7330b2bc67d10c3e2454",
+        "3cb5e04f7eaf0d7626b28ac76c161d49172b7045f5276a11236c74e722186eb8"
+      ]
+    }
+  ],
+  "independentThreeRays": {
+    "exactN112Probes": 686,
+    "directShadowRays": 4802,
+    "sampledEdgeCenters": 71,
+    "sampledFullCenters": 195,
+    "sampledZeroCenters": 420,
+    "maskVoteMismatches": 0,
+    "maxStockSamplerDifferenceM": 4.29e-07
+  }
+}

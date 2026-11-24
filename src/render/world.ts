@@ -509,6 +509,22 @@ export class World {
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
    close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
+ /** Install a small, signed local light receiver without replacing terrain or its masks. */
+ mountGeorgetownGroundSun(mask:ChurchGroundSun){
+  const [m,n]=mask.tile;
+  if(m!==24||n!==17||this.buildingShadows)return false;
+  const target=this.byId.get(m+'-'+n);
+  if(!target||target.lod!==112||target.relief)return false;
+  const material=target.local,stock=material.fragmentShader;
+  const head='void main(){',receive='col*=.90+.31*light;';
+  if(stock.includes('churchDirectOcclusion(')||stock.split(head).length!==2||stock.split(receive).length!==2)return false;
+  material.fragmentShader=stock.replace(head,churchSunGLSL+'\n'+head).replace(receive,`
+   float georgetownSun=churchDirectOcclusion(p,d,coast);
+   col*=(.90+.31*light*(1.-.96*georgetownSun))*mix(vec3(1.),vec3(.94,.97,1.),georgetownSun*light);
+  `);
+  Object.assign(material.uniforms,mask.uniforms);
+  material.needsUpdate=true;return true;
+ }
  private groundVersion=0;
  private reliefPacks?:ReliefPacks;
  private reliefSeed=new Map<string,ReliefSeed>();

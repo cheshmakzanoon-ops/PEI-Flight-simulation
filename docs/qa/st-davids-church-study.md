@@ -85,3 +85,30 @@ requested; N8 retains its ordinary absent local building owner. Both
 regular virtual flights moved at least 500 m after Dispatch, cycled
 to Scenery and paused. The selected exterior stayed active only in
 the preview run.
+
+## Standard ground shadow
+
+St. David’s casts a local shadow on the grass, calculated from the same
+5,364 triangles visible on the ordinary route and the scene's fixed sun.
+Seven directions sample the exact nearby terrain. The 262-byte compressed
+mask has 2,389 dry samples; it remains more than 10.5 m from the tested
+road mesh and 9.9 m from other packed buildings after allowing for
+filtering. It changes only the direct daylight on one existing terrain
+tile. It is not time-of-day weather, a site survey, or a replacement for
+the separate shadow preview.
+
+The mask downloads only after the signed exterior is visible. It switches
+off when the model or its terrain ownership is lost. Corrupt or late
+data cannot remove the church or change the ground surface. Use
+`?departure=georgetown-low&stockStDavidsGroundSun` to keep the model
+but compare the original light.
+
+[Same-camera comparison](st-davids-ground-sun.webp) ·
+[Mask and RGB scope receipt](st-davids-ground-sun-scope.json) ·
+[Compiled flight check](../../tools/qa/georgetown-ground-normal-flight.py).
+An independent replay matched all 4,802 Three.js shadow rays with the
+baked mask. The locked frames keep their draw and triangle counts; no photo texture,
+geometry, collision, roads, or neighboring building material changed.
+
+Reproduce the exact mask and its road/building clearance audit with
+`node --experimental-transform-types tools/art/st-davids/bake-ground-sun.mjs --verify`.

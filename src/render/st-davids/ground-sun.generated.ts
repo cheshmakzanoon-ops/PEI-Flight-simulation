@@ -1,0 +1,12 @@
+// Exact sunny Standard scene: original authored outer shell and signed N112 terrain.
+export const GEORGETOWN_GROUND_SUN={
+ tile:[24,17],x0:51087,z0:35311,spacing:.35,width:195,height:178,
+ file:'lighting/v1/georgetown-st-davids-ground-A.gz',wireBytes:262,rawBytes:34710,
+ maskSha:'d5e25ce2d817032596eec4f5469e8c08ace8181518da7ae1f097c116e0195421',
+ wireSha:'503f901755fcac71f661e5f37d5bb7306958a6de3bec740334efcb7221093d22',
+ artRawSha:'c1c56b46a7d73d893dc2e75ada42494ecf3f38889d70fc8be7d807c5a5f86358',
+ terrainSha:'661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d',
+ coverDecodedSha:'e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9',
+ pose:[51111.69140072926,35337.302605766265,7.55,.9583443127319242,-.26766669623748385,.26610500829656303,.9639685390873183],
+ sun:[-.5988930707832083,.7386347872992903,-.3094280865713243],
+} as const;
