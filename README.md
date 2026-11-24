@@ -117,7 +117,7 @@ Press a gamepad button while the simulator has focus to activate it in the brows
 
 ## Development
 
-The [Province House exterior study](docs/qa/province-house-study.md) and [Summerside City Hall exterior study](tools/art/summerside-cityhall-study/README.md) include original Three.js art and reproducible checks. Both are separate from the playable atlas.
+The [Province House](docs/qa/province-house-study.md), [Summerside City Hall](tools/art/summerside-cityhall-study/README.md), and [Lefurgey Cultural Centre](tools/art/lefurgey-study/README.md) exterior studies include original Three.js art and reproducible checks. They are separate from the playable atlas.
 
 ```sh
 npm run check                # Flight tests, TypeScript and production build

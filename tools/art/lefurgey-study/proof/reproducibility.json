@@ -1,0 +1,157 @@
+{
+  "schema": "lefurgey-b2-r-seat-authoring-v1",
+  "disposition": "detached only; no geographic, collision or runtime integration",
+  "testedCheckout": "06e51aad3c905316036ac0f121cfade78d948761",
+  "frozenFiles": {
+    "src/lefurgey-roof.ts": "c2a12a0ff5d364edba9aaf1db2c9598bf05b9d53887aaa10a8d8734be489cc52",
+    "src/lefurgey-study.ts": "973fcc67a3feaa990cb0624775f0e79ff5cccecb26b695edf929be5123e3ce89",
+    "src/lefurgey-survey.generated.ts": "e4274457e69cbc9255e33d51689d04fe2e157b5a75bfeacbc27342bbc0456e52",
+    "proof/lefurgey-studio-comparison.webp": "45491cf4248ed9122016d59ed99eeffde04c930b24a839a6fbe4e7dda7027828"
+  },
+  "stockAtlas": {
+    "tile": "q03200300",
+    "ordinal": 0,
+    "layerSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "tileSHA256": "bdf391f788b3cd1951d790346df1bce239227c8982f6a5e81d9078f71481ec15",
+    "rowSHA256": "3b6ce7337ce362fd394d2f5479305d588ee28459d681d21dbdfdf5a07d5eb6e4",
+    "stockRoofCGVD2013M": 25.08233070373535
+  },
+  "mesh": {
+    "triangles": 5942,
+    "materials": 12,
+    "positionHashes": {
+      "shingle": "5b3391fadba0d849ca2b65570eeb982e588207687c3594b6fa02c136b06fa3fa",
+      "soffit": "c13a3b74a74b556ee2e4c2effd1fafe5722c9c08da569ba55e5cc2b0614acb50",
+      "ochre": "5d6a31a3f01ebf9c4eaca9963113175a9e8f67e74ae1b387ec362771a218746f",
+      "wood": "0526bdb4ec8c3fcad5aed0c44ea04dee6bbeacf29dc478eea6e2104a41171eb3",
+      "darkWood": "eb482f161e8c2daf21e22b93a02fbb7be2a996762ddadbd161bb8f36fd83866e",
+      "red": "ae90078ea7a9f35aede289990b08af3d7530285d935652118ad84b7d974b27e4",
+      "quietCream": "aa548b5dab499f9e4f6467f316babfea8e15a9cd40951bd6bacffbce20b14123",
+      "glass": "3792f9cb2a2c3deeae0c6bba5c4721e0b0202b5c7bb99b2ec855862e7ad64cfa",
+      "stone": "be8950e0e1ad5a2f1a5026cbf04a3b84eb79d54622b45877adba72d60d39b5e1",
+      "brick": "14ca87289b8d2bd6264c79955d08618f70617b07bc944c98f733820b417bffa6",
+      "porchFloor": "ea20c6b57cc8c9086b71a4cb6ddc6d7423d533f3410bc8ba02db91020d964cea",
+      "roofCopper": "9b82d93854c5a86fdb84d4c7afaa6b1c8806a93a3686f9cd6e73f198b74c1c54"
+    },
+    "planAreaM2": 257.9223539283119,
+    "roofRays": {
+      "inside": 18211,
+      "outside": 13547,
+      "insideMisses": 0,
+      "doubleHits": 0,
+      "maxAltitudeReplayErrorM": 1.1023774213470006e-06
+    },
+    "opaqueSouthRays": 23040,
+    "opaqueSouthMisses": 0,
+    "lanternSeat": {
+      "oldModeledGapM": 0.34411041415406984,
+      "perimeterEmbedMinM": 0.22588958584593044,
+      "rays": 1008,
+      "misses": 0
+    }
+  },
+  "priorWorldGroundDiagnostic": {
+    "referenceCheckout": "d17691f6454d0f10dc0aa4a6e2369266a3829eff",
+    "unchangedTerrainTile": "8-13",
+    "samplesPerTier": 1062,
+    "minimumEmbedM": {
+      "112": 0.4404034367973626,
+      "56": 0.1996367238952903,
+      "8": -2.3556674079461484
+    },
+    "noWorldChange": true
+  },
+  "survey": {
+    "role": "PEI collection project epoch 2020, not a recent exterior photograph or independent survey",
+    "verticalDatum": "CGVD2013",
+    "licence": "Open Government Licence - Canada",
+    "sourceURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_339000_705000.copc.laz",
+    "etag": "\"f4f6316d077d348e743ca65c3b19c029-7\"",
+    "cropEPSG2961": [
+      439402.997,
+      5138144.317,
+      439424.772,
+      5138169.914
+    ],
+    "rangeRequests": 10,
+    "wireBytes": 2219346,
+    "flightLine": 17075,
+    "split": "reserve if floorMod(13*e+19*n+17*floor(e/11),7) in {0,1}, e=floor(E/3), n=floor(N/3), EPSG:3979",
+    "blockGuardM": 0.2,
+    "ownerInboardM": 0.18,
+    "gate": "Non-withheld single-return Class 6 only (training replay, not an independent holdout). No reserved heights selected, scored or stored.",
+    "sameSurveyTrainReplayM": {
+      "count": 898,
+      "meshP50": 0.02454660411978793,
+      "meshP90": 0.20546078219244168,
+      "meshMax": 6.8668082274273985,
+      "flatStockP90": 9.960530703735353
+    },
+    "cupolaTrainOnlyM": {
+      "count": 31,
+      "meshP50": 0.022425846256371784,
+      "meshP90": 0.04313063447612819,
+      "meshMax": 0.05437464835490502,
+      "flatStockP90": 0.562330703735352
+    },
+    "limit": "Front gable, narrow porch and other joins are not constrained by the simple envelope. Real same-source training deviations remain near the joins. No current covering material or access inference."
+  },
+  "art": {
+    "asset": "proof/lefurgey-studio-comparison.webp",
+    "method": "Matched Blender neutral-stage relight of actual stock and actual author Three.js buffers, not a live gameplay capture. Original art, no donor raster elements.",
+    "comparisonCameras": {
+      "south": {
+        "eyeLocalM": [
+          -25,
+          7.32,
+          5.05
+        ],
+        "aimLocalM": [
+          5.5,
+          7.95,
+          6.55
+        ],
+        "lensMm": 34
+      },
+      "overflight": {
+        "eyeLocalM": [
+          -40,
+          30,
+          61
+        ],
+        "aimLocalM": [
+          8.0,
+          8.31,
+          7
+        ],
+        "lensMm": 61
+      }
+    },
+    "dateScope": {
+      "2020": "survey project epoch for selected heights",
+      "2024": "publication year of provincial cultural guide (appearance only)",
+      "2025": "roof-replacement tender; no confirmed completion or current finish"
+    }
+  },
+  "offlineExport": {
+    "threeRevision": "187",
+    "bytes": 437172,
+    "sha256": "65f356f24c2e4aa35f44b6e4be63dafeea144f5fe4cecec21e470e19b71c8481",
+    "externalResources": 0,
+    "positionBufferExact": true,
+    "editableImport": {
+      "tool": "Blender glTF importer",
+      "meshObjects": 12,
+      "triangles": 5942,
+      "materials": 12
+    },
+    "existingOutputNotOverwritten": true
+  },
+  "productionIsolation": {
+    "ordinaryTestsPassed": 359,
+    "ordinaryTestsFailed": 0,
+    "ordinaryBuildPassed": true,
+    "productionFilesByteIdenticalToCleanBaseline": 290,
+    "productionTreeSortedSha256ManifestSha256": "46bf96ab6246526c056c12b21272372fce1ebebd273a0cc8f08a4a0221b751d6"
+  }
+}
