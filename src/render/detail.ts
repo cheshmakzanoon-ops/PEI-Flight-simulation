@@ -1,9 +1,11 @@
 import * as THREE from 'three';
 import {DetailTemporaryError,detailHttpTemporary} from './detail-retry.ts';
 export interface DetailEntry{pack:number;offset:number;bytes:number;sha256:string;}
-interface Index {columns:number;rows:number;packs:{file:string;bytes:number;sha256:string}[];tiles:Record<string,DetailEntry>;}
+interface Index {version?:number;bounds?:number[];tilePixels?:number;columns:number;rows:number;packs:{file:string;bytes:number;sha256:string}[];tiles:Record<string,DetailEntry>;}
 /** HTTP Range when supported; hosts returning 200 are deduplicated to one cached full response per pack. */
 export class DetailImagery{
+ private readonly receipt?: (id:string,sha:string,texture:THREE.Texture)=>void;
+ constructor(receipt?: (id:string,sha:string,texture:THREE.Texture)=>void){this.receipt=receipt;}
  private index?:Index;private full=new Map<number,ArrayBuffer>();private probe=new Map<number,Promise<void>>();
  private base=import.meta.env.BASE_URL+'world/detail/';private pending?:Promise<Index>;
  private async fetchBody<T>(name:string, decode:(r:Response)=>Promise<T>,headers?:HeadersInit) {
@@ -44,16 +46,22 @@ export class DetailImagery{
   }finally{release?.();}
  }
  async load(id:string){
-  const a=(await this.catalog()).tiles[id];if(!a)return null;
+  const catalog=await this.catalog();
+  const a=catalog.tiles[id];if(!a)return null;
   const data=await this.bytes(a);
+  let verified:string|undefined;
   if(crypto.subtle&&a.sha256){
     const h=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),i=>i.toString(16).padStart(2,'0')).join('');
     if(h!==a.sha256)throw Error('Detail tile checksum mismatch');
+    verified=h;
   }
   const blob=new Blob([data],{type:'image/webp'});let t:THREE.Texture;
   if('createImageBitmap'in globalThis){const im=await createImageBitmap(blob,{imageOrientation:'flipY',premultiplyAlpha:'none',colorSpaceConversion:'none'});t=new THREE.Texture(im);t.flipY=false;}
   else{const u=URL.createObjectURL(blob);try{t=await new THREE.TextureLoader().loadAsync(u);}finally{URL.revokeObjectURL(u);}}
   // This atlas stores scaled linear TCI values, not sRGB albedo.
-  t.colorSpace=THREE.NoColorSpace;t.anisotropy=4;t.needsUpdate=true;return t;
+  t.colorSpace=THREE.NoColorSpace;t.anisotropy=4;t.needsUpdate=true;
+  if(this.receipt&&verified&&catalog.version===1&&catalog.columns===32&&catalog.rows===22&&catalog.tilePixels===640&&
+     catalog.bounds?.length===4&&[-64.47,45.94,-61.93,47.10].every((v,i)=>catalog.bounds?.[i]===v))this.receipt(id,verified,t);
+  return t;
  }
 }

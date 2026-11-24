@@ -1,3 +1,4 @@
+import type {OrthophotoSeams} from './orthophoto-seams.ts';
 import type {AerialWorldOptics,VerifiedAerialSky,VerifyAerialSky} from './aerial-perspective-lab.ts';
 import type {DuneGrassSurface} from './dune-grass-surface.ts';
 import type {DuneSand} from './dune-sand.ts';
@@ -506,7 +507,7 @@ export class World {
  private reliefActive=new Set<Patch>();
  private reliefRefresh=-Infinity;
  private reliefX=Infinity;private reliefZ=Infinity;
- private t={value:0};private detailClock={value:0};private recent=0;private details=new DetailImagery();private loading=0;private lastX=0;private lastZ=0;
+ private t={value:0};private detailClock={value:0};private recent=0;private readonly details:DetailImagery;private loading=0;private lastX=0;private lastZ=0;
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
@@ -519,7 +520,8 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams){
+  this.details=new DetailImagery(orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
    const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
@@ -676,6 +678,7 @@ export class World {
     const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'')});
+    orthoSeams?.bind(i+'-'+j,local);
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
@@ -1130,6 +1133,7 @@ export class World {
  }
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
+  this.orthoSeams?.advance(clock);
   const grass=this.grassStudy;
   if(grass?.admitted){
    grass.stream.update(pos.x,pos.z,pos.y-this.terrain.atlasElevation(pos.x,pos.z));
@@ -1177,7 +1181,7 @@ export class World {
      if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
      tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,tile.lod);tile.fine.material=tile.local;this.scene.add(tile.fine);tile.seams=undefined;
    }
-   if(tile.detail&&d2>19000**2){tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;this.refreshDetailOwner(tile,undefined);}
+   if(tile.detail&&d2>19000**2){this.orthoSeams?.evict(tile.id,tile.detail);tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;this.refreshDetailOwner(tile,undefined);}
    tile.coarse.visible=!fine;if(tile.fine){tile.fine.visible=fine;if(!fine&&d2>15000**2){this.scene.remove(tile.fine);tile.fine.geometry.dispose();tile.fine=undefined;tile.seams=undefined;}}
   }
   if(this.westDuneOptics)this.westDuneOptics.gain.value=Number(this.groundGradeInstalled(HOG_WEST_GRADE.id));
@@ -1220,6 +1224,7 @@ export class World {
   for(const m of this.pondMeshes)m.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(a,c)=>this.provinceVisualGroundHeight(a,c));
   this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
+  this.orthoSeams?.update(clock,id=>this.byId.get(id));
   const now=performance.now();
   const near=this.tiles.filter(q=>q.status==='idle'&&(q.retryAt??0)<=now&&Math.hypot(pos.x-q.x0-q.w/2,pos.z-q.z0-q.d/2)<14500)
    .sort((a,b)=>Math.hypot(pos.x-a.x0-a.w/2,pos.z-a.z0-a.d/2)-Math.hypot(pos.x-b.x0-b.w/2,pos.z-b.z0-b.d/2));
