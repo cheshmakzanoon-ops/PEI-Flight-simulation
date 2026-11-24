@@ -321,10 +321,11 @@ async function run(){
  const stDavidsReview=stDavidsSeat&&world.buildingShadows?{ground:stDavidsSeat,shadows:world.buildingShadows}:undefined;
  const townWallOptics=townWallRequested(options)?{panorama:sky,gain:{value:1}}:undefined;
  // The unqualified alternate light/ground paths keep the ordinary tile.
- const sourisEastRequest=showBuildingShadows||options.get('scenery')==='detail'||options.has('surveyRelief')||options.has('inlandRelief')?undefined:
+ const sourisEastShadows=showBuildingShadows&&renderer.capabilities.maxTextureSize>=1536?world.buildingShadows:undefined;
+ const sourisEastRequest=(showBuildingShadows&&!sourisEastShadows)||options.get('scenery')==='detail'||options.has('surveyRelief')||options.has('inlandRelief')?undefined:
   sourisEastGround(world,terrainSha,()=>roads?.sourceGeometrySha256);
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate,barnGate,rusticoEnvelopeAllowed,churchCohort?.art,railReview,stDavidsReview,townWallOptics).then(v=>{
-  if(sourisEastRequest)v.enableSourisEast(sourisEastRequest);
+  if(sourisEastRequest)v.enableSourisEast(sourisEastRequest,sourisEastShadows);
   return buildings=v;
  }).catch(e=>{warn('Building',e);});
  if(hog)void Promise.all([roadReady,buildingReady]).then(([r,b])=>{

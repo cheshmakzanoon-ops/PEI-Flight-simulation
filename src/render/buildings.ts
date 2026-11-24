@@ -213,8 +213,10 @@ export class Buildings {
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private sourisEastGround?:SourisEastGround;
+ private sourisEastShadows?:BuildingShadows;
  private sourisEast?:{owner:THREE.Mesh;seated:()=>boolean;dispose:()=>void;
-  variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
+  variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
+  caster?:THREE.Mesh;neighborsCaster?:THREE.Mesh};
 
  private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics){
   this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
@@ -309,7 +311,7 @@ export class Buildings {
  }
  get townWallReview(){return !!this.townWallOptics;}
  get indianRiverPrepared(){return !!this.indianVariant;}
- enableSourisEast(request:SourisEastGround){this.sourisEastGround=request;}
+ enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
  get sourisEastActive(){return this.sourisEast?.variant.visible??false;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
@@ -318,7 +320,7 @@ export class Buildings {
   this.syncCavendish();
   this.syncStation();
   this.syncStDavids();
-  this.sourisEast?.variant.sync(this.sourisEast.seated());
+  this.syncSourisEast();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -327,6 +329,7 @@ export class Buildings {
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
     if(m===this.sourisEast?.owner){
+     if(this.sourisEast.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
      this.sourisEast.variant.dispose();this.sourisEast.dispose();this.sourisEast=undefined;
     }
     if(id===RAIL.tile&&this.station){
@@ -362,6 +365,10 @@ export class Buildings {
    if(m.visible&&b&&Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
   };
   for(const m of this.meshes.values()){
+   const east=this.sourisEast;
+   if(east?.owner===m&&east.variant.visible&&east.caster&&east.neighborsCaster){
+    add(east.neighborsCaster);add(east.caster);continue;
+   }
    const exterior=this.station?.owner===m?this.station:this.stDavids?.owner===m?this.stDavids:undefined;
    if(exterior?.variant?.visible){
     // Distinct roster identities invalidate the former flat owner's depth
@@ -488,6 +495,14 @@ export class Buildings {
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
  }
+ private syncSourisEast(){
+  const east=this.sourisEast;
+  if(!east)return;
+  const before=east.variant.visible;
+  east.variant.sync(east.seated());
+  if(east.variant.visible&&east.neighborsCaster)east.neighborsCaster.geometry=east.owner.geometry;
+  if(before!==east.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
+ }
  private async promoteSourisEast(tile:BoundTile,owner:THREE.Mesh,raw:ArrayBuffer,ground:SourisEastGround){
   const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&owner.parent===this.scene;
   const span=owner.userData.beaconTriangles as readonly [number,number]|undefined;
@@ -497,14 +512,18 @@ export class Buildings {
    if(!await crockettExactWire(new Uint8Array(raw))||!current())return;
    const seated=await ground();
    if(!seated||!current())return;
-   const mod=await import('./souris-east/art.ts');
+   const shadows=this.sourisEastShadows;
+   const [mod,occlusion]=await Promise.all([import('./souris-east/art.ts'),
+    shadows?import('./summerside-station/rail-penumbra.ts'):undefined]);
    if(!current())return;
-   const art=mod.createSourisEastExterior();
+   const art=mod.createSourisEastExterior(shadows&&occlusion?{uniforms:shadows.uniforms,penumbra:occlusion.railPenumbraGLSL}:undefined);
    const variant=authenticatedOwnerVariant(owner,art.group,span,proof);
    if(!variant){art.dispose();return;}
    this.scene.add(art.group);
-   this.sourisEast={owner,variant,seated,dispose:art.dispose};
-   variant.sync(seated());
+   const neighborsCaster=art.caster?new THREE.Mesh(owner.geometry,owner.material):undefined;
+   neighborsCaster?.position.copy(owner.position);
+   this.sourisEast={owner,variant,seated,dispose:art.dispose,caster:art.caster,neighborsCaster};
+   this.syncSourisEast();
   }catch{/** Optional art cannot remove or delay the stock tile. */}
  }
  private async promoteStation(tile:BoundTile,owner:THREE.Mesh,source:ArrayBuffer,request:RailwayReview){

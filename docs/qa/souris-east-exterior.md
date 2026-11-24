@@ -50,8 +50,8 @@ In Dispatch choose **Souris · waterfront pass** and look toward Main Street
 from the coast. The asset loads only near the authenticated owner in
 Standard scenery, including the Town façades option. At distant or otherwise
 unqualified ground levels, on a mismatched input, or in the Detailed preview,
-adaptive/inland terrain and separate building-shadow modes, the source tile
-stays in use. No new public world asset is required; the small Three.js
+adaptive/inland terrain, or if the requested building-shadow renderer is not available,
+the source tile stays in use. No new public world asset is required; the small Three.js
 module loads only for the verified local tile. Five shared-material draws
 replace the 16-triangle stock owner at close range.
 
@@ -65,3 +65,22 @@ The three matched poses add 318 submitted triangles and five main-scene
 draws, with every ready building tile still in place. Only the projected
 area of the one facade/roof or the background it previously occluded changes
 in those matched Standard frames.
+
+
+## Close building shadows
+
+With `buildingShadows` enabled, the exact measured exterior now supplies
+its own directional shadow. Old buildings on the same tile retain their
+exact attributes and order. When the original near terrain withdraws or
+the tile leaves the stream, both the visible exterior and its caster turn
+off together and the stock tile takes over. The ordinary Standard scenery
+does not load the optional shadow shader.
+
+![Matched shadow-mode scenes; old flat block above, measured shape below](souris-east-shadow.webp)
+
+The two Chromium poses retained the same tiles, with one added submitted
+depth draw and 318 added depth triangles. A separate light-direction ray
+test of this one owner at the simulator's fixed sun angle found roughly
+50.1 m² less shade outside its footprint versus the tall old box. This
+compares the two geometries under the current lighting preset, not a
+survey of real-world shadows or a performance benchmark.

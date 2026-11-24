@@ -9,6 +9,8 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dist',type=Path,required=True)
 parser.add_argument('--chromium',required=True)
 parser.add_argument('--out',type=Path,required=True)
+profiles={'standard':'','town':'&townWallStudy','shadow-lit':'&buildingShadows','detail-stock':'&scenery=detail'}
+parser.add_argument('--profiles',nargs='+',choices=profiles,default=list(profiles))
 args=parser.parse_args()
 dist=args.dist
 args.out.parent.mkdir(parents=True,exist_ok=True)
@@ -20,7 +22,8 @@ url=f'http://127.0.0.1:{server.server_port}'
 results=[]
 with sync_playwright() as pw:
  browser=pw.chromium.launch(executable_path=args.chromium,args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--ignore-gpu-blocklist'])
- for profile,suffix in [('standard',''),('town','&townWallStudy'),('shadow-stock','&buildingShadows'),('detail-stock','&scenery=detail')]:
+ for profile in args.profiles:
+  suffix=profiles[profile]
   ctx=browser.new_context(viewport={'width':624,'height':400});p=ctx.new_page();p.set_default_timeout(110000)
   req=[]
   p.on('request',lambda r:req.append(urlsplit(r.url).path))
@@ -38,12 +41,14 @@ with sync_playwright() as pw:
   p.wait_for_function('a=>window.islandAirDiagnostics?.buildingTiles?.ready===window.islandAirDiagnostics?.buildingTiles?.wanted&&window.islandAirDiagnostics?.sourisEastExterior===a',arg=expected)
   p.keyboard.press('v');p.wait_for_function("window.islandAirDiagnostics?.camera==='Cockpit'")
   d=p.evaluate('window.islandAirDiagnostics')
+  if profile=='shadow-lit':assert d['buildingShadows']['active'] and d['buildingShadows']['depthDraws']>0
   p.keyboard.press('Escape');p.wait_for_function("window.islandAirDiagnostics?.mode==='paused'")
   art=[x for x in req if '/assets/art-' in x]
   assert not errors and not d['layerWarnings'],(profile,errors,d['layerWarnings'])
   assert bool(art)==expected,(profile,art)
+  assert any('/assets/rail-penumbra-' in x for x in req)==(profile=='shadow-lit'),(profile,req)
   rec=dict(profile=profile,active=d['sourisEastExterior'],moveM=((d['x']-before['x'])**2+(d['z']-before['z'])**2)**.5,
-   sight=d['camera'],tiles=d['buildingTiles'],errors=errors,artRequests=art)
+   sight=d['camera'],tiles=d['buildingTiles'],errors=errors,artRequests=art,localShadows=d['buildingShadows'],sharedPenumbra=[x for x in req if '/assets/rail-penumbra-' in x])
   results.append(rec);print(rec,flush=True);args.out.write_text(json.dumps(results,indent=2)+'\n')
   ctx.close()
  browser.close()
