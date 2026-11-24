@@ -8,11 +8,32 @@ export const DETAIL_FLAGS=[
  'basinChannel','basinWharf','montagueFoundationPreview','montagueReachOptics','northCapeWind','bowleySurveyPreview',
 ] as const;
 
+/** Named regional pack using already released independent scenery. */
+export const CAVENDISH_PACKAGE_FLAGS=['greenGablesReview','greenGablesBarnReview','cavendishWaterReview',
+ 'gablesGradeReview','gablesFairwayReview','gablesTrailReview'] as const;
+export const CAVENDISH_PACKAGE_FLAG='cavendishDetail';
+export function cavePackageBlocked(q:URLSearchParams){
+ return ['surveyRelief','inlandRelief','buildingShadows'].some(x=>q.has(x));
+}
+export function switchCavendishPackageURL(source:string,on:boolean,departureId:string){
+ const url=new URL(source);
+ if(on)url.searchParams.set(CAVENDISH_PACKAGE_FLAG,'');
+ else url.searchParams.delete(CAVENDISH_PACKAGE_FLAG);
+ url.searchParams.set('departure',departureId);
+ return url.href;
+}
+export function cavendishPackageState(search:string){
+ const q=new URLSearchParams(search);
+ const selected=q.has(CAVENDISH_PACKAGE_FLAG),blocked=cavePackageBlocked(q);
+ return {selected,blocked,active:selected&&!blocked};
+}
+
 export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('scenery')==='detail';
 
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
+ if(q.has(CAVENDISH_PACKAGE_FLAG)&&!cavePackageBlocked(q))for(const flag of CAVENDISH_PACKAGE_FLAGS)if(!q.has(flag))q.set(flag,'');
  return q;
 }
 

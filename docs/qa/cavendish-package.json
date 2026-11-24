@@ -1,0 +1,16 @@
+{
+  "activeStudies": 6,
+  "newMatchedAssets": [
+    "/PEI-Flight-simulation/world/cavendish/v0/cavendish-water-2020.r8.gz",
+    "/PEI-Flight-simulation/world/cavendish/v2/fairway-ground.r8.gz",
+    "/PEI-Flight-simulation/world/cavendish/v1/native-grade.g11.gz",
+    "/PEI-Flight-simulation/art/green-gables-barn-v1.bin.gz"
+  ],
+  "independentSelectionPreservedOnDisable": true,
+  "route": "cavendish-dunelands-low",
+  "flightMetres": 74.74,
+  "manualStudyTestOnlyAddedOneFlag": true,
+  "mismatchedTerrainDisabled": true,
+  "mobileTapTargetCssPixels": 44,
+  "errors": []
+}

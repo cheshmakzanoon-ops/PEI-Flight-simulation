@@ -62,3 +62,11 @@ and do not indicate current farming or replace the standard map.
 [Actual desktop, mobile and three-flight checks](scenery-study-controls.json)
 used the production build. The field routes use the ordinary dispatch
 and in-flight atlas, with no camera or physics override.
+
+## Cavendish detail
+
+On **Cavendish Dunelands · coastal pass**, the **Cavendish detail**
+control joins six released local studies in one reload. It is independent
+of the Standard and Detailed controls above. The two Cavendish standalone
+checkboxes are marked included while this option runs; turning it off
+returns to the earlier individual selections. See the [regional flight check](cavendish-package.md).

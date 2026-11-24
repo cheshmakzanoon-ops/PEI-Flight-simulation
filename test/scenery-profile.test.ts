@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {applyReviewSceneryURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -82,4 +82,28 @@ test('Cavendish studies share exact profile rules and persist while suspended',(
   new Set(['greenGablesReview','cavendishWaterReview']),'cavendish-dunelands-low');
  assert.deepEqual(reviewedScenery(new URL(a).search),['greenGablesReview','cavendishWaterReview']);
  assert.ok(a.includes('surveyRelief')&&a.endsWith('#landings'));
+});
+
+test('the Cavendish pack keeps independent options through enable and disable',()=>{
+ const first='https://example.test/PEI-Flight-simulation/?diagnostics&greenGablesReview=manual&cropRowsReview#atlas';
+ const next=switchCavendishPackageURL(first,true,'cavendish-dunelands-low');
+ const q=new URL(next);
+ assert.equal(q.hash,'#atlas');
+ assert.equal(q.pathname,'/PEI-Flight-simulation/');
+ assert.equal(q.searchParams.get('departure'),'cavendish-dunelands-low');
+ assert.deepEqual(cavendishPackageState(q.search),{selected:true,active:true,blocked:false});
+ assert(CAVENDISH_PACKAGE_FLAGS.every(x=>sceneryOptions(q.search).has(x)));
+ assert.equal(sceneryOptions(q.search).get('greenGablesReview'),'manual');
+ assert(sceneryOptions(q.search).has('cropRowsReview'));
+ assert(!sceneryOptions(q.search).has('gablesGravelReview'));
+ const off=new URL(switchCavendishPackageURL(next,false,'cavendish-dunelands-low'));
+ assert.equal(sceneryOptions(off.search).get('greenGablesReview'),'manual');
+ assert(!sceneryOptions(off.search).has('greenGablesBarnReview'));
+});
+test('a saved but incompatible regional pack cannot implicitly enable any scenery',()=>{
+ for(const flag of ['buildingShadows','inlandRelief','surveyRelief']){
+  const q='?cavendishDetail&'+flag;
+  assert.deepEqual(cavendishPackageState(q),{selected:true,active:false,blocked:true});
+  assert(CAVENDISH_PACKAGE_FLAGS.every(x=>!sceneryOptions(q).has(x)));
+ }
 });
