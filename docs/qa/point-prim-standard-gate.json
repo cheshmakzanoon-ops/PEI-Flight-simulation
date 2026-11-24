@@ -1,0 +1,96 @@
+{
+  "compiledFlightsWithoutOriginalOptIn": [
+    {
+      "mode": "active",
+      "site": "point-prim-offshore",
+      "motionM": 96.1,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "ready",
+        "requests": 1,
+        "active": true,
+        "deferredClearance": false,
+        "grade": true,
+        "draw": true
+      },
+      "gradeRequests": 1,
+      "console": []
+    },
+    {
+      "mode": "stock",
+      "site": "point-prim-offshore",
+      "motionM": 92.541,
+      "lease": {},
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "distant",
+      "site": "charlottetown",
+      "motionM": 93.328,
+      "lease": {
+        "layers": "verified",
+        "owner": "idle",
+        "data": "idle",
+        "requests": 0,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "wrong-cover",
+      "site": "point-prim-offshore",
+      "motionM": 97.289,
+      "lease": {},
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "corrupt-grade",
+      "site": "point-prim-offshore",
+      "motionM": 94.915,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 1,
+      "console": []
+    },
+    {
+      "mode": "held-grade",
+      "site": "point-prim-offshore",
+      "motionM": 93.729,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 1,
+      "console": []
+    }
+  ],
+  "existingAtomicGeometrySourceUnchanged": true,
+  "legacyExplicitModesPreserved": true,
+  "sourceHashes": {
+    "src/main.ts": "c1c6b60b3b469260ca54855ecb2f12e0b89faf86cafd6aa07e95aca0dce44816",
+    "src/render/point-prim/admit.ts": "b7944605cc4ad448900db41efa7c95ec6f74a06405108d4dc038960dd825d325",
+    "src/render/point-prim/flight.ts": "8015dc41e89c86e0da5ae9ac5843ca35776bb54240f1f086bc763d928adde8d6",
+    "src/render/point-prim/assets.ts": "05b6f58590b3910d6913cced2ce912ae9433c481285c0d5a6e205d611e4ba06c"
+  }
+}

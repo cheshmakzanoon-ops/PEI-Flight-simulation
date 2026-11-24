@@ -2,6 +2,7 @@ import type {BufferAttribute,BufferGeometry,Mesh,Vector3} from 'three';
 import type {Terrain} from '../../sim/terrain.ts';
 import type {Cover} from '../../sim/cover.ts';
 import type {Site} from '../../sim/places.ts';
+import {SCENERY_REVIEWS} from '../../app/scenery-profile.ts';
 
 export const POINT_PRIM={
  origin:[12356.575162683861,49999.340437527324],datum:4.845,terrainTile:'18-19',
@@ -20,15 +21,22 @@ export const POINT_PRIM={
    0,1,0,4.845,-7.627647477837259e-7,0,.9877505628901417,49999.340437527324,0,0,0,1]
 } as const;
 export const POINT_PRIM_DEPARTURE:Site={
- id:'point-prim-offshore',name:'Point Prim · offshore review',region:'Queens County',
+ id:'point-prim-offshore',name:'Point Prim · lighthouse pass',region:'Queens County',
  lon:-63.04529820978229,lat:46.048000381690265,heading:55,height:72,
  note:'Virtual offshore start at 72 metres. This simulator-only pass compares the optional 2020 lighthouse and its small dry-ground seat.'
 };
 const conflicts=['surveyRelief','inlandRelief','buildingShadows','indianRiverReview','northCapeWind','seatedRoads',
  'seatedForestShadows','woodland3D','canopyLight','sourceGrassNap'] as const;
+export function pointPrimDepartureAvailable(q:URLSearchParams){
+ const mode=q.get('scenery');return q.has('pointPrimStudy')||!mode||mode==='standard';
+}
 export function pointPrimRequested(q:URLSearchParams){
- if(q.has('stockPointPrim')||!q.has('pointPrimStudy'))return false;
- return (!q.get('scenery')||q.get('scenery')==='standard')&&!conflicts.some(k=>q.has(k));
+ const mode=q.get('scenery');
+ if(q.has('stockPointPrim')||(mode&&mode!=='standard')||conflicts.some(k=>q.has(k)))return false;
+ if(q.has('pointPrimStudy'))return true;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+  !['duneReliefStudy','duneSandDetail','kingsDryCrownStudy','greenGablesBarnReview','cavendishDetail',
+    'gablesGradeReview','duneGrassSurface','mappedLaneCanopyStudy','northRusticoSoil','regionalCanopyStudy'].some(k=>q.has(k));
 }
 export function pointPrimBase(terrain:Terrain,cover:Cover,terrainSha:string|undefined){
  const p=POINT_PRIM,{width,height,bounds}=terrain.spec;

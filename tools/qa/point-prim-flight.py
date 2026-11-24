@@ -11,6 +11,7 @@ p.add_argument('--out',type=Path,required=True)
 p.add_argument('--modes',default='active,stock,wrong-cover,corrupt-grade,held-grade,distant')
 p.add_argument('--width',type=int,default=420);p.add_argument('--height',type=int,default=286)
 p.add_argument('--minimum',type=float,default=90)
+p.add_argument('--ordinary',action='store_true')
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
 class Quiet(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*_):pass
@@ -40,7 +41,8 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,dir
     site='charlottetown' if mode=='distant' else 'point-prim-offshore'
     flag='&stockPointPrim' if mode=='stock' else ''
     page.set_default_timeout(170000)
-    page.goto(f'http://127.0.0.1:{srv.server_port}/?departure={site}&diagnostics&pointPrimStudy'+flag,wait_until='domcontentloaded')
+    explicit='' if a.ordinary else '&pointPrimStudy'
+    page.goto(f'http://127.0.0.1:{srv.server_port}/?departure={site}&diagnostics'+explicit+flag,wait_until='domcontentloaded')
     page.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'")
     attract=page.evaluate("window.islandAirDiagnostics")
     assert not grade and not (attract.get('pointPrim') or {}).get('active'),(mode,grade,attract.get('pointPrim'))

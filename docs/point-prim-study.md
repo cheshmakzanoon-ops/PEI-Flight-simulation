@@ -1,19 +1,20 @@
-# Point Prim exterior preview
+# Point Prim lighthouse and measured ground
 
-This optional Standard study shows the surveyed-era Point Prim Lighthouse exterior and the small measured dry seat it needs. It does not depict the 2026 repairs, reconstruct a keeper’s cottage or trails, operate a navigation light, or change the shoreline. The existing atlas stores the lighthouse as one tall flat column (q100/266). The authored outline restores the tapered shaft, bracketed gallery, twelve-sided red lantern and red door and four western windows. It uses original opaque Three.js surfaces with painted colors and never allocates the optional cedar texture during flight.
+Ordinary Standard scenery can show the surveyed-era Point Prim Lighthouse exterior and the small measured dry seat it needs. It does not depict the 2026 repairs, reconstruct a keeper’s cottage or trails, operate a navigation light, or change the shoreline. The existing atlas stores the lighthouse as one tall flat column (q100/266). The authored outline restores the tapered shaft, bracketed gallery, twelve-sided red lantern and red door and four western windows. It uses original opaque Three.js surfaces with painted colors and never allocates the optional cedar texture during flight.
 
-Try an ordinary virtual offshore start at 72 m with:
+In Standard Dispatch, choose **Point Prim · lighthouse pass** for a
+virtual offshore start at 72 m. Equivalent URLs:
 
-- Candidate: /?pointPrimStudy&departure=point-prim-offshore&diagnostics
-- Stock: /?pointPrimStudy&stockPointPrim&departure=point-prim-offshore&diagnostics
+- Standard: `/?departure=point-prim-offshore`
+- Stock comparison: `/?departure=point-prim-offshore&stockPointPrim`
 
-Press **Begin flight**. Just visiting Dispatch, flying near a different cape, or flying this view from too high up cannot load the optional asset. The virtual departure is only visible on an explicit Point Prim study URL, including its stock control. It is not a real-world flight route. The existing departure array, optics, standard flag defaults and incompatibility flags are not modified. Detail and explicit alternate terrain, lighting, shadow, road-seating or near-foliage modes retain their ordinary behavior, but do not activate this preview.
+Press **Begin flight**. Just visiting Dispatch, flying near a different cape, or flying this view from too high up cannot load the optional asset. The virtual departure is a simulator camera test, not a real-world flight route. Existing departure indices stay in place. Other independently authored scenery studies keep their previous Point Prim rendering unless a compatible `?pointPrimStudy` is specifically requested. Detail and alternate terrain, lighting, shadow, road-seating or near-foliage modes stay on their previously qualified paths.
 
 ![Point Prim matched 72 m flight-tier frames with the flat atlas tower at left and the original detailed exterior at right](qa/point-prim-flight-comparison.webp)
 
 The comparison uses the real game renderer, the same locked camera and
 the same settled scenery on both sides. It shows the flight-detail model
-used by this study, with the measured seat. The neighboring buildings,
+used by Standard scenery, with the measured seat. The neighboring buildings,
 vegetation and shoreline still use their preceding artwork. The study
 adds a locally measured slope, not a reconstruction of the whole headland.
 
@@ -50,8 +51,16 @@ For the built app run `tools/qa/point-prim-flight.py --dist dist --out OUTPUT
 [verification receipt](qa/point-prim-gate.json) holds the compiled runs,
 protected-mesh checks and failure controls.
 
-All six compiled Chromium cases flew and paused normally. The enabled run
+In the original opt-in test, all six compiled Chromium cases flew and paused normally. The enabled run
 covered 110.935 m with one grade request and both halves active. Stock,
 wrong-cover and distant flights made no grade request. Corrupt and withheld
 grade each made one request and retained the original draw and contact.
 All 375 Node tests, the production build and the world checks passed.
+
+The later [Standard verification](qa/point-prim-standard-gate.json) ran six
+compiled cases **without** the original opt-in flag. The ordinary lighthouse
+pass traveled 96.1 m, with one grade request and the tower plus ground active.
+Stock, distant, wrong-cover, corrupt and withheld controls stayed on original
+scenery and flew more than 92 m. No changes to the original transaction, art,
+mesh-authentication checks or signed ground package were required. All 379
+Node tests, the build and world checks passed.

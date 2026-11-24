@@ -2,7 +2,7 @@ import {RegionalCanopies} from './render/regional-canopy/controller.ts';
 import {REGIONAL_STANDS} from './render/regional-canopy/spec.ts';
 import {regionalBase,regionalLayers} from './render/regional-canopy/ground.ts';
 import {REGIONAL_CANOPY_DEPARTURES} from './render/regional-canopy/departures.ts';
-import {POINT_PRIM_DEPARTURE,pointPrimBase,pointPrimLayers,pointPrimRequested} from './render/point-prim/admit.ts';
+import {POINT_PRIM_DEPARTURE,pointPrimBase,pointPrimLayers,pointPrimRequested,pointPrimDepartureAvailable} from './render/point-prim/admit.ts';
 import {PointPrimFlight} from './render/point-prim/flight.ts';
 import {authenticateSummersideFrontage,SUMMERSIDE_FRONTAGE_ROOT,summersideFrontageCompatible} from './render/summerside-open-ground.ts';
 import {downtownSceneryCompatible} from './render/summerside-roof-source.ts';
@@ -97,7 +97,7 @@ async function run(){
  // The proven virtual start belongs only to an explicit review URL.
  // stockPointPrim keeps access to the same start for a stock control.
  const hasRegionalCanopy=options.has('regionalCanopyStudy');
- const pointPrimSites=options.has('pointPrimStudy')?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
+ const pointPrimSites=pointPrimDepartureAvailable(options)?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
  const SITES=hasRegionalCanopy?[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES]:pointPrimSites;
  const wantsPointPrim=pointPrimRequested(options);
 

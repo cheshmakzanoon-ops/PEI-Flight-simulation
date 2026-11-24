@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {BufferAttribute,type Mesh,type MeshStandardMaterial} from 'three';
 import {Terrain} from '../src/sim/terrain.ts';
-import {POINT_PRIM,POINT_PRIM_DEPARTURE,pointPrimLayers,pointPrimNear,pointPrimOwner,pointPrimRequested,pointPrimWire} from '../src/render/point-prim/admit.ts';
+import {POINT_PRIM,POINT_PRIM_DEPARTURE,pointPrimLayers,pointPrimNear,pointPrimOwner,pointPrimRequested,pointPrimDepartureAvailable,pointPrimWire} from '../src/render/point-prim/admit.ts';
 import {POINT_PRIM_GRADE as pin} from '../src/render/point-prim/stamp.ts';
 import {loadPointPrimGrade,pointPrimArtMatches,preparePointPrimAssets} from '../src/render/point-prim/assets.ts';
 import {buildPointPrim} from '../src/render/point-prim/art.ts';
@@ -14,8 +14,15 @@ const wire=new Uint8Array(readFileSync(new URL('../public/world/point-prim-grade
 const decoded=new Uint8Array(gunzipSync(wire));
 const good=()=>new Response(wire,{headers:{'Content-Length':String(pin.wireBytes)}});
 const t=new Terrain({width:2,height:2,bounds:[-64.47,45.94,-61.93,47.1]},new Int16Array([3,3,3,3]));
-test('Point Prim flag is explicit, Standard-only, and does not consume existing flags or routes',()=>{
- assert.equal(pointPrimRequested(new URLSearchParams()),false);
+test('Point Prim is ordinary Standard and preserves independently authored comparisons',()=>{
+ assert.equal(pointPrimRequested(new URLSearchParams()),true);
+ assert(pointPrimDepartureAvailable(new URLSearchParams('stockPointPrim')));
+ assert(!pointPrimDepartureAvailable(new URLSearchParams('scenery=detail')));
+ assert(pointPrimDepartureAvailable(new URLSearchParams('scenery=detail&pointPrimStudy')));
+ for(const flag of ['regionalCanopyStudy','miscoucheCanopyStudy','beaconsfieldReview','duneReliefStudy']){
+  assert(!pointPrimRequested(new URLSearchParams(flag)));
+  assert(pointPrimRequested(new URLSearchParams(flag+'&pointPrimStudy')));
+ }
  assert.equal(pointPrimRequested(new URLSearchParams('pointPrimStudy')),true);
  const old=['stockPointPrim','scenery=detail','surveyRelief','inlandRelief','buildingShadows','indianRiverReview','northCapeWind','seatedRoads',
   'seatedForestShadows','woodland3D','canopyLight','sourceGrassNap'];
