@@ -8,6 +8,7 @@ p.add_argument('--dist',type=Path,required=True);p.add_argument('--chromium',req
 p.add_argument('--out',type=Path,required=True)
 p.add_argument('--preview',action='store_true');p.add_argument('--corrupt',action='store_true')
 p.add_argument('--metrics-only',action='store_true',help='Record real flight diagnostics without compositor captures.')
+p.add_argument('--apron',action='store_true',help='Require local dry soil; no low foliage may draw on this flight.')
 p.add_argument('--envelope',action='store_true',help='Require the verified nearby building envelope in this pass.')
 p.add_argument('--dispatch',action='store_true',help='Enable the study through the normal Dispatch control rather than a bookmark.')
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
@@ -56,9 +57,10 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Server,di
    assert 70<d['altitude']-d['groundY']<100 and abs(d['heading']-course)<.5
    if a.preview:assert d['northRusticoLighthouse']['seat']=='verified'
    if a.envelope:assert d['rusticoMassingReview']
+   if a.apron:assert d['rusticoDrySoil'] and d['rusticoDryTussocks']==0
    if not a.metrics_only:page.screenshot(path=str(a.out/f'pass-{travel}.png'),timeout=30000)
    captures.append({**{k:d.get(k)for k in ('x','z','altitude','groundY','heading','mode','triangles','drawCalls','northRusticoLighthouse')},'travelMetres':distance})
   assert not errors,errors
-  report={'route':'north-rustico-harbour-low','samePublicDispatchAndFlightLoop':True,'preview':a.preview,'enabledThroughDispatch':a.dispatch,'corruptGroundFallsBackToStock':a.corrupt,'captures':captures,'errors':errors}
+  report={'route':'north-rustico-harbour-low','samePublicDispatchAndFlightLoop':True,'preview':a.preview,'apronRequired':a.apron,'enabledThroughDispatch':a.dispatch,'corruptGroundFallsBackToStock':a.corrupt,'captures':captures,'errors':errors}
   (a.out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
   print(json.dumps(report),flush=True)

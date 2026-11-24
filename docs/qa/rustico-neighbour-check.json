@@ -474,12 +474,12 @@
       "view": "massing-front-close",
       "totalPixels": 470400,
       "measuredOwnerEnvelopeXZScreenLTRB": [
-        0,
-        144,
-        610,
-        560
+        217,
+        222,
+        553,
+        439
       ],
-      "protectedPixelsByteExact": 216640,
+      "protectedPixelsByteExact": 397488,
       "insidePixelsAbove2RGB": 56072,
       "drawCallsEach": 78,
       "triangleDelta": 39
@@ -488,12 +488,12 @@
       "view": "massing-pass-close",
       "totalPixels": 470400,
       "measuredOwnerEnvelopeXZScreenLTRB": [
-        376,
-        247,
-        457,
-        321
+        380,
+        251,
+        454,
+        318
       ],
-      "protectedPixelsByteExact": 464406,
+      "protectedPixelsByteExact": 465442,
       "insidePixelsAbove2RGB": 2965,
       "drawCallsEach": 60,
       "triangleDelta": 39

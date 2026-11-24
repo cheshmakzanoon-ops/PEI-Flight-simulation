@@ -31,7 +31,7 @@ The visible three-step entry follows the form in the dated exterior photograph. 
 
 The optional study requires the authenticated 3,201-byte grade pack and its exact terrain and cover versions. On compatible close-range terrain, the same inserted faces support both display and aircraft ground contact. A missing or invalid pack, or an incompatible terrain or building-shadow mode, leaves the original ground and no detached lighthouse. The original lighthouse-free higher terrain levels remain unchanged; the exterior is a close-range study.
 
-The playable approach starts offshore at 72 metres above the game's starting surface. The selected view also includes [one measured nearby roof](../qa/rustico-neighbour.md). The rest of the harbour and the later breakwater are **not** rebuilt by this change. See the [terrain, model and flight checks](../qa/rustico-site.json).
+The playable approach starts offshore at 72 metres above the game's starting surface. The selected view also includes [one measured nearby roof](../qa/rustico-neighbour.md) and an [authored dry-ground treatment](../qa/rustico-dry-ground.md) around the lighthouse. The rest of the harbour and the later breakwater are **not** rebuilt by this change. See the [terrain, model and flight checks](../qa/rustico-site.json).
 
 ![Normal chase flight past the lighthouse; the surrounding harbour remains the existing atlas](../qa/rustico-pass.webp)
 

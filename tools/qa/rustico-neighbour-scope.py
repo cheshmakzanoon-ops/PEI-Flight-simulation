@@ -9,7 +9,7 @@ a=p.parse_args()
 root=Path(__file__).resolve().parents[2]
 gen=(root/'src/render/rustico-neighbour.generated.ts').read_text().split('RUSTICO_NEIGHBOUR=',1)[1].removesuffix('\n').removesuffix(' as const;')
 ring=json.loads(gen)['record']['footprint']
-phi=math.radians(46.5);e=.00669437999014e-3;t=1-e*math.sin(phi)**2;S=math.pi/180*6378137
+phi=math.radians(46.5);e=6.69437999014e-3;t=1-e*math.sin(phi)**2;S=math.pi/180*6378137
 mx=S*math.cos(phi)/math.sqrt(t);mz=S*(1-e)/t**1.5
 project=lambda lon,lat:((lon+63.2)*mx,(46.5-lat)*mz)
 old={v['name']:v for v in json.loads((a.stock/'results.json').read_text())}

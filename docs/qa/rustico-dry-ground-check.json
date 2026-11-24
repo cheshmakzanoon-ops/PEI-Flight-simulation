@@ -1,0 +1,264 @@
+{
+  "releaseMatchedBrowser": [
+    {
+      "view": "rustico-apron-low-close",
+      "pixels": 470400,
+      "pixelsChangedAbove2": 61262,
+      "outsideConservativeDryEnvelopeRGBExact": 330839,
+      "clumps": 96,
+      "addedDraws": 1,
+      "addedTriangles": 5760
+    },
+    {
+      "view": "rustico-apron-pass-close",
+      "pixels": 470400,
+      "pixelsChangedAbove2": 1835,
+      "outsideConservativeDryEnvelopeRGBExact": 459911,
+      "clumps": 0,
+      "addedDraws": 0,
+      "addedTriangles": 0
+    }
+  ],
+  "actualFineGradeReceipts": {
+    "verifiedGrade": "49838bbabe0e768c84aacbd5ad383758c744d90e9c8e8b479b0bc566ee2a988b",
+    "allowance": {
+      "candidatePointCount": 36460,
+      "measurementsMayBeFurtherLimitedBySlope": true,
+      "nProtectedCategoricalWaterInEllipse": 4045,
+      "wrongWet": 0,
+      "minSignedDryM": 48.674214293773446,
+      "minHeightM": 1.9000199995695644,
+      "minGradeWeight": 0.9907929216340515
+    },
+    "tufts": {
+      "roots": 96,
+      "proofPerVertexAboveRootCount": 4964,
+      "triangles": 5760,
+      "minRootWeight": 1,
+      "minSignedDryM": 52.59790055742667,
+      "rootCentreMaxEmbedM": 0.01400011718227967,
+      "rootCentreMinEmbedM": 0.013999881696171723,
+      "maximumPhysicalTipM": 0.16970421434449712,
+      "scope": {
+        "maxBladeRiseM": 0.16970421434449712,
+        "maxLateralSpreadM": 0.2932047253545576
+      },
+      "shaderEndPoints": {
+        "cases": 16128,
+        "shaderMaxRise": 0.19302012359397036,
+        "shaderMaxRadius": 0.3533876941590067,
+        "minShaderWaterDist": 52.32455319659209,
+        "minShaderGrade": 1,
+        "minOpticClearance": 0.5991877290350174
+      }
+    },
+    "textures": {
+      "gradeTexels": 16641,
+      "packedGrainSize": [
+        192,
+        192
+      ],
+      "packedGrainRgbaBytes": 147456,
+      "hash": "3284ea6c0f32943523ca61a90601d820599cc30693e2885815e636c35ec5a979"
+    }
+  },
+  "authorHeldSkyWaterAndOffSiteControls": {
+    "rustico-seaward-close": {
+      "1": {
+        "altered": 4178,
+        "allowed": 7597,
+        "protected": 806403,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      },
+      "2": {
+        "altered": 4178,
+        "allowed": 7597,
+        "protected": 806403,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      }
+    },
+    "petrel-macro": {
+      "1": {
+        "altered": 354531,
+        "allowed": 536350,
+        "protected": 277650,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      },
+      "2": {
+        "altered": 354969,
+        "allowed": 548262,
+        "protected": 265738,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      }
+    },
+    "east-control": {
+      "1": {
+        "altered": 0,
+        "allowed": 0,
+        "protected": 814000,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      },
+      "2": {
+        "altered": 0,
+        "allowed": 0,
+        "protected": 814000,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      }
+    }
+  },
+  "additionalFractionalDpr": {
+    "heel-shift": {
+      "1": {
+        "altered": 78632,
+        "allowed": 116575,
+        "protected": 440225,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      },
+      "2": {
+        "altered": 78745,
+        "allowed": 120984,
+        "protected": 435816,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      }
+    },
+    "wing-shift": {
+      "1": {
+        "altered": 3064,
+        "allowed": 5690,
+        "protected": 551110,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      },
+      "2": {
+        "altered": 3064,
+        "allowed": 5690,
+        "protected": 551110,
+        "alteredOutsideProjection": 0,
+        "physicalProbeSource": "grade footprint and 0.1m exact-source dry candidates, conservative cell projection"
+      }
+    }
+  },
+  "source": {
+    "soil.ts": "ef0fb8d32f6f1614142065fb851a0ae5d8ddd1e6a95f2c9ca170abc768e535a8",
+    "tussocks.ts": "e1c4634d031407ccf32fb2312081f093b9743ade613363af2463f759f050a002"
+  },
+  "ordinaryApproachRuntime": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": true,
+    "enabledThroughDispatch": true,
+    "corruptGroundFallsBackToStock": false,
+    "captures": [
+      {
+        "x": -6801.7257982008,
+        "z": 4933.205136454229,
+        "altitude": 74.02151132476193,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 330264,
+        "drawCalls": 246,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 302.32162939874996
+      },
+      {
+        "x": -6927.53926674503,
+        "z": 4969.150422758225,
+        "altitude": 74.98837118876702,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 331930,
+        "drawCalls": 243,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 433.1692219378344
+      },
+      {
+        "x": -7029.725076013656,
+        "z": 4998.344690701542,
+        "altitude": 75.77943799548098,
+        "groundY": 0.2977049595284552,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 336905,
+        "drawCalls": 229,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 539.443606882177
+      }
+    ],
+    "errors": []
+  },
+  "throughDispatchWithMaterialAndNoTuftsAtFlightAltitude": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": true,
+    "apronRequired": true,
+    "enabledThroughDispatch": true,
+    "corruptGroundFallsBackToStock": false,
+    "captures": [
+      {
+        "x": -6548.631580321584,
+        "z": 4860.892770361114,
+        "altitude": 72.10017585084911,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 326124,
+        "drawCalls": 237,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 39.09974312555172
+      },
+      {
+        "x": -6582.473159887392,
+        "z": 4870.561966702297,
+        "altitude": 72.34356377984366,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 326124,
+        "drawCalls": 237,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 74.2955648291008
+      },
+      {
+        "x": -6615.24380058371,
+        "z": 4879.925114650134,
+        "altitude": 72.59509932863584,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 327508,
+        "drawCalls": 237,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 108.37757520308136
+      }
+    ],
+    "errors": []
+  }
+}
