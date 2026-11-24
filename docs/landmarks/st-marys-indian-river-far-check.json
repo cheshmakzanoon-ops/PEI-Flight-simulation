@@ -1,0 +1,221 @@
+{
+  "baseVerifiedMain": "287860f5e4b090180fa24f359d8bd3cc16ccfbad",
+  "runtimeModelOnly": {
+    "flight": {
+      "draws": 13,
+      "triangles": 21638
+    },
+    "far": {
+      "draws": 1,
+      "triangles": 2437
+    },
+    "detachedReviewedPairs": 44,
+    "minimumWeightedSilhouetteIoU": 0.99408
+  },
+  "views": {
+    "church-grounded-far-close": {
+      "before": {
+        "tier": {
+          "tier": "flight"
+        },
+        "drawCalls": 84,
+        "triangles": 349253
+      },
+      "after": {
+        "tier": {
+          "tier": "far",
+          "spanPx": 34.51808385003844
+        },
+        "drawCalls": 72,
+        "triangles": 330052
+      },
+      "rect": [
+        409.069681660944,
+        263.0766908217493,
+        459.7005955109072,
+        298.24890040834623
+      ],
+      "grade": "st-marys-2020-grade-study",
+      "trees": 4,
+      "sun": 1,
+      "ortho": [
+        "10-10",
+        "10-11",
+        "10-12",
+        "10-13",
+        "11-10",
+        "11-11",
+        "11-12",
+        "11-13",
+        "8-10",
+        "8-11",
+        "8-12",
+        "8-13",
+        "9-10",
+        "9-11",
+        "9-12",
+        "9-13",
+        "9-9"
+      ],
+      "output": {
+        "changedRgbPixels": 564,
+        "changedOutsideProjectedRectangle": 0,
+        "frameWH": [
+          880,
+          580
+        ],
+        "sameFrameProtectedRectangleXY": [
+          407,
+          261,
+          462,
+          301
+        ]
+      }
+    },
+    "church-grounded-long-close": {
+      "before": {
+        "tier": {
+          "tier": "flight"
+        },
+        "drawCalls": 104,
+        "triangles": 340872
+      },
+      "after": {
+        "tier": {
+          "tier": "far",
+          "spanPx": 24.375224805565853
+        },
+        "drawCalls": 92,
+        "triangles": 321671
+      },
+      "rect": [
+        424.2934124847469,
+        270.45463886478774,
+        459.1591793971242,
+        295.20168738075023
+      ],
+      "grade": "st-marys-2020-grade-study",
+      "trees": 4,
+      "sun": 1,
+      "ortho": [
+        "10-10",
+        "10-11",
+        "10-12",
+        "10-13",
+        "11-10",
+        "11-11",
+        "11-12",
+        "11-13",
+        "12-11",
+        "12-12",
+        "8-10",
+        "8-11",
+        "8-12",
+        "8-13",
+        "9-10",
+        "9-11",
+        "9-12",
+        "9-13"
+      ],
+      "output": {
+        "changedRgbPixels": 243,
+        "changedOutsideProjectedRectangle": 0,
+        "frameWH": [
+          880,
+          580
+        ],
+        "sameFrameProtectedRectangleXY": [
+          422,
+          268,
+          462,
+          298
+        ]
+      }
+    }
+  },
+  "ordinaryFlight": {
+    "atomicArt": true,
+    "churchSun": true,
+    "nearShadowTriangles": 2212,
+    "ownerPrepared": true,
+    "startingStandardFetchedNoGrade": true,
+    "departure": "indian-river-country-pass",
+    "corruptAsset": null,
+    "travelM": 715.6845353462079,
+    "localGroundGrade": "st-marys-2020-grade-study",
+    "responses": [
+      {
+        "asset": "ground.g11.gz",
+        "status": 200
+      },
+      {
+        "asset": "sun-cast.r8.gz",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "tierTransitions": [
+      {
+        "tier": "far",
+        "mode": "dispatch",
+        "x": -36753.693706428654,
+        "z": 2723.477777118633,
+        "altitude": 89.66734360495741,
+        "heightPx": 36.273661202330764,
+        "active": true,
+        "grade": "st-marys-2020-grade-study",
+        "trees": 4,
+        "draws": 149,
+        "triangles": 233652
+      },
+      {
+        "tier": "flight",
+        "mode": "flight",
+        "x": -36405.94281221878,
+        "z": 2636.0255622853388,
+        "altitude": 91.92930815401246,
+        "heightPx": 48.87196472523069,
+        "active": true,
+        "grade": "st-marys-2020-grade-study",
+        "trees": 4,
+        "draws": 245,
+        "triangles": 378623
+      },
+      {
+        "tier": "hero",
+        "mode": "flight",
+        "x": -36133.89486927088,
+        "z": 2567.607419285178,
+        "altitude": 93.8336425172188,
+        "heightPx": 231.41139411680632,
+        "active": true,
+        "grade": "st-marys-2020-grade-study",
+        "trees": 4,
+        "draws": 244,
+        "triangles": 393525
+      }
+    ]
+  },
+  "sunFailure": {
+    "atomicArt": false,
+    "churchSun": false,
+    "nearShadowTriangles": 0,
+    "ownerPrepared": false,
+    "startingStandardFetchedNoGrade": true,
+    "departure": "indian-river-country-pass",
+    "corruptAsset": "sun",
+    "travelM": 151.15462735759738,
+    "localGroundGrade": null,
+    "responses": [
+      {
+        "asset": "ground.g11.gz",
+        "status": 200
+      },
+      {
+        "asset": "sun-cast.r8.gz",
+        "status": 200
+      }
+    ],
+    "errors": []
+  }
+}

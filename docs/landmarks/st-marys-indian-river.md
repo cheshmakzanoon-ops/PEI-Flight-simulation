@@ -75,3 +75,30 @@ receiver when toggling the church cast alone.
 
 See [the measured and rendered checks](st-marys-indian-river-check.json)
 and [the repeatable packaged flight test](../../tools/qa/st-marys-player.py).
+
+## Distant drawing tier
+
+The distant model preserves the measured outer roof and spire silhouette
+with a single vertex-coloured mesh. It drops fine trim and materials only
+when the projected vertical span is small. It is eligible at 430 m or more
+and no more than 86 drawing-buffer pixels high. Once active, it remains
+eligible down to 395 m or up to 100 pixels. The separate enter and exit
+thresholds prevent a rapid toggle around one distance or screen size.
+
+The full external scene, exact grade, foliage receivers and directional
+cast still have to pass their existing admission checks. The distant
+mesh is not a way to show an unsupported or floating building when those
+checks fail. The detached art was compared farther away than the live
+scene's admitted range.
+
+In two matched in-simulator views, this one change saved **12 draws
+and 19,201 triangles**. No pixels outside the building's projected bounds
+changed. The packaged 716 m ordinary approach changed from distant to
+flight to close detail while the grade and all shadows stayed active.
+The farther model does not reduce the allocation of the existing close
+textures or establish an end-user FPS gain.
+
+[Far-tier checks](st-marys-indian-river-far-check.json). Rebuild and
+recheck the ground cast if the source opaque silhouette, site transform,
+terrain registration or sun direction changes; the distant drawing tier
+does not edit that measured cast.
