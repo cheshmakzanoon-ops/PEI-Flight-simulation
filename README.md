@@ -58,7 +58,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Gravel roads across PEI | `?gravelSurfaceStudy` | [Mapped gravel surface](docs/qa/gravel-surface-study.md): a close-flight material preview for 2,651 verified non-bridge gravel records. |
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?stockAerialPerspective` | Compare [Standard daylight haze and sea horizon](docs/qa/aerial-perspective-study.md) with the original fixed mist. |
-| Orby Head | `?orbyCoastClosure` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): a local preview that closes gaps through which the sky showed below the cliffs. Standard only. |
+| Orby Head | `?stockOrbyCoast` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): Standard closes known mask-cell gaps below the cliffs. The flag restores the inherited coastline wall. |
 | One site in each county | `?orthophotoSeamStudy` | [Aerial-image tile joins](docs/qa/orthophoto-edge-study.md): close-flight colour continuity along three verified joins. Standard only. |
 | Kings County coastal ridge | `?kingsDryCrownStudy&departure=kings-coastal-ridge` | [Measured dry ridge](docs/qa/kings-dry-crown.md): 2020 LiDAR terrain with matched contact and a distant fade. Standard only. |
 | Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |

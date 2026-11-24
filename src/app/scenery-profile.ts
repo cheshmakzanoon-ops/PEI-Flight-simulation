@@ -182,6 +182,13 @@ export function shoreFoamDetailRequested(q:URLSearchParams){
   'buildingShadows','surveyRelief','inlandRelief','basinChannel','basinWharf','montagueReachOptics',
   'montagueFoundationPreview','northBaywalkPreview','northBaywalkConcrete','spinnakersPreview','baywalkConcrete'].some(k=>q.has(k));
 }
+/** Known Orby mask closure is local. Independent shore/terrain comparisons
+ * keep their earlier choice unless the explicit legacy-compatible flag is set. */
+export function orbyClosureRequested(q:URLSearchParams){
+ if(q.has('stockOrbyCoast')||q.has('legacyShoreArcs')||q.get('scenery')==='detail')return false;
+ if(q.has('orbyCoastClosure'))return true;
+ return !['orthophotoSeamStudy','nearshoreFoamStudy','surveyRelief','inlandRelief','buildingShadows'].some(k=>q.has(k));
+}
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);
  return SCENERY_REVIEWS.filter(row=>query.has(row.flag)).map(row=>row.flag);

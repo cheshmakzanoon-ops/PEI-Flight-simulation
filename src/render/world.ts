@@ -57,7 +57,7 @@ import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank,intersectsBasinLe
 import type {ShoreSegment} from '../sim/shoreline.ts';
 import {basinSandGLSL,basinSandIntersects,loadBasinSand,type BasinSand} from './basin-head-sand.ts';
 import { coastSegments } from '../sim/shoreline.ts';
-import { allowOrbyZeroArc,ORBY_COVER_SHA } from '../sim/orby-shore-closure.ts';
+import { allowOrbyZeroArc,matchesOrbyTerrainBounds,ORBY_COVER_SHA } from '../sim/orby-shore-closure.ts';
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
@@ -786,7 +786,7 @@ export class World {
    const mask=values.reduce((m,v,j)=>m|(v>0?1<<j:0),0);
    return mask!==5&&mask!==10&&mask!==0&&mask!==15;
   };
-  const orby=orbyClosure&&!legacyShore&&this.cover.sourceSha===ORBY_COVER_SHA;
+  const orby=orbyClosure&&!legacyShore&&this.cover.sourceSha===ORBY_COVER_SHA&&matchesOrbyTerrainBounds(this.terrain.spec.bounds);
   const cfg=coastSegments(this.cover,t,legacyShore||orby?(x0,z0,x1,z1,i,j,q)=>{
    if(orby&&allowOrbyZeroArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return 'pinned-zero';
    return legacyShore&&!forbidden(x0,z0,x1,z1);

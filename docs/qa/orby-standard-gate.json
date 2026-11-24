@@ -1,0 +1,260 @@
+{
+  "browser": "Chromium SwiftShader",
+  "platePixels": [
+    650,
+    390
+  ],
+  "complementarySky": [
+    "magenta",
+    "green"
+  ],
+  "standardVersusStockFrames": [
+    {
+      "view": "seaward",
+      "removedPureSkyPixels": 314,
+      "newlyExposed": 0,
+      "increasedSkyCoverageAboveOneCode": 0,
+      "draws": [
+        89,
+        90
+      ],
+      "triangles": [
+        241443,
+        241969
+      ]
+    },
+    {
+      "view": "alongshore",
+      "removedPureSkyPixels": 692,
+      "newlyExposed": 0,
+      "increasedSkyCoverageAboveOneCode": 0,
+      "draws": [
+        94,
+        95
+      ],
+      "triangles": [
+        252511,
+        253037
+      ]
+    }
+  ],
+  "geometry": {
+    "sourceHashes": {
+      "src/main.ts": "b14e718dff9e002a7b5cd6f1d73b1b51bd821f4137ff9244fc1b9acc795e84f6",
+      "src/app/scenery-profile.ts": "8294997a6c786c6d89811f6977eea87e7ec37521841f5bf2f671bf1a0420c2cc",
+      "src/render/world.ts": "4d4e48abcc07ada5bf7eac9944c3367ecd7a0d4101a828793f22c38058f59e1f",
+      "src/sim/orby-shore-closure.ts": "fa93f836547919ede91e17d0fff074ce665bf126dc748ddbc63738a96ef8cb01",
+      "src/render/legacy-shore-curtains.ts": "d2915dfb7431298702e327a4f004aae3ce5c15f577c2b7e8cb1bc52f5f943315"
+    },
+    "cells": [
+      {
+        "i": 1838,
+        "j": 1418,
+        "q": [
+          -12,
+          -19,
+          0,
+          10
+        ],
+        "b": [
+          -9972.577809416005,
+          550.083892399809,
+          -9924.97600602977,
+          597.4908251772019
+        ]
+      },
+      {
+        "i": 1839,
+        "j": 1418,
+        "q": [
+          -19,
+          -14,
+          4,
+          0
+        ],
+        "b": [
+          -9924.97600602977,
+          550.083892399809,
+          -9877.374202643536,
+          597.4908251772019
+        ]
+      },
+      {
+        "i": 1843,
+        "j": 1419,
+        "q": [
+          0,
+          -23,
+          -10,
+          4
+        ],
+        "b": [
+          -9734.568792484832,
+          597.4908251771994,
+          -9686.966989098597,
+          644.8977579545924
+        ]
+      },
+      {
+        "i": 1845,
+        "j": 1420,
+        "q": [
+          -14,
+          -23,
+          0,
+          4
+        ],
+        "b": [
+          -9639.365185712362,
+          644.8977579545899,
+          -9591.763382326128,
+          692.3046907319829
+        ]
+      },
+      {
+        "i": 1846,
+        "j": 1421,
+        "q": [
+          0,
+          -12,
+          4,
+          19
+        ],
+        "b": [
+          -9591.763382326113,
+          692.3046907319804,
+          -9544.161578939878,
+          739.7116235093733
+        ]
+      }
+    ],
+    "fullStockTriangles": 98972,
+    "unchangedOrderedBatches": 69,
+    "onlyOneReorderedBatch": 1,
+    "reorderedStockTrisStillExact": 3434,
+    "fixedNewScope": {
+      "chunks": 1,
+      "triangles": 526,
+      "allPositions": 1578,
+      "uniqueVerticalStations": 266,
+      "outsidePinnedCellVertices": 0,
+      "minBelowOceanOrTerrainM": 0.1000000011920929,
+      "minAboveOceanOrTerrainM": 0.09993557537929654,
+      "maxMeshHeightM": 13.85343387722969
+    },
+    "exactRenderAndContactPoints": 2000,
+    "ordinaryFarAndWarmState": [
+      {
+        "eye": [
+          16241.630305822058,
+          200,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 0
+        },
+        "visible": false,
+        "triangles": 0
+      },
+      {
+        "eye": [
+          -9758.369694177942,
+          22,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 1
+        },
+        "visible": true,
+        "triangles": 526
+      },
+      {
+        "eye": [
+          -1258.3696941779417,
+          100,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 1
+        },
+        "visible": true,
+        "triangles": 526
+      },
+      {
+        "eye": [
+          -658.3696941779417,
+          100,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 0
+        },
+        "visible": false,
+        "triangles": 0
+      },
+      {
+        "eye": [
+          -18758.36969417794,
+          100,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 0
+        },
+        "visible": false,
+        "triangles": 0
+      },
+      {
+        "eye": [
+          -9758.369694177942,
+          22,
+          644.8977579545912
+        ],
+        "state": {
+          "chunks": 1,
+          "refined": 1
+        },
+        "visible": true,
+        "triangles": 526
+      }
+    ]
+  },
+  "compiledFlights": [
+    {
+      "mode": "default",
+      "site": "cavendish-low",
+      "motionM": 332.785,
+      "closure": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "stock",
+      "site": "cavendish-low",
+      "motionM": 334.584,
+      "closure": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "changed-source",
+      "site": "cavendish-low",
+      "motionM": 332.184,
+      "closure": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "shifted-bounds",
+      "site": "cavendish-low",
+      "motionM": 326.781,
+      "closure": null,
+      "coverRequests": 1
+    }
+  ]
+}
