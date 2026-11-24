@@ -1,0 +1,307 @@
+{
+  "baseVerifiedMain": "efcc0b6cae8d28e4b9f5fd0489a4ecfa5ab7fe8e",
+  "unitTests": 254,
+  "roofC": {
+    "coreLiDARChecks": 580,
+    "towerTaperRadialChecks": 57,
+    "mainRoofP90M": [
+      0.088,
+      0.09
+    ],
+    "transeptP90IntervalM": [
+      0.056,
+      0.134
+    ],
+    "nicheCount": 12,
+    "modelTriangles": [
+      35022,
+      21638
+    ]
+  },
+  "originalOwner": {
+    "tile": "q03230",
+    "chunk": "a8e76deb73383875e7adb6e2eb787c9b14d409fd2c2f5038515ef7e2242866dd",
+    "span": [
+      3021,
+      3168
+    ],
+    "allVertices": 22287,
+    "stableToggles": 200,
+    "independentAlternateBytes": 44280
+  },
+  "stagedWorld": {
+    "fixture": "exact packed V7 plus original 115 atlas",
+    "checked": 10000,
+    "changed": 2258,
+    "offscope": 7742,
+    "maxRaise": 1.6288032150264797,
+    "atomicSignedGroundRollback": true,
+    "onlyAlternativeOwnerDraw": true,
+    "stockPhysicsRestored": true
+  },
+  "gradeSource": {
+    "completeChangedThreeFaces": 7417,
+    "allNativeCellsIntersectingAnyChangedTriangle": 2800,
+    "unsupportedNativeTriangleContacts": 0,
+    "actualProtectedDistancesNative3979M": {
+      "street": 19.102841013063003,
+      "paths": null,
+      "parking": null,
+      "places": 2.2353493854181266
+    },
+    "closestStockStemDistanceM": [
+      [
+        19,
+        3.3092941056698604
+      ],
+      [
+        18,
+        3.4587747158162836
+      ],
+      [
+        15,
+        7.598342521966344
+      ],
+      [
+        16,
+        12.912652797527498
+      ]
+    ],
+    "projectedChangedUnionAreaM2": 2633.41665519285,
+    "supportedDomainMinLegacyLandSignedM": 254.0
+  },
+  "foundations": {
+    "rootCheckedRays": 10872,
+    "protectedExact": 46125,
+    "observedWorstGapM": 0.03051
+  },
+  "treeShade": {
+    "exactReceiverCount": 4,
+    "fallbackOrStreamedTriangles": [
+      2212,
+      659
+    ],
+    "activeDraws": 1,
+    "scopeCaptures": 12,
+    "outsideReceiverChangedPixels": 0
+  },
+  "sunCast": {
+    "rawWidth": 241,
+    "rawDepth": 261,
+    "rawBytes": 62901,
+    "wireBytes": 1667,
+    "rawSha256": "20c73f1f2a40444a0a3f0b4d5062c5bed916a039232a1130adcda7391263baba",
+    "wireSha256": "38d468b956c1149a146c1b47f44932967a4a073a2a42185db741d5d8d7564919",
+    "sourceSunDirection": [
+      -0.5988930707832083,
+      0.7386347872992903,
+      -0.3094280865713243
+    ],
+    "positiveTexelCentres": 28589,
+    "minCompleteBilinearProtectedClearanceM": [
+      22.373923397513856,
+      5.7886356587691195
+    ],
+    "sunDirectionsAndAbsoluteSampleCounts": [
+      {
+        "sunSample": 0,
+        "fourSubtexelRayHits": 112183,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.5988930707832083,
+          0.7386347872992903,
+          -0.3094280865713243
+        ]
+      },
+      {
+        "sunSample": 1,
+        "fourSubtexelRayHits": 112231,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.5971412862371346,
+          0.7386294349437974,
+          -0.3128079955910122
+        ]
+      },
+      {
+        "sunSample": 2,
+        "fourSubtexelRayHits": 111925,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.5958515260138298,
+          0.740851877340462,
+          -0.3099991206247251
+        ]
+      },
+      {
+        "sunSample": 3,
+        "fourSubtexelRayHits": 111875,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.5975989708122066,
+          0.740851877340462,
+          -0.3066169694020605
+        ]
+      },
+      {
+        "sunSample": 4,
+        "fourSubtexelRayHits": 112166,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.6006361758338881,
+          0.7386294349437974,
+          -0.30604369314568297
+        ]
+      },
+      {
+        "sunSample": 5,
+        "fourSubtexelRayHits": 112487,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.6019259360571928,
+          0.7364069925471328,
+          -0.30885256811197004
+        ]
+      },
+      {
+        "sunSample": 6,
+        "fourSubtexelRayHits": 112523,
+        "maxPerTexel": 4,
+        "direction": [
+          -0.6001784912588161,
+          0.7364069925471328,
+          -0.31223471933463465
+        ]
+      }
+    ]
+  },
+  "sameFrameGPUShadowScope": {
+    "church-front-close": {
+      "cameraRasterWH": [
+        880,
+        580
+      ],
+      "changedPixels": 5331,
+      "meaningfulRGB3": 4986,
+      "outsideWorldTerrainMarkerChanged": 0,
+      "brighterPixels": 0,
+      "maximumChannelDelta": 19,
+      "affectedScreenBoundsXY": [
+        325,
+        380,
+        720,
+        431
+      ],
+      "unchangedSameFrame": {
+        "calls": 104,
+        "triangles": 341051,
+        "ortho": [
+          "10-10",
+          "10-11",
+          "10-12",
+          "10-13",
+          "11-10",
+          "11-11",
+          "11-12",
+          "11-13",
+          "8-10",
+          "8-11",
+          "8-12",
+          "8-13",
+          "9-10",
+          "9-11",
+          "9-12",
+          "9-13",
+          "9-9"
+        ]
+      }
+    },
+    "church-shadow-east-close": {
+      "cameraRasterWH": [
+        880,
+        580
+      ],
+      "changedPixels": 4622,
+      "meaningfulRGB3": 4448,
+      "outsideWorldTerrainMarkerChanged": 0,
+      "brighterPixels": 0,
+      "maximumChannelDelta": 20,
+      "affectedScreenBoundsXY": [
+        418,
+        293,
+        599,
+        379
+      ],
+      "unchangedSameFrame": {
+        "calls": 108,
+        "triangles": 363838,
+        "ortho": [
+          "10-10",
+          "10-11",
+          "10-12",
+          "10-13",
+          "11-10",
+          "11-11",
+          "11-12",
+          "11-13",
+          "8-10",
+          "8-11",
+          "8-12",
+          "8-13",
+          "9-10",
+          "9-11",
+          "9-12",
+          "9-13",
+          "9-9"
+        ]
+      }
+    }
+  },
+  "flights": {
+    "bothAndCast": {
+      "atomicArt": true,
+      "churchSun": true,
+      "nearShadowTriangles": 2212,
+      "ownerPrepared": true,
+      "startingStandardFetchedNoGrade": true,
+      "departure": "indian-river-country-pass",
+      "corruptGrade": false,
+      "travelM": 715.0861637760012,
+      "localGroundGrade": "st-marys-2020-grade-study",
+      "gradeResponses": [
+        200
+      ],
+      "errors": []
+    },
+    "invalidGrade": {
+      "atomicArt": false,
+      "churchSun": false,
+      "nearShadowTriangles": 0,
+      "ownerPrepared": false,
+      "startingStandardFetchedNoGrade": true,
+      "departure": "indian-river-country-pass",
+      "corruptGrade": true,
+      "travelM": 154.74016018182533,
+      "localGroundGrade": null,
+      "gradeResponses": [
+        200
+      ],
+      "errors": []
+    },
+    "invalidSun": {
+      "atomicArt": false,
+      "churchSun": false,
+      "nearShadowTriangles": 0,
+      "ownerPrepared": false,
+      "startingStandardFetchedNoGrade": true,
+      "departure": "indian-river-country-pass",
+      "corruptSun": true,
+      "travelM": 153.54497840414132,
+      "localGroundGrade": null,
+      "gradeResponses": [
+        200
+      ],
+      "errors": []
+    }
+  }
+}

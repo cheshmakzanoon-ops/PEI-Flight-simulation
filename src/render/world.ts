@@ -1,3 +1,4 @@
+import {churchSunGLSL,type ChurchGroundSun} from './indian-river/church-ground-sun.ts';
 import {provinceGrassGLSL,type ProvinceGrassStudy} from './province-grass.ts';
 import {DRY_FRAME,drySoilGLSL,makeDrySoilUniforms} from './dry-coast/soil.ts';
 import {gablesTrailGLSL,gablesTrailIntersects} from './cavendish-trail.ts';
@@ -241,7 +242,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false)=>fp+(grassStudy?provinceGrassGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false)=>fp+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -342,7 +343,8 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  `:''}
  ${castBuildings?` float castShade=buildingShade(p,${bankSmooth?'bankShadowReceiver':showFloor?'receiverPlane':meadow?'meadowReceiver':'n'},d);
  col*=mix(vec3(1.),vec3(.69,.74,.81),castShade*(.39+.61*light));`:''}
- col*=.90+.31*light;
+ ${churchSun?`float churchOcc=churchDirectOcclusion(p,d,coast);
+ col*=(.90+.31*light*(1.-.96*churchOcc))*mix(vec3(1.),vec3(.94,.97,1.),churchOcc*light);`:'col*=.90+.31*light;'}
  ${cape?`float castCape=capeShade(p,sun,d);
  col*=mix(vec3(1.),vec3(.54,.60,.65),castCape);`:''}
  ${souris?'col=sourisSoil(col,p,detailFade,max(length(dFdx(p.xz)),length(dFdy(p.xz))));':''}
@@ -423,6 +425,7 @@ async function loadCover(tryBasin=false,verifyOptionalGeography=false){
    cs.compressedSha256,checkedBasin,undefined,decodedSha);
 }
 type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
+type StMarysProposedGround=Readonly<{mesh:THREE.Mesh;gradeId:string;bounds:readonly [number,number,number,number];inChangedSupport:(x:number,z:number)=>boolean}>;
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
  private shoreFaces:THREE.Mesh[]=[];
@@ -463,10 +466,11 @@ export class World {
  readonly trailStrength={value:0};
  readonly rusticoSoilStrength={value:0};
  private readonly grades?:ReadonlyMap<string,BoundedGrade>;
+ private stagedChurch?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;seams?:string;source:StMarysProposedGround};
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun){
   this.grassStudy=grassStudy;
   if(localGrade)this.grades=boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade);
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
@@ -609,11 +613,12 @@ export class World {
     const provinceHere=provinceFields&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&provinceFields.stream.intersects(x0,z0,x0+w,z0+d);
     const grassHere=grassStudy&&!localRusticoSoil&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&grassStudy.stream.intersects(x0,z0,x0+w,z0+d);
     const grassUniforms:Record<string,THREE.IUniform>=grassHere?grassStudy.uniforms:{};
+    const churchHere=churchGroundSun&&i===churchGroundSun.tile[0]&&j===churchGroundSun.tile[1]?churchGroundSun:undefined;
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
@@ -786,7 +791,7 @@ export class World {
    wall.mesh.geometry.dispose();wall.mesh.geometry=next;wall.signature=signature;
   }
  }
- private patch(x0:number,z0:number,w:number,d:number,n:number){
+ private patch(x0:number,z0:number,w:number,d:number,n:number,proposed?:BoundedGrade){
   let g:THREE.BufferGeometry=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
   const pos=g.getAttribute('position'),uv=g.getAttribute('uv');
   for(let i=0;i<pos.count;i++){
@@ -796,7 +801,7 @@ export class World {
   }
   const meets=(g:NonNullable<World['bankGround']>['grid'])=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d;
   const localBank=this.bankGround?.grid;
-  const localGrade=n===112?this.grades?.get(Math.round((x0-this.terrain.left)/w)+'-'+Math.round((z0-this.terrain.top)/d))?.grid:undefined;
+  const localGrade=n===112?(proposed??this.grades?.get(Math.round((x0-this.terrain.left)/w)+'-'+Math.round((z0-this.terrain.top)/d)))?.grid:undefined;
   const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&
     (n!==8||g.spec.id!==MONTAGUE_GROUND_ID)&&meets(g))??
    (localBank&&n===112&&meets(localBank)?localBank:undefined)??(localGrade&&meets(localGrade)?localGrade:undefined);
@@ -810,6 +815,49 @@ export class World {
   else if(site)m.userData.coastalSurvey=site.spec.id;
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
+ }
+ /** Prepare one reversible near mesh before live receiver seating; do not
+  * change the scene, collision sampler or installed flag until a commit. */
+ stageStMarysNear(grade:BoundedGrade){
+  const {spec,x0,z0,x1,z1}=grade.grid,key=spec.tileX+'-'+spec.tileZ,t=this.byId.get(key);
+  if(!t?.fine||t.lod!==112||t.relief||this.grades?.has(key))return;
+  let q=this.stagedChurch;
+  if(q?.owner!==t||q.grade!==grade){
+   this.dropStMarysStage();
+   const candidate=this.patch(t.x0,t.z0,t.w,t.d,112,grade);
+   if(candidate.userData.localGrade!==spec.id){candidate.geometry.dispose();return;}
+   candidate.material=t.local;
+   const source:StMarysProposedGround={mesh:candidate,gradeId:spec.id,bounds:[x0,z0,x1,z1],
+    inChangedSupport:(x:number,z:number)=>grade.weight(x,z)>0};
+   q=this.stagedChurch={owner:t,grade,stock:t.fine,candidate,source};
+   this.copyStMarysEdge(q.stock,q.candidate);q.seams=t.seams;
+  }
+  if(t.fine===q.stock&&q.seams!==t.seams){this.copyStMarysEdge(q.stock,q.candidate);q.seams=t.seams;}
+  return q.source;
+ }
+ setStMarysGround(show:boolean){
+  const q=this.stagedChurch,t=q?.owner;
+  if(!q||!t||t.lod!==112||(t.fine!==q.stock&&t.fine!==q.candidate))return false;
+  const before=t.fine,after=show?q.candidate:q.stock;
+  if(before!==after){
+   this.copyStMarysEdge(before,after);q.seams=t.seams;
+   this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
+  }
+  return show;
+ }
+ private copyStMarysEdge(a:THREE.Mesh,b:THREE.Mesh){
+  const src=a.geometry.getAttribute('position'),dest=b.geometry.getAttribute('position'),n=112;
+  let changed=false;
+  for(let k=0;k<=n;k++)for(const j of [k,n*(n+1)+k,k*(n+1),k*(n+1)+n]){
+   const y=src.getY(j);
+   if(dest.getY(j)!==y){dest.setY(j,y);changed=true;}
+  }
+  if(changed)dest.needsUpdate=true;
+ }
+ private dropStMarysStage(){
+  const q=this.stagedChurch;if(!q)return;
+  this.setStMarysGround(false);
+  this.scene.remove(q.candidate);q.candidate.geometry.dispose();this.stagedChurch=undefined;
  }
  enableAdaptiveTerrain(stream:ReliefPacks){
   this.reliefPacks=stream;
@@ -874,7 +922,7 @@ export class World {
   let out='';
   for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){
    const key=i+'-'+j,q=this.byId.get(key);
-   const grade=q?.fine?.userData.localGrade&&q.lod===112&&this.grades?.get(key)?.affectsBounds(b);
+   const grade=this.installedGrade(key,q)?.affectsBounds(b);
    out+=q?q.lod+'/'+(q.seams??'')+(grade?'g;':q.relief?'*;':';'):'-;';
   }
   return out;
@@ -882,22 +930,25 @@ export class World {
  private installedGrade(key:string,patch=this.byId.get(key)){
   const revision=patch?.lod===112&&patch.fine?.userData.localGrade;
   if(!revision)return;
-  const source=this.grades?.get(key);
+  const proposed=this.stagedChurch;
+  const source=proposed&&patch?.fine===proposed.candidate?proposed.grade:this.grades?.get(key);
   return source?.grid.spec.id===revision?source:undefined;
  }
  groundGradeInstalled(id:string){
+  const church=this.stagedChurch;
+  if(church?.grade.grid.spec.id===id)return church.owner.fine===church.candidate&&church.owner.lod===112;
   if(this.grades)for(const [key,g] of this.grades)if(g.grid.spec.id===id)return !!this.installedGrade(key);
   return false;
  }
  get activeGroundGrades():readonly string[]{
-  if(!this.grades)return [];
   const result:string[]=[];
-  for(const [key] of this.grades){const g=this.installedGrade(key);if(g)result.push(g.grid.spec.id);}
+  if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)result.push(g.grid.spec.id);}
+  const church=this.stagedChurch;if(church&&this.groundGradeInstalled(church.grade.grid.spec.id))result.push(church.grade.grid.spec.id);
   return result;
  }
  get activeGroundGrade(){
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)return g.grid.spec.id;}
-  return null;
+  const church=this.stagedChurch;return church&&this.groundGradeInstalled(church.grade.grid.spec.id)?church.grade.grid.spec.id:null;
  }
  /** Height of the submitted regular grid (including sewn tile-edge vertices).
   * Decorative roots use this, not the map or aerodynamic contact sampler. */
@@ -971,7 +1022,7 @@ export class World {
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
-  if(covered&&this.grades){
+  if(covered&&(this.grades||this.stagedChurch)){
    const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
    if(grade?.weight(x,z))return grade.contactY(x,z,baseline);
   }
@@ -1018,7 +1069,9 @@ export class World {
   for(const tile of this.tiles){
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
    const d2=dx*dx+dz*dz,old=tile.lod;
-   tile.lod=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
+   const proposedLOD=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
+   if(proposedLOD!==112&&this.stagedChurch?.owner===tile)this.dropStMarysStage();
+   tile.lod=proposedLOD;
    if(tile.lod!==old){changedGround=true;if(tile.lod<112)this.withdrawAdaptive(tile);}
    const fine=tile.lod>8;
    if(fine&&tile.fine?.userData.subdiv!==tile.lod){

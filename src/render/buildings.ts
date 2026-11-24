@@ -1,3 +1,7 @@
+import {INDIAN_RIVER_SOURCE as CHURCH} from './indian-river/indian-river-source.generated.ts';
+import {churchOwnerBytes,churchOwnerSource} from './indian-river/indian-river-guard.ts';
+import {authenticatedOwnerVariant} from './indian-river/authored-owner-variant.ts';
+import type {ChurchArt} from './indian-river/runtime.ts';
 import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
 import * as THREE from 'three';
 import {BEACON_REVIEW} from './beaconsfield-review-spec.ts';
@@ -38,7 +42,7 @@ import { PackedBytes } from '../sim/packed-bytes.ts';
 import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
 import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
-type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[]};
+type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[];indianRiver?:Bldg[]};
 interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 type ExteriorRecord={ordinal:number;footprint:readonly (readonly [number,number])[];height:number;minHeight:number};
 function matchesExterior(rows:Bldg[],spec:ExteriorRecord){
@@ -183,8 +187,11 @@ export class Buildings {
  private beacon?:THREE.Group;
  private disposeBeacon?:(m:THREE.Group)=>void;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false){
-  this.rusticoRoof=rusticoRoof;
+ private indianVariant?:ReturnType<typeof authenticatedOwnerVariant>;
+ private readonly churchArt?:ChurchArt;
+ private readonly pinnedChurch?:Bldg[];
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[]){
+  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
    vertexShader:buildingV,fragmentShader:buildingF(false,false,false,false,false,false,true),vertexColors:true,side:THREE.DoubleSide});
@@ -246,19 +253,39 @@ export class Buildings {
   }catch{/** Ordinary C and stock still have their normal fallback. */}
   finally{clearTimeout(timer);}
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false){
-  const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof);
+ /** No visual, grade, or stock omission without the exact whole readable owner. */
+ static async prepareIndianRiver(){
+  const c=new AbortController(),timer=setTimeout(()=>c.abort(),2600);
+  try{
+   const ready=await Buildings.openAtlas(c.signal);
+   const tile=ready.atlas.find(t=>t.id===CHURCH.tile);
+   if(!tile||ready.atlasHash!==CHURCH.atlas||tile.offset!==CHURCH.offset||tile.bytes!==CHURCH.size)return;
+   const part=await ready.pack.read(tile.offset,tile.bytes);
+   if(!await churchOwnerBytes(part)||c.signal.aborted)return;
+   const rows=await Buildings.decodeChunk(part);
+   if(!c.signal.aborted&&churchOwnerSource(ready.atlasHash,tile,rows))return {...ready,indianRiver:rows};
+  }catch{/** Standard building loading remains the fallback. */}
+  finally{clearTimeout(timer);}
  }
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt){
+  const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver);
+ }
+ get indianRiverPrepared(){return !!this.indianVariant;}
+ syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
+ get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
  update(x:number,z:number){
   this.syncCavendish();
+  this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
-   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===GREEN_GABLES_BARN.tile&&this.barn){
+   for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
+    this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===GREEN_GABLES_BARN.tile&&this.barn){
      m.geometry=this.barn.views.stock;this.barn.views.dispose();
      this.scene.remove(this.barn.group);this.barn.dispose(this.barn.group);this.barn=undefined;
     }
@@ -326,7 +353,8 @@ export class Buildings {
      rusticoChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
 
-   }else features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
+   }else if(tile.id===CHURCH.tile&&this.pinnedChurch)features=this.pinnedChurch;
+   else features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
    if(!this.wanted.has(tile.id))return;
    const sp=this.spinnakers;
    let wharf:THREE.Group|undefined;
@@ -342,8 +370,13 @@ export class Buildings {
      wharf=sp.assembled;
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
-   const mesh=this.generate(features,tile,!!wharf,ownerBytes?spec?.ordinal:undefined,!!barnBytes,rusticoChunk);
+   const church=features===this.pinnedChurch?this.churchArt:undefined;
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:undefined,!!barnBytes,rusticoChunk);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(church&&mesh.userData.beaconTriangles){
+    const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
+    if(v){this.indianVariant=v;this.scene.add(church.group);v.sync(church.active());}
+   }
    // The ordinary whole tile is already visible. Do not put buildings on the
    // renderer's streaming queue behind an optional module or art response.
    if(ownerBytes&&spec){

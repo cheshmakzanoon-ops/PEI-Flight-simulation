@@ -58,6 +58,7 @@ export const SCENERY_REVIEWS=[
  {flag:'cavendishWaterReview',name:'Dunelands freshwater',scope:'2020 surveyed core'},
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
+ {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
@@ -73,6 +74,11 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='indianRiverReview'){
+  if(options.get('scenery')==='detail')return 'detail';
+  if(['surveyRelief','inlandRelief','buildingShadows','woodland3D','canopyLight','northBaywalkPreview'].some(k=>options.has(k)))return 'terrain';
+  return;
+ }
  if(flag==='sourceGrassStudy'){
   if(options.get('scenery')==='detail')return 'detail';
   if(['surveyRelief','inlandRelief','buildingShadows','cropRowsReview','meadowTexture','northCapeWind'].some(f=>options.has(f)))return 'terrain';

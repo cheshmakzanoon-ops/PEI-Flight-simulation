@@ -1,3 +1,4 @@
+import type {StMarysShadows,StMarysShadowGround} from './indian-river/st-marys-shadows.ts';
 import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import * as THREE from 'three';
 import type {Terrain} from '../sim/terrain.ts';
@@ -96,6 +97,7 @@ export class Vegetation {
  private forestRevision=0;
  private volume?:WoodlandVolume;
  private groundedShadow?:GroundedTreeShadows;
+ private churchShadows?:StMarysShadows;
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
@@ -110,6 +112,17 @@ export class Vegetation {
   this.crown=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:this.crownVertex,fragmentShader:this.crownFragment,uniforms,side:THREE.DoubleSide,alphaToCoverage:true}));
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
+ }
+ attachStMarysShadows(scene:THREE.Scene,adapter:typeof StMarysShadows,gradeId:string){
+  this.churchShadows=adapter.mount(scene,this.shade,gradeId,maxTrees);
+ }
+ updateStMarysShadows(source?:StMarysShadowGround){
+  return this.churchShadows?.update(source,this.stems.array as Float32Array,this.shapes.array as Float32Array,this.hedgeStart,this.forestRevision)??false;
+ }
+ get stMarysShadowReceivers(){return this.churchShadows?.count??0;}
+ get stMarysShadowTriangles(){
+  const q=this.churchShadows;if(!q?.count)return 0;
+  return (q.mesh.geometry.index?.count??q.mesh.geometry.getAttribute('position').count)/3;
  }
  attachVolume(layer:WoodlandVolume,world?:World,scene?:THREE.Scene){
   this.volume=layer;this.geom.setAttribute('branchActive',layer.mask);
