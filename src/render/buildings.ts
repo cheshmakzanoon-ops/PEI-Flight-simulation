@@ -197,6 +197,9 @@ export class Buildings {
  private readonly tryBeaconsfield:boolean;
  private readonly greenGablesGate:(()=>boolean)|undefined;
  private readonly barnGate:(()=>boolean)|undefined;
+ private barnNearOnly=false;
+ private pendingBarn?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ enableNearBarn(){this.barnNearOnly=true;}
  private barn?:{group:THREE.Group;owner:THREE.Mesh;views:CavendishBarnViews;dispose:(group:THREE.Group)=>void};
  private greenGables?:{group:THREE.Group;owner:THREE.Mesh;index:THREE.BufferAttribute;dispose:(group:THREE.Group)=>void};
  private beacon?:THREE.Group;
@@ -325,8 +328,8 @@ export class Buildings {
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
- update(x:number,z:number){
-  this.syncCavendish();
+ update(x:number,z:number,barnAgl=Infinity){
+  this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
   this.syncSourisEast();
@@ -355,6 +358,7 @@ export class Buildings {
      if(this.pendingStDavids?.owner===m)this.pendingStDavids=undefined;
     }
     if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
+    if(this.pendingBarn?.owner===m)this.pendingBarn=undefined;
     this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===GREEN_GABLES_BARN.tile&&this.barn){
      m.geometry=this.barn.views.stock;this.barn.views.dispose();
      this.scene.remove(this.barn.group);this.barn.dispose(this.barn.group);this.barn=undefined;
@@ -429,11 +433,23 @@ export class Buildings {
   if(group.visible!==show){stock.setIndex(show?index:null);group.visible=show;}
  }
  get greenGablesBarnPreviewActive(){return this.barn?.group.visible??false;}
- private syncCavendish(){
+ private syncCavendish(x=Infinity,z=Infinity,agl=Infinity){
+  // An async artwork completion is not a new aircraft position.
+  if(this.barnNearOnly&&(!Number.isFinite(x)||!Number.isFinite(z)))return;
   this.syncGreenGables();
-  if(!this.barn)return;
+  const seated=()=>this.barnGate?.()??false;
+  const visible=this.barn?.group.visible;
+  const near=!this.barnNearOnly||(agl<(visible?730:540)&&
+   Math.hypot(x-GREEN_GABLES_BARN.gameXZ[0],z-GREEN_GABLES_BARN.gameXZ[1])<(visible?2700:2250));
+  if(!this.barn){
+   if(this.pendingBarn&&near&&seated()){
+    const {tile,owner,source}=this.pendingBarn;this.pendingBarn=undefined;
+    void this.promoteBarn(tile,owner,source);
+   }
+   return;
+  }
   const {group,owner,views}=this.barn,home=this.greenGables;
-  const g=this.barnGate?.()?views.withBarn(home?.owner===owner&&home.group.visible?home.index:null):undefined;
+  const g=near&&seated()?views.withBarn(home?.owner===owner&&home.group.visible?home.index:null):undefined;
   owner.geometry=g??views.stock;group.visible=g!==undefined;
  }
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
@@ -510,7 +526,10 @@ export class Buildings {
     if(spec===BEACON_REVIEW)void this.promoteBeaconsfield(tile,mesh,ownerBytes);
     else void this.promoteGreenGables(tile,mesh,ownerBytes);
    }
-   if(barnBytes)void this.promoteBarn(tile,mesh,barnBytes);
+   if(barnBytes){
+    if(this.barnNearOnly)this.pendingBarn={tile,owner:mesh,source:barnBytes};
+    else void this.promoteBarn(tile,mesh,barnBytes);
+   }
    if(stationBytes&&this.tryStation){
     if(this.tryStation.standard)this.pendingStandardRail={tile,owner:mesh,source:stationBytes};
     else void this.promoteStation(tile,mesh,stationBytes,this.tryStation);

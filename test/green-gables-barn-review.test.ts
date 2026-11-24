@@ -8,7 +8,7 @@ import {CavendishBarnViews} from '../src/render/cavendish-owner-views.ts';
 import {GREEN_GABLES_BARN as S} from '../src/render/green-gables-barn-spec.ts';
 import {GREEN_GABLES_BARN_ASSET as A} from '../src/render/green-gables-barn-asset.ts';
 import {decodeBarnReview,loadBarnReview,disposeBarnReview} from '../src/render/green-gables-barn-review.ts';
-import {greenGablesBarnRequested,greenGablesBarnAtlasMatches,greenGablesBarnGate} from '../src/render/green-gables-barn-gate.ts';
+import {greenGablesBarnRequested,greenGablesBarnAtlasMatches,greenGablesBarnGate,greenGablesBarnStandardRequested} from '../src/render/green-gables-barn-gate.ts';
 import {Terrain} from '../src/sim/terrain.ts';
 import {PackedBytes} from '../src/sim/packed-bytes.ts';
 
@@ -158,4 +158,36 @@ test('the published dry-rise grade cannot change any Barn seat or stamp',async()
   const stock=terrain.contactHeight(x,z,true);
   assert.equal(grade.contactY(x,z,stock),stock);
  }
+});
+
+test('Standard gates art on current near flight, not an old asynchronous completion',async()=>{
+ const oldFetch=globalThis.fetch;
+ const [x,z]=S.gameXZ,r=streamer(source,()=>true);r.b.enableNearBarn();
+ let requests=0,finish:(r:Response)=>void=()=>{};
+ globalThis.fetch=async url=>{
+  assert.equal(url,'./art/'+A.asset);requests++;
+  return new Promise<Response>(resolve=>{finish=resolve;});
+ };
+ try{
+  r.b.update(x+2500,z,70);await until(()=>!!r.owner());
+  const stock=r.owner().geometry;
+  r.b.update(x,z,575);await pause(12);assert.equal(requests,0);
+  r.b.update(x,z,70);await until(()=>requests===1);
+  r.b.update(x+2400,z,70);finish(recognized());await until(()=>!!r.b.barn);
+  r.b.update(x+2400,z,70);assert(!r.b.greenGablesBarnPreviewActive&&r.owner().geometry===stock);
+  r.b.update(x,z,70);assert(r.b.greenGablesBarnPreviewActive);
+  r.b.update(x+2400,z,650);assert(r.b.greenGablesBarnPreviewActive);
+  const house=seedHouse(r.b,r.owner());r.setHouse(true);
+  r.b.syncCavendish();assert(r.b.greenGablesBarnPreviewActive);
+  r.b.update(x+2400,z,650);assert(r.b.greenGablesBarnPreviewActive&&r.b.greenGablesPreviewActive);
+  r.b.update(x+2400,z,735);assert(!r.b.greenGablesBarnPreviewActive&&r.owner().geometry.index===house);
+  assert.equal(requests,1);assert.equal(r.read.length,1);
+ }finally{globalThis.fetch=oldFetch;}
+});
+test('Standard keeps the complete Barn in explicitly protected terrain modes',()=>{
+ const q=(s:string)=>greenGablesBarnStandardRequested(new URLSearchParams(s));
+ assert(q(''));assert(q('departure=cavendish-dunelands-low'));assert(q('greenGablesReview'));
+ for(const f of ['stockGreenGablesBarn','greenGablesBarnReview','scenery=detail','buildingShadows','surveyRelief',
+  'inlandRelief','seatedRoads','seatedForestShadows','woodlandView','orthophotoSeamStudy'])assert(!q(f),f);
+ assert(!greenGablesBarnRequested(new URLSearchParams('stockGreenGablesBarn&greenGablesBarnReview')));
 });

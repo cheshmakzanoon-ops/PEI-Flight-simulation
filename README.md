@@ -46,7 +46,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | North Rustico Harbour | `?northRusticoLighthouseStudy` | [Survey-fitted lighthouse, keeper’s dwelling and local grade](docs/landmarks/north-rustico.md). Choose **North Rustico Harbour · coastal pass**. |
 | Indian River | `?indianRiverReview` | [St. Mary’s exterior and local grade](docs/landmarks/st-marys-indian-river.md). Choose **Indian River · country pass**. |
 | Hog Island | `?hogIslandPhotoStudy` | [Dated aerial surface detail](docs/qa/hog-island-photo-study.md). Choose a west or east **Hog Island · dune pass**. |
-| Green Gables grounds | `?greenGablesBarnReview` | [Barn and adjoining lower wing](docs/art/green-gables-barn-review.md), with the survey-supported roof kept at its exact atlas owner. |
+| Green Gables grounds | `?stockGreenGablesBarn` | Compare the original massing with Standard’s [survey-fitted Barn and adjoining wing](docs/art/green-gables-barn-review.md). |
 | Cavendish Dunelands | `?cavendishWaterReview` | [Lake of Shining Waters, 2020 freshwater core](docs/qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
 | Near Green Gables | `?gablesTrailReview` | [Mapped gravel connection](docs/qa/gables-trail.md), with short-scale grain on the existing terrain. |
 | Southwest of Green Gables | `?gablesFairwayReview` | [Source-fenced fairway colour](docs/qa/gables-fairway.md) on the verified open ground, without moving the path or golf boundary. |

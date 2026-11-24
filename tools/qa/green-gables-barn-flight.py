@@ -27,7 +27,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Server,di
    t.on('console',lambda r:err.append(r.text)if r.type=='error'else None)
    if mode=='bad':t.route('**/'+art['barn'],lambda r:r.fulfill(status=200,body='Invalid same-origin Barn rehearsal.'))
    args='?diagnostics&departure=cavendish-dunelands-low&greenGablesReview&cavendishWaterReview&gablesGradeReview'
-   if mode!='stock':args+='&greenGablesBarnReview'
+   args+='&stockGreenGablesBarn' if mode=='stock' else '&greenGablesBarnReview'
    t.goto(route+args,wait_until='domcontentloaded')
    t.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.greenGablesReview&&window.islandAirDiagnostics.cavendishWaterCore")
    t.get_by_role('button',name='Begin flight').click()

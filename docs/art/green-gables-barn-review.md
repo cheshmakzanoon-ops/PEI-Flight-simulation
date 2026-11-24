@@ -1,7 +1,13 @@
-# Green Gables Barn exterior preview
+# Green Gables Barn exterior
 
-At Cavendish, add `?departure=cavendish-dunelands-low&greenGablesBarnReview` to open the coastal departure with a near-range Barn exterior preview. Add `&greenGablesReview` to enable the separate Green Gables House treatment too. The standard map and flight controls are unchanged without the flag. The preview does not implement grounds, indoor access, a new visitor centre, buildings outside this one source envelope, flight collisions, terrain changes, or a surveyed modern property model.
+Choose **Cavendish Dunelands · coastal pass** to see the modeled Barn
+in Standard scenery. Use `?departure=cavendish-dunelands-low&stockGreenGablesBarn`
+for the original massing. The House remains separate. This one exterior
+does not implement new grounds, building access, terrain, or flight collision.
 
+[Standard courtyard and overflight images](../qa/gables-barn-standard.webp) ·
+[Exact render scope](../qa/gables-barn-standard-scope.json) ·
+[Compiled ordinary flight check](../../tools/qa/green-gables-barn-standard-flight.py).
 
 ![Matched in-engine views of the stock building envelope and the optional Barn exterior](../qa/gables-barn-exterior.webp)
 
@@ -18,8 +24,8 @@ on both sides. The surrounding grounds and other buildings remain stock.*
 ## Visual ground and loading
 
 - The current game uses a fixed 13.66 m display seat for this exterior instead of its 14.19 m source datum. The rendered terrain underneath is unchanged. Only the existing q72 stone break and the display heights of nine closed-door thresholds are fitted to the existing near terrain. Actual near-tier stair-free threshold separation in this visual study was about 4.5–18.6 cm before ground/rigging variations in other tiers (which are not eligible). These are in-plan visual joins, not specifications for real entrances. There is no altered grade or foundation in the terrain, no gameplay collision, and no adjustment to the House or its separate seat.
-- Activation requires the pinned decoded terrain and Cover, one regular dry near terrain tile (`N112`) and matching height/land witnesses. At medium or coarse terrain resolution (`N56/N8`), the original Barn is drawn. The adaptive relief, inland relief and building-shadow flags disable the Barn preview too. This accounts for a nearby inherited coarse facet around 22 m that would otherwise obscure the model. It is not an elevation correction.
-- The public optional asset is 34,760 bytes gzipped (123,416 decoded) and contains only original fitted art: 11 opaque batches, 1,371 triangles. The full stock tile streams first. A rejected owner, missing, changed, truncated or late response cannot remove the stock building. A verified Barn and House can coexist while sharing the same six stock vertex attributes, without a second building-data fetch.
+- Activation requires the pinned decoded terrain and Cover, one regular dry near terrain tile (`N112`) and matching height/land witnesses. At medium or coarse terrain resolution (`N56/N8`), the original Barn is drawn. The adaptive relief, inland relief and building-shadow flags keep their original behavior. This accounts for a nearby inherited coarse facet around 22 m that would otherwise obscure the model. It is not an elevation correction.
+- The local art asset is 34,760 bytes gzipped (123,416 decoded) and contains only original fitted art: 11 opaque batches, 1,371 triangles. The full stock tile streams first. A rejected owner, missing, changed, truncated or late response cannot remove the stock building. A verified Barn and House can coexist while sharing the same six stock vertex attributes, without a second building-data fetch.
 - To reproduce authored data from this checkout, run `node --experimental-strip-types tools/art/bake-green-gables-barn.mjs`. This asserts that the roof top, soffit and exterior fascia stay byte-equivalent to C3 while baking the skirt/threshold treatment. `npm test` checks source protections, exact owner selection, all four sibling visibility modes, coarse fallback, and bad or late optional data.
 
 ## Verification
@@ -35,3 +41,18 @@ The [normal compiled flight replay](../qa/gables-barn-flight.json) checks
 the Barn beside the House, Dunelands freshwater, and the dry rise using
 the public departure, with no camera or flight override. To repeat it,
 run `tools/qa/green-gables-barn-flight.py --help` after building.
+
+
+Ordinary scenery verifies the land-cover bytes and the existing 32
+ground heights before requesting art. Entry is within 2.25 km and below
+540 m above local ground. Once visible, the Barn stays active until
+2.7 km, 730 m above ground, or earlier if the exact ground lease is lost.
+A cold distant flight requests no Barn artwork. The separate
+`greenGablesBarnReview` compatibility URL is retained, and
+`stockGreenGablesBarn` overrides it. The optional House, freshwater and
+dry rise can still be viewed together using the prior comparison route.
+
+The Standard matched court and air frames preserve all 486,304 pixels
+outside the projected Barn-plus-stock outline. The Barn adds 11 draws
+and 1,331 net triangles while visible. These are render counts, not
+device performance estimates.

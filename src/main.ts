@@ -12,6 +12,7 @@ import {georgetownSunMatches} from './render/st-davids/ground-sun.ts';
 import {railRequested,railGround,railStandardRequested,standardRailGround} from './render/summerside-station/admit.ts';
 import {SUMMERSIDE_STATION as RAIL} from './render/summerside-station/source.generated.ts';
 import {DUNE_RELIEF} from './sim/dune-relief.generated.ts';
+import {GREEN_GABLES_BARN as BARN} from './render/green-gables-barn-spec.ts';
 import {CANOPY_FENCE} from './render/canopy-fence.generated.ts';
 import {WORLD_COLS,WORLD_ROWS,SURVEY_LOD} from './sim/coastal-terrain.ts';
 import {KINGS_DRY_CROWN} from './sim/kings-dry-crown.generated.ts';
@@ -29,7 +30,7 @@ import {DRY_FRAME} from './render/dry-coast/soil.ts';
 import {RUSTICO_GRADE} from './sim/rustico-grade.generated.ts';
 import {loadGablesFairway,fairwayAtlasMatches,fairwayGeometryMatches} from './render/gables-fairway.ts';
 import {gablesGravelAtlasMatches,gablesGravelGeometryMatches} from './render/gables-gravel.ts';
-import {greenGablesBarnRequested,greenGablesBarnAtlasMatches,greenGablesBarnGate} from './render/green-gables-barn-gate.ts';
+import {greenGablesBarnRequested,greenGablesBarnAtlasMatches,greenGablesBarnGate,greenGablesBarnStandardRequested,greenGablesBarnStandardGate} from './render/green-gables-barn-gate.ts';
 import {GABLES_GRADE} from './sim/gables-grade.generated.ts';
 import {gradeAtlasMatches,loadBoundedGrade} from './sim/bounded-grade.ts';
 import {CAVENDISH_WATER_CORE as DUNELANDS} from './sim/cavendish-water-core.generated.ts';
@@ -352,7 +353,8 @@ async function run(){
    const y=world.visualGroundHeight(...GABLES.centroidXZ);
    return y>=11.26&&y<=13.44;
   }:undefined;
- const barnGate=tryBarn&&greenGablesBarnAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?greenGablesBarnGate(world):undefined;
+ const barnStandard=greenGablesBarnStandardRequested(options)?greenGablesBarnStandardGate(world,terrainSha,cover):undefined;
+ const barnGate=tryBarn&&greenGablesBarnAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?greenGablesBarnGate(world):barnStandard;
  const rusticoEnvelopeAllowed=!showBuildingShadows&&!options.has('inlandRelief')&&!options.has('surveyRelief')&&
   !options.has('legacyRusticoMassing')&&(!!rusticoCohort||options.has('rusticoMassingReview'));
  const railSeat=railAsked&&world.buildingShadows&&renderer.capabilities.maxTextureSize>=1536&&
@@ -378,6 +380,7 @@ async function run(){
  const sourisEastRequest=(showBuildingShadows&&!sourisEastShadows)||options.get('scenery')==='detail'||options.has('surveyRelief')||options.has('inlandRelief')?undefined:
   sourisEastGround(world,terrainSha,()=>roads?.sourceGeometrySha256);
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate,barnGate,rusticoEnvelopeAllowed,churchCohort?.art,railReview,stDavidsReview,townWallOptics).then(v=>{
+  if(barnStandard)v.enableNearBarn();
   if(sourisEastRequest)v.enableSourisEast(sourisEastRequest,sourisEastShadows);
   if(downtownSceneryCompatible(options))v.enableSummersideRoofCohort();
   return buildings=v;
@@ -537,7 +540,9 @@ async function run(){
   const eyeAGL=camera.position.y-world.groundHeight(camera.position.x,camera.position.z);
   roads?.update(f.x,f.z,eyeAGL);
   gravelSurface?.update(camera.position,eyeAGL,playing,roads,gravelDrySeat,diagnostic);
-  buildings?.update(f.x,f.z);
+  const barnAgl=barnStandard&&(f.x-BARN.gameXZ[0])**2+(f.z-BARN.gameXZ[1])**2<2700**2?
+   f.y-world.visualGroundHeight(f.x,f.z):undefined;
+  buildings?.update(f.x,f.z,barnAgl);
   if(paintGeorgetownSun){
    const hasChurch=!!buildings?.stDavidsActive;
    if(georgetownGroundSun)georgetownGroundSun.live.value=hasChurch?1:0;
