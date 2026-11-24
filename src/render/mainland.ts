@@ -1,8 +1,9 @@
+import type {AerialWorldOptics} from './aerial-perspective-lab.ts';
 import * as THREE from 'three';
 import {Terrain,type TerrainSpec} from '../sim/terrain.ts';
 import {unpackGzip} from '../sim/compression.ts';
 /** Non-playable NB/NS horizon context only. A separate land mask leaves PEI untouched. */
-export async function addMainland(scene:THREE.Scene){
+export async function addMainland(scene:THREE.Scene,air?:AerialWorldOptics){
  const root=import.meta.env.BASE_URL+'world/mainland/';
  const mf=await fetch(root+'context.json');if(!mf.ok)throw Error('Mainland context manifest missing');
  const m=await mf.json() as TerrainSpec&{file:string;color:string;heightUncompressedSha256:string};
@@ -34,5 +35,5 @@ export async function addMainland(scene:THREE.Scene){
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`});
- const mesh=new THREE.Mesh(g,material);mesh.name='Non-playable Maritime mainland context';mesh.position.set(cx,0,cz);g.computeBoundingSphere();scene.add(mesh);return t;
+ const mesh=new THREE.Mesh(g,air?air.bind(material):material);mesh.name='Non-playable Maritime mainland context';mesh.position.set(cx,0,cz);g.computeBoundingSphere();scene.add(mesh);return t;
 }

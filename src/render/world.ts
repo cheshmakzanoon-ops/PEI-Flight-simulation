@@ -1,3 +1,4 @@
+import type {AerialWorldOptics,VerifiedAerialSky,VerifyAerialSky} from './aerial-perspective-lab.ts';
 import type {DuneGrassSurface} from './dune-grass-surface.ts';
 import type {DuneSand} from './dune-sand.ts';
 import {HOG_WEST_GRADE} from '../sim/hog-west-grade.generated.ts';
@@ -397,7 +398,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
 export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
- baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>,verifyCoverForReview=false){
+ baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>,verifyCoverForReview=false,verifySky?:VerifyAerialSky){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -406,11 +407,17 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const localSand=tryBasin?loadBasinSand(base):Promise.resolve(undefined);
  const elevationJob=loadElevation(progress);
  const bankJob=tryBasinChannel?loadBasinGround(base):Promise.resolve(undefined);
+ const skyAsset=base+'maritime-sky.webp',stockSky=(s:string)=>new THREE.TextureLoader().loadAsync(s);
+ let certifiedSky:VerifiedAerialSky|undefined;
+ const skyJob=verifySky?verifySky(skyAsset,stockSky).then(checked=>{
+  certifiedSky=checked;
+  return checked?.texture??stockSky(skyAsset);
+ },()=>stockSky(skyAsset)):stockSky(skyAsset);
  const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
   loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested||verifyCoverForReview),
-  new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
+  skyJob,bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
  sky.colorSpace=THREE.SRGBColorSpace;sky.wrapS=THREE.RepeatWrapping;
@@ -431,7 +438,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const committedCover=court?new Cover(priorCover.width,priorCover.height,priorCover.bytes,priorCover.harbour,priorCover.sourceSha,
   priorCover.basin,priorCover.montague,priorCover.sourceDecodedSha,priorCover.wharfToe,court):priorCover;
  const bowley=bowleyRequested&&bowleyAtlasMatches(elevation.spec.sha256,committedCover.sourceSha,committedCover.sourceDecodedSha)?await bowleyRequested:undefined;
- return {terrain,terrainSha:elevation.spec.sha256,img,cover:committedCover,sky,bankGround,bowley,
+ return {terrain,terrainSha:elevation.spec.sha256,img,cover:committedCover,sky,certifiedSky,bankGround,bowley,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -511,7 +518,11 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics){
+  const air=aerial?.accepts(sky)?aerial:undefined;
+  const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
+   const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
+  };
   this.grassStudy=grassStudy;
   if(localGrade)this.grades=boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade);
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
@@ -538,15 +549,15 @@ export class World {
    const cm=new THREE.DataTexture(cover.bytes,cover.width,cover.height,THREE.RGFormat);
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
    const paint=runwayAtlas();const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
-   const uniforms={detailClock:this.detailClock,detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(1,1)},
+   const uniforms={...(air?{atmosphericLabGain:air.gain}:{}),detailClock:this.detailClock,detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(1,1)},
        detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
-   const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
+   const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>sceneShader({uniforms,vertexShader:vertex,fragmentShader,side});
    const skyInverseProjection={value:new THREE.Matrix4()},skyEyeToWorld={value:new THREE.Matrix4()};
    const ponds=admitPondTiles(bowley?[bowley,...additionalPonds]:additionalPonds,{
     left:T.left,top:T.top,right:T.right,bottom:T.bottom,columns:WORLD_COLS,rows:WORLD_ROWS,
    });
    const bowleyViewport=ponds.length?{value:new THREE.Vector4(0,0,1,1)}:undefined;
-   const skyMaterial=new THREE.ShaderMaterial({vertexShader:screenSkyV,fragmentShader:skyFrag,
+   const skyMaterial=sceneShader({vertexShader:screenSkyV,fragmentShader:skyFrag,
      uniforms:{skyMap:{value:sky},skyInverseProjection,skyEyeToWorld,skyDiagnostic:{value:0}},
      depthTest:false,depthWrite:false});
    this.sky=new THREE.Mesh(new THREE.PlaneGeometry(2,2),skyMaterial);this.sky.renderOrder=-10;
@@ -661,20 +672,20 @@ export class World {
     const duneHere=westDuneOptics&&i===westDuneOptics.tile[0]&&j===westDuneOptics.tile[1]?westDuneOptics:undefined;
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'')});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
     coarse.material=montagueGround?.spec.tileX===i&&montagueGround.spec.tileZ===j?
-      new THREE.ShaderMaterial({uniforms:local.uniforms,vertexShader:vertex,fragmentShader:local.fragmentShader}):local;
+      sceneShader({uniforms:local.uniforms,vertexShader:vertex,fragmentShader:local.fragmentShader}):local;
     scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
    if(cover.baywalk){
     const b=cover.baywalk,[uu,vv]=T.uv((b.x0+b.x1)*.5,(b.z0+b.z1)*.5);
     const tile=this.byId.get(Math.floor(uu*nx)+'-'+Math.floor(vv*nz));
-    const m=new THREE.ShaderMaterial({vertexShader:vertex,
+    const m=sceneShader({vertexShader:vertex,
      fragmentShader:landFrag(false,false,false,false,!!this.buildingShadows,false,false,false,false,false,true),
      uniforms:{...(tile?.local.uniforms??uniforms),...this.buildingShadows?.uniforms,...northCourtUniforms}});
     this.northCourt=new BaywalkGround(b,cover,T,m,(x,z)=>this.provinceVisualGroundHeight(x,z));
@@ -682,9 +693,9 @@ export class World {
     this.refreshNorthCourt();
    }
    for(const {pond,surfaceUniforms} of pondsWithUniforms){
-    const water=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+skyFn+bowleyClipGLSL+bowleyWaterGLSL+out,
+    const water=sceneShader({vertexShader:vertex,fragmentShader:fp+skyFn+bowleyClipGLSL+bowleyWaterGLSL+out,
       uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide});
-    const shore=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+bowleyShoreGLSL+out,
+    const shore=sceneShader({vertexShader:vertex,fragmentShader:fp+bowleyShoreGLSL+out,
       uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide});
     const mesh=new BowleyWaterMesh(pond,T,water,shore);
     this.pondMeshes.push(mesh);scene.add(mesh.surface,mesh.rim);
