@@ -1,3 +1,4 @@
+import {DOWNTOWN_ROWS} from './summerside-roof.generated.ts';
 /** Continuous roof envelope inside the original source plan. No semantic facade claims. */
 import type {GroundPoint as Pt,Triangle} from '../sim/roof-ridge.ts';
 import {NEUTRAL_ATLAS_SHA,NEUTRAL_ROWS} from './neutral-roofs.generated.ts';
@@ -46,9 +47,12 @@ export function neutralRoofTriangles(inset:Triangle,c:Pt,planes:readonly RoofPla
 
 type StoredRow=readonly [slot:number,footprintMicrodegrees:readonly number[],datumMM:number,...planes:number[]];
 const rows:Readonly<Record<string,readonly StoredRow[]>>=NEUTRAL_ROWS;
-export function readNeutralRoof(atlasHash:string|undefined,tile:string,index:number,outline:readonly (readonly [number,number])[]){
+const downtown:Readonly<Record<string,readonly StoredRow[]>>=DOWNTOWN_ROWS;
+export function readNeutralRoof(atlasHash:string|undefined,tile:string,index:number,outline:readonly (readonly [number,number])[],downtownVerified=false){
  if(atlasHash!==NEUTRAL_ATLAS_SHA)return;
- const row=rows[tile]?.find(q=>q[0]===index);
+ const original=rows[tile]?.find(q=>q[0]===index);
+ const downtownRow=!original&&downtownVerified?downtown[tile]?.find(q=>q[0]===index):undefined;
+ const row=original??downtownRow;
  if(!row||row[1].length!==2*outline.length)return;
  const expected=row[1];
  // Coordinates in the shipped atlas are exact 1e-6 degree JSON numbers.
@@ -58,5 +62,5 @@ export function readNeutralRoof(atlasHash:string|undefined,tile:string,index:num
  const planes:RoofPlane[]=[];
  for(let i=0;i<coefficients.length;i+=3)
   planes.push([coefficients[i]*.001,coefficients[i+1]*1e-6,coefficients[i+2]*1e-6]);
- return {datum:datum*.001,planes};
+ return {datum:datum*.001,planes,downtown:!!downtownRow};
 }

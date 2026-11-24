@@ -1,3 +1,4 @@
+import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
 import {crockettAtlasCandidate,crockettExactRow,crockettExactWire} from './souris-east/admit.ts';
 import {SOURCE as SOURIS_EAST} from './souris-east/source.ts';
 import type {SourisEastGround} from './souris-east/ground.ts';
@@ -213,6 +214,7 @@ export class Buildings {
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private sourisEastGround?:SourisEastGround;
+ private summersideRoofCohort=false;
  private sourisEastShadows?:BuildingShadows;
  private sourisEast?:{owner:THREE.Mesh;seated:()=>boolean;dispose:()=>void;
   variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
@@ -311,7 +313,11 @@ export class Buildings {
  }
  get townWallReview(){return !!this.townWallOptics;}
  get indianRiverPrepared(){return !!this.indianVariant;}
+ enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ get summersideRoofCount(){
+  return this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0;
+ }
  get sourisEastActive(){return this.sourisEast?.variant.visible??false;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
@@ -441,10 +447,16 @@ export class Buildings {
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
    const east=this.sourisEastGround&&crockettAtlasCandidate(this.atlasHash,tile)?this.sourisEastGround:undefined;
    let eastBytes:ArrayBuffer|undefined;
+   const downtown=this.summersideRoofCohort?downtownTilePin(this.atlasHash,tile):undefined;
+   let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
-   if(candidate||rusticoCandidate||tryStation||tryStDavids||east){
+   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown){
     const raw=await this.pack.read(tile.offset,tile.bytes);
+    // Only the signed downtown chunk needs this check, with no duplicate
+    // download and an unchanged stock decoder on a crypto or pin failure.
+    const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
+    if(downtownCheck)downtownVerified=await downtownCheck;
     if(east&&crockettExactRow(features))eastBytes=raw;
     if(spec&&matchesExterior(features,spec))ownerBytes=raw;
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
@@ -474,7 +486,7 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:undefined,!!barnBytes,rusticoChunk);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:undefined,!!barnBytes,rusticoChunk,downtownVerified);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(church&&mesh.userData.beaconTriangles){
     const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
@@ -650,12 +662,12 @@ export class Buildings {
    this.syncCavendish();
   }catch{/** Never withhold q72, q101, or their existing neighbours. */}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,rusticoChunk?:string){
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,rusticoChunk?:string,downtownVerified=false){
   let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
   const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2)?[] as number[]:undefined;
-  let facade=0;
+  let facade=0,measuredDowntownRoofs=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
    if(markBarn){if(i===GREEN_GABLES_BARN.ordinal)barnStart=P.length/3;if(i===GREEN_GABLES_BARN.ordinal+1)barnEnd=P.length/3;}
@@ -772,10 +784,11 @@ export class Buildings {
     continue;
    }
    const center={x:cx,z:cz};
-   const neutralSource=!fit&&rings.length===1?readNeutralRoof(this.atlasHash,tile.id,i,f.footprint):undefined;
+   const neutralSource=!fit&&rings.length===1?readNeutralRoof(this.atlasHash,tile.id,i,f.footprint,downtownVerified):undefined;
    // The measured elevations are absolute. Reject material ground-datum conflicts
    // and leave this exact outline on the ordinary legacy generator.
    const neutral=neutralSource&&Math.abs(neutralSource.datum-base)<=.8?neutralSource:undefined;
+   if(neutral?.downtown)measuredDowntownRoofs++;
    const eave=base+(synthGable?low:h);
    const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number)=>{
@@ -849,6 +862,7 @@ export class Buildings {
      g.setAttribute('townWallFit',new THREE.BufferAttribute(data,3));mesh.material=material;
     }
   }
+  if(measuredDowntownRoofs)mesh.userData.measuredDowntownRoofs=measuredDowntownRoofs;
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
