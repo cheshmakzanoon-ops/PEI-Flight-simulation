@@ -1,0 +1,112 @@
+[
+  {
+    "case": "motion",
+    "frames": [
+      {
+        "m": 0,
+        "woodPixels": 15516,
+        "peak": 63
+      },
+      {
+        "m": 1.1,
+        "woodPixels": 12404,
+        "peak": 62
+      },
+      {
+        "m": 2.2,
+        "woodPixels": 10550,
+        "peak": 60
+      },
+      {
+        "m": 3.3,
+        "woodPixels": 9028,
+        "peak": 62
+      },
+      {
+        "m": 4.4,
+        "woodPixels": 7569,
+        "peak": 58
+      },
+      {
+        "m": 5.5,
+        "woodPixels": 6484,
+        "peak": 59
+      },
+      {
+        "m": 6.6,
+        "woodPixels": 5720,
+        "peak": 58
+      },
+      {
+        "m": 7.7,
+        "woodPixels": 4467,
+        "peak": 58
+      },
+      {
+        "m": 8.8,
+        "woodPixels": 3510,
+        "peak": 55
+      },
+      {
+        "m": 9.9,
+        "woodPixels": 3685,
+        "peak": 51
+      },
+      {
+        "m": 11,
+        "woodPixels": 3111,
+        "peak": 52
+      },
+      {
+        "m": 13.2,
+        "woodPixels": 14575,
+        "peak": 62
+      },
+      {
+        "m": 15.4,
+        "woodPixels": 12847,
+        "peak": 61
+      },
+      {
+        "m": 17.6,
+        "woodPixels": 9191,
+        "peak": 54
+      },
+      {
+        "m": 19.8,
+        "woodPixels": 7124,
+        "peak": 47
+      },
+      {
+        "m": 22,
+        "woodPixels": 5629,
+        "peak": 41
+      },
+      {
+        "m": 24.2,
+        "woodPixels": 3190,
+        "peak": 33
+      },
+      {
+        "m": 26.4,
+        "woodPixels": 1405,
+        "peak": 45
+      }
+    ],
+    "download": [
+      "wood-v1.rgba.gz"
+    ]
+  },
+  {
+    "case": "corrupt",
+    "sameFrame": true,
+    "damagedByteLengths": [
+      262144
+    ]
+  },
+  {
+    "case": "high",
+    "sameFrame": true,
+    "download": []
+  }
+]

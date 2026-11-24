@@ -177,6 +177,7 @@ export class Vegetation {
   return Math.min(1.65,.10*h)*THREE.MathUtils.smoothstep(crown.ratio(x,z),.124,.66);
  }
  get crownBaseCount(){return this.volume?.crownCount??0;}
+ get woodlandBark(){return this.volume?.barkState??'waiting';}
  get volumeCount(){return this.volume?.count??0;}
  get groundedShadowCount(){return this.groundedShadow?.count??0;}
  attachRollingShadows(scene:THREE.Scene,world:World,fence:Parameters<typeof RollingTreeShadows.mount>[2],adapter:typeof RollingTreeShadows){

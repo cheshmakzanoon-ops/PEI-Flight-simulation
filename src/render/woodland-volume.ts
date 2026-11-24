@@ -17,6 +17,9 @@ const v=`
 #endif
  attribute vec2 branchDetail;
  uniform vec3 volumeFade;
+ #ifdef BARK_SCAN
+ varying vec3 fBarkSpace;
+ #endif
  varying vec3 fWorld,fNormal;
  varying vec2 fCard,fDetail;
  varying float fFade,fVariant;
@@ -39,14 +42,25 @@ const v=`
    scale.y*=1.+k*u*u*(1.-4.*t)/ceiling;
   }
 #endif
-  fWorld=treeStem+spun(vertex*vec3(treeShape.y,treeShape.x,treeShape.y));
+  vec3 local=spun(vertex*vec3(treeShape.y,treeShape.x,treeShape.y));
+  fWorld=treeStem+local;
   fNormal=normalize(spun(normal/scale));
+#ifdef BARK_SCAN
+  // Horizontal components are the same rest surface through a vertical
+  // warp. Local displayed Y agrees on joins, without a wrapped UV.
+  fBarkSpace=local+vec3(2.174*treeSpin.x+.9,2.031*treeSpin.y+1.1,2.593*treeSpin.y-.79*treeSpin.x);
+#endif
   fCard=uv;fDetail=vec2(branchDetail.x,branchDetail.y*treeShape.w);fVariant=treeShape.z;
   fFade=volumeFade.z*(1.-smoothstep(volumeFade.x,volumeFade.y,length(treeStem.xz-cameraPosition.xz)));
   gl_Position=projectionMatrix*viewMatrix*vec4(fWorld,1.);
  #include <logdepthbuf_vertex>
  }`;
 const f=`
+ #ifdef BARK_SCAN
+ uniform sampler2D barkMap;
+ uniform float barkGain;
+ varying vec3 fBarkSpace;
+ #endif
  varying vec3 fWorld,fNormal;
  varying vec2 fCard,fDetail;
  varying float fFade,fVariant;
@@ -75,6 +89,10 @@ const f=`
   return max(mask,1.-smoothstep(.77,1.12,dot(top,top)));
  }
  void main(){
+#ifdef BARK_SCAN
+  // Form derivatives before per-fragment alpha/range branches diverge.
+  vec3 barkDx=dFdx(fBarkSpace),barkDy=dFdy(fBarkSpace);
+#endif
  #include <logdepthbuf_fragment>
  if(fFade<.003)discard;
  vec3 n=normalize(fNormal),sun=normalize(vec3(-.60,.74,-.31));
@@ -100,6 +118,25 @@ const f=`
   float split=abs(fract(fCard.x*15.+floor(fWorld.y*1.1)*.127)-.5);
   c=mix(vec3(.041,.031,.019),vec3(.099,.081,.059),grain*.60+.35*split)*
    (.52+.47*max(0.,side));
+#ifdef BARK_SCAN
+  float weight=barkGain*(1.-smoothstep(11.,25.,length(fWorld-cameraPosition)));
+  if(weight>.001){
+   vec2 w=pow(abs(n.xz),vec2(3.5));float denom=w.x+w.y;
+   w+=vec2(.5*max(0.,.001-denom));w/=max(.001,denom);
+   bool needle=fVariant>=1.5;
+   float rate=needle?.62:1.23;
+   vec2 pu=fBarkSpace.xy*rate,pv=fBarkSpace.zy*rate;
+   vec4 u=textureGrad(barkMap,pu,barkDx.xy*rate,barkDy.xy*rate);
+   vec4 v=textureGrad(barkMap,pv,barkDx.zy*rate,barkDy.zy*rate);
+   vec4 sampleValue=u*w.y+v*w.x;
+   float diffuse=clamp(side,0.,1.),l=clamp(needle?sampleValue.g:sampleValue.r,0.,1.);
+   float occ=needle?sampleValue.a:sampleValue.b;
+   vec3 low=needle?vec3(.029,.018,.009):vec3(.034,.026,.016);
+   vec3 high=needle?vec3(.165,.104,.061):vec3(.177,.146,.106);
+   vec3 resolved=mix(low,high,pow(l,.71))*(.68+.32*diffuse)*(.77+.23*occ);
+   c=mix(c,resolved,weight*.96);
+  }
+#endif
  }
  gl_FragColor=vec4(c,fade);
  #include <tonemapping_fragment>
@@ -120,11 +157,20 @@ export class WoodlandVolume{
  private crownAdmission=new Map<string,number>();
  private changed=0;
  private readonly crownVertical={value:0};
- constructor(scene:THREE.Scene,maxInstances:number,crownLift?: (x:number,z:number,height:number,slot:number)=>number){
-  this.crownLift=crownLift;
+ private readonly barkMap={value:null as THREE.DataTexture|null};
+ private readonly barkGain={value:0};
+ private readonly barkLoader?:()=>Promise<THREE.DataTexture|undefined>;
+ private barkStarted=false;
+ private barkLast=0;
+ get barkState(){return this.barkMap.value?'ready':this.barkStarted?'optional':'waiting';}
+ constructor(scene:THREE.Scene,maxInstances:number,crownLift?: (x:number,z:number,height:number,slot:number)=>number,
+  barkLoader?:()=>Promise<THREE.DataTexture|undefined>){
+  this.crownLift=crownLift;this.barkLoader=barkLoader;
+  const barkDefines=barkLoader?{BARK_SCAN:1}:{};
+  const barkUniforms:Record<string,THREE.IUniform>=barkLoader?{barkMap:this.barkMap,barkGain:this.barkGain}:{};
   this.mask=new THREE.InstancedBufferAttribute(new Float32Array(maxInstances),1).setUsage(THREE.DynamicDrawUsage);
   const material=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,
-    alphaToCoverage:true,uniforms:{volumeFade:this.fade}});
+    alphaToCoverage:true,defines:barkDefines,uniforms:{volumeFade:this.fade,...barkUniforms}});
   this.groups=Array.from({length:4},(_,variant)=>{
    const template=branchedCrown(variant),geometry=new THREE.InstancedBufferGeometry();
    geometry.setIndex(template.index);
@@ -138,7 +184,7 @@ export class WoodlandVolume{
    if(lift){
     geometry.setAttribute('crownLift',lift);
     activeMaterial=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,alphaToCoverage:true,
-     defines:{BLC_PILOT:1},uniforms:{volumeFade:this.fade,crownVertical:this.crownVertical}});
+     defines:{BLC_PILOT:1,...barkDefines},uniforms:{volumeFade:this.fade,crownVertical:this.crownVertical,...barkUniforms}});
    }
    const mesh=new THREE.Mesh(geometry,activeMaterial);
    mesh.frustumCulled=false;mesh.visible=false;mesh.name='Near branched woodland '+variant;scene.add(mesh);
@@ -146,6 +192,15 @@ export class WoodlandVolume{
   });
  }
  update(stems:Float32Array,shapes:Float32Array,trees:number,x:number,z:number,agl:number,revision:number){
+  if(this.barkLoader){
+   if(!this.barkStarted&&agl<55&&this.selected>0){
+    this.barkStarted=true;
+    void this.barkLoader().then(t=>{if(t)this.barkMap.value=t;}).catch(()=>{});
+   }
+   const now=performance.now(),dt=Math.min(.12,Math.max(0,(now-this.barkLast)*.001));
+   this.barkLast=now;
+   if(this.barkMap.value)this.barkGain.value=Math.min(1,this.barkGain.value+dt/.45);
+  }
   this.fade.value.z=1-THREE.MathUtils.smoothstep(agl,39,112);
   if(this.crownLift)this.crownVertical.value=1-THREE.MathUtils.smoothstep(agl,18,39);
   const on=this.fade.value.z>0;

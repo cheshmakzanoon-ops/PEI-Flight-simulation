@@ -1,0 +1,44 @@
+[
+  {
+    "mode": "standard",
+    "site": "west-light",
+    "movementM": 523.167,
+    "altitude": 44.560080341469835,
+    "ground": 1.12,
+    "bark": null,
+    "volumeCount": 0,
+    "download": [],
+    "damagedBytes": [],
+    "pause": true
+  },
+  {
+    "mode": "scanned",
+    "site": "west-light",
+    "movementM": 525.551,
+    "altitude": 44.36354869412435,
+    "ground": 1.12,
+    "bark": "ready",
+    "volumeCount": 73,
+    "download": [
+      "wood-v1.rgba.gz"
+    ],
+    "damagedBytes": [],
+    "pause": true
+  },
+  {
+    "mode": "corrupt",
+    "site": "west-light",
+    "movementM": 526.143,
+    "altitude": 44.58116478917893,
+    "ground": 1.12,
+    "bark": "optional",
+    "volumeCount": 76,
+    "download": [
+      "wood-v1.rgba.gz"
+    ],
+    "damagedBytes": [
+      259534
+    ],
+    "pause": true
+  }
+]

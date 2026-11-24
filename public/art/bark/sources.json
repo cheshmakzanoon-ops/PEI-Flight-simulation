@@ -1,0 +1,56 @@
+{
+  "width": 256,
+  "height": 256,
+  "channels": [
+    "broad diffuse",
+    "needle diffuse",
+    "broad AO",
+    "needle AO"
+  ],
+  "decodedBytes": 262144,
+  "decodedSha256": "36bdcec18705bb080f7532293b0141df76f1142fbf749e120937a726b38a90a7",
+  "packBytes": 259534,
+  "packSha256": "60a0e48670c10350c70270682182841155fa10bf4829a040501b3ea0be0ba76f",
+  "references": [
+    {
+      "id": "bark_brown_01",
+      "author": "Rob Tuytel",
+      "licence": "CC0",
+      "source": "https://polyhaven.com/a/bark_brown_01",
+      "files": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_01/bark_brown_01_diff_1k.jpg",
+          "bytes": 729893,
+          "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066"
+        },
+        {
+          "kind": "AO",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_01/bark_brown_01_ao_1k.jpg",
+          "bytes": 536964,
+          "sha256": "665069474c3a28d170bbdaf508a8e88c5bfa3fe3823716280038ad2d0c81a198"
+        }
+      ]
+    },
+    {
+      "id": "pine_bark",
+      "author": "Dimitrios Savva",
+      "licence": "CC0",
+      "source": "https://polyhaven.com/a/pine_bark",
+      "files": [
+        {
+          "kind": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/pine_bark/pine_bark_diff_1k.jpg",
+          "bytes": 837641,
+          "sha256": "89ddfbff0388d30caff902ba600cdf75eb1e651ca71ece6594b5a9b27abb47ab"
+        },
+        {
+          "kind": "AO",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/pine_bark/pine_bark_ao_1k.jpg",
+          "bytes": 784749,
+          "sha256": "10dc4aba5e505b28ed3cfafa7c44309b87a97aa03ad4ed99280361a77c10bb44"
+        }
+      ]
+    }
+  ]
+}
