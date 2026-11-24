@@ -58,6 +58,7 @@ export const SCENERY_REVIEWS=[
  {flag:'cavendishWaterReview',name:'Dunelands freshwater',scope:'2020 surveyed core'},
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
+ {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
@@ -72,6 +73,11 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='sourceGrassStudy'){
+  if(options.get('scenery')==='detail')return 'detail';
+  if(['surveyRelief','inlandRelief','buildingShadows','provinceFieldsReview','cropRowsReview','meadowTexture','northCapeWind'].some(f=>options.has(f)))return 'terrain';
+  return;
+ }
  if(flag==='cropRowsReview')return;
  if(options.has('buildingShadows'))return 'terrain';
  if(flag==='beaconsfieldReview')return;

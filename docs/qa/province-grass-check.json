@@ -1,0 +1,1543 @@
+{
+  "qualification": {
+    "stockPins": {
+      "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+      "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+      "sides": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+      "parks": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+      "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "aeb": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+    },
+    "stockControlIndexSha256": "28ad3a071e14aa4469766ad653aca408af4dd10623e9d8886ac1d1d3aacf13a1",
+    "classesByCountyAndUse": {
+      "17": 1108967,
+      "18": 122503,
+      "9": 759129,
+      "10": 9820,
+      "25": 600116,
+      "26": 13351
+    },
+    "qualified4mTextureCells": 2613886,
+    "textureAreaKm2": 41.822176,
+    "guardEntries": {
+      "road": 55151,
+      "walk": 8275,
+      "park": 1162,
+      "runway": 3,
+      "otherNativeSurveys": 10,
+      "landmarks": 9,
+      "building": 85866
+    },
+    "removedByGuardOrdered": {
+      "road": 157291,
+      "building": 26518,
+      "park": 2062,
+      "otherNativeSurveys": 242048,
+      "landmarks": 993,
+      "walk": 1660,
+      "runway": 10143
+    },
+    "tileCores": 3282,
+    "country": "Canada",
+    "appliedInGame": false
+  },
+  "packBytesAndSeams": {
+    "packedSize": 249810,
+    "rawSize": 268040,
+    "packedHash": "747230b599e4b3e39a71c69c7e6426cc385d483bd116ae8d301f27cddd91f55b",
+    "rawHash": "d35a214e611a13510b7dd7c32b7564ecb05f5b7fa503e4d5c76e19799078bcf7",
+    "sourceMaskSha": "dfc07f4d8a8f4445ff9be3cc1db54fa59734fab6310d94333cde295fdf4f6edb",
+    "samples": 2613886,
+    "areaM2": 41822176,
+    "options": {
+      "spanM": 1024,
+      "cellM": 4,
+      "halo": 2,
+      "fixedGpuLayers": 4
+    },
+    "haloEquality": {
+      "x": 2239,
+      "z": 2182,
+      "diagonal": 4015
+    },
+    "packCount": 43,
+    "packBytes": 1996492,
+    "packs": [
+      {
+        "file": "crop-00.pack",
+        "bytes": 2729,
+        "sha256": "75835948870dec3587f0a7efdf65ee5db54a8b2f6e58a9367be53967f3f64a43",
+        "block": [
+          -6,
+          -3
+        ]
+      },
+      {
+        "file": "crop-01.pack",
+        "bytes": 29725,
+        "sha256": "a6b0b70dc831b911658ce6208fac64a7c3ec5adfb35a97ab1264640a70245c8c",
+        "block": [
+          -6,
+          -2
+        ]
+      },
+      {
+        "file": "crop-02.pack",
+        "bytes": 12753,
+        "sha256": "2afd3fc68abcdc8ab0231dccb2a6b2f43a60bf502b0c723c37fe0479fd2dd415",
+        "block": [
+          -6,
+          -1
+        ]
+      },
+      {
+        "file": "crop-03.pack",
+        "bytes": 26237,
+        "sha256": "a38b5a55d6357dc16adce2f7e7f34eb3a59faa4171676177e36b21c7c8d4b23a",
+        "block": [
+          -5,
+          -4
+        ]
+      },
+      {
+        "file": "crop-04.pack",
+        "bytes": 83251,
+        "sha256": "b060e8bac31d98f55caf58ccd3b272c9865ef2bc605f78d947a16eafb3395fa5",
+        "block": [
+          -5,
+          -3
+        ]
+      },
+      {
+        "file": "crop-05.pack",
+        "bytes": 78019,
+        "sha256": "5f54259d6cce1c109360356a73bf7f6b982173440d5f48450fad52bfb90becba",
+        "block": [
+          -5,
+          -2
+        ]
+      },
+      {
+        "file": "crop-06.pack",
+        "bytes": 32438,
+        "sha256": "8891661a8216f072fa6678d8996623c1c6d673478791fba00abc05561269b089",
+        "block": [
+          -5,
+          -1
+        ]
+      },
+      {
+        "file": "crop-07.pack",
+        "bytes": 20376,
+        "sha256": "0c5d5055abe346a543fe74d465729a37db81239baeaff14f0437570230a1d2ac",
+        "block": [
+          -5,
+          0
+        ]
+      },
+      {
+        "file": "crop-08.pack",
+        "bytes": 24570,
+        "sha256": "757df46ebd75fbf8ef2a7bf72308d6d88ed2ce130f4e02240a765a7202f7d52d",
+        "block": [
+          -4,
+          -4
+        ]
+      },
+      {
+        "file": "crop-09.pack",
+        "bytes": 13690,
+        "sha256": "f8a79635efab3c5c308a1c87bba52f802cbe6e5799f51d7483f8c10fa5db17ef",
+        "block": [
+          -4,
+          -3
+        ]
+      },
+      {
+        "file": "crop-10.pack",
+        "bytes": 19476,
+        "sha256": "6cf7509f40e38764fceba63c16d475e1a8a3c3afbb87f723fc62412ed2e5ab9d",
+        "block": [
+          -4,
+          -2
+        ]
+      },
+      {
+        "file": "crop-11.pack",
+        "bytes": 85722,
+        "sha256": "281f842c5d633cdcb488b1d1599e7444630b97e4e945a67dbc802520d33efff6",
+        "block": [
+          -4,
+          -1
+        ]
+      },
+      {
+        "file": "crop-12.pack",
+        "bytes": 62506,
+        "sha256": "aee358e12675fa8f2ddf859cd854e8e3bbc4c5b395372b8d0a15b333e292a699",
+        "block": [
+          -4,
+          0
+        ]
+      },
+      {
+        "file": "crop-13.pack",
+        "bytes": 23498,
+        "sha256": "51b72f896a69bb99796637e353737037f54b9591c6433ed8e1d308f96ce7d048",
+        "block": [
+          -3,
+          -1
+        ]
+      },
+      {
+        "file": "crop-14.pack",
+        "bytes": 61408,
+        "sha256": "dff703f9c65d0940477c8516f122ceb47ae0658feaa232e029564f3350f18241",
+        "block": [
+          -3,
+          0
+        ]
+      },
+      {
+        "file": "crop-15.pack",
+        "bytes": 24396,
+        "sha256": "be7e919c2806b4fcb4a0e65f870cc2aae8197314689363784d85190c8ea32d73",
+        "block": [
+          -3,
+          1
+        ]
+      },
+      {
+        "file": "crop-16.pack",
+        "bytes": 25729,
+        "sha256": "84c4663ddb926a9d5d90ce982ff877615d9cd534f6ef6d98dd53450ed16dc8db",
+        "block": [
+          -2,
+          -1
+        ]
+      },
+      {
+        "file": "crop-17.pack",
+        "bytes": 72187,
+        "sha256": "6579622c0bc01c830295f40906e72a37e982aeb13e437f586e72f50fce4871c0",
+        "block": [
+          -2,
+          0
+        ]
+      },
+      {
+        "file": "crop-18.pack",
+        "bytes": 93473,
+        "sha256": "70ab058f633859009ce7a741d59614a726c3bc199dc2b44f3173dea5a740718e",
+        "block": [
+          -2,
+          1
+        ]
+      },
+      {
+        "file": "crop-19.pack",
+        "bytes": 10417,
+        "sha256": "7883439eaf8097ddcf20e0fb76738bd9fefdecdec55da260af207a7ada4254d9",
+        "block": [
+          -2,
+          2
+        ]
+      },
+      {
+        "file": "crop-20.pack",
+        "bytes": 70351,
+        "sha256": "1fb0242485fae2c6af38686d9a2ac5e591f50f86ebfb82a5649693c88eb57c85",
+        "block": [
+          -1,
+          0
+        ]
+      },
+      {
+        "file": "crop-21.pack",
+        "bytes": 119056,
+        "sha256": "ba1d4fad50563d8fb36ce2e44e0fe572dd48419064738260436a149a17017891",
+        "block": [
+          -1,
+          1
+        ]
+      },
+      {
+        "file": "crop-22.pack",
+        "bytes": 59018,
+        "sha256": "a2ead8021004dd4e219be716902a4f43fc4eaf3c212ca2ec9e0841f9d6966dfd",
+        "block": [
+          -1,
+          1
+        ]
+      },
+      {
+        "file": "crop-23.pack",
+        "bytes": 58939,
+        "sha256": "2453c418550dc1f4abad98ce07aae5860181c3b16163f2195d8d9c9a7b9c8606",
+        "block": [
+          -1,
+          2
+        ]
+      },
+      {
+        "file": "crop-24.pack",
+        "bytes": 38228,
+        "sha256": "db92c735c2c09bbb820bd93d891a67bcb178bd487bb9ef03dffb1b15c6d8db68",
+        "block": [
+          0,
+          0
+        ]
+      },
+      {
+        "file": "crop-25.pack",
+        "bytes": 112386,
+        "sha256": "05f5977e30b4310c3154855784daec71a92bea105959872a99184d7da2eaccca",
+        "block": [
+          0,
+          1
+        ]
+      },
+      {
+        "file": "crop-26.pack",
+        "bytes": 34049,
+        "sha256": "be6dbb48d32447a6f12926ea2f2cf00b2174f6ba3b68439870cb3d73a92436a4",
+        "block": [
+          0,
+          2
+        ]
+      },
+      {
+        "file": "crop-27.pack",
+        "bytes": 2804,
+        "sha256": "06256f0c8a2a903a09cfd48a99b786cd0709c26352a013803cf1ae495fcdc778",
+        "block": [
+          0,
+          3
+        ]
+      },
+      {
+        "file": "crop-28.pack",
+        "bytes": 41460,
+        "sha256": "f65d057d1cbc257ee7ded0c760e65b354fecd7ba976818b7b4f46a10584bc333",
+        "block": [
+          1,
+          0
+        ]
+      },
+      {
+        "file": "crop-29.pack",
+        "bytes": 76881,
+        "sha256": "8d7019a51ae2f44a037f9e7165ea60e1f8454f1872991fd6aabe9f38af9b29fd",
+        "block": [
+          1,
+          1
+        ]
+      },
+      {
+        "file": "crop-30.pack",
+        "bytes": 94664,
+        "sha256": "764781a36cc75a40bce184f4c18fc2e3d875b18a3ce40f367376523c08f9de01",
+        "block": [
+          1,
+          2
+        ]
+      },
+      {
+        "file": "crop-31.pack",
+        "bytes": 12000,
+        "sha256": "93391b00ef10605ddf23f8fa273c1628670c897e52065c2015dd612cea38fec4",
+        "block": [
+          1,
+          3
+        ]
+      },
+      {
+        "file": "crop-32.pack",
+        "bytes": 50718,
+        "sha256": "165beedbcbe67bd4bb39173c81c74f5b548125fa3bb64b1767f38f57c6028b0d",
+        "block": [
+          2,
+          0
+        ]
+      },
+      {
+        "file": "crop-33.pack",
+        "bytes": 75636,
+        "sha256": "d02eda15d0faaf65e7fa6c888632dc127011230dbab74904881e1756c805ad31",
+        "block": [
+          2,
+          1
+        ]
+      },
+      {
+        "file": "crop-34.pack",
+        "bytes": 46956,
+        "sha256": "c0a703a3116ecfae375d3acc5b6a4556e54bdeef57bef029badc673c16f29847",
+        "block": [
+          2,
+          2
+        ]
+      },
+      {
+        "file": "crop-35.pack",
+        "bytes": 57980,
+        "sha256": "3ab3bab088cf1fb0706eaf73e7fc06683dddff4c3132c4a85b2c865aafea5338",
+        "block": [
+          2,
+          3
+        ]
+      },
+      {
+        "file": "crop-36.pack",
+        "bytes": 42252,
+        "sha256": "5e022a85c4abefd88bd1800727d11393a2e11fd5360e1be11d2b31fc3dc45538",
+        "block": [
+          3,
+          0
+        ]
+      },
+      {
+        "file": "crop-37.pack",
+        "bytes": 94311,
+        "sha256": "0a49ea37c60d2170ab3fe6713131bf935e5ae2964a70e10c749b71e3d4c3e70d",
+        "block": [
+          3,
+          1
+        ]
+      },
+      {
+        "file": "crop-38.pack",
+        "bytes": 19444,
+        "sha256": "e225c4ff3a9334d2501083aa7e8032ac1edfeae597de33096ec23d52115f8bce",
+        "block": [
+          3,
+          2
+        ]
+      },
+      {
+        "file": "crop-39.pack",
+        "bytes": 25191,
+        "sha256": "24c758ec03f45963902e5620afb911724fb9e33bde199b18c726d33d4aa1804b",
+        "block": [
+          3,
+          3
+        ]
+      },
+      {
+        "file": "crop-40.pack",
+        "bytes": 37482,
+        "sha256": "a258b0a04425a4f74c083ae485c4b8f144a37b51d93c157eb7e3b6fcb1ddefab",
+        "block": [
+          4,
+          0
+        ]
+      },
+      {
+        "file": "crop-41.pack",
+        "bytes": 8475,
+        "sha256": "3980d69656a6dfb3f5cb87e3c1af7eb65374065c7ea11708def3c4ac67e771e4",
+        "block": [
+          4,
+          1
+        ]
+      },
+      {
+        "file": "crop-42.pack",
+        "bytes": 15611,
+        "sha256": "6ff9785c6b914a8a5f8be9091a26f7d0e55183b849e0e7be67fee3c493cf3ba1",
+        "block": [
+          5,
+          0
+        ]
+      }
+    ]
+  },
+  "actualRuntimeDecoder": {
+    "shards": 3331,
+    "transfers": 3331,
+    "positives": 2613886,
+    "actuallyTransferred": 1996492
+  },
+  "independentWholePack": {
+    "packs": 43,
+    "rangeTotalBytes": 1996492,
+    "shards": 3331,
+    "coreTiles": 3282,
+    "positiveN": 2613886,
+    "countyClass": {
+      "9": 759129,
+      "10": 9820,
+      "17": 1108967,
+      "18": 122503,
+      "25": 600116,
+      "26": 13351
+    },
+    "confirmExactHalos": {
+      "xPairs": 2239,
+      "zPairs": 2182,
+      "diagonalPairs": 4015,
+      "haloOnly": 49
+    },
+    "positivePairsCrossCounty": {
+      "cc": 0,
+      "xx": 0,
+      "zz": 0
+    },
+    "maxAlphaAtCrossCounty": 0,
+    "data": {
+      "packedSha": "747230b599e4b3e39a71c69c7e6426cc385d483bd116ae8d301f27cddd91f55b",
+      "decodedSha": "d35a214e611a13510b7dd7c32b7564ecb05f5b7fa503e4d5c76e19799078bcf7",
+      "sourceMaskSha": "dfc07f4d8a8f4445ff9be3cc1db54fa59734fab6310d94333cde295fdf4f6edb"
+    },
+    "textureAndWireLimits": {
+      "nearResidentBytes": 540800,
+      "nearLayers": 4,
+      "largestShardWireBytes": 3864,
+      "largestPackBytes": 119056
+    }
+  },
+  "independentStockFence": {
+    "samplesOfExactCentre": 2613886,
+    "axisNativeCoverStep": [
+      47.60180338623522,
+      47.40693277739291
+    ],
+    "nearestExactControlCentresM": {
+      "NRN line": [
+        25.644244357503187,
+        [
+          -28682.0,
+          -3806.0
+        ]
+      ],
+      "AEB enclosing exact ordered ring": [
+        24.00054464394634,
+        [
+          12918.0,
+          19750.0
+        ]
+      ],
+      "parking": [
+        25.14099999999962,
+        [
+          -44526.0,
+          11130.0
+        ]
+      ],
+      "walkway": [
+        22.425661774903347,
+        [
+          -42150.0,
+          10934.0
+        ]
+      ]
+    },
+    "wholeBilinearTentConservativeLowerM": {
+      "NRN line": 19.987390108010807,
+      "AEB enclosing exact ordered ring": 18.34369039445396,
+      "parking": 19.484145750507242,
+      "walkway": 16.768807525410967
+    },
+    "pairsTestedPerControl": {
+      "NRN line": 1136779,
+      "AEB enclosing exact ordered ring": 221929,
+      "parking": 3802,
+      "walkway": 3970
+    },
+    "exactAllCoverTexelsMinimumSDFd2M": 70.0,
+    "worstCoarseCoverControlXZ": [
+      [
+        -11,
+        32
+      ],
+      [
+        -10842.0,
+        33390.0
+      ]
+    ],
+    "geometryCoveredPositiveCentres": {
+      "nrnInsideHalfWidth": 0,
+      "nrnWithinHalfWidthPlusTent": 0,
+      "nrnWithin20m": 0,
+      "aebExactInside": 0,
+      "aebAabbWithin16": 0
+    },
+    "positiveCentresCaseStudies": {
+      "fatal-actual-nearest-nrn": {
+        "ord": 19303,
+        "points": [
+          [
+            -28662.384666424685,
+            -3789.481345169886
+          ],
+          [
+            -28676.20193319605,
+            -3768.360739257052
+          ]
+        ],
+        "x": [
+          -28682.0,
+          -3806.0
+        ],
+        "dist": 25.644244357503187,
+        "flags": 1,
+        "halfWidth": 2.8
+      }
+    },
+    "terrainAndCoverPins": {
+      "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+      "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+      "sides": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+      "parks": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+      "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "aeb": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+    },
+    "maxTestedSearchBoxM": 45.0
+  },
+  "independentCoastFence": {
+    "results": {
+      "wrongBaked3x3Gate": {
+        "centers": 0,
+        "tiles": 0,
+        "signedAtCenterBounds": []
+      },
+      "wholeTentMayBeBelowShaderD67": {
+        "centers": 0,
+        "tiles": 0,
+        "signedAtCenterBounds": []
+      },
+      "wholeTentMayBeWet": {
+        "centers": 0,
+        "tiles": 0,
+        "signedAtCenterBounds": []
+      },
+      "centerBelow67": {
+        "centers": 0,
+        "tiles": 0,
+        "signedAtCenterBounds": []
+      },
+      "centerWet": {
+        "centers": 0,
+        "tiles": 0,
+        "signedAtCenterBounds": []
+      },
+      "centers": {
+        "centers": 2613886,
+        "tiles": 3282,
+        "signedAtCenterBounds": [
+          100.72367657152677,
+          254.0
+        ]
+      }
+    },
+    "exampleWet": []
+  },
+  "paletteStandardCameraComparison": {
+    "grass-prince-close": {
+      "view": {
+        "frame": 56,
+        "eye": [
+          -75897.8500061488,
+          34.93224010492145,
+          -37886.059726521715
+        ],
+        "aim": [
+          -75911.67892600504,
+          23.62530548004844,
+          -37916.02238621023
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "1-5",
+          "2-4",
+          "2-5",
+          "2-6",
+          "3-2",
+          "3-3",
+          "3-4",
+          "3-5",
+          "3-6",
+          "4-3",
+          "4-4",
+          "4-5",
+          "4-6",
+          "5-4",
+          "5-5"
+        ],
+        "grass": "-75:-37|-75:-38|-74:-37|-74:-38",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 24,
+        "triangles": 334817,
+        "groundY": 23.05224010492145,
+        "altitude": 34.93224010492145
+      },
+      "modes": {
+        "1": {
+          "above0": 275995,
+          "above2RGB": 268481,
+          "maxChannelLevels": 17,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.027370674651588794,
+          "lumaMeanAbsRmsMeanShift": [
+            3.9111542238045,
+            4.676999238212878,
+            -0.6717223971518989
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 243711,
+          "above2RGB": 132001,
+          "maxChannelLevels": 12,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.0050380862973170015,
+          "lumaMeanAbsRmsMeanShift": [
+            3.000934530590717,
+            3.695907667792833,
+            -0.7710402988748242
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 276000,
+          "above2RGB": 267789
+        }
+      },
+      "realGpuSupportPixels": 277253,
+      "protectedPixels": 68347
+    },
+    "grass-queens-pass-close": {
+      "view": {
+        "frame": 65,
+        "eye": [
+          -738.5922960861966,
+          91.99664245995606,
+          37375.35782648663
+        ],
+        "aim": [
+          -791.3936264463767,
+          13.377689103442663,
+          37260.95494403957
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "14-16",
+          "14-17",
+          "14-18",
+          "15-15",
+          "15-16",
+          "15-17",
+          "15-18",
+          "16-15",
+          "16-16",
+          "16-17",
+          "16-18",
+          "17-16",
+          "17-17",
+          "17-18"
+        ],
+        "grass": "-1:36|-2:36||",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 67,
+        "triangles": 300022,
+        "groundY": 16.116642459956065,
+        "altitude": 91.99664245995606
+      },
+      "modes": {
+        "1": {
+          "above0": 264535,
+          "above2RGB": 245441,
+          "maxChannelLevels": 20,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.022882188564951274,
+          "lumaMeanAbsRmsMeanShift": [
+            4.843757623066104,
+            5.6575861565793355,
+            -0.6265267967651197
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 234204,
+          "above2RGB": 125342,
+          "maxChannelLevels": 16,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.0036073710818806948,
+          "lumaMeanAbsRmsMeanShift": [
+            3.057629375,
+            3.8749412296752626,
+            -0.284970704113924
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 264518,
+          "above2RGB": 245459
+        }
+      },
+      "realGpuSupportPixels": 270377,
+      "protectedPixels": 75223
+    },
+    "grass-prince-ground": {
+      "view": {
+        "frame": 64,
+        "eye": [
+          -75905.60258243185,
+          25.23224010492145,
+          -37902.85697513497
+        ],
+        "aim": [
+          -75911.67892600504,
+          23.62530548004844,
+          -37916.02238621023
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "1-5",
+          "2-4",
+          "2-5",
+          "2-6",
+          "3-2",
+          "3-3",
+          "3-4",
+          "3-5",
+          "3-6",
+          "4-3",
+          "4-4",
+          "4-5",
+          "4-6",
+          "5-4",
+          "5-5"
+        ],
+        "grass": "-75:-38|-75:-37|-74:-38|-74:-37",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 24,
+        "triangles": 334849,
+        "groundY": 23.33994536922921,
+        "altitude": 25.23224010492145
+      },
+      "modes": {
+        "1": {
+          "above0": 203521,
+          "above2RGB": 202112,
+          "maxChannelLevels": 18,
+          "deepSelectionCount": 203591,
+          "RGBRelativeChromaticityP95InSelected": 0.02683568022654445,
+          "lumaMeanAbsRmsMeanShift": [
+            5.181111195485065,
+            6.062440287857432,
+            -4.192532602128778
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 187170,
+          "above2RGB": 121339,
+          "maxChannelLevels": 12,
+          "deepSelectionCount": 203591,
+          "RGBRelativeChromaticityP95InSelected": 0.005265257320263339,
+          "lumaMeanAbsRmsMeanShift": [
+            3.4790298932664014,
+            4.403721581360113,
+            -1.1537409070145532
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 203521,
+          "above2RGB": 199366
+        }
+      },
+      "realGpuSupportPixels": 203591,
+      "protectedPixels": 142009
+    },
+    "coast-negative": {
+      "view": {
+        "frame": 52,
+        "eye": [
+          94365.57365402374,
+          62,
+          5247.9195424844875
+        ],
+        "aim": [
+          94277.2581896572,
+          12,
+          5277.06364572545
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "29-11",
+          "29-12",
+          "29-13",
+          "30-11",
+          "30-12",
+          "30-13",
+          "31-12"
+        ],
+        "grass": "|||",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 217,
+        "triangles": 282477,
+        "groundY": -0.055,
+        "altitude": 62
+      },
+      "modes": {
+        "1": {
+          "above0": 0,
+          "above2RGB": 0,
+          "maxChannelLevels": 0,
+          "deepSelectionCount": 0,
+          "RGBRelativeChromaticityP95InSelected": 0,
+          "lumaMeanAbsRmsMeanShift": [
+            0,
+            0,
+            0
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 0,
+          "above2RGB": 0,
+          "maxChannelLevels": 0,
+          "deepSelectionCount": 0,
+          "RGBRelativeChromaticityP95InSelected": 0,
+          "lumaMeanAbsRmsMeanShift": [
+            0,
+            0,
+            0
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 0,
+          "above2RGB": 0
+        }
+      },
+      "realGpuSupportPixels": 0,
+      "protectedPixels": 345600
+    }
+  },
+  "paletteFractionalDprComparison": {
+    "grass-prince-shift": {
+      "view": {
+        "frame": 72,
+        "eye": [
+          -75897.61020671541,
+          34.982240104921445,
+          -37886.02681489462
+        ],
+        "aim": [
+          -75911.67892600504,
+          23.62530548004844,
+          -37916.02238621023
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "1-5",
+          "2-4",
+          "2-5",
+          "2-6",
+          "3-2",
+          "3-3",
+          "3-4",
+          "3-5",
+          "3-6",
+          "4-3",
+          "4-4",
+          "4-5",
+          "4-6",
+          "5-4",
+          "5-5"
+        ],
+        "grass": "-75:-37|-75:-38|-74:-37|-74:-38",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 24,
+        "triangles": 334853,
+        "groundY": 23.047202492555357,
+        "altitude": 34.982240104921445
+      },
+      "modes": {
+        "1": {
+          "above0": 275852,
+          "above2RGB": 268412,
+          "maxChannelLevels": 17,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.027336841895041486,
+          "lumaMeanAbsRmsMeanShift": [
+            3.9089761366033757,
+            4.673681602063342,
+            -0.6727554122714486
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 243913,
+          "above2RGB": 131567,
+          "maxChannelLevels": 11,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.00502367607560994,
+          "lumaMeanAbsRmsMeanShift": [
+            2.996594041842475,
+            3.6912772237224356,
+            -0.7679883368495076
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 275860,
+          "above2RGB": 267755
+        }
+      },
+      "realGpuSupportPixels": 277168,
+      "protectedPixels": 68432
+    },
+    "grass-queens-pass-shift": {
+      "view": {
+        "frame": 65,
+        "eye": [
+          -738.250116837633,
+          91.99664245995606,
+          37375.90805115489
+        ],
+        "aim": [
+          -791.3936264463767,
+          13.377689103442663,
+          37260.95494403957
+        ],
+        "fov": 53,
+        "width": 720,
+        "height": 480,
+        "msaa": 4,
+        "ready": [
+          "14-16",
+          "14-17",
+          "14-18",
+          "15-15",
+          "15-16",
+          "15-17",
+          "15-18",
+          "16-15",
+          "16-16",
+          "16-17",
+          "16-18",
+          "17-16",
+          "17-17",
+          "17-18"
+        ],
+        "grass": "-1:36|-2:36||",
+        "mode": 0
+      },
+      "world": {
+        "drawCalls": 67,
+        "triangles": 300014,
+        "groundY": 16.118248487691464,
+        "altitude": 91.99664245995606
+      },
+      "modes": {
+        "1": {
+          "above0": 263685,
+          "above2RGB": 244550,
+          "maxChannelLevels": 20,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.02285922106304672,
+          "lumaMeanAbsRmsMeanShift": [
+            4.834333753516174,
+            5.648200095803768,
+            -0.6143546026722925
+          ],
+          "changedOutsideMask": 0
+        },
+        "2": {
+          "above0": 233142,
+          "above2RGB": 124748,
+          "maxChannelLevels": 16,
+          "deepSelectionCount": 227520,
+          "RGBRelativeChromaticityP95InSelected": 0.003604961759783809,
+          "lumaMeanAbsRmsMeanShift": [
+            3.0498133175105484,
+            3.8694113691417082,
+            -0.2783758210267229
+          ],
+          "changedOutsideMask": 0
+        },
+        "currentToNew": {
+          "changedPixels": 263707,
+          "above2RGB": 244654
+        }
+      },
+      "realGpuSupportPixels": 269556,
+      "protectedPixels": 76044
+    }
+  },
+  "artSourceSHA256": "51714f856555d04fd4cfe6e367ae096e1ff2b9e86c48ebda7758c24179d7dfd1",
+  "naturalPassSimulation": [
+    {
+      "id": "prince-grassland",
+      "surveyMaskFractionPeak": 1,
+      "firstQualifiedSeconds": 5.788888888888871,
+      "verifiedStrongSamples": 470,
+      "sampleIntervalSeconds": 0.011111111111111112,
+      "leastStockGroundClearanceM": 71.93504528590915,
+      "flightM": 808.6519583746615,
+      "mode": "flying"
+    },
+    {
+      "id": "queens-grassland",
+      "surveyMaskFractionPeak": 1,
+      "firstQualifiedSeconds": 5.022222222222207,
+      "verifiedStrongSamples": 617,
+      "sampleIntervalSeconds": 0.011111111111111112,
+      "leastStockGroundClearanceM": 77.92181581814884,
+      "flightM": 794.3677396438427,
+      "mode": "flying"
+    },
+    {
+      "id": "kings-grassland",
+      "surveyMaskFractionPeak": 1,
+      "firstQualifiedSeconds": 4.922222222222207,
+      "verifiedStrongSamples": 765,
+      "sampleIntervalSeconds": 0.011111111111111112,
+      "leastStockGroundClearanceM": 78.01724243700798,
+      "flightM": 800.1450709467391,
+      "mode": "flying"
+    }
+  ],
+  "sourceDates": {
+    "provincialLandUse": 2020,
+    "ESAWorldCover": 2021
+  },
+  "sourceSnapshots": {
+    "provincialCLUI": {
+      "where": "(landuse='NON' AND subuse='ABN' AND cover1='GRS' AND per1>=8) OR (landuse='REC' AND cover1='GRS' AND per1>=8)",
+      "url": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/CLUI2020_OpenData/FeatureServer/0/query",
+      "projection": "EPSG:4326 geographic GeoJSON supplied by service",
+      "count": 7916,
+      "objectIdOrderSha256": "c52e4c64f0c32a9e3344c2b0b9a33d48bdb9e006b46a755f1d7beaf97fb73530",
+      "files": [
+        {
+          "path": "polys-0000.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 899845,
+          "sha256": "1623b0035f7b2c00f6ac43876b0f76e5f2a23542c8ef211eb7a68bb180e2c196"
+        },
+        {
+          "path": "polys-0001.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 770782,
+          "sha256": "07987e27c1b5c174af4546362c9989f224244b1bb7bdd2939c0ca2fb6e7f7c16"
+        },
+        {
+          "path": "polys-0002.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 835053,
+          "sha256": "0507355545254a12c1037f10d3210e4b6ecea5500fdd61eeabf93514c3020714"
+        },
+        {
+          "path": "polys-0003.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 901778,
+          "sha256": "d5bfd272cfc1673e0347e675fa2cee0e86b854f1cd0971bb4a47d768f1f10af3"
+        },
+        {
+          "path": "polys-0004.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 949316,
+          "sha256": "bbe612acb7643ba3ef90a292671a8ff5b825a2596f8c1946ba5de33894d7744c"
+        },
+        {
+          "path": "polys-0005.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 820452,
+          "sha256": "71ae98b9cd24cb33e0dc4f7459b5ede11961067adfbaadb77295d1eee55e2af0"
+        },
+        {
+          "path": "polys-0006.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 747619,
+          "sha256": "53ec4554536c6256543ffb916398bcf0875d52c9e158eda974b1669d9f8bf08b"
+        },
+        {
+          "path": "polys-0007.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 829940,
+          "sha256": "1dfe71575f82353b14a87208d422978a613203001d0d7d723a1b352f278560e2"
+        },
+        {
+          "path": "polys-0008.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 743751,
+          "sha256": "90507f1e1d8ce13684fb34c7e1bed10895f0a15a801d92b269adee7488a01f42"
+        },
+        {
+          "path": "polys-0009.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 865706,
+          "sha256": "c0e404fe8e88cffca24e45c81cb895db55e76000fcd7294ce66aba779338321e"
+        },
+        {
+          "path": "polys-0010.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 744824,
+          "sha256": "102a6e926bf5ae38d9570916e947f4a34c460b84f6122d2e837d83db08f41863"
+        },
+        {
+          "path": "polys-0011.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 801372,
+          "sha256": "9c2997e3e5e0fe1ff5f9b284ee0494a9589a52e91748681ee5fc4468f2a3c526"
+        },
+        {
+          "path": "polys-0012.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 866292,
+          "sha256": "de9b3ece7cf0251a7a6aa3c1733fe88c429d7847dc25e7ba601c3cb9db0147f8"
+        },
+        {
+          "path": "polys-0013.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 737445,
+          "sha256": "f929aa745769cb08618bb6aba924b4e2d0ef4810831c4e2c4baa676693c5148e"
+        },
+        {
+          "path": "polys-0014.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 970454,
+          "sha256": "beb05a32b0d4298544af917c3298daf1935d5f9557b5ea47ee8a5aca179ab6ed"
+        },
+        {
+          "path": "polys-0015.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 910767,
+          "sha256": "6ee4766fc0739ac348648bbf887a493406cba9a726909dcd4f6940975b17b0b1"
+        },
+        {
+          "path": "polys-0016.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 847919,
+          "sha256": "a0e85827e015bffb203307d6099d14bea598bc17f5b97f30b420f61a3a0000cc"
+        },
+        {
+          "path": "polys-0017.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 789225,
+          "sha256": "207921ab9fa0737a00dd549c6455cd0bb704e21407bb6c379e1a9cb3b9454c12"
+        },
+        {
+          "path": "polys-0018.geojson.gz",
+          "records": 400,
+          "uncompressedBytes": 771245,
+          "sha256": "f8d25ea9f670208ee72b5668e79aa5a8e29648788208a76f9f98da2847aa6cee"
+        },
+        {
+          "path": "polys-0019.geojson.gz",
+          "records": 316,
+          "uncompressedBytes": 697741,
+          "sha256": "5672e4f3082062171fe800c357f573ebb2026f904e2898c64fc782e0c5442a18"
+        }
+      ],
+      "license": "https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island"
+    },
+    "axes": {
+      "origin": [
+        -63.2,
+        46.5
+      ],
+      "metresPerDegreeScene": [
+        76762.59317717304,
+        -111161.08375388647
+      ],
+      "challenge": {
+        "x": -78622,
+        "z": -43522,
+        "lon": -64.22422282450171,
+        "lat": 46.89152191153838
+      }
+    },
+    "ESAWorldCover": {
+      "fileSHA256": "a9ecfc04b044d75d68f5144af3240fa32792c3dcc77e7b429595935c610a80b0  N45W066.tif\n54369b33af4459a37ad7eb6529da8fdf0bf7f102337ac760a200076f236cf941  N45W063.tif\n",
+      "doi": "10.5281/zenodo.7254221"
+    }
+  },
+  "fixedReleaseComparison": [
+    {
+      "view": "grass-prince-close",
+      "pixels": 370000,
+      "pixelsChangedStrict": 261920,
+      "over2": 142237,
+      "maxChannel": 12,
+      "drawsUnchanged": 24,
+      "trianglesUnchanged": 334817,
+      "activeMaskSlots": 4
+    },
+    {
+      "view": "grass-queens-pass-close",
+      "pixels": 370000,
+      "pixelsChangedStrict": 252047,
+      "over2": 135942,
+      "maxChannel": 16,
+      "drawsUnchanged": 67,
+      "trianglesUnchanged": 300022,
+      "activeMaskSlots": 2
+    }
+  ],
+  "compiledNormalDispatch": {
+    "normalDispatch": true,
+    "startingStandardFetchedNoGrass": true,
+    "departure": "prince-grassland",
+    "corruptDirectoryFallsBack": false,
+    "travelM": 153.8163035922224,
+    "activeLayerState": {
+      "active": true,
+      "ready": 3,
+      "pending": 0,
+      "slots": 4
+    },
+    "errors": []
+  },
+  "compiledCorruptDirectoryFallback": {
+    "normalDispatch": true,
+    "startingStandardFetchedNoGrass": true,
+    "departure": "prince-grassland",
+    "corruptDirectoryFallsBack": true,
+    "travelM": 153.21766170104675,
+    "activeLayerState": null,
+    "errors": []
+  },
+  "compiledGrassCoreFlight": {
+    "normalDispatch": true,
+    "startingStandardFetchedNoGrass": true,
+    "departure": "prince-grassland",
+    "corruptDirectoryFallsBack": false,
+    "travelM": 431.69200099174236,
+    "activeLayerState": {
+      "active": true,
+      "ready": 3,
+      "pending": 0,
+      "slots": 4
+    },
+    "errors": []
+  },
+  "independentRangeHostFlight": {
+    "valid": {
+      "before": {
+        "site": "grass-qa-queens",
+        "mode": "dispatch",
+        "camera": "Chase",
+        "x": -703.7594542479696,
+        "z": 37463.17496348389,
+        "altitude": 93.12,
+        "groundY": 17.12,
+        "speed": 52,
+        "drawCalls": 267,
+        "triangles": 330331,
+        "detail": {
+          "ready": 1,
+          "loading": 2,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "provinceGrass": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        },
+        "provinceGrassTufts": 0
+      },
+      "first": {
+        "site": "grass-qa-queens",
+        "mode": "flight",
+        "camera": "Cockpit",
+        "x": -711.65412578499,
+        "z": 37445.649047790575,
+        "altitude": 93.16523113511734,
+        "groundY": 17.12,
+        "speed": 52.009801843144345,
+        "drawCalls": 182,
+        "triangles": 329922,
+        "detail": {
+          "ready": 6,
+          "loading": 3,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "provinceGrass": {
+          "active": true,
+          "ready": 3,
+          "pending": 0,
+          "slots": 4
+        },
+        "provinceGrassTufts": 0
+      },
+      "last": {
+        "site": "grass-qa-queens",
+        "mode": "flight",
+        "camera": "Wide chase",
+        "x": -780.4128590277671,
+        "z": 37293.01174309733,
+        "altitude": 94.29490991299649,
+        "groundY": 14.27928697813706,
+        "speed": 52.04043262210619,
+        "drawCalls": 268,
+        "triangles": 342336,
+        "detail": {
+          "ready": 14,
+          "loading": 0,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "provinceGrass": {
+          "active": true,
+          "ready": 3,
+          "pending": 0,
+          "slots": 4
+        },
+        "provinceGrassTufts": 0
+      },
+      "travelledM": 167.40940887885913,
+      "optionalRequests": [
+        {
+          "name": "index.fcr.gz",
+          "range": null,
+          "status": 200,
+          "contentRange": null,
+          "length": "249810"
+        },
+        {
+          "name": "crop-23.pack",
+          "range": "bytes=55463-57394",
+          "status": 206,
+          "contentRange": "bytes 55463-57394/58939",
+          "length": "1932"
+        },
+        {
+          "name": "crop-23.pack",
+          "range": "bytes=49942-51410",
+          "status": 206,
+          "contentRange": "bytes 49942-51410/58939",
+          "length": "1469"
+        },
+        {
+          "name": "crop-23.pack",
+          "range": "bytes=57395-58938",
+          "status": 206,
+          "contentRange": "bytes 57395-58938/58939",
+          "length": "1544"
+        },
+        {
+          "name": "crop-23.pack",
+          "range": "bytes=54019-55462",
+          "status": 206,
+          "contentRange": "bytes 54019-55462/58939",
+          "length": "1444"
+        },
+        {
+          "name": "crop-23.pack",
+          "range": "bytes=48732-49941",
+          "status": 206,
+          "contentRange": "bytes 48732-49941/58939",
+          "length": "1210"
+        }
+      ],
+      "errors": [],
+      "imageSha256": "c59b940d59c0371de8d3239b5ffea42b030def36bca753a0feb4717161c37e24"
+    },
+    "off": {
+      "before": {
+        "site": "grass-qa-queens",
+        "mode": "dispatch",
+        "camera": "Chase",
+        "x": -703.7594542479696,
+        "z": 37463.17496348389,
+        "altitude": 93.12,
+        "groundY": 17.12,
+        "speed": 52,
+        "drawCalls": 267,
+        "triangles": 326495,
+        "detail": {
+          "ready": 0,
+          "loading": 3,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 3
+        },
+        "provinceGrass": null,
+        "provinceGrassTufts": 0
+      },
+      "first": {
+        "site": "grass-qa-queens",
+        "mode": "flight",
+        "camera": "Cockpit",
+        "x": -713.9763318233283,
+        "z": 37440.493866796016,
+        "altitude": 93.19051033086028,
+        "groundY": 17.12,
+        "speed": 52.011731530634705,
+        "drawCalls": 182,
+        "triangles": 329866,
+        "detail": {
+          "ready": 9,
+          "loading": 3,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "provinceGrass": null,
+        "provinceGrassTufts": 0
+      },
+      "last": {
+        "site": "grass-qa-queens",
+        "mode": "flight",
+        "camera": "Wide chase",
+        "x": -783.8983287832382,
+        "z": 37285.274541518156,
+        "altitude": 94.35457983891078,
+        "groundY": 14.042857367888127,
+        "speed": 52.04186166670692,
+        "drawCalls": 268,
+        "triangles": 342320,
+        "detail": {
+          "ready": 14,
+          "loading": 0,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "provinceGrass": null,
+        "provinceGrassTufts": 0
+      },
+      "travelledM": 170.24137158333656,
+      "optionalRequests": [],
+      "errors": [],
+      "imageSha256": null
+    }
+  }
+}

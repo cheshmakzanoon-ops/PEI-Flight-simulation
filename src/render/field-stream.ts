@@ -83,7 +83,7 @@ export class FieldStream {
 }
 
 /** Interpolate only coverage. The axis always comes from an admitted contributing texel. */
-export const fieldStreamMaskGLSL=`
+export const fieldStreamBlendGLSL=`
  uniform highp sampler2DArray fieldShardArray;
  uniform vec4 fieldShardAreas[4];
  uniform float fieldShardClock;
@@ -111,6 +111,8 @@ export const fieldStreamMaskGLSL=`
   // the four-shard corner with any combination of pending arrivals.
   return mix(mix(here,xEdge,blendX),mix(zEdge,corner,blendX),blendZ);
  }
+`;
+export const fieldStreamMaskGLSL=fieldStreamBlendGLSL+`
  vec3 fieldShaderMask(vec2 world){
   for(int n=0;n<4;++n){
    vec4 box=fieldShardAreas[n];
