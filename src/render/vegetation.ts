@@ -98,6 +98,12 @@ export class Vegetation {
  private hedgeStart=0;
  private forestRevision=0;
  private volume?:WoodlandVolume;
+ private crownUsedAtSlot?:Uint8Array;
+ private crownByVegetationTile?:WeakMap<Float32Array,Uint8Array>;
+ trackCrownHeights(){
+  this.crownUsedAtSlot=new Uint8Array(maxTrees);
+  this.crownByVegetationTile=new WeakMap();
+ }
  private groundedShadow?:GroundedTreeShadows;
  private churchShadows?:StMarysShadows;
  private rollingShadow?:RollingTreeShadows;
@@ -164,6 +170,13 @@ export class Vegetation {
   this.groundedShadow?.update(this.stems.array as Float32Array,this.shapes.array as Float32Array,
     v.mask.array as Float32Array,this.hedgeStart,v.rosterVersion);
  }
+ crownBaseLift(crown:ForestStream,x:number,z:number,h:number,slot:number){
+  // Do not infer provenance merely because a fallback height happens
+  // to match the inventory. This bit is frozen with the original tree.
+  if(!this.crownUsedAtSlot?.[slot]||this.cover.distance(this.t,x,z)<40)return 0;
+  return Math.min(1.65,.10*h)*THREE.MathUtils.smoothstep(crown.ratio(x,z),.124,.66);
+ }
+ get crownBaseCount(){return this.volume?.crownCount??0;}
  get volumeCount(){return this.volume?.count??0;}
  get groundedShadowCount(){return this.groundedShadow?.count??0;}
  attachRollingShadows(scene:THREE.Scene,world:World,fence:Parameters<typeof RollingTreeShadows.mount>[2],adapter:typeof RollingTreeShadows){
@@ -177,7 +190,7 @@ export class Vegetation {
 
  private readonly roofBits=new Uint32Array(8);
  private tile(tx:number,tz:number){
-  const a:number[]=[],hasRoofHits=fillRoofTile(tx,tz,this.roofBits);
+  const a:number[]=[],proof=this.crownByVegetationTile?[] as number[]:undefined,hasRoofHits=fillRoofTile(tx,tz,this.roofBits);
   for(let dz=0;dz<side;dz++)for(let dx=0;dx<side;dx++){
    const cell=dz*side+dx;
    if(hasRoofHits&&(this.roofBits[cell>>>5]&(1<<(cell&31))))continue;
@@ -191,10 +204,14 @@ export class Vegetation {
    const shapeRatio=.83+rand(i,j,9)*.35;
    if(insideLighthouseYard(x,z,fallback*shapeRatio*.5))continue;
    const pilot=this.forestHeights?.height(x,z,fallback,vary)??fallback;
-   const h=this.forestStream?.height(x,z,pilot,vary)??pilot,w=h*shapeRatio;
+   const measured=this.forestStream?.height(x,z,-1,vary)??-1;
+   const h=measured>0?measured:pilot,w=h*shapeRatio;
+   if(proof)proof.push(Number(measured>0));
    a.push(x,this.t.meshElevation(x,z)-.16,z,h,w,variant,.79+rand(i,j,21)*.45,rand(i,j,62));
   }
-  return new Float32Array(a);
+  const values=new Float32Array(a);
+  if(proof)this.crownByVegetationTile?.set(values,Uint8Array.from(proof));
+  return values;
  }
  update(x:number,z:number,alt:number){
   this.crown.visible=this.shade.visible=alt<4200;
@@ -209,12 +226,13 @@ export class Vegetation {
    const key=tx+':'+tz,rx=tx*span-x,rz=tz*span-z;
    if(Math.hypot(rx+span*.5,rz+span*.5)>radius+span*.72)continue;
    wanted.add(key);let a=this.cache.get(key);if(!a){a=this.tile(tx,tz);this.cache.set(key,a);}
-   const first=capture?.size??0;
+   const first=capture?.size??0,heightProof=this.crownByVegetationTile?.get(a);
    for(let i=0;i<a.length&&count<maxTrees;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
     if(d>radius**2||(d>1120**2&&a[i+7]>.70))continue;
     const native=this.plantedY?.(a[i],a[i+2]);
     this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);
+    if(this.crownUsedAtSlot)this.crownUsedAtSlot[count]=heightProof?.[i/8]??0;
     capture?.append(count,d,a[i],a[i+2]);count++;
    }
    capture?.sealBlock(tx,tz,first);

@@ -2,6 +2,22 @@ const TRANSIENT_HTTP = new Set([408, 500, 502, 503, 504]);
 const RETRY_DELAYS_MS = [180, 480] as const;
 class InterruptedPackTransfer extends Error {}
 
+export async function boundedPackedBody(body:ReadableStream<Uint8Array>|null,limit:number){
+ if(!body)throw Error('Missing bounded response body');
+ const bytes=new Uint8Array(limit),reader=body.getReader();
+ let used=0;
+ try{
+  for(;;){
+   const r=await reader.read();if(r.done)return bytes.buffer.slice(0,used);
+   if(r.value.byteLength>limit-used){
+    void reader.cancel().catch(()=>{});
+    throw Error('Packed response body exceeds limit');
+   }
+   bytes.set(r.value,used);used+=r.value.byteLength;
+  }
+ }finally{reader.releaseLock();}
+}
+
 /**
  * Read independent chunks from an immutable, version-matched binary pack.
  * Range-capable hosts never have to transfer the complete file. A simple
@@ -14,9 +30,10 @@ export class PackedBytes {
  private readonly url:string;
  private readonly total:number;
  private readonly request:typeof fetch;
- constructor(url:string,total:number,request:typeof fetch=(input,init)=>fetch(input,init)){
+ private readonly strict:boolean;
+ constructor(url:string,total:number,request:typeof fetch=(input,init)=>fetch(input,init),strict=false){
   if(!Number.isSafeInteger(total)||total<=0)throw Error('Invalid packed size');
-  this.url=url;this.total=total;this.request=request;
+  this.url=url;this.total=total;this.request=request;this.strict=strict;
  }
  async read(offset:number,size:number):Promise<ArrayBuffer>{
   if(!Number.isSafeInteger(offset)||offset<0||!Number.isSafeInteger(size)||size<=0||size>this.total-offset){
@@ -67,7 +84,7 @@ export class PackedBytes {
    throw Error('Unsupported pack response: '+response.status);
   }
   let bytes:ArrayBuffer;
-  try{bytes=await response.arrayBuffer();}
+  try{bytes=await (this.strict?boundedPackedBody(response.body,response.status===206?size:this.total):response.arrayBuffer());}
   catch(error){
    if(error instanceof TypeError)throw new InterruptedPackTransfer('Pack response interrupted',{cause:error});
    throw error;

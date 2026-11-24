@@ -1,0 +1,19 @@
+{
+  "indexSha256": "54e8689b87a9dc0009ca79e92635460afb459813100d95f634af4be8cf86655a",
+  "tiles": 239,
+  "packs": 11,
+  "wireBytes": 5841286,
+  "indexBytes": 41633,
+  "maxOnePackNoRange": 547796,
+  "medianRangeBytes": 21627.0,
+  "maxOneRange": 61336,
+  "activeSampleCodes": [
+    16,
+    105
+  ],
+  "testedAdjEdgeTexels": 545616,
+  "testedDiagTexels": 3200,
+  "decoderSteadyBoundSixBytes": 629856,
+  "maxAllCompletePacksNominalBytes": 5841286,
+  "defaultNote": "Standard does not fetch this optional layer."
+}

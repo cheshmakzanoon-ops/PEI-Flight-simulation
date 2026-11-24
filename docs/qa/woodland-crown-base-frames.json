@@ -1,0 +1,122 @@
+{
+  "prince-grazing": {
+    "before": {
+      "draws": 247,
+      "triangles": 547532
+    },
+    "after": {
+      "draws": 247,
+      "triangles": 547532
+    },
+    "bare": {
+      "draws": 243,
+      "triangles": 421152
+    },
+    "n": 71,
+    "lifts": 23,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 39973,
+      "over2": 37614,
+      "max": 180,
+      "outsideFoliage": 0
+    }
+  },
+  "queens-grazing": {
+    "before": {
+      "draws": 122,
+      "triangles": 459383
+    },
+    "after": {
+      "draws": 122,
+      "triangles": 459383
+    },
+    "bare": {
+      "draws": 118,
+      "triangles": 332559
+    },
+    "n": 71,
+    "lifts": 28,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 21595,
+      "over2": 20023,
+      "max": 182,
+      "outsideFoliage": 0
+    }
+  },
+  "kings-grazing": {
+    "before": {
+      "draws": 32,
+      "triangles": 548592
+    },
+    "after": {
+      "draws": 32,
+      "triangles": 548592
+    },
+    "bare": {
+      "draws": 28,
+      "triangles": 416050
+    },
+    "n": 75,
+    "lifts": 3,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 14485,
+      "over2": 13382,
+      "max": 107,
+      "outsideFoliage": 0
+    }
+  },
+  "queens-mid-control": {
+    "before": {
+      "draws": 41,
+      "triangles": 454837
+    },
+    "after": {
+      "draws": 41,
+      "triangles": 454837
+    },
+    "bare": {
+      "draws": 37,
+      "triangles": 327117
+    },
+    "n": 72,
+    "lifts": 29,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 0,
+      "over2": 0,
+      "max": 0,
+      "outsideFoliage": 0
+    }
+  },
+  "queens-high-control": {
+    "before": {
+      "draws": 17,
+      "triangles": 295984
+    },
+    "after": {
+      "draws": 17,
+      "triangles": 295984
+    },
+    "bare": {
+      "draws": 17,
+      "triangles": 295984
+    },
+    "n": 0,
+    "lifts": 0,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 0,
+      "over2": 0,
+      "max": 0,
+      "outsideFoliage": 0
+    }
+  }
+}

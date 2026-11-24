@@ -33,6 +33,7 @@ export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('s
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
+ if(q.has('woodlandCrownBase')&&!sceneryReviewBlock('woodlandCrownBase',q))q.set('woodland3D','');
  if(q.has('sourceGrassNap')&&!sceneryReviewBlock('sourceGrassNap',q))q.set('sourceGrassStudy','');
  if(q.has(CAVENDISH_PACKAGE_FLAG)&&!cavePackageBlocked(q))for(const flag of CAVENDISH_PACKAGE_FLAGS)if(!q.has(flag))q.set(flag,'');
  return q;
@@ -60,6 +61,7 @@ export const SCENERY_REVIEWS=[
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
+ {flag:'woodlandCrownBase',name:'Near conifer crown shape',scope:'Stand-informed close woodland'},
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
  {flag:'sourceGrassNap',name:'Close grass detail',scope:'Includes Ground vegetation near the ground'},
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
@@ -81,6 +83,11 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='woodlandCrownBase'){
+  if(options.get('scenery')==='detail')return 'detail';
+  return ['surveyRelief','inlandRelief','indianRiverReview','buildingShadows','seatedForestShadows',
+   'duneReliefStudy','duneGrassSurface','duneSandDetail'].some(k=>options.has(k))?'terrain':undefined;
+ }
  if(flag==='duneReliefStudy'){
   if(options.get('scenery')==='detail')return 'detail';
   return ['surveyRelief','inlandRelief','buildingShadows','indianRiverReview','sourceGrassStudy','sourceGrassNap',

@@ -1,0 +1,26 @@
+{
+  "prince-grazing": {
+    "before": {
+      "draws": 242,
+      "triangles": 419198
+    },
+    "after": {
+      "draws": 242,
+      "triangles": 419198
+    },
+    "bare": {
+      "draws": 242,
+      "triangles": 419198
+    },
+    "n": 0,
+    "lifts": 0,
+    "exactRestored": true,
+    "pixels": {
+      "n": 155480,
+      "changed": 0,
+      "over2": 0,
+      "max": 0,
+      "outsideFoliage": 0
+    }
+  }
+}

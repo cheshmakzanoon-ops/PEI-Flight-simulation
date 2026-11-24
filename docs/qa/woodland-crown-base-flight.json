@@ -1,0 +1,70 @@
+[
+  {
+    "mode": "standard",
+    "site": "west-light",
+    "travelM": 263.505,
+    "terrainAtAircraft": -0.055,
+    "finalAltitude": 59.69787153530546,
+    "crown": null,
+    "files": [],
+    "damagedPackBytes": [],
+    "pause": true
+  },
+  {
+    "mode": "preview",
+    "site": "west-light",
+    "travelM": 414.077,
+    "terrainAtAircraft": 0.8674622810682192,
+    "finalAltitude": 60.78559032025805,
+    "crown": {
+      "missing": false,
+      "inflight": 0,
+      "resident": 3,
+      "failed": 0,
+      "active": "1-9",
+      "activeReady": true,
+      "rosterEligible": 13
+    },
+    "files": [
+      "index.json",
+      "crown-01.pack"
+    ],
+    "damagedPackBytes": [],
+    "pause": true
+  },
+  {
+    "mode": "blocked",
+    "site": "west-light",
+    "travelM": 260.529,
+    "terrainAtAircraft": -0.055,
+    "finalAltitude": 59.67277515505375,
+    "crown": null,
+    "files": [],
+    "damagedPackBytes": [],
+    "pause": true
+  },
+  {
+    "mode": "corrupt",
+    "site": "west-light",
+    "travelM": 264.696,
+    "terrainAtAircraft": -0.055,
+    "finalAltitude": 59.714604172660124,
+    "crown": {
+      "missing": false,
+      "inflight": 0,
+      "resident": 0,
+      "failed": 3,
+      "active": "0-9",
+      "activeReady": false,
+      "rosterEligible": 0
+    },
+    "files": [
+      "index.json",
+      "crown-01.pack"
+    ],
+    "damagedPackBytes": [
+      542759
+    ],
+    "pause": true
+  }
+]

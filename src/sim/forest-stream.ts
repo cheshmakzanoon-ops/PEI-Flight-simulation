@@ -1,5 +1,5 @@
 import {clamp,project} from './geo.ts';
-import {PackedBytes} from './packed-bytes.ts';
+import {boundedPackedBody,PackedBytes} from './packed-bytes.ts';
 import {unpackGzip} from './compression.ts';
 
 const bounds=[-64.47,45.94,-61.93,47.1] as const;
@@ -14,13 +14,20 @@ interface PackPlan {file:string;bytes:number;}
 interface Index {bounds:number[];cols:number;rows:number;tileInterior:number;tileBorder:number;bytes:number;packs:PackPlan[];tiles:Chunk[];}
 type Tile = Chunk & {i:number;j:number;cx:number;cz:number;};
 
-function validIndex(m:Index){
+const CROWN_CATALOGUE_HASH='54e8689b87a9dc0009ca79e92635460afb459813100d95f634af4be8cf86655a';
+const digest=async (value:ArrayBuffer)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',value)),b=>b.toString(16).padStart(2,'0')).join('');
+async function decodeCrownChunk(packed:ArrayBuffer){
+ const tag=new Uint8Array(packed,0,Math.min(2,packed.byteLength));
+ if(tag[0]!==0x1f||tag[1]!==0x8b)return packed;
+ return boundedPackedBody(new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip')),rasterBytes);
+}
+function validIndex(m:Index,prefix:string){
  if(!m||m.cols!==cols||m.rows!==rows||
     m.tileInterior!==res||m.tileBorder!==border||!Array.isArray(m.bounds)||m.bounds.length!==4||
     !m.bounds.every((v,i)=>v===bounds[i])||!Array.isArray(m.tiles)||
     !Number.isSafeInteger(m.bytes)||m.bytes<=0||m.bytes>12*1024*1024)return false;
  if(!Array.isArray(m.packs)||!m.packs.length||m.packs.length>24||
-    m.packs.some((p,i)=>!p||p.file!=='heights-'+String(i).padStart(2,'0')+'.pack'||
+    m.packs.some((p,i)=>!p||p.file!==prefix+'-'+String(i).padStart(2,'0')+'.pack'||
         !Number.isSafeInteger(p.bytes)||p.bytes<=0||p.bytes>560000)||
     m.packs.reduce((sum,p)=>sum+p.bytes,0)!==m.bytes)return false;
  const offsets=m.packs.map(()=>0);const ids=new Set<string>();
@@ -43,17 +50,24 @@ export class ForestStream {
  private readonly failed=new Set<string>();
  private missing=false;
  private readonly catalogue:Promise<void>;
+ private readonly crown:boolean;
  private x=Infinity;private z=Infinity;
- constructor(base:string,fetcher:typeof fetch=fetch){
+ constructor(base:string,fetcher:typeof fetch=fetch,kind:'height'|'crown'='height'){
+  const crown=kind==='crown';this.crown=crown;
   this.catalogue=(async()=>{
    try{
-    const path=base+'world/woodland/stream-v1/';
+    const path=base+'world/woodland/'+(crown?'crown-v1/':'stream-v1/');
     const req:typeof fetch=(url,init)=>fetcher(url,{...init,signal:AbortSignal.timeout(6500)});
     const r=await req(path+'index.json');
     if(!r.ok)throw Error('Stand-height catalogue unavailable');
-    const m=await r.json() as Index;
-    if(!validIndex(m))throw Error('Invalid stand-height catalogue');
-    this.packs=m.packs.map(p=>new PackedBytes(path+p.file,p.bytes,req));
+    let m:Index;
+    if(crown){
+     const raw=await boundedPackedBody(r.body,60000);
+     if(!globalThis.crypto?.subtle||await digest(raw)!==CROWN_CATALOGUE_HASH)throw Error('Bad live-crown catalogue');
+     m=JSON.parse(new TextDecoder().decode(raw)) as Index;
+    }else m=await r.json() as Index;
+    if(!validIndex(m,crown?'crown':'heights'))throw Error('Invalid stand-height catalogue');
+    this.packs=m.packs.map(p=>new PackedBytes(path+p.file,p.bytes,req,crown));
     for(const t of m.tiles){
      const [i,j]=t.id.split('-').map(Number);
      this.tiles.set(t.id,{...t,i,j,cx:nw.x+(i+.5)*dx,cz:nw.z+(j+.5)*dz});
@@ -83,13 +97,17 @@ export class ForestStream {
   })(),new Promise<void>(resolve=>timer=setTimeout(resolve,ms))]);}
   finally{if(timer!==undefined)clearTimeout(timer);}
  }
+ private demand(t:Tile){
+  if(!this.crown)return Math.hypot(this.x-t.cx,this.z-t.cz);
+  return Math.hypot(Math.max(0,Math.abs(this.x-t.cx)-dx*.5),Math.max(0,Math.abs(this.z-t.cz)-dz*.5));
+ }
  private schedule(){
-  const near=[...this.tiles.values()].map(t=>({t,d:Math.hypot(this.x-t.cx,this.z-t.cz)}))
-    .filter(t=>t.d<prefetchRadius).sort((a,b)=>a.d-b.d).slice(0,maxMemoryTiles);
+  const near=[...this.tiles.values()].map(t=>({t,d:this.demand(t)}))
+    .filter(t=>t.d<(this.crown?850:prefetchRadius)).sort((a,b)=>a.d-b.d).slice(0,this.crown?6:maxMemoryTiles);
   const wanted=new Set(near.map(({t})=>t.id));
   for(const id of this.loaded.keys())if(!wanted.has(id))this.loaded.delete(id);
   for(const {t} of near){
-   if(this.inflight.size>=maxInflight)break;
+   if(this.inflight.size>=(this.crown?1:maxInflight))break;
    if(this.loaded.has(t.id)||this.inflight.has(t.id)||this.failed.has(t.id))continue;
    const p=this.load(t).finally(()=>{this.inflight.delete(t.id);this.schedule();});
    this.inflight.set(t.id,p);
@@ -97,26 +115,30 @@ export class ForestStream {
  }
  private async load(t:Tile){
   try{
-   const packed=await this.packs[t.pack].read(t.offset,t.bytes),raw=await unpackGzip(packed);
+   const packed=await this.packs[t.pack].read(t.offset,t.bytes);
+   const raw=await (this.crown?decodeCrownChunk(packed):unpackGzip(packed));
    if(raw.byteLength!==rasterBytes)throw Error('Bad woodland tile length');
-   if(globalThis.crypto?.subtle){
-    const hash=new Uint8Array(await crypto.subtle.digest('SHA-256',raw));
-    if(Array.from(hash,b=>b.toString(16).padStart(2,'0')).join('')!==t.sha256)throw Error('Bad woodland tile hash');
-   }
-   if(Math.hypot(this.x-t.cx,this.z-t.cz)<prefetchRadius)this.loaded.set(t.id,new Uint8Array(raw));
+   if(globalThis.crypto?.subtle&&await digest(raw)!==t.sha256)throw Error('Bad woodland tile hash');
+   if(this.demand(t)<(this.crown?850:prefetchRadius))this.loaded.set(t.id,new Uint8Array(raw));
   }catch{this.failed.add(t.id);}
  }
  /** Keep undecoded, outside and unsupported parts on the original visual path. */
  height(x:number,z:number,fallback:number,variation:number){
+  if(this.crown)return fallback;
+  const h=this.sample(x,z);
+  return h>0?clamp(h*.5*(.84+.26*variation),2.6,30):fallback;
+ }
+ ratio(x:number,z:number){return this.crown?this.sample(x,z)/128:0;}
+ private sample(x:number,z:number){
   const u=(x-nw.x)/dx,v=(z-nw.z)/dz;
-  if(u<0||v<0||u>=cols||v>=rows)return fallback;
+  if(u<0||v<0||u>=cols||v>=rows)return 0;
   const i=Math.floor(u),j=Math.floor(v),a=this.loaded.get(i+'-'+j);
-  if(!a)return fallback;
+  if(!a)return 0;
   const wx=border-.5+res*(u-i),wz=border-.5+res*(v-j);
   const bx=Math.floor(wx),bz=Math.floor(wz),f=wx-bx,g=wz-bz;
   const k=bz*stored+bx,p=a[k],q=a[k+1],r=a[k+stored],s=a[k+stored+1];
-  if(!p||!q||!r||!s)return fallback;
-  const stand=((1-g)*(p*(1-f)+q*f)+g*(r*(1-f)+s*f))*.5;
-  return clamp(stand*(.84+.26*variation),2.6,30);
+  if(!p||!q||!r||!s)return 0;
+  if(this.crown&&(Math.max(p,q,r,s)-Math.min(p,q,r,s)>28||Math.max(p,q,r,s)>105))return 0;
+  return (1-g)*(p*(1-f)+q*f)+g*(r*(1-f)+s*f);
  }
 }

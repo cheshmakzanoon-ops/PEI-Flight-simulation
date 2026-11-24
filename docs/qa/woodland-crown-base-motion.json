@@ -1,0 +1,26 @@
+[
+  {
+    "case": "motion",
+    "lockedMotionFrames": 28,
+    "visibleLiftFrames": 26,
+    "stepMaxM": 0.16731532463079768,
+    "exactAglControlsM": [
+      39,
+      42
+    ],
+    "canvas": [
+      460,
+      338
+    ]
+  },
+  {
+    "case": "corrupt",
+    "packBytes": [
+      43801,
+      27668,
+      43564,
+      34183
+    ],
+    "sameFrame": true
+  }
+]
