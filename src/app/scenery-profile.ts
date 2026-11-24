@@ -47,6 +47,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockDuneGrass'))q.delete('duneGrassSurface');
  if(q.has('stockBasinSand'))q.delete('basinSand');
  if(q.has('stockMeadow'))q.delete('meadowTexture');
+ if(q.has('stockGravelSurface'))q.delete('gravelSurfaceStudy');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -275,4 +276,16 @@ export function standardMeadowRequested(q:URLSearchParams){
    'bowleySurveyPreview','montagueFoundationPreview','duneReliefStudy','duneSandDetail','duneGrassSurface',
    'kingsDryCrownStudy','orthophotoSeamStudy','shoreToneStudy','canopyLight','cavendishDetail',
    'gablesGradeReview','greenGablesBarnReview','northCapeWind','woodland3D','forestFloor'].some(k=>q.has(k));
+}
+
+/** Only the dated standard atlas enables mapped gravel without the study flag. */
+export function standardGravelSurfaceRequested(q:URLSearchParams){
+ if(q.has('stockGravelSurface')||q.has('gravelSurfaceStudy'))return false;
+ const layer=q.get('scenery');if(layer&&layer!=='standard')return false;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+ !['surveyRelief','inlandRelief','buildingShadows','seatedRoads','seatedForestShadows',
+   'basinChannel','pointPrimStudy','kingsDryCrownStudy','regionalCanopyStudy','sourceGrassNap',
+   'duneReliefStudy','duneSandDetail','duneGrassSurface','orthophotoSeamStudy',
+   'cavendishDetail','gablesGradeReview','greenGablesBarnReview','canopyLight','shoreToneStudy',
+   'northCapeWind','woodland3D','forestFloor'].some(k=>q.has(k));
 }

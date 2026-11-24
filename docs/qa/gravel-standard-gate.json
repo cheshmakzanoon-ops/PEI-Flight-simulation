@@ -1,0 +1,274 @@
+{
+  "parent": "41addfac2b70bbe813d794adb9ef0290f3bfe381",
+  "scope": "One original material download only near authenticated mapped gravel in compatible Standard. No road reconstruction, navigation or hardware speed claim.",
+  "localTestsPassed": 392,
+  "scopedRoadRows": 2651,
+  "pixelsOutsideProjectedGravelAndOnePixelGuard": 611739,
+  "compiled": {
+    "prince": {
+      "site": "prince-grassland",
+      "state": {
+        "status": "ready",
+        "near": true,
+        "active": true,
+        "gain": 1,
+        "attempts": 1,
+        "reason": null,
+        "requestDistance": 224.28357347164612
+      },
+      "flownM": 111.917,
+      "requests": 1,
+      "errors": []
+    },
+    "stock": {
+      "site": "prince-grassland",
+      "state": null,
+      "flownM": 113.114,
+      "requests": 0,
+      "errors": []
+    },
+    "queens": {
+      "site": "queens-grassland",
+      "state": {
+        "status": "ready",
+        "near": true,
+        "active": true,
+        "gain": 1,
+        "attempts": 1,
+        "reason": null,
+        "requestDistance": 344.92259346234596
+      },
+      "flownM": 111.113,
+      "requests": 1,
+      "errors": []
+    },
+    "kings": {
+      "site": "kings-meadow-low",
+      "state": {
+        "status": "ready",
+        "near": true,
+        "active": true,
+        "gain": 1,
+        "attempts": 1,
+        "reason": null,
+        "requestDistance": 134.40371081360857
+      },
+      "flownM": 112.032,
+      "requests": 1,
+      "errors": []
+    },
+    "wrong-cover": {
+      "site": "prince-grassland",
+      "state": {
+        "status": "scene-mismatch",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 0,
+        "reason": "scene-source",
+        "requestDistance": null
+      },
+      "flownM": 109.523,
+      "requests": 0,
+      "errors": []
+    },
+    "corrupt": {
+      "site": "prince-grassland",
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "wire-hash",
+        "requestDistance": 224.28357347164612
+      },
+      "flownM": 113.114,
+      "requests": 1,
+      "errors": []
+    },
+    "held": {
+      "site": "prince-grassland",
+      "state": {
+        "status": "failed",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 1,
+        "reason": "timeout",
+        "requestDistance": 224.28357347164612
+      },
+      "flownM": 109.523,
+      "requests": 1,
+      "errors": []
+    },
+    "high": {
+      "site": "charlottetown",
+      "state": {
+        "status": "idle",
+        "near": false,
+        "active": false,
+        "gain": 0,
+        "attempts": 0,
+        "reason": null,
+        "requestDistance": null
+      },
+      "flownM": 112.121,
+      "requests": 0,
+      "errors": []
+    },
+    "detail": {
+      "site": "prince-grassland",
+      "state": null,
+      "flownM": 110.121,
+      "requests": 0,
+      "errors": []
+    }
+  },
+  "lockedThreeScopes": [
+    {
+      "view": "prince-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 6801,
+      "medianChangedNeutralRGB": [
+        174.0,
+        133.0,
+        104.0
+      ],
+      "medianChangedCandidateRGB": [
+        153.0,
+        143.0,
+        137.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 7830,
+          "protected": 207210,
+          "changedProtected": 96,
+          "changedProtectedGt2": 96,
+          "maxProtected": 53
+        },
+        "1": {
+          "scope": 9453,
+          "protected": 205587,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 11079,
+          "protected": 203961,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 14340,
+          "protected": 200700,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 41,
+      "unmodifiedTriangleTotal": 320104
+    },
+    {
+      "view": "queens-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 2850,
+      "medianChangedNeutralRGB": [
+        174.0,
+        134.0,
+        105.0
+      ],
+      "medianChangedCandidateRGB": [
+        152.0,
+        142.0,
+        135.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 10298,
+          "protected": 204742,
+          "changedProtected": 22,
+          "changedProtectedGt2": 18,
+          "maxProtected": 33
+        },
+        "1": {
+          "scope": 12156,
+          "protected": 202884,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 13985,
+          "protected": 201055,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 17577,
+          "protected": 197463,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 64,
+      "unmodifiedTriangleTotal": 310016
+    },
+    {
+      "view": "kings-flight",
+      "actualWebGL": true,
+      "visiblePixelsAbove2": 8908,
+      "medianChangedNeutralRGB": [
+        175.0,
+        133.0,
+        104.0
+      ],
+      "medianChangedCandidateRGB": [
+        145.0,
+        138.0,
+        135.0
+      ],
+      "scopedProtectionByPadPx": {
+        "0": {
+          "scope": 9902,
+          "protected": 205138,
+          "changedProtected": 142,
+          "changedProtectedGt2": 142,
+          "maxProtected": 50
+        },
+        "1": {
+          "scope": 11772,
+          "protected": 203268,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "2": {
+          "scope": 13653,
+          "protected": 201387,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        },
+        "4": {
+          "scope": 17446,
+          "protected": 197594,
+          "changedProtected": 0,
+          "changedProtectedGt2": 0,
+          "maxProtected": 0
+        }
+      },
+      "sameExactThroughGainToggle": true,
+      "unmodifiedOtherGeometryDrawTotal": 25,
+      "unmodifiedTriangleTotal": 284088
+    }
+  ]
+}

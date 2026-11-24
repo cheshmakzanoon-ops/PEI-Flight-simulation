@@ -8,7 +8,7 @@ import {GRAVEL_KIND,GRAVEL_RAW_SHA256,GRAVEL_RAW_SIZE,classifiedGravel,gravelAut
 import {GRAVEL_SOURCE_COUNT,GRAVEL_SOURCE_SHA256} from '../src/render/gravel.generated.ts';
 import {GRAVEL_PRELOAD_AGL,GRAVEL_REQUEST_RANGE,nearestRegisteredGravel} from '../src/render/aggregate-admission.ts';
 import {GravelSurfaceStudy,GRAVEL_ART_PATH,GRAVEL_WIRE_SHA256,GRAVEL_WIRE_SIZE,loadGravelSurface} from '../src/render/gravel-surface-study.ts';
-import {SCENERY_REVIEWS,sceneryOptions,sceneryReviewBlock} from '../src/app/scenery-profile.ts';
+import {SCENERY_REVIEWS,sceneryOptions,sceneryReviewBlock,standardGravelSurfaceRequested} from '../src/app/scenery-profile.ts';
 
 const wire=new Uint8Array(readFileSync(new URL('../public/'+GRAVEL_ART_PATH,import.meta.url)));
 const raw=new Uint8Array(gunzipSync(wire));
@@ -23,12 +23,16 @@ const goodReply:typeof fetch=async()=>new Response(wire);
 const skyGuard=()=>true;
 const eye={x:0,y:62,z:0};
 
-test('gravel is a Standard-only explicit Dispatch review and receives no bundled option',()=>{
+test('Standard gravel preserves the old explicit review and does not inject a bundled flag',()=>{
  assert(SCENERY_REVIEWS.some(row=>row.flag==='gravelSurfaceStudy'));
  assert.equal(sceneryOptions('?scenery=detail').has('gravelSurfaceStudy'),false);
  assert.equal(sceneryOptions('').has('gravelSurfaceStudy'),false);
  assert.equal(sceneryReviewBlock('gravelSurfaceStudy',sceneryOptions('?gravelSurfaceStudy&scenery=detail')),'detail');
  assert.equal(sceneryReviewBlock('gravelSurfaceStudy',sceneryOptions('?gravelSurfaceStudy&buildingShadows&seatedRoads')),undefined);
+ assert(standardGravelSurfaceRequested(sceneryOptions('?departure=prince-grassland')));
+ for(const name of ['scenery=detail','sourceGrassStudy','buildingShadows','seatedRoads','inlandRelief','gravelSurfaceStudy','stockGravelSurface'])
+  assert(!standardGravelSurfaceRequested(sceneryOptions('?'+name)),name);
+ assert(!sceneryOptions('?stockGravelSurface&gravelSurfaceStudy').has('gravelSurfaceStudy'));
  const trust=gravelAuthority(GRAVEL_SOURCE_COUNT,GRAVEL_SOURCE_SHA256);
  assert(trust);assert.equal(gravelAuthority(GRAVEL_SOURCE_COUNT-1,GRAVEL_SOURCE_SHA256),undefined);
  assert.equal(gravelAuthority(GRAVEL_SOURCE_COUNT,'changed'),undefined);
@@ -189,4 +193,34 @@ test('failed first request stays stock across repeated frames, route and pitch c
  assert.equal(calls,1);assert.equal(queries,1);assert.equal(q.state.attempts,1);
  assert.equal(q.state.gain,0);assert.equal(q.state.reason,'http');
  assert.equal(q.look.aggregateMap.value,null);
+});
+
+test('default gravel awaits a live exposed-road proof and cannot fetch after a late proof off site',async()=>{
+ let submit:(valid:boolean)=>void=()=>{};
+ let fetches=0,sceneHashes=0;
+ const then=new Promise<boolean>(resolve=>{submit=resolve;});
+ const source={verifiedGravelSource:true,nearestGravel:(p:typeof eye)=>p.x<100?70:Infinity};
+ const gravel=new GravelSurfaceStudy('/',async()=>{fetches++;return new Response(wire);},
+  {verifyScene:()=>{sceneHashes++;return then;}});
+ gravel.update(eye,210,true,source,skyGuard,false,0);
+ gravel.update(eye,62,false,source,skyGuard,false,1);
+ gravel.update({...eye,x:140},62,true,source,skyGuard,false,2);
+ assert.equal(sceneHashes,0);
+ gravel.update(eye,62,true,source,skyGuard,false,210);
+ await until(()=>sceneHashes===1);
+ gravel.update({...eye,x:145},62,true,source,skyGuard,false,211);
+ submit(true);await sleep(0);
+ gravel.update({...eye,x:145},62,true,source,skyGuard,false,220);
+ assert.equal(fetches,0);
+ gravel.update(eye,62,true,source,skyGuard,false,800);
+ await until(()=>gravel.state.status==='ready');
+ assert.equal(fetches,1);
+ assert.equal(gravel.state.attempts,1);
+ const wrong=new GravelSurfaceStudy('/',async()=>{fetches++;return new Response(wire);},{verifyScene:async()=>false});
+ wrong.update(eye,62,true,source,skyGuard,false,0);
+ await until(()=>wrong.state.status==='scene-mismatch');
+ wrong.update(eye,62,true,source,skyGuard,false,600);
+ assert.equal(wrong.state.attempts,0);
+ assert.equal(wrong.state.gain,0);
+ assert.equal(fetches,1);
 });

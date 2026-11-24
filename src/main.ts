@@ -1,4 +1,4 @@
-import {StandardMeadow,meadowStandardAtlas} from './render/meadow-standard.ts';
+import {StandardMeadow,standardLandAtlasMatches} from './render/meadow-standard.ts';
 import {StandardBasinSand} from './render/basin-head-sand.ts';
 import {RegionalCanopies} from './render/regional-canopy/controller.ts';
 import {REGIONAL_STANDS} from './render/regional-canopy/spec.ts';
@@ -90,7 +90,7 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
@@ -277,7 +277,7 @@ async function run(){
   terrain.spec.width===cover.width&&terrain.spec.height===cover.height&&terrain.spec.bounds.length===4&&
   [-64.47,45.94,-61.93,47.1].every((v,i)=>v===terrain.spec.bounds[i])&&globalThis.crypto?.subtle?
   new StandardBasinSand(worldBase):undefined;
- const standardMeadow=standardMeadowRequested(options)&&meadowStandardAtlas(terrain,terrainSha,cover)?new StandardMeadow(cover):undefined;
+ const standardMeadow=standardMeadowRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)?new StandardMeadow(cover):undefined;
  const CapeArt=explicitCapeModule?(await explicitCapeModule)?.NorthCapeScenery:undefined;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
    showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles);
@@ -396,8 +396,12 @@ async function run(){
   }
  }
  void addMainland(scene,daylight).then(t=>{mainland=t;if(daylight?.armed)daylight.gain.value=1;}).catch(e=>warn('Mainland',e));
- const gravelAllowed=options.has('gravelSurfaceStudy')&&!sceneryReviewBlock('gravelSurfaceStudy',options);
- const gravelSurface=gravelAllowed?new GravelSurfaceStudy(import.meta.env.BASE_URL):undefined;
+ const explicitGravel=options.has('gravelSurfaceStudy')&&!sceneryReviewBlock('gravelSurfaceStudy',options);
+ const standardGravel=standardGravelSurfaceRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover);
+ const gravelSurface=explicitGravel?new GravelSurfaceStudy(import.meta.env.BASE_URL):
+  standardGravel?new GravelSurfaceStudy(import.meta.env.BASE_URL,fetch,{
+   verifyScene:async()=>await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded
+  }):undefined;
  const gravelDrySeat=(x:number,y:number,z:number)=>world.surface(x,z).land&&y>=world.visualGroundHeight(x,z)-.012;
  const startRoads=(prepared?:Awaited<typeof montagueRoadJob>)=>Roads.create(scene,terrain,world.buildingShadows,
   terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined,options.has('seatedRoads')?world:undefined,

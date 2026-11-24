@@ -58,7 +58,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](docs/qa/province-grass.md) in all three counties, with representative **grassland passes**. |
 | Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. In Standard, enable **Expanded farmland** in Dispatch. |
-| Gravel roads across PEI | `?gravelSurfaceStudy` | [Mapped gravel surface](docs/qa/gravel-surface-study.md): a close-flight material preview for 2,651 verified non-bridge gravel records. |
+| Gravel roads across PEI | `?stockGravelSurface` | Compare Standard’s [close gravel material](docs/qa/gravel-surface-study.md) on 2,651 verified non-bridge road records. |
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?stockAerialPerspective` | Compare [Standard daylight haze and sea horizon](docs/qa/aerial-perspective-study.md) with the original fixed mist. |
 | Orby Head | `?stockOrbyCoast` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): Standard closes known mask-cell gaps below the cliffs. The flag restores the inherited coastline wall. |

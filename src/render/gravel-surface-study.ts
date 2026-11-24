@@ -10,7 +10,7 @@ export const GRAVEL_EASE_MS=620;
 const PROBE_INTERVAL_MS=200;
 const PROBE_REFRAME_METRES=18;
 
-type Failure='unavailable'|'timeout'|'http'|'encoding'|'size'|'wire-hash'|'decoded-hash'|'decode'|'network';
+type Failure='scene-source'|'unavailable'|'timeout'|'http'|'encoding'|'size'|'wire-hash'|'decoded-hash'|'decode'|'network';
 type Loaded={texture:Texture}|{reason:Failure};
 type GravelRequestSource=Readonly<{
  verifiedGravelSource:boolean;
@@ -102,9 +102,12 @@ export class GravelSurfaceStudy {
  private probe?:Probe;
  private near=false;
  private requestedDistance?:number;
+ private verifyScene?:()=>Promise<boolean>;
+ private sceneProof:'not-needed'|'cold'|'waiting'|'verified'|'stock'='not-needed';
  constructor(base:string,request:typeof fetch=fetch,
-  config:Readonly<{timeoutMS?:number;time?:()=>number}>={}){
+  config:Readonly<{timeoutMS?:number;time?:()=>number;verifyScene?:()=>Promise<boolean>}>={}){
   this.base=base;this.request=request;this.timeoutMS=config.timeoutMS??GRAVEL_TIMEOUT_MS;this.time=config.time??(()=>performance.now());
+  this.verifyScene=config.verifyScene;if(this.verifyScene)this.sceneProof='cold';
  }
  update(eye:GravelEye,agl:number,liveFlight:boolean,source:GravelRequestSource|undefined,
   dry:GravelSeatGuard,diagnose=false,now=this.time()){
@@ -114,7 +117,7 @@ export class GravelSurfaceStudy {
   const drawable=validEye&&this.sourceGood&&agl<GRAVEL_DRAW_AGL;
   const progress=drawable&&this.phase==='ready'?Math.min(1,Math.max(0,(now-this.readyAt)/GRAVEL_EASE_MS)):0;
   this.look.aggregateGain.value=progress*progress*(3-2*progress);
-  const cold=this.phase==='idle'&&liveFlight&&drawable&&agl<GRAVEL_PRELOAD_AGL;
+  const cold=this.phase==='idle'&&liveFlight&&drawable&&agl<GRAVEL_PRELOAD_AGL&&this.sceneProof!=='waiting'&&this.sceneProof!=='stock';
   let diagnosticRadius=diagnose&&this.phase==='ready'&&drawable?GRAVEL_DRAW_RANGE:0;
   const radius=cold?GRAVEL_REQUEST_RANGE:diagnosticRadius;
   if(!source||!radius){this.near=this.phase==='loading'&&drawable&&this.probe?.source===source&&
@@ -134,6 +137,14 @@ export class GravelSurfaceStudy {
   this.probe={at:now,x:eye.x,y:eye.y,z:eye.z,distance,radius,source};
   this.near=Number.isFinite(distance);
   if(!cold||!this.near)return;
+  if(this.sceneProof==='cold'&&this.verifyScene){
+   this.sceneProof='waiting';
+   void Promise.resolve().then(this.verifyScene).then(
+    ok=>{this.sceneProof=ok?'verified':'stock';this.probe=undefined;},
+    ()=>{this.sceneProof='stock';this.probe=undefined;});
+   return;
+  }
+  if(this.sceneProof==='waiting'||this.sceneProof==='stock')return;
   this.phase='loading';this.tries++;this.requestedDistance=distance;
   void loadGravelSurface(this.base,this.request,this.timeoutMS).then(result=>{
    if('texture' in result){
@@ -142,9 +153,9 @@ export class GravelSurfaceStudy {
   });
  }
  get state(){
-  const status=this.sourceKnown&&!this.sourceGood?'source-mismatch':this.phase;
+  const status=this.sourceKnown&&!this.sourceGood?'source-mismatch':this.sceneProof==='stock'?'scene-mismatch':this.phase;
   return {status,near:this.near,active:this.near&&this.look.aggregateGain.value>0,
-   gain:this.look.aggregateGain.value,attempts:this.tries,reason:status==='source-mismatch'?'source':this.failure??null,
+   gain:this.look.aggregateGain.value,attempts:this.tries,reason:status==='source-mismatch'?'source':status==='scene-mismatch'?'scene-source':this.failure??null,
    requestDistance:this.requestedDistance??null};
  }
 }

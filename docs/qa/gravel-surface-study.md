@@ -1,7 +1,9 @@
 # Mapped gravel surfaces
 
-Enable **Mapped gravel surfaces** in Dispatch under **Standard**, or use
-`?gravelSurfaceStudy`. This optional treatment makes clearly mapped gravel
+In compatible **Standard** flight, the close road material is available on
+clearly mapped gravel. Compare with `?stockGravelSurface`; the older explicit
+`?gravelSurfaceStudy` still selects its original study path. This treatment
+makes clearly mapped gravel
 less uniformly orange, gives close aggregate a fine surface normal, and
 softens the inside of the rendered road edge. It adds no roadbed geometry,
 grade, lane marking, collision, or accesses, and does not classify any new
@@ -34,8 +36,10 @@ The exact colour/normal/roughness channel and digest receipt is in
 
 ## Admission and fidelity
 
-No extra request in Dispatch, Detail or a default flight. An explicitly opted-in
-flight requests the art at most once, while the eye is below **155 m AGL**
+No extra art request in Dispatch, Detail, or a distant Standard flight.
+On the ordinary path the exact terrain and decoded Cover are authenticated
+before downloading the material. The flight requests it at most once,
+while the eye is below **155 m AGL**
 and within **470 m slant distance** of an exposed dry, positive gravel
 triangle from the verified current road batch. It checks the actual
 rendered positions, including optional seated-road offsets and the
@@ -132,7 +136,12 @@ paved and bridge records remain excluded. It is a source and material
 eligibility check, not a statement about today's roads.
 
 For a quick check on the compiled build, choose **Prince County · grassland
-pass** after enabling the preview, or add
-`?gravelSurfaceStudy&departure=prince-grassland` to the game URL. The
-[compiled-bundle replay](mapped-gravel-compiled.json) loaded the material
-once during ordinary flight on that existing departure.
+pass** without a study flag. The older
+[explicit compiled-bundle replay](mapped-gravel-compiled.json) is retained as
+a comparison. The [Standard replay](gravel-standard-gate.json) checks that
+the new default works on compatible flights and leaves protected or
+deliberately unsupported scenes unchanged.
+
+[Matched Standard renders](gravel-standard-comparison.webp) show what changes in
+all three counties. Outside the exact projected gravel fragments and a
+one-pixel raster guard, **611,739** pixels were byte-identical.

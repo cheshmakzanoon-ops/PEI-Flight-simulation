@@ -4,7 +4,7 @@ import { verifyDecodedCover } from '../sim/cover-proof.ts';
 import { CANOPY_FENCE } from './canopy-fence.generated.ts';
 import { MEADOW_TILES } from './meadow-tiles.generated.ts';
 
-export function meadowStandardAtlas(terrain: Terrain, terrainSha: string | undefined, cover: Cover) {
+export function standardLandAtlasMatches(terrain: Terrain, terrainSha: string | undefined, cover: Cover) {
   const { width, height, bounds } = terrain.spec;
   return terrainSha === CANOPY_FENCE.pins.terrain && cover.sourceSha === CANOPY_FENCE.pins.cover &&
     width === 4096 && height === 2720 && cover.width === width && cover.height === height &&

@@ -235,7 +235,8 @@ def capture(a,browser,url):
   try:
    p=ctx.new_page();p.set_default_timeout(110000);errors=[];p.on('pageerror',lambda e:errors.append(str(e)))
    get,log=install(p,mode,body);opts=['diagnostics','qa='+quote(json.dumps(q))]
-   if mode!='off':opts.append('gravelSurfaceStudy')
+   if mode=='off':opts.append('stockGravelSurface')
+   elif not a.standard_coverage:opts.append('gravelSurfaceStudy')
    if mode=='detail':opts.append('scenery=detail')
    p.goto(url+'/?'+'&'.join(opts),wait_until='domcontentloaded')
    p.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch' && window.islandAirDiagnostics?.roads")
@@ -276,7 +277,7 @@ def vertical(a,browser,url,q,body):
  try:
   p=c.new_page();p.set_default_timeout(120000);err=[];p.on('pageerror',lambda e:err.append(str(e)))
   asks,_=install(p,'motion',body);q=dict(q);q['fixedEyeY']=q['fixedBaseH']+250
-  p.goto(url+'/?diagnostics&gravelSurfaceStudy&qa='+quote(json.dumps(q)),wait_until='domcontentloaded')
+  p.goto(url+'/?diagnostics'+('' if a.standard_coverage else '&gravelSurfaceStudy')+'&qa='+quote(json.dumps(q)),wait_until='domcontentloaded')
   p.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch' && window.islandAirDiagnostics?.roads")
   assert not asks,asks
   p.get_by_role('button',name='Begin flight').click()
@@ -303,7 +304,7 @@ def flight(a,browser,url,mode,body):
  try:
   p=c.new_page();p.set_default_timeout(120000);err=[];p.on('pageerror',lambda e:err.append(str(e)))
   asks,_=install(p,mode,body);active=mode=='active'
-  p.goto(url+'/?diagnostics&departure=gravel-qa-fixture'+('&gravelSurfaceStudy' if active else ''),wait_until='domcontentloaded')
+  p.goto(url+'/?diagnostics&departure=gravel-qa-fixture'+(('' if a.standard_coverage else '&gravelSurfaceStudy') if active else '&stockGravelSurface'),wait_until='domcontentloaded')
   p.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch' && window.islandAirDiagnostics?.roads && window.islandAirDiagnostics?.buildings")
   state=p.evaluate('window.islandAirDiagnostics');p.get_by_role('button',name='Begin flight').click()
   first_live=None
@@ -326,5 +327,6 @@ p.add_argument('--software-webgl',action='store_true',help='Use the SwiftShader 
 p.add_argument('--unsandboxed-in-isolated-ci',action='store_true',help='Only for disposable isolated CI that cannot initialize Chromium’s sandbox.')
 
 p.add_argument('--mode',choices=['pairs','faults','flight','motion'],default='pairs')
+p.add_argument('--standard-coverage',action='store_true',help='Use the ordinary Standard path without the explicit study flag.')
 p.add_argument('--fault-cases',help='Comma-separated subset of the listed transport controls.')
 args=p.parse_args();args.void_probe=args.mode=='flight';fixed.run(args)
