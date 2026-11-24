@@ -81,6 +81,7 @@ export const SCENERY_REVIEWS=[
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
  {flag:'miscoucheCanopyStudy',name:'Miscouche canopy',scope:'Local measured woodland density near Summerside'},
+ {flag:'regionalCanopyStudy',name:'Regional woodland canopy',scope:'Two small 2020 woodland studies in Queens and Kings counties'},
  {flag:'woodlandView',name:'Woodland scenery view',scope:'Forest ground, close bark, conifers and a down-looking camera'},
  {flag:'woodlandBark',name:'Close bark grain',scope:'Close woodland material study'},
  {flag:'woodlandCrownBase',name:'Near conifer crown shape',scope:'Stand-informed close woodland'},
@@ -102,6 +103,11 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
  return PROVINCE_FIELD_CONFLICTS.some(flag=>options.has(flag))?'terrain':undefined;
 }
 
+/** Regional canopy fill keeps the standard billboards and unaltered ground. */
+export function regionalCanopyRequested(q:URLSearchParams){
+ return q.has('regionalCanopyStudy')&&!q.has('stockRegionalCanopy')&&!sceneryReviewBlock('regionalCanopyStudy',q);
+}
+
 export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail'|'duneReliefStudy',options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='coastalOptics'){
   if(options.get('scenery')==='detail')return 'detail';
@@ -110,6 +116,12 @@ export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail'|'duneRelie
  if(flag==='nearshoreFoamStudy'||flag==='townWallStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
  if(flag==='gravelSurfaceStudy')return options.get('scenery')==='detail'?'detail':undefined;
+ if(flag==='regionalCanopyStudy'){
+  const mode=options.get('scenery');
+  if(mode&&mode!=='standard')return mode==='detail'?'detail':'terrain';
+  return ['surveyRelief','inlandRelief','woodland3D','woodlandView','woodlandBark','woodlandCrownBase','canopyLight','forestFloor',
+   'buildingShadows','seatedForestShadows','mappedLaneCanopyStudy','kingsDryCrownStudy'].some(k=>options.has(k))?'terrain':undefined;
+ }
  if(flag==='miscoucheCanopyStudy'){
   const mode=options.get('scenery');
   if(mode&&mode!=='standard')return mode==='detail'?'detail':'terrain';

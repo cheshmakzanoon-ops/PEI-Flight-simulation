@@ -97,6 +97,22 @@ export class Vegetation {
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private hedgeGround=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  crownFillMaterial():THREE.ShaderMaterial{return this.crown.material as THREE.ShaderMaterial;}
+ /** Exact ordered GPU inputs within a small signed regional proof box.
+  * No default caller; excludes the appended hedge lane and never alters a slot. */
+ get stockCanopyRevision(){return this.forestRevision;}
+ captureStockCanopy(bounds:readonly [number,number,number,number],count:number){
+  if(!Number.isSafeInteger(count)||count<1||count>1600||!this.crown.visible)return;
+  const a=this.stems.array,b=this.shapes.array,[l,t,r,d]=bounds;
+  const raw=new ArrayBuffer(count*20),out=new DataView(raw);let n=0;
+  if(!bounds.every(Number.isFinite)||l>=r||t>=d)return;
+  for(let i=0;i<this.hedgeStart;i++){
+   const x=a[i*3],z=a[i*3+2];if(x<l||x>r||z<t||z>d)continue;
+   if(n>=count)return;
+   out.setFloat32(n*20,x,true);out.setFloat32(n*20+4,z,true);
+   out.setFloat32(n*20+8,b[i*4],true);out.setFloat32(n*20+12,b[i*4+1],true);out.setFloat32(n*20+16,b[i*4+2],true);n++;
+  }
+  if(n===count)return raw;
+ }
  private fillRosterSeen=-1;private fillRosterGood=false;
  /** Pin the emitted stock slots (not just a downloaded catalogue) once per actual roster. */
  miscoucheFillRoster(){
