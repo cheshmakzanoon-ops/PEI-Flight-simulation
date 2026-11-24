@@ -1,0 +1,610 @@
+{
+  "driver": {
+    "EGL": "1.5",
+    "driver": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "GL": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+    "samples": 4
+  },
+  "pairs": [
+    {
+      "view": "kings-shore-15",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "19-12",
+        "19-13",
+        "20-12",
+        "20-13",
+        "20-14",
+        "21-12",
+        "21-13",
+        "21-14",
+        "22-12",
+        "22-13",
+        "22-14",
+        "23-12"
+      ],
+      "drawsAndTriangles": {
+        "draws": 65,
+        "triangles": 155762
+      },
+      "pixelsAnyEligibleCoverage": 66914,
+      "protectedPixelsByteExact": 152029,
+      "pureWaterPixelsByteExact": 0,
+      "pureSkyPixelsByteExact": 88546,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 24499,
+      "maxRGBDelta": 14,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9396926207854989,
+          0.02855747251215324,
+          -0.34082583412205975,
+          0,
+          1.387778780781445e-17,
+          0.9965080734920564,
+          0.0834964637882955,
+          0,
+          0.3420201433267932,
+          0.0784610108835449,
+          -0.936411283213659,
+          0,
+          27853.015738048416,
+          -1467.4003694651844,
+          17333.38454771974,
+          1
+        ],
+        "position": [
+          32122.8438480168,
+          15,
+          6820.018148314436
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "kings-looking-out-36",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "19-12",
+        "19-13",
+        "20-12",
+        "20-13",
+        "20-14",
+        "21-12",
+        "21-13",
+        "21-14",
+        "22-12",
+        "22-13",
+        "22-14",
+        "23-12"
+      ],
+      "drawsAndTriangles": {
+        "draws": 21,
+        "triangles": 153988
+      },
+      "pixelsAnyEligibleCoverage": 4816,
+      "protectedPixelsByteExact": 213584,
+      "pureWaterPixelsByteExact": 32482,
+      "pureSkyPixelsByteExact": 55800,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 1594,
+      "maxRGBDelta": 18,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8749574758237842,
+          -0.1120424010880831,
+          0.4710582934823346,
+          0,
+          -2.7755575615628914e-17,
+          0.9728593949114384,
+          0.23139705644746267,
+          0,
+          -0.48419976817432714,
+          -0.20246258442232562,
+          0.851210600503166,
+          0,
+          -24788.190889778707,
+          5000.272643426571,
+          -21178.15279724112,
+          1
+        ],
+        "position": [
+          32225,
+          36,
+          7037
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "queens-orby-65",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "12-10",
+        "12-11",
+        "12-12",
+        "13-11",
+        "13-12",
+        "13-13",
+        "14-11",
+        "14-12",
+        "14-13",
+        "15-12",
+        "15-13",
+        "16-12"
+      ],
+      "drawsAndTriangles": {
+        "draws": 51,
+        "triangles": 161218
+      },
+      "pixelsAnyEligibleCoverage": 5317,
+      "protectedPixelsByteExact": 213201,
+      "pureWaterPixelsByteExact": 107041,
+      "pureSkyPixelsByteExact": 57668,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 260,
+      "maxRGBDelta": 11,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9798040587804069,
+          -0.04455058964444387,
+          0.1949339666650566,
+          0,
+          0,
+          0.9748647478024491,
+          0.22279749435769564,
+          0,
+          -0.1999600119960014,
+          0.21829788925777496,
+          -0.9551764366587773,
+          0,
+          -9454.8913465498,
+          -573.113264499677,
+          2118.4649485451687,
+          1
+        ],
+        "position": [
+          -9702.434226204547,
+          86.71923563824784,
+          258.0170296068186
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "prince-near-22",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "4-2",
+        "5-0",
+        "5-1",
+        "5-2",
+        "5-3",
+        "6-0",
+        "6-1",
+        "6-2",
+        "6-3"
+      ],
+      "drawsAndTriangles": {
+        "draws": 136,
+        "triangles": 182350
+      },
+      "pixelsAnyEligibleCoverage": 11719,
+      "protectedPixelsByteExact": 206665,
+      "pureWaterPixelsByteExact": 104402,
+      "pureSkyPixelsByteExact": 75141,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 3731,
+      "maxRGBDelta": 17,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.2986255700184753,
+          0.1446462688340432,
+          -0.9433452315263644,
+          0,
+          3.4694469519536136e-17,
+          0.9884477545529801,
+          0.15156198903145765,
+          0,
+          0.9543703520809625,
+          0.04526028536765293,
+          -0.29517577413686574,
+          0,
+          37810.61174047793,
+          11790.649428897954,
+          -77040.69488222434,
+          0.9999999999999998
+        ],
+        "position": [
+          -63090.23011389679,
+          22,
+          -59359.52174888101
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "prince-high-620",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "4-2",
+        "5-0",
+        "5-1",
+        "5-2",
+        "5-3",
+        "6-0",
+        "6-1",
+        "6-2",
+        "6-3"
+      ],
+      "drawsAndTriangles": {
+        "draws": 10,
+        "triangles": 170808
+      },
+      "pixelsAnyEligibleCoverage": 0,
+      "protectedPixelsByteExact": 219520,
+      "pureWaterPixelsByteExact": 135702,
+      "pureSkyPixelsByteExact": 0,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 0,
+      "maxRGBDelta": 0,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.8357054797012738,
+          0.4536868067055011,
+          -0.3094586121254806,
+          0,
+          0,
+          0.5634943060200035,
+          0.8261199471523699,
+          0,
+          0.5491778866608373,
+          0.6903929667257626,
+          -0.4709152793213835,
+          0,
+          -18675.68487186601,
+          70144.03423086414,
+          -48595.56294306454,
+          1
+        ],
+        "position": [
+          -62469.11054805193,
+          620,
+          -61055.0678379977
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "protected-east",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "drawsAndTriangles": {
+        "draws": 119,
+        "triangles": 210088
+      },
+      "pixelsAnyEligibleCoverage": 0,
+      "protectedPixelsByteExact": 219520,
+      "pureWaterPixelsByteExact": 126643,
+      "pureSkyPixelsByteExact": 71389,
+      "ownerEdgePixelsWithin90cmExact": 0,
+      "changedAbove2": 0,
+      "maxRGBDelta": 0,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.7164711881047885,
+          -0.11418723341828983,
+          0.6882080443732039,
+          0,
+          0,
+          0.9865131683220185,
+          0.1636819132563296,
+          0,
+          -0.6976166831546625,
+          0.11727337486202738,
+          -0.7068082617886958,
+          0,
+          71384.30935885859,
+          10152.50735833484,
+          -61506.99243548948,
+          1
+        ],
+        "position": [
+          94633.69464519394,
+          52,
+          5134.615911810995
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    },
+    {
+      "view": "mixed-ordinary-authored-edge",
+      "exactGeometry": true,
+      "clipAndActualRolePixelsExact": 219520,
+      "neutralShaderPixelsByteExact": 219520,
+      "readyIds": [
+        "0-7",
+        "0-8",
+        "0-9",
+        "1-7",
+        "1-8",
+        "1-9",
+        "2-7",
+        "2-8",
+        "2-9",
+        "3-7",
+        "3-8",
+        "3-9"
+      ],
+      "drawsAndTriangles": {
+        "draws": 50,
+        "triangles": 262344
+      },
+      "pixelsAnyEligibleCoverage": 11907,
+      "protectedPixelsByteExact": 206614,
+      "pureWaterPixelsByteExact": 109072,
+      "pureSkyPixelsByteExact": 39945,
+      "ownerEdgePixelsWithin90cmExact": 546,
+      "changedAbove2": 2958,
+      "maxRGBDelta": 20,
+      "camera": {
+        "width": 560,
+        "height": 392,
+        "proj": [
+          1.4039827957813142,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.7027888780943933,
+          0.2106442147598718,
+          -0.6794974669673325,
+          0,
+          -2.7755575615628914e-17,
+          0.9551573261744539,
+          0.2960987711140789,
+          0,
+          0.7113984768235198,
+          -0.20809492315639205,
+          0.671273945665785,
+          0,
+          70051.16224521153,
+          15119.628917429489,
+          -48881.06855379552,
+          1
+        ],
+        "position": [
+          -85630.60234925369,
+          32,
+          -13875.384346769033
+        ],
+        "logDepthBufFC": 0.10859532238103015
+      }
+    }
+  ],
+  "singleDrawSoftwareTiming": [
+    {
+      "view": "kings-shore-15",
+      "oldCandidateOwnerTriangles": 25088,
+      "alternatingRepeatsPerProgram": 30,
+      "quantiles": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "unchangedMaterialMS": [
+        4.1973559,
+        4.6903325,
+        5.43446
+      ],
+      "continuousColourMS": [
+        4.1907055,
+        4.772571999999999,
+        5.808823800000001
+      ],
+      "medianPairDeltaMS": 0.1386605000000003
+    },
+    {
+      "view": "prince-high-620",
+      "oldCandidateOwnerTriangles": 25088,
+      "alternatingRepeatsPerProgram": 30,
+      "quantiles": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "unchangedMaterialMS": [
+        1.2822698,
+        1.4270885,
+        1.7594214
+      ],
+      "continuousColourMS": [
+        1.3482983999999998,
+        1.443523,
+        1.7976340999999998
+      ],
+      "medianPairDeltaMS": 0.04226799999999997
+    }
+  ],
+  "source": "ef5aa906a4c04fd8667db4ce2749084de74fe990",
+  "comparisonMode": "Exact Three geometry/programs replayed in native GLES 4x MSAA. All current width 560, height 392.",
+  "mixedOwnerWitness": {
+    "qualifiedStations": 100,
+    "selected": {
+      "x": -85559.46250157134,
+      "z": -13945.663234578473,
+      "y": 0,
+      "a": 16.65492581741205,
+      "b": 7.034309867541083,
+      "e0": 13.112051449142996,
+      "direction": 1,
+      "owner": "1-8",
+      "neighbour": "1-9",
+      "toneHere": true,
+      "rank": 0.11205144914299581
+    },
+    "eye": [
+      -85630.60234925369,
+      32,
+      -13875.384346769033
+    ],
+    "anchor": [
+      -85559.46250157134,
+      1,
+      -13945.663234578473
+    ]
+  }
+}

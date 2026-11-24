@@ -1,3 +1,4 @@
+import {smoothShoreTone} from './shore-tone.ts';
 import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
 import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
 import type {OrthophotoSeams} from './orthophoto-seams.ts';
@@ -515,6 +516,7 @@ export class World {
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
+ readonly shoreToneGain={value:1};
  readonly meadowStrength={value:1};
  readonly gravelStrength={value:0};
  readonly trailStrength={value:0};
@@ -527,7 +529,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false){
   this.details=new DetailImagery(orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
@@ -684,9 +686,13 @@ export class World {
     const duneHere=westDuneOptics&&i===westDuneOptics.tile[0]&&j===westDuneOptics.tile[1]?westDuneOptics:undefined;
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
-    const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    // Preserve the independently reviewed site materials as a whole.
+    const tone=shoreTone&&!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&
+       !bowleyLocal&&!sourisLocal&&!hasCape&&!localSand&&!localRusticoSoil&&!duneSandHere&&!grassCoastHere&&!showLocalFloor;
+    const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'');
+    const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(tone?{shoreToneGain:this.shoreToneGain}:{}),...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'')});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:smoothShoreTone(landFragment,tone)});
     orthoSeams?.bind(i+'-'+j,local);
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.

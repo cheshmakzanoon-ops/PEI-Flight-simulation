@@ -1,3 +1,4 @@
+import {shoreToneRequested} from './render/shore-tone.ts';
 import {stDavidsRequested,stDavidsGround} from './render/st-davids/admit.ts';
 import {ST_DAVIDS} from './render/st-davids/source.generated.ts';
 import {railRequested,railGround} from './render/summerside-station/admit.ts';
@@ -227,7 +228,7 @@ async function run(){
  const ortho=orthoModule?.seamOptions(options)&&[-64.47,45.94,-61.93,47.10].every((v,i)=>terrain.spec.bounds[i]===v)?
    new orthoModule.OrthophotoSeams(renderer,img):undefined;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
-   showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),options.has('shoreFoamDetail'),options.has('northCapeWind'),bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,options.has('orbyCoastClosure'),ortho);
+   showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),options.has('shoreFoamDetail'),options.has('northCapeWind'),bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,options.has('orbyCoastClosure'),ortho,shoreToneRequested(options));
  const rustico=rusticoCohort?.art(scene,world);
  let tuftsModule:typeof import('./render/dry-coast/tussocks.ts')|undefined;
  let tuftsJob:Promise<void>|undefined,tuftBuild=false;
