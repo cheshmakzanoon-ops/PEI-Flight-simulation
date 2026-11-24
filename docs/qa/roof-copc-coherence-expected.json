@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "atlasSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "fixtureSHA256": "20d67421825e085602aa2dbdcb089eb9010073f5661c34a098ab79999621cc9e",
+  "coverage": "Reference outcomes from bounded NRCan 2020 raw point windows, deterministically rebuilt from previously range-read and hashed local projections. No raw point rows or owner transfer.",
+  "rows": [
+    {
+      "owner": [
+        "q120010",
+        152
+      ],
+      "classCounts": {
+        "1": 2952,
+        "2": 1941,
+        "6": 2368
+      },
+      "admittedClass6Count": 1739,
+      "completeNativeCells": 248,
+      "cellsWithAtLeast3Raw": 246,
+      "perPlane": [
+        {
+          "count": 874,
+          "absP50_90_95_maxM": [
+            0.140418,
+            0.321454,
+            0.350052,
+            1.043314
+          ]
+        },
+        {
+          "count": 865,
+          "absP50_90_95_maxM": [
+            0.133107,
+            0.290489,
+            0.316866,
+            0.774595
+          ]
+        }
+      ],
+      "signedResidual1mCellComponents": [],
+      "screenResult": "no coherent interior contradiction at this threshold"
+    },
+    {
+      "owner": [
+        "q130331",
+        180
+      ],
+      "classCounts": {
+        "1": 5316,
+        "2": 2141,
+        "6": 5783
+      },
+      "admittedClass6Count": 4583,
+      "completeNativeCells": 349,
+      "cellsWithAtLeast3Raw": 349,
+      "perPlane": [
+        {
+          "count": 2296,
+          "absP50_90_95_maxM": [
+            0.165216,
+            0.241893,
+            0.25952,
+            2.507291
+          ]
+        },
+        {
+          "count": 2287,
+          "absP50_90_95_maxM": [
+            0.193488,
+            0.28449,
+            0.304288,
+            0.375845
+          ]
+        }
+      ],
+      "signedResidual1mCellComponents": [
+        [
+          [
+            2437090,
+            345853,
+            -1.486057,
+            6
+          ],
+          [
+            2437090,
+            345854,
+            -1.778526,
+            5
+          ]
+        ]
+      ],
+      "screenResult": "hold coherent contradictory interior"
+    },
+    {
+      "owner": [
+        "q130331",
+        98
+      ],
+      "classCounts": {
+        "1": 1459,
+        "2": 985,
+        "6": 2090
+      },
+      "admittedClass6Count": 1482,
+      "completeNativeCells": 206,
+      "cellsWithAtLeast3Raw": 206,
+      "perPlane": [
+        {
+          "count": 747,
+          "absP50_90_95_maxM": [
+            0.092862,
+            0.162479,
+            0.176628,
+            0.216421
+          ]
+        },
+        {
+          "count": 735,
+          "absP50_90_95_maxM": [
+            0.092231,
+            0.342431,
+            1.092085,
+            2.114918
+          ]
+        }
+      ],
+      "signedResidual1mCellComponents": [
+        [
+          [
+            2437136,
+            345928,
+            -0.527146,
+            7
+          ],
+          [
+            2437136,
+            345929,
+            -0.825337,
+            7
+          ],
+          [
+            2437136,
+            345930,
+            -1.267539,
+            5
+          ],
+          [
+            2437136,
+            345931,
+            -1.441678,
+            6
+          ],
+          [
+            2437136,
+            345932,
+            -1.867611,
+            8
+          ],
+          [
+            2437137,
+            345929,
+            -0.631546,
+            8
+          ],
+          [
+            2437137,
+            345930,
+            -0.957309,
+            7
+          ],
+          [
+            2437137,
+            345931,
+            -1.141304,
+            8
+          ],
+          [
+            2437137,
+            345932,
+            -1.426703,
+            8
+          ]
+        ]
+      ],
+      "screenResult": "hold coherent contradictory interior"
+    },
+    {
+      "owner": [
+        "q130331",
+        167
+      ],
+      "classCounts": {
+        "1": 1855,
+        "2": 2065,
+        "6": 2188
+      },
+      "admittedClass6Count": 1704,
+      "completeNativeCells": 259,
+      "cellsWithAtLeast3Raw": 258,
+      "perPlane": [
+        {
+          "count": 840,
+          "absP50_90_95_maxM": [
+            0.227802,
+            0.319257,
+            0.675746,
+            1.634381
+          ]
+        },
+        {
+          "count": 864,
+          "absP50_90_95_maxM": [
+            0.080444,
+            0.188688,
+            0.212341,
+            0.277643
+          ]
+        }
+      ],
+      "signedResidual1mCellComponents": [
+        [
+          [
+            2437068,
+            346001,
+            0.541849,
+            8
+          ],
+          [
+            2437069,
+            346001,
+            0.506745,
+            7
+          ],
+          [
+            2437069,
+            346002,
+            0.856015,
+            5
+          ],
+          [
+            2437069,
+            346003,
+            1.235716,
+            9
+          ],
+          [
+            2437070,
+            346002,
+            0.679077,
+            6
+          ],
+          [
+            2437070,
+            346003,
+            1.146756,
+            6
+          ],
+          [
+            2437071,
+            346002,
+            0.420652,
+            6
+          ],
+          [
+            2437071,
+            346003,
+            0.902988,
+            4
+          ],
+          [
+            2437072,
+            346002,
+            0.426162,
+            6
+          ]
+        ]
+      ],
+      "screenResult": "hold coherent contradictory interior"
+    }
+  ]
+}

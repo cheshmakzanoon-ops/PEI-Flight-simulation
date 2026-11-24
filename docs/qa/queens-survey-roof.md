@@ -59,6 +59,8 @@ node --experimental-strip-types tools/qa/kings-roof-rays.cjs \
   /path/to/before . "$scratch/held.json" "$scratch/rays.json"
 ```
 
+[Reproduce the raw point-cloud cross-check](roof-copc-coherence.md) with the named, version-pinned source objects.
+
 The historical QA command name is retained; it accepts this exact Queens
 owner fixture. The [machine-readable receipt](queens-survey-roof-gate.json)
 records the bounded raster window, raw source tile, tested roof coefficients

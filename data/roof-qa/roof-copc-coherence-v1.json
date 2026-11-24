@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "expectedPointObjects": {
+    "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_390000_688000.copc.laz": {
+      "sourceObjectBytes": 48962513,
+      "etag": "\"0b7526035272de4dee33b9aee1675a35-6\"",
+      "objectLastModified": "Wed, 15 Oct 2025 13:00:55 GMT"
+    },
+    "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_700000.copc.laz": {
+      "sourceObjectBytes": 35814087,
+      "etag": "\"a1a5f35aab8ff44a228e91b462fd6efc-5\"",
+      "objectLastModified": "Wed, 15 Oct 2025 13:15:23 GMT"
+    }
+  },
+  "sampleRoles": "q120010/152 retained B; q130331/98, /167 and /180 are deliberately withheld whole-gable challenge models, not production replacements",
+  "atlasSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "nativeHorizontalWKT": "PROJCS[\"NAD83(CSRS) / UTM zone 20N\",GEOGCS[\"NAD83(CSRS)\",DATUM[\"NAD83_Canadian_Spatial_Reference_System\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6140\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4617\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-63],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"2961\"]]",
+  "footprintDescription": "Exact ordered q row from current AEB atlas",
+  "lidarIndexPinnedZipSHA256": "2bbff163e954debcbc42800203b2aa77bc93a7fac1f2f1df83493bca28f19876",
+  "sourceChronology": "2020-09-15 HRDEM project catalog time; not individual flight provenance or present-day evidence",
+  "rows": [
+    {
+      "owner": [
+        "q120010",
+        152
+      ],
+      "ownerChunkSHA256": "d06f88504309e7251d901e1ae2213cf2bb42fb57fd3a82e29ac5e9e1793c1e34",
+      "outlineWGS84": [
+        [
+          -63.120106,
+          46.245375
+        ],
+        [
+          -63.120121,
+          46.245379
+        ],
+        [
+          -63.120061,
+          46.245506
+        ],
+        [
+          -63.120074,
+          46.245509
+        ],
+        [
+          -63.120054,
+          46.245549
+        ],
+        [
+          -63.119928,
+          46.245526
+        ],
+        [
+          -63.119955,
+          46.245463
+        ],
+        [
+          -63.119944,
+          46.245461
+        ],
+        [
+          -63.12002,
+          46.245303
+        ],
+        [
+          -63.120004,
+          46.2453
+        ],
+        [
+          -63.120024,
+          46.245259
+        ],
+        [
+          -63.120153,
+          46.245281
+        ]
+      ],
+      "absolutePlanesGameXZ": [
+        [
+          13.346977012944135,
+          0.33065240389687595,
+          0.09784589040132108
+        ],
+        [
+          13.364576027738227,
+          -0.3158828154793274,
+          -0.09347530814471425
+        ]
+      ],
+      "copcURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_390000_688000.copc.laz",
+      "privateWindowFile": "queens-152-raw-check.npz",
+      "privateWindowSHA256": "91288aef2a8927cd424bb4ef1754f2e96ec84d3fcd65bd4c22fdef6621bc69f1"
+    },
+    {
+      "owner": [
+        "q130331",
+        180
+      ],
+      "ownerChunkSHA256": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55",
+      "outlineWGS84": [
+        [
+          -62.255706,
+          46.354934
+        ],
+        [
+          -62.255843,
+          46.354689
+        ],
+        [
+          -62.256009,
+          46.354735
+        ],
+        [
+          -62.25589,
+          46.354939
+        ],
+        [
+          -62.255915,
+          46.354946
+        ],
+        [
+          -62.255901,
+          46.35497
+        ],
+        [
+          -62.25588,
+          46.354964
+        ],
+        [
+          -62.255872,
+          46.354977
+        ]
+      ],
+      "absolutePlanesGameXZ": [
+        [
+          18.88438460945984,
+          0.5053079715137999,
+          0.19512313141178522
+        ],
+        [
+          23.134698454212163,
+          -0.4985942498611755,
+          -0.1925306482804333
+        ]
+      ],
+      "copcURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_700000.copc.laz",
+      "privateWindowFile": "souris-180-raw-check.npz",
+      "privateWindowSHA256": "8381adbfb7040da7c0fcb555b9eec8403fcf601417b39f5bf19d5464bd15fa37"
+    },
+    {
+      "owner": [
+        "q130331",
+        98
+      ],
+      "ownerChunkSHA256": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55",
+      "outlineWGS84": [
+        [
+          -62.255084,
+          46.355487
+        ],
+        [
+          -62.254855,
+          46.355424
+        ],
+        [
+          -62.25488,
+          46.355374
+        ],
+        [
+          -62.254848,
+          46.355366
+        ],
+        [
+          -62.25488,
+          46.35531
+        ],
+        [
+          -62.25513,
+          46.355381
+        ]
+      ],
+      "absolutePlanesGameXZ": [
+        [
+          19.500244238566523,
+          -0.12028616439210676,
+          0.29246466611680433
+        ],
+        [
+          19.579883466711323,
+          0.11833375086020335,
+          -0.2877175534740844
+        ]
+      ],
+      "copcURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_700000.copc.laz",
+      "privateWindowFile": "souris-98-raw-check.npz",
+      "privateWindowSHA256": "0eed95b141adccb993468a0a1c635b2d3935c685023a49ddc41f66e4ccd6f68d"
+    },
+    {
+      "owner": [
+        "q130331",
+        167
+      ],
+      "ownerChunkSHA256": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55",
+      "outlineWGS84": [
+        [
+          -62.255394,
+          46.356276
+        ],
+        [
+          -62.255369,
+          46.356255
+        ],
+        [
+          -62.255275,
+          46.356307
+        ],
+        [
+          -62.255123,
+          46.356176
+        ],
+        [
+          -62.255277,
+          46.35609
+        ],
+        [
+          -62.255454,
+          46.356242
+        ]
+      ],
+      "absolutePlanesGameXZ": [
+        [
+          22.702110214863293,
+          -0.2342224292342987,
+          0.1925623512808633
+        ],
+        [
+          22.423534938858992,
+          0.2162065184172822,
+          -0.17775084856213466
+        ]
+      ],
+      "copcURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_700000.copc.laz",
+      "privateWindowFile": "souris-167-raw-check.npz",
+      "privateWindowSHA256": "14496767cdb839fac203a58b992eb4325d70d18711163826e5b952e2db3c8322"
+    }
+  ]
+}

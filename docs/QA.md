@@ -71,6 +71,7 @@ the original Cavendish coastal overdraw case after two relocations.
 ## Coastal terrain and materials
 
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [Raw LiDAR roof check](qa/roof-copc-coherence.md): a bounded source check for secondary roof features that raster holdouts can miss.
 - [Charlottetown measured roof](qa/queens-survey-roof.md): original LiDAR points, blocked raster cells, wall seating and an in-game comparison.
 - [Town façade fit](qa/town-wall-study.md): existing wall spans, window margins, neutral rendering and unchanged stock geometry.
 - [East Point sandstone](qa/east-sandstone.md): matched terrain materials, a licensed reference and a West Point control.
