@@ -63,6 +63,7 @@ import { eastSandstoneGLSL } from './east-sandstone.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
 import { shoreFoamGLSL,brokenShoreFoamGLSL } from './shore-foam.ts';
+import {nearshoreFoamGLSL,nearshoreFoamRouterGLSL,nearshoreFoamMatches} from './nearshore-foam.ts';
 import {BuildingShadows,buildingShadowGLSL} from './local-building-shadows.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
@@ -132,7 +133,10 @@ const skyFrag=skyFn+`
   if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
   vec3 c=skyAt(normalize(skyRay));
   gl_FragColor=vec4(c,1.);`+out;
-const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false,baywalk=false)=>fp+skyFn+shoreFoamGLSL+(foamDetail?brokenShoreFoamGLSL:'')+(baywalk?baywalkLandGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+`
+const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false,baywalk=false,nearshoreFoam=false)=>{
+ const foam=nearshoreFoam?'chooseNearshoreFoam(q,uv,shore,t,dist,n,foamFootprint,foamPixelM,foamDX,foamDY,extent.zw,coverMap)':
+  foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)';
+ return fp+skyFn+shoreFoamGLSL+(foamDetail||nearshoreFoam?brokenShoreFoamGLSL:'')+(baywalk?baywalkLandGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(nearshoreFoam?nearshoreFoamGLSL+nearshoreFoamRouterGLSL(foamDetail):'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
@@ -183,6 +187,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  // foam field. Derivatives are evaluated before discard and the coastal branch.
  float foamPixelM=length(fwidth(q));
  float foamFootprint=.69*fwidth(shore)+.42*foamPixelM;
+ ${nearshoreFoam?'vec2 foamDX=dFdx(q),foamDY=dFdy(q);':''}
  if(shore>=0.)discard;
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
@@ -212,19 +217,20 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  // in the basin interior. Derivatives of the original phase stay intact.
  float foam=0.;
  if(shelter<.999){
-  foam=${foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)'};
+  foam=${foam};
   if(shelter>0.){
    // Ocean breaker bands fade well before the stronger basin tint and
    // ripple change. A narrow unsupported bank keeps its former optics.
    float gain=1.-smoothstep(0.,.22,shelter);foam*=gain*gain;
   }
  }
- `:`float foam=${foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)'};`}
+ `:`float foam=${foam};`}
  ${harbour?`if(marinaCalm>0.)foam*=1.-smoothstep(0.,.23,marinaCalm);`:''}
  ${basin?'foam*=1.-.86*basinShelter;':''}
  ${montagueOptics?'if(riverCalm>0.)foam*=1.-smoothstep(0.,.255,riverCalm);':''}
  c=mix(c,vec3(.49,.58,.56),foam);
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
+};
 const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+
   (baywalk?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+`
  ${baywalk?'uniform sampler2D coverMap;uniform vec4 extent;':''}
@@ -517,6 +523,8 @@ export class World {
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
  readonly shoreToneGain={value:1};
+ readonly nearshoreFoamMode={value:0};
+ readonly nearshoreFoamArmed:boolean;
  readonly meadowStrength={value:1};
  readonly gravelStrength={value:0};
  readonly trailStrength={value:0};
@@ -529,7 +537,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false){
   this.details=new DetailImagery(orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
@@ -594,9 +602,12 @@ export class World {
    const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
    const pondsWithUniforms=ponds.map(pond=>({pond,surfaceUniforms:{...bowleyUniforms(pond),
      bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}}));
-   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk));
+   this.nearshoreFoamArmed=nearshoreFoam&&nearshoreFoamMatches(cover)&&[-64.47,45.94,-61.93,47.1].every((n,i)=>T.spec.bounds[i]===n);
+   this.nearshoreFoamMode.value=this.nearshoreFoamArmed?2:foamDetail?1:0;
+   const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk,this.nearshoreFoamArmed));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague||cover.baywalk)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms,...northCourtUniforms};
+   if(this.nearshoreFoamArmed)oceanMaterial.uniforms={...oceanMaterial.uniforms,nearshoreFoamMode:this.nearshoreFoamMode};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
     const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;

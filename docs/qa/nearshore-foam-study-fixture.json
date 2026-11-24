@@ -1,0 +1,1397 @@
+{
+  "base": "d511a72f9c849b5a2cc316335226f1ecfb4fc330",
+  "mesaSourceBase": "ef5aa906a4c04fd8667db4ce2749084de74fe990",
+  "coverSHA256Decoded": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "nativeRenderer": {
+    "EGL": "1.5",
+    "driver": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "GL": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+    "samples": 4
+  },
+  "nativeFrameSize": [
+    560,
+    392
+  ],
+  "modeOrder": [
+    "stock",
+    "existing broken",
+    "study"
+  ],
+  "nativeNotes": "Actual Three-composed stock meshes/materials and registered textures, EGL/llvmpipe (software). Includes terrain, ocean, walls and sky; not the app.",
+  "native": {
+    "author-basin": {
+      "submitted": {
+        "draws": 202,
+        "triangles": 239010
+      },
+      "imagery": [
+        "27-13",
+        "28-12",
+        "28-13",
+        "28-14",
+        "29-11",
+        "29-12",
+        "29-13",
+        "30-11",
+        "30-12",
+        "30-13",
+        "31-12"
+      ],
+      "pureWater": 51916,
+      "protectedSamplePixels": 219520,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 0,
+      "above2ChangesVsBroken": 0,
+      "above2ChangesVsStock": 44830,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 21471,
+            "pctOfPureWater": 41.3572,
+            "widestAlphaGE08Px": 512
+          },
+          {
+            "countAlphaGE08": 891,
+            "pctOfPureWater": 1.7162,
+            "widestAlphaGE08Px": 68
+          },
+          {
+            "countAlphaGE08": 891,
+            "pctOfPureWater": 1.7162,
+            "widestAlphaGE08Px": 68
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 21651,
+            "pctOfPureWater": 41.7039,
+            "widestAlphaGE08Px": 518
+          },
+          {
+            "countAlphaGE08": 1596,
+            "pctOfPureWater": 3.0742,
+            "widestAlphaGE08Px": 104
+          },
+          {
+            "countAlphaGE08": 1596,
+            "pctOfPureWater": 3.0742,
+            "widestAlphaGE08Px": 104
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 21545,
+            "pctOfPureWater": 41.4997,
+            "widestAlphaGE08Px": 518
+          },
+          {
+            "countAlphaGE08": 3895,
+            "pctOfPureWater": 7.5025,
+            "widestAlphaGE08Px": 150
+          },
+          {
+            "countAlphaGE08": 3895,
+            "pctOfPureWater": 7.5025,
+            "widestAlphaGE08Px": 150
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 21706,
+            "pctOfPureWater": 41.8098,
+            "widestAlphaGE08Px": 443
+          },
+          {
+            "countAlphaGE08": 6418,
+            "pctOfPureWater": 12.3623,
+            "widestAlphaGE08Px": 115
+          },
+          {
+            "countAlphaGE08": 6418,
+            "pctOfPureWater": 12.3623,
+            "widestAlphaGE08Px": 115
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 24065,
+            "pctOfPureWater": 46.3537,
+            "widestAlphaGE08Px": 523
+          },
+          {
+            "countAlphaGE08": 6034,
+            "pctOfPureWater": 11.6226,
+            "widestAlphaGE08Px": 173
+          },
+          {
+            "countAlphaGE08": 6034,
+            "pctOfPureWater": 11.6226,
+            "widestAlphaGE08Px": 173
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 21370,
+            "pctOfPureWater": 41.1626,
+            "widestAlphaGE08Px": 290
+          },
+          {
+            "countAlphaGE08": 2216,
+            "pctOfPureWater": 4.2684,
+            "widestAlphaGE08Px": 93
+          },
+          {
+            "countAlphaGE08": 2216,
+            "pctOfPureWater": 4.2684,
+            "widestAlphaGE08Px": 93
+          }
+        ]
+      }
+    },
+    "author-queens": {
+      "submitted": {
+        "draws": 127,
+        "triangles": 209368
+      },
+      "imagery": [
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "pureWater": 90920,
+      "protectedSamplePixels": 219520,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 0,
+      "above2ChangesVsBroken": 0,
+      "above2ChangesVsStock": 50046,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 10986,
+            "pctOfPureWater": 12.0832,
+            "widestAlphaGE08Px": 147
+          },
+          {
+            "countAlphaGE08": 3484,
+            "pctOfPureWater": 3.8319,
+            "widestAlphaGE08Px": 77
+          },
+          {
+            "countAlphaGE08": 3484,
+            "pctOfPureWater": 3.8319,
+            "widestAlphaGE08Px": 77
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 9160,
+            "pctOfPureWater": 10.0748,
+            "widestAlphaGE08Px": 147
+          },
+          {
+            "countAlphaGE08": 4129,
+            "pctOfPureWater": 4.5414,
+            "widestAlphaGE08Px": 83
+          },
+          {
+            "countAlphaGE08": 4129,
+            "pctOfPureWater": 4.5414,
+            "widestAlphaGE08Px": 83
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 9136,
+            "pctOfPureWater": 10.0484,
+            "widestAlphaGE08Px": 172
+          },
+          {
+            "countAlphaGE08": 4355,
+            "pctOfPureWater": 4.7899,
+            "widestAlphaGE08Px": 89
+          },
+          {
+            "countAlphaGE08": 4355,
+            "pctOfPureWater": 4.7899,
+            "widestAlphaGE08Px": 89
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 10532,
+            "pctOfPureWater": 11.5838,
+            "widestAlphaGE08Px": 129
+          },
+          {
+            "countAlphaGE08": 4461,
+            "pctOfPureWater": 4.9065,
+            "widestAlphaGE08Px": 101
+          },
+          {
+            "countAlphaGE08": 4461,
+            "pctOfPureWater": 4.9065,
+            "widestAlphaGE08Px": 101
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 10381,
+            "pctOfPureWater": 11.4177,
+            "widestAlphaGE08Px": 312
+          },
+          {
+            "countAlphaGE08": 4238,
+            "pctOfPureWater": 4.6612,
+            "widestAlphaGE08Px": 74
+          },
+          {
+            "countAlphaGE08": 4238,
+            "pctOfPureWater": 4.6612,
+            "widestAlphaGE08Px": 74
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 17495,
+            "pctOfPureWater": 19.2422,
+            "widestAlphaGE08Px": 194
+          },
+          {
+            "countAlphaGE08": 15163,
+            "pctOfPureWater": 16.6773,
+            "widestAlphaGE08Px": 220
+          },
+          {
+            "countAlphaGE08": 15163,
+            "pctOfPureWater": 16.6773,
+            "widestAlphaGE08Px": 220
+          }
+        ]
+      }
+    },
+    "kings-air-52": {
+      "submitted": {
+        "draws": 66,
+        "triangles": 155660
+      },
+      "imagery": [
+        "19-12",
+        "19-13",
+        "20-12",
+        "20-13",
+        "20-14",
+        "21-12",
+        "21-13",
+        "21-14",
+        "22-12",
+        "22-13",
+        "22-14",
+        "23-12"
+      ],
+      "pureWater": 98195,
+      "protectedSamplePixels": 192865,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 81,
+      "above2ChangesVsBroken": 6657,
+      "above2ChangesVsStock": 7483,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 2095,
+            "pctOfPureWater": 2.1335,
+            "widestAlphaGE08Px": 92
+          },
+          {
+            "countAlphaGE08": 627,
+            "pctOfPureWater": 0.6385,
+            "widestAlphaGE08Px": 29
+          },
+          {
+            "countAlphaGE08": 629,
+            "pctOfPureWater": 0.6406,
+            "widestAlphaGE08Px": 29
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 2125,
+            "pctOfPureWater": 2.1641,
+            "widestAlphaGE08Px": 104
+          },
+          {
+            "countAlphaGE08": 562,
+            "pctOfPureWater": 0.5723,
+            "widestAlphaGE08Px": 31
+          },
+          {
+            "countAlphaGE08": 667,
+            "pctOfPureWater": 0.6793,
+            "widestAlphaGE08Px": 28
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 1983,
+            "pctOfPureWater": 2.0195,
+            "widestAlphaGE08Px": 73
+          },
+          {
+            "countAlphaGE08": 442,
+            "pctOfPureWater": 0.4501,
+            "widestAlphaGE08Px": 31
+          },
+          {
+            "countAlphaGE08": 646,
+            "pctOfPureWater": 0.6579,
+            "widestAlphaGE08Px": 29
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 2033,
+            "pctOfPureWater": 2.0704,
+            "widestAlphaGE08Px": 79
+          },
+          {
+            "countAlphaGE08": 529,
+            "pctOfPureWater": 0.5387,
+            "widestAlphaGE08Px": 34
+          },
+          {
+            "countAlphaGE08": 626,
+            "pctOfPureWater": 0.6375,
+            "widestAlphaGE08Px": 28
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 2016,
+            "pctOfPureWater": 2.0531,
+            "widestAlphaGE08Px": 72
+          },
+          {
+            "countAlphaGE08": 458,
+            "pctOfPureWater": 0.4664,
+            "widestAlphaGE08Px": 22
+          },
+          {
+            "countAlphaGE08": 646,
+            "pctOfPureWater": 0.6579,
+            "widestAlphaGE08Px": 28
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 1910,
+            "pctOfPureWater": 1.9451,
+            "widestAlphaGE08Px": 80
+          },
+          {
+            "countAlphaGE08": 285,
+            "pctOfPureWater": 0.2902,
+            "widestAlphaGE08Px": 22
+          },
+          {
+            "countAlphaGE08": 633,
+            "pctOfPureWater": 0.6446,
+            "widestAlphaGE08Px": 27
+          }
+        ]
+      }
+    },
+    "kings-close": {
+      "submitted": {
+        "draws": 78,
+        "triangles": 179968
+      },
+      "imagery": [
+        "19-12",
+        "19-13",
+        "20-12",
+        "20-13",
+        "20-14",
+        "21-12",
+        "21-13",
+        "21-14",
+        "22-12",
+        "22-13",
+        "22-14",
+        "23-12"
+      ],
+      "pureWater": 104261,
+      "protectedSamplePixels": 189181,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 91,
+      "above2ChangesVsBroken": 6057,
+      "above2ChangesVsStock": 5123,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 1106,
+            "pctOfPureWater": 1.0608,
+            "widestAlphaGE08Px": 142
+          },
+          {
+            "countAlphaGE08": 726,
+            "pctOfPureWater": 0.6963,
+            "widestAlphaGE08Px": 80
+          },
+          {
+            "countAlphaGE08": 689,
+            "pctOfPureWater": 0.6608,
+            "widestAlphaGE08Px": 72
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 1091,
+            "pctOfPureWater": 1.0464,
+            "widestAlphaGE08Px": 139
+          },
+          {
+            "countAlphaGE08": 749,
+            "pctOfPureWater": 0.7184,
+            "widestAlphaGE08Px": 89
+          },
+          {
+            "countAlphaGE08": 713,
+            "pctOfPureWater": 0.6839,
+            "widestAlphaGE08Px": 72
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 1137,
+            "pctOfPureWater": 1.0905,
+            "widestAlphaGE08Px": 137
+          },
+          {
+            "countAlphaGE08": 526,
+            "pctOfPureWater": 0.5045,
+            "widestAlphaGE08Px": 88
+          },
+          {
+            "countAlphaGE08": 697,
+            "pctOfPureWater": 0.6685,
+            "widestAlphaGE08Px": 72
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 1230,
+            "pctOfPureWater": 1.1797,
+            "widestAlphaGE08Px": 140
+          },
+          {
+            "countAlphaGE08": 327,
+            "pctOfPureWater": 0.3136,
+            "widestAlphaGE08Px": 46
+          },
+          {
+            "countAlphaGE08": 705,
+            "pctOfPureWater": 0.6762,
+            "widestAlphaGE08Px": 72
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 1356,
+            "pctOfPureWater": 1.3006,
+            "widestAlphaGE08Px": 148
+          },
+          {
+            "countAlphaGE08": 557,
+            "pctOfPureWater": 0.5342,
+            "widestAlphaGE08Px": 62
+          },
+          {
+            "countAlphaGE08": 705,
+            "pctOfPureWater": 0.6762,
+            "widestAlphaGE08Px": 71
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 1364,
+            "pctOfPureWater": 1.3083,
+            "widestAlphaGE08Px": 163
+          },
+          {
+            "countAlphaGE08": 111,
+            "pctOfPureWater": 0.1065,
+            "widestAlphaGE08Px": 24
+          },
+          {
+            "countAlphaGE08": 682,
+            "pctOfPureWater": 0.6541,
+            "widestAlphaGE08Px": 70
+          }
+        ]
+      }
+    },
+    "prince-air-49": {
+      "submitted": {
+        "draws": 64,
+        "triangles": 194770
+      },
+      "imagery": [
+        "4-2",
+        "4-3",
+        "4-4",
+        "5-1",
+        "5-2",
+        "5-3",
+        "5-4",
+        "5-5",
+        "6-1",
+        "6-2",
+        "6-3",
+        "6-4"
+      ],
+      "pureWater": 103600,
+      "protectedSamplePixels": 186303,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 96,
+      "above2ChangesVsBroken": 7163,
+      "above2ChangesVsStock": 10284,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 2685,
+            "pctOfPureWater": 2.5917,
+            "widestAlphaGE08Px": 113
+          },
+          {
+            "countAlphaGE08": 195,
+            "pctOfPureWater": 0.1882,
+            "widestAlphaGE08Px": 13
+          },
+          {
+            "countAlphaGE08": 1003,
+            "pctOfPureWater": 0.9681,
+            "widestAlphaGE08Px": 31
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 2733,
+            "pctOfPureWater": 2.638,
+            "widestAlphaGE08Px": 113
+          },
+          {
+            "countAlphaGE08": 243,
+            "pctOfPureWater": 0.2346,
+            "widestAlphaGE08Px": 18
+          },
+          {
+            "countAlphaGE08": 1014,
+            "pctOfPureWater": 0.9788,
+            "widestAlphaGE08Px": 32
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 2619,
+            "pctOfPureWater": 2.528,
+            "widestAlphaGE08Px": 100
+          },
+          {
+            "countAlphaGE08": 240,
+            "pctOfPureWater": 0.2317,
+            "widestAlphaGE08Px": 25
+          },
+          {
+            "countAlphaGE08": 1005,
+            "pctOfPureWater": 0.9701,
+            "widestAlphaGE08Px": 32
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 2666,
+            "pctOfPureWater": 2.5734,
+            "widestAlphaGE08Px": 109
+          },
+          {
+            "countAlphaGE08": 200,
+            "pctOfPureWater": 0.1931,
+            "widestAlphaGE08Px": 13
+          },
+          {
+            "countAlphaGE08": 999,
+            "pctOfPureWater": 0.9643,
+            "widestAlphaGE08Px": 35
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 2786,
+            "pctOfPureWater": 2.6892,
+            "widestAlphaGE08Px": 203
+          },
+          {
+            "countAlphaGE08": 178,
+            "pctOfPureWater": 0.1718,
+            "widestAlphaGE08Px": 11
+          },
+          {
+            "countAlphaGE08": 964,
+            "pctOfPureWater": 0.9305,
+            "widestAlphaGE08Px": 36
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 2797,
+            "pctOfPureWater": 2.6998,
+            "widestAlphaGE08Px": 107
+          },
+          {
+            "countAlphaGE08": 145,
+            "pctOfPureWater": 0.14,
+            "widestAlphaGE08Px": 8
+          },
+          {
+            "countAlphaGE08": 867,
+            "pctOfPureWater": 0.8369,
+            "widestAlphaGE08Px": 36
+          }
+        ]
+      }
+    },
+    "prince-close": {
+      "submitted": {
+        "draws": 37,
+        "triangles": 192500
+      },
+      "imagery": [
+        "4-2",
+        "4-3",
+        "4-4",
+        "5-1",
+        "5-2",
+        "5-3",
+        "5-4",
+        "5-5",
+        "6-1",
+        "6-2",
+        "6-3",
+        "6-4"
+      ],
+      "pureWater": 92487,
+      "protectedSamplePixels": 156899,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 109,
+      "above2ChangesVsBroken": 9438,
+      "above2ChangesVsStock": 24845,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 7183,
+            "pctOfPureWater": 7.7665,
+            "widestAlphaGE08Px": 258
+          },
+          {
+            "countAlphaGE08": 198,
+            "pctOfPureWater": 0.2141,
+            "widestAlphaGE08Px": 22
+          },
+          {
+            "countAlphaGE08": 1862,
+            "pctOfPureWater": 2.0133,
+            "widestAlphaGE08Px": 58
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 7691,
+            "pctOfPureWater": 8.3158,
+            "widestAlphaGE08Px": 279
+          },
+          {
+            "countAlphaGE08": 231,
+            "pctOfPureWater": 0.2498,
+            "widestAlphaGE08Px": 39
+          },
+          {
+            "countAlphaGE08": 1812,
+            "pctOfPureWater": 1.9592,
+            "widestAlphaGE08Px": 57
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 7065,
+            "pctOfPureWater": 7.6389,
+            "widestAlphaGE08Px": 223
+          },
+          {
+            "countAlphaGE08": 243,
+            "pctOfPureWater": 0.2627,
+            "widestAlphaGE08Px": 55
+          },
+          {
+            "countAlphaGE08": 1829,
+            "pctOfPureWater": 1.9776,
+            "widestAlphaGE08Px": 57
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 7096,
+            "pctOfPureWater": 7.6724,
+            "widestAlphaGE08Px": 305
+          },
+          {
+            "countAlphaGE08": 268,
+            "pctOfPureWater": 0.2898,
+            "widestAlphaGE08Px": 45
+          },
+          {
+            "countAlphaGE08": 1716,
+            "pctOfPureWater": 1.8554,
+            "widestAlphaGE08Px": 56
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 7743,
+            "pctOfPureWater": 8.372,
+            "widestAlphaGE08Px": 386
+          },
+          {
+            "countAlphaGE08": 91,
+            "pctOfPureWater": 0.0984,
+            "widestAlphaGE08Px": 17
+          },
+          {
+            "countAlphaGE08": 1666,
+            "pctOfPureWater": 1.8013,
+            "widestAlphaGE08Px": 56
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 7587,
+            "pctOfPureWater": 8.2033,
+            "widestAlphaGE08Px": 179
+          },
+          {
+            "countAlphaGE08": 253,
+            "pctOfPureWater": 0.2736,
+            "widestAlphaGE08Px": 24
+          },
+          {
+            "countAlphaGE08": 1546,
+            "pctOfPureWater": 1.6716,
+            "widestAlphaGE08Px": 55
+          }
+        ]
+      }
+    },
+    "prince-far": {
+      "submitted": {
+        "draws": 9,
+        "triangles": 159714
+      },
+      "imagery": [
+        "4-2",
+        "4-3",
+        "4-4",
+        "5-1",
+        "5-2",
+        "5-3",
+        "5-4",
+        "5-5",
+        "6-1",
+        "6-2",
+        "6-3",
+        "6-4"
+      ],
+      "pureWater": 107035,
+      "protectedSamplePixels": 219520,
+      "protectedChanged": 0,
+      "maxRGBChangeVsBroken": 0,
+      "above2ChangesVsBroken": 0,
+      "above2ChangesVsStock": 4552,
+      "compiledVariantNeutralExact": true,
+      "phases": {
+        "6.0": [
+          {
+            "countAlphaGE08": 760,
+            "pctOfPureWater": 0.71,
+            "widestAlphaGE08Px": 17
+          },
+          {
+            "countAlphaGE08": 149,
+            "pctOfPureWater": 0.1392,
+            "widestAlphaGE08Px": 5
+          },
+          {
+            "countAlphaGE08": 149,
+            "pctOfPureWater": 0.1392,
+            "widestAlphaGE08Px": 5
+          }
+        ],
+        "6.22": [
+          {
+            "countAlphaGE08": 780,
+            "pctOfPureWater": 0.7287,
+            "widestAlphaGE08Px": 16
+          },
+          {
+            "countAlphaGE08": 132,
+            "pctOfPureWater": 0.1233,
+            "widestAlphaGE08Px": 3
+          },
+          {
+            "countAlphaGE08": 132,
+            "pctOfPureWater": 0.1233,
+            "widestAlphaGE08Px": 3
+          }
+        ],
+        "6.47": [
+          {
+            "countAlphaGE08": 773,
+            "pctOfPureWater": 0.7222,
+            "widestAlphaGE08Px": 16
+          },
+          {
+            "countAlphaGE08": 118,
+            "pctOfPureWater": 0.1102,
+            "widestAlphaGE08Px": 3
+          },
+          {
+            "countAlphaGE08": 118,
+            "pctOfPureWater": 0.1102,
+            "widestAlphaGE08Px": 3
+          }
+        ],
+        "7.08": [
+          {
+            "countAlphaGE08": 780,
+            "pctOfPureWater": 0.7287,
+            "widestAlphaGE08Px": 27
+          },
+          {
+            "countAlphaGE08": 138,
+            "pctOfPureWater": 0.1289,
+            "widestAlphaGE08Px": 5
+          },
+          {
+            "countAlphaGE08": 138,
+            "pctOfPureWater": 0.1289,
+            "widestAlphaGE08Px": 5
+          }
+        ],
+        "7.6": [
+          {
+            "countAlphaGE08": 798,
+            "pctOfPureWater": 0.7456,
+            "widestAlphaGE08Px": 27
+          },
+          {
+            "countAlphaGE08": 108,
+            "pctOfPureWater": 0.1009,
+            "widestAlphaGE08Px": 3
+          },
+          {
+            "countAlphaGE08": 108,
+            "pctOfPureWater": 0.1009,
+            "widestAlphaGE08Px": 3
+          }
+        ],
+        "8.25": [
+          {
+            "countAlphaGE08": 811,
+            "pctOfPureWater": 0.7577,
+            "widestAlphaGE08Px": 25
+          },
+          {
+            "countAlphaGE08": 129,
+            "pctOfPureWater": 0.1205,
+            "widestAlphaGE08Px": 4
+          },
+          {
+            "countAlphaGE08": 129,
+            "pctOfPureWater": 0.1205,
+            "widestAlphaGE08Px": 4
+          }
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "id": "prince-close",
+      "eye": [
+        -60204.683988666446,
+        23.12,
+        -47257.10434721248
+      ],
+      "aim": [
+        -60287.683988666446,
+        4.12,
+        -47236.10434721248
+      ],
+      "case": "open"
+    },
+    {
+      "id": "prince-air-49",
+      "eye": [
+        -60184,
+        49,
+        -47320
+      ],
+      "aim": [
+        -60276,
+        2,
+        -47218
+      ],
+      "case": "open"
+    },
+    {
+      "id": "kings-close",
+      "eye": [
+        32135.4,
+        15.12,
+        6750.7
+      ],
+      "aim": [
+        32105.5,
+        1.12,
+        6848.5
+      ],
+      "case": "open"
+    },
+    {
+      "id": "kings-air-52",
+      "eye": [
+        32096,
+        52,
+        6700
+      ],
+      "aim": [
+        32139,
+        2,
+        6850
+      ],
+      "case": "open"
+    },
+    {
+      "id": "author-queens",
+      "eye": [
+        6082.582765986368,
+        19,
+        29968.516522770486
+      ],
+      "aim": [
+        6004.370038318611,
+        0.5,
+        29851.19743126885
+      ],
+      "case": "authored"
+    },
+    {
+      "id": "author-basin",
+      "eye": [
+        83864.15278643108,
+        17.4,
+        13648.938780914668
+      ],
+      "aim": [
+        83819.99246869645,
+        2.955,
+        13630.127445566624
+      ],
+      "case": "authored"
+    },
+    {
+      "id": "prince-far",
+      "eye": [
+        -60204.683988666446,
+        620,
+        -47457.10434721248
+      ],
+      "aim": [
+        -60287.683988666446,
+        4.12,
+        -47236.10434721248
+      ],
+      "case": "far"
+    }
+  ],
+  "foamModuleSHA256": "500451a2864445066402c5a03da8624c3188195c08fa67942cceebb7cac8446c",
+  "completeAppChromium": {
+    "prince": {
+      "phases": [
+        {
+          "clock": 6,
+          "modes": [
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 5954,
+              "widestPx": 355,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 234,
+              "widestPx": 70,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 1464,
+              "widestPx": 51,
+              "draws": 51,
+              "triangles": 270018
+            }
+          ]
+        },
+        {
+          "clock": 6.04,
+          "modes": [
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 5973,
+              "widestPx": 355,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 236,
+              "widestPx": 71,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 1456,
+              "widestPx": 51,
+              "draws": 51,
+              "triangles": 270018
+            }
+          ]
+        },
+        {
+          "clock": 6.47,
+          "modes": [
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 5914,
+              "widestPx": 354,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 270,
+              "widestPx": 71,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 1475,
+              "widestPx": 51,
+              "draws": 51,
+              "triangles": 270018
+            }
+          ]
+        },
+        {
+          "clock": 7.08,
+          "modes": [
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 5885,
+              "widestPx": 352,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 237,
+              "widestPx": 66,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 1349,
+              "widestPx": 53,
+              "draws": 51,
+              "triangles": 270018
+            }
+          ]
+        },
+        {
+          "clock": 8.25,
+          "modes": [
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 6372,
+              "widestPx": 350,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 180,
+              "widestPx": 44,
+              "draws": 51,
+              "triangles": 270018
+            },
+            {
+              "pureWater": 74597,
+              "coverageAlphaGE08": 1260,
+              "widestPx": 52,
+              "draws": 51,
+              "triangles": 270018
+            }
+          ]
+        }
+      ],
+      "sourceJSONSha256": "26314c31dd4ffa15dfe4bc8cd9f24c5f323e0b73fa853e8bc1de892bc8934ca2"
+    },
+    "kings": {
+      "phases": [
+        {
+          "clock": 6,
+          "modes": [
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 844,
+              "widestPx": 125,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 390,
+              "widestPx": 72,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 539,
+              "widestPx": 65,
+              "draws": 92,
+              "triangles": 240224
+            }
+          ]
+        },
+        {
+          "clock": 6.04,
+          "modes": [
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 853,
+              "widestPx": 126,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 393,
+              "widestPx": 72,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 538,
+              "widestPx": 64,
+              "draws": 92,
+              "triangles": 240224
+            }
+          ]
+        },
+        {
+          "clock": 6.47,
+          "modes": [
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 932,
+              "widestPx": 124,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 384,
+              "widestPx": 130,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 553,
+              "widestPx": 64,
+              "draws": 92,
+              "triangles": 240224
+            }
+          ]
+        },
+        {
+          "clock": 7.08,
+          "modes": [
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 991,
+              "widestPx": 124,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 371,
+              "widestPx": 90,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 556,
+              "widestPx": 64,
+              "draws": 92,
+              "triangles": 240224
+            }
+          ]
+        },
+        {
+          "clock": 8.25,
+          "modes": [
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 1162,
+              "widestPx": 147,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 221,
+              "widestPx": 44,
+              "draws": 92,
+              "triangles": 240224
+            },
+            {
+              "pureWater": 83554,
+              "coverageAlphaGE08": 518,
+              "widestPx": 62,
+              "draws": 92,
+              "triangles": 240224
+            }
+          ]
+        }
+      ],
+      "sourceJSONSha256": "ee0cb7da8018a62c7f8cc421c7ebd7e1e86697eb03668299dbd97e95414cdb26"
+    }
+  },
+  "independentMesa11PhasePrince": {
+    "times": [
+      6.0,
+      6.25,
+      6.47,
+      6.73,
+      7.08,
+      7.55,
+      8.25,
+      8.9,
+      9.55,
+      10.45,
+      11.0
+    ],
+    "pureWater": 92487,
+    "fitPairs": [
+      {
+        "t0": 6.0,
+        "t1": 6.25,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9887752532958984
+      },
+      {
+        "t0": 6.25,
+        "t1": 6.47,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.625,
+        "frameCorrelation": 0.9847790598869324
+      },
+      {
+        "t0": 6.47,
+        "t1": 6.73,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9892499446868896
+      },
+      {
+        "t0": 6.73,
+        "t1": 7.08,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9872999787330627
+      },
+      {
+        "t0": 7.08,
+        "t1": 7.55,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9752210974693298
+      },
+      {
+        "t0": 7.55,
+        "t1": 8.25,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9669492244720459
+      },
+      {
+        "t0": 8.25,
+        "t1": 8.9,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9786754250526428
+      },
+      {
+        "t0": 8.9,
+        "t1": 9.55,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9810019135475159
+      },
+      {
+        "t0": 10.45,
+        "t1": 11.0,
+        "samples": 20532,
+        "illustrativeLandwardGameMps": 1.5,
+        "frameCorrelation": 0.9646984934806824
+      }
+    ],
+    "notes": "The score reprojects visible foam to signed game coordinates. It measures authored temporal coherence; not the actual local surf speed."
+  }
+}
