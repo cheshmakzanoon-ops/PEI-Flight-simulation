@@ -28,7 +28,9 @@ export const SITES: Site[] = [
  {id:'prince-grassland',name:'Prince County · grassland pass',region:'Prince County',lon:-63.91099256406,lat:46.64893385636,heading:83,height:78,note:'Begin at 78 metres above the starting surface and fly across selected inland fields. Enable Ground vegetation in Dispatch to see the optional grass treatment.'},
  {id:'queens-grassland',name:'Queens County · grassland pass',region:'Queens County',lon:-63.21394671296,lat:46.16121449621,heading:37,height:78,note:'Begin at 78 metres above the starting surface and fly across selected inland fields. Enable Ground vegetation in Dispatch to see the optional grass treatment.'},
  {id:'kings-grassland',name:'Kings County · grassland pass',region:'Kings County',lon:-62.62491056413,lat:46.21593818962,heading:150,height:78,note:'Begin at 78 metres above the starting surface and fly across selected inland fields. Enable Ground vegetation in Dispatch to see the optional grass treatment.'},
- {id:'indian-river-country-pass',name:'Indian River · country pass',region:'Prince County',lon:-63.6787969268,lat:46.4754997191,heading:75,height:80,note:'Fly over farm country from the west. Enable St. Mary’s exterior to see the surveyed roof and spire.'}
+ {id:'indian-river-country-pass',name:'Indian River · country pass',region:'Prince County',lon:-63.6787969268,lat:46.4754997191,heading:75,height:80,note:'Fly over farm country from the west. Enable St. Mary’s exterior to see the surveyed roof and spire.'},
+ {id:'hog-island-west-pass',name:'Hog Island · west dune pass',region:'Pituamkek Sandhills',lon:-63.8444204973,lat:46.6466321746,heading:175,height:58,note:'Approach from offshore. Enable Hog Island aerial detail to see the September 2022 dry dune imagery.'},
+ {id:'hog-island-east-pass',name:'Hog Island · east dune pass',region:'Pituamkek Sandhills',lon:-63.8232250243,lat:46.6356946663,heading:175,height:58,note:'Approach the eastern dry dune area from the Gulf. The aerial study does not alter terrain or water.'}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

@@ -1,0 +1,343 @@
+{
+  "survey": {
+    "doi": "10.5683/SP3/KE5YRM",
+    "originalFileId": 664159,
+    "archiveMD5": "d9ae87e16dd373b91a51d53c6f3ca7f1",
+    "license": "CC0 1.0",
+    "date": "2022-09-19 low tide",
+    "embeddedEPSG": 32620,
+    "alternateDatumComparisonM": 1.078,
+    "sourceSpacingM": 0.02609,
+    "shapeRGBAlpha": [
+      73735,
+      59440,
+      4
+    ]
+  },
+  "windows": {
+    "west": {
+      "n": 124160,
+      "allTiles": [
+        "7-8"
+      ],
+      "dryAtSource": 59.529896169070526,
+      "dryAtOtherDatum": 60.521642830365636,
+      "minMargin": 61.65804216083325,
+      "deep": 124160,
+      "minY": 1.9923867351480462,
+      "maxY": 3.000000000000001,
+      "area": 5280,
+      "world": [
+        -49437.29465440328,
+        -15594.744033968265,
+        132.37939370383538,
+        -1.4128004407630215,
+        0.42967193920048885,
+        40.01067368965232
+      ],
+      "center": [
+        -63.84316339909506,
+        46.64011599139203
+      ],
+      "checkResidualM": 0.0008778351321782486
+    },
+    "east": {
+      "n": 45018,
+      "allTiles": [
+        "8-8"
+      ],
+      "dryAtSource": 59.30423454013527,
+      "dryAtOtherDatum": 58.37902187765059,
+      "minMargin": 64.6985534441481,
+      "deep": 45018,
+      "minY": 1.8438573118238026,
+      "maxY": 4.994754526113348,
+      "area": 6417,
+      "world": [
+        -47790.85626791234,
+        -14393.644367302843,
+        93.24923730923183,
+        -0.9701932233983825,
+        0.7220730290864594,
+        69.0189210282806
+      ],
+      "center": [
+        -63.82196792611604,
+        46.62917848309324
+      ],
+      "checkResidualM": 0.001066261642534496
+    }
+  },
+  "infrastructureAtlas": {
+    "west": {
+      "nearestRenderedAtlasBuildingOutlineM": 624.6374147864312,
+      "buildingsCheckedWithinListedCells": 312,
+      "nearestSourceRoadLineM": 2195.856072008154,
+      "minimumRoadRibbonAfterSafe20mAllowance": 2175.856072008154
+    },
+    "east": {
+      "nearestRenderedAtlasBuildingOutlineM": 0,
+      "buildingsCheckedWithinListedCells": 980,
+      "nearestSourceRoadLineM": 2511.9304369185843,
+      "minimumRoadRibbonAfterSafe20mAllowance": 2491.9304369185843
+    },
+    "authority": {
+      "decodedRoadHash": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "buildingAtlasHash": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+    }
+  },
+  "unchangedEastMappedRecord": {
+    "tile": "q2102",
+    "ordinal": 16,
+    "capsuleGuardM": 13.5
+  },
+  "texturePins": [
+    {
+      "id": "west",
+      "file": "hog-island/v1/hog-west-optics.png",
+      "size": 250758,
+      "sha": "e45a9f16be91f8beb1d1bc2df6981b598f15b3005fa897b656ad717666af157f",
+      "domain": [
+        -49437.29465440328,
+        -15594.744033968265,
+        132.37939370383538,
+        -1.4128004407630215,
+        0.42967193920048885,
+        40.01067368965232
+      ],
+      "tile": [
+        7,
+        8
+      ],
+      "width": 640,
+      "height": 194,
+      "qGuard": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sourceAllOpaque": 124160,
+      "preservedStructureTexels": 0
+    },
+    {
+      "id": "east",
+      "file": "hog-island/v1/hog-east-optics.png",
+      "size": 93810,
+      "sha": "8cdf3ddbae683a327065b81bb15ba0e41239496970d32acad3175fda56da7e09",
+      "domain": [
+        -47790.85626791234,
+        -14393.644367302843,
+        93.24923730923183,
+        -0.9701932233983825,
+        0.7220730290864594,
+        69.0189210282806
+      ],
+      "tile": [
+        8,
+        8
+      ],
+      "width": 246,
+      "height": 183,
+      "qGuard": [
+        -47732.5540707262,
+        -14362.512245879043,
+        -47792.50565599729,
+        -14402.252333321034
+      ],
+      "sourceAllOpaque": 45018,
+      "preservedStructureTexels": 12489
+    }
+  ],
+  "sameStateActualRenders": {
+    "hog-west-close": {
+      "before": {
+        "draws": 41,
+        "tris": 179527
+      },
+      "after": {
+        "draws": 41,
+        "tris": 179527
+      },
+      "mask": {
+        "draws": 41,
+        "tris": 179527
+      },
+      "exact": true,
+      "camera": [
+        -49343.90462741378,
+        15.90262096703293,
+        -15507.61647302542
+      ],
+      "pixels": {
+        "over2": 14135,
+        "offmask": 0,
+        "max": 46
+      },
+      "errors": []
+    },
+    "hog-east-close": {
+      "before": {
+        "draws": 43,
+        "tris": 205284
+      },
+      "after": {
+        "draws": 43,
+        "tris": 205284
+      },
+      "mask": {
+        "draws": 43,
+        "tris": 205284
+      },
+      "exact": true,
+      "camera": [
+        -47718.36505483096,
+        18.073389011013038,
+        -14286.96721695686
+      ],
+      "pixels": {
+        "over2": 19899,
+        "offmask": 0,
+        "max": 35
+      },
+      "errors": []
+    },
+    "hog-west-low": {
+      "before": {
+        "draws": 49,
+        "tris": 232192
+      },
+      "after": {
+        "draws": 49,
+        "tris": 232192
+      },
+      "mask": {
+        "draws": 49,
+        "tris": 232192
+      },
+      "exact": true,
+      "camera": [
+        -49277.390367434644,
+        63.593204078261486,
+        -15625.38294570773
+      ],
+      "pixels": {
+        "over2": 23360,
+        "offmask": 0,
+        "max": 42
+      },
+      "errors": []
+    },
+    "hog-east-low": {
+      "before": {
+        "draws": 54,
+        "tris": 250817
+      },
+      "after": {
+        "draws": 54,
+        "tris": 250817
+      },
+      "mask": {
+        "draws": 54,
+        "tris": 250817
+      },
+      "exact": true,
+      "camera": [
+        -47648.77509115997,
+        61,
+        -14414.908428639015
+      ],
+      "pixels": {
+        "over2": 11711,
+        "offmask": 0,
+        "max": 32
+      },
+      "errors": []
+    },
+    "hog-high": {
+      "before": {
+        "draws": 13,
+        "tris": 193270
+      },
+      "after": {
+        "draws": 13,
+        "tris": 193270
+      },
+      "mask": {
+        "draws": 13,
+        "tris": 193270
+      },
+      "exact": true,
+      "camera": [
+        -47653.0976270934,
+        616.81561104069,
+        -14412.395326352143
+      ],
+      "pixels": {
+        "over2": 0,
+        "offmask": 0,
+        "max": 0
+      },
+      "errors": []
+    }
+  },
+  "compiledOrdinaryFlightReplays": {
+    "west-small": {
+      "photoActive": true,
+      "standardZeroPhotoRequests": true,
+      "departure": "hog-island-west-pass",
+      "fault": null,
+      "travelM": 717.1487991422646,
+      "heightAGLEnd": 59.91420906601262,
+      "assetResponses": [
+        {
+          "asset": "hog-west-optics.png",
+          "status": 200
+        },
+        {
+          "asset": "hog-east-optics.png",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    "east-small": {
+      "photoActive": true,
+      "standardZeroPhotoRequests": true,
+      "departure": "hog-island-east-pass",
+      "fault": null,
+      "travelM": 719.488407463005,
+      "heightAGLEnd": 58.80882128169163,
+      "assetResponses": [
+        {
+          "asset": "hog-west-optics.png",
+          "status": 200
+        },
+        {
+          "asset": "hog-east-optics.png",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    "fault-small": {
+      "photoActive": false,
+      "standardZeroPhotoRequests": true,
+      "departure": "hog-island-west-pass",
+      "fault": "east",
+      "travelM": 151.27300925016252,
+      "heightAGLEnd": 58.93661952087622,
+      "assetResponses": [
+        {
+          "asset": "hog-east-optics.png",
+          "status": 200
+        },
+        {
+          "asset": "hog-west-optics.png",
+          "status": 200
+        }
+      ],
+      "errors": []
+    }
+  }
+}

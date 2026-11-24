@@ -60,6 +60,7 @@ export const SCENERY_REVIEWS=[
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
+ {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
@@ -74,6 +75,10 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='hogIslandPhotoStudy'){
+  if(options.get('scenery')==='detail')return 'detail';
+  return options.has('surveyRelief')||options.has('inlandRelief')?'terrain':undefined;
+ }
  if(flag==='indianRiverReview'){
   if(options.get('scenery')==='detail')return 'detail';
   if(['surveyRelief','inlandRelief','buildingShadows','woodland3D','canopyLight','northBaywalkPreview'].some(k=>options.has(k)))return 'terrain';
