@@ -1,0 +1,134 @@
+{
+  "status": "Detailed detached artist geometry; not gameplay; no accepted site transition.",
+  "checks": {
+    "submittedThreeGeometry": [
+      {
+        "tier": "heritage",
+        "draws": 10,
+        "triangles": 2596,
+        "roles": [
+          "opaque",
+          "warmWood",
+          "paint",
+          "red",
+          "iron",
+          "shingle",
+          "trimDark",
+          "glass",
+          "whiteMark",
+          "rail"
+        ],
+        "roofRayY": 8.23631420612435,
+        "galleryRayY": 5.7199997901916495
+      },
+      {
+        "tier": "flight",
+        "draws": 10,
+        "triangles": 1592,
+        "roles": [
+          "opaque",
+          "warmWood",
+          "paint",
+          "red",
+          "shingle",
+          "glass",
+          "rail",
+          "trimDark",
+          "whiteMark",
+          "iron"
+        ],
+        "roofRayY": 8.23631420612435,
+        "galleryRayY": 5.7199997901916495
+      }
+    ],
+    "studioWebGL": {
+      "front": {
+        "tier": "heritage",
+        "draws": 21,
+        "triangles": 5194
+      },
+      "reverse": {
+        "tier": "heritage",
+        "draws": 21,
+        "triangles": 5194
+      },
+      "lantern": {
+        "tier": "heritage",
+        "draws": 21,
+        "triangles": 5194
+      },
+      "flight": {
+        "tier": "flight",
+        "draws": 21,
+        "triangles": 3186
+      }
+    }
+  },
+  "trainingOnly": {
+    "cap": {
+      "errorM": [
+        0.0022384310703156274,
+        0.017614646003190515,
+        0.033245487896078535,
+        0.039167641078098114
+      ],
+      "heightCGVD2013M": [
+        12.13,
+        12.328,
+        12.6658,
+        12.703
+      ],
+      "maxRadius": 1.279742663677407,
+      "n": 13,
+      "nativeDisjointBlocks": 4
+    },
+    "datedTerrainClass2RingR2To4": {
+      "heightCGVD2013M": [
+        4.312,
+        4.42,
+        4.5892,
+        4.6690000000000005
+      ],
+      "insideSiteR2Class2": 0,
+      "n": 77
+    },
+    "galleryAdmittedRing": {
+      "errorM": [
+        0.0009999999999994458,
+        0.02000000000000135,
+        0.09500000000000135,
+        0.1280000000000001
+      ],
+      "heightCGVD2013M": [
+        10.097,
+        10.199,
+        10.289,
+        10.328
+      ],
+      "maxRadius": 2.166889312188362,
+      "n": 29,
+      "nativeDisjointBlocks": 9
+    },
+    "limits": "Only nonwithheld, one swath 51111. Exact GPS pulse redaction happened before performing height operations. Class 1 is source unclassified, not a claim of LAS class 6 roofs, and absolute compass orientation is not photo calibrated.",
+    "planRoleRadiiUsesLinfMetres": true
+  },
+  "placementHold": {
+    "tile": "16-12",
+    "pathLayer": "Prince Edward Island Recreational Paths FID 661, natural",
+    "trimmedPlanToMappedPathM": 0.7780686627789728,
+    "medianNativePlusLiftMinusStockM": 1.243,
+    "notes": "No valid join to unchanged stock terrain in protected corridor. Neither a deck nor a trail was drawn."
+  },
+  "areasNotQualified": [
+    "Released game scenery",
+    "Present-day condition",
+    "Whole-roof survey precision",
+    "Photoreal materials"
+  ],
+  "sourceLicense": "Open Government Licence - Canada; no reference pixels or raw point data embedded.",
+  "sourceIdentity": {
+    "authoringFreeze": "09a998bcd6a900b08fdca1fe98b5bdafcfe04d14e2f7004868afee01a304c0db",
+    "recordedFile": "175bc2f933af64380c89da09e7d402ce12a1a6fb0b220ef794551fcf9f7d00ca",
+    "onlyDifference": "One trailing ASCII space removed on the procedural-map array declaration."
+  }
+}
