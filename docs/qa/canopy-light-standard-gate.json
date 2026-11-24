@@ -1,0 +1,141 @@
+{
+  "views": {
+    "queens-understory": {
+      "view": "queens-understory",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "after": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "maskA": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "maskB": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 98623,
+      "changedAboveTwo": 79551,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 192417,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "prince-needle": {
+      "view": "prince-needle",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 16,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "after": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "maskA": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "maskB": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 179222,
+      "changedAboveTwo": 133933,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 111818,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "kings-native": {
+      "view": "kings-native",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 14,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "after": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "maskA": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "maskB": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 182110,
+      "changedAboveTwo": 118811,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 108930,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    }
+  },
+  "compiled": [
+    {
+      "option": false,
+      "site": "cavendish-low",
+      "movementM": 45.548115825378844,
+      "startY": 129.9561204224339,
+      "afterY": 130.16270123280012,
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "option": true,
+      "site": "cavendish-low",
+      "movementM": 46.74700849500668,
+      "startY": 129.95742285024494,
+      "afterY": 130.1732800833622,
+      "pauseSucceeded": true,
+      "errors": []
+    }
+  ],
+  "protectedNonCanopyPixels": 413165,
+  "releaseSourceHashes": {
+    "src/main.ts": "b2bf2aeb8ad808faa5c91d41f24f282fcd7cb01bf81c3f9049f26f7983afe863",
+    "src/app/scenery-profile.ts": "88e3adc3b40549d421036f429a8448f27e5dd32aa0d53d629a20640cdbeabb63",
+    "src/render/vegetation.ts": "3e0b5a8e4498e5146e5c5f9cf7490f1f64fcd42194455a2bf4329b5cad5905a4"
+  }
+}

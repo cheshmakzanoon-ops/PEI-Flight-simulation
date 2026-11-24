@@ -43,6 +43,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
  if(q.has('stockNorthCapeWind'))q.delete('northCapeWind');
+ if(q.has('stockCanopyLight'))q.delete('canopyLight');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -196,6 +197,21 @@ export function orbyClosureRequested(q:URLSearchParams){
  if(q.has('stockOrbyCoast')||q.has('legacyShoreArcs')||q.get('scenery')==='detail')return false;
  if(q.has('orbyCoastClosure'))return true;
  return !['orthophotoSeamStudy','nearshoreFoamStudy','surveyRelief','inlandRelief','buildingShadows'].some(k=>q.has(k));
+}
+/** Appearance-only default. Preserve separately locked woodland, relief,
+ * architecture and shadow comparisons unless directional light is explicit. */
+export function canopyLightRequested(q:URLSearchParams){
+ if(q.has('stockCanopyLight'))return false;
+ if(q.has('canopyLight'))return true; // old explicit path and Detail unchanged
+ const mode=q.get('scenery');
+ if(mode&&mode!=='standard')return false;
+ if(SCENERY_REVIEWS.some(study=>q.has(study.flag)))return false;
+ return !['woodland3D','woodlandView','woodlandBark','woodlandCrownBase','forestFloor',
+  'buildingShadows','seatedForestShadows','surveyRelief','inlandRelief','orthophotoSeamStudy',
+  'pointPrimStudy','miscoucheCanopyStudy','regionalCanopyStudy','indianRiverReview',
+  'sourceGrassNap','northCapeWind','hogIslandWestGround','duneReliefStudy','duneSandDetail',
+  'duneGrassSurface','kingsDryCrownStudy','mappedLaneCanopyStudy','greenGablesBarnReview',
+  'cavendishDetail','gablesGradeReview','northRusticoSoil'].some(k=>q.has(k));
 }
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);

@@ -27,7 +27,7 @@ try:
    pg.on('pageerror',lambda e:errors.append(str(e)))
    pg.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
    pg.set_default_timeout(120000)
-   pg.goto(url+('&canopyLight' if active else ''),wait_until='domcontentloaded')
+   pg.goto(url+('' if active else '&stockCanopyLight'),wait_until='domcontentloaded')
    pg.wait_for_function('()=>window.islandAirDiagnostics?.mode==="dispatch" && document.querySelector("#site")')
    pg.select_option('#site',label='Cavendish shore · low pass')
    pg.get_by_role('button',name='Begin flight').click()
