@@ -1,5 +1,6 @@
 import * as T from 'three';
 import {buildSourisTownHall} from './src/hall.ts';
+import {deferHallTextures,type Result} from './src/deferred-textures.ts';
 const renderer = new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(innerWidth,innerHeight);
 renderer.setPixelRatio(1);
@@ -19,19 +20,14 @@ const sky=await new T.TextureLoader().loadAsync(skyUrl);
 sky.colorSpace=T.SRGBColorSpace;
 sky.mapping=T.EquirectangularReflectionMapping;
 scene.environment=sky;scene.environmentIntensity=.77;
-const t0=performance.now();
-const hall=buildSourisTownHall();
-const setupMs=performance.now()-t0;
-const textures=new Set<T.Texture>();
-hall.traverse(o=>{
- const m=(o as T.Mesh).material;
- for(const one of m?(Array.isArray(m)?m:[m]):[]) {
-   const p=one as T.MeshPhysicalMaterial;
-   for(const x of [p.map,p.normalMap,p.roughnessMap])if(x)textures.add(x);
- }
-});
-const logicalAssetBytes=[...textures].reduce((n,x)=>n+((x.image as {data?:ArrayBufferView}|null)?.data?.byteLength??0),0);
-
+const opts=new URLSearchParams(location.search);
+const size=opts.get('texture')==='flight'?256:512;
+const hall=buildSourisTownHall({textured:false});
+const materialWork=deferHallTextures(hall,size);
+let textureResult:Result|{state:'loading';bytes:number;size:typeof size}={state:'loading',bytes:0,size};
+(window as any).hallTextureReady=materialWork.ready;
+(window as any).hallTextureStatus=()=>textureResult;
+addEventListener('pagehide',event=>{if(!event.persisted)materialWork.release();});
 scene.add(hall);
 const floor=new T.Mesh(new T.PlaneGeometry(140,140),new T.MeshStandardMaterial({color:0x74716b,roughness:.96}));
 floor.rotation.x=-Math.PI/2;floor.position.y=-.006;scene.add(floor);
@@ -51,9 +47,10 @@ type Pose=keyof typeof poses;
  if(mode==='sim')sun.position.set(U[0]*-.60+U[1]*-.31,.74,-(V[0]*-.60+V[1]*-.31)).normalize().multiplyScalar(90);
  else sun.position.set(.44,.61,.60).normalize().multiplyScalar(90);
  renderer.render(scene,camera);
- return {scene:{draws:renderer.info.render.calls,triangles:renderer.info.render.triangles},detachedResources:{setupMs,logicalAssetBytes,textures:textures.size},data:hall.userData};
+ return {scene:{draws:renderer.info.render.calls,triangles:renderer.info.render.triangles},detachedResources:textureResult,data:hall.userData};
 };
-const opts=new URLSearchParams(location.search);
 const desired=opts.get('shot');
 const pose:Pose=desired&&Object.hasOwn(poses,desired)?desired as Pose:'street';
 (window as any).hallFrame(pose,opts.get('light')==='sim'?'sim':'light');
+
+void materialWork.ready.then(result=>{textureResult=result;renderer.render(scene,camera);});

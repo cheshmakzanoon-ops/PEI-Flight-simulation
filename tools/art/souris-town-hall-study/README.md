@@ -61,13 +61,13 @@ front is not certification of the whole building.
 
 The [three-dimensional geometry checks](qa/actual-three.ts) evaluate the
 actual typed mesh: mutually exclusive roof coverage in the modelled
-plan and backed aperture rays from three exterior directions. The
-packaged [browser measurements](proof/three-browser.json)
-come from the preview tied to this exact source. The isolated preview
-builds original demonstration textures synchronously; a production
-loader still needs a bounded asset or asynchronous bake and appropriate
-failure behaviour. No GPU speed or frame-rate promise follows from
-the fixture.
+plan and backed aperture rays from three exterior directions. The original paired [browser measurements](proof/three-browser.json)
+record the synchronous authoring baseline tied to this exact model. The
+viewer now paints the same model in matte first, then prepares and
+transfers the procedural textures in a local module worker. It installs
+all four material roles together or keeps the matte version if the
+reply is malformed, blocked or times out. Unloading the page releases
+the local worker and textures; the fixture is not the game's loader.
 
 ## Work on the asset
 
@@ -81,5 +81,13 @@ node_modules/.bin/vite tools/art/souris-town-hall-study --host 127.0.0.1
 
 Append `?shot=air`, `?shot=west` or `?shot=detail` for review views.
 Add `light=sim` to use the current simulator sun direction in the
-local frame. This viewer uses the existing CC0 sky probe and a plain
-review floor, not the playable environment or the surrounding town.
+local frame. With no texture option, the source study uses 512-pixel
+plates. Add `texture=flight` for a 256-pixel authoring comparison, which
+uses **2 MiB of raw RGBA data instead of 8 MiB** for the same eight
+textures. Both choices match their synchronous recipe pixel-for-pixel in
+the three [compiled browser checks](proof/deferred-textures-browser.json).
+The lower tier is not an exact downsample of the higher one and
+deliberately does not replace the close reference view automatically.
+These allocation numbers omit mipmaps and do not measure device memory,
+loading time or frame rate. The viewer uses the existing CC0 sky and a
+plain review floor, not the playable environment or surrounding town.

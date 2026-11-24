@@ -1,0 +1,226 @@
+{
+  "view": "Detached compiled Chromium/WebGL 2 (SwiftShader), 620 \u00d7 460, preserved fixed camera.",
+  "scope": "No game import or release. Resource counts only; no device speed promise.",
+  "fallbackCompared": "All pixels exact between denied worker script and malformed response at each of the three matched views.",
+  "workerAndViewerAssetSHA256": {
+    "assets/index-DWULCZK8.js": "f19e9868d3c1787497bae790f133b66da5ca95dae6068084151b8625ac716a65",
+    "assets/index-Dc5P-kLa.js": "b83b2bd1eda2b8e12c0872cc240f76f8c072bb8f452a7600ab11aa5f06bf3f0d",
+    "assets/index-Ds7em6-K.js": "0da158ed9dc12e878696b51d56f3778700b972b48c6f3c099ffb25c47f02e5b1",
+    "assets/index-PpEngFri.js": "fd9dd2f1b6bdc3e3ec15f4c5f05765a7f2b0191a4feaf4f426bbea713d545e47",
+    "assets/maritime-sky-WOUiMuKU.webp": "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d",
+    "assets/masonry.worker-wWLo0VXH.js": "f09595c815bc0b76fee8886708a97a09ae2fe355bb98a60e241008dd72f4a7fa",
+    "index.html": "1ea28a46ff818dffc449659d094c96e46f9794fbad594083226df56e9f7feca8"
+  },
+  "cases": [
+    {
+      "tier": "reference",
+      "cases": {
+        "street": {
+          "state": {
+            "state": "ready",
+            "bytes": 8388608,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        },
+        "air": {
+          "state": {
+            "state": "ready",
+            "bytes": 8388608,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        },
+        "west": {
+          "state": {
+            "state": "ready",
+            "bytes": 8388608,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        }
+      },
+      "requests": [
+        "/?shot=street&light=light&texture=reference",
+        "/assets/index-Dc5P-kLa.js",
+        "/assets/maritime-sky-WOUiMuKU.webp",
+        "/assets/masonry.worker-wWLo0VXH.js"
+      ],
+      "pageErrors": []
+    },
+    {
+      "tier": "flight",
+      "cases": {
+        "street": {
+          "state": {
+            "state": "ready",
+            "bytes": 2097152,
+            "size": 256
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        },
+        "air": {
+          "state": {
+            "state": "ready",
+            "bytes": 2097152,
+            "size": 256
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        },
+        "west": {
+          "state": {
+            "state": "ready",
+            "bytes": 2097152,
+            "size": 256
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": {
+            "changed": 0,
+            "max": 0
+          }
+        }
+      },
+      "requests": [
+        "/?shot=street&light=light&texture=flight",
+        "/assets/index-Dc5P-kLa.js",
+        "/assets/maritime-sky-WOUiMuKU.webp",
+        "/assets/masonry.worker-wWLo0VXH.js"
+      ],
+      "pageErrors": []
+    },
+    {
+      "tier": "malformed",
+      "cases": {
+        "street": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        },
+        "air": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        },
+        "west": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        }
+      },
+      "requests": [
+        "/?shot=street&light=light&texture=reference",
+        "/assets/index-Dc5P-kLa.js",
+        "/assets/maritime-sky-WOUiMuKU.webp",
+        "/assets/masonry.worker-wWLo0VXH.js"
+      ],
+      "pageErrors": []
+    },
+    {
+      "tier": "blocked",
+      "cases": {
+        "street": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        },
+        "air": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        },
+        "west": {
+          "state": {
+            "state": "fallback",
+            "bytes": 0,
+            "size": 512
+          },
+          "scene": {
+            "draws": 10,
+            "triangles": 4364
+          },
+          "sameAsSynchronous": null
+        }
+      },
+      "requests": [
+        "/?shot=street&light=light&texture=reference",
+        "/assets/index-Dc5P-kLa.js",
+        "/assets/maritime-sky-WOUiMuKU.webp",
+        "/assets/masonry.worker-wWLo0VXH.js"
+      ],
+      "pageErrors": []
+    }
+  ]
+}
