@@ -1,0 +1,411 @@
+{
+  "notes": "Transport uses exact per-attribute renderer bytes, never a cross-session image comparison. Flight uses a temporary virtual-only dated departure. Both runs use normal aircraft physics and cameras.",
+  "transport": [
+    {
+      "pose": "street",
+      "mode": "stock",
+      "terrainSegments": 112,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 0,
+      "transport": [],
+      "layerWarnings": []
+    },
+    {
+      "pose": "street",
+      "mode": "corrupt",
+      "terrainSegments": 112,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 1,
+      "transport": [
+        "mutated actual body 1792460"
+      ],
+      "layerWarnings": []
+    },
+    {
+      "pose": "street",
+      "mode": "missing",
+      "terrainSegments": 112,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 1,
+      "transport": [
+        "404"
+      ],
+      "layerWarnings": []
+    },
+    {
+      "pose": "street",
+      "mode": "held",
+      "terrainSegments": 112,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 1,
+      "transport": [
+        "aborted delayed good body"
+      ],
+      "layerWarnings": []
+    },
+    {
+      "pose": "medium",
+      "mode": "stock",
+      "terrainSegments": 56,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 0,
+      "transport": [],
+      "layerWarnings": []
+    },
+    {
+      "pose": "medium",
+      "mode": "candidate",
+      "terrainSegments": 56,
+      "ownerBuffers": {
+        "vertices": 31179,
+        "drawAttributes": [
+          [
+            "color",
+            31179,
+            3,
+            "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7"
+          ],
+          [
+            "facadeStyle",
+            31179,
+            1,
+            "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69"
+          ],
+          [
+            "normal",
+            31179,
+            3,
+            "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+          ],
+          [
+            "position",
+            31179,
+            3,
+            "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+          ],
+          [
+            "topFlag",
+            31179,
+            1,
+            "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda"
+          ],
+          [
+            "uv",
+            31179,
+            2,
+            "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061"
+          ]
+        ]
+      },
+      "artVisible": false,
+      "requestsAtCamera": 0,
+      "transport": [],
+      "layerWarnings": []
+    },
+    {
+      "pose": "coarse",
+      "mode": "stock",
+      "terrainSegments": 8,
+      "ownerBuffers": null,
+      "artVisible": false,
+      "requestsAtCamera": 0,
+      "transport": [],
+      "layerWarnings": []
+    },
+    {
+      "pose": "coarse",
+      "mode": "candidate",
+      "terrainSegments": 8,
+      "ownerBuffers": null,
+      "artVisible": false,
+      "requestsAtCamera": 0,
+      "transport": [],
+      "layerWarnings": []
+    }
+  ],
+  "stockComparisons": [
+    {
+      "pose": "street",
+      "mode": "corrupt",
+      "stockOwnerPresent": true,
+      "actualDrawBufferSha256Exact": true
+    },
+    {
+      "pose": "street",
+      "mode": "missing",
+      "stockOwnerPresent": true,
+      "actualDrawBufferSha256Exact": true
+    },
+    {
+      "pose": "street",
+      "mode": "held",
+      "stockOwnerPresent": true,
+      "actualDrawBufferSha256Exact": true
+    },
+    {
+      "pose": "medium",
+      "mode": "candidate",
+      "stockOwnerPresent": true,
+      "actualDrawBufferSha256Exact": true
+    },
+    {
+      "pose": "coarse",
+      "mode": "candidate",
+      "stockOwnerPresent": false,
+      "actualDrawBufferSha256Exact": null
+    }
+  ],
+  "flight": [
+    {
+      "mode": "stock",
+      "dispatchEnteredActualFlight": true,
+      "observedDistanceM": 503.0040481189156,
+      "endState": {
+        "x": 51261.598778051804,
+        "z": 35401.78593149513,
+        "altitude": 64.5579479633865,
+        "heading": 5.3930673886624785,
+        "bank": 0,
+        "speed": 52.078776681155524,
+        "throttle": 0.56,
+        "layerWarnings": []
+      },
+      "churchVisible": false,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ]
+    },
+    {
+      "mode": "candidate",
+      "dispatchEnteredActualFlight": true,
+      "observedDistanceM": 501.32441628250143,
+      "endState": {
+        "x": 51262.88450087296,
+        "z": 35402.866708962254,
+        "altitude": 64.54526609080835,
+        "heading": 5.3930673886624785,
+        "bank": 0,
+        "speed": 52.078597744311146,
+        "throttle": 0.56,
+        "layerWarnings": []
+      },
+      "churchVisible": true,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ]
+    }
+  ]
+}

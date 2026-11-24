@@ -1,0 +1,258 @@
+{
+  "street": {
+    "imageIDsMatch": true,
+    "oldIDs": [
+      "23-16",
+      "23-17",
+      "23-18",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "newIDs": [
+      "23-16",
+      "23-17",
+      "23-18",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "pose": {
+      "eye": [
+        51126.12235040195,
+        11.65,
+        35307.31472497186
+      ],
+      "aim": [
+        51111.50512722345,
+        13.35,
+        35336.62782778891
+      ]
+    },
+    "totals": {
+      "n": 198750,
+      "exactRGB": 169701,
+      "changed": 29049,
+      "gt2": 28692,
+      "gt8": 26274,
+      "max": 176,
+      "positiveBBox": [
+        38,
+        79,
+        333,
+        263
+      ],
+      "gt2BBox": [
+        38,
+        79,
+        333,
+        262
+      ]
+    },
+    "modelSilhouettesDilation3px": {
+      "n": 31957,
+      "exactRGB": 4448,
+      "changed": 27509,
+      "gt2": 27337,
+      "gt8": 25357,
+      "max": 176,
+      "positiveBBox": [
+        137,
+        79,
+        333,
+        263
+      ],
+      "gt2BBox": [
+        137,
+        79,
+        333,
+        262
+      ]
+    },
+    "casterPrismsExtraOnly": {
+      "n": 21898,
+      "exactRGB": 20358,
+      "changed": 1540,
+      "gt2": 1355,
+      "gt8": 917,
+      "max": 15,
+      "positiveBBox": [
+        38,
+        240,
+        168,
+        262
+      ],
+      "gt2BBox": [
+        38,
+        240,
+        165,
+        262
+      ]
+    },
+    "protectedOutsideAllPrimeInfluence": {
+      "n": 144895,
+      "exactRGB": 144895,
+      "changed": 0,
+      "gt2": 0,
+      "gt8": 0,
+      "max": 0,
+      "positiveBBox": null,
+      "gt2BBox": null
+    },
+    "top15RowsControl": {
+      "n": 7950,
+      "exactRGB": 7950,
+      "changed": 0,
+      "gt2": 0,
+      "gt8": 0,
+      "max": 0,
+      "positiveBBox": null,
+      "gt2BBox": null
+    },
+    "localGroundGuard": {
+      "floor": 6.383701648712158,
+      "min": 6.418701648712158,
+      "max": 8.230388641357422,
+      "groundPoints": 16,
+      "guardedMargin": 50
+    },
+    "nativePrimitives": {
+      "oldTri": 22,
+      "newTri": 5364,
+      "castPerSideTapRadiusLightM": 0.9876302083333331
+    },
+    "pngSHA256": [
+      "474830dbeeecb57401642585a668d19914eb8ad52329010fbc19fd296b1e6871",
+      "b704800aa859428adb2356ced50725e5ee7e6381e74eb57835c49e5970e05202"
+    ]
+  },
+  "air": {
+    "imageIDsMatch": true,
+    "oldIDs": [
+      "23-16",
+      "23-17",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "newIDs": [
+      "23-16",
+      "23-17",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "pose": {
+      "eye": [
+        51151.469099657756,
+        61.25,
+        35260.78025272575
+      ],
+      "aim": [
+        51112.35666325,
+        12.3,
+        35339.71252711398
+      ]
+    },
+    "totals": {
+      "n": 198750,
+      "exactRGB": 194094,
+      "changed": 4656,
+      "gt2": 4492,
+      "gt8": 4054,
+      "max": 155,
+      "positiveBBox": [
+        189,
+        148,
+        295,
+        219
+      ],
+      "gt2BBox": [
+        190,
+        148,
+        295,
+        218
+      ]
+    },
+    "modelSilhouettesDilation3px": {
+      "n": 4945,
+      "exactRGB": 1139,
+      "changed": 3806,
+      "gt2": 3784,
+      "gt8": 3570,
+      "max": 155,
+      "positiveBBox": [
+        223,
+        148,
+        295,
+        218
+      ],
+      "gt2BBox": [
+        223,
+        148,
+        295,
+        218
+      ]
+    },
+    "casterPrismsExtraOnly": {
+      "n": 3297,
+      "exactRGB": 2447,
+      "changed": 850,
+      "gt2": 708,
+      "gt8": 484,
+      "max": 15,
+      "positiveBBox": [
+        189,
+        183,
+        255,
+        219
+      ],
+      "gt2BBox": [
+        190,
+        183,
+        245,
+        218
+      ]
+    },
+    "protectedOutsideAllPrimeInfluence": {
+      "n": 190508,
+      "exactRGB": 190508,
+      "changed": 0,
+      "gt2": 0,
+      "gt8": 0,
+      "max": 0,
+      "positiveBBox": null,
+      "gt2BBox": null
+    },
+    "top15RowsControl": {
+      "n": 7950,
+      "exactRGB": 7950,
+      "changed": 0,
+      "gt2": 0,
+      "gt8": 0,
+      "max": 0,
+      "positiveBBox": null,
+      "gt2BBox": null
+    },
+    "localGroundGuard": {
+      "floor": 6.383701648712158,
+      "min": 6.418701648712158,
+      "max": 8.230388641357422,
+      "groundPoints": 16,
+      "guardedMargin": 50
+    },
+    "nativePrimitives": {
+      "oldTri": 22,
+      "newTri": 5364,
+      "castPerSideTapRadiusLightM": 0.9876302083333331
+    },
+    "pngSHA256": [
+      "e67d2d0c73bc2477f27dd3ba8bc76f8abdb5c8a63ff6a91c334d2acf9b7683f9",
+      "7060758a77fb5ce996adf9e10067754c4b9e0f9a8cddbd51f6f5b5fee5eabab7"
+    ]
+  }
+}

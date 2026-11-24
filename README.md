@@ -42,6 +42,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-wharf.md). |
 | Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
+| Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](docs/qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |
 | North Rustico Harbour | `?northRusticoLighthouseStudy` | [Survey-fitted lighthouse, keeper’s dwelling and local grade](docs/landmarks/north-rustico.md). Choose **North Rustico Harbour · coastal pass**. |
 | Indian River | `?indianRiverReview` | [St. Mary’s exterior and local grade](docs/landmarks/st-marys-indian-river.md). Choose **Indian River · country pass**. |
 | Hog Island | `?hogIslandPhotoStudy` | [Dated aerial surface detail](docs/qa/hog-island-photo-study.md). Choose a west or east **Hog Island · dune pass**. |

@@ -26,6 +26,7 @@ source-confirmed carriageway, not the nearby intersections or sidewalks.
 [Montague’s former first Town Hall](qa/montague-hall.md) retains its original
 outline with a measured shallow roof and independently authored recessed fire bays. Nearby [571 Main Street](qa/montague-macdonald.md)
 uses a separately fitted cross-gable, two lower roof planes and an original covered verandah.
+In Georgetown, the [St. David’s United Church exterior study](qa/st-davids-church-study.md) replaces one flat cover shell with a survey-fitted gable and tower, original Gothic joinery and a matched shadow caster in Standard.
 
 ## Attribution
 

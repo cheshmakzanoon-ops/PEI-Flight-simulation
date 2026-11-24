@@ -1,0 +1,4 @@
+3a1e8dc66bcfd49afdbd976dd3e5482c2a264cc70833ae8d113af5e227a14886  author/church.ts
+5c4d33624476b4c61f8687e2a763c2bbff66b520577421cad07d111dbf9d4a90  author/geometry.ts
+a3bdf806b6a97e44dfbdf3b1fb5c345b74b7ccea28d5cb7d34c97d8b3d52ea52  author/materials.ts
+b5e6a4168ddd161ab538e9da0d6d703c0a4a9da57bd1fb76abadacbab19cfb68  author/survey.ts

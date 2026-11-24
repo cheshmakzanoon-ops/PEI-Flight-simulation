@@ -1,0 +1,585 @@
+{
+  "epoch": "NRCan 2020 / dated archival visible exterior, independent original paint and geometry",
+  "baseSource": "5c692bcdfa77c553e2726ad919c490ff2b064592",
+  "churchRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=11965",
+  "license": "Open Government Licence \u2013 Canada: https://open.canada.ca/en/open-government-licence-canada",
+  "dataReceipt": {
+    "copc": {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_435000_681000.copc.laz",
+      "name": "pei_2020_435000_681000-st-davids",
+      "ETag": "\"90791d6279adeeb3f7d4669bcf4c5ce2-5\"",
+      "objectLength": 37430498,
+      "headerSHA": "09368f112201d36533bb2f140116d07bb58ebe5a3f735510d2c0d249a72c14cb",
+      "boundsMinMaxUTM": [
+        534986.1518292864,
+        5113985.960587217,
+        535985.7808292864,
+        5114985.604587216
+      ],
+      "EPSG2961query": [
+        [
+          535929.9526371245,
+          5114354.985359153
+        ],
+        [
+          535977.7633005423,
+          5114409.325325901
+        ]
+      ],
+      "actualReadUTM": [
+        [
+          535929.9526371245,
+          5114354.985359153
+        ],
+        [
+          535977.7633005423,
+          5114409.325325901
+        ]
+      ],
+      "headerExtentUTM": [
+        [
+          534986.1518292864,
+          5113985.960587217
+        ],
+        [
+          535985.7808292864,
+          5114985.604587216
+        ]
+      ],
+      "verticalInfo": "CGVD2013 for this PEI 2020 acquisition, version/source header needed",
+      "uncroppedLASHeaderPointN": 6029232,
+      "pointFormat": "6",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "totalValid": 15355,
+      "rejectedWithheld": 0,
+      "classes": {
+        "1": 4634,
+        "2": 8756,
+        "6": 1965
+      },
+      "queries": 10,
+      "wireReadBytes": 1773462,
+      "rawFloat64LEsha256": "3fc349ce96fd09e4147072d72fc5a91f1095061d44f3abfae2a0e6cbce4fd4cd",
+      "archiveSha256": "9a40b708d65ed7feeff25c238e8c1989bad8bf93c81024bd155a81543cac1cf9"
+    },
+    "dem": {
+      "window": [
+        427684,
+        181692,
+        65,
+        68
+      ],
+      "fileSHA256": "2f36ca2c0c3e881ed0060725e17244a8286bf05c4087206c40a48b06af1440e3",
+      "srs": "EPSG3979 (horizontal) CGVD2013 (vertical)",
+      "urls": [
+        "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+        "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif"
+      ]
+    }
+  },
+  "owner": {
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "chunk": "44a3bb73d0752c7c7416ced2240a7ec9d65756cbf1ec4cf1b988f02f2ca9a849",
+    "id": "q11220",
+    "size": 24504,
+    "offset": 1987101,
+    "count": 560,
+    "ordinal": 203,
+    "boundsWGS": [
+      -62.564866,
+      46.159355,
+      -62.496533,
+      46.193808
+    ],
+    "fields": {
+      "footprint": [
+        [
+          -62.534192,
+          46.182129
+        ],
+        [
+          -62.534204,
+          46.18216
+        ],
+        [
+          -62.534161,
+          46.182168
+        ],
+        [
+          -62.534149,
+          46.182139
+        ],
+        [
+          -62.534107,
+          46.182147
+        ],
+        [
+          -62.534052,
+          46.182009
+        ],
+        [
+          -62.534176,
+          46.181985
+        ],
+        [
+          -62.53423,
+          46.182121
+        ]
+      ],
+      "height": 11.7,
+      "minHeight": 5.12
+    },
+    "start": 14070,
+    "end": 14136,
+    "vertices": 31179,
+    "position": [
+      51377.24199477866,
+      0,
+      35951.55096605661
+    ],
+    "expectedAttr": {
+      "position": "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6",
+      "uv": "b6decc727fd02a2ba7dd914b02f8461d298855bb03743986fca0740bd35f7061",
+      "color": "5a2875f5bacf8d483a780a68a1fd14e70e177cd3ccb03677d8bcfc2d41a4ccd7",
+      "topFlag": "4e6fa46892a48bc7dc0994b924641536a9f10d59f8e41695c3305ee2ad39cbda",
+      "facadeStyle": "769c21e08897c5a96c84897ea30fdd725a8d32c6209561347c3efe8112692d69",
+      "normal": "dc8e36e3ae3b92510cc61104022c5af14478e2df17cabe92078495d77a6a316f"
+    },
+    "combined": "72f0130180324de2a93f305f4644b3cd0f2500b88dec33665f4134acdabbfdbd",
+    "partHashOnly": {
+      "position": "b5c52044a4e6b3dcc44cfa394f1bb9e2d8066f81bf9704aec6b4919c9e5ce261",
+      "normal": "ed26ea7f2b4c120aeb6e5c78a51e817926ff59ca23072518fed11addbd0bdc56",
+      "color": "82d9d35b9ff3097ba050a2b7b9d89978097aecfbdf317cf0ba34b722fca44b72",
+      "uv": "76311f510e0c7642598da88f6566d827e91dc2e8f25b314cf40d72c37e75bc76",
+      "topFlag": "b74b676650f8728134c577ea8c092cce37611f8c1c613e27aff1bfeb51ce5528",
+      "facadeStyle": "efbb03b7a7f6fd3c29391d4d0281e1830a85caadd831c3f04716faca4107a42e"
+    },
+    "withoutWorld": {
+      "vertices": 31179,
+      "span": [
+        14070,
+        14136
+      ],
+      "positionHash": "c1ba6a09ceaa872d14c5b420784bb18b733340ccfd4d744a9817dd240e64e8d6"
+    },
+    "materialKind": "ShaderMaterial",
+    "installedSpecialPaints": {
+      "waterStreet": true,
+      "victoria": true,
+      "montagueHall": true,
+      "sourisMain": true
+    },
+    "geometryHasIndex": false,
+    "ownFacadeRoles": [
+      0
+    ]
+  },
+  "world": {
+    "mapping": 303,
+    "intensity": 0.77
+  },
+  "groundTiers": [
+    {
+      "mode": "near",
+      "lod": 112,
+      "points": 3322,
+      "minY": 7.472334659773821,
+      "maxY": 7.642132725377694,
+      "maxGroundRayMismatchM": 2.7078622633069926e-07,
+      "minimumSignedDryM": 221.63554209610993,
+      "expectedSameLease": true
+    },
+    {
+      "mode": "mid",
+      "lod": 56,
+      "points": 3322,
+      "minY": 7.638935607453773,
+      "maxY": 7.745224844565748,
+      "maxGroundRayMismatchM": 2.250443653650791e-07,
+      "minimumSignedDryM": 221.63554209610993,
+      "expectedSameLease": false
+    },
+    {
+      "mode": "coarse",
+      "lod": 8,
+      "points": 3322,
+      "minY": 7.409975465686527,
+      "maxY": 7.690207870705136,
+      "maxGroundRayMismatchM": 8.325880074266934e-08,
+      "minimumSignedDryM": 221.63554209610993,
+      "expectedSameLease": false
+    },
+    {
+      "mode": "reentry",
+      "lod": 112,
+      "points": 3322,
+      "minY": 7.472334659773821,
+      "maxY": 7.642132725377694,
+      "maxGroundRayMismatchM": 2.7078622633069926e-07,
+      "minimumSignedDryM": 221.63554209610993,
+      "expectedSameLease": true
+    }
+  ],
+  "geometry": {
+    "rootFootprintShadowProjectionCheck": {
+      "method": "actual indexed artist buffers transformed with verified EPSG affine and real #132 stock engine buffers; all GEOS plan intersections, no independently invented curb or avenue.",
+      "drawnPlanM2": 190.9320929032077,
+      "crossLocalExisting": {
+        "existingBuildings": {
+          "triangles": 256,
+          "planIntersectionM2": 0,
+          "minimumDistanceM": 10.149288543438889
+        },
+        "roads": {
+          "triangles": 32,
+          "planIntersectionM2": 0,
+          "minimumDistanceM": 10.776918169430116
+        },
+        "sidewalks": {
+          "triangles": 0,
+          "planIntersectionM2": 0,
+          "minimumDistanceM": null
+        },
+        "parking": {
+          "triangles": 0,
+          "planIntersectionM2": 0,
+          "minimumDistanceM": null
+        }
+      }
+    },
+    "registered": {
+      "originXZ": [
+        51111.69140072926,
+        35337.302605766265
+      ],
+      "basisXZ": [
+        [
+          0.9583443127319242,
+          -0.26766669623748385
+        ],
+        [
+          0.26610500829656303,
+          0.9639685390873183
+        ]
+      ],
+      "seatY": 7.55,
+      "foundationY": 7.15,
+      "sidingY": 7.77,
+      "boundsXZ": [
+        51105.78966794326,
+        35330.300378219545,
+        51120.50067365974,
+        35351.60868868083
+      ],
+      "localMinMaxXYZ": [
+        -5.210000038146973,
+        -0.4000000059604645,
+        -6.760000228881836,
+        5.46999979019165,
+        13.560999870300293,
+        13.390000343322754
+      ],
+      "minSignedDryM": 210,
+      "actualDatumRegistration": "affine from actual archived geometry, no +.12 roof lift, vertical y stays CGVD fit. Attached stock terrain relief excluded by existing World lease.",
+      "maxAffineRegistrationDistM": 1.7619473115564123e-05,
+      "everyRoleBeyondPackedOwner": {
+        "shingle": {
+          "vertices": 382,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        },
+        "ornamental": {
+          "vertices": 16,
+          "outliers": 12,
+          "maxPlanBeyondOwnerM": 0.011000054490674396
+        },
+        "trim": {
+          "vertices": 3532,
+          "outliers": 1984,
+          "maxPlanBeyondOwnerM": 0.7984558391656383
+        },
+        "fascia": {
+          "vertices": 1076,
+          "outliers": 554,
+          "maxPlanBeyondOwnerM": 0.7984558391656383
+        },
+        "roof": {
+          "vertices": 12,
+          "outliers": 9,
+          "maxPlanBeyondOwnerM": 0.7984558391656383
+        },
+        "metal": {
+          "vertices": 44,
+          "outliers": 10,
+          "maxPlanBeyondOwnerM": 0.26100374356541634
+        },
+        "stone": {
+          "vertices": 200,
+          "outliers": 140,
+          "maxPlanBeyondOwnerM": 0.08199996851227895
+        },
+        "wood": {
+          "vertices": 2332,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        },
+        "shadow": {
+          "vertices": 2043,
+          "outliers": 302,
+          "maxPlanBeyondOwnerM": 0.7984558391656383
+        },
+        "glass": {
+          "vertices": 231,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        },
+        "roseGlass": {
+          "vertices": 44,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        },
+        "tealGlass": {
+          "vertices": 44,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        },
+        "blueGlass": {
+          "vertices": 44,
+          "outliers": 0,
+          "maxPlanBeyondOwnerM": 0.0
+        }
+      },
+      "sourceOverhangDiagnostics": {
+        "roof": {
+          "outOfOwnerNumericalSamples": 11329,
+          "approxSampleAreaM2": 21.932944,
+          "qualRoleReturns": 905,
+          "maxOverhangBeyondExactPlanM": 0.7984556699071079,
+          "nearestCoherentCl6SupportQ_m": [
+            0.20485243629460467,
+            0.4239354724327638,
+            0.49558589867261793,
+            0.6302966029470054,
+            0.8672339564022413
+          ],
+          "farthestXY": [
+            [
+              -5.21,
+              -13.39
+            ],
+            [
+              -4.420672701007371,
+              -13.030754749228212
+            ]
+          ],
+          "holdBeyond.75m": 26,
+          "holdBeyond1m": 0,
+          "maxAtOuterCornerOfRawXYExtent_m": 0.19980355256799243,
+          "badExtentUV": [
+            -5.21,
+            -13.39,
+            -5.122,
+            -12.818
+          ]
+        },
+        "metal": {
+          "outOfOwnerNumericalSamples": 933,
+          "approxSampleAreaM2": 1.806288,
+          "qualRoleReturns": 91,
+          "maxOverhangBeyondExactPlanM": 0.2610035853167147,
+          "nearestCoherentCl6SupportQ_m": [
+            0.16791678191319273,
+            0.35321684300095146,
+            0.398769397744203,
+            0.4878857644376826,
+            0.5418121388960508
+          ],
+          "farthestXY": [
+            [
+              -1.94,
+              3.46554
+            ],
+            [
+              -1.3999496539730405,
+              3.4218820383976203
+            ]
+          ],
+          "holdBeyond.75m": 0,
+          "holdBeyond1m": 0,
+          "maxAtOuterCornerOfRawXYExtent_m": 0.0,
+          "badExtentUV": null
+        }
+      }
+    },
+    "roofHeld": {
+      "n": 117,
+      "newQntlM": [
+        0.0002261116350137371,
+        0.020874233327194958,
+        0.04571330412364638,
+        0.05969887250893535,
+        0.10777040151756445
+      ],
+      "priorFlatQntlM": [
+        0.0027052307128911934,
+        4.500294769287109,
+        5.94729476928711,
+        6.076294769287109,
+        6.248294769287108
+      ]
+    },
+    "reviewApertureRays": 5670
+  },
+  "productionShadersCompiledInEGL": {
+    "EGL": "1.5",
+    "driver": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "GL": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+    "exactThreePrograms": [
+      "shingle",
+      "glass",
+      "caster",
+      "shingle-pmrem",
+      "glass-pmrem"
+    ]
+  },
+  "caveats": [
+    "No donor image pixels or Provincial vector data, neither placement of the separate rear porch nor as-built stairs/seating/interior inferred.",
+    "This package has an engine simulation/lifecycle proof, not a browser screenshot or device FPS claim."
+  ],
+  "frontPanelB3": {
+    "planeSet": {
+      "oldTriangles": 35,
+      "newTriangles": 84,
+      "oldAreaM2": 33.11792243025718,
+      "newAreaM2": 33.11792174761647,
+      "positiveAdditionalAreaM2": 5.099368193331455e-12,
+      "positiveMissingAreaM2": 6.826457993429347e-07,
+      "numericInteriorOverlapM2": 2.842170943040401e-14,
+      "holesBeforeAfter": [
+        2,
+        2
+      ],
+      "quantizedBoundsHausdorffM": null,
+      "statement": "Real B2, B3 actual north wall Float32 data projected on unchanged physical plane. Micron-scale representation differences are exposed; no grade, roof or role changes."
+    },
+    "actualRayGate": {
+      "tests": 113680,
+      "oldHits": 99280,
+      "newHits": 99280,
+      "mismatch": 0,
+      "duplicate": 0,
+      "maxDepthDelta": 3.262934002712381e-07
+    },
+    "sameBoundShape": [
+      -5.210000038146973,
+      -0.4000000059604645,
+      -6.760000228881836,
+      5.46999979019165,
+      13.560999870300293,
+      13.390000343322754
+    ],
+    "otherMaterialAndTransport": {
+      "b2WireSha": "54c2235628d8d080247067e06d376cfe5cb19781d7bb64e26953a90f1ae83703",
+      "b3WireSha": "ee50a277d3892916f4111500ff820a65ab4b42bc1ae8f019ae1553f962b7c39f",
+      "b3Wire": 374243,
+      "b3Raw": 1792460,
+      "examinedParts": {
+        "shingle": {
+          "geometryUnchanged": false,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 262144
+        },
+        "ornamental": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 262144
+        },
+        "trim": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "fascia": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "roof": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 262144
+        },
+        "metal": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "stone": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 262144
+        },
+        "wood": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 262144
+        },
+        "shadow": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "glass": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "roseGlass": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "tealGlass": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        },
+        "blueGlass": {
+          "geometryUnchanged": true,
+          "materialAndTexelsUnchanged": true,
+          "bytes": 0
+        }
+      },
+      "sameAllReceiverCasterShadersAndGates": true,
+      "authoredTexturingExactBytes": 1310720,
+      "releaseTriangleIncrease": 49
+    },
+    "formerStreetFanProximity": {
+      "pixels": 26,
+      "oldProximityPx": [
+        0.009483305484173934,
+        0.01520568486722227,
+        0.06006461745214364,
+        0.23056081932342173,
+        0.27150603794951517
+      ],
+      "newProximityPx": [
+        0.04287464972889984,
+        0.2203386664886675,
+        1.9412420376907176,
+        3.1153997165654266,
+        3.911991808081636
+      ],
+      "newMovedAtLeastHalfAPixel": 23,
+      "sameOriginalPose": [
+        51126.12235040195,
+        11.65,
+        35307.31472497186
+      ]
+    }
+  }
+}

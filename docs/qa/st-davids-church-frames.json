@@ -1,0 +1,101 @@
+[
+  {
+    "view": "street",
+    "mode": "actual Standard fixed-camera",
+    "size": [
+      530,
+      375
+    ],
+    "eyeXYZ": [
+      51126.12235040195,
+      11.65,
+      35307.31472497186
+    ],
+    "aimXYZ": [
+      51111.50512722345,
+      13.35,
+      35336.62782778891
+    ],
+    "ground": {
+      "height": 7.507294929893457,
+      "land": true,
+      "runway": false
+    },
+    "lod": 112,
+    "tiles": [
+      "23-16",
+      "23-17",
+      "23-18",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "restoredCandidateExact": true,
+    "totalDraws": [
+      47,
+      60
+    ],
+    "totalTriangles": [
+      258828,
+      264170
+    ],
+    "shadowDepthDraws": [
+      2,
+      3
+    ],
+    "pngSha256": [
+      "474830dbeeecb57401642585a668d19914eb8ad52329010fbc19fd296b1e6871",
+      "b704800aa859428adb2356ced50725e5ee7e6381e74eb57835c49e5970e05202"
+    ]
+  },
+  {
+    "view": "air",
+    "mode": "actual Standard fixed-camera",
+    "size": [
+      530,
+      375
+    ],
+    "eyeXYZ": [
+      51151.469099657756,
+      61.25,
+      35260.78025272575
+    ],
+    "aimXYZ": [
+      51112.35666325,
+      12.3,
+      35339.71252711398
+    ],
+    "ground": {
+      "height": 7.507294929893457,
+      "land": true,
+      "runway": false
+    },
+    "lod": 112,
+    "tiles": [
+      "23-16",
+      "23-17",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-17"
+    ],
+    "restoredCandidateExact": true,
+    "totalDraws": [
+      44,
+      57
+    ],
+    "totalTriangles": [
+      260840,
+      266182
+    ],
+    "shadowDepthDraws": [
+      2,
+      3
+    ],
+    "pngSha256": [
+      "e67d2d0c73bc2477f27dd3ba8bc76f8abdb5c8a63ff6a91c334d2acf9b7683f9",
+      "7060758a77fb5ce996adf9e10067754c4b9e0f9a8cddbd51f6f5b5fee5eabab7"
+    ]
+  }
+]

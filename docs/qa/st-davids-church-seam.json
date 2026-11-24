@@ -1,0 +1,93 @@
+{
+  "street": {
+    "pixels": 198750,
+    "rgbExact": 198473,
+    "changedAbove2Codes": 55,
+    "above2CodeBounds": [
+      307,
+      118,
+      331,
+      249
+    ],
+    "rgbMaxCodeChange": 50,
+    "restoredB3Exact": true,
+    "framesSha256": [
+      "b6a1ef66e2b247e1ac1a2ff6a99204764b1cb377d1411013b77cb63610b13751",
+      "68685e9352d90e45ab88f3b65d47b4568ca1f6f4f84d931c7befd6940f36f880"
+    ],
+    "predeclaredStreetWitnesses": 27,
+    "seamMinusNeighborMedianRgbCodes": {
+      "(1,)": [
+        {
+          "p50Signed": -7.0,
+          "minimumSigned": -14.833328247070312,
+          "absAbove6": 24
+        },
+        {
+          "p50Signed": -0.166656494140625,
+          "minimumSigned": -1.3333282470703125,
+          "absAbove6": 0
+        }
+      ],
+      "(1, 2)": [
+        {
+          "p50Signed": -7.1666717529296875,
+          "minimumSigned": -15.333343505859375,
+          "absAbove6": 23
+        },
+        {
+          "p50Signed": -0.1666717529296875,
+          "minimumSigned": -2.4999847412109375,
+          "absAbove6": 0
+        }
+      ],
+      "(1, 2, 3)": [
+        {
+          "p50Signed": -7.5,
+          "minimumSigned": -15.833343505859375,
+          "absAbove6": 23
+        },
+        {
+          "p50Signed": -0.4999847412109375,
+          "minimumSigned": -2.3333282470703125,
+          "absAbove6": 0
+        }
+      ],
+      "(2, 3)": [
+        {
+          "p50Signed": -7.833343505859375,
+          "minimumSigned": -16.0,
+          "absAbove6": 23
+        },
+        {
+          "p50Signed": -0.8333282470703125,
+          "minimumSigned": -2.5,
+          "absAbove6": 0
+        }
+      ]
+    },
+    "medianOriginalWitnessBrightening": 7.0,
+    "cameraPositionXZMetresAndElevation": [
+      51126.12235040195,
+      11.65,
+      35307.31472497186
+    ]
+  },
+  "air": {
+    "pixels": 198750,
+    "rgbExact": 198704,
+    "changedAbove2Codes": 19,
+    "above2CodeBounds": [
+      286,
+      180,
+      291,
+      203
+    ],
+    "rgbMaxCodeChange": 9,
+    "restoredB3Exact": true,
+    "framesSha256": [
+      "58a9baa10192cbe58f47e10e297ee4e83ceba84758f5d9fd25a1fcfc9663c7d0",
+      "0a4019aeffe4449ce2d967f8eab250e88095b1a3fdde8f326ecdd39152958d0d"
+    ]
+  }
+}
