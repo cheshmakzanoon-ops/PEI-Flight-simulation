@@ -557,7 +557,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>){
   this.details=new DetailImagery(orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
@@ -665,6 +665,8 @@ export class World {
    const neighbours=[[0,-1],[1,0],[0,1],[-1,0],[-1,-1],[1,-1],[1,1],[-1,1]] as const;
    const protectsMeadow=(i:number,j:number)=>{
     if(protectsFloor(i,j))return true;
+    if(!meadow&&standardMeadow&&(!standardMeadow.has(i+'-'+j)||
+       !!grassCoast?.uniforms(i,j)||!!duneSand?.uniforms(i,j)||i+'-'+j===POINT_PRIM.terrainTile))return true;
     const x=T.left+i*w,z=T.top+j*d;
     // Preserve the historical Bowley review guard without disabling a whole
     // tile of independent dry meadow around a tightly surveyed new pond.
@@ -700,7 +702,7 @@ export class World {
        ...(localMontague&&montagueGround?{montagueGroundBounds:{value:new THREE.Vector4(
           montagueGround.x0,montagueGround.z0,montagueGround.x1,montagueGround.z1)}}:{})}:{};
     const hasCape=this.capeShadow?.intersects(x0,z0,x0+w,z0+d)??false;
-    const showMeadow=meadow&&!protectsMeadow(i,j);
+    const showMeadow=(meadow||!!standardMeadow)&&!protectsMeadow(i,j);
     const meadowGuard=showMeadow?neighbours.reduce((m,[x,z],bit)=>protectsMeadow(i+x,j+z)?m|(1<<bit):m,0):0;
     const meadowUniforms:Record<string,THREE.IUniform>=showMeadow?{meadowStrength:this.meadowStrength,meadowTileGuard:{value:meadowGuard},
       meadowTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
@@ -1022,6 +1024,19 @@ export class World {
   const q=this.stagedPointPrim;if(!q)return;
   this.setPointPrimGround(false);
   this.scene.remove(q.candidate);q.candidate.geometry.dispose();this.stagedPointPrim=undefined;
+ }
+ /** Demand only while the real eye is close to an eligible visible base tile. */
+ meadowNear(x:number,z:number){
+  if(!Number.isFinite(x)||!Number.isFinite(z))return false;
+  // 44 m spacing is below the narrowest pinned source category cell.
+  for(let dz=-176;dz<=176;dz+=44)for(let dx=-176;dx<=176;dx+=44){
+   if(dx*dx+dz*dz>184**2)continue;
+   const X=x+dx,Z=z+dz,[u,v]=this.terrain.uv(X,Z);
+   const m=this.byId.get(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS))?.local;
+   if(m?.uniforms.meadowStrength===this.meadowStrength&&
+      this.cover.sample(this.terrain,X,Z)===30&&this.cover.distance(this.terrain,X,Z)>185)return true;
+  }
+  return false;
  }
  private copyNearEdge(a:THREE.Mesh,b:THREE.Mesh){
   const src=a.geometry.getAttribute('position'),dest=b.geometry.getAttribute('position'),n=112;

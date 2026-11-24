@@ -1,0 +1,252 @@
+{
+  "releaseBase": "bae8811d9b58b97a1b94d6899603083b4b07586a",
+  "description": "Standard inland close grassland surface. Fixed renderer views use the original registered material, and exact unmodified compiled flight checks separately verify live admission. No new world geometry, plant placements, crop inference, or hardware performance claim.",
+  "viewport": [
+    870,
+    530
+  ],
+  "candidateTerrainTiles": 238,
+  "grasslandCellsWithPotentialSignedSupport": 526313,
+  "localTestsPassed": 391,
+  "protectedRunwayPixels": 278660,
+  "closedGateHighPixels": 461100,
+  "matchedLand": {
+    "prince": {
+      "before": {
+        "draws": 85,
+        "tris": 301036
+      },
+      "after": {
+        "draws": 85,
+        "tris": 301036
+      },
+      "mask": {
+        "draws": 85,
+        "tris": 301036
+      },
+      "exact": true,
+      "camera": [
+        -51954.05427580668,
+        24,
+        4253.9164563120385
+      ],
+      "pixels": {
+        "over2": 175857,
+        "offmask": 0,
+        "max": 18
+      },
+      "errors": []
+    },
+    "queens": {
+      "before": {
+        "draws": 93,
+        "tris": 419388
+      },
+      "after": {
+        "draws": 93,
+        "tris": 419388
+      },
+      "mask": {
+        "draws": 93,
+        "tris": 419388
+      },
+      "exact": true,
+      "camera": [
+        -12430.039121159196,
+        58.03727938930024,
+        27832.552793101608
+      ],
+      "pixels": {
+        "over2": 147084,
+        "offmask": 0,
+        "max": 17
+      },
+      "errors": []
+    },
+    "kings": {
+      "before": {
+        "draws": 139,
+        "tris": 406222
+      },
+      "after": {
+        "draws": 139,
+        "tris": 406222
+      },
+      "mask": {
+        "draws": 139,
+        "tris": 406222
+      },
+      "exact": true,
+      "camera": [
+        72995.43716712778,
+        84,
+        8997.58874231695
+      ],
+      "pixels": {
+        "over2": 152799,
+        "offmask": 0,
+        "max": 16
+      },
+      "errors": []
+    },
+    "queens-high": {
+      "before": {
+        "draws": 15,
+        "tris": 336174
+      },
+      "after": {
+        "draws": 15,
+        "tris": 336174
+      },
+      "mask": {
+        "draws": 15,
+        "tris": 336174
+      },
+      "exact": true,
+      "camera": [
+        -12433.973241091873,
+        396.2728007031765,
+        27837.082991811963
+      ],
+      "pixels": {
+        "over2": 0,
+        "offmask": 0,
+        "max": 0
+      },
+      "errors": []
+    }
+  },
+  "runways": {
+    "cyyg-03": {
+      "before": {
+        "draws": 139,
+        "tris": 302760
+      },
+      "after": {
+        "draws": 139,
+        "tris": 302760
+      },
+      "mask": {
+        "draws": 139,
+        "tris": 302760
+      },
+      "exact": true,
+      "camera": [
+        5975.3556680854645,
+        56,
+        22822.88494746706
+      ],
+      "pixels": {
+        "runwayMarked": 265783,
+        "runwayChanged": 0,
+        "elsewhereOver2": 0
+      },
+      "errors": []
+    },
+    "cyyg-10": {
+      "before": {
+        "draws": 82,
+        "tris": 284160
+      },
+      "after": {
+        "draws": 82,
+        "tris": 284160
+      },
+      "mask": {
+        "draws": 82,
+        "tris": 284160
+      },
+      "exact": true,
+      "camera": [
+        5495.139227731591,
+        59.060272157245436,
+        23796.683542563194
+      ],
+      "pixels": {
+        "runwayMarked": 5488,
+        "runwayChanged": 0,
+        "elsewhereOver2": 90927
+      },
+      "errors": []
+    },
+    "cysu-05": {
+      "before": {
+        "draws": 90,
+        "tris": 264540
+      },
+      "after": {
+        "draws": 90,
+        "tris": 264540
+      },
+      "mask": {
+        "draws": 90,
+        "tris": 264540
+      },
+      "exact": true,
+      "camera": [
+        -48752.84481096165,
+        27.319373577356146,
+        7161.136604785389
+      ],
+      "pixels": {
+        "runwayMarked": 7389,
+        "runwayChanged": 0,
+        "elsewhereOver2": 9199
+      },
+      "errors": []
+    }
+  },
+  "compiledFlight": {
+    "prince": {
+      "site": "prince-meadow-low",
+      "proof": {
+        "proof": "ready",
+        "strength": 1
+      },
+      "flownM": 94.056,
+      "errors": []
+    },
+    "queens": {
+      "site": "queens-meadow-low",
+      "proof": {
+        "proof": "ready",
+        "strength": 1
+      },
+      "flownM": 92.259,
+      "errors": []
+    },
+    "kings": {
+      "site": "kings-meadow-low",
+      "proof": {
+        "proof": "ready",
+        "strength": 1
+      },
+      "flownM": 91.661,
+      "errors": []
+    },
+    "stock": {
+      "site": "queens-meadow-low",
+      "proof": null,
+      "flownM": 90.461,
+      "errors": []
+    },
+    "wrong-cover": {
+      "site": "queens-meadow-low",
+      "proof": {
+        "proof": "stock",
+        "strength": 0
+      },
+      "flownM": 91.66,
+      "errors": []
+    },
+    "high": {
+      "site": "charlottetown",
+      "proof": {
+        "proof": "cold",
+        "strength": 0
+      },
+      "flownM": 90.98,
+      "errors": []
+    }
+  }
+}

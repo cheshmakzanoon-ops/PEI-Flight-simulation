@@ -46,6 +46,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockCanopyLight'))q.delete('canopyLight');
  if(q.has('stockDuneGrass'))q.delete('duneGrassSurface');
  if(q.has('stockBasinSand'))q.delete('basinSand');
+ if(q.has('stockMeadow'))q.delete('meadowTexture');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -263,4 +264,15 @@ export function applyReviewSceneryURL(source:string,selected:ReadonlySet<ScenicR
  }
  url.searchParams.set('departure',departureId);
  return url.href;
+}
+
+/** Standard's close open-ground material is independent of inherited reviews. */
+export function standardMeadowRequested(q:URLSearchParams){
+ if(q.has('stockMeadow')||q.has('meadowTexture'))return false;
+ const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+ !['surveyRelief','inlandRelief','buildingShadows','pointPrimStudy','basinChannel','basinSand','regionalCanopyStudy',
+   'bowleySurveyPreview','montagueFoundationPreview','duneReliefStudy','duneSandDetail','duneGrassSurface',
+   'kingsDryCrownStudy','orthophotoSeamStudy','shoreToneStudy','canopyLight','cavendishDetail',
+   'gablesGradeReview','greenGablesBarnReview','northCapeWind','woodland3D','forestFloor'].some(k=>q.has(k));
 }

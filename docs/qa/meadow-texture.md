@@ -1,7 +1,10 @@
 # Close texture on mapped open ground
 
-Add `?meadowTexture` to compare the same atlas with fine variation on
-eligible terrain labelled grassland in ESA WorldCover. The surface keeps
+Standard adds fine surface variation to eligible inland terrain labelled
+grassland in ESA WorldCover. Try **Prince County**, **Queens County** or
+**Kings County · inland meadow pass**. Use `?stockMeadow` to compare the
+same route without it. The older explicit `?meadowTexture` review remains
+available, including its previously documented comparison controls. The surface keeps
 its existing satellite colour. Brown ground stays brown; this does not
 substitute green fields, draw rows, infer crop orientation or place
 individual plants.
@@ -16,7 +19,7 @@ for building shadow comparison stays unchanged. There are no added
 images, draw calls or triangles. Flight contact, tree locations, buildings
 and the shoreline do not change.
 
-These are optional visual materials on an approximately 47 m land cover
+These are visual materials on an approximately 47 m land cover
 atlas, not a vegetation survey or claim of what is growing now.
 
 [Matched actual render pairs](meadow-comparison.webp) · [Three-county cover gate](meadow-render-gate.json) · [Runway pixel gate](meadow-runway-gate.json)
@@ -56,3 +59,22 @@ shadow demonstrably changes the result.
 python tools/qa/meadow-edge.py --checkout . --out /tmp/meadow-edge --chromium /path/to/chromium
 python tools/qa/meadow-shadow.py --checkout . --out /tmp/meadow-shadow --chromium /path/to/chromium
 ```
+
+## Standard scope
+
+The baked eligibility roster starts with 238 terrain tiles that can contain
+a class-30 source sample above the coastal guard. Standard further excludes
+tiles reserved for fine coastal grass, the dune material, Point Prim, and the
+existing surveyed land and water exclusions. The shader still checks the
+local category, signed coast guard, slope, image footprint and actual runway
+envelopes. No new map texture or geometry is loaded. The browser checks the
+immutable decoded Cover only once, on demand near eligible ground. Until it
+matches, the material has zero strength. Corrupt or unsupported coverage
+retains the old appearance.
+
+[Standard matched renders in all three counties](meadow-standard-comparison.webp)
+and the [replay receipt](meadow-standard-gate.json) separate visible ground
+from the high view and the three painted runways. The compiled replay also
+checks that the selected low departures fly normally, the explicit stock
+comparison never enables the material, and a same-size but different
+Cover raster leaves the stock view in place.
