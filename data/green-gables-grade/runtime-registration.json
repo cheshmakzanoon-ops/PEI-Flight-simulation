@@ -1,0 +1,35 @@
+{
+  "shape": {
+    "id": "green-gables-southwest-measured-grade",
+    "kind": "inland",
+    "tileX": 13,
+    "tileZ": 11,
+    "firstX": 77,
+    "firstZ": 69,
+    "cellsX": 2,
+    "cellsZ": 2,
+    "sub": 32,
+    "relativeToParent": true,
+    "sha256": "9295fbc63b625396ba82f2294584a571c86a85154080f5a4a0a20cd09716a344",
+    "nativeSampleReserveMetres": 3.0989624716401947
+  },
+  "dimensionsXY": [
+    65,
+    65
+  ],
+  "sampleSpacingXY": [
+    1.7000644066512585,
+    1.635385262207142
+  ],
+  "positive": 520,
+  "maxRelMetres": 0.95,
+  "triangleSlopeRatios": [
+    0.1039678424197796,
+    0.1097386388549778,
+    0.11383817986045613,
+    0.14409178711772924
+  ],
+  "addedTriangles": 8184,
+  "decodedBytes": 12675,
+  "wireBytes": 1146
+}

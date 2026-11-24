@@ -1,0 +1,13 @@
+{
+  "decodedExactPackSha": "9295fbc63b625396ba82f2294584a571c86a85154080f5a4a0a20cd09716a344",
+  "triangleAllHeightOrPhysicsWeightSupport": 2320,
+  "uniqueActualTrueReliefTriangles": 1160,
+  "rectangleChecks": 19088,
+  "unapprovedSupportWith1mmProjPad": 0,
+  "unapprovedAreaM2": 0.0,
+  "EQWorldTriangleProjectionObservedCurvatureM": 1.5832483768463135e-07,
+  "totalActiveTriangleUnionNativeM2": 1646.9765170648466,
+  "testedBothActualRenderAndExactAnalyticContact": true,
+  "safeRasterEntireTriangles": true,
+  "maximumTerrainAtAnyCheckedVertexShiftM": 0.9500018418599279
+}

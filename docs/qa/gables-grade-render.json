@@ -1,0 +1,22 @@
+{
+  "gables-grade-low-close": {
+    "pixels": 445632,
+    "localChangeAbove2": 4923,
+    "malformedFullyExact": true,
+    "protectedPixels": 173541,
+    "protectedPixelsAnyChange": 0,
+    "protectedPixelsAbove2": 0,
+    "houseFenceExclusive": 1864,
+    "houseFenceChanged": 0
+  },
+  "gables-grade-wide-close": {
+    "pixels": 445632,
+    "localChangeAbove2": 575,
+    "malformedFullyExact": true,
+    "protectedPixels": 210266,
+    "protectedPixelsAnyChange": 0,
+    "protectedPixelsAbove2": 0,
+    "houseFenceExclusive": 308,
+    "houseFenceChanged": 0
+  }
+}

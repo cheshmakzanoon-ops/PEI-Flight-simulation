@@ -1,0 +1,18 @@
+{
+  "nativeStations": 4355,
+  "approved": 2030,
+  "realThreeRayTraces": 484,
+  "baselineTriangles": 25088,
+  "newTriangles": 33520,
+  "protectedRealRays": 303,
+  "protectedRayDifferenceMetres": 0.0000042622042428774876,
+  "protectedContactChangeMetres": 0,
+  "proofActiveRayDeviationMetres": 0.0000060681366793602365,
+  "raisedNativeCellsAbove30Cm": 947,
+  "oldMedianM": 0.8686734390258799,
+  "newMedianM": 0.6150274533461921,
+  "oldP90M": 1.3066254806518547,
+  "newP90M": 1.1547098604411392,
+  "holdMaxDeltaMetres": 0.9444653297750882,
+  "beyond30BelowSurveyStill": 1579
+}

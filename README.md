@@ -41,6 +41,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
 | Cavendish Dunelands | `?cavendishWaterReview` | [Dated freshwater core](docs/qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
+| Southwest of Green Gables | `?gablesGradeReview` | [Survey-supported dry rise](docs/qa/gables-southwest-grade.md), a close-range correction to terrain and contact in one small area. |
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. In Standard, enable **Expanded farmland** in Dispatch. |

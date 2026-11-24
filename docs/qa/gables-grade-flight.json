@@ -1,0 +1,36 @@
+{
+  "live": {
+    "flightMetres": 453.42,
+    "distanceToSlope": 1220.16,
+    "altitudeMetres": 132.78895243710403,
+    "activeGrade": "green-gables-southwest-measured-grade",
+    "houseActive": true,
+    "waterActive": "cavendish-dunelands-survey-2020",
+    "paths": [
+      "/PEI-Flight-simulation/world/cavendish/v1/native-grade.g11.gz"
+    ],
+    "errors": []
+  },
+  "blocked": {
+    "flightMetres": 107.7,
+    "distanceToSlope": 1564.58,
+    "altitudeMetres": 130.57382940020346,
+    "activeGrade": null,
+    "houseActive": false,
+    "waterActive": null,
+    "paths": [],
+    "errors": []
+  },
+  "missing": {
+    "flightMetres": 108.29,
+    "distanceToSlope": 1565.76,
+    "altitudeMetres": 130.56623045423993,
+    "activeGrade": null,
+    "houseActive": true,
+    "waterActive": "cavendish-dunelands-survey-2020",
+    "paths": [
+      "/PEI-Flight-simulation/world/cavendish/v1/native-grade.g11.gz"
+    ],
+    "errors": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "crs": "EPSG:3979",
+  "vertical": "CGVD2013",
+  "rasterOrigin": [
+    2353100,
+    316730
+  ],
+  "rasterSizeRowsCols": [
+    365,
+    370
+  ],
+  "rasterSourceURLs": [
+    "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif"
+  ],
+  "fileSha256": "12bf772e6a5b70bcd0bedd1cdded5286dc4345e0a2e7bc9072c571047109fd81",
+  "dtmFloat32LE": "24764a9118b2b97c64e7eb40c3d705d49f05465233e9539a9fa12d1d10e26553",
+  "dsmFloat32LE": "c9fd429d52a1ccae81522fff121dfa266ce1ed68c9cc04468324a6a3dd23a964",
+  "npPercentiles": [
+    4.182881832122803,
+    5.119746599197388,
+    6.557261037826538,
+    12.468728065490723,
+    17.74902477264404,
+    18.74524555206299,
+    20.11421012878418
+  ],
+  "validSamples": 135050
+}
