@@ -1,0 +1,136 @@
+{
+  "areaEPSG3979m2": 64391.0,
+  "exteriorRingLength": 2078.0,
+  "interiorUnprovenHoleSizes": [],
+  "GameBounds": [
+    [
+      -14546.620711262458,
+      297.43396087114127
+    ],
+    [
+      -14162.599014684938,
+      733.9129462130861
+    ]
+  ],
+  "runtimeActualMinimumDistanceM": {
+    "road": {
+      "id": {
+        "id": [
+          6621,
+          1
+        ],
+        "group": "road"
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        81.33898639575193,
+        81.33898639575193,
+        81.33898639575193
+      ],
+      "intersectionArea_m2": [
+        0,
+        0,
+        0
+      ]
+    },
+    "sidewalk": {
+      "id": {
+        "id": [
+          "-17,1",
+          0
+        ],
+        "group": "footway"
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        553.6145688756641,
+        553.6145688756641,
+        553.6145688756641
+      ],
+      "intersectionArea_m2": [
+        0,
+        0,
+        0
+      ]
+    },
+    "parking": {
+      "id": {
+        "id": [
+          "-15,0",
+          0
+        ],
+        "group": "parking"
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        156.46408393493502,
+        156.46408393493502,
+        156.46408393493502
+      ],
+      "intersectionArea_m2": [
+        0,
+        0,
+        0
+      ]
+    },
+    "building": {
+      "id": {
+        "tile": "q03323",
+        "row": 136
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        134.11617773626585,
+        134.11617773626585,
+        134.11617773626585
+      ],
+      "intersectionArea_m2": [
+        0,
+        0,
+        0
+      ]
+    },
+    "provincialTrail": {
+      "id": {
+        "FID": 303,
+        "t_type": "Gravel",
+        "trail": "Cavendish Dunelands",
+        "TINDEX": "T50072",
+        "manager": "Government of Canada",
+        "part": 0
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        98.86765129268653,
+        98.86765129268653,
+        98.86765129268653
+      ],
+      "lineLengthNWCGM": 664.8575274684544,
+      "intersectionLength_m": [
+        0,
+        0,
+        0
+      ]
+    },
+    "OSMComparatorOnlyPath": {
+      "id": {
+        "id": 360850823,
+        "tags": {
+          "bicycle": "designated",
+          "foot": "designated",
+          "highway": "path",
+          "name": "Dunelands Trail",
+          "segregated": "no",
+          "surface": "gravel"
+        }
+      },
+      "distance_native3979m_raster_core_solid_inset0_4_12": [
+        99.54263111528061,
+        99.54263111528061,
+        99.54263111528061
+      ],
+      "lineLengthNWCGM": 652.4330806377578,
+      "intersectionLength_m": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "orthometricY": 1.468
+}

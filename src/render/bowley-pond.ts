@@ -91,7 +91,8 @@ export class BowleyWaterMesh {
   // on the outermost multisamples; the source mask still rejects its apron.
   this.surface=new THREE.Mesh(new THREE.PlaneGeometry(w+24,d+24),water);
   this.surface.rotation.x=-Math.PI*.5;this.surface.position.set(this.X,waterY,this.Z);
-  this.surface.name='Bowley Pond 2020 water plane';
+  const label=pond.spec.id.startsWith('bowley-')?'Bowley Pond':pond.spec.id;
+  this.surface.name=label+' 2020 water plane';
   const arcs=this.arcs=pond.contours(),p=new Float32Array(arcs.length*18),uv=new Float32Array(arcs.length*12);
   for(let i=0;i<arcs.length;i++){
    const [ax,az,bx,bz]=arcs[i],a=t.uv(ax,az),b=t.uv(bx,bz);
@@ -102,7 +103,7 @@ export class BowleyWaterMesh {
   const g=new THREE.BufferGeometry();
   this.position=new THREE.BufferAttribute(p,3).setUsage(THREE.DynamicDrawUsage);
   g.setAttribute('position',this.position);g.setAttribute('uv',new THREE.BufferAttribute(uv,2));
-  this.rim=new THREE.Mesh(g,bank);this.rim.position.set(this.X,0,this.Z);this.rim.name='Bowley Pond seated bank curtain';
+  this.rim=new THREE.Mesh(g,bank);this.rim.position.set(this.X,0,this.Z);this.rim.name=label+' seated bank curtain';
  }
  update(x:number,z:number,signature:(b:BowleyPond['bounds'])=>string,height:(x:number,z:number)=>number){
   // The far plane stays exact. Curtains are frustum-coherent and never

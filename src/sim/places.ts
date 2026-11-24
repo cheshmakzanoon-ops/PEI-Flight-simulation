@@ -22,7 +22,8 @@ export const SITES: Site[] = [
 ,
  {id:'prince-fields',name:'Prince County · fields low pass',region:'Prince County',lon:-63.87084083,lat:46.45180499,heading:330.611,height:62,note:'A low inland pass for comparison with the optional field surface study.'},
  {id:'queens-fields',name:'Queens County · fields low pass',region:'Queens County',lon:-63.50800256,lat:46.36244236,heading:47.031,height:62,note:'A low inland pass for comparison with the optional field surface study.'},
- {id:'kings-fields',name:'Kings County · fields low pass',region:'Kings County',lon:-62.36975541,lat:46.34643049,heading:140.268,height:62,note:'A low inland pass for comparison with the optional field surface study.'}
+ {id:'kings-fields',name:'Kings County · fields low pass',region:'Kings County',lon:-62.36975541,lat:46.34643049,heading:140.268,height:62,note:'A low inland pass for comparison with the optional field surface study.'},
+ {id:'cavendish-dunelands-low',name:'Cavendish Dunelands · coastal pass',region:'Queens County',lon:-63.38962,lat:46.5015,heading:162,height:130,note:'Cross the dunes from offshore and follow the lowlands toward Green Gables. Optional water and exterior studies cover selected sites.'}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

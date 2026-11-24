@@ -90,6 +90,29 @@ export class BowleyPond {
   return out;
  }
 }
+/** Disjoint tile ownership ensures no terrain material can cut land for one
+ * level plane and then bind another mask. Honor the first valid source.
+ * Boundaries use the same closed intervals as terrain tile intersection. */
+export function admitPondTiles(ponds:readonly BowleyPond[],grid:Readonly<{
+ left:number;top:number;right:number;bottom:number;columns:number;rows:number;
+}>){
+ const picked:BowleyPond[]=[],owned=new Set<number>();
+ const {left,top,right,bottom,columns,rows}=grid,w=(right-left)/columns,h=(bottom-top)/rows;
+ if(!(w>0&&h>0&&Number.isInteger(columns)&&Number.isInteger(rows)))return picked;
+ for(const pond of ponds){
+  const [a,b,c,d]=pond.bounds;
+  if(!(a>=left&&b>=top&&c<=right&&d<=bottom))continue;
+  const tiles:number[]=[];
+  for(let j=0;j<rows;j++)for(let i=0;i<columns;i++){
+   const x=left+i*w,z=top+j*h;
+   if(pond.intersects(x,z,x+w,z+h))tiles.push(j*columns+i);
+  }
+  if(!tiles.length||tiles.some(i=>owned.has(i)))continue;
+  picked.push(pond);
+  for(const i of tiles)owned.add(i);
+ }
+ return picked;
+}
 export function bowleyAtlasMatches(terrainSha?:string,coverCompressed?:string,coverDecoded?:string){
  return terrainSha===BOWLEY_POND.terrainSha256&&coverCompressed===BOWLEY_POND.coverCompressedSha256&&coverDecoded===BOWLEY_POND.coverDecodedSha256;
 }

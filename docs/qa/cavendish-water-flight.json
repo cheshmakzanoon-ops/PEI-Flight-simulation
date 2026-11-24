@@ -1,0 +1,50 @@
+{
+  "live": {
+    "flightMetres": 591.31,
+    "distanceFromPond": 162.29,
+    "altitude": 133.63,
+    "speedMps": 52.1,
+    "activePond": "cavendish-dunelands-survey-2020",
+    "unchangedBowley": "bowley-pond-survey-2020",
+    "optionalSiteResponseCodes": [
+      200
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "stock": {
+    "flightMetres": 591.31,
+    "distanceFromPond": 161.75,
+    "altitude": 133.63,
+    "speedMps": 52.1,
+    "activePond": null,
+    "unchangedBowley": "bowley-pond-survey-2020",
+    "optionalSiteResponseCodes": [],
+    "warnings": [],
+    "errors": []
+  },
+  "invalid": {
+    "flightMetres": 105.34,
+    "distanceFromPond": 633.64,
+    "altitude": 130.52,
+    "speedMps": 52.03,
+    "activePond": null,
+    "unchangedBowley": "bowley-pond-survey-2020",
+    "optionalSiteResponseCodes": [
+      200
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "blocked": {
+    "flightMetres": 107.11,
+    "distanceFromPond": 630.71,
+    "altitude": 130.54,
+    "speedMps": 52.03,
+    "activePond": null,
+    "unchangedBowley": "bowley-pond-survey-2020",
+    "optionalSiteResponseCodes": [],
+    "warnings": [],
+    "errors": []
+  }
+}

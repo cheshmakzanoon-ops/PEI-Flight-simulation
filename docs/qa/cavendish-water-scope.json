@@ -1,0 +1,15 @@
+{
+  "dunelands-air-close": {
+    "pixels": 466560,
+    "changeAbove2": 39608,
+    "faultChangedPixels": 0,
+    "projectedConservativeMaskPixels": 177268,
+    "protectedPixels": 289292,
+    "changedProtectedPixels": 0
+  },
+  "dunelands-edge-close": {
+    "pixels": 466560,
+    "changeAbove2": 119840,
+    "faultChangedPixels": 0
+  }
+}

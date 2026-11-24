@@ -1,0 +1,48 @@
+{
+  "tile": "13-11",
+  "worldTileBounds": [
+    -18279.092500314044,
+    -2223.221675077679,
+    -12186.061666875936,
+    3637.9991046727173
+  ],
+  "candidateBoxXZ": [
+    -14552,
+    292,
+    -14157,
+    739
+  ],
+  "currentPinnedProvinceTexture": true,
+  "positive4mCentreInSuppressedTile": 0,
+  "metric4mEquivalentM2": 0,
+  "positive4mNearbyOuter16m": 0,
+  "positive4mCentreInHole42m": 0,
+  "nearestCropToCandidateAABBM": 3241.5814041914787,
+  "sourceTiles": [],
+  "oldLandCoverByEligibleClassProxies": [
+    [
+      0,
+      {
+        "10": 3080,
+        "30": 3993,
+        "40": 1690,
+        "50": 113,
+        "60": 110,
+        "80": 570,
+        "90": 106
+      }
+    ],
+    [
+      42,
+      {
+        "10": 3153,
+        "30": 4122,
+        "40": 1724,
+        "50": 114,
+        "60": 114,
+        "80": 589,
+        "90": 106
+      }
+    ]
+  ]
+}

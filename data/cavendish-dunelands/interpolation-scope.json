@@ -1,0 +1,13 @@
+{
+  "candidateBytesSHA256": "dcd56105f4baac1bfe6d9fbca0179b5d7abf0c88fbb4887cd0cc53a5af51eee0",
+  "qualifiedNPZSHA256": "ca5c95ae9535d73c4956739b47b2d3cadd2053025d4465cf058f457720a52244",
+  "everyNegCentreTouchesOnlyQualifiedNativeCellsN": 243661,
+  "everyNegativeBilinearTentN": 243661,
+  "candidateNativeCellBBoxTestsN": 1371362,
+  "testedUnqualifiedBBoxFalsePositives": 0,
+  "curvatureObservedMaxMidPerAxisM": 2.6542693376541138e-08,
+  "certificationCurvePadM": 0.001,
+  "anyUnprovedTent": 0,
+  "zeroIslandProof": null,
+  "enclosedDryTexels": 0
+}

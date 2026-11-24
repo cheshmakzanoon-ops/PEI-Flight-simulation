@@ -1,0 +1,223 @@
+{
+  "sourceOriginalSHA": "920d2a9da6a71863e2cc7090ee4cd8976702d950436ed154d27ba7fd07d512f0",
+  "alternateNPZsha": "ca5c95ae9535d73c4956739b47b2d3cadd2053025d4465cf058f457720a52244",
+  "planeY": 1.468,
+  "noChangeOutsideOnePreviouslyHeldEnclosedComponent": true,
+  "inheritedOuterBoundaryIsExactlyUnchanged": true,
+  "finalNativeM2": 64391,
+  "newInsideNativeM2": 441,
+  "bboxNativeIndexOuter": [
+    562,
+    248,
+    586,
+    272
+  ],
+  "ESA2021centreAndAllFourCornerClassCounts": [
+    {
+      "80": 441
+    },
+    {
+      "80": 441
+    },
+    {
+      "80": 441
+    },
+    {
+      "80": 441
+    },
+    {
+      "80": 441
+    }
+  ],
+  "singleLowNativeCellYXExcludingAll441By12mReserve": [
+    [
+      260,
+      574
+    ]
+  ],
+  "sourceDTM": [
+    1.4290993213653564,
+    1.4539011716842651,
+    1.4608625173568726,
+    1.4670355319976807,
+    1.4695230722427368,
+    1.47203586101532,
+    1.4732643365859985
+  ],
+  "sourceDSMminusDTM": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sourceCellsOfOriginalTight3_6cmComponent": 440,
+  "minInboardMToOuter5cmSignature": 25.632011235952593,
+  "ClassShapeUse": "Every tested centre and corner is original ESA class80; no class90 veto is overridden. The one low 1m cell (\u221239mm to stage) is supported by extensive direct native water across the enclosed hold. No extrapolation of its enclosure to outside stage or vegetation geometry.",
+  "observedRaw2020ClassCount": {
+    "9": 2707,
+    "18": 4
+  },
+  "stageRepeatSpatial4mHoldBlockN": 706,
+  "stageRepeatSpatial4mHoldBlockErrorAbs": [
+    0.0,
+    0.0020000000000000018,
+    0.01200000000000001,
+    0.028000000000000025,
+    0.03400000000000003,
+    0.04595000000000008,
+    0.06299999999999994
+  ],
+  "rawFlightIDsAndCounts": {
+    "51811": {
+      "qualifiedN": 2680,
+      "allRawN": 2707,
+      "zResidualAbs": [
+        0.0,
+        0.0020000000000000018,
+        0.01200000000000001,
+        0.028999999999999915,
+        0.03499999999999992,
+        0.04899999999999993,
+        0.09199999999999986
+      ]
+    }
+  },
+  "fittedStageConfirmOnlyQualifiedClass9N": 2680,
+  "each1mCellDirectWaterCountQuantile": [
+    3.0,
+    5.0,
+    6.0,
+    7.0,
+    8.0,
+    8.0,
+    8.0
+  ],
+  "each1mCellLackingDirectReturnN": 0,
+  "supportBothSourcesQueryRadii": [
+    {
+      "inCellOffsetNativeM": [
+        0.0,
+        0.0
+      ],
+      "directClass9NearestM": [
+        0.003605551220703881,
+        0.0737631344251047,
+        0.16046183329065927,
+        0.2623451923943583,
+        0.2860489469989483,
+        0.3142402979390817,
+        0.3638035183214677
+      ],
+      "nearestProtectedAnomalyM": [
+        41.85825445484815,
+        45.63007194829112,
+        53.95649605014506,
+        61.79226056725669,
+        63.083638655429695,
+        64.55662556747752,
+        65.13273728326757
+      ]
+    },
+    {
+      "inCellOffsetNativeM": [
+        -0.499,
+        -0.499
+      ],
+      "directClass9NearestM": [
+        0.01118033994476772,
+        0.0786002542979224,
+        0.16573774469262584,
+        0.2659116391250686,
+        0.29608275860873645,
+        0.35066230012159366,
+        0.41027429857521647
+      ],
+      "nearestProtectedAnomalyM": [
+        42.52734785995428,
+        46.27698473325298,
+        54.632694570211186,
+        62.47949516443152,
+        63.73347092385898,
+        65.22299986754767,
+        65.80783628111772
+      ]
+    },
+    {
+      "inCellOffsetNativeM": [
+        -0.499,
+        0.499
+      ],
+      "directClass9NearestM": [
+        0.013152946465262064,
+        0.07559100457229935,
+        0.16607528433464616,
+        0.26545244423633,
+        0.2945674793185711,
+        0.35105994849232736,
+        0.4090195595353149
+      ],
+      "nearestProtectedAnomalyM": [
+        41.63752394175157,
+        45.35071554010909,
+        53.75439888976427,
+        61.661101190296534,
+        62.81588493366894,
+        64.34381270384523,
+        64.92964962172452
+      ]
+    },
+    {
+      "inCellOffsetNativeM": [
+        0.499,
+        -0.499
+      ],
+      "directClass9NearestM": [
+        0.010999999998603016,
+        0.07684399791561819,
+        0.16278820569067654,
+        0.26442579296036256,
+        0.2944316559249614,
+        0.36310108443163674,
+        0.4087211761861722
+      ],
+      "nearestProtectedAnomalyM": [
+        42.0896606782876,
+        45.85310824818008,
+        54.1549954852913,
+        62.07082677084934,
+        63.33134718308092,
+        64.79789432038703,
+        65.34905918236929
+      ]
+    },
+    {
+      "inCellOffsetNativeM": [
+        0.499,
+        0.499
+      ],
+      "directClass9NearestM": [
+        0.012999999977182597,
+        0.07595393358904531,
+        0.1637101097725745,
+        0.2640700665626092,
+        0.29629883559269005,
+        0.3494254244005257,
+        0.4074616544830755
+      ],
+      "nearestProtectedAnomalyM": [
+        41.19038261550585,
+        44.98492658669581,
+        53.28106248955957,
+        61.13898608919113,
+        62.43501918006404,
+        63.893304343293075,
+        64.45829364806062
+      ]
+    }
+  ],
+  "refESA2021": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/docs/WorldCover_PUM_V2.0.pdf",
+  "attribution": "Uses NRCan LiDAR Point Clouds and CanElevation HRDEM (OGL Canada), and ESA WorldCover 2021 v200 (CC BY 4.0)."
+}

@@ -1,0 +1,286 @@
+{
+  "schema": "strict-cavendish-2020-water-v1",
+  "notAGeometryOfCurrentLake": true,
+  "nativeRaster": {
+    "epsg": 3979,
+    "verticalDatum": "CGVD2013",
+    "firstCellNWEdge": [
+      2352188.0,
+      317290.0
+    ],
+    "nRowsCols": [
+      511,
+      770
+    ],
+    "declaredRawPins": {
+      "sha256npz": "b7624e1cadcd599582b976a316ed60972bf547f21db957228bd29298f56fa6c9",
+      "dtmFloat32YxLEsha256": "25eef1426a766c7e52c8f9bd155552c2d149c0a69a9f5ab6e2ebce7ecec40d6b",
+      "dsmFloat32YxLEsha256": "6901a8f43e4cf8f9f9c5f5b49f7b846db274975e30e75046cce5235e64e801e3",
+      "shapeYX": [
+        511,
+        770
+      ],
+      "northUpCornerEPSG3979": [
+        2352188.0,
+        317290.0
+      ],
+      "geotransform": [
+        2352188.0,
+        1,
+        0,
+        317290.0,
+        0,
+        -1
+      ],
+      "dataset": "https://open.canada.ca/data/en/dataset/957782bf-847c-4644-a757-e383c0057995",
+      "licence": "https://open.canada.ca/en/open-government-licence-canada",
+      "publicMosaics": [
+        "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+        "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif"
+      ],
+      "studyWgsBbox": [
+        [
+          -63.393121888871896,
+          46.491481103733285
+        ],
+        [
+          -63.38125581796729,
+          46.49874855585133
+        ]
+      ],
+      "studyCOPCUtmBbox": [
+        [
+          469831.96683130437,
+          5148727.477922725
+        ],
+        [
+          470742.950998564,
+          5149537.111390709
+        ]
+      ]
+    }
+  },
+  "rootRequiredFields": [
+    "water_allowed",
+    "upper_left_3979",
+    "water_stage_mm"
+  ],
+  "days": {
+    "publicWindow": "15 July to 15 September 2020 provincial acquisition; exact week not supplied in source header",
+    "province": "https://www.princeedwardisland.ca/en/news/photos-taken-from-the-air-will-map-entire-island-landscape",
+    "lidarCatalog": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "LASGlobalEncoding": [
+      16,
+      16
+    ],
+    "GPSFlag": "Week time only (no inferred exact date); LAS creation 27 April 2021 is processing, not capture.",
+    "fionaContext": "https://parks.canada.ca/pn-np/pe/pei-ipe/nature/conservation/baby-dunes-bebe"
+  },
+  "Class9supportSourcePinnedTotalValid": {
+    "1": 749816,
+    "2": 162542,
+    "7": 30,
+    "9": 706088,
+    "18": 2250
+  },
+  "sharedDuplicateCount": 0,
+  "planeY": 1.468,
+  "stageEstimator": "Pooled point median in 75% of deterministic 8m blocks (130mm initial window must not move this median afterwards). Held-out (i//8+3*j//8)%4=0.",
+  "trainClass9N": 340659,
+  "heldClass9N": 114350,
+  "stageResidualAbsoluteTrain": [
+    0.0,
+    0.0,
+    0.001,
+    0.001,
+    0.008,
+    0.022,
+    0.028,
+    0.044,
+    0.191
+  ],
+  "stageResidualAbsoluteHeld": [
+    0.0,
+    0.0,
+    0.001,
+    0.001,
+    0.008,
+    0.022,
+    0.028,
+    0.044,
+    0.144
+  ],
+  "byFlight": [
+    {
+      "sourceID": 51811,
+      "training": 317162,
+      "held": 105922,
+      "absResidualHeld": [
+        0.0,
+        0.0,
+        0.001,
+        0.001,
+        0.007,
+        0.02,
+        0.026,
+        0.041,
+        0.106
+      ]
+    },
+    {
+      "sourceID": 52711,
+      "training": 23497,
+      "held": 8428,
+      "absResidualHeld": [
+        0.0,
+        0.0,
+        0.001,
+        0.003,
+        0.014,
+        0.035,
+        0.043,
+        0.056,
+        0.144
+      ]
+    }
+  ],
+  "firstTopologicalRasterM2": 117073,
+  "relaxedSymmetricComponentSizes": [
+    115541,
+    480,
+    47,
+    21,
+    21,
+    13,
+    11,
+    10,
+    8,
+    7,
+    7,
+    6
+  ],
+  "strictRasterSignature": [
+    "abs(dtmy\u2212fittedStage)<=.036m",
+    "abs(DSM\u2212DTM)<=.025m"
+  ],
+  "reserveInboard12mCells": 67662,
+  "missingDirectClass9MeasuredSupport": 1662,
+  "class9RadiusM": 2.25,
+  "acceptedNativeCentreSupportDistQ": [
+    0.001,
+    0.02150509,
+    0.0480661,
+    0.06760178,
+    0.15326448,
+    0.23971024,
+    0.27059933,
+    0.51878277,
+    2.23819257
+  ],
+  "rawPointQualityAndDryCellsHeld": 43,
+  "rawCornerSupportClipM": 2.4,
+  "ESA2021": {
+    "sha256": "a9ecfc04b044d75d68f5144af3240fa32792c3dcc77e7b429595935c610a80b0",
+    "doi": "https://doi.org/10.5281/zenodo.7254221",
+    "CCBY4": "https://creativecommons.org/licenses/by/4.0/",
+    "truthStatement": "10m classification corroboration/wet-only veto, no mapped edge; no OSM or route geometry part of displayed shape. Parks and local route registry are exact clearance guards outside this native derivation.",
+    "classesAtReserveCentres": {
+      "80": 67294,
+      "90": 368
+    },
+    "allCornersSupportRequiredBeforeNativeComponent": true,
+    "cellsRejectedOnCentreOrAnyCorner": 413
+  },
+  "connectedAfterVetoSizes": [
+    63950,
+    769,
+    345,
+    164,
+    109,
+    96,
+    69,
+    13,
+    7,
+    5,
+    5,
+    3
+  ],
+  "waterAllowedNativeSquareMetres": 63950,
+  "columnRowBox": [
+    111,
+    100,
+    637,
+    434
+  ],
+  "worldWGS84Centre": [
+    -63.387277268037565,
+    46.495036777417816
+  ],
+  "worldWGS84Bounds": [
+    [
+      -63.38950142392517,
+      46.49339775286972
+    ],
+    [
+      -63.3844987047532,
+      46.49732429775937
+    ]
+  ],
+  "approvedAllClassCounts": {
+    "9": 448817,
+    "18": 745
+  },
+  "approvedNoiseOutliers": {
+    "18": 745
+  },
+  "approvedRealDryClassN": 0,
+  "nearestProtectedHighRawToApprovedCentre": 8.202452377068605,
+  "annulus12mOldUnmodifiedProbeN": 18930,
+  "annulus12mClassCounts": {
+    "1": 314,
+    "2": 474,
+    "7": 1,
+    "9": 108538,
+    "18": 228
+  },
+  "sourceOuterHeldAnnulus12mClassCounts": {
+    "1": 262663,
+    "2": 70132,
+    "7": 13,
+    "9": 20070,
+    "18": 1014
+  },
+  "approvedHeldClass9N": 108589,
+  "approvedHeldClass9StageResidualAbs": [
+    0.0,
+    0.0,
+    0.001,
+    0.001,
+    0.007,
+    0.021,
+    0.027,
+    0.042,
+    0.106
+  ],
+  "wetBeforeFromExactStockCover": 0,
+  "wetAfterContinuousNorthUpCandidateCentres": 63950,
+  "priorCoverSignedQ": [
+    250.17009184,
+    254.0,
+    254.0,
+    254.0,
+    254.0,
+    254.0,
+    254.0,
+    254.0,
+    254.0
+  ],
+  "priorResampledCoverClasses": {
+    "10": 61,
+    "30": 516,
+    "80": 61789,
+    "90": 1584
+  },
+  "maskUInt8AxisYxHash": "8946dc7f3d684f6b3366bc1b3d3f220b3fb8c51f05370a43377ab7eb183ab8a9",
+  "artifactSHA256": "920d2a9da6a71863e2cc7090ee4cd8976702d950436ed154d27ba7fd07d512f0"
+}

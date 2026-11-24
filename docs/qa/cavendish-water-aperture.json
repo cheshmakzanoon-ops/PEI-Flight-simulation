@@ -1,0 +1,172 @@
+[
+  {
+    "view": "dunelands-air-close",
+    "offsetXZ": [
+      -4,
+      -2
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 108002,
+    "previewSky": 108002,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-air-close",
+    "offsetXZ": [
+      -2,
+      -1
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 107144,
+    "previewSky": 107144,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-air-close",
+    "offsetXZ": [
+      0,
+      0
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 107140,
+    "previewSky": 107140,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-air-close",
+    "offsetXZ": [
+      2,
+      1
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 107139,
+    "previewSky": 107139,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-air-close",
+    "offsetXZ": [
+      4,
+      2
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 106274,
+    "previewSky": 106274,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-edge-close",
+    "offsetXZ": [
+      -4,
+      -2
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 182219,
+    "previewSky": 182219,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-edge-close",
+    "offsetXZ": [
+      -2,
+      -1
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 182286,
+    "previewSky": 182286,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-edge-close",
+    "offsetXZ": [
+      0,
+      0
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 182319,
+    "previewSky": 182319,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-edge-close",
+    "offsetXZ": [
+      2,
+      1
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 182362,
+    "previewSky": 182362,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  },
+  {
+    "view": "dunelands-edge-close",
+    "offsetXZ": [
+      4,
+      2
+    ],
+    "raster": {
+      "samples": 4,
+      "width": 864,
+      "height": 540
+    },
+    "stockSky": 182431,
+    "previewSky": 182431,
+    "newExposedPixels": 0,
+    "newFullyExposedPixels": 0,
+    "largestChannelDifference": 0
+  }
+]

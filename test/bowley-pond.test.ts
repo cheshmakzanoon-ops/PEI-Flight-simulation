@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {test} from 'node:test';
 import {BOWLEY_POND} from '../src/sim/bowley-pond.generated.ts';
-import {BowleyPond,bowleyAtlasMatches,loadBowleyPond} from '../src/sim/bowley-pond.ts';
+import {admitPondTiles,BowleyPond,bowleyAtlasMatches,loadBowleyPond} from '../src/sim/bowley-pond.ts';
 import {project} from '../src/sim/geo.ts';
 
 const spec=BOWLEY_POND;
@@ -67,4 +67,17 @@ test('the one continuous field has no exact-zero-edge ties and no loose contour 
  }
  assert([...ends.values()].every(n=>n%2===0));
  assert(maxChordResidual<.0025,maxChordResidual);
+});
+
+test('independent surveyed stages never share a land mask binding or accept a clipped reserve',()=>{
+ const pond=(id:string,left:number,top:number,waterY:number)=>new BowleyPond({id,width:4,height:4,left,top,step:1,units:1,waterY},
+  new Uint8Array([255,255,255,255,255,72,72,255,255,72,72,255,255,255,255,255]));
+ const a=pond('first',2,2,1.13),b=pond('second',15,15,1.46),same=pond('same tile',5,5,2),touch=pond('touches boundary',10,1,2),outside=pond('outside',18,15,2);
+ const world={left:0,top:0,right:20,bottom:20,columns:2,rows:2};
+ assert.deepEqual(admitPondTiles([a,b,same,touch,outside],world),[a,b]);
+ assert.deepEqual(admitPondTiles([touch,a,b],world),[touch,b]);
+ assert.deepEqual(admitPondTiles([a],{...world,columns:0}),[]);
+ assert(a.water(4,4)&&!b.water(4,4));
+ assert(b.water(17,17)&&!a.water(17,17));
+ assert.notEqual(a.spec.waterY,b.spec.waterY);
 });

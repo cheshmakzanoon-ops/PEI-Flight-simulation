@@ -3,7 +3,7 @@ import {fieldPilotGLSL,type FieldPilot} from './fields-pilot.ts';
 import {meadowGLSL} from './meadow-optics.ts';
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
-import {bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
+import {admitPondTiles,bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
 import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
 import {nativeBankMesh} from './native-bank-mesh.ts';
 import {adaptiveGround} from './adaptive-ground.ts';
@@ -418,9 +418,15 @@ export class World {
  private legacyShore?:LegacyShoreCurtains;
  get legacyShoreState(){return this.legacyShore?.state??null;}
  private northCourt?:BaywalkGround;
- private bowley?:BowleyWaterMesh;
- get bowleyPond(){return this.bowley?.pond.spec.id??null;}
- bowleyContains(x:number,z:number){return this.bowley?.pond.water(x,z)??false;}
+ private pondMeshes:BowleyWaterMesh[]=[];
+ hasFreshwaterSource(id:string){return this.pondMeshes.some(v=>v.pond.spec.id===id);}
+ get bowleyPond(){return this.pondMeshes.find(p=>p.pond.spec.id.startsWith('bowley-'))?.pond.spec.id??null;}
+ private freshwaterAt(x:number,z:number){
+  for(const {pond} of this.pondMeshes)if(pond.water(x,z))return pond;
+ }
+ freshwaterContains(x:number,z:number){return this.freshwaterAt(x,z)!==undefined;}
+ // The historical browser QA probes distinguish this study from other water.
+ bowleyContains(x:number,z:number){return this.pondMeshes.find(p=>p.pond.spec.id.startsWith('bowley-'))?.pond.water(x,z)??false;}
  private northCurtain?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];signature?:string};
  get baywalkActive(){return !!this.northCourt;}
  get baywalkBounds(){return this.northCourt?.signatureBounds;}
@@ -444,7 +450,7 @@ export class World {
  readonly meadowStrength={value:1};
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[]){
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -473,7 +479,10 @@ export class World {
        detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
    const make=(fragmentShader:string,side:THREE.Side=THREE.FrontSide)=>new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader,side});
    const skyInverseProjection={value:new THREE.Matrix4()},skyEyeToWorld={value:new THREE.Matrix4()};
-   const bowleyViewport=bowley?{value:new THREE.Vector4(0,0,1,1)}:undefined;
+   const ponds=admitPondTiles(bowley?[bowley,...additionalPonds]:additionalPonds,{
+    left:T.left,top:T.top,right:T.right,bottom:T.bottom,columns:WORLD_COLS,rows:WORLD_ROWS,
+   });
+   const bowleyViewport=ponds.length?{value:new THREE.Vector4(0,0,1,1)}:undefined;
    const skyMaterial=new THREE.ShaderMaterial({vertexShader:screenSkyV,fragmentShader:skyFrag,
      uniforms:{skyMap:{value:sky},skyInverseProjection,skyEyeToWorld,skyDiagnostic:{value:0}},
      depthTest:false,depthWrite:false});
@@ -495,8 +504,8 @@ export class World {
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
    const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
-   const localBowleyUniforms=bowley?{...bowleyUniforms(bowley),
-     bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}:undefined;
+   const pondsWithUniforms=ponds.map(pond=>({pond,surfaceUniforms:{...bowleyUniforms(pond),
+     bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}}));
    const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague||cover.baywalk)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms,...northCourtUniforms};
@@ -537,6 +546,9 @@ export class World {
    const protectsMeadow=(i:number,j:number)=>{
     if(protectsFloor(i,j))return true;
     const x=T.left+i*w,z=T.top+j*d;
+    // Preserve the historical Bowley review guard without disabling a whole
+    // tile of independent dry meadow around a tightly surveyed new pond.
+    // The land shader already clips its exact water replacement footprint.
     return !!(basin?.intersects(x,z,x+w,z+d)||montague?.intersects(x,z,x+w,z+d)||bowley?.intersects(x,z,x+w,z+d));
    };
 
@@ -554,7 +566,8 @@ export class World {
     const localHarbour=harbour?.intersects(x0,z0,x0+w,z0+d)??false;
     const localMontague=montague?.intersects(x0,z0,x0+w,z0+d)??false;
     const sourisLocal=!!sourisLighting?.intersects(x0,z0,x0+w,z0+d);
-    const bowleyLocal=bowley?.intersects(x0,z0,x0+w,z0+d)??false;
+    const localPond=pondsWithUniforms.find(v=>v.pond.intersects(x0,z0,x0+w,z0+d));
+    const bowleyLocal=!!localPond;
     const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
     const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
     const guard=showLocalFloor?neighbours.reduce((m,[x,z],bit)=>protectsFloor(i+x,j+z)?m|(1<<bit):m,0):0;
@@ -573,7 +586,7 @@ export class World {
     const provinceHere=provinceFields&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&provinceFields.stream.intersects(x0,z0,x0+w,z0+d);
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere)});
     const coarse=this.patch(x0,z0,w,d,8);
@@ -593,15 +606,15 @@ export class World {
     scene.add(this.northCourt.mesh);
     this.refreshNorthCourt();
    }
-   if(bowley){
+   for(const {pond,surfaceUniforms} of pondsWithUniforms){
     const water=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+skyFn+bowleyClipGLSL+bowleyWaterGLSL+out,
-      uniforms:{...uniforms,...localBowleyUniforms},side:THREE.DoubleSide});
+      uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide});
     const shore=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fp+bowleyShoreGLSL+out,
-      uniforms:{...uniforms,...localBowleyUniforms},side:THREE.DoubleSide});
-    this.bowley=new BowleyWaterMesh(bowley,T,water,shore);
-    scene.add(this.bowley.surface,this.bowley.rim);
-    const [left,top,right,bottom]=bowley.bounds;
-    this.refreshBowley((left+right)*.5,(top+bottom)*.5);
+      uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide});
+    const mesh=new BowleyWaterMesh(pond,T,water,shore);
+    this.pondMeshes.push(mesh);scene.add(mesh.surface,mesh.rim);
+    const [left,top,right,bottom]=pond.bounds;
+    mesh.update((left+right)*.5,(top+bottom)*.5,b=>this.visualGroundSignature(b),(x,z)=>this.provinceVisualGroundHeight(x,z));
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
    const light=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
@@ -887,7 +900,7 @@ export class World {
   return this.terrain.inlandGrids.filter(g=>this.byId.get(g.spec.tileX+'-'+g.spec.tileZ)?.lod===112);
  }
  groundHeight(x:number,z:number,land?:boolean){
-  if(this.bowley?.pond.water(x,z))return this.bowley.pond.spec.waterY;
+  const pond=this.freshwaterAt(x,z);if(pond)return pond.spec.waterY;
   // Both shaders use the continuous Cover mask. A missing province DEM cell
   // cannot revoke visible land, and even positive offshore survey samples
   // must not raise water contact above the rendered ocean.
@@ -920,12 +933,9 @@ export class World {
   return baseline+amount*(mesh.height(localX,localZ)-baseline);
  }
  surface(x:number,z:number):Surface{
-  const pond=this.bowley?.pond;if(pond?.water(x,z))return {height:pond.spec.waterY,land:false,runway:false};
+  const pond=this.freshwaterAt(x,z);if(pond)return {height:pond.spec.waterY,land:false,runway:false};
   const land=this.cover.distance(this.terrain,x,z)>=0;
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
- }
- private refreshBowley(x:number,z:number){
-  this.bowley?.update(x,z,b=>this.visualGroundSignature(b),(a,c)=>this.provinceVisualGroundHeight(a,c));
  }
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
@@ -998,7 +1008,7 @@ export class World {
   }
   this.refreshMontagueReviewShore();
   if(this.northCourt)this.refreshNorthCourt();
-  if(this.bowley)this.refreshBowley(pos.x,pos.z);
+  for(const m of this.pondMeshes)m.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(a,c)=>this.provinceVisualGroundHeight(a,c));
   this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
   const now=performance.now();

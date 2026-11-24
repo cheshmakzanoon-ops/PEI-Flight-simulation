@@ -1,0 +1,19 @@
+{
+  "width": 790,
+  "height": 894,
+  "left": -14552,
+  "top": 292,
+  "step": 0.5,
+  "units": 32,
+  "waterY": 1.468,
+  "compressedBytes": 47327,
+  "decodedBytes": 706260,
+  "sha256": "dcd56105f4baac1bfe6d9fbca0179b5d7abf0c88fbb4887cd0cc53a5af51eee0",
+  "crc32": "591d88f9",
+  "qualifiedSourceSha256": "ca5c95ae9535d73c4956739b47b2d3cadd2053025d4465cf058f457720a52244",
+  "nativeCells": 64391,
+  "wetTexels": 243661,
+  "cellEquivalentSquareMetres": 60915.25,
+  "nearestSampledOuterSupportSignedM": -1.014160788402318,
+  "reserveMetres": 1.75
+}

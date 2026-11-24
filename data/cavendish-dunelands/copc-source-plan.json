@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pei_2020_370000_715000",
+    "reason": "1 m HRDEM coherent unbiased native flooded terrain plus 27 m PEI-stereo control margin; no OSM geometry.",
+    "EPSG2954rect": [
+      [
+        370125.4015029012,
+        715784.5045219627
+      ],
+      [
+        370552.5188342597,
+        716001.0
+      ]
+    ],
+    "EPSG2961query": [
+      [
+        470133,
+        5148755
+      ],
+      [
+        470565,
+        5148977
+      ]
+    ],
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_370000_715000.copc.laz",
+    "ETag": "\"d4073598b4a920bbcdc1dd2e3574ae73-16\"",
+    "objectLength": 126535633,
+    "centralRasterCellN": 32510
+  },
+  {
+    "name": "pei_2020_370000_716000",
+    "reason": "1 m HRDEM coherent unbiased native flooded terrain plus 27 m PEI-stereo control margin; no OSM geometry.",
+    "EPSG2954rect": [
+      [
+        370017.5436028684,
+        715999.0
+      ],
+      [
+        370532.82396590215,
+        716548.5713223463
+      ]
+    ],
+    "EPSG2961query": [
+      [
+        470026,
+        5148970
+      ],
+      [
+        470546,
+        5149524
+      ]
+    ],
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_370000_716000.copc.laz",
+    "ETag": "\"2a82d3c635419f4bb31cb2c2dafb8205-7\"",
+    "objectLength": 51826282,
+    "centralRasterCellN": 104793
+  }
+]
