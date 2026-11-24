@@ -10,7 +10,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: flight-build-${{ github.workflow }}-${{ github.ref }}
+  # Preserve a receipt per published commit; supersede intermediate PR checks.
+  group: flight-build-${{ github.workflow }}-${{ github.event_name == 'push' && github.sha || github.ref }}
   cancel-in-progress: true
 
 jobs:

@@ -107,3 +107,9 @@ transition into flight with no browser or HTTP errors. In one matched
 software-rendered run this moved dispatch from 5.20 s to 3.45 s. The run
 proves the dependency change under a repeatable latency fixture, not typical
 startup speed, mobile CPU impact or a new download-size claim.
+
+Each `main` push keeps its own verification run and linked artifact.
+A new pull request revision still supersedes that pull request's earlier
+in-progress check. Confirm the commit SHA on a successful `main` run
+before selecting its web build artifact; completion order can differ
+from commit order.
