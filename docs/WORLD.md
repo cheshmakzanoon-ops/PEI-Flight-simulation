@@ -28,6 +28,11 @@ outline with a measured shallow roof and independently authored recessed fire ba
 uses a separately fitted cross-gable, two lower roof planes and an original covered verandah.
 In Georgetown, the [St. David’s United Church exterior study](qa/st-davids-church-study.md) replaces one flat cover shell with a survey-fitted gable and tower, original Gothic joinery and a matched shadow caster in Standard.
 
+The [mapped lane canopy study](qa/mapped-lane-canopy.md) leaves the 2020 road and
+terrain intact while skipping four exact generated stems where the dated survey
+shows open ground at the mapped gravel centreline. It does not remove the
+surrounding groves or generalize the correction to other roads.
+
 ## Attribution
 
 Contains modified Copernicus Sentinel data 2025. The source scenes were

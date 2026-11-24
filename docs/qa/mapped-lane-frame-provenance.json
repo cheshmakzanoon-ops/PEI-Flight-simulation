@@ -1,0 +1,70 @@
+[
+  {
+    "view": "lane-6877-late",
+    "context": "Breadalbane Road \u00b7 native runtime admission",
+    "originalPngSha256": [
+      "b89d712e62105f3012f3bb4df818597d2f34cf314a90d315552a0dae04014d0d",
+      "5a26db2b80829060b96c5e8b6c04bcd9931bdb9c93220a19ce0f47e7f152ea35"
+    ],
+    "projectedCrownAndShadePadPixels": 2,
+    "scope": {
+      "view": "lane-6877-late",
+      "pixelsChangedAbove2": 6418,
+      "pixelsProtected": 190234,
+      "changedOutsideCrownAndShade": 0,
+      "maxOutsideCode": 0,
+      "sameActualCompactedFrameRepeatedExactly": true
+    }
+  },
+  {
+    "view": "lane-15680",
+    "context": "Canadian Road \u00b7 fixed renderer control",
+    "originalPngSha256": [
+      "909f4ace7c0ed20167de9a6132a12ccb39877444172ca621b7572952b58215c2",
+      "8801a6ffaca4a2fd67f28bff3e1820b1597fa3c8d38ee0a70d152f4e13e6d552"
+    ],
+    "projectedCrownAndShadePadPixels": 2,
+    "scope": {
+      "view": "lane-15680",
+      "pixelsChangedAbove2": 6456,
+      "pixelsProtected": 186624,
+      "changedOutsideCrownAndShade": 0,
+      "maxOutsideCode": 0,
+      "crownOriginalAndShadeRestoreExact": true
+    }
+  },
+  {
+    "view": "lane-12313",
+    "context": "Dromore Road \u00b7 fixed low-flight-height control",
+    "originalPngSha256": [
+      "1cf1aa40ba8704b57987b3e985e301184aac9e30b4d6b9061475ba097de611b8",
+      "8be8670345670c483f7f23e559257398ebf4c8fa03748e7335deb27cf9e159a3"
+    ],
+    "projectedCrownAndShadePadPixels": 2,
+    "scope": {
+      "view": "lane-12313",
+      "pixelsChangedAbove2": 943,
+      "pixelsProtected": 206962,
+      "changedOutsideCrownAndShade": 0,
+      "maxOutsideCode": 0,
+      "crownOriginalAndShadeRestoreExact": true
+    }
+  },
+  {
+    "view": "lane-4474-reciprocal",
+    "context": "Old Lake Road \u00b7 fixed renderer control",
+    "originalPngSha256": [
+      "a2ccca2f3cf0e9f451e3b485fb95d396f66b246747bd059ee577779cea211327",
+      "5352892481a9bce61481d99e370b75bdd0b43d8a0fd29a5d56a9982c0ff4b587"
+    ],
+    "projectedCrownAndShadePadPixels": 2,
+    "scope": {
+      "view": "lane-4474-reciprocal",
+      "pixelsChangedAbove2": 1190,
+      "pixelsProtected": 174891,
+      "changedOutsideCrownAndShade": 0,
+      "maxOutsideCode": 0,
+      "crownOriginalAndShadeRestoreExact": true
+    }
+  }
+]

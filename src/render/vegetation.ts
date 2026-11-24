@@ -1,3 +1,4 @@
+import type {OpenRoadLane} from './mapped-lane-canopy.ts';
 import type {RollingTreeShadows} from './rolling-tree-shadows.ts';
 import type {ShadowSlotRoster} from './tree-shadow-roster.ts';
 import type {StMarysShadows,StMarysShadowGround} from './indian-river/st-marys-shadows.ts';
@@ -110,6 +111,35 @@ export class Vegetation {
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
+ private openLane?:OpenRoadLane;
+ private openLaneRootsRemoved=0;
+ get openRoadLaneState(){return this.openLane?{eligible:this.openLane.size,removed:this.openLaneRootsRemoved}:null;}
+ installOpenRoadLane(lane:OpenRoadLane){
+  if(this.openLane||this.rollingSlots||this.volume||this.churchShadows||this.crownUsedAtSlot)return false;
+  this.openLane=lane;
+  if(!lane.owners.some(key=>this.cache.has(key)))return true;
+  // Late authority reaches already-visible rosters. Compact a small set
+  // of exact slots in all canopy/shade attributes together; no new cache,
+  // forest read or forced full roster build.
+  const n=this.geom.instanceCount,removed:number[]=[];
+  for(let i=0;i<this.hedgeStart;i++)if(lane.excludes(this.stems.getX(i),this.stems.getZ(i),this.shapes.getX(i),this.shapes.getY(i)))removed.push(i);
+  if(!removed.length)return true;
+  const first=removed[0],end=n-removed.length;
+  for(const a of [this.stems,this.shapes,this.hedgeGround]){
+   const size=a.itemSize,values=a.array as Float32Array;
+   for(let j=0;j<removed.length;j++){
+    const begin=removed[j]+1,until=removed[j+1]??n,to=begin-j-1;
+    if(until>begin)values.copyWithin(to*size,begin*size,until*size);
+   }
+   if(end>first){
+    // Keep normal update ranges already queued for the next paint.
+    a.addUpdateRange(first*size,(end-first)*size);a.needsUpdate=true;
+   }
+  }
+  this.geom.instanceCount=end;this.hedgeStart-=removed.length;
+  this.openLaneRootsRemoved=removed.length;this.forestRevision++;
+  return true;
+ }
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
   private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private mappedFreshwater?:(x:number,z:number)=>boolean,private rollingSlots?:ShadowSlotRoster){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
@@ -221,16 +251,18 @@ export class Vegetation {
   if(!move&&(hedgeRev===this.hedgeRev||now-this.hedgeApply<350))return;
   if(move){this.forestStream?.update(x,z);this.hedges?.move(x,z);}
   this.hedgeRev=hedgeRev;this.hedgeApply=now;
-  this.lastX=x;this.lastZ=z;let count=0;const wanted=new Set<string>();
+  this.lastX=x;this.lastZ=z;let count=0,removed=0,limit=maxTrees;const wanted=new Set<string>();
   const capture=this.rollingSlots;capture?.start(x,z,this.forestRevision+1);
   for(let tz=Math.floor((z-radius)/span);tz<=Math.floor((z+radius)/span);tz++)for(let tx=Math.floor((x-radius)/span);tx<=Math.floor((x+radius)/span);tx++){
    const key=tx+':'+tz,rx=tx*span-x,rz=tz*span-z;
    if(Math.hypot(rx+span*.5,rz+span*.5)>radius+span*.72)continue;
    wanted.add(key);let a=this.cache.get(key);if(!a){a=this.tile(tx,tz);this.cache.set(key,a);}
    const first=capture?.size??0,heightProof=this.crownByVegetationTile?.get(a);
-   for(let i=0;i<a.length&&count<maxTrees;i+=8){
+   const lane=this.openLane?.forOwner(key);
+   for(let i=0;i<a.length&&count<limit;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
     if(d>radius**2||(d>1120**2&&a[i+7]>.70))continue;
+    if(lane?.(a[i],a[i+2],a[i+3],a[i+4])){removed++;limit--;continue;}
     const native=this.plantedY?.(a[i],a[i+2]);
     this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);
     if(this.crownUsedAtSlot)this.crownUsedAtSlot[count]=heightProof?.[i/8]??0;
@@ -239,8 +271,11 @@ export class Vegetation {
    capture?.sealBlock(tx,tz,first);
   }
   const originalCount=count;
+  this.openLaneRootsRemoved=removed;
   this.hedges?.draw(x,z,(hx,hz,h,style)=>{
-   if(count>=maxTrees)return false;
+   // Preserve the old quota, including rejected root slots; an unrelated
+   // tree or hedge must not appear solely because a slot was freed here.
+   if(count>=limit)return false;
    if(this.mappedFreshwater?.(hx,hz))return true;
    if(this.cover.distance(this.t,hx,hz)<6||runwayAt(hx,hz)||insideLighthouseYard(hx,hz,4))return true;
    if(this.t.coastalGrids.some(c=>c.spec.id!==MONTAGUE_GROUND_ID&&c.spec.tileX===Math.floor((hx-this.t.left)/(this.t.right-this.t.left)*32)&&

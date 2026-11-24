@@ -1,0 +1,254 @@
+{
+  "fallBackAndPositiveCase": [
+    {
+      "before": {
+        "geometry": 263786,
+        "draws": 110,
+        "count": 8053,
+        "triggered": false,
+        "diag": null,
+        "ground": [
+          71.93815785379036,
+          71.90887633401813
+        ]
+      },
+      "after": {
+        "geometry": 263782,
+        "draws": 110,
+        "count": 8052,
+        "triggered": true,
+        "diag": {
+          "eligible": 3,
+          "removed": 1
+        },
+        "ground": [
+          71.93815785379036,
+          71.90887633401813
+        ]
+      },
+      "root": [
+        -25755.9921875,
+        71.65814208984375,
+        15234.552734375
+      ],
+      "shape": [
+        17.35866928100586,
+        18.610193252563477,
+        1,
+        0.8602375984191895
+      ],
+      "pos": [
+        -25712.27858875645,
+        83.23037270537249,
+        15277.098946536304
+      ],
+      "aim": [
+        -0.7137890797799837,
+        -0.08856029837885826,
+        -0.6947389604289453
+      ],
+      "beforeMatching": 1,
+      "afterMatching": 0,
+      "unrelatedFloatsDifferent": 0,
+      "sameCandidateRepeated": true,
+      "view": "lane-6877-late",
+      "phase": "late",
+      "requestCount": 1
+    },
+    {
+      "before": {
+        "geometry": 263786,
+        "draws": 110,
+        "count": 8053,
+        "triggered": false,
+        "diag": null,
+        "ground": [
+          71.93815785379036,
+          71.90887633401813
+        ]
+      },
+      "marks": [
+        3335
+      ],
+      "root": [
+        -25755.9921875,
+        71.65814208984375,
+        15234.552734375
+      ],
+      "shape": [
+        17.35866928100586,
+        18.610193252563477,
+        1,
+        0.8602375984191895
+      ],
+      "pos": [
+        -25712.27858875645,
+        83.23037270537249,
+        15277.098946536304
+      ],
+      "aim": [
+        -0.7137890797799837,
+        -0.08856029837885826,
+        -0.6947389604289453
+      ],
+      "view": "lane-6877-off",
+      "phase": "off",
+      "requestCount": 1
+    },
+    {
+      "before": {
+        "geometry": 334138,
+        "draws": 126,
+        "count": 8053,
+        "triggered": false,
+        "diag": null,
+        "ground": [
+          71.93815785379036,
+          71.90887633401813
+        ]
+      },
+      "marks": [
+        3335
+      ],
+      "root": [
+        -25755.9921875,
+        71.65814208984375,
+        15234.552734375
+      ],
+      "shape": [
+        17.35866928100586,
+        18.610193252563477,
+        1,
+        0.8602375984191895
+      ],
+      "pos": [
+        -25712.27858875645,
+        83.23037270537249,
+        15277.098946536304
+      ],
+      "aim": [
+        -0.7137890797799837,
+        -0.08856029837885826,
+        -0.6947389604289453
+      ],
+      "view": "lane-6877-detail",
+      "phase": "detail",
+      "requestCount": 1
+    }
+  ],
+  "ordinaryVirtualFlight": [
+    {
+      "active": false,
+      "distanceM": 502.9018134521373,
+      "atEnd": null,
+      "beginCockpitAndPause": true,
+      "existingRoadPackRequests": 1
+    },
+    {
+      "active": true,
+      "distanceM": 502.9018134521373,
+      "atEnd": {
+        "eligible": 4,
+        "removed": 1
+      },
+      "beginCockpitAndPause": true,
+      "existingRoadPackRequests": 1
+    }
+  ],
+  "oldLakeWorldOwnerCrossAndReturn": [
+    {
+      "option": false,
+      "northernOrSouthern": -1,
+      "at": "21-12",
+      "actualRootSlotCount": 1,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": null,
+      "oldRoadPackRequests": 1
+    },
+    {
+      "option": false,
+      "northernOrSouthern": 1,
+      "at": "21-13",
+      "actualRootSlotCount": 1,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": null,
+      "oldRoadPackRequests": 1
+    },
+    {
+      "option": false,
+      "northernOrSouthern": -1,
+      "at": "21-12",
+      "actualRootSlotCount": 1,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": null,
+      "oldRoadPackRequests": 1
+    },
+    {
+      "option": true,
+      "northernOrSouthern": -1,
+      "at": "21-12",
+      "actualRootSlotCount": 0,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": {
+        "eligible": 4,
+        "removed": 1
+      },
+      "oldRoadPackRequests": 1
+    },
+    {
+      "option": true,
+      "northernOrSouthern": 1,
+      "at": "21-13",
+      "actualRootSlotCount": 0,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": {
+        "eligible": 4,
+        "removed": 1
+      },
+      "oldRoadPackRequests": 1
+    },
+    {
+      "option": true,
+      "northernOrSouthern": -1,
+      "at": "21-12",
+      "actualRootSlotCount": 0,
+      "ground": [
+        21.41701536194716,
+        21.447656290421303
+      ],
+      "diagnostic": {
+        "eligible": 4,
+        "removed": 1
+      },
+      "oldRoadPackRequests": 1
+    }
+  ],
+  "oldLakeReturnFrames": [
+    {
+      "mode": "stock",
+      "northReturnPngExact": true,
+      "sha256": "725c89a0133f57631fb4aaa30cbcefbd67c67cdfb60f8aac180cbe3cef0207bb"
+    },
+    {
+      "mode": "opt",
+      "northReturnPngExact": true,
+      "sha256": "a56435af6623b5d87b7328e2999ed0757be49953df7225c6c711d3ed6e9d8133"
+    }
+  ],
+  "scope": "Matched engine diagnostics, not dated photographs or current vegetation clearing. Breadalbane late capture uses the same installer before Old Lake was added to the signed table; the ordinary and seam replays exercise the full four-site table."
+}

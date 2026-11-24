@@ -1,0 +1,218 @@
+{
+  "schema": "mapped-lane-canopy-numbered-route-witness/v1",
+  "pins": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecoded": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "road": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1"
+  },
+  "rootTableSha256": "c55251765d06b940a1e86a46c149bbadbf99e5eae9cf72cc3d74703f4675f4b8",
+  "survey": "PEI-Prince_Edward_Island_2020-1m (NRCan, 1m DSM/DTM, EPSG:3979, source project nominal 2020-09-15)",
+  "nrn": "PE_22_1 in-game atlas; explicit unpaved/gravel, no bridges",
+  "sourceRole": "Detached candidate selection only; numerical source cells do not assert current-day tree or road condition.",
+  "source": [
+    {
+      "road": "Canadian Rd",
+      "sourceOrdinal": 15680,
+      "flags": 1,
+      "sourceChord": 1,
+      "canonicalGlobalCell": 471511849,
+      "canonicalJitterSeed": [
+        -5319,
+        -1998
+      ],
+      "seed": {
+        "tile": [
+          -333,
+          -125
+        ],
+        "cell": 41,
+        "xz": [
+          -63817.21484375,
+          -23965.88671875
+        ],
+        "fallback": [
+          9.995553970336914,
+          11.483317375183105
+        ]
+      },
+      "sourceNativeCell": [
+        35326,
+        56060
+      ],
+      "sourceNativeWindow": [
+        35321,
+        56055,
+        11,
+        11
+      ],
+      "sourceNativeCropSha256": "035475f3be87f091c602665c57ec73b169987542710a6689b4ce1da3abaca40b",
+      "maxSevenBySevenDsmMinusDtmM": 0.025484561920166016,
+      "centerDifferenceM": 0.0012892296938045674,
+      "wgs": [
+        -64.03135822187687,
+        46.715596010169925
+      ],
+      "roadStationM": 259.2801222354328,
+      "nativeDate": "2020-09-15T12:00:00Z",
+      "localChordDistancesM": [
+        1.9958570258136052,
+        92.79426145329163
+      ],
+      "continuity": [
+        -64.03298,
+        46.71355
+      ]
+    },
+    {
+      "road": "Breadalbane Rd",
+      "sourceOrdinal": 6877,
+      "flags": 2,
+      "sourceChord": 0,
+      "canonicalGlobalCell": 578517341,
+      "canonicalJitterSeed": [
+        -2147,
+        1269
+      ],
+      "seed": {
+        "tile": [
+          -135,
+          79
+        ],
+        "cell": 93,
+        "xz": [
+          -25755.9921875,
+          15234.552734375
+        ],
+        "fallback": [
+          17.35866928100586,
+          18.610193252563477
+        ]
+      },
+      "sourceNativeCell": [
+        87880,
+        72879
+      ],
+      "sourceNativeWindow": [
+        87875,
+        72874,
+        11,
+        11
+      ],
+      "sourceNativeCropSha256": "26df17aff2bed930af2ee3a05aad2675def4f36a43d26d59dcbd12813796f256",
+      "maxSevenBySevenDsmMinusDtmM": 0.03326416015625,
+      "centerDifferenceM": 0.010408333991068261,
+      "wgs": [
+        -63.5355278972806,
+        46.36295066417573
+      ],
+      "roadStationM": 804.5080209619524,
+      "nativeDate": "2020-09-15T12:00:00Z",
+      "localChordDistancesM": [
+        804.5086190673321,
+        249.27028340758943
+      ],
+      "continuity": null
+    },
+    {
+      "road": "Dromore Rd",
+      "sourceOrdinal": 12313,
+      "flags": 2,
+      "sourceChord": 0,
+      "canonicalGlobalCell": 601132120,
+      "canonicalJitterSeed": [
+        2248,
+        1957
+      ],
+      "seed": {
+        "tile": [
+          140,
+          122
+        ],
+        "cell": 88,
+        "xz": [
+          26987.279296875,
+          23488.861328125
+        ],
+        "fallback": [
+          13.383831024169922,
+          15.511667251586914
+        ]
+      },
+      "sourceNativeCell": [
+        138835,
+        54548
+      ],
+      "sourceNativeWindow": [
+        138830,
+        54543,
+        11,
+        11
+      ],
+      "sourceNativeCropSha256": "8724dc263108220a96f952c2bec90ae21b64b0c3f03207e24b9b3e27adc613ce",
+      "maxSevenBySevenDsmMinusDtmM": 0.12092208862304688,
+      "centerDifferenceM": 0.0029492597149876135,
+      "wgs": [
+        -62.84843190915381,
+        46.28869527887201
+      ],
+      "roadStationM": 274.37649940981356,
+      "nativeDate": "2020-09-15T12:00:00Z",
+      "localChordDistancesM": [
+        274.3766938428945,
+        1258.490561839316
+      ],
+      "continuity": null
+    },
+    {
+      "road": "Old Lake Rd",
+      "sourceOrdinal": 4474,
+      "flags": 1,
+      "sourceChord": 2,
+      "canonicalGlobalCell": 562867060,
+      "canonicalJitterSeed": [
+        2740,
+        791
+      ],
+      "seed": {
+        "tile": [
+          171,
+          49
+        ],
+        "cell": 116,
+        "xz": [
+          32886.828125,
+          9494.3779296875
+        ],
+        "fallback": [
+          12.815755844116211,
+          14.37600040435791
+        ]
+      },
+      "sourceNativeCell": [
+        137208,
+        39273
+      ],
+      "sourceNativeWindow": [
+        137203,
+        39268,
+        11,
+        11
+      ],
+      "sourceNativeCropSha256": "ce50ebd2b29d7de16bee5feec2cda333b6320598d11be6700f2cf48e67486a2b",
+      "maxSevenBySevenDsmMinusDtmM": 0.09853363037109375,
+      "centerDifferenceM": 0.02120025951312282,
+      "wgs": [
+        -62.77157741249792,
+        46.41458901455351
+      ],
+      "roadStationM": 223.34598658980036,
+      "nativeDate": "2020-09-15T12:00:00Z",
+      "localChordDistancesM": [
+        182.56116034013147,
+        594.6575815016511
+      ],
+      "continuity": null
+    }
+  ]
+}
