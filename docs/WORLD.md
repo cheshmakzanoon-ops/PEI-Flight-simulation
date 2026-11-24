@@ -189,6 +189,8 @@ shoreline or turn the remainder of PEI into a high-resolution survey.
 
 The [western Hog Island dune ground study](qa/hog-island-west-dune-ground.md) seats a bounded dry contour mesh in the 1 m measured source and pairs it with a separate dated dry aerial crop. It does not change the shoreline or the east island building atlas.
 
+The optional [dry dune surface detail](qa/dry-dune-surface-detail.md) adds closely sampled sand grain and lighting only on source-qualified material windows across all three counties. It preserves the measured East and West Point coastal terrain and makes no change to the land mask.
+
 ## Woodland height and clearance
 
 [Measured provincial stand heights](qa/forest-height-stream.md) set the

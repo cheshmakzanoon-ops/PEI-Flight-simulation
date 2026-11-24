@@ -1,0 +1,133 @@
+[
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "approved": true,
+      "active": [
+        [
+          12,
+          11
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 380.9292341881049,
+    "heightAGLM": 59.3588147247837,
+    "fault": false,
+    "requests": [
+      [
+        "12-11.g05.gz",
+        200
+      ],
+      [
+        "micro-photometric.png",
+        200
+      ],
+      [
+        "macro-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "queens-sand-dunes"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "approved": true,
+      "active": [
+        [
+          6,
+          7
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 384.4364490882298,
+    "heightAGLM": 59.017457890149224,
+    "fault": false,
+    "requests": [
+      [
+        "6-7.g05.gz",
+        200
+      ],
+      [
+        "micro-photometric.png",
+        200
+      ],
+      [
+        "macro-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "prince-sand-dunes"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "approved": true,
+      "active": [
+        [
+          30,
+          11
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 382.6828381451235,
+    "heightAGLM": 57.53227466893159,
+    "fault": false,
+    "requests": [
+      [
+        "30-11.g05.gz",
+        200
+      ],
+      [
+        "micro-photometric.png",
+        200
+      ],
+      [
+        "macro-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "kings-sand-dunes"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": false,
+    "diagnostics": {
+      "approved": true,
+      "active": [],
+      "pending": 0,
+      "failed": 1
+    },
+    "ordinaryTravelM": 384.43644908826315,
+    "heightAGLM": 59.31525034494596,
+    "fault": true,
+    "requests": [
+      [
+        "12-11.g05.gz",
+        200
+      ],
+      [
+        "micro-photometric.png",
+        200
+      ],
+      [
+        "macro-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "queens-sand-dunes"
+  }
+]

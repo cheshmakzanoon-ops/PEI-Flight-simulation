@@ -1,0 +1,120 @@
+{
+  "inventory": {
+    "service": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/Wetland_and_Sand_Dune_Inventory_2020/FeatureServer/0",
+    "item": "724835d1102b4260b6e97c0849479cd3",
+    "licence": "Open Government Licence – Prince Edward Island",
+    "survey": "2020 interpretation and fieldwork, September 2026 service revision",
+    "featureFilter": "wet_type = SAND DUNE",
+    "screen": "class1=SDW wet_per1=10 non-forested exact geometry",
+    "count": 483,
+    "sourceBytes": 2682021,
+    "sha256": "6cf0f501435006a9f1f3ffe27054cfade2bdb38f811915a406918b7b58bf39e5"
+  },
+  "worldCover": {
+    "version": "ESA WorldCover 2021 v200",
+    "nativeClass": 60,
+    "licence": "CC BY 4.0",
+    "N45W063": "54369b33af4459a37ad7eb6529da8fdf0bf7f102337ac760a200076f236cf941",
+    "N45W066": "a9ecfc04b044d75d68f5144af3240fa32792c3dcc77e7b429595935c610a80b0"
+  },
+  "wholeTentMetres": 5.05,
+  "sourceQualification": {
+    "KINGS": {
+      "source": 193,
+      "sourceGrid": 182237,
+      "signedDryGrid": 120441,
+      "bareDryClearGrid": 5334,
+      "heldMixedOrForested": 13,
+      "fullSupportPolygonCount": 20,
+      "supportGrid": 1642,
+      "uniqueSupportM2": 41050
+    },
+    "PRINCE": {
+      "source": 173,
+      "sourceGrid": 353490,
+      "signedDryGrid": 237196,
+      "bareDryClearGrid": 17985,
+      "fullSupportPolygonCount": 17,
+      "supportGrid": 5888,
+      "heldMixedOrForested": 3,
+      "wideHeld": 1,
+      "uniqueSupportM2": 147200
+    },
+    "QUEENS": {
+      "source": 117,
+      "sourceGrid": 261882,
+      "signedDryGrid": 187871,
+      "bareDryClearGrid": 26273,
+      "fullSupportPolygonCount": 15,
+      "supportGrid": 17632,
+      "heldMixedOrForested": 25,
+      "uniqueSupportM2": 440800
+    }
+  },
+  "packaged": {
+    "retained": 24270,
+    "terrainTiles": 29,
+    "maskWire": 14669,
+    "pinnedExcludedTerrainOwners": [
+      [
+        1,
+        9
+      ],
+      [
+        31,
+        12
+      ]
+    ],
+    "measuredPatches": 52
+  },
+  "stockExclusionSHA256": "3afcd194c8919cc97dec69cb696c824491e08221018d92e91d0100deb4609085",
+  "masksManifestSHA256": "d8eca2af98ac4f9d6e33ab7e2298fd6f80be9b27a9e00118f77403131a64865a",
+  "photometricMaterials": [
+    {
+      "name": "sand_03",
+      "payload": "micro-photometric.png",
+      "sourceWidthMetres": 2,
+      "style": "micro",
+      "pixels": 256,
+      "sha": "3c4d73e72a9c07d9f6ff09728aba37b6a10947c5df8bebc938da1a156d9e5755",
+      "size": 149949,
+      "pinnedInputs": {
+        "diff": {
+          "name": "sand_03_diff_1k.jpg",
+          "sha256": "e72144f9d7b81bdb7bbdb34222b53431738dcef79346dd89412d2abd541e4d30"
+        },
+        "nor_gl": {
+          "name": "sand_03_nor_gl_1k.jpg",
+          "sha256": "1bde5f49ea78f94bcad73592696bf3949711c4ac197133b710c0c8521b6e996b"
+        },
+        "rough": {
+          "name": "sand_03_rough_1k.jpg",
+          "sha256": "5c9ead290a94913cfa2d0452a576ba527b50301fe208f2ffc4861e42a8fea45b"
+        }
+      }
+    },
+    {
+      "name": "coast_sand_02",
+      "payload": "macro-photometric.png",
+      "sourceWidthMetres": 15,
+      "style": "macro",
+      "pixels": 384,
+      "sha": "775c91fc73dd82ff4236fa01613b9a38ba437a3290cac50782a1db2e1f901a78",
+      "size": 426290,
+      "pinnedInputs": {
+        "diff": {
+          "name": "coast_sand_02_diff_1k.jpg",
+          "sha256": "6854bc49936d7b2971b579095c21342ad2c8fd1495aa3382b840335202964f53"
+        },
+        "nor_gl": {
+          "name": "coast_sand_02_nor_gl_1k.jpg",
+          "sha256": "285a9b5c7f39215a1446c51a69d81228a01277ebafc48b9aeebd115066b4f796"
+        },
+        "rough": {
+          "name": "coast_sand_02_rough_1k.jpg",
+          "sha256": "f2b99b9f81c7bd467107f61551ab6517cfa090efcdb10cc19bc2fc4ea347fd7f"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Dry dune surface detail, PEI Flight Simulation
+
+Authority-mask source: Prince Edward Island Wetland and Sand Dune Inventory,
+Resource Inventory and Modelling Section, Forests, Fish and Wildlife Division,
+Department of Land & Environment. Contains information licensed under the
+Open Government Licence – Prince Edward Island:
+https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island
+
+Includes derived spatial checks of ESA WorldCover 2021 v200; © ESA WorldCover
+project 2021, Contains modified Copernicus Sentinel data; CC BY 4.0:
+https://doi.org/10.5281/zenodo.7254221
+
+Additional exclusion information contains data © OpenStreetMap contributors
+under ODbL 1.0; see public/world/woodland/v1/canopy-receiver-fence-LICENSE.txt.
+This qualified authority raster is also made available under ODbL 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Generic photographic grain: Sand 03 by Charlotte Baglioni; Coast Sand 02
+by Rob Tuytel. Both from Poly Haven, CC0 1.0; those terms apply separately to
+the photometric PNGs.
+https://polyhaven.com/a/sand_03
+https://polyhaven.com/a/coast_sand_02

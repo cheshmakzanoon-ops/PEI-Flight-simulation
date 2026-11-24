@@ -1,0 +1,169 @@
+{
+  "prince": {
+    "width": 460,
+    "height": 338,
+    "exactExterior": 49877,
+    "changesExterior": 0,
+    "activeDeltaGT2": 27903,
+    "maxRGBChange": 16,
+    "poses": {
+      "lon": -63.94210616105072,
+      "lat": 46.70280613944216,
+      "dist": 26,
+      "east": 0.22,
+      "south": 0.975,
+      "h": 0,
+      "agl": 10
+    },
+    "metrics": {
+      "before": {
+        "draws": 33,
+        "tris": 168320
+      },
+      "after": {
+        "draws": 33,
+        "tris": 168320
+      },
+      "mask": {
+        "draws": 33,
+        "tris": 168320
+      },
+      "returns": true,
+      "active": [
+        [
+          6,
+          7
+        ]
+      ]
+    },
+    "requests": [
+      "6-7.g05.gz",
+      "micro-photometric.png",
+      "macro-photometric.png"
+    ],
+    "errors": []
+  },
+  "queens": {
+    "width": 460,
+    "height": 338,
+    "exactExterior": 30547,
+    "changesExterior": 0,
+    "activeDeltaGT2": 113048,
+    "maxRGBChange": 23,
+    "poses": {
+      "lon": -63.45853729679512,
+      "lat": 46.50723409870771,
+      "dist": 26,
+      "east": 0.18,
+      "south": 0.99,
+      "h": 0,
+      "agl": 12
+    },
+    "metrics": {
+      "before": {
+        "draws": 21,
+        "tris": 166330
+      },
+      "after": {
+        "draws": 21,
+        "tris": 166330
+      },
+      "mask": {
+        "draws": 21,
+        "tris": 166330
+      },
+      "returns": true,
+      "active": [
+        [
+          12,
+          11
+        ]
+      ]
+    },
+    "requests": [
+      "12-11.g05.gz",
+      "micro-photometric.png",
+      "macro-photometric.png"
+    ],
+    "errors": []
+  },
+  "kings": {
+    "width": 460,
+    "height": 338,
+    "exactExterior": 63762,
+    "changesExterior": 0,
+    "activeDeltaGT2": 17447,
+    "maxRGBChange": 14,
+    "poses": {
+      "lon": -62.059027515357116,
+      "lat": 46.468416557044,
+      "dist": 25,
+      "east": 0.33,
+      "south": 0.944,
+      "h": 0,
+      "agl": 11
+    },
+    "metrics": {
+      "before": {
+        "draws": 13,
+        "tris": 192054
+      },
+      "after": {
+        "draws": 13,
+        "tris": 192054
+      },
+      "mask": {
+        "draws": 13,
+        "tris": 192054
+      },
+      "returns": true,
+      "active": [
+        [
+          30,
+          11
+        ]
+      ]
+    },
+    "requests": [
+      "30-11.g05.gz",
+      "micro-photometric.png",
+      "macro-photometric.png"
+    ],
+    "errors": []
+  },
+  "high": {
+    "width": 460,
+    "height": 338,
+    "exactExterior": 155480,
+    "changesExterior": 0,
+    "activeDeltaGT2": 0,
+    "maxRGBChange": 0,
+    "poses": {
+      "lon": -63.45853729679512,
+      "lat": 46.50723409870771,
+      "dist": 135,
+      "east": 0.18,
+      "south": 0.99,
+      "h": 0,
+      "agl": 245
+    },
+    "metrics": {
+      "before": {
+        "draws": 10,
+        "tris": 185378
+      },
+      "after": {
+        "draws": 10,
+        "tris": 185378
+      },
+      "mask": {
+        "draws": 10,
+        "tris": 185378
+      },
+      "returns": true,
+      "active": []
+    },
+    "requests": [],
+    "errors": []
+  }
+}

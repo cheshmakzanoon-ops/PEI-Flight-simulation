@@ -1,0 +1,36 @@
+{
+  "manifestSHA": "d8eca2af98ac4f9d6e33ab7e2298fd6f80be9b27a9e00118f77403131a64865a",
+  "decodedPositiveCount": 24270,
+  "exactQualifyingSourceCount": 25162,
+  "decodedPositiveCountByCounty": {
+    "PRINCE": 5777,
+    "QUEENS": 17292,
+    "KINGS": 1201
+  },
+  "acceptedTiles": 29,
+  "authorityWireBytes": 14669,
+  "staticPaddingMinM": 10.058440499247808,
+  "scenarios": {
+    "5.001": {
+      "failing": {},
+      "minimumRawCover": 27.04869788143577,
+      "trueBreakMinimumBelowCornersCount": 228,
+      "passed": 24270,
+      "witnesses": {}
+    },
+    "5.016": {
+      "failing": {},
+      "minimumRawCover": 27.04184778046846,
+      "trueBreakMinimumBelowCornersCount": 228,
+      "passed": 24270,
+      "witnesses": {}
+    },
+    "5.05": {
+      "failing": {},
+      "minimumRawCover": 27.00128959141341,
+      "trueBreakMinimumBelowCornersCount": 230,
+      "passed": 24270,
+      "witnesses": {}
+    }
+  }
+}
