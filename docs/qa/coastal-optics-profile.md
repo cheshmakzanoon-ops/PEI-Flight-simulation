@@ -4,7 +4,7 @@ In **Standard**, open **Optional scenery studies**, choose **Coastal optics**, a
 
 This is one shortcut for three local coastal studies:
 
-- The existing [broken surf detail](shore-foam-detail.md), which breaks up uniform white lines.
+- The [broken surf detail](shore-foam-detail.md), which is ordinary in compatible Standard scenery and explicitly selected by this shortcut.
 - [Nearshore tint compatibility](shore-tone.md) for renderers that round the source shoreline texture's interpolated values.
 - The [Orby Head aperture repair](orby-shore-closure.md) at five reviewed cells.
 

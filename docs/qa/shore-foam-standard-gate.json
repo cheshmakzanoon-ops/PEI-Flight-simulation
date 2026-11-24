@@ -1,0 +1,159 @@
+{
+  "frames": {
+    "queens-harbour": {
+      "camera": [
+        1437.226686560849,
+        28.8,
+        34727.49817155767
+      ],
+      "draws": 21,
+      "triangles": 275276,
+      "frames": [
+        {
+          "phase": 12,
+          "waterPixels": 131336,
+          "protectedPixels": 125960,
+          "pixelsChangedAboveTwo": 97208,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 126584,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        },
+        {
+          "phase": 26,
+          "waterPixels": 131336,
+          "protectedPixels": 125960,
+          "pixelsChangedAboveTwo": 104948,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 126584,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        }
+      ],
+      "errors": []
+    },
+    "prince-summerside": {
+      "camera": [
+        -48734.87952436636,
+        7.3,
+        4673.516406076042
+      ],
+      "draws": 49,
+      "triangles": 274714,
+      "frames": [
+        {
+          "phase": 12,
+          "waterPixels": 135078,
+          "protectedPixels": 122097,
+          "pixelsChangedAboveTwo": 100682,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 122842,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        },
+        {
+          "phase": 26,
+          "waterPixels": 135078,
+          "protectedPixels": 122097,
+          "pixelsChangedAboveTwo": 109618,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 122842,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        }
+      ],
+      "errors": []
+    },
+    "kings-basin-wharf": {
+      "camera": [
+        83864.15278643108,
+        17.4,
+        13648.938780914668
+      ],
+      "draws": 225,
+      "triangles": 301094,
+      "frames": [
+        {
+          "phase": 12,
+          "waterPixels": 63434,
+          "protectedPixels": 193839,
+          "pixelsChangedAboveTwo": 52625,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 194486,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        },
+        {
+          "phase": 26,
+          "waterPixels": 63434,
+          "protectedPixels": 193839,
+          "pixelsChangedAboveTwo": 51991,
+          "outsideWaterOrOnePxEdge": 0,
+          "maximumOutsideChange": 0,
+          "strictNonWaterPixels": 194486,
+          "strictNonWaterChanged": 0,
+          "strictNonWaterMaxRGB": 0
+        }
+      ],
+      "errors": []
+    }
+  },
+  "compiledFlights": [
+    {
+      "case": "prince",
+      "site": "spinnakers-low",
+      "foam": true,
+      "movedM": 112.60488385473016,
+      "pause": true
+    },
+    {
+      "case": "queens",
+      "site": "cavendish-low",
+      "foam": true,
+      "movedM": 119.87844286292703,
+      "pause": true
+    },
+    {
+      "case": "kings",
+      "site": "basin-head-low",
+      "foam": true,
+      "movedM": 119.02053536548402,
+      "pause": true
+    },
+    {
+      "case": "stock",
+      "site": "spinnakers-low",
+      "foam": false,
+      "movedM": 109.24120426486286,
+      "pause": true
+    },
+    {
+      "case": "legacy",
+      "site": "cavendish-low",
+      "foam": false,
+      "movedM": 118.07845103209382,
+      "pause": true
+    },
+    {
+      "case": "detail",
+      "site": "cavendish-low",
+      "foam": true,
+      "movedM": 118.07874654555583,
+      "pause": true
+    },
+    {
+      "case": "authored-basin",
+      "site": "basin-head-low",
+      "foam": false,
+      "movedM": 116.18824629844342,
+      "pause": true
+    }
+  ],
+  "strictNonWaterSamples": 887824,
+  "protectedOutsideWaterAndOnePixelEdge": 883792
+}

@@ -173,6 +173,15 @@ export function standardDuneReliefRequested(q:URLSearchParams){
     'woodlandView','legacyShoreArcs','northBaywalkPreview','spinnakersPreview','montagueFoundationPreview',
     'basinChannel','northRusticoLighthouseStudy','cavendishDetail','hogIslandWestGround','hogIslandPhotoStudy'].some(k=>q.has(k));
 }
+/** Default breakers are optical only. Stable authored nearshore/legacy
+ * comparisons retain their earlier water branch without an explicit request. */
+export function shoreFoamDetailRequested(q:URLSearchParams){
+ if(q.has('stockShoreFoam'))return false;
+ if(q.has('shoreFoamDetail'))return true;
+ return q.get('scenery')!=='detail'&&!['legacyShoreArcs','nearshoreFoamStudy','orthophotoSeamStudy',
+  'buildingShadows','surveyRelief','inlandRelief','basinChannel','basinWharf','montagueReachOptics',
+  'montagueFoundationPreview','northBaywalkPreview','northBaywalkConcrete','spinnakersPreview','baywalkConcrete'].some(k=>q.has(k));
+}
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);
  return SCENERY_REVIEWS.filter(row=>query.has(row.flag)).map(row=>row.flag);
