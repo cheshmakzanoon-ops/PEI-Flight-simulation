@@ -86,8 +86,12 @@ export function insertCoastalGrid(g:THREE.BufferGeometry,n:number,shape:{x:numbe
   if(near&&i>=left-1&&i<=right&&j>=top-1&&j<=bottom){baseTriangle(a,b,d);baseTriangle(b,c,d);}
   else index.push(a,b,d,b,c,d);
  }
- if(near&&grid.relativeSamples&&!grid.renderWeights&&!cliff){
-  for(const ix of sparseGradeIndex(nx,nz,s.sub,(i,j)=>!!grid.relativeSamples![j*nx+i],vtx))index.push(ix);
+ if(near&&grid.relativeSamples&&!cliff){
+  // Keep every shaded sample as well as displaced heights; only untouched
+  // old facets may collapse to a larger leaf.
+  for(const ix of sparseGradeIndex(nx,nz,s.sub,(i,j)=>{
+   const k=j*nx+i;return !!(grid.relativeSamples![k]||grid.renderWeights?.[k]);
+  },vtx))index.push(ix);
  }else if(cliff||layout){for(const v of (cliff??layout!).indices)index.push(k0+v);}
  else for(let j=0;j<nz-1;j++)for(let i=0;i<nx-1;i++)index.push(vtx(i,j),vtx(i,j+1),vtx(i+1,j),vtx(i,j+1),vtx(i+1,j+1),vtx(i+1,j));
  if(!near){

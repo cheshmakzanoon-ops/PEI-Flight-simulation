@@ -1,4 +1,9 @@
 import {CoastalGrid,GROUND_LIFT,SURVEY_LOD,WORLD_COLS,WORLD_ROWS,facet,type MeshSurveySpec} from './coastal-terrain.ts';
+import {KINGS_DRY_CROWN} from './kings-dry-crown.generated.ts';
+
+// No general-purpose high relief escape hatch. Only the loader can supply
+// this brand, after it verifies the exact fixed crown's decoded sample hash.
+const exactCrown=Symbol('authenticated Kings dry crown');
 
 type Extent=Readonly<{left:number;right:number;top:number;bottom:number}>;
 type Sampler=(x:number,z:number)=>number;
@@ -12,10 +17,11 @@ export class BoundedGrade{
  readonly grid:CoastalGrid;
  private readonly weights:Uint8Array;
  private readonly contactBounds?:readonly [number,number,number,number];
- constructor(ext:Extent,spec:BoundedGradeSpec,deltaCm:Int16Array,weights:Uint8Array,atlas:Sampler){
+ constructor(ext:Extent,spec:BoundedGradeSpec,deltaCm:Int16Array,weights:Uint8Array,atlas:Sampler,proof?:typeof exactCrown){
   const w=spec.cellsX*spec.sub+1,h=spec.cellsZ*spec.sub+1;
+  const curated=proof===exactCrown&&spec===KINGS_DRY_CROWN;
   const cap=spec.maxRelativeDeltaCm??220;
-  if(!Number.isInteger(cap)||cap<1||cap>250)throw Error('Invalid bounded grade ceiling');
+  if(!Number.isInteger(cap)||cap<1||cap>(curated?KINGS_DRY_CROWN.maxRelativeDeltaCm:250))throw Error('Invalid bounded grade ceiling');
   if(!spec.relativeToParent||w<3||h<3||w>260||h>260||deltaCm.length!==w*h||weights.length!==w*h)throw Error('Unbounded grade inset');
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
    const k=y*w+x,eastFence=x===0||x===w-1,southFence=y===0||y===h-1;
@@ -23,7 +29,7 @@ export class BoundedGrade{
    if(!weights[k]&&deltaCm[k])throw Error('Grade inset changes unsupported ground');
    if(Math.abs(deltaCm[k])>cap)throw Error('Grade inset delta exceeds validated ceiling');
   }
-  this.grid=new CoastalGrid(ext,{spec,samples:deltaCm},atlas);
+  this.grid=new CoastalGrid(ext,{spec,samples:deltaCm,renderWeights:curated?weights:undefined},atlas);
   this.weights=weights;
   let left=w,top=h,right=-1,bottom=-1;
   for(let i=0;i<weights.length;i++)if(weights[i]){
@@ -101,7 +107,7 @@ export async function loadBoundedGrade(s:GradeStamp,base:string,get:typeof fetch
   const offsets=new Int16Array(count),v=new DataView(b);
   for(let i=0;i<count;i++)offsets[i]=v.getInt16(i*2,true);
   const clip=new Uint8Array(b,count*2,count);
-  return (ext:Extent,atlas:Sampler)=>new BoundedGrade(ext,s,offsets,clip,atlas);
+  return (ext:Extent,atlas:Sampler)=>new BoundedGrade(ext,s,offsets,clip,atlas,s===KINGS_DRY_CROWN?exactCrown:undefined);
  };
  try{return await Promise.race([read(),new Promise<undefined>(done=>{
   timer=setTimeout(()=>{ctl.abort();done(undefined);},ms);

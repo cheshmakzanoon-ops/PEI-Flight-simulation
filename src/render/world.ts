@@ -1,3 +1,5 @@
+import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
+import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
 import type {OrthophotoSeams} from './orthophoto-seams.ts';
 import type {AerialWorldOptics,VerifiedAerialSky,VerifyAerialSky} from './aerial-perspective-lab.ts';
 import type {DuneGrassSurface} from './dune-grass-surface.ts';
@@ -475,6 +477,8 @@ async function loadCover(tryBasin=false,verifyOptionalGeography=false){
    cs.compressedSha256,checkedBasin,undefined,decodedSha);
 }
 type ActiveRelief={mesh:ReturnType<typeof adaptiveGround>;base:THREE.BufferGeometry};
+const KINGS_CROWN_TILE=KINGS_DRY_CROWN.tileX+'-'+KINGS_DRY_CROWN.tileZ;
+type KingsCrownStage={owner:Patch;stock:THREE.Mesh;measured:THREE.Mesh;morph:KingsCrownMorph};
 type StMarysProposedGround=Readonly<{mesh:THREE.Mesh;gradeId:string;bounds:readonly [number,number,number,number];inChangedSupport:(x:number,z:number)=>boolean}>;
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
@@ -516,6 +520,9 @@ export class World {
  readonly trailStrength={value:0};
  readonly rusticoSoilStrength={value:0};
  private readonly grades?:ReadonlyMap<string,BoundedGrade>;
+ private readonly kingsGrade?:BoundedGrade;
+ private kingsStage?:KingsCrownStage;
+ private kingsStageFailed=false;
  private stagedChurch?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;seams?:string;source:StMarysProposedGround};
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
@@ -528,6 +535,8 @@ export class World {
   };
   this.grassStudy=grassStudy;
   if(localGrade)this.grades=boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade);
+  const king=this.grades?.get(KINGS_CROWN_TILE);
+  if(king?.grid.spec===KINGS_DRY_CROWN)this.kingsGrade=king;
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -859,7 +868,7 @@ export class World {
    wall.mesh.geometry.dispose();wall.mesh.geometry=next;wall.signature=signature;
   }
  }
- private patch(x0:number,z0:number,w:number,d:number,n:number,proposed?:BoundedGrade){
+ private patch(x0:number,z0:number,w:number,d:number,n:number,proposed?:BoundedGrade,skipKings=false){
   let g:THREE.BufferGeometry=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
   const pos=g.getAttribute('position'),uv=g.getAttribute('uv');
   for(let i=0;i<pos.count;i++){
@@ -869,7 +878,8 @@ export class World {
   }
   const meets=(g:NonNullable<World['bankGround']>['grid'])=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d;
   const localBank=this.bankGround?.grid;
-  const localGrade=n===112?(proposed??this.grades?.get(Math.round((x0-this.terrain.left)/w)+'-'+Math.round((z0-this.terrain.top)/d)))?.grid:undefined;
+  const planned=n===112?(proposed??this.grades?.get(Math.round((x0-this.terrain.left)/w)+'-'+Math.round((z0-this.terrain.top)/d)))?.grid:undefined;
+  const localGrade=skipKings&&planned?.spec===KINGS_DRY_CROWN?undefined:planned;
   const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&
     (n!==8||g.spec.id!==MONTAGUE_GROUND_ID)&&meets(g))??
    (localBank&&n===112&&meets(localBank)?localBank:undefined)??(localGrade&&meets(localGrade)?localGrade:undefined);
@@ -898,9 +908,9 @@ export class World {
    const source:StMarysProposedGround={mesh:candidate,gradeId:spec.id,bounds:[x0,z0,x1,z1],
     inChangedSupport:(x:number,z:number)=>grade.weight(x,z)>0};
    q=this.stagedChurch={owner:t,grade,stock:t.fine,candidate,source};
-   this.copyStMarysEdge(q.stock,q.candidate);q.seams=t.seams;
+   this.copyNearEdge(q.stock,q.candidate);q.seams=t.seams;
   }
-  if(t.fine===q.stock&&q.seams!==t.seams){this.copyStMarysEdge(q.stock,q.candidate);q.seams=t.seams;}
+  if(t.fine===q.stock&&q.seams!==t.seams){this.copyNearEdge(q.stock,q.candidate);q.seams=t.seams;}
   return q.source;
  }
  setStMarysGround(show:boolean){
@@ -908,19 +918,59 @@ export class World {
   if(!q||!t||t.lod!==112||(t.fine!==q.stock&&t.fine!==q.candidate))return false;
   const before=t.fine,after=show?q.candidate:q.stock;
   if(before!==after){
-   this.copyStMarysEdge(before,after);q.seams=t.seams;
+   this.copyNearEdge(before,after);q.seams=t.seams;
    this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
   }
   return show;
  }
- private copyStMarysEdge(a:THREE.Mesh,b:THREE.Mesh){
+ private copyNearEdge(a:THREE.Mesh,b:THREE.Mesh){
   const src=a.geometry.getAttribute('position'),dest=b.geometry.getAttribute('position'),n=112;
   let changed=false;
   for(let k=0;k<=n;k++)for(const j of [k,n*(n+1)+k,k*(n+1),k*(n+1)+n]){
    const y=src.getY(j);
    if(dest.getY(j)!==y){dest.setY(j,y);changed=true;}
   }
-  if(changed)dest.needsUpdate=true;
+  if(changed){if(dest instanceof THREE.BufferAttribute)dest.clearUpdateRanges();dest.needsUpdate=true;}
+ }
+ get kingsDryCrownBlend(){
+  const q=this.kingsStage;
+  return q&&q.owner.fine===q.measured?q.morph.strength.value:0;
+ }
+ private updateKingsCrown(tile:Patch,gain:number){
+  const source=this.kingsGrade,fine=tile.fine;
+  if(!source||!fine||tile.lod!==112||tile.relief)return false;
+  let q=this.kingsStage;
+  if(gain>0&&!q&&!this.kingsStageFailed){
+   let measured:THREE.Mesh|undefined,morph:KingsCrownMorph;
+   try{
+    measured=this.patch(tile.x0,tile.z0,tile.w,tile.d,112,source);
+    if(measured.userData.localGrade!==KINGS_DRY_CROWN.id)throw Error('Near owner no longer admits Kings dry crown');
+    const positions=measured.geometry.getAttribute('position') as THREE.BufferAttribute;
+    positions.setUsage(THREE.DynamicDrawUsage);morph=new KingsCrownMorph(positions,source.grid);
+   }catch{measured?.geometry.dispose();this.kingsStageFailed=true;return false;}
+   // The two endpoint shapes bound every linear morph vertex.
+   if(measured.geometry.boundingSphere)measured.geometry.boundingSphere.radius+=KINGS_DRY_CROWN.maxRelativeDeltaCm*.01;
+   const m=tile.local.clone();m.uniforms={...tile.local.uniforms,kingsCrownGain:morph.strength};m.defines={...tile.local.defines,SURVEY_LIGHT:1};
+   m.vertexShader='uniform float kingsCrownGain;\n'+m.vertexShader.replace('vSurveyWeight=surveyWeight;','vSurveyWeight=surveyWeight*kingsCrownGain;');
+   const term='n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));';
+   m.fragmentShader=m.fragmentShader.replace(term,'if(vSurveyWeight>0.)'+term);
+   measured.material=m;
+   q=this.kingsStage={owner:tile,stock:fine,measured,morph};
+  }
+  if(!q||q.owner!==tile)return false;
+  if(gain>0)q.morph.set(gain);
+  const wanted=gain>0?q.measured:q.stock;
+  if(fine===wanted)return false;
+  this.copyNearEdge(fine,wanted);this.scene.remove(fine);this.scene.add(wanted);tile.fine=wanted;
+  // Only the topology swap increments the broad seating epoch. The moving
+  // influence has no shipped actor/receiver within the measured guard.
+  return true;
+ }
+ private dropKingsCrown(){
+  const q=this.kingsStage;if(!q)return;
+  this.updateKingsCrown(q.owner,0);
+  this.scene.remove(q.measured);q.measured.geometry.dispose();(q.measured.material as THREE.Material).dispose();
+  this.kingsStage=undefined;
  }
  private dropStMarysStage(){
   const q=this.stagedChurch;if(!q)return;
@@ -1052,7 +1102,13 @@ export class World {
   const key=i+'-'+j,tile=this.byId.get(key);
   if(!tile)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
   const grade=this.installedGrade(key,tile);
-  if(grade?.weight(x,z))return grade.visualY(x,z)!;
+  if(grade?.weight(x,z)){
+   const y=grade.visualY(x,z)!;
+   if(grade===this.kingsGrade){const gain=this.kingsDryCrownBlend;if(gain<1){
+    const legacy=grade.grid.parentHeight(x,z)+GROUND_LIFT;return legacy+(y-legacy)*gain;
+   }}
+   return y;
+  }
   if(tile.relief){
    const m=tile.relief.mesh.relief,u=(x-tile.x0)/tile.w,v=(z-tile.z0)/tile.d;
    if(m.supportDistance(u,v)===0)return m.height(u,v);
@@ -1112,7 +1168,11 @@ export class World {
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
   if(covered&&(this.grades||this.stagedChurch)){
    const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
-   if(grade?.weight(x,z))return grade.contactY(x,z,baseline);
+   if(grade?.weight(x,z)){
+    const y=grade.contactY(x,z,baseline);
+    if(grade===this.kingsGrade){const gain=this.kingsDryCrownBlend;if(gain<1)return baseline+(y-baseline)*gain;}
+    return y;
+   }
   }
   if(!covered||!this.reliefActive.size||runwayAt(x,z))return baseline;
   const [u,v]=this.terrain.uv(x,z);
@@ -1160,6 +1220,14 @@ export class World {
    }
    art.update(near);
   }
+  // A camera cut can cross the zero side before the regular terrain sweep.
+  // Restore the cached stock mesh before this paint without doing any new
+  // terrain construction or partial Y-buffer work on the ordinary frame path.
+  const crown=this.kingsStage;
+  if(crown&&crown.owner.fine===crown.measured){
+   const t=crown.owner,dx=pos.x-t.x0-t.w/2,dz=pos.z-t.z0-t.d/2;
+   if(dx*dx+dz*dz>=KINGS_CROWN_ZERO_M**2&&this.updateKingsCrown(t,0))this.groundVersion++;
+  }
   if(Math.abs(clock-this.recent)<.25&&this.recent>0)return;
   this.recent=clock;let changedGround=false;
   // The visible curtain fills close headlands. Beyond the horizon detail load
@@ -1173,14 +1241,18 @@ export class World {
    const dx=pos.x-(tile.x0+tile.w/2),dz=pos.z-(tile.z0+tile.d/2);
    const d2=dx*dx+dz*dz,old=tile.lod;
    const proposedLOD=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
+   const measuredKings=!!this.kingsGrade&&tile.id===KINGS_CROWN_TILE;
+   if(proposedLOD!==112&&this.kingsStage?.owner===tile)this.dropKingsCrown();
    if(proposedLOD!==112&&this.stagedChurch?.owner===tile)this.dropStMarysStage();
    tile.lod=proposedLOD;
    if(tile.lod!==old){changedGround=true;if(tile.lod<112)this.withdrawAdaptive(tile);}
    const fine=tile.lod>8;
    if(fine&&tile.fine?.userData.subdiv!==tile.lod){
      if(tile.fine){this.scene.remove(tile.fine);tile.fine.geometry.dispose();}
-     tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,tile.lod);tile.fine.material=tile.local;this.scene.add(tile.fine);tile.seams=undefined;
+     tile.fine=this.patch(tile.x0,tile.z0,tile.w,tile.d,tile.lod,undefined,measuredKings);
+     tile.fine.material=tile.local;this.scene.add(tile.fine);tile.seams=undefined;
    }
+   if(measuredKings&&proposedLOD===112&&this.updateKingsCrown(tile,kingsCrownBlendForDistance(Math.sqrt(d2))))changedGround=true;
    if(tile.detail&&d2>19000**2){this.orthoSeams?.evict(tile.id,tile.detail);tile.detail.dispose();(tile.detail.image as ImageBitmap)?.close?.();tile.detail=undefined;tile.status='idle';tile.local.uniforms.hasDetail.value=0;tile.local.uniforms.detailMap.value=tile.local.uniforms.imageMap.value;this.refreshDetailOwner(tile,undefined);}
    tile.coarse.visible=!fine;if(tile.fine){tile.fine.visible=fine;if(!fine&&d2>15000**2){this.scene.remove(tile.fine);tile.fine.geometry.dispose();tile.fine=undefined;tile.seams=undefined;}}
   }
@@ -1202,6 +1274,7 @@ export class World {
         pos.setY(j,y);tile.relief?.base.getAttribute('position').setY(j,y);
       }
     }
+    if(this.kingsStage?.measured===tile.fine&&pos instanceof THREE.BufferAttribute)pos.clearUpdateRanges();
     pos.needsUpdate=true;
     if(tile.relief)tile.relief.base.getAttribute('position').needsUpdate=true;
   }

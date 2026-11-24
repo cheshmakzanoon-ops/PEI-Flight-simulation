@@ -1,3 +1,4 @@
+import {KINGS_CROWN_BUILDINGS,readKingsCrownBuildings} from './kings-crown-building-owner.ts';
 import {ST_DAVIDS as ST_DAVID} from './st-davids/source.generated.ts';
 import {stDavidsAtlasAllows,stDavidsDrawAllows,stDavidsOwnerAllows,stDavidsOwnerBytes} from './st-davids/admit.ts';
 import type {StDavidsArt} from './st-davids/runtime.ts';
@@ -48,7 +49,7 @@ import { PackedBytes } from '../sim/packed-bytes.ts';
 import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
 import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
-type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[];indianRiver?:Bldg[]};
+type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[];indianRiver?:Bldg[];kingsCrown?:Bldg[]};
 interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 type ExteriorRecord={ordinal:number;footprint:readonly (readonly [number,number])[];height:number;minHeight:number};
 function matchesExterior(rows:Bldg[],spec:ExteriorRecord){
@@ -199,13 +200,14 @@ export class Buildings {
  private indianVariant?:ReturnType<typeof authenticatedOwnerVariant>;
  private readonly churchArt?:ChurchArt;
  private readonly pinnedChurch?:Bldg[];
+ private readonly pinnedKingsCrown?:Bldg[];
  private readonly tryStation?:RailwayReview;
  private station?:RailwayVariant;
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview){
-  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[]){
+  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
    vertexShader:buildingV,fragmentShader:buildingF(false,false,false,false,false,false,true),vertexColors:true,side:THREE.DoubleSide});
@@ -281,9 +283,18 @@ export class Buildings {
   }catch{/** Standard building loading remains the fallback. */}
   finally{clearTimeout(timer);}
  }
+ static async prepareKingsDryCrown(get:typeof fetch=fetch,ms=1450):Promise<PreparedAtlas|undefined>{
+  const path=(import.meta.env?.BASE_URL??'/')+'world/buildings/';
+  const ready=await readKingsCrownBuildings(path,Buildings.decodeChunk,get,ms);
+  if(!ready)return;
+  // Ordinary loading of every other owner is unchanged. After eviction this
+  // one staged owner still uses the same proven rows, never a second read.
+  return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,get),
+   atlasHash:ready.spec.sha256,kingsCrown:ready.rows};
+ }
  static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown);
  }
  get indianRiverPrepared(){return !!this.indianVariant;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
@@ -416,7 +427,8 @@ export class Buildings {
      rusticoChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
 
-   }else if(tile.id===CHURCH.tile&&this.pinnedChurch)features=this.pinnedChurch;
+   }else if(tile.id===KINGS_CROWN_BUILDINGS.tile&&this.pinnedKingsCrown)features=this.pinnedKingsCrown;
+   else if(tile.id===CHURCH.tile&&this.pinnedChurch)features=this.pinnedChurch;
    else features=tile.id===SPINNAKERS_TILE&&this.pinnedSpinnakers?this.pinnedSpinnakers:await Buildings.decode(tile,this.pack);
    if(!this.wanted.has(tile.id))return;
    const sp=this.spinnakers;
