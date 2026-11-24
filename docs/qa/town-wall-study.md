@@ -1,10 +1,12 @@
 # Wall fitting study in three PEI towns
 
-In Standard, select **Town façades** under **Optional scenery studies** in Dispatch and apply it, or use `?townWallStudy`. It changes the appearance of ordinary
-stock walls in small review areas in north Charlottetown, central
-Summerside, and Souris. Outside the option, or in Detail, the previous
-material is used. It does not change any footprint, roof, contact
-height, door, building use, or named business.
+In Standard, select **Expanded town façades** under **Optional scenery
+studies** in Dispatch, or use `?townWallStudy`. This is the wider,
+optional treatment covered by the measurements below. Normal Standard
+uses the [smaller core areas](town-wall-core.md); Detailed scenery keeps
+the prior walls. For a stock comparison in Standard, use
+`?stockTownWalls`. No mode changes any footprint, roof, contact height,
+door, building use, or named business.
 
 The previous stock window bands repeat every 2.62 m along a wall and
 3.08 m up it. They can be cut off at corners, buried beside the footing,

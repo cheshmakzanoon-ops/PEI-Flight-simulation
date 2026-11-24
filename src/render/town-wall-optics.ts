@@ -1,7 +1,9 @@
 import { type ShaderMaterial, type Texture } from 'three';
 import { project } from '../sim/geo.ts';
 
-export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number}}>;
+export type TownWallMode='core'|'expanded';
+type WallArea={id:string;p:{x:number;z:number};r:number};
+export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number};mode?:TownWallMode;areas?:readonly WallArea[]}>;
 export const TOWN_WALL_ATLAS='538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557';
 export const TOWN_WALL_MAX_DISTANCE=255;
 /** Extra unnormalized I16 vertex datum: conservative centimetre rounding. */
@@ -12,17 +14,28 @@ export function townWallVertex(width:number,floor:number,top:number):[number,num
  return [w,f,e];
 }
 export const townWallRequested=(opts:URLSearchParams)=>opts.has('townWallStudy')&&opts.get('scenery')!=='detail';
+const coreConflicts=['buildingShadows','inlandRelief','surveyRelief','summersideStationReview','stDavidsChurchReview',
+ 'spinnakersPreview','northBaywalkPreview','northBaywalkConcrete','baywalkConcrete','indianRiverReview','cavendishDetail'] as const;
+export function townWallMode(q:URLSearchParams):TownWallMode|undefined{
+ if(q.get('scenery')==='detail'||q.has('stockTownWalls'))return;
+ if(townWallRequested(q))return 'expanded'; // keep the original explicit study composition
+ return coreConflicts.some(k=>q.has(k))?undefined:'core';
+}
 export const TOWN_WALL_AREAS=[
  {id:'charlottetown-north',p:project(-63.11965,46.24398),r:390},
  {id:'summerside-centre',p:project(-63.79010,46.39349),r:390},
  {id:'souris-main',p:project(-62.25688,46.35259),r:375},
 ] as const;
 
-export function townFaceRegion(x:number,z:number):boolean{
- return TOWN_WALL_AREAS.some(({p,r})=>(x-p.x)**2+(z-p.z)**2<r*r);
+// Standard uses a strict subset of the independently tested study regions.
+export const TOWN_WALL_CORE_AREAS=Object.freeze(TOWN_WALL_AREAS.map((a,i)=>Object.freeze({
+ ...a,p:i===2?project(-62.25615,46.35325):a.p,r:250,
+})));
+export function townFaceRegion(x:number,z:number,areas:readonly WallArea[]=TOWN_WALL_AREAS):boolean{
+ return areas.some(({p,r})=>(x-p.x)**2+(z-p.z)**2<r*r);
 }
-export function townTileRegion(x0:number,z0:number,x1:number,z1:number):boolean{
- return TOWN_WALL_AREAS.some(({p,r})=>x1>=p.x-r&&x0<=p.x+r&&z1>=p.z-r&&z0<=p.z+r);
+export function townTileRegion(x0:number,z0:number,x1:number,z1:number,areas:readonly WallArea[]=TOWN_WALL_AREAS):boolean{
+ return areas.some(({p,r})=>x1>=p.x-r&&x0<=p.x+r&&z1>=p.z-r&&z0<=p.z+r);
 }
 
 const vertexArm='attribute vec3 townWallFit;varying vec3 townWall;\n';

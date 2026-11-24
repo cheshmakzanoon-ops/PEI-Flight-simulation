@@ -311,7 +311,8 @@ export class Buildings {
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
   return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics);
  }
- get townWallReview(){return !!this.townWallOptics;}
+ get townWallReview(){return this.townWallOptics!==undefined&&this.townWallOptics.mode!=='core';}
+ get townWallProfile(){return this.townWallOptics===undefined?undefined:this.townWallOptics.mode??'expanded';}
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
@@ -666,7 +667,7 @@ export class Buildings {
   let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
-  const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2)?[] as number[]:undefined;
+  const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
   let facade=0,measuredDowntownRoofs=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
@@ -796,7 +797,7 @@ export class Buildings {
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
     vertex(p,y0,cw,u0,0,0);vertex(q,y3,cw,u1,y3-y1,0);vertex(q,y1,cw,u1,0,0);
    };
-   const fitWalls=!!townSpans&&facade===0&&rings.length===1&&townFaceRegion(cx,cz);
+   const fitWalls=!!townSpans&&facade===0&&rings.length===1&&townFaceRegion(cx,cz,this.townWallOptics?.areas);
    // One horizontal ordering datum above every actual parent wall foot;
    // sloped stock floor profiles remain unchanged beneath these optics.
    let wallDatum=base;

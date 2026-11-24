@@ -64,13 +64,13 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |
 | Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
 | Exposed Prince and Kings shores | `?nearshoreFoamStudy` | [Nearshore surf](docs/qa/nearshore-foam-study.md) adds smaller, moving breaker groups without changing the mapped shoreline. Standard only. |
-| Charlottetown, Summerside and Souris | `?townWallStudy` | [Town façades](docs/qa/town-wall-study.md) fits complete, softly recessed window patterns to existing generic walls. Standard only. |
+| Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](docs/qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 
 **Optional scenery studies** in Dispatch offers the Beaconsfield and Green Gables exteriors, the Dunelands freshwater core, North Rustico lighthouse, St. Mary’s exterior, Hog Island aerial detail, Ground vegetation, Close grass detail, and both farmland studies without editing the URL. Enable both Cavendish studies and choose **Cavendish Dunelands · coastal pass** to try them on the same route. Use the Prince, Queens or Kings County **fields low pass** to compare farmland relief. In Standard, [Ground vegetation and Expanded farmland](docs/qa/province-land-surfaces.md) can be enabled together.
 
-Preview work is regional and does not change the Standard atlas.
+[Standard close-wall detail](docs/qa/town-wall-core.md) now fits window spacing and subtle wall finishes in the cores of three towns, without changing their outlines or roofs. Optional scenery previews are regional.
 
 In Prince County, the **Summerside waterfront · low pass** shows a [survey-fitted Water Street roof](docs/qa/summerside-measured-roof.md) in Standard.
 

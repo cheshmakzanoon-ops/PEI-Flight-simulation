@@ -68,7 +68,7 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 export const SCENERY_REVIEWS=[
  {flag:'coastalOptics',name:'Coastal optics',scope:'Daylight haze, breaking surf and scoped shore repairs in Standard'},
  {flag:'nearshoreFoamStudy',name:'Nearshore surf',scope:'Two exposed reaches in Prince and Kings counties'},
- {flag:'townWallStudy',name:'Town façades',scope:'Selected blocks in Charlottetown, Summerside and Souris'},
+ {flag:'townWallStudy',name:'Expanded town façades',scope:'Wider close-range coverage in Charlottetown, Summerside and Souris'},
 
  {flag:'beaconsfieldReview',name:'Beaconsfield exterior',scope:'Charlottetown waterfront'},
  {flag:'greenGablesReview',name:'Green Gables House',scope:'Cavendish exterior'},
