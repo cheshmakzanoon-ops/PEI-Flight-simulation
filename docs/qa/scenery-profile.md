@@ -1,7 +1,12 @@
 # Scenery selection in Dispatch
 
-**Standard atlas** is the existing view, with the same map, flight controls
-and individual URL flags. Choose **Use detailed preview** in Dispatch for
+**Standard atlas** is the ordinary view, with the same map, flight controls
+and individual URL flags. Several verified close-range scenery treatments
+are on by default. The Point Prim lighthouse, Basin Head beach and coastal
+grass departure briefings say whether the current settings allow the
+relevant treatment. They do not promise that its source data will load.
+The [compiled briefing check](departure-briefing-gate.json) covers all five
+departures with normal settings and with their stock comparisons. Choose **Use detailed preview** in Dispatch for
 the matching in-progress local enhancements. This reloads the same
 application and preserves the currently selected departure.
 

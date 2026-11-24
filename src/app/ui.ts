@@ -1,3 +1,4 @@
+import { departureBriefing } from './departure-briefing.ts';
 import {SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
@@ -76,7 +77,7 @@ export class UI {
   for(const [id,delta] of [['upPower',1],['dnPower',-1]] as const){const b=$(id);b.onpointerdown=e=>{b.setPointerCapture(e.pointerId);this.input.touch.power=delta;};b.onlostpointercapture=()=>this.input.touch.power=0;}
   this.showSite();this.set('dispatch');
  }
- showSite(){const s=this.sites[this.selected];$('site-note').textContent=s.note;$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;}
+ showSite(){const s=this.sites[this.selected];$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;}
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
  setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}
  setWarnings(xs:string[]){const e=$('layer-alert');e.textContent=xs.length?'Scenery unavailable: '+xs.join(', '):'';e.hidden=!xs.length;}

@@ -89,14 +89,13 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,standardBasinSandRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
 async function run(){
  const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
- // The proven virtual start belongs only to an explicit review URL.
- // stockPointPrim keeps access to the same start for a stock control.
+ // Keep the same Point Prim approach in Standard and in its stock comparison.
  const hasRegionalCanopy=options.has('regionalCanopyStudy');
  const pointPrimSites=pointPrimDepartureAvailable(options)?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
  const SITES=hasRegionalCanopy?[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES]:pointPrimSites;
@@ -148,7 +147,7 @@ async function run(){
  let rollingPreflight='off';
  if(rollingAsked)rollingPreflight='module';
 
- const grassCoastAsked=!options.has('stockDuneGrass')&&options.has('duneGrassSurface')&&!sceneryReviewBlock('duneGrassSurface',options);
+ const grassCoastAsked=explicitDuneGrassRequested(options);
  const standardGrassCoast=standardDuneGrassRequested(options);
  const grassCoastJob=grassCoastAsked||standardGrassCoast?loadAerialModule(()=>import('./render/dune-grass-surface.ts')):undefined;
  const duneAsked=duneSandRequested(options);

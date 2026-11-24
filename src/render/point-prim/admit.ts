@@ -23,7 +23,7 @@ export const POINT_PRIM={
 export const POINT_PRIM_DEPARTURE:Site={
  id:'point-prim-offshore',name:'Point Prim · lighthouse pass',region:'Queens County',
  lon:-63.04529820978229,lat:46.048000381690265,heading:55,height:72,
- note:'Virtual offshore start at 72 metres. This simulator-only pass compares the optional 2020 lighthouse and its small dry-ground seat.'
+ note:'Begin offshore at 72 metres. A virtual flight, not a navigation route.'
 };
 const conflicts=['surveyRelief','inlandRelief','buildingShadows','indianRiverReview','northCapeWind','seatedRoads',
  'seatedForestShadows','woodland3D','canopyLight','sourceGrassNap'] as const;

@@ -1,0 +1,16 @@
+{
+  "standard": {
+    "Point Prim · lighthouse pass": "Begin offshore at 72 metres. A virtual flight, not a navigation route. The surveyed lighthouse and its small dry-ground correction can appear on approach.",
+    "Basin Head · low pass": "Follow the inlet towards the beach, footbridge and historic Cannery from offshore. Look for the pale sand on the seaward beach as you approach.",
+    "Prince County · coastal grass pass": "Fly toward a selected coastal grassland area. Look for close grass detail over the surveyed coastal plots.",
+    "Queens County · coastal grass pass": "Fly toward a selected coastal grassland area. Look for close grass detail over the surveyed coastal plots.",
+    "Kings County · coastal grass pass": "Fly toward a selected coastal grassland area. Look for close grass detail over the surveyed coastal plots."
+  },
+  "stock": {
+    "Point Prim · lighthouse pass": "Begin offshore at 72 metres. A virtual flight, not a navigation route. The surveyed lighthouse is off with these scenery settings.",
+    "Basin Head · low pass": "Follow the inlet towards the beach, footbridge and historic Cannery from offshore. The pale sand treatment is off with these scenery settings.",
+    "Prince County · coastal grass pass": "Fly toward a selected coastal grassland area. The close grass treatment is off with these scenery settings.",
+    "Queens County · coastal grass pass": "Fly toward a selected coastal grassland area. The close grass treatment is off with these scenery settings.",
+    "Kings County · coastal grass pass": "Fly toward a selected coastal grassland area. The close grass treatment is off with these scenery settings."
+  }
+}

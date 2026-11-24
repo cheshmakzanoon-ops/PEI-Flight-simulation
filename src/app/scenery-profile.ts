@@ -223,6 +223,9 @@ export function standardBasinSandRequested(q:URLSearchParams){
   'duneReliefStudy','duneSandDetail','duneGrassSurface','kingsDryCrownStudy','buildingShadows','woodland3D',
   'forestFloor','northCapeWind','canopyLight'].some(k=>q.has(k));
 }
+export function explicitDuneGrassRequested(q:URLSearchParams){
+ return !q.has('stockDuneGrass')&&q.has('duneGrassSurface')&&!sceneryReviewBlock('duneGrassSurface',q);
+}
 /** Ordinary optical treatment. Do not inject the explicit review flag:
  * it has different dirt/relief interactions on historic comparison URLs. */
 export function standardDuneGrassRequested(q:URLSearchParams){
