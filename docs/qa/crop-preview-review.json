@@ -1,0 +1,442 @@
+{
+  "frames": {
+    "prince": {
+      "before": {
+        "draws": 86,
+        "tris": 309819
+      },
+      "after": {
+        "draws": 86,
+        "tris": 309819
+      },
+      "mask": {
+        "draws": 86,
+        "tris": 309819
+      },
+      "exact": true,
+      "camera": [
+        -51538.17609758357,
+        44,
+        5281.6056846557085
+      ],
+      "pixels": {
+        "over2": 192746,
+        "offmask": 0,
+        "max": 23
+      },
+      "errors": []
+    },
+    "queens": {
+      "before": {
+        "draws": 59,
+        "tris": 270790
+      },
+      "after": {
+        "draws": 59,
+        "tris": 270790
+      },
+      "mask": {
+        "draws": 59,
+        "tris": 270790
+      },
+      "exact": true,
+      "camera": [
+        -23568.439825310983,
+        101.24186171003416,
+        15221.532548584826
+      ],
+      "pixels": {
+        "over2": 228536,
+        "offmask": 0,
+        "max": 21
+      },
+      "errors": []
+    },
+    "kings": {
+      "before": {
+        "draws": 22,
+        "tris": 221933
+      },
+      "after": {
+        "draws": 22,
+        "tris": 221933
+      },
+      "mask": {
+        "draws": 22,
+        "tris": 221933
+      },
+      "exact": true,
+      "camera": [
+        63806.51437349493,
+        46,
+        17160.930900042145
+      ],
+      "pixels": {
+        "over2": 181822,
+        "offmask": 0,
+        "max": 20
+      },
+      "errors": []
+    },
+    "queens-high": {
+      "before": {
+        "draws": 13,
+        "tris": 221741
+      },
+      "after": {
+        "draws": 13,
+        "tris": 221741
+      },
+      "mask": {
+        "draws": 13,
+        "tris": 221741
+      },
+      "exact": true,
+      "camera": [
+        -23595.513523435024,
+        425.9781116220079,
+        15246.751883823656
+      ],
+      "pixels": {
+        "over2": 0,
+        "offmask": 0,
+        "max": 0
+      },
+      "errors": []
+    }
+  },
+  "cameraSteps": [
+    {
+      "distance": 60.0,
+      "over2": 223941,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 60424,
+      "drawCalls": 59
+    },
+    {
+      "distance": 60.25,
+      "over2": 222682,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 60991,
+      "drawCalls": 59
+    },
+    {
+      "distance": 60.51,
+      "over2": 222235,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 61575,
+      "drawCalls": 59
+    },
+    {
+      "distance": 60.76,
+      "over2": 221496,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 62145,
+      "drawCalls": 59
+    },
+    {
+      "distance": 61.01,
+      "over2": 220941,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 62683,
+      "drawCalls": 59
+    },
+    {
+      "distance": 61.27,
+      "over2": 220618,
+      "maximumChannelDelta": 21,
+      "protectedRGBPixels": 63254,
+      "drawCalls": 60
+    }
+  ],
+  "asset": {
+    "side": 256,
+    "stepM": 4.0,
+    "regions": [
+      {
+        "region": "prince",
+        "witnessId": 9931,
+        "center": [
+          -63.8729468980766,
+          46.452785206558794
+        ],
+        "originXZ": [
+          -52168.0,
+          4740.0
+        ],
+        "spanMetres": 1024.0,
+        "activeTexels": 5865,
+        "activeOwners": [
+          9920,
+          9931
+        ],
+        "activeApproxM2": 93840.0
+      },
+      {
+        "region": "queens",
+        "witnessId": 15470,
+        "center": [
+          -63.50930191459448,
+          46.35999928361345
+        ],
+        "originXZ": [
+          -24252.0,
+          15052.0
+        ],
+        "spanMetres": 1024.0,
+        "activeTexels": 5463,
+        "activeOwners": [
+          15470,
+          22081
+        ],
+        "activeApproxM2": 87408.0
+      },
+      {
+        "region": "kings",
+        "witnessId": 47730,
+        "center": [
+          -62.36776782620521,
+          46.34630119301302
+        ],
+        "originXZ": [
+          63376.0,
+          16576.0
+        ],
+        "spanMetres": 1024.0,
+        "activeTexels": 1588,
+        "activeOwners": [
+          47730
+        ],
+        "activeApproxM2": 25408.0
+      }
+    ],
+    "packedBytes": 4928,
+    "sha256": "e85633c9a231d8cda48caf91cd8fa3bfda8132e3dac72e18c082bcd3f45f175b",
+    "gates": {
+      "supportedVertices": 12916
+    }
+  },
+  "nativeAreaDiagnostic": {
+    "provinceBoundary": "Statistics Canada 2021 Census cartographic PRUID 11",
+    "rectangleClass177Cells": 564350,
+    "provinceClass177Cells": 564314,
+    "provinceClass177AreaKm2": 507.88259999999997,
+    "provinceClass177Acres": 125500.52361353574,
+    "provinceClass177Minimum80ScoreCells": 560081
+  },
+  "inputs": {
+    "aafcFieldSourceSha256": "29008797e85fd50d8a7ca8b0a796161ce49b0af4a0a2761ff70bb651cff85602",
+    "aafcCropZipSourceSha256": "acd92806c3da109af49a923ffb6811c3aee0af5561fd25c3bc0cc1e732e665a6",
+    "material": {
+      "source": "https://polyhaven.com/a/farm_furrows",
+      "licence": "CC0 1.0",
+      "materialIsNotFromPEI": true,
+      "photoChannels": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/farm_furrows/farm_furrows_diff_1k.jpg",
+          "sha256": "991caba24cc555a968b98092bd0dd3a35da849e553012830062eab158c32bb22"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/farm_furrows/farm_furrows_nor_gl_1k.jpg",
+          "sha256": "5e65f903ca3c4ab6199cb31b47fc76dbb247ea6e76027cc0708d72c166b20268"
+        }
+      },
+      "outputSha": "84cbd9a89571874ae35aac362d384662a3ce374e53c3c4a7499784918e81cc25",
+      "bytes": 150012
+    }
+  },
+  "independentWorldGate": {
+    "packDecodedSha": "45afebc628d6ef19462408692b1173569db4b303ed9b351e5bd39f1f14a447ee",
+    "analysis": "Conservative full bilinear footprint; runtime alpha gate tighter. Exact plane intersections for packed geometry; not a vegetation census or exact row orientation.",
+    "siteResults": [
+      {
+        "site": "prince",
+        "positiveTexels": 5865,
+        "edgePositiveTexels": 18,
+        "fullBilinearSupportM2": 100584.0,
+        "notWithinAAFCClass177Confidence80M2": 0.0,
+        "notWithinOriginalAAFCSelectedFieldPolygonsM2": 0.0,
+        "offOldCoverClass40DryM2": 0.0,
+        "sceneAssetScope": {
+          "street": {
+            "nearest": [
+              "1880",
+              31.157632112965878,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paths": null,
+          "parking": null,
+          "buildings": {
+            "nearest": [
+              "q02331/206",
+              218.76523006782918,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paddedRunways": {
+            "nearest": [
+              "CYSU05",
+              3010.9791969968514,
+              0.0
+            ],
+            "collisions": []
+          }
+        }
+      },
+      {
+        "site": "queens",
+        "positiveTexels": 5463,
+        "edgePositiveTexels": 162,
+        "fullBilinearSupportM2": 90952.0,
+        "notWithinAAFCClass177Confidence80M2": 0.0,
+        "notWithinOriginalAAFCSelectedFieldPolygonsM2": 0.0,
+        "offOldCoverClass40DryM2": 0.0,
+        "sceneAssetScope": {
+          "street": {
+            "nearest": [
+              "6888",
+              158.34164669350648,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paths": null,
+          "parking": null,
+          "buildings": {
+            "nearest": [
+              "q03122/70",
+              61.85725216163519,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paddedRunways": {
+            "nearest": [
+              "CYSU05",
+              25630.494740068953,
+              0.0
+            ],
+            "collisions": []
+          }
+        }
+      },
+      {
+        "site": "kings",
+        "positiveTexels": 1588,
+        "edgePositiveTexels": 0,
+        "fullBilinearSupportM2": 29232.0,
+        "notWithinAAFCClass177Confidence80M2": 0.0,
+        "notWithinOriginalAAFCSelectedFieldPolygonsM2": 0.0,
+        "offOldCoverClass40DryM2": 0.0,
+        "sceneAssetScope": {
+          "street": {
+            "nearest": [
+              "18967",
+              62.58780111673161,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paths": null,
+          "parking": null,
+          "buildings": {
+            "nearest": [
+              "q13032/50",
+              155.02869849209947,
+              0.0
+            ],
+            "collisions": []
+          },
+          "paddedRunways": {
+            "nearest": [
+              "CYYG10",
+              56401.05749409752,
+              0.0
+            ],
+            "collisions": []
+          }
+        }
+      }
+    ]
+  },
+  "compiledProjectPath": {
+    "stock": {
+      "mode": "flight",
+      "previewActive": false,
+      "metres": 187.24205865989902,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "artRequests": 0,
+      "artResponses": [],
+      "warnings": [],
+      "errors": []
+    },
+    "preview": {
+      "mode": "flight",
+      "previewActive": true,
+      "metres": 193.1169650192954,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "artRequests": 2,
+      "artResponses": [
+        200,
+        200
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "missing": {
+      "mode": "flight",
+      "previewActive": false,
+      "metres": 183.1340589158382,
+      "buildingTiles": {
+        "wanted": 43,
+        "ready": 43,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 3
+      },
+      "artRequests": 2,
+      "artResponses": [
+        404,
+        200
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

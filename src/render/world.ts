@@ -1,3 +1,4 @@
+import {fieldPilotGLSL,type FieldPilot} from './fields-pilot.ts';
 import {meadowGLSL} from './meadow-optics.ts';
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
@@ -233,7 +234,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false)=>fp+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false)=>fp+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -298,6 +299,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   if(awayFromRunway)decorateMeadow(col,n,p,vuv,coverMap,coast,d,meadowFootprint);
  }
  `:''}
+ ${fieldPilot?'paintDatedFields(col,n,p,d,coast);':''}
  float light=clamp(dot(n,sun),0.,1.);
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
@@ -339,7 +341,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
 export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
- baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>){
+ baywalkRequested?:Promise<BaywalkRegistration|undefined>,bowleyRequested?:Promise<BowleyPond|undefined>,tryCropField=false){
  const foundationJob=montagueRoadVerified?loadMontagueFoundation(base):Promise.resolve(undefined);
  const surveys=loadCoastalSurveys(base),bench=loadEastBench(base),southLake=loadSouthLake(base);
  // The elevation manifest does not describe the colour, cover, or sky assets.
@@ -351,7 +353,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const [elevation,img,cover,sky,requestedBank]=await Promise.all([
   elevationJob,
   new THREE.TextureLoader().loadAsync(base+'color.webp'),
-  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested),
+  loadCover(tryBasinChannel,!!montagueRoadVerified||!!baywalkRequested||!!bowleyRequested||tryCropField),
   new THREE.TextureLoader().loadAsync(base+'maritime-sky.webp'),bankJob
  ]);
  img.colorSpace=THREE.NoColorSpace;img.anisotropy=4;
@@ -373,7 +375,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const committedCover=court?new Cover(priorCover.width,priorCover.height,priorCover.bytes,priorCover.harbour,priorCover.sourceSha,
   priorCover.basin,priorCover.montague,priorCover.sourceDecodedSha,priorCover.wharfToe,court):priorCover;
  const bowley=bowleyRequested&&bowleyAtlasMatches(elevation.spec.sha256,committedCover.sourceSha,committedCover.sourceDecodedSha)?await bowleyRequested:undefined;
- return {terrain,img,cover:committedCover,sky,bankGround,bowley,
+ return {terrain,terrainSha:elevation.spec.sha256,img,cover:committedCover,sky,bankGround,bowley,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
 async function loadElevation(progress:(s:string)=>void){
@@ -440,7 +442,7 @@ export class World {
  readonly meadowStrength={value:1};
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot){
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -564,9 +566,11 @@ export class World {
     const meadowUniforms:Record<string,THREE.IUniform>=showMeadow?{meadowStrength:this.meadowStrength,meadowTileGuard:{value:meadowGuard},
       meadowTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)}}:{};
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const useField=fieldPilot&&fieldPilot.covers(x0,z0,x0+w,z0+d);
+    const localField:Record<string,THREE.IUniform>=useField?{cropPilotMap:fieldPilot.map,farmlandScan:fieldPilot.scan,cropPilotStrength:fieldPilot.strength,cropPilotBoxes:fieldPilot.boxes}:{};
+    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...(bowleyLocal?localBowleyUniforms:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
