@@ -6,7 +6,7 @@ import {townWallMode,TOWN_WALL_CORE_AREAS} from './render/town-wall-optics.ts';
 import {nearshoreFoamRequested} from './render/nearshore-foam.ts';
 import {stDavidsRequested,stDavidsGround} from './render/st-davids/admit.ts';
 import {ST_DAVIDS} from './render/st-davids/source.generated.ts';
-import {railRequested,railGround} from './render/summerside-station/admit.ts';
+import {railRequested,railGround,railStandardRequested,standardRailGround} from './render/summerside-station/admit.ts';
 import {SUMMERSIDE_STATION as RAIL} from './render/summerside-station/source.generated.ts';
 import {DUNE_RELIEF} from './sim/dune-relief.generated.ts';
 import {KINGS_DRY_CROWN} from './sim/kings-dry-crown.generated.ts';
@@ -319,7 +319,10 @@ async function run(){
   !options.has('legacyRusticoMassing')&&(!!rusticoCohort||options.has('rusticoMassingReview'));
  const railSeat=railAsked&&world.buildingShadows&&renderer.capabilities.maxTextureSize>=1536&&
   SIDEWALKS.sha256===RAIL.sidewalk&&MAPPED_PARKING.sha256===RAIL.parking?railGround(world,terrainSha,()=>roads?.sourceGeometrySha256):undefined;
- const railReview=railSeat&&world.buildingShadows?{ground:railSeat,shadows:world.buildingShadows}:undefined;
+ const defaultRailSeat=railStandardRequested(options)&&SIDEWALKS.sha256===RAIL.sidewalk&&MAPPED_PARKING.sha256===RAIL.parking?
+  standardRailGround(world,terrainSha,()=>roads?.sourceGeometrySha256):undefined;
+ const railReview=railSeat&&world.buildingShadows?{ground:railSeat,shadows:world.buildingShadows}:
+  defaultRailSeat?{ground:defaultRailSeat,standard:true as const}:undefined;
  const stDavidsSeat=stDavidsAsked&&world.buildingShadows&&renderer.capabilities.maxTextureSize>=1536&&
   SIDEWALKS.sha256===ST_DAVIDS.sidewalk&&MAPPED_PARKING.sha256===ST_DAVIDS.parking?stDavidsGround(world,terrainSha,()=>roads?.sourceGeometrySha256):undefined;
  const stDavidsReview=stDavidsSeat&&world.buildingShadows?{ground:stDavidsSeat,shadows:world.buildingShadows}:undefined;

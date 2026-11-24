@@ -178,7 +178,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  }`;
 export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
 type LocalExteriorReview={ground:()=>boolean;shadows:BuildingShadows};
-export type RailwayReview=LocalExteriorReview;
+export type RailwayReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:ReturnType<typeof authenticatedOwnerVariant>;neighborsCaster:THREE.Mesh};
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
@@ -210,6 +210,7 @@ export class Buildings {
  private readonly fittedWallMaterials=new Map<THREE.ShaderMaterial,THREE.ShaderMaterial>();
  private readonly tryStation?:RailwayReview;
  private station?:RailwayVariant;
+ private pendingStandardRail?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
@@ -326,7 +327,7 @@ export class Buildings {
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
  update(x:number,z:number){
   this.syncCavendish();
-  this.syncStation();
+  this.syncStation(x,z);
   this.syncStDavids();
   this.syncSourisEast();
   this.indianVariant?.sync(this.churchArt?.active()??false);
@@ -340,8 +341,9 @@ export class Buildings {
      if(this.sourisEast.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
      this.sourisEast.variant.dispose();this.sourisEast.dispose();this.sourisEast=undefined;
     }
+    if(this.pendingStandardRail?.owner===m)this.pendingStandardRail=undefined;
     if(id===RAIL.tile&&this.station){
-     if(this.station.variant?.visible)this.tryStation?.shadows.leaseOwnerChanged();
+     if(this.station.variant?.visible)this.tryStation?.shadows?.leaseOwnerChanged();
      this.station.variant?.dispose();this.station.art.dispose();this.station=undefined;
     }
     if(id===ST_DAVID.tile){
@@ -377,7 +379,7 @@ export class Buildings {
    if(east?.owner===m&&east.variant.visible&&east.caster&&east.neighborsCaster){
     add(east.neighborsCaster);add(east.caster);continue;
    }
-   const exterior=this.station?.owner===m?this.station:this.stDavids?.owner===m?this.stDavids:undefined;
+   const exterior=this.station?.owner===m&&this.tryStation?.shadows?this.station:this.stDavids?.owner===m?this.stDavids:undefined;
    if(exterior?.variant?.visible){
     // Distinct roster identities invalidate the former flat owner's depth
     // exactly when its visual owner view changes.
@@ -386,13 +388,20 @@ export class Buildings {
   }
  }
  get summersideStationActive(){return this.station?.variant?.visible??false;}
- private syncStation(){
-  const s=this.station;
-  if(!s)return;
-  const before=s.variant?.visible;
-  s.variant?.sync(this.tryStation?.ground()??false);
-  if(before!==s.variant?.visible)this.tryStation?.shadows.leaseOwnerChanged();
-  if(s.variant?.visible)s.neighborsCaster.geometry=s.owner.geometry;
+ private syncStation(x:number,z:number){
+  const request=this.tryStation,s=this.station,queued=this.pendingStandardRail;
+  if(!request||(!s&&!queued))return;
+  const inRange=!request.standard||Math.hypot(x-RAIL.originXZ[0],z-RAIL.originXZ[1])<(s?.variant?.visible?2700:2250);
+  const seated=inRange&&request.ground();
+  if(s){
+   const before=s.variant?.visible;
+   s.variant?.sync(seated);
+   if(before!==s.variant?.visible)request.shadows?.leaseOwnerChanged();
+   if(s.variant?.visible)s.neighborsCaster.geometry=s.owner.geometry;
+  }else if(queued&&seated){
+   this.pendingStandardRail=undefined;
+   void this.promoteStation(queued.tile,queued.owner,queued.source,request);
+  }
  }
  get stDavidsActive(){return this.stDavids?.variant?.visible??false;}
  private syncStDavids(){
@@ -501,7 +510,10 @@ export class Buildings {
     else void this.promoteGreenGables(tile,mesh,ownerBytes);
    }
    if(barnBytes)void this.promoteBarn(tile,mesh,barnBytes);
-   if(stationBytes&&this.tryStation)void this.promoteStation(tile,mesh,stationBytes,this.tryStation);
+   if(stationBytes&&this.tryStation){
+    if(this.tryStation.standard)this.pendingStandardRail={tile,owner:mesh,source:stationBytes};
+    else void this.promoteStation(tile,mesh,stationBytes,this.tryStation);
+   }
    if(stDavidsBytes)this.pendingStDavids={tile,owner:mesh,source:stDavidsBytes};
    if(eastBytes&&east)void this.promoteSourisEast(tile,mesh,eastBytes,east);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
@@ -545,7 +557,11 @@ export class Buildings {
   let modTimer:ReturnType<typeof setTimeout>|undefined;
   try{
    const range=owner.userData.beaconTriangles as readonly [number,number]|undefined;
-   if(!range||range[0]!==RAIL.start||range[1]!==RAIL.end||owner.geometry.getAttribute('position').count!==RAIL.vertices||
+   // Standard keeps the signed gable cohort enabled. Its +12 submitted
+   // vertices occur after the original station ordinal; the owner span is
+   // unchanged. Alternate shadow mode keeps its original exact baseline.
+   const proof={start:RAIL.start,end:RAIL.end,vertices:RAIL.vertices+(request.standard?12:0)};
+   if(!range||range[0]!==proof.start||range[1]!==proof.end||owner.geometry.getAttribute('position').count!==proof.vertices||
      !await railOwnerChunk(source)||!alive())return;
    const mod=await Promise.race([
     import('./summerside-station/rail-art.ts'),
@@ -555,7 +571,7 @@ export class Buildings {
    const art=await mod.loadRailArtwork((import.meta.env?.BASE_URL??'./')+'art/',request.shadows);
    if(!art)return;
    if(!alive()){art.dispose();return;}
-   const variant=authenticatedOwnerVariant(owner,art.group,range,RAIL);
+   const variant=authenticatedOwnerVariant(owner,art.group,range,proof);
    if(!variant){art.dispose();return;}
    const neighborsCaster=new THREE.Mesh(owner.geometry,owner.material);
    neighborsCaster.position.copy(owner.position);

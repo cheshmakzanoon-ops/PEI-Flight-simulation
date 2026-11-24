@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
-import {railRequested} from '../src/render/summerside-station/admit.ts';
+import {Cover} from '../src/sim/cover.ts';
+import {verifyDecodedCover} from '../src/sim/cover-proof.ts';
+import {railRequested,railStandardRequested} from '../src/render/summerside-station/admit.ts';
 import {RAIL_ART as A} from '../src/render/summerside-station/art.generated.ts';
 import {SUMMERSIDE_STATION as S} from '../src/render/summerside-station/source.generated.ts';
 
@@ -28,11 +30,27 @@ test('the station art is the exact original reproduction and only the authentica
  assert.equal(at,raw.length);assert.equal(triangles,5299);
  assert.deepEqual([S.tile,S.ordinal,S.vertices,S.start,S.end],['q032001',163,69894,30618,30666]);
 });
-test('the station opt-in cannot take another approved receiver or act in default scenery',()=>{
+test('the station shadow mode remains separate from the Standard exterior',()=>{
  const q=(s:string)=>railRequested(new URLSearchParams(s));
  assert.equal(q(''),false);assert.equal(q('summersideStationReview'),false);
  assert.equal(q('buildingShadows'),false);
  assert.equal(q('buildingShadows&summersideStationReview'),true);
  for(const k of ['scenery=detail','surveyRelief','inlandRelief','seatedRoads','spinnakersPreview','northBaywalkPreview'])
   assert.equal(q(k+'&summersideStationReview&buildingShadows'),false,k);
+});
+test('Standard station does not replace alternate terrain or explicit shadow owners',()=>{
+ const q=(s:string)=>railStandardRequested(new URLSearchParams(s));
+ for(const k of ['', 'departure=spinnakers-low','townWallStudy'])assert.equal(q(k),true,k);
+ for(const k of ['stockStationExterior','scenery=detail','summersideStationReview','buildingShadows','surveyRelief',
+  'inlandRelief','northBaywalkPreview','northBaywalkConcrete','spinnakersPreview','seatedRoads'])assert.equal(q(k),false,k);
+});
+test('the decoded ground proof is shared across local owners and hashes only the raster view',async()=>{
+ const a=new Uint8Array([5,1,2,3,4,5,6,7,8,9]);
+ const c=new Cover(2,2,a.subarray(1,9)),d=new Cover(2,2,new Uint8Array(8));
+ const pending=verifyDecodedCover(c);
+ assert.equal(pending,verifyDecodedCover(c));
+ assert.equal(await pending,sha(a.subarray(1,9)));
+ assert.notEqual(await verifyDecodedCover(d),await pending);
+ const certified=new Cover(2,2,a.subarray(1,9),undefined,undefined,undefined,undefined,sha(a.subarray(1,9)));
+ assert.equal(await verifyDecodedCover(certified),await pending);
 });

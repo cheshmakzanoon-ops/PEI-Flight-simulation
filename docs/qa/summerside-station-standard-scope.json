@@ -1,0 +1,44 @@
+[
+  {
+    "view": "curb-close",
+    "size": [
+      600,
+      400
+    ],
+    "stationMaskPixelsXYXY": [
+      141,
+      149,
+      467,
+      269
+    ],
+    "maskConvention": "x and y upper endpoints exclusive",
+    "changedPixels": 22577,
+    "protectedPixels": 200880,
+    "changedProtectedRgbPixels": 0,
+    "exactPNGFileSHA256": [
+      "063cb8258590042217ba3d6aef6f13fc4439ca3704c0ca67cc6bd5c5ae29defb",
+      "e5b4954cae90fe8673fff070d73ec87f7f1f9a13dc27e9d58fb1fb9bae26d51b"
+    ]
+  },
+  {
+    "view": "harbor-close",
+    "size": [
+      600,
+      400
+    ],
+    "stationMaskPixelsXYXY": [
+      236,
+      156,
+      403,
+      263
+    ],
+    "maskConvention": "x and y upper endpoints exclusive",
+    "changedPixels": 6721,
+    "protectedPixels": 222131,
+    "changedProtectedRgbPixels": 0,
+    "exactPNGFileSHA256": [
+      "b83cf50327c09c75df3478d4752a78346298c5411df584353e3f91756eaf2e3b",
+      "8e1dd1f556660633b19776ff2be86512844bf79ccd5f4e5844409f80f64ad8d9"
+    ]
+  }
+]

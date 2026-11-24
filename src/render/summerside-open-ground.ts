@@ -1,3 +1,4 @@
+import {verifyDecodedCover} from '../sim/cover-proof.ts';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import {TREE_PITCH,TREE_TILE_SIDE,treeRandom} from '../sim/tree-layout.ts';
@@ -27,15 +28,7 @@ export async function authenticateSummersideFrontage(t:Terrain,c:Cover,terrainSh
  if(owner!==expectedOwner||Math.fround(px)!==x||Math.fround(pz)!==z||Math.fround(rawH)!==h||Math.fround(rawW)!==w||
     Math.fround(t.meshElevation(px,pz)-.16)!==y||!t.isLand(px,pz)||c.sample(t,px,pz)!==10||
     c.distance(t,px,pz)<90)return;
- try{
-  let decoded=c.sourceDecodedSha;
-  if(!decoded){
-   const a=c.bytes;if(!(a.buffer instanceof ArrayBuffer))return;
-   const raw=await crypto.subtle.digest('SHA-256',new Uint8Array(a.buffer,a.byteOffset,a.byteLength));
-   decoded=Array.from(new Uint8Array(raw),x=>x.toString(16).padStart(2,'0')).join('');
-  }
-  if(decoded!==p.coverDecoded)return;
- }catch{return;}
+ if(await verifyDecodedCover(c)!==p.coverDecoded)return;
  const exactly=(xx:number,zz:number,hh:number,ww:number)=>xx===x&&zz===z&&hh===h&&ww===w;
  return {owners:[owner],size:1,forOwner:key=>key===owner?exactly:undefined,excludes:exactly};
 }

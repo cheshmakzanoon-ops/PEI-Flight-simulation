@@ -7,13 +7,13 @@ documents the 1927 building and its railway-era hipped roof, broad eaves
 and brackets. The model also includes the offset gable volumes, joined
 dormers, recessed windows and the measured east roof step.
 
-For the optional exterior, add
+Choose **Summerside waterfront · low pass** to see the modeled station in
+Standard scenery. Use `?departure=spinnakers-low&stockStationExterior`
+to compare it with the original flat box. A separate
 `?departure=spinnakers-low&buildingShadows&summersideStationReview`
-to the simulator URL. For the stock comparison, remove only
-`summersideStationReview`. Do not add the separate Spinnakers, baywalk,
-seated-road, or alternate terrain studies to this comparison. This is
-one exterior treatment; the surrounding downtown, ground and transport
-network are unchanged.
+comparison shows the same exterior with the experimental building
+shadows. The station is the former railway-era exterior, not an
+interior or a photographic survey of current finishes.
 
 ## Survey and interpretation
 
@@ -48,23 +48,32 @@ groups. The replacement also supplies the single station caster to
 the existing optional building-shadow system. Its softened wall
 shadow reads from the same real caster, not a hand-painted shadow.
 
-The verified 112-subdivision terrain mesh is a required condition.
-If the optional art or building record is late or damaged, if the
-terrain is coarser, or if the preview is not enabled, the stock model
-and caster remain present. Roads, sidewalks, parking, ground height and
-flight collision are not changed. There is no default request for the
-optional 325,977-byte asset.
+Standard requests the 325,977-byte art only when within 2.25 km
+and when the signed roads, decoded ground and verified 112-subdivision
+terrain are present. It restores the stock render beyond 2.7 km or if
+the terrain lease is lost. If the art or building record is late or
+damaged, the stock model remains present. For Standard the model adds
+5,283 net triangles and ten draw calls only when submitted; it adds no
+shadow caster to Standard. Roads, sidewalks, parking, ground height,
+collision and the nearby survey-fitted roofs remain unchanged. Both
+capture pairs kept all four watched fitted roofs and the same open-ground
+tree exception active.
 
-[Actual Three.js comparison](summerside-railway-station-comparison.webp):
-stock at left, replacement at right; street view above and harbour air view
-below. The conservative station-and-shadow masks leave 152,609 and
-185,803 protected pixels, respectively. Every protected RGB pixel was
-identical in the matched scenes. [Scope receipt](summerside-railway-station-scope.json).
+[Standard stock/active comparison](summerside-station-standard.webp):
+stock at left, active at right, from two matched 600×400 views. The
+remaining 200,880 street-view pixels and 222,131 harbour-view pixels
+match exactly outside the two conservative station masks.
+[Standard scope receipt](summerside-station-standard-scope.json) and
+[compiled Standard flight check](../../tools/qa/summerside-station-standard-flight.py).
+The flight test also verifies a corrupted download leaves stock in place
+and a distant Cavendish departure makes no request for this artwork.
 
-See the [actual matched scene report](summerside-railway-station-frames.json)
+The [separate shadow-mode comparison](summerside-railway-station-comparison.webp)
+and its [scope receipt](summerside-railway-station-scope.json)
+document the optional direct shadow rendering. See its
+[actual matched scene report](summerside-railway-station-frames.json)
 and [compiled departure check](summerside-railway-station-flight.json).
-The experience is ordinary Three.js rendering, not a device
-performance benchmark.
+These are scene checks, not device performance benchmarks.
 
 ## Rebuild the artwork
 
@@ -87,6 +96,10 @@ the fixed-scenery QA:
 ```sh
 python tools/qa/summerside-station-frames.py --checkout . --deps node_modules \
   --out /tmp/pei-station-frames --chromium /path/to/chromium
+python tools/qa/summerside-station-frames.py --standard --checkout . --deps node_modules \
+  --out /tmp/pei-station-standard-frames --chromium /path/to/chromium
+python tools/qa/summerside-station-standard-flight.py --dist dist \
+  --out /tmp/pei-station-standard-flight --chromium /path/to/chromium
 python tools/qa/summerside-station-flight.py --dist dist \
   --out /tmp/pei-station-flight --chromium /path/to/chromium
 ```

@@ -10,7 +10,7 @@ type Part={type:Paint;vertices:Float32Array;normals:Float32Array;uv:Float32Array
 type RailRenderer={uniforms:BuildingShadows['uniforms']};
 export type RailwayArtwork={group:T.Group;caster:T.Mesh;dispose:()=>void};
 
-function authoredMaterial(type:Paint,pixels:Uint8Array|undefined,casts:RailRenderer){
+function authoredMaterial(type:Paint,pixels:Uint8Array|undefined,casts:RailRenderer|undefined){
  const rgb=new T.Color().setRGB(type.rgb[0]/255,type.rgb[1]/255,type.rgb[2]/255,T.SRGBColorSpace);
  const material=new T.MeshStandardMaterial({color:pixels?0xffffff:rgb,vertexColors:true,roughness:type.rough,metalness:type.metal});
  const glass=type.name==='glass';
@@ -23,8 +23,10 @@ function authoredMaterial(type:Paint,pixels:Uint8Array|undefined,casts:RailRende
   tile.generateMipmaps=true;tile.needsUpdate=true;material.map=tile;
  }
  if(glass){material.emissive.setRGB(.021,.037,.044);material.emissiveIntensity=.65;}
- material.customProgramCacheKey=()=>glass?'summ-rail-shadow-receiver-v2-glass':'summ-rail-shadow-receiver-v2';
+ material.customProgramCacheKey=()=>casts?(glass?'summ-rail-shadow-receiver-v2-glass':'summ-rail-shadow-receiver-v2'):
+  (glass?'summ-rail-base-glass':'summ-rail-base');
  material.onBeforeCompile=s=>{
+  if(casts){
   Object.assign(s.uniforms,casts.uniforms);
   s.vertexShader='varying vec3 railWorldPoint;\n'+s.vertexShader.replace('#include <worldpos_vertex>',
    '#include <worldpos_vertex>\nrailWorldPoint=(modelMatrix*vec4(transformed,1.)).xyz;');
@@ -35,6 +37,7 @@ function authoredMaterial(type:Paint,pixels:Uint8Array|undefined,casts:RailRende
     float railOcclusion=railBuildingShade(railWorldPoint,railReceiverNormal,distance(railWorldPoint,cameraPosition));
     reflectedLight.directDiffuse*=1.-railOcclusion;
     reflectedLight.directSpecular*=1.-railOcclusion;`);
+  }
   if(glass)s.fragmentShader=s.fragmentShader.replace('#include <emissivemap_fragment>',`#include <emissivemap_fragment>
    vec3 railI=reflect(-normalize(vViewPosition),normal);
    vec3 railW=inverseTransformDirection(railI,viewMatrix);
@@ -47,7 +50,7 @@ function authoredMaterial(type:Paint,pixels:Uint8Array|undefined,casts:RailRende
 
 /** Only pre-baked exact, indexed positions and authored numerical RGBA are
  * decoded. No on-load procedural modeling or image requests. */
-export function decodeRailArtwork(raw:ArrayBuffer,casts:RailRenderer):RailwayArtwork|undefined{
+export function decodeRailArtwork(raw:ArrayBuffer,casts:RailRenderer|undefined):RailwayArtwork|undefined{
  if(raw.byteLength!==A.raw)return;
  const v=new DataView(raw),parts:Part[]=[];
  if(v.getUint32(0,true)!==0x4c494152||v.getUint16(4,true)!==1||v.getUint16(6,true)!==A.parts.length||
@@ -124,7 +127,7 @@ async function body(stream:ReadableStream<Uint8Array>|null,limit:number,signal:A
 /** Preserve the original owner until both exact SHA checks succeed. A host
  * that transparently decodes gzip is admitted only by the same raw SHA.
  */
-export async function loadRailArtwork(base:string,casts:RailRenderer,fetcher:typeof fetch=fetch,timeoutMs=1400){
+export async function loadRailArtwork(base:string,casts:RailRenderer|undefined,fetcher:typeof fetch=fetch,timeoutMs=1400){
  if(!globalThis.crypto?.subtle)return;
  const control=new AbortController(),signal=control.signal;
  let timer:ReturnType<typeof setTimeout>|undefined;
