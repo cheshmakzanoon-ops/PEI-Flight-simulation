@@ -1,0 +1,2 @@
+// Original authored numerical art. No photographs or raw point cloud data.
+export const GREEN_GABLES_BARN_ASSET={"asset":"green-gables-barn-v1.bin.gz","wireBytes":34760,"decodedBytes":123416,"wireSha":"e92d41d01a0d145b276d053043f1461b980c68ecd9b91fc07f2c347648bf9e22","sha":"ab1c7f08ece70c43031ebdb9f0404f75b1f183b544362818c0f69d673c9a3fc3","vertices":3595,"triangles":1371,"materials":["roof","soffit","roofEdge","stone","cedar","charcoal","red","frame","redEnd","iron","glass"],"localXZ":[-18.20058233599116,10.997217119110203,-10.455595235729849,22.422992105507717]} as const;

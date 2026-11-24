@@ -59,3 +59,14 @@ test('the exact native grade is independent, demanded and fails closed',async()=
  }),12),undefined);
  assert(aborted);
 });
+
+test('neighbourhood signatures invalidate only where a measured grade may touch',()=>{
+ const {rel,weight}=sample();
+ rel[12]=65;weight[12]=184;
+ const q=new BoundedGrade(bounds,spec,rel,weight,H),g=q.grid;
+ const x=g.x0+2*g.stepX,z=g.z0+2*g.stepZ;
+ assert(q.affectsBounds([x,z,x+.05,z+.05]));
+ assert(q.affectsBounds([x+g.stepX,z-g.stepZ,x+g.stepX+.02,z-g.stepZ+.01]));
+ assert(!q.affectsBounds([x+g.stepX+.02,z,x+g.stepX+.08,z+.04]));
+ assert(!q.affectsBounds([x-2*g.stepX,z-2*g.stepZ,x-1.1*g.stepX,z-1.1*g.stepZ]));
+});

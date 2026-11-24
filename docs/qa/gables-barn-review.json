@@ -1,0 +1,92 @@
+{
+  "lowAndCompound": {
+    "low": {
+      "netDraws": 11,
+      "netTriangles": 1331,
+      "protectedPixels": 86453,
+      "protectedChanges": 0,
+      "protectedHousePixels": 0,
+      "houseChanges": 0,
+      "changedAbove2": 266559
+    },
+    "compound": {
+      "netDraws": 11,
+      "netTriangles": 1331,
+      "protectedPixels": 455319,
+      "protectedChanges": 0,
+      "protectedHousePixels": 69453,
+      "houseChanges": 0,
+      "changedAbove2": 23231
+    }
+  },
+  "optionalFaults": {
+    "404": {
+      "changedRGB": 0,
+      "testedPixels": 504000,
+      "branchEnabled": false,
+      "house": true
+    },
+    "corrupt": {
+      "changedRGB": 0,
+      "testedPixels": 504000,
+      "branchEnabled": false,
+      "house": true
+    },
+    "late": {
+      "changedRGB": 0,
+      "testedPixels": 504000,
+      "branchEnabled": false,
+      "house": true
+    },
+    "transcoded": {
+      "changedRGB": 23239,
+      "testedPixels": 504000,
+      "branchEnabled": true,
+      "house": true
+    }
+  },
+  "warmLOD": [
+    {
+      "stage": "medium",
+      "available": true,
+      "house": true,
+      "barn": false
+    },
+    {
+      "stage": "far",
+      "available": true,
+      "house": false,
+      "barn": false
+    },
+    {
+      "stage": "near",
+      "available": true,
+      "house": true,
+      "barn": true
+    },
+    {
+      "stage": "evict",
+      "available": false,
+      "house": false,
+      "barn": false
+    },
+    {
+      "stage": "near",
+      "available": true,
+      "house": true,
+      "barn": true
+    }
+  ],
+  "stageAndSeating": {
+    "sourceRoofHeldCells": 2159,
+    "sourceRoofMisses": 0,
+    "skirtEdgeRays": 1693,
+    "skirtGaps": 0,
+    "materialBandRays": 1444,
+    "closedDoorRays": 333,
+    "minThresholdMetres": 0.04529,
+    "maxThresholdMetres": 0.1855,
+    "stockSelection": "q03323/72",
+    "stockRemovedTriangles": 40
+  }
+}

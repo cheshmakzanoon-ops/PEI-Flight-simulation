@@ -846,9 +846,10 @@ export class World {
   const [a,c]=this.terrain.uv(b[0],b[1]),[d,e]=this.terrain.uv(b[2],b[3]);
   const j0=Math.max(0,Math.floor(c*WORLD_ROWS)),j1=Math.min(WORLD_ROWS-1,Math.floor(e*WORLD_ROWS));
   const i0=Math.max(0,Math.floor(a*WORLD_COLS)),i1=Math.min(WORLD_COLS-1,Math.floor(d*WORLD_COLS));
+  const touchesGrade=this.localGrade?.affectsBounds(b)??false;
   let out='';
   for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){
-   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+(q.fine?.userData.localGrade?'g;':q.relief?'*;':';'):'-;';
+   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+(touchesGrade&&q.lod===112&&q.fine?.userData.localGrade?'g;':q.relief?'*;':';'):'-;';
   }
   return out;
  }

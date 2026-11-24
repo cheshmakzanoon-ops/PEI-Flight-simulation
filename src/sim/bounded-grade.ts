@@ -10,6 +10,7 @@ type Sampler=(x:number,z:number)=>number;
 export class BoundedGrade{
  readonly grid:CoastalGrid;
  private readonly weights:Uint8Array;
+ private readonly contactBounds?:readonly [number,number,number,number];
  constructor(ext:Extent,spec:MeshSurveySpec,deltaCm:Int16Array,weights:Uint8Array,atlas:Sampler){
   const w=spec.cellsX*spec.sub+1,h=spec.cellsZ*spec.sub+1;
   if(!spec.relativeToParent||w<3||h<3||w>260||h>260||deltaCm.length!==w*h||weights.length!==w*h)throw Error('Unbounded grade inset');
@@ -21,6 +22,22 @@ export class BoundedGrade{
   }
   this.grid=new CoastalGrid(ext,{spec,samples:deltaCm},atlas);
   this.weights=weights;
+  let left=w,top=h,right=-1,bottom=-1;
+  for(let i=0;i<weights.length;i++)if(weights[i]){
+   const x=i%w,z=Math.floor(i/w);
+   left=Math.min(left,x);top=Math.min(top,z);right=Math.max(right,x);bottom=Math.max(bottom,z);
+  }
+  if(right>=left){
+   const a=this.grid,g=.002;
+   // A moved vertex influences every adjacent triangle, not just its
+   // projected location. Keep an extra floating-point reserve too.
+   this.contactBounds=[a.x0+(left-1)*a.stepX-g,a.z0+(top-1)*a.stepZ-g,
+    a.x0+(right+1)*a.stepX+g,a.z0+(bottom+1)*a.stepZ+g];
+  }
+ }
+ affectsBounds(b:readonly [number,number,number,number]){
+  const q=this.contactBounds;
+  return !!q&&b[0]<=q[2]&&b[2]>=q[0]&&b[1]<=q[3]&&b[3]>=q[1];
  }
  /** Uses the exact same triangle split as the authored grade surface. */
  weight(x:number,z:number){
