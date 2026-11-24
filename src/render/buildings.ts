@@ -1,3 +1,6 @@
+import {SUMMERSIDE_STATION as RAIL} from './summerside-station/source.generated.ts';
+import {railAtlasAllows,railOwnerAllows,railOwnerChunk} from './summerside-station/admit.ts';
+import type {RailwayArtwork} from './summerside-station/rail-art.ts';
 import {INDIAN_RIVER_SOURCE as CHURCH} from './indian-river/indian-river-source.generated.ts';
 import {churchOwnerBytes,churchOwnerSource} from './indian-river/indian-river-guard.ts';
 import {authenticatedOwnerVariant} from './indian-river/authored-owner-variant.ts';
@@ -165,6 +168,8 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
  #include <colorspace_fragment>
  }`;
 export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
+export type RailwayReview={ground:()=>boolean;shadows:BuildingShadows};
+type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:ReturnType<typeof authenticatedOwnerVariant>;neighborsCaster:THREE.Mesh};
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
@@ -190,8 +195,10 @@ export class Buildings {
  private indianVariant?:ReturnType<typeof authenticatedOwnerVariant>;
  private readonly churchArt?:ChurchArt;
  private readonly pinnedChurch?:Bldg[];
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[]){
-  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;
+ private readonly tryStation?:RailwayReview;
+ private station?:RailwayVariant;
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview){
+  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.tryStation=tryStation;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
    vertexShader:buildingV,fragmentShader:buildingF(false,false,false,false,false,false,true),vertexColors:true,side:THREE.DoubleSide});
@@ -267,9 +274,9 @@ export class Buildings {
   }catch{/** Standard building loading remains the fallback. */}
   finally{clearTimeout(timer);}
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation);
  }
  get indianRiverPrepared(){return !!this.indianVariant;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
@@ -277,6 +284,7 @@ export class Buildings {
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
  update(x:number,z:number){
   this.syncCavendish();
+  this.syncStation();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -284,6 +292,10 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(id===RAIL.tile&&this.station){
+     if(this.station.variant?.visible)this.tryStation?.shadows.leaseOwnerChanged();
+     this.station.variant?.dispose();this.station.art.dispose();this.station=undefined;
+    }
     if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
     this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===GREEN_GABLES_BARN.tile&&this.barn){
      m.geometry=this.barn.views.stock;this.barn.views.dispose();
@@ -300,11 +312,27 @@ export class Buildings {
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
  }
  drawableCasters(x:number,z:number,r:number,out:THREE.Mesh[]){
-  for(const m of this.meshes.values()){
+  const add=(m:THREE.Mesh)=>{
    const b=m.geometry.boundingSphere;
-   if(!m.visible||!b)continue;
-   if(Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
+   if(m.visible&&b&&Math.hypot(x-m.position.x-b.center.x,z-m.position.z-b.center.z)<r+b.radius)out.push(m);
+  };
+  for(const m of this.meshes.values()){
+   const station=this.station;
+   if(station?.owner===m&&station.variant?.visible){
+    // Separate identities ensure the existing depth cache never keeps the
+    // old, flat station depth when the owner's attribute view changes.
+    add(station.neighborsCaster);add(station.art.caster);
+   }else add(m);
   }
+ }
+ get summersideStationActive(){return this.station?.variant?.visible??false;}
+ private syncStation(){
+  const s=this.station;
+  if(!s)return;
+  const before=s.variant?.visible;
+  s.variant?.sync(this.tryStation?.ground()??false);
+  if(before!==s.variant?.visible)this.tryStation?.shadows.leaseOwnerChanged();
+  if(s.variant?.visible)s.neighborsCaster.geometry=s.owner.geometry;
  }
  get beaconsfieldPreviewActive(){return !!this.beacon?.parent;}
  get greenGablesPreviewActive(){return this.greenGables?.group.visible??false;}
@@ -342,12 +370,14 @@ export class Buildings {
    const candidate=pinned&&this.atlasHash===pinned.pack&&tile.offset===pinned.offset&&
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
-   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
-   if(candidate||rusticoCandidate){
+   const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
+   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
+   if(candidate||rusticoCandidate||tryStation){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     features=await Buildings.decodeChunk(raw);
     if(spec&&matchesExterior(features,spec))ownerBytes=raw;
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
+    if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(rusticoCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      rusticoChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
@@ -371,7 +401,7 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:undefined,!!barnBytes,rusticoChunk);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:undefined,!!barnBytes,rusticoChunk);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(church&&mesh.userData.beaconTriangles){
     const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
@@ -384,10 +414,36 @@ export class Buildings {
     else void this.promoteGreenGables(tile,mesh,ownerBytes);
    }
    if(barnBytes)void this.promoteBarn(tile,mesh,barnBytes);
+   if(stationBytes&&this.tryStation)void this.promoteStation(tile,mesh,stationBytes,this.tryStation);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
     void this.sourisLight.setCaster(features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
+ }
+ private async promoteStation(tile:BoundTile,owner:THREE.Mesh,source:ArrayBuffer,request:RailwayReview){
+  const alive=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&!!owner.parent;
+  let modTimer:ReturnType<typeof setTimeout>|undefined;
+  try{
+   const range=owner.userData.beaconTriangles as readonly [number,number]|undefined;
+   if(!range||range[0]!==RAIL.start||range[1]!==RAIL.end||owner.geometry.getAttribute('position').count!==RAIL.vertices||
+     !await railOwnerChunk(source)||!alive())return;
+   const mod=await Promise.race([
+    import('./summerside-station/rail-art.ts'),
+    new Promise<undefined>(ok=>{modTimer=setTimeout(()=>ok(undefined),1200);}),
+   ]).finally(()=>{if(modTimer!==undefined)clearTimeout(modTimer);});
+   if(!mod||!alive())return;
+   const art=await mod.loadRailArtwork((import.meta.env?.BASE_URL??'./')+'art/',request.shadows);
+   if(!art)return;
+   if(!alive()){art.dispose();return;}
+   const variant=authenticatedOwnerVariant(owner,art.group,range,RAIL);
+   if(!variant){art.dispose();return;}
+   const neighborsCaster=new THREE.Mesh(owner.geometry,owner.material);
+   neighborsCaster.position.copy(owner.position);
+   this.station={owner,art,variant,neighborsCaster};
+   this.scene.add(art.group);
+   // Asset, transform, roster and contact are all qualified before the
+   // next animation loop updates visibility and the exact owner index.
+  }catch{/** Optional promotion must never remove the already submitted stock tile. */}
  }
  private async promoteBeaconsfield(tile:BoundTile,mesh:THREE.Mesh,source:ArrayBuffer){
   const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh;

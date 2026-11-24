@@ -1,0 +1,173 @@
+[
+  {
+    "stock": {
+      "station": false,
+      "draws": 68,
+      "triangles": 347998,
+      "shadow": {
+        "active": true,
+        "strength": 1,
+        "updates": 4,
+        "depthDraws": 5,
+        "depthTriangles": 36548
+      },
+      "stage": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "candidate": {
+      "station": true,
+      "draws": 78,
+      "triangles": 353281,
+      "shadow": {
+        "active": true,
+        "strength": 1,
+        "updates": 4,
+        "depthDraws": 6,
+        "depthTriangles": 41831
+      },
+      "stage": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "view": "street-quarter",
+    "pose": {
+      "lon": -63.788445428045186,
+      "lat": 46.390900703821394,
+      "dist": 56,
+      "east": -0.57,
+      "south": 0.829,
+      "h": 10.0,
+      "agl": 12
+    },
+    "pixels": {
+      "total": 200200,
+      "changed": 27566,
+      "significant": 26179
+    }
+  },
+  {
+    "stock": {
+      "station": false,
+      "draws": 124,
+      "triangles": 385880,
+      "shadow": {
+        "active": true,
+        "strength": 1,
+        "updates": 3,
+        "depthDraws": 4,
+        "depthTriangles": 31315
+      },
+      "stage": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "candidate": {
+      "station": true,
+      "draws": 134,
+      "triangles": 391163,
+      "shadow": {
+        "active": true,
+        "strength": 1,
+        "updates": 3,
+        "depthDraws": 5,
+        "depthTriangles": 36598
+      },
+      "stage": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "view": "harbour-air",
+    "pose": {
+      "lon": -63.788445428045186,
+      "lat": 46.390900703821394,
+      "dist": 112,
+      "east": 0.51,
+      "south": 0.86,
+      "h": 13.0,
+      "agl": 68
+    },
+    "pixels": {
+      "total": 200200,
+      "changed": 7483,
+      "significant": 6907
+    }
+  },
+  {
+    "stock": {
+      "station": false,
+      "draws": 102,
+      "triangles": 295919,
+      "shadow": {
+        "active": false,
+        "strength": 0,
+        "updates": 0,
+        "depthDraws": 0,
+        "depthTriangles": 0
+      },
+      "stage": {
+        "ready": 15,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "candidate": {
+      "station": false,
+      "draws": 102,
+      "triangles": 295919,
+      "shadow": {
+        "active": false,
+        "strength": 0,
+        "updates": 0,
+        "depthDraws": 0,
+        "depthTriangles": 0
+      },
+      "stage": {
+        "ready": 15,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "layerWarnings": []
+    },
+    "view": "lod-far",
+    "pose": {
+      "lon": -63.788445428045186,
+      "lat": 46.390900703821394,
+      "dist": 6600,
+      "east": 0.51,
+      "south": 0.86,
+      "h": 12.0,
+      "agl": 1060
+    },
+    "pixels": {
+      "total": 200200,
+      "changed": 0,
+      "significant": 0
+    }
+  }
+]

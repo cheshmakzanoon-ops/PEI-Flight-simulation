@@ -1,0 +1,46 @@
+{
+  "street-quarter": {
+    "maxProtectedChannelDelta": 0,
+    "protectedPixels": 152609,
+    "protectedExact": 152609,
+    "changedProtectedOver2": 0,
+    "changedLocalOver2": 27322,
+    "possibleOutsideChangeBounds": null,
+    "pixelHashes": [
+      "14e9ceb07d890bcd7259f3ce705daabe76596596a80403a4cd85dc3fc820add5",
+      "e637a4b93b108aa6973229174c27e1c8e1167a074bde301688cbb6fb6f54ee4d"
+    ],
+    "eye": [
+      -45202.32497640035,
+      14,
+      12173.74072357199
+    ],
+    "aim": [
+      -45170.59699999986,
+      7.784408960513019,
+      12127.596000000054
+    ]
+  },
+  "harbour-air": {
+    "maxProtectedChannelDelta": 0,
+    "protectedPixels": 185803,
+    "protectedExact": 185803,
+    "changedProtectedOver2": 0,
+    "changedLocalOver2": 7370,
+    "possibleOutsideChangeBounds": null,
+    "pixelHashes": [
+      "619ab3ed2d9999b7729456372b04b417de6b5864cb1715ee929d842a6034ef2c",
+      "5c7b736cc76175e843f7d7568801ed67abc54419622c9bcf1fa0b501fc81e278"
+    ],
+    "eye": [
+      -45113.46843007158,
+      70,
+      12223.930451251666
+    ],
+    "aim": [
+      -45170.59699999986,
+      9.28440896051302,
+      12127.596000000054
+    ]
+  }
+}

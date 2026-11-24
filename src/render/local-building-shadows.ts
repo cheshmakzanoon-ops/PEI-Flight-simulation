@@ -37,6 +37,7 @@ export class BuildingShadows{
  private target?:THREE.WebGLRenderTarget;
  private oldX=Infinity;private oldZ=Infinity;private last=0;
  private frames=0;private depthDraws=0;private depthTriangles=0;
+ private leasedOwnerChanged=false;
  private readonly dummy=empty();
  readonly live={value:0};
  readonly uniforms={localCastLive:this.live,localCastMap:{value:this.dummy as THREE.Texture},
@@ -49,8 +50,12 @@ export class BuildingShadows{
   this.right.set(0,1,0).cross(this.lightDepth).normalize();
   this.up.crossVectors(this.lightDepth,this.right).normalize();
  }
+ /** A verified one-owner material swap has to replace both depth and
+  * visibility in this frame. Ordinary streaming still uses its old throttle. */
+ leaseOwnerChanged(){this.leasedOwnerChanged=true;}
  get state(){return {active:!!this.live.value,strength:this.live.value,updates:this.frames,depthDraws:this.depthDraws,depthTriangles:this.depthTriangles};}
  render(camera:THREE.Vector3,y:number,cast?:Casters){
+  const requested=this.leasedOwnerChanged;this.leasedOwnerChanged=false;
   const a=Math.max(0,Math.min(1,(maxAltitude-(camera.y-y))/110)),strength=a*a*(3-2*a);
   if(!strength||!cast||this.r.capabilities.maxTextureSize<size){
    this.live.value=0;
@@ -65,7 +70,7 @@ export class BuildingShadows{
   if(!changed)for(const src of this.kept)if(!this.copies.has(src)){changed=true;break;}
   const moved=x!==this.oldX||z!==this.oldZ;
   if(!changed&&!moved&&this.target){this.live.value=strength;return;}
-  if(now-this.last<155){
+  if(now-this.last<155&&!(requested&&changed)){
    // A removed or replaced caster immediately invalidates the cached map.
    if(changed)this.live.value=0;else if(this.live.value>0)this.live.value=strength;
    return;

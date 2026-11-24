@@ -1,0 +1,41 @@
+[
+  {
+    "mode": "stock",
+    "site": "spinnakers-low",
+    "movementM": 263.366,
+    "altitude": 83.74928231168208,
+    "stockGround": -0.055,
+    "stationAtEnd": false,
+    "downloads": [],
+    "corruptLengths": [],
+    "pauseSucceeded": true
+  },
+  {
+    "mode": "candidate",
+    "site": "spinnakers-low",
+    "movementM": 261.687,
+    "altitude": 83.76142683917466,
+    "stockGround": -0.055,
+    "stationAtEnd": true,
+    "downloads": [
+      "summerside-station-C-v1.bin.gz"
+    ],
+    "corruptLengths": [],
+    "pauseSucceeded": true
+  },
+  {
+    "mode": "corrupt",
+    "site": "spinnakers-low",
+    "movementM": 262.25,
+    "altitude": 83.78167034655107,
+    "stockGround": -0.055,
+    "stationAtEnd": false,
+    "downloads": [
+      "summerside-station-C-v1.bin.gz"
+    ],
+    "corruptLengths": [
+      325977
+    ],
+    "pauseSucceeded": true
+  }
+]
