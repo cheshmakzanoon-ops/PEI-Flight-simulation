@@ -11,7 +11,7 @@ geographical and cultural context for the wider area.
 ## Source and registration
 
 The [CC0 Borealis archive](https://doi.org/10.5683/SP3/KE5YRM) includes
-the public pre-Fiona orthomosaic from September 19, 2022. The [original
+the public pre-Fiona orthomosaic from September 2022. The [original
 study](https://doi.org/10.1029/2023JF007551) documents how the dune changed
 later that month. The September image is a dated visual reference, not a
 present-day coastline. No post-storm elevation or shoreline is blended

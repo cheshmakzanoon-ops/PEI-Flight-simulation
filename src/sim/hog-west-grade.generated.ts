@@ -1,0 +1,26 @@
+// Native NRCan bare-ground correction. Immutable owner, sources and maximum displacement.
+export const HOG_WEST_GRADE={
+  "id": "hog-island-west-native-ground",
+  "kind": "inland",
+  "tileX": 7,
+  "tileZ": 8,
+  "firstX": 101,
+  "firstZ": 81,
+  "cellsX": 2,
+  "cellsZ": 2,
+  "sub": 32,
+  "relativeToParent": true,
+  "sparseRelative": true,
+  "maxRelativeDeltaCm": 249,
+  "sha256": "bdf30d4db6b0afe3f5831148bf21ba70bbf967b5560ea76e652f2c12c283e026",
+  "file": "hog-island/v1/west-dune-ground.g11.gz",
+  "wireBytes": 2384,
+  "wireSha": "4c4215c99e6d4ed10fee0e85f2e3600be0413b2165f14e665bbe54c47be6fef0",
+  "decodedBytes": 12675,
+  "terrainSha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+  "coverCompressedSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+  "coverDecodedSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "roadSha256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "atlasIndexBytes": 56569,
+  "atlasIndexSha256": "fcc2bb4d890eafd08ac41136a3bff7bebeafe2f9c25a066fdcf756ed39badce0"
+} as const;

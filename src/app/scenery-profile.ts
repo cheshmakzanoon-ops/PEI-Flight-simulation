@@ -63,6 +63,7 @@ export const SCENERY_REVIEWS=[
  {flag:'sourceGrassStudy',name:'Ground vegetation',scope:'Selected grassland in all three counties'},
  {flag:'sourceGrassNap',name:'Close grass detail',scope:'Includes Ground vegetation near the ground'},
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
+ {flag:'hogIslandWestGround',name:'Hog Island dune ground',scope:'Western measured relief and dated aerial colour'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
@@ -77,6 +78,10 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='hogIslandWestGround'){
+  if(options.get('scenery')==='detail')return 'detail';
+  return ['surveyRelief','inlandRelief','buildingShadows','seatedForestShadows'].some(k=>options.has(k))?'terrain':undefined;
+ }
  if(flag==='sourceGrassNap'){
   const base=sceneryReviewBlock('sourceGrassStudy',options);
   return base??(options.has('provinceFieldsReview')?'terrain':undefined);

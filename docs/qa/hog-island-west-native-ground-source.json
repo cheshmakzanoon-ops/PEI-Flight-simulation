@@ -1,0 +1,48 @@
+{
+  "sourceDate": "2020 PEI acquisition",
+  "sourceLicence": "Open Government Licence – Canada",
+  "dtm": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+  "dsm": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+  "studyCrop": {
+    "epsg": 3979,
+    "sourceSpacingMetres": 1.0,
+    "bounds": [
+      2313570,
+      314528,
+      2313950,
+      314768
+    ],
+    "dtmSHA256": "84dbd8daecf6e94f5a1a077966c35a9254a8ea1e1abff03c01d50065009e225c",
+    "dsmSHA256": "b301379a09e466c943452095a0a68e0fbb10a89b163e684ab74f8f7f61609b1f"
+  },
+  "nativeCOPC": {
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_335000_732000.copc.laz",
+    "ETag": "\"d8b16c559c3e6b3fe8d9b0924e51d091-8\"",
+    "objectLength": 62145564,
+    "actualReadUTM": [
+      [
+        435487.0,
+        5165394.0
+      ],
+      [
+        435614.0,
+        5165519.0
+      ]
+    ],
+    "verticalInfo": "CGVD2013 for this PEI 2020 acquisition, version/source header needed",
+    "classes": {
+      "1": 168332,
+      "2": 230190,
+      "9": 350
+    },
+    "queries": 19,
+    "wireReadBytes": 7101626
+  },
+  "fourClass2FlightlineWitnesses": {
+    "totalChanged": 59601,
+    "core": 27342,
+    "coreP90Old": 1.67524973,
+    "coreP90Trial": 0.30876171,
+    "eachMovedVertexThreeStripsWithinM": 1.75
+  }
+}

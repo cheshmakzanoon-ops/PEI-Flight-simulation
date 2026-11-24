@@ -187,6 +187,8 @@ relief](coastal-relief.md) replaces the regional terrain triangles with
 heights derived from native 1 m bare-earth LiDAR. It does not add a new
 shoreline or turn the remainder of PEI into a high-resolution survey.
 
+The [western Hog Island dune ground study](qa/hog-island-west-dune-ground.md) seats a bounded dry contour mesh in the 1 m measured source and pairs it with a separate dated dry aerial crop. It does not change the shoreline or the east island building atlas.
+
 ## Woodland height and clearance
 
 [Measured provincial stand heights](qa/forest-height-stream.md) set the

@@ -1,0 +1,36 @@
+{
+  "shape": {
+    "id": "hog-west-grade",
+    "tileX": 7,
+    "tileZ": 8,
+    "firstX": 101,
+    "firstZ": 81,
+    "cellsX": 2,
+    "cellsZ": 2,
+    "sub": 32,
+    "relativeToParent": true,
+    "sparseRelative": true,
+    "maxRelativeDeltaCm": 249,
+    "sha256": "bdf30d4db6b0afe3f5831148bf21ba70bbf967b5560ea76e652f2c12c283e026"
+  },
+  "actualTriangleCounts": [
+    25088,
+    29372
+  ],
+  "rays": 2339,
+  "protectedRays": 2230,
+  "positiveRays": 109,
+  "waterRays": 244,
+  "outside": 2042,
+  "minCover": 36.66794584822128,
+  "legal": true,
+  "protectedMax": 0.000006317109210840499,
+  "protectedContact": 0,
+  "supportError": 0.000021241546587891236,
+  "colliderError": 0.0049086029825353705,
+  "fitRayCount": 39,
+  "inputMedian": 1.1519295912345298,
+  "trialMedian": 0.009845335685416678,
+  "inputP90": 1.7047137974406281,
+  "trialP90": 0.02688307249683408
+}

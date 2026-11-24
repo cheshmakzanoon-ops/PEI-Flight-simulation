@@ -1,0 +1,59 @@
+[
+  {
+    "standardZeroOptionalRequests": true,
+    "pairedActivation": true,
+    "groundInstalled": true,
+    "ordinaryTravelM": 644.6251731384064,
+    "heightAGLM": 60.223878406671545,
+    "fault": null,
+    "requests": [
+      [
+        "west-dune-native-optics.png",
+        200
+      ],
+      [
+        "west-dune-ground.g11.gz",
+        200
+      ]
+    ],
+    "errors": []
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "pairedActivation": false,
+    "groundInstalled": false,
+    "ordinaryTravelM": 182.82059939648295,
+    "heightAGLM": 59.163202331249195,
+    "fault": "photo",
+    "requests": [
+      [
+        "west-dune-native-optics.png",
+        200
+      ],
+      [
+        "west-dune-ground.g11.gz",
+        200
+      ]
+    ],
+    "errors": []
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "pairedActivation": false,
+    "groundInstalled": false,
+    "ordinaryTravelM": 184.57332275656455,
+    "heightAGLM": 59.17576648413735,
+    "fault": "grade",
+    "requests": [
+      [
+        "west-dune-ground.g11.gz",
+        200
+      ],
+      [
+        "west-dune-native-optics.png",
+        200
+      ]
+    ],
+    "errors": []
+  }
+]

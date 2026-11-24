@@ -1,0 +1,98 @@
+{
+  "west-core": {
+    "width": 460,
+    "height": 338,
+    "differenceOver2": 11259,
+    "differenceOutsideProjectedGrade": 0,
+    "exactTotal": 135713,
+    "renders": [
+      {
+        "active": false,
+        "tris": 170437,
+        "draws": 32,
+        "photo": true
+      },
+      {
+        "active": true,
+        "tris": 174721,
+        "draws": 32,
+        "photo": true
+      }
+    ],
+    "pose": {
+      "lon": -63.8421353919,
+      "lat": 46.6396520698,
+      "h": 0,
+      "east": 0.18,
+      "south": 0.985,
+      "dist": 83,
+      "agl": 7,
+      "fixedBaseH": 2.6,
+      "fixedEyeY": 15
+    }
+  },
+  "west-close": {
+    "width": 460,
+    "height": 338,
+    "differenceOver2": 76904,
+    "differenceOutsideProjectedGrade": null,
+    "exactTotal": 56466,
+    "renders": [
+      {
+        "active": false,
+        "tris": 170949,
+        "draws": 36,
+        "photo": true
+      },
+      {
+        "active": true,
+        "tris": 175233,
+        "draws": 36,
+        "photo": true
+      }
+    ],
+    "pose": {
+      "lon": -63.8421353919,
+      "lat": 46.6396520698,
+      "h": 0,
+      "east": 0.31,
+      "south": 0.95,
+      "dist": 26,
+      "agl": 6,
+      "fixedBaseH": 3.3,
+      "fixedEyeY": 11.5
+    }
+  },
+  "east-control": {
+    "width": 460,
+    "height": 338,
+    "differenceOver2": 0,
+    "differenceOutsideProjectedGrade": 0,
+    "exactTotal": 155480,
+    "renders": [
+      {
+        "active": false,
+        "tris": 258011,
+        "draws": 52,
+        "photo": true
+      },
+      {
+        "active": true,
+        "tris": 262295,
+        "draws": 52,
+        "photo": true
+      }
+    ],
+    "pose": {
+      "lon": -63.8219679261,
+      "lat": 46.6291784831,
+      "h": 0,
+      "east": 0.8,
+      "south": -0.6,
+      "dist": 77,
+      "agl": 16,
+      "fixedBaseH": 7.6,
+      "fixedEyeY": 18
+    }
+  }
+}

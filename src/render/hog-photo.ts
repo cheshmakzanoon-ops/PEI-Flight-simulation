@@ -1,5 +1,7 @@
 import {LinearFilter,LinearMipmapLinearFilter,NoColorSpace,Texture,Vector2,Vector4} from 'three';
 import {HOG_PHOTO_PINS} from './hog-photo-pins.generated.ts';
+import {WEST_DUNE_OPTICS} from './hog-west-optics.generated.ts';
+type PhotoPins=(typeof HOG_PHOTO_PINS)[number]|typeof WEST_DUNE_OPTICS;
 const land={
  terrain:'661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d',
  cover:'46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863',
@@ -21,7 +23,7 @@ async function exactBody(stream:ReadableStream<Uint8Array>|null,bytes:number){
   data.set(q.value,off);off+=q.value.length;
  }}finally{void r.cancel().catch(()=>{});r.releaseLock();}
 }
-async function loadPiece(stamp:(typeof HOG_PHOTO_PINS)[number],base:string,opacity:{value:number},fetchIt:typeof fetch){
+async function loadPiece(stamp:PhotoPins,base:string,opacity:{value:number},fetchIt:typeof fetch){
  if(!globalThis.crypto?.subtle||!globalThis.createImageBitmap)return;
  try{
   const res=await fetchIt(base+stamp.file,{signal:AbortSignal.timeout(4200)});
@@ -72,3 +74,33 @@ export const hogPhotoGLSL=`
   col=max(vec3(.003),col+delta*weight);
  }
 `;
+
+export async function loadWestDuneOptics(base:string,get:typeof fetch=fetch){
+ const p=await loadPiece(WEST_DUNE_OPTICS,base,{value:1},get);
+ if(!p)return;
+ const gain={value:0};
+ return {
+  texture:p.texture, tile:p.tile, gain, uniforms:{duneAerialGain:gain,
+   duneAerial:{value:p.texture},duneAerialOrigin:p.uniforms.hogPhotoOrigin,duneAerialBasis:p.uniforms.hogPhotoBasis,
+  }, dispose(){p.texture.dispose();(p.texture.image as ImageBitmap).close();},
+ };
+}
+export type WestDuneOptics=NonNullable<Awaited<ReturnType<typeof loadWestDuneOptics>>>;
+
+export const westDuneAerialGLSL=`
+ uniform sampler2D duneAerial;
+ uniform float duneAerialGain;
+ uniform vec2 duneAerialOrigin;
+ uniform vec4 duneAerialBasis;
+ void paintWestDuneAerial(inout vec3 col,vec3 world,float coast){
+  vec2 p=world.xz-duneAerialOrigin;
+  vec2 uv=vec2(dot(p,duneAerialBasis.xy),dot(p,duneAerialBasis.zw));
+  vec2 dx=dFdx(uv),dy=dFdy(uv);
+  float distanceM=distance(cameraPosition,world);
+  if(duneAerialGain<.5||distanceM>360.||coast<36.||any(lessThanEqual(uv,vec2(0.)))||any(greaterThanEqual(uv,vec2(1.))))return;
+  vec4 img=textureGrad(duneAerial,uv,dx,dy);
+  // RGB may use mipmaps, but only native signed alpha grants authority.
+  float authority=min(img.a,textureLod(duneAerial,uv,0.).a);
+  float strength=.71*authority*smoothstep(36.,43.,coast)*(1.-smoothstep(125.,360.,distanceM));
+  col=mix(col,.25*img.rgb,strength);
+ }`;

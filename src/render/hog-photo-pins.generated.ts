@@ -1,4 +1,4 @@
-// Verified 19 September 2022 public airborne photographs, dated dry interiors only.
+// Verified September 2022 public airborne photographs, dated dry interiors only.
 export const HOG_PHOTO_PINS=[
   {
     "id": "west",
