@@ -316,6 +316,7 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ get summersideWaterRoofActive(){return this.meshes.get('q032001')?.userData.measuredWaterRoof===true;}
  get summersideRoofCount(){
   return (this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0)+(this.meshes.get('q03200300')?.userData.measuredDowntownRoofs??0);
  }
@@ -668,7 +669,7 @@ export class Buildings {
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
   const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
-  let facade=0,measuredDowntownRoofs=0;
+  let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
    if(markBarn){if(i===GREEN_GABLES_BARN.ordinal)barnStart=P.length/3;if(i===GREEN_GABLES_BARN.ordinal+1)barnEnd=P.length/3;}
@@ -789,7 +790,10 @@ export class Buildings {
    // The measured elevations are absolute. Reject material ground-datum conflicts
    // and leave this exact outline on the ordinary legacy generator.
    const neutral=neutralSource&&Math.abs(neutralSource.datum-base)<=.8?neutralSource:undefined;
-   if(neutral?.downtown)measuredDowntownRoofs++;
+   if(neutral?.downtown){
+    measuredDowntownRoofs++;
+    if(tile.id==='q032001'&&i===383)measuredWaterRoof=true;
+   }
    const eave=base+(synthGable?low:h);
    const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number,footA?:number,footB?:number)=>{
@@ -873,6 +877,7 @@ export class Buildings {
     }
   }
   if(measuredDowntownRoofs)mesh.userData.measuredDowntownRoofs=measuredDowntownRoofs;
+  if(measuredWaterRoof)mesh.userData.measuredWaterRoof=true;
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];

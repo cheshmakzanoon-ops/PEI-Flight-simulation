@@ -72,7 +72,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 [Standard close-wall detail](docs/qa/town-wall-core.md) now fits window spacing and subtle wall finishes in the cores of three towns, without changing their outlines or roofs. Optional scenery previews are regional.
 
-In Prince County, the **Summerside waterfront · low pass** shows survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md) and [north of downtown](docs/qa/summerside-north-roof.md) in Standard.
+In Prince County, the **Summerside waterfront · low pass** shows survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md) and [north of downtown](docs/qa/summerside-north-roof.md) in Standard. Beside Water Street, [one survey-cleared storefront site](docs/qa/summerside-water-open-ground.md) removes an unsupported tree without changing nearby vegetation.
 
 For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch. Near Main Street, Standard scenery uses the [survey-backed exterior at 77 Main](docs/qa/souris-east-exterior.md) in place of the old flat block.
 
