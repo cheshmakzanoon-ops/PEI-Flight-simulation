@@ -1,4 +1,8 @@
-"""Compiled CYSU runway departure. No override of production state or renderer."""
+"""Run the game's compiled CYSU departure without overriding the sim or renderer.
+
+The speed/height thresholds below are software-regression input timings, not
+real departure guidance. A slow SwiftShader device may need several minutes.
+"""
 import argparse, functools, http.server, json, math, threading
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -7,6 +11,7 @@ p.add_argument('--dist',type=Path,required=True)
 p.add_argument('--chromium',required=True)
 p.add_argument('--out',type=Path,required=True)
 a=p.parse_args()
+if not (a.dist/'index.html').is_file():p.error('pass a built dist directory')
 a.out.mkdir(exist_ok=True,parents=True)
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
@@ -33,16 +38,16 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,dir
             page.wait_for_function("window.islandAirDiagnostics?.speed>12",timeout=150000)
             roll=page.evaluate('window.islandAirDiagnostics')
             (a.out/'ground-roll.json').write_text(json.dumps({'metres':math.hypot(roll['x']-start['x'],roll['z']-start['z']),'speed':roll['speed'],'mode':roll['mode'],'tiles':roll['buildingTiles'],'errors':errors,'warnings':roll['layerWarnings']},indent=2)+'\n')
-            page.wait_for_function("window.islandAirDiagnostics?.speed>32",timeout=180000)
+            page.wait_for_function("window.islandAirDiagnostics?.speed>40",timeout=300000)
         except Exception:
             diagnostic=page.evaluate("()=>({active:document.activeElement?.tagName,...window.islandAirDiagnostics})")
             (a.out/'failure.json').write_text(json.dumps({'snapshot':diagnostic,'errors':errors},indent=2))
             raise
         page.keyboard.down('ArrowDown')
-        page.wait_for_function("(()=>{const d=window.islandAirDiagnostics;return d.altitude-d.groundY>8})()")
+        page.wait_for_function("(()=>{const d=window.islandAirDiagnostics;return d.altitude-d.groundY>17})()")
         page.keyboard.up('ArrowDown')
         page.keyboard.up('Shift')
-        page.wait_for_function("""p=>{const d=window.islandAirDiagnostics,b=d.buildingTiles;return d.mode==='flight'&&d.altitude-d.groundY>12&&Math.hypot(d.x-p.x,d.z-p.z)>620&&d.roads&&d.mainland&&d.detail.ready>0&&d.detail.missing===0&&b.ready>0&&b.wanted===b.ready&&!b.failed&&!b.pending}""",arg=start,polling=250)
+        page.wait_for_function("""p=>{const d=window.islandAirDiagnostics,b=d.buildingTiles;return d.mode==='flight'&&d.altitude-d.groundY>12&&Math.hypot(d.x-p.x,d.z-p.z)>545&&d.roads&&d.mainland&&d.detail.ready>0&&d.detail.missing===0&&b.ready>0&&b.wanted===b.ready&&!b.failed&&!b.pending}""",arg=start,polling=250)
         after=page.evaluate('window.islandAirDiagnostics')
         page.screenshot(path=str(a.out/'runway-departure.png'),timeout=90000)
         page.keyboard.press('v')

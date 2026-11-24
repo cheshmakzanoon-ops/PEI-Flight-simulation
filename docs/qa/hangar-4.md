@@ -63,3 +63,6 @@ with [the recorded poses](../../data/hangar4/poses.json) on each
 checkout. Use `--pose-baseline` to match the candidate's camera.
 [`hangar4-flight.py`](../../tools/qa/hangar4-flight.py) verifies the
 normal departure on a production build, without the fixed-camera fixture.
+The [compiled-flight receipt](hangar-4-flight.json) records a 587 m
+Summerside departure, the normal cockpit switch, and a successful pause.
+The harness inputs are for the game only, not flight instruction.

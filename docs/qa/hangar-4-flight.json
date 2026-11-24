@@ -1,0 +1,21 @@
+{
+  "metres": 586.825712730211,
+  "altitudeAboveCurrentGround": 17.634950878448386,
+  "buildingTiles": {
+    "wanted": 18,
+    "ready": 18,
+    "loading": 0,
+    "pending": 0,
+    "failed": 0
+  },
+  "detail": {
+    "ready": 16,
+    "loading": 0,
+    "missing": 0,
+    "uncovered": 0,
+    "retrying": 3
+  },
+  "warnings": [],
+  "errors": [],
+  "cockpitAndPause": true
+}

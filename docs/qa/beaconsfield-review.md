@@ -86,6 +86,9 @@ envelope test found **1,119,919** unchanged surrounding RGB pixels. Stock
 loads no optional art. Under the project subpath, a valid pinned response
 adds the preview, and missing, corrupt or late responses retain the complete
 stock tile. See the [compiled project-path receipt](beaconsfield-project-path.json).
+Reproduce the project-relative smoke cases with
+[`tools/qa/beaconsfield-project-path.py`](../../tools/qa/beaconsfield-project-path.py)
+against a production build.
 The preview preserves the neighboring row indices and their
 attributes while removing the one original shell only after validation.
 
