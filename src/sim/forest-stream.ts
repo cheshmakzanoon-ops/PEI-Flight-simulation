@@ -75,6 +75,10 @@ export class ForestStream {
    }catch{this.missing=true;}
   })();
  }
+ /** Existing validated drawable height cohort, no new catalogue reads. */
+ hasHeightPlan(id:string,sha:string){
+  return !this.crown&&!!globalThis.crypto?.subtle&&this.loaded.has(id)&&this.tiles.get(id)?.sha256===sha;
+ }
  get state(){
   const active=Math.floor((this.x-nw.x)/dx)+'-'+Math.floor((this.z-nw.z)/dz);
   return {missing:this.missing,inflight:this.inflight.size,resident:this.loaded.size,failed:this.failed.size,

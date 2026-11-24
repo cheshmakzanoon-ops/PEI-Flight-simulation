@@ -96,6 +96,23 @@ export class Vegetation {
  private stems=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*3),3).setUsage(THREE.DynamicDrawUsage);
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private hedgeGround=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
+ crownFillMaterial():THREE.ShaderMaterial{return this.crown.material as THREE.ShaderMaterial;}
+ private fillRosterSeen=-1;private fillRosterGood=false;
+ /** Pin the emitted stock slots (not just a downloaded catalogue) once per actual roster. */
+ miscoucheFillRoster(){
+  if(this.fillRosterSeen===this.forestRevision)return this.fillRosterGood;
+  this.fillRosterSeen=this.forestRevision;
+  const a=this.stems.array,b=this.shapes.array;
+  const q=new Float32Array(1),bits=new Uint32Array(q.buffer);
+  let h=2166136261,n=0;
+  const observe=(v:number)=>{q[0]=v;h=Math.imul(h^bits[0],16777619);};
+  for(let i=0;i<this.hedgeStart;i++){
+   const x=a[i*3],z=a[i*3+2];
+   if(x< -54019.6923||x> -53584.6204||z<5528.4509||z>6005.9102)continue;
+   n++;observe(x);observe(z);observe(b[i*4]);observe(b[i*4+1]);observe(b[i*4+2]);
+  }
+  return this.fillRosterGood=n===1282&&(h>>>0)===1141577673;
+ }
  private hedgeStart=0;
  private forestRevision=0;
  private volume?:WoodlandVolume;

@@ -42,7 +42,8 @@ export const SITES: Site[] = [
  {"lon":-63.37650018484735,"lat":46.400959210988596,"id":"queens-woodland-view","name":"Queens County \u00b7 woodland view pass","heading":120,"height":29,"region":"Queens County","note":"Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."},
  {"lon":-62.16750720087922,"lat":46.41638738574205,"id":"kings-woodland-view","name":"Kings County \u00b7 woodland view pass","heading":195,"height":26,"region":"Kings County","note":"Virtual low woodland pass. Enable Woodland scenery view in Standard and cycle to Scenery with V to look down."},
  {id:'souris-waterfront-pass',name:'Souris · waterfront pass',region:'Kings County',lon:-62.2537,lat:46.3491,heading:352.2,height:98,note:'Start offshore and head north along the waterfront toward the centre of Souris.'},
- {id:'georgetown-low',name:'Georgetown harbour · low pass',region:'Kings County',lon:-62.52719008293827,lat:46.17861545831718,heading:309,height:61,note:'Start over Georgetown Harbour and cross toward the village and St. David’s United Church. A virtual flight, not a navigation route.'}
+ {id:'georgetown-low',name:'Georgetown harbour · low pass',region:'Kings County',lon:-62.52719008293827,lat:46.17861545831718,heading:309,height:61,note:'Start over Georgetown Harbour and cross toward the village and St. David’s United Church. A virtual flight, not a navigation route.'},
+ {id:'miscouche-woodlot-pass',name:'Miscouche · woodland pass',region:'Prince County',lon:-63.907896877253485,lat:46.446923871189824,heading:90,height:96,note:'Virtual eastbound view over the measured public woodlot, west of Summerside.'},
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

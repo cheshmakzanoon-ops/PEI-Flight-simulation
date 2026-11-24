@@ -79,6 +79,7 @@ export const SCENERY_REVIEWS=[
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
  {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'indianRiverReview',name:'St. Mary’s exterior',scope:'Indian River, Prince County'},
+ {flag:'miscoucheCanopyStudy',name:'Miscouche canopy',scope:'Local measured woodland density near Summerside'},
  {flag:'woodlandView',name:'Woodland scenery view',scope:'Forest ground, close bark, conifers and a down-looking camera'},
  {flag:'woodlandBark',name:'Close bark grain',scope:'Close woodland material study'},
  {flag:'woodlandCrownBase',name:'Near conifer crown shape',scope:'Stand-informed close woodland'},
@@ -108,6 +109,12 @@ export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail'|'duneRelie
  if(flag==='nearshoreFoamStudy'||flag==='townWallStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
  if(flag==='gravelSurfaceStudy')return options.get('scenery')==='detail'?'detail':undefined;
+ if(flag==='miscoucheCanopyStudy'){
+  const mode=options.get('scenery');
+  if(mode&&mode!=='standard')return mode==='detail'?'detail':'terrain';
+  return ['surveyRelief','inlandRelief','woodland3D','woodlandView','woodlandBark','canopyLight','forestFloor',
+   'buildingShadows','seatedForestShadows'].some(k=>options.has(k))?'terrain':undefined;
+ }
  if(flag==='woodlandCrownBase'||flag==='woodlandBark'||flag==='woodlandView'){
   if(options.get('scenery')==='detail')return 'detail';
   return ['surveyRelief','inlandRelief','indianRiverReview','buildingShadows','seatedForestShadows',
