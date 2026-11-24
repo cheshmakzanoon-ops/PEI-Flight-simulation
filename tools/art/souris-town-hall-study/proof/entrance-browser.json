@@ -1,0 +1,71 @@
+{
+  "scope": "Actual detached Three.js compiled browser viewer; default and unknown exact; rear flag prevails against simultaneously requested stairs.",
+  "cases": {
+    "ordinary": {
+      "entry": {
+        "scene": {
+          "draws": 9,
+          "triangles": 4308
+        },
+        "entryStudy": false
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "entryStudy": false
+      }
+    },
+    "steps": {
+      "entry": {
+        "scene": {
+          "draws": 13,
+          "triangles": 5196
+        },
+        "entryStudy": true
+      },
+      "street": {
+        "scene": {
+          "draws": 14,
+          "triangles": 5252
+        },
+        "entryStudy": true
+      }
+    },
+    "unknown": {
+      "entry": {
+        "scene": {
+          "draws": 9,
+          "triangles": 4308
+        },
+        "entryStudy": false
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "entryStudy": false
+      }
+    },
+    "rear": {
+      "entry": {
+        "scene": {
+          "draws": 9,
+          "triangles": 4402
+        },
+        "entryStudy": false
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4458
+        },
+        "entryStudy": false
+      }
+    }
+  },
+  "oldDefaultFrontChangedPixels": 0,
+  "unknownVersusDefaultChangedPixels": 0
+}

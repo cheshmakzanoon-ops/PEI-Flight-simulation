@@ -1,0 +1,68 @@
+{
+  "scope": "Private local instrumented copy of real simulator; these code paths are not in the shipped game. Same anchored N112 gate and camera, body and street unchanged outside the two entry patches.",
+  "viewport": [
+    480,
+    330
+  ],
+  "source": {
+    "stair-floor.generated.ts": "64b99b0090ebe67c7646077a8a2cba672de75c8069084266b61ea20f979fbef5",
+    "stair-recipe.generated.ts": "9946b5f4f760cab53ab7d7b16be676e4364dadff7b8fd7c2b7984a2e205c841d",
+    "stairs-study.ts": "087b86d2b9cbc9a4aec8674e453c0a59763bce6a88c139344828507b5a71828d"
+  },
+  "samePoseRGB": {
+    "changed": 1782,
+    "above2": 1763,
+    "bounds": [
+      228,
+      221,
+      350,
+      254
+    ]
+  },
+  "cases": {
+    "bodyOnly": {
+      "drawCalls": 47,
+      "triangles": 318585,
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "civicPlacement": {
+        "mounted": true,
+        "painted": true,
+        "gate": true,
+        "owner": [
+          4866,
+          4914
+        ],
+        "matteOnly": false,
+        "warning": "Internal experiment, not committed or enabled in play."
+      }
+    },
+    "entryStudy": {
+      "drawCalls": 50,
+      "triangles": 319437,
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "civicPlacement": {
+        "mounted": true,
+        "painted": true,
+        "gate": true,
+        "owner": [
+          4866,
+          4914
+        ],
+        "matteOnly": false,
+        "warning": "Internal experiment, not committed or enabled in play."
+      }
+    }
+  }
+}

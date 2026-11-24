@@ -1,0 +1,541 @@
+{
+  "scenes": "detached only. Authentic N112 game facets+physical race, source point cloud broad directional not individual treads",
+  "groundTile": "27-14",
+  "archTopPlacement": "y14.06 nominal; .018m at authored sill not survey",
+  "actualTerrainProbeN": 59685,
+  "lowestCoverM": 107.15983916122104,
+  "minAndMaxVisualPhysicsDifference": [
+    -0.12228,
+    -0.11597,
+    -0.11085,
+    -0.10435,
+    -0.10072
+  ],
+  "fullRawGroundReplayArchive": "b9a26a4e9dcca116cbc6a02cd8563f1d801b0997f4a993f89ac2a8e8b144f339",
+  "officialRoots": {
+    "road": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "walk": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+    "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+    "buildings": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+  },
+  "summary": [
+    {
+      "side": "west",
+      "recipe": {
+        "label": "west",
+        "center": -3.137,
+        "width": 1.64,
+        "base": 12.52,
+        "ends": [
+          -3.33,
+          -3.038125,
+          -2.74625,
+          -2.454375,
+          -2.1625,
+          -1.870625,
+          -1.57875,
+          -1.286875,
+          -0.995,
+          0.319
+        ],
+        "tops": [
+          13.035,
+          13.163125,
+          13.29125,
+          13.419375,
+          13.5475,
+          13.675625,
+          13.80375,
+          13.931875,
+          14.06
+        ]
+      },
+      "visibleRisersExcludingToeSlab": 9,
+      "nominalTreadRiseRangeM": [
+        0.12812499999999893,
+        0.1281250000000007
+      ],
+      "photographicCurrentScope": "two clearly visible fronts only; modest top landing; no separate centre terrace or suggested user access",
+      "exactNormalFootprintGameAreaM2": 5.984359999999996,
+      "cutTriangleGroundSeatAtToe": [
+        12.91637,
+        12.91822,
+        12.93082,
+        12.94343,
+        12.94528
+      ],
+      "terms": [
+        {
+          "register": 0,
+          "fromTo": [
+            -3.33,
+            -3.038125
+          ],
+          "expectedLevel": 13.035,
+          "clippedArea": 0.4786750000000026,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.08278958965492755,
+            0.11841178336007552
+          ],
+          "rawUntaggedNativeCount": 4,
+          "nativeMinusAuthoredNominal": [
+            -0.25,
+            -0.2239,
+            -0.158,
+            -0.1411,
+            -0.136
+          ]
+        },
+        {
+          "register": 1,
+          "fromTo": [
+            -3.038125,
+            -2.74625
+          ],
+          "expectedLevel": 13.163125,
+          "clippedArea": 0.4786749999999991,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.1980229563128315,
+            0.2336451500179777
+          ],
+          "rawUntaggedNativeCount": 4,
+          "nativeMinusAuthoredNominal": [
+            -0.28113,
+            -0.27873,
+            -0.24013,
+            -0.17703,
+            -0.16413
+          ]
+        },
+        {
+          "register": 2,
+          "fromTo": [
+            -2.74625,
+            -2.454375
+          ],
+          "expectedLevel": 13.29125,
+          "clippedArea": 0.4786749999999955,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.3132563229707319,
+            0.3488785166758781
+          ],
+          "rawUntaggedNativeCount": 5,
+          "nativeMinusAuthoredNominal": [
+            -0.38025,
+            -0.36225,
+            -0.21625,
+            -0.08725,
+            -0.06725
+          ]
+        },
+        {
+          "register": 3,
+          "fromTo": [
+            -2.454375,
+            -2.1625
+          ],
+          "expectedLevel": 13.419375,
+          "clippedArea": 0.4786749999999991,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.4284896896286341,
+            0.46411188333378206
+          ],
+          "rawUntaggedNativeCount": 5,
+          "nativeMinusAuthoredNominal": [
+            -0.48038,
+            -0.46278,
+            -0.38537,
+            -0.04978,
+            -0.01337
+          ]
+        },
+        {
+          "register": 4,
+          "fromTo": [
+            -2.1625,
+            -1.870625
+          ],
+          "expectedLevel": 13.5475,
+          "clippedArea": 0.4786749999999955,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.5437230562865363,
+            0.5793452499916825
+          ],
+          "rawUntaggedNativeCount": 5,
+          "nativeMinusAuthoredNominal": [
+            -0.5445,
+            -0.3613,
+            0.0025,
+            0.1219,
+            0.1635
+          ]
+        },
+        {
+          "register": 5,
+          "fromTo": [
+            -1.870625,
+            -1.57875
+          ],
+          "expectedLevel": 13.675625,
+          "clippedArea": 0.4786749999999991,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.6589564229444385,
+            0.6945786166495846
+          ],
+          "rawUntaggedNativeCount": 4,
+          "nativeMinusAuthoredNominal": [
+            -0.01662,
+            -0.00132,
+            0.04988,
+            0.08638,
+            0.09538
+          ]
+        },
+        {
+          "register": 6,
+          "fromTo": [
+            -1.57875,
+            -1.2868750000000002
+          ],
+          "expectedLevel": 13.80375,
+          "clippedArea": 0.4786749999999973,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.7741897896023406,
+            0.8098119833074886
+          ],
+          "rawUntaggedNativeCount": 6,
+          "nativeMinusAuthoredNominal": [
+            -0.77475,
+            -0.41875,
+            -0.01775,
+            0.01375,
+            0.03025
+          ]
+        },
+        {
+          "register": 7,
+          "fromTo": [
+            -1.2868750000000002,
+            -0.995
+          ],
+          "expectedLevel": 13.931875,
+          "clippedArea": 0.47867499999999996,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.8894231562602428,
+            0.925045349965389
+          ],
+          "rawUntaggedNativeCount": 7,
+          "nativeMinusAuthoredNominal": [
+            -0.10088,
+            -0.09487,
+            -0.04988,
+            0.14033,
+            0.18712
+          ]
+        },
+        {
+          "register": 8,
+          "fromTo": [
+            -0.995,
+            0.319
+          ],
+          "expectedLevel": 14.06,
+          "clippedArea": 2.1549599999999933,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.9595109615312793,
+            1.0402787166232912
+          ],
+          "rawUntaggedNativeCount": 6,
+          "nativeMinusAuthoredNominal": [
+            -0.08,
+            -0.075,
+            -0.0455,
+            0.0485,
+            0.113
+          ]
+        }
+      ],
+      "minAllBottomEmbedM": 0.39658821663992505,
+      "ordinaryRoadClear": [
+        {
+          "n": 12782,
+          "distance": 3.833420483885269,
+          "intersectionArea": 0.0
+        },
+        {
+          "n": 12823,
+          "distance": 34.270678033788926,
+          "intersectionArea": 0.0
+        }
+      ],
+      "otherKnownMassesClear": [
+        {
+          "id": [
+            "q130331",
+            135
+          ],
+          "distance": 7.7321574244244085,
+          "intersectionArea": 0.0
+        },
+        {
+          "id": [
+            "q130331",
+            99
+          ],
+          "distance": 10.810136371904868,
+          "intersectionArea": 0.0
+        }
+      ],
+      "nativeUntaggedSampleN": 46,
+      "contactStatus": "actual stock N112 unmodified; all upper/horizontal parts scope styling only, not collision or engineering"
+    },
+    {
+      "side": "east",
+      "recipe": {
+        "label": "east",
+        "center": 3.137,
+        "width": 1.64,
+        "base": 12.52,
+        "ends": [
+          -3.15,
+          -2.833571429,
+          -2.517142857,
+          -2.200714286,
+          -1.884285714,
+          -1.567857143,
+          -1.251428571,
+          -0.935,
+          0.319
+        ],
+        "tops": [
+          13.13,
+          13.262857143,
+          13.395714286,
+          13.528571429,
+          13.661428571,
+          13.794285714,
+          13.927142857,
+          14.06
+        ]
+      },
+      "visibleRisersExcludingToeSlab": 8,
+      "nominalTreadRiseRangeM": [
+        0.13285714285714256,
+        0.13285714285714434
+      ],
+      "photographicCurrentScope": "two clearly visible fronts only; modest top landing; no separate centre terrace or suggested user access",
+      "exactNormalFootprintGameAreaM2": 5.689159999999999,
+      "cutTriangleGroundSeatAtToe": [
+        13.01128,
+        13.01313,
+        13.02573,
+        13.03833,
+        13.04019
+      ],
+      "terms": [
+        {
+          "register": 0,
+          "fromTo": [
+            -3.15,
+            -2.8335714285714286
+          ],
+          "expectedLevel": 13.13,
+          "clippedArea": 0.5189428571428536,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.08179654510493606,
+            0.11850322922582812
+          ],
+          "rawUntaggedNativeCount": 5,
+          "nativeMinusAuthoredNominal": [
+            -0.2,
+            -0.19,
+            0.124,
+            0.306,
+            0.326
+          ]
+        },
+        {
+          "register": 1,
+          "fromTo": [
+            -2.8335714285714286,
+            -2.517142857142857
+          ],
+          "expectedLevel": 13.262857142857143,
+          "clippedArea": 0.5189428571428536,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.20067756420423244,
+            0.23738424832512628
+          ],
+          "rawUntaggedNativeCount": 4,
+          "nativeMinusAuthoredNominal": [
+            -0.29886,
+            -0.11106,
+            0.34764,
+            0.44094,
+            0.47214
+          ]
+        },
+        {
+          "register": 2,
+          "fromTo": [
+            -2.517142857142857,
+            -2.2007142857142856
+          ],
+          "expectedLevel": 13.395714285714286,
+          "clippedArea": 0.5189428571428589,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.3195585833035306,
+            0.35626526742442266
+          ],
+          "rawUntaggedNativeCount": 3,
+          "nativeMinusAuthoredNominal": [
+            -0.42671,
+            -0.25491,
+            0.43229,
+            0.49309,
+            0.50829
+          ]
+        },
+        {
+          "register": 3,
+          "fromTo": [
+            -2.2007142857142856,
+            -1.8842857142857143
+          ],
+          "expectedLevel": 13.528571428571428,
+          "clippedArea": 0.5189428571428589,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.43843960240282875,
+            0.4751462865237208
+          ],
+          "rawUntaggedNativeCount": 7,
+          "nativeMinusAuthoredNominal": [
+            -0.60957,
+            -0.60657,
+            0.19743,
+            0.44823,
+            0.46143
+          ]
+        },
+        {
+          "register": 4,
+          "fromTo": [
+            -1.8842857142857143,
+            -1.567857142857143
+          ],
+          "expectedLevel": 13.661428571428573,
+          "clippedArea": 0.5189428571428536,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.5573206215021269,
+            0.5940273056230208
+          ],
+          "rawUntaggedNativeCount": 5,
+          "nativeMinusAuthoredNominal": [
+            -0.73043,
+            -0.71923,
+            0.05857,
+            0.13437,
+            0.13757
+          ]
+        },
+        {
+          "register": 5,
+          "fromTo": [
+            -1.567857142857143,
+            -1.2514285714285716
+          ],
+          "expectedLevel": 13.794285714285715,
+          "clippedArea": 0.5189428571428572,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.6762016406014251,
+            0.7129083247223171
+          ],
+          "rawUntaggedNativeCount": 8,
+          "nativeMinusAuthoredNominal": [
+            -0.77029,
+            -0.74649,
+            0.06921,
+            0.25461,
+            0.33371
+          ]
+        },
+        {
+          "register": 6,
+          "fromTo": [
+            -1.2514285714285716,
+            -0.935
+          ],
+          "expectedLevel": 13.927142857142858,
+          "clippedArea": 0.518942857142858,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.7950826597007232,
+            0.8317893438216153
+          ],
+          "rawUntaggedNativeCount": 2,
+          "nativeMinusAuthoredNominal": [
+            0.03486,
+            0.03756,
+            0.04836,
+            0.05916,
+            0.06186
+          ]
+        },
+        {
+          "register": 7,
+          "fromTo": [
+            -0.935,
+            0.319
+          ],
+          "expectedLevel": 14.06,
+          "clippedArea": 2.0565600000000015,
+          "trueSeatMinAndMaxTopAboveVisualM": [
+            0.8725527080448341,
+            0.9506703629209134
+          ],
+          "rawUntaggedNativeCount": 2,
+          "nativeMinusAuthoredNominal": [
+            -0.043,
+            -0.0378,
+            -0.017,
+            0.0038,
+            0.009
+          ]
+        }
+      ],
+      "minAllBottomEmbedM": 0.4914967707741731,
+      "ordinaryRoadClear": [
+        {
+          "n": 12782,
+          "distance": 4.308791002263246,
+          "intersectionArea": 0.0
+        },
+        {
+          "n": 12823,
+          "distance": 39.924032652775566,
+          "intersectionArea": 0.0
+        }
+      ],
+      "otherKnownMassesClear": [
+        {
+          "id": [
+            "q130331",
+            99
+          ],
+          "distance": 4.536136371899591,
+          "intersectionArea": 0.0
+        },
+        {
+          "id": [
+            "q130331",
+            135
+          ],
+          "distance": 14.004227572773347,
+          "intersectionArea": 0.0
+        }
+      ],
+      "nativeUntaggedSampleN": 36,
+      "contactStatus": "actual stock N112 unmodified; all upper/horizontal parts scope styling only, not collision or engineering"
+    }
+  ],
+  "limits": "No sidewalk/paver overlap in examined packed overlay data; public pavement/handrail precise physical dimensions not certified."
+}

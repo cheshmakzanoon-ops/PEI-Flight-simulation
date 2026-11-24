@@ -1,0 +1,44 @@
+{
+  "proof": "Compact fixture: same exact B2 art and actual submitted stock N112 floor at independent controls; additions only separate detached groups with no gameplay/route/footing claim",
+  "matchingBytesToHeldB2": 575784,
+  "ground": {
+    "bedN": 288,
+    "maxHeightDiffM": 7.523750689131248e-7,
+    "tile": "27-14",
+    "fullStockDerivedFaces": 36
+  },
+  "artifact": {
+    "drawIndependentExtras": 3,
+    "triangles": 852,
+    "actualTreadRays": 14518,
+    "actualCheekRays": 230,
+    "actualRailFootRays": 220,
+    "positionsBeyondNominalBoundsM": 9.536743172944284e-8,
+    "runs": [
+      {
+        "label": "west",
+        "N": 7625,
+        "minimumTopAboveN112M": 0.08547232184614728,
+        "minimumFasciaBottomBuriedM": 0.39927092158683486,
+        "maxStepErrorM": 2.6226057769918043e-8,
+        "cheekRays": 118,
+        "actualRailFootRays": 110,
+        "minRailEmbedM": 0.016000032424922317,
+        "maxRailEmbedM": 0.033112689892025315,
+        "topAgainstNominalSillRays": 34
+      },
+      {
+        "label": "east",
+        "N": 6893,
+        "minimumTopAboveN112M": 0.08457786460699168,
+        "minimumFasciaBottomBuriedM": 0.4942780654499277,
+        "maxStepErrorM": 2.409449706419764e-8,
+        "cheekRays": 112,
+        "actualRailFootRays": 110,
+        "minRailEmbedM": 0.016000032424924093,
+        "maxRailEmbedM": 0.032252576407517886,
+        "topAgainstNominalSillRays": 34
+      }
+    ]
+  }
+}

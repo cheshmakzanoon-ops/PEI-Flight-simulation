@@ -80,7 +80,7 @@ the original authoring envelope.
 
 ![Matched rear review camera, default on the left and the lower test on the right](proof/rear-roof-comparison.webp)
 
-On 20 held cell medians from four separate source blocks in this core,
+On 20 individual held-out Class 6 returns from four separate source blocks in this core,
 absolute p90 drops from 2.390 m to 0.156 m. The same plane uses one
 continuous texture coordinate system. The [mesh check](proof/rear-roof-geometry.json)
 records 390 oblique closure rays with no misses and exact old geometry
@@ -93,6 +93,35 @@ joinery or verified siding. Upper-east returns overlap the main deck
 in plan; the shape, hidden rear and both stairs remain unresolved here.
 This is a measured local test, not live placement or a full exterior.
 
+## Optional entrance study
+
+Use `?shot=entry&entry=steps` in the authoring viewer. It adds two
+original stone stair flights and paired railings at the observed
+entrances. The choice is separate from the lower-rear evidence view;
+when both are requested, the rear study takes precedence.
+
+The arrangement follows the 2026 reference and [C C Gosselin's
+July 2018 exterior photograph](https://www.flickr.com/photos/51856044@N00/29014219037/).
+The latter is a visual reference only. Neither photo is bundled or used
+as a texture. The observed rises differ: nine on the west and eight on
+the east. The heights and landings model that visible order seated
+against a registered portion of the game's terrain, not measured
+construction drawings. There is no model of the centre terrace,
+passage through the doors, ramp or actual accessibility.
+
+![Original paired entrance stair studies in the detached viewer](proof/entrance-thumbnail.webp)
+
+The ground patch in this viewer is clipped from the actual near mesh of
+terrain tile 27-14 and only supplements the detachable review floor.
+It does not alter the game's heightfield. The [replayable ray test](qa/actual-steps.ts) checks 288 registered floor
+probes plus the treads, embedded lower side faces, rails and nominal threshold; the
+existing body and original roof attributes remain unchanged. The
+[context replay](proof/entrance-context.json) is a comparison in a
+test-only simulator build of the same building before and after adding stairs,
+not evidence that the map ships this asset.
+
+![Matched test-only Souris street renders: body only on the left, steps on the right](proof/entrance-souris-context.webp)
+
 ## Work on the asset
 
 From the repository root with its locked npm dependencies already installed:
@@ -101,6 +130,7 @@ From the repository root with its locked npm dependencies already installed:
 node_modules/.bin/tsc -p tools/art/souris-town-hall-study/tsconfig.json
 node --experimental-strip-types tools/art/souris-town-hall-study/qa/actual-three.ts
 node --experimental-strip-types tools/art/souris-town-hall-study/qa/actual-rear.ts
+node --experimental-strip-types tools/art/souris-town-hall-study/qa/actual-steps.ts
 node_modules/.bin/vite tools/art/souris-town-hall-study --host 127.0.0.1
 ```
 

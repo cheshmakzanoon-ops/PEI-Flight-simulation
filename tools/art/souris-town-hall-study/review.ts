@@ -1,5 +1,9 @@
 import * as T from 'three';
 import {buildSourisTownHall} from './src/hall.ts';
+import {buildDetachedEntrySteps} from './src/stairs-study.ts';
+import {RUNS} from './src/stair-recipe.generated.ts';
+import {STAIR_FLOOR} from './src/stair-floor.generated.ts';
+import {DATUM} from './src/survey.ts';
 import {deferHallTextures,type Result} from './src/deferred-textures.ts';
 const renderer = new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(innerWidth,innerHeight);
@@ -22,7 +26,13 @@ sky.mapping=T.EquirectangularReflectionMapping;
 scene.environment=sky;scene.environmentIntensity=.77;
 const opts=new URLSearchParams(location.search);
 const size=opts.get('texture')==='flight'?256:512;
-const hall=buildSourisTownHall({textured:false,rearSurvey:opts.get('roof')==='lower-rear'});
+const rearStudy=opts.get('roof')==='lower-rear';
+const entries=opts.get('entry')==='steps'&&!rearStudy;
+const hall=buildSourisTownHall({textured:false,rearSurvey:rearStudy});
+if(entries) {
+ const trim=hall.children.find(x=>x.name==='trim') as T.Mesh<T.BufferGeometry,T.MeshPhysicalMaterial>;
+ hall.add(buildDetachedEntrySteps(RUNS,trim.material));
+}
 const materialWork=deferHallTextures(hall,size);
 let textureResult:Result|{state:'loading';bytes:number;size:typeof size}={state:'loading',bytes:0,size};
 (window as any).hallTextureReady=materialWork.ready;
@@ -30,8 +40,15 @@ let textureResult:Result|{state:'loading';bytes:number;size:typeof size}={state:
 addEventListener('pagehide',event=>{if(!event.persisted)materialWork.release();});
 scene.add(hall);
 const floor=new T.Mesh(new T.PlaneGeometry(140,140),new T.MeshStandardMaterial({color:0x74716b,roughness:.96}));
-floor.rotation.x=-Math.PI/2;floor.position.y=-.006;scene.add(floor);
+floor.rotation.x=-Math.PI/2;floor.position.y=entries?-.32:-.006;scene.add(floor);
+if(entries){
+ const ground=new T.BufferGeometry();
+ ground.setAttribute('position',new T.Float32BufferAttribute(STAIR_FLOOR.flatMap(q=>q.flatMap(([u,v,y])=>[u,y-DATUM,-v])),3));
+ ground.computeVertexNormals();const material=floor.material.clone();material.side=T.DoubleSide;
+ scene.add(new T.Mesh(ground,material));
+}
 const poses={
+ entry:{eye:[-5.2,2.0,13.4],aim:[0,2.85,-.2],fov:44},
  rear:{eye:[-15.6,17.8,-30.0],aim:[-2.2,5.35,-8.7],fov:34},
  sourceGeo:{eye:[-7.13454,1.4,14.21332],aim:[0,6.25,0],fov:46},
  sourceAxial:{eye:[.12,1.42,14.22],aim:[0,6.25,0],fov:46},
@@ -48,7 +65,7 @@ type Pose=keyof typeof poses;
  if(mode==='sim')sun.position.set(U[0]*-.60+U[1]*-.31,.74,-(V[0]*-.60+V[1]*-.31)).normalize().multiplyScalar(90);
  else sun.position.set(.44,.61,.60).normalize().multiplyScalar(90);
  renderer.render(scene,camera);
- return {scene:{draws:renderer.info.render.calls,triangles:renderer.info.render.triangles},detachedResources:textureResult,data:hall.userData};
+ return {scene:{draws:renderer.info.render.calls,triangles:renderer.info.render.triangles},detachedResources:textureResult,entryStudy:entries,data:hall.userData};
 };
 const desired=opts.get('shot');
 const pose:Pose=desired&&Object.hasOwn(poses,desired)?desired as Pose:'street';
