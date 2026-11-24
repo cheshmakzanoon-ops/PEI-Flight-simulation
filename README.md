@@ -72,7 +72,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 Preview work is regional and does not change the Standard atlas.
 
-For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch.
+For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch. Near Main Street, Standard scenery uses the [survey-backed exterior at 77 Main](docs/qa/souris-east-exterior.md) in place of the old flat block.
 
 ## Download the web build
 

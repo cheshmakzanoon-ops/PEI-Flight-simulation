@@ -1,3 +1,6 @@
+import {crockettAtlasCandidate,crockettExactRow,crockettExactWire} from './souris-east/admit.ts';
+import {SOURCE as SOURIS_EAST} from './souris-east/source.ts';
+import type {SourisEastGround} from './souris-east/ground.ts';
 import {KINGS_CROWN_BUILDINGS,readKingsCrownBuildings} from './kings-crown-building-owner.ts';
 import {ST_DAVIDS as ST_DAVID} from './st-davids/source.generated.ts';
 import {stDavidsAtlasAllows,stDavidsDrawAllows,stDavidsOwnerAllows,stDavidsOwnerBytes} from './st-davids/admit.ts';
@@ -209,6 +212,10 @@ export class Buildings {
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ private sourisEastGround?:SourisEastGround;
+ private sourisEast?:{owner:THREE.Mesh;seated:()=>boolean;dispose:()=>void;
+  variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
+
  private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics){
   this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
   this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
@@ -302,6 +309,8 @@ export class Buildings {
  }
  get townWallReview(){return !!this.townWallOptics;}
  get indianRiverPrepared(){return !!this.indianVariant;}
+ enableSourisEast(request:SourisEastGround){this.sourisEastGround=request;}
+ get sourisEastActive(){return this.sourisEast?.variant.visible??false;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
@@ -309,6 +318,7 @@ export class Buildings {
   this.syncCavendish();
   this.syncStation();
   this.syncStDavids();
+  this.sourisEast?.variant.sync(this.sourisEast.seated());
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -316,6 +326,9 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.sourisEast?.owner){
+     this.sourisEast.variant.dispose();this.sourisEast.dispose();this.sourisEast=undefined;
+    }
     if(id===RAIL.tile&&this.station){
      if(this.station.variant?.visible)this.tryStation?.shadows.leaseOwnerChanged();
      this.station.variant?.dispose();this.station.art.dispose();this.station=undefined;
@@ -419,10 +432,13 @@ export class Buildings {
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
+   const east=this.sourisEastGround&&crockettAtlasCandidate(this.atlasHash,tile)?this.sourisEastGround:undefined;
+   let eastBytes:ArrayBuffer|undefined;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
-   if(candidate||rusticoCandidate||tryStation||tryStDavids){
+   if(candidate||rusticoCandidate||tryStation||tryStDavids||east){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     features=await Buildings.decodeChunk(raw);
+    if(east&&crockettExactRow(features))eastBytes=raw;
     if(spec&&matchesExterior(features,spec))ownerBytes=raw;
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
@@ -451,7 +467,7 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:undefined,!!barnBytes,rusticoChunk);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:undefined,!!barnBytes,rusticoChunk);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(church&&mesh.userData.beaconTriangles){
     const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
@@ -466,10 +482,30 @@ export class Buildings {
    if(barnBytes)void this.promoteBarn(tile,mesh,barnBytes);
    if(stationBytes&&this.tryStation)void this.promoteStation(tile,mesh,stationBytes,this.tryStation);
    if(stDavidsBytes)this.pendingStDavids={tile,owner:mesh,source:stDavidsBytes};
+   if(eastBytes&&east)void this.promoteSourisEast(tile,mesh,eastBytes,east);
    if(this.sourisLight&&tile.id===SOURIS_ROOF.sourceTileId){
     void this.sourisLight.setCaster(features.some(f=>matchesSurveyRoof(SOURIS_ROOF,this.atlasHash,tile.id,f.footprint,f.holes)));
    }
   }catch(e){this.failed.add(tile.id);console.warn('Building tile unavailable',tile.id,e);}finally{this.loading.delete(tile.id);}
+ }
+ private async promoteSourisEast(tile:BoundTile,owner:THREE.Mesh,raw:ArrayBuffer,ground:SourisEastGround){
+  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&owner.parent===this.scene;
+  const span=owner.userData.beaconTriangles as readonly [number,number]|undefined;
+  const proof={vertices:34251,start:6957,end:7005};
+  if(!span||span[0]!==proof.start||span[1]!==proof.end||owner.geometry.getAttribute('position').count!==proof.vertices)return;
+  try{
+   if(!await crockettExactWire(new Uint8Array(raw))||!current())return;
+   const seated=await ground();
+   if(!seated||!current())return;
+   const mod=await import('./souris-east/art.ts');
+   if(!current())return;
+   const art=mod.createSourisEastExterior();
+   const variant=authenticatedOwnerVariant(owner,art.group,span,proof);
+   if(!variant){art.dispose();return;}
+   this.scene.add(art.group);
+   this.sourisEast={owner,variant,seated,dispose:art.dispose};
+   variant.sync(seated());
+  }catch{/** Optional art cannot remove or delay the stock tile. */}
  }
  private async promoteStation(tile:BoundTile,owner:THREE.Mesh,source:ArrayBuffer,request:RailwayReview){
   const alive=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&!!owner.parent;
