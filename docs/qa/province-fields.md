@@ -76,3 +76,23 @@ and [2025 inventory](https://open.canada.ca/data/en/dataset/89073037-d2fc-4a6d-9
 are from Agriculture and Agri-Food Canada, under Open Government Licence –
 Canada. Original terrain and sources: [world data](../WORLD.md).
 [Poly Haven Farm Furrows](https://polyhaven.com/a/farm_furrows): CC0.
+
+## Close relief and distance filtering
+
+The second surface pass varies the original row material subtly along
+its supported direction. Small soil variation is still visible close to
+the ground; the strongest repeated stripes lose contrast at low-flight
+and subpixel distances. It continues to use the same two filtered scan
+samples per shaded fragment. There are no new rows in the survey data
+or changes to the field extents, field angle, elevation or aircraft contact.
+
+![Matched original and revised field shading in the three PEI counties](province-fields-filtered.webp)
+
+Five fixed-camera art comparisons cover the three counties, a close
+ground view and a high view. The production shader was separately checked
+against Standard, with no changed pixels outside the field shader's
+mask, unchanged draw and triangle counts, and an identical high view.
+The changes are to the rendered treatment, not claims about crop
+species, present fields, real row spacing, or faster hardware FPS.
+
+[Filtering checks](province-fields-filtered-check.json).

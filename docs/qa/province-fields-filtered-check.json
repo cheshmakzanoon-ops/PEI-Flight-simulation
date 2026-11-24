@@ -1,0 +1,410 @@
+{
+  "renderMathOnly": "One external authored texture; same two filtered source taps; classified field geometry unchanged.",
+  "artReviewPrevVersusFiltered": {
+    "prince": {
+      "before": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "after": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "mask": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "stock": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "exact": true,
+      "camera": [
+        -35692.26043190924,
+        62.896199461105425,
+        303.32151410580553
+      ],
+      "pixels": {
+        "over2": 155723,
+        "offmask": 0,
+        "max": 25
+      },
+      "errors": []
+    },
+    "queens": {
+      "before": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "after": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "mask": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "stock": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "exact": true,
+      "camera": [
+        15432.619763017961,
+        41.297581915137016,
+        34242.888632426046
+      ],
+      "pixels": {
+        "over2": 168534,
+        "offmask": 0,
+        "max": 29
+      },
+      "errors": []
+    },
+    "kings": {
+      "before": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "after": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "mask": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "stock": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "exact": true,
+      "camera": [
+        43080.85641088712,
+        80.12588043971891,
+        11696.680700630877
+      ],
+      "pixels": {
+        "over2": 172861,
+        "offmask": 0,
+        "max": 26
+      },
+      "errors": []
+    },
+    "queens-ground": {
+      "before": {
+        "draws": 88,
+        "tris": 272866
+      },
+      "after": {
+        "draws": 88,
+        "tris": 272866
+      },
+      "mask": {
+        "draws": 88,
+        "tris": 272866
+      },
+      "stock": {
+        "draws": 88,
+        "tris": 272866
+      },
+      "exact": true,
+      "camera": [
+        15455.303131716479,
+        10.8,
+        34221.758919117834
+      ],
+      "pixels": {
+        "over2": 116706,
+        "offmask": 0,
+        "max": 35
+      },
+      "errors": []
+    },
+    "queens-high": {
+      "before": {
+        "draws": 16,
+        "tris": 219351
+      },
+      "after": {
+        "draws": 16,
+        "tris": 219351
+      },
+      "mask": {
+        "draws": 16,
+        "tris": 219351
+      },
+      "stock": {
+        "draws": 16,
+        "tris": 219351
+      },
+      "exact": true,
+      "camera": [
+        15407.741229606683,
+        521.6166623971667,
+        34266.063156699565
+      ],
+      "pixels": {
+        "over2": 0,
+        "offmask": 0,
+        "max": 0
+      },
+      "errors": []
+    }
+  },
+  "releaseShaderVersusStandard": {
+    "prince": {
+      "before": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "after": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "mask": {
+        "draws": 81,
+        "tris": 252395
+      },
+      "exact": true,
+      "camera": [
+        -35692.26043190924,
+        62.896199461105425,
+        303.32151410580553
+      ],
+      "pixels": {
+        "over2": 176273,
+        "offmask": 0,
+        "max": 17
+      },
+      "errors": []
+    },
+    "queens": {
+      "before": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "after": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "mask": {
+        "draws": 87,
+        "tris": 274748
+      },
+      "exact": true,
+      "camera": [
+        15432.619763017961,
+        41.297581915137016,
+        34242.888632426046
+      ],
+      "pixels": {
+        "over2": 214235,
+        "offmask": 0,
+        "max": 18
+      },
+      "errors": []
+    },
+    "kings": {
+      "before": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "after": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "mask": {
+        "draws": 56,
+        "tris": 282911
+      },
+      "exact": true,
+      "camera": [
+        43080.85641088712,
+        80.12588043971891,
+        11696.680700630877
+      ],
+      "pixels": {
+        "over2": 193918,
+        "offmask": 0,
+        "max": 17
+      },
+      "errors": []
+    },
+    "queens-high": {
+      "before": {
+        "draws": 16,
+        "tris": 219407
+      },
+      "after": {
+        "draws": 16,
+        "tris": 219407
+      },
+      "mask": {
+        "draws": 16,
+        "tris": 219407
+      },
+      "exact": true,
+      "camera": [
+        15407.741229606683,
+        521.6166623971667,
+        34266.063156699565
+      ],
+      "pixels": {
+        "over2": 0,
+        "offmask": 0,
+        "max": 0
+      },
+      "errors": []
+    }
+  },
+  "compiledNormalFlightWithGrassAndField": {
+    "normalDispatch": true,
+    "standardFetchedNeitherLayer": true,
+    "departure": "kings-grassland",
+    "corruptArchive": null,
+    "travelM": 419.42245329981876,
+    "activeLayers": {
+      "grass": {
+        "active": true,
+        "ready": 3,
+        "pending": 0,
+        "slots": 4
+      },
+      "fields": {
+        "active": true,
+        "ready": 1,
+        "pending": 0,
+        "slots": 4
+      }
+    },
+    "requests": [
+      {
+        "asset": "index.fcr.gz",
+        "layer": "fields-province",
+        "status": 200,
+        "range": null
+      },
+      {
+        "asset": "index.fcr.gz",
+        "layer": "grass-study",
+        "status": 200,
+        "range": null
+      },
+      {
+        "asset": "crop-33.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 56869-57521/75636"
+      },
+      {
+        "asset": "crop-34.pack",
+        "layer": "fields-province",
+        "status": 206,
+        "range": "bytes 57814-59169/68067"
+      },
+      {
+        "asset": "crop-33.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 57522-58940/75636"
+      },
+      {
+        "asset": "crop-33.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 53183-53800/75636"
+      }
+    ],
+    "errors": []
+  },
+  "typicalLowerFrame2PxHighPassLumaRmsBeforeAfter": {
+    "prince": [
+      9.7147,
+      3.2482
+    ],
+    "queens": [
+      10.6976,
+      5.2996
+    ],
+    "kings": [
+      9.3674,
+      3.6094
+    ],
+    "queens-ground": [
+      5.0816,
+      4.0271
+    ]
+  },
+  "compiledPortraitCombinedFlight": {
+    "viewport": [
+      414,
+      560
+    ],
+    "deviceScaleFactor": 1.25,
+    "normalDispatch": true,
+    "standardFetchedNeitherLayer": true,
+    "departure": "queens-grassland",
+    "corruptArchive": null,
+    "travelM": 169.32260687502253,
+    "activeLayers": {
+      "grass": {
+        "active": true,
+        "ready": 4,
+        "pending": 0,
+        "slots": 4
+      },
+      "fields": {
+        "active": true,
+        "ready": 1,
+        "pending": 0,
+        "slots": 4
+      }
+    },
+    "requests": [
+      {
+        "asset": "index.fcr.gz",
+        "layer": "fields-province",
+        "status": 200,
+        "range": null
+      },
+      {
+        "asset": "index.fcr.gz",
+        "layer": "grass-study",
+        "status": 200,
+        "range": null
+      },
+      {
+        "asset": "crop-23.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 49942-51410/58939"
+      },
+      {
+        "asset": "crop-25.pack",
+        "layer": "fields-province",
+        "status": 206,
+        "range": "bytes 7904-8165/8166"
+      },
+      {
+        "asset": "crop-23.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 55463-57394/58939"
+      },
+      {
+        "asset": "crop-23.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 51411-52223/58939"
+      },
+      {
+        "asset": "crop-23.pack",
+        "layer": "grass-study",
+        "status": 206,
+        "range": "bytes 57395-58938/58939"
+      }
+    ],
+    "errors": []
+  }
+}
