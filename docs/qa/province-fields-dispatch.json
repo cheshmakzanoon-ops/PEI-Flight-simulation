@@ -1,0 +1,19 @@
+{
+  "projectPath": "/PEI-Flight-simulation/",
+  "selectedDeparture": "prince-fields",
+  "preservedHashAndUnrelatedOptions": true,
+  "stockAndPendingRequests": 0,
+  "detailRequests": 0,
+  "savedThroughProfileSwitch": true,
+  "standardIndexRequestsPerLaunch": 1,
+  "standardPackRequests": 4,
+  "flightDistanceMetres": 75.068,
+  "readyTiles": 3,
+  "blockedMobile": {
+    "width": 390,
+    "keyboardDisclosure": true,
+    "horizontalOverflow": false,
+    "blockedRequests": 0
+  },
+  "errors": []
+}

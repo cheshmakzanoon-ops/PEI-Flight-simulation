@@ -42,10 +42,10 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
-| Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. Use Standard; incompatible local terrain options are held. |
+| Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. In Standard, enable **Expanded farmland** in Dispatch. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 
-**Optional scenery studies** in Dispatch lets you enable either the Beaconsfield exterior or field surface study without editing the URL. Use the Prince, Queens or Kings County **fields low pass** to compare the terrain on the same route.
+**Optional scenery studies** in Dispatch offers the Beaconsfield exterior and both farmland studies without editing the URL. Use the Prince, Queens or Kings County **fields low pass** to compare the terrain on the same route.
 
 Preview work is regional and does not change the Standard atlas.
 

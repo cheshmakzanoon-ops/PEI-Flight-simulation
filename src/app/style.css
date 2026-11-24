@@ -26,6 +26,7 @@ footer>a{color:#f4dfb7;text-decoration:underline}
 .scenery-reviews summary:focus-visible,.review-choice input:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .scenery-review-list{display:grid;gap:.45rem;padding:0 0 .62rem}
 .review-choice{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.25rem 0}
+.review-choice:has(input:disabled){cursor:default}
 .review-choice input{margin:0 .1rem 0 0;inline-size:1rem;block-size:1rem;accent-color:#d9aa64;flex:none}
 .review-choice b,.review-choice small{display:block}
 .review-choice b{color:var(--ink);font-size:.70rem}

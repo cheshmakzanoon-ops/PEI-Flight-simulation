@@ -36,10 +36,18 @@ focus, and both controls remain reachable when the panel scrolls.
 ## Standalone scenery studies
 
 In Dispatch, open **Optional scenery studies** to toggle **Beaconsfield
-exterior** or **Field surface relief**, then choose **Apply studies**.
+exterior**, **Field surface relief**, or **Expanded farmland**, then choose
+**Apply studies**.
 This reloads the project while keeping the departure and unrelated URL
-options. Opening the panel alone does not load new assets. The two
-studies are separate from the Detailed preview preset.
+options. Opening the panel alone does not load new assets. These studies
+are separate from the Detailed preview preset.
+
+**Expanded farmland** streams selected coverage in all three counties with
+Standard scenery. Its selection is saved, but inactive, when switching to
+Detailed. It also stays inactive when explicit survey, inland relief,
+North Cape or building-shadow options are present. It does not identify
+current crops. See the [atlas coverage and tests](province-fields.md) and
+[recorded Dispatch checks](province-fields-dispatch.json).
 
 Three low passes are available in both profiles: choose the **fields
 low pass** for Prince, Queens or Kings County, then compare the same

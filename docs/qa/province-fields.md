@@ -1,8 +1,10 @@
 # Island-wide field surfaces
 
 This optional study streams selected field surfaces across all three counties.
-Enable it with `?provinceFieldsReview` in a Standard build. The original
-three-site `?cropRowsReview` remains available. Both default to off.
+In Standard, open **Optional scenery studies** in Dispatch, select
+**Expanded farmland**, and apply. An equivalent bookmark uses
+`?provinceFieldsReview`. The original three-site `?cropRowsReview` remains
+available. Both default to off.
 
 The dated visual study refers to automatically detected 2023 field shapes
 and a 2025 30 m class raster, not present farming or a land survey. Row

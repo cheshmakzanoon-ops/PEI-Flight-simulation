@@ -1,6 +1,6 @@
 import {fetchProvinceDirectory,provinceFields} from './render/province-fields.ts';
 import {cropFieldAtlasMatches,loadFieldPilot} from './render/fields-pilot.ts';
-import {sceneryOptions} from './app/scenery-profile.ts';
+import {provinceFieldBlock,sceneryOptions} from './app/scenery-profile.ts';
 import {NorthCapeScenery} from './render/north-cape.ts';
 import {buildNorthBaywalk} from './render/north-baywalk.ts';
 import {loadBaywalkCourt,BAYWALK_ROAD_SHA,BAYWALK_ROAD_ORDINAL,BAYWALK_ROAD_FLAGS} from './sim/baywalk-native.ts';
@@ -62,7 +62,7 @@ async function run(){
  const baywalkJob=useBaywalk?Promise.all([loadBaywalkCourt(worldBase),spinnakersJob,preRoadJob,preBuildingJob])
   .then(([court,deck,road,buildings])=>court&&deck&&buildings&&road?.digest===BAYWALK_ROAD_SHA&&road.roads[BAYWALK_ROAD_ORDINAL]?.flags===BAYWALK_ROAD_FLAGS?
    {court,deck,road:road.roads[BAYWALK_ROAD_ORDINAL].points}:undefined):undefined;
- const provinceAllowed=options.has('provinceFieldsReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!options.has('northCapeWind')&&!showBuildingShadows;
+ const provinceAllowed=options.has('provinceFieldsReview')&&!provinceFieldBlock(options);
  const provinceJob=provinceAllowed?fetchProvinceDirectory(worldBase):undefined;
  const fieldsJob=options.has('cropRowsReview')||provinceAllowed?loadFieldPilot(worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;

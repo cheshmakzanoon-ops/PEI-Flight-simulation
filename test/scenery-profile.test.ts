@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {applyReviewSceneryURL,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,provinceFieldBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -43,4 +43,25 @@ test('named review switches retain the departure, application path and unrelated
  assert.equal(next.searchParams.has('diagnostics'),true);
  assert.deepEqual(reviewedScenery(next.search),['cropRowsReview']);
  assert.deepEqual(reviewedScenery(new URL(applyReviewSceneryURL(next.href,new Set(),'cavendish')).search),[]);
+});
+
+
+test('the province field atlas shares one eligibility check with Dispatch',()=>{
+ const block=(q:string)=>provinceFieldBlock(sceneryOptions(q));
+ assert.equal(block('?provinceFieldsReview&cropRowsReview&meadowTexture'),undefined);
+ assert.equal(block('?scenery=detail&provinceFieldsReview'),'detail');
+ for(const flag of ['surveyRelief','inlandRelief','northCapeWind','buildingShadows']){
+  assert.equal(block('?provinceFieldsReview&'+flag+'=0'),'terrain');
+ }
+ const source='https://example.test/PEI-Flight-simulation/?diagnostics&beaconsfieldReview&provinceFieldsReview#atlas';
+ const detail=switchSceneryURL(source,true,'kings-fields');
+ assert.equal(block(new URL(detail).search),'detail');
+ assert.deepEqual(reviewedScenery(new URL(detail).search),['beaconsfieldReview','provinceFieldsReview']);
+ const standard=switchSceneryURL(detail,false,'kings-fields');
+ assert.equal(block(new URL(standard).search),undefined);
+ const next=new URL(applyReviewSceneryURL(standard,new Set(['provinceFieldsReview']),'prince-fields'));
+ assert.deepEqual(reviewedScenery(next.search),['provinceFieldsReview']);
+ assert.equal(next.searchParams.get('departure'),'prince-fields');
+ assert.equal(next.searchParams.has('diagnostics'),true);
+ assert.equal(next.hash,'#atlas');
 });

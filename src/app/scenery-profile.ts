@@ -34,8 +34,17 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 export const SCENERY_REVIEWS=[
  {flag:'beaconsfieldReview',name:'Beaconsfield exterior',scope:'Charlottetown waterfront'},
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three selected inland areas'},
+ {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'Selected fields in all three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
+
+/** The measured atlas replaces stock-ground shading only. These render
+ * layers can substitute another terrain mesh or take its shadow material. */
+const PROVINCE_FIELD_CONFLICTS=['surveyRelief','inlandRelief','northCapeWind','buildingShadows'] as const;
+export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|undefined{
+ if(options.get('scenery')==='detail')return 'detail';
+ return PROVINCE_FIELD_CONFLICTS.some(flag=>options.has(flag))?'terrain':undefined;
+}
 
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);
