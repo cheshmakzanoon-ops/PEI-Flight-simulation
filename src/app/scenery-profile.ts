@@ -57,6 +57,7 @@ export const SCENERY_REVIEWS=[
  {flag:'greenGablesReview',name:'Green Gables House',scope:'Cavendish exterior'},
  {flag:'cavendishWaterReview',name:'Dunelands freshwater',scope:'2020 surveyed core'},
  {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
+ {flag:'northRusticoLighthouseStudy',name:'North Rustico lighthouse',scope:'2020 exterior and local ground'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
@@ -75,7 +76,7 @@ export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'d
  if(options.has('buildingShadows'))return 'terrain';
  if(flag==='beaconsfieldReview')return;
  if(options.has('surveyRelief'))return 'terrain';
- if(flag==='cavendishWaterReview'&&options.has('inlandRelief'))return 'terrain';
+ if((flag==='cavendishWaterReview'||flag==='northRusticoLighthouseStudy')&&options.has('inlandRelief'))return 'terrain';
 }
 
 export function reviewedScenery(search:string){

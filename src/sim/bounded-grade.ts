@@ -1,7 +1,8 @@
-import {CoastalGrid,GROUND_LIFT,facet,type MeshSurveySpec} from './coastal-terrain.ts';
+import {CoastalGrid,GROUND_LIFT,SURVEY_LOD,WORLD_COLS,WORLD_ROWS,facet,type MeshSurveySpec} from './coastal-terrain.ts';
 
 type Extent=Readonly<{left:number;right:number;top:number;bottom:number}>;
 type Sampler=(x:number,z:number)=>number;
+export type BoundedGradeSpec=MeshSurveySpec&Readonly<{maxRelativeDeltaCm?:number}>;
 
 /** A precisely fenced relative grade inset, independent of streamed city terrain.
  * The boundary and protected holes remain inherited. The submission and collider
@@ -11,14 +12,16 @@ export class BoundedGrade{
  readonly grid:CoastalGrid;
  private readonly weights:Uint8Array;
  private readonly contactBounds?:readonly [number,number,number,number];
- constructor(ext:Extent,spec:MeshSurveySpec,deltaCm:Int16Array,weights:Uint8Array,atlas:Sampler){
+ constructor(ext:Extent,spec:BoundedGradeSpec,deltaCm:Int16Array,weights:Uint8Array,atlas:Sampler){
   const w=spec.cellsX*spec.sub+1,h=spec.cellsZ*spec.sub+1;
+  const cap=spec.maxRelativeDeltaCm??220;
+  if(!Number.isInteger(cap)||cap<1||cap>250)throw Error('Invalid bounded grade ceiling');
   if(!spec.relativeToParent||w<3||h<3||w>260||h>260||deltaCm.length!==w*h||weights.length!==w*h)throw Error('Unbounded grade inset');
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
    const k=y*w+x,eastFence=x===0||x===w-1,southFence=y===0||y===h-1;
    if((eastFence||southFence)&&(deltaCm[k]||weights[k]))throw Error('Grade inset crosses outer reserve');
    if(!weights[k]&&deltaCm[k])throw Error('Grade inset changes unsupported ground');
-   if(Math.abs(deltaCm[k])>220)throw Error('Grade inset delta exceeds validated ceiling');
+   if(Math.abs(deltaCm[k])>cap)throw Error('Grade inset delta exceeds validated ceiling');
   }
   this.grid=new CoastalGrid(ext,{spec,samples:deltaCm},atlas);
   this.weights=weights;
@@ -60,7 +63,7 @@ export class BoundedGrade{
  }
 }
 
-export type GradeStamp=MeshSurveySpec&Readonly<{file:string;wireBytes:number;wireSha:string;decodedBytes:number;
+export type GradeStamp=BoundedGradeSpec&Readonly<{file:string;wireBytes:number;wireSha:string;decodedBytes:number;
  terrainSha256:string;coverCompressedSha256:string;coverDecodedSha256:string}>;
 export function gradeAtlasMatches(s:GradeStamp,terrain:string|undefined,cover:string|undefined,coverDecoded:string|undefined){
  return s.terrainSha256===terrain&&s.coverCompressedSha256===cover&&s.coverDecodedSha256===coverDecoded;
@@ -105,4 +108,20 @@ export async function loadBoundedGrade(s:GradeStamp,base:string,get:typeof fetch
  })]);}
  catch{return undefined;}
  finally{if(timer!==undefined)clearTimeout(timer);}
+}
+
+/** One independently measured correction per fine tile. Reject rather than
+ * silently replacing a more conservative member when two revisions disagree. */
+export function boundedGradeTiles<const T extends Pick<BoundedGrade,'grid'>>(grades:readonly T[]):ReadonlyMap<string,T>{
+ const set=new Map<string,T>(),ids=new Set<string>();
+ for(const grade of grades){
+  const {tileX,tileZ,firstX,firstZ,cellsX,cellsZ,id}=grade.grid.spec;
+  const key=tileX+'-'+tileZ;
+  if(set.has(key)||ids.has(id)||!id||!Number.isInteger(tileX)||tileX<0||tileX>=WORLD_COLS
+    ||!Number.isInteger(tileZ)||tileZ<0||tileZ>=WORLD_ROWS||firstX<1||firstZ<1
+    ||firstX+cellsX>=SURVEY_LOD||firstZ+cellsZ>=SURVEY_LOD)
+   throw Error('Grade tiles cannot share an owner or touch the inherited edge');
+  set.set(key,grade);ids.add(id);
+ }
+ return set;
 }

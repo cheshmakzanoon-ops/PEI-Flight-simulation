@@ -1,7 +1,7 @@
 import {gablesTrailGLSL,gablesTrailIntersects} from './cavendish-trail.ts';
 import {gablesFairwayGLSL,type GablesFairway} from './gables-fairway.ts';
 import {gablesGravelGLSL,gablesGravelIntersects} from './gables-gravel.ts';
-import type {BoundedGrade} from '../sim/bounded-grade.ts';
+import {boundedGradeTiles,type BoundedGrade} from '../sim/bounded-grade.ts';
 import {provinceFieldOpticsGLSL,type ProvinceFieldStudy} from './province-fields.ts';
 import {fieldPilotGLSL,type FieldPilot} from './fields-pilot.ts';
 import {meadowGLSL} from './meadow-optics.ts';
@@ -457,9 +457,11 @@ export class World {
  readonly meadowStrength={value:1};
  readonly gravelStrength={value:0};
  readonly trailStrength={value:0};
+ private readonly grades?:ReadonlyMap<string,BoundedGrade>;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],private readonly localGrade?:BoundedGrade,gablesGravel=false,fairway?:GablesFairway,trail=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false){
+  if(localGrade)this.grades=boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade);
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
@@ -783,16 +785,17 @@ export class World {
   }
   const meets=(g:NonNullable<World['bankGround']>['grid'])=>g.x0>x0&&g.x1<x0+w&&g.z0>z0&&g.z1<z0+d;
   const localBank=this.bankGround?.grid;
+  const localGrade=n===112?this.grades?.get(Math.round((x0-this.terrain.left)/w)+'-'+Math.round((z0-this.terrain.top)/d))?.grid:undefined;
   const site=this.terrain.surveyGrids.find(g=>(g.spec.kind!=='inland'||n===112)&&
     (n!==8||g.spec.id!==MONTAGUE_GROUND_ID)&&meets(g))??
-   (localBank&&n===112&&meets(localBank)?localBank:undefined)??(this.localGrade&&n===112&&meets(this.localGrade.grid)?this.localGrade.grid:undefined);
+   (localBank&&n===112&&meets(localBank)?localBank:undefined)??(localGrade&&meets(localGrade)?localGrade:undefined);
   if(site&&this.bankGround&&site===localBank){
    const original=g;g=nativeBankMesh(g,this.bankGround,this.terrain,x0,z0,w,d);original.dispose();
   }else if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
   else if(localBank&&meets(localBank))g.setAttribute('surveyWeight',new THREE.BufferAttribute(new Uint8Array(pos.count),1,true));
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
   m.userData.subdiv=n;
-  if(site&&site===this.localGrade?.grid)m.userData.localGrade=site.spec.id;
+  if(site&&site===localGrade)m.userData.localGrade=site.spec.id;
   else if(site)m.userData.coastalSurvey=site.spec.id;
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
@@ -808,7 +811,7 @@ export class World {
  private reliefTileSafe(t:Patch){
   // On this exact sidewalk generation, the independently measured
   // mitered paths intersect admission masks only in terrain tile 8-13.
-  if(t.id==='8-13'||(this.bankGround&&t.id===BANK_TILE))return false;
+  if(t.id==='8-13'||(this.bankGround&&t.id===BANK_TILE)||this.grades?.has(t.id))return false;
   return !this.terrain.surveyGrids.some(g=>g.spec.tileX===t.i&&g.spec.tileZ===t.j);
  }
  /** Promote a coherent mesh and contact revision before this frame runs physics.
@@ -857,19 +860,34 @@ export class World {
   const [a,c]=this.terrain.uv(b[0],b[1]),[d,e]=this.terrain.uv(b[2],b[3]);
   const j0=Math.max(0,Math.floor(c*WORLD_ROWS)),j1=Math.min(WORLD_ROWS-1,Math.floor(e*WORLD_ROWS));
   const i0=Math.max(0,Math.floor(a*WORLD_COLS)),i1=Math.min(WORLD_COLS-1,Math.floor(d*WORLD_COLS));
-  const touchesGrade=this.localGrade?.affectsBounds(b)??false;
   let out='';
   for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){
-   const q=this.byId.get(i+'-'+j);out+=q?q.lod+'/'+(q.seams??'')+(touchesGrade&&q.lod===112&&q.fine?.userData.localGrade?'g;':q.relief?'*;':';'):'-;';
+   const key=i+'-'+j,q=this.byId.get(key);
+   const grade=q?.fine?.userData.localGrade&&q.lod===112&&this.grades?.get(key)?.affectsBounds(b);
+   out+=q?q.lod+'/'+(q.seams??'')+(grade?'g;':q.relief?'*;':';'):'-;';
   }
   return out;
  }
- private installedGrade(){
-  const source=this.localGrade;if(!source)return;
-  const {tileX,tileZ,id}=source.grid.spec,patch=this.byId.get(tileX+'-'+tileZ);
-  return patch?.lod===112&&patch.fine?.userData.localGrade===id?source:undefined;
+ private installedGrade(key:string,patch=this.byId.get(key)){
+  const revision=patch?.lod===112&&patch.fine?.userData.localGrade;
+  if(!revision)return;
+  const source=this.grades?.get(key);
+  return source?.grid.spec.id===revision?source:undefined;
  }
- get activeGroundGrade(){return this.installedGrade()?.grid.spec.id??null;}
+ groundGradeInstalled(id:string){
+  if(this.grades)for(const [key,g] of this.grades)if(g.grid.spec.id===id)return !!this.installedGrade(key);
+  return false;
+ }
+ get activeGroundGrades():readonly string[]{
+  if(!this.grades)return [];
+  const result:string[]=[];
+  for(const [key] of this.grades){const g=this.installedGrade(key);if(g)result.push(g.grid.spec.id);}
+  return result;
+ }
+ get activeGroundGrade(){
+  if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)return g.grid.spec.id;}
+  return null;
+ }
  /** Height of the submitted regular grid (including sewn tile-edge vertices).
   * Decorative roots use this, not the map or aerodynamic contact sampler. */
  visualGroundHeight(x:number,z:number){
@@ -881,9 +899,9 @@ export class World {
  }
  private provinceVisualGroundHeight(x:number,z:number){
   const [u,v]=this.terrain.uv(x,z),i=Math.floor(u*WORLD_COLS),j=Math.floor(v*WORLD_ROWS);
-  const tile=this.byId.get(i+'-'+j);
+  const key=i+'-'+j,tile=this.byId.get(key);
   if(!tile)return this.terrain.meshElevation(x,z)+GROUND_LIFT;
-  const grade=this.installedGrade();
+  const grade=this.installedGrade(key,tile);
   if(grade?.weight(x,z))return grade.visualY(x,z)!;
   if(tile.relief){
    const m=tile.relief.mesh.relief,u=(x-tile.x0)/tile.w,v=(z-tile.z0)/tile.d;
@@ -942,7 +960,10 @@ export class World {
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
-  if(covered&&this.localGrade){const grade=this.installedGrade();if(grade?.weight(x,z))return grade.contactY(x,z,baseline);}
+  if(covered&&this.grades){
+   const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
+   if(grade?.weight(x,z))return grade.contactY(x,z,baseline);
+  }
   if(!covered||!this.reliefActive.size||runwayAt(x,z))return baseline;
   const [u,v]=this.terrain.uv(x,z);
   const t=this.byId.get(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));

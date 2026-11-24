@@ -1,0 +1,929 @@
+{
+  "sources": {
+    "rawLiDARObject": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_377000_711000.copc.laz",
+    "rawCropSHA256": "2321731981cee58054132d847c9f393c1456fe41f6f4251ac59f61efa936f7c2",
+    "flightLines": [
+      51411,
+      52811
+    ],
+    "historicReference": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19724",
+    "coastGuard": "https://notmar.gc.ca/publications/list-lights/atl/atl942-en",
+    "dataEpoch": 2020
+  },
+  "terrain": {
+    "groundOwner": "14-12",
+    "nearStockTriangles": 25088,
+    "nearCandidateSparseTriangles": 31036,
+    "contact": {
+      "nProtected": 11592,
+      "errProtectedVisual": 0,
+      "errProtectedContact": 0,
+      "nCore": 807,
+      "errCoreContact": 4.440892098500626e-16,
+      "nSleeve": 598,
+      "errSleeveContact": 1.0276589830215954e-06,
+      "landChanged": 0
+    },
+    "boundary": {
+      "nBoundary": 2580,
+      "errEdgeVisual": 0,
+      "errEdgePhysical": 0
+    },
+    "rays": {
+      "nray": 566,
+      "rayErrorOld": 1.2200010629515035e-06,
+      "rayErrorNew": 3.4989490239834e-05
+    },
+    "nProbe": 12997,
+    "coarseFallback": [
+      {
+        "n": 56,
+        "exactGeometry": true,
+        "newCount": 6272
+      },
+      {
+        "n": 8,
+        "exactGeometry": true,
+        "newCount": 128
+      }
+    ],
+    "approximateChangedGridFaceMaximumAfterActualStoredXYZ": [
+      0.14060634149730403,
+      0.32539090578186325,
+      0.3327301892728505,
+      0.344020759829376
+    ],
+    "exactAuthoredRect": {
+      "min": [
+        -7126.669992681804,
+        4893.974986047808
+      ],
+      "max": [
+        -7017.865870656124,
+        4998.6396428290645
+      ],
+      "nx": 129,
+      "nz": 129
+    }
+  },
+  "geometrySupport": {
+    "tested_Three_nonzero_faces": 3960,
+    "all_complete_triangle_native_checks": 12866,
+    "numSourceScopeFails": 0,
+    "failureIDs": [],
+    "supportedNativePlanM2": 1406.8188969852636,
+    "NativeOutlineBounds3979": [
+      2361174.6804263713,
+      316605.7514454053,
+      2361225.8268875615,
+      316662.04373038956
+    ],
+    "maskReferenceCoverageM2": 1838,
+    "street_exact_min_m": 5.006876268816781,
+    "paths_exact_min_m": null,
+    "parking_exact_min_m": null,
+    "places_exact_min_m": 4.068069999001163,
+    "OSMCoast_only_corroboration_min_m": 15.615920786298963,
+    "OSMPaths_only_holdout_min_m": 3.5440793774785018
+  },
+  "model": {
+    "closestThreeTriangles": 4099,
+    "flightTriangles": 2937,
+    "opaqueSkyWitness": {
+      "harbour-sun-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 211204,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 19710,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 9267,
+          "lightNeutralBounds": [
+            536,
+            295,
+            700,
+            402
+          ]
+        }
+      },
+      "gable-sun-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 261082,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 34570,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 903,
+          "lightNeutralBounds": [
+            306,
+            294,
+            383,
+            384
+          ]
+        }
+      },
+      "gallery-sun-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 216786,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 53871,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 0
+        }
+      },
+      "entrance-sun-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 550339,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 86093,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 34539,
+          "lightNeutralBounds": [
+            511,
+            49,
+            901,
+            264
+          ]
+        }
+      },
+      "flyover-sun-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 4583,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 893,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 35,
+          "lightNeutralBounds": [
+            568,
+            345,
+            577,
+            361
+          ]
+        }
+      },
+      "flyover-sun-flight": {
+        "C3": {
+          "protectedOpaqueSamples": 4583,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 893,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 35,
+          "lightNeutralBounds": [
+            568,
+            345,
+            577,
+            361
+          ]
+        }
+      },
+      "harbour-overcast-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 211204,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 19710,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 9312,
+          "lightNeutralBounds": [
+            536,
+            295,
+            697,
+            402
+          ]
+        }
+      },
+      "gable-overcast-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 261082,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 34570,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 6902,
+          "lightNeutralBounds": [
+            300,
+            294,
+            531,
+            393
+          ]
+        }
+      },
+      "gallery-overcast-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 216786,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 53871,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 23606,
+          "lightNeutralBounds": [
+            302,
+            600,
+            532,
+            741
+          ]
+        }
+      },
+      "entrance-overcast-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 550339,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 86093,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 45702,
+          "lightNeutralBounds": [
+            516,
+            26,
+            901,
+            264
+          ]
+        }
+      },
+      "flyover-overcast-hero": {
+        "C3": {
+          "protectedOpaqueSamples": 4583,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 893,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 51,
+          "lightNeutralBounds": [
+            568,
+            345,
+            577,
+            361
+          ]
+        }
+      },
+      "flyover-overcast-flight": {
+        "C3": {
+          "protectedOpaqueSamples": 4583,
+          "opaqueSkyProbeChanges": 0,
+          "roofSamples": 893,
+          "roofSkyProbeChanges": 0,
+          "lightNeutralInRoof": 51,
+          "lightNeutralBounds": [
+            568,
+            345,
+            577,
+            361
+          ]
+        }
+      }
+    },
+    "seamRays": {
+      "auditSha256": "486ac955975b018596cd28ab77cb565870ff797a43bd9345a3da2004e5d9501b",
+      "formerlyOpenTaps": 47,
+      "remainingOpenTaps": 0,
+      "independentComparedRays": 225
+    },
+    "geometryInputsSha256": {
+      "model.ts": "70f20c4d1bcf58ed5dd8efece0e721459e8c8475be60089bf75261e7e7abce5e",
+      "frame.ts": "bda8fd142f3ad67f440703d52a282744b68ff5539006ebd05a3dd85a58f3fc98",
+      "materials.ts": "59bce66c54a26d71a6078697f372f4819aa406d013ca9b962c1879756668e5cb",
+      "geometry.ts": "7b565abcfc15b945c8e80cb9208c2377d107a57c2af65dd72d6a149bca127805"
+    },
+    "testedDetachedBeforeWhitespaceNormalizationSha256": {
+      "model.ts": "dec2a88eb0d3609d08b185249f1cd427b446ce3eb12cc9199518e2bdb3b95d57",
+      "frame.ts": "bda8fd142f3ad67f440703d52a282744b68ff5539006ebd05a3dd85a58f3fc98",
+      "materials.ts": "4be99c873324515dc866842fefbfdcd4b1ee1bd920b6986343484d26d87bdab3",
+      "geometry.ts": "82e69eecd33e031451d5a673f3057374645b181ca098e624b97d04a66fff9cd6"
+    },
+    "normalizedTypeScriptEmitsIdenticalJavaScript": true
+  },
+  "independentBodySeat": {
+    "foundation_exact_rect_interior": {
+      "n": 26775,
+      "range": [
+        2.655435,
+        2.685221,
+        2.821932,
+        3.022621,
+        3.032213
+      ],
+      "minAt": [
+        -6.163000106811523,
+        2.463000030517578
+      ],
+      "maxAt": [
+        2.7969998931884774,
+        -1.376999969482422
+      ],
+      "footingBelowByMin": 0.0454352792395567,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 55.75779407243709,
+      "gradeWeightMin": 1.0
+    },
+    "foundation_exact_rect_perimeter": {
+      "n": 3204,
+      "range": [
+        2.655357,
+        2.660515,
+        2.842646,
+        3.03015,
+        3.032442
+      ],
+      "minAt": [
+        -6.163000106811523,
+        2.4709999561309814
+      ],
+      "maxAt": [
+        2.811000108718872,
+        -1.3901999831199645
+      ],
+      "footingBelowByMin": 0.045356987091312195,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 55.751549422031815,
+      "gradeWeightMin": 1.0
+    },
+    "siding_nominal_lip_perimeter": {
+      "n": 3204,
+      "range": [
+        2.652575,
+        2.658269,
+        2.841681,
+        3.030933,
+        3.033025
+      ],
+      "minAt": [
+        -6.197,
+        2.506
+      ],
+      "maxAt": [
+        2.849,
+        -1.420363333333333
+      ],
+      "footingBelowByMin": 0.0425747904155096,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 55.704152104007676,
+      "gradeWeightMin": 1.0
+    },
+    "author_seat_foot": {
+      "n": 68,
+      "range": [
+        2.652575,
+        2.652575,
+        2.84013,
+        3.030651,
+        3.032384
+      ],
+      "minAt": [
+        -6.197,
+        2.506
+      ],
+      "maxAt": [
+        2.849,
+        -1.392375
+      ],
+      "footingBelowByMin": 0.0425747904155096,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 55.704152104007676,
+      "gradeWeightMin": 1.0
+    },
+    "front_door_outward_0.02": {
+      "n": 241,
+      "range": [
+        2.756413,
+        2.756573,
+        2.760903,
+        2.763968,
+        2.764022
+      ],
+      "minAt": [
+        -4.227,
+        2.526
+      ],
+      "maxAt": [
+        -3.8508,
+        2.526
+      ],
+      "footingBelowByMin": 0.1464127360062415,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.64385549147619,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39609,
+        0.38848
+      ]
+    },
+    "front_door_outward_0.05": {
+      "n": 241,
+      "range": [
+        2.757045,
+        2.757205,
+        2.760882,
+        2.763941,
+        2.763998
+      ],
+      "minAt": [
+        -4.227,
+        2.5559999999999996
+      ],
+      "maxAt": [
+        -3.8805,
+        2.5559999999999996
+      ],
+      "footingBelowByMin": 0.1470445504512492,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.67149891292064,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39546,
+        0.3885
+      ]
+    },
+    "front_door_outward_0.1": {
+      "n": 241,
+      "range": [
+        2.757489,
+        2.757591,
+        2.760834,
+        2.7639,
+        2.763972
+      ],
+      "minAt": [
+        -3.435,
+        2.606
+      ],
+      "maxAt": [
+        -3.9366000000000003,
+        2.606
+      ],
+      "footingBelowByMin": 0.1474888183618348,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.71759071452209,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39501,
+        0.38853
+      ]
+    },
+    "front_door_outward_0.15": {
+      "n": 241,
+      "range": [
+        2.756742,
+        2.756845,
+        2.760798,
+        2.763855,
+        2.763914
+      ],
+      "minAt": [
+        -3.435,
+        2.6559999999999997
+      ],
+      "maxAt": [
+        -3.9894000000000003,
+        2.6559999999999997
+      ],
+      "footingBelowByMin": 0.14674247815783525,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.7637068067624,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39576,
+        0.38859
+      ]
+    },
+    "front_door_outward_0.25": {
+      "n": 241,
+      "range": [
+        2.75525,
+        2.755352,
+        2.760373,
+        2.763771,
+        2.76383
+      ],
+      "minAt": [
+        -3.435,
+        2.756
+      ],
+      "maxAt": [
+        -4.0983,
+        2.756
+      ],
+      "footingBelowByMin": 0.1452497977498366,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.85601186320349,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39725,
+        0.38867
+      ]
+    },
+    "front_door_outward_0.36": {
+      "n": 241,
+      "range": [
+        2.753608,
+        2.75371,
+        2.758731,
+        2.763666,
+        2.763725
+      ],
+      "minAt": [
+        -3.435,
+        2.8659999999999997
+      ],
+      "maxAt": [
+        -4.2171,
+        2.8659999999999997
+      ],
+      "footingBelowByMin": 0.14360784930103465,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 62.957659648131255,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.39889,
+        0.38877
+      ]
+    },
+    "front_door_outward_0.5": {
+      "n": 241,
+      "range": [
+        2.750235,
+        2.750332,
+        2.755075,
+        2.759819,
+        2.759916
+      ],
+      "minAt": [
+        -3.435,
+        3.006
+      ],
+      "maxAt": [
+        -4.227,
+        3.006
+      ],
+      "footingBelowByMin": 0.14023480677124533,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 63.087199590777914,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.40227,
+        0.39258
+      ]
+    },
+    "front_door_outward_0.75": {
+      "n": 241,
+      "range": [
+        2.73801,
+        2.738117,
+        2.742861,
+        2.745229,
+        2.745252
+      ],
+      "minAt": [
+        -3.435,
+        3.256
+      ],
+      "maxAt": [
+        -4.029,
+        3.256
+      ],
+      "footingBelowByMin": 0.12801009967479748,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 63.31899458468308,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.41449,
+        0.40725
+      ]
+    },
+    "front_door_outward_1.0": {
+      "n": 241,
+      "range": [
+        2.721297,
+        2.721525,
+        2.728735,
+        2.730198,
+        2.730225
+      ],
+      "minAt": [
+        -3.435,
+        3.506
+      ],
+      "maxAt": [
+        -3.798,
+        3.506
+      ],
+      "footingBelowByMin": 0.11129724669148544,
+      "foundationAir": 0,
+      "soilOverTop": 0,
+      "terrainTouchesWall": 0,
+      "maxHeightContactDiff": 4.440892098500626e-16,
+      "positiveCoverMin": 63.55139684490365,
+      "gradeWeightMin": 1.0,
+      "distanceToNominalThresholdY3p15Range": [
+        0.4312,
+        0.42228
+      ]
+    }
+  },
+  "nominalEntrySeat": {
+    "set": {
+      "resill": {
+        "samples": 2314,
+        "hits": 2314,
+        "max": 5.960466342713744e-09,
+        "authoredY": 3.145
+      },
+      "middle": {
+        "samples": 2314,
+        "hits": 2314,
+        "max": 6.198884072716737e-09,
+        "authoredY": 3.0140000000000002
+      },
+      "first": {
+        "samples": 2314,
+        "hits": 2314,
+        "max": 1.0430989405563196e-10,
+        "authoredY": 2.882
+      }
+    },
+    "bounds": [
+      [
+        -4.401000022888184,
+        -0.2639999985694885,
+        -3.3919999599456787
+      ],
+      [
+        -3.260999917984009,
+        0.2750000059604645,
+        -2.374159812927246
+      ]
+    ],
+    "nativePlanesCompatible": {
+      "first": {
+        "verifiedSamples": 2314,
+        "trueGradeMin": 2.724699213423362,
+        "trueGradeMax": 2.7521363642107186,
+        "groundContactMaxDifference": 4.440892098500626e-16,
+        "groundWeightMin": 1.0,
+        "minCoverSdf": 63.145119545884825,
+        "TreadAboveGradeRange": [
+          0.12986363589358962,
+          0.15730078668094638
+        ]
+      },
+      "front_edge": {
+        "verifiedSamples": 905,
+        "trueGradeMin": 2.7238393864829824,
+        "trueGradeMax": 2.7641728987018386,
+        "groundContactMaxDifference": 4.440892098500626e-16,
+        "groundWeightMin": 1.0,
+        "minCoverSdf": 62.4371458921471,
+        "firstRiserExposedHeightSpan": [
+          0.14487669307757178,
+          0.1581606135170177
+        ]
+      },
+      "middle": {
+        "verifiedSamples": 2314,
+        "trueGradeMin": 2.7422142833499445,
+        "trueGradeMax": 2.7637134042284104,
+        "groundContactMaxDifference": 4.440892098500626e-16,
+        "groundWeightMin": 1.0,
+        "minCoverSdf": 62.893296774540545,
+        "TreadAboveGradeRange": [
+          0.25028658957270666,
+          0.2717857104511725
+        ]
+      },
+      "resill": {
+        "verifiedSamples": 2314,
+        "trueGradeMin": 2.749967482076614,
+        "trueGradeMax": 2.7641293019504625,
+        "groundContactMaxDifference": 4.440892098500626e-16,
+        "groundWeightMin": 1.0,
+        "minCoverSdf": 62.44712493641009,
+        "TreadAboveGradeRange": [
+          0.3808707040100021,
+          0.3950325238838506
+        ]
+      }
+    }
+  },
+  "ordinaryFlight": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": true,
+    "corruptGroundFallsBackToStock": false,
+    "captures": [
+      {
+        "x": -6800.650660686884,
+        "z": 4932.897963037499,
+        "altitude": 74.01328440916761,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 330217,
+        "drawCalls": 246,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 301.20347190460944
+      },
+      {
+        "x": -6927.53926674503,
+        "z": 4969.150422758225,
+        "altitude": 74.98837118876702,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 331891,
+        "drawCalls": 243,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 433.1692219378344
+      },
+      {
+        "x": -7026.497789089325,
+        "z": 4997.42266821205,
+        "altitude": 75.7543822414836,
+        "groundY": 0.22990738265627442,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 336866,
+        "drawCalls": 229,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 536.0871941600046
+      }
+    ],
+    "errors": []
+  },
+  "newShade": {
+    "maskFile": "src/render/north-rustico/shade.generated.ts",
+    "samplesAcross": 80,
+    "actualSolidCasterRaysPerReceiverPoint": 5,
+    "sunDirectionUnnormalized": [
+      -0.6,
+      0.74,
+      -0.31
+    ],
+    "independentReceiverAuditSha256": "b7895e2f6f65341215fde331e959c15168e874c8ab44e7ef706cdc884a7d760a",
+    "positiveMaskSamples": 1503,
+    "positiveSamplesOnEdge": 0,
+    "supportedDryFilterSamples": 276563,
+    "minimumCoverSignedDistanceM": 47.55,
+    "actualReceiverRayHits": 12023,
+    "maximumReceiverGeometryRayErrorM": 2.5e-07
+  },
+  "badGradeFallbackOrdinaryFlight": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": false,
+    "corruptGroundFallsBackToStock": true,
+    "captures": [
+      {
+        "x": -6800.113093212601,
+        "z": 4932.744376672825,
+        "altitude": 74.0091711740911,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 319820,
+        "drawCalls": 229,
+        "northRusticoLighthouse": null,
+        "travelMetres": 300.64439448528077
+      },
+      {
+        "x": -6927.53926674503,
+        "z": 4969.150422758225,
+        "altitude": 74.98837118876702,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 320332,
+        "drawCalls": 226,
+        "northRusticoLighthouse": null,
+        "travelMetres": 433.1692219378344
+      },
+      {
+        "x": -7025.959910160343,
+        "z": 4997.268998393341,
+        "altitude": 75.75020673254882,
+        "groundY": 0.21860783325439115,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 330918,
+        "drawCalls": 229,
+        "northRusticoLighthouse": null,
+        "travelMetres": 535.527794342894
+      }
+    ],
+    "errors": []
+  },
+  "fixedBrowserViews": [
+    {
+      "name": "rustico-sash-close",
+      "height": 740,
+      "width": 1100,
+      "calls": 80,
+      "triangles": 270511
+    },
+    {
+      "name": "rustico-gallery-close",
+      "height": 740,
+      "width": 1100,
+      "calls": 89,
+      "triangles": 276615
+    },
+    {
+      "name": "rustico-seaward-close",
+      "height": 740,
+      "width": 1100,
+      "calls": 71,
+      "triangles": 266920
+    }
+  ],
+  "ordinaryFlightThroughDispatch": {
+    "route": "north-rustico-harbour-low",
+    "samePublicDispatchAndFlightLoop": true,
+    "preview": true,
+    "enabledThroughDispatch": true,
+    "corruptGroundFallsBackToStock": false,
+    "captures": [
+      {
+        "x": -6801.7257982008,
+        "z": 4933.205136454229,
+        "altitude": 74.02151132476193,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 330265,
+        "drawCalls": 246,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 302.32162939874996
+      },
+      {
+        "x": -6929.152532429621,
+        "z": 4969.611332777777,
+        "altitude": 75.00082188348757,
+        "groundY": -0.055,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 331947,
+        "drawCalls": 243,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 434.8470372479665
+      },
+      {
+        "x": -7026.497789089325,
+        "z": 4997.42266821205,
+        "altitude": 75.7543822414836,
+        "groundY": 0.22990738265627442,
+        "heading": 4.4505895925855405,
+        "mode": "flight",
+        "triangles": 336922,
+        "drawCalls": 229,
+        "northRusticoLighthouse": {
+          "seat": "verified",
+          "visible": true
+        },
+        "travelMetres": 536.0871941600046
+      }
+    ],
+    "errors": []
+  }
+}
