@@ -62,6 +62,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | One site in each county | `?orthophotoSeamStudy` | [Aerial-image tile joins](docs/qa/orthophoto-edge-study.md): close-flight colour continuity along three verified joins. Standard only. |
 | Kings County coastal ridge | `?kingsDryCrownStudy&departure=kings-coastal-ridge` | [Measured dry ridge](docs/qa/kings-dry-crown.md): 2020 LiDAR terrain with matched contact and a distant fade. Standard only. |
 | Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |
+| Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 

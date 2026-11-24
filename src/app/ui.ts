@@ -32,7 +32,8 @@ export class UI {
    const insidePack=cavePack.active&&CAVENDISH_PACKAGE_FLAGS.some(key=>key===item.flag);
    if(saved&&!blocked)reviewCount++;
    const status=insidePack?'Included in Cavendish detail':blocked==='detail'?'Switch to Standard to use this study.':
-    blocked==='terrain'?'Unavailable with the current terrain or shadow options.':item.scope;
+    blocked==='terrain'?(item.flag==='coastalOptics'?
+     'Unavailable with the selected imagery, terrain or shoreline options.':'Unavailable with the current terrain or shadow options.'):item.scope;
    const scope=(blocked&&saved?'Saved · ':'')+status;
    return `<label class="review-choice"><input type="checkbox" name="scenery-review" value="${item.flag}"${saved||insidePack?' checked':''}${insidePack||(blocked&&!saved)?' disabled':''}><span><b>${item.name}</b><small>${scope}</small></span></label>`;
   }).join('');

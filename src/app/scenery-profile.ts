@@ -30,11 +30,18 @@ export function cavendishPackageState(search:string){
 
 export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('scenery')==='detail';
 
+/** A Standard-scene shortcut for separately verified coastal optics.
+ * Preserve explicit incompatible styles rather than silently replacing them. */
+export const COASTAL_OPTICS_FLAGS=['aerialPerspectiveStudy','shoreToneStudy','shoreFoamDetail','orbyCoastClosure'] as const;
+const COASTAL_OPTICS_CONFLICTS=['legacyShoreArcs','orthophotoSeamStudy','buildingShadows','surveyRelief','inlandRelief',
+ 'kingsDryCrownStudy','duneReliefStudy'] as const;
 export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
 
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
+ if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
+  for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
  if(q.has('woodlandBark')&&!sceneryReviewBlock('woodlandBark',q))q.set('woodland3D','');
  if(q.has('woodlandCrownBase')&&!sceneryReviewBlock('woodlandCrownBase',q))q.set('woodland3D','');
@@ -59,6 +66,8 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 
 /** Standalone art reviews. They are intentionally not in the bundled detail profile. */
 export const SCENERY_REVIEWS=[
+ {flag:'coastalOptics',name:'Coastal optics',scope:'Daylight haze, breaking surf and scoped shore repairs in Standard'},
+
  {flag:'beaconsfieldReview',name:'Beaconsfield exterior',scope:'Charlottetown waterfront'},
  {flag:'greenGablesReview',name:'Green Gables House',scope:'Cavendish exterior'},
  {flag:'cavendishWaterReview',name:'Dunelands freshwater',scope:'2020 surveyed core'},
@@ -89,6 +98,10 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
 }
 
 export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
+ if(flag==='coastalOptics'){
+  if(options.get('scenery')==='detail')return 'detail';
+  return COASTAL_OPTICS_CONFLICTS.some(k=>options.has(k))?'terrain':undefined;
+ }
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
  if(flag==='gravelSurfaceStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='woodlandCrownBase'||flag==='woodlandBark'||flag==='woodlandView'){
