@@ -1,0 +1,299 @@
+[
+  {
+    "name": "wall",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 660,
+        "bytes": 7920,
+        "sha256": "59232b5208fe4cd4e4ba2c6920b200f5a4418df7d06c633ee9c6bb15cc7f5113"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 660,
+        "bytes": 7920,
+        "sha256": "97335c93161cd51e76747a03b8a6c4217a7fb978e083d82cfcf504898d79248a"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 660,
+        "bytes": 7920,
+        "sha256": "e4e98ea03e552e35d9ba7f052ca4434de5cf0e27c8d161f9b3e39458a7d3d40d"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 660,
+        "bytes": 5280,
+        "sha256": "705b85d7d744473810b9684ee71a2e0d7fe95f8ebeeb0c56170a2b2400010fca"
+      }
+    ]
+  },
+  {
+    "name": "trim",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 6714,
+        "bytes": 80568,
+        "sha256": "ad196c0cde95f7845675a8817da9d82810373668583c4d36593ab91ecab4baef"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 6714,
+        "bytes": 80568,
+        "sha256": "543a953b2dd769e1ce585fda3e145fc57c8dac15a4f73a6935fd92632615d3f6"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 6714,
+        "bytes": 80568,
+        "sha256": "7a88495db676f13d56ee932c3dbfdf391751de9215261e58c3d38789a4ee4301"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 6714,
+        "bytes": 53712,
+        "sha256": "74de3e35fb1931330f87ca6000e9efba83db9d029bc22959b09d3a4f9ea6944a"
+      }
+    ]
+  },
+  {
+    "name": "roofSide",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 834,
+        "bytes": 10008,
+        "sha256": "dbdcf70eebb792f58eaf682b9f8732be943aa7ff1f2f6d66c3ef3a87ff3f969c"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 834,
+        "bytes": 10008,
+        "sha256": "b57eb5523fa711b7f317dac2610c2c2e6e4e9aa8155a5959c98f3a139ca542c8"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 834,
+        "bytes": 10008,
+        "sha256": "1b79a8ed0307574fc2ac8bd0e4177544bf1514466517594b46f8e579a33a35ef"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 834,
+        "bytes": 6672,
+        "sha256": "911531cd60780ea39b0291229b974b466979506d3cfe2497e976a49e309e0af2"
+      }
+    ]
+  },
+  {
+    "name": "roofCrown",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 744,
+        "bytes": 8928,
+        "sha256": "62cd610482489064cd8d81f9135a6b5bd1a226b53e7acaa659cb4e495cc2dc98"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 744,
+        "bytes": 8928,
+        "sha256": "f5e663d154bfba728fa133771bc40ef0033672a90b332257f381aa01da5d5ca0"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 744,
+        "bytes": 8928,
+        "sha256": "ffb2b3deabafeb1cd0ace429facc04a94a1051f4263c397b559d6109e9fa6212"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 744,
+        "bytes": 5952,
+        "sha256": "be31695f75bb2ace7f087e7e9e086815a483200e094ae49328955f034036ba50"
+      }
+    ]
+  },
+  {
+    "name": "wood",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 3138,
+        "bytes": 37656,
+        "sha256": "cd9df2677e3dbdbf00ae092a168e43d66f6d3457ea3ad4c7332d7b567328eef2"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 3138,
+        "bytes": 37656,
+        "sha256": "b0029b57b057d93e6315c1b225a51d4cd9d4b534d7c39aafaae84aa0e740672f"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 3138,
+        "bytes": 37656,
+        "sha256": "2a1a3d9a73adc635c54c0cbc685bced9bbff21897c9b3b4974f124ac22ff8973"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 3138,
+        "bytes": 25104,
+        "sha256": "baa68123fe253d9787e13a42e9e63ee079d39788b12a6c2cbedb9a2d95dd4040"
+      }
+    ]
+  },
+  {
+    "name": "shadow",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 252,
+        "bytes": 3024,
+        "sha256": "57e050fab5d62d6ceb7616feb9f4b0b158c8010c4034523cab09a23aa2573fdd"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 252,
+        "bytes": 3024,
+        "sha256": "8ba4efa0e49263e6f9e772166d81a3c2442b26b33156ac05f566a149e30cc0e6"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 252,
+        "bytes": 3024,
+        "sha256": "37531d3a0233a295f7299487c05f5b6069484400b91fc4503386cdf3cb7e51d8"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 252,
+        "bytes": 2016,
+        "sha256": "74f161db192d2a3359d5f93c3c3fd56312fd9d7d92cb347b7e9705d7803fff8c"
+      }
+    ]
+  },
+  {
+    "name": "glass",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 306,
+        "bytes": 3672,
+        "sha256": "a8f1d8b71a554d3a9dd87fc39ec4528b67035769a1a97d56c5f915f6bfa67108"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 306,
+        "bytes": 3672,
+        "sha256": "d90f459bdcb2be9cf6c0f029e4ce842d6f2608b74adc84a1138c9ef952ed9e3e"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 306,
+        "bytes": 3672,
+        "sha256": "52b37b99d461542b8ae977148a38a700bcc18d82867cde1990e6047467431e99"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 306,
+        "bytes": 2448,
+        "sha256": "1e38b052dbd00d36b8e79a1ae45864382d1dd18f54e6976dca005ceda074bd3f"
+      }
+    ]
+  },
+  {
+    "name": "letter",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 168,
+        "bytes": 2016,
+        "sha256": "edae3a4a45d2ffdede165a23ad4a3e70b36cb74b623a40f31f9721875f70a1dd"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 168,
+        "bytes": 2016,
+        "sha256": "103d3184fbe3bcbaf809ccc7b2a4d7c08fdee132b5f9f951343494a61c918092"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 168,
+        "bytes": 2016,
+        "sha256": "ac562e016b9cd6efcb0578099981233922839c821f97c95020500bdc3c80c81f"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 168,
+        "bytes": 1344,
+        "sha256": "37c5039abae5d1f78acca5dcd95529526e50bdd08eea52a4b93b17dff1729bec"
+      }
+    ]
+  },
+  {
+    "name": "foundation",
+    "parts": [
+      {
+        "name": "color",
+        "itemSize": 3,
+        "count": 270,
+        "bytes": 3240,
+        "sha256": "0bf4a93b761a7ca6f76c38866fa5d752c845860674f6bd3e9f111817500393fa"
+      },
+      {
+        "name": "normal",
+        "itemSize": 3,
+        "count": 270,
+        "bytes": 3240,
+        "sha256": "9e5a79db704e5f60b2684a8e04f41a33587bcebf209b4e34a9899e0a2476db29"
+      },
+      {
+        "name": "position",
+        "itemSize": 3,
+        "count": 270,
+        "bytes": 3240,
+        "sha256": "dcbaea00d91bc0f84126826a1d9d9c3f3925c4d11a2523ff0f16c25734599a77"
+      },
+      {
+        "name": "uv",
+        "itemSize": 2,
+        "count": 270,
+        "bytes": 2160,
+        "sha256": "fd596ca0cd70f7e1737faa9db6a4400defbc50d1f894bff54da8cde67e0ad862"
+      }
+    ]
+  }
+]

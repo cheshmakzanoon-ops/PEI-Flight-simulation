@@ -22,7 +22,7 @@ sky.mapping=T.EquirectangularReflectionMapping;
 scene.environment=sky;scene.environmentIntensity=.77;
 const opts=new URLSearchParams(location.search);
 const size=opts.get('texture')==='flight'?256:512;
-const hall=buildSourisTownHall({textured:false});
+const hall=buildSourisTownHall({textured:false,rearSurvey:opts.get('roof')==='lower-rear'});
 const materialWork=deferHallTextures(hall,size);
 let textureResult:Result|{state:'loading';bytes:number;size:typeof size}={state:'loading',bytes:0,size};
 (window as any).hallTextureReady=materialWork.ready;
@@ -32,6 +32,7 @@ scene.add(hall);
 const floor=new T.Mesh(new T.PlaneGeometry(140,140),new T.MeshStandardMaterial({color:0x74716b,roughness:.96}));
 floor.rotation.x=-Math.PI/2;floor.position.y=-.006;scene.add(floor);
 const poses={
+ rear:{eye:[-15.6,17.8,-30.0],aim:[-2.2,5.35,-8.7],fov:34},
  sourceGeo:{eye:[-7.13454,1.4,14.21332],aim:[0,6.25,0],fov:46},
  sourceAxial:{eye:[.12,1.42,14.22],aim:[0,6.25,0],fov:46},
  street:{eye:[.58,2.55,23.8],aim:[.01,5.73,0],fov:39},

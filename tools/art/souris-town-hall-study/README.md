@@ -52,8 +52,8 @@ not every local roof detail.
 | Fitted main roof with the photo-informed front gable | 0.142 m |
 
 The source has a higher compact east feature and a lower west/rear
-surface that this asset does **not** reproduce. Original 2020 Class 6
-returns show both features; the high feature fits the current flat cap
+surface that this asset does **not** reproduce by default. Original 2020
+Class 6 returns show both features; the high feature fits the current flat cap
 better than this particular staged variant. The blank side and rear
 appearance is unverified. The two stair runs are not modelled or seated
 here. Those gaps block placing the asset in the live map; the useful
@@ -69,6 +69,30 @@ all four material roles together or keeps the matte version if the
 reply is malformed, blocked or times out. Unloading the page releases
 the local worker and textures; the fixture is not the game's loader.
 
+## Optional lower-rear evidence view
+
+Use `?shot=rear&roof=lower-rear` in the authoring viewer. The selected
+view lowers only a 12.45 m² core inside the same rear footprint, where
+one 2020 LiDAR swath supports a separate roof plane. The other end of the
+roof and the street-facing apertures remain unchanged. The right image
+shows the selected lower plane and its modelled closure; the left shows
+the original authoring envelope.
+
+![Matched rear review camera, default on the left and the lower test on the right](proof/rear-roof-comparison.webp)
+
+On 20 held cell medians from four separate source blocks in this core,
+absolute p90 drops from 2.390 m to 0.156 m. The same plane uses one
+continuous texture coordinate system. The [mesh check](proof/rear-roof-geometry.json)
+records 390 oblique closure rays with no misses and exact old geometry
+array hashes when the option is off. The [compiled browser comparison](proof/rear-roof-browser.json)
+keeps the street frame unchanged even with the option selected. An
+unknown option preserves the default.
+
+The vertical transition is an authored closure, not surveyed rear
+joinery or verified siding. Upper-east returns overlap the main deck
+in plan; the shape, hidden rear and both stairs remain unresolved here.
+This is a measured local test, not live placement or a full exterior.
+
 ## Work on the asset
 
 From the repository root with its locked npm dependencies already installed:
@@ -76,6 +100,7 @@ From the repository root with its locked npm dependencies already installed:
 ```sh
 node_modules/.bin/tsc -p tools/art/souris-town-hall-study/tsconfig.json
 node --experimental-strip-types tools/art/souris-town-hall-study/qa/actual-three.ts
+node --experimental-strip-types tools/art/souris-town-hall-study/qa/actual-rear.ts
 node_modules/.bin/vite tools/art/souris-town-hall-study --host 127.0.0.1
 ```
 

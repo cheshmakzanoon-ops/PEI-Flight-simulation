@@ -1,0 +1,91 @@
+{
+  "cases": {
+    "default": {
+      "rear": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "lowerTris": 0
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "lowerTris": 0
+      }
+    },
+    "lower": {
+      "rear": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4458
+        },
+        "lowerTris": 62
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4458
+        },
+        "lowerTris": 62
+      }
+    },
+    "unknown": {
+      "rear": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "lowerTris": 0
+      },
+      "street": {
+        "scene": {
+          "draws": 10,
+          "triangles": 4364
+        },
+        "lowerTris": 0
+      }
+    }
+  },
+  "unknownVsDefault": {
+    "rear": {
+      "changed": 0,
+      "visiblyChanged": 0,
+      "max": 0
+    },
+    "street": {
+      "changed": 0,
+      "visiblyChanged": 0,
+      "max": 0
+    }
+  },
+  "oldB2VsDefaultStreet": {
+    "changed": 0,
+    "visiblyChanged": 0,
+    "max": 0
+  },
+  "lowerVsDefault": {
+    "rear": {
+      "changed": 20938,
+      "visiblyChanged": 17250,
+      "max": 131
+    },
+    "street": {
+      "changed": 0,
+      "visiblyChanged": 0,
+      "max": 0
+    }
+  },
+  "scope": "Detached Three.js Chromium WebGL 2 (SwiftShader), 620 \u00d7 460; browser viewer only. Default and unknown modes retain the old front and envelope.",
+  "sourceSHA256": {
+    "src/deferred-textures.ts": "406951aa884dfe534ec3a95b36c48f07f23a60ca5417e1e887497ca739b0c8d3",
+    "src/hall.ts": "76742e7e5db3d3063aef720dd66e1f46aaa27f748537b62b865d6d224b4ad3b9",
+    "src/lower-core.ts": "51fae741f6d1b54e80a23bd517365f0a3eb15478196dcdce751f9de29f44019a",
+    "src/masonry.worker.ts": "7f11072b3f0d360caa9a2ba2a03606851c0a35d8ad5b2274cdb8ddd1298dd826",
+    "src/materials.ts": "a2a1c3ac0676bc9302f8c1b4e2d146d5d755de7ea60e243a1cbcfaacbc6358bf",
+    "src/survey.ts": "b7c1943ea02804251ff4930be97de66ba60a1fa049da5ef151690f99509ce757",
+    "src/texture-contract.ts": "78562ca7901fcd00fce4c576d1ff1dca02a171e2f16baf4d99c8172940074278"
+  }
+}

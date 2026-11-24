@@ -1,0 +1,149 @@
+{
+  "qualifiedHeldCompare": {
+    "n": 95,
+    "sig": "actual Three Float32 roof rays, all tested source centres remain disjoint from train/rank",
+    "stock": [
+      1.5184019165039047,
+      1.755901916503909,
+      3.893701916503908,
+      4.803051916503905,
+      5.851401916503907
+    ],
+    "nativeLowerAndDeck": [
+      0.0004655798284378676,
+      0.029838679270328683,
+      0.1264280054481664,
+      0.2062699328129142,
+      0.8825830743293661
+    ],
+    "withAuthoredFront": [
+      0.00046587734031255934,
+      0.029838391253408147,
+      0.14209887887305309,
+      0.20626996154458224,
+      0.5542754683052262
+    ]
+  },
+  "shellProjection": {
+    "found": 11303,
+    "drop": 0,
+    "leak": 0,
+    "elevationDeltaMax": 8.306613068498336e-07,
+    "dualRoofDepthMax": 0,
+    "signedPolygonArea": 119.17206024268182,
+    "submissionRoofArea": 119.17206005031903,
+    "meshVerticesLargestApproxPlanLeakM": 2.99549801186068e-07
+  },
+  "rearCoverage": {
+    "differentCore": 1178,
+    "pristineOffCore": 10125,
+    "maxOffCoreYChange": 9.921729144934943e-07,
+    "heldProtected": 36,
+    "rawProtectedDelta": 4.0144583124401834e-07,
+    "heldRays": 20,
+    "previous": [
+      0.7890000762939433,
+      1.2162055638736877,
+      2.3898281593199155,
+      2.5767822241306915,
+      3.2384213967485795
+    ],
+    "lowered": [
+      0.005975138152761517,
+      0.06992850829761288,
+      0.15562495544920416,
+      0.20067444155443576,
+      0.21810090767303514
+    ],
+    "newSeamRays": 390,
+    "seamMiss": 0,
+    "seamYMax": 4.4542392511892626e-07,
+    "mappedCoreArea": 12.448106667001916,
+    "neutralAttrBytes": 575784
+  },
+  "facadeDirectAndOblique": {
+    "cast": 67818,
+    "hit": 67818,
+    "miss": 0,
+    "roles": {
+      "trim": 15506,
+      "wall": 39083,
+      "wood": 3914,
+      "shadow": 230,
+      "glass": 9046,
+      "letter": 39
+    },
+    "warning": "artwork in nominal front extends above thresholds; no measured aisle/door access claim"
+  },
+  "build": {
+    "reviewOnly": true,
+    "sourceGrid": "2020 NRCan CGVD2013",
+    "planOwner": "q130331/72",
+    "floorDatum": 13.1,
+    "mainRoofTriangleCount": 463,
+    "authoredGableTriangleCount": 31,
+    "lowerTris": 62,
+    "lowerCore": [
+      [
+        -4.48475764904585,
+        14.26521957813721
+      ],
+      [
+        -2.168090858862422,
+        14.257995672231797
+      ],
+      [
+        -1.4163448324183134,
+        9.349766391452905
+      ],
+      [
+        -4.496087357363015,
+        9.87362618519344
+      ]
+    ],
+    "exactFrontOpeningCount": 11,
+    "wallFaceDepths": [
+      0.092,
+      0.317
+    ],
+    "nominalAtticSill": 23.785,
+    "frontWallRange": [
+      -4.261741279601619,
+      4.262648965451351
+    ],
+    "centralBayU": [
+      -2.105,
+      2.105
+    ],
+    "wallOutline": [
+      [
+        -4.226365136502328,
+        14.029412707687612
+      ],
+      [
+        -1.9724995352507027,
+        14.022384630496761
+      ],
+      [
+        -2.0058519745641443,
+        12.500091185017894
+      ],
+      [
+        4.266072499888503,
+        12.508519340051588
+      ],
+      [
+        4.262648965451351,
+        0.317
+      ],
+      [
+        -4.261741279601619,
+        0.317
+      ]
+    ],
+    "physicalStairs": false,
+    "unknownHighEastFeature": "held; measured, role/location not claimed",
+    "layerLimits": "no original photographs, no live surface or game asset; threshold and rear join extent remain authored; high-east cap held"
+  },
+  "extras": "compact right high cap and near lower core only, exact edges/stairs/high-east still held"
+}

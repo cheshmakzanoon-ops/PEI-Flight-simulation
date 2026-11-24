@@ -1,7 +1,8 @@
 import * as T from 'three';
 import {makeMaterials,roles,type Role} from './materials.ts';
 import {ALL,DATUM,PLAN,at,area,partitions,roofAt,roofCells,type P2,type P3} from './survey.ts';
-export type HallOptions={textured?:boolean; frontGable?:boolean};
+import {CORE_OUTLINE,coreJoints,clipCore,cutParameters,inCore,lowerY,type Sample} from './lower-core.ts';
+export type HallOptions={textured?:boolean; frontGable?:boolean; rearSurvey?:boolean};
 type Bucket={pos:number[];col:number[];uv:number[]};
 const P=(u:number,y:number,v:number):P3=>[u,y-DATUM,-v];
 const XZ=(q:P2,y:number)=>P(q[0],y,q[1]);
@@ -22,7 +23,7 @@ function withPositiveNormals(ring:readonly P2[],holes:readonly (readonly P2[])[]
  return faces.map(ix=>ix.map(i=>all[i]) as [P2,P2,P2]);
 }
 export function buildSourisTownHall(options:HallOptions={}){
- const hero=options.frontGable!==false,mat=makeMaterials(options.textured!==false),data=new Map<Role,Bucket>(roles.map(q=>[q,{pos:[],col:[],uv:[]}]));
+ const hero=options.frontGable!==false,rear=options.rearSurvey===true,mat=makeMaterials(options.textured!==false),data=new Map<Role,Bucket>(roles.map(q=>[q,{pos:[],col:[],uv:[]}]));
  let exactRoofTris=0,isolatedPhotoGableTris=0;
  function tri(name:Role,p:P3,q:P3,r:P3,givenNormal:P3,c=1,tcoords?:(pos:P3)=>P2){
   const n=cross(p,q,r);if(n.lengthSq()<2e-16)return;
@@ -215,37 +216,78 @@ export function buildSourisTownHall(options:HallOptions={}){
   for(const [i,q]of glyphs.entries())drawStroke(q.map(([x,y])=>[-.384+i*.196+x*ss,sy+(y-.40)*ss]),.026);
   // The known facade sign is deliberately omitted rather than guessing its current exact lettering/material.
  }
- // The whole main eave ring stays on the exact owner boundary. Wall heads
- // and soffit panels share the same generated join vertices on the inset ring.
+ // The validated much lower rear slice is clipped through roofs, inset wall
+ // heads, and the corresponding soffit. The normal B2 card is exact with
+ // the rear option withdrawn. No complete room/annex reconstruction implied.
  const normalSign=area(PLAN)<0?1:-1;
+ const mix=(a:P2,b:P2,t:number):P2=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+ const merge=(a:readonly number[],b:readonly number[])=>[...a,...b].sort((u,w)=>u-w).filter((z,p,n)=>!p||z-n[p-1]>1e-7);
+ const cuts=(a:P2,b:P2)=>{const d=Math.hypot(a[0]-b[0],a[1]-b[1]);return partitions(a,b,hero).map(q=>Math.hypot(q[0]-a[0],q[1]-a[1])/d);};
  for(let i=0;i<PLAN.length;i++){
   if(i===4)continue;
-  const j0=(i+1)%PLAN.length,a=PLAN[i],b=PLAN[j0],ia=wallPlan[i],ib=wallPlan[j0],q=partitions(a,b,hero);
+  const j0=(i+1)%PLAN.length,a=PLAN[i],b=PLAN[j0],ia=wallPlan[i],ib=wallPlan[j0];
+  const q=partitions(a,b,hero);
   const dir=vs(XZ(ib,DATUM)).sub(vs(XZ(ia,DATUM))).normalize(),n:P3=[normalSign*dir.z,0,-normalSign*dir.x];
   const d=Math.hypot(b[0]-a[0],b[1]-a[1]);
   const offsetY=(ix:number)=>ix===4||ix===5?sampleFront(wallPlan[ix][0])-sampleFront(PLAN[ix][0]):0.;
   const evaluateEdge=(p:P2)=>{
    const f=Math.hypot(p[0]-a[0],p[1]-a[1])/d;
-   const inner:P2=[ia[0]+(ib[0]-ia[0])*f,ia[1]+(ib[1]-ia[1])*f];
-   const rim=roofAt(p,hero)-.164,head=rim+offsetY(i)*(1-f)+offsetY(j0)*f;
+   const inner=mix(ia,ib,f),rim=roofAt(p,hero)-.164,head=rim+offsetY(i)*(1-f)+offsetY(j0)*f;
    return {inner, rim, head};
   };
-  for(let j=1;j<q.length;j++){
-   const p=q[j-1],z=q[j],x=evaluateEdge(p),y=evaluateEdge(z);
-   const timber=i<2&&.5*(x.head+y.head)<20.8;
-   quad(timber?'wood':'wall',XZ(x.inner,13.32),XZ(y.inner,13.32),XZ(y.inner,y.head),XZ(x.inner,x.head),n,.92);
+  if(!rear){ // Exact original B2 coordinates and draw ordering in neutral mode.
+   for(let j=1;j<q.length;j++){
+    const p=q[j-1],z=q[j],x=evaluateEdge(p),y=evaluateEdge(z);
+    const timber=i<2&&.5*(x.head+y.head)<20.8;
+    quad(timber?'wood':'wall',XZ(x.inner,13.32),XZ(y.inner,13.32),XZ(y.inner,y.head),XZ(x.inner,x.head),n,.92);
+    quad('foundation',XZ(x.inner,wallBottom),XZ(y.inner,wallBottom),XZ(y.inner,13.32),XZ(x.inner,13.32),n,.78);
+    quad('wood',XZ(p,x.rim),XZ(z,y.rim),XZ(y.inner,y.head),XZ(x.inner,x.head),[0,-1,0],.60);
+   }
+   continue;
+  }
+  // Complementary lower roof sections use actual intersections with the
+  // original halo and independently with the inset body. No radial XZ shift.
+  const original=cuts(a,b),innerTs=merge(original,cutParameters(ia,ib));
+  for(let j=1;j<innerTs.length;j++){
+   const t=innerTs[j-1],s=innerTs[j],p=mix(a,b,t),q=mix(a,b,s),x=evaluateEdge(p),y=evaluateEdge(q);
+   const low=inCore(mix(ia,ib,(t+s)*.5)),hx=low?lowerY(x.inner)-.164:x.head,hy=low?lowerY(y.inner)-.164:y.head;
+   const timber=i<2&&.5*(hx+hy)<20.8;
+   quad(timber?'wood':'wall',XZ(x.inner,13.32),XZ(y.inner,13.32),XZ(y.inner,hy),XZ(x.inner,hx),n,.92);
    quad('foundation',XZ(x.inner,wallBottom),XZ(y.inner,wallBottom),XZ(y.inner,13.32),XZ(x.inner,13.32),n,.78);
-   quad('wood',XZ(p,x.rim),XZ(z,y.rim),XZ(y.inner,y.head),XZ(x.inner,x.head),[0,-1,0],.60);
+  }
+  for(let j=1;j<q.length;j++){
+   const p=q[j-1],r=q[j],x=evaluateEdge(p),y=evaluateEdge(r);
+   const P:Sample[]=[[...p,x.rim],[...r,y.rim],[...y.inner,y.head],[...x.inner,x.head]];
+   for(const A of [[P[0],P[1],P[2]],[P[0],P[2],P[3]]])for(const {q,low} of clipCore(A,rear)){
+    const v=q.map(([u,v,y])=>XZ([u,v],low?lowerY([u,v])-.164:y));
+    for(let k=1;k<v.length-1;k++)tri('wood',v[0],v[k],v[k+1],[0,-1,0],.60);
+   }
   }
  }
- // Continuous perimeter board. In addition to shade it closes the .075 m
- // opaque wall-to-roof join even at exact ground-level rays.
+ // Exact external connected perimeter; new vertical joins below are smooth
+ // plane intersections, not polygon render offsets or terrain fills.
  for(let i=0;i<PLAN.length;i++){
   const a=PLAN[i],b=PLAN[(i+1)%PLAN.length],q=partitions(a,b,hero);
   const T0=vs(XZ(b,DATUM)).sub(vs(XZ(a,DATUM))).normalize(),n:P3=[normalSign*T0.z,0,-normalSign*T0.x];
-  for(let j=1;j<q.length;j++){
-   const p=q[j-1],z=q[j],y0=roofAt(p,hero),y1=roofAt(z,hero),w=.164;
+  if(!rear||i===4){
+   for(let j=1;j<q.length;j++){
+    const p=q[j-1],z=q[j],y0=roofAt(p,hero),y1=roofAt(z,hero),w=.164;
+    quad('wood',XZ(p,y0-w),XZ(z,y1-w),XZ(z,y1+.004),XZ(p,y0+.004),n,.68);
+   }
+   continue;
+  }
+  const d=Math.hypot(b[0]-a[0],b[1]-a[1]),tt=merge(q.map(p=>Math.hypot(p[0]-a[0],p[1]-a[1])/d),cutParameters(a,b));
+  for(let j=1;j<tt.length;j++){
+   const p=mix(a,b,tt[j-1]),z=mix(a,b,tt[j]),low=inCore(mix(a,b,(tt[j-1]+tt[j])*.5));
+   const y0=low?lowerY(p):roofAt(p,hero),y1=low?lowerY(z):roofAt(z,hero),w=.164;
    quad('wood',XZ(p,y0-w),XZ(z,y1-w),XZ(z,y1+.004),XZ(p,y0+.004),n,.68);
+  }
+ }
+ if(rear)for(const {a,b,normal} of coreJoints()){
+  const p=partitions(a,b,hero);
+  for(let i=1;i<p.length;i++){
+   const l=p[i-1],m=p[i],h=roofAt(l,hero),k=roofAt(m,hero);
+   quad('wood',XZ(l,lowerY(l)-.164),XZ(m,lowerY(m)-.164),XZ(m,k),XZ(l,h),normal,.94);
   }
  }
  // Restrained original dark wooden eave brackets, outside the photo-fit bank
@@ -256,24 +298,37 @@ export function buildSourisTownHall(options:HallOptions={}){
   const q:P2[]=[[x-.073,y-.275],[x+.074,y-.275],[x+.063,y-.058],[x-.061,y-.058]];
   shape('wood',q,.153,.82);
  }
- const roof=roofCells(withPositiveNormals(PLAN),hero);
+ const roof=roofCells(withPositiveNormals(PLAN),hero);let lowerTris=0;
  for(const {q,plane} of roof){
   const d=ALL[plane],r:Role=plane===0||plane===6?'roofCrown':'roofSide';
   const uv=(p:P3):P2=>(Math.abs(d[1])>Math.abs(d[2])+.2?[-p[2],p[0]*Math.sqrt(1+d[1]*d[1])]:[p[0],-p[2]*Math.sqrt(1+d[2]*d[2])]);
-  for(let j=1;j<q.length-1;j++){
-   const xyz=[q[0],q[j],q[j+1]].map(p=>XZ(p,at(d,p))) as [P3,P3,P3];
-   tri(r,...xyz,UP,.92,uv);
-   if(plane>=7)isolatedPhotoGableTris++;else exactRoofTris++;
+  if(!rear){
+   for(let j=1;j<q.length-1;j++){
+    const xyz=[q[0],q[j],q[j+1]].map(p=>XZ(p,at(d,p))) as [P3,P3,P3];
+    tri(r,...xyz,UP,.92,uv);
+    if(plane>=7)isolatedPhotoGableTris++;else exactRoofTris++;
+   }
+   continue;
+  }
+  for(const {q:p,low} of clipCore(q.map(t=>[...t,at(d,t)]),rear)){
+   for(let i=1;i<p.length-1;i++){
+    const a=[p[0],p[i],p[i+1]].map(([u,v,y])=>XZ([u,v],low?lowerY([u,v]):y)) as [P3,P3,P3];
+    // The low compartment is ONE surveyed plane: shared edge phases must not
+    // inherit the piecewise tangent basis of the former higher roof faces.
+    const lowUv=(point:P3):P2=>[point[0],-point[2]];
+    tri(low?'roofCrown':r,...a,UP,.92,low?lowUv:uv);
+    if(low)lowerTris++;else if(plane>=7)isolatedPhotoGableTris++;else exactRoofTris++;
+   }
   }
  }
- const group=new T.Group();group.name='Souris Town Hall detached B, deeper original wall';
+ const group=new T.Group();group.name='Souris Town Hall detached C, supported lower rear core';
  for(const [r,b]of data){
   if(!b.pos.length)continue;
   const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(b.pos,3));geo.setAttribute('uv',new T.Float32BufferAttribute(b.uv,2));geo.setAttribute('color',new T.Float32BufferAttribute(b.col,3));geo.computeVertexNormals();geo.computeBoundingSphere();
   const m=new T.Mesh(geo,mat.get(r));m.name=r;m.castShadow=r!=='glass';m.receiveShadow=true;group.add(m);
  }
- group.userData={reviewOnly:true,sourceGrid:'2020 NRCan CGVD2013',planOwner:'q130331/72',floorDatum:DATUM,mainRoofTriangleCount:exactRoofTris,authoredGableTriangleCount:isolatedPhotoGableTris,
-   exactFrontOpeningCount:holes.length,wallFaceDepths:[faceCentre,faceSide],nominalAtticSill:23.785,frontWallRange:[frontL,frontR],centralBayU:[-mid,mid],physicalStairs:false,unknownHighEastFeature:'held; measured, role/location not claimed',
-   layerLimits:'no original photographs, no live surface or game asset; threshold and lower rear shape remain authored/held'};
+ group.userData={reviewOnly:true,sourceGrid:'2020 NRCan CGVD2013',planOwner:'q130331/72',floorDatum:DATUM,mainRoofTriangleCount:exactRoofTris,authoredGableTriangleCount:isolatedPhotoGableTris,lowerTris,lowerCore:rear?CORE_OUTLINE:undefined,
+   exactFrontOpeningCount:holes.length,wallFaceDepths:[faceCentre,faceSide],nominalAtticSill:23.785,frontWallRange:[frontL,frontR],centralBayU:[-mid,mid],wallOutline:wallPlan,physicalStairs:false,unknownHighEastFeature:'held; measured, role/location not claimed',
+   layerLimits:'no original photographs, no live surface or game asset; threshold and rear join extent remain authored; high-east cap held'};
  return group;
 }
