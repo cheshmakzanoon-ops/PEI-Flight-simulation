@@ -16,8 +16,8 @@ export function shadowFootprint(tree:Crown){
 /** Seat the original forest-shadow footprint, with no new trees, coverage
  * or occlusion layout. Dividing against facets keeps every face affine. */
 export function groundedShadow(tree:Crown,g:ReturnType<typeof sidewalkGrid>,height:(x:number,z:number)=>number,
- emit:(x:number,y:number,z:number,u:number,v:number,t:number)=>void){
- const points=shadowFootprint(tree);
+ emit:(x:number,y:number,z:number,u:number,v:number,t:number)=>void,exact?:readonly V[]){
+ const points=exact??shadowFootprint(tree);
  for(const c of splitWalkCap([...points],g)){
   for(let i=1;i<c.length-1;i++){
    const [a,b,d]=[c[0],c[i],c[i+1]];

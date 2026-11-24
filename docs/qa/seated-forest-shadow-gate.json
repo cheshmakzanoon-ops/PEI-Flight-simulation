@@ -1,0 +1,469 @@
+{
+  "renderer": "compiled application QA, SwiftShader, locked 580\u00d7362; CPU-slice, not FPS/GPU benchmark",
+  "baselineMain119": "3800237",
+  "cases": [
+    {
+      "before": {
+        "draws": 39,
+        "tris": 375566
+      },
+      "production": {
+        "draws": 40,
+        "tris": 375772
+      },
+      "armed": {
+        "draws": 39,
+        "tris": 375566
+      },
+      "blend": {
+        "draws": 40,
+        "tris": 375772
+      },
+      "state": {
+        "active": true,
+        "pending": false,
+        "ready": true,
+        "strength": 1,
+        "receivers": 39,
+        "tris": 206,
+        "lastSliceMS": 0.09999999403953552,
+        "worstSliceMS": 3.5,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 1,
+        "late": 1,
+        "rejected": 0
+      },
+      "image": {
+        "outsideProtectedExact": 120591,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 447,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 0,
+        "active": "2-8",
+        "activeReady": true
+      },
+      "name": "prince",
+      "proof": "/tmp/pei-canopy-rolling-compiled-matrix/prince-close.json"
+    },
+    {
+      "before": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "production": {
+        "draws": 36,
+        "tris": 295895
+      },
+      "armed": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "blend": {
+        "draws": 36,
+        "tris": 295895
+      },
+      "state": {
+        "active": true,
+        "pending": false,
+        "ready": true,
+        "strength": 1,
+        "receivers": 211,
+        "tris": 1212,
+        "lastSliceMS": 0,
+        "worstSliceMS": 2.5,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 1,
+        "late": 1,
+        "rejected": 0
+      },
+      "image": {
+        "outsideProtectedExact": 61947,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 18057,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 0,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "name": "queens",
+      "proof": "/tmp/pei-canopy-rolling-reentry/queens-close.json"
+    },
+    {
+      "before": {
+        "draws": 67,
+        "tris": 366979
+      },
+      "production": {
+        "draws": 68,
+        "tris": 367485
+      },
+      "armed": {
+        "draws": 67,
+        "tris": 366979
+      },
+      "blend": {
+        "draws": 68,
+        "tris": 367485
+      },
+      "state": {
+        "active": true,
+        "pending": false,
+        "ready": true,
+        "strength": 1,
+        "receivers": 113,
+        "tris": 506,
+        "lastSliceMS": 0.10000000894069672,
+        "worstSliceMS": 1.5,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 1,
+        "late": 1,
+        "rejected": 0
+      },
+      "image": {
+        "outsideProtectedExact": 90989,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 20111,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 0,
+        "active": "25-13",
+        "activeReady": true
+      },
+      "name": "kings",
+      "proof": "/tmp/pei-canopy-rolling-compiled-matrix/kings-close.json"
+    },
+    {
+      "before": {
+        "draws": 26,
+        "tris": 404224
+      },
+      "production": {
+        "draws": 26,
+        "tris": 404224
+      },
+      "armed": {
+        "draws": 26,
+        "tris": 404224
+      },
+      "blend": {
+        "draws": 26,
+        "tris": 404224
+      },
+      "state": {
+        "active": false,
+        "pending": true,
+        "ready": false,
+        "strength": 0,
+        "receivers": 0,
+        "tris": 0,
+        "lastSliceMS": 0,
+        "worstSliceMS": 1.5999999940395355,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 0,
+        "late": 1,
+        "rejected": 1
+      },
+      "image": {
+        "outsideProtectedExact": 209960,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 0,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 0,
+        "active": "28-13",
+        "activeReady": true
+      },
+      "name": "road",
+      "proof": "/tmp/pei-canopy-rolling-compiled-matrix/road-close.json"
+    },
+    {
+      "before": {
+        "draws": 15,
+        "tris": 294922
+      },
+      "production": {
+        "draws": 15,
+        "tris": 294922
+      },
+      "armed": {
+        "draws": 15,
+        "tris": 294922
+      },
+      "blend": {
+        "draws": 15,
+        "tris": 294922
+      },
+      "state": {
+        "active": false,
+        "pending": false,
+        "ready": false,
+        "strength": 0,
+        "receivers": 0,
+        "tris": 0,
+        "lastSliceMS": 0,
+        "worstSliceMS": 0,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 0,
+        "late": 0,
+        "rejected": 0
+      },
+      "image": {
+        "outsideProtectedExact": 209960,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 0,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 0,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "name": "high",
+      "proof": "/tmp/pei-canopy-rolling-compiled-matrix/high-close.json"
+    },
+    {
+      "before": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "production": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "armed": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "blend": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "state": null,
+      "image": {
+        "outsideProtectedExact": 209960,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 0,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 0,
+      "gate": "off",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "10-11",
+        "activeReady": true
+      },
+      "name": "St Mary with opt conflict",
+      "proof": "/tmp/pei-canopy-rolling-compiled-matrix/church-close.json"
+    },
+    {
+      "before": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "production": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "armed": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "blend": {
+        "draws": 35,
+        "tris": 294683
+      },
+      "state": null,
+      "image": {
+        "outsideProtectedExact": 209960,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 0,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "optional fence unavailable",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 0,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "name": "corrupt fence",
+      "proof": "/tmp/pei-canopy-rolling-wirefault/queens-close.json"
+    },
+    {
+      "before": {
+        "draws": 39,
+        "tris": 375566
+      },
+      "production": {
+        "draws": 40,
+        "tris": 375736
+      },
+      "armed": {
+        "draws": 39,
+        "tris": 375566
+      },
+      "blend": {
+        "draws": 40,
+        "tris": 375736
+      },
+      "state": {
+        "active": true,
+        "pending": false,
+        "ready": true,
+        "strength": 1,
+        "receivers": 38,
+        "tris": 170,
+        "lastSliceMS": 0.09999999403953552,
+        "worstSliceMS": 1.5999999940395355,
+        "overBudget": 0,
+        "blocked": false,
+        "builds": 1,
+        "late": 0,
+        "rejected": 0
+      },
+      "image": {
+        "outsideProtectedExact": 116224,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 1058,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 1,
+      "gate": "mounted",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 0,
+        "failed": 26,
+        "active": "2-8",
+        "activeReady": false
+      },
+      "name": "cold forest heights",
+      "proof": "/tmp/pei-canopy-rolling-coldpass/prince-close.json"
+    },
+    {
+      "before": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "production": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "armed": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "blend": {
+        "draws": 105,
+        "tris": 343673
+      },
+      "state": null,
+      "image": {
+        "outsideProtectedExact": 209960,
+        "outsideMaxFull": 0,
+        "outsideMaxHalf": 0,
+        "localGT2": 0,
+        "armedAtZeroExact": true
+      },
+      "requestCount": 0,
+      "gate": "off",
+      "shadeState": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "10-11",
+        "activeReady": true
+      },
+      "name": "St Mary absent opt",
+      "proof": "/tmp/pei-canopy-rolling-legacychurch/church-close.json"
+    }
+  ],
+  "crossContextControls": {
+    "St Mary flag vs no flag": {
+      "pngA": "21aa4c22e0cbfaebd1cc14cee506eea335ce0ed387587aedf683e5e4b4a5edf3",
+      "pngB": "21aa4c22e0cbfaebd1cc14cee506eea335ce0ed387587aedf683e5e4b4a5edf3",
+      "differentPixels": 0,
+      "maxRGBDelta": 0,
+      "totalPixels": 209960
+    },
+    "fence corrupt vs warm exact stock stage": {
+      "pngA": "a73ebe2ebd24f4d8ffcf06387cc8ad4dca6b6d422e833ca3d1d7ddd6d333ffe1",
+      "pngB": "a73ebe2ebd24f4d8ffcf06387cc8ad4dca6b6d422e833ca3d1d7ddd6d333ffe1",
+      "differentPixels": 0,
+      "maxRGBDelta": 0,
+      "totalPixels": 209960
+    }
+  },
+  "motion": {
+    "frames": 115,
+    "active": 82,
+    "epochs": [
+      3,
+      4,
+      5
+    ],
+    "staleActiveFrames": 0,
+    "high": 11,
+    "highActive": 0,
+    "worstMS": 4.299999997019768,
+    "maxOverBudget": 0,
+    "recoveredAtEnd": true
+  },
+  "optOnly": true,
+  "metadata": {
+    "sourceAssets": "terrain and decoded Cover, NRN, shape guard image-free source, versioned building index at startup; entire building archive + individual chunks cryptographically checked offline by the bake",
+    "atAltitude": "no additional draw; the stock armed material still retains its unused optional receiver attribute on successful opt boot",
+    "visualScale": "close negative/positive witnesses and 115 frames instrument camera QA. The project is not province-wide photorealism."
+  }
+}

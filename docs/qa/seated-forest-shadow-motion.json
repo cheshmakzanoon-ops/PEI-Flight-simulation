@@ -1,0 +1,53 @@
+{
+  "motion": {
+    "frames": 165,
+    "horizontalRampM": 196.3762969403383,
+    "movingActive": 143,
+    "highFrames": 8,
+    "highActive": 0,
+    "afterHighActive": 14,
+    "readyRevisions": [
+      3,
+      4
+    ],
+    "rebinds": 1,
+    "stale": 0,
+    "worstSliceMS": 4.200000002980232,
+    "overBudget": 0
+  },
+  "sameCameraStationary": {
+    "outsideProtectedExact": 61947,
+    "outsideMaxFull": 0,
+    "outsideMaxHalf": 0,
+    "localGT2": 18057,
+    "armedAtZeroExact": true,
+    "exactB": {
+      "production": {
+        "exactBImage": true,
+        "sha256": "708478e1a0685d8274d9d1d220b6e452e23a4f192b7431ec3778c56f616adb6c"
+      },
+      "before": {
+        "exactBImage": true,
+        "sha256": "a73ebe2ebd24f4d8ffcf06387cc8ad4dca6b6d422e833ca3d1d7ddd6d333ffe1"
+      },
+      "armed": {
+        "exactBImage": true,
+        "sha256": "a73ebe2ebd24f4d8ffcf06387cc8ad4dca6b6d422e833ca3d1d7ddd6d333ffe1"
+      },
+      "blend": {
+        "exactBImage": true,
+        "sha256": "b5892f5f632e4a1f9fa589a00cadb8d35d14faae7d6b076b112e9304710aa1c7"
+      }
+    }
+  },
+  "stockCompare": {
+    "draws": 35,
+    "tris": 294683
+  },
+  "candidate": {
+    "draws": 36,
+    "tris": 295895
+  },
+  "ordinaryRecording": "flight-C.json",
+  "adapter": "Optional anchored/anticipatory scheduling only; no model/terrain/camera movement effects outside QA."
+}

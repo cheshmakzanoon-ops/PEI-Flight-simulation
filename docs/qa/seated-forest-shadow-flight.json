@@ -1,0 +1,42 @@
+{
+  "earlierPrototype": {
+    "option": true,
+    "distance": 276.0356263861277,
+    "lowFlightActiveFrames": 6,
+    "flightFrames": 54,
+    "actualRosterMutations": 3,
+    "flyingAgl": [
+      27.93091576488046,
+      39.736304451843054
+    ],
+    "maxAdapterMS": 3.0999999940395355,
+    "originReads": 1,
+    "paused": true,
+    "errors": []
+  },
+  "candidate": {
+    "option": true,
+    "distance": 284.34951062923136,
+    "lowFlightActiveFrames": 60,
+    "flightFrames": 60,
+    "actualRosterMutations": 3,
+    "flyingAgl": [
+      27.415736874966477,
+      39.771682733952915
+    ],
+    "maxAdapterMS": 2,
+    "originReads": 1,
+    "paused": true,
+    "errors": []
+  },
+  "departure": {
+    "id": "qa-woodland-pass",
+    "name": "QA woodland pass",
+    "region": "Queens County",
+    "lon": -63.37456676900756,
+    "lat": 46.39930209197055,
+    "heading": 144.78240703180728,
+    "height": 25.3,
+    "note": "Private test departure, not a published route."
+  }
+}

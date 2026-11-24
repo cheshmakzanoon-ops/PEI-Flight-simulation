@@ -210,3 +210,5 @@ roof outlines; the pass is not a survey of individual trees.
 - [Optional near branched woodland](qa/branched-woodland-preview.md): true 3D near canopy, source stem positions preserved.
 
 - [Optional woodland floor surface](qa/forest-floor-preview.md): exact forest category gating and licensed stock leaf litter, no added geometry.
+
+- [Optional close terrain-seated forest shade](qa/seated-forest-shadow.md): existing canopy shade follows verified ground in low-altitude woodland views, with mapped corridors protected.

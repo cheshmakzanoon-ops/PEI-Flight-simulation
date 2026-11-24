@@ -1,3 +1,5 @@
+import type {RollingTreeShadows} from './rolling-tree-shadows.ts';
+import type {ShadowSlotRoster} from './tree-shadow-roster.ts';
 import type {StMarysShadows,StMarysShadowGround} from './indian-river/st-marys-shadows.ts';
 import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import * as THREE from 'three';
@@ -98,11 +100,12 @@ export class Vegetation {
  private volume?:WoodlandVolume;
  private groundedShadow?:GroundedTreeShadows;
  private churchShadows?:StMarysShadows;
+ private rollingShadow?:RollingTreeShadows;
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
-  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private mappedFreshwater?:(x:number,z:number)=>boolean){
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private mappedFreshwater?:(x:number,z:number)=>boolean,private rollingSlots?:ShadowSlotRoster){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
@@ -163,6 +166,15 @@ export class Vegetation {
  }
  get volumeCount(){return this.volume?.count??0;}
  get groundedShadowCount(){return this.groundedShadow?.count??0;}
+ attachRollingShadows(scene:THREE.Scene,world:World,fence:Parameters<typeof RollingTreeShadows.mount>[2],adapter:typeof RollingTreeShadows){
+  if(this.rollingSlots&&!this.churchShadows&&!this.groundedShadow&&!this.rollingShadow)
+   this.rollingShadow=adapter.mount(scene,world,fence,this.shade,maxTrees);
+ }
+ updateRollingShadows(x:number,z:number,agl:number){
+  if(this.rollingSlots)this.rollingShadow?.update(this.rollingSlots,this.stems.array as Float32Array,this.shapes.array as Float32Array,x,z,agl);
+ }
+ get rollingShadowState(){return this.rollingShadow?.state??null;}
+
  private readonly roofBits=new Uint32Array(8);
  private tile(tx:number,tz:number){
   const a:number[]=[],hasRoofHits=fillRoofTile(tx,tz,this.roofBits);
@@ -192,16 +204,20 @@ export class Vegetation {
   if(move){this.forestStream?.update(x,z);this.hedges?.move(x,z);}
   this.hedgeRev=hedgeRev;this.hedgeApply=now;
   this.lastX=x;this.lastZ=z;let count=0;const wanted=new Set<string>();
+  const capture=this.rollingSlots;capture?.start(x,z,this.forestRevision+1);
   for(let tz=Math.floor((z-radius)/span);tz<=Math.floor((z+radius)/span);tz++)for(let tx=Math.floor((x-radius)/span);tx<=Math.floor((x+radius)/span);tx++){
    const key=tx+':'+tz,rx=tx*span-x,rz=tz*span-z;
    if(Math.hypot(rx+span*.5,rz+span*.5)>radius+span*.72)continue;
    wanted.add(key);let a=this.cache.get(key);if(!a){a=this.tile(tx,tz);this.cache.set(key,a);}
+   const first=capture?.size??0;
    for(let i=0;i<a.length&&count<maxTrees;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
     if(d>radius**2||(d>1120**2&&a[i+7]>.70))continue;
     const native=this.plantedY?.(a[i],a[i+2]);
-    this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);count++;
+    this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);
+    capture?.append(count,d,a[i],a[i+2]);count++;
    }
+   capture?.sealBlock(tx,tz,first);
   }
   const originalCount=count;
   this.hedges?.draw(x,z,(hx,hz,h,style)=>{

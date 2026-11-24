@@ -1,4 +1,5 @@
 import {hogPhotoGLSL,type HogPhoto} from './hog-photo.ts';
+import {project} from '../sim/geo.ts';
 import {churchSunGLSL,type ChurchGroundSun} from './indian-river/church-ground-sun.ts';
 import {shortGrassHeightFade,sourceGrassNapGLSL} from './source-grass-nap.ts';
 import {provinceGrassGLSL,type ProvinceGrassStudy} from './province-grass.ts';
@@ -60,6 +61,7 @@ import { runwayAtlas } from './runway-paint.ts';
 import { RUNWAYS,runwayAt } from '../sim/places.ts';
 import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
+const BASILICA_RECEIVER_GUARD=project(-63.125295,46.233718);
 const vertex=`
  varying vec3 p; varying vec2 vuv;
  #ifdef SOURCE_GRASS_NAP_METRIC
@@ -983,6 +985,26 @@ export class World {
  get activeGroundGrade(){
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)return g.grid.spec.id;}
   const church=this.stagedChurch;return church&&this.groundGradeInstalled(church.grade.grid.spec.id)?church.grade.grid.spec.id:null;
+ }
+ /** A footprint must occupy one *current* unaltered N112 tile strictly
+  * inside its outer stitched parent cell. Stage/commit rechecks identity. */
+ rollingCanopyOwner(b:readonly [number,number,number,number]){
+  const basilica=BASILICA_RECEIVER_GUARD;
+  if(Math.max(0,b[0]-basilica.x,basilica.x-b[2])**2+Math.max(0,b[1]-basilica.z,basilica.z-b[3])**2<160**2)return;
+  const [u,v]=this.terrain.uv(b[0],b[1]),i=Math.floor(u*WORLD_COLS),j=Math.floor(v*WORLD_ROWS);
+  const key=i+'-'+j,q=this.byId.get(key),m=q?.fine;
+  if(!q||!m||!this.rollingCanopyStill(key,m.geometry))return;
+  const marginX=q.w/112+.02,marginZ=q.d/112+.02;
+  if(b[0]<q.x0+marginX||b[1]<q.z0+marginZ||
+     b[2]>q.x0+q.w-marginX||b[3]>q.z0+q.d-marginZ)return;
+  if(this.cover.waterInsets.some(a=>a.intersects(...b)))return;
+  return {key,geometry:m.geometry};
+ }
+ rollingCanopyStill(key:string,g:THREE.BufferGeometry){
+  const q=this.byId.get(key),m=q?.fine;
+  return key!=='10-11'&&!!q&&q.lod===112&&!!m&&m.geometry===g&&!q.relief&&!m.userData.localGrade&&
+    !m.userData.coastalSurvey&&m.userData.subdiv===112&&!this.grades?.has(key)&&
+    !(this.bankGround&&key===BANK_TILE)&&!this.terrain.surveyGrids.some(a=>a.spec.tileX===q.i&&a.spec.tileZ===q.j);
  }
  /** Height of the submitted regular grid (including sewn tile-edge vertices).
   * Decorative roots use this, not the map or aerodynamic contact sampler. */
