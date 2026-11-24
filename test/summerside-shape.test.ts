@@ -45,7 +45,10 @@ test('Summerside submitted roof planes pass reserved physical shots without repl
   assert(p90(q.map((x:number[])=>x[2]))<.10);
  }
  assert(g.rim.every(([,x,z,h]:number[])=>Math.abs(at(next,x,z)-h)<.16));
- const other=rows.map((row:unknown,i:number)=>i===slot?{footprint:[]}:row);
+ // The fallback comparison excludes the three explicitly enrolled owners
+ // of this tile. The /383-only ray pass above remains unchanged.
+ const cohort=new Set([slot,328,371]);
+ const other=rows.map((row:unknown,i:number)=>cohort.has(i)?{footprint:[]}:row);
  const prior=generator.generate(other,bounds),rest=generator.generate(other,bounds,false,undefined,false,undefined,true);
  for(const [k,attr] of Object.entries(prior.geometry.attributes))assert.deepEqual((attr as {array:unknown}).array,rest.geometry.attributes[k].array,k);
  for(const m of [old,next,prior,rest])m.geometry.dispose();

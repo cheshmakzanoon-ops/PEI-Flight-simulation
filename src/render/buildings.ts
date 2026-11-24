@@ -794,6 +794,7 @@ export class Buildings {
     measuredDowntownRoofs++;
     if(tile.id==='q032001'&&i===383)measuredWaterRoof=true;
    }
+   const preserveDowntownFoot=neutral?.downtown&&!(tile.id==='q032001'&&i===383);
    const eave=base+(synthGable?low:h);
    const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number,footA?:number,footB?:number)=>{
@@ -815,7 +816,7 @@ export class Buildings {
      const edges=neutralRoofEdge(a,b,center,neutral.planes);
      if(fitWalls)for(const cut of edges)rimMin=Math.min(rimMin,rim(cut));
      const u=(t:Pt)=>Math.hypot(t.x-a.x,t.z-a.z);
-     if(neutral.downtown&&tile.id==='q03200300'&&edges.length>2){
+     if(preserveDowntownFoot&&edges.length>2){
       // A new roof ridge may split an existing XY wall. Keep the original
       // sampled endpoint bottoms and interpolate between them instead of
       // sampling the terrain a second time at the new upper ridge station.

@@ -6,8 +6,8 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 import argparse,functools,json,threading
 
 PROFILES={
- 'standard':('',2,None),
- 'town':('&townWallStudy',2,'townWallStudy'),
+ 'standard':('',4,None),
+ 'town':('&townWallStudy',4,'townWallStudy'),
  'station':('&summersideStationReview&buildingShadows',0,'summersideStation'),
  'baywalk':('&spinnakersPreview&northBaywalkPreview&baywalkConcrete',0,'northBaywalkCourt'),
 }
