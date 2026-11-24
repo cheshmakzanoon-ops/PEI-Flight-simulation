@@ -32,3 +32,20 @@ Standard with the current departure still selected.
 The [recorded checks](scenery-profile-gate.json) also show that at 390 × 760 and
 844 × 390 the touch control is at least 44 CSS pixels high, accepts keyboard
 focus, and both controls remain reachable when the panel scrolls.
+
+## Standalone scenery studies
+
+In Dispatch, open **Optional scenery studies** to toggle **Beaconsfield
+exterior** or **Field surface relief**, then choose **Apply studies**.
+This reloads the project while keeping the departure and unrelated URL
+options. Opening the panel alone does not load new assets. The two
+studies are separate from the Detailed preview preset.
+
+Three low passes are available in both profiles: choose the **fields
+low pass** for Prince, Queens or Kings County, then compare the same
+route with Field surface relief off and on. The studies are localized
+and do not indicate current farming or replace the standard map.
+
+[Actual desktop, mobile and three-flight checks](scenery-study-controls.json)
+used the production build. The field routes use the ordinary dispatch
+and in-flight atlas, with no camera or physics override.

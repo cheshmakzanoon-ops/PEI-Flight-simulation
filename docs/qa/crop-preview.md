@@ -1,7 +1,9 @@
 # Field surface preview: Prince, Queens and Kings
 
-Add `?cropRowsReview` to enable a low-altitude surface study in three
-areas of PEI. Standard stays unchanged. The preview adds furrow relief
+In Dispatch, open **Optional scenery studies**, select **Field surface
+relief**, and choose **Apply studies**. The equivalent URL switch is
+`?cropRowsReview`. Three named county field passes make it easy to
+compare the original and detailed surfaces over the same ground. Standard stays unchanged. The preview adds furrow relief
 and small soil variations to supported portions of five mapped field
 outlines. It does not change terrain height, trees, property boundaries,
 flight physics, roads or the areas outside the three preview windows.

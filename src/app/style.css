@@ -18,3 +18,27 @@ footer>a{color:#f4dfb7;text-decoration:underline}
 .scenery-switch{flex:none;min-height:30px;padding:.41rem .53rem;border:1px solid #f0c59372;border-radius:5px;color:#f6d29d;background:#f0c59314;font-size:.65rem;line-height:1.15}
 .scenery-switch:hover{background:#f0c59329}@media(min-height:581px){.dispatch{max-height:calc(100% - 112px);overflow:auto}}
 @media(pointer:coarse){.scenery-switch{min-height:44px}}
+
+/* Keep experimental layers compact on the dispatch deck; no layout cost in flight. */
+.scenery-reviews{margin:.55rem 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--sub)}
+.scenery-reviews summary{padding:.55rem 0;cursor:pointer;font-size:.72rem;line-height:1.2}
+.scenery-reviews summary span{margin-inline-start:.45rem;font-size:.58rem}
+.scenery-reviews summary:focus-visible,.review-choice input:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.scenery-review-list{display:grid;gap:.45rem;padding:0 0 .62rem}
+.review-choice{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.25rem 0}
+.review-choice input{margin:0 .1rem 0 0;inline-size:1rem;block-size:1rem;accent-color:#d9aa64;flex:none}
+.review-choice b,.review-choice small{display:block}
+.review-choice b{color:var(--ink);font-size:.70rem}
+.review-choice small,.review-note{font-size:.61rem;line-height:1.25}
+.scenery-review-list button{justify-self:start;font-size:.66rem;padding:.38rem .62rem}
+.scenery-review-list button:disabled{opacity:.55;cursor:default}
+.scenery-review-list button:not(:disabled){border:1px solid #ebc68785;border-radius:4px;background:#25423b;color:var(--ink)}
+
+/* When the options are open, the visual heading yields to the relevant controls. */
+.dispatch:has(.scenery-reviews[open]) .standfirst{display:none}
+.dispatch:has(.scenery-reviews[open]) h1{font-size:clamp(1.68rem,3.0vw,2.4rem);margin:.57rem 0 .48rem}
+.dispatch:has(.scenery-reviews[open]) h1 br{display:none}
+.dispatch:has(.scenery-reviews[open]) h1 em::before{content:" "}
+.dispatch:has(.scenery-reviews[open]) .brief-meta{display:none}
+.dispatch:has(.scenery-reviews[open]) .rule{margin:.42rem 0}
+.dispatch:has(.scenery-reviews[open]) .sitenote{min-height:0;margin:.30rem 0 .42rem}

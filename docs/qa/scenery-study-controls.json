@@ -1,0 +1,44 @@
+{
+  "dispatch": {
+    "desktop": {
+      "enableAndDisable": true,
+      "nativeReloads": 2,
+      "unchangedDeparture": "cysu",
+      "preservedProjectPathAndUrlState": true,
+      "expandedStartVisible": true,
+      "optionalAssetsRequestedOnlyAfterApply": 2
+    },
+    "mobile": {
+      "keyboardDisclosure": true,
+      "horizontalOverflow": false,
+      "width": 390
+    },
+    "errors": []
+  },
+  "flight": [
+    {
+      "site": "prince-fields",
+      "travelled": 110.07029076622328,
+      "aboveGroundM": 60.99207467724201,
+      "tileCount": 19,
+      "cropLoaded": true,
+      "warnings": []
+    },
+    {
+      "site": "queens-fields",
+      "travelled": 107.56575844568032,
+      "aboveGroundM": 59.10108549932914,
+      "tileCount": 18,
+      "cropLoaded": true,
+      "warnings": []
+    },
+    {
+      "site": "kings-fields",
+      "travelled": 105.24711569281064,
+      "aboveGroundM": 63.80010235168736,
+      "tileCount": 18,
+      "cropLoaded": true,
+      "warnings": []
+    }
+  ]
+}

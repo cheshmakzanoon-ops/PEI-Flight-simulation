@@ -21,7 +21,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 | --- | --- |
 | **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows land cover with [streamed provincial stand heights](docs/qa/forest-height-stream.md); [roof-centred tree stems are excluded](docs/vegetation-clearance.md). Confederation Bridge, St. Dunstan’s Basilica and both [point light stations](docs/landmarks/lighthouses.md) have custom models. The [Matthew and McLean Heritage Building](docs/qa/souris-mclean.md) in Souris has a measured roof and a reconstructed storefront. Surveyed roof planes refine 107 existing outlines across [Kings](docs/qa/kings-neutral-roofs.md), [Prince](docs/qa/prince-neutral-roofs.md) and [Queens](docs/qa/queens-neutral-roofs.md) counties. [Fifty-nine large roofs](docs/qa/large-roof-tone.md) use colour from the verified 2025 satellite mosaic. [Hangar 4 at Slemon Park](docs/qa/hangar-4.md) has a measured roof silhouette and lower annexes. Both lighthouse approaches use [higher-resolution measured coastal relief](docs/coastal-relief.md). [South Lake](docs/qa/south-lake.md) uses sheltered water shading without changing the shoreline. |
 | **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, [moving ailerons and elevators](docs/qa/control-surfaces.md), a modeled cockpit, graduated flight instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and fifteen scenic starts. |
+| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Two runway departure presets and eighteen scenic starts. |
 | **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
 | **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
 
@@ -43,6 +43,8 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
+
+**Optional scenery studies** in Dispatch lets you enable either the Beaconsfield exterior or field surface study without editing the URL. Use the Prince, Queens or Kings County **fields low pass** to compare the terrain on the same route.
 
 Preview work is regional and does not change the Standard atlas.
 
