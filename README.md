@@ -59,7 +59,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?aerialPerspectiveStudy` | [Daylight haze and sea horizon](docs/qa/aerial-perspective-study.md): an opt-in optical treatment for distant coasts, the open ocean and the horizon. Standard only. |
 | Orby Head | `?orbyCoastClosure` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): a local preview that closes gaps through which the sky showed below the cliffs. Standard only. |
-| Souris and western PEI | `?orthophotoSeamStudy` | [Aerial-image tile joins](docs/qa/orthophoto-edge-study.md): close-flight colour continuity along two verified joins. Standard only. |
+| One site in each county | `?orthophotoSeamStudy` | [Aerial-image tile joins](docs/qa/orthophoto-edge-study.md): close-flight colour continuity along three verified joins. Standard only. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 

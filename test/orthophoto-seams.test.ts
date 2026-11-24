@@ -65,3 +65,28 @@ test('wrong bytes and copy failure do not leave a half-bound strip or retry ever
  assert.equal(h.b.uniforms.orthoSharedRows.value,h.base);
  assert.equal(h.module.diagnostics()[0].errors,1);
 });
+
+test('the reviewed Queens east-west join uses shared columns in the correct order',()=>{
+ const copied:Array<[T.Texture,number,number,number,number]>=[];let builds=0;
+ const gl={NO_ERROR:0,getError:()=>0,isContextLost:()=>false};
+ const renderer={getContext:()=>gl,initTexture(){builds++;},
+  copyTextureToTexture(src:T.Texture,dst:T.Texture,box:T.Box2,xy:T.Vector2){
+   assert.equal(dst.image.width,4);assert.equal(dst.image.height,640);
+   copied.push([src,box.min.x,box.max.x,box.max.y,xy.x]);
+  }} as unknown as T.WebGLRenderer;
+ const base=new T.Texture(),m=new OrthophotoSeams(renderer,base);
+ const w=shader(),e=shader();m.bind('10-12',w);m.bind('11-12',e);
+ assert(w.uniforms.orthoSharedRows===e.uniforms.orthoSharedRows&&w.uniforms.orthoRowsGain===e.uniforms.orthoRowsGain);
+ assert(w.fragmentShader.includes('vuv.x*32. - 11.')&&e.fragmentShader===w.fragmentShader);
+ assert(w.fragmentShader.includes('vec2(.5+crossTexel*.25,detailUV.y)'));
+ const l=source(),r=source();
+ m.verifiedDetail('10-12','aec5292f13fd5424f9881eb174e484b92313a885ac415b444640f298f633f65e',l);
+ m.verifiedDetail('11-12','0872113e73cb6ca8a442ffc6b57c10c66e38e820f5b0e577bc6ecf3c78e55688',r);
+ const ready=new Map([['10-12',{detail:l,detailSince:1,lod:112,status:'ready'}],['11-12',{detail:r,detailSince:1,lod:112,status:'ready'}]]);
+ r.onUpdate!(r);m.update(2,k=>ready.get(k));assert.equal(builds,0);
+ l.onUpdate!(l);m.update(2.2,k=>ready.get(k));m.advance(3);
+ assert.equal(builds,1);assert.equal(w.uniforms.orthoRowsGain.value,1);
+ assert.deepEqual(copied,[[l,638,640,640,0],[r,0,2,640,2]]);
+ m.evict('10-12',l);assert(m.diagnostics().every(v=>!v.resident));
+ assert(w.uniforms.orthoSharedRows.value===base&&e.uniforms.orthoRowsGain.value===0);
+});
