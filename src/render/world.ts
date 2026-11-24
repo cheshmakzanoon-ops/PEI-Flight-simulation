@@ -16,6 +16,7 @@ import {gablesTrailGLSL,gablesTrailIntersects} from './cavendish-trail.ts';
 import {gablesFairwayGLSL,type GablesFairway} from './gables-fairway.ts';
 import {gablesGravelGLSL,gablesGravelIntersects} from './gables-gravel.ts';
 import {boundedGradeTiles,type BoundedGrade} from '../sim/bounded-grade.ts';
+import {DUNE_RELIEF} from '../sim/dune-relief.generated.ts';
 import {provinceFieldOpticsGLSL,type ProvinceFieldStudy} from './province-fields.ts';
 import {fieldPilotGLSL,type FieldPilot} from './fields-pilot.ts';
 import {meadowGLSL} from './meadow-optics.ts';
@@ -545,7 +546,7 @@ export class World {
  readonly gravelStrength={value:0};
  readonly trailStrength={value:0};
  readonly rusticoSoilStrength={value:0};
- private readonly grades?:ReadonlyMap<string,BoundedGrade>;
+ private readonly grades=new Map<string,BoundedGrade>();
  private readonly kingsGrade?:BoundedGrade;
  private kingsStage?:KingsCrownStage;
  private kingsStageFailed=false;
@@ -560,7 +561,7 @@ export class World {
    const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
   };
   this.grassStudy=grassStudy;
-  if(localGrade)this.grades=boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade);
+  if(localGrade)for(const [key,grade] of boundedGradeTiles('grid' in localGrade?[localGrade]:localGrade))this.grades.set(key,grade);
   const king=this.grades?.get(KINGS_CROWN_TILE);
   if(king?.grid.spec===KINGS_DRY_CROWN)this.kingsGrade=king;
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
@@ -927,6 +928,21 @@ export class World {
   if(site?.cliff)m.userData.coastalRefinement=site.cliff.id;
   return m;
  }
+ /** Exchange one current regular mesh, retaining its seams and collision owner.
+  * Only the two prequalified dry dune stamps can enter this path. */
+ mountStandardDuneGrade(grade:BoundedGrade){
+  const {spec}=grade.grid;
+  if(!DUNE_RELIEF.some(s=>s===spec))return false;
+  const key=spec.tileX+'-'+spec.tileZ,t=this.byId.get(key);
+  if(!t?.fine||!this.rollingCanopyStill(key,t.fine.geometry)||this.grades.has(key))return false;
+  const old=t.fine,next=this.patch(t.x0,t.z0,t.w,t.d,112,grade);
+  if(next.userData.localGrade!==spec.id){next.geometry.dispose();return false;}
+  this.copyNearEdge(old,next);next.geometry.computeBoundingSphere();
+  next.material=t.local;next.visible=old.visible;
+  this.scene.remove(old);old.geometry.dispose();this.scene.add(next);t.fine=next;
+  this.grades.set(key,grade);this.groundVersion++;
+  return true;
+ }
  /** Prepare one reversible near mesh before live receiver seating; do not
   * change the scene, collision sampler or installed flag until a commit. */
  stageStMarysNear(grade:BoundedGrade){
@@ -1199,7 +1215,7 @@ export class World {
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
-  if(covered&&(this.grades||this.stagedChurch)){
+  if(covered&&(this.grades.size||this.stagedChurch)){
    const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
    if(grade?.weight(x,z)){
     const y=grade.contactY(x,z,baseline);

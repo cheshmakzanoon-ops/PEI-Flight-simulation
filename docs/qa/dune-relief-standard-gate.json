@@ -1,0 +1,214 @@
+{
+  "world": [
+    {
+      "id": "prince-measured-dune-relief",
+      "atomicSwap": true,
+      "sameAsOriginalManualVariant": true,
+      "neighborMeshesUnchanged": true,
+      "triangles": 5734,
+      "groundRays": 1089,
+      "contactRays": 45,
+      "maxVisual": 4.425425475851341e-06,
+      "maxCollision": 2.561493928077141e-06,
+      "roundTripExact": true
+    },
+    {
+      "id": "kings-measured-dune-relief",
+      "atomicSwap": true,
+      "sameAsOriginalManualVariant": true,
+      "neighborMeshesUnchanged": true,
+      "triangles": 4390,
+      "groundRays": 1089,
+      "contactRays": 25,
+      "maxVisual": 2.0545088222689856e-05,
+      "maxCollision": 8.733941745386886e-06,
+      "roundTripExact": true
+    }
+  ],
+  "ordinaryFrames": {
+    "prince": {
+      "rgbOver2": 2072,
+      "protectedPixels": 108383,
+      "protectedChanges": 0,
+      "width": 460,
+      "height": 338,
+      "pose": {
+        "tile": "6-7",
+        "lon": -63.94301209666631,
+        "lat": 46.703156293086195,
+        "dist": 145,
+        "east": 0.33,
+        "south": 0.947,
+        "agl": 23,
+        "h": 0
+      },
+      "draws": [
+        41,
+        41
+      ],
+      "triangles": [
+        188365,
+        194099
+      ],
+      "stable": true
+    },
+    "kings": {
+      "rgbOver2": 1291,
+      "protectedPixels": 128560,
+      "protectedChanges": 0,
+      "width": 460,
+      "height": 338,
+      "pose": {
+        "tile": "30-11",
+        "lon": -62.05910430167234,
+        "lat": 46.46798726964735,
+        "dist": 145,
+        "east": 0.33,
+        "south": 0.947,
+        "agl": 25,
+        "h": 0
+      },
+      "draws": [
+        13,
+        13
+      ],
+      "triangles": [
+        196522,
+        200912
+      ],
+      "stable": true
+    }
+  },
+  "ordinaryFlights": {
+    "prince": {
+      "route": "prince-sand-dunes",
+      "exactLocalGrade": [
+        "prince-measured-dune-relief"
+      ],
+      "duneSandStillActive": [
+        [
+          6,
+          7
+        ]
+      ],
+      "fault": false,
+      "stock": false,
+      "distant": false,
+      "groundTransfer": [
+        [
+          "prince-native-ground.g11.gz",
+          200
+        ]
+      ],
+      "heightAGLM": 59.017457890149224,
+      "flightDistanceM": 384.4364490882298,
+      "errors": []
+    },
+    "kings": {
+      "route": "kings-sand-dunes",
+      "exactLocalGrade": [
+        "kings-measured-dune-relief"
+      ],
+      "duneSandStillActive": [
+        [
+          30,
+          11
+        ]
+      ],
+      "fault": false,
+      "stock": false,
+      "distant": false,
+      "groundTransfer": [
+        [
+          "kings-native-ground.g11.gz",
+          200
+        ]
+      ],
+      "heightAGLM": 56.61677212865136,
+      "flightDistanceM": 384.43644908828736,
+      "errors": []
+    },
+    "queens": {
+      "route": "queens-sand-dunes",
+      "exactLocalGrade": [],
+      "duneSandStillActive": [
+        [
+          12,
+          11
+        ]
+      ],
+      "fault": false,
+      "stock": false,
+      "distant": false,
+      "groundTransfer": [],
+      "heightAGLM": 59.33719742867834,
+      "flightDistanceM": 382.6828381450994,
+      "errors": []
+    },
+    "fault": {
+      "route": "prince-sand-dunes",
+      "exactLocalGrade": [],
+      "duneSandStillActive": [
+        [
+          6,
+          7
+        ]
+      ],
+      "fault": true,
+      "stock": false,
+      "distant": false,
+      "groundTransfer": [
+        [
+          "prince-native-ground.g11.gz",
+          200
+        ]
+      ],
+      "heightAGLM": 59.095763130683565,
+      "flightDistanceM": 377.42204729140786,
+      "errors": []
+    },
+    "stock": {
+      "route": "prince-sand-dunes",
+      "exactLocalGrade": [],
+      "duneSandStillActive": [
+        [
+          6,
+          7
+        ]
+      ],
+      "fault": false,
+      "stock": true,
+      "distant": false,
+      "groundTransfer": [],
+      "heightAGLM": 59.03703239570021,
+      "flightDistanceM": 382.6828381450687,
+      "errors": []
+    },
+    "distant": {
+      "route": "montague",
+      "exactLocalGrade": [],
+      "duneSandStillActive": [],
+      "fault": false,
+      "stock": false,
+      "distant": true,
+      "groundTransfer": [],
+      "heightAGLM": 359.56951686393177,
+      "flightDistanceM": 384.2434790666049,
+      "errors": []
+    }
+  },
+  "independentWorldVerification": {
+    "threeRaysEachCounty": 314,
+    "maxVisualErrorM": [
+      4.6e-06,
+      2.077e-05
+    ],
+    "maxMeasuredContactErrorM": [
+      1.59e-06,
+      3.44e-06
+    ],
+    "protectedLandAndContactExact": true,
+    "N56AndN8ExactStock": true,
+    "N112ReturnExact": true
+  }
+}

@@ -40,6 +40,7 @@ export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandB
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
+ if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
@@ -84,7 +85,6 @@ export const SCENERY_REVIEWS=[
  {flag:'gravelSurfaceStudy',name:'Mapped gravel surfaces',scope:'Close mineral detail on explicitly mapped gravel roads in all three counties'},
  {flag:'sourceGrassNap',name:'Close grass detail',scope:'Includes Ground vegetation near the ground'},
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
- {flag:'duneReliefStudy',name:'Measured dune relief',scope:'Prince and Kings dry terrain'},
  {flag:'duneGrassSurface',name:'Coastal grass surface',scope:'Source-qualified dune grassland in all three counties'},
  {flag:'hogIslandWestGround',name:'Hog Island dune ground',scope:'Western measured relief and dated aerial colour'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
@@ -99,7 +99,7 @@ export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|u
  return PROVINCE_FIELD_CONFLICTS.some(flag=>options.has(flag))?'terrain':undefined;
 }
 
-export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail',options:URLSearchParams):'detail'|'terrain'|undefined{
+export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail'|'duneReliefStudy',options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='coastalOptics'){
   if(options.get('scenery')==='detail')return 'detail';
   return COASTAL_OPTICS_CONFLICTS.some(k=>options.has(k))?'terrain':undefined;
@@ -165,6 +165,13 @@ export function duneSandRequested(q:URLSearchParams){
  if(q.has('stockDuneSand')||sceneryReviewBlock('duneSandDetail',q))return false;
  return q.has('duneSandDetail')||!['duneGrassSurface','duneReliefStudy','seatedForestShadows',
   'forestFloor','coastalOptics','shoreToneStudy','orthophotoSeamStudy','woodlandView'].some(k=>q.has(k));
+}
+/** Automatic relief is narrower than the legacy explicit scenery study. */
+export function standardDuneReliefRequested(q:URLSearchParams){
+ return !q.has('stockDuneRelief')&&!q.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',q)&&
+  !['seatedRoads','seatedForestShadows','coastalOptics','orthophotoSeamStudy','shoreToneStudy','duneGrassSurface',
+    'woodlandView','legacyShoreArcs','northBaywalkPreview','spinnakersPreview','montagueFoundationPreview',
+    'basinChannel','northRusticoLighthouseStudy','cavendishDetail','hogIslandWestGround','hogIslandPhotoStudy'].some(k=>q.has(k));
 }
 export function reviewedScenery(search:string){
  const query=new URLSearchParams(search);

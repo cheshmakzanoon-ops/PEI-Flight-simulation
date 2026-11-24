@@ -59,8 +59,8 @@ def capture(args,browser,url):
   p=views[name];w,h=460,338;pg=browser.new_page(viewport={'width':w,'height':h});errors=[]
   pg.on('pageerror',lambda e:errors.append(str(e)));pg.on('console',lambda e:errors.append(e.text)if e.type=='error'else None)
   pg.set_default_timeout(105000)
-  pg.goto(url+'/?diagnostics&duneReliefStudy&duneSandDetail&qa='+quote(json.dumps(p)),wait_until='domcontentloaded');f.settle(pg,errors)
-  pg.wait_for_function("window.islandAirDiagnostics?.duneSand?.active?.length>0")
+  pg.goto(url+'/?diagnostics&qa='+quote(json.dumps(p)),wait_until='domcontentloaded');f.settle(pg,errors)
+  pg.wait_for_function("window.islandAirDiagnostics?.localGroundGrades?.length>0 && window.islandAirDiagnostics?.duneSand?.active?.length>0")
   q=pg.evaluate('window.reliefQA()');assert q['grade'] and q['stable'] and not errors,q
   rr={}
   for label in ('stock','candidate'):

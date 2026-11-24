@@ -4,11 +4,11 @@ import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {DUNE_RELIEF as R} from '../src/sim/dune-relief.generated.ts';
 import {boundedGradeTiles,gradeAtlasMatches,loadBoundedGrade} from '../src/sim/bounded-grade.ts';
-import {sceneryOptions,sceneryReviewBlock} from '../src/app/scenery-profile.ts';
+import {sceneryOptions,sceneryReviewBlock,standardDuneReliefRequested} from '../src/app/scenery-profile.ts';
 const file=(name:string)=>readFileSync(new URL('../public/world/'+name,import.meta.url));
 const response=(b:Uint8Array)=>new Response(new Uint8Array(b));
 
-test('two surveyed dunes use independent stock terrain owners and never flag default',()=>{
+test('two surveyed dunes use independent stock terrain owners without a global preset',()=>{
  assert.equal(sceneryOptions('?scenery=detail').has('duneReliefStudy'),false);
  assert.equal(sceneryReviewBlock('duneReliefStudy',sceneryOptions('?duneReliefStudy&inlandRelief')),'terrain');
  assert.equal(sceneryReviewBlock('duneReliefStudy',sceneryOptions('?duneReliefStudy&duneSandDetail')),undefined);
@@ -38,4 +38,13 @@ test('failure in one bounded dune request does not produce a callable height sam
  const base=file(R[0].file);const damaged=Uint8Array.from(base);damaged[base.length-4]^=1;
  assert.equal(await loadBoundedGrade(R[0],'',async()=>response(damaged)),undefined);
  assert(await loadBoundedGrade(R[1],'',async()=>response(gunzipSync(file(R[1].file)))));
+});
+
+test('only compatible Standard flight can stream measured dune relief automatically',()=>{
+ const want=(s:string)=>standardDuneReliefRequested(sceneryOptions(s));
+ assert(want(''));assert(want('?departure=kings-sand-dunes'));assert(want('?duneSandDetail'));
+ for(const q of ['stockDuneRelief','duneReliefStudy','scenery=detail','surveyRelief','buildingShadows','duneGrassSurface',
+  'coastalOptics','seatedRoads','northBaywalkPreview','orthophotoSeamStudy','woodlandView'])assert(!want('?'+q),q);
+ const callbacks=sceneryOptions('?stockDuneRelief&duneReliefStudy&woodlandView');
+ assert(!callbacks.has('duneReliefStudy')&&callbacks.has('woodland3D'));
 });

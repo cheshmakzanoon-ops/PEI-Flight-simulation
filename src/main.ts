@@ -12,6 +12,8 @@ import {georgetownSunMatches} from './render/st-davids/ground-sun.ts';
 import {railRequested,railGround,railStandardRequested,standardRailGround} from './render/summerside-station/admit.ts';
 import {SUMMERSIDE_STATION as RAIL} from './render/summerside-station/source.generated.ts';
 import {DUNE_RELIEF} from './sim/dune-relief.generated.ts';
+import {CANOPY_FENCE} from './render/canopy-fence.generated.ts';
+import {WORLD_COLS,WORLD_ROWS,SURVEY_LOD} from './sim/coastal-terrain.ts';
 import {KINGS_DRY_CROWN} from './sim/kings-dry-crown.generated.ts';
 import {kingsDryCrownHedges,kingsDryCrownInterior,kingsDryCrownRequested,kingsDryCrownSources} from './sim/kings-dry-crown.ts';
 import {HOG_WEST_GRADE} from './sim/hog-west-grade.generated.ts';
@@ -77,7 +79,7 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
@@ -126,7 +128,9 @@ async function run(){
  const duneAsked=duneSandRequested(options);
  const duneModuleJob=duneAsked?loadAerialModule(()=>import('./render/dune-sand.ts')):undefined;
  const hogGroundAsked=options.has('hogIslandWestGround')&&!sceneryReviewBlock('hogIslandWestGround',options);
- const duneReliefAsked=options.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',options);
+ const duneReliefAsked=!options.has('stockDuneRelief')&&options.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',options);
+ const standardDuneRelief=standardDuneReliefRequested(options)&&String(SIDEWALKS.sha256)===CANOPY_FENCE.pins.sidewalk&&
+  String(MAPPED_PARKING.sha256)===CANOPY_FENCE.pins.parking;
  const crownGradeWanted=kingsDryCrownRequested(options);
  const checkedGroundIndex=hogGroundAsked||duneReliefAsked?pinnedHogBuildingIndex(worldBase):undefined;
  const crownGradeJob=crownGradeWanted?Promise.all([loadBoundedGrade(KINGS_DRY_CROWN,worldBase),kingsDryCrownHedges(worldBase)]):undefined;
@@ -302,6 +306,35 @@ async function run(){
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
  const layerWarnings:string[]=[];const warn=(layer:string,e:unknown)=>{layerWarnings.push(layer);ui.setWarnings(layerWarnings);console.warn(layer+' layer unavailable',e);};
  let roads:Roads|undefined,buildings:Buildings|undefined,sidewalks:Sidewalks|undefined,parking:ParkingSurfaces|undefined;
+ type NearDune={stamp:(typeof DUNE_RELIEF)[number]; box:readonly [number,number,number,number];
+  asked:boolean;grade?:ReturnType<NonNullable<Awaited<ReturnType<typeof loadBoundedGrade>>>>};
+ const nearDunes:NearDune[]=standardDuneRelief?DUNE_RELIEF.filter(s=>s.terrainSha256===terrainSha&&
+  s.coverCompressedSha256===cover.sourceSha).map(stamp=>{
+   const w=(terrain.right-terrain.left)/WORLD_COLS,d=(terrain.bottom-terrain.top)/WORLD_ROWS;
+   const x=terrain.left+w*(stamp.tileX+stamp.firstX/SURVEY_LOD),z=terrain.top+d*(stamp.tileZ+stamp.firstZ/SURVEY_LOD);
+   return {stamp,box:[x,z,x+w*stamp.cellsX/SURVEY_LOD,z+d*stamp.cellsZ/SURVEY_LOD],asked:false};
+  }):[];
+ let nearDuneIndex:ReturnType<typeof pinnedHogBuildingIndex>|undefined;
+ function updateNearDunes(x:number,z:number,y:number){
+  if(roads?.sourceGeometrySha256!==HOG_WEST_GRADE.roadSha256||!sidewalks||!parking)return;
+  for(const row of nearDunes){
+   const [a,b,c,d]=row.box,offset=Math.hypot(Math.max(0,a-x,x-c),Math.max(0,b-z,z-d));
+   if(offset>1650)continue;
+   const agl=y-Math.max(world.visualGroundHeight(x,z),world.groundHeight(x,z));
+   if(agl>480||(agl<18&&offset<90))continue;
+   if(row.grade){
+    if(world.mountStandardDuneGrade(row.grade))row.grade=undefined;
+   }else if(!row.asked){
+    row.asked=true;
+    const stamp=row.stamp;
+    void Promise.all([nearDuneIndex??=pinnedHogBuildingIndex(worldBase),verifyDecodedCover(cover),loadBoundedGrade(stamp,worldBase)])
+     .then(([index,decoded,make])=>{
+      if(index&&make&&gradeAtlasMatches(stamp,terrainSha,cover.sourceSha,decoded))
+       row.grade=make(terrain,(x,z)=>terrain.atlasElevation(x,z));
+     }).catch(()=>{});
+   }
+  }
+ }
  void addMainland(scene,daylight).then(t=>{mainland=t;if(daylight?.armed)daylight.gain.value=1;}).catch(e=>warn('Mainland',e));
  const gravelAllowed=options.has('gravelSurfaceStudy')&&!sceneryReviewBlock('gravelSurfaceStudy',options);
  const gravelSurface=gravelAllowed?new GravelSurfaceStudy(import.meta.env.BASE_URL):undefined;
@@ -424,6 +457,8 @@ async function run(){
   if(ui.mode==='dispatch'&&ui.selected!==activeSite)reposition(ui.selected);
   const dispatch=ui.mode==='dispatch',playing=ui.mode==='flight';
   world.prepareAdaptiveTerrain(f.x,f.z,f.y,performance.now());
+  // Commit verified near geometry before the fixed-step contact sampler.
+  if(nearDunes.length&&f.status==='flying')updateNearDunes(f.x,f.z,f.y);
   if(churchCohort){
    // Finalize the live roster and exact near-grade/shadow/owner transaction
    // before the fixed step. Keep the same roster for this rendered frame.

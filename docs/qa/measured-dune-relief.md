@@ -1,10 +1,11 @@
 # Measured dune relief
 
-In **Standard**, enable **Measured dune relief**, then choose
-**Prince County · dry dune pass** or **Kings County · dry dune pass**.
-**Dry dune surface detail** can be enabled separately for close-range sand
-material. Queens keeps the stock geometry: the tested Queens candidate
-crosses a shoreline that this terrain study does not revise.
+In **Standard**, choose **Prince County · dry dune pass** or
+**Kings County · dry dune pass**. The measured contours and the
+[close sand material](dry-dune-surface-detail.md) both appear on these
+approaches. `?stockDuneRelief` keeps the original ground without turning
+off the sand material. Queens retains the stock geometry: the tested
+Queens candidate crossed a shoreline that this terrain work does not revise.
 
 Two bounded near-mesh sections use the original measured dune slopes and
 low contours instead of the coarser inherited surface. The existing
@@ -65,8 +66,27 @@ python tools/geodata/bake-dune-relief.py --county prince \
   --checkout . --output /tmp/prince-native-ground.g11.gz
 ```
 
-The packaged flights flew and paused after 380 m in Prince and 385 m in
-Kings with the sand material active. A same-length corrupt Kings grade
+The original packaged study flew and paused after 380 m in Prince and
+385 m in Kings with the sand material active. A same-length corrupt Kings grade
 response restored stock ground without dropping the separate sand material.
 Missing, corrupted or incompatible data leave the relevant county on
 stock terrain. The other authenticated county is independent.
+
+Standard requests only the relevant signed grade within 1.65 km and below
+480 m above the local rendered ground. First activation is deferred when the aircraft is within 90 m of the
+inset and below 18 m above ground. Once installed, the grade follows
+normal terrain detail levels; altitude alone does not unload it. The streamer checks the existing road, building index,
+cover, walkway and parking inputs; late data can't change a distant tile.
+After a finite load, the current regular near owner and its collision
+sampler switch together. A corrupt response leaves stock in place, and
+other areas do not download these grade packs. The older direct
+`?duneReliefStudy&duneSandDetail` comparison still works.
+
+[Standard exact render, grade sampler and flight acceptance](dune-relief-standard-gate.json).
+The two newly streamed near meshes match the original reviewed variants
+byte-for-byte. The measured contact cores agree with 70 actual Three.js
+ray intersections to within 0.009 mm. Each site also passed a far-to-near
+round trip without losing its stitched border.
+
+To reproduce the mesh/contact check, run
+`node --experimental-transform-types tools/qa/dune-relief-standard-world.mjs`.
