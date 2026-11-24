@@ -1,0 +1,93 @@
+{
+  "posed": {
+    "lon": -63.05439156793934,
+    "lat": 46.414545454545454,
+    "dist": 26,
+    "east": 0.7,
+    "south": 0.714,
+    "agl": 18,
+    "h": 0
+  },
+  "delayed": {
+    "after": {
+      "calls": 23
+    },
+    "before": {
+      "calls": 23
+    },
+    "stable": true,
+    "observed": [
+      [
+        -12,
+        25
+      ],
+      [
+        -6,
+        22
+      ],
+      [
+        -1,
+        2
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        12,
+        0
+      ]
+    ]
+  },
+  "bothResident": {
+    "after": {
+      "calls": 23
+    },
+    "before": {
+      "calls": 23
+    },
+    "stable": true,
+    "observed": [
+      [
+        -12,
+        25
+      ],
+      [
+        -6,
+        37
+      ],
+      [
+        -1,
+        44
+      ],
+      [
+        0,
+        53
+      ],
+      [
+        1,
+        52
+      ],
+      [
+        6,
+        62
+      ],
+      [
+        12,
+        28
+      ]
+    ]
+  },
+  "framesObserved": 68,
+  "zeroBoundaryDuringDelay": true,
+  "blendingFrames": 21,
+  "errors": []
+}

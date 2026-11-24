@@ -64,6 +64,7 @@ export const SCENERY_REVIEWS=[
  {flag:'sourceGrassNap',name:'Close grass detail',scope:'Includes Ground vegetation near the ground'},
  {flag:'hogIslandPhotoStudy',name:'Hog Island aerial detail',scope:'Dated survey of two dry dune areas'},
  {flag:'duneReliefStudy',name:'Measured dune relief',scope:'Prince and Kings dry terrain'},
+ {flag:'duneGrassSurface',name:'Coastal grass surface',scope:'Source-qualified dune grassland in all three counties'},
  {flag:'duneSandDetail',name:'Dry dune surface detail',scope:'Source-qualified sand in all three counties'},
  {flag:'hogIslandWestGround',name:'Hog Island dune ground',scope:'Western measured relief and dated aerial colour'},
  {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
@@ -84,6 +85,13 @@ export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'d
   if(options.get('scenery')==='detail')return 'detail';
   return ['surveyRelief','inlandRelief','buildingShadows','indianRiverReview','sourceGrassStudy','sourceGrassNap',
    'northCapeWind','woodland3D','canopyLight','forestFloor'].some(k=>options.has(k))?'terrain':undefined;
+ }
+ if(flag==='duneGrassSurface'){
+  if(options.get('scenery')==='detail')return 'detail';
+  return ['surveyRelief','inlandRelief','buildingShadows', 'duneReliefStudy','northCapeWind','sourceGrassStudy','sourceGrassNap',
+   'meadowTexture','provinceFieldsReview','cropRowsReview','woodland3D','canopyLight','forestFloor',
+   'hogIslandPhotoStudy','hogIslandWestGround','northRusticoLighthouseStudy','northRusticoSoil','cavendishDetail',
+   'cavendishWaterReview','bowleySurveyPreview','basinChannel','indianRiverReview','northBaywalkPreview','montagueFoundationPreview'].some(k=>options.has(k))?'terrain':undefined;
  }
  if(flag==='duneSandDetail'){
   if(options.get('scenery')==='detail')return 'detail';

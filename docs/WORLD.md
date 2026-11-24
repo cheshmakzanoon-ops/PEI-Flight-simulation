@@ -193,6 +193,8 @@ The optional [dry dune surface detail](qa/dry-dune-surface-detail.md) adds close
 
 The optional [measured dune relief](qa/measured-dune-relief.md) adds two guarded Prince and Kings dry ground insets backed by native LiDAR. Queens and the shoreline remain on stock geometry.
 
+The [coastal grass surface](qa/coastal-grass-surface.md) adds a separately classified close grass-and-soil material with matched terrain tile borders. It adds no individual plants and preserves the dunes, shoreline and existing roads.
+
 ## Woodland height and clearance
 
 [Measured provincial stand heights](qa/forest-height-stream.md) set the

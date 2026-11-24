@@ -1,0 +1,158 @@
+{
+  "prince": {
+    "before": {
+      "draws": 40,
+      "tris": 175995
+    },
+    "after": {
+      "draws": 40,
+      "tris": 175995
+    },
+    "mask": {
+      "draws": 40,
+      "tris": 175995
+    },
+    "stable": true,
+    "tiles": [
+      [
+        7,
+        8
+      ]
+    ],
+    "diff": {
+      "over2": 110330,
+      "outside": 0,
+      "protected": 41829
+    },
+    "requests": [
+      "authority.pack",
+      "sparse-grass-photometric.png"
+    ],
+    "errors": [],
+    "pose": {
+      "lon": -63.87729594823629,
+      "lat": 46.659445640990455,
+      "dist": 27,
+      "east": 0.28,
+      "south": 0.96,
+      "agl": 9,
+      "h": 0
+    }
+  },
+  "queens": {
+    "before": {
+      "draws": 10,
+      "tris": 173155
+    },
+    "after": {
+      "draws": 10,
+      "tris": 173155
+    },
+    "mask": {
+      "draws": 10,
+      "tris": 173155
+    },
+    "stable": true,
+    "tiles": [
+      [
+        18,
+        12
+      ],
+      [
+        18,
+        13
+      ]
+    ],
+    "diff": {
+      "over2": 115496,
+      "outside": 0,
+      "protected": 36903
+    },
+    "requests": [
+      "authority.pack",
+      "sparse-grass-photometric.png"
+    ],
+    "errors": [],
+    "pose": {
+      "lon": -62.99652841288281,
+      "lat": 46.414710711451335,
+      "dist": 25,
+      "east": 0.14,
+      "south": 0.989,
+      "agl": 10,
+      "h": 0
+    }
+  },
+  "kings": {
+    "before": {
+      "draws": 29,
+      "tris": 253716
+    },
+    "after": {
+      "draws": 29,
+      "tris": 253716
+    },
+    "mask": {
+      "draws": 29,
+      "tris": 253716
+    },
+    "stable": true,
+    "tiles": [
+      [
+        29,
+        13
+      ]
+    ],
+    "diff": {
+      "over2": 114488,
+      "outside": 0,
+      "protected": 37506
+    },
+    "requests": [
+      "authority.pack",
+      "sparse-grass-photometric.png"
+    ],
+    "errors": [],
+    "pose": {
+      "lon": -62.161160594445576,
+      "lat": 46.36725705391342,
+      "dist": 28,
+      "east": 0.35,
+      "south": 0.937,
+      "agl": 10,
+      "h": 0
+    }
+  },
+  "high": {
+    "before": {
+      "draws": 10,
+      "tris": 170401
+    },
+    "after": {
+      "draws": 10,
+      "tris": 170401
+    },
+    "mask": {
+      "draws": 10,
+      "tris": 170401
+    },
+    "stable": true,
+    "tiles": [],
+    "diff": {
+      "over2": 0,
+      "outside": 0,
+      "protected": 155480
+    },
+    "requests": [],
+    "errors": [],
+    "pose": {
+      "lon": -62.99652841288281,
+      "lat": 46.414710711451335,
+      "dist": 110,
+      "east": 0.14,
+      "south": 0.989,
+      "agl": 222,
+      "h": 0
+    }
+  }
+}

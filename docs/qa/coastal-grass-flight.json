@@ -1,0 +1,121 @@
+[
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "authorized": true,
+      "active": [
+        [
+          18,
+          13
+        ],
+        [
+          18,
+          12
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 382.91419119828055,
+    "heightAGLM": 55.55699041852995,
+    "fault": false,
+    "requests": [
+      [
+        "sparse-grass-photometric.png",
+        200
+      ],
+      [
+        "authority.pack",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "queens-coastal-grass"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "authorized": true,
+      "active": [
+        [
+          7,
+          8
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 384.66986800161663,
+    "heightAGLM": 57.63426897076861,
+    "fault": false,
+    "requests": [
+      [
+        "authority.pack",
+        200
+      ],
+      [
+        "sparse-grass-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "prince-coastal-grass"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": true,
+    "diagnostics": {
+      "authorized": true,
+      "active": [
+        [
+          29,
+          13
+        ]
+      ],
+      "pending": 0,
+      "failed": 0
+    },
+    "ordinaryTravelM": 385.840146631449,
+    "heightAGLM": 56.55583140578939,
+    "fault": false,
+    "requests": [
+      [
+        "authority.pack",
+        200
+      ],
+      [
+        "sparse-grass-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "kings-coastal-grass"
+  },
+  {
+    "standardZeroOptionalRequests": true,
+    "materialActive": false,
+    "diagnostics": {
+      "authorized": true,
+      "active": [],
+      "pending": 0,
+      "failed": 2
+    },
+    "ordinaryTravelM": 383.49907730216694,
+    "heightAGLM": 55.56293085975233,
+    "fault": true,
+    "requests": [
+      [
+        "authority.pack",
+        200
+      ],
+      [
+        "sparse-grass-photometric.png",
+        200
+      ]
+    ],
+    "errors": [],
+    "route": "queens-coastal-grass"
+  }
+]

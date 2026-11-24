@@ -1,0 +1,21 @@
+Coastal grass surface, PEI Flight Simulation
+
+Authority: Prince Edward Island Wetland and Sand Dune Inventory, Resource
+Inventory and Modelling Section, Forests, Fish and Wildlife Division,
+Department of Land & Environment. Contains information licensed under the
+Open Government Licence – Prince Edward Island:
+https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island
+
+Includes © ESA WorldCover project 2021, Contains modified Copernicus Sentinel
+data, CC BY 4.0: https://doi.org/10.5281/zenodo.7254221
+
+The independently confirmed terrain exclusions use information including
+© OpenStreetMap contributors under ODbL 1.0; the authority raster is also
+available under ODbL 1.0. See the original separately licensed exclusion
+data under public/world/woodland/v1/canopy-receiver-fence-LICENSE.txt.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Sparse Grass photographic grain by Amal Kumar, Poly Haven, CC0 1.0.
+The source photo scan is a generic material, not a PEI aerial image.
+https://polyhaven.com/a/sparse_grass

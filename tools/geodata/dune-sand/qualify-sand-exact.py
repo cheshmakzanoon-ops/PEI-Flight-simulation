@@ -14,6 +14,8 @@ p.add_argument('--world',type=Path,required=True)
 p.add_argument('--inventory',type=Path,required=True)
 p.add_argument('--worldcover',type=Path,action='append',required=True)
 p.add_argument('--out',type=Path,required=True)
+p.add_argument('--landcover-class',choices=(30,60),type=int,default=60,
+                help='30 for grassland, 60 for bare or sparse vegetation (default)')
 control=p.parse_args();G=control.world;control.out.mkdir(parents=True,exist_ok=True)
 digest='6cf0f501435006a9f1f3ffe27054cfade2bdb38f811915a406918b7b58bf39e5'
 if sha256(control.inventory.read_bytes()).hexdigest()!=digest:raise ValueError('Unexpected dune survey revision')
@@ -77,7 +79,7 @@ def whole_esa(x,z,gap=5.050):
   for i in range(4):
    for j in range(4):
     keep=(mn[k]+i<=mx[k])&(rn[k]+j<=rx[k])
-    b[keep]&=a[rn[k][keep]+j-left_top[1],mn[k][keep]+i-left_top[0]]==60
+    b[keep]&=a[rn[k][keep]+j-left_top[1],mn[k][keep]+i-left_top[0]]==control.landcover_class
   assert (mx[k]-mn[k]).max()<4 and (rx[k]-rn[k]).max()<4
   out[k]=b;seen|=k
  return out&seen
@@ -118,7 +120,7 @@ for q in features:
  dry=2*(map_coordinates(base,[(z-top)*2720/D[1]-.5,(x-left)*4096/D[0]-.5],order=1,mode='nearest')-128)
  o['sourceGrid']+=int(mark.sum());o['signedDryGrid']+=int((mark&(dry>27)).sum())
  if not np.any(mark&(dry>27)):continue
- esa=exact_esa(x,z);raw=mark&(dry>27)&(esa==60)&~occupied(x,z)
+ esa=exact_esa(x,z);raw=mark&(dry>27)&(esa==control.landcover_class)&~occupied(x,z)
  o['bareDryClearGrid']+=int(raw.sum())
  within=minimum_filter(raw,size=3,mode='constant',cval=False)>0
  if not within.any():continue

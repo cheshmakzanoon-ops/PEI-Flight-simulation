@@ -1,0 +1,34 @@
+{
+  "exactBothResidentAuthority": {
+    "adjacentPairs": 75,
+    "sharedLatticeChecks": 179018,
+    "interpolatedEdgeChecks": 446917,
+    "mismatches": 0,
+    "cornerGroups": 184,
+    "verifiedHaloMetres": 30
+  },
+  "sharedWorldTexturePhaseChecks": 4023,
+  "phaseMismatchesAfterFloat32Origin": 0,
+  "nearShadeFadeAcrossMissingFileMetres": 12,
+  "protectedTerrainTiles": [
+    [
+      1,
+      9
+    ],
+    [
+      31,
+      12
+    ]
+  ],
+  "stockOwnerHeightControls": {
+    "owners": 86,
+    "levels": [
+      8,
+      56,
+      112
+    ],
+    "minimumMeasuredSpareMetres": 3.88,
+    "observedUnderestimates": 0
+  },
+  "precedent": "The raw halo alone is insufficient across a missing owner. The runtime explicitly blends each edge to its lower actual gain and each corner to the minimum of all four."
+}

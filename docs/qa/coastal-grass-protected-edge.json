@@ -1,0 +1,135 @@
+{
+  "east-edge": {
+    "before": {
+      "draws": 13,
+      "tris": 283300
+    },
+    "after": {
+      "draws": 13,
+      "tris": 283300
+    },
+    "mask": {
+      "draws": 13,
+      "tris": 283300
+    },
+    "stable": true,
+    "tiles": [
+      [
+        30,
+        12
+      ]
+    ],
+    "samples": [
+      {
+        "dx": -16,
+        "pixel": [
+          8,
+          205
+        ],
+        "pixelDelta": 35,
+        "nearbyMax": 35
+      },
+      {
+        "dx": -12,
+        "pixel": [
+          68,
+          197
+        ],
+        "pixelDelta": 30,
+        "nearbyMax": 31
+      },
+      {
+        "dx": -8,
+        "pixel": [
+          125,
+          188
+        ],
+        "pixelDelta": 23,
+        "nearbyMax": 25
+      },
+      {
+        "dx": -4,
+        "pixel": [
+          179,
+          180
+        ],
+        "pixelDelta": 11,
+        "nearbyMax": 11
+      },
+      {
+        "dx": -1,
+        "pixel": [
+          217,
+          175
+        ],
+        "pixelDelta": 1,
+        "nearbyMax": 2
+      },
+      {
+        "dx": -0.1,
+        "pixel": [
+          228,
+          173
+        ],
+        "pixelDelta": 0,
+        "nearbyMax": 0
+      },
+      {
+        "dx": 0,
+        "pixel": [
+          229,
+          167
+        ],
+        "pixelDelta": 0,
+        "nearbyMax": 0
+      },
+      {
+        "dx": 0.2,
+        "pixel": [
+          232,
+          167
+        ],
+        "pixelDelta": 0,
+        "nearbyMax": 0
+      },
+      {
+        "dx": 1,
+        "pixel": [
+          242,
+          165
+        ],
+        "pixelDelta": 0,
+        "nearbyMax": 0
+      },
+      {
+        "dx": 4,
+        "pixel": [
+          279,
+          160
+        ],
+        "pixelDelta": 0,
+        "nearbyMax": 0
+      }
+    ],
+    "protectedEast": 0,
+    "diff": {
+      "over2": 54253,
+      "outside": 0,
+      "protected": 92261
+    },
+    "requests": [
+      "authority.pack",
+      "sparse-grass-photometric.png"
+    ],
+    "errors": [],
+    "pose": {
+      "lon": -62.009375,
+      "lat": 46.46225365218,
+      "dist": 21,
+      "east": -0.22,
+      "south": 0.976,
+      "agl": 16.0,
+      "h": 0
+    }
+  }
+}
