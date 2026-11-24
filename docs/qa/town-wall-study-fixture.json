@@ -1,0 +1,1263 @@
+{
+  "base": "586daf8c6908df9f6acca4a0eab3a5fc2aaabde7",
+  "census": {
+    "stockCommit": "fd9c34492365e404e7688fdc202da1a4ca697de5",
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "ranges": [
+      {
+        "a": 2151104,
+        "z": 2170359,
+        "n": 19256,
+        "sha": "9d8b58234fb2beb247cf0c8ae07009796e41b0e4f0dac3cc22732318f25fb552"
+      },
+      {
+        "a": 2180236,
+        "z": 2188554,
+        "n": 8319,
+        "sha": "fd234a394fef330a6bd948e5bedd52fc2136f270fb07240d34f7770bf698c0fb"
+      },
+      {
+        "a": 2315907,
+        "z": 2347586,
+        "n": 31680,
+        "sha": "d06f88504309e7251d901e1ae2213cf2bb42fb57fd3a82e29ac5e9e1793c1e34"
+      },
+      {
+        "a": 710787,
+        "z": 730949,
+        "n": 20163,
+        "sha": "b88c120e29513f42f5ad6e272981c21627b38634de29e5f9b3939a57a06fbe67"
+      },
+      {
+        "a": 766119,
+        "z": 778313,
+        "n": 12195,
+        "sha": "bdf391f788b3cd1951d790346df1bce239227c8982f6a5e81d9078f71481ec15"
+      },
+      {
+        "a": 3127037,
+        "z": 3143290,
+        "n": 16254,
+        "sha": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55"
+      },
+      {
+        "a": 1824319,
+        "z": 1850972,
+        "n": 26654,
+        "sha": "9328d7a65c09a8524cea35200205b08985a3589e2ee137d070e404e774981bfa"
+      }
+    ],
+    "scope": "Exact stock style-0 wall triangle-pair geometry, using the current AEB owner chunks. Counts are wall face segments, not buildings or visible image pixels; proposed optics planned separately.",
+    "results": [
+      {
+        "view": "queens-charlottetown-north",
+        "originWGS": [
+          -63.11965,
+          46.24398
+        ],
+        "radiusM": 300,
+        "genericFaces": 1653,
+        "shortUnder1p4M": 122,
+        "stockApertureCutsRight": 1057,
+        "stockApertureCutsEave": 1114,
+        "genericShortNoWindowShare": 122
+      },
+      {
+        "view": "prince-summerside-centre",
+        "originWGS": [
+          -63.7901,
+          46.39349
+        ],
+        "radiusM": 295,
+        "genericFaces": 1358,
+        "shortUnder1p4M": 112,
+        "stockApertureCutsRight": 865,
+        "stockApertureCutsEave": 815,
+        "genericShortNoWindowShare": 112
+      },
+      {
+        "view": "kings-souris-main",
+        "originWGS": [
+          -62.25688,
+          46.35259
+        ],
+        "radiusM": 280,
+        "genericFaces": 152,
+        "shortUnder1p4M": 9,
+        "stockApertureCutsRight": 90,
+        "stockApertureCutsEave": 123,
+        "genericShortNoWindowShare": 9
+      }
+    ]
+  },
+  "metadata": {
+    "owners": 7,
+    "existingBytesMatch": true,
+    "aggregateVramAddedBytesLoadedAllEligibleOwners": 1237302,
+    "ownerData": [
+      {
+        "tile": "q032001",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 23298,
+        "extra3I16Bytes": 419364,
+        "activeStyle0Tris": 1590,
+        "activeGableTris": 72,
+        "activeMainWallTris": 1518,
+        "activeShortTris": 122,
+        "otherTriangles": 21708
+      },
+      {
+        "tile": "q03200300",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 5396,
+        "extra3I16Bytes": 97128,
+        "activeStyle0Tris": 2740,
+        "activeGableTris": 78,
+        "activeMainWallTris": 2662,
+        "activeShortTris": 220,
+        "otherTriangles": 2656
+      },
+      {
+        "tile": "q03200301",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 2517,
+        "extra3I16Bytes": 45306,
+        "activeStyle0Tris": 100,
+        "activeGableTris": 4,
+        "activeMainWallTris": 96,
+        "activeShortTris": 6,
+        "otherTriangles": 2417
+      },
+      {
+        "tile": "q12000131",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 8777,
+        "extra3I16Bytes": 157986,
+        "activeStyle0Tris": 1420,
+        "activeGableTris": 52,
+        "activeMainWallTris": 1368,
+        "activeShortTris": 140,
+        "otherTriangles": 7357
+      },
+      {
+        "tile": "q12000133",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 3681,
+        "extra3I16Bytes": 66258,
+        "activeStyle0Tris": 1076,
+        "activeGableTris": 80,
+        "activeMainWallTris": 996,
+        "activeShortTris": 66,
+        "otherTriangles": 2605
+      },
+      {
+        "tile": "q120010",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 13653,
+        "extra3I16Bytes": 245754,
+        "activeStyle0Tris": 2548,
+        "activeGableTris": 122,
+        "activeMainWallTris": 2426,
+        "activeShortTris": 198,
+        "otherTriangles": 11105
+      },
+      {
+        "tile": "q130331",
+        "oldBuffers": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "oldTriangles": 11417,
+        "extra3I16Bytes": 205506,
+        "activeStyle0Tris": 814,
+        "activeGableTris": 18,
+        "activeMainWallTris": 796,
+        "activeShortTris": 48,
+        "otherTriangles": 10603
+      }
+    ],
+    "notes": "Actual Buildings.decode and generate on the original pack. Every original Float32/U8 attribute remains exact for all rows; only optional tagged attr, no independently new geometry."
+  },
+  "forExistingVertexAttributes": "exact six arrays, tested all seven atlas owners at identical geometry and source; poses use actual Three near meshes.",
+  "scopeShader": "Only explicitly marked ordinary wall or generic gable triangle below 255m in the three town regions; no added silhouette or physical geometry.",
+  "runtimeAssetsAdded": 0,
+  "native": {
+    "native": {
+      "EGL": "1.5",
+      "driver": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "GL": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+      "samples": 4
+    },
+    "scope": "Exact emitted near areal World/building ShaderMaterial, geometry and accepted ortho textures; no traffic, road linework, plane, trees or UI. Independent offscreen Mesa, not complete Chromium or hardware FPS.",
+    "frames": [
+      {
+        "view": "kings-souris-main-air",
+        "case": "positive",
+        "protectedPixels": 199800,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 21519,
+        "pureOtherBuilding": 11537,
+        "actualActive": 17941,
+        "newRGB2": 16349,
+        "newRGB8": 13461,
+        "maxDN": 118,
+        "render": {
+          "draws": 28,
+          "triangles": 271903
+        },
+        "ready": [
+          "26-12",
+          "26-13",
+          "26-14",
+          "26-15",
+          "27-12",
+          "27-13",
+          "27-14",
+          "28-12",
+          "28-13",
+          "28-14",
+          "29-12",
+          "29-13"
+        ],
+        "owners": [
+          "q13031",
+          "q130330",
+          "q130331",
+          "q130332",
+          "q130333",
+          "q131",
+          "q1321",
+          "q1330"
+        ],
+        "eyeAim": {
+          "id": "kings-souris-main-air",
+          "eye": [
+            72502.86578562179,
+            75.77423798698632,
+            16248.0868806978
+          ],
+          "aim": [
+            72467.76447298366,
+            15.274237986986325,
+            16136.476406946094
+          ],
+          "case": "positive"
+        }
+      },
+      {
+        "view": "kings-souris-main-low",
+        "case": "positive",
+        "protectedPixels": 170101,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 366,
+        "pureOtherBuilding": 328,
+        "actualActive": 49019,
+        "newRGB2": 40933,
+        "newRGB8": 33058,
+        "maxDN": 145,
+        "render": {
+          "draws": 20,
+          "triangles": 252606
+        },
+        "ready": [
+          "26-12",
+          "26-13",
+          "26-14",
+          "26-15",
+          "27-12",
+          "27-13",
+          "27-14",
+          "28-12",
+          "28-13",
+          "28-14",
+          "29-12",
+          "29-13"
+        ],
+        "owners": [
+          "q13031",
+          "q130330",
+          "q130331",
+          "q130332",
+          "q130333",
+          "q131",
+          "q1321",
+          "q1330"
+        ],
+        "eyeAim": {
+          "eye": [
+            72434.13645521087,
+            14.68252584805358,
+            16134.314856704928
+          ],
+          "aim": [
+            72467.76447298366,
+            18.14269075393677,
+            16136.476406946094
+          ],
+          "id": "kings-souris-main-low",
+          "case": "positive"
+        }
+      },
+      {
+        "view": "prince-summerside-centre-air",
+        "case": "positive",
+        "protectedPixels": 191150,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 17106,
+        "pureOtherBuilding": 19190,
+        "actualActive": 26398,
+        "newRGB2": 20651,
+        "newRGB8": 15979,
+        "maxDN": 129,
+        "render": {
+          "draws": 57,
+          "triangles": 290852
+        },
+        "ready": [
+          "10-12",
+          "10-13",
+          "10-14",
+          "6-12",
+          "6-13",
+          "7-11",
+          "7-12",
+          "7-13",
+          "8-11",
+          "8-12",
+          "8-13",
+          "8-14",
+          "8-15",
+          "9-11",
+          "9-12",
+          "9-13",
+          "9-14",
+          "9-15"
+        ],
+        "owners": [
+          "q02311",
+          "q02313",
+          "q03022",
+          "q03023",
+          "q032000",
+          "q032001",
+          "q0320020",
+          "q0320021",
+          "q0320022",
+          "q0320023",
+          "q03200300",
+          "q03200301",
+          "q03200302",
+          "q03200303",
+          "q0320031",
+          "q0320032",
+          "q0320033",
+          "q032010",
+          "q032012",
+          "q0320200",
+          "q0320201",
+          "q0320202",
+          "q0320203",
+          "q032021",
+          "q032022",
+          "q032023",
+          "q03203"
+        ],
+        "eyeAim": {
+          "id": "prince-summerside-centre-air",
+          "eye": [
+            -45335.04685611809,
+            75,
+            11950.614672929583
+          ],
+          "aim": [
+            -45297.60623384978,
+            14.5,
+            11839.767030626459
+          ],
+          "case": "positive"
+        }
+      },
+      {
+        "view": "prince-summerside-centre-low",
+        "case": "positive",
+        "protectedPixels": 167469,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 13205,
+        "pureOtherBuilding": 1397,
+        "actualActive": 51374,
+        "newRGB2": 40403,
+        "newRGB8": 30272,
+        "maxDN": 104,
+        "render": {
+          "draws": 82,
+          "triangles": 267112
+        },
+        "ready": [
+          "10-12",
+          "10-13",
+          "10-14",
+          "6-12",
+          "6-13",
+          "7-11",
+          "7-12",
+          "7-13",
+          "8-11",
+          "8-12",
+          "8-13",
+          "8-14",
+          "8-15",
+          "9-11",
+          "9-12",
+          "9-13",
+          "9-14",
+          "9-15"
+        ],
+        "owners": [
+          "q02311",
+          "q02313",
+          "q03022",
+          "q03023",
+          "q032000",
+          "q032001",
+          "q0320020",
+          "q0320021",
+          "q0320022",
+          "q0320023",
+          "q03200300",
+          "q03200301",
+          "q03200302",
+          "q03200303",
+          "q0320031",
+          "q0320032",
+          "q0320033",
+          "q032010",
+          "q032012",
+          "q0320200",
+          "q0320201",
+          "q0320202",
+          "q0320203",
+          "q032021",
+          "q032022",
+          "q032023",
+          "q03203"
+        ],
+        "eyeAim": {
+          "eye": [
+            -45240.85049311205,
+            15.902006503823984,
+            11899.208477115766
+          ],
+          "aim": [
+            -45270.086866365105,
+            17.351268768310547,
+            11882.452913855794
+          ],
+          "id": "prince-summerside-centre-low",
+          "case": "positive"
+        }
+      },
+      {
+        "view": "queens-charlottetown-north-air",
+        "case": "positive",
+        "protectedPixels": 186380,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 21274,
+        "pureOtherBuilding": 19604,
+        "actualActive": 30149,
+        "newRGB2": 24980,
+        "newRGB8": 19637,
+        "maxDN": 130,
+        "render": {
+          "draws": 155,
+          "triangles": 460115
+        },
+        "ready": [
+          "15-14",
+          "15-15",
+          "15-16",
+          "15-17",
+          "16-14",
+          "16-15",
+          "16-16",
+          "16-17",
+          "16-18",
+          "17-14",
+          "17-15",
+          "17-16",
+          "17-17",
+          "17-18",
+          "18-14",
+          "18-15",
+          "18-16",
+          "18-17"
+        ],
+        "owners": [
+          "q10222",
+          "q1022300",
+          "q1022301",
+          "q1022302",
+          "q1022303",
+          "q102231",
+          "q1022320",
+          "q1022321",
+          "q1022322",
+          "q1022323",
+          "q102233",
+          "q120000",
+          "q1200010",
+          "q12000110",
+          "q12000111",
+          "q12000112",
+          "q12000113",
+          "q1200012",
+          "q12000130",
+          "q12000131",
+          "q12000132",
+          "q12000133",
+          "q1200020",
+          "q1200021",
+          "q1200022",
+          "q1200023",
+          "q1200030",
+          "q1200031",
+          "q1200032",
+          "q1200033",
+          "q120010",
+          "q120011",
+          "q1200120",
+          "q1200121",
+          "q1200122",
+          "q1200123",
+          "q120013",
+          "q1200201",
+          "q1200203",
+          "q1200210",
+          "q12002110",
+          "q12002111",
+          "q12002112",
+          "q12002113",
+          "q1200212",
+          "q1200213",
+          "q120023",
+          "q1200300",
+          "q1200301",
+          "q1200302",
+          "q1200303",
+          "q120031",
+          "q120032"
+        ],
+        "eyeAim": {
+          "id": "queens-charlottetown-north-air",
+          "eye": [
+            6254.454761788441,
+            70.28068965517673,
+            28538.15522623968
+          ],
+          "aim": [
+            6167.874361786069,
+            9.78068965517673,
+            28459.460662669957
+          ],
+          "case": "positive"
+        }
+      },
+      {
+        "view": "queens-charlottetown-north-far",
+        "case": "far",
+        "protectedPixels": 219520,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 19416,
+        "pureOtherBuilding": 14786,
+        "actualActive": 0,
+        "newRGB2": 0,
+        "newRGB8": 0,
+        "maxDN": 0,
+        "render": {
+          "draws": 34,
+          "triangles": 421585
+        },
+        "ready": [
+          "15-14",
+          "15-15",
+          "15-16",
+          "15-17",
+          "16-14",
+          "16-15",
+          "16-16",
+          "16-17",
+          "16-18",
+          "17-14",
+          "17-15",
+          "17-16",
+          "17-17",
+          "17-18",
+          "18-14",
+          "18-15",
+          "18-16",
+          "18-17"
+        ],
+        "owners": [
+          "q10222",
+          "q1022300",
+          "q1022301",
+          "q1022302",
+          "q1022303",
+          "q102231",
+          "q1022320",
+          "q1022321",
+          "q1022322",
+          "q1022323",
+          "q102233",
+          "q120000",
+          "q1200010",
+          "q12000110",
+          "q12000111",
+          "q12000112",
+          "q12000113",
+          "q1200012",
+          "q12000130",
+          "q12000131",
+          "q12000132",
+          "q12000133",
+          "q1200020",
+          "q1200021",
+          "q1200022",
+          "q1200023",
+          "q1200030",
+          "q1200031",
+          "q1200032",
+          "q1200033",
+          "q120010",
+          "q120011",
+          "q1200120",
+          "q1200121",
+          "q1200122",
+          "q1200123",
+          "q120013",
+          "q1200201",
+          "q1200203",
+          "q1200210",
+          "q12002110",
+          "q12002111",
+          "q12002112",
+          "q12002113",
+          "q1200212",
+          "q1200213",
+          "q120023",
+          "q1200300",
+          "q1200301",
+          "q1200302",
+          "q1200303",
+          "q120031",
+          "q120032"
+        ],
+        "eyeAim": {
+          "id": "queens-charlottetown-north-far",
+          "eye": [
+            6589.676310515574,
+            594.2806896551767,
+            28842.84443390707
+          ],
+          "aim": [
+            6167.874361786069,
+            13.28068965517673,
+            28459.460662669957
+          ],
+          "case": "far"
+        }
+      },
+      {
+        "view": "queens-charlottetown-north-low",
+        "case": "positive",
+        "protectedPixels": 172067,
+        "protectedChanged": 0,
+        "allExactAtNeutral": true,
+        "pureRoof": 1946,
+        "pureOtherBuilding": 204,
+        "actualActive": 46823,
+        "newRGB2": 41067,
+        "newRGB8": 33606,
+        "maxDN": 126,
+        "render": {
+          "draws": 64,
+          "triangles": 419942
+        },
+        "ready": [
+          "15-14",
+          "15-15",
+          "15-16",
+          "15-17",
+          "16-14",
+          "16-15",
+          "16-16",
+          "16-17",
+          "16-18",
+          "17-14",
+          "17-15",
+          "17-16",
+          "17-17",
+          "17-18",
+          "18-14",
+          "18-15",
+          "18-16",
+          "18-17"
+        ],
+        "owners": [
+          "q10222",
+          "q1022300",
+          "q1022301",
+          "q1022302",
+          "q1022303",
+          "q102231",
+          "q1022320",
+          "q1022321",
+          "q1022322",
+          "q1022323",
+          "q102233",
+          "q120000",
+          "q1200010",
+          "q12000110",
+          "q12000111",
+          "q12000112",
+          "q12000113",
+          "q1200012",
+          "q12000130",
+          "q12000131",
+          "q12000132",
+          "q12000133",
+          "q1200020",
+          "q1200021",
+          "q1200022",
+          "q1200023",
+          "q1200030",
+          "q1200031",
+          "q1200032",
+          "q1200033",
+          "q120010",
+          "q120011",
+          "q1200120",
+          "q1200121",
+          "q1200122",
+          "q1200123",
+          "q120013",
+          "q1200201",
+          "q1200203",
+          "q1200210",
+          "q12002110",
+          "q12002111",
+          "q12002112",
+          "q12002113",
+          "q1200212",
+          "q1200213",
+          "q120023",
+          "q1200300",
+          "q1200301",
+          "q1200302",
+          "q1200303",
+          "q120031",
+          "q120032"
+        ],
+        "eyeAim": {
+          "eye": [
+            6021.930744166104,
+            13.293642765913138,
+            28341.703770069176
+          ],
+          "aim": [
+            6018.609493790442,
+            14.09682140350342,
+            28308.17042709143
+          ],
+          "id": "queens-charlottetown-north-low",
+          "case": "positive"
+        }
+      }
+    ],
+    "renderedProtectedSamples": 1306487,
+    "renderedProtectedChanged": 0
+  },
+  "fullGameWebGL": {
+    "viewport": [
+      420,
+      296
+    ],
+    "backend": "Chromium SwiftShader",
+    "comparedAtSameFrame": "neutral / enabled / repeat neutral; complementary multisample role markers",
+    "viewResults": [
+      {
+        "town": "kings-souris-main-low",
+        "render": {
+          "refs": 1,
+          "meshes": 8,
+          "draws": 28,
+          "triangles": 270778,
+          "buildingTiles": {
+            "wanted": 8,
+            "ready": 8,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "tiles": [
+            "26-13",
+            "26-14",
+            "27-12",
+            "27-13",
+            "27-14",
+            "28-12",
+            "28-13",
+            "28-14"
+          ]
+        },
+        "totalChanged": 20800,
+        "above2": 17772,
+        "outsideProtected": 0,
+        "outsideProtectedMax": 0,
+        "protectedSamples": 102884,
+        "roles": {
+          "generic": {
+            "pure": 20103,
+            "changed": 19624,
+            "above2": 16772
+          },
+          "roof": {
+            "pure": 128,
+            "changed": 0,
+            "above2": 0
+          },
+          "authored": {
+            "pure": 0,
+            "changed": 0,
+            "above2": 0
+          }
+        }
+      },
+      {
+        "town": "prince-summerside-centre-low",
+        "render": {
+          "refs": 1,
+          "meshes": 27,
+          "draws": 102,
+          "triangles": 326560,
+          "buildingTiles": {
+            "wanted": 27,
+            "ready": 27,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "tiles": [
+            "10-12",
+            "10-13",
+            "10-14",
+            "6-12",
+            "6-13",
+            "7-11",
+            "7-12",
+            "7-13",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "9-11",
+            "9-12",
+            "9-13",
+            "9-14",
+            "9-15"
+          ]
+        },
+        "totalChanged": 28061,
+        "above2": 22720,
+        "outsideProtected": 0,
+        "outsideProtectedMax": 0,
+        "protectedSamples": 94725,
+        "roles": {
+          "generic": {
+            "pure": 27879,
+            "changed": 26599,
+            "above2": 21532
+          },
+          "roof": {
+            "pure": 6880,
+            "changed": 0,
+            "above2": 0
+          },
+          "authored": {
+            "pure": 0,
+            "changed": 0,
+            "above2": 0
+          }
+        }
+      },
+      {
+        "town": "queens",
+        "render": {
+          "refs": 1,
+          "meshes": 53,
+          "draws": 180,
+          "triangles": 529837,
+          "buildingTiles": {
+            "wanted": 53,
+            "ready": 53,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "tiles": [
+            "15-14",
+            "15-15",
+            "15-16",
+            "15-17",
+            "16-14",
+            "16-15",
+            "16-16",
+            "16-17",
+            "16-18",
+            "17-14",
+            "17-15",
+            "17-16",
+            "17-17",
+            "17-18",
+            "18-14",
+            "18-15",
+            "18-16",
+            "18-17"
+          ]
+        },
+        "totalChanged": 14562,
+        "above2": 11575,
+        "outsideProtected": 0,
+        "outsideProtectedMax": 0,
+        "protectedSamples": 99411,
+        "roles": {
+          "generic": {
+            "pure": 11930,
+            "changed": 9822,
+            "above2": 8050
+          },
+          "roof": {
+            "pure": 4252,
+            "changed": 0,
+            "above2": 0
+          },
+          "authored": {
+            "pure": 0,
+            "changed": 0,
+            "above2": 0
+          }
+        }
+      },
+      {
+        "town": "queens-charlottetown-north-far",
+        "render": {
+          "refs": 1,
+          "meshes": 53,
+          "draws": 53,
+          "triangles": 452379,
+          "buildingTiles": {
+            "wanted": 53,
+            "ready": 53,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "tiles": [
+            "15-14",
+            "15-15",
+            "15-16",
+            "15-17",
+            "16-14",
+            "16-15",
+            "16-16",
+            "16-17",
+            "16-18",
+            "17-14",
+            "17-15",
+            "17-16",
+            "17-17",
+            "17-18",
+            "18-14",
+            "18-15",
+            "18-16",
+            "18-17"
+          ]
+        },
+        "totalChanged": 0,
+        "above2": 0,
+        "outsideProtected": 0,
+        "outsideProtectedMax": 0,
+        "protectedSamples": 108533,
+        "roles": {
+          "generic": {
+            "pure": 721,
+            "changed": 0,
+            "above2": 0
+          },
+          "roof": {
+            "pure": 4460,
+            "changed": 0,
+            "above2": 0
+          },
+          "authored": {
+            "pure": 75,
+            "changed": 0,
+            "above2": 0
+          }
+        }
+      }
+    ]
+  },
+  "productionBundle": {
+    "workflow": "Summerside, optional study enabled via Dispatch, then free flight, Cockpit and Pause. Custom atlas generation called out as mismatch.",
+    "records": [
+      {
+        "mode": "stock",
+        "site": "summerside",
+        "active": false,
+        "distanceM": 503.37421738565484,
+        "final": "paused",
+        "camera": "Cockpit",
+        "warnings": [],
+        "assets": [
+          "buildings/index.json",
+          "buildings/tiles.pack",
+          "coastal/v1/east-point.i16.gz",
+          "coastal/v1/west-point.i16.gz",
+          "coastal/v2/east-point-cliff.i16.gz",
+          "coastal/v3/east-point-bench.r8.gz",
+          "color.webp",
+          "cover.bin.gz",
+          "cover.json",
+          "detail/index.json",
+          "detail/sentinel-00.pack",
+          "detail/sentinel-01.pack",
+          "detail/sentinel-02.pack",
+          "ground/odbl/v1/parking-surfaces.bin.gz",
+          "harbour/odbl/v1/quartermaster-coast.rg.gz",
+          "harbour/odbl/v1/quartermaster-docks.json.gz",
+          "height.bin.gz",
+          "mainland/color.webp",
+          "mainland/context.json",
+          "mainland/height.bin.gz",
+          "maritime-sky.webp",
+          "pedestrian/odbl/v1/sidewalks.bin.gz",
+          "roads.bin.gz",
+          "roads.json",
+          "terrain.json",
+          "water/v1/south-lake.r8.gz",
+          "woodland/hedgerows-v1/hedge-01.pack",
+          "woodland/hedgerows-v1/hedge-02.pack",
+          "woodland/hedgerows-v1/index.json",
+          "woodland/stream-v1/heights-02.pack",
+          "woodland/stream-v1/heights-03.pack",
+          "woodland/stream-v1/heights-04.pack",
+          "woodland/stream-v1/heights-05.pack",
+          "woodland/stream-v1/heights-06.pack",
+          "woodland/stream-v1/index.json",
+          "woodland/v1/efi-dominant-heights.r8.gz"
+        ]
+      },
+      {
+        "mode": "opt",
+        "site": "summerside",
+        "active": true,
+        "distanceM": 503.37421738565484,
+        "final": "paused",
+        "camera": "Cockpit",
+        "warnings": [],
+        "assets": [
+          "buildings/index.json",
+          "buildings/tiles.pack",
+          "coastal/v1/east-point.i16.gz",
+          "coastal/v1/west-point.i16.gz",
+          "coastal/v2/east-point-cliff.i16.gz",
+          "coastal/v3/east-point-bench.r8.gz",
+          "color.webp",
+          "cover.bin.gz",
+          "cover.json",
+          "detail/index.json",
+          "detail/sentinel-00.pack",
+          "detail/sentinel-01.pack",
+          "detail/sentinel-02.pack",
+          "ground/odbl/v1/parking-surfaces.bin.gz",
+          "harbour/odbl/v1/quartermaster-coast.rg.gz",
+          "harbour/odbl/v1/quartermaster-docks.json.gz",
+          "height.bin.gz",
+          "mainland/color.webp",
+          "mainland/context.json",
+          "mainland/height.bin.gz",
+          "maritime-sky.webp",
+          "pedestrian/odbl/v1/sidewalks.bin.gz",
+          "roads.bin.gz",
+          "roads.json",
+          "terrain.json",
+          "water/v1/south-lake.r8.gz",
+          "woodland/hedgerows-v1/hedge-01.pack",
+          "woodland/hedgerows-v1/hedge-02.pack",
+          "woodland/hedgerows-v1/index.json",
+          "woodland/stream-v1/heights-02.pack",
+          "woodland/stream-v1/heights-03.pack",
+          "woodland/stream-v1/heights-04.pack",
+          "woodland/stream-v1/heights-05.pack",
+          "woodland/stream-v1/heights-06.pack",
+          "woodland/stream-v1/index.json",
+          "woodland/v1/efi-dominant-heights.r8.gz"
+        ]
+      },
+      {
+        "mode": "mismatch",
+        "site": "summerside",
+        "active": false,
+        "distanceM": null,
+        "final": "dispatch",
+        "camera": "Chase",
+        "warnings": [],
+        "assets": [
+          "buildings/index.json",
+          "buildings/tiles.pack",
+          "coastal/v1/east-point.i16.gz",
+          "coastal/v1/west-point.i16.gz",
+          "coastal/v2/east-point-cliff.i16.gz",
+          "coastal/v3/east-point-bench.r8.gz",
+          "color.webp",
+          "cover.bin.gz",
+          "cover.json",
+          "detail/index.json",
+          "detail/sentinel-01.pack",
+          "ground/odbl/v1/parking-surfaces.bin.gz",
+          "harbour/odbl/v1/quartermaster-coast.rg.gz",
+          "harbour/odbl/v1/quartermaster-docks.json.gz",
+          "height.bin.gz",
+          "mainland/color.webp",
+          "mainland/context.json",
+          "mainland/height.bin.gz",
+          "maritime-sky.webp",
+          "pedestrian/odbl/v1/sidewalks.bin.gz",
+          "roads.bin.gz",
+          "roads.json",
+          "terrain.json",
+          "water/v1/south-lake.r8.gz",
+          "woodland/hedgerows-v1/index.json",
+          "woodland/stream-v1/heights-02.pack",
+          "woodland/stream-v1/heights-03.pack",
+          "woodland/stream-v1/heights-04.pack",
+          "woodland/stream-v1/heights-05.pack",
+          "woodland/stream-v1/index.json",
+          "woodland/v1/efi-dominant-heights.r8.gz"
+        ]
+      },
+      {
+        "mode": "detail",
+        "site": "summerside",
+        "active": false,
+        "distanceM": null,
+        "final": "dispatch",
+        "camera": "Chase",
+        "warnings": [],
+        "assets": [
+          "buildings/index.json",
+          "buildings/tiles.pack",
+          "coastal/v1/east-point.i16.gz",
+          "coastal/v1/west-point.i16.gz",
+          "coastal/v2/east-point-cliff.i16.gz",
+          "coastal/v3/east-point-bench.r8.gz",
+          "color.webp",
+          "cover.bin.gz",
+          "cover.json",
+          "detail/index.json",
+          "detail/sentinel-01.pack",
+          "greenwich/v0/bowley-2020-water.r8.gz",
+          "ground/odbl/v1/parking-surfaces.bin.gz",
+          "harbour/odbl/v1/basin-bank-terrain-v2.cm.gz",
+          "harbour/odbl/v1/basin-head-channel.rg.gz",
+          "harbour/odbl/v1/quartermaster-coast.rg.gz",
+          "harbour/odbl/v1/quartermaster-docks.json.gz",
+          "height.bin.gz",
+          "mainland/color.webp",
+          "mainland/context.json",
+          "mainland/height.bin.gz",
+          "maritime-sky.webp",
+          "montague/v0/foundation.preview.gz",
+          "pedestrian/odbl/v1/sidewalks.bin.gz",
+          "roads.bin.gz",
+          "roads.json",
+          "spinnakers/v0/measured-deck.gz",
+          "spinnakers/v1/north-court.gz",
+          "terrain.json",
+          "water/v1/south-lake.r8.gz",
+          "woodland/hedgerows-v1/hedge-01.pack",
+          "woodland/hedgerows-v1/hedge-02.pack",
+          "woodland/hedgerows-v1/index.json",
+          "woodland/stream-v1/heights-02.pack",
+          "woodland/stream-v1/heights-03.pack",
+          "woodland/stream-v1/heights-04.pack",
+          "woodland/stream-v1/heights-05.pack",
+          "woodland/stream-v1/heights-06.pack",
+          "woodland/stream-v1/index.json",
+          "woodland/v1/efi-dominant-heights.r8.gz"
+        ]
+      }
+    ]
+  },
+  "independentAngularAudit": {
+    "poses": 34,
+    "pureFullGainSideEaveReservePixelsWithNoPane": 131638,
+    "outsideEligibleRoleChanged": 0,
+    "maxRgbAbove2VersusClosedFormFilterPer219520Pixels": 149,
+    "differenceScope": "Subpixel filtering differences within eligible wall roles; did not affect reserved margins."
+  }
+}

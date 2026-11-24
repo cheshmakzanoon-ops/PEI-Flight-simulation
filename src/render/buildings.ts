@@ -22,6 +22,7 @@ import type {NorthBaywalk} from './north-baywalk.ts';
 import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
 import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINNAKERS_TILE,type WharfSurface} from './spinnakers-shells.ts';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
+import { fittedWallMaterial,townFaceRegion,townTileRegion,townWallVertex,TOWN_WALL_ATLAS,type TownWallOptics } from './town-wall-optics.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
 import { SOURIS_ROOF } from './souris-roof.generated.ts';
@@ -201,12 +202,15 @@ export class Buildings {
  private readonly churchArt?:ChurchArt;
  private readonly pinnedChurch?:Bldg[];
  private readonly pinnedKingsCrown?:Bldg[];
+ private readonly townWallOptics?:TownWallOptics;
+ private readonly fittedWallMaterials=new Map<THREE.ShaderMaterial,THREE.ShaderMaterial>();
  private readonly tryStation?:RailwayReview;
  private station?:RailwayVariant;
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'>&{art:StDavidsArt};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[]){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics){
+  this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
   this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
@@ -292,10 +296,11 @@ export class Buildings {
   return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,get),
    atlasHash:ready.spec.sha256,kingsCrown:ready.rows};
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics);
  }
+ get townWallReview(){return !!this.townWallOptics;}
  get indianRiverPrepared(){return !!this.indianVariant;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
@@ -593,6 +598,8 @@ export class Buildings {
  private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,rusticoChunk?:string){
   let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
+  // Record only changed spans; allocate the GPU lane once after emission.
+  const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2)?[] as number[]:undefined;
   let facade=0;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
@@ -721,18 +728,31 @@ export class Buildings {
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
     vertex(p,y0,cw,u0,0,0);vertex(q,y3,cw,u1,y3-y1,0);vertex(q,y1,cw,u1,0,0);
    };
+   const fitWalls=!!townSpans&&facade===0&&rings.length===1&&townFaceRegion(cx,cz);
+   // One horizontal ordering datum above every actual parent wall foot;
+   // sloped stock floor profiles remain unchanged beneath these optics.
+   let wallDatum=base;
+   if(fitWalls)for(const p of ring)wallDatum=Math.max(wallDatum,this.t.meshElevation(p.x,p.z)-.22);
    for(const rr of rings){for(let i=0;i<rr.length;i++){
     const a=rr[i],b=rr[(i+1)%rr.length],len=Math.hypot(b.x-a.x,b.z-a.z);
     if(len<.15)continue;
+    const first=fitWalls?P.length/3:0;
+    let rimMin=fitWalls?Math.min(rim(a),rim(b)):0;
     if(neutral){
      const edges=neutralRoofEdge(a,b,center,neutral.planes);
+     if(fitWalls)for(const cut of edges)rimMin=Math.min(rimMin,rim(cut));
      const u=(t:Pt)=>Math.hypot(t.x-a.x,t.z-a.z);
      for(let k=1;k<edges.length;k++)wall(edges[k-1],edges[k],u(edges[k-1]),u(edges[k]));
-     continue;
+    }else{
+     const middle=fit?splitRoofEdge(a,b,fit)[1]:b;
+     if(fitWalls)rimMin=Math.min(rimMin,rim(middle));
+     if(middle===b)wall(a,b,0,len);
+     else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
     }
-    const middle=fit?splitRoofEdge(a,b,fit)[1]:b;
-    if(middle===b)wall(a,b,0,len);
-    else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
+    if(fitWalls&&townSpans){
+     const [width,floor,top]=townWallVertex(len,wallDatum,rimMin);
+     if(width>0)townSpans.push(first,P.length/3,width,floor,top);
+    }
    }}
    const observed=rings.length===1?readRoofTone(this.atlasHash,tile.id,i,f.footprint):undefined;
    const roofColor=observed?new THREE.Color().setRGB(...observed):cr;
@@ -743,6 +763,9 @@ export class Buildings {
     if(length(a,b)>length(b,c)){[a,b,c,d]=[b,c,d,a];}
     const ab={x:(a.x+b.x)*.5,z:(a.z+b.z)*.5},cd={x:(c.x+d.x)*.5,z:(c.z+d.z)*.5};
     for(const [p,y] of [[a,eave],[ab,base+h],[cd,base+h],[a,eave],[cd,base+h],[d,eave],[b,eave],[c,eave],[cd,base+h],[b,eave],[cd,base+h],[ab,base+h]] as [Pt,number][])roofVert(p,y);
+    // These triangle caps have no geometric wall-grid UV (0/4/2
+    // was decorative only). Keep them opaque within opted ordinary faces.
+    if(fitWalls&&townSpans)townSpans.push(P.length/3,P.length/3+6,-100,0,0);
     for(const [u,v,w] of [[a,b,ab],[c,d,cd]]){vertex(u,eave,cw,0,0,0);vertex(v,eave,cw,4,0,0);vertex(w,base+h,cw,2,h-low,0);}
    }else{
     const outline=rings.map(rr=>rr.map(p=>new THREE.Vector2(p.x-ox,-p.z+oz))),flat=rings.flat();
@@ -758,6 +781,19 @@ export class Buildings {
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
   const mesh=new THREE.Mesh(g,actualRustico&&this.rusticoNeutralMat?this.rusticoNeutralMat:tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  if(townSpans?.length&&this.townWallOptics){
+    const stock=mesh.material;
+    let material=this.fittedWallMaterials.get(stock);
+    if(!material){material=fittedWallMaterial(stock,this.townWallOptics);this.fittedWallMaterials.set(stock,material);}
+    if(material!==stock){
+     const data=new Int16Array(P.length);
+     for(let i=0;i<townSpans.length;i+=5){
+      const start=townSpans[i]*3,end=townSpans[i+1]*3,x=townSpans[i+2],y=townSpans[i+3],z=townSpans[i+4];
+      for(let j=start;j<end;j+=3){data[j]=x;data[j+1]=y;data[j+2]=z;}
+     }
+     g.setAttribute('townWallFit',new THREE.BufferAttribute(data,3));mesh.material=material;
+    }
+  }
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];

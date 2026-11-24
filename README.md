@@ -64,6 +64,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |
 | Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
 | Exposed Prince and Kings shores | `?nearshoreFoamStudy` | [Nearshore surf](docs/qa/nearshore-foam-study.md) adds smaller, moving breaker groups without changing the mapped shoreline. Standard only. |
+| Charlottetown, Summerside and Souris | `?townWallStudy` | [Town façades](docs/qa/town-wall-study.md) fits complete, softly recessed window patterns to existing generic walls. Standard only. |
 | Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. |
 | Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
 

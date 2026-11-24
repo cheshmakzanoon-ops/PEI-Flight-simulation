@@ -68,6 +68,7 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 export const SCENERY_REVIEWS=[
  {flag:'coastalOptics',name:'Coastal optics',scope:'Daylight haze, breaking surf and scoped shore repairs in Standard'},
  {flag:'nearshoreFoamStudy',name:'Nearshore surf',scope:'Two exposed reaches in Prince and Kings counties'},
+ {flag:'townWallStudy',name:'Town façades',scope:'Selected blocks in Charlottetown, Summerside and Souris'},
 
  {flag:'beaconsfieldReview',name:'Beaconsfield exterior',scope:'Charlottetown waterfront'},
  {flag:'greenGablesReview',name:'Green Gables House',scope:'Cavendish exterior'},
@@ -103,7 +104,7 @@ export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'d
   if(options.get('scenery')==='detail')return 'detail';
   return COASTAL_OPTICS_CONFLICTS.some(k=>options.has(k))?'terrain':undefined;
  }
- if(flag==='nearshoreFoamStudy')return options.get('scenery')==='detail'?'detail':undefined;
+ if(flag==='nearshoreFoamStudy'||flag==='townWallStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
  if(flag==='gravelSurfaceStudy')return options.get('scenery')==='detail'?'detail':undefined;
  if(flag==='woodlandCrownBase'||flag==='woodlandBark'||flag==='woodlandView'){

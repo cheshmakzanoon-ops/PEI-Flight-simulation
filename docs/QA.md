@@ -71,6 +71,7 @@ the original Cavendish coastal overdraw case after two relocations.
 ## Coastal terrain and materials
 
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [Town façade fit](qa/town-wall-study.md): existing wall spans, window margins, neutral rendering and unchanged stock geometry.
 - [East Point sandstone](qa/east-sandstone.md): matched terrain materials, a licensed reference and a West Point control.
 - [Nearshore breakers](qa/shore-foam.md) and [road materials](qa/road-material.md): fixed-camera appearance and material-isolation checks.
 
