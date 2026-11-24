@@ -1,0 +1,18 @@
+{
+  "standard": {
+    "distanceMetres": 77.68,
+    "site": "cavendish-dunelands-low",
+    "grainAdmitted": false,
+    "downloadedGravelFiles": [],
+    "warnings": [],
+    "errors": []
+  },
+  "live": {
+    "distanceMetres": 75.91,
+    "site": "cavendish-dunelands-low",
+    "grainAdmitted": true,
+    "downloadedGravelFiles": [],
+    "warnings": [],
+    "errors": []
+  }
+}

@@ -41,7 +41,8 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
 | Green Gables grounds | `?greenGablesBarnReview` | [Barn and adjoining lower wing](docs/art/green-gables-barn-review.md), with the survey-supported roof kept at its exact atlas owner. |
-| Cavendish Dunelands | `?cavendishWaterReview` | [Dated freshwater core](docs/qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
+| Cavendish Dunelands | `?cavendishWaterReview` | [Lake of Shining Waters, 2020 freshwater core](docs/qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
+| Green Gables grounds | `?gablesGravelReview` | [Gravel detail](docs/qa/gables-gravel.md) on a short source-backed section of a mapped path. |
 | Southwest of Green Gables | `?gablesGradeReview` | [Survey-supported dry rise](docs/qa/gables-southwest-grade.md), a close-range correction to terrain and contact in one small area. |
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |

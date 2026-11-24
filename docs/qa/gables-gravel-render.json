@@ -1,0 +1,14 @@
+{
+  "gables-track-near-close": {
+    "pixels": 453600,
+    "protectedPixels": 414323,
+    "protectedChangedPixels": 0,
+    "changedAbove2": 2257,
+    "samePhysicalProbes": true,
+    "sameDrawAndTriangles": true
+  },
+  "gables-track-long-close": {
+    "distanceFade": true,
+    "fullyUnchanged": 453600
+  }
+}

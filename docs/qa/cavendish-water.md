@@ -1,4 +1,4 @@
-# Cavendish Dunelands freshwater core
+# Lake of Shining Waters: Cavendish Dunelands freshwater core
 
 In Dispatch, select **Dunelands freshwater** under **Optional scenery
 studies** and apply. You can also use `?cavendishWaterReview` (or
@@ -6,6 +6,9 @@ studies** and apply. You can also use `?cavendishWaterReview` (or
 **Cavendish Dunelands · coastal pass** to start just offshore and cross the
 pond on the approach to Green Gables. The Standard atlas stays unchanged
 without the flag. The study can coexist with the separate Bowley Pond layer.
+
+The study is the 2020 open-water core of [Lake of Shining Waters](https://geogratis.gc.ca/services/geoname/en/geonames.json?q=Lake%20of%20Shining%20Waters),
+official feature **BACHN** in the Canadian Geographical Names Database.
 
 This preview maps about **6.1 hectares of directly supported 2020
 open-water core**, not the entire lake or its present shoreline. Flight contact
@@ -49,7 +52,9 @@ core, not a mapped present-day shoreline.*
   boardwalk. The render deliberately omits any change to the actual boardwalk,
   adjacent paths, landscape outside the core, and post-Fiona conditions. The
   mapped trail and existing game meshes were independent exclusion checks,
-  not input shoreline. No Parks Canada or other external imagery is included.
+  not input shoreline. [Watershed restoration work](https://iaac-aeic.gc.ca/050/evaluations/proj/83598)
+is additional reason not to read the 2020 level as a current measurement.
+No Parks Canada or other external imagery is included.
 
 ## Reproduce the pack
 

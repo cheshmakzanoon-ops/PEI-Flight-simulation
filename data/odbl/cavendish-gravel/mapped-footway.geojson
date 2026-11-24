@@ -1,0 +1,33 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        -63.3819114,
+        46.4882988
+      ],
+      [
+        -63.3818888,
+        46.4884252
+      ],
+      [
+        -63.3818595,
+        46.4884939
+      ]
+    ]
+  },
+  "properties": {
+    "source": "https://www.openstreetmap.org/way/1037469196",
+    "version": 1,
+    "sourceDate": "2022-03-06T04:55:44Z",
+    "stageExtentNativeMetres": [
+      7.625,
+      15.5
+    ],
+    "renderWidthMaxM": 1.4,
+    "widthMeasured": false,
+    "attribution": "\u00a9 OpenStreetMap contributors",
+    "license": "https://opendatacommons.org/licenses/odbl/1-0/"
+  }
+}

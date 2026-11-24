@@ -1,0 +1,37 @@
+{
+  "shaderSHA256": "2a26038e10add624107e9cfd9b435dc4e5570b9a75c2f57d0d94a7fb1d066a22",
+  "minimum_source_width_still_UNMEASURED": true,
+  "gameRenderMaxWidthM": 1.4,
+  "nonzeroFragmentAuditedSitesN": 69827,
+  "exactNativeProjectedCentreClaimIntervalM": [
+    7.625,
+    15.5
+  ],
+  "nativeAreaApproxDenseM2": 10.910468750000001,
+  "sourceDSMDTMQuantilesM": [
+    0.03814323619008064,
+    0.04165478348731995,
+    0.052297309041023254,
+    0.09309809207916261,
+    0.13091162145137786,
+    0.23908458650112152
+  ],
+  "thirdNativeClass2HorizontalM": [
+    0.13014568532115703,
+    0.2898887180578977,
+    0.44188179304452024,
+    0.5612396579962909,
+    0.596301802874004,
+    0.7915659163697664
+  ],
+  "nearestClass6M": 8.875190014052954,
+  "legacyN112BelowNativeYIncludingLift": [
+    0.5918355584144592,
+    0.6008280277252197,
+    0.6119648218154907,
+    0.6218250632286072,
+    0.6249868094921112,
+    0.6453845500946045
+  ],
+  "noPastSourceUnderReprojection": true
+}
