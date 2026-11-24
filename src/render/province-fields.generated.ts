@@ -1,0 +1,1 @@
+export const FIELD_DIRECTORY_PIN={"packedSize":111398,"rawSize":118760,"packedHash":"2c724896d98aea2e83dcdefe849e4159e4f3455ebd762434fee23da0791ee4d8","rawHash":"061f4917037dc66a73cf3ab078e93e99d7bebf90a93a151fbc13b88107bb6563"} as const;

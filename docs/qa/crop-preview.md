@@ -16,6 +16,8 @@ flight physics, roads or the areas outside the three preview windows.
 | Queens | 46.36342, −63.50648 |
 | Kings | 46.34532, −62.36842 |
 
+For wider coverage see the [expanded island field-surface study](province-fields.md).
+
 ## Geographic support, not a crop survey
 
 Agriculture and Agri-Food Canada's [2023 automatically detected field boundaries](https://open.canada.ca/data/en/dataset/b3dba669-6611-4cb1-b4be-6c317b9908ad)
