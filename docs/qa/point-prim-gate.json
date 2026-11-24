@@ -1,0 +1,1047 @@
+{
+  "compiledFlights": [
+    {
+      "mode": "active",
+      "site": "point-prim-offshore",
+      "motionM": 110.935,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "ready",
+        "requests": 1,
+        "active": true,
+        "deferredClearance": false,
+        "grade": true,
+        "draw": true
+      },
+      "gradeRequests": 1,
+      "console": []
+    },
+    {
+      "mode": "stock",
+      "site": "point-prim-offshore",
+      "motionM": 78.896,
+      "lease": {},
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "wrong-cover",
+      "site": "point-prim-offshore",
+      "motionM": 77.116,
+      "lease": {},
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "distant",
+      "site": "charlottetown",
+      "motionM": 79.234,
+      "lease": {
+        "layers": "verified",
+        "owner": "idle",
+        "data": "idle",
+        "requests": 0,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 0,
+      "console": []
+    },
+    {
+      "mode": "corrupt-grade",
+      "site": "point-prim-offshore",
+      "motionM": 80.083,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 1,
+      "console": []
+    },
+    {
+      "mode": "held-grade",
+      "site": "point-prim-offshore",
+      "motionM": 81.268,
+      "lease": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      },
+      "gradeRequests": 1,
+      "console": []
+    }
+  ],
+  "actualFlightTierScene": {
+    "before": {
+      "draws": 106,
+      "tris": 202393
+    },
+    "after": {
+      "draws": 116,
+      "tris": 208774
+    },
+    "active": true,
+    "exact": true,
+    "stockY": 2.670048631071443,
+    "y": 4.847661243745621,
+    "pixelDeltaOver3": 2738
+  },
+  "scope": {
+    "directTriangleFootprints": 1642,
+    "trueEffectiveAreaM2": 2282.5949144363403,
+    "wholeAABBMinSignedDryM": 38.063297319037524,
+    "rawSignedKnotCrossingTriangleCount": 196,
+    "actualNeighbour222MinDistanceM": 1.4511527511985327,
+    "otherVenuePadLanes": 0,
+    "actualStemWithin100m": 33,
+    "nearestActualStem": [
+      {
+        "x": 12386.32421875,
+        "y": 2.8399999141693115,
+        "z": 49962.078125,
+        "h": 12.095126152038574,
+        "w": 14.015044212341309,
+        "variant": 1,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 22.04621644437499,
+        "existingShadowQuadToGradeM": 10.986709787517707
+      },
+      {
+        "x": 12376.99609375,
+        "y": 2.8399999141693115,
+        "z": 49952.90234375,
+        "h": 11.408785820007324,
+        "w": 12.738136291503906,
+        "variant": 3,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 23.108399115446144,
+        "existingShadowQuadToGradeM": 12.389905116817257
+      },
+      {
+        "x": 12403.5546875,
+        "y": 2.8064069747924805,
+        "z": 49971.18359375,
+        "h": 16.17067527770996,
+        "w": 17.404029846191406,
+        "variant": 0,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 29.786026380669373,
+        "existingShadowQuadToGradeM": 16.92421029669511
+      }
+    ],
+    "nearestActualShade": [
+      {
+        "x": 12386.32421875,
+        "y": 2.8399999141693115,
+        "z": 49962.078125,
+        "h": 12.095126152038574,
+        "w": 14.015044212341309,
+        "variant": 1,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 22.04621644437499,
+        "existingShadowQuadToGradeM": 10.986709787517707
+      },
+      {
+        "x": 12376.99609375,
+        "y": 2.8399999141693115,
+        "z": 49952.90234375,
+        "h": 11.408785820007324,
+        "w": 12.738136291503906,
+        "variant": 3,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 23.108399115446144,
+        "existingShadowQuadToGradeM": 12.389905116817257
+      },
+      {
+        "x": 12403.5546875,
+        "y": 2.8064069747924805,
+        "z": 49971.18359375,
+        "h": 16.17067527770996,
+        "w": 17.404029846191406,
+        "variant": 0,
+        "hedge": false,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "positiveGeometryDistance": 29.786026380669373,
+        "existingShadowQuadToGradeM": 16.92421029669511
+      }
+    ],
+    "localCoverScalarExtentCells": 4,
+    "authoredNativeGroundOverlap": {
+      "allOutsideFoundation": {
+        "n": 2304,
+        "stockAbs": [
+          1.9156177645296173,
+          2.126702257655232,
+          2.1570229065841504,
+          2.214567444097854
+        ],
+        "newAbs": [
+          0.15419886510552316,
+          1.683814236112608,
+          1.9045921797862315,
+          2.1306071950021908
+        ],
+        "worse>.25": 0
+      },
+      "open2020OutsideFoundation": {
+        "n": 2263,
+        "stockAbs": [
+          1.9120897198238795,
+          2.1234759510435617,
+          2.1560448352143933,
+          2.2114739351113197
+        ],
+        "newAbs": [
+          0.17632141902184972,
+          1.6825115177062953,
+          1.8951085048665082,
+          2.1306071950021908
+        ],
+        "worse>.25": 0
+      },
+      "nearOpen collar 4.1 to 11.8m": {
+        "n": 351,
+        "stockAbs": [
+          2.0231023205915024,
+          2.17519603376073,
+          2.1867720615979414,
+          2.2114739351113197
+        ],
+        "newAbs": [
+          0.004208667546425349,
+          0.014641715695502211,
+          0.024147765294272983,
+          0.06124873850659729
+        ],
+        "worse>.25": 0
+      }
+    }
+  },
+  "seat": {
+    "generatedVegetation": {
+      "roots": [
+        {
+          "x": 12392.77734375,
+          "y": 2.7078166007995605,
+          "z": 49908.296875,
+          "h": 5.727953910827637,
+          "w": 6.748769283294678,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12406.28515625,
+          "y": 2.8399999141693115,
+          "z": 49914.45703125,
+          "h": 4.034677982330322,
+          "w": 4.388982772827148,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12388.208984375,
+          "y": 2.7337586879730225,
+          "z": 49928.23046875,
+          "h": 6.853786945343018,
+          "w": 7.969162940979004,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12398.4609375,
+          "y": 2.8194692134857178,
+          "z": 49922.48828125,
+          "h": 6.340880393981934,
+          "w": 7.190016746520996,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12419.408203125,
+          "y": 2.8399999141693115,
+          "z": 49926.0546875,
+          "h": 6.2218098640441895,
+          "w": 5.927901744842529,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12386.716796875,
+          "y": 2.768195390701294,
+          "z": 49936.15234375,
+          "h": 8.248011589050293,
+          "w": 7.823645114898682,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12400.0927734375,
+          "y": 2.8391528129577637,
+          "z": 49937.3359375,
+          "h": 6.941370964050293,
+          "w": 6.807222366333008,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12412.064453125,
+          "y": 2.8399999141693115,
+          "z": 49936.41796875,
+          "h": 7.153243541717529,
+          "w": 6.504099369049072,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12425.166015625,
+          "y": 2.8399999141693115,
+          "z": 49943.46484375,
+          "h": 7.007518291473389,
+          "w": 6.652647018432617,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12376.99609375,
+          "y": 2.8399999141693115,
+          "z": 49952.90234375,
+          "h": 11.408785820007324,
+          "w": 12.738136291503906,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12392.6494140625,
+          "y": 2.8343746662139893,
+          "z": 49946.44140625,
+          "h": 7.844741344451904,
+          "w": 7.447629928588867,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12407.4619140625,
+          "y": 2.8225505352020264,
+          "z": 49953.58203125,
+          "h": 7.995225429534912,
+          "w": 9.002305030822754,
+          "variant": 1,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12412.0927734375,
+          "y": 2.822359561920166,
+          "z": 49951.4765625,
+          "h": 6.796210765838623,
+          "w": 7.355423927307129,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12430.1474609375,
+          "y": 2.83367657661438,
+          "z": 49948.5859375,
+          "h": 6.560747146606445,
+          "w": 7.638750076293945,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12434.2626953125,
+          "y": 2.8354198932647705,
+          "z": 49948.41015625,
+          "h": 8.806761741638184,
+          "w": 7.764945030212402,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12386.32421875,
+          "y": 2.8399999141693115,
+          "z": 49962.078125,
+          "h": 12.095126152038574,
+          "w": 14.015044212341309,
+          "variant": 1,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12401.541015625,
+          "y": 2.8346989154815674,
+          "z": 49957.51953125,
+          "h": 18.402725219726562,
+          "w": 19.040218353271484,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12419.2705078125,
+          "y": 2.696240186691284,
+          "z": 49965.1796875,
+          "h": 7.2545976638793945,
+          "w": 6.513051509857178,
+          "variant": 1,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12427.0166015625,
+          "y": 2.7171592712402344,
+          "z": 49958.47265625,
+          "h": 6.360917568206787,
+          "w": 6.3075175285339355,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12442.12890625,
+          "y": 2.517749071121216,
+          "z": 49965.48046875,
+          "h": 8.901741027832031,
+          "w": 8.078800201416016,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12403.5546875,
+          "y": 2.8064069747924805,
+          "z": 49971.18359375,
+          "h": 16.17067527770996,
+          "w": 17.404029846191406,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12428.443359375,
+          "y": 2.5455873012542725,
+          "z": 49971.69140625,
+          "h": 8.911514282226562,
+          "w": 9.3601713180542,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12437.6806640625,
+          "y": 2.484562635421753,
+          "z": 49969.546875,
+          "h": 9.45624828338623,
+          "w": 10.998531341552734,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12428.0439453125,
+          "y": 2.409522771835327,
+          "z": 49983.0859375,
+          "h": 8.944282531738281,
+          "w": 8.631349563598633,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12434.75,
+          "y": 2.1856846809387207,
+          "z": 49990.9296875,
+          "h": 8.759902954101562,
+          "w": 9.847611427307129,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12454.57421875,
+          "y": 2.1156768798828125,
+          "z": 49982.4453125,
+          "h": 10.874418258666992,
+          "w": 10.166024208068848,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12425.05859375,
+          "y": 2.162790536880493,
+          "z": 49998.5078125,
+          "h": 8.761421203613281,
+          "w": 9.697632789611816,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12439.345703125,
+          "y": 1.6722712516784668,
+          "z": 50003.05859375,
+          "h": 9.421916007995605,
+          "w": 9.118218421936035,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12445.6025390625,
+          "y": 1.8738689422607422,
+          "z": 49995.8359375,
+          "h": 8.512907028198242,
+          "w": 9.058284759521484,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12430.431640625,
+          "y": 1.5724966526031494,
+          "z": 50008.21484375,
+          "h": 18.123043060302734,
+          "w": 18.03143882751465,
+          "variant": 0,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12433.9423828125,
+          "y": 1.5387277603149414,
+          "z": 50007.796875,
+          "h": 18.593950271606445,
+          "w": 20.685161590576172,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12450.39453125,
+          "y": 1.1363203525543213,
+          "z": 50012.1953125,
+          "h": 8.830093383789062,
+          "w": 9.939303398132324,
+          "variant": 2,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 12436.802734375,
+          "y": 0.9964468479156494,
+          "z": 50018.36328125,
+          "h": 12.812263488769531,
+          "w": 12.438793182373047,
+          "variant": 3,
+          "hedge": false,
+          "corners": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "state": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 7,
+        "failed": 0,
+        "active": "18-19",
+        "activeReady": true
+      },
+      "hedge": {
+        "revision": 1,
+        "loaded": 1,
+        "loading": 0,
+        "failed": 0,
+        "missing": false
+      },
+      "total": 1072
+    },
+    "artSHA": "e27a3825b25c4f0ae5679886834b021d9cd0b184aab65e0cba99cb645305c65e",
+    "rawStamp": "6e1904fc7e9b103e4451aca7394e560e8e0803cc066d12b3a7a85d589c6ed31c",
+    "wire": "b6732d103d610289a4765365e3a2b5f8ce42b85b2d657267fee9f60580a69f21",
+    "origTerrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "seat": {
+      "count": 4770,
+      "pureSectorAngles": 106,
+      "actualGroundAboveOpaqueBottom": [
+        0.24174313736693076,
+        0.2594388595304826
+      ],
+      "stockGroundAboveOpaqueBottom": [
+        -1.9637912047948243,
+        -1.8841131248151237
+      ],
+      "maxRayVisualErrorM": 3.0472802556857914e-06,
+      "maxRayContactErrorM": 3.0472802556857914e-06
+    },
+    "diff": {
+      "renderedNonFlatTri": 1642,
+      "maxSlope": 0.5487682503724928,
+      "minS": 38.063404565356564,
+      "noData": 0,
+      "wet": 0,
+      "worldAABB": [
+        12328.867122658054,
+        49971.734298503805,
+        12383.269222267429,
+        50027.33756998818
+      ],
+      "unrelatedOwnerIdentity": 4,
+      "stockReturnAtLOD56": true,
+      "closedExperimentalAtomicStage": true
+    }
+  },
+  "engine": {
+    "sourceBase": "8c09e16c6189e68db167c818a86a1a5ff5191959",
+    "changed": 1359,
+    "protectedCount": 3130,
+    "sampled": 340,
+    "rayMax": 4.242219886707588e-05,
+    "radialClear": 0.24500334580487593,
+    "stockVertices": 29745,
+    "retainedVertices": 29688,
+    "legacyGround": 2.9519796615058502,
+    "legacyVisual": 2.6700486537891486,
+    "cleanTransitions": {
+      "firstCommitDeferredAtGear": true,
+      "beforePhysics": true,
+      "clearBeforePaint": true,
+      "warmReentry": true,
+      "coarseExact": true
+    },
+    "counts": {
+      "ownerReads": 1,
+      "gradeReads": 1,
+      "aborted": false
+    },
+    "faults": {
+      "owner": {
+        "layers": "verified",
+        "owner": "failed",
+        "data": "idle",
+        "requests": 0,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false,
+        "ownerReads": 1,
+        "gradeReads": 0,
+        "aborted": false
+      },
+      "missing": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false,
+        "ownerReads": 1,
+        "gradeReads": 1,
+        "aborted": false
+      },
+      "corrupt": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false,
+        "ownerReads": 1,
+        "gradeReads": 1,
+        "aborted": false
+      },
+      "late": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "failed",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false,
+        "ownerReads": 1,
+        "gradeReads": 1,
+        "aborted": true
+      }
+    }
+  },
+  "independentLease": {
+    "runtimeSHA": "8015dc41e89c86e0da5ae9ac5843ca35776bb54240f1f086bc763d928adde8d6",
+    "transportOrders": {
+      "normalQ100Ranges": 1,
+      "gradeCount": 1
+    },
+    "waitingSafeStock": true,
+    "approvals": {
+      "unsafeFirstTouch": false,
+      "parkedDoesNotCommit": true,
+      "positiveActive": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "ready",
+        "requests": 1,
+        "active": true,
+        "deferredClearance": false,
+        "grade": true,
+        "draw": true
+      }
+    },
+    "identities": {
+      "stockY": 2.6700486537891486,
+      "wholeUnchangedAttributes": 6,
+      "trueM56": true,
+      "variantAfterDowngrade": {
+        "layers": "verified",
+        "owner": "verified",
+        "data": "ready",
+        "requests": 1,
+        "active": false,
+        "deferredClearance": false,
+        "grade": false,
+        "draw": false
+      }
+    }
+  },
+  "optionalTransport": {
+    "digests": {
+      "src/render/buildings.ts": "39513448f021336f2d1c305f6bc33855018a12616c2df8905fc67123319040be",
+      "src/render/point-prim/admit.ts": "5301643d365430192b14c78e2d98da2a3073093e94591c0c30995473971b2214",
+      "src/render/point-prim/assets.ts": "05b6f58590b3910d6913cced2ce912ae9433c481285c0d5a6e205d611e4ba06c",
+      "src/render/point-prim/art.ts": "e27a3825b25c4f0ae5679886834b021d9cd0b184aab65e0cba99cb645305c65e",
+      "src/render/world.ts": "0b7f4fbb4b18e97c6e57ad712f6a36fda13260342c4c51b0c6df25d86487d9d2",
+      "src/main.ts": "f3f084da88efbd49b88a7ca234f7d3c61907c389b313d558f8597c5aa553f204"
+    },
+    "transport": {
+      "gzip wire identity": true,
+      "HTTP transparently inflated declared gzip": true,
+      "bare decoded substitute": false,
+      "damaged exact wire": false,
+      "200 claimed gzip same-sized bogus": false,
+      "oversize no length": false,
+      "bad descriptor length": false,
+      "unexpected 206": false,
+      "file 404": false,
+      "redirected response": false
+    },
+    "canceled": 1,
+    "stockGate": {
+      "valid": true,
+      "wrongRow": false,
+      "changedLength": false
+    },
+    "rejectsRealNeighborPositionMutation": true,
+    "assetReadyAsynchronousButNoParent": true,
+    "lateArtModuleRejected": true,
+    "artTypeNegatives": {
+      "wrongUvStrideAccepted": false,
+      "truncatedGroupDrawAccepted": false,
+      "transparentShellAccepted": false
+    },
+    "cases": [
+      [
+        "",
+        false
+      ],
+      [
+        "?pointPrimStudy",
+        true
+      ],
+      [
+        "?pointPrimStudy&scenery=standard",
+        true
+      ],
+      [
+        "?scenery=legacy&pointPrimStudy",
+        false
+      ],
+      [
+        "?pointPrimStudy&scenery=detail",
+        false
+      ],
+      [
+        "?pointPrimStudy&stockPointPrim",
+        false
+      ],
+      [
+        "?pointPrimStudy&woodlandBark",
+        false
+      ],
+      [
+        "?pointPrimStudy&woodlandCrownBase",
+        false
+      ],
+      [
+        "?pointPrimStudy&northCapeWind",
+        false
+      ],
+      [
+        "?pointPrimStudy&stockNorthCapeWind&northCapeWind",
+        true
+      ],
+      [
+        "?pointPrimStudy&woodlandView",
+        false
+      ],
+      [
+        "?pointPrimStudy&forestFloor",
+        true
+      ],
+      [
+        "?pointPrimStudy&surveyRelief",
+        false
+      ],
+      [
+        "?pointPrimStudy&inlandRelief",
+        false
+      ],
+      [
+        "?pointPrimStudy&seatedForestShadows",
+        false
+      ],
+      [
+        "?pointPrimStudy&seatedRoads",
+        false
+      ]
+    ]
+  },
+  "exactRuntimeUV": {
+    "rawAssetAndSignedOwnerUnchanged": true,
+    "onlyOutsideOmittedSpan": true,
+    "changedScalars": 59,
+    "totalScalars": 59490,
+    "maxAbs": 6.03073147e-12,
+    "node": "fc79aa27eee44a9c961e828a1f814a5fa02e325d76fc78d6102bc687ab9aa384",
+    "chromium": "8a26fb36606fb804399fdff0c5fa69da9ac9646636a9e7ada7d824448275c5f5",
+    "independentReplay": "The next binary64 longitude metres-per-degree value reproduces the complete captured Chromium UV buffer. Other five attributes and original source data are byte-exact."
+  }
+}

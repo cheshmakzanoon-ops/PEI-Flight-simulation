@@ -1,3 +1,4 @@
+import {POINT_PRIM,pointPrimDrawSource,pointPrimOwner,type PointPrimStock} from './point-prim/admit.ts';
 import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
 import {crockettAtlasCandidate,crockettExactRow,crockettExactWire} from './souris-east/admit.ts';
 import {SOURCE as SOURIS_EAST} from './souris-east/source.ts';
@@ -180,6 +181,10 @@ export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:(
 type LocalExteriorReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 export type RailwayReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:ReturnType<typeof authenticatedOwnerVariant>;neighborsCaster:THREE.Mesh};
+export type PointPrimDrawLease=Readonly<{present:()=>boolean;active:()=>boolean;set:(visible:boolean)=>boolean;release:()=>void}>;
+export type PointPrimVerifiedOwner=Readonly<{source:PointPrimStock;present:()=>boolean;
+ mount:(group:THREE.Group)=>PointPrimDrawLease|undefined}>;
+
 export class Buildings {
  private tiles:BoundTile[]=[];private pack:PackedBytes;private t:Terrain;private scene:THREE.Scene;
  private meshes=new Map<string,THREE.Mesh>();private loading=new Set<string>();private wanted=new Set<string>();private work:BoundTile[]=[];private failed=new Set<string>();
@@ -217,6 +222,9 @@ export class Buildings {
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ private pointPrimEnabled=false;
+ private primStock?:PointPrimStock;
+ private primDraw?:PointPrimDrawLease;
  private sourisEastGround?:SourisEastGround;
  private summersideRoofCohort=false;
  private sourisEastShadows?:BuildingShadows;
@@ -320,6 +328,39 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ enablePointPrim(){this.pointPrimEnabled=true;}
+ get pointPrimSource(){
+  const q=this.primStock;
+  return q&&this.currentPointPrim(q)?q:undefined;
+ }
+ private currentPointPrim(q:PointPrimStock){
+  return this.primStock===q&&this.meshes.get(POINT_PRIM.tile)===q.mesh&&this.wanted.has(POINT_PRIM.tile)&&
+   q.mesh.parent===this.scene&&q.mesh.visible;
+ }
+ /** This only authenticates an already submitted ordinary owner. The returned
+  * capability attaches no geometry until the synchronous frame transaction. */
+ async verifyPointPrim(q:PointPrimStock):Promise<PointPrimVerifiedOwner|undefined>{
+  const present=()=>this.currentPointPrim(q);
+  if(!present()||!await pointPrimDrawSource(q)||!present()||q.mesh.geometry!==q.geometry)return;
+  return {source:q,present,mount:group=>{
+   if(!present()||this.primDraw||q.mesh.geometry!==q.geometry||group.parent)return;
+   const s=q.mesh.userData.beaconTriangles as readonly [number,number];
+   const v=authenticatedOwnerVariant(q.mesh,group,s,POINT_PRIM.proof);
+   if(!v)return;
+   group.visible=false;this.scene.add(group);
+   let closed=false;
+   const lease:PointPrimDrawLease={
+    present:()=>!closed&&present()&&group.parent===this.scene,active:()=>!closed&&v.visible,
+    set:show=>{if(!closed)v.sync(show&&lease.present());return lease.active();},
+    release:()=>{
+     if(closed)return;closed=true;v.dispose();group.removeFromParent();
+     if(this.primDraw===lease)this.primDraw=undefined;
+    }
+   };
+   this.primDraw=lease;
+   return lease;
+  }};
+ }
  get summersideWaterRoofActive(){return this.meshes.get('q032001')?.userData.measuredWaterRoof===true;}
  get summersideRoofCount(){
   return (this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0)+(this.meshes.get('q03200300')?.userData.measuredDowntownRoofs??0);
@@ -340,6 +381,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
     if(m===this.sourisEast?.owner){
      if(this.sourisEast.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
      this.sourisEast.variant.dispose();this.sourisEast.dispose();this.sourisEast=undefined;
@@ -473,17 +515,20 @@ export class Buildings {
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
+   const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
    const east=this.sourisEastGround&&crockettAtlasCandidate(this.atlasHash,tile)?this.sourisEastGround:undefined;
    let eastBytes:ArrayBuffer|undefined;
    const downtown=this.summersideRoofCohort?downtownTilePin(this.atlasHash,tile):undefined;
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
-   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown){
+   let primBytes:ArrayBuffer|undefined;
+   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
+    if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
     if(east&&crockettExactRow(features))eastBytes=raw;
     if(spec&&matchesExterior(features,spec))ownerBytes=raw;
@@ -514,8 +559,11 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:undefined,!!barnBytes,rusticoChunk,downtownVerified);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:undefined,!!barnBytes,rusticoChunk,downtownVerified);
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(primBytes&&features[POINT_PRIM.ordinal]){
+    this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};
+   }
    if(church&&mesh.userData.beaconTriangles){
     const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
     if(v){this.indianVariant=v;this.scene.add(church.group);v.sync(church.active());}

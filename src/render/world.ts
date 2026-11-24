@@ -1,3 +1,5 @@
+import {POINT_PRIM} from './point-prim/admit.ts';
+import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
 import {smoothShoreTone} from './shore-tone.ts';
 import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
 import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
@@ -551,6 +553,7 @@ export class World {
  private kingsStage?:KingsCrownStage;
  private kingsStageFailed=false;
  private stagedChurch?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;seams?:string;source:StMarysProposedGround};
+ private stagedPointPrim?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;stockGeometry:THREE.BufferGeometry;seams?:string};
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
@@ -972,6 +975,54 @@ export class World {
   }
   return show;
  }
+ /** Point Prim is a separate reversible dry land lease. A verified asynchronous
+  * stamp may stage a mesh, but only the frame's art/owner transaction can
+  * commit it. There is no insertion into the permanently admitted grades. */
+ stagePointPrimNear(grade:BoundedGrade){
+  const spec=grade.grid.spec,key=POINT_PRIM.terrainTile,t=this.byId.get(key);
+  if(spec!==POINT_PRIM_GRADE||!t?.fine||t.lod!==112||t.relief||this.grades.has(key))return false;
+  const old=this.stagedPointPrim;
+  if(old?.owner===t&&old.grade===grade){
+   if(old.stock.geometry!==old.stockGeometry||(t.fine!==old.stock&&t.fine!==old.candidate))return false;
+   if(t.fine===old.stock&&old.seams!==t.seams){this.copyNearEdge(old.stock,old.candidate);old.seams=t.seams;}
+   return true;
+  }
+  if(old)this.dropPointPrimStage();
+  if(!t.fine||!this.rollingCanopyStill(key,t.fine.geometry)||!t.fine.visible)return false;
+  const [cx,cz]=POINT_PRIM.origin;
+  for(let j=-1;j<16;j++){
+   const a=j*Math.PI/8,r=j<0?0:3.71,x=cx+Math.cos(a)*r,z=cz+Math.sin(a)*r;
+   const y=grade.visualY(x,z);
+   if(y===undefined||Math.abs(y-POINT_PRIM.datum)>.047||grade.weight(x,z)<.999||
+      this.cover.distance(this.terrain,x,z)<34||!this.terrain.isLand(x,z)||runwayAt(x,z))return false;
+  }
+  const stock=t.fine;
+  let candidate:THREE.Mesh|undefined;
+  try{
+   candidate=this.patch(t.x0,t.z0,t.w,t.d,112,grade);
+   if(candidate.userData.localGrade!==spec.id){candidate.geometry.dispose();return false;}
+   candidate.material=stock.material;candidate.visible=stock.visible;
+   this.copyNearEdge(stock,candidate);
+   this.stagedPointPrim={owner:t,grade,stock,candidate,stockGeometry:stock.geometry,seams:t.seams};
+   return true;
+  }catch{candidate?.geometry.dispose();return false;}
+ }
+ setPointPrimGround(show:boolean){
+  const q=this.stagedPointPrim,t=q?.owner;
+  if(!q||!t||(t.fine!==q.stock&&t.fine!==q.candidate))return false;
+  if(show&&(t.lod!==112||t.relief||q.stock.geometry!==q.stockGeometry||this.grades.has(t.id)))return false;
+  const before=t.fine,after=show?q.candidate:q.stock;
+  if(before!==after){
+   this.copyNearEdge(before,after);q.seams=t.seams;after.visible=before.visible;
+   this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
+  }
+  return show;
+ }
+ private dropPointPrimStage(){
+  const q=this.stagedPointPrim;if(!q)return;
+  this.setPointPrimGround(false);
+  this.scene.remove(q.candidate);q.candidate.geometry.dispose();this.stagedPointPrim=undefined;
+ }
  private copyNearEdge(a:THREE.Mesh,b:THREE.Mesh){
   const src=a.geometry.getAttribute('position'),dest=b.geometry.getAttribute('position'),n=112;
   let changed=false;
@@ -1097,11 +1148,14 @@ export class World {
  private installedGrade(key:string,patch=this.byId.get(key)){
   const revision=patch?.lod===112&&patch.fine?.userData.localGrade;
   if(!revision)return;
-  const proposed=this.stagedChurch;
-  const source=proposed&&patch?.fine===proposed.candidate?proposed.grade:this.grades?.get(key);
+  const proposed=this.stagedChurch,prim=this.stagedPointPrim;
+  const source=prim&&patch?.fine===prim.candidate?prim.grade:
+   proposed&&patch?.fine===proposed.candidate?proposed.grade:this.grades?.get(key);
   return source?.grid.spec.id===revision?source:undefined;
  }
  groundGradeInstalled(id:string){
+  const prim=this.stagedPointPrim;
+  if(id===POINT_PRIM_GRADE.id)return !!prim&&prim.owner.lod===112&&prim.owner.fine===prim.candidate;
   const church=this.stagedChurch;
   if(church?.grade.grid.spec.id===id)return church.owner.fine===church.candidate&&church.owner.lod===112;
   if(this.grades)for(const [key,g] of this.grades)if(g.grid.spec.id===id)return !!this.installedGrade(key);
@@ -1111,11 +1165,13 @@ export class World {
   const result:string[]=[];
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)result.push(g.grid.spec.id);}
   const church=this.stagedChurch;if(church&&this.groundGradeInstalled(church.grade.grid.spec.id))result.push(church.grade.grid.spec.id);
+  if(this.groundGradeInstalled(POINT_PRIM_GRADE.id))result.push(POINT_PRIM_GRADE.id);
   return result;
  }
  get activeGroundGrade(){
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)return g.grid.spec.id;}
-  const church=this.stagedChurch;return church&&this.groundGradeInstalled(church.grade.grid.spec.id)?church.grade.grid.spec.id:null;
+  const church=this.stagedChurch;if(church&&this.groundGradeInstalled(church.grade.grid.spec.id))return church.grade.grid.spec.id;
+  return this.groundGradeInstalled(POINT_PRIM_GRADE.id)?POINT_PRIM_GRADE.id:null;
  }
  /** A footprint must occupy one *current* unaltered N112 tile strictly
   * inside its outer stitched parent cell. Stage/commit rechecks identity. */
@@ -1215,7 +1271,7 @@ export class World {
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
-  if(covered&&(this.grades.size||this.stagedChurch)){
+  if(covered&&(this.grades.size||this.stagedChurch||this.stagedPointPrim)){
    const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
    if(grade?.weight(x,z)){
     const y=grade.contactY(x,z,baseline);
@@ -1293,6 +1349,7 @@ export class World {
    const measuredKings=!!this.kingsGrade&&tile.id===KINGS_CROWN_TILE;
    if(proposedLOD!==112&&this.kingsStage?.owner===tile)this.dropKingsCrown();
    if(proposedLOD!==112&&this.stagedChurch?.owner===tile)this.dropStMarysStage();
+   if(proposedLOD!==112&&this.stagedPointPrim?.owner===tile)this.dropPointPrimStage();
    tile.lod=proposedLOD;
    if(tile.lod!==old){changedGround=true;if(tile.lod<112)this.withdrawAdaptive(tile);}
    const fine=tile.lod>8;
