@@ -1,9 +1,10 @@
-# Basin Head: a pale sand material preview
+# Basin Head: close pale sand material
 
-Add `?basinSand` to the simulator address (or `&basinSand` when a query
-already exists). This changes the appearance of the documented
-ocean-facing Singing Sands beach, not the lagoon, coastline, bay depth,
-terrain geometry, or aircraft contact.
+Compatible Standard scenery shows this material on a qualified close
+approach to the ocean-facing Singing Sands beach. Choose **Basin Head · low
+pass**. Compare the original ground with `?stockBasinSand`. An explicit
+`?basinSand` keeps the original study mode. The treatment does not change
+the lagoon, coastline, bay depth, terrain geometry, or aircraft contact.
 
 [Tourism PEI](https://www.tourismpei.com/what-to-do/beaches-parks/basin-head-provincial-park)
 documents the area's pale silica sand, and [Fisheries and Oceans Canada's
@@ -26,21 +27,35 @@ site photograph. The sand still follows the pre-existing terrain.
 
 ## Scope and checks
 
-The material requires both checksum-verified assets (a 2 KiB mask and
-approximately 411 KiB scan), and is not fetched without the preview
-flag. An absent or corrupt operand leaves the entire original material in
-place. The preview uses the existing ground draws; it adds no geometry.
+Ordinary scenery does not request either material asset until the camera
+is near the admitted area and the decoded cover, terrain and mapped
+infrastructure qualify. It verifies both the compressed and decoded forms
+of the 2 KiB mask and approximately 411 KiB scan, accepting only the exact
+shipped wire or its exact HTTP-decoded bytes. An absent, corrupt or withheld
+asset leaves the original ground in place. The faded treatment uses the
+existing ground draws and adds no geometry.
 The near shader feathers inside the 2,379 admitted source cells and
 forces exactly zero at their continuous exterior. It does not color
 nearby grass or water just because a texture filter spans them.
-Distant colour fades to the base.
-The [matched game gate](basin-head-sand-render-gate.json) measured
+Distant colour fades to the base. In Standard, the local material also
+fades out above the beach, reaching zero before the high-view lease ends.
+The already-qualified generic dune sand and grass forms are spatially
+separate in this patch. The older named shore, lagoon and terrain
+comparisons keep their prior route behavior.
+The [original matched game gate](basin-head-sand-render-gate.json) measured
 294,275 and 131,522 pixels changing by more than two RGB levels in
 the two close views, no difference in the upper 150 rows, and all
 453,600 pixels exact in each distant and East Point control. Draw,
 triangle and loaded imagery counts were identical across each pair.
 
 ![Matched real close flight views of previous and pale sand facing Basin Head](basin-head-sand-comparison.webp)
+
+The [Standard scope check](basin-sand-standard-gate.json) compares both
+low views with complementary diagnostics. It kept **554,083**
+protected RGB pixels exact across those views and the high control,
+with the original submitted draw and triangle counts. At the high
+control neither material was requested. The applied paint was not
+tested as a live measurement of the beach.
 
 Run the matched application shots with a Chromium install plus Python
 Playwright, Pillow and NumPy:

@@ -45,6 +45,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockNorthCapeWind'))q.delete('northCapeWind');
  if(q.has('stockCanopyLight'))q.delete('canopyLight');
  if(q.has('stockDuneGrass'))q.delete('duneGrassSurface');
+ if(q.has('stockBasinSand'))q.delete('basinSand');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -210,6 +211,17 @@ export function orbyClosureRequested(q:URLSearchParams){
  if(q.has('stockOrbyCoast')||q.has('legacyShoreArcs')||q.get('scenery')==='detail')return false;
  if(q.has('orbyCoastClosure'))return true;
  return !['orthophotoSeamStudy','nearshoreFoamStudy','surveyRelief','inlandRelief','buildingShadows'].some(k=>q.has(k));
+}
+/** Only the dry, previously reviewed regional material is ordinary here.
+ * Keep separate lagoon, wharf, coast and shoreline comparisons untouched. */
+export function standardBasinSandRequested(q:URLSearchParams){
+ if(q.has('stockBasinSand')||q.has('basinSand'))return false;
+ const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+  !['basinChannel','basinWharf','noBasinBank','legacyShoreArcs','shoreToneStudy','pointPrimStudy',
+  'regionalCanopyStudy','orthophotoSeamStudy','surveyRelief','inlandRelief','seatedForestShadows',
+  'duneReliefStudy','duneSandDetail','duneGrassSurface','kingsDryCrownStudy','buildingShadows','woodland3D',
+  'forestFloor','northCapeWind','canopyLight'].some(k=>q.has(k));
 }
 /** Ordinary optical treatment. Do not inject the explicit review flag:
  * it has different dirt/relief interactions on historic comparison URLs. */

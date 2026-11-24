@@ -27,13 +27,12 @@ def capture(args,browser,url):
             self.wrapped=b;self.flag=flag
         def new_context(self,**kwargs):
             context=self.wrapped.new_context(**kwargs)
-            if not self.flag:
-                return context
             func=context.new_page
             def create():
                 page=func()
                 goto=page.goto
-                page.goto=lambda url,**opt:goto(url.replace('/?diagnostics&qa=', '/?diagnostics&basinSand&qa='),**opt)
+                flag='basinSand' if self.flag else 'stockBasinSand'
+                page.goto=lambda url,**opt:goto(url.replace('/?diagnostics&qa=', '/?diagnostics&'+flag+'&qa='),**opt)
                 return page
             context.new_page=create
             return context

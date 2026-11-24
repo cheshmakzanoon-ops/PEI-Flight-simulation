@@ -1,0 +1,1016 @@
+{
+  "description": "Standard approach qualification for the existing Basin Head pale-sand material. Locked views exercise both sides and the high-altitude control; the exact production build exercises default loading and fail-closed options during flight. No geographical expansion or geometry changes.",
+  "base": "722014aece814670e9e08e9844346d1bf417de21",
+  "automatedTestsPassed": 386,
+  "matchedWebGL": {
+    "west": {
+      "before": {
+        "draws": 59,
+        "tris": 211134
+      },
+      "after": {
+        "draws": 59,
+        "tris": 211134
+      },
+      "a": {
+        "draws": 59,
+        "tris": 211134
+      },
+      "b": {
+        "draws": 59,
+        "tris": 211134
+      },
+      "exact": true,
+      "state": {
+        "proof": "ready",
+        "requests": 1,
+        "active": true
+      },
+      "pixels": {
+        "changedOverTwo": 175376,
+        "protected": 93188,
+        "outsideChanges": 0
+      },
+      "requests": [
+        "basin-head-seaward.rg.gz",
+        "basin-sand-scan.rgba.gz"
+      ]
+    },
+    "east": {
+      "before": {
+        "draws": 208,
+        "tris": 268676
+      },
+      "after": {
+        "draws": 208,
+        "tris": 268676
+      },
+      "a": {
+        "draws": 208,
+        "tris": 268676
+      },
+      "b": {
+        "draws": 208,
+        "tris": 268676
+      },
+      "exact": true,
+      "state": {
+        "proof": "ready",
+        "requests": 1,
+        "active": true
+      },
+      "pixels": {
+        "changedOverTwo": 78467,
+        "protected": 190495,
+        "outsideChanges": 0
+      },
+      "requests": [
+        "basin-head-seaward.rg.gz",
+        "basin-sand-scan.rgba.gz"
+      ]
+    },
+    "high": {
+      "before": {
+        "draws": 42,
+        "tris": 218524
+      },
+      "after": {
+        "draws": 42,
+        "tris": 218524
+      },
+      "a": {
+        "draws": 42,
+        "tris": 218524
+      },
+      "b": {
+        "draws": 42,
+        "tris": 218524
+      },
+      "exact": true,
+      "state": {
+        "proof": "cold",
+        "requests": 0,
+        "active": false
+      },
+      "pixels": {
+        "changedOverTwo": 0,
+        "protected": 270400,
+        "outsideChanges": 0
+      },
+      "requests": []
+    }
+  },
+  "compiledFlight": [
+    {
+      "mode": "ordinary",
+      "site": "basin-head-low",
+      "motionM": 108.249,
+      "approved": {
+        "proof": "ready",
+        "requests": 1,
+        "active": true
+      },
+      "assets": [
+        "basin-head-seaward.rg.gz",
+        "basin-sand-scan.rgba.gz"
+      ],
+      "console": []
+    },
+    {
+      "mode": "stock",
+      "site": "basin-head-low",
+      "motionM": 103.714,
+      "approved": {},
+      "assets": [],
+      "console": []
+    },
+    {
+      "mode": "wrong-cover",
+      "site": "basin-head-low",
+      "motionM": 105.42,
+      "approved": {
+        "proof": "stock",
+        "requests": 0,
+        "active": false
+      },
+      "assets": [],
+      "console": []
+    },
+    {
+      "mode": "corrupt",
+      "site": "basin-head-low",
+      "motionM": 100.313,
+      "approved": {
+        "proof": "stock",
+        "requests": 1,
+        "active": false
+      },
+      "assets": [
+        "basin-head-seaward.rg.gz",
+        "basin-sand-scan.rgba.gz"
+      ],
+      "console": []
+    },
+    {
+      "mode": "held",
+      "site": "basin-head-low",
+      "motionM": 104.848,
+      "approved": {
+        "proof": "stock",
+        "requests": 1,
+        "active": false
+      },
+      "assets": [
+        "basin-head-seaward.rg.gz",
+        "basin-sand-scan.rgba.gz"
+      ],
+      "console": []
+    },
+    {
+      "mode": "distant",
+      "site": "charlottetown",
+      "motionM": 105.073,
+      "approved": {
+        "proof": "cold",
+        "requests": 0,
+        "active": false
+      },
+      "assets": [],
+      "console": []
+    },
+    {
+      "mode": "shore-tone",
+      "site": "basin-head-low",
+      "motionM": 102.012,
+      "approved": {},
+      "assets": [],
+      "console": []
+    }
+  ],
+  "independentSpatialReview": {
+    "count": 2379,
+    "cellSize": [
+      6.396882764764976,
+      9.26342364615756
+    ],
+    "positiveExtent": [
+      83709.60785970734,
+      11681.17721780389,
+      85980.5012411989,
+      13719.130419958554
+    ],
+    "positiveWGS84": [
+      [
+        -62.109500000000004,
+        46.39491666666667
+      ],
+      [
+        -62.07991666666666,
+        46.376583333333336
+      ]
+    ],
+    "fullMaskExtent": [
+      83057.12581770131,
+      11671.913794157732,
+      86664.96769702875,
+      14006.296552989437
+    ],
+    "ownerCentres": {
+      "(30, 13)": 723,
+      "(29, 13)": 1656
+    },
+    "ownerTouches": {
+      "(30, 13)": 729,
+      "(29, 13)": 1656
+    },
+    "entirelyDryPositiveCells": 2164,
+    "someDryPositiveCells": 2304,
+    "someShadableByStockSignedSupport": 1935,
+    "nearestCoverClassesMayTouch": {
+      "30": 582,
+      "80": 328,
+      "60": 1841,
+      "0": 218
+    },
+    "touchBaseNoDataCells": 278,
+    "coarseCoverForestTouch": [],
+    "sandAndGrass": {
+      "grass": {
+        "totalPairs2D": 0,
+        "uniqueBasinCells2D": 0,
+        "terrainOwners2D": {},
+        "signedPotentialPairs": 0,
+        "signedPotentialUniqueBasinCells": 0,
+        "signedPotentialByOwner": {},
+        "signedPotentialMinMax": null
+      },
+      "sand": {
+        "totalPairs2D": 0,
+        "uniqueBasinCells2D": 0,
+        "terrainOwners2D": {},
+        "signedPotentialPairs": 0,
+        "signedPotentialUniqueBasinCells": 0,
+        "signedPotentialByOwner": {},
+        "signedPotentialMinMax": null
+      }
+    },
+    "sampleCount": 0
+  },
+  "independentVegetationReview": {
+    "fallback": {
+      "tree": {
+        "rows": 1618,
+        "exactCentrePositiveCount": 0,
+        "exactCentrePositive": [],
+        "minRootToPositiveMaskM": 103.99252293510048,
+        "maxAllAngleCrownIntersectsPositiveCount": 0,
+        "minCrownToPositiveMaskM": 90.58352986436475,
+        "allAnglePotential": [],
+        "maxShadeQuadIntersectsPositiveCount": 0,
+        "minShadeToPositiveMaskM": 79.83453927381018,
+        "shadeOverlap": []
+      },
+      "hedge": {
+        "rows": 49,
+        "exactCentrePositiveCount": 0,
+        "exactCentrePositive": [],
+        "minRootToPositiveMaskM": 18.209422207335592,
+        "maxAllAngleCrownIntersectsPositiveCount": 0,
+        "minCrownToPositiveMaskM": 13.573763730755164,
+        "allAnglePotential": [],
+        "maxShadeQuadIntersectsPositiveCount": 0,
+        "minShadeToPositiveMaskM": 11.024468942152453,
+        "shadeOverlap": []
+      }
+    },
+    "warmEFI": {
+      "tree": {
+        "rows": 1618,
+        "exactCentrePositiveCount": 0,
+        "exactCentrePositive": [],
+        "minRootToPositiveMaskM": 103.99252293510048,
+        "maxAllAngleCrownIntersectsPositiveCount": 0,
+        "minCrownToPositiveMaskM": 90.58352986436475,
+        "allAnglePotential": [],
+        "maxShadeQuadIntersectsPositiveCount": 0,
+        "minShadeToPositiveMaskM": 79.83453927381018,
+        "shadeOverlap": []
+      },
+      "hedge": {
+        "rows": 49,
+        "exactCentrePositiveCount": 0,
+        "exactCentrePositive": [],
+        "minRootToPositiveMaskM": 18.209422207335592,
+        "maxAllAngleCrownIntersectsPositiveCount": 0,
+        "minCrownToPositiveMaskM": 13.573763730755164,
+        "allAnglePotential": [],
+        "maxShadeQuadIntersectsPositiveCount": 0,
+        "minShadeToPositiveMaskM": 11.024468942152453,
+        "shadeOverlap": []
+      }
+    }
+  },
+  "independentRuntimeReview": {
+    "transport": {
+      "wire-no-header": {
+        "valid": true,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 2,
+        "expired": 0
+      },
+      "wire-length": {
+        "valid": true,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 2,
+        "expired": 0
+      },
+      "raw-no-header": {
+        "valid": true,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 2,
+        "expired": 0
+      },
+      "transparent-header": {
+        "valid": true,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 2,
+        "expired": 0
+      },
+      "raw-length": {
+        "valid": true,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 2,
+        "expired": 0
+      },
+      "short": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "malformed-length": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "wrong-wire-same-decode": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "corrupt-same-decoded": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "full-206": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "forged-range": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "wrong-status": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 0
+      },
+      "overlong": {
+        "valid": false,
+        "pulls": 71,
+        "cancelled": 1,
+        "reads": 1,
+        "expired": 0
+      },
+      "deadline-late": {
+        "valid": false,
+        "pulls": 0,
+        "cancelled": 0,
+        "reads": 1,
+        "expired": 1
+      },
+      "redirect": {
+        "valid": false,
+        "speculativeStreamPulls": 2
+      }
+    },
+    "states": [
+      {
+        "x": 83815.15642532594,
+        "y": 500,
+        "z": 13621.864471673789,
+        "now": 1,
+        "state": {
+          "proof": "cold",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 0
+      },
+      {
+        "x": 90815.15642532594,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 2,
+        "state": {
+          "proof": "cold",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 0
+      },
+      {
+        "x": null,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 3,
+        "state": {
+          "proof": "cold",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 0
+      },
+      {
+        "x": 83815.15642532594,
+        "y": null,
+        "z": 13621.864471673789,
+        "now": 4,
+        "state": {
+          "proof": "cold",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 0
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 5,
+        "state": {
+          "proof": "checking",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 0
+      },
+      {
+        "x": 90815.15642532594,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 6,
+        "state": {
+          "proof": "checking",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 1
+      },
+      {
+        "x": 90815.15642532594,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 7,
+        "state": {
+          "proof": "qualified",
+          "requests": 0,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 0,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 8,
+        "state": {
+          "proof": "loading",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 90815.15642532594,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 9,
+        "state": {
+          "proof": "loading",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 90815.15642532594,
+        "y": 60,
+        "z": 13621.864471673789,
+        "now": 10,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": false,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 11,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 206,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.5,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 401,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      }
+    ],
+    "vert": [
+      {
+        "x": 83815.15642532594,
+        "y": 284.999,
+        "z": 13621.864471673789,
+        "now": 402,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 285,
+        "z": 13621.864471673789,
+        "now": 403,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 286,
+        "z": 13621.864471673789,
+        "now": 404,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.9997535687453043,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 340,
+        "z": 13621.864471673789,
+        "now": 405,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.5,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 360,
+        "z": 13621.864471673789,
+        "now": 406,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.23929376408715253,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 390,
+        "z": 13621.864471673789,
+        "now": 407,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.006010518407212622,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 394,
+        "z": 13621.864471673789,
+        "now": 408,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.0002464312546957175,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 394.999,
+        "z": 13621.864471673789,
+        "now": 409,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 2.4793238165619327e-10,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 395,
+        "z": 13621.864471673789,
+        "now": 410,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 395.001,
+        "z": 13621.864471673789,
+        "now": 411,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 409.999,
+        "z": 13621.864471673789,
+        "now": 412,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 410,
+        "z": 13621.864471673789,
+        "now": 413,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 410.001,
+        "z": 13621.864471673789,
+        "now": 414,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      }
+    ],
+    "lowerArm": [
+      {
+        "x": 83815.15642532594,
+        "y": 409,
+        "z": 13621.864471673789,
+        "now": 415,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 398,
+        "z": 13621.864471673789,
+        "now": 416,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 375,
+        "z": 13621.864471673789,
+        "now": 417,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 360,
+        "z": 13621.864471673789,
+        "now": 418,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 359,
+        "z": 13621.864471673789,
+        "now": 419,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 359,
+        "z": 13621.864471673789,
+        "now": 614,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.1256078136739294,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 350,
+        "z": 13621.864471673789,
+        "now": 809,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 0.36513899323816684,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 83815.15642532594,
+        "y": 285,
+        "z": 13621.864471673789,
+        "now": 1004,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      }
+    ],
+    "outward": [
+      {
+        "x": 87721.5012411989,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 1005,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 87780.5012411989,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 1006,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 88110.5012411989,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 1007,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": true
+        },
+        "gain": 1,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      },
+      {
+        "x": 88120.5012411989,
+        "y": 50,
+        "z": 13621.864471673789,
+        "now": 1008,
+        "state": {
+          "proof": "ready",
+          "requests": 1,
+          "active": false
+        },
+        "gain": 0,
+        "textureBound": true,
+        "reads": 2,
+        "proves": 1
+      }
+    ],
+    "returnLow": {
+      "x": 83815.15642532594,
+      "y": 50,
+      "z": 13621.864471673789,
+      "now": 1009,
+      "state": {
+        "proof": "ready",
+        "requests": 1,
+        "active": false
+      },
+      "gain": 0,
+      "textureBound": true,
+      "reads": 2,
+      "proves": 1
+    },
+    "leases": {
+      "reads": 2,
+      "proves": 1
+    }
+  }
+}
