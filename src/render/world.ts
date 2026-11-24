@@ -1,5 +1,6 @@
 import {hogPhotoGLSL,type HogPhoto} from './hog-photo.ts';
 import {churchSunGLSL,type ChurchGroundSun} from './indian-river/church-ground-sun.ts';
+import {shortGrassHeightFade,sourceGrassNapGLSL} from './source-grass-nap.ts';
 import {provinceGrassGLSL,type ProvinceGrassStudy} from './province-grass.ts';
 import {DRY_FRAME,drySoilGLSL,makeDrySoilUniforms} from './dry-coast/soil.ts';
 import {gablesTrailGLSL,gablesTrailIntersects} from './cavendish-trail.ts';
@@ -61,6 +62,9 @@ import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
 const vertex=`
  varying vec3 p; varying vec2 vuv;
+ #ifdef SOURCE_GRASS_NAP_METRIC
+ varying vec3 shortGrassMetric;
+ #endif
  #ifdef SURVEY_LIGHT
  attribute float surveyWeight; varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -69,6 +73,9 @@ const vertex=`
  void main(){
  #ifdef SURVEY_LIGHT
  vSurveyWeight=surveyWeight;vSurveyNormal=mat3(modelMatrix)*normal;
+ #endif
+ #ifdef SOURCE_GRASS_NAP_METRIC
+ shortGrassMetric=mat3(modelMatrix)*position;
  #endif
  vec4 w=modelMatrix*vec4(position,1.);p=w.xyz;vuv=uv;gl_Position=projectionMatrix*viewMatrix*w;
  #include <logdepthbuf_vertex>
@@ -243,7 +250,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false)=>fp+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false)=>fp+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -252,6 +259,15 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${showFloor&&montague?'uniform vec4 montagueGroundBounds;':''}
  void main(){
  #include <logdepthbuf_fragment>
+ ${nearGrassNap?`
+ // Derivatives must execute before any pixel-varying condition or discard.
+ // The uniform test avoids doing this work on high or inactive frames.
+ vec3 napDx=vec3(0.),napDy=vec3(0.);
+ if(shortGrassNapMix>.001){
+  napDx=dFdx(shortGrassMetric);
+  napDy=dFdy(shortGrassMetric);
+ }
+ `:''}
  vec2 cover=texture2D(coverMap,vuv).rg;float coast=(cover.g*255.-128.)*2.;
  ${harbour?'coast=harbourDistance(coast,p.xz);':''}
  ${basin?'if(basinChannelDistance(coast,p.xz)<0.)discard;':''}
@@ -277,6 +293,20 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  col*=.25;
  ${hogIsland?'paintHogPhoto(col,p,distance(cameraPosition,p),coast);':''}
  vec3 n=normalize(cross(dFdx(p),dFdy(p)));if(n.y<0.)n=-n;
+ ${nearGrassNap?`
+ float napAuthority=0.;
+ if(shortGrassNapMix>.001&&coast>=82.){
+  vec3 napMetricN=normalize(cross(napDx,napDy));
+  if(napMetricN.y<0.)napMetricN=-napMetricN;
+  if(napMetricN.y>=.76&&distance(cameraPosition,p)<=18.){
+   napAuthority=shortGrassNapAuthority(p.xz);
+   // World-X/Z interpolation loses small derivative differences in western
+   // near terrain. Compute the very same face normal before translation.
+   // No input to unadmitted pieces, or the high frame, is changed.
+   if(napAuthority>.001)n=napMetricN;
+  }
+ }
+ `:''}
  ${bankSmooth&&castBuildings?'vec3 bankShadowReceiver=n;':''}
  #ifdef SURVEY_LIGHT
  ${bankSmooth?'if(vSurveyWeight>0.)':''}n=normalize(mix(n,normalize(vSurveyNormal),vSurveyWeight));
@@ -355,6 +385,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
   float across=dot(delta,vec2(-axis.y,axis.x))/stripSize[i].y+.5;
   if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
  }
+ ${nearGrassNap?'if(napAuthority>.001)sourceGrassNap(col,n,p,d,coast,napAuthority,'+(provinceFields?'liveField':'0.')+',napDx.xz,napDy.xz);':''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 export type BaywalkRegistration={court:BaywalkCourtData;deck:SpinnakersDeck;road:readonly RoadPoint[]};
 export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBasin=false,tryBasinChannel=false,montagueRoadVerified?:Promise<boolean>,tryWharfToe=false,
@@ -619,9 +650,9 @@ export class World {
     const hogHere=hogPhoto?.pieces.find(piece=>piece.tile[0]===i&&piece.tile[1]===j);
     const provinceUniforms:Record<string,THREE.IUniform>=provinceHere?{...provinceFields.stream.uniforms,
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
-    const local=new THREE.ShaderMaterial({defines:{...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const local=new THREE.ShaderMaterial({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...churchHere?.uniforms,...hogHere?.uniforms,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
-     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere)});
+     detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap)});
     const coarse=this.patch(x0,z0,w,d,8);
     // The opt-in window has no dry mesh or survey normal pass at n8.
     // Share the same live uniform object for ortho handoffs and local water.
@@ -1048,7 +1079,21 @@ export class World {
  }
  update(pos:THREE.Vector3,clock:number){
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
-  if(this.grassStudy?.admitted)this.grassStudy.stream.update(pos.x,pos.z,pos.y-this.terrain.atlasElevation(pos.x,pos.z));
+  const grass=this.grassStudy;
+  if(grass?.admitted){
+   grass.stream.update(pos.x,pos.z,pos.y-this.terrain.atlasElevation(pos.x,pos.z));
+   if(grass.nap){
+    const [u,v]=this.terrain.uv(pos.x,pos.z);
+    const tile=this.byId.get(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS)),g=tile?.fine;
+    const regular=tile?.lod===112&&g?.visible&&!tile.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
+      !!tile.local.uniforms.shortGrassNapMap;
+    const fade=regular?shortGrassHeightFade(pos.y-this.visualGroundHeight(pos.x,pos.z)):0.;
+    const nap=grass.nap;nap.wanted=fade>.001&&grass.stream.state.ready>0;
+    if(nap.wanted&&!nap.map.value)grass.prepareNap();
+    const t=nap.map.value?Math.min(1,Math.max(0,(performance.now()-nap.readyAt)/430)):0.;
+    nap.mix.value=nap.wanted?fade*t*t*(3-2*t):0.;
+   }
+  }
   if(this.provinceFields?.admitted)this.provinceFields.stream.update(pos.x,pos.z,pos.y-this.terrain.atlasElevation(pos.x,pos.z));
   const art=this.floor;
   if(art){

@@ -1,0 +1,210 @@
+{
+  "prince-shoe-close": {
+    "on": {
+      "calls": 38,
+      "triangles": 347920
+    },
+    "off": {
+      "calls": 38,
+      "triangles": 347920
+    },
+    "rootMix": 1,
+    "napAllocated": true,
+    "datedMapIds": [
+      "1-5",
+      "2-4",
+      "2-5",
+      "2-6",
+      "3-2",
+      "3-3",
+      "3-4",
+      "3-5",
+      "3-6",
+      "4-3",
+      "4-4",
+      "4-5",
+      "4-6",
+      "5-4",
+      "5-5"
+    ],
+    "camera": [
+      -75918.50256886725,
+      25.314768184992257,
+      -37903.512374296195
+    ],
+    "optAim": [
+      0.4755217815841078,
+      -0.1177342266584134,
+      -0.8717899329036907
+    ],
+    "height": 1.5422076997999454,
+    "samples": 4,
+    "size": [
+      640,
+      430
+    ],
+    "meaningfulRgbChanges": 91574,
+    "exactFramePixels": 138648,
+    "maxColorChange": 33
+  },
+  "kings-shoe-close": {
+    "on": {
+      "calls": 65,
+      "triangles": 339009
+    },
+    "off": {
+      "calls": 65,
+      "triangles": 339009
+    },
+    "rootMix": 1,
+    "napAllocated": true,
+    "datedMapIds": [
+      "21-15",
+      "21-16",
+      "21-17",
+      "22-14",
+      "22-15",
+      "22-16",
+      "22-17",
+      "22-18",
+      "23-14",
+      "23-15",
+      "23-16",
+      "23-17",
+      "23-18",
+      "24-15",
+      "24-16",
+      "24-17",
+      "24-18",
+      "25-16",
+      "25-17"
+    ],
+    "camera": [
+      44413.399469282514,
+      27.085054226290648,
+      31945.050536517505
+    ],
+    "optAim": [
+      0.47648413401130457,
+      -0.09932698463526433,
+      -0.8735542456875609
+    ],
+    "height": 1.8280149860890127,
+    "samples": 4,
+    "size": [
+      640,
+      430
+    ],
+    "meaningfulRgbChanges": 88142,
+    "exactFramePixels": 143794,
+    "maxColorChange": 24
+  },
+  "queens-air-close": {
+    "on": {
+      "calls": 67,
+      "triangles": 300022
+    },
+    "off": {
+      "calls": 67,
+      "triangles": 300022
+    },
+    "rootMix": 0,
+    "napAllocated": false,
+    "datedMapIds": [
+      "14-16",
+      "14-17",
+      "14-18",
+      "15-15",
+      "15-16",
+      "15-17",
+      "15-18",
+      "16-15",
+      "16-16",
+      "16-17",
+      "16-18",
+      "17-16",
+      "17-17",
+      "17-18"
+    ],
+    "camera": [
+      -738.5922960861966,
+      91.99664245995606,
+      37375.35782648663
+    ],
+    "optAim": [
+      -0.35552671148946047,
+      -0.5293642746672855,
+      -0.7703078748938431
+    ],
+    "height": 75.75536065760204,
+    "samples": 4,
+    "size": [
+      640,
+      430
+    ],
+    "meaningfulRgbChanges": 0,
+    "exactFramePixels": 275200,
+    "maxColorChange": 0
+  },
+  "prince-road-close": {
+    "on": {
+      "calls": 22,
+      "triangles": 348272
+    },
+    "off": {
+      "calls": 22,
+      "triangles": 348272
+    },
+    "rootMix": 1,
+    "napAllocated": true,
+    "datedMapIds": [
+      "1-5",
+      "2-4",
+      "2-5",
+      "2-6",
+      "3-3",
+      "3-4",
+      "3-5",
+      "3-6",
+      "4-3",
+      "4-4",
+      "4-5",
+      "4-6",
+      "5-4",
+      "5-5"
+    ],
+    "camera": [
+      -76568.51397870065,
+      34.32,
+      -37238.21311159383
+    ],
+    "optAim": [
+      -0.1869049364267901,
+      -0.6802261460573426,
+      -0.7087728373458401
+    ],
+    "height": 2.467018744686623,
+    "samples": 4,
+    "size": [
+      640,
+      430
+    ],
+    "meaningfulRgbChanges": 0,
+    "exactFramePixels": 275200,
+    "maxColorChange": 0
+  },
+  "ordinaryDispatchReplay": {
+    "normalDispatch": true,
+    "closeSwitchIncludesExistingGrass": true,
+    "departure": "prince-grassland",
+    "corruptDirectoryFallsBack": false,
+    "travelM": 150.8231043003875,
+    "activeLayerState": {
+      "active": true,
+      "ready": 3,
+      "pending": 0,
+      "slots": 4
+    },
+    "errors": []
+  }
+}

@@ -66,3 +66,34 @@ notice. © ESA WorldCover project 2021. Contains modified Copernicus Sentinel
 data (2021) processed by the ESA WorldCover consortium, under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See
 [archive and geometry checks](province-grass-check.json).
+
+## Close grass detail
+
+In Standard, choose **Close grass detail** under Optional scenery studies.
+It includes Ground vegetation and adds a separate short-range optical
+effect. A bookmark may use `?sourceGrassNap`. Ground vegetation by itself
+retains the earlier surface and does not generate a close texture.
+This close treatment is not combined with Expanded farmland; the regular
+two-layer grass and farmland mode remains available.
+
+The material adds a small original canopy-height and directional texture.
+It gives low views broken fibre groupings and shadow between clusters,
+without adding blades, changing ground height or placing actual plants.
+In the affected close region it computes the same terrain facet normal
+before the large world translation, removing a visible block artefact
+observed from grass-level in the western test. This is not a global terrain
+normal change.
+
+The refinement only draws as a surface effect on the existing validated
+dry grass mask, within 18 m of the camera and below 6.85 m above the local
+ground. A road, water, insufficient source coverage, or unsupported
+terrain keeps the original material. The original 256² RGBA texture is
+generated in short slices only when a low camera needs it. It requires
+no new file downloads or geometry, though the low shader does more work.
+The ideal texture chain occupies about 350 kB; no hardware FPS is claimed.
+
+![Matched ground-level scenes, with and without the optional close grass refinement](grass-close-detail-comparison.jpg)
+
+The real Prince and Kings ground-level views preserve geometry and the
+larger existing hue. A 76 m Queens view and the mapped road control were
+pixel-exact. [Matched render checks](grass-close-detail-check.json).

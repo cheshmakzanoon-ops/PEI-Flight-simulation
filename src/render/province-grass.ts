@@ -2,23 +2,48 @@ import type {Texture} from 'three';
 import {FieldShardSource} from '../sim/field-shards.ts';
 import {FieldStream,fieldStreamBlendGLSL} from './field-stream.ts';
 import {GRASS_DIRECTORY_PIN,GRASS_SOURCE_PINS as S} from './province-grass.generated.ts';
+import {shortGrassNapSteps} from './source-grass-nap.ts';
 import {originalGrassGrain,provinceGrassArtGLSL} from './province-grass-art.ts';
 
 export function fetchGrassStudy(base:string){return FieldShardSource.open(base+'grass-study/',GRASS_DIRECTORY_PIN);}
 export function grassSourceAllows(terrain:string|undefined,cover:string|undefined,raw:string|undefined){
  return terrain===S.terrain&&cover===S.cover&&raw===S.coverRaw;
 }
-export function provinceGrass(source:FieldShardSource){
+export function provinceGrass(source:FieldShardSource,nearNap=false){
  const stream=new FieldStream(source),art={value:null as Texture|null};
+ const nap=nearNap?{map:{value:null as Texture|null},mix:{value:0},wanted:false,pending:false,failed:false,readyAt:Infinity}:undefined;
+ let disposed=false;
  return {
-  stream,art,admitted:false,
+  stream,art,nap,admitted:false,
   uniforms:{
    grassShardArray:stream.uniforms.fieldShardArray,grassShardAreas:stream.uniforms.fieldShardAreas,
    grassShardClock:stream.uniforms.fieldShardClock,grassShardNeighbors:stream.uniforms.fieldShardNeighbors,
    sourceGrassArtMap:art,
+   ...(nap?{shortGrassNapMap:nap.map,shortGrassNapMix:nap.mix}:{}),
   },
   start(){if(this.admitted)return;art.value=originalGrassGrain();this.admitted=true;},
-  dispose(){this.admitted=false;art.value?.dispose();art.value=null;stream.dispose();},
+  prepareNap(){
+   if(!nap||nap.failed||nap.pending||nap.map.value||disposed)return;
+   nap.pending=true;
+   const steps=shortGrassNapSteps();
+   const schedule=(f:()=>void)=>{
+    if(typeof globalThis.requestIdleCallback==='function')globalThis.requestIdleCallback(f,{timeout:110});
+    else setTimeout(f,0);
+   };
+   const build=()=>{
+    if(disposed||!nap.wanted||!this.admitted){nap.pending=false;steps.return(undefined as never);return;}
+    try{
+     const start=performance.now();
+     do{
+      const next=steps.next();
+      if(next.done){nap.map.value=next.value;nap.readyAt=performance.now();nap.pending=false;return;}
+     }while(performance.now()-start<3.8);
+     schedule(build);
+    }catch{nap.failed=true;nap.pending=false;}
+   };
+   schedule(build);
+  },
+  dispose(){disposed=true;this.admitted=false;art.value?.dispose();art.value=null;nap?.map.value?.dispose();if(nap){nap.mix.value=0;nap.map.value=null;}stream.dispose();},
  };
 }
 export type ProvinceGrassStudy=ReturnType<typeof provinceGrass>;

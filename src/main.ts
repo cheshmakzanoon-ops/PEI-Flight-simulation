@@ -126,7 +126,7 @@ async function run(){
  const provinceReader=await provinceJob;
  const fieldStudy=provinceReader&&cropFields?provinceFields(provinceReader,cropFields):undefined;
  const grassReader=grassJob&&grassSourceAllows(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await grassJob:undefined;
- const grass=grassReader?provinceGrass(grassReader):undefined;
+ const grass=grassReader?provinceGrass(grassReader,options.has('sourceGrassNap')&&!options.has('cropRowsReview')&&!fieldStudy):undefined;
  const churchInputs=churchJob?await Promise.all([churchJob,preRoadJob,preBuildingJob,churchSunJob]):undefined;
  const churchCohort=(()=>{
   if(!churchInputs)return;
