@@ -1,0 +1,281 @@
+{
+  "street": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -42,
+      6.7,
+      45.5
+    ],
+    "target": [
+      -1,
+      11,
+      1.4
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 110,
+    "triangles": 52796,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "southBay": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -2.8,
+      6.82,
+      21.65
+    ],
+    "target": [
+      5.72,
+      7.33,
+      9.06
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 94,
+    "triangles": 43552,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "westBays": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -31,
+      7.16,
+      4.22
+    ],
+    "target": [
+      -14.92,
+      6.54,
+      -0.73
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 101,
+    "triangles": 44106,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "clock": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -21,
+      23.75,
+      12.65
+    ],
+    "target": [
+      -12.44,
+      21.5,
+      -0.37
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 100,
+    "triangles": 51897,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "masonry": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -25.5,
+      4.75,
+      10
+    ],
+    "target": [
+      -14,
+      4.07,
+      0.55
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 95,
+    "triangles": 43834,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "roof": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -2.1,
+      47.4,
+      66
+    ],
+    "target": [
+      4.3,
+      11.5,
+      0
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 110,
+    "triangles": 52796,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "northeast": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      32.4,
+      18.9,
+      -43.6
+    ],
+    "target": [
+      1.4,
+      10.1,
+      0
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 110,
+    "triangles": 52796,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "street+wet": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -42,
+      6.7,
+      45.5
+    ],
+    "target": [
+      -1,
+      11,
+      1.4
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 110,
+    "triangles": 52796,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  },
+  "southwest": {
+    "active": "detached",
+    "annex": false,
+    "eye": [
+      -45,
+      13.5,
+      46
+    ],
+    "target": [
+      -0.5,
+      9.5,
+      1.8
+    ],
+    "count": {
+      "historic brick body": 8940,
+      "west masonry volume": 5054,
+      "main measured membrane and slate": 106,
+      "lower west slate": 220,
+      "triangular historic gables": 1237,
+      "recessed roof dormers": 1368,
+      "square chimneys": 72,
+      "clock tower slate plinth": 1098,
+      "clockwork patinated copper": 7822
+    },
+    "draws": 110,
+    "triangles": 52796,
+    "shadowMap": 2048,
+    "assetRequests": 0,
+    "errors": [],
+    "requestCount": 2
+  }
+}

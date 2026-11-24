@@ -1,0 +1,22 @@
+{
+  "index.html": "cca74c0e68a273e63e04f69f97d5744d892b13b5604c1923f1176759631c3605",
+  "make-witness.py": "36aea6b1e83a4d54cc61bde7d9e54cd8c3b13e433825fe0db781fcd67498247d",
+  "package.json": "412308b8f3322c42d1eabff61479c035dacfd11ae24812b1ea47974bbbfc87bf",
+  "proof/browser-render.json": "07a9500cff9ed0f47362e73b02acc6aa51a832712e1245fff877215473d09f38",
+  "proof/independent-fits.json": "b7998953f62afa934a5c20a064a393263e7b167c4d55c906859e3a7633675a62",
+  "proof/roof-rays.json": "75874b486cba0661db0895792ff5921bbac7eb27d35e132ee79d707b6ef126cf",
+  "proof/structural-check.json": "fcaf6aaaa101786db73beb2dc12de29a2a5b3f9f786a62993247d231949e6e8c",
+  "proof/summerside-city-hall-E2.webp": "56d2b489681910662935dc50b67a36ab03d6de75b489cf3b6c38c81f996c7c2c",
+  "proof/summerside-cityhall-A-to-E2.webp": "733f9bd174f768480893d7fea4c4695b16dcbfa20f3925377c6d2d2d334766c7",
+  "render.py": "223d463fa1105de65882d5ed60465e026e0f4c65ead102fb02352082194cfe3a",
+  "roof-fits.py": "2fd170924b6640159d6cfcee44ba9ce5236eedcf5e082471448d097cb93d00a3",
+  "roof-rays.mjs": "6fd57babd1478f638f090fa56edefa0a72e7b25f40a66cf991b7e6cee9a7d9ee",
+  "sources-and-review.md": "c0a58587b98fb9cd42e078ed8b1c0d979b26a15adff712d898bcfa786fe5202b",
+  "src/cityhall-materials.ts": "13b37c68ba7d4fafebd1bf6708b76289872e0db1520991ca7362b2eb2363ca91",
+  "src/cityhall-model.ts": "a3ba8d4b470513aab8dd9e51a82bfa1e980277c4f2bb38333caca380f7cd724d",
+  "src/cityhall-survey.ts": "3a27d7e46c08e0d3fc491c4ed7807a90fb30c8bb4d321915366c1c7cce7f3174",
+  "src/main.ts": "4b26544f8796bfd4bd761a00bd3efb0c57a1e188217c55b91534038cbbbcfe90",
+  "structural-audit.mjs": "74ccbd8ef6d4095eb3f26ab8783fabf9f51df4dedae0e71e16de81a5a8c03c88",
+  "tsconfig.json": "1ba4f3def4d3b231a55b66d89e97735404be2377a2f6c5214a4996d5844d3e27",
+  "vite.config.ts": "df1d36e8d024503dc4caa94a44e5dfc22736af09e5482d0776edbe8ebb04562d"
+}

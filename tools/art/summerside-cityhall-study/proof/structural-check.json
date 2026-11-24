@@ -1,0 +1,33 @@
+{
+  "detached": true,
+  "modelBatches": 54,
+  "triangleCount": 25917,
+  "normalVectorsOffUnit": 0,
+  "zeroArea": 0,
+  "nonFinite": 0,
+  "nonFiniteUV": 0,
+  "localExtents": [
+    [
+      -15.334500312805176,
+      -0.10750000178813934,
+      -8.754500389099121
+    ],
+    [
+      20.04450035095215,
+      24.543575286865234,
+      9.964500427246094
+    ]
+  ],
+  "regions": {
+    "historic brick body": 8940,
+    "west masonry volume": 5054,
+    "main measured membrane and slate": 106,
+    "lower west slate": 220,
+    "triangular historic gables": 1237,
+    "recessed roof dormers": 1368,
+    "square chimneys": 72,
+    "clock tower slate plinth": 1098,
+    "clockwork patinated copper": 7822
+  },
+  "acceptance": true
+}

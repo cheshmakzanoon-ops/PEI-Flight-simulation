@@ -1,0 +1,5 @@
+node_modules/
+dist/
+proof/*.png
+proof/private-mesh-witness.json
+proof/render.json

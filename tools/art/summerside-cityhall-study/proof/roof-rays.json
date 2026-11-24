@@ -1,0 +1,36 @@
+{
+  "main": {
+    "count": 377,
+    "miss": 0,
+    "nearP50": 0.02350929078589914,
+    "p90": 0.06814147403964554,
+    "max": 1.8699996490478519,
+    "distinction": {
+      "main measured membrane and slate/membrane": 373,
+      "main measured membrane and slate/aluminum": 2,
+      "square chimneys/ashlar": 2
+    }
+  },
+  "west": {
+    "count": 23,
+    "miss": 0,
+    "nearP50": 0.03675091178525136,
+    "p90": 0.06278122715449896,
+    "max": 0.10802502319730323,
+    "distinction": {
+      "lower west slate/membrane": 23
+    }
+  },
+  "towerObservedUnclassified": {
+    "count": 70,
+    "miss": 0,
+    "nearP50": 0.1516910585043334,
+    "p90": 0.47258149078407286,
+    "max": 0.7296268579539102,
+    "distinction": {
+      "clockwork patinated copper/copper": 64,
+      "clockwork patinated copper/copperBright": 6
+    }
+  },
+  "version": "E2 detached, no survey registration."
+}
