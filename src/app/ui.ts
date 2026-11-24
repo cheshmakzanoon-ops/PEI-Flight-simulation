@@ -1,4 +1,4 @@
-import {SCENERY_REVIEWS,applyReviewSceneryURL,isDetailScenery,provinceFieldBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {SCENERY_REVIEWS,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -24,15 +24,15 @@ export class UI {
   this.selected=sceneryDeparture(location.search,SITES.map(x=>x.id));
   const detail=isDetailScenery(location.search);
   const selectedReviews=new Set(reviewedScenery(location.search));
-  const provinceBlock=provinceFieldBlock(sceneryOptions(location.search));
-  const provinceSaved=selectedReviews.has('provinceFieldsReview');
-  const reviewCount=selectedReviews.size-Number(!!provinceBlock&&provinceSaved);
-  const provinceNote=provinceBlock==='detail'?'Switch to Standard to use this study.':
-   provinceBlock==='terrain'?'Unavailable with the current terrain or shadow options.':'Selected fields in all three counties';
+  const reviewsWithScope=sceneryOptions(location.search);
+  let reviewCount=0;
   const reviewOptions=SCENERY_REVIEWS.map(item=>{
-   const province=item.flag==='provinceFieldsReview';
-   const scope=province?(provinceBlock&&provinceSaved?'Saved · ':'')+provinceNote:item.scope;
-   return `<label class="review-choice"><input type="checkbox" name="scenery-review" value="${item.flag}"${selectedReviews.has(item.flag)?' checked':''}${province&&provinceBlock&&!provinceSaved?' disabled':''}><span><b>${item.name}</b><small>${scope}</small></span></label>`;
+   const blocked=sceneryReviewBlock(item.flag,reviewsWithScope),saved=selectedReviews.has(item.flag);
+   if(saved&&!blocked)reviewCount++;
+   const status=blocked==='detail'?'Switch to Standard to use this study.':
+    blocked==='terrain'?'Unavailable with the current terrain or shadow options.':item.scope;
+   const scope=(blocked&&saved?'Saved · ':'')+status;
+   return `<label class="review-choice"><input type="checkbox" name="scenery-review" value="${item.flag}"${saved?' checked':''}${blocked&&!saved?' disabled':''}><span><b>${item.name}</b><small>${scope}</small></span></label>`;
   }).join('');
   const opts=SITES.map((s,i)=>`<option value="${i}">${s.name}</option>`).join('');
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>

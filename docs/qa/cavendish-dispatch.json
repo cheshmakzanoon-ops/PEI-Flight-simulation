@@ -1,0 +1,69 @@
+{
+  "joint": {
+    "sameProjectPath": "/PEI-Flight-simulation/",
+    "preservedHashAndQuery": true,
+    "reloads": 1,
+    "desktopPendingAssetRequests": 0,
+    "sameOriginAssets": [
+      "/PEI-Flight-simulation/world/cavendish/v0/cavendish-water-2020.r8.gz",
+      "/PEI-Flight-simulation/art/green-gables-v3.bin.gz"
+    ],
+    "composedAndFlying": "cavendish-dunelands-low",
+    "blockedTouchLayouts": [
+      {
+        "width": 390,
+        "height": 760,
+        "touchTargets": [
+          68.609375,
+          68.60940551757812
+        ],
+        "applyAndBeginReachable": true
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "touchTargets": [
+          44.40625,
+          44.40625
+        ],
+        "applyAndBeginReachable": true
+      }
+    ],
+    "errors": []
+  },
+  "legacyOptions": {
+    "desktop": {
+      "enableAndDisable": true,
+      "nativeReloads": 2,
+      "unchangedDeparture": "cysu",
+      "preservedProjectPathAndUrlState": true,
+      "expandedStartVisible": true,
+      "optionalAssetsRequestedOnlyAfterApply": 2
+    },
+    "mobile": {
+      "keyboardDisclosure": true,
+      "horizontalOverflow": false,
+      "width": 390
+    },
+    "errors": []
+  },
+  "provinceFields": {
+    "projectPath": "/PEI-Flight-simulation/",
+    "selectedDeparture": "prince-fields",
+    "preservedHashAndUnrelatedOptions": true,
+    "stockAndPendingRequests": 0,
+    "detailRequests": 0,
+    "savedThroughProfileSwitch": true,
+    "standardIndexRequestsPerLaunch": 1,
+    "standardPackRequests": 4,
+    "flightDistanceMetres": 78.455,
+    "readyTiles": 3,
+    "blockedMobile": {
+      "width": 390,
+      "keyboardDisclosure": true,
+      "horizontalOverflow": false,
+      "blockedRequests": 0
+    },
+    "errors": []
+  }
+}

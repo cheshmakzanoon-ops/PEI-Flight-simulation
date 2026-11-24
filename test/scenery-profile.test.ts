@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {applyReviewSceneryURL,provinceFieldBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -64,4 +64,22 @@ test('the province field atlas shares one eligibility check with Dispatch',()=>{
  assert.equal(next.searchParams.get('departure'),'prince-fields');
  assert.equal(next.searchParams.has('diagnostics'),true);
  assert.equal(next.hash,'#atlas');
+});
+
+test('Cavendish studies share exact profile rules and persist while suspended',()=>{
+ const options=(s:string)=>sceneryOptions(s);
+ assert.equal(sceneryReviewBlock('greenGablesReview',options('?scenery=detail')),undefined);
+ assert.equal(sceneryReviewBlock('cavendishWaterReview',options('?scenery=detail')),undefined);
+ assert.equal(sceneryReviewBlock('greenGablesReview',options('?inlandRelief')),undefined);
+ assert.equal(sceneryReviewBlock('cavendishWaterReview',options('?inlandRelief')),'terrain');
+ for(const f of ['greenGablesReview','cavendishWaterReview'] as const){
+  assert.equal(sceneryReviewBlock(f,options('?surveyRelief')),'terrain');
+  assert.equal(sceneryReviewBlock(f,options('?buildingShadows')),'terrain');
+ }
+ assert.equal(sceneryReviewBlock('beaconsfieldReview',options('?buildingShadows')),'terrain');
+ assert.equal(sceneryReviewBlock('cropRowsReview',options('?buildingShadows')),undefined);
+ const a=applyReviewSceneryURL('https://example.test/app/?diagnostics&surveyRelief#landings',
+  new Set(['greenGablesReview','cavendishWaterReview']),'cavendish-dunelands-low');
+ assert.deepEqual(reviewedScenery(new URL(a).search),['greenGablesReview','cavendishWaterReview']);
+ assert.ok(a.includes('surveyRelief')&&a.endsWith('#landings'));
 });

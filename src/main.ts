@@ -3,7 +3,7 @@ import {cavendishAtlasMatches,loadCavendishWaterCore} from './sim/cavendish-wate
 import {GREEN_GABLES_REVIEW as GABLES} from './render/green-gables-review-spec.ts';
 import {fetchProvinceDirectory,provinceFields} from './render/province-fields.ts';
 import {cropFieldAtlasMatches,loadFieldPilot} from './render/fields-pilot.ts';
-import {provinceFieldBlock,sceneryOptions} from './app/scenery-profile.ts';
+import {sceneryOptions,sceneryReviewBlock} from './app/scenery-profile.ts';
 import {NorthCapeScenery} from './render/north-cape.ts';
 import {buildNorthBaywalk} from './render/north-baywalk.ts';
 import {loadBaywalkCourt,BAYWALK_ROAD_SHA,BAYWALK_ROAD_ORDINAL,BAYWALK_ROAD_FLAGS} from './sim/baywalk-native.ts';
@@ -65,11 +65,11 @@ async function run(){
  const baywalkJob=useBaywalk?Promise.all([loadBaywalkCourt(worldBase),spinnakersJob,preRoadJob,preBuildingJob])
   .then(([court,deck,road,buildings])=>court&&deck&&buildings&&road?.digest===BAYWALK_ROAD_SHA&&road.roads[BAYWALK_ROAD_ORDINAL]?.flags===BAYWALK_ROAD_FLAGS?
    {court,deck,road:road.roads[BAYWALK_ROAD_ORDINAL].points}:undefined):undefined;
- const tryGreenGables=options.has('greenGablesReview')&&!showBuildingShadows&&!options.has('surveyRelief');
- const provinceAllowed=options.has('provinceFieldsReview')&&!provinceFieldBlock(options);
+ const tryGreenGables=options.has('greenGablesReview')&&!sceneryReviewBlock('greenGablesReview',options);
+ const provinceAllowed=options.has('provinceFieldsReview')&&!sceneryReviewBlock('provinceFieldsReview',options);
  const provinceJob=provinceAllowed?fetchProvinceDirectory(worldBase):undefined;
  const fieldsJob=options.has('cropRowsReview')||provinceAllowed?loadFieldPilot(worldBase):undefined;
- const dunelandsCompatible=options.has('cavendishWaterReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows;
+ const dunelandsCompatible=options.has('cavendishWaterReview')&&!sceneryReviewBlock('cavendishWaterReview',options);
  const dunelandsJob=dunelandsCompatible?loadCavendishWaterCore(DUNELANDS,worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
  const {terrain,terrainSha,img,cover,sky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
@@ -144,7 +144,7 @@ async function run(){
    const y=world.visualGroundHeight(...GABLES.centroidXZ);
    return y>=11.26&&y<=13.44;
   }:undefined;
- const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,!showBuildingShadows&&options.has('beaconsfieldReview'),greenGablesGate).then(v=>buildings=v).catch(e=>{warn('Building',e);});
+ const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate).then(v=>buildings=v).catch(e=>{warn('Building',e);});
  if(fieldStudy)void Promise.all([roadReady,buildingReady]).then(([r,b])=>{
   fieldStudy.admitted=r?.sourceGeometrySha256==='72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1'&&
     b?.sourceAtlasSha256==='538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557';

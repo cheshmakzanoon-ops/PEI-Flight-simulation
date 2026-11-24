@@ -1,7 +1,8 @@
 # Cavendish Dunelands freshwater core
 
-Append `?cavendishWaterReview` to the game URL (or add
-`&cavendishWaterReview` if it already has options). Select
+In Dispatch, select **Dunelands freshwater** under **Optional scenery
+studies** and apply. You can also use `?cavendishWaterReview` (or
+`&cavendishWaterReview` if the URL already has options). Select
 **Cavendish Dunelands · coastal pass** to start just offshore and cross the
 pond on the approach to Green Gables. The Standard atlas stays unchanged
 without the flag. The study can coexist with the separate Bowley Pond layer.

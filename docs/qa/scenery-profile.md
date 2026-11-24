@@ -35,12 +35,17 @@ focus, and both controls remain reachable when the panel scrolls.
 
 ## Standalone scenery studies
 
-In Dispatch, open **Optional scenery studies** to toggle **Beaconsfield
-exterior**, **Field surface relief**, or **Expanded farmland**, then choose
-**Apply studies**.
+In Dispatch, open **Optional scenery studies** to choose **Beaconsfield
+exterior**, **Green Gables House**, **Dunelands freshwater**, **Field
+surface relief**, or **Expanded farmland**, then choose **Apply studies**.
 This reloads the project while keeping the departure and unrelated URL
 options. Opening the panel alone does not load new assets. These studies
 are separate from the Detailed preview preset.
+
+Select **Green Gables House** and **Dunelands freshwater** together for the
+**Cavendish Dunelands · coastal pass**. Existing terrain and shadow exclusions
+still apply; the panel distinguishes a saved but inactive study from a
+selected active option. See the [compiled Dispatch replay](cavendish-dispatch.json).
 
 **Expanded farmland** streams selected coverage in all three counties with
 Standard scenery. Its selection is saved, but inactive, when switching to

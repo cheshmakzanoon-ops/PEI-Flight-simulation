@@ -33,8 +33,10 @@ export function sceneryDeparture(search:string,siteIds:readonly string[]){
 /** Standalone art reviews. They are intentionally not in the bundled detail profile. */
 export const SCENERY_REVIEWS=[
  {flag:'beaconsfieldReview',name:'Beaconsfield exterior',scope:'Charlottetown waterfront'},
- {flag:'cropRowsReview',name:'Field surface relief',scope:'Three selected inland areas'},
- {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'Selected fields in all three counties'},
+ {flag:'greenGablesReview',name:'Green Gables House',scope:'Cavendish exterior'},
+ {flag:'cavendishWaterReview',name:'Dunelands freshwater',scope:'2020 surveyed core'},
+ {flag:'cropRowsReview',name:'Field surface relief',scope:'Three inland sites'},
+ {flag:'provinceFieldsReview',name:'Expanded farmland',scope:'All three counties'},
 ] as const;
 export type ScenicReview=(typeof SCENERY_REVIEWS)[number]['flag'];
 
@@ -44,6 +46,15 @@ const PROVINCE_FIELD_CONFLICTS=['surveyRelief','inlandRelief','northCapeWind','b
 export function provinceFieldBlock(options:URLSearchParams):'detail'|'terrain'|undefined{
  if(options.get('scenery')==='detail')return 'detail';
  return PROVINCE_FIELD_CONFLICTS.some(flag=>options.has(flag))?'terrain':undefined;
+}
+
+export function sceneryReviewBlock(flag:ScenicReview,options:URLSearchParams):'detail'|'terrain'|undefined{
+ if(flag==='provinceFieldsReview')return provinceFieldBlock(options);
+ if(flag==='cropRowsReview')return;
+ if(options.has('buildingShadows'))return 'terrain';
+ if(flag==='beaconsfieldReview')return;
+ if(options.has('surveyRelief'))return 'terrain';
+ if(flag==='cavendishWaterReview'&&options.has('inlandRelief'))return 'terrain';
 }
 
 export function reviewedScenery(search:string){

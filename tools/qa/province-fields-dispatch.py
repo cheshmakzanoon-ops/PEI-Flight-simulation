@@ -67,7 +67,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Handler,d
   m.goto(root+'?diagnostics&buildingShadows',wait_until='domcontentloaded');ready(m)
   disclosure(m).focus();m.keyboard.press('Enter')
   assert choice(m).is_disabled() and not choice(m).is_checked()
-  assert m.get_by_text('Unavailable with the current terrain or shadow options.').is_visible()
+  assert m.locator('.review-choice').filter(has=choice(m)).get_by_text('Unavailable with the current terrain or shadow options.').is_visible()
   assert m.evaluate('document.documentElement.scrollWidth===innerWidth')
   m.get_by_role('button',name='Begin flight').scroll_into_view_if_needed()
   expect(m.get_by_role('button',name='Begin flight')).to_be_in_viewport()

@@ -1,6 +1,7 @@
 # Green Gables House, Cavendish
 
-A source-bounded exterior review for the simulator. Append `?greenGablesReview` to the game URL (or add `&greenGablesReview` if it already has a query), then fly to the Green Gables House in Cavendish, approximately **46.48779° N, 63.38206° W**. This is one exterior: not an ordinary ground view, restored estate, visitor route, current as-built survey, property plan, replica interior, or official Parks Canada product. Ordinary scenery is unchanged without the flag.
+A source-bounded exterior review for the simulator. In Dispatch, select
+**Green Gables House** under **Optional scenery studies** and apply. Or append `?greenGablesReview` to the game URL (or add `&greenGablesReview` if it already has a query), then fly to the Green Gables House in Cavendish, approximately **46.48779° N, 63.38206° W**. This is one exterior: not an ordinary ground view, restored estate, visitor route, current as-built survey, property plan, replica interior, or official Parks Canada product. Ordinary scenery is unchanged without the flag.
 
 ![In-engine garden-side view of the authored exterior](../qa/green-gables-exterior.webp)
 
