@@ -48,6 +48,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockBasinSand'))q.delete('basinSand');
  if(q.has('stockMeadow'))q.delete('meadowTexture');
  if(q.has('stockGravelSurface'))q.delete('gravelSurfaceStudy');
+ if(q.has('stockMiscouche'))q.delete('miscoucheCanopyStudy');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -288,4 +289,13 @@ export function standardGravelSurfaceRequested(q:URLSearchParams){
    'duneReliefStudy','duneSandDetail','duneGrassSurface','orthophotoSeamStudy',
    'cavendishDetail','gablesGradeReview','greenGablesBarnReview','canopyLight','shoreToneStudy',
    'northCapeWind','woodland3D','forestFloor'].some(k=>q.has(k));
+}
+
+/** Release the narrowly source-fenced Miscouche woodland in ordinary low flight. */
+export function standardMiscoucheRequested(q:URLSearchParams){
+ if(q.has('stockMiscouche')||q.has('miscoucheCanopyStudy')||sceneryReviewBlock('miscoucheCanopyStudy',q))return false;
+ return !SCENERY_REVIEWS.some(row=>q.has(row.flag))&&
+  !['regionalCanopyStudy','pointPrimStudy','kingsDryCrownStudy','seatedRoads','duneReliefStudy',
+    'duneSandDetail','duneGrassSurface','orthophotoSeamStudy','shoreToneStudy','greenGablesBarnReview',
+    'gablesGradeReview','cavendishDetail','woodlandCrownBase','northCapeWind'].some(k=>q.has(k));
 }

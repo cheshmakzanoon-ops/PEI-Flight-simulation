@@ -2,7 +2,7 @@ import * as T from 'three';
 import {MISCOUCHE_CROWNS,MISCOUCHE_PROOF as spec} from './miscouche-fill.generated.ts';
 type Ground=(x:number,z:number)=>number|undefined;
 const ease=(n:number)=>{const q=Math.min(1,Math.max(0,n));return q*q*(3-2*q);};
-export function createMiscoucheFill(scene:T.Scene,base:T.ShaderMaterial,seat:Ground){
+export function createMiscoucheFill(scene:T.Scene,base:T.ShaderMaterial,seat:Ground,standard=false){
  const total=MISCOUCHE_CROWNS.length;
  const stems=new Float32Array(total*3),shapes=new Float32Array(total*4);
  const bound=new T.Box3();
@@ -48,7 +48,7 @@ export function createMiscoucheFill(scene:T.Scene,base:T.ShaderMaterial,seat:Gro
    const d=Math.hypot(eye.x-spec.center[0],eye.z-spec.center[1]);
    if(!authorized||!seatsValid||!Number.isFinite(now))readySince=Infinity;
    else if(readySince===Infinity)readySince=now;
-   const alpha=Number.isFinite(readySince)?ease((now-readySince)/420)*ease((740-d)/210)*ease((eye.y-farTop-2)/10)*ease((970-eye.y)/280):0;
+   const alpha=Number.isFinite(readySince)?ease((now-readySince)/420)*ease((740-d)/210)*ease((eye.y-farTop-2)/10)*ease(standard?(330-eye.y)/75:(970-eye.y)/280):0;
    mesh.visible=Number.isFinite(alpha)&&alpha>.001;
    mat.uniforms.fillAlpha.value=mesh.visible?alpha:0;
   },

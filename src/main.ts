@@ -90,7 +90,7 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
@@ -294,12 +294,18 @@ async function run(){
  const regionalCanopy=regionalCanopyRequested(options)&&gl.getParameter(gl.SAMPLES)>=2&&regionalBase(terrain,cover,terrainSha)?
   new RegionalCanopies(world,scene,vegetation,forestStream,worldBase,REGIONAL_STANDS):undefined;
  if(crownStream)vegetation.trackCrownHeights();
- const miscoucheRequest=options.has('miscoucheCanopyStudy')&&!sceneryReviewBlock('miscoucheCanopyStudy',options)&&gl.getParameter(gl.SAMPLES)>=2&&
+ const chooseMiscoucheStandard=standardMiscoucheRequested(options);
+ const miscoucheRequest=(chooseMiscoucheStandard||options.has('miscoucheCanopyStudy')&&!sceneryReviewBlock('miscoucheCanopyStudy',options))&&gl.getParameter(gl.SAMPLES)>=2&&
   terrainSha==='661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d'&&
   cover.sourceSha==='46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863'&&
   cover.width===4096&&cover.height===2720&&terrain.spec.width===4096&&terrain.spec.height===2720&&
   [-64.47,45.94,-61.93,47.10].every((v,i)=>terrain.spec.bounds[i]===v);
  let miscoucheDef:typeof import('./render/miscouche-fill.ts')|undefined,miscoucheJob=false,miscoucheRejected=false;
+ let miscoucheProof:'cold'|'waiting'|'verified'|'stock'='cold',miscoucheInfrastructure=!chooseMiscoucheStandard;
+ if(chooseMiscoucheStandard&&miscoucheRequest)void Promise.all([mappedSidewalks,mappedParking]).then(([walk,parking])=>{
+  miscoucheInfrastructure=!!walk&&!!parking&&String(SIDEWALKS.sha256)===CANOPY_FENCE.pins.sidewalk&&
+   String(MAPPED_PARKING.sha256)===CANOPY_FENCE.pins.parking;
+ }).catch(()=>{});
  let miscoucheArt:ReturnType<typeof import('./render/miscouche-fill.ts')['createMiscoucheFill']>;
  const MISCOUCHE_OWNER=[-53778.10046418605,5740.396270232558] as const;
  const MISCOUCHE_EFI='0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b';
@@ -653,25 +659,30 @@ async function run(){
   if(rollingModule)vegetation.updateRollingShadows(camera.position.x,camera.position.z,eyeAGL);
   if(miscoucheRequest){
    const d2=(camera.position.x-MISCOUCHE_OWNER[0])**2+(camera.position.z-MISCOUCHE_OWNER[1])**2;
-   const nearby=Number.isFinite(camera.position.y)&&camera.position.y<970&&d2<1100**2;
-   const standReady=nearby&&forestStream.hasHeightPlan('7-12',MISCOUCHE_EFI)&&
+   const nearby=Number.isFinite(camera.position.y)&&camera.position.y<(chooseMiscoucheStandard?342:970)&&d2<1100**2;
+   const standReady=nearby&&miscoucheInfrastructure&&forestStream.hasHeightPlan('7-12',MISCOUCHE_EFI)&&
     roads?.sourceGeometrySha256==='72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1'&&
     buildings?.sourceAtlasSha256==='538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557';
-   if(standReady&&!miscoucheJob){
-    miscoucheJob=true;
+   const canStart=!chooseMiscoucheStandard||playing&&f.status==='flying';
+   if(standReady&&canStart&&miscoucheProof==='cold'){
+    miscoucheProof='waiting';
     void verifyDecodedCover(cover).then(pin=>{
-     if(pin==='e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9')return import('./render/miscouche-fill.ts');
-    }).then(module=>{miscoucheDef=module;}).catch(()=>{});
+     miscoucheProof=pin===CANOPY_FENCE.pins.coverDecoded?'verified':'stock';
+    }).catch(()=>{miscoucheProof='stock';});
    }
-   if(standReady&&miscoucheDef&&!miscoucheArt&&!miscoucheRejected){
+   if(standReady&&canStart&&miscoucheProof==='verified'&&!miscoucheJob){
+    miscoucheJob=true;
+    void import('./render/miscouche-fill.ts').then(module=>{miscoucheDef=module;}).catch(()=>{});
+   }
+   if(standReady&&canStart&&miscoucheDef&&!miscoucheArt&&!miscoucheRejected){
     try{
      miscoucheArt=miscoucheDef.createMiscoucheFill(scene,vegetation.crownFillMaterial(),(x,z)=>
-      cover.distance(terrain,x,z)>=125&&world.surface(x,z).land?world.visualGroundHeight(x,z):undefined);
+      cover.distance(terrain,x,z)>=125&&world.surface(x,z).land?world.visualGroundHeight(x,z):undefined,chooseMiscoucheStandard);
     }catch{/** The isolated optional art may remain absent. */}
     if(!miscoucheArt)miscoucheRejected=true;
    }
    if(!nearby&&miscoucheArt){miscoucheArt.dispose();miscoucheArt=undefined;}
-   miscoucheArt?.update(camera.position,!!standReady&&d2<740**2&&vegetation.miscoucheFillRoster(),world.visualGroundEpoch,performance.now());
+   miscoucheArt?.update(camera.position,!!standReady&&(!chooseMiscoucheStandard||!cinematic)&&d2<740**2&&vegetation.miscoucheFillRoster(),world.visualGroundEpoch,performance.now());
   }
   regionalCanopy?.update(f,camera.position,f.y-world.groundHeight(f.x,f.z),eyeAGL,playing&&f.status==='flying',!cinematic,now);
   duneSand?.update(camera.position.x,camera.position.z,eyeAGL);

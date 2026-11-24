@@ -1,0 +1,230 @@
+{
+  "parent": "f1a0d7ba2842513307f22fbb8f8e3e2fbb1ff16f",
+  "scope": "Same source fence and crown geometry as the earlier explicit study, measured rerun in ordinary Standard near the player. Inferred crowns, not a count of trees on the ground.",
+  "tests": 393,
+  "pairedProjectedScopes": {
+    "registered": {
+      "size": [
+        483,
+        541
+      ],
+      "exactCamera": {
+        "eye": [
+          -54027.72213171859,
+          133.76422251785695,
+          6026.623916554426
+        ],
+        "aim": [
+          -53807.804144237925,
+          15,
+          5754.344503483123
+        ],
+        "height": 541,
+        "width": 483
+      },
+      "maximum": 109,
+      "changed0": 5197,
+      "changed2": 5145,
+      "changed8": 4532,
+      "alphaEffectConservativeBoundPixels": 24821,
+      "shieldedPixels": 236482,
+      "exactNoExteriorChange": true,
+      "exteriorDifferent": 0,
+      "bboxAfterTwoPx": [
+        0,
+        208,
+        482,
+        389
+      ],
+      "changedNoPadPixels": 15,
+      "mappedCards": 182,
+      "sha": [
+        "f71579308e8cbd8363b0e9be0dd0f287a6bc14cd70d7b5a071826ed4abc2ee25",
+        "bfd67eb5ced9182e73b18fe9be752cea34ba91bb872052b4f087bf745941f0f5"
+      ]
+    },
+    "overhead": {
+      "size": [
+        483,
+        541
+      ],
+      "exactCamera": {
+        "eye": [
+          -53807.804144237925,
+          458,
+          5754.344503483123
+        ],
+        "aim": [
+          -53807.804144237925,
+          5.0,
+          5754.344503483123
+        ],
+        "width": 483,
+        "height": 541,
+        "up": [
+          0,
+          0,
+          -1
+        ],
+        "orthographic": true
+      },
+      "maximum": 105,
+      "changed0": 6400,
+      "changed2": 6377,
+      "changed8": 5964,
+      "alphaEffectConservativeBoundPixels": 30141,
+      "shieldedPixels": 231162,
+      "exactNoExteriorChange": true,
+      "exteriorDifferent": 0,
+      "bboxAfterTwoPx": [
+        39,
+        56,
+        453,
+        513
+      ],
+      "changedNoPadPixels": 0,
+      "mappedCards": 215,
+      "sha": [
+        "20b0d03a18f00773db6bd856d6858ae164e36494d808d07ae3ceb5e92e3364ed",
+        "79a278265c8c2088cb1161dab9b5ee5bea75aa60ac80154bdb45d0e7d4fd1a7b"
+      ]
+    }
+  },
+  "pairedNativeCanopyProof": {
+    "0560971": {
+      "captureSHA": [
+        "1a123bfb27dd1117b11c83339891b489777c686a62f1f455e7fe73d9d15e01c7",
+        "296403611677127d1d1362e392d7b1cc72773ab8e98f589094493a36548200c2"
+      ],
+      "viewport": [
+        483,
+        541
+      ],
+      "entire": {
+        "rgbChanged": 6400,
+        "newOccupied": 5480,
+        "lostOccupied": 0
+      },
+      "rasterizedStand": {
+        "total": 57921,
+        "stock": 30146,
+        "candidate": 35626,
+        "newOutside": 0
+      },
+      "nativeGrid": {
+        "coreUnits": 53665,
+        "newCoreUnits": 5610,
+        "lostCoreUnits": 0,
+        "newOnStrictTall": 5583,
+        "strictTallGapBefore": 19909,
+        "lostExistingStrictTall": 0,
+        "newBelow3": 0,
+        "newBelow5": 0,
+        "newBelow6": 0,
+        "newInProtectedLowWithPad": 0,
+        "newNeverSourceAllowed": 0,
+        "newBeyondNativeExactBoundary": 0,
+        "retainedOpenLow3": 438
+      }
+    },
+    "0490312": {
+      "captureSHA": [
+        "cc87e4a6c398c6b1e44d998e35dfaea51c58119454b742a6bb1120aa38b3ba54",
+        "cc87e4a6c398c6b1e44d998e35dfaea51c58119454b742a6bb1120aa38b3ba54"
+      ],
+      "viewport": [
+        441,
+        374
+      ],
+      "entire": {
+        "rgbChanged": 0,
+        "newOccupied": 0,
+        "lostOccupied": 0
+      },
+      "rasterizedStand": {
+        "total": 74239,
+        "stock": 27156,
+        "candidate": 27156,
+        "newOutside": 0
+      },
+      "nativeGrid": {
+        "coreUnits": 70935,
+        "newCoreUnits": 0,
+        "lostCoreUnits": 0,
+        "newOnStrictTall": 0,
+        "strictTallGapBefore": 19247,
+        "lostExistingStrictTall": 0,
+        "newBelow3": 0,
+        "newBelow5": 0,
+        "newBelow6": 0,
+        "newInProtectedLowWithPad": 0,
+        "newNeverSourceAllowed": 0,
+        "newBeyondNativeExactBoundary": 0,
+        "retainedOpenLow3": 903
+      }
+    }
+  },
+  "unchangedNeighbourViews": [
+    "canopy",
+    "wholeOverhead",
+    "oblique"
+  ],
+  "compiled": [
+    {
+      "mode": "ordinary",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 107.239,
+      "count": 215,
+      "gain": 1,
+      "assets": 1
+    },
+    {
+      "mode": "explicit",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 107.84,
+      "count": 215,
+      "gain": 1,
+      "assets": 1
+    },
+    {
+      "mode": "stock",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 93.456,
+      "count": 0,
+      "gain": 0,
+      "assets": 0
+    },
+    {
+      "mode": "distant",
+      "site": "charlottetown",
+      "motionM": 95.09,
+      "count": 0,
+      "gain": 0,
+      "assets": 0
+    },
+    {
+      "mode": "detail",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 91.66,
+      "count": 0,
+      "gain": 0,
+      "assets": 0
+    },
+    {
+      "mode": "wrong-source",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 90.461,
+      "count": 0,
+      "gain": 0,
+      "assets": 0
+    },
+    {
+      "mode": "wrong-decoded",
+      "site": "miscouche-woodlot-pass",
+      "motionM": 92.859,
+      "count": 0,
+      "gain": 0,
+      "assets": 0
+    }
+  ]
+}

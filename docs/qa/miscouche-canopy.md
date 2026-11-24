@@ -1,14 +1,13 @@
 # Miscouche woodland canopy support
 
-This is a small, independent Prince County scenery study. In Standard
-scenery, choose **Miscouche · woodland pass** and enable **Miscouche canopy**
-under Optional scenery studies. The direct comparison URL is
-`?departure=miscouche-woodlot-pass&miscoucheCanopyStudy` to compare the inferred
-crown infill with the unchanged woodland on the same route. Without
-`miscoucheCanopyStudy`, the new departure uses the original tree model.
+In **Standard** scenery, choose **Miscouche · woodland pass** to fly over
+the measured dense woodland. Add `?stockMiscouche` to compare the same
+departure with the original canopy. The legacy `?miscoucheCanopyStudy`
+still runs the earlier explicitly enabled version with its wider altitude
+window.
 The route is virtual and is not an aviation, navigation, or access guide.
 
-![Matched ordinary terrain and woodland, before at left and with the independent crown layer at right](miscouche-woodland-comparison.webp)
+![Matched ordinary terrain and woodland, before at left and with the independent crown layer at right](miscouche-standard-comparison.webp)
 
 ## Evidence and scope
 
@@ -51,7 +50,7 @@ The full overhead scene also matched all 231,162 pixels outside the
 projected bounds. The existing clearings stay visible; this is not a
 replacement for three-dimensional individual trees on a low overflight.
 
-The optional cohort adds one instanced draw and **430 triangles** in the
+The qualified cohort adds one instanced draw and **430 triangles** in the
 tested view. It has a short fade and only draws within 740 m, above the
 upper crown envelope, and on an MSAA-capable renderer. No distant
 departure requests its module. Its art depends on the real registered
@@ -70,3 +69,9 @@ windows, the matched frames, and the compiled flight checks. The camera
 comparisons can be rerun with `tools/qa/miscouche-canopy-frames.py` using the
 registered source polygons and Chromium; `tools/qa/miscouche-flight.py`
 exercises the built app.
+
+The [Standard verification](miscouche-standard-gate.json) exercised the
+normal and legacy paths, stock, Detail, two wrong-source cases and a distant
+departure. No Standard module is requested in Dispatch. The artwork fades
+fully out at 330 m in simulator coordinates or 740 m horizontally, without
+changing any flight surface. The neighboring mixed stand remained exact.

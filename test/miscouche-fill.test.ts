@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {Scene,ShaderMaterial,Texture,Vector3} from 'three';
-import {sceneryOptions,sceneryReviewBlock} from '../src/app/scenery-profile.ts';
+import {sceneryOptions,sceneryReviewBlock,standardMiscoucheRequested} from '../src/app/scenery-profile.ts';
 import {createMiscoucheFill} from '../src/render/miscouche-fill.ts';
 import {MISCOUCHE_CROWNS,MISCOUCHE_PROOF as EVIDENCE} from '../src/render/miscouche-fill.generated.ts';
 
@@ -54,4 +54,21 @@ test('the optional study leaves alternate scenery modes to their existing optics
  assert.equal(check('?scenery=standard'),undefined);
  assert.equal(check('?scenery=detail'),'detail');
  for(const q of ['?scenery=legacy','?woodlandView','?buildingShadows','?surveyRelief','?seatedForestShadows'])assert.equal(check(q),'terrain');
+});
+
+test('Standard uses the low-only veil and isolates historical or compared routes',()=>{
+ assert(standardMiscoucheRequested(sceneryOptions('?departure=miscouche-woodlot-pass')));
+ for(const q of ['scenery=detail','stockMiscouche','miscoucheCanopyStudy','regionalCanopyStudy',
+  'buildingShadows','sourceGrassStudy','woodland3D','shoreToneStudy']){
+  assert(!standardMiscoucheRequested(sceneryOptions('?'+q)),q);
+ }
+ assert(!sceneryOptions('?stockMiscouche&miscoucheCanopyStudy').has('miscoucheCanopyStudy'));
+ const scene=new Scene(),{base}=makeBase(),art=createMiscoucheFill(scene,base,()=>8,true);
+ assert(art);
+ const [x,z]=EVIDENCE.center,eye=new Vector3(x,100,z);
+ art.update(eye,true,1,5);art.update(eye,true,1,500);
+ assert.equal(art.gain,1);
+ eye.y=292.5;art.update(eye,true,1,510);assert.equal(art.gain,.5);
+ eye.y=330;art.update(eye,true,1,520);assert.equal(art.gain,0);
+ art.dispose();
 });

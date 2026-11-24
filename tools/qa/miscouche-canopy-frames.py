@@ -67,7 +67,11 @@ def capture(a,browser,url):
   try:
    pg=cxt.new_page();errors=[];pg.on('pageerror',lambda e:errors.append(str(e)))
    pg.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
-   pg.goto(url+'/?diagnostics&miscoucheCanopyStudy&qa='+quote(json.dumps(view)),wait_until='domcontentloaded')
+   flag='' if a.standard_coverage else '&miscoucheCanopyStudy'
+   pg.goto(url+'/?diagnostics'+flag+'&qa='+quote(json.dumps(view)),wait_until='domcontentloaded')
+   if a.standard_coverage:
+    pg.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'")
+    pg.get_by_role('button',name='Begin flight').click()
    d=fixed.settle(pg,errors)
    assert d['woodlandStream']['activeReady'],d['woodlandStream']
    if code=='0560971':pg.wait_for_function('window.islandAirDiagnostics?.miscoucheFillGain>.9999')
@@ -97,5 +101,6 @@ parser.add_argument('--stands',type=Path,required=True)
 parser.add_argument('--deps',type=Path,required=True)
 parser.add_argument('--out',type=Path,required=True)
 parser.add_argument('--chromium',required=True)
+parser.add_argument('--standard-coverage',action='store_true')
 parser.set_defaults(void_probe=False)
 fixed.run(parser.parse_args())

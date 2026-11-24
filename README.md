@@ -68,7 +68,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
 | Exposed Prince and Kings shores | `?nearshoreFoamStudy` | [Nearshore surf](docs/qa/nearshore-foam-study.md) adds smaller, moving breaker groups without changing the mapped shoreline. Standard only. |
 | Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](docs/qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
-| Miscouche woodlot | `?miscoucheCanopyStudy` | [Measured woodland density study](docs/qa/miscouche-canopy.md) on the **Miscouche · woodland pass**. Standard only. |
+| Miscouche woodlot | `?stockMiscouche` | Compare the [bounded canopy infill](docs/qa/miscouche-canopy.md) on **Miscouche · woodland pass** in Standard. |
 | Queens and Kings woodlots | `?regionalCanopyStudy` | [Regional canopy studies](docs/qa/regional-canopy.md) with two virtual woodland passes. Standard only. |
 | Standard woodland | `?stockCanopyLight` | Compare [directional tree-crown lighting](docs/qa/canopy-light-preview.md) with the original diffuse canopy. |
 | Qualified coastal grass | `?stockDuneGrass` | Compare [Standard’s close coastal grass material](docs/qa/coastal-grass-surface.md) with the original diffuse ground. |
