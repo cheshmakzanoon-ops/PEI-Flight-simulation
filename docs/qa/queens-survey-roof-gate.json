@@ -1,0 +1,419 @@
+{
+  "baseline": "d1c7b4a3e26e9b675a2d8741b14238594da226ef",
+  "scope": "Exactly one baked roof on the current original q120010 ordered owner. Lower wall support untouched. No A trial Souris entries included.",
+  "onlyRuntimeFile": {
+    "path": "src/render/neutral-roofs.generated.ts",
+    "sha256": "e5af9395400995146946591fc567017a97afbf567a827adbd9beed4922305b1b"
+  },
+  "owner": {
+    "id": "q120010",
+    "ordinal": 152,
+    "atlasManifestAndArchiveSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "compressedOwnerRangeOffsetAndLength": [
+      2315907,
+      31680
+    ],
+    "compressedOwnerSHA256": "d06f88504309e7251d901e1ae2213cf2bb42fb57fd3a82e29ac5e9e1793c1e34",
+    "orderedOutlineMicroDegrees": [
+      -63120106,
+      46245375,
+      -63120121,
+      46245379,
+      -63120061,
+      46245506,
+      -63120074,
+      46245509,
+      -63120054,
+      46245549,
+      -63119928,
+      46245526,
+      -63119955,
+      46245463,
+      -63119944,
+      46245461,
+      -63120020,
+      46245303,
+      -63120004,
+      46245300,
+      -63120024,
+      46245259,
+      -63120153,
+      46245281
+    ]
+  },
+  "sources": {
+    "authority": "Natural Resources Canada CanElevation project PEI-Prince_Edward_Island_2020-1m, Open Government Licence – Canada",
+    "stacItem": "https://datacube.services.geo.ca/pgstac/api/collections/hrdem-lidar/items/PEI-Prince_Edward_Island_2020-1m",
+    "stacCatalogueEpoch": "2020-09-15T12:00:00Z",
+    "horizontalEPSG": 3979,
+    "vertical": "CGVD2013 orthometric project surfaces",
+    "surveyGeoTransform": [
+      2261621.0,
+      1.0,
+      0.0,
+      371370.0,
+      0.0,
+      -1.0
+    ],
+    "rasterAssetsDSMThenDTM": [
+      "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif",
+      "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif"
+    ],
+    "rasterWindow": {
+      "id": "queens",
+      "relativePath": "queens-pei2020.npz",
+      "sourceWindow": [
+        122543,
+        68980,
+        264,
+        279
+      ],
+      "upperLeftPixelCentre": [
+        2384164.5,
+        302389.5
+      ],
+      "dtype": "float32-le",
+      "rawSHA256": [
+        "960eb721a4f8e17386a00d3363d694261139d19ac4bb4fde216e40a3ee171696",
+        "edad0433c75132e072efa1c003389121801d68f86a867b4890e73e57117aa535"
+      ],
+      "compressedSHA256": "973d39d0c413d802c57cfe0c90000a94b64f41727a1dfae4bffcab33f58bc90f"
+    },
+    "rawPointURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_390000_688000.copc.laz",
+    "rawSourceId": [
+      27075
+    ],
+    "rawBoundedLocalArchiveSHA256": "91288aef2a8927cd424bb4ef1754f2e96ec84d3fcd65bd4c22fdef6621bc69f1"
+  },
+  "fit": {
+    "family": "minimum of two complete gable planes inside unchanged outline",
+    "splitRule": "b=floor(native point EPSG:3979 / 2.75m); f=(197*E+373*N+17*floor(E/7)) mod 7; 0 final evaluation, 1 topology rank, 2–6 coefficient fit",
+    "nTrainRankEvaluation": [
+      146,
+      41,
+      35
+    ],
+    "nBlocksTrainRankEvaluation": [
+      28,
+      6,
+      6
+    ],
+    "countsPerHeldPlane": [
+      15,
+      20
+    ],
+    "earthSceneXZ": [
+      6138.167238226511,
+      28300.583683714864
+    ],
+    "sourceDatum": 6.237489700317383,
+    "materializedTwoPlanesCoefficientsYAndSlopeXZ": [
+      [
+        13.346977012944135,
+        0.33065240389687595,
+        0.09784589040132108
+      ],
+      [
+        13.364576027738227,
+        -0.3158828154793274,
+        -0.09347530814471425
+      ]
+    ],
+    "independentStrictRim": {
+      "insetTo1p05M": 0.707107,
+      "count": 26,
+      "p90MaxM": [
+        0.315,
+        0.494
+      ]
+    },
+    "noRawResidualComponent": [],
+    "rawSameSurvey": {
+      "owner": [
+        "q120010",
+        152
+      ],
+      "class6InsideNode": 2112,
+      "class6InsideAtLeast.71M": 1739,
+      "inboardAbsErrors": [
+        0.00012527695986541687,
+        0.031055476496012705,
+        0.13720422476447425,
+        0.3055191294623086,
+        0.3347365370629081,
+        1.0433140454993275
+      ],
+      "slopeGroup": [
+        {
+          "class6Count": 874,
+          "absErrors": [
+            0.00012527695986541687,
+            0.03271893710484779,
+            0.1404177831573481,
+            0.3214538790098351,
+            0.35005245262144163,
+            1.0433140454993275
+          ],
+          "signedErrors": [
+            -0.4089076852269766,
+            -0.31475787446276016,
+            -0.0904459020628039,
+            0.14351684480874047,
+            0.17908094052411755,
+            1.0433140454993275
+          ]
+        },
+        {
+          "class6Count": 865,
+          "absErrors": [
+            0.0005054889029842968,
+            0.03047521884576625,
+            0.13310692693875126,
+            0.2904886642515123,
+            0.3168659117645205,
+            0.7745950274784494
+          ],
+          "signedErrors": [
+            -0.40651186813836127,
+            -0.29042438996310943,
+            -0.10383748201250675,
+            0.1179385188020167,
+            0.14447006877987642,
+            0.7745950274784494
+          ]
+        }
+      ],
+      "highInboardResidualConnectedCellsMedAbs>.4MMin3Raw": [],
+      "exactWholeCellContainedSubsetEachComponent": [],
+      "checks": []
+    }
+  },
+  "threeFloat32": {
+    "target": "q120010/152 only; previously flat actual roof cap; no material, plan, or grade edits",
+    "attempted": 1,
+    "accepted": 1,
+    "rejected": 0,
+    "cells": 35,
+    "chunks": 1,
+    "unrelated": {
+      "vertices": 40857,
+      "bytes": 2001993
+    },
+    "q": [
+      0.1,
+      0.5,
+      0.9,
+      0.99,
+      1
+    ],
+    "perBuildingAbsoluteRoofP90": {
+      "before": [
+        1.8774888992309515,
+        1.8774888992309515,
+        1.8774888992309515,
+        1.8774888992309515,
+        1.8774888992309515
+      ],
+      "after": [
+        0.2969992363332949,
+        0.2969992363332949,
+        0.2969992363332949,
+        0.2969992363332949,
+        0.2969992363332949
+      ]
+    },
+    "rejectedNotPublished": [],
+    "acceptedProof": [
+      {
+        "tile": "q120010",
+        "i": 152,
+        "city": "queens",
+        "kind": "gable",
+        "points": 35,
+        "before": 1.8774888992309515,
+        "after": 0.2969992363332949,
+        "datumDiff": 0.1874897003173821,
+        "faces": [
+          34,
+          50
+        ],
+        "highDouble": 0
+      }
+    ]
+  },
+  "perimeter": {
+    "owner": [
+      "q120010",
+      152
+    ],
+    "perimeterProbes": 363,
+    "outerXZMaxDifferenceM": 5.340552652489249e-05,
+    "leastCoverSignedM": 254,
+    "n112VisualContactReserveM": 0.5107578529072274,
+    "previousReserveM": 0.5107578529072274,
+    "maxSubgradeFootLineDiffM": 0,
+    "minimumEaveOverN112M": 5.241196773283366,
+    "maxEaveJoinResidualM": 1.947282731684652e-05,
+    "afterEaves": [
+      11.321929134479737,
+      13.339160321889644
+    ],
+    "newWallStripCount": 14,
+    "priorWallStripCount": 12
+  },
+  "imageScope": {
+    "fullGame": {
+      "view": "queens-152-survey-roof",
+      "above2": 1363,
+      "above8": 1050,
+      "protectedPixels": 112216,
+      "outsideAny": 0,
+      "outsideGT2": 0,
+      "modelsMaskPixels": 12104,
+      "draws": 90,
+      "triangles": [
+        351026,
+        351042
+      ],
+      "ready": {
+        "wanted": 55,
+        "ready": 55,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "nativeShaderReplay": {
+      "view": "queens-152-survey-roof",
+      "owner": [
+        "q120010",
+        152
+      ],
+      "matchedEyeAim": {
+        "eye": [
+          6081.582515812907,
+          38.57919073279709,
+          28255.68191103966
+        ],
+        "aim": [
+          6138.167238226511,
+          12.957997894287109,
+          28300.583683714864
+        ],
+        "count": 35,
+        "id": "queens-152-survey-roof",
+        "owner": [
+          "q120010",
+          152
+        ]
+      },
+      "observedTriangleProjectionCount": 84,
+      "projectedSampleMask": 10485,
+      "protected": 209035,
+      "protectedChanged": 0,
+      "visualRGBOver2": 4550,
+      "visualRGBOver9": 3603,
+      "maxChannelChange": 104,
+      "stock": {
+        "draws": 71,
+        "triangles": 268841
+      },
+      "survey": {
+        "draws": 71,
+        "triangles": 268857
+      },
+      "orthos": [
+        "15-14",
+        "15-15",
+        "15-16",
+        "15-17",
+        "16-14",
+        "16-15",
+        "16-16",
+        "16-17",
+        "16-18",
+        "17-14",
+        "17-15",
+        "17-16",
+        "17-17",
+        "17-18",
+        "18-14",
+        "18-15",
+        "18-16",
+        "18-17"
+      ],
+      "ownerChunks": [
+        "q10222",
+        "q1022300",
+        "q1022301",
+        "q1022302",
+        "q1022303",
+        "q102231",
+        "q1022320",
+        "q1022321",
+        "q1022322",
+        "q1022323",
+        "q102233",
+        "q120000",
+        "q1200010",
+        "q12000110",
+        "q12000111",
+        "q12000112",
+        "q12000113",
+        "q1200012",
+        "q12000130",
+        "q12000131",
+        "q12000132",
+        "q12000133",
+        "q1200020",
+        "q1200021",
+        "q1200022",
+        "q1200023",
+        "q1200030",
+        "q1200031",
+        "q1200032",
+        "q1200033",
+        "q120010",
+        "q120011",
+        "q1200120",
+        "q1200121",
+        "q1200122",
+        "q1200123",
+        "q120013",
+        "q1200200",
+        "q1200201",
+        "q1200203",
+        "q1200210",
+        "q12002110",
+        "q12002111",
+        "q12002112",
+        "q12002113",
+        "q1200212",
+        "q1200213",
+        "q120022",
+        "q120023",
+        "q1200300",
+        "q1200301",
+        "q1200302",
+        "q1200303",
+        "q120031",
+        "q120032"
+      ]
+    },
+    "fixedCamera": {
+      "eye": [
+        6081.582515812907,
+        38.57919073279709,
+        28255.68191103966
+      ],
+      "aim": [
+        6138.167238226511,
+        12.957997894287109,
+        28300.583683714864
+      ],
+      "count": 35
+    },
+    "comparisonWebpSHA256": "e1576a70996278c94870577e22277eff7bab390903e73e4ffe9a439cfe077a0b",
+    "note": "Gameplay lock used the identical Queens roof from A; all experimental Souris owners were absent at this location. Author-side native replay is exact B and renders actual terrain/building shaders without trees/roads. Terminology: protected = outside projected old/new owner union plus conservative margin. Neither gate claims other computers’ FPS."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "browser": "Chromium WebGL (SwiftShader). Not a device-perf report.",
+  "proofBoundary": "Fixed Queens camera on candidate A. Its q120010/152 row is byte-exact to B. Candidate A also had unshipped distant Souris rows, not loaded here; the compiled ordinary flight check used final B only.",
+  "renderedComparison": {
+    "view": "queens-152-survey-roof",
+    "above2": 1363,
+    "above8": 1050,
+    "protectedPixels": 112216,
+    "outsideAny": 0,
+    "outsideGT2": 0,
+    "modelsMaskPixels": 12104,
+    "draws": 90,
+    "triangles": [
+      351026,
+      351042
+    ],
+    "ready": {
+      "wanted": 55,
+      "ready": 55,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "finalProductionBundle": {
+    "base": "Charlottetown Harbour Standard",
+    "flightDistanceM": 501.4502374059474,
+    "camera": "Cockpit",
+    "finalMode": "paused",
+    "ready": {
+      "wanted": 29,
+      "ready": 29,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "worldAssets": [
+      "buildings/index.json",
+      "buildings/tiles.pack",
+      "coastal/v1/east-point.i16.gz",
+      "coastal/v1/west-point.i16.gz",
+      "coastal/v2/east-point-cliff.i16.gz",
+      "coastal/v3/east-point-bench.r8.gz",
+      "color.webp",
+      "cover.bin.gz",
+      "cover.json",
+      "detail/index.json",
+      "detail/sentinel-02.pack",
+      "detail/sentinel-03.pack",
+      "ground/odbl/v1/parking-surfaces.bin.gz",
+      "harbour/odbl/v1/quartermaster-coast.rg.gz",
+      "harbour/odbl/v1/quartermaster-docks.json.gz",
+      "height.bin.gz",
+      "mainland/color.webp",
+      "mainland/context.json",
+      "mainland/height.bin.gz",
+      "maritime-sky.webp",
+      "pedestrian/odbl/v1/sidewalks.bin.gz",
+      "roads.bin.gz",
+      "roads.json",
+      "terrain.json",
+      "water/v1/south-lake.r8.gz",
+      "woodland/hedgerows-v1/hedge-04.pack",
+      "woodland/hedgerows-v1/hedge-05.pack",
+      "woodland/hedgerows-v1/index.json",
+      "woodland/stream-v1/heights-02.pack",
+      "woodland/stream-v1/heights-03.pack",
+      "woodland/stream-v1/heights-06.pack",
+      "woodland/stream-v1/heights-07.pack",
+      "woodland/stream-v1/heights-08.pack",
+      "woodland/stream-v1/index.json",
+      "woodland/v1/efi-dominant-heights.r8.gz"
+    ],
+    "consoleErrors": [],
+    "layerWarnings": []
+  }
+}
