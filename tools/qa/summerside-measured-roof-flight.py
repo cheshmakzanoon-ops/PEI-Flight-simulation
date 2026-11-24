@@ -6,10 +6,10 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 import argparse,functools,json,threading
 
 PROFILES={
- 'standard':('',1,None),
- 'town':('&townWallStudy',1,'townWallStudy'),
+ 'standard':('',2,None),
+ 'town':('&townWallStudy',2,'townWallStudy'),
  'station':('&summersideStationReview&buildingShadows',0,'summersideStation'),
- 'baywalk':('&spinnakersPreview&northBaywalkPreview&northBaywalkConcrete',0,'northBaywalkCourt'),
+ 'baywalk':('&spinnakersPreview&northBaywalkPreview&baywalkConcrete',0,'northBaywalkCourt'),
 }
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--dist',type=Path,required=True)

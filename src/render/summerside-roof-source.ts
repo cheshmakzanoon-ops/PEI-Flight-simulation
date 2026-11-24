@@ -13,6 +13,19 @@ export const DOWNTOWN_TILES = {
   "count": 399,
   "bytes": 20163,
   "sha256": "b88c120e29513f42f5ad6e272981c21627b38634de29e5f9b3939a57a06fbe67"
+ },
+ "q03200300": {
+  "id": "q03200300",
+  "offset": 766119,
+  "bounds": [
+   -63.795386,
+   46.393004,
+   -63.785344,
+   46.39771
+  ],
+  "count": 255,
+  "bytes": 12195,
+  "sha256": "bdf391f788b3cd1951d790346df1bce239227c8982f6a5e81d9078f71481ec15"
  }
 } as const;
 

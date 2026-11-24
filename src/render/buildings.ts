@@ -317,7 +317,7 @@ export class Buildings {
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
  get summersideRoofCount(){
-  return this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0;
+  return (this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0)+(this.meshes.get('q03200300')?.userData.measuredDowntownRoofs??0);
  }
  get sourisEastActive(){return this.sourisEast?.variant.visible??false;}
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
@@ -792,8 +792,8 @@ export class Buildings {
    if(neutral?.downtown)measuredDowntownRoofs++;
    const eave=base+(synthGable?low:h);
    const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
-   const wall=(p:Pt,q:Pt,u0:number,u1:number)=>{
-    const y0=this.t.meshElevation(p.x,p.z)-.6,y1=this.t.meshElevation(q.x,q.z)-.6,y2=rim(p),y3=rim(q);
+   const wall=(p:Pt,q:Pt,u0:number,u1:number,footA?:number,footB?:number)=>{
+    const y0=footA??(this.t.meshElevation(p.x,p.z)-.6),y1=footB??(this.t.meshElevation(q.x,q.z)-.6),y2=rim(p),y3=rim(q);
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
     vertex(p,y0,cw,u0,0,0);vertex(q,y3,cw,u1,y3-y1,0);vertex(q,y1,cw,u1,0,0);
    };
@@ -811,7 +811,16 @@ export class Buildings {
      const edges=neutralRoofEdge(a,b,center,neutral.planes);
      if(fitWalls)for(const cut of edges)rimMin=Math.min(rimMin,rim(cut));
      const u=(t:Pt)=>Math.hypot(t.x-a.x,t.z-a.z);
-     for(let k=1;k<edges.length;k++)wall(edges[k-1],edges[k],u(edges[k-1]),u(edges[k]));
+     if(neutral.downtown&&tile.id==='q03200300'&&edges.length>2){
+      // A new roof ridge may split an existing XY wall. Keep the original
+      // sampled endpoint bottoms and interpolate between them instead of
+      // sampling the terrain a second time at the new upper ridge station.
+      const lo=this.t.meshElevation(a.x,a.z)-.6,hi=this.t.meshElevation(b.x,b.z)-.6;
+      for(let k=1;k<edges.length;k++){
+       const ua=u(edges[k-1]),ub=u(edges[k]);
+       wall(edges[k-1],edges[k],ua,ub,lo+(hi-lo)*ua/len,lo+(hi-lo)*ub/len);
+      }
+     }else for(let k=1;k<edges.length;k++)wall(edges[k-1],edges[k],u(edges[k-1]),u(edges[k]));
     }else{
      const middle=fit?splitRoofEdge(a,b,fit)[1]:b;
      if(fitWalls)rimMin=Math.min(rimMin,rim(middle));

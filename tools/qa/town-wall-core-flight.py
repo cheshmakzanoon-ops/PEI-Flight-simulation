@@ -6,9 +6,9 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 import argparse,functools,json,threading
 
 PROFILES={
- 'standard':('',1,None,'core'),
- 'expanded':('&townWallStudy',1,'townWallStudy','expanded'),
- 'legacy':('&stockTownWalls',1,None,None),
+ 'standard':('',2,None,'core'),
+ 'expanded':('&townWallStudy',2,'townWallStudy','expanded'),
+ 'legacy':('&stockTownWalls',2,None,None),
  'station':('&summersideStationReview&buildingShadows',0,'summersideStation',None),
 }
 p=argparse.ArgumentParser(description=__doc__)
