@@ -1,0 +1,50 @@
+{
+  "osm": {
+    "way": 704985291,
+    "version": 2,
+    "observedVersionTimestamp": "2022-03-06T04:55:44Z",
+    "tagged": {
+      "highway": "path",
+      "surface": "gravel"
+    },
+    "joinNodeToOtherWay": 6621303010
+  },
+  "native": {
+    "source": "NRCan CanElevation HRDEM PEI 2020",
+    "horizontalRasterEPSG": 3979,
+    "coherentSurveyWindow": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_370000_715000.copc.laz",
+    "nativeClassifiedPointsObservedInSmallWindow": 101318,
+    "sourceETag": "\"d4073598b4a920bbcdc1dd2e3574ae73-16\"",
+    "sourceObservedClass2Count": 19261,
+    "sourceReadRanges": 17
+  },
+  "scope": {
+    "nativeTransectWindowM": [
+      10.625,
+      86.65
+    ],
+    "lengthInGameMetres": 75.22935065796602,
+    "maximumPaintWidthM": 1.4,
+    "widthWasMeasuredByNeitherSource": true,
+    "independentSceneProbes": 205417,
+    "maximumNativeDSMMinusDTMM": 0.15628871321678162,
+    "thirdNativeClass2NearestMaxM": 0.795247141299201,
+    "closestPackedBuildingM": 11.362848926987713,
+    "closestPackedRoadTriangleM": 38.89019640926777,
+    "officialModernGradeNotClaimed": true,
+    "nativeDTMAndCurrentRendererMaxDiffM": 2.242045500545478,
+    "onRenderedGroundOnly": true,
+    "nativeVsOldN112DirectionalBothSlopeGtThreePercentOppositionAt1m": 0
+  },
+  "test": {
+    "positions": 249040,
+    "patches": 1,
+    "gradeStatus": {
+      "13-11": "green-gables-southwest-measured-grade"
+    },
+    "threeRayCrosscheck": {
+      "rays": 2350,
+      "rayError": 3.6960558968957002e-06
+    }
+  }
+}

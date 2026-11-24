@@ -1,0 +1,18 @@
+{
+  "standard": {
+    "distanceMetres": 84.15,
+    "site": "cavendish-dunelands-low",
+    "trailAdmitted": false,
+    "downloadedTrailFiles": [],
+    "warnings": [],
+    "errors": []
+  },
+  "live": {
+    "distanceMetres": 75.33,
+    "site": "cavendish-dunelands-low",
+    "trailAdmitted": true,
+    "downloadedTrailFiles": [],
+    "warnings": [],
+    "errors": []
+  }
+}

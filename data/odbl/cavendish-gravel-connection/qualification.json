@@ -1,0 +1,41 @@
+{
+  "actualLengthMetres": 86.9066352432644,
+  "heightResidualOldN112": [
+    -3.1208279132843018,
+    -2.2052559852600098,
+    0.13936583697795868,
+    1.1135943174362184,
+    1.2505671977996826
+  ],
+  "independentProtectedCentrelineDistances": {
+    "street": 40.01141420713912,
+    "paths": 317.5264965193893,
+    "parking": 373.42737172528433,
+    "barn": 15.754102951507035,
+    "visitor": 12.145667454514351,
+    "house": 46.0374011218931
+  },
+  "protectedTrailFID320DistancesM": [
+    0.002074992508140858,
+    0.3805336477175706,
+    1.147502837051833,
+    1.924162729548471,
+    2.464898986065783
+  ],
+  "candidateTextureOnlyRanges": [
+    [
+      10.469813725059002,
+      86.80663524326441,
+      76.33682151820541
+    ]
+  ],
+  "clearCrossSections": 612,
+  "verifiedMaterialFullGeometry": false,
+  "scopeNote": "Direct native and current display clearance screening, no widths or native pose assumed.",
+  "routeSnapDigest": "c909fb9dcdf9fe65ff0d731746e4f15de26903f4593c2342abd15951ab65cb85",
+  "authorialSelectedStationNativeMetres": [
+    10.625,
+    86.65
+  ],
+  "gameTangentLengthM": 75.22935065796585
+}

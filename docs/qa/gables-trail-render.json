@@ -1,0 +1,22 @@
+{
+  "gables-trail-low-close": {
+    "pixels": 453600,
+    "protectedPixels": 250546,
+    "protectedChangedPixels": 0,
+    "changedAbove2": 1630,
+    "samePhysicalProbes": true,
+    "sameDrawAndTriangles": true
+  },
+  "gables-trail-aerial-close": {
+    "pixels": 453600,
+    "protectedPixels": 355287,
+    "protectedChangedPixels": 0,
+    "changedAbove2": 3050,
+    "samePhysicalProbes": true,
+    "sameDrawAndTriangles": true
+  },
+  "gables-trail-far-close": {
+    "distanceFade": true,
+    "fullyUnchanged": 453600
+  }
+}
