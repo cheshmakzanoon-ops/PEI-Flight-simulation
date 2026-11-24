@@ -1,0 +1,5 @@
+Optional measured dune landforms, Prince Edward Island, derived from 2020
+CanElevation HRDEM bare-earth and surface data by Natural Resources Canada.
+Contains information licensed under the Open Government Licence – Canada:
+https://open.canada.ca/en/open-government-licence-canada
+The unchanged land mask, shoreline and near infrastructure stay authoritative.

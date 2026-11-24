@@ -1,0 +1,56 @@
+[
+  {
+    "asset": "prince-71-58-9-certified.grade",
+    "tile": [
+      6,
+      7
+    ],
+    "coarseRestored": [
+      8,
+      56
+    ],
+    "tries": 1924,
+    "wet": 24,
+    "protectedRays": 1682,
+    "activeRays": 242,
+    "dryFloor": 97.9159005387101,
+    "supportMin": 95.39717648422277,
+    "minLocal": 0.8794190835952004,
+    "protectedRender": 6.109486321292934e-7,
+    "protectedContact": 0,
+    "activeActualPlane": 0.000004690808937279911,
+    "fullContact": 0.0000014639622323286972,
+    "effectiveTruthRays": 16,
+    "measuredRasterP90Before": 1.0932710631323728,
+    "measuredRasterP90After": 0.03792266505883912,
+    "baselineTriangles": 25088,
+    "candidateTriangles": 30822
+  },
+  {
+    "asset": "kings-41-109-9-certified.grade",
+    "tile": [
+      30,
+      11
+    ],
+    "coarseRestored": [
+      8,
+      56
+    ],
+    "tries": 1904,
+    "wet": 592,
+    "protectedRays": 1738,
+    "activeRays": 166,
+    "dryFloor": 45.30342106480202,
+    "supportMin": 45.10746173468249,
+    "minLocal": 1.7775765609741794,
+    "protectedRender": 0.000004088092353526918,
+    "protectedContact": 0,
+    "activeActualPlane": 0.000021998481360974154,
+    "fullContact": 0.000012721336248411319,
+    "effectiveTruthRays": 12,
+    "measuredRasterP90Before": 0.6330118772087401,
+    "measuredRasterP90After": 0.01999436969879742,
+    "baselineTriangles": 25088,
+    "candidateTriangles": 29478
+  }
+]

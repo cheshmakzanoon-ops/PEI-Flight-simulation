@@ -1,0 +1,54 @@
+{
+  "prince": {
+    "rgbOver2": 1708,
+    "protectedPixels": 108383,
+    "protectedChanges": 0,
+    "width": 460,
+    "height": 338,
+    "pose": {
+      "tile": "6-7",
+      "lon": -63.94301209666631,
+      "lat": 46.703156293086195,
+      "dist": 145,
+      "east": 0.33,
+      "south": 0.947,
+      "agl": 23,
+      "h": 0
+    },
+    "draws": [
+      41,
+      41
+    ],
+    "triangles": [
+      188365,
+      194099
+    ],
+    "stable": true
+  },
+  "kings": {
+    "rgbOver2": 1291,
+    "protectedPixels": 128560,
+    "protectedChanges": 0,
+    "width": 460,
+    "height": 338,
+    "pose": {
+      "tile": "30-11",
+      "lon": -62.05910430167234,
+      "lat": 46.46798726964735,
+      "dist": 145,
+      "east": 0.33,
+      "south": 0.947,
+      "agl": 25,
+      "h": 0
+    },
+    "draws": [
+      13,
+      13
+    ],
+    "triangles": [
+      196522,
+      200912
+    ],
+    "stable": true
+  }
+}

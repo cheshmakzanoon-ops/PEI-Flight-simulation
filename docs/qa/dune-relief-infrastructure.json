@@ -1,0 +1,734 @@
+{
+  "prince": {
+    "owner": [
+      6,
+      7
+    ],
+    "first": [
+      73,
+      60
+    ],
+    "parentStepM": [
+      54.402061012840264,
+      52.33232839062854
+    ],
+    "fullBoundsXZ": [
+      [
+        -56958.957880443486,
+        -22528.165090641553
+      ],
+      [
+        -56850.15375841781,
+        -22423.500433860296
+      ]
+    ],
+    "fullBoundsWGS84": [
+      -63.94201450892857,
+      46.70172077922078,
+      -63.94059709821428,
+      46.70266233766234
+    ],
+    "cover": {
+      "0": {
+        "signedMinimumM": 39.16883116883764,
+        "signedMaximumM": 135.99999999999955,
+        "witnessXZ": [
+          -56850.15375841781,
+          -22528.165090641553
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "0.05": {
+        "signedMinimumM": 39.10146865899878,
+        "signedMaximumM": 135.99999999999955,
+        "witnessXZ": [
+          -56850.103758417805,
+          -22528.21509064155
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "7.5": {
+        "signedMinimumM": 29.064454693187145,
+        "signedMaximumM": 135.99999999999955,
+        "witnessXZ": [
+          -56842.65375841781,
+          -22535.665090641553
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "14": {
+        "signedMinimumM": 20.307328414295625,
+        "signedMaximumM": 135.99999999999955,
+        "witnessXZ": [
+          -56836.15375841781,
+          -22542.165090641553
+        ],
+        "countPiecewiseCorners": 25
+      }
+    },
+    "overlays": {
+      "0": {
+        "cells": 30,
+        "occupied": 0,
+        "indices": []
+      },
+      "7.5": {
+        "cells": 30,
+        "occupied": 0,
+        "indices": []
+      },
+      "14": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      }
+    },
+    "topographicControls": {
+      "0": {
+        "n": 10015,
+        "DTMq": [
+          -0.5661,
+          -0.4078,
+          1.392,
+          2.7566,
+          2.9543,
+          3.4539
+        ],
+        "rawBelow0p85": 3325,
+        "positiveWetHeightClosenessM": -0.5111410093307495,
+        "DSMMinusDTMq": [
+          0.0,
+          0.0234,
+          0.0674,
+          0.2101,
+          0.2651,
+          1.5015
+        ],
+        "nonBareN": 465
+      },
+      "12.5": {
+        "n": 6361,
+        "DTMq": [
+          -0.5602,
+          -0.0047,
+          1.4312,
+          2.8811,
+          3.0628,
+          3.4539
+        ],
+        "rawBelow0p85": 1933,
+        "positiveWetHeightClosenessM": -0.5051540207862854,
+        "DSMMinusDTMq": [
+          0.0141,
+          0.0269,
+          0.0655,
+          0.2201,
+          0.2849,
+          1.5015
+        ],
+        "nonBareN": 371
+      },
+      "18": {
+        "n": 4926,
+        "DTMq": [
+          -0.292,
+          0.3491,
+          1.4493,
+          2.9316,
+          3.1124,
+          3.4539
+        ],
+        "rawBelow0p85": 1362,
+        "positiveWetHeightClosenessM": -0.23698327660560609,
+        "DSMMinusDTMq": [
+          0.0141,
+          0.0271,
+          0.0638,
+          0.2282,
+          0.2985,
+          1.5015
+        ],
+        "nonBareN": 323
+      }
+    },
+    "indexedCOPCtiles": [
+      {
+        "name": "pei_2020_327000_739000",
+        "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_327000_739000.copc.laz",
+        "EPSG2961query": [
+          [
+            427971.0,
+            5172432.0
+          ],
+          [
+            428109.0,
+            5172567.0
+          ]
+        ],
+        "indexEnvelopeWGS84Approx": [
+          -63.9546740909861,
+          -63.94144474973292,
+          46.69724964887102,
+          46.70635218795198
+        ]
+      },
+      {
+        "name": "pei_2020_328000_739000",
+        "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_328000_739000.copc.laz",
+        "EPSG2961query": [
+          [
+            427971.0,
+            5172432.0
+          ],
+          [
+            428109.0,
+            5172567.0
+          ]
+        ],
+        "indexEnvelopeWGS84Approx": [
+          -63.941597311816714,
+          -63.92836918388934,
+          46.697358204751474,
+          46.70635587163428
+        ]
+      }
+    ],
+    "nearestRoads": [],
+    "nearestBuildings": [],
+    "noNearestFeatureMeansNoneWithinExpanded300m": true
+  },
+  "princeAlternate": {
+    "owner": [
+      6,
+      7
+    ],
+    "first": [
+      71,
+      58
+    ],
+    "parentStepM": [
+      54.402061012840264,
+      52.33232839062854
+    ],
+    "fullBoundsXZ": [
+      [
+        -57067.762002469164,
+        -22632.82974742281
+      ],
+      [
+        -56958.957880443486,
+        -22528.165090641553
+      ]
+    ],
+    "fullBoundsWGS84": [
+      -63.943431919642855,
+      46.70266233766234,
+      -63.94201450892857,
+      46.7036038961039
+    ],
+    "cover": {
+      "0": {
+        "signedMinimumM": 41.66233766233927,
+        "signedMaximumM": 140.85714285714016,
+        "witnessXZ": [
+          -56958.957880443486,
+          -22632.82974742281
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "0.05": {
+        "signedMinimumM": 41.59497515250405,
+        "signedMaximumM": 140.86554590012543,
+        "witnessXZ": [
+          -56958.90788044348,
+          -22632.87974742281
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "7.5": {
+        "signedMinimumM": 31.55796118669241,
+        "signedMaximumM": 142.11759930483294,
+        "witnessXZ": [
+          -56951.457880443486,
+          -22640.32974742281
+        ],
+        "countPiecewiseCorners": 25
+      },
+      "14": {
+        "signedMinimumM": 22.800834907797253,
+        "signedMaximumM": 143.20999489283327,
+        "witnessXZ": [
+          -56944.957880443486,
+          -22646.82974742281
+        ],
+        "countPiecewiseCorners": 25
+      }
+    },
+    "overlays": {
+      "0": {
+        "cells": 30,
+        "occupied": 0,
+        "indices": []
+      },
+      "7.5": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      },
+      "14": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      }
+    },
+    "topographicControls": {
+      "0": {
+        "n": 11506,
+        "DTMq": [
+          -0.4182,
+          0.3063,
+          1.4378,
+          2.1955,
+          2.3378,
+          2.7678
+        ],
+        "rawBelow0p85": 3275,
+        "positiveWetHeightClosenessM": -0.3631799590587616,
+        "DSMMinusDTMq": [
+          0.0,
+          0.0253,
+          0.0605,
+          0.1458,
+          0.192,
+          1.2725
+        ],
+        "nonBareN": 179
+      },
+      "12.5": {
+        "n": 6784,
+        "DTMq": [
+          -0.1089,
+          0.5628,
+          1.5438,
+          2.3083,
+          2.4206,
+          2.7678
+        ],
+        "rawBelow0p85": 1557,
+        "positiveWetHeightClosenessM": -0.05389548063278198,
+        "DSMMinusDTMq": [
+          0.013,
+          0.0282,
+          0.0618,
+          0.1513,
+          0.1964,
+          1.2725
+        ],
+        "nonBareN": 125
+      },
+      "18": {
+        "n": 5076,
+        "DTMq": [
+          0.3536,
+          0.5856,
+          1.6029,
+          2.3528,
+          2.4641,
+          2.7678
+        ],
+        "rawBelow0p85": 990,
+        "positiveWetHeightClosenessM": 0.40860780358314513,
+        "DSMMinusDTMq": [
+          0.013,
+          0.0284,
+          0.0616,
+          0.1526,
+          0.1931,
+          1.2725
+        ],
+        "nonBareN": 95
+      }
+    },
+    "indexedCOPCtiles": [
+      {
+        "name": "pei_2020_327000_739000",
+        "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_327000_739000.copc.laz",
+        "EPSG2961query": [
+          [
+            427864.0,
+            5172538.0
+          ],
+          [
+            428002.0,
+            5172673.0
+          ]
+        ],
+        "indexEnvelopeWGS84Approx": [
+          -63.9546740909861,
+          -63.94144474973292,
+          46.69724964887102,
+          46.70635218795198
+        ]
+      }
+    ],
+    "nearestRoads": [],
+    "nearestBuildings": [],
+    "noNearestFeatureMeansNoneWithinExpanded300m": true
+  },
+  "queens": {
+    "owner": [
+      12,
+      11
+    ],
+    "first": [
+      83,
+      27
+    ],
+    "parentStepM": [
+      54.402061012840264,
+      52.33232839062854
+    ],
+    "fullBoundsXZ": [
+      [
+        -19856.752269686418,
+        -810.2488085307123
+      ],
+      [
+        -19747.948147660736,
+        -705.5841517494551
+      ]
+    ],
+    "fullBoundsWGS84": [
+      -63.45867745535714,
+      46.5063474025974,
+      -63.45726004464286,
+      46.50728896103896
+    ],
+    "cover": {
+      "0": {
+        "signedMinimumM": -1.8756957328365047,
+        "signedMaximumM": 97.01298701298765,
+        "witnessXZ": [
+          -19856.752269686418,
+          -705.5841517494551
+        ],
+        "countPiecewiseCorners": 16
+      },
+      "0.05": {
+        "signedMinimumM": -1.9256509231546204,
+        "signedMaximumM": 97.05095614313086,
+        "witnessXZ": [
+          -19856.802269686417,
+          -705.5341517494552
+        ],
+        "countPiecewiseCorners": 16
+      },
+      "7.5": {
+        "signedMinimumM": -9.26993390864098,
+        "signedMaximumM": 102.70835653347058,
+        "witnessXZ": [
+          -19864.252269686418,
+          -698.0841517494551
+        ],
+        "countPiecewiseCorners": 16
+      },
+      "14": {
+        "signedMinimumM": -15.516973010063367,
+        "signedMaximumM": 107.64434345122845,
+        "witnessXZ": [
+          -19870.752269686418,
+          -691.5841517494551
+        ],
+        "countPiecewiseCorners": 16
+      }
+    },
+    "overlays": {
+      "0": {
+        "cells": 30,
+        "occupied": 0,
+        "indices": []
+      },
+      "7.5": {
+        "cells": 36,
+        "occupied": 0,
+        "indices": []
+      },
+      "14": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      }
+    },
+    "topographicControls": {
+      "0": {
+        "n": 11498,
+        "DTMq": [
+          0.48,
+          0.5629,
+          1.0058,
+          4.9978,
+          6.4261,
+          8.084
+        ],
+        "rawBelow0p85": 3741,
+        "positiveWetHeightClosenessM": 0.534999989271164,
+        "DSMMinusDTMq": [
+          -0.1045,
+          0.0191,
+          0.0396,
+          0.1098,
+          0.2156,
+          1.8039
+        ],
+        "nonBareN": 437
+      },
+      "12.5": {
+        "n": 6813,
+        "DTMq": [
+          0.48,
+          0.6001,
+          1.038,
+          4.3109,
+          6.7736,
+          8.084
+        ],
+        "rawBelow0p85": 2020,
+        "positiveWetHeightClosenessM": 0.534999989271164,
+        "DSMMinusDTMq": [
+          0.0028,
+          0.0213,
+          0.0411,
+          0.0974,
+          0.1873,
+          1.8039
+        ],
+        "nonBareN": 221
+      },
+      "18": {
+        "n": 5103,
+        "DTMq": [
+          0.48,
+          0.6398,
+          1.0596,
+          3.0411,
+          5.922,
+          8.084
+        ],
+        "rawBelow0p85": 1443,
+        "positiveWetHeightClosenessM": 0.534999989271164,
+        "DSMMinusDTMq": [
+          0.0028,
+          0.021,
+          0.0411,
+          0.0882,
+          0.1612,
+          1.8039
+        ],
+        "nonBareN": 142
+      }
+    },
+    "indexedCOPCtiles": [
+      {
+        "name": "pei_2020_364000_717000",
+        "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_364000_717000.copc.laz",
+        "EPSG2961query": [
+          [
+            464794.0,
+            5150395.0
+          ],
+          [
+            464933.0,
+            5150529.0
+          ]
+        ],
+        "indexEnvelopeWGS84Approx": [
+          -63.46907516574225,
+          -63.455994135475876,
+          46.50237253925274,
+          46.51136210374254
+        ]
+      }
+    ],
+    "nearestRoads": [],
+    "nearestBuildings": [],
+    "noNearestFeatureMeansNoneWithinExpanded300m": true
+  },
+  "kings": {
+    "owner": [
+      30,
+      11
+    ],
+    "first": [
+      41,
+      109
+    ],
+    "parentStepM": [
+      54.402061012840264,
+      52.33232839062854
+    ],
+    "fullBoundsXZ": [
+      [
+        87532.91616966027,
+        3481.0021195008303
+      ],
+      [
+        87641.72029168595,
+        3585.6667762820875
+      ]
+    ],
+    "fullBoundsWGS84": [
+      -62.05969308035714,
+      46.467743506493505,
+      -62.05827566964285,
+      46.468685064935066
+    ],
+    "cover": {
+      "0": {
+        "signedMinimumM": 6.65120593691239,
+        "signedMaximumM": 111.42857142857156,
+        "witnessXZ": [
+          87641.72029168595,
+          3481.0021195008303
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "0.05": {
+        "signedMinimumM": 6.594133771446934,
+        "signedMaximumM": 111.47497814318103,
+        "witnessXZ": [
+          87532.86616966026,
+          3480.95211950083
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "7.5": {
+        "signedMinimumM": -1.6124977656996862,
+        "signedMaximumM": 118.38957862027291,
+        "witnessXZ": [
+          87649.22029168595,
+          3473.5021195008303
+        ],
+        "countPiecewiseCorners": 20
+      },
+      "14": {
+        "signedMinimumM": -8.290472355150797,
+        "signedMaximumM": 124.42245151974475,
+        "witnessXZ": [
+          87655.72029168595,
+          3467.0021195008303
+        ],
+        "countPiecewiseCorners": 20
+      }
+    },
+    "overlays": {
+      "0": {
+        "cells": 25,
+        "occupied": 0,
+        "indices": []
+      },
+      "7.5": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      },
+      "14": {
+        "cells": 42,
+        "occupied": 0,
+        "indices": []
+      }
+    },
+    "topographicControls": {
+      "0": {
+        "n": 11637,
+        "DTMq": [
+          -0.5749,
+          -0.3595,
+          2.0239,
+          5.9284,
+          7.5987,
+          9.7028
+        ],
+        "rawBelow0p85": 2644,
+        "positiveWetHeightClosenessM": -0.519914276599884,
+        "DSMMinusDTMq": [
+          -0.0016,
+          0.0169,
+          0.0661,
+          0.1955,
+          0.2524,
+          1.592
+        ],
+        "nonBareN": 482
+      },
+      "12.5": {
+        "n": 6823,
+        "DTMq": [
+          0.089,
+          0.5381,
+          2.3585,
+          6.7283,
+          7.9031,
+          9.2689
+        ],
+        "rawBelow0p85": 924,
+        "positiveWetHeightClosenessM": 0.14400898694992065,
+        "DSMMinusDTMq": [
+          -0.0015,
+          0.0192,
+          0.0711,
+          0.2019,
+          0.2573,
+          0.9299
+        ],
+        "nonBareN": 296
+      },
+      "18": {
+        "n": 5110,
+        "DTMq": [
+          0.5124,
+          0.7928,
+          2.7656,
+          7.0653,
+          8.0277,
+          9.2689
+        ],
+        "rawBelow0p85": 388,
+        "positiveWetHeightClosenessM": 0.5673598575592042,
+        "DSMMinusDTMq": [
+          -0.0015,
+          0.0185,
+          0.0765,
+          0.2142,
+          0.2751,
+          0.9299
+        ],
+        "nonBareN": 263
+      }
+    },
+    "indexedCOPCtiles": [
+      {
+        "name": "pei_2020_472000_713000",
+        "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_472000_713000.copc.laz",
+        "EPSG2961query": [
+          [
+            572178.0,
+            5146433.0
+          ],
+          [
+            572317.0,
+            5146568.0
+          ]
+        ],
+        "indexEnvelopeWGS84Approx": [
+          -62.06261777990118,
+          -62.04950807881797,
+          46.46337192106478,
+          46.470252799213405
+        ]
+      }
+    ],
+    "nearestRoads": [],
+    "nearestBuildings": [],
+    "noNearestFeatureMeansNoneWithinExpanded300m": true
+  }
+}

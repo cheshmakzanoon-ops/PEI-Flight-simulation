@@ -1,0 +1,81 @@
+[
+  {
+    "route": "prince-sand-dunes",
+    "exactLocalGrade": [
+      "prince-measured-dune-relief"
+    ],
+    "duneSandStillActive": [
+      [
+        6,
+        7
+      ]
+    ],
+    "fault": false,
+    "groundTransfer": [
+      [
+        "kings-native-ground.g11.gz",
+        200
+      ],
+      [
+        "prince-native-ground.g11.gz",
+        200
+      ]
+    ],
+    "standardRequestsZero": true,
+    "heightAGLM": 59.05660810403593,
+    "flightDistanceM": 380.92923418807294,
+    "errors": []
+  },
+  {
+    "route": "kings-sand-dunes",
+    "exactLocalGrade": [
+      "kings-measured-dune-relief"
+    ],
+    "duneSandStillActive": [
+      [
+        30,
+        11
+      ]
+    ],
+    "fault": false,
+    "groundTransfer": [
+      [
+        "prince-native-ground.g11.gz",
+        200
+      ],
+      [
+        "kings-native-ground.g11.gz",
+        200
+      ]
+    ],
+    "standardRequestsZero": true,
+    "heightAGLM": 56.59077290665318,
+    "flightDistanceM": 385.60552692435175,
+    "errors": []
+  },
+  {
+    "route": "kings-sand-dunes",
+    "exactLocalGrade": [],
+    "duneSandStillActive": [
+      [
+        30,
+        11
+      ]
+    ],
+    "fault": true,
+    "groundTransfer": [
+      [
+        "kings-native-ground.g11.gz",
+        200
+      ],
+      [
+        "prince-native-ground.g11.gz",
+        200
+      ]
+    ],
+    "standardRequestsZero": true,
+    "heightAGLM": 57.58161757978815,
+    "flightDistanceM": 384.43644908828736,
+    "errors": []
+  }
+]

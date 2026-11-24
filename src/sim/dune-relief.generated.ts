@@ -1,0 +1,47 @@
+// Source-measured dune facets, bounded dry support and signed stock epoch.
+export const DUNE_RELIEF=[
+  {
+    "id": "prince-measured-dune-relief",
+    "kind": "inland",
+    "tileX": 6,
+    "tileZ": 7,
+    "firstX": 71,
+    "firstZ": 58,
+    "cellsX": 2,
+    "cellsZ": 2,
+    "sub": 32,
+    "relativeToParent": true,
+    "sparseRelative": true,
+    "maxRelativeDeltaCm": 240,
+    "file": "dune-relief/v1/prince-native-ground.g11.gz",
+    "sha256": "45c4f25cefe685c144ab1508af227eef9c4743276e99516194cadd9a1929706c",
+    "wireBytes": 3384,
+    "wireSha": "b8e1e8372f269eec72c35eb289ab99b6fe495e3c20ccf22408225252b32a9166",
+    "decodedBytes": 12675,
+    "terrainSha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverCompressedSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecodedSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  },
+  {
+    "id": "kings-measured-dune-relief",
+    "kind": "inland",
+    "tileX": 30,
+    "tileZ": 11,
+    "firstX": 41,
+    "firstZ": 109,
+    "cellsX": 2,
+    "cellsZ": 2,
+    "sub": 32,
+    "relativeToParent": true,
+    "sparseRelative": true,
+    "maxRelativeDeltaCm": 240,
+    "file": "dune-relief/v1/kings-native-ground.g11.gz",
+    "sha256": "971fe5d89a315ce62a209ad3508160bd538647a90b8c33a4bede43ff4b5f866a",
+    "wireBytes": 2351,
+    "wireSha": "e7fe6552c75f0450ace81a7878fcc91c2ad838ce5d23048cabd5a981bd0a0f68",
+    "decodedBytes": 12675,
+    "terrainSha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverCompressedSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecodedSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  }
+] as const;

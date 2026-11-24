@@ -1,3 +1,4 @@
+import {DUNE_RELIEF} from './sim/dune-relief.generated.ts';
 import {HOG_WEST_GRADE} from './sim/hog-west-grade.generated.ts';
 import {pinnedHogBuildingIndex} from './sim/hog-west-grade.ts';
 import {loadHogPhoto,matchesHogPhoto,hogInfrastructureMatches,loadWestDuneOptics} from './render/hog-photo.ts';
@@ -84,14 +85,17 @@ async function run(){
  const duneAsked=options.has('duneSandDetail')&&!sceneryReviewBlock('duneSandDetail',options);
  const duneModuleJob=duneAsked?import('./render/dune-sand.ts').catch(()=>undefined):undefined;
  const hogGroundAsked=options.has('hogIslandWestGround')&&!sceneryReviewBlock('hogIslandWestGround',options);
- const hogGroundJob=hogGroundAsked?Promise.all([loadBoundedGrade(HOG_WEST_GRADE,worldBase),pinnedHogBuildingIndex(worldBase),loadWestDuneOptics(worldBase)]):undefined;
+ const duneReliefAsked=options.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',options);
+ const checkedGroundIndex=hogGroundAsked||duneReliefAsked?pinnedHogBuildingIndex(worldBase):undefined;
+ const hogGroundJob=hogGroundAsked?Promise.all([loadBoundedGrade(HOG_WEST_GRADE,worldBase),checkedGroundIndex,loadWestDuneOptics(worldBase)]):undefined;
+ const duneReliefJob=duneReliefAsked?Promise.all(DUNE_RELIEF.map(pin=>loadBoundedGrade(pin,worldBase))):undefined;
  const dockPack=loadQuartermasterDocks(worldBase),mappedSidewalks=loadSidewalks(worldBase),mappedParking=loadParkingSurfaces(worldBase);
  const useBasinBank=!options.has('noBasinBank');
  const churchAsked=options.has('indianRiverReview')&&!sceneryReviewBlock('indianRiverReview',options);
  const churchSunJob=churchAsked&&CHURCH_SUN_MASK.gradeSha===INDIAN_RIVER_GRADE.sha256?loadChurchGroundSun(CHURCH_SUN_MASK,worldBase):undefined;
  const churchJob=churchAsked?Promise.all([loadBoundedGrade(INDIAN_RIVER_GRADE,worldBase),import('./render/indian-river/runtime.ts'),import('./render/indian-river/st-marys-shadows.ts')]).catch(()=>undefined):undefined;
  const useMontague=options.has('montagueFoundationPreview'),useBaywalk=options.has('spinnakersPreview')&&options.has('northBaywalkPreview');
- const preRoadJob=useMontague||useBaywalk||churchAsked||hogGroundAsked?Roads.prepareMontague():undefined;
+ const preRoadJob=useMontague||useBaywalk||churchAsked||hogGroundAsked||duneReliefAsked?Roads.prepareMontague():undefined;
  const montagueRoadJob=useMontague?preRoadJob:undefined;
  const spinnakersJob=options.has('spinnakersPreview')?loadSpinnakersDeck(worldBase):undefined;
  const preBuildingJob=useBaywalk?Buildings.prepareBaywalk():churchAsked?Buildings.prepareIndianRiver():undefined;
@@ -115,7 +119,7 @@ async function run(){
  const gradeJob=options.has('gablesGradeReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows?loadBoundedGrade(GABLES_GRADE,worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
  const {terrain,terrainSha,img,cover,sky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
-   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneAsked);
+   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneAsked||duneReliefAsked);
  const useTrail=tryTrail&&gablesGravelAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha);
  const fairway=fairwayJob&&fairwayAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await fairwayJob:undefined;
  const useGravel=tryGravel&&gablesGravelAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha);
@@ -162,7 +166,17 @@ async function run(){
  })();
  const duneLibrary=await duneModuleJob;
  const duneSand=duneLibrary?.duneSandSources(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?new duneLibrary.DuneSand(worldBase):undefined;
- const groundCohorts=[grade,rusticoGround,hogGround?.grade].filter(g=>g!==undefined);
+ const dunesGround=await (async()=>{
+  if(!duneReliefJob)return [];
+  const [makers,pinned,roads]=await Promise.all([duneReliefJob,checkedGroundIndex,preRoadJob]);
+  if(!pinned||roads?.digest!==HOG_WEST_GRADE.roadSha256)return [];
+  return makers.map((make,i)=>{
+   const stamp=DUNE_RELIEF[i];
+   if(!make||!gradeAtlasMatches(stamp,terrainSha,cover.sourceSha,cover.sourceDecodedSha))return;
+   try{return make(terrain,(x,z)=>terrain.atlasElevation(x,z));}catch{return undefined;}
+  });
+ })();
+ const groundCohorts=[grade,rusticoGround,hogGround?.grade,...dunesGround].filter(g=>g!==undefined);
  const hog=hogJob&&matchesHogPhoto(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await hogJob:undefined;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
    showBuildingShadows,options.has('forestFloor'),useBasinBank,basinSand,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),options.has('shoreFoamDetail'),options.has('northCapeWind'),bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand);

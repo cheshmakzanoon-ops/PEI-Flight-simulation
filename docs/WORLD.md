@@ -191,6 +191,8 @@ The [western Hog Island dune ground study](qa/hog-island-west-dune-ground.md) se
 
 The optional [dry dune surface detail](qa/dry-dune-surface-detail.md) adds closely sampled sand grain and lighting only on source-qualified material windows across all three counties. It preserves the measured East and West Point coastal terrain and makes no change to the land mask.
 
+The optional [measured dune relief](qa/measured-dune-relief.md) adds two guarded Prince and Kings dry ground insets backed by native LiDAR. Queens and the shoreline remain on stock geometry.
+
 ## Woodland height and clearance
 
 [Measured provincial stand heights](qa/forest-height-stream.md) set the

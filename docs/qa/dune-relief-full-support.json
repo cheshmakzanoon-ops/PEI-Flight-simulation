@@ -1,0 +1,36 @@
+{
+  "prince": {
+    "sha256": "45c4f25cefe685c144ab1508af227eef9c4743276e99516194cadd9a1929706c",
+    "alteredTriangles": 4400,
+    "alteredCells": 2217,
+    "minimumExpandedSigned": 95.32705879102178,
+    "minimumIntersectedRawDTM": 0.9303954839706421,
+    "minimumDSMminusDTM": 0.023265361785888672,
+    "slopeActualQuantiles": [
+      0.058299229880298176,
+      0.14247219374066755,
+      0.16695343301623022,
+      0.21261209665393593,
+      0.29525831311448625
+    ],
+    "failuresTriangleUpperBoundAABB": {},
+    "issueExamples": []
+  },
+  "kings": {
+    "sha256": "971fe5d89a315ce62a209ad3508160bd538647a90b8c33a4bede43ff4b5f866a",
+    "alteredTriangles": 2982,
+    "alteredCells": 1522,
+    "minimumExpandedSigned": 45.04347428443964,
+    "minimumIntersectedRawDTM": 1.117810606956482,
+    "minimumDSMminusDTM": 0.00018215179443359375,
+    "slopeActualQuantiles": [
+      0.059442023795840244,
+      0.1728791641716017,
+      0.2033638770929823,
+      0.2673529508460253,
+      0.3748822411398021
+    ],
+    "failuresTriangleUpperBoundAABB": {},
+    "issueExamples": []
+  }
+}

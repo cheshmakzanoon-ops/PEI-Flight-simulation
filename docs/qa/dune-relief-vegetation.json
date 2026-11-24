@@ -1,0 +1,32 @@
+{
+  "prince": {
+    "treeRootsPotentialWithinExpanded130": 0,
+    "treeRootsOrAnyShadowCanopyWith75mBothAxes": 0,
+    "nearestPotentialTreeRootM": null,
+    "hedgesWithinExpanded130": 0,
+    "hedgeExactShadowEnvelopeOverlapN": 0,
+    "nearestHedgeM": null,
+    "decoded3kmTileCandidates": [
+      [
+        "6-7",
+        565,
+        0
+      ]
+    ]
+  },
+  "kings": {
+    "treeRootsPotentialWithinExpanded130": 80,
+    "treeRootsOrAnyShadowCanopyWith75mBothAxes": 0,
+    "nearestPotentialTreeRootM": 80.51761728922702,
+    "hedgesWithinExpanded130": 0,
+    "hedgeExactShadowEnvelopeOverlapN": 0,
+    "nearestHedgeM": null,
+    "decoded3kmTileCandidates": [
+      [
+        "30-12",
+        2701,
+        0
+      ]
+    ]
+  }
+}

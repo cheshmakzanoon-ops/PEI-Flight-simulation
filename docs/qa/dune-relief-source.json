@@ -1,0 +1,67 @@
+{
+  "elevationDataset": "Natural Resources Canada CanElevation HRDEM Mosaic",
+  "acquisition": "2020 Prince Edward Island, CGVD2013",
+  "datasetLicence": "Open Government Licence – Canada",
+  "bareEarthURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+  "surfaceURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+  "epsg": 3979,
+  "spacingM": 1,
+  "footprints": [
+    {
+      "fid": 1276,
+      "county": "PRINCE",
+      "hectares": 78.4617914,
+      "cells": 1840,
+      "lon": -63.94210616105072,
+      "lat": 46.70280613944216,
+      "signedDryM": 106.89910888671875,
+      "nativeWindow": [
+        2303581,
+        317368,
+        2303831,
+        317168
+      ]
+    },
+    {
+      "fid": 7581,
+      "county": "KINGS",
+      "hectares": 18.14287443,
+      "cells": 575,
+      "lon": -62.059027515357116,
+      "lat": 46.468416557044,
+      "signedDryM": 43.988311767578125,
+      "nativeWindow": [
+        2443977,
+        364594,
+        2444227,
+        364394
+      ]
+    }
+  ],
+  "heldQueens": {
+    "reason": "The test rectangle crosses the stock shoreline; this study does not override water."
+  },
+  "newSurveyConfigurations": [
+    "6-7:71,58",
+    "30-11:41,109"
+  ],
+  "rawTerrainSHA": {
+    "prince": {
+      "dtm": "35a5f28cfcf29f763f1b3881dc5c2f35a02b37d815b7a8f254e132d5e4da4d45",
+      "dsm": "a015540a30329090e418ea8b7b2b4a6bf9198578bc85a3fa386a1cca810f966d"
+    },
+    "kings": {
+      "dtm": "30fa2bb1d2b043d21a32b0cc0383760a2a628540192f877ddadff3f38e310422",
+      "dsm": "6d6fbaf360f120e8a835e004c23ccebdf54fccb716a4c2136ee33da3313d1047"
+    }
+  },
+  "fullSourceIncidentRasterThresholds": {
+    "dtmMinM": 0.85,
+    "dsmMinusDtmMaxM": 0.27,
+    "reserveM": 0.05
+  },
+  "packageWireBytes": {
+    "prince": 3384,
+    "kings": 2351
+  }
+}
