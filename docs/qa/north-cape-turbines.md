@@ -1,11 +1,17 @@
 # North Cape commercial wind farm
 
-Add `?northCapeWind` and choose **North Cape**. For a closer view, select the [wind farm low pass](north-cape-departure.md). The same Western PEI map
-now shows the commercial array's 16 V47-660 turbines, not repeating props
-scattered on the landscape. The inland and coastal groups follow their
-attributed source positions. No map boundaries or aircraft handling change.
+The 16 registered V47-660 turbines now appear in ordinary **Standard**
+scenery at North Cape. Choose **North Cape** or the
+[wind farm low pass](north-cape-departure.md); no query flag is needed.
+For comparison, add `?stockNorthCapeWind` to hide the array, or
+`?northCapeWind` for the separate earlier optical-shadow study with
+its shadow receivers on ground and roads. No map boundaries or
+aircraft handling change.
 
-[Before and after: actual fixed-camera frames](north-cape-comparison.webp) · [Graphics gate](north-cape-render-gate.json)
+![Standard scenery on a locked North Cape approach showing the local commercial turbines](north-cape-standard-low.webp)
+
+The existing [original preview frames](north-cape-comparison.webp) and
+[preview graphics gate](north-cape-render-gate.json) include the optional shadows.
 
 ## What follows the records
 
@@ -35,14 +41,39 @@ changes, rather than floating at the old mesh height. The
 [seat audit](north-cape-ground-gate.json) records the base positions and
 ground samples at three levels, not a survey of foundation heights.
 Instanced mast and rotor meshes are batched at two distances. The same
-47 m swept area is retained at both. Independent [runtime alignment checks](north-cape-contact-gate.json) found all 16 mast and 16 rotor instances at the checked native, intermediate and far world levels. RGB changes on the road are from the same live shadow phase as the ground. The [normal compiled departure](north-cape-flight-gate.json) enters flight and pauses with all 16 registrations, with no JavaScript or renderer errors. The original satellite image, roads,
+47 m swept area is retained at both. Independent [runtime alignment checks](north-cape-contact-gate.json) found all 16 mast and 16 rotor instances at the checked native, intermediate and far world levels. In the explicit shadow study, RGB changes on the road and ground use the same live shadow phase. Standard does not install either receiver. The [normal compiled departure](north-cape-flight-gate.json) enters flight and pauses with all 16 registrations, with no JavaScript or renderer errors. The original satellite image, roads,
 terrain triangles, foliage, collisions and flight model stay in place.
 Shadows are local optical projections on existing ground and road material.
 They fade at distance and do not create a physics surface.
 
-This is a preview of the measured array, not a finished North Cape
+This is a model of the measured array, not a finished North Cape
 landscape. Forest, roads, low-resolution surrounding ground and smaller
 structures retain their previous scenery and fidelity.
+
+## Standard streaming check
+
+The array begins loading inside a horizontal prefetch band around the group.
+It checks the known dimensions, terrain extent and decoded cover revision
+and all 16 dry anchors, then requests a local art module. The module is about
+4.1 kB minified (1.9 kB compressed); it adds no world imagery or texture
+request. A distant departure does not request that module. A late completion
+cannot attach art while away, and leaving the outer band disposes of all
+local meshes without refetching the module when you return. The existing
+7.8 km station visibility limit and close-detail transition stay in place.
+
+The [matched renderer and compiled flight receipt](north-cape-standard-gate.json)
+records +4 instanced draws and +34,648 triangles in the selected low view,
+and +4 draws and +24,512 triangles in the seaward view at 470 m.
+The Queens control stayed pixel-identical. The absolute numbers are scoped
+to those matched frames, not hardware frame-rate claims. No terrain, road,
+or shadow variation was needed to show the array in this first Standard pass.
+
+The compiled low pass showed all 16 stations after one local art request.
+No such request occurred in the distant Charlottetown control, stock control,
+or after changing one byte of the decoded cover. A deliberately withheld
+explicit art module allowed Dispatch and flight to start before the request
+was released, and its late response did not add the study to that flight.
+All 367 tests, the production build and world data checks passed.
 
 ## Rebuild and compare
 

@@ -1,0 +1,356 @@
+{
+  "framedViews": {
+    "north-cape-near": {
+      "counts": {
+        "registered": 16,
+        "near": 15,
+        "cruise": 1
+      },
+      "camera": [
+        -61966.06375548075,
+        130.2691231946179,
+        -60786.17752357577
+      ],
+      "before": {
+        "draws": 15,
+        "tris": 247383
+      },
+      "after": {
+        "draws": 19,
+        "tris": 282031
+      },
+      "unshaded": {
+        "draws": 19,
+        "tris": 282031
+      },
+      "exact": true,
+      "pixels": {
+        "over2": 2068,
+        "max": 201,
+        "shadowOnlyOver2": 0
+      },
+      "errors": []
+    },
+    "north-cape-cinematic": {
+      "counts": {
+        "registered": 16,
+        "near": 8,
+        "cruise": 8
+      },
+      "camera": [
+        -62177.9259715638,
+        470,
+        -61908.479017659825
+      ],
+      "before": {
+        "draws": 229,
+        "tris": 286104
+      },
+      "after": {
+        "draws": 233,
+        "tris": 310616
+      },
+      "unshaded": {
+        "draws": 233,
+        "tris": 310616
+      },
+      "exact": true,
+      "pixels": {
+        "over2": 1216,
+        "max": 196,
+        "shadowOnlyOver2": 0
+      },
+      "errors": []
+    },
+    "queens-control": {
+      "counts": {},
+      "camera": [
+        -13255.589960261792,
+        189.14804233813956,
+        11155.142074408484
+      ],
+      "before": {
+        "draws": 16,
+        "tris": 296570
+      },
+      "after": {
+        "draws": 16,
+        "tris": 296570
+      },
+      "unshaded": {
+        "draws": 16,
+        "tris": 296570
+      },
+      "exact": true,
+      "pixels": {
+        "over2": 0,
+        "max": 0,
+        "shadowOnlyOver2": 0
+      },
+      "errors": []
+    }
+  },
+  "compiledFlights": [
+    {
+      "mode": "cold",
+      "site": "charlottetown",
+      "motionM": 162.64,
+      "array": null,
+      "assetRequests": 0,
+      "coverRequests": 1
+    },
+    {
+      "mode": "ordinary",
+      "site": "northcape-wind-low",
+      "motionM": 164.809,
+      "array": {
+        "registered": 16,
+        "near": 15,
+        "cruise": 1
+      },
+      "assetRequests": 1,
+      "coverRequests": 1
+    },
+    {
+      "mode": "stock",
+      "site": "northcape-wind-low",
+      "motionM": 163.617,
+      "array": null,
+      "assetRequests": 0,
+      "coverRequests": 1
+    },
+    {
+      "mode": "corrupt",
+      "site": "northcape-wind-low",
+      "motionM": 163.023,
+      "array": null,
+      "assetRequests": 0,
+      "coverRequests": 1
+    },
+    {
+      "mode": "stalled-explicit",
+      "site": "northcape-wind-low",
+      "motionM": 164.213,
+      "array": null,
+      "assetRequests": 1,
+      "coverRequests": 1
+    }
+  ],
+  "legacyFlight": [
+    {
+      "option": false,
+      "site": "northcape-wind-low",
+      "movementM": 182.06896511495538,
+      "northCape": null,
+      "startY": 121.96038171556039,
+      "afterY": 123.052006967964,
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "option": true,
+      "site": "northcape-wind-low",
+      "movementM": 180.87782935070936,
+      "northCape": {
+        "registered": 16,
+        "near": 15,
+        "cruise": 1
+      },
+      "startY": 121.95756070873678,
+      "afterY": 123.03676551716352,
+      "pauseSucceeded": true,
+      "errors": []
+    }
+  ],
+  "independentLifecycle": {
+    "sourceHashes": {
+      "src/main.ts": "4982b3ca24d7fc6ece6d2d3dcc25d6481e52bc2e0d05b0a84c4f6334225ab2da",
+      "src/app/scenery-profile.ts": "cf3d62cdd7d2a1af9477733fc88e58a0216e382b77b3921d1d877fcaa00fbcef",
+      "src/render/north-cape-stream.ts": "76cc89017b3f5859d4fc0a74b0d20993d644862d6331ae6814f6d8c170c54ce8",
+      "src/render/north-cape.ts": "2d4b3e7bb316aee9d2b9172bd263ec312843294af5bdb4ae50fe76dc3a4aede4"
+    },
+    "span": 843.6621646379494,
+    "requests": 1,
+    "actorsBuilt": 2,
+    "disposeProof": [
+      {
+        "mesh": 4,
+        "buffers": 4,
+        "mat": 1
+      },
+      {
+        "mesh": 4,
+        "buffers": 4,
+        "mat": 1
+      }
+    ],
+    "row": [
+      {
+        "label": "cold 25km",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "inside prewarm, exact directed plane",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "first departure left before signed data",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "valid completion while offsite",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "between leave/reenter while cold",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "ordinary close",
+        "artObjects": 1,
+        "a": true,
+        "counts": {
+          "registered": 16,
+          "near": 16,
+          "cruise": 0
+        }
+      },
+      {
+        "label": "warm inner",
+        "artObjects": 1,
+        "a": true,
+        "counts": {
+          "registered": 16,
+          "near": 16,
+          "cruise": 0
+        }
+      },
+      {
+        "label": "retention while no station draw",
+        "artObjects": 1,
+        "a": false,
+        "counts": {
+          "registered": 16,
+          "near": 0,
+          "cruise": 0
+        }
+      },
+      {
+        "label": "dispose after outer boundary",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "outside cannot recreate oscillation",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      },
+      {
+        "label": "same module warm recreate",
+        "artObjects": 1,
+        "a": true,
+        "counts": {
+          "registered": 16,
+          "near": 16,
+          "cruise": 0
+        }
+      },
+      {
+        "label": "nonfinite height",
+        "artObjects": 0,
+        "a": false,
+        "counts": null
+      }
+    ],
+    "modes": {
+      "": {
+        "mode": "ordinary",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?northCapeWind": {
+        "mode": "explicit",
+        "duneSand": false,
+        "grassAllowed": false,
+        "effectiveCape": true
+      },
+      "?scenery=detail": {
+        "mode": "explicit",
+        "duneSand": false,
+        "grassAllowed": false,
+        "effectiveCape": true
+      },
+      "?scenery=detail&stockNorthCapeWind": {
+        "mode": "stock",
+        "duneSand": false,
+        "grassAllowed": false,
+        "effectiveCape": false
+      },
+      "?northCapeWind&stockNorthCapeWind": {
+        "mode": "stock",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?stockNorthCapeWind": {
+        "mode": "stock",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?buildingShadows": {
+        "mode": "stock",
+        "duneSand": false,
+        "grassAllowed": false,
+        "effectiveCape": false
+      },
+      "?surveyRelief": {
+        "mode": "stock",
+        "duneSand": false,
+        "grassAllowed": false,
+        "effectiveCape": false
+      },
+      "?legacyShoreArcs": {
+        "mode": "ordinary",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?nearshoreFoamStudy": {
+        "mode": "ordinary",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?sourceGrassStudy": {
+        "mode": "ordinary",
+        "duneSand": false,
+        "grassAllowed": true,
+        "effectiveCape": false
+      },
+      "?duneSandDetail": {
+        "mode": "ordinary",
+        "duneSand": true,
+        "grassAllowed": true,
+        "effectiveCape": false
+      }
+    },
+    "explicitStockCrossLayerIdentical": true,
+    "noWorldOrRoadShadowInStandard": true,
+    "malformedManifestAndDecodedBodyFailClosed": true,
+    "explicitBoundedModuleFallback": true
+  }
+}

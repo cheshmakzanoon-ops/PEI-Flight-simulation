@@ -27,7 +27,7 @@ try:
    pg.on('pageerror',lambda e:errors.append(str(e)))
    pg.on('console',lambda e:errors.append(e.text) if e.type=='error' else None)
    pg.set_default_timeout(120000)
-   pg.goto(url+('&northCapeWind&shoreFoamDetail&legacyShoreArcs' if active else ''),wait_until='domcontentloaded')
+   pg.goto(url+('&northCapeWind&shoreFoamDetail&legacyShoreArcs' if active else '&stockNorthCapeWind'),wait_until='domcontentloaded')
    pg.wait_for_function('()=>window.islandAirDiagnostics?.mode==="dispatch" && document.querySelector("#site")')
    pg.select_option('#site',label='North Cape')
    pg.get_by_role('button',name='Begin flight').click()

@@ -59,6 +59,13 @@ export class NorthCapeScenery {
   this.world=world;
   this.root.name='North Cape commercial wind farm';scene.add(this.root);this.root.visible=false;
  }
+ dispose(){
+  this.root.removeFromParent();
+  for(const {mast,rotor} of this.lod){
+   mast.dispose();rotor.dispose();mast.geometry.dispose();rotor.geometry.dispose();
+  }
+  this.mat.dispose();
+ }
  private rest(){
   if(this.lastEpoch===this.world.visualGroundEpoch)return;
   this.lastEpoch=this.world.visualGroundEpoch;
