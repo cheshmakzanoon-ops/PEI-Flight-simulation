@@ -1,0 +1,17 @@
+{
+  "sourceTriangleTextSHA256": "a0822ee965721b930c229dd58214a888a3e9a1dc36b978b3eeceb1dfb0499974",
+  "generatedShapeSHA256": "06ea4b85bd5e2b20065cfa035ef1b6db8a825fb72517eee57c0bab61466872a9",
+  "underlyingTriangles": 98,
+  "samples": 2198,
+  "base6BitSamplesSHA256": "15d5f3fd0402ce17b786a53a0e0509193f7c15a03da7552e5c4b37f1c0ca4c3e",
+  "basis": "768 fixed cosine-weighted hemisphere rays per chart node against both sides of the existing 98 triangles.",
+  "cutoffsM": [
+    5,
+    14
+  ],
+  "sourceArea": "Only connector and low cross-wing north/south planes.",
+  "hardwareFieldBytes": 1760,
+  "glUniformVec4Slots": 110,
+  "computation": "Offline only; no new mesh, texture, sampler or runtime ray trace.",
+  "generatedTsSHA256": "30ee5cdb492d8b2d60f6101d800b840b6f3fc415cfddce7e304b7a7d66b6fa12"
+}

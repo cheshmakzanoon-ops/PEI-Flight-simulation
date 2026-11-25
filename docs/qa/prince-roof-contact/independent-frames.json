@@ -1,0 +1,328 @@
+{
+  "scope": "Matched source Three.js Standard frames, previous authenticated #221 roof form versus #222 Standard (not generic flat cap); actual player terrain/building owners; camera and water phase frozen; QA-only roof/subpart ID colors. Shipping renderer uses none of the two-color overrides. Software WebGL is not a physical mobile device FPS or thermal benchmark.",
+  "priorActualWorldTrianglesSHA256": "ee959e9d59f2668206a4d7b19f723dc6726ba0fa4b46ae78b35849e121c5cc10",
+  "registrationSHA256": "449bef4ab9d790c62e4b772609ae173f0428477350682abeae577bbbd11d277e",
+  "frozenSubsetRegistrationSHA256": "16bbd769cffa78bbbfe54a27133b4bc66cad568d7513093dbeca9b88910db36e",
+  "normalisedFieldImplementationSHA256": "da61d4b41ef0a06f705c2cd5d94086f752d5cc0a4d4aa2206648d9d165effabd",
+  "normalisedPackedDataSHA256": "30ee5cdb492d8b2d60f6101d800b840b6f3fc415cfddce7e304b7a7d66b6fa12",
+  "actualRendererCaps": {
+    "maxFragUniformVectors": 4096,
+    "maxFragUniformComponents": 16384,
+    "maxFragmentTextureUnits": 32,
+    "contextVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "realFragmentStageReflection": "Original linked exposed active program; scratch relink keeps actual fragment shader byte-for-byte, namespacing all vertex-stage uniforms to make fragment-only activity unambiguous. Measured 110 unsigned-int vec4s plus cameraPosition, log-depth factor, and tone exposure in all four. Worst-case estimate gives each active scalar/vector a full vec4. No sampled texture on this material.",
+  "webgl2Reference": {
+    "fragmentUniformMinimumVectors": 224,
+    "fragmentUniformMinimumComponents": 896,
+    "standardsSource": "https://registry.khronos.org/OpenGL/specs/es/3.0/es_spec_3.0.pdf#page=290",
+    "testedDriverCapacityIsNotTheMinimumDevice": true
+  },
+  "views": [
+    {
+      "view": "westReused",
+      "pose": {
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": 0.95,
+        "south": 0.31,
+        "h": 4,
+        "dist": 102,
+        "agl": 39
+      },
+      "sourceSubjectSpan": [
+        3534,
+        3828
+      ],
+      "visibleRoofPixels": 22929,
+      "visibleThreePlanePixels": 1493,
+      "sourceRoofOwnerMaskBitIdentical": true,
+      "above2RGB": 363,
+      "peakRGB": 25,
+      "largestChannelIncrease": 0,
+      "outsideVisibleRoofChangedPixels": 0,
+      "outsideThreePlanesChangedPixels": 0,
+      "selectedAbsRGBPercentiles50_90_98_99p8": [
+        0.0,
+        7.0,
+        16.0,
+        24.0
+      ],
+      "baselineStandardRGBSHA256": "c49c9792d3ac4c3c62b0d61a718c7b87b3302ddda2d847142f0ebb844f70bb7b",
+      "proposedStandardRGBSHA256": "7e1bd0a4910bef49df6c18987eb8a32fd0f2ebcbe0e0ea2581d4c6ce33687b2d",
+      "standardDrawsBeforeAfter": [
+        67,
+        67
+      ],
+      "visibleSceneTrianglesBeforeAfter": [
+        248644,
+        248644
+      ],
+      "sameTransientGeometryCount": true,
+      "shaderLinkedFragmentActiveUniforms": [
+        {
+          "name": "cameraPosition",
+          "size": 1,
+          "type": 35665,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 3
+        },
+        {
+          "name": "logDepthBufFC",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        },
+        {
+          "name": "princeSkyWords[0]",
+          "size": 110,
+          "type": 36296,
+          "conservativeVec4Registers": 110,
+          "activeComponents": 440
+        },
+        {
+          "name": "toneMappingExposure",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        }
+      ],
+      "activeLinkedUniformComponents": 445,
+      "conservativeFragmentVec4Slots": 113,
+      "linkedBuildingSamplerCount": 0,
+      "debugErrors": [],
+      "pass": true
+    },
+    {
+      "view": "reverseReused",
+      "pose": {
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": -0.57,
+        "south": -0.821,
+        "h": 4,
+        "dist": 100,
+        "agl": 35
+      },
+      "sourceSubjectSpan": [
+        3534,
+        3828
+      ],
+      "visibleRoofPixels": 15339,
+      "visibleThreePlanePixels": 4900,
+      "sourceRoofOwnerMaskBitIdentical": true,
+      "above2RGB": 637,
+      "peakRGB": 18,
+      "largestChannelIncrease": 0,
+      "outsideVisibleRoofChangedPixels": 0,
+      "outsideThreePlanesChangedPixels": 0,
+      "selectedAbsRGBPercentiles50_90_98_99p8": [
+        0.0,
+        3.0,
+        9.0,
+        16.0
+      ],
+      "baselineStandardRGBSHA256": "c59e212a9a43acec9be5921f9992aead09a51ac612675d230cc1750045a46005",
+      "proposedStandardRGBSHA256": "c05cb132297015d249a634dd19c265cb076cb2e0fc4e9dc5e07daecf492168e1",
+      "standardDrawsBeforeAfter": [
+        141,
+        141
+      ],
+      "visibleSceneTrianglesBeforeAfter": [
+        352290,
+        352290
+      ],
+      "sameTransientGeometryCount": true,
+      "shaderLinkedFragmentActiveUniforms": [
+        {
+          "name": "cameraPosition",
+          "size": 1,
+          "type": 35665,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 3
+        },
+        {
+          "name": "logDepthBufFC",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        },
+        {
+          "name": "princeSkyWords[0]",
+          "size": 110,
+          "type": 36296,
+          "conservativeVec4Registers": 110,
+          "activeComponents": 440
+        },
+        {
+          "name": "toneMappingExposure",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        }
+      ],
+      "activeLinkedUniformComponents": 445,
+      "conservativeFragmentVec4Slots": 113,
+      "linkedBuildingSamplerCount": 0,
+      "debugErrors": [],
+      "pass": true
+    },
+    {
+      "view": "newNorthOblique",
+      "pose": {
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": -0.24,
+        "south": 0.971,
+        "h": 6,
+        "dist": 77,
+        "agl": 30
+      },
+      "sourceSubjectSpan": [
+        3534,
+        3828
+      ],
+      "visibleRoofPixels": 47990,
+      "visibleThreePlanePixels": 12474,
+      "sourceRoofOwnerMaskBitIdentical": true,
+      "above2RGB": 2963,
+      "peakRGB": 22,
+      "largestChannelIncrease": 0,
+      "outsideVisibleRoofChangedPixels": 0,
+      "outsideThreePlanesChangedPixels": 0,
+      "selectedAbsRGBPercentiles50_90_98_99p8": [
+        0.0,
+        6.0,
+        15.0,
+        20.0
+      ],
+      "baselineStandardRGBSHA256": "f8eb642a1f027650afdfa4de991695b236eeef7b5817e6723fcd6e2c3da58ab6",
+      "proposedStandardRGBSHA256": "f1b0f216b458dbdebb57a1a62b3d73bb9fefb6c1f6721409483bf81829cbf703",
+      "standardDrawsBeforeAfter": [
+        59,
+        59
+      ],
+      "visibleSceneTrianglesBeforeAfter": [
+        229602,
+        229602
+      ],
+      "sameTransientGeometryCount": true,
+      "shaderLinkedFragmentActiveUniforms": [
+        {
+          "name": "cameraPosition",
+          "size": 1,
+          "type": 35665,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 3
+        },
+        {
+          "name": "logDepthBufFC",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        },
+        {
+          "name": "princeSkyWords[0]",
+          "size": 110,
+          "type": 36296,
+          "conservativeVec4Registers": 110,
+          "activeComponents": 440
+        },
+        {
+          "name": "toneMappingExposure",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        }
+      ],
+      "activeLinkedUniformComponents": 445,
+      "conservativeFragmentVec4Slots": 113,
+      "linkedBuildingSamplerCount": 0,
+      "debugErrors": [],
+      "pass": true
+    },
+    {
+      "view": "newUpHigh",
+      "pose": {
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": 0.36,
+        "south": -0.933,
+        "h": 4,
+        "dist": 620,
+        "agl": 390
+      },
+      "sourceSubjectSpan": [
+        3534,
+        3828
+      ],
+      "visibleRoofPixels": 714,
+      "visibleThreePlanePixels": 168,
+      "sourceRoofOwnerMaskBitIdentical": true,
+      "above2RGB": 0,
+      "peakRGB": 0,
+      "largestChannelIncrease": 0,
+      "outsideVisibleRoofChangedPixels": 0,
+      "outsideThreePlanesChangedPixels": 0,
+      "selectedAbsRGBPercentiles50_90_98_99p8": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "baselineStandardRGBSHA256": "43cb4f8c22fc2c5bae3136c77a1fde9b2859062554a85c7336d75e5f41b14fea",
+      "proposedStandardRGBSHA256": "43cb4f8c22fc2c5bae3136c77a1fde9b2859062554a85c7336d75e5f41b14fea",
+      "standardDrawsBeforeAfter": [
+        50,
+        50
+      ],
+      "visibleSceneTrianglesBeforeAfter": [
+        286268,
+        286268
+      ],
+      "sameTransientGeometryCount": true,
+      "shaderLinkedFragmentActiveUniforms": [
+        {
+          "name": "cameraPosition",
+          "size": 1,
+          "type": 35665,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 3
+        },
+        {
+          "name": "logDepthBufFC",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        },
+        {
+          "name": "princeSkyWords[0]",
+          "size": 110,
+          "type": 36296,
+          "conservativeVec4Registers": 110,
+          "activeComponents": 440
+        },
+        {
+          "name": "toneMappingExposure",
+          "size": 1,
+          "type": 5126,
+          "conservativeVec4Registers": 1,
+          "activeComponents": 1
+        }
+      ],
+      "activeLinkedUniformComponents": 445,
+      "conservativeFragmentVec4Slots": 113,
+      "linkedBuildingSamplerCount": 0,
+      "debugErrors": [],
+      "pass": true
+    }
+  ],
+  "pass": true
+}

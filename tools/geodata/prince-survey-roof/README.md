@@ -17,14 +17,21 @@ cmp /tmp/prince-survey-roof.generated.ts src/render/prince-survey-roof.generated
 
 A previously authorized byte cache may be supplied with `--offline-range-dir`; each byte range is authenticated. [local-frame.json](local-frame.json) fixes the original ordered outline in game coordinates and an orthogonal UV frame calculated only from its ordered plan. The mesh witness rechecks both the real shipped AEB bytes and the game terrain at the unchanged centroid. The fitter uses equal 0.6 m sampling cells and robust planar fits. Intersections between unlike slopes define the surveyed ridges. Shared boundary segments are split before emitting vertical closure faces.
 
-**Actual production geometry and local streaming faults.** These commands produce the same SHA-256 `b94b2dfc1ea8e9903567aeb277cfd6eeffc5c6a49d8d4c97c4b25a99340ac646` mesh file that the independent reviewer sealed before scoring elevations. The temporary `.mjs` is a bundled QA adapter, not a shipped game file.
+**Actual production geometry and local streaming faults.** At the first qualified commit (6678fa6), these commands produce the same SHA-256 `b94b2dfc1ea8e9903567aeb277cfd6eeffc5c6a49d8d4c97c4b25a99340ac646` mesh file that the independent reviewer sealed before scoring elevations. The temporary `.mjs` is a bundled QA adapter, not a shipped game file. Newer commits may add optics or change shared implementation-file hashes while keeping the exact triangles and six neighboring arrays intact. Compare the geometry evidence below instead of pretending newer source files have the old digests.
 
 ```sh
 ./node_modules/.bin/esbuild tools/qa/prince-survey-roof-mesh.mjs \
   --bundle --platform=node --format=esm --packages=external \
   --define:import.meta.env.BASE_URL='"/"' --outfile=.qa-prince-roof.mjs
 node .qa-prince-roof.mjs /tmp/pei-prince-mesh
-cmp /tmp/pei-prince-mesh/actual-triangles.json docs/qa/prince-survey-roof/actual-triangles.json
+node --input-type=module - <<'JS'
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const paths=['/tmp/pei-prince-mesh/actual-triangles.json','docs/qa/prince-survey-roof/actual-triangles.json'];
+const [fresh,pinned]=paths.map(p=>JSON.parse(fs.readFileSync(p)));
+for(const k of ['stockTriangles','candidateTriangles','neighborChecksums','stockTileFaces','candidateTileFaces','gameAnchorY'])assert.deepEqual(fresh[k],pinned[k]);
+assert.equal(fresh.sourceHashes['src/render/prince-survey-roof.generated.ts'],pinned.sourceHashes['src/render/prince-survey-roof.generated.ts']);
+JS
 python tools/geodata/prince-survey-roof/predict-only.py \
   --mesh /tmp/pei-prince-mesh/actual-triangles.json \
   --inputs /tmp/pei-prince-train/predict-only-held-xy.npz --out /tmp/pei-prince-roof-predictions.npz

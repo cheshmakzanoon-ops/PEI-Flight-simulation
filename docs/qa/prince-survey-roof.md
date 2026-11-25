@@ -4,7 +4,7 @@ The building at **46.448419° N, 63.833858° W** used to be one flat cap over a 
 
 ![Stock flat massing versus measured roof form, from the same two in-engine cameras](art/prince-survey-roof-matched.webp)
 
-The left and right frames use the same cameras and light. They are **game renders**, not survey photographs. Use `?stockPrinceSurveyRoof` for the old representation. Other Standard comparison switches remain independent. No preset, public departure, map point, parcel, ownership or address was added.
+The left and right frames use the same cameras and light. They are **game renders**, not survey photographs. Use `?stockPrinceSurveyRoof` for the old representation. To keep the measured geometry and compare only [local sky shading where sections meet](prince-roof-contact.md), use `?stockPrinceRoofContact`. Other Standard comparison switches remain independent. No preset, public departure, map point, parcel, ownership or address was added.
 
 ## What the survey supports
 

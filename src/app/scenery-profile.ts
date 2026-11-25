@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Relative massing of one identified streamed building; no activation in historical views. */
@@ -257,6 +257,9 @@ export function standardPrinceSurveyRoof(q:URLSearchParams){
  const mode=q.get('scenery');
  return (!mode||mode==='standard')&&!q.has('stockPrinceSurveyRoof')&&standardComparisonQuery(q);
 }
+
+/** Exact measured roof, with its own independent source-neutral lighting study. */
+export const standardPrinceRoofContact=(q:URLSearchParams)=>standardPrinceSurveyRoof(q)&&!q.has('stockPrinceRoofContact');
 
 /** Optional local native-source optical and vegetation layer in Standard. */
 export function coastalMarshRequested(q:URLSearchParams){

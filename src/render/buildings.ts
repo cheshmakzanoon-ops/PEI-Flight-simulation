@@ -1,3 +1,4 @@
+import {princeSkyGLSL,princeSkyWords} from './prince-roof-sky.ts';
 import {POINT_PRIM,pointPrimDrawSource,pointPrimOwner,type PointPrimStock} from './point-prim/admit.ts';
 import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
 import {crockettAtlasCandidate,crockettExactRow,crockettExactWire} from './souris-east/admit.ts';
@@ -81,7 +82,7 @@ const buildingV=`
  void main(){vec4 p=modelMatrix*vec4(position,1.);wp=p.xyz;normalW=normal;uv2d=uv;tint=color;roof=topFlag;facade=facadeStyle;gl_Position=projectionMatrix*viewMatrix*p;
  #include <logdepthbuf_vertex>
  }`;
-const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false,montague=false,sourisMain=false,rusticoNeutral=false)=>`
+const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victoria=false,montague=false,sourisMain=false,rusticoNeutral=false,princeContact=false)=>`
  varying vec2 uv2d;varying vec3 tint,wp,normalW;varying float roof,facade;
  #include <common>
  #include <logdepthbuf_pars_fragment>
@@ -95,6 +96,7 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
   h+=dot(h,h.yzx+33.33);
   return fract((h.x+h.y)*h.z);
  }
+ ${princeContact?princeSkyGLSL:''}
  ${downtownFacadeGLSL}
  ${souris?sourisOcclusionGLSL+sourisMetalGLSL:''}
  ${hasBuildingShadows?buildingShadowGLSL:''}
@@ -162,6 +164,11 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
   c*=mix(.97,1.03,polish)*(1.-fine*(.18*seam+.07*lap));
   ${souris?'}':''}
  }else{c*=1.-.11*fine*band(uv2d.x*1.8,.0,.17);}
+ ${princeContact?`// Local finite sky loss only: retain the existing .51*k direct term in full.
+ if(facade>81.5&&facade<82.5&&roof>.5&&d<290.){
+  float loss=princeSkyBlock(wp,n)*(.74*(1.-smoothstep(150.,290.,d)));
+  if(loss>0.)c*=.61*(1.-loss)+.51*k;else c*=.61+.51*k;
+ }else`:''}
  c*=.61+.51*k;
  ${hasBuildingShadows?`
  if(facade<5.5||facade>6.5){
@@ -198,16 +205,18 @@ export class Buildings {
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly rusticoNeutralMat?:THREE.ShaderMaterial;
  private readonly rusticoRoof:boolean;
- private princeSurveyRoof=false;private princeNeutralMat?:THREE.ShaderMaterial;
+ private princeRoofContact=false;private princeSurveyRoof=false;private princeNeutralMat?:THREE.ShaderMaterial;
  private readonly shadowedBuildings:boolean;
- enablePrinceSurveyRoof(){this.princeSurveyRoof=true;}
+ enablePrinceSurveyRoof(contact=false){this.princeSurveyRoof=true;this.princeRoofContact=contact;}
+ get princeRoofContactActive(){return this.princeRoofContact&&this.princeSurveyRoofActive;}
  get princeSurveyRoofActive(){return this.meshes.get(PRINCE_ROOF_TILE)?.userData.princeSurveyRoof===true;}
  private sourceNeutralMaterial(){
-  if(this.rusticoNeutralMat)return this.rusticoNeutralMat;
+  if(this.rusticoNeutralMat&&!this.princeRoofContact)return this.rusticoNeutralMat;
   // One material only when this owner passes. Neighbours retain the original
   // shader path; the source-neutral branch is entered only by style 82.
   return this.princeNeutralMat??=new THREE.ShaderMaterial({vertexShader:buildingV,
-   fragmentShader:buildingF(false,this.shadowedBuildings,false,false,false,false,true),uniforms:this.mat.uniforms,
+   fragmentShader:buildingF(false,this.shadowedBuildings,false,false,false,false,true,this.princeRoofContact),
+   uniforms:this.princeRoofContact?{...this.mat.uniforms,princeSkyWords:{value:princeSkyWords()}}:this.mat.uniforms,
    vertexColors:true,side:THREE.DoubleSide});
  }
  private readonly sourisLight?:SourisLighting;

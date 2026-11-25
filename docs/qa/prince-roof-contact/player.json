@@ -1,0 +1,127 @@
+{
+  "standard": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 125.21295282160281,
+    "groundClearanceM": 42.84679392721602,
+    "crossTrackM": 0.8127777776899165,
+    "roof": true,
+    "contact": true,
+    "emulatedUniformVectorCap": null,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "own-stock": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 123.4136725705539,
+    "groundClearanceM": 42.80078867033347,
+    "crossTrackM": 0.801111111024511,
+    "roof": true,
+    "contact": false,
+    "emulatedUniformVectorCap": null,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "old-roof-stock": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 122.21304202626197,
+    "groundClearanceM": 42.75055237138488,
+    "crossTrackM": 0.793333333247574,
+    "roof": false,
+    "contact": false,
+    "emulatedUniformVectorCap": null,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "independent-imagery-stock": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 123.41474314691004,
+    "groundClearanceM": 42.821705747338754,
+    "crossTrackM": 0.801111111024511,
+    "roof": true,
+    "contact": true,
+    "emulatedUniformVectorCap": null,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": false,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "emulated-low-cap": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 121.01756932019634,
+    "groundClearanceM": 42.79660416921568,
+    "crossTrackM": 0.785555555470637,
+    "roof": true,
+    "contact": false,
+    "emulatedUniformVectorCap": 191,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "oracleSHA256": "8deddbe0a7d0c35e33d6a636e7fa26c359c3893802159f4b94718be50bd2f378",
+  "fieldSHA256": "da61d4b41ef0a06f705c2cd5d94086f752d5cc0a4d4aa2206648d9d165effabd",
+  "predictionSHA256": "4acadd09d494032725de27038b86da28c6e516c817579b4d419bd3edcda84ec9",
+  "allSource": {
+    "sites": 338,
+    "strong": 33,
+    "clear": 237,
+    "nonClearSpearman": 0.9614760872554221,
+    "meanAbsoluteError": 0.004298781301963707,
+    "p90AbsoluteError": 0.01273453131709971,
+    "areaWeightedMeanAbsError": 0.0021658790099938134,
+    "areaWeightedP90AbsError": 0.006665965893,
+    "sensitivityOnStrongAtPredicted005": 1.0,
+    "strongMissed": 0,
+    "clearPredictedP95": 0.0,
+    "clearPredictedPeak": 0.0,
+    "minPrediction": 0.0,
+    "maxPrediction": 0.5854539439293222,
+    "pass": true
+  },
+  "declaredThreePlaneSubset": {
+    "sites": 146,
+    "strong": 33,
+    "clear": 56,
+    "nonClearSpearman": 0.9925579817660691,
+    "meanAbsoluteError": 0.006338909317559816,
+    "p90AbsoluteError": 0.014731300545208378,
+    "areaWeightedMeanAbsError": 0.006253574048747917,
+    "areaWeightedP90AbsError": 0.014742361211,
+    "sensitivityOnStrongAtPredicted005": 1.0,
+    "strongMissed": 0,
+    "clearPredictedP95": 0.0,
+    "clearPredictedPeak": 0.0,
+    "minPrediction": 0.0,
+    "maxPrediction": 0.5854539439293222,
+    "pass": true
+  },
+  "outsideDeclaredScope": {
+    "sites": 192,
+    "strongSourceSites": 0,
+    "maximumAbsoluteProposedResponse": 0.0,
+    "bitZero": true
+  },
+  "units": "Local normalized blocked diffuse visibility; not a photograph, light meter or an independent second survey.",
+  "passed": true,
+  "registrationSHA256": "449bef4ab9d790c62e4b772609ae173f0428477350682abeae577bbbd11d277e",
+  "candidateSubsetRegistrationSHA256": "16bbd769cffa78bbbfe54a27133b4bc66cad568d7513093dbeca9b88910db36e",
+  "sampleScope": "338 independently generated barycentric points across original #221 triangles, each tested against all 98 real world-space triangles with 1,024 rotated cosine-weighted rays out to 14 m. Seven source pieces and all non-roof geometry are unchanged controls. This is geometric consistency, not an independently recorded irradiance or a material survey.",
+  "groundData": "No new ground elevation labels or survey used. Relative massing and ground qualification from #221 were frozen, and not recounted as an independent #222 validation."
+}

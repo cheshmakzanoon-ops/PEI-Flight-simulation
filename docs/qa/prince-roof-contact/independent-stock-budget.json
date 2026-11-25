@@ -1,0 +1,54 @@
+{
+  "scope": "Actual mounted West Standard camera. 191 and 224 are simulated capability getters on a real but higher-capacity WebGL2 context, not a mobile GPU performance measurement. QA does not truncate actual driver memory. 191 is deliberately below standards minimum; stock still preserves the authenticated roof. Original #221 was launched without the not-yet-registered switch.",
+  "cases": [
+    {
+      "mode": "stockContact",
+      "softwareGLReportedFragmentVectorCap": 4096,
+      "softwareCapShimmedOnlyForThisCase": false,
+      "sameBaseline": "#221 measured source, no contact",
+      "sameGamePNGAndBothRoofIdMasksByteForByte": true,
+      "completeRGBPngSHA256": "c49c9792d3ac4c3c62b0d61a718c7b87b3302ddda2d847142f0ebb844f70bb7b",
+      "measuredRoof": true,
+      "contactActive": false,
+      "actualLinkedFragmentComponents": 5,
+      "conservativeVec4Slots": 3,
+      "linkedSamplerCount": 0,
+      "draws": 67,
+      "triangles": 248644,
+      "runtimeErrors": []
+    },
+    {
+      "mode": "lowBudget",
+      "softwareGLReportedFragmentVectorCap": 191,
+      "softwareCapShimmedOnlyForThisCase": true,
+      "sameBaseline": "#221 measured source, no contact",
+      "sameGamePNGAndBothRoofIdMasksByteForByte": true,
+      "completeRGBPngSHA256": "c49c9792d3ac4c3c62b0d61a718c7b87b3302ddda2d847142f0ebb844f70bb7b",
+      "measuredRoof": true,
+      "contactActive": false,
+      "actualLinkedFragmentComponents": 5,
+      "conservativeVec4Slots": 3,
+      "linkedSamplerCount": 0,
+      "draws": 67,
+      "triangles": 248644,
+      "runtimeErrors": []
+    },
+    {
+      "mode": "minimumBudget",
+      "softwareGLReportedFragmentVectorCap": 224,
+      "softwareCapShimmedOnlyForThisCase": true,
+      "sameBaseline": "candidate with contact",
+      "sameGamePNGAndBothRoofIdMasksByteForByte": true,
+      "completeRGBPngSHA256": "7e1bd0a4910bef49df6c18987eb8a32fd0f2ebcbe0e0ea2581d4c6ce33687b2d",
+      "measuredRoof": true,
+      "contactActive": true,
+      "actualLinkedFragmentComponents": 445,
+      "conservativeVec4Slots": 113,
+      "linkedSamplerCount": 0,
+      "draws": 67,
+      "triangles": 248644,
+      "runtimeErrors": []
+    }
+  ],
+  "pass": true
+}

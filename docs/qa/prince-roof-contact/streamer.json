@@ -1,0 +1,110 @@
+{
+  "scope": "Actual whole q0322 mesh and full immutable vertex arrays after ordinary local PackedBytes/gzip lifecycle. True GL linkage is reviewed in native frames; this test does not claim hardware performance.",
+  "verifiedBuildingAtlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "allSixSurveyedTileAttributes": {
+    "position": "d06f10ed97449b2f2df18ac9fb61d9bbc30ba521bb6aa91198b2c25766eff950",
+    "uv": "6e917999ce5afeb296b67c50ff03316905e8e9517278001c9fb670afc3fd8483",
+    "color": "b317438a8a2c736ff2d7a48b6db987971d0183852ccfa15f519b2fda69e10f9e",
+    "topFlag": "8447f4c6505373da98aefe24637ba8909bb88605106bdc95bc70ee64f372c2e0",
+    "facadeStyle": "bbebcd84311966741678a9e995c9f215e25e77fd6657c030d58dd51fa190b2f1",
+    "normal": "f05e92c861fb4503ce952b6fb188817e0e90afeb739ab6d46e1cf4fe84d1cb6e"
+  },
+  "allSixGenericTileAttributes": {
+    "position": "17ad7b127c4d1201087b70d50feb19e12e66c902b575dc96befc164d8415b6e4",
+    "uv": "94ed5b6a85ffc2c9656c10a3b2dd05b3a4b9f612e905f3d0686a95bec8b8913c",
+    "color": "1e844165e4b7423ff5349df7c0906253bfc71fda7bd59be76a344f472c95e384",
+    "topFlag": "dd5c7ee6958d899a27d7763ee671897a6d45b19ed9053909953fe1543012ce48",
+    "facadeStyle": "9bb294847b027c1945346edff23ed7372c6a4fe25aa26cbaeaf637070f35503f",
+    "normal": "05877f432046cf82ee85cbb14abc11ff617cc2931243af66dfc1b6d30e4358f7"
+  },
+  "cases": [
+    {
+      "mode": "measured-only",
+      "shape": true,
+      "contact": false,
+      "geometry": "#221 surveyed",
+      "triangleCount": 7798,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    },
+    {
+      "mode": "normal-standard",
+      "shape": true,
+      "contact": true,
+      "geometry": "#221 surveyed",
+      "triangleCount": 7798,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 1760
+    },
+    {
+      "mode": "peer-inland",
+      "shape": true,
+      "contact": true,
+      "geometry": "#221 surveyed",
+      "triangleCount": 7798,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 1760
+    },
+    {
+      "mode": "low-budget",
+      "shape": true,
+      "contact": false,
+      "geometry": "#221 surveyed",
+      "triangleCount": 7798,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    },
+    {
+      "mode": "missing-budget",
+      "shape": true,
+      "contact": false,
+      "geometry": "#221 surveyed",
+      "triangleCount": 7798,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    },
+    {
+      "mode": "changed-ordinary-chunk",
+      "shape": false,
+      "contact": false,
+      "geometry": "pre-221 generic",
+      "triangleCount": 7740,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    },
+    {
+      "mode": "generic-legacy",
+      "shape": false,
+      "contact": false,
+      "geometry": "pre-221 generic",
+      "triangleCount": 7740,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    },
+    {
+      "mode": "unrelated-review",
+      "shape": false,
+      "contact": false,
+      "geometry": "pre-221 generic",
+      "triangleCount": 7740,
+      "ownerMeshes": 1,
+      "assetReads": 1,
+      "addedTextureSamplers": 0,
+      "fieldUniformBytes": 0
+    }
+  ]
+}
