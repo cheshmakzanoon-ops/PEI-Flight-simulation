@@ -1,0 +1,114 @@
+[
+  {
+    "name": "front",
+    "candidate": "q2023/300",
+    "fixture": {
+      "lon": -64.18008,
+      "lat": 46.755037,
+      "h": 7.85,
+      "dist": 91.4,
+      "east": 0.08,
+      "south": -0.997,
+      "agl": 5.1
+    },
+    "stockOwnerPixels": 14933,
+    "idSupportPixels": 14937,
+    "strictPixelsOutOfId": 0,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 0,
+    "wallIdCorePixels": 14555,
+    "stockRestoredIdentical": true,
+    "span": [
+      21093,
+      21303
+    ],
+    "vertexCount": 40023,
+    "roofTriangles": 22,
+    "wallTriangles": 48
+  },
+  {
+    "name": "road-quarter",
+    "candidate": "q2023/300",
+    "fixture": {
+      "lon": -64.18008,
+      "lat": 46.755037,
+      "h": 7.85,
+      "dist": 81.5,
+      "east": 0.69,
+      "south": -0.724,
+      "agl": 8.0
+    },
+    "stockOwnerPixels": 19833,
+    "idSupportPixels": 19823,
+    "strictPixelsOutOfId": 10,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 1116,
+    "wallIdCorePixels": 17841,
+    "stockRestoredIdentical": true,
+    "span": [
+      21093,
+      21303
+    ],
+    "vertexCount": 40023,
+    "roofTriangles": 22,
+    "wallTriangles": 48
+  },
+  {
+    "name": "air-north",
+    "candidate": "q2023/300",
+    "fixture": {
+      "lon": -64.18008,
+      "lat": 46.755037,
+      "h": 7.85,
+      "dist": 175.0,
+      "east": 0.53,
+      "south": -0.848,
+      "agl": 74.0
+    },
+    "stockOwnerPixels": 6562,
+    "idSupportPixels": 6561,
+    "strictPixelsOutOfId": 1,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 3256,
+    "wallIdCorePixels": 2906,
+    "stockRestoredIdentical": true,
+    "span": [
+      21093,
+      21303
+    ],
+    "vertexCount": 40023,
+    "roofTriangles": 22,
+    "wallTriangles": 48
+  },
+  {
+    "name": "air-south",
+    "candidate": "q2023/300",
+    "fixture": {
+      "lon": -64.18008,
+      "lat": 46.755037,
+      "h": 7.85,
+      "dist": 180.0,
+      "east": -0.72,
+      "south": 0.695,
+      "agl": 82.0
+    },
+    "stockOwnerPixels": 6035,
+    "idSupportPixels": 6034,
+    "strictPixelsOutOfId": 1,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 3321,
+    "wallIdCorePixels": 1894,
+    "stockRestoredIdentical": true,
+    "span": [
+      21093,
+      21303
+    ],
+    "vertexCount": 40023,
+    "roofTriangles": 22,
+    "wallTriangles": 48
+  }
+]

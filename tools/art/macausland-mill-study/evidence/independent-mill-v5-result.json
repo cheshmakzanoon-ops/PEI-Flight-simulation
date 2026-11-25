@@ -1,0 +1,270 @@
+{
+  "sealedGeometryAndMaterialsExact": {
+    "hash": "878d45c57fe47733101dea700470e0d4c856eaaebef97d20614ea1cbff248833",
+    "parts": [
+      {
+        "name": "front-roll-formed-skin",
+        "triangles": 990
+      },
+      {
+        "name": "east-return-roll-formed-skin",
+        "triangles": 500
+      },
+      {
+        "name": "near-folded-metal-roof",
+        "triangles": 938
+      },
+      {
+        "name": "setback-upper-roll-formed-shell",
+        "triangles": 984
+      },
+      {
+        "name": "higher-folded-gable-roof",
+        "triangles": 424
+      },
+      {
+        "name": "folded-eave-and-crest",
+        "triangles": 356
+      },
+      {
+        "name": "white-window-joinery",
+        "triangles": 1980
+      },
+      {
+        "name": "sash-reveals-and-backing",
+        "triangles": 784
+      },
+      {
+        "name": "real-glazing",
+        "triangles": 228
+      },
+      {
+        "name": "industrial-slider-leaves",
+        "triangles": 220
+      },
+      {
+        "name": "slider-head-and-threshold",
+        "triangles": 72
+      },
+      {
+        "name": "service-conduit",
+        "triangles": 2340
+      },
+      {
+        "name": "conduit-mounting",
+        "triangles": 212
+      },
+      {
+        "name": "unmarked-cooler-casings",
+        "triangles": 1048
+      },
+      {
+        "name": "cooler-fan-and-backing",
+        "triangles": 208
+      },
+      {
+        "name": "non-site-cutaway-edge",
+        "triangles": 20
+      }
+    ],
+    "totalTriangles": 11304,
+    "generatedMaps": 15
+  },
+  "sourceSHA256": {
+    "mill-front.ts": "9be90717507514c250a04dedea33a5e82abe85b573533be9a51c040f225a84f6",
+    "fabrication.ts": "87676da2b24e8a6025ca32690582ace8e3a0fc6f4d43ad1727d54e36a49a490e",
+    "finish.ts": "cf3fbad98412ef7f48d7f194e9fba017e1dccbe4f600cf21860874ecd4bd83e9",
+    "studio.ts": "ce10e1ed73625c8f9f0852e87c81452cc447758079091b4ceb70bc0a0f59b1ce"
+  },
+  "independentAnglesThroughActualGlass": 456,
+  "glazingGroupChecks": {
+    "upper": {
+      "panes": 48,
+      "bayRows": {
+        "0": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        },
+        "1": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        },
+        "2": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        }
+      },
+      "independentAngledHits": 192
+    },
+    "lower-bank": {
+      "panes": 32,
+      "bayRows": {
+        "0": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        },
+        "1": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        }
+      },
+      "independentAngledHits": 128
+    },
+    "lower-sash": {
+      "panes": 16,
+      "bayRows": {
+        "0": {
+          "0": 4,
+          "1": 4,
+          "2": 4,
+          "3": 4
+        }
+      },
+      "independentAngledHits": 64
+    },
+    "east-sash-1": {
+      "panes": 12,
+      "bayRows": {
+        "0": {
+          "0": 3,
+          "1": 3,
+          "2": 3,
+          "3": 3
+        }
+      },
+      "independentAngledHits": 48
+    },
+    "east-sash-2": {
+      "panes": 2,
+      "bayRows": {
+        "0": {
+          "0": 1,
+          "1": 1
+        }
+      },
+      "independentAngledHits": 8
+    },
+    "east-sash-3": {
+      "panes": 2,
+      "bayRows": {
+        "0": {
+          "0": 1,
+          "1": 1
+        }
+      },
+      "independentAngledHits": 8
+    },
+    "east-sash-4": {
+      "panes": 2,
+      "bayRows": {
+        "0": {
+          "0": 1,
+          "1": 1
+        }
+      },
+      "independentAngledHits": 8
+    }
+  },
+  "glazingLocalRecessMinMax": [
+    0.08399999886751086,
+    0.0840001106262207
+  ],
+  "twoRoofDepthsActualSamples": [
+    {
+      "detachedX": -4.17,
+      "upperMinusLowerLocalHeight": 1.211925
+    },
+    {
+      "detachedX": -3.11,
+      "upperMinusLowerLocalHeight": 1.152706
+    },
+    {
+      "detachedX": -0.93,
+      "upperMinusLowerLocalHeight": 0.743572
+    },
+    {
+      "detachedX": 0.86,
+      "upperMinusLowerLocalHeight": 0.728169
+    },
+    {
+      "detachedX": 2.24,
+      "upperMinusLowerLocalHeight": 1.074969
+    },
+    {
+      "detachedX": 3.71,
+      "upperMinusLowerLocalHeight": 1.142879
+    },
+    {
+      "detachedX": 4.18,
+      "upperMinusLowerLocalHeight": 1.164591
+    }
+  ],
+  "apronRoofNoOpeningRays": 36,
+  "closedSliderNoSkyRays": 143,
+  "sliderHitsByBatch": {
+    "industrial-slider-leaves": 142,
+    "slider-head-and-threshold": 1
+  },
+  "conduitUnderEaveClearance": [
+    {
+      "group": "pipe",
+      "minimumClearBelowEaveByLocalHeight": 0.114896
+    },
+    {
+      "group": "mountings",
+      "minimumClearBelowEaveByLocalHeight": 0.10792
+    }
+  ],
+  "projectingCoolerSurfaceRays": 70,
+  "limits": "Detached measured-by-model optics and source-observed descriptive facts only; no property placement or calibration. Not an aerial update.",
+  "visualChecks": {
+    "full": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "4b3fe2797a904b04ad1e35d635fab3d2c27961d1ac2ad76114b4f50e55de1b7d"
+    },
+    "elevation": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "392bda0b9e1374298d974329ab7172d8af676d4381715a60135e15c38adf1693"
+    },
+    "service": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "e038369eaf364cfc5e5fde6d26249e5cef285354e639fb4e444ac43aef672eac"
+    },
+    "slider": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "62523abdeaaa9e6c5dfde2238974c2fe5f0907b4ef2c786654571a215d0013dc"
+    },
+    "return": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "fd62ef5e07b62231af43f53e46dbc66941c9158483464cfee9643ff3dfc5cf22"
+    },
+    "roof": {
+      "independentActualThreeFrameMatchesSealedArtistByteForByte": true,
+      "rigidRepeatedExactFrame": true,
+      "frameSHA256": "37828dc2a2ab68bf567e197afaee4fa69e441527fb5847dbf7de967a492d66ae"
+    }
+  },
+  "artGate": "PASS detached only. Recessed smaller true sublights, 96 front glass lights direct author-counted evidence (48 upper, 32 lower paired, 16 lower single), 18 east bits intentionally simplified, physically separate lower and higher metal/shingle-like roof tiers and functional service profiles. Neither large observed factory nor all unobserved sides is claimed. This is not native validation, performance claim, yard likeness or a live build. No published photo copy, logotype, signs, vehicles, roof scan or scene data in geometry.",
+  "separateStockProofDigests": {
+    "macausland-stock-and-epoch.json": "8d7643457e031e2f51c9bc69df57375d944c90dee06f6f9118cbd379add6b745",
+    "macausland-native-xy-hold.json": "51f5304f6b15a43016d2b408e29337b2e43b660df6713de8a8a2e51caa05b836",
+    "macausland-native-domain-analysis.json": "5e0cce50e202bb3cad331b3bc22474fda7c2af2897a612c5c6204f2dd0c8b578",
+    "macausland-exact-render-route-and-ground-dry.json": "3586d1025d7a72e4f0b43990a2d71969af9a12c7a8713c1dddefe211b88b9c40"
+  },
+  "sourcePointZOpened": false
+}

@@ -1,0 +1,125 @@
+{
+  "base": "c541e42 (#209 Standard)",
+  "owner": "q2023/300",
+  "actualRowSpan": [
+    21093,
+    21303
+  ],
+  "actualOuterPointCount": 24,
+  "actualWallTriangleCount": 48,
+  "actualFlatRoofCapTriangles": 22,
+  "fullyContainedStockRoofTrianglesWithinAnyQualifiedXYMask": 0,
+  "partialRoofStockTrianglesTouchingEligibleMasks": 16,
+  "partialRoofTrianglesCrossingConservativeCoreBodyBoundaries": {
+    "darkEastCore": 6,
+    "paleRearCrossWing": 4
+  },
+  "flatStockCapCoveredByDryRoofMasksM2": 526.0883,
+  "orderedActualRoofAndWallTrianglesAuditSHA256": "c3b56c2bf70bd5d9834827b6774ca96006b49d477490949036f7467bcf4fc92f",
+  "onlyIndependentNorthWallTriangles": [
+    21147,
+    21153
+  ],
+  "term": "Half-open nonindexed vertex interval with exact real ring-XZ endpoints 9 and 10, zero roof flags. Removing it deprives stock of only one north-facing wall, not its roof/gable silhouette.",
+  "unaffectedStockTopology": "All 204 other owner vertices plus all 39,813 neighboring tile vertices retain exact attr bytes and triangle order. No new shader/asset used. This is diagnostic, not permission to replace or reconstruct.",
+  "actualRouteViews": [
+    {
+      "name": "porch-north",
+      "cameraFixture": {
+        "lon": -64.180012,
+        "lat": 46.755158,
+        "h": 9.0,
+        "dist": 49,
+        "east": -4,
+        "south": -47,
+        "agl": 8.4
+      },
+      "aaEdgeNotExactlyID": 0,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 10865,
+      "stockOwnerPixelCount": 10714,
+      "span": [
+        21093,
+        21303
+      ],
+      "wall": [
+        21147,
+        21153
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    },
+    {
+      "name": "intake-northeast",
+      "cameraFixture": {
+        "lon": -64.180012,
+        "lat": 46.755158,
+        "h": 9.0,
+        "dist": 57,
+        "east": 46,
+        "south": -44,
+        "agl": 9.2
+      },
+      "aaEdgeNotExactlyID": 6,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 5545,
+      "stockOwnerPixelCount": 5500,
+      "span": [
+        21093,
+        21303
+      ],
+      "wall": [
+        21147,
+        21153
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    }
+  ],
+  "stockRestoreFrameSha256": {
+    "porch-north": "e79fcfcb7c3eaf3902d62474d4772e4d28d5621cf9dda33b571a8a2497dd8ac7",
+    "intake-northeast": "a42318436f90ad61645a6ed5862c4e665d8bf87080ca2c9c0aa09414651a7f99"
+  },
+  "maxActualToProjectedVertexErrorM": 0.0001454856212157573,
+  "currentStandardGroundDry": {
+    "numHeldXYExact": 372,
+    "framesDistancesM": [
+      66,
+      385,
+      1000
+    ],
+    "allLandNoRunway": true,
+    "pointwiseVisualAndPhysicalEqualityByDistance": true,
+    "predictionsSHA256": "f0101c8f70c2575f5ee7f5fb801e980c6a821193196c64deaa111c8366f296ed",
+    "nativeZNeverOpened": true
+  },
+  "decision": "HOLD live changes. No original stock roof triangle was wholly covered by even the union of the eligible XY masks; silently splitting draws crosses protected joining geometry. Limiting work to the north wall tests an index selector only. Its roof/floor and any source-grade ground remain unqualified."
+}

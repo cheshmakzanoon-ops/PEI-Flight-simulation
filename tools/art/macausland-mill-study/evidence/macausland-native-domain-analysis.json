@@ -1,0 +1,101 @@
+{
+  "case": "MacAusland exact owner q2023/300; native point Z remained unopened",
+  "method": "EPSG:2954 fixed initial 2020 ortho/document plan masks, clipped conservative body extents only for summary percentages. Role polygons are unchanged original no-height prereg. Area cap is planar, not verified metrical roof surface area.",
+  "preregSHA256": "f60359d8d9839ff6d38fa4254d67f68df6a0484e03c28e2565b39144a7420c47",
+  "redactedDrySHA256": "51f5304f6b15a43016d2b408e29337b2e43b660df6713de8a8a2e51caa05b836",
+  "fullOwnerAreaM2": 1567.412278,
+  "unionRoofAreaCapM2": 526.0883,
+  "connectedComponentsAcrossEligibleRoofArea": 12,
+  "coverageOfFullOwnerPercent": 33.56413,
+  "domains": {
+    "principal-dark-east-core": {
+      "conservativeReferenceBodyAreaM2": 405.935022,
+      "unionEligibleRectangleAreaCapM2": 154.7875,
+      "percentageOfConservativeBodyFootprint": 38.1311,
+      "connectedComponents": 4,
+      "largestComponentM2": 40.565,
+      "selectionMasks": [
+        {
+          "id": "principal-middle-road-east-low-tail",
+          "areaM2": 35.99
+        },
+        {
+          "id": "principal-middle-road-east-upper",
+          "areaM2": 40.565
+        },
+        {
+          "id": "principal-middle-yard-west-upper",
+          "areaM2": 38.43
+        },
+        {
+          "id": "principal-middle-yard-west-low-tail",
+          "areaM2": 39.8025
+        }
+      ],
+      "whyNotRuntime": "Four mid cross-section stripes only, 2 inner and 2 outer; omitted crown and long transition are intentional. Closest roof strip starts >9.55m behind signed frontage. No safe public silhouette."
+    },
+    "middle-dark-link-gable": {
+      "conservativeReferenceBodyAreaM2": 199.866552,
+      "unionEligibleRectangleAreaCapM2": 50.0084,
+      "percentageOfConservativeBodyFootprint": 25.02089,
+      "connectedComponents": 2,
+      "largestComponentM2": 31.2308,
+      "selectionMasks": [
+        {
+          "id": "middle-northern-gable-east-face-plane",
+          "areaM2": 18.7776
+        },
+        {
+          "id": "middle-southern-body-east-face-plane",
+          "areaM2": 31.2308
+        }
+      ],
+      "whyNotRuntime": "Two regions on same east pitch; no opposite pitch/crown, full visible detail edge and west mechanical connection protected."
+    },
+    "pale-long-west-wing": {
+      "conservativeReferenceBodyAreaM2": 431.615695,
+      "unionEligibleRectangleAreaCapM2": 135.9124,
+      "percentageOfConservativeBodyFootprint": 31.48922,
+      "connectedComponents": 2,
+      "largestComponentM2": 69.03,
+      "selectionMasks": [
+        {
+          "id": "pale-long-wing-middle-east-face-plane",
+          "areaM2": 69.03
+        },
+        {
+          "id": "pale-long-wing-middle-west-face-plane",
+          "areaM2": 66.8824
+        }
+      ],
+      "whyNotRuntime": "Two opposing mid slope rectangles across length; missing western centerline and all +U front-end groups. Pale L-join wholly protected."
+    },
+    "pale-back-transverse-west-wing": {
+      "conservativeReferenceBodyAreaM2": 363.029279,
+      "unionEligibleRectangleAreaCapM2": 185.38,
+      "percentageOfConservativeBodyFootprint": 51.06475,
+      "connectedComponents": 4,
+      "largestComponentM2": 57.5064,
+      "selectionMasks": [
+        {
+          "id": "pale-back-cross-wing-east-inner-segment-north-face-plane",
+          "areaM2": 36.354
+        },
+        {
+          "id": "pale-back-cross-wing-east-inner-segment-south-face-plane",
+          "areaM2": 43.9236
+        },
+        {
+          "id": "pale-back-cross-wing-west-outer-segment-north-face-plane",
+          "areaM2": 47.596
+        },
+        {
+          "id": "pale-back-cross-wing-west-outer-segment-south-face-plane",
+          "areaM2": 57.5064
+        }
+      ],
+      "whyNotRuntime": "Both slopes in two separated intervals; neither upper meeting line, longitudinal split, rear edge nor right-angle structural connection selected. Can be analytical detached roof facets only, cannot recut stock."
+    }
+  },
+  "conclusion": "No connected eligible roof envelope with protected functional edges. All dry roof candidates are interior positions, while existing generic stock caps have only original boundary vertices. Retain whole owner. A numerically qualified detached study could only show disjoint area of the principal four mid stripes or pale rear four surfaces, no complete physical roof silhouette; not worth revealing survey roles without another stated purpose. Independent ground predictions qualified separately at unchanged XY; native ground Z still locked."
+}

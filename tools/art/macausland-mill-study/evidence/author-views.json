@@ -1,0 +1,522 @@
+{
+  "mode": "Detached original mill frontage vocabulary, no flight insertion",
+  "errors": [],
+  "views": [
+    {
+      "name": "full",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -6.57,
+          1.89,
+          14.22
+        ],
+        "at": [
+          -0.38,
+          2.26,
+          -1.13
+        ],
+        "fov": 31,
+        "light": 2.47
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "elevation",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          0.08,
+          1.65,
+          14.21
+        ],
+        "at": [
+          0,
+          2.16,
+          -0.05
+        ],
+        "fov": 34.3,
+        "light": 1.47
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "service",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -3.83,
+          2.74,
+          4.25
+        ],
+        "at": [
+          -1.69,
+          2.61,
+          0.1
+        ],
+        "fov": 34.3,
+        "light": 2.24
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "slider",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          2.43,
+          1.17,
+          4.09
+        ],
+        "at": [
+          0.86,
+          0.91,
+          0.018
+        ],
+        "fov": 35.2,
+        "light": 2.63
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "return",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -10.62,
+          2.13,
+          1.67
+        ],
+        "at": [
+          -4.81,
+          1.53,
+          -2.26
+        ],
+        "fov": 36.4,
+        "light": 2.09
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    },
+    {
+      "name": "roof",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -5.22,
+          7.45,
+          4.12
+        ],
+        "at": [
+          -1.54,
+          3.02,
+          -1.83
+        ],
+        "fov": 37.3,
+        "light": 2.38
+      },
+      "calls": 32,
+      "triangles": 22382,
+      "parts": [
+        [
+          "front-roll-formed-skin",
+          990
+        ],
+        [
+          "east-return-roll-formed-skin",
+          500
+        ],
+        [
+          "near-folded-metal-roof",
+          938
+        ],
+        [
+          "setback-upper-roll-formed-shell",
+          984
+        ],
+        [
+          "higher-folded-gable-roof",
+          424
+        ],
+        [
+          "folded-eave-and-crest",
+          356
+        ],
+        [
+          "white-window-joinery",
+          1980
+        ],
+        [
+          "sash-reveals-and-backing",
+          784
+        ],
+        [
+          "real-glazing",
+          228
+        ],
+        [
+          "industrial-slider-leaves",
+          220
+        ],
+        [
+          "slider-head-and-threshold",
+          72
+        ],
+        [
+          "service-conduit",
+          2340
+        ],
+        [
+          "conduit-mounting",
+          212
+        ],
+        [
+          "unmarked-cooler-casings",
+          1048
+        ],
+        [
+          "cooler-fan-and-backing",
+          208
+        ],
+        [
+          "non-site-cutaway-edge",
+          20
+        ]
+      ]
+    }
+  ]
+}

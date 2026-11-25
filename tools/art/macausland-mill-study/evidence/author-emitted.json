@@ -1,0 +1,104 @@
+{
+  "artifact": "Detached qualitative mesh; no surveyed material or position",
+  "files": {
+    "mill-front.ts": "9be90717507514c250a04dedea33a5e82abe85b573533be9a51c040f225a84f6",
+    "fabrication.ts": "87676da2b24e8a6025ca32690582ace8e3a0fc6f4d43ad1727d54e36a49a490e",
+    "finish.ts": "cf3fbad98412ef7f48d7f194e9fba017e1dccbe4f600cf21860874ecd4bd83e9",
+    "studio.ts": "ce10e1ed73625c8f9f0852e87c81452cc447758079091b4ceb70bc0a0f59b1ce"
+  },
+  "geometry": {
+    "triangles": 11304,
+    "parts": [
+      [
+        "front-roll-formed-skin",
+        990
+      ],
+      [
+        "east-return-roll-formed-skin",
+        500
+      ],
+      [
+        "near-folded-metal-roof",
+        938
+      ],
+      [
+        "setback-upper-roll-formed-shell",
+        984
+      ],
+      [
+        "higher-folded-gable-roof",
+        424
+      ],
+      [
+        "folded-eave-and-crest",
+        356
+      ],
+      [
+        "white-window-joinery",
+        1980
+      ],
+      [
+        "sash-reveals-and-backing",
+        784
+      ],
+      [
+        "real-glazing",
+        228
+      ],
+      [
+        "industrial-slider-leaves",
+        220
+      ],
+      [
+        "slider-head-and-threshold",
+        72
+      ],
+      [
+        "service-conduit",
+        2340
+      ],
+      [
+        "conduit-mounting",
+        212
+      ],
+      [
+        "unmarked-cooler-casings",
+        1048
+      ],
+      [
+        "cooler-fan-and-backing",
+        208
+      ],
+      [
+        "non-site-cutaway-edge",
+        20
+      ]
+    ]
+  },
+  "glazingPlateCenters": 114,
+  "glassDirectionalRayHits": 570,
+  "glassCountsByOpening": {
+    "upper": 48,
+    "lower-bank": 32,
+    "lower-sash": 16,
+    "east-sash-1": 12,
+    "east-sash-2": 2,
+    "east-sash-3": 2,
+    "east-sash-4": 2
+  },
+  "closedSliderHeadAndFrontRays": 741,
+  "layeredRoofHits": {
+    "near": 32,
+    "higher": 32,
+    "easternApron": 25
+  },
+  "eaveFrontClosurePoints": 108,
+  "frontRolledProfile": {
+    "rayHits": 41,
+    "reliefInAuthoringUnits": 0.014457200150288507
+  },
+  "twoIndependentRaceways": {
+    "positiveRayHits": 10,
+    "gapWallHits": 5
+  }
+}

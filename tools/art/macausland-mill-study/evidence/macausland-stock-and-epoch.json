@@ -1,0 +1,261 @@
+{
+  "property": "MacAusland Woollen Mills, site of currently working factory/rebuild, 38317 Western Road / Route 2, Bloomfield Corner, Prince County",
+  "basis": [
+    {
+      "url": "https://macauslandswoollenmills.com/about.php",
+      "evidence": "Company archive and 1949 original fire; existing operation is post-fire and evolved, not fabricated 1870 original."
+    },
+    {
+      "url": "https://macauslandswoollenmills.com/faq.php",
+      "evidence": "Operator confirms visitor entrance through factory to sales area, not license to supply standalone shop, mill interior, or former gift shop."
+    },
+    {
+      "url": "https://www.tourismpei.com/attractions/macausland-woollen-mills",
+      "evidence": "Unique current business address and public uses; exterior file is same owner-attributed composition also published by Atlantic Business in 2023, not a second date view."
+    },
+    {
+      "url": "https://www.princeedwardisland.ca/sites/default/files/publications/eelc_pei_historic_places.pdf",
+      "evidence": "Historic Places educational sheet identifies industrial heritage and post-1949 rebuilding but its printed coordinate is demonstrably wrong, 17.659 km from exact mapped owner. No legal designation inferred from the book title."
+    },
+    {
+      "url": "https://peiheritagebuildings.blogspot.com/2011/10/macauslands-woolen-mill.html",
+      "evidence": "Published 26 October 2011 original two from field, not exact capture date. Shows same north entry and side, as distinct from separately photographed family private residence."
+    },
+    {
+      "url": "https://www.flickr.com/photos/37266013@N00/22398842496/",
+      "evidence": "Original photo with recorded capture 12 August 2015, clearly shows north/east corner and pitched forepart before its distinct, taller setback side. Reference only, all rights reserved."
+    },
+    {
+      "url": "https://www.flickr.com/photos/37266013@N00/22398842866/",
+      "evidence": "Same capture date distinct tight photo, 3 by 4 by (2+2) fixed thin upper pane count, comparison to original composition only."
+    },
+    {
+      "url": "https://www.mixmeasuremake.com/the-best-canadian-wool-blankets/",
+      "evidence": "Firsthand 2018 visit published September 2021, clearer independent three in-site brown front masses, with express shop inside factory."
+    },
+    {
+      "url": "https://atlanticbusinessmagazine.ca/web-exclusives/a-153-year-long-yarn-to-tell-of-macauslands-woollen-mill/",
+      "evidence": "2023 publisher attributes image to mill and documents additions for machinery/wool storage, not exact construction phase by wing."
+    },
+    {
+      "url": "https://kareninthewoods-kareninthewoods.blogspot.com/2026/10/days-16-17-18-canadian-maritime-2026.html",
+      "evidence": "October 2026 eyewitness photograph linked as 4000-pixel original filename 20260925_121626.jpg with stripped EXIF; positive continued visible gable geometry, 48 panes, old text and new/changed units. No precise absolute facade measurements or most rear roof coverage."
+    },
+    {
+      "url": "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0",
+      "evidence": "Exact 38317 returns PID37440. Not a roof point."
+    },
+    {
+      "url": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/MapServer/0",
+      "evidence": "Target owner wholly inside PID37440; q2023/444 and /516 verified separate parcels."
+    },
+    {
+      "url": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer",
+      "evidence": "2020 plan view, registered only for horizontal identity. Attached principal old dark East/north front, dark mid, separate linked pale west roofs. 1968 older phase differs; pale western bulk discernible in 2000. No roof heights extracted; no original images reproduced."
+    }
+  ],
+  "permitScope": "Reference-only photo study. No photos as assets or maps, no signs, private adjacent residence or roof attachments copied. No design inference from 1949 archive to current surfaces.",
+  "xyIdentity": {
+    "key": "q2023/300",
+    "offset": 3457730,
+    "bytes": 30851,
+    "packSHA": "53c2a1d73681ad7fdcf8578d5d320e3a26b21c7768243f9b092ed84d4cf5ead2"
+  },
+  "parcel": 37440,
+  "exactInParcelAreaEpsg2954M2": 1567.412278,
+  "ownerAreaEpsg2954M2": 1567.412278,
+  "civicToOwnerDistanceM": 10.2801,
+  "printedEducationPinDistanceToActualOwnerM": 17658.5373,
+  "protectNeighbors": [
+    "q2023/444 PID37465, not part of factory",
+    "q2023/516 PID682344, not part of factory",
+    "small standalone visible western roofs or equipment unregistered within original /300 envelope, not live coverage"
+  ],
+  "positiveStockControls": [
+    {
+      "name": "road-E",
+      "cameraFixture": {
+        "lon": -64.18022,
+        "lat": 46.75507,
+        "h": 12.0,
+        "dist": 66,
+        "east": 65,
+        "south": 7,
+        "agl": 10.0
+      },
+      "aaEdgeNotExactlyID": 3,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 37693,
+      "stockOwnerPixelCount": 37687,
+      "span": [
+        21093,
+        21303
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    },
+    {
+      "name": "road-NE",
+      "cameraFixture": {
+        "lon": -64.18022,
+        "lat": 46.75507,
+        "h": 12.0,
+        "dist": 67,
+        "east": 53,
+        "south": -44,
+        "agl": 13.0
+      },
+      "aaEdgeNotExactlyID": 6,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 41367,
+      "stockOwnerPixelCount": 41366,
+      "span": [
+        21093,
+        21303
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    },
+    {
+      "name": "back-water-SE",
+      "cameraFixture": {
+        "lon": -64.18022,
+        "lat": 46.75507,
+        "h": 12.0,
+        "dist": 90,
+        "east": 54,
+        "south": 73,
+        "agl": 20.0
+      },
+      "aaEdgeNotExactlyID": 5,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 19117,
+      "stockOwnerPixelCount": 19115,
+      "span": [
+        21093,
+        21303
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    },
+    {
+      "name": "roof-clear",
+      "cameraFixture": {
+        "lon": -64.18022,
+        "lat": 46.75507,
+        "h": 12.0,
+        "dist": 153,
+        "east": -30,
+        "south": 104,
+        "agl": 119.0
+      },
+      "aaEdgeNotExactlyID": 1,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 7504,
+      "stockOwnerPixelCount": 7497,
+      "span": [
+        21093,
+        21303
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    },
+    {
+      "name": "approach",
+      "cameraFixture": {
+        "lon": -64.18022,
+        "lat": 46.75507,
+        "h": 12.0,
+        "dist": 485,
+        "east": 116,
+        "south": 398,
+        "agl": 123.0
+      },
+      "aaEdgeNotExactlyID": 0,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 596,
+      "stockOwnerPixelCount": 596,
+      "span": [
+        21093,
+        21303
+      ],
+      "vertexCount": 40023,
+      "drawSha": "677e9d4080e6079f80caabde1e21b043180bcf5068fe7b60bf1cf3a0abc7d5be",
+      "bytes": 1961127,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        -79203.45173372392,
+        0,
+        -30427.123006197373
+      ]
+    }
+  ],
+  "stockScope": "Same six attributes, 40,023 total vertices; only exact q2023/300 span [21093,21303) suppressed and restored with identical output. All five actual scene positive before/after selective owner ID and exact restore.",
+  "proofSHA256": "65115706c0ede5b0d23d73e91dde295462b1e31701f8d7e12766d5c0db754fb3",
+  "sourceHeadSHA256": "7b842291de8afa3063dd123bc1855c5d11b9603d9ca5a63d3da112ff753e7a27",
+  "preregSHA256": "f60359d8d9839ff6d38fa4254d67f68df6a0484e03c28e2565b39144a7420c47",
+  "currentState": "Do not suppress whole owner for detached, appearance is not full scene placement."
+}
