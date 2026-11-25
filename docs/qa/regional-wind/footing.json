@@ -1,0 +1,403 @@
+{
+  "assessment": "Two real preselected steel sockets and two independently selected nonconflicting nearby controls in resident Three/WebGL. Original 12-float primary vegetation/shade and trailing hedges are compared exhaustively in original instance order after excluding only exact five source-registered Float32 XZ; off passes hide turbines on the same settled tick, not vegetation.",
+  "independentClosure": "No claim every primary scene pixel changed by the same 5 trees unless the isolated off replay proves it. An off pass suppresses wind without reversing the V3 ownership lease; ordinary rollback is separate. Controls need not be wholly pixel-identical if neighbouring true turbines and the changed original vegetation are visible.",
+  "renderSize": [
+    840,
+    540
+  ],
+  "preregisterSHA256": "bce1629306c3bf40ada3d2f30af45151050faeb0cef8fe862c0a838bcc9a47c5",
+  "beforeRendererFiles": {
+    "regional-wind.ts": "567a21ae6d4fa65102bc2833fac46aa57ea3466c518b65db112b945a780b4d0b",
+    "regional-wind-geometry.ts": "890def2a55f6c3df39b5b6dccdaa46c5d0c7ab629e24ae124efea24b7f243e67",
+    "regional-wind-stream.ts": "c70b6f388ce046b11cf92702a122cf627598249da4d8a63725de932d13f876e6",
+    "vegetation.ts": "38edc6d9cbd73cdf4c158a0872b50f30ea3ef5db120bb34cc4c9e554479d2b68"
+  },
+  "afterRendererFiles": {
+    "regional-wind.ts": "4903908235d7f18e9b9fa9865c4e8682f30a6a18e483a20bbfe1959e683feaf0",
+    "regional-wind-geometry.ts": "890def2a55f6c3df39b5b6dccdaa46c5d0c7ab629e24ae124efea24b7f243e67",
+    "regional-wind-stream.ts": "1fa90bb73539a1bfe55c4aa272a466b4bb0ed04bd2a29129ca0ea1e2d38356e9",
+    "vegetation.ts": "c5c8a89f716ce7dc39bc0b04472cd92dbd52ca0d852168920b7044f06c42d955"
+  },
+  "rows": [
+    {
+      "view": "socket-WCW8",
+      "anchor": "WCW8",
+      "actualOldAndNewSourceRostersIdentical": true,
+      "fullCameraPoseIdentical": true,
+      "nativeTerrainActualRayY": 24.66936495901041,
+      "newMastSeatRelativeToActualRayMetres": -2.98111899610376e-08,
+      "oldSignedRootsResident": [
+        "WCW8",
+        "WCW9"
+      ],
+      "newSignedRootsResident": [],
+      "allRemainingOriginalForestPlusHedgeSlotCountBeforeAfter": [
+        18144,
+        18144
+      ],
+      "allRemainingOriginalForestPlusHedgeRowsMatch": true,
+      "allRemainingOriginalForestPlusHedgeSHA256BeforeAfter": [
+        "0a6aba8f5486c1071e9ef111640364bb5b5f0df19af1eb8b42f6ac51bfb4125b",
+        "0a6aba8f5486c1071e9ef111640364bb5b5f0df19af1eb8b42f6ac51bfb4125b"
+      ],
+      "oldAndNewRawVegetationInstanceCounts": [
+        18146,
+        18144
+      ],
+      "sourceClosestRootAllAttributesAtTargetBefore": [
+        -91370.59375,
+        24.525226593017578,
+        -23358.2734375,
+        9.230770111083984,
+        10.878565788269043,
+        1,
+        0.9416695833206177,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sourceClosestRootAllAttributesAtTargetAfter": null,
+      "protectedOtherNear32mCount": 13,
+      "protectedNear32mRowsExactlyMatch": true,
+      "registeredTreeControl": false,
+      "sourceClosestRootRegistration": {
+        "distanceMetres": 0.6643520743745276,
+        "xz": [
+          -91370.59375,
+          -23358.2734375
+        ]
+      },
+      "sourceClosestRootCorrect": true,
+      "exactPixelDifference": {
+        "footingAndHorizonBeforeAfter": {
+          "any": 331,
+          "over2": 315,
+          "over8": 290,
+          "maximum": 93
+        },
+        "actualOlderFoliageVsNew": {
+          "any": 534,
+          "over2": 515,
+          "over8": 467,
+          "maximum": 93
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNew": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNewIncludingWind": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        }
+      },
+      "directSameTickV2OriginalTreeAndSharedShadowSuppressed": 315,
+      "directSameTickV3OriginalTreeAndSharedShadowSuppressed": 0,
+      "replicaRestoresRawFramebufferExactly": true,
+      "onFrameWindOnlyActualProjectionPlusTwoPixelsExteriorCount": [
+        0,
+        0
+      ],
+      "nonWindPassSHA256BeforeAfter": [
+        "1ac9314b3202e0263aa44a1ae13a489ee73546fd99874a176d89c8536659d924",
+        "ef105c3ed46fedf2c869abcf937f882847489261578d64869077f8319d7f1f29"
+      ]
+    },
+    {
+      "view": "socket-HCS1",
+      "anchor": "HCS1",
+      "actualOldAndNewSourceRostersIdentical": true,
+      "fullCameraPoseIdentical": true,
+      "nativeTerrainActualRayY": 32.693456513746014,
+      "newMastSeatRelativeToActualRayMetres": 2.043382892225054e-06,
+      "oldSignedRootsResident": [
+        "HCS1"
+      ],
+      "newSignedRootsResident": [],
+      "allRemainingOriginalForestPlusHedgeSlotCountBeforeAfter": [
+        36591,
+        36591
+      ],
+      "allRemainingOriginalForestPlusHedgeRowsMatch": true,
+      "allRemainingOriginalForestPlusHedgeSHA256BeforeAfter": [
+        "29c694b5652009b33ad09905cb0a8b2f41ad6304bfc97333ebd05e600562447f",
+        "29c694b5652009b33ad09905cb0a8b2f41ad6304bfc97333ebd05e600562447f"
+      ],
+      "oldAndNewRawVegetationInstanceCounts": [
+        36592,
+        36591
+      ],
+      "sourceClosestRootAllAttributesAtTargetBefore": [
+        67153.21875,
+        32.54907989501953,
+        4938.884765625,
+        18.206064224243164,
+        20.13102912902832,
+        0,
+        1.171331763267517,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sourceClosestRootAllAttributesAtTargetAfter": null,
+      "protectedOtherNear32mCount": 15,
+      "protectedNear32mRowsExactlyMatch": true,
+      "registeredTreeControl": false,
+      "sourceClosestRootRegistration": {
+        "distanceMetres": 0.8088975487993257,
+        "xz": [
+          67153.21875,
+          4938.884765625
+        ]
+      },
+      "sourceClosestRootCorrect": true,
+      "exactPixelDifference": {
+        "footingAndHorizonBeforeAfter": {
+          "any": 14399,
+          "over2": 12272,
+          "over8": 10533,
+          "maximum": 145
+        },
+        "actualOlderFoliageVsNew": {
+          "any": 19011,
+          "over2": 16622,
+          "over8": 14380,
+          "maximum": 144
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNew": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNewIncludingWind": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        }
+      },
+      "directSameTickV2OriginalTreeAndSharedShadowSuppressed": 12272,
+      "directSameTickV3OriginalTreeAndSharedShadowSuppressed": 0,
+      "replicaRestoresRawFramebufferExactly": true,
+      "onFrameWindOnlyActualProjectionPlusTwoPixelsExteriorCount": [
+        0,
+        0
+      ],
+      "nonWindPassSHA256BeforeAfter": [
+        "0107eb4b2c6bc16907b9b0e26c5c039ba3b7feb7f21ea0704d59fc6e58f09f61",
+        "c52355fc9952a6c52defffa9c37d91a6965a47461fb7f2537ed89c32f6baf5c9"
+      ]
+    },
+    {
+      "view": "socket-WCW7",
+      "anchor": "WCW7",
+      "actualOldAndNewSourceRostersIdentical": true,
+      "fullCameraPoseIdentical": true,
+      "nativeTerrainActualRayY": 16.453846031025023,
+      "newMastSeatRelativeToActualRayMetres": -5.324181984178722e-08,
+      "oldSignedRootsResident": [
+        "WCW8",
+        "WCW9"
+      ],
+      "newSignedRootsResident": [],
+      "allRemainingOriginalForestPlusHedgeSlotCountBeforeAfter": [
+        16416,
+        16416
+      ],
+      "allRemainingOriginalForestPlusHedgeRowsMatch": true,
+      "allRemainingOriginalForestPlusHedgeSHA256BeforeAfter": [
+        "59746a0bfaeb029ad6323e08cda631da08a314b111dd6f4cc6d3d97db5979d9d",
+        "59746a0bfaeb029ad6323e08cda631da08a314b111dd6f4cc6d3d97db5979d9d"
+      ],
+      "oldAndNewRawVegetationInstanceCounts": [
+        16418,
+        16416
+      ],
+      "sourceClosestRootAllAttributesAtTargetBefore": [
+        -91756.390625,
+        16.086246490478516,
+        -23469.65625,
+        18.314374923706055,
+        18.21211814880371,
+        0,
+        0.9599533081054688,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sourceClosestRootAllAttributesAtTargetAfter": [
+        -91756.390625,
+        16.086246490478516,
+        -23469.65625,
+        18.314374923706055,
+        18.21211814880371,
+        0,
+        0.9599533081054688,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "protectedOtherNear32mCount": 14,
+      "protectedNear32mRowsExactlyMatch": true,
+      "registeredTreeControl": true,
+      "sourceClosestRootRegistration": {
+        "distanceMetres": 2.9837816022005166,
+        "xz": [
+          -91756.390625,
+          -23469.65625
+        ]
+      },
+      "sourceClosestRootCorrect": true,
+      "exactPixelDifference": {
+        "footingAndHorizonBeforeAfter": {
+          "any": 27,
+          "over2": 26,
+          "over8": 25,
+          "maximum": 160
+        },
+        "actualOlderFoliageVsNew": {
+          "any": 36,
+          "over2": 34,
+          "over8": 32,
+          "maximum": 164
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNew": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNewIncludingWind": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        }
+      },
+      "directSameTickV2OriginalTreeAndSharedShadowSuppressed": 26,
+      "directSameTickV3OriginalTreeAndSharedShadowSuppressed": 0,
+      "replicaRestoresRawFramebufferExactly": true,
+      "onFrameWindOnlyActualProjectionPlusTwoPixelsExteriorCount": [
+        0,
+        0
+      ],
+      "nonWindPassSHA256BeforeAfter": [
+        "97f3506ead047b19263d8c1d6078c4fe2344b37ea0452e3fb9a4a378e8df9f84",
+        "d195d18d0291727a7051315725136ed141a7003ccb1af64458764739fc7c4775"
+      ]
+    },
+    {
+      "view": "socket-HCS2",
+      "anchor": "HCS2",
+      "actualOldAndNewSourceRostersIdentical": true,
+      "fullCameraPoseIdentical": true,
+      "nativeTerrainActualRayY": 38.03911218512599,
+      "newMastSeatRelativeToActualRayMetres": -9.406153367308434e-08,
+      "oldSignedRootsResident": [
+        "HCS1"
+      ],
+      "newSignedRootsResident": [],
+      "allRemainingOriginalForestPlusHedgeSlotCountBeforeAfter": [
+        38469,
+        38469
+      ],
+      "allRemainingOriginalForestPlusHedgeRowsMatch": true,
+      "allRemainingOriginalForestPlusHedgeSHA256BeforeAfter": [
+        "9e45e8973156c89f65cb764a29f4b79d2defbdc0b16ffec7f5fa54e13aef32b5",
+        "9e45e8973156c89f65cb764a29f4b79d2defbdc0b16ffec7f5fa54e13aef32b5"
+      ],
+      "oldAndNewRawVegetationInstanceCounts": [
+        38470,
+        38469
+      ],
+      "sourceClosestRootAllAttributesAtTargetBefore": [
+        67749.296875,
+        37.84000015258789,
+        4979.19091796875,
+        18.840076446533203,
+        16.33979034423828,
+        1,
+        0.9131770133972168,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sourceClosestRootAllAttributesAtTargetAfter": [
+        67749.296875,
+        37.84000015258789,
+        4979.19091796875,
+        18.840076446533203,
+        16.33979034423828,
+        1,
+        0.9131770133972168,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "protectedOtherNear32mCount": 10,
+      "protectedNear32mRowsExactlyMatch": true,
+      "registeredTreeControl": true,
+      "sourceClosestRootRegistration": {
+        "distanceMetres": 3.697697918596181,
+        "xz": [
+          67749.296875,
+          4979.19091796875
+        ]
+      },
+      "sourceClosestRootCorrect": true,
+      "exactPixelDifference": {
+        "footingAndHorizonBeforeAfter": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "actualOlderFoliageVsNew": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNew": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        },
+        "oldFrameAfterRemovingExactForestSlotsVsNewIncludingWind": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "maximum": 0
+        }
+      },
+      "directSameTickV2OriginalTreeAndSharedShadowSuppressed": 0,
+      "directSameTickV3OriginalTreeAndSharedShadowSuppressed": 0,
+      "replicaRestoresRawFramebufferExactly": true,
+      "onFrameWindOnlyActualProjectionPlusTwoPixelsExteriorCount": [
+        0,
+        0
+      ],
+      "nonWindPassSHA256BeforeAfter": [
+        "3a2c38e32de8e2bd6ea3e76b95eb6e9bc25b171f58892c6efa4118cca53ab048",
+        "3a2c38e32de8e2bd6ea3e76b95eb6e9bc25b171f58892c6efa4118cca53ab048"
+      ]
+    }
+  ]
+}

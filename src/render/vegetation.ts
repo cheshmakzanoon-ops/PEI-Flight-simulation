@@ -151,6 +151,25 @@ export class Vegetation {
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
+ // Optional exact-root leases come only from a mounted, source-qualified
+ // world object. No terrain/canopy source, hedge or old cached tile is edited.
+ private windLeases?:Map<string,readonly Readonly<{x:number;z:number}>[]>;
+ private windTiles?:Map<string,Readonly<{x:number;z:number}>[]>;
+ private windRosterDirty=false;
+ setRegionalWindRoots(owner:string,roots:readonly Readonly<{x:number;z:number}>[]){
+  if(!roots.length&&!this.windLeases?.has(owner))return;
+  const leases=this.windLeases??=new Map(),prior=leases.get(owner)??[];
+  const key=(r:Readonly<{x:number;z:number}>)=>Math.floor(r.x/span)+':'+Math.floor(r.z/span);
+  if(roots.length)leases.set(owner,roots);else leases.delete(owner);
+  const grouped=new Map<string,Readonly<{x:number;z:number}>[]>();
+  for(const group of leases.values())for(const r of group){
+   const k=key(r),a=grouped.get(k);if(a)a.push(r);else grouped.set(k,[r]);
+  }
+  this.windTiles=grouped.size?grouped:undefined;
+  // Include every retired root, not only the new roster. Keep cached source
+  // heights/order and don't request another inventory tile just to compact it.
+  this.windRosterDirty||=[...prior,...roots].some(r=>this.cache.has(key(r)));
+ }
  private openLane?:OpenRoadLane;
  private openLaneRootsRemoved=0;
  get openRoadLaneState(){return this.openLane?{eligible:this.openLane.size,removed:this.openLaneRootsRemoved}:null;}
@@ -290,7 +309,8 @@ export class Vegetation {
   this.crown.visible=this.shade.visible=alt<4200;
   if(!this.crown.visible)return;
   const move=Math.hypot(x-this.lastX,z-this.lastZ)>=135,now=performance.now(),hedgeRev=this.hedges?.revision??0;
-  if(!move&&(hedgeRev===this.hedgeRev||now-this.hedgeApply<350))return;
+  if(!move&&!this.windRosterDirty&&(hedgeRev===this.hedgeRev||now-this.hedgeApply<350))return;
+  this.windRosterDirty=false;
   if(move){this.forestStream?.update(x,z);this.hedges?.move(x,z);}
   this.hedgeRev=hedgeRev;this.hedgeApply=now;
   this.lastX=x;this.lastZ=z;let count=0,removed=0,limit=maxTrees;const wanted=new Set<string>();
@@ -300,11 +320,14 @@ export class Vegetation {
    if(Math.hypot(rx+span*.5,rz+span*.5)>radius+span*.72)continue;
    wanted.add(key);let a=this.cache.get(key);if(!a){a=this.tile(tx,tz);this.cache.set(key,a);}
    const first=capture?.size??0,heightProof=this.crownByVegetationTile?.get(a);
-   const lane=this.openLane?.forOwner(key);
+   const lane=this.openLane?.forOwner(key),wind=this.windTiles?.get(key);
    for(let i=0;i<a.length&&count<limit;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
     if(d>radius**2||(d>1120**2&&a[i+7]>.70))continue;
     if(lane?.(a[i],a[i+2],a[i+3],a[i+4])){removed++;limit--;continue;}
+    // The same original roster feeds billboard crown, trunk, volume and
+    // shadow. The old quota is reserved so other trees/hedges don't leak in.
+    if(wind&&wind.some(r=>r.x===a[i]&&r.z===a[i+2])){limit--;continue;}
     const native=this.plantedY?.(a[i],a[i+2]);
     this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);
     if(this.crownUsedAtSlot)this.crownUsedAtSlot[count]=heightProof?.[i/8]??0;

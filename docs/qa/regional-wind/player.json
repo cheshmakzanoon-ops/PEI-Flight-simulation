@@ -1,0 +1,227 @@
+{
+  "targetParent": "bf9bf593a215c918da0e82d332862363a7ddb09e",
+  "browser": "Real compiled Three.js player; normal UI flight and pause, no user trip or device FPS claim",
+  "lazyModule": {
+    "bytes": 13573,
+    "gzipBytes": 6055,
+    "sha256": "d073a417aac24c0197dadeb933cbddd942b5a61f3d8710c8f439671eb60a954a",
+    "requestsAfterExplicitStock": 0,
+    "requestsOutsideRange": 0
+  },
+  "cases": {
+    "normal:virtual-wind-west-cape": {
+      "actualMovedM": 282.88415865946735,
+      "targetDistanceM": 340.95073384898564,
+      "groundClearanceM": 156.50639372576308,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "normal:virtual-wind-east-point-i": {
+      "actualMovedM": 280.48296834958876,
+      "targetDistanceM": 348.7420490665659,
+      "groundClearanceM": 164.45615808102875,
+      "terrainReceivers": {
+        "ready": 10,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 4,
+        "ready": 4,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "east-point-i",
+            "registered": 10,
+            "near": 8,
+            "cruise": 2,
+            "distant": 0
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "normal:virtual-wind-hermanville": {
+      "actualMovedM": 280.4945651539283,
+      "targetDistanceM": 343.34015640122607,
+      "groundClearanceM": 165.04982687321035,
+      "terrainReceivers": {
+        "ready": 15,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 4,
+        "ready": 4,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "hermanville",
+            "registered": 9,
+            "near": 6,
+            "cruise": 3,
+            "distant": 0
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "stock:virtual-wind-west-cape": {
+      "actualMovedM": 280.4842377303622,
+      "targetDistanceM": 344.54834348851097,
+      "groundClearanceM": 156.49824904572134,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 0,
+      "optionalDiagnostic": null,
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "missing:virtual-wind-west-cape": {
+      "actualMovedM": 283.4838082725399,
+      "targetDistanceM": 340.3511283549295,
+      "groundClearanceM": 156.5077446713118,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "unavailable",
+        "farms": [],
+        "unavailable": []
+      },
+      "interceptedFaults": [
+        "missing"
+      ],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "cold:summerside": {
+      "actualMovedM": 281.2284379768192,
+      "targetDistanceM": 344.1282708926917,
+      "groundClearanceM": 361.18392662144714,
+      "terrainReceivers": {
+        "ready": 16,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 25,
+        "ready": 25,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 0,
+      "optionalDiagnostic": {
+        "phase": "cold",
+        "farms": [],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    }
+  },
+  "productionBundle": {
+    "bytes": 13752,
+    "gzipBytes": 6150,
+    "sha256": "fc66c31a2797473cea19375ed725b09b61bdee18d9dcc28ee48d3e8350d9bc95"
+  },
+  "note": "Compiled QA uses separate virtual starts without adding departures to production. Byte counts do not measure game or network performance."
+}

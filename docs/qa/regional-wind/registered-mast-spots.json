@@ -1,0 +1,767 @@
+{
+  "title": "Six preselected historic mast-registration spot checks and one retired-source control",
+  "coverage": "Not the geometry of 74 separately surveyed turbines. Two points each selected by fixed quarter points of the major geographic axis of the full positive-capacity federal roster, not chosen for a good return or rendered angle. Seventh point was excluded before looking at LiDAR.",
+  "preregisterSHA256": "0b7fcdc99c49ca0c240892a5d9aaf9dd575055364b0e2ef338e647ef58f18891",
+  "federalRosterSHA256": "be47c773727d66bba2c25ebe5325341d56c74b1c6a66d6a2163ce4a03f743c61",
+  "sourceObjectProject": "NRCan CanElevation \u2013 Prince Edward Island 2020. Original federal point classification (mostly unclassified material high above grade, not a class-name assumption that returns are a turbine); not another survey or a current operational feed.",
+  "method": "Ground: nonwithheld class 2 last returns between 10m and 22m of source, equal vote per 2.5m cell, 12-iteration robust affine fit, minimum 20 cells/3 quadrants and P90 <=0.70m. Deduplicate by flight line, scanner channel, time, return number across exact bounded source objects. Require >=2 original distinct nonnoise laser pulses within 3m of registry and >20m above grade. Near-hub band is +/-8m, diagnostic only. Full 23m circular national catalogue coverage is reported separately from affirmative direct structure proximity.",
+  "interpretation": "2020 returns support a tall structure at all six sampled positive-capacity points, including many within +/-8m of registered nominal hub. Eastern Kings and Hermanville pass both full-disk geometry gates at both samples. West Cape has positive direct near-hub observations at both, but the catalogue union omits small outer portions (11.45 and 26.48m\u00b2); retain that qualification. A separately registered direct XY-only check corroborates both 3m cores; it does not make either whole 23m circle complete to 1m. The 2020 historical observation at later-retired HCS9 is not authority for showing a present turbine there.",
+  "primaryDocuments": [
+    {
+      "label": "NRCan roster and source locations",
+      "url": "https://open.canada.ca/data/en/dataset/79fdad93-9025-49ad-ba16-c26d718cc070"
+    },
+    {
+      "label": "Eastern Kings actual 2006 erection: 10 \u00d7 V90, 90m swept diameter and 81m to hub",
+      "url": "https://archivenews.princeedwardisland.ca/members-government-caucus-tour-wind-test-site"
+    },
+    {
+      "label": "Hermanville installed design: tubular, 92m, 116m swept, 56.7m blades",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/publications/hermanvillefactsheet.pdf"
+    },
+    {
+      "label": "Hermanville 2024 official T9 tower removal plan",
+      "url": "https://www.princeedwardisland.ca/en/news/hermanville-wind-farm-repair-update"
+    },
+    {
+      "label": "2025\u201326 operator report, denominator changed to nine July 2025; Phase I is ten commissioning-2007 V90s, separate commissioned Phase II",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/f755/PEIEC%20ANNUAL%20REPORT%202025-26.pdf"
+    },
+    {
+      "label": "West Cape operator",
+      "url": "https://www.engie-na.com/project/west-cape/"
+    },
+    {
+      "label": "Historical aerial appearance only, owner presentation slides 10 and 11; no imagery recirculated",
+      "url": "https://www.peiec.ca/uploads/6/6/6/4/66648535/easternkingspublicmeetingpresentation_170615.pdf#page=10"
+    }
+  ],
+  "samples": [
+    {
+      "sourceID": "WCW40",
+      "farm": "west-cape",
+      "retiredSourceControlOnly": false,
+      "longitude": -64.400897,
+      "latitude": 46.6657687,
+      "installedHubReferenceM": 80,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 229,
+      "groundReturnP90AbsoluteResidualM": 0.1665,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 53,
+      "nearestOriginalXYAbove20mM": 1.771,
+      "originalCoreHeightAboveGroundRangeM": [
+        80.414,
+        81.37
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 53,
+      "sourceClassAndReturnCounts": {
+        "1": 53
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1650.381,
+      "missingNationalFootprintM2": 11.453,
+      "wholeCatalogueCircleAndMastPassed": false,
+      "secondaryNonnoiseXYCoverageDistancesM": {
+        "whole23mIncludingConservativelyTouchingCells": 2.271,
+        "inside23mOutsideNationalPolygon": 1.377,
+        "core3m": 0.459
+      },
+      "receiptsSHA256": "b05d9bfa5a2981cc48a2d6899785a89578d3ebb754b62bbe56de500864f64317",
+      "nativeObjectETags": [
+        "\"37876ae00cb7119d53261a31de7cb196-10\"",
+        "\"148f698b5da577ed089e3cd5de8dab86-8\""
+      ]
+    },
+    {
+      "sourceID": "WCW12",
+      "farm": "west-cape",
+      "retiredSourceControlOnly": false,
+      "longitude": -64.3860381,
+      "latitude": 46.700261,
+      "installedHubReferenceM": 80,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 233,
+      "groundReturnP90AbsoluteResidualM": 0.3174,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 108,
+      "nearestOriginalXYAbove20mM": 0.239,
+      "originalCoreHeightAboveGroundRangeM": [
+        80.996,
+        81.584
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 108,
+      "sourceClassAndReturnCounts": {
+        "1": 108
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1635.356,
+      "missingNationalFootprintM2": 26.478,
+      "wholeCatalogueCircleAndMastPassed": false,
+      "secondaryNonnoiseXYCoverageDistancesM": {
+        "whole23mIncludingConservativelyTouchingCells": 2.64,
+        "inside23mOutsideNationalPolygon": 0.51,
+        "core3m": 0.578
+      },
+      "receiptsSHA256": "df0e958a816d8a5824fa19d356e579c2e49ebff1b6b87afee2675de5f988e86a",
+      "nativeObjectETags": [
+        "\"e0dff09b72fa2b6c0783bed04de14cd7-10\"",
+        "\"518591156204e4f206ae060fa65b01b0-8\""
+      ]
+    },
+    {
+      "sourceID": "EKW3",
+      "farm": "east-point-i",
+      "retiredSourceControlOnly": false,
+      "longitude": -62.0572367,
+      "latitude": 46.4532222,
+      "installedHubReferenceM": 81,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 236,
+      "groundReturnP90AbsoluteResidualM": 0.2303,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 116,
+      "nearestOriginalXYAbove20mM": 0.148,
+      "originalCoreHeightAboveGroundRangeM": [
+        80.052,
+        81.366
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 116,
+      "sourceClassAndReturnCounts": {
+        "1": 118
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1661.834,
+      "missingNationalFootprintM2": 0.0,
+      "wholeCatalogueCircleAndMastPassed": true,
+      "secondaryNonnoiseXYCoverageDistancesM": null,
+      "receiptsSHA256": "e2bf29a9e5869ac31eb27f92fdf40b49aaf4494fd75ff78c82775de2608da3f9",
+      "nativeObjectETags": [
+        "\"979524f2aabb6d9b845ecaf8d303e05f-9\""
+      ]
+    },
+    {
+      "sourceID": "EKW8",
+      "farm": "east-point-i",
+      "retiredSourceControlOnly": false,
+      "longitude": -62.0374265,
+      "latitude": 46.4577655,
+      "installedHubReferenceM": 81,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 233,
+      "groundReturnP90AbsoluteResidualM": 0.1237,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 73,
+      "nearestOriginalXYAbove20mM": 0.174,
+      "originalCoreHeightAboveGroundRangeM": [
+        79.805,
+        82.193
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 73,
+      "sourceClassAndReturnCounts": {
+        "1": 75
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1661.834,
+      "missingNationalFootprintM2": 0.0,
+      "wholeCatalogueCircleAndMastPassed": true,
+      "secondaryNonnoiseXYCoverageDistancesM": null,
+      "receiptsSHA256": "6c95aea9e72bfdf0d60e5334b056bb2bbde0599f35bc9dce1c880e671aca0609",
+      "nativeObjectETags": [
+        "\"b4ceab20daff174abb92c48e18e7723f-9\""
+      ]
+    },
+    {
+      "sourceID": "HCS2",
+      "farm": "hermanville",
+      "retiredSourceControlOnly": false,
+      "longitude": -62.3174043,
+      "latitude": 46.4551755,
+      "installedHubReferenceM": 92,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 232,
+      "groundReturnP90AbsoluteResidualM": 0.0987,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 154,
+      "nearestOriginalXYAbove20mM": 0.559,
+      "originalCoreHeightAboveGroundRangeM": [
+        57.397,
+        94.694
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 114,
+      "sourceClassAndReturnCounts": {
+        "1": 154
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1661.834,
+      "missingNationalFootprintM2": 0.0,
+      "wholeCatalogueCircleAndMastPassed": true,
+      "secondaryNonnoiseXYCoverageDistancesM": null,
+      "receiptsSHA256": "be55ab452bc60c1663d328226a79334abfb32767b2b709803ee4b3ae0376a2ba",
+      "nativeObjectETags": [
+        "\"059b0efcf9bcef3d20a30c4adbd4b317-11\""
+      ]
+    },
+    {
+      "sourceID": "HCS10",
+      "farm": "hermanville",
+      "retiredSourceControlOnly": false,
+      "longitude": -62.2919499,
+      "latitude": 46.4451417,
+      "installedHubReferenceM": 92,
+      "nonzeroCapacityInPublishedRoster": true,
+      "localGround2p5mCells": 227,
+      "groundReturnP90AbsoluteResidualM": 0.112,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 88,
+      "nearestOriginalXYAbove20mM": 0.414,
+      "originalCoreHeightAboveGroundRangeM": [
+        90.389,
+        94.245
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 88,
+      "sourceClassAndReturnCounts": {
+        "1": 98
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1661.834,
+      "missingNationalFootprintM2": 0.0,
+      "wholeCatalogueCircleAndMastPassed": true,
+      "secondaryNonnoiseXYCoverageDistancesM": null,
+      "receiptsSHA256": "4f59a0ecb15a562949eea1f6ee5da166e7f3df90c0d6b0accae8848a62a3658f",
+      "nativeObjectETags": [
+        "\"531715819950dfd57bbc43d299337666-11\""
+      ]
+    },
+    {
+      "sourceID": "HCS9",
+      "farm": "hermanville",
+      "retiredSourceControlOnly": true,
+      "longitude": -62.3033273,
+      "latitude": 46.445732,
+      "installedHubReferenceM": 92,
+      "nonzeroCapacityInPublishedRoster": false,
+      "localGround2p5mCells": 236,
+      "groundReturnP90AbsoluteResidualM": 0.0994,
+      "class2GroundGate": true,
+      "historicUniquePulsesAbove20mInside3m": 168,
+      "nearestOriginalXYAbove20mM": 0.204,
+      "originalCoreHeightAboveGroundRangeM": [
+        92.886,
+        94.866
+      ],
+      "historicPulsesWithin8mOfNominalHubInside3m": 168,
+      "sourceClassAndReturnCounts": {
+        "1": 168
+      },
+      "levelledNativeReference": "relative to local 2020 class2 ground; actual horizontal EPSG:2961; no absolute vertical claim",
+      "catalogueCoverageOf23mRadiusM2": 1661.834,
+      "missingNationalFootprintM2": 0.0,
+      "wholeCatalogueCircleAndMastPassed": true,
+      "secondaryNonnoiseXYCoverageDistancesM": null,
+      "receiptsSHA256": "f7913296788d41ec4069648ea99ca9fd1254aea9b2c124d1e4e163b256abdeac",
+      "nativeObjectETags": [
+        "\"5dfabbbe44a33980b1ec3461dedffb32-12\""
+      ]
+    }
+  ],
+  "originalObjects": [
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_292000_735000.copc.laz",
+      "bytes": 78250474,
+      "ETag": "\"37876ae00cb7119d53261a31de7cb196-10\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "2cac331916990d83a621ee7e5e0664d6f3af7434c18e394103d4e2791adf1bec"
+        ],
+        [
+          227,
+          1376,
+          "5dbfa66540c119fe048d809453f57ab5d5a1acc5246027bc151f3303fbc60586"
+        ],
+        [
+          78232362,
+          78250473,
+          "b668851b7fee5653a2a157df821ce1d469570b972eabc7d700ed650d0a214fc1"
+        ],
+        [
+          34732500,
+          34740815,
+          "e81de8f533b38eb482d9dd47aa83c3e0b6e1a6472a9c14eb785218a9704e5f51"
+        ],
+        [
+          34898012,
+          35080816,
+          "46500e3bd4890c220c6601d699ec27a9cf74916d2d622ca03947e0994e5fe53d"
+        ],
+        [
+          60824000,
+          60844719,
+          "2240b3d58af46f475272a9ebbeba5593910d066622fc3ad0d79b1cb1ee2fbd00"
+        ],
+        [
+          61283178,
+          61465412,
+          "0694256cf0054ccb9691a8c7e9537f27c233e9d314d370ba43c338950c4a76ec"
+        ],
+        [
+          71401166,
+          71698474,
+          "b5a13df9b9166b63f2ef5352bdc3631344ccc51bd3a97efba24d94013311339d"
+        ],
+        [
+          77276806,
+          78229876,
+          "fae3cd74d4bf51fffcd70558e9ecdc2e543fe655706a262a8976f0977377da2f"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_292000_736000.copc.laz",
+      "bytes": 62955250,
+      "ETag": "\"148f698b5da577ed089e3cd5de8dab86-8\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "bf80f7949a11a06172923c147de0ebb3ad5203775a90f0df22333e1a0d886cd5"
+        ],
+        [
+          227,
+          1376,
+          "b71699c0adf9e916ccf659c61af5414e25af9d19a5cba65b0418a840f21c92b1"
+        ],
+        [
+          62943282,
+          62955249,
+          "4aac4d3ca0ef421dac34412c9b4be4165c6a1e9e0500d393482f50425bea593a"
+        ],
+        [
+          28872637,
+          29055519,
+          "709e78ed660adf87b9d2272c7dcac0e972cba1b05bf97b653b0cc5e7f3014b72"
+        ],
+        [
+          49869647,
+          50122815,
+          "797d5730511141f458de55dac47b41062ead2623f5cb594b6f7157f85f5c9115"
+        ],
+        [
+          50841697,
+          50847558,
+          "c6e72a2e27c70bc82af2683de315bea9471c1905769caf58dc43bc4a35078358"
+        ],
+        [
+          56931117,
+          57236317,
+          "46e6be825f56002e4bf7bf48d3f5820a5da617dcb1df17e41d3a24c58667bd6a"
+        ],
+        [
+          61244883,
+          61658525,
+          "ed689fbc29b2dc0ef6bbe92644ad17cd76d825a41aa41699a618345632511cbd"
+        ],
+        [
+          62666562,
+          62941628,
+          "6db55224fe0b3e96cbb64c7cd790c094560b7e0c7ad3b94f97b13bd7e22ac522"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_293000_739000.copc.laz",
+      "bytes": 78982043,
+      "ETag": "\"e0dff09b72fa2b6c0783bed04de14cd7-10\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "5f60dd79f5d20be16619e718f614da965147eab88214c7019dafb235789cace2"
+        ],
+        [
+          227,
+          1376,
+          "22260336922b4f42f0f5b26550f12409caa091e57a142af2fa23f8624efc51b0"
+        ],
+        [
+          78968827,
+          78982042,
+          "65ceb933d9141382d2adc9bf7477a6cacd6907f88e2828e91c2e8c79cbc08740"
+        ],
+        [
+          26742481,
+          26825386,
+          "d0d43ce77bafe0243baa26e10b31f4cb94e6f18f8c8449d839f97a6c3fe75b6c"
+        ],
+        [
+          26943060,
+          27030741,
+          "2613ca930e76e00a39c7b489c4b19e70509930267e69cfc780d46862f89b364a"
+        ],
+        [
+          49495033,
+          49882831,
+          "bd3796f71bed42d31c4e00e5f0066e902c38f1bf471fbbf47c58c53543cf42e7"
+        ],
+        [
+          64238830,
+          65229119,
+          "48b278342fb520ed9df71dd89ec32d5d43cf36a41d01528760f5f6088cf78c12"
+        ],
+        [
+          76949568,
+          78967009,
+          "61e54d7ccbd5dbceddf296d86c3940837fa01fcbb9bfabc2c1b1b4ccdc9025ef"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_294000_739000.copc.laz",
+      "bytes": 60980855,
+      "ETag": "\"518591156204e4f206ae060fa65b01b0-8\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "887ad7354019d2a38db72dccca1fe40a1f8edf38977aea212b8ec8f239475022"
+        ],
+        [
+          227,
+          1376,
+          "e22be3f03e9299336420cea24906a80c6a5148e3103c78d2340bdc2852ee3946"
+        ],
+        [
+          60969207,
+          60980854,
+          "cd4b0af35bfbd56dcbd6d040c00e7416a618476a354ac77386815c68ee1f9e7f"
+        ],
+        [
+          2164813,
+          2253419,
+          "353b481aa92877941b4ed1692efb434c54d0c579ac757d326dd5a6a7a8325c3f"
+        ],
+        [
+          2353682,
+          2426396,
+          "82627d7a9ab514fbff67099a5c89f3fbb1e8bf642a39bd14aa29d8a27e257334"
+        ],
+        [
+          30268069,
+          30539361,
+          "d71573c918178a2bb2fe787040a860593d833aa1c54d033ce3960342f66dbfd2"
+        ],
+        [
+          31487746,
+          31492103,
+          "441dfed74561cc65f196a202ec52b92ea17a86a43956447a4df771736ba65d85"
+        ],
+        [
+          47667314,
+          48232039,
+          "bc18eba11bb4a3d6192c8ee369f0d8a3f938d75f5b73213845c81f9898f9082c"
+        ],
+        [
+          59293000,
+          59899052,
+          "a0652b630bb7e52a472ffa33c244aece213fe2b483903c46551be2e86e422b53"
+        ],
+        [
+          60545045,
+          60967609,
+          "eca9530f55edee3eedad18139070bb0bb73deb24a1abf01eb9364a9576b6471c"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_472000_711000.copc.laz",
+      "bytes": 68077588,
+      "ETag": "\"979524f2aabb6d9b845ecaf8d303e05f-9\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "ca3d916040d64cb43a069310a996013def8096b175f2357e13768b6404fe2fbc"
+        ],
+        [
+          227,
+          1376,
+          "b3a280645a89f2b1f43f1adcaddaaf364bd71a69ebe583a638351dabece7f33e"
+        ],
+        [
+          68066580,
+          68077587,
+          "759097d278ecd502b5734a83d73e6c435d9f74cf94878921cbb4fb1cffd39805"
+        ],
+        [
+          11850499,
+          12147202,
+          "0a1183ad03c37254735793a172421eec8fcb715615dc717ce33d32fc4e731e02"
+        ],
+        [
+          36731691,
+          36968971,
+          "a1e09e584d7c1566a115cf7e6daefe6e3ee97dfb216895d88a03e4a7e87670bb"
+        ],
+        [
+          37174766,
+          37366314,
+          "c3c18e03f1071284e8ee6497fb3540f7be57968c4300d0a8189b245dafc5110b"
+        ],
+        [
+          55793611,
+          56141117,
+          "9c79e35d4131f40fa456f243615f703a0ad6b661ff259f5a48283bf64eec40b3"
+        ],
+        [
+          65323790,
+          66434839,
+          "ef1924b0ae4c63aae8f4b12b1bd76fc69642257fcbb84e91b9f28275a68c65c1"
+        ],
+        [
+          67508862,
+          68065126,
+          "b3514d3148c7fafc4466f38c109c6bb8143336c0800ab2d6c5e2e3b6e77c28a8"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_473000_712000.copc.laz",
+      "bytes": 67325554,
+      "ETag": "\"b4ceab20daff174abb92c48e18e7723f-9\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "a8934aea2d20501b1b6acfc746cd2af5db6b7dedb86ea5a53e17e26361495afd"
+        ],
+        [
+          227,
+          1376,
+          "0adb0bc1c8c42b662d96fe31f517955b0372cd35614b1a63cbd88cd5bd467c6f"
+        ],
+        [
+          67314514,
+          67325553,
+          "e8b2227d1c44533ec9e255e6fa232d0cc6d434e5500ce3dbeeb2439d3bf6f6dc"
+        ],
+        [
+          26294852,
+          26667648,
+          "72e39a9a7940898e82bf97db20bbc9b6c550cd6774d232f7bcc6c924a1d26a6f"
+        ],
+        [
+          46618116,
+          46977702,
+          "ecc11875b1f0391435b6f8c906d447dc8e102b867dde200c78c7235ef30818b6"
+        ],
+        [
+          47417320,
+          47827834,
+          "7ca28f0008cc9c69e2a6dd71edda6fb965a2efa71e4619b6cb7c8dc80a745ee6"
+        ],
+        [
+          58344172,
+          59283649,
+          "1b465edc4f3013bd507d8a38fbbc2e8b6b8c371b97171af59e10d9b8886b3946"
+        ],
+        [
+          63327046,
+          64746291,
+          "a92b4c0702d65e99c733be02a26a5aceff3ce8ae729e95222aa28101bd6d8e74"
+        ],
+        [
+          66839978,
+          67312993,
+          "1f835a587962cbaeec1db85f7d2f8c5d0989513568a22ecfdb7e44b86e612d12"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_452000_711000.copc.laz",
+      "bytes": 83997139,
+      "ETag": "\"059b0efcf9bcef3d20a30c4adbd4b317-11\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "2c7ccb301bccd150da003d9eb6c61e4d9621829366c4385836570b4e783b9c36"
+        ],
+        [
+          227,
+          1376,
+          "5988709ba12212b01c3dae4ad92e6311edcfd901a27492f7bf116a103ddc25a1"
+        ],
+        [
+          83984883,
+          83997138,
+          "120307a8e18da35796bd904c9ca3c75482102f6e3bb355b93d3accdd6361af89"
+        ],
+        [
+          16356627,
+          16860378,
+          "29d5879be20b86bc11d439f88ffeef01727eb5c28a33478c62b95edb631f5b68"
+        ],
+        [
+          16868588,
+          17100994,
+          "bddeee66fae64bff66db19935a0b4fa0333ef4aa6bb412b6fdc25fc0e4bceae0"
+        ],
+        [
+          17304914,
+          17312748,
+          "3797c63b1fa2d732c871d964033437b21269dc04a81d40ff4907f7fdde91d9f5"
+        ],
+        [
+          46081485,
+          46615104,
+          "7064f8c47de329d96506ddbb79832260c93a7f136456fbda11aeef69b0d30ff6"
+        ],
+        [
+          47027174,
+          47413989,
+          "1694cd0230b6f25deab944a459719683b004fea19faad809420f755e7c1e747a"
+        ],
+        [
+          67251490,
+          68233373,
+          "00a156e8e7cac2a91087f6a8a1c8f4e0c4b3d1659656f5f4711527ec5cb935e2"
+        ],
+        [
+          80497702,
+          81978786,
+          "3575bb299444fc802669b4ecd4a9f56685dd4992918958e3dfa74ad9546efdde"
+        ],
+        [
+          83343927,
+          83983216,
+          "691ec225c010b3a4180e9f0b2b4f24787ca57668623f49c3e9b723dc60718c55"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_454000_710000.copc.laz",
+      "bytes": 89917601,
+      "ETag": "\"531715819950dfd57bbc43d299337666-11\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "b4aa686ab38aa30a78137755fcf9944628a367976f2aa101a23c11c4e4c4bcac"
+        ],
+        [
+          227,
+          1376,
+          "8f5e428eaca8ccb87e4c72223a3d443a69111aef2b515a6fcdb6aaafe9cf211b"
+        ],
+        [
+          89859649,
+          89917600,
+          "2acceeee369c9a9017cb1aff26db5d58900eb1c076668ee24438c0aebc8634d0"
+        ],
+        [
+          4856761,
+          4937396,
+          "5557193999865a6f7d8f8010f4eae022f08c37e4c1f17b870e21b844db54b73e"
+        ],
+        [
+          25695065,
+          25808069,
+          "6e46b4dc26e020aaea350544f6bc440bfd1865032de1cd7b40ab6caefa98a2e3"
+        ],
+        [
+          26154810,
+          26162828,
+          "8725788b8ee9727331dd4fafd2fe55261cac07f3dc4917366d1cbc0dba9d8167"
+        ],
+        [
+          53045827,
+          53431213,
+          "35edc45b41c5865030f3a8955bd14f9afc2afd49c853a1a9dc0ba38b0117d1fc"
+        ],
+        [
+          75069543,
+          76029330,
+          "aa1a9ecc6e22b952e47030eeac72cc9ae956873eca07348f1876a98939ce3155"
+        ],
+        [
+          86297719,
+          87928886,
+          "75bf7f137bcc5a694dea967cd56a70ee2b2ad71c44d68b410e286262c43e5c0e"
+        ],
+        [
+          89206056,
+          89853775,
+          "7c77e51f59bdd8344715aa726ed1ea7059b3c9b8c7cbba73e30e857f55a2263e"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    },
+    {
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_453000_710000.copc.laz",
+      "bytes": 92380942,
+      "ETag": "\"5dfabbbe44a33980b1ec3461dedffb32-12\"",
+      "rangeSHA256s": [
+        [
+          0,
+          226,
+          "08dc1994f3f43a96d27d441b3a60988389957a6d3369fc99b428f796304c4390"
+        ],
+        [
+          227,
+          1376,
+          "55dc2d4ba648686ec3311ae1594c56fcf2e1338bf0d46e2fb2f7dd94f090a4b0"
+        ],
+        [
+          92368494,
+          92380941,
+          "b208cb995120f36e847828f12b81ac6800aec53bf6aa99ef44857203a999d928"
+        ],
+        [
+          18243596,
+          18433475,
+          "63da6702c443ed5675c4d98b4df9e0fc27a32b0865b2062dd0b0702d6823a6ab"
+        ],
+        [
+          18626552,
+          18716504,
+          "e625ae8446141ac04c1775f0ee25fc0619aa329a0d69a848a5c9f3300b29bcee"
+        ],
+        [
+          18819742,
+          18829633,
+          "8b68f8387cc55d9ce1bcd7d2b1b2d07fe4ab26c315fa5b5fedb1978267e8a8ba"
+        ],
+        [
+          54313835,
+          54678012,
+          "bf605bb116d2272aca1685b50301efc8cd9f1826c9bdd82a960b9c451cc674a6"
+        ],
+        [
+          55890565,
+          55897234,
+          "089ce9959fbab2b8657616f792a4b73720275b9e236d51e2d859d0f3a6aa8362"
+        ],
+        [
+          78507768,
+          79402930,
+          "6f48abb8bd9b17f092dcc991bc29d8caf4e32ac48ca77645b333f182525ece08"
+        ],
+        [
+          89954027,
+          92366839,
+          "d885f16d83b2b2468bb5fb002431edac97bd67f03fa2b50802a4ae0ac828d21b"
+        ]
+      ],
+      "originalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+    }
+  ]
+}

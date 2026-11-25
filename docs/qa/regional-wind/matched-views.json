@@ -1,0 +1,257 @@
+{
+  "stockCommit": "f5470f97ca8f06e351e3947c321df7de6b1f3156",
+  "candidateTargetParent": "bf9bf593a215c918da0e82d332862363a7ddb09e",
+  "frozenWindSeconds": 4.25,
+  "mode": "actual Three.js browser/SwiftShader matched attitudes, not a device performance benchmark",
+  "views": {
+    "west-cape-near-array-close": {
+      "pose": {
+        "site": "west-cape-near-array",
+        "lon": -64.3855708,
+        "lat": 46.686477,
+        "dist": 550,
+        "east": -0.82,
+        "south": 0.57,
+        "agl": 115,
+        "h": 118.8,
+        "nearDist": 550,
+        "nearAgl": 115,
+        "fixedBaseH": 31.46126410269217,
+        "fixedEyeY": 135.17248651875144
+      },
+      "cameraRenderer": [
+        840,
+        540
+      ],
+      "group": {
+        "farm": "west-cape",
+        "registered": 55,
+        "near": 9,
+        "cruise": 34,
+        "distant": 12
+      },
+      "draws": [
+        63,
+        69
+      ],
+      "triangles": [
+        287972,
+        349876
+      ],
+      "optical": {
+        "shape": [
+          540,
+          840,
+          3
+        ],
+        "changed": 1359,
+        "over2": 1348,
+        "peak": 195,
+        "supportPixels": 1682,
+        "supportChanged": 1354,
+        "supportOver2": 1343,
+        "supportPeak": 195,
+        "aaRingChanged": 5,
+        "outsideChanged": 0,
+        "outsidePeak": 0,
+        "supportMedianRgbBefore": [
+          109.0,
+          111.0,
+          97.0
+        ],
+        "supportMedianRgbAfter": [
+          165.0,
+          171.0,
+          176.0
+        ],
+        "supportMeanSignedRgb": [
+          39.59036860879905,
+          40.65576694411415,
+          48.994649227110585
+        ],
+        "supportBrightenedOver2": 1243,
+        "supportDarkenedOver2": 99,
+        "pass": true,
+        "before": {
+          "file": "west-cape-near-array-close.png",
+          "sha256": "6fa0d6ecedaae20ea3a842f7f7875b322123e2cf71d02d9da438f0cf98dded73"
+        },
+        "after": {
+          "file": "west-cape-near-array-close.png",
+          "sha256": "8780b86a7cefe498d64c33d1cfe91327ad5fdb2019135f29cab492347c8417b8"
+        },
+        "support": {
+          "file": "west-cape-near-array-close-authority.png",
+          "sha256": "a44ba6b74102e16fef70ef615cd3dd51906e95c40b04f45898ce6d0fda77fc08"
+        }
+      },
+      "errors": []
+    },
+    "east-point-i-near-array-close": {
+      "pose": {
+        "site": "east-point-i-near-array",
+        "lon": -62.0460799,
+        "lat": 46.4558586,
+        "dist": 540,
+        "east": -0.73,
+        "south": 0.68,
+        "agl": 115,
+        "h": 124.74,
+        "nearDist": 540,
+        "nearAgl": 115,
+        "fixedBaseH": 20.03081126187937,
+        "fixedEyeY": 144.9909924848521
+      },
+      "cameraRenderer": [
+        840,
+        540
+      ],
+      "group": {
+        "farm": "east-point-i",
+        "registered": 10,
+        "near": 7,
+        "cruise": 3,
+        "distant": 0
+      },
+      "draws": [
+        15,
+        19
+      ],
+      "triangles": [
+        307406,
+        330726
+      ],
+      "optical": {
+        "shape": [
+          540,
+          840,
+          3
+        ],
+        "changed": 5361,
+        "over2": 5346,
+        "peak": 206,
+        "supportPixels": 5873,
+        "supportChanged": 5355,
+        "supportOver2": 5340,
+        "supportPeak": 206,
+        "aaRingChanged": 6,
+        "outsideChanged": 0,
+        "outsidePeak": 0,
+        "supportMedianRgbBefore": [
+          64.0,
+          71.0,
+          47.0
+        ],
+        "supportMedianRgbAfter": [
+          160.0,
+          168.0,
+          176.0
+        ],
+        "supportMeanSignedRgb": [
+          83.8256427720075,
+          78.53839604971905,
+          100.9337646858505
+        ],
+        "supportBrightenedOver2": 5279,
+        "supportDarkenedOver2": 61,
+        "pass": true,
+        "before": {
+          "file": "east-point-i-near-array-close.png",
+          "sha256": "199dcc0d28ca3f3a59ec957bf74a2a53d8b1e2a8f6617eb892cb5688b330081a"
+        },
+        "after": {
+          "file": "east-point-i-near-array-close.png",
+          "sha256": "830e331ad79f44bfe7faaa54730bbe994bab443a401a48ce582f8f2a2842a718"
+        },
+        "support": {
+          "file": "east-point-i-near-array-close-authority.png",
+          "sha256": "140ff73e7aeea8781690be81b3682d90038b79b6a4854b1ba43713501b457ad7"
+        }
+      },
+      "errors": []
+    },
+    "hermanville-near-array-close": {
+      "pose": {
+        "site": "hermanville-near-array",
+        "lon": -62.3081211,
+        "lat": 46.4560213,
+        "dist": 580,
+        "east": -0.66,
+        "south": 0.75,
+        "agl": 128,
+        "h": 148.5,
+        "nearDist": 580,
+        "nearAgl": 128,
+        "fixedBaseH": 36,
+        "fixedEyeY": 166.79456741608286
+      },
+      "cameraRenderer": [
+        840,
+        540
+      ],
+      "group": {
+        "farm": "hermanville",
+        "registered": 9,
+        "near": 5,
+        "cruise": 4,
+        "distant": 0
+      },
+      "draws": [
+        25,
+        29
+      ],
+      "triangles": [
+        379304,
+        398920
+      ],
+      "optical": {
+        "shape": [
+          540,
+          840,
+          3
+        ],
+        "changed": 1359,
+        "over2": 1356,
+        "peak": 200,
+        "supportPixels": 1658,
+        "supportChanged": 1357,
+        "supportOver2": 1354,
+        "supportPeak": 200,
+        "aaRingChanged": 2,
+        "outsideChanged": 0,
+        "outsidePeak": 0,
+        "supportMedianRgbBefore": [
+          70.0,
+          87.0,
+          70.0
+        ],
+        "supportMedianRgbAfter": [
+          156.0,
+          164.0,
+          173.0
+        ],
+        "supportMeanSignedRgb": [
+          65.01326899879373,
+          57.388419782870926,
+          70.40651387213511
+        ],
+        "supportBrightenedOver2": 1288,
+        "supportDarkenedOver2": 65,
+        "pass": true,
+        "before": {
+          "file": "hermanville-near-array-close.png",
+          "sha256": "4f800bdf1a192ba9771e5e78e767498e6bae3866c1a475d98890d9544796bf97"
+        },
+        "after": {
+          "file": "hermanville-near-array-close.png",
+          "sha256": "90faf4e548a5de54116a64a5c6f2c048080495b994e8f78f56ecfce888fb16b9"
+        },
+        "support": {
+          "file": "hermanville-near-array-close-authority.png",
+          "sha256": "2ac62467395eb8ab4e07c183716b7824cc5d96a5e60a624007563b5087501cdb"
+        }
+      },
+      "errors": []
+    }
+  }
+}

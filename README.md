@@ -45,6 +45,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 | Area | Preview flag | What to look for |
 | --- | --- | --- |
+| West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | In Standard, fly past [74 turbines in three registered arrays](docs/qa/regional-wind.md), with 80, 90 and 116 m rotors. The flag restores the previous view without hiding North Cape. |
 | North Cape | `?stockNorthCapeWind` | Standard streams [all 16 commercial turbines](docs/qa/north-cape-turbines.md) near the [wind farm low pass](docs/qa/north-cape-departure.md). The flag hides them; `?northCapeWind` retains the older shadow study. |
 | Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Spinnakers’ Landing](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
 | Inland grassland | `?stockMeadow` | Compare [the close open-ground material](docs/qa/meadow-texture.md) on an **inland meadow pass** in Prince, Queens or Kings. |

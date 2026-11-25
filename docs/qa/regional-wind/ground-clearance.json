@@ -1,0 +1,1322 @@
+{
+  "method": "Actual original AEB/NRN/mapped parking/walkways signed geometry. Distance from exact registered mast XY to nearest footprint/ribbon within or incident on conservative 165m search. Negative road means one ordinary centerline ribbon contains the register, not a survey of the true tower/pad.",
+  "pins": {
+    "road": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "building": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "sidewalk": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+    "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303"
+  },
+  "units": [
+    {
+      "id": "EKW1",
+      "farm": "east-point-i",
+      "longitude": -62.0644404,
+      "latitude": 46.4534273,
+      "p": [
+        87168.49960323339,
+        5177.0718053444825
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 14414,
+          "distance": 552.5382643564266
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW2",
+      "farm": "east-point-i",
+      "longitude": -62.0608926,
+      "latitude": 46.4531145,
+      "p": [
+        87440.83793130734,
+        5211.842992343057
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW3",
+      "farm": "east-point-i",
+      "longitude": -62.0572367,
+      "latitude": 46.4532222,
+      "p": [
+        87721.47429570419,
+        5199.87094362266
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW4",
+      "farm": "east-point-i",
+      "longitude": -62.0536598,
+      "latitude": 46.4536372,
+      "p": [
+        87996.04641523951,
+        5153.739093864371
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW5",
+      "farm": "east-point-i",
+      "longitude": -62.0504411,
+      "latitude": 46.4547795,
+      "p": [
+        88243.12217389872,
+        5026.759787892536
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW6",
+      "farm": "east-point-i",
+      "longitude": -62.0460799,
+      "latitude": 46.4558586,
+      "p": [
+        88577.89919526287,
+        4906.805862413903
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW7",
+      "farm": "east-point-i",
+      "longitude": -62.0425108,
+      "latitude": 46.4564721,
+      "p": [
+        88851.87256657152,
+        4838.6085375308885
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW8",
+      "farm": "east-point-i",
+      "longitude": -62.0374265,
+      "latitude": 46.4577655,
+      "p": [
+        89242.15661906223,
+        4694.832791803439
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW9",
+      "farm": "east-point-i",
+      "longitude": -62.0334785,
+      "latitude": 46.458899,
+      "p": [
+        89545.2153369258,
+        4568.831703368222
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 14423,
+          "distance": 638.6994242106633
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "EKW10",
+      "farm": "east-point-i",
+      "longitude": -62.0281793,
+      "latitude": 46.4586639,
+      "p": [
+        89951.9956706905,
+        4594.965674159284
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 14423,
+          "distance": 521.2259866444579
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS1",
+      "farm": "hermanville",
+      "longitude": -62.3251908,
+      "latitude": 46.4555651,
+      "p": [
+        67152.62272724831,
+        4939.431640495441
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 10821,
+          "distance": 567.4702643192987
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS2",
+      "farm": "hermanville",
+      "longitude": -62.3174043,
+      "latitude": 46.4551755,
+      "p": [
+        67750.3346590225,
+        4982.739998725769
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS3",
+      "farm": "hermanville",
+      "longitude": -62.3081211,
+      "latitude": 46.4560213,
+      "p": [
+        68462.93716400473,
+        4888.719954086681
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS4",
+      "farm": "hermanville",
+      "longitude": -62.2981044,
+      "latitude": 46.4555497,
+      "p": [
+        69231.84503108263,
+        4941.14352118551
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS5",
+      "farm": "hermanville",
+      "longitude": -62.2859019,
+      "latitude": 46.4558347,
+      "p": [
+        70168.54057432714,
+        4909.462612315863
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS6",
+      "farm": "hermanville",
+      "longitude": -62.2783135,
+      "latitude": 46.4594693,
+      "p": [
+        70751.04583639248,
+        4505.436537303415
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 10974,
+          "distance": 169.26216819099577
+        },
+        "building": {
+          "tile": "q1323",
+          "ordinal": 150,
+          "height": 7.43,
+          "distance": 112.72924459137015
+        },
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS7",
+      "farm": "hermanville",
+      "longitude": -62.3184838,
+      "latitude": 46.4488076,
+      "p": [
+        67667.46943968751,
+        5690.602663962226
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS8",
+      "farm": "hermanville",
+      "longitude": -62.3119381,
+      "latitude": 46.4484703,
+      "p": [
+        68169.93434584762,
+        5728.097297513003
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "HCS10",
+      "farm": "hermanville",
+      "longitude": -62.2919499,
+      "latitude": 46.4451417,
+      "p": [
+        69704.28041079162,
+        6098.1080808957595
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW1",
+      "farm": "west-cape",
+      "longitude": -64.3723884,
+      "latitude": 46.73317,
+      "p": [
+        -89995.57379483702,
+        -25919.429898893843
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 5391,
+          "distance": 435.7442056393835
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW2",
+      "farm": "west-cape",
+      "longitude": -64.366477,
+      "latitude": 46.7331,
+      "p": [
+        -89541.79940152931,
+        -25911.64862303097
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 3627,
+          "distance": 961.3743459862278
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW3",
+      "farm": "west-cape",
+      "longitude": -64.3613591,
+      "latitude": 46.7306937,
+      "p": [
+        -89148.93612590771,
+        -25644.16170719433
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 3627,
+          "distance": 1001.5401180259155
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW4",
+      "farm": "west-cape",
+      "longitude": -64.3703907,
+      "latitude": 46.7305834,
+      "p": [
+        -89842.22516244667,
+        -25631.900639655956
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 3627,
+          "distance": 1352.5785865597838
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW5",
+      "farm": "west-cape",
+      "longitude": -64.3654246,
+      "latitude": 46.7299271,
+      "p": [
+        -89461.01444846918,
+        -25558.945620387964
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 3627,
+          "distance": 1228.988997228616
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW6",
+      "farm": "west-cape",
+      "longitude": -64.3693373,
+      "latitude": 46.7196046,
+      "p": [
+        -89761.36344679358,
+        -24411.485333338373
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW7",
+      "farm": "west-cape",
+      "longitude": -64.3953045,
+      "latitude": 46.71111,
+      "p": [
+        -91754.6730563436,
+        -23467.216391282742
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW8",
+      "farm": "west-cape",
+      "longitude": -64.3903049,
+      "latitude": 46.7101353,
+      "p": [
+        -91370.89079549571,
+        -23358.867682947777
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW9",
+      "farm": "west-cape",
+      "longitude": -64.3859393,
+      "latitude": 46.7106892,
+      "p": [
+        -91035.77601872146,
+        -23420.439807239043
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 5392,
+          "distance": 199.82654197974077
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW10",
+      "farm": "west-cape",
+      "longitude": -64.3821906,
+      "latitude": 46.7054732,
+      "p": [
+        -90748.01608567798,
+        -22840.62359437908
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW11",
+      "farm": "west-cape",
+      "longitude": -64.3762344,
+      "latitude": 46.7052345,
+      "p": [
+        -90290.80272819611,
+        -22814.089443687357
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW12",
+      "farm": "west-cape",
+      "longitude": -64.3860381,
+      "latitude": 46.700261,
+      "p": [
+        -91043.36016292655,
+        -22261.22979363679
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW13",
+      "farm": "west-cape",
+      "longitude": -64.378263,
+      "latitude": 46.7001461,
+      "p": [
+        -90446.52332471553,
+        -22248.45738511349
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW14",
+      "farm": "west-cape",
+      "longitude": -64.369663,
+      "latitude": 46.6999965,
+      "p": [
+        -89786.36502339174,
+        -22231.827686983874
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW15",
+      "farm": "west-cape",
+      "longitude": -64.3657614,
+      "latitude": 46.7030674,
+      "p": [
+        -89486.86808985122,
+        -22573.192259084175
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW16",
+      "farm": "west-cape",
+      "longitude": -64.3978583,
+      "latitude": 46.6976442,
+      "p": [
+        -91950.70936679955,
+        -21970.343469669795
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW17",
+      "farm": "west-cape",
+      "longitude": -64.3936263,
+      "latitude": 46.6964903,
+      "p": [
+        -91625.85007247362,
+        -21842.074695126354
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW18",
+      "farm": "west-cape",
+      "longitude": -64.387826,
+      "latitude": 46.6964874,
+      "p": [
+        -91180.60400326883,
+        -21841.75232798365
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW19",
+      "farm": "west-cape",
+      "longitude": -64.3723737,
+      "latitude": 46.6954396,
+      "p": [
+        -89994.44538471667,
+        -21725.2777444261
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW20",
+      "farm": "west-cape",
+      "longitude": -64.3671959,
+      "latitude": 46.6963861,
+      "p": [
+        -89596.98402976403,
+        -21830.4917101989
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW21",
+      "farm": "west-cape",
+      "longitude": -64.4008162,
+      "latitude": 46.6941675,
+      "p": [
+        -92177.76544115819,
+        -21583.869729782633
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW22",
+      "farm": "west-cape",
+      "longitude": -64.3649765,
+      "latitude": 46.6921813,
+      "p": [
+        -89426.6171304665,
+        -21363.081585230942
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW23",
+      "farm": "west-cape",
+      "longitude": -64.3997801,
+      "latitude": 46.6907218,
+      "p": [
+        -92098.23171836784,
+        -21200.84198349183
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW24",
+      "farm": "west-cape",
+      "longitude": -64.3897444,
+      "latitude": 46.6911849,
+      "p": [
+        -91327.86536201945,
+        -21252.320681378766
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW25",
+      "farm": "west-cape",
+      "longitude": -64.4007949,
+      "latitude": 46.6877316,
+      "p": [
+        -92176.1303979235,
+        -20868.44811085104
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW26",
+      "farm": "west-cape",
+      "longitude": -64.3916234,
+      "latitude": 46.6888868,
+      "p": [
+        -91472.10227459954,
+        -20996.86139480347
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW27",
+      "farm": "west-cape",
+      "longitude": -64.3855708,
+      "latitude": 46.686477,
+      "p": [
+        -91007.4890031351,
+        -20728.985415173094
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW28",
+      "farm": "west-cape",
+      "longitude": -64.3803125,
+      "latitude": 46.6881312,
+      "p": [
+        -90603.84825943201,
+        -20912.86807991926
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW29",
+      "farm": "west-cape",
+      "longitude": -64.3637431,
+      "latitude": 46.6887013,
+      "p": [
+        -89331.93814804149,
+        -20976.241013767056
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 4565,
+          "distance": 148.1445319055981
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW30",
+      "farm": "west-cape",
+      "longitude": -64.4024861,
+      "latitude": 46.6810735,
+      "p": [
+        -92305.95129550554,
+        -20128.326499108978
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 4564,
+          "distance": 489.6239410897621
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW31",
+      "farm": "west-cape",
+      "longitude": -64.3958049,
+      "latitude": 46.6822539,
+      "p": [
+        -91793.08505797,
+        -20259.54104237236
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW32",
+      "farm": "west-cape",
+      "longitude": -64.4012245,
+      "latitude": 46.6740189,
+      "p": [
+        -92209.10760795271,
+        -19344.129517659203
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW33",
+      "farm": "west-cape",
+      "longitude": -64.4037747,
+      "latitude": 46.6717711,
+      "p": [
+        -92404.86757307328,
+        -19094.261633597303
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW34",
+      "farm": "west-cape",
+      "longitude": -64.3983674,
+      "latitude": 46.6720987,
+      "p": [
+        -91989.78920298621,
+        -19130.678004634912
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW35",
+      "farm": "west-cape",
+      "longitude": -64.3943175,
+      "latitude": 46.6727965,
+      "p": [
+        -91678.90837687811,
+        -19208.2462088781
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW36",
+      "farm": "west-cape",
+      "longitude": -64.3879288,
+      "latitude": 46.6740778,
+      "p": [
+        -91188.49519784693,
+        -19350.676905492208
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW37",
+      "farm": "west-cape",
+      "longitude": -64.4031909,
+      "latitude": 46.6686385,
+      "p": [
+        -92360.05357117635,
+        -18746.038422629797
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW38",
+      "farm": "west-cape",
+      "longitude": -64.3991901,
+      "latitude": 46.6693497,
+      "p": [
+        -92052.94178839312,
+        -18825.09618539532
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW39",
+      "farm": "west-cape",
+      "longitude": -64.3841031,
+      "latitude": 46.6714659,
+      "p": [
+        -90894.82454512957,
+        -19060.335270835654
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW40",
+      "farm": "west-cape",
+      "longitude": -64.400897,
+      "latitude": 46.6657687,
+      "p": [
+        -92183.96785868739,
+        -18427.02834447299
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW41",
+      "farm": "west-cape",
+      "longitude": -64.3969104,
+      "latitude": 46.6665323,
+      "p": [
+        -91877.94610472691,
+        -18511.91094802736
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW42",
+      "farm": "west-cape",
+      "longitude": -64.3988064,
+      "latitude": 46.6628398,
+      "p": [
+        -92023.48798139101,
+        -18101.44864626617
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW43",
+      "farm": "west-cape",
+      "longitude": -64.3942647,
+      "latitude": 46.6636721,
+      "p": [
+        -91674.8553119579,
+        -18193.96801627442
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW44",
+      "farm": "west-cape",
+      "longitude": -64.3967221,
+      "latitude": 46.6608084,
+      "p": [
+        -91863.49170843237,
+        -17875.636020728536
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW45",
+      "farm": "west-cape",
+      "longitude": -64.390955,
+      "latitude": 46.6618352,
+      "p": [
+        -91420.7941573203,
+        -17989.776221526827
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW46",
+      "farm": "west-cape",
+      "longitude": -64.3989452,
+      "latitude": 46.6573389,
+      "p": [
+        -92034.14262932415,
+        -17489.962640644277
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW47",
+      "farm": "west-cape",
+      "longitude": -64.3932893,
+      "latitude": 46.6589826,
+      "p": [
+        -91599.98107857387,
+        -17672.678114010814
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW48",
+      "farm": "west-cape",
+      "longitude": -64.3877912,
+      "latitude": 46.6600551,
+      "p": [
+        -91177.9326650256,
+        -17791.898376336787
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW49",
+      "farm": "west-cape",
+      "longitude": -64.3909182,
+      "latitude": 46.6487811,
+      "p": [
+        -91417.9692938911,
+        -16538.668318095446
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW50",
+      "farm": "west-cape",
+      "longitude": -64.3877362,
+      "latitude": 46.6446542,
+      "p": [
+        -91173.7107224017,
+        -16079.917641551217
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW51",
+      "farm": "west-cape",
+      "longitude": -64.3785118,
+      "latitude": 46.6409356,
+      "p": [
+        -90465.62185789757,
+        -15666.554035504112
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW52",
+      "farm": "west-cape",
+      "longitude": -64.3871425,
+      "latitude": 46.6368755,
+      "p": [
+        -91128.13677083161,
+        -15215.228919355326
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 8093,
+          "distance": 123.84020480677347
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW53",
+      "farm": "west-cape",
+      "longitude": -64.3857715,
+      "latitude": 46.6342944,
+      "p": [
+        -91022.89525558634,
+        -14928.31104607812
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 8093,
+          "distance": 126.63840853637694
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW54",
+      "farm": "west-cape",
+      "longitude": -64.3770798,
+      "latitude": 46.6353198,
+      "p": [
+        -90355.69782446831,
+        -15042.295621358919
+      ],
+      "guard": 3,
+      "near": {
+        "road": null,
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    },
+    {
+      "id": "WCW55",
+      "farm": "west-cape",
+      "longitude": -64.3675322,
+      "latitude": 46.6366926,
+      "p": [
+        -89622.79928984957,
+        -15194.89755713689
+      ],
+      "guard": 3,
+      "near": {
+        "road": {
+          "row": 8097,
+          "distance": 142.7122341612446
+        },
+        "building": null,
+        "sidewalk": null,
+        "parking": null
+      }
+    }
+  ]
+}

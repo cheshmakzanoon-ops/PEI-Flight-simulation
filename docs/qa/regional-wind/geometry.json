@@ -1,0 +1,223 @@
+{
+  "meaning": "True production geometry on CPU and exact hashes. Count per farm uses registered centroid and a synthetic constant terrain Y=16/eye Y=165; not an actual flight or GPU frame time. Whole-turbine angular heights at 540px use the real 53 degree vertical field of view in free flight, looking horizontally. The blade tip path including tilt has a slightly lower vertical maximum.",
+  "fade": {
+    "shape": "1-smoothstep(distance); opaque screen-space coverage",
+    "startM": 9000,
+    "endM": 11150,
+    "retireM": 11400,
+    "examples": {
+      "west-cape": 5.700381276104583,
+      "east-point-i": 5.985400339909813,
+      "hermanville": 7.1254765951307295
+    }
+  },
+  "farms": {
+    "west-cape": {
+      "shape": "Vestas V80-1.8",
+      "lod": [
+        {
+          "detail": 0,
+          "mast": {
+            "vertices": 1068,
+            "faces": 1344,
+            "position": "a0b9e512dfb8a979882abc35978dd51027ea72490f1e8b53785a8e0609bff8af",
+            "normal": "3387f3d991862d2c0e4870e0853e90937dc19d8c92d83ea704c4eb314f5f5916",
+            "index": "40147691db2f4bece876cf448e7e265e30c3be8b930640da68dc75737b81b1fe"
+          },
+          "rotor": {
+            "vertices": 888,
+            "faces": 1520,
+            "position": "c919e7adaa9fef49a761beb69ece04ff06606115952912cb09863d7d11c5f7fe",
+            "normal": "ff827e8c8a46f36311e572e642ae6a2e0676c85ed74fb03a10d007f39a74bf98",
+            "index": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5"
+          },
+          "actualUnrolledRadius": 40.00000186639063
+        },
+        {
+          "detail": 1,
+          "mast": {
+            "vertices": 252,
+            "faces": 324,
+            "position": "d5e54c1942f730b242c8e7630a3b92cb92c28e3b0c451a20f0474aae3e2339a7",
+            "normal": "bd2c58727eb662974a7fe361463b02b9d86de07c6bf3699ced711e1f5164df99",
+            "index": "83139652a26a0c4d6e7293a0a378451fd364391b9bac5f04b66d28cc7250103e"
+          },
+          "rotor": {
+            "vertices": 384,
+            "faces": 608,
+            "position": "58320e7f80caf5d4329a7ca204bcec8cf22f7c1d124ef0db8b08974c0820bfec",
+            "normal": "f23cd4f0e73514651d4d4c29af9cb18b16ced826ff9642ef916e4f95a1828754",
+            "index": "49c69d1d20f0ef7c24e4a004086606c0c94bc6735d03559f2276de0c4543b0d4"
+          },
+          "actualUnrolledRadius": 40.00000186639063
+        },
+        {
+          "detail": 2,
+          "mast": {
+            "vertices": 105,
+            "faces": 114,
+            "position": "2749bca22e135d773491d2980bf90bfbed4ded0e735b0b71a5fd3350c77f7532",
+            "normal": "57498ae910153fd3570aa4dcbf93a3a08990d3337f198424babb5a756d9cd56e",
+            "index": "9e0b3258fed4df222fc957f9b0f927743f03752239a7eb3cbc867049f1985e3b"
+          },
+          "rotor": {
+            "vertices": 186,
+            "faces": 256,
+            "position": "cb19b4f15ea1634d302caa47ee5b8fe38f7e14d0532e59456cce9c32498fb813",
+            "normal": "23f92a85b5a07eee3791ecc18a4f11435aa352ca2405a66d31245ec67ea105da",
+            "index": "c538cc00e401a04aadd779004aa39aad7ca83770a23e2bfed386a89b42b20460"
+          },
+          "actualUnrolledRadius": 40.00000136527562
+        }
+      ],
+      "registered": 55,
+      "stationaryCount": {
+        "registered": 55,
+        "near": 6,
+        "cruise": 37,
+        "distant": 12
+      },
+      "nonemptyDrawsAtPlanimetricCentre": 6,
+      "facesAtPlanimetricCentre": 56108,
+      "instanceBufferVersionsConstantAcross120Ticks": true
+    },
+    "east-point-i": {
+      "shape": "Vestas V90-3.0",
+      "lod": [
+        {
+          "detail": 0,
+          "mast": {
+            "vertices": 1096,
+            "faces": 1400,
+            "position": "ec535c82d04aad60b43ee6d9b7db24d44122c6bc3517b516efe07b3b6c67e8d0",
+            "normal": "6210cc48b9c783eea576e492b611044683d16622244ac1e469f5fe7bdc0fd168",
+            "index": "517ea497464445b0cdcf201b006badf90f88e1d4a6703a62abcc373ff20583a4"
+          },
+          "rotor": {
+            "vertices": 888,
+            "faces": 1520,
+            "position": "f092cb254d1d7a40b4e2e629b86b7d74e6e8cbafecb5b96c4d4b71ef2f492888",
+            "normal": "42b368e9fa1845e40886b10f97c10e8fc956ee4891b90b76bd409f317333d96e",
+            "index": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5"
+          },
+          "actualUnrolledRadius": 45.000001780633795
+        },
+        {
+          "detail": 1,
+          "mast": {
+            "vertices": 266,
+            "faces": 352,
+            "position": "ef1566dd5aedfcfbf4f516f292310e5b8954fa1b0f9637ff66db7a9acb7da5e1",
+            "normal": "7d29d2205deaf5ce81bf65ab379efc124d7e611eb3169e846bd4d125a1f012fe",
+            "index": "256844acd2b82323772a6dd08338d9657b036296c7477fd92d5a76dc36ead929"
+          },
+          "rotor": {
+            "vertices": 384,
+            "faces": 608,
+            "position": "bb5e03400544f1299cd8776c974eb77d7eeee82439ce13f4c3d18899df4da9e1",
+            "normal": "10bfdfdf8ff00fdcd7c809d58636c658445d965af8fe206eb8bdc421b15a8f06",
+            "index": "49c69d1d20f0ef7c24e4a004086606c0c94bc6735d03559f2276de0c4543b0d4"
+          },
+          "actualUnrolledRadius": 45.000001780633795
+        },
+        {
+          "detail": 2,
+          "mast": {
+            "vertices": 105,
+            "faces": 114,
+            "position": "d99c178f0a4d02696841aa73c1bd7ef90e4fcdee391ff82d7198b95556a58585",
+            "normal": "dbe1a9152fecbe8713ac45ab46311e9ca341fe6ca41ed4a7499321198c193b1b",
+            "index": "9e0b3258fed4df222fc957f9b0f927743f03752239a7eb3cbc867049f1985e3b"
+          },
+          "rotor": {
+            "vertices": 186,
+            "faces": 256,
+            "position": "f8d46311f9b405179850f66ffa88d299c781b13105b3ed8db3e55cf3f6c48c07",
+            "normal": "095b4038b2a3c7f8b29293c01ead4d0409c3dfe968f9c20c6bd8f5873d3a1aaa",
+            "index": "c538cc00e401a04aadd779004aa39aad7ca83770a23e2bfed386a89b42b20460"
+          },
+          "actualUnrolledRadius": 45.00000103880287
+        }
+      ],
+      "registered": 10,
+      "stationaryCount": {
+        "registered": 10,
+        "near": 8,
+        "cruise": 2,
+        "distant": 0
+      },
+      "nonemptyDrawsAtPlanimetricCentre": 4,
+      "facesAtPlanimetricCentre": 25280,
+      "instanceBufferVersionsConstantAcross120Ticks": true
+    },
+    "hermanville": {
+      "shape": "Acciona AW116/3000",
+      "lod": [
+        {
+          "detail": 0,
+          "mast": {
+            "vertices": 1304,
+            "faces": 1636,
+            "position": "09772af86da5deaf6594284b5150f309f34ac5db586ee59eb1b6df687887acdd",
+            "normal": "ac5cd184b26c8ba61a28f24f7ce75b9c099a88d30b8e8517d60d5b38f66c8266",
+            "index": "5c01ea5e98dd9497cb7d899fa54dc3cb818d2dd1f2b52432746745116d17f387"
+          },
+          "rotor": {
+            "vertices": 888,
+            "faces": 1520,
+            "position": "b5086b330284b5d2ab4b77b0e33f224de023631014fddb39341b8f0c1c1fc919",
+            "normal": "63bfee076396fc31802ee7faa7e46a9eb5c5fca4328505510f8441c4696d8cfd",
+            "index": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5"
+          },
+          "actualUnrolledRadius": 58.00000181864144
+        },
+        {
+          "detail": 1,
+          "mast": {
+            "vertices": 266,
+            "faces": 352,
+            "position": "f6e48013cca6ce9848ad2b97490623c98e0b64fbb23f903302a0c34375530c56",
+            "normal": "efadb828c1e74436fbc716a693c922dab5d2e13d76738a6fd4c7460ae82318dc",
+            "index": "256844acd2b82323772a6dd08338d9657b036296c7477fd92d5a76dc36ead929"
+          },
+          "rotor": {
+            "vertices": 384,
+            "faces": 608,
+            "position": "3c5b848fb1ac9c8c656c0509e700208d106051a840bfe0c9160e007eb1cacff3",
+            "normal": "4441785781c33dacef6c3df5624dab752bca6a4fca49a8945fa480519b3beb78",
+            "index": "49c69d1d20f0ef7c24e4a004086606c0c94bc6735d03559f2276de0c4543b0d4"
+          },
+          "actualUnrolledRadius": 58.00000181864144
+        },
+        {
+          "detail": 2,
+          "mast": {
+            "vertices": 105,
+            "faces": 114,
+            "position": "bfb63284cdbcbc096f54f4460d989de01501888d20b7b44a2a0838cdf5b62a05",
+            "normal": "c88e01bdd2e306c097a7717ac39877f54428fad297ecd9cd136d90e30d359503",
+            "index": "9e0b3258fed4df222fc957f9b0f927743f03752239a7eb3cbc867049f1985e3b"
+          },
+          "rotor": {
+            "vertices": 186,
+            "faces": 256,
+            "position": "524b3bc83d48cc0fe80e663c0b5f3497561bff08a5362d2a62cfc36a40657d7c",
+            "normal": "2b32813535090b07451076cb11aa562d15017809c2d7675f74bbf628b5c5e253",
+            "index": "c538cc00e401a04aadd779004aa39aad7ca83770a23e2bfed386a89b42b20460"
+          },
+          "actualUnrolledRadius": 58.00000181864144
+        }
+      ],
+      "registered": 9,
+      "stationaryCount": {
+        "registered": 9,
+        "near": 4,
+        "cruise": 5,
+        "distant": 0
+      },
+      "nonemptyDrawsAtPlanimetricCentre": 4,
+      "facesAtPlanimetricCentre": 17424,
+      "instanceBufferVersionsConstantAcross120Ticks": true
+    }
+  }
+}
