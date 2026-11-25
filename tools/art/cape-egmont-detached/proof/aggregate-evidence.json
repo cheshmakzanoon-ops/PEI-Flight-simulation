@@ -1,0 +1,180 @@
+{
+  "actualFrozenModel": {
+    "wall": {
+      "n": 34,
+      "heldBlocks": 8,
+      "sectors": [
+        0,
+        7,
+        22,
+        5
+      ],
+      "nSectorsAtLeastTwo": 3,
+      "hit": 34,
+      "miss": 0,
+      "hitShare": 1.0,
+      "p0_p50_p90_p95_max_m": [
+        0.0124,
+        0.33018,
+        0.57731,
+        0.63372,
+        0.65296
+      ],
+      "roleGate": false,
+      "swaths": [
+        17175
+      ]
+    },
+    "gallery": {
+      "n": 41,
+      "heldBlocks": 7,
+      "sectors": [
+        10,
+        11,
+        15,
+        5
+      ],
+      "nSectorsAtLeastTwo": 4,
+      "hit": 40,
+      "miss": 1,
+      "hitShare": 0.97561,
+      "p0_p50_p90_p95_max_m": [
+        0.0,
+        0.015,
+        0.0263,
+        0.03015,
+        0.034
+      ],
+      "roleGate": true,
+      "swaths": [
+        17175
+      ]
+    },
+    "cap": {
+      "n": 8,
+      "heldBlocks": 2,
+      "sectors": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      "nSectorsAtLeastTwo": 2,
+      "hit": 6,
+      "miss": 2,
+      "hitShare": 0.75,
+      "p0_p50_p90_p95_max_m": [
+        0.00843,
+        0.03488,
+        0.06184,
+        0.06906,
+        0.07628
+      ],
+      "roleGate": false,
+      "swaths": [
+        17175
+      ]
+    },
+    "capCore1p30": {
+      "n": 5,
+      "heldBlocks": 1,
+      "sectors": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      "nSectorsAtLeastTwo": 2,
+      "hit": 5,
+      "miss": 0,
+      "hitShare": 1.0,
+      "p0_p50_p90_p95_max_m": [
+        0.00843,
+        0.03981,
+        0.06473,
+        0.07051,
+        0.07628
+      ],
+      "roleGate": false,
+      "swaths": [
+        17175
+      ]
+    }
+  },
+  "allPulseReservedKeys": 8180,
+  "capP90GapM": 0.02232,
+  "limit": "Single survey and sampled facets only; no held ground/contact or installed pose checked.",
+  "officialExact206": 9,
+  "sourceResponseRangeSHA256AllMatch": true,
+  "trainingVsHeldKeyOverlap": 0,
+  "uniqueSidednessProven": false,
+  "untouchedTrainingKeysVerbatim": 15123,
+  "wireBytes": 1263080,
+  "rawOriginalArtistGeometryEvidence": "b19617528f12d4e8b770003b1f772c0c32780be4a5a773dba626482941e79b2c",
+  "artFileSHA256": "14853a50fc39c8fd7cdc6211ba14bf01290ad09a849ca459217738122f4faa84",
+  "notes": "The frozen wall/gallery/cap vertices were scored. Published material tuning, texture precision and an interpretive foundation lip do not represent measured shapes. No live use.",
+  "primarySource": {
+    "scope": "Natural Resources Canada 2020 project, Open Government Licence \u2013 Canada",
+    "name": "pei_2020_312000_706000.copc.laz",
+    "ETag": "\"d369a39fc580f21b9c923e3b845ce28f-2\"",
+    "landingPage": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947"
+  },
+  "studio": {
+    "exterior": {
+      "triangles": 5907,
+      "draws": 39,
+      "bounds": [
+        [
+          -3.4660000801086426,
+          -0.02800000086426735,
+          -3.4660000801086426
+        ],
+        [
+          3.508776903152466,
+          13.466401100158691,
+          3.4660000801086426
+        ]
+      ]
+    },
+    "deck": {
+      "triangles": 5903,
+      "draws": 37,
+      "bounds": [
+        [
+          -3.4660000801086426,
+          -0.02800000086426735,
+          -3.4660000801086426
+        ],
+        [
+          3.508776903152466,
+          13.466401100158691,
+          3.4660000801086426
+        ]
+      ]
+    },
+    "weather": {
+      "triangles": 3852,
+      "draws": 14,
+      "bounds": [
+        [
+          -3.4660000801086426,
+          -0.02800000086426735,
+          -3.4660000801086426
+        ],
+        [
+          3.508776903152466,
+          13.466401100158691,
+          3.4660000801086426
+        ]
+      ]
+    }
+  }
+}

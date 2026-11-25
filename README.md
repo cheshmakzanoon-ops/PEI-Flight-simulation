@@ -33,6 +33,8 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
+The [Cape Egmont lighthouse studio](docs/qa/cape-egmont-detached.md) is a separate Prince County model with unverified placement; it does not alter the live island.
+
 **Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](docs/qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces.
 
 ### Scenery previews
