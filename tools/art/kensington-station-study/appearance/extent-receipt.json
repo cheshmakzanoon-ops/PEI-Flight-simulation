@@ -1,0 +1,94 @@
+{
+  "scope": "Actual local emitted geometry support audit; no proposal to fit or mount to real outlines, grade or operational parameters",
+  "existingHorizontalProofSHA256": "710e1cf0039c3fdd3bec5f345f8f09ab04eed31c8dd3c42b20527ee882b31cec",
+  "emittedTriProjectionSHA256": "6d4bde97688d376f4296336113e0081631f963593cf54555bd0d255960ad4885",
+  "maxSingleTriangleOutsideExactAEBSupportGameM2": 0.0,
+  "maxSingleLowerTriangleOutsideParcelGameM2": 0.0,
+  "verticalEdgeOnPlanesSeparatelyCheckedSegments": 1579,
+  "allTypedTrianglesChecked": 5837,
+  "architectureKnownRoofFootprintIsOnlyACustodyBound": true,
+  "roofCanopyEavesNotValidatedCurrent": true,
+  "newGroundOrParcelsNeverClaimed": true,
+  "groups": [
+    {
+      "role": "main-roof",
+      "upperOrFootPlanProjectedUnionM2": 192.10415702463234,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "bay-roof",
+      "upperOrFootPlanProjectedUnionM2": 13.806242187823216,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "roof-soffit",
+      "upperOrFootPlanProjectedUnionM2": 205.91039921245556,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "shelter-SW",
+      "upperOrFootPlanProjectedUnionM2": 33.28199764716629,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "shelter-NE",
+      "upperOrFootPlanProjectedUnionM2": 33.39920252637867,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "support-SW",
+      "upperOrFootPlanProjectedUnionM2": 0.18490015993120323,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "support-NE",
+      "upperOrFootPlanProjectedUnionM2": 0.18490015993120323,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "neutral-inner",
+      "upperOrFootPlanProjectedUnionM2": 143.31799044322975,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "pale-timber",
+      "upperOrFootPlanProjectedUnionM2": 0.8143580030592852,
+      "lowerFootPlanCheckedAgainstParcel": false
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 2.1999999216757686,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.38579894309354323,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.09438642260616484,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.37771420680047385,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.10834804695707811,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.03769266679183522,
+      "lowerFootPlanCheckedAgainstParcel": true
+    },
+    {
+      "role": "reused-arch",
+      "upperOrFootPlanProjectedUnionM2": 0.015093752421904347,
+      "lowerFootPlanCheckedAgainstParcel": true
+    }
+  ]
+}

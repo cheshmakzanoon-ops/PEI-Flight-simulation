@@ -82,6 +82,14 @@ This optional check uses bounded byte ranges of one exact public object. The
 output is an aggregate JSON on stdout. It is not needed by the simulator or
 the offline test suite.
 
+## Separate appearance workbench
+
+The [appearance workbench](appearance/README.md) assembles approximate exterior
+forms with the original arched joinery, neutral roof color and a separate
+angular stone treatment. It is deliberately independent of this measured
+witness and keeps its unverified roof shapes, supports and current finishes
+explicit. Neither workbench mounts a station into the simulator.
+
 ## Release gate
 
 This remains a partial study, not a whole replacement. Keep stock `q032122/149` and the adjacent ground and scenery intact. A future candidate requires its own evidence for the central bay alignment, the northeast terminal facet, southwest ridge, sensitive post/wall seating, and replacement roof finish. Verify the actual rendered ground and the two original axial clearances, protected owners and paths, matched external poses and ordinary player flight. Ground and collision samplers are not interchangeable evidence. No footing, grade, track, boardwalk, sign, vehicle or neighboring scenery is part of this study.

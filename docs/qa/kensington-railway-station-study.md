@@ -10,4 +10,15 @@ The Town’s [June 2020 report](https://kensington.ca/assets/COC-Tentative-Agend
 
 A separate [rear-ground comparison](../../tools/art/kensington-station-study/README.md#rear-ground-cross-check) used 137 usable ground-class pulses from the public 2020 acquisition without opening the old holdouts. The two new reserved blocks agreed with the stock near-terrain mesh to within 4.0 cm at the 90th percentile after a single fitted datum offset. These are archival comparison residuals behind the station, not a survey of its footings or a reason to install the incomplete roof.
 
+## Detached appearance study
+
+![Approximate Kensington model with open hipped end shelters and a projecting gable, on an artificial studio ground.](art/kensington-appearance-study.webp)
+
+The [separate Three.js workbench](../../tools/art/kensington-station-study/appearance/README.md)
+adds an approximate projecting bay, pale cross-gable and two open end shelters
+to explore the recognizable silhouette. The image is an original isolated
+software render of the study geometry, not an in-flight capture or a view of
+the current building. Supports, roof joins, roof covering and ground contact
+remain unverified. The earlier survey-fit roof is preserved separately.
+
 **Keep stock live.** No simulator imports or scene updates, no covered-structure or grade replacement, and no neighboring properties, paths, boardwalk or rail changed. The [detached study](../../tools/art/kensington-station-study/README.md) reproduces the previews, geometry receipt, source credits and precise release holds.

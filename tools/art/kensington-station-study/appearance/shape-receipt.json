@@ -1,0 +1,242 @@
+{
+  "scope": "Approximate shape study only, no archive corrections, real site dimensions, material match, rendering grade or release.",
+  "priorProofsRehashedExactly": {
+    "conservationFiles": 9,
+    "archiveInputs": 7
+  },
+  "roles": {
+    "main-roof": {
+      "attributes": {
+        "position": "3f291b6dce437829d473a63adec546538faf3e1c02c70fb17f54cc99453d45b5",
+        "normal": "7dc379c53f81127235cb0072cf117adbc88a300521f4011240d0d86db34475ef",
+        "uv": "34774a2d9f401a8734e9186d9ba36318d8b0f67b785ffa8635a17f40b4ca69bc"
+      },
+      "triangles": 16
+    },
+    "bay-roof": {
+      "attributes": {
+        "position": "88d00520b8c0d2d2815c8ad772f3d3f8cea5dc739e2b3583d754fe4e58373215",
+        "normal": "46823e4a89b9783cee88a142adbed8b193d746815d1d3c61fca564b4d0904249",
+        "uv": "276f6da0f6ca417e5726ff8b133d762e10de855b2dec958cad124b84e2447b0d"
+      },
+      "triangles": 2
+    },
+    "roof-soffit": {
+      "attributes": {
+        "position": "a29c80009c8dcbd6130df13d6d7f8e9cae8653c11b596c03683fd75a86301dfe",
+        "normal": "d2896e772a34d2ab05b36158a8e8c4d8e5c2289cad5b43bdb44959f37ff7c189",
+        "uv": "b1b2e9e8531eafc4241d90031d7fc0ff2c9497a45dc3f6a2db125db7e26e02b1"
+      },
+      "triangles": 18
+    },
+    "shelter-SW": {
+      "attributes": {
+        "position": "1b4755a27aba88bf31d4baa4f83bbee9e4f5bb7057013cf031d2cbbbdfd9f138",
+        "normal": "51fddd224555db3a775046842cec7ebbf859f65658819bc4e7e5198d74ba8e79",
+        "uv": "a85a8e5fd184fd53af4a401dcdb2d25d89672fa4ed32848649617f8475763a72"
+      },
+      "triangles": 20
+    },
+    "shelter-NE": {
+      "attributes": {
+        "position": "a4a5d633c69112b5667b20d57de5a720c5149d19e14cd0f72df22871f4b41507",
+        "normal": "31e84e51cbbe7f92ff59e075cade28edbd914b1bbe9b2e5dc031a47ed7d81842",
+        "uv": "580b156888517a7d0ed736d8a32391bcf0eda527ce7f923416d87221d7fa043a"
+      },
+      "triangles": 20
+    },
+    "stone-wall": {
+      "attributes": {
+        "position": "1ec276cbd15814a138f316fee9d099410a7b2d409b4acc2823ac9b5ba68573cf",
+        "normal": "946b983b2490de5ad5ff92d91b7ffbd84164d601bb7d09a997060ab0a91afba5",
+        "uv": "1a33af1cd6127e85c45a79e8966b21194a88bfdbcff0af4fe266b7bfc6637b59"
+      },
+      "triangles": 112
+    },
+    "support-SW": {
+      "attributes": {
+        "position": "e71a1f2be01166a693af09c733e735c879a9b8b5d728700ac42737342b244989",
+        "normal": "be4bb5819f3254ad68f112c699e5b0aeb4d318c7d2cb33045b258e8b07e73d9f",
+        "uv": "66970433e34dce0b17487ac14b6d6bc3cb9add10e670808b238ad868f0644248"
+      },
+      "triangles": 12
+    },
+    "support-NE": {
+      "attributes": {
+        "position": "b0871622daa6bf3e6ee4736bde23e89fd58fec7ae9f77002f0b8c28446bb9600",
+        "normal": "48bfad25675f5484c9c8e23589530e400a723c49c4fcb301b4114ccd2e9c1177",
+        "uv": "356e0a2ec4a70cfa0b25cd7b578f79b3c402498c757c8e3a9b65b3209eb2182a"
+      },
+      "triangles": 12
+    },
+    "neutral-inner": {
+      "attributes": {
+        "position": "506368409e6bb1ccf722f10c811f2057a53d6e26a549ec325294247ccfdfeac0",
+        "normal": "022aecf4347f0c42a66f04542ad95d125d1c4d26d71316eb680503bb9e1d3ed7",
+        "uv": "5b4d1f72bda48806855a9bb161b17e0fe62396389a0ff14ee6c06859ab50ffbb"
+      },
+      "triangles": 108
+    },
+    "charcoal-gable": {
+      "attributes": {
+        "position": "4add9f469e40075ed7da875ca25419ce4346cef8229ff38c25c11381184b3e80",
+        "normal": "5a607a3779c3d829ccda243dd322eb27fcd4ff5404b80214df190f3d4de85eb2",
+        "uv": "d1178983f3254bfc641c662410ccc1a2aac72b083c0c906a0a6530cd8b7e5783"
+      },
+      "triangles": 3
+    },
+    "pale-timber": {
+      "attributes": {
+        "position": "930dd645498bc20f0264bd136f1249b603adb1db5eeac723b4bcbfe315354c3a",
+        "normal": "00d2f95048cde782626c6a11d1cbf9351182a6b388b72d26cbd625e502a8dfc0",
+        "uv": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476"
+      },
+      "triangles": 144
+    },
+    "long-fascia": {
+      "attributes": {
+        "position": "329c23264e7599276381122f0686186db7a8ce0f75434b0ab9a770e10ffe6155",
+        "normal": "a7d51787e99ca5bd9581cfe1a9a7a05ba1073c9f6904d8a2052bcfac08f1616e",
+        "uv": "06054e7585c2319e5f8700bb200f7026f81bd841f01dbf479c6e7a5ad3a1e776"
+      },
+      "triangles": 24
+    }
+  },
+  "worldPositionNone": true,
+  "boundLocal": [
+    [
+      -16.75,
+      0,
+      -9.819999694824219
+    ],
+    [
+      16.940000534057617,
+      9.743599891662598,
+      -0.13300000131130219
+    ]
+  ],
+  "referenceViewsNeverMatched": true,
+  "rootVisibleByDefault": false,
+  "materialEvidenceHolds": [
+    "SW crown profile",
+    "both true central bay planes and placement",
+    "NE roof-end facet and supports",
+    "all roof product",
+    "all field grade and feet"
+  ],
+  "detail": {
+    "mainStoneBayBodyProjectionStudyM": 0.8499999999999999,
+    "archReusedBatches": 8,
+    "originalArchHasRealGeom": [
+      {
+        "role": "dark inset glass",
+        "depthM": 0.37749997407197977
+      },
+      {
+        "role": "dark inset glass",
+        "depthM": 0.37749997407197977
+      },
+      {
+        "role": "dark inset glass",
+        "depthM": 0.37749997407197977
+      }
+    ]
+  },
+  "actualOriginalShapeEvidenceRelative": {
+    "mainCrestStudioM": 9.721177321178466,
+    "newCrossGableCrestStudioM": 8.781795415246833,
+    "roofingSplitTest": [
+      {
+        "u": -2.7,
+        "v": 0.6879339769517727,
+        "actualTransitionChangeM": 0.051524548076921306
+      },
+      {
+        "u": -1.9,
+        "v": 1.8830727462500625,
+        "actualTransitionChangeM": 0.05152459523213082
+      },
+      {
+        "u": -0.8,
+        "v": 3.526388554035211,
+        "actualTransitionChangeM": 0.051524660070542794
+      },
+      {
+        "u": 0.8,
+        "v": 3.526388554035211,
+        "actualTransitionChangeM": 0.051524698303905936
+      },
+      {
+        "u": 1.9,
+        "v": 1.8830727462500625,
+        "actualTransitionChangeM": 0.05152463346544778
+      },
+      {
+        "u": 2.7,
+        "v": 0.6879339769517727,
+        "actualTransitionChangeM": 0.05152458631020451
+      }
+    ],
+    "visibleLongEaveExtensionFromBodyM": 2.5999999999999996,
+    "openEndCanopies": [
+      {
+        "end": "SW",
+        "studiedHipCrestM": 6.73,
+        "pierTipToSoffitGapM": -0.004000108179294415,
+        "pierMaximumWidthM": 0.43000030517578125,
+        "testedUndersideBlockingHorizontalRays": 0
+      },
+      {
+        "end": "NE",
+        "studiedHipCrestM": 6.61,
+        "pierTipToSoffitGapM": -0.004000294605690513,
+        "pierMaximumWidthM": 0.43000030517578125,
+        "testedUndersideBlockingHorizontalRays": 0
+      }
+    ],
+    "skinLedger": {
+      "main": {
+        "vertices": 32,
+        "triangles": 60,
+        "edges": 90,
+        "chi": 2,
+        "defectives": 0,
+        "volumeM3": 27.797933279412074,
+        "examples": []
+      },
+      "SW": {
+        "vertices": 12,
+        "triangles": 20,
+        "edges": 30,
+        "chi": 2,
+        "defectives": 0,
+        "volumeM3": 4.493072856796211,
+        "examples": []
+      },
+      "NE": {
+        "vertices": 12,
+        "triangles": 20,
+        "edges": 30,
+        "chi": 2,
+        "defectives": 0,
+        "volumeM3": 4.508895524338395,
+        "examples": []
+      },
+      "body": {
+        "vertices": 112,
+        "triangles": 220,
+        "edges": 330,
+        "chi": 2,
+        "defectives": 0,
+        "volumeM3": 1107.885292117241,
+        "examples": []
+      }
+    }
+  },
+  "counts": {
+    "newStructuralTriangles": 491,
+    "originalUnchangedArchTriangles": 5346,
+    "ownMaterialsBeforeSkinning": 12,
+    "drawsTotalIfShown": 20
+  }
+}
