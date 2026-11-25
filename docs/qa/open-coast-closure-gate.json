@@ -1,0 +1,212 @@
+{
+  "baseline": "1a40c2def2a15eff92e210c6ffe938493721fbf8",
+  "unitTestsPassed": 399,
+  "productionBuild": "pass",
+  "worldChecks": "pass",
+  "backend": "Chromium SwiftShader",
+  "viewport": [
+    1120,
+    784
+  ],
+  "fixedFrames": {
+    "prince-close": {
+      "bandY": [
+        365,
+        565
+      ],
+      "oldPartial": 679,
+      "newPartial": 18,
+      "oldPure": 334,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 7321,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          51,
+          270018
+        ],
+        [
+          52,
+          270118
+        ]
+      ]
+    },
+    "kings-close": {
+      "bandY": [
+        316,
+        535
+      ],
+      "oldPartial": 312,
+      "newPartial": 11,
+      "oldPure": 57,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 1407,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          92,
+          240224
+        ],
+        [
+          93,
+          240324
+        ]
+      ]
+    },
+    "author-basin": {
+      "bandY": [
+        393,
+        523
+      ],
+      "oldPartial": 0,
+      "newPartial": 0,
+      "oldPure": 0,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 2,
+        "refined": 0
+      },
+      "visible": 0,
+      "stats": [
+        [
+          217,
+          293798
+        ],
+        [
+          217,
+          293798
+        ]
+      ]
+    },
+    "author-queens": {
+      "bandY": [
+        432,
+        580
+      ],
+      "oldPartial": 0,
+      "newPartial": 0,
+      "oldPure": 0,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 2,
+        "refined": 0
+      },
+      "visible": 0,
+      "stats": [
+        [
+          163,
+          422159
+        ],
+        [
+          163,
+          422159
+        ]
+      ]
+    }
+  },
+  "realDispatchFlights": [
+    {
+      "mode": "kings",
+      "site": "kings-coastal-ridge",
+      "motionM": 129.748,
+      "coverage": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "detail",
+      "site": "kings-coastal-ridge",
+      "motionM": 129.746,
+      "coverage": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "study",
+      "site": "kings-coastal-ridge",
+      "motionM": 127.405,
+      "coverage": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "prince",
+      "site": "prince-open-shore-pass",
+      "motionM": 126.141,
+      "coverage": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "stock",
+      "site": "kings-coastal-ridge",
+      "motionM": 127.993,
+      "coverage": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "changed-source",
+      "site": "kings-coastal-ridge",
+      "motionM": 129.163,
+      "coverage": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "shifted-bounds",
+      "site": "kings-coastal-ridge",
+      "motionM": 129.163,
+      "coverage": null,
+      "coverRequests": 1
+    }
+  ],
+  "geometry": {
+    "stockTriangles": 98972,
+    "stockBatches": 70,
+    "exactFloat32": true,
+    "baselineCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "wrongCoverRejected": true,
+    "groundAndContactUnchanged": true,
+    "sites": [
+      {
+        "i": 781,
+        "j": 410,
+        "addedNearTriangles": 100,
+        "contactProbes": 1089,
+        "nearGeometry": "c5a18d90076488eb23295b3ee1f650d8ee985b284905abfcb40d6b30bbc9ee04",
+        "reentryExact": true
+      },
+      {
+        "i": 2722,
+        "j": 1550,
+        "addedNearTriangles": 100,
+        "contactProbes": 1089,
+        "nearGeometry": "e64e3c1fbd3fb123df91134e96ffa021b9d82cd03f70bef0e5cd205763def072",
+        "reentryExact": true
+      }
+    ]
+  }
+}

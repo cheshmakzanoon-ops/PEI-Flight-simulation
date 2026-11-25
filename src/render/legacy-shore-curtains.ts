@@ -55,7 +55,7 @@ export class LegacyShoreCurtains {
  private readonly chunks:Chunk[]=[];
  private refined=0;
  private readonly terrain:Terrain;
- constructor(scene:THREE.Scene,material:THREE.ShaderMaterial,east:THREE.ShaderMaterial|undefined,eastGroups:ReadonlySet<string>,terrain:Terrain,arcs:readonly ShoreSegment[],owners:ReadonlyMap<string,THREE.Sphere>,private readonly additive=false){
+ constructor(scene:THREE.Scene,material:THREE.ShaderMaterial,east:THREE.ShaderMaterial|undefined,eastGroups:ReadonlySet<string>,terrain:Terrain,arcs:readonly ShoreSegment[],owners:ReadonlyMap<string,THREE.Sphere>,private readonly additive=false,stageName='Selective legacy coast arcs'){
   this.terrain=terrain;
   const groups=new Map<string,{owner:string;arcs:ShoreSegment[]; original:Set<ShoreSegment>}>();
   for(const q of arcs){
@@ -77,7 +77,7 @@ export class LegacyShoreCurtains {
    }
    const original=geometry(p),mesh=new THREE.Mesh(original,east&&eastGroups.has(g.owner)?east:material);
    const stockCull=owners.get(g.owner);if(!stockCull)throw Error('Missing legacy coast owner');
-   mesh.name='Selective legacy coast arcs';scene.add(mesh);this.chunks.push({mesh,original,bounds,stockCull,arcs:g.arcs});
+   mesh.name=stageName;scene.add(mesh);this.chunks.push({mesh,original,bounds,stockCull,arcs:g.arcs});
   }
  }
  update(x:number,z:number,signature:(b:Bounds)=>string,height:(x:number,z:number)=>number){

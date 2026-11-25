@@ -319,3 +319,14 @@ export function standardNearshoreRequested(q:URLSearchParams){
     'cavendishDetail','greenGablesBarnReview','gablesGradeReview',
     'duneReliefStudy','duneSandDetail','duneGrassSurface','kingsDryCrownStudy','northCapeWind'].some(k=>q.has(k));
 }
+
+/** The two lower-deviation shore cells are standalone mask repairs.
+ * Explicit shoreline studies retain their own earlier geometry. */
+export function standardOpenCoastRequested(q:URLSearchParams){
+ if(q.has('stockOpenCoast')||q.has('legacyShoreArcs'))return false;
+ const layer=q.get('scenery');if(layer&&layer!=='standard')return false;
+ return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
+  !['surveyRelief','inlandRelief','buildingShadows','basinChannel','basinWharf',
+    'orthophotoSeamStudy','shoreToneStudy','regionalCanopyStudy',
+    'cavendishDetail','duneReliefStudy','northCapeWind'].some(k=>q.has(k));
+}

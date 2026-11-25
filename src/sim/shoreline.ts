@@ -4,7 +4,7 @@ import type { WaterInset } from './harbour-cover.ts';
 import type { Cover } from './cover.ts';
 import type { Terrain } from './terrain.ts';
 
-export interface ShoreSegment { ax:number; az:number; bx:number; bz:number; seatedLegacyArc?:ShoreSegment; seatJoin?:readonly [boolean,boolean];baywalk?:true }
+export interface ShoreSegment { ax:number; az:number; bx:number; bz:number; seatedLegacyArc?:ShoreSegment; shortOpenArc?:true; seatJoin?:readonly [boolean,boolean];baywalk?:true }
 
 function contourCell(result:ShoreSegment[],x:number,z:number,stepX:number,stepZ:number,a:number,b:number,c:number,d:number){
  const mask=(a>=0?1:0)|(b>=0?2:0)|(c>=0?4:0)|(d>=0?8:0);
@@ -88,7 +88,7 @@ function baywalkShoreCells(cover:Cover,terrain:Terrain){
  return chosen;
 }
 /** March the same pixel-centred, signed-distance field the land and water shaders sample. */
-export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number,corners:Quad)=>boolean|'pinned-zero';
+export type LegacyShoreSelection=(x0:number,z0:number,x1:number,z1:number,i:number,j:number,corners:Quad)=>boolean|'pinned-zero'|'pinned-short';
 export const LEGACY_SHORE_MIN_CHORD_M=1.40;
 export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreSelection): ShoreSegment[] {
  const {width:w,height:h,bytes}=cover,result:ShoreSegment[]=[];
@@ -116,13 +116,13 @@ export function coastSegments(cover: Cover,terrain: Terrain,refine?:LegacyShoreS
   const mode=refine?.(x,z,x+stepX,z+stepZ,i,j,[a,b,c,d]);
   if(mode){
    const zero=mode==='pinned-zero';
-   const arc=strictArc([a,b,c,d],stepX,stepZ,.047,96,zero ? .09 : LEGACY_SHORE_MIN_CHORD_M,zero);
+   const arc=strictArc([a,b,c,d],stepX,stepZ,.047,96,zero ? .09 : mode==='pinned-short'?.60:LEGACY_SHORE_MIN_CHORD_M,zero);
    if(arc.mode==='exact'&&arc.points.length>2){
     const a=arc.points[0],d=arc.points.at(-1)!;
     const original={ax:x+a[0]*stepX,az:z+a[1]*stepZ,bx:x+d[0]*stepX,bz:z+d[1]*stepZ};
     for(let k=1;k<arc.points.length;k++){
      const p=arc.points[k-1],q=arc.points[k];
-     result.push({ax:x+p[0]*stepX,az:z+p[1]*stepZ,bx:x+q[0]*stepX,bz:z+q[1]*stepZ,seatedLegacyArc:original});
+     result.push({ax:x+p[0]*stepX,az:z+p[1]*stepZ,bx:x+q[0]*stepX,bz:z+q[1]*stepZ,seatedLegacyArc:original,...(mode==='pinned-short'?{shortOpenArc:true}:{})});
     }
     continue;
    }
