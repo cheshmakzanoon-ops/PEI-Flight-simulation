@@ -81,6 +81,7 @@ export class RegionalWind{
  }
  private staticLight?:StaticWindReceiver;private staticJob=false;private dead=false;
  private prepareLight?:StaticWindPrepare;
+ lightClock(){return this.clock.value;}
  groundLightState(){return this.staticLight?.state??(this.prepareLight?{phase:this.staticJob?'pending':'cold',activeTiles:0,nearCasters:0}:null);}
  private updateStatic(eye:WindObserver){
   if(this.staticLight){this.staticLight.update(eye);return;}

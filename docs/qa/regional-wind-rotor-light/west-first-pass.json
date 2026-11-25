@@ -1,0 +1,121 @@
+{
+  "normal": {
+    "calls": 54,
+    "tris": 313212,
+    "gl": 0
+  },
+  "stock": {
+    "calls": 54,
+    "tris": 313212,
+    "gl": 0
+  },
+  "restored": {
+    "calls": 54,
+    "tris": 313212,
+    "gl": 0
+  },
+  "before": {
+    "phase": "ready",
+    "activeTiles": 2,
+    "nearRotors": 3,
+    "sourceSlots": 3,
+    "offscreenPasses": 1,
+    "submittedTriangles": 4560,
+    "textureSize": [
+      1124,
+      1320
+    ],
+    "lastPhase": 0.42,
+    "reason": ""
+  },
+  "ordinaryGlErrors": [],
+  "stateErrors": [],
+  "staticCasters": 3,
+  "ids": [
+    "WCW26",
+    "WCW27",
+    "WCW28"
+  ],
+  "clock": 0.42,
+  "activeFarm": {
+    "phase": "ready",
+    "activeTiles": 2,
+    "nearCasters": 3,
+    "moving": {
+      "phase": "ready",
+      "activeTiles": 2,
+      "nearRotors": 3,
+      "sourceSlots": 3,
+      "offscreenPasses": 1,
+      "submittedTriangles": 4560,
+      "textureSize": [
+        1124,
+        1320
+      ],
+      "lastPhase": 0.42,
+      "reason": ""
+    }
+  },
+  "lease": [
+    {
+      "tex": "west-cape \u00b7 finite moving rotor D16",
+      "worldStatic": 3,
+      "rect": [
+        -42.15,
+        -21,
+        0.011862396204033215,
+        0.025252525252525252
+      ]
+    },
+    {
+      "tex": "west-cape \u00b7 finite moving rotor D16",
+      "worldStatic": 3,
+      "rect": [
+        -42.15,
+        -21,
+        0.011862396204033215,
+        0.025252525252525252
+      ]
+    }
+  ],
+  "atlas": {
+    "width": 1124,
+    "height": 1320,
+    "cols": 2,
+    "rows": 5,
+    "w": 562,
+    "h": 264,
+    "d16": true,
+    "depthTarget": "west-cape \u00b7 finite moving rotor D16",
+    "submittedOffscreenTriangles": 4560
+  },
+  "worldSun": [
+    -0.5988930707832083,
+    0.7386347872992903,
+    -0.3094280865713243
+  ],
+  "time": 0.42,
+  "sha": {
+    "normal": "8a1231c166516d6aca9cbd891483302106acde4c076315aba96dec7f69ccba9c",
+    "stock": "a474ab8d5e89e317db627e5222780e5c7f6122d3c380b9f2f248ed5b84c11617",
+    "restored": "8a1231c166516d6aca9cbd891483302106acde4c076315aba96dec7f69ccba9c"
+  },
+  "delta": {
+    "any": 1553,
+    "gt2": 1220,
+    "gt8": 619,
+    "peak": 12,
+    "brightened": 0,
+    "restoredBitsEqual": true
+  },
+  "pose": {
+    "lon": -64.3847689404,
+    "lat": 46.6861583914,
+    "h": 0.1,
+    "east": -0.4590200519,
+    "south": 0.8884259069,
+    "dist": 146,
+    "agl": 84
+  },
+  "errors": []
+}

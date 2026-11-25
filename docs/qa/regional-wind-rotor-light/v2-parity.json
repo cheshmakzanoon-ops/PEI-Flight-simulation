@@ -1,0 +1,39 @@
+{
+  "scope": "West matched in-game camera at the identical original scene time. Frozen V2 only hardened lease/caster ownership; same older mast shadows in both.",
+  "v1Register": "5f79909faa7da2bad2e2fda94beb838c7f96a48348cd433bb6b17087c14b6b4d",
+  "v2Register": "f789250d14340818e9c1a99c928ba7c9ce54e330949cb094c05fb01b95ad476d",
+  "camera": {
+    "lon": -64.3847689404,
+    "lat": 46.6861583914,
+    "h": 0.1,
+    "east": -0.4590200519,
+    "south": 0.8884259069,
+    "dist": 146,
+    "agl": 84
+  },
+  "clock": 0.42,
+  "delta": {
+    "any": 1553,
+    "gt2": 1220,
+    "gt8": 619,
+    "peak": 12,
+    "brightened": 0,
+    "restoredBitsEqual": true
+  },
+  "ordinaryGlErrors": [],
+  "stateErrors": [],
+  "frames": {
+    "normal": {
+      "byteIdentical": true,
+      "sha256": "8a1231c166516d6aca9cbd891483302106acde4c076315aba96dec7f69ccba9c"
+    },
+    "stock": {
+      "byteIdentical": true,
+      "sha256": "a474ab8d5e89e317db627e5222780e5c7f6122d3c380b9f2f248ed5b84c11617"
+    },
+    "restored": {
+      "byteIdentical": true,
+      "sha256": "8a1231c166516d6aca9cbd891483302106acde4c076315aba96dec7f69ccba9c"
+    }
+  }
+}

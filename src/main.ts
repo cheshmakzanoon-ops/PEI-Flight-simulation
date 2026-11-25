@@ -362,8 +362,12 @@ async function run(){
    const {createRegionalWind}=await import('./render/regional-wind.ts');
    const caps=renderer.capabilities;
    const mount=!options.has('stockRegionalWindLight')&&caps.maxTextures>=16&&caps.maxFragmentUniforms>=224?
-    async (id:import('./render/regional-wind-stream.ts').WindFarmId,caster:import('./render/regional-wind.ts').RegionalWind)=>
-     (await import('./render/regional-wind-light.ts')).staticWindLight(id,{world,base:worldBase,maxTextures:caps.maxTextures,maxUniforms:caps.maxFragmentUniforms},caster):undefined;
+    async (id:import('./render/regional-wind-stream.ts').WindFarmId,caster:import('./render/regional-wind.ts').RegionalWind)=>{
+     const rotorScope=!options.has('stockRegionalWindRotorLight')&&caps.isWebGL2&&!caps.reversedDepthBuffer&&caps.maxTextureSize>=2048;
+     const base=(await import('./render/regional-wind-light.ts')).staticWindLight(id,{world,base:worldBase,maxTextures:caps.maxTextures,maxUniforms:caps.maxFragmentUniforms,rotorScope},caster);
+     if(!base||!rotorScope)return base;
+     try{return (await import('./render/regional-wind-rotor.ts')).withRotorReceiver(id,renderer,world,caster,base);}catch{return base;}
+    }:undefined;
    return id=>createRegionalWind(id,scene,world,(owner,roots)=>vegetation.setRegionalWindRoots(owner,roots),mount);
   }):undefined;
  const capeCenter=NORTH_CAPE_SITES[7];

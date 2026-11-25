@@ -36,6 +36,9 @@ float windStaticDirect(vec3 p,float dist,float pixel){
 }
 `;
 const insertion=`float regionalCut=windStaticDirect(p,d,max(length(terrainDx.xz),length(terrainDy.xz)));
+ #ifdef PEI_MOVING_ROTOR_RECEIVER
+ regionalCut=max(regionalCut,windRotorDirect(p,d,max(length(terrainDx.xz),length(terrainDy.xz))));
+ #endif
  if(regionalCut>0.)col*=.90+.31*light*(1.-.96*regionalCut);
  else ${marker}`;
 function sha(b:ArrayBuffer){return crypto.subtle.digest('SHA-256',b).then(q=>Array.from(new Uint8Array(q),n=>n.toString(16).padStart(2,'0')).join(''));}
@@ -62,26 +65,30 @@ export async function loadStaticData(id:WindFarmId,base:string,fetcher:typeof fe
   return rgba;
  }catch{return;}
 }
-function declaredUnits(src:string){
+export function declaredUnits(src:string){
  const rg=/\buniform\s+(?:(?:lowp|mediump|highp)\s+)?(?:[iu]?sampler[\w]+)\s+([^;]+);/g;
  let n=0;for(const a of src.matchAll(rg))for(const b of a[1].split(',')){
   const v=b.trim().match(/^[\w]+(?:\s*\[\s*(\d+)\s*\])?$/);if(!v)return Infinity;n+=v[1]?Number(v[1]):1;
  }return n;
 }
 type Lease={m:T.ShaderMaterial;prior:string;next:string};
-export type StaticLightContext={world:World;base:string;maxTextures:number;maxUniforms:number};
+export type StaticLightContext={world:World;base:string;maxTextures:number;maxUniforms:number;rotorScope?:boolean};
 export class RegionalStaticLight{
  private tex?:T.DataTexture;private retired=false;private phase:'cold'|'loading'|'ready'|'unavailable'='cold';
  private readonly streams:{[key:string]:T.IUniform};
  private readonly own=new Map<T.ShaderMaterial,Lease>();
  private lastX=Infinity;private lastY=Infinity; private lastZ=Infinity;private age=-1;
+ private moving?:{update(e:WindObserver):void;clear():void;dispose():void;readonly state:unknown};
+ attachMoving(a:NonNullable<RegionalStaticLight['moving']>){this.moving=a;}
+ hasMountedStatic(){return this.phase==='ready'&&this.own.size>0;}
  private readonly id:WindFarmId;private readonly ctx:StaticLightContext;private readonly caster:RegionalWind;
  constructor(id:WindFarmId,ctx:StaticLightContext,caster:RegionalWind){
   this.id=id;this.ctx=ctx;this.caster=caster;
   const s=STATIC_SKIN[id];
   this.streams={regionalStaticDepth:{value:null},regionalStaticBox:{value:new T.Vector4(s.s[0],s.s[1],8/s.size[0],8/s.size[1])},regionalStaticMasts:{value:Array.from({length:max},()=>new T.Vector4())},regionalStaticCount:{value:0}};
  }
- get state(){return {phase:this.phase,activeTiles:this.own.size,nearCasters:this.streams.regionalStaticCount.value as number};}
+ ownsMaterial(m:T.ShaderMaterial){return this.phase==='ready'&&this.own.has(m)&&m.uniforms.regionalStaticDepth===this.streams.regionalStaticDepth;}
+ get state(){return {phase:this.phase,activeTiles:this.own.size,nearCasters:this.streams.regionalStaticCount.value as number,...(this.moving?{moving:this.moving.state}:{})};}
  private ready(){
   if(this.phase!=='cold')return;
   this.phase='loading';
@@ -126,8 +133,9 @@ export class RegionalStaticLight{
   }
   this.own.delete(v.m);
  }
- clear(){this.streams.regionalStaticCount.value=0;for(const v of this.own.values())this.release(v);this.lastX=Infinity;}
- update(eye:WindObserver){
+ clear(){this.moving?.clear();this.streams.regionalStaticCount.value=0;for(const v of this.own.values())this.release(v);this.lastX=Infinity;}
+ update(eye:WindObserver){this.updateStatic(eye);this.moving?.update(eye);}
+ private updateStatic(eye:WindObserver){
   if(this.retired||this.phase==='unavailable')return;
   const {world}=this.ctx;
   if(!this.caster.root.visible||light.distanceToSquared(world.sun)>1e-14){this.clear();return;}
@@ -144,7 +152,7 @@ export class RegionalStaticLight{
    const eligible=world.regionalWindLightReceivers(x,z,104).filter(t=>STATIC_WIND_TILES.has(t.id)&&this.admissible(t.m));
    if(!eligible.length)continue;
    prefetch=true;
-   if(horiz>radius||Math.abs(y-eye.y)>605)continue;
+   if(horiz>(this.ctx.rotorScope?({'west-cape':731,'east-point-i':738,hermanville:765}[this.id]):radius)||Math.abs(y-eye.y)>605)continue;
    q.push(new T.Vector3(x,y,z));if(q.length>max){bad=true;break;}
    for(const t of eligible)materials.add(t.m);
   }
@@ -156,7 +164,7 @@ export class RegionalStaticLight{
   this.streams.regionalStaticCount.value=this.own.size?q.length:0;
   for(let i=0;i<q.length;i++)(this.streams.regionalStaticMasts.value as T.Vector4[])[i].set(q[i].x,q[i].y,q[i].z,1);
  }
- dispose(){this.retired=true;this.clear();this.tex?.dispose();this.tex=undefined;}
+ dispose(){this.moving?.dispose();this.moving=undefined;this.retired=true;this.clear();this.tex?.dispose();this.tex=undefined;}
 }
 export function staticWindLight(id:WindFarmId,ctx:StaticLightContext,caster:RegionalWind){
  if(ctx.maxTextures<16||ctx.maxUniforms<224||light.distanceToSquared(ctx.world.sun)>1e-14)return;

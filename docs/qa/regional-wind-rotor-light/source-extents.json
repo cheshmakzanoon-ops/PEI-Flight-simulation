@@ -1,0 +1,167 @@
+{
+  "scope": "Proposed rotor-light local GPU source geometry and atlas bounds, no real GPU timings or optical approval implied",
+  "originalSun": [
+    -0.6,
+    0.74,
+    -0.31
+  ],
+  "solarRadiusRad": 0.00465,
+  "pixelPitchM": 0.15,
+  "edgePaddingM": 2,
+  "terrainQualification": "existing unmodified N112 receiver; geometric envelope uses +/-25m relative to original mast, not a terrain modification",
+  "fields": {
+    "west-cape": {
+      "sourcePositionSHA256": "c919e7adaa9fef49a761beb69ece04ff06606115952912cb09863d7d11c5f7fe",
+      "sourceIndexSHA256": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5",
+      "trianglesPerUpdatedRotor": 1520,
+      "maxSlots": 10,
+      "layoutCells": [
+        2,
+        5
+      ],
+      "cellPixels": [
+        562,
+        264
+      ],
+      "atlasPixels": [
+        1124,
+        1320
+      ],
+      "estimatedDedicatedGPUAttachmentBytes": 4451040,
+      "attachmentBudgetBasis": "only D16 (2 B) plus unused R8 color attachment (1 B); driver overhead not included",
+      "siteReachM": 149,
+      "trueAllRotationProjectionBoundsM": [
+        [
+          -40.00000186639063,
+          40.00000186639063
+        ],
+        [
+          -18.8904947357183,
+          16.36692587705906
+        ],
+        [
+          -35.30392218266652,
+          36.54142344922109
+        ]
+      ],
+      "planarAtlasMarginAllSidesM": [
+        [
+          2.1499981336093654,
+          2.1499981336093654
+        ],
+        [
+          2.109505264281701,
+          2.233074122940941
+        ]
+      ],
+      "depthMarginM": [
+        2.046077817333483,
+        2.008576550778905
+      ],
+      "maxPenumbraPlusBilinearFootprintM": 1.1375555477803727,
+      "zeroAboveActualCap": "actual per-fragment directional receiver depth; no assumed flat ground"
+    },
+    "east-point-i": {
+      "sourcePositionSHA256": "f092cb254d1d7a40b4e2e629b86b7d74e6e8cbafecb5b96c4d4b71ef2f492888",
+      "sourceIndexSHA256": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5",
+      "trianglesPerUpdatedRotor": 1520,
+      "maxSlots": 6,
+      "layoutCells": [
+        2,
+        3
+      ],
+      "cellPixels": [
+        628,
+        292
+      ],
+      "atlasPixels": [
+        1256,
+        876
+      ],
+      "estimatedDedicatedGPUAttachmentBytes": 3300768,
+      "attachmentBudgetBasis": "only D16 (2 B) plus unused R8 color attachment (1 B); driver overhead not included",
+      "siteReachM": 156,
+      "trueAllRotationProjectionBoundsM": [
+        [
+          -45.00000178063378,
+          45.00000178063378
+        ],
+        [
+          -22.658476144973772,
+          16.995462965630114
+        ],
+        [
+          -39.02188528012376,
+          41.79889975667847
+        ]
+      ],
+      "planarAtlasMarginAllSidesM": [
+        [
+          2.0999982193662206,
+          2.0999982193662206
+        ],
+        [
+          2.091523855026228,
+          2.0545370343698828
+        ]
+      ],
+      "depthMarginM": [
+        2.0781147198762397,
+        2.001100243321524
+      ],
+      "maxPenumbraPlusBilinearFootprintM": 1.17532793608341,
+      "zeroAboveActualCap": "actual per-fragment directional receiver depth; no assumed flat ground"
+    },
+    "hermanville": {
+      "sourcePositionSHA256": "b5086b330284b5d2ab4b77b0e33f224de023631014fddb39341b8f0c1c1fc919",
+      "sourceIndexSHA256": "5300d63cc945cc6af1e039005d6cb343788291b8f85d722806458b1afe2478e5",
+      "trianglesPerUpdatedRotor": 1520,
+      "maxSlots": 5,
+      "layoutCells": [
+        2,
+        3
+      ],
+      "cellPixels": [
+        802,
+        359
+      ],
+      "atlasPixels": [
+        1604,
+        1077
+      ],
+      "estimatedDedicatedGPUAttachmentBytes": 5182524,
+      "attachmentBudgetBasis": "only D16 (2 B) plus unused R8 color attachment (1 B); driver overhead not included",
+      "siteReachM": 183,
+      "trueAllRotationProjectionBoundsM": [
+        [
+          -58.00000181864143,
+          58.00000181864143
+        ],
+        [
+          -27.127926636508327,
+          22.54370581715233
+        ],
+        [
+          -51.33539610486689,
+          53.506750614402556
+        ]
+      ],
+      "planarAtlasMarginAllSidesM": [
+        [
+          2.149998181358569,
+          2.149998181358569
+        ],
+        [
+          2.1220733634916726,
+          2.0562941828476724
+        ]
+      ],
+      "depthMarginM": [
+        2.0646038951331107,
+        2.143249385597443
+      ],
+      "maxPenumbraPlusBilinearFootprintM": 1.3264174892955582,
+      "zeroAboveActualCap": "actual per-fragment directional receiver depth; no assumed flat ground"
+    }
+  }
+}

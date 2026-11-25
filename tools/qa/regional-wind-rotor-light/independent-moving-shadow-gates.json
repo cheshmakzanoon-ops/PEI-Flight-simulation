@@ -1,0 +1,137 @@
+{
+  "study": "Independent before any candidate field, atlas, active rotor-shadow material or new images. This is comparative virtual daylight against existing original displayed 3D mesh, not a real-time turbine telemetry, measured outdoor flicker, or a ground-appearance study.",
+  "release": "fe9ff61a5fc1469d18bacbc24eb5debc20775f73",
+  "pinned": {
+    "regional-wind-geometry.ts": "890def2a55f6c3df39b5b6dccdaa46c5d0c7ab629e24ae124efea24b7f243e67",
+    "regional-wind.ts": "7a318de0d833796ccdcdf5d017f0f533e35a54d5c833063906b6d36e034cf667",
+    "regional-wind.generated.ts": "2a677662c04758ba162973aa1275b8c2ffbd2162820a3401ed4c1da7352a2db7",
+    "geo.ts": "615dfa83789123f718109e32faf74334dc510139baa99639a62766ff9dfb4106",
+    "pre-appearance-registration.json": "be47c773727d66bba2c25ebe5325341d56c74b1c6a66d6a2163ce4a03f743c61",
+    "range-receipt.json": "5daa4768a9bc73ea00d0d5880762c0cd23f9b545c2772afced8d35c23e996ebc",
+    "caster-circle-pressure.json": "f4cafa595b8303098f17f547a5ee0bd2755030a2cafa71b774b02ba9a9a5a85f"
+  },
+  "realSun": [
+    -0.5988930707832083,
+    0.7386347872992903,
+    -0.3094280865713243
+  ],
+  "yaw": -2.62,
+  "casterIDs": [
+    "WCW27",
+    "EKW6",
+    "HCS3"
+  ],
+  "castScope": "Exactly the already-installed NEAR submitted original spinner plus all three complete finite 3D blades, not a filled, planar, elliptical or averaged disk, static tower or other scene geometry. Literal instance matrix, backing Float32 position/index and per-instance regionalPhase. Freeze source vertices & release first; no new label data necessary. Original run-time object clock, modulo at 600, scalar Float32 phases and original shader angular coefficient; no second animation ticker or guessed wind. Use current ground mesh/epoch, not global ground Y or collidable height.",
+  "sourceInput": "Independent extraction from actual released RegionalWind NEAR source batch after its normal update; do not use any prospective depth atlas, shadow stencil, source-caster ID from candidate, generated mask/internals or taught cutoffs as independent physical truth. Reconstruct shader YZ rotation and actual Three.Matrix4 in 3D from raw geometry. Cross-check direct positive M\u00f6ller\u2013Trumbore and complete projected-triangle raster with analytic positive solar ray. Reject if CPU methods disagree. Later read back actual GPU-bound rotor matrix/phase and clock, matched real renderer and real N112 terrain geometry. Compare source-held optical geometry to engine, not its own atlas.",
+  "fixedTimeSec": [
+    0.173,
+    0.619,
+    0.6356666666666667,
+    1.342,
+    2.714,
+    4.109,
+    13.527,
+    149.883,
+    599.981,
+    600.0,
+    600.019,
+    1200.173
+  ],
+  "stepping": "These are absolute clock values not angular bins; source-seeded index i \u00d7 original golden angle independently for each farm. The .619 to +1/60, 599.981 / 600 / 600.019 and complete 1200.173 return must follow signed original displayed silhouette to \u22640.03m geometric vertex error plus genuine one-frame time displacement (no phantom discontinuity, delayed 1-frame pose, quantized swaps or rotation in pause). Report same-time rendering repeated, plus advance/resume. Full-period error is not phase drift against real weather.",
+  "numericalPrereg": {
+    "grid": "Light-space Q=(X-Y*sun.x/sun.y,Z-Y*sun.z/sun.y). Anchor-relative qx=-15.937\u2026150.1 qz=-26.063\u2026111.1, pitch0.20m, independently shifted from any future depth map. Compute positive geometric depth and unrotated radial source attribution at every hit; do not use candidate support to trim denominator. Test all \u00b125/0m planes, two non-flat \u00b1(.15,-.09),(-.12,.17) slope planes, above-source hub+radius+3m entirely empty, clipped high intermediate y=hub\u00b1.33radius (non-terrain stress, report separate). Also final N112 mounted arbitrary sloped terrain from all three reference regions. Strict hard positive = original positive ray intercept >.025m above receiver.",
+    "metric": "Every family \u00d7 clock \u00d7 flat or slope phase: full three-blade+spinner hard silhouette IoU \u2265.88, core recall \u2265.97 for points inward \u2265.55m, exterior specificity \u2265.9995 more than .8m off shape and symmetric p95 contour deviation \u2264.55m. Inspect every family separately. Outer 75\u2013100% radii and each of 3 vanes must be nonempty and achieve \u2265.75 recall at each of 8 primary times, never pooled to rescue missing tip or vane. Dense near-original geometry rather than all-negative sky. Any hard effect above original highest blade+.10m is a hard fail. If sources at part-overlap, measure their hard union and depth ordering rather than add. Report subpixel, strength/penumbra, clipped high stress and boundaries separately; never label soft partial-coverage hits as brightening or exact hard data.",
+    "solarExtent": "Near shadow transitions may be penumbral only if bounded per actual source distance and base sun. Use .00465rad visible solar radius for soft-comparison, source-to-ground ray length/Dot(up,sun) projected to ground as appropriate (conservative 3D ray/ground tangent). Max tolerance .32m for documented receiver/atlas discretization plus true half pixel. No generic wide fade, no darkness from disk interior. Require \u22651% of full response is absent off actual finite three-dimensional solar+numerical support. Truth is around moving thin variable blades including tip, not around convex hull of rotor. Any discretization numbers are in metres.",
+    "staticEnergy": "Original already-shaded static direct light is unchanged everywhere no rotor influences. At full existing static occlusion, rotor must not remove ambient/fog/specular or double-darken direct; compare true off/on against the source two-mask single-solar union. If implementation uses bounded max of soft fractions, do not call it the exact partial-area union. Extra effect never brightens at a fixed phase. No changes to meshes, materials, weather or sim timing to make a comparison pass."
+  },
+  "actualViews": {
+    "WCW27-cross": {
+      "lon": -64.3847689404,
+      "lat": 46.6861583914,
+      "dist": 146,
+      "agl": 84,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "WCW27-reverse": {
+      "lon": -64.3847689404,
+      "lat": 46.6861583914,
+      "dist": 159,
+      "agl": 94,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "WCW27-warm-far": {
+      "lon": -64.3847689404,
+      "lat": 46.6861583914,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-cross": {
+      "lon": -62.0452699627,
+      "lat": 46.4555352367,
+      "dist": 146,
+      "agl": 84,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-reverse": {
+      "lon": -62.0452699627,
+      "lat": 46.4555352367,
+      "dist": 159,
+      "agl": 94,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-warm-far": {
+      "lon": -62.0452699627,
+      "lat": 46.4555352367,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-cross": {
+      "lon": -62.3072062693,
+      "lat": 46.4556520001,
+      "dist": 146,
+      "agl": 84,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-reverse": {
+      "lon": -62.3072062693,
+      "lat": 46.4556520001,
+      "dist": 159,
+      "agl": 94,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-warm-far": {
+      "lon": -62.3072062693,
+      "lat": 46.4556520001,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    }
+  },
+  "liveControls": {
+    "close": "Ordinary 840\u00d7540 camera, true complete resident source geometry; two independent low directions (cross+reverse) per named rotor, fixed pre-appearance center is exact geometric spinner center projected by actual sun to flat ground. Compare .619 and 1.342 for each family from \u22651 direction, plus opposite direction in \u22651 area. Record original source rotor, matrix/phase and time and true N112 ray support in unchanged display. At least 100 ground pixels >2 source-specific per named family in at least one angle/phase and \u226560 truly dynamic changed ground pixels >2 between phase masks, not existing blade RGB movement, with no changes outside independent hard/solar-penumbral geometry plus two raster-AA pixels. On-off-on repeated after same tick must be exact. Never alter static-only shader counts or rotor visibility to manufacture delta. Counterfactual normal target off leaves real moving rotor and old tower shading active.",
+    "negative": "Warm-far 1025m/560m AGL camera at Eastern Kings, or all three if ambiguity; zero receiver changes /zero offscreen submits when outside declared reach. Cold unrelated Summerside, suspended/same normal-source clock, three existing nonterrain classes (true sky, maritime water, roof/aircraft/foliage whenever visible); verify exact original nonreceiver ID/depth or screen mask not just an RGB bbox. Darkening occurring on genuine opaque native ground under an alpha-tested tree is distinct from painting the tree. Aimed dry land results do not prove canopy/water physically cast. HCS9 retired/no ghost; all other 74 preserved correctly; North Cape existing separate light intact.",
+    "capacity": "Existing terrain correctness, 74 model roster / retired exclusion, canopy, existing static ground, collider, flight inputs and pass state must survive incapable device, compile/FBO/texture/asset failure, explicit stock, unload/re-entry and discontinuous epoch. At most +1 rotor caster pass/draw per visible active farm, +1 fragment sampler per actually active receiver, no global additional target/texture on cold/far or unused tile, no receiver mesh or triangles added. Original lower-cap near winds never disappear. Capture genuine draw counts INCLUDING offscreen, exact source triangles submitted (\u226415200/9120/7600 east/west as assigned by original root roster: West15200, East9120, Hermanville7600), program fragment-only actual active sampler/vec4 counts, texture dimensions/byte allocation, cap and final framebuffer/viewport/scissor/color/depth state. No real hardware FPS from SwiftShader. Log measured frame timings paired, not GPU-time claims without a supported timer and matched conditions.",
+    "adjacentAtlasSafeguard": "Every live caster must have its own logically admitted source slot, no stale data after retirement/re-entry or wrong seed by compacted array, no atlas-border bleed, no missing shadow on adjacent visible ground tile. Retain numeric bounds across changing receiver Y and 12m eye-range hysteresis and the non-overlapping raw source layout. If exact old receiver height falls outside \u00b125m source stress, widen only after new fixed bounds or fail to static (do not clamp a real point into validated geography)."
+  },
+  "stop": "Do not ship if real original rays, dynamic susceptibility, triangle budget, energy isolation, geographic safety, stable verified mount then static-only rollback, same renderer phase or visibly honest rotating silhouettes fail. Source plan is not renderer proof. The shown direction/yaw are project art, not measured real-position sunlight."
+}

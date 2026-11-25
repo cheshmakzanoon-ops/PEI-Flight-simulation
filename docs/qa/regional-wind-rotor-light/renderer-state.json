@@ -1,0 +1,94 @@
+{
+  "scope": "Actual Three.js app and native GL. Named test-only exception thrown before the real owned render call. Main phase kept alive. Not a device timing or pixel-ownership result.",
+  "runtime": "f789250d14340818e9c1a99c928ba7c9ce54e330949cb094c05fb01b95ad476d",
+  "normal": [
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    },
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": 1,
+      "submittedTriangles": 6080,
+      "failure": false
+    }
+  ],
+  "forced": [
+    {
+      "restoreExact": true,
+      "onlyOwnedTargetCleared": true,
+      "submittedDraws": null,
+      "submittedTriangles": null,
+      "failure": true
+    }
+  ],
+  "recoveredStatic": {
+    "phase": "ready",
+    "activeTiles": 2,
+    "nearCasters": 4
+  },
+  "failedMoving": {
+    "phase": "unavailable",
+    "activeTiles": 0,
+    "nearRotors": 0,
+    "sourceSlots": 0,
+    "textureSize": []
+  },
+  "ordinaryFramesObservedAfterControlledFailure": 8,
+  "camera": {
+    "lon": -64.385165197,
+    "lat": 46.6863322867,
+    "dist": 95,
+    "agl": 72,
+    "east": 0.4590200519,
+    "south": -0.8884259069,
+    "h": 0.1
+  },
+  "errors": []
+}

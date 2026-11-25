@@ -19,3 +19,5 @@ python "$AUDIT/trace-native-pixels.py" --actual "$OUTPUT/live" \
 ```
 
 A software-rendered frame does not establish real-hardware FPS. PNG byte hashes can vary between GPU/browser versions. The support, darkening, correct fallback and scope checks are the meaningful comparisons. The high receiver test is a warm far view, not a network-cold test. Earth/vegetation, roads and coatings are not independently surveyed by this tool. The caster excludes the rotor and spinner; this is static direct-sun tower shading, not a shadow-map of all scenery or a measured real-world time of day.
+
+The capture explicitly disables the separate moving-rotor ground shadow (`stockRegionalWindRotorLight`) so the evidence here continues to isolate the rigid pass. The rotor mesh itself remains visible.

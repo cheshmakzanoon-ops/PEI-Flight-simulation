@@ -1,6 +1,6 @@
 # Wind-farm ground shadows
 
-In Standard, the base of a West Cape turbine now joins a narrow shadow on the existing field. The tapered shaft casts a long stripe; the wider nacelle leaves a broader end. The same effect uses the different machinery at Eastern Kings Phase I and Hermanville/Clearspring. **Compare it:** use `?stockRegionalWindLight` to keep the wind farms in place and switch off only their ground shadows. [Where to fly and which machines are installed](regional-wind.md).
+In Standard, the base of a West Cape turbine now joins a narrow shadow on the existing field. The tapered shaft casts a long stripe; the wider nacelle leaves a broader end. The same effect uses the different machinery at Eastern Kings Phase I and Hermanville/Clearspring. **Compare the rigid structure:** use `?stockRegionalWindRotorLight` to leave the tower and nacelle shadows on their own. To keep the wind farms but disable both rigid and moving shadows, use `?stockRegionalWindLight`. [Where to fly and which machines are installed](regional-wind.md).
 
 ![Matched simulator views at West Cape, Eastern Kings and Hermanville, with the stationary structure’s ground shadow off at left and on at right](regional-wind-light/matched-ground-shadows.webp)
 
@@ -8,7 +8,7 @@ In Standard, the base of a West Cape turbine now joins a narrow shadow on the ex
 
 The source is the **actual near-detail model**: the socket, steel mast and closed nacelle. A ray from the existing terrain towards the simulator’s fixed sun must pass through this geometry for the ground to lose direct sunlight. The soft border widens modestly with the distance between caster and receiver. The terrain retains its original colour, ambient illumination and shape. Trees and buildings still occlude the shaded ground normally.
 
-The blades and spinner are deliberately excluded. This does not reproduce blade flicker, time-of-day sun, operating conditions, service yards or cleared land. It does not change vegetation placement, collisions or aircraft handling. North Cape belongs to [a different scenery package](north-cape-turbines.md).
+The stationary pass documented here excludes the blades and spinner. Current Standard handles them in a [separate moving-rotor pass](regional-wind-rotor-light.md). Neither pass models real-time sunlight, operating conditions, service yards or cleared land. It does not change vegetation placement, collisions or aircraft handling. North Cape belongs to [a different scenery package](north-cape-turbines.md).
 
 ## Rendering cost
 

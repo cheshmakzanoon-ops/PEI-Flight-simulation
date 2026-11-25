@@ -1,0 +1,18 @@
+import * as fs from 'node:fs';import{resolve}from'node:path';import{pathToFileURL}from'node:url';import crypto from'node:crypto';
+const [root,out]=process.argv.slice(2);const plan=JSON.parse(fs.readFileSync(new URL('./independent-moving-shadow-gates.json',import.meta.url)));const H=x=>crypto.createHash('sha256').update(x).digest('hex'),imp=x=>import(pathToFileURL(resolve(root,x)).href);
+for(const p of ['regional-wind.ts','regional-wind-geometry.ts','regional-wind.generated.ts'])if(H(fs.readFileSync(resolve(root,'src/render',p)))!==plan.pinned[p])throw Error('original differs: '+p);
+const T=await imp('node_modules/three/build/three.module.js'),{RegionalWind}=await imp('src/render/regional-wind.ts'),{WIND_PROFILE}=await imp('src/render/regional-wind-geometry.ts');fs.mkdirSync(out,{recursive:true});const result={sun:plan.realSun,source:plan.release,rows:{}};
+for(const [site,farm]of Object.entries({WCW27:'west-cape',EKW6:'east-point-i',HCS3:'hermanville'})){
+ const P=WIND_PROFILE[farm],wind=new RegionalWind(farm,new T.Scene(),{visualGroundEpoch:1,visualGroundHeight:()=>0,surface:()=>({land:true})});const owner=wind.sites.find(k=>k.id===site),eye={x:owner.x+24,y:60,z:owner.z-13};wind.update(eye,plan.fixedTimeSec[0]);const near=wind.batches[0];if(!near.rotor.visible||!near.mast.visible)throw Error('old model did not mount');
+ const seen={};let ordinal=-1;
+ for(let i=0;i<near.mast.count;i++){const m=new T.Matrix4();near.mast.getMatrixAt(i,m);if(Math.hypot(m.elements[12]-owner.x,m.elements[14]-owner.z)<.02){if(ordinal>=0)throw Error('duplicate');ordinal=i;}}
+ if(ordinal<0)throw Error('missing selected actual near index');const pose={};for(const tag of ['rotor','mast']){
+  const mesh=near[tag],mat=new T.Matrix4();mesh.getMatrixAt(ordinal,mat);
+  const g=mesh.geometry,a=g.getAttribute('position'),z=g.getIndex(),p=new Float32Array(a.array),idx=new Uint32Array(z.array);for(const [n,v]of [['.f32',p],['.u32',idx]]){const b=Buffer.from(v.buffer);fs.writeFileSync(resolve(out,site+'-'+tag+n),b);seen[tag+n]=H(b);}
+  pose[tag]=mat.elements;if(z.count%3!==0)throw Error('nontriangle source');seen[tag+'Count']=z.count/3;
+ }
+ const prog={vertexShader:'#include <beginnormal_vertex>\n#include <begin_vertex>\n#include <project_vertex>',fragmentShader:'#include <opaque_fragment>',uniforms:{}};near.rotor.material.onBeforeCompile(prog);const z=prog.vertexShader.match(/float windA=regionalPhase-regionalWindClock\*([\d.]+)/);if(!z||!prog.uniforms.regionalWindClock)throw Error('unrecognized displayed rotation');const rate=Math.fround(+z[1]),phase=near.phase.getX(ordinal);
+ const clocks=[];for(const time of plan.fixedTimeSec){wind.update(eye,time);const c=prog.uniforms.regionalWindClock.value,w=Math.fround(c),theta=Math.fround(phase-Math.fround(w*rate)),thetaFMA=Math.fround(phase-w*rate);clocks.push({time,sharedUniformTime:c,uploadedFloatTime:w,theta,thetaFMA});}
+ result.rows[site]={farm,radius:P.radius,hub:P.hub,RPM:P.rpm,profile:P.model,assembledIndex:ordinal,sourceIndex:wind.sites.indexOf(owner),angleRateFromActualShader:rate,visibleSourcePhase:phase,spindle:pose.rotor,base:pose.mast,hashes:seen,clocks,sourceNote:'The original flat zero bench supplies only the absolute runtime base; source local geometry/phase + real instance matrix from a genuine installed NEAR batch. Later optical checks read back per-pose live actual terrain base and source owner.'};wind.dispose();
+}
+const raw=JSON.stringify(result,null,2)+'\n';fs.writeFileSync(resolve(out,'registered-original-sources.json'),raw);console.log(H(raw), Object.fromEntries(Object.entries(result.rows).map(([k,r])=>[k,[r.sourceIndex,r.visibleSourcePhase,r.angleRateFromActualShader,r.hashes.rotorCount,r.hashes.mastCount]])));

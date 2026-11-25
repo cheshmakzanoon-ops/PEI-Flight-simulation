@@ -1,0 +1,219 @@
+{
+  "targetParent": "255c7a9ab0147bf6d078da12d712412f5b29d7d2",
+  "runtimeRegister": "f789250d14340818e9c1a99c928ba7c9ce54e330949cb094c05fb01b95ad476d",
+  "method": "Actual Three.js compiled player, ordinary Cockpit and Pause. West spawn is QA-only, Summerside is the normal departure. No device timing or travel claim.",
+  "checkedModule": {
+    "bytes": 15761,
+    "sha256": "df9e3dd92e27a8c42e57ff62fd2bc1ee7d456e3b78f80bbdd727d5ecff147421"
+  },
+  "cases": {
+    "west-ready": {
+      "site": "virtual-wind-west-cape",
+      "fault": "healthy",
+      "actualMovedM": 285.2894590028734,
+      "targetDistanceM": 332.55615686770375,
+      "groundClearanceM": 156.5251382535577,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "requestedOptionalWorldResources": [
+        "assets/regional-wind-BD4DMghw.js",
+        "assets/regional-wind-geometry-DDqt-gVg.js",
+        "assets/regional-wind-light-bF8n8KUa.js",
+        "assets/regional-wind-rotor-Bx8d1HKY.js",
+        "world/regional-wind-light/v1/west-cape.wrg.gz"
+      ],
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": {
+              "phase": "ready",
+              "activeTiles": 2,
+              "nearCasters": 4,
+              "moving": {
+                "phase": "ready",
+                "activeTiles": 2,
+                "nearRotors": 4,
+                "sourceSlots": 4,
+                "offscreenPasses": 67,
+                "submittedTriangles": 6080,
+                "textureSize": [
+                  1124,
+                  1320
+                ],
+                "lastPhase": 6.449799999999997,
+                "reason": ""
+              }
+            }
+          }
+        ],
+        "unavailable": []
+      },
+      "proofRequests": 1,
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "west-static-optout": {
+      "site": "virtual-wind-west-cape",
+      "fault": "healthy",
+      "actualMovedM": 284.08747580849916,
+      "targetDistanceM": 336.1538590130298,
+      "groundClearanceM": 156.51714935159725,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "requestedOptionalWorldResources": [
+        "assets/regional-wind-BD4DMghw.js",
+        "assets/regional-wind-geometry-DDqt-gVg.js",
+        "assets/regional-wind-light-bF8n8KUa.js",
+        "world/regional-wind-light/v1/west-cape.wrg.gz"
+      ],
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": {
+              "phase": "ready",
+              "activeTiles": 2,
+              "nearCasters": 4
+            }
+          }
+        ],
+        "unavailable": []
+      },
+      "proofRequests": 0,
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "west-missing-module": {
+      "site": "virtual-wind-west-cape",
+      "fault": "missing",
+      "actualMovedM": 282.87942190973286,
+      "targetDistanceM": 345.1479411924049,
+      "groundClearanceM": 156.49688509258067,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "requestedOptionalWorldResources": [
+        "assets/regional-wind-BD4DMghw.js",
+        "assets/regional-wind-geometry-DDqt-gVg.js",
+        "assets/regional-wind-light-bF8n8KUa.js",
+        "assets/regional-wind-rotor-Bx8d1HKY.js",
+        "world/regional-wind-light/v1/west-cape.wrg.gz"
+      ],
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": {
+              "phase": "ready",
+              "activeTiles": 2,
+              "nearCasters": 4
+            }
+          }
+        ],
+        "unavailable": []
+      },
+      "proofRequests": 1,
+      "interceptedFaults": [
+        "missing"
+      ],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "summerside-cold": {
+      "site": "summerside",
+      "fault": "healthy",
+      "actualMovedM": 284.0299678278386,
+      "targetDistanceM": 342.4472436469709,
+      "groundClearanceM": 361.19126143603694,
+      "terrainReceivers": {
+        "ready": 16,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 25,
+        "ready": 25,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "requestedOptionalWorldResources": [],
+      "optionalDiagnostic": {
+        "phase": "cold",
+        "farms": [],
+        "unavailable": []
+      },
+      "proofRequests": 0,
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    }
+  }
+}

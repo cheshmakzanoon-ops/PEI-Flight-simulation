@@ -1,0 +1,953 @@
+{
+  "registration": "fe670b5e2d5a6584164537282f267d23434660f06dad1e12554d94d4f3aac578",
+  "sourceOriginal": "eca46299aae5f65011fecec4081e5302154441d9a6fb649703a305ea0a9ad0d3",
+  "method": "Independent optical scope: true same-tick RGB while original on-screen blades and original static mast shading stay active; only new moving contribution zeroed and restored, no warm weather/water variations. Every changed pixel independently cast with 9 camera samples against real mounted N112 triangles. Every plausible donor original unmodified 3D spinner/blades at its displayed source phase projected to original sun direction, with finite-disk support + numerical/grid allowance, not a filled rotor disc or geographic bounding box. Source geometry crosses no real N112 height near blade elevation.",
+  "cases": {
+    "WCW27-reverse": {
+      "1": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "13b54816137a9709226774406fa177b277c7a7f5a91a1b0d84458bc258dbcccf",
+          "off": "14b52e37b2467a7d88689966218797fc1f0a14434ba723abbca43b43c128dd1a",
+          "restored": "13b54816137a9709226774406fa177b277c7a7f5a91a1b0d84458bc258dbcccf"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 790,
+        "over2": 603,
+        "over8": 264,
+        "maxDelta": 12,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 25,
+          "triangles": 349784
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 2,
+          "nearRotors": 4,
+          "sourceSlots": 4,
+          "offscreenPasses": 4,
+          "submittedTriangles": 6080,
+          "textureSize": [
+            1124,
+            1320
+          ],
+          "lastPhase": 0.619,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 4,
+            "realStatic": 4
+          }
+        ],
+        "sourceFileSHA256": "da80811af3ed6d9c8a29d6044b1a77ddcf5ce38fc88e5fd310779f458ef4e958",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 476,
+          "liveN112Tiles": [
+            "0-7",
+            "1-7"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 790,
+          "pixelAtLeastOneHardOriginalBladeHit": 671,
+          "pixelHardCentralOriginalBladeHit": 516,
+          "pixelSoftBoundaryOnly": 119,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.634204,
+          "perActiveSourceUnderCamera": {
+            "WCW27": {
+              "tested": 7110,
+              "hardSubsamples": 4614,
+              "qualifyingFiniteSubsamples": 7110
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "3": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "746643e4f0ada067ae604fa09fc89eb26d0593d647d5eccd4671e81b673dcf0f",
+          "off": "f8ea68410705baf90fe4fc5c376e5a6131322e101bcc6a3f2071243690a813d5",
+          "restored": "746643e4f0ada067ae604fa09fc89eb26d0593d647d5eccd4671e81b673dcf0f"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1180,
+        "over2": 953,
+        "over8": 464,
+        "maxDelta": 13,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 25,
+          "triangles": 349784
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 2,
+          "nearRotors": 4,
+          "sourceSlots": 4,
+          "offscreenPasses": 6,
+          "submittedTriangles": 6080,
+          "textureSize": [
+            1124,
+            1320
+          ],
+          "lastPhase": 1.342,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 4,
+            "realStatic": 4
+          }
+        ],
+        "sourceFileSHA256": "829b95ca9343b69f5b1ab5ba786bdb31b7a2b104dbf00a4f197e5862f008c41e",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 476,
+          "liveN112Tiles": [
+            "0-7",
+            "1-7"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1180,
+          "pixelAtLeastOneHardOriginalBladeHit": 981,
+          "pixelHardCentralOriginalBladeHit": 735,
+          "pixelSoftBoundaryOnly": 199,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.433333,
+          "perActiveSourceUnderCamera": {
+            "WCW27": {
+              "tested": 10620,
+              "hardSubsamples": 6599,
+              "qualifyingFiniteSubsamples": 10620
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "temporalOriginalRotorDifferential": {
+        "any": 1858,
+        "gt2": 1460,
+        "maxDeltaAcrossSameLightCounterfactuals": 13,
+        "rejectLostTick": true
+      }
+    },
+    "EKW6-reverse": {
+      "1": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "e4e47e946d6a7a4a7ffe1f93068314595ec0739ebc3e83968c82806d4a26d56a",
+          "off": "1c58ac3d00d282a508e3d214909f3b7300bb17f2e09114aab3417bd00aede82a",
+          "restored": "e4e47e946d6a7a4a7ffe1f93068314595ec0739ebc3e83968c82806d4a26d56a"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 862,
+        "over2": 600,
+        "over8": 90,
+        "maxDelta": 16,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 60,
+          "triangles": 345056
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 1,
+          "nearRotors": 4,
+          "sourceSlots": 4,
+          "offscreenPasses": 4,
+          "submittedTriangles": 6080,
+          "textureSize": [
+            1256,
+            876
+          ],
+          "lastPhase": 0.619,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 11,
+            "conservativeSlots": 66,
+            "names": [
+              [
+                "duneMask",
+                1
+              ],
+              [
+                "duneMicro",
+                1
+              ],
+              [
+                "duneMacro",
+                1
+              ],
+              [
+                "duneTuftGroundPhoto",
+                1
+              ],
+              [
+                "duneTuftGroundMask",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 4,
+            "realStatic": 4
+          }
+        ],
+        "sourceFileSHA256": "1eba333e659021deab64091188b0dfe20dc4262f30116529914b72045e51ec5b",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 452,
+          "liveN112Tiles": [
+            "30-12"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 862,
+          "pixelAtLeastOneHardOriginalBladeHit": 767,
+          "pixelHardCentralOriginalBladeHit": 563,
+          "pixelSoftBoundaryOnly": 95,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.492659,
+          "perActiveSourceUnderCamera": {
+            "EKW5": {
+              "tested": 927,
+              "hardSubsamples": 380,
+              "qualifyingFiniteSubsamples": 927
+            },
+            "EKW6": {
+              "tested": 6831,
+              "hardSubsamples": 4500,
+              "qualifyingFiniteSubsamples": 6831
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "3": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "40eb0a578a2d37d42c62883ff9cae4305d3c5e386f96e0ef50045ac6e84bdc6f",
+          "off": "27709862d2d4b1e154a5c9a2ba4d4145bfab488717912b96e5ca73fdad77b6f4",
+          "restored": "40eb0a578a2d37d42c62883ff9cae4305d3c5e386f96e0ef50045ac6e84bdc6f"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1040,
+        "over2": 805,
+        "over8": 268,
+        "maxDelta": 15,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 60,
+          "triangles": 345056
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 1,
+          "nearRotors": 4,
+          "sourceSlots": 4,
+          "offscreenPasses": 6,
+          "submittedTriangles": 6080,
+          "textureSize": [
+            1256,
+            876
+          ],
+          "lastPhase": 1.342,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 11,
+            "conservativeSlots": 66,
+            "names": [
+              [
+                "duneMask",
+                1
+              ],
+              [
+                "duneMicro",
+                1
+              ],
+              [
+                "duneMacro",
+                1
+              ],
+              [
+                "duneTuftGroundPhoto",
+                1
+              ],
+              [
+                "duneTuftGroundMask",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 4,
+            "realStatic": 4
+          }
+        ],
+        "sourceFileSHA256": "93df03cc5d6740ebbeb91d4c778f002652ce1b3adf73da94c31d56c5dd42fd35",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 452,
+          "liveN112Tiles": [
+            "30-12"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1040,
+          "pixelAtLeastOneHardOriginalBladeHit": 916,
+          "pixelHardCentralOriginalBladeHit": 701,
+          "pixelSoftBoundaryOnly": 124,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.430276,
+          "perActiveSourceUnderCamera": {
+            "EKW5": {
+              "tested": 1089,
+              "hardSubsamples": 475,
+              "qualifyingFiniteSubsamples": 1081
+            },
+            "EKW6": {
+              "tested": 8271,
+              "hardSubsamples": 5649,
+              "qualifyingFiniteSubsamples": 8271
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "temporalOriginalRotorDifferential": {
+        "any": 1841,
+        "gt2": 1356,
+        "maxDeltaAcrossSameLightCounterfactuals": 16,
+        "rejectLostTick": true
+      }
+    },
+    "HCS3-reverse": {
+      "1": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "a6293569132837f0e94467e0dc4db755643c2303b48f3ce985647240fb0b4aba",
+          "off": "a48cf9b0a7660194dcf6f9a33fed6813a70ae1d3a55acc54e1d152facf232e69",
+          "restored": "a6293569132837f0e94467e0dc4db755643c2303b48f3ce985647240fb0b4aba"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1433,
+        "over2": 1106,
+        "over8": 643,
+        "maxDelta": 16,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 93,
+          "triangles": 389922
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 1,
+          "nearRotors": 2,
+          "sourceSlots": 2,
+          "offscreenPasses": 4,
+          "submittedTriangles": 3040,
+          "textureSize": [
+            1604,
+            1077
+          ],
+          "lastPhase": 0.619,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 2,
+            "realStatic": 2
+          }
+        ],
+        "sourceFileSHA256": "91bf734c9760955e4645bfed0a4b55f83d24ba3f0ce9f50a6241e5a0e84bb349",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 240,
+          "liveN112Tiles": [
+            "27-12"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1433,
+          "pixelAtLeastOneHardOriginalBladeHit": 1201,
+          "pixelHardCentralOriginalBladeHit": 998,
+          "pixelSoftBoundaryOnly": 232,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.663738,
+          "perActiveSourceUnderCamera": {
+            "HCS3": {
+              "tested": 12897,
+              "hardSubsamples": 8951,
+              "qualifyingFiniteSubsamples": 12897
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "3": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "89a5e68ef61cca211aec360a8c3f4b4af54e6e1cf4db1f18f251a2aa04a99392",
+          "off": "36c6ee63c84c456d0dbe2bcd585624dfe7c81f0f58921d98ef4c2c8ea547e2bc",
+          "restored": "89a5e68ef61cca211aec360a8c3f4b4af54e6e1cf4db1f18f251a2aa04a99392"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1391,
+        "over2": 1143,
+        "over8": 803,
+        "maxDelta": 16,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 93,
+          "triangles": 389922
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 1,
+          "nearRotors": 2,
+          "sourceSlots": 2,
+          "offscreenPasses": 6,
+          "submittedTriangles": 3040,
+          "textureSize": [
+            1604,
+            1077
+          ],
+          "lastPhase": 1.342,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 2,
+            "realStatic": 2
+          }
+        ],
+        "sourceFileSHA256": "2a6be28ae9c65fe6c1965e53ee804d7d41c0aba677c85aaa4f7822615c5776c5",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 240,
+          "liveN112Tiles": [
+            "27-12"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1391,
+          "pixelAtLeastOneHardOriginalBladeHit": 1187,
+          "pixelHardCentralOriginalBladeHit": 1013,
+          "pixelSoftBoundaryOnly": 204,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.852624,
+          "perActiveSourceUnderCamera": {
+            "HCS3": {
+              "tested": 12519,
+              "hardSubsamples": 8934,
+              "qualifyingFiniteSubsamples": 12519
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "temporalOriginalRotorDifferential": {
+        "any": 2716,
+        "gt2": 2143,
+        "maxDeltaAcrossSameLightCounterfactuals": 16,
+        "rejectLostTick": true
+      }
+    },
+    "WCW27-cross": {
+      "1": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "afef0ce65d9a6f638dcaa0c09ee9064b5703d66d56874f878004cddc17099ee1",
+          "off": "d0dc7d843bbdf7f7e46d7af263aeb77f487516379b10cefc3d90104d95c1c732",
+          "restored": "afef0ce65d9a6f638dcaa0c09ee9064b5703d66d56874f878004cddc17099ee1"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1077,
+        "over2": 863,
+        "over8": 350,
+        "maxDelta": 12,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 54,
+          "triangles": 313212
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 2,
+          "nearRotors": 3,
+          "sourceSlots": 3,
+          "offscreenPasses": 2,
+          "submittedTriangles": 4560,
+          "textureSize": [
+            1124,
+            1320
+          ],
+          "lastPhase": 0.619,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 3,
+            "realStatic": 3
+          }
+        ],
+        "sourceFileSHA256": "d47ea5dbc154ad7c9362bab964439fa9b2d6218235ddfdedb2d5a966a9db0d59",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 384,
+          "liveN112Tiles": [
+            "0-7",
+            "1-7"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1077,
+          "pixelAtLeastOneHardOriginalBladeHit": 879,
+          "pixelHardCentralOriginalBladeHit": 675,
+          "pixelSoftBoundaryOnly": 198,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.718937,
+          "perActiveSourceUnderCamera": {
+            "WCW27": {
+              "tested": 9693,
+              "hardSubsamples": 6044,
+              "qualifyingFiniteSubsamples": 9693
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "3": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "bdf8a263eaf144c3e81dccf0ff2f3a3c5873fd8c1e44a2535b4a6de52ff693b6",
+          "off": "36d4ac6762cafa759ecc2a70aaf6defcc82872b5705396280e49db72f6e95a98",
+          "restored": "bdf8a263eaf144c3e81dccf0ff2f3a3c5873fd8c1e44a2535b4a6de52ff693b6"
+        },
+        "wholeRGBRestoredExactly": true,
+        "RGBChanged": 1530,
+        "over2": 1211,
+        "over8": 604,
+        "maxDelta": 13,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": true,
+        "mainScene": {
+          "draws": 54,
+          "triangles": 313212
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 2,
+          "nearRotors": 3,
+          "sourceSlots": 3,
+          "offscreenPasses": 3,
+          "submittedTriangles": 4560,
+          "textureSize": [
+            1124,
+            1320
+          ],
+          "lastPhase": 1.342,
+          "reason": ""
+        },
+        "fragmentLinks": [
+          {
+            "samplers": 8,
+            "conservativeSlots": 62,
+            "names": [
+              [
+                "forestFloorA",
+                1
+              ],
+              [
+                "forestFloorB",
+                1
+              ],
+              [
+                "imageMap",
+                1
+              ],
+              [
+                "coverMap",
+                1
+              ],
+              [
+                "detailMap",
+                1
+              ],
+              [
+                "paintMap",
+                1
+              ],
+              [
+                "regionalStaticDepth",
+                1
+              ],
+              [
+                "regionalRotorDepth",
+                1
+              ]
+            ],
+            "realRotors": 3,
+            "realStatic": 3
+          }
+        ],
+        "sourceFileSHA256": "98be0f7c97bed9d7eb8dbd724fa43fa5d033798b0108a4db5a798da40def11c4",
+        "glErrors": [],
+        "owner": {
+          "nNativeGroundTriangles": 384,
+          "liveN112Tiles": [
+            "0-7",
+            "1-7"
+          ],
+          "pixelAnyActualNearestOriginalGroundRay": 1530,
+          "pixelAtLeastOneHardOriginalBladeHit": 1230,
+          "pixelHardCentralOriginalBladeHit": 937,
+          "pixelSoftBoundaryOnly": 300,
+          "changedOutsideSupportAny": 0,
+          "outsideOver2": 0,
+          "outsideMaxRGB": 0,
+          "maxDistanceToTrueBladeProjectionAtAnyCoveredPointM": 0.517941,
+          "perActiveSourceUnderCamera": {
+            "WCW27": {
+              "tested": 13770,
+              "hardSubsamples": 8465,
+              "qualifyingFiniteSubsamples": 13770
+            }
+          },
+          "outsideExamples": []
+        }
+      },
+      "temporalOriginalRotorDifferential": {
+        "any": 2454,
+        "gt2": 1953,
+        "maxDeltaAcrossSameLightCounterfactuals": 13,
+        "rejectLostTick": true
+      }
+    },
+    "EKW6-warm-far": {
+      "1": {
+        "fullImageWH": [
+          840,
+          540
+        ],
+        "frameSHA": {
+          "on": "f508e9b1a6904422959ece72beb6246b9208c5572fd6e3857d721201ed59d4d9",
+          "off": "f508e9b1a6904422959ece72beb6246b9208c5572fd6e3857d721201ed59d4d9",
+          "restored": "f508e9b1a6904422959ece72beb6246b9208c5572fd6e3857d721201ed59d4d9"
+        },
+        "wholeRGBRestoredExactly": null,
+        "RGBChanged": 0,
+        "over2": 0,
+        "over8": 0,
+        "maxDelta": 0,
+        "brightened": 0,
+        "cameraAgreed": true,
+        "sameOrdinaryDraws": null,
+        "mainScene": {
+          "draws": 19,
+          "triangles": 326374
+        },
+        "offscreenSourceInfo": {
+          "phase": "ready",
+          "activeTiles": 0,
+          "nearRotors": 0,
+          "sourceSlots": 0,
+          "offscreenPasses": 0,
+          "submittedTriangles": 0,
+          "textureSize": [
+            1256,
+            876
+          ],
+          "lastPhase": null,
+          "reason": ""
+        },
+        "fragmentLinks": [],
+        "sourceFileSHA256": "daac26fe22604a4d46be2021988c21702640c42393f3a7bcec0d624c66f0f363",
+        "glErrors": [],
+        "farRepeatedOrdinaryFramesEqual": true
+      }
+    }
+  },
+  "captureScope": "V1 real normal rendering; release notes identify the separate lifecycle correction and its own independent GPU regression. Not a hardware FPS guarantee. Static mast and moving rotor remained visibly submitted at both times.",
+  "summary": {
+    "nearPairs": 8,
+    "nearChangedRGBTotal": 9303,
+    "nearDarkeningOnly": true,
+    "outsideTrueFiniteAndActualGround": 0,
+    "minPerShapeTemporalChangedOver2": 1356,
+    "far": "A new, isolated distant view with the farm and released static-light material ready and one static owner. Two ordinary same-tick renders were compared; moving pass had no receiver/triangles/submissions. The normal far repeat was bit-identical. A separate third diagnostic restore was not captured here, and reporting a dimensioned local JS target does not establish deallocation of any already-warm GPU texture."
+  }
+}

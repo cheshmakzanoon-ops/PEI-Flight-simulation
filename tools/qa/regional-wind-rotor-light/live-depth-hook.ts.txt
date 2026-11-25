@@ -1,0 +1,70 @@
+(window as any).qaMovingRotor = async (q:any)=>{
+ const gw=(regionalWind as any)?.live?.get(q.farm),s=gw?.staticLight,mo=s?.moving,d=mo?.draw;
+ const gl=renderer.getContext() as WebGL2RenderingContext;
+ const count=()=>({draws:renderer.info.render.calls,triangles:renderer.info.render.triangles});
+ const snap=()=>{renderer.render(scene,camera);return renderer.domElement.toDataURL('image/png');};
+ const time=q.time,settle=(t:number)=>{(window as any).qaRotorClock=t;gw.update(camera.position,t);};
+ const enc=(b:Uint8Array)=>{let tmp='';for(let i=0;i<b.length;i+=16384)tmp+=String.fromCharCode(...b.subarray(i,Math.min(i+16384,b.length)));return btoa(tmp);};
+ if(!gw)throw Error('Original wind is absent');
+ if(!d||!mo?.n){if(!q.wantFar)throw Error('Moving rotor not ready: '+JSON.stringify(gw.groundLightState()));settle(time);const on=snap(),off=snap(),restored=snap();if(on!==off||on!==restored)throw Error('Distant repeat did not restore');return {far:true,camera:camera.position.toArray(),diagnostic:gw.groundLightState(),frames:{on,off,restored},normal:count()};}
+ const slot=mo.slotIds.indexOf(q.site),donor=d.donor; if(slot<0)throw Error('Source site not active: '+q.site);
+ const center=gw.sites.find((z:any)=>z.id===q.site),mast=gw.root.children[0],m0=new THREE.Matrix4();let idx=-1;
+ for(let i=0;i<mast.count;i++){mast.getMatrixAt(i,m0);if(Math.hypot(m0.elements[12]-center.x,m0.elements[14]-center.z)<.025){if(idx>=0)throw Error('duplicate source root');idx=i;}}
+ if(idx<0)throw Error('Original NEAR donor site not rendered');
+ const readBuffer=(b:WebGLBuffer,offset:number,n:number,kind='f')=>{const old=gl.getParameter(gl.COPY_READ_BUFFER_BINDING),view=kind==='f'?new Float32Array(n):new Uint16Array(n);try{gl.bindBuffer(gl.COPY_READ_BUFFER,b);gl.getBufferSubData(gl.COPY_READ_BUFFER,offset,view);}finally{gl.bindBuffer(gl.COPY_READ_BUFFER,old);}return view;};
+ const observe=(active:number,seedName:string,clockName:string,at:any)=>{
+  const prog=gl.getParameter(gl.CURRENT_PROGRAM),cl=gl.getUniformLocation(prog,clockName);if(!cl)throw Error('Missing real clock '+clockName);
+  function attr(loc:number,sz:number,i:number){if(loc<0||!gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_ENABLED)||gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_TYPE)!==gl.FLOAT)throw Error('Missing original live float input '+loc);
+   const divisor=gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_DIVISOR);if(divisor!==1)throw Error('Unexpected instance divisor');
+   const b=gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_BUFFER_BINDING),offset=Number(gl.getVertexAttribOffset(loc,gl.VERTEX_ATTRIB_ARRAY_POINTER)),stride=gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_STRIDE)||sz*4;return Array.from(readBuffer(b,offset+i*stride,sz));}
+  const ml=gl.getAttribLocation(prog,'instanceMatrix'),matrix=[...attr(ml,4,active),...attr(ml+1,4,active),...attr(ml+2,4,active),...attr(ml+3,4,active)];
+  const result:any={phase:attr(gl.getAttribLocation(prog,seedName),1,active)[0],clock:gl.getUniform(prog,cl),matrix,ready:gl.getProgramParameter(prog,gl.LINK_STATUS)};
+  if(q.buffers){const p=gl.getAttribLocation(prog,'position'),buf=gl.getVertexAttrib(p,gl.VERTEX_ATTRIB_ARRAY_BUFFER_BINDING),stride=gl.getVertexAttrib(p,gl.VERTEX_ATTRIB_ARRAY_STRIDE);if(stride&&stride!==12)throw Error('Unexpected interleaving');const vb=readBuffer(buf,gl.getVertexAttribOffset(p,gl.VERTEX_ATTRIB_ARRAY_POINTER),at.geometry.attributes.position.array.length),ib=readBuffer(gl.getParameter(gl.ELEMENT_ARRAY_BUFFER_BINDING),0,at.geometry.index.count,'u16');result.positionBytes=enc(new Uint8Array(vb.buffer));result.indexBytes=enc(new Uint8Array(ib.buffer));}
+  return result;
+ };
+ const originalDraw=d.batch.onAfterRender,originalDonor=donor.onAfterRender;let realCaster:any,realDonor:any;
+ let ownerBudget:any[]=[];const own=[...mo.own.keys()];
+ const linked=new Set<any>();const budgetListeners:any[]=[];
+ if(q.frames)for(const t of (world as any).tiles){const mesh=t.fine;if(!mesh?.visible||!own.includes(mesh.material))continue;const orig=mesh.onAfterRender;budgetListeners.push([mesh,orig]);mesh.onAfterRender=(...args:any[])=>{
+  orig?.apply(mesh,args);const p=gl.getParameter(gl.CURRENT_PROGRAM);if(linked.has(p))return;linked.add(p);
+  const sz=gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS),u=Array.from({length:sz},(_,i)=>gl.getActiveUniform(p,i)!);const sh=gl.getAttachedShaders(p)!,fr=sh.find(k=>gl.getShaderParameter(k,gl.SHADER_TYPE)===gl.FRAGMENT_SHADER)!,vs=sh.find(k=>gl.getShaderParameter(k,gl.SHADER_TYPE)===gl.VERTEX_SHADER)!;
+  const names=[...new Set(u.map(q=>q.name.split('[')[0]))].filter(k=>/^\w+$/.test(k));const pat=new RegExp('\\b('+names.join('|')+')\\b','g'),v=gl.createShader(gl.VERTEX_SHADER)!,pp=gl.createProgram()!;const sums:any={samplers:0,conservativeSlots:0};
+  try{gl.shaderSource(v,gl.getShaderSource(vs)!.replace(pat,k=>'qaOnlyVert_'+k));gl.compileShader(v);if(!gl.getShaderParameter(v,gl.COMPILE_STATUS))throw Error('Vertex-only renaming failed');gl.attachShader(pp,v);gl.attachShader(pp,fr);gl.linkProgram(pp);if(!gl.getProgramParameter(pp,gl.LINK_STATUS))throw Error('Actual fragment reflection did not relink');const samp=new Set<number>([35678,35679,35680,35682,36289,36292,36293,36298,36299,36300,36303,36306,36307,36308,36311]);const arr=Array.from({length:gl.getProgramParameter(pp,gl.ACTIVE_UNIFORMS)},(_,i)=>gl.getActiveUniform(pp,i)!).filter(a=>!a.name.startsWith('qaOnlyVert_'));for(const a of arr){if(samp.has(a.type))sums.samplers+=a.size;const mm=[35676,35689,35690].includes(a.type)?4:[35675,35687,35688].includes(a.type)?3:[35674,35685,35686].includes(a.type)?2:1;sums.conservativeSlots+=mm*a.size;}sums.names=arr.filter(a=>samp.has(a.type)).map(a=>[a.name,a.size]);}
+  finally{gl.deleteProgram(pp);gl.deleteShader(v);}
+  const ru=gl.getUniformLocation(p,'rotorCount'),tc=gl.getUniformLocation(p,'regionalStaticCount');if(!ru||!tc)throw Error('static or rotor missing from actual live receiver');sums.realRotors=gl.getUniform(p,ru);sums.realStatic=gl.getUniform(p,tc);ownerBudget.push(sums);
+ };}
+ d.batch.onAfterRender=(...args:any[])=>{originalDraw?.apply(d.batch,args);realCaster=observe(slot,'windSeed','windClock',d.batch);};
+ donor.onAfterRender=(...args:any[])=>{originalDonor?.apply(donor,args);realDonor=observe(idx,'regionalPhase','regionalWindClock',donor);};
+ const before=d.rt.depthTexture,oldSubmits=mo.submits;let on:string|undefined,normal:any;try{
+  if(mo.lastClock===time%600)settle(time+.0381);
+  settle(time);if(!mo.u.rotorCount.value||d.rt.depthTexture!==before)throw Error('Not the same live depth attachment');
+  if(q.frames){on=snap();normal=count();}else renderer.render(scene,camera);
+ }finally{d.batch.onAfterRender=originalDraw;donor.onAfterRender=originalDonor;for(const [mesh,fun]of budgetListeners)mesh.onAfterRender=fun;}
+ if(!realCaster||!realDonor)throw Error('Declared selected source did not issue an actual GPU draw: '+JSON.stringify({caster:!!realCaster,donor:!!realDonor,slot,idx}));
+ let frames:any,unshaded:any;
+ if(q.frames){const n=mo.u.rotorCount.value;let off;try{mo.u.rotorCount.value=0;off=snap();unshaded=count();}finally{mo.u.rotorCount.value=n;}const restored=snap();if(on!==restored)throw Error('Original frame not restored when only the rotor contribution was toggled');frames={on,off,restored};}
+ const l=d.layout;let png:string|undefined;
+ if(q.depth){
+  const G:any=gl;const active=gl.getParameter(gl.ACTIVE_TEXTURE),pg=gl.getParameter(gl.CURRENT_PROGRAM),vao=gl.getParameter(gl.VERTEX_ARRAY_BINDING),draw=gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING),read=gl.getParameter(gl.READ_FRAMEBUFFER_BINDING),view=gl.getParameter(gl.VIEWPORT),color=gl.getParameter(gl.COLOR_WRITEMASK),pixelBuf=gl.getParameter(gl.PIXEL_PACK_BUFFER_BINDING);
+  const states=[gl.BLEND,gl.CULL_FACE,gl.DEPTH_TEST,gl.DITHER,gl.POLYGON_OFFSET_FILL,gl.RASTERIZER_DISCARD,gl.SAMPLE_ALPHA_TO_COVERAGE,gl.SAMPLE_COVERAGE,gl.SCISSOR_TEST,gl.STENCIL_TEST],enabled=states.map(a=>gl.isEnabled(a));const pre=gl.getError();if(pre!==gl.NO_ERROR)throw Error('Production GL error before readback '+pre);
+  gl.activeTexture(gl.TEXTURE0);const bound=gl.getParameter(gl.TEXTURE_BINDING_2D),oldSample=gl.getParameter(gl.SAMPLER_BINDING);
+  const src=renderer.properties.get(d.rt.depthTexture).__webglTexture;if(!src)throw Error('Missing actual mounted GPU depth texture');
+  const fb=gl.createFramebuffer(),dst=gl.createTexture(),sam=gl.createSampler(),vsh=gl.createShader(gl.VERTEX_SHADER)!,fsh=gl.createShader(gl.FRAGMENT_SHADER)!,prog=gl.createProgram()!,a=gl.createVertexArray();
+  const raw=new Uint8Array(l.w*l.h*4);const vsrc='#version 300 es\nvoid main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.-1.,0.,1.);}';
+  const fsrc='#version 300 es\nprecision highp float;precision highp int;uniform highp sampler2D dep;uniform ivec2 baseCoord;out vec4 o;void main(){float z=texelFetch(dep,ivec2(gl_FragCoord.xy)+baseCoord,0).r;uint v=uint(round(clamp(z,0.,1.)*65535.));o=vec4(float(v&255u)/255.,float((v>>8)&255u)/255.,gl_FragCoord.x<1.?0.:1.,1.);}';
+  try{gl.bindVertexArray(a);gl.bindFramebuffer(gl.FRAMEBUFFER,fb);gl.bindTexture(gl.TEXTURE_2D,dst);gl.texStorage2D(gl.TEXTURE_2D,1,gl.RGBA8,l.w,l.h);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,dst,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('QA readback attachment incomplete');
+   gl.shaderSource(vsh,vsrc);gl.shaderSource(fsh,fsrc);gl.compileShader(vsh);gl.compileShader(fsh);gl.attachShader(prog,vsh);gl.attachShader(prog,fsh);gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error('Depth decode link failed: '+gl.getProgramInfoLog(prog));gl.useProgram(prog);
+   gl.bindTexture(gl.TEXTURE_2D,src);gl.samplerParameteri(sam,gl.TEXTURE_COMPARE_MODE,gl.NONE);gl.samplerParameteri(sam,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.samplerParameteri(sam,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.samplerParameteri(sam,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.samplerParameteri(sam,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.bindSampler(0,sam);
+   gl.uniform1i(gl.getUniformLocation(prog,'dep'),0);gl.uniform2i(gl.getUniformLocation(prog,'baseCoord'),(slot%l.cols)*l.w,Math.floor(slot/l.cols)*l.h);
+   for(const s of states)gl.disable(s);gl.colorMask(true,true,true,true);gl.viewport(0,0,l.w,l.h);gl.drawArrays(gl.TRIANGLES,0,3);gl.bindBuffer(gl.PIXEL_PACK_BUFFER,null);gl.readPixels(0,0,l.w,l.h,gl.RGBA,gl.UNSIGNED_BYTE,raw);
+   const err=gl.getError();if(err!==gl.NO_ERROR)throw Error('Unmodified live depth readback GL error '+err);
+  }finally{for(let i=0;i<states.length;i++)enabled[i]?gl.enable(states[i]):gl.disable(states[i]);gl.colorMask(color[0],color[1],color[2],color[3]);gl.viewport(view[0],view[1],view[2],view[3]);gl.bindBuffer(gl.PIXEL_PACK_BUFFER,pixelBuf);gl.bindVertexArray(vao);gl.useProgram(pg);gl.bindSampler(0,oldSample);gl.bindTexture(gl.TEXTURE_2D,bound);gl.activeTexture(active);gl.bindFramebuffer(gl.READ_FRAMEBUFFER,read);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,draw);gl.deleteFramebuffer(fb);gl.deleteTexture(dst);gl.deleteSampler(sam);gl.deleteVertexArray(a);gl.deleteProgram(prog);gl.deleteShader(vsh);gl.deleteShader(fsh);}
+  const decoded=new Uint8Array(l.w*l.h*2);for(let j=0;j<l.w*l.h;j++){if(raw[4*j+3]!==255||raw[4*j+2]!==((j%l.w===0)?0:255))throw Error('Readback sentinel rejected native orientation');decoded[j*2]=raw[j*4];decoded[j*2+1]=raw[j*4+1];}
+  const bytes=await new Response(new Blob([decoded]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();png=enc(new Uint8Array(bytes));
+ }
+ const L={w:l.w,h:l.h,cols:l.cols,rows:l.rows,ax:l.ax,ay:l.ay,lox:l.lowU,loy:l.lowV,loD:l.loD,hiD:l.hiD,U:l.x.toArray(),V:l.y.toArray(),W:l.sun.toArray(),uvUniform:mo.u.rotorLocalRect.value.toArray(),depthUniform:mo.u.rotorDepthParams.value.toArray(),format:before.type,name:before.name,colourAttachment:d.rt.texture.name};
+ const store:any[]=[];const origM=Array.from({length:mo.slotIds.length},(_,i)=>{const id=mo.slotIds[i],s=gw.sites.find((vv:any)=>vv.id===id);return {id,origin:mo.u.rotorOrigins.value[i].toArray().slice(0,3),xz:[s.x,s.z]};});
+ if(q.terrain){for(const t of (world as any).tiles){const m=t.fine;if(!m?.visible||!own.includes(m.material))continue;const g=m.geometry,at=g.getAttribute('position'),ix=g.index,vs=new THREE.Vector3();for(let i=0;i<ix.count;i+=3){const p=[0,1,2].map(b=>vs.fromBufferAttribute(at,ix.getX(i+b)).applyMatrix4(m.matrixWorld).toArray());const xs=p.map(b=>b[0]),zs=p.map(b=>b[2]);if(!origM.some(b=>Math.min(...xs)<=b.xz[0]+188&&Math.max(...xs)>=b.xz[0]-188&&Math.min(...zs)<=b.xz[1]+188&&Math.max(...zs)>=b.xz[1]-188))continue;store.push({owner:t.id,index:i/3,world:p});}}}
+ const M=new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse);
+ return {slot,slotIds:mo.slotIds,clock:mo.lastClock,station:q.site,farm:q.farm,actualReadSource:realDonor,actualReadDepthSubmit:realCaster,liveDepth:png,layout:L,normal,unshaded,frames,stageBudget:ownerBudget,frameSubmits:mo.submits-oldSubmits,diagnostic:gw.groundLightState(),visibleTerrainTriangles:store,origins:origM,viewProjection:M.toArray(),camera:camera.position.toArray(),sceneSun:(world as any).sun.toArray(),device:[gl.getParameter(gl.MAX_TEXTURE_SIZE),gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS),gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS)]};
+};
