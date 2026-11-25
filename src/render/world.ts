@@ -73,10 +73,12 @@ import {nearshoreFoamGLSL,nearshoreFoamRouterGLSL,nearshoreFoamMatches} from './
 import {BuildingShadows,buildingShadowGLSL} from './local-building-shadows.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
+import {runwayFinishGLSL} from './runway-finish.ts';
 import { runwayAtlas } from './runway-paint.ts';
 import { RUNWAYS,runwayAt } from '../sim/places.ts';
 import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
+const CYYG_FINISH_INDEX=RUNWAYS.findIndex(r=>r.id==='CYYG10');
 const BASILICA_RECEIVER_GUARD=project(-63.125295,46.233718);
 const vertex=`
  varying vec3 p; varying vec2 vuv;
@@ -280,7 +282,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false)=>fp+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false)=>fp+runwayFinishGLSL+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
@@ -325,7 +327,8 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  col*=.25;
  ${hogIsland?'paintHogPhoto(col,p,distance(cameraPosition,p),coast);':''}
  ${westDuneAerial?'paintWestDuneAerial(col,p,coast);':''}
- vec3 n=normalize(cross(dFdx(p),dFdy(p)));if(n.y<0.)n=-n;
+ vec3 terrainDx=dFdx(p),terrainDy=dFdy(p);
+ vec3 n=normalize(cross(terrainDx,terrainDy));if(n.y<0.)n=-n;
  ${duneSandShader?'paintDuneSand(col,n,p,coast,distance(cameraPosition,p));':''}
  ${grassCoastShader?'paintDuneTuftGround(col,n,p,coast);':''}
  ${nearGrassNap?`
@@ -422,7 +425,17 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  for(int i=0;i<3;i++){
   vec2 delta=p.xz-airport[i].xy,axis=airport[i].zw;float along=dot(delta,axis)/stripSize[i].x;
   float across=dot(delta,vec2(-axis.y,axis.x))/stripSize[i].y+.5;
-  if(along>=0.&&along<=1.&&across>=0.&&across<=1.){vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);col=texture2D(paintMap,u).rgb*(.90+.17*light);break;}
+  if(along>=0.&&along<=1.&&across>=0.&&across<=1.){
+   vec2 u=vec2((float(i)+clamp(across,.005,.995))/3.,1.-along);
+   vec3 paint=texture2D(paintMap,u).rgb;
+   if(i==${CYYG_FINISH_INDEX}){
+    vec2 metric=vec2(along*stripSize[i].x,(across-.5)*stripSize[i].y);
+    float pix=max(length(terrainDx.xz),length(terrainDy.xz));
+    paint=cyygPaving(paint,metric,pix,d);
+   }
+   col=paint*(.90+.17*light);
+   break;
+  }
  }
  ${nearGrassNap?'if(napAuthority>.001)sourceGrassNap(col,n,p,d,coast,napAuthority,'+(provinceFields?'liveField':'0.')+',napDx.xz,napDy.xz);':''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;

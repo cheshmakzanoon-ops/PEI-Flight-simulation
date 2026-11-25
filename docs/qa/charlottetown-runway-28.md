@@ -42,3 +42,35 @@ screen footprint. In the real Chromium scene the old geometry reported
 `Terrain contact` at 36.72 m/s. The same initial descent with updated
 geometry reported `Touchdown` at 36.63 m/s and finished at 0.075 m/s
 still on the runway. No training-use conclusion follows from this trial.
+
+## Close-range runway surface
+
+![Same simulator runway view before and after adding filtered pavement grain](charlottetown-runway-surface.webp)
+
+The old surface used one flat asphalt colour beneath the runway markings.
+The new original finish adds restrained metre-scale weather variation and
+smaller aggregate at close range. It is keyed to the registered CYYG10
+strip by ID. The colour calculation samples the existing marking atlas first;
+bright and detectable mixed marking pixels keep their old colour. The
+registration, markings, terrain, ground contact and friction model do not
+change. This does not describe measured pavement wear or real operations.
+
+The shader reuses the terrain's existing positional derivatives to filter
+the detail and returns the unmodified atlas at altitude. This adds no mesh,
+draw call, texture or network request. The nearby 03/21 and Summerside
+05/23 surfaces retain the old finish.
+
+```sh
+python tools/qa/runway-finish-frames.py --checkout . --deps ./node_modules \
+  --chromium /path/to/chromium --out /tmp/pei-runway-finish
+```
+
+The near 28 frame changed 75,125 pixels by more than two RGB codes, all
+within the marked runway material. All 5,134 independently marked paint
+pixels were identical, as were draw and triangle counts. A 1.92 cm camera
+translation changed the 99th percentile of 290,977 interior pavement
+samples by three codes. The overhead view, 03/21 and Summerside control
+views were unchanged. A fixed-step browser replay of the same initial
+28 approach gave the same touchdown speed (36.715 m/s) and brake outcome
+(0.139 m/s, still on the strip) byte for byte before and after. This is
+a simulator regression check, not a real-world performance claim.
