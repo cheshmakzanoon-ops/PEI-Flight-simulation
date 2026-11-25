@@ -1,0 +1,38 @@
+{
+  "format": "pei-coastal-marsh-source-receipt-v1",
+  "provider": "Resource Inventory and Modelling Section, Forests, Fish and Wildlife Division, Department of Land and Environment, Prince Edward Island",
+  "title": "Wetland and Sand Dune Inventory 2020",
+  "endpoint": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/Wetland_and_Sand_Dune_Inventory_2020/FeatureServer/0",
+  "licence": "https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island",
+  "retrievalDate": "2026-11-25",
+  "sourceSpatialReference": "EPSG:2954",
+  "shapes": [
+    {
+      "site": "cascumpec",
+      "selectedFid": 1350,
+      "source": "cascumpec-features.json.gz",
+      "openedBytes": 50813,
+      "openedSHA256": "109602239137b4b2fae59e37aef3709943226d60dbc22459a6d89927d9914190",
+      "packedBytes": 14687,
+      "packedSHA256": "cfb6d450931ce175d1d70afb22ad46f647ceeb3173ade9316aa4f30521d60f63"
+    },
+    {
+      "site": "tracadie",
+      "selectedFid": 5057,
+      "source": "tracadie-features.json.gz",
+      "openedBytes": 20705,
+      "openedSHA256": "4479e8aa046e8e9d8131c17c085013f1c5fa1859d469f571e4a9e64fede67102",
+      "packedBytes": 5659,
+      "packedSHA256": "8c9a2f6e4f5c815a93f9fd53301defdb9569d2898e07c23377d58bf3a6e682b5"
+    },
+    {
+      "site": "morell",
+      "selectedFid": 4574,
+      "source": "morell-features.json.gz",
+      "openedBytes": 72318,
+      "openedSHA256": "f897238baedd1894e8f5eb8f9b3e72d6cecf2337ec3d73f7996b3a99149e9f84",
+      "packedBytes": 21514,
+      "packedSHA256": "c719436cd064398ef7847db9b5d561ab9c46b3586e34c802da7a7a9dd3771ea0"
+    }
+  ]
+}

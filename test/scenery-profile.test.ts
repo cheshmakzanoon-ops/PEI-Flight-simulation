@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -171,4 +171,15 @@ test('each stock A/B switch leaves independent Standard shading active',()=>{
   assert.equal(standardTracadieOrtho(q(flag)),false);
   assert.equal(standardOpenRipplesRequested(q(flag)),false);
  }
+});
+
+
+test('coastal marsh admits ordinary Standard but not unrelated studies or independent reference choices',()=>{
+ const q=sceneryOptions;
+ assert.equal(coastalMarshRequested(q('?diagnostics&qa=1')),true);
+ assert.equal(coastalMarshRequested(q('?stockForestFloor&stockTracadieOrtho')),true);
+ for(const flag of ['stockCoastalMarsh','scenery=detail','surveyRelief','orthophotoSeamStudy','woodlandView'])
+  assert.equal(coastalMarshRequested(q('?'+flag)),false,flag);
+ assert.equal(forestFloorProfile(q('?stockCoastalMarsh')),'standard');
+ assert.equal(standardTracadieOrtho(q('?stockCoastalMarsh')),true);
 });

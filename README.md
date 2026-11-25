@@ -35,6 +35,8 @@ The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a s
 
 The [Cape Egmont lighthouse studio](docs/qa/cape-egmont-detached.md) is a separate Prince County model with unverified placement; it does not alter the live island.
 
+**Tracadie Bay · marsh pass** starts over one of [three mapped coastal marsh patches](docs/qa/coastal-marsh.md). Get close to see wind-laid grasses; the patch layer is also available at Cascumpec and Morell in Standard.
+
 **Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](docs/qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces.
 
 ### Scenery previews

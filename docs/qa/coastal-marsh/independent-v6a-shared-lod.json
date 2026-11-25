@@ -1,0 +1,10 @@
+{
+  "sourceBladesSHA256": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+  "method": "all actual indexed THREE organ=z3 mat triangles, including exact position, normal, morphology and entire shader attributes, no visual proxy approximation",
+  "nearTotalMatTriangles": 200,
+  "midTotalMatTriangles": 120,
+  "midMatTrianglesByteIdenticalInsideNear": 120,
+  "nearTotalMatVertices": 280,
+  "midTotalMatVertices": 168,
+  "consequence": "For retained roots under LOD changes, these basal silhouettes are literally the same geometry and shader input. Added near leaves, stems and individual acceptance still have separate authored budgets."
+}

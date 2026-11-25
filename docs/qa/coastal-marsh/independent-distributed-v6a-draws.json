@@ -1,0 +1,1715 @@
+{
+  "check": "independent actual submitted instanced meshes and candidate mask guards; no site heights, synthetic flat y witness only",
+  "shaRootField": "7d740ccc8f2d8ede54c80624812347e8233d5d305debe1ab440ed43395da585a",
+  "modelDigests": {
+    "marsh-patch.ts": "65d7c07d59fd237b1d9b89b6f42881e8b44be7a9ead59697505174536766bdff",
+    "blades.ts": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+    "marsh-material.ts": "fa052c523fa5ae0b1cd252a1ae99646a864cf42259951a97946ca1f3abb43b3e"
+  },
+  "distanceBandsM": [
+    0,
+    14,
+    29,
+    54
+  ],
+  "O": {
+    "cascumpec": {
+      "measuredAltFramesWithFarCandidatesButNoActualEmission": 0,
+      "measuredAltFramesWithFarGeometry": 32,
+      "largestAdmissibleLocalCount": 340,
+      "checks": [
+        {
+          "eyeOffAnchorXZ": [
+            0,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.255384092112654,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                74,
+                72
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.973896355918335,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 178
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                74,
+                72
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.973896355918335,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 56,
+                "Marsh plants: distant curved blades": 226
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                74,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.89704017938735,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                74,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.89704017938735,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            0.55,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.255384092112654,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                74,
+                72
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.98553069450752,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 178
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                74,
+                72
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.98553069450752,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 57,
+                "Marsh plants: distant curved blades": 225
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                74,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.05256702170164,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                74,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.05256702170164,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            3.4,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.255384092112654,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                73
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.85123881857412,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 180
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                73
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.85123881857412,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 59,
+                "Marsh plants: distant curved blades": 225
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.38332855299634,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.38332855299634,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            9.1,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.255384092112654,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            6,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                73,
+                76
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.87391258833508,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 181
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                73,
+                76
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.87391258833508,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 58,
+                "Marsh plants: distant curved blades": 227
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                73,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.07726386907399,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                73,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.07726386907399,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -14,
+            8
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.2330328626045954,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            4,
+            4,
+            5
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                75,
+                78
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.73202949861343,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 183
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                75,
+                56
+              ],
+              "directlyObservedFurthestRootHorizMetres": 39.09800986022299,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 23,
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.79990191448692,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.79990191448692,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            10,
+            16
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.2330328626045954,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            6,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                74,
+                85
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.805998523901174,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 189
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                74,
+                85
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.805998523901174,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 53,
+                "Marsh plants: distant curved blades": 240
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.45158667880141,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.45158667880141,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -24,
+            -21
+          ],
+          "authoredInputs": 193,
+          "guardFloorSpareM": 2.2657084128423595,
+          "candidateCountsByActualDistanceBands": [
+            0,
+            64,
+            129
+          ],
+          "sectorsPerBand": [
+            0,
+            4,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                0,
+                63,
+                94
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.73598251792664,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 4,
+                "Marsh plants: distant curved blades": 153
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                0,
+                63,
+                94
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.73598251792664,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 157
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                0,
+                63,
+                94
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.73598251792664,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 157
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                0,
+                63,
+                94
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.73598251792664,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 157
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            45,
+            -22
+          ],
+          "authoredInputs": 130,
+          "guardFloorSpareM": 2.291730124542373,
+          "candidateCountsByActualDistanceBands": [
+            0,
+            1,
+            129
+          ],
+          "sectorsPerBand": [
+            0,
+            1,
+            4
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                0,
+                1,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.887034251524476,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 72
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                0,
+                1,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.887034251524476,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 72
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                0,
+                1,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.887034251524476,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 72
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                0,
+                1,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.887034251524476,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 72
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "tracadie": {
+      "measuredAltFramesWithFarCandidatesButNoActualEmission": 0,
+      "measuredAltFramesWithFarGeometry": 32,
+      "largestAdmissibleLocalCount": 340,
+      "checks": [
+        {
+          "eyeOffAnchorXZ": [
+            0,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.229846484390582,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                77
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.620889341483974,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 184
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                77
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.620889341483974,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 73,
+                "Marsh plants: distant curved blades": 215
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.35828814677564,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.35828814677564,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            0.55,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.229846484390582,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                79
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.992466524886616,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 186
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                79
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.992466524886616,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 70,
+                "Marsh plants: distant curved blades": 220
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.48482224854701,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.48482224854701,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            3.4,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.237823267844287,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                82
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.712478745931435,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 189
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                82
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.712478745931435,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 72,
+                "Marsh plants: distant curved blades": 221
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.85773550670807,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 34.85773550670807,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            9.1,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.237823267844287,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                81
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.99494862297713,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 188
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                81
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.99494862297713,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 67,
+                "Marsh plants: distant curved blades": 225
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.18290821100479,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.18290821100479,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -14,
+            8
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.237823267844287,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                135,
+                75,
+                80
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.94764627852391,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 186
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                135,
+                75,
+                80
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.94764627852391,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 71,
+                "Marsh plants: distant curved blades": 219
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                135,
+                75,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.024432477519056,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                135,
+                75,
+                32
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.024432477519056,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            10,
+            16
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.237823267844287,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                74
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.94103904459375,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 181
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                74
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.94103904459375,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 73,
+                "Marsh plants: distant curved blades": 212
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.2307860855826,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.2307860855826,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -24,
+            -21
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.275047758701912,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                75,
+                84
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.98471858603074,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 189
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                75,
+                84
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.98471858603074,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 65,
+                "Marsh plants: distant curved blades": 228
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.322647952831986,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.322647952831986,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            45,
+            -22
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.229846484390582,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            6,
+            7
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                68
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.72608134024469,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 175
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                68
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.72608134024469,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 68,
+                "Marsh plants: distant curved blades": 211
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.11593743064506,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.11593743064506,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "morell": {
+      "measuredAltFramesWithFarCandidatesButNoActualEmission": 0,
+      "measuredAltFramesWithFarGeometry": 32,
+      "largestAdmissibleLocalCount": 340,
+      "checks": [
+        {
+          "eyeOffAnchorXZ": [
+            0,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.3042052552493986,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            6,
+            6
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                135,
+                74,
+                68
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.871350041824684,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 173
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                135,
+                74,
+                68
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.871350041824684,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 67,
+                "Marsh plants: distant curved blades": 210
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.53790226657274,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 36.53790226657274,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            0.55,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.3042052552493986,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            6,
+            6
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                135,
+                74,
+                64
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.777541205515135,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 169
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                135,
+                74,
+                64
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.777541205515135,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 65,
+                "Marsh plants: distant curved blades": 208
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.175210182232945,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.175210182232945,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            3.4,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.2918468061788007,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            7,
+            6
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                135,
+                74,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.77927083648152,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 176
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                135,
+                74,
+                71
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.77927083648152,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 66,
+                "Marsh plants: distant curved blades": 214
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.0014587054788,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                135,
+                74,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.0014587054788,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            9.1,
+            0
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.274669323679409,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            7,
+            6
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                136,
+                75,
+                80
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.976912780410856,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 187
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                136,
+                75,
+                80
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.976912780410856,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 61,
+                "Marsh plants: distant curved blades": 230
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.25145648034432,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                136,
+                75,
+                31
+              ],
+              "directlyObservedFurthestRootHorizMetres": 35.25145648034432,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -14,
+            8
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.274669323679409,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            5,
+            5
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                74,
+                66
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.99653190366996,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 170
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                74,
+                66
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.99653190366996,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 65,
+                "Marsh plants: distant curved blades": 209
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 38.97921019709234,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 38.97921019709234,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            10,
+            16
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.2596804232420977,
+          "candidateCountsByActualDistanceBands": [
+            95,
+            116,
+            129
+          ],
+          "sectorsPerBand": [
+            4,
+            4,
+            5
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                94,
+                115,
+                65
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.923323186750935,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 170
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                94,
+                115,
+                40
+              ],
+              "directlyObservedFurthestRootHorizMetres": 40.25897240974217,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 7,
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                94,
+                115,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.23780746694926,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                94,
+                115,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 37.23780746694926,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            -24,
+            -21
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.3042052552493986,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                74,
+                94
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.93675325425934,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 198
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                74,
+                91
+              ],
+              "directlyObservedFurthestRootHorizMetres": 43.98165744587341,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 57,
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 32.865641198580505,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                74,
+                34
+              ],
+              "directlyObservedFurthestRootHorizMetres": 32.865641198580505,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        },
+        {
+          "eyeOffAnchorXZ": [
+            45,
+            -22
+          ],
+          "authoredInputs": 340,
+          "guardFloorSpareM": 2.266694742506006,
+          "candidateCountsByActualDistanceBands": [
+            136,
+            75,
+            129
+          ],
+          "sectorsPerBand": [
+            8,
+            8,
+            8
+          ],
+          "observedActualDrapedPrimitiveCounts": [
+            {
+              "AGLEyeMetres": 2.9,
+              "emittedBandCounts": [
+                134,
+                75,
+                101
+              ],
+              "directlyObservedFurthestRootHorizMetres": 44.95480936383656,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 104,
+                "Marsh plants: distant curved blades": 206
+              }
+            },
+            {
+              "AGLEyeMetres": 16.4,
+              "emittedBandCounts": [
+                134,
+                75,
+                88
+              ],
+              "directlyObservedFurthestRootHorizMetres": 41.48041909213844,
+              "byPrimitive": {
+                "Marsh plants: close curved blades": 55,
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 32.5,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 32.95960639743332,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            },
+            {
+              "AGLEyeMetres": 61,
+              "emittedBandCounts": [
+                134,
+                75,
+                33
+              ],
+              "directlyObservedFurthestRootHorizMetres": 32.95960639743332,
+              "byPrimitive": {
+                "Marsh plants: distant curved blades": 242
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

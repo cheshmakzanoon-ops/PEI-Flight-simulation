@@ -1,0 +1,62 @@
+{
+  "scope": "Synthetic geometry/wind fixture; no site placement, terrain, uploader, or field measurements",
+  "analytics": {
+    "max": {
+      "inputs": 360,
+      "close": 104,
+      "mid": 242,
+      "draws": 2,
+      "triangles": 102658
+    },
+    "meshResults": [
+      {
+        "triangles": 538,
+        "units": {
+          "leaf": 238,
+          "stem": 72,
+          "seed": 28,
+          "mat": 200
+        },
+        "maxRadius": 0.6532772602039956,
+        "maxY": 0.85201096534729,
+        "meanY": 0.16628713985746105,
+        "belowZero": 9,
+        "midribOrTipVertices": 61,
+        "minTriangleArea": 0.000020272004969832436,
+        "vertices": 621
+      },
+      {
+        "triangles": 193,
+        "units": {
+          "leaf": 65,
+          "stem": 8,
+          "seed": 0,
+          "mat": 120
+        },
+        "maxRadius": 0.6532772602039956,
+        "maxY": 0.85201096534729,
+        "meanY": 0.09187802781455734,
+        "belowZero": 4,
+        "midribOrTipVertices": 13,
+        "minTriangleArea": 0.00014159444999950344,
+        "vertices": 271
+      }
+    ],
+    "identicalBasalTrianglesAcrossLods": 120
+  },
+  "guardRun": {
+    "accepted": 302,
+    "rejected": 50,
+    "centres": 346,
+    "verticesReviewedAcrossSixWindSamples": 780996,
+    "maxFractionOfApprovedSweptRadius": 0.9206796272607862,
+    "stableEyeShiftMetres": 0.55,
+    "oldInstancesRemovedImmediately": true,
+    "untouchedPositionInputs": true
+  },
+  "files": {
+    "blades.ts": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+    "marsh-material.ts": "fa052c523fa5ae0b1cd252a1ae99646a864cf42259951a97946ca1f3abb43b3e",
+    "marsh-patch.ts": "65d7c07d59fd237b1d9b89b6f42881e8b44be7a9ead59697505174536766bdff"
+  }
+}

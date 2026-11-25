@@ -1,0 +1,248 @@
+{
+  "status": "PASS exactly this optional mask footprint only; wait for emitted marsh foliage/runtime support/no-water-change proof",
+  "method": "Independent EPSG:2954 to WGS84 to simulator XZ, exact closed 10.10m support square per positive 5m RedFormat linear texel. Check one unmixed original province polygon and all possible actual signed Cover support, whole geometry owner intersections.",
+  "noSurveyHeightOrSpeciesClaim": true,
+  "source": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/Wetland_and_Sand_Dune_Inventory_2020/FeatureServer/0",
+  "coverDecodedSHA256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "trailDecodedSHA256": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "sourcesCount": 3,
+  "marshSites": {
+    "cascumpec": {
+      "cells": 195,
+      "extent": [
+        -70747.55,
+        -28982.55,
+        -70667.45,
+        -28837.45
+      ],
+      "wholeTentHalfExtent": 5.05,
+      "provincialEpochSourceSHA256": "109602239137b4b2fae59e37aef3709943226d60dbc22459a6d89927d9914190",
+      "maskDecodedSHA256": "d93de126184f8202de6992f02306ead866446129ce7da5662deb71628a783362",
+      "qualifyingPolygons": 21,
+      "renderedPolygonCellCounts": {
+        "1350": 195
+      },
+      "conservativeClearanceToHerbaceousPolygonBoundaryMetres": 0.10140010273607913,
+      "observedLandCoverClasses": [
+        30,
+        90
+      ],
+      "leastSignedCoverByte": 152,
+      "guaranteedBaseSignedDryMetres": 48,
+      "respectedProtected24mFence": true,
+      "existingOwnerSupportChecks": {
+        "NRN road": {
+          "candidateObjectsWithin300MetreBBox": 14,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 98.58990311877795
+        },
+        "AEB building footprint": {
+          "candidateObjectsWithin300MetreBBox": 22,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 71.13484802157686
+        },
+        "SWK1 sidewalks": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "PKG1 pad or faded rim": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "runway with approach buffer": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "CTF1 exact Confederation Trail bed": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief absolute support": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief whole receiver tile": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "existing measured headland/coastal receiver": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "dune sand bilinear tents": {
+          "positiveExistingCells": 24270,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 6321.406664990505
+        },
+        "dune grass bilinear tents": {
+          "positiveExistingCells": 188172,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 6.550252332052332
+        }
+      }
+    },
+    "tracadie": {
+      "cells": 7306,
+      "extent": [
+        16442.45,
+        9227.45,
+        18102.55,
+        9777.55
+      ],
+      "wholeTentHalfExtent": 5.05,
+      "provincialEpochSourceSHA256": "4479e8aa046e8e9d8131c17c085013f1c5fa1859d469f571e4a9e64fede67102",
+      "maskDecodedSHA256": "990d64ffc2ae0dc25ef3a5b130dac2463c330cb10dc098eaf4292c11938c7113",
+      "qualifyingPolygons": 3,
+      "renderedPolygonCellCounts": {
+        "5057": 7306
+      },
+      "conservativeClearanceToHerbaceousPolygonBoundaryMetres": 0.004166499917378548,
+      "observedLandCoverClasses": [
+        30,
+        90
+      ],
+      "leastSignedCoverByte": 151,
+      "guaranteedBaseSignedDryMetres": 46,
+      "respectedProtected24mFence": true,
+      "existingOwnerSupportChecks": {
+        "NRN road": {
+          "candidateObjectsWithin300MetreBBox": 11,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 118.01816186400355
+        },
+        "AEB building footprint": {
+          "candidateObjectsWithin300MetreBBox": 13,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 60.056483017355696
+        },
+        "SWK1 sidewalks": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "PKG1 pad or faded rim": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "runway with approach buffer": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "CTF1 exact Confederation Trail bed": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief absolute support": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief whole receiver tile": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "existing measured headland/coastal receiver": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "dune sand bilinear tents": {
+          "positiveExistingCells": 24270,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 458.3933350094943
+        },
+        "dune grass bilinear tents": {
+          "positiveExistingCells": 188172,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 1.5502523320523327
+        }
+      }
+    },
+    "morell": {
+      "cells": 1078,
+      "extent": [
+        39607.45,
+        8517.45,
+        39887.55,
+        8772.55
+      ],
+      "wholeTentHalfExtent": 5.05,
+      "provincialEpochSourceSHA256": "f897238baedd1894e8f5eb8f9b3e72d6cecf2337ec3d73f7996b3a99149e9f84",
+      "maskDecodedSHA256": "f00bb2dc67ca66618445d229e135bedc530abf189605347285cc59d30a7110e6",
+      "qualifyingPolygons": 18,
+      "renderedPolygonCellCounts": {
+        "4574": 1078
+      },
+      "conservativeClearanceToHerbaceousPolygonBoundaryMetres": 0.019051839343618867,
+      "observedLandCoverClasses": [
+        30,
+        90
+      ],
+      "leastSignedCoverByte": 152,
+      "guaranteedBaseSignedDryMetres": 48,
+      "respectedProtected24mFence": true,
+      "existingOwnerSupportChecks": {
+        "NRN road": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "AEB building footprint": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "SWK1 sidewalks": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "PKG1 pad or faded rim": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "runway with approach buffer": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "CTF1 exact Confederation Trail bed": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief absolute support": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "measured dune relief whole receiver tile": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "existing measured headland/coastal receiver": {
+          "candidateObjectsWithin300MetreBBox": 0,
+          "wholeTentIntersections": 0,
+          "lowerBoundHorizontalClearanceMetres": 300.0
+        },
+        "dune sand bilinear tents": {
+          "positiveExistingCells": 24270,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 19863.393335009496
+        },
+        "dune grass bilinear tents": {
+          "positiveExistingCells": 188172,
+          "bothTentsNonOverlapClearanceAtLeastMetres": 7038.393335009494
+        }
+      }
+    }
+  }
+}

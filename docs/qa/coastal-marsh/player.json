@@ -1,0 +1,73 @@
+[
+  {
+    "mode": "active",
+    "distance": 141.43301463176238,
+    "textureRequests": [
+      "tracadie.red.gz"
+    ],
+    "marsh": [
+      {
+        "id": "cascumpec",
+        "state": "idle",
+        "gain": 0
+      },
+      {
+        "id": "tracadie",
+        "state": "ready",
+        "gain": 1
+      },
+      {
+        "id": "morell",
+        "state": "idle",
+        "gain": 0
+      }
+    ],
+    "plants": {
+      "id": "tracadie",
+      "accepted": 338,
+      "rejected": 2,
+      "near": 0,
+      "mid": 242,
+      "draws": 1,
+      "triangles": 46706
+    },
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "stock",
+    "distance": 140.87581097216108,
+    "textureRequests": [],
+    "marsh": null,
+    "plants": null,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "corrupt",
+    "distance": 141.43274037210745,
+    "textureRequests": [
+      "tracadie.red.gz"
+    ],
+    "marsh": [
+      {
+        "id": "cascumpec",
+        "state": "idle",
+        "gain": 0
+      },
+      {
+        "id": "tracadie",
+        "state": "failed",
+        "gain": 0
+      },
+      {
+        "id": "morell",
+        "state": "idle",
+        "gain": 0
+      }
+    ],
+    "plants": null,
+    "pause": true,
+    "errors": []
+  }
+]

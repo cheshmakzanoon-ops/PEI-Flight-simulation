@@ -1,0 +1,263 @@
+{
+  "sha256PinsForGeometry": {
+    "marsh-patch.ts": "65d7c07d59fd237b1d9b89b6f42881e8b44be7a9ead59697505174536766bdff",
+    "blades.ts": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+    "marsh-material.ts": "fa052c523fa5ae0b1cd252a1ae99646a864cf42259951a97946ca1f3abb43b3e",
+    "marsh-root-field.ts": "7d740ccc8f2d8ede54c80624812347e8233d5d305debe1ab440ed43395da585a",
+    "stockDryCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  },
+  "matchingMasksFromPriorWholeSupportEvidence": {
+    "cascumpec": {
+      "maskDecodedSHA256": "d93de126184f8202de6992f02306ead866446129ce7da5662deb71628a783362",
+      "positiveCells": 195
+    },
+    "tracadie": {
+      "maskDecodedSHA256": "990d64ffc2ae0dc25ef3a5b130dac2463c330cb10dc098eaf4292c11938c7113",
+      "positiveCells": 7306
+    },
+    "morell": {
+      "maskDecodedSHA256": "f00bb2dc67ca66618445d229e135bedc530abf189605347285cc59d30a7110e6",
+      "positiveCells": 1078
+    }
+  },
+  "priorSupportEvidenceSHA256": "eb60b1cc538bf67ae2f6d1d5ecf685029487066e384a4ba5966824bd530c418d",
+  "flightAndContactCoreUnaffectedSHA256": {
+    "sim/terrain.ts": "28e7d7bb77b24a5a6eff45ec6aec60767142a854118ada4e385a1c5957d3393f",
+    "sim/cover.ts": "e37eb6b604296633533ac34815903df44d97f5c11cd154b059b77eed81dddb31",
+    "sim/flight.ts": "fa0dd1e10f7fc567e70887f7543258aacbaa76ba29c49f1bf528954fc952ac87",
+    "sim/geo.ts": "615dfa83789123f718109e32faf74334dc510139baa99639a62766ff9dfb4106",
+    "sim/coastal-terrain.ts": "0daddc5b51ae0647850cb68e3d334b6f558e3f59bcc15e5e54d135a515e0393a",
+    "render/roads.ts": "ffb4531f10d2da334830213285038a38216dd6d123c57f87cbe5a48faa77087d",
+    "render/buildings.ts": "b9ef784897014e865e89ba67e78ddb73bdb512ebfae3da9d2b89bc06ca5aebbe",
+    "render/sidewalks.ts": "5740eec4572531cae473865a9c2eaffc04ed0c09e85aecc1ba91f3981f1f6dfc",
+    "render/parking-surfaces.ts": "df8b06c9e0b9a08c4d9f73bb587119e45ce2974aa23402ea44fb6985a724d791"
+  },
+  "scene": {
+    "cascumpec": {
+      "poseAGLMetres": 6,
+      "size": [
+        840,
+        540
+      ],
+      "posthocStatistics": {
+        "pixelsMaxChannelAbove0": 63287,
+        "pixelsMaxChannelAbove2": 63171,
+        "pixelsMaxChannelAbove12": 59735,
+        "pixelsMaxChannelAbove25": 46600,
+        "pixelsMaxChannelAbove45": 32970,
+        "pixelsMaxChannelAbove70": 11375,
+        "topMiddleBottomThirdAbove2": [
+          3294,
+          10356,
+          49521
+        ],
+        "nonzeroOnExactMask": 63287,
+        "nonzeroInOnePixelFringe": 0,
+        "outsideOnePixelFringe": 0,
+        "markerSamples": 63288,
+        "max": 131
+      },
+      "marshAssetRequests": [
+        "cascumpec.red.gz"
+      ],
+      "graphicsCounts": {
+        "id": "cascumpec",
+        "accepted": 339,
+        "rejected": 1,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "stockRepeatExact": true,
+      "terrainRayCount": 20,
+      "minimumRootOffsetAboveActualTerrainMetres": 0.004998660980816361,
+      "maximumRootOffsetAboveActualTerrainMetres": 0.005001122366889099,
+      "imageSHA256": {
+        "before": "190d04598da459fd4fb50a9c99400535ece4f4134778b04a67094a7e83142d99",
+        "after": "4867ff0b16676c808e926af0532cd2f217aea396e9e12f40e89498f8aef33b84",
+        "idA": "636a726c5e9d485249d3d700b17ea9146e9a996681459121b000b925e1fee1aa",
+        "idB": "19c135918100564a7d264efa0781894466b7c53ea4c9d7326214b4d680153567"
+      }
+    },
+    "morell": {
+      "poseAGLMetres": 5.5,
+      "size": [
+        840,
+        540
+      ],
+      "posthocStatistics": {
+        "pixelsMaxChannelAbove0": 71654,
+        "pixelsMaxChannelAbove2": 71605,
+        "pixelsMaxChannelAbove12": 63152,
+        "pixelsMaxChannelAbove25": 43629,
+        "pixelsMaxChannelAbove45": 17749,
+        "pixelsMaxChannelAbove70": 1413,
+        "topMiddleBottomThirdAbove2": [
+          2699,
+          12271,
+          56635
+        ],
+        "nonzeroOnExactMask": 71654,
+        "nonzeroInOnePixelFringe": 0,
+        "outsideOnePixelFringe": 0,
+        "markerSamples": 71655,
+        "max": 113
+      },
+      "marshAssetRequests": [
+        "morell.red.gz"
+      ],
+      "graphicsCounts": {
+        "id": "morell",
+        "accepted": 338,
+        "rejected": 2,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "stockRepeatExact": true,
+      "terrainRayCount": 20,
+      "minimumRootOffsetAboveActualTerrainMetres": 0.004999983616716108,
+      "maximumRootOffsetAboveActualTerrainMetres": 0.005000161581059759,
+      "imageSHA256": {
+        "before": "483ac0685fc953f2c844efa488e082da07b86fb117147b9b81e70c30aaa762a3",
+        "after": "ed182ca21d00c0ff0932d8ce3e3ceaf7602eecc5fc6a9f2ef60e73bb08a7c0d8",
+        "idA": "063403caf45cadd9472866f2992be93bf9b6c11278dc4a4a53bde72156d0f594",
+        "idB": "bef30bc908cd1b70c5d212703b699613c623f0e6be91dfce79f5861ddbcfcdd1"
+      }
+    },
+    "tracadie": {
+      "poseAGLMetres": 5,
+      "size": [
+        840,
+        540
+      ],
+      "posthocStatistics": {
+        "pixelsMaxChannelAbove0": 65612,
+        "pixelsMaxChannelAbove2": 65395,
+        "pixelsMaxChannelAbove12": 61416,
+        "pixelsMaxChannelAbove25": 48743,
+        "pixelsMaxChannelAbove45": 33412,
+        "pixelsMaxChannelAbove70": 8264,
+        "topMiddleBottomThirdAbove2": [
+          1749,
+          11264,
+          52382
+        ],
+        "nonzeroOnExactMask": 65612,
+        "nonzeroInOnePixelFringe": 0,
+        "outsideOnePixelFringe": 0,
+        "markerSamples": 65615,
+        "max": 127
+      },
+      "marshAssetRequests": [
+        "tracadie.red.gz"
+      ],
+      "graphicsCounts": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 104,
+        "mid": 189,
+        "draws": 2,
+        "triangles": 92429
+      },
+      "stockRepeatExact": true,
+      "terrainRayCount": 19,
+      "minimumRootOffsetAboveActualTerrainMetres": 0.004999999854931908,
+      "maximumRootOffsetAboveActualTerrainMetres": 0.005000327716733616,
+      "imageSHA256": {
+        "before": "35f461d6a3971b728c9566cbb41be6f0d27a0afa8abb8cfe12633df86fa4a09a",
+        "after": "6e7730ea0a37bd7b800c0086bace74f890386f17fc641dd430ca751eba09d63d",
+        "idA": "f7bc0d4d687222ba87998712d107b577afa963224d32648ea0d0dc2336cd0aa3",
+        "idB": "1cf570a7f5a3cfc1b1194fb8abbaeba0fc49f11be587180955aa5a1a842f1409"
+      }
+    },
+    "tracadie-approach": {
+      "poseAGLMetres": 18,
+      "size": [
+        840,
+        540
+      ],
+      "posthocStatistics": {
+        "pixelsMaxChannelAbove0": 4769,
+        "pixelsMaxChannelAbove2": 4709,
+        "pixelsMaxChannelAbove12": 3916,
+        "pixelsMaxChannelAbove25": 2177,
+        "pixelsMaxChannelAbove45": 724,
+        "pixelsMaxChannelAbove70": 105,
+        "topMiddleBottomThirdAbove2": [
+          30,
+          1057,
+          3622
+        ],
+        "nonzeroOnExactMask": 4769,
+        "nonzeroInOnePixelFringe": 0,
+        "outsideOnePixelFringe": 0,
+        "markerSamples": 4769,
+        "max": 102
+      },
+      "marshAssetRequests": [
+        "tracadie.red.gz"
+      ],
+      "graphicsCounts": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 17,
+        "mid": 242,
+        "draws": 2,
+        "triangles": 55852
+      },
+      "stockRepeatExact": true,
+      "terrainRayCount": 27,
+      "minimumRootOffsetAboveActualTerrainMetres": 0.004999999854931908,
+      "maximumRootOffsetAboveActualTerrainMetres": 0.0050003550899377636,
+      "imageSHA256": {
+        "before": "81adde177f8b8d4dca5b0973fc950f5bb878675232b5343f7d7ca5c7d2b6e5d7",
+        "after": "015cd4bb4dc4b9d757d5a812f2df454eb6ce30fc92efe097a3e4806ba5c08eba",
+        "idA": "39f74234966ae2983eb6a7b4eacb4a5a1a444f6a63c535060963cec5c31bc0d1",
+        "idB": "5a8469e68ca29f12531990a0b71cada0b092e79cd73fdf52a121ba9b588f9596"
+      }
+    },
+    "high": {
+      "poseAGLMetres": 450,
+      "size": [
+        840,
+        540
+      ],
+      "posthocStatistics": {
+        "pixelsMaxChannelAbove0": 0,
+        "pixelsMaxChannelAbove2": 0,
+        "pixelsMaxChannelAbove12": 0,
+        "pixelsMaxChannelAbove25": 0,
+        "pixelsMaxChannelAbove45": 0,
+        "pixelsMaxChannelAbove70": 0,
+        "topMiddleBottomThirdAbove2": [
+          0,
+          0,
+          0
+        ],
+        "nonzeroOnExactMask": 0,
+        "nonzeroInOnePixelFringe": 0,
+        "outsideOnePixelFringe": 0,
+        "markerSamples": 0,
+        "max": 0
+      },
+      "marshAssetRequests": [],
+      "graphicsCounts": null,
+      "stockRepeatExact": true,
+      "terrainRayCount": 0,
+      "minimumRootOffsetAboveActualTerrainMetres": null,
+      "maximumRootOffsetAboveActualTerrainMetres": null,
+      "imageSHA256": {
+        "before": "da2d5d687387d2e676e74d22994ad0f7d592c0f8504282c10be01d08acd9a0c2",
+        "after": "da2d5d687387d2e676e74d22994ad0f7d592c0f8504282c10be01d08acd9a0c2",
+        "idA": "da2d5d687387d2e676e74d22994ad0f7d592c0f8504282c10be01d08acd9a0c2",
+        "idB": "da2d5d687387d2e676e74d22994ad0f7d592c0f8504282c10be01d08acd9a0c2"
+      }
+    }
+  },
+  "limits": "Same-frame isolated blades/clumps with underlying ground response unchanged in both toggles, plus 450 m cold control. No device FPS, whole-province vegetation, botanical species, tide or surveyed elevations. Screens at 840 \u00d7 540 are SwiftShader; looks sparse and ground remains soft at approach."
+}

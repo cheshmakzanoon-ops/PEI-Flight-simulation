@@ -249,8 +249,14 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockConfederationTrail']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockConfederationTrail','stockCoastalMarsh']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
+
+/** Optional local native-source optical and vegetation layer in Standard. */
+export function coastalMarshRequested(q:URLSearchParams){
+ const mode=q.get('scenery');
+ return (!mode||mode==='standard')&&!q.has('stockCoastalMarsh')&&standardComparisonQuery(q);
+}
 
 /** Standard owns only the independently pinned Tracadie join. Keep the
  * historic multi-site experiment and locked map styles separate. */

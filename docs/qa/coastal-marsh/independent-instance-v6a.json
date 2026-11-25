@@ -1,0 +1,113 @@
+{
+  "readOnlyGeometryStudyOnly": true,
+  "noPlacementOrNativeHeightAccepted": true,
+  "sourceSHA256": {
+    "blades.ts": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+    "marsh-material.ts": "fa052c523fa5ae0b1cd252a1ae99646a864cf42259951a97946ca1f3abb43b3e",
+    "marsh-patch.ts": "65d7c07d59fd237b1d9b89b6f42881e8b44be7a9ead59697505174536766bdff"
+  },
+  "forms": [
+    {
+      "near": true,
+      "actualTriangles": 538,
+      "vertices": 621,
+      "organAttributeKinds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "minTriangleArea": 0.000020272004969832436,
+      "normalsAtLeast": 0.9999999589872131
+    },
+    {
+      "near": false,
+      "actualTriangles": 193,
+      "vertices": 271,
+      "organAttributeKinds": [
+        0,
+        1,
+        3
+      ],
+      "minTriangleArea": 0.00014159444999950344,
+      "normalsAtLeast": 0.9999999652364813
+    }
+  ],
+  "localGeometryBounds": {
+    "restRadiusMax": 0.6532772602039956,
+    "minY": -0.004999999888241291,
+    "maxY": 0.85201096534729,
+    "actualIndependentUnitWindCoefficient": 0.06656201920014146
+  },
+  "invalidRowsRejected": 7,
+  "viewpoint": [
+    {
+      "name": "close",
+      "confirmedRoots": 51,
+      "actualVertices": 31671,
+      "state": {
+        "accepted": 51,
+        "rejected": 7,
+        "near": 51,
+        "mid": 0,
+        "draws": 1,
+        "triangles": 27438
+      },
+      "minAnalyticEnvelopeMarginM": 0.06772280125115604,
+      "maxPositionErrorM": 2.235469985255303e-7
+    },
+    {
+      "name": "low_mid",
+      "confirmedRoots": 51,
+      "actualVertices": 19421,
+      "state": {
+        "accepted": 51,
+        "rejected": 7,
+        "near": 16,
+        "mid": 35,
+        "draws": 2,
+        "triangles": 15363
+      },
+      "minAnalyticEnvelopeMarginM": 0.06772280125115604,
+      "maxPositionErrorM": 2.235469985255303e-7
+    },
+    {
+      "name": "beyond",
+      "confirmedRoots": 51,
+      "actualVertices": 13821,
+      "state": {
+        "accepted": 51,
+        "rejected": 7,
+        "near": 0,
+        "mid": 51,
+        "draws": 1,
+        "triangles": 9843
+      },
+      "minAnalyticEnvelopeMarginM": 0.06772280125115604,
+      "maxPositionErrorM": 2.235469985255303e-7
+    },
+    {
+      "name": "reentry",
+      "confirmedRoots": 51,
+      "actualVertices": 31671,
+      "state": {
+        "accepted": 51,
+        "rejected": 7,
+        "near": 51,
+        "mid": 0,
+        "draws": 1,
+        "triangles": 27438
+      },
+      "minAnalyticEnvelopeMarginM": 0.06772280125115604,
+      "maxPositionErrorM": 2.235469985255303e-7
+    }
+  ],
+  "synchronizedImmediateRevokeAndReentry": true,
+  "normalShaderAndBoundsMethod": "Actual THREE rest arrays and matrices; full XZ scale cancels analytically in the frozen shader world translation. Bound gust by |.40|+|.20|+|.12| with perpendicular XZ bases; multiply by squared nonnegative source y. Every accepted plant checked at two real mesh LODs, combined near/mid, and return.",
+  "configuredBudgets": {
+    "MARSH_INPUT_LIMIT": 360,
+    "MARSH_NEAR_LIMIT": 104,
+    "MARSH_MID_LIMIT": 242,
+    "MARSH_MAX_AGL": 88
+  }
+}
