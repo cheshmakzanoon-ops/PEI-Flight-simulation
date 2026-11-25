@@ -127,3 +127,19 @@ test('mirror-image bridge parapets stand 1.10 m above the existing road and have
  }
  assert.equal(group.children.length,8,'no new draw batches');
 });
+
+test('bridge asphalt metric coordinates follow the deck and leave the rest of the bridge alone',()=>{
+ const bridge=addConfederationBridge(new THREE.Scene());
+ const deck=bridge.children[0] as THREE.Mesh, g=deck.geometry;
+ const uv=g.getAttribute('uv'), pos=g.getAttribute('position');
+ assert.equal(uv.count,pos.count);
+ for(let i=0;i<pos.count;i++){
+  const station=uv.getX(i), w=uv.getY(i), p=bridgeAt(station);
+  assert.ok(station>=0&&station<=BRIDGE_LENGTH+.002);
+  assert.ok(Math.abs(w)===5.5);
+  assert.ok(Math.abs(pos.getY(i)-p.y)<.003);
+  assert.ok(Math.hypot(pos.getX(i)-(p.x-p.dz*w),pos.getZ(i)-(p.z+p.dx*w))<.009);
+ }
+ assert.equal(uv.getX(0),0);assert.ok(Math.abs(uv.getX(uv.count-2)-BRIDGE_LENGTH)<.002);
+ for(const q of bridge.children.slice(1,4))assert.equal((q as THREE.Mesh).geometry.getAttribute('uv'),undefined);
+});

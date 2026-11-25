@@ -157,3 +157,38 @@ no application warnings or playback errors.
 In the matched deck, PEI approach and navigation-span views, respectively,
 43,347, 11,734 and 8,515 pixels changed by more than two RGB codes. No such
 pixel was outside the edge-batch mask with its four-pixel anti-aliasing margin.
+
+## Close-range deck surface
+
+![Matched simulator frames of plain and procedurally textured bridge pavement](confederation-asphalt.webp)
+
+The road was previously a single flat color. Its original visual treatment
+now adds subtle stone aggregate, broad color variation and less uniform
+shoulders. The [bridge project profile](https://www.pppcouncil.ca/home/confederation-bridge)
+describes a bituminous road surface. The texture here is illustrative, not a
+measured pavement mix, a condition survey or a claim about wheel-track wear.
+
+The shader uses metres along and across the existing ribbon. Small detail
+fades based on the projected pixel footprint, and beyond that range the old
+road color is used. The physical deck, lane markings, barriers, supports
+and all other materials are unchanged. Only the deck's texture coordinates
+and color calculation change, with the same draw calls and triangles, no
+texture assets or network requests, and no collision update.
+
+Run the paired views at deck, crossing, navigation and cruise heights:
+
+```sh
+python tools/qa/bridge-parapet-frames.py --surface asphalt --checkout . \
+  --views along-deck,pei-crossing,navigation,cruise \
+  --chromium /path/to/chromium --out /tmp/pei-bridge-asphalt
+```
+
+The near comparison changed 87,541 deck pixels by more than two RGB codes,
+and zero such pixels outside the deck mask. A 1.36 cm camera shift changed
+the 99th percentile of the 184,369-pixel central deck sample by five codes.
+The two lower oblique comparisons changed at most three codes. Each fixed
+view restored the old frame byte for byte. The compiled Borden flight
+advanced about 244 m and switched to Cockpit without a browser error. These
+are image and playback checks, not hardware performance measurements.
+At the cruise fixture the deck was present in the diagnostic pass and the
+normal frame was identical, including the road.

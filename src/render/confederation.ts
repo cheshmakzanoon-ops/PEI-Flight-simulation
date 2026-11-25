@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {addBridgeAsphalt} from './bridge-asphalt.ts';
 import { addBridgeConcrete } from './bridge-concrete.ts';
 import { mainBridgeShaftGeometry } from './confederation-shaft.ts';
 import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, BRIDGE_DECK_CONTROLS, bridgeGirderDepth } from '../sim/confederation.ts';
@@ -25,6 +26,7 @@ export function addConfederationBridge(scene: THREE.Scene) {
   const dark = new THREE.MeshStandardMaterial({color:0x716f65,roughness:.94,side:THREE.DoubleSide});
   const shaftConcrete=concrete.clone();
   const shieldConcrete=dark.clone();
+  addBridgeAsphalt(deck);
   addBridgeConcrete(concrete,'deck');
   addBridgeConcrete(dark,'deck');
   addBridgeConcrete(shaftConcrete,'shaft');
@@ -33,13 +35,14 @@ export function addConfederationBridge(scene: THREE.Scene) {
   const push=(arr:number[], a:readonly number[],b:readonly number[],c:readonly number[],d:readonly number[])=>{
     arr.push(...a,...b,...c,...a,...c,...d);
   };
-  function paint(arr:number[],mat:THREE.Material) {
+  function paint(arr:number[],mat:THREE.Material,metric?:number[]) {
     const geom=new THREE.BufferGeometry();
     geom.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));
+    if(metric)geom.setAttribute('uv',new THREE.Float32BufferAttribute(metric,2));
     geom.computeVertexNormals();geom.computeBoundingSphere();
     const mesh=new THREE.Mesh(geom,mat);bridge.add(mesh);
   }
-  const asphalt:number[]=[], edges:number[]=[], stripe:number[]=[], under:number[]=[];
+  const asphalt:number[]=[], roadMetric:number[]=[], edges:number[]=[], stripe:number[]=[], under:number[]=[];
   const n=Math.ceil(BRIDGE_LENGTH/22);
   // Include every support in the panel boundaries: a fixed interval can skip
   // the deepest part of the girder and leave an above-water pier poking through.
@@ -48,6 +51,7 @@ export function addConfederationBridge(scene: THREE.Scene) {
   for(let i=1;i<stations.length;i++){
     const s=stations[i-1],t=stations[i],a=bridgeAt(s),b=bridgeAt(t),half=WIDTH/2;
     push(asphalt,verts(a,-half,0),verts(b,-half,0),verts(b,half,0),verts(a,half,0));
+    roadMetric.push(s,-half,t,-half,t,half,s,-half,t,half,s,half);
     push(under,verts(a,-2.65,-bridgeGirderDepth(s)),verts(a,2.65,-bridgeGirderDepth(s)),verts(b,2.65,-bridgeGirderDepth(t)),verts(b,-2.65,-bridgeGirderDepth(t)));
     for(const sign of [-1,1]){
       push(edges,verts(a,sign*half,-.18),verts(b,sign*half,-.18),verts(b,sign*2.65,-bridgeGirderDepth(t)),verts(a,sign*2.65,-bridgeGirderDepth(s)));
@@ -63,7 +67,7 @@ export function addConfederationBridge(scene: THREE.Scene) {
     const a=bridgeAt(s),b=bridgeAt(s+8);
     push(stripe,verts(a,-.11,.045),verts(b,-.11,.045),verts(b,.11,.045),verts(a,.11,.045));
   }
-  paint(asphalt,deck);paint(edges,concrete);paint(under,dark);paint(stripe,line);
+  paint(asphalt,deck,roadMetric);paint(edges,concrete);paint(under,dark);paint(stripe,line);
   // Original visible shapes. No underwater footing survey or bridge collision.
   const m=new THREE.Matrix4(),q=new THREE.Quaternion(),v=new THREE.Vector3(),scale=new THREE.Vector3();
   const up=new THREE.Vector3(0,1,0);

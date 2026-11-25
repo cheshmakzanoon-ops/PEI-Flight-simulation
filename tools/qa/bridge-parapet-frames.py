@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pair actual Three.js bridge parapet views with frozen-scene controls."""
+"""Pair actual Three.js bridge surface views with frozen-scene controls."""
 from argparse import ArgumentParser
 from base64 import b64decode
 from importlib.util import spec_from_file_location, module_from_spec
@@ -17,10 +17,14 @@ p.add_argument('--checkout', required=True, type=Path)
 p.add_argument('--out', required=True, type=Path)
 p.add_argument('--deps', type=Path)
 p.add_argument('--chromium', required=True)
-p.add_argument('--base', default='99af11593f50e9582aaa1833cff3ef25dd859212')
+p.add_argument('--base', help='Exact parent containing the unmodified surface.')
+p.add_argument('--surface', choices=('parapet','asphalt'), default='parapet')
 p.add_argument('--views', default='along-deck,pei-crossing,navigation')
 p.set_defaults(void_probe=False)
 args=p.parse_args()
+if args.base is None:
+    args.base={'parapet':'99af11593f50e9582aaa1833cff3ef25dd859212',
+               'asphalt':'5662088c93b8b4f60f3a4ca8062c52f23fe8443b'}[args.surface]
 sp=spec_from_file_location('fixed',Path(__file__).with_name('fixed-scenery.py'))
 fixed=module_from_spec(sp)
 sp.loader.exec_module(fixed)
@@ -30,6 +34,8 @@ eyes={
                   south=.774988753,fixedBaseH=41.27,fixedEyeY=43.05,h=0,agl=0),
  'pei-crossing':dict(lon=-63.70806767978029,lat=46.248696882406826,dist=53,east=1.084728361,
                      south=.231871481,fixedBaseH=28.231421117,fixedEyeY=32.761421117,h=0,agl=0),
+ 'cruise':dict(lon=-63.753140856209,lat=46.209203912983,dist=1950,east=-.77,
+               south=-.93,fixedBaseH=59.005,fixedEyeY=590,h=0,agl=0),
  'navigation':dict(lon=-63.753140856209,lat=46.209203912983,dist=79,east=-.443002887,
                    south=-1.016930893,fixedBaseH=59.005357927,fixedEyeY=67.535357927,h=0,agl=0),
 }
@@ -37,6 +43,12 @@ def stage(repo, root, deps, void):
     stage_baseline(repo,root,deps,void)
     (root/'src/render/qa-bridge-baseline.ts').write_bytes(check_output(
         ['git','show',args.base+':src/render/confederation.ts'],cwd=repo))
+    cur=root/'src/render/confederation.ts'
+    if args.surface=='parapet':
+        # Keep older cross-section comparisons independent of later surface art.
+        s=cur.read_text()
+        if '  addBridgeAsphalt(deck);' in s:
+            cur.write_text(fixed.once(s,'  addBridgeAsphalt(deck);',''))
     main=root/'src/main.ts'
     code="import {addConfederationBridge as baselineBridge} from './render/qa-bridge-baseline.ts';\n"+main.read_text()
     code=fixed.once(code,' addConfederationBridge(scene);', ''' const baseline=baselineBridge(scene),
@@ -44,14 +56,14 @@ def stage(repo, root, deps, void):
       revised.visible=false;''')
     anchor='  renderer.render(scene,camera);'
     code=fixed.once(code,anchor,anchor+'''
-      (window as any).bridgeParapetFrames=()=>{
+      (window as any).bridgeSurfaceFrames=()=>{
        const shots={};
        try {
         for(const [key,preview,mask] of [
           ['stock',false,false],['new',true,false],['new-mask',true,true],['stock-mask',false,true],['replay',false,false],
         ] as const){
          baseline.visible=!preview;revised.visible=preview;
-         const edge=(preview?revised:baseline).children[1] as THREE.Mesh,original=edge.material;
+         const edge=(preview?revised:baseline).children[QA_SURFACE] as THREE.Mesh,original=edge.material;
          if(mask)edge.material=mark;
          try{
           renderer.render(scene,camera);
@@ -59,11 +71,21 @@ def stage(repo, root, deps, void):
              calls:renderer.info.render.calls,triangles:renderer.info.render.triangles};
          }finally{edge.material=original;}
         }
+        if(QA_SURFACE===0){
+         const origin=camera.position.clone();
+         try{
+          baseline.visible=false;revised.visible=true;
+          camera.position.x+=.011;camera.position.z+=.008;camera.updateMatrixWorld(true);
+          renderer.render(scene,camera);
+          shots['motion']={canvas:renderer.domElement.toDataURL('image/png'),
+           calls:renderer.info.render.calls,triangles:renderer.info.render.triangles};
+         }finally{camera.position.copy(origin);camera.updateMatrixWorld(true);}
+        }
        }finally{baseline.visible=true;revised.visible=false;}
        return shots;
       };
     ''')
-    main.write_text(code)
+    main.write_text(code.replace('QA_SURFACE','0' if args.surface=='asphalt' else '1'))
 fixed.stage=stage
 
 def capture(a,browser,url):
@@ -76,9 +98,9 @@ def capture(a,browser,url):
             page.on('pageerror',lambda e:errors.append(str(e)))
             page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
             page.goto(url+'/?diagnostics&qa='+quote(json.dumps(pose)),wait_until='domcontentloaded')
-            page.wait_for_function('window.bridgeParapetFrames&&window.islandAirDiagnostics?.mainland&&window.reviewCamera?.frame>21',
+            page.wait_for_function('window.bridgeSurfaceFrames&&window.islandAirDiagnostics?.mainland&&window.reviewCamera?.frame>21',
                                    timeout=120000)
-            result=page.evaluate('window.bridgeParapetFrames()')
+            result=page.evaluate('window.bridgeSurfaceFrames()')
             images={}
             for label,item in result.items():
                 path=a.out/(id+'-'+label+'.png')
@@ -87,14 +109,41 @@ def capture(a,browser,url):
             def magenta(label):
                 c=images[label]
                 return (c[:,:,0]>220)&(c[:,:,1]<24)&(c[:,:,2]>205)
-            scope=binary_dilation(magenta('stock-mask')|magenta('new-mask'),iterations=4)
+            mask=magenta('stock-mask')|magenta('new-mask')
+            if id=='cruise':
+                # At cruise the narrow road rarely fills one raster sample.
+                # Identify its partial coverage against each identical unmarked frame.
+                for side in ('stock','new'):
+                    d=images[side+'-mask']-images[side]
+                    mask|=(d[:,:,0]>7)&(d[:,:,1]<-3)&(d[:,:,2]>5)
+            scope=binary_dilation(mask,iterations=4)
             assert np.array_equal(images['stock'],images['replay']), id
             delta=np.abs(images['stock']-images['new']).max(2)
             changed=int(np.count_nonzero(delta>2))
             outside=int(np.count_nonzero((delta>2)&~scope))
-            assert changed>200 and outside==0 and not errors,(id,changed,outside,errors)
+            assert outside==0 and not errors,(id,changed,outside,errors)
+            if args.surface=='parapet' or id=='along-deck':
+                assert changed>200, (id,changed)
+            elif id=='cruise':
+                assert np.count_nonzero(scope)>500 and delta.max()<=2, (id,delta.max())
+            else:
+                # A low oblique view may show only a few pixels of road and
+                # attenuated detail. Require a real sampled deck, not an
+                # arbitrary count of high-contrast differences at this angle.
+                assert np.count_nonzero(scope)>500 and delta.max()<=7, (id,delta.max())
             assert result['stock']['calls']==result['new']['calls'],result
-            report[id]={'pose':pose,'changedAbove2':changed,'outside':outside,'counts':result}
+            report[id]={'pose':pose,'changedAbove2':changed,'outside':outside,'maxDelta':int(delta.max()),'counts':result}
+            if args.surface=='asphalt':
+                assert result['stock']['triangles']==result['new']['triangles'],result
+                if id=='along-deck':
+                    # Test the central near deck, not the moving road silhouette.
+                    core=scope.copy()
+                    core[:330,:]=False
+                    core[:,:100]=False
+                    core[:,900:]=False
+                    d=np.abs(images['new']-images['motion']).max(2)[core]
+                    assert d.size>100000 and np.percentile(d,99)<=6, (id,d.size,np.percentile(d,99))
+                    report[id]['motionTests']={'count':int(d.size),'p99':float(np.percentile(d,99))}
             (a.out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
             print(id,report[id],flush=True)
         finally:
