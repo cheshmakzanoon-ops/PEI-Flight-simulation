@@ -95,7 +95,7 @@ import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
 import { SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
-import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested,standardNearshoreRequested,standardOpenCoastRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from './app/scenery-profile.ts';
+import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested,standardNearshoreRequested,standardOpenCoastRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,standardInlandOrtho,coastalMarshRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
 import './app/style.css';
 bootUI();
@@ -111,8 +111,8 @@ async function run(){
  const capeMode=northCapeMode(options),capeExplicit=capeMode==='explicit';
  const explicitCapeModule=capeExplicit?loadAerialModule(()=>import('./render/north-cape.ts')):undefined;
  const standardTracadie=standardTracadieOrtho(options),standardCounties=standardCountyOrtho(options);
- const orthoScope=standardTracadie?(standardCounties?'standard':'tracadie'):standardCounties?'counties':'study';
- const orthoJob=standardTracadie||standardCounties||(options.has('orthophotoSeamStudy')&&options.get('scenery')!=='detail')?
+ const inlandOrtho=standardInlandOrtho(options);
+ const orthoJob=standardTracadie||standardCounties||inlandOrtho||(options.has('orthophotoSeamStudy')&&options.get('scenery')!=='detail')?
    loadAerialModule(()=>import('./render/orthophoto-seams.ts')):undefined;
  const daylightWanted=aerialPerspectiveRequested(options);
  const daylightJob=daylightWanted?loadAerialModule(()=>import('./render/aerial-perspective-lab.ts')):undefined;
@@ -284,7 +284,10 @@ async function run(){
  const groundCohorts=[grade,rusticoGround,hogGround?.grade,...dunesGround,crownGround].filter(g=>g!==undefined);
  const hog=hogJob&&matchesHogPhoto(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await hogJob:undefined;
  const orthoModule=await orthoJob;
- const ortho=orthoModule&&(standardTracadie||standardCounties||orthoModule.seamOptions(options))&&
+ const inlandWindows=inlandOrtho&&orthoModule&&standardLandAtlasMatches(terrain,terrainSha,cover)?orthoModule.inlandSourceWindows(cover):[];
+ const standardOrtho=standardTracadie||standardCounties||inlandWindows.length>0;
+ const orthoScope=standardOrtho?{tracadie:standardTracadie,counties:standardCounties,inland:inlandWindows}:'study';
+ const ortho=orthoModule&&(standardOrtho||orthoModule.seamOptions(options))&&
    [-64.47,45.94,-61.93,47.10].every((v,i)=>terrain.spec.bounds[i]===v)?
    new orthoModule.OrthophotoSeams(renderer,img,orthoScope):undefined;
  const basinSandStandard=standardBasinSandRequested(options)&&terrainSha===CANOPY_FENCE.pins.terrain&&

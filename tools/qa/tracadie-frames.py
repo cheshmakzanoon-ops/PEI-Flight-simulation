@@ -34,6 +34,23 @@ for key,lon,lat,first,second,axis,edge in [
      first=first,second=second,axis=axis,edge=edge)
   COUNTIES.append(label)
 
+# Only two native-row windows, not two complete 5.9 km source tile edges.
+INLAND=[]
+for key,lon,lat,first,second,edge,z,slot,held in [
+ ('west-field',-63.835,46.4485298,'7-12','8-12',8,12,227,197),
+ ('central-field',-63.596875,46.4814844,'10-11','11-11',11,11,467,619),
+]:
+ for tail,sample,high,reverse,vertical in [
+   ('',slot,False,False,False),('-reciprocal',slot,False,True,False),('-high',slot,True,False,False),
+   ('-outside',held,False,False,True),('-flipped',639-slot,False,False,True)]:
+  sign=-1 if reverse else 1
+  y=47.10-(z+(sample+.5)/640)/22*1.16
+  P[key+tail]=dict(lon=lon,lat=y,first=first,second=second,axis='x',edge=edge,
+   east=-.91*sign,south=.42*sign,h=0,dist=.15 if vertical else (240 if high else (65 if reverse else 75)),
+   agl=17 if vertical else (550 if high else (38 if reverse else 44)))
+  INLAND.append(key+tail)
+GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
+
 def stage(repo,root,deps,void):
  base(repo,root,deps,void)
  p=root/'src/render/orthophoto-seams.ts';s=p.read_text()
@@ -88,12 +105,12 @@ fixed.stage=stage
 
 def capture(a,browser,url):
  results={}
- selections=a.views.split(',') if a.views else (COUNTIES if a.cohort=='counties' else TRACADIE)
+ selections=a.views.split(',') if a.views else GROUPS[a.cohort]
  for site in selections:
-  if site not in (COUNTIES if a.cohort=='counties' else TRACADIE):raise ValueError('Wrong camera for selected cohort: '+site)
+  if site not in GROUPS[a.cohort]:raise ValueError('Wrong camera for selected cohort: '+site)
   pose=P[site];edge=pose['first']+' / '+pose['second']
-  own='stockCountyOrtho' if a.cohort=='counties' else 'stockTracadieOrtho'
-  peer='stockTracadieOrtho' if a.cohort=='counties' else 'stockCountyOrtho'
+  own={'counties':'stockCountyOrtho','tracadie':'stockTracadieOrtho','inland':'stockInlandOrtho'}[a.cohort]
+  peer={'counties':'stockTracadieOrtho','tracadie':'stockCountyOrtho','inland':'stockCountyOrtho&stockTracadieOrtho'}[a.cohort]
   switch=own if a.stock else peer if a.peer_stock else None
   pg=browser.new_page(viewport={'width':840,'height':540});errors=[]
   pg.on('pageerror',lambda e:errors.append(str(e)))
@@ -105,8 +122,12 @@ def capture(a,browser,url):
     pg.wait_for_function("edge=>window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge===edge)?.gain===1",arg=edge,polling=250,timeout=120000)
    r=pg.evaluate('window.seamFrame()')
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
-   if switch=='stockCountyOrtho':expect={'18-12 / 18-13'}
-   if switch=='stockTracadieOrtho':expect.remove('18-12 / 18-13')
+   oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
+   inlands={'7-12 / 8-12','10-11 / 11-11'}
+   expect|=inlands;flags=(switch or '').split('&')
+   if 'stockCountyOrtho' in flags:expect-=oldCounties
+   if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')
+   if 'stockInlandOrtho' in flags:expect-=inlands
    assert {x['edge'] for x in r['seam']}==expect and not any(x['errors'] for x in r['seam']),(site,r['seam'])
    r.update(edge=edge,heightAGL=pose['agl'],stockSwitch=switch)
    def consume(label):
@@ -136,10 +157,10 @@ def capture(a,browser,url):
     if oldd>=3.:pairs.append([oldd,newd])
    if pairs:
     q=np.array(pairs);r['edgeContrast']=dict(samples=len(pairs),medianOld=float(np.median(q[:,0])),medianArt=float(np.median(q[:,1])),oldP90=float(np.quantile(q[:,0],.9)),artP90=float(np.quantile(q[:,1],.9)))
-   if site in ('high','offsite') or site.endswith('-high') or a.stock:assert not r['pixelGate']['changed'],r['pixelGate']
+   if site in ('high','offsite') or site.endswith(('-high','-outside','-flipped')) or a.stock:assert not r['pixelGate']['changed'],r['pixelGate']
    else:
     assert r['pixelGate']['over2']>100,r['pixelGate']
-    if a.cohort=='counties':
+    if a.cohort in ('counties','inland'):
      e=r.get('edgeContrast',{});assert e.get('samples',0)>=8 and e['medianArt']<e['medianOld'] and e['artP90']<e['oldP90'],(site,e)
    results[site]=r
    (a.out/'report.json').write_text(json.dumps(results,indent=2)+'\n')
@@ -148,7 +169,7 @@ def capture(a,browser,url):
 fixed.capture=capture
 p=argparse.ArgumentParser();p.add_argument('--checkout',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
 p.add_argument('--deps',type=Path);p.add_argument('--chromium',required=True);p.add_argument('--views')
-p.add_argument('--cohort',choices=['tracadie','counties'],default='tracadie')
+p.add_argument('--cohort',choices=['tracadie','counties','inland'],default='tracadie')
 switch=p.add_mutually_exclusive_group();switch.add_argument('--stock',action='store_true');switch.add_argument('--peer-stock',action='store_true')
 p.set_defaults(void_probe=False)
 fixed.run(p.parse_args())

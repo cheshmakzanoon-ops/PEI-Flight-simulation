@@ -54,3 +54,5 @@ python tools/qa/tracadie-frames.py --checkout . --cohort counties --views souris
 python tools/qa/tracadie-frames.py --checkout . --peer-stock --out /tmp/pei-tracadie-isolation --chromium /path/to/chromium
 python tools/qa/county-aerial-joins-player.py --dist dist --out /tmp/pei-county-flight.json --chromium /path/to/chromium
 ```
+
+The [two later inland source windows](inland-aerial-joins.md) are independent. Their `?stockInlandOrtho` comparison does not disable any of the three county joins above or the Tracadie Bay join.

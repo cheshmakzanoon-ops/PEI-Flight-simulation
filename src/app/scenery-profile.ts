@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockConfederationTrail','stockCoastalMarsh']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Optional local native-source optical and vegetation layer in Standard. */
@@ -270,6 +270,13 @@ export function standardCountyOrtho(q:URLSearchParams){
  const mode=q.get('scenery');
  return (!mode||mode==='standard')&&!q.has('stockCountyOrtho')&&standardComparisonQuery(q);
 }
+// Opting out of this two-window inland study must not disable the four
+// previously accepted imagery joins or any other Standard comparison.
+export function standardInlandOrtho(q:URLSearchParams){
+ const mode=q.get('scenery');
+ return (!mode||mode==='standard')&&!q.has('stockInlandOrtho')&&standardComparisonQuery(q);
+}
+
 /** Ordinary close forest only. An explicit floor request retains the
  * historical preview, including in the bundled Detail profile. */
 export function forestFloorProfile(q:URLSearchParams):false|true|'standard'{

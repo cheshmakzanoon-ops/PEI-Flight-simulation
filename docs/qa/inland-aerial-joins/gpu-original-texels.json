@@ -1,0 +1,680 @@
+{
+  "west": {
+    "edge": [
+      "7-12",
+      "8-12"
+    ],
+    "actualSourceIds": [
+      "0a920089-befd-4dc7-b8d1-36cabc0c8ce2",
+      "51842163-1132-44c0-b5bf-4bb6558603ff"
+    ],
+    "actualStripId": "c5331a34-2b54-434b-84b1-b26c76e87ce3",
+    "actualStripDimensions": [
+      4,
+      640
+    ],
+    "selectedOwnerMaterialUsesSameStrip": true,
+    "fullOriginalTexelCenters": 2560,
+    "centresDifferent": 0,
+    "maximumCentreAbsoluteChannelError": 0,
+    "intermediatePositions": 5760,
+    "maximumQuarterTexelRGBAError": 1,
+    "quarterTexelErrorsOverOne": 0,
+    "maximumRealGeographicSourceStepWithinTargetRGB": 123.16249429107873,
+    "chosenRows": [
+      {
+        "row": 219,
+        "left": [
+          60,
+          73,
+          39
+        ],
+        "center": [
+          62,
+          72,
+          39
+        ],
+        "right": [
+          64,
+          71,
+          39
+        ]
+      },
+      {
+        "row": 220,
+        "left": [
+          64,
+          74,
+          41
+        ],
+        "center": [
+          64,
+          72,
+          40
+        ],
+        "right": [
+          64,
+          69,
+          40
+        ]
+      },
+      {
+        "row": 221,
+        "left": [
+          60,
+          68,
+          35
+        ],
+        "center": [
+          62,
+          69,
+          38
+        ],
+        "right": [
+          64,
+          69,
+          40
+        ]
+      },
+      {
+        "row": 222,
+        "left": [
+          59,
+          67,
+          32
+        ],
+        "center": [
+          62,
+          68,
+          36
+        ],
+        "right": [
+          64,
+          69,
+          40
+        ]
+      },
+      {
+        "row": 223,
+        "left": [
+          76,
+          70,
+          35
+        ],
+        "center": [
+          70,
+          70,
+          38
+        ],
+        "right": [
+          64,
+          69,
+          40
+        ]
+      },
+      {
+        "row": 224,
+        "left": [
+          122,
+          86,
+          55
+        ],
+        "center": [
+          101,
+          86,
+          57
+        ],
+        "right": [
+          80,
+          85,
+          58
+        ]
+      },
+      {
+        "row": 225,
+        "left": [
+          158,
+          102,
+          71
+        ],
+        "center": [
+          119,
+          94,
+          64
+        ],
+        "right": [
+          80,
+          85,
+          58
+        ]
+      },
+      {
+        "row": 226,
+        "left": [
+          184,
+          117,
+          82
+        ],
+        "center": [
+          132,
+          101,
+          70
+        ],
+        "right": [
+          80,
+          85,
+          58
+        ]
+      },
+      {
+        "row": 227,
+        "left": [
+          196,
+          122,
+          85
+        ],
+        "center": [
+          139,
+          103,
+          72
+        ],
+        "right": [
+          82,
+          84,
+          58
+        ]
+      },
+      {
+        "row": 228,
+        "left": [
+          199,
+          121,
+          81
+        ],
+        "center": [
+          142,
+          103,
+          71
+        ],
+        "right": [
+          85,
+          84,
+          61
+        ]
+      },
+      {
+        "row": 229,
+        "left": [
+          199,
+          122,
+          77
+        ],
+        "center": [
+          144,
+          102,
+          69
+        ],
+        "right": [
+          88,
+          82,
+          61
+        ]
+      },
+      {
+        "row": 230,
+        "left": [
+          197,
+          123,
+          75
+        ],
+        "center": [
+          143,
+          103,
+          67
+        ],
+        "right": [
+          89,
+          82,
+          59
+        ]
+      },
+      {
+        "row": 231,
+        "left": [
+          194,
+          123,
+          74
+        ],
+        "center": [
+          142,
+          102,
+          66
+        ],
+        "right": [
+          90,
+          80,
+          58
+        ]
+      },
+      {
+        "row": 232,
+        "left": [
+          187,
+          117,
+          70
+        ],
+        "center": [
+          137,
+          96,
+          61
+        ],
+        "right": [
+          87,
+          75,
+          51
+        ]
+      },
+      {
+        "row": 233,
+        "left": [
+          174,
+          106,
+          63
+        ],
+        "center": [
+          127,
+          86,
+          53
+        ],
+        "right": [
+          80,
+          66,
+          43
+        ]
+      },
+      {
+        "row": 234,
+        "left": [
+          154,
+          90,
+          52
+        ],
+        "center": [
+          115,
+          74,
+          44
+        ],
+        "right": [
+          76,
+          59,
+          35
+        ]
+      },
+      {
+        "row": 235,
+        "left": [
+          138,
+          85,
+          50
+        ],
+        "center": [
+          108,
+          72,
+          42
+        ],
+        "right": [
+          77,
+          58,
+          34
+        ]
+      }
+    ],
+    "originalCentresRawHash": "36754a8acda8cd5f4f5d967cfae333d6af5fa4c600fd6857b33e11ce7d33a772",
+    "fullReferenceHash": "d78d722accaded38788d501f5d49f461dc7b6e353ac3ef554556223f67c6acab",
+    "fullStripSampledHash": "a7bf5cd9fed2c7de06e2f47ac091724c24110890fcf9448205b201ccae66c83c",
+    "glError": 0,
+    "lost": false,
+    "sourceCPUUnmodifiedWebPCentreHash": "36754a8acda8cd5f4f5d967cfae333d6af5fa4c600fd6857b33e11ce7d33a772",
+    "exactGPUOriginalVersusIndependentDecodedSourceRGBA": true,
+    "maxSourceCPUGPUHeldRowCentreChannelDifference": 0
+  },
+  "central": {
+    "edge": [
+      "10-11",
+      "11-11"
+    ],
+    "actualSourceIds": [
+      "183c0380-f0b6-4dfc-8a70-19711abdc10d",
+      "b9d2596d-c0e5-436c-9232-815b6d95a9cd"
+    ],
+    "actualStripId": "42150094-fc7f-436e-aaf9-3a2d5ef3f0c0",
+    "actualStripDimensions": [
+      4,
+      640
+    ],
+    "selectedOwnerMaterialUsesSameStrip": true,
+    "fullOriginalTexelCenters": 2560,
+    "centresDifferent": 0,
+    "maximumCentreAbsoluteChannelError": 0,
+    "intermediatePositions": 5760,
+    "maximumQuarterTexelRGBAError": 1,
+    "quarterTexelErrorsOverOne": 0,
+    "maximumRealGeographicSourceStepWithinTargetRGB": 128.6778924291193,
+    "chosenRows": [
+      {
+        "row": 459,
+        "left": [
+          196,
+          119,
+          75
+        ],
+        "center": [
+          146,
+          96,
+          63
+        ],
+        "right": [
+          96,
+          72,
+          51
+        ]
+      },
+      {
+        "row": 460,
+        "left": [
+          189,
+          114,
+          71
+        ],
+        "center": [
+          132,
+          88,
+          56
+        ],
+        "right": [
+          75,
+          63,
+          40
+        ]
+      },
+      {
+        "row": 461,
+        "left": [
+          188,
+          113,
+          70
+        ],
+        "center": [
+          131,
+          92,
+          57
+        ],
+        "right": [
+          73,
+          71,
+          44
+        ]
+      },
+      {
+        "row": 462,
+        "left": [
+          188,
+          113,
+          70
+        ],
+        "center": [
+          133,
+          98,
+          62
+        ],
+        "right": [
+          78,
+          83,
+          54
+        ]
+      },
+      {
+        "row": 463,
+        "left": [
+          188,
+          113,
+          70
+        ],
+        "center": [
+          137,
+          104,
+          67
+        ],
+        "right": [
+          85,
+          95,
+          64
+        ]
+      },
+      {
+        "row": 464,
+        "left": [
+          185,
+          113,
+          69
+        ],
+        "center": [
+          138,
+          106,
+          69
+        ],
+        "right": [
+          92,
+          99,
+          69
+        ]
+      },
+      {
+        "row": 465,
+        "left": [
+          185,
+          113,
+          69
+        ],
+        "center": [
+          138,
+          105,
+          68
+        ],
+        "right": [
+          91,
+          96,
+          67
+        ]
+      },
+      {
+        "row": 466,
+        "left": [
+          183,
+          110,
+          66
+        ],
+        "center": [
+          136,
+          101,
+          64
+        ],
+        "right": [
+          89,
+          91,
+          63
+        ]
+      },
+      {
+        "row": 467,
+        "left": [
+          180,
+          108,
+          64
+        ],
+        "center": [
+          134,
+          98,
+          63
+        ],
+        "right": [
+          88,
+          88,
+          61
+        ]
+      },
+      {
+        "row": 468,
+        "left": [
+          178,
+          105,
+          64
+        ],
+        "center": [
+          134,
+          96,
+          63
+        ],
+        "right": [
+          90,
+          87,
+          61
+        ]
+      },
+      {
+        "row": 469,
+        "left": [
+          176,
+          103,
+          61
+        ],
+        "center": [
+          132,
+          94,
+          60
+        ],
+        "right": [
+          87,
+          85,
+          58
+        ]
+      },
+      {
+        "row": 470,
+        "left": [
+          173,
+          100,
+          59
+        ],
+        "center": [
+          130,
+          90,
+          56
+        ],
+        "right": [
+          86,
+          81,
+          53
+        ]
+      },
+      {
+        "row": 471,
+        "left": [
+          176,
+          103,
+          61
+        ],
+        "center": [
+          131,
+          90,
+          55
+        ],
+        "right": [
+          85,
+          78,
+          49
+        ]
+      },
+      {
+        "row": 472,
+        "left": [
+          188,
+          112,
+          72
+        ],
+        "center": [
+          140,
+          97,
+          62
+        ],
+        "right": [
+          91,
+          82,
+          51
+        ]
+      },
+      {
+        "row": 473,
+        "left": [
+          201,
+          125,
+          85
+        ],
+        "center": [
+          150,
+          108,
+          71
+        ],
+        "right": [
+          99,
+          91,
+          57
+        ]
+      },
+      {
+        "row": 474,
+        "left": [
+          210,
+          135,
+          94
+        ],
+        "center": [
+          160,
+          118,
+          81
+        ],
+        "right": [
+          110,
+          102,
+          68
+        ]
+      },
+      {
+        "row": 475,
+        "left": [
+          212,
+          137,
+          96
+        ],
+        "center": [
+          165,
+          123,
+          86
+        ],
+        "right": [
+          117,
+          109,
+          75
+        ]
+      }
+    ],
+    "originalCentresRawHash": "5629c048baa6c990f147b36a83321c44523a914592d0f03331a49fbe186096cf",
+    "fullReferenceHash": "ac5635acc0230ebb7a309e48a01305808a56a1f678bcc94f951318c6a779af09",
+    "fullStripSampledHash": "74d66aec6f394d28aaff6b60a17fd6fd581249860cc69cd0537377e7f209e9fb",
+    "glError": 0,
+    "lost": false,
+    "sourceCPUUnmodifiedWebPCentreHash": "5629c048baa6c990f147b36a83321c44523a914592d0f03331a49fbe186096cf",
+    "exactGPUOriginalVersusIndependentDecodedSourceRGBA": true,
+    "maxSourceCPUGPUHeldRowCentreChannelDifference": 0
+  }
+}

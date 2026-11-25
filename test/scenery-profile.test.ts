@@ -202,3 +202,16 @@ test('the three Standard county imagery joins and Tracadie have independent sour
   assert(!standardCountyOrtho(q('?'+flag)),flag);
  }
 });
+
+test('inland imagery references leave older Standard groups independent in all eight combinations',async()=>{
+ const {standardInlandOrtho,standardCountyOrtho,standardTracadieOrtho}=await import('../src/app/scenery-profile.ts');
+ const keys=['stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho'];
+ for(let mask=0;mask<8;mask++){
+  const q=sceneryOptions('?diagnostics&'+keys.filter((_,i)=>mask&(1<<i)).join('&'));
+  assert.equal(standardTracadieOrtho(q),!(mask&1));assert.equal(standardCountyOrtho(q),!(mask&2));
+  assert.equal(standardInlandOrtho(q),!(mask&4));assert(coastalMarshRequested(q));assert.equal(forestFloorProfile(q),'standard');
+ }
+ for(const key of ['orthophotoSeamStudy','surveyRelief','provinceFieldsReview','scenery=detail','unknown']){
+  assert.equal(standardInlandOrtho(sceneryOptions('?'+key)),false,key);
+ }
+});

@@ -1,0 +1,300 @@
+{
+  "method": "Current Three.js flight scene with a private fixed eye and matching draw. In each pair, disable only this joined-row gain, restore it, then toggle it off once more to verify exact repeat and equal geometry. The mask is two separate marker colours in the true affected shader; outsideExact is measured on the original marker without dilating edges.",
+  "units": "Maximum per-pixel RGB-channel difference for pixel gates; Euclidean RGB8 difference across projected +/-0.35m ground samples for the ray distribution. Camera altitude in metres above stock terrain, not satellite capture altitude.",
+  "cases": {
+    "west-field": {
+      "owners": "7-12 / 8-12",
+      "eyeAGLm": 44,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "7-12 / 8-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 241403,
+      "drawCalls": 58,
+      "pixelGate": {
+        "changed": 25028,
+        "over2": 19386,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 68316
+      },
+      "matchedRays": {
+        "samples": 71,
+        "medianOld": 53.69207763671875,
+        "medianArt": 3.1801400184631348,
+        "oldP90": 64.88587951660156,
+        "artP90": 6.288370609283447
+      },
+      "frameSHA256": {
+        "old": "381fcc38851f02728d47877a99f89d4f843ea6b59486fe09a494e156f94d7f11",
+        "art": "ff2bd99c0ec704b433a3b2520ac8227a1585e1c827ed2e4b67949ef5f42821e9"
+      }
+    },
+    "west-field-reciprocal": {
+      "owners": "7-12 / 8-12",
+      "eyeAGLm": 38,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "7-12 / 8-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 232820,
+      "drawCalls": 34,
+      "pixelGate": {
+        "changed": 30271,
+        "over2": 22994,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 80906
+      },
+      "matchedRays": {
+        "samples": 68,
+        "medianOld": 56.39699935913086,
+        "medianArt": 3.8703980445861816,
+        "oldP90": 64.71385040283204,
+        "artP90": 9.621984672546391
+      },
+      "frameSHA256": {
+        "old": "84643db43fbed01ceb40f232908ea2e4e6e6247529d2091e0057106bd4335df0",
+        "art": "d3001c8e8633c3775d38d242cfe5af8b2ac439a227e5cbebf6937bd566b22c45"
+      }
+    },
+    "central-field": {
+      "owners": "10-11 / 11-11",
+      "eyeAGLm": 44,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "10-11 / 11-11",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 254120,
+      "drawCalls": 35,
+      "pixelGate": {
+        "changed": 25546,
+        "over2": 22705,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 66390
+      },
+      "matchedRays": {
+        "samples": 78,
+        "medianOld": 49.416975021362305,
+        "medianArt": 3.6269075870513916,
+        "oldP90": 63.22338714599609,
+        "artP90": 5.769854640960691
+      },
+      "frameSHA256": {
+        "old": "cee7249b7778f63de88fb6385e42825b184cf1840fa24c10065f7026d98636b0",
+        "art": "021e86b801e1e4b389683e82cb9879dc30a625a43f5571cf0807a1fef19aab46"
+      }
+    },
+    "central-field-reciprocal": {
+      "owners": "10-11 / 11-11",
+      "eyeAGLm": 38,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "10-11 / 11-11",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 312881,
+      "drawCalls": 66,
+      "pixelGate": {
+        "changed": 32448,
+        "over2": 29125,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 84268
+      },
+      "matchedRays": {
+        "samples": 67,
+        "medianOld": 49.254764556884766,
+        "medianArt": 3.4977424144744873,
+        "oldP90": 56.7116096496582,
+        "artP90": 8.566655540466302
+      },
+      "frameSHA256": {
+        "old": "4bca82dfd2c0d191e5014de8b96a5dfe3f003907aa1d20f9b3c57002e359cfad",
+        "art": "1e8bf0bbcf045ca7f652cdab78274deb810623549e4ac5c4cc6cb766bcea5212"
+      }
+    },
+    "west-field-outside": {
+      "owners": "7-12 / 8-12",
+      "eyeAGLm": 17,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "7-12 / 8-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 192665,
+      "drawCalls": 15,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "7c51b58563dbbd09203ff44909c2d8ec00166b705e1b57431e4199cbad222906",
+        "art": "7c51b58563dbbd09203ff44909c2d8ec00166b705e1b57431e4199cbad222906"
+      }
+    },
+    "central-field-outside": {
+      "owners": "10-11 / 11-11",
+      "eyeAGLm": 17,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "10-11 / 11-11",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 253961,
+      "drawCalls": 15,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "c83ebe9b64f43bc79c5446abb00657e8d9d3aace657a77f2dedf768174ca4a4e",
+        "art": "c83ebe9b64f43bc79c5446abb00657e8d9d3aace657a77f2dedf768174ca4a4e"
+      }
+    },
+    "west-field-flipped": {
+      "owners": "7-12 / 8-12",
+      "eyeAGLm": 17,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "7-12 / 8-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 214334,
+      "drawCalls": 15,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "726c8a6c804daaa43bfe98f31778053affdc1e5e1ae4c80865eabc15792bf565",
+        "art": "726c8a6c804daaa43bfe98f31778053affdc1e5e1ae4c80865eabc15792bf565"
+      }
+    },
+    "central-field-flipped": {
+      "owners": "10-11 / 11-11",
+      "eyeAGLm": 17,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "10-11 / 11-11",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 249373,
+      "drawCalls": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "ad1d493c14c2981a68cb783d0e695d3b51adc3ab355c9af0c0c666460dd7f4f4",
+        "art": "ad1d493c14c2981a68cb783d0e695d3b51adc3ab355c9af0c0c666460dd7f4f4"
+      }
+    },
+    "west-field-high": {
+      "owners": "7-12 / 8-12",
+      "eyeAGLm": 550,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "7-12 / 8-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 206701,
+      "drawCalls": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "ba7f360551ba43062675dc38462eb762835a17e5cf0c833659b997faf00eac97",
+        "art": "ba7f360551ba43062675dc38462eb762835a17e5cf0c833659b997faf00eac97"
+      }
+    },
+    "central-field-high": {
+      "owners": "10-11 / 11-11",
+      "eyeAGLm": 550,
+      "sameFrameBitRepeat": true,
+      "sourceReady": {
+        "edge": "10-11 / 11-11",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "meshTriangles": 234394,
+      "drawCalls": 20,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "matchedRays": null,
+      "frameSHA256": {
+        "old": "3749d1b57b9e0a2b7a579630c34a63c09d4d17d44e349cfbcb4207359cf9df88",
+        "art": "3749d1b57b9e0a2b7a579630c34a63c09d4d17d44e349cfbcb4207359cf9df88"
+      }
+    }
+  }
+}

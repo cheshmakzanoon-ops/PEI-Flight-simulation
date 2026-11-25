@@ -1,0 +1,26 @@
+{
+  "site": {
+    "lon": -63.83635482655934,
+    "lat": 46.44884465839125
+  },
+  "heading": 90,
+  "startAgl": 42,
+  "pathM": 225,
+  "proposedSourceRow": 223.67862918206265,
+  "insideFullWindow": true,
+  "method": "50cm base terrain and decoded Cover sampling on 30m-wide 225m strip, full mask checks and exact AEB signed footprint boxes. Actual player still must verify mesh/physics. Virtual only.",
+  "groundBounds": [
+    7.030598492366833,
+    7.677527042836411
+  ],
+  "startY": 49.34700791017144,
+  "minLevelMargin": 41.66948086733503,
+  "minimumSignedCover": 255,
+  "landClassCodes": [
+    30,
+    40,
+    50
+  ],
+  "aebBoxesInCorridor": 0,
+  "nearestBoxM": 17.858960885459965
+}

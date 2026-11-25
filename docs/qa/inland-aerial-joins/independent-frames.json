@@ -1,0 +1,674 @@
+{
+  "method": "Independent Standard WebGL2/Three.js at 768x480. Each frozen frame compares gain 0, native candidate, two exact optical-ID colors, two final drawn-ground-ID colors and restored byte-identical gain 0. Projected \u00b10.4 m actual-terrain samples reject a whole bilinear tap if any contributing pixel is not drawn by the two current land owners. Equal-length same-side controls at \u00b11.2m. Source-centre comparison projects known source centers onto the actual terrain and excludes undersampled or occluded footprints; dedicated GPU readback versus source is separate. Pixel delta counts are max-channel RGB8; cross-seam metrics are Euclidean RGB8. No new imagery or personal land-use inference.",
+  "scopedSupportBoundsMetres": {
+    "west": {
+      "worldXZClosedBounding": [
+        -48756.147118350935,
+        5625.319275306937,
+        -48732.346216658014,
+        5808.48242467397
+      ],
+      "sourceSpanMetresXZ": [
+        23.80090169292089,
+        183.16314936703293
+      ],
+      "nearestCompleteNRNLine": {
+        "distanceMetres": 10.679917866929749,
+        "ordinal": 10503,
+        "flags": 9
+      },
+      "nearestActualAEBFootprint": {
+        "distanceMetres": 13.738255274620311,
+        "tileAndOrdinal": [
+          "q0322",
+          288
+        ]
+      },
+      "scannedNRNFeaturesWithinExpanded1000mBox": 22
+    },
+    "central": {
+      "worldXZClosedBounding": [
+        -30477.05461803686,
+        1962.056287963123,
+        -30453.253716343937,
+        2145.219437330156
+      ],
+      "sourceSpanMetresXZ": [
+        23.80090169292089,
+        183.16314936703293
+      ],
+      "nearestCompleteNRNLine": {
+        "distanceMetres": 35.387937077222716,
+        "ordinal": 4747,
+        "flags": 10
+      },
+      "nearestActualAEBFootprint": {
+        "distanceMetres": 198.35229186595825,
+        "tileAndOrdinal": [
+          "q03230",
+          252
+        ]
+      },
+      "scannedNRNFeaturesWithinExpanded1000mBox": 17
+    }
+  },
+  "physicalGround": "No per-pixel collision, camera flight or vertex deformation by this material change.",
+  "views": {
+    "west:primary:close": {
+      "sourcePair": [
+        "7-12",
+        "8-12"
+      ],
+      "northOriginNativeTexelRow": 227,
+      "lonLat": [
+        -63.835,
+        46.44852982954546
+      ],
+      "eyeAGL": 34,
+      "eyeHorizontalOffset": 54,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 32,
+        "triangles": 225569
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "7-12",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "8-12",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 69,
+        "projected": 71,
+        "markerPixels": 88863,
+        "changedPixels": 32914,
+        "changedAbove2": 25758,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 43,
+        "actualSourceCenterMaxScreenDelta": 0.573803,
+        "across08mStock": {
+          "median": 57.427,
+          "p75": 63.3787,
+          "p90": 65.6536
+        },
+        "across08mCandidate": {
+          "median": 4.6862,
+          "p75": 7.1939,
+          "p90": 11.3098
+        },
+        "sameSide08mStock": {
+          "median": 0.9847,
+          "p75": 1.4735,
+          "p90": 1.9373
+        },
+        "sameSide08mCandidate": {
+          "median": 4.1838,
+          "p75": 5.4382,
+          "p90": 6.1141
+        },
+        "qualifyingStableRayCount": 67,
+        "sourceStrongOldMedian": 58.55772758356518,
+        "sourceStrongAfterMedian": 4.704453419056078,
+        "sourceStrongOldP90": 65.66427421026896,
+        "sourceStrongAfterP90": 11.971447091379268
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "nearGenuineContrastImproves": true,
+        "screenSourceCentersWithinTwoRGB8": true,
+        "exactSourceCentersActualGPU": true
+      },
+      "stockImagePNGHash": "725c66e9c6348625bf8c8149320923c94fde5890643f74f8d0f4f7897d1edc66",
+      "candidateImagePNGHash": "32da50357bfec806fa96f0bd66986b3b1e74823a28bc8494b693a8f74ae55987"
+    },
+    "central:primary:close": {
+      "sourcePair": [
+        "10-11",
+        "11-11"
+      ],
+      "northOriginNativeTexelRow": 467,
+      "lonLat": [
+        -63.596875,
+        46.481484375
+      ],
+      "eyeAGL": 34,
+      "eyeHorizontalOffset": 54,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 59,
+        "triangles": 295023
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "10-11",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "11-11",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 71,
+        "projected": 71,
+        "markerPixels": 91629,
+        "changedPixels": 34657,
+        "changedAbove2": 31263,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 42,
+        "actualSourceCenterMaxScreenDelta": 0.707401,
+        "across08mStock": {
+          "median": 48.6727,
+          "p75": 51.46,
+          "p90": 55.5016
+        },
+        "across08mCandidate": {
+          "median": 4.1117,
+          "p75": 4.7363,
+          "p90": 26.9208
+        },
+        "sameSide08mStock": {
+          "median": 1.7436,
+          "p75": 2.8677,
+          "p90": 3.8502
+        },
+        "sameSide08mCandidate": {
+          "median": 4.3529,
+          "p75": 5.0485,
+          "p90": 5.5218
+        },
+        "qualifyingStableRayCount": 71,
+        "sourceStrongOldMedian": 48.67272860028546,
+        "sourceStrongAfterMedian": 4.111711978565446,
+        "sourceStrongOldP90": 55.50157379277647,
+        "sourceStrongAfterP90": 26.92080037892216
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "nearGenuineContrastImproves": true,
+        "screenSourceCentersWithinTwoRGB8": true,
+        "exactSourceCentersActualGPU": true
+      },
+      "stockImagePNGHash": "64c2a9e91b1da2c79b266c336c48dc2d42c3baa90fffe77a588b1e10abcc3df8",
+      "candidateImagePNGHash": "94cc5f953bf2fa1ee1c72b44cea8fe3e472b8bc14db50d55032d030656948282"
+    },
+    "west:primary:recip": {
+      "sourcePair": [
+        "7-12",
+        "8-12"
+      ],
+      "northOriginNativeTexelRow": 227,
+      "lonLat": [
+        -63.835,
+        46.44852982954546
+      ],
+      "eyeAGL": 37,
+      "eyeHorizontalOffset": 62,
+      "eyeDirection": [
+        -0.84,
+        0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 47,
+        "triangles": 239747
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "7-12",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "8-12",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 83,
+        "projected": 83,
+        "markerPixels": 73026,
+        "changedPixels": 26768,
+        "changedAbove2": 21466,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 42,
+        "actualSourceCenterMaxScreenDelta": 0.705122,
+        "across08mStock": {
+          "median": 11.1979,
+          "p75": 62.6599,
+          "p90": 65.1957
+        },
+        "across08mCandidate": {
+          "median": 3.6347,
+          "p75": 4.9901,
+          "p90": 6.6876
+        },
+        "sameSide08mStock": {
+          "median": 0.924,
+          "p75": 1.2698,
+          "p90": 1.803
+        },
+        "sameSide08mCandidate": {
+          "median": 1.884,
+          "p75": 4.8455,
+          "p90": 5.9071
+        },
+        "qualifyingStableRayCount": 58,
+        "sourceStrongOldMedian": 58.57506595036738,
+        "sourceStrongAfterMedian": 4.251329708730021,
+        "sourceStrongOldP90": 65.5283471457184,
+        "sourceStrongAfterP90": 7.863970692421399
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "nearGenuineContrastImproves": true,
+        "screenSourceCentersWithinTwoRGB8": true
+      },
+      "stockImagePNGHash": "a63214e4f4a205d9ccab675798d4a458d6501f4c4251636eea67f330235651dc",
+      "candidateImagePNGHash": "6a533c4a4f6ac0601a43c81b9480d130e753fd11ada81923e7215ded8c627df1"
+    },
+    "central:primary:recip": {
+      "sourcePair": [
+        "10-11",
+        "11-11"
+      ],
+      "northOriginNativeTexelRow": 467,
+      "lonLat": [
+        -63.596875,
+        46.481484375
+      ],
+      "eyeAGL": 37,
+      "eyeHorizontalOffset": 62,
+      "eyeDirection": [
+        -0.84,
+        0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 35,
+        "triangles": 258324
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "10-11",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "11-11",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 84,
+        "projected": 84,
+        "markerPixels": 71299,
+        "changedPixels": 27172,
+        "changedAbove2": 24276,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 40,
+        "actualSourceCenterMaxScreenDelta": 0.726857,
+        "across08mStock": {
+          "median": 48.6411,
+          "p75": 53.8357,
+          "p90": 66.8169
+        },
+        "across08mCandidate": {
+          "median": 4.3246,
+          "p75": 5.9109,
+          "p90": 15.8014
+        },
+        "sameSide08mStock": {
+          "median": 1.9218,
+          "p75": 3.0242,
+          "p90": 3.7988
+        },
+        "sameSide08mCandidate": {
+          "median": 4.4204,
+          "p75": 5.2375,
+          "p90": 5.6867
+        },
+        "qualifyingStableRayCount": 84,
+        "sourceStrongOldMedian": 48.64105271417243,
+        "sourceStrongAfterMedian": 4.324644562560943,
+        "sourceStrongOldP90": 66.81690487411963,
+        "sourceStrongAfterP90": 15.80142554794349
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "nearGenuineContrastImproves": true,
+        "screenSourceCentersWithinTwoRGB8": true
+      },
+      "stockImagePNGHash": "a61a766c300ec2611f6bde7bd4b138335e97736feb885acda0c07feeb356dfd4",
+      "candidateImagePNGHash": "9fab9a96142fdb58e19120cc25626ccbfb197d9b09807b8d7cbe0132e2386312"
+    },
+    "west:independent:close": {
+      "sourcePair": [
+        "7-12",
+        "8-12"
+      ],
+      "northOriginNativeTexelRow": 197,
+      "lonLat": [
+        -63.835,
+        46.451001420454546
+      ],
+      "eyeAGL": 21,
+      "eyeHorizontalOffset": 0.15,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 14,
+        "triangles": 190917
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "7-12",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "8-12",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 17,
+        "projected": 17,
+        "markerPixels": 0,
+        "changedPixels": 0,
+        "changedAbove2": 0,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 8,
+        "actualSourceCenterMaxScreenDelta": 0.0,
+        "across08mStock": {
+          "median": 15.0333,
+          "p75": 17.407,
+          "p90": 20.1847
+        },
+        "across08mCandidate": {
+          "median": 15.0333,
+          "p75": 17.407,
+          "p90": 20.1847
+        },
+        "sameSide08mStock": {
+          "median": 1.756,
+          "p75": 2.4882,
+          "p90": 3.0767
+        },
+        "sameSide08mCandidate": {
+          "median": 1.756,
+          "p75": 2.4882,
+          "p90": 3.0767
+        },
+        "qualifyingStableRayCount": 17,
+        "sourceStrongOldMedian": 15.033296378372915,
+        "sourceStrongAfterMedian": 15.033296378372915,
+        "sourceStrongOldP90": 20.18469262636364,
+        "sourceStrongAfterP90": 20.18469262636364
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "offWindowOrHighOpticalAndFrameIdentical": true
+      },
+      "stockImagePNGHash": "b6eab749c196a81301e7d383fbfd5e200da70b64b7036fa9c00e2f17ed1c65d7",
+      "candidateImagePNGHash": "b6eab749c196a81301e7d383fbfd5e200da70b64b7036fa9c00e2f17ed1c65d7"
+    },
+    "central:independent:close": {
+      "sourcePair": [
+        "10-11",
+        "11-11"
+      ],
+      "northOriginNativeTexelRow": 619,
+      "lonLat": [
+        -63.596875,
+        46.46896164772727
+      ],
+      "eyeAGL": 21,
+      "eyeHorizontalOffset": 0.15,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 15,
+        "triangles": 251609
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "10-11",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "11-11",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 17,
+        "projected": 17,
+        "markerPixels": 0,
+        "changedPixels": 0,
+        "changedAbove2": 0,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 8,
+        "actualSourceCenterMaxScreenDelta": 0.0,
+        "across08mStock": {
+          "median": 46.1844,
+          "p75": 48.4701,
+          "p90": 48.7071
+        },
+        "across08mCandidate": {
+          "median": 46.1844,
+          "p75": 48.4701,
+          "p90": 48.7071
+        },
+        "sameSide08mStock": {
+          "median": 1.7321,
+          "p75": 1.9517,
+          "p90": 2.5589
+        },
+        "sameSide08mCandidate": {
+          "median": 1.7321,
+          "p75": 1.9517,
+          "p90": 2.5589
+        },
+        "qualifyingStableRayCount": 17,
+        "sourceStrongOldMedian": 46.184412955021955,
+        "sourceStrongAfterMedian": 46.184412955021955,
+        "sourceStrongOldP90": 48.707113669127864,
+        "sourceStrongAfterP90": 48.707113669127864
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "offWindowOrHighOpticalAndFrameIdentical": true
+      },
+      "stockImagePNGHash": "e13cacf0b36df441beb9885ca51cc2cfa981b8288e446e5201aec3df83ae00a0",
+      "candidateImagePNGHash": "e13cacf0b36df441beb9885ca51cc2cfa981b8288e446e5201aec3df83ae00a0"
+    },
+    "west:primary:high": {
+      "sourcePair": [
+        "7-12",
+        "8-12"
+      ],
+      "northOriginNativeTexelRow": 227,
+      "lonLat": [
+        -63.835,
+        46.44852982954546
+      ],
+      "eyeAGL": 510,
+      "eyeHorizontalOffset": 120,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 17,
+        "triangles": 204996
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "7-12",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "8-12",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 0,
+        "projected": 191,
+        "markerPixels": 0,
+        "changedPixels": 0,
+        "changedAbove2": 0,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 0,
+        "actualSourceCenterMaxScreenDelta": null
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "offWindowOrHighOpticalAndFrameIdentical": true
+      },
+      "stockImagePNGHash": "b42448a3516cf0b0cbdd30de1ecbe35ec1c3d3074dbe1be04f1ad3dbd23e589f",
+      "candidateImagePNGHash": "b42448a3516cf0b0cbdd30de1ecbe35ec1c3d3074dbe1be04f1ad3dbd23e589f"
+    },
+    "central:primary:high": {
+      "sourcePair": [
+        "10-11",
+        "11-11"
+      ],
+      "northOriginNativeTexelRow": 467,
+      "lonLat": [
+        -63.596875,
+        46.481484375
+      ],
+      "eyeAGL": 510,
+      "eyeHorizontalOffset": 120,
+      "eyeDirection": [
+        0.84,
+        -0.54
+      ],
+      "realTerrainDrawStatsInEveryMatchedPass": {
+        "calls": 18,
+        "triangles": 230378
+      },
+      "stockRepeatByteIdentical": true,
+      "nativeGeometryAndImageryOwnersReady": [
+        {
+          "id": "10-11",
+          "lod": 112,
+          "ready": "ready"
+        },
+        {
+          "id": "11-11",
+          "lod": 112,
+          "ready": "ready"
+        }
+      ],
+      "stats": {
+        "rays": 0,
+        "projected": 191,
+        "markerPixels": 0,
+        "changedPixels": 0,
+        "changedAbove2": 0,
+        "deltaOutsideActualNativeOpticalMarker": 0,
+        "stableActualCenterScreenSampleCount": 0,
+        "actualSourceCenterMaxScreenDelta": null
+      },
+      "pass": {
+        "exceptionFreeNoOpticalLeak": true,
+        "offWindowOrHighOpticalAndFrameIdentical": true
+      },
+      "stockImagePNGHash": "b210c6305ff645bbd2b963f13b7c98f6041be419b7d33e405bff3dbfa929cedb",
+      "candidateImagePNGHash": "b210c6305ff645bbd2b963f13b7c98f6041be419b7d33e405bff3dbfa929cedb"
+    }
+  },
+  "actualLinkedDefaultOwnerShaders": {
+    "7-12": {
+      "linked": true,
+      "fragment": 7,
+      "vertexOnly": 0,
+      "activeSamplerNames": [
+        "orthoSharedRows",
+        "forestFloorA",
+        "forestFloorB",
+        "imageMap",
+        "coverMap",
+        "detailMap",
+        "paintMap"
+      ]
+    },
+    "8-12": {
+      "linked": true,
+      "fragment": 7,
+      "vertexOnly": 0,
+      "activeSamplerNames": [
+        "orthoSharedRows",
+        "duneTuftGroundPhoto",
+        "duneTuftGroundMask",
+        "imageMap",
+        "coverMap",
+        "detailMap",
+        "paintMap"
+      ]
+    },
+    "10-11": {
+      "linked": true,
+      "fragment": 7,
+      "vertexOnly": 0,
+      "activeSamplerNames": [
+        "orthoSharedRows",
+        "forestFloorA",
+        "forestFloorB",
+        "imageMap",
+        "coverMap",
+        "detailMap",
+        "paintMap"
+      ]
+    },
+    "11-11": {
+      "linked": true,
+      "fragment": 7,
+      "vertexOnly": 0,
+      "activeSamplerNames": [
+        "orthoSharedRows",
+        "forestFloorA",
+        "forestFloorB",
+        "imageMap",
+        "coverMap",
+        "detailMap",
+        "paintMap"
+      ]
+    }
+  },
+  "preRegistered": "Real positive: >=100 pixels above 2 with >=12 original-contrast\u22655 drawn rays, median corrected \u226460% & p90\u226475% of stock, max source-center screen delta \u22642/255, exact restored mesh budget, zero off-marker pixels. High and off-window: no changed pixels or marker. Signed GPU source centers: zero discrepancies; quarter-texel in-between \u22641/255.",
+  "limits": "A four-texel sampling repair within two approximately 183m x 23.8m patches at the instrumented close views. Real already-present source field contrast is retained; heights, true crop type, high-resolution imagery and province-wide imagery were not measured or changed."
+}

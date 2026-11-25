@@ -1,3 +1,5 @@
+import {INLAND_ORTHO_WINDOWS,type InlandWindowId} from './inland-ortho-windows.ts';
+export {inlandSourceWindows} from './inland-ortho-windows.ts';
 import * as T from 'three';
 import {WORLD_COLS,WORLD_ROWS} from '../sim/coastal-terrain.ts';
 import {DETAIL_FADE_SECONDS} from './detail-blend.ts';
@@ -11,8 +13,11 @@ const plans=[
 const tracadie={first:'18-12',second:'18-13',axis:'z',edge:13,
  nsha:'c7d2837de536fcbfbe8cba81ce5117f82b7d94f14ba9e883662bb62b77db1615',
  ssha:'7bad9c6a684790d28c193a1e23d679d158b07fd090f4e18c019df5b77579c6ee'} as const;
-type SeamScope='study'|'tracadie'|'counties'|'standard';
-type Plan=(typeof plans)[number]|typeof tracadie;
+export type StandardOrthoCohorts={tracadie:boolean;counties:boolean;inland:readonly InlandWindowId[]};
+// Old named scopes remain useful for exact historical A/B probes. Ordinary
+// Standard uses the independently selected, locally checked cohort mask.
+type SeamScope='study'|'tracadie'|'counties'|'standard'|StandardOrthoCohorts;
+type Plan=(typeof plans)[number]|typeof tracadie|(typeof INLAND_ORTHO_WINDOWS)[number];
 type LiveOwner={detail?:T.Texture;detailSince?:number;lod:number;status:string};
 type Receipt={uploaded:boolean;id:string;sha:string};
 type Pair={
@@ -30,17 +35,21 @@ const globals='uniform highp sampler2D orthoSharedRows;\nuniform float orthoRows
 function sample(plan:Plan,closeRange:boolean){
  const eastWest=plan.axis==='x',bound=eastWest?WORLD_COLS:WORLD_ROWS;
  const cross=eastWest?'x':'y',along=eastWest?'y':'x';
+ const window='northRows' in plan?plan.northRows:undefined;
+ const atRow=window?'float northSourceRow=(1.-detailUV.y)*640.;':'';
+ const bounded=window?`&&northSourceRow>${window[0]}.&&northSourceRow<${window[3]}.`:'';
+ const feather=window?`*smoothstep(${window[0]}.,${window[1]}.,northSourceRow)*(1.-smoothstep(${window[2]}.,${window[3]}.,northSourceRow))`:'';
  const combined=eastWest?'vec2(.5+crossTexel*.25,detailUV.y)':'vec2(detailUV.x,.5-crossTexel*.25)';
  return `
   if(orthoRowsGain>0.){
    ${closeRange?'float localRange=1.-smoothstep(205.,330.,distance(cameraPosition,p));':'float localRange=1.;'}
    float crossTexel=(vuv.${cross}*${bound}. - ${plan.edge}.)*640.;
-   float flank=640.*min(detailUV.${along},1.-detailUV.${along});
-   if(localRange>0.&&abs(crossTexel)<1.25&&flank>3.){
+   float flank=640.*min(detailUV.${along},1.-detailUV.${along});${atRow}
+   if(localRange>0.&&abs(crossTexel)<1.25&&flank>3.${bounded}){
     vec2 dx=du*640.,dy=dv*640.;
     float rho2=dot(dx,dx)+dot(dy,dy);
     if(rho2<.81){
-     float w=localRange*(1.-smoothstep(.3025,.81,rho2))*(1.-smoothstep(.55,1.25,abs(crossTexel)))*smoothstep(3.,5.,flank);
+     float w=localRange${feather}*(1.-smoothstep(.3025,.81,rho2))*(1.-smoothstep(.55,1.25,abs(crossTexel)))*smoothstep(3.,5.,flank);
      vec3 canonical=textureLod(orthoSharedRows,${combined},0.).rgb;
      col=mix(col,canonical,w*orthoRowsGain);
     }
@@ -59,7 +68,9 @@ export class OrthophotoSeams{
   // 'study' deliberately keeps the original screen-footprint falloff.
   // Each Standard pair also becomes exactly stock by 330 m from the eye.
   this.closeRange=scope!=='study';
-  const active=scope==='standard'?[tracadie,...plans]:scope==='tracadie'?[tracadie]:plans;
+  const active:readonly Plan[]=typeof scope==='object'?
+   [...(scope.tracadie?[tracadie]:[]),...(scope.counties?plans:[]),...INLAND_ORTHO_WINDOWS.filter(p=>scope.inland.includes(p.name))]:
+   scope==='standard'?[tracadie,...plans]:scope==='tracadie'?[tracadie]:plans;
   this.pairs=active.map(plan=>({plan,gain:{value:0},map:{value:base},owners:new Set(),uploads:0,errors:0}));
  }
  readonly verifiedDetail=(id:string,sha:string,texture:T.Texture)=>{

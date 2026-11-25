@@ -117,3 +117,37 @@ test('Standard bounds all four source pairs to close flight, with separate switc
   assert(m.diagnostics().every(p=>p.bytes===0&&!p.resident&&p.errors===0));
  }
 });
+
+test('two constrained inland windows have independent source cohorts, untouched historical owners, and exact northern row orientation',async()=>{
+ const {INLAND_ORTHO_WINDOWS,inlandSourceWindows}=await import('../src/render/inland-ortho-windows.ts');
+ const cover={bytes:new Uint8Array(4096*2720*2),width:4096,height:2720};
+ assert.deepEqual(inlandSourceWindows(cover),[]);
+ for(const p of INLAND_ORTHO_WINDOWS){
+  const [x,z,w,h]=p.coverBox;
+  for(let j=0;j<h;j++)for(let i=0;i<w;i++)for(let c=0;c<2;c++){
+   cover.bytes[2*((z+j)*4096+x+i)+c]=p.coverRG[2*(j*w+i)+c];
+  }
+ }
+ assert.deepEqual(inlandSourceWindows(cover),['west','central']);
+ const west=INLAND_ORTHO_WINDOWS[0].coverBox;
+ cover.bytes[2*(west[1]*4096+west[0])]^=1;
+ assert.deepEqual(inlandSourceWindows(cover),['central']);
+ const base=new T.Texture(),gpu={} as T.WebGLRenderer;
+ const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:['west','central']});
+ const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
+ assert.equal(all.size,12);assert.equal(standard.diagnostics().length,6);
+ const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
+ for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
+  assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);
+ }
+ for(const p of INLAND_ORTHO_WINDOWS){
+  const a=fx(standard,p.first),b=fx(standard,p.second),[lo,core,top,hi]=p.northRows;
+  assert.equal(a.fragmentShader,b.fragmentShader);assert.equal(a.uniforms.orthoRowsGain,b.uniforms.orthoRowsGain);
+  assert(a.fragmentShader.includes('(1.-detailUV.y)*640.'));
+  assert(a.fragmentShader.includes('northSourceRow>'+lo+'.&&northSourceRow<'+hi+'.'));
+  assert(a.fragmentShader.includes('smoothstep('+lo+'.,'+core+'.,northSourceRow)'));
+  assert(a.fragmentShader.includes('smoothstep('+top+'.,'+hi+'.,northSourceRow)'));
+  assert.equal('orthoRowsGain' in fx(legacy,p.first).uniforms,false);
+  assert.equal('orthoRowsGain' in fx(new OrthophotoSeams(gpu,base,'study'),p.first).uniforms,false);
+ }
+});

@@ -1,0 +1,164 @@
+[
+  {
+    "mode": "standard",
+    "site": "qa-inland-image-crossing",
+    "movesM": 155.17689107318358,
+    "scope": "QA-only injected Dispatch position, unmodified runtime image code",
+    "finalGroundClearanceM": 43.051172697241334,
+    "axisOffsetM": [
+      155.17362219956703,
+      1.0072222221133416
+    ],
+    "detail": {
+      "ready": 17,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "7-12 / 8-12",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-11 / 11-11",
+      "10-12 / 11-12",
+      "18-12 / 18-13",
+      "27-13 / 27-14",
+      "5-2 / 5-3",
+      "7-12 / 8-12"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "stock-inland",
+    "site": "qa-inland-image-crossing",
+    "movesM": 153.97497126566185,
+    "scope": "QA-only injected Dispatch position, unmodified runtime image code",
+    "finalGroundClearanceM": 42.98869971442406,
+    "axisOffsetM": [
+      153.97172755757492,
+      0.9994444443364046
+    ],
+    "detail": {
+      "ready": 17,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "edge": null,
+    "allEdges": [
+      "10-12 / 11-12",
+      "18-12 / 18-13",
+      "27-13 / 27-14",
+      "5-2 / 5-3"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "stock-county",
+    "site": "qa-inland-image-crossing",
+    "movesM": 151.57855968257357,
+    "scope": "QA-only injected Dispatch position, unmodified runtime image code",
+    "finalGroundClearanceM": 42.980364237318554,
+    "axisOffsetM": [
+      151.5753664620279,
+      0.9838888887825306
+    ],
+    "detail": {
+      "ready": 17,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "7-12 / 8-12",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-11 / 11-11",
+      "18-12 / 18-13",
+      "7-12 / 8-12"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "corrupt-inland",
+    "site": "qa-inland-image-crossing",
+    "movesM": 152.77649490442005,
+    "scope": "QA-only injected Dispatch position, unmodified runtime image code",
+    "finalGroundClearanceM": 42.980364237318554,
+    "axisOffsetM": [
+      152.77327643440367,
+      0.9916666665594676
+    ],
+    "detail": {
+      "ready": 16,
+      "loading": 0,
+      "missing": 1,
+      "uncovered": 0,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "7-12 / 8-12",
+      "resident": false,
+      "gain": 0,
+      "bytes": 0,
+      "uploads": 0,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-11 / 11-11",
+      "10-12 / 11-12",
+      "18-12 / 18-13",
+      "27-13 / 27-14",
+      "5-2 / 5-3",
+      "7-12 / 8-12"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "alteredPackSizes": [
+      1491896
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  }
+]
