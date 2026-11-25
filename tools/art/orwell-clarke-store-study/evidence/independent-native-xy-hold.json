@@ -1,0 +1,383 @@
+{
+  "landmark": "D.E. Clarke\u2019s General Store with the attached dwelling at Orwell Corner, Queens County",
+  "disposition": "Detached frontage only; live stock q1030/130 unchanged, no height access and no current metric facade claim. No merged roof proposal survives the frozen holdout support.",
+  "ownerRegistrationSHA256": "27688cbf3b17b1a8d1bc840cce7a75bc1fae5ffabc2479b70db09a0e18f0b215",
+  "partitionPlanSHA256": "d0c88d2a770bcdceb1cc968c9aa6e7e9ba810e7de115c98a72c89f52496be93b",
+  "nativeDryReceiptSHA256": "be5b3a54bd50a92f65d8cce9fc11976105b3afa568b2ce855fb2fcbe2b81ba2f",
+  "source": {
+    "catalog": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "tile": "pei_2020_412000_678000",
+    "objectETag": "\"860babad497f770e59505797f657ae3b-14\"",
+    "objectBytes": 110643859,
+    "edition": "July\u2013September 2020 provincial acquisition",
+    "attribution": "Contains information licensed under Open Government Licence \u2013 Canada. Natural Resources Canada (CanElevation airborne source provided by Government of Prince Edward Island). No photos, maps, coordinates of private cadastral shapes, or numerical elevation rows in any art delivery.",
+    "objectHeaderReceiptSHA256": "aeabff10f1b77344acfaa36b64f3d8aab4918086baff37877b791867524cfe34",
+    "provenanceObject": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_412000_678000.copc.laz",
+    "noElevationPointAccess": true
+  },
+  "footprint": "Same roof outline as stock. NE and SW roof projections separated into two opposite axes at the physical join; no name attached to a part purely from provisional orientation.",
+  "independentReserved": {
+    "nXYPositions": 39347,
+    "nReservedWholePulses": 17294,
+    "nPrimaryRoles": 15,
+    "nPositiveXYRoles": 5,
+    "roiOverlapCount": 0,
+    "bytesReadForXYScan": 3122995,
+    "guardNotes": {
+      "grid": "Global local E/N 1.45 m square grid at CRHP tile local origin; ij=floor(local/1.45); hold (7*i + 4*j + floor(j/6)) % 13 < 5. Expanded guard 0.22 m. Whole source/pulse where even one position falls within held space or guard; close all its siblings before deriving train roles. Do not replace cells, views, thresholds or fit roles after numeric survey is seen or any candidate sees held XY locations.",
+      "key": "Exact PointSourceId U16 and GPS binary64 bits interpreted as U64; start dry non-decompressed Z. Preserve no numeric Z in XY-derived receipts or standalone collateral.",
+      "roofClass": "Class 6, first return, not withheld; exact whole owner boundary >.40 m, then own fixed frame. No labels from Z to split slopes, junction or dormers.",
+      "groundClass": "Class 2 last return, not withheld; strictly outside building outline and >1.05 m clearance. Entire exterior point inside approved PID excluding .28 m boundary; >1.5 m away from preserved stock neighbors. No public lane, stair planks or walls as ground."
+    }
+  },
+  "fixedRoleSupport": {
+    "NE-lane-plane": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 28,
+      "heldPulses": 31,
+      "heldCells": 4,
+      "spanUV": [
+        3.984,
+        1.486
+      ],
+      "eligibleXYOnly": true,
+      "requirements": {
+        "trainUnique": 11,
+        "heldUnique": 9,
+        "heldSpatialCells": 3,
+        "minSpanU": 1.1,
+        "minSpanV": 0.65
+      },
+      "misses": []
+    },
+    "NE-yard-plane": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 35,
+      "heldPulses": 38,
+      "heldCells": 2,
+      "spanUV": [
+        3.963,
+        1.387
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 11,
+        "heldUnique": 9,
+        "heldSpatialCells": 3,
+        "minSpanU": 1.1,
+        "minSpanV": 0.65
+      },
+      "misses": [
+        "withheld area support"
+      ]
+    },
+    "NE-crown": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 30,
+      "heldPulses": 27,
+      "heldCells": 2,
+      "spanUV": [
+        2.732,
+        1.066
+      ],
+      "eligibleXYOnly": true,
+      "requirements": {
+        "trainUnique": 8,
+        "heldUnique": 6,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.13,
+        "minSpanV": 0.56
+      },
+      "misses": []
+    },
+    "NE-lane-shoulder": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 1,
+      "heldPulses": 25,
+      "heldCells": 3,
+      "spanUV": [
+        3.744,
+        0.585
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 6,
+        "heldUnique": 5,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.05,
+        "minSpanV": 0.31
+      },
+      "misses": [
+        "training count"
+      ]
+    },
+    "NE-yard-shoulder": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 25,
+      "heldPulses": 0,
+      "heldCells": 0,
+      "spanUV": [
+        0.0,
+        0.0
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 6,
+        "heldUnique": 5,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.05,
+        "minSpanV": 0.31
+      },
+      "misses": [
+        "withheld count",
+        "withheld area support",
+        "withheld span U",
+        "withheld span V"
+      ]
+    },
+    "SW-lane-plane": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 7,
+      "heldPulses": 10,
+      "heldCells": 2,
+      "spanUV": [
+        2.97,
+        1.094
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 11,
+        "heldUnique": 9,
+        "heldSpatialCells": 3,
+        "minSpanU": 1.1,
+        "minSpanV": 0.65
+      },
+      "misses": [
+        "training count",
+        "withheld area support"
+      ]
+    },
+    "SW-yard-plane": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 46,
+      "heldPulses": 38,
+      "heldCells": 3,
+      "spanUV": [
+        3.42,
+        1.87
+      ],
+      "eligibleXYOnly": true,
+      "requirements": {
+        "trainUnique": 11,
+        "heldUnique": 9,
+        "heldSpatialCells": 3,
+        "minSpanU": 1.1,
+        "minSpanV": 0.65
+      },
+      "misses": []
+    },
+    "SW-crown": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 25,
+      "heldPulses": 6,
+      "heldCells": 2,
+      "spanUV": [
+        3.052,
+        0.947
+      ],
+      "eligibleXYOnly": true,
+      "requirements": {
+        "trainUnique": 8,
+        "heldUnique": 6,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.13,
+        "minSpanV": 0.56
+      },
+      "misses": []
+    },
+    "SW-lane-shoulder": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 9,
+      "heldPulses": 0,
+      "heldCells": 0,
+      "spanUV": [
+        0.0,
+        0.0
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 6,
+        "heldUnique": 5,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.05,
+        "minSpanV": 0.31
+      },
+      "misses": [
+        "withheld count",
+        "withheld area support",
+        "withheld span U",
+        "withheld span V"
+      ]
+    },
+    "SW-yard-shoulder": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 0,
+      "heldPulses": 19,
+      "heldCells": 2,
+      "spanUV": [
+        3.28,
+        0.523
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 6,
+        "heldUnique": 5,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.05,
+        "minSpanV": 0.31
+      },
+      "misses": [
+        "training count"
+      ]
+    },
+    "NE-junction-approach": {
+      "kind": "roof",
+      "frame": "northeast",
+      "trainPulses": 41,
+      "heldPulses": 5,
+      "heldCells": 1,
+      "spanUV": [
+        0.397,
+        0.71
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 7,
+        "heldUnique": 6,
+        "heldSpatialCells": 2,
+        "minSpanU": 0.75,
+        "minSpanV": 0.63
+      },
+      "misses": [
+        "withheld count",
+        "withheld area support",
+        "withheld span U"
+      ]
+    },
+    "SW-junction-approach": {
+      "kind": "roof",
+      "frame": "southwest",
+      "trainPulses": 30,
+      "heldPulses": 5,
+      "heldCells": 1,
+      "spanUV": [
+        0.618,
+        0.397
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 7,
+        "heldUnique": 6,
+        "heldSpatialCells": 2,
+        "minSpanU": 0.73,
+        "minSpanV": 0.63
+      },
+      "misses": [
+        "withheld count",
+        "withheld area support",
+        "withheld span U",
+        "withheld span V"
+      ]
+    },
+    "west-open-yard-contact": {
+      "kind": "ground",
+      "frame": "global-en",
+      "trainPulses": 57,
+      "heldPulses": 71,
+      "heldCells": 13,
+      "spanUV": [
+        7.125,
+        9.475
+      ],
+      "eligibleXYOnly": true,
+      "requirements": {
+        "trainUnique": 24,
+        "heldUnique": 18,
+        "heldSpatialCells": 4,
+        "minSpanU": 2.2,
+        "minSpanV": 2.2
+      },
+      "misses": [],
+      "preregisteredPlanAreaM2": 76.5,
+      "parcelAndStockClearAreaM2": 76.5
+    },
+    "NE-lane-green-setback": {
+      "kind": "ground",
+      "frame": "northeast",
+      "trainPulses": 0,
+      "heldPulses": 0,
+      "heldCells": 0,
+      "spanUV": [
+        0.0,
+        0.0
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 11,
+        "heldUnique": 8,
+        "heldSpatialCells": 3,
+        "minSpanU": 1.12,
+        "minSpanV": 0.71
+      },
+      "misses": [
+        "training count",
+        "withheld count",
+        "withheld area support",
+        "withheld span U",
+        "withheld span V"
+      ],
+      "preregisteredPlanAreaM2": 7.832,
+      "parcelAndStockClearAreaM2": 4.774
+    },
+    "SW-gable-yard-contact": {
+      "kind": "ground",
+      "frame": "southwest",
+      "trainPulses": 1,
+      "heldPulses": 16,
+      "heldCells": 3,
+      "spanUV": [
+        3.096,
+        0.89
+      ],
+      "eligibleXYOnly": false,
+      "requirements": {
+        "trainUnique": 9,
+        "heldUnique": 7,
+        "heldSpatialCells": 2,
+        "minSpanU": 1.0,
+        "minSpanV": 0.55
+      },
+      "misses": [
+        "training count"
+      ],
+      "preregisteredPlanAreaM2": 4.115,
+      "parcelAndStockClearAreaM2": 3.204
+    }
+  },
+  "whatWouldUnblock": [
+    "A current, aligned reference or an actual survey fixing the two gables/roof transition and the precise (not guessed) public fa\u00e7ade line; do not infer wall support line from the roof envelope.",
+    "An independent near-ground profile especially between the public entry and lane and by the SW rear approach, without absorbing the lane/steps or modifying stock terrain to conceal a discrepancy.",
+    "Enough separately supported eave/lane-side and adjoining roof geometry to validate both wings, not the other open side\u2019s native samples. A second random split cannot supply missing fit records or replace missing safe ground."
+  ],
+  "otherAssets": "Barns, school, church, trees, steps/grounds, graves, and nearby paths are not the same asset. No physical or programmable owner suppression sanctioned. Original photographs and native data not bundled."
+}

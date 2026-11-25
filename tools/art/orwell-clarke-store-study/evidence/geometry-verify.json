@@ -1,0 +1,16 @@
+{
+  "geometryAndMaterialsSHA256": "f2b76b3396fb33b0f140bb39e0ffb6c5aeadb72bfc62ed8911febd2bc89c7a49",
+  "triangles": 5540,
+  "meshBatches": 10,
+  "counts": {
+    "display-left": 9,
+    "display-right": 9,
+    "transom": 12,
+    "right-sash": 12
+  },
+  "paneRays": 42,
+  "additionalProbes": 10,
+  "closedPortalHeadRays": 195,
+  "compassViews": 4,
+  "liveIntegration": false
+}

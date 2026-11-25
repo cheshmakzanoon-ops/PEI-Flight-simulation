@@ -1,0 +1,546 @@
+{
+  "mode": "Detached original normalized materials and joinery, no aerial insertion",
+  "errors": [],
+  "views": [
+    {
+      "name": "record",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          7.87,
+          2.3,
+          13.1
+        ],
+        "look": [
+          0.41,
+          2.25,
+          -0.12
+        ],
+        "dapple": true,
+        "fov": 35.4
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 21,
+      "triangles": 10366
+    },
+    {
+      "name": "elevation",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          0.35,
+          2.42,
+          11.79
+        ],
+        "look": [
+          0,
+          2,
+          0.05
+        ],
+        "dapple": false,
+        "fov": 39.1
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 20,
+      "triangles": 10364
+    },
+    {
+      "name": "entrance",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          1.05,
+          1.89,
+          3.96
+        ],
+        "look": [
+          -0.07,
+          1.6,
+          0.009
+        ],
+        "dapple": false,
+        "fov": 41
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 19,
+      "triangles": 9520
+    },
+    {
+      "name": "sash",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          3.79,
+          2.48,
+          3.26
+        ],
+        "look": [
+          3.05,
+          2.37,
+          0.02
+        ],
+        "dapple": false,
+        "fov": 39.4
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 18,
+      "triangles": 10220
+    },
+    {
+      "name": "foundation",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          5.17,
+          0.612,
+          3.92
+        ],
+        "look": [
+          3.01,
+          0.64,
+          0.025
+        ],
+        "dapple": false,
+        "fov": 39.8
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 20,
+      "triangles": 10364
+    },
+    {
+      "name": "return",
+      "repeatIdentical": true,
+      "view": {
+        "eye": [
+          10.73,
+          2.11,
+          5.26
+        ],
+        "look": [
+          2.61,
+          2.05,
+          -0.26
+        ],
+        "dapple": false,
+        "fov": 37.6
+      },
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "probes": {
+        "door": {
+          "name": "portal-timber",
+          "z": -0.345174
+        },
+        "plinth": {
+          "name": "masonry",
+          "z": 0.113492
+        },
+        "cream": {
+          "name": "clapboard",
+          "z": 0.011058
+        },
+        "molding": {
+          "name": "decorated-timber",
+          "z": 0.1835
+        },
+        "threshold": {
+          "name": "deck",
+          "z": 0.82384
+        }
+      },
+      "meshes": [
+        [
+          "clapboard",
+          508
+        ],
+        [
+          "return-shingles",
+          844
+        ],
+        [
+          "decorated-timber",
+          2136
+        ],
+        [
+          "portal-timber",
+          344
+        ],
+        [
+          "masonry",
+          412
+        ],
+        [
+          "deck",
+          120
+        ],
+        [
+          "glazing",
+          504
+        ],
+        [
+          "interior-shadow",
+          432
+        ],
+        [
+          "painted-lettering",
+          216
+        ],
+        [
+          "fasteners",
+          24
+        ]
+      ],
+      "draws": 20,
+      "triangles": 10364
+    }
+  ]
+}

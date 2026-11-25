@@ -1,0 +1,121 @@
+{
+  "baseline": "a75e9c75e18421fe87ba51afa1e1aa6b7a849da9",
+  "candidate": "q1030/130",
+  "frames": "actual Standard Three.js browser scene, original 700 by 465, deterministic remove and restore",
+  "categories": "magenta normalized owner ID, red roof and cyan wall from existing triangle attributes. Core counts omit antialias mixture. One-pixel four-connected exterior support.",
+  "identityLimit": "Stock roof/body only; matches no as-built elevation or facade. More independent evidence in separate receipt.",
+  "views": [
+    {
+      "name": "from-NE",
+      "candidate": "q1030/130",
+      "fixture": {
+        "lon": -62.83362067,
+        "lat": 46.15736778,
+        "h": 4.4,
+        "dist": 32.0,
+        "east": 0.79,
+        "south": -0.61,
+        "agl": 4.1
+      },
+      "stockOwnerPixels": 24258,
+      "idSupportPixels": 24258,
+      "strictPixelsOutOfId": 1,
+      "outsideOnePixelId": 0,
+      "categoryOutsideOnePixelId": 0,
+      "roofIdCorePixels": 0,
+      "wallIdCorePixels": 23945,
+      "stockRestoredIdentical": true,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "roofTriangles": 7,
+      "wallTriangles": 18
+    },
+    {
+      "name": "from-SE",
+      "candidate": "q1030/130",
+      "fixture": {
+        "lon": -62.83362067,
+        "lat": 46.15736778,
+        "h": 4.4,
+        "dist": 34.0,
+        "east": 0.58,
+        "south": 0.81,
+        "agl": 5.25
+      },
+      "stockOwnerPixels": 28832,
+      "idSupportPixels": 28838,
+      "strictPixelsOutOfId": 3,
+      "outsideOnePixelId": 0,
+      "categoryOutsideOnePixelId": 0,
+      "roofIdCorePixels": 0,
+      "wallIdCorePixels": 28467,
+      "stockRestoredIdentical": true,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "roofTriangles": 7,
+      "wallTriangles": 18
+    },
+    {
+      "name": "high-oblique",
+      "candidate": "q1030/130",
+      "fixture": {
+        "lon": -62.83362067,
+        "lat": 46.15736778,
+        "h": 4.4,
+        "dist": 45.0,
+        "east": -0.65,
+        "south": -0.76,
+        "agl": 26.0
+      },
+      "stockOwnerPixels": 16610,
+      "idSupportPixels": 16612,
+      "strictPixelsOutOfId": 6,
+      "outsideOnePixelId": 0,
+      "categoryOutsideOnePixelId": 0,
+      "roofIdCorePixels": 4989,
+      "wallIdCorePixels": 11203,
+      "stockRestoredIdentical": true,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "roofTriangles": 7,
+      "wallTriangles": 18
+    },
+    {
+      "name": "air",
+      "candidate": "q1030/130",
+      "fixture": {
+        "lon": -62.83362067,
+        "lat": 46.15736778,
+        "h": 4.4,
+        "dist": 123.0,
+        "east": 0.8,
+        "south": 0.6,
+        "agl": 72.0
+      },
+      "stockOwnerPixels": 2119,
+      "idSupportPixels": 2117,
+      "strictPixelsOutOfId": 2,
+      "outsideOnePixelId": 0,
+      "categoryOutsideOnePixelId": 0,
+      "roofIdCorePixels": 665,
+      "wallIdCorePixels": 1308,
+      "stockRestoredIdentical": true,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "roofTriangles": 7,
+      "wallTriangles": 18
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "title": "D.E. Clarke\u2019s General Store with attached dwelling (\u201cOrwell House\u201d in Nov 2022 inspection); unique 1864 historic building owned by the Province at Orwell Corner, Queens County.",
+  "simulatorBaseline": "c9252f0a01c914dedc18ff8ea2ee0342046462b6",
+  "meaning": "Main branch #203 actual Standard renderer. Detached visual evidence and owner localization only; no native numerical heights, no geometry replaced and no frame timings claimed.",
+  "owner": {
+    "tile": "q1030",
+    "ordinal": 130,
+    "packetDigest": "0c6882752735a39e2866b259646a569a058c3698bed5971f6b64663fe67435cb",
+    "packDigest": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "indexDigest": "fcc2bb4d890eafd08ac41136a3bff7bebeafe2f9c25a066fdcf756ed39badce0",
+    "meanWGS84": [
+      -62.83362133333334,
+      46.15736755555555
+    ],
+    "roofOutlineM2": 141.42863283399493,
+    "heritagePinDistanceM": 88.29534904513736,
+    "civicPointDistanceM": 89.66890046933999,
+    "actualNearestToBadPin": "q10320/278 (46.1 m from CRHP marker), explicitly not store"
+  },
+  "designatedParcel": 176610,
+  "protectedCandidates": [
+    {
+      "tile": "q10320",
+      "ordinal": 278,
+      "ownerDistanceM": 32.02
+    },
+    {
+      "tile": "q10320",
+      "ordinal": 147,
+      "ownerDistanceM": 36.21
+    },
+    {
+      "tile": "q10320",
+      "ordinal": 262,
+      "ownerDistanceM": 27.01
+    }
+  ],
+  "authorityURLs": {
+    "Register": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=1623",
+    "provinceImage": "https://www.historicplaces.ca/en/rep-reg/image-image.aspx?id=1623",
+    "designationGazette": "https://www.princeedwardisland.ca/sites/default/files/publications/royal_gazette/20040529.pdf",
+    "gov1864joinedBodies": "https://archivenews.princeedwardisland.ca/minister-announces-heritage-designations-0",
+    "govOwnerOperator": "https://archivenews.princeedwardisland.ca/orwell-corner-opens-three-heritage-designations",
+    "operatorCurrentReadout": "https://www.peimuseum.ca/visit/orwell-corner-historic-village",
+    "officialNov2022FitOnlyFromSourcePhotos": "https://www.princeedwardisland.ca/sites/default/files/publications/orwell-corner-historic-village.pdf",
+    "datedFirstHand2018": "https://larrymuffinathome.wordpress.com/2018/08/01/orwell-corner-village/",
+    "native2020ReferenceOnly": "https://www.arcgis.com/home/item.html?id=2e9d3e4ce0c548a19cba5327607a4754",
+    "AEB": "https://open.canada.ca/data/en/dataset/7a5cda52-c7df-427f-9ced-26f19a8a64d6",
+    "AEBLicence": "https://open.canada.ca/en/open-government-licence-canada"
+  },
+  "reasoning": [
+    "Register marker and civic point are both in roadside open grass; parcel scope by itself admits four roofs.",
+    "Same-angle, different length skewed join and adjacent wooded lane persist through historical 1958/1968, 2000, and summer 2020 ortho; first three epochs are supporting plan-topology only.",
+    "Photo of 1864 \u201cOrwell House\u201d in Nov 2022 inspection matches July 14 2018 rear gabled dwelling: paired attic and ground floor windows, lower attached box and connecting secondary roof. Independent foreground store matches register storefront. No other compound inside parcel and no alternate building contains two angled dwellings beside wooded lane.",
+    "All cross-tile neighboring roofs and both actual roads kept unchanged. Heritage designation includes building footprint, not legal permission to edit entire village or public/private ride/trail geometry."
+  ],
+  "detachedArtRules": [
+    "Original cream horizontal clapboards to public facade; quieter smaller courses/wood shingles on return. Warm white pilasters and entablature, two full-height display lights with three columns by three rows, raised transom above deep double entry, separate modest right-side 6-over-6 sash; dark recess should be modeled, not a flat decal.",
+    "July 14 2018 front only: 6\u00d72 transom lights likely, 3 timber entry rises/landing and one plain observer-right handrail. No claim fixed precise dimensions, paint chemistry, door hardware, current signage, back window aliases or roof/dormer positions. Heritage sign in undated official image as a labeled era interpretation only.",
+    "If showing stone at base use bounded visible design treatment only; Nov 2022 report mentions concealed concrete/masonry in the Orwell House. Exact foundation/steps and eligibility for sim terrain placement are unverified.",
+    "No bench/costumes/posters/other themed buildings/vegetation variation unless separately backed. No image use in renderer. 1958\u20132020 rasters and personal photo pixels read-only, not archived publicly."
+  ],
+  "fourFrozenViews": [
+    {
+      "name": "lane-SE",
+      "cameraFixture": {
+        "lon": -62.83362133333334,
+        "lat": 46.15736755555555,
+        "h": 4.55,
+        "dist": 34,
+        "east": 30,
+        "south": 15,
+        "agl": 12.0
+      },
+      "aaEdgeNotExactlyID": 14,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 30472,
+      "stockOwnerPixelCount": 30482,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "hashFrozenStockPNG": "aa4c5d02e2a13277e4959dc32b4d8dbafb27d8529f8f3f241084c7d93597b530",
+      "hashStockOwnerOmittedPNG": "e2f9fdfc0e9ae89dab6fcc5df491bd9da1b2a1e57248f25bcc997664a2161c01",
+      "hashStockOwnerIDPNG": "9349b4fb6d6153888a0bf56dd11e19cbc66bf3fb876c8770b6be803cc2633017",
+      "stockRestoreBitExact": true
+    },
+    {
+      "name": "back-NW",
+      "cameraFixture": {
+        "lon": -62.83362133333334,
+        "lat": 46.15736755555555,
+        "h": 4.55,
+        "dist": 45,
+        "east": -34,
+        "south": -29,
+        "agl": 10.0
+      },
+      "aaEdgeNotExactlyID": 1,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 16389,
+      "stockOwnerPixelCount": 16390,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "hashFrozenStockPNG": "b4a4099da73d2afadc1b48e6984a87ee7fad4cefdc90a3e8a09e543e48dc7a61",
+      "hashStockOwnerOmittedPNG": "7255d41e61f9187aa5da2c8c5b6229e4f037e1eaef186c3a5d7f0cdc00d9cdad",
+      "hashStockOwnerIDPNG": "c989c6151245a81abdb713e412d8600a9b6e6f25640d56e6a94fa6f1f08130ef",
+      "stockRestoreBitExact": true
+    },
+    {
+      "name": "high-NW",
+      "cameraFixture": {
+        "lon": -62.83362133333334,
+        "lat": 46.15736755555555,
+        "h": 4.55,
+        "dist": 152,
+        "east": -110,
+        "south": -100,
+        "agl": 92.0
+      },
+      "aaEdgeNotExactlyID": 0,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 1370,
+      "stockOwnerPixelCount": 1370,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "hashFrozenStockPNG": "796d284c37e050f0fa23e110cfef34e1bcc93c7551863f90009748add85321f1",
+      "hashStockOwnerOmittedPNG": "70f6457c5a347a5da1b3550021902e49d40ac308ce1bbf24f997694eb00a6783",
+      "hashStockOwnerIDPNG": "56bd2f86b106bb6aeb3e378eefb95e618d2fad1a3ea460f1d3395983028ffa7b",
+      "stockRestoreBitExact": true
+    },
+    {
+      "name": "roof-clear",
+      "cameraFixture": {
+        "lon": -62.83362133333334,
+        "lat": 46.15736755555555,
+        "h": 4.55,
+        "dist": 49,
+        "east": 9,
+        "south": -48,
+        "agl": 41.0
+      },
+      "aaEdgeNotExactlyID": 0,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 10003,
+      "stockOwnerPixelCount": 9998,
+      "span": [
+        9201,
+        9276
+      ],
+      "vertexCount": 37905,
+      "hashFrozenStockPNG": "1b6d689b477e2b7c009a3f3d05ca01ffcd07dcd4c0e752e9831cc4994f995544",
+      "hashStockOwnerOmittedPNG": "996066e3aef8e3c6fb8b2ffc9209d6277909498d92267d913cd9069af137d7de",
+      "hashStockOwnerIDPNG": "753325609f8fd8f232cc381825ff9aabb72a81ea8df9a4e834ca010951c4ff46",
+      "stockRestoreBitExact": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "fixedViews": {
+    "record": {
+      "pixelContainerSHA256": "51112d48b4b5772f8a934c94d0509b71f2e13ed54731a5969ea78ea3924f58ec",
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "calls": 21,
+      "totalTriangles": 10366,
+      "exactReplay": true
+    },
+    "return": {
+      "pixelContainerSHA256": "3af90297f6841aab0e808e392e3edf6b1249ab9bae54f8e6c7e4ccd4ee045f22",
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "calls": 20,
+      "totalTriangles": 10364,
+      "exactReplay": true
+    },
+    "entrance": {
+      "pixelContainerSHA256": "ea6b33ed4562e588432c784bb932f9d622dacaa8412a7a21640a5d9e7434deaa",
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "calls": 19,
+      "totalTriangles": 9520,
+      "exactReplay": true
+    },
+    "sash": {
+      "pixelContainerSHA256": "5bfc487d44b5418f7bd7497bba77da01659be3e8bdc0aabb5c2b791910c3698c",
+      "paneResults": {
+        "display-left": 9,
+        "display-right": 9,
+        "transom": 12,
+        "right-sash": 12
+      },
+      "calls": 18,
+      "totalTriangles": 10220,
+      "exactReplay": true
+    }
+  },
+  "ownIndependentRayCohorts": {
+    "doorHeadTrials": 195,
+    "rightReturnTrials": 54,
+    "panes": 42,
+    "verdict": {
+      "counts": {
+        "missPositions": [],
+        "portalHeadMisses": 0,
+        "rightReturnMisses": 0,
+        "rightReturnBacked": 0,
+        "glazingHits": 42
+      },
+      "meshes": [
+        "clapboard",
+        "return-shingles",
+        "decorated-timber",
+        "portal-timber",
+        "masonry",
+        "deck",
+        "glazing",
+        "interior-shadow",
+        "painted-lettering",
+        "fasteners"
+      ]
+    }
+  },
+  "errors": [],
+  "notes": "Offline model only. Fixed 1180\u00d7780 Three.js SwiftShader replay; not true dimensions nor live scenery."
+}
