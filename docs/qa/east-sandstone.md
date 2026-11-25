@@ -28,3 +28,37 @@ appearance use `tools/qa/sandstone-poses.py` and compare with
 `tools/qa/sandstone-frame-gate.py`, changing only the rock material
 between checkouts so the simultaneous surf and road improvements do not
 contaminate this control.
+
+## Low-pass colour and grain
+
+![Matched low and oblique simulator frames of the prior and revised sandstone material](east-sandstone-low-pass.webp)
+
+Under the existing East Point rock mask, the revised material suppresses
+cloud-like dark mottling and uses more coherent red-brown mineral colour
+and laterally continuous but broken bedding. An analytic, distance-filtered
+surface gradient affects light on both the existing terrain and the short
+cliff closure. This is procedural shading, not new terrain, measured
+small-scale relief, or a reproduction of the reference photo. Bench material,
+turf, water and all survey-dependent geometry keep their existing paths.
+
+Two locked near views changed 115,866 and 77,894 pixels by more than two
+RGB codes. All lay in the independently marked rock material, including
+mixed raster-edge pixels. The repeated stock frame was exact; the two
+views retained their original 236 and 76 draws and 303,220 and 236,637
+triangles respectively. For the low view, a 1.92 cm camera translation
+changed the 99th percentile of 120,011 interior rock samples by two codes.
+The distance filter and West Point are independent controls, not additional
+texturing sites.
+
+```sh
+python tools/qa/east-stone-relief-frames.py --checkout . \
+  --deps ./node_modules --chromium /path/to/chromium \
+  --views face,reveal,west,far --out /tmp/pei-east-rock
+```
+
+The West Point frame was unchanged. The East Point view at 1,060 m was
+also unchanged with the existing stone visible in its diagnostic pass.
+An ordinary compiled East Point flight travelled about 261 m and switched
+to Cockpit without any errors. Separate tests verified the healthy survey,
+missing refinement, corrupted decoded body, stalled body and missing
+base all let the simulator enter flight.

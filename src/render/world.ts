@@ -258,7 +258,7 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  vec3 rockPx=fwidth(p),face=normalize(cross(dFdx(p),dFdy(p)));
  if(eastCover>.001){
   if(dot(face,cameraPosition-p)<0.)face=-face;
-  vec3 lithology=eastSandstone(p,d,rockPx)*(.90+.31*max(0.,dot(face,sun)));
+  vec3 lithology=eastSandstone(p,d,rockPx)*(.90+.31*eastStoneLight(p,face,d,rockPx));
   col=mix(col,lithology,eastCover);
  }
  `:''}
@@ -399,7 +399,10 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${east?`
  vec3 rockPx=fwidth(p);
  float eastCover=eastRockLand(p,n,coast,vSurveyWeight)*eastRockDistance(d);
- if(eastCover>.001)col=mix(col,eastSandstone(p,d,rockPx),eastCover);
+ if(eastCover>.001){
+  col=mix(col,eastSandstone(p,d,rockPx),eastCover);
+  light=mix(light,eastStoneLight(p,n,d,rockPx),eastCover);
+ }
  `:''}
  ${bench?`
  // Evaluated only on land, after the unchanged shoreline rejection.

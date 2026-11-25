@@ -36,6 +36,38 @@ export const eastSandstoneGLSL=/*glsl*/`
   vec4 c=mix(a,b,r.z);
   return mix(mix(c.x,c.y,r.x),mix(c.z,c.w,r.x),r.y);
  }
+ // Derivative of cubic interpolated seeded relief. Evaluate in world
+ // metres on both terrain and the short waterline geometry. This changes
+ // local diffuse light only; it is not geometry, a geology measurement or AO.
+ vec3 eastStoneGradient(vec3 p){
+  vec3 u=floor(p),f=fract(p),t=f*f*(3.-2.*f),s=6.*f*(1.-f);
+  vec4 a=vec4(rockHash(u),rockHash(u+vec3(1,0,0)),rockHash(u+vec3(0,1,0)),rockHash(u+vec3(1,1,0)));
+  u.z+=1.;
+  vec4 b=vec4(rockHash(u),rockHash(u+vec3(1,0,0)),rockHash(u+vec3(0,1,0)),rockHash(u+vec3(1,1,0)));
+  vec4 n=mix(a,b,t.z);
+  vec2 z=mix(b.xz-a.xz,b.yw-a.yw,t.x);
+  return s*vec3(mix(n.y-n.x,n.w-n.z,t.y),mix(n.z-n.x,n.w-n.y,t.x),mix(z.x,z.y,t.y));
+ }
+ float eastStoneLight(vec3 p,vec3 n,float d,vec3 px){
+  float footprint=max(px.x,max(px.y,px.z));
+  float large=(1.-smoothstep(.20,.78,footprint))*(1.-smoothstep(130.,475.,d));
+  float base=clamp(dot(n,sun),0.,1.);
+  if(large<.001)return base;
+  vec3 v=vec3(eastRockPosition(p.xz).x,p.y,eastRockPosition(p.xz).y);
+  vec3 frequency=vec3(1.30,2.55,1.41);
+  vec3 g=eastStoneGradient(v*frequency+vec3(8.73,12.6,5.47))*frequency*.142*large;
+  float nearby=1.-smoothstep(.058,.187,footprint);
+  if(nearby>.001){
+    vec3 fine=vec3(4.1,6.6,4.5);
+    g+=eastStoneGradient(v*fine+vec3(13.0,7.1,4.8))*fine*.031*nearby*large;
+  }
+  g-=n*dot(g,n);
+  vec3 reliefNormal=normalize(n-g);
+  float direct=clamp(dot(reliefNormal,sun),0.,1.);
+  // The brighter maritime sky softly modulates tiny faces in the lee.
+  // No dark spatial imprint is transferred outside the rock mask.
+  return direct+.15*(reliefNormal.y-n.y);
+ }
  vec3 eastSandstone(vec3 p,float d,vec3 px){
   vec2 q=eastRockPosition(p.xz);
   vec3 v=vec3(q.x,p.y,q.y);
@@ -67,6 +99,22 @@ export const eastSandstoneGLSL=/*glsl*/`
   float dryMask=smoothstep(.27,2.4,p.y+(weather-.5)*1.56);
   vec3 stone=mix(wet,dry,dryMask);
   stone*=.84+.20*weather+.15*rock-.28*beds*vein+.14*lip*vein-.21*fracture+.26*grit;
+  float contact=1.-smoothstep(155.,500.,d);
+  if(contact>.001){
+   // A smoother laterally oriented bed tone avoids billboard-sized
+   // splotches. Blend it with the independent stock grain and dark joints.
+   float seamBend=.12*rockTexture(vec3(v.x*.067,v.y*.18,v.z*.059));
+   float bedTint=rockTexture(vec3(v.x*.078,(h+seamBend)*1.17,v.z*.081));
+   float breaks=noise(q*.51+vec2(epoch*.44,-epoch*.81));
+   float grainTone=.55*bedTint+.26*weather+.19*breaks;
+   vec3 dryNew=mix(vec3(.145,.069,.050),vec3(.23,.121,.089),
+                   smoothstep(.10,.88,grainTone));
+   vec3 wetNew=mix(vec3(.052,.037,.028),vec3(.13,.085,.059),
+                   smoothstep(.14,.87,grainTone));
+   vec3 mineral=mix(wetNew,dryNew,dryMask);
+   mineral*=.91+.08*weather+.06*rock-.23*beds*vein+.13*lip*vein-.12*fracture+.34*grit;
+   stone=mix(stone,mineral,contact*.81);
+  }
   return stone;
  }
 `;
