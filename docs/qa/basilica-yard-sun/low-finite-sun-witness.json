@@ -1,0 +1,295 @@
+{
+  "scope": "One preregistered center ray and exact optical raster samples using unchanged actual V2 low camera, independently read D16 and original 30,931 triangles. Open center does not imply an entirely clear finite solar disk. 4x coverage sample positions are conventional check locations, not extracted native hardware MSAA pattern.",
+  "witnessFileSHA256": "9719c96d978cccfa13441a7cbe344ee3d8efe07f8bb3468bc84f57bb13dae2e2",
+  "witnessOrdinalZeroBased": 73,
+  "id": "ground-edge-outer-06",
+  "cameraNativeSHA256": "e7a928d74c2967a4b3582217acb3455dff82b30dac9d3ab1e3f6a961fc56eb22",
+  "actualD16Hash": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+  "sunRadiusDegrees": 0.266,
+  "nativeLandRGBDeltaAtContainingPixel": [
+    -2,
+    -2,
+    -3
+  ],
+  "nativeLand3x3": [
+    [
+      [
+        -8,
+        -7,
+        -7
+      ],
+      [
+        -9,
+        -9,
+        -8
+      ],
+      [
+        -12,
+        -12,
+        -11
+      ]
+    ],
+    [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        -2,
+        -2,
+        -3
+      ],
+      [
+        -4,
+        -3,
+        -3
+      ]
+    ],
+    [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  ],
+  "observations": [
+    {
+      "name": "frozen-witness-at-fractional-screencoord",
+      "worldXYZ": [
+        5752.299523300834,
+        8.287212105228557,
+        29611.945704152044
+      ],
+      "screenXY": [
+        592.341158820713,
+        350.1873136821787
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.30000000000000004,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 1206,
+          "of": 4096,
+          "share": 0.29443359375,
+          "rangeM": [
+            30.72827200934616,
+            31.82614919887402,
+            32.59881363247337
+          ]
+        },
+        {
+          "blocked": 1204,
+          "of": 4096,
+          "share": 0.2939453125,
+          "rangeM": [
+            30.71864990359416,
+            31.825634480541233,
+            32.60413818898846
+          ]
+        }
+      ]
+    },
+    {
+      "name": "centre-pixel-sample",
+      "worldXYZ": [
+        5752.6558859413435,
+        8.297577873987418,
+        29611.68634112734
+      ],
+      "screenXY": [
+        592.5,
+        350.5
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.2,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 523,
+          "of": 4096,
+          "share": 0.127685546875,
+          "rangeM": [
+            31.582073333259864,
+            32.199784729053384,
+            32.6112306567967
+          ]
+        },
+        {
+          "blocked": 526,
+          "of": 4096,
+          "share": 0.12841796875,
+          "rangeM": [
+            31.57218387219978,
+            32.194297367509606,
+            32.607280333032016
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a-pixel-sample",
+      "worldXYZ": [
+        5752.225406178823,
+        8.285214573667387,
+        29611.99367511995
+      ],
+      "screenXY": [
+        592.375,
+        350.125
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.30000000000000004,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 1413,
+          "of": 4096,
+          "share": 0.344970703125,
+          "rangeM": [
+            30.48826563837726,
+            31.708077296020544,
+            32.592381567542276
+          ]
+        },
+        {
+          "blocked": 1411,
+          "of": 4096,
+          "share": 0.344482421875,
+          "rangeM": [
+            30.47871868708503,
+            31.70921226873523,
+            32.5941254074244
+          ]
+        }
+      ]
+    },
+    {
+      "name": "b-pixel-sample",
+      "worldXYZ": [
+        5752.498710639113,
+        8.294058457618497,
+        29611.76104631096
+      ],
+      "screenXY": [
+        592.875,
+        350.375
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.4,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 1147,
+          "of": 4096,
+          "share": 0.280029296875,
+          "rangeM": [
+            30.79060180828147,
+            31.846924406002334,
+            32.60264781867411
+          ]
+        },
+        {
+          "blocked": 1145,
+          "of": 4096,
+          "share": 0.279541015625,
+          "rangeM": [
+            30.780960184871052,
+            31.846261059063888,
+            32.5942338839563
+          ]
+        }
+      ]
+    },
+    {
+      "name": "c-pixel-sample",
+      "worldXYZ": [
+        5752.81198351077,
+        8.301073158123646,
+        29611.61214818861
+      ],
+      "screenXY": [
+        592.125,
+        350.625
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.0,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 79,
+          "of": 4096,
+          "share": 0.019287109375,
+          "rangeM": [
+            32.3681178311053,
+            32.52743181925474,
+            32.63801120840776
+          ]
+        },
+        {
+          "blocked": 77,
+          "of": 4096,
+          "share": 0.018798828125,
+          "rangeM": [
+            32.35798223178916,
+            32.52011218667803,
+            32.63837670973284
+          ]
+        }
+      ]
+    },
+    {
+      "name": "d-pixel-sample",
+      "worldXYZ": [
+        5753.077181815658,
+        8.30967741473015,
+        29611.38556382097
+      ],
+      "screenXY": [
+        592.625,
+        350.875
+      ],
+      "receiverRole": "land",
+      "centralRayBlocked": false,
+      "centralRangeM": null,
+      "actualD16Hard": false,
+      "actualD16PartialFraction": 0.0,
+      "trueOriginalFiniteDiscTests": [
+        {
+          "blocked": 0,
+          "of": 4096,
+          "share": 0.0,
+          "rangeM": null
+        },
+        {
+          "blocked": 0,
+          "of": 4096,
+          "share": 0.0,
+          "rangeM": null
+        }
+      ]
+    }
+  ]
+}

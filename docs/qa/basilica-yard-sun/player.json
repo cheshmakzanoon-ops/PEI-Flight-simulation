@@ -1,0 +1,90 @@
+{
+  "scope": "Actual compiled Harbour-low flights starting outside the depth allocation neighborhood. The separate native cameras verify the local effect. Explicit stock and comparator-only do not request a shadow module. One local browser request was deliberately intercepted with 404; the real package and deployed files were not altered.",
+  "runtimeManifestSHA256": "9c9094d782ee16bc6fc5bf3bf3ac67088a8171cad537dc9b46fde7014d6f34d6",
+  "baseCommit": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+  "cases": [
+    {
+      "case": "yard-request-far",
+      "site": "harbour-low",
+      "existingBasilicaMode": "authored",
+      "sourceChunkRequests": 1,
+      "noDepthAllocationAtStartingSite": true,
+      "metersTravelled": 121.49022590771004,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "intentionalFailure": [],
+      "errors": []
+    },
+    {
+      "case": "explicit-stock-sun",
+      "site": "harbour-low",
+      "existingBasilicaMode": "authored",
+      "sourceChunkRequests": 0,
+      "noDepthAllocationAtStartingSite": true,
+      "metersTravelled": 124.42538053727614,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "intentionalFailure": [],
+      "errors": []
+    },
+    {
+      "case": "yard-key-alone",
+      "site": "harbour-low",
+      "existingBasilicaMode": "stock",
+      "sourceChunkRequests": 0,
+      "noDepthAllocationAtStartingSite": true,
+      "metersTravelled": 120.9031983603059,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "intentionalFailure": [],
+      "errors": []
+    },
+    {
+      "case": "standard",
+      "site": "harbour-low",
+      "existingBasilicaMode": "stock",
+      "sourceChunkRequests": 0,
+      "noDepthAllocationAtStartingSite": true,
+      "metersTravelled": 124.42538053727614,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "intentionalFailure": [],
+      "errors": []
+    },
+    {
+      "case": "missing-shadow-module",
+      "site": "harbour-low",
+      "existingBasilicaMode": "authored",
+      "sourceChunkRequests": 1,
+      "noDepthAllocationAtStartingSite": true,
+      "metersTravelled": 122.07725458045667,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "intentionalFailure": [
+        "response 404",
+        "console 404"
+      ],
+      "errors": []
+    }
+  ]
+}

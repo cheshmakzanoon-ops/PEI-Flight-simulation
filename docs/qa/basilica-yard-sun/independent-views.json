@@ -1,0 +1,320 @@
+{
+  "decision": "All material-isolated visible changes fit the original opaque 3D church, native receivers and physical sun, within the registered two-pixel MSAA boundary tolerance. One 1/255 silhouette transition required that tolerance.",
+  "inputs": {
+    "originalFrontageMain": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+    "V1PrivateRuntimeManifest": "2879b9226a96c22c5e1f578423035880a6042c66487dc22b1ca65a68ec997016",
+    "nativeExtractedD16U16LESHA256": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+    "independentPhysicsTriangleSourceSHA256": "54225898e3624400173953db324e16a058fce5f388bf20abbb829c5c83bc7a57",
+    "nativeExistingPavementOriginalSHA256": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+    "frozenProjectionWitnessesSHA256": "9719c96d978cccfa13441a7cbe344ee3d8efe07f8bb3468bc84f57bb13dae2e2",
+    "oldRenderGeometryTriangleCount": 30931,
+    "geometryQualifier": "Authored, previously optional, approximate building. These are faithful comparisons to the game geometry, not surveyed sun or source photography."
+  },
+  "scope": "Actual V1 yard-only software-WebGL2 scene; the separate optional self prototype was not enabled in this capture. Original/preregistered road-and-court camera, all 52/52 building tiles resident; exact V2 release parity is separate evidence. No device FPS or photorealism result inferred.",
+  "groundTruth": "Exact original 24 N112 facets, 49 actual road and 374 actual drawn walk triangles, plus all 30,931 unmodified church triangles. On sight rays the actual FrontSide walk/church faces back-facing to the fixed eye are culled; sunlight uses all original two-sided opaque casters. Every nonzero RGB delta when changing a single monitored material is tested from its native view-projection matrix through existing free surface geometry, positive facing sunlight, one direct +16 finite-angle original-ray samples. First proof from within that precise final pixel, then optional nearest \u00b11/2px explicitly separated. Framewise arithmetic is not a GPU perf benchmark. Other scene objects omitted from the analytic sight line can only hide eligible geometry; same-tick per-role material isolation and live submitted native geometry prove actual owner separately.",
+  "native": {
+    "view": "shadow-road-and-court",
+    "cameraLockSHA256": "9f7d36f1c2dd75bb858f6bc760233cb014defc852dfbf07d155ed9ac6a81e4c0",
+    "cameraWorld": [
+      5818.462635766725,
+      38.04456315137328,
+      29646.254176464245
+    ],
+    "viewProjection": [
+      0.8160025417087376,
+      -0.6048010764189552,
+      -0.7192389067995645,
+      -0.7192385780047108,
+      0,
+      1.8497031724765791,
+      -0.3866467193863102,
+      -0.38664654263356457,
+      -1.0167443810428478,
+      -0.48539163312597605,
+      -0.5772353277647718,
+      -0.5772350638858251,
+      25394.78205326511,
+      17838.68504684037,
+      21312.279757448436,
+      21312.43001465763
+    ],
+    "widthHeight": [
+      1000,
+      650
+    ],
+    "buildings": {
+      "wanted": 52,
+      "ready": 52,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "deviceCaps": {
+      "textureUnits": 32,
+      "uniformVectors": 4096,
+      "samples": 4
+    },
+    "sameFrameCounts": {
+      "original": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "off": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "land": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "road": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "walk": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "restored": {
+        "calls": 198,
+        "triangles": 591020
+      },
+      "afterDepth": {
+        "calls": 198,
+        "triangles": 591020
+      }
+    },
+    "restoreExact": true,
+    "originalColorHashes": {
+      "original": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "off": "6789c27676bb516454849b7e4fcfabc791ff52e788a3ce2592d2489215511583",
+      "land": "6f868101845576cc0c3b03df4b18a7d0960c90e2c3e247bd4a0bbfc55b968047",
+      "road": "3bab5f8ac1fe44608340b991f4abfd683baa866f3a9070e7fe6f859b58f82baa",
+      "walk": "95b0b1d8facb16d3d73d1da021d3f43aa3797a939edd8eb5ea953462c306a30f",
+      "restored": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "afterDepth": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a"
+    },
+    "isolatedDarkening": {
+      "original": {
+        "any": 13258,
+        "over2": 12918,
+        "over8": 11638,
+        "peak": 45,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "off": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "land": {
+        "any": 11354,
+        "over2": 11002,
+        "over8": 9796,
+        "peak": 15,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "road": {
+        "any": 1557,
+        "over2": 1557,
+        "over8": 1471,
+        "peak": 45,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "walk": {
+        "any": 492,
+        "over2": 485,
+        "over8": 391,
+        "peak": 30,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "restored": {
+        "any": 13258,
+        "over2": 12918,
+        "over8": 11638,
+        "peak": 45,
+        "brightAny": 0,
+        "bright2": 0
+      },
+      "afterDepth": {
+        "any": 13258,
+        "over2": 12918,
+        "over8": 11638,
+        "peak": 45,
+        "brightAny": 0,
+        "bright2": 0
+      }
+    },
+    "samplers": {
+      "land": {
+        "oldCount": 5,
+        "newCount": 6,
+        "nativeTargetActuallyBound": true,
+        "newActiveSamplerNames": [
+          "harbourMask",
+          "imageMap",
+          "coverMap",
+          "detailMap",
+          "paintMap",
+          "bsSourceDepth"
+        ]
+      },
+      "road": {
+        "oldCount": 5,
+        "newCount": 6,
+        "nativeTargetActuallyBound": true,
+        "newActiveSamplerNames": [
+          "aggregateMap",
+          "roadPaveA",
+          "roadPaveB",
+          "envMap",
+          "dfgLUT",
+          "bsSourceDepth"
+        ]
+      },
+      "walk": {
+        "oldCount": 0,
+        "newCount": 1,
+        "nativeTargetActuallyBound": true,
+        "newActiveSamplerNames": [
+          "bsSourceDepth"
+        ]
+      }
+    },
+    "glErrors": []
+  },
+  "rayProof": {
+    "land": {
+      "denseWitnessesAtUnresolvedSilhouettes": [
+        {
+          "pixel": [
+            553,
+            250
+          ],
+          "darkening": 1,
+          "denseRaysInside2px": 20081,
+          "qualifiedRays": 796,
+          "nearestProvenActualReceiverCentrePx": 1.0793516572461361,
+          "centreDistanceToProvedPhysicalRayPx": 1.0793516572461361,
+          "truePixelXY": [
+            554.55,
+            250.25
+          ]
+        }
+      ],
+      "darkening": {
+        "0": {
+          "count": 11354,
+          "withinPixelPhysicalFiniteDisc": 11353,
+          "within1pxAA": 0,
+          "within2pxAA": 1,
+          "unexplained": 0
+        },
+        "2": {
+          "count": 11002,
+          "withinPixelPhysicalFiniteDisc": 11002,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        },
+        "8": {
+          "count": 9796,
+          "withinPixelPhysicalFiniteDisc": 9796,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        }
+      },
+      "brightAny": 0,
+      "witnessChangedOwnedUnderPixel": 11353,
+      "ofAllChangesWithDirectPencilProof": 10404,
+      "worstUnexplainedRGB": 0,
+      "worstUnexplainedXY": []
+    },
+    "road": {
+      "denseWitnessesAtUnresolvedSilhouettes": [],
+      "darkening": {
+        "0": {
+          "count": 1557,
+          "withinPixelPhysicalFiniteDisc": 1557,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        },
+        "2": {
+          "count": 1557,
+          "withinPixelPhysicalFiniteDisc": 1557,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        },
+        "8": {
+          "count": 1471,
+          "withinPixelPhysicalFiniteDisc": 1471,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        }
+      },
+      "brightAny": 0,
+      "witnessChangedOwnedUnderPixel": 1557,
+      "ofAllChangesWithDirectPencilProof": 1403,
+      "worstUnexplainedRGB": 0,
+      "worstUnexplainedXY": []
+    },
+    "walk": {
+      "denseWitnessesAtUnresolvedSilhouettes": [],
+      "darkening": {
+        "0": {
+          "count": 492,
+          "withinPixelPhysicalFiniteDisc": 492,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        },
+        "2": {
+          "count": 485,
+          "withinPixelPhysicalFiniteDisc": 485,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        },
+        "8": {
+          "count": 391,
+          "withinPixelPhysicalFiniteDisc": 391,
+          "within1pxAA": 0,
+          "within2pxAA": 0,
+          "unexplained": 0
+        }
+      },
+      "brightAny": 0,
+      "witnessChangedOwnedUnderPixel": 492,
+      "ofAllChangesWithDirectPencilProof": 418,
+      "worstUnexplainedRGB": 0,
+      "worstUnexplainedXY": []
+    }
+  },
+  "renderAreaNote": "Individual material counts share pixels under MSAA (paving/ground edges) and are therefore not additive to the 12,918-pixel joint threshold result. Darkening only reduces the pre-existing direct contribution. No contribution brighter than stock.",
+  "exactReleaseYardParity": {
+    "yardOnlyV2SourceManifestSHA256": "9c9094d782ee16bc6fc5bf3bf3ac67088a8171cad537dc9b46fde7014d6f34d6",
+    "originalGeometryAndActualTargetUnmodified": true,
+    "verification": "Independent direct comparison of exact files from separately run full V1 and V2 high views (52/52 each) confirms all seven complete PNG file payloads, including native original/off/isolated land/road/walk/both restores, plus the entire 2,097,152-byte mounted D16 attachment are byte-for-byte identical. Original V1 3D-ray proof is therefore also a proof of the actual measured V2 high frame. This parity is not an assertion about a low view or a different device.",
+    "exactEightFileHashes": {
+      "original.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "off.png": "6789c27676bb516454849b7e4fcfabc791ff52e788a3ce2592d2489215511583",
+      "land.png": "6f868101845576cc0c3b03df4b18a7d0960c90e2c3e247bd4a0bbfc55b968047",
+      "road.png": "3bab5f8ac1fe44608340b991f4abfd683baa866f3a9070e7fe6f859b58f82baa",
+      "walk.png": "95b0b1d8facb16d3d73d1da021d3f43aa3797a939edd8eb5ea953462c306a30f",
+      "restored.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "afterDepth.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "real-mounted.u16le": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b"
+    }
+  }
+}

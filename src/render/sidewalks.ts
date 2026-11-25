@@ -248,6 +248,13 @@ export class Sidewalks{
   const g=a.model.geometry;
   g.setDrawRange(0,d<CLOSE?g.getAttribute('position').count:a.model.top);
  }
+ /** The actual receiver refreshes its existing vertex heights when the ground changes. */
+ basilicaSunWalk(ours?:THREE.Material){
+  const m=this.resident.get('6,34')?.mesh;
+  if(SIDEWALKS.sha256!=='e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384'||
+     !this.root.visible||!m?.visible||m.parent!==this.root||(m.material!==this.mat&&m.material!==ours))return;
+  return {mesh:m,base:this.mat as THREE.Material};
+ }
  get state(){
   return {id:SIDEWALKS.id,tiles:this.resident.size,pending:this.pending.length,visible:this.root.visible};
  }

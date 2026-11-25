@@ -87,6 +87,15 @@ type Tile = {x: number; z: number; segments: number[]; victoria?:boolean; gravel
 export class Roads {
   private readonly root = new THREE.Group();
   private readonly pavement=new RoadPavement(import.meta.env?.BASE_URL??"/");
+  /** Original local mesh identity only; no editing the province-wide shared road material. */
+  basilicaSunRoad(ours?:THREE.Material){
+   const t=this.tiles.get('1,5'),m=this.visible.get('1,5');
+   if(this.sourceGeometrySha256!=='72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1'||
+      !t||!m||!m.visible||!this.root.visible||m.parent!==this.root)return;
+   const base=this.tileMaterial(t);if((m.material!==base&&m.material!==ours)||
+    base.customProgramCacheKey()!=='pei-road-surface-v3-pavement-victoria|mapped-aggregate-b1')return;
+   return {mesh:m,base:base as THREE.Material};
+  }
   get pavementStatus(){return this.pavement.state;}
   private readonly material = new THREE.MeshStandardMaterial({
     vertexColors: true, roughness: 0.98, side: THREE.DoubleSide,

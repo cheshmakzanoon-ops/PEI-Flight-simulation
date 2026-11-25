@@ -1,0 +1,79 @@
+(window as any).qaActualBasilicaR = async (q:any)=>{
+ const S=basilicaSun as any, gl=renderer.getContext() as WebGL2RenderingContext;
+ if(!S?.state.yard||!S.u||!S.rt)throw Error('Fixed source state not ready '+JSON.stringify(S?.state));
+ const rt=S.rt,l={w:1024,h:1024},enc=(b:Uint8Array)=>{let tmp='';for(let i=0;i<b.length;i+=16384)tmp+=String.fromCharCode(...b.subarray(i,Math.min(i+16384,b.length)));return btoa(tmp);};
+ const leases=[...S.leases.values()] as any[],gain=S.u.bsLive.value;const expectedTex=renderer.properties.get(rt.depthTexture).__webglTexture;
+ if(rt.depthTexture!==S.u.bsSourceDepth.value||rt.width!==1024||rt.height!==1024||rt.depthTexture.type!==THREE.UnsignedShortType)throw Error('Wrong actual source target');
+ let png:string|undefined; const budgets:any={},holders=new Map<any,any>(),basePrograms:any={};
+ const samplerTypes=new Set<number>([gl.SAMPLER_2D,gl.SAMPLER_3D,gl.SAMPLER_CUBE,gl.SAMPLER_2D_SHADOW,gl.SAMPLER_2D_ARRAY,gl.SAMPLER_2D_ARRAY_SHADOW,gl.SAMPLER_CUBE_SHADOW,gl.INT_SAMPLER_2D,gl.INT_SAMPLER_3D,gl.INT_SAMPLER_CUBE,gl.INT_SAMPLER_2D_ARRAY,gl.UNSIGNED_INT_SAMPLER_2D,gl.UNSIGNED_INT_SAMPLER_3D,gl.UNSIGNED_INT_SAMPLER_CUBE,gl.UNSIGNED_INT_SAMPLER_2D_ARRAY]);
+ for(const v of leases){let last=v.mesh.onAfterRender;holders.set(v.mesh,last);v.mesh.onAfterRender=function(...ar:any[]){last.apply(this,ar);const role=v.role+(v.role==='form'?'·'+v.mesh.name:'');const source=v.mesh.material===v.variant,store=source?budgets:basePrograms;if(store[role])return;
+ const prog=gl.getParameter(gl.CURRENT_PROGRAM);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error('Receiver did not link');
+ const samplers:any={};let exactDepth=false;let physical=0;const active=gl.getParameter(gl.ACTIVE_TEXTURE);try{for(let i=0;i<gl.getProgramParameter(prog,gl.ACTIVE_UNIFORMS);i++){const a=gl.getActiveUniform(prog,i)!;if(!samplerTypes.has(a.type))continue;const loc=gl.getUniformLocation(prog,a.name);const u=gl.getUniform(prog,loc);samplers[a.name]=[a.size,ArrayBuffer.isView(u)?Array.from(u as any):u];physical+=a.size;if(a.name==='bsSourceDepth'){gl.activeTexture(gl.TEXTURE0+u);exactDepth=gl.getParameter(gl.TEXTURE_BINDING_2D)===expectedTex;}}}finally{gl.activeTexture(active);}
+ store[role]={samplers,physical,exactDepth,geometry:v.mesh.geometry.uuid,name:v.mesh.name,materials:[v.base.name,v.variant.name]};};}
+ const frames:any={},global:any={};const snap=(mode:string)=>{for(const v of leases)v.mesh.material=(mode==='original'||mode==='restored'||mode==='afterDepth'?v.variant:(v.role===mode?v.variant:v.base));
+ renderer.render(scene,camera);gl.finish();const er=gl.getError();if(er!==gl.NO_ERROR)throw Error('Original frame gl error '+er);global[mode]={calls:renderer.info.render.calls,triangles:renderer.info.render.triangles};frames[mode]=renderer.domElement.toDataURL('image/png');};
+ try{snap('original');snap('off');for(const cat of ['land','road','walk'])snap(cat);snap('restored');}finally{for(const [v,h]of holders)v.onAfterRender=h;for(const v of leases)v.mesh.material=v.variant;}
+ if(frames.original!==frames.restored)throw Error('Original diagnostic swap changed live frame');
+ if(q.depth){  const G:any=gl;const active=gl.getParameter(gl.ACTIVE_TEXTURE),pg=gl.getParameter(gl.CURRENT_PROGRAM),vao=gl.getParameter(gl.VERTEX_ARRAY_BINDING),draw=gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING),read=gl.getParameter(gl.READ_FRAMEBUFFER_BINDING),view=gl.getParameter(gl.VIEWPORT),color=gl.getParameter(gl.COLOR_WRITEMASK),pixelBuf=gl.getParameter(gl.PIXEL_PACK_BUFFER_BINDING);
+  const states=[gl.BLEND,gl.CULL_FACE,gl.DEPTH_TEST,gl.DITHER,gl.POLYGON_OFFSET_FILL,gl.RASTERIZER_DISCARD,gl.SAMPLE_ALPHA_TO_COVERAGE,gl.SAMPLE_COVERAGE,gl.SCISSOR_TEST,gl.STENCIL_TEST],enabled=states.map(a=>gl.isEnabled(a));const pre=gl.getError();if(pre!==gl.NO_ERROR)throw Error('Production GL error before readback '+pre);
+  gl.activeTexture(gl.TEXTURE0);const bound=gl.getParameter(gl.TEXTURE_BINDING_2D),oldSample=gl.getParameter(gl.SAMPLER_BINDING);
+  const src=renderer.properties.get(rt.depthTexture).__webglTexture;if(!src)throw Error('Missing actual mounted GPU depth texture');
+  const fb=gl.createFramebuffer(),dst=gl.createTexture(),sam=gl.createSampler(),vsh=gl.createShader(gl.VERTEX_SHADER)!,fsh=gl.createShader(gl.FRAGMENT_SHADER)!,prog=gl.createProgram()!,a=gl.createVertexArray();
+  const raw=new Uint8Array(l.w*l.h*4);const vsrc='#version 300 es\nvoid main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.-1.,0.,1.);}';
+  const fsrc='#version 300 es\nprecision highp float;precision highp int;uniform highp sampler2D dep;uniform ivec2 baseCoord;out vec4 o;void main(){float z=texelFetch(dep,ivec2(gl_FragCoord.xy)+baseCoord,0).r;uint v=uint(round(clamp(z,0.,1.)*65535.));o=vec4(float(v&255u)/255.,float((v>>8)&255u)/255.,gl_FragCoord.x<1.?0.:1.,1.);}';
+  try{gl.bindVertexArray(a);gl.bindFramebuffer(gl.FRAMEBUFFER,fb);gl.bindTexture(gl.TEXTURE_2D,dst);gl.texStorage2D(gl.TEXTURE_2D,1,gl.RGBA8,l.w,l.h);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,dst,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('QA readback attachment incomplete');
+   gl.shaderSource(vsh,vsrc);gl.shaderSource(fsh,fsrc);gl.compileShader(vsh);gl.compileShader(fsh);gl.attachShader(prog,vsh);gl.attachShader(prog,fsh);gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error('Depth decode link failed: '+gl.getProgramInfoLog(prog));gl.useProgram(prog);
+   gl.bindTexture(gl.TEXTURE_2D,src);gl.samplerParameteri(sam,gl.TEXTURE_COMPARE_MODE,gl.NONE);gl.samplerParameteri(sam,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.samplerParameteri(sam,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.samplerParameteri(sam,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.samplerParameteri(sam,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.bindSampler(0,sam);
+   gl.uniform1i(gl.getUniformLocation(prog,'dep'),0);gl.uniform2i(gl.getUniformLocation(prog,'baseCoord'),0,0);
+   for(const s of states)gl.disable(s);gl.colorMask(true,true,true,true);gl.viewport(0,0,l.w,l.h);gl.drawArrays(gl.TRIANGLES,0,3);gl.bindBuffer(gl.PIXEL_PACK_BUFFER,null);gl.readPixels(0,0,l.w,l.h,gl.RGBA,gl.UNSIGNED_BYTE,raw);
+   const err=gl.getError();if(err!==gl.NO_ERROR)throw Error('Unmodified live depth readback GL error '+err);
+  }finally{for(let i=0;i<states.length;i++)enabled[i]?gl.enable(states[i]):gl.disable(states[i]);gl.colorMask(color[0],color[1],color[2],color[3]);gl.viewport(view[0],view[1],view[2],view[3]);gl.bindBuffer(gl.PIXEL_PACK_BUFFER,pixelBuf);gl.bindVertexArray(vao);gl.useProgram(pg);gl.bindSampler(0,oldSample);gl.bindTexture(gl.TEXTURE_2D,bound);gl.activeTexture(active);gl.bindFramebuffer(gl.READ_FRAMEBUFFER,read);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,draw);gl.deleteFramebuffer(fb);gl.deleteTexture(dst);gl.deleteSampler(sam);gl.deleteVertexArray(a);gl.deleteProgram(prog);gl.deleteShader(vsh);gl.deleteShader(fsh);}
+  const decoded=new Uint8Array(l.w*l.h*2);for(let j=0;j<l.w*l.h;j++){if(raw[4*j+3]!==255||raw[4*j+2]!==((j%l.w===0)?0:255))throw Error('Readback sentinel rejected native orientation');decoded[j*2]=raw[j*4];decoded[j*2+1]=raw[j*4+1];}
+  const bytes=await new Response(new Blob([decoded]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();png=enc(new Uint8Array(bytes));
+ }snap('afterDepth');if(frames.original!==frames.afterDepth)throw Error('RGBA or renderer state changed after independent native D16 readback');
+ const here=project(-63.125295,46.233718);
+ const excluded=(p:number,q:number)=>p>here.x+72||q<here.x-72;
+ const excludedZ=(p:number,q:number)=>p>here.z+72||q<here.z-72;
+ const roster:{kind:string,name:string,geometryAttributes:string[],materialProgram:string,ownerNote:unknown,triangles:number[][]}[]=[];
+ const scan=(kind:'road'|'walk',group:THREE.Object3D|undefined)=>{
+  if(!group?.visible)return;
+  group.updateMatrixWorld(true);
+  group.traverseVisible(obj=>{
+   if(!(obj as THREE.Mesh).isMesh)return;
+   const q=obj as THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial|THREE.MeshStandardMaterial>;
+   if(Array.isArray(q.material))return;
+   const geom=q.geometry;
+   const a=geom.getAttribute('position');
+   const i=geom.index;
+   const d=geom.getAttribute('roadSeatDelta');
+   const useSeat=kind==='road' && !!d;
+   const gain=useSeat?+(roads as any).seatGain.value:0;
+   const verts=new Map<number,THREE.Vector3>();
+   const pos=(k:number)=>{
+    let v=verts.get(k);
+    if(v)return v;
+    v=new THREE.Vector3().fromBufferAttribute(a,k).applyMatrix4(q.matrixWorld);
+    if(useSeat){
+     const dist=Math.hypot(v.x-camera.position.x,v.z-camera.position.z);
+     v.y+=d!.getX(k)*gain*(1-THREE.MathUtils.smoothstep(dist,350,900));
+    }
+    verts.set(k,v);return v;
+   };
+   const tris:number[][]=[];const n=i?.count??a.count;
+   for(let j=Math.max(0,geom.drawRange.start);j+2<Math.min(n,geom.drawRange.start+geom.drawRange.count);j+=3){
+    const vs=[0,1,2].map(k=>pos(i?.getX(j+k)??j+k));
+    if(excluded(Math.min(...vs.map(x=>x.x)),Math.max(...vs.map(x=>x.x)))||excludedZ(Math.min(...vs.map(x=>x.z)),Math.max(...vs.map(x=>x.z))))continue;
+    tris.push(vs.flatMap(v=>[v.x,v.y,v.z]));
+   }
+   if(tris.length)roster.push({kind,name:q.name,geometryAttributes:Object.keys(geom.attributes).sort(),materialProgram:(leases.find(x=>x.mesh===q)?.base??q.material).customProgramCacheKey(),
+    ownerNote:{activeRoadInlandMode:q.userData.inlandMode??null,roadSeatGain:gain},triangles:tris});
+  });
+ };
+ scan('road',scene.getObjectByName('PEI National Road Network'));
+ scan('walk',scene.getObjectByName('Mapped PEI sidewalk ribbons'));
+ if(!roster.some(x=>x.kind==='road')||!roster.some(x=>x.kind==='walk'))throw Error('No visible original pavement receiver in this camera');
+
+ const nativePavement={anchor:[here.x,here.z],sun:world.sun.toArray(),captureCamera:camera.position.toArray(),roadSource:roads?.sourceGeometrySha256,footageFrame:(window as any).reviewCamera.frame,nearGroundStamp:world.visualGroundSignature([here.x-72,here.z-72,here.x+72,here.z+72]),roster};
+ const M=new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse);
+ return {nativePavement,depthGzBase64:png,format:rt.depthTexture.name,dimensions:[rt.width,rt.height],state:S.state,physicalSamplerRoster:budgets,legacySamplerRoster:basePrograms,screenSize:[gl.drawingBufferWidth,gl.drawingBufferHeight],deviceCaps:{textureUnits:gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS),uniformVectors:gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS),samples:gl.getParameter(gl.SAMPLES)},counts:global,cameraWorld:camera.position.toArray(),viewProjection:M.toArray(),sceneSun:world.sun.toArray(),frames};
+};

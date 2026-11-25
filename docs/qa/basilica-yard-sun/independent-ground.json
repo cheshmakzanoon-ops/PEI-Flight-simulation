@@ -1,0 +1,607 @@
+{
+  "decision": "Yard ground, road and sidewalk are supported. This receipt does not admit a church self-shadow or change building art. Read alongside the final release source/parity and compiled-player controls.",
+  "inputs": {
+    "originalFrontageMain": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+    "V1PrivateRuntimeManifest": "2879b9226a96c22c5e1f578423035880a6042c66487dc22b1ca65a68ec997016",
+    "nativeExtractedD16U16LESHA256": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+    "independentPhysicsTriangleSourceSHA256": "54225898e3624400173953db324e16a058fce5f388bf20abbb829c5c83bc7a57",
+    "nativeExistingPavementOriginalSHA256": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+    "frozenProjectionWitnessesSHA256": "9719c96d978cccfa13441a7cbe344ee3d8efe07f8bb3468bc84f57bb13dae2e2",
+    "oldRenderGeometryTriangleCount": 30931,
+    "geometryQualifier": "Authored, previously optional, approximate building. These are faithful comparisons to the game geometry, not surveyed sun or source photography."
+  },
+  "method": "Independent original 3D ray\u2013triangle intersections compared against the actual mounted native 1024\u00d71024 raw D16, decoded through a separate RGBA8 WebGL2 framebuffer during the frozen yard-only test. GPU color and state restore were verified. Solver does not use screen colors, the candidate texture, a nominal road width or a site photograph as the ray truth.",
+  "plane": {
+    "nativeD16SHA256": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+    "extentM": 64,
+    "cellMetres": 0.0625,
+    "directionTowardGameSun": [
+      -0.5988930707832083,
+      0.7386347872992903,
+      -0.3094280865713243
+    ]
+  },
+  "ground": {
+    "coarseStepM": 0.5,
+    "gridPoints": 82944,
+    "fullGeometryShadowM2IncludingUnderChurch": 1878.5,
+    "outsideOwnRoofM2": 739.25,
+    "openAfterInfrastructureGuardsM2": 699.0,
+    "eligibleOriginalN112": {
+      "hard": {
+        "n": 47662,
+        "positives": 2796,
+        "TP": 2790,
+        "FP": 6,
+        "FN": 6,
+        "precision": 0.9978540772532188,
+        "recall": 0.9978540772532188,
+        "IoU": 0.9957173447537473
+      },
+      "majority": {
+        "n": 47662,
+        "positives": 2796,
+        "TP": 2789,
+        "FP": 6,
+        "FN": 7,
+        "precision": 0.9978533094812164,
+        "recall": 0.9974964234620887,
+        "IoU": 0.9953604568165596
+      },
+      "maxFPNearestTrueRasterCentreM": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "samplerFringeNearTrueSourceM": [
+        0.5,
+        0.5,
+        1.4309060891442036,
+        2.9154759474226504
+      ]
+    },
+    "conservativeCore": {
+      "hard": {
+        "n": 46663,
+        "positives": 2394,
+        "TP": 2394,
+        "FP": 0,
+        "FN": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "IoU": 1.0
+      },
+      "majority": {
+        "n": 46663,
+        "positives": 2394,
+        "TP": 2394,
+        "FP": 0,
+        "FN": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "IoU": 1.0
+      },
+      "maxFPNearestTrueRasterCentreM": null,
+      "samplerFringeNearTrueSourceM": [
+        1.118033988749895,
+        1.8027756377319946,
+        2.790833163195855,
+        2.9154759474226504
+      ]
+    },
+    "quadrantsCore": {
+      "core-NW": {
+        "hard": {
+          "n": 12903,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "majority": {
+          "n": 12903,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "maxFPNearestTrueRasterCentreM": null,
+        "samplerFringeNearTrueSourceM": null
+      },
+      "core-NE": {
+        "hard": {
+          "n": 9566,
+          "positives": 802,
+          "TP": 802,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 9566,
+          "positives": 802,
+          "TP": 802,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "maxFPNearestTrueRasterCentreM": null,
+        "samplerFringeNearTrueSourceM": null
+      },
+      "core-SW": {
+        "hard": {
+          "n": 10093,
+          "positives": 221,
+          "TP": 221,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 10093,
+          "positives": 221,
+          "TP": 221,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "maxFPNearestTrueRasterCentreM": null,
+        "samplerFringeNearTrueSourceM": null
+      },
+      "core-SE": {
+        "hard": {
+          "n": 14101,
+          "positives": 1371,
+          "TP": 1371,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 14101,
+          "positives": 1371,
+          "TP": 1371,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "maxFPNearestTrueRasterCentreM": null,
+        "samplerFringeNearTrueSourceM": [
+          1.118033988749895,
+          1.8027756377319946,
+          2.790833163195855,
+          2.9154759474226504
+        ]
+      }
+    },
+    "truePhysicalFringe": {
+      "depth": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+      "kind": "actual-mounted-GPU",
+      "checked": 198,
+      "fullyConfirmedTrueGeometricEdgeWithin325mm": 198,
+      "outsideConfirmedEdgeProbe": 0,
+      "worstUpperBoundM": 0.2795084971874738,
+      "maxAnyStrengthWhenTrueMiss": 0.7000000000000001,
+      "positiveVsClearCounts": [
+        99,
+        99
+      ]
+    },
+    "fringeMeaning": "The 0.5m grid alone misses very thin spire casts. Independently sampled actual opposite rays bracket every nonbinary native PCF edge centre within 0.280m; see replay and exact original geometry rather than distances to the nearest coarse raster cell."
+  },
+  "roadAndWalk": {
+    "nativeReadbackCoordinates": {
+      "parentSHA": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+      "offsetFromNativeSite": [
+        5734.549523300834,
+        0.0,
+        29600.195704152044
+      ],
+      "triangles": {
+        "realRoad": {
+          "nativeInputOrderedTriangles": 49,
+          "maxAbsCoordinateDeltaM": 9.094947017729282e-13,
+          "shapeTriangleTriplesSHA": "c474637568a679c7acd7106f87a2e9af654ac8929072ac0eb431d9a47b4c2d64",
+          "program": "pei-road-surface-v3-pavement-victoria|mapped-aggregate-b1",
+          "ownerNote": {
+            "activeRoadInlandMode": "",
+            "roadSeatGain": 0
+          }
+        },
+        "realSidewalk": {
+          "nativeInputOrderedTriangles": 374,
+          "maxAbsCoordinateDeltaM": 9.094947017729282e-13,
+          "shapeTriangleTriplesSHA": "23692c692558a0c79c07f5b821cc512d221f86fbad1567bf77d5c304183b8eca",
+          "program": "onBeforeCompile() {\n  }",
+          "ownerNote": {
+            "activeRoadInlandMode": null,
+            "roadSeatGain": 0
+          }
+        }
+      },
+      "method": "All source coordinates for this directed receiver-ray replay are copied from the actual in-frame mounted mesh array, transformed from native world coordinates only by subtracting fixed site origin in XZ, verified against independently reconstructed original buffers + retained original draw ordinals. Vertical wall normals computed from actual native triangle vertices."
+    },
+    "independentTriangleCounts": {
+      "road": 49,
+      "sidewalk": 374
+    },
+    "maxVertexDifferenceM": 9.1e-13,
+    "twoOffsetTenCentimetreGrids": [
+      {
+        "phase": "phaseA",
+        "step": 0.1,
+        "first": -71.95,
+        "surfaces": {
+          "realRoad": {
+            "actualGeometryProjectedM2AcrossWholeBox": 2278.19,
+            "physicalShadowM2OnThisActualMeshIgnoringOcclusions": 25.22,
+            "shadowM2OnActualTopAfterTerrainAndOtherPavementDepth": 25.22,
+            "shadowM2MistakenlySuppressedIfUseTerrainY": 0.21,
+            "shadowM2MistakenlyAddedIfUseTerrainY": 1.45,
+            "trueGroundVsPavementYDeltaMInShadow": [
+              0.6837955636474415,
+              0.8122374284434635,
+              0.8711124814172031
+            ],
+            "shadowBelowInterveningTerrainM2": 0.0,
+            "shadowWithNearCoincidentPavingWithin5mmM2": 0.0,
+            "litAnyOutsideSourceApproach": 0.0,
+            "sourceTriangleIdsWithVisibleCast": [
+              5564,
+              5565
+            ]
+          },
+          "realSidewalk": {
+            "actualGeometryProjectedM2AcrossWholeBox": 779.54,
+            "physicalShadowM2OnThisActualMeshIgnoringOcclusions": 10.69,
+            "shadowM2OnActualTopAfterTerrainAndOtherPavementDepth": 10.69,
+            "shadowM2MistakenlySuppressedIfUseTerrainY": 0.0,
+            "shadowM2MistakenlyAddedIfUseTerrainY": 0.2,
+            "trueGroundVsPavementYDeltaMInShadow": [
+              0.0819995187922622,
+              0.081999920436294,
+              0.08200023719310146
+            ],
+            "shadowBelowInterveningTerrainM2": 0.0,
+            "shadowWithNearCoincidentPavingWithin5mmM2": 0.0,
+            "litAnyOutsideSourceApproach": 0.0,
+            "sourceTriangleIdsWithVisibleCast": [
+              1868,
+              1871,
+              1872,
+              1873
+            ]
+          }
+        }
+      },
+      {
+        "phase": "phaseB",
+        "step": 0.1,
+        "first": -71.925,
+        "surfaces": {
+          "realRoad": {
+            "actualGeometryProjectedM2AcrossWholeBox": 2278.17,
+            "physicalShadowM2OnThisActualMeshIgnoringOcclusions": 25.25,
+            "shadowM2OnActualTopAfterTerrainAndOtherPavementDepth": 25.25,
+            "shadowM2MistakenlySuppressedIfUseTerrainY": 0.19,
+            "shadowM2MistakenlyAddedIfUseTerrainY": 1.38,
+            "trueGroundVsPavementYDeltaMInShadow": [
+              0.6843545836233247,
+              0.8123078077502299,
+              0.8716715013930862
+            ],
+            "shadowBelowInterveningTerrainM2": 0.0,
+            "shadowWithNearCoincidentPavingWithin5mmM2": 0.0,
+            "litAnyOutsideSourceApproach": 0.0,
+            "sourceTriangleIdsWithVisibleCast": [
+              5564,
+              5565
+            ]
+          },
+          "realSidewalk": {
+            "actualGeometryProjectedM2AcrossWholeBox": 779.88,
+            "physicalShadowM2OnThisActualMeshIgnoringOcclusions": 10.71,
+            "shadowM2OnActualTopAfterTerrainAndOtherPavementDepth": 10.71,
+            "shadowM2MistakenlySuppressedIfUseTerrainY": 0.02,
+            "shadowM2MistakenlyAddedIfUseTerrainY": 0.19,
+            "trueGroundVsPavementYDeltaMInShadow": [
+              0.08199952381908737,
+              0.0819999196300607,
+              0.08200024023786945
+            ],
+            "shadowBelowInterveningTerrainM2": 0.0,
+            "shadowWithNearCoincidentPavingWithin5mmM2": 0.0,
+            "litAnyOutsideSourceApproach": 0.0,
+            "sourceTriangleIdsWithVisibleCast": [
+              1868,
+              1871,
+              1872,
+              1873
+            ]
+          }
+        }
+      }
+    ],
+    "verticalCurbGeometry": {
+      "overGroundActualShadowWallAreaM2TwoSidedLightTest": 1.4396288190934792,
+      "wallAreaReceivingDirectSunWhichCanBeReducedM2": 0.8231008339470689,
+      "areaWithNoPriorDirectContributionM2": 0.6165279851464102,
+      "notClipFromTerrain": "These are real original low faces; do not darken back-facing n\u00b7sun\u22640 even when caster physically intercepts sky direction. No hardware/motion claim."
+    },
+    "measuredPhysicalPlacement": "Original road is about 0.81m above N112 in shadow; walk cap is 0.082m above it. The scorer uses its actual submitted world Y, not the nearest ground."
+  },
+  "exactProbeCases": {
+    "registeredRows": 76,
+    "uniqueWorldPositions": 73,
+    "note": "The frozen packet has three repeated copies of one already-unlit vertical-curb position. Records are retained in their original order for reproducibility, not treated as 76 independent coordinates. The 48 top road/walk and 16 ground witnesses are all distinct.",
+    "results": {
+      "curb-blocked-no-direct": {
+        "hard": {
+          "n": 6,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "majority": {
+          "n": 6,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "computedFractionRange": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pointCount": 6
+      },
+      "curb-blocked-true-direct": {
+        "hard": {
+          "n": 6,
+          "positives": 6,
+          "TP": 6,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 6,
+          "positives": 6,
+          "TP": 6,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "computedFractionRange": [
+          0.8,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pointCount": 6
+      },
+      "ground-edge-inner": {
+        "hard": {
+          "n": 8,
+          "positives": 8,
+          "TP": 8,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 8,
+          "positives": 8,
+          "TP": 8,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "computedFractionRange": [
+          0.7000000000000001,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pointCount": 8
+      },
+      "ground-edge-outer": {
+        "hard": {
+          "n": 8,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "majority": {
+          "n": 8,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "computedFractionRange": [
+          0.0,
+          0.0,
+          0.19499999999999987,
+          0.30000000000000004
+        ],
+        "pointCount": 8
+      },
+      "realRoad-blocked-inside": {
+        "hard": {
+          "n": 12,
+          "positives": 12,
+          "TP": 12,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 12,
+          "positives": 12,
+          "TP": 12,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "computedFractionRange": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pointCount": 12
+      },
+      "realRoad-nearby-clear": {
+        "hard": {
+          "n": 12,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "majority": {
+          "n": 12,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "computedFractionRange": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pointCount": 12
+      },
+      "realSidewalk-blocked-inside": {
+        "hard": {
+          "n": 12,
+          "positives": 12,
+          "TP": 12,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "majority": {
+          "n": 12,
+          "positives": 12,
+          "TP": 12,
+          "FP": 0,
+          "FN": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "IoU": 1.0
+        },
+        "computedFractionRange": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pointCount": 12
+      },
+      "realSidewalk-nearby-clear": {
+        "hard": {
+          "n": 12,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "majority": {
+          "n": 12,
+          "positives": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "precision": null,
+          "recall": null,
+          "IoU": null
+        },
+        "computedFractionRange": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pointCount": 12
+      }
+    }
+  },
+  "limits": "Finite original sun under this optional authored frontage only. No new collision or roof survey. Vertical-wall areas use geometry/normals, not an assertion that every wall sample was visible from a given camera. Hardware and gameplay costs are separate.",
+  "exactReleaseYardParity": {
+    "yardOnlyV2SourceManifestSHA256": "9c9094d782ee16bc6fc5bf3bf3ac67088a8171cad537dc9b46fde7014d6f34d6",
+    "originalGeometryAndActualTargetUnmodified": true,
+    "verification": "Independent direct comparison of exact files from separately run full V1 and V2 high views (52/52 each) confirms all seven complete PNG file payloads, including native original/off/isolated land/road/walk/both restores, plus the entire 2,097,152-byte mounted D16 attachment are byte-for-byte identical. Original V1 3D-ray proof is therefore also a proof of the actual measured V2 high frame. This parity is not an assertion about a low view or a different device.",
+    "exactEightFileHashes": {
+      "original.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "off.png": "6789c27676bb516454849b7e4fcfabc791ff52e788a3ce2592d2489215511583",
+      "land.png": "6f868101845576cc0c3b03df4b18a7d0960c90e2c3e247bd4a0bbfc55b968047",
+      "road.png": "3bab5f8ac1fe44608340b991f4abfd683baa866f3a9070e7fe6f859b58f82baa",
+      "walk.png": "95b0b1d8facb16d3d73d1da021d3f43aa3797a939edd8eb5ea953462c306a30f",
+      "restored.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "afterDepth.png": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+      "real-mounted.u16le": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b"
+    }
+  }
+}

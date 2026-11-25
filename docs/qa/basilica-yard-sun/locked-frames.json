@@ -1,0 +1,233 @@
+{
+  "scope": "Exact final yard-only V2 native rendering. Sealed active viewport, same-task off/three original material roles/restore, plus actual invisible/unsupported-target withdrawals. Not a measured device FPS or shadow in every camera.",
+  "baseCommit": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+  "runtimeManifestSHA256": "9c9094d782ee16bc6fc5bf3bf3ac67088a8171cad537dc9b46fde7014d6f34d6",
+  "registeredWitnessRows": 76,
+  "registeredUniqueWorldPoints": 73,
+  "nativeViews": [
+    {
+      "pose": "shadow-road-and-court",
+      "actualDepthU16SHA256": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+      "buildingTiles": {
+        "wanted": 52,
+        "ready": 52,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "actualPairedPixelCounts": {
+        "original": {
+          "any": 13258,
+          "over2": 12918,
+          "over8": 11638,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "off": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "peak": 0,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "land": {
+          "any": 11354,
+          "over2": 11002,
+          "over8": 9796,
+          "peak": 15,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "road": {
+          "any": 1557,
+          "over2": 1557,
+          "over8": 1471,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "walk": {
+          "any": 492,
+          "over2": 485,
+          "over8": 391,
+          "peak": 30,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "restored": {
+          "any": 13258,
+          "over2": 12918,
+          "over8": 11638,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "afterDepth": {
+          "any": 13258,
+          "over2": 12918,
+          "over8": 11638,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        }
+      },
+      "frameSHA256": {
+        "original": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+        "off": "6789c27676bb516454849b7e4fcfabc791ff52e788a3ce2592d2489215511583",
+        "land": "6f868101845576cc0c3b03df4b18a7d0960c90e2c3e247bd4a0bbfc55b968047",
+        "road": "3bab5f8ac1fe44608340b991f4abfd683baa866f3a9070e7fe6f859b58f82baa",
+        "walk": "95b0b1d8facb16d3d73d1da021d3f43aa3797a939edd8eb5ea953462c306a30f",
+        "restored": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+        "afterDepth": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a"
+      },
+      "visibleReceiverWitnesses": {
+        "actualN112Land": {
+          "visibleTrueSunBlock": 6,
+          "visibleHardRayMissOrUnlit": 5,
+          "clearCenterUnchangedExact": 5
+        },
+        "realRoadTop": {
+          "visibleTrueSunBlock": 12,
+          "visibleHardRayMissOrUnlit": 12,
+          "clearCenterUnchangedExact": 12
+        },
+        "realSidewalkTop": {
+          "visibleTrueSunBlock": 9,
+          "visibleHardRayMissOrUnlit": 6,
+          "clearCenterUnchangedExact": 6
+        }
+      }
+    },
+    {
+      "pose": "shadow-low-open-control",
+      "actualDepthU16SHA256": "1661eae5e441a908a7ea04f2422e507188e33835ccaa75c6b8420680f3764d0b",
+      "buildingTiles": {
+        "wanted": 52,
+        "ready": 52,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "actualPairedPixelCounts": {
+        "original": {
+          "any": 26997,
+          "over2": 26519,
+          "over8": 24589,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "off": {
+          "any": 0,
+          "over2": 0,
+          "over8": 0,
+          "peak": 0,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "land": {
+          "any": 23220,
+          "over2": 22749,
+          "over8": 21138,
+          "peak": 15,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "road": {
+          "any": 2614,
+          "over2": 2611,
+          "over8": 2428,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "walk": {
+          "any": 1190,
+          "over2": 1182,
+          "over8": 1017,
+          "peak": 30,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "restored": {
+          "any": 26997,
+          "over2": 26519,
+          "over8": 24589,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        },
+        "afterDepth": {
+          "any": 26997,
+          "over2": 26519,
+          "over8": 24589,
+          "peak": 45,
+          "brightAny": 0,
+          "bright2": 0
+        }
+      },
+      "frameSHA256": {
+        "original": "fc3fa529f0baacb35d2eca0a6d21019fe4960f784d435e86e8613a147eb32fb6",
+        "off": "1ff9bdc00800b8e9f916794315cbb0c70005e75ac2cb5e856a6ea434aa038e53",
+        "land": "8c60a6c290712a8160f95ab1e2df18ca9d927215649aad99421b0275c9dfa64f",
+        "road": "876f26b3604aa27781cbf327a4edb6d5648d2b055830248443a3bfc21a3b8b41",
+        "walk": "66133e7a1c54aefd50b314bdca4593cee70a51bf6abb1d4915d19fcb3582b7d2",
+        "restored": "fc3fa529f0baacb35d2eca0a6d21019fe4960f784d435e86e8613a147eb32fb6",
+        "afterDepth": "fc3fa529f0baacb35d2eca0a6d21019fe4960f784d435e86e8613a147eb32fb6"
+      },
+      "visibleReceiverWitnesses": {
+        "actualN112Land": {
+          "visibleTrueSunBlock": 6,
+          "visibleHardRayMissOrUnlit": 5,
+          "clearCenterUnchangedExact": 4
+        },
+        "realRoadTop": {
+          "visibleTrueSunBlock": 12,
+          "visibleHardRayMissOrUnlit": 12,
+          "clearCenterUnchangedExact": 12
+        },
+        "realSidewalkTop": {
+          "visibleTrueSunBlock": 12,
+          "visibleHardRayMissOrUnlit": 12,
+          "clearCenterUnchangedExact": 12
+        },
+        "realSidewalkVertical": {
+          "visibleTrueSunBlock": 6,
+          "visibleHardRayMissOrUnlit": 0,
+          "clearCenterUnchangedExact": 0
+        }
+      }
+    }
+  ],
+  "sameTaskRuntimeSafety": {
+    "caseScope": "Local real main scene test injected transient foreign nested point light, invisible existing sidewalk, invisible existing road, and externally selected render target. Each unbound all three original receiver materials and disposed the optional target. Each clean restore reallocated exactly nine true caster draws without repeating content authentication.",
+    "verifiedFaults": [
+      "foreignPoint",
+      "missingWalk",
+      "missingRoad",
+      "foreignRenderTarget"
+    ],
+    "originalMaterialRestorations": 4,
+    "actualRawFaultReceiptSHA256": "4599aca2c98cb2a1c69f95a381cb20a91c1a499986dd052102725ee85c8e4bdf"
+  },
+  "lowEdgeScope": "One intentionally adjacent ground witness outside the binary centre ray darkens by RGB [2, 2, 3] counts. Independent actual 0.266\u00b0 disk tracing showed about 29.4% true caster coverage at the exact sealed point; the live mounted depth returned 30%. This is accepted bounded penumbra, not a road, sidewalk or ambient darkening.",
+  "publishedMatchedFigures": {
+    "encoding": "Lossless PNG framebuffer captures. Every decoded RGBA value is identical to the native files, whose hashes are retained. No transformation, composite or label baked into the figures.",
+    "files": {
+      "off": {
+        "nativeScreenshotSHA256": "6789c27676bb516454849b7e4fcfabc791ff52e788a3ce2592d2489215511583",
+        "publishedPNGFileSHA256": "fdd2bdc2c9d4e0f0082e76e722f5b2e91ecb44d26d3d0eb8a5704e4383f8db82",
+        "rgbaPixelsSHA256": "205c397ff503e0f8678f1630dbbfbd80b01782c3371e79eecf836c4310eadfa7",
+        "bytes": 559825
+      },
+      "on": {
+        "nativeScreenshotSHA256": "8fb379e23c9ee595b3b0bf42639699d2f440d2cdc1aa700ad0c9001a33370a6a",
+        "publishedPNGFileSHA256": "90a8549b0a8e2c6229c6a22558d1b3b55c8eab201bbea0c786fb3e5538a9b2ce",
+        "rgbaPixelsSHA256": "30cbfec4392d664c22022f488d06cc8e513f02c25c0f35ce38de1cbbb55ced89",
+        "bytes": 563058
+      }
+    }
+  }
+}

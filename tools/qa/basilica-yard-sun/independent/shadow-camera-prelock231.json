@@ -1,0 +1,81 @@
+{
+  "scope": "Before proposed shadow runtime or same-frame candidate screenshot. Exact historical frontage version #231 and published roads/walks. Poses rely only on previously read old receiver/emitted art topology, production sun and independent ground feasibility. Background/camera are not scoring references for style or actual photos.",
+  "parentCommit": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+  "sceneOnlyUsesDefaultSun": true,
+  "prototypeRenderingRegime": "Three.js actual settled frame, preserve world/cover, alternative separate flags for caster and receivers correlated not substituted",
+  "drawingBuffer": [
+    1000,
+    650
+  ],
+  "perspectiveFovDegrees": 53,
+  "nativePavementReceiptSHA256": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+  "views": {
+    "shadow-road-and-court": {
+      "target": "Court-to-existing-road footprint under the projected southeast cast",
+      "lon": -63.12485207593252,
+      "lat": 46.23366402427579,
+      "east": 0.78,
+      "south": 0.626,
+      "dist": 64,
+      "agl": 30,
+      "h": 5
+    },
+    "shadow-curb-level": {
+      "target": "Low sideways view of existing walk-to-road boundary and dry ground receiver",
+      "lon": -63.12478694004025,
+      "lat": 46.233655028321756,
+      "east": 0.09,
+      "south": 0.996,
+      "dist": 41,
+      "agl": 7.0,
+      "h": 4
+    },
+    "shadow-west-caster": {
+      "target": "Sun-facing authored exterior trim, buttresses and roof; separate self-cast witness",
+      "lon": -63.125295,
+      "lat": 46.233718,
+      "east": -0.87,
+      "south": -0.49,
+      "dist": 95,
+      "agl": 38,
+      "h": 41
+    },
+    "shadow-unlit-front": {
+      "lon": -63.125295,
+      "lat": 46.233718,
+      "h": 12,
+      "east": 0.9640790949,
+      "south": -0.2656153211,
+      "dist": 60.275,
+      "agl": 3.0,
+      "target": "Low street approach for portal and terrace; lower facade only; a separate check from skyline. No inference of survey or published photo pixels."
+    },
+    "shadow-unrelated": {
+      "lon": -63.12647161904763,
+      "lat": 46.232797285714284,
+      "h": 22,
+      "east": 0.6346830426,
+      "south": -0.7727725638,
+      "dist": 63,
+      "agl": 34,
+      "target": "No-landmark negative for nearby separately retained stock row",
+      "purpose": "Look away from the basilica so it is outside the entire image, while targeting a distinct existing building."
+    },
+    "shadow-harbour": {
+      "lon": -63.125295,
+      "lat": 46.233718,
+      "h": 55,
+      "east": -0.0418142771,
+      "south": 0.9991254007,
+      "dist": 510,
+      "agl": 122,
+      "target": "Southward harbour approach and urban skyline"
+    }
+  },
+  "acceptance": [
+    "The road/curb positives must include a genuine sampled shadow on more than one receiver, not a back-to-back polygon overlap approximation.",
+    "The frontage plane in the fourth view cannot lose direct sun it never received; pavement may still change.",
+    "The unrelated negative must stay byte identical. Any far-view change must be explained by predeclared asset/caster geometry/cutoff, not blanket fog or colour.",
+    "No scope broaden, new road shader albedo edit, unlit face darkening, or photoreal claim from one cast."
+  ]
+}

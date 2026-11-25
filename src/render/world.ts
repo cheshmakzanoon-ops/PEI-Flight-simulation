@@ -624,6 +624,8 @@ export class World {
  private stagedPointPrim?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;stockGeometry:THREE.BufferGeometry;seams?:string};
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
+ /** The actual physical directional light that also supplies regular opaque streets. */
+ readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
  constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
@@ -839,7 +841,7 @@ export class World {
     mesh.update((left+right)*.5,(top+bottom)*.5,b=>this.visualGroundSignature(b),(x,z)=>this.provinceVisualGroundHeight(x,z));
    }
    const hemi=new THREE.HemisphereLight(0xe3eeff,0x78654c,1.48);scene.add(hemi);
-   const light=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
+   const light=this.basilicaDaylight=new THREE.DirectionalLight(0xffedda,2.2);light.position.copy(this.sun).multiplyScalar(40000);scene.add(light);
    const env=sky.clone();env.mapping=THREE.EquirectangularReflectionMapping;env.needsUpdate=true;scene.environment=env;scene.environmentIntensity=.77;
    scene.environmentRotation.y=-.512*Math.PI*2;
    
@@ -1264,6 +1266,14 @@ export class World {
    if(t?.lod===112&&g?.visible&&g.material===t.local&&!t.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&g.geometry.index?.count===112*112*6)out.push({id:t.id,m:t.local});
   }
   return out;
+ }
+ /** Exact visible original near ground for the optional local mounted church daylight. */
+ basilicaSunGround(ours?:THREE.Material){
+  const t=this.byId.get('16-16'),g=t?.fine;
+  if(!t||!g||t.lod!==112||!g.visible||t.relief||g.userData.localGrade||g.userData.coastalSurvey||
+     this.grades?.has('16-16')||g.geometry.index?.count!==112*112*6||
+     (g.material!==t.local&&g.material!==ours))return;
+  return {mesh:g as THREE.Mesh,base:t.local as THREE.Material};
  }
  get visualGroundEpoch(){return this.groundVersion;}
  visualGroundSignature(b:readonly [number,number,number,number]){

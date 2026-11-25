@@ -1,0 +1,1952 @@
+{
+  "scope": "Selected only from the unchanged source light and receiver geometry, prior to any candidate optics. Signed shadow check is only against the authored opaque 30931-triangle church; misses do not assert unobstructed sky for all objects. Screen visibility remains unproven for each ray before actual depth/owner verification. World absolute game XYZ. Native material vs area thresholds are separate.",
+  "nativeOriginalSHA": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+  "sources": {
+    "originalCastStudy": "0addcf3cd95714c6ef0dddba077e13fc1eb1d8e28b8b5fe0038ee93c3bcdb2f0",
+    "truePavement": "cf44e70124af4c8d01d883e560a62a6c835fbcdae586ccf7d34af788da1febdc",
+    "groundOracle": "ab1be31b51e4b85d32a4f025d305c3ee524e8207feeb3c2d6ca2774e47360267",
+    "sourceRelativeXYZBytes": "54225898e3624400173953db324e16a058fce5f388bf20abbb829c5c83bc7a57"
+  },
+  "method": "Each label begins at the lexicographically least SHA-256(label:XYZ-5-decimals) among qualified samples and farthest-point XY thereafter. Real top samples >0.35m inside visible paving (inside shadow >=0.30m, misses 0.65\u20132.5m from shadow). Curb barycentric weights all >=.06, .016\u2013.059m above ground, only strongly illuminated or negative-facing normals. Ground samples 0.5m\u20131.0m from a true caster boundary and >=1m inside free ground; normals there are actual facet normals, rendered vertex-based shading normal can differ. Distances start at true +2mm ray origin specified per record. Ground triangle IDs are ordinals into signed rooted local N112 triangle list, cast IDs are source global true triangles.",
+  "sunWorldXYZ": [
+    -0.5988930707832083,
+    0.7386347872992903,
+    -0.3094280865713243
+  ],
+  "extractionCandidatesAndKeptPerCase": {
+    "realRoad-blocked-inside": [
+      1942,
+      12
+    ],
+    "realRoad-nearby-clear": [
+      2635,
+      12
+    ],
+    "realSidewalk-blocked-inside": [
+      491,
+      12
+    ],
+    "realSidewalk-nearby-clear": [
+      819,
+      12
+    ],
+    "curb-blocked-no-direct": [
+      12,
+      6
+    ],
+    "curb-blocked-true-direct": [
+      25,
+      6
+    ],
+    "ground-edge-inner": [
+      399,
+      8
+    ],
+    "ground-edge-outer": [
+      410,
+      8
+    ]
+  },
+  "records": [
+    {
+      "id": "realRoad-blocked-inside-01",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5782.899523300834,
+        9.470682229303513,
+        29605.445704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23399,
+      "hitRangeM": 43.755882720890604,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-02",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5777.599523300834,
+        9.453425096281732,
+        29606.345704152045
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4739,
+      "hitRangeM": 39.2466010593802,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-03",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5779.999523300834,
+        9.46587101859154,
+        29604.145704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.0025837990164796786
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 17918,
+      "hitRangeM": 38.11935427725517,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-04",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5780.499523300834,
+        9.45926983410906,
+        29607.245704152043
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23395,
+      "hitRangeM": 43.14701942849557,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-05",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5782.999523300834,
+        9.464246033186,
+        29608.045704152042
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288126,
+        0.0025837990164796786
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5565,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23395,
+      "hitRangeM": 46.563432799628316,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-06",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5785.099523300834,
+        9.475071619762375,
+        29606.145704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5565,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23399,
+      "hitRangeM": 47.95370188783891,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-07",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5781.899523300834,
+        9.471999036441877,
+        29603.845704152045
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288127,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312894,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23401,
+      "hitRangeM": 42.25205179737139,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-08",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5779.399523300834,
+        9.459788147557438,
+        29605.845704152045
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4911,
+      "hitRangeM": 38.93102171998182,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-09",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5781.099523300834,
+        9.465352705143161,
+        29605.545704152042
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288126,
+        0.0025837990164796786
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23397,
+      "hitRangeM": 40.59821285490081,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-10",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5781.999523300834,
+        9.46452931320901,
+        29606.845704152045
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.0025837990164796786
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23397,
+      "hitRangeM": 43.43178920441226,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-11",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5783.699523300834,
+        9.469577107237054,
+        29606.745704152043
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288126,
+        0.002583799016479679
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5565,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 24339,
+      "hitRangeM": 45.31813318523539,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-blocked-inside-12",
+      "category": "realRoad-blocked-inside",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5784.099523300834,
+        9.474321372670026,
+        29605.345704152045
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23400,
+      "hitRangeM": 46.258724545484235,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-01",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5785.599523300834,
+        9.486040396240954,
+        29602.445704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-02",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5775.499523300834,
+        9.376809753522767,
+        29608.345704152045
+      ],
+      "worldNormal": [
+        -0.025548171264078427,
+        0.9993989472340922,
+        0.023431500431040815
+      ],
+      "normalDotDaylight": 0.7462410872147555,
+      "receiverDrawTriangle": 5562,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-03",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5782.099523300834,
+        9.459385025985693,
+        29608.945704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288127,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312894,
+      "receiverDrawTriangle": 5565,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-04",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5781.799523300834,
+        9.47507626943448,
+        29602.545704152042
+      ],
+      "worldNormal": [
+        -0.002817280893234268,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-05",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5778.899523300834,
+        9.453470243097964,
+        29607.745704152043
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288127,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312894,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-06",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5785.399523300834,
+        9.494003534678033,
+        29599.145704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-07",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5785.999523300834,
+        9.479674245183844,
+        29605.345704152045
+      ],
+      "worldNormal": [
+        -0.002817280893234269,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5565,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-08",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5779.899523300834,
+        9.450603145286566,
+        29609.945704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-09",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5783.799523300834,
+        9.477093527176855,
+        29603.945704152044
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-10",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5777.399523300834,
+        9.408969459006505,
+        29609.045704152042
+      ],
+      "worldNormal": [
+        -0.025548556746097704,
+        0.9993989438884867,
+        0.023431222818474675
+      ],
+      "normalDotDaylight": 0.7462414015072104,
+      "receiverDrawTriangle": 5563,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-11",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5786.599523300834,
+        9.49325018780428,
+        29600.745704152043
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realRoad-nearby-clear-12",
+      "category": "realRoad-nearby-clear",
+      "receiverKind": "realRoadTop",
+      "worldXYZ": [
+        5783.699523300834,
+        9.481721050842493,
+        29602.045704152042
+      ],
+      "worldNormal": [
+        -0.0028172808932342684,
+        0.9999926934288126,
+        0.002583799016479678
+      ],
+      "normalDotDaylight": 0.7395171404312892,
+      "receiverDrawTriangle": 5564,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-01",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5777.599523300834,
+        8.769721037333133,
+        29603.945704152044
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.0265082730869281
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4829,
+      "hitRangeM": 34.79816598723516,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-02",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5755.399523300834,
+        8.097246858347374,
+        29623.345704152045
+      ],
+      "worldNormal": [
+        -0.00978362864036513,
+        0.9996007333811326,
+        0.02650762974181722
+      ],
+      "normalDotDaylight": 0.7359970173344668,
+      "receiverDrawTriangle": 1868,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23042,
+      "hitRangeM": 27.4843635851569,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-03",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5781.899523300834,
+        8.889370276414205,
+        29600.145704152044
+      ],
+      "worldNormal": [
+        -0.00438944335696516,
+        0.9996389569464392,
+        0.0265082730869281
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23471,
+      "hitRangeM": 61.86221403451807,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-04",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5779.799523300834,
+        8.82976520829917,
+        29602.045704152042
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.026508273086928106
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 15519,
+      "hitRangeM": 39.167271139672565,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-05",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5775.199523300834,
+        8.727361489540158,
+        29605.145704152044
+      ],
+      "worldNormal": [
+        -0.004389126199848934,
+        0.9996389474297147,
+        0.026508684479131822
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4653,
+      "hitRangeM": 35.37980582921396,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-06",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5778.199523300834,
+        8.814784746495542,
+        29602.345704152045
+      ],
+      "worldNormal": [
+        -0.0043891261998489335,
+        0.9996389474297147,
+        0.026508684479131822
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4997,
+      "hitRangeM": 35.240046116663116,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-07",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5776.599523300834,
+        8.738812162378904,
+        29604.945704152044
+      ],
+      "worldNormal": [
+        -0.00438944335696516,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4819,
+      "hitRangeM": 34.89105264829686,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-08",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5780.899523300834,
+        8.892935312587312,
+        29599.845704152045
+      ],
+      "worldNormal": [
+        -0.004389126199848934,
+        0.9996389474297147,
+        0.026508684479131822
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23471,
+      "hitRangeM": 60.0947325742639,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-09",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5776.599523300834,
+        8.767982221063312,
+        29603.845704152045
+      ],
+      "worldNormal": [
+        -0.0043891261998489335,
+        0.9996389474297147,
+        0.026508684479131822
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4857,
+      "hitRangeM": 33.68306750185753,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-10",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5778.399523300834,
+        8.789144568007673,
+        29603.345704152045
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18114,
+      "hitRangeM": 35.4599130225294,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-11",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5779.099523300834,
+        8.810780780475632,
+        29602.645704152044
+      ],
+      "worldNormal": [
+        -0.00438944335696516,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 17984,
+      "hitRangeM": 36.49137298631574,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-blocked-inside-12",
+      "category": "realSidewalk-blocked-inside",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5778.899523300834,
+        8.833769199336933,
+        29601.745704152043
+      ],
+      "worldNormal": [
+        -0.004389126199848934,
+        0.9996389474297146,
+        0.026508684479131822
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 3922,
+      "hitRangeM": 38.319877533059966,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-01",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5772.399523300834,
+        8.643468087948607,
+        29607.845704152045
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-02",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5753.099523300834,
+        8.019047268409878,
+        29625.445704152044
+      ],
+      "worldNormal": [
+        -0.009783628640365126,
+        0.9996007333811326,
+        0.02650762974181722
+      ],
+      "normalDotDaylight": 0.7359970173344668,
+      "receiverDrawTriangle": 1868,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-03",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5783.899523300834,
+        8.948536624517487,
+        29598.245704152043
+      ],
+      "worldNormal": [
+        -0.004385656195452445,
+        0.9996388517937829,
+        0.026512864879955772
+      ],
+      "normalDotDaylight": 0.7327907447277727,
+      "receiverDrawTriangle": 1872,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-04",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5757.699523300834,
+        8.172794626520366,
+        29621.345704152045
+      ],
+      "worldNormal": [
+        -0.009783628640365128,
+        0.9996007333811326,
+        0.02650762974181722
+      ],
+      "normalDotDaylight": 0.7359970173344668,
+      "receiverDrawTriangle": 1868,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-05",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5779.599523300834,
+        8.855405478018696,
+        29601.045704152042
+      ],
+      "worldNormal": [
+        -0.004389126199848933,
+        0.9996389474297146,
+        0.02650868447913182
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-06",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5775.299523300834,
+        8.701282409582832,
+        29606.145704152044
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.026508273086928106
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-07",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5755.699523300834,
+        8.076316853818247,
+        29624.245704152043
+      ],
+      "worldNormal": [
+        -0.009784012752970953,
+        0.9996007394885051,
+        0.02650725765679087
+      ],
+      "normalDotDaylight": 0.7359973670215203,
+      "receiverDrawTriangle": 1869,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-08",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5781.999523300834,
+        8.921631527406483,
+        29598.945704152044
+      ],
+      "worldNormal": [
+        -0.004389126199848933,
+        0.9996389474297146,
+        0.02650868447913182
+      ],
+      "normalDotDaylight": 0.7327941870628156,
+      "receiverDrawTriangle": 1871,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-09",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5756.299523300834,
+        8.12727021489585,
+        29622.545704152042
+      ],
+      "worldNormal": [
+        -0.009783628640365128,
+        0.9996007333811326,
+        0.026507629741817217
+      ],
+      "normalDotDaylight": 0.7359970173344668,
+      "receiverDrawTriangle": 1868,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-10",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5773.999523300834,
+        8.666404441431176,
+        29607.245704152043
+      ],
+      "worldNormal": [
+        -0.00438944335696516,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-11",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5754.199523300834,
+        8.056331775694572,
+        29624.445704152044
+      ],
+      "worldNormal": [
+        -0.009783628640365128,
+        0.9996007333811326,
+        0.02650762974181722
+      ],
+      "normalDotDaylight": 0.7359970173344668,
+      "receiverDrawTriangle": 1868,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "realSidewalk-nearby-clear-12",
+      "category": "realSidewalk-nearby-clear",
+      "receiverKind": "realSidewalkTop",
+      "worldXYZ": [
+        5780.999523300834,
+        8.86685585824424,
+        29600.845704152045
+      ],
+      "worldNormal": [
+        -0.004389443356965161,
+        0.9996389569464392,
+        0.026508273086928102
+      ],
+      "normalDotDaylight": 0.7327945113317011,
+      "receiverDrawTriangle": 1873,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-01",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5776.482498779297,
+        8.684366359710694,
+        29605.542735595704
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 17291,
+      "hitRangeM": 36.26349860892098,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-02",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5779.055723876953,
+        8.766012916564941,
+        29603.17725463867
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18023,
+      "hitRangeM": 37.161877398784625,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-03",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5777.769111328125,
+        8.728999633789062,
+        29604.35999511719
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4825,
+      "hitRangeM": 35.46414225749287,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-02",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5779.055723876953,
+        8.766012916564941,
+        29603.17725463867
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18023,
+      "hitRangeM": 37.161877398784625,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-02",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5779.055723876953,
+        8.766012916564941,
+        29603.17725463867
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18023,
+      "hitRangeM": 37.161877398784625,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-no-direct-02",
+      "category": "curb-blocked-no-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5779.055723876953,
+        8.766012916564941,
+        29603.17725463867
+      ],
+      "worldNormal": [
+        0.6767642532754005,
+        0.0,
+        0.7361997999786402
+      ],
+      "normalDotDaylight": -0.6331103172819919,
+      "receiverDrawTriangle": 7332,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18023,
+      "hitRangeM": 37.161877398784625,
+      "rayOriginOffsetGameXYZ": [
+        0.001353528506550801,
+        0.0,
+        0.0014723995999572804
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-01",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5777.038748779297,
+        8.754399070739748,
+        29602.993902587892
+      ],
+      "worldNormal": [
+        -0.6767647815977388,
+        0.0,
+        -0.7361993143089479
+      ],
+      "normalDotDaylight": 0.6331104834107358,
+      "receiverDrawTriangle": 7328,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4987,
+      "hitRangeM": 33.38444367867016,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535295631954777,
+        0.0,
+        -0.0014723986286178958
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-02",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5754.8770043945315,
+        8.061101875305177,
+        29623.366472167967
+      ],
+      "worldNormal": [
+        -0.6767640052666712,
+        0.0,
+        -0.7362000279648278
+      ],
+      "normalDotDaylight": 0.6331102392966123,
+      "receiverDrawTriangle": 7326,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23042,
+      "hitRangeM": 26.946617206574885,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535280105333425,
+        0.0,
+        -0.0014724000559296554
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-03",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5773.565322265625,
+        8.6620951461792,
+        29606.1869140625
+      ],
+      "worldNormal": [
+        -0.6767647815977388,
+        0.0,
+        -0.7361993143089479
+      ],
+      "normalDotDaylight": 0.6331104834107358,
+      "receiverDrawTriangle": 7328,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23108,
+      "hitRangeM": 32.0043785088543,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535295631954777,
+        0.0,
+        -0.0014723986286178958
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-04",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5774.723131103516,
+        8.695403118133544,
+        29605.122576904298
+      ],
+      "worldNormal": [
+        -0.6767647815977388,
+        0.0,
+        -0.7361993143089479
+      ],
+      "normalDotDaylight": 0.6331104834107358,
+      "receiverDrawTriangle": 7328,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18111,
+      "hitRangeM": 35.58953249282836,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535295631954777,
+        0.0,
+        -0.0014723986286178958
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-05",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5778.196557617188,
+        8.795327033996582,
+        29601.929565429688
+      ],
+      "worldNormal": [
+        -0.6767647815977388,
+        0.0,
+        -0.7361993143089479
+      ],
+      "normalDotDaylight": 0.6331104834107358,
+      "receiverDrawTriangle": 7328,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23116,
+      "hitRangeM": 32.0353333177444,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535295631954777,
+        0.0,
+        -0.0014723986286178958
+      ]
+    },
+    {
+      "id": "curb-blocked-true-direct-06",
+      "category": "curb-blocked-true-direct",
+      "receiverKind": "realSidewalkVertical",
+      "worldXYZ": [
+        5775.880939941406,
+        8.72871109008789,
+        29604.058239746093
+      ],
+      "worldNormal": [
+        -0.6767647815977388,
+        0.0,
+        -0.7361993143089479
+      ],
+      "normalDotDaylight": 0.6331104834107358,
+      "receiverDrawTriangle": 7328,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 4848,
+      "hitRangeM": 33.32361308447469,
+      "rayOriginOffsetGameXYZ": [
+        -0.0013535295631954777,
+        0.0,
+        -0.0014723986286178958
+      ]
+    },
+    {
+      "id": "ground-edge-inner-01",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5779.299523300834,
+        8.841035216696794,
+        29598.445704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23472,
+      "hitRangeM": 56.28377087588958,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-02",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5738.799523300834,
+        7.850120604482335,
+        29623.445704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23020,
+      "hitRangeM": 19.584710346418895,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-03",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5757.299523300834,
+        8.864025680585337,
+        29582.445704152044
+      ],
+      "worldNormal": [
+        -0.007903081955970517,
+        0.9999583535131614,
+        0.004564267174941302
+      ],
+      "normalDotDaylight": 0.7419248143180628,
+      "receiverDrawTriangle": 9,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 22870,
+      "hitRangeM": 20.284282981335394,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-04",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5756.799523300834,
+        8.450588015497518,
+        29607.445704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23024,
+      "hitRangeM": 31.37190654314773,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-05",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5792.799523300834,
+        8.555575514953302,
+        29611.445704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23424,
+      "hitRangeM": 63.259608764281275,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-06",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5754.799523300834,
+        8.033241004428138,
+        29622.445704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 23042,
+      "hitRangeM": 25.796831369905462,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-07",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5768.299523300834,
+        8.89059818159116,
+        29590.445704152044
+      ],
+      "worldNormal": [
+        0.006283335072752385,
+        0.9999698428886697,
+        0.004564319617704852
+      ],
+      "normalDotDaylight": 0.7334371376854906,
+      "receiverDrawTriangle": 10,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 6048,
+      "hitRangeM": 37.521429944153,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-inner-08",
+      "category": "ground-edge-inner",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5768.299523300834,
+        8.660145846718573,
+        29603.445704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": true,
+      "casterSourceTriangle": 18150,
+      "hitRangeM": 23.11763744279108,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-01",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5768.799523300834,
+        8.635823131453089,
+        29604.445704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-02",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5739.799523300834,
+        8.74397381531719,
+        29578.445704152044
+      ],
+      "worldNormal": [
+        -0.007903081955970517,
+        0.9999583535131614,
+        0.004564267174941302
+      ],
+      "normalDotDaylight": 0.7419248143180628,
+      "receiverDrawTriangle": 9,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-03",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5738.799523300834,
+        7.823602489452005,
+        29624.445704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-04",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5793.799523300834,
+        8.559966314482992,
+        29611.445704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-05",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5761.299523300834,
+        8.88879263910362,
+        29583.945704152044
+      ],
+      "worldNormal": [
+        -0.007903081955970517,
+        0.9999583535131614,
+        0.004564267174941302
+      ],
+      "normalDotDaylight": 0.7419248143180628,
+      "receiverDrawTriangle": 9,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-06",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5752.299523300834,
+        8.287212105228557,
+        29611.945704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-07",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5780.799523300834,
+        8.86088047350649,
+        29597.945704152044
+      ],
+      "worldNormal": [
+        -0.004389214235277904,
+        0.9996389508562631,
+        0.02650854068760439
+      ],
+      "normalDotDaylight": 0.7327942868107291,
+      "receiverDrawTriangle": 16,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    },
+    {
+      "id": "ground-edge-outer-08",
+      "category": "ground-edge-outer",
+      "receiverKind": "actualN112Land",
+      "worldXYZ": [
+        5751.799523300834,
+        7.950841845945828,
+        29624.445704152044
+      ],
+      "worldNormal": [
+        -0.009783734944578003,
+        0.9996007350578585,
+        0.02650752727666632
+      ],
+      "normalDotDaylight": 0.7359971139434069,
+      "receiverDrawTriangle": 15,
+      "blockedByAuthoredBasilica": false,
+      "casterSourceTriangle": null,
+      "hitRangeM": null,
+      "rayOriginOffsetGameXYZ": [
+        0,
+        0.002,
+        0
+      ]
+    }
+  ]
+}

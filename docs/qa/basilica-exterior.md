@@ -18,6 +18,8 @@ The entry has three separate oak-coloured doors behind pointed arches, six stair
 
 The new group has **30,931 triangles in nine material batches**; the old has **6,500 in five**. Both maintain the same game anchor and both old summit heights (50.05 m above that anchor). The stairs meet the existing rendered terrain; no ground, collision, roadway or neighbouring building was changed. The comparison is about the rendering, not device frame rate or real-world height.
 
+To see the paired towers cast a shadow across the court and onto the pavement, add `&basilicaYardSun`. This [separate ground-lighting study](basilica-yard-sun.md) keeps the architecture unchanged.
+
 ## What the evidence supports
 
 - Separate rays through the actual opaque meshes resolve **three street-facing doors** and none on the rear, compared with zero on the old street face. The outer stair edge is 6.0–8.6 cm above the existing game ground along its width. The new footprint clears all 48 surrounding original building records and the mapped roads, walks and parking. [Geometry and contact checks](basilica-exterior/independent-geometry.json).

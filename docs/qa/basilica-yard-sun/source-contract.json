@@ -1,0 +1,112 @@
+{
+  "basis": "Original optional Great George frontage built from the game source; actual mesh in east/up/south game coordinates. Not a present-day building, photographic lighting or land survey.",
+  "terrainDecodedSha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+  "worldTriangleSha256": "f83554ce8420bde44791d7e5dcd05b3e7828178e1ae7bc764dfa0d60c25df50d",
+  "originalTriangleCount": 30931,
+  "groups": [
+    {
+      "role": "stone",
+      "opaquePositionSha256": "25be2de9fd11c9f194c3cc9d94396d07fae36f6cbd9dafbc3152d04a2e6a9a77",
+      "triangles": 7360
+    },
+    {
+      "role": "trim",
+      "opaquePositionSha256": "ff6300d8905467985e9b39224b60420154df20442382fd57ac35659de1734188",
+      "triangles": 15658
+    },
+    {
+      "role": "slate",
+      "opaquePositionSha256": "3fa9dcf61a4583e6f66a069e54f21abb76c267ee32457b01aae0d806e7b9b330",
+      "triangles": 152
+    },
+    {
+      "role": "copper",
+      "opaquePositionSha256": "b0529ed33a611fa4aa7e1ad9904f7d491e7b36b5f3a0adec8a3d95bce5af8d8c",
+      "triangles": 216
+    },
+    {
+      "role": "spire",
+      "opaquePositionSha256": "1d0ba1879cab8dfbe6905e9098c470578d3911c916d5c0fb29176b2e18ed3def",
+      "triangles": 96
+    },
+    {
+      "role": "iron",
+      "opaquePositionSha256": "25d70eb794946b842aac156eedf257458ff28d080ec5d1c21f86f9f73b247025",
+      "triangles": 1716
+    },
+    {
+      "role": "glass",
+      "opaquePositionSha256": "2790edcf9206330396e471821bae3615ca44f38f4bfa7ca373a22129ee98c76d",
+      "triangles": 1005
+    },
+    {
+      "role": "wood",
+      "opaquePositionSha256": "d0599b064f0c65dc6f3ea48235f533f1b34e6781ffc1f43864e701cef628d088",
+      "triangles": 189
+    },
+    {
+      "role": "recess",
+      "opaquePositionSha256": "736cedc4cfa6cdc66d75a94f78cea7aacbf0c4e541f3c21b71d05ce4ae976692",
+      "triangles": 4539
+    }
+  ],
+  "sourceOrigin": [
+    5734.549523300833,
+    8.318068965527663,
+    29600.195704152044
+  ],
+  "sun": [
+    -0.59889307,
+    0.73863479,
+    -0.30942809
+  ],
+  "lightBoundsMin": [
+    -23.94248618,
+    -44.18595265,
+    -13.75789241
+  ],
+  "lightBoundsMax": [
+    28.36748482,
+    13.88696259,
+    37.03227095
+  ],
+  "minTexelCorner": [
+    -29.8125,
+    -47.1875
+  ],
+  "pitchMetres": 0.0625,
+  "size": [
+    1024,
+    1024
+  ],
+  "outerCasterPaddingTexels": [
+    [
+      93.92022107,
+      93.12024282
+    ],
+    [
+      48.02475761,
+      46.80859849
+    ]
+  ],
+  "depthMetres": {
+    "lower": -16.75789241,
+    "upper": 39.03227095
+  },
+  "rendererContract": {
+    "casterGlslSha256": "b6183141cf3198ceb6f4dd68e858e644e39e7f31ac608f78a00859d805ac3f1a",
+    "receiverGlslSha256": "a0528413e2295d02ae49562b1dda526340dc9318ccb2a01e1816c12a50cafa98",
+    "rawD16Bytes": 2097152,
+    "rawColourR8Bytes": 1048576,
+    "receiverRoles": [
+      "land",
+      "road",
+      "walk"
+    ],
+    "homeTerrain": "16-16",
+    "roadResident": "1,5",
+    "walkResident": "6,34",
+    "publicNoArchitectureSelfShading": true,
+    "scope": "Verifies representation and source hashes; actual framebuffer and receiver classification require the independent native replay."
+  }
+}

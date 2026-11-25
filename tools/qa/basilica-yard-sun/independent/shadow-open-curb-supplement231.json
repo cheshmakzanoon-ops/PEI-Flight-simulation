@@ -1,0 +1,36 @@
+{
+  "scope": "Supplemental before any candidate shadow optics. Original fixed shadow-curb-level prelock encountered a foreground opaque building and remains an obstructed negative, not relabeled as passing. This alternative uses the proven open public published-model eye from the original actual receiver capture, only changes the look direction to the road/court.",
+  "parentCommit": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+  "sceneOnlyUsesDefaultSun": true,
+  "prototypeRenderingRegime": "Three.js actual settled frame, preserve world/cover, alternative separate flags for caster and receivers correlated not substituted",
+  "drawingBuffer": [
+    1000,
+    650
+  ],
+  "perspectiveFovDegrees": 53,
+  "nativePavementReceiptSHA256": "e85547e33e2497e3da2dab5d5e5973c50419bc6e46e482925a63a33bd34a1e91",
+  "views": {
+    "shadow-low-open-control": {
+      "lon": -63.12487813028944,
+      "lat": 46.233646032367716,
+      "h": 4,
+      "east": 0.7360871196359252,
+      "south": -0.6768868090796918,
+      "dist": 35.47116468665941,
+      "agl": 3.0,
+      "target": "Known open Great George camera position re-aimed along pavement at the court boundary."
+    }
+  },
+  "acceptance": [
+    "The road/curb positives must include a genuine sampled shadow on more than one receiver, not a back-to-back polygon overlap approximation.",
+    "The frontage plane in the fourth view cannot lose direct sun it never received; pavement may still change.",
+    "The unrelated negative must stay byte identical. Any far-view change must be explained by predeclared asset/caster geometry/cutoff, not blanket fog or colour.",
+    "No scope broaden, new road shader albedo edit, unlit face darkening, or photoreal claim from one cast."
+  ],
+  "originalPrelockSHA256": "9f7d36f1c2dd75bb858f6bc760233cb014defc852dfbf07d155ed9ac6a81e4c0",
+  "sameEyeAsNativeReceiverProbe": [
+    5792.659390745169,
+    12.000000000000002,
+    29584.18574067295
+  ]
+}
