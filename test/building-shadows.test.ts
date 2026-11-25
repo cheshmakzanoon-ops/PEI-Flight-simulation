@@ -55,3 +55,41 @@ test('local building depth restores renderer state and receivers remain aligned 
  assert.equal(shadow.state.active,false);
  assert.equal(shadow.state.updates,2);
 });
+
+test('attached building depth follows same-object geometry, index, and draw ranges without caching stale masks',async()=>{
+ const {fake}=fakeRenderer(), seen:THREE.BufferGeometry[]=[];
+ const device={...fake,render:(s:THREE.Scene)=>{
+  fake.render(s);seen.push((s.children[0] as THREE.Mesh).geometry);
+ }};
+ const shadow=new BuildingShadows(device as unknown as THREE.WebGLRenderer,new THREE.Vector3(-.60,.74,-.31));
+ const stock=new THREE.BoxGeometry(10,8,7),masked=new THREE.BoxGeometry(2,8,7);
+ const source=new THREE.Mesh(stock,new THREE.MeshBasicMaterial());
+ const caster=(_x:number,_z:number,_r:number,out:THREE.Mesh[])=>{out.push(source);};
+ const eye=new THREE.Vector3(0,28,0);
+ await pause();
+ shadow.render(eye,0,caster);
+ shadow.render(eye,0,caster);
+ assert.deepEqual(seen,[stock]);
+ source.geometry=masked;
+ shadow.render(eye,0,caster);
+ assert.equal(shadow.state.active,false,'throttled change cannot show stale depth');
+ assert.deepEqual(seen,[stock]);
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(shadow.state.active,true);
+ assert.deepEqual(seen,[stock,masked]);
+ masked.setDrawRange(0,9);
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(shadow.state.updates,3);
+ masked.setIndex(masked.index!.clone());
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(shadow.state.updates,4);
+ masked.index!.array[0]=4;masked.index!.needsUpdate=true;
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(shadow.state.updates,5);
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(shadow.state.updates,5,'a lease signal by itself does not waste a redraw');
+ source.geometry=stock;
+ shadow.leaseOwnerChanged();shadow.render(eye,0,caster);
+ assert.equal(seen.at(-1),stock);
+ assert.equal(shadow.state.updates,6);
+});

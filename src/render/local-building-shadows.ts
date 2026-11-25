@@ -21,12 +21,22 @@ const casterF=`
  }`;
 
 type Casters=(x:number,z:number,r:number,out:THREE.Mesh[])=>void;
+type CasterSnapshot={mesh:THREE.Mesh;index:THREE.BufferGeometry['index'];indexVersion:number;start:number;count:number};
+function sameGeometry(q:CasterSnapshot,source:THREE.Mesh){
+ const g=source.geometry;
+ return q.mesh.geometry===g&&q.index===g.index&&q.indexVersion===(g.index?.version??0)&&
+   q.start===g.drawRange.start&&q.count===g.drawRange.count;
+}
+function sealCaster(mesh:THREE.Mesh):CasterSnapshot{
+ const {index,drawRange:{start,count}}=mesh.geometry;
+ return {mesh,index,indexVersion:index?.version??0,start,count};
+}
 export class BuildingShadows{
  private readonly c=new THREE.OrthographicCamera(-reach,reach,reach,-reach,nearDepth,farDepth);
  private readonly shadowScene=new THREE.Scene();
  private readonly mat=new THREE.ShaderMaterial({vertexShader:casterV,fragmentShader:casterF,
    side:THREE.DoubleSide,toneMapped:false});
- private readonly copies=new Map<THREE.Mesh,THREE.Mesh>();
+ private readonly copies=new Map<THREE.Mesh,CasterSnapshot>();
  private readonly f=new THREE.Matrix4();
  private readonly center=new THREE.Vector3();
  private readonly right=new THREE.Vector3();
@@ -67,7 +77,10 @@ export class BuildingShadows{
   this.kept.length=0;cast(x,z,radius,this.kept);
   if(this.kept.length===0){this.live.value=0;if(this.copies.size){this.copies.clear();this.shadowScene.clear();}return;}
   let changed=this.copies.size!==this.kept.length;
-  if(!changed)for(const src of this.kept)if(!this.copies.has(src)){changed=true;break;}
+  if(!changed)for(const src of this.kept){
+   const copy=this.copies.get(src);
+   if(!copy||!sameGeometry(copy,src)){changed=true;break;}
+  }
   const moved=x!==this.oldX||z!==this.oldZ;
   if(!changed&&!moved&&this.target){this.live.value=strength;return;}
   if(now-this.last<155&&!(requested&&changed)){
@@ -85,10 +98,19 @@ export class BuildingShadows{
   this.oldX=x;this.oldZ=z;
   if(changed){
    const keep=new Set(this.kept);
-   for(const [old,c] of this.copies)if(!keep.has(old)){this.shadowScene.remove(c);this.copies.delete(old);}
-   for(const src of this.kept)if(!this.copies.has(src)){
-    const c=new THREE.Mesh(src.geometry,this.mat);c.position.copy(src.position);
-    this.copies.set(src,c);this.shadowScene.add(c);
+   for(const [old,q] of this.copies)if(!keep.has(old)){this.shadowScene.remove(q.mesh);this.copies.delete(old);}
+   for(const src of this.kept){
+    const copy=this.copies.get(src);
+    if(copy){
+     if(!sameGeometry(copy,src)){
+      // A stable mesh object can still change which rows it submits.
+      copy.mesh.geometry=src.geometry;
+      this.copies.set(src,sealCaster(copy.mesh));
+     }
+    }else{
+     const c=new THREE.Mesh(src.geometry,this.mat);c.position.copy(src.position);
+     this.copies.set(src,sealCaster(c));this.shadowScene.add(c);
+    }
    }
   }
   this.center.set(x,y,z);

@@ -56,3 +56,22 @@ python tools/qa/building-shadow-receivers.py --checkout . \
 The browser check temporarily adds controlled geometry and locks
 paired views; it does not change the shipping simulator. It uses
 Python Playwright, Pillow, NumPy and SciPy.
+
+### Same-object caster changes
+
+A streamed building mesh can retain its identity while its submitted geometry,
+index or draw range changes. The depth cache now notices those changes as well
+as additions and removals. A throttled change disables stale shade until a
+refresh; a confirmed owner transition refreshes immediately. An unchanged
+owner retains the existing cache and does not incur an extra depth draw.
+
+A direct Three.js / Chromium SwiftShader test of the real depth pass read
+2,735 covered depth texels for the stock caster and 1,034 for its replacement
+on the **same** mesh. A zero-triangle draw range cleared the map, and restoring
+stock reproduced the original depth bytes exactly. This verifies cache
+invalidation, not gameplay frame rate or a change to Standard lighting.
+
+```sh
+python tools/qa/building-shadow-caster-swap.py --checkout . \
+  --chromium /path/to/chromium --out /tmp/pei-caster-swap.json
+```
