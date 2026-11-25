@@ -1,0 +1,8 @@
+{
+  "shards": 1525,
+  "transfers": 1525,
+  "positives": 4767146,
+  "actuallyTransferred": 1812413,
+  "maxRangeBytes": 14317,
+  "maxColdFullPackBytes": 262747
+}

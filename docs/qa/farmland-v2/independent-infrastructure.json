@@ -1,0 +1,33 @@
+{
+  "fcrRawSHA256": "aa037e64ea3d04a9fc96517d997e28164ea00fcc80411ae6ccac9f9d842f5a52",
+  "method": "Every applicable geometry from actual NRN encoded WGS84 segments and AEB features (independent game WGS84 reprojection) plus exact native emitted sidewalk/parking bounding boxes. Whole-support reserve is 4sqrt2 m on road and 4 m against an axis-aligned box; conservative count is for centres entering complete intended larger guard, not only positive 2m centres on mesh. Regions farther than 25m cannot violate the intended 20m/15.5m/13.5m fences. AABB clearance is L\u221e conservative.",
+  "sourceInputs": {
+    "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "nativeSidewalkParkingRunwayWitness": "d2ccd137e4488a16702a56d30204dbd99880e067c3fcaddd568c0ccc3ee00ce4"
+  },
+  "sourceObjects": {
+    "road": 55151,
+    "building": 85866,
+    "sidewalk": 8275,
+    "parking": 1162
+  },
+  "classGuardThresholdMetres": {
+    "road": 20.0,
+    "building": 15.5,
+    "sidewalk": 13.5,
+    "parking": 15.5
+  },
+  "positiveCentreGuardIntersectionsByKind": {
+    "road": 0,
+    "building": 0,
+    "sidewalk": 0,
+    "parking": 0
+  },
+  "minimumObservedClearanceWithin25mCandidateBins": {
+    "road": 33.85337,
+    "building": 23.583889,
+    "sidewalk": null,
+    "parking": null
+  }
+}

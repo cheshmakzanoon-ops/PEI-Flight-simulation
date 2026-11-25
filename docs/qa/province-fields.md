@@ -1,98 +1,41 @@
-# Island-wide field surfaces
+# Expanded farmland
 
-This optional study streams selected field surfaces across all three counties.
-In Standard, open **Optional scenery studies** in Dispatch, select
-**Expanded farmland**, and apply. An equivalent bookmark uses
-`?provinceFieldsReview`. The original three-site `?cropRowsReview` remains
-available. Both default to off. In Standard, **Expanded farmland** also
-works with the optional **Ground vegetation** study. See
-[the combined study](province-land-surfaces.md).
+In **Standard** scenery, open **Optional scenery studies** in Dispatch, select **Expanded farmland**, and apply. A direct bookmark uses `?provinceFieldsReview`. Opting in adds fine furrow relief to selected field interiors in all three counties. The ordinary ground and the separate three-site `?cropRowsReview` study are unchanged. Expanded farmland can be [combined with Ground vegetation](province-land-surfaces.md).
 
-The dated visual study refers to automatically detected 2023 field shapes
-and a 2025 30 m class raster, not present farming or a land survey. Row
-bearing is authored from field outline direction and withheld for steep
-or poorly supported locations. Fitted lighting is an optical effect only:
-it does not alter relief, aircraft contact, roads, buildings or water.
-The generic CC0 Poly Haven scan is not aerial imagery of PEI.
+## What changed in v2
 
-## Coverage
+The earlier bake calculated its own conversion from longitude and latitude. That put some strips of furrows on woods, built ground and a road shoulder. V2 regenerates the masks from the original field polygons using the simulator’s actual world projection. It does **not** sharpen an aerial photograph, add field geometry or change the furrow shader. The effect changes colour and lighting close to the ground, not terrain elevations, roads, buildings or flight contact. Surface rows are authored; neither their spacing nor bearing is surveyed.
 
-The qualified surface covers **78.86 km²** at 4 m sampling, in **1,573**
-mapped field outlines. This is supported mask area, not acreage or an
-estimate of actual 2025 production. Most of the island remains Standard
-at the ground surface; the full map can already be flown.
+![Same camera with corrected furrow layer off and on: Prince at 14 m above ground, Queens and Kings at 30 m](art/farmland-v2-matched.webp)
 
-| County | Field outlines with support | Mask area |
-| --- | ---: | ---: |
-| Prince | 888 | 47.23 km² |
-| Queens | 418 | 16.94 km² |
-| Kings | 267 | 14.69 km² |
+Each pair switches only the corrected field layer. It is **not** a comparison of v1 against v2. At 30 m the Prince view was subtler than the reference art threshold; the 14 m view resolves the rows. The Queens and Kings examples passed at 30 m. The historical road, forest and built-ground controls were unchanged after correction, as were the two high views at 550 m. See the [independent fixed-camera measurements](farmland-v2/independent-fixed-camera.json).
 
-![Matched simulator views in the three counties](province-fields-comparison.webp)
+## Where the material is supported
 
-## Readiness and isolation
+The corrected map contains **4,767,146 positive samples** at 4 m spacing, or **76.274336 km²** of nominal sample area, in **1,701** original outlines. These are the areas represented by positive cell centres, not measured crop acreage, planting estimates or the physical extent of every visible row.
 
-The sparse directory is optional (**111.4 kB** compressed). The whole
-field archive is 1.78 MB on disk, not an initial transfer. The largest
-qualified four-layer group takes about **15.0 kB** in strict range mode.
-A static host that ignores ranges may return its matching geographic
-packs instead; the conservative nearby-group bound is about 257 kB. There is
-one four-layer mask in working GPU memory (540,800 bytes, excluding the
-shared generic furrow material). These are byte budgets, not device FPS.
+| PEI county | Outlines by source centroid | Positive 4 m samples | Nominal area |
+| --- | ---: | ---: | ---: |
+| Prince | 940 | 2,811,064 | 44.977024 km² |
+| Queens | 464 | 1,049,960 | 16.799360 km² |
+| Kings | 297 | 906,120 | 14.497920 km² |
+| Outside any named county polygon in this boundary snapshot | 0 | 2 | 0.000032 km² |
 
-The browser takes at most four nearby
-1,024 m mask layers, checks the exact range / immutable pack, and bounds
-all payload sizes. Layer angles are discrete; coverage samples the correct
-linear two-cell halos. When a neighbor has not arrived, both sides of a
-shared edge use the same readiness floor. At corners all four shares
-blend from the same value. Missing and corrupted tiles leave Standard
-ground, never take adjacent memory, and don't replace loaded geography.
+The [county census](farmland-v2/county-census.json) assigns sampled points using the province’s county polygons and reports the two gaps rather than choosing a county for them. Most land remains unaltered. A field can cross a county line; its outline is counted once by its centroid while each sample is counted at its own location.
 
-Opting in checks the optional directory and scan at startup. Standard
-does not request them. The layer needs the exact terrain, cover, road geometry and building
-atlas, and excludes local overlays. It isn't available with the
-adaptive or inland relief, building-shadow, or North Cape wind modes.
-That prevents a sharp cut where a different terrain owner takes over.
-The Detailed preset enables North Cape wind; use **Standard** for the
-expanded field study.
+## How the fields are placed
 
-## Verification
+* Start with Agriculture and Agri-Food Canada’s [2023 field-boundary detections](https://open.canada.ca/data/en/dataset/b3dba669-6611-4cb1-b4be-6c317b9908ad) and [2025 Annual Crop Inventory](https://open.canada.ca/data/en/dataset/89073037-d2fc-4a6d-9ce9-f0b1bcb48745). The official 30 m raster must support class 177 (potatoes) with confidence at least 80 throughout a 3 × 3 native-cell neighbourhood. These are dated classifications, not assertions about what is growing now.
+* Return to each original, unsimplified polygon, transform it with the game’s projection and retain a minimum 13.25 m inboard margin for the complete visible sampling footprint. Qualify both triangles touched by the sampler where required, using the simulator’s submitted high-detail stock mesh. Withhold steep areas, unsupported edges, abrupt changes in orientation, overlapping candidates and conflicting terrain owners.
+* Check the entire bilinear support against stock crop cover and the physical coastal buffer. Exclude buildings, roads and shoulders, sidewalks, parking, runways, trail beds, nearby protected surface masks and local survey/landmark receivers. These tests qualify only the specified source versions. [Source qualification](farmland-v2/source-qualification.json), [independent geographic tests](farmland-v2/independent-geographic-census.json), [road and infrastructure exclusions](farmland-v2/independent-infrastructure.json), and [Trail and marsh exclusions](farmland-v2/independent-trail-marsh-tents.json).
+* Use [Poly Haven’s Farm Furrows](https://polyhaven.com/a/farm_furrows) (CC0) for material detail. This generic scan is **not** an image of these fields. Federal source data is licensed under the Open Government Licence – Canada. See [world data and attribution](../WORLD.md).
 
-Matched actual Three.js images use the same pose and imagery. No draw
-calls or triangle counts change at those poses. Protected pixels match,
-and the high-altitude frame is identical everywhere. An independent
-four-shard probe tests all-ready, uneven arrival, missing/stale layers and
-slot reuse through the actual browser shader. A separate unmodified
-flight over that junction ran with all four layers and with one exact
-range deliberately returning 404.
+## Streaming and verification
 
-[Machine-readable geographic and render receipts](province-fields-review.json) ·
-[Offline source and exact bake instructions](../../tools/geodata/province-fields/README.md)
+Standard without this optional study does not request its directory or relief image. Selecting the study authenticates a **115,861-byte** index and the shared relief scan at startup. Exact terrain, decoded cover, road, building, walkway, parking and protected-owner identities must match before field streaming is admitted. The new versioned directory does not accept the retired index, whether compressed in transit or already decoded by the host. The historical three-site field mask is not needed for this option. In incompatible survey/adaptive, shadow or North Cape wind modes, the expanded field layer stays out.
 
-## Credits
+The 42 packs contain **1,812,413 bytes** across 1,525 sparse 1,024 m tiles. They are not all sent when the feature is selected. At most four tiles occupy the mask array (540,800 bytes), with no increase in terrain triangles. For the cold worst-case four-tile neighbourhood, the measured upper bounds are **14,317 bytes** of exact ranges or **262,747 bytes** if a host returns whole packs. These bytes exclude the index and scan; they are not frame-rate or download-time promises. Edges have two-cell halos; unavailable or corrupt shards do not invent coverage.
 
-[2023 field boundaries](https://open.canada.ca/data/en/dataset/b3dba669-6611-4cb1-b4be-6c317b9908ad)
-and [2025 inventory](https://open.canada.ca/data/en/dataset/89073037-d2fc-4a6d-9ce9-f0b1bcb48745)
-are from Agriculture and Agri-Food Canada, under Open Government Licence –
-Canada. Original terrain and sources: [world data](../WORLD.md).
-[Poly Haven Farm Furrows](https://polyhaven.com/a/farm_furrows): CC0.
+[Eight compiled player checks](farmland-v2/compiled-player.json) · [Decode every packed shard and check transfer bounds](farmland-v2/archive-decoder.json) · [verify the v1/v2 cache rollover](farmland-v2/directory-rollover.json) · [rebuild from the official sources](../../tools/geodata/province-fields/README.md).
 
-## Close relief and distance filtering
-
-The second surface pass varies the original row material subtly along
-its supported direction. Small soil variation is still visible close to
-the ground; the strongest repeated stripes lose contrast at low-flight
-and subpixel distances. It continues to use the same two filtered scan
-samples per shaded fragment. There are no new rows in the survey data
-or changes to the field extents, field angle, elevation or aircraft contact.
-
-![Matched original and revised field shading in the three PEI counties](province-fields-filtered.webp)
-
-Five fixed-camera art comparisons cover the three counties, a close
-ground view and a high view. The production shader was separately checked
-against Standard, with no changed pixels outside the field shader's
-mask, unchanged draw and triangle counts, and an identical high view.
-The changes are to the rendered treatment, not claims about crop
-species, present fields, real row spacing, or faster hardware FPS.
-
-[Filtering checks](province-fields-filtered-check.json).
+**Historical only:** [initial renderer and pack review](province-fields-review.json), [original surface treatment](province-fields-comparison.webp) and [older distance-filtering study](province-fields-filtered-check.json) refer to the retired v1 geography. They document the shader’s development, not the positions or coverage of v2.

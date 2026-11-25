@@ -22,11 +22,12 @@ def stage(repo,tmp,deps,_):
   };
  '''))
 fixed.stage=stage
+# Current, originally sourced field locations on the corrected projection.
 P={
- 'prince':dict(lon=-63.66544699,lat=46.49775421,dist=65,east=.56,south=.82,h=10,agl=33),
- 'queens':dict(lon=-62.99837504,lat=46.19232658,dist=61,east=-.73,south=.68,h=10,agl=35),
- 'kings':dict(lon=-62.63829503,lat=46.39437594,dist=58,east=-.64,south=-.77,h=9,agl=36),
- 'queens-high':dict(lon=-62.99837504,lat=46.19232658,dist=95,east=-.73,south=.68,h=10,agl=515)
+ 'prince':dict(lon=-63.665461086202924,lat=46.4977510114911,dist=13,east=.56,south=.82,h=0,agl=14),
+ 'queens':dict(lon=-62.998365331871014,lat=46.192320380073625,dist=45,east=.56,south=.82,h=0,agl=30),
+ 'kings':dict(lon=-62.6381899019427,lat=46.39447745916214,dist=45,east=.56,south=.82,h=0,agl=30),
+ 'queens-high':dict(lon=-62.998365331871014,lat=46.192320380073625,dist=45,east=.56,south=.82,h=0,agl=550)
 }
 def capture(args,browser,url):
  out={}

@@ -1,0 +1,57 @@
+{
+  "scope": "Exact before/after-positive lattice, 4m grid, not visible acreage or unique source polygons. Survey date and geographic eligibility are separate.",
+  "populations": {
+    "both": 2450296,
+    "oldOnly": 2478548,
+    "newOnly": 2316850,
+    "oldHalf": 3724582,
+    "newHalf": 3533311,
+    "sharedHalf": 1724081
+  },
+  "representedKm2": {
+    "both": 39.204736,
+    "oldOnly": 39.656768,
+    "newOnly": 37.0696,
+    "oldHalf": 59.593312,
+    "newHalf": 56.532976,
+    "sharedHalf": 27.585296
+  },
+  "threeHeldoutOldDefectLocations": {
+    "roadShoulder": {
+      "xz": [
+        -46442.54430323091,
+        7081.2188283115565
+      ],
+      "fourCorrectedContributors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "forest": {
+      "xz": [
+        -92202,
+        -23222
+      ],
+      "fourCorrectedContributors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "built": {
+      "xz": [
+        -90346,
+        -19886
+      ],
+      "fourCorrectedContributors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

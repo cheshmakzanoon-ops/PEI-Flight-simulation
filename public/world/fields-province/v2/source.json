@@ -1,0 +1,402 @@
+{
+  "packedSize": 115861,
+  "rawSize": 123524,
+  "packedHash": "a77f319fba8091c2d06b913af5c2cd0ef58a695e1147f45de51295039f5d524a",
+  "rawHash": "aa037e64ea3d04a9fc96517d997e28164ea00fcc80411ae6ccac9f9d842f5a52",
+  "sourceMaskSha": "adabfdb8e730defb8929a251e5aea4081372ff2613e94b2e7dd1f9c240034483",
+  "samples": 4767146,
+  "areaM2": 76274336,
+  "options": {
+    "spanM": 1024,
+    "cellM": 4,
+    "halo": 2,
+    "fixedGpuLayers": 4
+  },
+  "haloEquality": {
+    "x": 891,
+    "z": 878,
+    "diagonal": 1470
+  },
+  "packCount": 42,
+  "packBytes": 1812413,
+  "packs": [
+    {
+      "file": "crop-00.pack",
+      "bytes": 117058,
+      "sha256": "294a35372a34bf87e920815ddaf3b3c8aaf082e183f357cc3bffb858c0d9b1b7",
+      "block": [
+        -6,
+        -2
+      ]
+    },
+    {
+      "file": "crop-01.pack",
+      "bytes": 5878,
+      "sha256": "31a95297661500e871036429a920b06cd6eab2ea5a6cc08961779b93c3360af6",
+      "block": [
+        -6,
+        -2
+      ]
+    },
+    {
+      "file": "crop-02.pack",
+      "bytes": 4833,
+      "sha256": "0d37aae8b888643af9adc11ae3472c37358229b780a0a867e5454265c0a535c6",
+      "block": [
+        -6,
+        -1
+      ]
+    },
+    {
+      "file": "crop-03.pack",
+      "bytes": 9822,
+      "sha256": "67587ebe03ca388c3f6437f44c3d7709d5fd807471a24f280710fcfea78954d4",
+      "block": [
+        -5,
+        -4
+      ]
+    },
+    {
+      "file": "crop-04.pack",
+      "bytes": 119248,
+      "sha256": "279d4105071e0141bdd521bcf7d6050c7c9de0063fc6081947c8f40abe35e1f7",
+      "block": [
+        -5,
+        -3
+      ]
+    },
+    {
+      "file": "crop-05.pack",
+      "bytes": 5311,
+      "sha256": "b9bca66d2629b42fcaea0467080aa3c039ac6bb69f179f161bb587b555b9bd36",
+      "block": [
+        -5,
+        -3
+      ]
+    },
+    {
+      "file": "crop-06.pack",
+      "bytes": 119736,
+      "sha256": "00aef1df9049b2e8c801c36553fb0187590f019647e7dbe3efa7736a2514fb07",
+      "block": [
+        -5,
+        -2
+      ]
+    },
+    {
+      "file": "crop-07.pack",
+      "bytes": 23763,
+      "sha256": "85655f1ae9539e2e0f431688aff800f51e0ef5c7654fa7f139aa780b2fac6780",
+      "block": [
+        -5,
+        -2
+      ]
+    },
+    {
+      "file": "crop-08.pack",
+      "bytes": 4687,
+      "sha256": "9d10864c003afd7bf7ad5d77eb30dc5a30983a11f7203091a914fc543c2d6ac2",
+      "block": [
+        -5,
+        0
+      ]
+    },
+    {
+      "file": "crop-09.pack",
+      "bytes": 9710,
+      "sha256": "0a4d40926011baee20eb79bc898107967f179b2289e53dbdd8ca67769b2d172e",
+      "block": [
+        -4,
+        -4
+      ]
+    },
+    {
+      "file": "crop-10.pack",
+      "bytes": 28220,
+      "sha256": "a58aa5c63abf27b60b76c023a7379967387e7dbf81bc11f8464711e8cb895ab4",
+      "block": [
+        -4,
+        -3
+      ]
+    },
+    {
+      "file": "crop-11.pack",
+      "bytes": 51381,
+      "sha256": "e25823b59cc91bbe036ddc6a2f5bdef9595caf9d4eb0ca6afe715b874b1dbff1",
+      "block": [
+        -4,
+        -1
+      ]
+    },
+    {
+      "file": "crop-12.pack",
+      "bytes": 43801,
+      "sha256": "e66bc3ed85cbc7c301ede67346c4ecbac8c2a59dfeae4a2d5415eae8d15904d2",
+      "block": [
+        -4,
+        0
+      ]
+    },
+    {
+      "file": "crop-13.pack",
+      "bytes": 36193,
+      "sha256": "bbba57e66ba259d425f8d59401ec74cdaeed72787837a3271ebd448f5fd60aeb",
+      "block": [
+        -3,
+        -1
+      ]
+    },
+    {
+      "file": "crop-14.pack",
+      "bytes": 118480,
+      "sha256": "fb14cb8f1fe02b671a4b85b298e5f94cc4ea8a40a839f2591a2bfa35c80a6a0d",
+      "block": [
+        -3,
+        0
+      ]
+    },
+    {
+      "file": "crop-15.pack",
+      "bytes": 54726,
+      "sha256": "480c1dcb141d29090ec6c13972f262925d4d6e431f0cea00c53f4b12a49577c7",
+      "block": [
+        -3,
+        0
+      ]
+    },
+    {
+      "file": "crop-16.pack",
+      "bytes": 90021,
+      "sha256": "ce4f98afd10452ceff2047ca766c28d49e471b34dace5d42c92569bb417307e6",
+      "block": [
+        -3,
+        1
+      ]
+    },
+    {
+      "file": "crop-17.pack",
+      "bytes": 25430,
+      "sha256": "ce2b7c4d80a3e89a6e276c132773d49bc99b8f3c006a9b1d9fe86c71b73d0976",
+      "block": [
+        -2,
+        -1
+      ]
+    },
+    {
+      "file": "crop-18.pack",
+      "bytes": 119624,
+      "sha256": "e5e57139e37d9b0ef56b8c9b97cce26d359e699f60830751ea52cdda5363b71d",
+      "block": [
+        -2,
+        0
+      ]
+    },
+    {
+      "file": "crop-19.pack",
+      "bytes": 34820,
+      "sha256": "588d51762d3cd2504da5e2c3ffa7c311d1dc9cb90ce22e88cbe78b00baf33d3c",
+      "block": [
+        -2,
+        0
+      ]
+    },
+    {
+      "file": "crop-20.pack",
+      "bytes": 118126,
+      "sha256": "8ade48380d2f98464b398ccee4a4ffed32ad75dbd5a9d820345c65ee62941bb6",
+      "block": [
+        -2,
+        1
+      ]
+    },
+    {
+      "file": "crop-21.pack",
+      "bytes": 4561,
+      "sha256": "bb9afbea3771773a811571e2aee38d770e47332a9e078f904f1a9cfc6255be19",
+      "block": [
+        -2,
+        2
+      ]
+    },
+    {
+      "file": "crop-22.pack",
+      "bytes": 40380,
+      "sha256": "0f3be8b69eaef62411fd9ab1cfb1d520192dc688cb91f52bdea2207d427a26e1",
+      "block": [
+        -1,
+        0
+      ]
+    },
+    {
+      "file": "crop-23.pack",
+      "bytes": 69289,
+      "sha256": "8446c7fb6154a77bc611a6c392f59a7a9bfb0ad8d8bf57ec3a7cf97ec2ddb3c1",
+      "block": [
+        -1,
+        1
+      ]
+    },
+    {
+      "file": "crop-24.pack",
+      "bytes": 10006,
+      "sha256": "9bfff2d5e1863a61351a4f40af6d831a7a87d6b03281a3725b240be8cb2a93d2",
+      "block": [
+        -1,
+        2
+      ]
+    },
+    {
+      "file": "crop-25.pack",
+      "bytes": 15890,
+      "sha256": "813cd39b04bd5da84a0a4b3baaae6c3351c1d43efe285f5e69d75eb1e9eb4e0b",
+      "block": [
+        0,
+        0
+      ]
+    },
+    {
+      "file": "crop-26.pack",
+      "bytes": 30415,
+      "sha256": "586a13c0a11b165207fb2dcb8eb7d82716cbd271cdfd2d8dccf81bde53b46067",
+      "block": [
+        0,
+        1
+      ]
+    },
+    {
+      "file": "crop-27.pack",
+      "bytes": 10419,
+      "sha256": "b897d889792938099e3a40f066890649ffd8e8d5167d7f229371f7f7aed7fe01",
+      "block": [
+        0,
+        2
+      ]
+    },
+    {
+      "file": "crop-28.pack",
+      "bytes": 13983,
+      "sha256": "be290ee7f9aef9d0a1930b37cc8c7005178ec4aec2a928f9d4ce69e3a2205eab",
+      "block": [
+        1,
+        0
+      ]
+    },
+    {
+      "file": "crop-29.pack",
+      "bytes": 86134,
+      "sha256": "27b8bef21630db744c0b6c9b8b2462f94d6c2658138554b9d2eea1bfded9fcfe",
+      "block": [
+        1,
+        1
+      ]
+    },
+    {
+      "file": "crop-30.pack",
+      "bytes": 72429,
+      "sha256": "4ee9907b7014c13df87756a08330e6b047a77ee7b35f02f36af6665d34b6ec91",
+      "block": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "crop-31.pack",
+      "bytes": 293,
+      "sha256": "4a9fb1224e5ecb2ddbc0265ffb9350bcf080af9b2824c36f33ecc8246c5f4075",
+      "block": [
+        1,
+        3
+      ]
+    },
+    {
+      "file": "crop-32.pack",
+      "bytes": 60533,
+      "sha256": "f45366253149130ebf771fa91dc29788a6f30ae04866c2f31e46c1049fa26b02",
+      "block": [
+        2,
+        0
+      ]
+    },
+    {
+      "file": "crop-33.pack",
+      "bytes": 71231,
+      "sha256": "f0d8c70e80f2888f8b466dd60d9a5dc68d64362245f1c6baa6c2abc2744ff605",
+      "block": [
+        2,
+        1
+      ]
+    },
+    {
+      "file": "crop-34.pack",
+      "bytes": 71871,
+      "sha256": "b766486a8e2ab35a2a32a0eb1c4265ce94538c7bba289fe054b186fc90331589",
+      "block": [
+        2,
+        2
+      ]
+    },
+    {
+      "file": "crop-35.pack",
+      "bytes": 1789,
+      "sha256": "d50d477bc00a3039c41fd56ec83a9559621a37e7d0623fec309312be26dd5d91",
+      "block": [
+        2,
+        3
+      ]
+    },
+    {
+      "file": "crop-36.pack",
+      "bytes": 28765,
+      "sha256": "a12ca20f0a08d4dc0949dedb9872c495f624cadac526b70fc5a86255f0513a45",
+      "block": [
+        3,
+        0
+      ]
+    },
+    {
+      "file": "crop-37.pack",
+      "bytes": 15091,
+      "sha256": "e812dbf93ce4d8ca101a6f71b9c96bcf5c52703db4d3f853742f144a19c188d8",
+      "block": [
+        3,
+        1
+      ]
+    },
+    {
+      "file": "crop-38.pack",
+      "bytes": 7745,
+      "sha256": "4b282e1d19fcffb72be3da9703745b6b6e55eb4a5584ae6f0f9068f957506ca8",
+      "block": [
+        3,
+        2
+      ]
+    },
+    {
+      "file": "crop-39.pack",
+      "bytes": 1673,
+      "sha256": "4e218c7eb59561ef73504c5525ea900ffeeb9224435c13e4c78b875ba1301464",
+      "block": [
+        3,
+        3
+      ]
+    },
+    {
+      "file": "crop-40.pack",
+      "bytes": 36794,
+      "sha256": "b2fe0011e2b849d3f65b1b9d5b2041532910153ee2d413767c12efe960984c84",
+      "block": [
+        4,
+        0
+      ]
+    },
+    {
+      "file": "crop-41.pack",
+      "bytes": 22254,
+      "sha256": "df5c9c7491d04fcab52b2e247d166469d28166e86535296e4c190a4e1ea40805",
+      "block": [
+        5,
+        0
+      ]
+    }
+  ]
+}

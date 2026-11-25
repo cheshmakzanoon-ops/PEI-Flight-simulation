@@ -47,8 +47,9 @@ import {gradeAtlasMatches,loadBoundedGrade} from './sim/bounded-grade.ts';
 import {CAVENDISH_WATER_CORE as DUNELANDS} from './sim/cavendish-water-core.generated.ts';
 import {cavendishAtlasMatches,loadCavendishWaterCore} from './sim/cavendish-water-core.ts';
 import {GREEN_GABLES_REVIEW as GABLES} from './render/green-gables-review-spec.ts';
-import {fetchProvinceDirectory,provinceFields} from './render/province-fields.ts';
-import {cropFieldAtlasMatches,loadFieldPilot} from './render/fields-pilot.ts';
+import {FIELD_SITE_PINS} from './render/province-fields.generated.ts';
+import {fetchProvinceDirectory,provinceFields,fieldLayersMatch} from './render/province-fields.ts';
+import {cropFieldAtlasMatches,loadFieldPilot,loadFieldRelief} from './render/fields-pilot.ts';
 import {regionalCanopyRequested,standardRegionalCanopyRequested,sceneryDeparture,sceneryOptions,sceneryReviewBlock} from './app/scenery-profile.ts';
 import type {NorthCapeScenery} from './render/north-cape.ts';
 import {NORTH_CAPE_SITES} from './render/north-cape-shadow.ts';
@@ -188,7 +189,12 @@ async function run(){
  const provinceJob=provinceAllowed?fetchProvinceDirectory(worldBase):undefined;
  const grassRequested=options.has('sourceGrassStudy')&&!sceneryReviewBlock('sourceGrassStudy',options);
  const grassJob=grassRequested?fetchGrassStudy(worldBase):undefined;
- const fieldsJob=options.has('cropRowsReview')||provinceAllowed?loadFieldPilot(worldBase):undefined;
+ const fieldsJob=options.has('cropRowsReview')?loadFieldPilot(worldBase):undefined;
+ // Province and three-site masks are separate choices. If both are requested
+ // reuse the earlier choice's scan, never fetch it twice.
+ const reliefJob=provinceAllowed?(fieldsJob?fieldsJob.then(p=>p??loadFieldRelief(worldBase)):loadFieldRelief(worldBase)):undefined;
+ const ownersJob=provinceAllowed?import('./render/province-field-owners.ts')
+  .then(m=>m.checkedFieldOwners(FIELD_SITE_PINS.owners)).catch(()=>false):undefined;
  const dunelandsCompatible=options.has('cavendishWaterReview')&&!sceneryReviewBlock('cavendishWaterReview',options);
  const dunelandsJob=dunelandsCompatible?loadCavendishWaterCore(DUNELANDS,worldBase):undefined;
  const tryTrail=options.has('gablesTrailReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief');
@@ -199,7 +205,7 @@ async function run(){
  const gradeJob=options.has('gablesGradeReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows?loadBoundedGrade(GABLES_GRADE,worldBase):undefined;
  const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
  const {terrain,terrainSha,img,cover,sky,certifiedSky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
-   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
+   loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||provinceAllowed||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
  const daylightModule=await daylightJob;
  const daylight=certifiedSky?daylightModule?.verifiedAerialOptics(certifiedSky):undefined;
  if(daylight)daylight.gain.value=0; // Require both independently loaded horizon meshes.
@@ -222,10 +228,12 @@ async function run(){
  const dunelands=dunelandsJob&&cavendishAtlasMatches(DUNELANDS,terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await dunelandsJob:undefined;
  const forestHeights=await woodland;await warmForest;
  const proposedFields=await fieldsJob;
- const cropFields=cropFieldAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?proposedFields:undefined;
+ const fieldAtlas=cropFieldAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha);
+ const cropFields=fieldAtlas?proposedFields:undefined;
  if(!cropFields)proposedFields?.discard();
- const provinceReader=await provinceJob;
- const fieldStudy=provinceReader&&cropFields?provinceFields(provinceReader,cropFields):undefined;
+ const [provinceReader,relief,owners]=await Promise.all([provinceJob,reliefJob,ownersJob]);
+ const fieldStudy=provinceReader&&relief&&fieldAtlas&&owners?provinceFields(provinceReader,relief):undefined;
+ if(!fieldStudy&&relief&&relief!==proposedFields)relief.discard();
  const grassReader=grassJob&&grassSourceAllows(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await grassJob:undefined;
  const grass=grassReader?provinceGrass(grassReader,options.has('sourceGrassNap')&&!options.has('cropRowsReview')&&!fieldStudy):undefined;
  const churchInputs=churchJob?await Promise.all([churchJob,preRoadJob,preBuildingJob,churchSunJob]):undefined;
@@ -546,10 +554,9 @@ async function run(){
      r?.sourceGeometrySha256===GRASS_SOURCE_PINS.road&&b?.sourceAtlasSha256===GRASS_SOURCE_PINS.buildings)grass.start();
    else grass.dispose();
  }).catch(()=>grass.dispose());
- if(fieldStudy)void Promise.all([roadReady,buildingReady]).then(([r,b])=>{
-  fieldStudy.admitted=r?.sourceGeometrySha256==='72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1'&&
-    b?.sourceAtlasSha256==='538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557';
- });
+ if(fieldStudy)void Promise.all([roadReady,buildingReady,mappedSidewalks,mappedParking,verifyDecodedCover(cover)]).then(([r,b,s,p,decoded])=>{
+  fieldStudy.admitted=fieldLayersMatch(r?.sourceGeometrySha256,b?.sourceAtlasSha256,s?SIDEWALKS.sha256:undefined,p?MAPPED_PARKING.sha256:undefined,decoded);
+ }).catch(()=>{fieldStudy.admitted=false;});
  if(cover.sourceSha===SIDEWALKS.pinCoverSha256){
   void Promise.all([mappedSidewalks,roadReady,buildingReady]).then(([paths,street,structures])=>{
    if(paths&&street&&structures&&street.sourceGeometrySha256===SIDEWALKS.pinRoadGeometrySha256&&

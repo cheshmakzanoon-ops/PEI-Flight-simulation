@@ -1,0 +1,165 @@
+{
+  "state": "Source qualification of selected field optics on the pinned stock world. Not a survey, production acreage or present-day crop map.",
+  "inputShas": {
+    "candidate": "200edddf56e9a6ada5c890c6ac952e967eaf57fe507dd0e8aa59982047e72e83",
+    "crop": "d8538b2d567490fa66b9864cb5bb66cff45b6c8cadc654ceb191f49d04d5bd79",
+    "confidence": "9a44fffc81e511526dfae1f94d417c38f173ff7e38ba8767f887bcab31bb1258",
+    "fieldBoundaries": "29008797e85fd50d8a7ca8b0a796161ce49b0af4a0a2761ff70bb651cff85602",
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "sides": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+    "parks": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+    "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "aeb": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557"
+  },
+  "currentOwnerSignature": "6764395346d3e8b6bbf00392ed5fb0c0cb79b295cf8798c805f2539261d65e17",
+  "stockGuards": {
+    "roads": 55151,
+    "sidewalk": 8275,
+    "parking": 1162,
+    "runways": 3,
+    "customTerrainHold": 11,
+    "customPlaceHold": 4,
+    "building": 85866,
+    "trail": 3141,
+    "panmurePasture": 1,
+    "currentLocalReceiver": 12,
+    "duneGrassMask": 86,
+    "duneSandMask": 29,
+    "marshMask": 3
+  },
+  "terrainTiles": 193,
+  "fieldCountIn": 2880,
+  "thresholds": {
+    "fieldsP95HoldAxes": [
+      8.0,
+      10.0,
+      20.0
+    ],
+    "min2000m2AfterFeathers": 125,
+    "minimumInboardSupportedFraction": 0.5,
+    "notAgronomy": true
+  },
+  "statsSamples": {
+    "shapeInboardSamples": 10698844,
+    "classConfidenceSurvivors": 8053641,
+    "wholeTentCoverSurvivors": 6966928,
+    "protected:roads": 14,
+    "protectedSurvivors": 6549216,
+    "preSlopeFeatherCenters": 5240638,
+    "finalPositiveBeforeConflicts": 4857448,
+    "finalFields": 1710,
+    "protected:building": 1418,
+    "entireFieldVerySparseHold": 824,
+    "fieldNoSafeCover": 115,
+    "protected:duneGrassMask": 0,
+    "fieldNoDatedConfirmedCore": 17,
+    "protected:trail": 2787,
+    "entireFieldGradeHold": 44,
+    "protected:runways": 0,
+    "protected:customTerrainHold": 413493,
+    "fieldNoSupportAfterStockGuard": 187,
+    "protected:duneSandMask": 0,
+    "collisionAndOverlapGuardReduction": 90302,
+    "defaultSourisOwnerRemovedPositiveCentres": 0,
+    "defaultSourisOwnerRemovedAtLeastHalfStrength": 0,
+    "defaultSourisOwnerOriginalInside16mSupport": 0,
+    "finalFieldsAfterConflicts": 1701,
+    "finalPositiveAfterConflicts": 4767146,
+    "uniqueDuplicateCentresBeforeExtraCollar": 43728,
+    "fieldSightCohortWithAtLeast125AfterConflicts": 1691
+  },
+  "areasM2": {
+    "shapeInboardSamples": 171181504,
+    "classConfidenceSurvivors": 128858256,
+    "wholeTentCoverSurvivors": 111470848,
+    "protectedSurvivors": 104787456,
+    "preSlopeFeatherCenters": 83850208,
+    "finalPositiveBeforeConflicts": 77719168,
+    "finalPositiveAfterConflicts": 76274336
+  },
+  "samplesBeforeSlope": 6549216,
+  "gradesQuantilePercent": {
+    "probs": [
+      0.5,
+      0.9,
+      0.95,
+      0.99,
+      0.999,
+      1
+    ],
+    "columns": [
+      "authoredAlong",
+      "authoredAcross",
+      "magnitude"
+    ],
+    "values": [
+      [
+        1.416,
+        1.5029,
+        2.278
+      ],
+      [
+        3.5421,
+        3.9679,
+        4.9689
+      ],
+      [
+        4.3687,
+        4.8801,
+        6.0966
+      ],
+      [
+        6.1244,
+        7.1844,
+        8.2683
+      ],
+      [
+        8.5351,
+        9.8817,
+        10.5761
+      ],
+      [
+        14.4638,
+        15.5661,
+        15.5922
+      ]
+    ]
+  },
+  "gradesFractionsBeyondThreshold": {
+    "thresholdPercent": [
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0,
+      14.000000000000002,
+      16.0,
+      20.0,
+      25.0
+    ],
+    "along": [
+      0.07001540337041869,
+      0.011425184327406517,
+      0.0016537857355750673,
+      0.00026125264459135264,
+      3.0232626317409595e-05,
+      4.275320893371054e-06,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "across": [
+      0.0975266352491657,
+      0.02258255033884972,
+      0.005751222741775504,
+      0.0008084937189428475,
+      0.00010825723262143133,
+      2.8247655902630178e-05,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "runtimeSampling": "actual submitted N112 Three triangle, matching first triangle indices [0,113,1,113,114,1]; assumes no adaptive or survey geometry"
+}

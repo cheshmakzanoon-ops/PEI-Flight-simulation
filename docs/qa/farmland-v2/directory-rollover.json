@@ -1,0 +1,33 @@
+{
+  "historicalBase": "6cc58ecd707881269bd79198af7eff9a613e2155",
+  "rows": [
+    {
+      "generation": "retired",
+      "form": "compressed",
+      "bytes": 111398,
+      "acceptedByV2": false,
+      "acceptedByRetired": true
+    },
+    {
+      "generation": "retired",
+      "form": "hostDecoded",
+      "bytes": 118760,
+      "acceptedByV2": false,
+      "acceptedByRetired": true
+    },
+    {
+      "generation": "current",
+      "form": "compressed",
+      "bytes": 115861,
+      "acceptedByV2": true,
+      "acceptedByRetired": false
+    },
+    {
+      "generation": "current",
+      "form": "hostDecoded",
+      "bytes": 123524,
+      "acceptedByV2": true,
+      "acceptedByRetired": false
+    }
+  ]
+}

@@ -1,13 +1,17 @@
 import {FieldShardSource} from '../sim/field-shards.ts';
 import {FieldStream,fieldStreamMaskGLSL} from './field-stream.ts';
-import {FIELD_DIRECTORY_PIN} from './province-fields.generated.ts';
+import {FIELD_DIRECTORY_PIN,FIELD_SITE_PINS} from './province-fields.generated.ts';
 import type {FieldPilot} from './fields-pilot.ts';
 
 export function fetchProvinceDirectory(base:string){
- return FieldShardSource.open(base+'fields-province/',FIELD_DIRECTORY_PIN);
+ return FieldShardSource.open(base+'fields-province/v2/',FIELD_DIRECTORY_PIN);
 }
-export function provinceFields(source:FieldShardSource,material:FieldPilot){
+export function provinceFields(source:FieldShardSource,material:Pick<FieldPilot,'scan'>){
  return {stream:new FieldStream(source),scan:material.scan,admitted:false,toggle:{value:1}};
+}
+export function fieldLayersMatch(roads:string|undefined,buildings:string|undefined,sidewalk:string|undefined,parking:string|undefined,decoded:string|undefined){
+ const p=FIELD_SITE_PINS;
+ return roads===p.roads&&buildings===p.buildings&&sidewalk===p.sidewalk&&parking===p.parking&&decoded===p.coverDecoded;
 }
 export type ProvinceFieldStudy=ReturnType<typeof provinceFields>;
 export const provinceFieldOpticsGLSL=fieldStreamMaskGLSL+`

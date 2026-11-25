@@ -65,7 +65,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](docs/qa/province-grass.md) in all three counties, with representative **grassland passes**. |
-| Selected fields across PEI | `?provinceFieldsReview` | [Expanded field detail](docs/qa/province-fields.md) streams about 79 km² of supported surface masks. In Standard, enable **Expanded farmland** in Dispatch. |
+| Selected fields across PEI | `?provinceFieldsReview` | [Expanded farmland](docs/qa/province-fields.md) adds close-range furrow shading within 76.27 km² of source-qualified field interiors. Select it in Standard Dispatch; it is off by default. |
 | Gravel roads across PEI | `?stockGravelSurface` | Compare Standard’s [close gravel material](docs/qa/gravel-surface-study.md) on 2,651 verified non-bridge road records. |
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?stockAerialPerspective` | Compare [Standard daylight haze and sea horizon](docs/qa/aerial-perspective-study.md) with the original fixed mist. |

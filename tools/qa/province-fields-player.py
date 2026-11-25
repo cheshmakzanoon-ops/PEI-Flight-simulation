@@ -30,7 +30,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,dir
    def console(m):
     if m.type=='error'and not(case=='missing'and '/fields-province/'in m.location.get('url','')):errors.append(m.text)
    r.on('console',console)
-   if case=='missing':r.route(re.compile(r'/fields-province/crop-\d+\.pack$'),lambda route:route.fulfill(status=404,body='Expected optional pack failure'))
+   if case=='missing':r.route(re.compile(r'/fields-province/v2/crop-\d+\.pack$'),lambda route:route.fulfill(status=404,body='Expected optional pack failure'))
    r.goto(f'http://127.0.0.1:{server.server_port}/PEI-Flight-simulation/?diagnostics'+accepted(case),wait_until='domcontentloaded')
    r.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'")
    r.select_option('#site',label='Prince County · fields low pass')

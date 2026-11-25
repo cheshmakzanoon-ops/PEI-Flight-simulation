@@ -12,7 +12,7 @@ def stage(repo,t,deps,void):
  shutil.copyfile(Path(__file__).with_name('province-field-corner-probe.ts'),t/'src/qa-field-corner-probe.ts')
  m=t/'src/main.ts';text=m.read_text()
  text="import {runFieldCornerProbe} from './qa-field-corner-probe.ts';\n"+text
- anchor=' const provinceReader=await provinceJob;'
+ anchor=' const [provinceReader,relief,owners]=await Promise.all([provinceJob,reliefJob,ownersJob]);'
  m.write_text(fixed.once(text,anchor,anchor+"\n if(provinceReader)(window as any).fieldCornerQA=()=>runFieldCornerProbe(renderer,provinceReader);"))
 def capture(a,b,u):
  p=b.new_page(viewport={'width':500,'height':310},device_scale_factor=1)

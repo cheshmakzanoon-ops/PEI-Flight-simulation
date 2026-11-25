@@ -1,0 +1,18 @@
+{
+  "method": "Direct official native 2023 GPKG geometric rings from source FIDs, approach by 6.25m inward metric erosion (larger than 4sqrt2 full box); direct 2025 ACI and confidence GeoTIFF 3x3 moat for every actual positive 4m sample center. Validated every FCR pack and every compressed and expanded shard by its source SHA-256. Actual Cover.sample and every physical bilinear signed-distance neighbor for the full closed RGB8 four-metre tent, not the original worker filter.",
+  "index": "aa037e64ea3d04a9fc96517d997e28164ea00fcc80411ae6ccac9f9d842f5a52",
+  "directOfficialCandidates": 2880,
+  "verifiedPacks": 42,
+  "verifiedShards": 1525,
+  "samples": 4767146,
+  "officialFieldEroded6p25mMisses": 0,
+  "nativeAAFCClass177Plus3x3ConfidenceFailures": 0,
+  "closedTentsOverNoncrop": 0,
+  "closedTentsWithBilinearSignedVertexBelowG228": 0,
+  "minActualSignedCoastVertex": 228,
+  "sourceInputSHA256": {
+    "pe-fields-2023.gpkg": "29008797e85fd50d8a7ca8b0a796161ce49b0af4a0a2761ff70bb651cff85602",
+    "aci_2025_pe_v1.tif": "d8538b2d567490fa66b9864cb5bb66cff45b6c8cadc654ceb191f49d04d5bd79",
+    "aci_2025_pe_confidence_v1.tif": "9a44fffc81e511526dfae1f94d417c38f173ff7e38ba8767f887bcab31bb1258"
+  }
+}

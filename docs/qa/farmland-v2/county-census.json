@@ -1,0 +1,62 @@
+{
+  "checked": "Assignment of each nonzero FCR interior sample centre, no halos. Outlines independently assigned by source centroid, not inferred from the sample majority.",
+  "source": "Government of Prince Edward Island, county_zones/FeatureServer/0; EPSG:4326, named PRINCE, QUEENS, KINGS boundaries.",
+  "countyGeojsonSha256": "379ad51821bb356a3855c3eb9c9ac3b47e01eee4df744f7a14873195b090de88",
+  "indexRawSha256": "aa037e64ea3d04a9fc96517d997e28164ea00fcc80411ae6ccac9f9d842f5a52",
+  "positiveCentres": 4767146,
+  "unassignedCentres": 2,
+  "unassignedAreaM2": 32,
+  "outsideEveryNamedPolygonAtExactPoint": [
+    {
+      "x": -27034,
+      "z": 15186,
+      "lon": -63.55217674235684,
+      "lat": 46.36338744201503
+    },
+    {
+      "x": -26558,
+      "z": 17054,
+      "lon": -63.54597580541218,
+      "lat": 46.34658299987649
+    }
+  ],
+  "outlinesContributing": 1701,
+  "counties": {
+    "Prince": {
+      "centres": 2811064,
+      "areaKm2": 44.977024,
+      "outlinesByCentroid": 940,
+      "oneFullStrengthSample": {
+        "x": -90586,
+        "z": -25042,
+        "lon": -64.38007998753926,
+        "lat": 46.72527668096007,
+        "weight": 255
+      }
+    },
+    "Queens": {
+      "centres": 1049960,
+      "areaKm2": 16.79936,
+      "outlinesByCentroid": 464,
+      "oneFullStrengthSample": {
+        "x": -31666,
+        "z": -4434,
+        "lon": -63.61251863296115,
+        "lat": 46.53988806019395,
+        "weight": 255
+      }
+    },
+    "Kings": {
+      "centres": 906120,
+      "areaKm2": 14.49792,
+      "outlinesByCentroid": 297,
+      "oneFullStrengthSample": {
+        "x": 26302,
+        "z": 7914,
+        "lon": -62.857359152272345,
+        "lat": 46.42880601976208,
+        "weight": 255
+      }
+    }
+  }
+}

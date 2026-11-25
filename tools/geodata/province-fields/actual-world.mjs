@@ -1,3 +1,4 @@
+import {protectedOwnerContract} from '../../../src/render/province-field-owners.ts';
 import fs from 'node:fs';
 import {join} from 'node:path';
 import {gunzipSync} from 'node:zlib';
@@ -18,7 +19,25 @@ import {decodeRoads} from '../../../src/render/roads.ts';
 import {decodeSidewalks,walkSections} from '../../../src/render/sidewalks.ts';
 import {decodeParkingSurfaces} from '../../../src/render/parking-surfaces.ts';
 import {World} from '../../../src/render/world.ts';
-import {project} from '../../../src/sim/geo.ts';
+import {project,geographic,ORIGIN,METRES_PER_LON,METRES_PER_LAT} from '../../../src/sim/geo.ts';
+import {decodeConfederationTrail} from '../../../src/render/confederation-trail.ts';
+import {CONFEDERATION_TRAIL} from '../../../src/render/confederation-trail.generated.ts';
+import {marshPatches} from '../../../src/render/marsh-patches.generated.ts';
+import {DUNE_GRASS_AUTHORITY} from '../../../src/render/dune-grass-authority.generated.ts';
+import {DUNE_SAND_MASK} from '../../../src/render/dune-sand-pins.generated.ts';
+import {CANOPY_FENCE} from '../../../src/render/canopy-fence.generated.ts';
+import {MASK_BOUNDS as PASTURE_BOUNDS} from '../../../src/render/panmure-pasture/mask.generated.ts';
+
+import {DUNE_RELIEF} from '../../../src/sim/dune-relief.generated.ts';
+import {KINGS_DRY_CROWN} from '../../../src/sim/kings-dry-crown.generated.ts';
+import {GABLES_GRADE} from '../../../src/sim/gables-grade.generated.ts';
+import {HOG_WEST_GRADE} from '../../../src/sim/hog-west-grade.generated.ts';
+import {INDIAN_RIVER_GRADE} from '../../../src/sim/indian-river-grade.generated.ts';
+import {RUSTICO_GRADE} from '../../../src/sim/rustico-grade.generated.ts';
+import {POINT_PRIM_GRADE} from '../../../src/render/point-prim/stamp.ts';
+import {ST_DAVIDS} from '../../../src/render/st-davids/source.generated.ts';
+import {SUMMERSIDE_STATION} from '../../../src/render/summerside-station/source.generated.ts';
+import {LIGHT_STATIONS} from '../../../src/sim/lighthouse-sites.ts';
 const [,,root,fieldFile]=process.argv;if(!fieldFile)throw Error('Usage: actual-world REPO_ROOT SUPPORTED_FIELDS_JSON');
 const file=p=>fs.readFileSync(join(root,'public','world',p)),J=p=>JSON.parse(file(p)),U=p=>gunzipSync(file(p)),sha=x=>createHash('sha256').update(x).digest('hex'),slice=x=>x.buffer.slice(x.byteOffset,x.byteOffset+x.byteLength);
 const hm=J('terrain.json'),raw=file('height.bin.gz'),h=gunzipSync(raw);assert.equal(sha(h),hm.sha256);
@@ -67,6 +86,42 @@ const q=QUARTERMASTER.boundsXZ;for(const X of [q[0],q[2]])for(const Z of [q[1],q
 // These custom places are held far outside individual mesh dimensions. The terrain-surface exact AOI
 // decision remains a runtime gate, including dynamic adaptive application on every other tile.
 const special=[[-64.00181,47.05688,'North Cape'],[-63.78999,46.39196,'Spinnakers'],[-63.126,46.23501,'Victoria/CYYG'],[-62.24765,46.35642,'Souris']].map(([lon,lat,id])=>{const t=project(lon,lat);return {id,x:t.x,z:t.z};});
-const meta={dims:[WORLD_COLS,WORLD_ROWS],n:SURVEY_LOD,originXZ:[terrain.left,terrain.top],tileMetres:[tileWidth,tileDepth],coveredTiles:[...tiles].sort((a,b)=>a-b), axes,firstTriangle,tilesProtected,walkway,parking,runs,special,
+// Export the actual simulator projection and signed cross-checks; downstream GIS
+// must never reinterpret the ellipsoid or choose its own metres per degree.
+const anchors=[...[[hm.bounds[0],hm.bounds[3]],[hm.bounds[2],hm.bounds[3]],[hm.bounds[0],hm.bounds[1]],[hm.bounds[2],hm.bounds[1]]],
+ [ORIGIN.lon,ORIGIN.lat],[ORIGIN.lon+.13,ORIGIN.lat+.27],[ORIGIN.lon-.19,ORIGIN.lat-.21],
+ [ORIGIN.lon+.17,ORIGIN.lat-.11],[ORIGIN.lon-.17,ORIGIN.lat+.19]];
+const projection={origin:[ORIGIN.lon,ORIGIN.lat],scale:[METRES_PER_LON,-METRES_PER_LAT],points:anchors.map(ll=>{
+ const {x,z}=project(...ll),back=geographic(x,z);
+ assert(Math.abs(ll[0]-back.lon)<1.e-12&&Math.abs(ll[1]-back.lat)<1.e-12);
+ return {ll,x,z};})};
+const C=CONFEDERATION_TRAIL,ct=U(C.asset);assert.equal(sha(ct),C.sha256);
+const trail=Array.from(decodeConfederationTrail(slice(ct)).values()).flatMap(tile=>tile.paths.flatMap(path=>path.cuts.slice(1).map((b,i)=>{
+ const a=path.cuts[i];return [[a.x-a.wX,a.z-a.wZ],[a.x+a.wX,a.z+a.wZ],[b.x+b.wX,b.z+b.wZ],[b.x-b.wX,b.z-b.wZ]];
+})));
+assert.equal(trail.length,3141);
+const fence=file(CANOPY_FENCE.path);assert.equal(sha(fence),CANOPY_FENCE.wireSha);
+// These compact surveyed cuts can be mounted in addition to the older
+// coastal/inland survey list. Hold one complete parent facet around each.
+const localSpecs=[...DUNE_RELIEF,KINGS_DRY_CROWN,GABLES_GRADE,HOG_WEST_GRADE,INDIAN_RIVER_GRADE,RUSTICO_GRADE,POINT_PRIM_GRADE];
+const area=(id,bounds)=>({id,bounds});
+const localBounds=localSpecs.map(g=>{
+ const x=terrain.left+(g.tileX+g.firstX/SURVEY_LOD)*tileWidth,z=terrain.top+(g.tileZ+g.firstZ/SURVEY_LOD)*tileDepth;
+ const a=tileWidth/SURVEY_LOD,b=tileDepth/SURVEY_LOD;
+ return area(g.id,[x-a,z-b,x+(g.cellsX+1)*a,z+(g.cellsZ+1)*b]);
+});
+for(const [id,spec] of [['st-davids',ST_DAVIDS],['summerside-station',SUMMERSIDE_STATION]]){
+ const b=spec.boundsXZ;
+ // Both contracts store local XZ bounds as [minX,minZ,maxX,maxZ].
+ assert(b.length===4&&b[0]<b[2]&&b[1]<b[3]);
+ localBounds.push(area(id,[b[0]-130,b[1]-130,b[2]+130,b[3]+130]));
+}
+for(const s of Object.values(LIGHT_STATIONS)){
+ const a=project(s.lon,s.lat);localBounds.push(area(s.name,[a.x-180,a.z-180,a.x+180,a.z+180]));
+}
+const identity={ownerSignature:sha(protectedOwnerContract()),localBounds,marsh:marshPatches,grass:DUNE_GRASS_AUTHORITY,sand:DUNE_SAND_MASK,
+ pastureBounds:PASTURE_BOUNDS,trailDecodedSha:C.sha256,fence:CANOPY_FENCE,trail};
+fs.writeFileSync('actual-current-owners.json',JSON.stringify(identity));
+const meta={projection,dims:[WORLD_COLS,WORLD_ROWS],n:SURVEY_LOD,originXZ:[terrain.left,terrain.top],tileMetres:[tileWidth,tileDepth],coveredTiles:[...tiles].sort((a,b)=>a-b), axes,firstTriangle,tilesProtected,walkway,parking,runs,special,
  pins:{terrain:hm.sha256,cover:J('cover.json').compressedSha256,sides:sha(stockSide),parks:sha(stockPark),roads:sha(stockRoads),aeb:J('buildings/index.json').sha256}};
 fs.writeFileSync('actual-stock.json',JSON.stringify(meta));console.log({patches:tiles.size,tileMetres:meta.tileMetres,footwayGuardQuads:walkway.length,oneLotFootprints:parking.length,tilesProtected});

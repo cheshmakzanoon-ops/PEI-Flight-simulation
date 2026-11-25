@@ -1,0 +1,270 @@
+{
+  "stale": {
+    "distanceMetres": 107.24489789120805,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "furrow-relief.webp"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ]
+    ],
+    "faults": [
+      {
+        "kind": "stale",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/index.fcr.gz",
+        "bytes": 111398,
+        "sha256": "2c724896d98aea2e83dcdefe849e4159e4f3455ebd762434fee23da0791ee4d8"
+      }
+    ],
+    "pageErrors": []
+  },
+  "rawcorrupt": {
+    "distanceMetres": 109.50309528863144,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "furrow-relief.webp"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ]
+    ],
+    "faults": [
+      {
+        "kind": "rawcorrupt",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/index.fcr.gz",
+        "bytes": 123524,
+        "sha256": "c3f965ceb4973ab3c9ac8ad28988a5ed802aa46775dfb326d9523ab061f872ef"
+      }
+    ],
+    "pageErrors": []
+  },
+  "wirecorrupt": {
+    "distanceMetres": 108.93854454202607,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "furrow-relief.webp"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ]
+    ],
+    "faults": [
+      {
+        "kind": "wirecorrupt",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/index.fcr.gz",
+        "bytes": 115861,
+        "sha256": "df3b5ba7e3ddb0fba31e80a2dcdf7a7957e15851ea037bb3bf314ec7adb4b32b"
+      }
+    ],
+    "pageErrors": []
+  },
+  "missing": {
+    "distanceMetres": 110.0676469681425,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": {
+      "active": true,
+      "ready": 0,
+      "pending": 0,
+      "slots": 4
+    },
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "furrow-relief.webp",
+      "fields-province/v2/crop-12.pack",
+      "fields-province/v2/crop-12.pack",
+      "fields-province/v2/crop-12.pack",
+      "fields-province/v2/crop-12.pack",
+      "fields-province/v2/crop-12.pack",
+      "fields-province/v2/crop-12.pack"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        404
+      ]
+    ],
+    "faults": [
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      },
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      },
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      },
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      },
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      },
+      {
+        "kind": "pack404",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/crop-12.pack"
+      }
+    ],
+    "pageErrors": []
+  },
+  "grass": {
+    "distanceMetres": 107.76355719473322,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": {
+      "active": true,
+      "ready": 3,
+      "pending": 0,
+      "slots": 4
+    },
+    "originalPilot": false,
+    "entry": "kings-grassland",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "grass-study/index.fcr.gz",
+      "furrow-relief.webp",
+      "grass-study/crop-33.pack"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ],
+      [
+        "grass-study/index.fcr.gz",
+        200
+      ],
+      [
+        "grass-study/crop-33.pack",
+        200
+      ]
+    ],
+    "faults": [
+      {
+        "kind": "grass",
+        "path": "/PEI-Flight-simulation/world/fields-province/v2/index.fcr.gz",
+        "bytes": 111398,
+        "sha256": "2c724896d98aea2e83dcdefe849e4159e4f3455ebd762434fee23da0791ee4d8"
+      }
+    ],
+    "pageErrors": []
+  },
+  "pilot": {
+    "distanceMetres": 102.16400804348564,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": null,
+    "originalPilot": true,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-pilot.rgba.gz",
+      "furrow-relief.webp"
+    ],
+    "responses": [],
+    "faults": [],
+    "pageErrors": []
+  },
+  "stock": {
+    "distanceMetres": 107.24489789120805,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": null,
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [],
+    "responses": [],
+    "faults": [],
+    "pageErrors": []
+  },
+  "normal": {
+    "distanceMetres": 108.93854454202607,
+    "validPause": "paused",
+    "camera": "Cockpit",
+    "optionalFields": {
+      "active": true,
+      "ready": 3,
+      "pending": 0,
+      "slots": 4
+    },
+    "optionalGrass": null,
+    "originalPilot": false,
+    "entry": "prince-fields",
+    "requests": [
+      "fields-province/v2/index.fcr.gz",
+      "furrow-relief.webp",
+      "fields-province/v2/crop-12.pack"
+    ],
+    "responses": [
+      [
+        "fields-province/v2/index.fcr.gz",
+        200
+      ],
+      [
+        "fields-province/v2/crop-12.pack",
+        200
+      ]
+    ],
+    "faults": [],
+    "pageErrors": []
+  }
+}

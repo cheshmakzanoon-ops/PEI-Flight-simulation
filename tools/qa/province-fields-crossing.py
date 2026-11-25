@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--checkout',type=Path,default=Path.cwd());p.add_argument('--out',type=Path,required=True);p.add_argument('--chromium',required=True)
 a=p.parse_args();repo=a.checkout.resolve();out=a.out.resolve();out.mkdir(parents=True,exist_ok=True)
-ix=gzip.decompress((repo/'public/world/fields-province/index.fcr.gz').read_bytes())
+ix=gzip.decompress((repo/'public/world/fields-province/v2/index.fcr.gz').read_bytes())
 _,_,packs,rows,_=struct.unpack_from('<4sHHHH',ix)
 target=None
 for k in range(rows):
@@ -34,7 +34,7 @@ with tempfile.TemporaryDirectory(prefix='pei-field-flight-corner-') as td:
    mode=path.split('/',2)
    return super().translate_path('/'+mode[2] if len(mode)==3 and mode[1]in ('stock-range','missing-range')else '/no-file')
   def do_GET(self):
-   m=re.search(r'/fields-province/crop-(\d+)\.pack$',self.path)
+   m=re.search(r'/fields-province/v2/crop-(\d+)\.pack$',self.path)
    if not m:return super().do_GET()
    data=Path(self.translate_path(self.path)).read_bytes()
    rg=re.fullmatch(r'bytes=(\d+)-(\d+)',self.headers.get('Range',''))
@@ -55,8 +55,8 @@ with tempfile.TemporaryDirectory(prefix='pei-field-flight-corner-') as td:
     page=b.new_page(viewport={'width':460,'height':310});page.set_default_timeout(150000)
     errors=[];pack_res=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
-    page.on('console',lambda e:errors.append(e.text)if e.type=='error'and not(mode=='missing-range'and '/fields-province/crop-'in e.location.get('url',''))else None)
-    page.on('response',lambda r:pack_res.append(r.status)if '/fields-province/crop-'in r.url else None)
+    page.on('console',lambda e:errors.append(e.text)if e.type=='error'and not(mode=='missing-range'and '/fields-province/v2/crop-'in e.location.get('url',''))else None)
+    page.on('response',lambda r:pack_res.append(r.status)if '/fields-province/v2/crop-'in r.url else None)
     page.goto(f'http://127.0.0.1:{server.server_port}/{mode}/?diagnostics&provinceFieldsReview&departure=qa-crop-corner',wait_until='domcontentloaded')
     page.wait_for_function("n=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics?.provinceFields?.ready===n",arg=expected)
     page.get_by_role('button',name='Begin flight').click()

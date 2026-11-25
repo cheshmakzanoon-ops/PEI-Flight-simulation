@@ -28,7 +28,7 @@ def groups(folder):
         return np.frombuffer(arr,np.uint8).reshape((260,260,2))[:,:,1]
     return result, data
 grass,g=groups(base/'grass-study')
-fields,f=groups(base/'fields-province')
+fields,f=groups(base/'fields-province/v2')
 common=set(grass)&set(fields)
 exact=0
 maybe=0

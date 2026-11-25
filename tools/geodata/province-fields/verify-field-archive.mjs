@@ -27,6 +27,18 @@ for(const key of source.dir.cells){
 }
 const info=JSON.parse(readFileSync(resolve(root,'source.json'),'utf8'));
 assert.equal(positives,info.samples);assert.equal(actuallyTransferred,info.packBytes);
-assert.equal(shards,source.dir.cells.size);assert.equal(positives,4928844);
-writeFileSync(out,JSON.stringify({shards,transfers,positives,actuallyTransferred},null,2)+'\n');
+assert.equal(shards,source.dir.cells.size);assert.equal(positives,4767146);assert.equal(shards,1525);
+// A 480 m radius cannot span three 1,024 m interiors on either axis.
+// Every possible nearby set is contained in one of these four-corner groups.
+const visited=new Set();let maxRangeBytes=0,maxColdFullPackBytes=0;
+for(const c of source.dir.cells.values())for(const x of [c.x,c.x+1])for(const z of [c.z,c.z+1]){
+ const corner=x+':'+z;if(visited.has(corner))continue;visited.add(corner);
+ const adjacent=[source.dir.cells.get((x-1)+':'+(z-1)),source.dir.cells.get(x+':'+(z-1)),
+  source.dir.cells.get((x-1)+':'+z),source.dir.cells.get(x+':'+z)].filter(Boolean);
+ maxRangeBytes=Math.max(maxRangeBytes,adjacent.reduce((n,v)=>n+v.size,0));
+ const packs=new Set(adjacent.map(c=>c.pack));
+ maxColdFullPackBytes=Math.max(maxColdFullPackBytes,[...packs].reduce((n,p)=>n+source.dir.packs[p].size,0));
+}
+assert.equal(maxRangeBytes,14317);assert.equal(maxColdFullPackBytes,262747);
+writeFileSync(out,JSON.stringify({shards,transfers,positives,actuallyTransferred,maxRangeBytes,maxColdFullPackBytes},null,2)+'\n');
 console.log(shards,'shards and',positives,'strict 4m centers verified through real reader');

@@ -51,19 +51,40 @@ export async function checkedFieldPilot(base:string,request:typeof fetch=fetch,m
  }catch{return;}
  finally{control.abort();if(deadline!==undefined)clearTimeout(deadline);}
 }
-export async function loadFieldPilot(base:string){
- try{
-  const asset=await checkedFieldPilot(base);if(!asset)return;
-  const image=await createImageBitmap(new Blob([asset.scan],{type:'image/webp'}),{colorSpaceConversion:'none',imageOrientation:'none'});
+async function reliefTexture(bytes:ArrayBuffer){
+  const image=await createImageBitmap(new Blob([bytes],{type:'image/webp'}),{colorSpaceConversion:'none',imageOrientation:'none'});
   if(image.width!==512||image.height!==512){image.close();return;}
   const texture=new Texture(image);texture.wrapS=texture.wrapT=RepeatWrapping;texture.flipY=false;
   texture.minFilter=LinearMipmapLinearFilter;texture.magFilter=LinearFilter;texture.generateMipmaps=true;
   texture.anisotropy=4;texture.needsUpdate=true;
+  return {scan:{value:texture},discard:()=>{texture.dispose();image.close();}};
+}
+/** The province mask is independent of the earlier, hand-picked three-site
+ * mask. Share its licensed scan, not its footprint or network dependency. */
+export async function checkedFieldRelief(base:string,request:typeof fetch=fetch,ms=1900){
+ if(!globalThis.crypto?.subtle)return;
+ const control=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
+ try{
+  return await Promise.race([(async()=>{
+   const bytes=await exactResponse(request,base+'furrow-relief.webp',M.scanBytes,control.signal);
+   if(!bytes||bytes.byteLength!==M.scanBytes||await sha(bytes)!==M.scanSha||control.signal.aborted)return;
+   return bytes;
+  })(),new Promise<undefined>(resolve=>{timer=setTimeout(()=>{control.abort();resolve(undefined);},ms);})]);
+ }catch{return;}
+ finally{control.abort();if(timer!==undefined)clearTimeout(timer);}
+}
+export async function loadFieldRelief(base:string){
+ try{const bytes=await checkedFieldRelief(base);if(bytes)return await reliefTexture(bytes);}catch{return;}
+}
+export async function loadFieldPilot(base:string){
+ try{
+  const asset=await checkedFieldPilot(base);if(!asset)return;
+  const relief=await reliefTexture(asset.scan);if(!relief)return;
   const map=new DataTexture(new Uint8Array(asset.bytes),M.side,M.side*M.regions.length,RGBAFormat);
   map.generateMipmaps=false;map.minFilter=map.magFilter=LinearFilter;map.needsUpdate=true;
-  return {strength:{value:1},map:{value:map},scan:{value:texture},
+  return {strength:{value:1},map:{value:map},scan:relief.scan,
    boxes:{value:M.regions.map(p=>new Vector4(...p.originXZ,1/p.spanMetres,1))},
-   discard:()=>{map.dispose();texture.dispose();image.close();},
+   discard:()=>{map.dispose();relief.discard();},
    covers:(x:number,z:number,a:number,b:number)=>M.regions.some(({originXZ:[left,top],spanMetres:s})=>x<left+s&&z<top+s&&a>left&&b>top)};
  }catch{return;}
 }

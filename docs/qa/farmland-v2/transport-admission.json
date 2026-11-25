@@ -1,0 +1,21 @@
+{
+  "transport": {
+    "verified": {
+      "accepted": true,
+      "requests": 1
+    },
+    "legacy": {
+      "accepted": false,
+      "requests": 1
+    },
+    "corrupted": {
+      "accepted": false,
+      "requests": 1
+    }
+  },
+  "ownerContract": {
+    "native": true,
+    "wrongDigest": false
+  },
+  "allFiveBaseWitnessesRequired": true
+}

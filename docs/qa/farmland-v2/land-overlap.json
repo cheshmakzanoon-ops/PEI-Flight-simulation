@@ -1,0 +1,25 @@
+{
+  "grassShards": 3331,
+  "farmlandShards": 1525,
+  "sameShard": 979,
+  "overlapExactCentres": 4,
+  "overlapBilinearPatches": 13,
+  "edgePatchOccurrences": 0,
+  "rankedHits": [
+    [
+      -52,
+      0,
+      4,
+      12,
+      31
+    ],
+    [
+      -56,
+      -7,
+      0,
+      1,
+      0
+    ]
+  ],
+  "maxOverlapAreaSquareMetres": 208
+}

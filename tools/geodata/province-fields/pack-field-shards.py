@@ -24,12 +24,15 @@ def fetch(x,z):
   a[n-z0:s-z0,l-x0:r-x0]=b[n-Z*N:s-Z*N,l-X*N:r-X*N]
  return a
 offered={(x+dx,z+dz) for x,z in m for dx,dz in product(range(-1,2),repeat=2)}
+def portable_gzip(data):
+ # RFC1952: an explicit 'unknown' OS makes Python 3.11/3.12 match 3.13.
+ wire=bytearray(gzip.compress(data,compresslevel=9,mtime=0));wire[9]=255;return bytes(wire)
 zones=defaultdict(list);aprons={};seen=0
 for x,z in sorted(offered):
  arr=fetch(x,z)
  if not arr.any():continue
  seen+=np.count_nonzero(arr[H:-H,H:-H])
- b=arr.tobytes();zip=gzip.compress(b,compresslevel=9,mtime=0)
+ b=arr.tobytes();zip=portable_gzip(b)
  zones[x//16,z//16].append((x,z,zip,hash(b)))
  aprons[x,z]=(arr[:,:H*2].copy(),arr[:,-H*2:].copy(),arr[:H*2,:].copy(),arr[-H*2:,:].copy())
 assert seen==raw_cells
@@ -63,7 +66,7 @@ assert len(packs)<=90
 directory=bytearray(struct.pack('<4sHHHH',b'FCR1',1,len(packs),len(records),0))
 for d in packs:directory+=struct.pack('<I32s',d['bytes'],bytes.fromhex(d['sha256']))
 for _,rec in sorted(records.items()):directory+=rec
-archive=gzip.compress(directory,compresslevel=9,mtime=0)
+archive=portable_gzip(directory)
 (a.out/'index.fcr.gz').write_bytes(archive)
 metadata={'packedSize':len(archive),'rawSize':len(directory),'packedHash':hash(archive).hex(),'rawHash':hash(directory).hex(),
           'sourceMaskSha':hash(a.input.read_bytes()).hex(),'samples':int(raw_cells),'areaM2':int(raw_cells)*16,

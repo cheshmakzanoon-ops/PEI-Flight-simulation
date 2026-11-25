@@ -18,7 +18,7 @@ class Local(http.server.SimpleHTTPRequestHandler):
   spec=self.headers.get('Range','')
   path=Path(self.translate_path(self.path))
   r=re.fullmatch(r'bytes=(\d+)-(\d+)',spec)
-  if a.use_range and r and path.suffix=='.pack' and path.parent.name in {'grass-study','fields-province'} and path.is_file():
+  if a.use_range and r and path.suffix=='.pack' and (path.parent.name=='grass-study' or (path.parent.name=='v2' and path.parent.parent.name=='fields-province')) and path.is_file():
    lo,hi=map(int,r.groups());total=path.stat().st_size
    if 0<=lo<=hi<total:
     with path.open('rb') as f:
@@ -38,10 +38,10 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Local,dir
   url=f'http://127.0.0.1:{server.server_port}'+prefix+'?diagnostics&departure='+a.departure+'&unrelated=keep'
   assert a.departure in ('prince-grassland','kings-grassland','queens-grassland')
   if a.corrupt:
-   folder,size=('grass-study',249810)if a.corrupt=='grass' else ('fields-province',111398)
+   folder,size=('grass-study',249810)if a.corrupt=='grass' else ('fields-province/v2',115861)
    page.route('**/'+folder+'/index.fcr.gz',lambda r:r.fulfill(status=200,body=bytes(size)))
   reads=[]
-  page.on('response',lambda r:reads.append({'asset':PurePosixPath(urlsplit(r.url).path).name,'layer':PurePosixPath(urlsplit(r.url).path).parent.name,'status':r.status,'range':r.headers.get('content-range')}) if '/fields-province/' in r.url or '/grass-study/' in r.url else None)
+  page.on('response',lambda r:reads.append({'asset':PurePosixPath(urlsplit(r.url).path).name,'layer':('fields-province' if '/fields-province/v2/' in r.url else PurePosixPath(urlsplit(r.url).path).parent.name),'status':r.status,'range':r.headers.get('content-range')}) if '/fields-province/' in r.url or '/grass-study/' in r.url else None)
   page.goto(url,wait_until='domcontentloaded');page.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'")
   assert page.evaluate("window.islandAirDiagnostics.provinceGrass===null")
   assert not reads

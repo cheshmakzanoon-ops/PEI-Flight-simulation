@@ -1,0 +1,30 @@
+{
+  "fieldDirectoryRawSHA256": "aa037e64ea3d04a9fc96517d997e28164ea00fcc80411ae6ccac9f9d842f5a52",
+  "trailCanonicalSHA": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "trailEvidenceSHA256": "e4a8146715b2cd088117b8cad18eb9a1227e0edbb327d5741c398638bdf1c137",
+  "method": "Exact closed 4 m \u00d7 each axis surrounding every nonzero 4m field sample, includes bilinear apron and full-strength terrain interval (not just centre). CTF1 footprint full roadbed quad represented by two triangles; zero-thickness endpoint counted conservatively, no assumed topology. Marsh full \u00b15.05m protected receiver envelope. Not a substitute for currently hidden/exposed fragment QA or new owner type auditing.",
+  "ctf1": {
+    "quads": 3141,
+    "quadsWithPositiveFieldTents": 0,
+    "totalTentQuadIntersectionsCountingSharedEnds": 0,
+    "distinctPositiveFieldTentsIntersectingTrail": 0,
+    "examples": []
+  },
+  "marsh": {
+    "cascumpec": {
+      "marshSamples": 195,
+      "distinctFieldPositiveFourMetreTentsOverlappingActualMarshFullTenPointOneMetreSupport": 0,
+      "numberOfClosedPairs": 0
+    },
+    "tracadie": {
+      "marshSamples": 7306,
+      "distinctFieldPositiveFourMetreTentsOverlappingActualMarshFullTenPointOneMetreSupport": 0,
+      "numberOfClosedPairs": 0
+    },
+    "morell": {
+      "marshSamples": 1078,
+      "distinctFieldPositiveFourMetreTentsOverlappingActualMarshFullTenPointOneMetreSupport": 0,
+      "numberOfClosedPairs": 0
+    }
+  }
+}
