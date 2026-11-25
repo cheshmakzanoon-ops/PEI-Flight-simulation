@@ -1,0 +1,149 @@
+{
+  "scope": "Independently locked real Chromium/SwiftShader geographic views; bounds are RGB changes, not a claim of independent exact building-ID masking. No hardware benchmark.",
+  "views": {
+    "west-approach-close": {
+      "pose": {
+        "site": "west-approach",
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": 0.95,
+        "south": 0.31,
+        "h": 4,
+        "dist": 102,
+        "agl": 39,
+        "nearDist": 102,
+        "nearAgl": 39,
+        "fixedBaseH": 8.226841056647675,
+        "fixedEyeY": 47.39133866115162
+      },
+      "size": [
+        840,
+        540
+      ],
+      "changedAny": 59610,
+      "changedAbove2": 59566,
+      "inclusiveChangedBBoxXYXY": [
+        236,
+        192,
+        613,
+        387
+      ],
+      "maximumChannelDelta": 100,
+      "drawsBoth": 67,
+      "stockTris": 248586,
+      "candidateTris": 248644,
+      "pngSha256": {
+        "stock": "4b7ec25268520ddebf64c655da178d9284d4150366b1109aac40355b4aa41ea9",
+        "candidate": "09f59d23b0ad562ce1301e49d9d1e5f9628521f085d2945169efc02eba18d498"
+      }
+    },
+    "south-reciprocal-close": {
+      "pose": {
+        "site": "south-reciprocal",
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": -0.57,
+        "south": -0.821,
+        "h": 4,
+        "dist": 100,
+        "agl": 35,
+        "nearDist": 100,
+        "nearAgl": 35,
+        "fixedBaseH": 8.226841056647675,
+        "fixedEyeY": 42
+      },
+      "size": [
+        840,
+        540
+      ],
+      "changedAny": 44328,
+      "changedAbove2": 44298,
+      "inclusiveChangedBBoxXYXY": [
+        220,
+        181,
+        639,
+        334
+      ],
+      "maximumChannelDelta": 110,
+      "drawsBoth": 141,
+      "stockTris": 352232,
+      "candidateTris": 352290,
+      "pngSha256": {
+        "stock": "9340642c7645fa2a35a8ff83c36e193082f287da97fb33fe0b634f9afe04175e",
+        "candidate": "d0abc4b05ed68f9a4b2401b235226dcfc2cee2d9049d93b2f052fff3c0fa166d"
+      }
+    },
+    "near-survey-edges-close": {
+      "pose": {
+        "site": "near-survey-edges",
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": 0.75,
+        "south": -0.661,
+        "h": 5,
+        "dist": 55,
+        "agl": 31,
+        "nearDist": 55,
+        "nearAgl": 31,
+        "fixedBaseH": 8.226841056647675,
+        "fixedEyeY": 38.665883360398446
+      },
+      "size": [
+        840,
+        540
+      ],
+      "changedAny": 221568,
+      "changedAbove2": 221533,
+      "inclusiveChangedBBoxXYXY": [
+        0,
+        109,
+        723,
+        539
+      ],
+      "maximumChannelDelta": 113,
+      "drawsBoth": 31,
+      "stockTris": 225689,
+      "candidateTris": 225747,
+      "pngSha256": {
+        "stock": "aa19190c87fb2d4db9daead69da30aa6c95a45975e4f961cf92a5d0a26c1a559",
+        "candidate": "c3cff078adf04425c92b9b6c2ccff78ef547f75c6407d400a48ecfe67cf36d78"
+      }
+    },
+    "far-control-close": {
+      "pose": {
+        "site": "far-control",
+        "lon": -63.83385771428571,
+        "lat": 46.44841914285714,
+        "east": 0.95,
+        "south": 0.31,
+        "h": 2,
+        "dist": 620,
+        "agl": 390,
+        "nearDist": 620,
+        "nearAgl": 390,
+        "fixedBaseH": 8.226841056647675,
+        "fixedEyeY": 401.275800519476
+      },
+      "size": [
+        840,
+        540
+      ],
+      "changedAny": 1336,
+      "changedAbove2": 1335,
+      "inclusiveChangedBBoxXYXY": [
+        392,
+        253,
+        442,
+        286
+      ],
+      "maximumChannelDelta": 88,
+      "drawsBoth": 59,
+      "stockTris": 245822,
+      "candidateTris": 245880,
+      "pngSha256": {
+        "stock": "66982253e4e0e362c7b56479ea3e406c081c244c9252d90f643e1ba44c304af2",
+        "candidate": "bd7c62d15002ea048ab9d5311bbb9fcf4171b65876af564d98d250b6eadb8fe0"
+      }
+    }
+  }
+}

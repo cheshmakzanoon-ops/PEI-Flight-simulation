@@ -1,0 +1,142 @@
+{
+  "immutableFrozenActualMeshSHA256": "b94b2dfc1ea8e9903567aeb277cfd6eeffc5c6a49d8d4c97c4b25a99340ac646",
+  "registeredFootprint": "335c293cd1eb61e5840fc8b1b6be655cd62c9e153cc6046b0080f9854b5da3d2",
+  "heldInputXZSHA256": "99abd8e132f7c0580d52c3f830045edbaf5a5f57c2462e9531bfa6def98897fc",
+  "morphologyBeforeExposingHeights": {
+    "stock": {
+      "allTriangles": 12,
+      "nonVerticalRoofTriangles": 12,
+      "originalAEBFootprintSquareM": 2392.076614132258,
+      "actualRoofProjectedSquareM": 2392.085255205631,
+      "unionOutsideTrueFootprintSquareM": 0.0193015863395257,
+      "gapsWithinTrueFootprintSquareM": 0.01066051296650133,
+      "maximumOneTriangleOutsideSquareM": 0.008988735393916869,
+      "uncoveredHeldRoofPoints": 0,
+      "roofHasEnteredExternalGroundTruthReceivers": 0
+    },
+    "candidate": {
+      "allTriangles": 30,
+      "nonVerticalRoofTriangles": 30,
+      "originalAEBFootprintSquareM": 2392.076614132258,
+      "actualRoofProjectedSquareM": 2392.081821360136,
+      "unionOutsideTrueFootprintSquareM": 0.019175036180792835,
+      "gapsWithinTrueFootprintSquareM": 0.013967808303235263,
+      "maximumOneTriangleOutsideSquareM": 0.008275308368126844,
+      "uncoveredHeldRoofPoints": 0,
+      "roofHasEnteredExternalGroundTruthReceivers": 0
+    }
+  },
+  "morphologyPass": true,
+  "heldNumericalElevationsOpened": true,
+  "heldGroundPointModel": {
+    "method": "sparse horizontal training-ground Huber plane vs untouched held ground pulses; no absolute vertical datum claimed.",
+    "evaluation": {
+      "median": 0.204387246510489,
+      "p90": 0.41863579928971445,
+      "p95": 0.5204936490144451,
+      "rms": 0.2692300765957382
+    },
+    "pass": true
+  },
+  "commonGameBaseY": 8.276841056647676,
+  "commonNativeGroundOrigin": 8.049528553080625,
+  "evaluationByGroup": {
+    "all": {
+      "distinctLaserPulses": 8926,
+      "nativeStock": {
+        "median": 3.98202816415756,
+        "p90": 6.37752816415756,
+        "p95": 6.584528164157561,
+        "rms": 4.0747541879979075
+      },
+      "nativeCandidate": {
+        "median": 0.01215845284673911,
+        "p90": 0.033757788395544,
+        "p95": 0.043248650001632694,
+        "rms": 0.17210288416356456
+      },
+      "pass": true
+    },
+    "held-spatial": {
+      "distinctLaserPulses": 5019,
+      "nativeStock": {
+        "median": 4.200528164157561,
+        "p90": 6.363528164157561,
+        "p95": 6.552528164157561,
+        "rms": 4.147530362398471
+      },
+      "nativeCandidate": {
+        "median": 0.012035446631941227,
+        "p90": 0.03306520947196389,
+        "p95": 0.041971212321212155,
+        "rms": 0.02122713333938723
+      },
+      "pass": true
+    },
+    "held-pulse-only": {
+      "distinctLaserPulses": 3907,
+      "nativeStock": {
+        "median": 0.7135281641575588,
+        "p90": 6.39052816415756,
+        "p95": 6.724928164157561,
+        "rms": 3.979312015986548
+      },
+      "nativeCandidate": {
+        "median": 0.012386013232941195,
+        "p90": 0.03445903401798063,
+        "p95": 0.04507176208901539,
+        "rms": 0.2590176909624472
+      },
+      "pass": true
+    },
+    "north": {
+      "distinctLaserPulses": 1116,
+      "nativeStock": {
+        "median": 6.11252816415756,
+        "p90": 6.55152816415756,
+        "p95": 6.57977816415756,
+        "rms": 5.652073046804304
+      },
+      "nativeCandidate": {
+        "median": 0.011688620371185898,
+        "p90": 0.029409819483934285,
+        "p95": 0.03544494787978403,
+        "rms": 0.41723735417189434
+      },
+      "pass": true
+    },
+    "west": {
+      "distinctLaserPulses": 3649,
+      "nativeStock": {
+        "median": 5.45252816415756,
+        "p90": 6.672928164157561,
+        "p95": 7.06412816415756,
+        "rms": 5.537020780428721
+      },
+      "nativeCandidate": {
+        "median": 0.015291767446328208,
+        "p90": 0.04135608388444326,
+        "p95": 0.05263796160128607,
+        "rms": 0.13740349206190464
+      },
+      "pass": true
+    },
+    "east": {
+      "distinctLaserPulses": 4161,
+      "nativeStock": {
+        "median": 0.29252816415755944,
+        "p90": 0.6715281641575608,
+        "p95": 0.7215281641575615,
+        "rms": 0.40397015972356864
+      },
+      "nativeCandidate": {
+        "median": 0.010015995945039435,
+        "p90": 0.027718013531021768,
+        "p95": 0.034521231110232975,
+        "rms": 0.017049830539945958
+      },
+      "pass": true
+    }
+  },
+  "combinedVerdict": true
+}

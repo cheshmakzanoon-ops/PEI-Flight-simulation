@@ -1,0 +1,12 @@
+{
+  "scope": "Geographic view registration only, before fit is disclosed. Coordinates anchored to the fixed AEB outline, not its elevation points. This is not a claim that the footprint or any generic façade is exact in the field.",
+  "parent": "0c156bfbf1fe44f56e9566c91c2771eade6ba877",
+  "target": {"aeb": "q0322/47", "lon": -63.83385771428571, "lat": 46.44841914285714},
+  "views": {
+    "west-approach": {"lon": -63.83385771428571, "lat": 46.44841914285714, "east": 0.95, "south": 0.31, "h": 4, "dist": 102, "agl": 39},
+    "south-reciprocal": {"lon": -63.83385771428571, "lat": 46.44841914285714, "east": -0.57, "south": -0.821, "h": 4, "dist": 100, "agl": 35},
+    "near-survey-edges": {"lon": -63.83385771428571, "lat": 46.44841914285714, "east": 0.75, "south": -0.661, "h": 5, "dist": 55, "agl": 31},
+    "far-control": {"lon": -63.83385771428571, "lat": 46.44841914285714, "east": 0.95, "south": 0.31, "h": 2, "dist": 620, "agl": 390}
+  },
+  "acceptance": "Always preserve original footprint/ground/other geometry and exact original flags. Compare at fixed pose/light, building ID mask plus anti-alias border. Inspect supported roof texture, exposed parapet or section boundaries, visually inappropriate repetitive high-rise overlap, and believable base contact. No claim of marked texture, materials or identity without an independently verified source. No geometry use at far tier unless independently tested."
+}

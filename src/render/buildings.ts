@@ -27,6 +27,7 @@ import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} 
 import type {NorthBaywalk} from './north-baywalk.ts';
 import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
 import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINNAKERS_TILE,type WharfSurface} from './spinnakers-shells.ts';
+import {PRINCE_ROOF_TILE,princeRoofOwner,matchesPrinceSurveyRoof,emitPrinceSurveyRoof,princeFoot} from './prince-survey-roof.ts';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { fittedWallMaterial,townFaceRegion,townTileRegion,townWallVertex,TOWN_WALL_ATLAS,type TownWallOptics } from './town-wall-optics.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
@@ -197,6 +198,18 @@ export class Buildings {
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly rusticoNeutralMat?:THREE.ShaderMaterial;
  private readonly rusticoRoof:boolean;
+ private princeSurveyRoof=false;private princeNeutralMat?:THREE.ShaderMaterial;
+ private readonly shadowedBuildings:boolean;
+ enablePrinceSurveyRoof(){this.princeSurveyRoof=true;}
+ get princeSurveyRoofActive(){return this.meshes.get(PRINCE_ROOF_TILE)?.userData.princeSurveyRoof===true;}
+ private sourceNeutralMaterial(){
+  if(this.rusticoNeutralMat)return this.rusticoNeutralMat;
+  // One material only when this owner passes. Neighbours retain the original
+  // shader path; the source-neutral branch is entered only by style 82.
+  return this.princeNeutralMat??=new THREE.ShaderMaterial({vertexShader:buildingV,
+   fragmentShader:buildingF(false,this.shadowedBuildings,false,false,false,false,true),uniforms:this.mat.uniforms,
+   vertexColors:true,side:THREE.DoubleSide});
+ }
  private readonly sourisLight?:SourisLighting;
  private readonly spinnakers?:SpinnakersScene;
  private readonly pinnedSpinnakers?:Bldg[];
@@ -236,7 +249,7 @@ export class Buildings {
 
  private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics){
   this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
-  this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
+  this.shadowedBuildings=!!casts;this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
    vertexShader:buildingV,fragmentShader:buildingF(false,false,false,false,false,false,true),vertexColors:true,side:THREE.DoubleSide});
@@ -526,6 +539,7 @@ export class Buildings {
    const candidate=pinned&&this.atlasHash===pinned.pack&&tile.offset===pinned.offset&&
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
+   const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
    const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
@@ -533,11 +547,11 @@ export class Buildings {
    let eastBytes:ArrayBuffer|undefined;
    const downtown=this.summersideRoofCohort?downtownTilePin(this.atlasHash,tile):undefined;
    let downtownVerified=false;
-   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
+   let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -551,9 +565,9 @@ export class Buildings {
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
-    if(rusticoCandidate)try{
+    if(rusticoCandidate||princeCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
-     rusticoChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
+     massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
 
    }else if(tile.id===KINGS_CROWN_BUILDINGS.tile&&this.pinnedKingsCrown)features=this.pinnedKingsCrown;
@@ -575,7 +589,7 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:undefined,!!barnBytes,rusticoChunk,downtownVerified);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(primBytes&&features[POINT_PRIM.ordinal]){
@@ -771,8 +785,8 @@ export class Buildings {
    this.syncCavendish();
   }catch{/** Never withhold q72, q101, or their existing neighbours. */}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,rusticoChunk?:string,downtownVerified=false){
-  let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false;
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,massingChunk?:string,downtownVerified=false){
+  let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false,actualPrince=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
   const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
@@ -790,15 +804,18 @@ export class Buildings {
    const seed=Math.abs(Math.floor(cx*97+cz*53))>>>0,h=clamp(f.height,1.3,130);
    facade=downtownFacade(ll.lon,ll.lat,h,seed);
    const base=this.t.meshElevation(cx,cz)+.05, cw=bases[seed%bases.length],cr=tops[(seed>>>4)%tops.length];
-   if(this.rusticoRoof&&matchesRusticoMassing(this.atlasHash,rusticoChunk,tile.id,i,f.footprint,f.height,f.minHeight,f.holes)){
-    actualRustico=true;facade=82;
-    emitRusticoMassing(ring,{
+   const prince=this.princeSurveyRoof&&matchesPrinceSurveyRoof(this.atlasHash,massingChunk,tile.id,i,f.footprint,f.height,f.minHeight,f.holes,base);
+   if(prince||(this.rusticoRoof&&matchesRusticoMassing(this.atlasHash,massingChunk,tile.id,i,f.footprint,f.height,f.minHeight,f.holes))){
+    if(prince)actualPrince=true;else actualRustico=true;
+    facade=82;
+    (prince?emitPrinceSurveyRoof:emitRusticoMassing)(ring,{
      roof:(a,b,c,y)=>{
       vertex(a,y[0],cr,a.x-ox,a.z-oz,1);vertex(b,y[1],cr,b.x-ox,b.z-oz,1);vertex(c,y[2],cr,c.x-ox,c.z-oz,1);
      },
      wall:(a,b,below,y)=>{
       const ga=this.t.meshElevation(a.x,a.z)-.6,gb=this.t.meshElevation(b.x,b.z)-.6;
-      const loA=below?.[0]??ga,loB=below?.[1]??gb,L=Math.hypot(a.x-b.x,a.z-b.z);
+      const loA=below?.[0]??(prince?princeFoot(ring,a,(x,z)=>this.t.meshElevation(x,z)):ga);
+      const loB=below?.[1]??(prince?princeFoot(ring,b,(x,z)=>this.t.meshElevation(x,z)):gb),L=Math.hypot(a.x-b.x,a.z-b.z);
       vertex(a,loA,cw,0,loA-ga,0);vertex(b,y[1],cw,L,y[1]-gb,0);vertex(a,y[0],cw,0,y[0]-ga,0);
       vertex(a,loA,cw,0,loA-ga,0);vertex(b,loB,cw,L,loB-gb,0);vertex(b,y[1],cw,L,y[1]-gb,0);
      },
@@ -970,7 +987,7 @@ export class Buildings {
    }
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
-  const mesh=new THREE.Mesh(g,actualRustico&&this.rusticoNeutralMat?this.rusticoNeutralMat:tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  const mesh=new THREE.Mesh(g,actualPrince?this.sourceNeutralMaterial():actualRustico&&this.rusticoNeutralMat?this.rusticoNeutralMat:tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
   if(townSpans?.length&&this.townWallOptics){
     const stock=mesh.material;
     let material=this.fittedWallMaterials.get(stock);
@@ -986,6 +1003,7 @@ export class Buildings {
   }
   if(measuredDowntownRoofs)mesh.userData.measuredDowntownRoofs=measuredDowntownRoofs;
   if(measuredWaterRoof)mesh.userData.measuredWaterRoof=true;
+  if(actualPrince)mesh.userData.princeSurveyRoof=true;
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];

@@ -1,0 +1,142 @@
+[
+  {
+    "view": "west",
+    "query": "standard",
+    "pose": {
+      "lon": -63.83385771428571,
+      "lat": 46.44841914285714,
+      "east": 0.95,
+      "south": 0.31,
+      "h": 4.0,
+      "dist": 102,
+      "agl": 39
+    },
+    "render": {
+      "stock": {
+        "rgb": {
+          "draws": 67,
+          "triangles": 248586,
+          "pngSha256": "f419d7260910fdf37ce38f8fe80e7aed1556197ac2b092e11be5096ab8359206"
+        },
+        "left": {
+          "draws": 67,
+          "triangles": 248586,
+          "pngSha256": "1caecb1724467ddad2160ca7f9cb658b7c89dff4c848c45e35ea6e73aaa05dca"
+        },
+        "right": {
+          "draws": 67,
+          "triangles": 248586,
+          "pngSha256": "0f00c7f7843ba07766c9cfea472c21e758911665c2ad2720e56a7a80405289d7"
+        },
+        "span": [
+          3534,
+          3654
+        ],
+        "neutral": false
+      },
+      "candidate": {
+        "rgb": {
+          "draws": 67,
+          "triangles": 248644,
+          "pngSha256": "c49c9792d3ac4c3c62b0d61a718c7b87b3302ddda2d847142f0ebb844f70bb7b"
+        },
+        "left": {
+          "draws": 67,
+          "triangles": 248644,
+          "pngSha256": "ccfd4cf9b31892328ff000a01f16e6144d7ff40c56eaeb3ddae61949c6776b71"
+        },
+        "right": {
+          "draws": 67,
+          "triangles": 248644,
+          "pngSha256": "19edfeb66290f7041d3d2d7a54678397a0e09e8a6bb57bf62bca4d6a772d7f49"
+        },
+        "span": [
+          3534,
+          3828
+        ],
+        "neutral": true
+      },
+      "actualAccepted": true
+    },
+    "pixels": {
+      "stockId": 59605,
+      "candidateId": 50701,
+      "either": 59610,
+      "changedAny": 59610,
+      "changedOver2": 59566,
+      "changedOutsideId": 0,
+      "changedBeyondIdPlusOnePixel": 0
+    },
+    "glErrors": []
+  },
+  {
+    "view": "reverse",
+    "query": "standard",
+    "pose": {
+      "lon": -63.83385771428571,
+      "lat": 46.44841914285714,
+      "east": -0.57,
+      "south": -0.821,
+      "h": 4.0,
+      "dist": 100,
+      "agl": 35
+    },
+    "render": {
+      "stock": {
+        "rgb": {
+          "draws": 141,
+          "triangles": 352232,
+          "pngSha256": "bd818145970568e4f8c6bc455fa53ded827da740ae7b01fb888b239c4a53be43"
+        },
+        "left": {
+          "draws": 141,
+          "triangles": 352232,
+          "pngSha256": "df457daadda74f48cf09da1c133044e26c834e887e8381d3fb6e154e78de5d35"
+        },
+        "right": {
+          "draws": 141,
+          "triangles": 352232,
+          "pngSha256": "63e473736dba57c1b84c6b0fbbe98a6fc9f492ede6a94c81360bcf146a2b03de"
+        },
+        "span": [
+          3534,
+          3654
+        ],
+        "neutral": false
+      },
+      "candidate": {
+        "rgb": {
+          "draws": 141,
+          "triangles": 352290,
+          "pngSha256": "c59e212a9a43acec9be5921f9992aead09a51ac612675d230cc1750045a46005"
+        },
+        "left": {
+          "draws": 141,
+          "triangles": 352290,
+          "pngSha256": "6eff36fea4f1dc789b6706025d1ace0658212376d1bffc5e9f7c2e11d3e3b68b"
+        },
+        "right": {
+          "draws": 141,
+          "triangles": 352290,
+          "pngSha256": "9ccffdcbf54091751bf8ab75e99fc5e47fd8ce6753f5f2738bed978f847068d5"
+        },
+        "span": [
+          3534,
+          3828
+        ],
+        "neutral": true
+      },
+      "actualAccepted": true
+    },
+    "pixels": {
+      "stockId": 44322,
+      "candidateId": 38722,
+      "either": 44328,
+      "changedAny": 44328,
+      "changedOver2": 44298,
+      "changedOutsideId": 0,
+      "changedBeyondIdPlusOnePixel": 0
+    },
+    "glErrors": []
+  }
+]

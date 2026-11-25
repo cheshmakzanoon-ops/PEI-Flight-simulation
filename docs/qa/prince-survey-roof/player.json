@@ -1,0 +1,71 @@
+{
+  "standard": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 122.81596859928686,
+    "groundClearanceM": 42.82588805540035,
+    "crossTrackM": 0.7972222221360425,
+    "roof": true,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "stock": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 122.21551647735032,
+    "groundClearanceM": 42.79660416921568,
+    "crossTrackM": 0.793333333247574,
+    "roof": false,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": true,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  "independent-imagery-stock": {
+    "site": "qa-inland-image-crossing",
+    "positionSource": "Private QA fixture only; shipping code has no added departure",
+    "travelledEastM": 125.20893431331933,
+    "groundClearanceM": 42.771489891992324,
+    "crossTrackM": 0.8127777776899165,
+    "roof": true,
+    "buildingTiles": {
+      "wanted": 16,
+      "ready": 16,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    },
+    "independentInlandImagery": false,
+    "requestedBuildingPaths": [
+      "buildings/index.json",
+      "buildings/tiles.pack"
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  }
+}

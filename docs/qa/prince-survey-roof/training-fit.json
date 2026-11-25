@@ -1,0 +1,64 @@
+{
+  "trainingRows": 23614,
+  "roofPulseOnlyScope": "training only; not independent validation",
+  "trainingRelativeVerticalError": {
+    "n": 23614,
+    "median": 0.0123,
+    "p90": 0.034,
+    "p99": 0.0757
+  },
+  "strata": {
+    "0": {
+      "n": 3156,
+      "median": 0.0117,
+      "p90": 0.029,
+      "p99": 0.0763
+    },
+    "1": {
+      "n": 9187,
+      "median": 0.0153,
+      "p90": 0.0429,
+      "p99": 0.1105
+    },
+    "2": {
+      "n": 11271,
+      "median": 0.0106,
+      "p90": 0.0278,
+      "p99": 0.0519
+    }
+  },
+  "areasM2": {
+    "broad-west-face": 636.7376,
+    "broad-east-face": 629.9797,
+    "north-connector": 198.6997,
+    "western-west-face": 252.3138,
+    "western-east-face": 244.2905,
+    "cross-north-face": 112.0354,
+    "cross-south-face": 101.4341,
+    "cross-north-west": 108.9699,
+    "raised-north-face": 36.3841,
+    "raised-south-face": 40.7924,
+    "raised-south-bevel": 21.9588,
+    "south-low-rim": 8.4805
+  },
+  "roofFaces": 12,
+  "walls": 34,
+  "areas": {
+    "parentM2": 2392.07661,
+    "sumM2": 2392.07661,
+    "aperturesAdded": 0
+  },
+  "groundOffset": 0.22731250356705068,
+  "cutGeometry": {
+    "lowerCrossVEquals": [
+      15.599684891768478,
+      0.001995612890007827
+    ],
+    "raisedSectionUEquals": [
+      -15.667743813791327,
+      -0.013217165252530179
+    ]
+  },
+  "frozenSourceSha": "f09936dfb61417a24b4f4c4298df33f5076201b908faf5daaddb3ab1fb0c9634",
+  "generatedTS": "06ea4b85bd5e2b20065cfa035ef1b6db8a825fb72517eee57c0bab61466872a9"
+}

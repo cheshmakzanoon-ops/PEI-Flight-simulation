@@ -1,0 +1,98 @@
+{
+  "scope": "Local in-memory PackedBytes adapter, real Three.js Buildings.load and Buildings.generate. A missing required range leaves normal tile retry/failure; readable stale data produces stock.",
+  "actualTrianglesSHA256": "b94b2dfc1ea8e9903567aeb277cfd6eeffc5c6a49d8d4c97c4b25a99340ac646",
+  "stockTriangleCount": 12,
+  "candidateTriangleCount": 30,
+  "all314SiblingAttributes": {
+    "position": "7068ffd59865e05059e9315f7858c37299eb91de05880a919819321d0eab88dc",
+    "topFlag": "5e3ea6f589850fefcc33eaafc82fbd05cb4619a08c3e7d32b070462c404e5cc9",
+    "color": "ea3f003ffa244b21a4d587da3d85e2930d90aebe3b145ea29e62f41e532e591c",
+    "normal": "662fb1c3f56c0bf86fba3ce3f7086ff1d07f77cafcd406f0c1bbcb813f558d60",
+    "facadeStyle": "5eb7caf7944d222bff2eab162b495c9d3ab61f1db8169ad9bcdd4cb98ef0bd7d",
+    "uv": "95bdfc9e3c381f16067f3c80d199a34aa9c99c3f06d60f8f020f3f8b94123694"
+  },
+  "gameAnchorY": 8.276841056647676,
+  "cases": [
+    {
+      "mode": "standard",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": true,
+      "triangles": 7798,
+      "failed": 0
+    },
+    {
+      "mode": "stock-switch",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 7740,
+      "failed": 0
+    },
+    {
+      "mode": "peer-switch",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": true,
+      "triangles": 7798,
+      "failed": 0
+    },
+    {
+      "mode": "historical",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 7740,
+      "failed": 0
+    },
+    {
+      "mode": "no-crypto",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 7740,
+      "failed": 0
+    },
+    {
+      "mode": "changed-valid-gzip",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 7740,
+      "failed": 0
+    },
+    {
+      "mode": "changed-index-count",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 7740,
+      "failed": 0
+    },
+    {
+      "mode": "changed-atlas",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 1,
+      "sourceGeometry": false,
+      "triangles": 6318,
+      "failed": 0
+    },
+    {
+      "mode": "absent-byte-range",
+      "requestedExistingChunk": 1,
+      "additionalAssets": 0,
+      "mountedMeshes": 0,
+      "sourceGeometry": false,
+      "triangles": 0,
+      "failed": 1
+    }
+  ]
+}

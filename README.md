@@ -67,6 +67,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](docs/qa/province-grass.md) in all three counties, with representative **grassland passes**. |
 | Selected fields across PEI | `?provinceFieldsReview` | [Expanded farmland](docs/qa/province-fields.md) adds close-range furrow shading within 76.27 km² of source-qualified field interiors. Select it in Standard Dispatch; it is off by default. |
 | Gravel roads across PEI | `?stockGravelSurface` | Compare Standard’s [close gravel material](docs/qa/gravel-surface-study.md) on 2,651 verified non-bridge road records. |
+| One surveyed roof west of Summerside | `?stockPrinceSurveyRoof` | Compare the original flat building with its [2020 LiDAR-fitted cross-ridges and stepped roofs](docs/qa/prince-survey-roof.md). The façade remains unsurveyed. |
 | Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
 | Distant PEI coast | `?stockAerialPerspective` | Compare [Standard daylight haze and sea horizon](docs/qa/aerial-perspective-study.md) with the original fixed mist. |
 | Orby Head | `?stockOrbyCoast` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): Standard closes known mask-cell gaps below the cliffs. The flag restores the inherited coastline wall. |

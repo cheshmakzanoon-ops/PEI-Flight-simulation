@@ -1,0 +1,254 @@
+{
+  "format": "pei/q0322-47-native-training/1",
+  "target": {
+    "packSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "tile": "q0322",
+    "tileSHA256": "335c293cd1eb61e5840fc8b1b6be655cd62c9e153cc6046b0080f9854b5da3d2",
+    "ordinal": 47,
+    "footprint": [
+      [
+        -63.834267,
+        46.44829
+      ],
+      [
+        -63.834119,
+        46.448284
+      ],
+      [
+        -63.834092,
+        46.448574
+      ],
+      [
+        -63.833887,
+        46.44856
+      ],
+      [
+        -63.833871,
+        46.448684
+      ],
+      [
+        -63.833685,
+        46.448671
+      ],
+      [
+        -63.833696,
+        46.448595
+      ],
+      [
+        -63.833382,
+        46.448574
+      ],
+      [
+        -63.833445,
+        46.448112
+      ],
+      [
+        -63.833761,
+        46.448132
+      ],
+      [
+        -63.833709,
+        46.448547
+      ],
+      [
+        -63.833881,
+        46.448557
+      ],
+      [
+        -63.833933,
+        46.448134
+      ],
+      [
+        -63.83428,
+        46.448154
+      ]
+    ],
+    "top": 12.27,
+    "min": 3.11,
+    "native2954Controls": [
+      [
+        335901.852615309,
+        711221.381240721
+      ],
+      [
+        335913.216354329,
+        711220.59353871
+      ],
+      [
+        335915.633134007,
+        711252.805640508
+      ],
+      [
+        335931.366653745,
+        711251.082242201
+      ],
+      [
+        335932.742281032,
+        711264.852060909
+      ],
+      [
+        335947.017195869,
+        711263.25535627
+      ],
+      [
+        335946.082390272,
+        711254.816761544
+      ],
+      [
+        335970.182068015,
+        711252.22649883
+      ],
+      [
+        335964.796798933,
+        711200.925553142
+      ],
+      [
+        335940.542077406,
+        711203.406315607
+      ],
+      [
+        335945.02696475,
+        711249.492059759
+      ],
+      [
+        335931.824089873,
+        711250.743890601
+      ],
+      [
+        335927.329659303,
+        711203.768938249
+      ],
+      [
+        335900.693229977,
+        711206.275154025
+      ]
+    ],
+    "origin2954": [
+      335933.45039377286,
+      711235.4018036482
+    ],
+    "axes2954": [
+      [
+        0.9945353445848975,
+        -0.1044004232338128
+      ],
+      [
+        0.1044004232338128,
+        0.9945353445848975
+      ]
+    ]
+  },
+  "officialObject": {
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_335000_711000.copc.laz",
+    "bytes": 50488059,
+    "etag": "\"ea556b3821d71d109e96a1787da607e2-7\"",
+    "lastModified": "Wed, 15 Oct 2025 12:52:32 GMT"
+  },
+  "nativeProjection": {
+    "epsg": 2961,
+    "wktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40",
+    "bounds2954": [
+      335880.0,
+      711180.0,
+      335991.0,
+      711285.0
+    ],
+    "originalCOPCProjectedBounds": [
+      [
+        435902.53696471796,
+        5144153.1884333
+      ],
+      [
+        436013.56709098,
+        5144258.22099
+      ]
+    ],
+    "vertical": "No vertical CRS present in LAS WKT. Use roof minus local same-collection class-2 ground, not an absolute datum claim."
+  },
+  "ranges": [
+    [
+      0,
+      226,
+      "804cde753aac0b83b0a2a5c38c5d74f88fdc5b82b8171a737ff147140618da46"
+    ],
+    [
+      227,
+      1376,
+      "d7dc6c583d3d59656d068dababe0a2d59bfa0657fb93f52e366ea55564769b1b"
+    ],
+    [
+      50477147,
+      50488058,
+      "bf2ab05e6465a826089d3aedfac27a7d6894e48a3e269c102fbc50d17f6c428e"
+    ],
+    [
+      22146189,
+      23194617,
+      "1529719de459af5ca8f11c73df529786cabdb3534530efedc852bf6fdd224b75"
+    ],
+    [
+      37525938,
+      37808533,
+      "c16c221c7ad8dec06899af26c3feefdd783bccb9bcda48446e981f9ce3632c0f"
+    ],
+    [
+      38030575,
+      38265608,
+      "dbb8114616a29908d9485b53fbad22fb80501380dc4fe7577621173b64631b7a"
+    ],
+    [
+      44535054,
+      44888584,
+      "e2bba31fcc9ab91384a55f070bf896b3729310e2ea50cf974e5772caebe1e19e"
+    ],
+    [
+      45188847,
+      45517278,
+      "29d912f8385d95a7a3fd8c55b41b9f96798a1150b8209dc4120aae3871565058"
+    ],
+    [
+      48308732,
+      48768117,
+      "f6b1d3b1d852f27c69e9f2fb3a25b7e8aaed06c84bfe45de937a59459bbd86ac"
+    ],
+    [
+      50146551,
+      50475706,
+      "aa828b231828b7b3cc759bd09a9962f431702c102bf009ca0f32de192e9ced07"
+    ]
+  ],
+  "totalAllowedBytes": 3048853,
+  "trainSemanticMMHash": "edeb7541448c0e4786d56b6147b236c59cd700f234fab06f5ef4e565defc2129",
+  "heldXYSemanticMMHash": "cc019e2e7395574fdff436d0ec5f9502135b69429b3522c1575586473d177b5f",
+  "expectedValidRows": 49161,
+  "expectedTrainingRows": 35818,
+  "expectedHeldXYRows": 13343,
+  "expectedGround": [
+    -0.010861135032386875,
+    -0.018125960600967383,
+    8.049528553080625
+  ],
+  "provenance": {
+    "source": "Natural Resources Canada CanElevation LiDAR Point Clouds, Prince Edward Island 2020; immutable index archive and strict COPC ETag/size/range hashes. The original 2020 NRCan Automatically Extracted Buildings catalog supplies the footprint only.",
+    "licence": "https://open.canada.ca/en/open-government-licence-canada",
+    "datasetNote": "The COPC advertises only EPSG:2961 horizontal axes. No identification, roof color, institutional use, materials or present-day state is established.",
+    "selectorPreregistration": "e3600abb01694ba47d20a44ea5cc91f2aa63a09a65202c1fe128ee5b8ffd8c0e",
+    "horizontalTransformAmendment": "bc2ef94c7d12d432b0d88c693fbf4e62681fc81f6893846dd5f9435633997826"
+  },
+  "canonicalGroundReference": {
+    "trainPointArchive": "f09936dfb61417a24b4f4c4298df33f5076201b908faf5daaddb3ab1fb0c9634",
+    "class2TrainRows": 12204,
+    "equallyRepresented2p5mBins": 678,
+    "fit": "2.5m XY ground-cell medians, twelve deterministic Huber IRLS updates; model [slopeU,slopeV,localInterceptNativeZ], local UV registered original ground footprint origin. No roof heights, future candidate or held truth used.",
+    "nativeZEquals_AUplusBVplusC": [
+      -0.010861135032386875,
+      -0.018125960600967383,
+      8.049528553080625
+    ],
+    "medianTrainingGroundHeightError": 0.1964933534894877,
+    "p90TrainingGroundHeightError": 0.456364343985521,
+    "p95TrainingGroundHeightError": 0.5439829901262728,
+    "evaluation": "Freeze emitted stock and candidate GAME Y top values. Add (native ground intercept minus actual game centre anchor plane used to emit the cap) to both before native residual. The subtraction is symmetric with respect to stock/candidate. TRAIN only is used for the constant alignment, never a separate per-live-model bias. Also verify withheld native class2 ground distribution against this locked plane (median<=0.30 m, p90<=0.75 m) before any HAG attribution. No claim about absolute vertical datum."
+  },
+  "canonicalGroundReferenceSHA256": "ac4772f5fe96fe097f7ff1c1ccc3135eb196d5e0e97cba6576b3f613c97f9e9c"
+}

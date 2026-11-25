@@ -1,0 +1,13 @@
+{
+  "sourceAuthoritySHA256": "53a2e6ae167073d134bad7c049b77f47b53db951feb211fc6eecf9d7e8f66473",
+  "downloadedOrAuthenticatedCacheBytes": 3048853,
+  "exactSignedRanges": 10,
+  "trainingRows": 35818,
+  "heldXYRows": 13343,
+  "trainingSignatureMM": "edeb7541448c0e4786d56b6147b236c59cd700f234fab06f5ef4e565defc2129",
+  "heldXYSignatureMM": "cc019e2e7395574fdff436d0ec5f9502135b69429b3522c1575586473d177b5f",
+  "withheldNumericZReleased": false,
+  "groundRecomputeLargestScalarAbsDifference": 1.9984014443252818e-15,
+  "reconstructedTrainingFileSHA256": "f09936dfb61417a24b4f4c4298df33f5076201b908faf5daaddb3ab1fb0c9634",
+  "canonicalOriginalGroundReceiptSHA256": "ac4772f5fe96fe097f7ff1c1ccc3135eb196d5e0e97cba6576b3f613c97f9e9c"
+}
