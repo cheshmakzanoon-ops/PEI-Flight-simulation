@@ -66,7 +66,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Kings County coastal ridge | `?kingsDryCrownStudy&departure=kings-coastal-ridge` | [Measured dry ridge](docs/qa/kings-dry-crown.md): 2020 LiDAR terrain with matched contact and a distant fade. Standard only. |
 | Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |
 | Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
-| Exposed Prince and Kings shores | `?stockOpenCoast` | Compare [the two local coastline gap repairs](docs/qa/open-coast-closure.md) without disabling the nearshore foam. |
+| Exposed Prince and Kings shores | `?stockOpenCoast` | Compare [local coastline gap repairs](docs/qa/open-coast-closure.md) without disabling the nearshore foam. For Kings County, the [Panmure Head coastal pass](docs/qa/panmure-open-coast.md) also has a repaired headland approach. |
 | Exposed Prince and Kings shores | `?stockNearshoreFoam` | Compare [Standard’s small moving breaker groups](docs/qa/nearshore-foam-study.md) on **Prince County · open shore pass** or **Kings County · coastal ridge pass**. The flag retains the previous water look. |
 | Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](docs/qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
 | Queens and Kings woodlands | `?stockRegionalCanopy` | Compare [measured canopy infill](docs/qa/regional-canopy.md) on the two **woodland passes** in Standard. |

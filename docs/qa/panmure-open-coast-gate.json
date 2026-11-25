@@ -1,0 +1,311 @@
+{
+  "baseline": "bec65f4cd9b4572b56f3c3c756211152b408f6ca",
+  "unitTestsPassed": 400,
+  "productionBuild": "pass",
+  "worldChecks": "pass",
+  "softwareBackend": "Chromium SwiftShader",
+  "viewport": [
+    960,
+    640
+  ],
+  "fixedFrames": {
+    "east-approach": {
+      "bandY": [
+        345,
+        464
+      ],
+      "oldPartial": 897,
+      "newPartial": 169,
+      "oldPure": 389,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 3380,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          191,
+          309128
+        ],
+        [
+          192,
+          309642
+        ]
+      ]
+    },
+    "south-east-ground": {
+      "bandY": [
+        291,
+        488
+      ],
+      "oldPartial": 564,
+      "newPartial": 37,
+      "oldPure": 473,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 1159,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          225,
+          306672
+        ],
+        [
+          226,
+          307186
+        ]
+      ]
+    },
+    "north-east-detail": {
+      "bandY": [
+        331,
+        640
+      ],
+      "oldPartial": 1928,
+      "newPartial": 23,
+      "oldPure": 1574,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 14534,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          73,
+          269245
+        ],
+        [
+          74,
+          269759
+        ]
+      ]
+    },
+    "geo-protected": {
+      "bandY": [
+        266,
+        529
+      ],
+      "oldPartial": 475,
+      "newPartial": 475,
+      "oldPure": 185,
+      "newPure": 185,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          234,
+          313158
+        ],
+        [
+          234,
+          313158
+        ]
+      ]
+    },
+    "basin-protected": {
+      "bandY": [
+        275,
+        610
+      ],
+      "oldPartial": 0,
+      "newPartial": 0,
+      "oldPure": 0,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 0
+      },
+      "visible": 0,
+      "stats": [
+        [
+          37,
+          226184
+        ],
+        [
+          37,
+          226184
+        ]
+      ]
+    }
+  },
+  "ordinaryCompiledFlights": [
+    {
+      "mode": "detail",
+      "site": "panmure-head-coast",
+      "motionM": 108.236,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.96131240951411,
+      "endAltitudeM": 78.66777112256864,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "study",
+      "site": "panmure-head-coast",
+      "motionM": 109.352,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.95832001317817,
+      "endAltitudeM": 78.66777112256864,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "prince",
+      "site": "prince-open-shore-pass",
+      "motionM": 108.759,
+      "startGroundY": -0.055,
+      "startAltitudeM": 71.94836642766286,
+      "endAltitudeM": 72.62823512563924,
+      "coverage": {
+        "chunks": 1,
+        "refined": 0
+      },
+      "earlierOpenCoast": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "panmure",
+      "site": "panmure-head-coast",
+      "motionM": 444.328,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.95099425421539,
+      "endAltitudeM": 81.09486464601254,
+      "coverage": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "earlierOpenCoast": {
+        "chunks": 2,
+        "refined": 0
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "changed-source",
+      "site": "panmure-head-coast",
+      "motionM": 105.448,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.97777514174203,
+      "endAltitudeM": 78.68418373170343,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "shifted-bounds",
+      "site": "panmure-head-coast",
+      "motionM": 106.562,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.95832001317817,
+      "endAltitudeM": 78.6472492012599,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "stock",
+      "site": "panmure-head-coast",
+      "motionM": 103.771,
+      "startGroundY": -0.055,
+      "startAltitudeM": 77.9569231480125,
+      "endAltitudeM": 78.62261540345533,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    }
+  ],
+  "geometry": {
+    "stockTriangles": 98972,
+    "stockBatches": 70,
+    "exactFloat32": true,
+    "baselineCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "wrongCoverRejected": true,
+    "groundAndContactUnchanged": true,
+    "geometryBuild": {
+      "triangles": 514,
+      "sha": "83d1745a8f1b212d1268ac719de0392e5a6179210a4f5079f6b06e30e55d7d91",
+      "visibleNearDraws": 1
+    },
+    "exactContactProbeCount": 5445,
+    "neutralCorridor": {
+      "site": "panmure-head-coast",
+      "initial": {
+        "height": -0.055,
+        "land": false,
+        "runway": false
+      },
+      "initialAltitudeM": 77.945,
+      "fixedStepHz": 90,
+      "motionM": 870.1156827318573,
+      "minVirtualTerrainClearanceM": 73.62560802117554,
+      "steps": 1558,
+      "overLandTicks": 330,
+      "exactInStockComparison": true,
+      "notForNavigation": true
+    },
+    "sites": [
+      {
+        "i": 3230,
+        "j": 2237,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 3230,
+        "j": 2238,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 3231,
+        "j": 2239,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 3231,
+        "j": 2242,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 3230,
+        "j": 2243,
+        "contactProbes": 1089,
+        "reentryExact": true
+      }
+    ]
+  }
+}

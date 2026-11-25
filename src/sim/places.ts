@@ -48,6 +48,7 @@ export const SITES: Site[] = [
  {id:'souris-waterfront-pass',name:'Souris · waterfront pass',region:'Kings County',lon:-62.2537,lat:46.3491,heading:352.2,height:98,note:'Start offshore and head north along the waterfront toward the centre of Souris.'},
  {id:'georgetown-low',name:'Georgetown harbour · low pass',region:'Kings County',lon:-62.52719008293827,lat:46.17861545831718,heading:309,height:61,note:'Start over Georgetown Harbour and cross toward the village and St. David’s United Church. A virtual flight, not a navigation route.'},
  {id:'miscouche-woodlot-pass',name:'Miscouche · woodland pass',region:'Prince County',lon:-63.907896877253485,lat:46.446923871189824,heading:90,height:96,note:'Virtual eastbound view over the measured public woodlot, west of Summerside.'},
+ {id:'panmure-head-coast',name:'Panmure Head · coastal pass',region:'Kings County',lon:-62.4570153429,lat:46.1454518341,heading:260,height:78,note:'Start over open water east of Panmure Head and fly toward the headland. Virtual sightseeing, not an aviation route.'}
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

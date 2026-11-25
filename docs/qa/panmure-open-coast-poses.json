@@ -1,0 +1,67 @@
+{
+  "east-approach": {
+    "pose": {
+      "lon": -62.466509,
+      "lat": 46.14429585714286,
+      "dist": 242,
+      "east": 0.984807753012208,
+      "south": -0.17364817766693041,
+      "fixedEyeY": 68,
+      "fixedBaseH": 17,
+      "agl": 68,
+      "h": 0
+    }
+  },
+  "north-east-detail": {
+    "pose": {
+      "lon": -62.466509,
+      "lat": 46.14429585714286,
+      "dist": 111,
+      "east": 0.8191520442889918,
+      "south": -0.5735764363510462,
+      "fixedEyeY": 34,
+      "fixedBaseH": 18,
+      "agl": 34,
+      "h": 0
+    }
+  },
+  "south-east-ground": {
+    "pose": {
+      "lon": -62.466509,
+      "lat": 46.14429585714286,
+      "dist": 108,
+      "east": 0.8660254037844387,
+      "south": 0.4999999999999998,
+      "fixedEyeY": 23,
+      "fixedBaseH": 9.5,
+      "agl": 23,
+      "h": 0
+    }
+  },
+  "geo-protected": {
+    "pose": {
+      "lon": -62.52719,
+      "lat": 46.17861,
+      "dist": 220,
+      "east": 0.8386705679454239,
+      "south": 0.5446390350150271,
+      "fixedEyeY": 34,
+      "fixedBaseH": 4,
+      "agl": 34,
+      "h": 0
+    }
+  },
+  "basin-protected": {
+    "pose": {
+      "lon": -62.1057,
+      "lat": 46.373,
+      "dist": 230,
+      "east": 0.3090169943749475,
+      "south": 0.9510565162951535,
+      "fixedEyeY": 53,
+      "fixedBaseH": 3,
+      "agl": 53,
+      "h": 0
+    }
+  }
+}
