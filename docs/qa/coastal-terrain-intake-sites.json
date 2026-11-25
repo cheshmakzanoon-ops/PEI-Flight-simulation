@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cape-egmont",
+    "county": "Prince",
+    "lon": -64.1340137143,
+    "lat": 46.4018537143,
+    "scope": "relocated lighthouse and local cliff"
+  },
+  {
+    "id": "west-point",
+    "county": "Prince",
+    "lon": -64.38675,
+    "lat": 46.6203055556,
+    "scope": "existing measured coastal owner and lighthouse"
+  },
+  {
+    "id": "cape-tryon",
+    "county": "Queens",
+    "lon": -63.5060833333,
+    "lat": 46.5339722222,
+    "scope": "cliff face and lighthouse"
+  },
+  {
+    "id": "point-prim",
+    "county": "Queens",
+    "lon": -63.039028690261105,
+    "lat": 46.05020823161254,
+    "scope": "existing measured near owner"
+  },
+  {
+    "id": "panmure",
+    "county": "Kings",
+    "lon": -62.466509,
+    "lat": 46.1442958571,
+    "scope": "measured dry seat candidate, not approved"
+  },
+  {
+    "id": "east-point",
+    "county": "Kings",
+    "lon": -61.9718333333,
+    "lat": 46.4525277778,
+    "scope": "existing measured coastal owner and lighthouse"
+  }
+]

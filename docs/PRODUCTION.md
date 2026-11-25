@@ -22,6 +22,9 @@ Record source URL, provider, acquisition/version date, licence, attribution, inp
 - **Performance:** Report frame times, loading and memory with browser, device, viewport and graphics setting. Software-rendered cloud tests are useful for regressions, not end-user FPS claims.
 - **Release:** A downloadable build needs a pinned commit, clean build, repeatable test instructions and visible third-party data attribution.
 
+The [six-site coastal terrain intake](qa/coastal-terrain-intake.md) is a
+repeatable bare-earth and in-engine ray baseline in all three counties.
+
 ## Active production programme
 
 This is an ongoing simulator project, not a finished photorealistic release.
