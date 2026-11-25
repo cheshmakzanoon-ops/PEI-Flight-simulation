@@ -1,0 +1,55 @@
+{
+  "anchoredToWorld": false,
+  "role": "Detached partial roof fitted witness at verified 2020 datum, with local visualization only",
+  "pages": [
+    {
+      "view": "track-SW",
+      "repeat": true,
+      "eye": [
+        -16,
+        -35,
+        54
+      ],
+      "aim": [
+        0,
+        4.0,
+        42.5
+      ],
+      "draws": 9,
+      "triangles": 41
+    },
+    {
+      "view": "track-NE",
+      "repeat": true,
+      "eye": [
+        23,
+        -33,
+        51
+      ],
+      "aim": [
+        0.04,
+        4.0,
+        42.5
+      ],
+      "draws": 9,
+      "triangles": 41
+    },
+    {
+      "view": "cover",
+      "repeat": true,
+      "eye": [
+        9.0,
+        14.0,
+        88
+      ],
+      "aim": [
+        0.02,
+        4.5,
+        42.5
+      ],
+      "draws": 9,
+      "triangles": 41
+    }
+  ],
+  "webglErrors": []
+}

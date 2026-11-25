@@ -1,0 +1,211 @@
+{
+  "state": "Horizontal/source-only proof; no new on-map geometry. Roof 'envelope' is not a masonry or path survey.",
+  "sourcePlanSha256": "710e1cf0039c3fdd3bec5f345f8f09ab04eed31c8dd3c42b20527ee882b31cec",
+  "stockBuild": "9a106441d26125b6fe8a2be8143832bf7ce816df",
+  "sources": {
+    "atlasPackSha": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "atlasIndexSha": "fcc2bb4d890eafd08ac41136a3bff7bebeafe2f9c25a066fdcf756ed39badce0"
+  },
+  "owner": {
+    "ordinal": 149,
+    "stockSpanStartInclusive": 9621,
+    "stockSpanEndExclusive": 9687,
+    "stockTileVertexCount": 28686,
+    "tile": "q032122",
+    "packetSha256": "f85f4770827eb4dafbef690ce3b4bb6d47d59418676a09d6188f45bd4d187daa",
+    "geographicRoofEnvelope": [
+      [
+        -63.639066,
+        46.437695
+      ],
+      [
+        -63.6391,
+        46.437737
+      ],
+      [
+        -63.638849,
+        46.43784
+      ],
+      [
+        -63.638819,
+        46.437807
+      ],
+      [
+        -63.638756,
+        46.437835
+      ],
+      [
+        -63.638717,
+        46.437793
+      ],
+      [
+        -63.639093,
+        46.437623
+      ],
+      [
+        -63.639131,
+        46.43767
+      ]
+    ],
+    "envelopeLocal": [
+      [
+        -11.145751500571201,
+        5.562460934006593
+      ],
+      [
+        -10.777222738650915,
+        10.899784085885946
+      ],
+      [
+        11.632492634648905,
+        9.924453855353232
+      ],
+      [
+        11.554267382059482,
+        5.59264340855375
+      ],
+      [
+        17.30966166554145,
+        5.547627236115457
+      ],
+      [
+        17.262731569959026,
+        4.8973269883845205e-11
+      ],
+      [
+        -17.262731569896104,
+        4.8972381705425505e-11
+      ],
+      [
+        -16.84726864257757,
+        5.970717728266514
+      ]
+    ]
+  },
+  "frame": {
+    "crs": "EPSG:2954",
+    "originProjected": [
+      350902.0254839233,
+      709904.3672097232
+    ],
+    "uprightAxesInEN": [
+      [
+        0.8413432503225652,
+        0.5405011888392677
+      ],
+      [
+        -0.5405011888392677,
+        0.8413432503225652
+      ]
+    ],
+    "axesText": "Positive U northeast along longest track-side eave (edge 6 to 5); positive V northwest, away from track."
+  },
+  "municipal": {
+    "pid": "868646",
+    "intersectionSqM": 245.8221616029626,
+    "overhangSqM": 55.983715430556416,
+    "maxEnvelopeOverhangM": 1.7293905737676472,
+    "parcelFragmentsOverlappingRoof": 1,
+    "civicXY": [
+      {
+        "wgs84": [
+          -63.639256266418116,
+          46.43770552914293
+        ],
+        "local": [
+          -22.742284986,
+          14.54486343
+        ]
+      },
+      {
+        "wgs84": [
+          -63.6388157987635,
+          46.437818215684985
+        ],
+        "local": [
+          12.442511978,
+          6.501387025
+        ]
+      }
+    ]
+  },
+  "nearestProtectedOwners": {
+    "105": {
+      "horizontalClearanceM": 2.459139956072923,
+      "ringsLocal": [
+        [
+          -49.231200771,
+          11.211256748
+        ],
+        [
+          -49.495377103,
+          16.563927552
+        ],
+        [
+          -20.170787864,
+          17.175845033
+        ],
+        [
+          -19.682400645,
+          0.652699893
+        ],
+        [
+          -55.282210759,
+          -1.832140255
+        ],
+        [
+          -56.048703848,
+          10.755577022
+        ]
+      ]
+    },
+    "458": {
+      "horizontalClearanceM": 10.070099912435333,
+      "ringsLocal": [
+        [
+          20.4438152,
+          -20.409090411
+        ],
+        [
+          -14.568424432,
+          -21.15336605
+        ],
+        [
+          -14.771805975,
+          -10.793423404
+        ],
+        [
+          20.176084272,
+          -10.007098338
+        ]
+      ]
+    },
+    "431": {
+      "horizontalClearanceM": 12.253077796840223,
+      "ringsLocal": [
+        [
+          -43.990431777,
+          -13.068547171
+        ],
+        [
+          -18.529948565,
+          -12.187373654
+        ],
+        [
+          -18.250086183,
+          -20.60507592
+        ],
+        [
+          -43.710588486,
+          -21.486256902
+        ]
+      ]
+    }
+  },
+  "architecturalRoles": {
+    "trackSideBay": "central gabled bay on negative V side, nominal U near 0; no window/jamb survey",
+    "canopies": "one open, lower hipped canopy at each axial end; preserve filtered stock envelope for plan comparison only",
+    "masonry": "main enclosed body must be much shorter than full q149 footprint; Town heritage nominal 68 by 28 ft is only a dimension cross-check",
+    "notApproved": "wall corner placement, rear entrances, post or finial placement, RLs, grade, drainage, boardwalk, active rail, equipment, 2020 roof finish"
+  }
+}

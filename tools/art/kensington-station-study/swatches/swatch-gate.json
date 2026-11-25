@@ -1,0 +1,188 @@
+{
+  "detachedSwatchesOnly": true,
+  "pages": [
+    {
+      "view": "near",
+      "eye": [
+        0,
+        0.42,
+        6.7
+      ],
+      "drawCalls": 6,
+      "exactRepeat": true,
+      "fieldstone": {
+        "stoneCount": 1843,
+        "occupied": 0.6789766723028772,
+        "metres": 3.84,
+        "resolution": 768
+      }
+    },
+    {
+      "view": "grazing",
+      "eye": [
+        4.5,
+        1.35,
+        5.7
+      ],
+      "drawCalls": 6,
+      "exactRepeat": true,
+      "fieldstone": {
+        "stoneCount": 1843,
+        "occupied": 0.6789766723028772,
+        "metres": 3.84,
+        "resolution": 768
+      }
+    },
+    {
+      "view": "mid",
+      "eye": [
+        0,
+        0.42,
+        14.0
+      ],
+      "drawCalls": 6,
+      "exactRepeat": true,
+      "fieldstone": {
+        "stoneCount": 1843,
+        "occupied": 0.6789766723028772,
+        "metres": 3.84,
+        "resolution": 768
+      }
+    },
+    {
+      "view": "far",
+      "eye": [
+        0,
+        0.42,
+        34.0
+      ],
+      "drawCalls": 6,
+      "exactRepeat": true,
+      "fieldstone": {
+        "stoneCount": 1843,
+        "occupied": 0.6789766723028772,
+        "metres": 3.84,
+        "resolution": 768
+      }
+    },
+    {
+      "view": "distant",
+      "eye": [
+        0,
+        0.42,
+        72.0
+      ],
+      "drawCalls": 6,
+      "exactRepeat": true,
+      "fieldstone": {
+        "stoneCount": 1843,
+        "occupied": 0.6789766723028772,
+        "metres": 3.84,
+        "resolution": 768
+      }
+    }
+  ],
+  "webglErrors": [],
+  "matchedSurfaceMotion": [
+    {
+      "distanceMetres": 6.7,
+      "stats": {
+        "stone": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.4629,
+            1.3022,
+            1.905,
+            3.4928,
+            9.1408
+          ]
+        },
+        "shingle": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.1901,
+            0.6329,
+            0.7988,
+            2.056,
+            4.7825
+          ]
+        }
+      }
+    },
+    {
+      "distanceMetres": 14,
+      "stats": {
+        "stone": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.4025,
+            0.89,
+            1.1807,
+            2.0189,
+            3.876
+          ]
+        },
+        "shingle": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.2075,
+            0.7797,
+            1.0716,
+            2.4387,
+            4.3011
+          ]
+        }
+      }
+    },
+    {
+      "distanceMetres": 34,
+      "stats": {
+        "stone": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.3521,
+            0.6881,
+            0.7987,
+            1.0725,
+            1.8083
+          ]
+        },
+        "shingle": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.1856,
+            0.7776,
+            1.0428,
+            1.9069,
+            2.851
+          ]
+        }
+      }
+    },
+    {
+      "distanceMetres": 72,
+      "stats": {
+        "stone": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.3827,
+            0.7672,
+            0.8763,
+            1.1289,
+            1.7694
+          ]
+        },
+        "shingle": {
+          "n": 6815,
+          "rgbP50P90P95P99Max": [
+            0.0564,
+            0.4253,
+            0.5504,
+            0.7386,
+            0.9494
+          ]
+        }
+      }
+    }
+  ]
+}

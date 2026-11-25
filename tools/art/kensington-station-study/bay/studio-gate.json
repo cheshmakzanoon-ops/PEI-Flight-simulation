@@ -1,0 +1,343 @@
+{
+  "anchoredToWorld": false,
+  "role": "detached geometry and material, no geographic or 2020 height claims",
+  "pages": [
+    {
+      "view": "front",
+      "repeat": true,
+      "eye": [
+        0.52,
+        1.59,
+        4.54
+      ],
+      "aim": [
+        0,
+        1.47,
+        0.24
+      ],
+      "calls": 17,
+      "triangles": 10694,
+      "geometry": [
+        {
+          "mat": "Kensington fieldstone",
+          "triangles": 156
+        },
+        {
+          "mat": "dark joint and frame rebate",
+          "triangles": 1176
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 2172
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 44
+        },
+        {
+          "mat": "Kensington painted-verge",
+          "triangles": 876
+        },
+        {
+          "mat": "recess black painted bead",
+          "triangles": 840
+        },
+        {
+          "mat": "dark inset glass",
+          "triangles": 70
+        },
+        {
+          "mat": "unlit interior recess",
+          "triangles": 12
+        }
+      ],
+      "probes": {
+        "clear": [
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ],
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "stone": [
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335083
+            }
+          ],
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335105
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "mullion": [
+          {
+            "name": "Kensington painted-verge",
+            "z": 0.27950000762939453
+          },
+          {
+            "name": "unlit interior recess",
+            "z": -0.02449999935925007
+          }
+        ],
+        "sill": [
+          {
+            "name": "Kensington wallace",
+            "z": 0.395999997854233
+          },
+          {
+            "name": "Kensington fieldstone",
+            "z": 0.3069999814033506
+          }
+        ]
+      }
+    },
+    {
+      "view": "side",
+      "repeat": true,
+      "eye": [
+        -2.46,
+        1.54,
+        3.05
+      ],
+      "aim": [
+        0.04,
+        1.48,
+        0.24
+      ],
+      "calls": 17,
+      "triangles": 10694,
+      "geometry": [
+        {
+          "mat": "Kensington fieldstone",
+          "triangles": 156
+        },
+        {
+          "mat": "dark joint and frame rebate",
+          "triangles": 1176
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 2172
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 44
+        },
+        {
+          "mat": "Kensington painted-verge",
+          "triangles": 876
+        },
+        {
+          "mat": "recess black painted bead",
+          "triangles": 840
+        },
+        {
+          "mat": "dark inset glass",
+          "triangles": 70
+        },
+        {
+          "mat": "unlit interior recess",
+          "triangles": 12
+        }
+      ],
+      "probes": {
+        "clear": [
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ],
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "stone": [
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335083
+            }
+          ],
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335105
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "mullion": [
+          {
+            "name": "Kensington painted-verge",
+            "z": 0.27950000762939453
+          },
+          {
+            "name": "unlit interior recess",
+            "z": -0.02449999935925007
+          }
+        ],
+        "sill": [
+          {
+            "name": "Kensington wallace",
+            "z": 0.395999997854233
+          },
+          {
+            "name": "Kensington fieldstone",
+            "z": 0.3069999814033506
+          }
+        ]
+      }
+    },
+    {
+      "view": "inside-edge",
+      "repeat": true,
+      "eye": [
+        0.65,
+        1.56,
+        2.5
+      ],
+      "aim": [
+        0.02,
+        1.5,
+        0.24
+      ],
+      "calls": 17,
+      "triangles": 10694,
+      "geometry": [
+        {
+          "mat": "Kensington fieldstone",
+          "triangles": 156
+        },
+        {
+          "mat": "dark joint and frame rebate",
+          "triangles": 1176
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 2172
+        },
+        {
+          "mat": "Kensington wallace",
+          "triangles": 44
+        },
+        {
+          "mat": "Kensington painted-verge",
+          "triangles": 876
+        },
+        {
+          "mat": "recess black painted bead",
+          "triangles": 840
+        },
+        {
+          "mat": "dark inset glass",
+          "triangles": 70
+        },
+        {
+          "mat": "unlit interior recess",
+          "triangles": 12
+        }
+      ],
+      "probes": {
+        "clear": [
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ],
+          [
+            {
+              "name": "dark inset glass",
+              "z": 0.2290000021457672
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "stone": [
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335083
+            }
+          ],
+          [
+            {
+              "name": "Kensington fieldstone",
+              "z": 0.30699998140335105
+            },
+            {
+              "name": "unlit interior recess",
+              "z": -0.02449999935925007
+            }
+          ]
+        ],
+        "mullion": [
+          {
+            "name": "Kensington painted-verge",
+            "z": 0.27950000762939453
+          },
+          {
+            "name": "unlit interior recess",
+            "z": -0.02449999935925007
+          }
+        ],
+        "sill": [
+          {
+            "name": "Kensington wallace",
+            "z": 0.395999997854233
+          },
+          {
+            "name": "Kensington fieldstone",
+            "z": 0.3069999814033506
+          }
+        ]
+      }
+    }
+  ],
+  "webglErrors": []
+}

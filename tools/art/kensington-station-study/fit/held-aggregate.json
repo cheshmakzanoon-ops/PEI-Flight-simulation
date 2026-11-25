@@ -1,0 +1,92 @@
+{
+  "kind": "Independent, detached partial roof study; no default simulation change or full station approval",
+  "sourceName": "Natural Resources Canada CanElevation LiDAR Point Clouds, original PEI 2020 acquisition, object pei_2020_350000_709000",
+  "sourceRecord": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+  "sourceLicense": "https://open.canada.ca/en/open-government-licence-canada",
+  "testedVerticalDatum": "CGVD2013 orthometric metre; no arbitrary per-role fit offsets",
+  "planesNotIndependentInstrument": "Pulse/spatially withheld from the same 2020 airborne acquisition, not a different sensor.",
+  "authenticatedFragmentsReplayed": 9,
+  "validActualThreeHits": 273,
+  "sealedModel": "abbc38b951982927e8a6b025450af8795eaad1a8379f2e48db45dbf536d982ae",
+  "canonicalArtifact": "4fd9a033168996963dae1322bcc0f6aa8c07bd69f161a84023a08d8caaf6042e",
+  "resultByRole": {
+    "hip-canopy-SW": {
+      "count": 52,
+      "hit": 52,
+      "absP50M": 0.06501,
+      "absP90M": 0.12865,
+      "medianSignedBiasM": -0.06274,
+      "passMagnitude": true
+    },
+    "main-rear-NE": {
+      "count": 24,
+      "hit": 24,
+      "absP50M": 0.08345,
+      "absP90M": 0.16,
+      "medianSignedBiasM": -0.08345,
+      "passMagnitude": true
+    },
+    "main-rear-SW": {
+      "count": 26,
+      "hit": 26,
+      "absP50M": 0.03345,
+      "absP90M": 0.11365,
+      "medianSignedBiasM": 0.02652,
+      "passMagnitude": true
+    },
+    "main-track-NE": {
+      "count": 31,
+      "hit": 31,
+      "absP50M": 0.04431,
+      "absP90M": 0.07009,
+      "medianSignedBiasM": 0.04431,
+      "passMagnitude": true
+    },
+    "main-track-SW": {
+      "count": 33,
+      "hit": 33,
+      "absP50M": 0.01465,
+      "absP90M": 0.03107,
+      "medianSignedBiasM": -0.01188,
+      "passMagnitude": true
+    },
+    "porch-track-NE": {
+      "count": 41,
+      "hit": 41,
+      "absP50M": 0.01517,
+      "absP90M": 0.0356,
+      "medianSignedBiasM": -0.00705,
+      "passMagnitude": true
+    },
+    "porch-track-SW": {
+      "count": 47,
+      "hit": 47,
+      "absP50M": 0.02161,
+      "absP90M": 0.04422,
+      "medianSignedBiasM": -0.00526,
+      "passMagnitude": true
+    },
+    "ridge-NE": {
+      "count": 19,
+      "hit": 19,
+      "absP50M": 0.09171,
+      "absP90M": 0.26203,
+      "medianSignedBiasM": -0.02735,
+      "passMagnitude": true
+    }
+  },
+  "stillHeldUnopened": [
+    "ridge-SW",
+    "hip-canopy-NE",
+    "telegrapher-bay-L",
+    "telegrapher-bay-R",
+    "dry-trackside-contact",
+    "dry-streetside-contact",
+    "dry-NE-end-contact"
+  ],
+  "cautions": [
+    "The NE canopy terminal plane and two center bay surfaces were absent by design, not confirmed year-2020 station features.",
+    "The SW ridge likely contains another feature, but its held heights were left unread; no chimney, ground attachment, finish, boardwalk, rails, or neighbor was authorized.",
+    "Actual roof intersections and metrics apply to the exact detached witnessed triangles only. No raw held coordinates, values or pulse keys are shared."
+  ]
+}

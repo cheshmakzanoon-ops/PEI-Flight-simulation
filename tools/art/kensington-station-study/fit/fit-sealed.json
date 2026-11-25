@@ -1,0 +1,331 @@
+{
+  "main": {
+    "coefficients": [
+      45.721177321178466,
+      -0.002099478448769874,
+      5.633114629494527,
+      1.0304903321741683,
+      1.0297171417854958
+    ],
+    "order": [
+      "crownCgvd2013M",
+      "alongSlope",
+      "crownV",
+      "trackRise",
+      "rearDrop"
+    ],
+    "trainRoleMetrics": {
+      "main-track-SW": {
+        "n": 41,
+        "p50": 0.0178,
+        "p90": 0.0563,
+        "bias": -0.0149,
+        "max": 1.8797
+      },
+      "main-track-NE": {
+        "n": 37,
+        "p50": 0.0253,
+        "p90": 0.0587,
+        "bias": 0.0253,
+        "max": 0.0763
+      },
+      "main-rear-SW": {
+        "n": 31,
+        "p50": 0.0661,
+        "p90": 0.1015,
+        "bias": 0.0661,
+        "max": 0.1364
+      },
+      "main-rear-NE": {
+        "n": 27,
+        "p50": 0.0585,
+        "p90": 0.1195,
+        "bias": -0.0577,
+        "max": 0.1649
+      },
+      "ridge-SW": {
+        "n": 11,
+        "p50": 0.0511,
+        "p90": 1.386,
+        "bias": -0.0346,
+        "max": 1.4934
+      },
+      "ridge-NE": {
+        "n": 13,
+        "p50": 0.0605,
+        "p90": 0.2196,
+        "bias": 0.045,
+        "max": 0.3124
+      },
+      "porch-track-SW": {
+        "n": 29,
+        "p50": 0.019,
+        "p90": 0.0401,
+        "bias": -0.0175,
+        "max": 0.0608
+      },
+      "porch-track-NE": {
+        "n": 26,
+        "p50": 0.0147,
+        "p90": 0.0354,
+        "bias": 0.0021,
+        "max": 0.0433
+      }
+    }
+  },
+  "hips": {
+    "hip-canopy-SW": {
+      "coefficients": [
+        42.649697599638934,
+        2.7514799595443904,
+        0.9519246499130604,
+        1.048993915501004,
+        39.83785208424885,
+        1.0168067027510599
+      ],
+      "anchorU": -17.262731569896104,
+      "inwardSign": 1,
+      "trainRoleMetrics": {
+        "n": 43,
+        "p50": 0.0311,
+        "p90": 0.0839,
+        "bias": -0.0064,
+        "max": 0.108
+      },
+      "trainFacetCounts": [
+        16,
+        13,
+        14
+      ]
+    },
+    "hip-canopy-NE": {
+      "coefficients": [
+        42.773077900998956,
+        2.8750921072147477,
+        1.0076423154353904,
+        1.1060350601173763,
+        39.467798497104006,
+        0.8345643809206968
+      ],
+      "anchorU": 17.262731569959026,
+      "inwardSign": -1,
+      "trainRoleMetrics": {
+        "n": 36,
+        "p50": 0.0206,
+        "p90": 0.0836,
+        "bias": 0.0006,
+        "max": 0.1885
+      },
+      "trainFacetCounts": [
+        20,
+        15,
+        1
+      ]
+    }
+  },
+  "bayHypotheses": [
+    {
+      "explicitlyNotEmitted": true,
+      "frozenPrior": true,
+      "boundsU": [
+        -0.5,
+        0.55
+      ],
+      "coefficients": [
+        44.41870563659265,
+        0.268899511881403,
+        0.5499999999999999,
+        1.6499999999999997,
+        0.6500000000000001
+      ],
+      "trainRoleMetrics": {
+        "telegrapher-bay-L": {
+          "n": 19,
+          "p50": 0.0262,
+          "p90": 0.1105,
+          "bias": 0.0115,
+          "max": 0.2084
+        },
+        "telegrapher-bay-R": {
+          "n": 8,
+          "p50": 0.2145,
+          "p90": 0.5812,
+          "bias": -0.1804,
+          "max": 0.6971
+        }
+      }
+    },
+    {
+      "explicitlyNotEmitted": true,
+      "frozenPrior": false,
+      "boundsU": [
+        -0.5,
+        2.5
+      ],
+      "coefficients": [
+        45.054499627304786,
+        -0.07632207422101754,
+        1.3809085334669604,
+        1.4898738977783135,
+        1.3206864379802377
+      ],
+      "trainRoleMetrics": {
+        "telegrapher-bay-L": {
+          "n": 19,
+          "p50": 0.0189,
+          "p90": 0.0473,
+          "bias": 0.0037,
+          "max": 0.066
+        },
+        "telegrapher-bay-R": {
+          "n": 8,
+          "p50": 0.0463,
+          "p90": 0.0668,
+          "bias": -0.0237,
+          "max": 0.0821
+        }
+      }
+    }
+  ],
+  "worldAdapter": {
+    "coefficientsFromUV1ToXZ": [
+      [
+        0.8359843578765488,
+        -0.547346346957026
+      ],
+      [
+        -0.5467170993833861,
+        -0.8369473729921992
+      ],
+      [
+        -33691.48597457477,
+        6924.446217217731
+      ]
+    ],
+    "xyAbsoluteErrorMetresP50P95Max": [
+      6.067824110469215e-06,
+      2.036037478411138e-05,
+      3.524646081625777e-05
+    ],
+    "yAbsoluteDatum": "CGVD2013, no bias or translation of absolute Y",
+    "localOriginY": 36.0
+  },
+  "groundDiagnostics": {
+    "dry-trackside-contact": {
+      "notEmitted": true,
+      "fitCoefficientsUV1ToAbsoluteY": [
+        0.004055255533977134,
+        0.08108302851419502,
+        36.29656668077302
+      ],
+      "trainRoleMetrics": {
+        "n": 107,
+        "p50": 0.0316,
+        "p90": 0.06,
+        "bias": 0.0068,
+        "max": 0.1623
+      },
+      "trainAbsoluteYP10MedianP90": [
+        35.9576,
+        36.101,
+        36.1404
+      ]
+    },
+    "dry-streetside-contact": {
+      "notEmitted": true,
+      "fitCoefficientsUV1ToAbsoluteY": [
+        0.008274355056345974,
+        0.0013143624343499027,
+        35.78054341825568
+      ],
+      "trainRoleMetrics": {
+        "n": 47,
+        "p50": 0.0208,
+        "p90": 0.0414,
+        "bias": 0.0019,
+        "max": 0.0684
+      },
+      "trainAbsoluteYP10MedianP90": [
+        35.7596,
+        35.812,
+        35.851600000000005
+      ]
+    },
+    "dry-NE-end-contact": {
+      "notEmitted": true,
+      "fitCoefficientsUV1ToAbsoluteY": [
+        -0.015588267776570018,
+        -0.029252395799439057,
+        36.594189070682546
+      ],
+      "trainRoleMetrics": {
+        "n": 21,
+        "p50": 0.0103,
+        "p90": 0.0358,
+        "bias": -0.0012,
+        "max": 0.0488
+      },
+      "trainAbsoluteYP10MedianP90": [
+        36.158,
+        36.216,
+        36.229
+      ]
+    }
+  },
+  "status": "Partial fitted mathematics / presentational roof witness only. No production install or body.",
+  "trainingOnlySha256": "149d162d045c6c3391962f39696517774374dae433ef71e003b80f3a7c8c7ffc",
+  "preregisteredPlanSha256": "710e1cf0039c3fdd3bec5f345f8f09ab04eed31c8dd3c42b20527ee882b31cec",
+  "atlasTile": "q032122",
+  "atlasOrdinal": 149,
+  "roofEnvelopeUV": [
+    [
+      -11.145751500571201,
+      5.562460934006593
+    ],
+    [
+      -10.777222738650915,
+      10.899784085885946
+    ],
+    [
+      11.632492634648905,
+      9.924453855353232
+    ],
+    [
+      11.554267382059482,
+      5.59264340855375
+    ],
+    [
+      17.30966166554145,
+      5.547627236115457
+    ],
+    [
+      17.262731569959026,
+      4.8973269883845205e-11
+    ],
+    [
+      -17.262731569896104,
+      4.8972381705425505e-11
+    ],
+    [
+      -16.84726864257757,
+      5.970717728266514
+    ]
+  ],
+  "cutMasks": {
+    "bayQuarantine": {
+      "u": [
+        -3.7,
+        3.7
+      ],
+      "vCeiling": 5.633114629494527,
+      "note": "Conservative omitted central track-facing panel around both candidate bay profiles; no fit score on either side."
+    },
+    "ambiguousRidgeRole": "ridge-SW, compact tall returns unresolved; math is the primary roof only, omit this role from independent scoring",
+    "ambiguousNEHipFacet": "Facet 2 (end-facing) had one training point; emit no verified surface on facet 2, visualize only with neutral guide lines."
+  },
+  "worldContact": {
+    "install": false,
+    "wallFootPolicy": "Future feet/supports solely within identified parcel. Hide 0.08-0.15m below actual rendered seat across admitted LODs and corroborate near-source ground; never follow road or collision sampler blindly.",
+    "groundMutationAllowed": false
+  }
+}

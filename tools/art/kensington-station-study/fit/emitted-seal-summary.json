@@ -1,0 +1,44 @@
+{
+  "emitterHash": "541ae58d9dcc4de18d3ca699a62814b34ab7ae6625b4f27066075f9eeec63d17",
+  "fitRecipeHash": "44e06f8cdbc30e356366dc9f0a0dd03288d6d1fb4007e2272dd866dd092bc45c",
+  "meshReceipt": "4fd9a033168996963dae1322bcc0f6aa8c07bd69f161a84023a08d8caaf6042e",
+  "meshes": [
+    [
+      "main-track",
+      48
+    ],
+    [
+      "main-rear",
+      9
+    ],
+    [
+      "SW-track",
+      18
+    ],
+    [
+      "SW-back",
+      12
+    ],
+    [
+      "SW-tip",
+      12
+    ],
+    [
+      "NE-track",
+      6
+    ],
+    [
+      "NE-back",
+      18
+    ]
+  ],
+  "minUpNormal": {
+    "SW-track": 0.7241960750740267,
+    "SW-back": 0.6898895645828972,
+    "SW-tip": 0.7009145878730292,
+    "main-track": 0.6962973298137841,
+    "NE-track": 0.7042998293196243,
+    "NE-back": 0.6705411854790536,
+    "main-rear": 0.6965680714533856
+  }
+}
