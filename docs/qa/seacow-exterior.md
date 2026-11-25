@@ -2,7 +2,7 @@
 
 At the entrance to Bedeque Bay, Standard scenery shows a tall grey building with repeated office windows. Add `?seacowExteriorStudy` to the game URL to see an original model of the lighthouse at the same site instead. The white body has eight tapering faces; the red cornice carries an open gallery around a narrower glazed lantern. Flying around the point reveals the recessed sashes, triangular window heads and low entrance. Add `&stockSeacowExterior` to compare the old building. The terrain, red-clay shore and the separate building to the north are unchanged.
 
-**Finding it:** The original Summerside departure is about 6.7 km north of the light and starts facing away. Turn south toward the entrance to Bedeque Bay (approximately 184° from that start). The study does not move the aircraft or change its flight or ground contact.
+**Finding it:** Choose **Seacow Head · coastal pass** in Dispatch. To see the authored tower, add `?departure=seacow-head-coast&seacowExteriorStudy` to the game URL, select Standard scenery and choose **Begin flight**. The virtual flight starts offshore, 1.45 km southeast of the lighthouse, facing the point. Follow the inlet toward the tower and press **V** to switch views. The start does not change aircraft physics or ground contact, and is not a real aviation route.
 
 **Stock exterior, viewed from the southeast:**
 
@@ -28,7 +28,7 @@ Four original Three.js batches total 2,470 authored triangles. Only 22 triangles
 
 The gallery stays level. The eight lower edges follow the unmodified ground through 64 short segments: all 136 independently checked points close 4.5 cm below the *visible* mesh instead of hovering. The underlying grade varies by 0.559 m. Aircraft ground contact is separate and unchanged. No new pad, flattened lot, driveway, vegetation clearing or cliff was added. [Physical contact checks](seacow-exterior/independent-contact.json)
 
-[Matched actual flight cameras](seacow-exterior/locked-frames.json) · [Independently isolated rendered views](seacow-exterior/independent-views.json) · [Compiled player and fallback checks](seacow-exterior/player.json)
+[Matched actual flight cameras](seacow-exterior/locked-frames.json) · [Independently isolated rendered views](seacow-exterior/independent-views.json) · [Compiled player and fallback checks](seacow-exterior/player.json) · [Departure and scenery compatibility](seacow-exterior/launch-compatibility.json) · [Departure menu check](seacow-exterior/launch-dispatch.json)
 
 After `npm ci`, reproduce the original and optional submitted geometry from this checkout:
 

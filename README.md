@@ -33,7 +33,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
-The [Seacow Head exterior study](docs/qa/seacow-exterior.md) replaces one generic tower at the Bedeque Bay entrance with the white octagonal lighthouse, red gallery and glazed lantern. It is opt-in (`?seacowExteriorStudy`); the shore, neighboring building and aircraft terrain stay unchanged.
+**Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Add `?departure=seacow-head-coast&seacowExteriorStudy` to see the [authored white octagonal tower, red gallery and glazed lantern](docs/qa/seacow-exterior.md); the shore and nearby building are unchanged.
 
 The [Cape Egmont lighthouse studio](docs/qa/cape-egmont-detached.md) is a separate Prince County model with unverified placement; it does not alter the live island.
 

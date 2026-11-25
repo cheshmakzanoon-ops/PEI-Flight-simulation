@@ -1,0 +1,12 @@
+{
+  "scope": "Actual compiled game Dispatch without query-selected departure, no scenery study requested.",
+  "controls": [
+    "Departure Point",
+    "Begin flight",
+    "Pause",
+    "Choose departure"
+  ],
+  "selectedSite": "seacow-head-coast",
+  "restoredChoice": "Seacow Head \u00b7 coastal pass",
+  "errors": []
+}
