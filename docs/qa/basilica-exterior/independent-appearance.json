@@ -1,0 +1,159 @@
+{
+  "decision": "PASS for the optional street-facing entrance and recognizable pair of main spires, with a clear visible improvement over stock. FAIL for the prominence of the secondary steeple and for close carved masonry fidelity. Do not describe this as a photorealistic replica, a complete surveyed exterior, or a matching waterfront skyline.",
+  "freeze": {
+    "appearanceAndOpticsManifestSHA256": "6bba2e9a3736047219956d585627f8bebbe11e60e50b79412fd2985ab457b206",
+    "geometrySHA256": "20eb7fe249520d0d5906098f6ded260cd4e0ca776454269ef4ae6e2114585495",
+    "sourceSplitSHA256": "9e4f17144d97cf8ad06eb9565bf136e00a877c8647f3648d13c95c1a2381854f",
+    "extraStreetSessionPrelockSHA256": "312a72f4a574a40cd78e1ff9029e559e2e4c2d0d6747d3344be39333aad221c3",
+    "policy": "The revised form and material were fixed beforehand. The six original photos were fetched and viewed only after this freeze and excluded from modeling; none is shipped as an image, texture or derived game geometry. Independent review does not turn an unsurveyed feature into measured geometry."
+  },
+  "heldSessions": [
+    {
+      "session": "Erie Bard, October 22, 2021; four same-session exterior details, not four independent buildings or dates",
+      "sourceCases": [
+        "2021-1",
+        "2021-2",
+        "2021-3",
+        "2021-4"
+      ],
+      "observed": "All four are tight views of deeply modeled figures, neighboring cut-block voussoirs and reveal profiles beside an exterior opening. The last two give different views of the same identifiable carved relief, not two independent features.",
+      "gates": {
+        "wholeFrontOrientation": "not visible in this session",
+        "pairedSpireOrApse": "not visible",
+        "veryCloseCarvedStone": "FAILED: the game has original simplified masonry bands and pointed surrounds, not the modeled figurative relief, weathered recesses or source-specific carved surface."
+      }
+    },
+    {
+      "session": "Z3lvs, Southport waterfront, July 19, 2023",
+      "sourceCases": [
+        "2023-skyline"
+      ],
+      "observed": "Two tall, dark, narrow main spires rise above a long roof and recognizable lower steeple. At native resolution the lower steeple visibly emerges from that roof on a substantial pale/open drum. The frozen simulation has two main spires but the companion is a much smaller, greener cap.",
+      "gates": {
+        "mainSpirePair": "PASS as a distant shape category; no exact height, angular spacing or camera reconstruction.",
+        "lowerRoofSteeple": "FAILED relative prominence: the apparent lower tip is approximately two thirds of the main tip rise above the neighboring roof in this distant photo. The simulated crossing reaches only 6.91 game metres above its 24.0 m nave ridge; the taller modeled pair rises 26.05 m above it (ratio 0.265). These are unlike units and viewpoints, offered as a gross shape diagnostic, not a conversion of photographic pixels to architectural survey metres.",
+        "wholeSkyline": "not reproduced; generic surrounding blocks, roofscape and canopy differ from the real waterfront",
+        "entranceAndApse": "not legible at this distance"
+      }
+    },
+    {
+      "session": "Robert Linsdell, Great George Street, September 14, 2011; supplementary and independently locked in advance",
+      "sourceCases": [
+        "2011-street"
+      ],
+      "observed": "The real entrance has a dominant central pointed window, thinner flanking lights and larger pointed windows in each tower bay; groups of three smaller lower openings are visible at both sides. The stepped approach and dark arched entry include substantial surrounds. Trees obscure several door leaves and the full stair line; spire tips and apse are outside this frame.",
+      "gates": {
+        "frontFiveOpeningHierarchy": "PASS: this arrangement is visible in the frozen front and low street game views, unlike the old backwards generic facade",
+        "tripleDoors": "PARTIAL PHOTO: do not count hidden doors as observed; official heritage sources and opposed nearest-triangle tests, independently, establish the three-door configuration in the model.",
+        "streetLanding": "PASS presence of steps and rails as a type; not their exact dimensions, lamp/rail type or count",
+        "precinct": "FAILED if claimed: the real foreground trees, street lamp, block relief and precinct are not faithfully modeled; this pass deliberately leaves neighboring game scenery unchanged."
+      }
+    }
+  ],
+  "outsideEvidence": {
+    "apseAndSacristy": "Not established by the held photos. A different rear role in the game and documentation naming a polygonal apse do not validate the modeled outline or scale.",
+    "materialAndPatina": "Warm masonry and dark roof grouping are artistic. Brightness, color, aging and copper finish vary with light and were not measured.",
+    "collisions": "Flight controls, terrain and gameplay collision not upgraded to a walkable model."
+  },
+  "frozenGameFrames": {
+    "basilica-crossing-close": "12660b4a9ccff4d28bcc354177b8544b189dff425706d081d7a621c564446694",
+    "basilica-front-close": "4f3c53b6892543339e1ff6b489ef0ef27105a075dcd6cf1de0a2d02ab81b6cef",
+    "basilica-street-portal-close": "8bc2c29fd98a9985acba96fa8c939d08339e9888c9481ae79eb353941948bfcc"
+  },
+  "photographMetadata": [
+    {
+      "case": "2021-1",
+      "page": "https://commons.wikimedia.org/wiki/File:2021_St._Dunstans_Exterior_01.jpg",
+      "originalBytes": 3600541,
+      "sha1": "a199eb9e56f2751f91582ce27002ac0bad8a23cb",
+      "sha256": "f1978b3fd9d2aacd6fc162317961e89541d8d03c1355a97417746abdba654c84",
+      "sourceSizePixels": [
+        3072,
+        4096
+      ],
+      "photographer": "Erie Bard",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "declaredDate": "2021-10-22 15:32:35"
+    },
+    {
+      "case": "2021-2",
+      "page": "https://commons.wikimedia.org/wiki/File:2021_St._Dunstans_Exterior_02.jpg",
+      "originalBytes": 3574893,
+      "sha1": "73932d37f2588385d264d3bb9be2b0d475211d16",
+      "sha256": "6bd6d071c7c5db8ea5982ec7baf151395fbce0d3ba0c59e23fefc366dc2c719f",
+      "sourceSizePixels": [
+        3072,
+        4096
+      ],
+      "photographer": "Erie Bard",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "declaredDate": "2021-10-22 15:33:00"
+    },
+    {
+      "case": "2021-3",
+      "page": "https://commons.wikimedia.org/wiki/File:2021_St._Dunstans_Exterior_03.jpg",
+      "originalBytes": 2348620,
+      "sha1": "ce089701ec47d3bb47cfb22dc56801f53b0c8dd6",
+      "sha256": "c30f999954d0a1c6ae3f78c1d4250d22baea1735c5434c3d24e444b6a0915c0a",
+      "sourceSizePixels": [
+        3072,
+        4096
+      ],
+      "photographer": "Erie Bard",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "declaredDate": "2021-10-22 15:33:19"
+    },
+    {
+      "case": "2021-4",
+      "page": "https://commons.wikimedia.org/wiki/File:2021_St._Dunstans_Exterior_04.jpg",
+      "originalBytes": 4280013,
+      "sha1": "fa7681ded9ecd49f2b4423798dc4e51c785cbba9",
+      "sha256": "df3a8b7272608b046d9ddb82e36cfe4be60780ff066ec23c897fb087051e317d",
+      "sourceSizePixels": [
+        3072,
+        4096
+      ],
+      "photographer": "Erie Bard",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "declaredDate": "2021-10-22 15:33:38"
+    },
+    {
+      "case": "2023-skyline",
+      "page": "https://commons.wikimedia.org/wiki/File:St._Dunstan%27s_Basilica_and_the_Charlottetown_waterfront_from_Southport,_Stratford,_Prince_Edward_Island.jpg",
+      "originalBytes": 5600116,
+      "sha1": "a471ad999c15c67f87deecb0d43e4f365c1f81f5",
+      "sha256": "83fec8291fc5e22a83cd98270c3f48f4c9bcdfa357d1c1c614f7b6c5238fafcd",
+      "sourceSizePixels": [
+        4004,
+        2999
+      ],
+      "photographer": "Z3lvs",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "declaredDate": "2023-07-19 13:03:06"
+    },
+    {
+      "case": "2011-street",
+      "page": "https://commons.wikimedia.org/wiki/File:Great_George_St,_Charlottetown_(471338)_(9448005485).jpg",
+      "originalBytes": 2173656,
+      "sha1": "634d5d196672edee482527daeeace0a0c92caa6f",
+      "sha256": "84446aca38f6ecb42ba35616ec607c3015114fee078989ed1d8c1531e3495faf",
+      "sourceSizePixels": [
+        3778,
+        2124
+      ],
+      "photographer": "Robert Linsdell from St. Andrews, Canada",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "declaredDate": "Taken on 14 September 2011, 16:04"
+    }
+  ],
+  "institutionalCrossChecks": [
+    "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=581",
+    "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=5964&lang=en"
+  ]
+}

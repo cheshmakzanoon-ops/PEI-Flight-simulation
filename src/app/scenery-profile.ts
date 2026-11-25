@@ -249,8 +249,15 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
+
+/** Original local architectural study, never a terrain or general Detail replacement.
+ * The stock comparison and all older independent Standard switches retain their own effects. */
+export function basilicaExteriorRequested(q:URLSearchParams){
+ return q.has('basilicaExteriorStudy')&&!q.has('stockBasilicaExterior')&&
+  q.getAll('scenery').every(mode=>mode===''||mode==='standard')&&standardComparisonQuery(q);
+}
 
 /** Exact known false shoreline stroke over verified open water. No visual ownership in alternate scenery modes. */
 export function standardSourisShoreline(q:URLSearchParams){

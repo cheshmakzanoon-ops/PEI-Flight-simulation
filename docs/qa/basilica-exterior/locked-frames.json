@@ -1,0 +1,193 @@
+{
+  "scope": "Exactly locked camera and input island world comparison. Positive means visible change, not automatically a more accurate landmark. The independent geometry, owner and dated photo gates are separate.",
+  "viewAuthoritySHA256": "a3ca9777318871d3ffc78763cac7e14030d66790d52cdfe307340a3eebffd903",
+  "observations": [
+    {
+      "view": "basilica-front-close",
+      "exactlyChangedPixels": 65786,
+      "maxChannelDelta8Bit": 183,
+      "changedBoundsXYXY": [
+        366,
+        96,
+        604,
+        549
+      ],
+      "imageSHA256": [
+        "678507ea2a26b5ca123bad7ed0a9357a07d022269ff27c09f4f895f1411cbda1",
+        "4f3c53b6892543339e1ff6b489ef0ef27105a075dcd6cf1de0a2d02ab81b6cef"
+      ],
+      "draws": [
+        52,
+        56
+      ],
+      "triangles": [
+        362216,
+        386647
+      ],
+      "packagedDetailTiles": [
+        17,
+        17
+      ],
+      "pixelsWithAnyChannelOver2": 65782
+    },
+    {
+      "view": "basilica-crossing-close",
+      "exactlyChangedPixels": 59131,
+      "maxChannelDelta8Bit": 181,
+      "changedBoundsXYXY": [
+        347,
+        160,
+        670,
+        481
+      ],
+      "imageSHA256": [
+        "a6715da8bab460b876956f85ac9f5595d1422650bbd40d5eb5079a9b004c2e4a",
+        "12660b4a9ccff4d28bcc354177b8544b189dff425706d081d7a621c564446694"
+      ],
+      "draws": [
+        182,
+        186
+      ],
+      "triangles": [
+        580954,
+        605385
+      ],
+      "packagedDetailTiles": [
+        17,
+        17
+      ],
+      "pixelsWithAnyChannelOver2": 59099
+    },
+    {
+      "view": "basilica-apse-close",
+      "exactlyChangedPixels": 64840,
+      "maxChannelDelta8Bit": 171,
+      "changedBoundsXYXY": [
+        14,
+        132,
+        999,
+        526
+      ],
+      "imageSHA256": [
+        "e6a77e3365e4b3ca6151ff5a835846cad87ae7ac2c3873970effd5e5cffd5d56",
+        "93e31e9f20e15ca83cb71ef0855aca7562b6a825a2ddd06a708768e36c1b490a"
+      ],
+      "draws": [
+        137,
+        145
+      ],
+      "triangles": [
+        424668,
+        466376
+      ],
+      "packagedDetailTiles": [
+        17,
+        17
+      ],
+      "pixelsWithAnyChannelOver2": 64831
+    },
+    {
+      "view": "basilica-harbour-close",
+      "exactlyChangedPixels": 2842,
+      "maxChannelDelta8Bit": 153,
+      "changedBoundsXYXY": [
+        468,
+        294,
+        530,
+        365
+      ],
+      "imageSHA256": [
+        "d56bdead3c2d70b35c7f92ebd1f4bcb01b71861367af3c0efd4da3a7698117fc",
+        "d55eaf611c9fd6caa7dc420ed6c534315e6f68d7ad0fcdaf23e93bc84b124a4b"
+      ],
+      "draws": [
+        100,
+        104
+      ],
+      "triangles": [
+        615265,
+        639696
+      ],
+      "packagedDetailTiles": [
+        16,
+        16
+      ],
+      "pixelsWithAnyChannelOver2": 2819
+    },
+    {
+      "view": "basilica-neighbour-close",
+      "exactlyChangedPixels": 0,
+      "maxChannelDelta8Bit": 0,
+      "changedBoundsXYXY": null,
+      "imageSHA256": [
+        "45687fa9e636d072dc75d5c6795d6e1cfd33767356195e183e9c9c82c05f8b50",
+        "45687fa9e636d072dc75d5c6795d6e1cfd33767356195e183e9c9c82c05f8b50"
+      ],
+      "draws": [
+        43,
+        43
+      ],
+      "triangles": [
+        330373,
+        330373
+      ],
+      "packagedDetailTiles": [
+        17,
+        17
+      ],
+      "pixelsWithAnyChannelOver2": 0
+    },
+    {
+      "view": "basilica-street-portal-close",
+      "exactlyChangedPixels": 177240,
+      "maxChannelDelta8Bit": 200,
+      "changedBoundsXYXY": [
+        320,
+        0,
+        814,
+        412
+      ],
+      "imageSHA256": [
+        "80b06f28e7616b5976af03ea647eb732efc60800b041cf347b7f985ddd68c2b1",
+        "8bc2c29fd98a9985acba96fa8c939d08339e9888c9481ae79eb353941948bfcc"
+      ],
+      "draws": [
+        100,
+        104
+      ],
+      "triangles": [
+        432990,
+        457421
+      ],
+      "packagedDetailTiles": [
+        17,
+        17
+      ],
+      "pixelsWithAnyChannelOver2": 177173
+    }
+  ],
+  "baseCommit": "5b7e4cc2a05b313481dae2b3cd8ae7344b6e2e21",
+  "oldWorldAndArtCaptureCommit": "3aae365a36ba8cc71c895199d9c82d935d8bcb31",
+  "frozenArtManifestSHA256": "6bba2e9a3736047219956d585627f8bebbe11e60e50b79412fd2985ab457b206",
+  "qualification": "Six locked same-world frames of the exact frozen artwork, collected with the original simple opt-in integration. The final separately built source/terrain/rollback guard keeps the same geometry/material source. The negative frame is identically rendered; changed pixels do not establish a measured landmark or a fully faithful skyline.",
+  "finalGuardReruns": {
+    "manifestSHA256": "ff5dab207b6c2b2aeea30b8861d1391f07b46af09dc25a28dc4a336c7d52c408",
+    "verification": "The final guarded source reproduced the displayed Great George Street art and the unrelated negative exactly, as raw PNG bytes, with the authored model active in both scenes.",
+    "actualFrames": [
+      {
+        "view": "basilica-street-portal-close",
+        "actualLandmarkOwnership": "authored",
+        "imageSHA256": "8bc2c29fd98a9985acba96fa8c939d08339e9888c9481ae79eb353941948bfcc",
+        "nativeSceneDraws": 104,
+        "nativeSceneTriangles": 457421
+      },
+      {
+        "view": "basilica-neighbour-close",
+        "actualLandmarkOwnership": "authored",
+        "imageSHA256": "45687fa9e636d072dc75d5c6795d6e1cfd33767356195e183e9c9c82c05f8b50",
+        "nativeSceneDraws": 43,
+        "nativeSceneTriangles": 330373
+      }
+    ]
+  }
+}

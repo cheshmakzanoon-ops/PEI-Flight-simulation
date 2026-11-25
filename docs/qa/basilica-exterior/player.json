@@ -1,0 +1,123 @@
+{
+  "scope": "Seven normal player sessions using a production build from the two exact frozen source bundles. Only one art-file request was intercepted, at the selected local package in the missing-art case; no production endpoint was changed. These sessions test admission and controls, not on-screen geographic or performance claims.",
+  "baseCommit": "5b7e4cc2a05b313481dae2b3cd8ae7344b6e2e21",
+  "artManifestSHA256": "6bba2e9a3736047219956d585627f8bebbe11e60e50b79412fd2985ab457b206",
+  "admissionAndTestsManifestSHA256": "ff5dab207b6c2b2aeea30b8861d1391f07b46af09dc25a28dc4a336c7d52c408",
+  "cases": [
+    {
+      "mode": "new",
+      "landmarkOwns": "authored",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 122.69226484752785,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 1,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "standard",
+      "landmarkOwns": "stock",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 121.5175844791205,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 0,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "explicit-stock",
+      "landmarkOwns": "stock",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 121.51699463393825,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 0,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "stock-only",
+      "landmarkOwns": "stock",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 123.86394666203728,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 0,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "incompatible",
+      "landmarkOwns": "stock",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 120.92613424371297,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 0,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "missing-art",
+      "landmarkOwns": "stock",
+      "availableDeparture": "charlottetown",
+      "actualFlightMovementM": 124.4488567940095,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 1,
+      "intendedFaultObservations": [
+        "response 404",
+        "console 404"
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "mode": "low",
+      "landmarkOwns": "authored",
+      "availableDeparture": "harbour-low",
+      "actualFlightMovementM": 122.07725458045667,
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "artChunkRequests": 1,
+      "intendedFaultObservations": [],
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

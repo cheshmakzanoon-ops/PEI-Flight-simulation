@@ -1,0 +1,14 @@
+# St. Dunstan’s exterior: sources and boundaries
+
+This is new procedural geometry and original material code for the existing game landmark. No photograph, architectural plan, survey sample or third-party texture is included in the art.
+
+| Reference | How it was used |
+| --- | --- |
+| [Parks Canada, St. Dunstan’s Roman Catholic Cathedral / Basilica national designation](https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=581) | Identifies the main frontage and its entrance group on Great George Street. Not a dimensioned survey. |
+| [City of Charlottetown designation in the Canadian Register of Historic Places](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=5964&lang=en) | Separates the eastern twin towers from the crossing steeple, and the triple entrances and traceried windows from the rose above the altar. The reported nominal tower height is not a ground-to-tip measurement in game coordinates. |
+| [St. Dunstan’s parish audio tour: main entrance](https://www.youraudiotour.com/tours/welcome-to-st-dunstan-s-cathedral-basilica/stops/32686) | Additional descriptive evidence for the entrance group. The study does not model the interior. |
+| [Doug Kerr, Charlottetown, 2 October 2012 (CC BY-SA 2.0)](https://commons.wikimedia.org/wiki/File:St._Dunstan%27s_Basilica_(Charlottetown).jpg) and [SoftwareSimian, front, 25 May 2015 (CC BY-SA 4.0)](https://commons.wikimedia.org/wiki/File:St._Dunstan%27s_Basilica_(Charlottetown_PEI)_front_2015-May-25.jpg) | Two separate, dated observational references for massing, openings, lighter stone edge treatment and the distribution of roof colour. No photo projection, sampling, texture repackaging or claim to know the present condition of those surfaces. |
+
+**Ground and extent.** The old simulator landmark was already anchored at −63.125295°, 46.233718°, with one existing NRCan footprint extrusion omitted. The game’s genuine Great George Street centreline shows that the old portal faced almost precisely away from the street. The other federal building records remain untouched. Available open footprints are not a complete construction plan of this church. Neither those records nor administrative parcel boundaries were traced as a source of the new walls. The stair is seated to the simulator’s ordinary rendered terrain, not a newly surveyed site datum. [Game world provenance](../../WORLD.md).
+
+**Appearance limits.** The twin spires are recognisable at distance; the smaller crossing steeple is notably underrepresented. The second is still an interpretation of a building with intricate carved ornament, not a one-to-one replica of individual windows, door sculptures, finials, masonry joints or later repairs. Views from an independently held photographic set were inspected only after the model was fixed; the [review](independent-appearance.json) reports what could and could not be seen.

@@ -1,0 +1,372 @@
+{
+  "decision": "Geometry passes as an optional, approximate Great George Street frontage study. Neither the whole church nor its dimensions are newly surveyed. Consult the separate held-photo report for a known secondary-steeple failure.",
+  "originalMain": "5b7e4cc2a05b313481dae2b3cd8ae7344b6e2e21",
+  "independentAppearanceProtocolSHA256": "9e4f17144d97cf8ad06eb9565bf136e00a877c8647f3648d13c95c1a2381854f",
+  "frozenThreeSourceManifestSHA256": "6bba2e9a3736047219956d585627f8bebbe11e60e50b79412fd2985ab457b206",
+  "transformedGeometry": {
+    "basis": "Each actual drawable triangle, original draw order, world X east/Y up/Z south, normalized to the same explicit zero game datum; WGS84 or orthometric elevations are not exported. Final material-bearing code was re-emitted; both archives matched the independently graded arrays byte-for-byte.",
+    "originalFileSHA256": "c02066bc60b670f5e1db86eb10080018400fc0f26490568f6b2c2a286c452ebd",
+    "updatedFileSHA256": "a89d930f71473ee3bad113c631b781a013a38ccb282d2e42bfc1f3acc82697d8",
+    "originalTrianglesF64LESHA256": "ab9e849ce54790c160e0c247e2c81766ce8bcf384b63afe6faf2284c885fe7b1",
+    "updatedTrianglesF64LESHA256": "20eb7fe249520d0d5906098f6ded260cd4e0ca776454269ef4ae6e2114585495",
+    "optionalOnly": true,
+    "geographicAnchorLonLat": [
+      -63.125295,
+      46.233718
+    ],
+    "towerDimensions": "Exactly the old artistic tip height was required for both. This is not a new estimate of the real steeples."
+  },
+  "ownership": {
+    "stock": {
+      "triangles": 6500,
+      "opaqueMaterialBatches": 5,
+      "relativeGameSummitM": 50.04999923706055,
+      "fullOpaqueProjectionM2": 1230.503574,
+      "newProjectionOutsideOriginalM2": 0.0,
+      "vacatedOriginalProjectionM2": 0.0,
+      "lowestStructuralFaces": 78,
+      "lowestStructuralProjectionM2": 1191.340962,
+      "nearest": [
+        {
+          "scope": "installedRetained",
+          "recipients": 48,
+          "nearestId": "q12000111/109",
+          "minOpaqueDistanceM": 4.38261,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullRoadPlus35cm",
+          "recipients": 11,
+          "nearestId": "9",
+          "minOpaqueDistanceM": 6.00994,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullSidewalkQuads",
+          "recipients": 44,
+          "nearestId": "28",
+          "minOpaqueDistanceM": 3.537,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullParkingPolygons",
+          "recipients": 4,
+          "nearestId": "3",
+          "minOpaqueDistanceM": 52.7278,
+          "newOverlapM2": 0
+        }
+      ]
+    },
+    "knownFailedRigid180": {
+      "triangles": 6500,
+      "opaqueMaterialBatches": 5,
+      "relativeGameSummitM": 50.04999923706055,
+      "fullOpaqueProjectionM2": 1230.503574,
+      "newProjectionOutsideOriginalM2": 191.527149,
+      "vacatedOriginalProjectionM2": 191.527149,
+      "lowestStructuralFaces": 78,
+      "lowestStructuralProjectionM2": 1191.340962,
+      "nearest": [
+        {
+          "scope": "installedRetained",
+          "recipients": 48,
+          "nearestId": "q12000111/109",
+          "minOpaqueDistanceM": 0.0,
+          "newOverlapM2": 0.53391
+        },
+        {
+          "scope": "fullRoadPlus35cm",
+          "recipients": 11,
+          "nearestId": "9",
+          "minOpaqueDistanceM": 6.03383,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullSidewalkQuads",
+          "recipients": 44,
+          "nearestId": "28",
+          "minOpaqueDistanceM": 3.6302,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullParkingPolygons",
+          "recipients": 4,
+          "nearestId": "3",
+          "minOpaqueDistanceM": 58.08145,
+          "newOverlapM2": 0
+        }
+      ]
+    },
+    "candidate": {
+      "triangles": 30931,
+      "opaqueMaterialBatches": 9,
+      "relativeGameSummitM": 50.04999923706055,
+      "fullOpaqueProjectionM2": 1150.657346,
+      "newProjectionOutsideOriginalM2": 103.252997,
+      "vacatedOriginalProjectionM2": 183.099226,
+      "lowestStructuralFaces": 88,
+      "lowestStructuralProjectionM2": 186.93822,
+      "nearest": [
+        {
+          "scope": "installedRetained",
+          "recipients": 48,
+          "nearestId": "q12000111/109",
+          "minOpaqueDistanceM": 5.65636,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullRoadPlus35cm",
+          "recipients": 11,
+          "nearestId": "9",
+          "minOpaqueDistanceM": 7.1899,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullSidewalkQuads",
+          "recipients": 44,
+          "nearestId": "28",
+          "minOpaqueDistanceM": 4.78402,
+          "newOverlapM2": 0
+        },
+        {
+          "scope": "fullParkingPolygons",
+          "recipients": 4,
+          "nearestId": "3",
+          "minOpaqueDistanceM": 55.37988,
+          "newOverlapM2": 0
+        }
+      ]
+    }
+  },
+  "existingReplacement": "q12000111/49 only; all 48 other registered stock rows must remain. A rigid half-turn was rejected because it invades q12000111/109. The neighboring native federal outline independently gave 0.56319 m² full projection and 0.38346 m² ground-cap overlap on that rejected turn. The final study clears the native outline by 5.61972 m; its actual mounted atlas equivalent is 5.65636 m clear. Positive measured clearance is not a real-world survey uncertainty estimate.",
+  "namedStreetFace": {
+    "method": "6 cm orthographic nearest front-facing opaque geometry sample. Shape tags and projected planes alone do not count. An actual blocked wooden panel behind masonry is excluded.",
+    "documentedStreetUnitXZ": [
+      0.731819806619,
+      -0.681498180952
+    ],
+    "old": {
+      "towardNamedGreatGeorge": {
+        "oakDoorComponents": 0,
+        "oakProjectedAreaM2": 0.0,
+        "genuineDepthVisibleWood": [],
+        "rolePixels": {
+          "east-front": null,
+          "east-steps": null,
+          "east-left-tower": null,
+          "east-right-tower": null,
+          "western-sanctuary": null,
+          "crossing-lantern": null
+        },
+        "referenceSurfaceOutside": "simulated mounted native front renders and exterior photos still independently required"
+      },
+      "oppositeRear": {
+        "oakDoorComponents": 1,
+        "oakProjectedAreaM2": 11.0232,
+        "genuineDepthVisibleWood": [
+          {
+            "acrossMinMaxM": [
+              -1.1300000000004005,
+              1.3899999999995458
+            ],
+            "visibleOakAreaM2": 11.0232,
+            "lowHighM": [
+              0.30000000000000093,
+              5.220000000000005
+            ]
+          }
+        ],
+        "rolePixels": {
+          "east-front": null,
+          "east-steps": null,
+          "east-left-tower": null,
+          "east-right-tower": null,
+          "western-sanctuary": null,
+          "crossing-lantern": null
+        },
+        "referenceSurfaceOutside": "simulated mounted native front renders and exterior photos still independently required"
+      }
+    },
+    "updated": {
+      "towardNamedGreatGeorge": {
+        "oakDoorComponents": 3,
+        "oakProjectedAreaM2": 14.8932,
+        "genuineDepthVisibleWood": [
+          {
+            "acrossMinMaxM": [
+              -3.8900000000003416,
+              -2.510000000000371
+            ],
+            "visibleOakAreaM2": 4.1724,
+            "lowHighM": [
+              1.560000000000002,
+              4.920000000000005
+            ]
+          },
+          {
+            "acrossMinMaxM": [
+              -1.0700000000004017,
+              0.7899999999995586
+            ],
+            "visibleOakAreaM2": 6.5484,
+            "lowHighM": [
+              1.560000000000002,
+              5.520000000000006
+            ]
+          },
+          {
+            "acrossMinMaxM": [
+              2.229999999999528,
+              3.6099999999994985
+            ],
+            "visibleOakAreaM2": 4.1724,
+            "lowHighM": [
+              1.560000000000002,
+              4.920000000000005
+            ]
+          }
+        ],
+        "rolePixels": {
+          "east-front": 47715,
+          "east-steps": 8424,
+          "east-left-tower": 61826,
+          "east-right-tower": 62038,
+          "western-sanctuary": 0,
+          "crossing-lantern": 3516
+        },
+        "referenceSurfaceOutside": "simulated mounted native front renders and exterior photos still independently required"
+      },
+      "oppositeRear": {
+        "oakDoorComponents": 0,
+        "oakProjectedAreaM2": 0.0,
+        "genuineDepthVisibleWood": [],
+        "rolePixels": {
+          "east-front": 0,
+          "east-steps": 0,
+          "east-left-tower": 28727,
+          "east-right-tower": 28597,
+          "western-sanctuary": 76894,
+          "crossing-lantern": 3537
+        },
+        "referenceSurfaceOutside": "simulated mounted native front renders and exterior photos still independently required"
+      }
+    },
+    "newComponentSummits": [
+      {
+        "role": "east-left-tower",
+        "highestRelative": 50.04999923706055,
+        "summitMeanXZRelative": [
+          20.142680528825622,
+          -8.354815471871916
+        ],
+        "depthAlongStreetAtSummit": 20.434604115656082,
+        "lateralAtSummit": -7.612980696926322
+      },
+      {
+        "role": "east-right-tower",
+        "highestRelative": 50.04999923706055,
+        "summitMeanXZRelative": [
+          9.999924537310562,
+          -19.378648810054074
+        ],
+        "depthAlongStreetAtSummit": 20.524656754450948,
+        "lateralAtSummit": 7.366748642874086
+      },
+      {
+        "role": "east-front",
+        "highestRelative": 23.860000610351562,
+        "summitMeanXZRelative": [
+          17.558655963829704,
+          -16.155284420277894
+        ],
+        "depthAlongStreetAtSummit": 23.859569157111963,
+        "lateralAtSummit": -0.1434349789891627
+      },
+      {
+        "role": "western-sanctuary",
+        "highestRelative": 21.200000762939453,
+        "summitMeanXZRelative": [
+          -13.209467061345094,
+          12.153703441534162
+        ],
+        "depthAlongStreetAtSummit": -17.949676417602433,
+        "lateralAtSummit": 0.10790687136379695
+      },
+      {
+        "role": "crossing-lantern",
+        "highestRelative": 30.90999984741211,
+        "summitMeanXZRelative": [
+          -4.8569627180466135,
+          4.468771088764697
+        ],
+        "depthAlongStreetAtSummit": -6.599880885158102,
+        "lateralAtSummit": 0.03967606329607509
+      }
+    ]
+  },
+  "ground": {
+    "method": "90 existing mounted raycasts matched the independently reconstructed original N112 triangle heights. No surveyed LiDAR Z, new terrain or walkable church collision. The old solid box and new hollow exterior have different floor-cap areas, so no footprint was inferred from the hollow interior.",
+    "tile": "16-16",
+    "oldGameRootY": 8.318068965527663,
+    "oldMountedVsMeshMaxDeltaM": 1.687538997430238e-13,
+    "actualControlRays": 90,
+    "visibleFineTerrainPositionSHA256": "51840eba720428d4d259c2f027df248fee67ca0050bd91cc1b93fe2e19990c74",
+    "visibleFineTerrainIndexSHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+    "protectedVegetation": {
+      "mountedOriginalStemsWithin70m": 0,
+      "seededAndHedgeSourceCandidatesWithin72m": 0,
+      "meaning": "Unchanged game inventory, not a statement about trees in the real church precinct."
+    },
+    "oldLowestFaceHalfMetreBoundary": {
+      "n": 525,
+      "minGap": -0.5618331338232103,
+      "medianGap": -0.04045129659824376,
+      "maxGap": 0.6163866871984602,
+      "pointsPositiveAbove30cm": 126,
+      "maxGapXZ": [
+        -11.612016287134793,
+        23.932949624886533
+      ],
+      "minGapXZ": [
+        24.23465409948949,
+        -18.65757494799618
+      ]
+    },
+    "newLowestStructuralFaceHalfMetreBoundary": {
+      "n": 1207,
+      "minGap": -2.5455609833369905,
+      "medianGap": -2.2546824740027684,
+      "maxGap": -1.4616564655071604,
+      "pointsPositiveAbove30cm": 0,
+      "maxGapXZ": [
+        -10.344840716074941,
+        21.544066728118196
+      ],
+      "minGapXZ": [
+        24.879196972804493,
+        -13.976519797190122
+      ]
+    },
+    "lowestOpaqueFoundationOrStepQuarterMetreProbe": {
+      "newLowSurfaceOverOldEmptyM2": 36.5625,
+      "newLowSameSetMaxPositiveGapM": 0.05475533678960165,
+      "newLowSameSetAreaAboveThirtyCmM2": 0.0,
+      "lowDefinition": "Actual lowest opaque Y below old game seat +1.51m; report separately from deliberately projecting upper roofs."
+    },
+    "stairTreads": 6,
+    "originalModelRisersVsNew": "Six authored steps, not a count or height survey of actual stairs.",
+    "newExposedRiserHeightMinMaxM": [
+      0.14999985694885254,
+      0.15000009536743164
+    ],
+    "samplesPerTread": 201,
+    "lowestToeAboveGroundMinMedianMaxM": [
+      0.05998215325968914,
+      0.07305159739587097,
+      0.08612104153205458
+    ],
+    "entireToeWidthM": 13.119999885558807
+  },
+  "pointCloudStatus": "The separate 2020-source geometric roof proposal failed independent spatial/flightline coverage before any raw elevations were read. It did not supply this artistic shape.",
+  "replay": "tools/qa/basilica-exterior/independent/README.md"
+}

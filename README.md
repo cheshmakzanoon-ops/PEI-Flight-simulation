@@ -51,6 +51,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Inland grassland | `?stockMeadow` | Compare [the close open-ground material](docs/qa/meadow-texture.md) on an **inland meadow pass** in Prince, Queens or Kings. |
 | Basin Head beach | `?stockBasinSand` | Compare [Standard’s pale Singing Sands material](docs/qa/basin-head-sand.md) with the original sand on the low pass. |
 | Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-head-outer-wharf.md). |
+| Great George Street, Charlottetown | `?departure=harbour-low&basilicaExteriorStudy` | See [St. Dunstan’s Great George Street frontage study](docs/qa/basilica-exterior.md): three recessed entrances, twin steeples, original sandstone and roof finishes. Optional frontage only, not a surveyed replica. |
 | Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront, with [measured ground contact](docs/qa/beaconsfield-contact.md) in low local views. Add `&stockBeaconsfieldGrade` to compare the same house over the original ground. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
 | Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](docs/qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |
