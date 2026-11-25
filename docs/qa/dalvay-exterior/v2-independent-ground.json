@@ -1,0 +1,137 @@
+{
+  "scope": "Frozen V2 original-game ground contact and complete horizontal ownership, not a surveyed elevation. Buttressing or inferred plant/landscape changes are not part of this candidate.",
+  "packSHA256": "35b99bcb553c16a25960f98ea540a6313c315d622e5cc75f9aa27b2512ff6382",
+  "runtimeOwnerAdmissionSHA256": "00fadb5aefd47f69351ef1e3f3d11ae72d1412d5d9100f1265cb44a2a56dc14a",
+  "fullIndependentContactOutputSHA256": "769dd0762da93a9ec67b794f524fc7b70d9008653ee95a8ecca593e51b8ea78a",
+  "method": "Re-read the actual expanded five source batches and signed indices, using the five submitted world transforms. Intersect every physical lower edge with original fine N112 triangle boundaries and check both endpoints/interior points. Test the complete positive-area polygon union plus projected vertical edges against original q12203 row 71 and its 241 source neighbors. No changed surfaces.",
+  "signedEmittedManifestSHA256": "9b44073d2f242e79c27a906d143fa51c569b53b8a631b11ed22788f184cd6c98",
+  "originalOwnerReceiptSHA256": "9dd5dceb0e1f4959b4846127a60726f4b2d7c4567e09b1704222b8833a64fb56",
+  "realWebGLBuffersSHA256": {
+    "17-12": [
+      "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+      "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+    ],
+    "17-13": [
+      "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+      "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+    ]
+  },
+  "originalThreeRayCount": 292,
+  "originalRayHeightAgreementMaxM": 1.1013412404281553e-13,
+  "countsAndOwnership": {
+    "triangleTotalsAndPositiveXZ": [
+      [
+        "Dalvay \u00b7 masonry",
+        798,
+        68
+      ],
+      [
+        "Dalvay \u00b7 render",
+        813,
+        59
+      ],
+      [
+        "Dalvay \u00b7 joinery",
+        22262,
+        11680
+      ],
+      [
+        "Dalvay \u00b7 shingles",
+        476,
+        417
+      ],
+      [
+        "Dalvay \u00b7 glazing",
+        504,
+        0
+      ]
+    ],
+    "allUniqueMeshEdgeProjections": 19518,
+    "metresOfAnyIncludingVerticalFaceEdgesOutsidePriorRing": 0.0,
+    "priorOwnerAreaM2": 1023.7482405952251,
+    "allCandidateProjectedAreaM2": 898.4282060385176,
+    "positiveM2OutsidePriorRing": 0.0,
+    "candidateInsideGapM": 0.03056809037732915,
+    "siblingOwners": 241,
+    "overlappedSiblingIDs": [],
+    "nearestSourceOutlinesByM": [
+      [
+        205,
+        4.018537440165751,
+        0.0
+      ],
+      [
+        26,
+        10.338881021527243,
+        0.0
+      ],
+      [
+        13,
+        18.135981352486834,
+        0.0
+      ],
+      [
+        163,
+        36.76217888334985,
+        0.0
+      ]
+    ],
+    "touchedStockGroundSampleCountsBothTiles": {
+      "17-12": 454,
+      "17-13": 38
+    }
+  },
+  "bottomMinusStockSurfaceByFeatureGroup": {
+    "all wall/foundation sections": {
+      "features": 37,
+      "segments": 37,
+      "tested": 618,
+      "extremaOfBottomMinusNativeGroundM": [
+        -0.11244889914949585,
+        -0.03213419104300552
+      ]
+    },
+    "28 original authored verandah piers": {
+      "features": 28,
+      "segments": 112,
+      "tested": 336,
+      "extremaOfBottomMinusNativeGroundM": [
+        -0.06000001376502073,
+        -0.05999998486506186
+      ]
+    },
+    "three entry risers": {
+      "features": 3,
+      "segments": 3,
+      "tested": 33,
+      "extremaOfBottomMinusNativeGroundM": [
+        -0.07000000625203562,
+        -0.06999999484495056
+      ]
+    },
+    "three entry treads": {
+      "features": 3,
+      "segments": 12,
+      "tested": 78,
+      "extremaOfBottomMinusNativeGroundM": [
+        -0.050890898698076725,
+        -0.028300353215231944
+      ]
+    }
+  },
+  "continuousDiningRoomGameShape": {
+    "method": "Read final indexed contact endpoint references back from submitted Float32 positions, not from a plan drawing. Quantifies curved game geometry only. The real dining wing is not a surveyed 1:1 reconstruction.",
+    "continuousPlinthSections": 27,
+    "lengthMetres": 39.365329954895095,
+    "cumulativeEndToEndHeadingChangeDegrees": -108.00297338261134,
+    "actualMaxChordOffsetM": 13.940890919629409,
+    "maxSegmentJoinGapM": 0.0,
+    "peakAdjacentSegmentTurnDeg": 26.74880411375117,
+    "threeMostPronouncedTurnsAbsDeg": [
+      26.74880411375117,
+      25.673394190359527,
+      20.74353238518538
+    ],
+    "scope": "There is a genuine connected turning ground line. Most of the visual bend is concentrated around a few panels, not a uniformly smooth circular or photo-derived elevation; do not infer the curve radius or exact window count."
+  }
+}

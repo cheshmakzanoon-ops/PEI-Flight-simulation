@@ -1,3 +1,4 @@
+import {dalvayGroundPair} from './dalvay-exterior-seat.ts';
 import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
 import {allowShortOpenArc,allowPanmureOpenArc,allowTryonOpenArc} from '../sim/open-coast-closure.ts';
 import {POINT_PRIM} from './point-prim/admit.ts';
@@ -1266,6 +1267,10 @@ export class World {
    if(t?.lod===112&&g?.visible&&g.material===t.local&&!t.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&g.geometry.index?.count===112*112*6)out.push({id:t.id,m:t.local});
   }
   return out;
+ }
+ /** This one existing AEB building straddles the original row boundary; do not seat onto a single tile. */
+ dalvayGroundReady(){
+  return dalvayGroundPair(this.byId.get('17-12'),this.byId.get('17-13'),!!(this.grades?.has('17-12')||this.grades?.has('17-13')));
  }
  /** The art's footing is seated only over its actual, original near terrain owner. */
  seacowGroundReady(){

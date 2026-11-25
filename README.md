@@ -33,7 +33,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
-**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](docs/qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline.
+**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](docs/qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. The separate [manor exterior preview](docs/qa/dalvay-exterior.md) adds its gables, covered veranda and rounded dining room.
 
 **Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Add `?departure=seacow-head-coast&seacowExteriorStudy` to see the [authored white octagonal tower, red gallery and glazed lantern](docs/qa/seacow-exterior.md); the shore and nearby building are unchanged.
 
@@ -58,6 +58,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | Great George Street, Charlottetown | `?departure=harbour-low&basilicaExteriorStudy` | See [St. Dunstan’s Great George Street frontage study](docs/qa/basilica-exterior.md): three recessed entrances, twin steeples, original sandstone and roof finishes. Optional frontage only, not a surveyed replica. Add `&basilicaYardSun` for its [shadow across the court, street and sidewalks](docs/qa/basilica-yard-sun.md). |
 | Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront, with [measured ground contact](docs/qa/beaconsfield-contact.md) in low local views. Add `&stockBeaconsfieldGrade` to compare the same house over the original ground. |
 | Montague | `?montagueFoundationPreview` | The [river opening and curved Main Street bridge](docs/montague-bridge-preview.md). |
+| Dalvay-by-the-Sea | `?departure=dalvay-lake-coastal-pass&dalvayExteriorStudy` | [Documentary manor exterior](docs/qa/dalvay-exterior.md). The historic footprint and existing surroundings stay in place. |
 | Dalvay Lake | `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` | [Wind ripples and sky reflections](docs/qa/dalvay-lake-optics.md) on the verified interior. `&stockDalvayWaterOptics` keeps the original lake appearance. |
 | Souris · Knight Point | `?departure=souris-waterfront-pass&sourisKnightExterior` | [Souris East lighthouse](docs/qa/souris-knight-exterior.md), with a tapered white body, red bracketed gallery and domed glazed lantern. The shore and ground are unchanged. |
 | Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](docs/qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |

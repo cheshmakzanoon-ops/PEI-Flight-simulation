@@ -1,0 +1,228 @@
+{
+  "study": "Dalvay RC2 independent native form sensitivity. No photograph bytes or game screenshots are included.",
+  "modelWireSHA256": "35b99bcb553c16a25960f98ea540a6313c315d622e5cc75f9aa27b2512ff6382",
+  "submittedAttributesSHA256": "9b44073d2f242e79c27a906d143fa51c569b53b8a631b11ed22788f184cd6c98",
+  "registeredEightCameraSHA256": "d49454e18bf005fcb0eb43ee91b7701c24b00d71547e9e08f8ddf68000059108",
+  "preimageReferenceAndNewCameraProtocolSHA256": "d1460ea27f9831eeda00398ffbaf3458d31973ca4b4189c07064b044a4975a8d",
+  "testedRC2OwnerRuntimeSHA256": "00fadb5aefd47f69351ef1e3f3d11ae72d1412d5d9100f1265cb44a2a56dc14a",
+  "capture": "Eight fixed 900 × 600 Chromium software-WebGL views in Standard with unchanged stock water. Same-tick original, V1, V2, withdrawn/empty and restored V2. The entire original stock q12203/71 building was 37 triangles. All captures had zero shader link or GL errors and a single native V2 model request. Device performance was not measured.",
+  "formClassifier": "Project every submitted two-sided opaque triangle through the matching actual world/camera matrices, retaining the closest reciprocal-depth hit at four quarter-pixel centres. Classify only pixels whose four samples have the same authored part/range; group the corresponding roofs with each gable/curve. Count pixels whose actual V2 maximum RGB-channel difference exceeds 8 against BOTH V1 and subject-removed states. Nearby scenery/occlusion remains in those native comparisons. This removes mixed edges and counts frame sensitivity, not recovered photographic detail or exact semantic pixel labels.",
+  "results": {
+    "dalvay-principal-nw": {
+      "capturedPNGsha256": {
+        "v2": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09",
+        "v1": "c7534b1a71ee67eb50f4a0e7d10a7972d95020b006661feab7ca00a2dd0d74b8",
+        "stock": "6eaeee06e63ebc5bba89e3fcc2e46eb8a09dc72ffb2a9818d76628a2c1149969",
+        "withoutSubject": "8b15521335023c213c2567dbab22a4b2ec460cf164c95e2325c7ee823bac762f",
+        "restoredV2": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09"
+      },
+      "stockDrawsAndTriangles": [
+        108,
+        319286
+      ],
+      "v2DrawsAndTriangles": [
+        113,
+        344102
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 14469,
+      "V2VsV1MaxChannelGt2Pixels": 306,
+      "V2VsEmptyMaxChannelGt2Pixels": 7845,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 0,
+        "secondOutwardGable": 0,
+        "interveningShedDormer": 0,
+        "turningLowerDiningWing": 7
+      }
+    },
+    "dalvay-lake-side": {
+      "capturedPNGsha256": {
+        "v2": "778578363621d8081f15d5afa8647a2cf03e3e2a164767161b5f8cc9209c025e",
+        "v1": "444de6fcfa98e1f3d1c9caac11216c6425fda001c9974acd04b8363fd340405c",
+        "stock": "304aaa6dd7b62563098c95a39fc5592ead0fdcc1ba72c308b8e4301841fde6ea",
+        "withoutSubject": "cb89b1d3dec3c571ef232740cfbe7e0e873374fcdd6405bb97791477d7a6eb58",
+        "restoredV2": "778578363621d8081f15d5afa8647a2cf03e3e2a164767161b5f8cc9209c025e"
+      },
+      "stockDrawsAndTriangles": [
+        26,
+        272115
+      ],
+      "v2DrawsAndTriangles": [
+        31,
+        296931
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 6261,
+      "V2VsV1MaxChannelGt2Pixels": 1388,
+      "V2VsEmptyMaxChannelGt2Pixels": 4043,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 226,
+        "secondOutwardGable": 205,
+        "interveningShedDormer": 27,
+        "turningLowerDiningWing": 330
+      }
+    },
+    "dalvay-regional": {
+      "capturedPNGsha256": {
+        "v2": "2be3f640998dd9c35e50fbab67d55cad7cd955cf03cfc57268363a1c742d0c94",
+        "v1": "ed2b3a1cce776f7e2ad5d685ee1ed0c097dc5e915e50dfeb410ee3bffbc67db1",
+        "stock": "bc6936fcc177d4c852b16862977b8c060614ca42908c6ba6c3c4a1d4ecd8356f",
+        "withoutSubject": "6a8e43e346cf9672e4967654725d89ce027e98b2ede9c8a8b82dab5cc658a78a",
+        "restoredV2": "2be3f640998dd9c35e50fbab67d55cad7cd955cf03cfc57268363a1c742d0c94"
+      },
+      "stockDrawsAndTriangles": [
+        94,
+        319866
+      ],
+      "v2DrawsAndTriangles": [
+        99,
+        344682
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 1667,
+      "V2VsV1MaxChannelGt2Pixels": 409,
+      "V2VsEmptyMaxChannelGt2Pixels": 1057,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 10,
+        "secondOutwardGable": 22,
+        "interveningShedDormer": 0,
+        "turningLowerDiningWing": 140
+      }
+    },
+    "dalvay-principal-low-registration": {
+      "capturedPNGsha256": {
+        "v2": "761bae5af1f8c2ab8b29e094a1d465dd97a14b29b6ee74ba3f1b96a159ca6db8",
+        "v1": "27f9671024ab1fb3514084a35e85ac913e90c8b689cda99ba138864ab9021c48",
+        "stock": "b9ddaaf819e901842fd4dcd08c46d3f7ddf828213614b3ceefb7814cccac34ad",
+        "withoutSubject": "36178d922feef3bc4aa239743a177554ef24071494a6256420dcc058874c253f",
+        "restoredV2": "761bae5af1f8c2ab8b29e094a1d465dd97a14b29b6ee74ba3f1b96a159ca6db8"
+      },
+      "stockDrawsAndTriangles": [
+        109,
+        320306
+      ],
+      "v2DrawsAndTriangles": [
+        114,
+        345122
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 38861,
+      "V2VsV1MaxChannelGt2Pixels": 85,
+      "V2VsEmptyMaxChannelGt2Pixels": 20078,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 0,
+        "secondOutwardGable": 9,
+        "interveningShedDormer": 0,
+        "turningLowerDiningWing": 0
+      }
+    },
+    "dalvay-south-lake-visitor": {
+      "capturedPNGsha256": {
+        "v2": "fa68b60c6340581ced300a3e27e7bde3c935acadd7a85a1f79d3e3d46337ace6",
+        "v1": "2d594b9276e54ace2b82339cd85341886c76625d3faf19acf8252cd574e6bd40",
+        "stock": "2b0b1e101d63bc8adf704bff88c0d0c1c636f07a3ca774d5263cc971b13dbcf1",
+        "withoutSubject": "f8463db54ab384b6df8ff5a16b546cb2539b0584919751364bad658e94bc47c4",
+        "restoredV2": "fa68b60c6340581ced300a3e27e7bde3c935acadd7a85a1f79d3e3d46337ace6"
+      },
+      "stockDrawsAndTriangles": [
+        26,
+        266799
+      ],
+      "v2DrawsAndTriangles": [
+        31,
+        291615
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 35802,
+      "V2VsV1MaxChannelGt2Pixels": 7924,
+      "V2VsEmptyMaxChannelGt2Pixels": 24348,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 1744,
+        "secondOutwardGable": 1244,
+        "interveningShedDormer": 33,
+        "turningLowerDiningWing": 1791
+      }
+    },
+    "dalvay-approach-over-named-lake": {
+      "capturedPNGsha256": {
+        "v2": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00",
+        "v1": "5393149557f4596f8934a6cf312d0e311e64452b1dbcf1d1c1b6d2726d2cab85",
+        "stock": "9ae04ccf1ec5eca5bbbc2c47d9b21b358bdd2e8d156a31eef2531bf1b42034fb",
+        "withoutSubject": "15d13fae14c78d023d60507d13b6a84969c4ea2892306774a615016d2a6f0cea",
+        "restoredV2": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00"
+      },
+      "stockDrawsAndTriangles": [
+        100,
+        308074
+      ],
+      "v2DrawsAndTriangles": [
+        105,
+        332890
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 3722,
+      "V2VsV1MaxChannelGt2Pixels": 1507,
+      "V2VsEmptyMaxChannelGt2Pixels": 2511,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 119,
+        "secondOutwardGable": 132,
+        "interveningShedDormer": 62,
+        "turningLowerDiningWing": 447
+      }
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "capturedPNGsha256": {
+        "v2": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "v1": "8529c993bd0b7b599f8b70cbe28adaa341ba8bcdd3ec1463d0715c3adb8354e1",
+        "stock": "47168248ab4f6dd72a3a14488b08cf1d9325f98263e43b0bf15f66e49adb2400",
+        "withoutSubject": "089eb52a156778d0b3e2c4b18a209364e6f4ec406f3f53f21dc1489cad0870a9",
+        "restoredV2": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50"
+      },
+      "stockDrawsAndTriangles": [
+        101,
+        316198
+      ],
+      "v2DrawsAndTriangles": [
+        106,
+        341014
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 1154,
+      "V2VsV1MaxChannelGt2Pixels": 507,
+      "V2VsEmptyMaxChannelGt2Pixels": 807,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 32,
+        "secondOutwardGable": 37,
+        "interveningShedDormer": 20,
+        "turningLowerDiningWing": 135
+      }
+    },
+    "dalvay-lake-front-lawn": {
+      "capturedPNGsha256": {
+        "v2": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+        "v1": "87b26980ad1f8f416ccd62c4c2ec24b1e59723c5cab4a07131970da19d8ffd6a",
+        "stock": "3e866c4711c255dbc5e58c5c76d65baa08fd497f89e7a1f62ef89393ba362c9e",
+        "withoutSubject": "48f0c527ad3f21982047a669bd426cbf002075e8ec07c902df0d0ca8ababced7",
+        "restoredV2": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3"
+      },
+      "stockDrawsAndTriangles": [
+        99,
+        301024
+      ],
+      "v2DrawsAndTriangles": [
+        104,
+        325840
+      ],
+      "unchangedWaterAndExactRestoration": true,
+      "V2VsOldStockMaxChannelGt2Pixels": 65768,
+      "V2VsV1MaxChannelGt2Pixels": 30043,
+      "V2VsEmptyMaxChannelGt2Pixels": 45094,
+      "strictFormCountsIntersectingV2VsEmptyAndV2VsV1Gt8": {
+        "firstOutwardGable": 2308,
+        "secondOutwardGable": 3273,
+        "interveningShedDormer": 1404,
+        "turningLowerDiningWing": 9920
+      }
+    }
+  }
+}

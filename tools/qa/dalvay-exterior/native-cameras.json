@@ -1,0 +1,94 @@
+{
+  "scope": "Fixed Standard scene and original water, 900x600. The dry southwest garden and 71m southeastern lawn are not shots across the lake. The 280m and 487m southeastern cameras are. The eighth dry-lawn camera uses shared unaltered N112 height.",
+  "size": "900x600",
+  "views": {
+    "dalvay-principal-nw": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "east": -0.7071067811865477,
+      "south": -0.7071067811865474,
+      "h": 14,
+      "nearDist": 105,
+      "nearAgl": 27,
+      "fixedEyeY": 31.97688423076105,
+      "fixedBaseH": 5
+    },
+    "dalvay-lake-side": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "east": -0.6427876096865393,
+      "south": 0.766044443118978,
+      "h": 14,
+      "nearDist": 200,
+      "nearAgl": 45,
+      "fixedEyeY": 48,
+      "fixedBaseH": 5
+    },
+    "dalvay-regional": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "east": 0.8290375725550417,
+      "south": -0.5591929034707468,
+      "h": 14,
+      "nearDist": 450,
+      "nearAgl": 105,
+      "fixedEyeY": 105,
+      "fixedBaseH": 5
+    },
+    "dalvay-principal-low-registration": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 7.3,
+      "east": -0.7071067811865477,
+      "south": -0.7071067811865474,
+      "nearDist": 63,
+      "nearAgl": 13,
+      "fixedEyeY": 18,
+      "fixedBaseH": 5
+    },
+    "dalvay-south-lake-visitor": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 7.7,
+      "east": -0.6427876096865393,
+      "south": 0.766044443118978,
+      "nearDist": 79,
+      "nearAgl": 15,
+      "fixedEyeY": 19.32482833095378,
+      "fixedBaseH": 5
+    },
+    "dalvay-approach-over-named-lake": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 280.3845063322622,
+      "nearAgl": 33,
+      "fixedEyeY": 35,
+      "fixedBaseH": 5
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 486.9045274653363,
+      "nearAgl": 22,
+      "fixedEyeY": 24.96624803006169,
+      "fixedBaseH": 5
+    },
+    "dalvay-lake-front-lawn": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 11,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 71,
+      "nearAgl": 17,
+      "fixedEyeY": 20.46187512251545,
+      "fixedBaseH": 4.9196408152068525
+    }
+  }
+}

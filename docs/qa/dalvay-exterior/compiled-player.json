@@ -1,0 +1,332 @@
+{
+  "active": {
+    "site": "dalvay-lake-coastal-pass",
+    "initial": {
+      "phase": "dispatch",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.179525145351,
+      "z": 8081.484494248333,
+      "alt": 109.945,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": null,
+      "detail": {
+        "ready": 0,
+        "loading": 3,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": false,
+      "layerWarnings": [],
+      "draws": 209,
+      "triangles": 171254,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "approach": {
+      "phase": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.16297309405,
+      "z": 8221.624376612273,
+      "alt": 110.74516671912072,
+      "art": "authored",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 206,
+      "triangles": 296945,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "paused": {
+      "phase": "paused",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Wide chase",
+      "x": 9720.1607404384,
+      "z": 8239.073872332774,
+      "alt": 110.86213983821031,
+      "art": "authored",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 205,
+      "triangles": 296817,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "distanceAtApproachM": 140.14,
+    "deltaFromDispatchAtPauseM": 157.59,
+    "assetCodes": [
+      200
+    ],
+    "assetCount": 1,
+    "wireSHA256": "35b99bcb553c16a25960f98ea540a6313c315d622e5cc75f9aa27b2512ff6382",
+    "moduleCount": 1,
+    "waterRequests": [],
+    "expectedFaultConsole": [],
+    "errors": [],
+    "controls": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Escape \u2192 Pause"
+    ]
+  },
+  "missing": {
+    "site": "dalvay-lake-coastal-pass",
+    "initial": {
+      "phase": "dispatch",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.179525145351,
+      "z": 8081.484494248333,
+      "alt": 109.945,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": null,
+      "detail": {
+        "ready": 0,
+        "loading": 3,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": false,
+      "layerWarnings": [],
+      "draws": 209,
+      "triangles": 171254,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "approach": {
+      "phase": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.16297309405,
+      "z": 8221.624376612273,
+      "alt": 110.74516671912072,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 201,
+      "triangles": 272129,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "paused": {
+      "phase": "paused",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Wide chase",
+      "x": 9720.160965370475,
+      "z": 8237.328877312508,
+      "alt": 110.8504570617118,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 200,
+      "triangles": 272001,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "distanceAtApproachM": 140.14,
+    "deltaFromDispatchAtPauseM": 155.84,
+    "assetCodes": [
+      404
+    ],
+    "assetCount": 1,
+    "wireSHA256": null,
+    "moduleCount": 1,
+    "waterRequests": [],
+    "expectedFaultConsole": [
+      "asset 404"
+    ],
+    "errors": [],
+    "controls": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Escape \u2192 Pause"
+    ]
+  },
+  "stock": {
+    "site": "dalvay-lake-coastal-pass",
+    "initial": {
+      "phase": "dispatch",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.179525145351,
+      "z": 8081.484494248333,
+      "alt": 109.945,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": null,
+      "detail": {
+        "ready": 0,
+        "loading": 3,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": false,
+      "layerWarnings": [],
+      "draws": 209,
+      "triangles": 171254,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "approach": {
+      "phase": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Chase",
+      "x": 9720.162751490896,
+      "z": 8223.369280847888,
+      "alt": 110.75687914988683,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 201,
+      "triangles": 272045,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "paused": {
+      "phase": "paused",
+      "site": "dalvay-lake-coastal-pass",
+      "cam": "Wide chase",
+      "x": 9720.160665378533,
+      "z": 8239.655539589656,
+      "alt": 110.86603342873235,
+      "art": "stock",
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 200,
+      "triangles": 271917,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "distanceAtApproachM": 141.88,
+    "deltaFromDispatchAtPauseM": 158.17,
+    "assetCodes": [],
+    "assetCount": 0,
+    "wireSHA256": null,
+    "moduleCount": 0,
+    "waterRequests": [],
+    "expectedFaultConsole": [],
+    "errors": [],
+    "controls": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Escape \u2192 Pause"
+    ]
+  }
+}

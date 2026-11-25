@@ -1,3 +1,5 @@
+import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
+import {DalvaySocket} from './dalvay-exterior-socket.ts';
 import {SEACOW,seacowOwner,seacowSource,type SeacowSeat} from './seacow-exterior-seat.ts';
 import {KNIGHT_SEAT,knightExactOwner,knightOwns,type KnightSeat} from './souris-knight-seat.ts';
 import {princeSkyGLSL,princeSkyWords} from './prince-roof-sky.ts';
@@ -248,6 +250,7 @@ export class Buildings {
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
+ private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;
  private seacowSeat?:SeacowSeat;
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private knightSeat?:KnightSeat;
@@ -359,6 +362,8 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ enableDalvayExterior(seat:DalvaySeat){this.dalvaySeat=seat;}
+ get dalvayExteriorActive(){return this.dalvay?.active===true;}
  enableSeacowExterior(seat:SeacowSeat){this.seacowSeat=seat;}
  get seacowExteriorActive(){return this.seacow?.view.visible===true;}
  private syncSeacow(){
@@ -468,7 +473,7 @@ export class Buildings {
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
-  this.syncSourisEast();this.syncSeacow();this.syncKnight();
+  this.syncSourisEast();this.syncSeacow();this.syncKnight();this.dalvay?.sync();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -476,6 +481,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.knight?.owner){this.knight.retire();this.knight=undefined;}
     if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
@@ -626,6 +632,8 @@ export class Buildings {
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
    const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
    let seacowBytes:ArrayBuffer|undefined;
+   const dalvay=this.dalvaySeat&&dalvayOwner(this.atlasHash,tile)?this.dalvaySeat:undefined;
+   let dalvayBytes:ArrayBuffer|undefined;
    const knight=this.knightSeat&&knightOwns(this.atlasHash,tile)?this.knightSeat:undefined;
    let knightBytes:ArrayBuffer|undefined;
    const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
@@ -637,7 +645,7 @@ export class Buildings {
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -645,6 +653,7 @@ export class Buildings {
     features=await Buildings.decodeChunk(raw);
     if(tapped)observed=raw;
     if(seacow)seacowBytes=raw;
+    if(dalvay)dalvayBytes=raw;
     if(knight)knightBytes=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
@@ -677,9 +686,10 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(dalvay&&dalvayBytes){this.dalvay?.dispose();this.dalvay=new DalvaySocket(this.scene,mesh,dalvayBytes,features.length,features[DALVAY.ordinal],dalvay);this.dalvay.sync();}
    if(seacow&&seacowBytes)void this.promoteSeacow(mesh,seacowBytes,features.length,features[SEACOW.ordinal],seacow);
    if(knight&&knightBytes)void this.promoteKnight(mesh,knightBytes,features.length,features[KNIGHT_SEAT.ordinal],knight);
    if(primBytes&&features[POINT_PRIM.ordinal]){
