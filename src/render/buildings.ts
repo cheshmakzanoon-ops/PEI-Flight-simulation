@@ -1,4 +1,5 @@
 import {SEACOW,seacowOwner,seacowSource,type SeacowSeat} from './seacow-exterior-seat.ts';
+import {KNIGHT_SEAT,knightExactOwner,knightOwns,type KnightSeat} from './souris-knight-seat.ts';
 import {princeSkyGLSL,princeSkyWords} from './prince-roof-sky.ts';
 import {POINT_PRIM,pointPrimDrawSource,pointPrimOwner,type PointPrimStock} from './point-prim/admit.ts';
 import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
@@ -249,6 +250,9 @@ export class Buildings {
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
  private seacowSeat?:SeacowSeat;
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
+ private knightSeat?:KnightSeat;
+ private knight?:{owner:THREE.Mesh;art:THREE.Group;originalMaterial:THREE.Material|THREE.Material[];
+  current:()=>boolean;retire:()=>void;variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private pointPrimEnabled=false;
  private primStock?:PointPrimStock;
  private primDraw?:PointPrimDrawLease;
@@ -389,6 +393,36 @@ export class Buildings {
    this.scene.add(group);this.seacow={owner,art,view,intact,retire,originalMaterial:owner.material};this.syncSeacow();
   }catch{/** Missing module, invalid seat or mismatched geometry leaves the original full tile in place. */}
  }
+ enableKnightExterior(seat:KnightSeat){this.knightSeat=seat;}
+ get knightExteriorActive(){return this.knight?.variant.visible===true;}
+ private syncKnight(){
+  const p=this.knight;if(!p)return;
+  p.variant.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
+   p.art.parent===this.scene&&p.current()&&!this.scene.overrideMaterial&&this.knightSeat?.resident()===true);
+ }
+ private async promoteKnight(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:KnightSeat){
+  const pending=()=>this.meshes.get(KNIGHT_SEAT.id)===owner&&owner.parent===this.scene&&this.wanted.has(KNIGHT_SEAT.id)&&!this.knight;
+  if(!pending())return;
+  try{
+   if(!await knightExactOwner(raw,rows,row,owner)||!await seat.verifiedCover()||!pending())return;
+   const {drawKnightTower}=await import('./souris-knight-art.ts');if(!pending())return;
+   const art=drawKnightTower(seat.floor),p=art.position.clone(),q=art.quaternion.clone(),s=art.scale.clone();
+   const parts=art.children.map(o=>{
+    const m=o as THREE.Mesh<THREE.BufferGeometry,THREE.Material>,g=m.geometry;
+    return {m,g,material:m.material,uniformPosition:g.getAttribute('position'),layers:m.layers.mask,
+      position:m.position.clone(),quaternion:m.quaternion.clone(),scale:m.scale.clone()};
+   });
+   const current=()=>parts.length===4&&art.children.length===4&&art.matrixAutoUpdate&&art.position.equals(p)&&art.quaternion.equals(q)&&art.scale.equals(s)&&
+    parts.every(({m,g,material,uniformPosition,layers,position,quaternion,scale},i)=>art.children[i]===m&&m.parent===art&&m.visible&&m.material===material&&material.visible&&
+     m.geometry===g&&g.getAttribute('position')===uniformPosition&&m.layers.mask===layers&&!g.index&&g.drawRange.start===0&&g.drawRange.count===Infinity&&
+     m.matrixAutoUpdate&&m.position.equals(position)&&m.quaternion.equals(quaternion)&&m.scale.equals(scale));
+   const variant=authenticatedOwnerVariant(owner,art,owner.userData.beaconTriangles,KNIGHT_SEAT.proof);
+   const dispose=()=>{for(const part of parts){part.g.dispose();part.material.dispose();}art.removeFromParent();};
+   if(!variant){dispose();return;}
+   this.scene.add(art);this.knight={owner,art,originalMaterial:owner.material,current,variant,retire:()=>{variant.dispose();dispose();}};
+   this.syncKnight();
+  }catch{/** Optional art never removes the actual original building on failure. */}
+ }
  enablePointPrim(){this.pointPrimEnabled=true;}
  get pointPrimSource(){
   const q=this.primStock;
@@ -434,7 +468,7 @@ export class Buildings {
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
-  this.syncSourisEast();this.syncSeacow();
+  this.syncSourisEast();this.syncSeacow();this.syncKnight();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -443,6 +477,7 @@ export class Buildings {
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
+    if(m===this.knight?.owner){this.knight.retire();this.knight=undefined;}
     if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
     if(m===this.sourisEast?.owner){
      if(this.sourisEast.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
@@ -591,6 +626,8 @@ export class Buildings {
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
    const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
    let seacowBytes:ArrayBuffer|undefined;
+   const knight=this.knightSeat&&knightOwns(this.atlasHash,tile)?this.knightSeat:undefined;
+   let knightBytes:ArrayBuffer|undefined;
    const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
    const east=this.sourisEastGround&&crockettAtlasCandidate(this.atlasHash,tile)?this.sourisEastGround:undefined;
    let eastBytes:ArrayBuffer|undefined;
@@ -600,7 +637,7 @@ export class Buildings {
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -608,6 +645,7 @@ export class Buildings {
     features=await Buildings.decodeChunk(raw);
     if(tapped)observed=raw;
     if(seacow)seacowBytes=raw;
+    if(knight)knightBytes=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
     if(east&&crockettExactRow(features))eastBytes=raw;
@@ -639,10 +677,11 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(seacow&&seacowBytes)void this.promoteSeacow(mesh,seacowBytes,features.length,features[SEACOW.ordinal],seacow);
+   if(knight&&knightBytes)void this.promoteKnight(mesh,knightBytes,features.length,features[KNIGHT_SEAT.ordinal],knight);
    if(primBytes&&features[POINT_PRIM.ordinal]){
     this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};
    }

@@ -1,0 +1,91 @@
+{
+  "scope": "Exact compiled V3 stock pack and normal Souris waterfront departure; production app, no pose injection or other flight-engine changes.",
+  "runtimeManifestSHA256": "25ac2c663ea442811739be38391b046ebb7c2e4312fe624a46cd70879129870b",
+  "buildVerification": {
+    "unitPassed": 496,
+    "unitFailed": 0,
+    "TypeScript": "passed",
+    "Vite": "passed",
+    "world": "passed"
+  },
+  "fixtureCases": [
+    {
+      "scope": "Actual compiled game and unchanged Souris waterfront flight start, not a real navigation procedure.",
+      "scenario": "active",
+      "site": "souris-waterfront-pass",
+      "lastMode": "paused",
+      "camera": "Wide chase",
+      "stockWaterCorrectionStillActive": true,
+      "newTowerMode": "authored",
+      "localArtModuleRequests": 1,
+      "expectedFaults": [],
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "unexpectedErrors": []
+    },
+    {
+      "scope": "Actual compiled game and unchanged Souris waterfront flight start, not a real navigation procedure.",
+      "scenario": "missing",
+      "site": "souris-waterfront-pass",
+      "lastMode": "paused",
+      "camera": "Wide chase",
+      "stockWaterCorrectionStillActive": true,
+      "newTowerMode": "stock",
+      "localArtModuleRequests": 1,
+      "expectedFaults": [
+        "expected optional art response 404",
+        "expected console 404"
+      ],
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "unexpectedErrors": []
+    },
+    {
+      "scope": "Actual compiled game and unchanged Souris waterfront flight start, not a real navigation procedure.",
+      "scenario": "stock",
+      "site": "souris-waterfront-pass",
+      "lastMode": "paused",
+      "camera": "Wide chase",
+      "stockWaterCorrectionStillActive": true,
+      "newTowerMode": "stock",
+      "localArtModuleRequests": 0,
+      "expectedFaults": [],
+      "buildingTiles": {
+        "wanted": 8,
+        "ready": 8,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "unexpectedErrors": []
+    }
+  ]
+}

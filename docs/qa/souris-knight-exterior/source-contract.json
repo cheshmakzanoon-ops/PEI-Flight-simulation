@@ -1,0 +1,163 @@
+{
+  "site": "Souris East Light Tower, Knight Point, 134 Breakwater Street, not East Point Light or the outer breakwater daymark",
+  "scope": "Qualitative exterior. Exact published model, three-dimensional ground fit and receiver behavior are game evidence only. No new source Z, no field-built optical replica, no copyrighted photo pixels. No shore or grade replacement.",
+  "oldOwner": {
+    "id": "q131",
+    "offset": 3160146,
+    "bounds": [
+      -62.247517,
+      46.342794,
+      -62.115853,
+      46.375008
+    ],
+    "count": 548,
+    "bytes": 23589,
+    "sha256": "58ea53baa3ebee8377380583ca29cb91d13a7d8c7185e5fbfd0129e0cf5f116e",
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "rows": 548,
+    "rowOrdinal": 33,
+    "orderedRingSHA256": "7f342a63dc53c014ba03abcd7910e8474b5393e1afba5c101e9dd3db4936dd33",
+    "wholePositionCount": 31176,
+    "removedPositionRange": [
+      2259,
+      2298
+    ],
+    "neighborUnaffectedOrdinal": 449
+  },
+  "sourceHorizontalMatch": {
+    "provinceObjectID": 69235,
+    "distanceM": 1.3604888106169204,
+    "footprintOverlapIoU": 0.4850553867682951,
+    "areasM2": [
+      24.694539766975048,
+      44.961106793249144
+    ],
+    "civicNotAnAnchor": true,
+    "chartMarkNotAnAnchor": true,
+    "boundaryToIndependentWacoM": 15.315173981457866,
+    "licenceScope": "Independently published official provincial services used for location checks only; no provincial boundary polygons are distributed."
+  },
+  "heightEvidence": "Use owner documentary 14.3m as a provisional exterior height, 14.1m PEI Lighthouse Society and 14.4m chart-list structure bracket. Heritage listing also claims 18.5m, no reconciliation measurement, and 27.2m is chart focal elevation above water, never a building height. No claim of survey or exact original datum.",
+  "primarySources": [
+    "https://www.pc.gc.ca/apps/dfhd/page_fhbro_eng.aspx?id=4672",
+    "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=18696",
+    "https://www.shai.ca/harbour-authority/historic-lighthouse/",
+    "https://notmar.gc.ca/publications/list-lights/atl/atl942-en",
+    "https://peilighthousesociety.ca/index.php/lighthouses/open-lighthouses/47-souris-east-lighthouse"
+  ],
+  "artistReference": [
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Lighthouse_PEI-00352_-_Souris_East_Lighthouse_(22287743005).jpg",
+      "author": "Dennis G. Jarvis",
+      "date": "2015-10-12",
+      "rights": "CC BY-SA 2.0",
+      "use": "visual qualitative observation only; no copy, tracing, texture or camera fit"
+    },
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Souris_East_Lighthouse_(22099959118).jpg",
+      "author": "Dennis G. Jarvis",
+      "date": "2015-10-12",
+      "rights": "CC BY-SA 2.0",
+      "observation": "A separate doorless wall with two hooded sashes. Same author session as the earlier reference; not independent."
+    },
+    {
+      "source": "https://www.tourismpei.com/attractions/souris-historic-lighthouse",
+      "observation": "Listed property photograph 6445-1369332016, capture date not stated. One side has a door and two windows, adjacent face only one high window. Visual observation only; no image source, trace, sample or texture shipped."
+    },
+    {
+      "source": "https://www.historicplaces.ca/en/rep-reg/image-image.aspx?id=18696",
+      "author": "Province of Prince Edward Island, C. Stewart",
+      "date": "2011",
+      "observation": "Historic Register view packages the one-high-sash face and distinct doorless two-sash face. Visual corroboration only; no image data is shipped."
+    }
+  ],
+  "actualGameModel": {
+    "scope": "Unsurveyed low visual restaging, exact V3 original simulator source shape only. Orders are local nominal model faces, not navigation bearings.",
+    "centre": [
+      73122.55525639614,
+      10.956709818958613,
+      17122.716939925675
+    ],
+    "faceTypes": [
+      [
+        {
+          "cap": "plain",
+          "door": false,
+          "bottom": 7.74,
+          "top": 9.02
+        }
+      ],
+      [
+        {
+          "cap": "gable",
+          "door": false,
+          "bottom": 1.63,
+          "top": 3.24
+        },
+        {
+          "cap": "gable",
+          "door": false,
+          "bottom": 4.55,
+          "top": 6.13
+        }
+      ],
+      [],
+      [
+        {
+          "cap": "gable",
+          "door": true,
+          "bottom": 0.5349561218282521,
+          "top": 2.72
+        },
+        {
+          "cap": "gable",
+          "door": false,
+          "bottom": 4.1,
+          "top": 5.66
+        },
+        {
+          "cap": "plain",
+          "door": false,
+          "bottom": 7.56,
+          "top": 8.97
+        }
+      ]
+    ],
+    "opaqueAndTranslucentBatchCounts": [
+      [
+        "Tapered white shaft",
+        44,
+        false
+      ],
+      [
+        "Red brackets, gallery, dome and redstone foot",
+        3075,
+        false
+      ],
+      [
+        "Static nominal internal optic",
+        576,
+        false
+      ],
+      [
+        "Separate glazed lantern panes",
+        24,
+        true
+      ]
+    ],
+    "separatelyGuardedLanding": {
+      "role": 3,
+      "guardReach": 1.19,
+      "guardHalfWidth": 0.7
+    }
+  },
+  "sealedInputs": {
+    "cameraRegistration": "0b6caee42effad24edf10dc9a4a25cc9555c0fa768c42c4985f2368252cef207",
+    "trueAwayAncillaryCamera": "4f17a21d96b6c2c72541e7fe6e3c531fc8eee525b9b36087ab795f11f29d6692",
+    "strictRuntimeManifest": "25ac2c663ea442811739be38391b046ebb7c2e4312fe624a46cd70879129870b",
+    "facadeCameraRegistration": "59bca6583c936302b42f6b1cabb7a323c47d25267bbccc5e78e851c1636eb21c"
+  },
+  "stockCoastAndAircraftPhysicsUnchanged": true,
+  "replacedDraftScope": "Earlier staged draft held for wrong door/window topology. Source figures not independently measured; not an as-built replica or current cliff/grounds certification.",
+  "knownOmission": "Second upper flank opening adjacent to the entrance, seen obliquely in an independent witness, is missing on the intentionally blank fourth face. This release does not reconstruct all fa\u00e7ades."
+}

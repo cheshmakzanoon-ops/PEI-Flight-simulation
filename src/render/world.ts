@@ -1273,6 +1273,12 @@ export class World {
   return !!p&&!!g&&p.lod===112&&g.visible&&!!g.parent&&!p.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
    !this.grades?.has('8-14')&&g.geometry.index?.count===112*112*6;
  }
+ /** Own exactly the already visible Standard fine grade at Knight Point. */
+ knightGroundReady(){
+  const p=this.byId.get('28-14'),g=p?.fine;
+  return !!p&&!!g&&p.lod===112&&g.visible&&!!g.parent&&g.material===p.local&&!p.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
+   !this.grades?.has('28-14')&&g.geometry.index?.count===112*112*6;
+ }
  /** Exact visible original near ground for the optional local mounted church daylight. */
  basilicaSunGround(ours?:THREE.Material){
   const t=this.byId.get('16-16'),g=t?.fine;

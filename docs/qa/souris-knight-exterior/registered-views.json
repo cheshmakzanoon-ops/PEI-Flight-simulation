@@ -1,0 +1,115 @@
+{
+  "scope": "Four actual 900\u00d7600 game artist views and two controls, fixed diagnostic cameras. No flight injection in the separate player record. These compare real submitted game layers, not source photos or device FPS. All eight streamed building tiles were present.",
+  "publishedStockBase": "fb50a80383b72d610cdeb0524dd28fe697edb61a",
+  "finalManifest": "25ac2c663ea442811739be38391b046ebb7c2e4312fe624a46cd70879129870b",
+  "residencyAndSameWaterCorrection": true,
+  "matchedBaselineViews": [
+    {
+      "name": "souris-knight-northwest-close",
+      "sameCamera": {
+        "site": "souris-knight-northwest",
+        "lon": -62.24741942357752,
+        "lat": 46.345964825443446,
+        "h": 14.3,
+        "east": -0.7071067811865477,
+        "south": -0.7071067811865474,
+        "nearDist": 61,
+        "nearAgl": 33,
+        "dist": 61,
+        "agl": 33,
+        "fixedBaseH": 11,
+        "fixedEyeY": 33
+      },
+      "oldRawSHA256": "5c33604456b05219acb498a4abc5944b69e25363ec4f2c5e709ffb801ef2295b",
+      "finalRawSHA256": "eb9797c348b40ac26169b79671c43929fabfcecdde70d1c84de114ce2dd8b326",
+      "difference": {
+        "changedAny": 8603,
+        "changedOver2": 8603,
+        "boundsXYXY": [
+          420,
+          223,
+          478,
+          377
+        ]
+      }
+    },
+    {
+      "name": "souris-knight-southwest-close",
+      "sameCamera": {
+        "site": "souris-knight-southwest",
+        "lon": -62.24741942357752,
+        "lat": 46.345964825443446,
+        "h": 14.3,
+        "east": -0.7071067811865475,
+        "south": 0.7071067811865477,
+        "nearDist": 94,
+        "nearAgl": 37,
+        "dist": 94,
+        "agl": 37,
+        "fixedBaseH": 11,
+        "fixedEyeY": 37
+      },
+      "oldRawSHA256": "f585e09535645def00259a7f017afb0b796a1d12db42bf48ac3d2e1bf9bff30e",
+      "finalRawSHA256": "13e162075ad26a023e29a36e3e3b358c25617f52e6574b4745e6039efc1956bc",
+      "difference": {
+        "changedAny": 3707,
+        "changedOver2": 3707,
+        "boundsXYXY": [
+          428,
+          250,
+          469,
+          345
+        ]
+      }
+    }
+  ],
+  "newFaceCompositionChecks": [
+    {
+      "name": "souris-knight-entry-close",
+      "recordedFixedPose": {
+        "site": "souris-knight-entry",
+        "lon": -62.24741942357752,
+        "lat": 46.345964825443446,
+        "h": 14.3,
+        "east": -0.5000000000000004,
+        "south": -0.8660254037844384,
+        "nearDist": 29,
+        "nearAgl": 9,
+        "dist": 29,
+        "agl": 9,
+        "fixedBaseH": 11,
+        "fixedEyeY": 9
+      },
+      "rawSHA256": "af301da9691c5d8d8d930d1351d67c6754be0e8bec34ef5c6013ade29797913a"
+    },
+    {
+      "name": "souris-knight-paired-sash-close",
+      "recordedFixedPose": {
+        "site": "souris-knight-paired-sash",
+        "lon": -62.24741942357752,
+        "lat": 46.345964825443446,
+        "h": 14.3,
+        "east": 0.5299192642332049,
+        "south": 0.848048096156426,
+        "nearDist": 32,
+        "nearAgl": 9,
+        "dist": 32,
+        "agl": 9,
+        "fixedBaseH": 11,
+        "fixedEyeY": 20
+      },
+      "rawSHA256": "1b1ad2bc44fb380ae4ad47f62458a5b8c524a10f122a754bf413c146c709c959"
+    }
+  ],
+  "explicitStockVeto": {
+    "originalByteParity": true,
+    "rawSHA256": "f585e09535645def00259a7f017afb0b796a1d12db42bf48ac3d2e1bf9bff30e"
+  },
+  "protectedAncillary": {
+    "sourceOwner": "q131/449",
+    "newTowerOutsideCamera": true,
+    "newTowerActuallyActive": true,
+    "zeroPixelDifference": true,
+    "rawSHA256": "4553165c9cc29274fd10f4c63e0ef84de16c77512b81d849cdd9ae2f85cb67e4"
+  }
+}

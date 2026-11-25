@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Original local architectural study, never a terrain or general Detail replacement.
@@ -266,6 +266,11 @@ export function seacowExteriorRequested(q:URLSearchParams){
 }
 
 /** This is only the yard, selected urban pavement and sidewalks, never the architecture itself. */
+export function sourisKnightRequested(q:URLSearchParams){
+ return q.has('sourisKnightExterior')&&!q.has('stockSourisKnight')&&
+  q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
+}
+
 export function basilicaYardSunRequested(q:URLSearchParams){
  return q.has('basilicaYardSun')&&!q.has('stockBasilicaSun')&&basilicaExteriorRequested(q);
 }
