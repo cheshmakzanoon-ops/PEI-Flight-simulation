@@ -1,0 +1,515 @@
+{
+  "checkout": "0d9a10f8d0a88319af1e4ae969a53bd5d6b932b8",
+  "owner": {
+    "tile": "q12000113",
+    "ordinal": 63,
+    "wireSha256": "dc65b28a35ad13eb4223d9253b799a1dda894c97c9cbbc3236646af141c06f80",
+    "surveyWindow": "15 July\u201315 September 2020",
+    "ringPoints": 59,
+    "atlasHeightM": [
+      2.08,
+      16.77
+    ]
+  },
+  "heritage": {
+    "visualGuide": {
+      "page": [
+        8,
+        9
+      ],
+      "sha256": "224588a7ac4cc718b72a26ed8655abff87c2d853a13c282ce7930f2fe1eb39f2",
+      "source": "https://confederationcentre.com/wp-content/uploads/2019/02/CCOA-Visual-Story_AUGUST-12.pdf"
+    },
+    "existingElevations": {
+      "sheets": [
+        "A-104",
+        "A-200",
+        "A-201"
+      ],
+      "pdfPages": [
+        49,
+        81,
+        82
+      ],
+      "sha256": "bc03bb9739919ee532efbc557fbe17f94b8efcf4254ef3ac5fa03417338eb1a0",
+      "source": "https://irac.pe.ca/wp-content/uploads/2024-12-24-City-Record-1379-4074-1393-v.pdf"
+    },
+    "referenceOnly": "2019\u201320 venue architecture, not current access or physical property information. Actual narrow glass and entrances are deliberately not fabricated."
+  },
+  "nativeTransects": {
+    "EPSG": 3979,
+    "window": [
+      2384350,
+      300937,
+      2384485,
+      301098
+    ],
+    "resolutionM": 1,
+    "source": "https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b",
+    "rawChipSha256": {
+      "dtm": "e2b55296caca9fe08d211ec143c1ce659e60af44aa00087b8ccbc40773736c08",
+      "dsm": "9a4740be1799ae96d46a6d4ce88fa6e8249903c065ed26555f06c073ae1bcc93"
+    },
+    "scope": "Measured 2020 surface support, not structure heights shown for every date. DSM and source point cloud may be from the same project. All native raster chips stay outside this report.",
+    "records": {
+      "44": {
+        "allRowsGroupedBoundaryCheck": {
+          "wallLengthM": 13.462,
+          "nativeRows": {
+            "-3.0": {
+              "DTM": [
+                8.02,
+                8.36,
+                9.05
+              ],
+              "DSM": [
+                9.19,
+                13.34,
+                13.7
+              ],
+              "hAGL": [
+                0.15,
+                4.98,
+                5.63
+              ]
+            },
+            "-1.5": {
+              "DTM": [
+                7.33,
+                7.52,
+                8.08
+              ],
+              "DSM": [
+                10.04,
+                11.93,
+                12.92
+              ],
+              "hAGL": [
+                1.98,
+                4.5,
+                5.44
+              ]
+            },
+            "1.5": {
+              "DTM": [
+                7.28,
+                7.57,
+                7.83
+              ],
+              "DSM": [
+                11.43,
+                11.75,
+                13.43
+              ],
+              "hAGL": [
+                3.97,
+                4.13,
+                6.15
+              ]
+            },
+            "3.0": {
+              "DTM": [
+                7.38,
+                7.7,
+                7.99
+              ],
+              "DSM": [
+                11.93,
+                12.1,
+                12.84
+              ],
+              "hAGL": [
+                4.11,
+                4.23,
+                5.46
+              ]
+            },
+            "5.0": {
+              "DTM": [
+                7.66,
+                8.02,
+                8.3
+              ],
+              "DSM": [
+                11.97,
+                12.26,
+                13.96
+              ],
+              "hAGL": [
+                3.71,
+                4.19,
+                6.3
+              ]
+            }
+          }
+        },
+        "interiorLengthGate": {
+          "-2.0": {
+            "samples": 19,
+            "minimumMedianMaximumDSM": [
+              9.5,
+              12.8,
+              13.5
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "0.0": {
+            "samples": 19,
+            "minimumMedianMaximumDSM": [
+              10.5,
+              11.2,
+              11.8
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "1.5": {
+            "samples": 19,
+            "minimumMedianMaximumDSM": [
+              11.4,
+              11.8,
+              12.9
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "3.0": {
+            "samples": 19,
+            "minimumMedianMaximumDSM": [
+              11.9,
+              12.0,
+              13.1
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "5.0": {
+            "samples": 19,
+            "minimumMedianMaximumDSM": [
+              11.9,
+              12.2,
+              14.0
+            ],
+            "heightDatum": "CGVD2013 metres"
+          }
+        }
+      },
+      "37": {
+        "allRowsGroupedBoundaryCheck": {
+          "wallLengthM": 18.003,
+          "nativeRows": {
+            "-3.0": {
+              "DTM": [
+                9.36,
+                9.52,
+                9.69
+              ],
+              "DSM": [
+                12.34,
+                14.41,
+                15.92
+              ],
+              "hAGL": [
+                3.01,
+                4.89,
+                6.35
+              ]
+            },
+            "-1.5": {
+              "DTM": [
+                9.31,
+                9.48,
+                9.66
+              ],
+              "DSM": [
+                13.15,
+                18.14,
+                21.2
+              ],
+              "hAGL": [
+                3.48,
+                8.58,
+                11.76
+              ]
+            },
+            "1.5": {
+              "DTM": [
+                9.26,
+                9.35,
+                9.44
+              ],
+              "DSM": [
+                19.2,
+                23.72,
+                23.79
+              ],
+              "hAGL": [
+                9.82,
+                14.35,
+                14.57
+              ]
+            },
+            "3.0": {
+              "DTM": [
+                9.2,
+                9.27,
+                9.35
+              ],
+              "DSM": [
+                21.68,
+                23.7,
+                23.77
+              ],
+              "hAGL": [
+                12.39,
+                14.43,
+                14.58
+              ]
+            },
+            "5.0": {
+              "DTM": [
+                9.09,
+                9.16,
+                9.26
+              ],
+              "DSM": [
+                22.55,
+                23.73,
+                23.74
+              ],
+              "hAGL": [
+                13.45,
+                14.52,
+                14.61
+              ]
+            }
+          }
+        },
+        "interiorLengthGate": {
+          "-2.0": {
+            "samples": 18,
+            "minimumMedianMaximumDSM": [
+              14.3,
+              16.2,
+              20.8
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "0.0": {
+            "samples": 18,
+            "minimumMedianMaximumDSM": [
+              22.3,
+              23.9,
+              24.1
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "1.5": {
+            "samples": 18,
+            "minimumMedianMaximumDSM": [
+              23.7,
+              23.7,
+              24.0
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "3.0": {
+            "samples": 18,
+            "minimumMedianMaximumDSM": [
+              23.7,
+              23.7,
+              23.8
+            ],
+            "heightDatum": "CGVD2013 metres"
+          },
+          "5.0": {
+            "samples": 18,
+            "minimumMedianMaximumDSM": [
+              23.7,
+              23.7,
+              23.7
+            ],
+            "heightDatum": "CGVD2013 metres"
+          }
+        }
+      }
+    },
+    "stockCommonEaveEstimateM": 26.076,
+    "stacItem": "10_3-mosaic-1m",
+    "stacTileDatetimeNotLocal": "2025-09-27T12:00:00Z",
+    "stacLastUpdate": "2026-10-27T01:14:55Z",
+    "dsmMosaicETag": "a117346714667913c801489b24ec0356-2829",
+    "exactAppliedDate": {
+      "start": "2020-07-15",
+      "end": "2020-09-15",
+      "sourceProduct": "PEI_Prince_Edward_Island_2020_MNEHR_MNS",
+      "appliedFeature": 181,
+      "verifiedNativeCellCentres": {
+        "37": 120,
+        "44": 60
+      },
+      "metadata": "https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b/resource/008455f0-a480-4f93-bb7f-458e696d4ece"
+    },
+    "mosaicAttribution": {
+      "metadataCatalogue": "https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b/resource/008455f0-a480-4f93-bb7f-458e696d4ece",
+      "sourceLayer": "metadata_2",
+      "featureID": 181,
+      "surveyId": "PEI_Prince_Edward_Island_2020_MNEHR_MNS",
+      "acquisition": [
+        "2020-07-15",
+        "2020-09-15"
+      ],
+      "perEdgeQueriedCells": {
+        "37": 120,
+        "44": 60
+      },
+      "metadataZipSha256": "c12055f23b96759480dfd8222111c5e4c4abd16769f94030a19b90b48f174c69",
+      "exclusiveSelectedSource": "All sample cell centers intersect one selected 2020 DSM source footprint. Older 2008 source candidates do not change the selected 2020 metadata layer."
+    }
+  },
+  "releaseDecision": "Hold all runtime. A 37-only stone option is supported narrowly in height but still reads as a patched fa\u00e7ade under an unsupported inherited upper rim. A dated block decomposition with independent ground and opening fit is needed.",
+  "headUnchangedRuntimeAtTest": "0d9a10f8d0a88319af1e4ae969a53bd5d6b932b8",
+  "isolated37Bench": {
+    "central-prong": {
+      "metrics": {
+        "pixels": 449360,
+        "admitted": 67475,
+        "changed": 62423,
+        "meaningful": 25809,
+        "outside": 0,
+        "maxCode": 66,
+        "roleContinuity": {
+          "44": {
+            "support": 0,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          },
+          "37": {
+            "support": 67475,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          }
+        },
+        "medianChangedRGB": [
+          13.0,
+          11.0,
+          10.0
+        ],
+        "sameStockAtZero": true,
+        "sameStockRepeat": true,
+        "nominalDrawChange": 0,
+        "nominalTriangleChange": 0
+      },
+      "pose": {
+        "lon": -63.12639162634976,
+        "lat": 46.234282495461215,
+        "dist": 17.528548143048138,
+        "east": 11.017747703095418,
+        "south": 13.633020045246466,
+        "agl": 6.4,
+        "h": 17.9
+      },
+      "eye": [
+        5661.387388650204,
+        15.509839922312587,
+        29551.078796954782
+      ],
+      "taggedVertices": 6
+    },
+    "queen-into-row": {
+      "metrics": {
+        "pixels": 614400,
+        "admitted": 944,
+        "changed": 881,
+        "meaningful": 450,
+        "outside": 0,
+        "maxCode": 62,
+        "roleContinuity": {
+          "44": {
+            "support": 0,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          },
+          "37": {
+            "support": 881,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          }
+        },
+        "medianChangedRGB": [
+          11.0,
+          9.0,
+          9.0
+        ],
+        "sameStockAtZero": true,
+        "sameStockRepeat": true,
+        "nominalDrawChange": 0,
+        "nominalTriangleChange": 0
+      },
+      "pose": {
+        "lon": -63.126303,
+        "lat": 46.234157,
+        "dist": 83.06677209403507,
+        "east": -63.09885159159281,
+        "south": 54.02428670463414,
+        "agl": 2.25,
+        "h": 7.0
+      },
+      "eye": [
+        5594.073977786744,
+        11.339751832751517,
+        29605.42027508871
+      ],
+      "taggedVertices": 6
+    },
+    "sourceHashes": {
+      "frontage.ts": "cf5c02d2b00d13dd7fbda3b2eb3a8adec080b01885a37337b8260bcebac3525c",
+      "sandstone.ts": "e5f35ba1894369616dc3b9b5fd87a2e3269a68c62b0c080946b81cf74d19e791"
+    },
+    "queen-held": {
+      "metrics": {
+        "pixels": 449360,
+        "admitted": 0,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "maxCode": 0,
+        "roleContinuity": {
+          "44": {
+            "support": 0,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          },
+          "37": {
+            "support": 0,
+            "internalEmptyPixels": 0,
+            "internalGapGroups": 0
+          }
+        },
+        "medianChangedRGB": [],
+        "sameStockAtZero": true,
+        "sameStockRepeat": true,
+        "nominalDrawChange": 0,
+        "nominalTriangleChange": 0
+      },
+      "pose": {
+        "lon": -63.12708,
+        "lat": 46.23431,
+        "dist": 58.194788408431066,
+        "east": -46.057555906196484,
+        "south": 35.57154680147671,
+        "agl": 3.0,
+        "h": 14.0
+      },
+      "eye": [
+        5551.4707385735255,
+        13.73274395872727,
+        29569.959889371497
+      ],
+      "taggedVertices": 6
+    },
+    "naturalFlight": {
+      "site": "harbour-low",
+      "startedInFlight": true,
+      "approachGateMet": false,
+      "whatFailed": "Browser did not reach the predeclared 460m optical capture gate before the 320s timeout; no visual improvement admitted on an actual low flight. This is not a claim about failures on a real route or performance."
+    }
+  }
+}

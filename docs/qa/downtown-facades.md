@@ -26,3 +26,7 @@ changed 69,080 pixels by more than four RGB levels, with the same
 338,423 triangles; 54 pixels exceeded four levels along the distant
 horizon, with no material family assigned there. These fixed-render
 statistics do not establish real-device performance.
+
+The [Confederation Centre of the Arts frontage study](centre-frontage-hold.md)
+records a case where a credible material still sits on the wrong building
+volume. Both candidate treatments were rejected rather than turned on in flight.
