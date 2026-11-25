@@ -154,3 +154,21 @@ test('standard Tracadie imagery join leaves Detail and separately locked variant
  assert.equal(forestFloorProfile(q('?stockTracadieOrtho')),'standard');
  assert.equal(standardOpenRipplesRequested(q('?stockTracadieOrtho')),true);
 });
+
+
+test('each stock A/B switch leaves independent Standard shading active',()=>{
+ const q=(x:string)=>sceneryOptions('?departure=hunter-river-trail&diagnostics&'+x);
+ for(const flag of ['stockConfederationTrail','stockCanopyLight','stockRegionalCanopy']){
+  assert.equal(forestFloorProfile(q(flag)),'standard');
+  assert.equal(standardTracadieOrtho(q(flag)),true);
+  assert.equal(standardOpenRipplesRequested(q(flag)),true);
+ }
+ assert.equal(forestFloorProfile(q('stockForestFloor')),false);
+ assert.equal(standardTracadieOrtho(q('stockTracadieOrtho')),false);
+ assert.equal(standardOpenRipplesRequested(q('stockOpenRipples')),false);
+ for(const flag of ['surveyRelief','buildingShadows','unknownOption']){
+  assert.equal(forestFloorProfile(q(flag)),false);
+  assert.equal(standardTracadieOrtho(q(flag)),false);
+  assert.equal(standardOpenRipplesRequested(q(flag)),false);
+ }
+});

@@ -246,14 +246,19 @@ export function standardDuneGrassRequested(q:URLSearchParams){
  return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
   !['duneReliefStudy','pointPrimStudy','regionalCanopyStudy','orthophotoSeamStudy','nearshoreFoamStudy','legacyShoreArcs','seatedForestShadows','canopyLight','shoreToneStudy','kingsDryCrownStudy'].some(k=>q.has(k));
 }
+// Comparison switches exempt only their owning feature. The flag itself
+// cannot move another Standard layer onto its historical reference path.
+const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockConfederationTrail']);
+const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
+
 /** Standard owns only the independently pinned Tracadie join. Keep the
  * historic multi-site experiment and locked map styles separate. */
 export function standardTracadieOrtho(q:URLSearchParams){
  const mode=q.get('scenery');
  if(mode&&mode!=='standard')return false;
  if(q.has('stockTracadieOrtho'))return false;
- const neutral=['scenery','departure','diagnostics','qa','stockCanopyLight','stockOpenRipples','stockForestFloor'];
- return [...q.keys()].every(k=>neutral.includes(k));
+ return standardComparisonQuery(q);
 }
 /** Ordinary close forest only. An explicit floor request retains the
  * historical preview, including in the bundled Detail profile. */
@@ -262,8 +267,7 @@ export function forestFloorProfile(q:URLSearchParams):false|true|'standard'{
  if(q.has('forestFloor'))return true;
  const mode=q.get('scenery');
  if(mode&&mode!=='standard')return false;
- const common=['scenery','diagnostics','departure','qa','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockTracadieOrtho'];
- return [...q.keys()].every(k=>common.includes(k))?'standard':false;
+ return standardComparisonQuery(q)?'standard':false;
 }
 /** Appearance-only default. Preserve separately locked woodland, relief,
  * architecture and shadow comparisons unless directional light is explicit. */
@@ -354,7 +358,7 @@ export function standardOpenCoastRequested(q:URLSearchParams){
  * supported keys are dispatch/telemetry only; none select a different surface. */
 function ordinarySceneryKeysOnly(q:URLSearchParams){
  const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
- return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa'||k==='stockOpenRipples'||k==='stockForestFloor'||k==='stockTracadieOrtho');
+ return standardComparisonQuery(q);
 }
 export function standardPanmurePastureRequested(q:URLSearchParams){
  return ordinarySceneryKeysOnly(q);
