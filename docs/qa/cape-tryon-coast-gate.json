@@ -1,0 +1,378 @@
+{
+  "scope": "Five exact one-zero atlas cells; no mask or terrain change.",
+  "isolatedWorldBaseline": "a044e599d517818adb9918d3a53f9bc464236ee6",
+  "runtimeCombinedUnitTests": 408,
+  "combinedTypeScriptBuild": "pass",
+  "combinedWorldVerification": "pass",
+  "isolatedFixedFrames": {
+    "headland-north": {
+      "bandY": [
+        213,
+        540
+      ],
+      "oldPartial": 3933,
+      "newPartial": 686,
+      "oldPure": 3359,
+      "newPure": 279,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 5275,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          69,
+          253758
+        ],
+        [
+          70,
+          254312
+        ]
+      ]
+    },
+    "headland-east": {
+      "bandY": [
+        258,
+        540
+      ],
+      "oldPartial": 1062,
+      "newPartial": 613,
+      "oldPure": 714,
+      "newPure": 326,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 1116,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          87,
+          222826
+        ],
+        [
+          88,
+          223380
+        ]
+      ]
+    },
+    "headland-grazing": {
+      "bandY": [
+        291,
+        540
+      ],
+      "oldPartial": 6606,
+      "newPartial": 519,
+      "oldPure": 6068,
+      "newPure": 405,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 14451,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          146,
+          245095
+        ],
+        [
+          147,
+          245649
+        ]
+      ]
+    },
+    "orby-protected": {
+      "bandY": [
+        215,
+        550
+      ],
+      "oldPartial": 8600,
+      "newPartial": 8600,
+      "oldPure": 7740,
+      "newPure": 7740,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 0
+      },
+      "visible": 0,
+      "stats": [
+        [
+          12,
+          188235
+        ],
+        [
+          12,
+          188235
+        ]
+      ]
+    },
+    "panmure-protected": {
+      "bandY": [
+        255,
+        540
+      ],
+      "oldPartial": 142,
+      "newPartial": 142,
+      "oldPure": 0,
+      "newPure": 0,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 0,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 0
+      },
+      "visible": 0,
+      "stats": [
+        [
+          192,
+          309642
+        ],
+        [
+          192,
+          309642
+        ]
+      ]
+    }
+  },
+  "isolatedOrdinaryFlightCases": [
+    {
+      "mode": "tryon",
+      "site": "cape-tryon-coast",
+      "motionM": 322.233,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.95310611193429,
+      "endAltitudeM": 84.13855774883675,
+      "coverage": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "earlierOpenCoast": {
+        "chunks": 2,
+        "refined": 0
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "stock",
+      "site": "cape-tryon-coast",
+      "motionM": 106.231,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.94641502209963,
+      "endAltitudeM": 82.57395194067443,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "prince",
+      "site": "prince-open-shore-pass",
+      "motionM": 105.96,
+      "startGroundY": -0.055,
+      "startAltitudeM": 71.97198423295976,
+      "endAltitudeM": 72.67791855918266,
+      "coverage": {
+        "chunks": 1,
+        "refined": 0
+      },
+      "earlierOpenCoast": {
+        "chunks": 2,
+        "refined": 1
+      },
+      "coverRequests": 1
+    },
+    {
+      "mode": "changed-source",
+      "site": "cape-tryon-coast",
+      "motionM": 107.944,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.94595022978893,
+      "endAltitudeM": 82.58211906298278,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "shifted-bounds",
+      "site": "cape-tryon-coast",
+      "motionM": 107.946,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.95310611193429,
+      "endAltitudeM": 82.6188678374734,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "detail",
+      "site": "cape-tryon-coast",
+      "motionM": 110.231,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.95310611193429,
+      "endAltitudeM": 82.6351969349602,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    },
+    {
+      "mode": "study",
+      "site": "cape-tryon-coast",
+      "motionM": 107.945,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.94760343129627,
+      "endAltitudeM": 82.59436949928832,
+      "coverage": null,
+      "earlierOpenCoast": null,
+      "coverRequests": 1
+    }
+  ],
+  "geometryAndVirtualContact": {
+    "stockTriangles": 98972,
+    "stockBatches": 70,
+    "exactFloat32": true,
+    "baselineCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "wrongCoverRejected": true,
+    "groundAndContactUnchanged": true,
+    "geometryBuild": {
+      "triangles": 554,
+      "sha": "1ca56d85636ac649bf07d5d72d87e100bc2e0563b5e761d3e8e3700610ff8701",
+      "visibleNearDraws": 1
+    },
+    "exactContactProbeCount": 5445,
+    "neutralCorridor": {
+      "site": "cape-tryon-coast",
+      "initial": {
+        "height": -0.055,
+        "land": false,
+        "runway": false
+      },
+      "initialAltitudeM": 81.945,
+      "fixedStepHz": 90,
+      "motionM": 870.1499672461637,
+      "minVirtualTerrainClearanceM": 54.96098262643787,
+      "steps": 1522,
+      "overLandTicks": 566,
+      "exactInStockComparison": true,
+      "notForNavigation": true
+    },
+    "sites": [
+      {
+        "i": 1550,
+        "j": 1326,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 1549,
+        "j": 1325,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 1551,
+        "j": 1326,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 1553,
+        "j": 1325,
+        "contactProbes": 1089,
+        "reentryExact": true
+      },
+      {
+        "i": 1552,
+        "j": 1325,
+        "contactProbes": 1089,
+        "reentryExact": true
+      }
+    ]
+  },
+  "hardwarePerformanceClaim": false,
+  "combinedWorldBaseline": "c363928428922ac79d4c39a03997da19d86b42d5",
+  "combinedOrdinaryCliffPass": [
+    {
+      "mode": "tryon",
+      "site": "cape-tryon-coast",
+      "motionM": 320.511,
+      "startGroundY": -0.055,
+      "startAltitudeM": 81.94528926294697,
+      "endAltitudeM": 84.08169922827409,
+      "coverage": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "earlierOpenCoast": {
+        "chunks": 2,
+        "refined": 0
+      },
+      "coverRequests": 1
+    }
+  ],
+  "combinedExactNorthFrames": {
+    "headland-north": {
+      "bandY": [
+        213,
+        540
+      ],
+      "oldPartial": 3933,
+      "newPartial": 686,
+      "oldPure": 3359,
+      "newPure": 279,
+      "newSkyPixels": 0,
+      "increasedByMoreThanOne": 0,
+      "rgbChanged": 5275,
+      "rgbOutsideBand": 0,
+      "active": {
+        "chunks": 1,
+        "refined": 1
+      },
+      "visible": 1,
+      "stats": [
+        [
+          69,
+          253758
+        ],
+        [
+          70,
+          254312
+        ]
+      ]
+    }
+  },
+  "combinedPastureFlightControl": {
+    "site": "panmure-head-coast",
+    "dispatch": {
+      "proof": "cold",
+      "mounted": false,
+      "gain": 0
+    },
+    "final": {
+      "proof": "ready",
+      "mounted": true,
+      "gain": 1
+    },
+    "flownM": 444.88,
+    "heightM": 81.05,
+    "artRequests": 1,
+    "errors": [],
+    "layerWarnings": [],
+    "visibleBuildingTileFailures": 0
+  }
+}

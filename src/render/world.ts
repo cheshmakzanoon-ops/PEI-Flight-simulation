@@ -1,5 +1,5 @@
 import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
-import {allowShortOpenArc,allowPanmureOpenArc} from '../sim/open-coast-closure.ts';
+import {allowShortOpenArc,allowPanmureOpenArc,allowTryonOpenArc} from '../sim/open-coast-closure.ts';
 import {POINT_PRIM} from './point-prim/admit.ts';
 import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
 import {smoothShoreTone} from './shore-tone.ts';
@@ -502,6 +502,8 @@ export class World {
  private legacyShore?:LegacyShoreCurtains;
  private openCoast?:LegacyShoreCurtains;
  private panmureCoast?:LegacyShoreCurtains;
+ private tryonCoast?:LegacyShoreCurtains;
+ get tryonCoastState(){return this.tryonCoast?.state??null;}
  /** Only the live ordinary 25-18 land material can acquire this optic. Named slots
   * preserve any other compiled sources; unrelated tile shaders do not have them. */
  panmurePastureBinding(){
@@ -802,7 +804,7 @@ export class World {
   const cuts=new Map<string,[number,number][]>();
   const batches:NonNullable<World['bank']>['batches']=[];
   const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
-  const legacy:ShoreSegment[]=[],openArcs:ShoreSegment[]=[],panmureArcs:ShoreSegment[]=[],legacySeen=new Set<ShoreSegment>(),legacyStock=new Map<string,number[]>();
+  const legacy:ShoreSegment[]=[],openArcs:ShoreSegment[]=[],panmureArcs:ShoreSegment[]=[],tryonArcs:ShoreSegment[]=[],legacySeen=new Set<ShoreSegment>(),legacyStock=new Map<string,number[]>();
   const legacyCulling=new Map<string,THREE.Sphere>();
   const terrainTx=(t.right-t.left)/WORLD_COLS,terrainTz=(t.bottom-t.top)/WORLD_ROWS;
   const protectedOwners=[...COASTAL_SPECS,...this.terrain.coastalGrids.map(g=>g.spec)];
@@ -832,6 +834,7 @@ export class World {
    if(orby&&allowOrbyZeroArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return 'pinned-zero';
    if(shortOpen&&allowShortOpenArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return 'pinned-short';
    if(shortOpen&&allowPanmureOpenArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return q.includes(0)?'panmure-zero':'panmure';
+   if(shortOpen&&allowTryonOpenArc(i,j,this.cover.width,this.cover.height,this.cover.sourceSha,q)&&!forbidden(x0,z0,x1,z1))return 'tryon-zero';
    return legacyShore&&!forbidden(x0,z0,x1,z1);
   }:undefined);
   const joins=new Set<string>(),keyOf=(x:number,z:number)=>x.toFixed(4)+','+z.toFixed(4);
@@ -853,7 +856,7 @@ export class World {
      const key=stockShoreKey(stock),v=legacyStock.get(key)??[];
      appendStockCurtain(stock,t,v);legacyStock.set(key,v);legacySeen.add(stock);
     }
-    (segment.openRepair==='pair'?openArcs:segment.openRepair==='panmure'?panmureArcs:legacy).push(segment);continue;
+    (segment.openRepair==='pair'?openArcs:segment.openRepair==='panmure'?panmureArcs:segment.openRepair==='tryon'?tryonArcs:legacy).push(segment);continue;
    }
    const {ax,az,bx,bz}=segment;
    const bank=showBank&&inBasinBank(segment,this.cover.basin);if(bank)segments.push(segment);else if(showBank)outside.push(segment);
@@ -913,6 +916,7 @@ export class World {
   if(legacy.length)this.legacyShore=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,legacy,legacyCulling,orby);
   if(openArcs.length)this.openCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,openArcs,legacyCulling,true,'Open-shore coverage repair');
   if(panmureArcs.length)this.panmureCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,panmureArcs,legacyCulling,true,'Panmure Head coverage repair');
+  if(tryonArcs.length)this.tryonCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,tryonArcs,legacyCulling,true,'Cape Tryon coverage repair');
   if(review&&reviewed.length){
    const geom=new THREE.BufferGeometry(),mesh=new THREE.Mesh(geom,material);
    mesh.name='reviewed Montague shoreline support';mesh.visible=false;
@@ -1459,6 +1463,7 @@ export class World {
   this.legacyShore?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   this.openCoast?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   this.panmureCoast?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
+  this.tryonCoast?.update(pos.x,pos.z,b=>this.visualGroundSignature(b),(x,z)=>this.visualGroundHeight(x,z));
   if(changedGround)this.groundVersion++;
   this.orthoSeams?.update(clock,id=>this.byId.get(id));
   const now=performance.now();

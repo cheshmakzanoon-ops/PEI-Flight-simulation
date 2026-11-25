@@ -33,6 +33,8 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
+**Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](docs/qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces.
+
 ### Scenery previews
 
 In Dispatch, choose **Use detailed preview** to enable the [curated profile](docs/qa/scenery-profile.md). Use **Use standard** to return without losing your departure. For individual comparisons, these flags also work on their own:

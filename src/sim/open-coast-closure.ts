@@ -21,3 +21,15 @@ export const PANMURE_SHORE_CELLS:readonly (readonly [i:number,j:number,corners:Q
 export function allowPanmureOpenArc(i:number,j:number,w:number,h:number,sha:string|undefined,q:Quad){
  return w===4096&&h===2720&&sha===ORBY_COVER_SHA&&PANMURE_SHORE_CELLS.some(([x,z,c])=>x===i&&z===j&&c.every((v,k)=>q[k]===v));
 }
+
+/** Five source-pinned, witnessed single-zero cells at Cape Tryon. */
+export const TRYON_SHORE_CELLS:readonly (readonly [number,number,Quad])[]=[
+ [1549,1325,[6,-10,0,15]],
+ [1552,1325,[-19,-4,12,0]],
+ [1553,1325,[-4,0,20,12]],
+ [1550,1326,[0,-10,12,14]],
+ [1551,1326,[-10,0,19,12]],
+];
+export function allowTryonOpenArc(i:number,j:number,w:number,h:number,sha:string|undefined,q:Quad){
+ return w===4096&&h===2720&&sha===ORBY_COVER_SHA&&TRYON_SHORE_CELLS.some(([x,z,a])=>x===i&&z===j&&a.every((v,k)=>q[k]===v));
+}
