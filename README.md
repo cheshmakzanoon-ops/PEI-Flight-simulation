@@ -31,7 +31,7 @@ Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or
 
 **Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](docs/qa/waterfront-departures.md) · [Georgetown exterior and flight check](docs/qa/st-davids-church-study.md).
 
-The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery.
+The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
 ### Scenery previews
 

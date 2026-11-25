@@ -1,0 +1,705 @@
+{
+  "base": "a044e599d517818adb9918d3a53f9bc464236ee6",
+  "baseTree": "7dc825e9ee1d62fedfaf06941366bb07043afe9e",
+  "scope": "One interpreted 2020 low pasture interior in ordinary Standard: appearance only; no geometry or flight changes. Simulated site and colours are not a current land survey.",
+  "sourceChecks": {
+    "rendererFilesSHA256": {
+      "src/main.ts": "402113187740fb9f012b35ad32f4fea9765282f7bd1aa33839291ad55fc3d36f",
+      "src/render/buildings.ts": "8fcd0c8cb2926e84b2f994645832f3fb58def31160dc909caf48ff9af3ac3e6d",
+      "src/render/world.ts": "6d68a72ea7f4760a88b41cac7d1ae5adb8057d651f691c08d7eee8b5255bb8bc",
+      "src/app/scenery-profile.ts": "e70bcdcc0dd4a19008f11c76a9773b13258a00ca7e3f6bf481452bd3fdae40cc",
+      "src/render/panmure-pasture/flight.ts": "0c8a77ba7b0f9bbbb6cdc92d5818590270a1c41faba18fdd5f72a249d27db232",
+      "src/render/panmure-pasture/material.ts": "0829d1c0e4f8ab1afacc6019a0c686afa2d87ab0399f6d90232e7ee8e2839326",
+      "src/render/panmure-pasture/mask.generated.ts": "ab080427aefc7ab0194fb0125e567f043348ce5de7505af33b5aebf36bab1836"
+    },
+    "fieldId": "1760020",
+    "originalAreaInSceneM2": 29974.576,
+    "rawR8SHA256": "787ffcf201dcaddded604c11423361cfa175545f24e44272a117903f74a06b01",
+    "gzipSHA256": "cbfb3a27ed2e7a860b7c5d481eb8c60c53c2caf1c81f47ae1fdf1ce2002db500",
+    "compressedBytes": 3361,
+    "decodedBytes": 50268,
+    "reproducibleSingleFeatureResponseSHA256": "6e67faa05ef9a9826a87f955c1faebd937901c85f270d668f0c16519e0fde652",
+    "independentlyRebuilt": true,
+    "dtmSampleSHA256": "6cf5c849602f9d27717a27287999dc4f4c9414fde5cee09ad515833e862b647e",
+    "dsmSampleSHA256": "5ef9ee70792a52bab0a4bf73395faec88594d6ef23950536e3dce9fff94ab693",
+    "fullTentAreaM2": 10566.0,
+    "outsideFieldM2": 0.0,
+    "neighborOverlapM2": 0.0,
+    "activeOneMetreCentres": 10211,
+    "fullWeightCentres": 3739,
+    "allClassesOnFullTent": [
+      30
+    ],
+    "minimumFieldBoundaryM": 9.794,
+    "minimumBuildingOutlineM": 27.07,
+    "minimumMappedRoadEdgeM": 12.569,
+    "coastMetresOnEntireTent": [
+      93.912,
+      177.862
+    ],
+    "terrainTile": "25-18",
+    "uploadedImageSHA256": "444dcbdb31052c27e6142ba1a73c56f8abb86b7c93cba0b87465018c4a9d3349"
+  },
+  "paletteRevision": {
+    "method": "D65 CIELAB C* from sRGB. Compare the identical 13,691 role pixels of the 24 m lock. The underlying stock pixels within this same role are exactly equal between the first and revised studies. Thresholded statistics elsewhere are per variant and labeled separately.",
+    "sameRolePixels": 13691,
+    "roleXorPixels": 0,
+    "stockChangedPixelsInsideSameRole": 0,
+    "medianChromaAcrossIdenticalRole": {
+      "stock": 11.6176,
+      "rejectedFirstPass": 17.4546,
+      "released": 14.8081
+    },
+    "medianRGBChangeAcrossIdenticalRole": {
+      "rejectedFirstPass": [
+        0,
+        6,
+        -1
+      ],
+      "released": [
+        1,
+        3,
+        -1
+      ]
+    },
+    "medianChromaAcrossReleasedAbove2CodePixels": [
+      11.58,
+      17.07
+    ],
+    "areFieldColoursSurveyed": false
+  },
+  "capture": {
+    "renderer": "Chromium/SwiftShader WebGL2, 624\u00d7420 canvas for matched optics. No performance estimate.",
+    "cases": [
+      {
+        "name": "close",
+        "eyeMetres": [
+          56325.913,
+          24,
+          39564.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 11893,
+        "meaningful": 7955,
+        "outside": 0,
+        "role": 13691,
+        "maxDelta": 15,
+        "medianRGBDelta": [
+          3.0,
+          6.0,
+          -1.0
+        ],
+        "medianChromaBefore": 11.58,
+        "medianChromaAfter": 17.07,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 115,
+        "triangles": 286234,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "9bab784eaf295fed4fc19801b87d29b84a7c561736b271957c8da7ed9dc256ba",
+        "materialPngSHA256": "731625216bc2f12e9c29599832d98082723903d9734320bd717aa50b13b18e5b"
+      },
+      {
+        "name": "approach",
+        "eyeMetres": [
+          56486.913,
+          68,
+          39500.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 3287,
+        "meaningful": 2148,
+        "outside": 0,
+        "role": 3737,
+        "maxDelta": 10,
+        "medianRGBDelta": [
+          3.0,
+          5.0,
+          0.0
+        ],
+        "medianChromaBefore": 11.47,
+        "medianChromaAfter": 14.87,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 123,
+        "triangles": 284604,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "e535cc4ed627eab8f0bde23624c0dbadfe5d84a59d267714fb321d19c2ce7f0b",
+        "materialPngSHA256": "0f8f6e177e784a132fe7a93c3e8792b0abc39e9ce55dab33923aaf88b3489bf7"
+      },
+      {
+        "name": "normal-flight",
+        "eyeMetres": [
+          56368.074,
+          87.105,
+          39538.74
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 21553,
+        "meaningful": 15734,
+        "outside": 0,
+        "role": 24089,
+        "maxDelta": 15,
+        "medianRGBDelta": [
+          3.0,
+          6.0,
+          -1.0
+        ],
+        "medianChromaBefore": 11.53,
+        "medianChromaAfter": 16.9,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 311,
+        "triangles": 335244,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "07293467dc19df7f2f74ecff5eb15f45c4124404bae44ec2c9dfab11b008408e",
+        "materialPngSHA256": "67baba9cd991a2b2f9d6f34d915e701f2d2eab4784ba26b4bfea65869e259b81"
+      },
+      {
+        "name": "neighbor-mixed",
+        "eyeMetres": [
+          56311.913,
+          22,
+          39515.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 16,
+        "triangles": 221847,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "f14039f42d2f3e4cb9da6a374a7dece349d7fd5e35fb68b8190437b561b3430d",
+        "materialPngSHA256": "f14039f42d2f3e4cb9da6a374a7dece349d7fd5e35fb68b8190437b561b3430d"
+      },
+      {
+        "name": "road-fence",
+        "eyeMetres": [
+          56270.913,
+          17,
+          39526.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 16,
+        "triangles": 222787,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "4fd2f5613e1fa46bcdd6dffe02c339fcb33c111a8790d72bce6fa61aee1537d4",
+        "materialPngSHA256": "4fd2f5613e1fa46bcdd6dffe02c339fcb33c111a8790d72bce6fa61aee1537d4"
+      },
+      {
+        "name": "fore-peninsula",
+        "eyeMetres": [
+          56286.913,
+          36,
+          39548.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 27,
+        "triangles": 221441,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "b42562bfd067abea9bfdf34842862c557c84df5cb019983fea30c70f8f007cbc",
+        "materialPngSHA256": "b42562bfd067abea9bfdf34842862c557c84df5cb019983fea30c70f8f007cbc"
+      },
+      {
+        "name": "height180",
+        "eyeMetres": [
+          56164.913,
+          180,
+          39605.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 56618,
+        "meaningful": 43822,
+        "outside": 0,
+        "role": 62453,
+        "maxDelta": 15,
+        "medianRGBDelta": [
+          3.0,
+          7.0,
+          -1.0
+        ],
+        "medianChromaBefore": 11.55,
+        "medianChromaAfter": 17.07,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "13c3b834f1ee8b233beb0ec4cb59542dccff4f04c5b974d574076667befe424f",
+        "materialPngSHA256": "8e5df4298728ea4ad9bdb752f67de3ff4feacb957ad30c6ebc1016cdb1904093"
+      },
+      {
+        "name": "height218",
+        "eyeMetres": [
+          56164.913,
+          218,
+          39605.536
+        ],
+        "artGain": 0.648,
+        "total": 262080,
+        "changed": 36980,
+        "meaningful": 25707,
+        "outside": 0,
+        "role": 41902,
+        "maxDelta": 10,
+        "medianRGBDelta": [
+          2.0,
+          5.0,
+          -1.0
+        ],
+        "medianChromaBefore": 11.53,
+        "medianChromaAfter": 15.19,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "58d1403905e6e7dd10c244a20d884ec4701ba8cc3aefcd0e3d18992d7060db4f",
+        "materialPngSHA256": "49e928aa3c87115f683dd4d77c1bb91cbae39b80636cdbe324cc029910864d56"
+      },
+      {
+        "name": "height254",
+        "eyeMetres": [
+          56164.913,
+          254,
+          39605.536
+        ],
+        "artGain": 0.12498965,
+        "total": 262080,
+        "changed": 19996,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 29178,
+        "maxDelta": 2,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "f7d402f79c6b091a088ab0492bc4633bc1ad7b4bebacb893340ba45d0e44b003",
+        "materialPngSHA256": "8db610ccb67c1efc80dfa1a6b5fb222c13a7986548d6acd7874dd6d254e9c656"
+      },
+      {
+        "name": "height272",
+        "eyeMetres": [
+          56164.913,
+          272,
+          39605.536
+        ],
+        "artGain": 0.00292871,
+        "total": 262080,
+        "changed": 606,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 15701,
+        "maxDelta": 1,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "2be2c1afd7fddc61e7bea250bebd1d4d610bf1a1f36f8e8ffd1ab10970317ae7",
+        "materialPngSHA256": "2fa239f9b6fee5f1a3167129118274082529d0b4ba07f7ab0db1ed0cd2694535"
+      },
+      {
+        "name": "height274.99",
+        "eyeMetres": [
+          56164.913,
+          274.99,
+          39605.536
+        ],
+        "artGain": 3e-08,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "81463ae34cd3f1c17aad7fc55eb44443543238a3f5240ecd389082ca7aee5f53",
+        "materialPngSHA256": "81463ae34cd3f1c17aad7fc55eb44443543238a3f5240ecd389082ca7aee5f53"
+      },
+      {
+        "name": "height275",
+        "eyeMetres": [
+          56164.913,
+          275,
+          39605.536
+        ],
+        "artGain": 0,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "1af4ad608a9411bbe219ed13e34fe8bbd5566a830d20c6cd149938bf9aa1aaab",
+        "materialPngSHA256": "1af4ad608a9411bbe219ed13e34fe8bbd5566a830d20c6cd149938bf9aa1aaab"
+      },
+      {
+        "name": "height275.01",
+        "eyeMetres": [
+          56164.913,
+          275.01,
+          39605.536
+        ],
+        "artGain": 0,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "5ca19d36011b6ca2294f438bb074dcdef32ff4af0382d2bad4034d5dc7edebcb",
+        "materialPngSHA256": "5ca19d36011b6ca2294f438bb074dcdef32ff4af0382d2bad4034d5dc7edebcb"
+      },
+      {
+        "name": "high",
+        "eyeMetres": [
+          56164.913,
+          352,
+          39605.536
+        ],
+        "artGain": 0,
+        "total": 262080,
+        "changed": 0,
+        "meaningful": 0,
+        "outside": 0,
+        "role": 0,
+        "maxDelta": 0,
+        "medianRGBDelta": [],
+        "medianChromaBefore": null,
+        "medianChromaAfter": null,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "e19ff943dbd2470dd52c906e2bc9329b863c100a78e2d2a83f46e638140e781f",
+        "materialPngSHA256": "e19ff943dbd2470dd52c906e2bc9329b863c100a78e2d2a83f46e638140e781f"
+      },
+      {
+        "name": "above-field",
+        "eyeMetres": [
+          56164.913,
+          69,
+          39605.536
+        ],
+        "artGain": 1,
+        "total": 262080,
+        "changed": 153423,
+        "meaningful": 134293,
+        "outside": 0,
+        "role": 163664,
+        "maxDelta": 19,
+        "medianRGBDelta": [
+          3.0,
+          7.0,
+          -1.0
+        ],
+        "medianChromaBefore": 12.05,
+        "medianChromaAfter": 17.54,
+        "stockRepeatExact": true,
+        "zeroGainStockExact": true,
+        "drawCalls": 17,
+        "triangles": 229037,
+        "drawCallChange": 0,
+        "triangleChange": 0,
+        "stockPngSHA256": "8b3a5b914efad898b2ddf5a930530ba80861dd00725e4bc48ac93329b68971b9",
+        "materialPngSHA256": "9176156d1a62cc7e1dea9a70eddab1d551dd5f70473979b4fd16e00ff981d085"
+      }
+    ]
+  },
+  "independentReview": {
+    "scope": "Independent original visual review on the same source cut. Residuals refer to projected motion after camera reprojection; not physical colour errors.",
+    "materialSHA256": "0829d1c0e4f8ab1afacc6019a0c686afa2d87ab0399f6d90232e7ee8e2839326",
+    "matchedPoses": 25,
+    "motionSamples": 869553,
+    "maxP99RGBCodeResidual": 1.352,
+    "observationsOverFourCodes": 0,
+    "allZeroGainAndRepeatImagesExact": true,
+    "ordinaryRealFlightMeaningfulPixels": 403,
+    "ordinaryRealFlightMaxRGBCode": 6,
+    "malformedAndLeaseTests": [
+      "nonBase64",
+      "wrongCompressed",
+      "wrongLength",
+      "wrongBounds",
+      "swappedShape",
+      "nonlocal",
+      "pausedCold",
+      "notPermitted",
+      "missingOwner",
+      "shortOwner",
+      "wrongOwner",
+      "wrongCover",
+      "delayedLeaveBeforeDigest",
+      "delayedLeaveAfterLoad",
+      "badInstall",
+      "reentry"
+    ],
+    "sourceValidation": "full checked linear mask support, not centre samples only"
+  },
+  "ordinaryCompiledFlights": {
+    "ordinary": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "ready",
+        "mounted": true,
+        "gain": 1
+      },
+      "flownM": 440.97,
+      "heightM": 81.02,
+      "artRequests": 1,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "swapped-detail": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 444.88,
+      "heightM": 81.05,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "unsigned-detail": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 444.88,
+      "heightM": 81.05,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "bad-art": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "stock",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 249.99,
+      "heightM": 79.63,
+      "artRequests": 1,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "wrong-building": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "stock",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 246.65,
+      "heightM": 79.6,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "wrong-cover": {
+      "site": "panmure-head-coast",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "stock",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 249.99,
+      "heightM": 79.63,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "wrong-terrain": {
+      "site": "panmure-head-coast",
+      "dispatch": null,
+      "final": null,
+      "flownM": 112.7,
+      "heightM": 78.62,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "prince": {
+      "site": "prince-open-shore-pass",
+      "dispatch": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "final": {
+        "proof": "cold",
+        "mounted": false,
+        "gain": 0
+      },
+      "flownM": 113.24,
+      "heightM": 72.63,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "stock": {
+      "site": "panmure-head-coast",
+      "dispatch": null,
+      "final": null,
+      "flownM": 114.93,
+      "heightM": 78.64,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "named": {
+      "site": "panmure-head-coast",
+      "dispatch": null,
+      "final": null,
+      "flownM": 114.93,
+      "heightM": 78.64,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    },
+    "detail": {
+      "site": "panmure-head-coast",
+      "dispatch": null,
+      "final": null,
+      "flownM": 114.37,
+      "heightM": 78.63,
+      "artRequests": 0,
+      "errors": [],
+      "layerWarnings": [],
+      "visibleBuildingTileFailures": 0
+    }
+  },
+  "checks": {
+    "typecheckAndBuild": "pass",
+    "worldVerification": "pass",
+    "tests": 407,
+    "failed": 0
+  }
+}

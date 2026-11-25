@@ -330,3 +330,10 @@ export function standardOpenCoastRequested(q:URLSearchParams){
     'orthophotoSeamStudy','shoreToneStudy','regionalCanopyStudy',
     'cavendishDetail','duneReliefStudy','northCapeWind'].some(k=>q.has(k));
 }
+
+/** Fail closed on named, alternate, and unknown scenery comparisons. The
+ * supported keys are dispatch/telemetry only; none select a different surface. */
+export function standardPanmurePastureRequested(q:URLSearchParams){
+ const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
+ return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa');
+}

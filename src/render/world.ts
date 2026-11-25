@@ -1,3 +1,4 @@
+import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
 import {allowShortOpenArc,allowPanmureOpenArc} from '../sim/open-coast-closure.ts';
 import {POINT_PRIM} from './point-prim/admit.ts';
 import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
@@ -271,14 +272,16 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='')=>fp+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false)=>fp+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
  uniform sampler2D imageMap,coverMap,detailMap,paintMap; uniform float hasDetail;uniform vec4 detailBox;
  uniform vec4 airport[3];uniform vec2 stripSize[3];
  ${showFloor&&montague?'uniform vec4 montagueGroundBounds;':''}
+ ${pastureSlots?'/*PASTURE_DECL*/':''}
  void main(){
+ ${pastureSlots?'/*PASTURE_DERIV*/':''}
  #include <logdepthbuf_fragment>
  ${nearGrassNap?`
  // Derivatives must execute before any pixel-varying condition or discard.
@@ -370,6 +373,7 @@ const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuilding
  ${gablesFairway?'paintGablesFairway(col,p,d);':''}
  ${localTrail?'lowerHauntedTrail(col,p,d,coast);':''}
  ${dryCoast?'col=lowMaritimeSoil(col,p,n,coast,d,vuv,coverMap);':''}
+ ${pastureSlots?'/*PASTURE_OPTICS*/':''}
  float light=clamp(dot(n,sun),0.,1.);
  // Inferred low beach substrate vs higher headlands; not a survey of coastal geology.
  float beach=(1.-smoothstep(4.,25.,coast))*(1.-smoothstep(4.,14.,p.y));
@@ -493,10 +497,26 @@ type KingsCrownStage={owner:Patch;stock:THREE.Mesh;measured:THREE.Mesh;morph:Kin
 type StMarysProposedGround=Readonly<{mesh:THREE.Mesh;gradeId:string;bounds:readonly [number,number,number,number];inChangedSupport:(x:number,z:number)=>boolean}>;
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
+ private readonly pinnedPastureDetail=new WeakSet<THREE.Texture>();
  private shoreFaces:THREE.Mesh[]=[];
  private legacyShore?:LegacyShoreCurtains;
  private openCoast?:LegacyShoreCurtains;
  private panmureCoast?:LegacyShoreCurtains;
+ /** Only the live ordinary 25-18 land material can acquire this optic. Named slots
+  * preserve any other compiled sources; unrelated tile shaders do not have them. */
+ panmurePastureBinding(){
+  const t=this.byId.get(PASTURE.tile);if(!t||!pastureTile(t))return;
+  const m=t.local,original=m.fragmentShader,keys=['/*PASTURE_DECL*/','/*PASTURE_DERIV*/','/*PASTURE_OPTICS*/'] as const;
+  if(!keys.every(k=>original.split(k).length===2)||m!==t.coarse.material)return;
+  return {material:m,ready:()=>t.lod===112&&t.status==='ready'&&!!t.detail&&this.pinnedPastureDetail.has(t.detail)&&
+    m.uniforms.hasDetail.value===1&&m.uniforms.detailMap.value===t.detail&&t.detailSince!==undefined&&this.detailClock.value-t.detailSince>=.9&&
+    !!t.fine?.visible&&t.fine.material===m&&!t.coarse.visible,
+    compose:(declarations:string,paint:string)=>{
+     if(m.fragmentShader!==original)return m.fragmentShader;
+     return original.replace(keys[0],declarations).replace(keys[1],
+       'vec2 panmureDx=dFdx(p.xz),panmureDy=dFdy(p.xz);').replace(keys[2],paint);
+    }};
+ }
  get panmureCoastState(){return this.panmureCoast?.state??null;}
  get openCoastState(){return this.openCoast?.state??null;}
  get legacyShoreState(){return this.legacyShore?.state??null;}
@@ -564,8 +584,14 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false){
-  this.details=new DetailImagery(orthoSeams?.verifiedDetail);
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false){
+  this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
+   orthoSeams?.verifiedDetail(id,sha,texture);
+   const image=texture.image as ImageBitmap|undefined;
+   if(id!==PASTURE.tile||sha!==PASTURE.image||image?.width!==640||image.height!==640||texture.flipY||
+      texture.premultiplyAlpha||texture.colorSpace!==THREE.NoColorSpace)return;
+   const prior=texture.onUpdate;texture.onUpdate=t=>{this.pinnedPastureDetail.add(t);prior?.call(texture,t);};
+  }:orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
    const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
@@ -731,7 +757,7 @@ export class World {
     // Preserve the independently reviewed site materials as a whole.
     const tone=shoreTone&&!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&
        !bowleyLocal&&!sourisLocal&&!hasCape&&!localSand&&!localRusticoSoil&&!duneSandHere&&!grassCoastHere&&!showLocalFloor;
-    const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'');
+    const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'',pastureEligible&&i===PASTURE.i&&j===PASTURE.j);
     const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(tone?{shoreToneGain:this.shoreToneGain}:{}),...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:smoothShoreTone(landFragment,tone)});

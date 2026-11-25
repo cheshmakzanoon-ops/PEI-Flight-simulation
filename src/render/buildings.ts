@@ -410,6 +410,7 @@ export class Buildings {
      m.geometry.setIndex(this.greenGables.index);
      this.scene.remove(this.greenGables.group);this.greenGables.dispose(this.greenGables.group);this.greenGables=undefined;
     }
+    if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
     if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
@@ -497,6 +498,13 @@ export class Buildings {
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
  get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
  get northConcreteActive(){return this.northBaywalkActive&&!!this.spinnakers?.north?.sidewalk;}
+ /** Observe bytes already requested by the ordinary building streamer. An observer
+  * cannot start a download or replace a mesh. A reloaded owner has a new identity. */
+ private chunkObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
+ observeSourceChunk(id:string,offset:number,size:number){
+  const o=this.chunkObserver={id,offset,size,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
+  return ()=>o.mesh&&o.mesh.parent===this.scene&&o.mesh.visible&&this.meshes.get(id)===o.mesh&&this.wanted.has(id)?o.content:undefined;
+ }
  get sourceAtlasSha256(){return this.atlasHash;}
  diagnostics(){
   let failed=0;
@@ -521,13 +529,16 @@ export class Buildings {
    const downtown=this.summersideRoofCohort?downtownTilePin(this.atlasHash,tile):undefined;
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,rusticoChunk:string|undefined;
+   const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
+   let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim){
+   if(candidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
+    if(tapped)observed=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
     if(east&&crockettExactRow(features))eastBytes=raw;
@@ -560,6 +571,7 @@ export class Buildings {
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:undefined,!!barnBytes,rusticoChunk,downtownVerified);
+   if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(primBytes&&features[POINT_PRIM.ordinal]){
     this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};
