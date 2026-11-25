@@ -25,6 +25,11 @@ def stage(repo, root, deps, void_probe):
 fixed.stage = stage
 
 POSES = {
+    # Same main shaft P22, along and across the centreline. No inspection of marine access.
+    'main-shaft-broadside': dict(lon=-63.753234528065455, lat=46.20912902644122, dist=80.62257748299056,
+                            east=54.004780718263646, south=59.86220560230868, fixedBaseH=26, fixedEyeY=17, h=0, agl=0),
+    'main-shaft-axial': dict(lon=-63.753234528065455, lat=46.20912902644122, dist=91.66242414424774,
+                        east=67.8094701506916, south=-61.67556856553845, fixedBaseH=25, fixedEyeY=21, h=0, agl=0),
     'navigation-broadside': dict(lon=-63.7521722, lat=46.2099778, dist=1770,
                          east=1110, south=1390, fixedBaseH=38, fixedEyeY=66, h=0, agl=0),
     'main-span-ramp': dict(lon=-63.765, lat=46.2007, dist=520,
@@ -62,9 +67,10 @@ def stable(page, errors):
 
 def capture(args, browser, url):
     results = []
+    width, height = map(int, args.size.split('x'))
     for name in args.views.split(','):
         pose = POSES[name]
-        context = browser.new_context(viewport={'width': 1000, 'height': 600}, device_scale_factor=1)
+        context = browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=1)
         try:
             page = context.new_page()
             errors = []
@@ -86,6 +92,7 @@ parser.add_argument('--checkout', type=Path, required=True)
 parser.add_argument('--out', type=Path, required=True)
 parser.add_argument('--chromium', default=os.getenv('CHROMIUM', 'chromium'))
 parser.add_argument('--deps', type=Path)
-parser.add_argument('--views', default=','.join(POSES))
+parser.add_argument('--views', default=','.join(name for name in POSES if not name.startswith('main-shaft-')))
+parser.add_argument('--size', default='1000x600')
 parser.set_defaults(void_probe=False)
 fixed.run(parser.parse_args())

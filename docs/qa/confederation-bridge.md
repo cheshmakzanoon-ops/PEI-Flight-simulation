@@ -94,3 +94,34 @@ old draw count and adds 20 triangles for the crest station. The compiled
 flight covered 242 m toward New Brunswick, switched to Cockpit and
 paused without a browser or scene error. These are software-rendered
 checks, not real-device frame times.
+
+## Main pier shafts
+
+![Matched views of P22 from the side and nearly along the centreline](confederation-main-shaft.webp)
+
+The 44 main shafts now change from a nominal 8 m lower octagon to a nominal
+10 × 5 m rectangular head. The wider dimension follows the bridge; the head
+narrows across it. The artist-authored mesh follows the dimensions in
+[Lester and Tadros, Final Project Design, pp. 42–43](https://doi.org/10.15554/pcij.09011995.32.44),
+with the orientation inferred from
+[Frederking, Kubat and Prinsenberg's PEI-end view, Figure 2](https://www.researchgate.net/figure/Cross-section-of-the-piers-observed-from-PEI-end-showing-tiltmeter-locations_fig2_44083764).
+[Lin, Naumoski and Saatcioglu, §2](https://doi.org/10.5772/50070) independently
+describe the change in section. The model does not reproduce a survey of
+individual shafts or the concealed structure. No reference imagery is embedded.
+
+All support stations, deck geometry, ice shields, approaches and the overall
+bridge bounds are unchanged. A fitted lower cap seats against the existing
+shield; the upper cap is hidden inside the stock rising girder. Tests raycast
+90 points on each cap at every main pier, check outward winding and planar
+face normals, and verify the stock assembly bounds. The new shaft geometry
+uses the existing instanced draw and adds 528 triangles to the whole bridge.
+
+Use `--views main-shaft-broadside,main-shaft-axial --size 960x640` with the
+pose tool above, retaining the same tool for the `35e23da` baseline. In the
+matched P22 pair, 14,501 broadside pixels and 13,670 axial pixels changed by
+more than two RGB levels, all within the comparison mask for the old or
+new shaft, including the anti-aliasing margin.
+An approach-only control frame was unchanged. The compiled Borden departure
+advanced about 243 m toward New Brunswick, switched to Cockpit and paused
+without a scene or browser error. These are browser QA results, not device
+performance measurements or information about navigation or clearance.

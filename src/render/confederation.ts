@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { addBridgeConcrete } from './bridge-concrete.ts';
+import { mainBridgeShaftGeometry } from './confederation-shaft.ts';
 import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, BRIDGE_DECK_CONTROLS, bridgeGirderDepth } from '../sim/confederation.ts';
 
 const WIDTH = 11;
@@ -57,7 +58,7 @@ export function addConfederationBridge(scene: THREE.Scene) {
   for(const section of ['main','approach'] as const){
     const supports=BRIDGE_SUPPORTS.filter(p=>p.section===section);
     const main=section==='main';
-    const shaft=main?new THREE.CylinderGeometry(3.85,4.35,1,8):new THREE.BoxGeometry(3.5,1,5.1);
+    const shaft=main?mainBridgeShaftGeometry():new THREE.BoxGeometry(3.5,1,5.1);
     const shield=new THREE.CylinderGeometry(main?4.35:3.2,main?9.8:5.8,1,main?12:8);
     const shafts=new THREE.InstancedMesh(shaft,shaftConcrete,supports.length);
     const collars=new THREE.InstancedMesh(shield,shieldConcrete,supports.length);
