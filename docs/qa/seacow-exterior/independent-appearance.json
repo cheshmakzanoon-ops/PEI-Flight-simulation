@@ -1,0 +1,47 @@
+{
+  "scope": "Qualitative, source-separated appearance checks against the frozen original three-dimensional art. This is not a photogrammetric fit, a full present-day site reconstruction, an interactive interior, a viable beacon for navigation, a device performance measurement, or a claim of photorealism.",
+  "artFreeze": "c454ccdb305a5cc650bcf547e72660b992aaca8d81435ff90bc083849a74adba",
+  "heldDesignSeparation": "Artist used descriptive primary records and one dated October 2015 Jarvis photo session. Both review witness sessions were reserved before art/source-height intake; their images were inspected privately only after the first fully rendered frozen tower, and not supplied to the artist as training input. No source imagery is distributed, sampled as texture or traced. Subsequent lifecycle-only protection leaves all four art meshes exactly unchanged.",
+  "witnessSessions": {
+    "historic": {
+      "source": "https://commons.wikimedia.org/wiki/File:PEI_Seacow_Head_Lighthouse.jpg",
+      "originalSha1": "01875268daba7180aa3b63b1db3bdc3ccd0747d2",
+      "originalSha256": "2ce802fc199960b521f89e4b56483865f05972ce5728d9de59f342634d0f0ca0",
+      "originalPixelDimensions": [
+        4356,
+        2720
+      ],
+      "license": "CC BY-SA 4.0, DanBhentschel, 31 August 2017. Private inspection only.",
+      "rendererFitExclusion": "Entire session was withheld against frozen authored geometry."
+    },
+    "modern": {
+      "event": "Actual July 10 2024; published July 15 2024 by official attendees. Excludes unlabeled postcards/earlier spring images on same article.",
+      "source": "https://onthewarmemorialtrail.com/2024/07/15/on-the-war-memorial-trail75th-nato-anniversary-commemoration-at-seacow-head-lighthouse/",
+      "asset": "https://onthewarmemorialtrail.com/wp-content/uploads/2024/07/cimg6887-jul-10-2024-john-pieter-clare-seacow-head-lighthouse-ceremony.jpg",
+      "bytesSha256": "c66e7ce7e53a7b0382f3ad6a5a4ab29b85026e465a96ed7614a49cdc44852baf",
+      "size": [
+        448,
+        299
+      ],
+      "sourceAccess": "Private ordinary display of the publicly posted photograph, no permission asserted to redistribute. Primary full SaltWire video could not be fetched; fallback was signed in advance, same event/same denominator."
+    }
+  },
+  "observedSupported": [
+    "In the 2017 full-tower view, a pale tapered polygonal shaft, sharply projecting viewing gallery, fine open railing, separate red lantern with continuous glazed band and low pointed red roof make a distinctive stacked silhouette. A small pedimented opening sits on a lower visible face. The model changes exactly those architectural categories compared with a repetitive multi-floor generic stock building.",
+    "The 2024 reopening still, taken after federal remediation, shows a clean light horizontal finish, red cap/gallery, and small individually hooded windows staggered on visible shaft faces. It provides a modern check on the material and opening family, not a complete spatial survey.",
+    "The actual 36 m simulation view resolves distinct taper facets, gaps between the rails, translucent lantern panes around an internal optic, and a recessed pedimented window. The constrained wider views retain the recognizable white/red profile. The low footing is independently checked on the actual stock ground; the real site datum was not measured."
+  ],
+  "notValidatedOrDoesNotMatch": [
+    "The 2017 camera tag is inconsistent as a precision receiver pose. Working photographs have their own framing, time, elevation and lens, so a precisely reproduced compass orientation and per-facade aperture count/location are not established. The 2024 event image is low-resolution and blocks the lower structure. It does not prove exact rail, lens or sash dimensions, door bearing, or current optical apparatus.",
+    "The white shaft looks smoother from the visitor camera than the horizontal cladding in the 2024 witness. The 2017 exterior was visibly weathered before replacement and is not used to demand equivalent weathering in current artwork. Surface finish and photoreal material matching remain approximate.",
+    "Older landscape shows grass, dense conifers and a separate tall white feature. The real reopening scene likewise includes a grassy site. Existing broad game ground, woods, nearby generic building, cliff and site furnishings are unchanged, and do not reproduce those witnesses precisely. No assumed identification or modification of the separate neighboring game row. A fully convincing local ground/cast shadow was not part of this release."
+  ],
+  "primarySources": [
+    "https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=16732",
+    "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19528&pid=0",
+    "https://www.canada.ca/en/environment-climate-change/services/federal-contaminated-sites/publications/2021-2022-annual-report.html",
+    "https://peilighthousesociety.ca/index.php/lighthouses/public-lighthouses/81-seacow-head-lighthouse",
+    "https://notmar.gc.ca/publications/list-lights/atl/atl942-en"
+  ],
+  "documentaryCaveat": "The published aid focal plane height (26.8 m above water) is not the shaft height or game terrain datum. Heritage sources differ on date and historical heights. The present exterior finish has changed; an older service description of timber structural character is not proof of current exposed wood shingles."
+}

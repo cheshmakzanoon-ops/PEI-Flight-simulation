@@ -1,3 +1,4 @@
+import {SEACOW,seacowOwner,seacowSource,type SeacowSeat} from './seacow-exterior-seat.ts';
 import {princeSkyGLSL,princeSkyWords} from './prince-roof-sky.ts';
 import {POINT_PRIM,pointPrimDrawSource,pointPrimOwner,type PointPrimStock} from './point-prim/admit.ts';
 import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
@@ -246,6 +247,8 @@ export class Buildings {
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
+ private seacowSeat?:SeacowSeat;
+ private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private pointPrimEnabled=false;
  private primStock?:PointPrimStock;
  private primDraw?:PointPrimDrawLease;
@@ -352,6 +355,40 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ enableSeacowExterior(seat:SeacowSeat){this.seacowSeat=seat;}
+ get seacowExteriorActive(){return this.seacow?.view.visible===true;}
+ private syncSeacow(){
+  const p=this.seacow;if(!p)return;
+  p.view.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
+   p.art.group.parent===this.scene&&p.intact()&&!this.scene.overrideMaterial&&this.seacowSeat?.resident()===true);
+ }
+ private async promoteSeacow(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:SeacowSeat){
+  const present=()=>this.meshes.get(SEACOW.id)===owner&&owner.parent===this.scene&&this.wanted.has(SEACOW.id)&&!this.seacow;
+  if(!present())return;
+  try{
+   if(!(await seacowSource(raw,rows,row,owner))||!await seat.verifiedCover()||!present())return;
+   const {makeSeacowExterior}=await import('./seacow-exterior-art.ts');if(!present())return;
+   const art=makeSeacowExterior(seat.floor),view=authenticatedOwnerVariant(owner,art.group,owner.userData.beaconTriangles,SEACOW.proof);
+   if(!view){art.dispose();return;}
+   // Removing a child, or replacing its draw or local transform, must never leave a
+   // partial lighthouse beside a missing original. Capture once; polling has no allocations.
+   const group=art.group,base=group.position.clone(),rot=group.quaternion.clone(),scale=group.scale.clone();
+   const parts=group.children.map(x=>{const m=x as THREE.Mesh<THREE.BufferGeometry,THREE.Material>;
+    return {m,geo:m.geometry,mat:m.material,attrib:m.geometry.getAttribute('position'),layers:m.layers.mask,position:m.position.clone(),rotation:m.quaternion.clone(),scale:m.scale.clone()};
+   });
+   const intact=()=>{
+    if(parts.length!==4||group.children.length!==4||!group.matrixAutoUpdate||!group.position.equals(base)||!group.quaternion.equals(rot)||!group.scale.equals(scale))return false;
+    for(let i=0;i<parts.length;i++){const p=parts[i],m=p.m;
+     if(group.children[i]!==m||m.parent!==group||!m.visible||m.geometry!==p.geo||m.material!==p.mat||!m.material.visible||m.layers.mask!==p.layers||!m.matrixAutoUpdate||
+       m.geometry.index!==null||m.geometry.drawRange.start!==0||m.geometry.drawRange.count!==Infinity||m.geometry.getAttribute('position')!==p.attrib||
+       !m.position.equals(p.position)||!m.quaternion.equals(p.rotation)||!m.scale.equals(p.scale))return false;
+    }
+    return true;
+   };
+   const retire=()=>{view.dispose();for(const p of parts){p.geo.dispose();p.mat.dispose();}group.removeFromParent();};
+   this.scene.add(group);this.seacow={owner,art,view,intact,retire,originalMaterial:owner.material};this.syncSeacow();
+  }catch{/** Missing module, invalid seat or mismatched geometry leaves the original full tile in place. */}
+ }
  enablePointPrim(){this.pointPrimEnabled=true;}
  get pointPrimSource(){
   const q=this.primStock;
@@ -397,7 +434,7 @@ export class Buildings {
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
-  this.syncSourisEast();
+  this.syncSourisEast();this.syncSeacow();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -405,6 +442,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
     if(m===this.sourisEast?.owner){
      if(this.sourisEast.variant.visible)this.sourisEastShadows?.leaseOwnerChanged();
@@ -551,6 +589,8 @@ export class Buildings {
    const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
+   const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
+   let seacowBytes:ArrayBuffer|undefined;
    const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
    const east=this.sourisEastGround&&crockettAtlasCandidate(this.atlasHash,tile)?this.sourisEastGround:undefined;
    let eastBytes:ArrayBuffer|undefined;
@@ -560,13 +600,14 @@ export class Buildings {
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
     if(tapped)observed=raw;
+    if(seacow)seacowBytes=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
     if(east&&crockettExactRow(features))eastBytes=raw;
@@ -598,9 +639,10 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(seacow&&seacowBytes)void this.promoteSeacow(mesh,seacowBytes,features.length,features[SEACOW.ordinal],seacow);
    if(primBytes&&features[POINT_PRIM.ordinal]){
     this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};
    }

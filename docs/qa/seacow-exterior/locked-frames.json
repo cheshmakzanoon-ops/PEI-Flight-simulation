@@ -1,0 +1,197 @@
+{
+  "scope": "Fixed diagnostic cameras in the actual game, same geometry and URLs except landmark flags. This verifies a local visual replacement and the unchanged ancillary view, not photo equivalence.",
+  "pairs": [
+    {
+      "view": "seacow-southeast-close",
+      "authoredTargetExpected": true,
+      "changedPixels": 6530,
+      "changesOver2": 6527,
+      "boundsXYXY": [
+        422,
+        231,
+        479,
+        371
+      ],
+      "imageSHA256": [
+        "799af018e51ab55dd63429ce63c818cc31018d0a6be76b5e6abd73e5981a6960",
+        "985716f0b059142ed8a7a3dd7e2966697d20d369ed5e659c8592e90c26d186bc"
+      ],
+      "draws": [
+        93,
+        97
+      ],
+      "triangles": [
+        211296,
+        213744
+      ],
+      "imageDimensions": [
+        900,
+        600
+      ],
+      "camera": {
+        "site": "seacow-southeast",
+        "lon": -63.81006756113194,
+        "lat": 46.3158901673318,
+        "h": 18.3,
+        "east": 0.6427876096865395,
+        "south": 0.7660444431189779,
+        "nearDist": 88,
+        "nearAgl": 27,
+        "dist": 88,
+        "agl": 27,
+        "fixedBaseH": 8.810936195468003,
+        "fixedEyeY": 33.45744573584474
+      },
+      "fullyResidentBuildingTiles": [
+        5,
+        5
+      ],
+      "finalGuardedFrameSHA256": "985716f0b059142ed8a7a3dd7e2966697d20d369ed5e659c8592e90c26d186bc",
+      "finalGuardedVersionExactMatch": true
+    },
+    {
+      "view": "seacow-open-approach-close",
+      "authoredTargetExpected": true,
+      "changedPixels": 413,
+      "changesOver2": 413,
+      "boundsXYXY": [
+        443,
+        283,
+        456,
+        316
+      ],
+      "imageSHA256": [
+        "656954bb53bc7c77a481c36e2a0debe9d215661d54fe6f7fb108f1c7ebd71884",
+        "45c6a4ef50b40e4d13c480ca23a456fa2e349b8eb07656c8d95491c4d3197ccb"
+      ],
+      "draws": [
+        93,
+        97
+      ],
+      "triangles": [
+        208972,
+        211420
+      ],
+      "imageDimensions": [
+        900,
+        600
+      ],
+      "camera": {
+        "site": "seacow-open-approach",
+        "lon": -63.81006756113194,
+        "lat": 46.3158901673318,
+        "h": 18.3,
+        "east": 0.6427876096865395,
+        "south": 0.7660444431189779,
+        "nearDist": 365,
+        "nearAgl": 67,
+        "dist": 365,
+        "agl": 67,
+        "fixedBaseH": 8.810936195468003,
+        "fixedEyeY": 67
+      },
+      "fullyResidentBuildingTiles": [
+        5,
+        5
+      ]
+    },
+    {
+      "view": "seacow-northwest-close",
+      "authoredTargetExpected": true,
+      "changedPixels": 4142,
+      "changesOver2": 4142,
+      "boundsXYXY": [
+        426,
+        245,
+        472,
+        354
+      ],
+      "imageSHA256": [
+        "3d792ba546f13382771528b969a4e8490ae7f583a8c91bd3e77a51f636169d2c",
+        "aaf279c9bdf0994adddb12703a1ea8ec55420e2062ca10b3fec54b30e774543b"
+      ],
+      "draws": [
+        124,
+        128
+      ],
+      "triangles": [
+        250258,
+        252706
+      ],
+      "imageDimensions": [
+        900,
+        600
+      ],
+      "camera": {
+        "site": "seacow-northwest",
+        "lon": -63.81006756113194,
+        "lat": 46.3158901673318,
+        "h": 18.3,
+        "east": -0.7660444431189781,
+        "south": -0.6427876096865393,
+        "nearDist": 112,
+        "nearAgl": 34,
+        "dist": 112,
+        "agl": 34,
+        "fixedBaseH": 8.810936195468003,
+        "fixedEyeY": 40.41623467523891
+      },
+      "fullyResidentBuildingTiles": [
+        5,
+        5
+      ]
+    },
+    {
+      "view": "seacow-aux-true-negative-close",
+      "authoredTargetExpected": false,
+      "changedPixels": 0,
+      "changesOver2": 0,
+      "boundsXYXY": null,
+      "imageSHA256": [
+        "ac5e2b6017ce018f16222db16df125c6e55400e4058e7079742931f030e99913",
+        "ac5e2b6017ce018f16222db16df125c6e55400e4058e7079742931f030e99913"
+      ],
+      "draws": [
+        78,
+        78
+      ],
+      "triangles": [
+        220677,
+        220655
+      ],
+      "imageDimensions": [
+        900,
+        600
+      ],
+      "camera": {
+        "site": "seacow-aux-true-negative",
+        "lon": -63.809967571265126,
+        "lat": 46.316203266138615,
+        "h": 9,
+        "east": -0.21535720599507355,
+        "south": 0.9765353418212755,
+        "nearDist": 16.0,
+        "nearAgl": 12,
+        "dist": 16.0,
+        "agl": 12,
+        "fixedBaseH": 10.949226118516194,
+        "fixedEyeY": 22.05102491063557
+      },
+      "fullyResidentBuildingTiles": [
+        5,
+        5
+      ],
+      "finalGuardedFrameSHA256": "ac5e2b6017ce018f16222db16df125c6e55400e4058e7079742931f030e99913",
+      "finalGuardedVersionExactMatch": true
+    }
+  ],
+  "source": {
+    "stockRevision": "49ede35650addd6da4353a503bd4d3f9c1bad2a1",
+    "candidateBaseRevision": "070b21511dde9eb177d317f016c7c0a050ac3007",
+    "initialManifestSHA256": "c454ccdb305a5cc650bcf547e72660b992aaca8d81435ff90bc083849a74adba",
+    "guardedManifestSHA256": "1da60a3df1e448c9f945ec063f80265562fefc73ce60b356730a7a432b6f26f3",
+    "baselineCameraPrelockSHA256": "b6087b1134489a15dc87b498e5b6df78f32737e1477b4a9a9f163658afb74bbf",
+    "ancillaryCameraPrelockSHA256": "deff4526136781ae94455b902e2291bad9c8f0f793043516efaea2e69d5a8027"
+  },
+  "explicitStockToggleSHA256": "799af018e51ab55dd63429ce63c818cc31018d0a6be76b5e6abd73e5981a6960"
+}

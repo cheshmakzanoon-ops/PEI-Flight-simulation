@@ -1,0 +1,115 @@
+{
+  "status": "Before any new Seacow original point heights, candidate appearance/images, DSM/DTM label or photo pixel in this study. First metadata-only identity and independent geographic proposal; no inspection of any held renderer after fitting. Auxiliary chart/building-service extent alone is NOT admitted as mesh art.",
+  "source": {
+    "name": "pei_2020_337000_696000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_337000_696000.copc.laz",
+    "objectBytes": 19865953,
+    "etag": "\"4902a1082a4e0662943a45a04a171b55-3\"",
+    "officialProject": "Prince_Edward_Island_2020, PEI, original CanElevation classification; national tile index file 2bbff163e954debcbc42800203b2aa77bc93a7fac1f2f1df83493bca28f19876",
+    "headerConfirmation": "Original horizontal-only WKT EPSG:2961 must be verified before any point intake; physical raw building/ground differences only. Index cell naming provincial EPSG2954, file numeric XY actual horizontal UTM. No valid absolute CD assumption because focal above water and terrain orthometric are not interchangeable."
+  },
+  "sourceRecords": {
+    "stock-horizontal.json": "d652a1cabceb360d3151a76792adbafb07b89a0f61c3ca1dbbf42a262b3dd2dc",
+    "two-authority-locator.json": "a2b1ae0c40b70c72770f1311ba55bf79d9c1d77dcdabf90acf95dab9b1f07a20",
+    "civic-location.geojson": "138db20b125d74e13d677b691fa9feb7ccd2744e3edbbdc6d478970ca9759b1d",
+    "provincial-footprint.geojson": "70666edfc5bba40fc59f6af700b3c2cf20b3009ba0c118100c4c57479e5345f8"
+  },
+  "identity": {
+    "highLevel": "Official designated lighthouse at the civic point #198, gov DFO aid 1018/H1046; existing AEB ring q03020/133 + separate provincial row 27637 both contain that civic locator. q03020/130 and provincial 27636/whichever explicitly separate northern #190 group are protected, not substitutes. One official aid locator ~17m from tower is not nail position. Historical site moved back from coast 1979; no reconstruction of former 19th-century lighthouse or keeper dwelling, which was removed about 1960.",
+    "federalXY": [
+      -63.81006756113194,
+      46.3158901673318
+    ],
+    "provincialXY": [
+      -63.810075189738,
+      46.31591068236335
+    ],
+    "mutualFootprintIoU": [
+      {
+        "AEB": "133",
+        "province": "27636",
+        "centroidSeparationM": 37.97461101353823,
+        "intersectionM2": 0.0,
+        "AEBfractionInsideProv": 0.0,
+        "iou": 0.0
+      },
+      {
+        "AEB": "133",
+        "province": "27637",
+        "centroidSeparationM": 2.354458588908956,
+        "intersectionM2": 24.38040324014977,
+        "AEBfractionInsideProv": 0.691059558437047,
+        "iou": 0.4490490438218014
+      },
+      {
+        "AEB": "130",
+        "province": "27636",
+        "centroidSeparationM": 2.39470763098538,
+        "intersectionM2": 77.7288949715985,
+        "AEBfractionInsideProv": 0.8016894853354005,
+        "iou": 0.5394375141470202
+      },
+      {
+        "AEB": "130",
+        "province": "27637",
+        "centroidSeparationM": 33.556688173166044,
+        "intersectionM2": 0.0,
+        "AEBfractionInsideProv": 0.0,
+        "iou": 0.0
+      }
+    ],
+    "studyMidpointOnlyNotFooting": [
+      -63.81007137543497,
+      46.31590042484758
+    ],
+    "utmEPSG2961": [
+      437632.1627878499,
+      5129464.95349157
+    ],
+    "sourceDisagreement": "Federal/provincial outline areas ~35.28 and 43.39m\u00b2, centroid 2.35m apart; neither is proof of the actual physical base. Society describes an 11ft 3in BASE SIDE, not total span. A regular octagon at 3.429m side has 8.28m across flats and 56.77m\u00b2; cannot call reduced AEB/other service a verified physical perimeter."
+  },
+  "nativeXY": {
+    "boundedXY2961": [
+      [
+        437587.1627878499,
+        5129419.95349157
+      ],
+      [
+        437677.1627878499,
+        5129509.95349157
+      ]
+    ],
+    "roofCore": "Unique genuine class 6 original pulses only. Radius <=5.5m of the two-authority search midpoint; angular quadrants relative native East/North; report independent returns in radius <=2.0 and annulus (2.0,5.5], plus four exterior 5.5\u20138m quadrants to reveal shape truncation. Do not select high cells. No class1/vegetation/bright returns as retrospective tower. All original returns including below/above diagnostic 1,6,2,9 counted in XY but only class6 admitted for roof. If class6 shape gate fails, stop without looking at Z. Independent older AEB/official line only for identifying source candidate, not template for native or traced asset.",
+    "grade": "Class 2 true ground in radial 8\u201324m annulus, four fixed cardinal XY quadrants. Retain clear controls only outside 2m buffers around all historic game and current provincial building footprints/curbs/roads/parking or water. Report all class2 and candidate grounds separately rather than cherry-pick low subjects. No inferred current material or approach under same return.",
+    "weaks": "Drop las synthetic, withheld, key_point, overlap, nonfinite GPS time and sources not identifiable. De-duplicate each acquired scan pulse by point_source_id/scan_channel/GPS bit identity for eligibility and split; keep all returns of one pulse together. No new numeric Z only for counts or failed eligibility."
+  },
+  "splitAndGates": {
+    "split": "Seal coordinate labels pre-Z. Phase 0: checksum all X/Y, flags, point ID, pulse. Apply 1.5m source-UTM floor-index cell hash seeded with PEI-SEACOW-233-V1 to pick spatial held cells where u16(fingerprint) mod 5=0; all their pulses held. All non-spatial-held group pulse hashes with same seed mod 5=0 also held; remaining pulses train. Bands, source line and false-alternative row cannot cross pulse identities.",
+    "roofPrerequisite": "At least two identifiable distinct original point-source flightlines each with >=12 qualifying train and >=5 held unique class6 tower pulses, each represented in >=3 of 4 source horizontal quadrants across both sets; at least one train and one held per line in core radius2.0m and outer annulus. At least 3 distinct occupied 1.5m spatial hold cells. Require corroborated coverage on actual EPSG2961 bounds before counts. If no pass, do not release/open original numerical roof labels.",
+    "gradePrerequisite": "At least two distinct source flightlines each containing >=20 train and >=10 held genuine class2 in verified dry ring, each at >=3 of4 quadrants. No numeric grade alone if physically useless: sample only after an exact hypothetical model needs local support, or if engineer requests separately.",
+    "afterQualifying": "Supply only training source heights in split. Model artist must freeze all ground/shape offsets and actual 3D world buffers after fitting; independently raycast real submitted triangles at all held XY/matching class. Predeclared: two-line local ground train/held median error<=0.15m,p90<=0.40m; cross-line recovered base spread <=0.25m; independent apex claim only where both flightlines supply consistent high structural support; merged held height errors for populated roof/rim <=0.35/0.9m median/p90, with no separate flightline/arc pooled away. If incomplete, use documented 18.3m as approximate overall citation only or hold. Do not shift to fit new labels or choose better neighbors.",
+    "higherTier": "If original cannot measure shape, geographically anchored visually/archivally authored alternative is a separate declared product, not surveyed. Keep old scene/ground/collider/near #130, no cliff changes; robust candidate structural placement first: visible original separately identified actual ring replaced, no two towers, home proved independently by source. Independent as-built unresolved true horizontal orientation stays approximate and only publicly claim supported subfeatures."
+  },
+  "appearance": {
+    "artistTraining": "All Dennis G. Jarvis photographs of 11 Oct 2015 (including flickr22098973599/2015-10 top/crops/aliases) grouped as a single allowed artist session, not multiple proofs. Current public text plus 2012 heritage narrative allowed. No Jan 2024 opening or later photos for fitting before initial independent freeze.",
+    "heldHistoric": "DanBhentschel / Dan Hentschel 31 August 2017, PEI Seacow Head Lighthouse.jpg, actual Commons original (4356\u00d72720) and any derivative, split by session; CC BY-SA 4.0. EXIF pertains to viewer location, not tower center. After mesh/material freeze, only qualitative shape/relative proportions/strand/channel setting, never direct tracing or textures.",
+    "heldPostWork": "Entire July 10, 2024 reopening session by Kristin Gardiner / SaltWire (first-hand video published July 15, https://www.youtube.com/watch?v=MNeJdk9qgPA), all frames/news variants grouped as one post-2022 session, viewed only after freeze. Documentary year and direct access use only; no protected frame redistribution. If visually inaccessible or cut, current surface/modern addition is explicitly unconfirmed. Optional operator \u00a9 site stills initially not reused or substituted after results; independent dated source needed before broader claims.",
+    "predeclaredFeatures": [
+      "Bright tapering octangular tower distinct from a cylinder or square; independently real multilayer cornice/railed gallery with separate narrow circumferential lantern and red roof",
+      "Correct visually distinct six-over-six window openings, pedimented heads and door (not painted rectangular plate); no all-eight-face repeat without evidence. Faced upper lantern (12 per original Society text if actually visible); open real red octagonal railing and slender posts from contemporary evidence if corroborated.",
+      "White shingle-profile appearance vs actual ECCC remediation selection of vinyl in 2021/2022; no unsupported raw wood or decay. Red accents/windows and overall white/red. Distinguish physically low-contrast siding and windows from cladding texture drawn at giant scale. Numeric lamp focal 26.8m above-water not architectural tip; central light/flash not navigation simulation, not a generic daytime red beam.",
+      "New 2024 doorway/ramp/visitor features must have explicit post-remediation observation and independent support, or remain absent/unverified. No keeper house, sheds, fences or foliage invented."
+    ],
+    "releaseGates": "Before candidate geometry lock two actual opposed near angles (ground visitor from NW and independent sea-facing approach), one low roof/lantern silhouette control using viewpoint not from fit image; medium/far flight recognizable and exact non-site camera plus shape fallback. Actual original+candidate all neighbor AEB colors/geometries, coast, paths, roads grade/collider unchanged, above grade/body-to-foot contact across 8 source faces, no doubled stock cap. If higher-confidence roof is absent keep scope local and report actual fixed pre- vs post-restoration image limitations instead of promising full building. No real photos shipped.",
+    "sourceDiscrepancies": "PEI Register says 70ft in descriptive copy, but CCG tabular structure + environment ministry physical case + museum society agree 18.3m (60ft); their 26.8m is focal height above water. Separate sources disagree 1863/1864 dates, so do not call it exact unless independently resolved."
+  },
+  "publicLinks": {
+    "ParksCanada": "https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=16732",
+    "PEIHeritage": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19528&pid=0",
+    "DFO": "https://notmar.gc.ca/publications/list-lights/atl/atl942-en",
+    "ECCC": "https://www.canada.ca/en/environment-climate-change/services/federal-contaminated-sites/publications/2021-2022-annual-report.html",
+    "Society": "https://peilighthousesociety.ca/index.php/lighthouses/public-lighthouses/81-seacow-head-lighthouse",
+    "postTransferOperator": "https://www.seacowheadlighthouse.com/",
+    "heldHistoricInfo": "https://commons.wikimedia.org/wiki/File:PEI_Seacow_Head_Lighthouse.jpg"
+  }
+}

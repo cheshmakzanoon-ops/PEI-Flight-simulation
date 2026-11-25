@@ -1,0 +1,329 @@
+{
+  "scope": "Source documentary silhouette, not native Z: current render-only exact supports. Emit each authored real lower corner at native output transform; independently raycast 17 samples per real edge plus every exact native triangle-edge crossing between them. Where a finite edge is linear on a triangle, extremum occurs at endpoints of these subedges. All actual GL 8–14 buffers unchanged; this is not a survey of the real site. Duplicate shared corners included in 136.",
+  "nativeOriginalTerrain": {
+    "tile": [
+      8,
+      14
+    ],
+    "lod": 112,
+    "ntri": 25088,
+    "positionSHA256": "920c97dfac152913ce2074add5b30cf4a6f9e86f4f16497b0d356a0a48ce2b0d",
+    "indexSHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+    "readbackMethod": "Actual scene-resident geometry, mesh matrix, native Three downray at every registered location against the same displayed mesh, and separate exact old game terrain.elevation. Original live WebGL buffer handle captured on physical upload; every byte read with GL.COPY_READ_BUFFER / getBufferSubData and compared to actual array. Original binding restored. Ray [X,Z,meshY,elevation diagnostic,triangleIndex,ground contact from sceneSurface,land=1,World.visualGroundHeight].",
+    "errorAtIndependentThreeRaysM": 1.1013412404281553e-13,
+    "countCrosscheckedBeforeArt": 81
+  },
+  "geometryInputSHA256": "8f5386928a9e4a37b98aac99928758f033fd6886c623156ddbd752f28c1bb0f6",
+  "geometryIdentity": {
+    "summaryInputSHA256": "f9cafa0e61ec36d17e05ad7d5a8cc5d12c31f1552079e6f349a8ba688beec456",
+    "roles": [
+      {
+        "buffer": "4d28cc5758e38a9a83f10c02c9952fbac04d3bdcf2754098724dfe0474d80689",
+        "triangles": 52,
+        "name": "Seacow · tapered white shaker shaft"
+      },
+      {
+        "buffer": "ba28ba806bbb42fefc00554c2319a1783a9abfda931eca9dfb4517392d2a1af0",
+        "triangles": 1962,
+        "name": "Seacow · cornice, portals and metalwork"
+      },
+      {
+        "buffer": "c9abbab8a9f0480988ae68f063c39bdf4e726580d46af22441292e5b215a291c",
+        "triangles": 432,
+        "name": "Seacow · internal optic"
+      },
+      {
+        "buffer": "006556bcd53477e59159ef28034a60712faf0ce5f1e01e2865198b335c8d08fc",
+        "triangles": 24,
+        "name": "Seacow · twelve lantern panes"
+      }
+    ],
+    "allSelectedPointersMatchActualVerticesWithinM": 1e-07
+  },
+  "actualSideLengthsM": [
+    3.428999983946567,
+    3.4289998016992667,
+    3.428999983946567,
+    3.4289998016992667,
+    3.428999983946567,
+    3.4289998016992667,
+    3.428999983946567,
+    3.4289998016992667
+  ],
+  "actualProjectedFootprintM2": 56.772840549285206,
+  "actualBaseDiameterFarCornerM": 8.960408637137009,
+  "actualTipYWorld": [
+    26.72354248777976
+  ],
+  "actualGalleryHeightSpanM": 0.0,
+  "registeredBaseSamples": 136,
+  "actualBaseSegmentsPerFace": 8,
+  "uniqueBaseSamplesIncludingSharedCornersOnce": 183,
+  "samplesIncludingExtraTriangleIntersectionsAndRepeatedCorners": 200,
+  "terrainMinMedianMaxM": [
+    8.144252817806002,
+    8.423543250719547,
+    8.702833683633092
+  ],
+  "lowerGapMinMedianMaxM": [
+    -0.045000017153805416,
+    -0.04500000016040051,
+    -0.044999982050358156
+  ],
+  "sidingAboveGradeMinMedianMaxM": [
+    0.07559710902699912,
+    0.35129043459867315,
+    0.626983760170182
+  ],
+  "noUnsupportedGapOver3cm": true,
+  "sidingExposureRangeWithinLocalSpreadPlus20cm": true,
+  "levelGalleryWithin1mm": true,
+  "bottomFaces": [
+    {
+      "ordinal": 0,
+      "edgeLengthXZ": 3.428999983946567,
+      "rangeFeatureToGroundM": [
+        -0.04500000592105202,
+        -0.044999982050358156
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.6422003189308,
+        8.702833683633092
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 1,
+      "edgeLengthXZ": 3.4289998016992667,
+      "rangeFeatureToGroundM": [
+        -0.045000009965592724,
+        -0.04499998697586172
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.599862492331841,
+        8.702833683633092
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 2,
+      "edgeLengthXZ": 3.428999983946567,
+      "rangeFeatureToGroundM": [
+        -0.045000005078671634,
+        -0.04499998697586172
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.393605879586664,
+        8.599862492331841
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 3,
+      "edgeLengthXZ": 3.4289998016992667,
+      "rangeFeatureToGroundM": [
+        -0.04500000334854093,
+        -0.04499999251329001
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.204886182508295,
+        8.393605879586664
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 4,
+      "edgeLengthXZ": 3.428999983946567,
+      "rangeFeatureToGroundM": [
+        -0.04500001652469798,
+        -0.04499998707505526
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.144252817806002,
+        8.204886182508295
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 5,
+      "edgeLengthXZ": 3.4289998016992667,
+      "rangeFeatureToGroundM": [
+        -0.045000017153805416,
+        -0.044999991451026844
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.144252817806002,
+        8.247224009107255
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 6,
+      "edgeLengthXZ": 3.428999983946567,
+      "rangeFeatureToGroundM": [
+        -0.045000009675947084,
+        -0.044999991047694365
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.247224009107255,
+        8.45348062185243
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 7,
+      "edgeLengthXZ": 3.4289998016992667,
+      "rangeFeatureToGroundM": [
+        -0.045000005375746,
+        -0.044999993640930214
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.45348062185243,
+        8.6422003189308
+      ],
+      "extraN112EdgeCrossings": []
+    }
+  ],
+  "sidingFaces": [
+    {
+      "ordinal": 0,
+      "edgeLengthXZ": 3.3848361979544603,
+      "rangeFeatureToGroundM": [
+        0.07559710902699912,
+        0.13544954078280114
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.639384144535336,
+        8.699236576291138
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 1,
+      "edgeLengthXZ": 3.3848364060687013,
+      "rangeFeatureToGroundM": [
+        0.07559710902699912,
+        0.17724208534927577
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.597591599968862,
+        8.699236576291138
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 2,
+      "edgeLengthXZ": 3.3848361979544603,
+      "rangeFeatureToGroundM": [
+        0.17724208534927577,
+        0.38084221893633163
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.393991466381806,
+        8.597591599968862
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 3,
+      "edgeLengthXZ": 3.3848364060687013,
+      "rangeFeatureToGroundM": [
+        0.38084221893633163,
+        0.5671313284143782
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.20770235690376,
+        8.393991466381806
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 4,
+      "edgeLengthXZ": 3.3848361979544603,
+      "rangeFeatureToGroundM": [
+        0.5671313284143782,
+        0.626983760170182
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.147849925147955,
+        8.20770235690376
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 5,
+      "edgeLengthXZ": 3.3848364060687013,
+      "rangeFeatureToGroundM": [
+        0.5253387838479036,
+        0.626983760170182
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.147849925147955,
+        8.249494901470234
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 6,
+      "edgeLengthXZ": 3.3848361979544603,
+      "rangeFeatureToGroundM": [
+        0.32173865026084947,
+        0.5253387838479036
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.249494901470234,
+        8.453095035057288
+      ],
+      "extraN112EdgeCrossings": []
+    },
+    {
+      "ordinal": 7,
+      "edgeLengthXZ": 3.3848364060687013,
+      "rangeFeatureToGroundM": [
+        0.13544954078280114,
+        0.32173865026084947
+      ],
+      "trueLocalGradeMinMaxM": [
+        8.453095035057288,
+        8.639384144535336
+      ],
+      "extraN112EdgeCrossings": []
+    }
+  ],
+  "surveyQualification": "One original scan only; no numeric LAS Z opened; no newer terrain or changed collider.",
+  "threshold": {
+    "actualFourRisersSourceGeometry": true,
+    "samplesInclSharedCorners": 68,
+    "baseMinusVisibleGradeMinMedianMaxM": [
+      -0.025000000241799825,
+      -0.024999997642450644,
+      -0.024999994429267147
+    ],
+    "topAboveOriginalVisibleGradeMinMedianMaxM": [
+      0.11457095121999217,
+      0.14307068927724842,
+      0.1715704168952339
+    ],
+    "realTopLevelSpreadM": 0.0,
+    "noRiserFloats": true
+  },
+  "authoredVariants": {
+    "nativeBranchSourceHashV1": "c454ccdb305a5cc650bcf547e72660b992aaca8d81435ff90bc083849a74adba",
+    "finalBranchSourceHashV2": "1da60a3df1e448c9f945ec063f80265562fefc73ce60b356730a7a432b6f26f3",
+    "v1EmittedFrame": "ccef868f6cdd0c85449a6ca2f161642a4e01e3bfaf8c6db83b32062394190c5c",
+    "v2EmittedFrame": "f9cafa0e61ec36d17e05ad7d5a8cc5d12c31f1552079e6f349a8ba688beec456",
+    "allFourV1V2OriginalBatchBufferBytesExact": true,
+    "v1V2SourceParitySHA256": "0d4529772281587e0d2df66f28270b37230138dd1a1d8692096d21401103c180"
+  },
+  "independentFlightVsVisibleGrade": {
+    "originalSiteGroundAndColliderWereNotIdentical": "Receivers stand on the unchanged displayed surface, not on the old aircraft contact interpolation. Original collider was independently read from actual sceneSurface at all registered and additional footing samples. It was not edited, moved or used as a replacement for source field measurement.",
+    "includingRepeated": 200,
+    "flightGroundAboveVisibleGradeMinMedianMaxM": [
+      0.3291704933924908,
+      0.5073929447494496,
+      0.6856153961078881
+    ],
+    "maxNativeTriangleVsOrdinaryVisualSamplerErrorM": 1.2766928758622953e-06,
+    "allActualOldContactOnLand": true
+  }
+}

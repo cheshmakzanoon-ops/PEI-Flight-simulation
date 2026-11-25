@@ -1,0 +1,407 @@
+{
+  "decision": "NO-GO for two-source-line original measured tower form or measured ground. Strictly stop before any new numeric elevation; no training/held roof or ground values made or released. An independently sourced and explicitly approximate authored exterior may still be pursued as separate vintage.",
+  "originalSurveyCodeNotAnArtInput": true,
+  "documentaryClaim": "Nominal published 18.3 m height and the earlier 11 ft 3 in regular-octagon edge dimension are independent documentary evidence, not outputs of this point cloud. AEB and an administrative outline identify a tower locality, not a measured foundation or azimuth.",
+  "registrationSHA256": "bec919f066d9a98ea4e88f4841f0ae1b82c2686f19e76e36e77abb55320e7a99",
+  "rawSurveyObject": {
+    "name": "pei_2020_337000_696000",
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_337000_696000.copc.laz",
+    "objectBytes": 19865953,
+    "etag": "\"4902a1082a4e0662943a45a04a171b55-3\"",
+    "officialProject": "Prince_Edward_Island_2020, PEI, original CanElevation classification; national tile index file 2bbff163e954debcbc42800203b2aa77bc93a7fac1f2f1df83493bca28f19876",
+    "headerConfirmation": "Original horizontal-only WKT EPSG:2961 must be verified before any point intake; physical raw building/ground differences only. Index cell naming provincial EPSG2954, file numeric XY actual horizontal UTM. No valid absolute CD assumption because focal above water and terrain orthometric are not interchangeable."
+  },
+  "intake": {
+    "method": "Original point-source ID, scan channel and GPS-pulse grouping; no per-point elevations seen, saved, fitted or evaluated. Raw bounding metadata for original indexed tree available to the LAZ library for spatial indexing. Second replay explicitly skipped the Z decompression bit and clipped integer XY only; this avoids the first generic 2D library filter’s automatic full-header Z bound check. All non-Z fields bit-identical between both runs.",
+    "nonZContentSHA256": "d1985821c7f7d696f360604b8ca03c815f9c7636a13c7467e65fbf8db27961c7",
+    "lazrsSelection": 397,
+    "bytesFetched": 2535326,
+    "ranges": [
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 0,
+        "end": 106,
+        "sha256": "e8360b685473d74e47ba4cc5e9fb849cc2d64967b648b4f915c2beb8dfe87ee2"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 179,
+        "end": 210,
+        "sha256": "316d91ea63c73a00fa1dbe199db62d2e4e159659b00c7ba7b98d36ce40b1b00a"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 375,
+        "end": 428,
+        "sha256": "45e04fba3f4c93831931fab4e5399afe559afc800d9d26fa8c7be808a796529c"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 589,
+        "end": 642,
+        "sha256": "1ac57350a389e1783f58e02cedb6d8dc9bf5b572dfd6ca2a7744574f9bdde742"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 683,
+        "end": 736,
+        "sha256": "ce4fe2700520ebf8b5b87b6ec5ba2f2b68c2117dfbcd13a4801cf59a7b06e756"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 737,
+        "end": 1376,
+        "sha256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 0,
+        "end": 226,
+        "sha256": "cf93f338bb110e2ea45c49ceff80d98b7b7a5c5e96b13c956e6f4f47564de79f"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 227,
+        "end": 1376,
+        "sha256": "7d0fdeae4c6b640fa10239492c3e370c803e72a8a5092dda84981ee6abb187ee"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 19861633,
+        "end": 19865952,
+        "sha256": "8186ee100c3ad04fb785bc947150faece6e5b958b4fc2c532188ba4a5e6944a6"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 339512,
+        "end": 465906,
+        "sha256": "27e61540ff08e2d44202ddef6c8219aebde6f934002f1ba0fd22dbd55821e111"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 1392192,
+        "end": 1629519,
+        "sha256": "f085b8e826fac0fd20783d5c45496145a9ae0880fd1ecd6c5e179ace56ba865e"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 10386407,
+        "end": 10626727,
+        "sha256": "3609d84c66383392974f9e95cedfd844a08d5155d70b011d6dfc53b0b40d4236"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 11871513,
+        "end": 12156287,
+        "sha256": "d74741f0323a40ba6741049cfe93d2fee4acfd517c01355f45990007e64b2bb6"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 15602058,
+        "end": 15873217,
+        "sha256": "b6d2de26dc08f834c14a776836955904b8cdcab25e6a2165986bf4f57d28762d"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 16446935,
+        "end": 16726778,
+        "sha256": "70facfc2cc218f80c6b647922152c989b1dce651eb9518f53a6683912b1c28d4"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 16949300,
+        "end": 17288483,
+        "sha256": "f9896d545646ef0a875c91dc3d3c02765a444b58c10de8bd1ef9da4898b7c258"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 18538196,
+        "end": 19106506,
+        "sha256": "d5848cc5e8b58040969ad9a6d390947b513f81aa9d729e0e20d2a916a5690b76"
+      },
+      {
+        "name": "pei_2020_337000_696000",
+        "start": 19679611,
+        "end": 19860980,
+        "sha256": "b2f3662b9926b791c8866dc1c31b2e100d1985b302c2471f0634a41a70522312"
+      }
+    ],
+    "uniquePulses": 59707,
+    "numberRows": 63000,
+    "originalSourceLines": [
+      16275
+    ],
+    "scannerChannels": [
+      0
+    ],
+    "timeSpanSeconds": 1.6932730078697205,
+    "largestTimeGapSeconds": 0.009155035018920898,
+    "cohorts": {
+      "whole": {
+        "raw": 63000,
+        "uniqueTrain": 37725,
+        "uniqueHeld": 21982,
+        "sourceLines": [
+          16275
+        ],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            9364,
+            5257
+          ],
+          [
+            1,
+            9644,
+            5581
+          ],
+          [
+            2,
+            9425,
+            5494
+          ],
+          [
+            3,
+            9313,
+            5658
+          ]
+        ],
+        "originalClassCounts": {
+          "1": 28074,
+          "2": 33704,
+          "6": 1114,
+          "9": 108
+        },
+        "occupiedStrictSpatialHoldCells": 764,
+        "oneChannel": true
+      },
+      "buildingClass6R5_5": {
+        "raw": 452,
+        "uniqueTrain": 239,
+        "uniqueHeld": 136,
+        "sourceLines": [
+          16275
+        ],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            55,
+            64
+          ],
+          [
+            1,
+            142,
+            37
+          ],
+          [
+            2,
+            12,
+            23
+          ],
+          [
+            3,
+            36,
+            15
+          ]
+        ],
+        "originalClassCounts": {
+          "6": 452
+        },
+        "occupiedStrictSpatialHoldCells": 4,
+        "oneChannel": true
+      },
+      "buildingClass6Core2": {
+        "raw": 129,
+        "uniqueTrain": 46,
+        "uniqueHeld": 52,
+        "sourceLines": [
+          16275
+        ],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            2,
+            28
+          ],
+          [
+            1,
+            25,
+            6
+          ],
+          [
+            2,
+            5,
+            12
+          ],
+          [
+            3,
+            17,
+            7
+          ]
+        ],
+        "originalClassCounts": {
+          "6": 129
+        },
+        "occupiedStrictSpatialHoldCells": 3,
+        "oneChannel": true
+      },
+      "buildingClass6R2to5_5": {
+        "raw": 323,
+        "uniqueTrain": 204,
+        "uniqueHeld": 93,
+        "sourceLines": [
+          16275
+        ],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            53,
+            41
+          ],
+          [
+            1,
+            124,
+            33
+          ],
+          [
+            2,
+            7,
+            12
+          ],
+          [
+            3,
+            21,
+            9
+          ]
+        ],
+        "originalClassCounts": {
+          "6": 323
+        },
+        "occupiedStrictSpatialHoldCells": 3,
+        "oneChannel": true
+      },
+      "class6R5_5to8Control": {
+        "raw": 0,
+        "uniqueTrain": 0,
+        "uniqueHeld": 0,
+        "sourceLines": [],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ]
+        ],
+        "originalClassCounts": {},
+        "occupiedStrictSpatialHoldCells": 0,
+        "oneChannel": false
+      },
+      "class2NominalUntrimmedGroundAnnulusR8to24": {
+        "raw": 6614,
+        "uniqueTrain": 4094,
+        "uniqueHeld": 2520,
+        "sourceLines": [
+          16275
+        ],
+        "separateQuadrantTrainHeld": [
+          [
+            0,
+            1398,
+            844
+          ],
+          [
+            1,
+            871,
+            592
+          ],
+          [
+            2,
+            918,
+            505
+          ],
+          [
+            3,
+            907,
+            579
+          ]
+        ],
+        "originalClassCounts": {
+          "2": 6614
+        },
+        "occupiedStrictSpatialHoldCells": 158,
+        "oneChannel": true
+      }
+    },
+    "selectionRationale": "Since there is only a single identifiable original source ID, single scanner channel, and continuous 1.69-s pass across the entire 90m square, the line-count prerequisite fails prior to opening heights. Further filtering the outer class2 for roads/coast/buildings can only reduce that single-line upper bound; protected trimming has not been claimed or used cosmetically. Classes outside 6 cannot rescue form and no later source raster will be used to reclassify this closed trial."
+  },
+  "twoAuthoritativeHorizontalSources": {
+    "highLevel": "Official designated lighthouse at the civic point #198, gov DFO aid 1018/H1046; existing AEB ring q03020/133 + separate provincial row 27637 both contain that civic locator. q03020/130 and provincial 27636/whichever explicitly separate northern #190 group are protected, not substitutes. One official aid locator ~17m from tower is not nail position. Historical site moved back from coast 1979; no reconstruction of former 19th-century lighthouse or keeper dwelling, which was removed about 1960.",
+    "federalXY": [
+      -63.81006756113194,
+      46.3158901673318
+    ],
+    "provincialXY": [
+      -63.810075189738,
+      46.31591068236335
+    ],
+    "mutualFootprintIoU": [
+      {
+        "AEB": "133",
+        "province": "27636",
+        "centroidSeparationM": 37.97461101353823,
+        "intersectionM2": 0.0,
+        "AEBfractionInsideProv": 0.0,
+        "iou": 0.0
+      },
+      {
+        "AEB": "133",
+        "province": "27637",
+        "centroidSeparationM": 2.354458588908956,
+        "intersectionM2": 24.38040324014977,
+        "AEBfractionInsideProv": 0.691059558437047,
+        "iou": 0.4490490438218014
+      },
+      {
+        "AEB": "130",
+        "province": "27636",
+        "centroidSeparationM": 2.39470763098538,
+        "intersectionM2": 77.7288949715985,
+        "AEBfractionInsideProv": 0.8016894853354005,
+        "iou": 0.5394375141470202
+      },
+      {
+        "AEB": "130",
+        "province": "27637",
+        "centroidSeparationM": 33.556688173166044,
+        "intersectionM2": 0.0,
+        "AEBfractionInsideProv": 0.0,
+        "iou": 0.0
+      }
+    ],
+    "studyMidpointOnlyNotFooting": [
+      -63.81007137543497,
+      46.31590042484758
+    ],
+    "utmEPSG2961": [
+      437632.1627878499,
+      5129464.95349157
+    ],
+    "sourceDisagreement": "Federal/provincial outline areas ~35.28 and 43.39m², centroid 2.35m apart; neither is proof of the actual physical base. Society describes an 11ft 3in BASE SIDE, not total span. A regular octagon at 3.429m side has 8.28m across flats and 56.77m²; cannot call reduced AEB/other service a verified physical perimeter."
+  },
+  "scope": "Authenticity of this scenery study cannot upgrade to a survey merely by possessing a background elevation file."
+}

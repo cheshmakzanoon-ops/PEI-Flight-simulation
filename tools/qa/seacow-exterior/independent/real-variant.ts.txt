@@ -1,0 +1,21 @@
+  (window as any).seacowCaseQA=()=>{
+   const b=buildings as any,p=b?.seacow;if(!p||!b.seacowExteriorActive||!p.art.group.visible||p.owner.parent!==scene)throw Error('Actual authored donor/geometry inactive');
+   const root=p.art.group as THREE.Group,owner=p.owner as THREE.Mesh, mats:any[][]=[], draws:any={},frames:any={},g=renderer.getContext()as WebGL2RenderingContext;
+   if(root.children.length!==4||owner.geometry!==b.meshes.get('q03020')?.geometry)throw Error('Foreigner or wrong authored group');
+   const assertIndex=()=>{const idx=owner.geometry.index;if(!idx||idx.count!==15972-66)throw Error('Not exact old owner cut');for(let i=0;i<idx.count;i++)if(idx.getX(i)!==(i<9348?i:i+66))throw Error('Another owner vertex removed');};
+   let st:any;
+   const shot=(n:string)=>{renderer.render(scene,camera);frames[n]=renderer.domElement.toDataURL('image/png');draws[n]={calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,oldCount:owner.geometry.getAttribute('position').count,visibleCut:!!owner.geometry.index,artMounted:root.visible};};
+   const originalRoot=owner.geometry,arr=Object.entries(owner.geometry.attributes),all:any={},nattr:any={},tattr:any={},mdata=(u8:Uint8Array)=>{let a='';for(let i=0;i<u8.length;i+=16000)a+=String.fromCharCode(...u8.subarray(i,i+16000));return btoa(a);},pack=(a:any,l:number,h:number)=>mdata(new Uint8Array(a.array.buffer,a.array.byteOffset+l*a.itemSize*a.array.BYTES_PER_ELEMENT,(h-l)*a.itemSize*a.array.BYTES_PER_ELEMENT));
+   if(arr.length!==6)throw Error('Foreign original attributes');
+   assertIndex();shot('authored');
+   try{p.view.sync(false);if(root.visible||owner.geometry.index||owner.geometry.getAttribute('position').count!==15972||arr.some(([k,v])=>owner.geometry.attributes[k]!==v))throw Error('did not restore genuine original complete tile');shot('stock');}
+   finally{p.view.sync(true);}
+   if(!root.visible||owner.geometry!==originalRoot)throw Error('Variant restore changed owner');assertIndex();shot('restored');if(frames.authored!==frames.restored)throw Error('Same-tick actual RGB restore not identical');
+   for(const[k,v]of arr){all[k]=pack(v,0,v.count);nattr[k]=pack(v,9168,9216);tattr[k]=pack(v,9348,9414);}
+   const tri:number[]=[],spans:any[]=[];root.updateMatrixWorld(true);
+   for(const ch of root.children){const mesh=ch as THREE.Mesh<THREE.BufferGeometry>,geo=mesh.geometry,po=geo.getAttribute('position'),index=geo.index;mesh.updateMatrixWorld(true);if(!ch.visible||geo.groups.length||geo.drawRange.start!==0)throw Error('Detached subgroup or subset');const max=Math.min(geo.drawRange.count,index?index.count:po.count);if(max%3)throw Error('Non-triangles');let first=tri.length/9;
+    for(let j=0;j<max;j++){let i=index?index.getX(j):j;const v=new THREE.Vector3().fromBufferAttribute(po,i).applyMatrix4(mesh.matrixWorld);tri.push(v.x,v.y,v.z);}
+    spans.push({name:ch.name,first,count:max/3,worldMatrix:mesh.matrixWorld.toArray(),material:(mesh.material as THREE.Material).name});}
+   const oldtri:number[]=[],opo=owner.geometry.getAttribute('position');owner.updateMatrixWorld(true);for(let i=9348;i<9414;i++){const v=new THREE.Vector3().fromBufferAttribute(opo,i).applyMatrix4(owner.matrixWorld);oldtri.push(v.x,v.y,v.z);}
+   return {site:qa.site,frames,draws,rawAttrs:all,neighbourAttrs:nattr,originalOwnerAttrs:tattr,newXYZ:mdata(new Uint8Array(new Float64Array(tri).buffer)),oldXYZ:mdata(new Uint8Array(new Float64Array(oldtri).buffer)),spans,mode:'same tick exact signed original variant admission → original full live 15972-vertex source → original exact candidate restored',glError:g.getError()};
+  };

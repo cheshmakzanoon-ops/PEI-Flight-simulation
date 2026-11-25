@@ -1,0 +1,5 @@
+ const qaSeacowBuffers=new WeakMap<object,WebGLBuffer>(),qaNativeBufferSource=WebGL2RenderingContext.prototype.bufferData;
+ WebGL2RenderingContext.prototype.bufferData=function(this:WebGL2RenderingContext,...args:any[]){const [target,src]=args;
+  (qaNativeBufferSource as any).apply(this,args);
+  if(src&&(src.byteLength===153228||src.byteLength===150528)&&(target===this.ARRAY_BUFFER||target===this.ELEMENT_ARRAY_BUFFER)){const h=this.getParameter(target===this.ARRAY_BUFFER?this.ARRAY_BUFFER_BINDING:this.ELEMENT_ARRAY_BUFFER_BINDING);if(h)qaSeacowBuffers.set(src,h);}
+ } as typeof WebGL2RenderingContext.prototype.bufferData;

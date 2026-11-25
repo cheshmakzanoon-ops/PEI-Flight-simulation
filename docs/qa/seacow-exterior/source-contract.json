@@ -1,0 +1,95 @@
+{
+  "purpose": "Original documentary exterior over one retained Canadian building record at Fernwood, PEI. This is a game artwork and an approximate site/appearance registration, not a new survey, port approach chart or grade correction.",
+  "dateReviewed": "2026-11-25",
+  "explicitMode": "seacowExteriorStudy",
+  "ownStock": "stockSeacowExterior",
+  "sources": [
+    {
+      "authority": "Parks Canada, Directory of Federal Heritage Designations: Seacow Head Lighthouse",
+      "url": "https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=16732",
+      "role": "198 Lighthouse Road, Fernwood; tapered white octagonal tower, 18.3m height, flared cornice, red gallery/lantern and pedimented openings. Heritage architectural identity, not traced geometry."
+    },
+    {
+      "authority": "Canadian Coast Guard notice to mariners: Atlantic Coast, Prince Edward Island, light 1018/H1046",
+      "url": "https://notmar.gc.ca/publications/list-lights/atl/atl942-en",
+      "role": "Active aid at outer end of point: 18.3m structure versus 26.8m light reference above water. Chart-list locator is not the precise game footing. No operational flashes, nominal visibility or navigation promise in this study."
+    },
+    {
+      "authority": "PEI Lighthouse Society: Seacow Head",
+      "url": "https://peilighthousesociety.ca/index.php/lighthouses/public-lighthouses/81-seacow-head-lighthouse",
+      "role": "Nominal base side 11ft3in (3.429m), distinct circular lower lantern, twelve principal lantern panels/cap segments, vents. Original artistic, nontraced execution. Exact current opening dimensions/bearings not measured."
+    },
+    {
+      "authority": "Environment and Climate Change Canada, 2021–22 Federal Contaminated Sites Action Plan annual report: Seacow Head Lightstation case study",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/federal-contaminated-sites/publications/2021-2022-annual-report.html",
+      "role": "Completed white shaker-style vinyl replacement, metal window flashings and repainted cupola. Original optical course shading is deliberately quiet; no 2015 peeling wood or restored-site photo texture."
+    },
+    {
+      "authority": "Natural Resources Canada: Automatically Extracted Buildings (AEB), existing PEI 2020 source",
+      "url": "https://open.canada.ca/data/en/dataset/7a5cda52-c7df-427f-9ced-26f19a8a64d6",
+      "license": "Open Government Licence – Canada",
+      "role": "Existing game packaged 272-row tile; #133 independently recognized as tower role using civic/second footprint. Only its original 22 triangles are omitted. No raw survey-Z fit."
+    },
+    {
+      "authority": "PEI provincial civic address and newer building footprint map",
+      "urls": [
+        "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0",
+        "https://gis.princeedwardisland.ca/server/rest/services/GeoLincData/Building_Footprints_2026/MapServer/0"
+      ],
+      "role": "Independent QA-only identity/topology check. Civic point is inside both differently sized candidate footprints, centers about 2.35m apart. No new administrative geometry, map imagery or parcel data is distributed."
+    },
+    {
+      "authority": "Dennis G. Jarvis, 11 October 2015, one photographic session",
+      "urls": [
+        "https://commons.wikimedia.org/wiki/File:Seacow_Head_Lighthouse_(2015-10).jpg",
+        "https://commons.wikimedia.org/wiki/File:Seacow_Head_Lighthouse_(22098973599).jpg",
+        "https://commons.wikimedia.org/wiki/File:Seacow_Head_Lighthouse_top_(2015-10).jpg"
+      ],
+      "sourceLicense": "CC BY-SA 2.0 on indicated photograph pages",
+      "role": "Viewed for broad form, sash hierarchy and material relationships. No original/altered pixels, image projections, image textures, logos, signs or fitted camera dimensions in runtime or gallery."
+    }
+  ],
+  "evidenceBounds": {
+    "publishedNominalHeightM": 18.3,
+    "publishedNominalBaseSideM": 3.429,
+    "ccgSeparateFocalElevationM": 26.8,
+    "oldFederalRegistrationApproxSeparationFromChartPinM": 16.96,
+    "comparativeBuildingCentreXYM": 2.35,
+    "modelYaw": "Approximate: preserves an old octagonal axis and landward opening relationship; not a surveyed exterior or faithful reproduction of every side.",
+    "safety": "No changes to terrain, coastline, collider, vegetation, road, protected adjacent property or published job of CCG aid."
+  },
+  "oldSocket": {
+    "tile": "q03020",
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "tileSha256": "f668b5dedea68e02901afcc7f7c17e945e62afdcd9c68c5654c981c5b17d8e05",
+    "tileRows": 272,
+    "preciseRawRow": "786734877c905882a292f41ce77ea34bfca16dfa0b1dc7f0ed20c65502b3a4f3",
+    "ownerOrdinal": 133,
+    "protectedNeighborOrdinal": 130,
+    "allOriginalRowsExceptOneRetained": true,
+    "drawProof": {
+      "vertices": 15972,
+      "start": 9348,
+      "end": 9414
+    },
+    "oldReferenceHeightM": 8.423543250719215,
+    "oldSocketWorldOrigin": [
+      -46830.368005760836,
+      8.423543250719215,
+      20465.84852914366
+    ]
+  },
+  "artistOutput": {
+    "triangles": 2470,
+    "roleTriangles": {
+      "Seacow · tapered white shaker shaft": 52,
+      "Seacow · cornice, portals and metalwork": 1962,
+      "Seacow · internal optic": 432,
+      "Seacow · twelve lantern panes": 24
+    },
+    "physicalWorldFooting": "Eight actual level-plan sides, each with eight slope-following lower segments; no terrain edits. The grade and triangle intersections are relative to this simulator only.",
+    "artSourceSha256": "5b5a847ace05608c920685969effbc640666d935da6fb5b05b2d04f3c0fe661b",
+    "runtimeAssetPolicy": "No new photographed texture, original GIS or native LiDAR payload. One locally bundled art module and original packed AEB read."
+  },
+  "repro": "node --experimental-strip-types tools/qa/seacow-exterior/emit-exterior.mjs . /tmp/pei-seacow-mesh"
+}

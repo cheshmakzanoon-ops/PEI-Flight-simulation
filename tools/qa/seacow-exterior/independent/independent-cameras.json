@@ -1,0 +1,43 @@
+{
+  "scope": "Independent geometric cameras before any new art or held photos. Eyes from fixed unmodified 133 locus in existing simulator only, NOT real-world navigation. North-west old signed land, southwest genuinely over sea; preserve same true eye, aim, FOV, and true 190 building and whole ground when candidate arrives.",
+  "owner": "q03020/133",
+  "size": "900x600",
+  "fov": 53,
+  "stockRoot": [
+    -63.81006756113194,
+    46.3158901673318
+  ],
+  "h": 18.3,
+  "views": {
+    "northwest-visitor": {
+      "name": "northwest-visitor",
+      "lon": -63.81006756113194,
+      "lat": 46.3158901673318,
+      "east": -0.7071067811865477,
+      "south": -0.7071067811865474,
+      "nearDist": 36,
+      "nearAgl": 6,
+      "h": 18.3
+    },
+    "southwest-offshore": {
+      "name": "southwest-offshore",
+      "lon": -63.81006756113194,
+      "lat": 46.3158901673318,
+      "east": -0.5735764363510462,
+      "south": 0.8191520442889918,
+      "nearDist": 350,
+      "nearAgl": 74,
+      "h": 18.3
+    },
+    "southwest-height-control": {
+      "name": "southwest-height-control",
+      "lon": -63.81006756113194,
+      "lat": 46.3158901673318,
+      "east": -0.5735764363510462,
+      "south": 0.8191520442889918,
+      "nearDist": 465,
+      "nearAgl": 535,
+      "h": 18.3
+    }
+  }
+}

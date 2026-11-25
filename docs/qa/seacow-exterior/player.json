@@ -1,0 +1,169 @@
+{
+  "scope": "Actual Chromium player with a temporary, independently verified offshore departure row and briefing on the guarded exterior build. This document reports a test route, not a claim that this project revision added a public departure. A separate diagnostic source replay tested ownership without changing the visual drawing implementation. No real-world navigation instructions.",
+  "guardedManifestSha256": "1da60a3df1e448c9f945ec063f80265562fefc73ce60b356730a7a432b6f26f3",
+  "nativePlayerCases": {
+    "real-flight": {
+      "scope": "Virtual game-only over-water start; no real aviation or surveyed shoreline claim.",
+      "site": "seacow-head-coast",
+      "initialDistanceM": 1449.9999981218625,
+      "approachDistanceM": 615.2416550279343,
+      "initialHeadingDegrees": 320.0,
+      "initialAltitude": 77.945,
+      "approachAltitude": 83.92233090909673,
+      "finalCamera": "Wide chase",
+      "authoredMode": "authored",
+      "verifiedControls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "actualArtRequests": 1,
+      "intentionalFaults": [],
+      "errors": []
+    },
+    "module-404": {
+      "scope": "Virtual game-only over-water start; no real aviation or surveyed shoreline claim.",
+      "site": "seacow-head-coast",
+      "initialDistanceM": 1449.9999981218625,
+      "approachDistanceM": 616.3650896603707,
+      "initialHeadingDegrees": 320.0,
+      "initialAltitude": 77.945,
+      "approachAltitude": 83.91393293566884,
+      "finalCamera": "Wide chase",
+      "authoredMode": "stock",
+      "verifiedControls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "actualArtRequests": 1,
+      "intentionalFaults": [
+        "response 404",
+        "console 404"
+      ],
+      "errors": []
+    },
+    "explicit-stock": {
+      "scope": "Virtual game-only over-water start; no real aviation or surveyed shoreline claim.",
+      "site": "seacow-head-coast",
+      "initialDistanceM": 1449.9999981218625,
+      "approachDistanceM": 615.8033717340514,
+      "initialHeadingDegrees": 320.0,
+      "initialAltitude": 77.945,
+      "approachAltitude": 83.91813188077741,
+      "finalCamera": "Wide chase",
+      "authoredMode": "stock",
+      "verifiedControls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "actualArtRequests": 0,
+      "intentionalFaults": [],
+      "errors": []
+    }
+  },
+  "actualOwnershipTransitions": {
+    "initial": {
+      "authored": true,
+      "activeHero": true,
+      "heroAttached": true,
+      "stockIndexCount": 15906,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": true
+    },
+    "hiddenChild": {
+      "authored": false,
+      "activeHero": false,
+      "heroAttached": true,
+      "stockIndexCount": null,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": false
+    },
+    "hiddenRestore": {
+      "authored": true,
+      "activeHero": true,
+      "heroAttached": true,
+      "stockIndexCount": 15906,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": true
+    },
+    "displacedChild": {
+      "authored": false,
+      "activeHero": false,
+      "heroAttached": true,
+      "stockIndexCount": null,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": false
+    },
+    "displacedRestore": {
+      "authored": true,
+      "activeHero": true,
+      "heroAttached": true,
+      "stockIndexCount": 15906,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": true
+    },
+    "foreignOverride": {
+      "authored": false,
+      "activeHero": false,
+      "heroAttached": true,
+      "stockIndexCount": null,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": false
+    },
+    "overrideRestore": {
+      "authored": true,
+      "activeHero": true,
+      "heroAttached": true,
+      "stockIndexCount": 15906,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": true
+    },
+    "detachedGroup": {
+      "authored": false,
+      "activeHero": false,
+      "heroAttached": false,
+      "stockIndexCount": null,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": false
+    },
+    "finalRestore": {
+      "authored": true,
+      "activeHero": true,
+      "heroAttached": true,
+      "stockIndexCount": 15906,
+      "actualPositionCount": 15972,
+      "stockObjectVisible": true,
+      "children": 4,
+      "diagnostic": true
+    }
+  },
+  "nativeStockView": "Full original non-indexed shared tile with 15,972 positions; recovered guarded view shares positions and submits 15,906 indices plus four original art batches.",
+  "worldCheck": "Packaged world inventory passed; no source or collision assets were changed.",
+  "testCounts": {
+    "nodePassed": 491,
+    "nodeFailed": 0,
+    "typescript": "passed",
+    "vite": "passed"
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "scope": "A release-only foreign owner/child lifetime fence. No position, color, normal, UV, shader, surface/threshold, original owner, old sibling attribute, query or eye control changed. Fresh independent source-collector captures for both actual variants.",
+  "manifestV1": "c454ccdb305a5cc650bcf547e72660b992aaca8d81435ff90bc083849a74adba",
+  "manifestV2": "1da60a3df1e448c9f945ec063f80265562fefc73ce60b356730a7a432b6f26f3",
+  "sourceOnlyDifference": [
+    "src/render/buildings.ts"
+  ],
+  "additionalTestOnlyFile": "test/seacow-exterior.test.ts",
+  "drawnBatches": [
+    {
+      "role": "Seacow \u00b7 tapered white shaker shaft",
+      "file": "original-emitted-role-0.f32",
+      "sha256": "4d28cc5758e38a9a83f10c02c9952fbac04d3bdcf2754098724dfe0474d80689",
+      "bufferType": "non-indexed little-endian Float32 xyz; triangles in groups of three; transform by column-major matrixWorld",
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -46830.368005760836,
+        8.423543250719215,
+        20465.84852914366,
+        1
+      ],
+      "vertices": 156,
+      "triangles": 52,
+      "attrs": {
+        "position": {
+          "sha256": "4d28cc5758e38a9a83f10c02c9952fbac04d3bdcf2754098724dfe0474d80689",
+          "itemSize": 3,
+          "count": 156
+        },
+        "uv": {
+          "sha256": "bb6beb0c8a404b5af8d6e6d03003656e7efdc5e093c620bd6ad5ed07649bf652",
+          "itemSize": 2,
+          "count": 156
+        },
+        "color": {
+          "sha256": "533d447d29e868170384f7dcbb761b51473907459aa22d0cae366bba9a2f5bf8",
+          "itemSize": 3,
+          "count": 156
+        },
+        "normal": {
+          "sha256": "e3a583d48d94232ede79996a758406c220b9e3cfc0a65e39052fce844c47e1e2",
+          "itemSize": 3,
+          "count": 156
+        }
+      }
+    },
+    {
+      "role": "Seacow \u00b7 cornice, portals and metalwork",
+      "file": "original-emitted-role-1.f32",
+      "sha256": "ba28ba806bbb42fefc00554c2319a1783a9abfda931eca9dfb4517392d2a1af0",
+      "bufferType": "non-indexed little-endian Float32 xyz; triangles in groups of three; transform by column-major matrixWorld",
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -46830.368005760836,
+        8.423543250719215,
+        20465.84852914366,
+        1
+      ],
+      "vertices": 5886,
+      "triangles": 1962,
+      "attrs": {
+        "position": {
+          "sha256": "ba28ba806bbb42fefc00554c2319a1783a9abfda931eca9dfb4517392d2a1af0",
+          "itemSize": 3,
+          "count": 5886
+        },
+        "uv": {
+          "sha256": "56e6d6c812fd9cb3d5bc947b05bf8e138dec8a2b2b95de7d784998a31544c9a7",
+          "itemSize": 2,
+          "count": 5886
+        },
+        "color": {
+          "sha256": "af024d032418dac17b770252883ecd1ba055735de21b9bea494a5fa73dcdfa32",
+          "itemSize": 3,
+          "count": 5886
+        },
+        "normal": {
+          "sha256": "e9cd5984eb52669667d734f0f67092d727479cbf28f28f6166a9039606151573",
+          "itemSize": 3,
+          "count": 5886
+        }
+      }
+    },
+    {
+      "role": "Seacow \u00b7 internal optic",
+      "file": "original-emitted-role-2.f32",
+      "sha256": "c9abbab8a9f0480988ae68f063c39bdf4e726580d46af22441292e5b215a291c",
+      "bufferType": "non-indexed little-endian Float32 xyz; triangles in groups of three; transform by column-major matrixWorld",
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -46830.368005760836,
+        8.423543250719215,
+        20465.84852914366,
+        1
+      ],
+      "vertices": 1296,
+      "triangles": 432,
+      "attrs": {
+        "position": {
+          "sha256": "c9abbab8a9f0480988ae68f063c39bdf4e726580d46af22441292e5b215a291c",
+          "itemSize": 3,
+          "count": 1296
+        },
+        "uv": {
+          "sha256": "3b8b40b17f089bb594741d74ef45006e9f7bdbf1e4c59306cbaceeb5a29285c3",
+          "itemSize": 2,
+          "count": 1296
+        },
+        "color": {
+          "sha256": "a6cae9e72693499414c7d39c1f7b6be8bfa1f878e78ca86195da6ebf572b3cd6",
+          "itemSize": 3,
+          "count": 1296
+        },
+        "normal": {
+          "sha256": "d6dddb7cac441ce671b96d1b85450b16b16a92c7102918f95c8a23d6e6da6ae4",
+          "itemSize": 3,
+          "count": 1296
+        }
+      }
+    },
+    {
+      "role": "Seacow \u00b7 twelve lantern panes",
+      "file": "original-emitted-role-3.f32",
+      "sha256": "006556bcd53477e59159ef28034a60712faf0ce5f1e01e2865198b335c8d08fc",
+      "bufferType": "non-indexed little-endian Float32 xyz; triangles in groups of three; transform by column-major matrixWorld",
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -46830.368005760836,
+        8.423543250719215,
+        20465.84852914366,
+        1
+      ],
+      "vertices": 72,
+      "triangles": 24,
+      "attrs": {
+        "position": {
+          "sha256": "006556bcd53477e59159ef28034a60712faf0ce5f1e01e2865198b335c8d08fc",
+          "itemSize": 3,
+          "count": 72
+        },
+        "uv": {
+          "sha256": "1a0295f4bf5986c5f74eca9153a6a4cb10b073a01a76ba4a457fd862c78966a4",
+          "itemSize": 2,
+          "count": 72
+        },
+        "color": {
+          "sha256": "db278aad219376f5cc9aaf4ead2ff94e638fdc15e16e06638d5e0a24ffef6dff",
+          "itemSize": 3,
+          "count": 72
+        },
+        "normal": {
+          "sha256": "c1613ba9fc2e58403c0650cc47e110df9695aa36efcfe3ffac04b31178470f5e",
+          "itemSize": 3,
+          "count": 72
+        }
+      }
+    }
+  ],
+  "allTriangles": 2470,
+  "oldExcludedVertices": {
+    "vertices": 15972,
+    "start": 9348,
+    "end": 9414
+  },
+  "oldStockRestored": true,
+  "allOtherSemanticResultsIdentical": true
+}

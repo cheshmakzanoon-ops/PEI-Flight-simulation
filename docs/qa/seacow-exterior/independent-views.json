@@ -1,0 +1,400 @@
+{
+  "scope": "True old q133 triangles + actual submitted new tower mesh only, full world matrix. A 4× conservative triangle silhouette mask treats any covered subsample as owned; max-filter exterior uses Chebyshev 2 px tolerance. Original and trial optical frames use exactly matched six camera values, resolution, static game sun and frozen water. Foliage/road/ground may occlude the shapes, so an interior difference is not proof of any particular detail; inspect it and independent photographs separately. Ignore no leaked environment; nothing outside two-pixel allowance may change.",
+  "inputs": {
+    "oldMeshSHA256": "08fb25056a65bc32163dbf7533f7bf2f34ac397e52018fdfa34c3b6328f4a0ff",
+    "oldTriangles": 22,
+    "trialMeshSHA256": "ff52a8b094ff172cc3223b95fe23d0a258851c109b7f1e8143ae9ecfac76dd2a",
+    "trialTriangles": 2470
+  },
+  "views": {
+    "northwest-visitor": {
+      "stockAndTrialSHA256": [
+        "ded91342bb107bdafcea0d3bdb0e43b7637e82e361ea8b3195f892453816f7b7",
+        "b8a47ff4648f733b9f573df1831297da365ea73cf78f23e577fec00b8e16f596"
+      ],
+      "size": [
+        900,
+        600
+      ],
+      "all": {
+        "any": 42367,
+        "over2": 42365,
+        "over8": 42157,
+        "peak": 198
+      },
+      "exactOldPinnedVsVariantStock": {
+        "any": 2836,
+        "over2": 2659,
+        "over8": 1548,
+        "peak": 52
+      },
+      "sameTickArms": true,
+      "projectedOriginalOwnerPx": 41301,
+      "projectedTrialOwnerPx": 30661,
+      "projectedBothPx": 29171,
+      "projectedUnionPx": 42791,
+      "outsideUnion": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0
+      },
+      "outsideTrueUnionWith2PxAA": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0
+      },
+      "exactChangedWithinOriginalOrNew2Px": true,
+      "strictProjectedNewOnly": {
+        "any": 1392,
+        "over2": 1392,
+        "over8": 1391,
+        "peak": 198
+      },
+      "strictProjectedOldOnly": {
+        "any": 11947,
+        "over2": 11945,
+        "over8": 11849,
+        "peak": 164
+      },
+      "activeInputsResided": [
+        {
+          "wanted": 5,
+          "ready": 5,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        {
+          "wanted": 5,
+          "ready": 5,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        }
+      ],
+      "nativeTerrainMatch": true,
+      "errors": [],
+      "draws": {
+        "authored": {
+          "calls": 110,
+          "triangles": 245754,
+          "oldCount": 15972,
+          "visibleCut": true,
+          "artMounted": true
+        },
+        "stock": {
+          "calls": 106,
+          "triangles": 243306,
+          "oldCount": 15972,
+          "visibleCut": false,
+          "artMounted": false
+        },
+        "restored": {
+          "calls": 110,
+          "triangles": 245754,
+          "oldCount": 15972,
+          "visibleCut": true,
+          "artMounted": true
+        }
+      },
+      "normalFramesComparedToFirstIndependentStock": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0
+      },
+      "rawCanvasPNGSha256": {
+        "authored": "b8a47ff4648f733b9f573df1831297da365ea73cf78f23e577fec00b8e16f596",
+        "stock": "ded91342bb107bdafcea0d3bdb0e43b7637e82e361ea8b3195f892453816f7b7",
+        "restored": "b8a47ff4648f733b9f573df1831297da365ea73cf78f23e577fec00b8e16f596"
+      },
+      "normalSourceGameCameraXZY": [
+        -46855.82384988356,
+        14.743107906034064,
+        20440.392685020943
+      ],
+      "sameVariantRestoreByteExact": true,
+      "ordinaryOriginalMismatchContext": "Manual renderer JSON frame versus asynchronous Playwright browser screenshot sample at different times. World water shader frozen, but never treat the two as a same-tick cohort. Use the signed synchronous original/authored/restored pair for causality; report ordinary cross-run exterior counts alongside."
+    },
+    "southwest-offshore": {
+      "stockAndTrialSHA256": [
+        "326ba94315721f3faea2b9dfaa236425e3c30e38e7993833b626183f8b56cd23",
+        "c0a045e3024a75caec60e6ca4079da705f4fec7e50b04254bd879605910a1867"
+      ],
+      "size": [
+        900,
+        600
+      ],
+      "all": {
+        "any": 474,
+        "over2": 474,
+        "over8": 471,
+        "peak": 161
+      },
+      "exactOldPinnedVsVariantStock": {
+        "any": 2645,
+        "over2": 1590,
+        "over8": 625,
+        "peak": 37
+      },
+      "sameTickArms": true,
+      "projectedOriginalOwnerPx": 464,
+      "projectedTrialOwnerPx": 365,
+      "projectedBothPx": 343,
+      "projectedUnionPx": 486,
+      "outsideUnion": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0
+      },
+      "outsideTrueUnionWith2PxAA": {
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "peak": 0
+      },
+      "exactChangedWithinOriginalOrNew2Px": true,
+      "strictProjectedNewOnly": {
+        "any": 15,
+        "over2": 15,
+        "over8": 15,
+        "peak": 161
+      },
+      "strictProjectedOldOnly": {
+        "any": 120,
+        "over2": 120,
+        "over8": 120,
+        "peak": 137
+      },
+      "activeInputsResided": [
+        {
+          "wanted": 5,
+          "ready": 5,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        {
+          "wanted": 5,
+          "ready": 5,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        }
+      ],
+      "nativeTerrainMatch": true,
+      "errors": [],
+      "draws": {
+        "authored": {
+          "calls": 64,
+          "triangles": 222168,
+          "oldCount": 15972,
+          "visibleCut": true,
+          "artMounted": true
+        },
+        "stock": {
+          "calls": 60,
+          "triangles": 219720,
+          "oldCount": 15972,
+          "visibleCut": false,
+          "artMounted": false
+        },
+        "restored": {
+          "calls": 64,
+          "triangles": 222168,
+          "oldCount": 15972,
+          "visibleCut": true,
+          "artMounted": true
+        }
+      },
+      "normalFramesComparedToFirstIndependentStock": {
+        "any": 990,
+        "over2": 62,
+        "over8": 0,
+        "peak": 6
+      },
+      "rawCanvasPNGSha256": {
+        "authored": "c0a045e3024a75caec60e6ca4079da705f4fec7e50b04254bd879605910a1867",
+        "stock": "326ba94315721f3faea2b9dfaa236425e3c30e38e7993833b626183f8b56cd23",
+        "restored": "c0a045e3024a75caec60e6ca4079da705f4fec7e50b04254bd879605910a1867"
+      },
+      "normalSourceGameCameraXZY": [
+        -47031.119758483714,
+        74,
+        20752.551744644807
+      ],
+      "sameVariantRestoreByteExact": true,
+      "ordinaryOriginalMismatchContext": "Manual renderer JSON frame versus asynchronous Playwright browser screenshot sample at different times. World water shader frozen, but never treat the two as a same-tick cohort. Use the signed synchronous original/authored/restored pair for causality; report ordinary cross-run exterior counts alongside."
+    }
+  },
+  "drawingBuffer": [
+    900,
+    600
+  ],
+  "cameraRegistrationSHA256": "ff89492b880217da1f0e296c2b7fcefb8a6f8ecaeb23f57a59155ab1b4794287",
+  "originalMeshLocalPositionSHA256": "01a2bee84ee4e620cbabd7659f86a59be8c46f67fcd5c3c82b6b0b5a4030cfb6",
+  "originalAllSixEntireTileAttributes": {
+    "position": "722eb2c57d050bc66d7a36ae7a9973f280d450919fca0b8c2e678ebebfec9f15",
+    "uv": "eb121db1ddeb6982d5df0d4ae5e0df7288d96a569d61287c8983e67d956207c3",
+    "color": "aca50bd318f0cc64b6882c2a84c091cfe1da55f1c63a590d9e867091dfd40a31",
+    "topFlag": "c7b6c34850287079f8cacd20b13bfade69c50eaedf873f36e3d60ddbedc59203",
+    "facadeStyle": "d43d4604ad0af319a21a13564e67069913e482a88cba0bd8cc2801dc3533a527",
+    "normal": "c65a2458ef9c9d510b3660ba3aa86cc44dac551ee6b9546c8d272c71cfdc1658"
+  },
+  "unchangedAuxiliary130AllSixAttributes": {
+    "position": "654ff9ef4fd8a1cb3edd796c11a41ab37c45ae5906cf7104608ff1af664bc2ab",
+    "uv": "d80caf668bcc2aa8108e39b4455975cae9a161a379734ceb5212236655a537be",
+    "color": "2b82b30998fb1d669d3e45bcf1970129b1d8e26f22640c324d5b13c6ca1a9d89",
+    "topFlag": "ef04ebd53bc9bd97cb34793299d2346dcfcbb967fddb9aa6b14195f1a37b3fc0",
+    "facadeStyle": "17b0761f87b081d5cf10757ccc89f12be355c70e2e29df288b65b30710dcbcd1",
+    "normal": "c96fed47097a1da5b658ac911b1bfb75cb90fc58e2d0059dd55cb30beaadda22"
+  },
+  "allOtherOriginalVertexIndices": "All vertex indices 0..15971 remain in order except the authorized original row133 span [9348,9414); tested looking at each index on every positive. On false fallback all 15,972 original vertices are submitted.",
+  "terrainGLBuffers": {
+    "positions": "920c97dfac152913ce2074add5b30cf4a6f9e86f4f16497b0d356a0a48ce2b0d",
+    "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+    "bytes": [
+      153228,
+      150528
+    ],
+    "fullTriangleCount": 25088,
+    "bounds": "original 8-14 near N112 via physical GL COPY_READ_BUFFER; exact CPU/GPU byte equality"
+  },
+  "runtimeGeometryLocalToWorld": {
+    "allNewPartIdentities": [
+      {
+        "name": "Seacow · tapered white shaker shaft",
+        "first": 0,
+        "count": 52,
+        "worldMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -46830.368005760836,
+          8.423543250719547,
+          20465.84852914366,
+          1
+        ],
+        "material": ""
+      },
+      {
+        "name": "Seacow · cornice, portals and metalwork",
+        "first": 52,
+        "count": 1962,
+        "worldMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -46830.368005760836,
+          8.423543250719547,
+          20465.84852914366,
+          1
+        ],
+        "material": ""
+      },
+      {
+        "name": "Seacow · internal optic",
+        "first": 2014,
+        "count": 432,
+        "worldMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -46830.368005760836,
+          8.423543250719547,
+          20465.84852914366,
+          1
+        ],
+        "material": ""
+      },
+      {
+        "name": "Seacow · twelve lantern panes",
+        "first": 2446,
+        "count": 24,
+        "worldMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -46830.368005760836,
+          8.423543250719547,
+          20465.84852914366,
+          1
+        ],
+        "material": ""
+      }
+    ],
+    "nearWorldXYZF64LESHA256": "145f3fed492a182a80e36255f733a0ceb9341f754d075131e4aa1329903072cf",
+    "oldWorldXYZF64LESHA256": "c02448fc7ec3124eec34d9b78656f8986eec8b75be819a25aa249de5b6cffb35",
+    "oldNodeVsChromeConstantTranslationOnlyM": [
+      -7.275957614183426e-12,
+      0.0,
+      0.0
+    ]
+  },
+  "finalLifecycleOnlyVariant": "The independent active browser cameras actually used frozen first-normal-art V1, not the later unrelated fault-guard revision. Independently re-extracted all four PBR source meshes/physical ring and shader geometry bytes are identical in V2. Separate production checks establish its own admission and failures.",
+  "registeredHighNegative": {
+    "ordinaryGamePngEqual": true,
+    "ordinaryGamePNG_SHA256": "c57bf70fb86f719466637921f7641bc2be5932a06d71c509f3a6da5363db205c",
+    "originalVsStudy": {
+      "originalVertices": 15972,
+      "noIndex": true,
+      "allOriginalAttributeCount": 6,
+      "authoredActive": false,
+      "artPrepared": true,
+      "sourceGroupVisible": false,
+      "cameraWorldY": 535
+    },
+    "callsAndTriangles": [
+      25,
+      205337
+    ],
+    "glErrors": 0,
+    "fullyResidentAEB": {
+      "wanted": 3,
+      "ready": 3,
+      "loading": 0,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "ordinaryCrossRunCaveat": "The older offshore baseline captured during continuing detail residency (8 ready/one loading, despite all buildings ready), whereas fully settled current arm had 12/0. Those non-contemporaneous exterior differences are retained as a limitation, not attributed to tower art; true same-tick genuine guard on/off/restore arms eliminate them. No absolute whole-profile single-frame equality is claimed for that older offshore image."
+}
