@@ -1,0 +1,103 @@
+{
+  "baseline": "40e62a0a815c1ea720dbc7d0004f24a373ae1155",
+  "output": "compiled Three.js for flight; same runtime in instrumented QA for fixed-camera captures",
+  "matchedCaptures": [
+    {
+      "name": "navigation-broadside",
+      "size": [
+        1000,
+        600
+      ],
+      "pose": {
+        "lon": -63.7521722,
+        "lat": 46.2099778,
+        "dist": 1770,
+        "east": 1110,
+        "south": 1390,
+        "fixedBaseH": 38,
+        "fixedEyeY": 66,
+        "h": 0,
+        "agl": 0
+      },
+      "draws": 104,
+      "trianglesBefore": 203311,
+      "trianglesAfter": 203331,
+      "pixelsAboveFourRgb": 2944,
+      "bbox": [
+        0,
+        292,
+        999,
+        312
+      ],
+      "pixelsOutsideDiagnosticBand": 0
+    },
+    {
+      "name": "main-span-ramp",
+      "size": [
+        1000,
+        600
+      ],
+      "pose": {
+        "lon": -63.765,
+        "lat": 46.2007,
+        "dist": 520,
+        "east": 345,
+        "south": 389,
+        "fixedBaseH": 38,
+        "fixedEyeY": 59,
+        "h": 0,
+        "agl": 0
+      },
+      "draws": 96,
+      "trianglesBefore": 199721,
+      "trianglesAfter": 199741,
+      "pixelsAboveFourRgb": 4825,
+      "bbox": [
+        0,
+        290,
+        999,
+        334
+      ],
+      "pixelsOutsideDiagnosticBand": 0
+    },
+    {
+      "name": "pei-approach",
+      "size": [
+        1000,
+        600
+      ],
+      "pose": {
+        "lon": -63.712294078,
+        "lat": 46.24493317,
+        "dist": 460.6788,
+        "east": 204.6443,
+        "south": 412.7296,
+        "fixedBaseH": 33,
+        "fixedEyeY": 125,
+        "h": 0,
+        "agl": 0
+      },
+      "draws": 114,
+      "trianglesBefore": 239877,
+      "trianglesAfter": 239897,
+      "pixelsAboveFourRgb": 6143,
+      "bbox": [
+        0,
+        264,
+        799,
+        354
+      ],
+      "pixelsOutsideDiagnosticBand": null
+    }
+  ],
+  "compiledPlayerFlight": {
+    "route": "bridge",
+    "westMetres": 168.982,
+    "southMetres": 173.574,
+    "startAltitudeM": 264.945,
+    "endAltitudeM": 266.124,
+    "cam": "Cockpit",
+    "warnings": 0,
+    "playbackErrors": 0
+  }
+}

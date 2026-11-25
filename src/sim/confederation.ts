@@ -4,7 +4,8 @@ import { project, clamp } from './geo.ts';
  * Statistics Canada National Road Network, PEI 22_1 / NB 15_0, OGL-Canada.
  * Centreline geometry selected by STRUNAMEEN=Confederation Bridge from both
  * regional GeoPackages and joined at their shared maritime boundary endpoint.
- * The elevation profile is a render approximation, not engineering survey data.
+ * The visual elevation includes source-anchored main-span controls but is not
+ * an as-built engineering survey; the abutments retain their inherited profile.
  */
 const COORDS = [
   [-63.8152993, 46.163458],
@@ -77,8 +78,7 @@ export function bridgeAt(s:number) {
   while(i<distances.length-1 && distances[i]<d) i++;
   const a=POINTS[i-1],b=POINTS[i],len=distances[i]-distances[i-1];
   const f=(d-distances[i-1])/len,dx=(b.x-a.x)/len,dz=(b.z-a.z)/len;
-  const start=ease(d/740),end=ease((BRIDGE_LENGTH-d)/630);
-  return {x:a.x+f*(b.x-a.x),y:9+31*start*end+20*Math.exp(-((d-NAV_SPAN)**2)/(2*560**2)),z:a.z+f*(b.z-a.z),dx,dz};
+  return {x:a.x+f*(b.x-a.x),y:deckElevation(d),z:a.z+f*(b.z-a.z),dx,dz};
 }
 export function isConfederationBridge(x:number,z:number) {
   if(x < POINTS[0].x-50 || x > POINTS.at(-1)!.x+50) return false;
@@ -122,6 +122,28 @@ export const BRIDGE_SUPPORTS: readonly BridgeSupport[] = [
   ...mainSupports,
   ...Array.from({length:7},(_,i):BridgeSupport=>({id:'E'+(7-i),section:'approach',station:EAST_TRANSITION+i*(BRIDGE_LENGTH-8-EAST_TRANSITION)/6})),
 ];
+
+// Lin, Naumoski and Saatcioglu, Dynamic Behaviour of the Confederation Bridge Under Seismic
+// Loads, §2: 40.8 m MSL at P26/P17 and 59.06 m at the P22–P21 crest.
+// The pier stations are the existing horizontal registration; only the deck
+// and attached visual support elevations use these vertical values.
+const PIER_P26=mainSupports[44-26].station, PIER_P17=mainSupports[44-17].station;
+export const BRIDGE_DECK_CONTROLS={
+  westShoulder:PIER_P26, crest:NAV_SPAN, eastShoulder:PIER_P17,
+  typicalElevation:40.8, crestElevation:59.06,
+} as const;
+function deckElevation(d:number){
+  const {westShoulder,crest,eastShoulder,typicalElevation,crestElevation}=BRIDGE_DECK_CONTROLS;
+  // Preserve the original approach and abutment elevations. Use the existing
+  // short main-to-approach transition intervals for the small 40 → 40.8 m tie.
+  const approach=9+31*ease(d/740)*ease((BRIDGE_LENGTH-d)/630);
+  if(d<=WEST_TRANSITION||d>=EAST_TRANSITION)return approach;
+  const join=ease(Math.min((d-WEST_TRANSITION)/(first-WEST_TRANSITION),
+                           (EAST_TRANSITION-d)/(EAST_TRANSITION-last)));
+  const dome=d<=crest?ease((d-westShoulder)/(crest-westShoulder)):
+                      ease((eastShoulder-d)/(eastShoulder-crest));
+  return approach+(typicalElevation-approach)*join+(crestElevation-typicalElevation)*dome;
+}
 
 /** Visual girder underside; not a deck survey or a marine clearance model. */
 export function bridgeGirderDepth(s:number) {

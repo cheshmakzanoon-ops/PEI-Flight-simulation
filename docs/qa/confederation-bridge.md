@@ -58,3 +58,39 @@ Run the pose tool with `--views nb-concrete,pei-concrete` and use
 the actual renderer, sampled immediately after the frame. Counts are unchanged:
 17 draws and 137,731 triangles at the New Brunswick pier; 115 draws and 234,285
 triangles at the PEI pier. Browser shader compilation was checked for both.
+
+## Main deck elevation
+
+![Matched Three.js captures of the navigation span and western main-span ramp](confederation-deck-elevation.webp)
+
+The original bridge used a single approximate hump, placing the P26 and P17
+deck shoulders at 42.69 m and 42.68 m and the crest at 60.00 m in simulator Y.
+The main deck now uses the 40.80 m shoulders and 59.06 m crest described by
+[Lin, Naumoski and Saatcioglu, section 2](https://doi.org/10.5772/50070).
+The adjacent main spans use the documented typical 40.80 m elevation. The
+intermediate curve and short connections to the existing approaches are
+smooth visual interpolation, not a surveyed grade. P26 and P17 retain the
+earlier estimated horizontal stations. A mesh panel break pins the crest
+in the actual rendered deck; the shaft tops still meet the soffit.
+
+The paper expresses its heights relative to mean sea level. Direct use in
+simulator Y is a visual approximation, not a measured transformation to
+the terrain datum, tide simulation, or a statement about clearance.
+[Transport Canada's navigation diagram and air-draft limits](https://tc.canada.ca/en/marine-transportation/publications/tp-13681-guidelines-navigation-under-confederation-bridge-04-2025)
+are separate and are not used to set the deck height. The road centreline,
+girder depths, 65 support stations, shorelines, and aircraft behavior are
+unchanged. The abutments remain at their earlier approximate elevations.
+
+To inspect the rendered result, run `tools/qa/bridge-poses.py` as above with
+`--views navigation-broadside,main-span-ramp,pei-approach`; use `40e62a0`
+for the baseline. The near-orthogonal navigation view is easier to read
+than an end-on approach. The compiled `bridge` departure can be replayed
+with `python tools/qa/confederation-deck-flight.py --dist dist --chromium CHROMIUM`.
+
+[Matched results](confederation-deck-gate.json) show 2,944 changed pixels
+in the navigation view and 4,825 in the western ramp view (over four RGB
+levels), all inside their bridge inspection bands. Each pose retains its
+old draw count and adds 20 triangles for the crest station. The compiled
+flight covered 242 m toward New Brunswick, switched to Cockpit and
+paused without a browser or scene error. These are software-rendered
+checks, not real-device frame times.

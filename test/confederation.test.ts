@@ -1,6 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BRIDGE_LENGTH, NAV_SPAN, bridgeAt, isConfederationBridge, BRIDGE_SUPPORTS, bridgeGirderDepth } from '../src/sim/confederation.ts';
+import * as THREE from 'three';
+import { addConfederationBridge } from '../src/render/confederation.ts';
+import { BRIDGE_LENGTH, NAV_SPAN, bridgeAt, isConfederationBridge, BRIDGE_SUPPORTS, BRIDGE_DECK_CONTROLS, bridgeGirderDepth } from '../src/sim/confederation.ts';
 
 test('joined NRN centreline follows roughly 12.9 km of water and approach spans', ()=>{
   assert.ok(BRIDGE_LENGTH>12800&&BRIDGE_LENGTH<13080);
@@ -42,5 +44,61 @@ test('all visible supports have positive shaft length in the approximate deck pr
   for(const {station,id,section} of BRIDGE_SUPPORTS){
     const y=bridgeAt(station).y;
     assert.ok(y-bridgeGirderDepth(station)>=(section==='main'?3.6:2.1),id);
+  }
+});
+
+test('visual deck meets the published MSL controls without seams or a second crest',()=>{
+  const {westShoulder,crest,eastShoulder}=BRIDGE_DECK_CONTROLS;
+  const station=(id:string)=>BRIDGE_SUPPORTS.find(p=>p.id===id)!.station;
+  assert.equal(westShoulder,station('P26'));
+  assert.equal(eastShoulder,station('P17'));
+  assert.equal(bridgeAt(westShoulder).y,40.8);
+  assert.equal(bridgeAt(eastShoulder).y,40.8);
+  assert.equal(bridgeAt(crest).y,59.06);
+  assert.equal(bridgeAt(station('P33')).y,40.8);
+  assert.equal(bridgeAt(station('P8')).y,40.8);
+  assert.equal(bridgeAt(0).y,9);
+  assert.equal(bridgeAt(BRIDGE_LENGTH).y,9);
+  for(const s of [station('W14'),station('P44'),westShoulder,crest,eastShoulder,station('P1'),station('E7')]){
+    const y=bridgeAt(s).y,l=bridgeAt(s-.1).y,r=bridgeAt(s+.1).y;
+    assert.ok(Math.abs((r-y)-(y-l))<1e-5,'a joined station must not kink');
+  }
+  for(const [lo,hi,direction] of [[westShoulder,crest,1],[crest,eastShoulder,-1]]){
+    let prev=bridgeAt(lo).y;
+    for(let i=1;i<=200;i++){
+      const y=bridgeAt(lo+(hi-lo)*i/200).y;
+      assert.ok(direction*(y-prev)>0);
+      assert.ok(Math.abs(y-prev)/((hi-lo)/200)<.025,'the visual ramp must remain smooth');
+      prev=y;
+    }
+  }
+});
+
+test('Three.js deck and pier mesh meet the vertical controls without changing surface scope',()=>{
+  const scene=new THREE.Scene();
+  const group=addConfederationBridge(scene);
+  scene.updateMatrixWorld(true);
+  const deck=group.children[0] as THREE.Mesh;
+  const underside=group.children[2] as THREE.Mesh;
+  const shafts=group.getObjectByName('main bridge shafts') as THREE.InstancedMesh;
+  const ray=new THREE.Raycaster(), direction=new THREE.Vector3(0,-1,0);
+  const {westShoulder,crest,eastShoulder}=BRIDGE_DECK_CONTROLS;
+  for(const s of [westShoulder,crest,eastShoulder]){
+    const p=bridgeAt(s);
+    ray.set(new THREE.Vector3(p.x,100,p.z),direction);
+    const y=ray.intersectObject(deck,false)[0]?.point.y;
+    assert.ok(y!==undefined&&Math.abs(y-p.y)<.003,'matching deck mesh height');
+    const bottom=ray.intersectObject(underside,false)[0]?.point.y;
+    assert.ok(bottom!==undefined&&Math.abs(bottom-(p.y-bridgeGirderDepth(s)))<.003,'matching underside');
+  }
+  assert.equal(shafts.count,44);
+  const matrix=new THREE.Matrix4();
+  for(const id of ['P26','P22','P21','P17']){
+    const i=44-Number(id.slice(1)),p=BRIDGE_SUPPORTS.filter(q=>q.section==='main')[i].station;
+    shafts.getMatrixAt(i,matrix);
+    const top=new THREE.Vector3(0,.5,0).applyMatrix4(matrix);
+    const point=bridgeAt(p);
+    assert.ok(Math.hypot(top.x-point.x,top.z-point.z)<.004,id);
+    assert.ok(Math.abs(top.y-(point.y-bridgeGirderDepth(p)+.35))<.003,id);
   }
 });

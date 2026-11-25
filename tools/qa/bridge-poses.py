@@ -25,6 +25,10 @@ def stage(repo, root, deps, void_probe):
 fixed.stage = stage
 
 POSES = {
+    'navigation-broadside': dict(lon=-63.7521722, lat=46.2099778, dist=1770,
+                         east=1110, south=1390, fixedBaseH=38, fixedEyeY=66, h=0, agl=0),
+    'main-span-ramp': dict(lon=-63.765, lat=46.2007, dist=520,
+                         east=345, south=389, fixedBaseH=38, fixedEyeY=59, h=0, agl=0),
     'nb-approach': dict(lon=-63.802510147, lat=46.173400180, dist=513.1277,
                         east=506.0024, south=85.2148, fixedBaseH=33, fixedEyeY=109, h=0, agl=0),
     'navigation-span': dict(lon=-63.752174064, lat=46.209978386, dist=615.8734,
@@ -37,6 +41,25 @@ POSES = {
                          east=28.5138, south=57.7491, fixedBaseH=21, fixedEyeY=28, h=0, agl=0),
 }
 
+def stable(page, errors):
+    import time
+    end=time.monotonic()+80
+    page.wait_for_function("window.reviewCamera?.frame>12 && window.islandAirDiagnostics?.mainland",
+                           timeout=80000)
+    last=None; run=0
+    while time.monotonic()<end:
+        if errors: raise RuntimeError(errors)
+        d=page.evaluate("()=>({...window.islandAirDiagnostics,...window.reviewCamera})")
+        sub=d["detail"]
+        now=(d["triangles"], d["drawCalls"],d["geometries"],sub["ready"],sub["loading"])
+        run=run+1 if now==last and sub["loading"]==0 else 0
+        if run>=3 and d["frame"]>22:
+            if d["layerWarnings"] or sub["missing"]: raise RuntimeError(d)
+            return d
+        last=now
+        page.evaluate("()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))")
+    raise TimeoutError(d)
+
 def capture(args, browser, url):
     results = []
     for name in args.views.split(','):
@@ -48,7 +71,7 @@ def capture(args, browser, url):
             page.on('pageerror', lambda e: errors.append(str(e)))
             page.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
             page.goto(url+'/?diagnostics&qa='+quote(json.dumps(pose)), wait_until='domcontentloaded')
-            diag = fixed.settle(page, errors)
+            diag = stable(page, errors)
             raw = page.evaluate('window.captureBridge()')
             (args.out/(name+'.png')).write_bytes(base64.b64decode(raw.split(',', 1)[1]))
             results.append(dict(view=name, pose=pose, triangles=diag['triangles'], calls=diag['drawCalls']))

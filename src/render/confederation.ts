@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { addBridgeConcrete } from './bridge-concrete.ts';
-import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, bridgeGirderDepth } from '../sim/confederation.ts';
+import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, BRIDGE_DECK_CONTROLS, bridgeGirderDepth } from '../sim/confederation.ts';
 
 const WIDTH = 11;
 type Point = ReturnType<typeof bridgeAt>;
@@ -33,8 +33,8 @@ export function addConfederationBridge(scene: THREE.Scene) {
   const n=Math.ceil(BRIDGE_LENGTH/22);
   // Include every support in the panel boundaries: a fixed interval can skip
   // the deepest part of the girder and leave an above-water pier poking through.
-  const stations=[...Array.from({length:n+1},(_,i)=>i*BRIDGE_LENGTH/n),
-    ...BRIDGE_SUPPORTS.map(p=>p.station)].sort((a,b)=>a-b);
+  const stations=[...new Set([...Array.from({length:n+1},(_,i)=>i*BRIDGE_LENGTH/n),
+    ...BRIDGE_SUPPORTS.map(p=>p.station),BRIDGE_DECK_CONTROLS.crest])].sort((a,b)=>a-b);
   for(let i=1;i<stations.length;i++){
     const s=stations[i-1],t=stations[i],a=bridgeAt(s),b=bridgeAt(t),half=WIDTH/2;
     push(asphalt,verts(a,-half,0),verts(b,-half,0),verts(b,half,0),verts(a,half,0));
