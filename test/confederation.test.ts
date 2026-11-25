@@ -102,3 +102,28 @@ test('Three.js deck and pier mesh meet the vertical controls without changing su
     assert.ok(Math.abs(top.y-(point.y-bridgeGirderDepth(p)+.35))<.003,id);
   }
 });
+
+test('mirror-image bridge parapets stand 1.10 m above the existing road and have a sloping traffic face',()=>{
+ const scene=new THREE.Scene(),group=addConfederationBridge(scene);
+ scene.updateMatrixWorld(true);
+ const walls=group.children[1] as THREE.Mesh,deck=group.children[0] as THREE.Mesh;
+ const cast=new THREE.Raycaster(),down=new THREE.Vector3(0,-1,0);
+ const stations=['W13','P31','P22','P3','E6'].map(id=>BRIDGE_SUPPORTS.find(p=>p.id===id)!.station);
+ stations.push(BRIDGE_DECK_CONTROLS.crest);
+ for (const station of stations) {
+   const p=bridgeAt(station);
+   function ray(w:number,object:THREE.Mesh){
+    cast.set(new THREE.Vector3(p.x-p.dz*w,p.y+3,p.z+p.dx*w),down);
+    return cast.intersectObject(object)[0]?.point.y;
+   }
+   assert.ok(Math.abs(ray(0,deck)!-p.y)<.003);
+   assert.equal(ray(0,walls),undefined);
+   for(const sign of [-1,1]){
+    const toe=ray(sign*5.28,walls)!-p.y,knee=ray(sign*5.38,walls)!-p.y,taper=ray(sign*5.425,walls)!-p.y,cap=ray(sign*5.53,walls)!-p.y;
+    assert.ok(toe>0&&toe<.15&&knee>.2&&knee<.34&&taper>.5&&taper<.82);
+    assert.ok(Math.abs(cap-1.1)<.003,'documented parapet height');
+    assert.equal(ray(sign*5.72,walls),undefined,'no expansion of model extent');
+   }
+ }
+ assert.equal(group.children.length,8,'no new draw batches');
+});

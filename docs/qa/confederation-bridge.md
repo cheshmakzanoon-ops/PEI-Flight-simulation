@@ -125,3 +125,35 @@ An approach-only control frame was unchanged. The compiled Borden departure
 advanced about 243 m toward New Brunswick, switched to Cockpit and paused
 without a scene or browser error. These are browser QA results, not device
 performance measurements or information about navigation or clearance.
+
+## Concrete parapets
+
+![Matched views along the deck and above the PEI approach, before and after the parapet change](confederation-parapets.webp)
+
+The older deck depicted each barrier as an upright slab 0.96 m high. The
+revised model uses the **1.10 m** height documented by researchers and the
+bridge operator in [Moffatt et al., CSCE 2013, section 2 and Figure 1](https://legacy.csce.ca/elf/apps/CONFERENCEVIEWER/conferences/2013/pdfs/mechanics/123.pdf).
+The traffic-facing slope, lower break and narrower cap are original geometry
+that approximates the visible profile. The paper does not validate our cap
+and toe widths, and its diagram and images are not included as textures.
+
+The new face spans the existing deck panels on both sides, including both
+approaches. No centreline, driving surface, stripe, deck elevation, girder,
+pier, ice shield, or collision geometry changes. It uses the existing concrete
+batch and adds 2,616 triangles along the entire bridge, with no new draw calls
+or assets to download. Three.js rays check the cap, slope, extent and preserved
+road height at six stations, including the navigation crest.
+
+```sh
+python tools/qa/bridge-parapet-frames.py --checkout . \
+  --chromium /path/to/chromium --out /tmp/pei-parapet-qa
+```
+
+The comparison tool holds the camera and game frame fixed and restores the
+original draw for a byte-exact repeat. A simple colour pass checks that changes
+are confined to the model's edge batch. The regular compiled flight test
+traversed roughly 243 m on the Borden route, switched to Cockpit and paused with
+no application warnings or playback errors.
+In the matched deck, PEI approach and navigation-span views, respectively,
+43,347, 11,734 and 8,515 pixels changed by more than two RGB codes. No such
+pixel was outside the edge-batch mask with its four-pixel anti-aliasing margin.

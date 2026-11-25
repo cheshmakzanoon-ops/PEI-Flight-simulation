@@ -4,6 +4,15 @@ import { mainBridgeShaftGeometry } from './confederation-shaft.ts';
 import { bridgeAt, BRIDGE_LENGTH, BRIDGE_SUPPORTS, BRIDGE_DECK_CONTROLS, bridgeGirderDepth } from '../sim/confederation.ts';
 
 const WIDTH = 11;
+// Moffatt et al. (CSCE 2013), §2: 1.10 m slip-formed barrier.
+// Only the height is dimensioned here; the traffic-face crease and cap
+// widths approximate the visible profile, not the structural assembly.
+const BARRIER_HEIGHT = 1.10;
+const FACE_KNEE_Y = .35;
+const CAP_INSET = .055;
+const KNEE_INSET = .09;
+const TOE_INSET = .26;
+const OUTSIDE = .16;
 type Point = ReturnType<typeof bridgeAt>;
 
 /** Original visual model, not a survey of the bridge's structural components. */
@@ -42,9 +51,12 @@ export function addConfederationBridge(scene: THREE.Scene) {
     push(under,verts(a,-2.65,-bridgeGirderDepth(s)),verts(a,2.65,-bridgeGirderDepth(s)),verts(b,2.65,-bridgeGirderDepth(t)),verts(b,-2.65,-bridgeGirderDepth(t)));
     for(const sign of [-1,1]){
       push(edges,verts(a,sign*half,-.18),verts(b,sign*half,-.18),verts(b,sign*2.65,-bridgeGirderDepth(t)),verts(a,sign*2.65,-bridgeGirderDepth(s)));
-      push(edges,verts(a,sign*(half+.16),.96),verts(b,sign*(half+.16),.96),verts(b,sign*(half+.16),-.18),verts(a,sign*(half+.16),-.18));
-      push(edges,verts(a,sign*(half-.26),.96),verts(b,sign*(half-.26),.96),verts(b,sign*(half+.16),.96),verts(a,sign*(half+.16),.96));
-      push(edges,verts(a,sign*(half-.26),.96),verts(a,sign*(half-.26),-.03),verts(b,sign*(half-.26),-.03),verts(b,sign*(half-.26),.96));
+      const edgeA=(w:number,h:number)=>verts(a,sign*(half+w),h);
+      const edgeB=(w:number,h:number)=>verts(b,sign*(half+w),h);
+      push(edges,edgeA(OUTSIDE,BARRIER_HEIGHT),edgeB(OUTSIDE,BARRIER_HEIGHT),edgeB(OUTSIDE,-.18),edgeA(OUTSIDE,-.18));
+      push(edges,edgeA(-CAP_INSET,BARRIER_HEIGHT),edgeB(-CAP_INSET,BARRIER_HEIGHT),edgeB(OUTSIDE,BARRIER_HEIGHT),edgeA(OUTSIDE,BARRIER_HEIGHT));
+      push(edges,edgeA(-CAP_INSET,BARRIER_HEIGHT),edgeA(-KNEE_INSET,FACE_KNEE_Y),edgeB(-KNEE_INSET,FACE_KNEE_Y),edgeB(-CAP_INSET,BARRIER_HEIGHT));
+      push(edges,edgeA(-KNEE_INSET,FACE_KNEE_Y),edgeA(-TOE_INSET,-.03),edgeB(-TOE_INSET,-.03),edgeB(-KNEE_INSET,FACE_KNEE_Y));
     }
   }
   for(let s=8;s<BRIDGE_LENGTH-8;s+=19){
