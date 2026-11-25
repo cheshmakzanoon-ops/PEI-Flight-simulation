@@ -1,0 +1,65 @@
+{
+  "scope": "Final V4 independent mounted Three/N112 + actual gameplay collider at all preregistered 3,380 class2 XY locations (original numerical elevations still unopened). GPU bound by live shader callbacks, not logical uniforms. Distinguish legitimate unrendered close physics reconciliation from actual terrain elevation.",
+  "sourceManifestSHA256": "fcf730285000a206317a8fbca423b8b90e5a08a6c89fde30d6a93b734877510f",
+  "actualRaysSHA256": "b72aeab6070793b69e2f87e5d98cc26832808e2112de6b8c52d7942453908b3a",
+  "trueTopSameV3AllRows": true,
+  "registeredN": 3380,
+  "trueVisibleRaiseOver1cm": 724,
+  "maxDrawnMinusColliderOnRaisedGroundM": 2.165493174732802e-05,
+  "colliderOnlyChangedOver5mm": 258,
+  "maxColliderOnlyChangeM": 0.136414086084637,
+  "maxAbsoluteColliderDifferenceBeyond18m": 0.0,
+  "sourceAuthorityMaskRowsMaxVisualDiffThenColliderDiffM": [
+    [
+      "building",
+      189,
+      0.0,
+      0.0
+    ],
+    [
+      "road",
+      528,
+      0.0,
+      0.0
+    ],
+    [
+      "sidewalk",
+      353,
+      0.0,
+      8.342710262176922e-06
+    ],
+    [
+      "lot",
+      0,
+      0.0,
+      0.0
+    ],
+    [
+      "water",
+      0,
+      0.0,
+      0.0
+    ],
+    [
+      "sourceTreeRoot",
+      52,
+      0.0,
+      0.0
+    ]
+  ],
+  "actualLinkedFragmentAndVertexSamplerCounts": {
+    "surveyedLand": [
+      6,
+      0
+    ],
+    "originalCanopy": [
+      2,
+      0
+    ],
+    "auxiliaryCanopy": [
+      1,
+      0
+    ]
+  },
+  "regionalControlNote": "No original class2 parking/water sample fell in 26m buffer. Finer fixed-road/neighbor controls are separately checked; do not claim water/parking from zero eligible samples."
+}

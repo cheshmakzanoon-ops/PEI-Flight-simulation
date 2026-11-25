@@ -1,0 +1,39 @@
+        (window as any).qaBeaconsfieldProjectedSupport=()=>{
+         const q=(world as any).stagedChurch, sh=museumShadow as any;
+         if(!q||q.grade.grid.spec.id!=='beaconsfield-measured-frontage-grade'||!sh?.live)throw Error('Coupled active renderer required');
+         const c=q.candidate,r=q.stock,p=c.geometry.getAttribute('position'),ix=c.geometry.index;
+         const K=r.geometry.getAttribute('position'),o=r.position,n=112,P=c.position,g=q.grade.grid;
+         const lx=o.x+K.getX(0),lz=o.z+K.getZ(0),sx=(K.getX(n)-K.getX(0))/n,sz=(K.getZ(n*(n+1))-K.getZ(0))/n;
+         const stockY=(x,z)=>{
+          const i=Math.min(n-1,Math.max(0,Math.floor((x-lx)/sx))),j=Math.min(n-1,Math.max(0,Math.floor((z-lz)/sz))),k=i+(n+1)*j;
+          const X=x-o.x,Z=z-o.z,u=(X-K.getX(i))/(K.getX(i+1)-K.getX(i)),v=(Z-K.getZ((n+1)*j))/(K.getZ((n+1)*(j+1))-K.getZ((n+1)*j));
+          const a=K.getY(k),b=K.getY(k+1),d=K.getY(k+n+1),e=K.getY(k+n+2);
+          return o.y+(u+v<=1?a+(b-a)*u+(d-a)*v:e+(d-e)*(1-u)+(b-e)*(1-v));
+         };
+         const dim=renderer.getSize(new THREE.Vector2()), enc=(x,y,z)=>{
+          const v=new THREE.Vector3(x,y,z).project(camera);
+          if(!Number.isFinite(v.x)||!Number.isFinite(v.y)||!Number.isFinite(v.z))throw Error('Unknown clipped vertex');
+          return [((v.x+1)*dim.x*.5),((1-v.y)*dim.y*.5),v.z];
+         };
+         const ground=[];
+         for(let i=0;i<ix.count;i+=3){
+          const coords=[ix.getX(i),ix.getX(i+1),ix.getX(i+2)].map(j=>[p.getX(j)+P.x,p.getY(j)+P.y,p.getZ(j)+P.z]);
+          if(coords.some(([x,y,z])=>x<g.x0-.05||x>g.x1+.05||z<g.z0-.05||z>g.z1+.05))continue;
+          const YY=coords.map(([x,y,z])=>stockY(x,z));
+          if(!coords.some(([x,y,z],j)=>Math.abs(y-YY[j])>.004))continue;
+          ground.push([coords.map(([x,y,z])=>enc(x,y,z)),coords.map(([x,y,z],j)=>enc(x,YY[j],z))]);
+         }
+         const hold=sh.replacement, attr=hold.geometry.getAttribute('position'),a=hold.position, trees=(window as any).qaActualBeaconsfieldStems().stems;
+         const shadow=[];
+         for(let i=0;i<attr.count;i+=3){
+          const Q=[i,i+1,i+2].map(j=>[attr.getX(j)+a.x,attr.getY(j)+a.y,attr.getZ(j)+a.z]);
+          const x=Q.map(p=>p[0]), z=Q.map(p=>p[2]);
+          const matches=trees.filter(t=>{
+           const [a,b,c,d]=t.ordinaryShadowBoundsXZ;
+           return Math.min(...x)>=a-.012&&Math.max(...x)<=c+.012&&Math.min(...z)>=b-.012&&Math.max(...z)<=d+.012;
+          });
+          if(!matches.length)throw Error('Projected local shadow matcher did not find an original caser');
+          shadow.push([Q.map(([x,y,z])=>enc(x,y,z)),...matches.map(t=>Q.map(([x,y,z])=>enc(x,t.ordinaryShadowPlaneY,z)))]);
+         }
+         return {width:dim.x,height:dim.y,ground,shadow};
+        };

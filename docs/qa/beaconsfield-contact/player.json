@@ -1,0 +1,224 @@
+{
+  "scope": "Actual compiled application at project-relative URL; two isolated QA route records are not published departures.",
+  "cases": {
+    "coupled": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": true,
+        "distanceM": 219.1484231796983,
+        "targetDistanceM": 106.0661348247211,
+        "groundClearanceM": 69.50611874685883,
+        "grades": [
+          "beaconsfield-measured-frontage-grade"
+        ],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 1,
+        "injectedGradeFault": null,
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      },
+      "street": {
+        "site": "qa-beacons-street",
+        "art": true,
+        "distanceM": 209.48504194034646,
+        "targetDistanceM": 37.867734201136784,
+        "groundClearanceM": 78.1580570247921,
+        "grades": [
+          "beaconsfield-measured-frontage-grade"
+        ],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 50,
+          "ready": 50,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 1,
+        "injectedGradeFault": null,
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    },
+    "old-preview": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": true,
+        "distanceM": 213.87768467657506,
+        "targetDistanceM": 104.31855732533629,
+        "groundClearanceM": 69.51848536350579,
+        "grades": [],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 0,
+        "injectedGradeFault": null,
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    },
+    "missing": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": true,
+        "distanceM": 226.76667568584375,
+        "targetDistanceM": 100.82450762206703,
+        "groundClearanceM": 69.54321930060968,
+        "grades": [],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 1,
+        "injectedGradeFault": "missing",
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    },
+    "corrupt": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": true,
+        "distanceM": 242.59077475165972,
+        "targetDistanceM": 88.0282469717771,
+        "groundClearanceM": 69.63392372646676,
+        "grades": [],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 1,
+        "injectedGradeFault": "corrupt",
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    },
+    "under-budget": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": true,
+        "distanceM": 215.63500207180059,
+        "targetDistanceM": 104.31855732533629,
+        "groundClearanceM": 69.51848536350579,
+        "grades": [],
+        "artRequests": 1,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 0,
+        "injectedGradeFault": null,
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": 15,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    },
+    "ordinary": {
+      "harbour": {
+        "site": "qa-beacons-harbour",
+        "art": false,
+        "distanceM": 230.28641514352148,
+        "targetDistanceM": 93.25983323552765,
+        "groundClearanceM": 69.59681425905276,
+        "grades": [],
+        "artRequests": 0,
+        "buildingPaths": [
+          "/world/buildings/index.json",
+          "/world/buildings/tiles.pack"
+        ],
+        "buildingTiles": {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "gradeRequests": 0,
+        "injectedGradeFault": null,
+        "scopedExit": null,
+        "emulatedFragmentSamplerCapacity": null,
+        "controls": [
+          "Cockpit",
+          "Pause"
+        ],
+        "errors": []
+      }
+    }
+  }
+}

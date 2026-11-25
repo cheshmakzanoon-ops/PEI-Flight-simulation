@@ -1,0 +1,1065 @@
+{
+  "scope": "Beaconsfield Historic House opt-in. Matched absolute errors of the original and trial Three.js surfaces against fixed 2020 airborne class-2 (ground) returns, not a contemporary cadastral, foundation or landscaping measurement. NRCan\u2019s national 1m DTM was the artist source and may historically incorporate this same campaign; the original point heights were never supplied to the artist or used for this custom fit. Exterior full ring means every previously eligible location except mapped guards, not the whole lot or all geographic directions at every sub-test.",
+  "source": {
+    "originalObject": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_389000_686000.copc.laz",
+    "etag": "\"5ba4632191cd96941064c196f5979dbb-5\"",
+    "bytes": 40126078,
+    "boundedFetch": {
+      "exact206Ranges": 9,
+      "downloadedBytes": 3057499
+    },
+    "horizontalEPSG": 2961,
+    "absoluteVerticalDatum": "Not declared in this LAS horizontal WKT; the unmodified outer training reference was compared locally to the fixed DTM without applying any offset.",
+    "rawGroundTruthDigestFloat64LE": "e799d154c754f6ca9c11346afbb1abefa7bafaa7975aacfb79f81e6798773d99"
+  },
+  "preselection": {
+    "moreDetailsSHA256": {
+      "scopeReg1": "d09366c1c54a565a908db3c860d0810d68a8e368e2568e56dcf6a93686cf74d7",
+      "scopeReg2": "56a52dd41d22bc75621e550f0ac45e946eafecd4c61c23854e13ec2c9e9f6878",
+      "coreReg2a": "410ce848d12e0d892eb349f6895cce67e92803eaf770c31dc9b53f2ebd7af6e7",
+      "oldActualMesh": "9b2a5ebbe2cdeb4baa857e4d5cf9cc917a5135d886c643c0bd97dfd94c6abca0",
+      "newActualMesh": "b72aeab6070793b69e2f87e5d98cc26832808e2112de6b8c52d7942453908b3a"
+    },
+    "fixedAlgorithm": "Original unsigned class-2 returns outside the authenticated house ring; 2.5m EPSG:2954 spatial blocks reserved when (i+3j+2) mod 5 = 0 relative to the area centre+64. Any overlapping pulse is held in full. Independently reserve BLAKE2b64 of original source flightline, scanner channel and GPS time using person=Bea223-ground, modulo 6. Source building/road/walk/parking/water/stem guards are unconditional. Numerical truth opened once after final mounted actual rays, real shade and optical scope had passed. Exact triangle/archive and registry digests are below.",
+    "secondaryCore": "The computational minimum distance to every frozen geometry constraint at the exact XY must be >=5m, including an incident-triangle clearance margin. This source-geometry selection was provisionally proposed after viewing only the external DTM, before any of the evaluation heights. No core near-house returns on E or S. No positive inference at unrepresented sides.",
+    "geometricAuditSHA256": "fcf730285000a206317a8fbca423b8b90e5a08a6c89fde30d6a93b734877510f",
+    "fullUnroundedAuditSHA256": "f8a45d83b2c29e62ce53b82aa36e790c1bd258810c37e62481eeb956e3ac6e68"
+  },
+  "localDatum": {
+    "outerIndependentGroundTrainingReturns": 1088,
+    "nonShadowedUnmodified2p5mTrainingCells": 95,
+    "medianSignedOriginalMinusDatedMosaicM": 0.0011260018244034775,
+    "medianAbsM": 0.005954838382070227,
+    "p90AbsM": 0.023234447797919038,
+    "appliedOffsetM": 0
+  },
+  "acceptance": "Near and shoulder evaluated separately. For full eligible ring and spatial-only subset, equal-weight 2.5m cell median absolute error <=0.30m and p90<=0.65m, baseline median>=0.35m, median lower by >=0.20m + >=30%, p90 lower by >=15%. Each adequately populated sector can worsen at most 0.08m; two improve by >=0.15m. The preselected core additionally requires >=30 held shots, >=8 cells and >=3 purely spatial. The transition and outer are control zones, not subject to an expectation of improvement.",
+  "unitsAndOrdering": [
+    "original return count",
+    "distinct equal-weighted 2.5m cells",
+    "pure spatial 2.5m cells",
+    "old cell median absolute error (m)",
+    "new cell median absolute error (m)",
+    "old p90 (m)",
+    "new p90 (m)"
+  ],
+  "readout": "Full eligible 5\u201311m shoulder passes. Full eligible 0.75\u20135m near zone fails the required reduction. A predeclared geometry-clear subset of the immediate north and west does pass (32 returns / 11 cells); it is not the entire lawn. Outer 18\u201326m is exactly unchanged, although pre-existing absolute ground errors remain.",
+  "rowsByBand": {
+    "near_0p75to5_0": {
+      "wholeUnblocked": {
+        "pooled": [
+          329,
+          71,
+          19,
+          0.539584,
+          0.36391,
+          0.713548,
+          0.61447
+        ],
+        "onlySpatial": [
+          190,
+          19,
+          19,
+          0.554896,
+          0.292961,
+          0.706519,
+          0.616694
+        ],
+        "bySector": {
+          "E": [
+            102,
+            21,
+            6,
+            0.473604,
+            0.264187,
+            0.69326,
+            0.69326
+          ],
+          "N": [
+            84,
+            23,
+            7,
+            0.494751,
+            0.30859,
+            0.604695,
+            0.513877
+          ],
+          "W": [
+            87,
+            20,
+            6,
+            0.65552,
+            0.463236,
+            0.779647,
+            0.617681
+          ],
+          "S": [
+            56,
+            12,
+            3,
+            0.512497,
+            0.483575,
+            0.636558,
+            0.635454
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": false
+      },
+      "preRegisteredObstacleClearCore_freeMin5m": {
+        "pooled": [
+          32,
+          11,
+          4,
+          0.69518,
+          0.02396,
+          0.775082,
+          0.032687
+        ],
+        "onlySpatial": [
+          15,
+          4,
+          4,
+          0.667605,
+          0.024807,
+          0.751111,
+          0.030577
+        ],
+        "bySector": {
+          "E": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "N": [
+            15,
+            5,
+            2,
+            0.549574,
+            0.011202,
+            0.613298,
+            0.027061
+          ],
+          "W": [
+            17,
+            6,
+            2,
+            0.739187,
+            0.026246,
+            0.804332,
+            0.065901
+          ],
+          "S": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": true,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": true
+      },
+      "stillClearWithoutAnyOriginalShade": {
+        "pooled": [
+          41,
+          7,
+          3,
+          0.580215,
+          0.480965,
+          0.626633,
+          0.624166
+        ],
+        "onlySpatial": [
+          34,
+          3,
+          3,
+          0.558218,
+          0.538013,
+          0.632509,
+          0.628468
+        ],
+        "bySector": {
+          "E": [
+            32,
+            4,
+            2,
+            0.576254,
+            0.572118,
+            0.638857,
+            0.637624
+          ],
+          "N": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "W": [
+            9,
+            3,
+            1,
+            0.580215,
+            0.312278,
+            0.600378,
+            0.447228
+          ],
+          "S": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": false,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "underOneOrMoreHistoricalShadowRects": {
+        "pooled": [
+          288,
+          68,
+          18,
+          0.535617,
+          0.357658,
+          0.715117,
+          0.617948
+        ],
+        "onlySpatial": [
+          156,
+          18,
+          18,
+          0.55354,
+          0.295667,
+          0.712189,
+          0.629615
+        ],
+        "bySector": {
+          "E": [
+            70,
+            19,
+            6,
+            0.392079,
+            0.22845,
+            0.693743,
+            0.693743
+          ],
+          "N": [
+            84,
+            23,
+            7,
+            0.494751,
+            0.30859,
+            0.604695,
+            0.513877
+          ],
+          "W": [
+            78,
+            19,
+            5,
+            0.665567,
+            0.518182,
+            0.784213,
+            0.620892
+          ],
+          "S": [
+            56,
+            12,
+            3,
+            0.512497,
+            0.483575,
+            0.636558,
+            0.635454
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": false
+      }
+    },
+    "shoulder_5to11": {
+      "wholeUnblocked": {
+        "pooled": [
+          627,
+          116,
+          28,
+          0.416968,
+          0.18687,
+          0.59037,
+          0.422108
+        ],
+        "onlySpatial": [
+          371,
+          28,
+          28,
+          0.442016,
+          0.174884,
+          0.576441,
+          0.453001
+        ],
+        "bySector": {
+          "E": [
+            127,
+            24,
+            6,
+            0.250629,
+            0.218225,
+            0.301937,
+            0.286613
+          ],
+          "N": [
+            199,
+            38,
+            10,
+            0.420929,
+            0.263264,
+            0.585441,
+            0.448286
+          ],
+          "W": [
+            165,
+            34,
+            9,
+            0.559842,
+            0.058897,
+            0.625847,
+            0.520642
+          ],
+          "S": [
+            136,
+            24,
+            5,
+            0.300792,
+            0.089609,
+            0.488382,
+            0.255246
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": true,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": true
+      },
+      "preRegisteredObstacleClearCore_freeMin5m": {
+        "pooled": [
+          93,
+          23,
+          5,
+          0.546291,
+          0.011348,
+          0.606293,
+          0.033071
+        ],
+        "onlySpatial": [
+          52,
+          5,
+          5,
+          0.555742,
+          0.010508,
+          0.570982,
+          0.02094
+        ],
+        "bySector": {
+          "E": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "N": [
+            38,
+            7,
+            2,
+            0.537434,
+            0.025806,
+            0.560091,
+            0.034247
+          ],
+          "W": [
+            52,
+            14,
+            3,
+            0.562512,
+            0.009981,
+            0.617904,
+            0.026237
+          ],
+          "S": [
+            3,
+            2,
+            0,
+            0.447719,
+            0.011782,
+            0.506603,
+            0.012274
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": true,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": true
+      },
+      "stillClearWithoutAnyOriginalShade": {
+        "pooled": [
+          83,
+          19,
+          4,
+          0.27327,
+          0.057856,
+          0.553741,
+          0.242848
+        ],
+        "onlySpatial": [
+          43,
+          4,
+          4,
+          0.306238,
+          0.081637,
+          0.525658,
+          0.134422
+        ],
+        "bySector": {
+          "E": [
+            13,
+            3,
+            0,
+            0.2763,
+            0.259284,
+            0.318885,
+            0.315482
+          ],
+          "N": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "W": [
+            21,
+            4,
+            1,
+            0.575139,
+            0.041237,
+            0.622804,
+            0.12126
+          ],
+          "S": [
+            49,
+            13,
+            3,
+            0.133431,
+            0.044212,
+            0.487441,
+            0.120223
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "underOneOrMoreHistoricalShadowRects": {
+        "pooled": [
+          544,
+          105,
+          26,
+          0.420261,
+          0.202559,
+          0.586387,
+          0.433451
+        ],
+        "onlySpatial": [
+          328,
+          26,
+          26,
+          0.442016,
+          0.191384,
+          0.578484,
+          0.473937
+        ],
+        "bySector": {
+          "E": [
+            114,
+            23,
+            6,
+            0.249537,
+            0.216731,
+            0.302366,
+            0.286983
+          ],
+          "N": [
+            199,
+            38,
+            10,
+            0.420929,
+            0.263264,
+            0.585441,
+            0.448286
+          ],
+          "W": [
+            144,
+            30,
+            8,
+            0.559842,
+            0.058897,
+            0.623045,
+            0.552117
+          ],
+          "S": [
+            87,
+            17,
+            4,
+            0.369658,
+            0.168677,
+            0.494662,
+            0.354504
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": true,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": true,
+        "strictComposite": true
+      }
+    },
+    "transition_11to18": {
+      "wholeUnblocked": {
+        "pooled": [
+          612,
+          124,
+          35,
+          0.329801,
+          0.325503,
+          0.548933,
+          0.50541
+        ],
+        "onlySpatial": [
+          388,
+          35,
+          35,
+          0.372154,
+          0.323836,
+          0.496762,
+          0.463733
+        ],
+        "bySector": {
+          "E": [
+            120,
+            21,
+            6,
+            0.229689,
+            0.22297,
+            0.379895,
+            0.379895
+          ],
+          "N": [
+            162,
+            34,
+            10,
+            0.375764,
+            0.375764,
+            0.539243,
+            0.479741
+          ],
+          "W": [
+            116,
+            29,
+            8,
+            0.446219,
+            0.436243,
+            0.670154,
+            0.661608
+          ],
+          "S": [
+            214,
+            41,
+            11,
+            0.258583,
+            0.258583,
+            0.419275,
+            0.405257
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "preRegisteredObstacleClearCore_freeMin5m": {
+        "pooled": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "onlySpatial": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "bySector": {
+          "E": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "N": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "W": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "S": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": false,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "stillClearWithoutAnyOriginalShade": {
+        "pooled": [
+          256,
+          57,
+          15,
+          0.281052,
+          0.281052,
+          0.43378,
+          0.43378
+        ],
+        "onlySpatial": [
+          161,
+          15,
+          15,
+          0.283429,
+          0.283429,
+          0.434686,
+          0.434686
+        ],
+        "bySector": {
+          "E": [
+            11,
+            3,
+            1,
+            0.376224,
+            0.376224,
+            0.424443,
+            0.424443
+          ],
+          "N": [
+            36,
+            10,
+            3,
+            0.237652,
+            0.237652,
+            0.305737,
+            0.305737
+          ],
+          "W": [
+            4,
+            4,
+            1,
+            0.45306,
+            0.446544,
+            0.545646,
+            0.452616
+          ],
+          "S": [
+            205,
+            40,
+            10,
+            0.254254,
+            0.254254,
+            0.413818,
+            0.386037
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "underOneOrMoreHistoricalShadowRects": {
+        "pooled": [
+          356,
+          80,
+          26,
+          0.390407,
+          0.383741,
+          0.606047,
+          0.559404
+        ],
+        "onlySpatial": [
+          227,
+          26,
+          26,
+          0.409713,
+          0.394839,
+          0.579487,
+          0.577061
+        ],
+        "bySector": {
+          "E": [
+            109,
+            21,
+            6,
+            0.229689,
+            0.22297,
+            0.386074,
+            0.386074
+          ],
+          "N": [
+            126,
+            29,
+            10,
+            0.4008,
+            0.398196,
+            0.551456,
+            0.500359
+          ],
+          "W": [
+            112,
+            28,
+            8,
+            0.440971,
+            0.430712,
+            0.671819,
+            0.663576
+          ],
+          "S": [
+            9,
+            3,
+            2,
+            0.456859,
+            0.418627,
+            0.479068,
+            0.419815
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      }
+    },
+    "outer_18to26": {
+      "wholeUnblocked": {
+        "pooled": [
+          760,
+          145,
+          33,
+          0.219998,
+          0.219998,
+          0.449183,
+          0.449183
+        ],
+        "onlySpatial": [
+          482,
+          33,
+          33,
+          0.219998,
+          0.219998,
+          0.47507,
+          0.47507
+        ],
+        "bySector": {
+          "E": [
+            30,
+            10,
+            2,
+            0.159579,
+            0.159579,
+            0.276406,
+            0.276406
+          ],
+          "N": [
+            156,
+            36,
+            6,
+            0.231947,
+            0.231947,
+            0.38305,
+            0.38305
+          ],
+          "W": [
+            219,
+            43,
+            10,
+            0.303539,
+            0.303539,
+            0.470342,
+            0.470342
+          ],
+          "S": [
+            355,
+            60,
+            16,
+            0.137945,
+            0.137945,
+            0.494668,
+            0.494668
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "preRegisteredObstacleClearCore_freeMin5m": {
+        "pooled": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "onlySpatial": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "bySector": {
+          "E": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "N": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "W": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "S": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": false,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "stillClearWithoutAnyOriginalShade": {
+        "pooled": [
+          482,
+          90,
+          23,
+          0.183084,
+          0.183084,
+          0.429759,
+          0.429759
+        ],
+        "onlySpatial": [
+          304,
+          23,
+          23,
+          0.187117,
+          0.187117,
+          0.480301,
+          0.480301
+        ],
+        "bySector": {
+          "E": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "N": [
+            81,
+            19,
+            3,
+            0.207798,
+            0.207798,
+            0.25211,
+            0.25211
+          ],
+          "W": [
+            46,
+            12,
+            4,
+            0.234417,
+            0.234417,
+            0.408077,
+            0.408077
+          ],
+          "S": [
+            355,
+            60,
+            16,
+            0.137945,
+            0.137945,
+            0.494668,
+            0.494668
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      },
+      "underOneOrMoreHistoricalShadowRects": {
+        "pooled": [
+          278,
+          63,
+          15,
+          0.287426,
+          0.287426,
+          0.449953,
+          0.449953
+        ],
+        "onlySpatial": [
+          178,
+          15,
+          15,
+          0.264412,
+          0.264412,
+          0.437931,
+          0.437931
+        ],
+        "bySector": {
+          "E": [
+            30,
+            10,
+            2,
+            0.159579,
+            0.159579,
+            0.276406,
+            0.276406
+          ],
+          "N": [
+            75,
+            21,
+            5,
+            0.297073,
+            0.297073,
+            0.403474,
+            0.403474
+          ],
+          "W": [
+            173,
+            35,
+            9,
+            0.329397,
+            0.329397,
+            0.495593,
+            0.495593
+          ],
+          "S": [
+            0,
+            0,
+            0,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "descriptiveAbsoluteAndRelativeArithmetic": false,
+        "minimumCoverage": true,
+        "nonRegressingSectors": true,
+        "twoPositiveSectors": false,
+        "strictComposite": false
+      }
+    }
+  }
+}

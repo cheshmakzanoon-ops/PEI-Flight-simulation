@@ -1,0 +1,148 @@
+{
+  "scope": "Three matched actual Three.js WebGL2 frames with local streamed buildings fully resident and exact old/new camera. Render scope is a conservative projection from actual submitted ground and canopy receiver geometry and a two-pixel antialias allowance. Software renderer, not a hardware benchmark.",
+  "frames": [
+    {
+      "name": "veranda-oblique",
+      "oldSHA": "0037029dc5bc87100107958624a70c3c9a0254a7b1fad42f475bb10e7c4a7048",
+      "newSHA": "35433c3df437a5f201c5436bfc60b94e609bee5a6f1cb9589266135360bcfa51",
+      "camera": {
+        "lon": -63.1335063646401,
+        "lat": 46.231875592724144,
+        "h": 9,
+        "east": -0.44,
+        "south": 0.898,
+        "dist": 43,
+        "agl": 20,
+        "fixedBaseH": 3.6254732270551813,
+        "fixedEyeY": 22.413489500573633
+      },
+      "scope": {
+        "scope": "Conservative projected enclosure of actual altered ground/receiver geometry across both positions; not individual pixel ground truth. Outside count is separately reported.",
+        "rawGroundFaces": 3243,
+        "rawShadowFaces": 7684,
+        "enclosedPixels": 114741,
+        "changedAny": 64263,
+        "changedOver2": 17828,
+        "changedOver2Outside": 0,
+        "outerMaxDelta": 0
+      },
+      "streaming": {
+        "wanted": 52,
+        "ready": 52,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "adjacentDrawDelta": 1,
+      "triangleDelta": 10927
+    },
+    {
+      "name": "west-closure",
+      "oldSHA": "00ada15348e10244c804da4f7116bd61c7d440d3f3fc05aba4d095f477c1a72b",
+      "newSHA": "58b9881d994d5be68e730b44ee5522ada1fac2ef609bba9e6016dee681a4cb9b",
+      "camera": {
+        "lon": -63.1335063646401,
+        "lat": 46.231875592724144,
+        "h": 8,
+        "east": -0.948,
+        "south": -0.317,
+        "dist": 53,
+        "agl": 29,
+        "fixedBaseH": 3.6254732270551813,
+        "fixedEyeY": 31.67159928298088
+      },
+      "scope": {
+        "scope": "Conservative projected enclosure of actual altered ground/receiver geometry across both positions; not individual pixel ground truth. Outside count is separately reported.",
+        "rawGroundFaces": 3243,
+        "rawShadowFaces": 7684,
+        "enclosedPixels": 69613,
+        "changedAny": 8075,
+        "changedOver2": 1426,
+        "changedOver2Outside": 0,
+        "outerMaxDelta": 0
+      },
+      "streaming": {
+        "wanted": 52,
+        "ready": 52,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "adjacentDrawDelta": 1,
+      "triangleDelta": 10927
+    },
+    {
+      "name": "harbour-context",
+      "oldSHA": "8d0f1ebfc6cc355e41e5de245dd21c9c5057646758cfaefb83ea39ec607069ee",
+      "newSHA": "98b0e02ba82b5b2f2008dbdbb6e54be0c83e4de0359f8f7b712a56c73df1d760",
+      "camera": {
+        "lon": -63.1335063646401,
+        "lat": 46.231875592724144,
+        "h": 9,
+        "east": 0.34,
+        "south": 0.94,
+        "dist": 115,
+        "agl": 52,
+        "fixedBaseH": 3.6254732270551813,
+        "fixedEyeY": 54
+      },
+      "scope": {
+        "scope": "Conservative projected enclosure of actual altered ground/receiver geometry across both positions; not individual pixel ground truth. Outside count is separately reported.",
+        "rawGroundFaces": 3243,
+        "rawShadowFaces": 7684,
+        "enclosedPixels": 11020,
+        "changedAny": 2970,
+        "changedOver2": 1044,
+        "changedOver2Outside": 0,
+        "outerMaxDelta": 0
+      },
+      "streaming": {
+        "wanted": 51,
+        "ready": 51,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "adjacentDrawDelta": 1,
+      "triangleDelta": 10927
+    }
+  ],
+  "preregisteredPunctureCheck": {
+    "crop": [
+      67,
+      428,
+      265,
+      535
+    ],
+    "brightAllChannelsOver10": 0,
+    "brightAllChannelsOver24": 0
+  },
+  "actualGroundRayChecks": {
+    "scope": "Actual live Three terrain at 60 preregistered QA points, not geological validation.",
+    "view": "veranda-oblique",
+    "requestedMode": "coupled",
+    "scopedDrawDelta": 1,
+    "maxActualVersusVisualM": 1.831949604458316e-05,
+    "maxCoreActualVersusAircraftM": 1.831949604458316e-05,
+    "unchanged": {
+      "n": 30,
+      "medianM": 0.0,
+      "minM": 0.0,
+      "maxM": 0.0
+    },
+    "fringe": {
+      "n": 6,
+      "medianM": 0.0,
+      "minM": 0.0,
+      "maxM": 0.0
+    },
+    "full": {
+      "n": 24,
+      "medianM": 0.441711707946979,
+      "minM": 0.0030836685890562876,
+      "maxM": 0.8167135010055517
+    },
+    "oldRGB": "0037029dc5bc87100107958624a70c3c9a0254a7b1fad42f475bb10e7c4a7048",
+    "newRGB": "35433c3df437a5f201c5436bfc60b94e609bee5a6f1cb9589266135360bcfa51"
+  }
+}

@@ -19,6 +19,8 @@ import {DRY_FRAME,drySoilGLSL,makeDrySoilUniforms} from './dry-coast/soil.ts';
 import {gablesTrailGLSL,gablesTrailIntersects} from './cavendish-trail.ts';
 import {gablesFairwayGLSL,type GablesFairway} from './gables-fairway.ts';
 import {gablesGravelGLSL,gablesGravelIntersects} from './gables-gravel.ts';
+import type {positiveGround} from './beaconsfield-grade/positive-topology.ts';
+import {BEACON_GRADE} from '../sim/beaconsfield-grade.generated.ts';
 import {boundedGradeTiles,type BoundedGrade} from '../sim/bounded-grade.ts';
 import {DUNE_RELIEF} from '../sim/dune-relief.generated.ts';
 import {provinceFieldOpticsGLSL,type ProvinceFieldStudy} from './province-fields.ts';
@@ -986,7 +988,7 @@ export class World {
    wall.mesh.geometry.dispose();wall.mesh.geometry=next;wall.signature=signature;
   }
  }
- private patch(x0:number,z0:number,w:number,d:number,n:number,proposed?:BoundedGrade,skipKings=false){
+ private patch(x0:number,z0:number,w:number,d:number,n:number,proposed?:BoundedGrade,skipKings=false,localBuilder?:typeof positiveGround){
   let g:THREE.BufferGeometry=new THREE.PlaneGeometry(w,d,n,n);g.rotateX(-Math.PI/2);
   const pos=g.getAttribute('position'),uv=g.getAttribute('uv');
   for(let i=0;i<pos.count;i++){
@@ -1003,6 +1005,8 @@ export class World {
    (localBank&&n===112&&meets(localBank)?localBank:undefined)??(localGrade&&meets(localGrade)?localGrade:undefined);
   if(site&&this.bankGround&&site===localBank){
    const original=g;g=nativeBankMesh(g,this.bankGround,this.terrain,x0,z0,w,d);original.dispose();
+  }else if(localBuilder&&site&&site===localGrade&&site.spec===BEACON_GRADE&&n===112){
+   localBuilder(g,this.terrain,site,x0+w/2,z0+d/2);
   }else if(site)insertCoastalGrid(g,n,{x:x0,z:z0,w,d},this.terrain,site);
   else if(localBank&&meets(localBank))g.setAttribute('surveyWeight',new THREE.BufferAttribute(new Uint8Array(pos.count),1,true));
   g.computeBoundingSphere();const m=new THREE.Mesh(g,this.mat);m.position.set(x0+w/2,0,z0+d/2);
@@ -1029,13 +1033,13 @@ export class World {
  }
  /** Prepare one reversible near mesh before live receiver seating; do not
   * change the scene, collision sampler or installed flag until a commit. */
- stageStMarysNear(grade:BoundedGrade){
+ stageStMarysNear(grade:BoundedGrade,beaconsBuilder?:typeof positiveGround){
   const {spec,x0,z0,x1,z1}=grade.grid,key=spec.tileX+'-'+spec.tileZ,t=this.byId.get(key);
   if(!t?.fine||t.lod!==112||t.relief||this.grades?.has(key))return;
   let q=this.stagedChurch;
   if(q?.owner!==t||q.grade!==grade){
    this.dropStMarysStage();
-   const candidate=this.patch(t.x0,t.z0,t.w,t.d,112,grade);
+   const candidate=this.patch(t.x0,t.z0,t.w,t.d,112,grade,false,beaconsBuilder);
    if(candidate.userData.localGrade!==spec.id){candidate.geometry.dispose();return;}
    candidate.material=t.local;
    const source:StMarysProposedGround={mesh:candidate,gradeId:spec.id,bounds:[x0,z0,x1,z1],
@@ -1055,6 +1059,20 @@ export class World {
    this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
   }
   return show;
+ }
+ /** Reuse the reversible measured-ground transaction, never the church's art or its receiver.
+  * Review modes are exclusive; a changed owner or an unapproved terrain mesh cannot qualify. */
+ stageBeaconsfieldNear(grade:BoundedGrade,builder:typeof positiveGround){
+  if(grade.grid.spec!==BEACON_GRADE)return;
+  const t=this.byId.get('16-16'),q=this.stagedChurch;
+  if(!t?.fine||t.lod!==112||!t.fine.visible||t.relief||this.grades?.has(t.id)||
+     (q&&(q.grade!==grade||q.owner!==t||(t.fine!==q.stock&&t.fine!==q.candidate)))||
+     (!q&&!this.rollingCanopyStill(t.id,t.fine.geometry)))return;
+  const source=this.stageStMarysNear(grade,builder);
+  return source?{mesh:source.mesh,regular:this.stagedChurch!.stock,grade}:undefined;
+ }
+ setBeaconsfieldGround(show:boolean){
+  return this.stagedChurch?.grade.grid.spec===BEACON_GRADE&&this.setStMarysGround(show);
  }
  /** Point Prim is a separate reversible dry land lease. A verified asynchronous
   * stamp may stage a mesh, but only the frame's art/owner transaction can

@@ -1,0 +1,80 @@
+{
+  "stockRetention": {
+    "indexCount": 75264,
+    "vertexCount": 12769,
+    "positionUnchanged": true,
+    "uvUnchanged": true,
+    "indicesUnchanged": true,
+    "positiveOnlyDrawn": true,
+    "originalBuriedTrianglesRetainedInCPU": true
+  },
+  "grade": "beaconsfield-measured-frontage-grade",
+  "raw": "9244271f6b7aeb1d1769386e5aef2e479571137874efb6302b7468fd737d9f95",
+  "triangles": 28331,
+  "stockTriangles": 25088,
+  "actualGroundOrigin": [
+    3046.5154167193305,
+    0,
+    30013.492613549497
+  ],
+  "groundVertices": 14563,
+  "maskedTriangles": 3243,
+  "groundGrid": {
+    "x0": 5059.3916741944195,
+    "z0": 29751.830971596355,
+    "dx": 0.8500322033256289,
+    "dz": 0.8176926311035709
+  },
+  "shapeQueries": {
+    "id": "beaconsfield-measured-frontage-grade",
+    "kind": "inland",
+    "tileX": 16,
+    "tileZ": 16,
+    "firstX": 93,
+    "firstZ": 51,
+    "cellsX": 2,
+    "cellsZ": 2,
+    "sub": 64,
+    "relativeToParent": true,
+    "sparseRelative": true,
+    "sha256": "9244271f6b7aeb1d1769386e5aef2e479571137874efb6302b7468fd737d9f95",
+    "file": "beaconsfield-contact-v1.bin.gz",
+    "wireBytes": 2408,
+    "wireSha": "9c6d9a0e669eefc5c8564f4715dbfddc63c58c4d640c0fd9987c6814a870d919",
+    "decodedBytes": 49923,
+    "terrainSha256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverCompressedSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecodedSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "maxRelativeDeltaCm": 105
+  },
+  "actualGroundBuffers": {
+    "position": "393490700424710c94598f026a8d0783e87e35eab063018445a3bf7602aa9e5e",
+    "index": "2160b86fbc05f57af57e56f794a704e830cc584d9a6521aa3ad7fa9b04a6d371"
+  },
+  "shadowShift": {
+    "rosterIndices": [
+      10,
+      14,
+      6,
+      7,
+      4,
+      11,
+      13,
+      16,
+      15,
+      3,
+      8,
+      2,
+      12,
+      9,
+      1,
+      5
+    ],
+    "triangles": 7684,
+    "position": "ef97584c037615ee84f8656f761733ab2702a64119f3dd71c035d646125f9143",
+    "uv": "7f66bb3dd1815a47908c6a8589708de58e6e9a8e68c314e1b4827b5ae383da8b",
+    "variant": "a12afd914be792034c3cca5ecb45ff326bb089d9b64fcac2036eefa2f60c0570",
+    "oldAndNewClearance": "a1052b989090570f7f7a46524dce8ab5504e80cdabf1faf5e70a12906d562a7a",
+    "affectedTriangleBits": "64c5adf75b6c8a3ac3cb96e2393fab0d5fc445bf9bdb393cd6b51255101e9aa0"
+  }
+}

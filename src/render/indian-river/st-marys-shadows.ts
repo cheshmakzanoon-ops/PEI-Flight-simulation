@@ -20,7 +20,7 @@ const KEY='stMarysReceiverReplaced',VARY='stMarysShadowReplaced',LIFT=.028;
 const xzKey=(x:number,z:number)=>x+':'+z;
 const STEMS=new Map(ST_MARYS_STEM_XZ.map(([x,z],i)=>[xzKey(x,z),i]));
 const intersects=(a:Box,b:Box)=>Math.min(a.x1,b.x1)>Math.max(a.x0,b.x0)&&Math.min(a.z1,b.z1)>Math.max(a.z0,b.z0);
-function footprint(s:Stem):Box{
+export function stockShadowFootprint(s:Pick<Stem,'x'|'z'|'h'|'w'>):Box{
   // Same arithmetic order as the shipped instanced shadow vertex shader.
   const f=Math.fround,cx=f(f(.43)*s.h),cz=f(f(.21)*s.h),wx=f(f(s.w*.5)*f(1.42)),wz=f(f(s.w*.5)*f(1.19));
   const q=(a:number,b:number,c:number)=>f(a+f(b+c));
@@ -38,7 +38,7 @@ function halfPlane(p:readonly Point[],key:'x'|'y'|'z',b:number,sign:1|-1):Point[
   }
   return r;
 }
-function trim(p:readonly Point[],b:Box){
+export function clipStockShadowBox(p:readonly Point[],b:Box){
   return halfPlane(halfPlane(halfPlane(halfPlane(p,'x',b.x0,1),'x',b.x1,-1),'z',b.z0,1),'z',b.z1,-1);
 }
 const area2=(p:Point,q:Point,r:Point)=>(q.x-p.x)*(r.z-p.z)-(r.x-p.x)*(q.z-p.z);
@@ -119,10 +119,10 @@ export function buildStMarysReceivers(source:StMarysShadowGround,gradeId:string,
   }
   if(canonical.size!==4)return;
   const active=ST_MARYS_STEM_XZ.map((_,i)=>canonical.get(i)!);
-  const domains=active.map(footprint);
+  const domains=active.map(stockShadowFootprint);
   const limits={x0:Math.min(...domains.map(d=>d.x0)),x1:Math.max(...domains.map(d=>d.x1)),
     z0:Math.min(...domains.map(d=>d.z0)),z1:Math.max(...domains.map(d=>d.z1))};
-  const nearbyBoxes=nearby.map(caster=>({box:footprint(caster),oldY:Math.fround(caster.y+Math.fround(.46))}));
+  const nearbyBoxes=nearby.map(caster=>({box:stockShadowFootprint(caster),oldY:Math.fround(caster.y+Math.fround(.46))}));
   const P:number[]=[],UV:number[]=[],V:number[]=[],area=[0,0,0,0],num=[0,0,0,0];
   const a=g.getAttribute('position'),index=g.getIndex()!;
   for(let i=0;i<index.count;i+=3){
@@ -143,14 +143,14 @@ export function buildStMarysReceivers(source:StMarysShadowGround,gradeId:string,
     if(guard&&p.some(q=>source.inChangedSupport(q.x,q.z))){
       for(const {box:b,oldY} of nearbyBoxes){
         if(!intersects(range,b)||Math.max(...p.map(q=>q.y))<oldY-.008)continue;
-        const part=halfPlane(trim(p,b),'y',oldY-.008,1);
+        const part=halfPlane(clipStockShadowBox(p,b),'y',oldY-.008,1);
         if(reachesOriginalShade(part,b))return;
       }
     }
     if(!seats)continue;
     for(let n=0;n<4;n++){
       const d=domains[n];if(!intersects(range,d))continue;
-      const r=trim(p,d);
+      const r=clipStockShadowBox(p,d);
       for(let k=1;k+1<r.length;k++){
         const w=area2(r[0],r[k],r[k+1]);
         if(!Number.isFinite(w)||Math.abs(w)<1e-8)continue;

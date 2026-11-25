@@ -1,0 +1,36 @@
+{
+  "scope": "Prospectively fixed regression against the original visually identified V3 artifact (not a new blind geodata split). The exact shade-off capture separates the observed undergrass light leak from the triangular emerging legacy-cast shadow. This does not expect new legitimate canopy illumination to be zero; it tests unnatural sharpness at previously observed geometry-contour boundaries. Must separately preserve opacity on fully supported shade and outside all affected surfaces.",
+  "original70BrightPuncturesV3_lumaP0P10P50P90Max": [
+    30.666666666666668,
+    31.666666666666668,
+    60.83333333333333,
+    64.36666666666666,
+    65.66666666666667
+  ],
+  "testOldPunctureCoors_lumaP0P10P50P90Max": [
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    1.0
+  ],
+  "positiveLumaSpikesOver12InEntireFixedROI": 0,
+  "originalHardEdgesNumerator": 118,
+  "originalAbsoluteEmergenceOnAdjacentPixelsP0P10P50P90Max": [
+    9.0,
+    11.700000000000001,
+    17.0,
+    19.333333333333332,
+    20.0
+  ],
+  "testAbsoluteEmergenceP0P10P50P90Max": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    2.0
+  ],
+  "currentHardJumpAtPreviouslyBrokenCoordinatesAbove8": 0,
+  "lockedRasterCoordinatesSHA256": "5564969d993ef0a626ee265c6b5578cd0b5c1f267edd46e22e29dc227d9a48ec",
+  "visualAcceptance": "No prior 12-level light punctures remain; reject an unexplained new large single-channel leak in the fixed low-contrast ground. Hard canopy emergence boundary should substantially weaken: at least 80% of original >=8-level artificial neighbor jumps should drop below or equal to 8, median gradient <=4 u8 and 90th percentile <=8, followed by independent image judgement edge vs real foliage. If a single-pixel high-frequency residual remains, classify it rather than erase a real silhouette. Both original and revised endpoint surfaces and stock texture/opacity stay authentic."
+}

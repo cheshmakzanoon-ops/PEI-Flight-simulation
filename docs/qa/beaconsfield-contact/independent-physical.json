@@ -1,0 +1,172 @@
+{
+  "scope": "Opt-in only. Indexed actual Three.js terrain emitted by the retained runtime and gameplay height sampled over the same coordinates; shell/headless WebGL2 metadata and an off/on shade control classify the observed fringe. Source geospatial exclusions deliberately do not manufacture original observations absent from a measured area.",
+  "rayFindings": {
+    "scope": "Final V4 independent mounted Three/N112 + actual gameplay collider at all preregistered 3,380 class2 XY locations (original numerical elevations still unopened). GPU bound by live shader callbacks, not logical uniforms. Distinguish legitimate unrendered close physics reconciliation from actual terrain elevation.",
+    "sourceManifestSHA256": "fcf730285000a206317a8fbca423b8b90e5a08a6c89fde30d6a93b734877510f",
+    "actualRaysSHA256": "b72aeab6070793b69e2f87e5d98cc26832808e2112de6b8c52d7942453908b3a",
+    "trueTopSameV3AllRows": true,
+    "registeredN": 3380,
+    "trueVisibleRaiseOver1cm": 724,
+    "maxDrawnMinusColliderOnRaisedGroundM": 2.165493174732802e-05,
+    "colliderOnlyChangedOver5mm": 258,
+    "maxColliderOnlyChangeM": 0.136414086084637,
+    "maxAbsoluteColliderDifferenceBeyond18m": 0.0,
+    "sourceAuthorityMaskRowsMaxVisualDiffThenColliderDiffM": [
+      [
+        "building",
+        189,
+        0.0,
+        0.0
+      ],
+      [
+        "road",
+        528,
+        0.0,
+        0.0
+      ],
+      [
+        "sidewalk",
+        353,
+        0.0,
+        8.342710262176922e-06
+      ],
+      [
+        "lot",
+        0,
+        0.0,
+        0.0
+      ],
+      [
+        "water",
+        0,
+        0.0,
+        0.0
+      ],
+      [
+        "sourceTreeRoot",
+        52,
+        0.0,
+        0.0
+      ]
+    ],
+    "actualLinkedFragmentAndVertexSamplerCounts": {
+      "surveyedLand": [
+        6,
+        0
+      ],
+      "originalCanopy": [
+        2,
+        0
+      ],
+      "auxiliaryCanopy": [
+        1,
+        0
+      ]
+    },
+    "regionalControlNote": "No original class2 parking/water sample fell in 26m buffer. Finer fixed-road/neighbor controls are separately checked; do not claim water/parking from zero eligible samples."
+  },
+  "trueMuseumMeshContact": {
+    "comparisonSource": [
+      "9b2a5ebbe2cdeb4baa857e4d5cf9cc917a5135d886c643c0bd97dfd94c6abca0",
+      "b72aeab6070793b69e2f87e5d98cc26832808e2112de6b8c52d7942453908b3a"
+    ],
+    "originalFacadeMeshProbeSHA": "d8739a9b8b00f56c8e8d0262148f74fdd04735e888e5d080e83859e8f31b54e5",
+    "normalOffsetsOutwardM": [
+      0.08,
+      0.5
+    ],
+    "qualifyingThresholdAtBothOffsetsM": 0.2,
+    "sampledNeutralWallCount": 462,
+    "testStationsAtExistingRedFascia": 154,
+    "positiveFasciaStations": 26,
+    "longestContinuousActualFasciaArcM": 4.164981104328966,
+    "longestContinuousActualNeutralWallArcM": 5.724765618640291,
+    "newFasciaClips": 0,
+    "meaning": "The old fascia plinth already met its old ground. A contiguous southwest frontage has less exposed plinth, not an entire floating house fixed."
+  },
+  "tightPhysicalCollar": {
+    "noWeightIncreases": true,
+    "allPositiveFaceVertices255": 1794,
+    "v4AnyOver5cmBeyond2mToPositiveVertex": 0,
+    "v4FarthestMeaningfulColliderOnlyToPositiveM": 2.4423983686867303,
+    "exactFarthestVertexWeightFromAnyPositiveM": 1.8864888618092692,
+    "globalConservativeInterpolationReachFromAnyPositiveM": 3.0659700976293665
+  },
+  "coastAndParkingGeometry": {
+    "scope": "Protect the full W/Q piecewise-linear ground+flight support rectangle, including a whole fine triangle neighbor in every direction. Parking source tested as full official game polygons+holes and rim, not nearest vertex alone. Coastal signed-distance bound uses every underlying raw byte that may contribute to any bilinear pixel in this entire rectangle; positive geospatial controls supplement an empty class-2 parking/water evaluation cohort, they are not new original LiDAR Z judgements.",
+    "positivePhysicalAndVisualSupportConservativeBoxWorldXZ": [
+      5077.2423504642575,
+      29777.179443160567,
+      5129.944347070446,
+      29831.964849444506
+    ],
+    "authenticatedParkingAreasByType": {
+      "core": {
+        "rectangleMinimumDistanceM": 211.06544472655773,
+        "sourcePixelWitnessWorldXZ": [
+          5178.936006608176,
+          29553.704
+        ],
+        "tile": "5,28"
+      },
+      "rim": {
+        "rectangleMinimumDistanceM": 210.40554341450485,
+        "sourcePixelWitnessWorldXZ": [
+          5174.246065840005,
+          29553.704
+        ],
+        "tile": "5,28"
+      }
+    },
+    "parkAtlasAllPolygonParts": 1162,
+    "parkAtlasActuallyInspectedPartsWithinBroad2000mFence": 139,
+    "omittedParkingBoundingBoxesAreAtLeastM": 1950,
+    "parkingDecodedSHA": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+    "conservativeCoastalSignedInterpolatedLowerBoundM": 24.0,
+    "contributingCoastSourceBytes": 9,
+    "nearestNegativeWaterCentreWorldXZ": [
+      5069.592060634229,
+      29894.975281606326
+    ],
+    "nearestWaterCentreTrueSignedValueM": -16,
+    "nearestWaterCentreDistanceToRectangleM": 63.4731557093451,
+    "stockCoverDecodedSHA": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  },
+  "shadeAndLightRegression": {
+    "scope": "Prospectively fixed regression against the original visually identified V3 artifact (not a new blind geodata split). The exact shade-off capture separates the observed undergrass light leak from the triangular emerging legacy-cast shadow. This does not expect new legitimate canopy illumination to be zero; it tests unnatural sharpness at previously observed geometry-contour boundaries. Must separately preserve opacity on fully supported shade and outside all affected surfaces.",
+    "original70BrightPuncturesV3_lumaP0P10P50P90Max": [
+      30.666666666666668,
+      31.666666666666668,
+      60.83333333333333,
+      64.36666666666666,
+      65.66666666666667
+    ],
+    "testOldPunctureCoors_lumaP0P10P50P90Max": [
+      0.0,
+      0.0,
+      0.0,
+      0.3333333333333333,
+      1.0
+    ],
+    "positiveLumaSpikesOver12InEntireFixedROI": 0,
+    "originalHardEdgesNumerator": 118,
+    "originalAbsoluteEmergenceOnAdjacentPixelsP0P10P50P90Max": [
+      9.0,
+      11.700000000000001,
+      17.0,
+      19.333333333333332,
+      20.0
+    ],
+    "testAbsoluteEmergenceP0P10P50P90Max": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      2.0
+    ],
+    "currentHardJumpAtPreviouslyBrokenCoordinatesAbove8": 0,
+    "lockedRasterCoordinatesSHA256": "5564969d993ef0a626ee265c6b5578cd0b5c1f267edd46e22e29dc227d9a48ec",
+    "visualAcceptance": "No prior 12-level light punctures remain; reject an unexplained new large single-channel leak in the fixed low-contrast ground. Hard canopy emergence boundary should substantially weaken: at least 80% of original >=8-level artificial neighbor jumps should drop below or equal to 8, median gradient <=4 u8 and 90th percentile <=8, followed by independent image judgement edge vs real foliage. If a single-pixel high-frequency residual remains, classify it rather than erase a real silhouette. Both original and revised endpoint surfaces and stock texture/opacity stay authentic."
+  },
+  "verifiability": "The old clipped-edge trial is intentionally not shipped; it was the pre-fixed raster target. Every old sharp jump in this diagnostic is now at most 2 of 255. See sibling independent-frames.json for actual full-image geometry-envelope positives, negative controls, and same-frame canopy toggle; independent-native.json for source accuracy and the part of the site that did not pass."
+}

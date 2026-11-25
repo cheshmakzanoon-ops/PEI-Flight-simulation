@@ -257,6 +257,8 @@ export class Vegetation {
  updateRollingShadows(x:number,z:number,agl:number){
   if(this.rollingSlots)this.rollingShadow?.update(this.rollingSlots,this.stems.array as Float32Array,this.shapes.array as Float32Array,x,z,agl);
  }
+ /** Borrow finalized original slots for this one signed optional museum receiver, never mutate stems or crowns. */
+ beaconsfieldShadowRoster(){return {stock:this.shade,stems:this.stems.array as Float32Array,shapes:this.shapes.array as Float32Array,original:this.hedgeStart,revision:this.forestRevision,total:this.geom.instanceCount};}
  get rollingShadowState(){return this.rollingShadow?.state??null;}
 
  private readonly roofBits=new Uint32Array(8);

@@ -1,0 +1,100 @@
+{
+  "basis": "real stock N112 Y vs original unadjusted 1m DTM; NOT held out point-cloud results",
+  "positiveVertices": 1445,
+  "positiveAreaAssociatedM2": 1004.3690245028431,
+  "heightImprovedOver35cmAreaM2": 543.5408838485974,
+  "maximumDeltaM": 0.87,
+  "bounds": [
+    5078.902414870909,
+    29778.774828422775,
+    5128.284282663796,
+    29830.3694641823
+  ],
+  "rosterBefore": 38,
+  "cardinalityInBoundingRectangle": 17,
+  "source": {
+    "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "horizontalEPSG": 3979,
+    "verticalDatum": "CGVD2013",
+    "officialPublicCatalogue": "https://datacube.services.geo.ca/pgstac/api/collections/hrdem-mosaic-1m/items/10_3-mosaic-1m",
+    "sourceGeotransform": [
+      2000000,
+      1,
+      0,
+      500000,
+      0,
+      -1
+    ],
+    "sourceDimensions": [
+      500000,
+      500000
+    ],
+    "originWestNorth": [
+      2383994,
+      300571
+    ],
+    "dimensionsColsRows": [
+      136,
+      137
+    ],
+    "windowColRow": [
+      383994,
+      199429
+    ],
+    "use": "One native-resolution DTM crop in a verified public museum precinct, no native elevations or downloads elsewhere.",
+    "sourceFloat32LESHA256": "5c9104c2a6efc6e248fe398c207e236879ed151752aa06055fad91a3c2f70384"
+  },
+  "pins": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "coverWire": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "allBuildings": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "owner": "c7e4d72ed6e83f4606440138e1b1abf75e196a0d0f7ba4390934204ccc780de4",
+    "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "sidewalk": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+    "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+    "art": "8d083cdf7efab3081815ad82da4c0656743d31c57e56dc388ab4fea9e25e40fb"
+  },
+  "areas": [
+    {
+      "all": 633,
+      "positive": 298,
+      "substantialOver25cm": 191,
+      "stockMedianAbsM": 0.5777878199588811,
+      "candidateMedianAbsM": 0.43977101525871864,
+      "stockP90AbsM": 0.7675713282867813,
+      "candidateP90AbsM": 0.7157801258994901
+    },
+    {
+      "all": 1160,
+      "positive": 631,
+      "substantialOver25cm": 405,
+      "stockMedianAbsM": 0.4648077560785635,
+      "candidateMedianAbsM": 0.20562779550004612,
+      "stockP90AbsM": 0.6217597576843844,
+      "candidateP90AbsM": 0.6023486743526564
+    },
+    {
+      "all": 1740,
+      "positive": 101,
+      "substantialOver25cm": 0,
+      "stockMedianAbsM": 0.29529833997042876,
+      "candidateMedianAbsM": 0.29424505173568294,
+      "stockP90AbsM": 0.5342529077937281,
+      "candidateP90AbsM": 0.5217970864380463
+    }
+  ],
+  "contactOnlyHandoff": {
+    "distanceToPositiveVertexM": {
+      "allIncidentFull": 1.1794812458200972,
+      "outerZeroAtVertices": 1.997173876923668,
+      "conservativeOuterZeroIncludingInterpolation": 3.176655122743765
+    },
+    "nonzeroWeightVertices": 2108,
+    "physicallyRaisedVertices": 1445,
+    "retiredNonzeroWeightVerticesFromWideCandidate": 80,
+    "verticesNeverIncreaseOverAuthorityMask": true,
+    "positiveHalfCells": 3243
+  }
+}

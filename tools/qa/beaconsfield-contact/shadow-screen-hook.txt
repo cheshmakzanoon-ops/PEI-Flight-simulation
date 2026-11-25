@@ -1,0 +1,9 @@
+        (window as any).qaBeaconsfieldShadowLayerFrames=()=>{
+         const v=vegetation as any,cast=v.shade, mounted=(museumShadow as any)?.replacement,oldA=cast.visible,oldB=mounted?.visible??false;
+         const snap=()=>{renderer.render(scene,camera);return renderer.domElement.toDataURL('image/png');};
+         const before=snap();let noTrees;
+         try{cast.visible=false;if(mounted)mounted.visible=false;noTrees=snap();}
+         finally{cast.visible=oldA;if(mounted)mounted.visible=oldB;}
+         if(snap()!==before)throw Error('Exact light/camera same-tick rollback failed');
+         return {before,noTrees,hadOptionalDraw:oldB,hadOriginalDraw:oldA};
+        };

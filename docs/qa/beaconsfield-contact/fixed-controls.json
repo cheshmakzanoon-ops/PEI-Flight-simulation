@@ -1,0 +1,8 @@
+{
+  "purpose":"Real old optional Beaconsfield art. Same scene, terrain datum and eye seats for visually grounded grade pre/post. No camera resettling after a new grade. Viewpoints chosen before any new ground fitting.",
+  "views": {
+    "veranda-oblique":{"lon":-63.1335063646401,"lat":46.231875592724144,"h":9,"east":-0.44,"south":0.898,"dist":43,"agl":20},
+    "west-closure":{"lon":-63.1335063646401,"lat":46.231875592724144,"h":8,"east":-0.948,"south":-0.317,"dist":53,"agl":29},
+    "harbour-context":{"lon":-63.1335063646401,"lat":46.231875592724144,"h":9,"east":0.34,"south":0.94,"dist":115,"agl":52}
+  }
+}

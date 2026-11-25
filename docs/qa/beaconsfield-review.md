@@ -93,6 +93,6 @@ The preview preserves the neighboring row indices and their
 attributes while removing the one original shell only after validation.
 
 The west view from Kent Street exposes a simplified clipped closure.
-Close façade replication, access and surrounding terrain remain out of
-scope. This is the reason for an explicit review switch, not a standard
+Close façade replication, access and a general reconstruction of the grounds remain out of
+scope. The optional [ground-contact revision](beaconsfield-contact.md) is much narrower: it adjusts only source-supported lawn beneath and immediately beside the existing model without moving the house. This is the reason for an explicit review switch, not a standard
 map replacement.

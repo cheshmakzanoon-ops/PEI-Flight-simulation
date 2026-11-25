@@ -1,0 +1,30 @@
+{
+  "view": "veranda-oblique",
+  "cutRegion": [
+    110,
+    448,
+    237,
+    509
+  ],
+  "treeShadeNormal": {
+    "changedOver2": 17844,
+    "changedOver8": 2458,
+    "peak": 55
+  },
+  "samePairWithoutOnlyTreeShadows": {
+    "changedOver2": 9542,
+    "changedOver8": 619,
+    "peak": 58
+  },
+  "cutNormal": {
+    "changedOver2": 2208,
+    "changedOver8": 614,
+    "peak": 23
+  },
+  "cutWithoutOnlyTreeShadows": {
+    "changedOver2": 81,
+    "changedOver8": 0,
+    "peak": 3
+  },
+  "cutChangesDisappearingWithoutShadows": 614
+}
