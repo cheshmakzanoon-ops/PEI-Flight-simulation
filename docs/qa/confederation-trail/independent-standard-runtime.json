@@ -1,0 +1,228 @@
+{
+  "disposition": "PASS, exactly this original scenery renderer and source data only",
+  "capsuleSHA256": "61b1dc3f125894fe91120aedd68124533f29b563558062a7b68743ce8c08ac43",
+  "countyProjectionReceiptSHA256": "4ead33da141140a839b5af5c9225616ad321e09e9f64374ea214373ccb9e42f2",
+  "lifecycleReceiptSHA256": "3d694152b1fbde85ed5af7032d72f4b8c2e7cf9f8c38579ecd2dfab72b34a025",
+  "softwareSHA256": {
+    "main.ts": "a4b955aa679ed527141c9ad921a4399ed79ca9a2cdff865be738d925fa79b624",
+    "confederation-trail.ts": "39e1f3273a9aad50f7f1d262d9242a276fc1070cae55c974181d03d3187ee9eb",
+    "confederation-trail-material.ts": "3d1ec24272a13b1c208f61dce875d798a5cca0c4abde01ce2f17682a6566f8e9",
+    "confederation-trail.generated.ts": "0014876ea40517a292d82977b95daadd9bc928ad9db0a1210114deb1647a6e5f"
+  },
+  "horizontalDataODbLDecodedSHA256": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "wireSHA256": "3982ff7d7d1cae2941e278a7bb8327779a7e9fb9e92e29cfff0985237bc825b4",
+  "referencePlateSHA256": "e8bc399548a57f120f6af9a36c9743e86ade0df28137f36954dbc3d4538fdf9d",
+  "method": "Local Chromium Three renderer after real Begin Flight; simultaneous candidate, exact root-group disable, ID render, restored candidate frame. Independent rays hit active submitted terrain rather than analytic height sample; visual cap offset prediction interpolates the emitted per-vertex lip. Unrelated regular terrain contact samples and deterministic actual 90Hz step traces were checked against a separate feature-absent app boot.",
+  "limits": "Three localized fixed camera visual witnesses and separate dynamic within-province LOD/range hold; not surveyed width or height, exact real-world color, external image pixels, navigation or a benchmark. Access restrictions, wet/ambiguous and protected source overlaps remain excluded.",
+  "namedCountyFixtures": {
+    "Prince": {
+      "officialLocalSceneDesignation": "Kensington station corridor",
+      "publishedOSMWay": 1023893985,
+      "surface": "compacted",
+      "pose": {
+        "lon": -63.63875926079851,
+        "lat": 46.43768624091759,
+        "east": 0.8101690228219959,
+        "south": 0.66785189560235,
+        "h": 0.04,
+        "dist": 31,
+        "agl": 7.8
+      },
+      "tiles": 5,
+      "triangles": 460,
+      "nearest": 1.5926344905058403,
+      "diagnostic": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 5,
+        "visible": 5,
+        "pending": 0,
+        "triangles": 460,
+        "active": true
+      },
+      "groupBefore": true,
+      "badVertex": 0,
+      "shadow": 0,
+      "differentPixels": 997,
+      "outsideDilatedId": 0,
+      "interiorSupportSampleCount": 42,
+      "worstLiftResidualVersusActualTerrainTriangleM": 1.3486019159354712e-06,
+      "terrainSubdiv": [
+        112
+      ],
+      "depthRange": [
+        0.019998929711263713,
+        0.024838254664437898
+      ],
+      "exactStockToggle": true,
+      "oneLocalAssetFetch": true,
+      "deterministicFlightTraceSha256": "309b14b6cdcc0b87853c847407956dc470106869abf9863ea555514053e77ecd",
+      "exactNoFeatureBootGroundAndState": true,
+      "motionOutcomes": {
+        "roll": {
+          "status": "rolling",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "banked": {
+          "status": "flying",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "sink": {
+          "status": "stopped",
+          "notice": "Terrain contact",
+          "stepsOf90Hz": 33
+        }
+      },
+      "pngSHA256": {
+        "stock": "49a0a9d13fa7832d45947fde513772fbfb48294f71373c0d9798e37f03d2cb28",
+        "candidate": "6d6aa7bd64377f8b59c7a06f702a1f37e7395377795291d7c96f922d146ada54",
+        "id": "9a1159a10b6cb1ada60346361dd9bbf4eebaecfd3030c84031b78708e3656225",
+        "repeat": "6d6aa7bd64377f8b59c7a06f702a1f37e7395377795291d7c96f922d146ada54"
+      }
+    },
+    "Queens": {
+      "officialLocalSceneDesignation": "Hunter River",
+      "publishedOSMWay": 75117396,
+      "surface": "compacted",
+      "pose": {
+        "lon": -63.348064980297394,
+        "lat": 46.351112128688975,
+        "east": -0.6013580920909031,
+        "south": 0.8606790604382035,
+        "h": 0.04,
+        "dist": 31,
+        "agl": 7.8
+      },
+      "tiles": 6,
+      "triangles": 620,
+      "nearest": 1.182397440153997,
+      "diagnostic": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 6,
+        "visible": 6,
+        "pending": 0,
+        "triangles": 620,
+        "active": true
+      },
+      "groupBefore": true,
+      "badVertex": 0,
+      "shadow": 0,
+      "differentPixels": 4883,
+      "outsideDilatedId": 0,
+      "interiorSupportSampleCount": 18,
+      "worstLiftResidualVersusActualTerrainTriangleM": 1.1700626248795781e-05,
+      "terrainSubdiv": [
+        112
+      ],
+      "depthRange": [
+        0.019999426274679877,
+        0.020011700626248796
+      ],
+      "exactStockToggle": true,
+      "oneLocalAssetFetch": true,
+      "deterministicFlightTraceSha256": "b71ea4c92b1c563554e56bc1ccf339f6826050c547312ace9bdc20ba27cd36ab",
+      "exactNoFeatureBootGroundAndState": true,
+      "motionOutcomes": {
+        "roll": {
+          "status": "rolling",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "banked": {
+          "status": "flying",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "sink": {
+          "status": "stopped",
+          "notice": "Terrain contact",
+          "stepsOf90Hz": 62
+        }
+      },
+      "pngSHA256": {
+        "stock": "dbdd4758e2db60d4e5a3142ab77ddb33fecbca4e4f4a7b97c6e119373e7507ec",
+        "candidate": "3fa8b2128e187efaa1e24ca31f83b82ea8ac63b8eb5f78691da5a61249e46805",
+        "id": "0454e9b358bcfe49a366517de4f4b04565b5f45a175b328753f2f6230b4c3bd1",
+        "repeat": "3fa8b2128e187efaa1e24ca31f83b82ea8ac63b8eb5f78691da5a61249e46805"
+      }
+    },
+    "Kings": {
+      "officialLocalSceneDesignation": "West of St. Peters Bay",
+      "publishedOSMWay": 335450247,
+      "surface": "fine_gravel",
+      "pose": {
+        "lon": -62.6354084039,
+        "lat": 46.4214545261,
+        "east": -0.945,
+        "south": 0.327,
+        "h": 0.04,
+        "dist": 24.0,
+        "agl": 7.8
+      },
+      "tiles": 5,
+      "triangles": 322,
+      "nearest": 5.40586835904756,
+      "anchorSupport": {
+        "u": 1.629243401032182e-05,
+        "fade": 1
+      },
+      "diagnostic": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 5,
+        "visible": 5,
+        "pending": 0,
+        "triangles": 322,
+        "active": true
+      },
+      "groupBefore": true,
+      "badVertex": 0,
+      "shadow": 0,
+      "differentPixels": 17929,
+      "outsideDilatedId": 0,
+      "interiorSupportSampleCount": 13,
+      "worstLiftResidualVersusActualTerrainTriangleM": 8.596725531613558e-07,
+      "terrainSubdiv": [
+        112
+      ],
+      "materialKinds": [
+        1
+      ],
+      "depthRange": [
+        0.0199997863933028,
+        0.020000859672553162
+      ],
+      "exactStockToggle": true,
+      "oneLocalAssetFetch": true,
+      "deterministicFlightTraceSha256": "043f6928b664c74b2d24bfb83d548b77f11a663ff2d063e1ccb5445501fa51e3",
+      "exactNoFeatureBootGroundAndState": true,
+      "motionOutcomes": {
+        "roll": {
+          "status": "rolling",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "banked": {
+          "status": "flying",
+          "notice": "",
+          "stepsOf90Hz": 430
+        },
+        "sink": {
+          "status": "stopped",
+          "notice": "Terrain contact",
+          "stepsOf90Hz": 38
+        }
+      },
+      "pngSHA256": {
+        "stock": "d4fb7102444418d832fe335a66d75d562aa0abbd0e9d945e9e0403a01acba003",
+        "candidate": "f80a4876824033aa7aa3540d4452ae0adaf71dc578d883774b880d8a703f0c18",
+        "id": "4231467035d1fe31ad896b1bd128f92619f5d62a49b5edd44c47c7b9b222e6dd",
+        "repeat": "f80a4876824033aa7aa3540d4452ae0adaf71dc578d883774b880d8a703f0c18"
+      }
+    }
+  },
+  "actualVisualRayCount": 73
+}

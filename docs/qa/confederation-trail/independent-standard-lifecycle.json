@@ -1,0 +1,165 @@
+{
+  "QueensGround": {
+    "group": true,
+    "resident": [
+      "Confederation Trail tile -13,18",
+      "Confederation Trail tile -13,19",
+      "Confederation Trail tile -13,20",
+      "Confederation Trail tile -14,18",
+      "Confederation Trail tile -15,18",
+      "Confederation Trail tile -15,19"
+    ],
+    "visible": [
+      "Confederation Trail tile -13,18",
+      "Confederation Trail tile -13,19",
+      "Confederation Trail tile -13,20",
+      "Confederation Trail tile -14,18",
+      "Confederation Trail tile -15,18",
+      "Confederation Trail tile -15,19"
+    ],
+    "mode": "flight",
+    "status": {
+      "status": "ready",
+      "attempts": 1,
+      "resident": 6,
+      "visible": 6,
+      "pending": 0,
+      "triangles": 620,
+      "active": true
+    },
+    "sampleCount": 18,
+    "actualTerrainSubdivisions": [
+      112
+    ],
+    "maxRaySeatErrorMetres": 1.1048855355539483e-05,
+    "localRequestCount": 1
+  },
+  "Ceiling": {
+    "group": false,
+    "resident": [
+      "Confederation Trail tile -13,18",
+      "Confederation Trail tile -13,19",
+      "Confederation Trail tile -13,20",
+      "Confederation Trail tile -14,18",
+      "Confederation Trail tile -15,18",
+      "Confederation Trail tile -15,19"
+    ],
+    "visible": [],
+    "mode": "flight",
+    "status": {
+      "status": "ready",
+      "attempts": 1,
+      "resident": 6,
+      "visible": 0,
+      "pending": 0,
+      "triangles": 0,
+      "active": false
+    },
+    "sampleCount": 0,
+    "actualTerrainSubdivisions": [],
+    "maxRaySeatErrorMetres": 0,
+    "localRequestCount": 1
+  },
+  "ReturnAtQueens": {
+    "group": true,
+    "resident": [
+      "Confederation Trail tile -13,18",
+      "Confederation Trail tile -13,19",
+      "Confederation Trail tile -13,20",
+      "Confederation Trail tile -14,18",
+      "Confederation Trail tile -15,18",
+      "Confederation Trail tile -15,19"
+    ],
+    "visible": [
+      "Confederation Trail tile -13,18",
+      "Confederation Trail tile -13,19",
+      "Confederation Trail tile -13,20",
+      "Confederation Trail tile -14,18",
+      "Confederation Trail tile -15,18",
+      "Confederation Trail tile -15,19"
+    ],
+    "mode": "flight",
+    "status": {
+      "status": "ready",
+      "attempts": 1,
+      "resident": 6,
+      "visible": 6,
+      "pending": 0,
+      "triangles": 620,
+      "active": true
+    },
+    "sampleCount": 18,
+    "actualTerrainSubdivisions": [
+      112
+    ],
+    "maxRaySeatErrorMetres": 1.1048855355539483e-05,
+    "localRequestCount": 1
+  },
+  "KingsAfterTransfer": {
+    "group": true,
+    "resident": [
+      "Confederation Trail tile 48,10",
+      "Confederation Trail tile 48,9",
+      "Confederation Trail tile 49,10",
+      "Confederation Trail tile 49,9",
+      "Confederation Trail tile 50,10"
+    ],
+    "visible": [
+      "Confederation Trail tile 48,10",
+      "Confederation Trail tile 48,9",
+      "Confederation Trail tile 49,10",
+      "Confederation Trail tile 49,9",
+      "Confederation Trail tile 50,10"
+    ],
+    "mode": "flight",
+    "status": {
+      "status": "ready",
+      "attempts": 1,
+      "resident": 5,
+      "visible": 5,
+      "pending": 0,
+      "triangles": 322,
+      "active": true
+    },
+    "sampleCount": 12,
+    "actualTerrainSubdivisions": [
+      112
+    ],
+    "maxRaySeatErrorMetres": 7.603133549589913e-07,
+    "localRequestCount": 1
+  },
+  "PrinceTerrain56": {
+    "group": true,
+    "resident": [
+      "Confederation Trail tile -83,-23",
+      "Confederation Trail tile -84,-23",
+      "Confederation Trail tile -85,-23",
+      "Confederation Trail tile -85,-24",
+      "Confederation Trail tile -86,-24"
+    ],
+    "visible": [
+      "Confederation Trail tile -83,-23",
+      "Confederation Trail tile -84,-23",
+      "Confederation Trail tile -85,-23",
+      "Confederation Trail tile -85,-24",
+      "Confederation Trail tile -86,-24"
+    ],
+    "mode": "flight",
+    "status": {
+      "status": "ready",
+      "attempts": 1,
+      "resident": 5,
+      "visible": 5,
+      "pending": 0,
+      "triangles": 438,
+      "active": true
+    },
+    "sampleCount": 18,
+    "actualTerrainSubdivisions": [
+      56,
+      112
+    ],
+    "maxRaySeatErrorMetres": 1.2306269605334708e-06,
+    "localRequestCount": 1
+  }
+}

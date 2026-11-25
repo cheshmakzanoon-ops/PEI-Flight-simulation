@@ -1,0 +1,20 @@
+{
+  "actualCTF1Sha256": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "compiledODbLDatabaseSHA256": "5c4224e5b2ff71028ad27639ea9bb100a7df07eeab168c84cd671da0d75bb62a",
+  "sameExactSourceAndRuntimeSequences": true,
+  "physicalWaysAdmitted": 60,
+  "lengthSceneCentreM": 205312.09337400447,
+  "materialLengthM": {
+    "compacted": 161192.95071982112,
+    "fine_gravel": 44119.14265418335
+  },
+  "maximumSourceLineDeviationM": 0.011465986765463714,
+  "exactInteriorTileSeamsPaired": 300,
+  "nearOnlyWetSupportBoundingBoxes": 7,
+  "minimumDistanceActualStripToAnyWetBilinearSupportM": 8.060965575159617,
+  "actualProtectedFootprintAreaOverlaps": {},
+  "areasWithin4p5cmButNoOverlap": {},
+  "minOriginalCoverSignedTexel": 132,
+  "nativeHeightOrPhysicsClaim": false,
+  "tiesMayStillHoldAtRuntime": "Visual terrain/current irregular patches and actual mesh acceptance still required."
+}

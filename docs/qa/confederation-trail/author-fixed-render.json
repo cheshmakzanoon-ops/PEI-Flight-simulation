@@ -1,0 +1,311 @@
+{
+  "codeBaseBeforePass": "970fe33054be94ddd53f93415b20fc9a90f730eb",
+  "renderer": "Chromium WebGL / SwiftShader",
+  "fixedViewportPixels": [
+    860,
+    595
+  ],
+  "sha256": {
+    "src/render/confederation-trail.ts": "39e1f3273a9aad50f7f1d262d9242a276fc1070cae55c974181d03d3187ee9eb",
+    "src/render/confederation-trail-material.ts": "3d1ec24272a13b1c208f61dce875d798a5cca0c4abde01ce2f17682a6566f8e9",
+    "src/render/confederation-trail.generated.ts": "0014876ea40517a292d82977b95daadd9bc928ad9db0a1210114deb1647a6e5f",
+    "public/world/trails/odbl/v1/confederation-main.bin.gz": "3982ff7d7d1cae2941e278a7bb8327779a7e9fb9e92e29cfff0985237bc825b4"
+  },
+  "captures": [
+    {
+      "name": "princeOpen",
+      "pose": {
+        "lon": -63.6860628524,
+        "lat": 46.4262323223,
+        "east": -0.911,
+        "south": 0.412,
+        "dist": 22.0,
+        "agl": 6.8,
+        "h": 0.04
+      },
+      "changedPixels": 29972,
+      "strongPixels": 29972,
+      "idPixels": 32647,
+      "outsideOnePixelMask": 0,
+      "repeatIdentical": true,
+      "assetRequestCount": 1,
+      "groundUnchanged": true,
+      "vertices": 1386,
+      "measured": 235,
+      "minLift": 0.019999058242913037,
+      "maxLift": 0.031683010855170224,
+      "diagnostics": {
+        "trail": {
+          "status": "ready",
+          "attempts": 1,
+          "resident": 5,
+          "visible": 5,
+          "pending": 0,
+          "triangles": 462,
+          "active": true
+        },
+        "terrain": {
+          "ready": 15,
+          "loading": 0,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "roads": true,
+        "scenery": null,
+        "buildingTiles": {
+          "wanted": 12,
+          "ready": 12,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "layerWarnings": [],
+        "drawCalls": 114,
+        "triangles": 305464
+      },
+      "pngHashes": {
+        "candidate": "785626214c2e23c263bc90be0fd1c81466268579b97919389792e6b4c7193bbd",
+        "stock": "157944ac3b03f2e00c4dec2071dbccad7571882a3c381f48ac8bdf3cf51347b8",
+        "id": "327215f0bf94e50546ae658882780833896ad47bcf9d2bee8f06c1a351feb4cd",
+        "restore": "785626214c2e23c263bc90be0fd1c81466268579b97919389792e6b4c7193bbd"
+      }
+    },
+    {
+      "name": "queens",
+      "pose": {
+        "lon": -63.3480649803,
+        "lat": 46.3511121287,
+        "east": -0.60136,
+        "south": 0.86068,
+        "dist": 31.0,
+        "agl": 7.8,
+        "h": 0.04
+      },
+      "changedPixels": 7245,
+      "strongPixels": 7245,
+      "idPixels": 8352,
+      "outsideOnePixelMask": 0,
+      "repeatIdentical": true,
+      "assetRequestCount": 1,
+      "groundUnchanged": true,
+      "vertices": 1860,
+      "measured": 273,
+      "minLift": 0.019998099568098837,
+      "maxLift": 0.03169672295520343,
+      "diagnostics": {
+        "trail": {
+          "status": "ready",
+          "attempts": 1,
+          "resident": 6,
+          "visible": 6,
+          "pending": 0,
+          "triangles": 620,
+          "active": true
+        },
+        "terrain": {
+          "ready": 9,
+          "loading": 3,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "roads": true,
+        "scenery": null,
+        "buildingTiles": {
+          "wanted": 6,
+          "ready": 6,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "layerWarnings": [],
+        "drawCalls": 38,
+        "triangles": 316794
+      },
+      "pngHashes": {
+        "candidate": "52a275a8837f95ddc7bacc98570dbf7d402312781fc2c062c07de3eefa706922",
+        "stock": "18c0fb9f5bc716f942a4d2382826811fcda8d968c1cd0489c8dee02397b75cfd",
+        "id": "60d4d4b962b15ca20e5f5ef0ade2490ef182fa44eaedf2adafd2d5e72eb12bd4",
+        "restore": "52a275a8837f95ddc7bacc98570dbf7d402312781fc2c062c07de3eefa706922"
+      }
+    },
+    {
+      "name": "kings",
+      "pose": {
+        "lon": -62.6354084039,
+        "lat": 46.4214545261,
+        "east": -0.945,
+        "south": 0.327,
+        "dist": 24.0,
+        "agl": 7.8,
+        "h": 0.04
+      },
+      "changedPixels": 27227,
+      "strongPixels": 27227,
+      "idPixels": 29657,
+      "outsideOnePixelMask": 0,
+      "repeatIdentical": true,
+      "assetRequestCount": 1,
+      "groundUnchanged": true,
+      "vertices": 966,
+      "measured": 263,
+      "minLift": 0.019999524170739136,
+      "maxLift": 0.032497222353773836,
+      "diagnostics": {
+        "trail": {
+          "status": "ready",
+          "attempts": 1,
+          "resident": 5,
+          "visible": 5,
+          "pending": 0,
+          "triangles": 322,
+          "active": true
+        },
+        "terrain": {
+          "ready": 12,
+          "loading": 0,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "roads": true,
+        "scenery": null,
+        "buildingTiles": {
+          "wanted": 6,
+          "ready": 6,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "layerWarnings": [],
+        "drawCalls": 49,
+        "triangles": 261711
+      },
+      "pngHashes": {
+        "candidate": "1be8195deb4577153da74c61728915a4916b663c39cd3081f2fc988e36661246",
+        "stock": "b9add50864ee7828931e840c534f7f901279e61ee0b49901dc3c985e5c95ee64",
+        "id": "2be1875d2cad13a693a75a536503d941eca803bcb6fe1c158a7082b0768c7f30",
+        "restore": "1be8195deb4577153da74c61728915a4916b663c39cd3081f2fc988e36661246"
+      }
+    },
+    {
+      "name": "flight",
+      "pose": {
+        "lon": -63.3480649803,
+        "lat": 46.3511121287,
+        "east": -0.60136,
+        "south": 0.86068,
+        "dist": 178.0,
+        "agl": 105.0,
+        "h": 0.04
+      },
+      "changedPixels": 846,
+      "strongPixels": 846,
+      "idPixels": 1171,
+      "outsideOnePixelMask": 0,
+      "repeatIdentical": true,
+      "assetRequestCount": 1,
+      "groundUnchanged": true,
+      "vertices": 1860,
+      "measured": 273,
+      "minLift": 0.019998099568098837,
+      "maxLift": 0.03169672295520343,
+      "diagnostics": {
+        "trail": {
+          "status": "ready",
+          "attempts": 1,
+          "resident": 6,
+          "visible": 6,
+          "pending": 0,
+          "triangles": 620,
+          "active": true
+        },
+        "terrain": {
+          "ready": 9,
+          "loading": 3,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "roads": true,
+        "scenery": null,
+        "buildingTiles": {
+          "wanted": 7,
+          "ready": 7,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "layerWarnings": [],
+        "drawCalls": 36,
+        "triangles": 317648
+      },
+      "pngHashes": {
+        "candidate": "916c8af775c06dbb361b81bbf738db4e70c0ede6168f411f39a8f784c94e247e",
+        "stock": "a7996aa3a04d82f9272d3331d2bda2a725cc4ba1accddd309c0e58a5330aae90",
+        "id": "b4513731c327df45bbea3c2f11a556c0f05750f645f23af177f1642c84bdd382",
+        "restore": "916c8af775c06dbb361b81bbf738db4e70c0ede6168f411f39a8f784c94e247e"
+      }
+    },
+    {
+      "name": "high",
+      "pose": {
+        "lon": -63.3480649803,
+        "lat": 46.3511121287,
+        "east": -0.60136,
+        "south": 0.86068,
+        "dist": 810.0,
+        "agl": 520.0,
+        "h": 0.04
+      },
+      "changedPixels": 0,
+      "strongPixels": 0,
+      "idPixels": 0,
+      "outsideOnePixelMask": 0,
+      "repeatIdentical": true,
+      "assetRequestCount": 0,
+      "groundUnchanged": true,
+      "vertices": 0,
+      "measured": 0,
+      "minLift": null,
+      "maxLift": null,
+      "diagnostics": {
+        "trail": {
+          "status": "idle",
+          "attempts": 0,
+          "resident": 0,
+          "visible": 0,
+          "pending": 0,
+          "triangles": 0,
+          "active": false
+        },
+        "terrain": {
+          "ready": 9,
+          "loading": 0,
+          "missing": 0,
+          "uncovered": 0,
+          "retrying": 0
+        },
+        "roads": true,
+        "scenery": null,
+        "buildingTiles": {
+          "wanted": 8,
+          "ready": 8,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        },
+        "layerWarnings": [],
+        "drawCalls": 39,
+        "triangles": 313046
+      },
+      "pngHashes": {
+        "candidate": "c58fa4206460e674515c986c2c4b32b4fbca0e51e87f907934eb946b26460c04",
+        "stock": "c58fa4206460e674515c986c2c4b32b4fbca0e51e87f907934eb946b26460c04",
+        "id": "c58fa4206460e674515c986c2c4b32b4fbca0e51e87f907934eb946b26460c04",
+        "restore": "c58fa4206460e674515c986c2c4b32b4fbca0e51e87f907934eb946b26460c04"
+      }
+    }
+  ]
+}

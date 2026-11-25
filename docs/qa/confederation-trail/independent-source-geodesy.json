@@ -1,0 +1,100 @@
+{
+  "task": "OpenStreetMap Confederation Trail only (main Tignish-Elmira, not branches or global trail system)",
+  "routeFullSnapshotSHA256": "66e19f29e054cc034a55aaf1c78ea9b5046c2c3de1c138561b256d2189cf9fe3",
+  "relation": {
+    "id": 4740520,
+    "version": 61,
+    "publicRouteName": "Confederation Trail - Main Trail"
+  },
+  "allPlainMainMembers": true,
+  "undirectedDegreeOneEndpoints": [
+    "Tignish",
+    "Elmira"
+  ],
+  "endpointsWgs84": {
+    "Tignish": [
+      -64.0355056,
+      46.9515766
+    ],
+    "Elmira": [
+      -62.0648423,
+      46.4402296
+    ]
+  },
+  "totalMetres": {
+    "WGS84Geodesic": 273404.72283299506,
+    "simulatorLocalXZ": 273318.0035164233
+  },
+  "surfaces": {
+    "eligible-explicit:compacted": {
+      "wayCount": 59,
+      "geodesicM": 176760.56163430394,
+      "sceneM": 176822.86661399493
+    },
+    "grade-separated-or-unknown": {
+      "wayCount": 14,
+      "geodesicM": 185.192243174715,
+      "sceneM": 185.3395235925646
+    },
+    "asphalt": {
+      "wayCount": 13,
+      "geodesicM": 911.764611201066,
+      "sceneM": 910.2783704871982
+    },
+    "unset": {
+      "wayCount": 13,
+      "geodesicM": 44827.82698738326,
+      "sceneM": 44749.40410580939
+    },
+    "eligible-explicit:fine_gravel": {
+      "wayCount": 6,
+      "geodesicM": 50033.43066521069,
+      "sceneM": 49964.91653503066
+    },
+    "wrong-highway": {
+      "wayCount": 4,
+      "geodesicM": 685.9466917214102,
+      "sceneM": 685.1983675085208
+    }
+  },
+  "sourceWidthTagsAndDefaults": {
+    "default-render-width-2.0": 60,
+    "source-tagged-2": 5
+  },
+  "sourceWidthGeodesicM": {
+    "default-render-width-2.0": 209758.5158631435,
+    "source-tagged-2": 17035.476436371133
+  },
+  "countyResultsSceneMetresBeforeAnyClipping": {
+    "Kings": {
+      "explicitGravel": 46802.55575811049,
+      "notEligible": 19518.332885431882,
+      "explicitGravelways": 6,
+      "notEligibleways": 8
+    },
+    "Queens": {
+      "explicitGravel": 44648.18966531576,
+      "notEligible": 26039.37123399681,
+      "explicitGravelways": 23,
+      "notEligibleways": 21
+    },
+    "Prince": {
+      "explicitGravel": 135336.99969311774,
+      "explicitGravelways": 38,
+      "notEligible": 972.5162479689807,
+      "notEligibleways": 15
+    }
+  },
+  "countyGeneralizationDegrees": 1.2e-05,
+  "countyPublicSource": "https://gis.princeedwardisland.ca/server/rest/services/county_zones/MapServer/0",
+  "countyGeometryRawSHA256": "379ad51821bb356a3855c3eb9c9ac3b47e01eee4df744f7a14873195b090de88",
+  "noPrivateAccountMetadataReadOrExported": true,
+  "userFacingAuthority": "https://www.princeedwardisland.ca/en/information/tourism-pei/hiking-and-cycling-on-the-confederation-trail",
+  "licenseSources": [
+    "https://www.openstreetmap.org/copyright",
+    "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines#Computer_games_and_simulations",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+  ],
+  "caveat": "Scene length is horizontal, not physical surveyed grade distance. Neither OSM 273k route nor qualifying surface ways imply 273k of new rendered material. Actual emitted and clipped geometry separately tested. Default width is a conservative rendering choice not surveyed dimensional accuracy.",
+  "uniqueValidatedWayMembers": 109
+}

@@ -1,0 +1,30 @@
+{
+  "renderCapsuleDerivedSHA256": "5c4224e5b2ff71028ad27639ea9bb100a7df07eeab168c84cd671da0d75bb62a",
+  "independentCountyGeometrySHA256": "379ad51821bb356a3855c3eb9c9ac3b47e01eee4df744f7a14873195b090de88",
+  "countyCentrelineHorizontalMetres": {
+    "Kings": {
+      "compacted": 0.0,
+      "unmeasuredDefault": 41830.64660111674,
+      "tagged": 0.0,
+      "fine_gravel": 41830.64660111674,
+      "wholeCentreline": 41830.64660111674
+    },
+    "Queens": {
+      "compacted": 37032.885642693174,
+      "unmeasuredDefault": 39321.38169575976,
+      "tagged": 0.0,
+      "fine_gravel": 2288.4960530665803,
+      "wholeCentreline": 39321.38169575975
+    },
+    "Prince": {
+      "compacted": 124160.0270418472,
+      "unmeasuredDefault": 119712.87570561054,
+      "tagged": 4447.151336236664,
+      "fine_gravel": 0.0,
+      "wholeCentreline": 124160.0270418472
+    }
+  },
+  "countyRoundingBoundaryGapMetres": 0.038035280915210024,
+  "stubSource": "https://gis.princeedwardisland.ca/server/rest/services/county_zones/MapServer/0",
+  "limits": "Actual accepted CTF1 horizontal plan through 3 official PEI County Zone map names; no claim every metre is visible at once or advanced terrain/surfaces runtime admission. Generalized official boundaries, not legal surveying."
+}

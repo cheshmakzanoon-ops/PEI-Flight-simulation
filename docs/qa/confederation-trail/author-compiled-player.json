@@ -1,0 +1,63 @@
+{
+  "renderer": "Chromium WebGL / compiled actual flight",
+  "compiledJavaScriptSHA256": "31349ad758abb6413653ca7f6fba9e0be0d07baa28b02c2f8b5e3d690ef54c31",
+  "stagingBaseBeforePass": "970fe33054be94ddd53f93415b20fc9a90f730eb",
+  "compiledStagingSourceSHA256": {
+    "src/render/confederation-trail.ts": "39e1f3273a9aad50f7f1d262d9242a276fc1070cae55c974181d03d3187ee9eb",
+    "src/render/confederation-trail-material.ts": "3d1ec24272a13b1c208f61dce875d798a5cca0c4abde01ce2f17682a6566f8e9",
+    "src/render/confederation-trail.generated.ts": "0014876ea40517a292d82977b95daadd9bc928ad9db0a1210114deb1647a6e5f",
+    "public/world/trails/odbl/v1/confederation-main.bin.gz": "3982ff7d7d1cae2941e278a7bb8327779a7e9fb9e92e29cfff0985237bc825b4"
+  },
+  "actualVirtualFlight": [
+    {
+      "mode": "active",
+      "site": "hunter-river-trail",
+      "distance": 171.51,
+      "camera": "Wide chase",
+      "endedPaused": true,
+      "tr": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 6,
+        "visible": 6,
+        "pending": 0,
+        "triangles": 620,
+        "active": true
+      },
+      "attempted": [
+        "confederation-main.bin.gz"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "off",
+      "site": "hunter-river-trail",
+      "distance": 170.912,
+      "camera": "Wide chase",
+      "endedPaused": true,
+      "tr": null,
+      "attempted": [],
+      "errors": []
+    },
+    {
+      "mode": "corrupt",
+      "site": "hunter-river-trail",
+      "distance": 167.325,
+      "camera": "Wide chase",
+      "endedPaused": true,
+      "tr": {
+        "status": "unavailable",
+        "attempts": 1,
+        "resident": 0,
+        "visible": 0,
+        "pending": 0,
+        "triangles": 0,
+        "active": false
+      },
+      "attempted": [
+        "confederation-main.bin.gz"
+      ],
+      "errors": []
+    }
+  ]
+}

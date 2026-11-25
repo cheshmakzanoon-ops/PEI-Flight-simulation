@@ -1,0 +1,160 @@
+{
+  "id": "confederation-main-odbl-v1",
+  "asset": "trails/odbl/v1/confederation-main.bin.gz",
+  "projectedTileMetres": 880,
+  "decodedBytes": 41724,
+  "compressedBytes": 25034,
+  "sha256": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "wireSha256": "3982ff7d7d1cae2941e278a7bb8327779a7e9fb9e92e29cfff0985237bc825b4",
+  "crc32": "fc27d419",
+  "pins": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecoded": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "buildings": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "sidewalk": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+    "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303"
+  },
+  "tiles": 304,
+  "paths": 505,
+  "sections": 3646,
+  "runways": [
+    [
+      "CYYG03",
+      5565.39342272481,
+      24488.64969935205,
+      5903.021863327229,
+      22387.926398735774,
+      45.72
+    ],
+    [
+      "CYYG10",
+      5452.609202538738,
+      22909.99715933596,
+      7546.644671419552,
+      22501.01743481635,
+      45.72
+    ],
+    [
+      "CYSU05",
+      -49342.99489428637,
+      7625.650345517006,
+      -47915.210661191006,
+      5646.983054697699,
+      60.96
+    ]
+  ],
+  "protectedCoasts": [
+    [
+      31,
+      12
+    ],
+    [
+      1,
+      9
+    ]
+  ],
+  "source": "https://www.openstreetmap.org/api/0.6/relation/4740520/full.json",
+  "sourceSha256": "66e19f29e054cc034a55aaf1c78ea9b5046c2c3de1c138561b256d2189cf9fe3",
+  "relation": 4740520,
+  "version": 61,
+  "sourceMemberWays": 109,
+  "acceptedPlanPolygonCount": 3141,
+  "contributingWays": 60,
+  "sourceWayCountBreakdown": {
+    "eligibleWays": 61,
+    "admittedPathGroups": 205,
+    "heldByTags": 48,
+    "fragmentTooSmallOrComplex": 7
+  },
+  "lengthMetres": {
+    "fullRelation": 273318.004,
+    "positivelyMapped": 214279.842,
+    "sourceNominalWidth": 209774.449,
+    "roadClipped": 1394.607,
+    "buildingClipped": 154.805,
+    "sidewalkClipped": 66.894,
+    "parkingClipped": 63.645,
+    "runwayClipped": 0.0,
+    "overlapClipped": 61.498,
+    "coverOrWetlandHeld": 7216.173,
+    "retained": 205312.093,
+    "retainedNominalWidth": 200864.942,
+    "heldByTags": 59038.161,
+    "sourceTaggedWidth": 4505.393,
+    "retainedTaggedWidth": 4447.151
+  },
+  "admittedMaterialMetres": {
+    "compacted": 161192.951,
+    "fine_gravel": 44119.143
+  },
+  "fallbackFullWidthMetres": 2.0,
+  "sourceWidthLabel": "OSM tags only; not a survey",
+  "protectionObjectCounts": {
+    "road": 55151,
+    "building": 85866,
+    "sidewalk": 8275,
+    "parking": 1162,
+    "runway": 3
+  },
+  "signedCoverClasses": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60
+  ],
+  "geographicRuntimeAuthority": {
+    "runways": [
+      [
+        "CYYG03",
+        {
+          "x": 5565.39342272481,
+          "z": 24488.64969935205
+        },
+        {
+          "x": 5903.021863327229,
+          "z": 22387.926398735774
+        },
+        45.72
+      ],
+      [
+        "CYYG10",
+        {
+          "x": 5452.609202538738,
+          "z": 22909.99715933596
+        },
+        {
+          "x": 7546.644671419552,
+          "z": 22501.01743481635
+        },
+        45.72
+      ],
+      [
+        "CYSU05",
+        {
+          "x": -49342.99489428637,
+          "z": 7625.650345517006
+        },
+        {
+          "x": -47915.210661191006,
+          "z": 5646.983054697699
+        },
+        60.96
+      ]
+    ],
+    "coastal": [
+      [
+        31,
+        12
+      ],
+      [
+        1,
+        9
+      ]
+    ]
+  },
+  "openDatabaseSHA256": "5c4224e5b2ff71028ad27639ea9bb100a7df07eeab168c84cd671da0d75bb62a"
+}
