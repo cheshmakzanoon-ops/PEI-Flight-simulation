@@ -1,0 +1,71 @@
+{
+  "state": "held art only; no production adapter",
+  "baseCommit": "944aaf5c9b1fedb886a896bc32d422d6baebfb0a",
+  "epoch": "2020 selective interpretation; separate 2008 surface corroboration passed west main only",
+  "model": {
+    "exterior.ts": "4d18fa76d25b27cf6375da387357768cee4d1fda67d5cfb9682a9959d77c994b",
+    "materials.ts": "b6066a6af11c240e07bc34cced6b0d04c04270e050bb8e66223e408c30ce6f28",
+    "roof.ts": "ecf288e7b096e300c7e6ce2adc1b690466fc17fb89b34886d3ac616cf4352779",
+    "source.generated.ts": "d2791d4b6bf6b9718723768bb84350677b4f59c872ee45087e7e3b8607575c51"
+  },
+  "projectionSha256": "615dfa83789123f718109e32faf74334dc510139baa99639a62766ff9dfb4106",
+  "triangles": 2971,
+  "draws": 8,
+  "roofProbes": 6487,
+  "atlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "packetSha256": "44a3bb73d0752c7c7416ced2240a7ec9d65756cbf1ec4cf1b988f02f2ca9a849",
+  "owner": "q11220/67",
+  "stockVertexSpan": [
+    4617,
+    4710
+  ],
+  "stockChurchSpan": [
+    14070,
+    14136
+  ],
+  "buffersSha256": "bdc30e9d2e0b1f608fa5f3f97a90284c3bcbd6d18489b387b46a815131eff3e3",
+  "silhouettesSha256": {
+    "west": "26e9d6b7b3126c31a7e53d8ca72bfe45aa0b3166d0921101d2f6d1e09608ff2c",
+    "southwest": "06d01c93f041425b5fbbb869554ca36e653c01f66ace07a064e60b9b109faa50"
+  },
+  "rendererEvidence": {
+    "environment": "Matched software-rendered Three.js stage; not default gameplay or device performance",
+    "fixed": [
+      {
+        "view": "front",
+        "rgbChangeOver2": 131315,
+        "beyondOnePixelFringe": 0,
+        "exactIdFringePixels": 0,
+        "churchRetained": true
+      },
+      {
+        "view": "street",
+        "rgbChangeOver2": 102905,
+        "beyondOnePixelFringe": 0,
+        "exactIdFringePixels": 3,
+        "churchRetained": true
+      },
+      {
+        "view": "air",
+        "rgbChangeOver2": 1991,
+        "beyondOnePixelFringe": 0,
+        "exactIdFringePixels": 0,
+        "churchRetained": true
+      }
+    ],
+    "chase": [
+      {
+        "travelM": 157.705,
+        "altitudeM": 61.978,
+        "rgbChangeOver2": 197,
+        "churchRetained": true
+      },
+      {
+        "travelM": 389.364,
+        "altitudeM": 63.707,
+        "rgbChangeOver2": 482,
+        "churchRetained": true
+      }
+    ]
+  }
+}
