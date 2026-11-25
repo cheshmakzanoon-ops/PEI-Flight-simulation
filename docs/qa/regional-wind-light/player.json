@@ -1,0 +1,176 @@
+{
+  "candidateBase": "328716a9c4207fbebc7c8821c8ab0bb101d8a0ff",
+  "candidateRuntimeRegister": "6e454fb355c6b3589ff5688d0327ea7d0af455e194fe70e80fdf826cabe57deb",
+  "method": "Actual compiled Three.js/browser game with a QA-only near Western Prince starting point. Same original West Cape mesh roster, real dispatch/Cockpit/Pause. No public departure or performance claims.",
+  "cases": {
+    "west-ready": {
+      "case": "virtual-wind-west-cape",
+      "fault": "healthy",
+      "actualMovedM": 284.67489154269333,
+      "targetDistanceM": 346.3471332404674,
+      "groundClearanceM": 156.49415160396921,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": {
+              "phase": "ready",
+              "activeTiles": 2,
+              "nearCasters": 4
+            }
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "west-stock": {
+      "case": "virtual-wind-west-cape",
+      "fault": "healthy",
+      "actualMovedM": 283.479745685646,
+      "targetDistanceM": 343.9487446668642,
+      "groundClearanceM": 156.49961113889486,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 0,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": null
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "west-corrupt": {
+      "case": "virtual-wind-west-cape",
+      "fault": "bad-body",
+      "actualMovedM": 285.2854578838043,
+      "targetDistanceM": 336.1538590130298,
+      "groundClearanceM": 156.51714935159725,
+      "terrainReceivers": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 2,
+        "ready": 2,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 1,
+      "optionalDiagnostic": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "west-cape",
+            "registered": 55,
+            "near": 11,
+            "cruise": 33,
+            "distant": 11,
+            "groundLight": {
+              "phase": "unavailable",
+              "activeTiles": 0,
+              "nearCasters": 0
+            }
+          }
+        ],
+        "unavailable": []
+      },
+      "interceptedFaults": [
+        "bad-body"
+      ],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "distant-cold": {
+      "case": "summerside",
+      "fault": "healthy",
+      "actualMovedM": 281.2220839846151,
+      "targetDistanceM": 347.4903086579,
+      "groundClearanceM": 361.16926736707507,
+      "terrainReceivers": {
+        "ready": 16,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "buildings": {
+        "wanted": 25,
+        "ready": 25,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "proofRequests": 0,
+      "optionalDiagnostic": {
+        "phase": "cold",
+        "farms": [],
+        "unavailable": []
+      },
+      "interceptedFaults": [],
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    }
+  }
+}

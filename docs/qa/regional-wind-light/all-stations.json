@@ -1,0 +1,1192 @@
+{
+  "title": "Additional complete 74-site census; original 896,882 surface points supplied by artist unchanged, real reconstructed game N112, not mounted GPU nor external LiDAR. Original static near meshes independently ray-tested without relying on candidate raster.",
+  "ownerGroundProvenance": "dfe2b624b182d0cd527d98a8508fa0c7e6eebafd57b489f0418543e384bc6c6d",
+  "lockedModelEvaluator": "4aa2196ace0eaa06e09e71463017bd9d7a6cc8e6f828ad3a92c4ea65449d6254",
+  "independentStaticMeshOracle": "e02dbbd18c96b3b88af9296a5ab0aa2935adde8754eccb30f460b2443d6f74e3",
+  "rows": {
+    "WCW1": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1117,
+      "candidateHardHits": 1122,
+      "falsePositives": 6,
+      "falseNegatives": 1,
+      "IoU": 0.993767,
+      "depthP95Meters": 0.006612,
+      "depthMaxMeters": 0.266221,
+      "receiverRelativeRangeMeters": [
+        -0.24759579953758148,
+        0.7125561524194346
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "6003e503ce8d37299c4738924012f6f38dea9349662a01d5655e2d615b16abb6"
+    },
+    "WCW2": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1117,
+      "candidateHardHits": 1117,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998211,
+      "depthP95Meters": 0.006898,
+      "depthMaxMeters": 0.244285,
+      "receiverRelativeRangeMeters": [
+        -0.8534241841180794,
+        1.3298899747587036
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "9f6f3b69b9b3021d6b9602f15ead9402dbb99e63e6e40e26aea9b7650af127da"
+    },
+    "WCW3": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1098,
+      "candidateHardHits": 1098,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "IoU": 1.0,
+      "depthP95Meters": 0.006794,
+      "depthMaxMeters": 0.123793,
+      "receiverRelativeRangeMeters": [
+        -0.8815023400049711,
+        2.5989951789868044
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "fa603359f2a0bb9eeb2969b49c4389834d42d354563e159f97c2cfd0f7a2c0a5"
+    },
+    "WCW4": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1108,
+      "candidateHardHits": 1110,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.9964,
+      "depthP95Meters": 0.006794,
+      "depthMaxMeters": 0.695685,
+      "receiverRelativeRangeMeters": [
+        -0.6156447644639513,
+        2.1021032778911106
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "8a7b9df22bb4cb04d104c979e808310acd13743b025d4585eb57c2ca0a1f1064"
+    },
+    "WCW5": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1103,
+      "candidateHardHits": 1104,
+      "falsePositives": 2,
+      "falseNegatives": 1,
+      "IoU": 0.997285,
+      "depthP95Meters": 0.006834,
+      "depthMaxMeters": 0.273287,
+      "receiverRelativeRangeMeters": [
+        -0.6829619243860385,
+        2.021019753981836
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "00d56d36032afd2f1352e50ee9490c14c8e7b2b06981f0433efdb075140b4be4"
+    },
+    "WCW6": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1106,
+      "candidateHardHits": 1106,
+      "falsePositives": 2,
+      "falseNegatives": 2,
+      "IoU": 0.99639,
+      "depthP95Meters": 0.006601,
+      "depthMaxMeters": 0.31804,
+      "receiverRelativeRangeMeters": [
+        -0.37787454413862775,
+        2.0788523872220566
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "51b08e9eec857cab134b6c3915e6b5e8b5dba9bdbb7e292fded9019dd1d0034a"
+    },
+    "WCW7": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1102,
+      "candidateHardHits": 1101,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.99728,
+      "depthP95Meters": 0.008004,
+      "depthMaxMeters": 0.241318,
+      "receiverRelativeRangeMeters": [
+        -0.5218611554110417,
+        2.3425150833522927
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e589bfb86ed0f9ca8ad45de49232596b614bd1fae3013c5b1065642038015f94"
+    },
+    "WCW8": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1132,
+      "candidateHardHits": 1133,
+      "falsePositives": 2,
+      "falseNegatives": 1,
+      "IoU": 0.997354,
+      "depthP95Meters": 0.007335,
+      "depthMaxMeters": 0.162288,
+      "receiverRelativeRangeMeters": [
+        -0.4118774110601784,
+        0.26388091325847185
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "1684519c8570606fd079f0f2d03e80196012e7030fe8f4d00b3ec1cc8b1b7fd8"
+    },
+    "WCW9": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1111,
+      "candidateHardHits": 1111,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998201,
+      "depthP95Meters": 0.00668,
+      "depthMaxMeters": 0.108185,
+      "receiverRelativeRangeMeters": [
+        -0.401643980791615,
+        1.7064748940272985
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "a7ab95240088c41d45d0166bbe2656f2335ca5abc654154501aa1838a27e47e1"
+    },
+    "WCW10": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1122,
+      "candidateHardHits": 1121,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.997329,
+      "depthP95Meters": 0.005789,
+      "depthMaxMeters": 0.114669,
+      "receiverRelativeRangeMeters": [
+        -0.5115466861102718,
+        0.32706352514475157
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e524cfa6229f7150d7e9a1e665a3718072a2316f5e3f8c2ac4aa123810baa341"
+    },
+    "WCW11": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1125,
+      "candidateHardHits": 1123,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "IoU": 0.998222,
+      "depthP95Meters": 0.006755,
+      "depthMaxMeters": 0.391735,
+      "receiverRelativeRangeMeters": [
+        -0.2185881713369895,
+        0.4464785790551815
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "1c14d48198c8fba22a7dcf524d3d5fc209ab16245278041d33beebf9114d83f6"
+    },
+    "WCW12": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1098,
+      "candidateHardHits": 1100,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "IoU": 0.998182,
+      "depthP95Meters": 0.006999,
+      "depthMaxMeters": 0.667806,
+      "receiverRelativeRangeMeters": [
+        -1.109109742501989,
+        2.5714495761840155
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "26c46f00c5e6dcadbc24f5a199ad8534fe0dc370cb5d3493fb682145028c8aee"
+    },
+    "WCW13": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1118,
+      "candidateHardHits": 1117,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.997319,
+      "depthP95Meters": 0.006907,
+      "depthMaxMeters": 0.747648,
+      "receiverRelativeRangeMeters": [
+        -0.37234683746465436,
+        1.101577590724844
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "a2e3b29d10054c289c7981a37ec74d714f711f147a86b2dc61493d4029f584d8"
+    },
+    "WCW14": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1117,
+      "candidateHardHits": 1119,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.996429,
+      "depthP95Meters": 0.007116,
+      "depthMaxMeters": 0.740354,
+      "receiverRelativeRangeMeters": [
+        -0.2775536792713069,
+        1.1777037600232987
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "a6cc7325843532acfdd50a83569797c9b6ace054aa963f751690cf0c1624ce79"
+    },
+    "WCW15": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1126,
+      "candidateHardHits": 1126,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "IoU": 1.0,
+      "depthP95Meters": 0.006309,
+      "depthMaxMeters": 0.113986,
+      "receiverRelativeRangeMeters": [
+        -0.13101341581221249,
+        0.6610814751094125
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "04f661645301042269ede1a299a110209bc419ed4e57cf6c915b6b71e7addb1d"
+    },
+    "WCW16": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1144,
+      "candidateHardHits": 1147,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "IoU": 0.997384,
+      "depthP95Meters": 0.006466,
+      "depthMaxMeters": 0.13532,
+      "receiverRelativeRangeMeters": [
+        -1.6717044244873058,
+        0.15851625784006984
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "d30b2cf55a6f08fcb4bc8bce7fb488b2cd30daca88eea7f0644baae6d2326938"
+    },
+    "WCW17": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1196,
+      "candidateHardHits": 1201,
+      "falsePositives": 5,
+      "falseNegatives": 0,
+      "IoU": 0.995837,
+      "depthP95Meters": 0.006438,
+      "depthMaxMeters": 0.112425,
+      "receiverRelativeRangeMeters": [
+        -6.497244142129615,
+        1.0496371604477446
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "0aba4fee7efea51af9b7c4f99cc8b0649bc461aee973e21c64c2f3e629e54d53"
+    },
+    "WCW18": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1131,
+      "candidateHardHits": 1131,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998233,
+      "depthP95Meters": 0.006555,
+      "depthMaxMeters": 0.715397,
+      "receiverRelativeRangeMeters": [
+        -0.49541984388502414,
+        0.1669740094519092
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "cdbebdc448ddd2525e3095f2ed65d82648da510ff931cd1c02079e3c16bb9981"
+    },
+    "WCW19": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1116,
+      "candidateHardHits": 1115,
+      "falsePositives": 0,
+      "falseNegatives": 1,
+      "IoU": 0.999104,
+      "depthP95Meters": 0.006873,
+      "depthMaxMeters": 0.370139,
+      "receiverRelativeRangeMeters": [
+        -0.42602457751831224,
+        1.2741313549708195
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "056a577b9c2368a5ea5de6e56c732e5bf2e0a14db1c04a432c16c8112e7bebe1"
+    },
+    "WCW20": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1117,
+      "candidateHardHits": 1116,
+      "falsePositives": 0,
+      "falseNegatives": 1,
+      "IoU": 0.999105,
+      "depthP95Meters": 0.006588,
+      "depthMaxMeters": 0.566492,
+      "receiverRelativeRangeMeters": [
+        -0.13543877360359602,
+        0.8650956682364495
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "ee50c855258f37b1ea1c99fc9c054bae7a12f3a1905f9e74e2365744fb5d2983"
+    },
+    "WCW21": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1139,
+      "candidateHardHits": 1143,
+      "falsePositives": 4,
+      "falseNegatives": 0,
+      "IoU": 0.9965,
+      "depthP95Meters": 0.007273,
+      "depthMaxMeters": 0.359096,
+      "receiverRelativeRangeMeters": [
+        -1.3402864444562503,
+        0.30684639768885447
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "2f8fa45fedcd358cc7d92e8c9bec35ed63d356fe3520f7d83e8d231702dc7889"
+    },
+    "WCW22": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1133,
+      "candidateHardHits": 1134,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "IoU": 0.999118,
+      "depthP95Meters": 0.006947,
+      "depthMaxMeters": 0.517761,
+      "receiverRelativeRangeMeters": [
+        -0.3973358061401342,
+        0.07580378722695258
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e7eb719fafc673566d947260393994464937a5a2b23621a2b9c8ef39e3cb66b8"
+    },
+    "WCW23": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1157,
+      "candidateHardHits": 1157,
+      "falsePositives": 3,
+      "falseNegatives": 3,
+      "IoU": 0.994828,
+      "depthP95Meters": 0.006532,
+      "depthMaxMeters": 0.434083,
+      "receiverRelativeRangeMeters": [
+        -3.5078105045036345,
+        1.075479988061634
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "f5df9527cb9c5ea893e7a1b7fa08f21a7750f1a704e9f85570b38172acfd4d08"
+    },
+    "WCW24": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1094,
+      "candidateHardHits": 1094,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998174,
+      "depthP95Meters": 0.005976,
+      "depthMaxMeters": 0.112639,
+      "receiverRelativeRangeMeters": [
+        -0.7057952696786636,
+        2.8894814759074947
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "3d4331e091f24a194da3d94246bc79e0f9673b94ada66c4e64bd5219ca3cc954"
+    },
+    "WCW25": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1111,
+      "candidateHardHits": 1111,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998201,
+      "depthP95Meters": 0.006763,
+      "depthMaxMeters": 0.117455,
+      "receiverRelativeRangeMeters": [
+        -1.3822069901044571,
+        1.514351721644804
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "6585697b463958b7dc499a4b5fd070f442fb5313e3e280c26a50c3f62a212df2"
+    },
+    "WCW26": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1108,
+      "candidateHardHits": 1108,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998197,
+      "depthP95Meters": 0.006922,
+      "depthMaxMeters": 0.392167,
+      "receiverRelativeRangeMeters": [
+        -0.49624559898003895,
+        2.064075777884934
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "5ab7fb9a83e9f4acfd35d48a8b66dcb807b0d429911bfcef76777259bd7cf85d"
+    },
+    "WCW27": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1132,
+      "candidateHardHits": 1134,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.996476,
+      "depthP95Meters": 0.006955,
+      "depthMaxMeters": 0.149041,
+      "receiverRelativeRangeMeters": [
+        -1.113056287841804,
+        0.8089333589328014
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "1684afc68479f3b992f887cfb42286c7dc6395935cefeec0ffc4f96c44e60b10"
+    },
+    "WCW28": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1128,
+      "candidateHardHits": 1129,
+      "falsePositives": 3,
+      "falseNegatives": 2,
+      "IoU": 0.995579,
+      "depthP95Meters": 0.006976,
+      "depthMaxMeters": 0.91578,
+      "receiverRelativeRangeMeters": [
+        -0.27455823231078824,
+        0.16169296008742862
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "5dd74b9472c7482a69842309ec17a38f5030236fea07a5b33ebf33a5abacf8a2"
+    },
+    "WCW29": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1138,
+      "candidateHardHits": 1136,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "IoU": 0.998243,
+      "depthP95Meters": 0.007185,
+      "depthMaxMeters": 0.114276,
+      "receiverRelativeRangeMeters": [
+        -0.8510543596735829,
+        0.23226439032885793
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "8138f7bf06d074c67bb5f040ac083fc34f6bb8413e40aa2922f20b69f49492e5"
+    },
+    "WCW30": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1132,
+      "candidateHardHits": 1133,
+      "falsePositives": 3,
+      "falseNegatives": 2,
+      "IoU": 0.995595,
+      "depthP95Meters": 0.006044,
+      "depthMaxMeters": 0.139762,
+      "receiverRelativeRangeMeters": [
+        -1.4230574695865883,
+        0.635400190866747
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "7f32bd5ac7db0f51ad1e510a89b11f809e1eefcce822985c02d24a88d3867d79"
+    },
+    "WCW31": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1130,
+      "candidateHardHits": 1132,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "IoU": 0.998233,
+      "depthP95Meters": 0.006529,
+      "depthMaxMeters": 0.770618,
+      "receiverRelativeRangeMeters": [
+        -0.9912118227219118,
+        0.5266335969477431
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "5c965d093384306aae1431faba6f178d15040807bcbba06ac28e4e514b1071d8"
+    },
+    "WCW32": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1118,
+      "candidateHardHits": 1120,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.996432,
+      "depthP95Meters": 0.006274,
+      "depthMaxMeters": 0.269162,
+      "receiverRelativeRangeMeters": [
+        -0.34269146539706696,
+        1.1453105721383139
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "4fa1fcfce2ab5fbb964286dc387bfa275c15a7bf6b5ebb3f49fb81bc12a2b4c6"
+    },
+    "WCW33": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1126,
+      "candidateHardHits": 1128,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.996457,
+      "depthP95Meters": 0.006486,
+      "depthMaxMeters": 0.203258,
+      "receiverRelativeRangeMeters": [
+        -0.11014990419295856,
+        0.28281995386224423
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "32c2fdfd155b7ab0f7d270fe5c8eac6de3671e82921a59a1a59eff5010e3d7e8"
+    },
+    "WCW34": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1135,
+      "candidateHardHits": 1136,
+      "falsePositives": 3,
+      "falseNegatives": 2,
+      "IoU": 0.995606,
+      "depthP95Meters": 0.006626,
+      "depthMaxMeters": 0.162336,
+      "receiverRelativeRangeMeters": [
+        -1.0839038013868887,
+        0.38814698305475304
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e7874b21ae76c9d38882677501bcfad8ca20878ea311e31141d0b5b2a6ce9276"
+    },
+    "WCW35": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1140,
+      "candidateHardHits": 1139,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.997371,
+      "depthP95Meters": 0.006243,
+      "depthMaxMeters": 0.114883,
+      "receiverRelativeRangeMeters": [
+        -1.5871394703809614,
+        0.4288395281007453
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "3d9fa11c1b5e10e3527739f220e7042956e8d14df8be58119d1edc96301135fa"
+    },
+    "WCW36": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1154,
+      "candidateHardHits": 1155,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "IoU": 0.999134,
+      "depthP95Meters": 0.006383,
+      "depthMaxMeters": 0.696214,
+      "receiverRelativeRangeMeters": [
+        -2.4542730718265204,
+        0.2107705671688933
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "8956b586e2d376721a52ac5bb63529366492a1ad78f938f959cb295ad93869e2"
+    },
+    "WCW37": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1119,
+      "candidateHardHits": 1120,
+      "falsePositives": 2,
+      "falseNegatives": 1,
+      "IoU": 0.997324,
+      "depthP95Meters": 0.007018,
+      "depthMaxMeters": 0.341552,
+      "receiverRelativeRangeMeters": [
+        -0.20965962138940242,
+        0.6505006355282852
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "79c03ada34c3525c528de75e7257816ec7bebb1e527e89c3e7f3fda960e80747"
+    },
+    "WCW38": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1125,
+      "candidateHardHits": 1128,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "IoU": 0.99734,
+      "depthP95Meters": 0.006894,
+      "depthMaxMeters": 0.233356,
+      "receiverRelativeRangeMeters": [
+        -0.02764404072631166,
+        0.044865441905770354
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "dea5970ba4c813a790a96d0ee6dde2c9e29e33851834d73f6896070da64fa248"
+    },
+    "WCW39": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1178,
+      "candidateHardHits": 1177,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.997455,
+      "depthP95Meters": 0.006286,
+      "depthMaxMeters": 0.113263,
+      "receiverRelativeRangeMeters": [
+        -4.738407729644482,
+        0.5977934218488308
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "8e42b38b14824e413c0ab9aa4ad19de8819f7cb196462887737f8d485b1315da"
+    },
+    "WCW40": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1127,
+      "candidateHardHits": 1130,
+      "falsePositives": 4,
+      "falseNegatives": 1,
+      "IoU": 0.995579,
+      "depthP95Meters": 0.005949,
+      "depthMaxMeters": 0.908748,
+      "receiverRelativeRangeMeters": [
+        -0.18938894347795454,
+        0.18104739209378096
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "8cf5ab9a6f97833606234e6c2e20527d621fcb50517a5d04b59375b47af209c0"
+    },
+    "WCW41": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1133,
+      "candidateHardHits": 1136,
+      "falsePositives": 4,
+      "falseNegatives": 1,
+      "IoU": 0.995602,
+      "depthP95Meters": 0.006988,
+      "depthMaxMeters": 0.224614,
+      "receiverRelativeRangeMeters": [
+        -0.843854311096031,
+        0.21935526833895125
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "95dc5b234ba74fca419d1f1285daf23f70aa0c5de3b871f48b7da972d9253d7d"
+    },
+    "WCW42": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1124,
+      "candidateHardHits": 1127,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "IoU": 0.997338,
+      "depthP95Meters": 0.006583,
+      "depthMaxMeters": 0.243807,
+      "receiverRelativeRangeMeters": [
+        -0.1163374363871661,
+        0.19009617805725298
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "1773c75cefa85315eb456163437cc9d59375b2f81df3e372ae90fcc0884a92d9"
+    },
+    "WCW43": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1151,
+      "candidateHardHits": 1152,
+      "falsePositives": 3,
+      "falseNegatives": 2,
+      "IoU": 0.995667,
+      "depthP95Meters": 0.00741,
+      "depthMaxMeters": 0.529737,
+      "receiverRelativeRangeMeters": [
+        -2.150888915489098,
+        0.2055834751452963
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "835872927d3557412cca0ca823c0e1c8d366bd2a685242d0db984e84703c1384"
+    },
+    "WCW44": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1104,
+      "candidateHardHits": 1103,
+      "falsePositives": 2,
+      "falseNegatives": 3,
+      "IoU": 0.995479,
+      "depthP95Meters": 0.006126,
+      "depthMaxMeters": 0.10813,
+      "receiverRelativeRangeMeters": [
+        -0.9112182107216924,
+        2.190061355324147
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "7aaf96ccc8f1d46437737d154b55528d488c944bc0bb2f574074956fcd9b76b4"
+    },
+    "WCW45": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1155,
+      "candidateHardHits": 1160,
+      "falsePositives": 6,
+      "falseNegatives": 1,
+      "IoU": 0.993971,
+      "depthP95Meters": 0.006365,
+      "depthMaxMeters": 0.706839,
+      "receiverRelativeRangeMeters": [
+        -3.247652242848659,
+        0.5698309047756673
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e641800be999bcbbe621472f4e72e4a5200c44f9ab542d537714e04619d684c1"
+    },
+    "WCW46": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1130,
+      "candidateHardHits": 1130,
+      "falsePositives": 1,
+      "falseNegatives": 1,
+      "IoU": 0.998232,
+      "depthP95Meters": 0.006063,
+      "depthMaxMeters": 0.545199,
+      "receiverRelativeRangeMeters": [
+        -0.6784679223038683,
+        0.018511620193987
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "42cbc39070221c0299609cd0f523eb915c35e9b33245ecbed79d38edf313037a"
+    },
+    "WCW47": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1159,
+      "candidateHardHits": 1160,
+      "falsePositives": 2,
+      "falseNegatives": 1,
+      "IoU": 0.997416,
+      "depthP95Meters": 0.006855,
+      "depthMaxMeters": 0.62748,
+      "receiverRelativeRangeMeters": [
+        -3.8220721777535402,
+        0.49185086517790566
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e428e909e32ce9fc14ea3bcf88a9ee91a54aedfa07a52b19120cf9f6fe8d7151"
+    },
+    "WCW48": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1159,
+      "candidateHardHits": 1157,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "IoU": 0.998274,
+      "depthP95Meters": 0.006778,
+      "depthMaxMeters": 0.145614,
+      "receiverRelativeRangeMeters": [
+        -3.541319943896415,
+        0.6461255570310733
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "10261ea00a3d45d696cad4b89ddf0f1bc7ec79c5875a435d15898b5e0b875f3c"
+    },
+    "WCW49": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1141,
+      "candidateHardHits": 1140,
+      "falsePositives": 0,
+      "falseNegatives": 1,
+      "IoU": 0.999124,
+      "depthP95Meters": 0.006729,
+      "depthMaxMeters": 0.685408,
+      "receiverRelativeRangeMeters": [
+        -1.180044050521614,
+        0.15231689410135552
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "7e3d3b7c8d3e1b0dceed1ac51e1810ede58d94f5848db9fbf072ed7c81154ee0"
+    },
+    "WCW50": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1124,
+      "candidateHardHits": 1128,
+      "falsePositives": 4,
+      "falseNegatives": 0,
+      "IoU": 0.996454,
+      "depthP95Meters": 0.006449,
+      "depthMaxMeters": 0.113208,
+      "receiverRelativeRangeMeters": [
+        -0.35892883822027066,
+        0.05024158726914507
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "c13df5b54b358c8c5e6bea300e84c6072fab46bc65965517703fd134d54721b9"
+    },
+    "WCW51": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1127,
+      "candidateHardHits": 1128,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "IoU": 0.999113,
+      "depthP95Meters": 0.006156,
+      "depthMaxMeters": 0.113986,
+      "receiverRelativeRangeMeters": [
+        -0.08312695742913334,
+        0.09079835889587429
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "85a25691c01ba3077b0dbd4dca4a97b210976ab640791dae67e0deee30d6c097"
+    },
+    "WCW52": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1127,
+      "candidateHardHits": 1130,
+      "falsePositives": 4,
+      "falseNegatives": 1,
+      "IoU": 0.995579,
+      "depthP95Meters": 0.006361,
+      "depthMaxMeters": 0.916095,
+      "receiverRelativeRangeMeters": [
+        -0.3109643998442575,
+        0.12737707441207569
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "f10f26335d1eccb95dccf0c552989b51748fc7a1565712e182309ee0212d4d62"
+    },
+    "WCW53": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1126,
+      "candidateHardHits": 1128,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "IoU": 0.998227,
+      "depthP95Meters": 0.006183,
+      "depthMaxMeters": 0.176377,
+      "receiverRelativeRangeMeters": [
+        -0.20567598207166515,
+        0.2473006244141045
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "d0e1125ea95d2a3dd28028599d891587bf78faaba7434581d0dc7ec2de543da3"
+    },
+    "WCW54": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1143,
+      "candidateHardHits": 1147,
+      "falsePositives": 4,
+      "falseNegatives": 0,
+      "IoU": 0.996513,
+      "depthP95Meters": 0.006821,
+      "depthMaxMeters": 0.493652,
+      "receiverRelativeRangeMeters": [
+        -1.5827256003458885,
+        0.10579851102079729
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "7ea45319041a4149e89fced703c7fcfd80461e3d0df008358cc8d41a414d1232"
+    },
+    "WCW55": {
+      "sampleCount": 11832,
+      "rayHitsActual": 1139,
+      "candidateHardHits": 1137,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "IoU": 0.998244,
+      "depthP95Meters": 0.007303,
+      "depthMaxMeters": 0.646878,
+      "receiverRelativeRangeMeters": [
+        -1.045994855398522,
+        0.317644526629147
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "9dc7c7c53567e1c31b7e0e35b61832375c798b524868c0de08d76d7c5585cf9f"
+    },
+    "EKW1": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1082,
+      "candidateHardHits": 1082,
+      "falsePositives": 2,
+      "falseNegatives": 2,
+      "IoU": 0.99631,
+      "depthP95Meters": 0.007695,
+      "depthMaxMeters": 0.259788,
+      "receiverRelativeRangeMeters": [
+        -0.6250317415302717,
+        4.734406806591771
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "520654ad4ed4df1f4e787f113150a920979e602778b8a351aaade29759e6ac56"
+    },
+    "EKW2": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1134,
+      "candidateHardHits": 1138,
+      "falsePositives": 6,
+      "falseNegatives": 2,
+      "IoU": 0.992982,
+      "depthP95Meters": 0.006878,
+      "depthMaxMeters": 0.170898,
+      "receiverRelativeRangeMeters": [
+        -0.8034415476517438,
+        0.052847657096762646
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "ceb22395b7142b46d30958539b6cdd176b6821a394f5caee3102bfe4fb206f24"
+    },
+    "EKW3": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1139,
+      "candidateHardHits": 1139,
+      "falsePositives": 2,
+      "falseNegatives": 2,
+      "IoU": 0.996494,
+      "depthP95Meters": 0.007727,
+      "depthMaxMeters": 0.513471,
+      "receiverRelativeRangeMeters": [
+        -1.1331807783551753,
+        0.38612329710012716
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "a483f28bfdcddb866798fc174ece64477dcd0cef68916cf47f700d9f9a31953d"
+    },
+    "EKW4": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1138,
+      "candidateHardHits": 1140,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "IoU": 0.998246,
+      "depthP95Meters": 0.006814,
+      "depthMaxMeters": 0.558391,
+      "receiverRelativeRangeMeters": [
+        -1.279231232750078,
+        0.4599635340069099
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "aaba64a85cd7bfb89e1e04c46b00ab0b4015e4c05a8901b0d52100275d632845"
+    },
+    "EKW5": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1148,
+      "candidateHardHits": 1148,
+      "falsePositives": 3,
+      "falseNegatives": 3,
+      "IoU": 0.994787,
+      "depthP95Meters": 0.006756,
+      "depthMaxMeters": 0.120225,
+      "receiverRelativeRangeMeters": [
+        -1.6358692493369738,
+        0.2532138592910904
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "c43db3ef920892fb5162d335c29d9a0cb2314cebe7a8df6e8a8a61071d3b2778"
+    },
+    "EKW6": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1137,
+      "candidateHardHits": 1137,
+      "falsePositives": 4,
+      "falseNegatives": 4,
+      "IoU": 0.992989,
+      "depthP95Meters": 0.007552,
+      "depthMaxMeters": 0.176295,
+      "receiverRelativeRangeMeters": [
+        -0.9054356196606186,
+        0.26061685256618006
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e5a81a38dbe85479561f0fda98c50d9b8d1b06aff3cf9e384c6c589caa66dc39"
+    },
+    "EKW7": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1139,
+      "candidateHardHits": 1140,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "IoU": 0.999123,
+      "depthP95Meters": 0.006899,
+      "depthMaxMeters": 0.47535,
+      "receiverRelativeRangeMeters": [
+        -1.2602693154164832,
+        0.43624320326133414
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "318c87a713f8a67c74235bf871281374dabd6781a2d9cf705bc14b11639a4503"
+    },
+    "EKW8": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1151,
+      "candidateHardHits": 1154,
+      "falsePositives": 4,
+      "falseNegatives": 1,
+      "IoU": 0.995671,
+      "depthP95Meters": 0.007216,
+      "depthMaxMeters": 0.139168,
+      "receiverRelativeRangeMeters": [
+        -2.0668183788287244,
+        0.06170140623479092
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "462d41de170f58e874652ab2d620f1823b25012fbadc9dd17744da1db33c760e"
+    },
+    "EKW9": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1135,
+      "candidateHardHits": 1136,
+      "falsePositives": 3,
+      "falseNegatives": 2,
+      "IoU": 0.995606,
+      "depthP95Meters": 0.006766,
+      "depthMaxMeters": 0.14537,
+      "receiverRelativeRangeMeters": [
+        -0.7521506250299659,
+        3.4456307567154454e-05
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "ab390c24fda29ce139eb7bdb4e31306aec210e541b6af307af44699d0ab845fc"
+    },
+    "EKW10": {
+      "sampleCount": 12095,
+      "rayHitsActual": 1157,
+      "candidateHardHits": 1156,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.997409,
+      "depthP95Meters": 0.006614,
+      "depthMaxMeters": 0.449245,
+      "receiverRelativeRangeMeters": [
+        -2.4685437735447273,
+        0.5832496504903268
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "5c00d011edea999f671b4da2f504739c6d71327b5ab55febb832d5f114a57ab2"
+    },
+    "HCS1": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1476,
+      "candidateHardHits": 1478,
+      "falsePositives": 3,
+      "falseNegatives": 1,
+      "IoU": 0.997295,
+      "depthP95Meters": 0.00592,
+      "depthMaxMeters": 0.133475,
+      "receiverRelativeRangeMeters": [
+        -0.7821380902794779,
+        3.171319981509349
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "4506a3d01f58156532e9fe0624869c7a9567536748a008259e1544f78bd1c7d7"
+    },
+    "HCS2": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1513,
+      "candidateHardHits": 1516,
+      "falsePositives": 5,
+      "falseNegatives": 2,
+      "IoU": 0.995389,
+      "depthP95Meters": 0.006338,
+      "depthMaxMeters": 0.486621,
+      "receiverRelativeRangeMeters": [
+        -0.10794511781495686,
+        0.08088674675879304
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "defac4820636e5f5315a7ea1a2d11592e671fc885c06413df79e2c921f3d0594"
+    },
+    "HCS3": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1527,
+      "candidateHardHits": 1530,
+      "falsePositives": 4,
+      "falseNegatives": 1,
+      "IoU": 0.996734,
+      "depthP95Meters": 0.006315,
+      "depthMaxMeters": 0.582691,
+      "receiverRelativeRangeMeters": [
+        -0.8073347983647992,
+        0.04759995946537998
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "da67a64512ad39bffdc8a58cadf3399a414eb336f132b5ac589ad9c3e76336ba"
+    },
+    "HCS4": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1527,
+      "candidateHardHits": 1531,
+      "falsePositives": 4,
+      "falseNegatives": 0,
+      "IoU": 0.997387,
+      "depthP95Meters": 0.00533,
+      "depthMaxMeters": 0.914144,
+      "receiverRelativeRangeMeters": [
+        -0.9005279772457797,
+        0.029178444318660013
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "1d9e1d0a383235136d6f71649d81eb15fcad94d958a241583cf220033e7f8b39"
+    },
+    "HCS5": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1563,
+      "candidateHardHits": 1563,
+      "falsePositives": 2,
+      "falseNegatives": 2,
+      "IoU": 0.997444,
+      "depthP95Meters": 0.006146,
+      "depthMaxMeters": 0.178173,
+      "receiverRelativeRangeMeters": [
+        -3.4820899954757856,
+        0.6347577600926471
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "53bee0e165770eeaae58d2f9dbf550e18dcf0a11d830f88148f19887c6596c5d"
+    },
+    "HCS6": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1522,
+      "candidateHardHits": 1522,
+      "falsePositives": 3,
+      "falseNegatives": 3,
+      "IoU": 0.996066,
+      "depthP95Meters": 0.005184,
+      "depthMaxMeters": 0.138432,
+      "receiverRelativeRangeMeters": [
+        -0.5658489193656031,
+        0.33780571812767235
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "12150bd76a65a12875b2d5549dfa474007b405bb27c675b1d799892e2c30ba65"
+    },
+    "HCS7": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1509,
+      "candidateHardHits": 1511,
+      "falsePositives": 4,
+      "falseNegatives": 2,
+      "IoU": 0.996034,
+      "depthP95Meters": 0.005526,
+      "depthMaxMeters": 0.696065,
+      "receiverRelativeRangeMeters": [
+        -0.40911627238188686,
+        0.804850253083849
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "545df1b44163ecb0fef09303cd35691de9fde3428117c69fd0fd7d0aba32afad"
+    },
+    "HCS8": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1552,
+      "candidateHardHits": 1552,
+      "falsePositives": 3,
+      "falseNegatives": 3,
+      "IoU": 0.996141,
+      "depthP95Meters": 0.005888,
+      "depthMaxMeters": 0.138008,
+      "receiverRelativeRangeMeters": [
+        -2.4762043901496753,
+        0.2540328698091727
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "5d294738ac69a0e99084f1e3da3ee6f943b83936fa390824be9fe76714253956"
+    },
+    "HCS10": {
+      "sampleCount": 13908,
+      "rayHitsActual": 1547,
+      "candidateHardHits": 1546,
+      "falsePositives": 1,
+      "falseNegatives": 2,
+      "IoU": 0.998062,
+      "depthP95Meters": 0.005906,
+      "depthMaxMeters": 1.391522,
+      "receiverRelativeRangeMeters": [
+        -2.410417678019286,
+        0.1451801540693083
+      ],
+      "radiusRegionMinOriginalDryDistance": 254,
+      "sourceReceiverHash": "e91c9bda9f947c5f51d7ba52993fc65609ebba90f6dd8aa87a702324b73339bf"
+    }
+  }
+}

@@ -360,7 +360,11 @@ async function run(){
   new RegionalWindStream(async()=>{
    if(await verifyDecodedCover(cover)!==NORTH_CAPE_COVER_DECODED_SHA)return;
    const {createRegionalWind}=await import('./render/regional-wind.ts');
-   return id=>createRegionalWind(id,scene,world,(owner,roots)=>vegetation.setRegionalWindRoots(owner,roots));
+   const caps=renderer.capabilities;
+   const mount=!options.has('stockRegionalWindLight')&&caps.maxTextures>=16&&caps.maxFragmentUniforms>=224?
+    async (id:import('./render/regional-wind-stream.ts').WindFarmId,caster:import('./render/regional-wind.ts').RegionalWind)=>
+     (await import('./render/regional-wind-light.ts')).staticWindLight(id,{world,base:worldBase,maxTextures:caps.maxTextures,maxUniforms:caps.maxFragmentUniforms},caster):undefined;
+   return id=>createRegionalWind(id,scene,world,(owner,roots)=>vegetation.setRegionalWindRoots(owner,roots),mount);
   }):undefined;
  const capeCenter=NORTH_CAPE_SITES[7];
  const capeSpan=Math.max(...NORTH_CAPE_SITES.map(s=>Math.hypot(s.x-capeCenter.x,s.z-capeCenter.z)));

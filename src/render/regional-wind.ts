@@ -6,6 +6,8 @@ import {turbineGeometry,WIND_PROFILE,type WindLod} from './regional-wind-geometr
 import {WIND_RANGES,type WindFarmId,type WindObserver} from './regional-wind-stream.ts';
 type Ground=Pick<World,'visualGroundEpoch'|'surface'|'visualGroundHeight'|'terrain'|'cover'>;
 export type WindRoot = Readonly<{id:string;x:number;z:number}>;
+export interface StaticWindReceiver{update(eye:WindObserver):void;clear():void;dispose():void; readonly state:unknown}
+export type StaticWindPrepare=(id:WindFarmId,caster:RegionalWind)=>Promise<StaticWindReceiver|undefined>;
 export type WindSocketLease = (owner:WindFarmId,roots:readonly WindRoot[])=>void;
 /** Reproducible instances of the existing deterministic canopy generator whose
  * ground roots are inside actual registered mast steel. No other crown, hedge
@@ -77,8 +79,24 @@ export class RegionalWind{
   if(bits===this.socketBits)return;
   this.socketBits=bits;this.lease(this.key,this.rootPins.filter((_,i)=>(bits&(1<<i))!==0).map(v=>v.pin));
  }
+ private staticLight?:StaticWindReceiver;private staticJob=false;private dead=false;
+ private prepareLight?:StaticWindPrepare;
+ groundLightState(){return this.staticLight?.state??(this.prepareLight?{phase:this.staticJob?'pending':'cold',activeTiles:0,nearCasters:0}:null);}
+ private updateStatic(eye:WindObserver){
+  if(this.staticLight){this.staticLight.update(eye);return;}
+  if(this.staticJob||!this.prepareLight||!this.root.visible)return;
+  // Upper bound before even requesting the optional local evaluator. The
+  // 3D art, timer and original canopy lease never depend on ground optics.
+  if(!this.sites.some((s,i)=>this.modes[i]===0&&Math.abs(eye.y-this.height[i])<760&&
+   (s.x-eye.x)**2+(s.z-eye.z)**2<1000**2))return;
+  this.staticJob=true;
+  void this.prepareLight(this.key,this).then(a=>{
+   if(this.dead)a?.dispose();else{this.staticLight=a;this.prepareLight=undefined;}
+  },()=>{this.prepareLight=undefined;});
+ }
  private epoch=-1;private lastX=Infinity;private lastY=Infinity;private lastZ=Infinity;
- constructor(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease){
+ constructor(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare){
+  this.prepareLight=light;
   this.key=id;this.world=world;const profile=WIND_PROFILE[id];
   this.sites=WIND_STATIONS[id].map(([id,lon,lat])=>({id,...project(lon,lat)}));
   this.lease=lease;
@@ -121,8 +139,8 @@ export class RegionalWind{
   const changed=this.world.visualGroundEpoch!==this.epoch;
   if(changed)this.seat();
   this.clock.value=time%600;
-  if(!this.counts.registered){this.root.visible=false;this.counts.near=this.counts.cruise=this.counts.distant=0;this.syncSockets();return;}
-  if(!changed&&!moved)return;
+  if(!this.counts.registered){this.root.visible=false;this.counts.near=this.counts.cruise=this.counts.distant=0;this.syncSockets();this.staticLight?.clear();return;}
+  if(!changed&&!moved){this.staticLight?.update(eye);return;}
   const count=[0,0,0],f=WIND_PROFILE[this.key];
   for(const [i,s] of this.sites.entries()){
    const y=this.height[i],d=Math.hypot(eye.x-s.x,eye.z-s.z,eye.y-(y+.58*f.hub)),prev=this.modes[i];
@@ -141,11 +159,12 @@ export class RegionalWind{
    const n=count[lod];for(const mesh of [b.mast,b.rotor]){mesh.count=n;mesh.visible=n>0;if(n)mesh.instanceMatrix.needsUpdate=true;}
    if(n)b.phase.needsUpdate=true;
   }
+  this.updateStatic(eye);
  }
- dispose(){this.counts.registered=0;this.syncSockets();this.root.removeFromParent();for(const {mast,rotor} of this.batches)for(const mesh of [mast,rotor]){mesh.dispose();mesh.geometry.dispose();}
+ dispose(){this.dead=true;this.staticLight?.dispose();this.staticLight=undefined;this.counts.registered=0;this.syncSockets();this.root.removeFromParent();for(const {mast,rotor} of this.batches)for(const mesh of [mast,rotor]){mesh.dispose();mesh.geometry.dispose();}
   for(const m of this.coatings)m.dispose();this.root.clear();}
 }
-export function createRegionalWind(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease):RegionalWind|undefined{
+export function createRegionalWind(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare):RegionalWind|undefined{
  // The native cover is authenticated by the caller. Check the complete
  // 3-4 m foundation collar at every fixed site rather than accepting one dry center.
  for(const [,lon,lat] of WIND_STATIONS[id]){
@@ -154,5 +173,5 @@ export function createRegionalWind(id:WindFarmId,scene:T.Scene,world:Ground,leas
    if(world.cover.distance(world.terrain,x+dx,z+dz)<=32||!world.terrain.isLand(x+dx,z+dz)||!world.surface(x+dx,z+dz).land|| !Number.isFinite(world.visualGroundHeight(x+dx,z+dz)))return;
   }
  }
- return new RegionalWind(id,scene,world,lease);
+ return new RegionalWind(id,scene,world,lease,light);
 }

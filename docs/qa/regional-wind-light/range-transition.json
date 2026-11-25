@@ -1,0 +1,79 @@
+{
+  "method": "Bidirectional 4m-step probes of actual CPU instance/field lease (synthetic dry terrain tile, positions + foundation Y from earlier signed game socket checks). Each target must be bound whenever an eye lies within 570m of any point of its conservative 104m horizontal, ±8m vertical receiver volume. Does not establish GPU performance or visual identity.",
+  "data": "docs/qa/regional-wind/ground.json",
+  "rawTransferCount": 3,
+  "cases": {
+    "WCW27": {
+      "farm": "west-cape",
+      "tracks": {
+        "parallel": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 674,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 589.4980915999703
+        },
+        "transverse": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 670,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 583.3043802338536
+        },
+        "vertical": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 578,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 596
+        }
+      },
+      "fieldReachedReady": true
+    },
+    "EKW6": {
+      "farm": "east-point-i",
+      "tracks": {
+        "parallel": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 674,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 585.5083261577106
+        },
+        "transverse": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 670,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 587.2818744010398
+        },
+        "vertical": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 578,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 596
+        }
+      },
+      "fieldReachedReady": true
+    },
+    "HCS3": {
+      "farm": "hermanville",
+      "tracks": {
+        "parallel": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 674,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 589.4980915999707
+        },
+        "transverse": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 670,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 587.2818744010398
+        },
+        "vertical": {
+          "frames": 1122,
+          "ownerEnterExitCrossings": 4,
+          "framesWithPossibleVisibleCast": 578,
+          "minimumCenterCylinderEyeDistanceWhenOwnerAbsentM": 596
+        }
+      },
+      "fieldReachedReady": true
+    }
+  }
+}

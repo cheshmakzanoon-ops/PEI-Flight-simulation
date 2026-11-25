@@ -1,0 +1,113 @@
+{
+  "registeredBefore": "Any candidate shadow field or its numeric output; using previously accepted unshadowed source geometry only. Closed draw scope, no region-of-interest chosen to favor candidate.",
+  "artistPlan": "575bb0b3849faf1c7ef79d859fa4ffa245fefd4b7d9fdb22000da2194cd7ecaf",
+  "geometrySHA256": "890def2a55f6c3df39b5b6dccdaa46c5d0c7ab629e24ae124efea24b7f243e67",
+  "runtimeSHA256": "4903908235d7f18e9b9fa9865c4e8682f30a6a18e483a20bbfe1959e683feaf0",
+  "casterCategories": [
+    "source socket including below ground portion only above true receiver-ray Y",
+    "entire original manufactured mast/socket LoD0 batch",
+    "entire attached static original nacelle/fairing at fixed in-game yaw; never rotating spinner/blades even if their pixels would overlap"
+  ],
+  "sites": [
+    "WCW27",
+    "EKW6",
+    "HCS3"
+  ],
+  "solarUnitDirectionToLight": [
+    -0.5988930707832083,
+    0.7386347872992903,
+    -0.3094280865713243
+  ],
+  "sceneYaw": -2.62,
+  "numericalOracle": {
+    "inputs": "Actual mesh.positions and indices of all submitted NEAR static original triangles, local yaw and physical scene sun; not candidate shadow footprint/atlas formulas, no source input from candidate. Three separate turbine families. For native local terrain and actual paired frames use original unchanged N112 uploaded triangle barycentric elevations/rays instead of coarse game collider.",
+    "domain": "Local light-plane q=(X\u2212Y*sunX/sunY,Z\u2212Y*sunZ/sunY). Grid in each actual socket from qx \u221211.977 to 93m, qz \u221210.961 to 55m, step .18m, non-lattice offset. Native torque is not being measured. Slabs relative mast base Y \u2208 {\u22122.25,\u2212.45,.21,1.65,4.2,9.35,20.2,.51*hub,hub\u22123.35,hub\u2212.21,hub+1.21,hub+6.1}; not all are ground classes. Also local slope planes [+0.14,-0.07],[-0.11,+0.08], plus mounted N112 heights when available.",
+    "truth": "An original triangle intersection along the actual positive sun ray with >0.025m positive height separation is hard blocked. Report continuous geometric top Y/error separately. Raster at all grid centres, not just expected positives. Distance-label core/exterior \u22650.65m from each true isocontour; in addition evaluate every inside/outside border cell without diluting negatives into whole sky. Distinct lower8m tower, middle, and final upper10m/fairing footprint bands, no masking tip or shoulder.",
+    "criteria": "Across each near-ground constant slab and each slope, target >=98% core true positives, >=99% exterior true negatives, >=0.92 hard full-silhouette IoU and <=0.65m symmetric p95 contour displacement. Slabs within hub\u00b13.35m or below socket are separate stress controls, not silently aggregated; report exact scores and investigate any above-surface false shaft or major disappeared fairing. No blocked signal above uppermost actual submitted part +.1m (all types). For originally dry terrain beneath rigid scene, credible darkening only, never brighter. Do not claim every static-shadow pixel identical to a true receiver if foot/AA fails bounds."
+  },
+  "opticalGate": "Three fixed centres at 48% down each actual geometric fall-line for earlier WCW27/EKW6/HCS3, two true opposing low obliques plus high for each. Candidate disabled/current baseline/returned exact; registered whole resident roundtrip. At least two distinct farms with >60 changed RGB samples by >2, none off actual finite ray support beyond bounded atmospheric/AA fringe, no unexplained lightening, no canopy/facade or water changes from loose catcher. Real headings do not change elevation and no new rotor/static shadow until both touch. Permanently protected neighboring structures/road/water/features; if physically opaque mesh receives natural authored shadow and overlays unchanged, state actual receiver instead of broader claim.",
+  "views": {
+    "WCW27-cross": {
+      "lon": -64.385165197,
+      "lat": 46.6863322867,
+      "dist": 88,
+      "agl": 59,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "WCW27-reverse": {
+      "lon": -64.385165197,
+      "lat": 46.6863322867,
+      "dist": 95,
+      "agl": 72,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "WCW27-far": {
+      "lon": -64.385165197,
+      "lat": 46.6863322867,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-cross": {
+      "lon": -62.045669227,
+      "lat": 46.4557120778,
+      "dist": 88,
+      "agl": 59,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-reverse": {
+      "lon": -62.045669227,
+      "lat": 46.4557120778,
+      "dist": 95,
+      "agl": 72,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "EKW6-far": {
+      "lon": -62.045669227,
+      "lat": 46.4557120778,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-cross": {
+      "lon": -62.3076546566,
+      "lat": 46.4558548797,
+      "dist": 88,
+      "agl": 59,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-reverse": {
+      "lon": -62.3076546566,
+      "lat": 46.4558548797,
+      "dist": 95,
+      "agl": 72,
+      "east": 0.4590200519,
+      "south": -0.8884259069,
+      "h": 0.1
+    },
+    "HCS3-far": {
+      "lon": -62.3076546566,
+      "lat": 46.4558548797,
+      "dist": 1025,
+      "agl": 560,
+      "east": -0.4590200519,
+      "south": 0.8884259069,
+      "h": 0.1
+    }
+  },
+  "stopping": "If material sampler, physically safe bounds, geographic admission, cheap fallback or shape authenticity fail, hold separately from unchanged 74 real models; do not fit beyond thresholds on test labels."
+}

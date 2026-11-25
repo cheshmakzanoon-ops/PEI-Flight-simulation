@@ -1,0 +1,2767 @@
+{
+  "title": "Independently preregistered original static Three.js mesh vs compact prospective physical sun classifier; not rendered photo, not a real-date solar claim. Wide receiver heights near hub are deliberate nonterrain stress tests reported separately from all actual ground.",
+  "registration": "a084432623775db7caef52881724b9c3e336cb4a7ba745a473c7b1e40c3ab140",
+  "candidateVariableAndAssetManifest": "f09c98a0a6dc8ffbd302e5eeae2444a72d5a594aeaac3cc88f3e9d660b9897ae",
+  "independentOriginalShapeOracle": "e02dbbd18c96b3b88af9296a5ab0aa2935adde8754eccb30f460b2443d6f74e3",
+  "candidateFieldSHA256": "4aa2196ace0eaa06e09e71463017bd9d7a6cc8e6f828ad3a92c4ea65449d6254",
+  "stressAndContourNote": "0.025m true positive ray clearance, all grid sites evaluated independently; each source classifier binary uses its frozen definition (0.01m). A completely empty slab or missing core is reported null, not a positive measurement.",
+  "rows": {
+    "WCW27": {
+      "farm": "west-cape",
+      "exactOriginalNearTrianglesSource": 1344,
+      "nativeLightPlaneRaysPerSlice": 214328,
+      "nativeSpacingM": 0.18,
+      "slabs": {
+        "y-2.25": {
+          "trueSamples": 8846,
+          "predictedSamples": 8764,
+          "falsePositive": 40,
+          "falseNegative": 122,
+          "IoU": 0.981769,
+          "coreSamples": 5424,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 201997,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001938,
+            "p90": 0.012041,
+            "p95": 0.031991,
+            "p99": 0.194031,
+            "p100": 0.862983
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 40,
+            "overOnePercent": 1341,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1440,
+              "predictedSamples": 1436,
+              "falsePositive": 5,
+              "falseNegative": 9,
+              "IoU": 0.990311,
+              "coreSamples": 957,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19465,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y-0.45": {
+          "trueSamples": 8764,
+          "predictedSamples": 8681,
+          "falsePositive": 38,
+          "falseNegative": 121,
+          "IoU": 0.981936,
+          "coreSamples": 5363,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202100,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001938,
+            "p90": 0.011974,
+            "p95": 0.031448,
+            "p99": 0.195084,
+            "p100": 0.862983
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 38,
+            "overOnePercent": 1276,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1358,
+              "predictedSamples": 1353,
+              "falsePositive": 3,
+              "falseNegative": 8,
+              "IoU": 0.991918,
+              "coreSamples": 896,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19568,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y0.21": {
+          "trueSamples": 8584,
+          "predictedSamples": 8510,
+          "falsePositive": 45,
+          "falseNegative": 119,
+          "IoU": 0.980994,
+          "coreSamples": 5228,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202323,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001929,
+            "p90": 0.01154,
+            "p95": 0.030503,
+            "p99": 0.195234,
+            "p100": 0.862983
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 40,
+            "overOnePercent": 1265,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1178,
+              "predictedSamples": 1182,
+              "falsePositive": 10,
+              "falseNegative": 6,
+              "IoU": 0.986532,
+              "coreSamples": 761,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19791,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y1.65": {
+          "trueSamples": 8416,
+          "predictedSamples": 8333,
+          "falsePositive": 37,
+          "falseNegative": 120,
+          "IoU": 0.981427,
+          "coreSamples": 5112,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202545,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001931,
+            "p90": 0.011491,
+            "p95": 0.030236,
+            "p99": 0.183916,
+            "p100": 0.701279
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 36,
+            "overOnePercent": 1221,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1010,
+              "predictedSamples": 1005,
+              "falsePositive": 2,
+              "falseNegative": 7,
+              "IoU": 0.991107,
+              "coreSamples": 645,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 20013,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y4.2": {
+          "trueSamples": 8120,
+          "predictedSamples": 8041,
+          "falsePositive": 39,
+          "falseNegative": 118,
+          "IoU": 0.980757,
+          "coreSamples": 4912,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202937,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001942,
+            "p90": 0.011478,
+            "p95": 0.030569,
+            "p99": 0.178575,
+            "p100": 0.701279
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 38,
+            "overOnePercent": 1152,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 714,
+              "predictedSamples": 713,
+              "falsePositive": 4,
+              "falseNegative": 5,
+              "IoU": 0.987465,
+              "coreSamples": 445,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 20405,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y9.35": {
+          "trueSamples": 7528,
+          "predictedSamples": 7451,
+          "falsePositive": 36,
+          "falseNegative": 113,
+          "IoU": 0.980301,
+          "coreSamples": 4507,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 203716,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001968,
+            "p90": 0.011675,
+            "p95": 0.030125,
+            "p99": 0.178023,
+            "p100": 0.65426
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 35,
+            "overOnePercent": 1010,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 124,
+              "predictedSamples": 125,
+              "falsePositive": 1,
+              "falseNegative": 0,
+              "IoU": 0.992,
+              "coreSamples": 42,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 21182,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5583,
+              "predictedSamples": 5515,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979312,
+              "coreSamples": 3359,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118832,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y20.2": {
+          "trueSamples": 6333,
+          "predictedSamples": 6265,
+          "falsePositive": 28,
+          "falseNegative": 96,
+          "IoU": 0.980506,
+          "coreSamples": 3716,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 205315,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001994,
+            "p90": 0.011869,
+            "p95": 0.031194,
+            "p99": 0.171053,
+            "p100": 0.65426
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 28,
+            "overOnePercent": 755,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 4512,
+              "predictedSamples": 4454,
+              "falsePositive": 17,
+              "falseNegative": 75,
+              "IoU": 0.979686,
+              "coreSamples": 2610,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 120192,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y40.8": {
+          "trueSamples": 4287,
+          "predictedSamples": 4243,
+          "falsePositive": 22,
+          "falseNegative": 66,
+          "IoU": 0.979578,
+          "coreSamples": 2435,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 208126,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.002063,
+            "p90": 0.011333,
+            "p95": 0.030815,
+            "p99": 0.159638,
+            "p100": 0.65426
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 21,
+            "overOnePercent": 381,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 2466,
+              "predictedSamples": 2432,
+              "falsePositive": 11,
+              "falseNegative": 45,
+              "IoU": 0.977392,
+              "coreSamples": 1329,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 123003,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y76.65": {
+          "trueSamples": 1431,
+          "predictedSamples": 1424,
+          "falsePositive": 6,
+          "falseNegative": 13,
+          "IoU": 0.986778,
+          "coreSamples": 906,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 212307,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001987,
+            "p90": 0.008415,
+            "p95": 0.020264,
+            "p99": 0.150229,
+            "p100": 0.65426
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 6,
+            "overOnePercent": 46,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 126641,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1431,
+              "predictedSamples": 1424,
+              "falsePositive": 6,
+              "falseNegative": 13,
+              "IoU": 0.986778,
+              "coreSamples": 906,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 64245,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y79.79": {
+          "trueSamples": 1181,
+          "predictedSamples": 1180,
+          "falsePositive": 6,
+          "falseNegative": 7,
+          "IoU": 0.989048,
+          "coreSamples": 717,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 212612,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001937,
+            "p90": 0.005906,
+            "p95": 0.01197,
+            "p99": 0.041933,
+            "p100": 0.168571
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 5,
+            "overOnePercent": 30,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 126641,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1181,
+              "predictedSamples": 1180,
+              "falsePositive": 6,
+              "falseNegative": 7,
+              "IoU": 0.989048,
+              "coreSamples": 717,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 64550,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y81.21": {
+          "trueSamples": 700,
+          "predictedSamples": 706,
+          "falsePositive": 9,
+          "falseNegative": 3,
+          "IoU": 0.983075,
+          "coreSamples": 324,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 213182,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001913,
+            "p90": 0.006287,
+            "p95": 0.011446,
+            "p99": 0.044415,
+            "p100": 0.168571
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 2,
+            "overOnePercent": 25,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 126641,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 700,
+              "predictedSamples": 706,
+              "falsePositive": 9,
+              "falseNegative": 3,
+              "IoU": 0.983075,
+              "coreSamples": 324,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 65120,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y86.1": {
+          "trueSamples": 0,
+          "predictedSamples": 0,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "IoU": null,
+          "coreSamples": 0,
+          "coreRecall": null,
+          "farExteriorSamples": 214328,
+          "farExteriorNonsignal": 1.0,
+          "topYErrorWithinAllHardHitsMetres": {},
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 0,
+            "overOnePercent": 0,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": 0.0
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 126641,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 66266,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(0.14, -0.07)": {
+          "trueSamples": 8703,
+          "predictedSamples": 8625,
+          "falsePositive": 42,
+          "falseNegative": 120,
+          "IoU": 0.981475,
+          "coreSamples": 5313,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202172,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001938,
+            "p90": 0.01191,
+            "p95": 0.030782,
+            "p99": 0.195316,
+            "p100": 0.862983
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 37,
+            "overOnePercent": 1171,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1297,
+              "predictedSamples": 1297,
+              "falsePositive": 7,
+              "falseNegative": 7,
+              "IoU": 0.989264,
+              "coreSamples": 846,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19640,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(-0.11, 0.08)": {
+          "trueSamples": 8637,
+          "predictedSamples": 8562,
+          "falsePositive": 44,
+          "falseNegative": 119,
+          "IoU": 0.981223,
+          "coreSamples": 5266,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202258,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001934,
+            "p90": 0.011696,
+            "p95": 0.030706,
+            "p99": 0.194261,
+            "p100": 0.862983
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 40,
+            "overOnePercent": 1342,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1231,
+              "predictedSamples": 1234,
+              "falsePositive": 9,
+              "falseNegative": 6,
+              "IoU": 0.987903,
+              "coreSamples": 799,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19726,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5585,
+              "predictedSamples": 5517,
+              "falsePositive": 24,
+              "falseNegative": 92,
+              "IoU": 0.979319,
+              "coreSamples": 3361,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 118830,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1821,
+              "predictedSamples": 1811,
+              "falsePositive": 11,
+              "falseNegative": 21,
+              "IoU": 0.982533,
+              "coreSamples": 1106,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 63702,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        }
+      }
+    },
+    "EKW6": {
+      "farm": "east-point-i",
+      "exactOriginalNearTrianglesSource": 1400,
+      "nativeLightPlaneRaysPerSlice": 214328,
+      "nativeSpacingM": 0.18,
+      "slabs": {
+        "y-2.25": {
+          "trueSamples": 8809,
+          "predictedSamples": 8801,
+          "falsePositive": 78,
+          "falseNegative": 86,
+          "IoU": 0.981546,
+          "coreSamples": 5343,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 201988,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001907,
+            "p90": 0.011255,
+            "p95": 0.025653,
+            "p99": 0.156998,
+            "p100": 1.118262
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 78,
+            "overOnePercent": 1462,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1358,
+              "predictedSamples": 1358,
+              "falsePositive": 13,
+              "falseNegative": 13,
+              "IoU": 0.981036,
+              "coreSamples": 881,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19553,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y-0.45": {
+          "trueSamples": 8731,
+          "predictedSamples": 8726,
+          "falsePositive": 80,
+          "falseNegative": 85,
+          "IoU": 0.981273,
+          "coreSamples": 5286,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202087,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001907,
+            "p90": 0.011221,
+            "p95": 0.025572,
+            "p99": 0.155963,
+            "p100": 1.118262
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 77,
+            "overOnePercent": 1390,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1280,
+              "predictedSamples": 1283,
+              "falsePositive": 15,
+              "falseNegative": 12,
+              "IoU": 0.979151,
+              "coreSamples": 824,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19652,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y0.21": {
+          "trueSamples": 8568,
+          "predictedSamples": 8571,
+          "falsePositive": 85,
+          "falseNegative": 82,
+          "IoU": 0.9807,
+          "coreSamples": 5166,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202293,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.0019,
+            "p90": 0.010834,
+            "p95": 0.025351,
+            "p99": 0.144542,
+            "p100": 0.500421
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 83,
+            "overOnePercent": 1376,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1117,
+              "predictedSamples": 1128,
+              "falsePositive": 20,
+              "falseNegative": 9,
+              "IoU": 0.974494,
+              "coreSamples": 704,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19858,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y1.65": {
+          "trueSamples": 8404,
+          "predictedSamples": 8400,
+          "falsePositive": 78,
+          "falseNegative": 82,
+          "IoU": 0.981137,
+          "coreSamples": 5056,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202510,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001908,
+            "p90": 0.010986,
+            "p95": 0.025397,
+            "p99": 0.147923,
+            "p100": 0.500421
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 77,
+            "overOnePercent": 1320,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 953,
+              "predictedSamples": 957,
+              "falsePositive": 13,
+              "falseNegative": 9,
+              "IoU": 0.977226,
+              "coreSamples": 594,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 20075,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y4.2": {
+          "trueSamples": 8122,
+          "predictedSamples": 8107,
+          "falsePositive": 67,
+          "falseNegative": 82,
+          "IoU": 0.981805,
+          "coreSamples": 4867,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202884,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001907,
+            "p90": 0.011043,
+            "p95": 0.025546,
+            "p99": 0.156233,
+            "p100": 0.500421
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 65,
+            "overOnePercent": 1245,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 671,
+              "predictedSamples": 664,
+              "falsePositive": 2,
+              "falseNegative": 9,
+              "IoU": 0.983655,
+              "coreSamples": 405,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 20449,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y9.35": {
+          "trueSamples": 7559,
+          "predictedSamples": 7554,
+          "falsePositive": 66,
+          "falseNegative": 71,
+          "IoU": 0.982033,
+          "coreSamples": 4497,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 203642,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001907,
+            "p90": 0.011107,
+            "p95": 0.026493,
+            "p99": 0.150426,
+            "p100": 0.500421
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 65,
+            "overOnePercent": 1119,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 110,
+              "predictedSamples": 111,
+              "falsePositive": 1,
+              "falseNegative": 0,
+              "IoU": 0.990991,
+              "coreSamples": 37,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 21205,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5463,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 54,
+              "IoU": 0.981313,
+              "coreSamples": 3202,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121010,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y20.2": {
+          "trueSamples": 6416,
+          "predictedSamples": 6421,
+          "falsePositive": 62,
+          "falseNegative": 57,
+          "IoU": 0.98163,
+          "coreSamples": 3754,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 205184,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001935,
+            "p90": 0.011333,
+            "p95": 0.0264,
+            "p99": 0.149107,
+            "p100": 0.39938
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 60,
+            "overOnePercent": 847,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 4430,
+              "predictedSamples": 4436,
+              "falsePositive": 46,
+              "falseNegative": 40,
+              "IoU": 0.980786,
+              "coreSamples": 2496,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 122336,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y41.31": {
+          "trueSamples": 4411,
+          "predictedSamples": 4412,
+          "falsePositive": 41,
+          "falseNegative": 40,
+          "IoU": 0.981806,
+          "coreSamples": 2530,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 207971,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001987,
+            "p90": 0.01108,
+            "p95": 0.025259,
+            "p99": 0.144767,
+            "p100": 0.39938
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 41,
+            "overOnePercent": 431,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 2425,
+              "predictedSamples": 2427,
+              "falsePositive": 25,
+              "falseNegative": 23,
+              "IoU": 0.980408,
+              "coreSamples": 1272,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 125123,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y77.65": {
+          "trueSamples": 1598,
+          "predictedSamples": 1601,
+          "falsePositive": 12,
+          "falseNegative": 9,
+          "IoU": 0.986957,
+          "coreSamples": 1061,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 212125,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001806,
+            "p90": 0.007015,
+            "p95": 0.018431,
+            "p99": 0.082635,
+            "p100": 0.39938
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 10,
+            "overOnePercent": 59,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 128735,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1598,
+              "predictedSamples": 1601,
+              "falsePositive": 12,
+              "falseNegative": 9,
+              "IoU": 0.986957,
+              "coreSamples": 1061,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61969,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y80.79": {
+          "trueSamples": 1290,
+          "predictedSamples": 1293,
+          "falsePositive": 7,
+          "falseNegative": 4,
+          "IoU": 0.991519,
+          "coreSamples": 809,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 212488,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001706,
+            "p90": 0.005178,
+            "p95": 0.01066,
+            "p99": 0.036253,
+            "p100": 0.200434
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 4,
+            "overOnePercent": 39,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 128735,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1290,
+              "predictedSamples": 1293,
+              "falsePositive": 7,
+              "falseNegative": 4,
+              "IoU": 0.991519,
+              "coreSamples": 809,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 62332,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y82.21": {
+          "trueSamples": 839,
+          "predictedSamples": 849,
+          "falsePositive": 13,
+          "falseNegative": 3,
+          "IoU": 0.981221,
+          "coreSamples": 433,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 213014,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001794,
+            "p90": 0.005642,
+            "p95": 0.012615,
+            "p99": 0.036566,
+            "p100": 0.200434
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 4,
+            "overOnePercent": 36,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 128735,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 839,
+              "predictedSamples": 849,
+              "falsePositive": 13,
+              "falseNegative": 3,
+              "IoU": 0.981221,
+              "coreSamples": 433,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 62858,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y87.1": {
+          "trueSamples": 0,
+          "predictedSamples": 0,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "IoU": null,
+          "coreSamples": 0,
+          "coreRecall": null,
+          "farExteriorSamples": 214328,
+          "farExteriorNonsignal": 1.0,
+          "topYErrorWithinAllHardHitsMetres": {},
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 0,
+            "overOnePercent": 0,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": 0.0
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 128735,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 64172,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(0.14, -0.07)": {
+          "trueSamples": 8671,
+          "predictedSamples": 8671,
+          "falsePositive": 82,
+          "falseNegative": 82,
+          "IoU": 0.981264,
+          "coreSamples": 5240,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202161,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001905,
+            "p90": 0.011167,
+            "p95": 0.0254,
+            "p99": 0.148661,
+            "p100": 0.819057
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 80,
+            "overOnePercent": 1274,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1220,
+              "predictedSamples": 1228,
+              "falsePositive": 17,
+              "falseNegative": 9,
+              "IoU": 0.978981,
+              "coreSamples": 778,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19726,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(-0.11, 0.08)": {
+          "trueSamples": 8620,
+          "predictedSamples": 8621,
+          "falsePositive": 85,
+          "falseNegative": 84,
+          "IoU": 0.980586,
+          "coreSamples": 5202,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 202225,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001902,
+            "p90": 0.011077,
+            "p95": 0.025506,
+            "p99": 0.14755,
+            "p100": 1.118262
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 80,
+            "overOnePercent": 1466,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1169,
+              "predictedSamples": 1178,
+              "falsePositive": 20,
+              "falseNegative": 11,
+              "IoU": 0.973928,
+              "coreSamples": 740,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19790,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 5465,
+              "predictedSamples": 5458,
+              "falsePositive": 49,
+              "falseNegative": 56,
+              "IoU": 0.980958,
+              "coreSamples": 3204,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 121008,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1986,
+              "predictedSamples": 1985,
+              "falsePositive": 16,
+              "falseNegative": 17,
+              "IoU": 0.983516,
+              "coreSamples": 1258,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 61427,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        }
+      }
+    },
+    "HCS3": {
+      "farm": "hermanville",
+      "exactOriginalNearTrianglesSource": 1636,
+      "nativeLightPlaneRaysPerSlice": 214328,
+      "nativeSpacingM": 0.18,
+      "slabs": {
+        "y-2.25": {
+          "trueSamples": 11980,
+          "predictedSamples": 11986,
+          "falsePositive": 97,
+          "falseNegative": 91,
+          "IoU": 0.984433,
+          "coreSamples": 8046,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198344,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001751,
+            "p90": 0.010074,
+            "p95": 0.024137,
+            "p99": 0.140859,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 97,
+            "overOnePercent": 1849,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1603,
+              "predictedSamples": 1608,
+              "falsePositive": 15,
+              "falseNegative": 10,
+              "IoU": 0.984549,
+              "coreSamples": 1105,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19286,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y-0.45": {
+          "trueSamples": 11885,
+          "predictedSamples": 11895,
+          "falsePositive": 97,
+          "falseNegative": 87,
+          "IoU": 0.984644,
+          "coreSamples": 7976,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198466,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.00175,
+            "p90": 0.009982,
+            "p95": 0.023799,
+            "p99": 0.140831,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 94,
+            "overOnePercent": 1782,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1508,
+              "predictedSamples": 1517,
+              "falsePositive": 15,
+              "falseNegative": 6,
+              "IoU": 0.986211,
+              "coreSamples": 1035,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19408,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y0.21": {
+          "trueSamples": 11688,
+          "predictedSamples": 11702,
+          "falsePositive": 99,
+          "falseNegative": 85,
+          "IoU": 0.98439,
+          "coreSamples": 7825,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198707,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001743,
+            "p90": 0.00974,
+            "p95": 0.023352,
+            "p99": 0.139962,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 98,
+            "overOnePercent": 1760,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1311,
+              "predictedSamples": 1324,
+              "falsePositive": 17,
+              "falseNegative": 4,
+              "IoU": 0.984187,
+              "coreSamples": 884,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19649,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y1.65": {
+          "trueSamples": 11504,
+          "predictedSamples": 11512,
+          "falsePositive": 94,
+          "falseNegative": 86,
+          "IoU": 0.98448,
+          "coreSamples": 7692,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198944,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001742,
+            "p90": 0.009695,
+            "p95": 0.023247,
+            "p99": 0.1365,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 93,
+            "overOnePercent": 1707,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1127,
+              "predictedSamples": 1134,
+              "falsePositive": 12,
+              "falseNegative": 5,
+              "IoU": 0.985075,
+              "coreSamples": 751,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19886,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y4.2": {
+          "trueSamples": 11178,
+          "predictedSamples": 11186,
+          "falsePositive": 93,
+          "falseNegative": 85,
+          "IoU": 0.984207,
+          "coreSamples": 7461,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 199365,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001747,
+            "p90": 0.0097,
+            "p95": 0.023101,
+            "p99": 0.140181,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 90,
+            "overOnePercent": 1622,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 801,
+              "predictedSamples": 808,
+              "falsePositive": 11,
+              "falseNegative": 4,
+              "IoU": 0.981527,
+              "coreSamples": 520,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 20307,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y9.35": {
+          "trueSamples": 10534,
+          "predictedSamples": 10538,
+          "falsePositive": 83,
+          "falseNegative": 79,
+          "IoU": 0.984741,
+          "coreSamples": 7004,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 200196,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001753,
+            "p90": 0.009862,
+            "p95": 0.023451,
+            "p99": 0.145436,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 82,
+            "overOnePercent": 1463,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 159,
+              "predictedSamples": 160,
+              "falsePositive": 1,
+              "falseNegative": 0,
+              "IoU": 0.99375,
+              "coreSamples": 65,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 21136,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7760,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 56,
+              "IoU": 0.985292,
+              "coreSamples": 5100,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141352,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y20.2": {
+          "trueSamples": 9214,
+          "predictedSamples": 9218,
+          "falsePositive": 79,
+          "falseNegative": 75,
+          "IoU": 0.983428,
+          "coreSamples": 6088,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 201920,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.00176,
+            "p90": 0.009775,
+            "p95": 0.022399,
+            "p99": 0.138826,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 78,
+            "overOnePercent": 1146,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 6599,
+              "predictedSamples": 6603,
+              "falsePositive": 56,
+              "falseNegative": 52,
+              "IoU": 0.983772,
+              "coreSamples": 4249,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 142791,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y46.92": {
+          "trueSamples": 6197,
+          "predictedSamples": 6210,
+          "falsePositive": 60,
+          "falseNegative": 47,
+          "IoU": 0.982899,
+          "coreSamples": 4051,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 205917,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001796,
+            "p90": 0.00948,
+            "p95": 0.021127,
+            "p99": 0.126383,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 59,
+            "overOnePercent": 553,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 3582,
+              "predictedSamples": 3595,
+              "falsePositive": 37,
+              "falseNegative": 24,
+              "IoU": 0.983145,
+              "coreSamples": 2212,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 146788,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y88.65": {
+          "trueSamples": 2144,
+          "predictedSamples": 2146,
+          "falsePositive": 16,
+          "falseNegative": 14,
+          "IoU": 0.986111,
+          "coreSamples": 1529,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 211500,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001741,
+            "p90": 0.005208,
+            "p95": 0.012932,
+            "p99": 0.065658,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 16,
+            "overOnePercent": 54,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 151774,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2144,
+              "predictedSamples": 2146,
+              "falsePositive": 16,
+              "falseNegative": 14,
+              "IoU": 0.986111,
+              "coreSamples": 1529,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 38305,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y91.79": {
+          "trueSamples": 1773,
+          "predictedSamples": 1778,
+          "falsePositive": 16,
+          "falseNegative": 11,
+          "IoU": 0.984908,
+          "coreSamples": 1206,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 211917,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001644,
+            "p90": 0.004265,
+            "p95": 0.007232,
+            "p99": 0.033172,
+            "p100": 0.134895
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 12,
+            "overOnePercent": 39,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 151774,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1773,
+              "predictedSamples": 1778,
+              "falsePositive": 16,
+              "falseNegative": 11,
+              "IoU": 0.984908,
+              "coreSamples": 1206,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 38722,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y93.21": {
+          "trueSamples": 1315,
+          "predictedSamples": 1328,
+          "falsePositive": 19,
+          "falseNegative": 6,
+          "IoU": 0.981259,
+          "coreSamples": 810,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 212439,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001619,
+            "p90": 0.004183,
+            "p95": 0.006645,
+            "p99": 0.035487,
+            "p100": 0.134895
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 9,
+            "overOnePercent": 40,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 151774,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 1315,
+              "predictedSamples": 1328,
+              "falsePositive": 19,
+              "falseNegative": 6,
+              "IoU": 0.981259,
+              "coreSamples": 810,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 39244,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "y98.1": {
+          "trueSamples": 0,
+          "predictedSamples": 0,
+          "falsePositive": 0,
+          "falseNegative": 0,
+          "IoU": null,
+          "coreSamples": 0,
+          "coreRecall": null,
+          "farExteriorSamples": 214328,
+          "farExteriorNonsignal": 1.0,
+          "topYErrorWithinAllHardHitsMetres": {},
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 0,
+            "overOnePercent": 0,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": 0.0
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 21421,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 151774,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 0,
+              "predictedSamples": 0,
+              "falsePositive": 0,
+              "falseNegative": 0,
+              "IoU": null,
+              "coreSamples": 0,
+              "coreRecall": null,
+              "farExteriorSamples": 41133,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(0.14, -0.07)": {
+          "trueSamples": 11819,
+          "predictedSamples": 11832,
+          "falsePositive": 99,
+          "falseNegative": 86,
+          "IoU": 0.984477,
+          "coreSamples": 7922,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198543,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001747,
+            "p90": 0.009908,
+            "p95": 0.023529,
+            "p99": 0.138965,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 95,
+            "overOnePercent": 1627,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1442,
+              "predictedSamples": 1454,
+              "falsePositive": 17,
+              "falseNegative": 5,
+              "IoU": 0.984921,
+              "coreSamples": 981,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19485,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        },
+        "slope(-0.11, 0.08)": {
+          "trueSamples": 11752,
+          "predictedSamples": 11762,
+          "falsePositive": 97,
+          "falseNegative": 87,
+          "IoU": 0.984471,
+          "coreSamples": 7871,
+          "coreRecall": 1.0,
+          "farExteriorSamples": 198626,
+          "farExteriorNonsignal": 1.0,
+          "symmetricFullOutlineDisplacementMetres": {
+            "p50": 0.0,
+            "p90": 0.18,
+            "p95": 0.18,
+            "p99": 0.18,
+            "p100": 0.18
+          },
+          "topYErrorWithinAllHardHitsMetres": {
+            "p50": 0.001747,
+            "p90": 0.009911,
+            "p95": 0.023722,
+            "p99": 0.140933,
+            "p100": 1.073886
+          },
+          "lightOutsideOriginalHardProjection": {
+            "aboveHalf": 94,
+            "overOnePercent": 1864,
+            "beyond1mOver1Percent": 0,
+            "aboveOriginalHighestReceiverMeters": null
+          },
+          "zones": {
+            "lower8mFallSpan": {
+              "trueSamples": 1375,
+              "predictedSamples": 1384,
+              "falsePositive": 15,
+              "falseNegative": 6,
+              "IoU": 0.984892,
+              "coreSamples": 930,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 19568,
+              "farExteriorNonsignal": 1.0
+            },
+            "mainShaft": {
+              "trueSamples": 7762,
+              "predictedSamples": 7763,
+              "falsePositive": 59,
+              "falseNegative": 58,
+              "IoU": 0.98504,
+              "coreSamples": 5102,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 141350,
+              "farExteriorNonsignal": 1.0
+            },
+            "upper10mAndNacelle": {
+              "trueSamples": 2615,
+              "predictedSamples": 2615,
+              "falsePositive": 23,
+              "falseNegative": 23,
+              "IoU": 0.982563,
+              "coreSamples": 1839,
+              "coreRecall": 1.0,
+              "farExteriorSamples": 37708,
+              "farExteriorNonsignal": 1.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

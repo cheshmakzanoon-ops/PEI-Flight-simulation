@@ -1254,6 +1254,17 @@ export class World {
   t.relief=undefined;this.reliefActive.delete(t);this.groundVersion++;
  }
  /** Decorations fitted to terrain faces only refit when a relevant LOD changes. */
+ /** Only the already-submitted dry Standard fine terrain may receive static
+  * wind sunlight. No shader code or GPU resource is added to a foreign owner. */
+ regionalWindLightReceivers(x:number,z:number,range:number){
+  const [u0,v0]=this.terrain.uv(x-range,z-range),[u1,v1]=this.terrain.uv(x+range,z+range);
+  const out:{id:string;m:THREE.ShaderMaterial}[]=[];
+  for(let j=Math.floor(v0*WORLD_ROWS);j<=Math.floor(v1*WORLD_ROWS);j++)for(let i=Math.floor(u0*WORLD_COLS);i<=Math.floor(u1*WORLD_COLS);i++){
+   const t=this.byId.get(i+'-'+j),g=t?.fine;
+   if(t?.lod===112&&g?.visible&&g.material===t.local&&!t.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&g.geometry.index?.count===112*112*6)out.push({id:t.id,m:t.local});
+  }
+  return out;
+ }
  get visualGroundEpoch(){return this.groundVersion;}
  visualGroundSignature(b:readonly [number,number,number,number]){
   const [a,c]=this.terrain.uv(b[0],b[1]),[d,e]=this.terrain.uv(b[2],b[3]);

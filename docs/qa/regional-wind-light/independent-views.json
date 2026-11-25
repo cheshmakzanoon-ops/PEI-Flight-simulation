@@ -1,0 +1,243 @@
+{
+  "method": "Fixed ordinary camera, same-renderer on, source wind keeping its original model/phase while only direct-ground shadow zeroed, restore exact. All changed pixel centers plus 8 subsamples checked with independent true uploaded N112 surface triangles and 3D rays toward fixed original sun; count impacts outside a conservative \u2265own nearest geometric contour (clipped every 25cm in height, 0.18m source-filter tolerance plus physically bounded angular-source/one-half-pixel penumbra). Real device AA need not share this exact pattern, so subpixel ownership is a conservative support measurement, not a per-sample implementation match.",
+  "registration": "a084432623775db7caef52881724b9c3e336cb4a7ba745a473c7b1e40c3ab140",
+  "cases": {
+    "EKW6-reverse": {
+      "worldProgramSources": "931f275a20778b25bf37316c01e761eddb679bcb6256a1984838adfaf6ef4322",
+      "capturedTerrainReceivers": [
+        {
+          "tile": "30-12",
+          "lod": 112,
+          "storedTriangles": 210,
+          "totalTriangles": 25088
+        }
+      ],
+      "readyBuildings": 4,
+      "actualStaticReceiver": {
+        "phase": "ready",
+        "activeTiles": 1,
+        "nearCasters": 4
+      },
+      "graphicsCap": {
+        "textureUnits": 32,
+        "fragmentVec4s": 4096
+      },
+      "stageSpecificLinkedBudget": [
+        {
+          "fragmentSamplerUnits": 10,
+          "fragmentRegisterConservativeUpper": 48,
+          "liveCasters": 4,
+          "liveFirstCaster": [
+            88243.125,
+            25.426029205322266,
+            5026.759765625,
+            1
+          ]
+        }
+      ],
+      "sameDrawAndTriangleCount": true,
+      "drawBudget": {
+        "draws": 31,
+        "triangles": 341880
+      },
+      "restoredFrameExact": true,
+      "nativeErrors": [],
+      "changedPixelsAny": 3971,
+      "changedPixelsOver2": 3592,
+      "changedPixelsOver8": 2276,
+      "peakRGB": 16,
+      "brightenedPixelsAny": 0,
+      "inputRawAcquisitionSHA256": "c03bff218a3285d391934899bc885ef19cefeda4be07a2a0a1c5d4f8e513e57c",
+      "images": {
+        "on": "fbe445d39688cd9d83e360077478fa5c40f9c82c17adbf0c7e9d2cde11f095c5",
+        "off": "5ca2470769b634f6016e5674575224160ed9a974c13ce69601a1ff88ecbb4602",
+        "restored": "fbe445d39688cd9d83e360077478fa5c40f9c82c17adbf0c7e9d2cde11f095c5"
+      },
+      "originalNumericalOpticalSupport": {
+        "allObservedRGBPixels": 3971,
+        "subsamplesPerPixel": 9,
+        "rawOriginalWorldTrianglesRead": 210,
+        "actualGroundAtSomeSubpixel": 3971,
+        "actualOriginalStaticDirectRayAtSomeSubpixel": 3444,
+        "actualOriginalStaticDirectRayAtCenter": 3144,
+        "softEdgeOnlyAtTestedSubsamples": 527,
+        "outsideConservativeOriginalBoundAny": 0,
+        "outsideBoundOver2": 0,
+        "worstOutsideRGB": 0,
+        "worstMeasuredDistanceToIndependentClippedOriginalProjectionM": 0.523621,
+        "outsideExampleXY": []
+      }
+    },
+    "HCS3-reverse": {
+      "worldProgramSources": "931f275a20778b25bf37316c01e761eddb679bcb6256a1984838adfaf6ef4322",
+      "capturedTerrainReceivers": [
+        {
+          "tile": "27-12",
+          "lod": 112,
+          "storedTriangles": 60,
+          "totalTriangles": 25088
+        }
+      ],
+      "readyBuildings": 4,
+      "actualStaticReceiver": {
+        "phase": "ready",
+        "activeTiles": 1,
+        "nearCasters": 1
+      },
+      "graphicsCap": {
+        "textureUnits": 32,
+        "fragmentVec4s": 4096
+      },
+      "stageSpecificLinkedBudget": [
+        {
+          "fragmentSamplerUnits": 7,
+          "fragmentRegisterConservativeUpper": 44,
+          "liveCasters": 1,
+          "liveFirstCaster": [
+            68462.9375,
+            36.0723991394043,
+            4888.7197265625,
+            1
+          ]
+        }
+      ],
+      "sameDrawAndTriangleCount": true,
+      "drawBudget": {
+        "draws": 35,
+        "triangles": 382230
+      },
+      "restoredFrameExact": true,
+      "nativeErrors": [],
+      "changedPixelsAny": 4497,
+      "changedPixelsOver2": 4109,
+      "changedPixelsOver8": 3398,
+      "peakRGB": 17,
+      "brightenedPixelsAny": 0,
+      "inputRawAcquisitionSHA256": "2b96451062368063e4bfbb8af898205566bfb42750731557820459fedf345cc8",
+      "images": {
+        "on": "57d85fae1f5dc9caca965637e5a16b48797f40b1bfd01375b50afb0c667c75f5",
+        "off": "3be7b7c34955c77ecd96e0390765bfd66c183fd4e4ebd2c2c241fa9c530230d7",
+        "restored": "57d85fae1f5dc9caca965637e5a16b48797f40b1bfd01375b50afb0c667c75f5"
+      },
+      "originalNumericalOpticalSupport": {
+        "allObservedRGBPixels": 4497,
+        "subsamplesPerPixel": 9,
+        "rawOriginalWorldTrianglesRead": 60,
+        "actualGroundAtSomeSubpixel": 4497,
+        "actualOriginalStaticDirectRayAtSomeSubpixel": 3882,
+        "actualOriginalStaticDirectRayAtCenter": 3607,
+        "softEdgeOnlyAtTestedSubsamples": 615,
+        "outsideConservativeOriginalBoundAny": 0,
+        "outsideBoundOver2": 0,
+        "worstOutsideRGB": 0,
+        "worstMeasuredDistanceToIndependentClippedOriginalProjectionM": 0.653698,
+        "outsideExampleXY": []
+      }
+    },
+    "WCW27-reverse": {
+      "worldProgramSources": "931f275a20778b25bf37316c01e761eddb679bcb6256a1984838adfaf6ef4322",
+      "capturedTerrainReceivers": [
+        {
+          "tile": "0-7",
+          "lod": 112,
+          "storedTriangles": 50,
+          "totalTriangles": 25088
+        },
+        {
+          "tile": "1-7",
+          "lod": 112,
+          "storedTriangles": 150,
+          "totalTriangles": 25088
+        }
+      ],
+      "readyBuildings": 2,
+      "actualStaticReceiver": {
+        "phase": "ready",
+        "activeTiles": 2,
+        "nearCasters": 4
+      },
+      "graphicsCap": {
+        "textureUnits": 32,
+        "fragmentVec4s": 4096
+      },
+      "stageSpecificLinkedBudget": [
+        {
+          "fragmentSamplerUnits": 7,
+          "fragmentRegisterConservativeUpper": 44,
+          "liveCasters": 4,
+          "liveFirstCaster": [
+            -91327.8671875,
+            26.67308235168457,
+            -21252.3203125,
+            1
+          ]
+        }
+      ],
+      "sameDrawAndTriangleCount": true,
+      "drawBudget": {
+        "draws": 24,
+        "triangles": 367954
+      },
+      "restoredFrameExact": true,
+      "nativeErrors": [],
+      "changedPixelsAny": 3944,
+      "changedPixelsOver2": 3588,
+      "changedPixelsOver8": 2824,
+      "peakRGB": 16,
+      "brightenedPixelsAny": 0,
+      "inputRawAcquisitionSHA256": "254efe18002f49c4ef7fd38ab6dd87462dfc3bc8f634dc3292364770cfd56890",
+      "images": {
+        "on": "46d5db2166d69a8648a71fcd74d4847006d06e5ec094f4878b0c88ebc177a3ce",
+        "off": "7b129b20ad2a51c49060228dd42566693b6fd8c924ca5f073a257ff3cb661e96",
+        "restored": "46d5db2166d69a8648a71fcd74d4847006d06e5ec094f4878b0c88ebc177a3ce"
+      },
+      "originalNumericalOpticalSupport": {
+        "allObservedRGBPixels": 3944,
+        "subsamplesPerPixel": 9,
+        "rawOriginalWorldTrianglesRead": 200,
+        "actualGroundAtSomeSubpixel": 3944,
+        "actualOriginalStaticDirectRayAtSomeSubpixel": 3428,
+        "actualOriginalStaticDirectRayAtCenter": 3105,
+        "softEdgeOnlyAtTestedSubsamples": 516,
+        "outsideConservativeOriginalBoundAny": 0,
+        "outsideBoundOver2": 0,
+        "worstOutsideRGB": 0,
+        "worstMeasuredDistanceToIndependentClippedOriginalProjectionM": 0.532779,
+        "outsideExampleXY": []
+      }
+    },
+    "EKW6-far": {
+      "worldProgramSources": "931f275a20778b25bf37316c01e761eddb679bcb6256a1984838adfaf6ef4322",
+      "capturedTerrainReceivers": [],
+      "readyBuildings": 4,
+      "actualStaticReceiver": {
+        "phase": "ready",
+        "activeTiles": 0,
+        "nearCasters": 0
+      },
+      "graphicsCap": {
+        "textureUnits": 32,
+        "fragmentVec4s": 4096
+      },
+      "stageSpecificLinkedBudget": [],
+      "sameDrawAndTriangleCount": true,
+      "drawBudget": {
+        "draws": 19,
+        "triangles": 326990
+      },
+      "restoredFrameExact": true,
+      "nativeErrors": [],
+      "changedPixelsAny": 0,
+      "changedPixelsOver2": 0,
+      "changedPixelsOver8": 0,
+      "peakRGB": 0,
+      "brightenedPixelsAny": 0,
+      "inputRawAcquisitionSHA256": "745cc5b842c2ca24fd6e1af5512c8162a5c8a600f4b0d1d8ea31758ef94fda58",
+      "images": {
+        "on": "2e690b9430b2dd82ef6b786dc943fb5e530cb71d31b25cf2ed56c22fc816e1da",
+        "off": "2e690b9430b2dd82ef6b786dc943fb5e530cb71d31b25cf2ed56c22fc816e1da",
+        "restored": "2e690b9430b2dd82ef6b786dc943fb5e530cb71d31b25cf2ed56c22fc816e1da"
+      }
+    }
+  }
+}

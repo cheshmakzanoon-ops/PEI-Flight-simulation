@@ -1,0 +1,7 @@
+// Source mesh cast along the fixed scene sun. Binary RGBA assembled from signed WRG1.
+export const STATIC_SKIN={
+ "west-cape":{"s":[-5.125,-7.75],"size":[681,101],"decoded":"c2c40f6136b8491900a89916c08743fa8968be8f1ce4a257bf4e4f25abd2aa30","wire":"6cecf4e86f4c1eb2091f17576bb44581bc3a2ccf117bf5d8c1d328ebb86cf164","sizeWire":8080,"raw":"7a7b97c6c57724e1f49366541a3d6e38b7bf33290cf1abec8dfa193177655c46","pos":"a0b9e512dfb8a979882abc35978dd51027ea72490f1e8b53785a8e0609bff8af","index":"40147691db2f4bece876cf448e7e265e30c3be8b930640da68dc75737b81b1fe"},
+ "east-point-i":{"s":[-5.0,-8.25],"size":[692,102],"decoded":"18c35c7dc7693e842f11dc9969d157c3545098ba867351dca6c9cbb5f7f43479","wire":"88a730b125525949813e63d0685cddbbad5df7ab55c2051ecdc3e52db01d6ab5","sizeWire":7959,"raw":"4e8e801127e0d1a4d9f82fee0b52f4b385a283ef0a4deb4e77e14dd0fe6aa988","pos":"ec535c82d04aad60b43ee6d9b7db24d44122c6bc3517b516efe07b3b6c67e8d0","index":"517ea497464445b0cdcf201b006badf90f88e1d4a6703a62abcc373ff20583a4"},
+ "hermanville":{"s":[-5.25,-8.625],"size":[780,112],"decoded":"8aeef5d6c7d99c9ec516059cb2bbf2fba047b215a3dec19635456d0fc3c41ce0","wire":"e3d3c43ff31e6c08281d733414adca25eb90f4d692c15c4a3293ee1bae32c63c","sizeWire":9421,"raw":"9dfd90f935e96622b1f15551391c690097155aff490a376101613009e44c741f","pos":"09772af86da5deaf6594284b5150f309f34ac5db586ee59eb1b6df687887acdd","index":"5c01ea5e98dd9497cb7d899fa54dc3cb818d2dd1f2b52432746745116d17f387"},
+} as const;
+export const STATIC_WIND_TILES=new Set(["0-7", "0-8", "1-6", "1-7", "1-8", "27-12", "30-12"]);

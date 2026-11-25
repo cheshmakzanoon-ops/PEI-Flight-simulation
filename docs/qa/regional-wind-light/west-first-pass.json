@@ -1,0 +1,149 @@
+{
+  "case": "WCW27-cross-close",
+  "meaning": "Exact separate production-source scenery query off and on at the same immutable camera and rotor phase. A second, same-tick GPU switch toggled only the actual direct-light uniforms and restored them. Physical coverage is separately tested with geometric rays.",
+  "size": [
+    840,
+    540
+  ],
+  "position": {
+    "x": -91016.74762962066,
+    "z": -20634.71744810858,
+    "baseH": 31.67902127288689,
+    "eyeY": 86.59590293282186,
+    "bottomY": 270.2215053663014,
+    "topY": 269.77838159681784
+  },
+  "stockQuery": "?stockRegionalWindLight",
+  "sizeAndPoseEqual": true,
+  "stockPNG": "6d011b9dfcfa301bb53fc2b54a5c703d95f5e00e5569935ec5dc962f20e11ec9",
+  "normalPNG": "d24b5757823f58355cecc950f807927e1510c118a8f1c67c2b40eac2b50c2424",
+  "separateFrames": {
+    "any": 5009,
+    "gt2": 4486,
+    "gt8": 3573,
+    "peakDelta8": 16,
+    "brightened": 0,
+    "boundsXYInclusive": [
+      224,
+      15,
+      839,
+      283
+    ]
+  },
+  "actualSameTickUniforms": {
+    "materialSlots": 2,
+    "uniqueUniforms": 1,
+    "any": 5009,
+    "gt2": 4486,
+    "peak": 16,
+    "brightenedPixels": 0,
+    "restoreChannelDifferences": 0,
+    "box": [
+      224,
+      15,
+      839,
+      283
+    ],
+    "draws": [
+      51,
+      51,
+      51
+    ],
+    "triangles": [
+      338348,
+      338348,
+      338348
+    ],
+    "samplerCap": 32,
+    "linkedMaterials": [
+      {
+        "drawsShaderUnderTest": true,
+        "actualCount": 3,
+        "linkedSamplerTotal": 7,
+        "list": [
+          [
+            "regionalStaticBox",
+            35666,
+            1
+          ],
+          [
+            "regionalStaticMasts[0]",
+            35666,
+            10
+          ],
+          [
+            "regionalStaticCount",
+            5124,
+            1
+          ],
+          [
+            "regionalStaticDepth",
+            35678,
+            1
+          ]
+        ]
+      },
+      {
+        "drawsShaderUnderTest": true,
+        "actualCount": 3,
+        "linkedSamplerTotal": 7,
+        "list": [
+          [
+            "regionalStaticBox",
+            35666,
+            1
+          ],
+          [
+            "regionalStaticMasts[0]",
+            35666,
+            10
+          ],
+          [
+            "regionalStaticCount",
+            5124,
+            1
+          ],
+          [
+            "regionalStaticDepth",
+            35678,
+            1
+          ]
+        ]
+      }
+    ],
+    "glError": 0
+  },
+  "old": {
+    "phase": "ready",
+    "farms": [
+      {
+        "farm": "west-cape",
+        "registered": 55,
+        "near": 5,
+        "cruise": 39,
+        "distant": 11,
+        "groundLight": null
+      }
+    ],
+    "unavailable": []
+  },
+  "normal": {
+    "phase": "ready",
+    "farms": [
+      {
+        "farm": "west-cape",
+        "registered": 55,
+        "near": 5,
+        "cruise": 39,
+        "distant": 11,
+        "groundLight": {
+          "phase": "ready",
+          "activeTiles": 2,
+          "nearCasters": 3
+        }
+      }
+    ],
+    "unavailable": []
+  },
+  "errors": []
+}

@@ -7,7 +7,7 @@ export const WIND_ENVELOPES=[
 ] as const;
 export type WindFarmId=(typeof WIND_ENVELOPES)[number]['id'];
 export type WindObserver=Readonly<{x:number;y:number;z:number}>;
-export type WindFarmArt={update(eye:WindObserver,time:number):void;dispose():void;counts:{registered:number;near:number;cruise:number;distant:number}};
+export type WindFarmArt={groundLightState?():unknown;update(eye:WindObserver,time:number):void;dispose():void;counts:{registered:number;near:number;cruise:number;distant:number}};
 export type WindFactory=(id:WindFarmId)=>WindFarmArt|undefined;
 export const WIND_RANGES={prefetch:12300,unload:13900,visible:11400,fadeStart:9000,fadeEnd:11150,near:1150,cruise:4200} as const;
 export function windBoundsDistance(eye:WindObserver,b:(typeof WIND_ENVELOPES)[number]){
@@ -45,6 +45,6 @@ export class RegionalWindStream{
    }
   }
  }
- diagnostics(){return {phase:this.phase,farms:[...this.live].map(([farm,a])=>({farm,...a.counts})),unavailable:[...this.rejected]};}
+ diagnostics(){return {phase:this.phase,farms:[...this.live].map(([farm,a])=>({farm,...a.counts,groundLight:a.groundLightState?.()??null})),unavailable:[...this.rejected]};}
  dispose(){this.retired=true;for(const a of this.live.values())a.dispose();this.live.clear();this.make=undefined;}
 }
