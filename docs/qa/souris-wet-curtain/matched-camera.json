@@ -1,0 +1,200 @@
+{
+  "baseline": "dd59857dfb00ab42265c34213ef3f6dc341a4776",
+  "renderer": "Chromium / SwiftShader, not a frame-rate benchmark",
+  "views": {
+    "souris-low-breakwater-close": {
+      "camera": {
+        "site": "souris-low-breakwater",
+        "lon": -62.2517,
+        "lat": 46.3476,
+        "dist": 265,
+        "east": -0.94,
+        "south": 0.34,
+        "agl": 47,
+        "h": 4,
+        "nearDist": 265,
+        "nearAgl": 47,
+        "fixedBaseH": 0,
+        "fixedEyeY": 47
+      },
+      "draws": [
+        33,
+        33
+      ],
+      "triangles": [
+        236501,
+        236497
+      ],
+      "pixels": {
+        "shape": [
+          540,
+          840,
+          3
+        ],
+        "changed": 322,
+        "over2": 321,
+        "peak": 88,
+        "supportPixels": 444,
+        "supportChanged": 321,
+        "supportOver2": 321,
+        "supportPeak": 88,
+        "aaRingChanged": 1,
+        "outsideChanged": 0,
+        "outsidePeak": 0,
+        "supportMedianRgbBefore": [
+          157.0,
+          135.0,
+          110.5
+        ],
+        "supportMedianRgbAfter": [
+          105.0,
+          137.0,
+          142.0
+        ],
+        "supportMeanSignedRgb": [
+          -37.5472972972973,
+          1.5315315315315314,
+          23.367117117117118
+        ],
+        "supportBrightenedOver2": 88,
+        "supportDarkenedOver2": 226,
+        "pass": true,
+        "before": {
+          "file": "souris-low-breakwater-close.png",
+          "sha256": "a56d90e6dd78b2879d304397b9cb5d54b0f324e1b16e27d187fa596d56e46961"
+        },
+        "after": {
+          "file": "souris-low-breakwater-close.png",
+          "sha256": "8dee3cbb1cb40077c03a21b3b44adc362d3f5ce5840e52be072435278edebe15"
+        },
+        "support": {
+          "file": "souris-low-breakwater-close-authority.png",
+          "sha256": "ef58116ac377a408fe2db57414e8b8ae11ec38c05748c3c078f9e67d39f4b83e"
+        }
+      },
+      "forcedMagentaSkyControl": {
+        "skyProbeVisiblePixels": 149034,
+        "projectedEligiblePixels": 444,
+        "skyWithinEligiblePixels": 0
+      },
+      "graphicsErrors": []
+    },
+    "souris-approach-west-close": {
+      "camera": {
+        "site": "souris-approach-west",
+        "lon": -62.2497,
+        "lat": 46.3486,
+        "dist": 570,
+        "east": -0.89,
+        "south": 0.455,
+        "agl": 110,
+        "h": 5,
+        "nearDist": 570,
+        "nearAgl": 110,
+        "fixedBaseH": 0,
+        "fixedEyeY": 110
+      },
+      "draws": [
+        36,
+        36
+      ],
+      "triangles": [
+        265740,
+        265736
+      ],
+      "pixels": {
+        "shape": [
+          540,
+          840,
+          3
+        ],
+        "changed": 118,
+        "over2": 118,
+        "peak": 89,
+        "supportPixels": 210,
+        "supportChanged": 118,
+        "supportOver2": 118,
+        "supportPeak": 89,
+        "aaRingChanged": 0,
+        "outsideChanged": 0,
+        "outsidePeak": 0,
+        "supportMedianRgbBefore": [
+          127.0,
+          133.0,
+          123.0
+        ],
+        "supportMedianRgbAfter": [
+          91.0,
+          129.0,
+          134.0
+        ],
+        "supportMeanSignedRgb": [
+          -29.428571428571427,
+          -2.0476190476190474,
+          11.49047619047619
+        ],
+        "supportBrightenedOver2": 3,
+        "supportDarkenedOver2": 114,
+        "pass": true,
+        "before": {
+          "file": "souris-approach-west-close.png",
+          "sha256": "f07005074e226b90b45d1f9e9cce9ccbb3439dcdc32fefed48c7ac2490e76255"
+        },
+        "after": {
+          "file": "souris-approach-west-close.png",
+          "sha256": "100baffcc94f6086ae8f9d8abe45775144c7dbf154665ff1c0fddbb59f88e446"
+        },
+        "support": {
+          "file": "souris-approach-west-close-authority.png",
+          "sha256": "3383e008990afc6ec6260e3327bf7fb3224416a0f67081d7e4135b3d45ce9e94"
+        }
+      },
+      "forcedMagentaSkyControl": {
+        "skyProbeVisiblePixels": 141530,
+        "projectedEligiblePixels": 210,
+        "skyWithinEligiblePixels": 0
+      },
+      "graphicsErrors": []
+    }
+  },
+  "studioScope": "One full and one partial directed span, approximately 93.36 m. Four submitted triangles retired, without new geometry, downloads or draw calls. The water and land shaders and collision are unchanged.",
+  "illustration": {
+    "camera": "souris-low-breakwater-close",
+    "cropXYXY": [
+      235,
+      255,
+      483,
+      387
+    ],
+    "resampling": "2x nearest-neighbour, side-by-side, no retouching"
+  },
+  "compiledCockpitRoute": {
+    "standard": {
+      "actualMovedM": 280.1113237965959,
+      "targetDistanceM": 335.6254542689105,
+      "groundClearanceM": 67.98201999198128,
+      "optionalDiagnostic": {
+        "proof": "ready",
+        "active": true,
+        "stockQuadsAffected": 4,
+        "stockTrianglesRemoved": 4
+      },
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    },
+    "explicitStock": {
+      "actualMovedM": 284.2847713588149,
+      "targetDistanceM": 342.79148247574875,
+      "groundClearanceM": 67.93230204442492,
+      "optionalDiagnostic": null,
+      "controls": [
+        "Cockpit",
+        "Pause"
+      ],
+      "errors": []
+    }
+  }
+}
