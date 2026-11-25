@@ -1,6 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL} from '../src/app/scenery-profile.ts';
+import {project} from '../src/sim/geo.ts';
+import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -105,5 +107,28 @@ test('a saved but incompatible regional pack cannot implicitly enable any scener
   const q='?cavendishDetail&'+flag;
   assert.deepEqual(cavendishPackageState(q),{selected:true,active:false,blocked:true});
   assert(CAVENDISH_PACKAGE_FLAGS.every(x=>!sceneryOptions(q).has(x)));
+ }
+});
+
+test('open ripple comparison leaves other ordinary scenery eligible',()=>{
+ const active=(s:string)=>standardOpenRipplesRequested(sceneryOptions(s));
+ for(const s of ['','?scenery=standard','?departure=bridge&diagnostics','?qa=1'])assert.ok(active(s),s);
+ for(const s of ['?scenery=detail','?shoreFoamDetail','?surveyRelief','?beaconsfieldReview','?other=1','?stockOpenRipples=0'])
+  assert.equal(active(s),false,s);
+ assert.equal(standardPanmurePastureRequested(sceneryOptions('?departure=panmure-head-coast&stockOpenRipples')),true);
+});
+
+test('open-water offshore envelopes admit their cores but not freshwater or sheltered landmarks',()=>{
+ for(const [lon,lat,inner,outer] of OPEN_WATER_WINDOWS){
+  const {x,z}=project(lon,lat);
+  assert.equal(openWaterRippleEnvelope(x,z),1);
+  assert.equal(openWaterRippleEnvelope(x+inner,z),1);
+  assert.ok(openWaterRippleEnvelope(x+(inner+outer)/2,z)<1);
+  assert.ok(openWaterRippleEnvelope(x+(inner+outer)/2,z)>0);
+  assert.equal(openWaterRippleEnvelope(x+outer+.01,z),0);
+ }
+ for(const [lon,lat] of [[-62.02144468,46.42678075],[-61.981,46.418],[-63.124,46.232],[-63.410,46.486],[-62.645,46.170]]){
+  const {x,z}=project(lon,lat);
+  assert.equal(openWaterRippleEnvelope(x,z),0);
  }
 });

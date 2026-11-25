@@ -333,7 +333,17 @@ export function standardOpenCoastRequested(q:URLSearchParams){
 
 /** Fail closed on named, alternate, and unknown scenery comparisons. The
  * supported keys are dispatch/telemetry only; none select a different surface. */
-export function standardPanmurePastureRequested(q:URLSearchParams){
+function ordinarySceneryKeysOnly(q:URLSearchParams){
  const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
- return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa');
+ return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa'||k==='stockOpenRipples');
+}
+export function standardPanmurePastureRequested(q:URLSearchParams){
+ return ordinarySceneryKeysOnly(q);
+}
+
+
+/** De-tile Standard's open water only. Explicit scenery comparisons and
+ * unknown options remain on the existing shader for exact comparisons. */
+export function standardOpenRipplesRequested(q:URLSearchParams){
+ return !q.has('stockOpenRipples')&&ordinarySceneryKeysOnly(q);
 }

@@ -1,0 +1,661 @@
+{
+  "baseCommit": "944aaf5c9b1fedb886a896bc32d422d6baebfb0a",
+  "stock": "Identical settled Standard scene with water drift set to zero in temporary QA.",
+  "renderer": "Chromium SwiftShader, not hardware performance timing.",
+  "actualFrames": {
+    "wind-spectrum-nadir": {
+      "pose": {
+        "lon": -63.7496421,
+        "lat": 46.1984107,
+        "dist": 12,
+        "east": 0,
+        "south": 1,
+        "fixedBaseH": 0,
+        "fixedEyeY": 183,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 13,
+      "triangles": 150556,
+      "phases": [
+        {
+          "phase": 12,
+          "pixelsChangedAbove4": 379483,
+          "visibleOpen": 600000,
+          "protectedOutsideTwoPixelDerivativeMargin": 0,
+          "maxProtectedDelta": 0,
+          "repeatExact": true
+        },
+        {
+          "phase": 26,
+          "pixelsChangedAbove4": 380644,
+          "visibleOpen": 600000,
+          "protectedOutsideTwoPixelDerivativeMargin": 0,
+          "maxProtectedDelta": 0,
+          "repeatExact": true
+        }
+      ],
+      "phaseStepMotion": null
+    },
+    "south-lake-control": {
+      "pose": {
+        "lon": -62.02144468,
+        "lat": 46.42678075,
+        "dist": 9,
+        "east": -1,
+        "south": 0,
+        "fixedBaseH": 0,
+        "fixedEyeY": 102,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 13,
+      "triangles": 296940,
+      "phases": [
+        {
+          "phase": 12,
+          "pixelsChangedAbove4": 0,
+          "visibleOpen": 0,
+          "protectedOutsideTwoPixelDerivativeMargin": 600000,
+          "maxProtectedDelta": 0,
+          "repeatExact": true
+        },
+        {
+          "phase": 26,
+          "pixelsChangedAbove4": 0,
+          "visibleOpen": 0,
+          "protectedOutsideTwoPixelDerivativeMargin": 600000,
+          "maxProtectedDelta": 0,
+          "repeatExact": true
+        }
+      ],
+      "phaseStepMotion": null
+    },
+    "panmure-broadside": {
+      "pose": {
+        "lon": -62.464978,
+        "lat": 46.1433953,
+        "dist": 370,
+        "east": 330,
+        "south": 167,
+        "fixedBaseH": 2,
+        "fixedEyeY": 52,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 231,
+      "triangles": 281930,
+      "phases": [
+        {
+          "phase": 12.0,
+          "pixelsChangedAbove4": 226717,
+          "visibleOpen": 285035,
+          "protectedOutsideTwoPixelDerivativeMargin": 311808,
+          "maxProtectedDelta": 0,
+          "repeatExact": true,
+          "stockRepeatExact": true
+        }
+      ],
+      "phaseStepMotion": null
+    },
+    "egmont-diagonal": {
+      "pose": {
+        "lon": -64.1341777,
+        "lat": 46.40139,
+        "dist": 440,
+        "east": -386,
+        "south": 220,
+        "fixedBaseH": 0.5,
+        "fixedEyeY": 64,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 163,
+      "triangles": 248283,
+      "phases": [
+        {
+          "phase": 12.0,
+          "pixelsChangedAbove4": 162760,
+          "visibleOpen": 264938,
+          "protectedOutsideTwoPixelDerivativeMargin": 332458,
+          "maxProtectedDelta": 0,
+          "repeatExact": true,
+          "stockRepeatExact": true
+        }
+      ],
+      "phaseStepMotion": null
+    },
+    "strait-grazing": {
+      "pose": {
+        "lon": -63.7496421,
+        "lat": 46.1984107,
+        "dist": 880,
+        "east": 40,
+        "south": 878,
+        "fixedBaseH": 0,
+        "fixedEyeY": 88,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 118,
+      "triangles": 186544,
+      "phases": [
+        {
+          "phase": 12.0,
+          "pixelsChangedAbove4": 209098,
+          "visibleOpen": 339971,
+          "protectedOutsideTwoPixelDerivativeMargin": 257796,
+          "maxProtectedDelta": 0,
+          "repeatExact": true
+        }
+      ],
+      "phaseStepMotion": {
+        "stock": {
+          "samples": 2379797,
+          "p95": 1.0,
+          "p99": 2.0,
+          "max": 7,
+          "above8": 0
+        },
+        "live": {
+          "samples": 2379797,
+          "p95": 1.0,
+          "p99": 2.0,
+          "max": 15,
+          "above8": 12
+        }
+      }
+    },
+    "tryon-offshore": {
+      "pose": {
+        "lon": -63.50608,
+        "lat": 46.5451,
+        "dist": 390,
+        "east": 80,
+        "south": -380,
+        "fixedBaseH": 0,
+        "fixedEyeY": 67,
+        "agl": 0,
+        "h": 0
+      },
+      "draws": 73,
+      "triangles": 226350,
+      "phases": [
+        {
+          "phase": 12.0,
+          "pixelsChangedAbove4": 229972,
+          "visibleOpen": 376741,
+          "protectedOutsideTwoPixelDerivativeMargin": 221162,
+          "maxProtectedDelta": 0,
+          "repeatExact": true,
+          "stockRepeatExact": true
+        }
+      ],
+      "phaseStepMotion": null
+    }
+  },
+  "masksOffline": {
+    "coverSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "conservativeScreenM": -152,
+    "scope": "Inherited dry/wet raster connectivity only. No new shoreline or tides.",
+    "windows": [
+      {
+        "lon": -63.7496421,
+        "lat": 46.1984107,
+        "checkedCells": 7229,
+        "disconnected": 0,
+        "paddingM": 78
+      },
+      {
+        "lon": -64.146,
+        "lat": 46.3968,
+        "checkedCells": 4906,
+        "disconnected": 0,
+        "paddingM": 78
+      },
+      {
+        "lon": -63.50608,
+        "lat": 46.546,
+        "checkedCells": 4609,
+        "disconnected": 0,
+        "paddingM": 78
+      },
+      {
+        "lon": -62.451,
+        "lat": 46.14,
+        "checkedCells": 5132,
+        "disconnected": 0,
+        "paddingM": 78
+      }
+    ]
+  },
+  "nativeRecipeRepeat": {
+    "12.0": {
+      "stock": {
+        "pairs": {
+          "east86": {
+            "luminanceCorrelation": 0.4345,
+            "samples": 122573
+          },
+          "south86": {
+            "luminanceCorrelation": 0.3924,
+            "samples": 79030
+          },
+          "east43": {
+            "luminanceCorrelation": 0.007,
+            "samples": 149663
+          },
+          "south43": {
+            "luminanceCorrelation": -0.0177,
+            "samples": 127542
+          },
+          "rotE43": {
+            "luminanceCorrelation": 0.0557,
+            "samples": 127030
+          },
+          "rotS43": {
+            "luminanceCorrelation": 0.0406,
+            "samples": 126289
+          },
+          "offE74": {
+            "luminanceCorrelation": -0.0144,
+            "samples": 130133
+          },
+          "offE93": {
+            "luminanceCorrelation": -0.0123,
+            "samples": 118163
+          },
+          "offS78": {
+            "luminanceCorrelation": -0.0184,
+            "samples": 87998
+          },
+          "offS95": {
+            "luminanceCorrelation": -0.0272,
+            "samples": 68970
+          }
+        },
+        "lumaStDev": 15.044507571593812
+      },
+      "live": {
+        "pairs": {
+          "east86": {
+            "luminanceCorrelation": 0.0156,
+            "samples": 122573
+          },
+          "south86": {
+            "luminanceCorrelation": -0.0177,
+            "samples": 79030
+          },
+          "east43": {
+            "luminanceCorrelation": -0.0112,
+            "samples": 149663
+          },
+          "south43": {
+            "luminanceCorrelation": 0.0064,
+            "samples": 127542
+          },
+          "rotE43": {
+            "luminanceCorrelation": 0.0105,
+            "samples": 127030
+          },
+          "rotS43": {
+            "luminanceCorrelation": -0.0039,
+            "samples": 126289
+          },
+          "offE74": {
+            "luminanceCorrelation": 0.0123,
+            "samples": 130133
+          },
+          "offE93": {
+            "luminanceCorrelation": -0.0089,
+            "samples": 118163
+          },
+          "offS78": {
+            "luminanceCorrelation": 0.0117,
+            "samples": 87998
+          },
+          "offS95": {
+            "luminanceCorrelation": 0.0221,
+            "samples": 68970
+          }
+        },
+        "lumaStDev": 15.135553000863748
+      }
+    },
+    "26.0": {
+      "stock": {
+        "pairs": {
+          "east86": {
+            "luminanceCorrelation": 0.4414,
+            "samples": 122573
+          },
+          "south86": {
+            "luminanceCorrelation": 0.3991,
+            "samples": 79030
+          },
+          "east43": {
+            "luminanceCorrelation": 0.0024,
+            "samples": 149663
+          },
+          "south43": {
+            "luminanceCorrelation": -0.0198,
+            "samples": 127542
+          },
+          "rotE43": {
+            "luminanceCorrelation": 0.0578,
+            "samples": 127030
+          },
+          "rotS43": {
+            "luminanceCorrelation": 0.0467,
+            "samples": 126289
+          },
+          "offE74": {
+            "luminanceCorrelation": -0.0093,
+            "samples": 130133
+          },
+          "offE93": {
+            "luminanceCorrelation": -0.0165,
+            "samples": 118163
+          },
+          "offS78": {
+            "luminanceCorrelation": -0.0214,
+            "samples": 87998
+          },
+          "offS95": {
+            "luminanceCorrelation": -0.0291,
+            "samples": 68970
+          }
+        },
+        "lumaStDev": 15.152784438731494
+      },
+      "live": {
+        "pairs": {
+          "east86": {
+            "luminanceCorrelation": 0.0102,
+            "samples": 122573
+          },
+          "south86": {
+            "luminanceCorrelation": 0.0076,
+            "samples": 79030
+          },
+          "east43": {
+            "luminanceCorrelation": -0.0167,
+            "samples": 149663
+          },
+          "south43": {
+            "luminanceCorrelation": -0.0073,
+            "samples": 127542
+          },
+          "rotE43": {
+            "luminanceCorrelation": 0.0029,
+            "samples": 127030
+          },
+          "rotS43": {
+            "luminanceCorrelation": 0.013,
+            "samples": 126289
+          },
+          "offE74": {
+            "luminanceCorrelation": 0.0006,
+            "samples": 130133
+          },
+          "offE93": {
+            "luminanceCorrelation": -0.0092,
+            "samples": 118163
+          },
+          "offS78": {
+            "luminanceCorrelation": 0.0214,
+            "samples": 87998
+          },
+          "offS95": {
+            "luminanceCorrelation": 0.0014,
+            "samples": 68970
+          }
+        },
+        "lumaStDev": 15.079949846960924
+      }
+    }
+  },
+  "independentTryon": {
+    "pose": {
+      "lon": -63.5115,
+      "lat": 46.5428,
+      "dist": 149.0,
+      "east": 1.0,
+      "south": 0.78,
+      "fixedBaseH": -0.055,
+      "fixedEyeY": 41.0,
+      "h": 0,
+      "agl": 0
+    },
+    "measurements": [
+      {
+        "site": "tryon-oblique",
+        "phase": 12,
+        "openRippleCompiled": true,
+        "allVisibleWater": 584926,
+        "visibleGatePixels": 566583,
+        "meaningful": 463208,
+        "outsideActiveViewportSupportPlus2px": 0,
+        "stableRepeatExact": true,
+        "drawCalls": 77,
+        "triangles": 194846,
+        "planeSupport": 68312,
+        "eightPixelLowpassDelta": [
+          1.9661,
+          13.4907,
+          23.7659,
+          51.9105
+        ],
+        "visual": {
+          "stock": {
+            "corr": {
+              "east86": {
+                "metric": 0.652,
+                "pairs": 48673
+              },
+              "south86": {
+                "metric": 0.6184,
+                "pairs": 48711
+              },
+              "east43": {
+                "metric": 0.0269,
+                "pairs": 58306
+              },
+              "south43": {
+                "metric": 0.0054,
+                "pairs": 58325
+              },
+              "east78": {
+                "metric": -0.0921,
+                "pairs": 50448
+              },
+              "south94": {
+                "metric": -0.045,
+                "pairs": 46958
+              }
+            },
+            "nearFieldLumaMedian": 150.85665258257268,
+            "localLumaStd": 9.7878,
+            "fitted45mToneLuma": 0.8841,
+            "deepVisibleColorMean": [
+              106.5465,
+              129.7625,
+              139.077
+            ],
+            "lowpassLumaStd": 13.9024
+          },
+          "sealed": {
+            "corr": {
+              "east86": {
+                "metric": 0.0099,
+                "pairs": 48673
+              },
+              "south86": {
+                "metric": 0.0224,
+                "pairs": 48711
+              },
+              "east43": {
+                "metric": 0.0124,
+                "pairs": 58306
+              },
+              "south43": {
+                "metric": -0.012,
+                "pairs": 58325
+              },
+              "east78": {
+                "metric": 0.0066,
+                "pairs": 50448
+              },
+              "south94": {
+                "metric": 0.0238,
+                "pairs": 46958
+              }
+            },
+            "nearFieldLumaMedian": 150.90292879427705,
+            "localLumaStd": 9.7707,
+            "fitted45mToneLuma": 0.8285,
+            "deepVisibleColorMean": [
+              106.6769,
+              129.8548,
+              139.1484
+            ],
+            "lowpassLumaStd": 13.888
+          }
+        }
+      },
+      {
+        "site": "tryon-oblique",
+        "phase": 26,
+        "openRippleCompiled": true,
+        "allVisibleWater": 584926,
+        "visibleGatePixels": 566583,
+        "meaningful": 463322,
+        "outsideActiveViewportSupportPlus2px": 0,
+        "stableRepeatExact": true,
+        "drawCalls": 77,
+        "triangles": 194846,
+        "planeSupport": 68312,
+        "eightPixelLowpassDelta": [
+          1.9522,
+          13.1863,
+          22.5414,
+          51.6639
+        ],
+        "visual": {
+          "stock": {
+            "corr": {
+              "east86": {
+                "metric": 0.6573,
+                "pairs": 48673
+              },
+              "south86": {
+                "metric": 0.6176,
+                "pairs": 48711
+              },
+              "east43": {
+                "metric": 0.0266,
+                "pairs": 58306
+              },
+              "south43": {
+                "metric": 0.0026,
+                "pairs": 58325
+              },
+              "east78": {
+                "metric": -0.0855,
+                "pairs": 50448
+              },
+              "south94": {
+                "metric": -0.0354,
+                "pairs": 46958
+              }
+            },
+            "nearFieldLumaMedian": 150.85487400758092,
+            "localLumaStd": 9.7687,
+            "fitted45mToneLuma": 0.8873,
+            "deepVisibleColorMean": [
+              106.6338,
+              129.7449,
+              139.0146
+            ],
+            "lowpassLumaStd": 13.9412
+          },
+          "sealed": {
+            "corr": {
+              "east86": {
+                "metric": 0.0035,
+                "pairs": 48673
+              },
+              "south86": {
+                "metric": 0.0242,
+                "pairs": 48711
+              },
+              "east43": {
+                "metric": 0.0141,
+                "pairs": 58306
+              },
+              "south43": {
+                "metric": -0.0261,
+                "pairs": 58325
+              },
+              "east78": {
+                "metric": -0.0037,
+                "pairs": 50448
+              },
+              "south94": {
+                "metric": 0.0217,
+                "pairs": 46958
+              }
+            },
+            "nearFieldLumaMedian": 150.89381104552047,
+            "localLumaStd": 9.7811,
+            "fitted45mToneLuma": 0.9221,
+            "deepVisibleColorMean": [
+              106.4908,
+              129.6702,
+              138.989
+            ],
+            "lowpassLumaStd": 13.9691
+          }
+        }
+      }
+    ]
+  },
+  "compiledFlight": [
+    {
+      "case": "standard",
+      "route": "bridge",
+      "openRipples": true,
+      "westMetres": 170.171,
+      "southMetres": 174.795,
+      "startAltitudeM": 264.948,
+      "endAltitudeM": 266.15,
+      "cam": "Cockpit",
+      "warnings": 0,
+      "playbackErrors": 0
+    },
+    {
+      "case": "stock",
+      "route": "bridge",
+      "openRipples": false,
+      "westMetres": 168.985,
+      "southMetres": 173.577,
+      "startAltitudeM": 264.948,
+      "endAltitudeM": 266.141,
+      "cam": "Cockpit",
+      "warnings": 0,
+      "playbackErrors": 0
+    },
+    {
+      "case": "detail",
+      "route": "bridge",
+      "openRipples": false,
+      "westMetres": 170.565,
+      "southMetres": 175.199,
+      "startAltitudeM": 264.947,
+      "endAltitudeM": 266.147,
+      "cam": "Cockpit",
+      "warnings": 0,
+      "playbackErrors": 0
+    }
+  ]
+}
