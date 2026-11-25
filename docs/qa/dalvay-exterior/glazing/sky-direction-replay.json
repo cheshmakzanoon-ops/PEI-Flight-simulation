@@ -1,0 +1,215 @@
+{
+  "scope": "CPU replay of signed pane geometry, exact registered eye, near/far FOV, world interpolated numerical normals plus G2 horizon coefficients. Reflecting below horizon does not observe any radiance from the actual sky texture. This estimates optical source mix only in already-pure signed glass samples, not proof of what arbitrary nearby camera sees.",
+  "views": {
+    "dalvay-lake-front-lawn": {
+      "wingStrict": {
+        "nativeQuarterSampleCount": 13176,
+        "pureNeutralRaySamples": 13176,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.269684,
+          -0.261885,
+          -0.23408,
+          -0.20243,
+          -0.172216
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      },
+      "entireGlassStrict": {
+        "nativeQuarterSampleCount": 22772,
+        "pureNeutralRaySamples": 22772,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.269684,
+          -0.258609,
+          -0.216278,
+          -0.100732,
+          -0.082079
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      }
+    },
+    "dalvay-principal-nw": {
+      "wingStrict": {
+        "nativeQuarterSampleCount": 28,
+        "pureNeutralRaySamples": 28,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.20279,
+          -0.202788,
+          -0.200757,
+          -0.198725,
+          -0.198724
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      },
+      "entireGlassStrict": {
+        "nativeQuarterSampleCount": 3744,
+        "pureNeutralRaySamples": 3744,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.287478,
+          -0.27176,
+          -0.225373,
+          -0.18905,
+          -0.165572
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      }
+    },
+    "dalvay-approach-over-named-lake": {
+      "wingStrict": {
+        "nativeQuarterSampleCount": 484,
+        "pureNeutralRaySamples": 484,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.108348,
+          -0.107522,
+          -0.104166,
+          -0.099225,
+          -0.0958
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      },
+      "entireGlassStrict": {
+        "nativeQuarterSampleCount": 876,
+        "pureNeutralRaySamples": 876,
+        "nonzeroAuthoredSkyMixSampleCount": 0,
+        "directionYQuantiles": [
+          -0.108348,
+          -0.107489,
+          -0.101737,
+          -0.076911,
+          -0.072741
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      }
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "wingStrict": {
+        "nativeQuarterSampleCount": 184,
+        "pureNeutralRaySamples": 0,
+        "nonzeroAuthoredSkyMixSampleCount": 184,
+        "directionYQuantiles": [
+          -0.039637,
+          -0.039636,
+          -0.037146,
+          -0.035481,
+          -0.03547
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.03243,
+          0.032433,
+          0.038815,
+          0.043373,
+          0.043402
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      },
+      "entireGlassStrict": {
+        "nativeQuarterSampleCount": 268,
+        "pureNeutralRaySamples": 0,
+        "nonzeroAuthoredSkyMixSampleCount": 268,
+        "directionYQuantiles": [
+          -0.039637,
+          -0.039635,
+          -0.037143,
+          -0.023848,
+          -0.020533
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.03243,
+          0.032436,
+          0.038825,
+          0.081256,
+          0.093864
+        ],
+        "sampleSkyMixShareGt10percent": 0.0
+      }
+    },
+    "dalvay-technical-sky-only": {
+      "wingStrict": {
+        "nativeQuarterSampleCount": 14320,
+        "pureNeutralRaySamples": 0,
+        "nonzeroAuthoredSkyMixSampleCount": 14320,
+        "directionYQuantiles": [
+          0.018118,
+          0.023555,
+          0.039205,
+          0.058265,
+          0.062494
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.286806,
+          0.318984,
+          0.415498,
+          0.53677,
+          0.563636
+        ],
+        "sampleSkyMixShareGt10percent": 1.0
+      },
+      "entireGlassStrict": {
+        "nativeQuarterSampleCount": 24212,
+        "pureNeutralRaySamples": 0,
+        "nonzeroAuthoredSkyMixSampleCount": 24212,
+        "directionYQuantiles": [
+          0.011432,
+          0.022569,
+          0.047036,
+          0.154019,
+          0.174335
+        ],
+        "skyMixQuantilesBeforeFresnel": [
+          0.248537,
+          0.313085,
+          0.465151,
+          0.986756,
+          1.0
+        ],
+        "sampleSkyMixShareGt10percent": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "preNativeReceiptSHA256": "0047279103d12b934875875eb6965850cd45e7c12e2cb50fc6c62e3eccf4dd22",
+  "nativeCandidateManifestSHA256": "6b07c74d99ab22af238878aecf326cc819d6756ee9eb2301cbc9b644ff431c40",
+  "nativeRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "disabledV1": {
+    "GLIssue": "1282 / INVALID_OPERATION when returning to cached custom material",
+    "acceptance": "V1 is excluded; receipt is negative control only."
+  },
+  "G2": {
+    "dalvay-lake-front-lawn": {
+      "authenticRC2Baseline": true,
+      "unchangedDrawsAndTriangles": [
+        104,
+        325840
+      ],
+      "unchangedTextures": 24,
+      "sameTickRawRGBARecovery": true,
+      "unmodifiedSkyAndDepth": true,
+      "cacheInvalidationsExercisingDeliberateTransitionsOnly": 6,
+      "steadyDrawsWithoutCacheInvalidation": 8,
+      "allRelevantGLEnumsZero": true,
+      "resourceCounts": {
+        "sky": [
+          200
+        ],
+        "pack": [
+          200
+        ],
+        "water": [],
+        "environment": []
+      },
+      "opticalSamplerAndProgramUsedOnExactPassOnly": true
+    },
+    "dalvay-principal-nw": {
+      "authenticRC2Baseline": true,
+      "unchangedDrawsAndTriangles": [
+        113,
+        344102
+      ],
+      "unchangedTextures": 26,
+      "sameTickRawRGBARecovery": true,
+      "unmodifiedSkyAndDepth": true,
+      "cacheInvalidationsExercisingDeliberateTransitionsOnly": 6,
+      "steadyDrawsWithoutCacheInvalidation": 8,
+      "allRelevantGLEnumsZero": true,
+      "resourceCounts": {
+        "sky": [
+          200
+        ],
+        "pack": [
+          200
+        ],
+        "water": [],
+        "environment": []
+      },
+      "opticalSamplerAndProgramUsedOnExactPassOnly": true
+    },
+    "dalvay-approach-over-named-lake": {
+      "authenticRC2Baseline": true,
+      "unchangedDrawsAndTriangles": [
+        105,
+        332890
+      ],
+      "unchangedTextures": 24,
+      "sameTickRawRGBARecovery": true,
+      "unmodifiedSkyAndDepth": true,
+      "cacheInvalidationsExercisingDeliberateTransitionsOnly": 6,
+      "steadyDrawsWithoutCacheInvalidation": 8,
+      "allRelevantGLEnumsZero": true,
+      "resourceCounts": {
+        "sky": [
+          200
+        ],
+        "pack": [
+          200
+        ],
+        "water": [],
+        "environment": []
+      },
+      "opticalSamplerAndProgramUsedOnExactPassOnly": true
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "authenticRC2Baseline": true,
+      "unchangedDrawsAndTriangles": [
+        106,
+        341014
+      ],
+      "unchangedTextures": 22,
+      "sameTickRawRGBARecovery": true,
+      "unmodifiedSkyAndDepth": true,
+      "cacheInvalidationsExercisingDeliberateTransitionsOnly": 6,
+      "steadyDrawsWithoutCacheInvalidation": 8,
+      "allRelevantGLEnumsZero": true,
+      "resourceCounts": {
+        "sky": [
+          200
+        ],
+        "pack": [
+          200
+        ],
+        "water": [],
+        "environment": []
+      },
+      "opticalSamplerAndProgramUsedOnExactPassOnly": true
+    }
+  }
+}

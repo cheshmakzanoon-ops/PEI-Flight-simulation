@@ -1,3 +1,4 @@
+import type {DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
 import {DalvaySocket} from './dalvay-exterior-socket.ts';
 import {SEACOW,seacowOwner,seacowSource,type SeacowSeat} from './seacow-exterior-seat.ts';
@@ -250,7 +251,7 @@ export class Buildings {
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
- private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;
+ private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private knightSeat?:KnightSeat;
@@ -362,7 +363,7 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
- enableDalvayExterior(seat:DalvaySeat){this.dalvaySeat=seat;}
+ enableDalvayExterior(seat:DalvaySeat,glazing?:DalvayGlazingSource){this.dalvaySeat=seat;this.dalvayGlass=glazing;}
  get dalvayExteriorActive(){return this.dalvay?.active===true;}
  enableSeacowExterior(seat:SeacowSeat){this.seacowSeat=seat;}
  get seacowExteriorActive(){return this.seacow?.view.visible===true;}
@@ -689,7 +690,13 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
-   if(dalvay&&dalvayBytes){this.dalvay?.dispose();this.dalvay=new DalvaySocket(this.scene,mesh,dalvayBytes,features.length,features[DALVAY.ordinal],dalvay);this.dalvay.sync();}
+   if(dalvay&&dalvayBytes){
+    const glazing=this.dalvayGlass;
+    this.dalvay?.dispose();
+    this.dalvay=new DalvaySocket(this.scene,mesh,dalvayBytes,features.length,features[DALVAY.ordinal],dalvay,glazing?
+     async signal=>(await import('./dalvay-art-packet.ts')).loadDalvay((import.meta.env?.BASE_URL??'/')+'art/',signal,fetch,glazing):undefined);
+    this.dalvay.sync();
+   }
    if(seacow&&seacowBytes)void this.promoteSeacow(mesh,seacowBytes,features.length,features[SEACOW.ordinal],seacow);
    if(knight&&knightBytes)void this.promoteKnight(mesh,knightBytes,features.length,features[KNIGHT_SEAT.ordinal],knight);
    if(primBytes&&features[POINT_PRIM.ordinal]){

@@ -1,8 +1,9 @@
 import * as T from 'three';
+import {bindDalvayGlazing,type DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY_PACKET as A} from './dalvay-manor.generated.ts';
 import {dalvayDigest} from './dalvay-exterior-seat.ts';import {dalvayFinish,type DalvayFinish} from './dalvay-exterior-material.ts';
 /** Input is authenticated before this structural reader constructs even one material. */
-export function decodeDalvay(raw:ArrayBuffer){
+export function decodeDalvay(raw:ArrayBuffer,glazing?:DalvayGlazingSource){
  if(raw.byteLength!==A.raw||new Uint16Array(Uint8Array.of(1,0).buffer)[0]!==1)return;
  const d=new DataView(raw);
  if(d.getUint32(0,true)!==0x31585644||d.getUint32(4,true)!==1||d.getUint32(8,true)!==5||d.getUint32(12,true)!==raw.byteLength)return;
@@ -22,6 +23,7 @@ export function decodeDalvay(raw:ArrayBuffer){
   const m=dalvayFinish(p.p),q=new T.Mesh(g,m);q.name=m.name;group.add(q);
   return {q,g,m,ind:g.index,pos:g.getAttribute('position'),norm:g.getAttribute('normal'),rgb:g.getAttribute('color'),uv:g.getAttribute('uv')};
  });
+ const glass=A.parts[4].material==='glazing'&&glazing?bindDalvayGlazing(owned[4].q,glazing):undefined;
  const original=group.position.clone(),zero=new T.Vector3(),one=new T.Vector3(1,1,1),unit=new T.Quaternion();let retired=false;
  const intact=()=>{
   if(retired||group.children.length!==5||!group.matrixAutoUpdate||!group.position.equals(original)||!group.quaternion.equals(unit)||!group.scale.equals(one)||group.layers.mask!==1)return false;
@@ -30,7 +32,7 @@ export function decodeDalvay(raw:ArrayBuffer){
    g.drawRange.start!==0||g.drawRange.count!==Infinity||g.groups.length!==0||q.layers.mask!==1||!q.matrixAutoUpdate||!q.position.equals(zero)||!q.quaternion.equals(unit)||!q.scale.equals(one))return false;}
   return true;
  };
- return {group,intact,dispose(){if(retired)return;retired=true;group.visible=false;for(const g of owned){g.g.dispose();g.m.dispose();}group.removeFromParent();}};
+ return {group,intact,dispose(){if(retired)return;retired=true;glass?.dispose();group.visible=false;for(const g of owned){g.g.dispose();g.m.dispose();}group.removeFromParent();}};
 }
 async function body(stream:ReadableStream<Uint8Array>|null,limit:number,signal:AbortSignal){
  if(!stream||signal.aborted)return;const r=stream.getReader(),out=new Uint8Array(limit);let n=0;
@@ -39,13 +41,13 @@ async function body(stream:ReadableStream<Uint8Array>|null,limit:number,signal:A
   if(done)return n===limit?out.buffer:undefined;if(value.byteLength>limit-n)return;out.set(value,n);n+=value.byteLength;}
  }finally{signal.removeEventListener('abort',cancel);cancel();r.releaseLock();}
 }
-export async function loadDalvay(base:string,signal:AbortSignal,fetcher:typeof fetch=fetch){
+export async function loadDalvay(base:string,signal:AbortSignal,fetcher:typeof fetch=fetch,glazing?:DalvayGlazingSource){
  try{
   // Deliberately opaque suffix: Fetch sees the exact signed internal-gzip bytes, even behind a static CDN.
   const res=await fetcher(base+A.file,{signal});
   if(res.status!==200||signal.aborted){void res.body?.cancel().catch(()=>undefined);return;}
   const wire=await body(res.body,A.wire,signal);if(!wire||await dalvayDigest(wire)!==A.wireHash||signal.aborted)return;
   const raw=await body(new Blob([wire]).stream().pipeThrough(new DecompressionStream('gzip')),A.raw,signal);
-  return raw&&await dalvayDigest(raw)===A.rawHash&&!signal.aborted?decodeDalvay(raw):undefined;
+  return raw&&await dalvayDigest(raw)===A.rawHash&&!signal.aborted?decodeDalvay(raw,glazing):undefined;
  }catch{return;}
 }

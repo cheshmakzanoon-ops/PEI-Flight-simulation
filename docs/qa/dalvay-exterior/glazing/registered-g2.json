@@ -1,0 +1,146 @@
+{
+  "protocol": "PEI/Dalvay RC2 glazing-independent/1",
+  "provenance": "Independent acceptance frozen before reviewing any experimental shader code, candidate stills, or screenshots; no camera reranking, effect retuning against used references, or altered model allowed within this gate.",
+  "artistIntentSHA256": "70b04b9e01ce06ffeec0da148d231f26f7b58d046fd280e6c975fb6f07c1e79f",
+  "exactRC2": {
+    "artifact": "public/art/dalvay-manor-exterior-v2.dvx",
+    "packedSHA256": "35b99bcb553c16a25960f98ea540a6313c315d622e5cc75f9aa27b2512ff6382",
+    "decodedSHA256": "f6cc105d9f22c2b469de95cc2b4f1b70805e080aba0562acba7e6833021661fd",
+    "actualSubmittedSHA256": "9b44073d2f242e79c27a906d143fa51c569b53b8a631b11ed22788f184cd6c98",
+    "unchangedRC2OwnerSocketSHA256": "00fadb5aefd47f69351ef1e3f3d11ae72d1412d5d9100f1265cb44a2a56dc14a",
+    "fullFiveBatches": 5,
+    "fullFaces": 24853,
+    "effectBatchIndex": 4,
+    "effectBatch": {
+      "role": "Dalvay · glazing",
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        9720.17952514535,
+        4.9196408152068525,
+        9481.48449424835,
+        1
+      ],
+      "vertices": 1216,
+      "triangles": 504,
+      "attrs": {
+        "position": {
+          "components": 3,
+          "expandedSHA": "f48af8084eb74e4f6236f1871b3fbca482cb3a3779bf65058e86cfd7894c80ef"
+        },
+        "normal": {
+          "components": 3,
+          "expandedSHA": "f271311315fce6938919f1f123933b1af073008d159d4edec52907dc0aa157d7"
+        },
+        "color": {
+          "components": 3,
+          "expandedSHA": "d8810caf4c634ea8590faada00d3b8741a90fa5a71bd188dbce88b0aff0317d0"
+        },
+        "uv": {
+          "components": 2,
+          "expandedSHA": "48d65e04f76c863d9af3f111b6c729ba90c0c09afd4cd8691d4af3fa25c6f404"
+        }
+      }
+    },
+    "indexSHA256": "b5f64be6ebda656f86b425c9e0498ded927694079ce53802b6aba01952b4a207",
+    "wingGlazingTriangleStartAndCount": [
+      426,
+      54
+    ]
+  },
+  "fixedEightCamerasSHA256": "d49454e18bf005fcb0eb43ee91b7701c24b00d71547e9e08f8ddf68000059108",
+  "referenceRC2NativeSHA256": "8dd3aa1a42a224d0ed0f45d12d84dcde646ecebbd9cb9a496a09efd14b1a0df8",
+  "fourLockedEvaluations": [
+    {
+      "name": "dalvay-lake-front-lawn",
+      "pose": {
+        "lon": -63.07337348670973,
+        "lat": 46.41470500130027,
+        "h": 11,
+        "east": 0.7026570000904184,
+        "south": 0.7115287346438889,
+        "nearDist": 71,
+        "nearAgl": 17,
+        "fixedEyeY": 20.46187512251545,
+        "fixedBaseH": 4.9196408152068525
+      },
+      "baselineRC2NativePngSHA256": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3"
+    },
+    {
+      "name": "dalvay-principal-nw",
+      "pose": {
+        "lon": -63.07337348670973,
+        "lat": 46.41470500130027,
+        "east": -0.7071067811865477,
+        "south": -0.7071067811865474,
+        "h": 14,
+        "nearDist": 105,
+        "nearAgl": 27,
+        "fixedEyeY": 31.97688423076105,
+        "fixedBaseH": 5
+      },
+      "baselineRC2NativePngSHA256": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09"
+    },
+    {
+      "name": "dalvay-approach-over-named-lake",
+      "pose": {
+        "lon": -63.07337348670973,
+        "lat": 46.41470500130027,
+        "h": 9,
+        "east": 0.7026570000904184,
+        "south": 0.7115287346438889,
+        "nearDist": 280.3845063322622,
+        "nearAgl": 33,
+        "fixedEyeY": 35,
+        "fixedBaseH": 5
+      },
+      "baselineRC2NativePngSHA256": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00"
+    },
+    {
+      "name": "dalvay-facing-mansion-across-named-lake",
+      "pose": {
+        "lon": -63.07337348670973,
+        "lat": 46.41470500130027,
+        "h": 9,
+        "east": 0.7026570000904184,
+        "south": 0.7115287346438889,
+        "nearDist": 486.9045274653363,
+        "nearAgl": 22,
+        "fixedEyeY": 24.96624803006169,
+        "fixedBaseH": 5
+      },
+      "baselineRC2NativePngSHA256": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50"
+    }
+  ],
+  "measurement": {
+    "imageWidth": 900,
+    "imageHeight": 600,
+    "rgbDifference": "max of absolute 8-bit RGB channel deltas; compare fixed framebuffer (canvas, no UI) at identical camera, weather/water, renderer and same clock tick; include RGBA byte comparison on no-op/fallback/restored controls.",
+    "glazingScope": "Every actual world-transformed triangle from batch 4, clipped at near/frustum and intersected analytically with each full pixel square; take union conservatively without removing occlusion by other subjects, dilate by two Chebyshev pixels. Active vs baseline: zero changed pixels of any channel outside, including the non-glass wall, roof, trim, trees, near/old shoreline and sky elsewhere. Do not compare by an artist-drawn rectangle or a loose building-wide silhouette.",
+    "dryLawnMeaningfulPixels": "Strict test calls a wing pixel eligible only if each of four quarter-pixel depth rays sees the same wing-glazing role, triangle range [426,480), after self-occlusion by all 24,853 signed faces, and the stock RC2 glazing owner is genuinely visible in the paired native renders. Absent an unambiguous ID pass, require overlap with stock vs object-removed contrast >2 as an occlusion-aware lower-bound proxy. Count at least 1,000 eligible pixels whose RGB maximum moves by >2, independent of outlines/mixed samples. Other three views have no minimum change count; inspect geometry/scope, not invented distant detail.",
+    "candidateFourPairSet": "RC2 baseline → optional effect active → exact RC2 baseline restored after switch-off; an explicit repeat-active state must equal the first active RGBA. Existing exterior actor remains mounted on every draw; run with ordinary preexisting Standard water settings unchanged and the frozen sky clock/state. Test separate valid no-op and fallback paths below.",
+    "daytimeGuardrails": "On the strict dry-lawn wing interior, no new clipped pixels (new RGB channel >=250 when prior <250) across more than 1% of eligible pixels, and no new broad white band or opaque mirror stripe after 1:1 inspection of the immutable capture. Filtered changes should vary between the differently oriented wings, not switch the whole band to a flat wash. This is an artistic guardrail in sRGB code-values, not a reflectance/polarization measurement."
+  },
+  "isolatedOpticalControls": [
+    "Finite for accepted inputs and extreme/near-zero derivatives. Reject or revert unverified texture, invalid dimensions/mips or non-finite controller input to the original material.",
+    "With fixed synthetic constant nonwhite above-horizon input, and all else equal, optical weight is higher at grazing than face-on, stays bounded (no additive full-strength glow), and varies continuously through measured angle steps. Record scalar weights/intervals for the implemented test seam, not field calibration.",
+    "For a deterministic sky/gradient proxy across the horizon including below it, change remains bounded and there is no abrupt tint jump, trim band, or horizon seam. Negative horizon direction contributes the reserved neutral fallback, not a view of underwater terrain or a fabricated building.",
+    "At greater screen sample footprint for identical source/direction, low-pass/LOD never becomes sharper. A high-frequency synthetic panorama or equivalent deterministic proof should attenuate as footprint grows, without unexpected wrap seams. Reused texture may use existing legal mip or derivative filtering, but must not allocate a new environment pass."
+  ],
+  "runtimeAndFailureControls": [
+    "Signed DVX bytes, actual indexed arrays, five mesh transforms/normals and batch count unchanged. Opaque depthWrite/depthTest and draw order/polygon overlap unchanged; no transparent pass, no environment capture/objects/interior, no added mesh, and no unrelated patches. Only batch 4 gets the optional material change. Stock material is its exact originally compiled state, not recalculated approximate fallback.",
+    "Within each fixed same-tick comparison, report exact equality of draw/indexed-triangle counts across all states, source batch identities, original actor rollback unaffected, zero GL/link errors, no new network asset or render-pass admissions. Existing verified simulation sky residency is reused without changing its texture object, filters, or other sky/water users. No software-render timing claim.",
+    "Ordinary compiled browser: no query or explicit stock veto never installs candidate; unavailable/invalid/unverified sky and lost actor/sky readiness use byte-identical RC2 materials and canvas RGB/A against matched stock with the same available sky/scene. Re-enable/reload on known valid texture only if the implementation supports and verifies it. Loss/restoration cannot mutate or reload world assets, and standard separately still loads only the exact signed exterior actor once. Test idle/fallback active grants distinctly; never claim a fallback matching stock if starting sky radiance changed between compared frames."
+  ],
+  "reviewStopAndReporting": "Code identity, input identities and all rendered poses must be locked before receiving visuals. Clearly separate structural/pixel agreement from subjective finish. Reject default shipping if it still looks like uniform dark plastic, a metallic/white coating, or if scope/fallback invariants fail. Permitted claim only: procedural reflection of existing simulated sky, with chosen aesthetic parameters. No measured pane roughness/IOR/coating, shoreline change, object reflections, interiors, or photorealistic finish."
+}

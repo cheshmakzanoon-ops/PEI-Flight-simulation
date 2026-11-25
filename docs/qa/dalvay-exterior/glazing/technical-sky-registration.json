@@ -1,0 +1,28 @@
+{
+  "scope": "Post-lock functional positive control to exercise upward sky-radiance branch, not a fifth appearance view, not a modification of the four original gates, not a new photographic match or survey. Proposed from frozen game XZ, terrain and model before any capture at this new lens. Ground-level vision could be occluded; if the qualified positive control cannot see real panes, retain neutral-tint description without moving the camera to manufacture a result.",
+  "originalGateSHA256": "b30ed9aadc6fe9d6449574287621e7af32fe42e70c2ca671a2a01ccbb46c570b",
+  "exactCodeSHA256": "32ab3ca62e943eb4bd1656135f21eaaf94dd29c5bbdd40564b571efec9b54c89",
+  "referencePlane": "Same signed 71m bearing and subject target as preregistered lawn. Existing regular N112 game ground at this XZ is Y=3.46187512251545; eye Y=5.11187512251545 is +1.65 m game AGL. No model or ground change.",
+  "view": {
+    "lon": -63.07337348670973,
+    "lat": 46.41470500130027,
+    "h": 11,
+    "east": 0.7026570000904184,
+    "south": 0.7115287346438889,
+    "nearDist": 71,
+    "nearAgl": 1.65,
+    "fixedEyeY": 5.11187512251545,
+    "fixedBaseH": 4.9196408152068525
+  },
+  "required": {
+    "sameSkyPassthroughCloudSamplerReal": true,
+    "sameMainScenarioWorldClock": true,
+    "oneNativeModelAndOriginalSkyFetch": true,
+    "exactRepeatRGBA": true,
+    "noOtherGeometryOrOwnerChanges": true,
+    "noAddedPass": true,
+    "zeroGLAndLinkErrors": true
+  },
+  "distinguishSkyFromUnderHorizonTint": "For one strictly QA pass expose a float defaulting to 1 on this batch, changing only weight of the sky texture reading in dvGlazing between the authentic panorama (1) and its unchanged neutral low input (0). Do not replace/reload panorama bytes, altered sky light, or other textures; the participant is the glazing fragment path only. Preserve all production source unchanged. Show nonzero (>2 at 50 whole-pane pixels after stock/without-subject occlusion) native RGB differences confined to upward rays of signed glazing and exact authentic-on restoration. Alternative tiny single-pane isolated WebGL compile against same source/witness texture mips can establish function, not photographic likeness.",
+  "supersedesUnrenderedDraft": "Earlier +1.80 m draft was never submitted for primary/secondary appearance or tested; use this single +1.65 m technical witness. If occluded, use detached actual WebGL optical-branch isolation, not a new camera."
+}

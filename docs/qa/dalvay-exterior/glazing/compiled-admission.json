@@ -1,0 +1,115 @@
+{
+  "candidateSourceSHA256": "32ab3ca62e943eb4bd1656135f21eaaf94dd29c5bbdd40564b571efec9b54c89",
+  "unmodifiedCompiledVirtualFlightReceiptSHA256": "617aa20af7605c1cde4a570f3526183989ffd6aa39d5b93d04810cc1fe2c39a2",
+  "matchedNativeAdmissionReceiptSHA256": "9caa961b172942f419831ac9ae8ebd359de313948865ab99605548cb54931788",
+  "verifiedExactDiagnosticArtShaderSHA256": "9a2ed65d915620de390cc1cf2d649f147f5c6180c46d74d2604375a9a71e7858",
+  "flight": {
+    "active": {
+      "site": "dalvay-lake-coastal-pass",
+      "glazing": "reflected",
+      "manor": "authored",
+      "travelM": 168.64,
+      "skyRequests": 1,
+      "artRequests": 1,
+      "moduleRequests": 1,
+      "lakeRequests": [],
+      "extraEnvironmentAssets": [],
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ]
+    },
+    "veto": {
+      "site": "dalvay-lake-coastal-pass",
+      "glazing": "stock",
+      "manor": "authored",
+      "travelM": 172.13,
+      "skyRequests": 1,
+      "artRequests": 1,
+      "moduleRequests": 1,
+      "lakeRequests": [],
+      "extraEnvironmentAssets": [],
+      "controls": [
+        "Begin flight",
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ]
+    }
+  },
+  "fixedCameraStockAuthenticAndRejectedSource": {
+    "untoggled": {
+      "sha256RGBAPng": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+      "certified": true,
+      "originalCompilerWithoutLocalGuard": true,
+      "zeroGLErrors": true,
+      "skyTransferModes": [
+        [
+          "fetch",
+          200
+        ]
+      ],
+      "skyTransferPackedSHA256": [
+        "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d"
+      ]
+    },
+    "veto": {
+      "sha256RGBAPng": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+      "certified": true,
+      "originalCompilerWithoutLocalGuard": true,
+      "zeroGLErrors": true,
+      "skyTransferModes": [
+        [
+          "fetch",
+          200
+        ]
+      ],
+      "skyTransferPackedSHA256": [
+        "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d"
+      ]
+    },
+    "bad-candidate": {
+      "sha256RGBAPng": "9a535d52432b8c19f7727d4cdb3ffdc5b972b008e4a0fa18246a4a6b16b321cb",
+      "certified": false,
+      "originalCompilerWithoutLocalGuard": true,
+      "zeroGLErrors": true,
+      "skyTransferModes": [
+        [
+          "fetch",
+          200
+        ],
+        [
+          "image",
+          200
+        ]
+      ],
+      "skyTransferPackedSHA256": [
+        "15a48ad9e4f99b41f7551164cc95b4d28ab0bf6b793f2409afad039197336f63",
+        "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d"
+      ]
+    },
+    "bad-veto": {
+      "sha256RGBAPng": "9a535d52432b8c19f7727d4cdb3ffdc5b972b008e4a0fa18246a4a6b16b321cb",
+      "certified": false,
+      "originalCompilerWithoutLocalGuard": true,
+      "zeroGLErrors": true,
+      "skyTransferModes": [
+        [
+          "fetch",
+          200
+        ],
+        [
+          "image",
+          200
+        ]
+      ],
+      "skyTransferPackedSHA256": [
+        "15a48ad9e4f99b41f7551164cc95b4d28ab0bf6b793f2409afad039197336f63",
+        "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d"
+      ]
+    }
+  },
+  "scope": "The test replaced the original Standard verifier fetch response with a different SHA, but let the legacy image fallback fetch the original valid panorama in both controls. This is matching known-world rejection, not a test of running after a totally absent mandatory sky asset. No additional optical asset, no authored pane hook on denial, no claim about device performance."
+}

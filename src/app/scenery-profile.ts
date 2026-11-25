@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Original local architectural study, never a terrain or general Detail replacement.
@@ -263,6 +263,11 @@ export function basilicaExteriorRequested(q:URLSearchParams){
 export function dalvayExteriorRequested(q:URLSearchParams){
  return q.has('dalvayExteriorStudy')&&!q.has('stockDalvayExterior')&&
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
+}
+
+/** Nested artistic finish only; neither lake optics nor ordinary manor art changes. */
+export function dalvayGlazingRequested(q:URLSearchParams){
+ return q.has('dalvayGlazingStudy')&&!q.has('stockDalvayGlazing')&&dalvayExteriorRequested(q);
 }
 
 /** Prince County documentary exterior; an ordinary comparison never enables it. */

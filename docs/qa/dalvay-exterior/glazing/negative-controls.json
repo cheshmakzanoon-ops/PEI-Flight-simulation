@@ -1,0 +1,28 @@
+{
+  "singleExteriorChange": {
+    "plantedPixelXY": [
+      16,
+      20
+    ],
+    "caseFrames": [
+      "active",
+      "repeat",
+      "requalified"
+    ],
+    "modifiedChannelByOne": true,
+    "expectedExitCode": 1,
+    "caught": "dalvay-lake-front-lawn changed pixels outside exact whole-glass +2px projection"
+  },
+  "alteredFallback": {
+    "plantedPixelXY": [
+      470,
+      340
+    ],
+    "caseFrames": [
+      "fallback"
+    ],
+    "modifiedChannelByOne": true,
+    "expectedExitCode": 1,
+    "caught": "dalvay-lake-front-lawn repeat/restored/no-op/fallback differs"
+  }
+}

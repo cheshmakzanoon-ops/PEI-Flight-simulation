@@ -1,0 +1,118 @@
+{
+  "glazingGateSHA256": "b30ed9aadc6fe9d6449574287621e7af32fe42e70c2ca671a2a01ccbb46c570b",
+  "candidateSourceSHA256": "32ab3ca62e943eb4bd1656135f21eaaf94dd29c5bbdd40564b571efec9b54c89",
+  "exactGeometrySHA256": "9b44073d2f242e79c27a906d143fa51c569b53b8a631b11ed22788f184cd6c98",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "method": "RGBA scope outside analytical pane union +2px measured against same-tick original RC2; RGB thresholds and >2 visible proxy from baseline vs same-tick secretly removed actor. No conclusions about actual material optics.",
+  "views": {
+    "dalvay-lake-front-lawn": {
+      "cameraAndFrustumMaxError": 3.637978807091713e-12,
+      "registeredRawAndRestoredSHA256": {
+        "base": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+        "active": "71441141fffa3201223da782439ba62893b5a261136dd51a561bdd1162518285",
+        "restored": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+        "repeat": "71441141fffa3201223da782439ba62893b5a261136dd51a561bdd1162518285",
+        "noOp": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+        "fallback": "60d58b8d40f951e1a31b39d8a50377c9ad688a67a5d5d850c09d5684a05114e3",
+        "withoutSubject": "48f0c527ad3f21982047a669bd426cbf002075e8ec07c902df0d0ca8ababced7"
+      },
+      "drawsAndTriangles": [
+        104,
+        325840
+      ],
+      "originalAndActiveChangesGt2": 7534,
+      "peakScreenChannelDelta": 14,
+      "alphaPixelsChanged": 0,
+      "exteriorTestedPixels": 519466,
+      "exteriorChangedRGBAAny": 0,
+      "firstExteriorWitnesses": [],
+      "strictVisibleWingProxy": 3294,
+      "strictWingMeaningfulGt2": 3294,
+      "strictWingNewGe250ClippedPixels": 0,
+      "strictPureGlassPixelsAllForms": 5693,
+      "fallbackNoOpRestoreAndRepeatBitExact": true
+    },
+    "dalvay-principal-nw": {
+      "cameraAndFrustumMaxError": 1.8189894035458565e-12,
+      "registeredRawAndRestoredSHA256": {
+        "base": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09",
+        "active": "6141deda7cc683606940d47543f70869aa20b28528788cf57052874ba5784712",
+        "restored": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09",
+        "repeat": "6141deda7cc683606940d47543f70869aa20b28528788cf57052874ba5784712",
+        "noOp": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09",
+        "fallback": "33f75f1570fd1c39ad3769e6ab9c416d903762a0a13152bfb1d2b10fc4a47c09",
+        "withoutSubject": "8b15521335023c213c2567dbab22a4b2ec460cf164c95e2325c7ee823bac762f"
+      },
+      "drawsAndTriangles": [
+        113,
+        344102
+      ],
+      "originalAndActiveChangesGt2": 479,
+      "peakScreenChannelDelta": 8,
+      "alphaPixelsChanged": 0,
+      "exteriorTestedPixels": 530814,
+      "exteriorChangedRGBAAny": 0,
+      "firstExteriorWitnesses": [],
+      "strictVisibleWingProxy": 7,
+      "strictWingMeaningfulGt2": 7,
+      "strictWingNewGe250ClippedPixels": 0,
+      "strictPureGlassPixelsAllForms": 936,
+      "fallbackNoOpRestoreAndRepeatBitExact": true
+    },
+    "dalvay-approach-over-named-lake": {
+      "cameraAndFrustumMaxError": 5.4569682106375694e-12,
+      "registeredRawAndRestoredSHA256": {
+        "base": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00",
+        "active": "b3a45f795f4cbc6f555c233f90286258175207c41faf74a46f4d1735a04879e9",
+        "restored": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00",
+        "repeat": "b3a45f795f4cbc6f555c233f90286258175207c41faf74a46f4d1735a04879e9",
+        "noOp": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00",
+        "fallback": "43fe2effc3141ec28446883daee8ff0dedcdeeaa37e56bdc11bc012efa7b9c00",
+        "withoutSubject": "15d13fae14c78d023d60507d13b6a84969c4ea2892306774a615016d2a6f0cea"
+      },
+      "drawsAndTriangles": [
+        105,
+        332890
+      ],
+      "originalAndActiveChangesGt2": 268,
+      "peakScreenChannelDelta": 7,
+      "alphaPixelsChanged": 0,
+      "exteriorTestedPixels": 537996,
+      "exteriorChangedRGBAAny": 0,
+      "firstExteriorWitnesses": [],
+      "strictVisibleWingProxy": 121,
+      "strictWingMeaningfulGt2": 57,
+      "strictWingNewGe250ClippedPixels": 0,
+      "strictPureGlassPixelsAllForms": 219,
+      "fallbackNoOpRestoreAndRepeatBitExact": true
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "cameraAndFrustumMaxError": 1.8189894035458565e-12,
+      "registeredRawAndRestoredSHA256": {
+        "base": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "active": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "restored": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "repeat": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "noOp": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "fallback": "bc0e7ec83502b13d2e34301dc531d3457c47365722b0c86e4310bb613abe5d50",
+        "withoutSubject": "089eb52a156778d0b3e2c4b18a209364e6f4ec406f3f53f21dc1489cad0870a9"
+      },
+      "drawsAndTriangles": [
+        106,
+        341014
+      ],
+      "originalAndActiveChangesGt2": 0,
+      "peakScreenChannelDelta": 0,
+      "alphaPixelsChanged": 0,
+      "exteriorTestedPixels": 539216,
+      "exteriorChangedRGBAAny": 0,
+      "firstExteriorWitnesses": [],
+      "strictVisibleWingProxy": 46,
+      "strictWingMeaningfulGt2": 0,
+      "strictWingNewGe250ClippedPixels": 0,
+      "strictPureGlassPixelsAllForms": 67,
+      "fallbackNoOpRestoreAndRepeatBitExact": true
+    }
+  },
+  "fails": []
+}

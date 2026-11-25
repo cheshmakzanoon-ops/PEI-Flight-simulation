@@ -1,0 +1,65 @@
+{
+  "naturalEyeTechnical": {
+    "result": "FAILS the predeclared 50 strict changed pixels >2 gate, not blocked by art occlusion; actual branch is weaker than visual bar. This is not a fifth appearance view.",
+    "fixedEyeY": 5.11187512251545,
+    "nativeOldTerrainY": 3.461875275807344,
+    "cameraLockSHA256": "f946c21222b53e18b9d4a8ffe0da4a4710f59cb75e528c3d9965140c5387d859",
+    "nativeFrameReceiptsSHA256": "fa5a69542c171e92185c8fea2b9bb3da1213b1e44276a67ea8894a9ff9d657ed",
+    "visibleStrictWingPixels": 3580,
+    "strictWingCausalDifferingPerCode": {
+      "0": 1445,
+      "1": 2127,
+      "2": 8
+    },
+    "actualSceneAnyCausalChanges": 4791,
+    "strictWingMeaningfulGt2": 0,
+    "actualMaxChannelDelta": 2,
+    "actualExteriorChanges": 0,
+    "sameSamplerStateAndExactRecovery": true,
+    "zeroActualGLErrors": true
+  },
+  "actualDetachedWebGLPositive": {
+    "result": "PASS: functional positive control only. Actual G2 function samples the authentic texture and the lower-horizon/near branch ignores it under fixed known rays; not broad gameplay appearance proof or a pixel-area test.",
+    "actualSkySHA256": "ad8b104c57f5ca62e051c674bb970e248e0fa04e264bf7ad61e5f32d2a1b7e7d",
+    "exactOpticalFunctionsSHA256": "c079011fb9306b4529d7c4ae9bcc77ac79a35b86483291bdcccf65e7ce963f2d",
+    "rawReceiptSHA256": "f5476a795e3ac493458b545604ab3651145ce1daf6f069141816d6db15eb4100",
+    "fixedShaderWitnessInputs": "Identity view; N=(0,0,1), normalize(V) input [0.89,-0.55,0.35] or flipped screen Y; 16x16 detached WebGL2 canvas, one raw center pixel read, near=.08; viewZ=72 or clipped .23; deterministic linear output. Empty diagnostic texture was never bound in the game.",
+    "rgbaOriginalUp": [
+      14,
+      20,
+      28,
+      255
+    ],
+    "rgbaEmptyTextureUp": [
+      12,
+      17,
+      24,
+      255
+    ],
+    "rgbaRestoredUp": [
+      14,
+      20,
+      28,
+      255
+    ],
+    "maxChannelDifference": 4,
+    "rgbaSameDown": [
+      15,
+      21,
+      27,
+      255
+    ],
+    "rgbaSameTooNear": [
+      11,
+      17,
+      23,
+      255
+    ],
+    "zeroActualGLErrors": true,
+    "harnessHashes": {
+      "index.html": "101ce96bbe1e0aa41159aca7110a6a684e60e763bf098a825ae36907f2b59380",
+      "extract.mjs": "07774a531f6870d33a13f6119600d86169b127430bac0fdf06f43fa0c75cadd5",
+      "run.py": "b93f9705133cb4c490671a7587ebee44c56bbec9871379c28816b0f9486f3fc2"
+    }
+  }
+}
