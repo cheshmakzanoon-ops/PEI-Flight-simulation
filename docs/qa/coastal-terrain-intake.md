@@ -31,3 +31,25 @@ python3 tools/qa/coastal-terrain-reconcile.py --stock "$scratch/stock.json" \
 ```
 
 The optional audit makes bounded range reads for six public elevation windows. It does not run during ordinary builds or inside the game.
+
+## Can the existing inland relief help?
+
+Not at the three held lighthouse anchors. The separately shipped
+[`surveyRelief` preview](adaptive-relief.md) uses 16 m elevation and is
+restricted to guarded inland cells. The Cape Egmont terrain tile has no
+optional member. Cape Tryon and Panmure have members for other ground in
+their owning tiles, but no allowed cells in the five-by-five neighborhoods
+around the anchors. Point Prim’s separate local correction remains
+independent. East and West Point already have their own finer coastal
+survey owners.
+
+The [scope receipt](coastal-adaptive-scope.json) uses the verified archive
+bytes and the actual adaptive mesh builder. To rerun:
+
+```sh
+scratch=$(mktemp -d)
+./node_modules/.bin/esbuild tools/qa/coastal-adaptive-scope.mjs \
+  --bundle --platform=node --format=esm '--define:import.meta.env.BASE_URL="/"' \
+  --outfile="$scratch/adaptive-audit.mjs"
+node "$scratch/adaptive-audit.mjs"
+```

@@ -1,0 +1,60 @@
+{
+  "scope": "Decoded published 16m optional members only; no assertion of ground kept outside these cells.",
+  "sources": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  },
+  "byAnchor": {
+    "cape-egmont": {
+      "id": "4-13",
+      "surveyAlreadyOwns": false,
+      "seedAvailable": false
+    },
+    "west-point": {
+      "id": "1-9",
+      "surveyAlreadyOwns": true,
+      "seedAvailable": false
+    },
+    "cape-tryon": {
+      "id": "12-10",
+      "surveyAlreadyOwns": false,
+      "seedAvailable": true,
+      "indexCellN": 73,
+      "renderRefinedCount": 73,
+      "mappingCell": [
+        16,
+        82
+      ],
+      "nearestCandidateCellsIn5x5": 0
+    },
+    "point-prim": {
+      "id": "18-19",
+      "surveyAlreadyOwns": false,
+      "seedAvailable": true,
+      "indexCellN": 24,
+      "renderRefinedCount": 24,
+      "mappingCell": [
+        3,
+        101
+      ],
+      "nearestCandidateCellsIn5x5": 0
+    },
+    "panmure": {
+      "id": "25-18",
+      "surveyAlreadyOwns": false,
+      "seedAvailable": true,
+      "indexCellN": 2,
+      "renderRefinedCount": 2,
+      "mappingCell": [
+        26,
+        14
+      ],
+      "nearestCandidateCellsIn5x5": 0
+    },
+    "east-point": {
+      "id": "31-12",
+      "surveyAlreadyOwns": true,
+      "seedAvailable": true
+    }
+  }
+}
