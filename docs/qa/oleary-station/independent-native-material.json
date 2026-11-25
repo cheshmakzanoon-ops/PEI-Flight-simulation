@@ -1,0 +1,559 @@
+{
+  "nativeEvidenceSHA256": "8329681bbceff3998e3c0e7304787434123fa6922c075f4b22cef0e81b43ea4d",
+  "cameraLockSHA256": "52f91ce6fb7713db509a121de64d078accbccb4be291ac01b843c86af47f2d6e",
+  "localIndependentMaskSHA256": "862ae975f5e12368540a271f863011a38c076fe3401f02ad5616380cdbb16a72",
+  "reportedActorWire": "685b4b3f23345c66dd588d74c307e9a4e82cc2b5c3d12cfd2ad159bb3b1ad681",
+  "views": {
+    "near-raised-roof": {
+      "registeredViewMatrixMaxDelta": 2.220446049250313e-16,
+      "registeredProjectionMaxDelta": 2.220446049250313e-16,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "pairs": {
+        "on__stock": {
+          "rgbDifferentAny": 126673,
+          "rgbDifferent2": 126671,
+          "rgbDifferent6": 126483,
+          "alphaDifferent": 0,
+          "insideMax": 147,
+          "insideMedianCodeAmongChanged": 41.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 134618,
+          "recoveredOriginalBackgroundAlphaInsideOnly": 0,
+          "pixelsExactlyEqualToEmptyAlphaOnEitherSide": 0
+        },
+        "on__empty": {
+          "rgbDifferentAny": 88480,
+          "rgbDifferent2": 88480,
+          "rgbDifferent6": 88480,
+          "alphaDifferent": 0,
+          "insideMax": 157,
+          "insideMedianCodeAmongChanged": 80.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 92403,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 0
+        },
+        "stock__empty": {
+          "rgbDifferentAny": 126673,
+          "rgbDifferent2": 126673,
+          "rgbDifferent6": 126655,
+          "alphaDifferent": 0,
+          "insideMax": 88,
+          "insideMedianCodeAmongChanged": 52.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 134618,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 0
+        },
+        "on__roofAlbedoOnly": {
+          "rgbDifferentAny": 50062,
+          "rgbDifferent2": 4500,
+          "rgbDifferent6": 3,
+          "alphaDifferent": 0,
+          "insideMax": 8,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 74519
+        },
+        "roofAlbedoOnly__roofUnfinished": {
+          "rgbDifferentAny": 60731,
+          "rgbDifferent2": 32251,
+          "rgbDifferent6": 7601,
+          "alphaDifferent": 0,
+          "insideMax": 25,
+          "insideMedianCodeAmongChanged": 3.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 74519
+        },
+        "on__bodyUnfinished": {
+          "rgbDifferentAny": 15880,
+          "rgbDifferent2": 5756,
+          "rgbDifferent6": 176,
+          "alphaDifferent": 0,
+          "insideMax": 16,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 90186
+        },
+        "on__allUnfinished": {
+          "rgbDifferentAny": 76619,
+          "rgbDifferent2": 38592,
+          "rgbDifferent6": 8515,
+          "alphaDifferent": 0,
+          "insideMax": 31,
+          "insideMedianCodeAmongChanged": 3.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 92403
+        },
+        "on__restored": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        },
+        "on__remounted": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        }
+      }
+    },
+    "east-north-platform": {
+      "registeredViewMatrixMaxDelta": 4.3655745685100555e-11,
+      "registeredProjectionMaxDelta": 2.220446049250313e-16,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "pairs": {
+        "on__stock": {
+          "rgbDifferentAny": 157056,
+          "rgbDifferent2": 155099,
+          "rgbDifferent6": 153028,
+          "alphaDifferent": 0,
+          "insideMax": 167,
+          "insideMedianCodeAmongChanged": 60.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 182955,
+          "recoveredOriginalBackgroundAlphaInsideOnly": 0,
+          "pixelsExactlyEqualToEmptyAlphaOnEitherSide": 0
+        },
+        "on__empty": {
+          "rgbDifferentAny": 103234,
+          "rgbDifferent2": 103226,
+          "rgbDifferent6": 103143,
+          "alphaDifferent": 40,
+          "insideMax": 166,
+          "insideMedianCodeAmongChanged": 84.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 109250,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 40
+        },
+        "stock__empty": {
+          "rgbDifferentAny": 156411,
+          "rgbDifferent2": 152958,
+          "rgbDifferent6": 145872,
+          "alphaDifferent": 40,
+          "insideMax": 157,
+          "insideMedianCodeAmongChanged": 72.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 182955,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 40
+        },
+        "on__roofAlbedoOnly": {
+          "rgbDifferentAny": 25291,
+          "rgbDifferent2": 6777,
+          "rgbDifferent6": 304,
+          "alphaDifferent": 0,
+          "insideMax": 11,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 47436
+        },
+        "roofAlbedoOnly__roofUnfinished": {
+          "rgbDifferentAny": 24701,
+          "rgbDifferent2": 11417,
+          "rgbDifferent6": 2769,
+          "alphaDifferent": 0,
+          "insideMax": 25,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 47436
+        },
+        "on__bodyUnfinished": {
+          "rgbDifferentAny": 49456,
+          "rgbDifferent2": 8964,
+          "rgbDifferent6": 842,
+          "alphaDifferent": 0,
+          "insideMax": 19,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 84093
+        },
+        "on__allUnfinished": {
+          "rgbDifferentAny": 74570,
+          "rgbDifferent2": 22293,
+          "rgbDifferent6": 4516,
+          "alphaDifferent": 0,
+          "insideMax": 32,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 108970
+        },
+        "on__restored": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        },
+        "on__remounted": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        }
+      }
+    },
+    "west-freight-south": {
+      "registeredViewMatrixMaxDelta": 2.9103830456733704e-11,
+      "registeredProjectionMaxDelta": 2.220446049250313e-16,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "pairs": {
+        "on__stock": {
+          "rgbDifferentAny": 157879,
+          "rgbDifferent2": 157296,
+          "rgbDifferent6": 156646,
+          "alphaDifferent": 68,
+          "insideMax": 148,
+          "insideMedianCodeAmongChanged": 71.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 182675,
+          "recoveredOriginalBackgroundAlphaInsideOnly": 68,
+          "pixelsExactlyEqualToEmptyAlphaOnEitherSide": 65
+        },
+        "on__empty": {
+          "rgbDifferentAny": 103118,
+          "rgbDifferent2": 103116,
+          "rgbDifferent6": 102840,
+          "alphaDifferent": 256,
+          "insideMax": 174,
+          "insideMedianCodeAmongChanged": 88.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 109847,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 256
+        },
+        "stock__empty": {
+          "rgbDifferentAny": 157879,
+          "rgbDifferent2": 157238,
+          "rgbDifferent6": 156230,
+          "alphaDifferent": 321,
+          "insideMax": 145,
+          "insideMedianCodeAmongChanged": 69.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 182675,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 321
+        },
+        "on__roofAlbedoOnly": {
+          "rgbDifferentAny": 17560,
+          "rgbDifferent2": 195,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 4,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 47032
+        },
+        "roofAlbedoOnly__roofUnfinished": {
+          "rgbDifferentAny": 24422,
+          "rgbDifferent2": 7456,
+          "rgbDifferent6": 1247,
+          "alphaDifferent": 0,
+          "insideMax": 20,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 47032
+        },
+        "on__bodyUnfinished": {
+          "rgbDifferentAny": 56245,
+          "rgbDifferent2": 10780,
+          "rgbDifferent6": 2844,
+          "alphaDifferent": 0,
+          "insideMax": 34,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 83059
+        },
+        "on__allUnfinished": {
+          "rgbDifferentAny": 80467,
+          "rgbDifferent2": 18201,
+          "rgbDifferent6": 4045,
+          "alphaDifferent": 0,
+          "insideMax": 34,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 109285
+        },
+        "on__restored": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        },
+        "on__remounted": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        }
+      }
+    },
+    "near-east-material": {
+      "registeredViewMatrixMaxDelta": 1.4551915228366852e-11,
+      "registeredProjectionMaxDelta": 2.220446049250313e-16,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "pairs": {
+        "on__stock": {
+          "rgbDifferentAny": 417097,
+          "rgbDifferent2": 416913,
+          "rgbDifferent6": 416347,
+          "alphaDifferent": 0,
+          "insideMax": 176,
+          "insideMedianCodeAmongChanged": 66.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 486626,
+          "recoveredOriginalBackgroundAlphaInsideOnly": 0,
+          "pixelsExactlyEqualToEmptyAlphaOnEitherSide": 0
+        },
+        "on__empty": {
+          "rgbDifferentAny": 326446,
+          "rgbDifferent2": 326433,
+          "rgbDifferent6": 326303,
+          "alphaDifferent": 53,
+          "insideMax": 184,
+          "insideMedianCodeAmongChanged": 80.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 335719,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 53
+        },
+        "stock__empty": {
+          "rgbDifferentAny": 413603,
+          "rgbDifferent2": 399819,
+          "rgbDifferent6": 382634,
+          "alphaDifferent": 53,
+          "insideMax": 160,
+          "insideMedianCodeAmongChanged": 66.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 486626,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 53
+        },
+        "on__roofAlbedoOnly": {
+          "rgbDifferentAny": 51729,
+          "rgbDifferent2": 23456,
+          "rgbDifferent6": 4373,
+          "alphaDifferent": 0,
+          "insideMax": 36,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 147741
+        },
+        "roofAlbedoOnly__roofUnfinished": {
+          "rgbDifferentAny": 49042,
+          "rgbDifferent2": 22644,
+          "rgbDifferent6": 5300,
+          "alphaDifferent": 0,
+          "insideMax": 24,
+          "insideMedianCodeAmongChanged": 2.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 147741
+        },
+        "on__bodyUnfinished": {
+          "rgbDifferentAny": 189895,
+          "rgbDifferent2": 38578,
+          "rgbDifferent6": 3819,
+          "alphaDifferent": 0,
+          "insideMax": 29,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 285595
+        },
+        "on__allUnfinished": {
+          "rgbDifferentAny": 241422,
+          "rgbDifferent2": 67723,
+          "rgbDifferent6": 13158,
+          "alphaDifferent": 0,
+          "insideMax": 33,
+          "insideMedianCodeAmongChanged": 1.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 334563
+        },
+        "on__restored": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        },
+        "on__remounted": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        }
+      }
+    },
+    "distance-fade": {
+      "registeredViewMatrixMaxDelta": 2.9103830456733704e-11,
+      "registeredProjectionMaxDelta": 2.220446049250313e-16,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "pairs": {
+        "on__stock": {
+          "rgbDifferentAny": 1534,
+          "rgbDifferent2": 1532,
+          "rgbDifferent6": 1499,
+          "alphaDifferent": 0,
+          "insideMax": 120,
+          "insideMedianCodeAmongChanged": 31.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 3100,
+          "recoveredOriginalBackgroundAlphaInsideOnly": 0,
+          "pixelsExactlyEqualToEmptyAlphaOnEitherSide": 0
+        },
+        "on__empty": {
+          "rgbDifferentAny": 861,
+          "rgbDifferent2": 861,
+          "rgbDifferent6": 858,
+          "alphaDifferent": 0,
+          "insideMax": 131,
+          "insideMedianCodeAmongChanged": 58.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 2176,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 0
+        },
+        "stock__empty": {
+          "rgbDifferentAny": 1534,
+          "rgbDifferent2": 1530,
+          "rgbDifferent6": 1477,
+          "alphaDifferent": 0,
+          "insideMax": 118,
+          "insideMedianCodeAmongChanged": 32.0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 3100,
+          "diagnosticEmptyAlphaDeltaInsideOnly": 0
+        },
+        "on__roofAlbedoOnly": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 1143
+        },
+        "roofAlbedoOnly__roofUnfinished": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 1143
+        },
+        "on__bodyUnfinished": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 1889
+        },
+        "on__allUnfinished": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 2176
+        },
+        "on__restored": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        },
+        "on__remounted": {
+          "rgbDifferentAny": 0,
+          "rgbDifferent2": 0,
+          "rgbDifferent6": 0,
+          "alphaDifferent": 0,
+          "insideMax": 0,
+          "insideMedianCodeAmongChanged": 0,
+          "outsideMax": 0,
+          "outsideDifferentAny": 0,
+          "maskArea": 0
+        }
+      }
+    }
+  },
+  "limits": "Full unchanged stock scene and reciprocal qualitative/photo-date review remain required. Software GL and fixed cameras are not device, free-flight or 1:1 historical survey substitutes. Per-part scopes are conservative unsigned depth, not visible pixels."
+}

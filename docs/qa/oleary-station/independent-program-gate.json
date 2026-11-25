@@ -1,0 +1,91 @@
+{
+  "readinessManifestSHA256": "e029cab8f18ea1904765884a257868cadb38a493514c485cc86ec58561863fd5",
+  "O1DNativeManifestSHA256": "8329681bbceff3998e3c0e7304787434123fa6922c075f4b22cef0e81b43ea4d",
+  "O1EActiveCase": {
+    "authored": {
+      "matchedRGBAOrRGBOnDiskByIndependentDigest": "9e1e9b8be2db76460243bc15256a796281577887cbb1be427efadb21078360c5",
+      "networkPacket": [
+        200
+      ],
+      "networkModule": [
+        200
+      ],
+      "actualLinkedPrograms": {
+        "before": true,
+        "compileRevision": "187",
+        "checks": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "materialCount": 5
+      },
+      "rendererAfterGL": 0,
+      "sameExactOriginalObject": false,
+      "oldVertexCount": 32049,
+      "activeIndexElements": 32007
+    },
+    "bad-shader": {
+      "matchedRGBAOrRGBOnDiskByIndependentDigest": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "networkPacket": [
+        200
+      ],
+      "networkModule": [
+        200
+      ],
+      "actualLinkedPrograms": {
+        "before": true,
+        "compileRevision": "187",
+        "checks": [
+          true,
+          true,
+          true,
+          false,
+          true
+        ],
+        "materialCount": 5
+      },
+      "rendererAfterGL": 0,
+      "sameExactOriginalObject": true,
+      "oldVertexCount": 32049,
+      "activeIndexElements": 0,
+      "RGBAOrRGBMaxDiffFromScopedStock": 0
+    },
+    "bad-body": {
+      "matchedRGBAOrRGBOnDiskByIndependentDigest": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "networkPacket": [
+        200
+      ],
+      "networkModule": [
+        200
+      ],
+      "actualLinkedPrograms": null,
+      "rendererAfterGL": 0,
+      "sameExactOriginalObject": true,
+      "oldVertexCount": 32049,
+      "activeIndexElements": 0,
+      "RGBAOrRGBMaxDiffFromScopedStock": 0
+    },
+    "stock": {
+      "matchedRGBAOrRGBOnDiskByIndependentDigest": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "networkPacket": [],
+      "networkModule": [],
+      "actualLinkedPrograms": null,
+      "rendererAfterGL": 0,
+      "sameExactOriginalObject": true,
+      "oldVertexCount": 32049,
+      "activeIndexElements": 0
+    }
+  },
+  "O1DvsO1EAppearance": {
+    "sameEncoderWholeFramePNGBytesSHA256": "9e1e9b8be2db76460243bc15256a796281577887cbb1be427efadb21078360c5",
+    "unchangedRGBPixelsInsideSignedStationUnion": 134618,
+    "unchangedRGBAllOriginalOpaquePixels": 537943,
+    "originalTranslucentBackgroundPixelsDifferentCaptureEncoding": 2057,
+    "stationNativeChangePixelsGt2": 126671,
+    "nativeChangedMaxCodeOutsideScope": 0
+  },
+  "limits": "Real native fixed lens, Chromium SwiftShader. No flight/path, arbitrary WebXR/alternate lighting, timed GPU measurement, or broad visual certification. Browser-composited O1E suitable compared with O1D canvas capture on otherwise matching opaque pixels only."
+}

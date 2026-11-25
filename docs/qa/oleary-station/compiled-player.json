@@ -1,0 +1,149 @@
+{
+  "active": {
+    "site": "oleary-railway-low",
+    "initial": {
+      "phase": "dispatch",
+      "site": "oleary-railway-low",
+      "cam": "Chase",
+      "x": -77936.02472127882,
+      "z": -23991.395607205155,
+      "alt": 94.79701603568265,
+      "art": "stock",
+      "heading": 3.857177646907468,
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": null,
+      "detail": {
+        "ready": 0,
+        "loading": 3,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": false,
+      "layerWarnings": [],
+      "draws": 166,
+      "triangles": 255576,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "approach": {
+      "phase": "flight",
+      "site": "oleary-railway-low",
+      "cam": "Chase",
+      "x": -78027.33718200168,
+      "z": -23879.16815394508,
+      "alt": 95.67077092586847,
+      "art": "authored",
+      "heading": 3.857177646907468,
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 6,
+        "ready": 6,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 165,
+      "triangles": 342362,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "stationView": {
+      "phase": "flight",
+      "site": "oleary-railway-low",
+      "cam": "Chase",
+      "x": -78536.5152367191,
+      "z": -23253.418095451587,
+      "alt": 101.41806078065915,
+      "art": "authored",
+      "heading": 3.857177646907468,
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 6,
+        "ready": 6,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 163,
+      "triangles": 336729,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false,
+      "pngSHA256": "0b4381c6132e64e65728a6b72178b500bd510200d8198520ff6fdddd2cffb8ec"
+    },
+    "paused": {
+      "phase": "paused",
+      "site": "oleary-railway-low",
+      "cam": "Wide chase",
+      "x": -78612.9593211129,
+      "z": -23159.47807924155,
+      "alt": 102.2988933305667,
+      "art": "authored",
+      "heading": 3.857177646907468,
+      "lake": null,
+      "waterAdmission": "idle",
+      "buildings": {
+        "wanted": 6,
+        "ready": 6,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "detail": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "roads": true,
+      "layerWarnings": [],
+      "draws": 162,
+      "triangles": 331629,
+      "GLerror": 0,
+      "contextLost": false,
+      "injectedQA": false
+    },
+    "distanceAtApproachM": 144.68,
+    "deltaFromDispatchAtPauseM": 1072.53,
+    "assetCodes": [
+      200
+    ],
+    "assetCount": 1,
+    "wireSHA256": "685b4b3f23345c66dd588d74c307e9a4e82cc2b5c3d12cfd2ad159bb3b1ad681",
+    "moduleCount": 1,
+    "waterRequests": [],
+    "expectedFaultConsole": [],
+    "errors": [],
+    "controls": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Escape \u2192 Pause"
+    ]
+  }
+}

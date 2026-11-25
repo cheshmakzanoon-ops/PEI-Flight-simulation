@@ -1,4 +1,6 @@
 import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWharfSpans,type WharfLoader,type WharfSpan} from './spinnakers-standard.ts';
+import {OLEARY,olearyAtlasOwner,type OlearySeat} from './oleary-railway/authority.ts';
+import {OlearySocket} from './oleary-railway/socket.ts';
 import type {DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
 import {DalvaySocket} from './dalvay-exterior-socket.ts';
@@ -284,6 +286,7 @@ export class Buildings {
   }).catch(()=>{/** A missing optional package never hides the stock shells. */});
  }
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
+ private olearySeat?:OlearySeat;private oleary?:OlearySocket;
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
@@ -396,6 +399,8 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ enableOlearyExterior(seat:OlearySeat){this.olearySeat=seat;}
+ get olearyExteriorActive(){return this.oleary?.active===true;}
  enableDalvayExterior(seat:DalvaySeat,glazing?:DalvayGlazingSource){this.dalvaySeat=seat;this.dalvayGlass=glazing;}
  get dalvayExteriorActive(){return this.dalvay?.active===true;}
  enableSeacowExterior(seat:SeacowSeat){this.seacowSeat=seat;}
@@ -508,7 +513,7 @@ export class Buildings {
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
-  this.syncSourisEast();this.syncSeacow();this.syncKnight();this.dalvay?.sync();
+  this.syncSourisEast();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -516,6 +521,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.knight?.owner){this.knight.retire();this.knight=undefined;}
@@ -670,8 +676,9 @@ export class Buildings {
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
    const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
    let seacowBytes:ArrayBuffer|undefined;
+   const oleary=this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile)?this.olearySeat:undefined;
    const dalvay=this.dalvaySeat&&dalvayOwner(this.atlasHash,tile)?this.dalvaySeat:undefined;
-   let dalvayBytes:ArrayBuffer|undefined;
+   let dalvayBytes:ArrayBuffer|undefined,olearyBytes:ArrayBuffer|undefined;
    const knight=this.knightSeat&&knightOwns(this.atlasHash,tile)?this.knightSeat:undefined;
    let knightBytes:ArrayBuffer|undefined;
    const tryPointPrim=this.pointPrimEnabled&&pointPrimOwner(this.atlasHash,tile);
@@ -683,7 +690,7 @@ export class Buildings {
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -692,6 +699,7 @@ export class Buildings {
     if(tapped)observed=raw;
     if(seacow)seacowBytes=raw;
     if(dalvay)dalvayBytes=raw;
+    if(oleary)olearyBytes=raw;
     if(knight)knightBytes=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
@@ -726,12 +734,15 @@ export class Buildings {
    const church=features===this.pinnedChurch?this.churchArt:undefined;
    const trackWharf=!!this.standardWharf&&downtownVerified&&downtown?.id===SPINNAKERS_TILE&&downtown.sha256===SPINNAKERS_SHELLS.recordBytesHash&&
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(trackWharf&&standardWharfDraw(mesh.geometry,mesh.userData.spinnakersSpans)){
     const mask=authenticatedOwnerCohort(mesh);
     if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};
+   }
+   if(oleary&&olearyBytes){
+    this.oleary?.dispose();this.oleary=new OlearySocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],oleary);this.oleary.sync();
    }
    if(dalvay&&dalvayBytes){
     const glazing=this.dalvayGlass;

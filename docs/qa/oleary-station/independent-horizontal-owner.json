@@ -1,0 +1,172 @@
+{
+  "decision": "POSITIVE HORIZONTAL OWNER ONLY: public address service formally cross-references predesignation PID to successor, and only one matching original/provincial building polygon lies in successor. The exact present-day law/history of the two parcels is not inferred. No vertical or runtime qualification yet.",
+  "registry": {
+    "placeNumber": 20441,
+    "formalDate": "2015-03-04",
+    "nationRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=20441",
+    "declaredParcelIn2015": "909747",
+    "officialPEIFinalDesignation": "https://www.princeedwardisland.ca/sites/default/files/publications/royal_gazette/20150314.pdf",
+    "legacyParcelScanSHA256": "32bd2a7dd6c1468bcd4bea695004fbc2b3de47043d2e85a4765725b8e881181f",
+    "currentCivicPID": "1103332",
+    "previousCivicPID": "909747",
+    "civicAddressSource": "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0",
+    "civicAddressSourceSHA256": "f46c4c0049ffd18092f29af2cae8efec61be92a3b854915ec1474f0061e85f34",
+    "civicOriginalObject": 56725,
+    "civicAccessClassification": "MULTI ACCESS\\MULTI BLDG",
+    "effectiveCurrentParcelWGS84SHA256": "544daf468c75d250f0cf37f2bf13bd174cab7d02259712f8aa0543eabe1af972",
+    "officialParcelSource": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/FeatureServer/0",
+    "currentParcelAreaM2": 1721.4759635685962,
+    "oldParcelAreaM2": 363.5505964895789,
+    "stockFootprintIntersectsCurrentEntirely": true,
+    "stockFootprintDistanceFromHistoricalParcelM": 27.25745445059326,
+    "physicalAddressPinGapToRoofProjectionM": 43.01094044861388,
+    "multiBuildingCaveat": "Current official civic record explicitly maps 1103332 from 909747 and labels multiple accesses/buildings. Identification does not therefore rely on distance to the civic pin, it relies on exact polygons and relative venue controls. No claim for when, why or legal status of subdivision or for any personal owner.",
+    "currentCivicOfficialVectorQuery": "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0/query?where=OBJECTID%3D56725&outFields=OBJECTID%2CSTREET_NO%2CSTREET_NM%2CCOMM_NM%2CPID%2CO_PID%2Cpid2%2CINFO&returnGeometry=true&outSR=4326&f=geojson",
+    "currentParcelOfficialVectorQuery": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/FeatureServer/0/query?where=PID%3D%271103332%27&outFields=PID&returnGeometry=true&outSR=4326&f=geojson",
+    "legacyParcelOfficialVectorQuery": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/FeatureServer/0/query?where=PID%3D%27909747%27&outFields=PID&returnGeometry=true&outSR=4326&f=geojson",
+    "civicPinDistanceFromLegacyPIDBoundaryM": 1.8258662186182195
+  },
+  "lockedOriginal": {
+    "id": "q20213/431",
+    "stockTile": {
+      "ownerTile": "q20213",
+      "sha256": "288874f91b78271c99fc53fc1776cc540b0a6445f7486701d551dff01452c8b0",
+      "offset": 3427851,
+      "bytes": 24668,
+      "allSourceRows": 542
+    },
+    "rowOrdinalZeroBased": 431,
+    "rawRoundedLonLatRingOpen": [
+      [
+        -64.225649,
+        46.707706
+      ],
+      [
+        -64.225499,
+        46.707571
+      ],
+      [
+        -64.225606,
+        46.707515
+      ],
+      [
+        -64.225757,
+        46.707649
+      ]
+    ],
+    "footprintJSONSHA256": "7f3576dd5aa10264b4fe9321ca416b8be0b1ec0ba4feda55bbb1bc7d5b77241e",
+    "featureJSONSHA256": "ed1aca976f1b29d77b32c601bc9cae4477f7cf50a2b5133bc04a70d5f9627700",
+    "centroidLonLat": [
+      -64.22562788576779,
+      46.70761039957321
+    ],
+    "centroidGameXZ": {
+      "X": -78729.85614635696,
+      "Z": -23078.19701513572
+    },
+    "stockPlanarFootprintM2": 195.9350456396338,
+    "stockTerrainTileHorizontalOnly": [
+      3,
+      7
+    ]
+  },
+  "footprintCrossCheck": {
+    "anyGenuineStockRowsWithinSuccessor": 1,
+    "PEIBuildingsWithinSuccessor": 1,
+    "OSMBuildingWaysWithinSuccessor": 2,
+    "PEIObjectID": 12804,
+    "PEIAreaM2": 219.95038608283852,
+    "overlapM2": 195.93504563963387,
+    "IoU": 0.8908147384012327,
+    "nearestUnrelatedStockRowsByPlanarDistanceM": [
+      [
+        11.202352292191028,
+        "q20213/192"
+      ],
+      [
+        22.082256713305714,
+        "q20213/256"
+      ],
+      [
+        24.286051941957915,
+        "q20213/456"
+      ],
+      [
+        24.512798948825857,
+        "q20213/150"
+      ],
+      [
+        31.434154084741856,
+        "q20213/430"
+      ]
+    ],
+    "otherSideConfounder": {
+      "id": "q20213/256",
+      "onWrongSideOfTrail": true,
+      "AEBPlanarAreaM2": 79.47221703555971,
+      "differentCurrentParcel": "916791"
+    },
+    "osmWithinSuccessorScope": [
+      {
+        "way": "1193095225",
+        "tags": "building=yes only (no name)",
+        "datedEditUTC": "2023-07-29T10:09:48Z",
+        "areaInParcelM2": 247.84712379687338,
+        "qualifier": "Independently corroborative mapped building mass near the same 431/12804 footprint; never use as an identity pin in isolation."
+      },
+      {
+        "way": "1204112475",
+        "areaInParcelM2": 7.82185262439538,
+        "qualifier": "Tiny second structure with no assigned game stock owner and too small to be the separately documented historic station. Explicitly excluded."
+      }
+    ]
+  },
+  "separations": {
+    "nearestStockRoadRibbonEstMAndOriginalIndex": [
+      [
+        55.02647662968593,
+        10155,
+        3.6
+      ],
+      [
+        63.92555762580281,
+        10179,
+        2.8
+      ],
+      [
+        91.16306748789819,
+        10151,
+        3.6
+      ]
+    ],
+    "OSMTrailWay908245451CenterlineM": 12.341148247660549,
+    "OSMMainWay169612104CenterlineM": 57.731345198276074,
+    "VACMemorialPointM": 62.756598856491316,
+    "OSMDatedMemorialPointM": 38.73993330190527,
+    "sourceMemorialGapM": 24.227077467144984,
+    "caveat": "Qualitative horizontal separations only. Conflicting memorial points are both protected; neither is the memorial perimeter. Road buffers use conservative signed source widths, trail point spacing is not a modern right of way width."
+  },
+  "datum": "PEI civic and cadastral layers report native Esri WKID 2291 (latest 2954). Each public query explicitly requested outSR=4326 and returned only published WGS84 XY before conversion into the original game chart: x=(lon+63.2)*76762.59317717307, z=(46.5-lat)*111161.08375388649. Preserve longitude/latitude order; no Z/datum/height processing. This is a gameplay horizontal calculation, not a cadastral survey.",
+  "confirmationChronology": [
+    {
+      "source": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=20441",
+      "role": "Official C. Stewart 2013 east/north plus west facade and architecture description, separate monument, adjacent trail. Do not derive dimensions from photo; documented broad hip, bay, brackets, freight doors and dates only."
+    },
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Converted_Train_Station,_O%27Leary,_PEI_(35416486124).jpg",
+      "role": "Larry, photographed 2017-07-29, CC BY 2.0, view only: confirms still-standing identifiable Hipped station beside trail, adjacent industrial bins/elevator on same southwestern side of trail and a separate long metal building opposite. Independent of projected polygon and Gazette."
+    },
+    {
+      "source": "https://www.arcgis.com/home/item.html?id=2e9d3e4ce0c548a19cba5327607a4754",
+      "role": "Authenticated locally by ordinary publicly displayed published PEI Ortho 2020/UPEI; in an identification view only, roof mass and adjacency mark the exact 431/12804 envelope and distinguish 192 bins (same side) and long 150/misc 256 (opposite side). Data used only to identify the matching room/structure, never traced/texture source or cadastral/survey exception. 909747 has no stock or provincial building outline.",
+      "displayCaptureEpoch": "2020",
+      "privateSourceTileMetadataSHA256": "d055c03424a2ff050557a033759b262cd0061c1440459f3b54c3621515a7ed5d"
+    },
+    {
+      "source": "https://veterans.gc.ca/en/remembrance/memorials/canada/oleary-cenotaph",
+      "role": "Official memorial separate next to Station House and Co-op, not roof evidence."
+    }
+  ],
+  "holdCriterion": "No native swap unless the signed original ground and owner range show that every new support, eave and platform edge is seated on unchanged stock N112 and fully inside the attested row 431 envelope without reducing existing conservative trail/road/sibling/memorial clearances. Otherwise leave stock unchanged and report which constraint failed. Existing 3-7 is a horizontal tile prediction, not an actual rendered ground proof.",
+  "NO_VERTICAL_USE": true
+}

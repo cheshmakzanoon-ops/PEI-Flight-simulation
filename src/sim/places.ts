@@ -54,6 +54,9 @@ export const SITES: Site[] = [
  {id:'tracadie-marsh',name:'Tracadie Bay · marsh pass',region:'Queens County',lon:-62.970714,lat:46.414663,heading:271,height:35,note:'Virtual sightseeing only. Begin above the Tracadie Bay marsh. Not an aviation or landscape survey route.'},
  {id:'seacow-head-coast',name:'Seacow Head · coastal pass',region:'Prince County',lon:-63.7979256832,lat:46.3058977815,heading:320,height:78,note:'Virtual sightseeing only. Start over water southeast of Seacow Head and fly toward the lighthouse.'},
  {id:'dalvay-lake-coastal-pass',name:'Dalvay Lake · coastal pass',region:'Queens County',lon:-63.07337348670973,lat:46.42729933695014,heading:182.1,height:110,note:'Start over the Gulf and fly south toward Dalvay-by-the-Sea and Dalvay Lake. Virtual sightseeing only.'},
+ {id:'oleary-railway-low',name:'O’Leary · railway station pass',region:'Prince County',
+  lon:-64.21528650212998,lat:46.715825492132865,heading:221,height:65,
+  note:'Start northeast of O’Leary and look for the former railway station on Main Street. Virtual sightseeing only, not a navigation route.'},
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

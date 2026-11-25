@@ -1,0 +1,402 @@
+{
+  "cameraLockSHA256": "52f91ce6fb7713db509a121de64d078accbccb4be291ac01b843c86af47f2d6e",
+  "meaning": "Exact projected signed model and original row-431 union, padded by 2 ordinary viewport pixels after conservative rounding. This is a gross scope mask, not a visible region or occlusion estimate; use native depth/color controls to certify visible part changes. Standard lights/materials remain fixed throughout the paired receipts.",
+  "sourceStockAndDecodedParts": {
+    "stock-row-431": {
+      "points": 42,
+      "triangles": 14
+    },
+    "foundation": {
+      "points": 570,
+      "triangles": 190
+    },
+    "clapboard": {
+      "points": 1152,
+      "triangles": 384
+    },
+    "timber": {
+      "points": 16428,
+      "triangles": 5476
+    },
+    "roof": {
+      "points": 30,
+      "triangles": 10
+    },
+    "glazing": {
+      "points": 186,
+      "triangles": 62
+    }
+  },
+  "cameraResults": {
+    "east-north-platform": {
+      "parts": {
+        "stock-row-431": {
+          "pixels": 178971,
+          "extent": [
+            98,
+            123,
+            758,
+            455
+          ],
+          "maskSHA256": "3132b711e74be293fd53cec4038b80b879e76e5d563dd565e440fda40e1d5764"
+        },
+        "foundation": {
+          "pixels": 23228,
+          "extent": [
+            125,
+            159,
+            701,
+            406
+          ],
+          "maskSHA256": "f5a92551da13f458a68b59cbb5f3a6c9e3d8ed34bb357eecb13ee36cd3b1e752"
+        },
+        "clapboard": {
+          "pixels": 43551,
+          "extent": [
+            209,
+            260,
+            690,
+            377
+          ],
+          "maskSHA256": "3a1912bdd213893880e95a807b36d58a270818c7ee5cf15b2720b995db60ca42"
+        },
+        "timber": {
+          "pixels": 50501,
+          "extent": [
+            115,
+            184,
+            739,
+            380
+          ],
+          "maskSHA256": "5238b76571824ab68fe313d029157a2423db9d687bae2e6f9546edefc24d3dde"
+        },
+        "roof": {
+          "pixels": 44124,
+          "extent": [
+            115,
+            185,
+            739,
+            313
+          ],
+          "maskSHA256": "cf31287f1011484e1a0839c39e1027c856525a34f8a77e83bb5182bac3cdd9e2"
+        },
+        "glazing": {
+          "pixels": 13016,
+          "extent": [
+            223,
+            288,
+            631,
+            347
+          ],
+          "maskSHA256": "f86c4b1ac5ca5f7a37a0aae635a6fb49d96befacf50d8d1708c4e1ab79e63892"
+        }
+      },
+      "unionWith2px": {
+        "pixels": 182955,
+        "extent": [
+          96,
+          121,
+          760,
+          457
+        ],
+        "maskSHA256": "735009f09df51a2c50ea14ab34ed442fe7dab1c1ee53e46e527d95378bad593a"
+      }
+    },
+    "west-freight-south": {
+      "parts": {
+        "stock-row-431": {
+          "pixels": 178759,
+          "extent": [
+            69,
+            132,
+            757,
+            419
+          ],
+          "maskSHA256": "b520b65f0bf48fafb849e940995177670e63de46f1c9e4076ef02e0e2b4836f7"
+        },
+        "foundation": {
+          "pixels": 25146,
+          "extent": [
+            109,
+            151,
+            732,
+            390
+          ],
+          "maskSHA256": "a2b1c3470b1abb519108844f0d13d693a07d7cb9223d58b7da1ce47aa676c92e"
+        },
+        "clapboard": {
+          "pixels": 38833,
+          "extent": [
+            193,
+            246,
+            643,
+            348
+          ],
+          "maskSHA256": "49345ad066d65303668a86434ec9a70915af6f2ca96fb6111725252c87f505f6"
+        },
+        "timber": {
+          "pixels": 52274,
+          "extent": [
+            86,
+            173,
+            744,
+            364
+          ],
+          "maskSHA256": "d46a6b986fb05bb9391733ca8586db13fbcd8cceb1b10a98d4a39f992dbc0cdb"
+        },
+        "roof": {
+          "pixels": 43636,
+          "extent": [
+            87,
+            175,
+            744,
+            295
+          ],
+          "maskSHA256": "98b3593274e4be89abd4fb3e04f33667a4151acae23d6e37329a70a1ecd6f5ba"
+        },
+        "glazing": {
+          "pixels": 11085,
+          "extent": [
+            217,
+            271,
+            632,
+            323
+          ],
+          "maskSHA256": "59883d61ef77360a9c11587ac948dbe8436aab09c10956d7255b7a11eae2b414"
+        }
+      },
+      "unionWith2px": {
+        "pixels": 182675,
+        "extent": [
+          67,
+          130,
+          759,
+          421
+        ],
+        "maskSHA256": "d183ab304fd5fb1d8d37ca9ec5c0d61d64f85435e7a7568a6b822d6fabf300a5"
+      }
+    },
+    "near-east-material": {
+      "parts": {
+        "stock-row-431": {
+          "pixels": 483412,
+          "extent": [
+            0,
+            0,
+            900,
+            600
+          ],
+          "maskSHA256": "887bb79b1f476318c61eb206a8cb32a3ce70dd63b14c203128897eddf0b8388e"
+        },
+        "foundation": {
+          "pixels": 86752,
+          "extent": [
+            0,
+            23,
+            900,
+            481
+          ],
+          "maskSHA256": "4532683324d90cfc50c0b0ebe03e4c8fe22837410f164bfd32aed80185f48ed8"
+        },
+        "clapboard": {
+          "pixels": 159004,
+          "extent": [
+            23,
+            174,
+            900,
+            415
+          ],
+          "maskSHA256": "9e632d450cf45cd7c021599b6b9ba2bdd6b60e23ccc878be2e044d42f72537ee"
+        },
+        "timber": {
+          "pixels": 180150,
+          "extent": [
+            0,
+            66,
+            900,
+            414
+          ],
+          "maskSHA256": "19f5599c34c4d43636afce928b43ee9dcf62060e52a2d052f8b9387750a3ad17"
+        },
+        "roof": {
+          "pixels": 143228,
+          "extent": [
+            0,
+            69,
+            900,
+            290
+          ],
+          "maskSHA256": "5dd623f30b2317679d92034a896bfd1717785ebdb4bd724d71a7d036478d8cda"
+        },
+        "glazing": {
+          "pixels": 48947,
+          "extent": [
+            57,
+            230,
+            848,
+            353
+          ],
+          "maskSHA256": "da7389f17ccfc05f2557efe1f53561fbebaeb6248cedd7b4c60a3e7df74d558a"
+        }
+      },
+      "unionWith2px": {
+        "pixels": 486626,
+        "extent": [
+          0,
+          0,
+          900,
+          600
+        ],
+        "maskSHA256": "71b6d61d2764cc720f053107e076206056617a366a7ed4b7be4805c05c7204b1"
+      }
+    },
+    "near-raised-roof": {
+      "parts": {
+        "stock-row-431": {
+          "pixels": 131389,
+          "extent": [
+            156,
+            162,
+            617,
+            600
+          ],
+          "maskSHA256": "2082547f42e407b54c05babec66e378949bc1ec5a0a069cbd9580da7b5059271"
+        },
+        "foundation": {
+          "pixels": 21568,
+          "extent": [
+            294,
+            254,
+            600,
+            600
+          ],
+          "maskSHA256": "d659c42500cbd226d991bb007e6ececc480db4dda55d97778e67bda068f88f34"
+        },
+        "clapboard": {
+          "pixels": 30671,
+          "extent": [
+            284,
+            254,
+            566,
+            535
+          ],
+          "maskSHA256": "11d83821e6b5c5c3213142baa82979971d08f39fcc6584afc636491f32c75715"
+        },
+        "timber": {
+          "pixels": 79568,
+          "extent": [
+            172,
+            217,
+            612,
+            600
+          ],
+          "maskSHA256": "4e1fd9dc2d069d95b20a225c9c3e3246febd92b38fa5402adc11580f0500c7cd"
+        },
+        "roof": {
+          "pixels": 71483,
+          "extent": [
+            172,
+            218,
+            612,
+            515
+          ],
+          "maskSHA256": "e765938ec29c3fda31463ed97f37de16c2ac98816ff2ecbc9cde806ec299fd0f"
+        },
+        "glazing": {
+          "pixels": 7778,
+          "extent": [
+            300,
+            270,
+            556,
+            490
+          ],
+          "maskSHA256": "2671dd697e36478f595c09f9f705e174a52bd35042c92fd1b8427cd3e2490833"
+        }
+      },
+      "unionWith2px": {
+        "pixels": 134618,
+        "extent": [
+          154,
+          160,
+          619,
+          600
+        ],
+        "maskSHA256": "b933d2e8d3827df66f0c50a8a888671f120fc16396e8b8f391671b4b0fd9df4a"
+      }
+    },
+    "distance-fade": {
+      "parts": {
+        "stock-row-431": {
+          "pixels": 2620,
+          "extent": [
+            408,
+            280,
+            487,
+            317
+          ],
+          "maskSHA256": "70ebc044aa164bc49ac9f8655271035459c8500b8ee236e18c47c75432bba75a"
+        },
+        "foundation": {
+          "pixels": 465,
+          "extent": [
+            411,
+            283,
+            484,
+            313
+          ],
+          "maskSHA256": "754226a0780ab8d7a515d31eef707c31ba92419e128033f8b37b5004ccfdb585"
+        },
+        "clapboard": {
+          "pixels": 756,
+          "extent": [
+            420,
+            295,
+            478,
+            311
+          ],
+          "maskSHA256": "f0b2cab15c3574e17afeb397447b668030d54e88e98705049dc542af6c0ca531"
+        },
+        "timber": {
+          "pixels": 997,
+          "extent": [
+            409,
+            285,
+            486,
+            311
+          ],
+          "maskSHA256": "23b5670761e69403fc7bfc6ea185f52a17680f30f23be68f7d1fbe81014062bb"
+        },
+        "roof": {
+          "pixels": 722,
+          "extent": [
+            409,
+            285,
+            486,
+            304
+          ],
+          "maskSHA256": "189851f7ba6bfd6733d4f4cc33dafd14d0b3a491ffb73f9341a5534b1581df86"
+        },
+        "glazing": {
+          "pixels": 295,
+          "extent": [
+            421,
+            297,
+            474,
+            308
+          ],
+          "maskSHA256": "d8a2c4af48c34f3feebd34c4649802cfa8515daea52730be3ed9d9609689076b"
+        }
+      },
+      "unionWith2px": {
+        "pixels": 3100,
+        "extent": [
+          406,
+          278,
+          489,
+          319
+        ],
+        "maskSHA256": "ee75a10031e88587d774e80743013c97377a098fcf5f439b406f9c9813da8cc3"
+      }
+    }
+  }
+}

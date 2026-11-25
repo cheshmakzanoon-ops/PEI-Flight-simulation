@@ -1272,6 +1272,14 @@ export class World {
  dalvayGroundReady(){
   return dalvayGroundPair(this.byId.get('17-12'),this.byId.get('17-13'),!!(this.grades?.has('17-12')||this.grades?.has('17-13')));
  }
+ /** Lease the original on-screen N112 draw and its native seam signature, not a grade override. */
+ olearyRenderGround():import('./oleary-railway/authority.ts').OlearyNativeSurface|undefined{
+  const t=this.byId.get('3-7'),g=t?.fine;
+  if(!t||!g||t.lod!==112||!t.seams?.startsWith('112:')||!g.visible||g.parent!==this.scene||t.coarse.visible||g.material!==t.local||
+    g.userData.subdiv!==112||t.relief||g.userData.localGrade||g.userData.coastalSurvey||this.grades?.has('3-7')||
+    g.geometry.index?.count!==75264||g.position.x!==t.x0+t.w/2||g.position.z!==t.z0+t.d/2)return;
+  return t;
+ }
  /** The art's footing is seated only over its actual, original near terrain owner. */
  seacowGroundReady(){
   const p=this.byId.get('8-14'),g=p?.fine;

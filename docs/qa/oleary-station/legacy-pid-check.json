@@ -1,0 +1,487 @@
+{
+  "verdict": "NEGATIVE for PID 909747 as mapped today: no source building envelope intersects that parcel. This is an intermediate rejection of the old parcel as a roof fix, not an assertion about the station’s existence or the current assigned civic PID. See the separately resolved owner confirmation.",
+  "projectedControl": "Approximate horizontal comparisons in the original game’s WGS84 linear map, not a property survey. Whole candidate geometry intersection and spacing from authenticated original XY rings.",
+  "data": {
+    "gazetteFinalDesignation": "https://www.princeedwardisland.ca/sites/default/files/publications/royal_gazette/20150314.pdf",
+    "canadianRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=20441",
+    "provincePublicParcelGeometry": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/FeatureServer/0",
+    "vacMemorial": "https://veterans.gc.ca/en/remembrance/memorials/canada/oleary-cenotaph",
+    "hashes": {
+      "civic-site.geojson": "dc31b9072243a624c5da9f43b62d2901c7003641022341cc1c8c38ecd07255a3",
+      "provincial-footprints.geojson": "d056f6439e826f3e8d4ffa329ed2ce9bb36951cfe75ee00a4171e5a1f94fa8fb",
+      "osm-public-geometry.json": "267ad52a542bf8202edd924c08f31ea8fa6a87c01af6ef68d2cc51e16efffe14",
+      "source-intake-prelock.json": "6bf43625c342da097f496eed96e1fdf91efb526d5faccd9f2c0578036be4140e",
+      "property-909747.geojson": "4b28f2c6033b05f76b306e1e0ae1f0d368c42e3ecc0209d43fb56f0f4cd915df"
+    }
+  },
+  "authorizedParcel": {
+    "PID": "909747",
+    "gazetteAddress": "513 Main Street",
+    "areaM2": 363.5505964895789,
+    "civicPointInParcel": false,
+    "civicPinDistanceToParcelM": 1.8258662186182195,
+    "civicPointLonLat": [
+      -64.22528389526393,
+      46.707198400442145
+    ],
+    "civicApproxGameXZOnly": {
+      "X": -78703.450543252,
+      "Z": -23032.398745220613
+    },
+    "parcelEdgesLonLat": [
+      [
+        -64.22502663751443,
+        46.70715795549375
+      ],
+      [
+        -64.22521987635935,
+        46.70737953861423
+      ],
+      [
+        -64.22533764767925,
+        46.707347772551174
+      ],
+      [
+        -64.22539191439257,
+        46.70730130492702
+      ],
+      [
+        -64.22516382364515,
+        46.70713452781323
+      ],
+      [
+        -64.22502663751443,
+        46.70715795549375
+      ]
+    ]
+  },
+  "landmarksSeparate": {
+    "VACMemorialDistanceToParcelM": 6.918002325960784,
+    "OSMDifferentlyDatedMemorialDistanceToParcelM": 0.0,
+    "MemorialPinsDoNotAgreeM": 24.227077467144984,
+    "MainCenterlineDistanceM": 8.357320843792804,
+    "TrailCenterlineDistanceM": 6.181345307816636,
+    "MainSourceWay": "169612104",
+    "TrailSourceWay": "908245451",
+    "OSMmemorialVersionDate": "2025-12-20T01:31:29Z",
+    "qualification": "OSM pin and federal catalogue pin differ; neither is a building or exact instrument survey. VAC identifies memorial next to Station House and Co-op, and the heritage registration lists the WWI monument as a separate feature on station property."
+  },
+  "candidateAtlas": {
+    "sha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "examinedTiles": [
+      {
+        "ownerTile": "q20213",
+        "sha256": "288874f91b78271c99fc53fc1776cc540b0a6445f7486701d551dff01452c8b0",
+        "offset": 3427851,
+        "bytes": 24668,
+        "allSourceRows": 542
+      }
+    ],
+    "nearestGroups": {
+      "countExamined": 542,
+      "countTouchOrOverlap": 0,
+      "totalOverlapM2": 0,
+      "nearest": [
+        {
+          "id": "q20213/256",
+          "gapM": 18.41218943481017,
+          "areaM2": 79.47221703555971,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22510653771407,
+            46.70759181934826
+          ],
+          "rowSHA256": "4c0f8003ef274f981515470425baf059f0b8f57012889ce3a49a7fae21fb28bc"
+        },
+        {
+          "id": "q20213/431",
+          "gapM": 27.25745445059326,
+          "areaM2": 195.9350456396338,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22562788576779,
+            46.70761039957321
+          ],
+          "rowSHA256": "ed1aca976f1b29d77b32c601bc9cae4477f7cf50a2b5133bc04a70d5f9627700"
+        },
+        {
+          "id": "q20213/430",
+          "gapM": 30.005433693003177,
+          "areaM2": 153.235848336958,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.2258595,
+            46.7071965
+          ],
+          "rowSHA256": "21fe1801093030ff17f1116cda9c3b5c08972263c4aeb08cb28139623adcc6a3"
+        },
+        {
+          "id": "q20213/395",
+          "gapM": 34.97455172936948,
+          "areaM2": 78.94743673358388,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.225812,
+            46.707069
+          ],
+          "rowSHA256": "71e55e7b374b4c2e8bb5d68e7e89b1aeaa93d5b291bdfdfdeeccc3c923c53d10"
+        },
+        {
+          "id": "q20213/119",
+          "gapM": 38.760333073640794,
+          "areaM2": 510.1888502200519,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22538422301389,
+            46.70666382336511
+          ],
+          "rowSHA256": "519ab2d117d93f18a0ac6a64572d6595296a54cd92869a9bedf76a31054686ac"
+        },
+        {
+          "id": "q20213/312",
+          "gapM": 41.70561257647907,
+          "areaM2": 104.78540024454784,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22455500000001,
+            46.707491
+          ],
+          "rowSHA256": "f0371378ce10d45255957d98dda7ab0373eb3282ca743c29c768cbbdd01534f2"
+        },
+        {
+          "id": "q20213/192",
+          "gapM": 46.60829488471925,
+          "areaM2": 284.6271832695798,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.2259971876324,
+            46.70769061137426
+          ],
+          "rowSHA256": "24f19ac68d7a481e82d3ddef20fea57e846fc849e328afa4861ef469728fae6f"
+        },
+        {
+          "id": "q20213/456",
+          "gapM": 47.11004454383555,
+          "areaM2": 59.2916411713523,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.2253338705476,
+            46.70784221014128
+          ],
+          "rowSHA256": "8e170e020280d9431b1dfc5991eb4a34e997115b4ac46c3d0154d9a07b3e57ca"
+        }
+      ]
+    },
+    "nearestCivicPoint": [
+      {
+        "id": "q20213/430",
+        "gapM": 35.414492502618415,
+        "areaM2": 153.235848336958,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.2258595,
+          46.7071965
+        ],
+        "rowSHA256": "21fe1801093030ff17f1116cda9c3b5c08972263c4aeb08cb28139623adcc6a3"
+      },
+      {
+        "id": "q20213/395",
+        "gapM": 37.57492752605403,
+        "areaM2": 78.94743673358388,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.225812,
+          46.707069
+        ],
+        "rowSHA256": "71e55e7b374b4c2e8bb5d68e7e89b1aeaa93d5b291bdfdfdeeccc3c923c53d10"
+      },
+      {
+        "id": "q20213/256",
+        "gapM": 39.132910434520085,
+        "areaM2": 79.47221703555971,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22510653771407,
+          46.70759181934826
+        ],
+        "rowSHA256": "4c0f8003ef274f981515470425baf059f0b8f57012889ce3a49a7fae21fb28bc"
+      }
+    ]
+  },
+  "provinceBuildingPolygons": {
+    "overlaps": {
+      "countExamined": 75,
+      "countTouchOrOverlap": 0,
+      "totalOverlapM2": 0,
+      "nearest": [
+        {
+          "id": "12882",
+          "gapM": 17.07152683059792,
+          "areaM2": 165.32380802257646,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22509561874803,
+            46.70760565482014
+          ]
+        },
+        {
+          "id": "12804",
+          "gapM": 26.529839480241847,
+          "areaM2": 219.95038608283852,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22562830335261,
+            46.707607636263326
+          ]
+        },
+        {
+          "id": "12810",
+          "gapM": 29.367910866091965,
+          "areaM2": 168.3708020571654,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22585997792139,
+            46.707186233442606
+          ]
+        },
+        {
+          "id": "12812",
+          "gapM": 35.880811664123605,
+          "areaM2": 75.64671724850021,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22581376520296,
+            46.707059570357444
+          ]
+        },
+        {
+          "id": "12879",
+          "gapM": 36.74009810869901,
+          "areaM2": 398.42153105101806,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22451209332723,
+            46.707464144453354
+          ]
+        },
+        {
+          "id": "13524",
+          "gapM": 39.18863740757765,
+          "areaM2": 498.1670530347536,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22539002496515,
+            46.7066617552577
+          ]
+        },
+        {
+          "id": "13523",
+          "gapM": 45.65339808217691,
+          "areaM2": 675.1021698869695,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22576732052349,
+            46.706743283999714
+          ]
+        },
+        {
+          "id": "12805",
+          "gapM": 46.214271292905686,
+          "areaM2": 290.07955556939874,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22600092971909,
+            46.707687135975746
+          ]
+        }
+      ]
+    },
+    "nearestCivicPoint": [
+      {
+        "id": "12810",
+        "gapM": 34.94473191828019,
+        "areaM2": 168.3708020571654,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22585997792139,
+          46.707186233442606
+        ]
+      },
+      {
+        "id": "12882",
+        "gapM": 37.79292973512165,
+        "areaM2": 165.32380802257646,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22509561874803,
+          46.70760565482014
+        ]
+      },
+      {
+        "id": "12812",
+        "gapM": 38.07400101141114,
+        "areaM2": 75.64671724850021,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22581376520296,
+          46.707059570357444
+        ]
+      }
+    ]
+  },
+  "osmBuildingWays": {
+    "overlaps": {
+      "countExamined": 58,
+      "countTouchOrOverlap": 0,
+      "totalOverlapM2": 0,
+      "nearest": [
+        {
+          "id": "1204112475",
+          "gapM": 4.436343356166993,
+          "areaM2": 11.352789878392278,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22527156736643,
+            46.707428646442885
+          ],
+          "versionDate": "2023-09-01T08:53:50Z",
+          "name": null,
+          "registeredAddress": null
+        },
+        {
+          "id": "1193095226",
+          "gapM": 18.373487613841224,
+          "areaM2": 128.6018929673839,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22511408685432,
+            46.70761108448919
+          ],
+          "versionDate": "2023-07-29T10:09:48Z",
+          "name": null,
+          "registeredAddress": null
+        },
+        {
+          "id": "1193095225",
+          "gapM": 27.626365551829494,
+          "areaM2": 247.84712379687323,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22563051604156,
+            46.70761624690165
+          ],
+          "versionDate": "2023-07-29T10:09:48Z",
+          "name": null,
+          "registeredAddress": null
+        },
+        {
+          "id": "362800451",
+          "gapM": 30.851582768692722,
+          "areaM2": 147.34030428578393,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.2258694168214,
+            46.707198370738574
+          ],
+          "versionDate": "2025-12-18T23:59:59Z",
+          "name": "O'Leary Farmer's Co-op Convenience",
+          "registeredAddress": "505"
+        },
+        {
+          "id": "362800468",
+          "gapM": 36.18896631440585,
+          "areaM2": 84.54867716361623,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.2258324,
+            46.707071299999996
+          ],
+          "versionDate": "2025-12-18T23:59:59Z",
+          "name": "O'Leary Farmer's Co-op Convenience",
+          "registeredAddress": "505"
+        },
+        {
+          "id": "362800473",
+          "gapM": 36.76775165509834,
+          "areaM2": 548.829618523724,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22540277045543,
+            46.70667344094777
+          ],
+          "versionDate": "2023-09-01T08:53:50Z",
+          "name": null,
+          "registeredAddress": null
+        },
+        {
+          "id": "547033636",
+          "gapM": 39.237704352233415,
+          "areaM2": 317.7796882471155,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22451003273947,
+            46.707471429419336
+          ],
+          "versionDate": "2024-03-27T09:54:56Z",
+          "name": "MacLean's Automotive",
+          "registeredAddress": "527"
+        },
+        {
+          "id": "1208466859",
+          "gapM": 48.53070925220923,
+          "areaM2": 299.63717988838005,
+          "intersectionAreaM2": 0.0,
+          "centroidLonLat": [
+            -64.22601772798751,
+            46.70769707711123
+          ],
+          "versionDate": "2023-09-17T11:01:38Z",
+          "name": null,
+          "registeredAddress": null
+        }
+      ]
+    },
+    "nearestCivicPoint": [
+      {
+        "id": "1204112475",
+        "gapM": 23.22981435211501,
+        "areaM2": 11.352789878392278,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22527156736643,
+          46.707428646442885
+        ],
+        "versionDate": "2023-09-01T08:53:50Z",
+        "name": null,
+        "registeredAddress": null
+      },
+      {
+        "id": "362800451",
+        "gapM": 36.59849722725105,
+        "areaM2": 147.34030428578393,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.2258694168214,
+          46.707198370738574
+        ],
+        "versionDate": "2025-12-18T23:59:59Z",
+        "name": "O'Leary Farmer's Co-op Convenience",
+        "registeredAddress": "505"
+      },
+      {
+        "id": "1193095226",
+        "gapM": 39.09921981139457,
+        "areaM2": 128.6018929673839,
+        "intersectionAreaM2": 0.0,
+        "centroidLonLat": [
+          -64.22511408685432,
+          46.70761108448919
+        ],
+        "versionDate": "2023-07-29T10:09:48Z",
+        "name": null,
+        "registeredAddress": null
+      }
+    ]
+  },
+  "holdCriterion": "Do not pick a neighboring building or the nearest road/memorial just from the historic designation pin. First document the official link between predecessor and current civic parcels. The positive successor audit provides that independent link; no vertical evidence was entered in this computation."
+}

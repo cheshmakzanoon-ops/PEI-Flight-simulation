@@ -1,0 +1,272 @@
+{
+  "proof": "O1E real native WebGL distinct pre-link/packet failure controls; no shipping QA bytes",
+  "poseLockSHA256": "52f91ce6fb7713db509a121de64d078accbccb4be291ac01b843c86af47f2d6e",
+  "artSHA256": "685b4b3f23345c66dd588d74c307e9a4e82cc2b5c3d12cfd2ad159bb3b1ad681",
+  "faultWireSHA256": "ca3b35f1f52f1b51883e87422b8e7a0e60501ed17926a1bdd528f3b758300539",
+  "sourceAndGate": {
+    "src/main.ts": "666ff1a3123a31d87e6ffd6ecefa56955d3fb49eae229b3fb0313614cce9928b",
+    "src/render/oleary-railway/finish.ts": "e60ed07e5b5ee7bf871c1a76dd8e74521583c639f37892928129289c831eb0a6",
+    "src/render/oleary-railway/program-gate.ts": "dacbcb95f47d87934427c0f67e779b04406b467c4da35387686d84563a94d7d1",
+    "src/render/oleary-railway/socket.ts": "4f09e0599d14078c167cf7a249a180f90dca2f36d83572e024178764acf36f6b"
+  },
+  "cases": {
+    "authored": {
+      "frame": 39,
+      "active": true,
+      "pending": false,
+      "tried": true,
+      "socket": true,
+      "helper": true,
+      "compiled": true,
+      "old": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "live": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 32007
+      },
+      "sameOriginal": false,
+      "artCount": 1,
+      "status": {
+        "before": true,
+        "compileRevision": "187",
+        "checks": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "materialCount": 5
+      },
+      "gl": 0,
+      "lost": false,
+      "camera": [
+        -78747.85614635695,
+        45.902715319531424,
+        -23089.19701513572
+      ],
+      "terrain": "112:56,56,56,112",
+      "ath": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "calls": 374,
+      "triangles": 390380,
+      "textures": 26,
+      "wireHTTP": [
+        200
+      ],
+      "moduleHTTP": [
+        200
+      ],
+      "pngSHA256": "9e1e9b8be2db76460243bc15256a796281577887cbb1be427efadb21078360c5",
+      "errors": []
+    },
+    "bad-shader": {
+      "frame": 39,
+      "active": false,
+      "pending": false,
+      "tried": true,
+      "socket": true,
+      "helper": false,
+      "compiled": false,
+      "old": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "live": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "sameOriginal": true,
+      "artCount": 0,
+      "status": {
+        "before": true,
+        "compileRevision": "187",
+        "checks": [
+          true,
+          true,
+          true,
+          false,
+          true
+        ],
+        "materialCount": 5
+      },
+      "gl": 0,
+      "lost": false,
+      "camera": [
+        -78747.85614635695,
+        45.902715319531424,
+        -23089.19701513572
+      ],
+      "terrain": "112:56,56,56,112",
+      "ath": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "calls": 369,
+      "triangles": 384272,
+      "textures": 26,
+      "wireHTTP": [
+        200
+      ],
+      "moduleHTTP": [
+        200
+      ],
+      "pngSHA256": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "errors": []
+    },
+    "bad-body": {
+      "frame": 42,
+      "active": false,
+      "pending": false,
+      "tried": true,
+      "socket": true,
+      "helper": false,
+      "compiled": false,
+      "old": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "live": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "sameOriginal": true,
+      "artCount": 0,
+      "status": null,
+      "gl": 0,
+      "lost": false,
+      "camera": [
+        -78747.85614635695,
+        45.902715319531424,
+        -23089.19701513572
+      ],
+      "terrain": "112:56,56,56,112",
+      "ath": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "calls": 369,
+      "triangles": 384272,
+      "textures": 26,
+      "wireHTTP": [
+        200
+      ],
+      "moduleHTTP": [
+        200
+      ],
+      "pngSHA256": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "errors": []
+    },
+    "stock": {
+      "frame": 42,
+      "active": false,
+      "pending": false,
+      "tried": false,
+      "socket": false,
+      "helper": false,
+      "compiled": false,
+      "old": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "live": {
+        "count": 32049,
+        "keys": [
+          "position",
+          "uv",
+          "color",
+          "topFlag",
+          "facadeStyle",
+          "normal"
+        ],
+        "indices": 0
+      },
+      "sameOriginal": true,
+      "artCount": 0,
+      "status": null,
+      "gl": 0,
+      "lost": false,
+      "camera": [
+        -78747.85614635695,
+        45.902715319531424,
+        -23089.19701513572
+      ],
+      "terrain": "112:56,56,56,112",
+      "ath": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "calls": 369,
+      "triangles": 384272,
+      "textures": 26,
+      "wireHTTP": [],
+      "moduleHTTP": [],
+      "pngSHA256": "05445bf67584a6a558f11f8caee537a39f7be2a988480d999ebb6ddea4fc2fe7",
+      "errors": []
+    }
+  }
+}

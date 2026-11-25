@@ -1,0 +1,140 @@
+{
+  "mode": "Original Standard world, unchanged floor 3-7 N112, original fixed untuned light, no spawned aircraft occluder hidden ad hoc, no camera flattering by results. Candidate native/CPU frames not opened. Hold if authentic stock occlusion; do not change angles after release without a new blind gate.",
+  "viewport": [
+    900,
+    600
+  ],
+  "fov": 53,
+  "near": 0.08,
+  "far": 350000,
+  "authoredOriginalShapeSHA256": "b6aab115cfd31872b8ee60ecdf09b0b832d7bd3dd8569a2b34fa8cf38a424f61",
+  "verifiedDecodedSubmittedSHA256": "628ba3a6055a3268283a680dba9b6fe8bde6223d175527d068646ebedea67b79",
+  "packetSHA256": "685b4b3f23345c66dd588d74c307e9a4e82cc2b5c3d12cfd2ad159bb3b1ad681",
+  "originalOwnerReceiptSHA256": "1969ddeda45a1e541c868a9514d77a4211240ef550ea67114be5418b4940a90a",
+  "stockSourceManifestTerrainSHA256": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+  "groundMeshPosSHA256": "4c2bbb800902bc66f59c67224e54b374f37a7c73c1945c272650ac3742865959",
+  "groundMeshIndexSHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+  "nativeGroundBaselineMinimum": {
+    "groundY": 31.862553817522528,
+    "nativeFirstIndex": 32979
+  },
+  "originalOwner": "q20213/431",
+  "originalFullVertexSpan": [
+    26343,
+    26385
+  ],
+  "cameras": {
+    "east-north-platform": {
+      "intent": "East bay and northern projection as separate attached volumes; eave-brace silhouettes",
+      "eye": [
+        -78719.25614635694,
+        33.64779225994957,
+        -23096.29701513572
+      ],
+      "target": [
+        -78729.85614635695,
+        34.91255381752252,
+        -23079.19701513572
+      ],
+      "absoluteEyeAboveNativeTerrainM": 1.68,
+      "groundY": 31.96779225994957,
+      "nativeFirstIndex": 32982,
+      "horizontalToModelAnchorM": 20.97546185427153,
+      "geographicalEye": {
+        "lon": -64.22548979767616,
+        "lat": 46.70777322634126
+      }
+    },
+    "west-freight-south": {
+      "intent": "West paired freight door beneath hip; deck and breaks toward the south",
+      "eye": [
+        -78745.35614635695,
+        33.54857813581346,
+        -23062.99701513572
+      ],
+      "target": [
+        -78730.15614635695,
+        34.142553817522526,
+        -23076.59701513572
+      ],
+      "absoluteEyeAboveNativeTerrainM": 1.68,
+      "groundY": 31.868578135813458,
+      "nativeFirstIndex": 32979,
+      "horizontalToModelAnchorM": 21.709214633422373,
+      "geographicalEye": {
+        "lon": -64.22582980703385,
+        "lat": 46.70747366107187
+      }
+    },
+    "near-east-material": {
+      "intent": "Nonmacro clapboards, trim and cement from the same trail side; keep mature occluders",
+      "eye": [
+        -78722.55614635695,
+        33.67757006954268,
+        -23087.99701513572
+      ],
+      "target": [
+        -78729.85614635695,
+        34.31255381752253,
+        -23078.49701513572
+      ],
+      "absoluteEyeAboveNativeTerrainM": 1.78,
+      "groundY": 31.897570069542684,
+      "nativeFirstIndex": 32979,
+      "horizontalToModelAnchorM": 12.220065466273084,
+      "geographicalEye": {
+        "lon": -64.22553278736507,
+        "lat": 46.70769855992276
+      }
+    },
+    "near-raised-roof": {
+      "intent": "Three-dimensional hip, ridge/continuous fascia, true roof material versus trim",
+      "eye": [
+        -78747.85614635695,
+        45.902715319531424,
+        -23089.19701513572
+      ],
+      "target": [
+        -78729.85614635695,
+        36.56255381752253,
+        -23078.19701513572
+      ],
+      "absoluteEyeAboveNativeTerrainM": 13.8,
+      "groundY": 32.10271531953142,
+      "nativeFirstIndex": 32976,
+      "horizontalToModelAnchorM": 21.095023109728988,
+      "geographicalEye": {
+        "lon": -64.22586237497998,
+        "lat": 46.70770935506761
+      }
+    },
+    "distance-fade": {
+      "intent": "Receding geographic scale and motion-safe material fade; no standalone photoreal claim",
+      "eye": [
+        -78646.95614635696,
+        50.677532216071754,
+        -23219.79701513572
+      ],
+      "target": [
+        -78729.85614635695,
+        34.91255381752252,
+        -23079.19701513572
+      ],
+      "absoluteEyeAboveNativeTerrainM": 20,
+      "groundY": 30.677532216071754,
+      "nativeFirstIndex": 30975,
+      "horizontalToModelAnchorM": 164.08220500712437,
+      "geographicalEye": {
+        "lon": -64.22454793267386,
+        "lat": 46.70888422666466
+      }
+    }
+  },
+  "proofRequirements": [
+    "Matched stock/current/explicit veto/restore on exact same tick, exposure, three.js pipeline, N112, original transforms and full visible stock; no stock neighbor or terrain alters.",
+    "Outside model plus exact old projected owner/supported occlusion union padded by 2 px: require max delta 0 in RGB disjoint controls and include own shadow exclusion only if preregistered shadow exists. Original byte restoration under missing/body/close pending/foreign geometry cases.",
+    "Show perceived several authored hip plane relations without calling as-built; authenticate west double freight, east projected bay and distinct low north projection, three-sided rather than wrapped deck, no modern rail or exact measured fixtures. Judge aerial and reciprocal material/visible silhouette, not just narrow hero clip.",
+    "Same production close shader buffers locked. Paired material relief disabled without refit handles normalized normals and roughness (roof, wood, stem distinct) with no changed position/depth, camera, draw, or global color. Distance screen-differencing should fall to zero/minimal <=1 code in forced disabled-vs-default inside projected fine-material mask, excluding silhouette/AP only. Texture/roughness/headroom no added world textures, no new shadows/terrain, no shader or GL errors across checked states.",
+    "Any recoloring, broad noise, seams/hard seams beyond butt joints, failed approach contact, floating skirt or sliced hood rejects artwork even if CPU geometry/checksum gates pass. The public sources are dated 2013, 2017 and 2020; contemporary color/fabric/as-built and full orthographic photorealism are excluded."
+  ]
+}
