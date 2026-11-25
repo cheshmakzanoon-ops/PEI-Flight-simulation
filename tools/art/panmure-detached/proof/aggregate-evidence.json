@@ -1,0 +1,229 @@
+{
+  "qualification": "Detached interpretation only; no production asset or ground placement, operational simulation, hidden-surface validation or architecture reconstruction claim.",
+  "source": {
+    "allRangeFingerprintsExact": true,
+    "etag": "\"5ec3a3321419d9eccaa99d874300fe85-2\"",
+    "freezeSHA256": "2682393755b5d79e0ec80c84b0c7d9321e54dd99adea72a120fda8d3ed0ae65d",
+    "heldVsTrainingPulseKeyOverlap": 0,
+    "onlyRoleZCounts": {
+      "bareGround": 2068,
+      "wall": 37,
+      "gallery": 24,
+      "upperCap": 23
+    },
+    "sameTrainingKeysComparedWithoutZ": 10733,
+    "scoredSourceFlightlines": [
+      36475
+    ],
+    "sourceURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_441000_677000.copc.laz",
+    "strictResponses": 9,
+    "totalWireBytes": 1217921,
+    "wholePulseReservedCount": 5497
+  },
+  "sourceTerm": "Open Government Licence \u2013 Canada for NRCan elevation. The raw files and point coordinates are not redistributed.",
+  "frozenArtFileSHA256": {
+    "envelope.ts": "4aa4902c95d4f83e4604b8a7c1059e699037040cc2a09af64311fc4f4c0d092a",
+    "candidate-lantern.ts": "47d716b3fec3e79da16d79130d1444c37422fe8bf990aac932252fed37fd86d3",
+    "entrance-study.ts": "6d95f3e7e493e22c8fb9437317289948ec3b946b3c650fc06b83b04925aa43e4"
+  },
+  "roleResults": {
+    "walls": {
+      "points": 37,
+      "hits": 37,
+      "misses": 0,
+      "blocks": 10,
+      "abs0_50_90_95_100": [
+        0.002625,
+        0.082115,
+        0.214784,
+        0.241216,
+        0.272361
+      ],
+      "representedSectors": 6
+    },
+    "gallery": {
+      "points": 24,
+      "hits": 24,
+      "misses": 0,
+      "blocks": 5,
+      "abs0_50_90_95_100": [
+        0.003,
+        0.018,
+        0.0451,
+        0.0511,
+        0.058
+      ],
+      "representedSectors": 4,
+      "outerFortyCmReturns": 2
+    },
+    "upperCap": {
+      "8": {
+        "points": 20,
+        "hits": 20,
+        "misses": 0,
+        "blocks": 3,
+        "abs0_50_90_95_100": [
+          0.004971,
+          0.040576,
+          0.135502,
+          0.147882,
+          0.168027
+        ]
+      },
+      "12": {
+        "points": 20,
+        "hits": 20,
+        "misses": 0,
+        "blocks": 3,
+        "abs0_50_90_95_100": [
+          0.000221,
+          0.047927,
+          0.131037,
+          0.148802,
+          0.158352
+        ]
+      }
+    },
+    "testedBareEarth": {
+      "pastStockVisual": {
+        "points": 50,
+        "hits": 50,
+        "misses": 0,
+        "blocks": 17,
+        "abs0_50_90_95_100": [
+          2.472898,
+          2.922915,
+          3.034409,
+          3.043829,
+          3.076301
+        ]
+      },
+      "previewVisual": {
+        "points": 50,
+        "hits": 50,
+        "misses": 0,
+        "blocks": 17,
+        "abs0_50_90_95_100": [
+          0.00016,
+          0.01457,
+          0.035211,
+          0.040557,
+          0.053716
+        ]
+      },
+      "liveContactUnchangedAndOutOfSync": {
+        "points": 50,
+        "hits": 50,
+        "misses": 0,
+        "blocks": 17,
+        "abs0_50_90_95_100": [
+          2.017458,
+          2.763434,
+          3.118958,
+          3.132746,
+          3.14087
+        ]
+      }
+    }
+  },
+  "draftTerrainHold": {
+    "testedFootingRays": 808,
+    "maxRaisedM": 3.07,
+    "productionGeneric250cmRejected": true,
+    "visualPrimitiveAndContactGapM": [
+      2.12539,
+      2.84299,
+      3.217684,
+      3.233214,
+      3.243375
+    ],
+    "inferredCollarP90M": 2.586561
+  },
+  "studio": {
+    "cap-8": {
+      "tris": 14177,
+      "draws": 51,
+      "box": [
+        [
+          -4.258646488189697,
+          -0.1899999976158142,
+          -4.258646488189697
+        ],
+        [
+          4.258646488189697,
+          18.687278747558594,
+          4.258646488189697
+        ]
+      ],
+      "meshGroups": 8
+    },
+    "cap-12": {
+      "tris": 18045,
+      "draws": 59,
+      "box": [
+        [
+          -4.258646488189697,
+          -0.1899999976158142,
+          -4.258646488189697
+        ],
+        [
+          4.258646488189697,
+          18.687278747558594,
+          4.258646488189697
+        ]
+      ],
+      "meshGroups": 8
+    },
+    "full": {
+      "tris": 18077,
+      "draws": 61,
+      "box": [
+        [
+          -4.258646488189697,
+          -0.1899999976158142,
+          -4.258646488189697
+        ],
+        [
+          4.258646488189697,
+          18.687278747558594,
+          4.258646488189697
+        ]
+      ],
+      "meshGroups": 8
+    },
+    "entrance": {
+      "tris": 8810,
+      "draws": 23,
+      "box": [
+        [
+          -4.258646488189697,
+          -0.1899999976158142,
+          -4.258646488189697
+        ],
+        [
+          6.60699987411499,
+          18.687278747558594,
+          4.258646488189697
+        ]
+      ],
+      "meshGroups": 9
+    },
+    "lower": {
+      "tris": 3372,
+      "draws": 14,
+      "box": [
+        [
+          -4.258646488189697,
+          -0.1899999976158142,
+          -4.258646488189697
+        ],
+        [
+          4.258646488189697,
+          15.267000198364258,
+          4.258646488189697
+        ]
+      ],
+      "meshGroups": 7
+    }
+  }
+}
