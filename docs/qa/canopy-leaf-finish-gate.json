@@ -1,0 +1,304 @@
+{
+  "format": "pei-canopy-leaf-finish/v1",
+  "runtimeTestBase": "1f5c6a1fc4e9d069c365d9480f4c4d6504b5adff",
+  "standard": {
+    "queens-understory": {
+      "view": "queens-understory",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "after": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "maskA": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "maskB": {
+          "draws": 95,
+          "triangles": 340921
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 98623,
+      "changedAboveTwo": 37641,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 192417,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "prince-needle": {
+      "view": "prince-needle",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 16,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "after": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "maskA": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "maskB": {
+          "draws": 39,
+          "triangles": 374514
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 179222,
+      "changedAboveTwo": 63149,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 111818,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "kings-native": {
+      "view": "kings-native",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 14,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 1,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "after": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "maskA": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "maskB": {
+          "draws": 45,
+          "triangles": 379524
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 182110,
+      "changedAboveTwo": 46493,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 108930,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "queens-far": {
+      "view": "queens-far",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 72,
+          "triangles": 325452
+        },
+        "after": {
+          "draws": 72,
+          "triangles": 325452
+        },
+        "maskA": {
+          "draws": 72,
+          "triangles": 325452
+        },
+        "maskB": {
+          "draws": 72,
+          "triangles": 325452
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 144437,
+      "changedAboveTwo": 0,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 146603,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    },
+    "charlottetown": {
+      "view": "charlottetown",
+      "volumes": 0,
+      "groundedShadows": 0,
+      "localRenderer": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 64,
+          "triangles": 435239
+        },
+        "after": {
+          "draws": 64,
+          "triangles": 435239
+        },
+        "maskA": {
+          "draws": 64,
+          "triangles": 435239
+        },
+        "maskB": {
+          "draws": 64,
+          "triangles": 435239
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 156094,
+      "changedAboveTwo": 46794,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 134946,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    }
+  },
+  "priorExplicitVolume": {
+    "queens-understory": {
+      "view": "queens-understory",
+      "volumes": 76,
+      "groundedShadows": 76,
+      "localRenderer": {
+        "ready": 18,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "stats": {
+        "before": {
+          "draws": 100,
+          "triangles": 477251
+        },
+        "after": {
+          "draws": 100,
+          "triangles": 477251
+        },
+        "maskA": {
+          "draws": 100,
+          "triangles": 477251
+        },
+        "maskB": {
+          "draws": 100,
+          "triangles": 477251
+        },
+        "exact": true
+      },
+      "markedCrownPixels": 23225,
+      "changedAboveTwo": 0,
+      "offCrownAndAAAllowance": 0,
+      "outsideComplementaryMaskPixels": 267815,
+      "outsideComplementaryMaskRGBChanges": 0,
+      "errors": []
+    }
+  },
+  "subpixel": {
+    "queens-understory": {
+      "view": "queens-understory",
+      "volumes": 0,
+      "samples": [
+        {
+          "draw": {
+            "draws": 95,
+            "triangles": 340921
+          },
+          "countAboveTwo": 37641,
+          "outsideChanges": 0
+        },
+        {
+          "draw": {
+            "draws": 95,
+            "triangles": 340921
+          },
+          "countAboveTwo": 37749,
+          "outsideChanges": 0
+        },
+        {
+          "draw": {
+            "draws": 95,
+            "triangles": 340921
+          },
+          "countAboveTwo": 37763,
+          "outsideChanges": 0
+        },
+        {
+          "draw": {
+            "draws": 95,
+            "triangles": 340921
+          },
+          "countAboveTwo": 37668,
+          "outsideChanges": 0
+        },
+        {
+          "draw": {
+            "draws": 95,
+            "triangles": 340921
+          },
+          "countAboveTwo": 37706,
+          "outsideChanges": 0
+        }
+      ],
+      "errors": [],
+      "motionCount": 388041,
+      "motionP99": 2.0
+    }
+  },
+  "normalFlight": [
+    {
+      "option": false,
+      "site": "cavendish-low",
+      "movementM": 48.54471778069971,
+      "startY": 129.95370774552245,
+      "afterY": 130.1732800833622,
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "option": true,
+      "site": "cavendish-low",
+      "movementM": 48.54515159192828,
+      "startY": 129.95742285024494,
+      "afterY": 130.183939767592,
+      "pauseSucceeded": true,
+      "errors": []
+    }
+  ],
+  "renderer": "Chromium/SwiftShader",
+  "tests": "421 passed in exact candidate; production build and world verifier passed",
+  "newAssets": 0
+}

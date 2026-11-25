@@ -299,7 +299,7 @@ async function run(){
  const rollingModule=rollingLibrary?await rollingLibrary:undefined;
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
-   rollingModule?new rollingModule.ShadowSlotRoster():undefined);
+   rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'));
  const regionalCanopy=(regionalCanopyRequested(options)||standardRegionalCanopyRequested(options))&&gl.getParameter(gl.SAMPLES)>=2&&regionalBase(terrain,cover,terrainSha)?
   new RegionalCanopies(world,scene,vegetation,forestStream,worldBase,REGIONAL_STANDS):undefined;
  if(crownStream)vegetation.trackCrownHeights();

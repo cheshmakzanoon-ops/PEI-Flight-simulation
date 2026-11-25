@@ -4,6 +4,7 @@ import type {ShadowSlotRoster} from './tree-shadow-roster.ts';
 import type {StMarysShadows,StMarysShadowGround} from './indian-river/st-marys-shadows.ts';
 import {MONTAGUE_GROUND_ID} from '../sim/montague-bridge.ts';
 import * as THREE from 'three';
+import {crownLeafFinishGLSL} from './crown-leaf-finish.ts';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import type {ForestHeights} from '../sim/forest-heights.ts';
@@ -64,6 +65,12 @@ const daylightFragment='varying vec3 cardSun;\n'+crownF.replace('gl_FragColor=ve
  float rim=(1.-smoothstep(.25,.82,dome))*smoothstep(.12,.78,-cardSun.z)*(1.-param.y)*foliage;
  vec3 lit=c*param.z*response*ambient*chroma+c*vec3(.095,.078,.021)*rim;
  gl_FragColor=vec4(lit,`);
+const crownLeafDecl='varying vec3 cardSun,crownLeafScale;';
+const leafVertex=daylightVertex.replace('varying vec3 cardSun;',crownLeafDecl).replace('vec3 p=center+',
+ 'crownLeafScale=vec3(shape.y,portrait,length(cameraPosition-center));\n  vec3 p=center+');
+const leafFragment=daylightFragment.replace('varying vec3 cardSun;',crownLeafDecl)
+ .replace('void main(){',crownLeafFinishGLSL+'\n void main(){\n float crownFootprint=length(fwidth(vUV*crownLeafScale.xy));')
+ .replace('vec2 ellipse=', 'c=crownLeafFinish(c,uv,cardSun,param.x,a,crownLeafScale,crownFootprint);\n vec2 ellipse=');
 const shadowV=pars+`
  attribute vec4 hedgeGround;
  void main(){
@@ -174,12 +181,12 @@ export class Vegetation {
   return true;
  }
  constructor(scene:THREE.Scene,private t:Terrain,private cover:Cover,private forestHeights?:ForestHeights,private forestStream?:ForestStream,
-  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private mappedFreshwater?:(x:number,z:number)=>boolean,private rollingSlots?:ShadowSlotRoster){
+  private hedges?:HedgeStream,private decorativeY?:(x:number,z:number)=>number,private plantedY?:(x:number,z:number)=>number|undefined,canopySun?:THREE.Vector3,private mappedFreshwater?:(x:number,z:number)=>boolean,private rollingSlots?:ShadowSlotRoster,detailLeaves=false){
   const g=new THREE.InstancedBufferGeometry(),plane=new THREE.PlaneGeometry(1,1);g.index=plane.index;g.setAttribute('position',plane.getAttribute('position'));g.setAttribute('uv',plane.getAttribute('uv'));
   g.setAttribute('stem',this.stems);g.setAttribute('shape',this.shapes);g.setAttribute('hedgeGround',this.hedgeGround);g.instanceCount=0;this.geom=g;
   const canopy=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/canopy.webp');canopy.colorSpace=THREE.SRGBColorSpace;canopy.anisotropy=2;
-  this.crownVertex=canopySun?daylightVertex:crownV;
-  this.crownFragment=canopySun?daylightFragment:crownF;
+  this.crownVertex=canopySun?(detailLeaves?leafVertex:daylightVertex):crownV;
+  this.crownFragment=canopySun?(detailLeaves?leafFragment:daylightFragment):crownF;
   const uniforms={canopy:{value:canopy},...(canopySun?{canopySun:{value:canopySun}}:{})};
   this.crown=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:this.crownVertex,fragmentShader:this.crownFragment,uniforms,side:THREE.DoubleSide,alphaToCoverage:true}));
   this.shade=new THREE.Mesh(g,new THREE.ShaderMaterial({vertexShader:shadowV,fragmentShader:shadowF,uniforms,side:THREE.DoubleSide,depthWrite:false,transparent:true,blending:THREE.NormalBlending,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-2}));
