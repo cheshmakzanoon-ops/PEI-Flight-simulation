@@ -1,0 +1,163 @@
+{
+  "candidateHash": "51e27dc8e3f75b88d8482776721ac5ad6d93a5135b3f05c15cb79222d7333ca8",
+  "sourceSHA256": {
+    "dormer.ts": "5c0aa58b1cfaa260a104bda63c9fcc62a6e8e15fe888627491eb75a3ef824e72",
+    "finish.ts": "c36929a4703fdec87a8080ff005097a03c2b276330959cf3908a9cea492f585b",
+    "studio.ts": "135e6209f45289f2d0c1f5b7aa11c9c90a78cea4b2f321acbde6019284787028"
+  },
+  "materialBatches": [
+    [
+      "mansard-shingles",
+      2348
+    ],
+    [
+      "hood-shingles",
+      1466
+    ],
+    [
+      "roof-cut",
+      561
+    ],
+    [
+      "shingle-cladding",
+      788
+    ],
+    [
+      "painted-trim",
+      908
+    ],
+    [
+      "painted-recess",
+      184
+    ],
+    [
+      "sash",
+      324
+    ],
+    [
+      "glazing",
+      72
+    ],
+    [
+      "backing",
+      36
+    ]
+  ],
+  "triangles": 6687,
+  "independentlyReplayedProceduralMaps": 9,
+  "glassAngleRaysPassed": 288,
+  "perPane": {
+    "face-0/0": 48,
+    "face-0/1": 48,
+    "face-1/0": 48,
+    "face-1/1": 48,
+    "face-2/0": 48,
+    "face-2/1": 48
+  },
+  "joineryNoSkyRays": {
+    "head": {
+      "rays": 324,
+      "leaks": [],
+      "batches": {
+        "painted-trim": 324
+      }
+    },
+    "sill": {
+      "rays": 324,
+      "leaks": [],
+      "batches": {
+        "painted-trim": 324
+      }
+    }
+  },
+  "lowerMansardEarlyVersusHighSlopeByStripe": {
+    "-2.742": [
+      1.8859,
+      0.3376
+    ],
+    "-1.898": [
+      1.8867,
+      0.335
+    ],
+    "1.732": [
+      1.8824,
+      0.3405
+    ],
+    "2.715": [
+      1.9024,
+      0.3336
+    ]
+  },
+  "eaves": {
+    "pairHits": 12,
+    "gapBackingHits": 6,
+    "depthPositive": [
+      0.09665,
+      0.09665,
+      0.10773,
+      0.10773,
+      0.137,
+      0.137
+    ]
+  },
+  "nonRuntime": true,
+  "noNativeNumericalHeightsRead": true,
+  "noSourcePhotoPixelsOrScansIncluded": true,
+  "visualChecks": {
+    "full": {
+      "studio32BitPNGByteIdenticalToSealedArtist": true,
+      "actualRepeatedWebGlFrameByteIdentical": true,
+      "sha256": "ce4c18f430eddf7dd7b5470f1cceef0e7b7e0acaa11a264bea9c6cc0ce08ad0b"
+    },
+    "elevation": {
+      "studio32BitPNGByteIdenticalToSealedArtist": true,
+      "actualRepeatedWebGlFrameByteIdentical": true,
+      "sha256": "64f2b0b400ee17bfc5aac2f07d42d164a39097375b4ef805c9c758dc1ca9aaf3"
+    },
+    "canted": {
+      "studio32BitPNGByteIdenticalToSealedArtist": true,
+      "actualRepeatedWebGlFrameByteIdentical": true,
+      "sha256": "70a5e00465e9a0db04498157dbed538f6e968ffd00d30e78d8211e497015a079"
+    },
+    "shingles": {
+      "studio32BitPNGByteIdenticalToSealedArtist": true,
+      "actualRepeatedWebGlFrameByteIdentical": true,
+      "sha256": "af2ed91848cac8a061439ad14ad4f1f8798ba9c886388c98e9c6e7e10efa419f"
+    },
+    "eave": {
+      "studio32BitPNGByteIdenticalToSealedArtist": true,
+      "actualRepeatedWebGlFrameByteIdentical": true,
+      "sha256": "31a9721218eb5794cb30c502025919a852156d4fd5f7b8ae47e92e2ebd91eefd"
+    }
+  },
+  "stockVisualGroundScopeOnly": {
+    "digests": {
+      "ringCheck": "78ff64d846bb669060984a692f5a2e8e33720704335bf07caad0c2e2420de454",
+      "ownerCheck": "0dc265834f8b14f430513514058805845dd56f155bab41cea1e5ac2badfb399c"
+    },
+    "count": 54,
+    "YMinMaxM": [
+      6.2781401871424345,
+      7.871880756196596
+    ],
+    "allLand": true,
+    "groundLodExactPointwise": true,
+    "views": [
+      {
+        "name": "east-street",
+        "horizontalDistanceM": 33.11196680459733
+      },
+      {
+        "name": "south-approach",
+        "horizontalDistanceM": 319.31025026781975
+      },
+      {
+        "name": "ground-flight",
+        "horizontalDistanceM": 988.7788872509153
+      }
+    ],
+    "physicalGroundNotSurvey": true,
+    "noCaptureUnderActualPorchOutsideFootprint": true
+  },
+  "limits": "Approved original detached canted dormer/lower mansard vocabulary, not a placed full landmark, asset quality mark or source-image texture. Keep Standard and all published chunks unchanged. Native heights remain entirely unopened; three disconnected projected roof hypotheses are metadata only."
+}

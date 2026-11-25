@@ -1,0 +1,217 @@
+{
+  "case": "Sullivan House / Points East Coastal Inn, St. Peters Bay, Kings County",
+  "registeredAs": "CRHP #6275, formal Province of PEI registration 2006-11-15, 5749 St. Peters Road (Route 2), exterior and parcel, not interior",
+  "officialIdentitySources": [
+    {
+      "url": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=6275",
+      "evidence": "Registered exterior and parcel, former John P. Sullivan House, manse, and Tir Na Nog Inn. 2019 operating rename, not a new building. Wood-framed two storey, curved mansard, decorative details and lower extensions."
+    },
+    {
+      "url": "https://www.historicplaces.ca/en/rep-reg/image-image.aspx?id=6275",
+      "publishedCredit": "Points East Coast Inn, 2022 (two camera angles, existing facade and an oblique), no published permission to embed or texture"
+    },
+    {
+      "url": "https://www.tourismpei.com/where-to-stay/points-east-coastal-inn",
+      "evidence": "Primary supplied 3 exterior views (one repeats register front), current provincial licensing entry; 2025 separate new loft suites confirmed, not part of 2020 shoulder/footprint."
+    },
+    {
+      "url": "https://theislandwalk.ca/points-east-coastal-inn/",
+      "evidence": "Operator first person confirms 2025 new loft building a few steps away. Jan 2026 front image is old register composition and not independent capture."
+    },
+    {
+      "url": "https://www.princeedwardisland.ca/sites/default/files/publications/royal_gazette/20100626.pdf",
+      "evidence": "Royal Gazette p.512 2010 records Tir Na Nog Inn at same address; do not conflate business registration with heritage designation."
+    },
+    {
+      "url": "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0",
+      "evidence": "Unique 5749 ST PETERS RD - RTE 2, ST PETERS, PID119743"
+    },
+    {
+      "url": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/MapServer/0",
+      "evidence": "PID119743 is exact present registered land vicinity and independent simulated owner register."
+    },
+    {
+      "url": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer",
+      "evidence": "Native horizontal registration, physical overhang ahead of AEB perimeter, separate yard structures. Main mass is visible at site also in 1968/2000 provincial ortho, not restoration or dimensions claims."
+    }
+  ],
+  "scope": "Authoring old/main public facade exterior only; no redistribution of photography, no texture trace, no present or absolutely placed full building claim. Fresh loft, low outboard annexes, porch/foundation measurements and neighbours remain excluded.",
+  "standardStockBase": "8a530bf (#207; #208 did not change runtime or public input)",
+  "owner": "q12313/47",
+  "parcelPID": 119743,
+  "exactAreaEpsg2954M2": 223.649234,
+  "exactInParcelAreaEpsg2954M2": 223.649234,
+  "civicDistanceToMappedRingM": 24.121,
+  "historicPlaceDistanceToMappedRingM": 23.316,
+  "ownerPacket": {
+    "offset": 3032530,
+    "bytes": 15453,
+    "packSHA": "6b04812a756bc2601115d4bae1c1eff27595946d630cf7fa10586ddaef210073"
+  },
+  "stockOriginAndSixAttrSHA256": "12ed44b888b56ee6a9cf651d76684c7abca6b176b5e8d4c64da18d5243c00824",
+  "protectedOtherBuildings": {
+    "adjacentUnitedChurch": "q12313/134 distinct PID1053214, entirely outside target",
+    "otherRecognizedLocalOwners": [
+      "q12313/188 PID119768",
+      "q12313/53 PID119768"
+    ]
+  },
+  "registeredFrontNormalClockwiseFromEpsg2954NorthDegrees": 349.8570784988624,
+  "actualOrderedStockVertexInterval": [
+    3363,
+    3438
+  ],
+  "actualTileVertices": 19710,
+  "rgbaRestoreBitExact": true,
+  "ownerDrawReceiptSha256": "ffeb051e56be93b54f030b39bb4541bed75ea1748b2fadd8bbcfa9e1dd923548",
+  "stockAB": [
+    {
+      "name": "street-NE",
+      "cameraFixture": {
+        "lon": -62.5883784,
+        "lat": 46.4138621,
+        "h": 8.0,
+        "dist": 34,
+        "east": 15,
+        "south": -31,
+        "agl": 11.0
+      },
+      "aaEdgeNotExactlyID": 4,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 43420,
+      "stockOwnerPixelCount": 43418,
+      "span": [
+        3363,
+        3438
+      ],
+      "vertexCount": 19710,
+      "drawSha": "12ed44b888b56ee6a9cf651d76684c7abca6b176b5e8d4c64da18d5243c00824",
+      "bytes": 965790,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        45622.54229076898,
+        0,
+        7883.266157116264
+      ]
+    },
+    {
+      "name": "garden-W",
+      "cameraFixture": {
+        "lon": -62.5883784,
+        "lat": 46.4138621,
+        "h": 8.0,
+        "dist": 56,
+        "east": -48,
+        "south": 25,
+        "agl": 15.0
+      },
+      "aaEdgeNotExactlyID": 1,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 17689,
+      "stockOwnerPixelCount": 17690,
+      "span": [
+        3363,
+        3438
+      ],
+      "vertexCount": 19710,
+      "drawSha": "12ed44b888b56ee6a9cf651d76684c7abca6b176b5e8d4c64da18d5243c00824",
+      "bytes": 965790,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        45622.54229076898,
+        0,
+        7883.266157116264
+      ]
+    },
+    {
+      "name": "roof-clear",
+      "cameraFixture": {
+        "lon": -62.5883784,
+        "lat": 46.4138621,
+        "h": 8.0,
+        "dist": 56,
+        "east": 19,
+        "south": 52,
+        "agl": 55.0
+      },
+      "aaEdgeNotExactlyID": 9,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 9552,
+      "stockOwnerPixelCount": 9558,
+      "span": [
+        3363,
+        3438
+      ],
+      "vertexCount": 19710,
+      "drawSha": "12ed44b888b56ee6a9cf651d76684c7abca6b176b5e8d4c64da18d5243c00824",
+      "bytes": 965790,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        45622.54229076898,
+        0,
+        7883.266157116264
+      ]
+    },
+    {
+      "name": "bridge-entry",
+      "cameraFixture": {
+        "lon": -62.5883784,
+        "lat": 46.4138621,
+        "h": 8.0,
+        "dist": 319,
+        "east": 120,
+        "south": 301,
+        "agl": 88.0
+      },
+      "aaEdgeNotExactlyID": 0,
+      "outsideOnePixelID": 0,
+      "ownerSupportPixelCount": 409,
+      "stockOwnerPixelCount": 409,
+      "span": [
+        3363,
+        3438
+      ],
+      "vertexCount": 19710,
+      "drawSha": "12ed44b888b56ee6a9cf651d76684c7abca6b176b5e8d4c64da18d5243c00824",
+      "bytes": 965790,
+      "attrs": [
+        "color",
+        "facadeStyle",
+        "normal",
+        "position",
+        "topFlag",
+        "uv"
+      ],
+      "origin": [
+        45622.54229076898,
+        0,
+        7883.266157116264
+      ]
+    }
+  ],
+  "nativeShapeStatus": "One exact PEI 2020 COPC metadata object identified. No native Z open in this identity/draw receipt; phase-mismatched modern features excluded.",
+  "preregisterXYOnlySHA256": "63ba3b87f8945990df102e7ccfce7a672be2039922f08abfaeccd3108e265c67",
+  "sourceHeadSHA256": "7d4aa29fb52aaad61755b3b3c50abe5abaf3995a016ef330adfed99a14738aab",
+  "sourceProjectTile": "pei_2020_431000_707000"
+}

@@ -1,0 +1,344 @@
+{
+  "status": "XY-only. Z decompression forbidden and never selected. No fit/metric/replacement approved.",
+  "preregisterSHA256": "63ba3b87f8945990df102e7ccfce7a672be2039922f08abfaeccd3108e265c67",
+  "sourceHeadSHA256": "7d4aa29fb52aaad61755b3b3c50abe5abaf3995a016ef330adfed99a14738aab",
+  "asset": "pei_2020_431000_707000",
+  "formatId": 6,
+  "gpsTimeType": 0,
+  "wktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40",
+  "roiClosedXYRows": 44454,
+  "decompressedXYPositions": 367922,
+  "originalWholePulseReservedCount": 26396,
+  "originalFailedPulseKeyCount": 718,
+  "releaseExclusionPulseCount": 26705,
+  "reservedPulseSHA256": "50854c11f6d2acb35debbcb7d3f98f5e01efdc308dfa43d4d1aea2dbb852d9f9",
+  "releaseExclusionPulseSHA256": "11453a6830c7d74a94e80750f914300f055d7c1ad81827f8043b2231d7a24583",
+  "nPositiveEligibleRoles": 5,
+  "nRoles": 22,
+  "numericZOpened": false,
+  "sourceAuthority": "Government of PEI COPC served through NRCan; one narrowly bounded range source. Range pins private for replay.",
+  "perScopeWarning": "Projection/class do not label vertical stage. Early phase roof hypotheses/ground remain detached and unmeasured until explicitly authorized, and porch, outboards, 2025 neighbouring new structure and all eight named reserve roles must never become fit/release.",
+  "redactedDryReceiptSHA256": "0b0fa05f5c92f620e7ae9d680251e360229c23e3a5eca9fbdd0e74363b4f0fad",
+  "domains": [
+    {
+      "id": "main-front-steep-west-between-dormers",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 8,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.209,
+        0.999
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 8,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "main-front-steep-east-between-dormers",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 22,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.956,
+        1.216
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 8,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "main-upper-front-west",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 36,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        2.923,
+        1.751
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 13,
+      "minHoldBlocks": 4
+    },
+    {
+      "id": "main-upper-front-east",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 30,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        3.545,
+        1.836
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 13,
+      "minHoldBlocks": 4
+    },
+    {
+      "id": "main-upper-back-west",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 46,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        3.236,
+        1.868
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 13,
+      "minHoldBlocks": 4
+    },
+    {
+      "id": "main-upper-back-east",
+      "kind": "roof",
+      "eligibleMetadataOnly": true,
+      "heldUniquePulses": 51,
+      "heldBlocks": 4,
+      "heldSpansUV": [
+        3.527,
+        2.456
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": 46,
+      "minHold": 13,
+      "minHoldBlocks": 4
+    },
+    {
+      "id": "main-steep-west-return",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 31,
+      "heldBlocks": 2,
+      "heldSpansUV": [
+        0.966,
+        4.278
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 9,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "main-steep-east-return",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 24,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        1.145,
+        1.301
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 9,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "rear-upper-west-hip",
+      "kind": "roof",
+      "eligibleMetadataOnly": true,
+      "heldUniquePulses": 89,
+      "heldBlocks": 6,
+      "heldSpansUV": [
+        2.919,
+        6.025
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": 124,
+      "minHold": 16,
+      "minHoldBlocks": 5
+    },
+    {
+      "id": "rear-upper-east-hip",
+      "kind": "roof",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 72,
+      "heldBlocks": 4,
+      "heldSpansUV": [
+        2.144,
+        5.864
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 16,
+      "minHoldBlocks": 5
+    },
+    {
+      "id": "rear-high-south-termination",
+      "kind": "roof",
+      "eligibleMetadataOnly": true,
+      "heldUniquePulses": 48,
+      "heldBlocks": 5,
+      "heldSpansUV": [
+        5.09,
+        1.282
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": 28,
+      "minHold": 10,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "front-west-projected-dormer",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 8,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.664,
+        0.354
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 5,
+      "minHoldBlocks": 2
+    },
+    {
+      "id": "front-canted-projected-dormer",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 10,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        0.727,
+        4.397
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 5,
+      "minHoldBlocks": 2
+    },
+    {
+      "id": "front-east-projected-dormer",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 20,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.816,
+        1.285
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 5,
+      "minHoldBlocks": 2
+    },
+    {
+      "id": "main-peak-line-witness",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 5,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.67,
+        0.319
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 6,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "junction-main-rear-west",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 14,
+      "heldBlocks": 2,
+      "heldSpansUV": [
+        1.527,
+        1.358
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 7,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "junction-main-rear-east",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 6,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        0.736,
+        0.488
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 7,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "rear-peak-line-witness",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 21,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        0.581,
+        3.684
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 7,
+      "minHoldBlocks": 3
+    },
+    {
+      "id": "rear-lower-roof-margin",
+      "kind": "reserve",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 15,
+      "heldBlocks": 1,
+      "heldSpansUV": [
+        1.047,
+        0.672
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 5,
+      "minHoldBlocks": 2
+    },
+    {
+      "id": "untouched-north-front-lawn",
+      "kind": "ground",
+      "eligibleMetadataOnly": true,
+      "heldUniquePulses": 65,
+      "heldBlocks": 13,
+      "heldSpansUV": [
+        5.537,
+        6.248
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": 46,
+      "minHold": 18,
+      "minHoldBlocks": 5
+    },
+    {
+      "id": "untouched-west-verge",
+      "kind": "ground",
+      "eligibleMetadataOnly": true,
+      "heldUniquePulses": 29,
+      "heldBlocks": 4,
+      "heldSpansUV": [
+        2.252,
+        6.416
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": 39,
+      "minHold": 15,
+      "minHoldBlocks": 4
+    },
+    {
+      "id": "untouched-east-lawn-before-drive",
+      "kind": "ground",
+      "eligibleMetadataOnly": false,
+      "heldUniquePulses": 10,
+      "heldBlocks": 3,
+      "heldSpansUV": [
+        1.472,
+        4.674
+      ],
+      "offeredIfSeparatelyApprovedTrainCount": null,
+      "minHold": 15,
+      "minHoldBlocks": 4
+    }
+  ],
+  "roofAdmissibleXY": [
+    "main-upper-back-east",
+    "rear-upper-west-hip",
+    "rear-high-south-termination"
+  ],
+  "groundAdmissibleXY": [
+    "untouched-north-front-lawn",
+    "untouched-west-verge"
+  ],
+  "eligibleRectangleAreaCapM2": 34.6524,
+  "eligibleAreaCapPercentOfMappedFootprint": 15.494,
+  "decision": "HOLD every native Z. Only three disconnected upper-layer fragments and two grade controls met criteria. None of the street silhouette, all dormers, north porch, entire two-body joint, west/east steep returns, eastern ground contact, steep rear/annex/foundation/new Loft Suites are released. Do not use this aggregate as a placement or model claim. Detached qualitative canted sash/eave only after independent review; keep live stock."
+}

@@ -1,0 +1,13 @@
+{
+  "geometryAndMaterialSHA256": "51e27dc8e3f75b88d8482776721ac5ad6d93a5135b3f05c15cb79222d7333ca8",
+  "modelTriangles": 6687,
+  "materialBatches": 9,
+  "independentGlassRays": 288,
+  "independentHeadAndSillRays": 648,
+  "physicalSashPanes": 6,
+  "angledGlassRays": 54,
+  "backedIndependentBracketPairs": 2,
+  "mixedPhysicalSurfaceProbes": 13,
+  "exactStockViews": 3,
+  "liveReplacement": false
+}

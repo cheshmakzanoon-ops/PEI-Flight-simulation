@@ -1,0 +1,86 @@
+[
+  {
+    "name": "front-close",
+    "candidate": "q12313/47",
+    "fixture": {
+      "lon": -62.58837133,
+      "lat": 46.41389044,
+      "h": 5.12,
+      "dist": 40.0,
+      "east": -0.37,
+      "south": -0.93,
+      "agl": 4.5
+    },
+    "stockOwnerPixels": 21260,
+    "idSupportPixels": 21256,
+    "strictPixelsOutOfId": 4,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 0,
+    "wallIdCorePixels": 20900,
+    "stockRestoredIdentical": true,
+    "span": [
+      3363,
+      3438
+    ],
+    "vertexCount": 19710,
+    "roofTriangles": 7,
+    "wallTriangles": 18
+  },
+  {
+    "name": "road-oblique",
+    "candidate": "q12313/47",
+    "fixture": {
+      "lon": -62.58837133,
+      "lat": 46.41389044,
+      "h": 5.12,
+      "dist": 68.6,
+      "east": 0.76,
+      "south": -0.65,
+      "agl": 7.2
+    },
+    "stockOwnerPixels": 10126,
+    "idSupportPixels": 10134,
+    "strictPixelsOutOfId": 0,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 0,
+    "wallIdCorePixels": 9945,
+    "stockRestoredIdentical": true,
+    "span": [
+      3363,
+      3438
+    ],
+    "vertexCount": 19710,
+    "roofTriangles": 7,
+    "wallTriangles": 18
+  },
+  {
+    "name": "bay-air",
+    "candidate": "q12313/47",
+    "fixture": {
+      "lon": -62.58837133,
+      "lat": 46.41389044,
+      "h": 5.12,
+      "dist": 191.0,
+      "east": -0.42,
+      "south": -0.907,
+      "agl": 68.0
+    },
+    "stockOwnerPixels": 1162,
+    "idSupportPixels": 1162,
+    "strictPixelsOutOfId": 0,
+    "outsideOnePixelId": 0,
+    "categoryOutsideOnePixelId": 0,
+    "roofIdCorePixels": 268,
+    "wallIdCorePixels": 803,
+    "stockRestoredIdentical": true,
+    "span": [
+      3363,
+      3438
+    ],
+    "vertexCount": 19710,
+    "roofTriangles": 7,
+    "wallTriangles": 18
+  }
+]
