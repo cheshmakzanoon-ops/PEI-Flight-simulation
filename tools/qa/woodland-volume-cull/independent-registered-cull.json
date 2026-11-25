@@ -1,0 +1,234 @@
+{
+  "scope": "Same-visible-pixel, optional woodland submission test only. Original art, shader, support radius, foliage mask, shade, time, flight and level of detail unchanged. No newly identified trees, imagery or height data; not a default-mode or photorealism release.",
+  "base": "3aae365a36ba8cc71c895199d9c82d935d8bcb31",
+  "originalHashes": {
+    "src/render/woodland-volume.ts": "093272dacf0161c404a1409b2682496aa98110fb13cc20aa33d68337f155a114",
+    "src/render/woodland-volume-geometry.ts": "d25abafd3aa530c7015125d8e99fd4a685cbb97f8b455fb981d7c3c1e5dfc387",
+    "src/render/woodland-volume.generated.ts": "b470dce5bdfd2f9db4b6afb4bcd93da9c42aa0119d2e2bac34d357d33ebe3136",
+    "src/render/grounded-tree-shadow.ts": "77e0ffb59fc89279d4508549dfbbf08d150bb22699491765cb00922dacc87ac4",
+    "src/render/vegetation.ts": "c5c8a89f716ce7dc39bc0b04472cd92dbd52ca0d852168920b7044f06c42d955",
+    "src/app/scenery-profile.ts": "345cfb21aeffe14afef4aed62d9a91a7486e381fa6c9bc24e72633173852258e",
+    "src/sim/places.ts": "e6408227cca75c939cb0ace3a1de996b4739ac96d49d93c0e93c27473cb70f05",
+    "tools/qa/woodland-volume-frames.py": "0c9378c4019ffedf15ef5d82d39225157343c7d880e2724bfc50443d77dc2f6b",
+    "tools/qa/woodland-crown-base-motion.py": "08d1fe9b210f13045459ab4da08609ecf9caa43b0196380fcec6baf5c4cbfa73",
+    "tools/qa/woodland-bark-motion.py": "94d9ce5c90380ce10b9fb3e130b9222feb59fe234183497a79aaf8407a0740c0",
+    "tools/qa/woodland-scenery-flight.py": "5bf2a003d5a0d2a5ef115c560419b9bff1f36637c2e9e5e4bc4ca696339318c9"
+  },
+  "projection": "Use original Three.js 53-degree vertical FOV, 0.08m near, 350000m far, identical camera matrices and fixed simulation/world time. For templates below, eye=center+dist*(east,south)/length, eyeY=fixedEyeY or terrain.elevation(eye)+agl, aimY=fixedBaseH or terrain.elevation(center), PLUS h/2. Keep DPR1. Drop roll (except registered roll probes).",
+  "sites": {
+    "Prince": {
+      "lon": -64.238,
+      "lat": 46.674,
+      "dist": 54,
+      "agl": 23,
+      "h": 10,
+      "east": 0.53,
+      "south": 0.85
+    },
+    "Queens": {
+      "lon": -63.373,
+      "lat": 46.4,
+      "dist": 46,
+      "agl": 18,
+      "h": 12,
+      "east": 0.53,
+      "south": 0.85
+    },
+    "Kings": {
+      "lon": -62.169,
+      "lat": 46.414,
+      "dist": 56,
+      "agl": 22,
+      "h": 10,
+      "east": 0.53,
+      "south": 0.85
+    }
+  },
+  "primary": {
+    "viewport": [
+      920,
+      580
+    ],
+    "profile": "woodland3D",
+    "sameEyeYawOffsetsDeg": [
+      0,
+      90,
+      180,
+      270,
+      359.75
+    ],
+    "sameEyePitchDeltaDeg": [
+      0
+    ],
+    "ratioGate": "at least one whole demonstrably offscreen nonzero-fade source crown rejected at every county; each primary forward view has fewer submitted near-volume triangles; pooled three forward near-volume triangles >=25% lower than their corresponding full round rosters. No change to projected individual branches; full-scene draws must not increase."
+  },
+  "profiles": {
+    "crownBark": "?woodlandCrownBase&woodlandBark, wait for gain==1 and registered crown, no async changes within pairs; test three genuine authored grazing cams",
+    "wholeWoodland": "?woodlandView: complete source mask/ground shadow/optional forestFloor/camera preserved (no new settings or release URL).",
+    "control": [
+      "No flags, Standard never constructs near volume",
+      "No MSAA woodland, no extra option query or volume draws",
+      "Queens high 152m horizontal d62 with original aim 8; actual selected=0",
+      "No valid camera/nonfinite/orthographic or unhandled multiview if unsupported: full legacy submission, never a blank forest"
+    ]
+  },
+  "grazing": {
+    "Prince": {
+      "lon": -64.23742108644893,
+      "lat": 46.674592790684684,
+      "dist": 26,
+      "agl": 4.5,
+      "h": 17.115747419377726,
+      "east": -0.8660254037844388,
+      "south": -0.4999999999999997,
+      "fixedBaseH": 22.99635020922593,
+      "fixedEyeY": 27.982200182291795
+    },
+    "Queens": {
+      "lon": -63.37304312827413,
+      "lat": 46.399546529914325,
+      "dist": 26,
+      "agl": 2.7,
+      "h": 13.05925039233503,
+      "east": -0.7071067811865479,
+      "south": -0.7071067811865471,
+      "fixedBaseH": 38.32404072790475,
+      "fixedEyeY": 43.2847173505938
+    },
+    "Kings": {
+      "lon": -62.16821337178259,
+      "lat": 46.413126704406004,
+      "dist": 23.5,
+      "agl": 4.5,
+      "h": 8.631676831574865,
+      "east": -0.9659258262890683,
+      "south": -0.2588190451025208,
+      "fixedBaseH": 39.42139035923698,
+      "fixedEyeY": 43.829067562749714
+    }
+  },
+  "motion": {
+    "origin": "Queens-close unchanged eye; update true same-frame camera matrices ahead of visibility selection, not next tick. Compare actual current-tick full tree submission at EVERY step.",
+    "yawDeg": [
+      0,
+      45,
+      90,
+      135,
+      180,
+      225,
+      270,
+      315,
+      359.75,
+      0
+    ],
+    "rollDeg": [
+      0,
+      32,
+      -32,
+      0
+    ],
+    "pitchDeltaDeg": [
+      0,
+      50,
+      -50,
+      0
+    ],
+    "portrait": [
+      400,
+      700
+    ],
+    "landscape": [
+      920,
+      580
+    ],
+    "nearStraddle": "deterministically lowest circular slot with nonzero side extent: move camera to within 0.08m of original trunk (known original shape) aiming along and away, plus orthogonal directions, not required to cull anything",
+    "outwardStepsM": [
+      0,
+      0.25,
+      1.1,
+      3.3,
+      6.6,
+      7.49,
+      7.5,
+      7.51,
+      8.8,
+      11,
+      15.4,
+      22,
+      26.4,
+      38,
+      49.9,
+      50,
+      50.1,
+      57.6,
+      58,
+      0
+    ],
+    "altitudeAGL": [
+      18,
+      38.99,
+      39,
+      39.01,
+      111.99,
+      112,
+      112.01,
+      152,
+      18
+    ],
+    "cameraState": "cross camera yaw without translation, resize portrait\u2192landscape, active flight->Pause->camera->resume, revisit same source from opposite heading. No paused stale camera culling, wrong-eye shadows, hysteresis gaps, new allocations/recaches when census unchanged."
+  },
+  "stockFlights": [
+    {
+      "id": "prince-woodland-view",
+      "lon": -64.23357075932525,
+      "lat": 46.674377830069496,
+      "heading": 270,
+      "agl": 29
+    },
+    {
+      "id": "queens-woodland-view",
+      "lon": -63.37650018484735,
+      "lat": 46.400959210988596,
+      "heading": 120,
+      "agl": 29
+    },
+    {
+      "id": "kings-woodland-view",
+      "lon": -62.16750720087922,
+      "lat": 46.41638738574205,
+      "heading": 195,
+      "agl": 26
+    }
+  ],
+  "urbanControls": [
+    {
+      "id": "spinnakers-low",
+      "county": "Prince",
+      "lon": -63.7813,
+      "lat": 46.3849,
+      "heading": 314,
+      "agl": 82
+    },
+    {
+      "id": "harbour-low",
+      "county": "Queens",
+      "lon": -63.1338,
+      "lat": 46.219,
+      "heading": 34,
+      "agl": 115
+    },
+    {
+      "id": "souris-waterfront-pass",
+      "county": "Kings",
+      "lon": -62.2537,
+      "lat": 46.3491,
+      "heading": 352.2,
+      "agl": 98
+    }
+  ],
+  "urbanGate": "all three real releases / actual Standard have no near volume, no new fetch, algorithm no-op (even over a real wooded positive without flag). In explicit preview, preserve exactly old tree membership and all urban roofs, harbor, pavement, hedges, shade/model; if city happens to have old eligible trees do not remove them as a town rule. Real place controls without optional volume alone cannot prove active culling.",
+  "safety": "For each omitted original slot prove all vertices/candidate convex envelopes are strictly beyond a common original homogeneous clip plane (allow additional margin for source transforms, crownLift .76 warp/MSAA/float); no centre-only halfspace/circle; projected overlap kept, including crowns rooted behind eye or outside top/side. Every full roster and tree order, root, variant, H/W/color/seed/spin/lift and mask (typed-array hashes), 2D and grounded shadow membership must remain identical. Retained original order within each variant; every draw surviving stream and geometry/shader uniform unchanged. Unknown/missing/invalid transform/projection always full, no optimistic previous-camera cache. Culling may only change volume submit counts, not simulation or material.",
+  "optical": "Strict 0 different RGBA8 pixels over whole frame for full\u2192cull\u2192full same-tick at every primary/opposed/grazing/sample. Both full reads identical, same pass target size, clear color, MSAA state and camera; at least one genuinely visible branched tree (full vs no branched differs >100 pixels>2 at each primary county) and one alpha side intersection near opposite turns. Archive proof hashes, not merely screenshots. Add the same test with foreground/sky removed in QA to avoid huge envelopes hiding mistakes; report tested occlusion control separately. Log actual gl.drawElementsInstanced counts, not trusted culler counters, and frame source projection once per render. Exact pixel equality, not approximate IoU or noise tolerance.",
+  "cost": "No new pass/draw/sampler/network/material/object per tree. Retain <=old positive draws; if batching costs additional draws, reject. On unchanged camera+roster zero new instance data uploads across 30 stable ticks (compare actual bufferSubData), and yield under changing camera ordered source membership. Counters: full/selected/nonzero shader fade sum vs actually drawn counts and source triangles. For claimed speed rather than workload, use warm-cache ABBA 4x32 timed ordinary frames, warmup >=24, no PNG readback/timers in timed loop; collect per-direction position/heading churn, clip CPU separately from WebGL wall, p50/p95, noise from A/A, no p95 regression >max(5%,0.5ms) under the same setup. A software renderer does not imply device FPS; no speedup claim from triangles alone.",
+  "status": "Registered before any candidate or new framebuffer measurement. Numeric gates cannot be silently relaxed; potential grant may remain an optional geometry submission reduction without increasing visual fidelity."
+}

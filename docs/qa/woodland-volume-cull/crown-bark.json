@@ -1,0 +1,201 @@
+{
+  "scope": "Three preregistered original ground-grazing bark+uplift appearances at two bearings on defensive V2. Grounded source canopy, original leaf/wood material, instantiated GPU attribute values and actual images were tested, not an image rendered only by an approximation.",
+  "originalCommit": "3aae365a36ba8cc71c895199d9c82d935d8bcb31",
+  "candidateManifestSHA256": "7e4f990b4b2be26bf82c1a39ab4839a7a6a2bd10da39683b3d184e5e4b9158db",
+  "registeredProtocolSHA256": "3d4b3e5a53bc71cce613741b752f6808298b1007593f79ddb2e76b0ab76e8d53",
+  "replay": "Run the sibling portable native.py --sample grazing --select Prince Queens Kings. Bound attribute scans and no-source-opacity controls are performed on the forward bearing.",
+  "rows": [
+    {
+      "site": "Kings",
+      "angle": "yaw0",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 4.709067562749716,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 5,
+      "groundedShadowsIdentical": 75,
+      "originalCircle": 75,
+      "actuallySubmitted": 18,
+      "originalBranchTriangles": 132542,
+      "submittedBranchTriangles": 31564,
+      "actualSceneDraws": [
+        32,
+        31
+      ],
+      "sameRGBA8EveryChannel": "e6e74ce9719bd7ff7047d7bedc2661bc4bddb42310a89d6261ed73cc349df039",
+      "restored": true,
+      "isolatedRGBA8": "81e2e67e7d7cd43f110627afd1323791366fe24ca30a742f89578fcf80d6c2a7",
+      "strongVisibleWoodlandPixels": 103163,
+      "checkedNonzeroFadeOutsideClip": 38,
+      "zeroFade": 19,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 10,
+      "glBoundFloatValues": 167,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    },
+    {
+      "site": "Kings",
+      "angle": "yaw90",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 4.709067562749716,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 5,
+      "groundedShadowsIdentical": 75,
+      "originalCircle": 75,
+      "actuallySubmitted": 15,
+      "originalBranchTriangles": 132542,
+      "submittedBranchTriangles": 27086,
+      "actualSceneDraws": [
+        29,
+        29
+      ],
+      "sameRGBA8EveryChannel": "94c4679ac82ff0a5c315f2694123c9c90a9f8249af54d6a60a2775ecb7efbb54",
+      "restored": true,
+      "isolatedRGBA8": null,
+      "strongVisibleWoodlandPixels": null,
+      "checkedNonzeroFadeOutsideClip": 40,
+      "zeroFade": 20,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 0,
+      "glBoundFloatValues": 0,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    },
+    {
+      "site": "Prince",
+      "angle": "yaw0",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 4.616853033361192,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 23,
+      "groundedShadowsIdentical": 71,
+      "originalCircle": 71,
+      "actuallySubmitted": 20,
+      "originalBranchTriangles": 126380,
+      "submittedBranchTriangles": 35234,
+      "actualSceneDraws": [
+        248,
+        248
+      ],
+      "sameRGBA8EveryChannel": "6ec30731a291c18012c6f44cd3dd6780c55e337d63aaef10ad2ac27b8576bfba",
+      "restored": true,
+      "isolatedRGBA8": "0e70bba6215f879d5c21c2e1665aebed0d2fc1f0f24805b3d8483f3a7d4d9799",
+      "strongVisibleWoodlandPixels": 251844,
+      "checkedNonzeroFadeOutsideClip": 34,
+      "zeroFade": 17,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 14,
+      "glBoundFloatValues": 190,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    },
+    {
+      "site": "Prince",
+      "angle": "yaw90",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 4.616853033361192,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 23,
+      "groundedShadowsIdentical": 71,
+      "originalCircle": 71,
+      "actuallySubmitted": 22,
+      "originalBranchTriangles": 126380,
+      "submittedBranchTriangles": 39444,
+      "actualSceneDraws": [
+        59,
+        59
+      ],
+      "sameRGBA8EveryChannel": "e1e976c1d78f02aaf28f948ed0fa53a4c4889360620390a15d1ea5141c03a5c3",
+      "restored": true,
+      "isolatedRGBA8": null,
+      "strongVisibleWoodlandPixels": null,
+      "checkedNonzeroFadeOutsideClip": 33,
+      "zeroFade": 16,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 0,
+      "glBoundFloatValues": 0,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    },
+    {
+      "site": "Queens",
+      "angle": "yaw0",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 2.1348155906224378,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 28,
+      "groundedShadowsIdentical": 71,
+      "originalCircle": 71,
+      "actuallySubmitted": 21,
+      "originalBranchTriangles": 126824,
+      "submittedBranchTriangles": 37168,
+      "actualSceneDraws": [
+        133,
+        133
+      ],
+      "sameRGBA8EveryChannel": "23572a3a731fc64b49b377573b370a86bbe92bcade0354085545223495b6ed28",
+      "restored": true,
+      "isolatedRGBA8": "4762102548bca730f2da21f078ec9900553e33ae767dd5970f34cee76aca8edc",
+      "strongVisibleWoodlandPixels": 253270,
+      "checkedNonzeroFadeOutsideClip": 32,
+      "zeroFade": 18,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 14,
+      "glBoundFloatValues": 198,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    },
+    {
+      "site": "Queens",
+      "angle": "yaw90",
+      "captureSize": [
+        920,
+        580
+      ],
+      "sourceEyeAGL": 2.1348155906224378,
+      "barkShaderGain": 1,
+      "liftedOriginalCrowns": 28,
+      "groundedShadowsIdentical": 71,
+      "originalCircle": 71,
+      "actuallySubmitted": 20,
+      "originalBranchTriangles": 126824,
+      "submittedBranchTriangles": 36056,
+      "actualSceneDraws": [
+        53,
+        53
+      ],
+      "sameRGBA8EveryChannel": "3cd253f406ef412dccc4717fa1640748b6fc0a81ea3660fa8d86095d074b6458",
+      "restored": true,
+      "isolatedRGBA8": null,
+      "strongVisibleWoodlandPixels": null,
+      "checkedNonzeroFadeOutsideClip": 33,
+      "zeroFade": 18,
+      "unsafeOmissions": 0,
+      "glBoundFloatReadbacks": 0,
+      "glBoundFloatValues": 0,
+      "glBoundValueMismatches": 0,
+      "originalRowOrderAndShadowBuffersIdentical": true,
+      "glError": 0
+    }
+  ]
+}

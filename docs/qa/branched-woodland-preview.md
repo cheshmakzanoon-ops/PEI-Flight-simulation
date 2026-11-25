@@ -24,9 +24,11 @@ surface collision. Dense canopy lighting and understorey are still simple.
   112 m above the surface. A real multisampled drawing buffer is required.
   If absent or if the optional JavaScript chunk fails to load, the original
   canopy is used. No external tree photograph or graphics service is queried.
-- These models add real work. A matched Queens scene added four draw calls
-  and 127,720 triangles; the branch feature stays off by default. These
-  are observed software-renderer draw statistics, not device frame rates.
+- These models add real work. Before view-specific submission, a matched Queens scene added four draw
+  calls and 127,720 triangles. The [current view culler](woodland-volume-cull.md)
+  uses the same branch art and retains the full tree roster, but omits whole
+  meshes that cannot contribute to this view. The branch feature stays
+  off by default. Submission counts are not device frame rates.
 
 ## Tests and art decisions
 

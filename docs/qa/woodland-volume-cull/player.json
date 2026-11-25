@@ -1,0 +1,119 @@
+{
+  "targetParent": "3aae365a36ba8cc71c895199d9c82d935d8bcb31",
+  "runtimeRegister": "7e4f990b4b2be26bf82c1a39ab4839a7a6a2bd10da39683b3d184e5e4b9158db",
+  "method": "Actual compiled Three.js gameplay on already-published native woodland departures. Checks view changes, flight, ordinary controls and fallback. No new departures or hardware FPS claim.",
+  "cases": [
+    {
+      "site": "prince-woodland-view",
+      "mode": "culled",
+      "view": "Scenery",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ],
+      "msaaSamples": 4,
+      "travelledM": 121.95474335598443,
+      "observedFrames": 39,
+      "maximumAdmitted": 75,
+      "maximumActualSubmitted": 28,
+      "maximumVolumeTrianglesReported": 50258,
+      "actualCasesWithFewerSubmissions": 39,
+      "errors": []
+    },
+    {
+      "site": "queens-woodland-view",
+      "mode": "culled",
+      "view": "Scenery",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ],
+      "msaaSamples": 4,
+      "travelledM": 120.24840957658023,
+      "observedFrames": 41,
+      "maximumAdmitted": 76,
+      "maximumActualSubmitted": 28,
+      "maximumVolumeTrianglesReported": 50794,
+      "actualCasesWithFewerSubmissions": 41,
+      "errors": []
+    },
+    {
+      "site": "kings-woodland-view",
+      "mode": "culled",
+      "view": "Scenery",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ],
+      "msaaSamples": 4,
+      "travelledM": 122.83006906290456,
+      "observedFrames": 42,
+      "maximumAdmitted": 76,
+      "maximumActualSubmitted": 23,
+      "maximumVolumeTrianglesReported": 40728,
+      "actualCasesWithFewerSubmissions": 42,
+      "errors": []
+    },
+    {
+      "site": "prince-woodland-view",
+      "mode": "stock",
+      "view": "Scenery",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Scenery",
+        "Pause"
+      ],
+      "msaaSamples": 4,
+      "travelledM": 122.51331207438263,
+      "observedFrames": 42,
+      "maximumAdmitted": 76,
+      "maximumActualSubmitted": 76,
+      "maximumVolumeTrianglesReported": 135262,
+      "actualCasesWithFewerSubmissions": 0,
+      "errors": []
+    },
+    {
+      "site": "prince-woodland-view",
+      "mode": "standard",
+      "view": "Wide chase",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "msaaSamples": 4,
+      "travelledM": 121.3988387753436,
+      "observedFrames": 0,
+      "maximumAdmitted": 0,
+      "maximumActualSubmitted": 0,
+      "maximumVolumeTrianglesReported": 0,
+      "actualCasesWithFewerSubmissions": 0,
+      "errors": []
+    },
+    {
+      "site": "prince-woodland-view",
+      "mode": "no-msaa",
+      "view": "Wide chase",
+      "controls": [
+        "Cockpit",
+        "Wide chase",
+        "Pause"
+      ],
+      "msaaSamples": 0,
+      "travelledM": 124.74070718698333,
+      "observedFrames": 0,
+      "maximumAdmitted": 0,
+      "maximumActualSubmitted": 0,
+      "maximumVolumeTrianglesReported": 0,
+      "actualCasesWithFewerSubmissions": 0,
+      "errors": []
+    }
+  ]
+}

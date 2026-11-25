@@ -1,0 +1,73 @@
+  (window as any).qaTreeCull=(p:{full?:boolean,selected?:boolean,isolated?:boolean,visibility?:boolean,png?:boolean,attributes?:boolean,fault?:string,instant?:{yaw?:number,pitch?:number,roll?:number,aspect?:number}})=>{
+   const V:any=vegetation,D:any=V.qaOriginalWood,S:any=V.qaOriginalShade,F:any=V.volume;
+   const GL=renderer.getContext() as WebGL2RenderingContext,M=renderer.info,BR=D?.groups??[],GR=F?.groups??[];
+   const instant=p.instant,oldCameraRotation=camera.quaternion.clone(),oldCameraAspect=camera.aspect;
+   if(instant){if(instant.yaw)camera.rotateOnWorldAxis(new THREE.Vector3(0,1,0),THREE.MathUtils.degToRad(instant.yaw));
+    if(instant.pitch)camera.rotateX(THREE.MathUtils.degToRad(instant.pitch));if(instant.roll)camera.rotateZ(THREE.MathUtils.degToRad(instant.roll));
+    if(instant.aspect){camera.aspect=instant.aspect;camera.updateProjectionMatrix();}camera.updateMatrixWorld(true);}
+   const npx=GL.drawingBufferWidth*GL.drawingBufferHeight; const arr=(g:any,k:string)=>g.geometry.getAttribute(k)?.array;
+   let signature=(a:any,b:any)=>{if(!a||!b)return a===b;if(a.length!==b.length)return false;for(let i=0;i<a.length;i++)if(a[i]!==b[i])return false;return true;};
+   const records:any={};let owner=-1,readBoundData=false;const linkChecks:any[]=[]; const calls:any[]=[];const callbacks=GR.map((g:any,i:number)=>[g.mesh.onBeforeRender,g.mesh.onAfterRender]);
+   GR.forEach((g:any,i:number)=>{g.mesh.onBeforeRender=function(...a:any[]){callbacks[i][0].apply(this,a);owner=i;};g.mesh.onAfterRender=function(...a:any[]){owner=-1;callbacks[i][1].apply(this,a);};});
+   const draw=GL.drawElementsInstanced,knownBuf=new Set<any>();const trace=(mode:number,count:number,type:number,byte:number,instances:number)=>{
+    if(owner<0)return; const prog=GL.getParameter(GL.CURRENT_PROGRAM);for(const k of ['treeStem','treeShape','treeSpin','crownLift']){const loc=GL.getAttribLocation(prog,k);if(loc>=0){const buf=GL.getVertexAttrib(loc,GL.VERTEX_ATTRIB_ARRAY_BUFFER_BINDING);knownBuf.add(buf);
+      if(readBoundData){const a=GR[owner].mesh.geometry.getAttribute(k),prior=GL.getParameter(GL.ARRAY_BUFFER_BINDING),offset=GL.getVertexAttribOffset(loc,GL.VERTEX_ATTRIB_ARRAY_POINTER),stride=GL.getVertexAttrib(loc,GL.VERTEX_ATTRIB_ARRAY_STRIDE),divisor=GL.getVertexAttrib(loc,GL.VERTEX_ATTRIB_ARRAY_DIVISOR);
+       const actual=new Float32Array(instances*a.itemSize);try{GL.bindBuffer(GL.ARRAY_BUFFER,buf);GL.getBufferSubData(GL.ARRAY_BUFFER,offset,actual);}finally{GL.bindBuffer(GL.ARRAY_BUFFER,prior);}
+       let wrong=0;for(let t=0;t<actual.length;t++)if(actual[t]!==a.array[t])wrong++;linkChecks.push({owner,k,instances,components:actual.length,offset,stride,divisor,wrong});}}}
+    calls.push({owner,mode,count,instances,type,byte});};
+   GL.drawElementsInstanced=function(mode,count,type,byte,instances){trace(mode,count,type,byte,instances);return draw.call(GL,mode,count,type,byte,instances);};
+   const counters=()=>({draws:M.render.calls,tris:M.render.triangles,instanced:[...calls],volumeTris:calls.reduce((s,v)=>s+v.count/3*v.instances,0)});
+   const snap=(k:string,png=false)=>{
+    calls.length=0;renderer.render(scene,camera);const rgb=new Uint8Array(npx*4);GL.readPixels(0,0,GL.drawingBufferWidth,GL.drawingBufferHeight,GL.RGBA,GL.UNSIGNED_BYTE,rgb);
+    records[k]={...counters(),rgba:rgb,...(png?{png:renderer.domElement.toDataURL('image/png')}:{})};};
+   const liveMethod=F?.updateView, liveOwn=F?Object.hasOwn(F,'updateView'):false;
+   const old=()=>{if(!F)return; F.updateView=()=>{};for(let i=0;i<GR.length;i++){GR[i].mesh.geometry=BR[i].geometry;GR[i].mesh.visible=BR[i].mesh.visible;}};
+   const current=()=>{if(!F)return;if(liveOwn)F.updateView=liveMethod;else delete F.updateView;for(let i=0;i<GR.length;i++){GR[i].mesh.geometry=GR[i].geometry;GR[i].mesh.visible=F.fade.value.z>0&&(GR[i].sourceCount??GR[i].geometry.instanceCount)>0;}};
+   const originalOverride=scene.overrideMaterial, donors=Array.from(new Set<any>(GR.map((g:any)=>g.donor??g.mesh.material))),frags=donors.map(m=>m.fragmentShader);
+   let tempOverride:THREE.MeshBasicMaterial|undefined;
+   if(p.fault==='override'){tempOverride=new THREE.MeshBasicMaterial({color:0x607780});scene.overrideMaterial=tempOverride;}
+   if(p.fault==='fragment')for(const m of donors){m.fragmentShader+='\n// QA-only alternate donor fragment source; same original material object.';m.needsUpdate=true;}
+   let err:string|undefined, bound:any, pair={}, visibility:any, budgets:any, steady:any, result:any;
+   const diff=(a:Uint8Array,b:Uint8Array)=>{let any=0,over2=0,max=0;for(let j=0;j<a.length;j+=4){let q=Math.max(Math.abs(a[j]-b[j]),Math.abs(a[j+1]-b[j+1]),Math.abs(a[j+2]-b[j+2]),Math.abs(a[j+3]-b[j+3]));if(q)any++;if(q>2)over2++;if(q>max)max=q;}return{any,over2,max};};
+   try{
+    old();snap('reference');current();snap('candidate',p.png);old();snap('restored');current();
+    pair={matched:diff(records.reference.rgba,records.candidate.rgba),restored:diff(records.reference.rgba,records.restored.rgba)};
+    if(p.visibility&&F){const enabled=GR.map((g:any)=>g.mesh.visible);F.updateView=()=>{};for(const g of GR)g.mesh.visible=false;snap('noBranched');current();visibility=diff(records.reference.rgba,records.noBranched.rgba);delete records.noBranched;}
+    if(p.isolated&&F){const ns=new Set(GR.map((g:any)=>g.mesh)),eo=scene.children.map(q=>q.visible);for(const q of scene.children){if(!ns.has(q))q.visible=false;}
+     try{old();snap('onlyOriginal');current();snap('onlyActual');visibility={fullSceneTree:visibility,isolated:diff(records.onlyOriginal.rgba,records.onlyActual.rgba)};}
+     finally{scene.children.forEach((q,i)=>q.visible=eo[i]);}}
+    current();calls.length=0;readBoundData=!!p.isolated;renderer.render(scene,camera);readBoundData=false;const newDraw=counters();
+    const proj=new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse);
+    const m=proj.elements;const sm=(k:number,a:number,b:number)=>{const t=Math.min(1,Math.max(0,(k-a)/(b-a)));return t*t*(3-2*t);};
+    const key=(a:Float32Array,b:Float32Array,c:Float32Array,q:Float32Array|undefined,i:number)=>[...a.slice(3*i,3*i+3),...b.slice(4*i,4*i+4),...c.slice(2*i,2*i+2),q?.[i]??0].join(',');
+    let badOmit=0,ordered=true,totalOmitted=0,nzOmitted=0,zeroOmitted=0,negativeMargins:number[]=[],atBoundary=0;const rows:any[]=[];
+    for(let v=0;v<GR.length;v++){
+     const a=BR[v],b=GR[v],oa=a.stem.array,os=a.shape.array,ot=a.spin.array,ol=a.lift?.array,ca=arr(b,'treeStem'),cs=arr(b,'treeShape'),ct=arr(b,'treeSpin'),cl=arr(b,'crownLift');
+     const source=a.geometry.instanceCount,visible=(b.mesh.visible?b.mesh.geometry.instanceCount:0),ids:string[]=[];
+     for(let i=0;i<visible;i++)ids.push(key(ca,cs,ct,cl,i));
+     let j=0,nClip=0,nZero=0,nUnsafe=0;const g=a.geometry.getAttribute('position').array;
+     for(let i=0;i<source;i++){
+      if(j<ids.length&&key(oa,os,ot,ol,i)===ids[j]){j++;continue;}totalOmitted++;
+      const [x,y,z]=oa.subarray(3*i,3*i+3),[h,w]=os.subarray(4*i,4*i+2),[co,si]=ot.subarray(2*i,2*i+2),dist=Math.hypot(x-camera.position.x,z-camera.position.z);
+      const fade=(D?.fade?.value.z??0)*(1-sm(dist,38,50));if(fade<.003){zeroOmitted++;nZero++;continue;}nzOmitted++;
+      const maxima=new Float64Array(6).fill(-Infinity),lift=ol?.[i]??0,vertical=D?.crownVertical?.value??0;
+      for(let k=0;k<g.length;k+=3){const X=x+w*(g[k]*co-g[k+2]*si),Z=z+w*(g[k]*si+g[k+2]*co);let vy=g[k+1];
+       if(lift>0&&vy>0&&vy<.76){const t=vy/.76;vy+=(lift/h)*(1-sm(dist,27,38))*vertical*(256/27)*t*(1-t)**3;}
+       const Y=y+vy*h,px=m[0]*X+m[4]*Y+m[8]*Z+m[12],py=m[1]*X+m[5]*Y+m[9]*Z+m[13],pz=m[2]*X+m[6]*Y+m[10]*Z+m[14],pw=m[3]*X+m[7]*Y+m[11]*Z+m[15];
+       const ds=[pw+px,pw-px,pw+py,pw-py,pw+pz,pw-pz];for(let q=0;q<6;q++)if(ds[q]>maxima[q])maxima[q]=ds[q];
+      }
+      const mm=Math.min(...maxima);if(mm< -1e-5){nClip++;negativeMargins.push(-mm);if(-mm<.03)atBoundary++;}else{badOmit++;nUnsafe++;}
+     }
+     if(j!==visible)ordered=false;rows.push({variant:v,full:source,actuallyVisible:visible,offscreenNonzero:nClip,zeroFade:nZero,unproved:nUnsafe,originalOrder:j===visible});
+    }
+    bound={rows,ordered,totalOmitted,nzOmitted,zeroOmitted,unproved:badOmit,smallestStrictHomogeneousSeparation:negativeMargins.length?Math.min(...negativeMargins):null,separationUnderPoint03:atBoundary};
+    const eqbg=(x:any,y:any)=>{if(!x||!y)return x===y;const p=x.mesh.geometry,q=y.mesh.geometry;return x.count===y.count&&signature(x.mask.array,y.mask.array)&&Object.keys(p.attributes).length===Object.keys(q.attributes).length&&Object.keys(p.attributes).every(k=>signature(p.getAttribute(k).array,q.getAttribute(k)?.array));};
+    const checksum=new Uint32Array(4);const hash=(a:ArrayLike<number>)=>{let h=2166136261;for(const b of new Uint8Array((a as any).buffer,(a as any).byteOffset,(a as any).byteLength))h=Math.imul(h^b,16777619);return h>>>0;};if(F){checksum[0]=hash(D.mask.array);checksum[1]=hash(F.mask.array);checksum[2]=S?hash(S.mask.array):0;checksum[3]=V.groundedShadow?hash(V.groundedShadow.mask.array):0;}
+    if(p.attributes&&F){const sub=GL.bufferSubData,buffer=GL.bufferData;let uploads=0,frames=0;const consider=(t:number)=>{if(t===GL.ARRAY_BUFFER&&knownBuf.has(GL.getParameter(GL.ARRAY_BUFFER_BINDING)))uploads++;};
+     try{GL.bufferSubData=function(...q:any){consider(q[0]);return (sub as any).apply(GL,q);};GL.bufferData=function(...q:any){consider(q[0]);return (buffer as any).apply(GL,q);};for(let i=0;i<30;i++){renderer.render(scene,camera);frames++;}}finally{GL.bufferSubData=sub;GL.bufferData=buffer;}steady={knownDynamicBuffers:knownBuf.size,stableRenderFrames:frames,volumeUploads:uploads};}
+    result={pair,bound,actualNew:newDraw,visibility,steady,actualEyeAGL:camera.position.y-world.groundHeight(camera.position.x,camera.position.z),linkedGPUInstanceChecks:linkChecks,donorCrownCount:D?.crownCount??0,donorShadeCount:S?.count??0,actualBarkGain:F?.barkGain?.value??0,sourceVisible:D?.count??0,submittedMode:!!F,liveState:F?.viewState??null,sourceMaskEquals:F?signature(D.mask.array,F.mask.array):true,sourceCountsEqual:(D?.count??0)===(F?.count??0),liftCountsEqual:(D?.crownCount??0)===(F?.crownCount??0),shadeBuffersEqual:eqbg(S,V.groundedShadow),stockMasksFNV:Array.from(checksum),width:GL.drawingBufferWidth,height:GL.drawingBufferHeight,glError:GL.getError(),camera:[camera.position.toArray(),camera.quaternion.toArray(),camera.projectionMatrix.toArray(),camera.matrixWorldInverse.toArray()]};
+   }finally{current();for(let i=0;i<GR.length;i++){GR[i].mesh.onBeforeRender=callbacks[i][0];GR[i].mesh.onAfterRender=callbacks[i][1];}GL.drawElementsInstanced=draw;if(p.fault==='override'){scene.overrideMaterial=originalOverride;tempOverride?.dispose();}
+    if(p.fault==='fragment')for(let i=0;i<donors.length;i++){donors[i].fragmentShader=frags[i];donors[i].needsUpdate=true;}
+    if(instant){camera.quaternion.copy(oldCameraRotation);camera.aspect=oldCameraAspect;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);if(F?.updateView)F.updateView(camera);}}
+   return Promise.all(Object.entries(records).map(async([k,r]:any)=>{r.sha256=[...new Uint8Array(await crypto.subtle.digest('SHA-256',r.rgba))].map(i=>i.toString(16).padStart(2,'0')).join('');delete r.rgba;})).then(()=>({...result,reads:records}));
+  };

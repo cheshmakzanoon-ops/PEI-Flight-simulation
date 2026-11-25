@@ -268,6 +268,7 @@ export class Vegetation {
  get crownBaseCount(){return this.volume?.crownCount??0;}
  get woodlandBark(){return this.volume?.barkState??'waiting';}
  get volumeCount(){return this.volume?.count??0;}
+ get woodlandCull(){return this.volume?.viewState??null;}
  get groundedShadowCount(){return this.groundedShadow?.count??0;}
  attachRollingShadows(scene:THREE.Scene,world:World,fence:Parameters<typeof RollingTreeShadows.mount>[2],adapter:typeof RollingTreeShadows){
   if(this.rollingSlots&&!this.churchShadows&&!this.groundedShadow&&!this.rollingShadow)

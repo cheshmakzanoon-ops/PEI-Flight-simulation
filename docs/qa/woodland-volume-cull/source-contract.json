@@ -1,0 +1,68 @@
+{
+  "scope": "View-only pruning of optional branched-woodland submissions; original 2D billboard and grounded shade rosters retained. No geographic or surface inputs added.",
+  "originalCommit": "3aae365a36ba8cc71c895199d9c82d935d8bcb31",
+  "originalUnchangedBytes": {
+    "src/render/woodland-volume-geometry.ts": "d25abafd3aa530c7015125d8e99fd4a685cbb97f8b455fb981d7c3c1e5dfc387",
+    "src/render/woodland-volume.generated.ts": "b470dce5bdfd2f9db4b6afb4bcd93da9c42aa0119d2e2bac34d357d33ebe3136",
+    "src/render/grounded-tree-shadow.ts": "77e0ffb59fc89279d4508549dfbbf08d150bb22699491765cb00922dacc87ac4",
+    "public/art/canopy.webp": "bd199a74d29527714e0b214cb66cc95a544992380abc9df1645300ba2680403a"
+  },
+  "finalRuntimeSHA256": {
+    "src/app/scenery-profile.ts": "4ab0f26ea2fbb77360a5dacd1961896003c8ee16ec51635a16b67470f2c33368",
+    "src/main.ts": "0e7fa721a411c1c1cbb66a46bb73f8d317ed75d7d9d950bd31699796d9b8a114",
+    "src/render/vegetation.ts": "83d1ee38f1ae75293c992110646b9343eb7c78e35c8e836ab9e202f1d3199516",
+    "src/render/woodland-volume-cull.ts": "4d8eb2ad3b34d67f0a3a9c214674e2fa879c0af40cd1aa01f44cb11bbc492db6",
+    "src/render/woodland-volume.ts": "0b7bbbf0b7f112337216db7a779d951dbd3e6ee7ebd35580c60594234f5b5d77",
+    "test/woodland-volume-cull.test.ts": "d0e72dc23c39a3aa1be19cac2a2a87d25ea0af2e11bf48c55d55044b9d96a015"
+  },
+  "lockedIndependentPrototypeFileManifestSHA256": "972eda5f1bbb983e8dd33bcb891f29ed9d49641ff7997e78422300acda916f32",
+  "finalRuntimeFileManifestSHA256": "7e4f990b4b2be26bf82c1a39ab4839a7a6a2bd10da39683b3d184e5e4b9158db",
+  "retainedOriginalTemplateTriangles": [
+    {
+      "variant": 0,
+      "vertices": 3368,
+      "triangles": 1888,
+      "woodTriangles": 408,
+      "sprigTriangles": 1480
+    },
+    {
+      "variant": 1,
+      "vertices": 3208,
+      "triangles": 1808,
+      "woodTriangles": 408,
+      "sprigTriangles": 1400
+    },
+    {
+      "variant": 2,
+      "vertices": 3272,
+      "triangles": 1762,
+      "woodTriangles": 252,
+      "sprigTriangles": 1510
+    },
+    {
+      "variant": 3,
+      "vertices": 2736,
+      "triangles": 1500,
+      "woodTriangles": 264,
+      "sprigTriangles": 1236
+    }
+  ],
+  "radiusMetres": {
+    "oldRoster": 57.6,
+    "oldOpaqueTo": 38,
+    "oldAllFragmentsZeroAt": 50,
+    "safeCullBeyond": 50.1,
+    "originalPositionRescanAfter": 7.5,
+    "worldBoundsExtraEachSide": 0.75,
+    "maxAdditionalSurveyedCrownBaseLift": 1.65
+  },
+  "identityRequired": [
+    "source order and all active instanced columns",
+    "existing 2D branch mask and original grounded shade ownership",
+    "original source vertex/index and shader behavior",
+    "the actual ordinary non-overridden camera on this render call, never a previous pose"
+  ],
+  "fallback": "Full original ring on unsupported camera/pass/material or explicit stock comparison; pre-existing MSAA and altitude admission remain unchanged.",
+  "gpuEvidence": "independent-views.json",
+  "compiledPlayer": "player.json"
+}

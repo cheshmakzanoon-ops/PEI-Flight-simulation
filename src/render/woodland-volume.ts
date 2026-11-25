@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {WOODLAND_STREAM_TAGS,WoodlandViewRows,woodlandEye,type WoodlandCullGroup,type WoodlandStreams} from './woodland-volume-cull.ts';
 import {branchedCrown} from './woodland-volume-geometry.ts';
 import type {World} from './world.ts';
 import {GroundedTreeShadows} from './grounded-tree-shadow.ts';
@@ -142,13 +143,21 @@ const f=`
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`;
-type Group={geometry:THREE.InstancedBufferGeometry;stem:THREE.InstancedBufferAttribute;shape:THREE.InstancedBufferAttribute;
+type DrawContract={compile:THREE.ShaderMaterial['onBeforeCompile'];pos:THREE.BufferAttribute|THREE.InterleavedBufferAttribute;
+ posVersion:number;defines:Record<string,unknown>;keys:readonly string[]};
+type Group=WoodlandCullGroup&{drawContract:DrawContract;rows?:WoodlandViewRows;donor:THREE.ShaderMaterial;geometry:THREE.InstancedBufferGeometry;stem:THREE.InstancedBufferAttribute;shape:THREE.InstancedBufferAttribute;
  spin:THREE.InstancedBufferAttribute;lift?:THREE.InstancedBufferAttribute;mesh:THREE.Mesh};
 interface Candidate{slot:number;distance:number;}
 export class WoodlandVolume{
  readonly fade={value:new THREE.Vector3(38,MAX_RANGE,0)};
  readonly mask:THREE.InstancedBufferAttribute;
  private readonly groups:Group[];
+ private readonly viewFrustum=new THREE.Frustum();
+ private readonly viewMatrix=new THREE.Matrix4();
+ private readonly viewEligible:boolean;
+ private viewEnabled:boolean;
+ private viewActive=false;
+ private readonly viewScene:THREE.Scene;
  private settledX=Infinity;private settledZ=Infinity;private forestRevision=-1;
  private prevCount=0;private selected=0;
  private roster=0;
@@ -164,7 +173,8 @@ export class WoodlandVolume{
  private barkLast=0;
  get barkState(){return this.barkMap.value?'ready':this.barkStarted?'optional':'waiting';}
  constructor(scene:THREE.Scene,maxInstances:number,crownLift?: (x:number,z:number,height:number,slot:number)=>number,
-  barkLoader?:()=>Promise<THREE.DataTexture|undefined>){
+  barkLoader?:()=>Promise<THREE.DataTexture|undefined>,useViewCull=true){
+  this.viewEligible=this.viewEnabled=useViewCull;this.viewScene=scene;
   this.crownLift=crownLift;this.barkLoader=barkLoader;
   const barkDefines=barkLoader?{BARK_SCAN:1}:{};
   const barkUniforms:Record<string,THREE.IUniform>=barkLoader?{barkMap:this.barkMap,barkGain:this.barkGain}:{};
@@ -188,8 +198,59 @@ export class WoodlandVolume{
    }
    const mesh=new THREE.Mesh(geometry,activeMaterial);
    mesh.frustumCulled=false;mesh.visible=false;mesh.name='Near branched woodland '+variant;scene.add(mesh);
-   return {geometry,stem,shape,spin,lift,mesh};
+   template.computeBoundingBox();
+   const pos=geometry.getAttribute('position'),defines={...activeMaterial.defines};
+   const drawContract:DrawContract={compile:activeMaterial.onBeforeCompile,pos,posVersion:(pos as THREE.BufferAttribute).version,defines,keys:Object.keys(defines)};
+   const g:Group={geometry,stem,shape,spin,lift,mesh,donor:activeMaterial,drawContract,sourceCount:0,
+    streams:{treeStem:stem,treeShape:shape,treeSpin:spin,crownLift:lift},templateBox:template.boundingBox!,triangleCount:template.index!.count/3};
+   if(useViewCull)g.rows=new WoodlandViewRows(g,LIMIT);
+   return g;
   });
+  if(useViewCull){
+   // Three has updated the final camera here, including a same-tick turn or a changed viewport,
+   // but has not yet collected/uploaded these instanced draw attributes. Never use a previous view.
+   const previous=scene.onBeforeRender;
+   scene.onBeforeRender=(...args)=>{
+    previous.apply(scene,args);
+    const [renderer,,camera,target]=args;
+    this.updateView(!target&&!renderer.xr?.isPresenting?camera:undefined);
+   };
+  }
+ }
+ private bind(g:Group,s:WoodlandStreams,n:number){
+  for(const k of WOODLAND_STREAM_TAGS){const a=s[k];if(a&&g.geometry.getAttribute(k)!==a)g.geometry.setAttribute(k,a);}
+  g.geometry.instanceCount=n;
+ }
+ /** A source camera may change between draws without a forest re-scan. Reuse original, ordered
+  * candidates; never touch billboard ownership, grounded shade receivers or per-tree lift admission. */
+ updateView(camera?:THREE.Camera){
+  const outer=this.fade.value.y;
+  this.viewActive=this.viewEnabled&&this.count>0&&this.fade.value.x===38&&outer===MAX_RANGE&&this.fade.value.z<=1&&
+    this.viewScene.overrideMaterial===null&&woodlandEye(camera,this.viewMatrix,this.viewFrustum)&&this.groups.every(g=>{
+     const m=g.donor,d=g.drawContract,defs=m.defines;
+     return g.mesh.geometry===g.geometry&&g.mesh.material===m&&m.vertexShader===v&&m.fragmentShader===f&&
+      m.onBeforeCompile===d.compile&&m.uniforms.volumeFade===this.fade&&m.side===THREE.DoubleSide&&m.alphaToCoverage&&
+      !m.transparent&&!m.wireframe&&!m.alphaHash&&m.alphaTest===0&&m.depthWrite&&m.blending===THREE.NormalBlending&&
+      g.geometry.getAttribute('position')===d.pos&&(d.pos as THREE.BufferAttribute).version===d.posVersion&&
+      defs&&Object.keys(defs).length===d.keys.length&&d.keys.every(k=>defs[k]===d.defines[k]);
+    });
+  if(!this.viewActive){
+   for(const g of this.groups)this.bind(g,g.streams,g.sourceCount);
+   return;
+  }
+  const w=camera!.matrixWorld.elements;
+  for(const g of this.groups){
+   const rows=g.rows!,n=rows.select(this.viewFrustum,w[12],w[14],outer,this.roster);
+   if(n===g.sourceCount){this.bind(g,g.streams,n);continue;}
+   rows.pack(n,this.roster);this.bind(g,rows.compact,n);
+  }
+ }
+ /** Isolated rollback for this submission change. A command-line stock selection cannot enroll here. */
+ setViewCull(on:boolean){this.viewEnabled=this.viewEligible&&on;if(!this.viewEnabled)this.updateView();}
+ get viewState(){
+  const admitted=this.count,submitted=admitted?this.groups.reduce((m,g)=>m+g.geometry.instanceCount,0):0;
+  return {enabled:this.viewEnabled,active:this.viewActive&&admitted>0,admitted,submitted,
+   submittedTriangles:admitted?this.groups.reduce((m,g)=>m+g.geometry.instanceCount*g.triangleCount,0):0};
  }
  update(stems:Float32Array,shapes:Float32Array,trees:number,x:number,z:number,agl:number,revision:number){
   if(this.barkLoader){
@@ -204,7 +265,7 @@ export class WoodlandVolume{
   this.fade.value.z=1-THREE.MathUtils.smoothstep(agl,39,112);
   if(this.crownLift)this.crownVertical.value=1-THREE.MathUtils.smoothstep(agl,18,39);
   const on=this.fade.value.z>0;
-  for(const g of this.groups)g.mesh.visible=on&&g.geometry.instanceCount>0;
+  for(const g of this.groups)g.mesh.visible=on&&g.sourceCount>0;
   if(!on){if(this.crownLift){this.crownAdmission.clear();this.changed=0;this.forestRevision=-1;}return;}
   if(revision===this.forestRevision&&Math.hypot(x-this.settledX,z-this.settledZ)<7.5)return;
   this.forestRevision=revision;this.settledX=x;this.settledZ=z;
@@ -242,7 +303,7 @@ export class WoodlandVolume{
   if(nextAdmission)this.crownAdmission=nextAdmission;
   this.mask.needsUpdate=true;
   for(const [i,g] of this.groups.entries()){
-   g.geometry.instanceCount=l[i];g.mesh.visible=on&&l[i]>0;
+   g.sourceCount=l[i];g.geometry.instanceCount=l[i];g.mesh.visible=on&&l[i]>0;
    for(const a of [g.stem,g.shape,g.spin,g.lift]){
     if(!a)continue;
     a.clearUpdateRanges();a.addUpdateRange(0,l[i]*a.itemSize);a.needsUpdate=true;
