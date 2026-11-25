@@ -32,15 +32,13 @@ No vendor artwork or raw elevation tiles are included in the new runtime.
 
 ## Compare the two woodland flights
 
-Run Standard scenery with **Regional woodland canopy** enabled. In Dispatch,
-choose **Queens · woodland pass** or **Kings · woodland pass**. The
-same settings are available with
-`?regionalCanopyStudy&departure=queens-canopy-pass` or
-`?regionalCanopyStudy&departure=kings-canopy-pass`. Add
-`&stockRegionalCanopy` to the same URL for a matched stock comparison.
-The 112 m starts are study views inside the existing simulation,
-not navigation, airstrip, or land access guidance. Miscouche retains
-its independent earlier option and route.
+Choose **Queens · woodland pass** or **Kings · woodland pass** in Standard.
+No extra flag is needed. Add `?stockRegionalCanopy` for a stock comparison;
+the two departure locations stay in the list in Detailed. The earlier
+`?regionalCanopyStudy` setting still selects the explicit comparison.
+Both 112 m starts are virtual views, not airstrips or navigation guidance.
+
+![Matched Standard scenes showing measured crown infill in both counties](regional-canopy-standard.webp)
 
 | Site | Stock occupied pixels | Study occupied pixels | Inferred forms |
 | --- | ---: | ---: | ---: |
@@ -66,7 +64,7 @@ inferred crowns at right.
 
 ## Runtime boundaries
 
-This is an optional canopy layer from above, not new near-ground tree
+This is a canopy layer seen from above, not new near-ground tree
 geometry. It needs the validated existing terrain, exact land-cover
 mask and the real emitted local woodland roster. The layer fades in
 only from an eligible flight camera above the conservative crown
@@ -85,7 +83,13 @@ The [verification receipt](regional-canopy-gate.json) records all eight
 compiled flights. Both enabled runs traveled beyond 120 m, reached their
 whole selected canopy, switched to Cockpit and paused. Stock, distant,
 Detail and wrong-cover checks did not request a pack. Corrupt and withheld
-files kept the original scene. The exact release passes all 379 tests, the
+files kept the original scene. The original explicit release passed 379 tests, the
 TypeScript/Vite production build and world data checks. For a replay, run
 `tools/qa/regional-canopy-flight.py` against the production build with
 Chromium and Playwright.
+
+The [Standard verification](regional-canopy-standard-gate.json) repeats
+both routes with no optional flag, the stock and Detailed profiles, a
+distant run, and failure controls. The current paired render retains the
+existing directional foliage lighting on both stock and added crowns.
+Neither scene changes the terrain or field boundaries.

@@ -1,4 +1,6 @@
 import test from 'node:test';
+import { standardRegionalCanopyRequested } from '../src/app/scenery-profile.ts';
+import { departureBriefing } from '../src/app/departure-briefing.ts';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
@@ -9,7 +11,7 @@ import {REGIONAL_CANOPY_DEPARTURES} from '../src/render/regional-canopy/departur
 import {SITES} from '../src/sim/places.ts';
 const bytes=(a:Uint8Array)=>Uint8Array.from(a).buffer;
 
-test('regional canopy is explicitly separate from default, Detail and other woodland cohorts',()=>{
+test('the legacy opt-in path stays separate from Detailed and other woodland cohorts',()=>{
  assert(!regionalCanopyRequested(sceneryOptions('')));
  assert(!regionalCanopyRequested(sceneryOptions('?miscoucheCanopyStudy')));
  assert(regionalCanopyRequested(sceneryOptions('?regionalCanopyStudy')));
@@ -60,4 +62,38 @@ test('late success cannot arm a cohort and oversize streaming aborts before pars
   start(c){c.enqueue(new Uint8Array(gzip.byteLength+8));},cancel(){cancelled=true;}
  })));
  assert(!oversize&&cancelled);
+});
+
+test('both woodland passes stay available for Standard, stock and detailed comparisons',()=>{
+ assert(standardRegionalCanopyRequested(sceneryOptions('')));
+ for(const k of ['stockRegionalCanopy','regionalCanopyStudy','miscoucheCanopyStudy','scenery=detail',
+  'buildingShadows','duneGrassSurface','seatedRoads','woodland3D'])
+   assert(!standardRegionalCanopyRequested(sceneryOptions('?'+k)),k);
+ for (const departure of REGIONAL_CANOPY_DEPARTURES) {
+  assert.match(departureBriefing(departure,''),/denser crowns/);
+  assert.match(departureBriefing(departure,'?stockRegionalCanopy'),/canopy treatment is off/);
+  assert.match(departureBriefing(departure,'?scenery=detail'),/canopy treatment is off/);
+ }
+});
+
+test('signed crown mesh borrows the original sampler and only the registered directional sunlight uniform', async()=>{
+ const {Scene,ShaderMaterial,Texture,Vector3,DoubleSide}=await import('three');
+ const {createRegionalCanopy}=await import('../src/render/regional-canopy/mesh.ts');
+ const s=REGIONAL_STANDS[0],file=bytes(readFileSync(new URL('../public/world/regional-canopy-v1/'+s.file,import.meta.url)));
+ const rows=decodeRegionalCanopy(bytes(gunzipSync(new Uint8Array(file))),s);
+ assert(rows);
+ const sun={value:new Vector3(1,1,1).normalize()}, texture={value:new Texture()};
+ function shader(hasMarker:boolean,other=false){
+  return new ShaderMaterial({side:DoubleSide,alphaToCoverage:true,
+   vertexShader:hasMarker?'uniform vec3 canopySun; varying vec3 cardSun;':'',
+   fragmentShader:'varying vec3 cardSun; float a=clamp((a-.30)*3.8,0.,1.);',
+   uniforms:{canopy:texture,canopySun:sun,...(other?{unknown:{value:7}}:{})}});
+ }
+ const scene=new Scene();
+ assert.equal(createRegionalCanopy(scene,shader(false),s,rows,()=>s.seats[0]),undefined);
+ assert.equal(createRegionalCanopy(scene,shader(true,true),s,rows,()=>s.seats[0]),undefined);
+ const pass=createRegionalCanopy(scene,shader(true),s,rows,()=>s.seats[0]);
+ assert(pass);assert.equal(pass.mesh.material.uniforms.canopySun,sun);
+ assert.equal(pass.mesh.material.uniforms.canopy,texture);
+ pass.dispose();assert.equal(scene.children.length,0);
 });

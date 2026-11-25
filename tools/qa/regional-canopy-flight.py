@@ -10,6 +10,7 @@ p.add_argument('--dist',type=Path,required=True);p.add_argument('--chromium',req
 p.add_argument('--out',type=Path,required=True)
 p.add_argument('--modes',default='queens,kings,stock,wrong-cover,corrupt-pack,held-pack,distant,detail')
 p.add_argument('--minimum',type=float,default=95)
+p.add_argument('--legacy-explicit',action='store_true',help='Use original opt-in flight settings.')
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
 class Quiet(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*_):pass
@@ -37,7 +38,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,dir
     site='charlottetown' if mode=='distant'else route('kings'if mode=='kings'else 'queens')
     extra={'stock':'&stockRegionalCanopy','detail':'&scenery=detail'}.get(mode,'')
     pg.set_default_timeout(140000)
-    pg.goto(f'http://127.0.0.1:{srv.server_port}/?departure={site}&diagnostics&regionalCanopyStudy'+extra,wait_until='domcontentloaded')
+    pg.goto(f'http://127.0.0.1:{srv.server_port}/?departure={site}&diagnostics'+('&regionalCanopyStudy' if a.legacy_explicit else '')+extra,wait_until='domcontentloaded')
     try:pg.wait_for_function("window.islandAirDiagnostics?.mode==='dispatch'",timeout=35000)
     except Exception as e:raise AssertionError((mode,'dispatch',errors,con,pg.locator('body').inner_text()[:460])) from e
     assert not packs,(mode,packs)

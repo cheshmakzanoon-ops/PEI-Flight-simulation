@@ -46,7 +46,7 @@ import {cavendishAtlasMatches,loadCavendishWaterCore} from './sim/cavendish-wate
 import {GREEN_GABLES_REVIEW as GABLES} from './render/green-gables-review-spec.ts';
 import {fetchProvinceDirectory,provinceFields} from './render/province-fields.ts';
 import {cropFieldAtlasMatches,loadFieldPilot} from './render/fields-pilot.ts';
-import {regionalCanopyRequested,sceneryDeparture,sceneryOptions,sceneryReviewBlock} from './app/scenery-profile.ts';
+import {regionalCanopyRequested,standardRegionalCanopyRequested,sceneryDeparture,sceneryOptions,sceneryReviewBlock} from './app/scenery-profile.ts';
 import type {NorthCapeScenery} from './render/north-cape.ts';
 import {NORTH_CAPE_SITES} from './render/north-cape-shadow.ts';
 import {northCapeMode,northCapeAtlas,NorthCapeStream,NORTH_CAPE_COVER_DECODED_SHA} from './render/north-cape-stream.ts';
@@ -97,9 +97,8 @@ bootUI();
 async function run(){
  const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
  // Keep the same Point Prim approach in Standard and in its stock comparison.
- const hasRegionalCanopy=options.has('regionalCanopyStudy');
  const pointPrimSites=pointPrimDepartureAvailable(options)?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
- const SITES=hasRegionalCanopy?[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES]:pointPrimSites;
+ const SITES=[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES];
  const wantsPointPrim=pointPrimRequested(options);
 
  const standardBreakers=shoreFoamDetailRequested(options);
@@ -126,7 +125,7 @@ async function run(){
  const crownDeparture=crownAsked?sceneryDeparture(location.search,SITES.map(s=>s.id)):0;
  const miscoucheStart=options.get('departure')==='miscouche-woodlot-pass'?
   SITES.find(q=>q.id==='miscouche-woodlot-pass'):undefined;
- const regionalStart=hasRegionalCanopy?REGIONAL_CANOPY_DEPARTURES.find(q=>q.id===options.get('departure')):undefined;
+ const regionalStart=REGIONAL_CANOPY_DEPARTURES.find(q=>q.id===options.get('departure'));
  const woodlandStart=crownDeparture?SITES[crownDeparture]:miscoucheStart??regionalStart;
  const warmPoint=woodlandStart?projectSite(woodlandStart.lon,woodlandStart.lat):undefined;
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(warmPoint?.x??startPoint.x,warmPoint?.z??startPoint.z);
@@ -291,7 +290,7 @@ async function run(){
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
    rollingModule?new rollingModule.ShadowSlotRoster():undefined);
- const regionalCanopy=regionalCanopyRequested(options)&&gl.getParameter(gl.SAMPLES)>=2&&regionalBase(terrain,cover,terrainSha)?
+ const regionalCanopy=(regionalCanopyRequested(options)||standardRegionalCanopyRequested(options))&&gl.getParameter(gl.SAMPLES)>=2&&regionalBase(terrain,cover,terrainSha)?
   new RegionalCanopies(world,scene,vegetation,forestStream,worldBase,REGIONAL_STANDS):undefined;
  if(crownStream)vegetation.trackCrownHeights();
  const chooseMiscoucheStandard=standardMiscoucheRequested(options);
@@ -684,7 +683,11 @@ async function run(){
    if(!nearby&&miscoucheArt){miscoucheArt.dispose();miscoucheArt=undefined;}
    miscoucheArt?.update(camera.position,!!standReady&&(!chooseMiscoucheStandard||!cinematic)&&d2<740**2&&vegetation.miscoucheFillRoster(),world.visualGroundEpoch,performance.now());
   }
-  regionalCanopy?.update(f,camera.position,f.y-world.groundHeight(f.x,f.z),eyeAGL,playing&&f.status==='flying',!cinematic,now);
+  if(regionalCanopy){
+   const lowScope=regionalCanopy.interested(f,camera.position);
+   regionalCanopy.update(f,camera.position,lowScope?f.y-world.groundHeight(f.x,f.z):Infinity,
+    eyeAGL,playing&&f.status==='flying',!cinematic,now);
+  }
   duneSand?.update(camera.position.x,camera.position.z,eyeAGL);
   grassCoast?.update(camera.position.x,camera.position.y,camera.position.z);
   basinSandStandard?.update(camera.position.x,camera.position.y,camera.position.z);

@@ -1,0 +1,299 @@
+{
+  "parent": "2331e850b2a3f26ce7df0b299fe32af8eeb983f0",
+  "scope": "Dated crown-gap support on two isolated verified stands; the existing directional sunlight, terrain, shadow receivers and original trees are not replaced.",
+  "tests": 395,
+  "compiled": [
+    {
+      "mode": "queens",
+      "site": "queens-canopy-pass",
+      "distanceM": 105.444,
+      "packRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "0911576",
+        "draw": 364,
+        "gain": 1,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    },
+    {
+      "mode": "kings",
+      "site": "kings-canopy-pass",
+      "distanceM": 107.838,
+      "packRequests": [
+        "1900486-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "1900486",
+        "draw": 201,
+        "gain": 1,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          }
+        ]
+      },
+      "console": []
+    },
+    {
+      "mode": "stock",
+      "site": "queens-canopy-pass",
+      "distanceM": 95.857,
+      "packRequests": [],
+      "state": {},
+      "console": []
+    },
+    {
+      "mode": "distant",
+      "site": "charlottetown",
+      "distanceM": 92.153,
+      "packRequests": [],
+      "state": {
+        "layers": "ready",
+        "cover": "idle",
+        "active": null,
+        "draw": 0,
+        "gain": 0,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    },
+    {
+      "mode": "detail",
+      "site": "queens-canopy-pass",
+      "distanceM": 95.856,
+      "packRequests": [],
+      "state": {},
+      "console": []
+    },
+    {
+      "mode": "wrong-cover",
+      "site": "queens-canopy-pass",
+      "distanceM": 99.452,
+      "packRequests": [],
+      "state": {},
+      "console": []
+    },
+    {
+      "mode": "corrupt-pack",
+      "site": "queens-canopy-pass",
+      "distanceM": 95.257,
+      "packRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": null,
+        "draw": 0,
+        "gain": 0,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "failed",
+            "requests": 1,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    },
+    {
+      "mode": "held-pack",
+      "site": "queens-canopy-pass",
+      "distanceM": 96.457,
+      "packRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": null,
+        "draw": 0,
+        "gain": 0,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "failed",
+            "requests": 1,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    }
+  ],
+  "projectedFrameChecks": {
+    "0911576": {
+      "all": {
+        "changedAbove2": 13434,
+        "changedAbove8": 12589,
+        "maxCode": 111,
+        "protected": 129998,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 0,
+        "sha": [
+          "14cc3622c85be5ea209dddbf44613b6e3c7e29736c4b354916c3a557664d5201",
+          "7efe0481e2a00d65b8085c149173869666d4fde89046f49d9cded76bce4c20bb"
+        ]
+      },
+      "oblique": {
+        "changedAbove2": 11417,
+        "changedAbove8": 10407,
+        "maxCode": 126,
+        "protected": 138037,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 18,
+        "sha": [
+          "aa408dadc83addc1cc9fc0bb54fcfe9df4604b763cb7c82fcb6570f8fe401450",
+          "fe7c949897f959624446ff90a44aec58fece5e3d21afb17037799dffac013d1f"
+        ]
+      },
+      "canopy": {
+        "changedAbove2": 13453,
+        "changedAbove8": 13182,
+        "maxCode": 146,
+        "protected": 129998,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 0,
+        "sha": [
+          "1b6b87dae0d8d9a3538647f08251454a1d50cdd6bcca3a18baf70221b051a6e2",
+          "f7d4cbcc23920bf77a81fbe5b60825c3e45d497cd0299b5e29cf7005b82ab39b"
+        ]
+      }
+    },
+    "1900486": {
+      "all": {
+        "changedAbove2": 6072,
+        "changedAbove8": 5792,
+        "maxCode": 96,
+        "protected": 60140,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 0,
+        "sha": [
+          "45f46dac8d9b0dc2e8c7bdce063a72330d686e70d26400bb6cd4c63b967ff2be",
+          "3ef430cd78103ee71b6bba0e02e154c9fce1baf99c794c32610541c9c2d82e58"
+        ]
+      },
+      "oblique": {
+        "changedAbove2": 1570,
+        "changedAbove8": 1384,
+        "maxCode": 88,
+        "protected": 79146,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 1,
+        "sha": [
+          "06c895d70560d5c78ac7d7b328065e10ff3e73590920954b8901498f82f055d4",
+          "1c9b8a934f2a8b62972897bf5f2e790edf216e12c9f47e85fa0de5d58228658b"
+        ]
+      },
+      "canopy": {
+        "changedAbove2": 6081,
+        "changedAbove8": 6000,
+        "maxCode": 141,
+        "protected": 60140,
+        "leaks": 0,
+        "rawShapeMarginPixelsWithChange": 0,
+        "sha": [
+          "6a31b4618eaf132f9132d1d5ca941f0e4d6c7da2eca48178eb7c48c4469713a4",
+          "3b65fa670d6883a895eb9e8449d2648f759b725fb82018a127d4311c6fa40461"
+        ]
+      }
+    }
+  },
+  "nativeCrownCoverage": {
+    "0911576": {
+      "stockPixels": 51365,
+      "studyPixels": 61730,
+      "standPixels": 78522,
+      "stockLost": 0,
+      "addedOutside": 0,
+      "addedNativeTall": 10607,
+      "addedNativeProtected": 0,
+      "addedNativeLow": 0
+    },
+    "1900486": {
+      "stockPixels": 19269,
+      "studyPixels": 24622,
+      "standPixels": 35021,
+      "stockLost": 0,
+      "addedOutside": 0,
+      "addedNativeTall": 5448,
+      "addedNativeProtected": 0,
+      "addedNativeLow": 0
+    }
+  }
+}

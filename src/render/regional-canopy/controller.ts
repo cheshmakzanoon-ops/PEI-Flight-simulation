@@ -59,6 +59,10 @@ export class RegionalCanopies {
   this.world=world;this.scene=scene;this.vegetation=vegetation;this.forest=forest;this.worldBase=worldBase;this.load=load;
   this.entries=stands.map(spec=>({spec,rosterRevision:-1,rosterGood:false,hashing:false,pack:'idle',requests:0,seatFailed:false,since:Infinity}));
  }
+ interested(aircraft:XYZ,eye:XYZ){
+  const cutoff=REGIONAL_RELEASE_M**2;
+  return this.entries.some(({spec})=>horizontal2(aircraft,spec)<cutoff&&horizontal2(eye,spec)<cutoff);
+ }
  qualifyLayers(match:boolean){this.layers=match?'ready':'failed';}
  get state(){
   return {layers:this.layers,cover:this.cover,active:this.active?.spec.id??null,draw:this.active?.model?.total??0,

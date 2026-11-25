@@ -113,6 +113,14 @@ export function regionalCanopyRequested(q:URLSearchParams){
  return q.has('regionalCanopyStudy')&&!q.has('stockRegionalCanopy')&&!sceneryReviewBlock('regionalCanopyStudy',q);
 }
 
+export function standardRegionalCanopyRequested(q:URLSearchParams){
+ if(q.has('stockRegionalCanopy')||q.has('regionalCanopyStudy')||sceneryReviewBlock('regionalCanopyStudy',q))return false;
+ return !SCENERY_REVIEWS.some(row=>q.has(row.flag))&&
+  !['pointPrimStudy','seatedRoads','duneReliefStudy','duneSandDetail','duneGrassSurface',
+    'orthophotoSeamStudy','shoreToneStudy','greenGablesBarnReview','gablesGradeReview',
+    'cavendishDetail','northCapeWind'].some(k=>q.has(k));
+}
+
 export function sceneryReviewBlock(flag:ScenicReview|'duneSandDetail'|'duneReliefStudy',options:URLSearchParams):'detail'|'terrain'|undefined{
  if(flag==='coastalOptics'){
   if(options.get('scenery')==='detail')return 'detail';

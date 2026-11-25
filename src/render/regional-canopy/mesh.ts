@@ -7,8 +7,14 @@ const anchor='clamp((a-.30)*3.8,0.,1.)';
  * optical modification affects this new mesh's alpha-to-coverage gain. */
 export function createRegionalCanopy(scene:T.Scene,base:T.ShaderMaterial,s:RegionalStand,rows:readonly CanopyRow[],seat:CanopySeat){
  const total=rows.length;
+ const keys=Object.keys(base.uniforms);
+ const sun=base.uniforms.canopySun?.value;
+ const directional=keys.length===2&&keys.includes('canopySun')&&sun?.isVector3===true&&
+    [sun.x,sun.y,sun.z].every(Number.isFinite)&&Math.abs(sun.lengthSq()-1)<.01&&
+    base.vertexShader.includes('uniform vec3 canopySun; varying vec3 cardSun;')&&
+    base.fragmentShader.includes('varying vec3 cardSun;');
  if(total!==s.count||!base.isShaderMaterial||!base.alphaToCoverage||base.transparent||!base.depthTest||!base.depthWrite||
-    base.side!==T.DoubleSide||Object.keys(base.uniforms).length!==1||!base.uniforms.canopy?.value?.isTexture||
+    base.side!==T.DoubleSide||(keys.length!==1&&!directional)||!base.uniforms.canopy?.value?.isTexture||
     base.fragmentShader.split(anchor).length!==2)return;
  const stems=new Float32Array(total*3),shapes=new Float32Array(total*4),bound=new T.Box3();
  let highest=-Infinity;
