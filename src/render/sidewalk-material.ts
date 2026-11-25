@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {concreteSidewalkFinishGLSL} from './concrete-sidewalk-finish.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 const vert=`
@@ -32,6 +33,7 @@ export function sidewalkMaterial(sun:THREE.Vector3,casts?:BuildingShadows){
   vec2 a=floor(p),u=fract(p);u=u*u*(3.-2.*u);
   return mix(mix(wHash(a),wHash(a+vec2(1,0)),u.x),mix(wHash(a+vec2(0,1)),wHash(a+1.),u.x),u.y);
  }
+ ${concreteSidewalkFinishGLSL}
  float integral(float x,float a,float b){return floor(x)*(b-a)+clamp(fract(x)-a,0.,b-a);}
  float seam(float x,float a,float b){
   float p=max(fwidth(x),.0015);
@@ -57,6 +59,7 @@ export function sidewalkMaterial(sun:THREE.Vector3,casts?:BuildingShadows){
   c=mix(c,vec3(.121,.142,.079),.29*weeds);
   if(walk.y<.5){
    if(walk.x<1.5){
+    c=concreteSidewalkFinish(c,wp.xz,spectral,dist,walk.x>=.5);
     float p=coords.y/(walk.x<.5?2.55:1.09);
     float slab=wHash(vec2(floor(p),floor(coords.y/13.)));
     float joint=seam(p,.033,walk.x<.5?.037:.045);

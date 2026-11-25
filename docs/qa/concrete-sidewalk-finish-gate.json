@@ -1,0 +1,540 @@
+{
+  "format": "pei-concrete-sidewalk-finish-gate/v1",
+  "runtimeBaseline": "c541e422a2563130285469d1b5145f603b931120",
+  "testCandidateBase": "78ba599fcd578851f23fac5efeab83aff72a5bde",
+  "runtimeBaseNote": "Intervening Sullivan House commit changed only detached documentation and tools.",
+  "renderer": "Chromium/SwiftShader",
+  "pixels": [
+    896,
+    592
+  ],
+  "cameraEastOffsetsMetres": [
+    0,
+    0.005,
+    0.01,
+    0.015,
+    0.02
+  ],
+  "tests421": "passed",
+  "productionBuild": "passed",
+  "worldVerifier": "passed",
+  "frames": [
+    {
+      "site": "charlottetown",
+      "pose": {
+        "lon": -63.1233501012,
+        "lat": 46.2419428722,
+        "east": 0.7339666,
+        "south": -0.6791855,
+        "dist": 18,
+        "h": 0,
+        "agl": 11
+      },
+      "owners": 13,
+      "pairs": [
+        {
+          "concrete": 17479,
+          "other": 68,
+          "over2": 9057,
+          "changed": 17732,
+          "max": 12,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 64,
+            "tris": 435239
+          }
+        },
+        {
+          "concrete": 17508,
+          "other": 69,
+          "over2": 9039,
+          "changed": 17804,
+          "max": 13,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 64,
+            "tris": 435239
+          }
+        },
+        {
+          "concrete": 17502,
+          "other": 70,
+          "over2": 9066,
+          "changed": 17794,
+          "max": 14,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 64,
+            "tris": 435239
+          }
+        },
+        {
+          "concrete": 17531,
+          "other": 72,
+          "over2": 9069,
+          "changed": 17758,
+          "max": 14,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 64,
+            "tris": 435239
+          }
+        },
+        {
+          "concrete": 17522,
+          "other": 67,
+          "over2": 9014,
+          "changed": 17747,
+          "max": 14,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 64,
+            "tris": 435239
+          }
+        }
+      ],
+      "motionCount": 69502,
+      "motionP99": 3.0
+    },
+    {
+      "site": "residential",
+      "pose": {
+        "lon": -63.1283761169,
+        "lat": 46.2532569486,
+        "east": -0.4278601,
+        "south": -0.903845,
+        "dist": 21,
+        "h": 0,
+        "agl": 10
+      },
+      "owners": 18,
+      "pairs": [
+        {
+          "concrete": 23150,
+          "other": 0,
+          "over2": 13282,
+          "changed": 22654,
+          "max": 18,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 92,
+            "tris": 508715
+          }
+        },
+        {
+          "concrete": 23150,
+          "other": 0,
+          "over2": 13318,
+          "changed": 22650,
+          "max": 17,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 92,
+            "tris": 508715
+          }
+        },
+        {
+          "concrete": 23159,
+          "other": 0,
+          "over2": 13335,
+          "changed": 22671,
+          "max": 16,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 92,
+            "tris": 508715
+          }
+        },
+        {
+          "concrete": 23147,
+          "other": 0,
+          "over2": 13321,
+          "changed": 22664,
+          "max": 15,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 92,
+            "tris": 508715
+          }
+        },
+        {
+          "concrete": 23138,
+          "other": 0,
+          "over2": 13450,
+          "changed": 22705,
+          "max": 16,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 92,
+            "tris": 508715
+          }
+        }
+      ],
+      "motionCount": 92312,
+      "motionP99": 2.0
+    },
+    {
+      "site": "kensington",
+      "pose": {
+        "lon": -63.6368658433,
+        "lat": 46.436972277,
+        "east": -0.8459997,
+        "south": 0.5331834,
+        "dist": 14,
+        "h": 0,
+        "agl": 10
+      },
+      "owners": 3,
+      "pairs": [
+        {
+          "concrete": 40020,
+          "other": 728,
+          "over2": 19500,
+          "changed": 39268,
+          "max": 16,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 40,
+            "tris": 247069
+          }
+        },
+        {
+          "concrete": 40025,
+          "other": 731,
+          "over2": 19535,
+          "changed": 39213,
+          "max": 15,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 40,
+            "tris": 247069
+          }
+        },
+        {
+          "concrete": 40047,
+          "other": 735,
+          "over2": 19522,
+          "changed": 39258,
+          "max": 15,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 40,
+            "tris": 247069
+          }
+        },
+        {
+          "concrete": 40055,
+          "other": 721,
+          "over2": 19496,
+          "changed": 39260,
+          "max": 15,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 40,
+            "tris": 247069
+          }
+        },
+        {
+          "concrete": 40047,
+          "other": 708,
+          "over2": 19573,
+          "changed": 39251,
+          "max": 15,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 40,
+            "tris": 247069
+          }
+        }
+      ],
+      "motionCount": 159870,
+      "motionP99": 3.0
+    },
+    {
+      "site": "summerside",
+      "pose": {
+        "lon": -63.7921925396,
+        "lat": 46.391678548,
+        "east": -0.9831342,
+        "south": -0.1828858,
+        "dist": 19,
+        "h": 0,
+        "agl": 10
+      },
+      "owners": 10,
+      "pairs": [
+        {
+          "concrete": 165,
+          "other": 25726,
+          "over2": 0,
+          "changed": 119,
+          "max": 2,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 206,
+            "tris": 340421
+          }
+        },
+        {
+          "concrete": 165,
+          "other": 25737,
+          "over2": 0,
+          "changed": 123,
+          "max": 2,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 206,
+            "tris": 340421
+          }
+        },
+        {
+          "concrete": 167,
+          "other": 25733,
+          "over2": 0,
+          "changed": 121,
+          "max": 2,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 206,
+            "tris": 340421
+          }
+        },
+        {
+          "concrete": 167,
+          "other": 25746,
+          "over2": 0,
+          "changed": 122,
+          "max": 2,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 206,
+            "tris": 340421
+          }
+        },
+        {
+          "concrete": 167,
+          "other": 25751,
+          "over2": 0,
+          "changed": 127,
+          "max": 2,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 206,
+            "tris": 340421
+          }
+        }
+      ],
+      "motionCount": 664,
+      "motionP99": 1.0
+    },
+    {
+      "site": "far",
+      "pose": {
+        "lon": -63.1233501012,
+        "lat": 46.2419428722,
+        "east": 0.7339666,
+        "south": -0.6791855,
+        "dist": 210,
+        "h": 0,
+        "agl": 105
+      },
+      "owners": 13,
+      "pairs": [
+        {
+          "concrete": 5630,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 74,
+            "tris": 452596
+          }
+        },
+        {
+          "concrete": 5636,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 74,
+            "tris": 452596
+          }
+        },
+        {
+          "concrete": 5626,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 74,
+            "tris": 452596
+          }
+        },
+        {
+          "concrete": 5616,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 74,
+            "tris": 452596
+          }
+        },
+        {
+          "concrete": 5621,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 74,
+            "tris": 452596
+          }
+        }
+      ],
+      "motionCount": 22432,
+      "motionP99": 0.0
+    },
+    {
+      "site": "offsite",
+      "pose": {
+        "lon": -61.9718333333,
+        "lat": 46.452527778,
+        "east": 0.91,
+        "south": -0.415,
+        "dist": 125,
+        "h": 19.5,
+        "agl": 45
+      },
+      "owners": 0,
+      "pairs": [
+        {
+          "concrete": 0,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 262,
+            "tris": 308549
+          }
+        },
+        {
+          "concrete": 0,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 262,
+            "tris": 308549
+          }
+        },
+        {
+          "concrete": 0,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 262,
+            "tris": 308549
+          }
+        },
+        {
+          "concrete": 0,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 262,
+            "tris": 308549
+          }
+        },
+        {
+          "concrete": 0,
+          "other": 0,
+          "over2": 0,
+          "changed": 0,
+          "max": 0,
+          "outside": 0,
+          "protected": 0,
+          "counts": {
+            "calls": 262,
+            "tris": 308549
+          }
+        }
+      ],
+      "motionCount": 0,
+      "motionP99": 0
+    }
+  ],
+  "ordinaryFlight": [
+    {
+      "case": "healthy",
+      "site": "cavendish",
+      "movedMetres": 37.16,
+      "installed": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 0,
+        "pending": 0,
+        "visible": false
+      },
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    },
+    {
+      "case": "missing",
+      "site": "cavendish",
+      "movedMetres": 39.56,
+      "installed": null,
+      "packRequests": 1,
+      "aborts": [],
+      "errors": []
+    }
+  ]
+}
