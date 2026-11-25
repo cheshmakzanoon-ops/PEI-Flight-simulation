@@ -1,0 +1,301 @@
+{
+  "mode": "Detached original masonry, tracery and stepped buttress, no aerial insertion",
+  "errors": [],
+  "views": [
+    {
+      "name": "full",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          4.06,
+          2.84,
+          8.54
+        ],
+        "aim": [
+          -0.02,
+          2.62,
+          0.02
+        ],
+        "fov": 35.4,
+        "shade": false,
+        "canopy": true
+      },
+      "model": [
+        [
+          "brick",
+          10383
+        ],
+        [
+          "arch",
+          348
+        ],
+        [
+          "mortar",
+          111
+        ],
+        [
+          "masonry-reveal",
+          438
+        ],
+        [
+          "stone",
+          214
+        ],
+        [
+          "tracery",
+          280
+        ],
+        [
+          "bevel",
+          450
+        ],
+        [
+          "glass",
+          195
+        ],
+        [
+          "shade",
+          41
+        ]
+      ],
+      "studioCalls": 19,
+      "studioTriangles": 24690
+    },
+    {
+      "name": "elevation",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          0.42,
+          2.76,
+          8.53
+        ],
+        "aim": [
+          0.04,
+          2.63,
+          0.015
+        ],
+        "fov": 36.2,
+        "shade": true,
+        "canopy": false
+      },
+      "model": [
+        [
+          "brick",
+          10383
+        ],
+        [
+          "arch",
+          348
+        ],
+        [
+          "mortar",
+          111
+        ],
+        [
+          "masonry-reveal",
+          438
+        ],
+        [
+          "stone",
+          214
+        ],
+        [
+          "tracery",
+          280
+        ],
+        [
+          "bevel",
+          450
+        ],
+        [
+          "glass",
+          195
+        ],
+        [
+          "shade",
+          41
+        ]
+      ],
+      "studioCalls": 18,
+      "studioTriangles": 24688
+    },
+    {
+      "name": "tracery",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          0.67,
+          3.96,
+          3.28
+        ],
+        "aim": [
+          -0.61,
+          3.87,
+          -0.02
+        ],
+        "fov": 34,
+        "shade": false,
+        "canopy": false
+      },
+      "model": [
+        [
+          "brick",
+          10383
+        ],
+        [
+          "arch",
+          348
+        ],
+        [
+          "mortar",
+          111
+        ],
+        [
+          "masonry-reveal",
+          438
+        ],
+        [
+          "stone",
+          214
+        ],
+        [
+          "tracery",
+          280
+        ],
+        [
+          "bevel",
+          450
+        ],
+        [
+          "glass",
+          195
+        ],
+        [
+          "shade",
+          41
+        ]
+      ],
+      "studioCalls": 18,
+      "studioTriangles": 24688
+    },
+    {
+      "name": "reveal",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -2.46,
+          2.72,
+          3.27
+        ],
+        "aim": [
+          -0.73,
+          2.72,
+          -0.076
+        ],
+        "fov": 36.7,
+        "shade": true,
+        "canopy": false
+      },
+      "model": [
+        [
+          "brick",
+          10383
+        ],
+        [
+          "arch",
+          348
+        ],
+        [
+          "mortar",
+          111
+        ],
+        [
+          "masonry-reveal",
+          438
+        ],
+        [
+          "stone",
+          214
+        ],
+        [
+          "tracery",
+          280
+        ],
+        [
+          "bevel",
+          450
+        ],
+        [
+          "glass",
+          195
+        ],
+        [
+          "shade",
+          41
+        ]
+      ],
+      "studioCalls": 18,
+      "studioTriangles": 24688
+    },
+    {
+      "name": "step",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          3.43,
+          1.73,
+          3.23
+        ],
+        "aim": [
+          1.45,
+          1.88,
+          0.23
+        ],
+        "fov": 41.5,
+        "shade": false,
+        "canopy": false
+      },
+      "model": [
+        [
+          "brick",
+          10383
+        ],
+        [
+          "arch",
+          348
+        ],
+        [
+          "mortar",
+          111
+        ],
+        [
+          "masonry-reveal",
+          438
+        ],
+        [
+          "stone",
+          214
+        ],
+        [
+          "tracery",
+          280
+        ],
+        [
+          "bevel",
+          450
+        ],
+        [
+          "glass",
+          195
+        ],
+        [
+          "shade",
+          41
+        ]
+      ],
+      "studioCalls": 18,
+      "studioTriangles": 24688
+    }
+  ]
+}

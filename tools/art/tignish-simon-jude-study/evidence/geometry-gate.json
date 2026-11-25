@@ -1,0 +1,14 @@
+{
+  "triangles": 12460,
+  "batches": 9,
+  "geometryAndMaterialSHA256": "a02ab5b1f6f476cdb764b4ddafa275310445e49feb392fd284491616aa81d8f6",
+  "apertureGroups": {
+    "light": 9,
+    "cusp": 3,
+    "trefoil": 3
+  },
+  "actualGlassRays": 45,
+  "hardProbes": 14,
+  "stockViews": 3,
+  "wholeBuildingReplacement": false
+}

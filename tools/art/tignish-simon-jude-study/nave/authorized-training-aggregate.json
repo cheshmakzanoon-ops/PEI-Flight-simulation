@@ -1,0 +1,428 @@
+{
+  "fitSHA256": "4c61681c63bd89cbc611e15ccf15c6c7c1e92cfcf3a05a5d7405e0d96ea2f81c",
+  "emitterSHA256": "c857b4a9bc26058a413f763b44c60fb8270136da192d0dff6386a40fe3782780",
+  "adapterSHA256": "ce914d2e214a6f183b859c3df57f49d0bfb983df81214e41e52f6877a9a72701",
+  "geometrySHA256": "69c713ca0575d306ac292c29e2514aad8a742fc08f5796f3e3d66cc54eed5835",
+  "scope": "Eleven disjoint roof rectangles trimmed to extracted owner. No linked whole roof or inferred tower.",
+  "triangles": 58,
+  "planeMeshes": [
+    {
+      "name": "nave-north-west-segment/0",
+      "role": "nave-north-west-segment",
+      "areaUV": 63.364000000000004,
+      "mask": {
+        "u": [
+          -6.86,
+          3.36
+        ],
+        "v": [
+          -0.92,
+          5.28
+        ]
+      },
+      "upNormalMin": 0.6329756111240435,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-south-west-segment/0",
+      "role": "nave-south-west-segment",
+      "areaUV": 57.53859999999997,
+      "mask": {
+        "u": [
+          -6.86,
+          3.36
+        ],
+        "v": [
+          -10.54,
+          -4.91
+        ]
+      },
+      "upNormalMin": 0.6368007311834865,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-crown-west-segment/0",
+      "role": "nave-crown-west-segment",
+      "areaUV": 5.655845257642342,
+      "mask": {
+        "u": [
+          -6.61,
+          3.1399999999999997
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.6329756111240441,
+      "triangleCount": 2
+    },
+    {
+      "name": "nave-crown-west-segment/1",
+      "role": "nave-crown-west-segment",
+      "areaUV": 7.054119857258199,
+      "mask": {
+        "u": [
+          -6.61,
+          3.1399999999999997
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.6368007311834869,
+      "triangleCount": 2
+    },
+    {
+      "name": "nave-crown-west-segment/2",
+      "role": "nave-crown-west-segment",
+      "areaUV": 3.8650348850994516,
+      "mask": {
+        "u": [
+          -6.61,
+          3.1399999999999997
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.9989780267521872,
+      "triangleCount": 2
+    },
+    {
+      "name": "nave-north-shoulder-west-segment/0",
+      "role": "nave-north-shoulder-west-segment",
+      "areaUV": 11.907200000000014,
+      "mask": {
+        "u": [
+          -6.760000000000001,
+          3
+        ],
+        "v": [
+          5.76,
+          6.98
+        ]
+      },
+      "upNormalMin": 0.7242830758945867,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-north-east-segment/0",
+      "role": "nave-north-east-segment",
+      "areaUV": 62.495999999999995,
+      "mask": {
+        "u": [
+          5.2,
+          15.28
+        ],
+        "v": [
+          -0.92,
+          5.28
+        ]
+      },
+      "upNormalMin": 0.6341081575222941,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-south-east-segment/0",
+      "role": "nave-south-east-segment",
+      "areaUV": 56.750399999999985,
+      "mask": {
+        "u": [
+          5.2,
+          15.28
+        ],
+        "v": [
+          -10.54,
+          -4.91
+        ]
+      },
+      "upNormalMin": 0.6403924660863729,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-crown-east-segment/0",
+      "role": "nave-crown-east-segment",
+      "areaUV": 9.210899498350345,
+      "mask": {
+        "u": [
+          5.45,
+          15.059999999999999
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.6341081575222903,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-crown-east-segment/1",
+      "role": "nave-crown-east-segment",
+      "areaUV": 3.1663518682512937,
+      "mask": {
+        "u": [
+          5.45,
+          15.059999999999999
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.6403924660862885,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-crown-east-segment/2",
+      "role": "nave-crown-east-segment",
+      "areaUV": 3.9597486333983576,
+      "mask": {
+        "u": [
+          5.45,
+          15.059999999999999
+        ],
+        "v": [
+          -3.86,
+          -2.16
+        ]
+      },
+      "upNormalMin": 0.9988961658829816,
+      "triangleCount": 4
+    },
+    {
+      "name": "nave-north-shoulder-east-segment/0",
+      "role": "nave-north-shoulder-east-segment",
+      "areaUV": 11.736400000000005,
+      "mask": {
+        "u": [
+          5.3,
+          14.92
+        ],
+        "v": [
+          5.76,
+          6.98
+        ]
+      },
+      "upNormalMin": 0.7055641498722912,
+      "triangleCount": 2
+    },
+    {
+      "name": "nave-south-shoulder-east-segment/0",
+      "role": "nave-south-shoulder-east-segment",
+      "areaUV": 12.217399999999994,
+      "mask": {
+        "u": [
+          5.3,
+          14.92
+        ],
+        "v": [
+          -12.28,
+          -11.01
+        ]
+      },
+      "upNormalMin": 0.6446225410351067,
+      "triangleCount": 2
+    },
+    {
+      "name": "west-annex-north-outer/0",
+      "role": "west-annex-north-outer",
+      "areaUV": 15.88909675357571,
+      "mask": {
+        "u": [
+          -14.16,
+          -11.7
+        ],
+        "v": [
+          8.79,
+          16.12
+        ]
+      },
+      "upNormalMin": 0.5015808820988136,
+      "triangleCount": 2
+    },
+    {
+      "name": "west-annex-north-outer/1",
+      "role": "west-annex-north-outer",
+      "areaUV": 2.1427032464242997,
+      "mask": {
+        "u": [
+          -14.16,
+          -11.7
+        ],
+        "v": [
+          8.79,
+          16.12
+        ]
+      },
+      "upNormalMin": 0.9991617652473423,
+      "triangleCount": 2
+    },
+    {
+      "name": "west-lower-gable-witness/0",
+      "role": "west-lower-gable-witness",
+      "areaUV": 2.0499280902265555,
+      "mask": {
+        "u": [
+          -17.84,
+          -16.03
+        ],
+        "v": [
+          -10.7,
+          -7.83
+        ]
+      },
+      "upNormalMin": 0.8543000515609762,
+      "triangleCount": 6
+    },
+    {
+      "name": "west-lower-gable-witness/1",
+      "role": "west-lower-gable-witness",
+      "areaUV": 3.1447719097734392,
+      "mask": {
+        "u": [
+          -17.84,
+          -16.03
+        ],
+        "v": [
+          -10.7,
+          -7.83
+        ]
+      },
+      "upNormalMin": 0.843903833110641,
+      "triangleCount": 6
+    }
+  ],
+  "roles": {
+    "nave-north-west-segment": {
+      "count": 203,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.02275366919494104,
+      "P90Abs": 0.05151823503900204,
+      "signedMedian": -0.0003541343581758838,
+      "crossings": {
+        "nave-north-west-segment/0": 203
+      }
+    },
+    "nave-south-west-segment": {
+      "count": 207,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.02035732810390556,
+      "P90Abs": 0.053048051146208766,
+      "signedMedian": 0.000009942625332826083,
+      "crossings": {
+        "nave-south-west-segment/0": 207
+      }
+    },
+    "nave-north-shoulder-west-segment": {
+      "count": 40,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.013776903607743307,
+      "P90Abs": 0.036292058157200206,
+      "signedMedian": -0.0025438236713206663,
+      "crossings": {
+        "nave-north-shoulder-west-segment/0": 40
+      }
+    },
+    "nave-north-east-segment": {
+      "count": 260,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.01875943387534207,
+      "P90Abs": 0.053340307114330444,
+      "signedMedian": 0.00048033029020189133,
+      "crossings": {
+        "nave-north-east-segment/0": 260
+      }
+    },
+    "nave-south-east-segment": {
+      "count": 169,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.019528559540418655,
+      "P90Abs": 0.041948395240102354,
+      "signedMedian": 0.0018026221358340422,
+      "crossings": {
+        "nave-south-east-segment/0": 169
+      }
+    },
+    "nave-north-shoulder-east-segment": {
+      "count": 20,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.006678497903674696,
+      "P90Abs": 0.020442057331252535,
+      "signedMedian": 0.003676078485700174,
+      "crossings": {
+        "nave-north-shoulder-east-segment/0": 20
+      }
+    },
+    "nave-south-shoulder-east-segment": {
+      "count": 45,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.019467362703601054,
+      "P90Abs": 0.04001361242028168,
+      "signedMedian": 0.0012345399135043067,
+      "crossings": {
+        "nave-south-shoulder-east-segment/0": 45
+      }
+    },
+    "nave-crown-west-segment": {
+      "count": 43,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.019296668884479118,
+      "P90Abs": 0.05769438744006411,
+      "signedMedian": -0.011728741870811632,
+      "crossings": {
+        "nave-crown-west-segment/1": 19,
+        "nave-crown-west-segment/2": 12,
+        "nave-crown-west-segment/0": 12
+      }
+    },
+    "nave-crown-east-segment": {
+      "count": 66,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.02088300238683871,
+      "P90Abs": 0.050457411958738874,
+      "signedMedian": 0.0016440466996883174,
+      "crossings": {
+        "nave-crown-east-segment/1": 14,
+        "nave-crown-east-segment/2": 4,
+        "nave-crown-east-segment/0": 48
+      }
+    },
+    "west-annex-north-outer": {
+      "count": 53,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.02885766216942187,
+      "P90Abs": 0.07855206645178968,
+      "signedMedian": 0.0010614156764781058,
+      "crossings": {
+        "west-annex-north-outer/1": 8,
+        "west-annex-north-outer/0": 45
+      }
+    },
+    "west-lower-gable-witness": {
+      "count": 13,
+      "missed": 0,
+      "matchFraction": 1,
+      "P50Abs": 0.006859276055330099,
+      "P90Abs": 0.026286269038418908,
+      "signedMedian": 0.003641738370397718,
+      "crossings": {
+        "west-lower-gable-witness/0": 9,
+        "west-lower-gable-witness/1": 4
+      }
+    }
+  }
+}

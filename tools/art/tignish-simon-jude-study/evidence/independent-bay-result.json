@@ -1,0 +1,52 @@
+{
+  "status": "Detached studio geometry only, no placement and no real dimensions",
+  "viewRayTargets": {
+    "insideOpenings": 75,
+    "trueGlassHits": 75,
+    "failed": []
+  },
+  "opaqueSilhouetteGrid": {
+    "n": 2397,
+    "misses": 0,
+    "failedByShade": 7,
+    "missExamples": []
+  },
+  "independentButtressSteps": [
+    {
+      "id": "brick",
+      "z": 0.5874999761581419
+    },
+    {
+      "id": "brick",
+      "z": 0.4595000147819517
+    },
+    {
+      "id": "brick",
+      "z": 0.3294999897480011
+    },
+    {
+      "id": "brick",
+      "z": 0.19349999725818678
+    }
+  ],
+  "emitted": {
+    "triangles": 12460,
+    "groups": {
+      "brick": 10383,
+      "arch": 348,
+      "mortar": 111,
+      "masonry-reveal": 438,
+      "stone": 214,
+      "tracery": 280,
+      "bevel": 450,
+      "glass": 195,
+      "shade": 41
+    }
+  },
+  "artistSources": {
+    "masonry-bay.ts": "70802d6ad834073441c5de2dbdce0a316bba2fea1cc63d5504fca603aaa2b526",
+    "arch-shapes.ts": "8b4bd79847a3de5a48f2ac9c31b9586258b5522bb646f3424b2bcc2f00f3ed1e",
+    "surface.ts": "058a7b8570611398a2ae98674f558b17843d6449e4b4187d0633faa530f15859",
+    "studio.ts": "37032bae5d395b59b4b94b156244838e310a27dc549f438a7bcc9aca1c0fe7c9"
+  }
+}

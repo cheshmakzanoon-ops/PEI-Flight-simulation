@@ -1,0 +1,224 @@
+{
+  "scope": "Tignish partial detached nave study only. One evaluation of exact signed geometry; no new verified building, uncaptured tower, game geometry, placement or ground change.",
+  "owner": "q221232/98",
+  "footprint": {
+    "areasSquareM": {
+      "full": 932.00758,
+      "detachedStudied": 332.148499
+    },
+    "sampledPlanRatio": 0.35638,
+    "emittedTriangles": 58,
+    "separatePatches": 11,
+    "noCrossPatchFilling": true
+  },
+  "thresholds": {
+    "roofMinimumCoverage": 0.97,
+    "roofMaxMedianAbsM": 0.33,
+    "roofMaxAbsMedianBiasM": 0.25,
+    "roofMaxP90AbsM": 0.67,
+    "groundMaxMedianAbsM": 0.19,
+    "groundMaxAbsMedianBiasM": 0.15,
+    "groundMaxP90AbsM": 0.39
+  },
+  "authenticSource": {
+    "catalog": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "sourceItem": {
+      "project": "Prince_Edward_Island_2020",
+      "tile_name": "pei_2020_321000_767000",
+      "provider": "Government of Prince Edward Island",
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_321000_767000.copc.laz",
+      "OBJECTID": 405382,
+      "objectETag": "\"044bef1d399373f9938f83f620da7645-9\"",
+      "objectBytes": 69119327
+    },
+    "edition": "PEI CanElevation 2020, CGVD2013 orthometric metres. Independently withheld spatial parcels from the same 2020 collection as training, not another year or complete survey.",
+    "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada."
+  },
+  "untouchedTerrain": {
+    "predictionHead": "fbf8947",
+    "actualCameraRangesM": [
+      72,
+      380,
+      1020
+    ],
+    "pointwiseUnchangedFloatingWithinToolSession": true,
+    "rolesPassed": 0,
+    "roles": 3,
+    "samplesCompared": 282,
+    "note": "Visual surface is current simulator, compared against exact fixed independent Class 2 locations. Flight-contact error is separate information; no scenery seat moved."
+  },
+  "roofValidation": {
+    "coverage": 1.0,
+    "rolesPassed": 11,
+    "roles": 11,
+    "samplesCompared": 891,
+    "worstP90AbsM": 0.269953,
+    "valuesMeaning": "Actual upward-faced triangle intersections, not a prediction from fit parameters. Scoped results do not authorize extrapolation elsewhere."
+  },
+  "roles": {
+    "nave-crown-east-segment": {
+      "medianSignedM": -0.00545,
+      "medianAbsM": 0.021064,
+      "p90AbsM": 0.055839,
+      "physicalSampleCount": 32,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-crown-west-segment": {
+      "medianSignedM": 0.000701,
+      "medianAbsM": 0.034467,
+      "p90AbsM": 0.066948,
+      "physicalSampleCount": 41,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-north-east-segment": {
+      "medianSignedM": 0.008169,
+      "medianAbsM": 0.028007,
+      "p90AbsM": 0.052721,
+      "physicalSampleCount": 137,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-north-shoulder-east-segment": {
+      "medianSignedM": -0.030684,
+      "medianAbsM": 0.031407,
+      "p90AbsM": 0.269953,
+      "physicalSampleCount": 41,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-north-shoulder-west-segment": {
+      "medianSignedM": -0.010937,
+      "medianAbsM": 0.021828,
+      "p90AbsM": 0.048709,
+      "physicalSampleCount": 33,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-north-west-segment": {
+      "medianSignedM": 0.002354,
+      "medianAbsM": 0.024652,
+      "p90AbsM": 0.053584,
+      "physicalSampleCount": 189,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-south-east-segment": {
+      "medianSignedM": -0.001421,
+      "medianAbsM": 0.023538,
+      "p90AbsM": 0.054471,
+      "physicalSampleCount": 195,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-south-shoulder-east-segment": {
+      "medianSignedM": 0.000588,
+      "medianAbsM": 0.018566,
+      "p90AbsM": 0.039611,
+      "physicalSampleCount": 41,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "nave-south-west-segment": {
+      "medianSignedM": -0.003021,
+      "medianAbsM": 0.024961,
+      "p90AbsM": 0.062171,
+      "physicalSampleCount": 146,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "untouched-east-front-lawn": {
+      "medianSignedM": -0.423864,
+      "medianAbsM": 0.423864,
+      "p90AbsM": 0.495436,
+      "samePointsSimulatorContactStats": {
+        "medianSignedM": -0.232085,
+        "medianAbsM": 0.232085,
+        "p90AbsM": 0.260451
+      },
+      "physicalSampleCount": 85,
+      "matchedFraction": 1,
+      "withinPerRoleThreshold": false,
+      "mode": "untouched land visible and flight-contact state"
+    },
+    "untouched-south-verge": {
+      "medianSignedM": -0.191164,
+      "medianAbsM": 0.191164,
+      "p90AbsM": 0.248761,
+      "samePointsSimulatorContactStats": {
+        "medianSignedM": -0.1025,
+        "medianAbsM": 0.1025,
+        "p90AbsM": 0.149
+      },
+      "physicalSampleCount": 96,
+      "matchedFraction": 1,
+      "withinPerRoleThreshold": false,
+      "mode": "untouched land visible and flight-contact state"
+    },
+    "untouched-west-lawn": {
+      "medianSignedM": -0.189679,
+      "medianAbsM": 0.189679,
+      "p90AbsM": 0.272208,
+      "samePointsSimulatorContactStats": {
+        "medianSignedM": -0.091,
+        "medianAbsM": 0.091,
+        "p90AbsM": 0.169
+      },
+      "physicalSampleCount": 101,
+      "matchedFraction": 1,
+      "withinPerRoleThreshold": false,
+      "mode": "untouched land visible and flight-contact state"
+    },
+    "west-annex-north-outer": {
+      "medianSignedM": 0.002068,
+      "medianAbsM": 0.041202,
+      "p90AbsM": 0.064427,
+      "physicalSampleCount": 25,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    },
+    "west-lower-gable-witness": {
+      "medianSignedM": -0.001002,
+      "medianAbsM": 0.022115,
+      "p90AbsM": 0.036909,
+      "physicalSampleCount": 11,
+      "matchedFraction": 1.0,
+      "withinPerRoleThreshold": true,
+      "mode": "actual emitted Three faces"
+    }
+  },
+  "doNotReplace": [
+    "east-north-porch-envelope",
+    "east-south-porch",
+    "nave-south-shoulder-west-segment",
+    "spire-centre-apex-check",
+    "spire-transition-north-flank",
+    "spire-transition-south-flank",
+    "tower-easterly-ledge-check",
+    "tower-horizontal-north-return",
+    "tower-horizontal-south-return",
+    "west-annex-north-inner"
+  ],
+  "noNumericalValuesForFailedStages": true,
+  "digests": {
+    "sourcePlan": "d493937d74828e1b86fb13a01a811a99bb292001803663adf15c72561d734dc4",
+    "signedActualGeometry": "69c713ca0575d306ac292c29e2514aad8a742fc08f5796f3e3d66cc54eed5835",
+    "reviewerPredictions": "4d7a8f7b51f00871e2e1ed7298bef2d1903b072f5fb2c524fee28b3c6cfaf306",
+    "correctedIndexNoGeometryDifference": "7c778476fbbba1b00bb0b6ffc3846efa63af96e2d089690cb685268548bf7bc7",
+    "recheckedDryReceipt": "7a4b0caa289a6d8a6a7786e229f0275296f73e2b8b26473a9966bcabd47397da"
+  },
+  "heldCheckExactlyOnce": true,
+  "noSecondFit": true,
+  "rawNumericSurveyIncluded": false
+}

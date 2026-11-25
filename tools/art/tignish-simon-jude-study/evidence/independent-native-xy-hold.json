@@ -1,0 +1,545 @@
+{
+  "place": "Main St. Simon and St. Jude Roman Catholic Church, Tignish, Prince County (#1642), not separate parochial building, outbuilding, hall or Heritage Inn recognized as convent.",
+  "owner": {
+    "tile": "q221232",
+    "feature": 98,
+    "coverageM2": 932.0076,
+    "outlineVertexMeanWGS84": [
+      -64.03574247363852,
+      46.953849105477936
+    ],
+    "packetSHA": "e463fe9b6df51d4d8ca540dc3074496fbee609a680a206e7b5ce0f5fbf9ecb8d",
+    "parcel": 6726,
+    "retainedOwnerIds": [
+      "q221232/84",
+      "q221232/278",
+      "q221232/43 (independent PID 454520)"
+    ],
+    "historicPackageMarkerCentroidNotReal": true,
+    "historicMarkerDistanceToAEBRingM": 54.488,
+    "otherParcelDistanceM": 68.004
+  },
+  "scope": "Detached documentary artwork only. No numerical height excerpt, no ground deformation, no default church/tower/neighbor substitution. Narrow tower stage tests used only classifications and XY.",
+  "primarySources": {
+    "heritage": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=1642",
+    "Town": "https://www.townoftignish.ca/historic-tignish",
+    "provinceHistoricArchive": "https://epe.lac-bac.gc.ca/100/205/301/ic/cdc/tignish/eng/religion.html?nodisclaimer=1",
+    "NorthCapeLocalPublisher": "https://northcapedrive.com/visit/st-simon-st-jude-parish-church/",
+    "CanadianHistoricalStudy": "https://dalspaceb.library.dal.ca/server/api/core/bitstreams/a44c2e0f-3510-421d-82ad-f15922f87774/content",
+    "commissionedParishHistory": "https://regporter.com/pei/wp-content/uploads/2019/03/Cran-Parish-of-Tignish.pdf",
+    "ortho2020": "https://www.arcgis.com/home/item.html?id=2e9d3e4ce0c548a19cba5327607a4754",
+    "licensedAEB": "https://open.canada.ca/data/en/dataset/7a5cda52-c7df-427f-9ced-26f19a8a64d6",
+    "AEBlicense": "https://open.canada.ca/en/open-government-licence-canada",
+    "church-aerial-2025": {
+      "reference": "https://commons.wikimedia.org/wiki/File:St._Simon_%26_St._Jude_Church_(Tignish).jpg",
+      "captureDate": "2025-10-10 11:03:25",
+      "license": "CC BY 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0"
+    },
+    "tignish-aerial-2025": {
+      "reference": "https://commons.wikimedia.org/wiki/File:Tignish,_PEI.jpg",
+      "captureDate": "2025-10-10 11:02:19",
+      "license": "CC BY 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0"
+    },
+    "church-2013": {
+      "reference": "https://commons.wikimedia.org/wiki/File:St._Simon_and_St._Jude_Roman_Catholic_Church.jpg",
+      "captureDate": "2013-09-17 11:09:58",
+      "license": "CC BY-SA 3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "flickr-church": {
+      "reference": "https://commons.wikimedia.org/wiki/File:St._Simon_%26_St._Jude_Church,_Tignish,_PEI_(10500994494).jpg",
+      "captureDate": "2013-10-26 12:36",
+      "license": "CC BY 2.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/2.0"
+    }
+  },
+  "photosReferenceOnly": true,
+  "qualifiedEdition": "PEI CanElevation July\u2013September 2020 acquisition, unlike 2025 photographs. Both refer to same conserved building; no broad measured same era.",
+  "license": {
+    "Open Government License Canada": "https://open.canada.ca/en/open-government-licence-canada",
+    "sourceCatalog": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "sourceObject": {
+      "project": "Prince_Edward_Island_2020",
+      "tile_name": "pei_2020_321000_767000",
+      "provider": "Government of Prince Edward Island",
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_321000_767000.copc.laz",
+      "OBJECTID": 405382,
+      "objectETag": "\"044bef1d399373f9938f83f620da7645-9\"",
+      "objectBytes": 69119327
+    },
+    "credit": "Contains information licensed under the Open Government Licence \u2013 Canada. CanElevation airborne acquisition provided by the Government of Prince Edward Island."
+  },
+  "frozenEvidence": {
+    "publicEvidenceSHA256": "5b27ee9d50aa010d515b3cd093fdfe6219b0fd3fb13cb714cce815c403ecbd1c",
+    "xyPreregisterSHA256": "d493937d74828e1b86fb13a01a811a99bb292001803663adf15c72561d734dc4",
+    "dryXYReceiptSHA256": "7a4b0caa289a6d8a6a7786e229f0275296f73e2b8b26473a9966bcabd47397da",
+    "nonElevationSourceAuthenticated": true
+  },
+  "counts": {
+    "eligible": 14,
+    "roles": 24,
+    "xyPositions": 33068,
+    "reservedPulseKeys": 17139,
+    "pointReturnZDecoded": false
+  },
+  "support": {
+    "nave-north-west-segment": {
+      "kind": "roof",
+      "trainUnique": 203,
+      "holdUnique": 189,
+      "heldBlocks": 10,
+      "heldSpanUV": [
+        10.043,
+        6.046
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 30,
+      "minimumHoldUnique": 24,
+      "minimumHeldCells": 6,
+      "minimumHeldSpanU": 3.3,
+      "minimumHeldSpanV": 2.3,
+      "supportFailures": []
+    },
+    "nave-south-west-segment": {
+      "kind": "roof",
+      "trainUnique": 207,
+      "holdUnique": 146,
+      "heldBlocks": 9,
+      "heldSpanUV": [
+        10.025,
+        5.576
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 30,
+      "minimumHoldUnique": 24,
+      "minimumHeldCells": 6,
+      "minimumHeldSpanU": 3.3,
+      "minimumHeldSpanV": 2.3,
+      "supportFailures": []
+    },
+    "nave-crown-west-segment": {
+      "kind": "roof",
+      "trainUnique": 43,
+      "holdUnique": 41,
+      "heldBlocks": 4,
+      "heldSpanUV": [
+        9.674,
+        1.569
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 14,
+      "minimumHoldUnique": 12,
+      "minimumHeldCells": 4,
+      "minimumHeldSpanU": 2.6,
+      "minimumHeldSpanV": 0.88,
+      "supportFailures": []
+    },
+    "nave-north-shoulder-west-segment": {
+      "kind": "roof",
+      "trainUnique": 40,
+      "holdUnique": 33,
+      "heldBlocks": 3,
+      "heldSpanUV": [
+        5.903,
+        1.164
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 12,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 3,
+      "minimumHeldSpanU": 2.15,
+      "minimumHeldSpanV": 0.66,
+      "supportFailures": []
+    },
+    "nave-south-shoulder-west-segment": {
+      "kind": "roof",
+      "trainUnique": 55,
+      "holdUnique": 21,
+      "heldBlocks": 2,
+      "heldSpanUV": [
+        2.833,
+        1.034
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 12,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 3,
+      "minimumHeldSpanU": 2.15,
+      "minimumHeldSpanV": 0.66,
+      "supportFailures": [
+        "minimumHeldCells"
+      ]
+    },
+    "nave-north-east-segment": {
+      "kind": "roof",
+      "trainUnique": 260,
+      "holdUnique": 137,
+      "heldBlocks": 9,
+      "heldSpanUV": [
+        10.065,
+        6.079
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 30,
+      "minimumHoldUnique": 24,
+      "minimumHeldCells": 6,
+      "minimumHeldSpanU": 3.3,
+      "minimumHeldSpanV": 2.3,
+      "supportFailures": []
+    },
+    "nave-south-east-segment": {
+      "kind": "roof",
+      "trainUnique": 169,
+      "holdUnique": 195,
+      "heldBlocks": 11,
+      "heldSpanUV": [
+        10.057,
+        5.477
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 30,
+      "minimumHoldUnique": 24,
+      "minimumHeldCells": 6,
+      "minimumHeldSpanU": 3.3,
+      "minimumHeldSpanV": 2.3,
+      "supportFailures": []
+    },
+    "nave-crown-east-segment": {
+      "kind": "roof",
+      "trainUnique": 66,
+      "holdUnique": 32,
+      "heldBlocks": 4,
+      "heldSpanUV": [
+        6.786,
+        1.678
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 14,
+      "minimumHoldUnique": 12,
+      "minimumHeldCells": 4,
+      "minimumHeldSpanU": 2.6,
+      "minimumHeldSpanV": 0.88,
+      "supportFailures": []
+    },
+    "nave-north-shoulder-east-segment": {
+      "kind": "roof",
+      "trainUnique": 20,
+      "holdUnique": 41,
+      "heldBlocks": 5,
+      "heldSpanUV": [
+        7.823,
+        1.196
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 12,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 3,
+      "minimumHeldSpanU": 2.15,
+      "minimumHeldSpanV": 0.66,
+      "supportFailures": []
+    },
+    "nave-south-shoulder-east-segment": {
+      "kind": "roof",
+      "trainUnique": 45,
+      "holdUnique": 41,
+      "heldBlocks": 4,
+      "heldSpanUV": [
+        7.973,
+        1.072
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 12,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 3,
+      "minimumHeldSpanU": 2.15,
+      "minimumHeldSpanV": 0.66,
+      "supportFailures": []
+    },
+    "west-annex-north-outer": {
+      "kind": "roof",
+      "trainUnique": 53,
+      "holdUnique": 25,
+      "heldBlocks": 4,
+      "heldSpanUV": [
+        2.398,
+        6.476
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 14,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 4,
+      "minimumHeldSpanU": 1.08,
+      "minimumHeldSpanV": 2.1,
+      "supportFailures": []
+    },
+    "west-annex-north-inner": {
+      "kind": "roof",
+      "trainUnique": 94,
+      "holdUnique": 38,
+      "heldBlocks": 3,
+      "heldSpanUV": [
+        2.207,
+        5.076
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 14,
+      "minimumHoldUnique": 10,
+      "minimumHeldCells": 4,
+      "minimumHeldSpanU": 1.08,
+      "minimumHeldSpanV": 2.1,
+      "supportFailures": [
+        "minimumHeldCells"
+      ]
+    },
+    "west-lower-gable-witness": {
+      "kind": "roof",
+      "trainUnique": 13,
+      "holdUnique": 11,
+      "heldBlocks": 2,
+      "heldSpanUV": [
+        1.025,
+        1.827
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 7,
+      "minimumHoldUnique": 6,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.61,
+      "minimumHeldSpanV": 1.01,
+      "supportFailures": []
+    },
+    "east-south-porch": {
+      "kind": "roof",
+      "trainUnique": 14,
+      "holdUnique": 22,
+      "heldBlocks": 2,
+      "heldSpanUV": [
+        2.427,
+        2.17
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 9,
+      "minimumHoldUnique": 8,
+      "minimumHeldCells": 3,
+      "minimumHeldSpanU": 0.9,
+      "minimumHeldSpanV": 0.8,
+      "supportFailures": [
+        "minimumHeldCells"
+      ]
+    },
+    "east-north-porch-envelope": {
+      "kind": "roof",
+      "trainUnique": 2,
+      "holdUnique": 12,
+      "heldBlocks": 2,
+      "heldSpanUV": [
+        1.43,
+        0.777
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 6,
+      "minimumHoldUnique": 5,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.8,
+      "minimumHeldSpanV": 0.52,
+      "supportFailures": [
+        "minimumTrainUnique"
+      ]
+    },
+    "tower-horizontal-south-return": {
+      "kind": "tower",
+      "trainUnique": 1,
+      "holdUnique": 0,
+      "heldBlocks": 0,
+      "heldSpanUV": [
+        0,
+        0
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 6,
+      "minimumHoldUnique": 5,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.62,
+      "minimumHeldSpanV": 0.58,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHoldUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanU",
+        "minimumHeldSpanV"
+      ]
+    },
+    "tower-horizontal-north-return": {
+      "kind": "tower",
+      "trainUnique": 4,
+      "holdUnique": 9,
+      "heldBlocks": 1,
+      "heldSpanUV": [
+        1.275,
+        0.35
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 6,
+      "minimumHoldUnique": 5,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.61,
+      "minimumHeldSpanV": 0.6,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanV"
+      ]
+    },
+    "spire-transition-south-flank": {
+      "kind": "spire",
+      "trainUnique": 0,
+      "holdUnique": 0,
+      "heldBlocks": 0,
+      "heldSpanUV": [
+        0,
+        0
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 7,
+      "minimumHoldUnique": 5,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.65,
+      "minimumHeldSpanV": 0.61,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHoldUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanU",
+        "minimumHeldSpanV"
+      ]
+    },
+    "spire-transition-north-flank": {
+      "kind": "spire",
+      "trainUnique": 0,
+      "holdUnique": 4,
+      "heldBlocks": 1,
+      "heldSpanUV": [
+        0.59,
+        0.39
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 7,
+      "minimumHoldUnique": 5,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.65,
+      "minimumHeldSpanV": 0.52,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHoldUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanU",
+        "minimumHeldSpanV"
+      ]
+    },
+    "spire-centre-apex-check": {
+      "kind": "spire",
+      "trainUnique": 0,
+      "holdUnique": 0,
+      "heldBlocks": 0,
+      "heldSpanUV": [
+        0,
+        0
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 3,
+      "minimumHoldUnique": 3,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.37,
+      "minimumHeldSpanV": 0.4,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHoldUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanU",
+        "minimumHeldSpanV"
+      ]
+    },
+    "tower-easterly-ledge-check": {
+      "kind": "tower",
+      "trainUnique": 0,
+      "holdUnique": 0,
+      "heldBlocks": 0,
+      "heldSpanUV": [
+        0,
+        0
+      ],
+      "eligibleMetadataOnly": false,
+      "minimumTrainUnique": 5,
+      "minimumHoldUnique": 4,
+      "minimumHeldCells": 2,
+      "minimumHeldSpanU": 0.45,
+      "minimumHeldSpanV": 0.52,
+      "supportFailures": [
+        "minimumTrainUnique",
+        "minimumHoldUnique",
+        "minimumHeldCells",
+        "minimumHeldSpanU",
+        "minimumHeldSpanV"
+      ]
+    },
+    "untouched-east-front-lawn": {
+      "kind": "ground",
+      "trainUnique": 119,
+      "holdUnique": 85,
+      "heldBlocks": 13,
+      "heldSpanUV": [
+        6.746,
+        9.206
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 24,
+      "minimumHoldUnique": 20,
+      "minimumHeldCells": 5,
+      "minimumHeldSpanU": 2.3,
+      "minimumHeldSpanV": 2.6,
+      "supportFailures": []
+    },
+    "untouched-south-verge": {
+      "kind": "ground",
+      "trainUnique": 101,
+      "holdUnique": 96,
+      "heldBlocks": 11,
+      "heldSpanUV": [
+        14.382,
+        4.227
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 24,
+      "minimumHoldUnique": 20,
+      "minimumHeldCells": 5,
+      "minimumHeldSpanU": 3.6,
+      "minimumHeldSpanV": 1.8,
+      "supportFailures": []
+    },
+    "untouched-west-lawn": {
+      "kind": "ground",
+      "trainUnique": 133,
+      "holdUnique": 101,
+      "heldBlocks": 11,
+      "heldSpanUV": [
+        4.691,
+        13.476
+      ],
+      "eligibleMetadataOnly": true,
+      "minimumTrainUnique": 24,
+      "minimumHoldUnique": 20,
+      "minimumHeldCells": 5,
+      "minimumHeldSpanU": 2.4,
+      "minimumHeldSpanV": 3.6,
+      "supportFailures": []
+    }
+  },
+  "explainsHold": [
+    "None of the projected tower/spire checks qualify, and three have no XY samples at all, including the center apex; the north transition has no fit points and only a compact held patch. No dot or row is class-labelled with a height stage. Airborne scans need independent measured upper spire detail from an appropriately positioned calibrated source.",
+    "Both projected porch checks fail. Separate west annex and shoulder scopes also lack complete coverage. Strong top-down nave samples cannot validate the separate tower or determine fa\u00e7ade and wall support.",
+    "Photographs confirm qualitative tower/body proportions and current materials\u2019 appearance only. Published nominal 185 ft is not a present survey datum or apex+finial release height. Ground rows are only XY eligibility, not verified seating in either simulated or orthometric levels."
+  ],
+  "sceneryWrites": 0
+}

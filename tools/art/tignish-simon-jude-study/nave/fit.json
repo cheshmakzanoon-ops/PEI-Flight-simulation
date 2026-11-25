@@ -1,0 +1,417 @@
+{
+  "schema": 1,
+  "owner": "q221232/98",
+  "sourceTrainingSHA256": "934c5f17c5f1025e32c953c3c31492cbaa6ced4d4a8a3501c22f88b5fbd14f6a",
+  "readOnlyTrainingSummary": {
+    "totalRows": 1472,
+    "roofRoles": 11,
+    "roofRows": 1119,
+    "unusedGroundRoles": 3,
+    "unusedGroundRows": 353
+  },
+  "localYOrigin": 30.0,
+  "world": {
+    "worldXZAtUV00": [
+      -64153.759504797854,
+      -50450.358425659266
+    ],
+    "worldXZPerU": [
+      0.9918788373397547,
+      -0.18062023782840697
+    ],
+    "worldXZPerV": [
+      -0.18215613483334891,
+      -0.9835161549563054
+    ],
+    "worstAffineErrorMInScope": 0.00018695664782047042
+  },
+  "outlineUV": [
+    [
+      -7.760971624422975,
+      17.80187507692869
+    ],
+    [
+      -7.919616439622272,
+      13.988187438456004
+    ],
+    [
+      -6.606736020882288,
+      13.973126344445305
+    ],
+    [
+      -6.604742866360867,
+      11.034131391961012
+    ],
+    [
+      -7.937703486179861,
+      10.939855887594135
+    ],
+    [
+      -7.941162663118661,
+      7.5497654333441835
+    ],
+    [
+      17.907426072575465,
+      7.549765433344184
+    ],
+    [
+      22.516133857578147,
+      8.624811824547752
+    ],
+    [
+      26.128936406169377,
+      -7.5229532555800285
+    ],
+    [
+      21.985765403314343,
+      -7.327208421797884
+    ],
+    [
+      21.75256964283623,
+      -15.7611887826457
+    ],
+    [
+      17.214981986690994,
+      -15.606033809375713
+    ],
+    [
+      17.236781342383257,
+      -13.801651795513859
+    ],
+    [
+      -16.17884491262833,
+      -12.864082261204338
+    ],
+    [
+      -16.067542029242496,
+      -11.415208391893229
+    ],
+    [
+      -18.37376948448829,
+      -11.330742088256688
+    ],
+    [
+      -18.11472496321976,
+      -6.97037141710339
+    ],
+    [
+      -16.27777617505424,
+      -7.081679095564149
+    ],
+    [
+      -14.959004046409246,
+      18.219600486792444
+    ]
+  ],
+  "patches": [
+    {
+      "id": "nave-north-west-segment",
+      "u": [
+        -6.86,
+        3.36
+      ],
+      "v": [
+        -0.92,
+        5.28
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          39.12669418785539,
+          -0.03805231799690472,
+          -1.2226619700522368
+        ]
+      ]
+    },
+    {
+      "id": "nave-south-west-segment",
+      "u": [
+        -6.86,
+        3.36
+      ],
+      "v": [
+        -10.54,
+        -4.91
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          46.43057781769609,
+          0.042659712859885957,
+          1.2102053889269226
+        ]
+      ]
+    },
+    {
+      "id": "nave-crown-west-segment",
+      "u": [
+        -6.61,
+        3.1399999999999997
+      ],
+      "v": [
+        -3.86,
+        -2.16
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          39.12669418785539,
+          -0.03805231799690472,
+          -1.2226619700522368
+        ],
+        [
+          46.43057781769609,
+          0.042659712859885957,
+          1.2102053889269226
+        ],
+        [
+          42.411446757026624,
+          -0.004705535563051953,
+          -0.044999996880238494
+        ]
+      ]
+    },
+    {
+      "id": "nave-north-shoulder-west-segment",
+      "u": [
+        -6.760000000000001,
+        3.0
+      ],
+      "v": [
+        5.76,
+        6.98
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          37.53295009629039,
+          -0.027220554080857034,
+          -0.9517418116198504
+        ]
+      ]
+    },
+    {
+      "id": "nave-north-east-segment",
+      "u": [
+        5.2,
+        15.28
+      ],
+      "v": [
+        -0.92,
+        5.28
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          39.1243078408873,
+          -0.04123367022794459,
+          -1.2189010972493326
+        ]
+      ]
+    },
+    {
+      "id": "nave-south-east-segment",
+      "u": [
+        5.2,
+        15.28
+      ],
+      "v": [
+        -10.54,
+        -4.91
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          46.39692815559933,
+          0.03484578409246756,
+          1.1990223464406167
+        ]
+      ]
+    },
+    {
+      "id": "nave-crown-east-segment",
+      "u": [
+        5.45,
+        15.059999999999999
+      ],
+      "v": [
+        -3.86,
+        -2.16
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          39.1243078408873,
+          -0.04123367022794459,
+          -1.2189010972493326
+        ],
+        [
+          46.39692815559933,
+          0.03484578409246756,
+          1.1990223464406167
+        ],
+        [
+          42.21933262702637,
+          0.01393462949869675,
+          -0.044999998952490704
+        ]
+      ]
+    },
+    {
+      "id": "nave-north-shoulder-east-segment",
+      "u": [
+        5.3,
+        14.92
+      ],
+      "v": [
+        5.76,
+        6.98
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          37.93623375029794,
+          -0.04266592910987659,
+          -1.0035873996957863
+        ]
+      ]
+    },
+    {
+      "id": "nave-south-shoulder-east-segment",
+      "u": [
+        5.3,
+        14.92
+      ],
+      "v": [
+        -12.28,
+        -11.01
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          46.207878394840534,
+          0.03356766248179731,
+          1.185681271302162
+        ]
+      ]
+    },
+    {
+      "id": "west-annex-north-outer",
+      "u": [
+        -14.16,
+        -11.7
+      ],
+      "v": [
+        8.79,
+        16.12
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          53.09235644376376,
+          1.7375511404199475,
+          -0.07297894636744422
+        ],
+        [
+          30.800000000002772,
+          -0.041092667443691874,
+          0.0042824992321588914
+        ]
+      ]
+    },
+    {
+      "id": "west-lower-gable-witness",
+      "u": [
+        -17.84,
+        -16.03
+      ],
+      "v": [
+        -10.7,
+        -7.83
+      ],
+      "surf": "upper envelope as minimum of defined roof planes",
+      "planes": [
+        [
+          32.02597409514624,
+          0.0404538044207762,
+          0.6071272386493216
+        ],
+        [
+          19.58635529080546,
+          0.00812615288947636,
+          -0.6358537721469187
+        ]
+      ]
+    }
+  ],
+  "noGeometry": "Absent surfaces and all connected architectural bodies outside approved rectangles. No tower, flanking porches, west inner annex, southwest shoulder, eave closure, fa\u00e7ade, terrain, or embedded photo surfaces.",
+  "basis": "CGVD2013 above sea level; all angular comparisons authored using originally approved training-only points under separate masks; no data after independent held result.",
+  "trainingAnalyticAggregate": {
+    "nave-north-west-segment": {
+      "n": 203,
+      "absP50": 0.02275242036875369,
+      "absP90": 0.05151850802692764,
+      "signedMedian": -0.00035794175097692005
+    },
+    "nave-south-west-segment": {
+      "n": 207,
+      "absP50": 0.02035761176794182,
+      "absP90": 0.053049290407763294,
+      "signedMedian": 9.827078407909084e-06
+    },
+    "nave-crown-west-segment": {
+      "n": 43,
+      "absP50": 0.0192966874650935,
+      "absP90": 0.057691162908260235,
+      "signedMedian": -0.0117288290300408
+    },
+    "nave-north-shoulder-west-segment": {
+      "n": 40,
+      "absP50": 0.013776818665601098,
+      "absP90": 0.036292747793795856,
+      "signedMedian": -0.0025438373560326966
+    },
+    "nave-north-east-segment": {
+      "n": 260,
+      "absP50": 0.018749345253539218,
+      "absP90": 0.05335855026576155,
+      "signedMedian": 0.00047189962511495764
+    },
+    "nave-south-east-segment": {
+      "n": 169,
+      "absP50": 0.019535892950962364,
+      "absP90": 0.04196348956916581,
+      "signedMedian": 0.0018084756071345964
+    },
+    "nave-crown-east-segment": {
+      "n": 66,
+      "absP50": 0.02089392874414031,
+      "absP90": 0.05044863705433755,
+      "signedMedian": 0.0016333713263847471
+    },
+    "nave-north-shoulder-east-segment": {
+      "n": 20,
+      "absP50": 0.006674522675309547,
+      "absP90": 0.020446766742185936,
+      "signedMedian": 0.00367371142731443
+    },
+    "nave-south-shoulder-east-segment": {
+      "n": 45,
+      "absP50": 0.01945615717326632,
+      "absP90": 0.040010411158682764,
+      "signedMedian": 0.0012437449309175008
+    },
+    "west-annex-north-outer": {
+      "n": 53,
+      "absP50": 0.02888747743955733,
+      "absP90": 0.07851759129422718,
+      "signedMedian": 0.001060680747809073
+    },
+    "west-lower-gable-witness": {
+      "n": 13,
+      "absP50": 0.006873472689289173,
+      "absP90": 0.026295914615120354,
+      "signedMedian": 0.003654940797364503
+    }
+  }
+}

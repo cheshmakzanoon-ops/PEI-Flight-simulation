@@ -1,0 +1,65 @@
+[
+  {
+    "name": "east-street",
+    "cameraFixture": {
+      "lon": -64.03574247368421,
+      "lat": 46.95384910526316,
+      "h": 22.0,
+      "dist": 72,
+      "east": 70.0,
+      "south": 15.0,
+      "agl": 7.4
+    },
+    "aaEdgeNotExactlyID": 0,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 73446,
+    "stockOwnerPixelCount": 73430,
+    "span": [
+      6642,
+      6807
+    ],
+    "vertexCount": 18048
+  },
+  {
+    "name": "south-oblique",
+    "cameraFixture": {
+      "lon": -64.03574247368421,
+      "lat": 46.95384910526316,
+      "h": 22.0,
+      "dist": 93.0,
+      "east": -28.0,
+      "south": 86.0,
+      "agl": 6.5
+    },
+    "aaEdgeNotExactlyID": 1,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 44334,
+    "stockOwnerPixelCount": 44335,
+    "span": [
+      6642,
+      6807
+    ],
+    "vertexCount": 18048
+  },
+  {
+    "name": "west-air",
+    "cameraFixture": {
+      "lon": -64.03574247368421,
+      "lat": 46.95384910526316,
+      "h": 22.0,
+      "dist": 272,
+      "east": -257.0,
+      "south": -79.0,
+      "agl": 84.0
+    },
+    "aaEdgeNotExactlyID": 4,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 3979,
+    "stockOwnerPixelCount": 3983,
+    "span": [
+      6642,
+      6807
+    ],
+    "vertexCount": 18048
+  }
+]

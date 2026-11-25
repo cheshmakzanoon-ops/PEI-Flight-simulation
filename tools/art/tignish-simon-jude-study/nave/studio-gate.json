@@ -1,0 +1,106 @@
+{
+  "mode": "Detached eleven measured roof samples, no tower or aerial insertion",
+  "errors": [],
+  "views": [
+    {
+      "name": "nearEast",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          31.3,
+          31.7,
+          38.9
+        ],
+        "look": [
+          0.4,
+          2.7,
+          -0.8
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "fov": 39
+      },
+      "physicalTriangles": 58,
+      "roofRoles": 11,
+      "calls": 19
+    },
+    {
+      "name": "north",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -12.3,
+          32.9,
+          -39.4
+        ],
+        "look": [
+          0.2,
+          3.4,
+          -0.25
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "fov": 41.5
+      },
+      "physicalTriangles": 58,
+      "roofRoles": 11,
+      "calls": 19
+    },
+    {
+      "name": "plan",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -0.015,
+          65,
+          0.001
+        ],
+        "look": [
+          0,
+          0,
+          0
+        ],
+        "up": [
+          0,
+          0,
+          -1
+        ],
+        "fov": 36.5
+      },
+      "physicalTriangles": 58,
+      "roofRoles": 11,
+      "calls": 19
+    },
+    {
+      "name": "west",
+      "repeatIdentical": true,
+      "pose": {
+        "eye": [
+          -37,
+          22.65,
+          -13.37
+        ],
+        "look": [
+          -3.7,
+          1.8,
+          -1.1
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "fov": 40.2
+      },
+      "physicalTriangles": 58,
+      "roofRoles": 11,
+      "calls": 19
+    }
+  ]
+}
