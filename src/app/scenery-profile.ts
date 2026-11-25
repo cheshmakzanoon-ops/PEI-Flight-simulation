@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockConfederationTrail','stockCoastalMarsh']);
+ 'stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockConfederationTrail','stockCoastalMarsh']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Optional local native-source optical and vegetation layer in Standard. */
@@ -258,13 +258,17 @@ export function coastalMarshRequested(q:URLSearchParams){
  return (!mode||mode==='standard')&&!q.has('stockCoastalMarsh')&&standardComparisonQuery(q);
 }
 
-/** Standard owns only the independently pinned Tracadie join. Keep the
- * historic multi-site experiment and locked map styles separate. */
+/** Each Standard source cohort has an independent opt-out. Neither stock
+ * switch disables the other or changes the optics of the historical study. */
 export function standardTracadieOrtho(q:URLSearchParams){
  const mode=q.get('scenery');
  if(mode&&mode!=='standard')return false;
  if(q.has('stockTracadieOrtho'))return false;
  return standardComparisonQuery(q);
+}
+export function standardCountyOrtho(q:URLSearchParams){
+ const mode=q.get('scenery');
+ return (!mode||mode==='standard')&&!q.has('stockCountyOrtho')&&standardComparisonQuery(q);
 }
 /** Ordinary close forest only. An explicit floor request retains the
  * historical preview, including in the bundled Detail profile. */

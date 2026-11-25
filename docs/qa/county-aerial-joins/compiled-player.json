@@ -1,0 +1,133 @@
+[
+  {
+    "mode": "standard",
+    "site": "souris-waterfront-pass",
+    "movesM": 133.76687173848023,
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "27-13 / 27-14",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-12 / 11-12",
+      "18-12 / 18-13",
+      "27-13 / 27-14",
+      "5-2 / 5-3"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "stock-county",
+    "site": "souris-waterfront-pass",
+    "movesM": 132.05153806894518,
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "edge": null,
+    "allEdges": [
+      "18-12 / 18-13"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "stock-tracadie",
+    "site": "souris-waterfront-pass",
+    "movesM": 134.90769098332615,
+    "detail": {
+      "ready": 12,
+      "loading": 0,
+      "missing": 0,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "27-13 / 27-14",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-12 / 11-12",
+      "27-13 / 27-14",
+      "5-2 / 5-3"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack"
+    ],
+    "alteredPackSizes": [],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  },
+  {
+    "mode": "corrupt-county",
+    "site": "souris-waterfront-pass",
+    "movesM": 134.91101984199793,
+    "detail": {
+      "ready": 11,
+      "loading": 0,
+      "missing": 1,
+      "uncovered": 1,
+      "retrying": 0
+    },
+    "edge": {
+      "edge": "27-13 / 27-14",
+      "resident": false,
+      "gain": 0,
+      "bytes": 0,
+      "uploads": 0,
+      "errors": 0
+    },
+    "allEdges": [
+      "10-12 / 11-12",
+      "18-12 / 18-13",
+      "27-13 / 27-14",
+      "5-2 / 5-3"
+    ],
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack"
+    ],
+    "alteredPackSizes": [
+      1491896
+    ],
+    "cockpit": true,
+    "pause": true,
+    "errors": []
+  }
+]

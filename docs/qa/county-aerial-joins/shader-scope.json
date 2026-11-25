@@ -1,0 +1,135 @@
+{
+  "format": "pei-image-join-scope/1",
+  "against": "4217f910cf19631c996f6fbe46988df4961b75c4",
+  "scope": "Captured the exact shader injection at the normal imagery sampling line, compared to its parent revision. The terrain renderer file matches; this probe is not a complete rendered scene or hardware benchmark.",
+  "exactStudyProbes": 9,
+  "originalTracadieProbes": 4,
+  "newCountyProbesExactlyOldPlusRange": 12,
+  "verifiedProbes": [
+    {
+      "mode": "explicit-study",
+      "tile": "18-12",
+      "fragmentProbeSHA256": "f14b242212460fe1c5948e1547f0d5bb53dbe40d7c6c1c65f8cede77563b1c51"
+    },
+    {
+      "mode": "tracadie",
+      "tile": "18-12",
+      "fragmentProbeSHA256": "c0b2cb770571e4864ebbca7dad850ccb3ddbf481e2d248fa8ad6fb57ac436bfc"
+    },
+    {
+      "mode": "standard",
+      "tile": "18-12",
+      "fragmentProbeSHA256": "c0b2cb770571e4864ebbca7dad850ccb3ddbf481e2d248fa8ad6fb57ac436bfc"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "18-13",
+      "fragmentProbeSHA256": "f14b242212460fe1c5948e1547f0d5bb53dbe40d7c6c1c65f8cede77563b1c51"
+    },
+    {
+      "mode": "tracadie",
+      "tile": "18-13",
+      "fragmentProbeSHA256": "c0b2cb770571e4864ebbca7dad850ccb3ddbf481e2d248fa8ad6fb57ac436bfc"
+    },
+    {
+      "mode": "standard",
+      "tile": "18-13",
+      "fragmentProbeSHA256": "c0b2cb770571e4864ebbca7dad850ccb3ddbf481e2d248fa8ad6fb57ac436bfc"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "27-13",
+      "fragmentProbeSHA256": "56e0fdf66e3053a1e881339bf8043d2f6d3deda72a3418d1817a3f9314f41533"
+    },
+    {
+      "mode": "counties",
+      "tile": "27-13",
+      "fragmentProbeSHA256": "5b6953e6720c3acefa2c9406e8b11749f1895e792361fe29803ee17780f0e680"
+    },
+    {
+      "mode": "standard",
+      "tile": "27-13",
+      "fragmentProbeSHA256": "5b6953e6720c3acefa2c9406e8b11749f1895e792361fe29803ee17780f0e680"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "27-14",
+      "fragmentProbeSHA256": "56e0fdf66e3053a1e881339bf8043d2f6d3deda72a3418d1817a3f9314f41533"
+    },
+    {
+      "mode": "counties",
+      "tile": "27-14",
+      "fragmentProbeSHA256": "5b6953e6720c3acefa2c9406e8b11749f1895e792361fe29803ee17780f0e680"
+    },
+    {
+      "mode": "standard",
+      "tile": "27-14",
+      "fragmentProbeSHA256": "5b6953e6720c3acefa2c9406e8b11749f1895e792361fe29803ee17780f0e680"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "5-2",
+      "fragmentProbeSHA256": "3c7374017e6ebe01b04ab90d36d053b68ceb26175b6bd5db4c5cc2d179c2f48f"
+    },
+    {
+      "mode": "counties",
+      "tile": "5-2",
+      "fragmentProbeSHA256": "dfe5723de6f9a38494b44b32ea23761840521567db310d7381814faefe5b896c"
+    },
+    {
+      "mode": "standard",
+      "tile": "5-2",
+      "fragmentProbeSHA256": "dfe5723de6f9a38494b44b32ea23761840521567db310d7381814faefe5b896c"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "5-3",
+      "fragmentProbeSHA256": "3c7374017e6ebe01b04ab90d36d053b68ceb26175b6bd5db4c5cc2d179c2f48f"
+    },
+    {
+      "mode": "counties",
+      "tile": "5-3",
+      "fragmentProbeSHA256": "dfe5723de6f9a38494b44b32ea23761840521567db310d7381814faefe5b896c"
+    },
+    {
+      "mode": "standard",
+      "tile": "5-3",
+      "fragmentProbeSHA256": "dfe5723de6f9a38494b44b32ea23761840521567db310d7381814faefe5b896c"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "10-12",
+      "fragmentProbeSHA256": "4ea24044af432de8348f4b739f6dacb0233878f4e1e010a5e72cb4ddb9b27c79"
+    },
+    {
+      "mode": "counties",
+      "tile": "10-12",
+      "fragmentProbeSHA256": "937b3cea9c7f6ebe6dc97b082eb0c0811025b237fc785bb4430ee661a83fd033"
+    },
+    {
+      "mode": "standard",
+      "tile": "10-12",
+      "fragmentProbeSHA256": "937b3cea9c7f6ebe6dc97b082eb0c0811025b237fc785bb4430ee661a83fd033"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "11-12",
+      "fragmentProbeSHA256": "4ea24044af432de8348f4b739f6dacb0233878f4e1e010a5e72cb4ddb9b27c79"
+    },
+    {
+      "mode": "counties",
+      "tile": "11-12",
+      "fragmentProbeSHA256": "937b3cea9c7f6ebe6dc97b082eb0c0811025b237fc785bb4430ee661a83fd033"
+    },
+    {
+      "mode": "standard",
+      "tile": "11-12",
+      "fragmentProbeSHA256": "937b3cea9c7f6ebe6dc97b082eb0c0811025b237fc785bb4430ee661a83fd033"
+    },
+    {
+      "mode": "explicit-study",
+      "tile": "16-11",
+      "fragmentProbeSHA256": "f14b242212460fe1c5948e1547f0d5bb53dbe40d7c6c1c65f8cede77563b1c51"
+    }
+  ]
+}

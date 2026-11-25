@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -182,4 +182,23 @@ test('coastal marsh admits ordinary Standard but not unrelated studies or indepe
   assert.equal(coastalMarshRequested(q('?'+flag)),false,flag);
  assert.equal(forestFloorProfile(q('?stockCoastalMarsh')),'standard');
  assert.equal(standardTracadieOrtho(q('?stockCoastalMarsh')),true);
+});
+
+test('the three Standard county imagery joins and Tracadie have independent source comparisons',()=>{
+ const q=sceneryOptions;
+ for(const flags of ['', '?scenery=standard','?diagnostics&qa=1','?stockForestFloor&stockCoastalMarsh']){
+  assert(standardCountyOrtho(q(flags)),flags);assert(standardTracadieOrtho(q(flags)),flags);
+ }
+ assert(!standardCountyOrtho(q('?stockCountyOrtho')));
+ assert(standardTracadieOrtho(q('?stockCountyOrtho')));
+ assert(standardCountyOrtho(q('?stockTracadieOrtho')));
+ const both=q('?stockTracadieOrtho&stockCountyOrtho');assert(!standardTracadieOrtho(both)&&!standardCountyOrtho(both));
+ for(const flags of ['?stockCountyOrtho','?stockTracadieOrtho&stockCountyOrtho']){
+  assert(coastalMarshRequested(q(flags)),flags);
+  assert.equal(forestFloorProfile(q(flags)),'standard',flags);
+  assert(standardOpenRipplesRequested(q(flags)),flags);
+ }
+ for(const flag of ['scenery=detail','scenery=legacy','surveyRelief','buildingShadows','orthophotoSeamStudy','unrecognized']){
+  assert(!standardCountyOrtho(q('?'+flag)),flag);
+ }
 });

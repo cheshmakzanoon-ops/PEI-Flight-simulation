@@ -38,13 +38,14 @@ try:
     start=pg.evaluate('window.islandAirDiagnostics')
     pg.wait_for_function("p=>Math.hypot(window.islandAirDiagnostics.x-p.x,window.islandAirDiagnostics.z-p.z)>120",arg={'x':start['x'],'z':start['z']})
     if mode=='standard':
-     pg.wait_for_function("window.islandAirDiagnostics?.orthophotoSeams?.length===1&&window.islandAirDiagnostics.orthophotoSeams[0].gain===1")
+     pg.wait_for_function("window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge==='18-12 / 18-13')?.gain===1")
     if mode=='corrupt-north':
-     pg.wait_for_function("window.islandAirDiagnostics?.detail?.missing>0&&window.islandAirDiagnostics?.orthophotoSeams?.[0]?.uploads===0")
+     pg.wait_for_function("window.islandAirDiagnostics?.detail?.missing>0&&window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge==='18-12 / 18-13')?.uploads===0")
     live=pg.evaluate('window.islandAirDiagnostics')
     assert not errors and not live['layerWarnings'],(errors,live['layerWarnings'])
-    if mode=='stock':assert 'orthophotoSeams' not in live or live['orthophotoSeams'] is None
-    if mode=='corrupt-north':assert alterations and not live['orthophotoSeams'][0]['resident']
+    target=next((p for p in live.get('orthophotoSeams') or [] if p['edge']=='18-12 / 18-13'),None)
+    if mode=='stock':assert target is None
+    if mode=='corrupt-north':assert alterations and target and not target['resident']
     pg.keyboard.press('Escape')
     pg.wait_for_function("window.islandAirDiagnostics?.mode==='paused'")
     row=dict(mode=mode,site=live['site'],movesM=((live['x']-start['x'])**2+(live['z']-start['z'])**2)**.5,

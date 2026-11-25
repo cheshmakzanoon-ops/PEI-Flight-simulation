@@ -14,7 +14,9 @@ base-level GPU bytes with no extra imagery request, draw call, or
 geometry. Missing or damaged source imagery leaves the normal fallback.
 The correction tapers over the texture footprint, away from the row
 and tile corners, and by 330 m from the eye. The prior multi-site
-`orthophotoSeamStudy` and Detail graphics setting are unchanged.
+`orthophotoSeamStudy` and Detail graphics setting are unchanged. Use
+`?stockTracadieOrtho` to compare Tracadie alone; the [three other close
+imagery joins](county-aerial-joins.md) have their own switch.
 
 ![Matched Three.js views from both sides of the Tracadie imagery boundary](tracadie-aerial-join.webp)
 

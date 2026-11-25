@@ -1,0 +1,828 @@
+{
+  "format": "pei-county-image-join-render/1",
+  "baseline": "4217f910cf19631c996f6fbe46988df4961b75c4",
+  "viewport": [
+    840,
+    540
+  ],
+  "renderer": "Chromium / SwiftShader; not a device performance measurement",
+  "method": "Same frozen scene, single-pair gain zero / restored plus two marker colors; geometry and draw counts unchanged. Compared RGB values including every change outside the exact dual-color marker. Contrast is Euclidean RGB8 distance of bilinear samples 0.35 m to either side of the independently projected boundary; only fixed-ray pairs with stock contrast at least 3 and a 1.6 pixel span were counted.",
+  "views": {
+    "souris": {
+      "old": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "art": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "idA": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "idB": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "27-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "27-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "27-13 / 27-14",
+      "heightAGL": 44,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 24059,
+        "over2": 16523,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 57333
+      },
+      "edgeContrast": {
+        "samples": 75,
+        "medianOld": 25.51388931274414,
+        "medianArt": 2.091275215148926,
+        "oldP90": 40.18093490600586,
+        "artP90": 3.9986436843872073
+      },
+      "pngSHA256": {
+        "old": "f28bb2ddb106fdf257611d27650e3cf968eacd2a6de0039ff3ead4d3e903a9bc",
+        "art": "4423e396b45d8cf94076ff0f6b6f570d66957a1d67b09e8caf92d4f5d3f3b907",
+        "idA": "db7de839bb2b15035533a756153213e5853dc78384294011c3568c82b01929fc",
+        "idB": "d1cefe621e4409288c11afca23749970e6ef6cbd4b8ee6b0ff28b553223af32b"
+      }
+    },
+    "souris-reciprocal": {
+      "old": {
+        "draws": 36,
+        "tris": 241716
+      },
+      "art": {
+        "draws": 36,
+        "tris": 241716
+      },
+      "idA": {
+        "draws": 36,
+        "tris": 241716
+      },
+      "idB": {
+        "draws": 36,
+        "tris": 241716
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "27-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "27-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "27-13 / 27-14",
+      "heightAGL": 38,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 25454,
+        "over2": 18296,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 61373
+      },
+      "edgeContrast": {
+        "samples": 68,
+        "medianOld": 25.960440635681152,
+        "medianArt": 2.2366769313812256,
+        "oldP90": 41.38183250427247,
+        "artP90": 4.221372222900391
+      },
+      "pngSHA256": {
+        "old": "5e726fb3cd8e8d721eaf0cce2fb75a533a753299d8de65dbbee56dcbbcf21a6e",
+        "art": "ee8375cf23400af24badf546c0b1952f1ebe968163f41e7015746cfa04adde38",
+        "idA": "305aabad8fdd36d6b6572c46d8da55702199e3d0dc021c2dfec81a1ba532ff01",
+        "idB": "893a5b701e81130b268715d9ad827aff1e73ef4164b58563a377bb8913147cbc"
+      }
+    },
+    "souris-high": {
+      "old": {
+        "draws": 20,
+        "tris": 222167
+      },
+      "art": {
+        "draws": 20,
+        "tris": 222167
+      },
+      "idA": {
+        "draws": 20,
+        "tris": 222167
+      },
+      "idB": {
+        "draws": 20,
+        "tris": 222167
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "27-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "27-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "27-13 / 27-14",
+      "heightAGL": 380,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "pngSHA256": {
+        "old": "e6fa201cb63746bf4e100777775f821a77dc6b46a1c36c47e7b48c8a60f76073",
+        "art": "e6fa201cb63746bf4e100777775f821a77dc6b46a1c36c47e7b48c8a60f76073",
+        "idA": "e6fa201cb63746bf4e100777775f821a77dc6b46a1c36c47e7b48c8a60f76073",
+        "idB": "e6fa201cb63746bf4e100777775f821a77dc6b46a1c36c47e7b48c8a60f76073"
+      }
+    },
+    "prince": {
+      "old": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "art": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "idA": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "idB": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "5-2",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "5-3",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "5-2 / 5-3",
+      "heightAGL": 44,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 22417,
+        "over2": 9823,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 68029
+      },
+      "edgeContrast": {
+        "samples": 60,
+        "medianOld": 10.935999393463135,
+        "medianArt": 1.0871196389198303,
+        "oldP90": 23.93051071166992,
+        "artP90": 2.1823638677597046
+      },
+      "pngSHA256": {
+        "old": "1472c21bfb58f486515f486585fb9bf3cea8fd6f5c79eb09e3dd825085202c5a",
+        "art": "108a0435c8bfbda2498c6bb95df75ca94c3a88df835c85a848d30cbb9ed54af3",
+        "idA": "d7bcc968d16f24f89c1833cfa287ca721133e15366935d400e42a2e91152e5bd",
+        "idB": "a20ba9f33a21669ceab050f43fa5592543d4cbfb35ef3e4aa02761ef35f8b693"
+      }
+    },
+    "prince-reciprocal": {
+      "old": {
+        "draws": 22,
+        "tris": 263367
+      },
+      "art": {
+        "draws": 22,
+        "tris": 263367
+      },
+      "idA": {
+        "draws": 22,
+        "tris": 263367
+      },
+      "idB": {
+        "draws": 22,
+        "tris": 263367
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "5-2",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "5-3",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "5-2 / 5-3",
+      "heightAGL": 38,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 27610,
+        "over2": 13260,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 78484
+      },
+      "edgeContrast": {
+        "samples": 65,
+        "medianOld": 12.089676856994629,
+        "medianArt": 1.2275567054748535,
+        "oldP90": 24.153227233886717,
+        "artP90": 2.1226890087127686
+      },
+      "pngSHA256": {
+        "old": "b7fd701a125855865eba999a60f467a81b2698cffb3d79303d23a5f1e09d60c3",
+        "art": "db52c404b2529e7d07a9e1f790b15e66770a2c54fb25c2ae76e74fc5c2c00061",
+        "idA": "7ff92fc905f2ac628548b0cc32c8513f30879c42ba2716a279f6be18304aad67",
+        "idB": "a7f74d199974da991aa94ef9aa3bd4abf4d174fd5d0c979e0df36f363996f158"
+      }
+    },
+    "prince-high": {
+      "old": {
+        "draws": 25,
+        "tris": 286436
+      },
+      "art": {
+        "draws": 25,
+        "tris": 286436
+      },
+      "idA": {
+        "draws": 25,
+        "tris": 286436
+      },
+      "idB": {
+        "draws": 25,
+        "tris": 286436
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "5-2",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "5-3",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "5-2 / 5-3",
+      "heightAGL": 380,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "pngSHA256": {
+        "old": "8e0ba7c757257232d180f98173e1791260feda58c8d79917e42d0115d003bbc5",
+        "art": "8e0ba7c757257232d180f98173e1791260feda58c8d79917e42d0115d003bbc5",
+        "idA": "8e0ba7c757257232d180f98173e1791260feda58c8d79917e42d0115d003bbc5",
+        "idB": "8e0ba7c757257232d180f98173e1791260feda58c8d79917e42d0115d003bbc5"
+      }
+    },
+    "queens": {
+      "old": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "art": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "idA": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "idB": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "10-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "11-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "10-12 / 11-12",
+      "heightAGL": 44,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 20386,
+        "over2": 8415,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 57737
+      },
+      "edgeContrast": {
+        "samples": 67,
+        "medianOld": 8.326582908630371,
+        "medianArt": 1.0357741117477417,
+        "oldP90": 36.8873893737793,
+        "artP90": 10.639729499816895
+      },
+      "pngSHA256": {
+        "old": "16ed1a2b1c203cb82a4c03c60bd936d95561c03d473055bfd76935689e420f9b",
+        "art": "769c97b8cd033c194c7e30825b79d003c163ed2dc11b069defa9393fd46bfad2",
+        "idA": "abc946712dc585631922e12df339988bd8269adb84899d40a5a364b0ea83089e",
+        "idB": "0a16086a18e24cb323ff5bab8ccf4e2a0c4a41cd0f6f36713a1b4a6d07b98e77"
+      }
+    },
+    "queens-reciprocal": {
+      "old": {
+        "draws": 58,
+        "tris": 287392
+      },
+      "art": {
+        "draws": 58,
+        "tris": 287392
+      },
+      "idA": {
+        "draws": 58,
+        "tris": 287392
+      },
+      "idB": {
+        "draws": 58,
+        "tris": 287392
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "10-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "11-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "10-12 / 11-12",
+      "heightAGL": 38,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 28093,
+        "over2": 13708,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 77476
+      },
+      "edgeContrast": {
+        "samples": 64,
+        "medianOld": 13.511921882629395,
+        "medianArt": 1.5888267159461975,
+        "oldP90": 35.951971435546874,
+        "artP90": 11.566965961456303
+      },
+      "pngSHA256": {
+        "old": "d26f496a3a16279ca54fa4380821a91f4fab35654bc402823275d8301cbc5f98",
+        "art": "4a919ccf91cf931c516af766158cc9d046f1c24d48b9cd7ca6b82e9ad31f18cd",
+        "idA": "4fb7c2cee28792b35d4a0b0b39962b0b1035ed8f89c827c3a9bc7ed1effb3e9a",
+        "idB": "2ac5a256cbfb2295ba43250434022484b6350140b2896f10bc222bff0f91d32e"
+      }
+    },
+    "queens-high": {
+      "old": {
+        "draws": 19,
+        "tris": 235910
+      },
+      "art": {
+        "draws": 19,
+        "tris": 235910
+      },
+      "idA": {
+        "draws": 19,
+        "tris": 235910
+      },
+      "idB": {
+        "draws": 19,
+        "tris": 235910
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "10-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "11-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "10-12 / 11-12",
+      "heightAGL": 380,
+      "stockSwitch": null,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "pngSHA256": {
+        "old": "debc55f64bd70fec3cad9e1ea1ef1b2a08e8f1e182885f1857eb5ce88cccafe2",
+        "art": "debc55f64bd70fec3cad9e1ea1ef1b2a08e8f1e182885f1857eb5ce88cccafe2",
+        "idA": "debc55f64bd70fec3cad9e1ea1ef1b2a08e8f1e182885f1857eb5ce88cccafe2",
+        "idB": "debc55f64bd70fec3cad9e1ea1ef1b2a08e8f1e182885f1857eb5ce88cccafe2"
+      }
+    }
+  }
+}

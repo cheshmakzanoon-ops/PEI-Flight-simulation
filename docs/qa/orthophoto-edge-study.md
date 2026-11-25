@@ -1,6 +1,6 @@
 # Close-flight aerial-image tile joins
 
-Enable `?orthophotoSeamStudy` in Standard. The study is limited to the three reviewed image joins below. It is off by default and does not alter imagery away from the joins, terrain, buildings, roads, or flight physics.
+This page records the original `?orthophotoSeamStudy` experiment at three reviewed tile boundaries. The explicit study retains its original screen-footprint fade. [Normal Standard scenery](county-aerial-joins.md) now also corrects those three joins, with a separate 205–330 m distance fade. Neither mode replaces imagery away from the joins, terrain, buildings, roads, or flight physics.
 
 ![Matched full-game Souris and Prince County captures with the stock join on the left and the corrected imagery on the right](orthophoto-edge-comparison.webp)
 

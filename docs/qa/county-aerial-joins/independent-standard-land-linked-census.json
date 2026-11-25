@@ -1,0 +1,366 @@
+{
+  "Scope": "Four fixed Standard cameras on the marsh-inclusive #217 base and the target four-cohort candidate. Independent gl.CURRENT_PROGRAM at Three Mesh.onAfterRender: GL_LINK_STATUS, enumerated GL_ACTIVE_UNIFORMS of sampler types, native gl.getAttachedShaders/getShaderSource, gl.getUniform bound units, vertex references disjoint. This is not a province-wide sampler maximum or mobile-device FPS benchmark.",
+  "views": {
+    "tracadie": {
+      "sameFrameSubmittedOwnerPrograms": {
+        "18-12": {
+          "actualDraw": {
+            "id": "18-12",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 1
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "marshMap",
+            "duneMask",
+            "duneMicro",
+            "duneMacro",
+            "duneTuftGroundPhoto",
+            "duneTuftGroundMask",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 11
+        },
+        "18-13": {
+          "actualDraw": {
+            "id": "18-13",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 1
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "marshMap",
+            "duneMask",
+            "duneMicro",
+            "duneMacro",
+            "duneTuftGroundPhoto",
+            "duneTuftGroundMask",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 11
+        }
+      },
+      "baseCounts": {
+        "18-12": 11,
+        "18-13": 11
+      },
+      "observedRendererMaxima": {
+        "fragment": 32,
+        "vertex": 32,
+        "combined": 64
+      },
+      "maxAnyLandMaterialActuallyDrawnInView": 11,
+      "actualSeamDiagnostics": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ]
+    },
+    "souris": {
+      "sameFrameSubmittedOwnerPrograms": {
+        "27-13": {
+          "actualDraw": {
+            "id": "27-13",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 1
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "forestFloorA",
+            "forestFloorB",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 7
+        },
+        "27-14": {
+          "actualDraw": {
+            "id": "27-14",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 3
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "duneTuftGroundPhoto",
+            "duneTuftGroundMask",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 7
+        }
+      },
+      "baseCounts": {
+        "27-13": 6,
+        "27-14": 6
+      },
+      "observedRendererMaxima": {
+        "fragment": 32,
+        "vertex": 32,
+        "combined": 64
+      },
+      "maxAnyLandMaterialActuallyDrawnInView": 9,
+      "actualSeamDiagnostics": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ]
+    },
+    "west": {
+      "sameFrameSubmittedOwnerPrograms": {
+        "5-2": {
+          "actualDraw": {
+            "id": "5-2",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 1
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "duneMask",
+            "duneMicro",
+            "duneMacro",
+            "duneTuftGroundPhoto",
+            "duneTuftGroundMask",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 10
+        },
+        "5-3": {
+          "actualDraw": {
+            "id": "5-3",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 4
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "duneTuftGroundPhoto",
+            "duneTuftGroundMask",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 7
+        }
+      },
+      "baseCounts": {
+        "5-2": 9,
+        "5-3": 6
+      },
+      "observedRendererMaxima": {
+        "fragment": 32,
+        "vertex": 32,
+        "combined": 64
+      },
+      "maxAnyLandMaterialActuallyDrawnInView": 10,
+      "actualSeamDiagnostics": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ]
+    },
+    "queens": {
+      "sameFrameSubmittedOwnerPrograms": {
+        "10-12": {
+          "actualDraw": {
+            "id": "10-12",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 4
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "forestFloorA",
+            "forestFloorB",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 7
+        },
+        "11-12": {
+          "actualDraw": {
+            "id": "11-12",
+            "lod": 112,
+            "surface": "near",
+            "ready": "ready",
+            "program": 4
+          },
+          "activeFragmentSamplers": [
+            "orthoSharedRows",
+            "forestFloorA",
+            "forestFloorB",
+            "imageMap",
+            "coverMap",
+            "detailMap",
+            "paintMap"
+          ],
+          "fragmentCount": 7
+        }
+      },
+      "baseCounts": {
+        "10-12": 6,
+        "11-12": 6
+      },
+      "observedRendererMaxima": {
+        "fragment": 32,
+        "vertex": 32,
+        "combined": 64
+      },
+      "maxAnyLandMaterialActuallyDrawnInView": 9,
+      "actualSeamDiagnostics": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "27-13 / 27-14",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "5-2 / 5-3",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        },
+        {
+          "edge": "10-12 / 11-12",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ]
+    }
+  },
+  "rawSHA256": [
+    "2ce05ab3eb875bf8553d249bd1e61711921fe0ae58c01e7fa565280d0903d51b",
+    "54a21f1d03cf84bbf75adb11ac213b9b6f53b523697e01e8cefd6b717918fdfb",
+    "a1ee0a567c2a6aa7af7bb57d1d0fff8a9b88e85aeb93ef12c38100c8e13dcfe4",
+    "5aeb169d7c4998a8df5a6c34c0fac10f5a4cbbeeb815587379823d6200eaeff2"
+  ]
+}

@@ -11,6 +11,7 @@ const plans=[
 const tracadie={first:'18-12',second:'18-13',axis:'z',edge:13,
  nsha:'c7d2837de536fcbfbe8cba81ce5117f82b7d94f14ba9e883662bb62b77db1615',
  ssha:'7bad9c6a684790d28c193a1e23d679d158b07fd090f4e18c019df5b77579c6ee'} as const;
+type SeamScope='study'|'tracadie'|'counties'|'standard';
 type Plan=(typeof plans)[number]|typeof tracadie;
 type LiveOwner={detail?:T.Texture;detailSince?:number;lod:number;status:string};
 type Receipt={uploaded:boolean;id:string;sha:string};
@@ -26,13 +27,13 @@ export function seamOptions(q:URLSearchParams){
 }
 const target='  col=textureGrad(detailMap,detailUV,du,dv).rgb;';
 const globals='uniform highp sampler2D orthoSharedRows;\nuniform float orthoRowsGain;\n';
-function sample(plan:Plan){
+function sample(plan:Plan,closeRange:boolean){
  const eastWest=plan.axis==='x',bound=eastWest?WORLD_COLS:WORLD_ROWS;
  const cross=eastWest?'x':'y',along=eastWest?'y':'x';
  const combined=eastWest?'vec2(.5+crossTexel*.25,detailUV.y)':'vec2(detailUV.x,.5-crossTexel*.25)';
  return `
   if(orthoRowsGain>0.){
-   ${plan.first==='18-12'?'float localRange=1.-smoothstep(205.,330.,distance(cameraPosition,p));':'float localRange=1.;'}
+   ${closeRange?'float localRange=1.-smoothstep(205.,330.,distance(cameraPosition,p));':'float localRange=1.;'}
    float crossTexel=(vuv.${cross}*${bound}. - ${plan.edge}.)*640.;
    float flank=640.*min(detailUV.${along},1.-detailUV.${along});
    if(localRange>0.&&abs(crossTexel)<1.25&&flank>3.){
@@ -52,9 +53,13 @@ export class OrthophotoSeams{
  private readonly pairs:Pair[];
  private readonly renderer:T.WebGLRenderer;
  private readonly base:T.Texture;
- constructor(renderer:T.WebGLRenderer,base:T.Texture,scope:'study'|'tracadie'='study'){
+ private readonly closeRange:boolean;
+ constructor(renderer:T.WebGLRenderer,base:T.Texture,scope:SeamScope='study'){
   this.renderer=renderer;this.base=base;
-  const active=scope==='tracadie'?[tracadie]:plans;
+  // 'study' deliberately keeps the original screen-footprint falloff.
+  // Each Standard pair also becomes exactly stock by 330 m from the eye.
+  this.closeRange=scope!=='study';
+  const active=scope==='standard'?[tracadie,...plans]:scope==='tracadie'?[tracadie]:plans;
   this.pairs=active.map(plan=>({plan,gain:{value:0},map:{value:base},owners:new Set(),uploads:0,errors:0}));
  }
  readonly verifiedDetail=(id:string,sha:string,texture:T.Texture)=>{
@@ -69,7 +74,7 @@ export class OrthophotoSeams{
  bind(id:string,material:T.ShaderMaterial){
   const pair=this.pairs.find(p=>p.plan.first===id||p.plan.second===id);
   if(!pair||!material.fragmentShader.includes(target)||material.fragmentShader.includes('orthoSharedRows'))return;
-  material.fragmentShader=globals+material.fragmentShader.replace(target,target+sample(pair.plan));
+  material.fragmentShader=globals+material.fragmentShader.replace(target,target+sample(pair.plan,this.closeRange));
   material.uniforms={...material.uniforms,orthoSharedRows:pair.map,orthoRowsGain:pair.gain};
   pair.owners.add(id);
  }

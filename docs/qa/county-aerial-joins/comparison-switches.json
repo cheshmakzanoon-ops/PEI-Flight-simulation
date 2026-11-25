@@ -1,0 +1,356 @@
+{
+  "countyDisabled": {
+    "souris": {
+      "old": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "art": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "idA": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "idB": {
+        "draws": 64,
+        "tris": 237739
+      },
+      "gain": 0,
+      "exact": true,
+      "slots": [
+        {
+          "id": "27-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "27-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "27-13 / 27-14",
+      "heightAGL": 44,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      }
+    },
+    "prince": {
+      "old": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "art": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "idA": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "idB": {
+        "draws": 89,
+        "tris": 333277
+      },
+      "gain": 0,
+      "exact": true,
+      "slots": [
+        {
+          "id": "5-2",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "5-3",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "5-2 / 5-3",
+      "heightAGL": 44,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      }
+    },
+    "queens": {
+      "old": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "art": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "idA": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "idB": {
+        "draws": 50,
+        "tris": 242391
+      },
+      "gain": 0,
+      "exact": true,
+      "slots": [
+        {
+          "id": "10-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "11-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "edge": "10-12 / 11-12",
+      "heightAGL": 44,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      }
+    }
+  },
+  "tracadieKeptWithCountyDisabled": {
+    "tracadie": {
+      "old": {
+        "draws": 86,
+        "tris": 373825
+      },
+      "art": {
+        "draws": 86,
+        "tris": 373825
+      },
+      "idA": {
+        "draws": 86,
+        "tris": 373825
+      },
+      "idB": {
+        "draws": 86,
+        "tris": 373825
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "18-12 / 18-13",
+      "heightAGL": 47,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 21889,
+        "over2": 5881,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 69186
+      },
+      "edgeContrast": {
+        "samples": 137,
+        "medianOld": 8.033980369567871,
+        "medianArt": 2.7906365394592285,
+        "oldP90": 26.115396881103518,
+        "artP90": 7.334850120544436
+      }
+    },
+    "reciprocal": {
+      "old": {
+        "draws": 31,
+        "tris": 288248
+      },
+      "art": {
+        "draws": 31,
+        "tris": 288248
+      },
+      "idA": {
+        "draws": 31,
+        "tris": 288248
+      },
+      "idB": {
+        "draws": 31,
+        "tris": 288248
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "18-12 / 18-13",
+      "heightAGL": 38,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 42481,
+        "over2": 22928,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 112189
+      },
+      "edgeContrast": {
+        "samples": 126,
+        "medianOld": 8.289480686187744,
+        "medianArt": 2.2329553365707397,
+        "oldP90": 25.433944702148438,
+        "artP90": 4.325289487838745
+      }
+    },
+    "high": {
+      "old": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "art": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "idA": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "idB": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "edge": "18-12 / 18-13",
+      "heightAGL": 360,
+      "stockSwitch": "stockCountyOrtho",
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      }
+    }
+  }
+}

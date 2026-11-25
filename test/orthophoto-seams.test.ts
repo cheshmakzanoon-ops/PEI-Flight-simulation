@@ -90,3 +90,30 @@ test('the reviewed Queens east-west join uses shared columns in the correct orde
  m.evict('10-12',l);assert(m.diagnostics().every(v=>!v.resident));
  assert(w.uniforms.orthoSharedRows.value===base&&e.uniforms.orthoRowsGain.value===0);
 });
+
+test('Standard bounds all four source pairs to close flight, with separate switches and unchanged historical study',()=>{
+ const targets=['18-12 / 18-13','27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'];
+ const renderer={} as T.WebGLRenderer,base=new T.Texture();
+ for(const scope of ['standard','counties','tracadie','study'] as const){
+  const active=scope==='standard'?targets:scope==='tracadie'?targets.slice(0,1):targets.slice(1);
+  const m=new OrthophotoSeams(renderer,base,scope);
+  assert.deepEqual(m.diagnostics().map(p=>p.edge),active);
+  for(const [pairId,pair] of targets.entries()){
+   const isActive=active.includes(pair),materials=pair.split(' / ').map(id=>{
+    const mat=shader();m.bind(id,mat);
+    assert.equal('orthoRowsGain' in mat.uniforms,isActive);
+    assert.equal(mat.fragmentShader.includes('smoothstep(205.,330.,distance(cameraPosition,p))'),isActive&&scope!=='study');
+    return mat;
+   });
+   if(isActive){
+    const shared=materials[0].uniforms.orthoRowsGain;
+    assert.equal(materials[1].uniforms.orthoRowsGain,shared);assert.equal(shared.value,0);
+    for(const other of targets.slice(pairId+1).filter(p=>active.includes(p))){
+     const otherMaterial=shader();m.bind(other.split(' / ')[0],otherMaterial);
+     assert.notEqual(otherMaterial.uniforms.orthoRowsGain,shared);
+    }
+   }
+  }
+  assert(m.diagnostics().every(p=>p.bytes===0&&!p.resident&&p.errors===0));
+ }
+});
