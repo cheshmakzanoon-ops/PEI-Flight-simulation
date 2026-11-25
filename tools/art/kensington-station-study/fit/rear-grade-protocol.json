@@ -1,0 +1,92 @@
+{
+  "purpose": "Fresh outside-building rear ground cross-check against the shipping regular host, not a wall seat, roof fit, present-day survey or approval. Earlier withheld point body remains sealed.",
+  "ship": "1cc188c4189d5229bbd41f26898dbde23ed6bf54",
+  "site": "q032122/149",
+  "frame": {
+    "crs": "EPSG:2954",
+    "originProjected": [
+      350902.0254839233,
+      709904.3672097232
+    ],
+    "uprightAxesInEN": [
+      [
+        0.8413432503225652,
+        0.5405011888392677
+      ],
+      [
+        -0.5405011888392677,
+        0.8413432503225652
+      ]
+    ],
+    "axesText": "Positive U northeast along longest track-side eave (edge 6 to 5); positive V northwest, away from track."
+  },
+  "registrationHash": "2d968191b592999c8afc484865ecfd9c7f4b2cfdaa9f1592fda7a7486ed696af",
+  "nativeSeatWitnessHash": "74b0ebb86d0ce088434ef2fc2c77985830175f8717ef3af933da040c6ac9d0ae",
+  "copc": {
+    "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_350000_709000.copc.laz",
+    "etag": "\"3903b3ae7259f2161210245462d6fdcf-13\"",
+    "sourceObjectBytes": 107433946,
+    "class": 2,
+    "closedWindowBytesLimit": 14000000,
+    "capCandidatePoints": 150000,
+    "gpsTimeIsolation": "Validate exact unique PointSourceId / GPS-time bits within this new study; earlier sealed source membership cannot be inferred from XY and any absent proof stays explicitly unverified."
+  },
+  "blocks": [
+    {
+      "label": "rear-west-fit",
+      "role": "fit",
+      "u": [
+        -8.5,
+        -6.0
+      ],
+      "v": [
+        18.75,
+        22.75
+      ]
+    },
+    {
+      "label": "rear-west-check",
+      "role": "reserved",
+      "u": [
+        -5.5,
+        -3.0
+      ],
+      "v": [
+        18.75,
+        22.75
+      ]
+    },
+    {
+      "label": "rear-east-check",
+      "role": "reserved",
+      "u": [
+        3.0,
+        5.5
+      ],
+      "v": [
+        18.75,
+        22.75
+      ]
+    },
+    {
+      "label": "rear-east-fit",
+      "role": "fit",
+      "u": [
+        6.0,
+        8.5
+      ],
+      "v": [
+        18.75,
+        22.75
+      ]
+    }
+  ],
+  "rules": {
+    "geometryAdmission": false,
+    "publishPoints": false,
+    "fit": "One pooled median signed CGVD2013-minus-N112 residual only on this study\u2019s fit blocks; deduplicate pulses, no tuning or orientation per block.",
+    "reservedScoring": "Use exact fit scalar per reserved row. Report raw class counts, per-group residual median and p90 absolute, span, N56 comparison (not a fitted substitute), grounds coverage counts. No geometry change even on success.",
+    "minimumSupport": "12 unique pulses per group; classification exactly 2, reject synthetic, overlap and withheld points; no numeric claim if sparse or if fit/reserved share pulse. No explicit independent overlap claims without blind custodian.",
+    "stationSourceGap": "New rear control is spatially separate from declared older reviewed V\u226416.6 plus guard; it remains rear only and cannot authorize any precise front wall, pillar, grade, or terrain correction."
+  }
+}

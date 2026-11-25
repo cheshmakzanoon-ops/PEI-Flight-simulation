@@ -8,4 +8,6 @@ The existing PEI 2020 roof outline is stock atlas row `q032122/149`. It is not a
 
 The Town’s [June 2020 report](https://kensington.ca/assets/COC-Tentative-Agenda-June-2020-website.pdf) confirms the storm-damaged roof was replaced before that summer’s data capture; it does not identify the replacement finish. Older shingle samples do not warrant putting that material in the simulator.
 
+A separate [rear-ground comparison](../../tools/art/kensington-station-study/README.md#rear-ground-cross-check) used 137 usable ground-class pulses from the public 2020 acquisition without opening the old holdouts. The two new reserved blocks agreed with the stock near-terrain mesh to within 4.0 cm at the 90th percentile after a single fitted datum offset. These are archival comparison residuals behind the station, not a survey of its footings or a reason to install the incomplete roof.
+
 **Keep stock live.** No simulator imports or scene updates, no covered-structure or grade replacement, and no neighboring properties, paths, boardwalk or rail changed. The [detached study](../../tools/art/kensington-station-study/README.md) reproduces the previews, geometry receipt, source credits and precise release holds.

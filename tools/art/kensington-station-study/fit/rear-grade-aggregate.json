@@ -1,0 +1,89 @@
+{
+  "prelock": "c990dcc23a900653208f52c483346503145c92118f2f45c09267cf32008a6c46",
+  "bodyWireBytes": 2138847,
+  "rangeRequests": 9,
+  "sourceETag": "\"3903b3ae7259f2161210245462d6fdcf-13\"",
+  "queryDecodedPoints": 1592,
+  "pointFrameWktHash": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40",
+  "oldPulseDisjointVerified": false,
+  "deduplicatedSameBlockReturns": 0,
+  "blocks": {
+    "rear-west-fit": {
+      "allClasses": {
+        "1": 33,
+        "2": 39
+      },
+      "usableClass2Returns": 39,
+      "role": "fit",
+      "uniquePulses": 39,
+      "residualMedianM": [
+        -0.0001305842515400002,
+        -0.0978160273584443,
+        4.350757830633132
+      ],
+      "p90AbsoluteM": [
+        0.04607993762640704,
+        0.138239671309605,
+        4.383270146999495
+      ]
+    },
+    "rear-west-check": {
+      "allClasses": {
+        "1": 42,
+        "2": 31
+      },
+      "usableClass2Returns": 31,
+      "role": "reserved",
+      "uniquePulses": 31,
+      "residualMedianM": [
+        0.010390029701785153,
+        -0.08738769900051224,
+        4.392976424160938
+      ],
+      "p90AbsoluteM": [
+        0.03965916593279317,
+        0.11797850501035256,
+        4.408154209813489
+      ]
+    },
+    "rear-east-check": {
+      "allClasses": {
+        "1": 37,
+        "2": 34
+      },
+      "usableClass2Returns": 34,
+      "role": "reserved",
+      "uniquePulses": 34,
+      "residualMedianM": [
+        0.011479044432569196,
+        -0.08389655441514776,
+        4.4908842905707385
+      ],
+      "p90AbsoluteM": [
+        0.03619898394588432,
+        0.1147846798675289,
+        4.518467992013584
+      ]
+    },
+    "rear-east-fit": {
+      "allClasses": {
+        "1": 35,
+        "2": 33
+      },
+      "usableClass2Returns": 33,
+      "role": "fit",
+      "uniquePulses": 33,
+      "residualMedianM": [
+        0.000869864539946974,
+        -0.0931889681530329,
+        4.517946606403491
+      ],
+      "p90AbsoluteM": [
+        0.024155407533537957,
+        0.10815200584122735,
+        4.533703288842152
+      ]
+    }
+  },
+  "fitCommonCGVD2013MinusCurrentGameN112M": -0.1123664569862477
+}

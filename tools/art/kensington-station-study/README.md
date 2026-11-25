@@ -44,6 +44,44 @@ The immutable emitted Three.js Float32 roof witness (`4fd9a033…`) passed all e
 
 The central track-facing bay surfaces and northeast terminal canopy facet are intentionally cut out. The southwest ridge contains an unresolved high cluster and was not scored. The generic primary plane remains visible there as part of this witness; it is not a validated southwest ridge or a chimney reconstruction. The northeast canopy group, both bay groups and all three dry ground groups also remained unopened. No held result was used to adjust the sealed model. In the immutable fit recipe, `preregisteredPlanSha256` names the horizontal plan digest (`710e1cf0…`), not the independent held-design digest (`aed374ae…`). Training metrics and held results are reported separately.
 
+## Rear ground cross-check
+
+A separately frozen [protocol](fit/rear-grade-protocol.json) and
+[aggregate](fit/rear-grade-aggregate.json) compare a narrow surveyed
+window *behind* the station with regular terrain tile 10–12 in the shipping
+build. The [public NRCan point cloud](https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947)
+is the same 2020 acquisition as the roof evidence. The four new rectangles sit
+outside the bounds defined for the earlier study, but exact pulse disjointness
+from that study is not claimed. The previous held data were not reopened. Each
+new selected pulse is distinct across these four rectangles. No raw points,
+pulse identifiers or model placement are included.
+
+A pooled median calculated on 72 ground-class pulses is **−0.11237 m**, with
+the sign defined as official CGVD2013 height minus the near game's N112 mesh
+height. The two comparison groups used that offset unchanged. The other
+terrain resolutions were scored with the same near-mesh offset, not fitted
+separately.
+
+| Reserved rear block | Unique pulses | N112 p90 absolute residual | N56, same offset | N8, same offset |
+| --- | ---: | ---: | ---: | ---: |
+| West | 31 | 0.0397 m | 0.1180 m | 4.408 m |
+| East | 34 | 0.0362 m | 0.1148 m | 4.518 m |
+
+These figures describe consistency with one archival acquisition, not
+instrument accuracy, current building clearance, or a correction at
+foundations, canopy posts or the track. There is no shift or smoothing in the
+world and no change to the earlier roof witness. Reproduce the aggregate
+from the repository root with GDAL's `gdaltransform`, NumPy, laspy with lazrs,
+Node and the installed project dependencies:
+
+```sh
+python tools/art/kensington-station-study/fit/replay-rear-grade.py
+```
+
+This optional check uses bounded byte ranges of one exact public object. The
+output is an aggregate JSON on stdout. It is not needed by the simulator or
+the offline test suite.
+
 ## Release gate
 
 This remains a partial study, not a whole replacement. Keep stock `q032122/149` and the adjacent ground and scenery intact. A future candidate requires its own evidence for the central bay alignment, the northeast terminal facet, southwest ridge, sensitive post/wall seating, and replacement roof finish. Verify the actual rendered ground and the two original axial clearances, protected owners and paths, matched external poses and ordinary player flight. Ground and collision samplers are not interchangeable evidence. No footing, grade, track, boardwalk, sign, vehicle or neighboring scenery is part of this study.
