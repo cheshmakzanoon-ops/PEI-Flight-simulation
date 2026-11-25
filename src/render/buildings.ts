@@ -13,6 +13,7 @@ import type {RailwayArtwork} from './summerside-station/rail-art.ts';
 import {INDIAN_RIVER_SOURCE as CHURCH} from './indian-river/indian-river-source.generated.ts';
 import {churchOwnerBytes,churchOwnerSource} from './indian-river/indian-river-guard.ts';
 import {authenticatedOwnerVariant} from './indian-river/authored-owner-variant.ts';
+import {authenticatedOwnerCohort} from './authenticated-owner-cohort.ts';
 import type {ChurchArt} from './indian-river/runtime.ts';
 import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
 import * as THREE from 'three';
@@ -222,6 +223,7 @@ export class Buildings {
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
  private pointPrimEnabled=false;
  private primStock?:PointPrimStock;
  private primDraw?:PointPrimDrawLease;
@@ -398,6 +400,9 @@ export class Buildings {
       st.variant?.dispose();st.art.dispose();this.stDavids=undefined;
      }
      if(this.pendingStDavids?.owner===m)this.pendingStDavids=undefined;
+     if(this.georgetownCohort?.owner===m){
+      this.georgetownCohort.mask.dispose();this.georgetownCohort=undefined;
+     }
     }
     if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
     if(this.pendingBarn?.owner===m)this.pendingBarn=undefined;
@@ -662,15 +667,19 @@ export class Buildings {
   }catch{/** Optional promotion must never remove the already submitted stock tile. */}
  }
  private async promoteStDavids(pending:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer},request:LocalExteriorReview){
-  const {tile,owner,source}=pending,stock=owner.geometry;
-  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&owner.parent===this.scene&&owner.geometry===stock;
+  const {tile,owner,source}=pending;
+  const active=()=>this.georgetownCohort?.owner===owner?this.georgetownCohort.mask:undefined;
+  const base=()=>{const cohort=active();return cohort?cohort.stockForProof():owner.geometry;};
+  const stock=base();
+  if(!stock)return;
+  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&owner.parent===this.scene&&base()===stock;
   let timer:ReturnType<typeof setTimeout>|undefined;
   try{
    const range=owner.userData.beaconTriangles as readonly [number,number]|undefined;
    const environment=this.scene.environment;
    if(!current()||!range||environment?.mapping!==THREE.EquirectangularReflectionMapping||this.scene.environmentIntensity!==.77||
       !this.waterStreetMat||!this.victoriaMat||!this.montagueMat||!this.sourisMcleanMat||
-      !await stDavidsOwnerBytes(source)||!await stDavidsDrawAllows(owner,range)||!current())return;
+      !await stDavidsOwnerBytes(source)||!await stDavidsDrawAllows(owner,range,stock)||!current())return;
    const mod=await Promise.race([
     import('./st-davids/runtime.ts'),new Promise<undefined>(ok=>{timer=setTimeout(()=>ok(undefined),1200);}),
    ]).finally(()=>{if(timer!==undefined)clearTimeout(timer);});
@@ -678,8 +687,10 @@ export class Buildings {
    const art=await mod.loadStDavids((import.meta.env?.BASE_URL??'./')+'art/',request.shadows);
    if(!art)return;
    if(!current()){art.dispose();return;}
-   const variant=authenticatedOwnerVariant(owner,art.group,range,ST_DAVID);
-   if(!variant){art.dispose();return;}
+   const mask=active()??authenticatedOwnerCohort(owner,stock);
+   const variant=mask?.add(art.group,range,ST_DAVID);
+   if(!mask||!variant){art.dispose();return;}
+   this.georgetownCohort={owner,mask};
    const neighborsCaster=art.caster?new THREE.Mesh(stock,owner.material):undefined;
    neighborsCaster?.position.copy(owner.position);
    this.stDavids={owner,art,variant,neighborsCaster};

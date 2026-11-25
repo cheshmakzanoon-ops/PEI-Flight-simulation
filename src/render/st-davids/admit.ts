@@ -1,4 +1,4 @@
-import type {Mesh} from 'three';
+import type {BufferGeometry,Mesh} from 'three';
 import {verifyDecodedCover} from '../../sim/cover-proof.ts';
 import type {World} from '../world.ts';
 import {ST_DAVIDS as S} from './source.generated.ts';
@@ -33,8 +33,7 @@ export async function stDavidsOwnerBytes(b:ArrayBuffer){
 }
 /** Byte pin the actual emitted owner and every neighbor attribute. This is
  * computed once, off the normal load path, and fails closed on a different renderer roster. */
-export async function stDavidsDrawAllows(owner:Mesh,range:readonly [number,number]){
- const g=owner.geometry;
+export async function stDavidsDrawAllows(owner:Mesh,range:readonly [number,number],g:BufferGeometry=owner.geometry){
  if(g.index||range[0]!==S.start||range[1]!==S.end||Object.keys(g.attributes).length!==DRAW.length||
     S.position.some((v,i)=>!(Math.abs(owner.position.getComponent(i)-v)<=.000001)))return false;
  const bytes=new Uint8Array(S.vertices*(12*4+1));

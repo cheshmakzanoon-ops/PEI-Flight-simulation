@@ -112,3 +112,41 @@ geometry, collision, roads, or neighboring building material changed.
 
 Reproduce the exact mask and its road/building clearance audit with
 `node --experimental-transform-types tools/art/st-davids/bake-ground-sun.mjs --verify`.
+
+## Safely sharing the Georgetown tile
+
+The unchanged signed stock geometry now remains available for verification
+while a row is hidden. A small coordinator can reserve two non-overlapping
+triangle spans in that one mesh, preserving the order and object identity of
+all original attributes. An unrecognized replacement mesh takes precedence;
+the local artwork hides rather than taking ownership back. Removing one lease
+restores its stock span without restoring the other. The masks are created on
+changes, not per-frame. Retiring a mask releases its owned index but
+leaves the stock vertex buffers attached to the surviving mesh.
+
+St. David’s is still the only live participant. No courthouse geometry or
+download is added by this change. A temporary browser fixture exercised the
+actual q11220 draw with an empty test group associated with the separate
+courthouse span. With neither lease, all 31,179 unindexed vertices remain.
+With only the church, 31,113 indices remain; with only the mock courthouse,
+31,086; with both, 31,020. The next nearby structure keeps all 42 of its
+indices in every altered view. The original six attributes and the original
+church mask are preserved. With both altered index buffers uploaded in
+Chromium, retiring the mock leaves a byte-identical church frame and no
+WebGL error. A future authored neighbor would still need its own casting
+and ground-contact validation.
+
+In the matched Standard street captures, the church’s pixel contribution was
+identical before and after. Eighteen pixels elsewhere differed by one RGB
+level in both the stock and church frame, with no difference to the church
+or its change mask. The Standard scene kept 60 draws and 264,170 triangles
+with the church present, or 47 draws and 258,828 triangles in stock. The optional
+shadow view retained the same caster counts and church contribution.
+In the [compiled and matched-render results](georgetown-owner-cohort-gate.json),
+all four flights paused normally. Ordinary art fetched once; corrupt art
+kept the stock row, and stock and distant routes made no request.
+
+```sh
+node --experimental-strip-types --test test/authenticated-owner-cohort.test.ts
+python tools/qa/georgetown-owner-cohort.py --checkout . --out /tmp/pei-tile-proof --chromium /path/to/chromium
+```

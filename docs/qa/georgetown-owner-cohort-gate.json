@@ -1,0 +1,176 @@
+{
+  "baseCommit": "3ab7cc05b9950b2d55886fbd83dc2ff65fdcc432",
+  "stockOwner": {
+    "bytes": 1527771,
+    "sha": "72f0130180324de2a93f305f4644b3cd0f2500b88dec33665f4134acdabbfdbd",
+    "vertices": 31179,
+    "stockIndexed": false,
+    "groups": 0,
+    "position": [
+      51377.24199477867,
+      0,
+      35951.55096605661
+    ]
+  },
+  "boundedActorSpans": {
+    "courthouse": [
+      4617,
+      4710
+    ],
+    "church": [
+      14070,
+      14136
+    ],
+    "nearbyUnrelated": [
+      22203,
+      22245
+    ]
+  },
+  "actualToyMaskOnRealDraw": {
+    "justChurch": {
+      "indices": 31113,
+      "neighbour": 42,
+      "courthouse": 93,
+      "church": 0,
+      "attributes": true,
+      "snapshot": true
+    },
+    "both": {
+      "indices": 31020,
+      "neighbour": 42,
+      "courthouse": 0,
+      "church": 0,
+      "attributes": true,
+      "snapshot": true
+    },
+    "justCourthouse": {
+      "indices": 31086,
+      "neighbour": 42,
+      "courthouse": 0,
+      "church": 66,
+      "attributes": true,
+      "snapshot": true
+    },
+    "originalUnindexed": true,
+    "exactChurchMaskRestore": true,
+    "churchRestored": true,
+    "maskVertices": 31179,
+    "imageExactAfterRetirement": true,
+    "glError": 0
+  },
+  "renderedChurchParity": {
+    "pair": {
+      "sameChurchEffect": true,
+      "backgroundPixelsChangedStock": 18,
+      "backgroundPixelsChangedInstalled": 18,
+      "maxRgb": 1,
+      "sameUnrelatedDifference": true,
+      "frameWidth": 530,
+      "frameHeight": 375,
+      "installedRender": {
+        "draws": 60,
+        "triangles": 264170,
+        "shadows": null,
+        "indexed": true,
+        "visible": true
+      },
+      "stockRender": {
+        "draws": 47,
+        "triangles": 258828,
+        "shadows": null,
+        "indexed": false,
+        "visible": false
+      },
+      "sameChangedBounds": true
+    },
+    "shadow": {
+      "sameChurchEffect": true,
+      "backgroundPixelsChangedStock": 18369,
+      "backgroundPixelsChangedInstalled": 18369,
+      "maxRgb": 3,
+      "sameUnrelatedDifference": true,
+      "frameWidth": 530,
+      "frameHeight": 375,
+      "installedRender": {
+        "draws": 60,
+        "triangles": 264170,
+        "shadows": {
+          "active": true,
+          "strength": 1,
+          "updates": 3,
+          "depthDraws": 3,
+          "depthTriangles": 19916
+        },
+        "indexed": true,
+        "visible": true
+      },
+      "stockRender": {
+        "draws": 47,
+        "triangles": 258828,
+        "shadows": {
+          "active": true,
+          "strength": 1,
+          "updates": 4,
+          "depthDraws": 2,
+          "depthTriangles": 14574
+        },
+        "indexed": false,
+        "visible": false
+      },
+      "sameChangedBounds": true
+    }
+  },
+  "compiledFlight": [
+    {
+      "mode": "stock",
+      "site": "georgetown-low",
+      "movementM": 523.722,
+      "altitude": 64.72291666644766,
+      "stockGround": 7.255929424828646,
+      "exteriorAtEnd": false,
+      "pauseSucceeded": true,
+      "downloads": [],
+      "corruptLengths": []
+    },
+    {
+      "mode": "candidate",
+      "site": "georgetown-low",
+      "movementM": 520.935,
+      "altitude": 64.7652471032091,
+      "stockGround": 7.331926283292542,
+      "exteriorAtEnd": true,
+      "pauseSucceeded": true,
+      "downloads": [
+        "st-davids-B3-v1.bin.gz"
+      ],
+      "corruptLengths": []
+    },
+    {
+      "mode": "corrupt",
+      "site": "georgetown-low",
+      "movementM": 520.369,
+      "altitude": 64.73138176060871,
+      "stockGround": 7.271128728443382,
+      "exteriorAtEnd": false,
+      "pauseSucceeded": true,
+      "downloads": [
+        "st-davids-B3-v1.bin.gz"
+      ],
+      "corruptLengths": [
+        374243
+      ]
+    },
+    {
+      "mode": "distance",
+      "site": "montague",
+      "movementM": 524.68,
+      "altitude": 381.2953044217948,
+      "stockGround": 22.99156539420232,
+      "exteriorAtEnd": false,
+      "pauseSucceeded": true,
+      "downloads": [],
+      "corruptLengths": []
+    }
+  ],
+  "note": "No courthouse asset installed. The positive browser court mask is a temporary empty test Group. The compiled route uses real church geometry."
+}
