@@ -1,0 +1,171 @@
+{
+  "owner": "q1331/195",
+  "upperSurfaceOnly": true,
+  "fitSHA256": "e54429bb53fdb0f7b87800a613f0d25c77032f023cf6abedd0619ace66e8fad9",
+  "emitterSHA256": "2799ffcb9a0794c36caff5f194150b579cf2e8c147591b6d64b41ace8aacb5f0",
+  "adapterSHA256": "d1e4a27a4eb10001748aa0be968f584411a04cd4a2e94f68759485367fc423bd",
+  "geometrySHA256": "ad6b913a201e61acbf480b7a2716c9d63aed0bb3f258c30fcb15756f25f2d759",
+  "triangles": 36,
+  "parts": [
+    {
+      "role": "main/track",
+      "triangles": 17,
+      "minNormalY": 0.76437130605754,
+      "projectedAreaUV": 72.05705102908699
+    },
+    {
+      "role": "hood/westCheek",
+      "triangles": 2,
+      "minNormalY": 0.7777913474624122,
+      "projectedAreaUV": 2.163984550078713
+    },
+    {
+      "role": "hood/eastCheek",
+      "triangles": 3,
+      "minNormalY": 0.790606677101461,
+      "projectedAreaUV": 2.2611017562098175
+    },
+    {
+      "role": "hood/cap",
+      "triangles": 2,
+      "minNormalY": 0.9976798243612544,
+      "projectedAreaUV": 0.564351764143391
+    },
+    {
+      "role": "hood/trackApron",
+      "triangles": 2,
+      "minNormalY": 0.7090990948720005,
+      "projectedAreaUV": 0.8379834307924968
+    },
+    {
+      "role": "main/back",
+      "triangles": 7,
+      "minNormalY": 0.7609084995937104,
+      "projectedAreaUV": 78.3025753889747
+    },
+    {
+      "role": "main/westHip",
+      "triangles": 1,
+      "minNormalY": 0.7631227310779277,
+      "projectedAreaUV": 24.354325723768397
+    },
+    {
+      "role": "main/eastHip",
+      "triangles": 2,
+      "minNormalY": 0.7670771404736685,
+      "projectedAreaUV": 26.28698607670214
+    }
+  ],
+  "absoluteAxes": "scene X east, Y CGVD2013 up, Z south; metres",
+  "summedProjectedAreaUV": 206.82835971975663,
+  "envelopeAreaUV": 206.82835971975663,
+  "overlapPolicy": "interior partition; only edges/vertices coincide. Choose nearest opaque hit from above.",
+  "roles": {
+    "track-west-slope": {
+      "n": 11,
+      "misses": 0,
+      "hits": {
+        "main/track": 11
+      },
+      "absP50": 0.010844559735652126,
+      "absP90": 0.025792532062268947,
+      "signedMedian": 0.0023715715821026606
+    },
+    "track-east-slope": {
+      "n": 10,
+      "misses": 0,
+      "hits": {
+        "main/track": 9,
+        "hood/eastCheek": 1
+      },
+      "absP50": 0.017383809546245743,
+      "absP90": 0.04340755090839181,
+      "signedMedian": 0.010297410125414075
+    },
+    "back-west-slope": {
+      "n": 29,
+      "misses": 0,
+      "hits": {
+        "main/back": 29
+      },
+      "absP50": 0.019938103386785144,
+      "absP90": 0.04263797531352082,
+      "signedMedian": 0.0013826151567641887
+    },
+    "back-east-slope": {
+      "n": 39,
+      "misses": 0,
+      "hits": {
+        "main/back": 39
+      },
+      "absP50": 0.020799668909297964,
+      "absP90": 0.05687816625990934,
+      "signedMedian": -0.0011325340183887533
+    },
+    "west-hip": {
+      "n": 15,
+      "misses": 0,
+      "hits": {
+        "main/westHip": 15
+      },
+      "absP50": 0.01628964098596697,
+      "absP90": 0.02309339819097147,
+      "signedMedian": -0.001390969107497142
+    },
+    "east-hip": {
+      "n": 19,
+      "misses": 0,
+      "hits": {
+        "main/eastHip": 19
+      },
+      "absP50": 0.011073054016762285,
+      "absP90": 0.033644047929681155,
+      "signedMedian": 0.002430922366635002
+    },
+    "ridge-east": {
+      "n": 10,
+      "misses": 0,
+      "hits": {
+        "main/back": 4,
+        "main/track": 6
+      },
+      "absP50": 0.011726288310725863,
+      "absP90": 0.026535614479701045,
+      "signedMedian": -0.008363382196016289
+    },
+    "front-central-dormer-envelope": {
+      "n": 25,
+      "misses": 0,
+      "hits": {
+        "main/track": 5,
+        "hood/trackApron": 3,
+        "hood/westCheek": 12,
+        "hood/cap": 3,
+        "hood/eastCheek": 2
+      },
+      "absP50": 0.011472553182073852,
+      "absP90": 0.03581265051157914,
+      "signedMedian": -0.004326920716145821
+    },
+    "track-eave-W": {
+      "n": 5,
+      "misses": 0,
+      "hits": {
+        "main/track": 5
+      },
+      "absP50": 0.0033949718026846654,
+      "absP90": 0.021947448643989276,
+      "signedMedian": -0.0008260015080807648
+    },
+    "back-eave": {
+      "n": 18,
+      "misses": 0,
+      "hits": {
+        "main/back": 18
+      },
+      "absP50": 0.012374886160689158,
+      "absP90": 0.037805555783049276,
+      "signedMedian": 0.004776825349143365
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "landmark": "Elmira Railway Museum: the 1912 passenger station, not its neighboring buildings, caboose or platform.",
+  "release": "Detached offline art/metric study only. Do not use it to override the stock scene, adjust ground, or claim a completed replica.",
+  "owner": {
+    "tile": "q1331",
+    "featureOrdinal": 195,
+    "chunkDigest": "f55e626176b8f9d0b6d28d574140df901293af5be805f6ab63a0df05c1e61f84",
+    "packDigest": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "roofEnvelopeAreaM2": 206.828,
+    "heritagePointInsideRoofEnvelope": true,
+    "civicMarkerDistanceFromBoundaryM": 55.01,
+    "neighborsMustRemainUnchanged": [
+      212,
+      249,
+      272,
+      153
+    ],
+    "sameParcelDoesNotMeanSameBuilding": true,
+    "exteriorOnly": true
+  },
+  "references": {
+    "heritageRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=4604",
+    "multipleBuildingsAndBoardwalk": "https://archivenews.princeedwardisland.ca/friends-elmira-railway-museum-celebrate-site-enhancements",
+    "province2025Publication": "https://www.princeedwardisland.ca/en/news/elmira-railway-museums-50th-anniversary-celebration",
+    "nationalPointCloudCatalog": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+    "datasetLicense": "Open Government Licence \u2013 Canada",
+    "licenseURL": "https://open.canada.ca/en/open-government-licence-canada",
+    "2020Native": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_471000_710000.copc.laz",
+    "sourceObjectBytes": 58574635,
+    "sourceObjectETag": "\"5fcc1f97c8f37ae500299ee2b9a65fa6-7\"",
+    "vertical": "CGVD2013 (EPSG:6647) orthometric metres",
+    "sourceLimit": "Stock AEB and CanElevation originate in the same 2020 airborne acquisition. Held tests are spatial reconstruction within it, not a later survey. Dated publications identify the exterior, not as-built dimensions. No photos, ortho, point clouds or cadastral vertices are redistributed in the study."
+  },
+  "method": {
+    "preRegistrationSHA256": "aec57f87133ef8f112384fa98fba0e1ccba0814ffd5927b217a2eb8b3039afb4",
+    "nonElevationReceiptSHA256": "c9ffc3e984f3e595f34fd03f71fcc6d1f27ad20a0074ed083d091abcc167cb81",
+    "additionalXYReceiptSHA256": "f1928181b980b0e799480f5ac62e80f9e778cba85f763e587f843dcc72f22047",
+    "fitPacketSHA256": "886b8477c55a9b7752502ec1714166d61eeccb893347cb767f20d32a44a2fd70",
+    "geometrySHA256": "ad6b913a201e61acbf480b7a2716c9d63aed0bb3f258c30fcb15756f25f2d759",
+    "predictionSHA256": "52df60e4bdebbcc44aa95a5fd969a29b02702578963d43b443c5c83e26677cb4",
+    "trainingRoles": 12,
+    "trainingPositions": 264,
+    "withheldSpatialGridM": 1.4,
+    "guardM": 0.22,
+    "pulseKey": "Point source ID and exact GPS timestamp bits; siblings protected before extracting any numeric height. Each original held key and its guard retained on supplemental XY-only check.",
+    "numberOfFinalGuardedKeys": 5321,
+    "extraSurfaceScope": "Only 12 original domains allowed. A blind XY supplement retained all 5,320 initially reserved keys, added one, and improved only auxiliary coverage; it did not promote the station.",
+    "masks": "Original ring interior and Class 6 first return, dry Class 2 last return with parcel and neighbor exclusion; compare actual Three.js highest opaque roof triangle or unchanged terrain value.",
+    "topology": {
+      "areaSqM": 206.82835972,
+      "emittedSumSqM": 206.82836196,
+      "trueUnionSqM": 206.82836173,
+      "withinShapeSymmetricDifferenceSqM": 6.61e-06,
+      "overlapSqM": 2.3e-07,
+      "facets": 36,
+      "meshUnionValid": true
+    },
+    "roofs": {
+      "emittedTriangles": 36,
+      "separateSurfaceTags": 8,
+      "heldRows": 169,
+      "coverage": 1.0,
+      "passCount": 10,
+      "worstP90AbsM": 0.069373
+    },
+    "ground": {
+      "heldRows": 62,
+      "visiblePassCount": 1,
+      "sameVisibleGroundAt34_5mAnd420m": true
+    },
+    "thresholds": {
+      "roof": {
+        "coverage": 0.97,
+        "medianAbsM": 0.3,
+        "absMedianSignedM": 0.24,
+        "p90AbsM": 0.62
+      },
+      "ground": {
+        "coverage": 1,
+        "medianAbsM": 0.19,
+        "absMedianSignedM": 0.15,
+        "p90AbsM": 0.39
+      }
+    },
+    "errorsArePredictionMinusSurvey": true,
+    "roles": {
+      "back-east-slope": {
+        "signedMedianM": 0.008836,
+        "medianAbsM": 0.029499,
+        "p90AbsM": 0.051232,
+        "matchedFraction": 1.0,
+        "heldRows": 13,
+        "passed": true
+      },
+      "back-eave": {
+        "signedMedianM": 0.001132,
+        "medianAbsM": 0.017026,
+        "p90AbsM": 0.061812,
+        "matchedFraction": 1.0,
+        "heldRows": 24,
+        "passed": true
+      },
+      "back-west-slope": {
+        "signedMedianM": -3.8e-05,
+        "medianAbsM": 0.029527,
+        "p90AbsM": 0.061678,
+        "matchedFraction": 1.0,
+        "heldRows": 23,
+        "passed": true
+      },
+      "east-hip": {
+        "signedMedianM": 0.005924,
+        "medianAbsM": 0.013908,
+        "p90AbsM": 0.030276,
+        "matchedFraction": 1.0,
+        "heldRows": 21,
+        "passed": true
+      },
+      "eastern-dry-turf": {
+        "signedMedianM": -0.216921,
+        "medianAbsM": 0.216921,
+        "p90AbsM": 0.267089,
+        "physicalTerrain": {
+          "signedMedianM": -0.3,
+          "medianAbsM": 0.3,
+          "p90AbsM": 0.3726
+        },
+        "matchedFraction": 1,
+        "heldRows": 23,
+        "passed": false
+      },
+      "front-central-dormer-envelope": {
+        "signedMedianM": -0.017327,
+        "medianAbsM": 0.02794,
+        "p90AbsM": 0.065973,
+        "matchedFraction": 1.0,
+        "heldRows": 18,
+        "passed": true
+      },
+      "ridge-east": {
+        "signedMedianM": 0.022636,
+        "medianAbsM": 0.022636,
+        "p90AbsM": 0.069373,
+        "matchedFraction": 1.0,
+        "heldRows": 8,
+        "passed": true
+      },
+      "track-east-slope": {
+        "signedMedianM": 0.012176,
+        "medianAbsM": 0.01712,
+        "p90AbsM": 0.048303,
+        "matchedFraction": 1.0,
+        "heldRows": 20,
+        "passed": true
+      },
+      "track-eave-W": {
+        "signedMedianM": -0.004775,
+        "medianAbsM": 0.005709,
+        "p90AbsM": 0.032619,
+        "matchedFraction": 1.0,
+        "heldRows": 7,
+        "passed": true
+      },
+      "track-west-slope": {
+        "signedMedianM": -0.023687,
+        "medianAbsM": 0.027873,
+        "p90AbsM": 0.050032,
+        "matchedFraction": 1.0,
+        "heldRows": 18,
+        "passed": true
+      },
+      "west-hip": {
+        "signedMedianM": -0.010326,
+        "medianAbsM": 0.011698,
+        "p90AbsM": 0.029388,
+        "matchedFraction": 1.0,
+        "heldRows": 17,
+        "passed": true
+      },
+      "yard-dry-turf": {
+        "signedMedianM": -0.073724,
+        "medianAbsM": 0.073724,
+        "p90AbsM": 0.144376,
+        "physicalTerrain": {
+          "signedMedianM": -0.006,
+          "medianAbsM": 0.019,
+          "p90AbsM": 0.0774
+        },
+        "matchedFraction": 1,
+        "heldRows": 39,
+        "passed": true
+      }
+    }
+  },
+  "outsideApproval": [
+    "ridge-west",
+    "track-eave-E",
+    "western-dry-turf",
+    "open-northeast-yard"
+  ],
+  "cannotInfer": [
+    "Exact wall or sill line from an extracted roof footprint.",
+    "Roof/crown or contact of excluded domains; precise chimney, bracket or opening coordinates.",
+    "Any update to terrain, abutting boardwalk or tracks, ancillary stock, or later renovations."
+  ],
+  "rawHeldValuesPublished": false,
+  "postResultRefit": false
+}

@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "owner": "q1331/195",
+  "outlineMeaning": "Existing XY eave envelope, not the wall footprint. Absolute vertical is CGVD2013. Untrained regions are predictions.",
+  "trainingSha256": "886b8477c55a9b7752502ec1714166d61eeccb893347cb767f20d32a44a2fd70",
+  "trainingRoles": {
+    "track-west-slope": 11,
+    "track-east-slope": 10,
+    "back-west-slope": 29,
+    "back-east-slope": 39,
+    "west-hip": 15,
+    "east-hip": 19,
+    "ridge-east": 10,
+    "front-central-dormer-envelope": 25,
+    "track-eave-W": 5,
+    "back-eave": 18,
+    "eastern-dry-turf": 30,
+    "yard-dry-turf": 53
+  },
+  "world": {
+    "worldXZAtUV00": [
+      87099.00258646974,
+      6692.147346078038
+    ],
+    "worldXZPerU": [
+      0.9673998551006662,
+      -0.2491729985258644
+    ],
+    "worldXZPerV": [
+      -0.24889590793463867,
+      -0.9684772452355901
+    ],
+    "maxErrorOn40mSquareM": 7.62715930864607e-05
+  },
+  "ringUV": [
+    [
+      -10.044818909970296,
+      5.138204869842446
+    ],
+    [
+      10.030563337450214,
+      5.138204869842446
+    ],
+    [
+      10.09589464836403,
+      -5.0939519906366915
+    ],
+    [
+      -10.081639075869798,
+      -5.182457748920638
+    ]
+  ],
+  "yOrigin": 40,
+  "planesConvention": "elevation = c + du*u + dv*v; min(base planes), max(physical hood with base) in mask only",
+  "main": {
+    "track": [
+      44.17806325611078,
+      -0.0081344529170459,
+      -0.8434597587635516
+    ],
+    "back": [
+      44.14595326258464,
+      0.016019522568064826,
+      0.8525566703115122
+    ],
+    "westHip": [
+      48.46537059125338,
+      0.84598516200191,
+      0.0011536278733766025
+    ],
+    "eastHip": [
+      48.28257901578804,
+      -0.83525113467818,
+      0.020168604836268485
+    ]
+  },
+  "hood": {
+    "westCheek": [
+      42.269999999999996,
+      0.8037477247676189,
+      -0.07483605384988193
+    ],
+    "eastCheek": [
+      43.944384141637464,
+      -0.7701243022876983,
+      -0.07483605384988193
+    ],
+    "cap": [
+      42.96732244145332,
+      0.0,
+      -0.06823541366605838
+    ],
+    "trackApron": [
+      45.84700583379314,
+      0.0,
+      -0.9943215977165496
+    ]
+  },
+  "hoodMask": {
+    "u": [
+      -2.25,
+      3.2
+    ],
+    "v": [
+      0.85,
+      3.82
+    ]
+  },
+  "limits": [
+    "The mask is a training-supported study extent, not a measured dormer wall or exact width.",
+    "The central chimney is positively documented but not surveyed here; no chimney, roof furniture, fascia or vertical faces in this overhead witness.",
+    "No eave-flare curvature fit is claimed outside the sampled bands.",
+    "Dry-turf train roles not used to place architecture. No courtyard altered."
+  ],
+  "trainingDiagnosticsAnalytic": {
+    "track-west-slope": {
+      "n": 11,
+      "absP50": 0.010843464218496024,
+      "absP90": 0.025790446769363484,
+      "bias": 0.0023704240671449384,
+      "observationsWithinDormerProjection": 0
+    },
+    "track-east-slope": {
+      "n": 10,
+      "absP50": 0.017382741969196758,
+      "absP90": 0.04340708271285507,
+      "bias": 0.010296318529601223,
+      "observationsWithinDormerProjection": 1
+    },
+    "back-west-slope": {
+      "n": 29,
+      "absP50": 0.019940051526774027,
+      "absP90": 0.04263812731352629,
+      "bias": 0.0013828712777836927,
+      "observationsWithinDormerProjection": 0
+    },
+    "back-east-slope": {
+      "n": 39,
+      "absP50": 0.020799607387317565,
+      "absP90": 0.05687834795865996,
+      "bias": -0.0011325764244602965,
+      "observationsWithinDormerProjection": 0
+    },
+    "west-hip": {
+      "n": 15,
+      "absP50": 0.016289190621186833,
+      "absP90": 0.023092284211901414,
+      "bias": -0.0013925456982448736,
+      "observationsWithinDormerProjection": 0
+    },
+    "east-hip": {
+      "n": 19,
+      "absP50": 0.011071396817420975,
+      "absP90": 0.033644532464319345,
+      "bias": 0.002433544029564416,
+      "observationsWithinDormerProjection": 0
+    },
+    "ridge-east": {
+      "n": 10,
+      "absP50": 0.01172659054629932,
+      "absP90": 0.02653564721063119,
+      "bias": -0.008363042219848182,
+      "observationsWithinDormerProjection": 0
+    },
+    "front-central-dormer-envelope": {
+      "n": 25,
+      "absP50": 0.011472436103986183,
+      "absP90": 0.03581255196173744,
+      "bias": -0.004326816067489858,
+      "observationsWithinDormerProjection": 20
+    },
+    "track-eave-W": {
+      "n": 5,
+      "absP50": 0.003398028036720291,
+      "absP90": 0.02194682047030767,
+      "bias": -0.0008289837985628878,
+      "observationsWithinDormerProjection": 0
+    },
+    "back-eave": {
+      "n": 18,
+      "absP50": 0.012375039826697076,
+      "absP90": 0.037806048652705475,
+      "bias": 0.004776826224816233,
+      "observationsWithinDormerProjection": 0
+    }
+  }
+}

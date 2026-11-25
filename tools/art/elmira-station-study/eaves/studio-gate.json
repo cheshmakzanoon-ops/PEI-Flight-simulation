@@ -1,0 +1,173 @@
+{
+  "mode": "detached; original daylight + procedural timber only",
+  "runtimeSceneChanged": false,
+  "tests": {
+    "reproducibleFrames": true,
+    "webglErrors": [],
+    "meshBatches": 9,
+    "modelTriangles": 4811,
+    "rendererDrawCallsIncludingStudioAndShadowPass": 19,
+    "rendererTrianglesIncludingStudioAndShadowPass": 9624,
+    "individualPaneCentresHittingGlass": 18
+  },
+  "studiedParts": [
+    {
+      "name": "shingles",
+      "triangles": 1373
+    },
+    {
+      "name": "plinth",
+      "triangles": 372
+    },
+    {
+      "name": "joinery",
+      "triangles": 888
+    },
+    {
+      "name": "soffit",
+      "triangles": 120
+    },
+    {
+      "name": "roof",
+      "triangles": 1410
+    },
+    {
+      "name": "deck",
+      "triangles": 384
+    },
+    {
+      "name": "bed",
+      "triangles": 24
+    },
+    {
+      "name": "glass",
+      "triangles": 216
+    },
+    {
+      "name": "iron",
+      "triangles": 24
+    }
+  ],
+  "stageProbes": {
+    "panes": "All 18 first hits were glass; verify.mjs tests every rebuild.",
+    "rail": {
+      "part": "joinery",
+      "point": [
+        -0.24,
+        1.71,
+        0.123
+      ]
+    },
+    "bracket": {
+      "part": "joinery",
+      "point": [
+        1.15,
+        2.7,
+        0.4918
+      ]
+    },
+    "eave": {
+      "part": "soffit",
+      "point": [
+        0.35,
+        2.9717,
+        0.82
+      ]
+    },
+    "roof": {
+      "part": "roof",
+      "point": [
+        0.52,
+        3.0561,
+        1.009
+      ]
+    },
+    "wall": {
+      "part": "shingles",
+      "point": [
+        0.6,
+        2.01,
+        0.0097
+      ]
+    },
+    "foot": {
+      "part": "plinth",
+      "point": [
+        0.6,
+        0.31,
+        0.025
+      ]
+    },
+    "platform": {
+      "part": "deck",
+      "point": [
+        0.6,
+        0.029,
+        0.44
+      ]
+    }
+  },
+  "cameras": {
+    "assembly": {
+      "eye": [
+        2.98,
+        2.14,
+        5.94
+      ],
+      "look": [
+        0,
+        1.56,
+        0.32
+      ]
+    },
+    "underEave": {
+      "eye": [
+        2.92,
+        1.36,
+        2.96
+      ],
+      "look": [
+        0.22,
+        2,
+        0.17
+      ]
+    },
+    "sash": {
+      "eye": [
+        0.39,
+        1.72,
+        2.43
+      ],
+      "look": [
+        -0.19,
+        1.72,
+        0.04
+      ]
+    },
+    "bracket": {
+      "eye": [
+        2.7,
+        2.33,
+        2.05
+      ],
+      "look": [
+        1.09,
+        2.61,
+        0.31
+      ]
+    },
+    "roof": {
+      "eye": [
+        2.35,
+        4.15,
+        3.08
+      ],
+      "look": [
+        0.06,
+        2.54,
+        0.41
+      ]
+    }
+  },
+  "geometryAndSurfaceSHA256": "5219114b3f9cbb57b0baa36900dd928b3911a94d13bc55cb1e223ef68a88d351"
+}

@@ -1,0 +1,81 @@
+{
+  "views": [
+    {
+      "name": "track",
+      "camera": {
+        "eye": [
+          -13.1,
+          11,
+          -24.3
+        ],
+        "aim": [
+          0,
+          2.95,
+          0
+        ]
+      },
+      "positionHashClaim": "physical positions unchanged from sealed makeElmiraRoof()",
+      "triangles": 36,
+      "drawCallsIncludingStudioAndShadow": 17,
+      "repeatIdentical": true
+    },
+    {
+      "name": "hips",
+      "camera": {
+        "eye": [
+          18.6,
+          14.7,
+          -21.5
+        ],
+        "aim": [
+          0,
+          3,
+          0
+        ]
+      },
+      "positionHashClaim": "physical positions unchanged from sealed makeElmiraRoof()",
+      "triangles": 36,
+      "drawCallsIncludingStudioAndShadow": 17,
+      "repeatIdentical": true
+    },
+    {
+      "name": "dormer",
+      "camera": {
+        "eye": [
+          -2.35,
+          8.05,
+          -11.45
+        ],
+        "aim": [
+          0.65,
+          3.75,
+          -2.17
+        ]
+      },
+      "positionHashClaim": "physical positions unchanged from sealed makeElmiraRoof()",
+      "triangles": 36,
+      "drawCallsIncludingStudioAndShadow": 17,
+      "repeatIdentical": true
+    },
+    {
+      "name": "plan",
+      "camera": {
+        "eye": [
+          -0.16,
+          33,
+          -4.1
+        ],
+        "aim": [
+          0,
+          2.3,
+          0
+        ]
+      },
+      "positionHashClaim": "physical positions unchanged from sealed makeElmiraRoof()",
+      "triangles": 36,
+      "drawCallsIncludingStudioAndShadow": 17,
+      "repeatIdentical": true
+    }
+  ],
+  "errors": []
+}

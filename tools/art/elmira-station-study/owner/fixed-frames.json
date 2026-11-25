@@ -1,0 +1,86 @@
+[
+  {
+    "name": "track-SE",
+    "cameraFixture": {
+      "lon": -62.06534575,
+      "lat": 46.43979775,
+      "h": 3.65,
+      "dist": 34.5,
+      "east": 25.6,
+      "south": 23.15,
+      "agl": 4.0
+    },
+    "aaEdgeNotExactlyID": 1,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 17766,
+    "stockOwnerPixelCount": 17750,
+    "span": [
+      12006,
+      12048
+    ],
+    "vertexCount": 16416
+  },
+  {
+    "name": "road-NE",
+    "cameraFixture": {
+      "lon": -62.06534575,
+      "lat": 46.43979775,
+      "h": 3.65,
+      "dist": 31.6,
+      "east": 18,
+      "south": -25.97,
+      "agl": 4.5
+    },
+    "aaEdgeNotExactlyID": 22,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 39771,
+    "stockOwnerPixelCount": 39769,
+    "span": [
+      12006,
+      12048
+    ],
+    "vertexCount": 16416
+  },
+  {
+    "name": "side-SW",
+    "cameraFixture": {
+      "lon": -62.06534575,
+      "lat": 46.43979775,
+      "h": 3.65,
+      "dist": 20.25,
+      "east": -11.0,
+      "south": 17.0,
+      "agl": 4.1
+    },
+    "aaEdgeNotExactlyID": 11,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 56248,
+    "stockOwnerPixelCount": 56259,
+    "span": [
+      12006,
+      12048
+    ],
+    "vertexCount": 16416
+  },
+  {
+    "name": "air",
+    "cameraFixture": {
+      "lon": -62.06534575,
+      "lat": 46.43979775,
+      "h": 3.65,
+      "dist": 128.2,
+      "east": 96,
+      "south": 85,
+      "agl": 76.0
+    },
+    "aaEdgeNotExactlyID": 0,
+    "outsideOnePixelID": 0,
+    "ownerSupportPixelCount": 782,
+    "stockOwnerPixelCount": 782,
+    "span": [
+      12006,
+      12048
+    ],
+    "vertexCount": 16416
+  }
+]
