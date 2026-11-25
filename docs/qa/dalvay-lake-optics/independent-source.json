@@ -1,0 +1,61 @@
+{
+  "scope": "Independent whole-source proof, not a new water surface, lake level or a camera photograph. Retains year limitations. Conservative support includes arbitrarily small positive contributions from all four adjacent texels, larger than actual shader cutoff. Geometric area differs from counting nonzero texel centres. Shore/data provenance estimates not statements about present-day water.",
+  "wireSha256": "149ee965bc52ca42e75f506a5f688dd9b3f2420264ff427c5c23e7496d190f56",
+  "sourceNHNArchiveSHA256": "f6994a6802535ae854a8cfaf94fb05ef9866f02606839ab3745063f24698d620",
+  "namedOriginalNID": "dc8e389aae854b958fc06b02e2b9b011",
+  "originalValDate": "1987",
+  "originalReportedHorizontalAccuracyM": 23,
+  "license": "NHN OGL Canada; ESA WorldCover 2021 CC BY 4.0. No original image or photo used as shader texture.",
+  "alphaPositiveCentres": 7146,
+  "fullyAppliedCentres": 5433,
+  "fullBilinearPositiveEnvelopeCells": 7507,
+  "areaBilinearEnvelopeM2": 120112.0,
+  "minimumHistoricalBankDistanceM": 15.131067847051662,
+  "wholePotentialSupportOutside12mErodedHistoricalPolygonAreaM2": 0,
+  "allPointsInAllActualBilinearCellsIntersectedESACentresAndEightNeighbors": {
+    "sampleBlockCornerLookups": 30028,
+    "checksIncludingAll3x3": 270252,
+    "uniqueClasses": [
+      80
+    ],
+    "nonClass80": 0,
+    "originalESAsha256": "a9ecfc04b044d75d68f5144af3240fa32792c3dcc77e7b429595935c610a80b0"
+  },
+  "allOriginalAEBAndNRNWithin250mBoundingRectangle": {
+    "nearestAEBSeparationMAndOwner": [
+      59.86455221189261,
+      "q12203",
+      208
+    ],
+    "examinedRings": 38,
+    "examinedOriginalTileIds": [
+      "q12201",
+      "q12203"
+    ],
+    "nearestSignedRoadRibbonConservativeClearanceMAndNumberHalfWidth": [
+      38.21903834690792,
+      10541,
+      2.8
+    ],
+    "roadsChecked": 26,
+    "roadGeometrySHA256": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+    "coverageCaveat": "Roads conservatively buffered centerlines; no claim about a future footpath or the date of unknown foliage. Actual ground-only shader and fixed camera cannot shift or paint original independent scene objects."
+  },
+  "actualLockedLakeViews": {
+    "dalvay-approach-over-named-lake": {
+      "eyeInActualPositiveBilinearSupport": true,
+      "separatedFromPositiveBoundaryM": 110.75995818270498,
+      "exactViewLineCrossingPositivePotentialM": 126.87730600636579,
+      "integratedFully255RunApproxM": 104.0,
+      "integratedAlphaWeightedMApprox": 117.4119635390017
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "eyeInActualPositiveBilinearSupport": false,
+      "separatedFromPositiveBoundaryM": 41.32237842846684,
+      "exactViewLineCrossingPositivePotentialM": 290.3265746640952,
+      "integratedFully255RunApproxM": 248.5,
+      "integratedAlphaWeightedMApprox": 270.6467731686541
+    }
+  },
+  "oldFlightCollider": "unchanged by shader design; this calculation does not substitute a real player contact check."
+}

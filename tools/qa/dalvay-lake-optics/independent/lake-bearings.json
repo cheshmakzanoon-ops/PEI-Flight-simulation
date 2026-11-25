@@ -1,0 +1,24 @@
+{
+  "directionFormula": "from original rendered manor area centroid straight toward CGNDB published Dalvay Lake point. Project exactly by original game lon/lat metres; unique (only) interior interval along this 1000m line; first camera at midspan, second exactly 24m beyond opposite limb. No architectural or raster/pixel data used.",
+  "size": "900x600",
+  "views": {
+    "dalvay-approach-over-named-lake": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9.0,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 280.3845063322622,
+      "nearAgl": 33.0
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9.0,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 486.9045274653363,
+      "nearAgl": 22.0
+    }
+  }
+}

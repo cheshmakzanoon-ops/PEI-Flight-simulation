@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, seacowExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, seacowExteriorRequested, dalvayWaterRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -8,6 +8,11 @@ const coastalGrass = new Set(['prince-coastal-grass', 'queens-coastal-grass', 'k
  * A missing source may still leave the stock scenery in the running game. */
 export function departureBriefing(site: Site, search: string): string {
   const options = sceneryOptions(search);
+  if (site.id === 'dalvay-lake-coastal-pass') {
+    return site.note + (dalvayWaterRequested(options) ?
+      ' The lake reflection preview is enabled in these scenery settings.' :
+      ' The lake reflection preview is off in these scenery settings.');
+  }
   if (site.id === 'seacow-head-coast') {
     return site.note + (seacowExteriorRequested(options) ?
       ' Look for the tapered white tower and red lantern as the exterior streams in.' :

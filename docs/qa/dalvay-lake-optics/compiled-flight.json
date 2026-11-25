@@ -1,0 +1,76 @@
+{
+  "active": {
+    "phase": "paused",
+    "optic": {
+      "active": true,
+      "visualOnly": true,
+      "receivers": [
+        "17-12",
+        "17-13"
+      ],
+      "mounts": 1
+    },
+    "admission": "ready",
+    "distanceM": 1765.64,
+    "assetResponses": [
+      [
+        200,
+        null
+      ]
+    ],
+    "assetCount": 1,
+    "moduleCount": 1,
+    "checked": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Pause"
+    ],
+    "expectedConsole": [],
+    "errors": [],
+    "warnings": []
+  },
+  "missing": {
+    "phase": "paused",
+    "optic": null,
+    "admission": "unavailable",
+    "distanceM": 739.15,
+    "assetResponses": [
+      [
+        404,
+        null
+      ]
+    ],
+    "assetCount": 1,
+    "moduleCount": 1,
+    "checked": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Pause"
+    ],
+    "expectedConsole": [
+      "optional body 404"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "stock": {
+    "phase": "paused",
+    "optic": null,
+    "admission": "idle",
+    "distanceM": 739.74,
+    "assetResponses": [],
+    "assetCount": 0,
+    "moduleCount": 0,
+    "checked": [
+      "Begin flight",
+      "Cockpit",
+      "Wide chase",
+      "Pause"
+    ],
+    "expectedConsole": [],
+    "errors": [],
+    "warnings": []
+  }
+}

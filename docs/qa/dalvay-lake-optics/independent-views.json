@@ -1,0 +1,131 @@
+{
+  "method": "All continuous eligible original mesh\u2013cell polygons; perspective clip near, analytical convex polygon versus closed pixel square with arbitrary centroid evaluation, and a two-pixel reporting ring. Mask, source terrain and existing grade not changed. No assumption that every eligible pixel actually sees water past foreground objects.",
+  "coverageCells": 7507,
+  "checkedSourcePolygons": 9873,
+  "oldSourceHeightRangeM": [
+    2.119999885559082,
+    3.5063636302948
+  ],
+  "cases": {
+    "dalvay-facing-mansion-across-named-lake": {
+      "fullSourceIntersectionsInView": 7348,
+      "wholePixelAnyRealCoverage": 237972,
+      "anyFullSourcePlusConservative2AA": 242278,
+      "measuredWhole": {
+        "n": 540000,
+        "any": 220959,
+        "over2": 209047,
+        "over8": 199201,
+        "max": 107
+      },
+      "beyondTrueCompleteSourcePlus2": {
+        "n": 297722,
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "max": 0
+      },
+      "witnesses": [],
+      "regressionPixel725x303": {
+        "admittedGeometrically": false,
+        "distanceToAnyCoveredPixel": 11.0,
+        "stock": [
+          136,
+          148,
+          151
+        ],
+        "active": [
+          136,
+          148,
+          151
+        ]
+      },
+      "beforeMiddleAfterSHA256": [
+        "ab6aebe7558836eec0f5232923a1ead3157fc9c1287a4090dbe03d4eb39c97d9",
+        "47168248ab4f6dd72a3a14488b08cf1d9325f98263e43b0bf15f66e49adb2400",
+        "ab6aebe7558836eec0f5232923a1ead3157fc9c1287a4090dbe03d4eb39c97d9"
+      ],
+      "strictPass": true
+    },
+    "dalvay-approach-over-named-lake": {
+      "fullSourceIntersectionsInView": 1577,
+      "wholePixelAnyRealCoverage": 199303,
+      "anyFullSourcePlusConservative2AA": 201476,
+      "measuredWhole": {
+        "n": 540000,
+        "any": 197246,
+        "over2": 195784,
+        "over8": 194183,
+        "max": 87
+      },
+      "beyondTrueCompleteSourcePlus2": {
+        "n": 338524,
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "max": 0
+      },
+      "witnesses": [],
+      "regressionPixel725x303": {
+        "admittedGeometrically": false,
+        "distanceToAnyCoveredPixel": 25.96150997149434,
+        "stock": [
+          44,
+          54,
+          33
+        ],
+        "active": [
+          44,
+          54,
+          33
+        ]
+      },
+      "beforeMiddleAfterSHA256": [
+        "b0e6e034db3bdb86be9ab7b2d487d55497bc2ae96977b275fe7f03f72a6293c5",
+        "91ce6092f72815ad80bc92f48be011185d449b4251e217b44e94f36162d4dd6e",
+        "b0e6e034db3bdb86be9ab7b2d487d55497bc2ae96977b275fe7f03f72a6293c5"
+      ],
+      "strictPass": true
+    },
+    "dalvay-lake-side": {
+      "fullSourceIntersectionsInView": 1780,
+      "wholePixelAnyRealCoverage": 14063,
+      "anyFullSourcePlusConservative2AA": 15764,
+      "measuredWhole": {
+        "n": 540000,
+        "any": 13378,
+        "over2": 13067,
+        "over8": 12684,
+        "max": 67
+      },
+      "beyondTrueCompleteSourcePlus2": {
+        "n": 524236,
+        "any": 0,
+        "over2": 0,
+        "over8": 0,
+        "max": 0
+      },
+      "witnesses": [],
+      "regressionPixel725x303": {
+        "admittedGeometrically": true,
+        "distanceToAnyCoveredPixel": 0.0,
+        "stock": [
+          9,
+          15,
+          11
+        ],
+        "active": [
+          29,
+          38,
+          41
+        ]
+      },
+      "beforeMiddleAfterSHA256": [
+        "fa90276eeb04180a00a8f9bc22245bce8a9d18265a6b3f8bdfad28c4571b4994",
+        "304aaa6dd7b62563098c95a39fc5592ead0fdcc1ba72c308b8e4301841fde6ea",
+        "fa90276eeb04180a00a8f9bc22245bce8a9d18265a6b3f8bdfad28c4571b4994"
+      ],
+      "strictPass": true
+    }
+  }
+}

@@ -53,6 +53,7 @@ export const SITES: Site[] = [
  {id:'hunter-river-trail',name:'Hunter River · Confederation Trail pass',region:'Queens County',lon:-63.35065736,lat:46.3523806,heading:125.3,height:95,note:'Virtual sightseeing only. Begin at 95 metres above the starting terrain and look for the mapped trail below. Not an aviation or cycling route.'},
  {id:'tracadie-marsh',name:'Tracadie Bay · marsh pass',region:'Queens County',lon:-62.970714,lat:46.414663,heading:271,height:35,note:'Virtual sightseeing only. Begin above the Tracadie Bay marsh. Not an aviation or landscape survey route.'},
  {id:'seacow-head-coast',name:'Seacow Head · coastal pass',region:'Prince County',lon:-63.7979256832,lat:46.3058977815,heading:320,height:78,note:'Virtual sightseeing only. Start over water southeast of Seacow Head and fly toward the lighthouse.'},
+ {id:'dalvay-lake-coastal-pass',name:'Dalvay Lake · coastal pass',region:'Queens County',lon:-63.07337348670973,lat:46.42729933695014,heading:182.1,height:110,note:'Start over the Gulf and fly south toward Dalvay-by-the-Sea and Dalvay Lake. Virtual sightseeing only.'},
 ];
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

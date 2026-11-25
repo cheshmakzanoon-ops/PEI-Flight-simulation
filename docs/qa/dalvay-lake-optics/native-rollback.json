@@ -1,0 +1,46 @@
+{
+  "scope": "Same tick at registered QA cameras in the ordinary Three.js Standard world. Withdraw and restore only the optional material program. Software renderer evidence, not hardware performance.",
+  "renderer": "Chromium SwiftShader",
+  "study": "direct material rebind + captures",
+  "views": {
+    "dalvay-approach-over-named-lake": {
+      "rgbaPNG": {
+        "before": "b0e6e034db3bdb86be9ab7b2d487d55497bc2ae96977b275fe7f03f72a6293c5",
+        "middle": "91ce6092f72815ad80bc92f48be011185d449b4251e217b44e94f36162d4dd6e",
+        "after": "b0e6e034db3bdb86be9ab7b2d487d55497bc2ae96977b275fe7f03f72a6293c5"
+      },
+      "draws": 100,
+      "triangles": 308074,
+      "newDraws": 0,
+      "newTriangles": 0,
+      "colorPixelsAbove2": 195784,
+      "colorPeak": 87
+    },
+    "dalvay-facing-mansion-across-named-lake": {
+      "rgbaPNG": {
+        "before": "ab6aebe7558836eec0f5232923a1ead3157fc9c1287a4090dbe03d4eb39c97d9",
+        "middle": "47168248ab4f6dd72a3a14488b08cf1d9325f98263e43b0bf15f66e49adb2400",
+        "after": "ab6aebe7558836eec0f5232923a1ead3157fc9c1287a4090dbe03d4eb39c97d9"
+      },
+      "draws": 101,
+      "triangles": 316198,
+      "newDraws": 0,
+      "newTriangles": 0,
+      "colorPixelsAbove2": 209047,
+      "colorPeak": 107
+    },
+    "dalvay-lake-side": {
+      "rgbaPNG": {
+        "before": "fa90276eeb04180a00a8f9bc22245bce8a9d18265a6b3f8bdfad28c4571b4994",
+        "middle": "304aaa6dd7b62563098c95a39fc5592ead0fdcc1ba72c308b8e4301841fde6ea",
+        "after": "fa90276eeb04180a00a8f9bc22245bce8a9d18265a6b3f8bdfad28c4571b4994"
+      },
+      "draws": 26,
+      "triangles": 272115,
+      "newDraws": 0,
+      "newTriangles": 0,
+      "colorPixelsAbove2": 13067,
+      "colorPeak": 67
+    }
+  }
+}

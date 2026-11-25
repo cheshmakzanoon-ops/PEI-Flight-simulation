@@ -1,0 +1,67 @@
+{
+  "method": "Actual active GPU game geometry N112. Exact clipped vertices for all 7,507 full 4m continuous interpolation-support cells, including any dry-bias or edge variation. No new real-world/survey Z and no claim of corrected water height. Coverage includes whole support cells even below the 0.001 alpha threshold, no fitted coefficients.",
+  "positionAndIndexSha256": {
+    "positionSHA256": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+    "indexSHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+    "position2SHA256": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+    "index2SHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "uniqueCompleteCells": 7507,
+  "uniqueSourceTris": 135,
+  "probeXZ": [
+    9933,
+    9517
+  ],
+  "physicalAtProbe": [
+    {
+      "tile": "17-13",
+      "realTriangle": 140,
+      "YatReadXYM": 3.331476789161144,
+      "normalY": 0.9999786964900998,
+      "triangleWorld": [
+        [
+          9901.175095372288,
+          3.5063636302948,
+          9499.219922735814
+        ],
+        [
+          9901.175095372288,
+          3.1816885471343994,
+          9551.55219812644
+        ],
+        [
+          9955.577194981663,
+          3.3959739208221436,
+          9499.219922735814
+        ]
+      ]
+    }
+  ],
+  "rangesM": {
+    "everyRealMaskCellAllSlopes": {
+      "n": 39408,
+      "min": 2.119999885559082,
+      "max": 3.5063636302948
+    },
+    "signedNearHorizontal": {
+      "n": 39408,
+      "min": 2.119999885559082,
+      "max": 3.5063636302948
+    },
+    "within4mOfDecodedXZ": {
+      "n": 48,
+      "min": 3.305474101196043,
+      "max": 3.3644097978968905
+    },
+    "within20mOfDecodedXZ": {
+      "n": 604,
+      "min": 3.229386310669389,
+      "max": 3.482369192657873
+    },
+    "vertexBoundsEvenWhenOnlySmallFractionQualifies": {
+      "n": 29619,
+      "min": 2.119999885559082,
+      "max": 3.5063636302948
+    }
+  }
+}

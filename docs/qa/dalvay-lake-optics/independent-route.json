@@ -1,0 +1,53 @@
+{
+  "sourceNeutralRun": {
+    "id": "dalvay-lake-coastal-pass",
+    "name": "Dalvay Lake \u00b7 coastal pass",
+    "region": "Queens County",
+    "lon": -63.07337348670973,
+    "lat": 46.42729933695014,
+    "heading": 182.1,
+    "height": 110,
+    "note": "Start over the Gulf and fly south toward Dalvay-by-the-Sea and Dalvay Lake. Virtual sightseeing only."
+  },
+  "defaultUnchanged": "cavendish",
+  "actualFpsSteps": 5833,
+  "sampleTimeSec": [
+    0,
+    64.80000000000706
+  ],
+  "closestOriginalManorCentroidAfterS": 26.711111111112732,
+  "closestManorM": 0.24783856165655196,
+  "rawBilinearMaskAtLeast0p001": [
+    {
+      "seconds": [
+        32.6555555555581,
+        33.37777777778044
+      ],
+      "southOfManorM": [
+        311.9873257439631,
+        349.89087683826983
+      ],
+      "horizontalPolylineM": 37.903552018225255,
+      "samples": 66
+    }
+  ],
+  "planarGroundBeneathTrackAlsoPassesV7FeatherCutoff": [
+    {
+      "seconds": [
+        32.72222222222478,
+        33.35555555555821
+      ],
+      "southOfManorM": [
+        315.4860813592277,
+        348.7246018709902
+      ],
+      "horizontalPolylineM": 33.23852132214427,
+      "samples": 58
+    }
+  ],
+  "named1987LakeIntersectionLengthM": 102.7792424775623,
+  "minimumActualFlightClearanceM": 110,
+  "originalCodeRemainsFlyingUnstalled": true,
+  "first165mPastHouseActuallyInCore": false,
+  "scope": "Ground under stock simulated track, not actual visible screen pixels, pilot telemetry or current real shoreline. Sample interval endpoints quantized to stock 90 Hz. Game clearance is from the unchanged simulated contact surface."
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "dalvay-facing-mansion-across-named-lake-close",
+    "pose": {
+      "site": "dalvay-facing-mansion-across-named-lake",
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9.0,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 486.9045274653363,
+      "nearAgl": 22.0,
+      "dist": 486.9045274653363,
+      "agl": 22.0
+    },
+    "width": 900,
+    "height": 600,
+    "diag": {
+      "baseH": 5,
+      "eyeY": 24.96624803006169
+    }
+  },
+  {
+    "name": "dalvay-approach-over-named-lake-close",
+    "pose": {
+      "site": "dalvay-approach-over-named-lake",
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 9.0,
+      "east": 0.7026570000904184,
+      "south": 0.7115287346438889,
+      "nearDist": 280.3845063322622,
+      "nearAgl": 33.0,
+      "dist": 280.3845063322622,
+      "agl": 33.0
+    },
+    "width": 900,
+    "height": 600,
+    "diag": {
+      "baseH": 5,
+      "eyeY": 35
+    }
+  },
+  {
+    "name": "dalvay-lake-side-close",
+    "pose": {
+      "site": "dalvay-lake-side",
+      "lon": -63.07337348670973,
+      "lat": 46.41470500130027,
+      "h": 14.0,
+      "east": -0.6427876096865393,
+      "south": 0.766044443118978,
+      "nearDist": 200,
+      "nearAgl": 45,
+      "dist": 200,
+      "agl": 45
+    },
+    "width": 900,
+    "height": 600,
+    "diag": {
+      "baseH": 5,
+      "eyeY": 48
+    }
+  }
+]

@@ -1273,6 +1273,18 @@ export class World {
   return !!p&&!!g&&p.lod===112&&g.visible&&!!g.parent&&!p.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
    !this.grades?.has('8-14')&&g.geometry.index?.count===112*112*6;
  }
+ /** Visual treatment only; both actual original Dalvay near-ground owners must be present together. */
+ dalvayWaterReceivers(){
+  const out:{id:string;mesh:THREE.Mesh;stock:THREE.ShaderMaterial}[]=[];
+  for(const id of ['17-12','17-13']){
+   const t=this.byId.get(id),g=t?.fine;
+   if(!t||!g||t.lod!==112||g.userData.subdiv!==112||!g.visible||g.parent!==this.scene||t.coarse.visible||t.relief||
+      g.userData.localGrade||g.userData.coastalSurvey||this.grades?.has(id)||g.material!==t.local||
+      g.geometry.index?.count!==112*112*6)return;
+   out.push({id,mesh:g,stock:t.local});
+  }
+  return out;
+ }
  /** Own exactly the already visible Standard fine grade at Knight Point. */
  knightGroundReady(){
   const p=this.byId.get('28-14'),g=p?.fine;
