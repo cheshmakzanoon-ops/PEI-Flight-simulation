@@ -42,3 +42,13 @@ compiled cockpit flight covered at least 280 m with the correction active
 and replayed with the stock toggle, using the normal cockpit and pause controls.
 Contains information licensed under the
 [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada).
+
+### Southwest water-coverage check
+
+A separate southwest view revealed a one-pixel opening through the
+existing ocean and land masks. The correction lets the simulator's
+existing level ocean cover that near-zero mask region within the
+already-cleared, fully surveyed span. It does not extend the shoreline
+cut or change any terrain or flight physics. An independent
+2,392-position check found an original water-class return within
+1 m throughout the 1.1 m-wide validation strip. The [matched replay](souris-wet-curtain/water-coverage.json) changes that one pixel only; the original low view remains unchanged.

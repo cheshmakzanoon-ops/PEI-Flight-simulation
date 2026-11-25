@@ -26,6 +26,7 @@ import {DUNE_RELIEF} from '../sim/dune-relief.generated.ts';
 import {provinceFieldOpticsGLSL,type ProvinceFieldStudy} from './province-fields.ts';
 import {fieldPilotGLSL,type FieldPilot} from './fields-pilot.ts';
 import {meadowGLSL} from './meadow-optics.ts';
+import {SOURIS_STOCK_WATER_TIE} from './souris-wet-curtain-pins.ts';
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
 import {admitPondTiles,bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
@@ -149,7 +150,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  const foam=nearshoreFoam?'chooseNearshoreFoam(q,uv,shore,t,dist,n,foamFootprint,foamPixelM,foamDX,foamDY,extent.zw,coverMap)':
   foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)';
  return fp+skyFn+shoreFoamGLSL+(foamDetail||nearshoreFoam?brokenShoreFoamGLSL:'')+(baywalk?baywalkLandGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(nearshoreFoam?nearshoreFoamGLSL+nearshoreFoamRouterGLSL(foamDetail):'')+(openRipples?openWaterRippleGLSL:'')+`
- uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent;
+ uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent; uniform float sourisWaterTie;
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
  #include <logdepthbuf_fragment>
@@ -208,7 +209,14 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  float foamPixelM=length(fwidth(q));
  float foamFootprint=.69*fwidth(shore)+.42*foamPixelM;
  ${nearshoreFoam?'vec2 foamDX=dFdx(q),foamDY=dFdy(q);':''}
- if(shore>=0.)discard;
+ // Bounded shoreline tie on the existing ocean plane: the level water
+ // is evidenced even when land and water both discard a rounded zero.
+ if(shore>=0.){
+  if(sourisWaterTie>.5&&shore<=${SOURIS_STOCK_WATER_TIE.maxOldDistance}&&
+     p.x>=${SOURIS_STOCK_WATER_TIE.west}&&p.x<=${SOURIS_STOCK_WATER_TIE.east}&&
+     abs(p.z-${SOURIS_STOCK_WATER_TIE.centreZ})<${SOURIS_STOCK_WATER_TIE.halfWidth})shore=${SOURIS_STOCK_WATER_TIE.restoredDistance};
+  else discard;
+ }
  float shallows=smoothstep(-175.,-7.,shore);
  vec3 deep=mix(vec3(.025,.073,.084),vec3(.080,.185,.163),shallows*.80);
  ${lake?`
@@ -526,6 +534,7 @@ type KingsCrownStage={owner:Patch;stock:THREE.Mesh;measured:THREE.Mesh;morph:Kin
 type StMarysProposedGround=Readonly<{mesh:THREE.Mesh;gradeId:string;bounds:readonly [number,number,number,number];inChangedSupport:(x:number,z:number)=>boolean}>;
 interface Patch { relief?:ActiveRelief; id:string;i:number;j:number;lod:number;seams?:string;local:THREE.ShaderMaterial;status:'idle'|'loading'|'ready'|'missing'|'uncovered';retryAt?:number;failures?:number;detail?:THREE.Texture;detailSince?:number;coarse:THREE.Mesh;fine?:THREE.Mesh; x0:number;z0:number;w:number;d:number; }
 export class World {
+ readonly sourisWaterTie={value:0};
  private readonly pinnedPastureDetail=new WeakSet<THREE.Texture>();
  private shoreFaces:THREE.Mesh[]=[];
  private legacyShore?:LegacyShoreCurtains;
@@ -707,6 +716,7 @@ export class World {
       southLakeFrame:{value:new THREE.Vector4(...plan.worldAnchorXZ,...plan.rotationCS)},
       southLakeRect:{value:new THREE.Vector4(a,b,1/(c-a),1/(d-b))}};
    }
+   oceanMaterial.uniforms={...oceanMaterial.uniforms,sourisWaterTie:this.sourisWaterTie};
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
    ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
    this.mat=make(landFrag(false));

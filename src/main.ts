@@ -689,7 +689,7 @@ async function run(){
     camera.position.lerp(eye,1-Math.exp(-delta*7));aim.lerp(tgt,1-Math.exp(-delta*10));
   }
   snap=false;camera.up.copy(up);camera.lookAt(aim);camera.updateMatrixWorld();
-  groundY.copy(aircraft.root.position);world.update(camera.position,time);sourisShoreline?.update(camera.position);foliage?.update(camera.position,time,ui.mode!=='crash');rustico?.update(camera.position);
+  groundY.copy(aircraft.root.position);world.update(camera.position,time);sourisShoreline?.update(camera.position);world.sourisWaterTie.value=sourisShoreline?.isActive()?1:0;foliage?.update(camera.position,time,ui.mode!=='crash');rustico?.update(camera.position);
   if(rusticoSoil){
    const active=!!rustico?.state.visible&&world.groundGradeInstalled(RUSTICO_GRADE.id);
    world.rusticoSoilStrength.value=Number(active);

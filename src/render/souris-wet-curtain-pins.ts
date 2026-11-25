@@ -28,3 +28,11 @@ export const SOURIS_WET_CURTAIN = {
     }
   ]
 } as const;
+
+
+/** Verified level water along the already-cleared complete span, not the
+ * adjacent stock interval or the partially supported western end. */
+export const SOURIS_STOCK_WATER_TIE=Object.freeze({
+ west:72711.7578125,east:72759.359375,centreZ:16952.8828125,
+ halfWidth:.55,maxOldDistance:.18,restoredDistance:-.06,
+});

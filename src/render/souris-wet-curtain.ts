@@ -16,6 +16,7 @@ export class SourisWetCurtain {
     this.scene=scene;
     this.decodedCover=decodedCover;
   }
+  isActive(){return this.active;}
   get state(){
     return {
       proof:this.proof,active:this.active,

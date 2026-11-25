@@ -1,0 +1,85 @@
+{
+  "beforeCommit": "f5470f97ca8f06e351e3947c321df7de6b1f3156",
+  "renderer": "Chromium/SwiftShader full actual world, no frame rate claim",
+  "ordinary": {
+    "over-water-southwest-close": {
+      "changed": 1,
+      "visible": 1,
+      "beyondWorldRect": 0,
+      "oldSHA": "fa4f936883698b5c8b403fd5ea0c91f418b6c6a2a27c4bbc2b6cf99ed5ee5bf3",
+      "newSHA": "305b8ce12add14da7d025b109b810aeb1947073e81828e5dc69e8eec175412fb",
+      "draw": [
+        44,
+        44
+      ],
+      "triangles": [
+        254927,
+        254927
+      ],
+      "errors": []
+    },
+    "souris-low-breakwater-close": {
+      "changed": 0,
+      "visible": 0,
+      "beyondWorldRect": 0,
+      "oldSHA": "8dee3cbb1cb40077c03a21b3b44adc362d3f5ce5840e52be072435278edebe15",
+      "newSHA": "8dee3cbb1cb40077c03a21b3b44adc362d3f5ce5840e52be072435278edebe15",
+      "draw": [
+        33,
+        33
+      ],
+      "triangles": [
+        236497,
+        236497
+      ],
+      "errors": []
+    }
+  },
+  "forcedSky": {
+    "controlVisible": 165686,
+    "exactDefectXY": [
+      345,
+      278
+    ],
+    "magentaPrior": [
+      255,
+      0,
+      255
+    ],
+    "newWater": [
+      120,
+      148,
+      156
+    ],
+    "nothingAddedOutsideStock": 0
+  },
+  "pass": true,
+  "originalPointCloudXYProof": {
+    "register": "d665ee0e0ee9a2dae7ca1e6836a44394196a6c0b00c86d3ad43c3bd61187437f",
+    "n": 2392,
+    "checkedSourceClass9MaxM": 0.8837640976259284,
+    "checkedSourceClass2MinM": 8.858089727284781,
+    "checkedAllCoastsMinM": 12.184152766602384,
+    "conservativeSourceClass9MaxM": 0.9969011826157761,
+    "conservativeSourceClass2MinM": 8.744952642294933,
+    "conservativeAllCoastsMinM": 12.071015681612536,
+    "pass": true
+  },
+  "compiledSimulatorReplay": {
+    "actualMovedM": 281.2931463565731,
+    "groundClearanceM": 67.8743211525057,
+    "targetDistanceM": 351.1518704416398,
+    "errors": [],
+    "proofRequests": 0,
+    "controls": [
+      "Cockpit",
+      "Pause"
+    ],
+    "optionalDiagnostic": {
+      "proof": "ready",
+      "active": true,
+      "stockQuadsAffected": 4,
+      "stockTrianglesRemoved": 4
+    }
+  }
+}

@@ -4,7 +4,7 @@ import {BufferAttribute,BufferGeometry,Mesh,Scene} from 'three';
 import {standardSourisShoreline,standardPrinceSurveyRoof,standardOpenRipplesRequested} from '../src/app/scenery-profile.ts';
 import {planSourisWetCurtainCut} from '../src/render/souris-wet-curtain-geometry.ts';
 import {SourisWetCurtain} from '../src/render/souris-wet-curtain.ts';
-import {SOURIS_WET_CURTAIN as pin} from '../src/render/souris-wet-curtain-pins.ts';
+import {SOURIS_STOCK_WATER_TIE as tie,SOURIS_WET_CURTAIN as pin} from '../src/render/souris-wet-curtain-pins.ts';
 
 test('retire only Standard’s identified Souris stroke, without switching other peers',()=>{
  const q=(s:string)=>new URLSearchParams(s);
@@ -14,6 +14,12 @@ test('retire only Standard’s identified Souris stroke, without switching other
  assert(standardOpenRipplesRequested(q('stockSourisShoreline')));
  for(const x of ['scenery=detail','stockSourisShoreline','legacyShoreArcs','inlandRelief','surveyRelief'])
   assert(!standardSourisShoreline(q(x)),x);
+});
+test('zero-depth water tie is confined to the previously authenticated complete span',()=>{
+ const exact=pin.quads.find(q=>q.x0===tie.east&&q.x1===tie.west&&q.z0===tie.centreZ&&q.z1===tie.centreZ);
+ assert(exact);assert.equal(exact.copies,2);assert(!('keepWestOfEasting' in exact));
+ assert.equal(tie.east-tie.west,47.6015625);assert.equal(tie.halfWidth*2,1.1);
+ assert(tie.maxOldDistance<.2);assert(tie.restoredDistance<0);
 });
 const keptEast=[72806.9609375,-.14,16952.8828125,72759.359375,-.14,16952.8828125,72806.9609375,.72,16952.8828125,
  72806.9609375,.72,16952.8828125,72759.359375,-.14,16952.8828125,72759.359375,.72,16952.8828125];
@@ -58,9 +64,9 @@ test('runtime restores shared stock when leaving and reapplies only its own exac
  const camera={x:72732,y:62,z:16950};
  runtime.update({x:0,y:61,z:0});assert.equal(checks,0);
  runtime.update(camera);await Promise.resolve();runtime.update(camera);
- assert.equal(runtime.state.active,true);assert.equal(runtime.state.stockTrianglesRemoved,4);assert.equal(checks,1);
+ assert(runtime.isActive());assert.equal(runtime.state.active,true);assert.equal(runtime.state.stockTrianglesRemoved,4);assert.equal(checks,1);
  const active=m.geometry;m.geometry=g;runtime.update(camera);assert.strictEqual(m.geometry,active);
- runtime.update({...camera,y:595});assert.strictEqual(m.geometry,g);assert.equal(runtime.state.active,false);
+ runtime.update({...camera,y:595});assert.strictEqual(m.geometry,g);assert(!runtime.isActive());assert.equal(runtime.state.active,false);
  runtime.update(camera);assert.strictEqual(m.geometry,active);assert.equal(checks,1);
  runtime.dispose();assert.strictEqual(m.geometry,g);assert.equal(scene.children.length,1);
 });
