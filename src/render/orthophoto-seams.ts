@@ -8,7 +8,10 @@ const plans=[
  {first:'5-2',second:'5-3',axis:'z',edge:3,nsha:'0ad5621e0c876450d5f192b7f153631c02ea492a23a9a48ce91d70725ccbf751',ssha:'6b92f4c4e98f915b5636b1827e7ce9cf94abd5fea8656580916ccac7ba301e36'},
  {first:'10-12',second:'11-12',axis:'x',edge:11,nsha:'aec5292f13fd5424f9881eb174e484b92313a885ac415b444640f298f633f65e',ssha:'0872113e73cb6ca8a442ffc6b57c10c66e38e820f5b0e577bc6ecf3c78e55688'},
 ] as const;
-type Plan=(typeof plans)[number];
+const tracadie={first:'18-12',second:'18-13',axis:'z',edge:13,
+ nsha:'c7d2837de536fcbfbe8cba81ce5117f82b7d94f14ba9e883662bb62b77db1615',
+ ssha:'7bad9c6a684790d28c193a1e23d679d158b07fd090f4e18c019df5b77579c6ee'} as const;
+type Plan=(typeof plans)[number]|typeof tracadie;
 type LiveOwner={detail?:T.Texture;detailSince?:number;lod:number;status:string};
 type Receipt={uploaded:boolean;id:string;sha:string};
 type Pair={
@@ -29,13 +32,14 @@ function sample(plan:Plan){
  const combined=eastWest?'vec2(.5+crossTexel*.25,detailUV.y)':'vec2(detailUV.x,.5-crossTexel*.25)';
  return `
   if(orthoRowsGain>0.){
+   ${plan.first==='18-12'?'float localRange=1.-smoothstep(205.,330.,distance(cameraPosition,p));':'float localRange=1.;'}
    float crossTexel=(vuv.${cross}*${bound}. - ${plan.edge}.)*640.;
    float flank=640.*min(detailUV.${along},1.-detailUV.${along});
-   if(abs(crossTexel)<1.25&&flank>3.){
+   if(localRange>0.&&abs(crossTexel)<1.25&&flank>3.){
     vec2 dx=du*640.,dy=dv*640.;
     float rho2=dot(dx,dx)+dot(dy,dy);
     if(rho2<.81){
-     float w=(1.-smoothstep(.3025,.81,rho2))*(1.-smoothstep(.55,1.25,abs(crossTexel)))*smoothstep(3.,5.,flank);
+     float w=localRange*(1.-smoothstep(.3025,.81,rho2))*(1.-smoothstep(.55,1.25,abs(crossTexel)))*smoothstep(3.,5.,flank);
      vec3 canonical=textureLod(orthoSharedRows,${combined},0.).rgb;
      col=mix(col,canonical,w*orthoRowsGain);
     }
@@ -48,12 +52,13 @@ export class OrthophotoSeams{
  private readonly pairs:Pair[];
  private readonly renderer:T.WebGLRenderer;
  private readonly base:T.Texture;
- constructor(renderer:T.WebGLRenderer,base:T.Texture){
+ constructor(renderer:T.WebGLRenderer,base:T.Texture,scope:'study'|'tracadie'='study'){
   this.renderer=renderer;this.base=base;
-  this.pairs=plans.map(plan=>({plan,gain:{value:0},map:{value:base},owners:new Set(),uploads:0,errors:0}));
+  const active=scope==='tracadie'?[tracadie]:plans;
+  this.pairs=active.map(plan=>({plan,gain:{value:0},map:{value:base},owners:new Set(),uploads:0,errors:0}));
  }
  readonly verifiedDetail=(id:string,sha:string,texture:T.Texture)=>{
-  if(!plans.some(p=>p.first===id&&p.nsha===sha||p.second===id&&p.ssha===sha))return;
+  if(!this.pairs.some(({plan:p})=>p.first===id&&p.nsha===sha||p.second===id&&p.ssha===sha))return;
   const img=texture.image as ImageBitmap|undefined;
   if(!img||img.width!==P||img.height!==P||texture.flipY||texture.premultiplyAlpha||texture.colorSpace!==T.NoColorSpace||
       texture.format!==T.RGBAFormat||texture.type!==T.UnsignedByteType)return;

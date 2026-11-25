@@ -1,0 +1,310 @@
+{
+  "format": "pei-tracadie-aerial-join/v1",
+  "baseline": "de4ddfa3f0e5d1417d7d8318f3269834137e9145",
+  "viewport": [
+    840,
+    540
+  ],
+  "north": "18-12",
+  "south": "18-13",
+  "northSHA256": "c7d2837de536fcbfbe8cba81ce5117f82b7d94f14ba9e883662bb62b77db1615",
+  "southSHA256": "7bad9c6a684790d28c193a1e23d679d158b07fd090f4e18c019df5b77579c6ee",
+  "renderer": "Chromium/SwiftShader",
+  "tests": 424,
+  "productionBuild": "passed",
+  "worldVerifier": "passed",
+  "viewGates": {
+    "tracadie": {
+      "old": {
+        "draws": 85,
+        "tris": 327119
+      },
+      "art": {
+        "draws": 85,
+        "tris": 327119
+      },
+      "idA": {
+        "draws": 85,
+        "tris": 327119
+      },
+      "idB": {
+        "draws": 85,
+        "tris": 327119
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "pixelGate": {
+        "changed": 23222,
+        "over2": 8069,
+        "outside": 0,
+        "mask": 69186
+      },
+      "edgeContrast": {
+        "samples": 140,
+        "medianOld": 10.503254413604736,
+        "medianArt": 2.145238995552063,
+        "oldP90": 28.925853919982913,
+        "artP90": 6.853090381622318
+      }
+    },
+    "reciprocal": {
+      "old": {
+        "draws": 30,
+        "tris": 256017
+      },
+      "art": {
+        "draws": 30,
+        "tris": 256017
+      },
+      "idA": {
+        "draws": 30,
+        "tris": 256017
+      },
+      "idB": {
+        "draws": 30,
+        "tris": 256017
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "pixelGate": {
+        "changed": 43677,
+        "over2": 26276,
+        "outside": 0,
+        "mask": 112189
+      },
+      "edgeContrast": {
+        "samples": 130,
+        "medianOld": 8.289480686187744,
+        "medianArt": 1.720991849899292,
+        "oldP90": 29.874855422973642,
+        "artP90": 4.168148374557496
+      }
+    },
+    "high": {
+      "old": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "art": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "idA": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "idB": {
+        "draws": 20,
+        "tris": 252995
+      },
+      "gain": 1,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "18-13",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "mask": 0
+      }
+    },
+    "offsite": {
+      "old": {
+        "draws": 111,
+        "tris": 260156
+      },
+      "art": {
+        "draws": 111,
+        "tris": 260156
+      },
+      "idA": {
+        "draws": 111,
+        "tris": 260156
+      },
+      "idB": {
+        "draws": 111,
+        "tris": 260156
+      },
+      "gain": 0,
+      "exact": true,
+      "slots": [
+        {
+          "id": "18-12",
+          "loaded": false,
+          "status": "idle",
+          "lod": 8,
+          "n": 0
+        },
+        {
+          "id": "18-13",
+          "loaded": false,
+          "status": "idle",
+          "lod": 8,
+          "n": 0
+        }
+      ],
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "mask": 0
+      }
+    }
+  },
+  "compiledFlight": [
+    {
+      "mode": "standard",
+      "site": "queens-coastal-grass",
+      "movesM": 120.3898205717953,
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": true,
+          "gain": 1,
+          "bytes": 10240,
+          "uploads": 1,
+          "errors": 0
+        }
+      ],
+      "modifiedPackBytes": [],
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "mode": "stock",
+      "site": "queens-coastal-grass",
+      "movesM": 120.3898205717953,
+      "detail": {
+        "ready": 13,
+        "loading": 0,
+        "missing": 0,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "seam": null,
+      "modifiedPackBytes": [],
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "mode": "corrupt-north",
+      "site": "queens-coastal-grass",
+      "movesM": 120.97337928511229,
+      "detail": {
+        "ready": 12,
+        "loading": 0,
+        "missing": 1,
+        "uncovered": 0,
+        "retrying": 0
+      },
+      "seam": [
+        {
+          "edge": "18-12 / 18-13",
+          "resident": false,
+          "gain": 0,
+          "bytes": 0,
+          "uploads": 0,
+          "errors": 0
+        }
+      ],
+      "modifiedPackBytes": [
+        1491896
+      ],
+      "pauseSucceeded": true,
+      "errors": []
+    }
+  ]
+}

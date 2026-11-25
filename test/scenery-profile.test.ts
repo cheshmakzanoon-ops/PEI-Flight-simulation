@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -142,4 +142,15 @@ test('standard forest floor loads only in ordinary scenery and does not alter ex
  for(const q of ['?forestFloor','?scenery=detail','?woodlandView'])assert.equal(profile(q),true,q);
  assert.equal(profile('?scenery=detail&stockForestFloor'),false);
  assert.equal(profile('?stockForestFloor=0'),false);
+});
+
+
+test('standard Tracadie imagery join leaves Detail and separately locked variants alone',()=>{
+ const q=sceneryOptions;
+ assert.equal(standardTracadieOrtho(q('?diagnostics&qa=1')),true);
+ assert.equal(standardTracadieOrtho(q('?stockForestFloor=0')),true);
+ for(const flag of ['scenery=detail','stockTracadieOrtho','orthophotoSeamStudy','forestFloor','surveyRelief','buildingShadows'])
+  assert.equal(standardTracadieOrtho(q('?'+flag)),false,flag);
+ assert.equal(forestFloorProfile(q('?stockTracadieOrtho')),'standard');
+ assert.equal(standardOpenRipplesRequested(q('?stockTracadieOrtho')),true);
 });
