@@ -12,10 +12,10 @@ function lampRoster(scene:Scene,camera:Camera){
 }
 /** Three r187 WebGL's public detached compile plus its narrowly pinned
  * currentProgram handle. A never-submitted program cannot discard stock. */
-export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene):OlearyLink{
+export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:2|5=5,recheckUnattached=false):OlearyLink{
  return async(group,signal)=>{
   try{
-   if(REVISION!=='187'||signal.aborted||group.parent||group.children.length!==5||typeof r.compile!=='function')return;
+   if(REVISION!=='187'||signal.aborted||group.parent||group.children.length!==draws||typeof r.compile!=='function')return;
    const gl=r.getContext(),env=scene.environment,envMapping=env?.mapping,fog=scene.fog,layer=camera.layers.mask,
     out=r.outputColorSpace,tone=r.toneMapping,shadows=r.shadowMap.enabled,shadowType=r.shadowMap.type,clip=r.localClippingEnabled;
    const sameRenderPath=()=>!gl.isContextLost()&&r.getContext()===gl&&r.getRenderTarget()===null&&
@@ -26,10 +26,10 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene):Ol
    const meshes=group.children as Mesh[];
    if(meshes.some(q=>!q.isMesh||Array.isArray(q.material)||!q.material.visible||q.material.transparent))return;
    const expected=new Set(meshes.map(q=>q.material as Material));
-   if(expected.size!==5)return;
+   if(expected.size!==draws)return;
    const lighting=lampRoster(scene,camera);
    const compiled=r.compile(group,camera,scene);
-   if(compiled.size!==5||Array.from(expected,m=>compiled.has(m)).some(q=>!q))return;
+   if(compiled.size!==draws||Array.from(expected,m=>compiled.has(m)).some(q=>!q))return;
    const records=Array.from(expected,m=>[m,(r.properties.get(m) as {currentProgram?:Program}).currentProgram] as const);
    if(records.some(([,p])=>!p?.program||typeof p.isReady!=='function'))return;
    const samePrograms=()=>records.every(([m,p])=>(r.properties.get(m) as {currentProgram?:Program}).currentProgram===p);
@@ -42,9 +42,14 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene):Ol
     if(!records.every(([,p])=>p!.isReady())){await pause();continue;}
     if(!records.every(([,p])=>gl.isProgram(p!.program)&&gl.getProgramParameter(p!.program,gl.LINK_STATUS)===true))return;
     if(!pending()||performance.now()>=deadline)return;
-    const current=lampRoster(scene,camera);
-    if(current.length!==lighting.length||current.some((refs,i)=>refs.some((v,j)=>v!==lighting[i][j])))return;
-    return ()=>sameRenderPath()&&samePrograms();
+    const sameLighting=()=>{
+     const current=lampRoster(scene,camera);
+     return current.length===lighting.length&&!current.some((refs,i)=>refs.some((v,j)=>v!==lighting[i][j]));
+    };
+    if(!sameLighting())return;
+    // The optional shared actors still await source/cover hashes after link.
+    // Recheck the exact light roster once again before their first attachment.
+    return ()=>sameRenderPath()&&samePrograms()&&(!recheckUnattached||!!group.parent||sameLighting());
    }
   }catch{/** A missing/incompatible renderer or a rejected linked program leaves stock. */}
  };

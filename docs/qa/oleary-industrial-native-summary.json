@@ -1,0 +1,62 @@
+{
+  "registeredCameras": {
+    "bytesSha256": "18b5a50c69e284f488f7d234b96364241262a885613765e9d44ee85bbd645a68",
+    "width": 900,
+    "height": 600,
+    "verticalFovDegrees": 53
+  },
+  "independentGates": {
+    "originalStockVertices": 32049,
+    "industrialStartInclusive": 13392,
+    "industrialEndExclusive": 13449,
+    "stationStartInclusive": 26343,
+    "stationEndExclusive": 26385,
+    "industrialOnlyIndexCount": 31992,
+    "stationOnlyIndexCount": 32007,
+    "bothIndexCount": 31950,
+    "programsBrokenRoof": {
+      "cladding": true,
+      "roof": false
+    },
+    "brokenRoofRestoresExactStationOnlyPNG": true,
+    "nodeTests": 545
+  },
+  "frozenRealFrames": {
+    "groundward": {
+      "eye": [
+        -78742.04835592373,
+        33.47321207885616,
+        -23125.150759257253
+      ],
+      "target": [
+        -78758.82035421391,
+        37.00991296716432,
+        -23086.64491459239
+      ],
+      "protected": 406310,
+      "changed": 124143,
+      "protectedChanged": 0,
+      "alphaChanged": 0,
+      "industrialAndStation": "b090144c2645f4a61ce08883d28467529c899ede26abfc81c1902a23d30f273d",
+      "stationOnly": "1d6ea3841099589f5fccb1d170648b04a048986a8369c32b463e3d0c36e82982"
+    },
+    "raisedReciprocal": {
+      "eye": [
+        -78775.59235250409,
+        50.119998931884766,
+        -23048.13906992753
+      ],
+      "target": [
+        -78758.82035421391,
+        37.60991296716432,
+        -23086.64491459239
+      ],
+      "protected": 428514,
+      "changed": 104605,
+      "protectedChanged": 0,
+      "alphaChanged": 0,
+      "industrialAndStation": "eddcd04154632f51c63170dbb439ba46be8873250ac147c3f5428bfee8c37b96",
+      "stationOnly": "1a521af51b207585ad261affa61ee0b175a8c4744cb4dd69a4d577d265bdfb07"
+    }
+  }
+}

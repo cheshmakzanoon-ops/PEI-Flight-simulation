@@ -265,6 +265,18 @@ export function olearyExteriorRequested(q:URLSearchParams){
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 
+/** Detached close-view study only. Existing Standard and q431 URLs use the
+ * original path, and no diagnostic query field can set either model's geometry. */
+export function olearyIndustrialStudyRequested(q:URLSearchParams){
+ if(!q.has('diagnostics')||!q.getAll('scenery').every(v=>v===''||v==='standard')||!standardComparisonQuery(q))return false;
+ const values=q.getAll('qa'),raw=values[0];
+ if(values.length!==1||!raw||raw.length>2048)return false;
+ try{
+  const v=JSON.parse(raw);
+  return !!v&&typeof v==='object'&&!Array.isArray(v)&&Object.hasOwn(v,'olearyIndustrial192')&&v.olearyIndustrial192===true;
+ }catch{return false;}
+}
+
 /** Optional, documentary Queens County manor exterior; never a new lake or terrain owner. */
 export function dalvayExteriorRequested(q:URLSearchParams){
  return q.has('dalvayExteriorStudy')&&!q.has('stockDalvayExterior')&&

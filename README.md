@@ -102,7 +102,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 In Prince County, the **Summerside waterfront · low pass** shows a [measured raised boardwalk and seven roof sections at Spinnakers’ Landing](docs/qa/summerside-standard-wharf.md), alongside the railway station and survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md), [north of downtown](docs/qa/summerside-north-roof.md), and [in western downtown](docs/qa/summerside-west-roofs.md) in Standard. Beside Water Street, [one survey-cleared storefront site](docs/qa/summerside-water-open-ground.md) removes an unsupported tree without changing nearby vegetation.
 
-In western PEI, **O’Leary · railway station pass** is a fictional low sightseeing departure. Add `?departure=oleary-railway-low&olearyExteriorStudy` to see the [original station exterior](docs/qa/oleary-station-exterior.md), with a dated reference ledger and matched close and distant views.
+In western PEI, **O’Leary · railway station pass** is a fictional low sightseeing departure. Add `?departure=oleary-railway-low&olearyExteriorStudy` to see the [original station exterior](docs/qa/oleary-station-exterior.md), with a dated reference ledger and matched close and distant views. The [neighboring industrial building study](docs/qa/oleary-industrial-context.md) separately replaces one oversized stock block with its surveyed shed-and-tower form.
 
 For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch. Near Main Street, Standard scenery uses the [survey-backed exterior at 77 Main](docs/qa/souris-east-exterior.md) in place of the old flat block.
 

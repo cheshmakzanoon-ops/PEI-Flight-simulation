@@ -1,4 +1,4 @@
-import type {BufferAttribute,Mesh} from 'three';
+import type {BufferAttribute,BufferGeometry,Mesh} from 'three';
 import type {Cover} from '../../sim/cover.ts';
 import type {Terrain} from '../../sim/terrain.ts';
 import {project} from '../../sim/geo.ts';
@@ -53,10 +53,18 @@ export function olearySiteAllows(terrain:Terrain,sha:string|undefined,cover:Cove
 export function olearyCloseCamera(x:number,y:number,z:number){
  return Number.isFinite(x)&&Number.isFinite(y)&&Number.isFinite(z)&&y>=OLEARY.groundOrigin-8&&y<OLEARY.groundOrigin+385&&Math.hypot(x-OLEARY.xz[0],z-OLEARY.xz[1])<1850;
 }
-export async function olearyOriginalSource(raw:ArrayBuffer,count:number,row:unknown,owner:Mesh){
+export const OLEARY_INDUSTRIAL={
+ ordinal:192,row:'24f19ac68d7a481e82d3ddef20fea57e846fc849e328afa4861ef469728fae6f',
+ proof:{vertices:32049,start:13392,end:13449}
+} as const;
+export type OlearyDrawProof=Readonly<{vertices:number;start:number;end:number}>;
+
+/** Never feed a masked geometry back into source authentication. Both
+ * separately registered features borrow the same original full draw. */
+export async function olearySourceDraw(raw:ArrayBuffer,count:number,row:unknown,g:BufferGeometry,a:unknown,
+  {proof:p,row:rowPin}:Readonly<{proof:OlearyDrawProof;row:string}>){
  try{
-  const g=owner.geometry,p=OLEARY.proof,a=owner.userData.beaconTriangles;
-  if(raw.byteLength!==OLEARY.bytes||count!==OLEARY.rows||!a||a[0]!==p.start||a[1]!==p.end||
+  if(raw.byteLength!==OLEARY.bytes||count!==OLEARY.rows||!Array.isArray(a)||a.length!==2||a[0]!==p.start||a[1]!==p.end||
    g.index||g.groups.length||g.drawRange.start!==0||g.drawRange.count!==Infinity||Object.keys(g.attributes).length!==6)return false;
   const encoded=JSON.stringify(row);if(!encoded||encoded.length>1400)return false;
   const digests=await Promise.all([olearySha(raw),olearySha(new TextEncoder().encode(encoded)),...Object.entries(attrs).map(async([name,[n,want]])=>{
@@ -65,9 +73,12 @@ export async function olearyOriginalSource(raw:ArrayBuffer,count:number,row:unkn
    const digest=await olearySha(viewBytes(v.array));
    return digest===want||(name==='uv'&&digest===nativeBrowserUV);
   })]);
-  return digests[0]===OLEARY.chunk&&digests[1]===OLEARY.row&&digests.slice(2).every(p=>p===true);
+  return digests[0]===OLEARY.chunk&&digests[1]===rowPin&&digests.slice(2).every(p=>p===true);
  }catch{return false;}
 }
+export const olearyOriginalSource=(raw:ArrayBuffer,count:number,row:unknown,owner:Mesh)=>
+ olearySourceDraw(raw,count,row,owner.geometry,owner.userData.beaconTriangles,OLEARY);
+
 type GradeOrigin={readonly x:number;readonly z:number};
 /** Exact same association as the real World.patch(3,7,...), in this engine. */
 export function olearyGradeCenter(t:Terrain):GradeOrigin{
