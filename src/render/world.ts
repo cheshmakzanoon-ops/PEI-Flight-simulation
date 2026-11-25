@@ -592,6 +592,7 @@ export class World {
  readonly coastalBenches:readonly string[]; readonly shelteredWater:readonly string[];
  readonly buildingShadows?:BuildingShadows;
  private readonly floor?:ForestFloor;
+ private readonly eligibleForestFloor=new Set<string>();
  readonly shoreToneGain={value:1};
  readonly nearshoreFoamMode={value:0};
  readonly nearshoreLocalGain={value:1};
@@ -610,7 +611,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -628,7 +629,7 @@ export class World {
   if(king?.grid.spec===KINGS_DRY_CROWN)this.kingsGrade=king;
   this.capeShadow=northCapeWind?new NorthCapeShadow():undefined;
    if(bankGround&&cover.basin)this.bankGround=new NativeBank(terrain,bankGround);
-   if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL);
+   if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL,showFloor==='standard'?this.cover:undefined);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
    const montagueGround=T.coastalGrids.find(g=>g.spec.id===MONTAGUE_GROUND_ID);
@@ -720,6 +721,10 @@ export class World {
     if(i<0||i>=nx||j<0||j>=nz)return true;
     if(T.surveyGrids.some(g=>g.spec.id!==MONTAGUE_GROUND_ID&&g.spec.tileX===i&&g.spec.tileZ===j))return true;
     const x=T.left+i*w,z=T.top+j*d;
+    if(showFloor==='standard'&&(i+'-'+j===KINGS_CROWN_TILE||i+'-'+j===POINT_PRIM.terrainTile||
+        grassCoast?.uniforms(i,j)||duneSand?.uniforms(i,j)||
+        basin?.intersects(x,z,x+w,z+d)||bowley?.intersects(x,z,x+w,z+d)||
+        montague?.intersects(x,z,x+w,z+d)))return true;
     return !!(harbour?.intersects(x,z,x+w,z+d)||sourisLighting?.intersects(x,z,x+w,z+d));
    };
    const coastSoilUniforms=rusticoSoil?{...makeDrySoilUniforms(rusticoSoil),drySoilMix:this.rusticoSoilStrength}:undefined;
@@ -757,6 +762,7 @@ export class World {
     const bowleyLocal=!!localPond;
     const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
     const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
+    if(showLocalFloor&&this.floor?.standard)this.eligibleForestFloor.add(i+'-'+j);
     const guard=showLocalFloor?neighbours.reduce((m,[x,z],bit)=>protectsFloor(i+x,j+z)?m|(1<<bit):m,0):0;
     const floorUniforms=showLocalFloor?{...this.floor!.uniforms,floorTileGuard:{value:guard},
        floorTileBounds:{value:new THREE.Vector4(x0,z0,x0+w,z0+d)},
@@ -1401,9 +1407,14 @@ export class World {
   const art=this.floor;
   if(art){
    let near=false;
-   if(art.state==='idle'&&pos.y-this.terrain.atlasElevation(pos.x,pos.z)<122){
+   if(art.state==='idle'&&art.shouldProbe(clock)&&pos.y-this.terrain.atlasElevation(pos.x,pos.z)<122){
     for(const x of [-55,0,55])for(const z of [-55,0,55]){
-     if(this.cover.sample(this.terrain,pos.x+x,pos.z+z)===10&&this.cover.distance(this.terrain,pos.x+x,pos.z+z)>122)near=true;
+     const xx=pos.x+x,zz=pos.z+z;
+     if(art.standard){
+      const uv=this.terrain.uv(xx,zz),i=Math.floor(uv[0]*WORLD_COLS),j=Math.floor(uv[1]*WORLD_ROWS);
+      if(!this.eligibleForestFloor.has(i+'-'+j))continue;
+     }
+     if(this.cover.sample(this.terrain,xx,zz)===10&&this.cover.distance(this.terrain,xx,zz)>122)near=true;
     }
    }
    art.update(near);

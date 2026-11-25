@@ -1,0 +1,299 @@
+{
+  "format": "pei-forest-floor-standard-v1",
+  "actualBaseline": "970fe33054be94ddd53f93415b20fc9a90f730eb",
+  "isolatedGeographyBase": "1f5c6a1fc4e9d069c365d9480f4c4d6504b5adff",
+  "isolatedGeographyNote": "The canopy finish shipped after these fixed geographic views. Combined actual renderer and production flight were also verified with canopy finish.",
+  "unchangedAssetsTotalBytes": 989030,
+  "renderer": "Chromium/SwiftShader",
+  "tests": 423,
+  "worldVerifier": "passed",
+  "verified": {
+    "queens-understory": {
+      "before": {
+        "calls": 96,
+        "tris": 334646
+      },
+      "after": {
+        "calls": 96,
+        "tris": 334646
+      },
+      "mask": {
+        "calls": 96,
+        "tris": 334646
+      },
+      "mask2": {
+        "calls": 96,
+        "tris": 334646
+      },
+      "gain": 0.702191780823959,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 297154,
+        "over2": 295852,
+        "max": 53,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "state": "ready"
+    },
+    "prince-needle": {
+      "before": {
+        "calls": 50,
+        "tris": 352360
+      },
+      "after": {
+        "calls": 50,
+        "tris": 352360
+      },
+      "mask": {
+        "calls": 50,
+        "tris": 352360
+      },
+      "mask2": {
+        "calls": 50,
+        "tris": 352360
+      },
+      "gain": 0.9297260274013428,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 124277,
+        "over2": 122934,
+        "max": 38,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "state": "ready"
+    },
+    "kings-approach": {
+      "before": {
+        "calls": 42,
+        "tris": 342249
+      },
+      "after": {
+        "calls": 42,
+        "tris": 342249
+      },
+      "mask": {
+        "calls": 42,
+        "tris": 342249
+      },
+      "mask2": {
+        "calls": 42,
+        "tris": 342249
+      },
+      "gain": 0.12123287671232877,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 96885,
+        "over2": 93043,
+        "max": 41,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "state": "ready"
+    },
+    "queens-high-control": {
+      "before": {
+        "calls": 17,
+        "tris": 305215
+      },
+      "after": {
+        "calls": 17,
+        "tris": 305215
+      },
+      "mask": {
+        "calls": 17,
+        "tris": 305215
+      },
+      "mask2": {
+        "calls": 17,
+        "tris": 305215
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": [],
+      "state": "idle"
+    },
+    "east-coast-control": {
+      "before": {
+        "calls": 267,
+        "tris": 309189
+      },
+      "after": {
+        "calls": 267,
+        "tris": 309189
+      },
+      "mask": {
+        "calls": 267,
+        "tris": 309189
+      },
+      "mask2": {
+        "calls": 267,
+        "tris": 309189
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": [],
+      "state": "idle"
+    },
+    "prince-protected-control": {
+      "before": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "after": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "mask": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "mask2": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": [],
+      "state": "idle"
+    }
+  },
+  "combined": {
+    "queens-understory": {
+      "before": {
+        "calls": 97,
+        "tris": 341177
+      },
+      "after": {
+        "calls": 97,
+        "tris": 341177
+      },
+      "mask": {
+        "calls": 97,
+        "tris": 341177
+      },
+      "mask2": {
+        "calls": 97,
+        "tris": 341177
+      },
+      "gain": 0.7056164383582056,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 297155,
+        "over2": 295820,
+        "max": 54,
+        "outside": 0
+      },
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "state": "ready"
+    },
+    "prince-protected-control": {
+      "before": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "after": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "mask": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "mask2": {
+        "calls": 39,
+        "tris": 374514
+      },
+      "gain": 0,
+      "exact": true,
+      "pixels": {
+        "n": 456192,
+        "change": 0,
+        "over2": 0,
+        "max": 0,
+        "outside": 0
+      },
+      "resources": [],
+      "state": "idle"
+    }
+  },
+  "combinedFlight": [
+    {
+      "option": "standard",
+      "site": "queens-woodland-view",
+      "movementM": 58.02451372590745,
+      "floor": "ready",
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "startY": 78.57121492846692,
+      "afterY": 78.86352353704044,
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "option": "stock",
+      "site": "queens-woodland-view",
+      "movementM": 56.2305040709577,
+      "floor": null,
+      "resources": [],
+      "startY": 78.57749594286553,
+      "afterY": 78.87138273265602,
+      "pauseSucceeded": true,
+      "errors": []
+    },
+    {
+      "option": "corrupt",
+      "site": "queens-woodland-view",
+      "movementM": 56.828759409123386,
+      "floor": "failed",
+      "resources": [
+        "duff-1.webp",
+        "duff-2.webp"
+      ],
+      "startY": 78.57749594286553,
+      "afterY": 78.8753218084763,
+      "pauseSucceeded": true,
+      "errors": []
+    }
+  ]
+}

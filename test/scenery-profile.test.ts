@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -131,4 +131,15 @@ test('open-water offshore envelopes admit their cores but not freshwater or shel
   const {x,z}=project(lon,lat);
   assert.equal(openWaterRippleEnvelope(x,z),0);
  }
+});
+
+
+test('standard forest floor loads only in ordinary scenery and does not alter explicit preview ownership',()=>{
+ const profile=(s:string)=>forestFloorProfile(sceneryOptions(s));
+ for(const q of ['', '?scenery=standard&diagnostics', '?qa=1&departure=kings-woodland'])assert.equal(profile(q),'standard',q);
+ for(const q of ['?surveyRelief','?buildingShadows','?northRusticoLighthouseStudy','?seatedRoads','?departure=a&unknown=1'])
+  assert.equal(profile(q),false,q);
+ for(const q of ['?forestFloor','?scenery=detail','?woodlandView'])assert.equal(profile(q),true,q);
+ assert.equal(profile('?scenery=detail&stockForestFloor'),false);
+ assert.equal(profile('?stockForestFloor=0'),false);
 });

@@ -246,6 +246,16 @@ export function standardDuneGrassRequested(q:URLSearchParams){
  return !SCENERY_REVIEWS.some(r=>q.has(r.flag))&&
   !['duneReliefStudy','pointPrimStudy','regionalCanopyStudy','orthophotoSeamStudy','nearshoreFoamStudy','legacyShoreArcs','seatedForestShadows','canopyLight','shoreToneStudy','kingsDryCrownStudy'].some(k=>q.has(k));
 }
+/** Ordinary close forest only. An explicit floor request retains the
+ * historical preview, including in the bundled Detail profile. */
+export function forestFloorProfile(q:URLSearchParams):false|true|'standard'{
+ if(q.has('stockForestFloor'))return false;
+ if(q.has('forestFloor'))return true;
+ const mode=q.get('scenery');
+ if(mode&&mode!=='standard')return false;
+ const common=['scenery','diagnostics','departure','qa','stockCanopyLight','stockRegionalCanopy','stockOpenRipples'];
+ return [...q.keys()].every(k=>common.includes(k))?'standard':false;
+}
 /** Appearance-only default. Preserve separately locked woodland, relief,
  * architecture and shadow comparisons unless directional light is explicit. */
 export function canopyLightRequested(q:URLSearchParams){
@@ -335,7 +345,7 @@ export function standardOpenCoastRequested(q:URLSearchParams){
  * supported keys are dispatch/telemetry only; none select a different surface. */
 function ordinarySceneryKeysOnly(q:URLSearchParams){
  const mode=q.get('scenery');if(mode&&mode!=='standard')return false;
- return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa'||k==='stockOpenRipples');
+ return [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='qa'||k==='stockOpenRipples'||k==='stockForestFloor');
 }
 export function standardPanmurePastureRequested(q:URLSearchParams){
  return ordinarySceneryKeysOnly(q);

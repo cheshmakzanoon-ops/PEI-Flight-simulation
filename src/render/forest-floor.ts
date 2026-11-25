@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import {FOREST_FLOOR_ASSETS} from './forest-floor.generated.ts';
+import type {Cover} from '../sim/cover.ts';
+import {verifyDecodedCover} from '../sim/cover-proof.ts';
+import {CANOPY_FENCE} from './canopy-fence.generated.ts';
 
 const assetHash=async(data:ArrayBuffer)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),b=>b.toString(16).padStart(2,'0')).join('');
 async function readFloor(base:string,a:typeof FOREST_FLOOR_ASSETS[number]){
@@ -15,13 +18,29 @@ async function readFloor(base:string,a:typeof FOREST_FLOOR_ASSETS[number]){
 export class ForestFloor{
  readonly uniforms={forestFloorA:{value:null as THREE.Texture|null},forestFloorB:{value:null as THREE.Texture|null},forestFloorMix:{value:0},forestFloorDepth:{value:1}};
  private readonly base:string;
- private mode:'idle'|'loading'|'ready'|'failed'='idle';
+ private mode:'idle'|'checking'|'loading'|'ready'|'failed'='idle';
+ private nextProbe=-Infinity;
+ private readonly source?:Cover;
  private since=0;
- constructor(base:string){this.base=base;}
+ constructor(base:string,source?:Cover){this.base=base;this.source=source;}
+ shouldProbe(clock:number){
+  if(!this.source)return true;
+  if(clock<this.nextProbe)return false;
+  this.nextProbe=clock+.22;return true;
+ }
+ get standard(){return this.source!==undefined;}
  get state(){return this.mode;}
  update(near:boolean,now=performance.now()){
   if(this.mode==='ready'){this.uniforms.forestFloorMix.value=Math.max(0,Math.min(1,(now-this.since)/730));return;}
   if(!near||this.mode!=='idle'||!globalThis.crypto?.subtle||!globalThis.createImageBitmap)return;
+  if(this.source){
+   this.mode='checking';
+   const proof=verifyDecodedCover(this.source);
+   void proof.then(sha=>{if(sha===CANOPY_FENCE.pins.coverDecoded)this.load();else this.mode='failed';},
+                   ()=>{this.mode='failed';});
+  }else this.load();
+ }
+ private load(){
   this.mode='loading';
   void Promise.allSettled(FOREST_FLOOR_ASSETS.map(a=>readFloor(this.base,a))).then(parts=>{
    const [a,b]=parts;
