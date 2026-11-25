@@ -49,6 +49,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockMeadow'))q.delete('meadowTexture');
  if(q.has('stockGravelSurface'))q.delete('gravelSurfaceStudy');
  if(q.has('stockMiscouche'))q.delete('miscoucheCanopyStudy');
+ if(q.has('stockNearshoreFoam'))q.delete('nearshoreFoamStudy');
  if(q.has('coastalOptics')&&!sceneryReviewBlock('coastalOptics',q))
   for(const k of COASTAL_OPTICS_FLAGS)if(!q.has(k))q.set(k,'');
  if(q.has('woodlandView')&&!sceneryReviewBlock('woodlandView',q))for(const key of WOODLAND_SCENERY_FLAGS)if(!q.has(key))q.set(key,'');
@@ -306,4 +307,15 @@ export function standardMiscoucheRequested(q:URLSearchParams){
   !['regionalCanopyStudy','pointPrimStudy','kingsDryCrownStudy','seatedRoads','duneReliefStudy',
     'duneSandDetail','duneGrassSurface','orthophotoSeamStudy','shoreToneStudy','greenGablesBarnReview',
     'gablesGradeReview','cavendishDetail','woodlandCrownBase','northCapeWind'].some(k=>q.has(k));
+}
+
+/** The two vetted open coasts only. Preserve alternative shoreline cohorts. */
+export function standardNearshoreRequested(q:URLSearchParams){
+ if(q.has('stockNearshoreFoam')||q.has('nearshoreFoamStudy'))return false;
+ const layer=q.get('scenery');if(layer&&layer!=='standard')return false;
+ return !SCENERY_REVIEWS.some(row=>q.has(row.flag))&&
+  !['legacyShoreArcs','surveyRelief','inlandRelief','buildingShadows','orthophotoSeamStudy',
+    'shoreToneStudy','basinChannel','basinWharf','pointPrimStudy','regionalCanopyStudy',
+    'cavendishDetail','greenGablesBarnReview','gablesGradeReview',
+    'duneReliefStudy','duneSandDetail','duneGrassSurface','kingsDryCrownStudy','northCapeWind'].some(k=>q.has(k));
 }

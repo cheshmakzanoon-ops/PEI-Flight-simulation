@@ -23,6 +23,8 @@ const v2=(a:readonly number[])=>'vec2('+a.map(decimal).join(',')+')';
 
 export const nearshoreFoamGLSL=/*glsl*/`
  uniform float nearshoreFoamMode;
+ uniform float nearshoreLocalGain;
+ uniform float nearshoreMediumPixelGate;
  vec2 nearshoreFoamDomain(vec2 q,vec2 origin,vec2 tangent,vec2 halfSize){
   vec2 rel=q-origin;vec2 frame=vec2(dot(rel,tangent),dot(rel,vec2(-tangent.y,tangent.x)));
   vec2 reserve=halfSize-abs(frame);
@@ -111,12 +113,16 @@ export function nearshoreFoamRouterGLSL(defaultBroken:boolean){return /*glsl*/`
                           float pixelM,vec2 dx,vec2 dy,vec2 extentSize,sampler2D source){
   bool experiment=nearshoreFoamMode>=1.5;
   bool useBroken=experiment?${defaultBroken?'true':'false'}:nearshoreFoamMode>=.5;
-  if(experiment&&dist<${decimal(NEARSHORE_FOAM_LIMIT)}&&shore<0.&&shore>-${decimal(NEARSHORE_FOAM_DEPTH)}){
+  if(experiment&&nearshoreLocalGain>0.&&dist<${decimal(NEARSHORE_FOAM_LIMIT)}&&shore<0.&&shore>-${decimal(NEARSHORE_FOAM_DEPTH)}){
    vec2 frame=nearshoreFoamFrame(q);
    if(frame.y>0.){
     vec3 depth=nearshoreFoamDepth(uv,extentSize,source);
     float of=depth.x;
-    float gain=frame.y*(1.-smoothstep(245.,${decimal(NEARSHORE_FOAM_LIMIT)},dist))*smoothstep(.06,.67,of)*
+    // The default's narrow crests hand off to the broader inherited look
+    // before one pixel spans too much near-surface water. The previously
+    // released explicit study retains its original optical envelope.
+    float detailWeight=1.-nearshoreMediumPixelGate*smoothstep(.65,1.72,pixelM);
+    float gain=nearshoreLocalGain*detailWeight*frame.y*(1.-smoothstep(245.,${decimal(NEARSHORE_FOAM_LIMIT)},dist))*smoothstep(.06,.67,of)*
        (1.-smoothstep(27.5,${decimal(NEARSHORE_FOAM_DEPTH)},max(-shore,of)));
     if(gain>0.){
      float next=nearshoreFoamArt(frame.x,of,depth.yz,dx,dy,t,n,pixelM);

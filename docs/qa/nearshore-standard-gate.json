@@ -1,0 +1,231 @@
+{
+  "worldBaseline": "d0ed416b11c781b055ec4f03e0e837db2c07fcfa",
+  "unitTestsPassed": 397,
+  "productionBuild": "pass",
+  "worldChecks": "pass",
+  "renderSummary": {
+    "backend": "Chromium SwiftShader",
+    "openViewport": [
+      1120,
+      784
+    ],
+    "protectedViewport": [
+      560,
+      392
+    ],
+    "protect": "Marker support dilated by one pixel. Every protected RGB pixel exact; geometry statistics equal within each paired capture.",
+    "protectedPixelsAcrossFrames": 5580072
+  },
+  "fixedCameras": {
+    "author-basin": [
+      {
+        "clock": 6.0,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 217,
+          "tris": 293798
+        }
+      },
+      {
+        "clock": 6.47,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 217,
+          "tris": 293798
+        }
+      },
+      {
+        "clock": 7.08,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 217,
+          "tris": 293798
+        }
+      }
+    ],
+    "author-queens": [
+      {
+        "clock": 6.0,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 162,
+          "tris": 413529
+        }
+      },
+      {
+        "clock": 6.47,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 167,
+          "tris": 483904
+        }
+      },
+      {
+        "clock": 7.08,
+        "marked": 0,
+        "protected": 219520,
+        "changedAbove2": 0,
+        "maxRGB": 0,
+        "stats": {
+          "draws": 169,
+          "tris": 524228
+        }
+      }
+    ],
+    "prince-close": [
+      {
+        "clock": 6.0,
+        "marked": 227958,
+        "protected": 647728,
+        "changedAbove2": 37080,
+        "maxRGB": 117,
+        "stats": {
+          "draws": 51,
+          "tris": 270018
+        }
+      },
+      {
+        "clock": 6.47,
+        "marked": 227958,
+        "protected": 647728,
+        "changedAbove2": 36465,
+        "maxRGB": 117,
+        "stats": {
+          "draws": 51,
+          "tris": 270018
+        }
+      },
+      {
+        "clock": 7.08,
+        "marked": 227958,
+        "protected": 647728,
+        "changedAbove2": 35241,
+        "maxRGB": 114,
+        "stats": {
+          "draws": 51,
+          "tris": 270018
+        }
+      }
+    ],
+    "kings-close": [
+      {
+        "clock": 6.0,
+        "marked": 102293,
+        "protected": 773256,
+        "changedAbove2": 20742,
+        "maxRGB": 95,
+        "stats": {
+          "draws": 92,
+          "tris": 240224
+        }
+      },
+      {
+        "clock": 6.47,
+        "marked": 102293,
+        "protected": 773256,
+        "changedAbove2": 20221,
+        "maxRGB": 97,
+        "stats": {
+          "draws": 92,
+          "tris": 240224
+        }
+      },
+      {
+        "clock": 7.08,
+        "marked": 102293,
+        "protected": 773256,
+        "changedAbove2": 20155,
+        "maxRGB": 92,
+        "stats": {
+          "draws": 92,
+          "tris": 240224
+        }
+      }
+    ]
+  },
+  "ordinaryCompiledFlights": {
+    "kings": {
+      "site": "kings-coastal-ridge",
+      "state": {
+        "proof": "ready",
+        "gain": 1
+      },
+      "active": true,
+      "flownM": 109.872,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "stock": {
+      "site": "kings-coastal-ridge",
+      "state": null,
+      "active": false,
+      "flownM": 107.534,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "explicit": {
+      "site": "kings-coastal-ridge",
+      "state": null,
+      "active": true,
+      "flownM": 101.104,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "prince": {
+      "site": "prince-open-shore-pass",
+      "state": {
+        "proof": "ready",
+        "gain": 1
+      },
+      "active": true,
+      "flownM": 237.753,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "wrong-cover": {
+      "site": "kings-coastal-ridge",
+      "state": {
+        "proof": "stock",
+        "gain": 0
+      },
+      "active": false,
+      "flownM": 106.365,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "distant": {
+      "site": "charlottetown",
+      "state": {
+        "proof": "cold",
+        "gain": 0
+      },
+      "active": false,
+      "flownM": 108.008,
+      "coverRequests": 1,
+      "errors": []
+    },
+    "detail": {
+      "site": "kings-coastal-ridge",
+      "state": null,
+      "active": false,
+      "flownM": 106.946,
+      "coverRequests": 1,
+      "errors": []
+    }
+  }
+}

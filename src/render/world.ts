@@ -543,6 +543,8 @@ export class World {
  private readonly floor?:ForestFloor;
  readonly shoreToneGain={value:1};
  readonly nearshoreFoamMode={value:0};
+ readonly nearshoreLocalGain={value:1};
+ readonly nearshoreMediumPixelGate={value:0};
  readonly nearshoreFoamArmed:boolean;
  readonly meadowStrength={value:1};
  readonly gravelStrength={value:0};
@@ -557,7 +559,7 @@ export class World {
  private readonly grassStudy?:ProvinceGrassStudy;
  readonly capeShadow?:NorthCapeShadow;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false){
   this.details=new DetailImagery(orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
@@ -622,12 +624,14 @@ export class World {
    const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
    const pondsWithUniforms=ponds.map(pond=>({pond,surfaceUniforms:{...bowleyUniforms(pond),
      bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}}));
-   this.nearshoreFoamArmed=nearshoreFoam&&nearshoreFoamMatches(cover)&&[-64.47,45.94,-61.93,47.1].every((n,i)=>T.spec.bounds[i]===n);
+   this.nearshoreFoamArmed=(standardNearshore||nearshoreFoam&&nearshoreFoamMatches(cover))&&[-64.47,45.94,-61.93,47.1].every((n,i)=>T.spec.bounds[i]===n);
    this.nearshoreFoamMode.value=this.nearshoreFoamArmed?2:foamDetail?1:0;
+   this.nearshoreLocalGain.value=standardNearshore?0:1;
+   this.nearshoreMediumPixelGate.value=Number(standardNearshore);
    const oceanMaterial=make(waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,foamDetail,!!cover.baywalk,this.nearshoreFoamArmed));
    if(cover.wharfToe)oceanMaterial.defines.BASIN_WHARF_TOE=1;
    if(harbour||basin||montague||cover.baywalk)oceanMaterial.uniforms={...uniforms,...harbourUniforms,...basinUniforms,...montagueUniforms,...northCourtUniforms};
-   if(this.nearshoreFoamArmed)oceanMaterial.uniforms={...oceanMaterial.uniforms,nearshoreFoamMode:this.nearshoreFoamMode};
+   if(this.nearshoreFoamArmed)oceanMaterial.uniforms={...oceanMaterial.uniforms,nearshoreFoamMode:this.nearshoreFoamMode,nearshoreLocalGain:this.nearshoreLocalGain,nearshoreMediumPixelGate:this.nearshoreMediumPixelGate};
    this.shelteredWater=southLake?[southLake.plan.id]:[];
    if(southLake){
     const {plan,values}=southLake,[a,b,c,d]=plan.rotatedBoundsXZ;

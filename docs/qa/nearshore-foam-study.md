@@ -1,10 +1,17 @@
-# Open-shore foam study
+# Open-shore foam in Standard
 
-In **Standard**, select **Nearshore surf** under **Optional scenery studies** and apply it, or use `?nearshoreFoamStudy`. Select **Kings County · coastal ridge pass** for an offshore departure near one of the two reviewed reaches. Without the flag, or if the existing decoded
-Cover grid cannot be authenticated, the game uses its previous water shader.
-`?shoreFoamDetail` remains independent: without it, all untreated water
-retains original foam; with it, all untreated water retains the prior
-broken-foam look. The named Detail bundle is unchanged.
+In **Standard**, choose **Prince County · open shore pass** or **Kings
+County · coastal ridge pass** for an offshore departure near one of the
+two reviewed reaches. When the low flight camera approaches either reach
+and the currently loaded Cover grid matches the verified source, short,
+separated breaker groups fade in. Elsewhere the existing Standard broken
+foam remains. No scenery download is added.
+
+Compare with the previous water rendering using `?stockNearshoreFoam`.
+The earlier explicit **Nearshore surf** study under **Optional scenery
+studies** (or `?nearshoreFoamStudy`) keeps its original visibility and
+resolution envelope. A stock flag overrides both. The Detail profile
+and other shoreline compositions retain their existing look.
 
 ## Where this acts
 
@@ -35,7 +42,20 @@ inner wash fade in the same advancing material coordinates. As detail
 shrinks the existing scene pixel derivatives reduce fine aliasing. The
 motion and scale are authored; this is not a wave simulation.
 
-## Evidence
+## Standard QA
+
+[Production flight and image checks](nearshore-standard-gate.json) separate
+which material is selected in an ordinary flight from what its shader
+actually changes in matched rendered frames. The default detail fades
+as its shortest crests become too small to resolve, so a high, distant
+or lower-resolution view can show the previous foam even on an exposed
+shore. Geographic coverage is exactly the two existing bounds, not the
+whole coast. This is not a hardware benchmark or a claim of alias-free
+water, wave forecasting, or physically modelled surf.
+
+![Same-clock views of the previous and updated Standard foam in Prince and Kings](nearshore-standard.webp)
+
+## Earlier explicit study
 
 [Locked native and browser measurements](nearshore-foam-study-fixture.json)
 include a stock/broken/study comparison and six phases of the real
@@ -62,4 +82,4 @@ visible shoreline geometry artifact remain separate.
 
 In the compiled game, stock and the Dispatch opt-in both flew more than 500 m from the Kings coastal ridge departure, entered Cockpit and paused. They loaded exactly the same normal world asset URLs, including one Cover transfer each. A wrong decoded Cover version kept the preview inactive and preserved dispatch. Full-frame browser controls in Queens and high over the Prince reach were pixel-identical to their inherited stock and broken modes at three clocks. All 330 tests, the production build and world checks passed.
 
-Small apparent shimmer can remain in thin crests during camera roll at low resolution. The reprojected optical test found it decreased at higher resolution. The preview is not promoted to the default or advertised as alias-free.
+Small apparent shimmer can remain in thin crests during camera roll at low resolution. The reprojected optical test found it decreased at higher resolution. That explicit preview retains its original behaviour and is not advertised as alias-free.
