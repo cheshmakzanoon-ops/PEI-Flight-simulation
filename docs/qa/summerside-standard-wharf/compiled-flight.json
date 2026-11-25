@@ -1,0 +1,177 @@
+[
+  {
+    "case": "both",
+    "site": "spinnakers-low",
+    "station": true,
+    "deck": true,
+    "deck_http": [
+      200
+    ],
+    "station_http": [
+      200
+    ],
+    "movement_m": 299.248,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 174,
+    "triangles": 387335,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "rail",
+    "site": "spinnakers-low",
+    "station": true,
+    "deck": false,
+    "deck_http": [],
+    "station_http": [
+      200
+    ],
+    "movement_m": 297.563,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 165,
+    "triangles": 366760,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "wharf",
+    "site": "spinnakers-low",
+    "station": false,
+    "deck": true,
+    "deck_http": [
+      200
+    ],
+    "station_http": [],
+    "movement_m": 298.125,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 164,
+    "triangles": 382060,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "stock",
+    "site": "spinnakers-low",
+    "station": false,
+    "deck": false,
+    "deck_http": [],
+    "station_http": [],
+    "movement_m": 291.961,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 154,
+    "triangles": 360661,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "missing",
+    "site": "spinnakers-low",
+    "station": true,
+    "deck": false,
+    "deck_http": [
+      404
+    ],
+    "station_http": [
+      200
+    ],
+    "movement_m": 299.245,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 164,
+    "triangles": 365976,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "corrupt",
+    "site": "spinnakers-low",
+    "station": true,
+    "deck": false,
+    "deck_http": [
+      200
+    ],
+    "station_http": [
+      200
+    ],
+    "movement_m": 299.81,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 163,
+    "triangles": 363427,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "rail-corrupt",
+    "site": "spinnakers-low",
+    "station": false,
+    "deck": true,
+    "deck_http": [
+      200
+    ],
+    "station_http": [
+      200
+    ],
+    "movement_m": 298.688,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 163,
+    "triangles": 379507,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "distant",
+    "site": "cavendish",
+    "station": false,
+    "deck": false,
+    "deck_http": [],
+    "station_http": [],
+    "movement_m": 292.159,
+    "measured_roofs": 0,
+    "ground_m": 12.3694347660529,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.0,
+    "draws": 168,
+    "triangles": 308552,
+    "cockpit_and_pause": true,
+    "errors": []
+  },
+  {
+    "case": "legacy",
+    "site": "spinnakers-low",
+    "station": false,
+    "deck": true,
+    "deck_http": [
+      200
+    ],
+    "station_http": [],
+    "movement_m": 297.567,
+    "measured_roofs": 0,
+    "ground_m": -0.055,
+    "town_wall_profile": null,
+    "device_scale_factor": 1.0,
+    "draws": 164,
+    "triangles": 382034,
+    "cockpit_and_pause": true,
+    "errors": []
+  }
+]

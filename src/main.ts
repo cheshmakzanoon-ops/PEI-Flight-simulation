@@ -1,3 +1,4 @@
+import {standardWharfLoader,standardWharfRequested} from './render/spinnakers-standard.ts';
 import {princeSkyBudget} from './render/prince-roof-sky-budget.ts';
 import {standardPrinceSurveyRoof,standardPrinceRoofContact} from './app/scenery-profile.ts';
 import {PASTURE,PanmurePastureFlight} from './render/panmure-pasture/flight.ts';
@@ -561,6 +562,8 @@ async function run(){
   if(barnStandard)v.enableNearBarn();
   if(sourisEastRequest)v.enableSourisEast(sourisEastRequest,sourisEastShadows);
   if(downtownSceneryCompatible(options))v.enableSummersideRoofCohort();
+  const nearWharf=standardWharfRequested(options)?standardWharfLoader(worldBase,cover,terrain,terrainSha):undefined;
+  if(nearWharf)v.enableStandardWharf(nearWharf);
   return buildings=v;
  }).catch(e=>{warn('Building',e);});
  if(confederationTrail)void Promise.all([roadReady,buildingReady,mappedSidewalks,mappedParking]).then(([r,b,s,p])=>{
@@ -782,7 +785,7 @@ async function run(){
   gravelSurface?.update(camera.position,eyeAGL,playing,roads,gravelDrySeat,diagnostic);
   const barnAgl=barnStandard&&(f.x-BARN.gameXZ[0])**2+(f.z-BARN.gameXZ[1])**2<2700**2?
    f.y-world.visualGroundHeight(f.x,f.z):undefined;
-  buildings?.update(f.x,f.z,barnAgl);
+  buildings?.update(f.x,f.z,barnAgl,f.y);
   pointPrim?.after(f,camera.position,retainPointPrim);
   if(paintGeorgetownSun){
    const hasChurch=!!buildings?.stDavidsActive;

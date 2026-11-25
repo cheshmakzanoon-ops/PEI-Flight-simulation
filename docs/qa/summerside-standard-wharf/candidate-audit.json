@@ -1,0 +1,239 @@
+{
+  "version": {
+    "src/app/scenery-profile.ts": "dd6a51df5f3f6a1f3c2024399866c64dba90170803eb7a7c4b961419369da163",
+    "src/render/authenticated-owner-cohort.ts": "a5a0174868d9ebf4bef27d6ec02867271dc33ad1d221b6009fd8a0908f3ec526",
+    "src/render/buildings.ts": "77ee1aeb3eddcdcbb7a79d26d73b6e818772b957303a07154753961fe922c72b",
+    "src/render/spinnakers-standard.ts": "41facd541e69cb5ae5da2a45337bff967b7c6cc31295dcb1a1800f249fb7493f",
+    "src/render/spinnakers-deck.ts": "7ae0f3c3cd7aeb323a8b184c261077681b27d1aeacd76358e12923b8d6ef0d02",
+    "src/main.ts": "fe270a1678bea6e6e54c26c6ca36c2853a13305d204146642cba38a17a11aa5e"
+  },
+  "selectorMatrix": {
+    "columns": [
+      "base",
+      "wharfVeto",
+      "stationVeto"
+    ],
+    "rows": {
+      "standardPrinceSurveyRoof": [
+        true,
+        true,
+        true
+      ],
+      "standardSourisShoreline": [
+        true,
+        true,
+        true
+      ],
+      "coastalMarshRequested": [
+        true,
+        true,
+        true
+      ],
+      "standardTracadieOrtho": [
+        true,
+        true,
+        true
+      ],
+      "standardCountyOrtho": [
+        true,
+        true,
+        true
+      ],
+      "standardInlandOrtho": [
+        true,
+        true,
+        true
+      ],
+      "standardRegionalWind": [
+        true,
+        true,
+        true
+      ],
+      "forestFloorProfile": [
+        "standard",
+        "standard",
+        "standard"
+      ],
+      "dalvayWaterRequested": [
+        true,
+        true,
+        true
+      ],
+      "dalvayExteriorRequested": [
+        true,
+        true,
+        true
+      ],
+      "dalvayGlazingRequested": [
+        true,
+        true,
+        true
+      ],
+      "seacowExteriorRequested": [
+        true,
+        true,
+        true
+      ],
+      "sourisKnightRequested": [
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "modeMatrix": {
+    "": [
+      true,
+      true
+    ],
+    "&scenery=detail": [
+      false,
+      false
+    ],
+    "&scenery=future-unknown": [
+      false,
+      true
+    ],
+    "&scenery=standard&scenery=detail": [
+      false,
+      true
+    ],
+    "&spinnakersPreview": [
+      false,
+      false
+    ],
+    "&buildingShadows": [
+      false,
+      false
+    ],
+    "&stockSpinnakersDeck": [
+      false,
+      true
+    ],
+    "&stockStationExterior": [
+      true,
+      false
+    ],
+    "&harbourShoreline": [
+      true,
+      true
+    ],
+    "&stockSpinnakersDeck&spinnakersPreview": [
+      false,
+      false
+    ]
+  },
+  "snapshots": {
+    "none": {
+      "original": true,
+      "vertexBuffer": 69906,
+      "sha": null
+    },
+    "wharf": {
+      "original": false,
+      "vertexBuffer": 69663,
+      "sha": "dd53bdd1f83103e2184a0e705caf96fea755a6e415f94648a2be491082e50808"
+    },
+    "both": {
+      "original": false,
+      "vertexBuffer": 69615,
+      "sha": "ed7dd6f62206c1511a0f83c919b427efcc77b905aef30ac96cb6e5506d1e1a64"
+    },
+    "station": {
+      "original": false,
+      "vertexBuffer": 69858,
+      "sha": "4fb3b7900558cb45468ab5434cf33ea3a917502e35f5a6d6250418dd8d133cbb"
+    },
+    "noneAgain": {
+      "original": true,
+      "vertexBuffer": 69906,
+      "sha": null
+    }
+  },
+  "lateRange": {
+    "fetchBeganAfterOutside": false,
+    "lateAssembly": {
+      "installedHiddenOutside": false,
+      "stockRestored": true,
+      "requests": 1,
+      "disposals": 1,
+      "outsideStarted": false,
+      "startedAfterLateReturn": false
+    },
+    "closeAfterReturn": 69663,
+    "stockRestore": true
+  },
+  "lateEviction": {
+    "requestedLate": 1,
+    "disposedLate": 1
+  },
+  "coverage": {
+    "good": {
+      "offered": true,
+      "requests": 1,
+      "loaded": true,
+      "ms": 79.10257200000001,
+      "draws": 10,
+      "triangles": 21444,
+      "disposed": [
+        "geometry",
+        "shadeTexture",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material",
+        "geometry",
+        "material"
+      ]
+    },
+    "missing": {
+      "offered": true,
+      "requests": 1,
+      "loaded": false,
+      "ms": 18.33507199999997,
+      "disposed": []
+    },
+    "corrupt": {
+      "offered": true,
+      "requests": 1,
+      "loaded": false,
+      "ms": 63.22606500000006,
+      "disposed": []
+    },
+    "wrongCoverDeclaration": {
+      "offered": false,
+      "requests": 0,
+      "loaded": false,
+      "ms": 0.002312999999958265,
+      "disposed": []
+    },
+    "wrongTerrain": {
+      "offered": false,
+      "requests": 0,
+      "loaded": false,
+      "ms": 0.0018230000000585278,
+      "disposed": []
+    },
+    "changedCertifiedCover": {
+      "offered": true,
+      "requests": 0,
+      "loaded": false,
+      "ms": 69.38829099999998,
+      "disposed": []
+    }
+  },
+  "hardFacts": "CPU only. Draw submission, program links/failures, pixel scope, actual flight rendering and GPU timings are not evaluated."
+}

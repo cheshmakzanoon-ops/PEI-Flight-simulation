@@ -37,6 +37,7 @@ export function weatheredTimber(opt:'deck'|'edge'|'post'|'rail',boardShade?:THRE
  const isDeck=opt==='deck',vertical=opt==='edge'||opt==='post';
  const mat=new THREE.MeshStandardMaterial({color:isDeck?deckBase:opt==='edge'?0x6b6052:opt==='post'?0x504638:0x938e80,
   metalness:0,roughness:isDeck?.91:.95,side:THREE.DoubleSide});
+ if(boardShade)mat.userData.wharfOwnedTint=boardShade;
  mat.customProgramCacheKey=()=>`spinnakers-timber-${opt}-${boardShade?'seat':'a'}`;
  mat.onBeforeCompile=(sh)=>{
   if(boardShade)sh.uniforms.wharfShade={value:boardShade};

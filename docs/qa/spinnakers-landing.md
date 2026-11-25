@@ -1,6 +1,6 @@
 # Summerside: Spinnakers’ Landing
 
-Add `?spinnakersPreview` in the simulator and fly to **46.38913° N, 63.78736° W**. This preview replaces two stock building records that rendered as tall boxes in the water. It shows a raised wooden boardwalk with an upper and lower platform, seven fitted adjacent roof sections, and original aged timber, roofing, glazing and trim. The rest of the downtown waterfront remains base-atlas scenery.
+Fly to **46.38913° N, 63.78736° W**. The [tested Standard integration](summerside-standard-wharf.md) locally replaces two stock shells that otherwise look like tall boxes in the water, keeping the existing railway station. The explicit historical `?spinnakersPreview` path remains available for the North Baywalk and other legacy combinations. It shows a raised wooden boardwalk with an upper and lower platform, seven fitted adjacent roof sections, and original aged timber, roofing, glazing and trim. The rest of the downtown waterfront remains base-atlas scenery.
 
 Choose **Summerside waterfront · low pass** in the simulator’s departure menu for a direct offshore approach.
 
@@ -24,7 +24,7 @@ the flag absent, the exact package, and a corrupt package. A second
 [compiled departure](spinnakers-landing-combined-flight.json) activates
 the Basin Head, Montague and coastline options together with this model.
 The water
-under the pier stays unchanged, and default and corrupt cases preserve
+under the pier stays unchanged, and the original captured stock and corrupt cases preserve
 the base exterior. Triangle counts are not device performance.
 
 ## Reproduce the local geometry checks
@@ -37,7 +37,7 @@ python tools/qa/spinnakers-launch.py --checkout . --chromium /path/to/chromium \
   --out /tmp/pei-spinnakers-launch.json
 ```
 
-The decoded boardwalk is 56,204 B (42,282 B transfer). It is only requested with the preview flag. The cover fingerprint and wet placement must match; both legacy building records must also match the registered atlas/tile, exact rings, and source heights. These replacements enter and leave with the existing city tile. A failed, corrupt, or incompatible pack leaves the old atlas intact.
+The decoded boardwalk is 56,204 B (42,282 B transfer). It is requested when Standard admits the nearby signed owner tile, or through the historical explicit preview. The cover fingerprint and wet placement must match; both legacy building records must also match the registered atlas/tile, exact rings, and source heights. These replacements enter and leave with the existing city tile. A failed, corrupt, or incompatible pack leaves the old atlas intact.
 
 | Actual submitted mesh check | Result |
 |---|---:|

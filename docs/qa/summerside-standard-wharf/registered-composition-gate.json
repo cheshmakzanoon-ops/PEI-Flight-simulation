@@ -1,0 +1,158 @@
+{
+  "protocol": "Summerside q032001 shared station/wharf visual ownership native preregistration/1",
+  "before": "Evidence locks the attached baseline from actual #238, no candidate code/test/frame was used to choose geometry or screen exceptions.",
+  "sourceCommit": "e51cbf05b6f131dfb9c065ef183c15c1c962fbda",
+  "wharf": "Exact same signed deck and seven measured shell model definitions (or off); no map change, no existing business identity, no new survey data.",
+  "cpuSpanAndDigestReceiptSHA256": "b040cf2665be55fcc4cb72b5a028227dc1c8ff031ff21d863363b56605e4f719",
+  "cpuStockWetNonidentityProjectionSHA256": "3183a0d6bee335ee552965c975d34b3cce6811cf54b26a4908cdeeeb8de9fac5",
+  "trueFormalViews": {
+    "countyApproach": {
+      "name": "summerside-approach",
+      "rawStockSHA256": "ab5fd741081a01b2931a2c6d61876cdc762ef7dbd93cf0fc5203ada641b975be",
+      "priorReceiptSHA256": "80694e3ef5b62e1fc0de8497d52050a0f4f20a59c2816c24eaaefe8a89b4de68",
+      "size": [
+        900,
+        600
+      ],
+      "pose": {
+        "site": "summerside",
+        "lon": -63.790211,
+        "lat": 46.392695,
+        "h": 12.68,
+        "east": 0.68,
+        "south": 0.74,
+        "nearDist": 44,
+        "nearAgl": 44,
+        "dist": 650,
+        "agl": 120
+      },
+      "fixedEyeXZY": {
+        "x": -44866.3204436194,
+        "z": 12406.752980701422,
+        "baseH": 7.983448275881528,
+        "eyeY": 120.99634345661718
+      },
+      "stockExtraLocalFacts": {
+        "summersideStation": true,
+        "spinnakersDeck": false,
+        "summersideMeasuredRoofs": 4,
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "aerialPerspective": true,
+        "openRipples": true,
+        "nearshoreFoamStudy": false
+      }
+    },
+    "stationStreetExisting": {
+      "name": "curb-close",
+      "size": [
+        600,
+        400
+      ],
+      "sourceHarnessAndLockSHA256": "f3d30d585fb8b4b0fc0341630857979f32badd79427e2fd86fe2f919ad58a31f",
+      "existingNativeScopeSHA256": "8f48f50862ac095aaa79ed2fff849b62393a62509c5435c403e66a501c97c809",
+      "pose": {
+        "lon": -63.78850717,
+        "lat": 46.39088167,
+        "h": 10.0,
+        "east": -0.57,
+        "south": 0.829,
+        "dist": 56,
+        "agl": 12
+      },
+      "qualification": "Pin exact stock-derived baseH/eyeY before enabling either new actor."
+    },
+    "nearWharfPreCandidate": {
+      "name": "wharf-independent-close",
+      "size": [
+        900,
+        600
+      ],
+      "pose": {
+        "lon": -63.787304981817,
+        "lat": 46.389145047264,
+        "h": 7.5,
+        "east": 0.51,
+        "south": 0.86,
+        "dist": 138,
+        "agl": 26
+      },
+      "qualification": "Game-only sightline derived from the shipped deck anchor and existing Harbor station compass bearing, not a new photo fit. Do not move if it becomes obscured."
+    },
+    "farDefault": {
+      "departure": "cavendish",
+      "qualification": "force both requested, cold boot and flight; no wharf/station optional requests outside their gated scope. Native dispatch spinnakers-low can never be blocked by unresolved optional deck bytes."
+    }
+  },
+  "signedSourceControls": {
+    "tile": "q032001",
+    "count": 399,
+    "wharfRows": [
+      240,
+      315
+    ],
+    "stationRow": 163,
+    "WonlySpans": [
+      [
+        51228,
+        51429
+      ],
+      [
+        65946,
+        65988
+      ]
+    ],
+    "StationSpan": [
+      30618,
+      30666
+    ],
+    "standardStockVertices": 69906,
+    "legacyStockVertices": 69894,
+    "storage": "signed Uint32 original indices; no Uint16 overflow, no regenerating or splitting the six shared attributes. Preserve all legacy and regional/hard-coded authored owners. Any extra unsupported attribute, generated count or signed span mismatch fails closed to full stock."
+  },
+  "matchedA_B": {
+    "standardQuad": [
+      "none",
+      "only wharf",
+      "only station",
+      "both"
+    ],
+    "nextStates": [
+      "both→only wharf→both→only station→none→both in same tick/service; each complementary actor commits/restores atomically, never hide stock without resident authored replacement."
+    ],
+    "trianglesOnOriginalOwner": {
+      "none": 23302,
+      "only wharf": 23221,
+      "only station": 23286,
+      "both": 23205
+    },
+    "retain": [
+      "Six buffers byte- and BufferAttribute-identical; same tile world transform/material/side and normal/index type. Independently read actual GPU live attribute and element uploads, keep monotonic triangles and exact sorted void. No unaffected AEB row, detached object, measured roof, same station context, field/tree/road or light changes. All four measured downtown roofs (3 on q032001, 1 q03200300), identical root omission and water/shade mode from #238."
+    ],
+    "visual": "Render exact same tick stock/both/separate without scene switches, then use authenticated all-primitive convex projected extents: zero exterior RGBA beyond union +2px for both; pairwise wharf toggling cannot change station-only pixels except proved overlap/occlusion. Keep no unrelated wet source changes. Reference screenshot is always a simulation, not contemporary waterfront accuracy."
+  },
+  "nonidentities": {
+    "screenCandidatesRestoredNoScope": [
+      18,
+      51,
+      75,
+      331,
+      376,
+      389,
+      395
+    ],
+    "basis": "Cold broad register yields independent wholly negative cover samples and named source ranges, but wet classification does not tell whether a structure should stand on a true pier; no blanket deletion, flattening or shore edit."
+  },
+  "faultsAndLifecycle": [
+    "Genuine local only request: profile, signed source chunk/full tile/span and compatible unchanged cover before mounting; no blocking of stock decode, one bounded optional loader per immutable alive owner/cold demand; verify exact official pack and all seven shell build. Resolve failing art/seat independently. Missing/wrong-size/bitflip/malformed/late/evicted wharf states equal station-only RGBA; analogous station fault equals wharf-only; both faults equal none. Test still-readable but different q032001 bytes (no candidate owner) separately from entirely undecodable baseline."
+  ],
+  "coldBound": [
+    "Distant fresh visit to Cavendish with wharf/station enabled must not transfer wharf/station optional module/asset. Legacy preflight only opt-in compatibility, not necessary on pass-through. Retain exact site motion/terrain/watch unchanged across zoom departure and late re-entry. Measure bounded frame expansions/caches but no FPS claim."
+  ],
+  "lifecycle": "Single q032001 owner arbiter, no concurrent geometry writers; complete unindexed original canonical state, three lazy complement views at one owner lifetime. Never dispose shared BufferAttribute view independently while live; detach groups/shadow proxies then dispose at eviction. Exact active↔inactive mask switching only when necessary. On eviction, auth loss, controller death, guard failure or foreign geometry, actors withdraw without destroying/replacing another system’s current mesh. Asynchronous stages must capture original identity and generation/alive; no late reattach.",
+  "distinctShadowProfile": "Ordinary Standard keeps original shadow system state. Old explicit station-with-buildingShadows assessment still renders as before; keep legacy north baywalk/Detail coupled to its preflight/cover and route, never auto-upgrade. If any new co-active shadow variant exists, users must see identical unaffected casters: neighbor caster uses exact currently allowed joint complement; station authored caster replaces precisely station when active; wharf adds no unverified caster. On geometry/index visibility change issue leaseOwnerChanged in same frame, prove exact shadow atlas bytes outside true projected caster footprint, cache invalidation and repeat draw stability, plus failed/fallback same. Never silently inherit old emitted shadow silhouette or zero unrelated shadows.",
+  "noGlobalPhysicsChange": "Exact cover, shoreline water under all five original deck controls, stock upper/lower terrain/query and material diagnostics; no ground profile/model Y changes apart from existing isolated visual wharf art. Real compiled Dispatch/Begin/Cockpit/Wide chase/Pause positive and fault controls under both/none and distant.",
+  "watch": "Do not use historical legacy paired frames as same-profile byte identity; they implicitly flipped narrow settings, sometimes changing the entire image. Device/sunset, AGL, preview and unknown switches require explicit fail-closed profile handling; do not advertise 1:1 city redevelopment or universal anti-alias counts."
+}

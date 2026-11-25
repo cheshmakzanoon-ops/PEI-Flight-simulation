@@ -1,3 +1,4 @@
+import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWharfSpans,type WharfLoader,type WharfSpan} from './spinnakers-standard.ts';
 import type {DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
 import {DalvaySocket} from './dalvay-exterior-socket.ts';
@@ -194,7 +195,9 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
 export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
 type LocalExteriorReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 export type RailwayReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
-type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:ReturnType<typeof authenticatedOwnerVariant>;neighborsCaster:THREE.Mesh};
+type OwnerSlot=ReturnType<typeof authenticatedOwnerVariant>;
+type Cohort=NonNullable<ReturnType<typeof authenticatedOwnerCohort>>;
+type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:OwnerSlot;neighborsCaster:THREE.Mesh};
 export type PointPrimDrawLease=Readonly<{present:()=>boolean;active:()=>boolean;set:(visible:boolean)=>boolean;release:()=>void}>;
 export type PointPrimVerifiedOwner=Readonly<{source:PointPrimStock;present:()=>boolean;
  mount:(group:THREE.Group)=>PointPrimDrawLease|undefined}>;
@@ -250,6 +253,36 @@ export class Buildings {
  private readonly tryStDavids?:LocalExteriorReview;
  private stDavids?:Omit<RailwayVariant,'art'|'neighborsCaster'>&{art:StDavidsArt;neighborsCaster?:THREE.Mesh};
  private pendingStDavids?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ private standardWharf?:WharfLoader;
+ private wharfOwner?:{owner:THREE.Mesh;mask:Cohort;started:boolean;near:boolean;
+  art?:{variant:NonNullable<OwnerSlot>;dispose:()=>void}};
+ enableStandardWharf(load:WharfLoader){this.standardWharf=load;}
+ private syncStandardWharf(x:number,y:number,z:number){
+  const w=this.wharfOwner,load=this.standardWharf;
+  if(!w||!load)return;
+  w.near=nearStandardWharf(x,y,z,w.art?.variant.visible);
+  if(w.art){w.art.variant.sync(w.near);return;}
+  if(!w.near||w.started)return;
+  const stock=w.mask.stockForProof();
+  if(!stock)return;
+  w.started=true;
+  const current=()=>this.wharfOwner===w&&w.owner.parent===this.scene&&this.wanted.has(SPINNAKERS_TILE);
+  let deferred=false;
+  const eligible=()=>{
+   const valid=current()&&w.near&&w.mask.stockForProof()===stock;
+   if(!valid)deferred=true;
+   return valid;
+  };
+  void standardWharfPositionsAllow(stock).then(ok=>ok&&eligible()?load(eligible):undefined).then(art=>{
+   if(!art){if(deferred&&current())w.started=false;return;}
+   if(!eligible()){art.dispose();if(current())w.started=false;return;}
+   const pins=w.mask.stockForProof()===stock?standardWharfDraw(stock,w.owner.userData.spinnakersSpans):undefined;
+   const v=current()&&pins?w.mask.addMany(art.group,pins):undefined;
+   if(!v){art.dispose();return;}
+   this.scene.add(art.group);
+   w.art={variant:v,dispose:art.dispose};
+  }).catch(()=>{/** A missing optional package never hides the stock shells. */});
+ }
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
@@ -470,7 +503,8 @@ export class Buildings {
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
- update(x:number,z:number,barnAgl=Infinity){
+ update(x:number,z:number,barnAgl=Infinity,aircraftY=Infinity){
+  this.syncStandardWharf(x,aircraftY,z);
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
@@ -494,6 +528,9 @@ export class Buildings {
     if(id===RAIL.tile&&this.station){
      if(this.station.variant?.visible)this.tryStation?.shadows?.leaseOwnerChanged();
      this.station.variant?.dispose();this.station.art.dispose();this.station=undefined;
+    }
+    if(this.wharfOwner?.owner===m){
+     this.wharfOwner.mask.dispose();this.wharfOwner.art?.dispose();this.wharfOwner=undefined;
     }
     if(id===ST_DAVID.tile){
      const st=this.stDavids;
@@ -602,7 +639,7 @@ export class Buildings {
   const g=near&&seated()?views.withBarn(home?.owner===owner&&home.group.visible?home.index:null):undefined;
   owner.geometry=g??views.stock;group.visible=g!==undefined;
  }
- get spinnakersActive(){return !!this.spinnakers?.assembled?.parent;}
+ get spinnakersActive(){return !!this.spinnakers?.assembled?.parent||this.wharfOwner?.art?.variant.visible===true;}
  get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
  get northConcreteActive(){return this.northBaywalkActive&&!!this.spinnakers?.north?.sidewalk;}
  /** Observe bytes already requested by the ordinary building streamer. An observer
@@ -687,9 +724,15 @@ export class Buildings {
     }catch{/** Optional site art must not suppress stock buildings when it cannot seat. */}
    }
    const church=features===this.pinnedChurch?this.churchArt:undefined;
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified);
+   const trackWharf=!!this.standardWharf&&downtownVerified&&downtown?.id===SPINNAKERS_TILE&&downtown.sha256===SPINNAKERS_SHELLS.recordBytesHash&&
+    matchesSpinnakersShells(this.atlasHash,tile.id,features);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(trackWharf&&standardWharfDraw(mesh.geometry,mesh.userData.spinnakersSpans)){
+    const mask=authenticatedOwnerCohort(mesh);
+    if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};
+   }
    if(dalvay&&dalvayBytes){
     const glazing=this.dalvayGlass;
     this.dalvay?.dispose();
@@ -767,7 +810,9 @@ export class Buildings {
    // vertices occur after the original station ordinal; the owner span is
    // unchanged. Alternate shadow mode keeps its original exact baseline.
    const proof={start:RAIL.start,end:RAIL.end,vertices:RAIL.vertices+(request.standard?12:0)};
-   if(!range||range[0]!==proof.start||range[1]!==proof.end||owner.geometry.getAttribute('position').count!==proof.vertices||
+   const cohort=request.standard&&this.wharfOwner?.owner===owner?this.wharfOwner.mask:undefined;
+   const base=()=>cohort?cohort.stockForProof():owner.geometry;
+   if(!range||range[0]!==proof.start||range[1]!==proof.end||base()?.getAttribute('position').count!==proof.vertices||
      !await railOwnerChunk(source)||!alive())return;
    const mod=await Promise.race([
     import('./summerside-station/rail-art.ts'),
@@ -777,7 +822,7 @@ export class Buildings {
    const art=await mod.loadRailArtwork((import.meta.env?.BASE_URL??'./')+'art/',request.shadows);
    if(!art)return;
    if(!alive()){art.dispose();return;}
-   const variant=authenticatedOwnerVariant(owner,art.group,range,proof);
+   const variant=cohort?cohort.add(art.group,range,proof):authenticatedOwnerVariant(owner,art.group,range,proof);
    if(!variant){art.dispose();return;}
    const neighborsCaster=new THREE.Mesh(owner.geometry,owner.material);
    neighborsCaster.position.copy(owner.position);
@@ -892,7 +937,8 @@ export class Buildings {
    this.syncCavendish();
   }catch{/** Never withhold q72, q101, or their existing neighbours. */}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,massingChunk?:string,downtownVerified=false){
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,massingChunk?:string,downtownVerified=false,trackWharf=false){
+  const wharfSpans=trackWharf?new Map<number,WharfSpan>():undefined;
   let beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false,actualPrince=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
@@ -900,6 +946,7 @@ export class Buildings {
   let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
+   if(wharfSpans)trackWharfSpans(wharfSpans,i,P.length/3);
    if(markBarn){if(i===GREEN_GABLES_BARN.ordinal)barnStart=P.length/3;if(i===GREEN_GABLES_BARN.ordinal+1)barnEnd=P.length/3;}
    if(exteriorOrdinal!==undefined){if(i===exteriorOrdinal)beaconStart=P.length/3;if(i===exteriorOrdinal+1)beaconEnd=P.length/3;}
    if(replaceSpinnakers&&SPINNAKERS_OMISSIONS.has(i))continue;
@@ -1114,6 +1161,7 @@ export class Buildings {
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
+  if(wharfSpans)mesh.userData.spinnakersSpans=wharfSpans;
   return mesh;
  }
 }

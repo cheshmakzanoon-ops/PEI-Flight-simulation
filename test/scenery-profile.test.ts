@@ -215,3 +215,12 @@ test('inland imagery references leave older Standard groups independent in all e
   assert.equal(standardInlandOrtho(sceneryOptions('?'+key)),false,key);
  }
 });
+
+test('Summerside owner vetoes keep unrelated Standard scenery active and unknown options closed',()=>{
+ const features=[standardOpenRipplesRequested,standardCountyOrtho,coastalMarshRequested,forestFloorProfile];
+ const ordinary=features.map(f=>f(new URLSearchParams()));
+ for(const q of ['stockSpinnakersDeck','stockStationExterior','stockSpinnakersDeck&stockStationExterior']){
+  assert.deepEqual(features.map(f=>f(new URLSearchParams(q))),ordinary);
+ }
+ assert(!standardOpenRipplesRequested(new URLSearchParams('stockSpinnakersDeck&unknownSurfaceSwitch')));
+});

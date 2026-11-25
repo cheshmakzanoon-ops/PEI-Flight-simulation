@@ -51,7 +51,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 | --- | --- | --- |
 | West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | In Standard, fly past [74 turbines in three registered arrays](docs/qa/regional-wind.md), with 80, 90 and 116 m rotors. [Moving blade shadows sweep past the stationary tower shadows](docs/qa/regional-wind-rotor-light.md). Use `?stockRegionalWindRotorLight` to keep the turbines and tower shadows but remove the blade shadows. |
 | North Cape | `?stockNorthCapeWind` | Standard streams [all 16 commercial turbines](docs/qa/north-cape-turbines.md) near the [wind farm low pass](docs/qa/north-cape-departure.md). The flag hides them; `?northCapeWind` retains the older shadow study. |
-| Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Spinnakers’ Landing](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
+| Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Historical Spinnakers’ Landing integration](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
 | Inland grassland | `?stockMeadow` | Compare [the close open-ground material](docs/qa/meadow-texture.md) on an **inland meadow pass** in Prince, Queens or Kings. |
 | Basin Head beach | `?stockBasinSand` | Compare [Standard’s pale Singing Sands material](docs/qa/basin-head-sand.md) with the original sand on the low pass. |
 | Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-head-outer-wharf.md). |
@@ -100,7 +100,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 [Standard close-wall detail](docs/qa/town-wall-core.md) now fits window spacing and subtle wall finishes in the cores of three towns, without changing their outlines or roofs. Optional scenery previews are regional.
 
-In Prince County, the **Summerside waterfront · low pass** shows survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md), [north of downtown](docs/qa/summerside-north-roof.md), and [in western downtown](docs/qa/summerside-west-roofs.md) in Standard. Beside Water Street, [one survey-cleared storefront site](docs/qa/summerside-water-open-ground.md) removes an unsupported tree without changing nearby vegetation.
+In Prince County, the **Summerside waterfront · low pass** shows a [measured raised boardwalk and seven roof sections at Spinnakers’ Landing](docs/qa/summerside-standard-wharf.md), alongside the railway station and survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md), [north of downtown](docs/qa/summerside-north-roof.md), and [in western downtown](docs/qa/summerside-west-roofs.md) in Standard. Beside Water Street, [one survey-cleared storefront site](docs/qa/summerside-water-open-ground.md) removes an unsupported tree without changing nearby vegetation.
 
 For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch. Near Main Street, Standard scenery uses the [survey-backed exterior at 77 Main](docs/qa/souris-east-exterior.md) in place of the old flat block.
 

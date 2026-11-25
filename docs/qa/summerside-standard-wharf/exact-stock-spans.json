@@ -1,0 +1,580 @@
+{
+  "scope": "CPU baseline from current actual Buildings.generate with signed unmodified terrain, entire packed owner and valid Standard/downtown roof cohort. Renderer equivalence must still be checked on native indexed submission, do not mistake CPU geometry digests for optical/GL/device results.",
+  "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "railTile": {
+    "id": "q032001",
+    "offset": 710787,
+    "bounds": [
+      -63.795427,
+      46.375219,
+      -63.755559,
+      46.393345
+    ],
+    "count": 399,
+    "bytes": 20163,
+    "sha256": "b88c120e29513f42f5ad6e272981c21627b38634de29e5f9b3939a57a06fbe67"
+  },
+  "sourceWharfAuthoredModels": 7,
+  "wharfDeck": {
+    "packedBytes": 42282,
+    "packedSHA256": "8be344743bfa4ae2c7f83bac8c44db9376928132ee896f9d39ad8503524f5cff",
+    "decodedSHA256": "3ed6c903345bd1c79d3d6dbed6bf50c3e0d38d031579006015d141c0f65c7dee",
+    "decodedBytes": 56204,
+    "sourceDeckTriangles": 4507
+  },
+  "modes": {
+    "standardWithSignedDowntown": {
+      "allVertexCount": 69906,
+      "allTriangleCount": 23302,
+      "activeMeasuredDowntownRoofs": 3,
+      "oldCompactingWharfVertexCount": 69663,
+      "allAttributeSHA256": {
+        "position": "7f8cc57c5725b1b87817d265ee4c644a37489dd4ed00418e4e1e8c15490a0318",
+        "normal": "ab6955b2d33f2cdf51392536554c4131e00f540ef7b18d4bf3aedb0b5b079d49",
+        "uv": "466365cb43752ca7372586f946be175c160024ee139bdeecdfc7062948c94022",
+        "color": "1d9b62d3c1aff4f4130e62d21480654185325e55f544cc539e12662c84881b19",
+        "topFlag": "2db7308591fd5236242e38163717582a110d38d60a1ac72ea71ce3709c0df05a",
+        "facadeStyle": "9e335552099a99d18f394670ab98f498b97a9fa40165e31976b4853cab8c7cc2"
+      },
+      "origin": [
+        -44176.33503531042,
+        0,
+        12863.338289832356
+      ],
+      "rows": {
+        "163": {
+          "span": [
+            30618,
+            30666
+          ],
+          "triangles": 16,
+          "featureSHA": "cec18efe629ab478d2e6e58846a07da1f5b531d877eb1c2096df25ddfe827d46",
+          "footprintSHA": "63e757de15b405ebde8c9a15a92014836508a2bed10aac22bb8d398c2347dd60",
+          "geography": [
+            [
+              -63.788726,
+              46.390974
+            ],
+            [
+              -63.788155,
+              46.390945
+            ],
+            [
+              -63.788161,
+              46.390826
+            ],
+            [
+              -63.788633,
+              46.390842
+            ],
+            [
+              -63.788632,
+              46.39085
+            ],
+            [
+              -63.788736,
+              46.390853
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "8b4c1c86c1de62564fd6e691f464bd5412418c22619449e7f66d9754cdee6c28",
+            "normal": "31fde9a21b30e37f9afe99adbd9dbe69ffc95c82f9c37bf5ab8e2ce94945d170",
+            "uv": "814ba6b4d3d3393ec65d22f8de8dd3d7e679c3572bab994b9e7fdf0295308dbc",
+            "color": "8c797831c157f49d48b608d9d9149987af81d222f5bfc219cf06b1bea676590c",
+            "topFlag": "ef04ebd53bc9bd97cb34793299d2346dcfcbb967fddb9aa6b14195f1a37b3fc0",
+            "facadeStyle": "17b0761f87b081d5cf10757ccc89f12be355c70e2e29df288b65b30710dcbcd1"
+          }
+        },
+        "240": {
+          "span": [
+            51228,
+            51429
+          ],
+          "triangles": 67,
+          "featureSHA": "4a457be10d26e1ba03a2c5078e3c6f85b2fb34f9392aea48d0ff59c706aae760",
+          "footprintSHA": "8d63ffc9d92eb20dd3d8cdd7ec76dd2f0392ad30cd87369f7aa2b02172da1092",
+          "geography": [
+            [
+              -63.787659,
+              46.389033
+            ],
+            [
+              -63.787634,
+              46.389097
+            ],
+            [
+              -63.787618,
+              46.389094
+            ],
+            [
+              -63.78761,
+              46.389114
+            ],
+            [
+              -63.787579,
+              46.389109
+            ],
+            [
+              -63.787573,
+              46.389125
+            ],
+            [
+              -63.787584,
+              46.389127
+            ],
+            [
+              -63.787572,
+              46.389158
+            ],
+            [
+              -63.787562,
+              46.389156
+            ],
+            [
+              -63.787555,
+              46.389173
+            ],
+            [
+              -63.787583,
+              46.389179
+            ],
+            [
+              -63.787543,
+              46.389309
+            ],
+            [
+              -63.787446,
+              46.389294
+            ],
+            [
+              -63.787488,
+              46.389167
+            ],
+            [
+              -63.787535,
+              46.38917
+            ],
+            [
+              -63.787538,
+              46.389152
+            ],
+            [
+              -63.787451,
+              46.389037
+            ],
+            [
+              -63.787247,
+              46.38901
+            ],
+            [
+              -63.787265,
+              46.388944
+            ],
+            [
+              -63.787464,
+              46.388986
+            ],
+            [
+              -63.787495,
+              46.388955
+            ],
+            [
+              -63.787623,
+              46.388975
+            ],
+            [
+              -63.787671,
+              46.389035
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "bd1b73cd04647b4179bd4c0747003cd1d989ddaba751f7ccd9f41ff71eafb369",
+            "normal": "592a8347c3778468ba004f5d36b74376ba9323bfa93035261feeff0d4b280e40",
+            "uv": "907caab3bfe107205910f1eeae8e5a99637280262015b3eb9073cb907a8184cf",
+            "color": "bdefae5734126ff03ffb16636c8d72ae9fabc10f76582cc06e31cbcd21159983",
+            "topFlag": "505354666656f54543648c40c13390b23e7bf502f90fe20ee1dfe6ee3e3c146c",
+            "facadeStyle": "ab3df617aaa3140f04dc53f65b5446f34a6b2bdbb1f7b78db8db4d067ba14db9"
+          }
+        },
+        "315": {
+          "span": [
+            65946,
+            65988
+          ],
+          "triangles": 14,
+          "featureSHA": "180526b112fa0b05e347f4c4df1e3285bca91381b84f8a7be1922d2d4a98877c",
+          "footprintSHA": "4e333987f678f1e67caa305809bd6c34e756272ad28a87d899d6b1f730c50d96",
+          "geography": [
+            [
+              -63.787219,
+              46.389007
+            ],
+            [
+              -63.786939,
+              46.388962
+            ],
+            [
+              -63.786962,
+              46.388893
+            ],
+            [
+              -63.787242,
+              46.388938
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "9b83c236182d08ca63a8f01626104612483f5afb66fa8b8151f119e0eec2c90d",
+            "normal": "91c326ede3f32a88188feac63979bebc2c463ccea18ff2f713663946c2bf7458",
+            "uv": "429e901a14823df78137c9dabeb7aeab521afd0da0b02108e7d46fe0432d6f14",
+            "color": "908174560dd23c71ae941261f54ae245482fb753a998034b85699458cf0f20ee",
+            "topFlag": "e9cae5532e617adec5997f6fb41f73479679b1d5c37339c14a959671274dd9c6",
+            "facadeStyle": "094c4931fdb2f2af417c9e0322a9716006e8211fe9017f671ac6e3251300acca"
+          }
+        }
+      },
+      "view": {
+        "none": {
+          "omittedOrdinals": [],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "7f8cc57c5725b1b87817d265ee4c644a37489dd4ed00418e4e1e8c15490a0318",
+            "normal": "ab6955b2d33f2cdf51392536554c4131e00f540ef7b18d4bf3aedb0b5b079d49",
+            "uv": "466365cb43752ca7372586f946be175c160024ee139bdeecdfc7062948c94022",
+            "color": "1d9b62d3c1aff4f4130e62d21480654185325e55f544cc539e12662c84881b19",
+            "topFlag": "2db7308591fd5236242e38163717582a110d38d60a1ac72ea71ce3709c0df05a",
+            "facadeStyle": "9e335552099a99d18f394670ab98f498b97a9fa40165e31976b4853cab8c7cc2"
+          },
+          "canonicalUint32IndicesLeSHA256": "586ff885670f2ccc9052ed331945d62094be831080b693569bd544277382f71e",
+          "expectedSubmittedStockOwnerTriangles": 23302,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "station": {
+          "omittedOrdinals": [
+            163
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "11dcf8d487f7e6adb1f276c468108ef34fd5980fe490433b0f4a8973d6469cbc",
+            "normal": "cc321d46eb1526fc4379c1b3eff5331f73c781d46a570839cb291d4d99514828",
+            "uv": "8b4ce51abd1d89a76d106a35eeb8818dd4c28b61e6bbd25e788e5a5ebec62daf",
+            "color": "d22de8dd829caeddc57bac16b5be697b1e3bbdcc18a06aec12bc142ac5d2673e",
+            "topFlag": "c3cce1b5703e1b385716e591e819a555e267b5cf7800502cf017e6e29b5487c3",
+            "facadeStyle": "fe74d44352b8068d6cc35f9276f99e06e9ca68fd6aea152cdc665303b8404ebf"
+          },
+          "canonicalUint32IndicesLeSHA256": "4fb3b7900558cb45468ab5434cf33ea3a917502e35f5a6d6250418dd8d133cbb",
+          "expectedSubmittedStockOwnerTriangles": 23286,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "wharf": {
+          "omittedOrdinals": [
+            240,
+            315
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "6a87a81fd22ea83e899edbc13ed0c63d638d2ada2a108b086f03cee5be301476",
+            "normal": "49d6166a199ce64fd99abfe92412fdc2103dad9542ad88fa3f2c1b97c7b3135c",
+            "uv": "0c76d57d1742c222981fe89b48341998c33423b5ead49e92b8d9e2831502cda9",
+            "color": "3bd299bda53adf1d0c366ec08bcf97eef3cb45885997ad31cbee89b0c110170a",
+            "topFlag": "81fcca0a3be74cc20f9756379e9b9722535737b872272b51026bedf23f5eaf2b",
+            "facadeStyle": "22d54d2e58886f532bd5cdb4ba6d090d5f2ad899ff76ae4c3a7be742325592f0"
+          },
+          "canonicalUint32IndicesLeSHA256": "dd53bdd1f83103e2184a0e705caf96fea755a6e415f94648a2be491082e50808",
+          "expectedSubmittedStockOwnerTriangles": 23221,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "both": {
+          "omittedOrdinals": [
+            163,
+            240,
+            315
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "6fc55802bad964e613b87a007a9cee6cfc7e6f9fdcdce74d018286c4c0a155da",
+            "normal": "44a9dadd8af8ae89dbf17de7824923395d9fb8176cd2da250f7168a8ab57eb8d",
+            "uv": "ea25fb4bf034a8741fe14d1070aa6387df3d816ff9c2c91af3b8ccf543228256",
+            "color": "80b9ec9de9358933d0b61aef1ff9ad1ce9f0d7173fe9b61331d4c96810a3eca7",
+            "topFlag": "a84e5ccd01a561a86315b29008730afc5275f6397a9c13f86e8c265121d93cab",
+            "facadeStyle": "102c9fda2cc4f4938e06b78ae241bb2d155795e6cc2704965ac464b53708b724"
+          },
+          "canonicalUint32IndicesLeSHA256": "ed7dd6f62206c1511a0f83c919b427efcc77b905aef30ac96cb6e5506d1e1a64",
+          "expectedSubmittedStockOwnerTriangles": 23205,
+          "testedSameAsIndependentSourceCompaction": true
+        }
+      }
+    },
+    "legacyRoofAndOptionalShadowGeometry": {
+      "allVertexCount": 69894,
+      "allTriangleCount": 23298,
+      "oldCompactingWharfVertexCount": 69651,
+      "allAttributeSHA256": {
+        "position": "506e2c9f27184e0de3b0ebdfd7aa8a775c635a91afde94bab51b5c14a5eac0ee",
+        "normal": "4846d3e4ababb6ec9aa0f26b0c1df228203d8ef0d7bdefd82fd89c51e08a06c4",
+        "uv": "b18df7a7c23067998a7fe757c797c965f4a1cfe060b3916cbe09582799f6863d",
+        "color": "35de7a1045eebdabca87e91008c56a02d9eca833b78701051568eec02fcf1b6e",
+        "topFlag": "60abe6a9102c51ab99a7cd4afb0ee6896a8e83a729e9c003b8bf0ffc74ddf04f",
+        "facadeStyle": "1d6c802703058b4d5b908841e7401f2a04065b3c8cf15d4cca6795d237637ce0"
+      },
+      "origin": [
+        -44176.33503531042,
+        0,
+        12863.338289832356
+      ],
+      "rows": {
+        "163": {
+          "span": [
+            30618,
+            30666
+          ],
+          "triangles": 16,
+          "featureSHA": "cec18efe629ab478d2e6e58846a07da1f5b531d877eb1c2096df25ddfe827d46",
+          "footprintSHA": "63e757de15b405ebde8c9a15a92014836508a2bed10aac22bb8d398c2347dd60",
+          "geography": [
+            [
+              -63.788726,
+              46.390974
+            ],
+            [
+              -63.788155,
+              46.390945
+            ],
+            [
+              -63.788161,
+              46.390826
+            ],
+            [
+              -63.788633,
+              46.390842
+            ],
+            [
+              -63.788632,
+              46.39085
+            ],
+            [
+              -63.788736,
+              46.390853
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "8b4c1c86c1de62564fd6e691f464bd5412418c22619449e7f66d9754cdee6c28",
+            "normal": "31fde9a21b30e37f9afe99adbd9dbe69ffc95c82f9c37bf5ab8e2ce94945d170",
+            "uv": "814ba6b4d3d3393ec65d22f8de8dd3d7e679c3572bab994b9e7fdf0295308dbc",
+            "color": "8c797831c157f49d48b608d9d9149987af81d222f5bfc219cf06b1bea676590c",
+            "topFlag": "ef04ebd53bc9bd97cb34793299d2346dcfcbb967fddb9aa6b14195f1a37b3fc0",
+            "facadeStyle": "17b0761f87b081d5cf10757ccc89f12be355c70e2e29df288b65b30710dcbcd1"
+          }
+        },
+        "240": {
+          "span": [
+            51228,
+            51429
+          ],
+          "triangles": 67,
+          "featureSHA": "4a457be10d26e1ba03a2c5078e3c6f85b2fb34f9392aea48d0ff59c706aae760",
+          "footprintSHA": "8d63ffc9d92eb20dd3d8cdd7ec76dd2f0392ad30cd87369f7aa2b02172da1092",
+          "geography": [
+            [
+              -63.787659,
+              46.389033
+            ],
+            [
+              -63.787634,
+              46.389097
+            ],
+            [
+              -63.787618,
+              46.389094
+            ],
+            [
+              -63.78761,
+              46.389114
+            ],
+            [
+              -63.787579,
+              46.389109
+            ],
+            [
+              -63.787573,
+              46.389125
+            ],
+            [
+              -63.787584,
+              46.389127
+            ],
+            [
+              -63.787572,
+              46.389158
+            ],
+            [
+              -63.787562,
+              46.389156
+            ],
+            [
+              -63.787555,
+              46.389173
+            ],
+            [
+              -63.787583,
+              46.389179
+            ],
+            [
+              -63.787543,
+              46.389309
+            ],
+            [
+              -63.787446,
+              46.389294
+            ],
+            [
+              -63.787488,
+              46.389167
+            ],
+            [
+              -63.787535,
+              46.38917
+            ],
+            [
+              -63.787538,
+              46.389152
+            ],
+            [
+              -63.787451,
+              46.389037
+            ],
+            [
+              -63.787247,
+              46.38901
+            ],
+            [
+              -63.787265,
+              46.388944
+            ],
+            [
+              -63.787464,
+              46.388986
+            ],
+            [
+              -63.787495,
+              46.388955
+            ],
+            [
+              -63.787623,
+              46.388975
+            ],
+            [
+              -63.787671,
+              46.389035
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "bd1b73cd04647b4179bd4c0747003cd1d989ddaba751f7ccd9f41ff71eafb369",
+            "normal": "592a8347c3778468ba004f5d36b74376ba9323bfa93035261feeff0d4b280e40",
+            "uv": "907caab3bfe107205910f1eeae8e5a99637280262015b3eb9073cb907a8184cf",
+            "color": "bdefae5734126ff03ffb16636c8d72ae9fabc10f76582cc06e31cbcd21159983",
+            "topFlag": "505354666656f54543648c40c13390b23e7bf502f90fe20ee1dfe6ee3e3c146c",
+            "facadeStyle": "ab3df617aaa3140f04dc53f65b5446f34a6b2bdbb1f7b78db8db4d067ba14db9"
+          }
+        },
+        "315": {
+          "span": [
+            65946,
+            65988
+          ],
+          "triangles": 14,
+          "featureSHA": "180526b112fa0b05e347f4c4df1e3285bca91381b84f8a7be1922d2d4a98877c",
+          "footprintSHA": "4e333987f678f1e67caa305809bd6c34e756272ad28a87d899d6b1f730c50d96",
+          "geography": [
+            [
+              -63.787219,
+              46.389007
+            ],
+            [
+              -63.786939,
+              46.388962
+            ],
+            [
+              -63.786962,
+              46.388893
+            ],
+            [
+              -63.787242,
+              46.388938
+            ]
+          ],
+          "verticesSHA256": {
+            "position": "9b83c236182d08ca63a8f01626104612483f5afb66fa8b8151f119e0eec2c90d",
+            "normal": "91c326ede3f32a88188feac63979bebc2c463ccea18ff2f713663946c2bf7458",
+            "uv": "429e901a14823df78137c9dabeb7aeab521afd0da0b02108e7d46fe0432d6f14",
+            "color": "908174560dd23c71ae941261f54ae245482fb753a998034b85699458cf0f20ee",
+            "topFlag": "e9cae5532e617adec5997f6fb41f73479679b1d5c37339c14a959671274dd9c6",
+            "facadeStyle": "094c4931fdb2f2af417c9e0322a9716006e8211fe9017f671ac6e3251300acca"
+          }
+        }
+      },
+      "view": {
+        "none": {
+          "omittedOrdinals": [],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "506e2c9f27184e0de3b0ebdfd7aa8a775c635a91afde94bab51b5c14a5eac0ee",
+            "normal": "4846d3e4ababb6ec9aa0f26b0c1df228203d8ef0d7bdefd82fd89c51e08a06c4",
+            "uv": "b18df7a7c23067998a7fe757c797c965f4a1cfe060b3916cbe09582799f6863d",
+            "color": "35de7a1045eebdabca87e91008c56a02d9eca833b78701051568eec02fcf1b6e",
+            "topFlag": "60abe6a9102c51ab99a7cd4afb0ee6896a8e83a729e9c003b8bf0ffc74ddf04f",
+            "facadeStyle": "1d6c802703058b4d5b908841e7401f2a04065b3c8cf15d4cca6795d237637ce0"
+          },
+          "canonicalUint32IndicesLeSHA256": "b60658666115a776afbe4dc57d67d7b2de81dcb21b21c6864586e940abf21e79",
+          "expectedSubmittedStockOwnerTriangles": 23298,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "station": {
+          "omittedOrdinals": [
+            163
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "dd637d59c942a290c53bc0f28d46e4307e452272fd4dc2dd21f66e7d9b4327d3",
+            "normal": "db0d23e041aaa0c1239289e4c484e5eda8bf93084c815f52aec800c874b3d67d",
+            "uv": "97e9f53529a6a9a1d8c6c26a334da2276d365e61af663c569df267ee05883ddb",
+            "color": "8163077cf907c6d9ac91b7ad93fe606803a77029fd07c9d26770f40bef804c57",
+            "topFlag": "7649e299cf81397369692dcc373245d0d5a791b067c39f0612bcfcfbd5801f13",
+            "facadeStyle": "d921a640336dbb72b8acc46db292e0c26d5a9f9ce00562975ba7287d667ca987"
+          },
+          "canonicalUint32IndicesLeSHA256": "8f34c030cff8a25fa3c0147243115f1952d7505b1c8bebb9e3e9b28114ed82f5",
+          "expectedSubmittedStockOwnerTriangles": 23282,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "wharf": {
+          "omittedOrdinals": [
+            240,
+            315
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "9e2f4a935f9fc14edcd490e4d29f799da3229c353c8c07317cd5386857884b15",
+            "normal": "fcf6ce5208dcd43e3271dbcbda7980f6d1bb4327efe04f861acfcf96f2d5f608",
+            "uv": "3b8d94a8966107eb04afda248a33fbd34fede70a5213e24862e0c32ce26a5c91",
+            "color": "1b1cdf80fd66cb1e4c81605a87410053412d9bf45fa113a16f95654436f8433b",
+            "topFlag": "9155cb401e17971792030ed6df0bb937a935a31a3a7ed6ffafb2066f3e5d807a",
+            "facadeStyle": "cd28dd3c18dd0dbe59f0d27e3202a433e6e101efd3601c00f85824d5949f68af"
+          },
+          "canonicalUint32IndicesLeSHA256": "61adbbedf59dfd2d0fd7208e2dc5e71aedfc9618a454435c59df55450617179b",
+          "expectedSubmittedStockOwnerTriangles": 23217,
+          "testedSameAsIndependentSourceCompaction": true
+        },
+        "both": {
+          "omittedOrdinals": [
+            163,
+            240,
+            315
+          ],
+          "idempotentOriginalAttributeSelectionSHA256": {
+            "position": "9c961e6160f3ca4fa0207047e6e47497cbab618edc6c1c38f44018f58c9abf65",
+            "normal": "a83363578f624a2d59ae8e2274e67402ca33f8dd7b831afab6dc13d72d8107d7",
+            "uv": "2fa1e37f0ce1c0cd5f00607977bdb5012e0056f370f19fa9d6f92da6f510a971",
+            "color": "4c72793a1cfed8c6358b68ea67db3ac4d44eb7dd961145192ef6e17c6be27f1f",
+            "topFlag": "1b9d3822ffd16f072f3d74ac11af0dbe30a430e3eac61294485e0a0b3ce42388",
+            "facadeStyle": "1c03aeeed41bbd507a19e4b2cf041362df304a03d9a10b739108e03b6d207c16"
+          },
+          "canonicalUint32IndicesLeSHA256": "cb0959a4d2af0a4f7bbdedb15a43685c108fcd267f5dac2a1453cf042be4035b",
+          "expectedSubmittedStockOwnerTriangles": 23201,
+          "testedSameAsIndependentSourceCompaction": true
+        }
+      }
+    }
+  }
+}

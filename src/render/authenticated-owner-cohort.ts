@@ -2,7 +2,7 @@ import {BufferAttribute,BufferGeometry,type Group,type Mesh} from 'three';
 
 type Span=readonly [number,number];
 type DrawProof=Readonly<{vertices:number;start:number;end:number}>;
-type Lane={span:Span;group:Group;admitted:boolean;visible:boolean;closed:boolean};
+type Lane={spans:readonly Span[];group:Group;admitted:boolean;visible:boolean;closed:boolean};
 
 /** At most two independently authenticated complete-feature replacements
  * in a single stock draw. No original BufferAttribute or index is mutated.
@@ -25,6 +25,8 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
  const valid=(a:Span,proof:DrawProof)=>
   proof.vertices===vertexCount&&same(a,[proof.start,proof.end])&&
   a.every(v=>Number.isSafeInteger(v)&&v%3===0)&&a[0]>=0&&a[1]>a[0]&&a[1]<=vertexCount;
+ const overlaps=(a:Span,b:Span)=>a[0]<b[1]&&b[0]<a[1];
+ const omitted=(spans:readonly Span[])=>spans.reduce((n,[lo,hi])=>n+hi-lo,0);
  const eligible=(lane:Lane)=>lane.admitted&&!!mesh.parent&&lane.group.parent===mesh.parent;
  const refresh=(force=false)=>{
   if(stopped)return;
@@ -34,16 +36,17 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
   }
   if(!force&&mesh.geometry===applied&&!lanes.some(lane=>eligible(lane)!==lane.visible||lane.group.visible!==lane.visible))return;
   const active=lanes.filter(eligible);
-  const key=active.map(lane=>lane.span.join(',')).join(';');
+  const spans=active.flatMap(lane=>lane.spans).sort((a,b)=>a[0]-b[0]);
+  const key=spans.map(span=>span.join(',')).join(';');
   let geometry=key?byMask.get(key):stock;
   if(!geometry){
-   const remainder=vertexCount-active.reduce((n,q)=>n+q.span[1]-q.span[0],0);
+   const remainder=vertexCount-spans.reduce((n,[lo,hi])=>n+hi-lo,0);
    if(remainder<3)throw Error('Authenticated owners must retain stock content');
    const Index=vertexCount<=65536?Uint16Array:Uint32Array;
    const index=new Index(remainder);
    let j=0,skip=0;
    for(let i=0;i<vertexCount;){
-    const hole=active[skip]?.span;
+    const hole=spans[skip];
     if(hole&&i===hole[0]){i=hole[1];skip++;}else index[j++]=i++;
    }
    geometry=new BufferGeometry();
@@ -65,11 +68,20 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
    * this registered, live tile. Callers must also recheck their own lease. */
   stockForProof(){return !stopped&&recognises()?stock:undefined;},
   add(group:Group,span:Span,proof:DrawProof){
-   if(stopped||!recognises()||lanes.length>=2||!valid(span,proof)||
-      lanes.some(q=>q.group===group||q.span[0]<span[1]&&span[0]<q.span[1])||
-      vertexCount-(span[1]-span[0])-lanes.reduce((n,q)=>n+q.span[1]-q.span[0],0)<3)return;
-   const lane:Lane={group,span:[...span],admitted:false,visible:false,closed:false};
-   lanes.push(lane);lanes.sort((a,b)=>a.span[0]-b.span[0]);group.visible=false;
+   return this.addMany(group,[{span,proof}]);
+  },
+  /** A single art group may own two exact disjoint source spans. Its stock
+   * omissions remain one indivisible operation. */
+  addMany(group:Group,pins:readonly {span:Span;proof:DrawProof}[]){
+   if(stopped||!recognises()||lanes.length>=2||!pins.length||pins.length>2||
+      pins.some(({span,proof})=>!valid(span,proof)))return;
+   const spans=pins.map(({span})=>[...span] as Span).sort((a,b)=>a[0]-b[0]);
+   const former=lanes.flatMap(q=>q.spans);
+   if((spans.length===2&&overlaps(spans[0],spans[1]))||lanes.some(q=>q.group===group)||
+      former.some(q=>spans.some(span=>overlaps(q,span)))||
+      vertexCount-omitted(spans)-omitted(former)<3)return;
+   const lane:Lane={group,spans,admitted:false,visible:false,closed:false};
+   lanes.push(lane);group.visible=false;
    return {
     get visible(){return lane.visible;},
     sync(value:boolean){if(!lane.closed){lane.admitted=value;refresh();}},
@@ -79,8 +91,8 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
      lanes.splice(lanes.indexOf(lane),1);
      refresh(true);
      // Retain active masks belonging to still-live sites; there are at most 3.
-     const token=lane.span.join(',');
-     for(const [key,cached] of byMask)if(key.split(';').includes(token)){
+     const tokens=lane.spans.map(span=>span.join(','));
+     for(const [key,cached] of byMask)if(tokens.some(token=>key.split(';').includes(token))){
       disposeMask(cached);byMask.delete(key);
      }
     },

@@ -88,3 +88,30 @@ test('retiring one indexed view never disposes GPU attributes borrowed from stoc
  auth.dispose();
  assert.equal(g.attributes.position,position);
 });
+
+test('two noncontiguous pier spans activate atomically and compose with an independent station',()=>{
+ for(const reverse of [false,true]){
+  const {g,object,a,b,auth}=setup();
+  const p=(start:number,end:number)=>({span:[start,end] as const,proof:proof(start,end)});
+  assert.equal(auth.addMany(b,[p(9,12),p(9,15)]),undefined);
+  assert.equal(auth.addMany(b,[p(9,12),p(14,18)]),undefined);
+  const pier=auth.addMany(b,[p(15,18),p(9,12)])!;
+  assert.equal(auth.add(a,[6,12],proof(6,12)),undefined);
+  const rail=auth.add(a,[3,6],proof(3,6))!;
+  const [first,second]=reverse?[rail,pier]:[pier,rail];
+  const railOnly=[0,1,2,6,7,8,9,10,11,12,13,14,15,16,17],pierOnly=[0,1,2,3,4,5,6,7,8,12,13,14];
+  assert.equal(object.geometry,g);
+  first.sync(true);
+  assert.deepEqual([...object.geometry.index!.array],reverse?railOnly:pierOnly);
+  second.sync(true);
+  const combined=object.geometry;
+  assert.deepEqual([...combined.index!.array],[0,1,2,6,7,8,12,13,14]);
+  assert.equal(combined.attributes.custom,g.attributes.custom);
+  first.dispose();
+  assert.deepEqual([...object.geometry.index!.array],reverse?pierOnly:railOnly);
+  assert.equal(first.visible,false);
+  assert.equal(second.visible,true);
+  second.dispose();
+  assert.equal(object.geometry,g);
+ }
+});

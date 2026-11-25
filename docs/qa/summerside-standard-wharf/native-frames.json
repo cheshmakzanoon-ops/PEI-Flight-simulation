@@ -1,0 +1,260 @@
+[
+  {
+    "pose": {
+      "lon": -63.787304981817,
+      "lat": 46.389145047264,
+      "h": 7.5,
+      "dist": 138,
+      "east": 0.51,
+      "south": 0.86,
+      "agl": 26,
+      "fixedBaseH": 0,
+      "fixedEyeY": 26
+    },
+    "view": "wharf-close",
+    "stock": {
+      "file": "wharf-close-stock.png",
+      "transfers": [],
+      "active": false,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 138,
+      "tris": 396008,
+      "coverGround": 0.12,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "standard": {
+      "file": "wharf-close-standard.png",
+      "transfers": [
+        200
+      ],
+      "active": true,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 148,
+      "tris": 417371,
+      "coverGround": 0.12,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "total": 540000,
+    "changed": 14930,
+    "significant": 14421,
+    "changedBounds": [
+      293,
+      259,
+      529,
+      361
+    ],
+    "protectedPixels": 500187,
+    "changedProtectedPixels": 0
+  },
+  {
+    "pose": {
+      "lon": -63.790211,
+      "lat": 46.392695,
+      "h": 12.68,
+      "dist": 650,
+      "east": 0.68,
+      "south": 0.74,
+      "agl": 120,
+      "fixedBaseH": 7.983448275881528,
+      "fixedEyeY": 120.99634345661718
+    },
+    "view": "county-approach",
+    "stock": {
+      "file": "county-approach-stock.png",
+      "transfers": [],
+      "active": false,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 138,
+      "tris": 395768,
+      "coverGround": 1.1163434566171793,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "standard": {
+      "file": "county-approach-standard.png",
+      "transfers": [
+        200
+      ],
+      "active": true,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 148,
+      "tris": 417131,
+      "coverGround": 1.1163434566171793,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "total": 540000,
+    "changed": 8525,
+    "significant": 8431,
+    "changedBounds": [
+      92,
+      471,
+      216,
+      600
+    ],
+    "protectedPixels": 508360,
+    "changedProtectedPixels": 0
+  },
+  {
+    "pose": {
+      "lon": -63.78850717,
+      "lat": 46.39088167,
+      "h": 10.0,
+      "dist": 56,
+      "east": -0.57,
+      "south": 0.829,
+      "agl": 12,
+      "fixedBaseH": 2.739777931034041,
+      "fixedEyeY": 14
+    },
+    "view": "station-street",
+    "stock": {
+      "file": "station-street-stock.png",
+      "transfers": [],
+      "active": false,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 81,
+      "tris": 359201,
+      "coverGround": 2.12,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "standard": {
+      "file": "station-street-standard.png",
+      "transfers": [
+        200
+      ],
+      "active": true,
+      "station": true,
+      "measuredRoofs": 4,
+      "calls": 81,
+      "tris": 359120,
+      "coverGround": 2.12,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": {
+          "eligible": 1,
+          "removed": 1
+        },
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "total": 240000,
+    "changed": 0,
+    "significant": 0,
+    "changedBounds": null,
+    "protectedPixels": 240000,
+    "changedProtectedPixels": 0
+  },
+  {
+    "pose": {
+      "lon": -63.787304981817,
+      "lat": 46.389145047264,
+      "h": 7.5,
+      "dist": 3000,
+      "east": 0.26,
+      "south": 0.965,
+      "agl": 570,
+      "fixedBaseH": 0,
+      "fixedEyeY": 570
+    },
+    "view": "distant",
+    "stock": {
+      "file": "distant-stock.png",
+      "transfers": [],
+      "active": false,
+      "station": false,
+      "measuredRoofs": 4,
+      "calls": 106,
+      "tris": 333881,
+      "coverGround": -0.055,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": null,
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "standard": {
+      "file": "distant-standard.png",
+      "transfers": [],
+      "active": false,
+      "station": false,
+      "measuredRoofs": 4,
+      "calls": 106,
+      "tris": 333881,
+      "coverGround": -0.055,
+      "warnings": [],
+      "neighbours": {
+        "summersideOpenGround": null,
+        "openRipples": true,
+        "aerialPerspective": true,
+        "shoreFoamDetail": true,
+        "townWallProfile": "core"
+      }
+    },
+    "total": 331200,
+    "changed": 0,
+    "significant": 0,
+    "changedBounds": null,
+    "protectedPixels": 331200,
+    "changedProtectedPixels": 0
+  }
+]

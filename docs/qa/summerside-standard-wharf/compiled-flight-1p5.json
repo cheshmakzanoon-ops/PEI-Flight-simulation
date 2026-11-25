@@ -1,0 +1,23 @@
+[
+  {
+    "case": "both",
+    "site": "spinnakers-low",
+    "station": true,
+    "deck": true,
+    "deck_http": [
+      200
+    ],
+    "station_http": [
+      200
+    ],
+    "movement_m": 296.449,
+    "measured_roofs": 4,
+    "ground_m": -0.055,
+    "town_wall_profile": "core",
+    "device_scale_factor": 1.5,
+    "draws": 173,
+    "triangles": 384786,
+    "cockpit_and_pause": true,
+    "errors": []
+  }
+]
