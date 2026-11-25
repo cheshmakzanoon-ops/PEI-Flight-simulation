@@ -35,3 +35,21 @@ across 22 mip and fractional filter levels confirmed small differences in
 the packed stone normals rather than exact mathematical equivalence. See the [technical receipt](../../tools/art/province-house-study/proof/report.json),
 [paired tier renders](../../tools/art/province-house-study/proof/approach-hero-pair.webp),
 and [build instructions and source links](../../tools/art/province-house-study/README.md).
+
+## Town-context placement check
+
+![The ordinary simulator and a private in-scene composition of the detached study, from Richmond Street](province-house-context-hold.webp)
+
+The stock frame masks the actual emitted triangles for the existing Province
+House atlas row, not just buildings near the map pin. It covers 120,713 of
+614,400 sampled pixels in this view. The separate composition shows how the
+arched entry and hipped roof improve recognition, but the exact site remains
+unregistered. Two other source rows still obstruct the forecourt. The underlying
+elevation comes from a one-metre mosaic and does not prove a current ground or
+entrance fit. The composition is not loadable in the game, does not change its
+existing scenery and is not a proposal to remove those structures.
+
+[The October 2026 original photograph](https://ruk.ca/content/province-house-no-fence)
+and [Parks Canada’s heritage record](https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=580)
+help distinguish architectural and forecourt features; neither was used as a
+texture. See the [stock measurement and placement hold](province-house-context-hold.json).

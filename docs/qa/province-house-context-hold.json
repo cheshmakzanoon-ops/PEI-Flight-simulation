@@ -1,0 +1,93 @@
+{
+  "baseline": "0d9a10f8d0a88319af1e4ae969a53bd5d6b932b8",
+  "visual": {
+    "pixels": 120713,
+    "frame": [
+      960,
+      640
+    ],
+    "markedShare": 0.19647,
+    "markedBox": [
+      230,
+      131,
+      760,
+      409
+    ],
+    "sourceRow": {
+      "tile": "q12000113",
+      "ordinal": 38
+    },
+    "scope": "Only identifies the stock shell extent at a fixed town camera. Registering a replacement needs a separate measured shape, era and terrain fit."
+  },
+  "source": {
+    "historicDistrict": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=15381",
+    "townGuidelines": "https://cdnsm5-hosted.civiclive.com/Userfiles/DBFiles/server_10500298/202405/12052545/500_lot_standards_and_guidelines_dec_2011.pdf",
+    "provinceHouseHeritage": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=580",
+    "provinceHouseOnRestoration": "https://parks.canada.ca/lhn-nhs/pe/provincehouse/conservation/faq",
+    "photosViewedOnly": [
+      {
+        "date": "2026-10-13",
+        "author": "Peter Rukavina",
+        "source": "https://ruk.ca/content/province-house-no-fence",
+        "publication": "author's 2026 observation, not scene map"
+      }
+    ],
+    "citySourcePending": "A full map alignment, construction era and actual sidewalk/forecourt source are needed. Do not infer new world geom from a Google layer or decorative photo."
+  },
+  "mapIntake": {
+    "scope": "Stock model plan intake only. Neither regional atlas nor Parks marker is a new surveyed wall, compass seat or served address.",
+    "tile": "q12000113",
+    "ord": 38,
+    "height": 17.73,
+    "centerGameXZ": [
+      5674.96108,
+      29457.48197
+    ],
+    "centerLocalDegrees": [
+      -63.12607126923077,
+      46.23500184615385
+    ],
+    "PCAHalfRangeM": [
+      17.5542,
+      25.7073
+    ],
+    "longestCoarseEdgeM": 28.05978361394241,
+    "holeAndScaffoldStatus": "unresolved",
+    "pins": {
+      "road": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "building": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+      "sidewalk": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+      "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303"
+    },
+    "outlinePoints": 26
+  },
+  "nativeGroundContext": {
+    "provider": "NRCan one metre national mosaic",
+    "windowSize": [
+      83,
+      98
+    ],
+    "firstRangeHash": "dcc738c05b0ef02efe01863f5d906a0ee1c7a77c4f3c381caae7381a9d64e356",
+    "bareEarthHeightM": [
+      8.21,
+      8.889,
+      9.812,
+      10.266,
+      11.791
+    ],
+    "note": "Do not compute registered roof or foyer location with DTM alone. Includes surrounding front and back soil, not access clearance."
+  },
+  "placementAdmitted": false,
+  "protectedOwnerRows": [
+    {
+      "tile": "q12000113",
+      "ordinal": 102,
+      "approximateAtlasHeightM": 3.23
+    },
+    {
+      "tile": "q12000113",
+      "ordinal": 85,
+      "approximateAtlasHeightM": 3.84
+    }
+  ]
+}
