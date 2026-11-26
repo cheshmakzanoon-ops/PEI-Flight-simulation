@@ -22,6 +22,7 @@ window [already corrected in Standard](inland-aerial-joins.md).
 
 - [Screen output: strongest twelve distinct candidates](aerial-join-screen/signed-atlas-candidates.json)
 - [Four eastern windows accepted after native and controllable-flight replay](eastern-aerial-joins.md)
+- [Two western Prince County windows after actual flight and image replays](western-aerial-joins.md)
 - [Committed source attribution](../WORLD.md)
 
 To reproduce with Python, NumPy and Pillow from a clean checkout:

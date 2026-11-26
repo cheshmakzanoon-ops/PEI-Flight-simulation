@@ -9,7 +9,7 @@ const root = new URL('../public/world/',import.meta.url);
 const file = (str: string) => readFileSync(new URL(str,root));
 const sha = (data: Uint8Array) => createHash('sha256').update(data).digest('hex');
 
-test('eastern joins are admitted by the actual signed cover and atlas bytes',()=>{
+test('eastern and western joins are admitted by the actual signed cover and atlas bytes',()=>{
  const index=file('detail/index.json'), bytes=gunzipSync(file('cover.bin.gz'));
  assert.equal(sha(index),'a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207');
  assert.equal(sha(bytes),'e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9');
@@ -20,6 +20,8 @@ test('eastern joins are admitted by the actual signed cover and atlas bytes',()=
   ['queens-south-grassland','20-20','20-21'],
   ['kings-shared-fields','21-17','22-17'],
   ['queens-eastern-grassland','19-13','20-13'],
+  ['prince-west-field-edge','2-6','3-6'],
+  ['prince-inland-field-edge','4-7','4-8'],
  ] as const) {
   const plan=INLAND_ORTHO_WINDOWS.find(x=>x.name===name);
   assert.ok(plan && all.includes(name));

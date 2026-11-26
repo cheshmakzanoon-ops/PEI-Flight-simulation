@@ -1,0 +1,57 @@
+[
+  {
+    "name": "prince-west-field-edge",
+    "owners": [
+      "2-6",
+      "3-6"
+    ],
+    "axis": "x",
+    "lon": -64.23317771784552,
+    "lat": 46.73898295,
+    "agl": 63,
+    "heading": 90,
+    "targetLL": [
+      -64.231875,
+      46.73898295
+    ],
+    "baseDatumStockMetres": [
+      28,
+      30
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "prince-inland-field-edge",
+    "owners": [
+      "4-7",
+      "4-8"
+    ],
+    "axis": "z",
+    "lon": -64.12335449,
+    "lat": 46.67908141540356,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -64.12335449,
+      46.67818182
+    ],
+    "baseDatumStockMetres": [
+      5,
+      8
+    ],
+    "minCover": 206,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "scope": "Final two-window fixture using ordinary player controls at exact signed dry virtual corridors. No public route or real navigation clearance claim.",
+  "scenarios": [
+    {
+      "name": "prince-west-field-edge",
+      "mode": "normal",
+      "flightMeters": 154.581,
+      "alongMeters": 154.578,
+      "crossMeters": 1.003,
+      "groundClearance": 65.025,
+      "edge": {
+        "edge": "2-6 / 3-6",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-00.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "prince-inland-field-edge",
+      "mode": "normal",
+      "flightMeters": 153.14,
+      "alongMeters": 153.04,
+      "crossMeters": 5.552,
+      "groundClearance": 65.068,
+      "edge": {
+        "edge": "4-7 / 4-8",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-00.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "prince-west-field-edge",
+      "mode": "stock",
+      "flightMeters": 151.581,
+      "alongMeters": 151.578,
+      "crossMeters": 0.984,
+      "groundClearance": 64.955,
+      "edge": null,
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-00.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "prince-west-field-edge",
+      "mode": "corrupt",
+      "flightMeters": 153.38,
+      "alongMeters": 153.377,
+      "crossMeters": 0.996,
+      "groundClearance": 64.984,
+      "edge": {
+        "edge": "2-6 / 3-6",
+        "resident": false,
+        "gain": 0,
+        "bytes": 0,
+        "uploads": 0,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-00.pack"
+      ],
+      "corrupted": [
+        1498414
+      ],
+      "errors": []
+    }
+  ]
+}

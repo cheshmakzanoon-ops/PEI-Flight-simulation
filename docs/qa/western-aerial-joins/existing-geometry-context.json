@@ -1,0 +1,30 @@
+{
+  "maxReportDistanceM": 400,
+  "scope": "Signed project centerlines and dated AEB footprints only; no inferred absence of fences, drains or current structures.",
+  "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cases": [
+    {
+      "name": "prince-west-field-edge",
+      "exactStripLonLat": [
+        -64.23203002929688,
+        46.73815909090909,
+        -64.23171997070312,
+        46.73980681818182
+      ],
+      "roadClippedDistance": 400,
+      "buildingClippedDistance": 199.748
+    },
+    {
+      "name": "prince-inland-field-edge",
+      "exactStripLonLat": [
+        -64.12459472656249,
+        46.678078835227275,
+        -64.1221142578125,
+        46.678284801136364
+      ],
+      "roadClippedDistance": 54.847,
+      "buildingClippedDistance": 78.286
+    }
+  ]
+}

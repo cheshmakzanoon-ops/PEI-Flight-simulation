@@ -1,0 +1,274 @@
+{
+  "base": "564a7cd3ae3421d5848d951fc4684e17fff2deed",
+  "viewScope": "Original signed aerial texture samples, only the isolated renderer test colours are synthetic. Actual cameras and compiled-player tests are distinct.",
+  "views": {
+    "prince-west-field-edge": {
+      "edge": "2-6 / 3-6",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 44,
+      "pixelGate": {
+        "changed": 25499,
+        "over2": 19252,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 68221
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 51,
+        "tris": 386455
+      },
+      "edgeContrast": {
+        "samples": 74,
+        "medianOld": 24.668442726135254,
+        "medianArt": 2.2613935470581055,
+        "oldP90": 43.81167755126953,
+        "artP90": 5.294546508789064
+      },
+      "finalTwoOnlyPNGEqualsEarlierWiderTrial": {
+        "old": "72d9309ed78bf4e76e571b14195646b6fbd2ffda00798891288861fb30aaf143",
+        "art": "0d8d6cfa7f66caf55844c0dc5f523bfd64739f27a8eb77c9f4aaf8ce1661a1e4",
+        "idA": "af1b8d0c1077c1a1e6f9707875b9c1baded331315cb221c2089568dc5c2f42a4",
+        "idB": "ddc55936c77472dada282b9d6108f804f5c4135e449401e9986b264f0144b9cd"
+      }
+    },
+    "prince-west-field-edge-reciprocal": {
+      "edge": "2-6 / 3-6",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 38,
+      "pixelGate": {
+        "changed": 30231,
+        "over2": 20767,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 80926
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 33,
+        "tris": 354284
+      },
+      "edgeContrast": {
+        "samples": 70,
+        "medianOld": 26.230270385742188,
+        "medianArt": 2.6200919151306152,
+        "oldP90": 44.09473304748535,
+        "artP90": 5.576776075363159
+      },
+      "finalTwoOnlyPNGEqualsEarlierWiderTrial": {
+        "old": "7deb1cba462a01284868be3ebe56fc10b830e3024be000837b80957d6ae91134",
+        "art": "025e79440017e11417a2fb7c36ad2112c77aeb415ab9470cd860d532ba5d582f",
+        "idA": "1433f69094ff1b15f2b439ca6a0ff3f3f7662597e54bb6f98cf52bce820d73c9",
+        "idB": "943cba2c2c08b1ebebc22610197a52779e541efcd63c9e39fd7d1c4cac375cdb"
+      }
+    },
+    "prince-west-field-edge-high": {
+      "edge": "2-6 / 3-6",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 550,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 21,
+        "tris": 351494
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    },
+    "prince-west-field-edge-outside": {
+      "edge": "2-6 / 3-6",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 18,
+        "tris": 321054
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    },
+    "prince-west-field-edge-flipped": {
+      "edge": "2-6 / 3-6",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 17,
+        "tris": 356513
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    },
+    "prince-inland-field-edge": {
+      "edge": "4-7 / 4-8",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 44,
+      "pixelGate": {
+        "changed": 24656,
+        "over2": 18593,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 65641
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 36,
+        "tris": 308675
+      },
+      "edgeContrast": {
+        "samples": 76,
+        "medianOld": 26.639647483825684,
+        "medianArt": 2.4421356916427612,
+        "oldP90": 32.33826160430908,
+        "artP90": 4.7239439487457275
+      },
+      "finalTwoOnlyPNGEqualsEarlierWiderTrial": {
+        "old": "d860b8c999ca1a1002077c6a7762dc39227dbce019cb55ea39ae8a898e1687db",
+        "art": "20be31fd576c4c2c57ceb1b86482b454504d9c0c5e520682135084ddeae9893d",
+        "idA": "fe03109bdf111cd5357cbe7311d40932fd6e2faa740b87d84c46b3cd61106882",
+        "idB": "e5224ab1b532f2cffcac5c1010a6f465b82bfc4150307bc41214ab8c7d8060fd"
+      }
+    },
+    "prince-inland-field-edge-reciprocal": {
+      "edge": "4-7 / 4-8",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 38,
+      "pixelGate": {
+        "changed": 29603,
+        "over2": 22257,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 78268
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 47,
+        "tris": 295926
+      },
+      "edgeContrast": {
+        "samples": 70,
+        "medianOld": 25.87999439239502,
+        "medianArt": 2.0843149423599243,
+        "oldP90": 33.08180465698242,
+        "artP90": 3.781427025794983
+      },
+      "finalTwoOnlyPNGEqualsEarlierWiderTrial": {
+        "old": "64ef1d2813b41fb642a703b567822f9a74b4bddd27383c98c60304876ee6c05c",
+        "art": "33f536c8260427072463a014121dca7d97de80bdeff6b6c8ad568091792e8f10",
+        "idA": "c05e5ec5783f1f11994036957d3feb6f5f257a2c5a94203322fe3f99d931af39",
+        "idB": "998bf19bf66193fd7984c5a3d3671d37910c1e0d5b7c31b0c40944fef8292867"
+      }
+    },
+    "prince-inland-field-edge-high": {
+      "edge": "4-7 / 4-8",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 550,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 19,
+        "tris": 274193
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    },
+    "prince-inland-field-edge-outside": {
+      "edge": "4-7 / 4-8",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 16,
+        "tris": 269434
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    },
+    "prince-inland-field-edge-flipped": {
+      "edge": "4-7 / 4-8",
+      "viewport": [
+        840,
+        540
+      ],
+      "heightAGL": 17,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "restoreExact": true,
+      "drawsAndTriangles": {
+        "draws": 16,
+        "tris": 281066
+      },
+      "build": "initial three-window test; the withheld third window is not near or overlapping either shown strip"
+    }
+  }
+}

@@ -31,7 +31,7 @@ def cover_axis(a, b, scale):
     return min(math.floor(a*scale), math.floor(a*scale-.5)), max(math.floor(b*scale), math.floor(b*scale-.5)+1)
 
 
-def verify(repo):
+def verify(repo, selected=NAMES):
     world = repo / 'public/world'
     names = repo / 'src/render/inland-ortho-windows.ts'
     left = names.read_text().split('export const INLAND_ORTHO_WINDOWS=')[1]
@@ -56,7 +56,9 @@ def verify(repo):
 
     packs = {}
     receipts = []
-    for name in NAMES:
+    if not selected or len(set(selected)) != len(selected):
+        raise ValueError("Select distinct authored windows")
+    for name in selected:
         p = plans[name]
         x,z = map(int,p['first'].split('-'))
         axis = p['axis']
@@ -98,8 +100,9 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--checkout',type=Path,default=Path.cwd())
     p.add_argument('--out',type=Path)
+    p.add_argument('--window',action='append',help='Exact authored window name; repeat to check several')
     args = p.parse_args()
-    report = json.dumps(verify(args.checkout),indent=2)+'\n'
+    report = json.dumps(verify(args.checkout,args.window or NAMES),indent=2)+'\n'
     if args.out:
         args.out.write_text(report)
     else:
