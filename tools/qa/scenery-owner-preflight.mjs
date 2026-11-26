@@ -6,14 +6,23 @@ import {resolve,join} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
-import {Scene,Texture} from 'three';
+import {EquirectangularReflectionMapping,Scene,Texture} from 'three';
 import {Terrain} from '../../src/sim/terrain.ts';
 import {Buildings} from '../../src/render/buildings.ts';
 import {downtownTilePin} from '../../src/render/summerside-roof-source.ts';
+import {TOWN_WALL_CORE_AREAS,townWallMode} from '../../src/render/town-wall-optics.ts';
 import {loadCoastalSurveys} from '../../src/sim/coastal-terrain.ts';
 
 const sha=buffer=>createHash('sha256').update(buffer).digest('hex');
-const attributes=['position','normal','uv','color','topFlag','facadeStyle'];
+const attributes={position:[Float32Array,3],normal:[Float32Array,3],uv:[Float32Array,2],
+ color:[Float32Array,3],topFlag:[Float32Array,1],facadeStyle:[Uint8Array,1]};
+function verifyAttributes(g,keys,n){
+ assert.deepEqual(Object.keys(g.attributes).sort(),[...keys].sort());
+ for(const k of keys){
+  const [ArrayType,width]=attributes[k]??[Int16Array,3],a=g.getAttribute(k);
+  assert(a.isBufferAttribute&&a.array.constructor===ArrayType&&a.itemSize===width&&a.count===n&&!a.normalized,k+' native attribute layout');
+ }
+}
 const metaRoot=resolve(fileURLToPath(new URL('../../',import.meta.url)));
 function bytes(a){
  return Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength);
@@ -48,8 +57,13 @@ export async function sceneryOwnerPreflight(repo,tileId,ordinal,profile='standar
  const scene=new Scene();
  // The native emitter selects its original measured Water Street/Victoria
  // materials only with an environment texture, even for an offline trace.
- scene.environment=new Texture();
- const asset=new Buildings(scene,terrain,[tile],undefined,atlas.sha256);
+ const sky=new Texture();sky.mapping=EquirectangularReflectionMapping;
+ scene.environment=sky;scene.environmentIntensity=.77;
+ const mode=townWallMode(new URLSearchParams(profile==='legacy'?'stockTownWalls':''));
+ const wall=mode?{panorama:sky,gain:{value:1},mode,areas:TOWN_WALL_CORE_AREAS}:undefined;
+ const asset=new Buildings(scene,terrain,[tile],undefined,atlas.sha256,
+  undefined,undefined,undefined,undefined,false,undefined,undefined,false,
+  undefined,undefined,undefined,undefined,undefined,wall);
  const downtown=profile==='standard'&&downtownTilePin(atlas.sha256,tile)?.sha256===tile.sha256;
  const emit=(features,mark)=>asset.generate(features,asset.tiles[0],false,mark,false,tile.sha256,downtown);
  const owner=emit(rows,ordinal),normal=emit(rows),g=owner.geometry,n=g.getAttribute('position').count;
@@ -57,13 +71,15 @@ export async function sceneryOwnerPreflight(repo,tileId,ordinal,profile='standar
   const [lo,hi]=owner.userData.beaconTriangles??[-1,-1];
   assert(lo>=0&&hi>lo&&hi<=n&&lo%3===0&&hi%3===0,'This row does not own a complete stock span in this profile');
   assert(g.index===null&&g.groups.length===0&&g.drawRange.start===0&&g.drawRange.count===Infinity);
-  assert.deepEqual(Object.keys(g.attributes).sort(),[...attributes].sort());
-  for(const k of attributes)assert.equal(sha(bytes(g.getAttribute(k))),sha(bytes(normal.geometry.getAttribute(k))),'Recording a span must not modify '+k);
+  const keys=[...Object.keys(attributes),...(g.hasAttribute('townWallFit')?['townWallFit']:[])];
+  assert(!g.hasAttribute('townWallFit')||mode==='core');
+  verifyAttributes(g,keys,n);verifyAttributes(normal.geometry,keys,n);
+  for(const k of keys)assert.equal(sha(bytes(g.getAttribute(k))),sha(bytes(normal.geometry.getAttribute(k))),'Recording a span must not modify '+k);
   const omitted=emit(rows.map((row,i)=>i===ordinal?{...row,footprint:[]}:row));
   const remainder=n-(hi-lo),fields={};
   try{
-   assert.equal(omitted.geometry.getAttribute('position').count,remainder);
-   for(const k of attributes){
+   verifyAttributes(omitted.geometry,keys,remainder);
+   for(const k of keys){
     const a=g.getAttribute(k),p=limits(a,0,lo),q=limits(a,hi,n);
     const rest=sha(Buffer.concat([p,q]));assert.equal(rest,sha(bytes(omitted.geometry.getAttribute(k))),k+' native compacted comparison');
     fields[k]={stock:sha(bytes(a)),selected:sha(limits(a,lo,hi)),untouched:rest};
@@ -79,7 +95,7 @@ export async function sceneryOwnerPreflight(repo,tileId,ordinal,profile='standar
   }
   assert.equal(typeof downtown,'boolean');
   return {sourceAtlas:atlas.sha256,sourceTileSHA:tile.sha256,terrain:spec.sha256,coastalIds:terrain.coastalSurveys,
-    tile:tileId,ordinal,profile,downtown,canonicalRow:sha(JSON.stringify(rows[ordinal])),
+    tile:tileId,ordinal,profile,downtown,townWallMode:mode??null,townWallAttribute:g.hasAttribute('townWallFit'),canonicalRow:sha(JSON.stringify(rows[ordinal])),
     wholeVertices:n,span:[lo,hi],originalRoofFaces:roof,originalFacadeFaces:facade,meshOrigin:owner.position.toArray(),
     untouchedVertexCount:remainder,untouchedIndexType:index.constructor.name,
     untouchedIndexSHA:sha(Buffer.from(index.buffer)),matchesIndependentEmitterCompaction:true,fields};
