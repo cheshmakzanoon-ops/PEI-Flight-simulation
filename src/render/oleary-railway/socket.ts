@@ -1,7 +1,7 @@
 import {BufferAttribute,type Scene,type Mesh,type BufferGeometry}from'three';
 import {authenticatedOwnerVariant} from '../indian-river/authored-owner-variant.ts';
 import {OLEARY,olearyOriginalSource,olearyNativeGrade,olearyDrawCenter,type OlearySeat} from './authority.ts';
-import type {OlearyProgramProof} from './program-gate.ts';
+import {OLEARY_STATION_PREFLIGHT_MS,type OlearyProgramProof} from './program-gate.ts';
 type Model=NonNullable<Awaited<ReturnType<typeof import('./packet.ts')['loadOleary']>>>;
 type Open=(signal:AbortSignal)=>Promise<Model|undefined>;
 type GradeRevision={mesh:Mesh;seams:string;geometry:BufferGeometry;pos:BufferAttribute;idx:BufferAttribute;pv:number;iv:number;test?:()=>boolean};
@@ -54,7 +54,7 @@ export class OlearySocket{
   this.tried=true;void this.prepare();
  }
  private async prepare(){
-  const c=this.fetch=new AbortController(),signal=c.signal,timer=setTimeout(()=>c.abort(),8500);
+  const c=this.fetch=new AbortController(),signal=c.signal,timer=setTimeout(()=>c.abort(),OLEARY_STATION_PREFLIGHT_MS);
   let left=false,candidate:Model|undefined;
   const stillEligible=()=>this.exact()&&this.owner.geometry===this.original&&this.gradeStill();
   const live=()=>{const eligible=stillEligible();if(!eligible)left=true;return eligible&&!signal.aborted;};

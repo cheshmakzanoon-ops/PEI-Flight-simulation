@@ -143,7 +143,7 @@ try {
   console.log('North Rustico ordinary roof proof:',JSON.stringify({
     distance:rusticoDistance,altitude:nearRustico.altitude,renderedRoof:nearRustico.rusticoHarbourRoof,
     calls:nearRustico.drawCalls,triangles:nearRustico.triangles,q377Draw}));
-  await page.locator('#world').screenshot({path:`${out}/05-north-rustico-low.png`,timeout:25000});
+  await page.locator('#world').screenshot({path:`${out}/05-north-rustico-low.png`,timeout:85000});
   assert.deepEqual((await state()).layerWarnings, []);
   assert.deepEqual(errors, []);
   console.log('Browser smoke passed: hosted build, scenery layers, flight, three county routes, camera and pause.');

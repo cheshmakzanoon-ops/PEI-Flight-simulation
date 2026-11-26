@@ -4,6 +4,10 @@ type Program={readonly program:WebGLProgram;isReady:()=>boolean};
 export type OlearyProgramProof=()=>boolean;
 export type OlearyLink=(group:Group,signal:AbortSignal)=>Promise<OlearyProgramProof|undefined>;
 type Lamp=Object3D&{isLight?:boolean;castShadow?:boolean};
+// Separate bounded budgets for the cold five-program station. A busy
+// software renderer must not force the other independent actors to wait.
+export const OLEARY_STATION_PREFLIGHT_MS=16000;
+export const OLEARY_STATION_PROGRAM_MS=7400;
 const pause=()=>new Promise<void>(done=>setTimeout(done,16));
 function lampRoster(scene:Scene,camera:Camera){
  const lamps:[Object3D,string,boolean][]=[];
@@ -40,11 +44,11 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,dra
    // Five cold station materials may complete over several busy software
    // frames. Keep that artist's detached wait bounded without reducing the
    // required programs or relaxing admission for the smaller previews.
-   const budget=timeoutMs??(draws===5?4200:1600);
+   const budget=timeoutMs??(draws===5?OLEARY_STATION_PROGRAM_MS:1600);
    const deadline=performance.now()+budget;
    // Use only our bounded poll; don't leave a pending Three compileAsync
    // timer after loss of the old tile's admission lease.
-   const maxTicks=timeoutMs===undefined?(draws===5?264:100):Math.ceil(budget/16);
+   const maxTicks=Math.ceil(budget/16);
    for(let ticks=0;ticks<=maxTicks;ticks++){
     if(!pending()||performance.now()>=deadline)return;
     if(!records.every(([,p])=>p!.isReady())){await pause();continue;}

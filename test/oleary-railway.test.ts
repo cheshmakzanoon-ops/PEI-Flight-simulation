@@ -20,7 +20,7 @@ import {makeOlearyExterior} from '../src/render/oleary-railway/exterior.ts';
 import {olearyFinish,olearyFinishEnvelope} from '../src/render/oleary-railway/finish.ts';
 import {OLEARY_NATIVE_GRADE} from '../src/render/oleary-railway/grade.generated.ts';
 import {partitionOlearyNativeXYZ} from '../src/render/oleary-railway/grade-shape.ts';
-import {olearyLinkPrograms,type OlearyProgramProof} from '../src/render/oleary-railway/program-gate.ts';
+import {olearyLinkPrograms,OLEARY_STATION_PROGRAM_MS,type OlearyProgramProof} from '../src/render/oleary-railway/program-gate.ts';
 
 const ab=(b:Buffer)=>b.buffer.slice(b.byteOffset,b.byteOffset+b.length) as ArrayBuffer,sha=(v:Buffer|ArrayBufferView)=>createHash('sha256').update(v as Buffer).digest('hex');
 const dir='public/world/',j=(n:string)=>JSON.parse(R(dir+n,'utf8')),spec=j('terrain.json'),terrain=new Terrain(spec,new Int16Array(ab(Z(R(dir+spec.file))))),
@@ -258,12 +258,15 @@ test('the five-material station links during the longer cold window, never after
  const notAborted=new AbortController().signal;
  assert((await probe(model.group,notAborted))?.());
  assert.equal(queries,5);
- tick=0;step=4300;
+ tick=0;step=OLEARY_STATION_PROGRAM_MS-1000;
+ assert((await probe(model.group,notAborted))?.());
+ assert.equal(queries,10);
+ tick=0;step=OLEARY_STATION_PROGRAM_MS+100;
  assert.equal(await probe(model.group,notAborted),undefined);
- assert.equal(queries,5);
+ assert.equal(queries,10);
  tick=0;step=2000;pass=false;
  assert.equal(await probe(model.group,notAborted),undefined);
- assert.equal(queries,6);
+ assert.equal(queries,11);
  assert.equal(model.group.parent,null);
  model.dispose();
 });

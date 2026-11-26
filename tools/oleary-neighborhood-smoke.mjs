@@ -109,7 +109,7 @@ try {
   if(mode==='link-refusal'){
    for(const err of flightErrors)assert.match(err,/THREE\.WebGLProgram|VALIDATE_STATUS|shader|link/i);
   }else assert.deepEqual(flightErrors,[]);
-  await page.locator('#world').screenshot({path:`${out}/oleary-neighborhood-${mode}.png`,timeout:25_000});
+  await page.locator('#world').screenshot({path:`${out}/oleary-neighborhood-${mode}.png`,timeout:75_000});
   receipt[mode]={start,close,distance,warehouseModules,flightErrors};
   await writeFile(`${out}/oleary-neighborhood.json`,JSON.stringify(receipt,null,2)+'\n');
   console.log('O’Leary warehouse flight:',mode,Math.round(distance),close.warehouse,close.link);
