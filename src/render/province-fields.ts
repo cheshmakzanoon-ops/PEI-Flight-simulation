@@ -41,7 +41,11 @@ export const provinceFieldOpticsGLSL=fieldStreamMaskGLSL+`
   vec3 pattern=mix(run,alternate,.36*wear);
   // The foreground may resolve clods, but the deepest stripe should lose
   // contrast when its period shrinks to the projected fragment footprint.
-  float edgeFade=1.-smoothstep(.18,.79,footprint);
+  // Seven dominant furrows in a 6.55 m repeat. Only the screen pixel's
+  // width across the rows changes whether the camera can resolve them.
+  // Keep the full footprint for the undirected relief and close grain.
+  float rowFootprint=(abs(a.y)+abs(b.y))*6.55;
+  float edgeFade=1.-smoothstep(.30,.83,rowFootprint);
   float nearGrain=(1.-smoothstep(18.,56.,d))*(1.-smoothstep(.09,.29,footprint));
   float crust=(noise(p.xz*3.55+vec2(98.,-34.))-.5)*.12+
               (noise(p.xz*.93+vec2(-62.,31.))-.5)*.07;

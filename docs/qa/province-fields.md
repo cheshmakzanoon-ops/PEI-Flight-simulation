@@ -8,15 +8,30 @@ Choose **Kings County · mapped farmland pass** in Dispatch. Enable **Expanded f
 
 This route crosses a retained 2023 field outline (FID 43994). It does not replace the original Kings **fields low pass**, which remains a comparison route for the earlier three-site study. Expanded farmland is still opt-in: the route itself does not request the extra assets. It represents dated field locations and authored rows, not current crops or usable flight guidance.
 
-An isolated check of the same Three.js land draw used the new departure’s ordinary Chase camera, unmodified terrain and authenticated v2 masks. At 2, 4, 6 and 8 seconds, 73,884, 59,665, 92,753 and 69,773 of the 960 × 640 frame pixels changed by more than two RGB code levels, with zero changes outside the layer’s support. At 11 and 14 seconds the frames were unchanged. Geometry, alpha and the restored image were exact. This is a [render-side test](farmland-v2/kings-mapped-route-native.json), not a browser loading, hardware benchmark or claim about the whole landscape.
+At the route’s introduction, an isolated check of the Three.js land draw used the new departure’s ordinary Chase camera, unmodified terrain and authenticated v2 masks. At 2, 4, 6 and 8 seconds, 73,884, 59,665, 92,753 and 69,773 of the 960 × 640 frame pixels changed by more than two RGB code levels, with zero changes outside the layer’s support. At 11 and 14 seconds the frames were unchanged. Geometry, alpha and the restored image were exact. This is a [render-side test](farmland-v2/kings-mapped-route-native.json), not a browser loading, hardware benchmark or claim about the whole landscape.
 
 ## What changed in v2
 
-The earlier bake calculated its own conversion from longitude and latitude. That put some strips of furrows on woods, built ground and a road shoulder. V2 regenerates the masks from the original field polygons using the simulator’s actual world projection. It does **not** sharpen an aerial photograph, add field geometry or change the furrow shader. The effect changes colour and lighting close to the ground, not terrain elevations, roads, buildings or flight contact. Surface rows are authored; neither their spacing nor bearing is surveyed.
+The earlier bake calculated its own conversion from longitude and latitude. That put some strips of furrows on woods, built ground and a road shoulder. V2 regenerates the masks from the original field polygons using the simulator’s actual world projection. The mask bake did **not** sharpen an aerial photograph, add field geometry or change the furrow shader. The effect changes colour and lighting close to the ground, not terrain elevations, roads, buildings or flight contact. Surface rows are authored; neither their spacing nor bearing is surveyed.
 
 ![Same camera with corrected furrow layer off and on: Prince at 14 m above ground, Queens and Kings at 30 m](art/farmland-v2-matched.webp)
 
 Each pair switches only the corrected field layer. It is **not** a comparison of v1 against v2. At 30 m the Prince view was subtler than the reference art threshold; the 14 m view resolves the rows. The Queens and Kings examples passed at 30 m. The historical road, forest and built-ground controls were unchanged after correction, as were the two high views at 550 m. See the [independent fixed-camera measurements](farmland-v2/independent-fixed-camera.json).
+
+## Oblique viewing
+
+A pixel stretched along a furrow can still resolve its cross-section. Expanded farmland now uses the pixel’s width **across** the rows for the row contrast, while leaving the image samples, normal relief and grain filtering as before. The licensed scan, field placement, draw count and downloads are unchanged. The separate three-site study is unaffected.
+
+For ground-only 960 × 640 captures from ordinary neutral passes, compare the old and new field-only RGB contributions against the previous shader drawn with the same camera at higher resolution and area-downsampled. With the scan’s fourfold anisotropy and a 4×-per-axis reference, the pooled RMS error of the displayed RGB-code effect dropped **12% in Kings, 34% in Queens and 17% in Prince** in the sampled frames. One early Kings frame was marginally worse (0.009 RGB code RMS). Unaffected pixels, alpha and a disabled layer stayed byte-identical. This is an image-sampling comparison on Mesa software rendering, not a measurement of temporal shimmer or FPS on player hardware.
+
+[Matched-render receipt](farmland-v2/furrow-footprint.json). To repeat the isolated check from the project root on Linux with EGL/GLES 3, Python, NumPy and Pillow:
+
+```sh
+node --experimental-transform-types tools/qa/field-footprint-material.mjs kings-mapped-farmland-pass \
+  | MESA_SHADER_CACHE_DISABLE=true PEI_AREA_SCALE=4 python3 tools/qa/field-footprint-compare.py
+```
+
+Replace the departure argument with `queens-fields` or `prince-fields` for the other counties. Use `PEI_AREA_SCALE=2` for the second downsampling reference, or `PEI_ANISO=1` to exercise the unaccelerated texture-filter fallback.
 
 ## Where the material is supported
 

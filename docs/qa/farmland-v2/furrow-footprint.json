@@ -1,0 +1,1240 @@
+{
+  "scope": "Actual Three.js r187 fragment and vertex programs, Mesa GLES, authenticated terrain/cover/furrow scan/atlas and selected indexed v2 shards, ordinary Chase simulation pose, six timestamps per captured route. Isolated settled N112 land only; excludes other scenery, true motion aliasing, native GPU frame times and startup.",
+  "metric": "RMSE of each 960x640 field-enabled minus stock RGB against the matching high-resolution old-shader difference averaged by pixel area. Evaluate supported pixels with a two-pixel neighbour guard; aggregate per-pixel across frames. No new geometry, pixels outside diagnostic support, alpha change, or stock override.",
+  "runs": [
+    {
+      "site": "kings-mapped-farmland-pass",
+      "anisotropy": 4,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 165484,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.942,
+            "p95": 2.5
+          },
+          "candidate": {
+            "rmse": 0.951,
+            "p95": 2.5
+          },
+          "oldEffect": {
+            "rmse": 2.622,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.634,
+            "p95": 6.0
+          }
+        },
+        "4": {
+          "pixels": 212208,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.897,
+            "p95": 2.25
+          },
+          "candidate": {
+            "rmse": 0.848,
+            "p95": 2.25
+          },
+          "oldEffect": {
+            "rmse": 2.116,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.159,
+            "p95": 6.0
+          }
+        },
+        "6": {
+          "pixels": 218223,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.038,
+            "p95": 2.5
+          },
+          "candidate": {
+            "rmse": 0.866,
+            "p95": 2.25
+          },
+          "oldEffect": {
+            "rmse": 2.565,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.735,
+            "p95": 7.0
+          }
+        },
+        "8": {
+          "pixels": 146686,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.199,
+            "p95": 3.25
+          },
+          "candidate": {
+            "rmse": 0.851,
+            "p95": 2.25
+          },
+          "oldEffect": {
+            "rmse": 2.809,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.078,
+            "p95": 8.0
+          }
+        },
+        "11": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.014,
+        0.8778
+      ],
+      "errorReductionPercent": 13.44,
+      "worstIndividualIncreasePerRgbCode": 0.009
+    },
+    {
+      "site": "queens-fields",
+      "anisotropy": 4,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 196505,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.441,
+            "p95": 3.75
+          },
+          "candidate": {
+            "rmse": 0.873,
+            "p95": 2.25
+          },
+          "oldEffect": {
+            "rmse": 3.707,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 4.153,
+            "p95": 9.0
+          }
+        },
+        "4": {
+          "pixels": 171222,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.418,
+            "p95": 3.5
+          },
+          "candidate": {
+            "rmse": 0.781,
+            "p95": 2.0
+          },
+          "oldEffect": {
+            "rmse": 4.246,
+            "p95": 10.0
+          },
+          "newEffect": {
+            "rmse": 4.753,
+            "p95": 11.0
+          }
+        },
+        "6": {
+          "pixels": 128406,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.392,
+            "p95": 3.75
+          },
+          "candidate": {
+            "rmse": 0.764,
+            "p95": 2.0
+          },
+          "oldEffect": {
+            "rmse": 3.258,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 3.747,
+            "p95": 9.0
+          }
+        },
+        "8": {
+          "pixels": 90342,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.252,
+            "p95": 3.25
+          },
+          "candidate": {
+            "rmse": 0.682,
+            "p95": 1.75
+          },
+          "oldEffect": {
+            "rmse": 3.068,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.497,
+            "p95": 8.0
+          }
+        },
+        "11": {
+          "pixels": 32414,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.336,
+            "p95": 3.75
+          },
+          "candidate": {
+            "rmse": 0.734,
+            "p95": 2.0
+          },
+          "oldEffect": {
+            "rmse": 2.037,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.48,
+            "p95": 6.0
+          }
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.3928,
+        0.7924
+      ],
+      "errorReductionPercent": 43.11,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "prince-fields",
+      "anisotropy": 4,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 145552,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.325,
+            "p95": 3.25
+          },
+          "candidate": {
+            "rmse": 1.021,
+            "p95": 2.5
+          },
+          "oldEffect": {
+            "rmse": 3.811,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 4.118,
+            "p95": 9.0
+          }
+        },
+        "4": {
+          "pixels": 8282,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.396,
+            "p95": 1.0
+          },
+          "candidate": {
+            "rmse": 0.396,
+            "p95": 1.0
+          },
+          "oldEffect": {
+            "rmse": 0.634,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.634,
+            "p95": 2.0
+          }
+        },
+        "6": {
+          "pixels": 23157,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.732,
+            "p95": 2.0
+          },
+          "candidate": {
+            "rmse": 0.701,
+            "p95": 1.75
+          },
+          "oldEffect": {
+            "rmse": 1.416,
+            "p95": 4.0
+          },
+          "newEffect": {
+            "rmse": 1.433,
+            "p95": 4.0
+          }
+        },
+        "8": {
+          "pixels": 17256,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.604,
+            "p95": 1.5
+          },
+          "candidate": {
+            "rmse": 0.593,
+            "p95": 1.5
+          },
+          "oldEffect": {
+            "rmse": 1.089,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.094,
+            "p95": 3.0
+          }
+        },
+        "11": {
+          "pixels": 17648,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.634,
+            "p95": 1.75
+          },
+          "candidate": {
+            "rmse": 0.626,
+            "p95": 1.5
+          },
+          "oldEffect": {
+            "rmse": 0.88,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.883,
+            "p95": 2.0
+          }
+        },
+        "14": {
+          "pixels": 14845,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.86,
+            "p95": 2.25
+          },
+          "candidate": {
+            "rmse": 0.809,
+            "p95": 2.25
+          },
+          "oldEffect": {
+            "rmse": 1.104,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.135,
+            "p95": 3.0
+          }
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.1379,
+        0.9084
+      ],
+      "errorReductionPercent": 20.17,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "kings-mapped-farmland-pass",
+      "anisotropy": 4,
+      "areaReferenceScale": 4,
+      "stdFrames": {
+        "2": {
+          "pixels": 165473,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.091,
+            "p95": 2.875
+          },
+          "candidate": {
+            "rmse": 1.1,
+            "p95": 2.875
+          },
+          "oldEffect": {
+            "rmse": 2.62,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.631,
+            "p95": 6.0
+          }
+        },
+        "4": {
+          "pixels": 212202,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.101,
+            "p95": 2.875
+          },
+          "candidate": {
+            "rmse": 1.041,
+            "p95": 2.75
+          },
+          "oldEffect": {
+            "rmse": 2.114,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.157,
+            "p95": 6.0
+          }
+        },
+        "6": {
+          "pixels": 218213,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.246,
+            "p95": 3.125
+          },
+          "candidate": {
+            "rmse": 1.07,
+            "p95": 2.688
+          },
+          "oldEffect": {
+            "rmse": 2.564,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.734,
+            "p95": 7.0
+          }
+        },
+        "8": {
+          "pixels": 146678,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.447,
+            "p95": 3.875
+          },
+          "candidate": {
+            "rmse": 1.092,
+            "p95": 2.812
+          },
+          "oldEffect": {
+            "rmse": 2.806,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.077,
+            "p95": 8.0
+          }
+        },
+        "11": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.2172,
+        1.073
+      ],
+      "errorReductionPercent": 11.84,
+      "worstIndividualIncreasePerRgbCode": 0.009
+    },
+    {
+      "site": "queens-fields",
+      "anisotropy": 4,
+      "areaReferenceScale": 4,
+      "stdFrames": {
+        "2": {
+          "pixels": 196495,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.916,
+            "p95": 4.938
+          },
+          "candidate": {
+            "rmse": 1.318,
+            "p95": 3.375
+          },
+          "oldEffect": {
+            "rmse": 3.709,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 4.155,
+            "p95": 9.0
+          }
+        },
+        "4": {
+          "pixels": 171225,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.818,
+            "p95": 4.688
+          },
+          "candidate": {
+            "rmse": 1.157,
+            "p95": 3.0
+          },
+          "oldEffect": {
+            "rmse": 4.246,
+            "p95": 10.0
+          },
+          "newEffect": {
+            "rmse": 4.754,
+            "p95": 11.0
+          }
+        },
+        "6": {
+          "pixels": 128410,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.83,
+            "p95": 4.75
+          },
+          "candidate": {
+            "rmse": 1.173,
+            "p95": 3.0
+          },
+          "oldEffect": {
+            "rmse": 3.259,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 3.749,
+            "p95": 9.0
+          }
+        },
+        "8": {
+          "pixels": 90361,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.612,
+            "p95": 4.438
+          },
+          "candidate": {
+            "rmse": 1.023,
+            "p95": 2.812
+          },
+          "oldEffect": {
+            "rmse": 3.069,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.496,
+            "p95": 8.0
+          }
+        },
+        "11": {
+          "pixels": 32403,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.808,
+            "p95": 4.875
+          },
+          "candidate": {
+            "rmse": 1.211,
+            "p95": 3.188
+          },
+          "oldEffect": {
+            "rmse": 2.035,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.476,
+            "p95": 6.0
+          }
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.8235,
+        1.1987
+      ],
+      "errorReductionPercent": 34.26,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "prince-fields",
+      "anisotropy": 4,
+      "areaReferenceScale": 4,
+      "stdFrames": {
+        "2": {
+          "pixels": 145537,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.486,
+            "p95": 3.688
+          },
+          "candidate": {
+            "rmse": 1.183,
+            "p95": 3.0
+          },
+          "oldEffect": {
+            "rmse": 3.81,
+            "p95": 8.0
+          },
+          "newEffect": {
+            "rmse": 4.114,
+            "p95": 9.0
+          }
+        },
+        "4": {
+          "pixels": 8287,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.409,
+            "p95": 1.0
+          },
+          "candidate": {
+            "rmse": 0.409,
+            "p95": 1.0
+          },
+          "oldEffect": {
+            "rmse": 0.632,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.632,
+            "p95": 2.0
+          }
+        },
+        "6": {
+          "pixels": 23151,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.001,
+            "p95": 2.625
+          },
+          "candidate": {
+            "rmse": 0.971,
+            "p95": 2.5
+          },
+          "oldEffect": {
+            "rmse": 1.415,
+            "p95": 4.0
+          },
+          "newEffect": {
+            "rmse": 1.433,
+            "p95": 4.0
+          }
+        },
+        "8": {
+          "pixels": 17259,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.836,
+            "p95": 2.188
+          },
+          "candidate": {
+            "rmse": 0.823,
+            "p95": 2.125
+          },
+          "oldEffect": {
+            "rmse": 1.088,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.093,
+            "p95": 3.0
+          }
+        },
+        "11": {
+          "pixels": 17650,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.9,
+            "p95": 2.438
+          },
+          "candidate": {
+            "rmse": 0.893,
+            "p95": 2.375
+          },
+          "oldEffect": {
+            "rmse": 0.879,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.882,
+            "p95": 2.0
+          }
+        },
+        "14": {
+          "pixels": 14860,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.104,
+            "p95": 3.062
+          },
+          "candidate": {
+            "rmse": 1.054,
+            "p95": 2.938
+          },
+          "oldEffect": {
+            "rmse": 1.107,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.142,
+            "p95": 3.0
+          }
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.3122,
+        1.0895
+      ],
+      "errorReductionPercent": 16.97,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "kings-mapped-farmland-pass",
+      "anisotropy": 1,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 165484,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.108,
+            "p95": 2.75
+          },
+          "candidate": {
+            "rmse": 1.107,
+            "p95": 2.75
+          },
+          "oldEffect": {
+            "rmse": 2.352,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.356,
+            "p95": 6.0
+          }
+        },
+        "4": {
+          "pixels": 212208,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.067,
+            "p95": 2.75
+          },
+          "candidate": {
+            "rmse": 1.059,
+            "p95": 2.75
+          },
+          "oldEffect": {
+            "rmse": 1.744,
+            "p95": 4.0
+          },
+          "newEffect": {
+            "rmse": 1.761,
+            "p95": 4.0
+          }
+        },
+        "6": {
+          "pixels": 218223,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.318,
+            "p95": 3.25
+          },
+          "candidate": {
+            "rmse": 1.263,
+            "p95": 3.25
+          },
+          "oldEffect": {
+            "rmse": 2.071,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.127,
+            "p95": 5.0
+          }
+        },
+        "8": {
+          "pixels": 146686,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.503,
+            "p95": 3.75
+          },
+          "candidate": {
+            "rmse": 1.413,
+            "p95": 3.5
+          },
+          "oldEffect": {
+            "rmse": 2.132,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.222,
+            "p95": 5.0
+          }
+        },
+        "11": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.2472,
+        1.2069
+      ],
+      "errorReductionPercent": 3.23,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "queens-fields",
+      "anisotropy": 1,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 196505,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.683,
+            "p95": 4.25
+          },
+          "candidate": {
+            "rmse": 1.567,
+            "p95": 3.75
+          },
+          "oldEffect": {
+            "rmse": 2.982,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 3.141,
+            "p95": 7.0
+          }
+        },
+        "4": {
+          "pixels": 171222,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.919,
+            "p95": 4.75
+          },
+          "candidate": {
+            "rmse": 1.766,
+            "p95": 4.5
+          },
+          "oldEffect": {
+            "rmse": 3.208,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.402,
+            "p95": 7.0
+          }
+        },
+        "6": {
+          "pixels": 128406,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.586,
+            "p95": 4.0
+          },
+          "candidate": {
+            "rmse": 1.464,
+            "p95": 3.5
+          },
+          "oldEffect": {
+            "rmse": 2.527,
+            "p95": 6.0
+          },
+          "newEffect": {
+            "rmse": 2.705,
+            "p95": 6.0
+          }
+        },
+        "8": {
+          "pixels": 90342,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.457,
+            "p95": 3.75
+          },
+          "candidate": {
+            "rmse": 1.346,
+            "p95": 3.25
+          },
+          "oldEffect": {
+            "rmse": 2.368,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 2.515,
+            "p95": 6.0
+          }
+        },
+        "11": {
+          "pixels": 32414,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.095,
+            "p95": 3.0
+          },
+          "candidate": {
+            "rmse": 1.011,
+            "p95": 2.75
+          },
+          "oldEffect": {
+            "rmse": 1.848,
+            "p95": 5.0
+          },
+          "newEffect": {
+            "rmse": 1.968,
+            "p95": 5.0
+          }
+        },
+        "14": {
+          "pixels": 0,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.6771,
+        1.5509
+      ],
+      "errorReductionPercent": 7.53,
+      "worstIndividualIncreasePerRgbCode": 0
+    },
+    {
+      "site": "prince-fields",
+      "anisotropy": 1,
+      "areaReferenceScale": 2,
+      "stdFrames": {
+        "2": {
+          "pixels": 145552,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 1.843,
+            "p95": 4.5
+          },
+          "candidate": {
+            "rmse": 1.723,
+            "p95": 4.25
+          },
+          "oldEffect": {
+            "rmse": 3.106,
+            "p95": 7.0
+          },
+          "newEffect": {
+            "rmse": 3.262,
+            "p95": 7.0
+          }
+        },
+        "4": {
+          "pixels": 8282,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.393,
+            "p95": 1.0
+          },
+          "candidate": {
+            "rmse": 0.393,
+            "p95": 1.0
+          },
+          "oldEffect": {
+            "rmse": 0.63,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.63,
+            "p95": 2.0
+          }
+        },
+        "6": {
+          "pixels": 23157,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.626,
+            "p95": 1.5
+          },
+          "candidate": {
+            "rmse": 0.619,
+            "p95": 1.5
+          },
+          "oldEffect": {
+            "rmse": 1.38,
+            "p95": 4.0
+          },
+          "newEffect": {
+            "rmse": 1.392,
+            "p95": 4.0
+          }
+        },
+        "8": {
+          "pixels": 17256,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.523,
+            "p95": 1.25
+          },
+          "candidate": {
+            "rmse": 0.522,
+            "p95": 1.25
+          },
+          "oldEffect": {
+            "rmse": 1.068,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.07,
+            "p95": 3.0
+          }
+        },
+        "11": {
+          "pixels": 17648,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.52,
+            "p95": 1.25
+          },
+          "candidate": {
+            "rmse": 0.519,
+            "p95": 1.25
+          },
+          "oldEffect": {
+            "rmse": 0.85,
+            "p95": 2.0
+          },
+          "newEffect": {
+            "rmse": 0.851,
+            "p95": 2.0
+          }
+        },
+        "14": {
+          "pixels": 14845,
+          "rollbackExact": true,
+          "outsideRgbUnchanged": true,
+          "alphaUnchanged": true,
+          "before": {
+            "rmse": 0.706,
+            "p95": 2.0
+          },
+          "candidate": {
+            "rmse": 0.698,
+            "p95": 1.75
+          },
+          "oldEffect": {
+            "rmse": 1.026,
+            "p95": 3.0
+          },
+          "newEffect": {
+            "rmse": 1.036,
+            "p95": 3.0
+          }
+        }
+      },
+      "weightedErrorPerRgbCode": [
+        1.5168,
+        1.4227
+      ],
+      "errorReductionPercent": 6.2,
+      "worstIndividualIncreasePerRgbCode": 0
+    }
+  ],
+  "environment": {
+    "gles": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "depthBits": 24,
+    "atlasSha256": "a1ad586e9d166bc5fcd2935942642bdbf493b26436ce6f7047536a655615f89a",
+    "scanSha256": "84cbd9a89571874ae35aac362d384662a3ce374e53c3c4a7499784918e81cc25",
+    "programs": {
+      "stock": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "b6cf1f8f4ca31fabb38751f2b2b7425e031d662c0c1f67a671ff30f5af53e384"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "0d1d12acd9b95cd5df0ce50221300f8ccdd6c15772d5d0723860e67c12949a39"
+          }
+        }
+      },
+      "terrain": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "b6cf1f8f4ca31fabb38751f2b2b7425e031d662c0c1f67a671ff30f5af53e384"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "21f08f19616f15c91ed50f66b587b8c9a202a2161a8914530d4d85ed6755283d"
+          }
+        }
+      },
+      "mask": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "b6cf1f8f4ca31fabb38751f2b2b7425e031d662c0c1f67a671ff30f5af53e384"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "8dd8a46eb7a2cb1172e6e2b883d22b94c5fad0739c46146c115b50c06960e520"
+          }
+        }
+      },
+      "before": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "b6cf1f8f4ca31fabb38751f2b2b7425e031d662c0c1f67a671ff30f5af53e384"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "ad08449a09148991ace2d14796580f4502aedbcf041ac6174bb2fa80e716bc20"
+          }
+        }
+      }
+    }
+  }
+}
