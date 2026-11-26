@@ -5,7 +5,7 @@ import {
 import {project} from '../../sim/geo.ts';
 import {DOWNTOWN_TILES} from '../summerside-roof-source.ts';
 import {olearyLinkPrograms,type OlearyLink,type OlearyProgramProof} from '../oleary-railway/program-gate.ts';
-import {TERMINAL_WIDTH,TERMINAL_WIRE,terminalDrawAllows,terminalWireAllows,type TerminalAttr,type TerminalStream} from './terminal-wall-owner.ts';
+import {TERMINAL_WIDTH,TERMINAL_WIRE,terminalDrawAllows,terminalTownFitAllows,terminalWireAllows,type TerminalAttr,type TerminalStream} from './terminal-wall-owner.ts';
 import {terminalRooflessWallShader} from './terminal-wall-tone.ts';
 
 const [w,s,e,n]=DOWNTOWN_TILES.q032001.bounds,nw=project(w,n),se=project(e,s);
@@ -18,13 +18,17 @@ const transform=(o:Object3D,x:number,z:number)=>o.matrixAutoUpdate&&o.matrixWorl
  o.quaternion.w===1&&o.scale.x===1&&o.scale.y===1&&o.scale.z===1;
 const keys=Object.keys(TERMINAL_WIDTH) as TerminalAttr[];
 const near=(c:Camera)=>{const {x,y,z}=c.position;return Number.isFinite(y)&&y<650&&(x+45207)**2+(z-12539)**2<1800**2;};
-const mode=(m:ShaderMaterial,s:Scene)=>m.type==='ShaderMaterial'&&m.glslVersion===null&&m.side===DoubleSide&&m.vertexColors&&
+const mode=(m:ShaderMaterial,s:Scene,town:boolean)=>m.type==='ShaderMaterial'&&m.glslVersion===null&&m.side===DoubleSide&&m.vertexColors&&
  m.visible&&!m.transparent&&!m.wireframe&&m.colorWrite&&m.depthWrite&&m.depthTest&&m.depthFunc===LessEqualDepth&&
  m.blending===NormalBlending&&!m.stencilWrite&&!m.clippingPlanes&&!m.polygonOffset&&m.opacity===1&&m.alphaTest===0&&
  !m.alphaHash&&!m.fog&&!m.lights&&!m.clipping&&m.allowOverride&&m.toneMapped&&
  m.onBeforeRender===Material.prototype.onBeforeRender&&m.onBeforeCompile===Material.prototype.onBeforeCompile&&
  m.customProgramCacheKey===Material.prototype.customProgramCacheKey&&
- Object.keys(m.uniforms).length===1&&s.environment?.isTexture===true&&m.uniforms.waterStreetSky?.value===s.environment&&
+ Object.keys(m.uniforms).length===(town?3:1)&&s.environment?.isTexture===true&&m.uniforms.waterStreetSky?.value===s.environment&&
+ (town?m.uniforms.townWallGain?.value===1&&m.uniforms.townWallSky?.value?.isTexture===true&&
+   m.uniforms.townWallSky.value.source===s.environment.source&&m.vertexShader.includes('attribute vec3 townWallFit;')&&
+   m.fragmentShader.includes('uniform sampler2D townWallSky;'):
+   !m.vertexShader.includes('attribute vec3 townWallFit;'))&&
  !Object.keys(m.defines).length;
 
 const settings=['type','version','fragmentShader','vertexShader','glslVersion','visible','side','shadowSide',
@@ -57,8 +61,12 @@ function attrAllows(k:TerminalAttr,v:unknown):v is BufferAttribute{
 }
 const indexed=(a:BufferAttribute|null):a is BufferAttribute=>a instanceof BufferAttribute&&a.itemSize===1&&!a.normalized&&
  a.gpuType===FloatType&&a.usage===StaticDrawUsage&&!a.updateRanges.length&&a.array instanceof Uint32Array;
-const baseDraw=(g:BufferGeometry)=>g.drawRange.start===0&&g.drawRange.count===Infinity&&!g.groups.length&&
- !g.morphTargetsRelative&&!Object.keys(g.morphAttributes).length&&Object.keys(g.attributes).length===keys.length;
+const baseDraw=(g:BufferGeometry,town:boolean)=>g.drawRange.start===0&&g.drawRange.count===Infinity&&!g.groups.length&&
+ !g.morphTargetsRelative&&!Object.keys(g.morphAttributes).length&&Object.keys(g.attributes).length===keys.length+Number(town);
+function validTownFit(a:unknown):a is BufferAttribute&{array:Int16Array<ArrayBufferLike>}{
+ return a instanceof BufferAttribute&&a.array instanceof Int16Array&&a.count===TERMINAL_WIRE.total&&
+  a.itemSize===3&&!a.normalized&&a.gpuType===FloatType&&a.usage===StaticDrawUsage&&!a.updateRanges.length;
+}
 type Before=Mesh['onBeforeRender'];
 type After=Mesh['onAfterRender'];
 type Program={readonly program:WebGLProgram};
@@ -92,9 +100,14 @@ export class TerminalWallPreview{
   this.pending=true;
   const {owner:o,scene,p:{renderer,camera}}=this,signal=this.abort.signal;
   try{
-   const stock=o.material,g=o.geometry;
-   if(!(stock instanceof ShaderMaterial)||!mode(stock,scene)||g.index||!baseDraw(g))return;
-   const skyBinding=stock.uniforms.waterStreetSky,sky=skyBinding.value;
+   const stock=o.material,g=o.geometry,extraFit=g.getAttribute('townWallFit'),town=extraFit!==undefined;
+   if(!(stock instanceof ShaderMaterial)||!mode(stock,scene,town)||g.index||!baseDraw(g,town))return;
+   const sky=stock.uniforms.waterStreetSky.value;
+   const originalUniforms=Object.entries(stock.uniforms).map(([k,u])=>({k,u,value:u.value}));
+   const sameBindings=()=>originalUniforms.every(({k,u,value})=>stock.uniforms[k]===u&&u.value===value);
+   const baseFit=validTownFit(extraFit)?{extraFit,array:extraFit.array,version:extraFit.version,
+     local:extraFit.array.slice(TERMINAL_WIRE.first*3,TERMINAL_WIRE.last*3)}:undefined;
+   if(town&&!baseFit)return;
    const report=this.p.trackDraw, stockLease=materialLease(stock);
    const streams=keys.map(name=>{const v=g.getAttribute(name);return attrAllows(name,v)?
     {name,v,array:v.array,version:v.version,local:v.array.slice(TERMINAL_WIRE.first*v.itemSize,TERMINAL_WIRE.last*v.itemSize)}:undefined;});
@@ -107,10 +120,15 @@ export class TerminalWallPreview{
     if(signal.aborted||!this.current()||o.parent!==scene||scene.parent||scene.overrideMaterial||!o.visible||
       o.material!==m||o.onBeforeRender!==before||o.onAfterRender!==after||o.layers.mask!==layer||o.renderOrder!==order||
       o.frustumCulled!==cull||o.castShadow||o.receiveShadow||o.customDepthMaterial||o.customDistanceMaterial||
-      !stockLease()||stock.uniforms.waterStreetSky!==skyBinding||skyBinding.value!==sky||scene.environment!==sky||
+      !stockLease()||!sameBindings()||scene.environment!==sky||
       !transform(o,X,Z)||!transform(scene,0,0))return false;
     const draw=o.geometry, i=draw.index;
-    if(!baseDraw(draw)||(actual&&(actual!==draw||!sameMatrix(o,expected)||!sameMatrix(scene,identity))))return false;
+    if(!baseDraw(draw,town)||(actual&&(actual!==draw||!sameMatrix(o,expected)||!sameMatrix(scene,identity))))return false;
+    if(baseFit){
+     const fitted=draw.getAttribute('townWallFit');
+     if(fitted!==baseFit.extraFit||!validTownFit(fitted)||fitted.array!==baseFit.array||fitted.version!==baseFit.version)return false;
+     for(let j=0,begin=TERMINAL_WIRE.first*3;j<baseFit.local.length;j++)if(fitted.array[begin+j]!==baseFit.local[j])return false;
+    }
     if(streams.some(a=>!a||draw.getAttribute(a.name)!==a.v||a.v.array!==a.array||a.v.version!==a.version||!attrAllows(a.name,a.v)))return false;
     if(i!==null&&!indexed(i))return false;
     const roles=g.getAttribute('topFlag').array as Float32Array;
@@ -139,9 +157,11 @@ export class TerminalWallPreview{
    const shader=terminalRooflessWallShader(stock.vertexShader,stock.fragmentShader);
    if(!shader||!stockOK())return;
    const wireStreams=Object.fromEntries(streams.map(a=>[a!.name,a!.array])) as Record<TerminalAttr,TerminalStream>;
-   if(!await terminalWireAllows(atlas,id,wire,rows,X,wireStreams)||!stockOK())return;
+   const [ownerValid,townValid]=await Promise.all([terminalWireAllows(atlas,id,wire,rows,X,wireStreams),
+     baseFit?terminalTownFitAllows(X,baseFit.array):true]);
+   if(!ownerValid||!townValid||!stockOK())return;
    const live={value:0},m=stock.clone(),defaults=stock.defaultAttributeValues;
-   m.vertexShader=shader.vertex;m.fragmentShader=shader.fragment;m.uniforms={waterStreetSky:skyBinding,terminalWallLive:live};
+   m.vertexShader=shader.vertex;m.fragmentShader=shader.fragment;m.uniforms={...stock.uniforms,terminalWallLive:live};
    m.defaultAttributeValues={color:[...defaults.color],uv:[...defaults.uv],uv1:[...defaults.uv1]};
    m.name='Summerside q68 documentary wall finish';
    let proof:OlearyProgramProof|undefined,programAtLink:Program|undefined,primed=false;

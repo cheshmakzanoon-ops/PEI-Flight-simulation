@@ -69,6 +69,21 @@ export async function terminalWireAllows(atlas:string|undefined,id:string,raw:Ar
  }catch{return false;}
 }
 
+/** Exact seventh attribute in the hosted Standard close-wall layout.
+ * Preserve the existing town stream, including all neighbors, rather than
+ * silently replacing fitted-window shading with a different stock material. */
+export async function terminalTownFitAllows(ownerX:number,town:Int16Array<ArrayBufferLike>){
+ const colorProfile=TERMINAL_PROFILES.findIndex(x=>x===ownerX);
+ const {total,first,last}=TERMINAL_WIRE;
+ if(colorProfile<0||!(town instanceof Int16Array)||town.length!==total*3||!(town.buffer instanceof ArrayBuffer))return false;
+ const all=new Uint8Array(town.buffer,town.byteOffset,town.byteLength);
+ try{
+  const [digest,scope]=await Promise.all([sha(all),sha(all.subarray(first*6,last*6))]);
+  return digest==='a94aa3460236497cf08721c79e06b3cbf3da33fb52e2cd8782286bba7801d7d8'&&
+    scope==='870f4d10309408e7dccc9ab45d8a62350e0e14710fa6c5f0332b38a07c2c59dc';
+ }catch{return false;}
+}
+
 const knownHoles=[
  [[30618,30666]],
  [[51228,51429],[65946,65988]],

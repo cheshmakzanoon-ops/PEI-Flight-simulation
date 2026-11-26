@@ -7,6 +7,7 @@ import {
  type BufferGeometry,type Material,type Mesh,type WebGLRenderer
 } from 'three';
 import {Buildings} from '../src/render/buildings.ts';
+import {TOWN_WALL_CORE_AREAS} from '../src/render/town-wall-optics.ts';
 import {authenticatedOwnerCohort} from '../src/render/authenticated-owner-cohort.ts';
 import {authenticatedOwnerVariant} from '../src/render/indian-river/authored-owner-variant.ts';
 import {TERMINAL_PROFILES,TERMINAL_WIRE as P,terminalDrawAllows,terminalWireAllows,type TerminalAttr,type TerminalStream} from '../src/render/summerside-terminal/terminal-wall-owner.ts';
@@ -22,10 +23,11 @@ const t=new Terrain(m,new Int16Array(d.buffer,d.byteOffset,d.byteLength/2));
 const a=j('buildings/index.json'),q=a.tiles.find((q:{id:string})=>q.id===P.id);
 const data=raw('buildings/'+a.file).subarray(q.offset,q.offset+q.bytes), body=Uint8Array.from(data).buffer;
 const rows=JSON.parse(gunzipSync(data).toString()).features;
-function fixture(){
- const scene=new Scene();scene.environment=new Texture();
+function fixture(town=false){
+ const scene=new Scene(),panorama=new Texture();scene.environment=panorama.clone();
  const Generator=Buildings as unknown as new(...args:unknown[])=>{generate(...a:unknown[]):Mesh;tiles:unknown[]};
- const b=new Generator(scene,t,[q],undefined,a.sha256);
+ const b=new Generator(scene,t,[q],undefined,a.sha256,undefined,undefined,undefined,undefined,false,undefined,undefined,
+  false,undefined,undefined,undefined,undefined,undefined,town?{panorama,gain:{value:1},mode:'core',areas:TOWN_WALL_CORE_AREAS}:undefined);
  const owner=b.generate(rows,b.tiles[0],false,P.ordinal,false,undefined,true,true);
  scene.add(owner);scene.updateMatrixWorld(true);
  const stock=owner.material;assert(stock instanceof ShaderMaterial);
@@ -99,6 +101,39 @@ test('the true submitted q68 actor works with stock, rail, wharf and composed in
  }
  v.dispose();assert.equal(f.owner.material,f.stock);assert.equal(f.owner.onAfterRender,f.hook);
  c.dispose();assert.equal(f.owner.geometry,f.g);
+});
+
+test('production Standard core keeps the seventh stream and independent fitted-window sky binding',async()=>{
+ const f=fixture(true),fit=f.g.getAttribute('townWallFit');
+ assert.equal(fit.count,P.total);assert(fit.array instanceof Int16Array);
+ assert.deepEqual(Object.keys(f.stock.uniforms),['waterStreetSky','townWallGain','townWallSky']);
+ const c=authenticatedOwnerCohort(f.owner)!,rail=new Group(),wharf=new Group();f.scene.add(rail,wharf);
+ const a=c.add(rail,[30618,30666],{vertices:P.total,start:30618,end:30666})!;
+ const w=c.addMany(wharf,[[51228,51429],[65946,65988]].map(([start,end])=>({span:[start,end],proof:{vertices:P.total,start,end}})))!;
+ const v=f.actor(()=>c.stockForProof()===f.g);
+ await boot(v);assert.equal(f.stub.collected,1);
+ a.sync(true);w.sync(true);v.sync();assert(v.active);
+ assert.equal(f.owner.geometry.index?.count,69615);assert.equal(f.owner.geometry.getAttribute('townWallFit'),fit);
+ const valid=f.owner.material as ShaderMaterial;
+ for(const [key,wrapper] of Object.entries(f.stock.uniforms))assert.equal(valid.uniforms[key],wrapper);
+ assert.equal(f.draw(),1);assert(v.rendered);
+ assert(rail.visible&&wharf.visible);
+ // A changed donor value or copied seventh stream cannot keep the touchup alive.
+ f.stock.uniforms.townWallGain.value=.5;v.sync();
+ assert.equal(f.owner.material,f.stock);assert(!v.rendered);
+ assert(rail.visible&&wharf.visible);
+ f.stock.uniforms.townWallGain.value=1;v.sync();assert.equal(f.draw(),1);
+ fit.array[P.first*3]^=1;
+ v.sync();assert.equal(f.owner.material,f.stock);
+ v.dispose();c.dispose();
+});
+
+test('one unexpected word elsewhere in the Standard fitted stream fails the exact startup proof',async()=>{
+ const f=fixture(true),fit=f.g.getAttribute('townWallFit');
+ fit.array[0]^=1;
+ const v=f.actor();await boot(v);v.sync();
+ assert(!v.active);assert.equal(f.stub.collected,0);assert.equal(f.owner.material,f.stock);
+ v.dispose();
 });
 
 test('standalone station with stock wharf has a read-only exact stock lease',async()=>{

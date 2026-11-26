@@ -79,7 +79,7 @@ try{
    const shaders=new WeakSet(),candidates=new WeakSet(),current=new WeakMap(),slots=new WeakMap();
    const s=window.terminalWallSmoke={freeze:false,clock:null,request:null,target:null,frame:null,gain:-1,
     candidateDraws:0,stockDraws:0,candidateSources:0,refused:0,errors:[]};
-   let originalSky=null;
+   const originalSkies={water:null,town:null};
    proto.shaderSource=function(q,code){
     if(code.includes('terminalWallLive')&&code.includes('q68OuterWall')){
      shaders.add(q);s.candidateSources++;
@@ -100,30 +100,31 @@ try{
     if(!slots.has(p))slots.set(p,{
      gain:uniform.call(gl,p,'terminalWallLive'),view:uniform.call(gl,p,'viewMatrix'),
      proj:uniform.call(gl,p,'projectionMatrix'),model:uniform.call(gl,p,'modelMatrix'),
-     sky:uniform.call(gl,p,'waterStreetSky')});
+     sky:uniform.call(gl,p,'waterStreetSky'),townSky:uniform.call(gl,p,'townWallSky'),
+     townGain:uniform.call(gl,p,'townWallGain')});
     const q=slots.get(p),world=q.model&&gl.getUniform(p,q.model);
     if(!world||world[12]!==origin[0]||world[13]!==origin[1]||world[14]!==origin[2])return call();
     const gain=q.gain===null?null:gl.getUniform(p,q.gain);
     if(gain===null)s.stockDraws++;else s.candidateDraws++;
-    let sky;
-    if(q.sky!==null&&(s.request!==null||!originalSky&&gain===null)){
-     const old=gl.getParameter(gl.ACTIVE_TEXTURE),unit=gl.getUniform(p,q.sky);
+    const bindWitness=(slot,lane)=>{
+     if(slot===null||s.request===null&&(originalSkies[lane]||gain!==null))return null;
+     const old=gl.getParameter(gl.ACTIVE_TEXTURE),unit=gl.getUniform(p,slot);
      let texture,wrapS;
      try{
       gl.activeTexture(gl.TEXTURE0+unit);
       texture=gl.getParameter(gl.TEXTURE_BINDING_2D);
       wrapS=texture===null?null:gl.getTexParameter(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S);
      }finally{gl.activeTexture(old);}
-     if(gain===null&&texture&&wrapS===gl.REPEAT)originalSky=texture;
-     sky={repeat:!!texture&&wrapS===gl.REPEAT,
-      retained:originalSky===null?null:originalSky===texture};
-    }
+     if(gain===null&&texture&&wrapS===gl.REPEAT&&!originalSkies[lane])originalSkies[lane]=texture;
+     return {repeat:!!texture&&wrapS===gl.REPEAT,retained:originalSkies[lane]===null?null:originalSkies[lane]===texture};
+    };
+    const sky=bindWitness(q.sky,'water'),townSky=bindWitness(q.townSky,'town');
     if(s.request!==null){
      const bound=gl.getParameter(gl.ELEMENT_ARRAY_BUFFER_BINDING);
      const bytes=bound?gl.getBufferParameter(gl.ELEMENT_ARRAY_BUFFER,gl.BUFFER_SIZE):0;
      const index=bytes===actorsOnly*4?new Uint8Array(bytes):null;
      if(index)gl.getBufferSubData(gl.ELEMENT_ARRAY_BUFFER,0,index);
-     s.target={draw,gain,count:c,index,sky,
+     s.target={draw,gain,count:c,index,sky,townSky,townGain:q.townGain===null?null:gl.getUniform(p,q.townGain),
       times:(s.target?.times??0)+1,view:Array.from(gl.getUniform(p,q.view)),projection:Array.from(gl.getUniform(p,q.proj))};
     }
     if(gain===null||s.gain<0)return call();
@@ -185,6 +186,7 @@ try{
     assert.deepEqual([first.drawCalls,first.triangles],[second.drawCalls,second.triangles]);logs.push(second);
     assert(Math.hypot(second.x-start.x,second.z-start.z)<286,'lost enough wall coverage');
    }
+   const captures={};
    const take=async(key,gain)=>{
     await page.evaluate(({key,gain})=>{
      const m=window.terminalWallSmoke;m.frame=null;m.request=key;m.gain=gain;m.freeze=true;
@@ -197,8 +199,11 @@ try{
     assert.equal(f.times,1);assert.equal(f.draw,'uint32');assert.equal(f.count,actorsOnly);
     assert.equal(f.gain,mode==='active'?1:null);
     assert.equal(f.indexDigest,maskDigest);
-    assert.equal(f.sky.repeat,true);assert.notEqual(f.sky.retained,false);
+    assert.equal(f.sky?.repeat,true);assert.notEqual(f.sky.retained,false);
+    assert.equal(f.townSky?.repeat,true);assert.notEqual(f.townSky.retained,false);
+    assert.equal(f.townGain,1);
     const dat=Buffer.from(f.png.split(',')[1],'base64');delete f.png;
+    captures[key]={...f,pngSha256:createHash('sha256').update(dat).digest('hex')};
     await writeFile(`${out}/q68-${key}.png`,dat);return {...f,dat};
    };
    let comparison;
@@ -219,7 +224,7 @@ try{
    assert.deepEqual(after.warnings,[]);assert.deepEqual(errors,[]);
    const r=`bytes=${fixture.offset}-${fixture.offset+fixture.size-1}`;
    assert.equal(requests.filter(x=>x===r).length,1,'q68 must use exactly one range request');
-   result[mode]={start,after,comparison,requests,expectedIsolatedLinkErrors:rejected};
+   result[mode]={start,after,comparison,captures,requests,expectedIsolatedLinkErrors:rejected};
    await writeFile(`${out}/q68-wall-native.json`,JSON.stringify(result,null,2)+'\n');
    console.log('Summerside terminal compiled native:',mode,comparison??'retained stock');
   }catch(err){
