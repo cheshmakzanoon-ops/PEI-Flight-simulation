@@ -1,0 +1,344 @@
+{
+  "kind": "Source contrast screen only; a high rank is not a render defect or permission to retouch",
+  "atlasSha256": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCoverSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "authenticatedTiles": 245,
+  "counts": {
+    "x": {
+      "adjacentPairs": 222,
+      "eligibleWindows": 23461,
+      "highContrastWindows": 152
+    },
+    "z": {
+      "adjacentPairs": 212,
+      "eligibleWindows": 22949,
+      "highContrastWindows": 128
+    }
+  },
+  "distinctCandidates": [
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "10-11",
+        "11-11"
+      ],
+      "alongWindow": [
+        457,
+        459,
+        475,
+        477
+      ],
+      "centerLonLat": [
+        -63.596875,
+        46.48152557
+      ],
+      "coverBox": [
+        1407,
+        1447,
+        2,
+        6
+      ],
+      "median": 99.815,
+      "p25": 94.159,
+      "inner": 47.995,
+      "score": 46.164
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "11-16",
+        "12-16"
+      ],
+      "alongWindow": [
+        315,
+        317,
+        333,
+        335
+      ],
+      "centerLonLat": [
+        -63.5175,
+        46.22958807
+      ],
+      "coverBox": [
+        1535,
+        2038,
+        2,
+        6
+      ],
+      "median": 47.045,
+      "p25": 44.004,
+      "inner": 14.706,
+      "score": 29.298
+    },
+    {
+      "axis": "z",
+      "ownerTiles": [
+        "13-16",
+        "13-17"
+      ],
+      "alongWindow": [
+        41,
+        43,
+        59,
+        61
+      ],
+      "centerLonLat": [
+        -63.4317998,
+        46.20363636
+      ],
+      "coverBox": [
+        1671,
+        2101,
+        6,
+        2
+      ],
+      "median": 49.774,
+      "p25": 43.273,
+      "inner": 15.457,
+      "score": 27.816
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "11-11",
+        "12-11"
+      ],
+      "alongWindow": [
+        114,
+        116,
+        132,
+        134
+      ],
+      "centerLonLat": [
+        -63.5175,
+        46.50978409
+      ],
+      "coverBox": [
+        1535,
+        1381,
+        2,
+        6
+      ],
+      "median": 60.207,
+      "p25": 47.844,
+      "inner": 20.608,
+      "score": 27.236
+    },
+    {
+      "axis": "z",
+      "ownerTiles": [
+        "21-16",
+        "21-17"
+      ],
+      "alongWindow": [
+        613,
+        615,
+        631,
+        633
+      ],
+      "centerLonLat": [
+        -62.7258584,
+        46.20363636
+      ],
+      "coverBox": [
+        2810,
+        2101,
+        6,
+        2
+      ],
+      "median": 37.225,
+      "p25": 32.493,
+      "inner": 8.927,
+      "score": 23.565
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "6-9",
+        "7-9"
+      ],
+      "alongWindow": [
+        412,
+        414,
+        430,
+        432
+      ],
+      "centerLonLat": [
+        -63.914375,
+        46.5906875
+      ],
+      "coverBox": [
+        895,
+        1191,
+        2,
+        6
+      ],
+      "median": 34.132,
+      "p25": 31.949,
+      "inner": 9.797,
+      "score": 22.153
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "14-16",
+        "15-16"
+      ],
+      "alongWindow": [
+        94,
+        96,
+        112,
+        114
+      ],
+      "centerLonLat": [
+        -63.279375,
+        46.24779545
+      ],
+      "coverBox": [
+        1919,
+        1995,
+        2,
+        6
+      ],
+      "median": 40.618,
+      "p25": 32.369,
+      "inner": 10.718,
+      "score": 21.651
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "7-12",
+        "8-12"
+      ],
+      "alongWindow": [
+        219,
+        221,
+        237,
+        239
+      ],
+      "centerLonLat": [
+        -63.835,
+        46.44840625
+      ],
+      "coverBox": [
+        1023,
+        1525,
+        2,
+        6
+      ],
+      "median": 94.867,
+      "p25": 47.516,
+      "inner": 26.35,
+      "score": 21.166
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "21-13",
+        "22-13"
+      ],
+      "alongWindow": [
+        450,
+        452,
+        468,
+        470
+      ],
+      "centerLonLat": [
+        -62.72375,
+        46.37664773
+      ],
+      "coverBox": [
+        2815,
+        1693,
+        2,
+        6
+      ],
+      "median": 42.915,
+      "p25": 33.622,
+      "inner": 12.525,
+      "score": 21.098
+    },
+    {
+      "axis": "z",
+      "ownerTiles": [
+        "20-20",
+        "20-21"
+      ],
+      "alongWindow": [
+        372,
+        374,
+        390,
+        392
+      ],
+      "centerLonLat": [
+        -62.83512305,
+        45.99272727
+      ],
+      "coverBox": [
+        2633,
+        2595,
+        6,
+        3
+      ],
+      "median": 51.269,
+      "p25": 35.722,
+      "inner": 15.885,
+      "score": 19.837
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "21-17",
+        "22-17"
+      ],
+      "alongWindow": [
+        393,
+        395,
+        411,
+        413
+      ],
+      "centerLonLat": [
+        -62.72375,
+        46.17043466
+      ],
+      "coverBox": [
+        2815,
+        2177,
+        2,
+        6
+      ],
+      "median": 73.086,
+      "p25": 55.565,
+      "inner": 35.829,
+      "score": 19.737
+    },
+    {
+      "axis": "x",
+      "ownerTiles": [
+        "19-13",
+        "20-13"
+      ],
+      "alongWindow": [
+        160,
+        162,
+        178,
+        180
+      ],
+      "centerLonLat": [
+        -62.8825,
+        46.40053977
+      ],
+      "coverBox": [
+        2559,
+        1637,
+        2,
+        6
+      ],
+      "median": 48.736,
+      "p25": 35.941,
+      "inner": 16.49,
+      "score": 19.451
+    }
+  ]
+}
