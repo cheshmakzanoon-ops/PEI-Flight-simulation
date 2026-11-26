@@ -1,7 +1,8 @@
 # Green Gables House, Cavendish
 
-A source-bounded exterior review for the simulator. In Dispatch, select
-**Green Gables House** under **Optional scenery studies** and apply. Or append `?greenGablesReview` to the game URL (or add `&greenGablesReview` if it already has a query), then fly to the Green Gables House in Cavendish, approximately **46.48779° N, 63.38206° W**. This is one exterior: not an ordinary ground view, restored estate, visitor route, current as-built survey, property plan, replica interior, or official Parks Canada product. Ordinary scenery is unchanged without the flag.
+The surveyed exterior now opens in Standard on **Cavendish Dunelands · coastal pass**, after the aircraft is close enough and the inherited ground passes its height check. To compare the old massing on that route, append `?stockGreenGablesHouse`. The separate Barn can be compared independently. The [normal-flight comparison](../qa/green-gables-standard/) shows both transitions from the same camera.
+
+The original explicit study remains available under **Optional scenery studies → Green Gables House** in Dispatch, or with `?greenGablesReview`. Fly to approximately **46.48779° N, 63.38206° W**. This is one exterior, not a restored estate, visitor route, current as-built survey, property plan, interior or official Parks Canada product.
 
 ![In-engine garden-side view of the authored exterior](../qa/green-gables-exterior.webp)
 

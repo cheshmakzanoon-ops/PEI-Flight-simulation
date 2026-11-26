@@ -1,0 +1,114 @@
+{
+  "250": {
+    "pose": [
+      -14105.91931774131,
+      1080.2326270479005,
+      138.52874004782734,
+      9.500426407413553,
+      2.827433388230814
+    ],
+    "indices": [
+      27402,
+      27486,
+      27522,
+      27606
+    ],
+    "restored": true,
+    "outsideSourceEnvelope": 538596,
+    "rect": [
+      358,
+      444,
+      397,
+      480
+    ],
+    "bothComparedToOnlyBarn": {
+      "strongRgb": 522,
+      "alpha": 0,
+      "outsideRgba": 0,
+      "drawsBeforeAndAfter": [
+        244,
+        258
+      ],
+      "trianglesBeforeAndAfter": [
+        334559,
+        344662
+      ]
+    },
+    "onlyHouseComparedToNeither": {
+      "strongRgb": 522,
+      "alpha": 0,
+      "outsideRgba": 0,
+      "drawsBeforeAndAfter": [
+        233,
+        247
+      ],
+      "trianglesBeforeAndAfter": [
+        333228,
+        343331
+      ]
+    },
+    "sha256": {
+      "both": "fc588fc1c3ce30c1aa4741efcc045756040b5c7cfa60841894ae8af54c8e8a3c",
+      "onlyBarn": "843e7bf37e601de57b22232bc958ff3391798565356a81ffa4c5ceec525f3fb5",
+      "onlyHouse": "25014943e6e54a308dca048521d84cf2bef5f2356cde81937230a6c32ee900b6",
+      "neither": "65ca5c676e332a61bca9f862fbf52d168f5d3aca29a2cdcb8345ad5b99581118",
+      "restored": "fc588fc1c3ce30c1aa4741efcc045756040b5c7cfa60841894ae8af54c8e8a3c"
+    }
+  },
+  "260": {
+    "pose": [
+      -14087.900561627011,
+      1130.1910573806122,
+      138.8878751476717,
+      12.046601000827986,
+      2.827433388230814
+    ],
+    "indices": [
+      27402,
+      27486,
+      27522,
+      27606
+    ],
+    "restored": true,
+    "outsideSourceEnvelope": 538065,
+    "rect": [
+      345,
+      483,
+      390,
+      526
+    ],
+    "bothComparedToOnlyBarn": {
+      "strongRgb": 786,
+      "alpha": 0,
+      "outsideRgba": 0,
+      "drawsBeforeAndAfter": [
+        244,
+        258
+      ],
+      "trianglesBeforeAndAfter": [
+        334559,
+        344662
+      ]
+    },
+    "onlyHouseComparedToNeither": {
+      "strongRgb": 786,
+      "alpha": 0,
+      "outsideRgba": 0,
+      "drawsBeforeAndAfter": [
+        233,
+        247
+      ],
+      "trianglesBeforeAndAfter": [
+        333228,
+        343331
+      ]
+    },
+    "sha256": {
+      "both": "a37a88c5276270092bbdc0f5ae9caaa8b47344c4f9ac9188ed30fc9ccfc73dbb",
+      "onlyBarn": "85b85959f7abac973ce57268cfb6890a6ec6e9b4ecb0108f495c0f0765ba91a0",
+      "onlyHouse": "15800d97cd5b09ace15e484413c8161f1188963ee0cd3115ed0da7b93e286e3b",
+      "neither": "0b3e47d7c255f718cbdda4bad79238631da6dcfd4910d12b5ec2a9c8f9c1a7b4",
+      "restored": "a37a88c5276270092bbdc0f5ae9caaa8b47344c4f9ac9188ed30fc9ccfc73dbb"
+    }
+  }
+}

@@ -30,7 +30,7 @@ import type {ChurchArt} from './indian-river/runtime.ts';
 import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
 import * as THREE from 'three';
 import {BEACON_REVIEW} from './beaconsfield-review-spec.ts';
-import {CavendishBarnViews} from './cavendish-owner-views.ts';
+import {CavendishBarnViews,retireCavendishHouseView} from './cavendish-owner-views.ts';
 import {GREEN_GABLES_BARN} from './green-gables-barn-spec.ts';
 import {GREEN_GABLES_REVIEW} from './green-gables-review-spec.ts';
 import {matchesHangar4,emitHangar4,hangar4GLSL} from './hangar4.ts';
@@ -313,6 +313,24 @@ export class Buildings {
  private readonly tryBeaconsfield:boolean;
  private readonly greenGablesGate:(()=>boolean)|undefined;
  private readonly barnGate:(()=>boolean)|undefined;
+ private houseNearOnly=false;
+ private pendingHouse?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
+ private housePin?:{owner:THREE.Mesh;stock:THREE.BufferGeometry;material:THREE.Material|THREE.Material[];
+   position:THREE.Vector3;quaternion:THREE.Quaternion;scale:THREE.Vector3;
+   attrs:readonly (readonly [string,THREE.BufferAttribute,THREE.BufferAttribute['array'],number])[]};
+ private houseOwnerIntact(){
+  const p=this.housePin;if(!p||p.owner.parent!==this.scene||p.owner.material!==p.material||!p.owner.visible||
+   !p.owner.matrixAutoUpdate||!p.position.equals(p.owner.position)||!p.quaternion.equals(p.owner.quaternion)||
+   !p.scale.equals(p.owner.scale))return false;
+  const live=p.owner.geometry,allowed=this.barn?.owner===p.owner&&this.barn.views.stock===p.stock?this.barn.views:undefined;
+  const full=(g:THREE.BufferGeometry)=>g.drawRange.start===0&&g.drawRange.count===Infinity&&g.groups.length===0&&
+   Object.keys(g.attributes).length===p.attrs.length;
+  return (live===p.stock||allowed?.ownsView(live))&&(!p.stock.getIndex()||p.stock.getIndex()===this.greenGables?.index)&&
+   full(live)&&full(p.stock)&&p.attrs.every(([name,attribute,array,version])=>
+    live.getAttribute(name)===attribute&&p.stock.getAttribute(name)===attribute&&attribute.array===array&&attribute.version===version);
+ }
+
+ enableNearHouse(){this.houseNearOnly=true;}
  private barnNearOnly=false;
  private pendingBarn?:{tile:BoundTile;owner:THREE.Mesh;source:ArrayBuffer};
  enableNearBarn(){this.barnNearOnly=true;}
@@ -641,6 +659,8 @@ export class Buildings {
     }
     if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
     if(this.pendingBarn?.owner===m)this.pendingBarn=undefined;
+    if(this.pendingHouse?.owner===m)this.pendingHouse=undefined;
+    if(this.housePin?.owner===m)this.housePin=undefined;
     this.scene.remove(m);if(id===BEACON_REVIEW.tile&&this.beacon){this.scene.remove(this.beacon);this.disposeBeacon?.(this.beacon);this.beacon=undefined;}if(id===GREEN_GABLES_BARN.tile&&this.barn){
      m.geometry=this.barn.views.stock;this.barn.views.dispose();
      this.scene.remove(this.barn.group);this.barn.dispose(this.barn.group);this.barn=undefined;
@@ -714,12 +734,29 @@ export class Buildings {
   const {group,owner,index}=this.greenGables;
   const show=this.greenGablesGate?.()??false;
   const stock=this.barn?.owner===owner?this.barn.views.stock:owner.geometry;
-  if(group.visible!==show){stock.setIndex(show?index:null);group.visible=show;}
+  if(this.houseNearOnly){
+   const target=show?index:null,current=stock.getIndex();
+   if(current!==target&&(!current||current===index))stock.setIndex(target);
+   group.visible=show;
+  }else if(group.visible!==show){stock.setIndex(show?index:null);group.visible=show;}
  }
  get greenGablesBarnPreviewActive(){return this.barn?.group.visible??false;}
  private syncCavendish(x=Infinity,z=Infinity,agl=Infinity){
   // An async artwork completion is not a new aircraft position.
-  if(this.barnNearOnly&&(!Number.isFinite(x)||!Number.isFinite(z)))return;
+  if((this.barnNearOnly||this.houseNearOnly)&&(!Number.isFinite(x)||!Number.isFinite(z)))return;
+  if(this.houseNearOnly&&this.housePin&&!this.houseOwnerIntact()){
+   // Roll back only known effects, even when another renderer property
+   // invalidated admission. Do not overwrite a foreign geometry/index.
+   const {owner,stock}=this.housePin,ownBarn=this.barn?.owner===owner?this.barn.views:undefined;
+   retireCavendishHouseView(owner,stock,this.greenGables?.index,ownBarn);
+   if(this.greenGables)this.greenGables.group.visible=false;
+   if(this.barn?.owner===this.housePin.owner)this.barn.group.visible=false;
+   return;
+  }
+  if(this.houseNearOnly&&!this.greenGables&&this.pendingHouse&&this.greenGablesGate?.()){
+   const {tile,owner,source}=this.pendingHouse;this.pendingHouse=undefined;
+   void this.promoteGreenGables(tile,owner,source);
+  }
   this.syncGreenGables();
   const seated=()=>this.barnGate?.()??false;
   const visible=this.barn?.group.visible;
@@ -890,6 +927,16 @@ export class Buildings {
    // renderer's streaming queue behind an optional module or art response.
    if(ownerBytes&&spec){
     if(spec===BEACON_REVIEW)void this.promoteBeaconsfield(tile,mesh,ownerBytes);
+    else if(this.houseNearOnly){
+     const stock=mesh.geometry;
+     const attrs=Object.entries(stock.attributes).flatMap(([k,a])=>a instanceof THREE.BufferAttribute?
+      [[k,a,a.array,a.version] as const]:[]);
+     if(!stock.getIndex()&&attrs.length===6&&attrs.length===Object.keys(stock.attributes).length){
+      this.housePin={owner:mesh,stock,material:mesh.material,attrs,
+       position:mesh.position.clone(),quaternion:mesh.quaternion.clone(),scale:mesh.scale.clone()};
+      this.pendingHouse={tile,owner:mesh,source:ownerBytes};
+     }
+    }
     else void this.promoteGreenGables(tile,mesh,ownerBytes);
    }
    if(barnBytes){
@@ -1029,23 +1076,31 @@ export class Buildings {
   }catch{/** Unavailable optional art never hides the ordinary owner. */}
  }
  private async promoteGreenGables(tile:BoundTile,owner:THREE.Mesh,source:ArrayBuffer){
-  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner;
+  const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===owner&&owner.parent===this.scene;
+  const ready=()=>{
+   if(!current())return false;
+   if(!this.houseNearOnly||this.houseOwnerIntact()&&this.greenGablesGate?.())return true;
+   // Only a loss of geographic permission retries this exact resident packet.
+   // Real I/O failures and wrong digests remain on the original row.
+   this.pendingHouse={tile,owner,source};return false;
+  };
   const range=owner.userData.beaconTriangles as readonly [number,number]|undefined;
   if(!range)return;
   try{
    const src=await crypto.subtle.digest('SHA-256',source);
-   if(!current()||Array.from(new Uint8Array(src),c=>c.toString(16).padStart(2,'0')).join('')!==GREEN_GABLES_REVIEW.chunk)return;
+   if(Array.from(new Uint8Array(src),c=>c.toString(16).padStart(2,'0')).join('')!==GREEN_GABLES_REVIEW.chunk||!ready())return;
    let timer:ReturnType<typeof setTimeout>|undefined;
    const m=await Promise.race([
     import('./green-gables-review.ts'),
     new Promise<undefined>(resolve=>{timer=setTimeout(()=>resolve(undefined),1200);}),
    ]).finally(()=>{if(timer!==undefined)clearTimeout(timer);});
-   if(!m||!current())return;
+   if(!m||!ready())return;
    const group=await m.loadGreenGablesPreview(import.meta.env.BASE_URL+'art/');
    if(!group)return;
-   if(!current()){m.disposeGreenGablesPreview(group);return;}
+   if(!ready()){m.disposeGreenGablesPreview(group);return;}
    const n=owner.geometry.getAttribute('position').count,[lo,hi]=range;
-   if(lo<0||hi<=lo||hi>n||lo%3||hi%3||n%3){m.disposeGreenGablesPreview(group);return;}
+   if(lo<0||hi<=lo||hi>n||lo%3||hi%3||n%3||
+      this.houseNearOnly&&(n!==27606||lo!==6747||hi!==6831)){m.disposeGreenGablesPreview(group);return;}
    const rest=n-(hi-lo),rows=n<=65536?new Uint16Array(rest):new Uint32Array(rest);
    for(let i=0;i<rest;i++)rows[i]=i<lo?i:i+hi-lo;
    group.visible=false;this.scene.add(group);

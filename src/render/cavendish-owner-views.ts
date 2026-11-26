@@ -9,6 +9,7 @@ import {BufferAttribute,BufferGeometry} from 'three';
 export class CavendishBarnViews {
  readonly stock:BufferGeometry;
  private readonly range:readonly [number,number];
+ private readonly indices=new WeakMap<BufferGeometry,BufferAttribute>();
  private solo?:BufferGeometry;
  private both?:{house:BufferAttribute;geometry:BufferGeometry};
  constructor(stock:BufferGeometry,range:readonly [number,number]){
@@ -36,12 +37,27 @@ export class CavendishBarnViews {
   const g=new BufferGeometry();
   for(const [name,constituent] of Object.entries(this.stock.attributes))g.setAttribute(name,constituent);
   g.boundingSphere=this.stock.boundingSphere;g.boundingBox=this.stock.boundingBox;
-  g.setIndex(new BufferAttribute(idx,1));
+  const index=new BufferAttribute(idx,1);g.setIndex(index);this.indices.set(g,index);
   if(house)this.both={house,geometry:g};else this.solo=g;
   return g;
+ }
+ ownsView(g:BufferGeometry){
+  return g===this.stock||((g===this.solo||g===this.both?.geometry)&&g.getIndex()===this.indices.get(g));
  }
  dispose(){
   this.solo?.dispose();this.both?.geometry.dispose();
   this.solo=undefined;this.both=undefined;
  }
+}
+
+/** Restore only an index or paired view that this cohort actually installed.
+ * An unrelated writer's geometry/index wins and is left byte-for-byte alone. */
+export function retireCavendishHouseView(owner:{geometry:BufferGeometry},stock:BufferGeometry,
+ house:BufferAttribute|undefined,barn?:CavendishBarnViews){
+ const current=owner.geometry,base=stock.getIndex();
+ if(current!==stock&&(!barn||barn.stock!==stock||!barn.ownsView(current)))return false;
+ if(base&&base!==house)return false;
+ if(current!==stock)owner.geometry=stock;
+ if(base&&base===house)stock.setIndex(null);
+ return true;
 }

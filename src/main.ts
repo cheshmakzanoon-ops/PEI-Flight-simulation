@@ -122,6 +122,7 @@ import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested} 
 import {RegionalWindStream} from './render/regional-wind-stream.ts';
 import {RusticoStandardFlight,RUSTICO_LIGHT_ROUTE,standardRusticoLayers} from './render/north-rustico/flight.ts';
 import {standardRusticoLighthouseRequested} from './app/scenery-profile.ts';
+import {standardGreenGablesHouseRequested} from './app/scenery-profile.ts';
 import './app/style.css';
 bootUI();
 async function run(){
@@ -539,11 +540,24 @@ async function run(){
   const lane=mappedLaneCanopy(terrain,cover,terrainSha,r?.sourceGeometrySha256);
   if(lane)vegetation.installOpenRoadLane(lane);
  });
- const greenGablesGate=tryGreenGables&&terrainSha===GABLES.terrain&&
-  cover.sourceSha===GABLES.cover&&cover.sourceDecodedSha===GABLES.coverDecoded?()=>{
-   const y=world.visualGroundHeight(...GABLES.centroidXZ);
-   return y>=11.26&&y<=13.44;
-  }:undefined;
+ const gablesStandard=standardGreenGablesHouseRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)&&
+  terrainSha===GABLES.terrain&&cover.sourceSha===GABLES.cover;
+ let gablesProof:'cold'|'checking'|'ready'|'held'='cold',gablesRoute=false;
+ const houseSeat=()=>{
+  const y=world.visualGroundHeight(...GABLES.centroidXZ);
+  return y>=11.26&&y<=13.44;
+ };
+ const ordinaryHouseSeat=()=>{
+  if(!gablesRoute)return false;
+  if(gablesProof==='cold'){
+   gablesProof='checking';
+   void verifyDecodedCover(cover).then(h=>{gablesProof=h===GABLES.coverDecoded?'ready':'held';})
+    .catch(()=>{gablesProof='held';});
+  }
+  return gablesProof==='ready'&&houseSeat();
+ };
+ const greenGablesGate=tryGreenGables&&terrainSha===GABLES.terrain&&cover.sourceSha===GABLES.cover&&
+  cover.sourceDecodedSha===GABLES.coverDecoded?houseSeat:gablesStandard?ordinaryHouseSeat:undefined;
  const barnStandard=greenGablesBarnStandardRequested(options)?greenGablesBarnStandardGate(world,terrainSha,cover):undefined;
  const barnGate=tryBarn&&greenGablesBarnAtlasMatches(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?greenGablesBarnGate(world):barnStandard;
  const rusticoEnvelopeAllowed=!showBuildingShadows&&!options.has('inlandRelief')&&!options.has('surveyRelief')&&
@@ -604,6 +618,7 @@ async function run(){
   }
   if(pointPrim)v.enablePointPrim();
   if(barnStandard)v.enableNearBarn();
+  if(gablesStandard)v.enableNearHouse();
   if(sourisEastRequest)v.enableSourisEast(sourisEastRequest,sourisEastShadows);
   if(downtownSceneryCompatible(options)){
    v.enableSummersideRoofCohort();
@@ -856,6 +871,8 @@ async function run(){
   const barnAgl=barnStandard&&(f.x-BARN.gameXZ[0])**2+(f.z-BARN.gameXZ[1])**2<2700**2?
    f.y-world.visualGroundHeight(f.x,f.z):undefined;
   const schoolAgl=schoolFinishRequested&&georgetownSchoolWallNear(f.x,f.z)?f.y-world.groundHeight(f.x,f.z):undefined;
+  gablesRoute=gablesStandard&&SITES[activeSite].id==='cavendish-dunelands-low'&&retainPointPrim&&
+   camera.position.y<330&&Math.hypot(f.x-GABLES.centroidXZ[0],f.z-GABLES.centroidXZ[1])<1950;
   buildings?.update(f.x,f.z,barnAgl,f.y,schoolAgl);
   pointPrim?.after(f,camera.position,retainPointPrim);
   stdRustico?.after(rusticoRoute,retainRustico,camera.position);
