@@ -75,7 +75,7 @@ export const MONTAGUE_BRIDGE_DEPARTURE:Site={
 export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={
  id:'kings-mapped-farmland-pass',name:'Kings County · mapped farmland pass',region:'Kings County',
  lon:-62.63729889216559,lat:46.39645292554363,heading:197.3,height:62,
- note:'Begin at 62 metres above the starting surface. Enable Expanded farmland in Standard Dispatch for close furrow detail over a mapped inland field. Virtual sightseeing only.',
+ note:'Begin at 62 metres above the starting surface. Standard scenery streams close furrow detail over this mapped inland field. Virtual sightseeing only.',
 };
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);

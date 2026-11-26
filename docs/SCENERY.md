@@ -62,6 +62,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](qa/province-grass.md) in all three counties, with representative **grassland passes**. |
+| Kings County mapped farmland pass | Standard, on that departure | Close furrows use the verified field mask and scanned generic relief on one original terrain tile. Other departures and Detail keep their existing appearance. |
 | Selected fields across PEI | `?provinceFieldsReview` | [Expanded farmland](qa/province-fields.md) adds close-range furrow shading within 76.27 km² of source-qualified field interiors. Select it in Standard Dispatch; it is off by default. |
 | Gravel roads across PEI | `?stockGravelSurface` | Compare Standard’s [close gravel material](qa/gravel-surface-study.md) on 2,651 verified non-bridge road records. |
 | One surveyed roof west of Summerside | `?stockPrinceSurveyRoof` | Compare the original flat building with its [surveyed cross-ridges and stepped roof](qa/prince-survey-roof.md). Use `?stockPrinceRoofContact` to keep that shape while switching off [local roof-contact shading](qa/prince-roof-contact.md). The façade remains unsurveyed. |

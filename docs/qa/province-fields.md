@@ -1,12 +1,14 @@
 # Expanded farmland
 
-In **Standard** scenery, open **Optional scenery studies** in Dispatch, select **Expanded farmland**, and apply. A direct bookmark uses `?provinceFieldsReview`. Opting in adds fine furrow relief to selected field interiors in all three counties. The ordinary ground and the separate three-site `?cropRowsReview` study are unchanged. Expanded farmland can be [combined with Ground vegetation](province-land-surfaces.md).
-
 ## Fly the mapped Kings County pass
 
-Choose **Kings County · mapped farmland pass** in Dispatch. Enable **Expanded farmland** under **Optional scenery studies**, apply, then choose **Begin flight**. To bookmark the route in your own running copy, use `?departure=kings-mapped-farmland-pass&provinceFieldsReview`. For a clean comparison, use the same URL without `&provinceFieldsReview`. Both start at the same 62 metres above the starting surface and use the same flight model.
+Choose **Kings County · mapped farmland pass** in Standard Dispatch, then **Begin flight**. Bookmark it with `?departure=kings-mapped-farmland-pass`, or add `&stockKingsFieldPass` to compare the same Standard flight without the furrows. Both start 62 metres above the same surface. The route crosses a mapped 2023 field (FID 43994); the earlier Kings **fields low pass** remains unchanged.
 
-This route crosses a retained 2023 field outline (FID 43994). It does not replace the original Kings **fields low pass**, which remains a comparison route for the earlier three-site study. Expanded farmland is still opt-in: the route itself does not request the extra assets. It represents dated field locations and authored rows, not current crops or usable flight guidance.
+The route can warm four authenticated ranges while selected in Dispatch, but never holds the flight button. Its additional shader variant replaces the material on the one original near terrain draw `23-13` N112 during flight. The existing orthophoto, woodland, grass, lighting, geometry and flight contact remain in place. All other departures, Detail, the distant view, and missing or unverified field data keep their normal terrain. The furrows are generic CC0 surface relief applied to mapped field interiors, not measured crop rows or evidence about what grows there today.
+
+## Optional province-wide study
+
+To compare the broader study, choose **Optional scenery studies** in Standard Dispatch, select **Expanded farmland**, and apply. Its direct flag remains `?provinceFieldsReview`; it is separate from the Standard route effect and the three-site `?cropRowsReview`. The province-wide study can be [combined with Ground vegetation](province-land-surfaces.md).
 
 At the route’s introduction, an isolated check of the Three.js land draw used the new departure’s ordinary Chase camera, unmodified terrain and authenticated v2 masks. At 2, 4, 6 and 8 seconds, 73,884, 59,665, 92,753 and 69,773 of the 960 × 640 frame pixels changed by more than two RGB code levels, with zero changes outside the layer’s support. At 11 and 14 seconds the frames were unchanged. Geometry, alpha and the restored image were exact. This is a [render-side test](farmland-v2/kings-mapped-route-native.json), not a browser loading, hardware benchmark or claim about the whole landscape.
 

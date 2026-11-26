@@ -61,9 +61,10 @@ async function reliefTexture(bytes:ArrayBuffer){
 }
 /** The province mask is independent of the earlier, hand-picked three-site
  * mask. Share its licensed scan, not its footprint or network dependency. */
-export async function checkedFieldRelief(base:string,request:typeof fetch=fetch,ms=1900){
- if(!globalThis.crypto?.subtle)return;
- const control=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
+export async function checkedFieldRelief(base:string,request:typeof fetch=fetch,ms=1900,external?:AbortSignal){
+ if(!globalThis.crypto?.subtle||external?.aborted)return;
+ const control=new AbortController(),cancel=()=>control.abort();
+ external?.addEventListener('abort',cancel,{once:true});let timer:ReturnType<typeof setTimeout>|undefined;
  try{
   return await Promise.race([(async()=>{
    const bytes=await exactResponse(request,base+'furrow-relief.webp',M.scanBytes,control.signal);
@@ -71,10 +72,12 @@ export async function checkedFieldRelief(base:string,request:typeof fetch=fetch,
    return bytes;
   })(),new Promise<undefined>(resolve=>{timer=setTimeout(()=>{control.abort();resolve(undefined);},ms);})]);
  }catch{return;}
- finally{control.abort();if(timer!==undefined)clearTimeout(timer);}
+ finally{external?.removeEventListener('abort',cancel);control.abort();if(timer!==undefined)clearTimeout(timer);}
 }
-export async function loadFieldRelief(base:string){
- try{const bytes=await checkedFieldRelief(base);if(bytes)return await reliefTexture(bytes);}catch{return;}
+export async function loadFieldRelief(base:string,signal?:AbortSignal){
+ try{const bytes=await checkedFieldRelief(base,fetch,1900,signal);if(!bytes||signal?.aborted)return;
+  const art=await reliefTexture(bytes);if(signal?.aborted){art?.discard();return;}return art;
+ }catch{return;}
 }
 export async function loadFieldPilot(base:string){
  try{

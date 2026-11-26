@@ -17,11 +17,12 @@ export class FieldStream {
  private qx=Infinity;private qz=Infinity;
  readonly texture=new DataArrayTexture(this.buffer,FIELD_SHARD_SIDE,FIELD_SHARD_SIDE,FIELD_SHARD_LAYERS);
  readonly uniforms={fieldShardArray:{value:this.texture},fieldShardAreas:{value:this.areas},fieldShardNeighbors:{value:this.expected},fieldShardClock:{value:0}};
- constructor(privateReader:Reader,privateNow:()=>number=()=>performance.now()){
-  this.reader=privateReader;this.now=privateNow;
+ constructor(privateReader:Reader,privateNow:()=>number=()=>performance.now(),allowed?:ReadonlySet<string>){
+  this.reader=privateReader;this.now=privateNow;this.allowed=allowed;
   this.texture.format=RGFormat;this.texture.minFilter=this.texture.magFilter=LinearFilter;
   this.texture.generateMipmaps=false;this.texture.needsUpdate=true;
  }
+ private readonly allowed?:ReadonlySet<string>;
  private readonly reader:Reader;
  private readonly now:()=>number;
  intersects(left:number,top:number,right:number,bottom:number){
@@ -39,7 +40,7 @@ export class FieldStream {
   const wanted=Number.isFinite(above)&&(this.on?above<535:above<415);
   if(wanted!==this.on||Math.hypot(x-this.qx,z-this.qz)>=22||clock>=this.until){
    this.on=wanted;this.qx=x;this.qz=z;this.until=clock+270;
-   const desired=wanted?fieldCandidates(x,z,this.reader.dir):[];
+   const desired=wanted?fieldCandidates(x,z,this.reader.dir).filter(cell=>!this.allowed||this.allowed.has(cell.key)):[];
    const keys=new Set(desired.map(cell=>cell.key));
    for(let i=0;i<this.list.length;++i){
     const item=this.list[i];if(item&&!keys.has(item.cell.key))this.clear(i);
