@@ -54,6 +54,8 @@ const COASTAL_OPTICS_CONFLICTS=['legacyShoreArcs','orthophotoSeamStudy','buildin
  'kingsDryCrownStudy','duneReliefStudy'] as const;
 export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
 
+export const PRINCE_LANDSCAPE_ROUTE='prince-grassland';
+export const PRINCE_LANDSCAPE_LENS='princeLandscapePreview';
 export const KINGS_RIDGE_LENS='kingsRidgeGroundPreview';
 export const KINGS_RIDGE_ROUTE='kings-coastal-ridge';
 export const INDIAN_RIVER_LENS='indianRiverGradeLens';
@@ -61,7 +63,7 @@ export const INDIAN_RIVER_ROUTE='indian-river-country-pass';
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  // The local dated view is ancillary, including when Dispatch shows another site.
- q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);q.delete(INDIAN_RIVER_LENS);q.delete(KINGS_RIDGE_LENS);
+ q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);q.delete(INDIAN_RIVER_LENS);q.delete(KINGS_RIDGE_LENS);q.delete(PRINCE_LANDSCAPE_LENS);
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
@@ -352,6 +354,20 @@ export function kingsRidgeAirState(route:string,mode:string,previous:string){
  const initiate=mode==='flight';
  return {initiate,retain:initiate||mode==='paused'||mode==='crash'||
   (mode==='map'||mode==='help'||mode==='credits')&&(previous==='flight'||previous==='paused'||previous==='crash')};
+}
+export function princeLandscapeState(search:string){
+ const q=new URLSearchParams(search),selected=q.has(PRINCE_LANDSCAPE_LENS),detail=isDetailScenery(search),
+  modes=q.getAll('scenery'),departures=q.getAll('departure'),single=q.getAll(PRINCE_LANDSCAPE_LENS).length<=1;
+ q.delete(PRINCE_LANDSCAPE_LENS);
+ const compatible=!detail&&single&&modes.length<=1&&modes.every(m=>m===''||m==='standard')&&
+  departures.length<=1&&!q.has('qa')&&standardComparisonQuery(q);
+ return {selected,detail,compatible,active:selected&&compatible&&departures[0]===PRINCE_LANDSCAPE_ROUTE};
+}
+export function switchPrinceLandscape(source:string,enable:boolean,route:string){
+ const url=new URL(source),q=princeLandscapeState(url.search);
+ if(enable&&(!q.compatible||route!==PRINCE_LANDSCAPE_ROUTE))return url.href;
+ if(enable)url.searchParams.set(PRINCE_LANDSCAPE_LENS,'');else url.searchParams.delete(PRINCE_LANDSCAPE_LENS);
+ url.searchParams.set('departure',route);return url.href;
 }
 export const BASIN_HEAD_DEPARTURE='basin-head-low';
 /** The established coupled inlet preview remains an explicit reload. Do

@@ -1,3 +1,5 @@
+import {PrinceLandscapeLease} from './prince-grassland/lease.ts';
+import {PRINCE_TERRAIN_SLOT,type verifiedPrinceOverview} from './prince-grassland/source.ts';
 import {INDIAN_RIVER_GRADE} from '../sim/indian-river-grade.generated.ts';
 import {RUSTICO_GRADE} from '../sim/rustico-grade.generated.ts';
 import {dalvayGroundPair} from './dalvay-exterior-seat.ts';
@@ -654,6 +656,62 @@ export class World {
  readonly trailStrength={value:0};
  readonly rusticoSoilStrength={value:0};
  private readonly grades=new Map<string,BoundedGrade>();
+ private princeLandscape?:{terrain:Patch;mesh:THREE.Mesh;lease:PrinceLandscapeLease;seams?:string};
+ private princeRejected?:THREE.BufferGeometry;
+ get princeLandscapeReady(){return !!this.princeLandscape;}
+ get princeLandscapeActive(){return this.princeLandscape?.lease.installed===true;}
+ preparePrinceLandscape(proof:NonNullable<Awaited<ReturnType<typeof verifiedPrinceOverview>>>){
+  this.checkPrinceLandscape();
+  if(this.princeLandscape)return true;
+  const t=this.byId.get(PRINCE_TERRAIN_SLOT),mesh=t?.fine;
+  if(!t||!mesh||this.princeRejected===mesh.geometry||!this.nativeRegularGroundStill(t.id,mesh.geometry)||
+     !t.seams?.startsWith('112:')||t.coarse.visible||mesh.parent!==this.scene||!mesh.visible||
+     mesh.material!==t.local||mesh.position.x!==t.x0+t.w/2||mesh.position.y!==0||mesh.position.z!==t.z0+t.d/2||
+     mesh.quaternion.x||mesh.quaternion.y||mesh.quaternion.z||mesh.quaternion.w!==1||
+     mesh.scale.x!==1||mesh.scale.y!==1||mesh.scale.z!==1)return false;
+  try{
+   const original=this.patch(t.x0,t.z0,t.w,t.d,112);
+   try{
+    this.rebuildPreviewRim(t,original);
+    const a=original.geometry,b=mesh.geometry;
+    for(const k of ['position','uv','normal']){
+     const x=a.getAttribute(k),y=b.getAttribute(k);
+     if(!x||!y||x.count!==y.count||x.itemSize!==y.itemSize||x.array.length!==y.array.length||
+       x.array.some((v,i)=>v!==y.array[i]))throw Error('Unverified original field geometry');
+    }
+   }finally{original.geometry.dispose();}
+   const lease=new PrinceLandscapeLease(mesh,proof);
+   // Only the standby draw follows later seam changes. Preparation must
+   // never write to the original parent that the viewport and pilot use.
+   this.princeLandscape={terrain:t,mesh,lease,seams:t.seams};
+   return true;
+  }catch{this.princeRejected=mesh.geometry;return false;}
+ }
+ checkPrinceLandscape(){
+  const q=this.princeLandscape;
+  if(!q)return;
+  const {terrain:t,mesh}=q,r=this.previewRim(t);
+  if(q.seams!==t.seams&&t.lod===112&&t.fine===mesh){q.lease.synchronizeRim(r.edge);q.seams=t.seams;}
+  if(t.lod!==112||t.relief||this.grades.has(t.id)||t.fine!==mesh||mesh.material!==t.local||t.coarse.visible||
+   mesh.position.x!==t.x0+t.w/2||mesh.position.y!==0||mesh.position.z!==t.z0+t.d/2||
+   mesh.quaternion.x||mesh.quaternion.y||mesh.quaternion.z||mesh.quaternion.w!==1||
+   mesh.scale.x!==1||mesh.scale.y!==1||mesh.scale.z!==1||!q.lease.valid(this.scene,r.edge))this.clearPrinceLandscape();
+ }
+ armPrinceLandscape(){
+  this.checkPrinceLandscape();this.princeLandscape?.lease.arm();
+  if(this.princeLandscapeActive)this.groundVersion++;
+ }
+ clearPrinceLandscape(){
+  const q=this.princeLandscape;if(!q)return;
+  const was=q.lease.installed;this.princeLandscape=undefined;q.lease.close();if(was)this.groundVersion++;
+ }
+ beginPrinceLandscapeDraw(){
+  const q=this.princeLandscape;
+  if(!q||!q.lease.installed)return;
+  this.checkPrinceLandscape();
+  if(this.princeLandscape!==q)return;
+  return q.lease.begin(this.scene);
+ }
  private readonly kingsGrade?:BoundedGrade;
  private kingsRidge?:{
   tile:Patch;mesh:THREE.Mesh;stock:THREE.BufferGeometry;raised:THREE.Mesh;grade:BoundedGrade;
@@ -1882,7 +1940,8 @@ export class World {
    const f=1-u*u*(3-2*u);
    return f?baywalk+f*(this.provinceFlightHeight(x,z,true)-this.provinceVisualGroundHeight(x,z)):baywalk;
   }
-  return this.provinceFlightHeight(x,z,covered);
+  const stock=this.provinceFlightHeight(x,z,covered),prince=this.princeLandscape;
+  return prince?.lease.installed?prince.lease.contact(x,z,stock,covered,!!runwayAt(x,z)):stock;
  }
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
@@ -1972,6 +2031,7 @@ export class World {
    const measuredKings=!!this.kingsGrade&&tile.id===KINGS_CROWN_TILE;
    if(proposedLOD!==112&&this.kingsStage?.owner===tile)this.dropKingsCrown();
    if(proposedLOD!==112&&this.kingsRidge?.tile===tile)this.clearKingsRidge();
+   if(proposedLOD!==112&&this.princeLandscape?.terrain===tile)this.clearPrinceLandscape();
    if(proposedLOD!==112&&this.stagedChurch?.owner===tile)this.dropStMarysStage();
    if(proposedLOD!==112&&this.stagedPointPrim?.owner===tile)this.dropPointPrimStage();
    tile.lod=proposedLOD;

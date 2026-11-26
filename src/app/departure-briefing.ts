@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, kingsRidgeLensState, KINGS_RIDGE_ROUTE, indianRiverLensState, INDIAN_RIVER_ROUTE, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, princeLandscapeState, PRINCE_LANDSCAPE_ROUTE, kingsRidgeLensState, KINGS_RIDGE_ROUTE, indianRiverLensState, INDIAN_RIVER_ROUTE, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -24,6 +24,8 @@ export function departureBriefing(site: Site, search: string): string {
       ' The lake reflection preview is enabled in these scenery settings.' :
       ' The lake reflection preview is off in these scenery settings.');
   }
+  if(site.id===PRINCE_LANDSCAPE_ROUTE&&princeLandscapeState(search).active)
+    return 'Fly over the selected Prince County grassland. The separate measured field changes local ground contact.';
   if(site.id===KINGS_RIDGE_ROUTE&&kingsRidgeLensState(search).active){
     return 'Start offshore at 126 metres. The separate preview changes the shape and local ground contact of the measured dry ridge.';
   }

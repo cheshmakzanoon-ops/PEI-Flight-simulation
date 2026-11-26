@@ -1,0 +1,37 @@
+{
+  "product": "PEI-Prince_Edward_Island_2020-1m",
+  "metadata": "https://datacube.services.geo.ca/pgstac/api/collections/hrdem-lidar/items/PEI-Prince_Edward_Island_2020-1m",
+  "scope": "Finer historical same-survey bare-earth 1m grid; no ordinate used to fit this frozen 16m-derived preview. Exact rendered Float32 faces; add common engine uplift 0.12 m to the reference; no fitted offset.",
+  "horizontalCrs": "EPSG:3979",
+  "verticalDatum": "CGVD2013",
+  "nativeTiffTile": [92, 113],
+  "nativePayloadSha256": "8754c2074570f32e6fc790c2e125732b8deb0614ccd9029cffed59eb423648c6",
+  "core": {
+    "sampleCount": 35817,
+    "eligibleSpatialBlocks": 48,
+    "blocksWithImprovedMae": 47,
+    "validFraction": 1,
+    "p90AbsoluteMetres": {"stock": 2.223531, "preview": 0.464444},
+    "medianSignedMetres": {"stock": -0.570232, "preview": -0.064753},
+    "meanAbsoluteMetres": {"stock": 0.938464, "preview": 0.243488}
+  },
+  "rim": {
+    "sampleCount": 10831,
+    "eligibleSpatialBlocks": 42,
+    "blocksWithImprovedMae": 40,
+    "validFraction": 1,
+    "p90AbsoluteMetres": {"stock": 2.033117, "preview": 1.788107},
+    "meanAbsoluteMetres": {"stock": 0.955866, "preview": 0.804817}
+  },
+  "prespecifiedCriteria": {
+    "minimumValidFractionPerRole": 0.95,
+    "minimumValidFractionPerEligibleBlock": 0.9,
+    "coreMaximumPreviewP90Metres": 0.9,
+    "coreMinimumP90ImprovementMetres": 0.25,
+    "coreMaximumAbsoluteSignedMedianMetres": 0.35,
+    "coreMinimumShareOfImprovedBlocks": 0.6666666666666666,
+    "rimMaximumDegradationP90Metres": 0.15
+  },
+  "passes": true,
+  "rawElevationsIncluded": false
+}

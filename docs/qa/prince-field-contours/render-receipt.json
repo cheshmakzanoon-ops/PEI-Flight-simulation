@@ -1,0 +1,312 @@
+{
+  "route": "prince-grassland",
+  "camera": "Chase",
+  "viewport": [
+    1200,
+    760
+  ],
+  "issuedFieldCells": 23,
+  "render": {
+    "frames": {
+      "30": {
+        "old": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329338
+        },
+        "preview": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329962
+        },
+        "restored": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329338
+        },
+        "held": true,
+        "original": true,
+        "ground": [
+          14.648566455403424,
+          14.648566455403424,
+          14.648566455403424
+        ],
+        "pose": [
+          -54417.63127912203,
+          -16573.55122415973,
+          84.0651330923139
+        ],
+        "measure": {
+          "changed": 197836,
+          "strong": 62417,
+          "alpha": 0,
+          "matchingEarlierExactRoleEvidence": [
+            false,
+            false
+          ],
+          "hashes": {
+            "old": "80bd6b67709d53d26d86106f3c9d48c1ecc3de506356b47a5fc81883048070b0",
+            "preview": "abc0403bd5a79caf07d7d932f70e8e32f9a02f33ff839f84a2a3b1e6fdff66f2",
+            "restored": "80bd6b67709d53d26d86106f3c9d48c1ecc3de506356b47a5fc81883048070b0"
+          }
+        }
+      },
+      "41": {
+        "old": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329338
+        },
+        "preview": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329962
+        },
+        "restored": {
+          "gl": 0,
+          "calls": 243,
+          "triangles": 329338
+        },
+        "held": true,
+        "original": true,
+        "ground": [
+          14.648566455403424,
+          14.648566455403424,
+          14.648566455403424
+        ],
+        "pose": [
+          -54358.72703998646,
+          -16580.142135565027,
+          84.46518257215963
+        ],
+        "measure": {
+          "changed": 209641,
+          "strong": 53028,
+          "alpha": 0,
+          "matchingEarlierExactRoleEvidence": [
+            false,
+            false
+          ],
+          "hashes": {
+            "old": "20a953e876ae40d384deaa3c6dfe3a7094ec4c954b16c088f265fc028fbc65bc",
+            "preview": "c9097f31d8a960e67f3042b2f29232595ed29cd2e0e59b1d2557fb4ae7c5d355",
+            "restored": "20a953e876ae40d384deaa3c6dfe3a7094ec4c954b16c088f265fc028fbc65bc"
+          }
+        }
+      },
+      "60": {
+        "old": {
+          "gl": 0,
+          "calls": 242,
+          "triangles": 321114
+        },
+        "preview": {
+          "gl": 0,
+          "calls": 242,
+          "triangles": 321738
+        },
+        "restored": {
+          "gl": 0,
+          "calls": 242,
+          "triangles": 321114
+        },
+        "held": true,
+        "original": true,
+        "ground": [
+          14.648566455403424,
+          14.648566455403424,
+          14.648566455403424
+        ],
+        "pose": [
+          -54256.960461444556,
+          -16591.529247961018,
+          85.15589357230893
+        ],
+        "measure": {
+          "changed": 155281,
+          "strong": 23155,
+          "alpha": 0,
+          "matchingEarlierExactRoleEvidence": [
+            false,
+            false
+          ],
+          "hashes": {
+            "old": "de12cdf88d57f5cf2f6e0b5e794dfcb90759338de43d936541a60a4e67c32916",
+            "preview": "6c508eb806416b42459ce784844f4f83d751a63ee67cc1e96ba1b15dde4d5d11",
+            "restored": "de12cdf88d57f5cf2f6e0b5e794dfcb90759338de43d936541a60a4e67c32916"
+          }
+        }
+      },
+      "120": {
+        "old": {
+          "gl": 0,
+          "calls": 241,
+          "triangles": 311642
+        },
+        "preview": {
+          "gl": 0,
+          "calls": 241,
+          "triangles": 312266
+        },
+        "restored": {
+          "gl": 0,
+          "calls": 241,
+          "triangles": 311642
+        },
+        "held": true,
+        "original": true,
+        "ground": [
+          14.648566455403424,
+          14.648566455403424,
+          14.648566455403424
+        ],
+        "pose": [
+          -53935.43055687196,
+          -16627.508412116862,
+          87.36572571676605
+        ],
+        "measure": {
+          "changed": 0,
+          "strong": 0,
+          "alpha": 0,
+          "matchingEarlierExactRoleEvidence": [
+            false,
+            false
+          ],
+          "hashes": {
+            "old": "1d3d4ca222e41104ca9e5237d1cbb70479cb077a8a8955570226d5a84818048e",
+            "preview": "1d3d4ca222e41104ca9e5237d1cbb70479cb077a8a8955570226d5a84818048e",
+            "restored": "1d3d4ca222e41104ca9e5237d1cbb70479cb077a8a8955570226d5a84818048e"
+          }
+        }
+      }
+    },
+    "actors": {
+      "30": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "41": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "60": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "120": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "errors": []
+  },
+  "exactNativePrimitiveCarryForward": {
+    "30": {
+      "signedDeltasDifferent": 0,
+      "outsidePrimitiveEvidence": 0,
+      "alpha": 0,
+      "strong": 62417,
+      "unrestored": 0
+    },
+    "41": {
+      "signedDeltasDifferent": 0,
+      "outsidePrimitiveEvidence": 0,
+      "alpha": 0,
+      "strong": 53028,
+      "unrestored": 0
+    },
+    "60": {
+      "signedDeltasDifferent": 0,
+      "outsidePrimitiveEvidence": 0,
+      "alpha": 0,
+      "strong": 23155,
+      "unrestored": 0
+    },
+    "120": {
+      "signedDeltasDifferent": 0,
+      "outsidePrimitiveEvidence": 0,
+      "alpha": 0,
+      "strong": 0,
+      "unrestored": 0
+    }
+  },
+  "physicalSamples": {
+    "exactAsset": "9123a43c02e4c8fb2ec3618ba1d2e101d3a98a6e5f2353325f689be7a24cb193",
+    "positionHash": "abb02f8269a2c8fdb665513333951bc59642b6d4747b5da0da8ec3197cbcfd7c",
+    "indexHash": "3277bc772e740c3157306102d1b6e076393864af018d33504e1ab4fb969a8d6d",
+    "cells": 23,
+    "raySamples": 9200,
+    "maximumPhysicalVisualGap": 0.45168470240060543,
+    "largestRaiseOnSamples": 2.689003197220929,
+    "largestCutOnSamples": -1.4570963633205416,
+    "peak": [
+      -54223.89428026856,
+      -16681.335701785214,
+      11.959563258181486,
+      14.648566455402415
+    ],
+    "neutralFlightSamples": 5401,
+    "identicalStates": true,
+    "contactChangedSamples": 548,
+    "greatestUnderflight": 1.6499182146092384,
+    "minAGL": 71.13695712128016
+  },
+  "delayedValidSourceControl": {
+    "frames": {
+      "1": [
+        false,
+        false,
+        -54572.876143163754,
+        -16556.1810946265,
+        83.12331818146849,
+        5.165669101499166,
+        0
+      ],
+      "30": [
+        false,
+        false,
+        -54417.63127912203,
+        -16573.55122415973,
+        84.0651330923139,
+        6.12,
+        0
+      ],
+      "41": [
+        false,
+        false,
+        -54358.72703998646,
+        -16580.142135565027,
+        84.46518257215963,
+        6.673200234313636,
+        0
+      ],
+      "60": [
+        false,
+        false,
+        -54256.960461444556,
+        -16591.529247961018,
+        85.15589357230893,
+        11.490614706318778,
+        0
+      ]
+    },
+    "notice": "Using Standard field ground on this flight.",
+    "validDelayedStatus": 206,
+    "exactStockRetained": true,
+    "readyOnlyForNextDeparture": true,
+    "errors": []
+  }
+}
