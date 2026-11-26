@@ -54,12 +54,14 @@ const COASTAL_OPTICS_CONFLICTS=['legacyShoreArcs','orthophotoSeamStudy','buildin
  'kingsDryCrownStudy','duneReliefStudy'] as const;
 export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
 
+export const KINGS_RIDGE_LENS='kingsRidgeGroundPreview';
+export const KINGS_RIDGE_ROUTE='kings-coastal-ridge';
 export const INDIAN_RIVER_LENS='indianRiverGradeLens';
 export const INDIAN_RIVER_ROUTE='indian-river-country-pass';
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  // The local dated view is ancillary, including when Dispatch shows another site.
- q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);q.delete(INDIAN_RIVER_LENS);
+ q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);q.delete(INDIAN_RIVER_LENS);q.delete(KINGS_RIDGE_LENS);
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
@@ -330,6 +332,26 @@ export function indianRiverLensFlight(route:string,mode:string,previous:string){
  * departure is armed or the downloaded cohort becomes ready late. */
 export function indianRiverCanCommit(initiate:boolean,retain:boolean,installed:boolean,flightStatus:string,clearance:number){
  return retain&&(installed||initiate&&flightStatus==='flying'&&Number.isFinite(clearance)&&clearance>=24);
+}
+export function kingsRidgeLensState(search:string){
+ const q=new URLSearchParams(search),selected=q.has(KINGS_RIDGE_LENS),detail=isDetailScenery(search);
+ const modes=q.getAll('scenery'),departures=q.getAll('departure'),single=q.getAll(KINGS_RIDGE_LENS).length<=1;
+ q.delete(KINGS_RIDGE_LENS);
+ const compatible=!detail&&single&&modes.length<=1&&modes.every(m=>m===''||m==='standard')&&
+  departures.length<=1&&!q.has('qa')&&standardComparisonQuery(q);
+ return {selected,detail,compatible,active:selected&&compatible&&departures[0]===KINGS_RIDGE_ROUTE};
+}
+export function switchKingsRidgeLens(source:string,enable:boolean,route:string){
+ const url=new URL(source),q=kingsRidgeLensState(url.search);
+ if(enable&&(!q.compatible||route!==KINGS_RIDGE_ROUTE))return url.href;
+ if(enable)url.searchParams.set(KINGS_RIDGE_LENS,'');else url.searchParams.delete(KINGS_RIDGE_LENS);
+ url.searchParams.set('departure',route);return url.href;
+}
+export function kingsRidgeAirState(route:string,mode:string,previous:string){
+ if(route!==KINGS_RIDGE_ROUTE)return {initiate:false,retain:false};
+ const initiate=mode==='flight';
+ return {initiate,retain:initiate||mode==='paused'||mode==='crash'||
+  (mode==='map'||mode==='help'||mode==='credits')&&(previous==='flight'||previous==='paused'||previous==='crash')};
 }
 export const BASIN_HEAD_DEPARTURE='basin-head-low';
 /** The established coupled inlet preview remains an explicit reload. Do

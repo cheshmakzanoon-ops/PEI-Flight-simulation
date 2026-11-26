@@ -7,6 +7,7 @@ import {POINT_PRIM} from './point-prim/admit.ts';
 import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
 import {smoothShoreTone} from './shore-tone.ts';
 import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
+import {kingsRidgeMayDraw} from './kings-ridge-view.ts';
 import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
 import type {OrthophotoSeams} from './orthophoto-seams.ts';
 import type {AerialWorldOptics,VerifiedAerialSky,VerifyAerialSky} from './aerial-perspective-lab.ts';
@@ -654,6 +655,19 @@ export class World {
  readonly rusticoSoilStrength={value:0};
  private readonly grades=new Map<string,BoundedGrade>();
  private readonly kingsGrade?:BoundedGrade;
+ private kingsRidge?:{
+  tile:Patch;mesh:THREE.Mesh;stock:THREE.BufferGeometry;raised:THREE.Mesh;grade:BoundedGrade;
+  position:THREE.BufferAttribute;index:THREE.BufferAttribute;stockIndex:THREE.BufferAttribute;
+  positionArray:Float32Array;positionExpected:Float32Array;indexArray:THREE.BufferAttribute['array'];
+  indexExpected:THREE.BufferAttribute['array'];indexVersion:number;
+  stockIndexArray:THREE.BufferAttribute['array'];stockIndexExpected:THREE.BufferAttribute['array'];
+  stockPos:THREE.BufferAttribute;stockUV:THREE.BufferAttribute;stockPositionArray:Float32Array;stockUVArray:Float32Array;
+  uvExpected:Float32Array;
+  material:THREE.Material|THREE.Material[];seams:string|undefined;
+ };
+ private kingsRidgeDrawing=false;
+ private rejectedRidge?:{geometry:THREE.BufferGeometry;seams:string|undefined;positionVersion:number;indexVersion:number};
+
  private kingsStage?:KingsCrownStage;
  private kingsStageFailed=false;
  private stagedChurch?:{owner:Patch;grade:BoundedGrade;stock:THREE.Mesh;candidate:THREE.Mesh;seams?:string;source:StMarysProposedGround};
@@ -1245,7 +1259,7 @@ export class World {
  /** One previously empty lighthouse silhouette needs the exact compatible
   * near dry seat. Share the exclusive reversible terrain slot (no other
   * owner can qualify in this profile); never borrow any church art. */
- private sameIndianRiverStock(t:Patch,m:THREE.Mesh){
+ private sameNativePreviewStock(t:Patch,m:THREE.Mesh,window:{firstX:number;firstZ:number;cellsX:number;cellsZ:number}){
   const g=m.geometry,pos=g.getAttribute('position'),uv=g.getAttribute('uv'),index=g.index,side=113;
   if(m.position.x!==t.x0+t.w/2||m.position.y!==0||m.position.z!==t.z0+t.d/2||
    m.quaternion.x||m.quaternion.y||m.quaternion.z||m.quaternion.w!==1||
@@ -1255,7 +1269,7 @@ export class World {
   // The proposed mesh alters only the signed two-cell patch. Verify every
   // stock parent vertex and both triangles in its native one-cell collar;
   // edge stitching elsewhere may legitimately replace distant samples.
-  const {firstX,firstZ,cellsX,cellsZ}=INDIAN_RIVER_GRADE;
+  const {firstX,firstZ,cellsX,cellsZ}=window;
   for(let z=firstZ-1;z<=firstZ+cellsZ+1;z++)for(let x=firstX-1;x<=firstX+cellsX+1;x++){
    const i=z*side+x,a=Math.fround(x*(t.w/112)-t.w/2),b=Math.fround(z*(t.d/112)-t.d/2);
    const wx=a+t.x0+t.w/2,wz=b+t.z0+t.d/2,y=Math.fround(this.terrain.atlasElevation(wx,wz)+GROUND_LIFT),
@@ -1268,13 +1282,13 @@ export class World {
   }
   return true;
  }
- private indianRiverRim?:{key:string;tile:Patch;edge:readonly (readonly [number,number])[]};
+ private previewTerrainRim?:{key:string;tile:Patch;edge:readonly (readonly [number,number])[]};
  private indianRiverLensSeal?:{mesh:THREE.Mesh;geometry:THREE.BufferGeometry;position:THREE.BufferAttribute;
   index:THREE.BufferAttribute;positionArray:Float32Array;positionExpected:Float32Array;
   indexArray:THREE.BufferAttribute['array'];indexExpected:THREE.BufferAttribute['array'];version:number};
- private riverRim(t:Patch){
+ private previewRim(t:Patch){
   const n=112,levels=[[0,-1],[1,0],[0,1],[-1,0]].map(([ox,oz])=>Math.min(n,this.byId.get((t.i+ox)+'-'+(t.j+oz))?.lod??n));
-  const key=n+':'+levels.join(','),old=this.indianRiverRim;
+  const key=n+':'+levels.join(','),old=this.previewTerrainRim;
   if(old?.key===key&&old.tile===t)return old;
   const edge=new Map<number,number>();
   // Re-evaluate the original atlas seam, never copy an alternate mesh
@@ -1289,10 +1303,10 @@ export class World {
     edge.set(j,Math.fround(a+(b-a)*(k%ratio)/ratio));
    }
   }
-  return this.indianRiverRim={key,tile:t,edge:[...edge]};
+  return this.previewTerrainRim={key,tile:t,edge:[...edge]};
  }
- private rebuildIndianRiverRim(t:Patch,mesh:THREE.Mesh){
-  const output=this.riverRim(t),p=mesh.geometry.getAttribute('position');let changed=false;
+ private rebuildPreviewRim(t:Patch,mesh:THREE.Mesh){
+  const output=this.previewRim(t),p=mesh.geometry.getAttribute('position');let changed=false;
   for(const [i,y] of output.edge)if(p.getY(i)!==y){p.setY(i,y);changed=true;}
   if(changed){if(p instanceof THREE.BufferAttribute)p.clearUpdateRanges();p.needsUpdate=true;}
   return output.key;
@@ -1305,7 +1319,7 @@ export class World {
     m.scale.x!==1||m.scale.y!==1||m.scale.z!==1||
     g.groups.length||g.drawRange.start!==0||g.drawRange.count!==Infinity||
     g.index!==idx||idx.array!==s.indexArray||s.version!==idx.version||g.getAttribute('position')!==p||p.array!==s.positionArray)return false;
-  for(const [i,y] of this.riverRim(t).edge)s.positionExpected[i*3+1]=y;
+  for(const [i,y] of this.previewRim(t).edge)s.positionExpected[i*3+1]=y;
   for(let i=0;i<s.positionArray.length;i++)if(s.positionArray[i]!==s.positionExpected[i])return false;
   for(let i=0;i<s.indexArray.length;i++)if(s.indexArray[i]!==s.indexExpected[i])return false;
   return true;
@@ -1317,12 +1331,12 @@ export class World {
    t.fine.parent!==this.scene||t.fine.material!==t.local||!t.local.visible||!t.seams?.startsWith('112:')||
    (q&&(q.owner!==t||q.grade!==grade||(t.fine!==q.stock&&t.fine!==q.candidate)))||
    (!q&&!this.nativeRegularGroundStill(key,t.fine.geometry))||
-   !this.sameIndianRiverStock(t,q?.stock??t.fine))return;
+   !this.sameNativePreviewStock(t,q?.stock??t.fine,INDIAN_RIVER_GRADE))return;
   if(q){
    const seal=this.indianRiverLensSeal;
    if(seal?.mesh!==q.candidate)return;
    if(t.fine===q.stock&&q.seams!==t.seams){
-    this.rebuildIndianRiverRim(t,q.candidate);q.seams=t.seams;
+    this.rebuildPreviewRim(t,q.candidate);q.seams=t.seams;
    }
    return this.intactIndianRiverLens(t,seal)?q.source:undefined;
   }
@@ -1332,7 +1346,7 @@ export class World {
   if(!index||!(position instanceof THREE.BufferAttribute)||!(position.array instanceof Float32Array)){
     this.dropStMarysStage();return;
   }
-  this.rebuildIndianRiverRim(t,mesh);
+  this.rebuildPreviewRim(t,mesh);
   this.indianRiverLensSeal={mesh,geometry,index,position,positionArray:position.array,positionExpected:position.array.slice(),
     indexArray:index.array,indexExpected:index.array.slice(),version:index.version};
   return draft;
@@ -1341,9 +1355,9 @@ export class World {
   const q=this.stagedChurch,t=q?.owner,seal=this.indianRiverLensSeal;
   if(!q||!t||seal?.mesh!==q.candidate||t.lod!==112||(t.fine!==q.stock&&t.fine!==q.candidate))return false;
   const before=t.fine,after=show?q.candidate:q.stock;
-  if(show&&(!this.intactIndianRiverLens(t,seal)||!this.sameIndianRiverStock(t,q.stock)))return false;
+  if(show&&(!this.intactIndianRiverLens(t,seal)||!this.sameNativePreviewStock(t,q.stock,INDIAN_RIVER_GRADE)))return false;
   if(before!==after){
-   const key=this.rebuildIndianRiverRim(t,after);t.seams=q.seams=key;
+   const key=this.rebuildPreviewRim(t,after);t.seams=q.seams=key;
    this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
   }
   return show;
@@ -1455,6 +1469,108 @@ export class World {
    if(dest.getY(j)!==y){dest.setY(j,y);changed=true;}
   }
   if(changed){if(dest instanceof THREE.BufferAttribute)dest.clearUpdateRanges();dest.needsUpdate=true;}
+ }
+ /** The physical owner is independent of whether the measured vertex
+  * positions are currently visible through the view frustum. */
+ private kingsRidgeReady(q:NonNullable<World['kingsRidge']>){
+  const {tile:t,mesh:m,stock:g,raised:a}=q,d=a.geometry;
+  return t.lod===112&&!t.relief&&!t.coarse.visible&&t.fine===m&&m.parent===this.scene&&m.visible&&m.material===q.material&&
+   m.material===t.local&&t.local.visible&&m.matrixAutoUpdate&&!this.scene.overrideMaterial&&
+   m.position.x===t.x0+t.w/2&&m.position.y===0&&m.position.z===t.z0+t.d/2&&
+   !m.quaternion.x&&!m.quaternion.y&&!m.quaternion.z&&m.quaternion.w===1&&m.scale.x===1&&m.scale.y===1&&m.scale.z===1&&
+   !this.grades.has(t.id)&&(m.geometry===g||this.kingsRidgeDrawing&&m.geometry===d)&&
+   g.index===q.stockIndex&&g.index.count===112*112*6&&g.groups.length===0&&g.drawRange.start===0&&g.drawRange.count===Infinity&&
+   !m.userData.coastalSurvey&&!m.userData.localGrade&&m.userData.subdiv===112&&
+   d.index===q.index&&q.index.array===q.indexArray&&q.index.version===q.indexVersion&&
+   d.getAttribute('position')===q.position&&q.position.array===q.positionArray&&d.groups.length===0&&
+   d.drawRange.start===0&&d.drawRange.count===Infinity;
+ }
+ get kingsRidgeContactActive(){return this.kingsRidge!==undefined;}
+ /** Called only by the simulation lifecycle, outside all render brackets. */
+ maintainKingsRidge(){
+  const q=this.kingsRidge;
+  if(q){
+   if(q.seams!==q.tile.seams&&this.kingsRidgeReady(q)){
+    this.rebuildPreviewRim(q.tile,q.raised);q.raised.geometry.computeBoundingSphere();q.seams=q.tile.seams;
+   }
+   if(!this.kingsRidgeReady(q)||!this.sameNativePreviewStock(q.tile,q.mesh,KINGS_DRY_CROWN)||
+    !this.kingsRidgeShapeIntact(q)||!this.kingsRidgeStockIntact(q))this.clearKingsRidge();
+  }
+  return this.kingsRidgeContactActive;
+ }
+ private kingsRidgeStockIntact(q:NonNullable<World['kingsRidge']>){
+  const g=q.stock;
+  if(g.index?.array!==q.stockIndexArray||g.getAttribute('position')!==q.stockPos||g.getAttribute('uv')!==q.stockUV||
+   q.stockPos.array!==q.stockPositionArray||q.stockUV.array!==q.stockUVArray)return false;
+  for(let i=0;i<q.stockIndexArray.length;i++)if(q.stockIndexArray[i]!==q.stockIndexExpected[i])return false;
+  for(let i=0;i<q.stockPositionArray.length;i++)if(q.stockPositionArray[i]!==q.positionExpected[i])return false;
+  for(let i=0;i<q.stockUVArray.length;i++)if(q.stockUVArray[i]!==q.uvExpected[i])return false;
+  return true;
+ }
+ private kingsRidgeShapeIntact(q:NonNullable<World['kingsRidge']>){
+  for(const [i,y] of this.previewRim(q.tile).edge)q.positionExpected[i*3+1]=y;
+  for(let i=0;i<q.indexArray.length;i++)if(q.indexArray[i]!==q.indexExpected[i])return false;
+  for(let i=0;i<q.positionArray.length;i++)if(q.positionArray[i]!==q.positionExpected[i])return false;
+  return true;
+ }
+ installKingsRidge(grade:BoundedGrade){
+  if(this.kingsRidge)return this.kingsRidge.grade===grade&&this.kingsRidgeContactActive;
+  const t=this.byId.get(KINGS_CROWN_TILE),m=t?.fine;
+  if(grade.grid.spec!==KINGS_DRY_CROWN||!t||!m||!m.geometry.index||!this.nativeRegularGroundStill(t.id,m.geometry)||
+    this.kingsGrade||this.kingsStage||!t.seams?.startsWith('112:')||!t.local.visible||t.coarse.visible||m.material!==t.local||
+    m.parent!==this.scene||!m.visible||m.geometry.index.count!==112*112*6||this.scene.overrideMaterial||
+    !this.sameNativePreviewStock(t,m,KINGS_DRY_CROWN))return false;
+  const original=m.geometry,oldPosition=original.getAttribute('position'),previous=this.rejectedRidge;
+  const positionVersion=oldPosition instanceof THREE.InterleavedBufferAttribute?oldPosition.data.version:oldPosition.version;
+  if(previous?.geometry===original&&previous.seams===t.seams&&previous.positionVersion===positionVersion&&
+    previous.indexVersion===original.index?.version)return false;
+  let a:THREE.Mesh|undefined;
+  try{
+   a=this.patch(t.x0,t.z0,t.w,t.d,112,grade);
+   const g=a.geometry,p=g.getAttribute('position'),idx=g.index;
+   if(!idx||!(p instanceof THREE.BufferAttribute)||!(p.array instanceof Float32Array)||
+     a.userData.localGrade!==KINGS_DRY_CROWN.id||idx.count!==35112*3)throw Error('Unexpected ridge owner');
+   this.rebuildPreviewRim(t,a);g.computeBoundingSphere();
+   const stock=m.geometry,old=stock.index,positions=stock.getAttribute('position'),uv=stock.getAttribute('uv'),raisedUV=g.getAttribute('uv');
+   if(!old||!(positions instanceof THREE.BufferAttribute)||!(uv instanceof THREE.BufferAttribute)||
+     !(positions.array instanceof Float32Array)||!(uv.array instanceof Float32Array)||!(raisedUV?.array instanceof Float32Array))
+    throw Error('Unexpected stock ridge vertex buffers');
+   // The measured package retains every original lattice vertex. Validate
+   // the full native owner, including areas outside the signed collar.
+   for(let j=0;j<112;j++)for(let i=0;i<112;i++){
+    const n=j*113+i,k=(j*112+i)*6;
+    if(old.getX(k)!==n||old.getX(k+1)!==n+113||old.getX(k+2)!==n+1||
+     old.getX(k+3)!==n+113||old.getX(k+4)!==n+114||old.getX(k+5)!==n+1)throw Error('Unready original ridge topology');
+   }
+   const q={tile:t,mesh:m,stock,raised:a,grade,position:p,index:idx,stockIndex:old,material:m.material,seams:t.seams,
+    positionArray:p.array,positionExpected:p.array.slice(),indexArray:idx.array,indexExpected:idx.array.slice(),indexVersion:idx.version,
+    stockIndexArray:old.array,stockIndexExpected:old.array.slice(),stockPos:positions,stockUV:uv,
+    stockPositionArray:positions.array,stockUVArray:uv.array,uvExpected:raisedUV.array.slice(0,uv.array.length)};
+   if(!this.kingsRidgeReady(q)||!this.kingsRidgeStockIntact(q))throw Error('Unready stock ridge owner');
+   this.rejectedRidge=undefined;this.kingsRidge=q;this.groundVersion++;return true;
+  }catch{
+   a?.geometry.dispose();this.rejectedRidge={geometry:original,seams:t.seams,positionVersion,indexVersion:original.index?.version??-1};
+   return false;
+  }
+ }
+ clearKingsRidge(){
+  const q=this.kingsRidge;if(!q)return;
+  if(q.mesh.geometry===q.raised.geometry)q.mesh.geometry=q.stock;
+  this.kingsRidgeDrawing=false;this.kingsRidge=undefined;q.raised.geometry.dispose();this.groundVersion++;
+ }
+ beginKingsRidgeDraw(camera:THREE.PerspectiveCamera){
+  const q=this.kingsRidge;
+  if(!q||this.kingsRidgeDrawing||!this.kingsRidgeReady(q))return;
+  camera.updateMatrixWorld();
+  if(!kingsRidgeMayDraw(camera))return;
+  if(q.seams!==q.tile.seams){
+   this.rebuildPreviewRim(q.tile,q.raised);q.raised.geometry.computeBoundingSphere();q.seams=q.tile.seams;
+  }
+  this.kingsRidgeDrawing=true;q.mesh.geometry=q.raised.geometry;
+  return ()=>{
+   if(q.mesh.geometry===q.raised.geometry)q.mesh.geometry=q.stock;
+   this.kingsRidgeDrawing=false;
+  };
  }
  get kingsDryCrownBlend(){
   const q=this.kingsStage;
@@ -1638,6 +1754,8 @@ export class World {
   return out;
  }
  private installedGrade(key:string,patch=this.byId.get(key)){
+  const ridge=this.kingsRidge;
+  if(ridge&&key===ridge.tile.id&&patch===ridge.tile)return ridge.grade;
   const revision=patch?.lod===112&&patch.fine?.userData.localGrade;
   if(!revision)return;
   const proposed=this.stagedChurch,prim=this.stagedPointPrim;
@@ -1646,6 +1764,7 @@ export class World {
   return source?.grid.spec.id===revision?source:undefined;
  }
  groundGradeInstalled(id:string){
+  if(id===KINGS_DRY_CROWN.id&&this.kingsRidgeContactActive)return true;
   const prim=this.stagedPointPrim;
   if(id===POINT_PRIM_GRADE.id)return !!prim&&prim.owner.lod===112&&prim.owner.fine===prim.candidate;
   const church=this.stagedChurch;
@@ -1655,12 +1774,14 @@ export class World {
  }
  get activeGroundGrades():readonly string[]{
   const result:string[]=[];
+  if(this.kingsRidgeContactActive)result.push(KINGS_DRY_CROWN.id);
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)result.push(g.grid.spec.id);}
   const church=this.stagedChurch;if(church&&this.groundGradeInstalled(church.grade.grid.spec.id))result.push(church.grade.grid.spec.id);
   if(this.groundGradeInstalled(POINT_PRIM_GRADE.id))result.push(POINT_PRIM_GRADE.id);
   return result;
  }
  get activeGroundGrade(){
+  if(this.kingsRidgeContactActive)return KINGS_DRY_CROWN.id;
   if(this.grades)for(const [key] of this.grades){const g=this.installedGrade(key);if(g)return g.grid.spec.id;}
   const church=this.stagedChurch;if(church&&this.groundGradeInstalled(church.grade.grid.spec.id))return church.grade.grid.spec.id;
   return this.groundGradeInstalled(POINT_PRIM_GRADE.id)?POINT_PRIM_GRADE.id:null;
@@ -1766,7 +1887,7 @@ export class World {
  private provinceFlightHeight(x:number,z:number,covered:boolean){
   let baseline=this.terrain.contactHeight(x,z,covered);
   if(covered&&this.bankGround&&this.byId.get(BANK_TILE)?.lod===112)baseline=this.bankGround.height(x,z,baseline);
-  if(covered&&(this.grades.size||this.stagedChurch||this.stagedPointPrim)){
+  if(covered&&(this.grades.size||this.stagedChurch||this.stagedPointPrim||this.kingsRidge)){
    const [u,v]=this.terrain.uv(x,z),grade=this.installedGrade(Math.floor(u*WORLD_COLS)+'-'+Math.floor(v*WORLD_ROWS));
    if(grade?.weight(x,z)){
     const y=grade.contactY(x,z,baseline);
@@ -1850,6 +1971,7 @@ export class World {
    const proposedLOD=d2<(old===112?6200:5300)**2?112:d2<(old>=56?11700:10500)**2?56:8;
    const measuredKings=!!this.kingsGrade&&tile.id===KINGS_CROWN_TILE;
    if(proposedLOD!==112&&this.kingsStage?.owner===tile)this.dropKingsCrown();
+   if(proposedLOD!==112&&this.kingsRidge?.tile===tile)this.clearKingsRidge();
    if(proposedLOD!==112&&this.stagedChurch?.owner===tile)this.dropStMarysStage();
    if(proposedLOD!==112&&this.stagedPointPrim?.owner===tile)this.dropPointPrimStage();
    tile.lod=proposedLOD;

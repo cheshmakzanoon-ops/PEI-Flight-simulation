@@ -90,7 +90,7 @@ import { addBasilica } from './render/basilica.ts';
 import { basilicaSiteSupports, mountBasilicaStudy } from './render/basilica-study-seat.ts';
 import {DALVAY,dalvaySiteSupports} from './render/dalvay-exterior-seat.ts';
 import {SEACOW,seacowSiteSupports} from './render/seacow-exterior-seat.ts';
-import {seacowDefaultFlight,standardSeacowExteriorRequested,foundersWestRequested,FOUNDERS_WEST_ROUTE,indianRiverLensState,indianRiverLensFlight,indianRiverCanCommit} from './app/scenery-profile.ts';
+import {seacowDefaultFlight,standardSeacowExteriorRequested,foundersWestRequested,FOUNDERS_WEST_ROUTE,indianRiverLensState,indianRiverLensFlight,indianRiverCanCommit,kingsRidgeLensState,kingsRidgeAirState} from './app/scenery-profile.ts';
 import {FOUNDERS_WEST} from './render/founders-west/authority.ts';
 import {KNIGHT_SEAT,knightGroundSupports} from './render/souris-knight-seat.ts';
 import {olearyExteriorRequested,olearyIndustrialStudyRequested,olearyWarehouseRequested,terminalWallPreviewRequested,dalvayWaterRequested,dalvayExteriorRequested,dalvayGlazingRequested,sourisKnightRequested,seacowExteriorRequested,basilicaExteriorRequested,basilicaYardSunRequested} from './app/scenery-profile.ts';
@@ -196,7 +196,9 @@ async function run(){
  const duneReliefAsked=!options.has('stockDuneRelief')&&options.has('duneReliefStudy')&&!sceneryReviewBlock('duneReliefStudy',options);
  const standardDuneRelief=standardDuneReliefRequested(options)&&String(SIDEWALKS.sha256)===CANOPY_FENCE.pins.sidewalk&&
   String(MAPPED_PARKING.sha256)===CANOPY_FENCE.pins.parking;
- const crownGradeWanted=kingsDryCrownRequested(options);
+ const ridgePreview=kingsRidgeLensState(location.search).active;
+ const legacyKingsCrown=kingsDryCrownRequested(options);
+ const crownGradeWanted=legacyKingsCrown||ridgePreview;
  const checkedGroundIndex=hogGroundAsked||duneReliefAsked?pinnedHogBuildingIndex(worldBase):undefined;
  const crownGradeJob=crownGradeWanted?Promise.all([loadBoundedGrade(KINGS_DRY_CROWN,worldBase),kingsDryCrownHedges(worldBase)]):undefined;
  const hogGroundJob=hogGroundAsked?Promise.all([loadBoundedGrade(HOG_WEST_GRADE,worldBase),checkedGroundIndex,loadWestDuneOptics(worldBase)]):undefined;
@@ -213,7 +215,7 @@ async function run(){
  const montagueRoadJob=useMontague?preRoadJob:undefined;
  const spinnakersJob=options.has('spinnakersPreview')?loadSpinnakersDeck(worldBase):undefined;
  const preBuildingJob=useBaywalk?Buildings.prepareBaywalk():churchAsked?Buildings.prepareIndianRiver():
-  crownGradeJob?.then(([make,hedges])=>make&&hedges?Buildings.prepareKingsDryCrown():undefined);
+  crownGradeJob?.then(([make,hedges])=>make&&hedges?Buildings.prepareKingsDryCrown(fetch,ridgePreview?3300:1450):undefined);
  const baywalkJob=useBaywalk?Promise.all([loadBaywalkCourt(worldBase),spinnakersJob,preRoadJob,preBuildingJob])
   .then(([court,deck,road,buildings])=>court&&deck&&buildings&&road?.digest===BAYWALK_ROAD_SHA&&road.roads[BAYWALK_ROAD_ORDINAL]?.flags===BAYWALK_ROAD_FLAGS?
    {court,deck,road:road.roads[BAYWALK_ROAD_ORDINAL].points}:undefined):undefined;
@@ -327,7 +329,7 @@ async function run(){
   try{const grade=make(terrain,(x,z)=>terrain.atlasElevation(x,z));if(kingsDryCrownInterior(terrain,cover,grade))return grade;}
   catch{/** Stock near terrain remains authoritative. */}
  })();
- const groundCohorts=[grade,rusticoGround,hogGround?.grade,...dunesGround,crownGround].filter(g=>g!==undefined);
+ const groundCohorts=[grade,rusticoGround,hogGround?.grade,...dunesGround,legacyKingsCrown?crownGround:undefined].filter(g=>g!==undefined);
  const hog=hogJob&&matchesHogPhoto(terrainSha,cover.sourceSha,cover.sourceDecodedSha)?await hogJob:undefined;
  const orthoModule=await orthoJob;
  const inlandWindows=inlandOrtho&&orthoModule&&standardLandAtlasMatches(terrain,terrainSha,cover)?orthoModule.inlandSourceWindows(cover):[];
@@ -590,6 +592,7 @@ async function run(){
   sourisEastGround(world,terrainSha,()=>roads?.sourceGeometrySha256);
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate,barnGate,rusticoEnvelopeAllowed,churchCohort?.art,railReview,stDavidsReview,townWallOptics).then(v=>{
   if(localRiverLens)v.enableStrictIndianLens();
+  if(ridgePreview)v.enableStrictRidgeOwner();
   if(rusticoHarbourRoofRequested(options))v.enableRusticoHarbourRoof();
   if(olearyAccessRoofRequested(options))v.enableOlearyAccessRoof();
   if(schoolFinishRequested)v.enableGeorgetownSchoolWalls(olearyLinkPrograms(renderer,camera,scene,1,false,7400));
@@ -772,6 +775,7 @@ async function run(){
  const diagnostic=import.meta.env.DEV||new URLSearchParams(location.search).has('diagnostics');
  const drawingBuffer=new THREE.Vector2();
  const rE=new THREE.Euler(0,0,0,'YXZ');let oldMode=ui.mode;
+ let ridgeDeparture:typeof f|undefined;
  renderer.setAnimationLoop((now:number)=>{
   const delta=Math.min(.10,Math.max(0,(now-last)*.001));last=now;time+=delta;
   const u=input.poll(pause);
@@ -781,6 +785,24 @@ async function run(){
 
   world.prepareAdaptiveTerrain(f.x,f.z,f.y,performance.now());
   // Commit verified near geometry before the fixed-step contact sampler.
+  if(ridgePreview){
+   const here=SITES[activeSite].id;
+   const rightFlight=kingsRidgeAirState(here,ui.mode,ui.previous);
+   const [a,b,c,d]=KINGS_DRY_CROWN.boundsXZ;
+   const distance=Math.hypot(Math.max(0,a-f.x,f.x-c),Math.max(0,b-f.z,f.z-d));
+   world.maintainKingsRidge();
+   const ready=!!crownGround&&buildings?.kingsRidgeOwnerLive===true;
+   if(!rightFlight.retain||!ready||distance>3900)world.clearKingsRidge();
+   if(rightFlight.initiate&&ridgeDeparture!==f){
+    // One decision per genuine departure. A late or incompatible pack stays
+    // stock for the whole flight rather than rising under the aircraft.
+    ridgeDeparture=f;world.clearKingsRidge();
+    if(crownGround&&ready&&distance<2700&&f.status==='flying'&&f.y-world.groundHeight(f.x,f.z)>=45)
+     world.installKingsRidge(crownGround);
+   }
+   ui.setKingsRidgeState(rightFlight.retain?(world.kingsRidgeContactActive?'playing':'stock'):
+    here==='kings-coastal-ridge'?(ready?'ready':crownGround?'pending':'unavailable'):'different');
+  }
   if(nearDunes.length&&f.status==='flying')updateNearDunes(f.x,f.z,f.y);
   if(museumAsked){vegetation.update(f.x,f.z,f.y);updateMuseumGround(!dispatch||options.has('qa'));}
   const riverFlight=localRiverLens?indianRiverLensFlight(SITES[activeSite].id,ui.mode,ui.previous):undefined;
@@ -999,12 +1021,14 @@ async function run(){
    if(eligible||dalvayVisual?.active)dalvayVisual?.update(()=>eligible?world.dalvayWaterReceivers():undefined);
   }
   buildings?.syncTerminalWall();
-  if(datedStandReview){
+  if(world.kingsRidgeContactActive&&buildings?.kingsRidgeOwnerLive!==true)world.clearKingsRidge();
+  const endRidge=world.beginKingsRidgeDraw(camera);
+  try{if(datedStandReview){
    let end:undefined|(()=>void);
    try{end=datedStandReview.beforeFrame({site:SITES[activeSite].id,mode:ui.mode,view,now});}
    catch{datedStandReview.dispose();}
    try{renderer.render(scene,camera);}finally{end?.();}
-  }else renderer.render(scene,camera);
+  }else renderer.render(scene,camera);}finally{endRidge?.();}
   if(world.tryonRockState==='pending'&&roads&&buildings&&mainland&&world.detailState().loading===0)
    void world.prepareTryonRock(camera);
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);
@@ -1014,7 +1038,7 @@ async function run(){
    if(kingsFields)Object.assign(window,{islandAirKingsFields:{state:kingsFields.state,gain:kingsFields.gain}});
    if(queensFields)Object.assign(window,{islandAirQueensFields:{state:queensFields.state,gain:queensFields.gain}});
    if(princeFields)Object.assign(window,{islandAirPrinceFields:{state:princeFields.state,gain:princeFields.gain}});
-   Object.assign(window,{islandAirDiagnostics:{foundersWestWall:buildings?.foundersWestActive??false,georgetownSchoolWallStage:buildings?.georgetownSchoolWallStage,georgetownSchoolWalls:buildings?.georgetownSchoolWallsActive??false,olearyWarehouse150:buildings?.olearyWarehouseActive?'authored':'stock',olearyIndustrial192:buildings?.olearyIndustrialActive?'authored':'stock',olearyExterior:buildings?.olearyExteriorActive?'authored':'stock',dalvayExterior:buildings?.dalvayExteriorActive?'authored':'stock',dalvayGlazing:buildings?.dalvayExteriorActive&&dalvayGlazingActive?'reflected':'stock',dalvayWaterOptics:dalvayVisual?.state??null,dalvayWaterAdmission:dalvayOpticsAdmission,sourisKnightExterior:buildings?.knightExteriorActive?'authored':'stock',seacowExterior:buildings?.seacowExteriorActive?'authored':'stock',basilicaSun:basilicaSun?.state??null,basilicaExterior,regionalWind:regionalWind?.diagnostics()??null,sourisShoreline:sourisShoreline?.state??null,panmurePasture:panmurePasture?.state??null,standardMeadow:standardMeadow?.state??null,regionalCanopy:regionalCanopy?.state??null,pointPrim:pointPrim?.state??null,hogPhoto:world.hogPhoto?.opacity.value===1,hogWestAerial:world.westDuneOptics?.gain.value===1,duneSand:duneSand?.note()??null,grassCoast:grassCoast?.diagnostics()??null,basinSandStandard:basinSandStandard?.state??null,indianRiver:buildings?.indianRiverActive??false,indianRiverLocalLens:localRiverLens,indianRiverSun:churchCohort?.groundSun.live.value===1,indianRiverDetail:churchCohort?.art.detail??null,indianRiverPrepared:buildings?.indianRiverPrepared??false,indianRiverShadowReceivers:vegetation.stMarysShadowReceivers,indianRiverShadowTriangles:vegetation.stMarysShadowTriangles,provinceGrass:grass?.stream.state??null,provinceFields:fieldStudy?.stream.state??null,cropRowsReview:!!world.fieldPilot,beaconsfieldReview:buildings?.beaconsfieldPreviewActive??false,beaconsfieldGrade:!!museumShadow?.live,beaconsfieldGradeShadows:museumShadow?.count??0,beaconsfieldGradeShadowTriangles:museumShadow?.triangles??0,greenGablesReview:buildings?.greenGablesPreviewActive??false,greenGablesBarnReview:buildings?.greenGablesBarnPreviewActive??false,summersideStation:buildings?.summersideStationActive??false,stDavids:buildings?.stDavidsActive??false,stDavidsGroundSun:georgetownGroundSun?.live.value===1,site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
+   Object.assign(window,{islandAirDiagnostics:{foundersWestWall:buildings?.foundersWestActive??false,georgetownSchoolWallStage:buildings?.georgetownSchoolWallStage,georgetownSchoolWalls:buildings?.georgetownSchoolWallsActive??false,olearyWarehouse150:buildings?.olearyWarehouseActive?'authored':'stock',olearyIndustrial192:buildings?.olearyIndustrialActive?'authored':'stock',olearyExterior:buildings?.olearyExteriorActive?'authored':'stock',dalvayExterior:buildings?.dalvayExteriorActive?'authored':'stock',dalvayGlazing:buildings?.dalvayExteriorActive&&dalvayGlazingActive?'reflected':'stock',dalvayWaterOptics:dalvayVisual?.state??null,dalvayWaterAdmission:dalvayOpticsAdmission,sourisKnightExterior:buildings?.knightExteriorActive?'authored':'stock',seacowExterior:buildings?.seacowExteriorActive?'authored':'stock',basilicaSun:basilicaSun?.state??null,basilicaExterior,regionalWind:regionalWind?.diagnostics()??null,sourisShoreline:sourisShoreline?.state??null,panmurePasture:panmurePasture?.state??null,standardMeadow:standardMeadow?.state??null,regionalCanopy:regionalCanopy?.state??null,pointPrim:pointPrim?.state??null,hogPhoto:world.hogPhoto?.opacity.value===1,hogWestAerial:world.westDuneOptics?.gain.value===1,duneSand:duneSand?.note()??null,grassCoast:grassCoast?.diagnostics()??null,basinSandStandard:basinSandStandard?.state??null,indianRiver:buildings?.indianRiverActive??false,indianRiverLocalLens:localRiverLens,kingsRidgePreview:ridgePreview,kingsRidgeAuthority:!!crownGround&&buildings?.kingsRidgeOwnerLive===true,kingsRidgeContact:world.kingsRidgeContactActive,indianRiverSun:churchCohort?.groundSun.live.value===1,indianRiverDetail:churchCohort?.art.detail??null,indianRiverPrepared:buildings?.indianRiverPrepared??false,indianRiverShadowReceivers:vegetation.stMarysShadowReceivers,indianRiverShadowTriangles:vegetation.stMarysShadowTriangles,provinceGrass:grass?.stream.state??null,provinceFields:fieldStudy?.stream.state??null,cropRowsReview:!!world.fieldPilot,beaconsfieldReview:buildings?.beaconsfieldPreviewActive??false,beaconsfieldGrade:!!museumShadow?.live,beaconsfieldGradeShadows:museumShadow?.count??0,beaconsfieldGradeShadowTriangles:museumShadow?.triangles??0,greenGablesReview:buildings?.greenGablesPreviewActive??false,greenGablesBarnReview:buildings?.greenGablesBarnPreviewActive??false,summersideStation:buildings?.summersideStationActive??false,stDavids:buildings?.stDavidsActive??false,stDavidsGroundSun:georgetownGroundSun?.live.value===1,site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
     summersideTerminalWallPreview:buildings?.terminalWallActive??false,summersideTerminalWallDrawn:buildings?.terminalWallDrawn??false,
     legacyShore:world.legacyShoreState,openCoast:world.openCoastState,panmureCoast:world.panmureCoastState,tryonCoast:world.tryonCoastState,tryonRockPreview:world.tryonRockActive,tryonRockState:world.tryonRockState,capeWetState:world.capeWetState,shoreFoamDetail:standardBreakers,openRipples,princeRoofContact:buildings?.princeRoofContactActive??false,princeSurveyRoof:buildings?.princeSurveyRoofActive??false,townWallStudy:buildings?.townWallReview??false,townWallProfile:buildings?.townWallProfile??null,nearshoreStandard:nearshoreStandard?.state??null,nearshoreFoamStudy:world.nearshoreFoamArmed&&world.nearshoreFoamMode.value>=1.5&&world.nearshoreLocalGain.value>0,canopyLight:directionalCanopy,northCape:(northCape??streamedCape?.art)?.counts??null,adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,miscoucheFill:miscoucheArt?.mesh.visible?miscoucheArt.total:0,miscoucheFillGain:miscoucheArt?.gain??0,woodlandVolume:vegetation.volumeCount,woodlandCull:vegetation.woodlandCull,woodlandBark:barkLoader?vegetation.woodlandBark:null,woodlandCrown:crownStream?{...crownStream.state,rosterEligible:vegetation.crownBaseCount}:null,woodlandGroundedShadows:vegetation.groundedShadowCount,rollingForestShadows:vegetation.rollingShadowState,rollingForestPreflight:rollingPreflight,woodlandHeights:forestHeights?.ids??[],mappedLaneCanopy:tryMappedLaneCanopy?vegetation.openRoadLaneState:null,summersideOpenGround:frontageArmed?vegetation.openRoadLaneState:null,aerialPerspective:daylight?.armed&&daylight.gain.value>0,orthophotoSeams:ortho?.diagnostics(),marsh:marsh?.diagnostics(),marshFoliage:foliage?.diagnostics(),rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,bowleyPond:world.bowleyPond,cavendishWaterCore:world.hasFreshwaterSource(DUNELANDS.id)?DUNELANDS.id:null,localGroundGrade:world.activeGroundGrade,localGroundGrades:world.activeGroundGrades,kingsDryCrownBlend:world.kingsDryCrownBlend,northRusticoLighthouse:rustico?.state??stdRustico?.state??null,rusticoMassingReview:buildings?.rusticoMassingPreviewActive??false,rusticoHarbourRoof:buildings?.rusticoHarbourRoofActive??false,sourisWestFacing:buildings?.sourisWestFacingActive??false,olearyAccessRoof:buildings?.olearyAccessRoofActive??false,rusticoDrySoil:world.rusticoSoilStrength.value>0,rusticoDryTussocks:rusticoTufts?.mesh.visible?rusticoTufts.roots.length:0,gablesGravelReview:world.gravelStrength.value>0,gablesTrailReview:world.trailStrength.value>0,gablesFairwayReview:!!fairway?.strength.value,harbourShoreline:cover.harbour?.plan.id??null,montagueFoundation:cover.montague?.plan.id??null,montagueBridge:roads?.bridgePreviewActive??false,spinnakersDeck:buildings?.spinnakersActive??false,northBaywalkCourt:world.baywalkActive,northBaywalkRamp:buildings?.northBaywalkActive??false,northBaywalkRoad:roads?.baywalkRoadActive??false,northBaywalkConcrete:buildings?.northConcreteActive??false,basinShoreline:cover.basin?.plan.id??null,basinFootbridge:!!basinFootbridge,basinFootbridgeVisible:basinFootbridge?.visible??false,basinCanneryVisible:basinCannery?.visible??false,basinWharfVisible:basinWharf?.visible??false,basinWharfToe:cover.wharfToe,quartermasterDocks:quartermasterDocks??null,sourisLighting:sourisLighting?.active.value?sourisLighting.id:null,groundY:world.groundHeight(f.x,f.z),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,roads:!!roads,pavement:roads?.pavementStatus??null,runway03Pavement:world.runway03PavementLive.value===1,seatedRoads:roads?.seatState??null,sidewalks:sidewalks?.state??null,parking:parking?.state??null,gravelSurface:gravelSurface?.state??null,confederationTrail:confederationTrail?.state??null,buildings:!!buildings,buildingTiles:buildings?.diagnostics(),sourisEastExterior:buildings?.sourisEastActive??false,summersideMeasuredRoofs:buildings?.summersideRoofCount??0,mainland:!!mainland,detail:world.detailState(),layerWarnings:layerWarnings.slice()}});
   }

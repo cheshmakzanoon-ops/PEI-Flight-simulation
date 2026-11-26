@@ -1,0 +1,222 @@
+{
+  "route": "kings-coastal-ridge",
+  "camera": "Chase",
+  "viewport": [
+    1200,
+    760
+  ],
+  "frames": [
+    {
+      "nominalSeconds": 2.1,
+      "poseXZAltitude": [
+        32075.991345215767,
+        6556.136121800039,
+        126.52405137084928
+      ],
+      "nativeBuildingTiles": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "drawMeasurementApplied": true,
+      "exactRendererProgram": true,
+      "drawsStockAndActive": [
+        208,
+        208
+      ],
+      "trianglesStockAndActive": [
+        252172,
+        262196
+      ],
+      "groundContactSamples": {
+        "peakMetresBeforeDuringAfter": [
+          16.197981747239844,
+          16.197981747239844,
+          16.197981747239844
+        ],
+        "protectedWaterBeforeAndAfter": [
+          -0.055,
+          -0.055
+        ]
+      },
+      "strong": 8011,
+      "alpha": 0,
+      "outside": 0,
+      "covered": 92163,
+      "stockRestored": true,
+      "pngSha256": {
+        "stock": "ba652cca70e1b93167fe784f898308bfd3576adbf3ed68a8c1dee6b8d3c46526",
+        "active": "6f424f5204714ebc8d3955552e9a77452e2f03183d853f7a6eca332f138b2f98",
+        "restored": "ba652cca70e1b93167fe784f898308bfd3576adbf3ed68a8c1dee6b8d3c46526"
+      }
+    },
+    {
+      "nominalSeconds": 4.1,
+      "poseXZAltitude": [
+        32090.67004013396,
+        6660.33999003778,
+        127.20807485166067
+      ],
+      "nativeBuildingTiles": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "drawMeasurementApplied": true,
+      "exactRendererProgram": true,
+      "drawsStockAndActive": [
+        208,
+        208
+      ],
+      "trianglesStockAndActive": [
+        255280,
+        265304
+      ],
+      "groundContactSamples": {
+        "peakMetresBeforeDuringAfter": [
+          16.197981747239844,
+          16.197981747239844,
+          16.197981747239844
+        ],
+        "protectedWaterBeforeAndAfter": [
+          -0.055,
+          -0.055
+        ]
+      },
+      "strong": 16791,
+      "alpha": 0,
+      "outside": 0,
+      "covered": 201724,
+      "stockRestored": true,
+      "pngSha256": {
+        "stock": "3e6c54f0894fd593713d8dcce47cde97c482f85dafd62c33cd5e0f17e0fcade3",
+        "active": "691423abb3ae7f4f2d25ca12c991f810566f4e73bc06c39c6ae76d359b0df718",
+        "restored": "3e6c54f0894fd593713d8dcce47cde97c482f85dafd62c33cd5e0f17e0fcade3"
+      }
+    },
+    {
+      "nominalSeconds": 5.1,
+      "poseXZAltitude": [
+        32098.010876599903,
+        6712.456091110617,
+        127.54883947128637
+      ],
+      "nativeBuildingTiles": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "drawMeasurementApplied": true,
+      "exactRendererProgram": true,
+      "drawsStockAndActive": [
+        206,
+        206
+      ],
+      "trianglesStockAndActive": [
+        253408,
+        263432
+      ],
+      "groundContactSamples": {
+        "peakMetresBeforeDuringAfter": [
+          16.197981747239844,
+          16.197981747239844,
+          16.197981747239844
+        ],
+        "protectedWaterBeforeAndAfter": [
+          -0.055,
+          -0.055
+        ]
+      },
+      "strong": 27178,
+      "alpha": 0,
+      "outside": 0,
+      "covered": 190594,
+      "stockRestored": true,
+      "pngSha256": {
+        "stock": "96e658223de0b878549d86bb3527911be29c83951f1e18fcf6a8af0e52d931d0",
+        "active": "a588bcc2aa835f605d6e98403a9e76bcaa4e817632a110bdf4b11703173cf10e",
+        "restored": "96e658223de0b878549d86bb3527911be29c83951f1e18fcf6a8af0e52d931d0"
+      }
+    },
+    {
+      "nominalSeconds": 8.1,
+      "poseXZAltitude": [
+        32120.03883802627,
+        6868.856266915896,
+        128.57915750562174
+      ],
+      "nativeBuildingTiles": {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "drawMeasurementApplied": false,
+      "exactRendererProgram": true,
+      "drawsStockAndActive": [
+        205,
+        205
+      ],
+      "trianglesStockAndActive": [
+        259480,
+        259480
+      ],
+      "groundContactSamples": {
+        "peakMetresBeforeDuringAfter": [
+          16.197981747239844,
+          16.197981747239844,
+          16.197981747239844
+        ],
+        "protectedWaterBeforeAndAfter": [
+          -0.055,
+          -0.055
+        ]
+      },
+      "strong": 0,
+      "alpha": 0,
+      "outside": 0,
+      "covered": 74086,
+      "stockRestored": true,
+      "pngSha256": {
+        "stock": "c9bb7435b6d64ce2052f3f7d33b46360e3f8ee94de020b0ab39d9205602a3740",
+        "active": "c9bb7435b6d64ce2052f3f7d33b46360e3f8ee94de020b0ab39d9205602a3740",
+        "restored": "c9bb7435b6d64ce2052f3f7d33b46360e3f8ee94de020b0ab39d9205602a3740"
+      }
+    }
+  ],
+  "neutralOffscreenContact": [
+    {
+      "frame": 95,
+      "worldPose": [
+        32130.321058664347,
+        6941.866852017043,
+        129.0647653652447
+      ],
+      "previewGround": 9.765467397609575,
+      "stockGround": 3.339966975808287
+    },
+    {
+      "frame": 96,
+      "worldPose": [
+        32131.05555833078,
+        6947.082420288748,
+        129.09956099380642
+      ],
+      "previewGround": 7.251076599879032,
+      "stockGround": 3.5234499714098364
+    }
+  ],
+  "lateAuthorityControl": {
+    "availableAfterFrame": 11,
+    "remainedStockEveryScoredFrame": true,
+    "statusMessage": "Using Standard ridge ground on this flight.",
+    "method": "Hold only the decision-level availability check in the native test, then release an actual verified owner."
+  }
+}

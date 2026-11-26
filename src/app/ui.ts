@@ -1,5 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
-import {INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {KINGS_RIDGE_ROUTE,kingsRidgeLensState,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -20,12 +20,14 @@ export function failUI(message:string){
 export class UI {
  mode:Mode='dispatch';selected=0;previous:Mode='dispatch';private terrain:Terrain; private input:Input;
  private chartImage:HTMLImageElement;private frame=0;private siteNow=0;private camera='Chase';private silent=true;private message='';
+ private ridgeState='';
  constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;},private readonly sites:readonly Site[]=SITES) {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
   const detail=isDetailScenery(location.search);
   const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
   const basin=basinHeadDispatchState(location.search),river=indianRiverLensState(location.search);
+  const ridge=kingsRidgeLensState(location.search);
   const selectedReviews=new Set(reviewedScenery(location.search));
   const reviewsWithScope=sceneryOptions(location.search);
   let reviewCount=0;
@@ -62,11 +64,18 @@ export class UI {
     <button type="button" id="indian-river-lens-switch" aria-describedby="indian-river-lens-info"
       ${!river.compatible&&!river.selected?'disabled':''}>${river.selected?'Close ground preview':'Open ground preview'}</button>
   </section>
+  <section class="regional-detail" id="kings-ridge-lens" hidden>
+    <div><span class="eyebrow">KINGS COASTAL RIDGE</span><small id="kings-ridge-lens-info">${ridge.active?
+      'Preview selected. The measured ridge changes local ground contact.':!ridge.compatible?
+      'Unavailable with the current scenery settings.':'See the 2020 measured ridge. This also changes local ground contact.'}</small></div>
+    <button type="button" id="kings-ridge-lens-switch" aria-describedby="kings-ridge-lens-info"
+      ${!ridge.compatible&&!ridge.selected?'disabled':''}>${ridge.selected?'Close ridge preview':'Open ridge preview'}</button>
+  </section>
   <details class="scenery-reviews"><summary>Optional scenery studies <span id="scenery-review-count">${reviewCount?reviewCount+' selected':''}</span></summary><div class="scenery-review-list">${reviewOptions}
   <p class="review-note">Apply reloads the map and keeps your departure.</p><button type="button" id="apply-scenery-reviews" disabled>Apply studies</button></div></details><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
   <div class="location" id="location"><span class="eyebrow"><i></i> ON LOCATION</span><strong id="loc-name"></strong><small id="loc-county"></small></div>
   <section id="telemetry" aria-label="Flight instruments"><div class="flight-strip"><span><small>AIRSPEED</small><b id="kt">0</b><em>KT</em></span><span><small>ALTITUDE</small><b id="ft">0</b><em>FT MSL</em></span><span><small>HEADING</small><b id="hdg">000</b><em>°T</em></span><span><small>THROTTLE</small><b id="pwr">0</b><em>%</em></span></div><div id="annun"></div></section>
-  <div id="inflight" class="flightbtns"><button id="view">Chase <kbd>V</kbd></button><span id="controller"></span></div>
+  <div id="inflight" class="flightbtns"><button id="view">Chase <kbd>V</kbd></button><span id="controller"></span><small id="ridge-flight-status" role="status" hidden></small></div>
   <div id="modal" class="modal panel" role="dialog" aria-modal="true" aria-label="Flight panel"></div>
   <div id="touch"><div class="pad" id="stick" aria-label="Drag for pitch and roll"><i></i><small>STICK</small></div><div class="touchbuttons"><button id="upPower" aria-label="Increase throttle">PWR +</button><button id="dnPower" aria-label="Reduce throttle">PWR −</button></div></div>
   <footer><span id="layer-alert" hidden role="status"></span><button id="credits">Map credits</button><span>Contains modified Copernicus Sentinel data 2025 · NRCan · Statistics Canada</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a></footer>`;
@@ -78,6 +87,9 @@ export class UI {
   };
   $('indian-river-lens-switch').onclick=()=>{
    location.assign(switchIndianRiverLens(location.href,!river.selected,this.sites[this.selected].id));
+  };
+  $('kings-ridge-lens-switch').onclick=()=>{
+   location.assign(switchKingsRidgeLens(location.href,!ridge.selected,this.sites[this.selected].id));
   };
   $('cavendish-package-switch').onclick=()=>location.assign(switchCavendishPackageURL(location.href,!cavePack.selected,this.sites[this.selected].id));
   $('cape-rock-switch').onclick=()=>location.assign(switchCapeTryonRockURL(location.href,!capeRock.selected,this.sites[this.selected].id));
@@ -105,9 +117,21 @@ export class UI {
   $('basin-inlet').hidden=basin.detail||(s.id!==BASIN_HEAD_DEPARTURE&&!basin.selected);
   const river=indianRiverLensState(location.search);
   $('indian-river-lens').hidden=(!river.selected&&river.detail)||(s.id!==INDIAN_RIVER_ROUTE&&!river.selected);
+  const ridge=kingsRidgeLensState(location.search);
+  $('kings-ridge-lens').hidden=(!ridge.selected&&ridge.detail)||(s.id!==KINGS_RIDGE_ROUTE&&!ridge.selected);
  }
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
  setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}
+ setKingsRidgeState(state:'pending'|'ready'|'unavailable'|'playing'|'stock'|'different'){
+  if(this.ridgeState===state)return;this.ridgeState=state;
+  const status=$('kings-ridge-lens-info'),flight=$('ridge-flight-status');
+  status.textContent=state==='ready'?'Measured terrain is ready. It changes local ground contact.':
+   state==='pending'?'Checking the measured terrain. If you fly before it is ready, this flight keeps Standard ground.':
+   state==='unavailable'?'Measured terrain could not be verified. Begin flight will use Standard ground.':
+   state==='different'?'The separate preview is only available on Kings County · coastal ridge pass.':
+   'The measured ridge changes local ground contact.';
+  flight.hidden=state!=='stock';flight.textContent=state==='stock'?'Using Standard ridge ground on this flight.':'';
+ }
  setWarnings(xs:string[]){const e=$('layer-alert');e.textContent=xs.length?'Scenery unavailable: '+xs.join(', '):'';e.hidden=!xs.length;}
  setSound(on:boolean){this.silent=!on;$('nav-sound').textContent=on?'Sound on':'Sound off';$('nav-sound').setAttribute('aria-label',on?'Mute engine sound':'Enable engine sound');}
  stop(reason:string){this.message=reason;this.set('crash');}

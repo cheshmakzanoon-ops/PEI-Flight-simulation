@@ -356,6 +356,13 @@ export class Buildings {
  private readonly churchArt?:ChurchArt;
  private readonly pinnedChurch?:Bldg[];
  private readonly pinnedKingsCrown?:Bldg[];
+ private strictRidgeOwner=false;
+ private ridgeOwner?:{mesh:THREE.Mesh;still:()=>boolean};
+ enableStrictRidgeOwner(){this.strictRidgeOwner=true;}
+ get kingsRidgeOwnerLive(){
+  const q=this.ridgeOwner,key=KINGS_CROWN_BUILDINGS.tile;
+  return !!q&&this.meshes.get(key)===q.mesh&&this.wanted.has(key)&&q.still();
+ }
  private readonly townWallOptics?:TownWallOptics;
  private readonly fittedWallMaterials=new Map<THREE.ShaderMaterial,THREE.ShaderMaterial>();
  private readonly tryStation?:RailwayReview;
@@ -504,7 +511,7 @@ export class Buildings {
   if(!ready)return;
   // Ordinary loading of every other owner is unchanged. After eviction this
   // one staged owner still uses the same proven rows, never a second read.
-  return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,get),
+  return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,(input,init)=>get(input,init)),
    atlasHash:ready.spec.sha256,kingsCrown:ready.rows};
  }
  static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics){
@@ -674,6 +681,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(this.ridgeOwner?.mesh===m)this.ridgeOwner=undefined;
     if(id===FOUNDERS_WEST.id){this.foundersWest?.dispose();this.foundersWest=undefined;}
     if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
@@ -941,6 +949,11 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(this.strictRidgeOwner&&tile.id===KINGS_CROWN_BUILDINGS.tile&&features===this.pinnedKingsCrown){
+    const proof=this.pinAuthoredOwner(mesh);
+    this.ridgeOwner={mesh,still:()=>mesh.geometry===proof.stock&&proof.baseOwner()&&
+     !Array.isArray(mesh.material)&&mesh.material.visible};
+   }
    if(foundersWest&&foundersWire&&mesh.material instanceof THREE.ShaderMaterial){
     this.foundersWest?.dispose();
     this.foundersWest=new FoundersWestLease({...foundersWest,scene:this.scene,owner:mesh,stock:mesh.material,wire:foundersWire,rows:features,
