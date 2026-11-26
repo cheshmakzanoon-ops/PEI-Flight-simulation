@@ -1,0 +1,178 @@
+{
+  "sourceCommit": "950317846d5d029539f1bb20c209b287fab55d33",
+  "bundleSHA256": "438fdeae3130c4eed9ab2a9259302dfa29782f7cb3806bbee10292791e0ee3d9",
+  "method": "Compiled Three r187, native WebGL2 SwiftShader, normal flight and same RAF comparison. Diagnostic gain only is changed for marker and restore. Indexed submitted terrain is 23-13, 75264 indices. Equal eye, matrix, positions, draw/geometry counts and opaque alpha per phase. This is not a hardware FPS estimate.",
+  "viewport": [
+    960,
+    640
+  ],
+  "MSAASamples": 4,
+  "stops": {
+    "t2": {
+      "travelM": 107.0966,
+      "aboveGroundM": 60.666,
+      "authoredDraws": 1,
+      "readyRanges": 3,
+      "geometryCounts": [
+        199,
+        296333,
+        212
+      ],
+      "supportPixels": 171178,
+      "strongPixels": 77253,
+      "supportP95": 6,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    },
+    "t4": {
+      "travelM": 208.4715,
+      "aboveGroundM": 60.039,
+      "authoredDraws": 1,
+      "readyRanges": 3,
+      "geometryCounts": [
+        199,
+        298957,
+        212
+      ],
+      "supportPixels": 215845,
+      "strongPixels": 73702,
+      "supportP95": 5,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    },
+    "t6": {
+      "travelM": 311.6085,
+      "aboveGroundM": 58.748,
+      "authoredDraws": 1,
+      "readyRanges": 2,
+      "geometryCounts": [
+        198,
+        300997,
+        212
+      ],
+      "supportPixels": 221308,
+      "strongPixels": 108388,
+      "supportP95": 6,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    },
+    "t8": {
+      "travelM": 417.6592,
+      "aboveGroundM": 58.638,
+      "authoredDraws": 1,
+      "readyRanges": 3,
+      "geometryCounts": [
+        198,
+        301661,
+        212
+      ],
+      "supportPixels": 145134,
+      "strongPixels": 84613,
+      "supportP95": 7,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    },
+    "t11": {
+      "travelM": 571.0225,
+      "aboveGroundM": 57.918,
+      "authoredDraws": 1,
+      "readyRanges": 3,
+      "geometryCounts": [
+        199,
+        304283,
+        213
+      ],
+      "supportPixels": 0,
+      "strongPixels": 0,
+      "supportP95": 0,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    },
+    "t14": {
+      "travelM": 729.0512,
+      "aboveGroundM": 58.974,
+      "authoredDraws": 1,
+      "readyRanges": 3,
+      "geometryCounts": [
+        197,
+        305343,
+        213
+      ],
+      "supportPixels": 0,
+      "strongPixels": 0,
+      "supportP95": 0,
+      "exteriorPixels": 0,
+      "alphaPixels": 0,
+      "exactOffRestore": true,
+      "exactLiveRestore": true
+    }
+  },
+  "transport": {
+    "fixedPayloadBytes": 265873,
+    "rangePayloadBytes": 6536,
+    "exact206Responses": 4,
+    "externalRequests": 0,
+    "unexpectedErrors": 0
+  },
+  "stockMaterialControl": {
+    "viewport": [
+      650,
+      460
+    ],
+    "method": "Native Scene.onBeforeRender temporary original 23-13 stock material on the same N112 mesh before sorting; material then restored, no renderer path changes.",
+    "stops": {
+      "t2": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0,
+        "restored": true
+      },
+      "t6": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0,
+        "restored": true
+      }
+    }
+  },
+  "launchControls": {
+    "veto": {
+      "distanceM": 107.097,
+      "strongPixels": 0,
+      "draws": 0,
+      "rangeRequests": 0,
+      "fieldResponses": 0
+    },
+    "missing": {
+      "distanceM": 107.097,
+      "strongPixels": 0,
+      "draws": 0,
+      "rangeRequests": 0,
+      "fieldResponses": 2
+    },
+    "elsewhere": {
+      "distanceM": 107.984,
+      "strongPixels": 0,
+      "draws": 0,
+      "rangeRequests": 0,
+      "fieldResponses": 0
+    },
+    "menu": {
+      "distanceM": 105.945,
+      "strongPixels": 76790,
+      "draws": 1,
+      "rangeRequests": 3,
+      "fieldResponses": 5
+    }
+  }
+}

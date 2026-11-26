@@ -13,6 +13,9 @@ await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE,
  args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--ignore-gpu-blocklist']});
 try{
+ const proofs=[];
+ for(const mode of ['standard','expanded']){
+ const standard=mode==='standard';
  const page=await browser.newPage({viewport:{width:540,height:360}});
  page.setDefaultTimeout(95000);
  const errors=[],requests=[];
@@ -27,14 +30,15 @@ try{
   const raf=window.requestAnimationFrame.bind(window),g=WebGL2RenderingContext.prototype;
   const use=g.useProgram,el=g.drawElements,arr=g.drawArrays,uf=g.uniform1f,uniform=g.getUniformLocation;
   const current=new WeakMap,known=new WeakMap;
-  const s=window.mappedFarmlandQA={hold:false,clock:undefined,sample:null,frame:null,gain:null,draws:0};
+  const s=window.mappedFarmlandQA={hold:false,clock:undefined,sample:null,frame:null,gain:null,draws:0,owners:[]};
   g.useProgram=function(p){current.set(this,p);return use.call(this,p);};
   function sample(gl,call){
    if(s.sample===null||gl.canvas!==document.querySelector('#world')||gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING)!==null)return call();
    const p=current.get(gl);if(!p)return call();
-   if(!known.has(p))known.set(p,uniform.call(gl,p,'provinceFieldStrength'));
-   const control=known.get(p);if(control===null)return call();
+   if(!known.has(p))known.set(p,{control:uniform.call(gl,p,'provinceFieldStrength'),tile:uniform.call(gl,p,'detailBox')});
+   const {control,tile}=known.get(p);if(control===null)return call();
    s.draws++;
+   if(tile)s.owners.push(Array.from(gl.getUniform(p,tile)));
    if(s.gain===null)return call();
    const v=gl.getUniform(p,control);
    uf.call(gl,control,s.gain);
@@ -43,34 +47,38 @@ try{
   g.drawElements=function(...a){return sample(this,()=>el.apply(this,a));};
   g.drawArrays=function(...a){return sample(this,()=>arr.apply(this,a));};
   window.requestAnimationFrame=cb=>raf(t=>{
-   const used=s.hold?(s.clock??t):t;s.clock=used;s.draws=0;
+   const used=s.hold?(s.clock??t):t;s.clock=used;s.draws=0;s.owners=[];
    cb(used);
    if(s.sample!==null&&s.draws>0){
     const canvas=document.querySelector('#world'), gl=canvas.getContext('webgl2');
-    s.frame={id:s.sample,draws:s.draws,png:canvas.toDataURL('image/png'),glError:gl.getError(),
+    s.frame={id:s.sample,draws:s.draws,owners:s.owners,png:canvas.toDataURL('image/png'),glError:gl.getError(),
       d:window.islandAirDiagnostics};
     s.sample=null;
    }
   });
  });
- const url=new URL('?diagnostics&departure='+site+'&provinceFieldsReview',base);
+ const url=new URL('?diagnostics&departure='+site+(standard?'':'&provinceFieldsReview'),base);
  assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
  await page.getByRole('button',{name:'Begin flight'}).waitFor();
  await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site,{polling:120});
  await page.getByRole('button',{name:'Begin flight'}).click();
  await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===v,site,{polling:80});
  const start=await page.evaluate(()=>window.islandAirDiagnostics);
- await page.waitForFunction(a=>{
-  const d=window.islandAirDiagnostics;
-  if(!d||d.site!==a.site||d.mode!=='flight'||d.camera!=='Chase'||(d.provinceFields?.ready??0)<2)return false;
+ await page.waitForFunction(({a,standard})=>{
+  const d=window.islandAirDiagnostics,kings=window.islandAirKingsFields?.state;
+  const field=standard?kings?.stream:d?.provinceFields;
+  if(!d||d.site!==a.site||d.mode!=='flight'||d.camera!=='Chase'||(field?.ready??0)<2||
+      (standard&&kings.phase!=='live'))return false;
   const k=Math.hypot(d.x-a.x,d.z-a.z);
   return k>=103&&k<=235&&d.altitude-d.groundY>=47&&d.altitude-d.groundY<=83;
- },start,{polling:65});
+ },{a:start,standard},{polling:65});
  const current=await page.evaluate(()=>window.islandAirDiagnostics);
  await page.keyboard.press('p');
- await page.waitForFunction(()=>{const d=window.islandAirDiagnostics;return d?.mode==='paused'
-  &&d.provinceFields?.active&&d.provinceFields.ready>=2&&d.provinceFields.pending===0
-  &&d.detail?.loading===0;},undefined,{polling:130});
+ await page.waitForFunction(standard=>{
+  const d=window.islandAirDiagnostics,kings=window.islandAirKingsFields?.state;
+  const field=standard?kings?.stream:d?.provinceFields;
+  return d?.mode==='paused'&&field?.active&&field.ready>=2&&field.pending===0&&d.detail?.loading===0;
+ },standard,{polling:130});
  // Field arrivals use the real wall clock. Give existing residents their
  // shipped 0.85 s blend *after* normal cold launch has been verified.
  await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,950)));
@@ -82,30 +90,45 @@ try{
   assert.equal(a.glError,0);assert(a.draws>0);assert.equal(a.d.mode,'paused');assert.equal(a.d.site,site);
   return {...a,image:Buffer.from(a.png.split(',')[1],'base64')};
  }
- const stock=await capture('stock',0),live=await capture('live',null),restored=await capture('restored',0);
- assert.equal(stock.draws,live.draws);assert.equal(restored.draws,live.draws);
+ const stock=await capture('stock',0),live=await capture('live',null),marker=await capture('scope',-1),restored=await capture('restored',0);
+ assert.equal(stock.draws,live.draws);assert.equal(restored.draws,live.draws);assert.equal(marker.draws,live.draws);
+ if(standard){
+  assert.equal(live.draws,1,'Standard cannot repaint all terrain groups');
+  assert.deepEqual(live.owners,[[23/32,Math.fround(13/22),32,22]],'wrong submitted terrain receiver');
+  assert.equal(current.provinceFields,null,'Standard must not use the legacy option');
+ }
  const spatial=d=>[d.x,d.z,d.altitude,d.groundY,d.heading,d.bank,d.camera];
  assert.deepEqual(spatial(stock.d),spatial(live.d));assert.deepEqual(spatial(live.d),spatial(restored.d));
- const a=PNG.sync.read(stock.image),b=PNG.sync.read(live.image),c=PNG.sync.read(restored.image);
+ const a=PNG.sync.read(stock.image),b=PNG.sync.read(live.image),c=PNG.sync.read(restored.image),mask=PNG.sync.read(marker.image);
  assert.equal(a.width,b.width);assert.equal(a.height,b.height);
  assert.deepEqual(a.data,c.data,'same-canvas optical revert should restore the original RGB');
- let changed=0,strong=0,alpha=0,peak=0;
+ let changed=0,strong=0,alpha=0,peak=0,exterior=0;
  for(let i=0;i<a.data.length;i+=4){
   const x=Math.max(Math.abs(a.data[i]-b.data[i]),Math.abs(a.data[i+1]-b.data[i+1]),Math.abs(a.data[i+2]-b.data[i+2]));
   changed+=+(x>0);strong+=+(x>2);peak=Math.max(peak,x);alpha+=+(a.data[i+3]!==b.data[i+3]);
+  if(x&&a.data[i]===mask.data[i]&&a.data[i+1]===mask.data[i+1]&&a.data[i+2]===mask.data[i+2])exterior++;
  }
- assert(changed>400&&strong>400&&peak>=7&&alpha===0,JSON.stringify({changed,strong,peak,alpha}));
+ assert(changed>400&&strong>400&&peak>=7&&alpha===0&&exterior===0,JSON.stringify({changed,strong,peak,alpha,exterior}));
  assert.deepEqual(errors,[]);assert.deepEqual(current.layerWarnings,[]);
  const names=requests.map(x=>x[0]);
  assert.equal(names.filter(s=>s==='index.fcr.gz').length,1);
  assert.equal(names.filter(s=>s==='furrow-relief.webp').length,1);
  assert(names.some(s=>/^crop-\d\d\.pack$/.test(s)));
+ if(standard)assert(names.every(n=>['index.fcr.gz','furrow-relief.webp','crop-32.pack'].includes(n)),'Standard opened an unauthorized pack');
+ proofs.push({mode,samePose:spatial(live.d),equalOpticalDraws:live.draws,site,
+  distance:Math.hypot(current.x-start.x,current.z-start.z),aboveGround:current.altitude-current.groundY,
+  fieldStream:standard?await page.evaluate(()=>window.islandAirKingsFields?.state.stream):current.provinceFields,
+  requests,changed,strong,peak,alpha,exterior,restored:true});
+ await writeFile(out+'/mapped-farmland-kings-'+mode+'-stock.png',stock.image);
+ await writeFile(out+'/mapped-farmland-kings-'+mode+'-live.png',live.image);
  await page.close();
+ }
+
  const off=await browser.newPage({viewport:{width:510,height:340}});
  const stockRequests=[],stockErrors=[];
  off.on('pageerror',e=>stockErrors.push(e.message));
  off.on('request',r=>{const p=new URL(r.url()).pathname;if(/\/fields-province\/v2\/|\/furrow-relief\.webp$/.test(p))stockRequests.push(p);});
- const offURL=new URL('?diagnostics&departure='+site,base);
+ const offURL=new URL('?diagnostics&departure='+site+'&stockKingsFieldPass',base);
  assert.equal((await off.goto(offURL.href,{waitUntil:'domcontentloaded',timeout:60_000})).status(),200);
  await off.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site,{timeout:65_000,polling:200});
  await off.getByRole('button',{name:'Begin flight'}).click({timeout:35_000});
@@ -116,13 +139,9 @@ try{
  const offState=await off.evaluate(()=>window.islandAirDiagnostics);
  assert.equal(offState.provinceFields,null);assert.equal(offState.cropRowsReview,false);
  assert.deepEqual(stockRequests,[]);assert.deepEqual(stockErrors,[]);
- const proof={proof:'Actual browser, 62m mapped farmland departure, genuine flight and pause before exact preset comparison. Functional visibility check, not a material-quality gate.',
-  samePose:spatial(live.d),equalOpticalDraws:live.draws,
-  unflagged:{site:offState.site,travelled:Math.hypot(offState.x-offStart.x,offState.z-offStart.z),fieldRequests:stockRequests.length},
-  site,distance:Math.hypot(current.x-start.x,current.z-start.z),aboveGround:current.altitude-current.groundY,
-  fieldStream:current.provinceFields,requests,changed,strong,peak,alpha,restored:true};
- await writeFile(out+'/mapped-farmland-kings-stock.png',stock.image);
- await writeFile(out+'/mapped-farmland-kings-live.png',live.image);
+ const proof={proof:'Compiled native Standard and Expanded farmland. Actual flight then exact paused comparison and authority.',
+  tests:proofs,
+  explicitStock:{site:offState.site,travelled:Math.hypot(offState.x-offStart.x,offState.z-offStart.z),fieldRequests:stockRequests.length}};
  await writeFile(out+'/mapped-farmland-kings.json',JSON.stringify(proof,null,2)+'\n');
  console.log(proof);
 }finally{await browser.close();}

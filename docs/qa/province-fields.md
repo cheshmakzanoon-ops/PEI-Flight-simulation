@@ -6,6 +6,8 @@ Choose **Kings County · mapped farmland pass** in Standard Dispatch, then **Beg
 
 The route can warm four authenticated ranges while selected in Dispatch, but never holds the flight button. Its additional shader variant replaces the material on the one original near terrain draw `23-13` N112 during flight. The existing orthophoto, woodland, grass, lighting, geometry and flight contact remain in place. All other departures, Detail, the distant view, and missing or unverified field data keep their normal terrain. The furrows are generic CC0 surface relief applied to mapped field interiors, not measured crop rows or evidence about what grows there today.
 
+The [compiled Standard replay](farmland-v2/kings-standard-native.json) verified four close views and two distant controls, with no visible differences outside the field mask. It also swapped the original terrain material onto the same near draw before opaque sorting in two close views: the disabled candidate matched the real original exactly. The automated browser lane checks both Standard and Expanded farmland and verifies that the explicit stock comparison downloads neither.
+
 ## Optional province-wide study
 
 To compare the broader study, choose **Optional scenery studies** in Standard Dispatch, select **Expanded farmland**, and apply. Its direct flag remains `?provinceFieldsReview`; it is separate from the Standard route effect and the three-site `?cropRowsReview`. The province-wide study can be [combined with Ground vegetation](province-land-surfaces.md).
