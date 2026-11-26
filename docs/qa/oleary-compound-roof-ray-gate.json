@@ -1,0 +1,57 @@
+{
+  "target": "O’Leary surveyed compound roof; roof-only scout; no semantic façade or footprints",
+  "attempted": 1,
+  "accepted": 1,
+  "rejected": 0,
+  "cells": 283,
+  "chunks": 1,
+  "unrelated": {
+    "vertices": 31866,
+    "bytes": 1561434
+  },
+  "q": [
+    0.1,
+    0.5,
+    0.9,
+    0.99,
+    1
+  ],
+  "perBuildingAbsoluteRoofP90": {
+    "before": [
+      3.3547912597656024,
+      3.3547912597656024,
+      3.3547912597656024,
+      3.3547912597656024,
+      3.3547912597656024
+    ],
+    "after": [
+      0.40532913208007815,
+      0.40532913208007815,
+      0.40532913208007815,
+      0.40532913208007815,
+      0.40532913208007815
+    ]
+  },
+  "rejectedNotPublished": [],
+  "acceptedProof": [
+    {
+      "coverage": [
+        1958.1577121019363,
+        1958.1555601507425
+      ],
+      "tile": "q20213",
+      "i": 47,
+      "city": "OLearyEastLarge",
+      "kind": "compound measured",
+      "points": 283,
+      "before": 3.3547912597656024,
+      "after": 0.40532913208007815,
+      "datumDiff": 0.09662137785196734,
+      "faces": [
+        61,
+        125
+      ],
+      "highDouble": 0
+    }
+  ]
+}

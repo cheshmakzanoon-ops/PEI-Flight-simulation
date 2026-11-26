@@ -1,3 +1,4 @@
+import {compoundHeight,compoundRoof,compoundRoofEdge,compoundRoofTriangles} from './oleary-compound-roofs.ts';
 import {TerminalWallPreview} from './summerside-terminal/wall-preview.ts';
 import {TERMINAL_WIRE} from './summerside-terminal/terminal-wall-owner.ts';
 import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWharfSpans,type WharfLoader,type WharfSpan} from './spinnakers-standard.ts';
@@ -407,6 +408,7 @@ export class Buildings {
  get georgetownSchoolWallStage(){return this.schoolWall?.stage??"none";}
  get georgetownSchoolWallsActive(){return this.schoolWall?.active??false;}
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
+ private olearyCompoundRoofs=false;
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
@@ -523,6 +525,7 @@ export class Buildings {
  get indianRiverPrepared(){return !!this.indianVariant;}
  enableSummersideRoofCohort(){this.summersideRoofCohort=true;}
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
+ enableOlearyCompoundRoofs(){this.olearyCompoundRoofs=true;}
  enableOlearyExterior(seat:OlearySeat,study?:OlearyCohortStudy){this.olearySeat=seat;this.olearyStudy=study;}
  get olearyExteriorActive(){return this.oleary?.active===true;}
  get olearyWarehouseActive(){return this.oleary instanceof OlearyCohortSocket&&this.oleary.warehouseActive;}
@@ -883,6 +886,7 @@ export class Buildings {
    let seacowBytes:ArrayBuffer|undefined;
    const oleary=this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile)?this.olearySeat:undefined;
    const olearyStudy=oleary?this.olearyStudy:undefined;
+   const olearyRoofCandidate=this.olearyCompoundRoofs&&!this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile);
    const dalvay=this.dalvaySeat&&dalvayOwner(this.atlasHash,tile)?this.dalvaySeat:undefined;
    let dalvayBytes:ArrayBuffer|undefined,olearyBytes:ArrayBuffer|undefined;
    const knight=this.knightSeat&&knightOwns(this.atlasHash,tile)?this.knightSeat:undefined;
@@ -898,7 +902,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||olearyRoofCandidate||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -920,7 +924,7 @@ export class Buildings {
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
     // Bounded appearances share a single digest of the already-read chunk.
-    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate)try{
+    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||olearyRoofCandidate||sourisWestCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
@@ -1354,13 +1358,18 @@ export class Buildings {
    // The measured elevations are absolute. Reject material ground-datum conflicts
    // and leave this exact outline on the ordinary legacy generator.
    const neutral=neutralSource&&Math.abs(neutralSource.datum-base)<=.8?neutralSource:undefined;
+   const compoundSource=!fit&&!neutral&&rings.length===1&&facade===0&&
+    this.olearyCompoundRoofs&&!this.olearySeat&&massingChunk===OLEARY.chunk&&olearyAtlasOwner(this.atlasHash,tile)?
+    compoundRoof(i,f.footprint):undefined;
+   const compound=compoundSource&&Math.abs(compoundSource.datum-base)<=.8?compoundSource:undefined;
    if(neutral?.downtown){
     measuredDowntownRoofs++;
     if(tile.id==='q032001'&&i===383)measuredWaterRoof=true;
    }
-   const preserveDowntownFoot=neutral?.downtown&&!(tile.id==='q032001'&&i===383);
+   const preserveRoofFoot=!!compound||(neutral?.downtown&&!(tile.id==='q032001'&&i===383));
    const eave=base+(synthGable?low:h);
-   const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):eave;
+   const rim=(p:Pt)=>fit?base+roofHeight(p,fit):neutral?neutral.datum+neutralRoofHeight(p,center,neutral.planes):
+    compound?compound.datum+compoundHeight(p,center,compound.parts):eave;
    const wall=(p:Pt,q:Pt,u0:number,u1:number,footA?:number,footB?:number)=>{
     const y0=footA??(this.t.meshElevation(p.x,p.z)-.6),y1=footB??(this.t.meshElevation(q.x,q.z)-.6),y2=rim(p),y3=rim(q);
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
@@ -1378,11 +1387,11 @@ export class Buildings {
     const westEdge=westOwner&&rr===ring&&i===westWall?.edge;
     const first=fitWalls||westEdge?P.length/3:0;
     let rimMin=fitWalls?Math.min(rim(a),rim(b)):0;
-    if(neutral){
-     const edges=neutralRoofEdge(a,b,center,neutral.planes);
+    if(neutral||compound){
+     const edges=compound?compoundRoofEdge(a,b,center,compound.parts):neutralRoofEdge(a,b,center,neutral!.planes);
      if(fitWalls)for(const cut of edges)rimMin=Math.min(rimMin,rim(cut));
      const u=(t:Pt)=>Math.hypot(t.x-a.x,t.z-a.z);
-     if(preserveDowntownFoot&&edges.length>2){
+     if(preserveRoofFoot&&edges.length>2){
       // A new roof ridge may split an existing XY wall. Keep the original
       // sampled endpoint bottoms and interpolate between them instead of
       // sampling the terrain a second time at the new upper ridge station.
@@ -1416,7 +1425,7 @@ export class Buildings {
     membrane?new THREE.Color(OLEARY_ACCESS_ROOF_COLOR):cr;
    if(pale)paintedHarbourRoof=true;
    const roofVert=(p:Pt,y:number)=>vertex(p,y,roofColor,p.x-ox,p.z-oz,1);
-   if(synthGable&&!fit&&!neutral){
+   if(synthGable&&!fit&&!neutral&&!compound){
     const length=(a:Pt,b:Pt)=>Math.hypot(a.x-b.x,a.z-b.z);
     let a=ring[0],b=ring[1],c=ring[2],d=ring[3];
     if(length(a,b)>length(b,c)){[a,b,c,d]=[b,c,d,a];}
@@ -1432,6 +1441,9 @@ export class Buildings {
     if(fit){for(const face of faces){
       const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
       for(const t of splitRoofTriangle(triangle,fit))for(const p of t)roofVert(p,rim(p));
+    }}else if(compound){for(const face of faces){
+      const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
+      for(const cut of compoundRoofTriangles(triangle,center,compound.parts))for(const p of cut)roofVert(p,rim(p));
     }}else if(neutral){for(const face of faces){
       const triangle:Triangle=[flat[face[0]],flat[face[1]],flat[face[2]]];
       for(const cut of neutralRoofTriangles(triangle,center,neutral.planes))for(const p of cut)roofVert(p,rim(p));

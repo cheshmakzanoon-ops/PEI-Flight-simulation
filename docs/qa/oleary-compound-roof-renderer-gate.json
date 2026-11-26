@@ -1,0 +1,182 @@
+[
+  {
+    "step": 1628,
+    "seconds": 18.088888888889162,
+    "pose": [
+      -78519.64895573593,
+      101.22413792277716,
+      -23274.144731117045,
+      3.857177646907468
+    ],
+    "projected": 3934,
+    "exterior": 0,
+    "strong": 824,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      158,
+      158
+    ],
+    "triangles": [
+      329157,
+      329221
+    ],
+    "sha": {
+      "standard": "a5aeb9433a8f0081acfe476ee8c1dc4dcf60cb4d38413aa1716d051080de99f6",
+      "stock": "bc5b7f896c65d88f840c5e1017262d5f36d0923691da5fb23c4a7b1b9cee0333",
+      "restore": "a5aeb9433a8f0081acfe476ee8c1dc4dcf60cb4d38413aa1716d051080de99f6"
+    }
+  },
+  {
+    "step": 1808,
+    "seconds": 20.088888888889475,
+    "pose": [
+      -78584.24653952337,
+      101.96770305739108,
+      -23194.762311597802,
+      3.857177646907468
+    ],
+    "projected": 6893,
+    "exterior": 0,
+    "strong": 1851,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      157,
+      157
+    ],
+    "triangles": [
+      324409,
+      324473
+    ],
+    "sha": {
+      "standard": "d06f9449cad10a91f301d28692bd21c2873b4c1eb72003ed83e683d28eac11ec",
+      "stock": "bc2482c4c48283a525710962fc0349233291f7f8c256a1138d9ce0c4b1b99b1b",
+      "restore": "d06f9449cad10a91f301d28692bd21c2873b4c1eb72003ed83e683d28eac11ec"
+    }
+  },
+  {
+    "step": 1988,
+    "seconds": 22.088888888889787,
+    "pose": [
+      -78648.8524839915,
+      102.71343347723672,
+      -23115.37027421552,
+      3.857177646907468
+    ],
+    "projected": 15643,
+    "exterior": 0,
+    "strong": 6604,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      157,
+      157
+    ],
+    "triangles": [
+      323569,
+      323633
+    ],
+    "sha": {
+      "standard": "1d38ed1c73283c8895daf0e41fdd2b4ffed5001381f0862b8532c94a3335c523",
+      "stock": "f4e7954b513fe9e2c3dda6bee1b498761a2328379caf19479d9459c7f8b41af2",
+      "restore": "1d38ed1c73283c8895daf0e41fdd2b4ffed5001381f0862b8532c94a3335c523"
+    }
+  },
+  {
+    "step": 2168,
+    "seconds": 24.0888888888901,
+    "pose": [
+      -78713.46581864923,
+      103.46097975313813,
+      -23035.969735392726,
+      3.857177646907468
+    ],
+    "projected": 43973,
+    "exterior": 0,
+    "strong": 22328,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      157,
+      157
+    ],
+    "triangles": [
+      318847,
+      318911
+    ],
+    "sha": {
+      "standard": "67b9983a2ed066a0d5196c046eb642466680e48aba58f7564b8e6622254701fc",
+      "stock": "d6f266578c870910568f0b218ff33b8ad1d596f68a8a1e447df28ec4c759f1df",
+      "restore": "67b9983a2ed066a0d5196c046eb642466680e48aba58f7564b8e6622254701fc"
+    }
+  },
+  {
+    "step": 2348,
+    "seconds": 26.088888888890413,
+    "pose": [
+      -78778.08569389429,
+      104.21003612578106,
+      -22956.5616724848,
+      3.857177646907468
+    ],
+    "projected": 0,
+    "exterior": 0,
+    "strong": 0,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      157,
+      157
+    ],
+    "triangles": [
+      314489,
+      314553
+    ],
+    "sha": {
+      "standard": "177a725e792e48ac9cccf5e96f2335a7967a8e7debc096b7249831ca74d6bd2c",
+      "stock": "177a725e792e48ac9cccf5e96f2335a7967a8e7debc096b7249831ca74d6bd2c",
+      "restore": "177a725e792e48ac9cccf5e96f2335a7967a8e7debc096b7249831ca74d6bd2c"
+    }
+  },
+  {
+    "step": 3608,
+    "seconds": 40.0888888888926,
+    "pose": [
+      -79230.55580370795,
+      109.47696514529369,
+      -22400.5545533112,
+      3.857177646907468
+    ],
+    "projected": 0,
+    "exterior": 0,
+    "strong": 0,
+    "alpha": 0,
+    "alphaMax": 0,
+    "rollback": 0,
+    "sampleCount": 4,
+    "draw": [
+      155,
+      155
+    ],
+    "triangles": [
+      291636,
+      291700
+    ],
+    "sha": {
+      "standard": "5c5ab96f211fb97dd4ced24770bd7a6fbce2295247aed5010de40c9ba360bc51",
+      "stock": "5c5ab96f211fb97dd4ced24770bd7a6fbce2295247aed5010de40c9ba360bc51",
+      "restore": "5c5ab96f211fb97dd4ced24770bd7a6fbce2295247aed5010de40c9ba360bc51"
+    }
+  }
+]

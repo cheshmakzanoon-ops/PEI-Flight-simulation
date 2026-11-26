@@ -65,7 +65,7 @@ import {FIELD_SITE_PINS} from './render/province-fields.generated.ts';
 import {fetchProvinceDirectory,provinceFields,fieldLayersMatch} from './render/province-fields.ts';
 import {cropFieldAtlasMatches,loadFieldPilot,loadFieldRelief} from './render/fields-pilot.ts';
 import {georgetownSchoolWallNear} from './render/school-wall-finish.ts';
-import {regionalCanopyRequested,standardRegionalCanopyRequested,sceneryDeparture,sceneryOptions,sceneryReviewBlock,rusticoHarbourRoofRequested,sourisWestFacingRequested,olearyAccessRoofRequested,georgetownSchoolWallsRequested} from './app/scenery-profile.ts';
+import {regionalCanopyRequested,standardRegionalCanopyRequested,sceneryDeparture,sceneryOptions,sceneryReviewBlock,rusticoHarbourRoofRequested,sourisWestFacingRequested,olearyAccessRoofRequested,olearyCompoundRoofsRequested,georgetownSchoolWallsRequested} from './app/scenery-profile.ts';
 import type {NorthCapeScenery} from './render/north-cape.ts';
 import {NORTH_CAPE_SITES} from './render/north-cape-shadow.ts';
 import {northCapeMode,northCapeAtlas,NorthCapeStream,NORTH_CAPE_COVER_DECODED_SHA} from './render/north-cape-stream.ts';
@@ -601,6 +601,8 @@ async function run(){
   if(ridgePreview)v.enableStrictRidgeOwner();
   if(rusticoHarbourRoofRequested(options))v.enableRusticoHarbourRoof();
   if(olearyAccessRoofRequested(options))v.enableOlearyAccessRoof();
+  if(olearyCompoundRoofsRequested(options)&&supportsOpaqueCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4)
+   v.enableOlearyCompoundRoofs();
   if(schoolFinishRequested)v.enableGeorgetownSchoolWalls(olearyLinkPrograms(renderer,camera,scene,1,false,7400));
   if(foundersWestRequested(options)){
    const [x,z]=FOUNDERS_WEST.xz;

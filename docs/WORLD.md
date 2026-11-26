@@ -203,6 +203,8 @@ The [coastal grass surface](qa/coastal-grass-surface.md) adds a separately class
 
 The [coastal marsh layer](qa/coastal-marsh.md) adds source-bounded ground shading and nearby grass instances at Cascumpec, Tracadie Bay and Morell. Its PEI inventory footprints protect other terrain and material owners; it does not reposition the shoreline, raise the terrain, or change aircraft contact.
 
+The [measured O’Leary railway-approach roof](qa/oleary-compound-roof.md) replaces one generic slab with a surveyed compound silhouette while keeping its inherited plan and original wall feet.
+
 ## Woodland height and clearance
 
 [Measured provincial stand heights](qa/forest-height-stream.md) set the

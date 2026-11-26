@@ -1,0 +1,258 @@
+{
+  "purpose": "Actual 4x normal, deliberately corrupt parking source, and real 0x fallback. Matched standard->stock->standard capture with website physics and the original Chase route.",
+  "source": "2ba20c7a3207d5504b6313ef264878fc2cb90448 plus isolated approved parking renderer fix",
+  "profiles": {
+    "normal": [
+      {
+        "step": 1988,
+        "time": 22.088888888889787,
+        "aa": 4,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          157,
+          157
+        ],
+        "triangles": [
+          322789,
+          322853
+        ],
+        "changed": 9374,
+        "strong": 6604,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "317ddac1ce50d67198f69e949eb1d1a961d25c9c58e3240312c2055ebe01e602",
+          "standard": "4faab76708ca3368975d0aef33a878fa3b191c51e0ae4d61c5589ea6641ca8db",
+          "restore": "4faab76708ca3368975d0aef33a878fa3b191c51e0ae4d61c5589ea6641ca8db"
+        }
+      },
+      {
+        "step": 2168,
+        "time": 24.0888888888901,
+        "aa": 4,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          157,
+          157
+        ],
+        "triangles": [
+          318071,
+          318135
+        ],
+        "changed": 33601,
+        "strong": 22328,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "526a0f40ed57522dd29487918b5c2bb3f7617b99f9a47b2c23e7a9e4e6b259b8",
+          "standard": "adbe9a2394a1386f014c83c2583f11626663eb4ff311ba77510753ebef1418ef",
+          "restore": "adbe9a2394a1386f014c83c2583f11626663eb4ff311ba77510753ebef1418ef"
+        }
+      },
+      {
+        "step": 3608,
+        "time": 40.0888888888926,
+        "aa": 4,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          155,
+          155
+        ],
+        "triangles": [
+          291200,
+          291264
+        ],
+        "changed": 0,
+        "strong": 0,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "e3d4acc29413b39a768e666bee3eb23bc0b1594429e76a453689f51bba821114",
+          "standard": "e3d4acc29413b39a768e666bee3eb23bc0b1594429e76a453689f51bba821114",
+          "restore": "e3d4acc29413b39a768e666bee3eb23bc0b1594429e76a453689f51bba821114"
+        }
+      }
+    ],
+    "fault": [
+      {
+        "step": 1988,
+        "time": 22.088888888889787,
+        "aa": 4,
+        "parking": null,
+        "draws": [
+          154,
+          154
+        ],
+        "triangles": [
+          321880,
+          321944
+        ],
+        "changed": 9374,
+        "strong": 6604,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "ccf5d3e70b383c866a12b16b2ab4cf24aa698ed92c62c9ce4e6c4049f4480ed0",
+          "standard": "2834a2be0a1bf7d41538ae07294ab4d6cac76f0ffbf8b40069d852e0be4a354a",
+          "restore": "2834a2be0a1bf7d41538ae07294ab4d6cac76f0ffbf8b40069d852e0be4a354a"
+        }
+      },
+      {
+        "step": 2168,
+        "time": 24.0888888888901,
+        "aa": 4,
+        "parking": null,
+        "draws": [
+          154,
+          154
+        ],
+        "triangles": [
+          317162,
+          317226
+        ],
+        "changed": 33601,
+        "strong": 22328,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "3a5f7bfa00403aa685e8df85fa744c501afa9bcd1e7be6620d51ac1026350c3f",
+          "standard": "e98becd3e80fc8bcd89619da22563780ce837646922a1948159ef7079e3d8be1",
+          "restore": "e98becd3e80fc8bcd89619da22563780ce837646922a1948159ef7079e3d8be1"
+        }
+      },
+      {
+        "step": 3608,
+        "time": 40.0888888888926,
+        "aa": 4,
+        "parking": null,
+        "draws": [
+          154,
+          154
+        ],
+        "triangles": [
+          290642,
+          290706
+        ],
+        "changed": 0,
+        "strong": 0,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "e6828738d604b792d7818e614c96ee5bbf5499e8431882594d7ca2da37aec361",
+          "standard": "e6828738d604b792d7818e614c96ee5bbf5499e8431882594d7ca2da37aec361",
+          "restore": "e6828738d604b792d7818e614c96ee5bbf5499e8431882594d7ca2da37aec361"
+        }
+      }
+    ],
+    "nomsaa": [
+      {
+        "step": 1988,
+        "time": 22.088888888889787,
+        "aa": 0,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          157,
+          157
+        ],
+        "triangles": [
+          322789,
+          322789
+        ],
+        "changed": 0,
+        "strong": 0,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "9517146984282660d2535c8a90afa8d53b2290559d966cfde6ec7f842bace41c",
+          "standard": "9517146984282660d2535c8a90afa8d53b2290559d966cfde6ec7f842bace41c",
+          "restore": "9517146984282660d2535c8a90afa8d53b2290559d966cfde6ec7f842bace41c"
+        }
+      },
+      {
+        "step": 2168,
+        "time": 24.0888888888901,
+        "aa": 0,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          157,
+          157
+        ],
+        "triangles": [
+          318071,
+          318071
+        ],
+        "changed": 0,
+        "strong": 0,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "cacfd91094afd63e3aac025edce739edf1c7a4c65b55aceffa01f5d9cfacb010",
+          "standard": "cacfd91094afd63e3aac025edce739edf1c7a4c65b55aceffa01f5d9cfacb010",
+          "restore": "cacfd91094afd63e3aac025edce739edf1c7a4c65b55aceffa01f5d9cfacb010"
+        }
+      },
+      {
+        "step": 3608,
+        "time": 40.0888888888926,
+        "aa": 0,
+        "parking": {
+          "id": "mapped-parking-surfaces-v1",
+          "tiles": 2,
+          "pending": 0,
+          "visible": true
+        },
+        "draws": [
+          155,
+          155
+        ],
+        "triangles": [
+          291200,
+          291200
+        ],
+        "changed": 0,
+        "strong": 0,
+        "ext": 0,
+        "alpha": 0,
+        "rollback": 0,
+        "frames": {
+          "stock": "1c98b221d5bfd3b7b9473d8fc74436473192bc514271212db5a023859d37fc22",
+          "standard": "1c98b221d5bfd3b7b9473d8fc74436473192bc514271212db5a023859d37fc22",
+          "restore": "1c98b221d5bfd3b7b9473d8fc74436473192bc514271212db5a023859d37fc22"
+        }
+      }
+    ]
+  }
+}

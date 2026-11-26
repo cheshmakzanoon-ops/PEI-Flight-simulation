@@ -427,6 +427,13 @@ export function olearyAccessRoofRequested(q:URLSearchParams){
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 
+/** Keep the whole original O'Leary mesh whenever a signed railway study
+ * is requested, even if a requested study's terrain cannot authenticate. */
+export function olearyCompoundRoofsRequested(q:URLSearchParams){
+ return !['olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','qa'].some(k=>q.has(k))&&
+  q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
+}
+
 /** Compare only the authored q68 wall tones on an unchanged Standard draw. */
 export function terminalWallPreviewRequested(q:URLSearchParams){
  return q.has('summersideTerminalWallPreview')&&!q.has('stockSummersideTerminalWalls')&&
