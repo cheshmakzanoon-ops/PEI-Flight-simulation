@@ -254,3 +254,20 @@ test('Cape Tryon sandstone switch preserves the departure and unrelated choices'
  }
  assert(!new URL(switchCapeTryonRockURL(original,true,'another-site')).searchParams.has('capeTryonRockReview'));
 });
+
+
+test('runway 03 comparison cannot move unrelated Standard terrain or bypass the local veto',async()=>{
+ const {runway03PavementRequested}=await import('../src/app/scenery-profile.ts');
+ const standard=new URLSearchParams('departure=cyyg&scenery=standard');
+ assert.equal(runway03PavementRequested(standard),false);
+ for(const q of ['runway03PavementReview','runway03PavementReview&stockRunway03Pavement']){
+  const scope=new URLSearchParams('departure=cyyg&scenery=standard&'+q);
+  assert.equal(runway03PavementRequested(scope),!scope.has('stockRunway03Pavement'));
+  assert.equal(standardCountyOrtho(scope),standardCountyOrtho(standard));
+  assert.equal(forestFloorProfile(scope),forestFloorProfile(standard));
+  assert.equal(standardOpenRipplesRequested(scope),standardOpenRipplesRequested(standard));
+ }
+ for(const opt of ['qa','scenery=detail','scenery=standard&scenery=detail','scenery=other','inlandRelief']){
+  assert.equal(runway03PavementRequested(new URLSearchParams('runway03PavementReview&'+opt)),false);
+ }
+});

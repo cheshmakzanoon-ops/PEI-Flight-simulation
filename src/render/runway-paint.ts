@@ -1,8 +1,18 @@
 import * as THREE from 'three';
 import {RUNWAYS} from '../sim/places.ts';
+export const mainRunwayIndex=RUNWAYS.findIndex(r=>r.id==='CYYG03');
+export const mainRunwaySwatch=[mainRunwayIndex*128+60,1024] as const;
+export const runwayAtlasSize=[384,2048] as const;
+export function mainRunwayIntersects(x0:number,z0:number,x1:number,z1:number){
+ const r=RUNWAYS[mainRunwayIndex];if(!r)return false;
+ const {x,z}=r.p,ex=x+r.dx*r.length,ez=z+r.dz*r.length;
+ const hx=Math.abs(r.dz)*r.width*.5,hz=Math.abs(r.dx)*r.width*.5;
+ return x0<=Math.max(x,ex)+hx&&x1>=Math.min(x,ex)-hx&&
+        z0<=Math.max(z,ez)+hz&&z1>=Math.min(z,ez)-hz;
+}
 /** Markings live on the terrain material itself, so DEM interpolation cannot occlude them. */
 export function runwayAtlas(){
- const c=document.createElement('canvas');c.width=384;c.height=2048;const g=c.getContext('2d')!;
+ const c=document.createElement('canvas');c.width=runwayAtlasSize[0];c.height=runwayAtlasSize[1];const g=c.getContext('2d')!;
  for(let i=0;i<RUNWAYS.length;i++){
   const r=RUNWAYS[i],w=128,x0=i*w,k=2048/r.length;
   g.save();g.translate(x0,0);g.fillStyle='#414546';g.fillRect(0,0,w,2048);
@@ -20,5 +30,13 @@ export function runwayAtlas(){
   }g.restore();
  }
  const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=4;
- return {map:tex,orig:RUNWAYS.map(r=>new THREE.Vector4(r.p.x,r.p.z,r.dx,r.dz)),size:RUNWAYS.map(r=>new THREE.Vector2(r.length,r.width))};
+ const mainSwatchReady=()=>{
+  if(mainRunwayIndex!==0||RUNWAYS.length!==3)return false;
+  try{
+   // Test both centre rows; Canvas upload flips Y for the GPU texel.
+   const q=g.getImageData(mainRunwaySwatch[0],mainRunwaySwatch[1]-1,1,2).data;
+   return [65,69,70,255,65,69,70,255].every((v,i)=>q[i]===v);
+  }catch{return false;}
+ };
+ return {map:tex,mainSwatchReady,orig:RUNWAYS.map(r=>new THREE.Vector4(r.p.x,r.p.z,r.dx,r.dz)),size:RUNWAYS.map(r=>new THREE.Vector2(r.length,r.width))};
 }
