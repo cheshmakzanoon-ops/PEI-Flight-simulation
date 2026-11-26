@@ -1,0 +1,143 @@
+{
+  "route": "indian-river-country-pass",
+  "browserViewport": [
+    900,
+    600
+  ],
+  "camera": "Chase",
+  "frames": [
+    {
+      "nominalSeconds": 10.0,
+      "flight": [
+        -36232.523542746814,
+        2592.4121417029983,
+        93.13953276402191,
+        true,
+        true,
+        4,
+        [
+          "st-marys-2020-grade-study"
+        ],
+        {
+          "tier": "flight",
+          "spanPx": 120.07225200489754
+        }
+      ],
+      "strongRgb": 10403,
+      "renderRestoredExactly": true,
+      "renderScopeByRealDualOpaqueMarker": {
+        "coveredNew": 6081,
+        "coveredOld": 7505,
+        "artRGB": 7907,
+        "artOutside": 0,
+        "allAlpha": 0,
+        "allAlphaOutsideArt": 0,
+        "artAlpha": 0,
+        "artAlphaOutside": 0,
+        "groundAny": 11210,
+        "groundStrong": 2494,
+        "groundAlpha": 0,
+        "shadowAny": 213,
+        "shadowAlpha": 0,
+        "sunAny": 573,
+        "sunAlpha": 0
+      },
+      "groundContactMetres": {
+        "stock": 21.56952253424026,
+        "preview": 22.771392979207068,
+        "outsideSite": 20.986143349884927
+      },
+      "liveShadowReceivers": 4,
+      "drawsStockAndLive": [
+        240,
+        254
+      ],
+      "trianglesStockAndLive": [
+        351488,
+        383042
+      ],
+      "frameSHA256": {
+        "live": "7088880053e1cc3fc053fb34dc1659a7b83abad7e4c726193f6a2be684dc7da0",
+        "stock": "c01dbbfa3777731daaa8d2af6fba7a7f5037b136b3d6dbe77aeface8e314ca36",
+        "restore": "7088880053e1cc3fc053fb34dc1659a7b83abad7e4c726193f6a2be684dc7da0"
+      }
+    },
+    {
+      "nominalSeconds": 11.0,
+      "flight": [
+        -36180.310753005804,
+        2579.2808703229366,
+        93.50651262182285,
+        true,
+        true,
+        4,
+        [
+          "st-marys-2020-grade-study"
+        ],
+        {
+          "tier": "flight",
+          "spanPx": 172.92580696614775
+        }
+      ],
+      "strongRgb": 20211,
+      "renderRestoredExactly": true,
+      "renderScopeByRealDualOpaqueMarker": {
+        "coveredNew": 11454,
+        "coveredOld": 13995,
+        "artRGB": 14803,
+        "artOutside": 0,
+        "allAlpha": 8,
+        "allAlphaOutsideArt": 0,
+        "artAlpha": 8,
+        "artAlphaOutside": 0,
+        "groundAny": 16069,
+        "groundStrong": 5489,
+        "groundAlpha": 0,
+        "shadowAny": 603,
+        "shadowAlpha": 0,
+        "sunAny": 1201,
+        "sunAlpha": 0
+      },
+      "groundContactMetres": {
+        "stock": 21.56952253424026,
+        "preview": 22.771392979207068,
+        "outsideSite": 20.986143349884927
+      },
+      "liveShadowReceivers": 4,
+      "drawsStockAndLive": [
+        240,
+        254
+      ],
+      "trianglesStockAndLive": [
+        353404,
+        384958
+      ],
+      "frameSHA256": {
+        "live": "b54be7e08d692843b3a8e7a8aaa40c01bd946e555675b67d02cdee3fa7ee25f9",
+        "stock": "f040614e263225991523d5e23a133df6bcf72ab34ea6a8dcab07c298b1b35cfb",
+        "restore": "b54be7e08d692843b3a8e7a8aaa40c01bd946e555675b67d02cdee3fa7ee25f9"
+      }
+    }
+  ],
+  "independentSpatialGate": {
+    "method": "Project original and replacement church, exact changed old and new terrain faces, old and reseated tree shadows, and signed nonzero cast with one texel of sampling fringe; give the role union two pixels of antialias coverage.",
+    "nativeFrameSource": "The original independent scope replay and the final rated frames have identical PNG bytes.",
+    "pixelsInImage": 540000,
+    "supportBeforePadding": [
+      60787,
+      87691
+    ],
+    "supportAfterTwoPixels": [
+      65615,
+      90883
+    ],
+    "rawChangedRgbaOutsideBeforePadding": [
+      6,
+      0
+    ],
+    "rawChangedRgbaOutsideAfterTwoPixels": [
+      0,
+      0
+    ]
+  }
+}

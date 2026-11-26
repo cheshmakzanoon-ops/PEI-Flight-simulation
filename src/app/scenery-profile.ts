@@ -54,10 +54,12 @@ const COASTAL_OPTICS_CONFLICTS=['legacyShoreArcs','orthophotoSeamStudy','buildin
  'kingsDryCrownStudy','duneReliefStudy'] as const;
 export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandBark','forestFloor','sceneryObserver'] as const;
 
+export const INDIAN_RIVER_LENS='indianRiverGradeLens';
+export const INDIAN_RIVER_ROUTE='indian-river-country-pass';
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  // The local dated view is ancillary, including when Dispatch shows another site.
- q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);
+ q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);q.delete(INDIAN_RIVER_LENS);
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
@@ -300,6 +302,35 @@ export function standardGreenGablesHouseRequested(q:URLSearchParams){
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(local);
 }
 
+/** Distinguish a route lens from the bundled legacy profile. The internal
+ * token never enters the global Standard scenery options. */
+export function indianRiverLensState(search:string){
+ const q=new URLSearchParams(search),selected=q.has(INDIAN_RIVER_LENS),detail=isDetailScenery(search);
+ const modes=q.getAll('scenery'),departures=q.getAll('departure');
+ const once=q.getAll(INDIAN_RIVER_LENS).length<=1;
+ q.delete(INDIAN_RIVER_LENS);
+ const compatible=!detail&&once&&modes.length<=1&&modes.every(m=>m===''||m==='standard')&&
+  departures.length<=1&&!q.has('qa')&&standardComparisonQuery(q);
+ return {selected,detail,compatible,active:selected&&compatible&&departures[0]===INDIAN_RIVER_ROUTE};
+}
+export function switchIndianRiverLens(source:string,enable:boolean,route:string){
+ const url=new URL(source),q=indianRiverLensState(url.search);
+ if(enable&&(!q.compatible||route!==INDIAN_RIVER_ROUTE))return url.href;
+ if(enable)url.searchParams.set(INDIAN_RIVER_LENS,'');else url.searchParams.delete(INDIAN_RIVER_LENS);
+ url.searchParams.set('departure',route);return url.href;
+}
+export function indianRiverLensFlight(route:string,mode:string,previous:string){
+ if(route!==INDIAN_RIVER_ROUTE)return {initiate:false,retain:false};
+ const playing=mode==='flight';
+ const retain=playing||mode==='paused'||mode==='crash'||
+  (mode==='map'||mode==='help'||mode==='credits')&&(previous==='flight'||previous==='paused'||previous==='crash');
+ return {initiate:playing,retain};
+}
+/** Do not install raised terrain under a landed aircraft, even if the
+ * departure is armed or the downloaded cohort becomes ready late. */
+export function indianRiverCanCommit(initiate:boolean,retain:boolean,installed:boolean,flightStatus:string,clearance:number){
+ return retain&&(installed||initiate&&flightStatus==='flying'&&Number.isFinite(clearance)&&clearance>=24);
+}
 export const BASIN_HEAD_DEPARTURE='basin-head-low';
 /** The established coupled inlet preview remains an explicit reload. Do
  * not inject its profile into default options or animate water at selection. */

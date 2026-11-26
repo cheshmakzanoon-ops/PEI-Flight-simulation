@@ -1,3 +1,4 @@
+import {INDIAN_RIVER_GRADE} from '../sim/indian-river-grade.generated.ts';
 import {RUSTICO_GRADE} from '../sim/rustico-grade.generated.ts';
 import {dalvayGroundPair} from './dalvay-exterior-seat.ts';
 import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
@@ -1244,6 +1245,113 @@ export class World {
  /** One previously empty lighthouse silhouette needs the exact compatible
   * near dry seat. Share the exclusive reversible terrain slot (no other
   * owner can qualify in this profile); never borrow any church art. */
+ private sameIndianRiverStock(t:Patch,m:THREE.Mesh){
+  const g=m.geometry,pos=g.getAttribute('position'),uv=g.getAttribute('uv'),index=g.index,side=113;
+  if(m.position.x!==t.x0+t.w/2||m.position.y!==0||m.position.z!==t.z0+t.d/2||
+   m.quaternion.x||m.quaternion.y||m.quaternion.z||m.quaternion.w!==1||
+   m.scale.x!==1||m.scale.y!==1||m.scale.z!==1||!m.matrixAutoUpdate||
+   g.groups.length||g.drawRange.start!==0||g.drawRange.count!==Infinity||
+   pos?.count!==side*side||uv?.count!==side*side||index?.count!==112*112*6)return false;
+  // The proposed mesh alters only the signed two-cell patch. Verify every
+  // stock parent vertex and both triangles in its native one-cell collar;
+  // edge stitching elsewhere may legitimately replace distant samples.
+  const {firstX,firstZ,cellsX,cellsZ}=INDIAN_RIVER_GRADE;
+  for(let z=firstZ-1;z<=firstZ+cellsZ+1;z++)for(let x=firstX-1;x<=firstX+cellsX+1;x++){
+   const i=z*side+x,a=Math.fround(x*(t.w/112)-t.w/2),b=Math.fround(z*(t.d/112)-t.d/2);
+   const wx=a+t.x0+t.w/2,wz=b+t.z0+t.d/2,y=Math.fround(this.terrain.atlasElevation(wx,wz)+GROUND_LIFT),
+    [u,v]=this.terrain.uv(wx,wz);
+   if(pos.getX(i)!==a||pos.getY(i)!==y||pos.getZ(i)!==b||uv.getX(i)!==Math.fround(u)||uv.getY(i)!==Math.fround(v))return false;
+   if(z>firstZ+cellsZ||x>firstX+cellsX)continue;
+   const k=(z*112+x)*6;
+   if(index.getX(k)!==i||index.getX(k+1)!==i+side||index.getX(k+2)!==i+1||
+     index.getX(k+3)!==i+side||index.getX(k+4)!==i+side+1||index.getX(k+5)!==i+1)return false;
+  }
+  return true;
+ }
+ private indianRiverRim?:{key:string;tile:Patch;edge:readonly (readonly [number,number])[]};
+ private indianRiverLensSeal?:{mesh:THREE.Mesh;geometry:THREE.BufferGeometry;position:THREE.BufferAttribute;
+  index:THREE.BufferAttribute;positionArray:Float32Array;positionExpected:Float32Array;
+  indexArray:THREE.BufferAttribute['array'];indexExpected:THREE.BufferAttribute['array'];version:number};
+ private riverRim(t:Patch){
+  const n=112,levels=[[0,-1],[1,0],[0,1],[-1,0]].map(([ox,oz])=>Math.min(n,this.byId.get((t.i+ox)+'-'+(t.j+oz))?.lod??n));
+  const key=n+':'+levels.join(','),old=this.indianRiverRim;
+  if(old?.key===key&&old.tile===t)return old;
+  const edge=new Map<number,number>();
+  // Re-evaluate the original atlas seam, never copy an alternate mesh
+  // back into stock. The main terrain stitch uses these same native rules.
+  for(let side=0;side<4;side++){
+   const ratio=n/levels[side];let a=0,b=0;
+   const height=(u:number)=>this.terrain.atlasElevation(t.x0+t.w*(side%2===0?u:side===1?1:0),
+    t.z0+t.d*(side%2===1?u:side===2?1:0))+GROUND_LIFT;
+   for(let k=0;k<=n;k++){
+    if(k%ratio===0){a=height(k/n);b=height(Math.min(1,(k+ratio)/n));}
+    const j=side===0?k:side===1?k*(n+1)+n:side===2?n*(n+1)+k:k*(n+1);
+    edge.set(j,Math.fround(a+(b-a)*(k%ratio)/ratio));
+   }
+  }
+  return this.indianRiverRim={key,tile:t,edge:[...edge]};
+ }
+ private rebuildIndianRiverRim(t:Patch,mesh:THREE.Mesh){
+  const output=this.riverRim(t),p=mesh.geometry.getAttribute('position');let changed=false;
+  for(const [i,y] of output.edge)if(p.getY(i)!==y){p.setY(i,y);changed=true;}
+  if(changed){if(p instanceof THREE.BufferAttribute)p.clearUpdateRanges();p.needsUpdate=true;}
+  return output.key;
+ }
+ private intactIndianRiverLens(t:Patch,s:NonNullable<World['indianRiverLensSeal']>){
+  const m=s.mesh,g=s.geometry,idx=s.index,p=s.position;
+  if(m.geometry!==g||m.material!==t.local||!t.local.visible||!m.visible||!m.matrixAutoUpdate||
+    m.position.x!==t.x0+t.w/2||m.position.y!==0||m.position.z!==t.z0+t.d/2||
+    m.quaternion.x||m.quaternion.y||m.quaternion.z||m.quaternion.w!==1||
+    m.scale.x!==1||m.scale.y!==1||m.scale.z!==1||
+    g.groups.length||g.drawRange.start!==0||g.drawRange.count!==Infinity||
+    g.index!==idx||idx.array!==s.indexArray||s.version!==idx.version||g.getAttribute('position')!==p||p.array!==s.positionArray)return false;
+  for(const [i,y] of this.riverRim(t).edge)s.positionExpected[i*3+1]=y;
+  for(let i=0;i<s.positionArray.length;i++)if(s.positionArray[i]!==s.positionExpected[i])return false;
+  for(let i=0;i<s.indexArray.length;i++)if(s.indexArray[i]!==s.indexExpected[i])return false;
+  return true;
+ }
+ stageIndianRiverLens(grade:BoundedGrade){
+  if(grade.grid.spec!==INDIAN_RIVER_GRADE)return;
+  const key='10-11',t=this.byId.get(key),q=this.stagedChurch;
+  if(!t?.fine||t.lod!==112||t.coarse.visible||t.relief||this.grades?.has(key)||!t.fine.visible||
+   t.fine.parent!==this.scene||t.fine.material!==t.local||!t.local.visible||!t.seams?.startsWith('112:')||
+   (q&&(q.owner!==t||q.grade!==grade||(t.fine!==q.stock&&t.fine!==q.candidate)))||
+   (!q&&!this.nativeRegularGroundStill(key,t.fine.geometry))||
+   !this.sameIndianRiverStock(t,q?.stock??t.fine))return;
+  if(q){
+   const seal=this.indianRiverLensSeal;
+   if(seal?.mesh!==q.candidate)return;
+   if(t.fine===q.stock&&q.seams!==t.seams){
+    this.rebuildIndianRiverRim(t,q.candidate);q.seams=t.seams;
+   }
+   return this.intactIndianRiverLens(t,seal)?q.source:undefined;
+  }
+  const draft=this.stageStMarysNear(grade);
+  if(!draft)return;
+  const mesh=draft.mesh,geometry=mesh.geometry,index=geometry.index,position=geometry.getAttribute('position');
+  if(!index||!(position instanceof THREE.BufferAttribute)||!(position.array instanceof Float32Array)){
+    this.dropStMarysStage();return;
+  }
+  this.rebuildIndianRiverRim(t,mesh);
+  this.indianRiverLensSeal={mesh,geometry,index,position,positionArray:position.array,positionExpected:position.array.slice(),
+    indexArray:index.array,indexExpected:index.array.slice(),version:index.version};
+  return draft;
+ }
+ setIndianRiverLens(show:boolean){
+  const q=this.stagedChurch,t=q?.owner,seal=this.indianRiverLensSeal;
+  if(!q||!t||seal?.mesh!==q.candidate||t.lod!==112||(t.fine!==q.stock&&t.fine!==q.candidate))return false;
+  const before=t.fine,after=show?q.candidate:q.stock;
+  if(show&&(!this.intactIndianRiverLens(t,seal)||!this.sameIndianRiverStock(t,q.stock)))return false;
+  if(before!==after){
+   const key=this.rebuildIndianRiverRim(t,after);t.seams=q.seams=key;
+   this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
+  }
+  return show;
+ }
+ dropIndianRiverLens(){
+  if(this.stagedChurch?.grade.grid.spec===INDIAN_RIVER_GRADE&&this.indianRiverLensSeal?.mesh===this.stagedChurch.candidate)
+   this.dropStMarysStage();
+ }
  stageStandardRusticoNear(grade:BoundedGrade){
   if(grade.grid.spec!==RUSTICO_GRADE)return false;
   const key='14-12',t=this.byId.get(key),q=this.stagedChurch;
@@ -1390,8 +1498,9 @@ export class World {
  }
  private dropStMarysStage(){
   const q=this.stagedChurch;if(!q)return;
-  this.setStMarysGround(false);
+  if(this.indianRiverLensSeal?.mesh===q.candidate)this.setIndianRiverLens(false);else this.setStMarysGround(false);
   this.scene.remove(q.candidate);q.candidate.geometry.dispose();this.stagedChurch=undefined;
+  if(this.indianRiverLensSeal?.mesh===q.candidate)this.indianRiverLensSeal=undefined;
  }
  enableAdaptiveTerrain(stream:ReliefPacks){
   this.reliefPacks=stream;
@@ -1571,8 +1680,11 @@ export class World {
   return {key,geometry:m.geometry};
  }
  rollingCanopyStill(key:string,g:THREE.BufferGeometry){
+  return key!=='10-11'&&this.nativeRegularGroundStill(key,g);
+ }
+ private nativeRegularGroundStill(key:string,g:THREE.BufferGeometry){
   const q=this.byId.get(key),m=q?.fine;
-  return key!=='10-11'&&!!q&&q.lod===112&&!!m&&m.geometry===g&&!q.relief&&!m.userData.localGrade&&
+  return !!q&&q.lod===112&&!!m&&m.geometry===g&&!q.relief&&!m.userData.localGrade&&
     !m.userData.coastalSurvey&&m.userData.subdiv===112&&!this.grades?.has(key)&&
     !(this.bankGround&&key===BANK_TILE)&&!this.terrain.surveyGrids.some(a=>a.spec.tileX===q.i&&a.spec.tileZ===q.j);
  }

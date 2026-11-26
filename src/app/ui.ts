@@ -1,5 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
-import {BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -25,7 +25,7 @@ export class UI {
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
   const detail=isDetailScenery(location.search);
   const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
-  const basin=basinHeadDispatchState(location.search);
+  const basin=basinHeadDispatchState(location.search),river=indianRiverLensState(location.search);
   const selectedReviews=new Set(reviewedScenery(location.search));
   const reviewsWithScope=sceneryOptions(location.search);
   let reviewCount=0;
@@ -55,6 +55,13 @@ export class UI {
     <button type="button" id="basin-inlet-switch" aria-describedby="basin-inlet-info"
       ${!basin.compatible&&!basin.selected?'disabled':''}>${basin.selected?'Close inlet preview':'Open inlet preview'}</button>
   </section>
+  <section class="regional-detail" id="indian-river-lens" hidden>
+    <div><span class="eyebrow">ST. MARY’S, INDIAN RIVER</span><small id="indian-river-lens-info">${river.active?
+      'Preview selected. Surveyed terrain changes local ground contact.':!river.compatible?
+      'Unavailable with the current scenery settings.':'See the survey-informed exterior and 2020 ground. This changes local ground contact.'}</small></div>
+    <button type="button" id="indian-river-lens-switch" aria-describedby="indian-river-lens-info"
+      ${!river.compatible&&!river.selected?'disabled':''}>${river.selected?'Close ground preview':'Open ground preview'}</button>
+  </section>
   <details class="scenery-reviews"><summary>Optional scenery studies <span id="scenery-review-count">${reviewCount?reviewCount+' selected':''}</span></summary><div class="scenery-review-list">${reviewOptions}
   <p class="review-note">Apply reloads the map and keeps your departure.</p><button type="button" id="apply-scenery-reviews" disabled>Apply studies</button></div></details><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
   <div class="location" id="location"><span class="eyebrow"><i></i> ON LOCATION</span><strong id="loc-name"></strong><small id="loc-county"></small></div>
@@ -68,6 +75,9 @@ export class UI {
   $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
    location.assign(switchBasinHeadDispatchURL(location.href,!basin.selected,this.sites[this.selected].id));
+  };
+  $('indian-river-lens-switch').onclick=()=>{
+   location.assign(switchIndianRiverLens(location.href,!river.selected,this.sites[this.selected].id));
   };
   $('cavendish-package-switch').onclick=()=>location.assign(switchCavendishPackageURL(location.href,!cavePack.selected,this.sites[this.selected].id));
   $('cape-rock-switch').onclick=()=>location.assign(switchCapeTryonRockURL(location.href,!capeRock.selected,this.sites[this.selected].id));
@@ -93,6 +103,8 @@ export class UI {
  showSite(){const s=this.sites[this.selected];$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
   const basin=basinHeadDispatchState(location.search);
   $('basin-inlet').hidden=basin.detail||(s.id!==BASIN_HEAD_DEPARTURE&&!basin.selected);
+  const river=indianRiverLensState(location.search);
+  $('indian-river-lens').hidden=(!river.selected&&river.detail)||(s.id!==INDIAN_RIVER_ROUTE&&!river.selected);
  }
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
  setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}

@@ -27,6 +27,7 @@ import type {RailwayArtwork} from './summerside-station/rail-art.ts';
 import {INDIAN_RIVER_SOURCE as CHURCH} from './indian-river/indian-river-source.generated.ts';
 import {churchOwnerBytes,churchOwnerSource} from './indian-river/indian-river-guard.ts';
 import {authenticatedOwnerVariant} from './indian-river/authored-owner-variant.ts';
+import {pinChurchLensArt} from './indian-river/church-lens-custody.ts';
 import {authenticatedOwnerCohort} from './authenticated-owner-cohort.ts';
 import type {ChurchArt} from './indian-river/runtime.ts';
 import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
@@ -346,6 +347,12 @@ export class Buildings {
  private disposeBeacon?:(m:THREE.Group)=>void;
  private last={x:Infinity,z:Infinity};readonly mat=new THREE.ShaderMaterial({vertexShader:buildingV,fragmentShader:buildingF(),vertexColors:true,side:THREE.DoubleSide});
  private indianVariant?:ReturnType<typeof authenticatedOwnerVariant>;
+ private indianLensPin?:()=>boolean;
+ private strictIndianLens=false;
+ enableStrictIndianLens(){
+  this.strictIndianLens=true;
+ }
+ get indianRiverLensDrawReady(){return this.indianLensPin?.()===true;}
  private readonly churchArt?:ChurchArt;
  private readonly pinnedChurch?:Bldg[];
  private readonly pinnedKingsCrown?:Bldg[];
@@ -396,7 +403,7 @@ export class Buildings {
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
- private queuedSeacow?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;running:boolean;pin:ReturnType<Buildings['pinSeacowOwner']>};
+ private queuedSeacow?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;running:boolean;pin:ReturnType<Buildings['pinAuthoredOwner']>};
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private knightSeat?:KnightSeat;
  private knight?:{owner:THREE.Mesh;art:THREE.Group;originalMaterial:THREE.Material|THREE.Material[];
@@ -536,7 +543,7 @@ export class Buildings {
    if(deferred)q.running=false;else this.queuedSeacow=undefined;
   });
  }
- private pinSeacowOwner(owner:THREE.Mesh){
+ private pinAuthoredOwner(owner:THREE.Mesh){
   const stock=owner.geometry,material=owner.material,position=owner.position.clone(),rotation=owner.quaternion.clone(),scale=owner.scale.clone(),
    layer=owner.layers.mask,order=owner.renderOrder;
   const plan=Object.entries(stock.attributes).map(([name,a])=>({name,a,version:a instanceof THREE.InterleavedBufferAttribute?a.data.version:a.version,array:a.array}));
@@ -548,7 +555,7 @@ export class Buildings {
    owner.scale.equals(scale)&&stock.index===null&&whole(stock);
   return {stock,whole,baseOwner};
  }
- private async promoteSeacow(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:SeacowSeat,pin:ReturnType<Buildings['pinSeacowOwner']>,eligible=()=>true){
+ private async promoteSeacow(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:SeacowSeat,pin:ReturnType<Buildings['pinAuthoredOwner']>,eligible=()=>true){
   const {stock,whole,baseOwner}=pin;
   const present=()=>this.meshes.get(SEACOW.id)===owner&&this.wanted.has(SEACOW.id)&&!this.seacow&&eligible()&&owner.geometry===stock&&baseOwner();
   if(!present())return;
@@ -648,7 +655,9 @@ export class Buildings {
   return (this.meshes.get('q032001')?.userData.measuredDowntownRoofs??0)+(this.meshes.get('q03200300')?.userData.measuredDowntownRoofs??0);
  }
  get sourisEastActive(){return this.sourisEast?.variant.visible??false;}
- syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
+ syncIndianRiver(){
+  this.indianVariant?.sync((this.churchArt?.active()??false)&&(!this.strictIndianLens||this.indianRiverLensDrawReady));
+ }
  get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
  update(x:number,z:number,barnAgl=Infinity,aircraftY=Infinity,schoolAgl=Infinity){
@@ -658,7 +667,7 @@ export class Buildings {
   this.syncStDavids(x,z);
   this.schoolWall?.sync(schoolAgl>=0&&schoolAgl<405);
   this.foundersWest?.sync();this.syncSourisEast();this.syncSourisWestFacing();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
-  this.indianVariant?.sync(this.churchArt?.active()??false);
+  this.syncIndianRiver();
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
    this.last={x,z};const d=(a:BoundTile)=>Math.hypot(x-clamp(x,a.x1,a.x2),z-clamp(z,a.z1,a.z2));
@@ -697,7 +706,7 @@ export class Buildings {
       this.georgetownCohort.mask.dispose();this.georgetownCohort=undefined;
      }
     }
-    if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.churchArt?.group.removeFromParent();}
+    if(id===CHURCH.tile&&this.indianVariant){this.indianVariant.dispose();this.indianVariant=undefined;this.indianLensPin=undefined;this.churchArt?.group.removeFromParent();}
     if(this.pendingBarn?.owner===m)this.pendingBarn=undefined;
     if(this.pendingHouse?.owner===m)this.pendingHouse=undefined;
     if(this.housePin?.owner===m)this.housePin=undefined;
@@ -964,7 +973,7 @@ export class Buildings {
     this.dalvay.sync();
    }
    if(seacow&&seacowBytes){
-    const pin=this.pinSeacowOwner(mesh),row=features[SEACOW.ordinal];
+    const pin=this.pinAuthoredOwner(mesh),row=features[SEACOW.ordinal];
     if(seacow.prepare)this.queuedSeacow={owner:mesh,bytes:seacowBytes,rows:features.length,row,running:false,pin};
     else void this.promoteSeacow(mesh,seacowBytes,features.length,row,seacow,pin);
    }
@@ -974,7 +983,18 @@ export class Buildings {
    }
    if(church&&mesh.userData.beaconTriangles){
     const v=authenticatedOwnerVariant(mesh,church.group,mesh.userData.beaconTriangles,CHURCH.owner);
-    if(v){this.indianVariant=v;this.scene.add(church.group);v.sync(church.active());}
+    if(v){
+     this.indianVariant=v;this.scene.add(church.group);
+     if(this.strictIndianLens){
+      const stock=this.pinAuthoredOwner(mesh),alt=v.alternateForProof(),index=alt?.index,indexArray=index?.array,indexVersion=index?.version;
+      const artIntact=pinChurchLensArt(church.group,this.scene);
+      this.indianLensPin=()=>!!alt&&!!index&&this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&
+       (mesh.geometry===stock.stock||mesh.geometry===alt)&&stock.baseOwner()&&stock.whole(alt)&&alt.index===index&&
+       index.array===indexArray&&index.version===indexVersion&&!this.scene.overrideMaterial&&
+       !Array.isArray(mesh.material)&&mesh.material.visible&&artIntact?.()===true;
+     }
+     this.syncIndianRiver();
+    }
    }
    // The ordinary whole tile is already visible. Do not put buildings on the
    // renderer's streaming queue behind an optional module or art response.

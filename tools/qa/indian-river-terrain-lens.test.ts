@@ -1,0 +1,78 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync as file} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
+import {MeshBasicMaterial,Scene} from 'three';
+import {registerHooks} from 'node:module';
+import {Terrain} from '../../src/sim/terrain.ts';
+import {Cover} from '../../src/sim/cover.ts';
+import {WORLD_COLS,WORLD_ROWS} from '../../src/sim/coastal-terrain.ts';
+import {INDIAN_RIVER_GRADE as G} from '../../src/sim/indian-river-grade.generated.ts';
+import {loadBoundedGrade} from '../../src/sim/bounded-grade.ts';
+
+const src=new URL('../../src/',import.meta.url).href;
+const hook=registerHooks({load(url,context,next){
+ const out=next(url,context);
+ return out.source&&url.startsWith(src)&&url.endsWith('.ts')?{...out,source:"import.meta.env={BASE_URL:'/'};\n"+out.source}:out;
+}});
+const {World}=await import('../../src/render/world.ts');
+hook.deregister();
+
+test('the exact generated 10-11 ground remains stock until the sole reversible church install',async()=>{
+ const read=(n:string)=>file(new URL('../../public/world/'+n,import.meta.url));
+ const t=JSON.parse(read('terrain.json').toString()),c=JSON.parse(read('cover.json').toString()),raw=gunzipSync(read(t.file));
+ const terrain=new Terrain(t,new Int16Array(raw.buffer,raw.byteOffset,raw.length/2));
+ const art=await loadBoundedGrade(G,'https://unused.invalid/',async()=>new Response(Uint8Array.from(read(G.file))));
+ assert(art);
+ const grade=art(terrain,(x,z)=>terrain.atlasElevation(x,z));
+ assert(grade);
+ const cover=new Cover(c.width,c.height,new Uint8Array(gunzipSync(read(c.file)))),scene=new Scene(),mat=new MeshBasicMaterial();
+ const world:any=Object.assign(Object.create(World.prototype),{scene,terrain,cover,mat,byId:new Map(),grades:new Map(),pondMeshes:[],
+  groundVersion:0,reliefActive:new Set(),shoreFaces:[]});
+ const w=(terrain.right-terrain.left)/WORLD_COLS,d=(terrain.bottom-terrain.top)/WORLD_ROWS,
+  x0=terrain.left+10*w,z0=terrain.top+11*d;
+ const original=world.patch(x0,z0,w,d,112),coarse=world.patch(x0,z0,w,d,8);coarse.visible=false;
+ const tile={id:'10-11',i:10,j:11,x0,z0,w,d,lod:112,fine:original,coarse,local:mat,seams:'112:exact'};
+ world.byId.set(tile.id,tile);scene.add(original,coarse);
+ const aim=[grade.grid.x0+15,grade.grid.z0+65] as const;
+ const absent=[grade.grid.x0-18,grade.grid.z0-18] as const;
+ const baseline=world.groundHeight(...aim,true),safe=world.groundHeight(...absent,true);
+ assert.equal(world.rollingCanopyStill(tile.id,original.geometry),false,'legacy rolling shadows must still exclude 10-11');
+ const oldMaterial=original.material;original.material=new MeshBasicMaterial();
+ assert.equal(world.stageIndianRiverLens(grade),undefined);
+ original.material=oldMaterial;
+ original.position.y=.55;assert.equal(world.stageIndianRiverLens(grade),undefined);original.position.y=0;
+ const positions=original.geometry.getAttribute('position'),site=(G.firstZ+1)*113+G.firstX+1,y=positions.getY(site);
+ positions.setY(site,y+1.10);assert.equal(world.stageIndianRiverLens(grade),undefined);positions.setY(site,y);
+ const index=original.geometry.index!,triangle=(G.firstZ*112+G.firstX)*6,oldVertex=index.getX(triangle);
+ index.setX(triangle,oldVertex+1);assert.equal(world.stageIndianRiverLens(grade),undefined);index.setX(triangle,oldVertex);
+ const occupied={grade:{grid:{spec:{id:'foreign'}}}};world.stagedChurch=occupied;
+ assert.equal(world.stageIndianRiverLens(grade),undefined);world.dropIndianRiverLens();assert.equal(world.stagedChurch,occupied);
+ world.stagedChurch=undefined;
+ const kept=world.stageIndianRiverLens(grade);assert(kept);
+ assert(kept.inChangedSupport(...aim));
+ assert.equal(tile.fine,original);assert.equal(world.groundHeight(...aim,true),baseline);
+ assert(world.setIndianRiverLens(true));
+ assert.equal(tile.fine,kept.mesh);assert.equal(original.parent,null);
+ assert.equal(world.groundHeight(...aim,true),grade.contactY(...aim,baseline));
+ assert.notEqual(world.groundHeight(...aim,true),baseline);
+ assert.equal(world.groundHeight(...absent,true),safe);
+ const live=kept.mesh,livePos=live.geometry.getAttribute('position'),liveIdx=live.geometry.index!;
+ live.geometry.setDrawRange(0,0);
+ assert.equal(world.stageIndianRiverLens(grade),undefined);
+ assert.equal(world.setIndianRiverLens(true),false);
+ live.geometry.setDrawRange(0,Infinity);
+ assert(world.stageIndianRiverLens(grade));
+ const liveInterior=2340,interiorY=livePos.getY(liveInterior);
+ livePos.setY(liveInterior,interiorY+1.25);
+ assert.equal(world.stageIndianRiverLens(grade),undefined);livePos.setY(liveInterior,interiorY);
+ const begin=liveIdx.getX(0);liveIdx.setX(0,begin+1);
+ assert.equal(world.stageIndianRiverLens(grade),undefined);liveIdx.setX(0,begin);
+ mat.visible=false;assert.equal(world.stageIndianRiverLens(grade),undefined);mat.visible=true;
+ const rim=56,good=livePos.getY(rim);
+ livePos.setY(rim,good+9);
+ assert.equal(world.stageIndianRiverLens(grade),undefined);
+ world.dropIndianRiverLens();assert.equal(tile.fine,original);
+ assert.equal(original.geometry.getAttribute('position').getY(rim),good);
+ assert.equal(world.groundHeight(...aim,true),baseline);assert.equal(original.parent,scene);
+});

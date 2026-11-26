@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, indianRiverLensState, INDIAN_RIVER_ROUTE, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -23,6 +23,9 @@ export function departureBriefing(site: Site, search: string): string {
     return site.note + (dalvayWaterRequested(options) ?
       ' The lake reflection preview is enabled in these scenery settings.' :
       ' The lake reflection preview is off in these scenery settings.');
+  }
+  if (site.id === INDIAN_RIVER_ROUTE && indianRiverLensState(search).active) {
+    return 'Fly over farm country from the west. The preview shows the survey-informed exterior and measured 2020 ground. It changes local ground contact.';
   }
   if (site.id === SEACOW_ROUTE) {
     return site.note + (seacowExteriorRequested(options) || standardSeacowExteriorRequested(options) ?

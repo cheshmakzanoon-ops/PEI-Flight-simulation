@@ -212,7 +212,22 @@ export class Vegetation {
   this.crown.frustumCulled=this.shade.frustumCulled=false;this.crown.name='Mixed woodland canopies';this.shade.name='Canopy ground shadows';scene.add(this.crown,this.shade);
  }
  attachStMarysShadows(scene:THREE.Scene,adapter:typeof StMarysShadows,gradeId:string){
-  this.churchShadows=adapter.mount(scene,this.shade,gradeId,maxTrees);
+  if(!this.churchShadows)this.churchShadows=adapter.mount(scene,this.shade,gradeId,maxTrees);
+  return this.churchShadows!==undefined;
+ }
+ private rejectedChurch?:{terrain:THREE.BufferGeometry;shadow:THREE.Material|THREE.Material[];geometry:THREE.BufferGeometry;revision:number};
+ detachStMarysShadows(){
+  this.churchShadows?.dispose();this.churchShadows=undefined;
+ }
+ checkStMarysLensShadows(scene:THREE.Scene,adapter:typeof StMarysShadows,gradeId:string,proposal?:StMarysShadowGround){
+  if(!proposal){this.detachStMarysShadows();return false;}
+  const prev=this.rejectedChurch,terrain=proposal.mesh.geometry;
+  if(!this.churchShadows&&prev?.terrain===terrain&&prev.shadow===this.shade.material&&
+    prev.geometry===this.shade.geometry&&prev.revision===this.forestRevision)return false;
+  if(this.attachStMarysShadows(scene,adapter,gradeId)&&this.updateStMarysShadows(proposal)){this.rejectedChurch=undefined;return true;}
+  this.detachStMarysShadows();
+  this.rejectedChurch={terrain,shadow:this.shade.material,geometry:this.shade.geometry,revision:this.forestRevision};
+  return false;
  }
  updateStMarysShadows(source?:StMarysShadowGround){
   return this.churchShadows?.update(source,this.stems.array as Float32Array,this.shapes.array as Float32Array,this.hedgeStart,this.forestRevision)??false;

@@ -173,6 +173,19 @@ export function buildStMarysReceivers(source:StMarysShadowGround,gradeId:string,
   geometry.computeBoundingSphere();
   return {geometry,slots:active.map(a=>a.i),triangleCount:P.length/9};
 }
+/** Clone program/render settings, not a shared live photographic Source.
+ * ShaderMaterial.clone() calls Texture.clone on each sampler first. */
+function copyShadowProgram(stock:THREE.ShaderMaterial){
+ const copy=new THREE.ShaderMaterial();
+ THREE.Material.prototype.copy.call(copy,stock);
+ Object.assign(copy,{vertexShader:stock.vertexShader,fragmentShader:stock.fragmentShader,
+  uniforms:stock.uniforms,uniformsGroups:stock.uniformsGroups.slice(),defines:{...stock.defines},
+  wireframe:stock.wireframe,wireframeLinewidth:stock.wireframeLinewidth,fog:stock.fog,lights:stock.lights,
+  clipping:stock.clipping,extensions:{...stock.extensions},glslVersion:stock.glslVersion,
+  defaultAttributeValues:{...stock.defaultAttributeValues},index0AttributeName:stock.index0AttributeName,
+  uniformsNeedUpdate:stock.uniformsNeedUpdate});
+ return copy;
+}
 export class StMarysShadows{
   readonly mesh:THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>;
   private readonly slotsAttribute:THREE.InstancedBufferAttribute;
@@ -185,14 +198,14 @@ export class StMarysShadows{
   private dead=false;
   private constructor(private scene:THREE.Scene,private stock:LegacyShade,private gradeId:string,capacity:number,patch:NonNullable<ReturnType<typeof patchShaders>>){
     this.oldMaterial=stock.material;
-    this.patched=stock.material.clone();
+    this.patched=copyShadowProgram(stock.material);
     this.patched.vertexShader=patch.vertexShader;
     this.patched.fragmentShader=patch.fragmentShader;
     this.patched.uniforms=stock.material.uniforms;
     this.slotsAttribute=new THREE.InstancedBufferAttribute(new Float32Array(capacity),1).setUsage(THREE.DynamicDrawUsage);
     stock.geometry.setAttribute(KEY,this.slotsAttribute);
     stock.material=this.patched;
-    const material=this.oldMaterial.clone();
+    const material=copyShadowProgram(this.oldMaterial);
     material.vertexShader=receiverVertex;material.uniforms=this.oldMaterial.uniforms;
     this.mesh=new THREE.Mesh(new THREE.BufferGeometry(),material);
     this.mesh.name='St Mary’s four re-seated canonical woodland receivers';
