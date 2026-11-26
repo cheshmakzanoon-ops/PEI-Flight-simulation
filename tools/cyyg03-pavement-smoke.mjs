@@ -41,7 +41,7 @@ try{
       .replace(anchor,anchor+`
        if(cyygPavingQAView>.5&&i==0&&d<=600.){
         bool plain=all(equal(paint,texelFetch(paintMap,ivec2(60,1024),0).rgb));
-        gl_FragColor=plain?vec4(0.,1.,0.,1.):vec4(1.,0.,1.,1.);return;
+        gl_FragColor=plain?vec4(0.,step(1.5,cyygPavingQAView),0.,1.):vec4(1.,0.,1.,1.);return;
        }`);
     }
     return original.shader.call(this,shader,src);
@@ -58,7 +58,7 @@ try{
     if(!gate||!mask)throw Error('The exact main runway shade program did not link');
     const value=ctx.getUniform(p,gate),before=ctx.getUniform(p,mask);
     s.draws.push({actual:value,depth:ctx.isEnabled(ctx.DEPTH_TEST),depthWrite:ctx.getParameter(ctx.DEPTH_WRITEMASK)});
-    ctx.uniform1f(gate,s.ask.kind==='stock'?0:value);ctx.uniform1f(mask,s.ask.kind==='mask'?1:0);
+    ctx.uniform1f(gate,s.ask.kind==='stock'?0:value);ctx.uniform1f(mask,s.ask.kind==='support-lo'?1:s.ask.kind==='support-hi'?2:0);
     try{return draw.apply(ctx,args);}finally{ctx.uniform1f(gate,value);ctx.uniform1f(mask,before);}
    }
    gl.drawArrays=function(...args){return route(this,args,original.a);};
@@ -113,28 +113,41 @@ try{
      assert.equal(f.err,0);assert(f.draws.length&&f.draws.every(x=>x.actual===1&&x.depth&&x.depthWrite),JSON.stringify(f.draws));
      return {...f,bytes:Buffer.from(f.png.split(',')[1],'base64')};
     };
-    const a=await frame('stock'),b=await frame('live'),mask=await frame('mask'),c=await frame('restored');
-    assert.deepEqual(a.at,b.at);assert.deepEqual(a.at,mask.at);assert.deepEqual(b.bytes,c.bytes);
-    const A=PNG.sync.read(a.bytes),B=PNG.sync.read(b.bytes),M=PNG.sync.read(mask.bytes),W=A.width,H=A.height;
-    const green=i=>M.data[i*4]===0&&M.data[i*4+1]===255&&M.data[i*4+2]===0;
-    const pink=i=>M.data[i*4]===255&&M.data[i*4+1]===0&&M.data[i*4+2]===255;
-    let strong=0,greenCount=0,paint=0,paintDifference=0,exterior=0,alpha=0;
-    for(let y=2;y<H-2;y++)for(let x=2;x<W-2;x++){
-     const I=y*W+x,i=I*4,around=[I-W-1,I-W,I-W+1,I-1,I,I+1,I+W-1,I+W,I+W+1];
-     const diff=Math.max(Math.abs(A.data[i]-B.data[i]),Math.abs(A.data[i+1]-B.data[i+1]),Math.abs(A.data[i+2]-B.data[i+2]));
-     if(green(I))greenCount++;
-     if(around.every(pink)){paint++;if(diff)paintDifference++;}
-     if(diff>2){strong++;if(!around.some(green))exterior++;}
+    const a=await frame('stock'),b=await frame('live'),lo=await frame('support-lo'),hi=await frame('support-hi'),c=await frame('restored');
+    for(const f of [b,lo,hi,c])assert.deepEqual(a.at,f.at);
+    assert.deepEqual(b.bytes,c.bytes);
+    const A=PNG.sync.read(a.bytes),B=PNG.sync.read(b.bytes),L=PNG.sync.read(lo.bytes),H=PNG.sync.read(hi.bytes),
+     w=A.width,h=A.height;
+    const diff=(x,y,i)=>Math.max(Math.abs(x[i]-y[i]),Math.abs(x[i+1]-y[i+1]),Math.abs(x[i+2]-y[i+2]));
+    const pink=i=>H.data[i]===255&&H.data[i+1]===0&&H.data[i+2]===255&&
+     L.data[i]===255&&L.data[i+1]===0&&L.data[i+2]===255;
+    let strong=0,support=0,partial=0,paint=0,paintDifference=0,exterior=0,exteriorStrong=0,alpha=0;
+    const outside=[];
+    // A matched two-colour support toggle, not a pure green mask, keeps
+    // partially covered MSAA samples observable under adjacent paint or
+    // opaque scenery. The rest of the render stays exactly the same.
+    for(let i=0;i<A.data.length;i+=4){
+     const d=diff(A.data,B.data,i),moved=diff(L.data,H.data,i);
+     if(moved){support++;if(moved<255)partial++;}
+     if(pink(i)){paint++;if(d)paintDifference++;}
+     if(d>2)strong++;
+     if(d&&!moved){
+      exterior++;if(d>2)exteriorStrong++;
+      if(outside.length<24)outside.push([i/4%w,Math.floor(i/4/w),d]);
+     }
      if(A.data[i+3]!==B.data[i+3])alpha++;
     }
-    const exact={checkpoint:m,position:a.at,strong,greenCount,paint,paintDifference,exterior,alpha,gpuDraws:a.draws.length};
+    const exact={checkpoint:m,position:a.at,strong,support,partial,paint,paintDifference,exterior,exteriorStrong,alpha,
+     viewport:[w,h],gpuDraws:a.draws.length,outside};
     console.log('CYYG 03 exact browser comparison',JSON.stringify(exact));
-    assert(strong>1000&&paint>30&&paintDifference===0&&exterior===0&&alpha===0,JSON.stringify(exact));
     receipt[mode].push(exact);
-    if(m===160){
+    if(m===160||exterior||paintDifference||alpha){
      await writeFile(out+'/cyyg03-stock.png',a.bytes);
      await writeFile(out+'/cyyg03-filtered.png',b.bytes);
+     await writeFile(out+'/cyyg03-support-lo.png',lo.bytes);
+     await writeFile(out+'/cyyg03-support-hi.png',hi.bytes);
     }
+    assert(strong>1000&&paint>30&&paintDifference===0&&exterior===0&&alpha===0,JSON.stringify(exact));
     await page.evaluate(()=>{window.cyygPavingQA.hold=false;});
     await page.keyboard.down('Shift');
    }
