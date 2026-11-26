@@ -1,0 +1,59 @@
+{
+  "status": "detached historical bulk; not installed in the simulator",
+  "reference": "East Point Fog Alarm Building, Kings County, PEI",
+  "closedBodyPlan": {
+    "body": [
+      {
+        "id": "low-tower-side",
+        "box": [
+          -3.78,
+          4.7,
+          -10.1,
+          -3.92
+        ],
+        "ridgeU": 1.73950285418021,
+        "ridgeY": 5.439428258940438,
+        "pitch": 0.3731002822713262
+      },
+      {
+        "id": "high-point-side",
+        "box": [
+          -4.3,
+          4.2,
+          -3.92,
+          8.65
+        ],
+        "ridgeU": 0.3148365524853488,
+        "ridgeY": 8.33823909759005,
+        "pitch": 0.843597814706237
+      }
+    ],
+    "originXZ": [
+      17.05,
+      -5.9
+    ],
+    "yaw": 1.89,
+    "planeBottom": -1.371313
+  },
+  "modelBytes": {
+    "position": "60cee6da32267507e80c81457d8f3bbd8cfa432213076105f8858d9ff64a6b23",
+    "normal": "e53ef2d53c2cd19a7e4819ae847d2a33d254a9096e24f3c2ef9f845ae40fcc7d",
+    "color": "7afca5b380bc695beca12291928c90ca6a93789729fb6c7f239eff57c9165447",
+    "clad": "d8a01e47a5ac2374842cd20328ee954fd1c809e80f678107ea9fb3aff0e3892a"
+  },
+  "originalAssetF32": "Near [0,5055), mid [0,1440) and exact near 396 exhibit vertices in output suffix; 48 existing separate glass never exchanged; West all exact original groups/materials.",
+  "historicalRoofHoldout": {
+    "scope": "2020 same acquisition, readings independent of the fit",
+    "aggregateReceiptSha256": "e259a823d317d8d43446492a639274a13758a0db468d73d7f073dbd27d202bc6",
+    "upperInterior": {
+      "cells": 52,
+      "p90AbsoluteMetres": 0.205604,
+      "stockP90AbsoluteMetres": 2.414754
+    },
+    "lowerInterior": {
+      "cells": 26,
+      "p90AbsoluteMetres": 0.217245,
+      "stockHasRoofAtComparisonCoordinates": false
+    }
+  }
+}
