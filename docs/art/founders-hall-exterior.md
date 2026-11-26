@@ -27,13 +27,24 @@ Open `/tools/art/founders-hall-exterior/` on the local Vite server. Four fixed
 views put the curved inset, grey lower visitor front and separate set-back
 upper glazing into context. The workbench ships no imagery or remote assets;
 its horizontal handedness is illustrative, not geographic registration.
-The source model uses 1,744 triangles in 16 opaque material batches. Tests
+The current source model uses 1,792 triangles in 17 opaque material batches. Tests
 pin every position, normal and UV stream and check the enclosed portions
 and local inset depth. At flight scale the undeveloped surroundings remain
 unchanged.
 
-The fixed studio before/after checks passed in all four views, including the
-unchanged reciprocal view. In the native game renderer a private at-site
+A separate refinement adds a closed matte middle panel inside each of the
+three west arches. The upper and lower glazing remain distinct physical
+surfaces. This retains every one of the 1,744 previous triangles and adds
+36 closed panel triangles and 12 trim triangles. The two fixed west lenses
+showed 16,186 and 4,168 changed pixels with zero outside the new panels’
+visible area and no alpha changes; both reciprocal lenses and stock restore
+were byte-identical. The fine diagonal variation is intended for close
+inspection; mid-distance detail is not verified. The updated art also passed its
+private street-level renderer check with unchanged alpha and exact stock
+restoration; this is an inspection pose, not a gameplay view.
+
+The preceding 1,744-triangle exterior passed its four fixed studio checks.
+In the native game renderer a private at-site
 inspection camera had 310,945 changed RGB pixels, none outside the box, no
 changed alpha, and exact restore. The two sampled ordinary Harbour Low
 Chase frames had 12,879 and 17,654 visibly changed pixels with zero outside

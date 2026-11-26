@@ -50,3 +50,15 @@ test('same fixed edge7 rays prove lower opaque-backed panes, raised entrance cas
   assert(Math.abs(first.point.clone().sub(front).dot(toward)-f.dep)<1e-7);
  }
 });
+
+test('infill is visible at the center but both old transparent-looking bands stay real separate opaque-backed glazing',()=>{
+ const subject=buildFoundersRailShop().group;subject.updateMatrixWorld(true);
+ const a=FOUNDERS_PLAN.outline[7],b=FOUNDERS_PLAN.outline[6],t=16.9/a[1],edge=[a[0]*t,16.9],dx=b[0]-edge[0],dz=b[1]-edge[1],len=Math.hypot(dx,dz);
+ const normal=new Vector3(dz/len,0,-dx/len),at=new Raycaster();
+ for(const f of fixture.stubProof.westOpeningRays){
+  const origin=new Vector3(edge[0]+dx*f.u/len,f.y,edge[1]+dz*f.u/len),inward=normal.clone().negate();
+  at.set(origin.clone().addScaledVector(normal,24),inward);const first=at.intersectObject(subject,true).at(0);
+  assert.equal(first?.object.name,f.role);
+  assert(Math.abs(first.point.clone().sub(origin).dot(inward)-f.depth)<.00002);
+ }
+});

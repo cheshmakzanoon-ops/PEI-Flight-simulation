@@ -26,3 +26,13 @@ This is a non-mounted study. Any future walk/free-flight asset still requires a 
 The maintained V4 detached study explicitly retains the numeric-safe V3-B opening (.73 of the local edge 9; wholly an approximate artist proportion). A separate low visitor frame occupies the original early edge 7, with two low glazed sections, a small rounded red header and an inset raised glazed strip. The altered nearby visitor roof and floor share exact boundaries with the new faces. Remaining old high walls stay schematic, and the whole model is 1,744 triangles/16 material draws. The three rail arches, supported 2020 main/east roof geometry, and buff tower/hood are unchanged by this iteration. Real WebGL2 four-pose render checks reproduced 37,576, 45,739, and 136,072 strong changed RGB pixels at matching architecturally useful lenses; exact reciprocal and zero off-role RGB or alpha, no errors, and fully exact restoration. That is real rendered detached art QA, not proof of installed gameplay or a copy of the present site.
 
 Bundled proof.json has only role checksums, non-world local-model numerical receipts, and private raw capture checksums (no media needed). The data-free local CPU checks need only current pinned Three.js and Node's TS support: node --experimental-transform-types --test detached.test.mjs. The same published source can be rendered in a new lit local scene by calling buildFoundersRailShop() and adding the returned group. No map engine import, camera or launch point is installed.
+
+## West arch infill refinement
+
+Three opaque, enclosed middle panels break the original arches into upper
+light, matte infill, and lower glazing. These shapes are qualitatively
+visible in the renovation architect’s June 2025 exterior photos. Their
+exact appearance, composition, current dimensions, and material are not
+known. The separate close material fades at longer, grazing angles.
+This refinement adds one offline art batch without changing the official
+world or the preceding route evidence.

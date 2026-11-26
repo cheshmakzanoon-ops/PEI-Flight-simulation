@@ -1,12 +1,12 @@
 {
-  "kind": "founders-relative-threejs-artist-study",
-  "notPartOfWorld": true,
+  "kind": "founders-relative-threejs-infill-proof",
   "schema": 1,
+  "notPartOfWorld": true,
   "scene": {
-    "draws": 16,
-    "triangles": 1744,
-    "closedOwnerParts": 9,
-    "sealedSourceSha": "7f8387a63a997455c02cad59864cd8231a4b7b34f57b49c2084e452a94eaa53f",
+    "draws": 17,
+    "triangles": 1792,
+    "closedOwnerParts": 12,
+    "sealedSourceSha": "74f5981ad1046c6b8d16881da29f01551da4b5365a4a44b6b681dad3282cbff2",
     "planSha": "9b4b6bafb6eabd9a314a99b8e9cef05ec40056de6f228ba5f6c251e8c73b9b07",
     "measureNotWorld": true
   },
@@ -42,16 +42,22 @@
       "tris": 143
     },
     "matchedMullion": {
-      "position": "dc8ea21f79995fa1addd587f642f3f82443dc8a91ec22ea027f1c1bfe23da8c8",
-      "normal": "d99f517812feb96f28ec911fc36150f2a41e670d52c6662b2fd476db327b33ca",
-      "uv": "487327aae18850be908ec75e36e5ae6cc8da5b1743ba3ecd4d7239fc4a8e982b",
-      "tris": 150
+      "position": "493d9bac177b6b19c9ed7dfd16c516f546c177e0873ad33908f580de7809668a",
+      "normal": "49d0d1ceaafbf28534025d0f847a7b93fd7747bab624573a69ee9b58cee9e410",
+      "uv": "16f19587b223b61a7133cc89cacf66fd4e2d41125dc2f29aed3a4c0ad3e6f91d",
+      "tris": 162
     },
     "westCrossbar": {
       "position": "d260a4d50a9c7fa45ffc7c601d635a41cf9cc81bbfb967e13c15c3149a521870",
       "normal": "40c058712a4058ba6076decfbc2bf5b6eee63834a39f58671a89f004d1526a30",
       "uv": "5fc77fa065d1f906f5f09e8f7cb2fd49af91db6c8a884ad515dd64b52dfecbfa",
       "tris": 6
+    },
+    "westMatteInfill": {
+      "position": "28e7e337f463a289f634c55920384733dc223c1dade16a4960ba2be5cde7a7f3",
+      "normal": "b58a5613e152623f1681c25e551610da752ab6928cfa4892f33e886cc213bb7a",
+      "uv": "71f13b58875effe4a77c03aee50973b75afd4418c02135a009cad447d49f4da5",
+      "tris": 36
     },
     "visitorRoof": {
       "position": "4b8468c18cba705d9f1b0ad01f8602bf2b56c2f5be8c699049278f42e0730451",
@@ -204,9 +210,170 @@
         "component": "closed-red-entry-head",
         "edge": 72,
         "mismatches": 0
+      },
+      {
+        "component": "west-matte-board-1",
+        "edge": 18,
+        "mismatches": 0
+      },
+      {
+        "component": "west-matte-board-2",
+        "edge": 18,
+        "mismatches": 0
+      },
+      {
+        "component": "west-matte-board-3",
+        "edge": 18,
+        "mismatches": 0
       }
     ],
-    "exactEarlierTriangles": 1561,
+    "exactEarlierTriangles": 1744,
+    "westOpeningRays": [
+      {
+        "i": 0,
+        "p": "lower clear",
+        "role": "curvedGlass",
+        "depth": 0.22799999664088508,
+        "u": 2.9556192389651916,
+        "y": 1.5837225188421684
+      },
+      {
+        "i": 0,
+        "p": "upper clear",
+        "role": "curvedGlass",
+        "depth": 0.22800000133190224,
+        "u": 2.9556192389651916,
+        "y": 7.379465742763553
+      },
+      {
+        "i": 0,
+        "p": "opaque transverse field",
+        "role": "westMatteInfill",
+        "depth": 0.19300000623533356,
+        "u": 2.9556192389651916,
+        "y": 3.631167556526505
+      },
+      {
+        "i": 0,
+        "p": "above round-head",
+        "role": "railBrick",
+        "depth": 5.113190303678745e-09,
+        "u": 2.9556192389651916,
+        "y": 7.949465742763553
+      },
+      {
+        "i": 0,
+        "p": "left pier outside opening",
+        "role": "railBrick",
+        "depth": 7.585523297974714e-09,
+        "u": 0.7734422417917617,
+        "y": 3.05
+      },
+      {
+        "i": 0,
+        "p": "right pier outside opening",
+        "role": "railBrick",
+        "depth": -9.815651248245453e-09,
+        "u": 4.905796236138622,
+        "y": 3.05
+      },
+      {
+        "i": 1,
+        "p": "lower clear",
+        "role": "curvedGlass",
+        "depth": 0.22799999617708688,
+        "u": 8.432027771255202,
+        "y": 1.7581742250002441
+      },
+      {
+        "i": 1,
+        "p": "upper clear",
+        "role": "curvedGlass",
+        "depth": 0.22800001024969058,
+        "u": 8.432027771255202,
+        "y": 8.941388906251525
+      },
+      {
+        "i": 1,
+        "p": "opaque transverse field",
+        "role": "westMatteInfill",
+        "depth": 0.193000001348976,
+        "u": 8.432027771255202,
+        "y": 4.274522675000732
+      },
+      {
+        "i": 1,
+        "p": "above round-head",
+        "role": "railBrick",
+        "depth": -9.553697248669203e-09,
+        "u": 8.432027771255202,
+        "y": 9.511388906251526
+      },
+      {
+        "i": 1,
+        "p": "left pier outside opening",
+        "role": "railBrick",
+        "depth": -1.0998767984718085e-08,
+        "u": 6.080825819381462,
+        "y": 3.05
+      },
+      {
+        "i": 1,
+        "p": "right pier outside opening",
+        "role": "railBrick",
+        "depth": -1.6833192048328407e-09,
+        "u": 10.551229723128941,
+        "y": 3.05
+      },
+      {
+        "i": 2,
+        "p": "lower clear",
+        "role": "curvedGlass",
+        "depth": 0.2279999972892323,
+        "u": 13.85772881713512,
+        "y": 1.7037847449549979
+      },
+      {
+        "i": 2,
+        "p": "upper clear",
+        "role": "curvedGlass",
+        "depth": 0.22800000742659624,
+        "u": 13.85772881713512,
+        "y": 8.129854655968735
+      },
+      {
+        "i": 2,
+        "p": "opaque transverse field",
+        "role": "westMatteInfill",
+        "depth": 0.1930000047007986,
+        "u": 13.85772881713512,
+        "y": 3.991354234864993
+      },
+      {
+        "i": 2,
+        "p": "above round-head",
+        "role": "railBrick",
+        "depth": 3.909618138144182e-09,
+        "u": 13.85772881713512,
+        "y": 8.699854655968736
+      },
+      {
+        "i": 2,
+        "p": "left pier outside opening",
+        "role": "railBrick",
+        "depth": 3.78398982480275e-09,
+        "u": 11.709356810901753,
+        "y": 3.05
+      },
+      {
+        "i": 2,
+        "p": "right pier outside opening",
+        "role": "railBrick",
+        "depth": -3.52800889735644e-09,
+        "u": 15.774100823368489,
+        "y": 3.05
+      }
+    ],
     "supportedHistoricArithmeticOnly": {
       "historic-main-long": {
         "samples": 282,
@@ -225,14 +392,14 @@
       "three": "187"
     },
     "rawNativeCases": {
-      "street-front-overview": {
+      "west-square": {
         "delta": {
           "alpha": 0,
-          "strong": 37576,
-          "any": 38400,
+          "strong": 16186,
+          "any": 16186,
           "deltaOutside": 0,
-          "visibleScope": 51674,
-          "visiblePediment": 1120
+          "visibleScope": 16214,
+          "matteBandCoverage": 15179
         },
         "pass": {
           "fullOldRestore": true,
@@ -241,19 +408,18 @@
           "zeroGLErrors": true,
           "drawingBound": true,
           "unchangedAlphaAndOffScope": true,
-          "expectedContrast": true,
-          "pedimentMeaningful": true
+          "expectedContrast": true
         },
-        "newPNGHash": "0f2fefe1c6347c764e70f0756b9400fa6a72e389156e10d2f369878d1b40912a"
+        "newPNGHash": "95176b516bd9659da5c914bb909097d2635e0f1bff950a277a7a5a8578711e60"
       },
-      "visitor-passage-oblique": {
+      "west-harbour-oblique": {
         "delta": {
           "alpha": 0,
-          "strong": 45739,
-          "any": 46804,
+          "strong": 4168,
+          "any": 4168,
           "deltaOutside": 0,
-          "visibleScope": 62878,
-          "visiblePediment": 1386
+          "visibleScope": 4169,
+          "matteBandCoverage": 3924
         },
         "pass": {
           "fullOldRestore": true,
@@ -262,40 +428,18 @@
           "zeroGLErrors": true,
           "drawingBound": true,
           "unchangedAlphaAndOffScope": true,
-          "expectedContrast": true,
-          "pedimentMeaningful": true
+          "expectedContrast": true
         },
-        "newPNGHash": "e0bd090ab0185f77014d944e779a15180e6e8522c5e60ad453089ab9677feddf"
+        "newPNGHash": "0f94ce3bab1f3a2abe69d1ded8dd3e8fe13fd7250394f5999d9bff881220332a"
       },
-      "tower-inset-close": {
-        "delta": {
-          "alpha": 0,
-          "strong": 136072,
-          "any": 136894,
-          "deltaOutside": 0,
-          "visibleScope": 168254,
-          "visiblePediment": 4906
-        },
-        "pass": {
-          "fullOldRestore": true,
-          "fullNewRepeat": true,
-          "exactCanvasMatrix": true,
-          "zeroGLErrors": true,
-          "drawingBound": true,
-          "unchangedAlphaAndOffScope": true,
-          "expectedContrast": true,
-          "pedimentMeaningful": true
-        },
-        "newPNGHash": "46ddff370d83d7bef29d5acfedcd9b68473166d7dfb625cc2097c634b92d951c"
-      },
-      "stock-long-hall-reciprocal": {
+      "unchanged-harbour-side": {
         "delta": {
           "alpha": 0,
           "strong": 0,
           "any": 0,
           "deltaOutside": 0,
-          "visibleScope": 19,
-          "visiblePediment": 0
+          "visibleScope": 0,
+          "matteBandCoverage": 0
         },
         "pass": {
           "fullOldRestore": true,
@@ -304,18 +448,36 @@
           "zeroGLErrors": true,
           "drawingBound": true,
           "unchangedAlphaAndOffScope": true,
-          "expectedContrast": true,
-          "pedimentMeaningful": true
+          "expectedContrast": true
         },
-        "newPNGHash": "12a6507c39c6036e027c2afa790a0d6f2fcff084f7db7d004bf05d0171e4deab"
+        "newPNGHash": "6e7cdf17b037889e16a68a784dfde107b2267616dd9f5bdb4e71dbf894e41d00"
+      },
+      "unchanged-landward-return": {
+        "delta": {
+          "alpha": 0,
+          "strong": 0,
+          "any": 0,
+          "deltaOutside": 0,
+          "visibleScope": 0,
+          "matteBandCoverage": 0
+        },
+        "pass": {
+          "fullOldRestore": true,
+          "fullNewRepeat": true,
+          "exactCanvasMatrix": true,
+          "zeroGLErrors": true,
+          "drawingBound": true,
+          "unchangedAlphaAndOffScope": true,
+          "expectedContrast": true
+        },
+        "newPNGHash": "5ad6a85aa6458871d9459678494964d0232eeff1f0b5209f148dfd5e0b0ef74d"
       }
     }
   },
   "notProven": [
     "current as-built site roof, structural deck grade or placement",
-    "day/time exact paints/windows",
-    "default route alpha frame invariance",
-    "ground transition and artificial adjacent volumes",
-    "independent source limits do not include external materials/rights"
+    "exact aperture dimensions, finish or window count on unobserved faces",
+    "default route or global frame invariance",
+    "date or measured geometry without separate authority"
   ]
 }

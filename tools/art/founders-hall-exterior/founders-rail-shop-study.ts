@@ -1,14 +1,16 @@
-/** Original former railway-shop exterior V4: local relative study with original low visitor front and roof setback, never a map actor. */
+/** Original former railway-shop exterior V5: local relative study with independent old-west opaque middle bands, never a map actor. */
 import {BufferGeometry,Float32BufferAttribute,Group,Mesh,MeshStandardMaterial,ShapeUtils,Vector2,Vector3,type Material} from 'three'
 import {FOUNDERS_PLAN as P} from './founders-exterior-plan.generated.ts'
+import {foundersDarkSpandrel} from './founders-dark-spandrel-v2.ts'
 import {foundersBuffMasonry} from './founders-buff-masonry.ts'
 import {foundersRailGlass} from './root-original-founders-rail-glass.ts'
 type UV=readonly [number,number];type XYZ=readonly [number,number,number];
 type OpeningRole='historic-round-top'|'observed-west-three'|'annotated-visitor-link'|'annotated-tower-upper'|'annotated-tower-door';
 const portal=(r:OpeningRole)=>r.startsWith('annotated-');
-export type FoundersRole='mainRoof'|'visitorRoof'|'railBrick'|'visitorPale'|'brickHead'|'paleSill'|'curvedGlass'|'matchedMullion'|'westCrossbar'|'buffEntrancePanel'|'visitorLinkGlass'|'visitorFrame'|'tealEntranceCanopy'|'entranceCoping'|'lowVisitorPanel'|'raisedVisitorFrame'
-const RG={mainRoof:'#5b6466',visitorRoof:'#98968d',railBrick:'#9c5941',visitorPale:'#b2a99b',brickHead:'#8e503d',paleSill:'#9d9f91',curvedGlass:'#303a3c',matchedMullion:'#6e8c79',westCrossbar:'#34413f',buffEntrancePanel:'#b9a99b',visitorLinkGlass:'#5f7470',visitorFrame:'#596c63',tealEntranceCanopy:'#375d59',entranceCoping:'#85463c',lowVisitorPanel:'#bfc1b7',raisedVisitorFrame:'#656b68'} as const
+export type FoundersRole='mainRoof'|'visitorRoof'|'railBrick'|'visitorPale'|'brickHead'|'paleSill'|'curvedGlass'|'matchedMullion'|'westCrossbar'|'buffEntrancePanel'|'visitorLinkGlass'|'visitorFrame'|'tealEntranceCanopy'|'entranceCoping'|'lowVisitorPanel'|'raisedVisitorFrame'|'westMatteInfill'
+const RG={mainRoof:'#5b6466',visitorRoof:'#98968d',railBrick:'#9c5941',visitorPale:'#b2a99b',brickHead:'#8e503d',paleSill:'#9d9f91',curvedGlass:'#303a3c',matchedMullion:'#6e8c79',westCrossbar:'#34413f',buffEntrancePanel:'#b9a99b',visitorLinkGlass:'#5f7470',visitorFrame:'#596c63',tealEntranceCanopy:'#375d59',entranceCoping:'#85463c',lowVisitorPanel:'#bfc1b7',raisedVisitorFrame:'#656b68',westMatteInfill:'#4a4a43'} as const
 export function makeFoundersMaterial(role:FoundersRole,active=true):Material{
+ if(role==='westMatteInfill')return foundersDarkSpandrel(active);
  if(role==='buffEntrancePanel')return foundersBuffMasonry(active);
  if(role==='curvedGlass'&&active)return foundersRailGlass();
  if(role==='visitorLinkGlass'&&active){const g=foundersRailGlass(.62);g.color.set(RG.visitorLinkGlass);return g;}
@@ -92,7 +94,7 @@ export function buildFoundersRailShop(material:(r:FoundersRole)=>Material=makeFo
  const direct=(role:FoundersRole,p:UV[],out:(p:UV)=>XYZ,normal:XYZ,face:string,layer=false)=>{
   for(const [i,j,k]of tsp(p))emit(role,out(p[i]),out(p[j]),out(p[k]),[p[i],p[j],p[k]],normal,face,layer);
  };
- const layers={series:0,westBays:0,panes:0,dividerTriangles:0,westCrossbars:0,visitorRecesses:0,canopyTriangles:0,lowLinkStudyPanels:0,raisedPedimentTriangles:0};
+ const layers={series:0,westBays:0,panes:0,dividerTriangles:0,westCrossbars:0,visitorRecesses:0,canopyTriangles:0,lowLinkStudyPanels:0,raisedPedimentTriangles:0,opaqueWestBands:0,opaqueWestBandTris:0,bandFrameTris:0};
  const model:{part:number;subject:string;outline:UV[];roof:[number,number]}[]=[];
  for(const [name,s]of Object.entries(fP))for(let band=0;band<s.levels.length-1;band++){
   const strip=(lo:number,hi:number)=>{
@@ -276,6 +278,32 @@ export function buildFoundersRailShop(material:(r:FoundersRole)=>Material=makeFo
     }
     if(track==='observed-west-three'){
      const y=d+(top-k-d)*.48,half=sw*.5-.010;grid([[c-half,y-.089],[c+half,y-.089],[c+half,y+.089],[c-half,y+.089]],true);
+     // This closed original boarded band sits IN FRONT OF the already sealed opaque-backed glazing.
+     // It does not alter any aperture, facade or roof plane and has no borrowed pixels/panel grid.
+     const h=top-k-d,y0=d+.327*h,y1=d+.552*h,edge=sw*.5-.018,plate=rectangle(c,y0,2*edge,y1);
+     const inset=depth-.035,back=depth-.004,board='v5-observed-west-matte-infill',shell=244+layers.westBays-1;
+     layers.opaqueWestBands++;
+     const nBack:XYZ=[-n[0],0,-n[2]];
+     const frontPair=(depth:number,normal:XYZ)=>{
+      for(const [i,j,k]of tsp(plate)) {
+       const uv=[plate[i],plate[j],plate[k]]as const;
+       emit('westMatteInfill',at(uv[0],depth),at(uv[1],depth),at(uv[2],depth),uv,normal,board,false,shell);
+       layers.opaqueWestBandTris++;
+      }
+     };
+     frontPair(inset,n);frontPair(back,nBack);
+     for(let i=0;i<plate.length;i++){
+      const a=plate[i],b=plate[(i+1)%plate.length],u=b[0]-a[0],r=b[1]-a[1],out:XYZ=[dx/len*r,-u,dz/len*r];
+      emit('westMatteInfill',at(a,inset),at(b,inset),at(b,back),[a,b,b],out,board,false,shell);
+      emit('westMatteInfill',at(a,inset),at(b,back),at(a,back),[a,b,a],out,board,false,shell);
+      layers.opaqueWestBandTris+=2;
+     }
+     for(const y of [y0,y1]){
+      const tr=rectangle(c,y-.026,2*edge,y+.026);
+      direct('matchedMullion',tr,q=>at(q,inset-.007),n,'v5-matte-infill-frame',true);
+      layers.bandFrameTris+=2;
+     }
+
     }
    }
   }
