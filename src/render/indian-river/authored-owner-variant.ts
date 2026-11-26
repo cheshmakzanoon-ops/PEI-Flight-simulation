@@ -17,6 +17,7 @@ export function authenticatedOwnerVariant(mesh:Mesh,authored:Group,span:readonly
  return {
   get visible(){return show;},
   stockForProof(){return !closed&&(mesh.geometry===stock||mesh.geometry===alternate)?stock:undefined;},
+  alternateForProof(){return closed?undefined:alternate;},
   sync(admission:boolean){
    if(closed)return;
    // A sibling rendering system that replaces the owner never inherits an

@@ -15,7 +15,7 @@ export const SEACOW={
  position:'01a2bee84ee4e620cbabd7659f86a59be8c46f67fcd5c3c82b6b0b5a4030cfb6',
  normal:'3ff0097f01c143cb64ab49960af41f3f28946a6fdfbd150101c422d6b87606b2',
 } as const;
-export type SeacowSeat={floor:(x:number,z:number)=>number;resident:()=>boolean;verifiedCover:()=>Promise<boolean>};
+export type SeacowSeat={floor:(x:number,z:number)=>number;resident:()=>boolean;verifiedCover:()=>Promise<boolean>;prepare?:()=>boolean};
 export function seacowSiteSupports(t:Terrain,h:string|undefined,c:Cover){
  const [x,z]=SEACOW.xz;
  if(!standardLandAtlasMatches(t,h,c)||t.surveyGrids.some(g=>g.spec.tileX===8&&g.spec.tileZ===14)||

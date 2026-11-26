@@ -74,3 +74,55 @@ test('actual 272-row original stock and mounted leases: only original 66 vertice
   else {assert.equal(owner.geometry,source);assert.equal(source.index,null);assert.equal(scene.children.length,1);}
  }
 });
+
+test('route-deferred Seacow shares the stock owner read and revokes or resumes its own cover and render lease',async()=>{
+ const scene=new Scene();let reads=0,coverCalls=0,selected=false,resident=true;
+ const b=new (Buildings as any)(scene,terrain,[tile],{read:async()=>{reads++;return ab(wire);}},a.sha256);
+ let release:(v:boolean)=>void=()=>{};const waiting=new Promise<boolean>(r=>release=r);
+ b.enableSeacowExterior({floor,prepare:()=>selected,resident:()=>resident,
+  verifiedCover:async()=>{coverCalls++;return coverCalls===1?waiting:true;}});
+ b.wanted.add(tile.id);await b.load(b.tiles[0]);const owner=b.meshes.get(tile.id),stock=owner.geometry;
+ const until=async(f:()=>boolean)=>{for(let i=0;i<150&&!f();i++)await new Promise(r=>setTimeout(r,2));assert(f());};
+ b.syncSeacow();assert.equal(reads,1);assert.equal(coverCalls,0);assert.equal(scene.children.length,1);
+ selected=true;b.syncSeacow();await until(()=>coverCalls===1);
+ selected=false;release(true);await until(()=>!b.queuedSeacow.running);
+ assert.equal(scene.children.length,1);assert.equal(owner.geometry,stock);
+ selected=true;b.syncSeacow();await until(()=>b.seacowExteriorActive);
+ assert.equal(reads,1);assert.equal(coverCalls,2);
+ const revised=owner.geometry;assert.notEqual(revised,stock);
+ selected=false;b.syncSeacow();assert.equal(owner.geometry,stock);assert(!b.seacowExteriorActive);
+ selected=true;resident=false;b.syncSeacow();assert.equal(owner.geometry,stock);
+ resident=true;b.syncSeacow();assert.equal(owner.geometry,revised);
+ const foreign=new BufferGeometry();owner.geometry=foreign;b.syncSeacow();
+ assert.equal(owner.geometry,foreign);assert(!b.seacowExteriorActive);
+ owner.geometry=stock;b.syncSeacow();assert.equal(owner.geometry,revised);
+ assert.equal(coverCalls,2);assert.equal(reads,1);
+});
+
+test('original placement and buffer generations refuse drift before promotion, across awaits and while visible',async()=>{
+ for(const mode of ['queued-move','cover-foreign','active-ebo']){
+  const scene=new Scene(),b=new (Buildings as any)(scene,terrain,[tile],{read:async()=>ab(wire)},a.sha256);
+  let selected=false,coverCalls=0,complete:(v:boolean)=>void=()=>{};
+  const gate=new Promise<boolean>(r=>complete=r);
+  b.enableSeacowExterior({floor,prepare:()=>selected,resident:()=>true,
+   verifiedCover:async()=>{coverCalls++;return mode==='cover-foreign'?gate:true;}});
+  b.wanted.add(tile.id);await b.load(b.tiles[0]);const q=b.meshes.get(tile.id),stock=q.geometry;
+  const until=async(f:()=>boolean)=>{for(let i=0;i<150&&!f();i++)await new Promise(r=>setTimeout(r,2));assert(f(),mode);};
+  if(mode==='queued-move')q.position.x+=1;
+  selected=true;b.syncSeacow();
+  if(mode==='cover-foreign'){
+   await until(()=>coverCalls===1);
+   const foreign=stock.clone();q.geometry=foreign;
+   complete(true);await until(()=>!b.queuedSeacow);
+   assert.equal(q.geometry,foreign);assert.equal(scene.children.length,1);
+  }else if(mode==='active-ebo'){
+   await until(()=>b.seacowExteriorActive);
+   const alternate=q.geometry,index=alternate.getIndex();index.needsUpdate=true;b.syncSeacow();
+   assert(!b.seacowExteriorActive);assert.equal(q.geometry,stock);
+  }else{
+   await until(()=>!b.queuedSeacow);assert.equal(q.geometry,stock);
+   assert.equal(coverCalls,0);assert.equal(scene.children.length,1);
+  }
+  assert(!b.seacowExteriorActive,mode);
+ }
+});

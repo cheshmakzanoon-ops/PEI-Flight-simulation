@@ -390,6 +390,7 @@ export class Buildings {
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
+ private queuedSeacow?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;running:boolean;pin:ReturnType<Buildings['pinSeacowOwner']>};
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private knightSeat?:KnightSeat;
  private knight?:{owner:THREE.Mesh;art:THREE.Group;originalMaterial:THREE.Material|THREE.Material[];
@@ -511,18 +512,47 @@ export class Buildings {
  enableSeacowExterior(seat:SeacowSeat){this.seacowSeat=seat;}
  get seacowExteriorActive(){return this.seacow?.view.visible===true;}
  private syncSeacow(){
-  const p=this.seacow;if(!p)return;
-  p.view.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
-   p.art.group.parent===this.scene&&p.intact()&&!this.scene.overrideMaterial&&this.seacowSeat?.resident()===true);
+  const seat=this.seacowSeat,p=this.seacow;
+  if(p){
+   p.view.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
+    p.art.group.parent===this.scene&&p.intact()&&!this.scene.overrideMaterial&&seat?.resident()===true&&seat.prepare?.()!==false);
+   return;
+  }
+  const q=this.queuedSeacow;
+  if(!q||!seat||q.running||seat.prepare?.()===false)return;
+  q.running=true;
+  let deferred=false;
+  void this.promoteSeacow(q.owner,q.bytes,q.rows,q.row,seat,q.pin,()=>{
+   if(seat.prepare?.()!==false)return true;
+   deferred=true;return false;
+  }).then(()=>{
+   if(this.queuedSeacow!==q)return;
+   if(deferred)q.running=false;else this.queuedSeacow=undefined;
+  });
  }
- private async promoteSeacow(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:SeacowSeat){
-  const present=()=>this.meshes.get(SEACOW.id)===owner&&owner.parent===this.scene&&this.wanted.has(SEACOW.id)&&!this.seacow;
+ private pinSeacowOwner(owner:THREE.Mesh){
+  const stock=owner.geometry,material=owner.material,position=owner.position.clone(),rotation=owner.quaternion.clone(),scale=owner.scale.clone(),
+   layer=owner.layers.mask,order=owner.renderOrder;
+  const plan=Object.entries(stock.attributes).map(([name,a])=>({name,a,version:a instanceof THREE.InterleavedBufferAttribute?a.data.version:a.version,array:a.array}));
+  const whole=(g:THREE.BufferGeometry)=>g.drawRange.start===0&&g.drawRange.count===Infinity&&!g.groups.length&&
+   Object.keys(g.attributes).length===plan.length&&plan.every(({name,a,version,array})=>g.getAttribute(name)===a&&
+    a.array===array&&(a instanceof THREE.InterleavedBufferAttribute?a.data.version:a.version)===version);
+  const baseOwner=()=>owner.parent===this.scene&&owner.material===material&&owner.visible&&owner.matrixAutoUpdate&&
+   owner.renderOrder===order&&owner.layers.mask===layer&&owner.position.equals(position)&&owner.quaternion.equals(rotation)&&
+   owner.scale.equals(scale)&&stock.index===null&&whole(stock);
+  return {stock,whole,baseOwner};
+ }
+ private async promoteSeacow(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:SeacowSeat,pin:ReturnType<Buildings['pinSeacowOwner']>,eligible=()=>true){
+  const {stock,whole,baseOwner}=pin;
+  const present=()=>this.meshes.get(SEACOW.id)===owner&&this.wanted.has(SEACOW.id)&&!this.seacow&&eligible()&&owner.geometry===stock&&baseOwner();
   if(!present())return;
   try{
-   if(!(await seacowSource(raw,rows,row,owner))||!await seat.verifiedCover()||!present())return;
+   if(!(await seacowSource(raw,rows,row,owner))||!present()||!await seat.verifiedCover()||!present())return;
    const {makeSeacowExterior}=await import('./seacow-exterior-art.ts');if(!present())return;
    const art=makeSeacowExterior(seat.floor),view=authenticatedOwnerVariant(owner,art.group,owner.userData.beaconTriangles,SEACOW.proof);
-   if(!view){art.dispose();return;}
+   const alternate=view?.alternateForProof(),index=alternate?.getIndex();
+   if(!view||!alternate||!index){view?.dispose();art.dispose();return;}
+   const indexVersion=index.version,indexArray=index.array;
    // Removing a child, or replacing its draw or local transform, must never leave a
    // partial lighthouse beside a missing original. Capture once; polling has no allocations.
    const group=art.group,base=group.position.clone(),rot=group.quaternion.clone(),scale=group.scale.clone();
@@ -530,7 +560,9 @@ export class Buildings {
     return {m,geo:m.geometry,mat:m.material,attrib:m.geometry.getAttribute('position'),layers:m.layers.mask,position:m.position.clone(),rotation:m.quaternion.clone(),scale:m.scale.clone()};
    });
    const intact=()=>{
-    if(parts.length!==4||group.children.length!==4||!group.matrixAutoUpdate||!group.position.equals(base)||!group.quaternion.equals(rot)||!group.scale.equals(scale))return false;
+    if(!baseOwner()||(owner.geometry!==stock&&owner.geometry!==alternate)||!whole(alternate)||
+      alternate.getIndex()!==index||index.version!==indexVersion||index.array!==indexArray||
+      parts.length!==4||group.children.length!==4||!group.matrixAutoUpdate||!group.position.equals(base)||!group.quaternion.equals(rot)||!group.scale.equals(scale))return false;
     for(let i=0;i<parts.length;i++){const p=parts[i],m=p.m;
      if(group.children[i]!==m||m.parent!==group||!m.visible||m.geometry!==p.geo||m.material!==p.mat||!m.material.visible||m.layers.mask!==p.layers||!m.matrixAutoUpdate||
        m.geometry.index!==null||m.geometry.drawRange.start!==0||m.geometry.drawRange.count!==Infinity||m.geometry.getAttribute('position')!==p.attrib||
@@ -631,6 +663,7 @@ export class Buildings {
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
+    if(m===this.queuedSeacow?.owner)this.queuedSeacow=undefined;
     if(m===this.knight?.owner){this.knight.retire();this.knight=undefined;}
     if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
     if(m===this.sourisEast?.owner){
@@ -914,7 +947,11 @@ export class Buildings {
      async signal=>(await import('./dalvay-art-packet.ts')).loadDalvay((import.meta.env?.BASE_URL??'/')+'art/',signal,fetch,glazing):undefined);
     this.dalvay.sync();
    }
-   if(seacow&&seacowBytes)void this.promoteSeacow(mesh,seacowBytes,features.length,features[SEACOW.ordinal],seacow);
+   if(seacow&&seacowBytes){
+    const pin=this.pinSeacowOwner(mesh),row=features[SEACOW.ordinal];
+    if(seacow.prepare)this.queuedSeacow={owner:mesh,bytes:seacowBytes,rows:features.length,row,running:false,pin};
+    else void this.promoteSeacow(mesh,seacowBytes,features.length,row,seacow,pin);
+   }
    if(knight&&knightBytes)void this.promoteKnight(mesh,knightBytes,features.length,features[KNIGHT_SEAT.ordinal],knight);
    if(primBytes&&features[POINT_PRIM.ordinal]){
     this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};

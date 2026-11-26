@@ -22,7 +22,7 @@ The [Panmure Head lighthouse study](qa/panmure-detached-exterior.md) is a standa
 
 **Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. The separate [manor exterior preview](qa/dalvay-exterior.md) adds its gables, covered veranda and rounded dining room.
 
-**Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Add `?departure=seacow-head-coast&seacowExteriorStudy` to see the [authored white octagonal tower, red gallery and glazed lantern](qa/seacow-exterior.md); the shore and nearby building are unchanged.
+**Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Standard now shows the [authored white octagonal tower, red gallery and glazed lantern](qa/seacow-standard/) on this route. Use `?stockSeacowExterior` to compare the old generic building. The shore and nearby building are unchanged.
 
 The [Cape Egmont lighthouse studio](qa/cape-egmont-detached.md) is a separate Prince County model with unverified placement; it does not alter the live island.
 

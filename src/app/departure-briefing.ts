@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -24,8 +24,8 @@ export function departureBriefing(site: Site, search: string): string {
       ' The lake reflection preview is enabled in these scenery settings.' :
       ' The lake reflection preview is off in these scenery settings.');
   }
-  if (site.id === 'seacow-head-coast') {
-    return site.note + (seacowExteriorRequested(options) ?
+  if (site.id === SEACOW_ROUTE) {
+    return site.note + (seacowExteriorRequested(options) || standardSeacowExteriorRequested(options) ?
       ' Look for the tapered white tower and red lantern as the exterior streams in.' :
       ' The authored exterior is off with these scenery settings.');
   }

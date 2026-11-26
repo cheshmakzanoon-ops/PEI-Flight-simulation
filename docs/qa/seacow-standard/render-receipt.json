@@ -1,0 +1,130 @@
+{
+  "viewport": [
+    900,
+    600
+  ],
+  "route": "seacow-head-coast",
+  "camera": "Chase",
+  "rows": [
+    {
+      "nominalSeconds": 25.0,
+      "poseXZAltitudeGroundHeading": [
+        -46687.49614905516,
+        20588.279545741876,
+        87.14548249559363,
+        -0.055,
+        5.585053606381855
+      ],
+      "cameraXYZ": [
+        -46673.578928284725,
+        91.30780995796577,
+        20605.054279767905
+      ],
+      "visualGroundAtTower": 8.423544219892845,
+      "roi": [
+        348,
+        411,
+        378,
+        477
+      ],
+      "changed": 1180,
+      "alpha": 0,
+      "outside": 0,
+      "exactRestore": true,
+      "drawsStockAndAuthored": [
+        212,
+        216
+      ],
+      "trianglesStockAndAuthored": [
+        230678,
+        233126
+      ],
+      "stockFullAndAlternateVerified": true,
+      "sha256": {
+        "live": "30a20162fd7d08d9ef22f18166799c3b237061f5acc41221e3e8e882e82a26fc",
+        "cold": "44c5e1bfbe6097e0bd157025c5a46c4cdcdd89e29f150d8e4898edd82177ca00",
+        "restored": "30a20162fd7d08d9ef22f18166799c3b237061f5acc41221e3e8e882e82a26fc"
+      }
+    },
+    {
+      "nominalSeconds": 26.0,
+      "poseXZAltitudeGroundHeading": [
+        -46719.109820837315,
+        20548.68950699447,
+        87.52758731089611,
+        5.431848450643217,
+        5.585053606381855
+      ],
+      "cameraXYZ": [
+        -46705.19246127433,
+        91.68988498199685,
+        20565.464406427014
+      ],
+      "visualGroundAtTower": 8.423544219892845,
+      "roi": [
+        313,
+        466,
+        352,
+        554
+      ],
+      "changed": 2220,
+      "alpha": 0,
+      "outside": 0,
+      "exactRestore": true,
+      "drawsStockAndAuthored": [
+        212,
+        216
+      ],
+      "trianglesStockAndAuthored": [
+        231962,
+        234410
+      ],
+      "stockFullAndAlternateVerified": true,
+      "sha256": {
+        "live": "773080b9cfc188d8907c08ff3548122860a139683f66c0561825f95bdeb2aa90",
+        "cold": "c76a4239a5f0b69c395d1cb6e810e93356b4e9dd5b8b49f53caac7b0588f58d0",
+        "restored": "773080b9cfc188d8907c08ff3548122860a139683f66c0561825f95bdeb2aa90"
+      }
+    },
+    {
+      "nominalSeconds": 28.0,
+      "poseXZAltitudeGroundHeading": [
+        -46782.34114746675,
+        20469.50468266743,
+        88.29261570205288,
+        9.709857013799198,
+        5.585053606381855
+      ],
+      "cameraXYZ": [
+        -46768.42353391685,
+        92.45486244400045,
+        20486.279884789805
+      ],
+      "visualGroundAtTower": 8.423544219892845,
+      "roi": [
+        73,
+        832,
+        175,
+        1091
+      ],
+      "changed": 0,
+      "alpha": 0,
+      "outside": 0,
+      "exactRestore": true,
+      "drawsStockAndAuthored": [
+        212,
+        212
+      ],
+      "trianglesStockAndAuthored": [
+        231962,
+        231940
+      ],
+      "stockFullAndAlternateVerified": true,
+      "sha256": {
+        "live": "4d34648e24f98d959f1103163c58cf5fa5ca42f089576ec1e8863e72c80768b8",
+        "cold": "4d34648e24f98d959f1103163c58cf5fa5ca42f089576ec1e8863e72c80768b8",
+        "restored": "4d34648e24f98d959f1103163c58cf5fa5ca42f089576ec1e8863e72c80768b8"
+      }
+    }
+  ]
+}

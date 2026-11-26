@@ -90,6 +90,7 @@ import { addBasilica } from './render/basilica.ts';
 import { basilicaSiteSupports, mountBasilicaStudy } from './render/basilica-study-seat.ts';
 import {DALVAY,dalvaySiteSupports} from './render/dalvay-exterior-seat.ts';
 import {SEACOW,seacowSiteSupports} from './render/seacow-exterior-seat.ts';
+import {seacowDefaultFlight,standardSeacowExteriorRequested} from './app/scenery-profile.ts';
 import {KNIGHT_SEAT,knightGroundSupports} from './render/souris-knight-seat.ts';
 import {olearyExteriorRequested,olearyIndustrialStudyRequested,olearyWarehouseRequested,terminalWallPreviewRequested,dalvayWaterRequested,dalvayExteriorRequested,dalvayGlazingRequested,sourisKnightRequested,seacowExteriorRequested,basilicaExteriorRequested,basilicaYardSunRequested} from './app/scenery-profile.ts';
 import {regularRoadGround as basilicaGround} from './render/road-contact.ts';
@@ -606,9 +607,12 @@ async function run(){
     dalvayGlazingRequested(options)&&daylight&&certifiedSky?.texture===sky?
      {verified:certifiedSky,panorama:sky,scene,viewer:camera,engine:renderer,report:active=>{dalvayGlazingActive=active;}}:undefined);
   }
-  if(seacowExteriorRequested(options)&&seacowSiteSupports(terrain,terrainSha,cover)){
+  const explicitSeacow=seacowExteriorRequested(options);
+  if((explicitSeacow||standardSeacowExteriorRequested(options))&&seacowSiteSupports(terrain,terrainSha,cover)){
    const [x,z]=SEACOW.xz;
    v.enableSeacowExterior({floor:basilicaGround(terrain),verifiedCover:async()=>await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded,
+    prepare:explicitSeacow?undefined:()=>seacowDefaultFlight(SITES[activeSite].id,ui.mode,ui.previous)&&
+     Math.hypot(f.x-x,f.z-z)<2700&&f.y<390,
     resident:()=>world.seacowGroundReady()&&Math.hypot(camera.position.x-x,camera.position.z-z)<2700&&camera.position.y<390});
   }
   if(sourisKnightRequested(options)&&knightGroundSupports(terrain,terrainSha,cover)){

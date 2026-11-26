@@ -1,8 +1,8 @@
 # Seacow Head Lighthouse · exterior study
 
-At the entrance to Bedeque Bay, Standard scenery shows a tall grey building with repeated office windows. Add `?seacowExteriorStudy` to the game URL to see an original model of the lighthouse at the same site instead. The white body has eight tapering faces; the red cornice carries an open gallery around a narrower glazed lantern. Flying around the point reveals the recessed sashes, triangular window heads and low entrance. Add `&stockSeacowExterior` to compare the old building. The terrain, red-clay shore and the separate building to the north are unchanged.
+At the entrance to Bedeque Bay, the **Seacow Head · coastal pass** now shows an original lighthouse model in Standard rather than a generic tower with repeated office windows. The white body has eight tapering faces; the red cornice carries an open gallery around a narrower glazed lantern. The terrain, red-clay shore and the separate building to the north are unchanged. Use `?stockSeacowExterior` to compare the old building; the previous explicit `?seacowExteriorStudy` is still available outside this route.
 
-**Finding it:** Choose **Seacow Head · coastal pass** in Dispatch. To see the authored tower, add `?departure=seacow-head-coast&seacowExteriorStudy` to the game URL, select Standard scenery and choose **Begin flight**. The virtual flight starts offshore, 1.45 km southeast of the lighthouse, facing the point. Follow the inlet toward the tower and press **V** to switch views. The start does not change aircraft physics or ground contact, and is not a real aviation route.
+**Finding it:** Choose **Seacow Head · coastal pass** in Dispatch, select Standard scenery and choose **Begin flight**. The virtual flight starts offshore, 1.45 km southeast of the lighthouse, facing the point. Follow the inlet toward the tower and press **V** to switch views. The start does not change aircraft physics or ground contact, and is not a real aviation route. See the [ordinary Chase comparison](seacow-standard/).
 
 **Stock exterior, viewed from the southeast:**
 

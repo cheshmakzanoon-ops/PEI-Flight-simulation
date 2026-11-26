@@ -1474,8 +1474,10 @@ export class World {
  /** The art's footing is seated only over its actual, original near terrain owner. */
  seacowGroundReady(){
   const p=this.byId.get('8-14'),g=p?.fine;
-  return !!p&&!!g&&p.lod===112&&g.visible&&!!g.parent&&!p.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
-   !this.grades?.has('8-14')&&g.geometry.index?.count===112*112*6;
+  return !!p&&!!g&&p.lod===112&&p.seams?.startsWith('112:')===true&&g.visible&&g.parent===this.scene&&
+   !p.coarse.visible&&g.material===p.local&&g.userData.subdiv===112&&!p.relief&&!g.userData.localGrade&&
+   !g.userData.coastalSurvey&&!this.grades?.has('8-14')&&g.geometry.index?.count===112*112*6&&
+   g.position.x===p.x0+p.w/2&&g.position.z===p.z0+p.d/2;
  }
  /** Visual treatment only; both actual original Dalvay near-ground owners must be present together. */
  dalvayWaterReceivers(){

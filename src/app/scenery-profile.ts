@@ -400,7 +400,19 @@ export function dalvayGlazingRequested(q:URLSearchParams){
  return q.has('dalvayGlazingStudy')&&!q.has('stockDalvayGlazing')&&dalvayExteriorRequested(q);
 }
 
-/** Prince County documentary exterior; an ordinary comparison never enables it. */
+export const SEACOW_ROUTE='seacow-head-coast';
+/** Only the actual selected pass may show this by default. Keep the old explicit study. */
+export function standardSeacowExteriorRequested(q:URLSearchParams){
+ const modes=q.getAll('scenery');
+ return !q.has('stockSeacowExterior')&&!q.has('qa')&&modes.length<=1&&
+  modes.every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
+}
+export function seacowDefaultFlight(route:string,mode:string,previous:string){
+ if(route!==SEACOW_ROUTE)return false;
+ if(mode==='flight'||mode==='paused')return true;
+ return (mode==='map'||mode==='help'||mode==='credits')&&(previous==='flight'||previous==='paused');
+}
+/** The existing explicit study remains available outside the Standard route. */
 export function seacowExteriorRequested(q:URLSearchParams){
  return q.has('seacowExteriorStudy')&&!q.has('stockSeacowExterior')&&
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
