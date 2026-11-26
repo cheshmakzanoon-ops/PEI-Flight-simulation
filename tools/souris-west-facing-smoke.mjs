@@ -75,7 +75,7 @@ try{
    });
   },mode==='link-refusal');
   const url=new URL(base);
-  url.searchParams.set('diagnostics','');url.searchParams.set('departure',site);url.searchParams.set('sourisWestWallReview','');
+  url.searchParams.set('diagnostics','');url.searchParams.set('departure',site);
   if(mode==='veto')url.searchParams.set('stockSourisWestFacing','');
   assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
   await page.waitForFunction(site=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics?.site===site,site);

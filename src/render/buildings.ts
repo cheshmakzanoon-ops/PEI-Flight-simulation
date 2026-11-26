@@ -45,7 +45,7 @@ import {PRINCE_ROOF_TILE,princeRoofOwner,matchesPrinceSurveyRoof,emitPrinceSurve
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { fittedWallMaterial,townFaceRegion,townTileRegion,townWallVertex,TOWN_WALL_ATLAS,type TownWallOptics } from './town-wall-optics.ts';
 import {sourisFacingOwnerTile,sourisFacingAdmittedEdge,sourisFacingExactSurface} from './souris-waterfront-face-pin.ts';
-import {detachedSchoolWestMark,patchSourisSchoolWestFragment,SRS_WEST_WALL} from './souris-west-wall-material.ts';
+import {detachedSchoolWestMark,patchSourisSchoolWestFragment,SRS_FACE_MARKER,SRS_WEST_WALL} from './souris-west-wall-material.ts';
 import type {OlearyLink,OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
@@ -241,7 +241,7 @@ export class Buildings {
  private sourisWestMat?:THREE.ShaderMaterial;
  private readonly sourisWestPending=new WeakMap<THREE.Mesh,THREE.BufferAttribute>();
  private sourisWestLease?:{owner:THREE.Mesh;geometry:THREE.BufferGeometry;original:THREE.BufferAttribute|THREE.InterleavedBufferAttribute;
-   marked:THREE.BufferAttribute;controller:AbortController;proof?:OlearyProgramProof};
+   marked:THREE.BufferAttribute;mount:readonly number[];controller:AbortController;proof?:OlearyProgramProof};
  enableSourisWestFacing(link:OlearyLink){this.sourisWestLink=link;}
  /** Resident verified material, not a claim about optical visibility. */
  get sourisWestFacingActive(){
@@ -256,9 +256,15 @@ export class Buildings {
  }
  private validSourisWestFacing(a:NonNullable<Buildings['sourisWestLease']>){
   const {owner,geometry}=a;
-  return this.wanted.has(SRS_WEST_WALL.tile)&&this.meshes.get(SRS_WEST_WALL.tile)===owner&&owner.parent===this.scene&&
-    !this.scene.overrideMaterial&&owner.visible&&owner.geometry===geometry&&geometry.index===null&&!geometry.groups.length&&
-    geometry.drawRange.start===0&&geometry.drawRange.count===Infinity&&sourisFacingExactSurface(geometry);
+  if(!this.wanted.has(SRS_WEST_WALL.tile)||this.meshes.get(SRS_WEST_WALL.tile)!==owner||owner.parent!==this.scene||
+     this.scene.overrideMaterial||!owner.visible||owner.geometry!==geometry||geometry.index!==null||geometry.groups.length||
+     geometry.drawRange.start!==0||geometry.drawRange.count!==Infinity||!sourisFacingExactSurface(geometry))return false;
+  const {position:p,quaternion:q,scale:s}=owner,[x,y,z,layer]=a.mount;
+  if(p.x!==x||p.y!==y||p.z!==z||owner.layers.mask!==layer||owner.renderOrder!==0||
+     q.x||q.y||q.z||q.w!==1||s.x!==1||s.y!==1||s.z!==1||
+     !owner.matrixAutoUpdate||a.marked.version!==0)return false;
+  for(let i=SRS_WEST_WALL.first;i<SRS_WEST_WALL.last;i++)if(a.marked.getX(i)!==SRS_FACE_MARKER)return false;
+  return true;
  }
  private syncSourisWestFacing(){
   const a=this.sourisWestLease;
@@ -271,7 +277,7 @@ export class Buildings {
   if(!marked||!link||!material)return;
   this.releaseSourisWestFacing();
   const geometry=owner.geometry,original=geometry.getAttribute('facadeStyle');
-  const controller=new AbortController(),a:NonNullable<Buildings['sourisWestLease']>={owner,geometry,original,marked,controller};
+  const controller=new AbortController(),a:NonNullable<Buildings['sourisWestLease']>={owner,geometry,original,marked,mount:[owner.position.x,owner.position.y,owner.position.z,owner.layers.mask],controller};
   if(!original||!this.validSourisWestFacing(a)||owner.material!==this.mat)return;
   this.sourisWestLease=a;
   // Compile the real material with the actual owner attribute schema. The

@@ -43,10 +43,9 @@ test('manifest, compressed tile, and entire ordered source row authorize only th
  assert.equal(sourisFacingAdmittedEdge(atlas.sha256,{...tile,count:269},sha(body),rows),undefined);
 });
 test('Standard selector and local veto do not change previous roof selection',()=>{
- assert(!sourisWestFacingRequested(sceneryOptions('departure=souris-waterfront-pass')));
- const site='departure=souris-waterfront-pass&sourisWestWallReview';
+ const site='departure=souris-waterfront-pass';
  assert(sourisWestFacingRequested(sceneryOptions(site)));
- for(const s of ['&scenery=detail','&unknown','&scenery=standard&scenery=detail','&stockSourisWestFacing'])
+ for(const s of ['&scenery=detail','&unknown','&qa=%7B%7D','&scenery=standard&scenery=detail','&stockSourisWestFacing'])
   assert(!sourisWestFacingRequested(sceneryOptions(site+s)));
  assert(rusticoHarbourRoofRequested(sceneryOptions(site+'&stockSourisWestFacing')));
 });
@@ -117,4 +116,13 @@ test('a valid gzip with different signed bytes still draws the original tile',as
  assert(m);assert.equal(a.headers.length,1);
  assert.equal(a.b.sourisWestFacingActive,false);
  assert(!called);assert(!m.geometry.getAttribute('facadeStyle').array.includes(87));
+});
+
+test('changed upload generation or owner transform retires the exact appearance independently',async()=>{
+ for(const change of [(q:any)=>q.position.y=.01,(q:any)=>q.geometry.getAttribute('facadeStyle').needsUpdate=true]){
+  const a=state();a.b.enableSourisWestFacing(async()=>()=>true);
+  const m=await a.fetchTile();await Promise.resolve();assert.equal(a.b.sourisWestFacingActive,true);
+  change(m);a.b.syncSourisWestFacing();
+  assert.equal(a.b.sourisWestFacingActive,false);assert(!m.geometry.getAttribute('facadeStyle').array.includes(87));
+ }
 });

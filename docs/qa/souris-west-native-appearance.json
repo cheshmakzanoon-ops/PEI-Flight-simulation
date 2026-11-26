@@ -1,0 +1,136 @@
+{
+  "scope": "Actual expanded Three r187 stock and authored shader in Mesa. Exact native q130333 emitted vertices and locked ordinary camera. Other buildings drawn only for occlusion. Not the full Chromium player or performance.",
+  "programs": {
+    "limit": "Actual Three r187 prefixed GLSL linked on Mesa GLES3.2, not Chromium/WebGL full renderer or performance.",
+    "engine": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "depthBits": 24,
+    "programs": {
+      "terrain": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "f0b98ae4a7424e70e9cdfbb55cbc06f0cb3a10e2c217b97820a86f9b7152ed8a"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "e0c6431136ce483542bfc6b8a9b555235107098d204299a9ee837cade2cd28d6"
+          }
+        }
+      },
+      "tag": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "ce3d96496c5fdaeed84049f143ff97ead0f67e156ae485c547fbd53c97c441e9"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "cea3e42c025f3139347e0956963417ae61f7f664305606e81775ec056bf0c60a"
+          }
+        }
+      },
+      "stock": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "39c237b814e6f273fc12b333285c6b34dc8929edc848303326caf0cdc56c9377"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "45644069519c0ec4130f889cc262a0b811a2015645c5427b8f2b635ccf47a9d9"
+          }
+        }
+      },
+      "authored": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "39c237b814e6f273fc12b333285c6b34dc8929edc848303326caf0cdc56c9377"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "718d397d6f1032863c478ae40509d20e80df424353a65b1efeb50cd4faad13ad"
+          }
+        }
+      },
+      "witness": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "39c237b814e6f273fc12b333285c6b34dc8929edc848303326caf0cdc56c9377"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "1cd5a97a2f3ea37d06acaa79f9b467d0530eba8b2f616f3706b9c9cefc4dfc26"
+          }
+        }
+      }
+    }
+  },
+  "comparison": [
+    {
+      "t": 4,
+      "nativeEligible": 319,
+      "any": 316,
+      "strong": 310,
+      "offScope": 0,
+      "alpha": 0,
+      "restored": true,
+      "baselineRawRGBA8Sha256": "63635c9b737be14aeb66d4a7dc0631cb7a42e27a864bd754a1ec4cdc92588129",
+      "authoredRawRGBA8Sha256": "74fc49b31df09ecb9258810195d22ae693a302289f0b12ef5453b1eb26437941"
+    },
+    {
+      "t": 6,
+      "nativeEligible": 464,
+      "any": 458,
+      "strong": 449,
+      "offScope": 0,
+      "alpha": 0,
+      "restored": true,
+      "baselineRawRGBA8Sha256": "9688cd45c4880324a4c997e4c9d62084202ae1e706eb7e82fdd0f65cf0216611",
+      "authoredRawRGBA8Sha256": "778e01b177a34f550e9c166228ba8814f50ca2e1ccaeb49b0dfd176ad135dc24"
+    },
+    {
+      "t": 8,
+      "nativeEligible": 722,
+      "any": 716,
+      "strong": 703,
+      "offScope": 0,
+      "alpha": 0,
+      "restored": true,
+      "baselineRawRGBA8Sha256": "454cd91980e067009804cff0c14e25bbd53d2416255bfdc9c9f49a3e320b88b2",
+      "authoredRawRGBA8Sha256": "a42dd7d431c96f812b2605c40c3130e6d0ba5bbd81a25794842f95c7318a51d0"
+    },
+    {
+      "t": 10,
+      "nativeEligible": 0,
+      "any": 0,
+      "strong": 0,
+      "offScope": 0,
+      "alpha": 0,
+      "restored": true,
+      "baselineRawRGBA8Sha256": "8efcedd74577ee4c56204e4ac1cb7ab91a1e090d3bca4a9990b6671b94a51ec9",
+      "authoredRawRGBA8Sha256": "8efcedd74577ee4c56204e4ac1cb7ab91a1e090d3bca4a9990b6671b94a51ec9"
+    }
+  ]
+}

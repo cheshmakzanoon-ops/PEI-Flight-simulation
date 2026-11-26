@@ -278,7 +278,7 @@ export function rusticoHarbourRoofRequested(q:URLSearchParams){
 
 /** Use the matched facing only on the validated Standard compatible graph. */
 export function sourisWestFacingRequested(q:URLSearchParams){
- return q.has('sourisWestWallReview')&&!q.has('stockSourisWestFacing')&&q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
+ return !q.has('stockSourisWestFacing')&&!q.has('qa')&&q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 
 /** Flat membrane tone is an isolated review, not a new O’Leary building overlay. */
