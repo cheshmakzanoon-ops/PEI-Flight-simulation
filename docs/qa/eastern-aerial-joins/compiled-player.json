@@ -1,0 +1,143 @@
+{
+  "scope": "Directional private QA departures at normal speed, actual player controls; not available in the public atlas.",
+  "scenarios": [
+    {
+      "name": "kings-central-cropland",
+      "mode": "normal",
+      "flightMeters": 150.983,
+      "alongMeters": 150.98,
+      "crossMeters": 0.98,
+      "groundClearance": 66.054,
+      "edge": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "queens-south-grassland",
+      "mode": "normal",
+      "flightMeters": 151.39,
+      "alongMeters": 151.291,
+      "crossMeters": 5.489,
+      "groundClearance": 66.822,
+      "edge": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-03.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "kings-shared-fields",
+      "mode": "normal",
+      "flightMeters": 152.784,
+      "alongMeters": 152.781,
+      "crossMeters": 0.992,
+      "groundClearance": 66.101,
+      "edge": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-02.pack",
+        "sentinel-03.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "queens-eastern-grassland",
+      "mode": "normal",
+      "flightMeters": 155.176,
+      "alongMeters": 155.172,
+      "crossMeters": 1.007,
+      "groundClearance": 64.571,
+      "edge": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "kings-central-cropland",
+      "mode": "stock",
+      "flightMeters": 150.384,
+      "alongMeters": 150.381,
+      "crossMeters": 0.976,
+      "groundClearance": 66.045,
+      "edge": null,
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack"
+      ],
+      "corrupted": [],
+      "errors": []
+    },
+    {
+      "name": "kings-central-cropland",
+      "mode": "corrupt",
+      "flightMeters": 150.984,
+      "alongMeters": 150.981,
+      "crossMeters": 0.98,
+      "groundClearance": 66.078,
+      "edge": {
+        "edge": "21-13 / 22-13",
+        "resident": false,
+        "gain": 0,
+        "bytes": 0,
+        "uploads": 0,
+        "errors": 0
+      },
+      "cockpitAndPause": true,
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack"
+      ],
+      "corrupted": [
+        1491896
+      ],
+      "errors": []
+    }
+  ]
+}

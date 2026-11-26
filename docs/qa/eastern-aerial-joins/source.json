@@ -1,0 +1,132 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "kings-central-cropland",
+      "axis": "x",
+      "owners": [
+        "21-13",
+        "22-13"
+      ],
+      "window": [
+        450,
+        452,
+        468,
+        470
+      ],
+      "donorWireSHA256": [
+        "468934842482d9c6a5cc75834d8f3d5819bd63884bb19632c89ea5e269c36fad",
+        "06da572b3f3898f8b5543cef0bc9e90ba0ee1fda260837b93eed634062163bbb"
+      ],
+      "exactSourceRGBSHA256": "a39658407062de8ff7846457e4a8ae143c9d5991f374f1e6d906db6949983c83",
+      "coverBox": [
+        2815,
+        1693,
+        2,
+        6
+      ],
+      "classes": [
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 42.915,
+      "medianInnerNeighbourStep": 12.525
+    },
+    {
+      "name": "queens-south-grassland",
+      "axis": "z",
+      "owners": [
+        "20-20",
+        "20-21"
+      ],
+      "window": [
+        372,
+        374,
+        390,
+        392
+      ],
+      "donorWireSHA256": [
+        "0ddabd040f5d614d63475dd10fa71a9222822975559c44710362e6064de28a9a",
+        "b79457fb5262b7064904f5c051cf781733152e94e6810d11694681140dbcfc96"
+      ],
+      "exactSourceRGBSHA256": "7c9173a6bff8e6f5091c042eac0a5207ebca71e882a96e8b1e8ee8eb48ec2da6",
+      "coverBox": [
+        2633,
+        2595,
+        6,
+        3
+      ],
+      "classes": [
+        30
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 51.269,
+      "medianInnerNeighbourStep": 15.885
+    },
+    {
+      "name": "kings-shared-fields",
+      "axis": "x",
+      "owners": [
+        "21-17",
+        "22-17"
+      ],
+      "window": [
+        393,
+        395,
+        411,
+        413
+      ],
+      "donorWireSHA256": [
+        "ff339559c0744e4c245cc3ff137b1c6b48b6b0709bd36e38143b427b489bb0ea",
+        "ef723a9b334529223d52f6c57604f72234499faba39f55d2245e7a0711cf3fbf"
+      ],
+      "exactSourceRGBSHA256": "2c606e7caebdb6190de5a9b5163171f87c9ab45094b92442234d9167a6741844",
+      "coverBox": [
+        2815,
+        2177,
+        2,
+        6
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 73.086,
+      "medianInnerNeighbourStep": 35.829
+    },
+    {
+      "name": "queens-eastern-grassland",
+      "axis": "x",
+      "owners": [
+        "19-13",
+        "20-13"
+      ],
+      "window": [
+        160,
+        162,
+        178,
+        180
+      ],
+      "donorWireSHA256": [
+        "f526538a30cf1e31e7ac95427f6a0c456ca0cfecb5e71aae7ab697d4d4ac6d68",
+        "459df70f1884a4a41391d8d38d820fd1bff0bd591bd7204bceafd829361579d1"
+      ],
+      "exactSourceRGBSHA256": "2d2a64d05073aea8e9394cd5a1ecc03aedf0e40ee28039a9263ba450a5af296b",
+      "coverBox": [
+        2559,
+        1637,
+        2,
+        6
+      ],
+      "classes": [
+        30
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 48.736,
+      "medianInnerNeighbourStep": 16.49
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "name": "kings-central-cropland",
+    "owners": [
+      "21-13",
+      "22-13"
+    ],
+    "axis": "x",
+    "lon": -62.72505271784552,
+    "lat": 46.37664773,
+    "agl": 63,
+    "heading": 90,
+    "targetLL": [
+      -62.72375,
+      46.37664773
+    ],
+    "baseDatumStockMetres": [
+      28,
+      31
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "queens-south-grassland",
+    "owners": [
+      "20-20",
+      "20-21"
+    ],
+    "axis": "z",
+    "lon": -62.83512305,
+    "lat": 45.99362686540356,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -62.83512305,
+      45.99272727
+    ],
+    "baseDatumStockMetres": [
+      5,
+      8
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "kings-shared-fields",
+    "owners": [
+      "21-17",
+      "22-17"
+    ],
+    "axis": "x",
+    "lon": -62.72505271784552,
+    "lat": 46.17043466,
+    "agl": 63,
+    "heading": 90,
+    "targetLL": [
+      -62.72375,
+      46.17043466
+    ],
+    "baseDatumStockMetres": [
+      56,
+      59
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "queens-eastern-grassland",
+    "owners": [
+      "19-13",
+      "20-13"
+    ],
+    "axis": "x",
+    "lon": -62.88380271784552,
+    "lat": 46.40053977,
+    "agl": 63,
+    "heading": 90,
+    "targetLL": [
+      -62.8825,
+      46.40053977
+    ],
+    "baseDatumStockMetres": [
+      18,
+      20
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  }
+]

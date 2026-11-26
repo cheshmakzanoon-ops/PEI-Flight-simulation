@@ -8,11 +8,14 @@ parser.add_argument('--corridors',type=Path,required=True)
 parser.add_argument('--dist',type=Path,required=True)
 parser.add_argument('--chromium',required=True)
 parser.add_argument('--out',type=Path,required=True)
-parser.add_argument('--normal-only',action='store_true',help='Replay each signed corridor without the south-shore fallback fixtures')
+modes=parser.add_mutually_exclusive_group()
+modes.add_argument('--normal-only',action='store_true',help='Replay each signed corridor without fallback fixtures')
+modes.add_argument('--fallback-only',action='store_true',help='Replay the named corridor with stock and corrupt-donor controls only')
+parser.add_argument('--fallback-target',default='south-central-fields',help='Which input corridor exercises both fallback paths')
 args=parser.parse_args()
 cfgs={v['name']:v for v in json.loads(args.corridors.read_text())}
-if not args.normal_only and 'south-central-fields' not in cfgs:
- parser.error('The signed corridor list must include the south-central fallback fixture')
+if not args.normal_only and args.fallback_target not in cfgs:
+ parser.error('The signed corridor list must include the named fallback fixture')
 args.out.parent.mkdir(parents=True,exist_ok=True)
 dist=args.dist
 atlas=json.loads((dist/'world/detail/index.json').read_text())
@@ -24,8 +27,9 @@ result=[]
 try:
  with sync_playwright() as w:
   browser=w.chromium.launch(executable_path=args.chromium,args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage'])
-  fallback=[] if args.normal_only else [('stock','south-central-fields'),('corrupt','south-central-fields')]
-  for mode,name in [('normal',n) for n in cfgs]+fallback:
+  fallback=[] if args.normal_only else [('stock',args.fallback_target),('corrupt',args.fallback_target)]
+  normal=[] if args.fallback_only else [('normal',n) for n in cfgs]
+  for mode,name in normal+fallback:
    q=cfgs[name];a=math.radians(q['heading']);d=[math.sin(a),-math.cos(a)];pair=' / '.join(q['owners'])
    ctx=browser.new_context(viewport={'width':620,'height':400});p=ctx.new_page();p.set_default_timeout(120_000)
    errs=[];imagery=set();corrupted=[]

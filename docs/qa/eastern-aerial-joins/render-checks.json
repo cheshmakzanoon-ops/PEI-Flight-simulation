@@ -1,0 +1,662 @@
+{
+  "comparedTo": "8a89d95f2841e923967ae3423ae8dc21af6af90a",
+  "scope": "Fixed native QA camera; scope witnessed by two synthetic colours, no copied image or performance claim.",
+  "positiveHeadingViews": 8,
+  "unchangedControls": 12,
+  "oldIndependentJoinAllFourFramesExact": {
+    "old": "b9b4e2943abc45ce82279d87218e0f1feb1faf0588ebd1cad739b7f733da98c0",
+    "art": "956d86e1d515696b4994285bff8cf871566c17ce53cbd17d8159c224fc653411",
+    "idA": "3683ba425bb48a7922dd149cb9312cc5dc448e9e2fe5ba7c730605c2346b22da",
+    "idB": "be1b6f10da405635880d830f260f2d1ca00fe9c90fa6e2df56ae964a56b0d829"
+  },
+  "views": {
+    "kings-central-cropland": {
+      "edge": "21-13 / 22-13",
+      "AGL": 44,
+      "measure": {
+        "changed": 24804,
+        "over2": 18503,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 67103
+      },
+      "edgeContrast": {
+        "samples": 73,
+        "medianOld": 23.407886505126953,
+        "medianArt": 1.9013091325759888,
+        "oldP90": 32.90488510131836,
+        "artP90": 4.321324348449706
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 55,
+        "tris": 299068
+      },
+      "lane": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-central-cropland-flipped": {
+      "edge": "21-13 / 22-13",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 16,
+        "tris": 283856
+      },
+      "lane": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-central-cropland-high": {
+      "edge": "21-13 / 22-13",
+      "AGL": 550,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 22,
+        "tris": 277851
+      },
+      "lane": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-central-cropland-outside": {
+      "edge": "21-13 / 22-13",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 17,
+        "tris": 299477
+      },
+      "lane": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-central-cropland-reciprocal": {
+      "edge": "21-13 / 22-13",
+      "AGL": 38,
+      "measure": {
+        "changed": 30771,
+        "over2": 23127,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 82227
+      },
+      "edgeContrast": {
+        "samples": 69,
+        "medianOld": 24.10393714904785,
+        "medianArt": 2.122912645339966,
+        "oldP90": 36.828809356689455,
+        "artP90": 4.498268508911133
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 119,
+        "tris": 324227
+      },
+      "lane": {
+        "edge": "21-13 / 22-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-shared-fields": {
+      "edge": "21-17 / 22-17",
+      "AGL": 44,
+      "measure": {
+        "changed": 23349,
+        "over2": 18583,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 61789
+      },
+      "edgeContrast": {
+        "samples": 64,
+        "medianOld": 41.778066635131836,
+        "medianArt": 4.222297430038452,
+        "oldP90": 60.217218780517584,
+        "artP90": 12.583730125427246
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 66,
+        "tris": 300027
+      },
+      "lane": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-shared-fields-flipped": {
+      "edge": "21-17 / 22-17",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 11,
+        "tris": 223953
+      },
+      "lane": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-shared-fields-high": {
+      "edge": "21-17 / 22-17",
+      "AGL": 550,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 16,
+        "tris": 246160
+      },
+      "lane": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-shared-fields-outside": {
+      "edge": "21-17 / 22-17",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 13,
+        "tris": 240704
+      },
+      "lane": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "kings-shared-fields-reciprocal": {
+      "edge": "21-17 / 22-17",
+      "AGL": 38,
+      "measure": {
+        "changed": 27401,
+        "over2": 21970,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 69535
+      },
+      "edgeContrast": {
+        "samples": 55,
+        "medianOld": 43.92830276489258,
+        "medianArt": 3.830296039581299,
+        "oldP90": 62.62040634155274,
+        "artP90": 27.010895538330086
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 74,
+        "tris": 277021
+      },
+      "lane": {
+        "edge": "21-17 / 22-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-south-grassland": {
+      "edge": "20-20 / 20-21",
+      "AGL": 44,
+      "measure": {
+        "changed": 25339,
+        "over2": 19644,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 67386
+      },
+      "edgeContrast": {
+        "samples": 76,
+        "medianOld": 28.27546787261963,
+        "medianArt": 2.1985028982162476,
+        "oldP90": 34.0705509185791,
+        "artP90": 4.75850510597229
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 11,
+        "tris": 241977
+      },
+      "lane": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-south-grassland-flipped": {
+      "edge": "20-20 / 20-21",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 11,
+        "tris": 232161
+      },
+      "lane": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-south-grassland-high": {
+      "edge": "20-20 / 20-21",
+      "AGL": 550,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 13,
+        "tris": 250529
+      },
+      "lane": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-south-grassland-outside": {
+      "edge": "20-20 / 20-21",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 13,
+        "tris": 249877
+      },
+      "lane": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-south-grassland-reciprocal": {
+      "edge": "20-20 / 20-21",
+      "AGL": 38,
+      "measure": {
+        "changed": 29886,
+        "over2": 22847,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 78736
+      },
+      "edgeContrast": {
+        "samples": 70,
+        "medianOld": 27.77460289001465,
+        "medianArt": 2.167974352836609,
+        "oldP90": 32.339406967163086,
+        "artP90": 3.4521691560745245
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 79,
+        "tris": 279493
+      },
+      "lane": {
+        "edge": "20-20 / 20-21",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-eastern-grassland": {
+      "edge": "19-13 / 20-13",
+      "AGL": 44,
+      "measure": {
+        "changed": 25774,
+        "over2": 20298,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 68232
+      },
+      "edgeContrast": {
+        "samples": 74,
+        "medianOld": 31.195188522338867,
+        "medianArt": 2.394545793533325,
+        "oldP90": 54.35971145629883,
+        "artP90": 5.5938770294189455
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 52,
+        "tris": 276117
+      },
+      "lane": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-eastern-grassland-flipped": {
+      "edge": "19-13 / 20-13",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 19,
+        "tris": 260753
+      },
+      "lane": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-eastern-grassland-high": {
+      "edge": "19-13 / 20-13",
+      "AGL": 550,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 19,
+        "tris": 251971
+      },
+      "lane": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-eastern-grassland-outside": {
+      "edge": "19-13 / 20-13",
+      "AGL": 17,
+      "measure": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 16,
+        "tris": 236013
+      },
+      "lane": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    },
+    "queens-eastern-grassland-reciprocal": {
+      "edge": "19-13 / 20-13",
+      "AGL": 38,
+      "measure": {
+        "changed": 31344,
+        "over2": 25312,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 81781
+      },
+      "edgeContrast": {
+        "samples": 69,
+        "medianOld": 33.92448806762695,
+        "medianArt": 2.2524290084838867,
+        "oldP90": 49.498118591308604,
+        "artP90": 5.456338405609131
+      },
+      "stockRestoreExact": true,
+      "viewport": [
+        840,
+        540
+      ],
+      "alphaChanged": 0,
+      "identicalDrawAndTriCounts": {
+        "draws": 106,
+        "tris": 315361
+      },
+      "lane": {
+        "edge": "19-13 / 20-13",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    }
+  }
+}

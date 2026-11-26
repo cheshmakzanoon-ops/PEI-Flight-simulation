@@ -1,0 +1,12 @@
+{
+  "aliases": {
+    "kings-south-cropland": "queens-south-grassland",
+    "kings-shared-cropland": "kings-shared-fields",
+    "kings-west-cropland": "queens-eastern-grassland"
+  },
+  "materialProbesExact": 93,
+  "shaderProbeSetSHA256": "4516801ff544e41c4309826f9a1f07698022d74dee0e1853b48ec6257d97b43c",
+  "baseRendererExact": true,
+  "productionSamplerExact": true,
+  "sourcePlansIdenticalExceptNames": true
+}

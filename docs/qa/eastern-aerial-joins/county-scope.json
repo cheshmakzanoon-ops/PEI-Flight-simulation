@@ -1,0 +1,19 @@
+{
+  "source": "https://gis.princeedwardisland.ca/server/rest/services/county_zones/FeatureServer/0/query",
+  "checkedUtcDate": "2026-11-26",
+  "operation": {
+    "geometryType": "esriGeometryEnvelope",
+    "inSR": 4326,
+    "spatialRel": "esriSpatialRelIntersects",
+    "outFields": "KEYWORD,OBJECTID,USERNUM",
+    "returnGeometry": false
+  },
+  "extentFormat": "EPSG:4326 west, south, east, north; rounded display here, full precision in existing-geometry-context.json",
+  "results": [
+    {"name":"kings-central-cropland","county":"KINGS","objectID":1,"extent":[-62.72390503,46.37582386,-62.72359497,46.37747159],"coverClasses":[40]},
+    {"name":"queens-south-grassland","county":"QUEENS","objectID":66,"extent":[-62.83636328,45.99262429,-62.83388281,45.99283026],"coverClasses":[30]},
+    {"name":"kings-shared-fields","county":"KINGS","objectID":1,"extent":[-62.72390503,46.16961080,-62.72359497,46.17125852],"coverClasses":[30,40]},
+    {"name":"queens-eastern-grassland","county":"QUEENS","objectID":66,"extent":[-62.88265503,46.39971591,-62.88234497,46.40136364],"coverClasses":[30]}
+  ],
+  "scope": "County attribution applies to each entire shader-support envelope. Land classes describe the signed simulator data, not a present-day crop survey."
+}

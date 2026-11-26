@@ -59,7 +59,9 @@ EXPANDED=[
  ('queens-inland-fields',14,16,'x',104,138,None),
  ('queens-shared-west',11,11,'x',124,159,None),
 ]
-for name,x,z,axis,center,outside,north_control in EXPANDED:
+EASTERN=[('kings-central-cropland', 21, 13, 'x', 460, 494, None), ('queens-south-grassland', 20, 20, 'z', 382, 416, None), ('kings-shared-fields', 21, 17, 'x', 403, 437, None), ('queens-eastern-grassland', 19, 13, 'x', 170, 204, None)]
+EASTERN_VIEWS=set()
+for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
  for suffix,reverse,high,held in [
    ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
@@ -79,6 +81,8 @@ for name,x,z,axis,center,outside,north_control in EXPANDED:
    dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
    agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
   INLAND.append(name+suffix)
+  if (name,x,z,axis,center,outside,north_control) in EASTERN:
+   EASTERN_VIEWS.add(name+suffix)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 
 def stage(repo,root,deps,void):
@@ -161,6 +165,7 @@ def capture(a,browser,url):
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
             '13-16 / 13-17','14-16 / 15-16','11-11 / 12-11'}
+   inlands|={p['first']+' / '+p['second'] for label,p in P.items() if label in EASTERN_VIEWS}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')
@@ -180,7 +185,8 @@ def capture(a,browser,url):
    diff=np.max(abs(old-art),axis=2)
    r['pixelGate']=dict(changed=int((diff>0).sum()),over2=int((diff>2).sum()),outside=int((diff[~bound]>0).sum()),
     outsideExact=int((diff[~marker]>0).sum()),mask=int(marker.sum()))
-   assert not r['pixelGate']['outside'],r['pixelGate']
+   scope_key='outsideExact' if site in EASTERN_VIEWS else 'outside'
+   assert not r['pixelGate'][scope_key],r['pixelGate']
    def tap(im,xy):
     x,y=xy;x-=.5;y-=.5
     j,i=int(x),int(y);u,v=x-j,y-i

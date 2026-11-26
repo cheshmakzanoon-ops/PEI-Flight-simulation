@@ -121,7 +121,11 @@ export const INLAND_ORTHO_WINDOWS=[
   "nsha":"f962988f7aa5ed4f9679803ef0e1e9e1f69c54dd70c3748769a323bb8ce653f7",
   "ssha":"6a92452a79d721e01d4c07585b9f8074f4a9b6343992471c6f512fa412b87c9b",
   "alongSourceTexels":[114,116,132,134],"coverBox":[1535,1381,2,6],
-  "coverRG":[30,255,30,255,30,255,30,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]}
+  "coverRG":[30,255,30,255,30,255,30,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]},
+ {"name":"kings-central-cropland","first":"21-13","second":"22-13","axis":"x","edge":22,"nsha":"468934842482d9c6a5cc75834d8f3d5819bd63884bb19632c89ea5e269c36fad","ssha":"06da572b3f3898f8b5543cef0bc9e90ba0ee1fda260837b93eed634062163bbb","alongSourceTexels":[450,452,468,470],"coverBox":[2815,1693,2,6],"coverRG":[40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]},
+ {"name":"queens-south-grassland","first":"20-20","second":"20-21","axis":"z","edge":21,"nsha":"0ddabd040f5d614d63475dd10fa71a9222822975559c44710362e6064de28a9a","ssha":"b79457fb5262b7064904f5c051cf781733152e94e6810d11694681140dbcfc96","alongSourceTexels":[372,374,390,392],"coverBox":[2633,2595,6,3],"coverRG":[30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255]},
+ {"name":"kings-shared-fields","first":"21-17","second":"22-17","axis":"x","edge":22,"nsha":"ff339559c0744e4c245cc3ff137b1c6b48b6b0709bd36e38143b427b489bb0ea","ssha":"ef723a9b334529223d52f6c57604f72234499faba39f55d2245e7a0711cf3fbf","alongSourceTexels":[393,395,411,413],"coverBox":[2815,2177,2,6],"coverRG":[30,255,40,255,30,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]},
+ {"name":"queens-eastern-grassland","first":"19-13","second":"20-13","axis":"x","edge":20,"nsha":"f526538a30cf1e31e7ac95427f6a0c456ca0cfecb5e71aae7ab697d4d4ac6d68","ssha":"459df70f1884a4a41391d8d38d820fd1bff0bd591bd7204bceafd829361579d1","alongSourceTexels":[160,162,178,180],"coverBox":[2559,1637,2,6],"coverRG":[30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255,30,255]}
 ] as const;
 export type InlandWindowId=typeof INLAND_ORTHO_WINDOWS[number]['name'];
 type CurrentCover={width:number;height:number;bytes:Uint8Array};

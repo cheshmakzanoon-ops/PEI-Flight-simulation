@@ -136,9 +136,9 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const base=new T.Texture(),gpu={} as T.WebGLRenderer;
  const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:ids});
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
- assert.equal(standard.diagnostics().length,12);
+ assert.equal(standard.diagnostics().length,16);
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
- assert.equal(all.size,standard.diagnostics().length*2-1);
+ assert.equal(all.size,standard.diagnostics().length*2-2);
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
  for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
   assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);
@@ -240,4 +240,46 @@ test('a stock tile can witness two independent close lanes and retire each witho
  make().bind(west.second,atCapacity);
  assert('orthoSharedRows' in atCapacity.uniforms);
  assert.equal('orthoSharedRowsLane2' in atCapacity.uniforms,false);
+});
+
+test('one eastern terrain owner keeps independent row and column strips, with exact old-lane fallback',async()=>{
+ const {INLAND_ORTHO_WINDOWS}=await import('../src/render/inland-ortho-windows.ts');
+ const north=INLAND_ORTHO_WINDOWS.find(p=>p.name==='east-fields')!;
+ const east=INLAND_ORTHO_WINDOWS.find(p=>p.name==='kings-shared-fields')!;
+ assert.equal(north.axis,'z');assert.equal(east.axis,'x');
+ assert.equal(north.second,east.first);assert.equal(north.ssha,east.nsha);
+ const base=new T.Texture(),copied:Array<[number,number]>=[];
+ const caps={maxTextures:16,isWebGL2:true};
+ const renderer={capabilities:caps,getContext:()=>({NO_ERROR:0,getError:()=>0,isContextLost:()=>false}),
+  initTexture(){},copyTextureToTexture(_:T.Texture,dst:T.Texture){copied.push([dst.image.width,dst.image.height]);}} as unknown as T.WebGLRenderer;
+ const make=(newLane:boolean)=>new OrthophotoSeams(renderer,base,{tracadie:false,counties:false,inland:newLane?[north.name,east.name]:[north.name]});
+ const m=make(true),old=make(false),mixed=shader(),prior=shader(),a=shader(),b=shader();
+ m.bind(north.first,a);m.bind(east.first,mixed);m.bind(east.second,b);old.bind(north.second,prior);
+ assert.equal(mixed.uniforms.orthoRowsGain,a.uniforms.orthoRowsGain);
+ assert.equal(mixed.uniforms.orthoRowsGainLane2,b.uniforms.orthoRowsGain);
+ assert(mixed.fragmentShader.includes('vuv.y*22.')&&mixed.fragmentShader.includes('vuv.x*32.'));
+ const ready=new Map<string,Owner>();
+ const put=(id:string,sha:string)=>{
+  const t=source();ready.set(id,{detail:t,detailSince:1,lod:112,status:'ready'});
+  m.verifiedDetail(id,sha,t);
+  t.onUpdate?.(t);
+ };
+ const update=(t:number)=>m.update(t,id=>ready.get(id));
+ put(north.first,north.nsha);put(north.second,north.ssha);put(east.second,north.nsha);
+ update(2);update(2.2);m.advance(3);
+ assert.deepEqual(copied,[[640,4],[640,4]]);
+ assert.equal(mixed.uniforms.orthoRowsGain.value,1);
+ assert.equal(mixed.uniforms.orthoRowsGainLane2.value,0);
+ put(east.second,east.ssha);update(3.1);m.advance(4);
+ assert.deepEqual(copied,[[640,4],[640,4],[4,640],[4,640]]);
+ assert.equal(mixed.uniforms.orthoRowsGainLane2.value,1);
+ const removed=ready.get(east.second)!.detail;
+ m.evict(east.second,removed);ready.delete(east.second);
+ assert.equal(mixed.uniforms.orthoRowsGain.value,1);
+ assert.equal(mixed.uniforms.orthoRowsGainLane2.value,0);
+ assert.equal(mixed.uniforms.orthoSharedRowsLane2.value,base);
+ caps.maxTextures=15;
+ const constrained=shader();make(true).bind(north.second,constrained);
+ assert.equal(constrained.fragmentShader,prior.fragmentShader);
+ assert(!constrained.uniforms.orthoRowsGainLane2);
 });

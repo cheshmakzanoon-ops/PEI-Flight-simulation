@@ -1,0 +1,52 @@
+{
+  "maxReportDistanceM": 400,
+  "scope": "Signed project centerlines and dated AEB footprints only; no inferred absence of fences, drains or current structures.",
+  "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cases": [
+    {
+      "name": "kings-central-cropland",
+      "exactStripLonLat": [
+        -62.72390502929687,
+        46.37582386363636,
+        -62.723594970703125,
+        46.377471590909096
+      ],
+      "roadClippedDistance": 19.434,
+      "buildingClippedDistance": 61.792
+    },
+    {
+      "name": "queens-south-grassland",
+      "exactStripLonLat": [
+        -62.83636328125,
+        45.99262428977273,
+        -62.8338828125,
+        45.99283025568182
+      ],
+      "roadClippedDistance": 334.035,
+      "buildingClippedDistance": 312.671
+    },
+    {
+      "name": "kings-shared-fields",
+      "exactStripLonLat": [
+        -62.72390502929687,
+        46.169610795454545,
+        -62.723594970703125,
+        46.17125852272727
+      ],
+      "roadClippedDistance": 302.793,
+      "buildingClippedDistance": 237.393
+    },
+    {
+      "name": "queens-eastern-grassland",
+      "exactStripLonLat": [
+        -62.88265502929687,
+        46.39971590909091,
+        -62.88234497070312,
+        46.40136363636364
+      ],
+      "roadClippedDistance": 400,
+      "buildingClippedDistance": 400
+    }
+  ]
+}
