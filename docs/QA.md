@@ -71,6 +71,7 @@ the original Cavendish coastal overdraw case after two relocations.
 ## Coastal terrain and materials
 
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [Access PEI O’Leary membrane tone](qa/oleary-access-roof-tone.md): one signed roof color review and ordinary departure proof.
 - [Souris southwest exterior material](qa/souris-west-facing.md): exact receiver, one façade, independent route proof and fallback.
 - [Souris Town Hall authoring study](../tools/art/souris-town-hall-study/): detached scene checks for the original frontage and qualified roof surfaces.
 - [Souris waterfront departure](qa/souris-waterfront-pass.md): offshore start, unchanged controls and a measured transit past the town.

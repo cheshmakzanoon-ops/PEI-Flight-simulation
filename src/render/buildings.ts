@@ -36,6 +36,7 @@ import {GREEN_GABLES_REVIEW} from './green-gables-review-spec.ts';
 import {matchesHangar4,emitHangar4,hangar4GLSL} from './hangar4.ts';
 import {readRoofTone} from './roof-tone.ts';
 import {RUSTICO_HARBOUR_ROOF_ROW,RUSTICO_HARBOUR_ROOF_TILE,RUSTICO_HARBOUR_ROOF_TONE,rusticoHarbourRoofAllows,rusticoHarbourRoofAtlasAllows} from './rustico-harbour-roof.ts';
+import {OLEARY_ACCESS_ROOF_COLOR,OLEARY_ACCESS_ROOF_TILE,olearyAccessRoofTile,olearyAccessRoofOrdinal} from './oleary-access-roof-tone.ts';
 import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
 import type {NorthBaywalk} from './north-baywalk.ts';
 import {SPINNAKERS_SHELLS} from './spinnakers-shells.generated.ts';
@@ -224,6 +225,12 @@ export class Buildings {
  private readonly rusticoNeutralMat?:THREE.ShaderMaterial;
  private readonly rusticoRoof:boolean;
  private rusticoHarbourRoof=false;
+ private olearyAccessRoof=false;
+ enableOlearyAccessRoof(){this.olearyAccessRoof=true;}
+ get olearyAccessRoofActive(){
+  const owner=this.meshes.get(OLEARY_ACCESS_ROOF_TILE);
+  return !!owner?.visible&&owner.parent===this.scene&&owner.userData.olearyAccessRoofTone===true;
+ }
  enableRusticoHarbourRoof(){this.rusticoHarbourRoof=true;}
  /** This is a resident emitted colour, not a visibility/depth report. */
  get rusticoHarbourRoofActive(){
@@ -754,6 +761,7 @@ export class Buildings {
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const harbourRoofCandidate=this.rusticoHarbourRoof&&rusticoHarbourRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
+   const olearyAccessCandidate=this.olearyAccessRoof&&!this.olearySeat&&olearyAccessRoofTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const sourisWestCandidate=!!this.sourisWestLink&&sourisFacingOwnerTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
@@ -777,7 +785,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||sourisWestCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -797,7 +805,7 @@ export class Buildings {
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
     // Bounded appearances share a single digest of the already-read chunk.
-    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||sourisWestCandidate)try{
+    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
@@ -1050,10 +1058,11 @@ export class Buildings {
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
   const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
-  let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false;
+  let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false,paintedOlearyAccessRoof=false;
   const westWall=this.sourisWestLink?sourisFacingAdmittedEdge(this.atlasHash,tile,massingChunk,features):undefined;
   let westSpan:readonly [number,number]|undefined;
   const harbourRoofRow=this.rusticoHarbourRoof&&rusticoHarbourRoofAllows(this.atlasHash,tile,massingChunk,features)?RUSTICO_HARBOUR_ROOF_ROW:-1;
+  const olearyAccessRow=this.olearyAccessRoof&&!this.olearySeat?olearyAccessRoofOrdinal(this.atlasHash,tile,massingChunk,features):undefined;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
    if(wharfSpans)trackWharfSpans(wharfSpans,i,P.length/3);
@@ -1234,7 +1243,12 @@ export class Buildings {
    // Keep measured/artistic owners and the existing observed roof table ahead
    // of this categorical cue. Only the stock gable's four top triangles use it.
    const pale=i===harbourRoofRow&&!observed&&synthGable&&!fit&&!neutral&&facade===0;
-   const roofColor=observed?new THREE.Color().setRGB(...observed):pale?new THREE.Color(RUSTICO_HARBOUR_ROOF_TONE):cr;
+   // Leave any more specific or later geometric roof model ahead of this
+   // documentary tone. No opacity, role, new triangle or optical shader.
+   const membrane=i===olearyAccessRow&&!observed&&!synthGable&&!fit&&!neutral&&facade===0;
+   if(membrane)paintedOlearyAccessRoof=true;
+   const roofColor=observed?new THREE.Color().setRGB(...observed):pale?new THREE.Color(RUSTICO_HARBOUR_ROOF_TONE):
+    membrane?new THREE.Color(OLEARY_ACCESS_ROOF_COLOR):cr;
    if(pale)paintedHarbourRoof=true;
    const roofVert=(p:Pt,y:number)=>vertex(p,y,roofColor,p.x-ox,p.z-oz,1);
    if(synthGable&&!fit&&!neutral){
@@ -1295,6 +1309,7 @@ export class Buildings {
   if(actualPrince)mesh.userData.princeSurveyRoof=true;
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(paintedHarbourRoof)mesh.userData.rusticoHarbourRoofTone=true;
+  if(paintedOlearyAccessRoof)mesh.userData.olearyAccessRoofTone=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
   if(wharfSpans)mesh.userData.spinnakersSpans=wharfSpans;

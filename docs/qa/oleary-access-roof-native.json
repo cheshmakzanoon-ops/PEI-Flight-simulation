@@ -1,0 +1,166 @@
+{
+  "scope": "Actual world N112 and other stock depth, original q20213 stock r187 visual shader, same declared neutral ordinary clocks and two exact colour streams; no app or live browser, CPU performance or surveyed colour.",
+  "geometryChanged": false,
+  "programDrawPathChanged": false,
+  "sourceLock": "6ba3c6b1a0e18dfc6594e2691268406994f8daf70bfc4776b8d551a1c473026b",
+  "sourceAttrShas": {
+    "position": "d12b6d0f4acffd9fe576dddaf2eddbf05b1d7dda2a6c65eecb96b9e04fb75a42",
+    "uv": "752f96ed80b0a0ea4a33edb3aa5e8d99134f2aca0fdd730689a118628db40025",
+    "color": "5707c1ea535163a444028c157b622ccc6f0a105a043042bc57f1bfbd02e75c69",
+    "topFlag": "1b475c3c932071c2742c6b87e49210dc742392038f9722b51e58ca38778fd6eb",
+    "facadeStyle": "513aaa75501a7b7f07de04bd9d77d80f7b7fbb67a244ff7f8395edcf84cfa03d",
+    "normal": "2423e4812fd3f94e84f095022cfdcc97e9ed50ed91417d96e08b0a15e2a21022"
+  },
+  "surface": [
+    "726558",
+    "89847b"
+  ],
+  "programs": {
+    "limit": "Actual Three r187 prefixed GLSL linked on Mesa GLES3.2, not Chromium/WebGL full renderer or performance.",
+    "engine": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "depthBits": 24,
+    "programs": {
+      "terrain": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "f0b98ae4a7424e70e9cdfbb55cbc06f0cb3a10e2c217b97820a86f9b7152ed8a"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "e0c6431136ce483542bfc6b8a9b555235107098d204299a9ee837cade2cd28d6"
+          }
+        }
+      },
+      "tag": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "ce3d96496c5fdaeed84049f143ff97ead0f67e156ae485c547fbd53c97c441e9"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "cea3e42c025f3139347e0956963417ae61f7f664305606e81775ec056bf0c60a"
+          }
+        }
+      },
+      "building": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "39c237b814e6f273fc12b333285c6b34dc8929edc848303326caf0cdc56c9377"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "45644069519c0ec4130f889cc262a0b811a2015645c5427b8f2b635ccf47a9d9"
+          }
+        }
+      },
+      "localRoofMarker": {
+        "linked": true,
+        "log": "",
+        "stages": {
+          "vert": {
+            "compiled": true,
+            "log": "",
+            "sha256": "39c237b814e6f273fc12b333285c6b34dc8929edc848303326caf0cdc56c9377"
+          },
+          "frag": {
+            "compiled": true,
+            "log": "",
+            "sha256": "99ccd29d1504e850c6f35f80ee948ffb52e64a20db201949ede96ce177a007b6"
+          }
+        }
+      }
+    }
+  },
+  "poses": {
+    "26": {
+      "roofPixels": 353,
+      "nColorChanged": 353,
+      "rgbGreaterTwo": 353,
+      "medianP95MaxInside": [
+        46.0,
+        46.0,
+        46.0
+      ],
+      "offRoofRGBA": 0,
+      "alpha": 0,
+      "restoredExactly": true,
+      "stockSHA": "3bd46d29d467dfa55952cf522a25afa5b2e017e20da8aefdb7b1334fb58c5980",
+      "authoredSHA": "a1b82375c31c550a43a72766fc2caf51e4c108f406712715313975210d969250"
+    },
+    "28": {
+      "roofPixels": 744,
+      "nColorChanged": 744,
+      "rgbGreaterTwo": 744,
+      "medianP95MaxInside": [
+        46.0,
+        47.0,
+        47.0
+      ],
+      "offRoofRGBA": 0,
+      "alpha": 0,
+      "restoredExactly": true,
+      "stockSHA": "f35bcfe45d278b3e8383ccaab7c7d475b81b1af9478e9b62b003c65e1dded6ed",
+      "authoredSHA": "097971dd4fa5f86714018f3806514acf334aeab2c5939093e7ecd72025a6b5d6"
+    },
+    "30": {
+      "roofPixels": 1988,
+      "nColorChanged": 1988,
+      "rgbGreaterTwo": 1988,
+      "medianP95MaxInside": [
+        47.0,
+        47.0,
+        47.0
+      ],
+      "offRoofRGBA": 0,
+      "alpha": 0,
+      "restoredExactly": true,
+      "stockSHA": "e229fdf47a203e0896fa4efd8dfe67c9310c009bb7cab47df6afdf67d4aeed5d",
+      "authoredSHA": "7b1a90ff2afddb611168c04698197c715a548edb712d5979f3b483bd2439590c"
+    },
+    "32": {
+      "roofPixels": 8558,
+      "nColorChanged": 8558,
+      "rgbGreaterTwo": 8558,
+      "medianP95MaxInside": [
+        47.0,
+        47.0,
+        48.0
+      ],
+      "offRoofRGBA": 0,
+      "alpha": 0,
+      "restoredExactly": true,
+      "stockSHA": "2928b6793964cb3e5c4a21f14b9d449b6f6b1be1a0b0b0e75beae07b2b2c5d37",
+      "authoredSHA": "88be69de622fda24a9581cabd1a332d51141b786a6c6728aaaafee2206ab6991"
+    },
+    "34": {
+      "roofPixels": 0,
+      "nColorChanged": 0,
+      "rgbGreaterTwo": 0,
+      "medianP95MaxInside": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "offRoofRGBA": 0,
+      "alpha": 0,
+      "restoredExactly": true,
+      "stockSHA": "a8851ed371536fc9dde0669c286a42a3c31fdcca5c634fe5012e9091b5c50769",
+      "authoredSHA": "a8851ed371536fc9dde0669c286a42a3c31fdcca5c634fe5012e9091b5c50769"
+    }
+  }
+}
