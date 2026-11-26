@@ -1,0 +1,216 @@
+{
+  "scope": "Managed Chromium with compiled Standard route and only a read-only hash probe for existing native tree slots. This is not individual-tree data or device timing.",
+  "site": "kings-meadow-low",
+  "nativeCrownRows": 1424,
+  "sampledAttributes": "five Float32 values per original slot: X, Z, height, width, atlas variant",
+  "successfulMappedHash": "344953ce2577720edb15d0af47e6754c5a286de7837069fee4ad5be3f2e553c1",
+  "expectedFallbackHash": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+  "damagedByteControl": "exact selected tile range on heights-03.pack; one altered byte",
+  "timedDeliveryControl": "8.5-second delay for the identical signed tile range",
+  "observations": [
+    {
+      "mode": "stock",
+      "nominalTime": 6,
+      "actualTime": 6.099939,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 56.924,
+      "draws": 151,
+      "triangles": 381741,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "27-12",
+        "activeReady": true
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "stock",
+      "nominalTime": 8,
+      "actualTime": 8.099919,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 59.3442,
+      "draws": 151,
+      "triangles": 385853,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "28-12",
+        "activeReady": true
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "direct",
+      "nominalTime": 6,
+      "actualTime": 6.099939,
+      "sha": "344953ce2577720edb15d0af47e6754c5a286de7837069fee4ad5be3f2e553c1",
+      "agl": 56.924,
+      "draws": 151,
+      "triangles": 381997,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "27-12",
+        "activeReady": true
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "direct",
+      "nominalTime": 8,
+      "actualTime": 8.099919,
+      "sha": "344953ce2577720edb15d0af47e6754c5a286de7837069fee4ad5be3f2e553c1",
+      "agl": 59.3442,
+      "draws": 151,
+      "triangles": 386053,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 0,
+        "active": "28-12",
+        "activeReady": true
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "corrupt",
+      "nominalTime": 6,
+      "actualTime": 6.099939,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 56.924,
+      "draws": 151,
+      "triangles": 381997,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 1,
+        "active": "27-12",
+        "activeReady": true
+      },
+      "controlledRanges": [
+        {
+          "lo": 478492,
+          "hi": 530951,
+          "variant": "corrupt"
+        }
+      ]
+    },
+    {
+      "mode": "corrupt",
+      "nominalTime": 8,
+      "actualTime": 8.099919,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 59.3442,
+      "draws": 151,
+      "triangles": 386053,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 1,
+        "active": "28-12",
+        "activeReady": false
+      },
+      "controlledRanges": [
+        {
+          "lo": 478492,
+          "hi": 530951,
+          "variant": "corrupt"
+        }
+      ]
+    },
+    {
+      "mode": "missing",
+      "nominalTime": 6,
+      "actualTime": 6.099939,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 56.924,
+      "draws": 151,
+      "triangles": 381997,
+      "heightStream": {
+        "missing": true,
+        "inflight": 0,
+        "resident": 0,
+        "failed": 0,
+        "active": "27-12",
+        "activeReady": false
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "missing",
+      "nominalTime": 8,
+      "actualTime": 8.099919,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 59.3442,
+      "draws": 151,
+      "triangles": 386053,
+      "heightStream": {
+        "missing": true,
+        "inflight": 0,
+        "resident": 0,
+        "failed": 0,
+        "active": "28-12",
+        "activeReady": false
+      },
+      "controlledRanges": []
+    },
+    {
+      "mode": "slow",
+      "nominalTime": 6,
+      "actualTime": 6.099939,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 56.924,
+      "draws": 151,
+      "triangles": 381997,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 1,
+        "active": "27-12",
+        "activeReady": true
+      },
+      "controlledRanges": [
+        {
+          "lo": 478492,
+          "hi": 530951,
+          "variant": "slow"
+        }
+      ]
+    },
+    {
+      "mode": "slow",
+      "nominalTime": 8,
+      "actualTime": 8.099919,
+      "sha": "56578829f009f4d6a336eee9f4f3f27f1227c8569de21d96795d580ece6c2701",
+      "agl": 59.3442,
+      "draws": 151,
+      "triangles": 386053,
+      "heightStream": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 14,
+        "failed": 1,
+        "active": "28-12",
+        "activeReady": false
+      },
+      "controlledRanges": [
+        {
+          "lo": 478492,
+          "hi": 530951,
+          "variant": "slow"
+        }
+      ]
+    }
+  ]
+}

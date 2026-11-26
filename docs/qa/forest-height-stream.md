@@ -37,7 +37,8 @@ land and existing tree clearance remain independent. A missing,
 malformed or unneeded woodland layer does not prevent flight or alter
 the original tree roster. Already-visible cache entries are not rebuilt
 just because a late optional response arrives; a relocation can show
-the base heights until those entries are replaced by normal travel.
+the base heights until those entries are replaced by normal travel. A [bookmarked departure](forest-departure-preflight.md) now warms the
+chosen region instead of Cavendish; already visible trees still stay fixed.
 
 Run `npm run check`; the full asset test decodes and hashes all 239
 chunks and checks all adjacent halos. For browser cases, run

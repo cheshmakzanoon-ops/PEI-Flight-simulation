@@ -152,7 +152,10 @@ async function run(){
  const miscoucheStart=options.get('departure')==='miscouche-woodlot-pass'?
   SITES.find(q=>q.id==='miscouche-woodlot-pass'):undefined;
  const regionalStart=REGIONAL_CANOPY_DEPARTURES.find(q=>q.id===options.get('departure'));
- const woodlandStart=crownDeparture?SITES[crownDeparture]:miscoucheStart??regionalStart;
+ // Seed the existing bounded woodland warm-up at the bookmarked flight
+ // rather than Cavendish. Already-submitted crowns remain untouched.
+ const directDeparture=SITES.find(q=>q.id===options.get('departure'));
+ const woodlandStart=crownDeparture?SITES[crownDeparture]:miscoucheStart??regionalStart??directDeparture;
  const warmPoint=woodlandStart?projectSite(woodlandStart.lon,woodlandStart.lat):undefined;
  const startPoint=projectSite(SITES[0].lon,SITES[0].lat),warmForest=forestStream.warm(warmPoint?.x??startPoint.x,warmPoint?.z??startPoint.z);
  const crownStream=crownAsked?new ForestStream(import.meta.env.BASE_URL,fetch,'crown'):undefined;
