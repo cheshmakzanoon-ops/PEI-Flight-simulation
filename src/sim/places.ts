@@ -58,6 +58,15 @@ export const SITES: Site[] = [
   lon:-64.21528650212998,lat:46.715825492132865,heading:221,height:65,
   note:'Start northeast of O’Leary and look for the former railway station on Main Street. Virtual sightseeing only, not a navigation route.'},
 ];
+// The lower route is discoverable only with the authenticated Montague
+// foundation. Keep it out of the stock dispatch list and leave the older
+// high-altitude estuary departure unchanged.
+export const MONTAGUE_BRIDGE_DEPARTURE:Site={
+ id:'montague-bridge-low',name:'Montague · river bridge pass',region:'Kings County',
+ lon:-62.64066788367977,lat:46.16629032720332,heading:245,height:64,
+ note:'Start over the river northeast of the Main Street bridge. Virtual sightseeing only, not an aviation or marine route.',
+};
+
 // Keep normal stock and conditionally appended route ordinals stable.
 // Main lists this additional pass after the existing regional routes.
 export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={

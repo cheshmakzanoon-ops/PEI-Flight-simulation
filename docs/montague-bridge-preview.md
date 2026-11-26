@@ -3,7 +3,12 @@
 **Status: opt-in and not a release acceptance.** This is a measured reconstruction
 of one structure and a bounded river correction, not an as-built bridge or marine
 chart. On this checkout open the normal app with `?montagueFoundationPreview`.
-The stock app does not load or install the local pack without the flag. Add
+The stock app does not load or install the local pack without the flag. Once
+the verified preview loads, choose **Montague · river bridge pass** in Dispatch
+or the map. This starts 620 m northeast of the Main Street span at 64 m above
+the starting surface. The older **Montague River** departure remains the
+higher estuary flight. The low pass is not offered when the preview pack or
+its required source files do not authenticate. Add
 `&montagueReachOptics` for a separate visual-only test of quieter river water.
 No photograph is distributed or sampled as texture.
 
