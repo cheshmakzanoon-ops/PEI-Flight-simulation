@@ -1,0 +1,172 @@
+{
+  "limitation": "Exact detached original Three r187 and material-only bounded changes on same Mesa software raster; zero placement or performance claim. Each row of visual comparison is optics off/optics full.",
+  "triangles": 217,
+  "draws": 9,
+  "programs": 24,
+  "box": [
+    [
+      -4.090000152587891,
+      0,
+      -0.25200000405311584
+    ],
+    [
+      4.090000152587891,
+      5.449999809265137,
+      0.8169999718666077
+    ]
+  ],
+  "cases": {
+    "front": {
+      "glass": {
+        "delta": 20299,
+        "maxRGBCode": 31,
+        "p95ChangedCode": 30.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 20299,
+        "restoredBitwise": true
+      },
+      "eave": {
+        "delta": 39040,
+        "maxRGBCode": 29,
+        "p95ChangedCode": 26.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 201043,
+        "restoredBitwise": true
+      },
+      "edge": {
+        "delta": 14012,
+        "maxRGBCode": 7,
+        "p95ChangedCode": 5.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 95251,
+        "restoredBitwise": true
+      },
+      "full": {
+        "delta": 55627,
+        "maxRGBCode": 31,
+        "p95ChangedCode": 26.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 201043,
+        "restoredBitwise": true
+      }
+    },
+    "oblique-near": {
+      "glass": {
+        "delta": 17812,
+        "maxRGBCode": 11,
+        "p95ChangedCode": 9.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 17812,
+        "restoredBitwise": true
+      },
+      "eave": {
+        "delta": 31145,
+        "maxRGBCode": 30,
+        "p95ChangedCode": 24.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 189952,
+        "restoredBitwise": true
+      },
+      "edge": {
+        "delta": 12856,
+        "maxRGBCode": 7,
+        "p95ChangedCode": 6.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 81195,
+        "restoredBitwise": true
+      },
+      "full": {
+        "delta": 46226,
+        "maxRGBCode": 31,
+        "p95ChangedCode": 24.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 189952,
+        "restoredBitwise": true
+      }
+    },
+    "west-oblique": {
+      "glass": {
+        "delta": 16468,
+        "maxRGBCode": 17,
+        "p95ChangedCode": 14.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 16468,
+        "restoredBitwise": true
+      },
+      "eave": {
+        "delta": 29342,
+        "maxRGBCode": 29,
+        "p95ChangedCode": 24.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 174646,
+        "restoredBitwise": true
+      },
+      "edge": {
+        "delta": 11643,
+        "maxRGBCode": 7,
+        "p95ChangedCode": 6.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 76984,
+        "restoredBitwise": true
+      },
+      "full": {
+        "delta": 43359,
+        "maxRGBCode": 31,
+        "p95ChangedCode": 25.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 174646,
+        "restoredBitwise": true
+      }
+    },
+    "roof": {
+      "glass": {
+        "delta": 7627,
+        "maxRGBCode": 5,
+        "p95ChangedCode": 5.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 7627,
+        "restoredBitwise": true
+      },
+      "eave": {
+        "delta": 7357,
+        "maxRGBCode": 13,
+        "p95ChangedCode": 9.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 123883,
+        "restoredBitwise": true
+      },
+      "edge": {
+        "delta": 6314,
+        "maxRGBCode": 7,
+        "p95ChangedCode": 7.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 38248,
+        "restoredBitwise": true
+      },
+      "full": {
+        "delta": 17492,
+        "maxRGBCode": 16,
+        "p95ChangedCode": 8.0,
+        "outside": 0,
+        "alpha": 0,
+        "maskPixels": 123883,
+        "restoredBitwise": true
+      }
+    }
+  }
+}
