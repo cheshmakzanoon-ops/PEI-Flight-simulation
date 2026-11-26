@@ -1,0 +1,434 @@
+{
+  "limit": "Actual Three r187 prefixed GLSL linked on Mesa GLES3.2, not Chromium/WebGL full renderer or performance.",
+  "engine": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "depthBits": 24,
+  "programs": {
+    "stone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "cdfa3d9eed0165228d488983984f577bb9edcb236b1130c9b94a9e9472a575d7"
+        }
+      }
+    },
+    "freestone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "df54a78150fea6574392bfc345c2ac20ed1ae701cd3132ea92ef3175e6b7c152"
+        }
+      }
+    },
+    "roof": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "2067bda1c2ab957066eccd5dc43aa38cbb9888e22e1bd2a42c956786987df73b"
+        }
+      }
+    },
+    "copper": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f0aff23a29ae84d50af8fda611913a3326d9d4f65a6ef84b1c9ce08515daacc9"
+        }
+      }
+    },
+    "glass": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "1724b44079e0eb817a4b7857fb6ee47326ad63a22f56365d9a3faa7c801eb253"
+        }
+      }
+    },
+    "wood": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "8e3108cf31e8ef334ab223781fc1c6c7f4af4633ecd3c8b5616a6a8539653ee5"
+        }
+      }
+    },
+    "metal": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "solid": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "marker": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "11bb1eeb1378f79c5b3932f772d5d4136c155c68262f51775d6f1beedd790423"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "9252c4490e38c0b3c45e3a3d19683168fffd0bcc8dc6723545cf17dfa2d4ac48"
+        }
+      }
+    }
+  },
+  "scope": "Actual depth-tested original geometry, Mesa llvmpipe with Three r187 exact shaders, camera and role masks. Stock shape separately neutral, normal departure matrices only (no rest of played scene). No mount, survey, lighting/pass parity or FPS.",
+  "programsSha": {
+    "stone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "cdfa3d9eed0165228d488983984f577bb9edcb236b1130c9b94a9e9472a575d7"
+        }
+      }
+    },
+    "freestone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "df54a78150fea6574392bfc345c2ac20ed1ae701cd3132ea92ef3175e6b7c152"
+        }
+      }
+    },
+    "roof": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "2067bda1c2ab957066eccd5dc43aa38cbb9888e22e1bd2a42c956786987df73b"
+        }
+      }
+    },
+    "copper": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f0aff23a29ae84d50af8fda611913a3326d9d4f65a6ef84b1c9ce08515daacc9"
+        }
+      }
+    },
+    "glass": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "1724b44079e0eb817a4b7857fb6ee47326ad63a22f56365d9a3faa7c801eb253"
+        }
+      }
+    },
+    "wood": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "8e3108cf31e8ef334ab223781fc1c6c7f4af4633ecd3c8b5616a6a8539653ee5"
+        }
+      }
+    },
+    "metal": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "solid": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "marker": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "11bb1eeb1378f79c5b3932f772d5d4136c155c68262f51775d6f1beedd790423"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "9252c4490e38c0b3c45e3a3d19683168fffd0bcc8dc6723545cf17dfa2d4ac48"
+        }
+      }
+    }
+  },
+  "forms": "b54975b49c778d3ed383e09bb9db257c930a7f80a9a011b5c12fdd09c2ea100d",
+  "material": "5233c0fcb1e69b89e2a0db84c4db1704aeef32af370601aeb514034151d4b23d",
+  "pose": "8afbe1e3ac2b02886d3f26c685559d7b01c6c759c8ff27174fb9b1d45883a892",
+  "prelock": "392dbde076dc026cc410bafb7a0e3dd9d6b003e327c34365a0f05ef2caf963d8",
+  "positionsCount": {
+    "stone": 3129,
+    "freestone": 8928,
+    "roof": 276,
+    "copper": 960,
+    "glass": 546,
+    "wood": 135,
+    "metal": 216,
+    "stock": 201
+  },
+  "views": {
+    "ordinary-t16": {
+      "sameModelFinishChangedRgb": 3699,
+      "rgbCodesOver2": 758,
+      "sameFinishOutsideAny": 0,
+      "alphaChanges": 0,
+      "neutralRestoreByteExact": true,
+      "commonShape": 3759,
+      "oldOnlyShape": 1707,
+      "newOnlyShape": 467,
+      "visibleRolePixels": {
+        "stone": 2389,
+        "freestone": 387,
+        "roof": 1025,
+        "copper": 179,
+        "glass": 196,
+        "wood": 48,
+        "metal": 2
+      },
+      "allChannelsSha": {
+        "art": "8a728d938516cfcdd2de2257d29b309bf198aa75cc07dc6cfd5e1311753bbfc8",
+        "stockGeometryNeutralNotOriginalShader": "864a065938229e2d9e849fe241e8b4c9123a462af5bb773133725f72048a5672",
+        "sameGeometryNeutral": "8f34e687f2916c7ca37505c37173d3f5093410a9698c57e7d53bad34b8338095"
+      }
+    },
+    "ordinary-t18": {
+      "sameModelFinishChangedRgb": 0,
+      "rgbCodesOver2": 0,
+      "sameFinishOutsideAny": 0,
+      "alphaChanges": 0,
+      "neutralRestoreByteExact": true,
+      "commonShape": 0,
+      "oldOnlyShape": 0,
+      "newOnlyShape": 0,
+      "visibleRolePixels": {
+        "stone": 0,
+        "freestone": 0,
+        "roof": 0,
+        "copper": 0,
+        "glass": 0,
+        "wood": 0,
+        "metal": 0
+      },
+      "allChannelsSha": {
+        "art": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+        "stockGeometryNeutralNotOriginalShader": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+        "sameGeometryNeutral": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+      }
+    },
+    "ordinary-t20": {
+      "sameModelFinishChangedRgb": 0,
+      "rgbCodesOver2": 0,
+      "sameFinishOutsideAny": 0,
+      "alphaChanges": 0,
+      "neutralRestoreByteExact": true,
+      "commonShape": 0,
+      "oldOnlyShape": 0,
+      "newOnlyShape": 0,
+      "visibleRolePixels": {
+        "stone": 0,
+        "freestone": 0,
+        "roof": 0,
+        "copper": 0,
+        "glass": 0,
+        "wood": 0,
+        "metal": 0
+      },
+      "allChannelsSha": {
+        "art": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+        "stockGeometryNeutralNotOriginalShader": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+        "sameGeometryNeutral": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+      }
+    },
+    "studio-entry": {
+      "sameModelFinishChangedRgb": 138825,
+      "rgbCodesOver2": 103848,
+      "sameFinishOutsideAny": 0,
+      "alphaChanges": 0,
+      "neutralRestoreByteExact": true,
+      "commonShape": 100202,
+      "oldOnlyShape": 80628,
+      "newOnlyShape": 45955,
+      "visibleRolePixels": {
+        "stone": 102394,
+        "freestone": 17984,
+        "roof": 0,
+        "copper": 7728,
+        "glass": 13948,
+        "wood": 3936,
+        "metal": 167
+      },
+      "allChannelsSha": {
+        "art": "8267c5790a07df11fc9c21fb9d20bf78f78117f9203554ef57a34a825313866f",
+        "stockGeometryNeutralNotOriginalShader": "c8ef30de5e48b69bcac63cb0ba0d7d5e36c5b9db42b409ca865f5268a9554c74",
+        "sameGeometryNeutral": "f09dcaa721539e9ce10d4f1bfc93a61b9bd38a462f555ef8d538a90452c8fce8"
+      }
+    },
+    "studio-oblique": {
+      "sameModelFinishChangedRgb": 109874,
+      "rgbCodesOver2": 77219,
+      "sameFinishOutsideAny": 0,
+      "alphaChanges": 0,
+      "neutralRestoreByteExact": true,
+      "commonShape": 98578,
+      "oldOnlyShape": 47645,
+      "newOnlyShape": 16283,
+      "visibleRolePixels": {
+        "stone": 76004,
+        "freestone": 12527,
+        "roof": 14920,
+        "copper": 5592,
+        "glass": 4775,
+        "wood": 942,
+        "metal": 101
+      },
+      "allChannelsSha": {
+        "art": "ce1335b5ce392bf3e9dfc80557f09cdd01e01db09948cd63d9750e44da6379fe",
+        "stockGeometryNeutralNotOriginalShader": "f95fb82fe2840267a1f6e9ba4cc87b2ecd739ddf7af05da4e75d68fef9b50cb0",
+        "sameGeometryNeutral": "18b6b31330782d5271da6e50f4a94a3fa91f7d3b73c84cf3153bf35be254f990"
+      }
+    }
+  }
+}

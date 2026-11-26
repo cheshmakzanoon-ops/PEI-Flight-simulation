@@ -1,0 +1,106 @@
+{
+  "scope": "Detached only. Same preregistered stone geometry and fixed sources; seven untouched geometry streams. Actual software Mesa depth role masks; none of scene, LOD or official data changed.",
+  "forms": "b54975b49c778d3ed383e09bb9db257c930a7f80a9a011b5c12fdd09c2ea100d",
+  "v1": "5233c0fcb1e69b89e2a0db84c4db1704aeef32af370601aeb514034151d4b23d",
+  "v2": "b8d30dd1dde0db10f62cb948b0e9309bd8b2440e8904b2d08d5f3f43a8a53f73",
+  "v2Lock": "79e8a1d784c2a05a978119d07c1c27bc9f4fd92f005a0edbf3437d96738db4d1",
+  "shader": {
+    "linked": true,
+    "log": "",
+    "stages": {
+      "vert": {
+        "compiled": true,
+        "log": "",
+        "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+      },
+      "frag": {
+        "compiled": true,
+        "log": "",
+        "sha256": "c1ce984e0f0bce754f30701e06dcbb54a68fd896e178160484e2a9902b3687d1"
+      }
+    }
+  },
+  "frames": {
+    "ordinary-t16": {
+      "stonePixels": 2389,
+      "changedAny": 2132,
+      "changedGt2": 400,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "8a728d938516cfcdd2de2257d29b309bf198aa75cc07dc6cfd5e1311753bbfc8",
+      "shaV2": "3274aa529aeaf23de3cfc7d77c5fecadc2e011c5d75884552dd83dadfc741dd4"
+    },
+    "ordinary-t18": {
+      "stonePixels": 0,
+      "changedAny": 0,
+      "changedGt2": 0,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+      "shaV2": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+    },
+    "ordinary-t20": {
+      "stonePixels": 0,
+      "changedAny": 0,
+      "changedGt2": 0,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+      "shaV2": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+    },
+    "studio-entry": {
+      "stonePixels": 102394,
+      "changedAny": 101509,
+      "changedGt2": 84491,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "8267c5790a07df11fc9c21fb9d20bf78f78117f9203554ef57a34a825313866f",
+      "shaV2": "d76aae4ce51c1dd6998ceb8cce2083052591f802080ed1c45b808f3490056847"
+    },
+    "studio-oblique": {
+      "stonePixels": 76005,
+      "changedAny": 75334,
+      "changedGt2": 63486,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "ce1335b5ce392bf3e9dfc80557f09cdd01e01db09948cd63d9750e44da6379fe",
+      "shaV2": "47be544283d68952bac543a7eddccdc01e1e5a715b9506822e48ae097ab11e7d"
+    },
+    "studio-entry-phase": {
+      "stonePixels": 102415,
+      "changedAny": 101485,
+      "changedGt2": 84345,
+      "outsideStoneAnyRGBA": 0,
+      "alphaAny": 0,
+      "restoreV1Exact": true,
+      "shaV1": "d1092a551a946cd72c52da3b75e6ba915242f5cb059a3773ff2a595c1c1903c4",
+      "shaV2": "bb4231b3ce512684490a7371c9025ff3d9458f67660be1b1dd45ade059771d19"
+    }
+  },
+  "subpixel": {
+    "v1": {
+      "matchedFrontSurfaceSamples": 5239,
+      "medianP90P95MaxDisplayLumaCodes": [
+        0.04431023640883325,
+        2.0534687272834384,
+        3.344484198602339,
+        12.68816567459082
+      ]
+    },
+    "v2": {
+      "matchedFrontSurfaceSamples": 5239,
+      "medianP90P95MaxDisplayLumaCodes": [
+        0.1393707741316632,
+        1.1812852112264545,
+        1.909569568029843,
+        7.492348582133843
+      ]
+    }
+  },
+  "pose": "8afbe1e3ac2b02886d3f26c685559d7b01c6c759c8ff27174fb9b1d45883a892"
+}

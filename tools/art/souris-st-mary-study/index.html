@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>St. Mary’s, Souris · Scenery atelier</title>
+<link rel="stylesheet" href="./studio.css">
+</head>
+<body>
+<main class="atelier">
+  <header class="mast">
+    <p class="kicker">ISLAND AIR <span>/</span> SCENERY ATELIER <span>/</span> KINGS COUNTY</p>
+    <p class="state">Detached study <span>·</span> Not installed</p>
+  </header>
+  <div class="body">
+    <section class="label">
+      <p class="location">1 Longworth Street · Souris, PEI</p>
+      <h1>St. Mary’s<br>in Souris</h1>
+      <p>Original geometry studies the Gothic stonework, the unequal towers and the roofs that the stock atlas draws as one flat cap.</p>
+      <nav aria-label="Study viewpoints">
+        <button data-view="entry" aria-pressed="true">Southwest entry</button>
+        <button data-view="side" aria-pressed="false">Side elevation</button>
+        <button data-view="chase" aria-pressed="false">Chase viewing angle</button>
+        <button data-view="detail" aria-pressed="false">Tower details</button>
+      </nav>
+      <label class="toggle"><input type="checkbox" id="finish" checked> Procedural stone and patina</label>
+      <p class="note">Approximate proportions in a local studio frame. Roof elevations, foundations and terrain placement are not approved.</p>
+    </section>
+    <section id="stage" aria-label="Interactive 3D exterior study">
+      <div id="display"></div>
+      <div class="plate"><p id="view-name">Southwest entry</p><p id="load" role="status">Preparing WebGL exterior</p></div>
+      <p class="hint">Drag to orbit · Scroll to zoom</p>
+    </section>
+  </div>
+  <footer><span>Original procedural finishes · No source images embedded</span><a href="https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19171">Canadian Register of Historic Places</a></footer>
+</main>
+<script type="module" src="./studio.ts"></script>
+</body>
+</html>

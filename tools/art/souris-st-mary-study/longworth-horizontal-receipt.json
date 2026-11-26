@@ -1,0 +1,80 @@
+{
+  "row": {
+    "tile": "q130333",
+    "ordinal": 114,
+    "rowSha": "9346e665a2f7ae6593e0408c96c1445d38adb563d658d87ff5eb20609a47f349",
+    "wireSha": "c8024e0feff5779754c8ba4268c0f95b11e2a371a11dd3877a3f65d6d8e3c393",
+    "roster": [
+      7083,
+      7284
+    ],
+    "height": 28.91,
+    "minHeight": 4.82
+  },
+  "boundsScene": [
+    [
+      72727.5674324657,
+      72784.14152914539
+    ],
+    [
+      32.40132141113281,
+      62.8572998046875
+    ],
+    [
+      15575.335271924607,
+      15618.79926118242
+    ]
+  ],
+  "roofTris": 21,
+  "base": {
+    "source": "same surveyed 1 Longworth civic/registry locator, municipality and parcel; the marker is land frontage NOT building center",
+    "pid": 431700,
+    "parcelObject": 69742,
+    "civicObject": 5118,
+    "civicVsRegistryM": 1.008209201990455,
+    "civicVsStockM": 37.60230938814373,
+    "parcelContainsCentre": true,
+    "parcelOfStockPercent": 99.99999999987779,
+    "stockM2": 1143.0340936901048
+  },
+  "osm": {
+    "way": 1088035096,
+    "version": 1,
+    "effectiveTimestamp": "2022-08-22T00:49:31Z",
+    "areaM2": 1330.5024347607978,
+    "overlapWithStockM2": 1108.1794756392483,
+    "percentOfStock": 96.9506930507791,
+    "iou": 0.8116407890208609,
+    "percentOfTheirGeometryOnCivicParcel": 100.00000000010499,
+    "nearestStockM": 0.0
+  },
+  "provincial": [
+    {
+      "OBJECTID_1": 89328,
+      "SOURCEDATE": null,
+      "areaM2": 1365.1770821837708,
+      "overlapWithStockM2": 1032.7053938447498,
+      "percentOfStock": 90.34773324309371,
+      "iou": 0.6998992524614618,
+      "percentOfTheirGeometryOnCivicParcel": 100.0,
+      "nearestStockM": 0.0
+    },
+    {
+      "OBJECTID_1": 89327,
+      "SOURCEDATE": null,
+      "areaM2": 260.2968187413644,
+      "overlapWithStockM2": 0.0,
+      "percentOfStock": 0.0,
+      "iou": 0.0,
+      "percentOfTheirGeometryOnCivicParcel": 16.746030017726852,
+      "nearestStockM": 13.899839089840572
+    }
+  ],
+  "sourcePins": {
+    "souris-waterfront-native-owner-census.json": "5c87da5eae8658d0529f5dffb83185c18484ec88d94ef8dba8b27213b0be850f",
+    "provincial-civic-record": "620cdbeb8e2d9f0c3814e1ecacd4afcf0da09c669aa2de7a51b715076080f457",
+    "provincial-parcel-record": "f54313da45e526def928e9da4086d46aaaed5ab4408eefa522ae6830b6891e65",
+    "provincial-building-index": "36369abc25811679f3e3eb38dbe747b5a794bac5515a5811589210aae316532f",
+    "openstreetmap-nearby-footprints": "d61415643a543d908ed029e59abf6e29d72c058dfffa9ebe232b0a553c13e8a4"
+  }
+}

@@ -31,6 +31,13 @@ jobs:
       - run: node tools/verify-world.mjs
       - run: npm run check
       - run: node --experimental-strip-types --test tools/art/north-rustico-fish-house-study/*.test.mjs tools/art/north-rustico-doiron-storefront/*.test.mjs tools/art/boardwalk-timber/*.test.mjs tools/art/georgetown-inn-kent-gable/*.test.mjs
+      - name: Verify the detached Souris St. Mary’s study
+        run: |
+          node --experimental-strip-types tools/art/souris-st-mary-study/souris-st-mary-test.mjs > /tmp/souris-st-mary-geometry.json
+          cmp tools/art/souris-st-mary-study/st-marys-detached-exact-buffers.json /tmp/souris-st-mary-geometry.json
+          node --experimental-strip-types --test tools/art/souris-st-mary-study/stone-program.test.mjs
+          ./node_modules/.bin/tsc -p tools/art/souris-st-mary-study/tsconfig.json
+          ./node_modules/.bin/vite build tools/art/souris-st-mary-study --config tools/art/souris-st-mary-study/vite.config.ts --outDir /tmp/souris-st-mary-studio-dist --emptyOutDir
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: ci-dist-unverified
@@ -77,7 +84,16 @@ jobs:
           for try in {1..20}; do curl --silent --fail http://127.0.0.1:4173/ > /dev/null && break; sleep 0.3; done
           curl --fail --silent --show-error http://127.0.0.1:4173/world/terrain.json > /dev/null
           case "$REPLAY_LANE" in
-            core) PEI_BROWSER_CORE_ONLY=1 node tools/browser-smoke.mjs ;;
+            core)
+              PEI_BROWSER_CORE_ONLY=1 node tools/browser-smoke.mjs
+              ./node_modules/.bin/vite --host 127.0.0.1 --port 4174 --strictPort > artifacts/smoke/souris-st-mary-server.log 2>&1 &
+              studio_pid=$!
+              trap 'kill "$server_pid" "$studio_pid" 2>/dev/null || true' EXIT
+              studio_url='http://127.0.0.1:4174/tools/art/souris-st-mary-study/'
+              for try in {1..20}; do curl --silent --fail "$studio_url" > /dev/null && break; sleep 0.3; done
+              curl --fail --silent --show-error "$studio_url" > /dev/null
+              node tools/art/souris-st-mary-study/browser-smoke.mjs
+              ;;
             terminal) node tools/terminal-wall-smoke.mjs ;;
             oleary) node tools/oleary-neighborhood-smoke.mjs ;;
             indian-river) node tools/indian-river-smoke.mjs ;;

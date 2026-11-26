@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["studio.ts", "souris-saint-mary-forms.ts", "souris-saint-mary-finishes.ts", "souris-st-mary-finish-v2.ts"]
+}

@@ -1,0 +1,244 @@
+{
+  "r187": "187",
+  "scope": "Detached studio author exact geometry and CPU ray witnesses; no native placement, source images, measurements or claim.",
+  "layout": {
+    "plane": "synthetic-local-metres-only",
+    "front": "+Z (southwest face if site registration eventually qualifies)",
+    "main": {
+      "left": -10.9,
+      "right": 10.88,
+      "rear": -23.6,
+      "front": 25.6,
+      "eave": 13.47,
+      "ridge": 21.93
+    },
+    "cross": {
+      "left": -15.6,
+      "right": 15.28,
+      "rear": -11.85,
+      "front": 2.08,
+      "eave": 13.47,
+      "ridge": 19.03
+    },
+    "westTower": {
+      "x": -10.94,
+      "z": 24.37,
+      "bodyRadius": 3.68,
+      "crossTip": 30.75
+    },
+    "eastTower": {
+      "x": 9.12,
+      "z": 23.9,
+      "bodyRadius": 3.3,
+      "crossTip": 19.01
+    }
+  },
+  "triN": 4730,
+  "batches": 7,
+  "minimumDot": 0.9999999558755079,
+  "roofAnalyticInteriors": 7808,
+  "facadeRecess": [
+    {
+      "r": "glass",
+      "x": -4.66,
+      "y": 9.61,
+      "z": 25.309999465942383
+    },
+    {
+      "r": "glass",
+      "x": 0.18,
+      "y": 11.69,
+      "z": 25.309999465942383
+    },
+    {
+      "r": "glass",
+      "x": 3.87,
+      "y": 9.96,
+      "z": 25.309999465942383
+    },
+    {
+      "r": "wood",
+      "x": -3.97,
+      "y": 1.4,
+      "z": 25.309999465942383
+    },
+    {
+      "r": "wood",
+      "x": 0.07,
+      "y": 1.67,
+      "z": 25.309999465942383
+    },
+    {
+      "r": "wood",
+      "x": 3.39,
+      "y": 1.39,
+      "z": 25.309999465942383
+    }
+  ],
+  "unequalCopper": [
+    {
+      "side": "west",
+      "stamp": [
+        -10.629999999999999,
+        29.55409734952763,
+        24.580000000000002
+      ]
+    },
+    {
+      "side": "east",
+      "stamp": [
+        9.43,
+        17.44928244147457,
+        24.11
+      ]
+    }
+  ],
+  "stats": {
+    "stone": {
+      "n": 1043,
+      "byteSha": {
+        "position": "8e30f5dac825245839681517bb55b1cbe7fd466d2b1b7d97f30dbe4adbb773fd",
+        "normal": "8904fc82db07a41c7e8eaec65da62a6f39ab85425da9dfde6f7b56b79b0810e5",
+        "uv": "4268c753caf15ef5dff9f3b062cb644832b1bc2bac399a422af6322a0a71891f"
+      },
+      "bounds": [
+        [
+          -16.34000015258789,
+          0,
+          -23.600000381469727
+        ],
+        [
+          16.020000457763672,
+          22.81999969482422,
+          28.192354202270508
+        ]
+      ]
+    },
+    "freestone": {
+      "n": 2976,
+      "byteSha": {
+        "position": "bef40a500c7f7df5da3e139ea026a496fd3bce47a7971080db930486c41acffc",
+        "normal": "c2cca7d7cbf6a20157ed65638f4e6b282a95fdf51db0d424229f2d1d30c8773b",
+        "uv": "6e69ca35f241d44c388bab457d4fd95e27f1c7ca77e7473eec367f5996520ae3"
+      },
+      "bounds": [
+        [
+          -16.280000686645508,
+          0.3799999952316284,
+          -23.854999542236328
+        ],
+        [
+          15.960000038146973,
+          23.59000015258789,
+          28.547922134399414
+        ]
+      ]
+    },
+    "roof": {
+      "n": 92,
+      "byteSha": {
+        "position": "8f73cb8ae7050e4f4f32d1dde6901a9a7a283d81ea610fbabe7dad1e28b502d3",
+        "normal": "3c3d5c1237b8f61d452880fbd71c5ea64084e502f410c911b7447ad42836b479",
+        "uv": "8bc2ca1cad4d7c45ff0ae22d7ef6aebf8a893cebd279c60832bc7920f6e49031"
+      },
+      "bounds": [
+        [
+          -15.854999542236328,
+          13.229999542236328,
+          -23.854999542236328
+        ],
+        [
+          15.53499984741211,
+          21.985000610351562,
+          25.854999542236328
+        ]
+      ]
+    },
+    "copper": {
+      "n": 320,
+      "byteSha": {
+        "position": "a506bedf1f60199ff2dbed24ee54e23cd636910a94c66428be1f8be479594e12",
+        "normal": "fa04b565b2c3146177cc0cba1fa9e319096a6367f6279ce69ad75a0b8a7dc62f",
+        "uv": "1fb1f4b6413323eb630cb9307c90fd133555fedf7b26907b11ef7b6159827ad0"
+      },
+      "bounds": [
+        [
+          -14.635518074035645,
+          14.039999961853027,
+          20.55555534362793
+        ],
+        [
+          12.464444160461426,
+          29.639999389648438,
+          28.06551742553711
+        ]
+      ]
+    },
+    "glass": {
+      "n": 182,
+      "byteSha": {
+        "position": "854bd96258689bb2a1f3fefab5f38d252739d8e2409253a99e72f64348829710",
+        "normal": "d101e624cc82a1e04a43ae54c916de586591982f111fbf55f3fa54db043674b2",
+        "uv": "6280a045143acff6496c9b8b12805c62d3f9eae98c26a8fead80871e5dea5338"
+      },
+      "bounds": [
+        [
+          -15.329999923706055,
+          4.980000019073486,
+          -9.359999656677246
+        ],
+        [
+          15.010000228881836,
+          21.610000610351562,
+          27.77469253540039
+        ]
+      ]
+    },
+    "wood": {
+      "n": 45,
+      "byteSha": {
+        "position": "ebe79db54162c8faf5e62f218aa7f9a8fa3aadc3558d1b6f16f4aecd0cdaaec7",
+        "normal": "0894894cfaa797b45d6911f844c28a9ffda759f48fddfa60ba420b174ac395c5",
+        "uv": "807f434c0411e17c896d4100932f138872cb45148076b274280b08a1e229f16f"
+      },
+      "bounds": [
+        [
+          -4.570000171661377,
+          0.6100000143051147,
+          25.309999465942383
+        ],
+        [
+          4.230000019073486,
+          4.760000228881836,
+          25.336000442504883
+        ]
+      ]
+    },
+    "metal": {
+      "n": 72,
+      "byteSha": {
+        "position": "14c5675f00842990f1e7822b573a5f129053c4ff32cbef5e6f72060e5f890249",
+        "normal": "36f73d320f465cc08c4e1b7a8fc608ac90ae3c679aa750d20f48593638144d78",
+        "uv": "b4891bc35e6bb3217c3ad906c69d8e9478f997bd922336458c9c56ce526297e5"
+      },
+      "bounds": [
+        [
+          -11.285099983215332,
+          17.899999618530273,
+          23.834999084472656
+        ],
+        [
+          9.441900253295898,
+          30.75,
+          25.649999618530273
+        ]
+      ]
+    }
+  },
+  "pins": {
+    "forms": "b54975b49c778d3ed383e09bb9db257c930a7f80a9a011b5c12fdd09c2ea100d",
+    "finishes": "5233c0fcb1e69b89e2a0db84c4db1704aeef32af370601aeb514034151d4b23d",
+    "source": "2370b0ea484881bec9cbd93b77c1c0dce133e365483a65767702f854087ddafe",
+    "prelock": "4c695a3ce3947906386094a641db7da0d2783c355ba98d1191d747975cc0e38b"
+  }
+}
