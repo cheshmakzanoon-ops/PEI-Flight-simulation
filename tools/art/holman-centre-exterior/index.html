@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Holman Centre exterior | PEI Flight Sim</title>
+ <style>
+  :root {color-scheme: dark;font-family:system-ui,sans-serif;background:#151d25;color:#f2f1e9}
+  body {max-width:76rem;margin:0 auto;padding:clamp(1rem,3vw,2.5rem)}
+  h1 {margin:.25em 0 .4em;font-size:clamp(1.6rem,4vw,2.7rem)}
+  p {max-width:58ch;line-height:1.5;color:#c1ccd1}
+  nav {display:flex;flex-wrap:wrap;column-gap:.5rem;row-gap:.45rem;margin:1rem 0}
+  button {color:inherit;background:#253541;border:1px solid #546674;padding:.55rem .7rem;border-radius:.35rem}
+  button[aria-pressed=true] {background:#e2a77f;color:#192029;border-color:#e2a77f}
+  button:focus-visible {outline:2px solid #fed297;outline-offset:2px}
+  canvas {display:block;width:100%!important;height:auto!important;max-width:1050px;border-radius:.4rem}
+  section {border-top:1px solid #3b4a57;margin-top:1.1rem}
+  .tag {color:#f2be97;font-size:.83rem;text-transform:uppercase;letter-spacing:.08em}
+ </style>
+</head>
+<body>
+ <header>
+  <div class="tag">Scenery production · off-map asset</div>
+  <h1>Holman Centre exterior</h1>
+  <p>Inspect the relative roof forms and original exterior materials. This model is not installed in the flight simulator.</p>
+ </header>
+ <nav id="poses" aria-label="Camera"></nav>
+ <nav id="looks" aria-label="Materials"></nav>
+ <div id="review-status" role="status"></div>
+ <section aria-label="Exterior preview" id="review-view"></section>
+ <script type="module" src="/workbench.ts"></script>
+</body>
+</html>

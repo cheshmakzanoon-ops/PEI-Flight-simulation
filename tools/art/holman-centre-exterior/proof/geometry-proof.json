@@ -1,0 +1,317 @@
+{
+  "draws": 7,
+  "triangleCount": 5054,
+  "areaOld": 2554.5254551052944,
+  "pieces": [
+    {
+      "index": 0,
+      "role": "west",
+      "ring": [
+        [
+          0,
+          0
+        ],
+        [
+          12.8,
+          0
+        ],
+        [
+          12.8,
+          31.02438308
+        ],
+        [
+          8.995398914096786,
+          31.006646686874227
+        ],
+        [
+          9.730746045568226,
+          28.748663455119456
+        ],
+        [
+          5.043087158919784,
+          27.220197979477746
+        ],
+        [
+          8.204388636280868,
+          17.44168410947945
+        ],
+        [
+          1.2880133546555297,
+          15.294624944534016
+        ]
+      ],
+      "extents": [
+        8.895833201400833,
+        10.90856042649078
+      ],
+      "area": 279.6759820467074
+    },
+    {
+      "index": 1,
+      "role": "main",
+      "ring": [
+        [
+          12.8,
+          0
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          33,
+          31.11855197
+        ],
+        [
+          12.8,
+          31.02438308
+        ]
+      ],
+      "extents": [
+        14.383501464464644,
+        15.637083788333499
+      ],
+      "area": 627.6436440049999
+    },
+    {
+      "index": 2,
+      "role": "main",
+      "ring": [
+        [
+          33,
+          0
+        ],
+        [
+          61.5,
+          0
+        ],
+        [
+          61.5,
+          37.58622954
+        ],
+        [
+          57.45289618526785,
+          37.58716701038069
+        ],
+        [
+          57.44042767010595,
+          31.232488994492545
+        ],
+        [
+          33,
+          31.11855197
+        ]
+      ],
+      "extents": [
+        14.162691587359099,
+        15.637083788333499
+      ],
+      "area": 914.4893628591223
+    },
+    {
+      "index": 3,
+      "role": "east",
+      "ring": [
+        [
+          61.5,
+          0
+        ],
+        [
+          80.5439055746087,
+          0
+        ],
+        [
+          81.44699464350437,
+          37.58160901177189
+        ],
+        [
+          61.5,
+          37.58622954
+        ]
+      ],
+      "extents": [
+        15.957585923192958,
+        15.957585923192958
+      ],
+      "area": 732.7164663329763
+    }
+  ],
+  "streams": {
+    "roof": {
+      "position": "db9592756444d30a4d6eed85afcebb29f8fc5fa579e790dc296e6bd8cad3a132",
+      "normal": "b9e8d4b315367299f6b494d7546ad9d0f7226448bbc4ca2199ac9200600b0680",
+      "uv": "5b7c420db3d562465c983aaef14bfa77c90f4158fbbb398adeb82b78f4a9c072"
+    },
+    "stoneBase": {
+      "position": "f3129f066ed74c779d6fbf6f8c3b9ebeea262cd31c87eae351ab73549dc4d15b",
+      "normal": "6d903bec4e23c3c1897ff4499e91e81bedb23401521cea03cf017eb18695967e",
+      "uv": "d1f50b9559b139a9b9a7b029976c1c497bfa255d947cee5d9d3f5bb4c0bf0d90"
+    },
+    "brick": {
+      "position": "2662e996bdd37219751eeef2d71a5b22658fec3653c37facc11b6fa7b0363dbf",
+      "normal": "69002edd648b68cbe41b1fa33b3485c1b4a771a586eb6df27b94d53d4613bf03",
+      "uv": "3ca3e4de3816af9b6b8c26d6ad5ca9c6bb6ed6f9be65c12cf8e6a7911398cb5a"
+    },
+    "stoneDetail": {
+      "position": "964961d8ede4acad8de41cc57ea8976b4fea8f4563b7f7f4e3f2c193218472b1",
+      "normal": "c94b32476f9d7a199eb6af4924af41baea3484ce07dd10a979c58e74426c09d1",
+      "uv": "d32833e63215de04aafb3411864e77a4b6692723c4c8f2433a272bda67106cf2"
+    },
+    "glazing": {
+      "position": "aae87fa1973882f0c0c6a2a7ae197fd461ca731ae775842c832315fa39083d8f",
+      "normal": "5ead9f3fb0951c37997b9d1d41e3e3cf9a3f47e408fbce57387abe6410812ed7",
+      "uv": "d44c5aff959e06010f058ffff02bcdbffdc146d536265c687fd09b8103e028a5"
+    },
+    "metal": {
+      "position": "72e29654afd8ab0b0f68f22088245d424f65804c4b562d85400ca64f8fbdb882",
+      "normal": "79c2efdc757c53380194504010503fb7b24e7e512d398524d77248890459bb38",
+      "uv": "3832ff69ff902be5c72b22e2c45c76c0b5129a9a954af93716a82a711cbc41ed"
+    },
+    "curtain": {
+      "position": "50be697574e7ad34ae95ab66d95a682e752e254cdeb24650d8e93d20e200fce6",
+      "normal": "9549f5545673f2aacf6b00f2567babc428decf5c191aa12fba5ae92cac0f83a5",
+      "uv": "10e337c07467c26ccd98211f35e8086c444da5d1c9f77e45603193735b36172a"
+    }
+  },
+  "roles": {
+    "roof-west-0": 6,
+    "sealed-base-0": 6,
+    "facade-0-base": 118,
+    "waterfront-upper-street-shop-reveal": 136,
+    "waterfront-upper-street-shop-jamb": 136,
+    "waterfront-upper-street-shop": 34,
+    "facade-0-upper": 360,
+    "water-street-arch-reveal": 532,
+    "water-street-arch-jamb": 532,
+    "water-street-arch": 196,
+    "facade-0-pale-coping": 8,
+    "opaque-internal-existing-footprint": 24,
+    "opaque-internal-coping": 12,
+    "facade-4-base": 75,
+    "facade-4-upper": 134,
+    "facade-4-pale-coping": 6,
+    "facade-5-base": 2,
+    "facade-5-upper": 2,
+    "facade-5-pale-coping": 2,
+    "facade-6-base": 2,
+    "facade-6-upper": 2,
+    "facade-6-pale-coping": 2,
+    "facade-7-base": 2,
+    "facade-7-upper": 2,
+    "facade-7-pale-coping": 2,
+    "facade-8-base": 2,
+    "facade-8-upper": 2,
+    "facade-8-pale-coping": 2,
+    "facade-9-base": 2,
+    "facade-9-upper": 2,
+    "facade-9-pale-coping": 2,
+    "roof-main-1": 2,
+    "sealed-base-1": 2,
+    "trail-lower-masonry-recess-reveal": 176,
+    "trail-lower-masonry-recess-jamb": 176,
+    "trail-lower-masonry-recess": 72,
+    "harbour-and-spring-timber-case-reveal": 600,
+    "harbour-and-spring-timber-case-jamb": 600,
+    "harbour-and-spring-timber-case": 150,
+    "roof-main-2": 4,
+    "sealed-base-2": 4,
+    "facade-2-base": 71,
+    "modern-south-dark-insert-reveal": 64,
+    "modern-south-dark-insert-jamb": 64,
+    "modern-south-dark-insert": 16,
+    "facade-2-upper": 106,
+    "facade-2-pale-coping": 4,
+    "facade-3-base": 2,
+    "facade-3-upper": 30,
+    "facade-3-pale-coping": 2,
+    "roof-east-3": 2,
+    "sealed-base-3": 2,
+    "facade-1-base": 82,
+    "spring-lower-recess-reveal": 104,
+    "spring-lower-recess-jamb": 104,
+    "spring-lower-recess": 26,
+    "facade-1-upper": 242,
+    "facade-1-pale-coping": 2
+  },
+  "scope": "Exact decoded Float32 local detached streams, no stock hole, earth or gate. Protected roof witnesses use coordinates only, not raw observed elevations. Opaque part boundaries per authored slab.",
+  "topProof": {
+    "mainN": 263,
+    "eastN": 96,
+    "mainHeightMax": 3.358550628718149e-7,
+    "eastHeightMax": 3.652592042158176e-7
+  },
+  "imageHits": {
+    "curtain-lower": {
+      "actual": "curtain",
+      "worldStudy": [
+        59.1,
+        2.28,
+        37.39578425053678
+      ]
+    },
+    "curtain-upper": {
+      "actual": "curtain",
+      "worldStudy": [
+        59.1,
+        9.73,
+        37.39578425053677
+      ]
+    },
+    "not-left-on-black": {
+      "actual": "brick",
+      "worldStudy": [
+        53,
+        7.1,
+        31.211788175714027
+      ]
+    },
+    "east-controls-no-black": {
+      "actual": "glazing",
+      "worldStudy": [
+        69.12,
+        7.62,
+        37.36646301086218
+      ]
+    },
+    "base-material-east": {
+      "actual": "stoneBase",
+      "worldStudy": [
+        77.51,
+        0.61,
+        37.58252109164127
+      ]
+    }
+  },
+  "winding": {
+    "counts": [
+      {
+        "edges": 312,
+        "wrong": 0,
+        "examples": []
+      },
+      {
+        "edges": 1230,
+        "wrong": 0,
+        "examples": []
+      },
+      {
+        "edges": 2283,
+        "wrong": 0,
+        "examples": []
+      },
+      {
+        "edges": 3756,
+        "wrong": 0,
+        "examples": []
+      }
+    ],
+    "minimumTriangleArea": 0.0017500161999567116,
+    "minNormal": 0.999999592165907,
+    "volumes": [
+      2817.1377092399102,
+      9407.497190145456,
+      13582.313006136894,
+      11658.322471185667
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+ "scope":"Unchanging declared detached exterior studio geometry form/material control, not absolute or ordinary game camera pose. No source pixels or current surveyed silhouette. Positive steep/brick/canopy/glass, see technical flight proxy separately.",
+ "size":[1024,660],"cameraPlanes":[0.08,1000],"mainLight":[-47,128,91],"ambient":1.85,
+ "poses":[
+  {"id":"southeast-air","eye":[124,67,156],"target":[43,7.6,19],"fov":37},
+  {"id":"south-overlook","eye":[35,24,125],"target":[43,7.8,22],"fov":46},
+  {"id":"northeast-corner","eye":[117,14,-61],"target":[48,7.8,12],"fov":50},
+  {"id":"south-glass-and-stone","eye":[65,10.3,70],"target":[59.3,7.1,35.7],"fov":50}
+ ]
+}

@@ -40,6 +40,11 @@ jobs:
           cmp tools/art/souris-st-mary-study/proof/lancet-geometry.json /tmp/souris-st-mary-lancets.json
           ./node_modules/.bin/tsc -p tools/art/souris-st-mary-study/tsconfig.json
           ./node_modules/.bin/vite build tools/art/souris-st-mary-study --config tools/art/souris-st-mary-study/vite.config.ts --outDir /tmp/souris-st-mary-studio-dist --emptyOutDir
+      - name: Verify the off-map Holman Centre asset
+        run: |
+          node --experimental-strip-types --test tools/art/holman-centre-exterior/holman-detached-portable.test.mjs
+          ./node_modules/.bin/tsc -p tools/art/holman-centre-exterior/tsconfig.json
+          ./node_modules/.bin/vite build tools/art/holman-centre-exterior --base ./ --outDir /tmp/pei-holman-studio-dist --emptyOutDir
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: ci-dist-unverified
