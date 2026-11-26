@@ -70,6 +70,7 @@ the original Cavendish coastal overdraw case after two relocations.
 
 ## Coastal terrain and materials
 
+- [Round Pond coastal alignment](qa/round-pond-shore/): a normal Prince Open Shore flight revealed a dated shoreline mismatch. Geometry and tint stay unchanged pending matched physical data.
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
 - [Access PEI O’Leary membrane tone](qa/oleary-access-roof-tone.md): one signed roof color review and ordinary departure proof.
 - [Souris southwest exterior material](qa/souris-west-facing.md): exact receiver, one façade, independent route proof and fallback.

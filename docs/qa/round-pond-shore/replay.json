@@ -1,0 +1,80 @@
+{
+  "baseCommit": "564a7cd3ae3421d5848d951fc4684e17fff2deed",
+  "departure": "prince-open-shore-pass",
+  "precision": "Scene metres except image pixels. RGB and stock-terrain screen projections are candidates, not native draw-owner IDs.",
+  "camera": {
+    "mode": "Chase",
+    "viewport": [
+      840,
+      560
+    ],
+    "flight": "Ordinary Begin flight, neutral controls, deterministic browser frame timing",
+    "screenRegion": "Full width; top inclusive, bottom exclusive"
+  },
+  "sourceCheck": {
+    "latitudeLimitsDegrees": [
+      46.9225,
+      46.9275
+    ],
+    "transectCount": 11,
+    "stepDegrees": 0.0005,
+    "stockMaskEastOfDatedReferenceMetres": [
+      22.432,
+      29.598
+    ],
+    "dryOrWetSideGuardMetres": 3,
+    "shorelineReference": "Dated post-Fiona mapped coast; unknown local tidal and marker convention. Not redistributed."
+  },
+  "frames": [
+    {
+      "traveledMetres": 80.1625,
+      "verticalPixels": [
+        274,
+        315
+      ],
+      "originalImageSHA256": "2713824c16d4726406e38323ccd2e0304eda10f95472dfb53f9a923145610f61",
+      "strongWarmCandidates": 820,
+      "seawardBeyondGuard": 795,
+      "landwardBeyondGuard": 0,
+      "landwardAtLeastModeratePotential": 28,
+      "landwardAtLeastStrongPotential": 0
+    },
+    {
+      "traveledMetres": 221.479,
+      "verticalPixels": [
+        296,
+        342
+      ],
+      "originalImageSHA256": "55463d62535dc5062e6982d14466f0023dcf7b889855f5c3242d844956961f65",
+      "strongWarmCandidates": 2778,
+      "seawardBeyondGuard": 2559,
+      "landwardBeyondGuard": 0,
+      "landwardAtLeastModeratePotential": 37,
+      "landwardAtLeastStrongPotential": 0
+    },
+    {
+      "traveledMetres": 423.462,
+      "verticalPixels": [
+        374,
+        433
+      ],
+      "originalImageSHA256": "50a07943ea506eac7555f6be688487edbcefb9a1aa012a215058557b0bc10334",
+      "strongWarmCandidates": 9852,
+      "seawardBeyondGuard": 8794,
+      "landwardBeyondGuard": 0,
+      "landwardAtLeastModeratePotential": 245,
+      "landwardAtLeastStrongPotential": 0
+    }
+  ],
+  "decision": "Do not recolour, remove or reshape the band from this evidence.",
+  "method": {
+    "stockTint": "0.79 × (1 − smoothstep(4,25,coast)) × (1 − smoothstep(4,14,y))",
+    "strongCandidate": "Stock coat contribution >0.25; signed stock distance ≥4m; original warm screenshot RGB; approximate original terrain hit ahead of water.",
+    "potentialThresholds": [
+      0.1,
+      0.25
+    ],
+    "guardSidedness": "Signed east–west offset from a monotone locally unambiguous reference at the same latitude.",
+    "verification": "Stock pose independently replayed from departure and fixed neutral physics; reported pixels remain a conservative aerial projection due to visible-occluder ambiguity."
+  }
+}
