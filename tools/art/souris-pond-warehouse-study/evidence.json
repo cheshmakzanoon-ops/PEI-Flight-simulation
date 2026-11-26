@@ -1,0 +1,450 @@
+{
+  "model": "q130331/189",
+  "standalone": true,
+  "currentMapOrContactChange": false,
+  "source": {
+    "date": "2020-09-15, nominal project reference",
+    "window": [
+      175357,
+      25152,
+      290,
+      220
+    ],
+    "edges": [
+      2436978,
+      346218
+    ],
+    "urls": {
+      "dtm": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+      "dsm": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif"
+    },
+    "sha": {
+      "dtm": "f25d1f5b17ea87604d01bc21a9c5afc441fcf8e97f490943652331e06c8c967c",
+      "dsm": "92939624697d4b04255f7233f29ddba9dfb50b0cb17ad0d69ab2fd2ec8e51027"
+    },
+    "nodata": {
+      "dtm": -32767.0,
+      "dsm": -32767.0
+    }
+  },
+  "originalAtlasSHA256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "originalFeatureTileSHA256": "a7ee1263f0c19b2b570f24cf1874c0e882b895d778ad63ab3939d8adcaca7d55",
+  "sameInputFitNotValidation": {
+    "method": "Exact emitted 3D mesh roof minus its own old seat as training reconstruction at 3,006 native samples, not a validation holdout.",
+    "all": {
+      "n": 3006,
+      "failed": 0,
+      "medianSignedM": -0.009926273680505915,
+      "absP50P90P95PMaxM": [
+        0.0241,
+        0.1377,
+        0.2476,
+        1.5877
+      ]
+    },
+    "interior": {
+      "n": 2154,
+      "failed": 0,
+      "medianSignedM": -0.012236976229610619,
+      "absP50P90P95PMaxM": [
+        0.0194,
+        0.0699,
+        0.1069,
+        0.8573
+      ]
+    },
+    "perimeter": {
+      "n": 852,
+      "failed": 0,
+      "medianSignedM": -3.0609800607095394e-05,
+      "absP50P90P95PMaxM": [
+        0.0596,
+        0.2711,
+        0.3935,
+        1.5877
+      ]
+    }
+  },
+  "independentBlockedSourceFieldTestNotFinalMesh": {
+    "fourMetreBlock0": {
+      "fit": 2223,
+      "withheld": 783,
+      "predicted": {
+        "compared": 773,
+        "absDifferenceM": [
+          0.0001,
+          0.0798,
+          0.2814,
+          0.3784,
+          1.5546
+        ],
+        "p95LE1M": true,
+        "over1M": 5
+      },
+      "interior": {
+        "compared": 554,
+        "absDifferenceM": [
+          0.0001,
+          0.0802,
+          0.2461,
+          0.3334,
+          0.848
+        ],
+        "p95LE1M": true,
+        "over1M": 0
+      },
+      "unpredicted": 10,
+      "unpredictedInterior": 0
+    },
+    "fourMetreBlock1": {
+      "fit": 2207,
+      "withheld": 799,
+      "predicted": {
+        "compared": 796,
+        "absDifferenceM": [
+          0.0006,
+          0.0956,
+          0.3077,
+          0.406,
+          1.089
+        ],
+        "p95LE1M": true,
+        "over1M": 1
+      },
+      "interior": {
+        "compared": 544,
+        "absDifferenceM": [
+          0.0012,
+          0.104,
+          0.2863,
+          0.3681,
+          0.7543
+        ],
+        "p95LE1M": true,
+        "over1M": 0
+      },
+      "unpredicted": 3,
+      "unpredictedInterior": 0
+    },
+    "fourMetreBlock2": {
+      "fit": 2302,
+      "withheld": 704,
+      "predicted": {
+        "compared": 704,
+        "absDifferenceM": [
+          0.0003,
+          0.0645,
+          0.2338,
+          0.3406,
+          1.2039
+        ],
+        "p95LE1M": true,
+        "over1M": 3
+      },
+      "interior": {
+        "compared": 526,
+        "absDifferenceM": [
+          0.0003,
+          0.0527,
+          0.2006,
+          0.2552,
+          0.8075
+        ],
+        "p95LE1M": true,
+        "over1M": 0
+      },
+      "unpredicted": 0,
+      "unpredictedInterior": 0
+    },
+    "fourMetreBlock3": {
+      "fit": 2286,
+      "withheld": 720,
+      "predicted": {
+        "compared": 706,
+        "absDifferenceM": [
+          0.0001,
+          0.0795,
+          0.2534,
+          0.3068,
+          1.4918
+        ],
+        "p95LE1M": true,
+        "over1M": 4
+      },
+      "interior": {
+        "compared": 530,
+        "absDifferenceM": [
+          0.0004,
+          0.0659,
+          0.2388,
+          0.2698,
+          0.4385
+        ],
+        "p95LE1M": true,
+        "over1M": 0
+      },
+      "unpredicted": 14,
+      "unpredictedInterior": 0
+    }
+  },
+  "nativeViewport": {
+    "mode": "Accelerated native WebGL2 ordinary Chase, exact frame camera and two opposite marker colors on each existing depth path. Single positive view, no hardware or current-condition claim.",
+    "pixels": [
+      750,
+      500
+    ],
+    "changed": {
+      "strong": 11247,
+      "rgb": 11253,
+      "alpha": 0,
+      "outside": 0,
+      "oldSupport": 11252,
+      "newSupport": 8348
+    },
+    "stockRGBAExactRestored": true,
+    "counts": {
+      "stock": {
+        "draws": 160,
+        "triangles": 313467,
+        "gl": 0
+      },
+      "active": {
+        "draws": 161,
+        "triangles": 322183,
+        "gl": 0
+      },
+      "restored": {
+        "draws": 160,
+        "triangles": 313467,
+        "gl": 0
+      }
+    },
+    "sourceKeeper": {
+      "originalQ99Omitted": 48,
+      "originalQ99IndexCountDuringOldMarker": 34203,
+      "q99AndQ189IndexCountDuringCandidate": 34047
+    }
+  },
+  "originalLaserWitness": {
+    "scope": "Shared 2020 flight, exported class and return codes, not an independent acquisition, current footprint or survey of an eave. Strips trimmed five metres at both ends; perpendicular offset relative to each original wall.",
+    "objects": [
+      {
+        "input": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_700000.copc.laz",
+        "etag": "\"a1a5f35aab8ff44a228e91b462fd6efc-5\"",
+        "objectBytes": 35814087,
+        "decodedSha256": "73c42d60ca567874353cd36937223272dc90c064f0ade50660686e0786de6540",
+        "firstTracks": [
+          60711
+        ]
+      },
+      {
+        "input": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_457000_701000.copc.laz",
+        "etag": "\"cc873f421d8ba714d30ad623fb3be1a1-7\"",
+        "objectBytes": 52238150,
+        "decodedSha256": "087d18eee2958e2699843c7ddd8f4c3964e4f7c2db9651bcec989ed9d7e168c0",
+        "firstTracks": [
+          60711
+        ]
+      }
+    ],
+    "selectedStripCounts": {
+      "west": [
+        {
+          "inwardNegOffset": [
+            0.0,
+            0.5
+          ],
+          "firstBuilding": {
+            "n": 124,
+            "nonempty2mAxes": 30,
+            "p10p50p90m": [
+              2.614,
+              2.938,
+              3.095
+            ]
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            0.5,
+            1.0
+          ],
+          "firstBuilding": {
+            "n": 25,
+            "nonempty2mAxes": 10,
+            "p10p50p90m": [
+              2.08,
+              2.388,
+              2.465
+            ]
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            1.0,
+            1.5
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            1.5,
+            2.0
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 34,
+            "nonempty2mAxes": 16,
+            "p10p50p90m": [
+              0.019,
+              0.049,
+              0.077
+            ]
+          }
+        },
+        {
+          "inwardNegOffset": [
+            2.0,
+            2.5
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 123,
+            "nonempty2mAxes": 24,
+            "p10p50p90m": [
+              0.005,
+              0.029,
+              0.052
+            ]
+          }
+        }
+      ],
+      "middle": [
+        {
+          "inwardNegOffset": [
+            0.0,
+            0.5
+          ],
+          "firstBuilding": {
+            "n": 71,
+            "nonempty2mAxes": 22,
+            "p10p50p90m": [
+              2.581,
+              2.91,
+              3.233
+            ]
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            0.5,
+            1.0
+          ],
+          "firstBuilding": {
+            "n": 13,
+            "nonempty2mAxes": 8,
+            "p10p50p90m": [
+              2.147,
+              2.392,
+              2.678
+            ]
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            1.0,
+            1.5
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          }
+        },
+        {
+          "inwardNegOffset": [
+            1.5,
+            2.0
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 48,
+            "nonempty2mAxes": 23,
+            "p10p50p90m": [
+              -0.018,
+              0.02,
+              0.07
+            ]
+          }
+        },
+        {
+          "inwardNegOffset": [
+            2.0,
+            2.5
+          ],
+          "firstBuilding": {
+            "n": 0,
+            "nonempty2mAxes": 0,
+            "p10p50p90m": []
+          },
+          "firstGround": {
+            "n": 128,
+            "nonempty2mAxes": 26,
+            "p10p50p90m": [
+              -0.032,
+              -0.012,
+              0.023
+            ]
+          }
+        }
+      ]
+    },
+    "hold": "Independent exterior test with stricter +0.75m cutoff found six western pulses in two blocks, none in the centre span; none after +1.75m. No authority for a continuous extended perimeter."
+  }
+}
