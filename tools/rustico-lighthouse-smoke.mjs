@@ -52,10 +52,17 @@ try{
    const d=window.islandAirDiagnostics;return [d.localGroundGrades.includes(grade),!!d.northRusticoLighthouse?.visible];
   },grade);
   assert.deepEqual(initial,[false,false]);
-  await page.evaluate(()=>{
-   const d=window.islandAirDiagnostics,q=window.rusticoSmoke;q.origin=[d.x,d.z];q.active=true;
+  const begin=page.getByRole('button',{name:'Begin flight'});
+  assert(await begin.isVisible()&&await begin.isEnabled(),'Dispatch button is not usable');
+  // The replay advances virtual time; arm it and invoke the real Dispatch
+  // handler in one task, without waiting for a compositor stability frame
+  // while a software renderer is servicing the enlarged terrain close-up.
+  await begin.evaluate(button=>{
+   const d=window.islandAirDiagnostics,q=window.rusticoSmoke;
+   if(!(button instanceof HTMLButtonElement)||button.disabled||d?.mode!=='dispatch')throw Error('Rustico Dispatch was not ready');
+   q.origin=[d.x,d.z];q.active=true;button.click();
   });
-  await page.getByRole('button',{name:'Begin flight'}).click();
+  await page.waitForFunction(site=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===site,site,{timeout:45000});
   await page.waitForFunction(last=>!!window.rusticoSmoke.frames[last],mode==='corrupt'?160:extract.at(-1),{timeout:245000});
   const frames=await page.evaluate(()=>window.rusticoSmoke.frames);
   for(const [pose,value] of Object.entries(frames)){
