@@ -12,7 +12,7 @@ function lampRoster(scene:Scene,camera:Camera){
 }
 /** Three r187 WebGL's public detached compile plus its narrowly pinned
  * currentProgram handle. A never-submitted program cannot discard stock. */
-export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:1|2|4|5=5,recheckUnattached=false):OlearyLink{
+export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:1|2|4|5=5,recheckUnattached=false,timeoutMs?:number):OlearyLink{
  return async(group,signal)=>{
   try{
    if(REVISION!=='187'||signal.aborted||group.parent||(draws===4?group.children.length!==2:group.children.length!==draws)||typeof r.compile!=='function')return;
@@ -40,11 +40,12 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,dra
    // Five cold station materials may complete over several busy software
    // frames. Keep that artist's detached wait bounded without reducing the
    // required programs or relaxing admission for the smaller previews.
-   const station=draws===5,budget=station?4200:1600;
+   const budget=timeoutMs??(draws===5?4200:1600);
    const deadline=performance.now()+budget;
    // Use only our bounded poll; don't leave a pending Three compileAsync
    // timer after loss of the old tile's admission lease.
-   for(let ticks=0;ticks<=(station?264:100);ticks++){
+   const maxTicks=timeoutMs===undefined?(draws===5?264:100):Math.ceil(budget/16);
+   for(let ticks=0;ticks<=maxTicks;ticks++){
     if(!pending()||performance.now()>=deadline)return;
     if(!records.every(([,p])=>p!.isReady())){await pause();continue;}
     if(!records.every(([,p])=>gl.isProgram(p!.program)&&gl.getProgramParameter(p!.program,gl.LINK_STATUS)===true))return;

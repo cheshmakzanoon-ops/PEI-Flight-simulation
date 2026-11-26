@@ -591,6 +591,8 @@ export class World {
    owners:readonly {mesh:THREE.Mesh;stock:THREE.Material;authored:THREE.ShaderMaterial}[];
    proof?:OlearyProgramProof;started:boolean;mounted:boolean};
  get tryonRockActive(){return this.tryonRockStage?.mounted===true;}
+ private tryonRockPhase='stock';
+ get tryonRockState(){return this.tryonRockPhase;}
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
    close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
@@ -666,6 +668,7 @@ export class World {
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
    const tryonRockAllowed=closeOpenCoast&&!legacyShore&&tryonRockMatches(tryonRockTerrainSha,T.spec.bounds,cover);
+   if(tryonRockTerrainSha)this.tryonRockPhase=tryonRockAllowed?'missing-owners':'stock-source';
    const montagueGround=T.coastalGrids.find(g=>g.spec.id===MONTAGUE_GROUND_ID);
    const benchMask=east?bench:undefined;
    let benchMap:THREE.DataTexture|undefined;
@@ -1016,7 +1019,8 @@ export class World {
       &&exactCurves[0].material===material){
    stoneOwners.push({mesh:exactCurves[0],stock:material,authored:tryonRock[1]});
    this.tryonRockStage={materials:tryonRock,owners:stoneOwners,started:false,mounted:false};
-  }
+   this.tryonRockPhase='pending';
+  }else if(tryonRock)this.tryonRockPhase='missing-owners:'+exactStoneTriangles+'/'+stoneOwners.length+'/'+(exactCurves?.length??0);
   if(review&&reviewed.length){
    const geom=new THREE.BufferGeometry(),mesh=new THREE.Mesh(geom,material);
    mesh.name='reviewed Montague shoreline support';mesh.visible=false;
@@ -1027,24 +1031,28 @@ export class World {
  /** Compile the two exact linked materials without submitting coastline. */
  async prepareTryonRock(camera:THREE.Camera){
   const s=this.tryonRockStage;if(!s||s.started)return;
-  s.started=true;
-  if(!globalThis.crypto?.subtle||await verifyDecodedCover(this.cover)!==CAPE_TRYON_COVER_DECODED)return;
+  s.started=true;this.tryonRockPhase='checking-cover';
+  if(!globalThis.crypto?.subtle||await verifyDecodedCover(this.cover)!==CAPE_TRYON_COVER_DECODED){
+   this.tryonRockPhase='stock-cover';return;
+  }
+  this.tryonRockPhase='compiling';
   const probe=new THREE.Group(),g=new THREE.PlaneGeometry(1,1);
   for(const m of s.materials)probe.add(new THREE.Mesh(g,m));
   try{
-   const proof=await olearyLinkPrograms(this.renderer,camera,this.scene,2)(probe,new AbortController().signal);
-   if(this.tryonRockStage===s&&proof?.())s.proof=proof;
+   const proof=await olearyLinkPrograms(this.renderer,camera,this.scene,2,false,4600)(probe,new AbortController().signal);
+   if(this.tryonRockStage===s&&proof?.()){s.proof=proof;this.tryonRockPhase='linked';}
+   else this.tryonRockPhase='stock-link';
   }finally{probe.clear();g.dispose();}
  }
  private syncTryonRock(){
   const s=this.tryonRockStage;if(!s?.proof)return;
   if(!s.proof()||s.owners.some(q=>q.mesh.material!==(s.mounted?q.authored:q.stock))){
    for(const q of s.owners)if(q.mesh.material===q.authored)q.mesh.material=q.stock;
-   s.proof=undefined;s.mounted=false;return;
+   s.proof=undefined;s.mounted=false;this.tryonRockPhase='stock-revoked';return;
   }
   if(!s.mounted){
    for(const q of s.owners)q.mesh.material=q.authored;
-   s.mounted=true;
+   s.mounted=true;this.tryonRockPhase='live';
   }
  }
  private refreshMontagueReviewShore(){

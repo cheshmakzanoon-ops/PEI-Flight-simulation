@@ -105,10 +105,23 @@ try{
   const url=new URL('?diagnostics&departure='+site+'&capeTryonRockReview',base);
   assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site);
-  await page.waitForFunction(rejected=>{
+  const sample=()=>page.evaluate(()=>{
    const d=window.islandAirDiagnostics,s=window.capeStoneQA;
-   return rejected?s.refused>0&&!d?.tryonRockPreview:d?.tryonRockPreview===true;
-  },refuse,{polling:150});
+   return {phase:d?.tryonRockState,active:d?.tryonRockPreview,repair:d?.tryonCoast,
+    authoredSources:s.compiled,refused:s.refused,drawCalls:d?.drawCalls,mode:d?.mode};
+  });
+  console.log('Cape Stone dispatch',refuse?'refused':'normal',await sample());
+  try{
+   await page.waitForFunction(rejected=>{
+    const d=window.islandAirDiagnostics,s=window.capeStoneQA;
+    if(d?.tryonRockState?.startsWith('stock-')||d?.tryonRockState?.startsWith('missing-owners'))return true;
+    return rejected?s.refused>0&&d?.tryonRockState==='stock-link':d?.tryonRockPreview===true;
+   },refuse,{polling:150,timeout:45000});
+  }finally{console.log('Cape Stone link result',refuse?'refused':'normal',await sample(),errors);}
+  const admitted=await sample();
+  assert.equal(admitted.phase,refuse?'stock-link':'live',JSON.stringify(admitted));
+  assert.equal(admitted.active,!refuse);
+  if(refuse)assert(admitted.refused>0,JSON.stringify(admitted));
   await page.getByRole('button',{name:'Begin flight'}).click();
   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===v,site);
   const start=await page.evaluate(()=>window.islandAirDiagnostics);
