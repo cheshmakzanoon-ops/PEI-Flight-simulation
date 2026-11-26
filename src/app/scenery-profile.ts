@@ -293,6 +293,25 @@ export function runway03PavementRequested(q:URLSearchParams){
   !q.has('stockRunway03Pavement');
 }
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
+export const BASIN_HEAD_DEPARTURE='basin-head-low';
+/** The established coupled inlet preview remains an explicit reload. Do
+ * not inject its profile into default options or animate water at selection. */
+export function basinHeadDispatchState(search:string){
+ const q=new URLSearchParams(search),detail=isDetailScenery(search),selected=q.has('basinChannel');
+ const legacy=new URLSearchParams(q);legacy.delete('basinChannel');
+ const compatible=!detail&&q.getAll('scenery').length<=1&&q.getAll('scenery').every(v=>v===''||v==='standard')&&
+   !q.has('qa')&&standardComparisonQuery(legacy);
+ return {selected,detail,compatible};
+}
+export function switchBasinHeadDispatchURL(source:string,enable:boolean,departureId:string){
+ const url=new URL(source),state=basinHeadDispatchState(url.search);
+ if(state.detail||enable&&(departureId!==BASIN_HEAD_DEPARTURE||!state.compatible))return url.href;
+ if(enable)url.searchParams.set('basinChannel','');
+ else url.searchParams.delete('basinChannel');
+ url.searchParams.set('departure',departureId);
+ return url.href;
+}
+
 /** One local terrain + exterior lease; do not set the bundled review flag. */
 export function standardRusticoLighthouseRequested(q:URLSearchParams){
  return !q.has('stockRusticoLighthouse')&&!q.has('qa')&&q.getAll('scenery').length<=1&&

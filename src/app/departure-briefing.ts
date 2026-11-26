@@ -35,9 +35,12 @@ export function departureBriefing(site: Site, search: string): string {
       ' The surveyed lighthouse is off with these scenery settings.');
   }
   if (site.id === 'basin-head-low') {
-    return site.note + (options.has('basinSand') || standardBasinSandRequested(options) ?
+    const inlet = options.has('basinChannel') && !options.has('noBasinBank') ?
+      ' The separate inlet preview is selected: look for the Cannery and footbridge.' : '';
+    const sand = options.has('basinSand') || standardBasinSandRequested(options) ?
       ' Look for the pale sand on the seaward beach as you approach.' :
-      ' The pale sand treatment is off with these scenery settings.');
+      ' The pale sand treatment is off with these scenery settings.';
+    return site.note + inlet + sand;
   }
   if (site.id === 'queens-canopy-pass' || site.id === 'kings-canopy-pass') {
     return site.note + (standardRegionalCanopyRequested(options) || regionalCanopyRequested(options) ?

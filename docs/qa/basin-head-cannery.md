@@ -1,7 +1,13 @@
 # Basin Head Cannery: measured exterior
 
-The optional `?basinChannel` view now includes the historic Cannery.
-It previews the missing building, not a full campus reconstruction.
+Choose **Basin Head · low pass** in Dispatch and select **Open inlet preview**
+to load the surveyed banks, historic Cannery and footbridge. The equivalent
+URL uses `?departure=basin-head-low&basinChannel`. Select **Close inlet preview**
+in Dispatch to return to the ordinary atlas while keeping the departure.
+This is a separate coupled water-and-ground view, not a cosmetic switch
+during flight. The preview uses the older inlet scenery profile; close
+it before comparing other Standard routes. It does not add the separate outer wharf or reconstruct the
+whole campus. In the normal atlas the inlet preview stays off.
 The camera remains a flight-simulator view; there are no usable
 interiors, walking routes, water-level changes or building collisions.
 
@@ -29,6 +35,13 @@ checked geometry and contact supports remained unchanged. The apron
 is a documented interior portion of the longer mapped wharf, not its
 true retaining edge. Its displayed level sits above the measured
 surface by the existing renderer lift plus a narrow seating clearance.
+
+![Standard on the left and the inlet preview on the right, at the same flown position](basin-inlet-current-flight.webp)
+
+The [ordinary flight replay](basin-inlet-current-flight.json) matched
+position, altitude and heading at three points in the same departure.
+It checks both inlet structures and leaves the outer wharf absent; it
+does not assert matching terrain contact or optics between the views.
 
 ![Two actual simulator cameras before and after the new exterior and corrected ground](basin-head-cannery-comparison.webp)
 The [actual scene gate](basin-head-cannery-render-gate.json) records both

@@ -1,0 +1,116 @@
+{
+  "scope": "Neutral Chase on ordinary Basin Head route, two explicit settings. Airframe position, altitude and heading match; underlying terrain may differ. Independent asset streaming and Standard optics are not a same-renderer pixel isolation test.",
+  "imageCheckpoint": "318",
+  "cases": [
+    {
+      "mode": "standard",
+      "req": [
+        "/world/ground/basin-head/v1/basin-head-seaward.rg.gz",
+        "/world/ground/basin-head/v1/basin-sand-scan.rgba.gz"
+      ],
+      "frames": {
+        "160": {
+          "m": 162.66846183037723,
+          "pose": [
+            83942.15065632833,
+            13969.209773364104,
+            96.94457178578004,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": null,
+          "bridge": false,
+          "cannery": false,
+          "wharf": false,
+          "gl": 0
+        },
+        "318": {
+          "m": 320.887249262184,
+          "pose": [
+            83887.59771290523,
+            13820.693238715663,
+            98.05110897223982,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": null,
+          "bridge": false,
+          "cannery": false,
+          "wharf": false,
+          "gl": 0
+        },
+        "490": {
+          "m": 494.5014658858752,
+          "pose": [
+            83827.73399422666,
+            13657.72627454435,
+            99.27743438305104,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": null,
+          "bridge": false,
+          "cannery": false,
+          "wharf": false,
+          "gl": 0
+        }
+      },
+      "err": []
+    },
+    {
+      "mode": "inlet",
+      "req": [
+        "/world/harbour/odbl/v1/basin-bank-terrain-v2.cm.gz",
+        "/world/harbour/odbl/v1/basin-head-channel.rg.gz"
+      ],
+      "frames": {
+        "160": {
+          "m": 162.66846183037723,
+          "pose": [
+            83942.15065632833,
+            13969.209773364104,
+            96.94457178578004,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": "basin-head-channel-v1",
+          "bridge": true,
+          "cannery": true,
+          "wharf": false,
+          "gl": 0
+        },
+        "318": {
+          "m": 320.887249262184,
+          "pose": [
+            83887.59771290523,
+            13820.693238715663,
+            98.05110897223982,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": "basin-head-channel-v1",
+          "bridge": true,
+          "cannery": true,
+          "wharf": false,
+          "gl": 0
+        },
+        "490": {
+          "m": 494.5014658858752,
+          "pose": [
+            83827.73399422666,
+            13657.72627454435,
+            99.27743438305104,
+            -0.055,
+            5.899212871740833
+          ],
+          "grade": "basin-head-channel-v1",
+          "bridge": true,
+          "cannery": true,
+          "wharf": false,
+          "gl": 0
+        }
+      },
+      "err": []
+    }
+  ]
+}
