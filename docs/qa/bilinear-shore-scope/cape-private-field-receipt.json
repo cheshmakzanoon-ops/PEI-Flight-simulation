@@ -1,0 +1,32 @@
+{
+  "scope": "CPU continuous check of a private trial field against the shipped atlas and preregistered candidate cells. No new scenery bit, native GPU claim or real boundary.",
+  "candidateFieldSHA256": "33dc1305de0dc494dbac6af7f451ebb02183bafa22c1d6c8018a6eb0b68c531c",
+  "stockDecodedCoverSHA256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "units": "stock raw 8-bit code; one code = 2m signed coast scalar. A code margin is not a map-position error.",
+  "cases": {
+    "nominal": {
+      "rectangles": 422730,
+      "possibleWet": 52167,
+      "unauthorizedWet": 18562,
+      "unresolved": 0,
+      "areaUpperBound": 0,
+      "maxOldOnUnauthorized": 127.9431974946604
+    },
+    "halfCode": {
+      "rectangles": 422730,
+      "possibleWet": 52167,
+      "unauthorizedWet": 18562,
+      "unresolved": 1822,
+      "areaUpperBound": 283.27570069066905,
+      "maxOldOnUnauthorized": 127.9431974946604
+    },
+    "oneCode": {
+      "rectangles": 422730,
+      "possibleWet": 52167,
+      "unauthorizedWet": 18562,
+      "unresolved": 4758,
+      "areaUpperBound": 756.353246901062,
+      "maxOldOnUnauthorized": 127.9431974946604
+    }
+  }
+}
