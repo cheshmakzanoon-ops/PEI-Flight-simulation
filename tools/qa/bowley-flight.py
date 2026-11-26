@@ -26,7 +26,7 @@ Thread(target=server.serve_forever,daemon=True).start()
 url=f'http://127.0.0.1:{server.server_port}/?diagnostics'
 all_flags='&bowleySurveyPreview&northCapeWind&spinnakersPreview&northBaywalkPreview&baywalkConcrete&shoreFoamDetail'
 cases=[
- ('stock-cape','','northcape','North Cape',False,False,False),
+ ('stock-cape','&stockBowleyPond','northcape','North Cape',False,False,False),
  ('composed-cape',all_flags,'northcape','North Cape',True,True,False),
  ('composed-baywalk',all_flags,'spinnakers-low','Summerside waterfront · low pass',True,True,False),
  ('bowley-crc-baywalk',all_flags,'spinnakers-low','Summerside waterfront · low pass',False,True,True),
@@ -59,7 +59,7 @@ try:
    d=page.evaluate('window.islandAirDiagnostics')
    assert d.get('bowleyPond')==('bowley-pond-survey-2020' if bowley else None),d
    assert (d['northCape'] is not None)==coexists,d
-   assert len(req)==int(bool(suffix)),req
+   assert len(req)==int(bowley or should_break),req
    assert d['mode']=='flight' and not er and not d['layerWarnings'],(mode,er,d)
    page.keyboard.press('Escape');page.wait_for_function('window.islandAirDiagnostics?.mode==="paused"')
    row={'case':mode,'site':site,'bowley':d['bowleyPond'],'bytesSHA256':sha256(archive).hexdigest(),'requests':len(req),

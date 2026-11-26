@@ -124,3 +124,13 @@ export function loadBowleyPond(base:string,request:typeof fetch=fetch,timeoutMs=
   return new BowleyPond(BOWLEY_POND,bytes);
  });
 }
+
+/** The body checksums alone do not bind the spatial interpretation of
+ * equal-length rasters. Require the original WGS84 pixel-edge registration. */
+export function bowleyAtlasRegistered(terrain:Readonly<{width:number;height:number;bounds:readonly number[];sha256?:string}>,cover:
+ Readonly<{width:number;height:number;sourceSha?:string;sourceDecodedSha?:string}>){
+ const expected=[-64.47,45.94,-61.93,47.1];
+ return terrain.width===4096&&terrain.height===2720&&cover.width===terrain.width&&cover.height===terrain.height&&
+  Array.isArray(terrain.bounds)&&terrain.bounds.length===4&&expected.every((n,i)=>terrain.bounds[i]===n)&&
+  bowleyAtlasMatches(terrain.sha256,cover.sourceSha,cover.sourceDecodedSha);
+}

@@ -65,7 +65,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Near Green Gables | `?gablesTrailReview` | [Mapped gravel connection](qa/gables-trail.md), with short-scale grain on the existing terrain. |
 | Southwest of Green Gables | `?gablesFairwayReview` | [Source-fenced fairway colour](qa/gables-fairway.md) on the verified open ground, without moving the path or golf boundary. |
 | Southwest of Green Gables | `?gablesGradeReview` | [Survey-supported dry rise](qa/gables-southwest-grade.md), a close-range correction to terrain and contact in one small area. |
-| Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
+| Greenwich Dunes | `?stockBowleyPond` | Compare Standard’s [surveyed 2020 Bowley Pond water core](qa/bowley-water.md) with the original dry rendering on **Greenwich Dunes · coastal pass**. |
 | Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](qa/crop-preview.md) adds close soil relief at three selected locations. |
 | Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](qa/province-grass.md) in all three counties, with representative **grassland passes**. |
 | Kings County mapped farmland pass | Standard, on that departure | Close furrows use the verified field mask and scanned generic relief on one original terrain tile. Other departures and Detail keep their existing appearance. |

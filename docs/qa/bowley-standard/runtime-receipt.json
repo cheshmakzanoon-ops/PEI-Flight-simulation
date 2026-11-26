@@ -1,0 +1,400 @@
+{
+  "records": [
+    {
+      "name": "standard",
+      "dispatch": "bowley-pond-survey-2020",
+      "frames": {
+        "1": {
+          "x": 36947.848040809185,
+          "y": 176.94791449112824,
+          "z": 4887.301972647462,
+          "heading": 2.583087292951607,
+          "ground": -0.055,
+          "site": "greenwich-dunes-low",
+          "draws": 198,
+          "triangles": 268621,
+          "pond": "bowley-pond-survey-2020",
+          "warnings": []
+        },
+        "116": {
+          "x": 37287.00428923031,
+          "y": 180.50673061637727,
+          "z": 5399.123118276219,
+          "heading": 2.583087292951607,
+          "ground": -0.055,
+          "site": "greenwich-dunes-low",
+          "draws": 194,
+          "triangles": 271122,
+          "pond": "bowley-pond-survey-2020",
+          "warnings": [],
+          "imageSHA": "f93b995f5a3b1ea993ac06ccc48a74d795973de1242e8ad4c35e7f1876ab9604"
+        }
+      },
+      "requests": 1,
+      "paused": true,
+      "errors": []
+    },
+    {
+      "name": "stock",
+      "dispatch": null,
+      "frames": {
+        "1": {
+          "x": 36947.848040809185,
+          "y": 176.94791449112824,
+          "z": 4887.301972647462,
+          "heading": 2.583087292951607,
+          "ground": -0.055,
+          "site": "greenwich-dunes-low",
+          "draws": 196,
+          "triangles": 238927,
+          "pond": null,
+          "warnings": []
+        },
+        "116": {
+          "x": 37287.00428923031,
+          "y": 180.50673061637727,
+          "z": 5399.123118276219,
+          "heading": 2.583087292951607,
+          "ground": -0.055,
+          "site": "greenwich-dunes-low",
+          "draws": 192,
+          "triangles": 241428,
+          "pond": null,
+          "warnings": [],
+          "imageSHA": "c8a3733fa1518552a06258d66d367be21793546e9f3e0cbcac84b865ac8e3dd7"
+        }
+      },
+      "requests": 0,
+      "paused": true,
+      "errors": []
+    },
+    {
+      "name": "corrupt",
+      "dispatch": null,
+      "frames": {
+        "1": {
+          "x": 36947.848040809185,
+          "y": 176.94791449112824,
+          "z": 4887.301972647462,
+          "heading": 2.583087292951607,
+          "ground": -0.055,
+          "site": "greenwich-dunes-low",
+          "draws": 195,
+          "triangles": 237480,
+          "pond": null,
+          "warnings": []
+        }
+      },
+      "requests": 1,
+      "paused": true,
+      "errors": []
+    }
+  ],
+  "strongLocalPixels": 9107,
+  "matchedFlightSource": "Real compiled TypeScript/Three.js 635\u00d7400 Chromium, native drawn from ordinary Dispatch; exact same airframe motion at recorded frame. Before v3 manifest-shape hardening, which does not change valid source or graphics.",
+  "existingDryMeadowControl": {
+    "south-guard-edge-standard": {
+      "ownerUsesMeadow": true,
+      "ownerUsesBowley": true,
+      "neighborSouthGuard": 0,
+      "active": "bowley-pond-survey-2020",
+      "requests": 1,
+      "errors": [],
+      "over2": 63841
+    },
+    "south-guard-edge-legacy": {
+      "ownerUsesMeadow": false,
+      "ownerUsesBowley": true,
+      "neighborSouthGuard": 1,
+      "active": "bowley-pond-survey-2020",
+      "requests": 1,
+      "errors": [],
+      "over2": 6744
+    },
+    "south-guard-edge-stock": {
+      "ownerUsesMeadow": true,
+      "ownerUsesBowley": false,
+      "neighborSouthGuard": 0,
+      "active": null,
+      "requests": 0,
+      "errors": [],
+      "over2": 63351
+    }
+  },
+  "scope": "Authored 2020 water-body core; no deck, submerged bathymetry, current suitability or change to nearby dry materials.",
+  "finalRegistrationRuntimeControls": [
+    {
+      "id": "changed-registration",
+      "frames": {
+        "1": {
+          "site": "greenwich-dunes-low",
+          "location": [
+            36947.848040809185,
+            176.94791449112824,
+            4887.301972647462,
+            -0.055
+          ],
+          "pond": null,
+          "calls": 195,
+          "triangles": 238679,
+          "actors": {
+            "wanted": 4,
+            "ready": 4,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "warning": []
+        }
+      },
+      "requests": 1,
+      "pond": null,
+      "exactArchiveSHA": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+      "artifactNoErrors": [],
+      "cockpitThenPause": true
+    },
+    {
+      "id": "corrupted",
+      "frames": {
+        "1": {
+          "site": "greenwich-dunes-low",
+          "location": [
+            36947.848040809185,
+            176.94791449112824,
+            4887.301972647462,
+            -0.055
+          ],
+          "pond": null,
+          "calls": 195,
+          "triangles": 238679,
+          "actors": {
+            "wanted": 4,
+            "ready": 4,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "warning": []
+        }
+      },
+      "requests": 1,
+      "pond": null,
+      "exactArchiveSHA": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+      "artifactNoErrors": [],
+      "cockpitThenPause": true
+    },
+    {
+      "id": "authored-profile",
+      "frames": {
+        "1": {
+          "site": "greenwich-dunes-low",
+          "location": [
+            36947.848040809185,
+            176.94791449112824,
+            4887.301972647462,
+            -0.055
+          ],
+          "pond": "bowley-pond-survey-2020",
+          "calls": 198,
+          "triangles": 269893,
+          "actors": {
+            "wanted": 4,
+            "ready": 4,
+            "loading": 0,
+            "pending": 0,
+            "failed": 0
+          },
+          "warning": []
+        }
+      },
+      "requests": 1,
+      "pond": "bowley-pond-survey-2020",
+      "exactArchiveSHA": "e8e87a77911b27c9387568f4096ecebeb28c74f22aca72551b9a087ea38206f5",
+      "artifactNoErrors": [],
+      "cockpitThenPause": true
+    }
+  ],
+  "nativeWorldContact": {
+    "sampleCount": 3,
+    "activeAll": {
+      "height": 1.132,
+      "land": false,
+      "runway": false
+    },
+    "stockAndCorruptAll": {
+      "height": 1.12,
+      "land": true,
+      "runway": false
+    },
+    "protectedDryAndOceanUnchangedCount": 5,
+    "shiftedTerrainManifestWithSameDataKeptOriginal": true,
+    "script": "tools/qa/bowley-standard-world.test.ts"
+  },
+  "nativeWaterOnlyAblation": {
+    "interpretation": "One compiled session from ordinary Greenwich Dispatch. Existing dry terrain shader retained; temporarily swap the one shared, sampled lake mask to exact dry values and hide the two lake meshes. Actual old land and new water/rim separately marked in both colours. No world data, sky, forest, actors, camera or flight state is changed. Rendering omitted only between scored frames; all flight steps run. This is not a separate old-world stock boot.",
+    "viewport": [
+      1200,
+      760
+    ],
+    "msaa": 4,
+    "comparisons": [
+      {
+        "step": 116,
+        "location": [
+          37287.00428923031,
+          180.50673061637727,
+          5399.123118276219,
+          -0.055
+        ],
+        "lensMatrix": [
+          -0.8469041721228983,
+          -6.938893903907228e-18,
+          0.5317455436962577,
+          0,
+          0.05586033826176949,
+          0.9944668482316318,
+          0.08896803008679711,
+          0,
+          -0.5288033149008329,
+          0.10505088180612547,
+          -0.8422181228052781,
+          0,
+          37275.18985569177,
+          184.6746047557792,
+          5380.481485751028,
+          1
+        ],
+        "normalDraws": 194,
+        "dryAblationDraws": 192,
+        "normalTriangles": 271122,
+        "dryAblationTriangles": 241428,
+        "bankPrimitives": 29692,
+        "counts": {
+          "strong": 33189,
+          "alpha": 0,
+          "any": 33238,
+          "oldWetFootprint": 32999,
+          "newWetFootprint": 33238,
+          "exterior": 0,
+          "outside": []
+        },
+        "normalImageSHA256": "65d021176681a68b4d0deb6242ed76d2a4262017364f5ee8e1f81ba17a3789b3",
+        "restoredImageSHA256": "65d021176681a68b4d0deb6242ed76d2a4262017364f5ee8e1f81ba17a3789b3",
+        "dryImageSHA256": "ba2c69cb1002ae02ff1a2b944bc0da4b3dc80c327d51d4d0ad5ef482d4e04867",
+        "oldMarkerSHA256": [
+          "8327257298224b8184147bb12b976385802c310527847e5608940f93dfdef1cb",
+          "7fe98b97405b61a9fe7062338f98766d06fbd8a943edc2c5715fbc53609dc240"
+        ],
+        "newMarkerSHA256": [
+          "784da6ad352661c83a18dc7e9f7986ac5d6213457bffbed67736a1f36933f251",
+          "e9da2fdbb7a33a429bdadb6809c3527417b7c684abc899d8a463d60dda045923"
+        ]
+      },
+      {
+        "step": 145,
+        "location": [
+          37372.623611079405,
+          181.45750597666455,
+          5528.339832129461,
+          -0.055
+        ],
+        "lensMatrix": [
+          -0.8469042042750972,
+          0,
+          0.5317454924878667,
+          0,
+          0.05585574660937335,
+          0.9944677592926016,
+          0.08896072896655949,
+          0,
+          -0.5288037484283498,
+          0.10504225686623539,
+          -0.8422189263609396,
+          0,
+          37360.808210720694,
+          185.62500279656498,
+          5509.6966523685405,
+          1
+        ],
+        "normalDraws": 192,
+        "dryAblationDraws": 190,
+        "normalTriangles": 272455,
+        "dryAblationTriangles": 242761,
+        "bankPrimitives": 29692,
+        "counts": {
+          "strong": 66788,
+          "alpha": 0,
+          "any": 66838,
+          "oldWetFootprint": 66561,
+          "newWetFootprint": 66838,
+          "exterior": 0,
+          "outside": []
+        },
+        "normalImageSHA256": "13d943c61d907c1ae035abd4cab971548b60bc27fc2bb03fb40553c14034c1a2",
+        "restoredImageSHA256": "13d943c61d907c1ae035abd4cab971548b60bc27fc2bb03fb40553c14034c1a2",
+        "dryImageSHA256": "358cefa2fa7a69790c492d7a646c77571b8c6cf48af32966fbd840170ff4fcf8",
+        "oldMarkerSHA256": [
+          "1a25759cd871e3629f5d86cd2490d4f416efb91bf234a6a79e0557cd964fb5e3",
+          "b62eaa169e68f8885035198b748d9d0859d86f1ffa50b4ed88b7f09e5be07504"
+        ],
+        "newMarkerSHA256": [
+          "e672f3fc2819ac42f40d450f8172046e2c5f779b03305d1f0daa9f56ace1086f",
+          "2f3bef7c9983fef45a2ee06369f314f98467e1da58306d6a70a43d7db73925b9"
+        ]
+      },
+      {
+        "step": 215,
+        "location": [
+          37579.3884909582,
+          183.7894192765444,
+          5840.398359556293,
+          2.147878365322966
+        ],
+        "lensMatrix": [
+          -0.8469042612163737,
+          3.469446951953614e-18,
+          0.5317454017982177,
+          0,
+          0.05584790273908517,
+          0.9944693154066904,
+          0.08894825728587495,
+          0,
+          -0.5288044856969292,
+          0.10502752360476049,
+          -0.8422203008668561,
+          0,
+          37567.5713781481,
+          187.95628375524876,
+          5821.752439300309,
+          1
+        ],
+        "normalDraws": 196,
+        "dryAblationDraws": 194,
+        "normalTriangles": 294585,
+        "dryAblationTriangles": 264891,
+        "bankPrimitives": 29692,
+        "counts": {
+          "strong": 0,
+          "alpha": 0,
+          "any": 0,
+          "oldWetFootprint": 0,
+          "newWetFootprint": 0,
+          "exterior": 0,
+          "outside": []
+        },
+        "normalImageSHA256": "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb",
+        "restoredImageSHA256": "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb",
+        "dryImageSHA256": "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb",
+        "oldMarkerSHA256": [
+          "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb",
+          "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb"
+        ],
+        "newMarkerSHA256": [
+          "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb",
+          "dff4c82a54ab0499a2e2e670a02adb4d0081220f7937c0dc3030ab1664f455cb"
+        ]
+      }
+    ],
+    "errors": []
+  }
+}

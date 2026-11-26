@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {test} from 'node:test';
 import {BOWLEY_POND} from '../src/sim/bowley-pond.generated.ts';
-import {admitPondTiles,BowleyPond,bowleyAtlasMatches,loadBowleyPond} from '../src/sim/bowley-pond.ts';
+import {admitPondTiles,BowleyPond,bowleyAtlasMatches,bowleyAtlasRegistered,loadBowleyPond} from '../src/sim/bowley-pond.ts';
 import {project} from '../src/sim/geo.ts';
 
 const spec=BOWLEY_POND;
@@ -80,4 +80,14 @@ test('independent surveyed stages never share a land mask binding or accept a cl
  assert(a.water(4,4)&&!b.water(4,4));
  assert(b.water(17,17)&&!a.water(17,17));
  assert.notEqual(a.spec.waterY,b.spec.waterY);
+});
+
+test('approved Bowley byte signatures do not admit a re-registered equal-length terrain or cover',()=>{
+ const terrain={width:4096,height:2720,bounds:[-64.47,45.94,-61.93,47.1],sha256:spec.terrainSha256};
+ const cover={width:4096,height:2720,sourceSha:spec.coverCompressedSha256,sourceDecodedSha:spec.coverDecodedSha256};
+ assert(bowleyAtlasRegistered(terrain,cover));
+ assert(!bowleyAtlasRegistered({...terrain,width:2048,height:5440},cover));
+ assert(!bowleyAtlasRegistered({...terrain,bounds:[-64.47,45.94,-61.93,47.1000001]},cover));
+ assert(!bowleyAtlasRegistered(terrain,{...cover,width:2048,height:5440}));
+ assert(!bowleyAtlasRegistered(terrain,{...cover,sourceDecodedSha:undefined}));
 });

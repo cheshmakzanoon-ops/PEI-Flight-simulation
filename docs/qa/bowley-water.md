@@ -1,11 +1,14 @@
-# Bowley Pond: surveyed open-water preview
+# Bowley Pond: surveyed open-water core
 
-![Actual simulator views of the unchanged atlas and the optional Bowley Pond surface](bowley-comparison.webp)
+![Actual simulator views of the original atlas and the surveyed Bowley Pond surface](bowley-comparison.webp)
 
-Add `?bowleySurveyPreview` to the simulator URL (or `&bowleySurveyPreview` if it already
-has options). The optional scene is in Greenwich, Kings County, near
-`46.4484, −62.7083`. It replaces the false dry rendering of the strongest-supported
-open-water core only. The ordinary map is unchanged when the preview is off.
+Standard now shows the strongest-supported open-water core near
+`46.4484, −62.7083` in Greenwich, Kings County. It is ordinary local
+geography, not a feature attached to one departure. Add `?stockBowleyPond`
+(or `&stockBowleyPond` if you already have options) to compare the
+original dry rendering. **Detailed Preview** and the historical explicit
+`?bowleySurveyPreview` link still work. Standard leaves explicitly enabled
+legacy terrain and building-shadow studies as they were.
 
 The lake uses an independent **1.132 m CGVD2013** surface, not the ocean plane.
 The packed signed field drives flight contact and which tree roots are omitted.
@@ -15,7 +18,7 @@ its replacement, avoiding small clear-sky leaks between independently antialiase
 edges. This changes neither flight contact nor the water-data footprint. A 3D
 bank curtain follows the field and seats against the visible terrain at each
 detail tier. The quiet ripples and reflections are authored scenery, not
-measured wind or depth. The optional pack is 49.5 kB; absent, corrupt, late,
+measured wind or depth. The existing water pack is 49.5 kB; absent, corrupt, late,
 or atlas-mismatched data keeps the original world.
 
 ## What the survey supports
@@ -68,12 +71,32 @@ for navigation, trail access, or engineering.
 ## Fly to the pond
 
 Choose **Greenwich Dunes · coastal pass** in Dispatch. This 177 m offshore
-start crosses the dunes toward Bowley Pond. Enable the individual flag or
-the **Detailed Preview** scenery profile. Both use the same flight code;
-only the dated water-core preview changes local surface geography.
+start crosses the dunes toward Bowley Pond. No preview toggle is needed. The dated core is not the entire pond or a
+model of the boardwalk, wet margins, navigation conditions or present-day stage.
 
 ![Bowley Pond in ordinary chase view during the Greenwich coastal pass](bowley-coastal-pass.webp)
 
-The [production flight check](bowley-coastal-pass-gate.json) flew about 600 m
-under **Detailed Preview** with the pond active, then paused without warnings
-or rendering errors. The image above is a normal in-flight capture.
+The [original flight check](bowley-coastal-pass-gate.json) flew about 600 m
+under **Detailed Preview**. The image above is a normal in-flight capture.
+The compiled [Standard replay](../../tools/bowley-standard-smoke.mjs) also
+selects Greenwich from ordinary Dispatch, flies past the open-water core, and checks
+that both explicit opt-out and corrupt data keep the original surface.
+The existing 49.5 kB pack is requested once before world creation; a failed
+or late request is not installed mid-flight.
+
+
+![Matched ordinary flight: water disabled for comparison on the left, Standard Bowley water on the right](bowley-standard/matched-flight.webp)
+
+At the same point about 615 m into the unchanged flight, the lower-left pond is
+visible without enabling a preview. The [runtime receipt](bowley-standard/runtime-receipt.json)
+records the original-view and corrupt-file controls. A separate close
+dry-ground check confirmed the lake and the existing meadow material can
+share their terrain tile. The legacy explicit preview keeps its original
+whole-tile material guard.
+
+Three 4× multisampled frames separately marked the visible old ground and
+the new water and bank. All changed pixels were inside those measured
+regions, alpha stayed unchanged, and restoring the water reproduced the
+whole frame. The two near frames add two draws and 29,694 triangles.
+The late off-screen camera changed no pixels. These are renderer counts,
+not a hardware frame-rate estimate.

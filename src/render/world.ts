@@ -35,7 +35,7 @@ import {meadowGLSL} from './meadow-optics.ts';
 import {SOURIS_STOCK_WATER_TIE} from './souris-wet-curtain-pins.ts';
 import {NorthCapeShadow,northCapeShadowGLSL} from './north-cape-shadow.ts';
 import {BowleyWaterMesh,bowleyClipGLSL,bowleyWaterGLSL,bowleyShoreGLSL,bowleyUniforms} from './bowley-pond.ts';
-import {admitPondTiles,bowleyAtlasMatches,type BowleyPond} from '../sim/bowley-pond.ts';
+import {admitPondTiles,bowleyAtlasRegistered,type BowleyPond} from '../sim/bowley-pond.ts';
 import {marshSurfaceGLSL} from './marsh-surface.ts';
 import type {MarshStream} from './marsh-stream.ts';
 import {ForestFloor,forestFloorGLSL} from './forest-floor.ts';
@@ -523,7 +523,7 @@ export async function loadAtlas(progress:(s:string)=>void,tryInland=false,tryBas
  const court=maybeCourt&&requested&&verifiedBaywalkDeckClearance(requested.deck,priorCover,terrain,maybeCourt)&&verifiedBaywalkRoadSupport(requested.road,priorCover,terrain,maybeCourt)?maybeCourt:undefined;
  const committedCover=court?new Cover(priorCover.width,priorCover.height,priorCover.bytes,priorCover.harbour,priorCover.sourceSha,
   priorCover.basin,priorCover.montague,priorCover.sourceDecodedSha,priorCover.wharfToe,court):priorCover;
- const bowley=bowleyRequested&&bowleyAtlasMatches(elevation.spec.sha256,committedCover.sourceSha,committedCover.sourceDecodedSha)?await bowleyRequested:undefined;
+ const bowley=bowleyRequested&&bowleyAtlasRegistered(elevation.spec,committedCover)?await bowleyRequested:undefined;
  return {terrain,terrainSha:elevation.spec.sha256,img,cover:committedCover,sky,certifiedSky,bankGround,bowley,
    basinSand:await localSand,bench:installed.some(s=>!!s.cliff)?await bench:undefined,southLake:await southLake,sourisLighting:sourisLightingForTerrain(base,elevation.spec.sha256)};
 }
@@ -735,7 +735,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -892,7 +892,7 @@ export class World {
     const x=T.left+i*w,z=T.top+j*d;
     if(showFloor==='standard'&&(i+'-'+j===KINGS_CROWN_TILE||i+'-'+j===POINT_PRIM.terrainTile||
         grassCoast?.uniforms(i,j)||duneSand?.uniforms(i,j)||
-        basin?.intersects(x,z,x+w,z+d)||bowley?.intersects(x,z,x+w,z+d)||
+        basin?.intersects(x,z,x+w,z+d)||!bowleyDefaultCore&&bowley?.intersects(x,z,x+w,z+d)||
         montague?.intersects(x,z,x+w,z+d)))return true;
     return !!(harbour?.intersects(x,z,x+w,z+d)||sourisLighting?.intersects(x,z,x+w,z+d));
    };
@@ -903,10 +903,11 @@ export class World {
     if(!meadow&&standardMeadow&&(!standardMeadow.has(i+'-'+j)||
        !!grassCoast?.uniforms(i,j)||!!duneSand?.uniforms(i,j)||i+'-'+j===POINT_PRIM.terrainTile))return true;
     const x=T.left+i*w,z=T.top+j*d;
-    // Preserve the historical Bowley review guard without disabling a whole
-    // tile of independent dry meadow around a tightly surveyed new pond.
-    // The land shader already clips its exact water replacement footprint.
-    return !!(basin?.intersects(x,z,x+w,z+d)||montague?.intersects(x,z,x+w,z+d)||bowley?.intersects(x,z,x+w,z+d));
+    // The explicit Bowley review keeps its existing whole-tile material
+    // guard. Standard only cuts the exact signed water replacement, so it
+    // retains dry meadow and the existing neighbouring feather.
+    return !!(basin?.intersects(x,z,x+w,z+d)||montague?.intersects(x,z,x+w,z+d)||
+      !bowleyDefaultCore&&bowley?.intersects(x,z,x+w,z+d));
    };
 
    for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
@@ -929,6 +930,7 @@ export class World {
     const localGravel=gablesGravel&&gablesGravelIntersects(x0,z0,x0+w,z0+d);
     const localPond=pondsWithUniforms.find(v=>v.pond.intersects(x0,z0,x0+w,z0+d));
     const bowleyLocal=!!localPond;
+    const pondMaterialFence=bowleyLocal&&!(bowleyDefaultCore&&localPond.pond===bowley);
     const localSand=basinSand&&basinSandIntersects(x0,z0,x0+w,z0+d)?basinSand:undefined;
     const showLocalFloor=!!this.floor&&!protectsFloor(i,j);
     if(showLocalFloor&&this.floor?.standard)this.eligibleForestFloor.add(i+'-'+j);
@@ -945,8 +947,8 @@ export class World {
     const benchUniforms:Record<string,THREE.IUniform>=useBench?{eastBenchMask:{value:benchMap},eastBenchBounds:{value:benchBounds}}:{};
     const useField=fieldPilot&&fieldPilot.covers(x0,z0,x0+w,z0+d);
     const localField:Record<string,THREE.IUniform>=useField?{cropPilotMap:fieldPilot.map,farmlandScan:fieldPilot.scan,cropPilotStrength:fieldPilot.strength,cropPilotBoxes:fieldPilot.boxes}:{};
-    const provinceHere=provinceFields&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&provinceFields.stream.intersects(x0,z0,x0+w,z0+d);
-    const grassHere=grassStudy&&!localRusticoSoil&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal&&!useBench&&!hasCape&&grassStudy.stream.intersects(x0,z0,x0+w,z0+d);
+    const provinceHere=provinceFields&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!pondMaterialFence&&!useBench&&!hasCape&&provinceFields.stream.intersects(x0,z0,x0+w,z0+d);
+    const grassHere=grassStudy&&!localRusticoSoil&&!survey&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!pondMaterialFence&&!useBench&&!hasCape&&grassStudy.stream.intersects(x0,z0,x0+w,z0+d);
     const grassUniforms:Record<string,THREE.IUniform>=grassHere?grassStudy.uniforms:{};
     const churchHere=churchGroundSun&&i===churchGroundSun.tile[0]&&j===churchGroundSun.tile[1]?churchGroundSun:undefined;
     const hogHere=hogPhoto?.pieces.find(piece=>piece.tile[0]===i&&piece.tile[1]===j);
@@ -957,8 +959,8 @@ export class World {
        provinceFurrowScan:provinceFields.scan,provinceFieldStrength:provinceFields.toggle}:{};
     // Preserve the independently reviewed site materials as a whole.
     const tone=shoreTone&&!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&
-       !bowleyLocal&&!sourisLocal&&!hasCape&&!localSand&&!localRusticoSoil&&!duneSandHere&&!grassCoastHere&&!showLocalFloor;
-    const marshHere=!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!bowleyLocal?
+       !pondMaterialFence&&!sourisLocal&&!hasCape&&!localSand&&!localRusticoSoil&&!duneSandHere&&!grassCoastHere&&!showLocalFloor;
+    const marshHere=!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!pondMaterialFence?
       this.marsh?.uniforms(x0,z0,x0+w,z0+d):undefined;
     const mainRunwayHere=this.runway03PavementLive.value===1&&mainRunwayIntersects(x0,z0,x0+w,z0+d);
     const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'',pastureEligible&&i===PASTURE.i&&j===PASTURE.j,!!marshHere,mainRunwayHere);

@@ -126,6 +126,7 @@ import {RegionalWindStream} from './render/regional-wind-stream.ts';
 import {RusticoStandardFlight,RUSTICO_LIGHT_ROUTE,standardRusticoLayers} from './render/north-rustico/flight.ts';
 import {standardRusticoLighthouseRequested} from './app/scenery-profile.ts';
 import {standardGreenGablesHouseRequested} from './app/scenery-profile.ts';
+import {bowleyCoreRequested} from './app/scenery-profile.ts';
 import './app/style.css';
 bootUI();
 async function run(){
@@ -250,7 +251,8 @@ async function run(){
  const rusticoJob=rusticoRequested?Promise.all([loadBoundedGrade(RUSTICO_GRADE,worldBase),import('./render/north-rustico/mount.ts')]).catch(()=>undefined):undefined;
  const museumAsked=beaconsfieldGradeRequested(options)&&gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)>=16;
  const gradeJob=options.has('gablesGradeReview')&&!options.has('surveyRelief')&&!options.has('inlandRelief')&&!showBuildingShadows?loadBoundedGrade(GABLES_GRADE,worldBase):undefined;
- const bowleyJob=options.has('bowleySurveyPreview')?loadBowleyPond(worldBase):undefined;
+ const bowleyJob=bowleyCoreRequested(options)?loadBowleyPond(worldBase):undefined;
+ const bowleyDefaultCore=!!bowleyJob&&!options.has('bowleySurveyPreview');
  const {terrain,terrainSha,img,cover,sky,certifiedSky,bench,southLake,sourisLighting,basinSand,bankGround,bowley}=await loadAtlas(
    loadMsg,options.has('inlandRelief'),options.has('basinSand'),useBasinBank&&options.has('basinChannel'),montagueRoadJob?.then(q=>!!q?.montagueVerified),options.has('basinWharf'),baywalkJob,bowleyJob,tryMappedLaneCanopy||railAsked||stDavidsAsked||!!fieldsJob||provinceAllowed||tryGreenGables||tryBarn||!!dunelandsJob||!!gradeJob||museumAsked||!!rusticoJob||!!churchJob||!!grassJob||!!hogJob||!!hogGroundJob||tryGravel||tryTrail||!!fairwayJob||rollingAsked||duneReliefAsked||grassCoastAsked||crownGradeWanted||tryNearshoreFoam,daylightJob?async(url,decode)=>(await daylightJob)?.loadVerifiedAerialSky(url,decode):undefined);
  // Append only after the pinned road, cover and terrain have admitted the
@@ -357,7 +359,7 @@ async function run(){
  const floor=floorProfile==='standard'&&(!standardLandAtlasMatches(terrain,terrainSha,cover)||
   renderer.capabilities.maxTextures<16)?false:floorProfile;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
-   showBuildingShadows,floor,useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles,!!nearshoreStandard,standardOpenCoastRequested(options),pastureEligible,openRipples,marsh,options.has('capeTryonRockReview')?terrainSha:undefined,options.has('capeTryonWaterReview')?terrainSha:undefined,runway03PavementRequested(options));
+   showBuildingShadows,floor,useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles,!!nearshoreStandard,standardOpenCoastRequested(options),pastureEligible,openRipples,marsh,options.has('capeTryonRockReview')?terrainSha:undefined,options.has('capeTryonWaterReview')?terrainSha:undefined,runway03PavementRequested(options),bowleyDefaultCore);
  const dalvayAllowed=dalvayWaterRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)&&renderer.capabilities.maxTextures>=16;
  let dalvayGlazingActive=false;
  let dalvayRequested=false,dalvayVisual:import('./render/dalvay-lake-optics.ts').DalvayLakeOptics|undefined;

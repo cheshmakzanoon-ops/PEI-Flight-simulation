@@ -41,7 +41,7 @@ jobs:
           ./node_modules/.bin/tsc -p tools/art/souris-st-mary-study/tsconfig.json
           ./node_modules/.bin/vite build tools/art/souris-st-mary-study --config tools/art/souris-st-mary-study/vite.config.ts --outDir /tmp/souris-st-mary-studio-dist --emptyOutDir
       - name: Verify native scenery ownership and frame gates
-        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs tools/qa/scenery-frame-invariant.test.mjs tools/qa/indian-river-terrain-lens.test.ts tools/qa/kings-ridge-flight-lens.test.ts tools/qa/prince-landscape-world.test.ts
+        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs tools/qa/scenery-frame-invariant.test.mjs tools/qa/indian-river-terrain-lens.test.ts tools/qa/kings-ridge-flight-lens.test.ts tools/qa/prince-landscape-world.test.ts tools/qa/bowley-standard-world.test.ts
       - name: Verify the North Cape stand comparison and its stock fallback
         run: node --no-warnings --experimental-transform-types --import ./test/private-stock-loader.mjs --test test/north-cape-stand-private.test.mjs
       - name: Verify the off-map Holman Centre asset
@@ -69,7 +69,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: [core, terminal, oleary, indian-river, farmland, cape-stone, cape-water, souris-west, oleary-access-roof, montague-bridge, runway03-pavement, east-point-phase-ii, georgetown-school-walls, rustico-lighthouse]
+        lane: [core, terminal, oleary, indian-river, farmland, cape-stone, cape-water, souris-west, oleary-access-roof, montague-bridge, runway03-pavement, east-point-phase-ii, georgetown-school-walls, rustico-lighthouse, bowley-standard]
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -123,6 +123,7 @@ jobs:
             east-point-phase-ii) node tools/east-point-phase-ii-smoke.mjs ;;
             georgetown-school-walls) node tools/georgetown-school-walls-smoke.mjs ;;
             rustico-lighthouse) node tools/rustico-lighthouse-smoke.mjs ;;
+            bowley-standard) node tools/bowley-standard-smoke.mjs ;;
             *) exit 2 ;;
           esac 2>&1 | tee "artifacts/smoke/$REPLAY_LANE.log"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

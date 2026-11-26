@@ -60,6 +60,14 @@ export const KINGS_RIDGE_LENS='kingsRidgeGroundPreview';
 export const KINGS_RIDGE_ROUTE='kings-coastal-ridge';
 export const INDIAN_RIVER_LENS='indianRiverGradeLens';
 export const INDIAN_RIVER_ROUTE='indian-river-country-pass';
+/** Existing dated water core. Default geography doesn't require a route
+ * bookmark; incompatible ground studies retain their pre-existing owner. */
+export function bowleyCoreRequested(options:URLSearchParams){
+ if(options.has('stockBowleyPond'))return false;
+ if(options.has('bowleySurveyPreview'))return true;
+ return options.get('scenery')!=='detail'&&
+  !['surveyRelief','inlandRelief','seatedForestShadows','buildingShadows'].some(k=>options.has(k));
+}
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
  // The local dated view is ancillary, including when Dispatch shows another site.
@@ -67,6 +75,7 @@ export function sceneryOptions(search:string){
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
+ if(q.has('stockBowleyPond'))q.delete('bowleySurveyPreview');
  if(q.has('stockNorthCapeWind'))q.delete('northCapeWind');
  if(q.has('stockCanopyLight'))q.delete('canopyLight');
  if(q.has('stockDuneGrass'))q.delete('duneGrassSurface');

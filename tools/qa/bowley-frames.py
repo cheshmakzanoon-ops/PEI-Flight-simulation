@@ -36,8 +36,8 @@ def stage(repo,root,deps,void):
     '''+a)
     s=f.once(s,'ex=center.x+qa.dist*qa.east/norm,ez=center.z+qa.dist*qa.south/norm',
              'ex=center.x+qa.dist*qa.east/norm+motionX,ez=center.z+qa.dist*qa.south/norm+motionZ')
-    a="  renderer.render(scene,camera);"
-    s=f.once(s,a,a+'''
+    a="  if(world.tryonRockState==="
+    s=f.once(s,a,'''
     if(captureQA){
       const {probe,done}=captureQA;captureQA=null;
       const images=[renderer.domElement.toDataURL('image/png')];
@@ -48,7 +48,7 @@ def stage(repo,root,deps,void):
       }
       done(images);
     }
-    ''')
+    '''+a)
     p.write_text(s)
 f.stage=stage
 A0=f.settle
@@ -60,7 +60,7 @@ def settle(page,errors):
     d['raster']=page.evaluate('window.bowleyRasterQA()')
     if a.lock_stream:
         assert d['orthoIds']==['20-12','20-13','21-12','21-13','21-14','22-12','22-13','22-14','23-11','23-12','23-13','24-12'],d
-    d['bowleyRequests']=page.evaluate("performance.getEntriesByType('resource').filter(r=>r.name.endsWith('bowley-2020-water.r8.gz')).length")
+    d['bowleyRequests']=len(page._bowley_requests)
     if 'bowleySurveyPreview' in a.extra:
         assert d.get('bowleyPond') == ('bowley-pond-survey-2020' if not a.corrupt else None),d
         assert d['bowleyRequests']==1,d
@@ -83,6 +83,8 @@ class Browser:
         c=self.raw.new_context(**kwargs);mk=c.new_page
         def new_page():
             p=mk();go=p.goto
+            p._bowley_requests=[]
+            p.on('request',lambda r:p._bowley_requests.append(r.url) if r.url.endswith('/bowley-2020-water.r8.gz') else None)
             if a.corrupt:
                 p.route('**/bowley-2020-water.r8.gz',lambda r:r.fulfill(status=200,body=b'invalid local 49K test'))
             p.goto=lambda u,**kwargs:go(u.replace('/?diagnostics&qa=', '/?diagnostics&'+self.extra+'qa='),**kwargs)
@@ -106,7 +108,11 @@ class Browser:
             return p
         c.new_page=new_page
         return c
-def capture(args,browser,url):return A1(args,Browser(browser,(''.join(a+'&' for a in args.extra.split(',') if a))),url)
+def capture(args,browser,url):
+    flags=[k for k in args.extra.split(',') if k]
+    if 'bowleySurveyPreview' not in flags:
+        flags.append('stockBowleyPond')
+    return A1(args,Browser(browser,''.join(k+'&' for k in flags)),url)
 f.capture=capture
 p=argparse.ArgumentParser()
 p.add_argument('--checkout',type=Path,default=R)

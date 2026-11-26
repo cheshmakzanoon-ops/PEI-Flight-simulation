@@ -9,6 +9,7 @@ import {Cover} from '../src/sim/cover.ts';
 import {SITES} from '../src/sim/places.ts';
 import {BOWLEY_POND} from '../src/sim/bowley-pond.generated.ts';
 import {BowleyPond} from '../src/sim/bowley-pond.ts';
+import {bowleyCoreRequested,sceneryOptions} from '../src/app/scenery-profile.ts';
 
 test('Greenwich starts offshore and crosses the mapped pond area in the unchanged flight model',()=>{
  const base=new URL('../public/world/',import.meta.url),read=(n:string)=>readFileSync(new URL(n,base));
@@ -39,4 +40,15 @@ test('Greenwich starts offshore and crosses the mapped pond area in the unchange
   if(check)assert.deepEqual([f.x,f.y,f.z],check);
   else check=[f.x,f.y,f.z];
  }
+});
+
+test('Bowley is Standard geography irrespective of departure, with deliberate rollback and local ownership controls',()=>{
+ const active=(q:string)=>bowleyCoreRequested(sceneryOptions(q));
+ for(const q of ['', '?departure=greenwich-dunes-low','?departure=summerside','?scenery=detail','?bowleySurveyPreview',
+   '?inlandRelief&bowleySurveyPreview','?coastalOptics','?cavendishDetail'])
+  assert.equal(active(q),true,q);
+ for(const q of ['?stockBowleyPond','?scenery=detail&stockBowleyPond','?bowleySurveyPreview&stockBowleyPond',
+   '?stockBowleyPond&bowleySurveyPreview','?surveyRelief','?inlandRelief','?buildingShadows','?seatedForestShadows'])
+  assert.equal(active(q),false,q);
+ assert.equal(sceneryOptions('?').has('bowleySurveyPreview'),false,'do not silently add legacy study flags or mode side effects');
 });
