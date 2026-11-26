@@ -1,15 +1,16 @@
 import {BufferGeometry,Color,Float32BufferAttribute} from 'three';
-import type {WindFarmId} from './regional-wind-stream.ts';
+import type {ScenicWindFarmId as WindFarmId} from './regional-wind-stream.ts';
 export type WindLod=0|1|2;
 export interface TurbineProfile{
  model:string;hub:number;radius:number;bladeLength:number;rpm:number;towerBase:number;towerTop:number; nacelle:[number,number,number];
  noseX:number;fairingFront:number;hubRadius:number;shaftTilt:number;cone:number;maxChord:number;endChord:number;twistDeg:number;sectionFractions:readonly number[];
 }
-/** Heights/diameters are the installed NRCan roster. See the source record for
+/** Installed heights and diameters follow the site rosters. See source records for
  * independent engineering dimensions and the separately identified artwork. */
 export const WIND_PROFILE:Record<WindFarmId,TurbineProfile>={
  'west-cape':{model:'Vestas V80-1.8',hub:80,radius:40,bladeLength:39,rpm:15.5,towerBase:2.08,towerTop:1.15,nacelle:[9.7,3.4,3.64],noseX:3.82,fairingFront:3.04,hubRadius:1.54,shaftTilt:6,cone:2,maxChord:3.52,endChord:.48,twistDeg:13,sectionFractions:[.28,.61]},
  'east-point-i':{model:'Vestas V90-3.0',hub:81,radius:45,bladeLength:44,rpm:16.1,towerBase:1.99,towerTop:1.15,nacelle:[9.65,3.6,4.05],noseX:4.04,fairingFront:2.68,hubRadius:1.57,shaftTilt:6,cone:4,maxChord:3.512,endChord:.391,twistDeg:17.5,sectionFractions:[.31,.64]},
+ 'east-point-ii':{model:'Enercon E-138 EP3 E2',hub:108,radius:69.125,bladeLength:67.795,rpm:10.5,towerBase:2.47,towerTop:1.71,nacelle:[12.60,4.99,9.23],noseX:6.064,fairingFront:8.144,hubRadius:1.6,shaftTilt:7,cone:3.8,maxChord:4.87,endChord:.32,twistDeg:16.8,sectionFractions:[.19,.40,.62,.80]},
  'hermanville':{model:'Acciona AW116/3000',hub:92,radius:58,bladeLength:56.7,rpm:12.3,towerBase:2.26,towerTop:1.53,nacelle:[10.9,4.09,4.15],noseX:5.04,fairingFront:3.64,hubRadius:1.95,shaftTilt:5,cone:2.5,maxChord:4.45,endChord:.22,twistDeg:15.5,sectionFractions:[12.2/92,.34,.57,.77]},
 };
 type Vec=[number,number,number]; type Loop=Vec[];
@@ -41,7 +42,7 @@ const signPow=(x:number,k:number)=>Math.sign(x)*Math.pow(Math.abs(x),k);
 const alongY=(n:number,r:number,y:number):Loop=>loop(n,a=>[Math.cos(a)*r,y,Math.sin(a)*-r]);
 const alongX=(n:number,x:number,h:number,w:number,cy:number,exponent:number):Loop=>loop(n,a=>[x,cy+h*signPow(Math.cos(a),exponent),w*signPow(Math.sin(a),exponent)]);
 function mastShape(s:Skin,f:TurbineProfile,id:WindFarmId){
- const level=s.kind,n=[28,14,7][level],a=f.towerBase,b=f.towerTop,h=f.hub-2.11;
+ const level=s.kind,n=[28,14,7][level],a=f.towerBase,b=f.towerTop,h=f.hub-(id==='east-point-ii'?1.845:2.11);
  const fl=(y:number)=>a+(b-a)*Math.max(0,Math.min(1,y/h));
  // Rounded bottom socket goes below the surveyed game's visible slope. No soil
  // decal or flat shadow sheet, since the surrounding mesh isn't ours.
@@ -51,6 +52,7 @@ function mastShape(s:Skin,f:TurbineProfile,id:WindFarmId){
  if(level===0){
   for(const ratio of f.sectionFractions){const y=h*ratio,r=fl(y);s.loft([alongY(n,r+.009,y-.042),alongY(n,r+.012,y+.038)],JOINT);}
  }
+ if(id==='east-point-ii')return enerconNacelle(s,f,n);
  const [length,width,height]=f.nacelle,front=f.fairingFront,back=front-length; const A=id==='hermanville',V=id==='east-point-i';
  // The three closed fairings retain different noses, soffits and aft shoulders.
  // Station radii are hand-authored fraction profiles, not copied meshes.
@@ -78,10 +80,42 @@ function mastShape(s:Skin,f:TurbineProfile,id:WindFarmId){
  }
  return s.geometry();
 }
+/** Distinct EP3 E2 silhouette, not a redimensioned geared nacelle:
+ * a low rear bonnet, aft neck, and direct-drive drum close to the spinner.
+ * The primary dimensions are envelope constraints; sections, seams, and tone
+ * are new artist geometry, not digitized drawing outlines or a site survey.
+ */
+function enerconNacelle(s:Skin,f:TurbineProfile,n:number){
+ const [length,width]=f.nacelle,front=f.fairingFront,back=front-length;
+ const plate:readonly (readonly [number,number,number,number])[]=[
+  [back,.44,.52,-.62],[-4.15,1.22,.92,-.55],[-3.42,1.65,1.26,-.38],
+  [-1.9,1.82,1.48,-.29],[.40,1.97,1.55,-.34],[2.5,1.87,1.45,-.35],
+  [3.7,1.68,1.21,-.27],[4.55,1.26,1.11,-.23],[4.81,.91,.77,-.21]
+ ];
+ const housing=s.kind===2?plate.filter((_,i)=>[0,2,4,7,8].includes(i)):plate;
+ s.loft(housing.map(([x,w,h,y])=>alongX(n,x,h,w,f.hub+y,.64)),SHELL,
+  (i,j)=>.94+.065*Math.cos(i/n*TAU)-(j===0?.035:0));
+ const axisX=f.noseX,axisH=(x:number)=>f.hub+Math.tan(f.shaftTilt*RAD)*(x-axisX);
+ const drum:readonly (readonly [number,number,number])[]=[
+  [2.87,1.03,.95],[3.52,1.70,2.18],[4.03,2.19,3.61],[4.57,width*.5,4.065],
+  [5.12,width*.5,4.09],[5.37,2.38,3.92],[5.85,1.95,3.18],[6.41,1.54,1.79],[6.75,1.13,1.31]
+ ];
+ const generator=s.kind===2?drum.filter((_,i)=>[0,2,4,6,8].includes(i)):drum;
+ s.loft(generator.map(([x,w,h],j)=>alongX(n,x,h,w,axisH(x)+(j<generator.length-3?-.065:0),.84)),SHELL,
+  (i,j)=>.91+.080*Math.cos(i/n*TAU)+(j>2&&j<5?.023:0));
+ if(s.kind===0){
+  s.loft([4.65,4.68,4.73].map((x,j)=>alongX(n,x,4.095-j*.002,width*.501,axisH(x)-.065,.84)),JOINT,
+   i=>.91+.075*Math.cos(i/n*TAU));
+  const y=f.hub+1.28;
+  s.loft([alongX(14,-1.23,.09,.48,y,.72),alongX(14,-.94,.20,.62,y+.08,.72),
+   alongX(14,.54,.20,.62,y+.08,.72),alongX(14,.76,.07,.42,y,.72)],SHELL);
+ }
+ return s.geometry();
+}
 function rotorShape(s:Skin,f:TurbineProfile,id:WindFarmId){
- const level=s.kind,n=[24,12,7][level],aw=id==='hermanville',v90=id==='east-point-i';
+ const level=s.kind,n=[24,12,7][level],aw=id==='hermanville',v90=id==='east-point-i',e2=id==='east-point-ii';
  const hub=f.hubRadius;
- const nose=v90?2.24:aw?2.46:2.04;
+ const nose=e2?(f.fairingFront-f.noseX)/Math.cos(f.shaftTilt*RAD):v90?2.24:aw?2.46:2.04;
  s.loft([[-1.44,.68],[-1.16,.91],[-.62,.995],[0,1],[.61,.92],[nose*.61,.68],[nose*.92,.29],[nose,.055]].filter((_,i)=>level!==2||[0,3,5,7].includes(i)).map(([x,r])=>alongX(n,x,hub*r,hub*r,0,.98)),SHELL);
  // Separate radial stations describe a thick root and torsion fading towards
  // the swept thin tip. The actual swept radius is fixed at *every* level.
@@ -93,7 +127,7 @@ function rotorShape(s:Skin,f:TurbineProfile,id:WindFarmId){
  for(let vane=0;vane<3;vane++){
   const spin=TAU*vane/3,cs=Math.cos(spin),sn=Math.sin(spin);
   const rows:Loop[]=station.map(k=>{const t=u[k],rad=r0+(f.radius-r0)*t,twist=f.twistDeg*RAD*(1-t)**1.8+.036;
-   const chord=Math.max(f.endChord,f.maxChord*envelope[k]),sweep=-(aw?1.03:v90?.80:.50)*t**2;
+   const chord=Math.max(f.endChord,f.maxChord*envelope[k]),sweep=-(e2?1.60:aw?1.03:v90?.80:.50)*t**2;
    return loop(airN,a=>{
     // Finite airfoil thickness with camber and a broad leading edge, then
     // a tapered trailing edge. Open tips are capped by the common loft.

@@ -386,7 +386,7 @@ async function run(){
      try{return (await import('./render/regional-wind-rotor.ts')).withRotorReceiver(id,renderer,world,caster,base);}catch{return base;}
     }:undefined;
    return id=>createRegionalWind(id,scene,world,(owner,roots)=>vegetation.setRegionalWindRoots(owner,roots),mount);
-  }):undefined;
+  },!options.has('stockEastPointPhaseII')):undefined;
  const capeCenter=NORTH_CAPE_SITES[7];
  const capeSpan=Math.max(...NORTH_CAPE_SITES.map(s=>Math.hypot(s.x-capeCenter.x,s.z-capeCenter.z)));
  const streamedCape=capeMode==='ordinary'&&northCapeAtlas({...terrain.spec,sha:terrainSha},cover)?

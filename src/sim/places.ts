@@ -57,6 +57,9 @@ export const SITES: Site[] = [
  {id:'oleary-railway-low',name:'O’Leary · railway station pass',region:'Prince County',
   lon:-64.21528650212998,lat:46.715825492132865,heading:221,height:65,
   note:'Start northeast of O’Leary and look for the former railway station on Main Street. Virtual sightseeing only, not a navigation route.'},
+ {id:'eastern-kings-skyline',name:'Eastern Kings · turbine skyline',region:'Kings County',
+  lon:-62.0109349,lat:46.4227959,heading:327,height:235,
+  note:'Start offshore and fly northwest toward both generations of the Eastern Kings turbines in Standard scenery. Virtual sightseeing only, not a navigation route.'},
 ];
 // The lower route is discoverable only with the authenticated Montague
 // foundation. Keep it out of the stock dispatch list and leave the older

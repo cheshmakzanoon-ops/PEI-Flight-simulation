@@ -2,13 +2,14 @@ import * as T from 'three';
 import {project} from '../sim/geo.ts';
 import type {World} from './world.ts';
 import {WIND_STATIONS} from './regional-wind.generated.ts';
+import {EAST_POINT_PHASE_II} from './east-point-phase-ii.generated.ts';
 import {turbineGeometry,WIND_PROFILE,type WindLod} from './regional-wind-geometry.ts';
-import {WIND_RANGES,type WindFarmId,type WindObserver} from './regional-wind-stream.ts';
+import {WIND_RANGES,type WindFarmId,type ScenicWindFarmId,type WindObserver} from './regional-wind-stream.ts';
 type Ground=Pick<World,'visualGroundEpoch'|'surface'|'visualGroundHeight'|'terrain'|'cover'>;
 export type WindRoot = Readonly<{id:string;x:number;z:number}>;
 export interface StaticWindReceiver{update(eye:WindObserver):void;clear():void;dispose():void; readonly state:unknown}
 export type StaticWindPrepare=(id:WindFarmId,caster:RegionalWind)=>Promise<StaticWindReceiver|undefined>;
-export type WindSocketLease = (owner:WindFarmId,roots:readonly WindRoot[])=>void;
+export type WindSocketLease = (owner:ScenicWindFarmId,roots:readonly WindRoot[])=>void;
 /** Reproducible instances of the existing deterministic canopy generator whose
  * ground roots are inside actual registered mast steel. No other crown, hedge
  * or wider farm clearing is implied. Keys use submitted Float32 stem XZ, not
@@ -63,7 +64,7 @@ function finish(rotor:boolean,clock:{value:number},rpm:number){
 export class RegionalWind{
  readonly root=new T.Group();
  readonly counts={registered:0,near:0,cruise:0,distant:0};
- private readonly world:Ground;private readonly key:WindFarmId;
+ private readonly world:Ground;private readonly key:ScenicWindFarmId;
  readonly sites:readonly {id:string;x:number;z:number}[];
  private readonly height:Float64Array;private readonly modes:Int8Array;
  private readonly clock={value:0};private readonly coatings:T.MeshStandardMaterial[];
@@ -90,18 +91,19 @@ export class RegionalWind{
   // 3D art, timer and original canopy lease never depend on ground optics.
   if(!this.sites.some((s,i)=>this.modes[i]===0&&Math.abs(eye.y-this.height[i])<760&&
    (s.x-eye.x)**2+(s.z-eye.z)**2<1000**2))return;
+  if(this.key==='east-point-ii')return;
   this.staticJob=true;
   void this.prepareLight(this.key,this).then(a=>{
    if(this.dead)a?.dispose();else{this.staticLight=a;this.prepareLight=undefined;}
   },()=>{this.prepareLight=undefined;});
  }
  private epoch=-1;private lastX=Infinity;private lastY=Infinity;private lastZ=Infinity;
- constructor(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare){
-  this.prepareLight=light;
+ constructor(id:ScenicWindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare){
+  this.prepareLight=id==='east-point-ii'?undefined:light;
   this.key=id;this.world=world;const profile=WIND_PROFILE[id];
-  this.sites=WIND_STATIONS[id].map(([id,lon,lat])=>({id,...project(lon,lat)}));
+  this.sites=windStations(id).map(([id,lon,lat])=>({id,...project(lon,lat)}));
   this.lease=lease;
-  this.rootPins=SOCKETS[id].flatMap(pin=>{
+  this.rootPins=(id==='east-point-ii'?[]:SOCKETS[id]).flatMap(pin=>{
    const site=this.sites.findIndex(s=>s.id===pin.id);
    if(site<0||Math.hypot(this.sites[site].x-pin.x,this.sites[site].z-pin.z)>=profile.towerBase)return [];
    return [{site,pin}];
@@ -165,10 +167,11 @@ export class RegionalWind{
  dispose(){this.dead=true;this.staticLight?.dispose();this.staticLight=undefined;this.counts.registered=0;this.syncSockets();this.root.removeFromParent();for(const {mast,rotor} of this.batches)for(const mesh of [mast,rotor]){mesh.dispose();mesh.geometry.dispose();}
   for(const m of this.coatings)m.dispose();this.root.clear();}
 }
-export function createRegionalWind(id:WindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare):RegionalWind|undefined{
+const windStations=(id:ScenicWindFarmId)=>id==='east-point-ii'?EAST_POINT_PHASE_II:WIND_STATIONS[id];
+export function createRegionalWind(id:ScenicWindFarmId,scene:T.Scene,world:Ground,lease?:WindSocketLease,light?:StaticWindPrepare):RegionalWind|undefined{
  // The native cover is authenticated by the caller. Check the complete
  // 3-4 m foundation collar at every fixed site rather than accepting one dry center.
- for(const [,lon,lat] of WIND_STATIONS[id]){
+ for(const [,lon,lat] of windStations(id)){
   const {x,z}=project(lon,lat);
   for(const [dx,dz] of [[0,0],[-3,-3],[3,3],[-3,3],[3,-3],[-4,0],[4,0],[0,4],[0,-4]]){
    if(world.cover.distance(world.terrain,x+dx,z+dz)<=32||!world.terrain.isLand(x+dx,z+dz)||!world.surface(x+dx,z+dz).land|| !Number.isFinite(world.visualGroundHeight(x+dx,z+dz)))return;

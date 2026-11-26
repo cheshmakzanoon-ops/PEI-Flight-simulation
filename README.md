@@ -49,7 +49,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](doc
 
 | Area | Preview flag | What to look for |
 | --- | --- | --- |
-| West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | In Standard, fly past [74 turbines in three registered arrays](docs/qa/regional-wind.md), with 80, 90 and 116 m rotors. [Moving blade shadows sweep past the stationary tower shadows](docs/qa/regional-wind-rotor-light.md). Use `?stockRegionalWindRotorLight` to keep the turbines and tower shadows but remove the blade shadows. |
+| West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | Standard includes [74 earlier turbines](docs/qa/regional-wind.md) and [seven Eastern Kings Phase II turbines](docs/qa/east-point-phase-ii.md). Select **Eastern Kings · turbine skyline** to see both local arrays. Use `?stockEastPointPhaseII` to compare without the new turbines. The earlier arrays retain their [moving blade shadows](docs/qa/regional-wind-rotor-light.md). |
 | North Cape | `?stockNorthCapeWind` | Standard streams [all 16 commercial turbines](docs/qa/north-cape-turbines.md) near the [wind farm low pass](docs/qa/north-cape-departure.md). The flag hides them; `?northCapeWind` retains the older shadow study. |
 | Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Historical Spinnakers’ Landing integration](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
 | Inland grassland | `?stockMeadow` | Compare [the close open-ground material](docs/qa/meadow-texture.md) on an **inland meadow pass** in Prince, Queens or Kings. |
