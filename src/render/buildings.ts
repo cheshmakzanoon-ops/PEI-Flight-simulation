@@ -1,3 +1,5 @@
+import {TerminalWallPreview} from './summerside-terminal/wall-preview.ts';
+import {TERMINAL_WIRE} from './summerside-terminal/terminal-wall-owner.ts';
 import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWharfSpans,type WharfLoader,type WharfSpan} from './spinnakers-standard.ts';
 import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyAtlasOwner,type OlearySeat} from './oleary-railway/authority.ts';
 import {OlearySocket} from './oleary-railway/socket.ts';
@@ -198,9 +200,10 @@ const buildingF=(souris=false,hasBuildingShadows=false,waterStreet=false,victori
 export type SpinnakersScene={deck:THREE.Group;seat:WharfSurface;assembleNorth?:()=>NorthBaywalk|undefined;north?:NorthBaywalk;assembled?:THREE.Group};
 type LocalExteriorReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
 export type RailwayReview={ground:()=>boolean;shadows?:BuildingShadows;standard?:true};
-type OwnerSlot=ReturnType<typeof authenticatedOwnerVariant>;
+type OwnerSlot=Pick<NonNullable<ReturnType<typeof authenticatedOwnerVariant>>,'visible'|'sync'|'dispose'>;
 type Cohort=NonNullable<ReturnType<typeof authenticatedOwnerCohort>>;
-type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:OwnerSlot;neighborsCaster:THREE.Mesh};
+type RailwayVariant={owner:THREE.Mesh;art:RailwayArtwork;variant:OwnerSlot;neighborsCaster:THREE.Mesh;
+ stockForProof?:()=>THREE.BufferGeometry|undefined};
 export type PointPrimDrawLease=Readonly<{present:()=>boolean;active:()=>boolean;set:(visible:boolean)=>boolean;release:()=>void}>;
 export type PointPrimVerifiedOwner=Readonly<{source:PointPrimStock;present:()=>boolean;
  mount:(group:THREE.Group)=>PointPrimDrawLease|undefined}>;
@@ -299,6 +302,8 @@ export class Buildings {
  private primDraw?:PointPrimDrawLease;
  private sourisEastGround?:SourisEastGround;
  private summersideRoofCohort=false;
+ private terminalWallFactory?:(owner:THREE.Mesh,tileId:string,bytes:ArrayBuffer,rows:readonly Bldg[])=>TerminalWallPreview;
+ private terminalWall?:TerminalWallPreview;
  private sourisEastShadows?:BuildingShadows;
  private sourisEast?:{owner:THREE.Mesh;seated:()=>boolean;dispose:()=>void;
   variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
@@ -563,6 +568,7 @@ export class Buildings {
      m.geometry.setIndex(this.greenGables.index);
      this.scene.remove(this.greenGables.group);this.greenGables.dispose(this.greenGables.group);this.greenGables=undefined;
     }
+    if(id===TERMINAL_WIRE.id){this.terminalWall?.dispose();this.terminalWall=undefined;}
     if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
     if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
@@ -651,6 +657,19 @@ export class Buildings {
  get spinnakersActive(){return !!this.spinnakers?.assembled?.parent||this.wharfOwner?.art?.variant.visible===true;}
  get northBaywalkActive(){return this.spinnakersActive&&!!this.spinnakers?.north?.group.visible;}
  get northConcreteActive(){return this.northBaywalkActive&&!!this.spinnakers?.north?.sidewalk;}
+ enableTerminalWallPreview(renderer:THREE.WebGLRenderer,camera:THREE.Camera,trackDraw:boolean){
+  this.terminalWallFactory=(owner,id,bytes,rows)=>{
+   const stock=owner.geometry;
+   const actor=new TerminalWallPreview(owner,this.scene,()=>owner.parent===this.scene&&this.meshes.get(id)===owner&&this.wanted.has(id)&&
+    (owner.geometry===stock||(this.wharfOwner?.owner===owner&&this.wharfOwner.mask.stockForProof()===stock)||
+     (this.station?.owner===owner&&this.station.stockForProof?.()===stock)),{renderer,camera,trackDraw});
+   void actor.verify(this.atlasHash,id,bytes,rows);
+   return actor;
+  };
+ }
+ syncTerminalWall(){this.terminalWall?.sync();}
+ get terminalWallActive(){return this.terminalWall?.active===true;}
+ get terminalWallDrawn(){return this.terminalWall?.rendered===true;}
  /** Observe bytes already requested by the ordinary building streamer. An observer
   * cannot start a download or replace a mesh. A reloaded owner has a new identity. */
  private chunkObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
@@ -694,6 +713,8 @@ export class Buildings {
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
    let observed:ArrayBuffer|undefined;
    let primBytes:ArrayBuffer|undefined;
+   const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
+   let terminalBytes:ArrayBuffer|undefined;
    if(candidate||princeCandidate||rusticoCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
@@ -701,6 +722,7 @@ export class Buildings {
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
     if(tapped)observed=raw;
+    if(terminal)terminalBytes=raw;
     if(seacow)seacowBytes=raw;
     if(dalvay)dalvayBytes=raw;
     if(oleary)olearyBytes=raw;
@@ -745,6 +767,7 @@ export class Buildings {
     const mask=authenticatedOwnerCohort(mesh);
     if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};
    }
+   if(terminal&&terminalBytes&&downtownVerified){this.terminalWall?.dispose();this.terminalWall=terminal(mesh,tile.id,terminalBytes,features);}
    if(oleary&&olearyBytes){
     this.oleary?.dispose();
     this.oleary=olearyStudy?new OlearyCohortSocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],features[OLEARY_INDUSTRIAL.ordinal],oleary,olearyStudy.warehouse?{...olearyStudy,warehouse:{...olearyStudy.warehouse,row:features[OLEARY_WAREHOUSE.ordinal]}}:olearyStudy,()=>this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id)):
@@ -840,11 +863,12 @@ export class Buildings {
    const art=await mod.loadRailArtwork((import.meta.env?.BASE_URL??'./')+'art/',request.shadows);
    if(!art)return;
    if(!alive()){art.dispose();return;}
-   const variant=cohort?cohort.add(art.group,range,proof):authenticatedOwnerVariant(owner,art.group,range,proof);
+   const solo=cohort?undefined:authenticatedOwnerVariant(owner,art.group,range,proof);
+   const variant=cohort?cohort.add(art.group,range,proof):solo;
    if(!variant){art.dispose();return;}
    const neighborsCaster=new THREE.Mesh(owner.geometry,owner.material);
    neighborsCaster.position.copy(owner.position);
-   this.station={owner,art,variant,neighborsCaster};
+   this.station={owner,art,variant,neighborsCaster,stockForProof:()=>cohort?cohort.stockForProof():solo?.stockForProof()};
    this.scene.add(art.group);
    // Asset, transform, roster and contact are all qualified before the
    // next animation loop updates visibility and the exact owner index.
