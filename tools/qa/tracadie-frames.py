@@ -55,6 +55,8 @@ EXPANDED=[
  ('south-central-fields',11,16,'x',325,368,268),
  ('west-forest-fields',6,9,'x',422,465,None),
  ('east-fields',21,16,'z',623,590,None),
+ ('queens-southwest-fields',13,16,'z',51,84,None),
+ ('queens-inland-fields',14,16,'x',104,138,None),
 ]
 for name,x,z,axis,center,outside,north_control in EXPANDED:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
@@ -150,7 +152,8 @@ def capture(a,browser,url):
    r=pg.evaluate('window.seamFrame()')
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
-   inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17'}
+   inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
+            '13-16 / 13-17','14-16 / 15-16'}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "queens-southwest-fields",
+    "mode": "normal",
+    "flightMeters": 150.809,
+    "alongMeters": 150.71,
+    "crossMeters": 5.468,
+    "groundClearance": 54.219,
+    "edge": {
+      "edge": "13-16 / 13-17",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "queens-inland-fields",
+    "mode": "normal",
+    "flightMeters": 154.584,
+    "alongMeters": 154.58,
+    "crossMeters": 1.003,
+    "groundClearance": 63.02,
+    "edge": {
+      "edge": "14-16 / 15-16",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "queens-southwest-fields",
+    "owners": [
+      "13-16",
+      "13-17"
+    ],
+    "axis": "z",
+    "geometry": "virtual in-game test only: crude base DTM, land-cover and AEB; not obstacle clearance or navigation",
+    "lon": -63.4317998046875,
+    "lat": 46.20437403186728,
+    "heading": 180,
+    "agl": 56,
+    "targetLL": [
+      -63.4317998046875,
+      46.20363636363636
+    ],
+    "virtualStripWidth": 30,
+    "pathM": 225,
+    "geoBox": [
+      -63.43199521236433,
+      46.20234994220927,
+      -63.43160439701067,
+      46.20437403186728
+    ],
+    "stockSampleBounds": [
+      11,
+      25
+    ],
+    "minValidatedCoast": 255,
+    "landClasses": [
+      30,
+      40
+    ],
+    "AEBBoxes": [],
+    "estimatedDatumY": 72.31152299914788
+  },
+  {
+    "name": "queens-inland-fields",
+    "owners": [
+      "14-16",
+      "15-16"
+    ],
+    "axis": "x",
+    "geometry": "virtual in-game test only: crude base DTM, land-cover and AEB; not obstacle clearance or navigation",
+    "lon": -63.280443228633324,
+    "lat": 46.247795454545454,
+    "heading": 90,
+    "agl": 56,
+    "targetLL": [
+      -63.279375,
+      46.247795454545454
+    ],
+    "virtualStripWidth": 30,
+    "pathM": 225,
+    "geoBox": [
+      -63.280443228633324,
+      46.24766051523492,
+      -63.27751211348091,
+      46.24793039385599
+    ],
+    "stockSampleBounds": [
+      46,
+      58
+    ],
+    "minValidatedCoast": 255,
+    "landClasses": [
+      30,
+      40
+    ],
+    "AEBBoxes": [],
+    "estimatedDatumY": 111.2179748964329
+  }
+]

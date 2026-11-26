@@ -41,7 +41,8 @@ existing fade reaches exact stock by 330 m from the eye. The switch
 `?stockInlandOrtho` still compares all inland windows against stock. The
 [older two inland windows](inland-aerial-joins.md), [earlier county joins](county-aerial-joins.md)
 and [Tracadie](tracadie-aerial-join.md) retain their original coordinates and
-sampling.
+sampling. The [Queens County additions](queens-aerial-joins.md) are on two
+separate signed tile pairs.
 
 To rerun from a built source tree with Python Playwright, Pillow, NumPy and
 Chromium:

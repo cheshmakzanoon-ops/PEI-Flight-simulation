@@ -106,7 +106,17 @@ export const INLAND_ORTHO_WINDOWS=[
   "nsha":"113dcd8bf55d45c74fb852a904551060f6df9d3d36bc1bc37183e081f7de69ba",
   "ssha":"5559366506f6d2413c8f6ca84940e73cae230c9e72b672766ce2bd083445c4dd",
   "alongSourceTexels":[412,414,430,432],"coverBox":[895,1191,2,6],
-  "coverRG":[40,231,40,216,40,215,40,198,40,200,40,181,40,189,40,168,40,179,40,157,40,176,40,153]}
+  "coverRG":[40,231,40,216,40,215,40,198,40,200,40,181,40,189,40,168,40,179,40,157,40,176,40,153]},
+ {"name":"queens-southwest-fields","first":"13-16","second":"13-17","axis":"z","edge":17,
+  "nsha":"38fe57f36c10ef4b4310ccc5633d1b3dcabddb65c237f20350ec63eba30465e9",
+  "ssha":"5497ec40b8ac0b1ad9e67605e333ad6d4742cc15a64453369115bb6a8df5e0d0",
+  "alongSourceTexels":[41,43,59,61],"coverBox":[1671,2101,6,2],
+  "coverRG":[40,255,40,255,40,255,30,255,30,255,30,255,40,255,40,255,40,255,40,255,30,255,30,255]},
+ {"name":"queens-inland-fields","first":"14-16","second":"15-16","axis":"x","edge":15,
+  "nsha":"a636aa93cd604197ea6fd2d72f559347f94fb2a1f5880a549fb9661cff4f4c30",
+  "ssha":"a72dc92329f4b6d65616f425f89cad3dc84967fe14a51bdc59566447d4c2dbe4",
+  "alongSourceTexels":[94,96,112,114],"coverBox":[1919,1995,2,6],
+  "coverRG":[40,255,40,255,40,255,40,255,30,255,40,255,30,255,30,255,40,255,40,255,40,255,40,255]}
 ] as const;
 export type InlandWindowId=typeof INLAND_ORTHO_WINDOWS[number]['name'];
 type CurrentCover={width:number;height:number;bytes:Uint8Array};

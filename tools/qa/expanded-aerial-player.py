@@ -8,9 +8,10 @@ parser.add_argument('--corridors',type=Path,required=True)
 parser.add_argument('--dist',type=Path,required=True)
 parser.add_argument('--chromium',required=True)
 parser.add_argument('--out',type=Path,required=True)
+parser.add_argument('--normal-only',action='store_true',help='Replay each signed corridor without the south-shore fallback fixtures')
 args=parser.parse_args()
 cfgs={v['name']:v for v in json.loads(args.corridors.read_text())}
-if 'south-central-fields' not in cfgs:
+if not args.normal_only and 'south-central-fields' not in cfgs:
  parser.error('The signed corridor list must include the south-central fallback fixture')
 args.out.parent.mkdir(parents=True,exist_ok=True)
 dist=args.dist
@@ -23,7 +24,8 @@ result=[]
 try:
  with sync_playwright() as w:
   browser=w.chromium.launch(executable_path=args.chromium,args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage'])
-  for mode,name in [('normal',n) for n in cfgs]+[('stock','south-central-fields'),('corrupt','south-central-fields')]:
+  fallback=[] if args.normal_only else [('stock','south-central-fields'),('corrupt','south-central-fields')]
+  for mode,name in [('normal',n) for n in cfgs]+fallback:
    q=cfgs[name];a=math.radians(q['heading']);d=[math.sin(a),-math.cos(a)];pair=' / '.join(q['owners'])
    ctx=browser.new_context(viewport={'width':620,'height':400});p=ctx.new_page();p.set_default_timeout(120_000)
    errs=[];imagery=set();corrupted=[]
