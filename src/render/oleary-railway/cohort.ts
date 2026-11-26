@@ -162,7 +162,7 @@ export class OlearyCohortSocket{
   }
  }
  private async prepare(a:Actor,attempt:Attempt){
-  const {ctl,grade}=attempt,signal=ctl.signal,timeout=setTimeout(()=>ctl.abort(),5200);
+  const {ctl,grade}=attempt,signal=ctl.signal,timeout=setTimeout(()=>ctl.abort(),a.source===OLEARY?8500:5200);
   let model:Model|undefined;
   const isCurrent=()=>!signal.aborted&&a.pending===attempt&&this.exactBase()&&this.owner.geometry===this.applied&&
    this.checkAlternate()&&this.liveGrade(grade)&&this.exactSpan(a);

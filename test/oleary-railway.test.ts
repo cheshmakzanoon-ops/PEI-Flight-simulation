@@ -240,6 +240,34 @@ test('r187 preflights all actual detached programs with the target camera/lights
  model.dispose();
 });
 
+test('the five-material station links during the longer cold window, never after its bound',async t=>{
+ const scene=new T.Scene(),camera=new T.PerspectiveCamera(),model=z();
+ let tick=0,step=1850,availableAt=1,queries=0,pass=true;
+ t.mock.method(performance,'now',()=>tick);
+ const assigned=new WeakMap<T.Material,{program:object;isReady:()=>boolean}>();
+ const gl={LINK_STATUS:0x8B82,isContextLost:()=>false,isProgram:(p:object)=>!!p,
+  getProgramParameter:()=>{queries++;return pass;}};
+ const fake={compile(g:T.Group){
+  const matches=g.children.map(q=>(q as T.Mesh).material as T.Material);
+  for(const a of matches)assigned.set(a,{program:{},isReady:()=>tick>=availableAt});
+  setTimeout(()=>{tick=step;},1);
+  return new Set(matches);
+ },properties:{get:(m:T.Material)=>({currentProgram:assigned.get(m)})},getContext:()=>gl,getRenderTarget:()=>null,
+ clippingPlanes:[],outputColorSpace:T.SRGBColorSpace,toneMapping:T.ACESFilmicToneMapping,shadowMap:{enabled:false,type:T.PCFShadowMap}};
+ const probe=olearyLinkPrograms(fake as unknown as T.WebGLRenderer,camera,scene);
+ const notAborted=new AbortController().signal;
+ assert((await probe(model.group,notAborted))?.());
+ assert.equal(queries,5);
+ tick=0;step=4300;
+ assert.equal(await probe(model.group,notAborted),undefined);
+ assert.equal(queries,5);
+ tick=0;step=2000;pass=false;
+ assert.equal(await probe(model.group,notAborted),undefined);
+ assert.equal(queries,6);
+ assert.equal(model.group.parent,null);
+ model.dispose();
+});
+
 test('never stages an omission while the detached link is in flight or after it rejects or loses source/terrain',async()=>{
  const n=context(),g=grade(),a=z();
  let ground:T.Mesh|undefined=g,finish:((p:OlearyProgramProof|undefined)=>void)|undefined, signal:AbortSignal|undefined;

@@ -37,10 +37,14 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,dra
    if(records.some(([,p])=>!p?.program||typeof p.isReady!=='function'))return;
    const samePrograms=()=>records.every(([m,p])=>(r.properties.get(m) as {currentProgram?:Program}).currentProgram===p);
    const pending=()=>!signal.aborted&&!group.parent&&sameRenderPath()&&samePrograms();
-   const deadline=performance.now()+1600;
+   // Five cold station materials may complete over several busy software
+   // frames. Keep that artist's detached wait bounded without reducing the
+   // required programs or relaxing admission for the smaller previews.
+   const station=draws===5,budget=station?4200:1600;
+   const deadline=performance.now()+budget;
    // Use only our bounded poll; don't leave a pending Three compileAsync
    // timer after loss of the old tile's admission lease.
-   for(let ticks=0;ticks<=100;ticks++){
+   for(let ticks=0;ticks<=(station?264:100);ticks++){
     if(!pending()||performance.now()>=deadline)return;
     if(!records.every(([,p])=>p!.isReady())){await pause();continue;}
     if(!records.every(([,p])=>gl.isProgram(p!.program)&&gl.getProgramParameter(p!.program,gl.LINK_STATUS)===true))return;

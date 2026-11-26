@@ -54,7 +54,7 @@ export class OlearySocket{
   this.tried=true;void this.prepare();
  }
  private async prepare(){
-  const c=this.fetch=new AbortController(),signal=c.signal,timer=setTimeout(()=>c.abort(),5200);
+  const c=this.fetch=new AbortController(),signal=c.signal,timer=setTimeout(()=>c.abort(),8500);
   let left=false,candidate:Model|undefined;
   const stillEligible=()=>this.exact()&&this.owner.geometry===this.original&&this.gradeStill();
   const live=()=>{const eligible=stillEligible();if(!eligible)left=true;return eligible&&!signal.aborted;};
