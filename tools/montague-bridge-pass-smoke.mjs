@@ -29,7 +29,7 @@ try{
   }));
   if(mode==='live')await page.addInitScript(([x,z])=>{
    const gl=WebGL2RenderingContext.prototype,methods={use:gl.useProgram,draw:gl.drawArrays};
-   const programs=new WeakMap(),locations=new WeakMap(),s=window.montagueRouteQA={ask:null,frame:null,draws:[],hold:false,last:null,pose:null};
+   const programs=new WeakMap(),locations=new WeakMap(),s=window.montagueRouteQA={ask:null,frame:null,draws:[],hold:false,last:null,pose:null,owner:false};
    gl.useProgram=function(p){programs.set(this,p);return methods.use.call(this,p);};
    gl.drawArrays=function(...a){
     if(s.ask&&this.canvas.id==='world'&&[15210,7500,8922,16488,72,1416,1044].includes(a[2])&&
@@ -41,7 +41,7 @@ try{
       ]);
       const [world,view]=locations.get(p),m=world?this.getUniform(p,world):null;
       const v=view?Array.from(this.getUniform(p,view)).slice(12,15):null;
-      if(v&&a[2]===15210&&m&&Math.abs(m[12]-x)<.025&&Math.abs(m[14]-z)<.025)s.pose=v;
+      if(v&&a[2]===15210&&m&&Math.abs(m[12]-x)<.025&&Math.abs(m[14]-z)<.025){s.pose=v;s.owner=true;}
       if(v){
        s.draws.push({vertices:a[2],v,depth:this.isEnabled(this.DEPTH_TEST),write:this.getParameter(this.DEPTH_WRITEMASK)});
        if(s.ask==='omit'&&s.pose?.every((c,i)=>Math.abs(c-v[i])<.025))return;
@@ -53,10 +53,10 @@ try{
    const raf=window.requestAnimationFrame.bind(window);
    window.requestAnimationFrame=cb=>raf(stamp=>{
     if(s.hold)stamp=s.last??stamp;
-    s.last=stamp;s.draws=[];cb(stamp);
+    s.last=stamp;s.draws=[];s.owner=false;cb(stamp);
     if(s.ask){
      const c=document.getElementById('world'),g=c.getContext('webgl2');
-     s.frame={mode:s.ask,draws:s.draws.filter(r=>s.pose?.every((v,i)=>Math.abs(v-r.v[i])<.025)).map(({v,...draw})=>draw),err:g.getError(),png:c.toDataURL(),at:window.islandAirDiagnostics};
+     s.frame={mode:s.ask,owner:s.owner,draws:s.draws.filter(r=>s.pose?.every((v,i)=>Math.abs(v-r.v[i])<.025)).map(({v,...draw})=>draw),err:g.getError(),png:c.toDataURL(),at:window.islandAirDiagnostics};
      s.ask=null;
     }
    });
@@ -64,22 +64,32 @@ try{
   try{
    const url=new URL(base);
    url.searchParams.set('diagnostics','');
-   url.searchParams.set('departure',mode==='live'?site:old);
+   url.searchParams.set('departure',site);
    if(mode!=='stock')url.searchParams.set('montagueFoundationPreview','');
    assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
    await page.waitForFunction(id=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===id,mode==='live'?site:old);
-   assert.equal(await page.locator('#map-site option').filter({hasText:name}).count(),mode==='live'?1:0);
+   const wanted=mode==='live'?1:0;
+   assert.equal(await page.locator('#site option').filter({hasText:name}).count(),wanted);
+   await page.locator('#nav-map').click();
+   await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='map');
+   assert.equal(await page.locator('#map-site option').filter({hasText:name}).count(),wanted);
+   await page.keyboard.press('Escape');
+   await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='dispatch');
+   await page.waitForFunction(()=>{
+    const d=window.islandAirDiagnostics;return d?.roads&&d.mainland&&d.detail?.ready>0&&!d.detail.loading;
+   },{},{polling:100});
    const start=await page.evaluate(()=>window.islandAirDiagnostics);
    assert.equal(start.montagueFoundation,mode==='live'?plan:null);
    assert.equal(reads,mode==='stock'?0:1);
    await page.getByRole('button',{name:'Begin flight'}).click();
-   const minTravel=mode==='live'?305:115;
+   const minTravel=mode==='live'?300:115;
    await page.waitForFunction(({start,minTravel})=>{
     const d=window.islandAirDiagnostics;
     return d?.mode==='flight'&&d.camera==='Chase'&&d.roads&&d.mainland&&
       d.detail?.ready>0&&!d.detail.loading&&Math.hypot(d.x-start.x,d.z-start.z)>minTravel;
    },{start,minTravel},{polling:60,timeout:160_000});
    const d=await page.evaluate(()=>window.islandAirDiagnostics);
+   console.log('Montague arrival',mode,{at:[d.x,d.altitude,d.z],warning:d.layerWarnings,foundation:d.montagueFoundation,bridge:d.montagueBridge,reads});
    assert.equal(d.montagueFoundation,mode==='live'?plan:null);
    assert.equal(d.montagueBridge,mode==='live');
    assert.deepEqual(d.layerWarnings,[]);
@@ -88,7 +98,8 @@ try{
    receipt[mode]={start:[start.x,start.altitude,start.z],travelled,reads,foundation:d.montagueFoundation,bridge:d.montagueBridge};
    if(mode==='live'){
     assert(start.altitude>60&&start.altitude<68);
-    assert(Math.hypot(d.x-bridge[0],d.z-bridge[1])<385);
+    const distance=Math.hypot(d.x-bridge[0],d.z-bridge[1]);
+    assert(distance>=175&&distance<340,JSON.stringify({distance,travelled}));
     await page.keyboard.press('p');
     await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='paused');
     await page.evaluate(()=>{window.montagueRouteQA.hold=true;});
@@ -96,11 +107,12 @@ try{
      await page.evaluate(k=>{window.montagueRouteQA.ask=k;},kind);
      await page.waitForFunction(k=>window.montagueRouteQA.frame?.mode===k,kind);
      const f=await page.evaluate(()=>window.montagueRouteQA.frame);
-     assert.equal(f.err,0);
+     assert.equal(f.err,0);assert.equal(f.owner,true);
      for(const v of [15210,7500,8922,16488])assert(f.draws.some(k=>k.vertices===v&&k.depth&&k.write),JSON.stringify(f.draws));
      return {...f,bytes:Buffer.from(f.png.split(',')[1],'base64')};
     };
-    const on=await sample('normal'),off=await sample('omit');
+    const on=await sample('normal'),off=await sample('omit'),restored=await sample('restored');
+    assert.deepEqual(restored.bytes,on.bytes,'restoring the scoped draws must restore the frame');
     assert.deepEqual([on.at.x,on.at.z,on.at.altitude],[off.at.x,off.at.z,off.at.altitude]);
     const a=PNG.sync.read(on.bytes),b=PNG.sync.read(off.bytes);
     assert.deepEqual([a.width,a.height],[b.width,b.height]);

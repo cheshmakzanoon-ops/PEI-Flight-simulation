@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {gunzipSync,gzipSync} from 'node:zlib';
+import {sceneryDeparture} from '../src/app/scenery-profile.ts';
+import {MONTAGUE_BRIDGE_DEPARTURE,SITES} from '../src/sim/places.ts';
 import {decodeRoads} from '../src/render/roads.ts';
 import {loadMontagueFoundation,supportedMontagueFoundation} from '../src/sim/montague-foundation.ts';
 import {MONTAGUE_FOUNDATION as plan}from '../src/sim/montague-foundation.generated.ts';
@@ -52,4 +54,15 @@ test('cross-sections remain finite and retain both resolved raised walk profiles
   assert.ok(measuredDeck(q,-5.18)>measuredDeck(q,-3.78)+.18);
   assert.ok(measuredDeck(q,5.6)>measuredDeck(q,4.1)+.18);
  }
+});
+
+test('saved low bridge links fall back to the existing Montague departure when not admitted',()=>{
+ const ids=SITES.map(s=>s.id),low=MONTAGUE_BRIDGE_DEPARTURE.id;
+ assert.ok(!ids.includes(low));
+ const search='?departure='+low;
+ assert.equal(ids[sceneryDeparture(search,ids)],'montague');
+ const admitted=[...ids,low];
+ assert.equal(admitted[sceneryDeparture(search,admitted)],low);
+ assert.equal(sceneryDeparture('?departure=unknown',admitted),0);
+ assert.equal(sceneryDeparture('?departure='+low,['cavendish']),0);
 });

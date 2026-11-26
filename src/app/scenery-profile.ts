@@ -87,7 +87,9 @@ export function switchSceneryURL(source:string,detail:boolean,departureId:string
 export function sceneryDeparture(search:string,siteIds:readonly string[]){
  const wanted=new URLSearchParams(search).get('departure');
  const i=wanted===null?-1:siteIds.indexOf(wanted);
- return Math.max(0,i);
+ // Outside the admitted local bridge preview, keep a saved lower-pass
+ // link in the same valley rather than sending it across the island.
+ return Math.max(0,i<0&&wanted==='montague-bridge-low'?siteIds.indexOf('montague'):i);
 }
 
 /** Standalone art reviews. They are intentionally not in the bundled detail profile. */
