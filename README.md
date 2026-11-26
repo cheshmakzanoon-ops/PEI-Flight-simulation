@@ -7,109 +7,13 @@ A province-wide, metre-scale world built in TypeScript and Three.js.
 
 Follow the north shore from Cavendish, fly over Summerside and Charlottetown, or cross Kings County toward East Point. You can start in the air or depart from a runway, switch from chase view to the cockpit, and reposition from the in-flight atlas.
 
-[Download web build](#download-the-web-build) · [Build from source](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [World data](docs/WORLD.md) · [Aircraft](docs/AIRCRAFT.md) · [Production gates](docs/PRODUCTION.md) · [QA record](docs/QA.md)
+[Download web build](#download-the-web-build) · [Build from source](#run-locally) · [Pilot guide](docs/FLIGHT.md) · [Scenery guide](docs/SCENERY.md) · [World data](docs/WORLD.md) · [Aircraft](docs/AIRCRAFT.md) · [Production gates](docs/PRODUCTION.md) · [QA record](docs/QA.md)
 
-> **Development build.** The map covers all three counties, not just a showcase area. The current detail level is regional: real geographic inputs and simplified 3D scenery. Accurate shopfronts, most landmarks, close-range materials and training-grade aerodynamics are not part of this build.
+> **In development.** You can fly across all three counties at metre scale. Geography comes from real data, but detail varies: selected sites have surveyed relief and original models; most buildings and close scenery are still approximate. This is not a navigation or training tool.
 
 ![Chase view above the fields and shoreline near Cavendish](docs/media/cavendish-low.webp)
 
 *An in-engine low pass over the Cavendish coast.*
-
-## Fly the province
-
-| System | What is in this build |
-| --- | --- |
-| **World** | LiDAR-derived terrain, a 2025 satellite-colour mosaic, a refined coastline and water, 245 near-detail imagery tiles, 19,465 road segments and 85,866 LiDAR-derived building footprints. Woodland follows land cover with [streamed provincial stand heights](docs/qa/forest-height-stream.md); [roof-centred tree stems are excluded](docs/vegetation-clearance.md). Confederation Bridge, St. Dunstan’s Basilica and both [point light stations](docs/landmarks/lighthouses.md) have custom models. The [Matthew and McLean Heritage Building](docs/qa/souris-mclean.md) in Souris has a measured roof and a reconstructed storefront. The [former railway station in Summerside](docs/qa/summerside-railway-station.md) replaces the old flat massing with a survey-informed exterior. Surveyed roof planes refine 108 existing outlines across [Kings](docs/qa/kings-neutral-roofs.md), [Prince](docs/qa/prince-neutral-roofs.md) and [Queens](docs/qa/queens-neutral-roofs.md) counties, including a [Charlottetown gable checked against raw LiDAR](docs/qa/queens-survey-roof.md). [Fifty-nine large roofs](docs/qa/large-roof-tone.md) use colour from the verified 2025 satellite mosaic. [Hangar 4 at Slemon Park](docs/qa/hangar-4.md) has a measured roof silhouette and lower annexes. Both lighthouse approaches use [higher-resolution measured coastal relief](docs/coastal-relief.md). [South Lake](docs/qa/south-lake.md) uses sheltered water shading without changing the shoreline. |
-| **Aircraft** | An original single-engine high-wing survey plane, with an animated propeller, [moving ailerons and elevators](docs/qa/control-surfaces.md), a modeled cockpit, graduated flight instruments and synthesized engine audio. |
-| **Flight** | Fixed-step civilian flight model, density-adjusted airspeed, angle-of-attack stall behavior, ground roll and runway landings. Runway departure presets and scenic starts across all three counties. |
-| **Navigation** | Atlas with position and heading, true-heading and airspeed displays, plus chase, cockpit and wide-chase views. |
-| **Inputs** | Keyboard, touch controls and browser-standard gamepads. |
-
-**A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md).
-
-**Cavendish scenery in one step:** Select **Cavendish Dunelands · coastal pass**, then **Enable Cavendish detail**. This selects six compatible local studies without changing the other scenery settings. [What the pack enables](docs/qa/cavendish-package.md).
-
-**Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](docs/qa/waterfront-departures.md) · [Georgetown exterior and flight check](docs/qa/st-davids-church-study.md).
-
-The [Panmure Head lighthouse study](docs/qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](docs/qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
-
-**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](docs/qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. The separate [manor exterior preview](docs/qa/dalvay-exterior.md) adds its gables, covered veranda and rounded dining room.
-
-**Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Add `?departure=seacow-head-coast&seacowExteriorStudy` to see the [authored white octagonal tower, red gallery and glazed lantern](docs/qa/seacow-exterior.md); the shore and nearby building are unchanged.
-
-The [Cape Egmont lighthouse studio](docs/qa/cape-egmont-detached.md) is a separate Prince County model with unverified placement; it does not alter the live island.
-
-**Tracadie Bay · marsh pass** starts over one of [three mapped coastal marsh patches](docs/qa/coastal-marsh.md). Get close to see wind-laid grasses; the patch layer is also available at Cascumpec and Morell in Standard.
-
-**Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](docs/qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces. In Standard, select **Enable Cape Tryon sandstone** in Dispatch for the [original cliff finish](docs/qa/cape-tryon-stone.md).
-
-### Scenery previews
-
-In Dispatch, choose **Use detailed preview** to enable the [curated profile](docs/qa/scenery-profile.md). Use **Use standard** to return without losing your departure. For individual comparisons, these flags also work on their own:
-
-| Area | Preview flag | What to look for |
-| --- | --- | --- |
-| West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | Standard includes [74 earlier turbines](docs/qa/regional-wind.md) and [seven Eastern Kings Phase II turbines](docs/qa/east-point-phase-ii.md). Select **Eastern Kings · turbine skyline** to see both local arrays. Use `?stockEastPointPhaseII` to compare without the new turbines. The earlier arrays retain their [moving blade shadows](docs/qa/regional-wind-rotor-light.md). |
-| North Cape | `?stockNorthCapeWind` | Standard streams [all 16 commercial turbines](docs/qa/north-cape-turbines.md) near the [wind farm low pass](docs/qa/north-cape-departure.md). The flag hides them; `?northCapeWind` retains the older shadow study. |
-| Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Historical Spinnakers’ Landing integration](docs/qa/spinnakers-landing.md), the [surveyed court and ramp](docs/qa/baywalk-court.md), and the [mapped concrete approach](docs/qa/baywalk-concrete.md). |
-| Inland grassland | `?stockMeadow` | Compare [the close open-ground material](docs/qa/meadow-texture.md) on an **inland meadow pass** in Prince, Queens or Kings. |
-| Basin Head beach | `?stockBasinSand` | Compare [Standard’s pale Singing Sands material](docs/qa/basin-head-sand.md) with the original sand on the low pass. |
-| Basin Head | `?basinChannel&basinWharf` | The [measured inlet, bridge and Cannery](docs/qa/basin-head-cannery.md) and [outer wharf](docs/qa/basin-head-outer-wharf.md). |
-| Great George Street, Charlottetown | `?departure=harbour-low&basilicaExteriorStudy` | See [St. Dunstan’s Great George Street frontage study](docs/qa/basilica-exterior.md): three recessed entrances, twin steeples, original sandstone and roof finishes. Optional frontage only, not a surveyed replica. Add `&basilicaYardSun` for its [shadow across the court, street and sidewalks](docs/qa/basilica-yard-sun.md). |
-| Charlottetown | `?beaconsfieldReview` | The [Beaconsfield Historic House exterior](docs/qa/beaconsfield-review.md), an aerial art preview near the waterfront, with [measured ground contact](docs/qa/beaconsfield-contact.md) in low local views. Add `&stockBeaconsfieldGrade` to compare the same house over the original ground. |
-| Montague | `?montagueFoundationPreview&departure=montague-bridge-low` | Fly the [curved Main Street bridge](docs/montague-bridge-preview.md) from a low river approach with the bridge to your left. Landscape view recommended. |
-| Charlottetown · runway 03 | `?stockRunway03Pavement` | Compare Standard’s [filtered asphalt finish](docs/qa/charlottetown-runway-03.md) with the older flat surface. Runway marks, position and controls are unchanged. |
-| Dalvay-by-the-Sea | `?departure=dalvay-lake-coastal-pass&dalvayExteriorStudy` | [Documentary manor exterior](docs/qa/dalvay-exterior.md). The historic footprint and existing surroundings stay in place. |
-| Dalvay Lake | `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` | [Wind ripples and sky reflections](docs/qa/dalvay-lake-optics.md) on the verified interior. `&stockDalvayWaterOptics` keeps the original lake appearance. |
-| Souris · Knight Point | `?departure=souris-waterfront-pass&sourisKnightExterior` | [Souris East lighthouse](docs/qa/souris-knight-exterior.md), with a tapered white body, red bracketed gallery and domed glazed lantern. The shore and ground are unchanged. |
-| Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](docs/qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |
-| North Rustico Harbour | `?northRusticoLighthouseStudy` | [Survey-fitted lighthouse, keeper’s dwelling and local grade](docs/landmarks/north-rustico.md). Choose **North Rustico Harbour · coastal pass**. |
-| Indian River | `?indianRiverReview` | [St. Mary’s exterior and local grade](docs/landmarks/st-marys-indian-river.md). Choose **Indian River · country pass**. |
-| Point Prim | `?stockPointPrim` | Standard shows the [surveyed-era lighthouse and measured dry ground](docs/point-prim-study.md). Choose **Point Prim · lighthouse pass** for a virtual 72 m offshore approach. |
-| Hog Island | `?hogIslandPhotoStudy` | [Dated aerial surface detail](docs/qa/hog-island-photo-study.md). Choose a west or east **Hog Island · dune pass**. |
-| Green Gables grounds | `?stockGreenGablesBarn` | Compare the original massing with Standard’s [survey-fitted Barn and adjoining wing](docs/art/green-gables-barn-review.md). |
-| Cavendish Dunelands | `?cavendishWaterReview` | [Lake of Shining Waters, 2020 freshwater core](docs/qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
-| Near Green Gables | `?gablesTrailReview` | [Mapped gravel connection](docs/qa/gables-trail.md), with short-scale grain on the existing terrain. |
-| Southwest of Green Gables | `?gablesFairwayReview` | [Source-fenced fairway colour](docs/qa/gables-fairway.md) on the verified open ground, without moving the path or golf boundary. |
-| Southwest of Green Gables | `?gablesGradeReview` | [Survey-supported dry rise](docs/qa/gables-southwest-grade.md), a close-range correction to terrain and contact in one small area. |
-| Greenwich Dunes | `?bowleySurveyPreview` | [Bowley Pond’s surveyed 2020 open-water core](docs/qa/bowley-water.md). Choose **Greenwich Dunes · coastal pass** for the view from offshore. |
-| Prince, Queens and Kings | `?cropRowsReview` | The [field surface preview](docs/qa/crop-preview.md) adds close soil relief at three selected locations. |
-| Selected grassland across PEI | `?sourceGrassStudy` | [Source-backed ground vegetation](docs/qa/province-grass.md) in all three counties, with representative **grassland passes**. |
-| Selected fields across PEI | `?provinceFieldsReview` | [Expanded farmland](docs/qa/province-fields.md) adds close-range furrow shading within 76.27 km² of source-qualified field interiors. Select it in Standard Dispatch; it is off by default. |
-| Gravel roads across PEI | `?stockGravelSurface` | Compare Standard’s [close gravel material](docs/qa/gravel-surface-study.md) on 2,651 verified non-bridge road records. |
-| One surveyed roof west of Summerside | `?stockPrinceSurveyRoof` | Compare the original flat building with its [surveyed cross-ridges and stepped roof](docs/qa/prince-survey-roof.md). Use `?stockPrinceRoofContact` to keep that shape while switching off [local roof-contact shading](docs/qa/prince-roof-contact.md). The façade remains unsurveyed. |
-| Four mapped gravel-lane sites | `?mappedLaneCanopyStudy` | [Canopy placement study](docs/qa/mapped-lane-canopy.md): hides the exact game-generated trees and shadows in surveyed open lane centres. Standard only. |
-| Distant PEI coast | `?stockAerialPerspective` | Compare [Standard daylight haze and sea horizon](docs/qa/aerial-perspective-study.md) with the original fixed mist. |
-| Orby Head | `?stockOrbyCoast` | [Shoreline gap repair](docs/qa/orby-shore-closure.md): Standard closes known mask-cell gaps below the cliffs. The flag restores the inherited coastline wall. |
-| Close satellite-image boundaries in all three counties | `?stockCountyOrtho` | Standard softens the [Souris, western PEI and Queens County tile joins](docs/qa/county-aerial-joins.md) using only the neighbouring image pixels. This switch restores those three old seams; `?stockTracadieOrtho` independently restores the [Tracadie Bay seam](docs/qa/tracadie-aerial-join.md). |
-| Two inland field edges in Prince County | `?stockInlandOrtho` | Compare two [short, source-checked image windows](docs/qa/inland-aerial-joins.md). At low altitude the original field and vegetation colours meet without a straight tile-clamp line. This switch affects only these windows. |
-| Kings County coastal ridge | `?kingsDryCrownStudy&departure=kings-coastal-ridge` | [Measured dry ridge](docs/qa/kings-dry-crown.md): 2020 LiDAR terrain with matched contact and a distant fade. Standard only. |
-| Ordinary beach and cliff surfaces | `?shoreToneStudy` | [Tint compatibility study](docs/qa/shore-tone.md): smooths visible colour steps only on affected renderers. Standard only. |
-| Coastal optics shortcut | `?coastalOptics` | [Coastal optics](docs/qa/coastal-optics-profile.md) in Optional scenery studies applies the separately tested coastal views together. Standard only. |
-| Exposed Prince and Kings shores | `?stockOpenCoast` | Compare [local coastline gap repairs](docs/qa/open-coast-closure.md) without disabling the nearshore foam. For Kings County, the [Panmure Head coastal pass](docs/qa/panmure-open-coast.md) also has a repaired headland approach. |
-| Exposed Prince and Kings shores | `?stockNearshoreFoam` | Compare [Standard’s small moving breaker groups](docs/qa/nearshore-foam-study.md) on **Prince County · open shore pass** or **Kings County · coastal ridge pass**. The flag retains the previous water look. |
-| Four offshore areas | `?stockOpenRipples` | Compare [open-water ripple variation](docs/qa/open-water-ripples.md), independent of the coast mask, wave foam and physical sea surface. |
-| Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](docs/qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
-| Queens and Kings woodlands | `?stockRegionalCanopy` | Compare [measured canopy infill](docs/qa/regional-canopy.md) on the two **woodland passes** in Standard. |
-| Miscouche woodlot | `?stockMiscouche` | Compare the [bounded canopy infill](docs/qa/miscouche-canopy.md) on **Miscouche · woodland pass** in Standard. |
-| Standard woodland | `?stockCanopyLight` | Compare [directional tree-crown lighting](docs/qa/canopy-light-preview.md) with the original diffuse canopy. |
-| Qualified coastal grass | `?stockDuneGrass` | Compare [Standard’s close coastal grass material](docs/qa/coastal-grass-surface.md) with the original diffuse ground. |
-| Woodland passes in all three counties | `?woodlandView` | [Woodland scenery view](docs/qa/woodland-scenery-view.md): forest surface, close bark, near conifers and a down-looking camera. Press **V** to cycle to **Scenery**. [How nearby tree draws are reduced without thinning the forest](docs/qa/woodland-volume-cull.md). |
-| Across PEI | `?legacyShoreArcs&shoreFoamDetail&canopyLight&forestFloor` | [Coastal seam repair](docs/qa/legacy-shore-arcs.md), [shore break](docs/qa/shore-foam-detail.md), [canopy light](docs/qa/canopy-light-preview.md) and [woodland floor variation](docs/qa/forest-floor-preview.md). Standard uses broken shoreline crests; `?stockShoreFoam` restores the original foam. Compare the [mapped open-ground material](docs/qa/meadow-texture.md) with `?meadowTexture`. |
-
-**Optional scenery studies** in Dispatch offers the Beaconsfield and Green Gables exteriors, the Dunelands freshwater core, North Rustico lighthouse, St. Mary’s exterior, Hog Island aerial detail, Ground vegetation, Close grass detail, and both farmland studies without editing the URL. Enable both Cavendish studies and choose **Cavendish Dunelands · coastal pass** to try them on the same route. Use the original Prince, Queens or Kings County **fields low pass** for the three-site field preview, or [fly the mapped Kings County pass with Expanded farmland](docs/qa/province-fields.md#fly-the-mapped-kings-county-pass). The three county **dry dune passes** show [verified near-ground sand detail](docs/qa/dry-dune-surface-detail.md) in Standard. In Standard, [Ground vegetation and Expanded farmland](docs/qa/province-land-surfaces.md) can be enabled together.
-
-[Standard close-wall detail](docs/qa/town-wall-core.md) now fits window spacing and subtle wall finishes in the cores of three towns, without changing their outlines or roofs. Optional scenery previews are regional.
-
-In Prince County, the **Summerside waterfront · low pass** shows a [measured raised boardwalk and seven roof sections at Spinnakers’ Landing](docs/qa/summerside-standard-wharf.md), alongside the railway station and survey-fitted roofs [along Water Street](docs/qa/summerside-measured-roof.md), [north of downtown](docs/qa/summerside-north-roof.md), and [in western downtown](docs/qa/summerside-west-roofs.md) in Standard. Beside Water Street, [one survey-cleared storefront site](docs/qa/summerside-water-open-ground.md) removes an unsupported tree without changing nearby vegetation.
-
-Try the terminal wall study with `?departure=spinnakers-low&summersideTerminalWallPreview`. It replaces the generic office-window pattern with an original industrial finish, informed by a [2005 harbour aerial](https://publications.gc.ca/collections/collection_2024/mpo-dfo/Fs74-50-2024-2-eng.pdf#page=79). No photo pixels are used. The roof, building outline, terrain, shoreline and flight physics are unchanged. Add `&stockSummersideTerminalWalls` for the stock finish on the same route.
-
-In Queens County, the **North Rustico Harbour · coastal pass** includes a [dated roof-colour correction](docs/qa/rustico-harbour-roof.md) on one harbour building. Its existing gable, neighboring lighthouse and terrain are unchanged. The separate [Doiron Fisheries entrance study](tools/art/north-rustico-doiron-storefront/) documents a modelled historical storefront segment; it is not installed in the flight build.
-
-In western PEI, **O’Leary · railway station pass** is a fictional low sightseeing departure. Standard shows a [source-informed warm-grey roof at Access PEI](docs/qa/oleary-access-roof-tone.md); choosing the separate exterior studies preserves their original shared draw. Add `?departure=oleary-railway-low&olearyExteriorStudy` to see the [original station exterior](docs/qa/oleary-station-exterior.md), with a dated reference ledger and matched close and distant views. The [neighboring industrial building study](docs/qa/oleary-industrial-context.md) separately replaces one oversized stock block with its surveyed shed-and-tower form. A separate [stepped warehouse study](docs/qa/oleary-warehouse.md) restores two low roof bands and a small side mass without replacing either neighboring exterior.
-
-For a low offshore approach in Kings County, choose [Souris · waterfront pass](docs/qa/souris-waterfront-pass.md) in Dispatch. Near Main Street, Standard scenery uses the [survey-backed exterior at 77 Main](docs/qa/souris-east-exterior.md) in place of the old flat block. On the hill, [one verified southwest wall](docs/qa/souris-west-facing.md) replaces generic windows with original red masonry. The [St. Mary’s twin-tower study](tools/art/souris-st-mary-study/) is separate; its terrain placement is not approved.
 
 ## Download the web build
 
@@ -138,6 +42,33 @@ npm run dev -- --host 127.0.0.1
 
 Open the local address printed by Vite. The simulator loads its geographic assets from the project, without an API key. For a deployable build, run `npm run build` and serve `dist/` over HTTP(S). Opening the HTML file directly from disk is not supported.
 
+## Fly the province
+
+| First flight | What you'll see |
+| --- | --- |
+| **Cavendish** | Follow PEI’s north shore and switch from Chase to Cockpit with **V**. For the detailed dunes and lake approach, choose **Cavendish Dunelands · coastal pass**. |
+| **Charlottetown waterfront · low pass** | Start over the harbour, then use the atlas (**M**) to reposition. For a runway start, use Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md). |
+| **Eastern Kings · turbine skyline** | Approach the eastern end of the island from the sea. Standard includes [both generations of the Eastern Kings turbines](docs/qa/east-point-phase-ii.md). |
+
+Standard combines LiDAR-derived terrain with 245 near-detail imagery
+tiles, 19,465 mapped road segments and 85,866 detected building
+footprints. Those footprints and heights are not facade surveys.
+[Eight inland image windows](docs/qa/expanded-inland-aerial-joins.md)
+recover continuous ground sampling using the original imagery.
+[Bookmarked departures](docs/qa/forest-departure-preflight.md) warm
+available mapped woodland heights before the first flight.
+
+The original high-wing aircraft has a modeled cockpit, animated controls
+and propeller, and a fixed-step flight model with stall, ground-roll and
+landing behavior. Standard supports keyboard, touch, and browser gamepads.
+
+### Scenery previews
+
+The [scenery guide](docs/SCENERY.md) lists what's already in Standard and
+how to enable or compare the individual scenery studies. The opt-in
+**Use detailed preview** profile keeps the same province, departures and
+flight controls.
+
 ### Essential controls
 
 | Action | Keyboard | Gamepad |
@@ -151,8 +82,6 @@ Open the local address printed by Vite. The simulator loads its geographic asset
 Press a gamepad button while the simulator has focus to activate it in the browser.
 
 ## Development
-
-The [Province House](docs/qa/province-house-study.md), [Summerside City Hall](tools/art/summerside-cityhall-study/README.md), and [Lefurgey Cultural Centre](tools/art/lefurgey-study/README.md) exterior studies include original Three.js art and reproducible checks. They are separate from the playable atlas.
 
 ```sh
 npm run check                # Flight tests, TypeScript and production build
@@ -170,7 +99,6 @@ node tools/verify-world.mjs  # Asset hashes, formats, extents and counts
 
 CI verifies the data, flight regressions, production build, and a Chromium smoke route across all three counties. Next targets are finer coastal terrain, remaining close-range vegetation and façade detail, an externally benchmarked airframe, and real-device flight and graphics benchmarks. See [acceptance gates](docs/PRODUCTION.md) for the criteria used to judge those passes.
 
-The narrow [Green Gables gravel fixture](docs/qa/gables-gravel.md) is retained as a material test, not a courtyard reconstruction.
 
 ## Scenery gallery
 
