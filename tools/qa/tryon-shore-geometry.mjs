@@ -76,6 +76,7 @@ for(const w of [painted,repair]){
 const curve=w=>w.scene.children.find(m=>m.name==='Cape Tryon coverage repair'&&m.visible).geometry.attributes.position.array;
 assert.deepEqual(curve(painted),curve(repair));
 assert.deepEqual(painted.tryonRockStage.owners.map(q=>q.authored),shaderPair);
+assert(painted.tryonRockStage.owners.every(q=>!q.mesh.geometry.hasAttribute("normal")&&q.mesh.geometry.hasAttribute("uv")));
 painted.syncTryonRock();assert(!painted.tryonRockActive);
 let exactLink=true;
 painted.tryonRockStage.proof=()=>exactLink;

@@ -1036,13 +1036,21 @@ export class World {
    this.tryonRockPhase='stock-cover';return;
   }
   this.tryonRockPhase='compiling';
-  const probe=new THREE.Group(),g=new THREE.PlaneGeometry(1,1);
-  for(const m of s.materials)probe.add(new THREE.Mesh(g,m));
+  const probe=new THREE.Group();
+  // These exact non-indexed curtains have position and UV, not the
+  // normal attribute of a convenience PlaneGeometry. That attribute
+  // changes Three r187's shader cache key even for derived normals.
+  for(const q of s.owners){
+   const copy=new THREE.Mesh(q.mesh.geometry,q.authored);
+   copy.layers.mask=q.mesh.layers.mask;copy.castShadow=q.mesh.castShadow;
+   copy.receiveShadow=q.mesh.receiveShadow;copy.frustumCulled=false;
+   probe.add(copy);
+  }
   try{
    const proof=await olearyLinkPrograms(this.renderer,camera,this.scene,2,false,4600)(probe,new AbortController().signal);
    if(this.tryonRockStage===s&&proof?.()){s.proof=proof;this.tryonRockPhase='linked';}
    else this.tryonRockPhase='stock-link';
-  }finally{probe.clear();g.dispose();}
+  }finally{probe.clear();}
  }
  private syncTryonRock(){
   const s=this.tryonRockStage;if(!s?.proof)return;

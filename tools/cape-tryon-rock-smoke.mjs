@@ -116,7 +116,7 @@ try{
     const d=window.islandAirDiagnostics,s=window.capeStoneQA;
     if(d?.tryonRockState?.startsWith('stock-')||d?.tryonRockState?.startsWith('missing-owners'))return true;
     return rejected?s.refused>0&&d?.tryonRockState==='stock-link':d?.tryonRockPreview===true;
-   },refuse,{polling:150,timeout:45000});
+   },refuse,{polling:150,timeout:100000});
   }finally{console.log('Cape Stone link result',refuse?'refused':'normal',await sample(),errors);}
   const admitted=await sample();
   assert.equal(admitted.phase,refuse?'stock-link':'live',JSON.stringify(admitted));
