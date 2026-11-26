@@ -15,6 +15,8 @@ architectural evidence separate from ordinary-flight release checks.
 ## Data intake
 
 Record source URL, provider, acquisition/version date, licence, attribution, input and output checksums, spatial reference and transform for every derived dataset. Separate code and third-party data terms. Reject imagery with unclear redistribution or derivation rights. Do not use scraped Google Maps, Google Earth or Street View imagery or digitize models from it. Candidate sources include Statistics Canada's cartographic boundaries, Natural Resources Canada's HRDEM and Copernicus Sentinel-2. Name only material actually used in release credits.
+Use the [mapped surface history audit](qa/mapped-ground-material-custody.md)
+when a recent geometry edit may have carried an older material tag.
 
 ## Review and release
 
