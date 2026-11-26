@@ -20,9 +20,11 @@ assert(survey.length>=2&&harbour);
 const terrain=new Terrain(t,new Int16Array(ab(raw)),survey),cover=new Cover(c.width,c.height,new Uint8Array(ab(cr)),harbour,sha(cw),undefined,undefined,sha(cr));
 const world=Object.assign(Object.create(World.prototype),{terrain,cover,pondMeshes:[],grades:new Map,byId:new Map,reliefActive:new Set,mat:new T.MeshBasicMaterial()});
 import {WORLD_COLS,WORLD_ROWS} from '../../src/sim/coastal-terrain.ts';
-import {project} from '../../src/sim/geo.ts';
+import {geographic,project} from '../../src/sim/geo.ts';
 const width=(terrain.right-terrain.left)/WORLD_COLS,depth=(terrain.bottom-terrain.top)/WORLD_ROWS;
-const siteInputs=JSON.parse(fs.readFileSync('docs/qa/coastal-terrain-intake-sites.json','utf-8'));
+const namedTryon=process.argv[2]==='--tryon-dated-window';
+const siteInputs=JSON.parse(fs.readFileSync('docs/qa/coastal-terrain-intake-sites.json','utf-8'))
+ .filter(site=>!namedTryon||site.id==='cape-tryon');
 const shape=(i,z,lod)=>{
  const x0=terrain.left+i*width,z0=terrain.top+z*depth,id=i+'-'+z;
  return {id,i,j:z,x0,z0,w:width,d:depth,lod,fine:world.patch(x0,z0,width,depth,lod)};
@@ -38,7 +40,8 @@ for(const s of siteInputs){
   cache.set(owner.id,owner);
  }
  let rayChecks=0,maxRay=0;
- for(let b=-118;b<=118;b+=2)for(let a=-118;a<=118;a+=2){
+ for(let b=namedTryon?-200:-118;b<=(namedTryon?210:118);b+=2)
+  for(let a=namedTryon?-230:-118;a<=(namedTryon?230:118);a+=2){
   const X=x+a,Z=z+b,ix=Math.floor((X-terrain.left)/width),iz=Math.floor((Z-terrain.top)/depth);
   const owner=cache.get(ix+'-'+iz);assert(owner);
   const visual=world.visualGroundHeight(X,Z),g=world.surface(X,Z),d=cover.distance(terrain,X,Z);
@@ -46,7 +49,9 @@ for(const s of siteInputs){
    ray.ray.origin.set(X,160,Z);const m=ray.intersectObject(owner.fine,false)[0];
    assert(m);rayChecks++;maxRay=Math.max(maxRay,Math.abs(m.point.y-visual));
   }
-  samples.push([X,Z,visual,g.height,d,Number(g.land)]);
+  if(namedTryon){
+   const {lon,lat}=geographic(X,Z);samples.push([X,Z,visual,g.height,d,Number(g.land),lon,lat,ix,iz]);
+  }else samples.push([X,Z,visual,g.height,d,Number(g.land)]);
  }
  bySite[s.id]={county:s.county,x,z,owner:i+'-'+k,rayChecks,maxRay,samples};
 }

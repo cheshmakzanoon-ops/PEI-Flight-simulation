@@ -1,0 +1,58 @@
+{
+  "nativeSource": "PEI-Prince_Edward_Island_2020-1m, 2020-09-15 nominal project date; CGVD2013",
+  "chipXYWH": [
+    80509,
+    54659,
+    516,
+    448
+  ],
+  "chipSHA256": "e25dd8e9ce83d801828c560d71804903069b2071088c11381d35c7d6bcd191c2",
+  "sourceETag": "9e5249deef1137ddcce504d6f4bca1a9-131",
+  "stockPins": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9"
+  },
+  "stockGeometryRayChecks": 156,
+  "stockVisualMaxRayM": 1.7882868597496326e-05,
+  "sampled": 47586,
+  "nativeSupportsAllFour": 32124,
+  "dryOverlap": 16459,
+  "source16mOrHigherButStockWet": 127,
+  "sourceHighAndStockBeachWeightOver12Percent": 185,
+  "sameButStockBeachWeightOver25Percent": 118,
+  "boundsXZ": [
+    -23509.750392,
+    -3842.389037,
+    -23409.750392,
+    -3566.389037
+  ],
+  "profilePercentiles": [
+    0,
+    10,
+    50,
+    90,
+    100
+  ],
+  "stockHeightM": [
+    6.726529,
+    7.468329,
+    8.827583,
+    10.064517,
+    11.431118
+  ],
+  "nativeHeightM": [
+    16.264018,
+    17.170077,
+    19.405428,
+    20.998621,
+    24.876906
+  ],
+  "nativeMinusStockM": [
+    6.647341,
+    8.445116,
+    10.718018,
+    11.81114,
+    15.081219
+  ],
+  "scope": "Dated source ground versus current rendered ground and inferred beach blend; not present shoreline or material class."
+}
