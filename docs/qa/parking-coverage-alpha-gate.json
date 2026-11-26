@@ -1,0 +1,517 @@
+{
+  "baseline": "2ba20c7a3207d5504b6313ef264878fc2cb90448",
+  "scene": "ordinary actual Chase, 1120x700, 4x SwiftShader; only the shared mapped parking material varies",
+  "routes": {
+    "oleary-railway-low": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "xyz": [
+          -77938.88837916071,
+          94.8002838410887,
+          -23987.87595009552
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 255,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 255,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 157,
+        "triangles": 335880,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "xyz": [
+          -78261.3669071564,
+          98.28042258994525,
+          -23591.54983974479
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 220,
+          "newMinAlpha": 220,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 220,
+          "newMinAlpha": 220,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 159,
+        "triangles": 335864,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "xyz": [
+          -78584.24653952337,
+          101.96770305739108,
+          -23194.762311597802
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 21,
+          "oldMinAlpha": 179,
+          "newMinAlpha": 179,
+          "alphaMaxDelta": 48,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 179,
+          "newMinAlpha": 179,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 158,
+        "triangles": 327025,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 2168,
+        "time": 24.0888888888901,
+        "xyz": [
+          -78713.46581864923,
+          103.46097975313813,
+          -23035.969735392726
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 322,
+          "oldMinAlpha": 176,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 79,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 255,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 157,
+        "triangles": 318487,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 2348,
+        "time": 26.088888888890413,
+        "xyz": [
+          -78778.08569389429,
+          104.21003612578106,
+          -22956.5616724848
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 53,
+          "oldMinAlpha": 179,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 76,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 255,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 157,
+        "triangles": 314141,
+        "active": true,
+        "material": "ShaderMaterial"
+      }
+    ],
+    "georgetown-low": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "active": false,
+        "cold": 0
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "active": false,
+        "cold": 0
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "active": false,
+        "cold": 0
+      }
+    ],
+    "harbour-low": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "xyz": [
+          5084.43735250956,
+          114.94818097463852,
+          31232.463529342065
+        ],
+        "heading": 0.5934119456780724,
+        "raw": {
+          "rgb": 0,
+          "alpha": 25,
+          "oldMinAlpha": 181,
+          "newMinAlpha": 181,
+          "alphaMaxDelta": 68,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 181,
+          "newMinAlpha": 181,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 238,
+        "triangles": 546721,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "xyz": [
+          5394.512307701467,
+          118.32841563858014,
+          30804.427161862986
+        ],
+        "heading": 0.5934119456780724,
+        "raw": {
+          "rgb": 0,
+          "alpha": 40,
+          "oldMinAlpha": 187,
+          "newMinAlpha": 211,
+          "alphaMaxDelta": 68,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 211,
+          "newMinAlpha": 211,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 235,
+        "triangles": 550810,
+        "active": true,
+        "material": "ShaderMaterial"
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "xyz": [
+          5704.9521796429,
+          121.92093647740212,
+          30375.849783054276
+        ],
+        "heading": 0.5934119456780724,
+        "raw": {
+          "rgb": 0,
+          "alpha": 3,
+          "oldMinAlpha": 219,
+          "newMinAlpha": 223,
+          "alphaMaxDelta": 36,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 223,
+          "newMinAlpha": 223,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 236,
+        "triangles": 540039,
+        "active": true,
+        "material": "ShaderMaterial"
+      }
+    ]
+  },
+  "deskCompositor": {
+    "fixed": {
+      "step": 2168,
+      "pose": [
+        -78713.46581864923,
+        103.46097975313813,
+        -23035.969735392726,
+        3.857177646907468
+      ],
+      "time": 24.0888888888901
+    },
+    "cases": {
+      "old": {
+        "attributeSamples": 4,
+        "draws": 157,
+        "tris": 317019,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      },
+      "fixed": {
+        "attributeSamples": 4,
+        "draws": 157,
+        "tris": 317019,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      },
+      "restored": {
+        "attributeSamples": 4,
+        "draws": 157,
+        "tris": 317019,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      }
+    },
+    "rawAlphaPixels": 322,
+    "screenshotPixels": 309,
+    "strong": 263,
+    "changedOutside": 0,
+    "alphaDropped": 0,
+    "rollback": 0,
+    "rawRestore": 0,
+    "maxChange": 19,
+    "sha": [
+      "02d3e4252044d570328c31d998027dab34b0e025531188393a4dc0180d612b06",
+      "32b3fe5a842ccb77c727c281b38bcd13d1d618e7bfcea52897a1fccfa26e9f7b",
+      "02d3e4252044d570328c31d998027dab34b0e025531188393a4dc0180d612b06"
+    ]
+  }
+}

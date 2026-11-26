@@ -143,9 +143,9 @@ export class ParkingSurfaces{
  private readonly material:THREE.ShaderMaterial;
  private todo:ParkingTile[]=[];
  private oldX=Infinity;private oldZ=Infinity;private oldEpoch=-1;
- constructor(scene:THREE.Scene,w:World,atlas:ParkingTile[]){
+ constructor(scene:THREE.Scene,w:World,atlas:ParkingTile[],preserveSceneAlpha=false){
   this.sceneWorld=w;this.atlas=atlas;
-  this.material=parkingMaterial(w.sun,w.buildingShadows);
+  this.material=parkingMaterial(w.sun,w.buildingShadows,preserveSceneAlpha);
   this.group.name='Mapped PEI parking surfaces';this.group.visible=false;
   scene.add(this.group);
  }

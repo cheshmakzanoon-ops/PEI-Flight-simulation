@@ -1,10 +1,11 @@
+import {opaqueCoverageBlend} from './opaque-coverage-alpha.ts';
 import * as THREE from 'three';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** Matte, physically scaled exterior surfaces. No rectangles meant to
  * represent spaces, wheel positions, signage or property boundaries. */
-export function parkingMaterial(sun:THREE.Vector3,casts?:BuildingShadows){
- return new THREE.ShaderMaterial({alphaToCoverage:true,side:THREE.FrontSide,
+export function parkingMaterial(sun:THREE.Vector3,casts?:BuildingShadows,preserveSceneAlpha=false){
+ return new THREE.ShaderMaterial({alphaToCoverage:true,side:THREE.FrontSide,...(preserveSceneAlpha?opaqueCoverageBlend:undefined),
   uniforms:{parkSun:{value:sun},parkAltitude:{value:0},...casts?.uniforms},
   vertexShader:`
    attribute vec2 parkLayer;

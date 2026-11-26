@@ -1,3 +1,4 @@
+import {supportsOpaqueCoverage} from './render/opaque-coverage-alpha.ts';
 import {supportsOpaqueCanopyCoverage} from './render/canopy-coverage-alpha.ts';
 import {verifiedPrinceOverview} from './render/prince-grassland/source.ts';
 import {northCapeStandOption} from './app/north-cape-stand-option.ts';
@@ -772,7 +773,7 @@ async function run(){
  if(cover.sourceSha===MAPPED_PARKING.pinCoverSha256&&SIDEWALKS.sha256===MAPPED_PARKING.pinSidewalkSha256){
   void Promise.all([mappedParking,roadReady,buildingReady]).then(([areas,street,structures])=>{
    if(areas&&street&&structures&&street.sourceGeometrySha256===MAPPED_PARKING.pinRoadGeometrySha256&&
-      structures.sourceAtlasSha256===MAPPED_PARKING.pinBuildingAtlasSha256)parking=new ParkingSurfaces(scene,world,areas);
+      structures.sourceAtlasSha256===MAPPED_PARKING.pinBuildingAtlasSha256)parking=new ParkingSurfaces(scene,world,areas,supportsOpaqueCoverage(gl));
   });
  }
  let princeSource:Awaited<ReturnType<typeof verifiedPrinceOverview>>,princeSourceFinished=false,princeRequest:AbortController|undefined;

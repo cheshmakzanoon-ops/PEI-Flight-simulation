@@ -80,3 +80,6 @@ The busiest reviewed view adds ten draws and 41,605 submitted triangles;
 these are software-renderer geometry counts, not an FPS benchmark.
 [Raw gate evidence](mapped-parking-surfaces-gate.json) includes the exact camera
 poses, exposure masks, independent mesh/runtime checks and fault results.
+
+See [mapped parking edge compositing](parking-coverage-alpha.md) for the
+multisample alpha correction on these same mapped surfaces.

@@ -1,18 +1,7 @@
-import {AddEquation,CustomBlending,NormalBlending,OneFactor,OneMinusSrcAlphaFactor,SrcAlphaFactor,ZeroFactor,type Material} from 'three';
+import {AddEquation,NormalBlending,OneMinusSrcAlphaFactor,SrcAlphaFactor,type Material} from 'three';
+import {opaqueCoverageBlend as opaqueCanopyCoverageBlend,supportsOpaqueCoverage as supportsOpaqueCanopyCoverage} from './opaque-coverage-alpha.ts';
 
-/** Crown coverage is a sample-mask input, not scene transparency. Keep
- * RGB replacement and depth writes for the covered samples, while
- * preserving alpha already written by the opaque scenery behind them. */
-export const opaqueCanopyCoverageBlend=Object.freeze({
- blending:CustomBlending,
- blendEquation:AddEquation,blendSrc:OneFactor,blendDst:ZeroFactor,
- blendEquationAlpha:AddEquation,blendSrcAlpha:ZeroFactor,blendDstAlpha:OneFactor,
-});
-
-export function supportsOpaqueCanopyCoverage(gl:Pick<WebGLRenderingContext,'getContextAttributes'|'getParameter'|'SAMPLES'>){
- const attributes=gl.getContextAttributes();
- return attributes?.alpha===true&&attributes.antialias===true&&gl.getParameter(gl.SAMPLES)>=2;
-}
+export {opaqueCanopyCoverageBlend,supportsOpaqueCanopyCoverage};
 
 /** Recreate only the known coverage mode. An arbitrary caller's blend state
  * is not a supported replacement for the established crown material. */
