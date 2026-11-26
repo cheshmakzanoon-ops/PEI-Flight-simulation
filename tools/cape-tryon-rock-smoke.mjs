@@ -161,10 +161,10 @@ try{
    alpha+=+(a.data[i+3]!==b.data[i+3]);
   }
   assert.equal(alpha,0);
-  const positions=q=>q.role.map(v=>[v.count,v.positionSha256]).sort(([a],[b])=>a-b);
-  assert.deepEqual(positions(neutral),positions(live));assert.deepEqual(positions(live),positions(restored));
+  const positions=roles=>roles.map(v=>[v.count,v.positionSha256]).sort(([a],[b])=>a-b);
+  assert.deepEqual(positions(neutral.role),positions(live.role));assert.deepEqual(positions(live.role),positions(restored.role));
   if(refuse){
-   assert.deepEqual(positions(live),positions(report.active),'the refused link keeps both actual original position buffers');
+   assert.deepEqual(positions(live.role),positions(report.active.owners),'the refused link keeps both actual original position buffers');
    assert(live.compiled>0&&live.refused>0);
    assert(live.role.every(q=>!q.authored)&&changedGt2===0);
    assert.deepEqual(a.data,b.data);
