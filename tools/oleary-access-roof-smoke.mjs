@@ -76,7 +76,10 @@ try{
   await page.waitForFunction(()=>window.islandAirDiagnostics?.olearyAccessRoof===true,{},{timeout:55_000,polling:100});
  }catch(error){await fail('signed owner in the original stream',error);}
  console.log('O’Leary access roof resident:',JSON.stringify(await read()));
- const flightDeadline=Date.now()+305_000;
+ // Keep both originally chosen natural-flight distances. Software rendering
+ // can reach the first sample near minute five; reserve time to fly between
+ // samples instead of passing on a resident flag or shifting the aircraft.
+ const flightDeadline=Date.now()+390_000;
  const gpu=[];
  for(const m of [1515,1630]){
   try{
@@ -93,6 +96,7 @@ try{
   const witness=await page.evaluate(()=>window.olearyRoofQA.proof);
   assert.deepEqual(witness,{id:m,drawVertices:32049,roofs:30,walls:72,depth:true,error:0});
   gpu.push(witness);
+  console.log('O’Leary access roof GPU:',JSON.stringify(witness));
  }
  const q=await page.evaluate(()=>{
    const d=window.islandAirDiagnostics,g=document.getElementById('world').getContext('webgl2');

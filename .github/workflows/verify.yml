@@ -51,7 +51,7 @@ jobs:
     name: Browser replay / ${{ matrix.lane }}
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: ${{ matrix.lane == 'oleary-access-roof' && 19 || 15 }}
     strategy:
       fail-fast: false
       matrix:
