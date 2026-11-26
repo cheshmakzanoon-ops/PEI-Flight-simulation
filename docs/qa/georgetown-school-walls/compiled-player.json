@@ -1,0 +1,39 @@
+{
+  "scope": "Compiled, ordinary controls with exact world-pose hold; explicitly tests the Standard switch and its veto on the same source tile. Does not compare cross-session screenshots or benchmark hardware.",
+  "scenarios": [
+    {
+      "stock": false,
+      "state": true,
+      "church": true,
+      "errors": [
+        0
+      ],
+      "pose": [
+        51180.58931732824,
+        35333.689725371005,
+        65.35912348897762
+      ],
+      "draws": 344,
+      "triangles": 327594,
+      "geom": 368,
+      "networkArtRequests": []
+    },
+    {
+      "stock": true,
+      "state": false,
+      "church": true,
+      "errors": [
+        0
+      ],
+      "pose": [
+        51180.58931732824,
+        35333.689725371005,
+        65.35912348897762
+      ],
+      "draws": 344,
+      "triangles": 327594,
+      "geom": 368,
+      "networkArtRequests": []
+    }
+  ]
+}

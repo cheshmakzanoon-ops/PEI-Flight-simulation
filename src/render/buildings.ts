@@ -46,6 +46,8 @@ import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { fittedWallMaterial,townFaceRegion,townTileRegion,townWallVertex,TOWN_WALL_ATLAS,type TownWallOptics } from './town-wall-optics.ts';
 import {sourisFacingOwnerTile,sourisFacingAdmittedEdge,sourisFacingExactSurface} from './souris-waterfront-face-pin.ts';
 import {detachedSchoolWestMark,patchSourisSchoolWestFragment,SRS_FACE_MARKER,SRS_WEST_WALL} from './souris-west-wall-material.ts';
+import {SchoolWallLease} from './school-wall-finish.ts';
+import {georgetownSchoolFinish} from './georgetown-school-finish.generated.ts';
 import type {OlearyLink,OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
@@ -361,6 +363,11 @@ export class Buildings {
    w.art={variant:v,dispose:art.dispose};
   }).catch(()=>{/** A missing optional package never hides the stock shells. */});
  }
+ private schoolWall?:SchoolWallLease;
+ private schoolWallLink?:OlearyLink;
+ enableGeorgetownSchoolWalls(link:OlearyLink){this.schoolWallLink=link;}
+ get georgetownSchoolWallStage(){return this.schoolWall?.stage??"none";}
+ get georgetownSchoolWallsActive(){return this.schoolWall?.active??false;}
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
@@ -588,11 +595,12 @@ export class Buildings {
  syncIndianRiver(){this.indianVariant?.sync(this.churchArt?.active()??false);}
  get indianRiverActive(){return this.indianVariant?.visible??false;}
  get rusticoMassingPreviewActive(){return this.meshes.get(RUSTICO_MASSING_TILE)?.userData.rusticoMassing===true;}
- update(x:number,z:number,barnAgl=Infinity,aircraftY=Infinity){
+ update(x:number,z:number,barnAgl=Infinity,aircraftY=Infinity,schoolAgl=Infinity){
   this.syncStandardWharf(x,aircraftY,z);
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
+  this.schoolWall?.sync(schoolAgl>=0&&schoolAgl<405);
   this.syncSourisEast();this.syncSourisWestFacing();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
@@ -620,6 +628,7 @@ export class Buildings {
      this.wharfOwner.mask.dispose();this.wharfOwner.art?.dispose();this.wharfOwner=undefined;
     }
     if(id===ST_DAVID.tile){
+     this.schoolWall?.dispose();this.schoolWall=undefined;
      const st=this.stDavids;
      if(st?.owner===m){
       if(st.variant?.visible)this.tryStDavids?.shadows?.leaseOwnerChanged();
@@ -772,6 +781,8 @@ export class Buildings {
    const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
+   const schoolLink=this.schoolWallLink&&stDavidsAtlasAllows(this.atlasHash,tile)?this.schoolWallLink:undefined;
+   let schoolWire:ArrayBuffer|undefined;
    const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
    let seacowBytes:ArrayBuffer|undefined;
    const oleary=this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile)?this.olearySeat:undefined;
@@ -791,12 +802,13 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
+    if(schoolLink)schoolWire=raw;
     if(tapped)observed=raw;
     if(terminal)terminalBytes=raw;
     if(seacow)seacowBytes=raw;
@@ -841,6 +853,12 @@ export class Buildings {
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(sourisWestCandidate)void this.stageSourisWestFacing(mesh);
+   if(schoolLink&&schoolWire){
+    const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&mesh.parent===this.scene;
+    this.schoolWall?.dispose();
+    const lease=this.schoolWall=new SchoolWallLease({owner:mesh,stock:mesh.geometry,wire:schoolWire,live:current});
+    void lease.link(georgetownSchoolFinish,schoolLink);
+   }
    if(trackWharf&&standardWharfDraw(mesh.geometry,mesh.userData.spinnakersSpans)){
     const mask=authenticatedOwnerCohort(mesh);
     if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};

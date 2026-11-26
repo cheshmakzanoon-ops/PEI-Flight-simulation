@@ -1,0 +1,55 @@
+{
+  "base": "1431e6c64c6d45a3d8bbf7531761d83a2fc5fbec",
+  "prototypeArtSHA256": "4524905e7fcb73660e0529a82351528055d53ea1d5d05a81284e4ff0f18edbf1",
+  "viewport": [
+    720,
+    480
+  ],
+  "mode": "Same locked neutral flight pose; renderer-only witness colours, not displayed in the player. Nominal timing is based on actual flight x/z, not the instrumentation callback clock.",
+  "cases": {
+    "12": {
+      "flightXZ": [
+        51180.58931732824,
+        35333.689725371005
+      ],
+      "oldDepthVisible": 4081,
+      "moreThanTwoRGBCodes": 3879,
+      "changedOutsideDepthOwner": 0,
+      "alphaChanges": 0,
+      "restorationExact": true,
+      "drawAndTrianglesBoth": [
+        344,
+        327706
+      ],
+      "glErrors": {
+        "stock": 0,
+        "active": 0,
+        "markA": 0,
+        "markB": 0,
+        "restored": 0
+      }
+    },
+    "13": {
+      "flightXZ": [
+        51142.007603889295,
+        35301.25828019176
+      ],
+      "oldDepthVisible": 5718,
+      "moreThanTwoRGBCodes": 5425,
+      "changedOutsideDepthOwner": 0,
+      "alphaChanges": 0,
+      "restorationExact": true,
+      "drawAndTrianglesBoth": [
+        334,
+        322659
+      ],
+      "glErrors": {
+        "stock": 0,
+        "active": 0,
+        "markA": 0,
+        "markB": 0,
+        "restored": 0
+      }
+    }
+  }
+}

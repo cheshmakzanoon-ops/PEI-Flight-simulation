@@ -16,7 +16,7 @@
 
 **Cavendish scenery in one step:** Select **Cavendish Dunelands · coastal pass**, then **Enable Cavendish detail**. This selects six compatible local studies without changing the other scenery settings. [What the pack enables](qa/cavendish-package.md).
 
-**Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](qa/waterfront-departures.md) · [Georgetown exterior and flight check](qa/st-davids-church-study.md).
+**Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](qa/waterfront-departures.md) · [Georgetown exterior and flight check](qa/st-davids-church-study.md). The [Georgetown school wall finish](qa/georgetown-school-walls.md) removes a misleading upper window band on three reference-checked faces.
 
 The [Panmure Head lighthouse study](qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 

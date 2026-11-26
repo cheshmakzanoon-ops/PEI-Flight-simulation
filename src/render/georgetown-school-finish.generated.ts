@@ -1,0 +1,27 @@
+// Original shader-authored appearance. No image data follows.
+export const georgetownSchoolFinish={
+ "wallPrelude": "float q31KentDv=max(.001,fwidth(uv2d.y));",
+ "walls": {
+  "kent": {
+   "span": [
+    2127,
+    2133
+   ],
+   "rule": "  const bool q31KentRow=true;\n  const bool q31KentPalette=true;\n\n  vec2 grid=uv2d/vec2(2.62,3.08);\n  float glass=band(grid.x,.17,.79)*band(grid.y,.23,.82);\n  float reveal=band(grid.y,.19,.24)*band(grid.x,.145,.815);\n  float sill=band(grid.y,.81,.86)*band(grid.x,.135,.84);\n  float mullion=band(grid.x,.465,.495)*band(grid.y,.25,.80);\n  vec3 glassCol=mix(vec3(.030,.054,.062),vec3(.12,.17,.18),.35+.5*k);\n  c=mix(c,glassCol,glass*.88);c*=1.-reveal*.24;c+=vec3(.028)*(sill+mullion);\n  c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n\n  // Revisit only the native stock-style calculation on the source-supported\n  // long NE face. e3/e5/e7 and all roof covering remain on the stock path.\n  if(roof<.5 && facade==0. && (q31KentRow || q31KentPalette) && d<310.){\n   float q31KentGain=(1.-smoothstep(180.,310.,d))*\n     smoothstep(.35,1.20,uv2d.x)*(1.-smoothstep(38.25,39.10,uv2d.x));\n   // Do not change the old first window row's positions, sizes, muntins or\n   // reveal. Only retire stock repetitions above its original period.\n   float q31Keep=q31KentRow ? 1.-smoothstep(2.86,3.08,uv2d.y) : 1.;\n   if(q31KentGain>0. && (q31KentPalette || q31Keep<1.)){\n    vec3 q31KentColor=q31KentPalette ? vec3(0.6239603917,0.5583403896,0.4286904966) : tint;\n    if(q31KentPalette){\n     // Original broad painted siding read. Weak filtered relief only:\n     // the nominal course pitch is artistic, not a field measurement.\n     float woodPhase=uv2d.y*4.0;\n     float fp=q31KentDv*4.0;\n     float q31Lap=(area(woodPhase+fp*.5,.08,.25)-area(woodPhase-fp*.5,.08,.25))/fp;\n     q31KentColor*=1.-.083*(q31Lap-.17)*(1.-smoothstep(.45,1.60,fp));\n    }\n    q31KentColor=mix(q31KentColor,glassCol,glass*.88*q31Keep);\n    q31KentColor*=1.-reveal*.24*q31Keep;\n    q31KentColor+=vec3(.028)*(sill+mullion)*q31Keep;\n    if(!q31KentPalette){\n      float oldPhase=uv2d.y*4.5,oldFw=q31KentDv*4.5;\n      float rowLap=(area(oldPhase+oldFw*.5,.0,.18)-area(oldPhase-oldFw*.5,.0,.18))/oldFw;\n      q31KentColor*=1.-.11*fine*rowLap;\n    }\n    q31KentColor*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n    if(q31KentPalette){\n     float q31Fascia=clamp((min(wp.y+q31KentDv*.5,14.7150)-max(wp.y-q31KentDv*.5,14.3971))/q31KentDv,0.,1.);\n     // A soft short matte transition below the lip, not a second belt/level.\n     float q31Under=(1.-smoothstep(.18,.51,14.6421-wp.y))*(1.-q31Fascia);\n     q31KentColor*=1.-.085*q31Under;\n     q31KentColor=mix(q31KentColor,vec3(0.0437350293,0.1022417331,0.0908417112),q31Fascia);\n    }\n    c=mix(c,q31KentColor,q31KentGain);\n   }\n  }\n"
+  },
+  "graftonSash": {
+   "span": [
+    2133,
+    2139
+   ],
+   "rule": "\n  vec2 grid=uv2d/vec2(2.62,3.08);\n  float glass=band(grid.x,.17,.79)*band(grid.y,.23,.82);\n  float reveal=band(grid.y,.19,.24)*band(grid.x,.145,.815);\n  float sill=band(grid.y,.81,.86)*band(grid.x,.135,.84);\n  float mullion=band(grid.x,.465,.495)*band(grid.y,.25,.80);\n  vec3 glassCol=mix(vec3(.030,.054,.062),vec3(.12,.17,.18),.35+.5*k);\n  c=mix(c,glassCol,glass*.88);c*=1.-reveal*.24;c+=vec3(.028)*(sill+mullion);\n  c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n\n  if(facade==0.&&d<310.){\n   float local=(1.-smoothstep(180.,310.,d))*\n     smoothstep(0.350,1.150,uv2d.x)*\n     (1.-smoothstep(34.050,34.880,uv2d.x));\n   if(local>0.){\n    vec3 wallTone=vec3(0.5906188409,0.5457244614,0.4452011945);\n    float oneRow=1.-smoothstep(2.86,3.08,uv2d.y);\n    float remaining=oneRow*1.0;\n    wallTone=mix(wallTone,glassCol,.88*glass*remaining);\n    wallTone*=1.-reveal*.24*remaining;\n    wallTone+=vec3(.028)*(sill+mullion)*remaining;\n    wallTone*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n    \n    float frac=clamp((min(wp.y+q31KentDv*.5,14.715)-max(wp.y-q31KentDv*.5,14.393))/q31KentDv,0.,1.);\n    float under=(1.-smoothstep(.19,.52,14.6421-wp.y))*(1.-frac);\n    wallTone=mix(wallTone*(1.-.067*under),vec3(0.0437350293,0.0975873471,0.0865004620),frac);\n  \n    c=mix(c,wallTone,local);\n   }\n  }\n"
+  },
+  "graftonPlain": {
+   "span": [
+    2145,
+    2151
+   ],
+   "rule": "\n  vec2 grid=uv2d/vec2(2.62,3.08);\n  float glass=band(grid.x,.17,.79)*band(grid.y,.23,.82);\n  float reveal=band(grid.y,.19,.24)*band(grid.x,.145,.815);\n  float sill=band(grid.y,.81,.86)*band(grid.x,.135,.84);\n  float mullion=band(grid.x,.465,.495)*band(grid.y,.25,.80);\n  vec3 glassCol=mix(vec3(.030,.054,.062),vec3(.12,.17,.18),.35+.5*k);\n  c=mix(c,glassCol,glass*.88);c*=1.-reveal*.24;c+=vec3(.028)*(sill+mullion);\n  c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n\n  if(facade==0.&&d<310.){\n   float local=(1.-smoothstep(180.,310.,d))*\n     smoothstep(0.400,1.150,uv2d.x)*\n     (1.-smoothstep(26.080,26.840,uv2d.x));\n   if(local>0.){\n    vec3 wallTone=vec3(0.5711248295,0.5271151257,0.4396571738);\n    float oneRow=1.-smoothstep(2.86,3.08,uv2d.y);\n    float remaining=oneRow*0.085;\n    wallTone=mix(wallTone,glassCol,.88*glass*remaining);\n    wallTone*=1.-reveal*.24*remaining;\n    wallTone+=vec3(.028)*(sill+mullion)*remaining;\n    wallTone*=.81+.19*smoothstep(0.,3.8,uv2d.y);\n    \n    c=mix(c,wallTone,local);\n   }\n  }\n"
+  }
+ }
+} as const;
