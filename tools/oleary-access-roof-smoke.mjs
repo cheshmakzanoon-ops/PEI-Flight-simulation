@@ -54,7 +54,7 @@ try{
    return draw.call(this,mode,first,count);
   };
  },{roof:[...new Float32Array(new Color(0x89847b).toArray())],wall:[...new Float32Array(new Color(0x8e8073).toArray())]});
- const url=new URL('?departure='+site+'&diagnostics&olearyAccessRoofReview',base);
+ const url=new URL('?departure='+site+'&diagnostics',base);
  assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
  await page.waitForFunction(s=>window.islandAirDiagnostics?.site===s&&window.islandAirDiagnostics?.mode==='dispatch',site);
  await page.getByRole('button',{name:'Begin flight'}).click();
@@ -104,7 +104,7 @@ try{
     station:d.olearyExterior,tower:d.olearyIndustrial192,warehouse:d.olearyWarehouse150};
  });
  assert(q.active&&q.draws>0&&q.triangles>0);assert.equal(q.error,0);
- assert.deepEqual([q.station,q.tower,q.warehouse],[false,'stock','stock']);assert.deepEqual(issues,[]);
+ assert.deepEqual([q.station,q.tower,q.warehouse],['stock','stock','stock']);assert.deepEqual(issues,[]);
  await writeFile(out+'/oleary-access-roof.json',JSON.stringify({...q,gpu},null,2)+'\n');
  await page.screenshot({path:out+'/oleary-access-roof.png'});
 }finally{await browser.close();}

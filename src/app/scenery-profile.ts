@@ -281,9 +281,9 @@ export function sourisWestFacingRequested(q:URLSearchParams){
  return !q.has('stockSourisWestFacing')&&!q.has('qa')&&q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 
-/** Flat membrane tone is an isolated review, not a new O’Leary building overlay. */
+/** Use the documented membrane tone on Standard unless an older O’Leary actor owns the draw. */
 export function olearyAccessRoofRequested(q:URLSearchParams){
- return q.has('olearyAccessRoofReview')&&!['stockOlearyAccessRoof','olearyExteriorStudy','olearyWarehouseStudy','qa'].some(k=>q.has(k))&&
+ return !['stockOlearyAccessRoof','olearyExteriorStudy','olearyWarehouseStudy','qa'].some(k=>q.has(k))&&
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 

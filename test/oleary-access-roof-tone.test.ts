@@ -45,8 +45,9 @@ test('only the signed ordered single-storey roof row can carry the authored tone
  }
 });
 test('the preview loses on explicit O’Leary actor, Detail, local veto or special replay',()=>{
- const q=(s:string)=>sceneryOptions('departure=oleary-railway-low&olearyAccessRoofReview'+s);
+ const q=(s:string)=>sceneryOptions('departure=oleary-railway-low'+s);
  assert(olearyAccessRoofRequested(q('')));
+ assert(olearyAccessRoofRequested(q('&olearyAccessRoofReview')));
  for(const s of ['&stockOlearyAccessRoof','&scenery=detail','&olearyExteriorStudy','&olearyWarehouseStudy','&qa=%7B%7D'])
   assert(!olearyAccessRoofRequested(q(s)));
  assert(olearyExteriorRequested(q('&olearyExteriorStudy')));
