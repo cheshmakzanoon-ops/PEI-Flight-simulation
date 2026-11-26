@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardOpenCoastRequested,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -223,4 +223,14 @@ test('Summerside owner vetoes keep unrelated Standard scenery active and unknown
   assert.deepEqual(features.map(f=>f(new URLSearchParams(q))),ordinary);
  }
  assert(!standardOpenRipplesRequested(new URLSearchParams('stockSpinnakersDeck&unknownSurfaceSwitch')));
+});
+
+test('Cape Tryon material comparison preserves Standard coastal routing and earlier fallbacks',()=>{
+ const base='?departure=cape-tryon-coast&diagnostics';
+ const q=(query:string)=>sceneryOptions(query);
+ for(const choose of [standardOpenCoastRequested,standardOpenRipplesRequested,standardPanmurePastureRequested,coastalMarshRequested,forestFloorProfile])
+  assert.equal(choose(q(base+'&capeTryonRockReview')),choose(q(base)));
+ assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview')),true);
+ for(const veto of ['scenery=detail','legacyShoreArcs','stockOpenCoast'])
+  assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview&'+veto)),false);
 });

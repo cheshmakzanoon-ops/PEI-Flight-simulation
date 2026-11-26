@@ -62,6 +62,7 @@ import {BASIN_CHANNEL} from '../sim/basin-head-channel.generated.ts';
 import {loadBasinChannel,loadHarbourCover,type WaterInset} from '../sim/harbour-cover.ts';
 import {basinChannelGLSL,harbourCoastGLSL} from './harbour-coast.ts';
 import { Cover } from '../sim/cover.ts';
+import {verifyDecodedCover} from '../sim/cover-proof.ts';
 import {DETAIL_NEIGHBOURS,DETAIL_NOT_READY,detailBlendGLSL} from './detail-blend.ts';
 import {BANK_TILE,basinBankGeometry,basinBankJoins,inBasinBank,intersectsBasinLegacyBank} from './basin-channel-bank.ts';
 import type {ShoreSegment} from '../sim/shoreline.ts';
@@ -71,6 +72,8 @@ import { allowOrbyZeroArc,matchesOrbyTerrainBounds,ORBY_COVER_SHA } from '../sim
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
+import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches} from './cape-tryon-rock.ts';
+import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
 import { shoreFoamGLSL,brokenShoreFoamGLSL } from './shore-foam.ts';
@@ -259,7 +262,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  c=mix(c,vec3(.49,.58,.56),foam);
  gl_FragColor=vec4(mist(c,dist,p.y),1.);`+out;
 };
-const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+
+const cliffFrag=(east:boolean,basin=false,baywalk=false,tryonRock=false)=>fp+(east?eastSandstoneGLSL:'')+(basin?basinChannelGLSL:'')+(tryonRock?tryonRockGLSL:'')+
   (baywalk?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+`
  ${baywalk?'uniform sampler2D coverMap;uniform vec4 extent;':''}
  void main(){
@@ -293,6 +296,15 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false)=>fp+(east?eastSandstone
  float old=(texture2D(coverMap,(p.xz-extent.xy)/extent.zw).g*255.-128.)*2.;
  float northMix=smoothstep(.08,.65,-old)*(1.-smoothstep(.13,.46,abs(northCourtSigned(p.xz))));
  if(northMix>0.)col=mix(col,northCourtBankOptics(p),northMix);
+ `:''}
+ ${tryonRock?`
+ vec3 rockPixel=fwidth(p);
+ vec3 face=normalize(cross(dFdx(p),dFdy(p)));
+ // All admitted coast chords face north into the Gulf. View side is
+ // not a lighting input, so crossing the coast cannot flip sunlight.
+ if(face.z>0.)face=-face;
+ float use=(max(vuv.x,tryonRockAll)>.5&&tryonRockGain>.001)?tryonStoneCoverage(p,d)*tryonRockGain:0.;
+ if(use>.001)col=mix(col,tryonStoneColor(p,rockPixel,face),use);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
 const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false,marsh=false)=>fp+(marsh?marshSurfaceGLSL:'')+runwayFinishGLSL+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
@@ -575,6 +587,10 @@ export class World {
  get baywalkActive(){return !!this.northCourt;}
  get baywalkBounds(){return this.northCourt?.signatureBounds;}
  private montagueReviewShore?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];bounds:ReviewBounds;revision?:string};
+ private tryonRockStage?:{materials:readonly THREE.ShaderMaterial[];
+   owners:readonly {mesh:THREE.Mesh;stock:THREE.Material;authored:THREE.ShaderMaterial}[];
+   proof?:OlearyProgramProof;started:boolean;mounted:boolean};
+ get tryonRockActive(){return this.tryonRockStage?.mounted===true;}
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
    close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
@@ -628,7 +644,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -649,6 +665,7 @@ export class World {
    if(showFloor)this.floor=new ForestFloor(import.meta.env.BASE_URL,showFloor==='standard'?this.cover:undefined);
    if(castBuildings)this.buildingShadows=new BuildingShadows(renderer,this.sun);
    const T=terrain,east=T.coastalGrids.find(g=>g.cliff);
+   const tryonRockAllowed=closeOpenCoast&&!legacyShore&&tryonRockMatches(tryonRockTerrainSha,T.spec.bounds,cover);
    const montagueGround=T.coastalGrids.find(g=>g.spec.id===MONTAGUE_GROUND_ID);
    const benchMask=east?bench:undefined;
    let benchMap:THREE.DataTexture|undefined;
@@ -733,7 +750,13 @@ export class World {
     northBank=make(cliffFrag(false,false,true),THREE.DoubleSide);
     northBank.uniforms={...uniforms,...northCourtUniforms};
    }
-   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,showBasinBank,inletBank,legacyShore,northBank,orbyClosure,closeOpenCoast);
+   const tryonRockMaterials=tryonRockAllowed?[0,1].map(all=>{
+    const q=make(cliffFrag(false,false,false,true),THREE.DoubleSide);
+    q.uniforms={...uniforms,tryonRockGain:{value:1},tryonRockAll:{value:all}};
+    return q;
+   }):undefined;
+   this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,
+      showBasinBank,inletBank,legacyShore,northBank,orbyClosure,closeOpenCoast,tryonRockMaterials);
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -847,7 +870,7 @@ export class World {
    scene.environmentRotation.y=-.512*Math.PI*2;
    
  }
- private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false,northBank?:THREE.ShaderMaterial,orbyClosure=false,closeOpenCoast=false) {
+ private addShoreFaces(material:THREE.ShaderMaterial,eastMaterial?:THREE.ShaderMaterial,showBank=false,inletBank?:THREE.ShaderMaterial,legacyShore=false,northBank?:THREE.ShaderMaterial,orbyClosure=false,closeOpenCoast=false,tryonRock?:readonly THREE.ShaderMaterial[]) {
   const groups=new Map<string,number[]>(),rockGroups=new Set<string>();
   const segments:ShoreSegment[]=[],outside:ShoreSegment[]=[],reviewed:ShoreSegment[]=[],courtShore:ShoreSegment[]=[];
   const review=montagueShoreReview(this.cover,this.terrain);
@@ -856,6 +879,9 @@ export class World {
   const t=this.terrain,east=eastMaterial?t.coastalGrids.find(g=>g.cliff):undefined;
   const legacy:ShoreSegment[]=[],openArcs:ShoreSegment[]=[],panmureArcs:ShoreSegment[]=[],tryonArcs:ShoreSegment[]=[],legacySeen=new Set<ShoreSegment>(),legacyStock=new Map<string,number[]>();
   const legacyCulling=new Map<string,THREE.Sphere>();
+  const tryonStockSpans=new Map<string,[number,number][]>();
+  const stoneOwners:NonNullable<World['tryonRockStage']>['owners'][number][]=[];
+  let exactStoneTriangles=0;
   const terrainTx=(t.right-t.left)/WORLD_COLS,terrainTz=(t.bottom-t.top)/WORLD_ROWS;
   const protectedOwners=[...COASTAL_SPECS,...this.terrain.coastalGrids.map(g=>g.spec)];
   const forbidden=(x0:number,z0:number,x1:number,z1:number)=>intersectsBasinLegacyBank(x0,z0,x1,z1)||this.cover.waterInsets.some(i=>i.intersects(x0,z0,x1,z1))
@@ -904,7 +930,12 @@ export class World {
     const stock=segment.seatedLegacyArc;
     if(!legacySeen.has(stock)){
      const key=stockShoreKey(stock),v=legacyStock.get(key)??[];
+     const from=v.length;
      appendStockCurtain(stock,t,v);legacyStock.set(key,v);legacySeen.add(stock);
+     if(tryonRock&&segment.openRepair==='tryon'){
+      const spans=tryonStockSpans.get(key)??[];
+      spans.push([from,v.length]);tryonStockSpans.set(key,spans);
+     }
     }
     (segment.openRepair==='pair'?openArcs:segment.openRepair==='panmure'?panmureArcs:segment.openRepair==='tryon'?tryonArcs:legacy).push(segment);continue;
    }
@@ -945,10 +976,23 @@ export class World {
    legacyCulling.set(key,stockShoreSphere(groups.get(key)??[],verts));
    // Standard repairs only add coverage: keep the exact old curtains
    // at all levels to avoid uncovering adjacent mixed samples.
-   if(additive){const stock=groups.get(key)??[];stock.push(...verts);groups.set(key,stock);}
+   if(additive){
+    const stock=groups.get(key)??[],offset=stock.length,spans=tryonStockSpans.get(key);
+    if(spans)for(const span of spans){span[0]+=offset;span[1]+=offset;}
+    stock.push(...verts);groups.set(key,stock);
+   }
   }
   for(const [key,vertices] of groups){
-   const g=shore(vertices),m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
+   const g=shore(vertices),spans=tryonStockSpans.get(key);
+   // Keep East Point and any separately trimmed harbour receiver on its
+   // own material; the five Tryon spans already have exact stock owners.
+   const boundedStone=!!spans&&!cuts.has(key)&&!rockGroups.has(key)&&tryonRock?.[0];
+   if(boundedStone){
+    markTryonRockShoreUV(g.attributes.uv.array as Float32Array,spans);
+    for(const [a,b] of spans)exactStoneTriangles+=(b-a)/9;
+   }
+   const m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
+   if(boundedStone)stoneOwners.push({mesh:m,stock:material,authored:boundedStone});
    m.name='shore-to-sea surface';if(legacyCulling.has(key))m.userData.stockCull=legacyCulling.get(key);
    this.shoreFaces.push(m);this.scene.add(m);
    const remove=cuts.get(key);
@@ -967,11 +1011,40 @@ export class World {
   if(openArcs.length)this.openCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,openArcs,legacyCulling,true,'Open-shore coverage repair');
   if(panmureArcs.length)this.panmureCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,panmureArcs,legacyCulling,true,'Panmure Head coverage repair');
   if(tryonArcs.length)this.tryonCoast=new LegacyShoreCurtains(this.scene,material,eastMaterial,rockGroups,t,tryonArcs,legacyCulling,true,'Cape Tryon coverage repair');
+  const exactCurves=this.tryonCoast?.materialReceivers();
+  if(tryonRock?.length===2&&exactStoneTriangles===10&&stoneOwners.length===1&&exactCurves?.length===1
+      &&exactCurves[0].material===material){
+   stoneOwners.push({mesh:exactCurves[0],stock:material,authored:tryonRock[1]});
+   this.tryonRockStage={materials:tryonRock,owners:stoneOwners,started:false,mounted:false};
+  }
   if(review&&reviewed.length){
    const geom=new THREE.BufferGeometry(),mesh=new THREE.Mesh(geom,material);
    mesh.name='reviewed Montague shoreline support';mesh.visible=false;
    this.montagueReviewShore={mesh,segments:reviewed,bounds:review.bounds};
    this.shoreFaces.push(mesh);this.scene.add(mesh);this.refreshMontagueReviewShore();
+  }
+ }
+ /** Compile the two exact linked materials without submitting coastline. */
+ async prepareTryonRock(camera:THREE.Camera){
+  const s=this.tryonRockStage;if(!s||s.started)return;
+  s.started=true;
+  if(!globalThis.crypto?.subtle||await verifyDecodedCover(this.cover)!==CAPE_TRYON_COVER_DECODED)return;
+  const probe=new THREE.Group(),g=new THREE.PlaneGeometry(1,1);
+  for(const m of s.materials)probe.add(new THREE.Mesh(g,m));
+  try{
+   const proof=await olearyLinkPrograms(this.renderer,camera,this.scene,2)(probe,new AbortController().signal);
+   if(this.tryonRockStage===s&&proof?.())s.proof=proof;
+  }finally{probe.clear();g.dispose();}
+ }
+ private syncTryonRock(){
+  const s=this.tryonRockStage;if(!s?.proof)return;
+  if(!s.proof()||s.owners.some(q=>q.mesh.material!==(s.mounted?q.authored:q.stock))){
+   for(const q of s.owners)if(q.mesh.material===q.authored)q.mesh.material=q.stock;
+   s.proof=undefined;s.mounted=false;return;
+  }
+  if(!s.mounted){
+   for(const q of s.owners)q.mesh.material=q.authored;
+   s.mounted=true;
   }
  }
  private refreshMontagueReviewShore(){
@@ -1477,6 +1550,7 @@ export class World {
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
+  this.syncTryonRock();
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   this.orthoSeams?.advance(clock);
   const grass=this.grassStudy;

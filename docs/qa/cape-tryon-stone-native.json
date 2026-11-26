@@ -1,0 +1,172 @@
+{
+  "scope": "Three.js r187 source GLSL on Mesa GLES3.2, signed terrain and image pack, true served sky and generic water preselected. Actual N112 mesh and registered near curtain height, blank outside camera terrain radius; excludes other actor passes, hosted browser startup, active Standard specialist wave optics and hardware FPS. Locked camera samples or neutral fixed-step flight poses.",
+  "owner": {
+    "coverDecoded": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "oldTriangles": 10,
+    "oldTriangleSha256": "16af6ace16920c3b20cedba8b6b137da033e51344ecb8e5e09cd58a132e16958",
+    "activeCurvedTriangles": 554,
+    "allStockTriangles": 98972,
+    "unchangedVirtualContactProbes": 5445
+  },
+  "method": "Draw old/candidate/mask, raw unweighted authorized UV witness independent of distance, old and candidate with two sky colours, then exact gain-zero rollback. Unaffected RGB and alpha remain exact. On clip apertures, a motionless scene replay is not a hardware or motion-artifact measurement.",
+  "fixed": {
+    "headland-north": {
+      "chaseAPositionMeters": [
+        -23385.86964692714,
+        55,
+        -4012.029064379131
+      ],
+      "flightAglM": null,
+      "wallPixels": 24579,
+      "authorizedCurtainPixels": 11593,
+      "materialSupportPixels": 9984,
+      "changedGt2": 8539,
+      "p95": 29.0
+    },
+    "headland-east": {
+      "chaseAPositionMeters": [
+        -23272.619650143904,
+        37,
+        -3827.902831194347
+      ],
+      "flightAglM": null,
+      "wallPixels": 36049,
+      "authorizedCurtainPixels": 2137,
+      "materialSupportPixels": 2009,
+      "changedGt2": 1832,
+      "p95": 28.0
+    },
+    "headland-grazing": {
+      "chaseAPositionMeters": [
+        -23607.800783488994,
+        25,
+        -3919.8069969060252
+      ],
+      "flightAglM": null,
+      "wallPixels": 68190,
+      "authorizedCurtainPixels": 57520,
+      "materialSupportPixels": 49407,
+      "changedGt2": 45791,
+      "p95": 22.0
+    },
+    "orby-protected": {
+      "chaseAPositionMeters": [
+        -9805.015483688021,
+        49,
+        947.1507626342111
+      ],
+      "flightAglM": null,
+      "wallPixels": 28,
+      "authorizedCurtainPixels": 0,
+      "materialSupportPixels": 0,
+      "changedGt2": 0,
+      "p95": 0
+    },
+    "headland-crossover": {
+      "chaseAPositionMeters": [
+        -23136.52487250013,
+        117,
+        -4546.750658730754
+      ],
+      "flightAglM": null,
+      "wallPixels": 7225,
+      "authorizedCurtainPixels": 1437,
+      "materialSupportPixels": 1228,
+      "changedGt2": 336,
+      "p95": 4.0
+    },
+    "headland-far": {
+      "chaseAPositionMeters": [
+        -22967.47756780385,
+        150,
+        -4909.273773545415
+      ],
+      "flightAglM": null,
+      "wallPixels": 4740,
+      "authorizedCurtainPixels": 683,
+      "materialSupportPixels": 0,
+      "changedGt2": 0,
+      "p95": 0
+    },
+    "north-east-detail": {
+      "chaseAPositionMeters": [
+        56395.59710903397,
+        34,
+        39476.791031312234
+      ],
+      "flightAglM": null,
+      "wallPixels": 19140,
+      "authorizedCurtainPixels": 0,
+      "materialSupportPixels": 0,
+      "changedGt2": 0,
+      "p95": 0
+    }
+  },
+  "ordinaryChase": {
+    "flight-4": {
+      "chaseAPositionMeters": [
+        -23255.485208191127,
+        87.41011989166408,
+        -4178.477123407788
+      ],
+      "flightAglM": 83.3151018065251,
+      "wallPixels": 13672,
+      "authorizedCurtainPixels": 3902,
+      "materialSupportPixels": 3361,
+      "changedGt2": 2780,
+      "p95": 22.0
+    },
+    "flight-6": {
+      "chaseAPositionMeters": [
+        -23303.73297391863,
+        88.13822812178665,
+        -4087.627748747308
+      ],
+      "flightAglM": 84.0433572890698,
+      "wallPixels": 17920,
+      "authorizedCurtainPixels": 5839,
+      "materialSupportPixels": 5028,
+      "changedGt2": 4189,
+      "p95": 26.0
+    },
+    "flight-8": {
+      "chaseAPositionMeters": [
+        -23351.995697479433,
+        88.87068964721968,
+        -3996.7524663596355
+      ],
+      "flightAglM": 84.77618222750017,
+      "wallPixels": 22717,
+      "authorizedCurtainPixels": 8638,
+      "materialSupportPixels": 7439,
+      "changedGt2": 6361,
+      "p95": 28.0
+    },
+    "flight-10": {
+      "chaseAPositionMeters": [
+        -23400.271652542044,
+        89.60834972270892,
+        -3905.854266338516
+      ],
+      "flightAglM": 85.51418290091662,
+      "wallPixels": 17894,
+      "authorizedCurtainPixels": 3825,
+      "materialSupportPixels": 3465,
+      "changedGt2": 2562,
+      "p95": 26.0
+    },
+    "flight-13": {
+      "chaseAPositionMeters": [
+        -23472.706975183777,
+        90.72331241814577,
+        -3769.4699176572503
+      ],
+      "flightAglM": 71.09888371649294,
+      "wallPixels": 4921,
+      "authorizedCurtainPixels": 0,
+      "materialSupportPixels": 0,
+      "changedGt2": 0,
+      "p95": 0
+    }
+  }
+}

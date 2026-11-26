@@ -23,10 +23,10 @@ const terrain=new Terrain(t,new Int16Array(ab(raw)),survey),cover=new Cover(c.wi
 const world=Object.assign(Object.create(World.prototype),{terrain,cover,pondMeshes:[],grades:new Map,byId:new Map,reliefActive:new Set,mat:new T.MeshBasicMaterial()});
 import { TRYON_SHORE_CELLS } from '../../src/sim/open-coast-closure.ts';
 const material=new T.ShaderMaterial();
-const worldWith=(input,active)=>{
+const worldWith=(input,active,stone)=>{
  const scene=new T.Scene(),w=Object.assign(Object.create(World.prototype),{scene,terrain,cover:input,
   pondMeshes:[],grades:new Map,byId:new Map,reliefActive:new Set,mat:material,shoreFaces:[]});
- w.addShoreFaces(material,undefined,false,undefined,false,undefined,true,active);
+ w.addShoreFaces(material,undefined,false,undefined,false,undefined,true,active,stone);
  return w;
 };
 const triangles=w=>{
@@ -45,6 +45,45 @@ assert.deepEqual(repair.panmureCoastState,{chunks:1,refined:0});
 assert.equal(base.tryonCoastState,null);
 const old=triangles(base),cur=triangles(repair);
 assert.deepEqual(cur,old);
+const shaderPair=[new T.ShaderMaterial(),new T.ShaderMaterial()];
+const painted=worldWith(cover,true,shaderPair);
+assert.deepEqual(triangles(painted),old);
+const markedBodies=painted.shoreFaces.flatMap(mesh=>{
+ const a=mesh.geometry.attributes.uv.array,b=mesh.geometry.attributes.position.array,rows=[];
+ assert.equal(a.length/2,b.length/3);
+ for(let i=0;i<a.length;i+=6){
+  assert(a[i]===a[i+2]&&a[i]===a[i+4]&&a[i+1]===0&&a[i+3]===0&&a[i+5]===0);
+  if(a[i]===1)rows.push(b.slice(i/2*3,i/2*3+9));
+ }
+ return rows;
+});
+assert.equal(markedBodies.length,10);
+for(const body of markedBodies){
+ for(let i=0;i<body.length;i+=3){
+  assert(body[i]>=-23711.66&&body[i]<=-23491.48&&body[i+2]>=-3858.78&&body[i+2]<=-3789.79);
+ }
+}
+const verifiedRock={oldTriangles:markedBodies.length,geometryPreserved:true,
+ stockBucketVertices:painted.tryonRockStage.owners[0].mesh.geometry.attributes.position.count,
+ markedTriangleSha256:sha(Buffer.concat(markedBodies.map(a=>Buffer.from(a.buffer))))};
+const at=SITES.find(s=>s.id==='cape-tryon-coast');assert(at);
+const anchor=spawn(at,(x,z)=>repair.surface(x,z));
+for(const w of [painted,repair]){
+ w.tryonCoast.update(anchor.x,anchor.z,q=>w.visualGroundSignature(q),(x,z)=>w.visualGroundHeight(x,z));
+ const mesh=w.scene.children.find(m=>m.name==='Cape Tryon coverage repair'&&m.visible);
+ assert(mesh&&mesh.material===material&&w.tryonRockActive===false);
+}
+const curve=w=>w.scene.children.find(m=>m.name==='Cape Tryon coverage repair'&&m.visible).geometry.attributes.position.array;
+assert.deepEqual(curve(painted),curve(repair));
+assert.deepEqual(painted.tryonRockStage.owners.map(q=>q.authored),shaderPair);
+painted.syncTryonRock();assert(!painted.tryonRockActive);
+let exactLink=true;
+painted.tryonRockStage.proof=()=>exactLink;
+painted.syncTryonRock();assert(painted.tryonRockActive);
+assert.deepEqual(painted.tryonRockStage.owners.map(q=>q.mesh.material),shaderPair);
+exactLink=false;painted.syncTryonRock();
+assert(!painted.tryonRockActive);assert(painted.tryonRockStage.owners.every(q=>q.mesh.material===material));
+assert.deepEqual(curve(painted),curve(repair));
 const far=[-250000,300000],extentX=(terrain.right-terrain.left)/cover.width,extentZ=(terrain.bottom-terrain.top)/cover.height;
 let geometryBuild,exactContactProbeCount=0;const probes=[];
 for(const [i,j] of TRYON_SHORE_CELLS){
@@ -88,4 +127,4 @@ assert(motion()>=870&&flight.status==='flying'&&minVirtualTerrainClearanceM>49&&
 const neutralCorridor={site:site.id,initial,initialAltitudeM:start.altitude,fixedStepHz:Math.round(1/FIXED_STEP),motionM:motion(),
  minVirtualTerrainClearanceM,steps,overLandTicks:landTicks,exactInStockComparison:true,notForNavigation:true};
 console.log(JSON.stringify({stockTriangles:old.length,stockBatches:base.shoreFaces.length,exactFloat32:true,
- baselineCover:sha(cr),wrongCoverRejected:true,groundAndContactUnchanged:true,geometryBuild,exactContactProbeCount,neutralCorridor,sites:probes},null,2));
+ baselineCover:sha(cr),wrongCoverRejected:true,groundAndContactUnchanged:true,geometryBuild,verifiedRock,exactContactProbeCount,neutralCorridor,sites:probes},null,2));

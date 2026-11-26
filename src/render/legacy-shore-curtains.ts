@@ -80,6 +80,7 @@ export class LegacyShoreCurtains {
    mesh.name=stageName;scene.add(mesh);this.chunks.push({mesh,original,bounds,stockCull,arcs:g.arcs});
   }
  }
+ materialReceivers(){return this.chunks.map(q=>q.mesh);}
  update(x:number,z:number,signature:(b:Bounds)=>string,height:(x:number,z:number)=>number){
   let refined=0;
   for(const q of this.chunks){

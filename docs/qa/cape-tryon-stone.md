@@ -1,0 +1,11 @@
+# Cape Tryon sandstone material
+
+On a local copy in Standard, try `?departure=cape-tryon-coast&capeTryonRockReview` and choose **Begin flight**. Remove `capeTryonRockReview` to compare the same route. The material study does not replace the default appearance.
+
+[Parks Canada’s heritage record](https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=14932) identifies the cliff under Cape Tryon Lighthouse as red sandstone. The [Canadian Hydrographic Service’s ATL 108](https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-ATL108-eng-202602-41319163.pdf), chapter 1, paragraph 208, independently describes the exposed headland. These sources inform the choice of rock and its colour. Bed spacing and weathering are original art, not geological measurements or copied photography.
+
+Only the five already-qualified northern shore cells receive the finish. It uses the ten original shore triangles and their existing curved companions, rather than creating a new vertical face or polishing every beach in a square. Sloping deposits, protected shorelines, neighbouring buildings, sea level, coast classification, flight contact and all positions and triangle counts remain unchanged. There is no new asset request. A failed proof leaves the original materials on both draws. Detail, legacy arcs and the stock-geometry comparison retain their older materials.
+
+The [paired native renders](cape-tryon-stone-native.json) use actual Three.js shader code and ordinary neutral Chase poses, with the existing regular N112 ground mesh and its seated curtains. All changes stayed inside the separately identified visible curtain owners. The gain was zero in the 1,250 m view even though tagged curtain pixels remained on screen. The existing openings stayed unchanged in the two-sky test. This is a **surface treatment**, not a cliff geometry repair, and not a claim of present-day 1:1 geology or hardware performance.
+
+To check the same material in the built interactive player, run `node tools/cape-tryon-rock-smoke.mjs` against a local Vite preview with Playwright and PNGJS installed. The test requires both real flight draw owners, an exact restored frame, and a separate deliberately refused shader run that still draws both original shore owners.
