@@ -1,0 +1,201 @@
+{
+  "route": "harbour-low",
+  "camera": "Chase",
+  "viewport": [
+    1200,
+    760
+  ],
+  "frames": [
+    {
+      "nominalSeconds": 31.6,
+      "actualFlight": [
+        true,
+        "core",
+        6062.194073202573,
+        29882.63585250713,
+        126.12655071521826,
+        225,
+        526715,
+        {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        }
+      ],
+      "cameraXYZ": [
+        6049.734655392962,
+        130.29030803004466,
+        29900.79530867142
+      ],
+      "strongRgb": 1653,
+      "alpha": 0,
+      "outsideIndependentPolygon": 0,
+      "exactRestoration": true,
+      "sameGeometry": true,
+      "draws": [
+        225,
+        225
+      ],
+      "triangles": [
+        526715,
+        526715
+      ],
+      "polygon": [
+        [
+          213.9939149381077,
+          696.1356679156168
+        ],
+        [
+          165.76917285844502,
+          688.7795433997321
+        ],
+        [
+          163.5743192310925,
+          653.8761033331267
+        ],
+        [
+          212.00575976308556,
+          660.6071938630887
+        ]
+      ],
+      "sha256": {
+        "stock": "ed0bca4fb113d57cf1da239fe0032ad2cf393556036ee373a274103cf5b0ac73",
+        "live": "0e883a955936c2d8cb1f0d3d8406a8160c80e689ce93d38f8d395aa739bde052",
+        "restored": "0e883a955936c2d8cb1f0d3d8406a8160c80e689ce93d38f8d395aa739bde052"
+      }
+    },
+    {
+      "nominalSeconds": 32.1,
+      "actualFlight": [
+        true,
+        "core",
+        6077.729904866783,
+        29861.18646778847,
+        126.31029453322734,
+        225,
+        526471,
+        {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        }
+      ],
+      "cameraXYZ": [
+        6065.270440710336,
+        130.47404244831,
+        29879.34599266477
+      ],
+      "strongRgb": 2009,
+      "alpha": 0,
+      "outsideIndependentPolygon": 0,
+      "exactRestoration": true,
+      "sameGeometry": true,
+      "draws": [
+        225,
+        225
+      ],
+      "triangles": [
+        526471,
+        526471
+      ],
+      "polygon": [
+        [
+          165.32047243605706,
+          743.9067665833404
+        ],
+        [
+          112.49153017844708,
+          734.7055908797772
+        ],
+        [
+          109.73901602589098,
+          695.9768069048932
+        ],
+        [
+          162.81405053465554,
+          704.4075479624861
+        ]
+      ],
+      "sha256": {
+        "stock": "10dc2faeca0271ddf3cf0d4b57019b1d8fabe92431925947f933d9b544d8a668",
+        "live": "358a2f1e5ad347588191d12457046863c25754eec43b6a45629185e12b8028c4",
+        "restored": "358a2f1e5ad347588191d12457046863c25754eec43b6a45629185e12b8028c4"
+      }
+    },
+    {
+      "nominalSeconds": 32.8,
+      "actualFlight": [
+        true,
+        "core",
+        6099.480453378673,
+        29831.15675960911,
+        126.56761149997304,
+        225,
+        526471,
+        {
+          "wanted": 51,
+          "ready": 51,
+          "loading": 0,
+          "pending": 0,
+          "failed": 0
+        }
+      ],
+      "cameraXYZ": [
+        6087.020926550249,
+        130.73134718896452,
+        29849.31637740044
+      ],
+      "strongRgb": 0,
+      "alpha": 0,
+      "outsideIndependentPolygon": 0,
+      "exactRestoration": true,
+      "sameGeometry": true,
+      "draws": [
+        225,
+        225
+      ],
+      "triangles": [
+        526471,
+        526471
+      ],
+      "polygon": [
+        [
+          73.86369023634177,
+          833.6683288670163
+        ],
+        [
+          13.01463846368991,
+          820.4562696568481
+        ],
+        [
+          9.05109060154421,
+          774.717812568115
+        ],
+        [
+          70.22029811950361,
+          786.8533969927154
+        ]
+      ],
+      "sha256": {
+        "stock": "12e52dc97b7003443d64985811af861114c1addf845c5d54aa46ff565858e76c",
+        "live": "12e52dc97b7003443d64985811af861114c1addf845c5d54aa46ff565858e76c",
+        "restored": "12e52dc97b7003443d64985811af861114c1addf845c5d54aa46ff565858e76c"
+      }
+    }
+  ],
+  "independentFacingControls": {
+    "farAtSeconds": 23.1,
+    "farOriginalFaceMarkerPixels": 269,
+    "farChangedPixels": 0,
+    "frontSameAsUnrestrictedVariant": true,
+    "reverseDiagnosticDistanceMetres": 28,
+    "reverseUngatedChangedPixels": 168541,
+    "reverseProductionChangedPixels": 0,
+    "reverseOriginalFaceMarkerPixels": 169764,
+    "note": "Same-context six-row reciprocal diagnostic; not an ordinary gameplay camera."
+  }
+}

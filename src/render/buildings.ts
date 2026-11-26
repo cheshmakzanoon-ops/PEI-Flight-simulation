@@ -8,6 +8,8 @@ import type {DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
 import {DalvaySocket} from './dalvay-exterior-socket.ts';
 import {SEACOW,seacowOwner,seacowSource,type SeacowSeat} from './seacow-exterior-seat.ts';
+import {FOUNDERS_WEST,foundersWestTile} from './founders-west/authority.ts';
+import {FoundersWestLease} from './founders-west/lease.ts';
 import {KNIGHT_SEAT,knightExactOwner,knightOwns,type KnightSeat} from './souris-knight-seat.ts';
 import {princeSkyGLSL,princeSkyWords} from './prince-roof-sky.ts';
 import {POINT_PRIM,pointPrimDrawSource,pointPrimOwner,type PointPrimStock} from './point-prim/admit.ts';
@@ -239,6 +241,10 @@ export class Buildings {
   const owner=this.meshes.get(RUSTICO_HARBOUR_ROOF_TILE);
   return !!owner&&owner.parent===this.scene&&owner.visible&&owner.userData.rusticoHarbourRoofTone===true;
  }
+ private foundersWest?:FoundersWestLease;
+ private foundersWestSeed?:Pick<ConstructorParameters<typeof FoundersWestLease>[0],'render'|'camera'|'eligible'|'local'|'preflight'>;
+ enableFoundersWest(seed:NonNullable<Buildings['foundersWestSeed']>){this.foundersWestSeed=seed;}
+ get foundersWestActive(){return this.foundersWest?.active===true;}
  private sourisWestLink?:OlearyLink;
  private sourisWestMat?:THREE.ShaderMaterial;
  private readonly sourisWestPending=new WeakMap<THREE.Mesh,THREE.BufferAttribute>();
@@ -651,7 +657,7 @@ export class Buildings {
   this.syncStation(x,z);
   this.syncStDavids(x,z);
   this.schoolWall?.sync(schoolAgl>=0&&schoolAgl<405);
-  this.syncSourisEast();this.syncSourisWestFacing();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
+  this.foundersWest?.sync();this.syncSourisEast();this.syncSourisWestFacing();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -659,6 +665,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(id===FOUNDERS_WEST.id){this.foundersWest?.dispose();this.foundersWest=undefined;}
     if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
@@ -847,6 +854,8 @@ export class Buildings {
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const harbourRoofCandidate=this.rusticoHarbourRoof&&rusticoHarbourRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const olearyAccessCandidate=this.olearyAccessRoof&&!this.olearySeat&&olearyAccessRoofTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
+   const foundersWest=this.foundersWestSeed&&foundersWestTile(this.atlasHash,tile)?this.foundersWestSeed:undefined;
+   let foundersWire:ArrayBuffer|undefined;
    const sourisWestCandidate=!!this.sourisWestLink&&sourisFacingOwnerTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
@@ -872,13 +881,14 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
     const downtownCheck=downtown?downtownWireAllows(downtown,raw):undefined;
     features=await Buildings.decodeChunk(raw);
     if(schoolLink)schoolWire=raw;
+    if(foundersWest)foundersWire=raw;
     if(tapped)observed=raw;
     if(terminal)terminalBytes=raw;
     if(seacow)seacowBytes=raw;
@@ -922,6 +932,12 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(foundersWest&&foundersWire&&mesh.material instanceof THREE.ShaderMaterial){
+    this.foundersWest?.dispose();
+    this.foundersWest=new FoundersWestLease({...foundersWest,scene:this.scene,owner:mesh,stock:mesh.material,wire:foundersWire,rows:features,
+     owned:()=>this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id),
+     paint:async(v,f)=>(await import('./founders-west/shader.ts')).patchFoundersWestWall(v,f)});
+   }
    if(sourisWestCandidate)void this.stageSourisWestFacing(mesh);
    if(schoolLink&&schoolWire){
     const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&mesh.parent===this.scene;

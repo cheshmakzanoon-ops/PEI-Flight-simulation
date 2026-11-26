@@ -55,6 +55,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Indian River | `?indianRiverReview` | [St. Mary’s exterior and local grade](landmarks/st-marys-indian-river.md). Choose **Indian River · country pass**. |
 | Point Prim | `?stockPointPrim` | Standard shows the [surveyed-era lighthouse and measured dry ground](point-prim-study.md). Choose **Point Prim · lighthouse pass** for a virtual 72 m offshore approach. |
 | Hog Island | `?hogIslandPhotoStudy` | [Dated aerial surface detail](qa/hog-island-photo-study.md). Choose a west or east **Hog Island · dune pass**. |
+| Founders’ Food Hall, Charlottetown | `?stockFoundersWestWall` | Compare Standard’s [three rounded railway-end bays](qa/founders-west-standard/) on **Charlottetown waterfront · low pass**. The roof, neighbouring façades and original geometry are unchanged. |
 | Green Gables House | `?stockGreenGablesHouse` | Compare Standard’s [survey-fitted house exterior](art/green-gables-house.md) on **Cavendish Dunelands · coastal pass**. The explicit `?greenGablesReview` remains available on the other eligible Cavendish passes. |
 | Green Gables grounds | `?stockGreenGablesBarn` | Compare the original massing with Standard’s [survey-fitted Barn and adjoining wing](art/green-gables-barn-review.md). |
 | Cavendish Dunelands | `?cavendishWaterReview` | [Lake of Shining Waters, 2020 freshwater core](qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |

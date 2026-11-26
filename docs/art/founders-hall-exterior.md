@@ -1,6 +1,6 @@
 # Founders’ Food Hall · Charlottetown
 
-Original Three.js exterior reconstruction of Charlottetown’s former railway car shop and its separate visitor entrance. Do not infer current dimensions, cladding specification, accessibility or safe flying clearances from the recreation.
+Original Three.js exterior reconstruction of Charlottetown’s former railway car shop and its separate visitor entrance. Do not infer current dimensions, cladding specification, accessibility or safe flying clearances from the recreation. The live flight map includes only a [material treatment on the original Prince Street wall](../qa/founders-west-standard/), not this modeled exterior.
 
 ## Source separation
 
