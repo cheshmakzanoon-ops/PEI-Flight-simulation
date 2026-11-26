@@ -33,3 +33,23 @@ This is **read-only CPU evidence**, not permission to remove a stock
 building. Other optional renderer profiles, actual world loading and shadow
 ownership, present-day facades, visible ground, and GPU depth still need
 separate checks.
+
+### Fixed-camera compositing check
+
+Use native canvas PNGs from the same frozen route frame, not viewport
+screenshots. Capture the stock frame, bounded replacement and restored
+stock in that order without moving the camera or advancing the clock.
+The box is half-open and must be clipped to the native canvas. The
+browser test environment already installs `pngjs`.
+
+```sh
+node tools/qa/scenery-frame-invariant.mjs \
+  stock.png candidate.png restored.png 132,555,343,718 report.json
+```
+
+A PNG from the same frame with both the exact stock span and the
+replacement hidden can be passed as the final argument. This fourth
+capture helps distinguish an actual candidate alpha defect from exposing
+existing content at a lower roof silhouette. Matching an uncovered
+pixel requires all four channels. This witness explains a difference;
+it does **not** override the strict alpha, scope or rollback gate.

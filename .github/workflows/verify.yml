@@ -40,8 +40,8 @@ jobs:
           cmp tools/art/souris-st-mary-study/proof/lancet-geometry.json /tmp/souris-st-mary-lancets.json
           ./node_modules/.bin/tsc -p tools/art/souris-st-mary-study/tsconfig.json
           ./node_modules/.bin/vite build tools/art/souris-st-mary-study --config tools/art/souris-st-mary-study/vite.config.ts --outDir /tmp/souris-st-mary-studio-dist --emptyOutDir
-      - name: Verify native building-owner intake
-        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs
+      - name: Verify native scenery ownership and frame gates
+        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs tools/qa/scenery-frame-invariant.test.mjs
       - name: Verify the off-map Holman Centre asset
         run: |
           node --experimental-strip-types --test tools/art/holman-centre-exterior/holman-detached-portable.test.mjs
