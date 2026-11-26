@@ -1,3 +1,4 @@
+import {keepSupplementalCanopyLegacyBlend} from './canopy-coverage-alpha.ts';
 import * as T from 'three';
 import {MISCOUCHE_CROWNS,MISCOUCHE_PROOF as spec} from './miscouche-fill.generated.ts';
 type Ground=(x:number,z:number)=>number|undefined;
@@ -20,6 +21,7 @@ export function createMiscoucheFill(scene:T.Scene,base:T.ShaderMaterial,seat:Gro
  const anchor='clamp((a-.30)*3.8,0.,1.)';
  if(!base.fragmentShader.includes(anchor))return;
  const mat=base.clone();
+ keepSupplementalCanopyLegacyBlend(mat);
  // Use the already owned atlas texture; clone() would give this material
  // a detached sampler object that could own a second upload.
  mat.uniforms={...base.uniforms,fillAlpha:{value:0}};

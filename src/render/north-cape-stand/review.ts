@@ -1,3 +1,4 @@
+import {inheritedCanopyCoverageBlend} from '../canopy-coverage-alpha.ts';
 import * as T from 'three';
 import type {World} from '../world.ts';
 import type {Vegetation} from '../vegetation.ts';
@@ -88,7 +89,7 @@ function rasterStamp(m:T.ShaderMaterial){
  * supported stock ABI and share the real uniform wrappers with zero writes. */
 export function newCapeCrownMaterial(base:T.ShaderMaterial,patched:{vertexShader:string;fragmentShader:string},live:{value:number}){
  const out=new T.ShaderMaterial({...patched,uniforms:{...base.uniforms,[CAPE_LIVE]:live},
-  side:T.DoubleSide,alphaToCoverage:true});
+  side:T.DoubleSide,alphaToCoverage:true,...inheritedCanopyCoverageBlend(base)});
  if(!same(rasterSemantics(base),rasterSemantics(out))){out.dispose();return;}
  return out;
 }

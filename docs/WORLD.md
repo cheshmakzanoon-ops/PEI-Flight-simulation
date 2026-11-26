@@ -223,6 +223,7 @@ roof outlines; the pass is not a survey of individual trees.
 
 - [Optional terrain-seated road preview](qa/seated-road-preview.md): original plan geometry and material classes, regular near contact only.
 
+- [Woodland edge compositing](qa/canopy-coverage-alpha.md): stock crown cards keep the scene behind their covered samples opaque without changing leaf coverage.
 - [Optional near branched woodland](qa/branched-woodland-preview.md): true 3D near canopy, source stem positions preserved.
 
 - [Optional woodland floor surface](qa/forest-floor-preview.md): exact forest category gating and licensed stock leaf litter, no added geometry.

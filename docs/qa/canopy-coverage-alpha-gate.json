@@ -1,0 +1,1128 @@
+{
+  "baseline": "815090fbbe51fe33bd795feb577fb5c75044d472",
+  "technique": "Matched genuine Chase flight state; one stock material gets a separate alpha blend. Native WebGL, 4x software MSAA.",
+  "primitiveCases": [
+    {
+      "a": 0.2,
+      "two": false,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          51
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          51
+        ]
+      }
+    },
+    {
+      "a": 0.2,
+      "two": true,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          87
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          87
+        ]
+      }
+    },
+    {
+      "a": 0.49,
+      "two": false,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          125
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          125
+        ]
+      }
+    },
+    {
+      "a": 0.49,
+      "two": true,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          161
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          161
+        ]
+      }
+    },
+    {
+      "a": 0.51,
+      "two": false,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          130
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          130
+        ]
+      }
+    },
+    {
+      "a": 0.51,
+      "two": true,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          166
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          166
+        ]
+      }
+    },
+    {
+      "a": 0.8,
+      "two": false,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      }
+    },
+    {
+      "a": 0.8,
+      "two": true,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          240
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          240
+        ]
+      }
+    },
+    {
+      "a": 1,
+      "two": false,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      }
+    },
+    {
+      "a": 1,
+      "two": true,
+      "multi": 0,
+      "native": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      }
+    },
+    {
+      "a": 0.2,
+      "two": false,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      }
+    },
+    {
+      "a": 0.2,
+      "two": true,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          213
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          213
+        ]
+      }
+    },
+    {
+      "a": 0.49,
+      "two": false,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          190
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          190
+        ]
+      }
+    },
+    {
+      "a": 0.49,
+      "two": true,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          185
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          185
+        ]
+      }
+    },
+    {
+      "a": 0.51,
+      "two": false,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          193
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          193
+        ]
+      }
+    },
+    {
+      "a": 0.51,
+      "two": true,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          189
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          189
+        ]
+      }
+    },
+    {
+      "a": 0.8,
+      "two": false,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          204
+        ]
+      }
+    },
+    {
+      "a": 0.8,
+      "two": true,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          240
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 256,
+        "notOpaque": 0,
+        "alphaOld": [
+          240
+        ]
+      }
+    },
+    {
+      "a": 1,
+      "two": false,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      }
+    },
+    {
+      "a": 1,
+      "two": true,
+      "multi": 4,
+      "native": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      },
+      "postDepth": {
+        "rgb": 0,
+        "alpha": 0,
+        "notOpaque": 0,
+        "alphaOld": [
+          255
+        ]
+      }
+    }
+  ],
+  "normalFlights": {
+    "oleary-railway-low": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "xyz": [
+          -77938.88837916071,
+          94.8002838410887,
+          -23987.87595009552
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 9391,
+          "oldMinAlpha": 154,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 101,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 154,
+          "newMinAlpha": 154,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 157,
+        "triangles": 335880,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "a435d092dad6342a7c5b855874a079a60cf167cebc0bff1a8327fdf43cece437",
+          "trial": "fde7e51f94e32d73ba2318f86c20a159c6e04e6a4399bfb94501f9cec91c2018",
+          "rollback": "a435d092dad6342a7c5b855874a079a60cf167cebc0bff1a8327fdf43cece437"
+        }
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "xyz": [
+          -78261.3669071564,
+          98.28042258994525,
+          -23591.54983974479
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 38980,
+          "oldMinAlpha": 148,
+          "newMinAlpha": 220,
+          "alphaMaxDelta": 107,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 148,
+          "newMinAlpha": 148,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 159,
+        "triangles": 335864,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "5e67eb5090fdb01332d8dd4e2d0b908c2489695acc42e3f02c443fcf42d81137",
+          "trial": "eb605c0c7ad86e38695fae1a33127a8ab455e2b6e430e93c7826e88193f18666",
+          "rollback": "5e67eb5090fdb01332d8dd4e2d0b908c2489695acc42e3f02c443fcf42d81137"
+        }
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "xyz": [
+          -78584.24653952337,
+          101.96770305739108,
+          -23194.762311597802
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 3319,
+          "oldMinAlpha": 159,
+          "newMinAlpha": 179,
+          "alphaMaxDelta": 96,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 159,
+          "newMinAlpha": 159,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 158,
+        "triangles": 326869,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "926a567c8ba13191c24552973db7bc71b3db99ec9502ca888600282a48b9bb6f",
+          "trial": "8dbf484c77b3b59c6903b331504788dcc2bd3e504dc234215d7adc78ce6097b0",
+          "rollback": "926a567c8ba13191c24552973db7bc71b3db99ec9502ca888600282a48b9bb6f"
+        }
+      },
+      {
+        "k": 2708,
+        "time": 30.088888888891038,
+        "xyz": [
+          -78907.34218351085,
+          105.71164235260794,
+          -22797.72629050667
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 3469,
+          "oldMinAlpha": 158,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 97,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 158,
+          "newMinAlpha": 158,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 155,
+        "triangles": 308390,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "169551fe271aa40eca3f522b3c5f169bdc3eed1820b94fcd3eb77c407f5859fa",
+          "trial": "8ca6d981447e0ecc553ca8d68eb03165606f131f3e80dfdefe973747779efdd1",
+          "rollback": "169551fe271aa40eca3f522b3c5f169bdc3eed1820b94fcd3eb77c407f5859fa"
+        }
+      },
+      {
+        "k": 3428,
+        "time": 38.088888888892285,
+        "xyz": [
+          -79165.90651823174,
+          108.72322292605517,
+          -22479.996448819777
+        ],
+        "heading": 3.857177646907468,
+        "raw": {
+          "rgb": 0,
+          "alpha": 16905,
+          "oldMinAlpha": 155,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 100,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 155,
+          "newMinAlpha": 155,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 155,
+        "triangles": 295864,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "3034b9695daab7ce94a1d51c71259d54d0e34611793893ff2022b67527835c9e",
+          "trial": "aa6a6046191a4264fff5990b148ee159d6e9be1eaf9154091f21e6f0e99ff749",
+          "rollback": "3034b9695daab7ce94a1d51c71259d54d0e34611793893ff2022b67527835c9e"
+        }
+      }
+    ],
+    "georgetown-low": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "xyz": [
+          51643.21058141333,
+          60.948413952617024,
+          35722.576114400465
+        ],
+        "heading": 5.3930673886624785,
+        "raw": {
+          "rgb": 0,
+          "alpha": 2797,
+          "oldMinAlpha": 150,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 105,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 150,
+          "newMinAlpha": 150,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 351,
+        "triangles": 337770,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "21ea75ca05528ddcc5cc96d94353f88ef9a3c6875b00ea272c8ead4dda751cb2",
+          "trial": "514a98ab09724071b6efb52ac01d58a7c8c44404b0a2c869b60ae2267e2966a2",
+          "rollback": "21ea75ca05528ddcc5cc96d94353f88ef9a3c6875b00ea272c8ead4dda751cb2"
+        }
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "xyz": [
+          51257.741581893664,
+          64.59600051930846,
+          35398.54357666706
+        ],
+        "heading": 5.3930673886624785,
+        "raw": {
+          "rgb": 0,
+          "alpha": 5665,
+          "oldMinAlpha": 154,
+          "newMinAlpha": 255,
+          "alphaMaxDelta": 101,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 154,
+          "newMinAlpha": 154,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 349,
+        "triangles": 324849,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "f028a9bb0a8a492db2af9f7635b10918f2f95b6c4dc3dd8822345584fd83a046",
+          "trial": "197a082291ef8ed9b18e9605947e091c06c0407c20ad3e3e8bb4be2f2f87dc77",
+          "rollback": "f028a9bb0a8a492db2af9f7635b10918f2f95b6c4dc3dd8822345584fd83a046"
+        }
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "xyz": [
+          50871.85071928247,
+          68.44220255197195,
+          35074.16942093797
+        ],
+        "heading": 5.3930673886624785,
+        "raw": {
+          "rgb": 0,
+          "alpha": 48161,
+          "oldMinAlpha": 151,
+          "newMinAlpha": 179,
+          "alphaMaxDelta": 104,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 151,
+          "newMinAlpha": 151,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 336,
+        "triangles": 378781,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "7cf4b9f0abfe8ae073d8725cbef7f52abcc8e163085f32fb64a1ed89eabedfd9",
+          "trial": "8cb572dd9bdb0a0c440256d8edae1bfc5375c53b5a1a05ac5b9aeac432174a39",
+          "rollback": "7cf4b9f0abfe8ae073d8725cbef7f52abcc8e163085f32fb64a1ed89eabedfd9"
+        }
+      }
+    ],
+    "cavendish": [
+      {
+        "k": 8,
+        "time": 0.08888888888888889,
+        "xyz": [
+          -17113.35196272314,
+          443.98788000923633,
+          1446.007186354449
+        ],
+        "heading": 1.7627825445142733,
+        "raw": {
+          "rgb": 0,
+          "alpha": 20204,
+          "oldMinAlpha": 151,
+          "newMinAlpha": 179,
+          "alphaMaxDelta": 104,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 151,
+          "newMinAlpha": 151,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 265,
+        "triangles": 339685,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "70e5e08e49c3f6bca4be8330ec5ea0f447fffc0d72b3b9cab334c16609c9a270",
+          "trial": "e6dee9f400a74f3a78919b6ef5956372af7e5e834c7c4143cfc7ca72f85eb475",
+          "rollback": "70e5e08e49c3f6bca4be8330ec5ea0f447fffc0d72b3b9cab334c16609c9a270"
+        }
+      },
+      {
+        "k": 908,
+        "time": 10.088888888888857,
+        "xyz": [
+          -16582.92920659263,
+          445.710560253786,
+          1548.9176997911609
+        ],
+        "heading": 1.7627825445142733,
+        "raw": {
+          "rgb": 0,
+          "alpha": 27515,
+          "oldMinAlpha": 150,
+          "newMinAlpha": 204,
+          "alphaMaxDelta": 105,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 150,
+          "newMinAlpha": 150,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 263,
+        "triangles": 350426,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "3321063fd0b9aad68545c3e49484a9af9b52f2db5fba3a14e6b8bb1c8c520973",
+          "trial": "ebb1797809d7db7f0a063daa6041cfbe89e04c1a1b35c7ede6de74e75331baaa",
+          "rollback": "3321063fd0b9aad68545c3e49484a9af9b52f2db5fba3a14e6b8bb1c8c520973"
+        }
+      },
+      {
+        "k": 1808,
+        "time": 20.088888888889475,
+        "xyz": [
+          -16051.164138115531,
+          447.7370447470347,
+          1652.089132316759
+        ],
+        "heading": 1.7627825445142733,
+        "raw": {
+          "rgb": 0,
+          "alpha": 17880,
+          "oldMinAlpha": 155,
+          "newMinAlpha": 235,
+          "alphaMaxDelta": 100,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "determinism": {
+          "rgb": 0,
+          "alpha": 0,
+          "oldMinAlpha": 155,
+          "newMinAlpha": 155,
+          "alphaMaxDelta": 0,
+          "alphaRegression": 0,
+          "differentRGB": 0
+        },
+        "attrs": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "aa": 4,
+        "error": 0,
+        "renderSize": [
+          1120,
+          700
+        ],
+        "draws": 273,
+        "triangles": 351781,
+        "material": "ShaderMaterial",
+        "captureSha256": {
+          "stock": "a942ee3000e40d1fb454f5aaf58b70b584d7b564a8fcbd4da98e4e0a48b139a9",
+          "trial": "f2eadd5a3379e10070b09ef24489c7d3fcaa457246097b1df63f530515841831",
+          "rollback": "a942ee3000e40d1fb454f5aaf58b70b584d7b564a8fcbd4da98e4e0a48b139a9"
+        }
+      }
+    ]
+  },
+  "actualPageScreenshot": {
+    "cropXYWH": [
+      416,
+      420,
+      350,
+      215
+    ],
+    "alphaChanges": 38996,
+    "screenshotPixels": 37060,
+    "pixelsGreater2": 32281,
+    "outside": 0,
+    "maxOutside": 0,
+    "maxChange": 25,
+    "rollback": 0,
+    "alphaRollback": 0,
+    "alphaDown": 0,
+    "bounds": [
+      0,
+      302,
+      1120,
+      700
+    ],
+    "sha": [
+      "4e3e1ac4fd793a2fb6df1ef509380a92cc81cb595b542f292b2ac6fe9de6fb18",
+      "af84cc5a86c8d6ffd5070db780f221517087a3ff960ae15a1b30304edabf0408",
+      "4e3e1ac4fd793a2fb6df1ef509380a92cc81cb595b542f292b2ac6fe9de6fb18"
+    ],
+    "fixed": {
+      "step": 908,
+      "pose": [
+        -78261.3669071564,
+        98.28042258994525,
+        -23591.54983974479,
+        3.857177646907468
+      ],
+      "time": 10.088888888888857
+    },
+    "cases": {
+      "old": {
+        "attributeSamples": 4,
+        "draws": 159,
+        "tris": 335864,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      },
+      "fixed": {
+        "attributeSamples": 4,
+        "draws": 159,
+        "tris": 335864,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      },
+      "restored": {
+        "attributeSamples": 4,
+        "draws": 159,
+        "tris": 335864,
+        "context": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "color": "rgb(25, 58, 60)",
+        "width": 1120,
+        "height": 700
+      }
+    }
+  }
+}

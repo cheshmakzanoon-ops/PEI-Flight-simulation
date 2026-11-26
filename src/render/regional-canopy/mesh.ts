@@ -1,3 +1,4 @@
+import {keepSupplementalCanopyLegacyBlend} from '../canopy-coverage-alpha.ts';
 import * as T from 'three';
 import type {CanopyRow} from './assets.ts';
 import type {RegionalStand} from './spec.ts';
@@ -32,6 +33,7 @@ export function createRegionalCanopy(scene:T.Scene,base:T.ShaderMaterial,s:Regio
   bound.expandByPoint(new T.Vector3(x+r,stems[i*3+1]+.65*h+vertical+.025,z+r));
  }
  const mat=base.clone();
+ keepSupplementalCanopyLegacyBlend(mat);
  // Share the existing owned sampler object; no new texture or atlas upload.
  mat.uniforms={...base.uniforms,regionalCanopyAlpha:{value:0}};
  mat.fragmentShader='uniform float regionalCanopyAlpha;\n'+base.fragmentShader.replace(anchor,anchor+'*regionalCanopyAlpha');

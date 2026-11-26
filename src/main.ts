@@ -1,3 +1,4 @@
+import {supportsOpaqueCanopyCoverage} from './render/canopy-coverage-alpha.ts';
 import {verifiedPrinceOverview} from './render/prince-grassland/source.ts';
 import {northCapeStandOption} from './app/north-cape-stand-option.ts';
 import type {NorthCapeStandReview} from './render/north-cape-stand/review.ts';
@@ -383,7 +384,7 @@ async function run(){
  const rollingModule=rollingLibrary?await rollingLibrary:undefined;
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
-   rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'));
+   rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'),!options.has('woodland3D')&&supportsOpaqueCanopyCoverage(gl));
  let datedStandReview:NorthCapeStandReview|undefined;
  if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')
   void import('./render/north-cape-stand/review.ts').then(({NorthCapeStandReview})=>{
