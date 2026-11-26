@@ -71,6 +71,7 @@ the original Cavendish coastal overdraw case after two relocations.
 ## Coastal terrain and materials
 
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
+- [Souris southwest exterior material](qa/souris-west-facing.md): exact receiver, one façade, independent route proof and fallback.
 - [Souris Town Hall authoring study](../tools/art/souris-town-hall-study/): detached scene checks for the original frontage and qualified roof surfaces.
 - [Souris waterfront departure](qa/souris-waterfront-pass.md): offshore start, unchanged controls and a measured transit past the town.
 - [St. Mary’s exterior workshop](../tools/art/souris-st-mary-study/): original twin towers, procedural stone and a matched detached Chase-angle comparison. Site placement remains unverified.

@@ -43,6 +43,9 @@ import {buildSpinnakersShells,matchesSpinnakersShells,SPINNAKERS_OMISSIONS,SPINN
 import {PRINCE_ROOF_TILE,princeRoofOwner,matchesPrinceSurveyRoof,emitPrinceSurveyRoof,princeFoot} from './prince-survey-roof.ts';
 import { downtownFacade, downtownFacadeGLSL } from './facade.ts';
 import { fittedWallMaterial,townFaceRegion,townTileRegion,townWallVertex,TOWN_WALL_ATLAS,type TownWallOptics } from './town-wall-optics.ts';
+import {sourisFacingOwnerTile,sourisFacingAdmittedEdge,sourisFacingExactSurface} from './souris-waterfront-face-pin.ts';
+import {detachedSchoolWestMark,patchSourisSchoolWestFragment,SRS_WEST_WALL} from './souris-west-wall-material.ts';
+import type {OlearyLink,OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import { emitQuartermasterRoof,supportedQuartermasterRoof } from './quartermaster-roof.ts';
 import { emitSurveyRoof,matchesSurveyRoof } from './survey-roof.ts';
 import { SOURIS_ROOF } from './souris-roof.generated.ts';
@@ -226,6 +229,54 @@ export class Buildings {
  get rusticoHarbourRoofActive(){
   const owner=this.meshes.get(RUSTICO_HARBOUR_ROOF_TILE);
   return !!owner&&owner.parent===this.scene&&owner.visible&&owner.userData.rusticoHarbourRoofTone===true;
+ }
+ private sourisWestLink?:OlearyLink;
+ private sourisWestMat?:THREE.ShaderMaterial;
+ private readonly sourisWestPending=new WeakMap<THREE.Mesh,THREE.BufferAttribute>();
+ private sourisWestLease?:{owner:THREE.Mesh;geometry:THREE.BufferGeometry;original:THREE.BufferAttribute|THREE.InterleavedBufferAttribute;
+   marked:THREE.BufferAttribute;controller:AbortController;proof?:OlearyProgramProof};
+ enableSourisWestFacing(link:OlearyLink){this.sourisWestLink=link;}
+ /** Resident verified material, not a claim about optical visibility. */
+ get sourisWestFacingActive(){
+  const a=this.sourisWestLease;
+  return !!a?.proof&&a.owner.visible&&a.owner.parent===this.scene&&a.owner.material===this.sourisWestMat;
+ }
+ private releaseSourisWestFacing(){
+  const a=this.sourisWestLease;if(!a)return;
+  this.sourisWestLease=undefined;a.controller.abort();
+  if(a.geometry.getAttribute('facadeStyle')===a.marked)a.geometry.setAttribute('facadeStyle',a.original);
+  if(a.owner.material===this.sourisWestMat)a.owner.material=this.mat;
+ }
+ private validSourisWestFacing(a:NonNullable<Buildings['sourisWestLease']>){
+  const {owner,geometry}=a;
+  return this.wanted.has(SRS_WEST_WALL.tile)&&this.meshes.get(SRS_WEST_WALL.tile)===owner&&owner.parent===this.scene&&
+    !this.scene.overrideMaterial&&owner.visible&&owner.geometry===geometry&&geometry.index===null&&!geometry.groups.length&&
+    geometry.drawRange.start===0&&geometry.drawRange.count===Infinity&&sourisFacingExactSurface(geometry);
+ }
+ private syncSourisWestFacing(){
+  const a=this.sourisWestLease;
+  if(a?.proof&&(!this.validSourisWestFacing(a)||!a.proof()||a.owner.material!==this.sourisWestMat||
+      a.geometry.getAttribute('facadeStyle')!==a.marked))this.releaseSourisWestFacing();
+ }
+ private async stageSourisWestFacing(owner:THREE.Mesh){
+  const marked=this.sourisWestPending.get(owner),link=this.sourisWestLink,material=this.sourisWestMat;
+  this.sourisWestPending.delete(owner);
+  if(!marked||!link||!material)return;
+  this.releaseSourisWestFacing();
+  const geometry=owner.geometry,original=geometry.getAttribute('facadeStyle');
+  const controller=new AbortController(),a:NonNullable<Buildings['sourisWestLease']>={owner,geometry,original,marked,controller};
+  if(!original||!this.validSourisWestFacing(a)||owner.material!==this.mat)return;
+  this.sourisWestLease=a;
+  // Compile the real material with the actual owner attribute schema. The
+  // detached group is never drawn and the streamed tile remains on stock.
+  const g=new THREE.Group();g.add(new THREE.Mesh(geometry,material));
+  try{
+   const live=await link(g,controller.signal);
+   if(this.sourisWestLease!==a)return;
+   if(!live||!live()||!this.validSourisWestFacing(a)||owner.material!==this.mat||
+       geometry.getAttribute('facadeStyle')!==original){this.releaseSourisWestFacing();return;}
+   geometry.setAttribute('facadeStyle',marked);owner.material=material;a.proof=live;
+  }catch{if(this.sourisWestLease===a)this.releaseSourisWestFacing();}
  }
  private princeRoofContact=false;private princeSurveyRoof=false;private princeNeutralMat?:THREE.ShaderMaterial;
  private readonly shadowedBuildings:boolean;
@@ -529,7 +580,7 @@ export class Buildings {
   this.syncCavendish(x,z,barnAgl);
   this.syncStation(x,z);
   this.syncStDavids(x,z);
-  this.syncSourisEast();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
+  this.syncSourisEast();this.syncSourisWestFacing();this.syncSeacow();this.syncKnight();this.dalvay?.sync();this.oleary?.sync();
   this.indianVariant?.sync(this.churchArt?.active()??false);
   if(this.spinnakers?.north?.group.parent?.parent)this.spinnakers.north.sync();
   if(Math.hypot(x-this.last.x,z-this.last.z)>260){
@@ -537,6 +588,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
@@ -702,6 +754,7 @@ export class Buildings {
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const harbourRoofCandidate=this.rusticoHarbourRoof&&rusticoHarbourRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
+   const sourisWestCandidate=!!this.sourisWestLink&&sourisFacingOwnerTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const princeCandidate=this.princeSurveyRoof&&princeRoofOwner(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const tryStation=!!this.tryStation&&!this.spinnakers&&railAtlasAllows(this.atlasHash,tile);
    const tryStDavids=!!this.tryStDavids&&stDavidsAtlasAllows(this.atlasHash,tile);
@@ -724,7 +777,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||sourisWestCandidate||tryStation||tryStDavids||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||tapped){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -743,8 +796,8 @@ export class Buildings {
     if(barnSpec&&matchesExterior(features,barnSpec))barnBytes=raw;
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
-    // All three bounded holders share this one digest of the already-read chunk.
-    if(rusticoCandidate||princeCandidate||harbourRoofCandidate)try{
+    // Bounded appearances share a single digest of the already-read chunk.
+    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||sourisWestCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
@@ -773,6 +826,7 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(sourisWestCandidate)void this.stageSourisWestFacing(mesh);
    if(trackWharf&&standardWharfDraw(mesh.geometry,mesh.userData.spinnakersSpans)){
     const mask=authenticatedOwnerCohort(mesh);
     if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};
@@ -997,6 +1051,8 @@ export class Buildings {
   // Record only changed spans; allocate the GPU lane once after emission.
   const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
   let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false;
+  const westWall=this.sourisWestLink?sourisFacingAdmittedEdge(this.atlasHash,tile,massingChunk,features):undefined;
+  let westSpan:readonly [number,number]|undefined;
   const harbourRoofRow=this.rusticoHarbourRoof&&rusticoHarbourRoofAllows(this.atlasHash,tile,massingChunk,features)?RUSTICO_HARBOUR_ROOF_ROW:-1;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
@@ -1141,10 +1197,12 @@ export class Buildings {
    // sloped stock floor profiles remain unchanged beneath these optics.
    let wallDatum=base;
    if(fitWalls)for(const p of ring)wallDatum=Math.max(wallDatum,this.t.meshElevation(p.x,p.z)-.22);
+   const westOwner=westWall?.ordinal===i&&rings.length===1&&!fit&&!neutral&&facade===0;
    for(const rr of rings){for(let i=0;i<rr.length;i++){
     const a=rr[i],b=rr[(i+1)%rr.length],len=Math.hypot(b.x-a.x,b.z-a.z);
     if(len<.15)continue;
-    const first=fitWalls?P.length/3:0;
+    const westEdge=westOwner&&rr===ring&&i===westWall?.edge;
+    const first=fitWalls||westEdge?P.length/3:0;
     let rimMin=fitWalls?Math.min(rim(a),rim(b)):0;
     if(neutral){
      const edges=neutralRoofEdge(a,b,center,neutral.planes);
@@ -1166,6 +1224,7 @@ export class Buildings {
      if(middle===b)wall(a,b,0,len);
      else{const u=Math.hypot(middle.x-a.x,middle.z-a.z);wall(a,middle,0,u);wall(middle,b,u,len);}
     }
+    if(westEdge&&P.length/3===first+6)westSpan=[first,P.length/3];
     if(fitWalls&&townSpans){
      const [width,floor,top]=townWallVertex(len,wallDatum,rimMin);
      if(width>0)townSpans.push(first,P.length/3,width,floor,top);
@@ -1202,6 +1261,22 @@ export class Buildings {
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(UV,2));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.setAttribute('topFlag',new THREE.Float32BufferAttribute(R,1));g.setAttribute('facadeStyle',new THREE.Uint8BufferAttribute(F,1));g.computeVertexNormals();g.computeBoundingSphere();
   const mesh=new THREE.Mesh(g,actualPrince?this.sourceNeutralMaterial():actualRustico&&this.rusticoNeutralMat?this.rusticoNeutralMat:tile.id===SOURIS_ROOF.sourceTileId&&this.sourisMat?this.sourisMat:tile.id===WATER_STREET_TILE&&this.waterStreetMat?this.waterStreetMat:tile.id===VICTORIA_TILE&&this.victoriaMat?this.victoriaMat:tile.id===MONTAGUE_HALL_TILE&&this.montagueMat?this.montagueMat:tile.id===MCLEAN_TILE&&this.sourisMcleanMat?this.sourisMcleanMat:this.mat);mesh.position.set(ox,0,oz);
+  if(westSpan&&mesh.material===this.mat&&!townSpans?.length){
+   const token={atlas:this.atlasHash??'',tile:tile.id,wire:massingChunk??'',row:SRS_WEST_WALL.row,ordinal:SRS_WEST_WALL.ordinal};
+   const attrs=detachedSchoolWestMark(g,token,westSpan);
+   if(attrs){
+    if(!this.sourisWestMat){
+     const fs=patchSourisSchoolWestFragment(this.mat.fragmentShader);
+     if(fs){
+      this.sourisWestMat=this.mat.clone();
+      this.sourisWestMat.fragmentShader=fs;
+      // Keep the original shared shadow/sun uniform objects, not cloned snapshots.
+      this.sourisWestMat.uniforms={...this.mat.uniforms,srsWestLive:{value:1}};
+     }
+    }
+    if(this.sourisWestMat)this.sourisWestPending.set(mesh,attrs);
+   }
+  }
   if(townSpans?.length&&this.townWallOptics){
     const stock=mesh.material;
     let material=this.fittedWallMaterials.get(stock);
