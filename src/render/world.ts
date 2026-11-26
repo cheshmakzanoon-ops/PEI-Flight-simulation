@@ -241,7 +241,6 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  if(marinaCalm>0.)deep=mix(deep,vec3(.023,.065,.068),marinaCalm*.54);
  `:''}
  ${basin?'deep=mix(deep,vec3(.037,.110,.090),.34*basinShelter);':''}
- ${montagueOptics?'if(riverCalm>0.)deep=mix(deep,vec3(.021,.053,.067),riverCalm*.68);':''}
  // Tint changes slowly with wind and bed depth. Only the short ripple frequencies
  // modulate the reflection; large-scale swells scarcely change the surface normal.
  deep*=1.+.17*undulation*fade;

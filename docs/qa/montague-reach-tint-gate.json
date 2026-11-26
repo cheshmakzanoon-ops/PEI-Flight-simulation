@@ -1,0 +1,93 @@
+{
+  "status": "Scoped optional water colour correction, not a shoreline or hydrology study.",
+  "renderer": "Three r187 native Chromium WebGL2 (SwiftShader)",
+  "approach": "Existing Montague river bridge pass, neutral original physics, Chase.",
+  "method": "Same submitted meshes/time/view/uniforms, zero-gain old program, candidate by disabling the dye only, dual colour marks of the GPU water support, exact byte restore.",
+  "strongThresholdDisplayRGB": 5,
+  "cases": [
+    {
+      "elapsedSeconds": 6.422222222222202,
+      "aircraftXYZ": [
+        42628.42275211027,
+        66.19875719441119,
+        37195.4769295613
+      ],
+      "viewportPixels": [
+        1200,
+        760
+      ],
+      "msaaSamples": 4,
+      "originalCover": "montague-bridge-channel-preview",
+      "dualColorWaterMaskPixels": 10183,
+      "originalVsCorrected": {
+        "any": 10048,
+        "strong": 9519,
+        "alpha": 0,
+        "outside": 0
+      },
+      "programZero": {
+        "any": 0,
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0
+      },
+      "restored": {
+        "any": 0,
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0
+      },
+      "drawsTrianglesGLError": [
+        262,
+        417469,
+        0
+      ],
+      "archivedRGB": {
+        "beforeSHA256": "70af42f5482dff37d6bdee829ea483e6155c1175c480f98bc8bf634ab5050f1f",
+        "afterSHA256": "ef72c556165a4d596f1a42a8f51a560a57347ab37e7d60ecc6b32d115dd80a4b"
+      }
+    },
+    {
+      "elapsedSeconds": 7.155555555555533,
+      "aircraftXYZ": [
+        42593.307651871495,
+        66.47394780755397,
+        37206.895344502926
+      ],
+      "viewportPixels": [
+        1200,
+        760
+      ],
+      "msaaSamples": 4,
+      "originalCover": "montague-bridge-channel-preview",
+      "dualColorWaterMaskPixels": 16545,
+      "originalVsCorrected": {
+        "any": 16340,
+        "strong": 15607,
+        "alpha": 0,
+        "outside": 0
+      },
+      "programZero": {
+        "any": 0,
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0
+      },
+      "restored": {
+        "any": 0,
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0
+      },
+      "drawsTrianglesGLError": [
+        262,
+        417469,
+        0
+      ],
+      "archivedRGB": {
+        "beforeSHA256": "b0e393c2383e3ba14da0382483663e00c9d19b6be1d5f65ff1e510a152207964",
+        "afterSHA256": "3727dfa93d6659f5d072ab889be2e889ad209504d9fa7d6517ad9cd4e4c77b5e"
+      }
+    }
+  ]
+}

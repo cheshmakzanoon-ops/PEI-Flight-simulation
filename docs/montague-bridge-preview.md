@@ -13,11 +13,20 @@ higher estuary flight. The low pass is not offered when the preview pack or
 its required source files do not authenticate; a saved low-pass link then
 selects the original Montague River departure. Add
 `&montagueReachOptics` for a separate visual-only test of quieter river water.
+This option reduces ripple amplitude and foam only within its dated
+support, while retaining the underlying water colour. A separate blue dye
+caused a hard colour boundary around the supported reach and was removed.
+Shoreline, terrain, sea level, contact and the route are unchanged.
+In two matched Chase frames, the [native render gate](qa/montague-reach-tint-gate.json)
+found 9,519 and 15,607 strong colour changes, all inside the marked water,
+with exact alpha, draw counts and rollback. The existing foam and bank
+contrast remain. The new compiled shader and its fallback can be checked
+with `node tools/montague-reach-optics-smoke.mjs` against a local preview.
 No photograph is distributed or sampled as texture.
 
 ![Matched simulator view above the old dry channel and the measured Montague bridge and river](qa/montague-bridge-comparison.webp)
 [Capture positions and render counts](../data/montague-bridge/matched-near-render.json).
-The after frame uses the optional water optics along with the measured preview.
+This archived comparison predates the tint correction and used the optional water optics along with the measured preview.
 The nearby buildings, banks and vegetation still use the existing atlas art.
 
 ## What is measured
