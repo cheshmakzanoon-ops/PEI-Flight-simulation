@@ -3,7 +3,7 @@ import {BufferAttribute,type BufferGeometry,type Group,type Mesh,type Scene} fro
 import {authenticatedOwnerCohort} from '../authenticated-owner-cohort.ts';
 import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyDrawCenter,olearyNativeGrade,olearySourceDraw,type OlearySeat} from './authority.ts';
 import {olearyIndustrialSeat} from './industrial-seat.ts';
-import {OLEARY_STATION_PREFLIGHT_MS,type OlearyLink,type OlearyProgramProof} from './program-gate.ts';
+import {coldCohortProgramsExpired,OLEARY_STATION_PREFLIGHT_MS,type OlearyLink,type OlearyProgramProof} from './program-gate.ts';
 
 type Model={group:Group;intact:()=>boolean;dispose:()=>void};
 type Open=(signal:AbortSignal,ground:Mesh)=>Promise<Model|undefined>;
@@ -12,7 +12,7 @@ type Cohort=NonNullable<ReturnType<typeof authenticatedOwnerCohort>>;
 type Lane=NonNullable<ReturnType<Cohort['add']>>;
 type Grade={mesh:Mesh;seams:string;geo:BufferGeometry;p:BufferAttribute;i:BufferAttribute;pv:number;iv:number;intact?:()=>boolean};
 type Attempt={ctl:AbortController;grade:Grade};
-type Actor={source:Source;row:unknown;span:()=>unknown;link:OlearyLink;open:Open;tried:boolean;pending?:Attempt;
+type Actor={source:Source;row:unknown;span:()=>unknown;link:OlearyLink;open:Open;tried:boolean;pending?:Attempt;retriedGrade?:Grade;
  active?:{model:Model;proof:OlearyProgramProof;lane:Lane}};
 type Alternate={index:BufferAttribute;storage:Uint16Array;version:number};
 export type OlearyCohortStudy={station:boolean;industrialLink:OlearyLink;warehouse?:{row:unknown;link:OlearyLink}};
@@ -162,7 +162,9 @@ export class OlearyCohortSocket{
   }
  }
  private async prepare(a:Actor,attempt:Attempt){
-  const {ctl,grade}=attempt,signal=ctl.signal,timeout=setTimeout(()=>ctl.abort(),a.source===OLEARY?OLEARY_STATION_PREFLIGHT_MS:5200);
+  const {ctl,grade}=attempt,signal=ctl.signal;
+  let expired=false;
+  const timeout=setTimeout(()=>{expired=true;ctl.abort();},a.source===OLEARY?OLEARY_STATION_PREFLIGHT_MS:5200);
   let model:Model|undefined;
   const isCurrent=()=>!signal.aborted&&a.pending===attempt&&this.exactBase()&&this.owner.geometry===this.applied&&
    this.checkAlternate()&&this.liveGrade(grade)&&this.exactSpan(a);
@@ -182,7 +184,17 @@ export class OlearyCohortSocket{
   }catch{/** A failed warehouse program must not retire the neighboring actors. */}
   finally{
    try{model?.dispose();}catch{model?.group.removeFromParent();}
-   clearTimeout(timeout);if(a.pending===attempt)a.pending=undefined;
+   clearTimeout(timeout);
+   if(a.pending===attempt){
+    a.pending=undefined;
+    // Software rendering can exhaust the first cold budget even when the
+    // source and linked neighbors remain valid. Readmit this station once
+    // per unchanged grade residence, from stock, with every normal proof.
+    if(!a.active&&a.source===OLEARY&&(expired||coldCohortProgramsExpired(signal))&&
+       !this.dead&&this.grade===grade&&a.retriedGrade!==grade){
+     a.retriedGrade=grade;a.tried=false;
+    }
+   }
   }
  }
  dispose(){

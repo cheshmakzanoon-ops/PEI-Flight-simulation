@@ -8,6 +8,10 @@ type Lamp=Object3D&{isLight?:boolean;castShadow?:boolean};
 // software renderer must not force the other independent actors to wait.
 export const OLEARY_STATION_PREFLIGHT_MS=16000;
 export const OLEARY_STATION_PROGRAM_MS=7400;
+const expiredCohortPrograms=new WeakSet<AbortSignal>();
+/** An elapsed cold program wait is distinct from a shader link refusal,
+ * changed renderer path, or expired source/grade ownership. */
+export const coldCohortProgramsExpired=(signal:AbortSignal)=>expiredCohortPrograms.has(signal);
 const pause=()=>new Promise<void>(done=>setTimeout(done,16));
 function lampRoster(scene:Scene,camera:Camera){
  const lamps:[Object3D,string,boolean][]=[];
@@ -46,14 +50,20 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,dra
    // required programs or relaxing admission for the smaller previews.
    const budget=timeoutMs??(draws===5?OLEARY_STATION_PROGRAM_MS:1600);
    const deadline=performance.now()+budget;
+   const mayWait=()=>{
+    if(!pending())return false;
+    if(performance.now()<deadline)return true;
+    if(draws===5&&recheckUnattached)expiredCohortPrograms.add(signal);
+    return false;
+   };
    // Use only our bounded poll; don't leave a pending Three compileAsync
    // timer after loss of the old tile's admission lease.
    const maxTicks=Math.ceil(budget/16);
    for(let ticks=0;ticks<=maxTicks;ticks++){
-    if(!pending()||performance.now()>=deadline)return;
+    if(!mayWait())return;
     if(!records.every(([,p])=>p!.isReady())){await pause();continue;}
     if(!records.every(([,p])=>gl.isProgram(p!.program)&&gl.getProgramParameter(p!.program,gl.LINK_STATUS)===true))return;
-    if(!pending()||performance.now()>=deadline)return;
+    if(!mayWait())return;
     const sameLighting=()=>{
      const current=lampRoster(scene,camera);
      return current.length===lighting.length&&!current.some((refs,i)=>refs.some((v,j)=>v!==lighting[i][j]));

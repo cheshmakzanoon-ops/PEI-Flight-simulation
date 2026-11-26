@@ -15,7 +15,7 @@ import {OlearyCohortSocket} from '../src/render/oleary-railway/cohort.ts';
 import {buildDetachedIndustrial192} from '../src/render/oleary-railway/industrial-envelope.ts';
 import {OLEARY_PACKET} from '../src/render/oleary-railway/packet.generated.ts';
 import {decodeOleary} from '../src/render/oleary-railway/packet.ts';
-import {olearyLinkPrograms,type OlearyLink,type OlearyProgramProof} from '../src/render/oleary-railway/program-gate.ts';
+import {coldCohortProgramsExpired,olearyLinkPrograms,OLEARY_STATION_PROGRAM_MS,type OlearyLink,type OlearyProgramProof} from '../src/render/oleary-railway/program-gate.ts';
 
 const ab=(b:Buffer)=>b.buffer.slice(b.byteOffset,b.byteOffset+b.length) as ArrayBuffer;
 const sha=(a:ArrayBufferView)=>createHash('sha256').update(new Uint8Array(a.buffer,a.byteOffset,a.byteLength)).digest('hex');
@@ -146,6 +146,44 @@ test('isolated bad link on either of the real r187 gate’s material rosters kee
   s.dispose();expectIndex(q,false,false);q.close();
  }
 });
+test('station retries a cold wait once on the unchanged grade, never retrying a declined link',async t=>{
+ let now=0;t.mock.method(performance,'now',()=>now);
+ for(const behavior of ['recover','still-cold','declined'] as const){
+  const q=host(),camera=new T.PerspectiveCamera();
+  const map=new Map<T.Material,{currentProgram:object}>();
+  let tries=0,nativeChecks=0,returned=0;
+  const gl={isContextLost:()=>false,isProgram:()=>true,LINK_STATUS:123,
+   getProgramParameter:()=>{nativeChecks++;return behavior!=='declined';}};
+  const r={getContext:()=>gl,getRenderTarget:()=>null,properties:{get:(m:T.Material)=>map.get(m)},
+   clippingPlanes:[],shadowMap:{enabled:false},
+   compile:(group:T.Group)=>{
+    assert.equal(group.parent,null);
+    const attempt=++tries,slow=behavior==='still-cold'||(behavior==='recover'&&attempt===1);
+    const mats=group.children.map(o=>(o as T.Mesh).material as T.Material);
+    for(const m of mats)map.set(m,{currentProgram:{program:{},isReady:()=>{
+     if(slow)now+=OLEARY_STATION_PROGRAM_MS+1;
+     return !slow;
+    }}});
+    return new Set(mats);
+   }};
+  const gate=olearyLinkPrograms(r as unknown as T.WebGLRenderer,camera,q.scene,5,true);
+  const s=make(q,{stationLink:async(group,signal)=>{
+   const p=await gate(group,signal);
+   assert.equal(coldCohortProgramsExpired(signal),behavior==='still-cold'||(behavior==='recover'&&tries===1));
+   returned++;return p;
+  }});
+  await until(()=>returned===1&&s.industrialActive);
+  expectIndex(q,false,true);
+  const expected=behavior==='declined'?1:2;
+  await until(()=>{s.sync();return returned===expected&&(behavior!=='recover'||s.active);});
+  for(let i=0;i<12;i++){s.sync();await sleep();}
+  assert.equal(tries,expected);
+  assert.equal(nativeChecks,behavior==='recover'?5:behavior==='declined'?1:0);
+  expectIndex(q,behavior==='recover',true);
+  s.dispose();expectIndex(q,false,false);q.close();
+ }
+});
+
 test('any owned alternate mutation withdraws both, while a foreign draw is never overwritten',async()=>{
  for(const mode of ['unversioned','versioned','different-index','foreign','stock-version'] as const){
   const q=host(),s=make(q);
