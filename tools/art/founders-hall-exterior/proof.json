@@ -1,0 +1,321 @@
+{
+  "kind": "founders-relative-threejs-artist-study",
+  "notPartOfWorld": true,
+  "schema": 1,
+  "scene": {
+    "draws": 16,
+    "triangles": 1744,
+    "closedOwnerParts": 9,
+    "sealedSourceSha": "7f8387a63a997455c02cad59864cd8231a4b7b34f57b49c2084e452a94eaa53f",
+    "planSha": "9b4b6bafb6eabd9a314a99b8e9cef05ec40056de6f228ba5f6c251e8c73b9b07",
+    "measureNotWorld": true
+  },
+  "roles": {
+    "mainRoof": {
+      "position": "a0679ed9e694ff15cc0c5d84a29199a32519bb83c5b0f653c4ccf191dc319258",
+      "normal": "980f3dc8865cb06ed5bebb30275eb1ce9edf63a73760a25a3bede7258a389e24",
+      "uv": "22833799a0c00a91357c693cedf4d026a56234a013c1bd6ac10c600e2d44fc1a",
+      "tris": 13
+    },
+    "paleSill": {
+      "position": "3ad523e7f54c97b2a20893492f374a873ad092899e1b84578275a705dade0edf",
+      "normal": "4b2f84f49ddd0a481d811481960af64d356cd64b75d1a5a0fc712742ac4f5198",
+      "uv": "69c9d0263be68ff5dcc75ecb2186fcb76fdb74de5689ea94765c52e24dbc7a7d",
+      "tris": 89
+    },
+    "railBrick": {
+      "position": "ec1e77b372f8c1f1565bd25b55de68cb853c835212f2c07a582ddd7d8c5b5b59",
+      "normal": "df73b8fa97f2deee6c541f85d64ff371db5bb3adfdf871013a43ce714a22bc93",
+      "uv": "78ce6bb5df212e0e80b238ae1eadb536ea5e7d38834792bee5995bbdfe855008",
+      "tris": 243
+    },
+    "brickHead": {
+      "position": "2d99e9711a16a4adf121550c20d07af1862ce5f90c1c2f0259ee6327a5600c5b",
+      "normal": "4b552bcf24b184f3e10f9931fa0401771cde6e190328f30efe792ed92ae53faf",
+      "uv": "d11d145c2adafff5e019606d11e17388886bad78ead747edec9572f6058ee9e7",
+      "tris": 770
+    },
+    "curvedGlass": {
+      "position": "63abce94fdc3f1695432b13be5d047f4caa4f729b59c25da70107a0bd898dcd5",
+      "normal": "aa35f6ed91a07cf3fd1c83638057fa8444d0e71eeae112366b95d7adf048d92e",
+      "uv": "a560c41b969743351d9e25d4980e94402268d36c78d052a78e8b8e2d288193b4",
+      "tris": 143
+    },
+    "matchedMullion": {
+      "position": "dc8ea21f79995fa1addd587f642f3f82443dc8a91ec22ea027f1c1bfe23da8c8",
+      "normal": "d99f517812feb96f28ec911fc36150f2a41e670d52c6662b2fd476db327b33ca",
+      "uv": "487327aae18850be908ec75e36e5ae6cc8da5b1743ba3ecd4d7239fc4a8e982b",
+      "tris": 150
+    },
+    "westCrossbar": {
+      "position": "d260a4d50a9c7fa45ffc7c601d635a41cf9cc81bbfb967e13c15c3149a521870",
+      "normal": "40c058712a4058ba6076decfbc2bf5b6eee63834a39f58671a89f004d1526a30",
+      "uv": "5fc77fa065d1f906f5f09e8f7cb2fd49af91db6c8a884ad515dd64b52dfecbfa",
+      "tris": 6
+    },
+    "visitorRoof": {
+      "position": "4b8468c18cba705d9f1b0ad01f8602bf2b56c2f5be8c699049278f42e0730451",
+      "normal": "31e3526dbdccf13b4646e45fb2ae6824565868bfd2adac9e8f96192642801fa8",
+      "uv": "577c59e6849c849aa58b7d0f8a3dafff0583ec9994687c1ceef8497b85d2264d",
+      "tris": 18
+    },
+    "visitorPale": {
+      "position": "0d4f955f7577483c665cb416d797ab875892727fcc13d50ca7014e1e96745801",
+      "normal": "acea210dde52ae329c009f81a4762fb5c6176f6591b37af21fa513214e7da63c",
+      "uv": "80211585e888a2a16b714ac13e302e3931f18470beaa2383bf7dbe47d8971c69",
+      "tris": 34
+    },
+    "buffEntrancePanel": {
+      "position": "151e925b7c65055396a535af062983325d39d50d3a83dbe2feff8b86565b8cbc",
+      "normal": "23cb8f9830327876a51e8a0f19d5ceb3e3959adb342e2fff45d05c56159fc237",
+      "uv": "2b3be6007961dce4288821661df2bbd507847335edef3c9f49b6045dfac64a24",
+      "tris": 23
+    },
+    "entranceCoping": {
+      "position": "9c79275e915747b5e9bef9e71093e196c9dd1fa93c116de9c6416e9120e43302",
+      "normal": "57ccdb40884725f7d4ad620c0425ec4a18d0e2ca56901312cf1a9fbb7d25a49a",
+      "uv": "a803c0207749752efb9f0c20b6caefae2124bd47ac39de45a80981847cef9fd4",
+      "tris": 34
+    },
+    "visitorLinkGlass": {
+      "position": "d724dd17622d2a82e039bd5f6e48249fd872571544427431abf232fe50d6a97f",
+      "normal": "4a7fb113d1f275a866e7d8555e0f861d8280e952cdca35025cad1453b8c2a0bc",
+      "uv": "4c0324d286c74ab5f4c27fb10a4e92ed4c55c39d993b0aad7b4f1a863c541cc1",
+      "tris": 21
+    },
+    "visitorFrame": {
+      "position": "47df03b2b3f1b8ecdef20dd1eab6d2eb7d646af9b1a31f09930021c0d3c981c1",
+      "normal": "298f401377dffd081004e54b5c6c67732ba7b17e3765fd0a5aa4ae542b5a0c36",
+      "uv": "66c8ebc8927f4eb574b164ee32e13287fff39325fef19471bf9c080ee161aff1",
+      "tris": 84
+    },
+    "tealEntranceCanopy": {
+      "position": "949b164ebcb3a649a7fc23c705f9708e04c03387bae546d3e7c755a906e62d66",
+      "normal": "31c49d46d65041f915f8f9c25387a4981321b3db83a941809908bbd8b7bfa74f",
+      "uv": "3ec304e90a0b7d06e07546551b22c7ef7af2dd395dde9211b075a92948cc4a77",
+      "tris": 84
+    },
+    "raisedVisitorFrame": {
+      "position": "d52b474e4f956f7f8a182cc94c047d38912a55158c9a00be53e32c2837fd4e27",
+      "normal": "f59c97e09dd94f21025dad36ade4ef88a8d8fa321b111ca9f11670581ccbcd5f",
+      "uv": "85aa4e2361920c057ce6d4c1f82dbbd260898f503353c5ae420183946be0397a",
+      "tris": 12
+    },
+    "lowVisitorPanel": {
+      "position": "e39bb01752f6d8622be81388a5f96bc00a1d45180d568eecdc5d6fcf2ef075fe",
+      "normal": "c09c800d48f53568fe383236b44090717b690b38fde01bf0f76ec69bc1138b4e",
+      "uv": "1bde7125569a27fc9ee2c1737f8e8bfcdf296514aac41405df13c73dab85b7a9",
+      "tris": 20
+    }
+  },
+  "stubProof": {
+    "shapeCardinals": [
+      {
+        "v": 0.151,
+        "y": 1.47,
+        "role": "visitorLinkGlass",
+        "dep": 0.1900001386334551
+      },
+      {
+        "v": 0.731,
+        "y": 1.52,
+        "role": "visitorLinkGlass",
+        "dep": 0.19000045541368904
+      },
+      {
+        "v": 0.12,
+        "y": 3.36,
+        "role": "lowVisitorPanel",
+        "dep": -4.4480988731342383e-07
+      },
+      {
+        "v": 0.411,
+        "y": 1.42,
+        "role": "visitorLinkGlass",
+        "dep": 0.2489995854044649
+      },
+      {
+        "v": 0.381,
+        "y": 2.87,
+        "role": "brickHead",
+        "dep": 0.05899988503934653
+      },
+      {
+        "v": 0.39,
+        "y": 4.67,
+        "role": "brickHead",
+        "dep": 0.05800020211253853
+      },
+      {
+        "v": 0.57,
+        "y": 6.56,
+        "role": "visitorLinkGlass",
+        "dep": 1.0999999204914863
+      },
+      {
+        "v": 0.943,
+        "y": 5.37,
+        "role": "raisedVisitorFrame",
+        "dep": 0.9100001184656732
+      }
+    ],
+    "closedParts": [
+      {
+        "component": 0,
+        "edge": 381,
+        "mismatches": 0
+      },
+      {
+        "component": 1,
+        "edge": 1191,
+        "mismatches": 0
+      },
+      {
+        "component": 2,
+        "edge": 18,
+        "mismatches": 0
+      },
+      {
+        "component": 3,
+        "edge": 18,
+        "mismatches": 0
+      },
+      {
+        "component": 4,
+        "edge": 24,
+        "mismatches": 0
+      },
+      {
+        "component": 5,
+        "edge": 456,
+        "mismatches": 0
+      },
+      {
+        "component": 6,
+        "edge": 36,
+        "mismatches": 0
+      },
+      {
+        "component": "closed-hood",
+        "edge": 126,
+        "mismatches": 0
+      },
+      {
+        "component": "closed-red-entry-head",
+        "edge": 72,
+        "mismatches": 0
+      }
+    ],
+    "exactEarlierTriangles": 1561,
+    "supportedHistoricArithmeticOnly": {
+      "historic-main-long": {
+        "samples": 282,
+        "arithmeticOnlyMaximumError": 4.564870543788402e-07
+      },
+      "visitor-east-flat": {
+        "samples": 38,
+        "arithmeticOnlyMaximumError": 1.0885203671762156e-07
+      }
+    }
+  },
+  "localSceneOnly": {
+    "gl": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "ver": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "three": "187"
+    },
+    "rawNativeCases": {
+      "street-front-overview": {
+        "delta": {
+          "alpha": 0,
+          "strong": 37576,
+          "any": 38400,
+          "deltaOutside": 0,
+          "visibleScope": 51674,
+          "visiblePediment": 1120
+        },
+        "pass": {
+          "fullOldRestore": true,
+          "fullNewRepeat": true,
+          "exactCanvasMatrix": true,
+          "zeroGLErrors": true,
+          "drawingBound": true,
+          "unchangedAlphaAndOffScope": true,
+          "expectedContrast": true,
+          "pedimentMeaningful": true
+        },
+        "newPNGHash": "0f2fefe1c6347c764e70f0756b9400fa6a72e389156e10d2f369878d1b40912a"
+      },
+      "visitor-passage-oblique": {
+        "delta": {
+          "alpha": 0,
+          "strong": 45739,
+          "any": 46804,
+          "deltaOutside": 0,
+          "visibleScope": 62878,
+          "visiblePediment": 1386
+        },
+        "pass": {
+          "fullOldRestore": true,
+          "fullNewRepeat": true,
+          "exactCanvasMatrix": true,
+          "zeroGLErrors": true,
+          "drawingBound": true,
+          "unchangedAlphaAndOffScope": true,
+          "expectedContrast": true,
+          "pedimentMeaningful": true
+        },
+        "newPNGHash": "e0bd090ab0185f77014d944e779a15180e6e8522c5e60ad453089ab9677feddf"
+      },
+      "tower-inset-close": {
+        "delta": {
+          "alpha": 0,
+          "strong": 136072,
+          "any": 136894,
+          "deltaOutside": 0,
+          "visibleScope": 168254,
+          "visiblePediment": 4906
+        },
+        "pass": {
+          "fullOldRestore": true,
+          "fullNewRepeat": true,
+          "exactCanvasMatrix": true,
+          "zeroGLErrors": true,
+          "drawingBound": true,
+          "unchangedAlphaAndOffScope": true,
+          "expectedContrast": true,
+          "pedimentMeaningful": true
+        },
+        "newPNGHash": "46ddff370d83d7bef29d5acfedcd9b68473166d7dfb625cc2097c634b92d951c"
+      },
+      "stock-long-hall-reciprocal": {
+        "delta": {
+          "alpha": 0,
+          "strong": 0,
+          "any": 0,
+          "deltaOutside": 0,
+          "visibleScope": 19,
+          "visiblePediment": 0
+        },
+        "pass": {
+          "fullOldRestore": true,
+          "fullNewRepeat": true,
+          "exactCanvasMatrix": true,
+          "zeroGLErrors": true,
+          "drawingBound": true,
+          "unchangedAlphaAndOffScope": true,
+          "expectedContrast": true,
+          "pedimentMeaningful": true
+        },
+        "newPNGHash": "12a6507c39c6036e027c2afa790a0d6f2fcff084f7db7d004bf05d0171e4deab"
+      }
+    }
+  },
+  "notProven": [
+    "current as-built site roof, structural deck grade or placement",
+    "day/time exact paints/windows",
+    "default route alpha frame invariance",
+    "ground transition and artificial adjacent volumes",
+    "independent source limits do not include external materials/rights"
+  ]
+}

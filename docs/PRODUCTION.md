@@ -9,6 +9,8 @@
 The [Indian River Festival Pavilion](art/indian-river-pavilion-model.md)
 is an example of a vetted source and original art asset kept outside the
 live map until its independently measured placement can be proven.
+The [Founders’ Food Hall exterior](art/founders-hall-exterior.md) keeps
+architectural evidence separate from ordinary-flight release checks.
 
 ## Data intake
 

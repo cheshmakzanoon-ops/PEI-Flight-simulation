@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "stagedArt": "7f8387a63a997455c02cad59864cd8231a4b7b34f57b49c2084e452a94eaa53f",
+  "worldInstalled": false,
+  "runtime": "Temporary QA copy of the existing native Three.js renderer; route settings and ground stock except private diagnostic receiver",
+  "results": [
+    {
+      "mode": "Private street-level observer, not flight",
+      "simulationTime": 0.3999959999999992,
+      "source": "Private inspection camera at 1.65m over stock grade, existing scene and stock flight. Not a player camera.",
+      "ownedVertices": 111,
+      "nativeTiles": [
+        [
+          "16-16",
+          112
+        ],
+        [
+          "17-16",
+          112
+        ]
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "box": [
+        326,
+        0,
+        1200,
+        653
+      ],
+      "threshold": 6,
+      "minimum": 500,
+      "changed": 311008,
+      "strong": 310945,
+      "alpha": 0,
+      "outsideRgb": 0,
+      "outsideAlpha": 0,
+      "undoDelta": 0,
+      "originalNonopaque": 0,
+      "stockRestoreExact": true,
+      "allAlphaUnchanged": true,
+      "uncoveredWitness": {
+        "exactRgbaAtChangedAlpha": 0,
+        "unmatched": 0
+      },
+      "omittedAlphaSamples": 0,
+      "pass": true
+    },
+    {
+      "mode": "Ordinary Harbour Low, Chase view",
+      "simulationTime": 31.69968300000016,
+      "source": "Ordinary harbour-low stock launch, Chase camera and matched frozen existing frame. Stock flight runtime untouched.",
+      "ownedVertices": 111,
+      "nativeTiles": [
+        [
+          "16-16",
+          112
+        ],
+        [
+          "17-16",
+          112
+        ]
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "box": [
+        132,
+        555,
+        343,
+        718
+      ],
+      "threshold": 6,
+      "minimum": 500,
+      "changed": 12902,
+      "strong": 12879,
+      "alpha": 7,
+      "outsideRgb": 0,
+      "outsideAlpha": 0,
+      "undoDelta": 0,
+      "originalNonopaque": 2350,
+      "stockRestoreExact": true,
+      "allAlphaUnchanged": false,
+      "uncoveredWitness": {
+        "exactRgbaAtChangedAlpha": 7,
+        "unmatched": 0
+      },
+      "omittedAlphaSamples": 0,
+      "pass": false
+    },
+    {
+      "mode": "Ordinary Harbour Low, Chase view",
+      "simulationTime": 32.59967400000019,
+      "source": "Ordinary harbour-low stock launch, Chase camera and matched frozen existing frame. Stock flight runtime untouched.",
+      "ownedVertices": 111,
+      "nativeTiles": [
+        [
+          "16-16",
+          112
+        ],
+        [
+          "17-16",
+          112
+        ]
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "box": [
+        18,
+        603,
+        293,
+        760
+      ],
+      "threshold": 6,
+      "minimum": 500,
+      "changed": 17678,
+      "strong": 17654,
+      "alpha": 6,
+      "outsideRgb": 0,
+      "outsideAlpha": 0,
+      "undoDelta": 0,
+      "originalNonopaque": 2313,
+      "stockRestoreExact": true,
+      "allAlphaUnchanged": false,
+      "uncoveredWitness": {
+        "exactRgbaAtChangedAlpha": 6,
+        "unmatched": 0
+      },
+      "omittedAlphaSamples": 0,
+      "pass": false
+    }
+  ]
+}

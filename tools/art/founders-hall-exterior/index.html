@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Founders’ Food Hall exterior | PEI Flight Sim</title>
+  <style>
+    :root{color-scheme:dark;font:16px/1.5 system-ui,sans-serif;background:#141b22;color:#f3f0e9}
+    body{max-width:76rem;margin:0 auto;padding:clamp(1rem,3vw,2.5rem)}
+    h1{font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.1;margin:.4em 0}
+    p{color:#c2ccd1;max-width:64ch}
+    .eyebrow{color:#e7b69c;letter-spacing:.09em;font-size:.82rem;text-transform:uppercase}
+    nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+    button{color:inherit;background:#25343e;border:1px solid #546570;padding:.55rem .76rem;border-radius:.3rem}
+    button[aria-pressed=true]{color:#16212a;background:#edb198;border-color:#edb198}
+    button:focus-visible{outline:2px solid #ffdbac;outline-offset:3px}
+    canvas{display:block;width:100%;height:auto;border-radius:.4rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Scenery production · Charlottetown</div>
+    <h1>Founders’ Food Hall exterior</h1>
+    <p>Inspect the former railway shed, the three west arches, and the separate visitor entrance. This original art is not yet installed in the playable map.</p>
+  </header>
+  <nav aria-label="Camera views" id="poses"></nav>
+  <p id="review-status" role="status"></p>
+  <section id="review-view" aria-label="Three-dimensional exterior preview"></section>
+  <script type="module" src="./workbench.ts"></script>
+</body>
+</html>
