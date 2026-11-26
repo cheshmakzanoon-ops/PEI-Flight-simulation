@@ -57,6 +57,8 @@ export const OLEARY_INDUSTRIAL={
  ordinal:192,row:'24f19ac68d7a481e82d3ddef20fea57e846fc849e328afa4861ef469728fae6f',
  proof:{vertices:32049,start:13392,end:13449}
 } as const;
+export const OLEARY_WAREHOUSE={ordinal:150,row:'4151f685263dbbf4bb7387eebf11dc8ff9077d015b69913f496b2b6ff7cb3925',
+ proof:{vertices:32049,start:10470,end:10554}} as const;
 export type OlearyDrawProof=Readonly<{vertices:number;start:number;end:number}>;
 
 /** Never feed a masked geometry back into source authentication. Both

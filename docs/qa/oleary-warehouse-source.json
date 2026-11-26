@@ -1,0 +1,349 @@
+{
+  "source": "Main q20213/150 only from current official HRDEM WCS elevations, independently corroborated against neighboring Sept 2020 raw cells (44 guarded broad-body cells directly; none in lower body). Two locally level ridges from fixed training-side OGL footprint break; exact narrower wall/eave geometry is a conservative authored approximation, no surveyed join/annex.",
+  "frame": {
+    "gameOrigin": [
+      -78724.27654645727,
+      -23146.761236170194
+    ],
+    "gameU": [
+      -0.5193229173877626,
+      -0.8447190146512185
+    ],
+    "gameV": [
+      -0.84799275751393,
+      0.5173180303452682
+    ],
+    "oldUV": [
+      [
+        37.48868481143666,
+        1.735889478177878
+      ],
+      [
+        12.899872601587358,
+        1.7677988024639761
+      ],
+      [
+        12.903565617089066,
+        -4.027906091962943
+      ],
+      [
+        -3.8063725868039535,
+        -4.023556594165709
+      ],
+      [
+        -3.832411917670934,
+        -7.7190373498373255
+      ],
+      [
+        -10.960772297523217,
+        -7.970202014906127
+      ],
+      [
+        -11.156277188383623,
+        -3.776951351949032
+      ],
+      [
+        -35.53380200380704,
+        -4.689411881748391
+      ],
+      [
+        -35.58481466471573,
+        14.35168850132363
+      ],
+      [
+        37.582327626301975,
+        14.351688501323629
+      ],
+      [
+        37.48868481143666,
+        1.735889478177878
+      ]
+    ],
+    "localProjectionMaxDifferenceM": 0.00018284139454289612
+  },
+  "authorizedSource": {
+    "signedPriorRow": {
+      "ordinal": 150,
+      "span": [
+        10470,
+        10554
+      ],
+      "sourceSHA256": "4151f685263dbbf4bb7387eebf11dc8ff9077d015b69913f496b2b6ff7cb3925",
+      "footprint": [
+        [
+          -64.225828,
+          46.708504
+        ],
+        [
+          -64.225662,
+          46.708317
+        ],
+        [
+          -64.225598,
+          46.708344
+        ],
+        [
+          -64.225485,
+          46.708217
+        ],
+        [
+          -64.225444,
+          46.708234
+        ],
+        [
+          -64.225393,
+          46.708181
+        ],
+        [
+          -64.225438,
+          46.70816
+        ],
+        [
+          -64.225263,
+          46.707979
+        ],
+        [
+          -64.225473,
+          46.70789
+        ],
+        [
+          -64.225968,
+          46.708446
+        ]
+      ],
+      "height": 7.91,
+      "minHeight": 2.94
+    },
+    "usedWCS": "353480f5a9f4fb3345d2ee16ef6d145e248f7bfb70ef5bc367d6c5931911bf5e",
+    "oldIndependentLabels": "PEI 12885 and OSM 1062194093 are corroboration only, not geometry or textures"
+  },
+  "roofLegacyCoverage": {
+    "oldM2": 1233.6770881689795,
+    "authoredTwoCoreRoofsM2": 1082.0104,
+    "notAuthoredOldFootprintM2": 151.6666881689796,
+    "trueOGLClearanceM": 0.3998726015873579,
+    "sameAtlasNoOverlaps": true,
+    "nearestInOldWorld": [
+      [
+        456,
+        6.738215142167558,
+        [
+          -45.768716376820805,
+          7.983050991432155
+        ]
+      ],
+      [
+        162,
+        13.400728284899563,
+        [
+          81.20352853307446,
+          44.662272570856
+        ]
+      ],
+      [
+        85,
+        22.229713107787294,
+        [
+          -47.3783916878813,
+          -26.90995629022115
+        ]
+      ],
+      [
+        431,
+        25.332918801188335,
+        [
+          -56.11847854342034,
+          40.93533615733731
+        ]
+      ],
+      [
+        491,
+        34.43501922164078,
+        [
+          -27.136301823634025,
+          -50.929269105332324
+        ]
+      ],
+      [
+        256,
+        38.63342637718875,
+        [
+          -77.83922475916958,
+          7.3837232491135225
+        ]
+      ],
+      [
+        192,
+        39.484657647579034,
+        [
+          -29.644065363294523,
+          59.1695227373076
+        ]
+      ],
+      [
+        538,
+        50.954041179053604,
+        [
+          9.467903396865257,
+          -59.8126805522902
+        ]
+      ]
+    ]
+  },
+  "degreeOfJoin": "Visual only: u=12.50 inset from mapped step ~12.90, no exact roof junction/overlap hardware known; leave wide negative-v projections intentionally unmodeled.",
+  "unionDatumGameMt": {
+    "registeredSurface": "stock patch 3-7 N112; neither DEM nor collider changed",
+    "stockYminusSourceDTMmin10median90maxM": [
+      -1.6486316455769305,
+      -1.194836693009183,
+      -0.6544905905115037,
+      -0.29442373346087153,
+      -0.013275632148626926
+    ],
+    "medianGameVsSourceDtmM": -0.6544905905115037,
+    "usedSafeCommonOffsetM": -0.7773257110941243,
+    "originalGameYminMaxM": [
+      31.397289897442118,
+      31.978470318963957
+    ],
+    "facesCoveredByPreciseOriginalNativeGrade": [
+      31632,
+      31635,
+      31638,
+      31641,
+      32304,
+      32307,
+      32310,
+      32313
+    ],
+    "minimumGridRimSteps": 8,
+    "stockGroundPosSHA256": "4c2bbb800902bc66f59c67224e54b374f37a7c73c1945c272650ac3742865959",
+    "stockGroundIndexSHA256": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "body": {
+    "high": {
+      "outer": [
+        [
+          -34.81,
+          -3.125
+        ],
+        [
+          12.5,
+          -3.125
+        ],
+        [
+          12.5,
+          13.805
+        ],
+        [
+          -34.81,
+          13.805
+        ]
+      ],
+      "wall": [
+        [
+          -34.58,
+          -2.895
+        ],
+        [
+          12.5,
+          -2.895
+        ],
+        [
+          12.5,
+          13.575
+        ],
+        [
+          -34.58,
+          13.575
+        ]
+      ],
+      "fittedPeakABS": 40.14035868016388,
+      "planeRisePerCrossM": 0.1565468531358855,
+      "ridgeV": 5.2500000000000036,
+      "fitHeldRMSEM": 0.11804740843326697,
+      "rawCellsInAuthoredRearSafeRoof": 792,
+      "gameYPeak": 39.36303296906976,
+      "physicalGameRoofHagByExactFacetIntersectionsM": [
+        6.0385215250597435,
+        7.88
+      ],
+      "verticalFacetWitnesses": 40,
+      "roundedQualifiedHagCeilM": 7.88,
+      "appliedSafeGameDatumOffsetM": -0.7773257110941243,
+      "supportedMedianSiteHAGM": 7.214117050170898,
+      "supportDtmOffset5to95M": [
+        -1.3714972042751978,
+        -0.18880891723319934
+      ],
+      "roofModeledEdgeHeightGameY": [
+        38.05195307405671,
+        38.05195307405671,
+        38.023774640492256,
+        38.023774640492256
+      ]
+    },
+    "low": {
+      "outer": [
+        [
+          12.5,
+          2.22
+        ],
+        [
+          36.76,
+          2.22
+        ],
+        [
+          36.76,
+          13.805
+        ],
+        [
+          12.5,
+          13.805
+        ]
+      ],
+      "wall": [
+        [
+          12.5,
+          2.45
+        ],
+        [
+          36.53,
+          2.45
+        ],
+        [
+          36.53,
+          13.575
+        ],
+        [
+          12.5,
+          13.575
+        ]
+      ],
+      "fittedPeakABS": 39.1137661937163,
+      "planeRisePerCrossM": 0.3181043198402928,
+      "ridgeV": 8.39999999999999,
+      "fitHeldRMSEM": 0.05935158099396416,
+      "rawCellsInAuthoredRearSafeRoof": 277,
+      "gameYPeak": 38.33644048262218,
+      "physicalGameRoofHagByExactFacetIntersectionsM": [
+        4.682089439493859,
+        6.740611883046985
+      ],
+      "verticalFacetWitnesses": 20,
+      "roundedQualifiedHagCeilM": 6.8,
+      "appliedSafeGameDatumOffsetM": -0.7773257110941243,
+      "supportedMedianSiteHAGM": 5.861423492431641,
+      "supportDtmOffset5to95M": [
+        -1.1251566708848522,
+        -0.48305460912110054
+      ],
+      "roofModeledEdgeHeightGameY": [
+        36.37055578600918,
+        36.37055578600918,
+        36.61708663388539,
+        36.61708663388539
+      ]
+    }
+  }
+}

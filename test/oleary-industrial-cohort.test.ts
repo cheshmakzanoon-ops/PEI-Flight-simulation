@@ -8,8 +8,8 @@ import {Buildings} from '../src/render/buildings.ts';
 import {Cover} from '../src/sim/cover.ts';
 import {Terrain} from '../src/sim/terrain.ts';
 import {WORLD_COLS,WORLD_ROWS} from '../src/sim/coastal-terrain.ts';
-import {olearyExteriorRequested,olearyIndustrialStudyRequested} from '../src/app/scenery-profile.ts';
-import {OLEARY,OLEARY_INDUSTRIAL,olearyGradeCenter,olearyNativeGrade,olearySourceDraw,type OlearySeat} from '../src/render/oleary-railway/authority.ts';
+import {olearyExteriorRequested,olearyIndustrialStudyRequested,olearyWarehouseRequested} from '../src/app/scenery-profile.ts';
+import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyGradeCenter,olearyNativeGrade,olearySourceDraw,type OlearySeat} from '../src/render/oleary-railway/authority.ts';
 import {olearyIndustrialDry,olearyIndustrialSeat} from '../src/render/oleary-railway/industrial-seat.ts';
 import {OlearyCohortSocket} from '../src/render/oleary-railway/cohort.ts';
 import {buildDetachedIndustrial192} from '../src/render/oleary-railway/industrial-envelope.ts';
@@ -45,9 +45,9 @@ function nativeGrade(scene:T.Scene){
  }
  p.needsUpdate=true;scene.add(g);return g;
 }
-function host(trackIndustrial=true,trackStation=true){
+function host(trackIndustrial=true,trackStation=true,trackWarehouse=false){
  const scene=new T.Scene(),b=new (Buildings as any)(scene,terrain,[tile],{},idx.sha256);
- const m=b.generate(rows,b.tiles[0],false,trackStation?OLEARY.ordinal:undefined,false,undefined,false,false,trackIndustrial) as T.Mesh;
+ const m=b.generate(rows,b.tiles[0],false,trackStation?OLEARY.ordinal:undefined,false,undefined,false,false,trackIndustrial,trackWarehouse) as T.Mesh;
  scene.add(m);
  const g=nativeGrade(scene);let grounded=true,throws=false;
  const ground=()=>{if(throws)throw new Error('bad native supplier');return grounded?{fine:g,seams}:undefined;};
@@ -55,11 +55,11 @@ function host(trackIndustrial=true,trackStation=true){
  return {scene,m,stock:m.geometry,g,raw:ab(packed),seat,grounded:(v:boolean)=>{grounded=v;},throws:(v:boolean)=>{throws=v;},
   close(){g.geometry.dispose();(g.material as T.Material).dispose();m.geometry.dispose();(m.material as T.Material).dispose();}};
 }
-function expectIndex(q:ReturnType<typeof host>,station:boolean,industrial:boolean){
- if(!station&&!industrial){assert.equal(q.m.geometry,q.stock);assert.equal(q.stock.index,null);return;}
+function expectIndex(q:ReturnType<typeof host>,station:boolean,industrial:boolean,warehouse=false){
+ if(!station&&!industrial&&!warehouse){assert.equal(q.m.geometry,q.stock);assert.equal(q.stock.index,null);return;}
  const g=q.m.geometry,i=g.index!;assert.notEqual(g,q.stock);assert(i.array instanceof Uint16Array);
- const p=OLEARY.proof,r=OLEARY_INDUSTRIAL.proof,vs:number[]=[];
- for(let j=0;j<p.vertices;j++)if(!(station&&j>=p.start&&j<p.end)&&!(industrial&&j>=r.start&&j<r.end))vs.push(j);
+ const p=OLEARY.proof,r=OLEARY_INDUSTRIAL.proof,w=OLEARY_WAREHOUSE.proof,vs:number[]=[];
+ for(let j=0;j<p.vertices;j++)if(!(station&&j>=p.start&&j<p.end)&&!(industrial&&j>=r.start&&j<r.end)&&!(warehouse&&j>=w.start&&j<w.end))vs.push(j);
  assert.deepEqual(i.array,new Uint16Array(vs));
  for(const [k,v]of Object.entries(q.stock.attributes))assert.equal(v,g.getAttribute(k));
  assert(!g.groups.length&&g.drawRange.count===Infinity&&g.drawRange.start===0);
@@ -227,4 +227,87 @@ test('shared detached shader proof catches a changed light roster after load eve
  const foreign=new T.PointLight();rscene.add(foreign);
  assert.equal(proof!(),false);rscene.remove(foreign);assert(proof!());
  for(const c of group.children as T.Mesh<T.BufferGeometry,T.Material>[]) {c.geometry.dispose();c.material.dispose();}
+});
+
+test('warehouse selection is explicit and its stock comparison changes no sibling switch',()=>{
+ const on=new URLSearchParams('diagnostics&scenery=standard&olearyExteriorStudy&qa='+encodeURIComponent('{"olearyIndustrial192":true}'));
+ assert(!olearyWarehouseRequested(on));on.append('olearyWarehouseStudy','');assert(olearyWarehouseRequested(on));
+ assert(olearyExteriorRequested(on)&&olearyIndustrialStudyRequested(on));
+ on.append('stockOlearyWarehouse','');assert(!olearyWarehouseRequested(on));
+ assert(olearyExteriorRequested(on)&&olearyIndustrialStudyRequested(on));
+ for(const tail of ['&surveyRelief','&scenery=detail','&stockOlearyExterior','&qa={}']){
+  const other=new URLSearchParams(on.toString()+tail);other.delete('stockOlearyWarehouse');
+  assert(!olearyWarehouseRequested(other),tail);
+ }
+});
+
+test('original warehouse draw proof, four replacement submissions, and exact independent rollback',async()=>{
+ const q=host(true,true,true);let shouldUse=true;
+ assert.deepEqual(q.m.userData.olearyWarehouseTriangles,[10470,10554]);
+ assert(await olearySourceDraw(q.raw,rows.length,rows[150],q.stock,q.m.userData.olearyWarehouseTriangles,OLEARY_WAREHOUSE));
+ assert(!(await olearySourceDraw(q.raw,rows.length,rows[192],q.stock,q.m.userData.olearyWarehouseTriangles,OLEARY_WAREHOUSE)));
+ const checked:T.Material[]=[];
+ const s=new OlearyCohortSocket(q.scene,q.m,q.raw,rows.length,rows[431],rows[192],q.seat(),
+  {station:true,industrialLink:linked,warehouse:{row:rows[150],link:async(group)=>{
+   assert.equal(group.parent,null);
+   const sizes=group.children.flatMap(g=>g.children).map(o=>{
+    assert(o instanceof T.Mesh);checked.push(o.material);
+    return o.geometry.getAttribute('position').count/3;
+   });
+   assert.equal(sizes.length,4);
+   assert.equal(sizes.reduce((n,x)=>n+x,0),140);
+   const shader={vertexShader:'#include <common>\n#include <begin_vertex>',fragmentShader:'#include <common>\n#include <color_fragment>\n#include <normal_fragment_maps>',uniforms:{}};
+   const sheet=checked.find(m=>m.name==='q150 original sheet');assert(sheet);
+   (sheet.onBeforeCompile as (x:unknown,y:unknown)=>void)(shader,undefined);
+   assert.match(shader.fragmentShader,/q150ViewBump/);
+   return ()=>shouldUse;
+  }}},()=>true,{station:async()=>station()});
+ s.sync();await until(()=>s.active&&s.industrialActive&&s.warehouseActive);
+ expectIndex(q,true,true,true);assert.equal(q.m.geometry.index!.count,31866);
+ const root=q.scene.children.find(x=>x.name.startsWith('O’Leary q150 complete'))!;
+ const wing=root.children[1].children[0] as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
+ const roof=root.children[0].children[0] as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
+ const mutations=[
+  [()=>{wing.material.visible=false;},()=>{wing.material.visible=true;}],
+  [()=>{root.children[1].visible=false;},()=>{root.children[1].visible=true;}],
+  [()=>{roof.geometry.setDrawRange(0,6);},()=>{roof.geometry.setDrawRange(0,Infinity);}],
+  [()=>{wing.layers.set(2);},()=>{wing.layers.set(0);}],
+  [()=>{wing.frustumCulled=false;},()=>{wing.frustumCulled=true;}],
+  [()=>{roof.geometry.getAttribute('normal').array=new Float32Array(roof.geometry.getAttribute('normal').array);},()=>{}],
+ ];
+ // Reversible neighboring draw faults only remove the unsafe warehouse.
+ for(const [breakDraw,repair] of mutations.slice(0,-1)){
+  breakDraw();s.sync();assert(s.active&&s.industrialActive&&!s.warehouseActive);expectIndex(q,true,true);
+  repair();s.sync();assert(s.active&&s.industrialActive&&s.warehouseActive);expectIndex(q,true,true,true);
+ }
+ shouldUse=false;s.sync();assert(s.active&&s.industrialActive&&!s.warehouseActive);expectIndex(q,true,true);
+ shouldUse=true;s.sync();assert(s.active&&s.industrialActive&&s.warehouseActive);expectIndex(q,true,true,true);
+ mutations.at(-1)![0]();s.sync();assert(s.active&&s.industrialActive&&!s.warehouseActive);expectIndex(q,true,true);
+ s.dispose();expectIndex(q,false,false);assert.equal(q.scene.children.length,2);
+ q.close();
+});
+
+test('false warehouse link, changed row and retired issuer all retain authenticated stock under other actors',async()=>{
+ for(const mode of ['fourth-link','foreign-row','retired-issuer'] as const){
+  const q=host(true,true,true);let linkStatusReads=0,current=true,resume:(()=>void)|undefined;
+  const rscene=q.scene,camera=new T.PerspectiveCamera(),records=new Map<T.Material,{currentProgram:object}>();
+  const gl={isContextLost:()=>false,isProgram:()=>true,LINK_STATUS:3,
+   getProgramParameter:(p:{valid:boolean})=>{linkStatusReads++;return p.valid;}};
+  const r={getContext:()=>gl,getRenderTarget:()=>null,properties:{get:(m:T.Material)=>records.get(m)},clippingPlanes:[],shadowMap:{enabled:false},
+   compile:(g:T.Group)=>{
+    const leaves=g.children.flatMap(c=>c.children);
+    const materials=leaves.map(c=>(c as T.Mesh).material as T.Material);
+    for(const [i,m] of materials.entries())records.set(m,{currentProgram:{program:{valid:i<3},isReady:()=>true}});
+    return new Set(materials);
+   }};
+  const proof=olearyLinkPrograms(r as unknown as T.WebGLRenderer,camera,rscene,4,true);
+  const s=new OlearyCohortSocket(rscene,q.m,q.raw,rows.length,rows[431],rows[192],q.seat(),
+   {station:true,industrialLink:linked,warehouse:{row:rows[mode==='foreign-row'?431:150],
+    link:mode==='retired-issuer'?async()=>new Promise(resolve=>{resume=()=>resolve(()=>true);}):proof}},
+   ()=>current,{station:async()=>station()});
+  s.sync();await until(()=>s.active&&s.industrialActive&&(mode==='fourth-link'?linkStatusReads===4:mode==='retired-issuer'?!!resume:true));
+  assert(!s.warehouseActive);expectIndex(q,true,true);
+  if(resume){current=false;s.sync();resume();await sleep(20);assert(!s.active&&!s.industrialActive&&!s.warehouseActive);expectIndex(q,false,false);}
+  s.dispose();q.close();
+ }
 });

@@ -1,5 +1,5 @@
 import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWharfSpans,type WharfLoader,type WharfSpan} from './spinnakers-standard.ts';
-import {OLEARY,OLEARY_INDUSTRIAL,olearyAtlasOwner,type OlearySeat} from './oleary-railway/authority.ts';
+import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyAtlasOwner,type OlearySeat} from './oleary-railway/authority.ts';
 import {OlearySocket} from './oleary-railway/socket.ts';
 import {OlearyCohortSocket,type OlearyCohortStudy} from './oleary-railway/cohort.ts';
 import type {DalvayGlazingSource} from './dalvay-glazing.ts';
@@ -402,6 +402,7 @@ export class Buildings {
  enableSourisEast(request:SourisEastGround,shadows?:BuildingShadows){this.sourisEastGround=request;this.sourisEastShadows=shadows;}
  enableOlearyExterior(seat:OlearySeat,study?:OlearyCohortStudy){this.olearySeat=seat;this.olearyStudy=study;}
  get olearyExteriorActive(){return this.oleary?.active===true;}
+ get olearyWarehouseActive(){return this.oleary instanceof OlearyCohortSocket&&this.oleary.warehouseActive;}
  get olearyIndustrialActive(){return this.oleary instanceof OlearyCohortSocket&&this.oleary.industrialActive;}
  enableDalvayExterior(seat:DalvaySeat,glazing?:DalvayGlazingSource){this.dalvaySeat=seat;this.dalvayGlass=glazing;}
  get dalvayExteriorActive(){return this.dalvay?.active===true;}
@@ -737,7 +738,7 @@ export class Buildings {
    const church=features===this.pinnedChurch?this.churchArt:undefined;
    const trackWharf=!!this.standardWharf&&downtownVerified&&downtown?.id===SPINNAKERS_TILE&&downtown.sha256===SPINNAKERS_SHELLS.recordBytesHash&&
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(trackWharf&&standardWharfDraw(mesh.geometry,mesh.userData.spinnakersSpans)){
@@ -746,7 +747,7 @@ export class Buildings {
    }
    if(oleary&&olearyBytes){
     this.oleary?.dispose();
-    this.oleary=olearyStudy?new OlearyCohortSocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],features[OLEARY_INDUSTRIAL.ordinal],oleary,olearyStudy,()=>this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id)):
+    this.oleary=olearyStudy?new OlearyCohortSocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],features[OLEARY_INDUSTRIAL.ordinal],oleary,olearyStudy.warehouse?{...olearyStudy,warehouse:{...olearyStudy.warehouse,row:features[OLEARY_WAREHOUSE.ordinal]}}:olearyStudy,()=>this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id)):
      new OlearySocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],oleary);
     this.oleary.sync();
    }
@@ -954,8 +955,9 @@ export class Buildings {
    this.syncCavendish();
   }catch{/** Never withhold q72, q101, or their existing neighbours. */}
  }
- private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,massingChunk?:string,downtownVerified=false,trackWharf=false,trackOlearyIndustrial=false){
+ private generate(features:Bldg[],tile:BoundTile,replaceSpinnakers=false,exteriorOrdinal?:number,markBarn=false,massingChunk?:string,downtownVerified=false,trackWharf=false,trackOlearyIndustrial=false,trackWarehouse=false){
   const wharfSpans=trackWharf?new Map<number,WharfSpan>():undefined;
+  let warehouseStart=-1,warehouseEnd=-1;
   let industrialStart=-1,industrialEnd=-1,beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false,actualPrince=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
@@ -964,6 +966,7 @@ export class Buildings {
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
   for(let i=0;i<features.length;i++){
    if(wharfSpans)trackWharfSpans(wharfSpans,i,P.length/3);
+   if(trackWarehouse){if(i===OLEARY_WAREHOUSE.ordinal)warehouseStart=P.length/3;if(i===OLEARY_WAREHOUSE.ordinal+1)warehouseEnd=P.length/3;}
    if(trackOlearyIndustrial){if(i===OLEARY_INDUSTRIAL.ordinal)industrialStart=P.length/3;if(i===OLEARY_INDUSTRIAL.ordinal+1)industrialEnd=P.length/3;}
    if(markBarn){if(i===GREEN_GABLES_BARN.ordinal)barnStart=P.length/3;if(i===GREEN_GABLES_BARN.ordinal+1)barnEnd=P.length/3;}
    if(exteriorOrdinal!==undefined){if(i===exteriorOrdinal)beaconStart=P.length/3;if(i===exteriorOrdinal+1)beaconEnd=P.length/3;}
@@ -1180,6 +1183,7 @@ export class Buildings {
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
   if(wharfSpans)mesh.userData.spinnakersSpans=wharfSpans;
+  if(trackWarehouse&&warehouseStart>=0&&warehouseEnd>warehouseStart)mesh.userData.olearyWarehouseTriangles=[warehouseStart,warehouseEnd];
   if(trackOlearyIndustrial&&industrialStart>=0&&industrialEnd>industrialStart)mesh.userData.olearyIndustrialTriangles=[industrialStart,industrialEnd];
   return mesh;
  }

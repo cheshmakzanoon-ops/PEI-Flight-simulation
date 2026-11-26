@@ -73,3 +73,9 @@ try {
 } finally {
   await browser.close();
 }
+
+// Keep the already installed runner and server; local baseline-only callers
+// can opt into the longer O’Leary compiled coverage without changing CI setup.
+if(process.env.GITHUB_ACTIONS==='true'||process.env.OLEARY_NEIGHBORHOOD_SMOKE==='1'){
+ await import('./oleary-neighborhood-smoke.mjs');
+}

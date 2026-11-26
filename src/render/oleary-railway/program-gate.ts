@@ -12,10 +12,10 @@ function lampRoster(scene:Scene,camera:Camera){
 }
 /** Three r187 WebGL's public detached compile plus its narrowly pinned
  * currentProgram handle. A never-submitted program cannot discard stock. */
-export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:2|5=5,recheckUnattached=false):OlearyLink{
+export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:2|4|5=5,recheckUnattached=false):OlearyLink{
  return async(group,signal)=>{
   try{
-   if(REVISION!=='187'||signal.aborted||group.parent||group.children.length!==draws||typeof r.compile!=='function')return;
+   if(REVISION!=='187'||signal.aborted||group.parent||(draws===4?group.children.length!==2:group.children.length!==draws)||typeof r.compile!=='function')return;
    const gl=r.getContext(),env=scene.environment,envMapping=env?.mapping,fog=scene.fog,layer=camera.layers.mask,
     out=r.outputColorSpace,tone=r.toneMapping,shadows=r.shadowMap.enabled,shadowType=r.shadowMap.type,clip=r.localClippingEnabled;
    const sameRenderPath=()=>!gl.isContextLost()&&r.getContext()===gl&&r.getRenderTarget()===null&&
@@ -23,7 +23,10 @@ export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,dra
     camera.layers.mask===layer&&r.outputColorSpace===out&&r.toneMapping===tone&&
     r.shadowMap.enabled===shadows&&r.shadowMap.type===shadowType&&r.localClippingEnabled===clip&&!r.clippingPlanes.length;
    if(!sameRenderPath())return;
-   const meshes=group.children as Mesh[];
+   const leaves=draws===4?group.children.flatMap((g,i)=>
+    (g as Group).isGroup&&g.children.length===(i===0?3:1)?g.children:[]):group.children;
+   if(leaves.length!==draws)return;
+   const meshes=leaves as Mesh[];
    if(meshes.some(q=>!q.isMesh||Array.isArray(q.material)||!q.material.visible||q.material.transparent))return;
    const expected=new Set(meshes.map(q=>q.material as Material));
    if(expected.size!==draws)return;

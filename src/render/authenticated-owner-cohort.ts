@@ -4,12 +4,12 @@ type Span=readonly [number,number];
 type DrawProof=Readonly<{vertices:number;start:number;end:number}>;
 type Lane={spans:readonly Span[];group:Group;admitted:boolean;visible:boolean;closed:boolean};
 
-/** At most two independently authenticated complete-feature replacements
+/** At most the narrowly enabled ceiling of independently authenticated complete-feature replacements
  * in a single stock draw. No original BufferAttribute or index is mutated.
  * Incompatible geometry transfers ownership to the external system. */
-export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geometry){
+export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geometry,laneLimit:2|3=2){
  const vertexCount=stock.getAttribute('position')?.count??0;
- if(mesh.geometry!==stock||stock.index||stock.groups.length||stock.drawRange.start!==0||
+ if((laneLimit!==2&&laneLimit!==3)||mesh.geometry!==stock||stock.index||stock.groups.length||stock.drawRange.start!==0||
     stock.drawRange.count!==Infinity||vertexCount<6||vertexCount%3!==0)return;
  const byMask=new Map<string,BufferGeometry>();
  const lanes:Lane[]=[];
@@ -73,7 +73,7 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
   /** A single art group may own two exact disjoint source spans. Its stock
    * omissions remain one indivisible operation. */
   addMany(group:Group,pins:readonly {span:Span;proof:DrawProof}[]){
-   if(stopped||!recognises()||lanes.length>=2||!pins.length||pins.length>2||
+   if(stopped||!recognises()||lanes.length>=laneLimit||!pins.length||pins.length>2||
       pins.some(({span,proof})=>!valid(span,proof)))return;
    const spans=pins.map(({span})=>[...span] as Span).sort((a,b)=>a[0]-b[0]);
    const former=lanes.flatMap(q=>q.spans);
@@ -90,7 +90,7 @@ export function authenticatedOwnerCohort(mesh:Mesh,stock:BufferGeometry=mesh.geo
      lane.closed=true;lane.visible=group.visible=false;
      lanes.splice(lanes.indexOf(lane),1);
      refresh(true);
-     // Retain active masks belonging to still-live sites; there are at most 3.
+     // Retain active masks belonging to still-live sites; there are at most seven exact cache masks.
      const tokens=lane.spans.map(span=>span.join(','));
      for(const [key,cached] of byMask)if(tokens.some(token=>key.split(';').includes(token))){
       disposeMask(cached);byMask.delete(key);

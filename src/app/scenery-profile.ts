@@ -249,7 +249,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior']);
+ 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse']);
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
 /** Original local architectural study, never a terrain or general Detail replacement.
@@ -275,6 +275,15 @@ export function olearyIndustrialStudyRequested(q:URLSearchParams){
   const v=JSON.parse(raw);
   return !!v&&typeof v==='object'&&!Array.isArray(v)&&Object.hasOwn(v,'olearyIndustrial192')&&v.olearyIndustrial192===true;
  }catch{return false;}
+}
+
+/**
+ * The stepped warehouse is opt-in and shares the admitted O’Leary cohort.
+ * Comparing its stock shape must not turn off the station or tower/shed lane.
+ */
+export function olearyWarehouseRequested(q:URLSearchParams){
+ return q.has('olearyWarehouseStudy')&&!q.has('stockOlearyWarehouse')&&olearyExteriorRequested(q)&&
+  olearyIndustrialStudyRequested(q);
 }
 
 /** Optional, documentary Queens County manor exterior; never a new lake or terrain owner. */

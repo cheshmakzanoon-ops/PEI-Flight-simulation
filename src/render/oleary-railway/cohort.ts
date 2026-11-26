@@ -1,12 +1,13 @@
+import {openWarehouseSeat} from './warehouse-native-seat.ts';
 import {BufferAttribute,type BufferGeometry,type Group,type Mesh,type Scene} from 'three';
 import {authenticatedOwnerCohort} from '../authenticated-owner-cohort.ts';
-import {OLEARY,OLEARY_INDUSTRIAL,olearyDrawCenter,olearyNativeGrade,olearySourceDraw,type OlearySeat} from './authority.ts';
+import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyDrawCenter,olearyNativeGrade,olearySourceDraw,type OlearySeat} from './authority.ts';
 import {olearyIndustrialSeat} from './industrial-seat.ts';
 import type {OlearyLink,OlearyProgramProof} from './program-gate.ts';
 
 type Model={group:Group;intact:()=>boolean;dispose:()=>void};
 type Open=(signal:AbortSignal,ground:Mesh)=>Promise<Model|undefined>;
-type Source=typeof OLEARY|typeof OLEARY_INDUSTRIAL;
+type Source=typeof OLEARY|typeof OLEARY_INDUSTRIAL|typeof OLEARY_WAREHOUSE;
 type Cohort=NonNullable<ReturnType<typeof authenticatedOwnerCohort>>;
 type Lane=NonNullable<ReturnType<Cohort['add']>>;
 type Grade={mesh:Mesh;seams:string;geo:BufferGeometry;p:BufferAttribute;i:BufferAttribute;pv:number;iv:number;intact?:()=>boolean};
@@ -14,10 +15,21 @@ type Attempt={ctl:AbortController;grade:Grade};
 type Actor={source:Source;row:unknown;span:()=>unknown;link:OlearyLink;open:Open;tried:boolean;pending?:Attempt;
  active?:{model:Model;proof:OlearyProgramProof;lane:Lane}};
 type Alternate={index:BufferAttribute;storage:Uint16Array;version:number};
-export type OlearyCohortStudy={station:boolean;industrialLink:OlearyLink};
-type Override={station?:Open;industrial?:Open};
+export type OlearyCohortStudy={station:boolean;industrialLink:OlearyLink;warehouse?:{row:unknown;link:OlearyLink}};
+type Override={station?:Open;industrial?:Open;warehouse?:Open};
 const drawCenter=olearyDrawCenter();
 const loadStation:Open=async signal=>(await import('./packet.ts')).loadOleary((import.meta.env?.BASE_URL??'/')+'art/',signal);
+const loadWarehouse:Open=async (signal,mesh)=>{
+ const [q,seal,optics]=await Promise.all([
+  import('./q150-wing.ts'),import('./q150-exact-graph.ts'),import('./q150-material.ts')
+ ]);
+ const seat=!signal.aborted&&openWarehouseSeat(mesh);if(!seat)return;
+ const model=q.buildDetachedQ150WholeStudy(seat);
+ const siding=(model.main.group.children.find(a=>a.name==='q150 sheet') as
+  import('three').Mesh<import('three').BufferGeometry,import('three').MeshStandardMaterial>|undefined)?.material;
+ if(!siding||!optics.q150FoldMaterialEnabled(siding)){model.dispose();return;}
+ return seal.exactWarehouseGraph(model);
+};
 const loadIndustrial:Open=async (signal,ground)=>{
  const mod=await import('./industrial-envelope.ts');
  const height=!signal.aborted&&olearyIndustrialSeat(ground);
@@ -50,15 +62,19 @@ export class OlearyCohortSocket{
   this.attributes=Object.entries(this.stock.attributes).map(([key,a])=>{
    const attribute=a as BufferAttribute;return {key,attribute,array:attribute.array,version:attribute.version};
   });
-  this.mask=authenticatedOwnerCohort(owner,this.stock);
+  this.mask=authenticatedOwnerCohort(owner,this.stock,study.warehouse?3:2);
   this.actors=[
    {source:OLEARY_INDUSTRIAL,span:()=>owner.userData.olearyIndustrialTriangles,row:industrialRow,
     open:open.industrial??loadIndustrial,link:study.industrialLink,tried:false}
   ];
   if(study.station)this.actors.push({source:OLEARY,span:()=>owner.userData.beaconTriangles,row:stationRow,
    open:open.station??loadStation,link:seat.link,tried:false});
+  if(study.warehouse)this.actors.unshift({source:OLEARY_WAREHOUSE,span:()=>owner.userData.olearyWarehouseTriangles,
+   row:study.warehouse.row,open:open.warehouse??loadWarehouse,link:study.warehouse.link,tried:false});
+
  }
  get active(){return this.actors.some(a=>a.source===OLEARY&&a.active?.lane.visible===true);}
+ get warehouseActive(){return this.actors.some(a=>a.source===OLEARY_WAREHOUSE&&a.active?.lane.visible===true);}
  get industrialActive(){return this.actors.some(a=>a.source===OLEARY_INDUSTRIAL&&a.active?.lane.visible===true);}
  private exactBase(){
   const {owner:o,stock:g,mask}=this,q=o.quaternion,p=o.position,s=o.scale,m=this.material;
@@ -74,23 +90,21 @@ export class OlearyCohortSocket{
  }
  private checkAlternate(establish=false){
   const g=this.owner.geometry;
-  const a=this.actors[0].active?.lane.visible?this.actors[0].source.proof:undefined;
-  const b=this.actors[1]?.active?.lane.visible?this.actors[1].source.proof:undefined;
-  if(!a&&!b)return g===this.stock;
+  const active=this.actors.filter(q=>q.active?.lane.visible).map(q=>q.source.proof).sort((a,b)=>a.start-b.start);
+  if(!active.length)return g===this.stock;
   if(g===this.stock||(!establish&&g!==this.applied)||!unsegmented(g)||
    g.boundingBox!==this.stock.boundingBox||g.boundingSphere!==this.stock.boundingSphere||
    !this.attributes.every(({key,attribute})=>g.getAttribute(key)===attribute))return false;
   const i=g.index,v=i?.array;
   if(!i||!(v instanceof Uint16Array)||i.itemSize!==1||i.normalized||i.version!==0||
-   v.length!==32049-(a?a.end-a.start:0)-(b?b.end-b.start:0)||i.count!==v.length)return false;
+   v.length!==32049-active.reduce((n,q)=>n+q.end-q.start,0)||i.count!==v.length)return false;
   const old=this.owned.get(g);
   if(old&&(old.index!==i||old.storage!==v||old.version!==i.version))return false;
   if(!old&&!establish)return false;
   // QA-only: an approximately 64 KiB linear scan is deliberate. Even
   // unversioned index writes cannot permanently keep a sibling hidden.
-  for(let j=0,k=0;j<32049;j++){
-   if(a&&j===a.start)j=a.end;
-   if(b&&j===b.start)j=b.end;
+  for(let j=0,k=0,span=0;j<32049;j++){
+   while(span<active.length&&j===active[span].start)j=active[span++].end;
    if(v[k++]!==j)return false;
   }
   if(!old)this.owned.set(g,{index:i,storage:v,version:i.version});
@@ -165,7 +179,7 @@ export class OlearyCohortSocket{
    try{this.scene.add(model.group);}catch{lane.dispose();return;}
    a.active={model,proof,lane};model=undefined;
    this.sync();
-  }catch{/** Failure of this actor by itself never hides it or retires a valid sibling. */}
+  }catch{/** A failed warehouse program must not retire the neighboring actors. */}
   finally{
    try{model?.dispose();}catch{model?.group.removeFromParent();}
    clearTimeout(timeout);if(a.pending===attempt)a.pending=undefined;
