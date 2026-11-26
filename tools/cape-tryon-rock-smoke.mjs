@@ -102,9 +102,16 @@ try{
     }
    });
   },{refuse,targetOwners});
-  const url=new URL('?diagnostics&departure='+site+'&capeTryonRockReview',base);
+  const url=new URL('?diagnostics&departure='+site+(refuse?'&capeTryonRockReview':''),base);
   assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site);
+  if(!refuse){
+   const button=page.getByRole('button',{name:'Enable Cape Tryon sandstone'});
+   await button.waitFor();
+   await Promise.all([page.waitForURL(v=>v.searchParams.has('capeTryonRockReview')&&v.searchParams.get('departure')===site),button.click()]);
+   await page.getByRole('button',{name:'Turn off Cape Tryon sandstone'}).waitFor();
+   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site);
+  }
   const sample=()=>page.evaluate(()=>{
    const d=window.islandAirDiagnostics,s=window.capeStoneQA;
    return {phase:d?.tryonRockState,active:d?.tryonRockPreview,repair:d?.tryonCoast,

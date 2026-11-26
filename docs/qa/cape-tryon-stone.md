@@ -1,6 +1,6 @@
 # Cape Tryon sandstone material
 
-On a local copy in Standard, try `?departure=cape-tryon-coast&capeTryonRockReview` and choose **Begin flight**. Remove `capeTryonRockReview` to compare the same route. The material study does not replace the default appearance.
+In Standard, select **Cape Tryon · cliff pass**, choose **Enable Cape Tryon sandstone** in Dispatch, then **Begin flight**. The local bookmark is `?departure=cape-tryon-coast&capeTryonRockReview`. Remove `capeTryonRockReview` to compare the same route. The material study does not replace the default appearance.
 
 [Parks Canada’s heritage record](https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=14932) identifies the cliff under Cape Tryon Lighthouse as red sandstone. The [Canadian Hydrographic Service’s ATL 108](https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-ATL108-eng-202602-41319163.pdf), chapter 1, paragraph 208, independently describes the exposed headland. These sources inform the choice of rock and its colour. Bed spacing and weathering are original art, not geological measurements or copied photography.
 

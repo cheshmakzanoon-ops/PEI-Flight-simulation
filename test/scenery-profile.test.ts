@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardOpenCoastRequested,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,capeTryonRockState,switchCapeTryonRockURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardOpenCoastRequested,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -235,4 +235,22 @@ test('Cape Tryon material comparison preserves Standard coastal routing and earl
  assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview')),true);
  for(const veto of ['scenery=detail','legacyShoreArcs','stockOpenCoast'])
   assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview&'+veto)),false);
+});
+
+test('Cape Tryon sandstone switch preserves the departure and unrelated choices',()=>{
+ const cape='cape-tryon-coast',original='https://flight.test/?diagnostics&stockRegionalWind&departure=orby-head#flight';
+ const enabled=new URL(switchCapeTryonRockURL(original,true,cape));
+ assert.equal(enabled.searchParams.get('departure'),cape);
+ assert(enabled.searchParams.has('diagnostics')&&enabled.searchParams.has('stockRegionalWind'));
+ assert.equal(enabled.hash,'#flight');
+ assert.deepEqual(capeTryonRockState(enabled.search),{selected:true,blocked:false});
+ const restored=new URL(switchCapeTryonRockURL(enabled.href,false,cape));
+ assert(!restored.searchParams.has('capeTryonRockReview'));
+ assert(restored.searchParams.has('stockRegionalWind'));
+ for(const bad of ['scenery=detail','stockOpenCoast','legacyShoreArcs']){
+  const blocked='https://flight.test/?'+bad;
+  assert(capeTryonRockState(new URL(blocked).search).blocked);
+  assert(!new URL(switchCapeTryonRockURL(blocked,true,cape)).searchParams.has('capeTryonRockReview'));
+ }
+ assert(!new URL(switchCapeTryonRockURL(original,true,'another-site')).searchParams.has('capeTryonRockReview'));
 });

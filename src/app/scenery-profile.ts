@@ -28,6 +28,22 @@ export function cavendishPackageState(search:string){
  return {selected,blocked,active:selected&&!blocked};
 }
 
+export const CAPE_TRYON_ROCK_FLAG='capeTryonRockReview';
+export const CAPE_TRYON_DEPARTURE='cape-tryon-coast';
+export function capeTryonRockState(search:string){
+ const q=sceneryOptions(search),selected=q.has(CAPE_TRYON_ROCK_FLAG);
+ const blocked=!standardOpenCoastRequested(q);
+ return {selected,blocked};
+}
+export function switchCapeTryonRockURL(source:string,on:boolean,departureId:string){
+ const url=new URL(source);
+ if(!on)url.searchParams.delete(CAPE_TRYON_ROCK_FLAG);
+ else if(departureId===CAPE_TRYON_DEPARTURE&&!capeTryonRockState(url.search).blocked)
+  url.searchParams.set(CAPE_TRYON_ROCK_FLAG,'');
+ url.searchParams.set('departure',departureId);
+ return url.href;
+}
+
 export const isDetailScenery=(search:string)=>new URLSearchParams(search).get('scenery')==='detail';
 
 /** A Standard-scene shortcut for separately verified coastal optics.

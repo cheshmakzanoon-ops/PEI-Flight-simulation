@@ -1,5 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
-import {SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -24,7 +24,7 @@ export class UI {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
   const detail=isDetailScenery(location.search);
-  const cavePack=cavendishPackageState(location.search);
+  const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
   const selectedReviews=new Set(reviewedScenery(location.search));
   const reviewsWithScope=sceneryOptions(location.search);
   let reviewCount=0;
@@ -46,6 +46,7 @@ export class UI {
   <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
   <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div>
   <section class="regional-detail" id="cavendish-package" hidden><div><span class="eyebrow">CAVENDISH DETAIL</span><small id="cavendish-package-info">${cavePack.blocked?'Unavailable with the current terrain or shadow options.':cavePack.active?'House, Barn, lake, slope, turf and trail selected.':'House, Barn, lake, slope, turf and trail'}</small></div><button type="button" id="cavendish-package-switch" aria-label="${cavePack.selected?'Turn off Cavendish detail':'Enable Cavendish detail'}" aria-describedby="cavendish-package-info" ${cavePack.blocked&&!cavePack.selected?'disabled':''}>${cavePack.selected?'Turn off':'Enable'}</button></section>
+  <section class="regional-detail" id="cape-rock" hidden><div><span class="eyebrow">CAPE TRYON SANDSTONE</span><small id="cape-rock-info">${capeRock.blocked?'Available in Standard without alternate shoreline studies.':capeRock.selected?'Sandstone selected. Cliff geometry is unchanged.':'Original red sandstone finish on the Gulf-facing cliffs.'}</small></div><button type="button" id="cape-rock-switch" aria-label="${capeRock.selected?'Turn off Cape Tryon sandstone':'Enable Cape Tryon sandstone'}" aria-describedby="cape-rock-info" ${capeRock.blocked&&!capeRock.selected?'disabled':''}>${capeRock.selected?'Turn off':'Enable'}</button></section>
   <details class="scenery-reviews"><summary>Optional scenery studies <span id="scenery-review-count">${reviewCount?reviewCount+' selected':''}</span></summary><div class="scenery-review-list">${reviewOptions}
   <p class="review-note">Apply reloads the map and keeps your departure.</p><button type="button" id="apply-scenery-reviews" disabled>Apply studies</button></div></details><div class="brief-meta"><span>Aircraft <b>Survey 01</b></span><span>Conditions <b>Late summer</b></span></div><button class="gold" id="start">Begin flight <span aria-hidden="true">→</span></button></section>
   <div class="location" id="location"><span class="eyebrow"><i></i> ON LOCATION</span><strong id="loc-name"></strong><small id="loc-county"></small></div>
@@ -58,6 +59,7 @@ export class UI {
   $('site').onchange=()=>{this.selected=Number(($('site') as HTMLSelectElement).value);this.showSite();};
   $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
   $('cavendish-package-switch').onclick=()=>location.assign(switchCavendishPackageURL(location.href,!cavePack.selected,this.sites[this.selected].id));
+  $('cape-rock-switch').onclick=()=>location.assign(switchCapeTryonRockURL(location.href,!capeRock.selected,this.sites[this.selected].id));
   $('switch-scenery').onclick=()=>location.assign(switchSceneryURL(location.href,!detail,this.sites[this.selected].id));
   const choices=[...document.querySelectorAll<HTMLInputElement>('input[name="scenery-review"]')];
   const apply=$<HTMLButtonElement>('apply-scenery-reviews');
@@ -77,7 +79,7 @@ export class UI {
   for(const [id,delta] of [['upPower',1],['dnPower',-1]] as const){const b=$(id);b.onpointerdown=e=>{b.setPointerCapture(e.pointerId);this.input.touch.power=delta;};b.onlostpointercapture=()=>this.input.touch.power=0;}
   this.showSite();this.set('dispatch');
  }
- showSite(){const s=this.sites[this.selected];$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;}
+ showSite(){const s=this.sites[this.selected];$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;}
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
  setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}
  setWarnings(xs:string[]){const e=$('layer-alert');e.textContent=xs.length?'Scenery unavailable: '+xs.join(', '):'';e.hidden=!xs.length;}
