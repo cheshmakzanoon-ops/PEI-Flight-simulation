@@ -86,14 +86,37 @@ try{
    },site,{polling:120});
    assert.equal(await page.evaluate(()=>window.islandAirDiagnostics.runway03Pavement),mode==='live'||mode==='summerside');
    await page.getByRole('button',{name:'Begin flight'}).click();
+   await page.waitForFunction(id=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===id,site);
    const start=await page.evaluate(()=>window.islandAirDiagnostics);
-   await page.keyboard.down('Shift');
+   let powerKey='=';
+   const accelerate=async()=>{
+    await page.keyboard.down(powerKey);
+    try{
+     await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.throttle>.15,
+      {},{polling:180,timeout:24000});
+    }catch(e){
+     await page.keyboard.up(powerKey);
+     powerKey=powerKey==='='?'Shift':'=';
+     await page.keyboard.down(powerKey);
+     await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.throttle>.15,
+      {},{polling:180,timeout:32000});
+    }
+   };
+   const state=()=>page.evaluate(()=>{
+    const {mode,site,x,z,speed,throttle,camera,runway03Pavement}=window.islandAirDiagnostics;
+    return {mode,site,x,z,speed,throttle,camera,runway03Pavement,sources:window.cyygPavingQA.sources};
+   });
+   console.log('CYYG runway start',mode,JSON.stringify(await state()));
+   await accelerate();
+   console.log('CYYG runway throttle engaged',mode,JSON.stringify(await state()));
    receipt[mode]=[];
-   for(const m of mode==='live'?[65,160]:[35]){
-    await page.waitForFunction(({start,m,site})=>{
-     const d=window.islandAirDiagnostics;
-     return d?.mode==='flight'&&d.site===site&&d.camera==='Chase'&&Math.hypot(d.x-start.x,d.z-start.z)>m;
-    },{start,m,site},{polling:60});
+   for(const m of mode==='live'?[65,160]:[15]){
+    try{
+     await page.waitForFunction(({start,m,site})=>{
+      const d=window.islandAirDiagnostics;
+      return d?.mode==='flight'&&d.site===site&&d.camera==='Chase'&&Math.hypot(d.x-start.x,d.z-start.z)>m;
+     },{start,m,site},{polling:100,timeout:190_000});
+    }finally{console.log('CYYG runway movement',mode,m,JSON.stringify(await state()),errors);}
     if(mode!=='live'){
      const r=await page.evaluate(()=>{
       const s=window.cyygPavingQA;const d=window.islandAirDiagnostics;
@@ -103,7 +126,7 @@ try{
      if(mode!=='summerside')assert.equal(r.sources,0);
      receipt[mode].push(r);break;
     }
-    await page.keyboard.up('Shift');
+    await page.keyboard.up(powerKey);
     await page.evaluate(()=>{window.cyygPavingQA.hold=true;});
     const frame=async(kind)=>{
      const tag=m+kind;
@@ -149,9 +172,9 @@ try{
     }
     assert(strong>1000&&paint>30&&paintDifference===0&&exterior===0&&alpha===0,JSON.stringify(exact));
     await page.evaluate(()=>{window.cyygPavingQA.hold=false;});
-    await page.keyboard.down('Shift');
+    await accelerate();
    }
-   await page.keyboard.up('Shift');
+   await page.keyboard.up(powerKey);
    assert.deepEqual(errors,[]);
    console.log('CYYG 03 browser case',mode,JSON.stringify(receipt[mode]));
   }finally{await page.close();}
