@@ -118,7 +118,7 @@ test('Standard bounds all four source pairs to close flight, with separate switc
  }
 });
 
-test('two constrained inland windows have independent source cohorts, untouched historical owners, and exact northern row orientation',async()=>{
+test('constrained inland windows retain separate source cohorts, historical owners and row or column orientation',async()=>{
  const {INLAND_ORTHO_WINDOWS,inlandSourceWindows}=await import('../src/render/inland-ortho-windows.ts');
  const cover={bytes:new Uint8Array(4096*2720*2),width:4096,height:2720};
  assert.deepEqual(inlandSourceWindows(cover),[]);
@@ -128,26 +128,59 @@ test('two constrained inland windows have independent source cohorts, untouched 
    cover.bytes[2*((z+j)*4096+x+i)+c]=p.coverRG[2*(j*w+i)+c];
   }
  }
- assert.deepEqual(inlandSourceWindows(cover),['west','central']);
+ const ids=INLAND_ORTHO_WINDOWS.map(w=>w.name);
+ assert.deepEqual(inlandSourceWindows(cover),ids);
  const west=INLAND_ORTHO_WINDOWS[0].coverBox;
  cover.bytes[2*(west[1]*4096+west[0])]^=1;
- assert.deepEqual(inlandSourceWindows(cover),['central']);
+ assert.deepEqual(inlandSourceWindows(cover),ids.filter(n=>n!=='west'));
  const base=new T.Texture(),gpu={} as T.WebGLRenderer;
- const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:['west','central']});
+ const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:ids});
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
- assert.equal(all.size,12);assert.equal(standard.diagnostics().length,6);
+ assert.equal(standard.diagnostics().length,9);
+ assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
+ assert.equal(all.size,standard.diagnostics().length*2);
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
  for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
   assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);
  }
  for(const p of INLAND_ORTHO_WINDOWS){
-  const a=fx(standard,p.first),b=fx(standard,p.second),[lo,core,top,hi]=p.northRows;
+  const a=fx(standard,p.first),b=fx(standard,p.second),[lo,core,top,hi]='northRows' in p?p.northRows:p.alongSourceTexels;
+  const v='northRows' in p?'northSourceRow':'sourceAlong';
   assert.equal(a.fragmentShader,b.fragmentShader);assert.equal(a.uniforms.orthoRowsGain,b.uniforms.orthoRowsGain);
-  assert(a.fragmentShader.includes('(1.-detailUV.y)*640.'));
-  assert(a.fragmentShader.includes('northSourceRow>'+lo+'.&&northSourceRow<'+hi+'.'));
-  assert(a.fragmentShader.includes('smoothstep('+lo+'.,'+core+'.,northSourceRow)'));
-  assert(a.fragmentShader.includes('smoothstep('+top+'.,'+hi+'.,northSourceRow)'));
+  assert(a.fragmentShader.includes(p.axis==='x'?'(1.-detailUV.y)*640.':'detailUV.x*640.'));
+  assert(a.fragmentShader.includes(v+'>'+lo+'.&&'+v+'<'+hi+'.'));
+  assert(a.fragmentShader.includes('smoothstep('+lo+'.,'+core+'.,'+v+')'));
+  assert(a.fragmentShader.includes('smoothstep('+top+'.,'+hi+'.,'+v+')'));
   assert.equal('orthoRowsGain' in fx(legacy,p.first).uniforms,false);
   assert.equal('orthoRowsGain' in fx(new OrthophotoSeams(gpu,base,'study'),p.first).uniforms,false);
  }
+});
+
+test('bounded Kings north/south pair rejects its wrong owner, then binds exact bottom-origin donor lanes', async()=>{
+ const {INLAND_ORTHO_WINDOWS}=await import('../src/render/inland-ortho-windows.ts');
+ const plan=INLAND_ORTHO_WINDOWS.find(p=>p.name==='east-fields')!;
+ const n=source(),s=source(),bad=source(),base=new T.Texture();
+ const copies:Array<[T.Texture,number,number,number]>=[];
+ const renderer={getContext:()=>({NO_ERROR:0,getError:()=>0,isContextLost:()=>false}),
+  initTexture(){},copyTextureToTexture(src:T.Texture,dst:T.Texture,box:T.Box2,xy:T.Vector2){
+   assert.equal(dst.image.width,640);assert.equal(dst.image.height,4);
+   copies.push([src,box.min.y,box.max.y,xy.y]);
+  }} as unknown as T.WebGLRenderer;
+ const m=new OrthophotoSeams(renderer,base,{tracadie:true,counties:true,inland:[plan.name]});
+ const a=shader(),b=shader();m.bind(plan.first,a);m.bind(plan.second,b);
+ const row=(detail:T.Texture)=>({detail,detailSince:1,lod:112,status:'ready'});
+ const ready=new Map([[plan.first,row(bad)],[plan.second,row(s)]]);
+ m.verifiedDetail(plan.second,plan.ssha,s);s.onUpdate!(s);
+ m.verifiedDetail(plan.first,plan.ssha,bad);
+ assert.equal(bad.onUpdate,null);m.update(2,id=>ready.get(id));
+ assert.deepEqual(copies,[]);assert.equal(a.uniforms.orthoSharedRows.value,base);
+ ready.set(plan.first,row(n));m.verifiedDetail(plan.first,plan.nsha,n);n.onUpdate!(n);
+ m.update(2.1,id=>ready.get(id));m.advance(3);
+ assert.deepEqual(copies,[[s,638,640,0],[n,0,2,2]]);
+ assert.equal(a.uniforms.orthoRowsGain.value,1);
+ assert.equal(b.uniforms.orthoSharedRows.value,a.uniforms.orthoSharedRows.value);
+ m.evict(plan.first,n);
+ assert.equal(b.uniforms.orthoRowsGain.value,0);
+ assert.equal(a.uniforms.orthoSharedRows.value,base);
+ assert(m.diagnostics().every(p=>!p.resident&&p.errors===0));
 });

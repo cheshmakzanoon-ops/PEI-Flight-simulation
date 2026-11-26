@@ -1,0 +1,119 @@
+[
+  {
+    "name": "south-central-fields",
+    "mode": "normal",
+    "flightMeters": 150.983,
+    "alongMeters": 150.98,
+    "crossMeters": 0.98,
+    "groundClearance": 58.35,
+    "edge": {
+      "edge": "11-16 / 12-16",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "east-fields",
+    "mode": "normal",
+    "flightMeters": 151.397,
+    "alongMeters": 151.297,
+    "crossMeters": 5.489,
+    "groundClearance": 56.877,
+    "edge": {
+      "edge": "21-16 / 21-17",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "west-forest-fields",
+    "mode": "normal",
+    "flightMeters": 151.155,
+    "alongMeters": 151.087,
+    "crossMeters": 4.525,
+    "groundClearance": 58.886,
+    "edge": {
+      "edge": "6-9 / 7-9",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "south-central-fields",
+    "mode": "stock",
+    "flightMeters": 152.781,
+    "alongMeters": 152.778,
+    "crossMeters": 0.992,
+    "groundClearance": 58.342,
+    "edge": null,
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "south-central-fields",
+    "mode": "corrupt",
+    "flightMeters": 152.78,
+    "alongMeters": 152.777,
+    "crossMeters": 0.992,
+    "groundClearance": 58.352,
+    "edge": {
+      "edge": "11-16 / 12-16",
+      "resident": false,
+      "gain": 0,
+      "bytes": 0,
+      "uploads": 0,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-01.pack",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [
+      1495036
+    ],
+    "errors": []
+  }
+]

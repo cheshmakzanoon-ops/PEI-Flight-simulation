@@ -34,7 +34,7 @@ for key,lon,lat,first,second,axis,edge in [
      first=first,second=second,axis=axis,edge=edge)
   COUNTIES.append(label)
 
-# Only two native-row windows, not two complete 5.9 km source tile edges.
+# Keep the two original close camera windows and their independent controls.
 INLAND=[]
 for key,lon,lat,first,second,edge,z,slot,held in [
  ('west-field',-63.835,46.4485298,'7-12','8-12',8,12,227,197),
@@ -49,6 +49,33 @@ for key,lon,lat,first,second,edge,z,slot,held in [
    east=-.91*sign,south=.42*sign,h=0,dist=.15 if vertical else (240 if high else (65 if reverse else 75)),
    agl=17 if vertical else (550 if high else (38 if reverse else 44)))
   INLAND.append(key+tail)
+# New finite source windows. Coordinates are recomputed here rather than
+# borrowed from the production renderer or selected using its art output.
+EXPANDED=[
+ ('south-central-fields',11,16,'x',325,368,268),
+ ('west-forest-fields',6,9,'x',422,465,None),
+ ('east-fields',21,16,'z',623,590,None),
+]
+for name,x,z,axis,center,outside,north_control in EXPANDED:
+ first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
+ for suffix,reverse,high,held in [
+   ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
+   ('-outside',False,False,outside),
+   # South-central lies near mid-tile. Mirroring the center lands beside
+   # the live window, so use a separate non-overlapping northern control.
+   ('-flipped' if north_control is None else '-north-control',False,False,
+    639-center if north_control is None else north_control),
+ ]:
+  along=(center if held is None else held+.5)/640
+  lon=-64.47+2.54*(x+(1 if axis=='x' else along))/32
+  lat=47.10-1.16*(z+(1 if axis=='z' else along))/22
+  ex,sz=((-.91,.42) if axis=='x' else (.42,-.91))
+  sign=-1 if reverse else 1
+  P[name+suffix]=dict(lon=lon,lat=lat,first=first,second=second,axis=axis,
+   edge=x+1 if axis=='x' else z+1,east=ex*sign,south=sz*sign,h=0,
+   dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
+   agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
+  INLAND.append(name+suffix)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 
 def stage(repo,root,deps,void):
@@ -123,7 +150,7 @@ def capture(a,browser,url):
    r=pg.evaluate('window.seamFrame()')
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
-   inlands={'7-12 / 8-12','10-11 / 11-11'}
+   inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17'}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')
@@ -133,9 +160,11 @@ def capture(a,browser,url):
    def consume(label):
     p=a.out/(site+'-'+label+'.png')
     p.write_bytes(base64.b64decode(r[label].pop('image').split(',',1)[1]))
-    return np.asarray(Image.open(p).convert('RGB'),np.float32)
+    return np.asarray(Image.open(p).convert('RGBA'),np.float32)
    old,art,qa,qb=[consume(v) for v in ('old','art','idA','idB')]
-   assert r['old']==r['art'] and r['exact'] and not errors,(site,r,errors)
+   r['alphaChanges']=int(np.sum(old[:,:,3]!=art[:,:,3]))
+   assert r['old']==r['art'] and r['exact'] and not errors and r['alphaChanges']==0,(site,r,errors)
+   old,art,qa,qb=(v[:,:,:3] for v in (old,art,qa,qb))
    marker=np.any(qa!=qb,axis=2)
    bound=np.asarray(Image.fromarray(np.uint8(marker)*255).filter(ImageFilter.MaxFilter(3)))>0
    diff=np.max(abs(old-art),axis=2)
@@ -157,7 +186,7 @@ def capture(a,browser,url):
     if oldd>=3.:pairs.append([oldd,newd])
    if pairs:
     q=np.array(pairs);r['edgeContrast']=dict(samples=len(pairs),medianOld=float(np.median(q[:,0])),medianArt=float(np.median(q[:,1])),oldP90=float(np.quantile(q[:,0],.9)),artP90=float(np.quantile(q[:,1],.9)))
-   if site in ('high','offsite') or site.endswith(('-high','-outside','-flipped')) or a.stock:assert not r['pixelGate']['changed'],r['pixelGate']
+   if site in ('high','offsite') or site.endswith(('-high','-outside','-flipped','-north-control')) or a.stock:assert not r['pixelGate']['changed'],r['pixelGate']
    else:
     assert r['pixelGate']['over2']>100,r['pixelGate']
     if a.cohort in ('counties','inland'):

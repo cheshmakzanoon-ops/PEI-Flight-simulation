@@ -35,10 +35,13 @@ const globals='uniform highp sampler2D orthoSharedRows;\nuniform float orthoRows
 function sample(plan:Plan,closeRange:boolean){
  const eastWest=plan.axis==='x',bound=eastWest?WORLD_COLS:WORLD_ROWS;
  const cross=eastWest?'x':'y',along=eastWest?'y':'x';
- const window='northRows' in plan?plan.northRows:undefined;
- const atRow=window?'float northSourceRow=(1.-detailUV.y)*640.;':'';
- const bounded=window?`&&northSourceRow>${window[0]}.&&northSourceRow<${window[3]}.`:'';
- const feather=window?`*smoothstep(${window[0]}.,${window[1]}.,northSourceRow)*(1.-smoothstep(${window[2]}.,${window[3]}.,northSourceRow))`:'';
+ const window='northRows' in plan?plan.northRows:'alongSourceTexels' in plan?plan.alongSourceTexels:undefined;
+ const alongSource='northRows' in plan?'northSourceRow':'sourceAlong';
+ // detailUV is bottom-origin; X shader coordinates already increase east.
+ const alongCoord=eastWest?'(1.-detailUV.y)':'detailUV.x';
+ const atRow=window?`float ${alongSource}=${alongCoord}*640.;`:'';
+ const bounded=window?`&&${alongSource}>${window[0]}.&&${alongSource}<${window[3]}.`:'';
+ const feather=window?`*smoothstep(${window[0]}.,${window[1]}.,${alongSource})*(1.-smoothstep(${window[2]}.,${window[3]}.,${alongSource}))`:'';
  const combined=eastWest?'vec2(.5+crossTexel*.25,detailUV.y)':'vec2(detailUV.x,.5-crossTexel*.25)';
  return `
   if(orthoRowsGain>0.){

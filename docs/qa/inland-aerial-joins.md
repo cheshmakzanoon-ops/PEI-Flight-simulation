@@ -13,6 +13,9 @@ Both rows use the same 44 m-above-ground camera for the two frames shown. To com
 
 Each full window is about **183 m along its boundary**, not the roughly 5.9 km height of a terrain tile. Its maximum across-edge influence is under 12 m to either side. The unchanged source colours are sampled continuously near the seam; the surrounding terrain outside the window stays on the ordinary path.
 
+The [expanded joins](expanded-inland-aerial-joins.md) describe three further
+windows on separate source pairs. The two historical views above are unchanged.
+
 ## How it is bounded
 
 The matching parts of two existing 640-pixel Sentinel tiles must already have their exact encoded hashes, be uploaded at the normal near-terrain resolution, and have completed their usual detail fade. A small check of the **actual** local ground-cover bytes protects the qualified area without reading another map or hashing the entire cover at startup. Across the full footprint the only sampled cover classes are grass and cropland. If one window’s local cover changes, that window is withheld independently. A missing or altered source image leaves stock sampling in place.

@@ -12,6 +12,8 @@ assert [manifest[k]for k in ('columns','rows','tilePixels','bounds')]==[32,22,64
 src=(a.checkout/'src/render/inland-ortho-windows.ts').read_text()
 plans=json.loads(src.split('export const INLAND_ORTHO_WINDOWS=')[1].split(' as const;')[0])
 cells={'west':(8,12,[217,219,235,237]),'central':(11,11,[457,459,475,477])}
+# Historical receipt for the two original west/east oriented windows.
+plans=[v for v in plans if v['name'] in cells]
 coverRaw=gzip.decompress((world/'cover.bin.gz').read_bytes())
 assert sha(coverRaw)=='e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9'
 cover=np.frombuffer(coverRaw,np.uint8).reshape(2720,4096,2)

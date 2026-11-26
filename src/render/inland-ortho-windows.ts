@@ -1,6 +1,6 @@
-// Top-origin rows of the shipped 640 px Sentinel tile. Four RG cover
-// bounds cover both nearest land-class and every bilinear coast vertex of
-// the photographed mask, including its two-row tapers. No stock-wide hash.
+// Source texels run north→south for west/east joins, or west→east for
+// north/south joins. Each signed cover block includes the nearest class
+// and all bilinear coast samples touched by the window and two-texel tapers.
 export const INLAND_ORTHO_WINDOWS=[
  {
   "name":"west",
@@ -91,7 +91,22 @@ export const INLAND_ORTHO_WINDOWS=[
    30,
    165
   ]
- }
+ },
+ {"name":"south-central-fields","first":"11-16","second":"12-16","axis":"x","edge":12,
+  "nsha":"92bb14110710420e78cda0e46a8880a909b3a60f3c3145a94f03c417f35c9a31",
+  "ssha":"adaf69a737c54fbe43008e5900da768cb78b00e6709b47d282ef57336540daa4",
+  "alongSourceTexels":[315,317,333,335],"coverBox":[1535,2038,2,6],
+  "coverRG":[40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]},
+ {"name":"east-fields","first":"21-16","second":"21-17","axis":"z","edge":17,
+  "nsha":"6afd2e66609a7271edf4e323b1b605f8863ba2bd2ef266ebd2771f2405d7f1bc",
+  "ssha":"ff339559c0744e4c245cc3ff137b1c6b48b6b0709bd36e38143b427b489bb0ea",
+  "alongSourceTexels":[613,615,631,633],"coverBox":[2810,2101,6,2],
+  "coverRG":[40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]},
+ {"name":"west-forest-fields","first":"6-9","second":"7-9","axis":"x","edge":7,
+  "nsha":"113dcd8bf55d45c74fb852a904551060f6df9d3d36bc1bc37183e081f7de69ba",
+  "ssha":"5559366506f6d2413c8f6ca84940e73cae230c9e72b672766ce2bd083445c4dd",
+  "alongSourceTexels":[412,414,430,432],"coverBox":[895,1191,2,6],
+  "coverRG":[40,231,40,216,40,215,40,198,40,200,40,181,40,189,40,168,40,179,40,157,40,176,40,153]}
 ] as const;
 export type InlandWindowId=typeof INLAND_ORTHO_WINDOWS[number]['name'];
 type CurrentCover={width:number;height:number;bytes:Uint8Array};
