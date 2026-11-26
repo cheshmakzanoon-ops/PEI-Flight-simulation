@@ -259,7 +259,7 @@ test('Cape Tryon sandstone switch preserves the departure and unrelated choices'
 test('runway 03 comparison cannot move unrelated Standard terrain or bypass the local veto',async()=>{
  const {runway03PavementRequested}=await import('../src/app/scenery-profile.ts');
  const standard=new URLSearchParams('departure=cyyg&scenery=standard');
- assert.equal(runway03PavementRequested(standard),false);
+ assert.equal(runway03PavementRequested(standard),true);
  for(const q of ['runway03PavementReview','runway03PavementReview&stockRunway03Pavement']){
   const scope=new URLSearchParams('departure=cyyg&scenery=standard&'+q);
   assert.equal(runway03PavementRequested(scope),!scope.has('stockRunway03Pavement'));

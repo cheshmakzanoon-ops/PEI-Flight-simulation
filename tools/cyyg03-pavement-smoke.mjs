@@ -77,7 +77,6 @@ try{
   try{
    const site=mode==='summerside'?'cysu':'cyyg';
    const u=new URL(base);u.searchParams.set('diagnostics','');u.searchParams.set('departure',site);
-   u.searchParams.set('runway03PavementReview','');
    if(mode==='veto')u.searchParams.set('stockRunway03Pavement','');
    assert.equal((await page.goto(u.href,{waitUntil:'domcontentloaded'})).status(),200);
    await page.waitForFunction(id=>{

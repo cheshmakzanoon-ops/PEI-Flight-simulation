@@ -268,10 +268,10 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
  'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','capeTryonRockReview','capeTryonWaterReview','runway03PavementReview','stockRunway03Pavement']);
-/** Preview comparison changes only the existing CYYG 03/21 asphalt. */
+/** Standard changes only the existing CYYG 03/21 asphalt; old exact replays stay stock. */
 export function runway03PavementRequested(q:URLSearchParams){
  return q.getAll('scenery').every(v=>!v||v==='standard')&&standardComparisonQuery(q)&&!q.has('qa')&&
-  q.has('runway03PavementReview')&&!q.has('stockRunway03Pavement');
+  !q.has('stockRunway03Pavement');
 }
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
 
