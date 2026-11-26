@@ -11,7 +11,7 @@ the source photography or alter mapped ground, buildings, roads, or flight.
 | Inland field, 46.24779545, −63.27937500 | `14-16` / `15-16` | Rows 94–114, north to south |
 
 Both crossed distinct signed tiles. These windows have no shared owner
-with other pairs in the eleven-pair Standard atlas roster. Both of their
+with other Standard pairs. Both of their
 parents must match before activation. The [official county boundaries](https://gis.princeedwardisland.ca/server/rest/services/county_zones/FeatureServer/0)
 identify both test coordinates as Queens County. The
 [full-atlas scan](aerial-join-screen.md) found both candidates. It does not
@@ -33,6 +33,9 @@ exact stock restoration. The distance and orientation controls stayed
 stock. Each resident pair uses **10,240 bytes** derived only from its
 already-loaded textures and no new imagery requests. The close correction
 fades out by 330 m and respects the existing `?stockInlandOrtho` switch.
+
+The [dual-edge join](dual-edge-aerial-join.md) covers a different Queens pair
+that shares a parent tile with an existing correction.
 
 [Native render receipts](queens-aerial-joins/render-checks.json) ·
 [Private compiled replays](queens-aerial-joins/compiled-player.json) ·

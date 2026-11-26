@@ -86,11 +86,43 @@ export class OrthophotoSeams{
   texture.onUpdate=t=>{receipt.uploaded=true;prior?.call(texture,t);};
  };
  bind(id:string,material:T.ShaderMaterial){
-  const pair=this.pairs.find(p=>p.plan.first===id||p.plan.second===id);
-  if(!pair||!material.fragmentShader.includes(target)||material.fragmentShader.includes('orthoSharedRows'))return;
-  material.fragmentShader=globals+material.fragmentShader.replace(target,target+sample(pair.plan,this.closeRange));
-  material.uniforms={...material.uniforms,orthoSharedRows:pair.map,orthoRowsGain:pair.gain};
-  pair.owners.add(id);
+  const owners=this.pairs.filter(p=>p.plan.first===id||p.plan.second===id);
+  const source=material.fragmentShader;
+  if(!owners.length||source.split(target).length!==2||source.includes('orthoSharedRows'))return;
+  if(owners.length===1){
+   const pair=owners[0];
+   material.fragmentShader=globals+source.replace(target,target+sample(pair.plan,this.closeRange));
+   material.uniforms={...material.uniforms,orthoSharedRows:pair.map,orthoRowsGain:pair.gain};
+   pair.owners.add(id);return;
+  }
+  const caps=this.renderer.capabilities;
+  // The existing lane stays first. Multi-lane registration only changes a
+  // shader when the exact source has spare sampler capacity and independent
+  // orthogonal/opposed owner lanes are supported.
+  const clean=source.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g,'');
+  let fixed=0;
+  for(const declaration of clean.matchAll(/\buniform\s+(?:(?:lowp|mediump|highp)\s+)?[iu]?sampler\w*\s+([^;]+);/g)){
+   for(const declarator of declaration[1].split(',')){
+    const units=/^\s*[A-Za-z_]\w*(?:\[(\d+)\])?\s*$/.exec(declarator);
+    if(!units){fixed=Infinity;break;}
+    fixed+=units[1]?Number(units[1]):1;
+   }
+  }
+  const distinctEdges=new Set(owners.map(p=>p.plan.axis+':'+p.plan.edge));
+  const lanes=owners.length<=4&&distinctEdges.size===owners.length&&
+   caps?.isWebGL2&&caps.maxTextures>=16&&fixed+owners.length<=caps.maxTextures?owners:owners.slice(0,1);
+  const custom:Record<string,T.IUniform>={},header:string[]=[],body:string[]=[];
+  for(const [i,pair] of lanes.entries()){
+   const suffix=i?'Lane'+(i+1):'';
+   const renamed=(text:string)=>suffix?text.replaceAll('orthoSharedRows','orthoSharedRows'+suffix)
+    .replaceAll('orthoRowsGain','orthoRowsGain'+suffix):text;
+   header.push(renamed(globals));body.push(renamed(sample(pair.plan,this.closeRange)));
+   custom['orthoSharedRows'+suffix]=pair.map;
+   custom['orthoRowsGain'+suffix]=pair.gain;
+   pair.owners.add(id);
+  }
+  material.fragmentShader=header.join('')+source.replace(target,target+body.join(''));
+  material.uniforms={...material.uniforms,...custom};
  }
  private withdraw(p:Pair){
   p.gain.value=0;p.map.value=this.base;

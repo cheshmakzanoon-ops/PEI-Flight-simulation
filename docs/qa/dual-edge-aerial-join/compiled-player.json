@@ -1,0 +1,26 @@
+[
+  {
+    "name": "queens-shared-west",
+    "mode": "normal",
+    "flightMeters": 152.782,
+    "alongMeters": 152.779,
+    "crossMeters": 0.992,
+    "groundClearance": 63.405,
+    "edge": {
+      "edge": "11-11 / 12-11",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  }
+]

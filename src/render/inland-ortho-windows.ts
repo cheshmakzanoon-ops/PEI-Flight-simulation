@@ -116,7 +116,12 @@ export const INLAND_ORTHO_WINDOWS=[
   "nsha":"a636aa93cd604197ea6fd2d72f559347f94fb2a1f5880a549fb9661cff4f4c30",
   "ssha":"a72dc92329f4b6d65616f425f89cad3dc84967fe14a51bdc59566447d4c2dbe4",
   "alongSourceTexels":[94,96,112,114],"coverBox":[1919,1995,2,6],
-  "coverRG":[40,255,40,255,40,255,40,255,30,255,40,255,30,255,30,255,40,255,40,255,40,255,40,255]}
+  "coverRG":[40,255,40,255,40,255,40,255,30,255,40,255,30,255,30,255,40,255,40,255,40,255,40,255]},
+ {"name":"queens-shared-west","first":"11-11","second":"12-11","axis":"x","edge":12,
+  "nsha":"f962988f7aa5ed4f9679803ef0e1e9e1f69c54dd70c3748769a323bb8ce653f7",
+  "ssha":"6a92452a79d721e01d4c07585b9f8074f4a9b6343992471c6f512fa412b87c9b",
+  "alongSourceTexels":[114,116,132,134],"coverBox":[1535,1381,2,6],
+  "coverRG":[30,255,30,255,30,255,30,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255,40,255]}
 ] as const;
 export type InlandWindowId=typeof INLAND_ORTHO_WINDOWS[number]['name'];
 type CurrentCover={width:number;height:number;bytes:Uint8Array};

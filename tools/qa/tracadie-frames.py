@@ -57,6 +57,7 @@ EXPANDED=[
  ('east-fields',21,16,'z',623,590,None),
  ('queens-southwest-fields',13,16,'z',51,84,None),
  ('queens-inland-fields',14,16,'x',104,138,None),
+ ('queens-shared-west',11,11,'x',124,159,None),
 ]
 for name,x,z,axis,center,outside,north_control in EXPANDED:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
@@ -86,7 +87,10 @@ def stage(repo,root,deps,void):
  s=fixed.once(s,'uniform float orthoRowsGain;', 'uniform float orthoRowsGain,qaOrthoID;')
  s=fixed.once(s,'col=mix(col,canonical,w*orthoRowsGain);',
  'col=qaOrthoID>0.&&w>.000001?(qaOrthoID<1.5?vec3(.98,.01,.72):vec3(.02,.87,.07)):mix(col,canonical,w*orthoRowsGain);')
+ s=fixed.once(s,"custom['orthoRowsGain'+suffix]=pair.gain;", "custom['orthoRowsGain'+suffix]=pair.gain;custom['qaOrthoID'+suffix]={value:0};")
  s=fixed.once(s,'orthoRowsGain:pair.gain};','orthoRowsGain:pair.gain,qaOrthoID:{value:0}};')
+ s=fixed.once(s,".replaceAll('orthoRowsGain','orthoRowsGain'+suffix):text;",
+  ".replaceAll('orthoRowsGain','orthoRowsGain'+suffix).replaceAll('qaOrthoID','qaOrthoID'+suffix):text;")
  p.write_text(s)
  p=root/'src/main.ts';s=p.read_text()
  s=fixed.once(s,'\n  renderer.render(scene,camera);','''
@@ -94,7 +98,10 @@ def stage(repo,root,deps,void):
   (window as any).seamFrame=()=>{
    const isOwner=(t)=>t.id===qa.first||t.id===qa.second;
    const q=(ortho as any)?.pairs?.find(p=>p.plan.first===qa.first&&p.plan.second===qa.second),u=(world as any).tiles.filter(isOwner)
-       .map(t=>t.local.uniforms.qaOrthoID).filter(Boolean);
+       .flatMap(t=>Object.entries(t.local.uniforms)
+         .filter(([k,v])=>k.startsWith('orthoRowsGain')&&v===q?.gain)
+         .map(([k])=>t.local.uniforms['qaOrthoID'+k.slice('orthoRowsGain'.length)]))
+       .filter(Boolean);
    const save=()=>{
       renderer.render(scene,camera);
       return {image:renderer.domElement.toDataURL('image/png'),draws:renderer.info.render.calls,tris:renderer.info.render.triangles};
@@ -153,7 +160,7 @@ def capture(a,browser,url):
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
-            '13-16 / 13-17','14-16 / 15-16'}
+            '13-16 / 13-17','14-16 / 15-16','11-11 / 12-11'}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')

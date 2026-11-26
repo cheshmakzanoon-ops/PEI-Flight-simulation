@@ -1,0 +1,128 @@
+{
+  "renderer": "Native WebGL2 Three.js, managed software Chromium, 840x540",
+  "oldCentralPNGEqualBeforeAndAfterMultiLane": {
+    "old": "cee7249b7778f63de88fb6385e42825b184cf1840fa24c10065f7026d98636b0",
+    "art": "021e86b801e1e4b389683e82cb9879dc30a625a43f5571cf0807a1fef19aab46",
+    "idA": "cea036aeb0f7be9624b4cfc0df8f19a9cd6cd473357fb6ba95e607396d449515",
+    "idB": "a9ed7fd154520fda185050766ac3b2c2d5c20d7bf8e6913abc0c0e8233ac3238"
+  },
+  "views": [
+    {
+      "view": "queens-shared-west",
+      "edge": "11-11 / 12-11",
+      "agl": 44,
+      "equalDrawsAndTris": {
+        "draws": 27,
+        "tris": 236026
+      },
+      "exactStockRollback": true,
+      "alphaChanges": 0,
+      "pixels": {
+        "changed": 24299,
+        "over2": 20212,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 64701
+      },
+      "optionalEdgeContrast": {
+        "samples": 74,
+        "medianOld": 30.37710666656494,
+        "medianArt": 3.034334897994995,
+        "oldP90": 53.10088539123536,
+        "artP90": 4.5730854511261
+      },
+      "stockRaw": "6769daa8676d7a782b8f10ce7bfafca2117bb31953f762de58df6f7c57c03664",
+      "joinedRaw": "4320c904983dd81190045311b7367226ccd3dc4a481148ba63df98b1858b35cc"
+    },
+    {
+      "view": "queens-shared-west-reciprocal",
+      "edge": "11-11 / 12-11",
+      "agl": 38,
+      "equalDrawsAndTris": {
+        "draws": 76,
+        "tris": 307597
+      },
+      "exactStockRollback": true,
+      "alphaChanges": 0,
+      "pixels": {
+        "changed": 31722,
+        "over2": 26447,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 83229
+      },
+      "optionalEdgeContrast": {
+        "samples": 68,
+        "medianOld": 33.60960578918457,
+        "medianArt": 3.0920891761779785,
+        "oldP90": 53.3325408935547,
+        "artP90": 4.883240890502931
+      },
+      "stockRaw": "bfdcdc12b27d22cdff009ae2caf378809d3234a795733ce64a9e5d370d85dcdf",
+      "joinedRaw": "0954a4bc3fa0213c6b5501bf96cb4486c0bd708e462bb569d094ac9b0c994f7b"
+    },
+    {
+      "view": "queens-shared-west-high",
+      "edge": "11-11 / 12-11",
+      "agl": 550,
+      "equalDrawsAndTris": {
+        "draws": 20,
+        "tris": 253670
+      },
+      "exactStockRollback": true,
+      "alphaChanges": 0,
+      "pixels": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "optionalEdgeContrast": null,
+      "stockRaw": "dda2b0d8ed97cd6f451c5f400fa0f5fc019c0357f10b744885c3a06ec74a90ec",
+      "joinedRaw": "dda2b0d8ed97cd6f451c5f400fa0f5fc019c0357f10b744885c3a06ec74a90ec"
+    },
+    {
+      "view": "queens-shared-west-outside",
+      "edge": "11-11 / 12-11",
+      "agl": 17,
+      "equalDrawsAndTris": {
+        "draws": 17,
+        "tris": 209469
+      },
+      "exactStockRollback": true,
+      "alphaChanges": 0,
+      "pixels": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "optionalEdgeContrast": null,
+      "stockRaw": "1d94f1901afe3dce4b68f984efab312045e89c5b252a350af4aa9ac64be4e514",
+      "joinedRaw": "1d94f1901afe3dce4b68f984efab312045e89c5b252a350af4aa9ac64be4e514"
+    },
+    {
+      "view": "queens-shared-west-flipped",
+      "edge": "11-11 / 12-11",
+      "agl": 17,
+      "equalDrawsAndTris": {
+        "draws": 17,
+        "tris": 279774
+      },
+      "exactStockRollback": true,
+      "alphaChanges": 0,
+      "pixels": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "optionalEdgeContrast": null,
+      "stockRaw": "8146028750d13529bab52ef0d38b421516319bda68baf38cb4656e88ff5b84c8",
+      "joinedRaw": "8146028750d13529bab52ef0d38b421516319bda68baf38cb4656e88ff5b84c8"
+    }
+  ]
+}
