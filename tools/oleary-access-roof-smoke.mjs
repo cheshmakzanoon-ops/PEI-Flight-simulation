@@ -8,7 +8,10 @@ const site='oleary-railway-low';
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage']});
 try{
- const page=await browser.newPage({viewport:{width:960,height:640}});
+ // This lane verifies actual buffer submission at two distances, not image
+ // quality. Keep raster work modest on SwiftShader; the separate native
+ // 960x640 exact-pixel comparison supplies the image-scope witness.
+ const page=await browser.newPage({viewport:{width:640,height:426}});
  page.setDefaultTimeout(160_000);
  const issues=[];page.on('pageerror',e=>issues.push(e.message));
  page.on('console',e=>{if(e.type()==='error'&&!e.text().includes('favicon.ico'))issues.push(e.text());});
@@ -52,14 +55,35 @@ try{
  await page.getByRole('button',{name:'Begin flight'}).click();
  await page.waitForFunction(s=>window.islandAirDiagnostics?.site===s&&window.islandAirDiagnostics?.mode==='flight',site);
  const start=await page.evaluate(()=>{const d=window.islandAirDiagnostics;return [d.x,d.z];});
+ const read=async()=>page.evaluate(([x,z])=>{
+  const d=window.islandAirDiagnostics;
+  return d?{mode:d.mode,site:d.site,camera:d.camera,distance:Math.hypot(d.x-x,d.z-z),ready:d.buildingTiles?.ready,
+   active:d.olearyAccessRoof,draws:d.drawCalls,triangles:d.triangles,proof:window.olearyRoofQA.proof}:null;
+ },start);
+ const fail=async(stage,error)=>{
+  const sample=await read().catch(()=>null);
+  await writeFile(out+'/oleary-access-roof-gate-failure.json',JSON.stringify({stage,sample,issues},null,2)+'\n');
+  console.error('O’Leary access roof failed stage:',stage,JSON.stringify(sample));
+  throw error;
+ };
+ try{
+  await page.waitForFunction(()=>window.islandAirDiagnostics?.olearyAccessRoof===true,{},{timeout:55_000,polling:100});
+ }catch(error){await fail('signed owner in the original stream',error);}
+ console.log('O’Leary access roof resident:',JSON.stringify(await read()));
+ const flightDeadline=Date.now()+255_000;
  const gpu=[];
  for(const m of [1515,1630]){
-  await page.waitForFunction(({f,m})=>{
-    const d=window.islandAirDiagnostics;
-    return d.olearyAccessRoof&&d.camera==='Chase'&&d.mode==='flight'&&Math.hypot(d.x-f[0],d.z-f[1])>=m;
-  },{f:start,m},{polling:50});
+  try{
+   await page.waitForFunction(({f,m})=>{
+     const d=window.islandAirDiagnostics;
+     return d.olearyAccessRoof&&d.camera==='Chase'&&d.mode==='flight'&&Math.hypot(d.x-f[0],d.z-f[1])>=m;
+   },{f:start,m},{polling:50,timeout:Math.max(1000,flightDeadline-Date.now())});
+  }catch(error){await fail('ordinary Chase distance '+m,error);}
+  console.log('O’Leary access roof reaching witness',m,JSON.stringify(await read()));
   await page.evaluate(m=>{window.olearyRoofQA.ask=m;},m);
-  await page.waitForFunction(m=>window.olearyRoofQA.proof?.id===m,m);
+  try{
+   await page.waitForFunction(m=>window.olearyRoofQA.proof?.id===m,m,{timeout:32_000,polling:100});
+  }catch(error){await fail('exact resident GPU draw '+m,error);}
   const witness=await page.evaluate(()=>window.olearyRoofQA.proof);
   assert.deepEqual(witness,{id:m,drawVertices:32049,roofs:30,walls:72,depth:true,error:0});
   gpu.push(witness);
