@@ -110,7 +110,9 @@ try {
   await page.getByRole('button',{name:'Resume flight'}).click(); await waitState('flight');
 
   // Prove the source-matched neutral roof streams on an unflagged ordinary
-  // North Rustico route, using the same real browser and normal flight.
+  // North Rustico route, using the same browser, chase aspect and normal flight.
+  // A smaller viewport leaves SwiftShader enough headroom to reach the roof.
+  await page.setViewportSize({width:840,height:532});
   await page.keyboard.press('m'); await waitState('map');
   await page.locator('#map-site').selectOption({label:'North Rustico Harbour · coastal pass'});
   await page.locator('#fly-here').click(); await waitState('flight');
@@ -120,7 +122,7 @@ try {
     await page.waitForFunction(a=>{
       const d=window.islandAirDiagnostics;
       return d?.site==='north-rustico-harbour-low'&&d.mode==='flight'&&d.camera==='Chase'&&d.rusticoHarbourRoof===true&&
-        Math.hypot(d.x-a.x,d.z-a.z)>365;
+        Math.hypot(d.x-a.x,d.z-a.z)>350;
     },{x:startRustico.x,z:startRustico.z},{polling:200,timeout:115000});
   }catch(error){
     console.error('North Rustico standard roof route:',JSON.stringify((await state())));
@@ -132,7 +134,7 @@ try {
   const nearRustico=await state(), q377Draw=await page.evaluate(()=>window.rusticoGpuRoof.draw);
   assert.deepEqual(q377Draw.channels,Array.from({length:12},()=>expectedRustico).flat());
   const rusticoDistance=Math.hypot(nearRustico.x-startRustico.x,nearRustico.z-startRustico.z);
-  assert(rusticoDistance<560,'North Rustico verification missed the visible approach');
+  assert(rusticoDistance<540,'North Rustico verification missed the visible approach');
   assert.equal(nearRustico.rusticoHarbourRoof,true);
   assert(nearRustico.altitude>nearRustico.groundY+55);
   assert.deepEqual(await page.locator('#world').evaluate(canvas=>{
@@ -151,6 +153,6 @@ try {
 
 // Keep the already installed runner and server; local baseline-only callers
 // can opt into the longer O’Leary compiled coverage without changing CI setup.
-if(process.env.GITHUB_ACTIONS==='true'||process.env.OLEARY_NEIGHBORHOOD_SMOKE==='1'){
+if(process.env.PEI_BROWSER_CORE_ONLY!=='1'&&(process.env.GITHUB_ACTIONS==='true'||process.env.OLEARY_NEIGHBORHOOD_SMOKE==='1')){
  await import('./oleary-neighborhood-smoke.mjs');
 }

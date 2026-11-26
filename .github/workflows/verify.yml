@@ -47,7 +47,8 @@ jobs:
           # playable archive still requires every verification to succeed.
           result=0
           node tools/terminal-wall-smoke.mjs 2>&1 | tee artifacts/smoke/summerside-terminal.log || result=1
-          node tools/browser-smoke.mjs 2>&1 | tee artifacts/smoke/browser.log || result=1
+          PEI_BROWSER_CORE_ONLY=1 node tools/browser-smoke.mjs 2>&1 | tee artifacts/smoke/browser.log || result=1
+          node tools/oleary-neighborhood-smoke.mjs 2>&1 | tee artifacts/smoke/oleary-neighborhood.log || result=1
           node tools/indian-river-smoke.mjs 2>&1 | tee artifacts/smoke/indian-river.log || result=1
           exit "$result"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
