@@ -1,6 +1,6 @@
 # North Rustico Harbour lighthouse
 
-In Dispatch, select **North Rustico Harbour · coastal pass** and enable **North Rustico lighthouse** under **Optional scenery studies**. The equivalent URL flags are `?departure=north-rustico-harbour-low&northRusticoLighthouseStudy`. The lighthouse and attached former keeper's dwelling are a single authored exterior. North Rustico Harbour's 2020 surface survey is the modelling epoch. This study does not reconstruct later harbour work, shoreline erosion, adjoining buildings, or the interior.
+In Standard, select **North Rustico Harbour · coastal pass** in Dispatch or from the Atlas. The flight loads the surveyed lighthouse exterior and its measured dry-ground seat together. Add `?departure=north-rustico-harbour-low&stockRusticoLighthouse` to compare the original atlas. The separate **North Rustico lighthouse** study and its explicit `northRusticoLighthouseStudy` link retain the older bundled presentation. The lighthouse and attached former keeper's dwelling are a single authored exterior. North Rustico Harbour's 2020 surface survey is the modelling epoch. This study does not reconstruct later harbour work, shoreline erosion, adjoining buildings, or the interior.
 
 ![The modeled keeper’s dwelling and lighthouse gallery in the game renderer](../qa/rustico-lighthouse.webp)
 
@@ -29,10 +29,12 @@ The visible three-step entry follows the form in the dated exterior photograph. 
 
 ## In-game scope
 
-The optional study requires the authenticated 3,201-byte grade pack and its exact terrain and cover versions. On compatible close-range terrain, the same inserted faces support both display and aircraft ground contact. A missing or invalid pack, or an incompatible terrain or building-shadow mode, leaves the original ground and no detached lighthouse. The original lighthouse-free higher terrain levels remain unchanged; the exterior is a close-range study.
+Both paths require the authenticated 3,201-byte grade pack and its exact terrain and cover versions. The Standard path also checks the existing building, road and pedestrian sources. It does not download the lighthouse on other routes or install new terrain during Dispatch. On compatible close-range terrain, the same inserted faces support both display and aircraft ground contact. A missing or invalid pack, or an incompatible terrain or building-shadow mode, leaves the original ground and no detached lighthouse. The original lighthouse-free higher terrain levels remain unchanged; the exterior is a close-range study.
 
-The playable approach starts offshore at 72 metres above the game's starting surface. The selected view also includes [one measured nearby roof](../qa/rustico-neighbour.md) and an [authored dry-ground treatment](../qa/rustico-dry-ground.md) around the lighthouse. The rest of the harbour and the later breakwater are **not** rebuilt by this change. See the [terrain, model and flight checks](../qa/rustico-site.json).
+The playable approach starts offshore at 72 metres above the game's starting surface. The older explicit study also includes [one measured neighboring building](../qa/rustico-neighbour.md) and an [authored dry-ground treatment](../qa/rustico-dry-ground.md). The Standard promotion does not enable those separate studies or replace the existing [harbour roof finish](../qa/rustico-harbour-roof.md). The rest of the harbour and the later breakwater are **not** rebuilt by this change. See the [terrain, model and flight checks](../qa/rustico-site.json).
 
-![Normal chase flight past the lighthouse; the surrounding harbour remains the existing atlas](../qa/rustico-pass.webp)
+![Stock and Standard captures at the same point in the harbour pass](../qa/rustico-standard/matched.webp)
+
+The [Standard acceptance record](../qa/rustico-standard/) covers the tight scope, fallback and moving replay.
 
 Contains information licensed under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada). This scenery is for simulation only, not navigation or flight training.

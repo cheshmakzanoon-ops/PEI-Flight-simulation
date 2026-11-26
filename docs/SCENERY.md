@@ -51,7 +51,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Dalvay Lake | `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` | [Wind ripples and sky reflections](qa/dalvay-lake-optics.md) on the verified interior. `&stockDalvayWaterOptics` keeps the original lake appearance. |
 | Souris · Knight Point | `?departure=souris-waterfront-pass&sourisKnightExterior` | [Souris East lighthouse](qa/souris-knight-exterior.md), with a tapered white body, red bracketed gallery and domed glazed lantern. The shore and ground are unchanged. |
 | Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |
-| North Rustico Harbour | `?northRusticoLighthouseStudy` | [Survey-fitted lighthouse, keeper’s dwelling and local grade](landmarks/north-rustico.md). Choose **North Rustico Harbour · coastal pass**. |
+| North Rustico Harbour | `?stockRusticoLighthouse` | Compare Standard’s [survey-fitted lighthouse and local seat](landmarks/north-rustico.md) on **North Rustico Harbour · coastal pass**. The explicit `?northRusticoLighthouseStudy` retains the older bundled view. |
 | Indian River | `?indianRiverReview` | [St. Mary’s exterior and local grade](landmarks/st-marys-indian-river.md). Choose **Indian River · country pass**. |
 | Point Prim | `?stockPointPrim` | Standard shows the [surveyed-era lighthouse and measured dry ground](point-prim-study.md). Choose **Point Prim · lighthouse pass** for a virtual 72 m offshore approach. |
 | Hog Island | `?hogIslandPhotoStudy` | [Dated aerial surface detail](qa/hog-island-photo-study.md). Choose a west or east **Hog Island · dune pass**. |

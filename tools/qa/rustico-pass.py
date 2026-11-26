@@ -38,7 +38,7 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Server,di
     page.get_by_role('button',name='Apply studies').click()
    assert 'departure=north-rustico-harbour-low' in page.url and 'unrelated=keep' in page.url
   else:
-   page.goto(url+('&northRusticoLighthouseStudy' if a.preview or a.corrupt else ''),wait_until='domcontentloaded')
+   page.goto(url+('&northRusticoLighthouseStudy' if a.preview or a.corrupt else '&stockRusticoLighthouse'),wait_until='domcontentloaded')
   page.wait_for_function("""()=>{const d=window.islandAirDiagnostics;return d?.site==='north-rustico-harbour-low'&&d.mode==='dispatch'&&d.roads&&d.buildings;}""")
   if a.preview:
    page.wait_for_function('window.islandAirDiagnostics?.northRusticoLighthouse?.seat==="verified"')

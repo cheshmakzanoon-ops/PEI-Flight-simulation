@@ -1,3 +1,4 @@
+import {RUSTICO_GRADE} from '../sim/rustico-grade.generated.ts';
 import {dalvayGroundPair} from './dalvay-exterior-seat.ts';
 import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
 import {allowShortOpenArc,allowPanmureOpenArc,allowTryonOpenArc} from '../sim/open-coast-closure.ts';
@@ -1239,6 +1240,29 @@ export class World {
    this.scene.remove(before);this.scene.add(after);t.fine=after;this.groundVersion++;
   }
   return show;
+ }
+ /** One previously empty lighthouse silhouette needs the exact compatible
+  * near dry seat. Share the exclusive reversible terrain slot (no other
+  * owner can qualify in this profile); never borrow any church art. */
+ stageStandardRusticoNear(grade:BoundedGrade){
+  if(grade.grid.spec!==RUSTICO_GRADE)return false;
+  const key='14-12',t=this.byId.get(key),q=this.stagedChurch;
+  if(!t?.fine||t.lod!==112||!t.fine.visible||t.fine.parent!==this.scene||t.fine.material!==t.local||
+    t.coarse.visible||t.relief||this.grades?.has(key)||
+    (q&&(q.grade!==grade||q.owner!==t||(t.fine!==q.stock&&t.fine!==q.candidate)))||
+    (!q&&!this.rollingCanopyStill(key,t.fine.geometry)))return false;
+  return !!this.stageStMarysNear(grade);
+ }
+ standardRusticoGroundActive(){
+  const q=this.stagedChurch,t=q?.owner;
+  return !!q&&q.grade.grid.spec===RUSTICO_GRADE&&!!t&&t.lod===112&&!t.relief&&!t.coarse.visible&&
+   t.fine===q.candidate&&q.candidate.parent===this.scene&&q.candidate.visible&&q.candidate.material===t.local;
+ }
+ setStandardRusticoGround(show:boolean){
+  return this.stagedChurch?.grade.grid.spec===RUSTICO_GRADE&&this.setStMarysGround(show);
+ }
+ dropStandardRusticoGround(){
+  if(this.stagedChurch?.grade.grid.spec===RUSTICO_GRADE)this.dropStMarysStage();
  }
  /** Reuse the reversible measured-ground transaction, never the church's art or its receiver.
   * Review modes are exclusive; a changed owner or an unapproved terrain mesh cannot qualify. */

@@ -66,9 +66,8 @@ export function createRusticoExterior(g:BoundedGrade){
  shell.matrixAutoUpdate=false;shell.matrixWorldNeedsUpdate=true;shell.name='North Rustico Harbour Light · 2020 exterior';
  shell.add(lod);shell.visible=false;
  return (scene:T.Scene,world:World)=>{
-  scene.add(shell);
   const shade=rusticoShade(g,Uint8Array.from(atob(RUSTICO_SHADE.alpha),ch=>ch.charCodeAt(0)),RUSTICO_SHADE);
-  scene.add(shade);
+  scene.add(shell,shade);
   const surface={
    gradeInstalled:(id:string)=>world.groundGradeInstalled(id),
    dryDistance:(x:number,z:number)=>world.cover.distance(world.terrain,x,z),
@@ -76,7 +75,9 @@ export function createRusticoExterior(g:BoundedGrade){
    contactY:(x:number,z:number)=>world.groundHeight(x,z),
   };
   let key='',state='not near';
-  return {get state(){return {seat:state,visible:shell.visible};},update(camera:T.Vector3){
+  return {get state(){return {seat:state,visible:shell.visible};},
+   hide(){shell.visible=shade.visible=false;},
+   update(camera:T.Vector3){
    if(Math.hypot(camera.x-o.x,camera.z-o.z)>3890){shell.visible=shade.visible=false;return;}
    const revision=world.visualGroundSignature(bounds);
    if(revision!==key){

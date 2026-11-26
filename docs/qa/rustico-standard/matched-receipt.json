@@ -1,0 +1,57 @@
+{
+  "path": "Actual neutral pilot motion and same-view local receiver A/B/restore. The approved source, art and ground geometry did not change when the flight admission window was tightened. Bounded projected receiver includes the stitch collar, shadow and lighthouse. These are not hardware frame times.",
+  "cases": {
+    "302": {
+      "travelMetres": 306.2352084488969,
+      "pose": [
+        -6805.488806375853,
+        4934.280250614283,
+        74.05031023524509,
+        -0.055
+      ],
+      "strongRGB": 895,
+      "alpha": 0,
+      "outsideReceiverRectangle": 0,
+      "exactRestore": true,
+      "drawsStockAndStandard": [
+        230,
+        247
+      ],
+      "trianglesStockAndStandard": [
+        323072,
+        333469
+      ],
+      "otherHarbourRoof": true,
+      "olderMassingReview": false
+    },
+    "433": {
+      "travelMetres": 437.0841348147287,
+      "pose": [
+        -6931.303563473051,
+        4970.225882185007,
+        75.01742489153982,
+        -0.055
+      ],
+      "strongRGB": 4916,
+      "alpha": 0,
+      "outsideReceiverRectangle": 0,
+      "exactRestore": true,
+      "drawsStockAndStandard": [
+        230,
+        247
+      ],
+      "trianglesStockAndStandard": [
+        323960,
+        335519
+      ],
+      "otherHarbourRoof": true,
+      "olderMassingReview": false
+    }
+  },
+  "earlyBeginValidResponse": {
+    "phaseWhenBeginWasPressed": "idle",
+    "firstGradeAndLightTravelMetres": 99.99643812740206,
+    "oneWithoutOtherFramesAtEarlySample": 0,
+    "verifiedGradeDeliveries": 1
+  }
+}
