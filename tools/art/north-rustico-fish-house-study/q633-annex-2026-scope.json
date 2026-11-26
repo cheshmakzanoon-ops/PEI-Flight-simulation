@@ -1,0 +1,44 @@
+{
+  "disclosures": [
+    "Reversible proximity test, no earth, deck, piles or hidden mesh natively.",
+    "Only horizontal envelope within both named sources; all volumes and roof/door edges approximate.",
+    "Photo shows one lower adjacent volume. No contemporary exact cladding, date, hidden faces, frontage window/door assignment, physical floor or parcel/building permit inferred."
+  ],
+  "falseUnassignedProvincialRemainderAreaM2": 39.09607002123257,
+  "fixtureInsideProvincialArea": 2.457600000000001,
+  "historicalBaseSha256": "c7aa56e976199493e9a91bae6e1ca6f41418ee25f3345a80fa503e665aad5bc3",
+  "localCornersUV": [
+    [
+      6.248179907901764,
+      -3.2
+    ],
+    [
+      6.22060087203207,
+      -0.8
+    ],
+    [
+      7.24460087203207,
+      -0.8
+    ],
+    [
+      7.272179907901764,
+      -3.2
+    ]
+  ],
+  "neighbourDistanceM": {
+    "266": 5.8958971997697045,
+    "268": 60.20094967587766,
+    "377": 55.925087278526746,
+    "428": 29.98043625717851,
+    "450": 14.208232365016585,
+    "466": 67.42753135794257,
+    "478": 61.114327494843685,
+    "501": 74.26321456424871
+  },
+  "outsideFederalButInBothSourcesM2": 2.4000000000000004,
+  "outsideOldMarginToProvincialRim": 0.18945985496274276,
+  "privateObservationSha256": "ba231bbc9e522e9ffbf681e63e5f3426d3f67a3fa7acee7a7dd075636eec6014",
+  "publication": "September 2026; exact capture day not verified",
+  "scope": "Independent optional 2026 studio block, not a fiducial site transform or inferred full addition. 2026 photograph gives general presence only.",
+  "source": "https://arenglishtravels.blogspot.com/2026/09/pei-2026-north-rustico-home-swap.html"
+}

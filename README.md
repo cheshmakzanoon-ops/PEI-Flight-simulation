@@ -173,7 +173,7 @@ The narrow [Green Gables gravel fixture](docs/qa/gables-gravel.md) is retained a
 
 ## Scenery gallery
 
-The [Souris Town Hall exterior study](tools/art/souris-town-hall-study/) records the original frontage asset and its open verification issues. It is not enabled in the simulator.
+The [Souris Town Hall exterior study](tools/art/souris-town-hall-study/) records the original frontage asset and its open verification issues. It is not enabled in the simulator. The [Quintin Court Fish House study](tools/art/north-rustico-fish-house-study/) compares two reference periods in original Three.js models; waterfront placement remains unverified.
 
 | Charlottetown Harbour | Confederation Bridge |
 | --- | --- |

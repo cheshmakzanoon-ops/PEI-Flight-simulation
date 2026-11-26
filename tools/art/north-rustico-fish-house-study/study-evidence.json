@@ -1,0 +1,54 @@
+{
+  "scope": "Documentary detached study. Not a certified height, wall-dimension, navigation, current-condition or site/soil model.",
+  "identity": {
+    "tile": "q03330",
+    "ordinal": 633,
+    "orderedRowSHA256": "9ba7d5de9b7c19dd7cc9679df998b996c5313e30fcaefbfc917c1e873164ad71",
+    "peiFootprint": 57964,
+    "parcel": 434563,
+    "overlapOfFederalPercent": 88.57
+  },
+  "historical": {
+    "registry": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=20879&pid=0",
+    "elevations": "F. Pound / Province of Prince Edward Island, 2009, IDs 81265, 81266, 81267; visual reference only."
+  },
+  "frame": {
+    "exactFederalUV": [
+      [
+        6.195537375269416,
+        3.4696341085572113
+      ],
+      [
+        -6.275282668354416,
+        3.469637110883501
+      ],
+      [
+        -6.195533051796595,
+        -3.469637110883501
+      ],
+      [
+        6.275278344881594,
+        -3.4696341085572113
+      ]
+    ]
+  },
+  "rawAbsolute": {
+    "equationUvM": [
+      8.182577238475453,
+      -0.00891417111109894,
+      -0.7476722170465618,
+      0.15000000000000002
+    ],
+    "heldCells": 14,
+    "authorCells": 34,
+    "projectEpoch": 2020,
+    "trainingP90": 0.239,
+    "blockedP90": 0.28,
+    "currentWholeGeometryAuthorized": false
+  },
+  "nativeCatalog": "https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b",
+  "checks": {
+    "stockControl": "Actual footprint wet/dry conflict; no automatic geometry changes.",
+    "localFloorAuthority": "none"
+  }
+}
