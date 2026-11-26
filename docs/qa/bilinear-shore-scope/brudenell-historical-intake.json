@@ -1,0 +1,432 @@
+{
+  "schema": "pei-georgetown-brudenell-historical-curtain-intake-v1",
+  "decision": "HOLD all land/water/display/contact changes. Diagnose only. No exact physically closed one-cell patch. 862 wrong-side 2020 centers are evidence of inconsistency, not qualified area for fill.",
+  "provenance": {
+    "stockHeadObserved": "6b9048b",
+    "file": "public/world/cover.bin.gz",
+    "coverWireSha256": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverDecodedSha256": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "buildingTilePackSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "stockPositionVboSha256": "31ab364e619d119aba6afa8597af08bdac7cf6504db6f1502c60833d1d55883c",
+    "stockOwner": "shore-to-sea surface; generic cliffFrag(false), owned position vertex count 9846. The adjacent ordinary 24-17 N112 land shoulder is separately submitted.",
+    "widthHeight": [
+      4096,
+      2720
+    ],
+    "route": "georgetown-low",
+    "camera": "ordinary neutral Chase at 900x600"
+  },
+  "sourcePhysical": {
+    "acquisition": "Natural Resources Canada exact named PEI 2020 CanElevation HRDEM bare-earth DTM, source-wide metadata CGVD2013. DTM ground, not tidal datum or water survey.",
+    "attribution": "Natural Resources Canada CanElevation, Open Government Licence – Canada: https://open.canada.ca/en/open-government-licence-canada",
+    "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+    "bytes": 34973844421,
+    "etag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+    "horizontalCRS": "EPSG:3979 native",
+    "grid": [
+      2261621,
+      1,
+      0,
+      371370,
+      0,
+      -1
+    ],
+    "readOnlySourceWindowXYWH": [
+      165253,
+      53263,
+      142,
+      140
+    ],
+    "nativeWindowFloat32LittleEndianSha256": "c7e87719551b7f4b5b32455e3fb6ba09cf232b6d7e4733dccc4817b0667c1171",
+    "physicalLimit": "Prior difference of 4.884–5.829 m on both +/-7 m transect sides proves elevated historical land at the original synthetic wall. It does not identify an exact legal shore, absent seasonal/tidal, contemporary and transport authority.",
+    "slopeNeighborControl": "Old and distinct 3105,2147 includes valid low ground on old zero, roughly 0.335–1.142 m; 0.335–3.818 m whole three-transect profile. Protected eastern wetland FID8010 not included in fill."
+  },
+  "stockGeometricWarrant": {
+    "cellIJ": [
+      3104,
+      2148
+    ],
+    "originalTriangleOrdinals": [
+      2962,
+      2963
+    ],
+    "signedRawCornerUnitsNW_NE_SE_SW": [
+      12,
+      -4,
+      -20,
+      -4
+    ],
+    "oldSignedCoverFormulaMetres": "24−32*u−32*v. Bilinear cross coefficient exactly zero. Original chord joins u=.75 v=0 to u=0 v=.75. Recurving the same field does not fix the displaced historic ground.",
+    "rawCellWorldXZ": [
+      50291.30527755784,
+      35157.14481989629,
+      50338.907080944075,
+      35204.55175267368
+    ],
+    "oldWindowUnderlay": "World.surface classifies by Cover distance prior to elevation; old wet contact is ocean, not invisible raised mesh. Land fragment samples the signed Cover and discards below zero. Generic wall plus ocean on one side can therefore be misleading where old field masks higher historic ground.",
+    "simultaneousRequirement": "A credible patch must share authoritative mask and sampled contact with both terrain render and water discard, exact external neighbor/water behavior and stock fallback. Geometry-only or BoundedGrade-only cannot replace the old wet sign."
+  },
+  "closedCut": {
+    "eligibility": "Finite native centre plus all 3x3 native centres ≥3.50 m. Stock wet class distance ≤−1.5 m. Four-connected historical ground anchored in original dry inside target cell. This height threshold measures positive inland support only, never legal or exact tide.",
+    "response": {
+      "scope": "Historical diagnostics only, not a shoreline or accepted fill",
+      "nativeSha": "c7e87719551b7f4b5b32455e3fb6ba09cf232b6d7e4733dccc4817b0667c1171",
+      "cellExtent": [
+        50291.30527755784,
+        35157.14481989629,
+        50338.907080944075,
+        35204.55175267368
+      ],
+      "worldArea": 2256.655493213922,
+      "stockWetGeometricArea": 1621.9711357475064,
+      "chordLength": 51.131156882887936,
+      "wholeCellNativeCenters": 2324,
+      "certifiedCogHighNativeCenters": 1600,
+      "stockWetCogHighCenters": 862,
+      "stockWetCogHighIn2mReserve": 95,
+      "stockWetCogHighInterior": 767,
+      "stockWetCogHighElevationMinMax": [
+        3.6864616870880127,
+        5.524628639221191
+      ],
+      "stockWetCogHighCentreEnvelopeXZ": [
+        50291.4049028239,
+        35157.21903196144,
+        50338.754646529655,
+        35204.54962645095
+      ],
+      "stockWetCogHighCentreEnvelopeEN": [
+        2426915.5,
+        317986.5,
+        2426942.5,
+        318050.5
+      ],
+      "ringExactStockWetHighInsideOutside": [
+        [
+          "west",
+          21,
+          20
+        ],
+        [
+          "east",
+          19,
+          5
+        ],
+        [
+          "north",
+          22,
+          18
+        ],
+        [
+          "south",
+          41,
+          40
+        ]
+      ],
+      "vectorSources": {
+        "waco": [
+          "24fa4c5d995b5e20b39a7f20f87478750223fd333e4abb18e492cd45b7b9081a",
+          "https://services9.arcgis.com/zow9Ot3ujGSyJI3C/arcgis/rest/services/PEI_Watercourse/FeatureServer/0/query?f=geojson&geometry=-62.550%2C46.182%2C-62.540%2C46.1855&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&outFields=%2A&returnGeometry=true"
+        ],
+        "osm": [
+          "0d6e3a5dd548cce4fb2c413a1c11f87a336b0f5f7ce927f51c559081247743da",
+          "https://api.openstreetmap.org/api/0.6/map?bbox=-62.550%2C46.182%2C-62.540%2C46.1855"
+        ],
+        "wetland": [
+          "b71627025babc1eb5f2ab75afe4ec283b18b7fb5d16d1b2bfb91d2270ef7c8ed",
+          "https://gis.princeedwardisland.ca/server/rest/services/Hosted/Wetland_and_Sand_Dune_Inventory_2020/FeatureServer/0/query?f=geojson&geometry=-62.550%2C46.182%2C-62.540%2C46.1855&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&outFields=%2A&returnGeometry=true"
+        ]
+      }
+    },
+    "crossSections": [
+      {
+        "fraction": 0.1,
+        "cross": {
+          "PEI-WACO:17490": [
+            20.243
+          ],
+          "OSM:208134226/v7": [
+            3.661
+          ],
+          "OSM:1006381638/v2": [
+            3.661
+          ]
+        }
+      },
+      {
+        "fraction": 0.25,
+        "cross": {
+          "PEI-WACO:17490": [
+            19.452
+          ],
+          "OSM:208134226/v7": [
+            3.226
+          ],
+          "OSM:1006381638/v2": [
+            3.226
+          ]
+        }
+      },
+      {
+        "fraction": 0.5,
+        "cross": {
+          "PEI-WACO:17490": [
+            19.263
+          ],
+          "OSM:208134226/v7": [
+            2.503
+          ],
+          "OSM:1006381638/v2": [
+            2.503
+          ]
+        }
+      },
+      {
+        "fraction": 0.75,
+        "cross": {
+          "PEI-WACO:17490": [
+            25.263
+          ],
+          "OSM:208134226/v7": [
+            1.779
+          ],
+          "OSM:1006381638/v2": [
+            1.779
+          ]
+        }
+      },
+      {
+        "fraction": 0.9,
+        "cross": {
+          "PEI-WACO:17490": [
+            30.135
+          ],
+          "OSM:208134226/v7": [
+            1.345
+          ],
+          "OSM:1006381638/v2": [
+            1.345
+          ]
+        }
+      }
+    ],
+    "crossingConclusion": "At fixed fractions +.10/.25/.50/.75/.90 the WACO and CanVec-derived OSM crossings are both waterward of old zero but diverge by 16.226–28.790 m. WACO has no per-feature acquisition date or standalone proven redistribution permission; two matching OSM ways share CanVec provenance. Public administrative labels and 2020 uncharged context are not exact current stance.",
+    "statisticalClaim": "862 original wet, well-supported high centers; 767 ≥2 m inside, 95 within 2 m. Area from centre count is not a publishable surface. All four edges have continuing high support on real old-wet samples in a neighboring cell. Physically closed accepted area 0 m².",
+    "nextMinimumSourceAndGeometryAuditEnvelope": {
+      "targetCornerENByNorthWestNorthEastSouthEastSouthWest": [
+        [
+          2426895.909725958,
+          318027.8678545337
+        ],
+        [
+          2426938.1841247575,
+          318051.528658475
+        ],
+        [
+          2426961.6115049897,
+          318009.6717930281
+        ],
+        [
+          2426919.3366981125,
+          317986.01076068485
+        ]
+      ],
+      "oldN112Step": [
+        54.40206101284029,
+        52.332328390628376
+      ],
+      "target": [
+        50291.30527755784,
+        35157.14481989629,
+        50338.907080944075,
+        35204.55175267368
+      ],
+      "geometricBounds3x3": [
+        50243.703474171605,
+        35109.7378871189,
+        50386.50888433031,
+        35251.95868545108
+      ],
+      "baseGrid": [
+        2715,
+        1945,
+        2719,
+        1949
+      ],
+      "collarGrid": [
+        2714,
+        1944,
+        2720,
+        1950
+      ],
+      "collarXZ": [
+        50158.70025383905,
+        35037.39613904951,
+        50485.11261991609,
+        35351.39010939328
+      ],
+      "windows": {
+        "existing": [
+          165253,
+          53263,
+          142,
+          140
+        ],
+        "targetOnlyWith1mStencil": [
+          165273,
+          53317,
+          69,
+          68
+        ],
+        "transectsOnlyWith1mStencil": [
+          165279,
+          53324,
+          68,
+          58
+        ],
+        "surrounding3x3With1mStencil": [
+          165208,
+          53251,
+          200,
+          200
+        ],
+        "surrounding3x3PlusOldN112FacetRingWith1mStencil": [
+          165096,
+          53139,
+          449,
+          442
+        ]
+      },
+      "interpretation": "Exact inner target, transects and 3×3 native Cover neighborhood for first independent closure investigation. Existing 142 × 140 covers target and all named transects, but not the entire first 3×3 context. Minimum fixed larger 1 m window for that context is [165208, 53251, 200, 200] at the same 3979 grid with 1 m stencil. No same-source window size can settle the competing shore epochs/rights. Obtain a separately licensed dated or direct CAP/shore tie before trying geometry. The [165096, 53139, 449, 442] full N112 ring is a conservative audit envelope, not a proof of needed remesh, authorized raster request, or contact footprint. One exact fully inherited adjoining atlas facet ring as a boundary audit, including fixed seams/position, not a 52 m universal blend. Blend width/core choice remains unmeasured."
+    }
+  },
+  "actualStockVisibility": {
+    "sameRGBPolicy": "Projected old triangle centre masks not a new renderer draw ID. Amber = R−G>8, G−B>10, R>95, B<145. Stricter rust = R−G>28, G−B>13, R>102, B<120. Untuned from earlier stock t15. CPU first-hit over exact generic curtain, respecting side and land discard, verified sampled t15 points before freeze. No rendering fix exercised.",
+    "native": [
+      {
+        "t": 14.099859000000038,
+        "sha": "f66a0a684cfcb449074cc447871691ad71f79ab0041ea193cae11d4d937259d5",
+        "cell": {
+          "(3105, 2147)": {
+            "projected": 93,
+            "actualAmber": 92,
+            "actualPutativeCurtainRust": 79,
+            "screenBBox": [
+              115,
+              292,
+              134,
+              299
+            ]
+          },
+          "(3106, 2147)": {
+            "projected": 34,
+            "actualAmber": 31,
+            "actualPutativeCurtainRust": 5,
+            "screenBBox": [
+              122,
+              297,
+              134,
+              304
+            ]
+          },
+          "(3104, 2147)": {
+            "projected": 70,
+            "actualAmber": 70,
+            "actualPutativeCurtainRust": 70,
+            "screenBBox": [
+              103,
+              291,
+              114,
+              296
+            ]
+          },
+          "(3103, 2148)": {
+            "projected": 33,
+            "actualAmber": 32,
+            "actualPutativeCurtainRust": 26,
+            "screenBBox": [
+              56,
+              290,
+              62,
+              296
+            ]
+          },
+          "(3104, 2148)": {
+            "projected": 241,
+            "actualAmber": 241,
+            "actualPutativeCurtainRust": 230,
+            "screenBBox": [
+              62,
+              291,
+              102,
+              296
+            ]
+          }
+        },
+        "projectedUnion": 462,
+        "samePixelAmber": 457,
+        "samePixelRust": 408
+      },
+      {
+        "t": 16.099839000000046,
+        "sha": "7636797a8f6c82d5c4996115bb0f80a55c0b13f1c98cd3c8493ed42845956595",
+        "cell": {
+          "(3105, 2147)": {
+            "projected": 112,
+            "actualAmber": 111,
+            "actualPutativeCurtainRust": 95,
+            "screenBBox": [
+              57,
+              302,
+              77,
+              311
+            ]
+          },
+          "(3106, 2147)": {
+            "projected": 66,
+            "actualAmber": 62,
+            "actualPutativeCurtainRust": 11,
+            "screenBBox": [
+              57,
+              309,
+              77,
+              319
+            ]
+          },
+          "(3104, 2147)": {
+            "projected": 92,
+            "actualAmber": 91,
+            "actualPutativeCurtainRust": 91,
+            "screenBBox": [
+              43,
+              301,
+              56,
+              308
+            ]
+          },
+          "(3103, 2148)": {
+            "projected": 0,
+            "actualAmber": 0,
+            "actualPutativeCurtainRust": 0,
+            "screenBBox": null
+          },
+          "(3104, 2148)": {
+            "projected": 301,
+            "actualAmber": 301,
+            "actualPutativeCurtainRust": 282,
+            "screenBBox": [
+              0,
+              301,
+              42,
+              307
+            ]
+          }
+        },
+        "projectedUnion": 558,
+        "samePixelAmber": 552,
+        "samePixelRust": 477
+      }
+    ],
+    "rollup": "Dominant two triangles at t14/t15/t16: 241/261/301 gross centres, all amber; 230/251/282 stricter rust. True earlier t19/t20/t25 archived anchor negatives: zero projected."
+  }
+}

@@ -39,8 +39,8 @@ function value(f, x, y) {
   const [i, i1, u] = x, [j, j1, v] = y, w = f.width, a = f.values;
   return (a[j*w+i]*(1-u)+a[j*w+i1]*u)*(1-v) + (a[j1*w+i]*(1-u)+a[j1*w+i1]*u)*v;
 }
-function maximum(f, xs, ys, i, j) {
-  return Math.max(value(f,xs[i],ys[j]), value(f,xs[i+1],ys[j]),
+function extremum(f, xs, ys, i, j, which) {
+  return which(value(f,xs[i],ys[j]), value(f,xs[i+1],ys[j]),
     value(f,xs[i],ys[j+1]), value(f,xs[i+1],ys[j+1]));
 }
 
@@ -60,10 +60,29 @@ function permitted(f, x, z) {
  * The caller must audit the entire effect bounds and apply any shader/native
  * numerical margins. Authority is piecewise constant in its own square grid.
  */
-export function certifyWetScope({
+export function certifyWetScope(inputs) {
+  const p=certifyChange(inputs,false);
+  return {rectangles:p.rectangles,possibleWet:p.possible,unauthorizedWet:p.unauthorized,
+    unresolved:p.unresolved,areaUpperBound:p.areaUpperBound,maxOldOnUnauthorized:p.extremeOld};
+}
+
+/**
+ * The converse check for a newly land-capable bank. Stock is wet strictly
+ * below its land threshold and the candidate is land at or above its own
+ * threshold. A boundary roundoff cannot silently turn water into contact.
+ * As with the wet certificate this is only a conservative continuous CPU
+ * scope bound, not a real shoreline, render, grade or hardware proof.
+ */
+export function certifyDryScope({stockLandThreshold,candidateLandThreshold,...inputs}) {
+  const p=certifyChange({...inputs,dryThreshold:stockLandThreshold,wetThreshold:candidateLandThreshold},true);
+  return {rectangles:p.rectangles,possibleDry:p.possible,unauthorizedDry:p.unauthorized,
+    unresolved:p.unresolved,areaUpperBound:p.areaUpperBound,minOldOnUnauthorized:p.extremeOld};
+}
+
+function certifyChange({
   stock, candidate, authority, bounds, dryThreshold, wetThreshold,
   stockMargin = 0, candidateMargin = 0, maxRectangles = 2_000_000,
-}) {
+},makeDry) {
   [stock, candidate].forEach(f => validate(f)); validate(authority,true);
   if (!list(bounds,4) || bounds[0] >= bounds[2] || bounds[1] >= bounds[3] ||
       ![dryThreshold,wetThreshold,stockMargin,candidateMargin].every(finite) ||
@@ -76,20 +95,21 @@ export function certifyWetScope({
     throw new RangeError('Rectangle ceiling exceeded');
   const cx = x.map(v=>axisIndex(candidate,v,0)), cz = z.map(v=>axisIndex(candidate,v,1));
   const sx = x.map(v=>axisIndex(stock,v,0)), sz = z.map(v=>axisIndex(stock,v,1));
-  let possibleWet = 0, unauthorizedWet = 0, unresolved = 0, areaUpperBound = 0;
-  let maxOldOnUnauthorized = -Infinity;
-  for (let j=0;j<z.length-1;j++) for (let i=0;i<x.length-1;i++) {
-    if (maximum(candidate,cx,cz,i,j)+candidateMargin <= wetThreshold) continue;
-    possibleWet++;
-    if (permitted(authority,(x[i]+x[i+1])*.5,(z[j]+z[j+1])*.5)) continue;
-    unauthorizedWet++;
-    const old = maximum(stock,sx,sz,i,j);
-    maxOldOnUnauthorized = Math.max(maxOldOnUnauthorized,old);
-    if (old+stockMargin >= dryThreshold) {
+  let possible=0, unauthorized=0, unresolved=0, areaUpperBound=0;
+  let extremeOld=makeDry?Infinity:-Infinity;
+  const oldLimit=makeDry?Math.min:Math.max;
+  for(let j=0;j<z.length-1;j++)for(let i=0;i<x.length-1;i++){
+    const newer=extremum(candidate,cx,cz,i,j,Math.max)+candidateMargin;
+    if(makeDry?newer<wetThreshold:newer<=wetThreshold)continue;
+    possible++;
+    if(permitted(authority,(x[i]+x[i+1])*.5,(z[j]+z[j+1])*.5))continue;
+    unauthorized++;
+    const old=extremum(stock,sx,sz,i,j,oldLimit);
+    extremeOld=oldLimit(extremeOld,old);
+    if(makeDry?old-stockMargin<dryThreshold:old+stockMargin>=dryThreshold){
       unresolved++;
-      areaUpperBound += (x[i+1]-x[i])*(z[j+1]-z[j]);
+      areaUpperBound+=(x[i+1]-x[i])*(z[j+1]-z[j]);
     }
   }
-  return {rectangles,possibleWet,unauthorizedWet,unresolved,areaUpperBound,
-    maxOldOnUnauthorized:finite(maxOldOnUnauthorized)?maxOldOnUnauthorized:null};
+  return {rectangles,possible,unauthorized,unresolved,areaUpperBound,extremeOld:finite(extremeOld)?extremeOld:null};
 }
