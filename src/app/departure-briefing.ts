@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, seacowExteriorRequested, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -8,6 +8,9 @@ const coastalGrass = new Set(['prince-coastal-grass', 'queens-coastal-grass', 'k
  * A missing source may still leave the stock scenery in the running game. */
 export function departureBriefing(site: Site, search: string): string {
   const options = sceneryOptions(search);
+  if (site.id === 'prince-mapped-farmland-pass' && princeFieldPassRequested(options)) {
+    return site.note + ' Look for close furrows as the verified field detail streams in.';
+  }
   if (site.id === 'queens-fields' && queensFieldPassRequested(options)) {
     return 'A low inland pass. Look for fine furrows on the mapped fields as the verified detail streams in.';
   }

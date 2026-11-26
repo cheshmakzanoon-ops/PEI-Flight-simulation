@@ -9,7 +9,7 @@ import {spawn,step,FIXED_STEP,neutral} from '../src/sim/flight.ts';
 import {project} from '../src/sim/geo.ts';
 import {Terrain,type TerrainSpec} from '../src/sim/terrain.ts';
 import {Cover} from '../src/sim/cover.ts';
-import {KINGS_MAPPED_FARMLAND_DEPARTURE,SITES,runwayAt} from '../src/sim/places.ts';
+import {KINGS_MAPPED_FARMLAND_DEPARTURE,PRINCE_MAPPED_FARMLAND_DEPARTURE,SITES,runwayAt} from '../src/sim/places.ts';
 
 function fieldGround(){
  const base=new URL('../public/world/',import.meta.url),read=(p:string)=>readFileSync(new URL(p,base));
@@ -81,4 +81,20 @@ test('new Kings mapped farmland departure visits the exact signed v2 field and l
  assert.ok(directoryReady);
  assert.ok(closest<30,'neutral path distance '+closest);
  assert.ok(minAlt>=50,'neutral path simulated clearance '+minAlt);
+});
+
+test('Prince mapped route crosses a continuous field pass without changing the neutral flight model',()=>{
+ const {surface}=fieldGround(),route=PRINCE_MAPPED_FARMLAND_DEPARTURE;
+ const f=spawn(route,surface),origin=[f.x,f.z];
+ assert.equal(surface(f.x,f.z).land,true);
+ assert.ok(Math.abs(f.y-surface(f.x,f.z).height-62)<1e-8);
+ let lowest=Infinity;
+ for(let i=0;i<90*14;i++){
+  step(f,neutral,surface,FIXED_STEP);
+  const local=surface(f.x,f.z);
+  assert.ok(local.land&&f.status==='flying');
+  lowest=Math.min(lowest,f.y-local.height);
+ }
+ assert.ok(lowest>=52,'neutral path clearance '+lowest);
+ assert.ok(Math.hypot(f.x-origin[0],f.z-origin[1])>680);
 });

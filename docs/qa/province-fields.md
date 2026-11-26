@@ -2,7 +2,7 @@
 
 ## Fly the mapped Kings County pass
 
-Choose **Kings County · mapped farmland pass** in Standard Dispatch, then **Begin flight**. Bookmark it with `?departure=kings-mapped-farmland-pass`, or add `&stockKingsFieldPass` to compare the same Standard flight without the furrows. Both start 62 metres above the same surface. The route crosses a mapped 2023 field (FID 43994); the earlier Kings **fields low pass** remains unchanged.
+Choose **Kings County · mapped farmland pass** in Standard Dispatch, then **Begin flight**. Bookmark it with `?departure=kings-mapped-farmland-pass`, or add `&stockKingsFieldPass` to compare the same Standard flight without the furrows. Both start 62 metres above the same surface. The approved field shader can link while its departure is selected; the player does not wait before launching. If the first link fails, the renderer retries once and keeps the stock material until an exact replacement is ready. The route crosses a mapped 2023 field (FID 43994); the earlier Kings **fields low pass** remains unchanged.
 
 The route can warm four authenticated ranges while selected in Dispatch, but never holds the flight button. Its additional shader variant replaces the material on the one original near terrain draw `23-13` N112 during flight. The existing orthophoto, woodland, grass, lighting, geometry and flight contact remain in place. Unrelated departures, Detail, the distant view, and missing or unverified field data keep their normal terrain. The furrows are generic CC0 surface relief applied to mapped field interiors, not measured crop rows or evidence about what grows there today.
 
@@ -11,6 +11,10 @@ The [compiled Standard replay](farmland-v2/kings-standard-native.json) verified 
 ## Fly the Queens County fields pass
 
 Choose **Queens County · fields low pass** in Standard Dispatch. This route uses the same small range loader on original near terrain draw `12-13` and can read only three signed ranges from `crop-19.pack`. Its altitude, heading, flight model and surface geometry are unchanged. The isolated comparison switch is `?departure=queens-fields&stockQueensFieldPass`, which does not change the independent Kings County route. The [paired build replay](farmland-v2/queens-standard-native.json) checked four real close views and exact restoration, including missing-data and unrelated-departure controls.
+
+## Fly the mapped Prince County pass
+
+Choose **Prince County · mapped farmland pass** in Standard Dispatch, not the earlier **Prince County · fields low pass** comparison. The newer route starts 62 m above a separate inland field and keeps signed field support in view over successive close checkpoints. Only one original near terrain draw, `9-13`, receives the treatment and only four signed ranges from `crop-14.pack` are authorized. Compare the identical flight with `?departure=prince-mapped-farmland-pass&stockPrinceFieldPass`. The underlying terrain, aircraft and nearby scenery are unchanged. The [matched native replay](farmland-v2/prince-standard-native.json) records the four close snapshots, the stock and missing-index controls, and the Government of PEI county checks along the departure.
 
 ## Optional province-wide study
 

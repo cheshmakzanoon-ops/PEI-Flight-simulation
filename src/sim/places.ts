@@ -72,6 +72,11 @@ export const MONTAGUE_BRIDGE_DEPARTURE:Site={
 
 // Keep normal stock and conditionally appended route ordinals stable.
 // Main lists this additional pass after the existing regional routes.
+export const PRINCE_MAPPED_FARMLAND_DEPARTURE:Site={
+ id:'prince-mapped-farmland-pass',name:'Prince County · mapped farmland pass',region:'Prince County',
+ lon:-63.68388151653852,lat:46.38290866227233,heading:165,height:62,
+ note:'Begin 62 metres above a mapped inland field. Virtual sightseeing only.',
+};
 export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={
  id:'kings-mapped-farmland-pass',name:'Kings County · mapped farmland pass',region:'Kings County',
  lon:-62.63729889216559,lat:46.39645292554363,heading:197.3,height:62,

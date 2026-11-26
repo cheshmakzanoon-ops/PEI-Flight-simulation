@@ -8,14 +8,16 @@ import {PNG} from 'pngjs';
 
 const base=process.env.PREVIEW_URL??'http://127.0.0.1:4173/';
 const out=process.env.SMOKE_OUTPUT??'artifacts/smoke';
-const kingsSite='kings-mapped-farmland-pass',queensSite='queens-fields';
+const kingsSite='kings-mapped-farmland-pass',queensSite='queens-fields',princeSite='prince-mapped-farmland-pass';
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE,
  args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--ignore-gpu-blocklist']});
 try{
  const proofs=[];
- for(const mode of ['standard','expanded','queens']){
- const standard=mode!=='expanded',queens=mode==='queens',site=queens?queensSite:kingsSite;
+ for(const mode of ['standard','expanded','queens','prince']){
+ const standard=mode!=='expanded',queens=mode==='queens',prince=mode==='prince';
+ const site=queens?queensSite:prince?princeSite:kingsSite;
+ const diagnostic=queens?'islandAirQueensFields':prince?'islandAirPrinceFields':'islandAirKingsFields';
  const page=await browser.newPage({viewport:{width:540,height:360}});
  page.setDefaultTimeout(95000);
  const errors=[],requests=[];
@@ -30,7 +32,7 @@ try{
   const raf=window.requestAnimationFrame.bind(window),g=WebGL2RenderingContext.prototype;
   const use=g.useProgram,el=g.drawElements,arr=g.drawArrays,uf=g.uniform1f,uniform=g.getUniformLocation;
   const current=new WeakMap,known=new WeakMap;
-  const s=window.mappedFarmlandQA={hold:false,clock:undefined,sample:null,frame:null,gain:null,draws:0,owners:[]};
+  const s=window.mappedFarmlandQA={hold:false,clock:undefined,sample:null,frame:null,gain:null,draws:0,owners:[],flightOrigin:null};
   g.useProgram=function(p){current.set(this,p);return use.call(this,p);};
   function sample(gl,call){
    if(s.sample===null||gl.canvas!==document.querySelector('#world')||gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING)!==null)return call();
@@ -49,6 +51,9 @@ try{
   window.requestAnimationFrame=cb=>raf(t=>{
    const used=s.hold?(s.clock??t):t;s.clock=used;s.draws=0;s.owners=[];
    cb(used);
+   const flight=window.islandAirDiagnostics;
+   if(s.flightOrigin&&!s.hold&&flight?.mode==='flight'&&
+      Math.hypot(flight.x-s.flightOrigin[0],flight.z-s.flightOrigin[1])>=132)s.hold=true;
    if(s.sample!==null&&s.draws>0){
     const canvas=document.querySelector('#world'), gl=canvas.getContext('webgl2');
     s.frame={id:s.sample,draws:s.draws,owners:s.owners,png:canvas.toDataURL('image/png'),glError:gl.getError(),
@@ -61,26 +66,43 @@ try{
  assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
  await page.getByRole('button',{name:'Begin flight'}).waitFor();
  await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site,{polling:120});
+ // This lane isolates optical behavior at a fixed real flight distance.
+ // Wait while the selected optional ranges warm in Dispatch, so slower CI
+ // scheduling cannot move the aircraft past the comparison window first.
+ if(standard)await page.waitForFunction(key=>{
+  const pass=window[key]?.state;
+  return window.islandAirDiagnostics?.mode==='dispatch'&&(pass?.stream?.ready??0)>=2;
+ },diagnostic,{timeout:23000,polling:120}).catch(async err=>{
+  const state=await page.evaluate(key=>({site:window.islandAirDiagnostics?.site,route:window[key]?.state}),diagnostic);
+  throw Error(mode+' could not warm the authenticated start: '+JSON.stringify({state,requests,errors}),{cause:err});
+ });
  await page.getByRole('button',{name:'Begin flight'}).click();
  await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===v,site,{polling:80});
  const start=await page.evaluate(()=>window.islandAirDiagnostics);
- await page.waitForFunction(({a,standard,queens})=>{
-  const d=window.islandAirDiagnostics,pass=(queens?window.islandAirQueensFields:window.islandAirKingsFields)?.state;
+ // Freeze the clock immediately after a real, neutral 132m flight segment.
+ // Unlike pausing the UI, this keeps source validation and detached program
+ // linking running naturally while the comparison view stays fixed.
+ await page.evaluate(({x,z})=>{window.mappedFarmlandQA.flightOrigin=[x,z];},start);
+ await page.waitForFunction(({a,standard,diagnostic})=>{
+  const d=window.islandAirDiagnostics,pass=window[diagnostic]?.state;
   const field=standard?pass?.stream:d?.provinceFields;
-  if(!d||d.site!==a.site||d.mode!=='flight'||d.camera!=='Chase'||(field?.ready??0)<2||
+  if(!window.mappedFarmlandQA.hold||!d||d.site!==a.site||d.mode!=='flight'||d.camera!=='Chase'||(field?.ready??0)<2||
       (standard&&pass.phase!=='live'))return false;
   const k=Math.hypot(d.x-a.x,d.z-a.z);
   return k>=103&&k<=235&&d.altitude-d.groundY>=47&&d.altitude-d.groundY<=83;
- },{a:start,standard,queens},{polling:65});
+ },{a:start,standard,diagnostic},{polling:65}).catch(async err=>{
+  const state=await page.evaluate(key=>({flight:window.islandAirDiagnostics,route:window[key]?.state}),diagnostic);
+  throw Error(mode+' did not reach the qualified rendered flight window: '+JSON.stringify({state,requests,errors}),{cause:err});
+ });
  const current=await page.evaluate(()=>window.islandAirDiagnostics);
  await page.keyboard.press('p');
- await page.waitForFunction(({standard,queens})=>{
-  const d=window.islandAirDiagnostics,pass=(queens?window.islandAirQueensFields:window.islandAirKingsFields)?.state;
+ await page.waitForFunction(({standard,diagnostic})=>{
+  const d=window.islandAirDiagnostics,pass=window[diagnostic]?.state;
   const field=standard?pass?.stream:d?.provinceFields;
   return d?.mode==='paused'&&field?.active&&field.ready>=2&&field.pending===0&&d.detail?.loading===0;
- },{standard,queens},{polling:130});
+ },{standard,diagnostic},{polling:130});
  // Field arrivals use the real wall clock. Give existing residents their
- // shipped 0.85 s blend *after* normal cold launch has been verified.
+ // shipped 0.85 s blend before freezing the optical comparison.
  await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,950)));
  await page.evaluate(()=>{window.mappedFarmlandQA.hold=true;});
  async function capture(id,gain){
@@ -94,7 +116,7 @@ try{
  assert.equal(stock.draws,live.draws);assert.equal(restored.draws,live.draws);assert.equal(marker.draws,live.draws);
  if(standard){
   assert.equal(live.draws,1,'Standard cannot repaint all terrain groups');
-  assert.deepEqual(live.owners,[[(queens?12:23)/32,Math.fround(13/22),32,22]],'wrong submitted terrain receiver');
+  assert.deepEqual(live.owners,[[(queens?12:prince?9:23)/32,Math.fround(13/22),32,22]],'wrong submitted terrain receiver');
   assert.equal(current.provinceFields,null,'Standard must not use the legacy option');
  }
  const spatial=d=>[d.x,d.z,d.altitude,d.groundY,d.heading,d.bank,d.camera];
@@ -114,10 +136,10 @@ try{
  assert.equal(names.filter(s=>s==='index.fcr.gz').length,1);
  assert.equal(names.filter(s=>s==='furrow-relief.webp').length,1);
  assert(names.some(s=>/^crop-\d\d\.pack$/.test(s)));
- if(standard)assert(names.every(n=>['index.fcr.gz','furrow-relief.webp',queens?'crop-19.pack':'crop-32.pack'].includes(n)),'Standard opened an unauthorized pack');
+ if(standard)assert(names.every(n=>['index.fcr.gz','furrow-relief.webp',queens?'crop-19.pack':prince?'crop-14.pack':'crop-32.pack'].includes(n)),'Standard opened an unauthorized pack');
  proofs.push({mode,samePose:spatial(live.d),equalOpticalDraws:live.draws,site,
   distance:Math.hypot(current.x-start.x,current.z-start.z),aboveGround:current.altitude-current.groundY,
-  fieldStream:standard?await page.evaluate(q=>(q?window.islandAirQueensFields:window.islandAirKingsFields)?.state.stream,queens):current.provinceFields,
+  fieldStream:standard?await page.evaluate(k=>window[k]?.state.stream,diagnostic):current.provinceFields,
   requests,changed,strong,peak,alpha,exterior,restored:true});
  await writeFile(out+'/mapped-farmland-'+mode+'-stock.png',stock.image);
  await writeFile(out+'/mapped-farmland-'+mode+'-live.png',live.image);
@@ -125,7 +147,7 @@ try{
  }
 
  const explicitStock=[];
- for(const [site,flag] of [[kingsSite,'stockKingsFieldPass'],[queensSite,'stockQueensFieldPass']]){
+ for(const [site,flag] of [[kingsSite,'stockKingsFieldPass'],[queensSite,'stockQueensFieldPass'],[princeSite,'stockPrinceFieldPass']]){
  const off=await browser.newPage({viewport:{width:510,height:340}});
  const stockRequests=[],stockErrors=[];
  off.on('pageerror',e=>stockErrors.push(e.message));

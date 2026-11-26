@@ -1,0 +1,147 @@
+{
+  "replayKind": "Pre-merge native Standard Chromium WebGL2, real unassisted flight; same-frame markers only. No claim of current crops, whole-island optical quality, or hardware FPS.",
+  "actualRenderedWorldTile": "9-13",
+  "viewport": [
+    720,
+    480
+  ],
+  "matchedSnapshots": {
+    "t2": {
+      "distanceM": 108.686,
+      "aboveGroundM": 58.457,
+      "draws": 1,
+      "receiver": [
+        "9-13"
+      ],
+      "indexCount": 75264,
+      "strong": 98065,
+      "p95": 7,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t4": {
+      "distanceM": 207.416,
+      "aboveGroundM": 56.299,
+      "draws": 1,
+      "receiver": [
+        "9-13"
+      ],
+      "indexCount": 75264,
+      "strong": 100484,
+      "p95": 8,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t6": {
+      "distanceM": 311.465,
+      "aboveGroundM": 55.917,
+      "draws": 1,
+      "receiver": [
+        "9-13"
+      ],
+      "indexCount": 75264,
+      "strong": 98945,
+      "p95": 8,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t8": {
+      "distanceM": 416.719,
+      "aboveGroundM": 55.524,
+      "draws": 1,
+      "receiver": [
+        "9-13"
+      ],
+      "indexCount": 75264,
+      "strong": 100222,
+      "p95": 8,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    }
+  },
+  "countyRoutePoints": [
+    [
+      0,
+      [
+        -63.68393816079424,
+        46.38305464460116
+      ],
+      [
+        {
+          "KEYWORD": "PRINCE",
+          "USERNUM": 4506301.0
+        }
+      ]
+    ],
+    [
+      6,
+      [
+        -63.68275679073811,
+        46.38036790657586
+      ],
+      [
+        {
+          "KEYWORD": "PRINCE",
+          "USERNUM": 4506301.0
+        }
+      ]
+    ],
+    [
+      14,
+      [
+        -63.68115398416487,
+        46.376722315123885
+      ],
+      [
+        {
+          "KEYWORD": "PRINCE",
+          "USERNUM": 4506301.0
+        }
+      ]
+    ]
+  ],
+  "countySource": "https://gis.princeedwardisland.ca/server/rest/services/county_zones/FeatureServer/0",
+  "rangeTraffic": [
+    [
+      200,
+      null,
+      115861
+    ],
+    [
+      200,
+      null,
+      150012
+    ],
+    [
+      206,
+      "bytes 84771-87472/118480",
+      2702
+    ],
+    [
+      206,
+      "bytes 114277-115047/118480",
+      771
+    ],
+    [
+      206,
+      "bytes 87473-90920/118480",
+      3448
+    ],
+    [
+      206,
+      "bytes 115048-116231/118480",
+      1184
+    ]
+  ],
+  "stockVetoFieldRequests": 0,
+  "indexFaultCropPackResponses": 0,
+  "originalComparisonPreserved": "prince-fields"
+}

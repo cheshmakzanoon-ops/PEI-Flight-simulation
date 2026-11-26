@@ -12,6 +12,8 @@ export const KINGS_MAPPED_PASS:MappedPass={id:'kings-mapped-farmland-pass',tile:
  center:[43194.39622103769,11510.405016114737],cells:KINGS_FIELD_CELLS};
 export const QUEENS_MAPPED_PASS:MappedPass={id:'queens-fields',tile:'12-13',
  center:[-23643.075210807714,15291.056341026648],cells:['-24:14','-23:14','-23:13']};
+export const PRINCE_MAPPED_PASS:MappedPass={id:'prince-mapped-farmland-pass',tile:'9-13',
+ center:[-37143.999999999716,13016.000000000342],cells:['-37:12','-36:12','-37:13','-36:13']};
 export type FieldOwner={id:string;mesh:Mesh;stock:ShaderMaterial};
 type Position={x:number;y:number;z:number};
 export function withinMappedPass(p:Position,agl:number,route:MappedPass){
@@ -48,6 +50,8 @@ export class MappedFieldPass {
  private serial=0;
  private phase='stock';
  private blocked=false;
+ private linkAttempts=0;
+ private retryAt=0;
  private readonly base:string;private readonly renderer:WebGLRenderer;
  private readonly scene:Scene;private readonly camera:Camera;
   readonly route:MappedPass;
@@ -60,7 +64,7 @@ export class MappedFieldPass {
  leave(){
   if(!this.controller&&!this.art&&!this.leases.length&&!this.blocked)return;
   ++this.serial;this.controller?.abort();this.controller=undefined;this.retire();
-  this.art?.dispose();this.art=undefined;this.blocked=false;this.phase='stock';
+  this.art?.dispose();this.art=undefined;this.blocked=false;this.linkAttempts=0;this.retryAt=0;this.phase='stock';
  }
  private retire(){
   this.program?.abort();this.program=undefined;this.proof=undefined;
@@ -91,21 +95,36 @@ export class MappedFieldPass {
   }
   if(!this.art)return;
   this.art.study.stream.update(eye.x,eye.z,agl);
-  if(!flightContext&&this.leases.length){this.retire();this.phase='ready';}
-  if(!airborne&&!this.leases.length)return;
+  // A detached shader can link while a valid, selected Dispatch terrain
+  // owner is visible. Putting it on the actor still requires actual flight.
+  if(!flightContext&&this.leases.some(q=>q.owner.mesh.material===q.authored)){
+   this.retire();this.phase='ready';this.linkAttempts=0;this.retryAt=0;
+  }
+  if(flightContext&&!airborne&&!this.leases.length)return;
   const matching=owners();
   if(this.leases.length&&(!matching||matching.length!==this.leases.length||matching.some((q,i)=>
       q.mesh!==this.leases[i].owner.mesh||q.mesh.geometry!==this.leases[i].geometry||
       q.stock!==this.leases[i].owner.stock||q.stock.fragmentShader!==this.leases[i].source))){
    this.retire();this.phase='ready';
   }
-  if(this.proof&&!this.proof()){this.retire();this.blocked=true;this.phase='unavailable';return;}
-  if(!matching||!airborne||!this.art.study.stream.state.ready||this.blocked)return;
-  if(!this.leases.length)this.prepare(matching);
-  if(this.proof){
+  if(this.proof&&!this.proof()){this.unlink();return;}
+  if(!matching||!this.art.study.stream.state.ready||this.blocked)return;
+  if(!this.leases.length){
+   if(this.linkAttempts>=2){this.blocked=true;this.phase='unavailable';return;}
+   if(performance.now()>=this.retryAt)this.prepare(matching);
+  }
+  if(flightContext&&airborne&&this.proof){
    for(const q of this.leases)q.owner.mesh.material=q.authored;
    this.phase='live';
   }
+ }
+ private unlink(){
+  this.retire();
+  // A cold software GL pipeline is allowed one later detached attempt.
+  // Stock remains submitted between attempts; no link proof is bypassed.
+  this.blocked=this.linkAttempts>=2;
+  this.retryAt=performance.now()+360;
+  this.phase=this.blocked?'unavailable':'retrying';
  }
  private prepare(owners:FieldOwner[]){
   const art=this.art;if(!art)return;
@@ -122,11 +141,11 @@ export class MappedFieldPass {
    leases.push({owner,authored,source,geometry:owner.mesh.geometry});
   }
   this.leases=leases;for(const q of leases)this.materials.set(q.owner.id,q.authored);
-  const program=new AbortController();this.program=program;this.phase='linking';
-  void olearyLinkPrograms(this.renderer,this.camera,this.scene,1,false,3800)(group,program.signal).then(proof=>{
+  const program=new AbortController();this.program=program;this.phase='linking';this.linkAttempts++;
+  void olearyLinkPrograms(this.renderer,this.camera,this.scene,1,false,7400)(group,program.signal).then(proof=>{
    if(this.program!==program||program.signal.aborted)return;
-   if(proof){this.proof=proof;return;}
-   this.retire();this.blocked=true;this.phase='unavailable';
+   if(proof){this.proof=proof;this.phase='linked';return;}
+   this.unlink();
   });
  }
 }
