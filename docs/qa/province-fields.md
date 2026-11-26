@@ -2,6 +2,14 @@
 
 In **Standard** scenery, open **Optional scenery studies** in Dispatch, select **Expanded farmland**, and apply. A direct bookmark uses `?provinceFieldsReview`. Opting in adds fine furrow relief to selected field interiors in all three counties. The ordinary ground and the separate three-site `?cropRowsReview` study are unchanged. Expanded farmland can be [combined with Ground vegetation](province-land-surfaces.md).
 
+## Fly the mapped Kings County pass
+
+Choose **Kings County · mapped farmland pass** in Dispatch. Enable **Expanded farmland** under **Optional scenery studies**, apply, then choose **Begin flight**. To bookmark the route in your own running copy, use `?departure=kings-mapped-farmland-pass&provinceFieldsReview`. For a clean comparison, use the same URL without `&provinceFieldsReview`. Both start at the same 62 metres above the starting surface and use the same flight model.
+
+This route crosses a retained 2023 field outline (FID 43994). It does not replace the original Kings **fields low pass**, which remains a comparison route for the earlier three-site study. Expanded farmland is still opt-in: the route itself does not request the extra assets. It represents dated field locations and authored rows, not current crops or usable flight guidance.
+
+An isolated check of the same Three.js land draw used the new departure’s ordinary Chase camera, unmodified terrain and authenticated v2 masks. At 2, 4, 6 and 8 seconds, 73,884, 59,665, 92,753 and 69,773 of the 960 × 640 frame pixels changed by more than two RGB code levels, with zero changes outside the layer’s support. At 11 and 14 seconds the frames were unchanged. Geometry, alpha and the restored image were exact. This is a [render-side test](farmland-v2/kings-mapped-route-native.json), not a browser loading, hardware benchmark or claim about the whole landscape.
+
 ## What changed in v2
 
 The earlier bake calculated its own conversion from longitude and latitude. That put some strips of furrows on woods, built ground and a road shoulder. V2 regenerates the masks from the original field polygons using the simulator’s actual world projection. It does **not** sharpen an aerial photograph, add field geometry or change the furrow shader. The effect changes colour and lighting close to the ground, not terrain elevations, roads, buildings or flight contact. Surface rows are authored; neither their spacing nor bearing is surveyed.

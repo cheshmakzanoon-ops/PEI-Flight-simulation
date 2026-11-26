@@ -1,0 +1,65 @@
+{
+  "scope": "Actual r187 prefixed existing land GLSL, authentic field tile and RGB imagery (only selected regular World N112 tiles), neutral flight stock model incl optical-support marker. Mesa isolated land; excludes airframe, fog branches from optional modes, aircraft/trees and browser startup. No claims on FPS or public new route.",
+  "res": {
+    "2": {
+      "slots": 3,
+      "pixelSupport": 170934,
+      "changedRgb": 143550,
+      "changedGt2": 73884,
+      "p95": 6.0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    },
+    "4": {
+      "slots": 3,
+      "pixelSupport": 217120,
+      "changedRgb": 195690,
+      "changedGt2": 59665,
+      "p95": 4.0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    },
+    "6": {
+      "slots": 2,
+      "pixelSupport": 222877,
+      "changedRgb": 212015,
+      "changedGt2": 92753,
+      "p95": 5.0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    },
+    "8": {
+      "slots": 3,
+      "pixelSupport": 151256,
+      "changedRgb": 141226,
+      "changedGt2": 69773,
+      "p95": 5.0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    },
+    "11": {
+      "slots": 3,
+      "pixelSupport": 0,
+      "changedRgb": 0,
+      "changedGt2": 0,
+      "p95": 0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    },
+    "14": {
+      "slots": 3,
+      "pixelSupport": 0,
+      "changedRgb": 0,
+      "changedGt2": 0,
+      "p95": 0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreExact": true
+    }
+  }
+}

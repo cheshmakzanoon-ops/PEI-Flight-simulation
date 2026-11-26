@@ -58,6 +58,13 @@ export const SITES: Site[] = [
   lon:-64.21528650212998,lat:46.715825492132865,heading:221,height:65,
   note:'Start northeast of O’Leary and look for the former railway station on Main Street. Virtual sightseeing only, not a navigation route.'},
 ];
+// Keep normal stock and conditionally appended route ordinals stable.
+// Main lists this additional pass after the existing regional routes.
+export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={
+ id:'kings-mapped-farmland-pass',name:'Kings County · mapped farmland pass',region:'Kings County',
+ lon:-62.63729889216559,lat:46.39645292554363,heading:197.3,height:62,
+ note:'Begin at 62 metres above the starting surface. Enable Expanded farmland in Standard Dispatch for close furrow detail over a mapped inland field. Virtual sightseeing only.',
+};
 function cyyg10SimulatorEnds(){
  const p=project(...CYYG_10_MAP_LINE.west),q=project(...CYYG_10_MAP_LINE.east);
  const dx=q.x-p.x,dz=q.z-p.z,k=CYYG_10_SIZE.length/(2*Math.hypot(dx,dz));

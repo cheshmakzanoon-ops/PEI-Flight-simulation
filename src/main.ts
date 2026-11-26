@@ -107,7 +107,7 @@ import { EngineSound } from './app/sound.ts';
 import { UI, bootUI, loadMsg, failUI } from './app/ui.ts';
 import {windmillOmegaRadS} from './sim/windmilling.ts';
 import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
-import { SITES as STOCK_SITES } from './sim/places.ts';
+import { KINGS_MAPPED_FARMLAND_DEPARTURE, SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
 import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested,standardNearshoreRequested,standardOpenCoastRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,standardInlandOrtho,coastalMarshRequested} from './app/scenery-profile.ts';
@@ -121,7 +121,7 @@ async function run(){
  const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
  // Keep the same Point Prim approach in Standard and in its stock comparison.
  const pointPrimSites=pointPrimDepartureAvailable(options)?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
- const SITES=[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES];
+ const SITES=[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES,KINGS_MAPPED_FARMLAND_DEPARTURE];
  const wantsPointPrim=pointPrimRequested(options);
 
  const standardBreakers=shoreFoamDetailRequested(options);
