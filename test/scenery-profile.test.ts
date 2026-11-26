@@ -228,8 +228,10 @@ test('Summerside owner vetoes keep unrelated Standard scenery active and unknown
 test('Cape Tryon material comparison preserves Standard coastal routing and earlier fallbacks',()=>{
  const base='?departure=cape-tryon-coast&diagnostics';
  const q=(query:string)=>sceneryOptions(query);
- for(const choose of [standardOpenCoastRequested,standardOpenRipplesRequested,standardPanmurePastureRequested,coastalMarshRequested,forestFloorProfile])
-  assert.equal(choose(q(base+'&capeTryonRockReview')),choose(q(base)));
+ for(const flag of ['capeTryonRockReview','capeTryonWaterReview']){
+  for(const choose of [standardOpenCoastRequested,standardOpenRipplesRequested,standardPanmurePastureRequested,coastalMarshRequested,forestFloorProfile])
+   assert.equal(choose(q(base+'&'+flag)),choose(q(base)));
+ }
  assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview')),true);
  for(const veto of ['scenery=detail','legacyShoreArcs','stockOpenCoast'])
   assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview&'+veto)),false);

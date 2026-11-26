@@ -74,6 +74,7 @@ import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type 
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches} from './cape-tryon-rock.ts';
 import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
+import {CAPE_WET_PATCH,capeWetCells,capeWetPatchGateGLSL,capeWetTieGLSL} from './cape-tryon-wet-tie.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
 import { shoreFoamGLSL,brokenShoreFoamGLSL } from './shore-foam.ts';
@@ -150,11 +151,12 @@ const skyFrag=skyFn+`
   if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}
   vec3 c=skyAt(normalize(skyRay));
   gl_FragColor=vec4(c,1.);`+out;
-const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false,baywalk=false,nearshoreFoam=false,openRipples=false)=>{
+const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,montagueOptics=false,foamDetail=false,baywalk=false,nearshoreFoam=false,openRipples=false,capeWetPatch=false)=>{
  const foam=nearshoreFoam?'chooseNearshoreFoam(q,uv,shore,t,dist,n,foamFootprint,foamPixelM,foamDX,foamDY,extent.zw,coverMap)':
   foamDetail?'brokenShoreFoam(q,shore,t,dist,n,foamFootprint,foamPixelM)':'shoreFoam(q,shore,t,dist,n,foamFootprint)';
  return fp+skyFn+shoreFoamGLSL+(foamDetail||nearshoreFoam?brokenShoreFoamGLSL:'')+(baywalk?baywalkLandGLSL:'')+(montague?montagueBankGLSL:'')+(lake?southLakeGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(nearshoreFoam?nearshoreFoamGLSL+nearshoreFoamRouterGLSL(foamDetail):'')+(openRipples?openWaterRippleGLSL:'')+`
  uniform sampler2D imageMap,coverMap,rippleMap; uniform vec4 extent; uniform float sourisWaterTie;
+ ${capeWetPatch?capeWetTieGLSL:''}
  float filteredWave(vec2 xy,vec2 k,float phase){float arg=dot(xy,k)+phase;return cos(arg)*(1.-smoothstep(.27,2.55,fwidth(arg)));}
  void main(){
  #include <logdepthbuf_fragment>
@@ -215,6 +217,7 @@ const waterFrag=(lake:boolean,harbour:boolean,basin:boolean,montague=false,monta
  ${nearshoreFoam?'vec2 foamDX=dFdx(q),foamDY=dFdy(q);':''}
  // Bounded shoreline tie on the existing ocean plane: the level water
  // is evidenced even when land and water both discard a rounded zero.
+ ${capeWetPatch?capeWetPatchGateGLSL:''}
  if(shore>=0.){
   if(sourisWaterTie>.5&&shore<=${SOURIS_STOCK_WATER_TIE.maxOldDistance}&&
      p.x>=${SOURIS_STOCK_WATER_TIE.west}&&p.x<=${SOURIS_STOCK_WATER_TIE.east}&&
@@ -593,6 +596,8 @@ export class World {
  get tryonRockActive(){return this.tryonRockStage?.mounted===true;}
  private tryonRockPhase='stock';
  get tryonRockState(){return this.tryonRockPhase;}
+ private capeWetStage?:{mesh:THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>;camera?:THREE.Camera;proof?:OlearyProgramProof;phase:'pending'|'checking'|'stock'|'ready'};
+ get capeWetState(){const s=this.capeWetStage;return s?.mesh.visible?'live':s?.phase??'stock';}
  private readonly bankGround?:NativeBank;
  private bank?:{material?:THREE.ShaderMaterial;batches:{mesh:THREE.Mesh;full:THREE.BufferGeometry;near:THREE.BufferGeometry}[];
    close?:THREE.Mesh;segments:ShoreSegment[];joins:ReturnType<typeof basinBankJoins>};private tiles:Patch[]=[];private byId=new Map<string,Patch>();private mat:THREE.ShaderMaterial;private sky:THREE.Mesh;
@@ -646,7 +651,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -742,6 +747,40 @@ export class World {
    oceanMaterial.uniforms={...oceanMaterial.uniforms,sourisWaterTie:this.sourisWaterTie};
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
    ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
+   if(closeOpenCoast&&!legacyShore&&tryonRockMatches(capeWetTerrainSha,T.spec.bounds,cover)&&
+     !renderer.capabilities.reversedDepthBuffer){
+    const cells=capeWetCells(T,cover);
+    // Only the signed mixed cells contain a possible true-negative tie.
+    // This does not rasterize the entire 510 × 310 m search window.
+    if(cells.length===22){
+     const src=waterFrag(!!southLake,!!harbour,!!basin,!!montague,!!montague&&montagueOptics,
+        foamDetail,!!cover.baywalk,this.nearshoreFoamArmed,openRipples,true);
+     const m=make(src);
+     m.uniforms={...oceanMaterial.uniforms,capeWetPass:{value:0}};m.defines={...oceanMaterial.defines};
+     m.depthTest=true;m.depthWrite=false;m.depthFunc=THREE.EqualDepth;
+     const vertices:number[]=[];
+     for(const c of cells){
+      const x0=c.x0-CAPE_WET_PATCH.x,x1=c.x1-CAPE_WET_PATCH.x,z0=c.z0-CAPE_WET_PATCH.z,z1=c.z1-CAPE_WET_PATCH.z;
+      vertices.push(x0,0,z0,x0,0,z1,x1,0,z0,x1,0,z0,x0,0,z1,x1,0,z1);
+     }
+     const g=new THREE.BufferGeometry();
+     g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+     g.setAttribute('uv',new THREE.BufferAttribute(new Float32Array(vertices.length/3*2),2));
+     g.computeBoundingSphere();
+     const patch=new THREE.Mesh(g,m);
+     patch.position.set(CAPE_WET_PATCH.x,OCEAN_Y,CAPE_WET_PATCH.z);
+     patch.name='Cape Tryon signed-water depth-gap preview';
+     patch.renderOrder=10000;patch.visible=false;
+     const stage:NonNullable<World['capeWetStage']>={mesh:patch,phase:'pending'};
+     patch.onBeforeRender=(r,sc,camera,geometry,material)=>{
+      m.uniforms.capeWetPass.value=Number(!!(r===renderer&&sc===scene&&camera===stage.camera&&
+       geometry===g&&material===m&&stage.proof?.()&&r.autoClear&&r.autoClearDepth&&r.sortObjects&&
+       r.getRenderTarget()===null&&!r.xr.isPresenting));
+      m.uniformsNeedUpdate=true;
+     };
+     this.capeWetStage=stage;
+    }
+   }
    this.mat=make(landFrag(false));
    let inletBank:THREE.ShaderMaterial|undefined;
    if(basin){
@@ -1051,6 +1090,32 @@ export class World {
    if(this.tryonRockStage===s&&proof?.()){s.proof=proof;this.tryonRockPhase='linked';}
    else this.tryonRockPhase='stock-link';
   }finally{probe.clear();}
+ }
+ async prepareCapeWet(camera:THREE.Camera){
+  const s=this.capeWetStage;
+  if(s?.phase!=='pending'||Math.hypot(camera.position.x-CAPE_WET_PATCH.x,camera.position.z-CAPE_WET_PATCH.z)>1400)return;
+  s.phase='checking';
+  if(!globalThis.crypto?.subtle||await verifyDecodedCover(this.cover)!==CAPE_TRYON_COVER_DECODED){
+   s.phase='stock';return;
+  }
+  const gl=this.renderer.getContext();
+  if(!gl.getContextAttributes()?.depth||gl.getParameter(gl.DEPTH_CLEAR_VALUE)!==1){s.phase='stock';return;}
+  const probe=new THREE.Group();
+  probe.add(new THREE.Mesh(s.mesh.geometry,s.mesh.material));
+  try{
+   const proof=await olearyLinkPrograms(this.renderer,camera,this.scene,1,false,4600)(probe,new AbortController().signal);
+   if(this.capeWetStage===s&&proof?.()){
+    s.proof=proof;s.phase='ready';s.camera=camera;this.scene.add(s.mesh);
+   }else s.phase='stock';
+  }finally{probe.clear();}
+ }
+ private syncCapeWet(pos:THREE.Vector3){
+  const s=this.capeWetStage;if(s?.phase!=='ready')return;
+  if(!s.proof?.()){s.mesh.removeFromParent();s.mesh.visible=false;s.phase='stock';return;}
+  const tile=this.byId.get('12-10');
+  const regular=tile?.lod===112&&!!tile.fine?.visible&&!tile.relief&&
+   !tile.fine.userData.coastalRefinement&&!tile.fine.userData.coastalSurvey&&!tile.fine.userData.localGrade&&!this.grades?.has('12-10');
+  s.mesh.visible=regular&&Math.hypot(pos.x-CAPE_WET_PATCH.x,pos.z-CAPE_WET_PATCH.z)<1160;
  }
  private syncTryonRock(){
   const s=this.tryonRockStage;if(!s?.proof)return;
@@ -1566,7 +1631,7 @@ export class World {
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
-  this.syncTryonRock();
+  this.syncTryonRock();this.syncCapeWet(pos);
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   this.orthoSeams?.advance(clock);
   const grass=this.grassStudy;

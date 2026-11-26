@@ -4,7 +4,7 @@ In Standard, select **Cape Tryon · cliff pass** to approach the headland from t
 
 Five selected cells west and east of the headland exposed the sky through the existing cliff curtains. The game now adds a near curtain that follows the original bilinear mask between the same endpoints. The old curtain, land/water classification, wave colours, terrain and collision remain unchanged. This is not a surveyed coastline update. The lighthouse is still the original coarse building; the local cliff heights and footprint position are not good enough for a trustworthy replacement.
 
-Compare with `?departure=cape-tryon-coast&stockOpenCoast`. That flag restores the older coverage and does not remove the separate Orby Head repair. The [optional sandstone finish](cape-tryon-stone.md) is a separate material comparison and does not change any shoreline geometry.
+Compare with `?departure=cape-tryon-coast&stockOpenCoast`. That flag restores the older coverage and does not remove the separate Orby Head repair. The [optional sandstone finish](cape-tryon-stone.md) is a separate material comparison and does not change any shoreline geometry. The [optional water-gap repair](cape-tryon-water-tie.md) addresses a separate rounded-zero water mask problem and does not alter land or flight contact.
 
 ![Matched views of previous and updated Cape Tryon cliff coverage](cape-tryon-coast.webp)
 

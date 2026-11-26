@@ -1,0 +1,161 @@
+{
+  "scope": "Actual current Three.js r187 Cape late-patch fragment and signed bounds. Offline 960\u00d7640 Mesa GLES3 24-bit, physical stock ocean plane plus regular fine N112 ground, both submitted Cape curtain groups and authored sky. The isolated stock water uses its generic variant, not the full app\u2019s specialist water, overlays and translucent objects.",
+  "method": "Same fixed or neutral Chase camera frames with two sky colours. Compare exact old normal color to one late opaque equal-far-depth draw; zero changes outside the visible sky dependency. Two-sky counts measure screen pixels, not a change to real land or water.",
+  "sameStockOceanDepthBeforePatch": true,
+  "depthWrite": false,
+  "depthTest": "Equal to exact normal far clear value 1",
+  "unchangedAlpha": true,
+  "noNewSky": true,
+  "broadPhase": {
+    "cells": 22,
+    "area": 45078.41138580544
+  },
+  "fixed": {
+    "headland-north": {
+      "oldSky": 215574,
+      "skyFixed": 782,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 782,
+      "boundsXY": [
+        327,
+        315,
+        953,
+        457
+      ]
+    },
+    "headland-east": {
+      "oldSky": 252501,
+      "skyFixed": 530,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 530,
+      "boundsXY": [
+        43,
+        318,
+        832,
+        429
+      ]
+    },
+    "headland-grazing": {
+      "oldSky": 279694,
+      "skyFixed": 849,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 849,
+      "boundsXY": [
+        0,
+        414,
+        937,
+        466
+      ]
+    },
+    "orby-protected": {
+      "oldSky": 238080,
+      "skyFixed": 0,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 0
+    },
+    "headland-crossover": {
+      "oldSky": 239083,
+      "skyFixed": 26,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 26,
+      "boundsXY": [
+        447,
+        333,
+        536,
+        344
+      ]
+    },
+    "headland-far": {
+      "oldSky": 247646,
+      "skyFixed": 0,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 0
+    },
+    "north-east-detail": {
+      "oldSky": 224399,
+      "skyFixed": 0,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 0
+    }
+  },
+  "ordinaryChase": {
+    "flight-4": {
+      "oldSky": 246293,
+      "skyFixed": 200,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 200,
+      "boundsXY": [
+        376,
+        347,
+        813,
+        408
+      ]
+    },
+    "flight-6": {
+      "oldSky": 246277,
+      "skyFixed": 452,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 452,
+      "boundsXY": [
+        351,
+        367,
+        901,
+        471
+      ]
+    },
+    "flight-8": {
+      "oldSky": 247288,
+      "skyFixed": 1480,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 1480,
+      "boundsXY": [
+        322,
+        398,
+        958,
+        617
+      ]
+    },
+    "flight-10": {
+      "oldSky": 246431,
+      "skyFixed": 593,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 593,
+      "boundsXY": [
+        268,
+        450,
+        930,
+        639
+      ]
+    },
+    "flight-13": {
+      "oldSky": 245766,
+      "skyFixed": 0,
+      "alreadyVisibleChanged": 0,
+      "oldWallChanged": 0,
+      "oldNonWallChanged": 0,
+      "diff": 0
+    }
+  }
+}
