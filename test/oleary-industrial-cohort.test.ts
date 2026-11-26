@@ -267,8 +267,12 @@ test('original warehouse draw proof, four replacement submissions, and exact ind
  const root=q.scene.children.find(x=>x.name.startsWith('O’Leary q150 complete'))!;
  const wing=root.children[1].children[0] as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
  const roof=root.children[0].children[0] as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
+ const initialBefore=wing.onBeforeRender;
  const mutations=[
   [()=>{wing.material.visible=false;},()=>{wing.material.visible=true;}],
+  [()=>{wing.material.wireframe=true;},()=>{wing.material.wireframe=false;}],
+  [()=>{wing.onBeforeRender=()=>{};},()=>{wing.onBeforeRender=initialBefore;}],
+  [()=>{roof.material.stencilWrite=true;},()=>{roof.material.stencilWrite=false;}],
   [()=>{root.children[1].visible=false;},()=>{root.children[1].visible=true;}],
   [()=>{roof.geometry.setDrawRange(0,6);},()=>{roof.geometry.setDrawRange(0,Infinity);}],
   [()=>{wing.layers.set(2);},()=>{wing.layers.set(0);}],

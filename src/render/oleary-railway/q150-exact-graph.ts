@@ -22,12 +22,15 @@ function sealLeaf(node:unknown){
  });
  if(slots.some(s=>!s))return;
  const {version,side,metalness,roughness,onBeforeCompile,customProgramCacheKey}=m;
+ const before=node.onBeforeRender,after=node.onAfterRender,paintHook=m.onBeforeRender;
  return ()=>node.geometry===g&&node.material===m&&node.visible&&node.layers.mask===1&&
+  node.onBeforeRender===before&&node.onAfterRender===after&&m.onBeforeRender===paintHook&&
   node.frustumCulled&&node.renderOrder===0&&!node.castShadow&&!node.receiveShadow&&!node.children.length&&
   g.index===null&&g.groups.length===0&&g.drawRange.start===0&&g.drawRange.count===Infinity&&
   Object.keys(g.attributes).length===slots.length&&slots.every(s=>s?.())&&
   !g.boundingBox&&g.boundingSphere===sphere&&sphere.center===origin&&sphere.radius===radius&&origin.x===cx&&origin.y===cy&&origin.z===cz&&
   m.visible&&!m.transparent&&m.opacity===1&&m.colorWrite&&m.depthTest&&m.depthWrite&&m.vertexColors&&
+  !m.wireframe&&!m.stencilWrite&&!m.polygonOffset&&!m.clippingPlanes&&m.alphaTest===0&&!m.alphaHash&&
   m.side===side&&m.version===version&&m.metalness===metalness&&m.roughness===roughness&&
   m.onBeforeCompile===onBeforeCompile&&m.customProgramCacheKey===customProgramCacheKey&&
   m.color===color&&color.r===r&&color.g===green&&color.b===b&&
