@@ -1,0 +1,29 @@
+{
+  "scope": "Real Three standard Mesh shader r187 native Mesa detached original gable geometry; not actual world or building. Geometry unchanged.",
+  "cases": {
+    "front": {
+      "delta": 106572,
+      "outside": 0,
+      "alpha": 0,
+      "p95": 21.0
+    },
+    "oblique-near": {
+      "delta": 101016,
+      "outside": 0,
+      "alpha": 0,
+      "p95": 11.0
+    },
+    "west-oblique": {
+      "delta": 95037,
+      "outside": 0,
+      "alpha": 0,
+      "p95": 13.0
+    },
+    "roof": {
+      "delta": 73882,
+      "outside": 0,
+      "alpha": 0,
+      "p95": 7.0
+    }
+  }
+}
