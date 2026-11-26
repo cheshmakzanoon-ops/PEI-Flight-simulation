@@ -1,0 +1,64 @@
+{
+  "scope": "Real Three r187 prefixed standard materials, actual indexed synthetic cap expanded to exact same submitted triangles, Mesa software matched views and exact byte restore. No borrowed sample, real route, or player/performance finding.",
+  "triangleCount": 512,
+  "drawRoles": 2,
+  "programs": 8,
+  "receipts": {
+    "approach": {
+      "first_to_relief_tone": {
+        "visible_changed_rgb": 115255,
+        "p95_changed_rgb": 14.0,
+        "outside": 0,
+        "alpha": 0
+      },
+      "relief_tone_to_full": {
+        "visible_changed_rgb": 80487,
+        "p95_changed_rgb": 4.0,
+        "outside": 0,
+        "alpha": 0
+      }
+    },
+    "join": {
+      "first_to_relief_tone": {
+        "visible_changed_rgb": 113568,
+        "p95_changed_rgb": 4.0,
+        "outside": 0,
+        "alpha": 0
+      },
+      "relief_tone_to_full": {
+        "visible_changed_rgb": 91431,
+        "p95_changed_rgb": 4.0,
+        "outside": 0,
+        "alpha": 0
+      }
+    },
+    "context": {
+      "first_to_relief_tone": {
+        "visible_changed_rgb": 21761,
+        "p95_changed_rgb": 3.0,
+        "outside": 0,
+        "alpha": 0
+      },
+      "relief_tone_to_full": {
+        "visible_changed_rgb": 3580,
+        "p95_changed_rgb": 1.0,
+        "outside": 0,
+        "alpha": 0
+      }
+    },
+    "reverse": {
+      "first_to_relief_tone": {
+        "visible_changed_rgb": 96953,
+        "p95_changed_rgb": 5.0,
+        "outside": 0,
+        "alpha": 0
+      },
+      "relief_tone_to_full": {
+        "visible_changed_rgb": 68109,
+        "p95_changed_rgb": 2.0,
+        "outside": 0,
+        "alpha": 0
+      }
+    }
+  }
+}

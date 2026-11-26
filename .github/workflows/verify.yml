@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: node tools/verify-world.mjs
       - run: npm run check
-      - run: node --experimental-strip-types --test tools/art/north-rustico-fish-house-study/*.test.mjs tools/art/north-rustico-doiron-storefront/*.test.mjs
+      - run: node --experimental-strip-types --test tools/art/north-rustico-fish-house-study/*.test.mjs tools/art/north-rustico-doiron-storefront/*.test.mjs tools/art/boardwalk-timber/*.test.mjs
       - name: Install browser test runtime
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1 pngjs@7.0.0
