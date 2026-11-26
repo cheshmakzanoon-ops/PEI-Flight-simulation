@@ -1,6 +1,7 @@
 /** Compiled Standard/veto playback. Exact camera-local RGB scope is separately
  * documented in the matched same-context native report; this lane tests live admission. */
 import {chromium} from 'playwright';
+import {PNG} from 'pngjs';
 import {mkdir,writeFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {join} from 'node:path';
@@ -20,14 +21,26 @@ try{
    await page.addInitScript(target=>{
     const raf=window.requestAnimationFrame.bind(window);
     let used,hold=false;
-    window.schoolStageQA={at:null,go:false,missed:false};
+    window.schoolStageQA={at:null,go:false,missed:false,capture:false,frame:null};
     const q=window.schoolStageQA;
     window.requestAnimationFrame=cb=>raf(t=>{
      if(hold)t=used??t;
      else if(q.go&&used!==undefined)t=used+99.999;
      else if(used!==undefined)t=Math.max(used,t);
-     used=t; cb(t);
+     used=t;
+     const before=window.islandAirDiagnostics;
+     cb(t);
      const d=window.islandAirDiagnostics;
+     // Only the real renderer replaces diagnostics. Capture the non-preserved
+     // backbuffer in that same task, not an unrelated animation callback.
+     if(q.capture&&d&&d!==before&&d.mode==='flight'&&d.camera==='Chase'){
+      const canvas=document.getElementById('world');
+      const gl=canvas.getContext('webgl2');
+      q.frame={png:canvas.toDataURL('image/png'),state:d.georgetownSchoolWalls,church:d.stDavids,
+       errors:[gl.getError(),...d.layerWarnings],pose:[d.x,d.z,d.altitude],
+       draws:d.drawCalls,triangles:d.triangles,geom:d.geometries};
+      q.capture=false;
+     }
      if(q.go&&d?.mode==='flight'&&!hold){
       const near=Math.hypot(d.x-target[0],d.z-target[1]);
       if(!q.nearest||q.nearest>near)q.nearest=near;
@@ -50,13 +63,15 @@ try{
    },stock,{timeout:25000}).catch(async e=>{
     throw Error(JSON.stringify(await page.evaluate(()=>({q:schoolStageQA,d:islandAirDiagnostics}))),{cause:e});
    });
-   const data=await page.evaluate(()=>{const gl=document.getElementById('world').getContext('webgl2'),d=islandAirDiagnostics;return {
-    state:d.georgetownSchoolWalls,church:d.stDavids,errors:[gl.getError(),...d.layerWarnings],
-    pose:[d.x,d.z,d.altitude],draws:d.drawCalls,triangles:d.triangles,geom:d.geometries,
-   };});
-   // A default WebGL backbuffer need not survive after the render task.
-   // Use the compositor rather than a post-task canvas read.
-   await page.locator('#world').screenshot({path:join(out,'georgetown-school-'+(stock?'stock':'standard')+'.png')});
+   await page.evaluate(()=>{window.schoolStageQA.capture=true;});
+   await page.waitForFunction(()=>window.schoolStageQA.frame,null,{timeout:30000});
+   const data=await page.evaluate(()=>window.schoolStageQA.frame);
+   const bytes=Buffer.from(data.png.split(',')[1],'base64');delete data.png;
+   const observed=PNG.sync.read(bytes);
+   assert.equal(observed.width,720);assert.equal(observed.height,480);
+   assert(observed.data.some((v,i)=>i%4!==3&&v>8),'Native flight frame was blank');
+   assert.equal(data.state,!stock);assert.equal(data.church,true);
+   await writeFile(join(out,'georgetown-school-'+(stock?'stock':'standard')+'.png'),bytes);
    report.push({stock,...data,networkArtRequests:retrieved});
    assert.deepEqual(data.errors,[0]);assert.deepEqual(errors,[]);assert.deepEqual(retrieved,[]);
    console.log(JSON.stringify(report.at(-1)));
