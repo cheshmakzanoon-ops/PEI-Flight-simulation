@@ -1,0 +1,46 @@
+{
+  "cockpit": {
+    "strongRGB": 2036,
+    "anyRGBA": 3537,
+    "outsideRGBA": 0,
+    "alpha": 0,
+    "stockOwnerMask": 17836,
+    "identicalPNG": false,
+    "calls": 61,
+    "triangles": 15186,
+    "errors": 0
+  },
+  "chase": {
+    "strongRGB": 0,
+    "anyRGBA": 0,
+    "outsideRGBA": 0,
+    "alpha": 0,
+    "stockOwnerMask": 0,
+    "identicalPNG": true,
+    "calls": 222,
+    "triangles": 40784,
+    "errors": 0
+  },
+  "windshield": {
+    "strongRGB": 0,
+    "anyRGBA": 0,
+    "outsideRGBA": 0,
+    "alpha": 0,
+    "stockOwnerMask": 102974,
+    "identicalPNG": true,
+    "calls": 207,
+    "triangles": 36702,
+    "errors": 0
+  },
+  "prop": {
+    "strongRGB": 0,
+    "anyRGBA": 0,
+    "outsideRGBA": 0,
+    "alpha": 0,
+    "stockOwnerMask": 9902,
+    "identicalPNG": true,
+    "calls": 218,
+    "triangles": 39758,
+    "errors": 0
+  }
+}

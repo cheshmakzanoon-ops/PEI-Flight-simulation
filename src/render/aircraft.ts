@@ -4,6 +4,7 @@ import {makePropeller} from './propeller.ts';
 import {SURVEY_AIRFRAME} from '../sim/flight.ts';
 import { DIALS, dialAngle, altimeterAngles } from './instruments.ts';
 import { createRudder } from './rudder.ts';
+import { surveyedCowlingFinish } from './cowling-finish.ts';
 import { createCockpitTrim } from './cockpit-trim.ts';
 import { addFlightSurface, deflectionTarget, type SurfaceInput } from './flight-surfaces.ts';
 
@@ -241,7 +242,11 @@ export function createAircraft() {
   screw.position.set(x,y,-1.187);screw.scale.z=.45;
  }
  const cockpitOnly=new THREE.Group();cockpit.add(cockpitOnly);
- const nose=mesh(new THREE.SphereGeometry(1,20,12),pearl,cockpitOnly);nose.position.set(0,-.01,-2.65);nose.scale.set(.62,.56,1.40);
+ // The visible pilot dome follows the original transforms and collision
+ // clearances. Only the lookup coordinates are mapped into the outer body.
+ const noseDatum={scale:new THREE.Vector3(.62,.56,1.40),offset:new THREE.Vector3(0,-.01,-2.65)};
+ const nose=mesh(new THREE.SphereGeometry(1,20,12),surveyedCowlingFinish(pearl,noseDatum),cockpitOnly);
+ nose.position.copy(noseDatum.offset);nose.scale.copy(noseDatum.scale);
  for(const k of [-1,1]){bar([k*.62,.35,-1.30],[k*.51,1.06,-.74],.031,pearl,cockpitOnly);}
  let previousInside:boolean|undefined;
  function setControls(input:SurfaceInput & {yaw?:number},dt:number){

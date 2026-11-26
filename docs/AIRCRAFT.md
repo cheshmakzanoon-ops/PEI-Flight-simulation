@@ -39,6 +39,8 @@ indications and published aircraft performance.
 Current in-engine display: equivalent airspeed, [three-hand geometric MSL altitude](qa/altimeter.md),
 throttle percentage and vertical speed. The HUD also shows altitude numerically. The instrument on the right of the altimeter is commanded power, not
 measured engine RPM. These are development gauges, not certified avionics.
+The [pilot-view cowling finish](qa/pilot-cowling/) details the existing engine cover
+without changing the exterior model or flight behaviour.
 
 ## Reference evidence to validate before tuning
 
