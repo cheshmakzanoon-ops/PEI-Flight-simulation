@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {kingsFieldPassRequested,sceneryOptions,forestFloorProfile,standardInlandOrtho,standardMeadowRequested,standardOpenRipplesRequested,runway03PavementRequested} from '../src/app/scenery-profile.ts';
-import {KINGS_FIELD_TILE,KINGS_FIELD_CELLS,kingsFieldShader,withinKingsFieldPass} from '../src/render/kings-field-pass.ts';
+import {kingsFieldPassRequested,queensFieldPassRequested,sceneryOptions,forestFloorProfile,standardInlandOrtho,standardMeadowRequested,standardOpenRipplesRequested,runway03PavementRequested} from '../src/app/scenery-profile.ts';
+import {KINGS_FIELD_TILE,KINGS_FIELD_CELLS,QUEENS_MAPPED_PASS,kingsFieldShader,withinKingsFieldPass,withinMappedPass} from '../src/render/kings-field-pass.ts';
 import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {readFieldDirectory} from '../src/sim/field-shards.ts';
 import {project} from '../src/sim/geo.ts';
-import {KINGS_MAPPED_FARMLAND_DEPARTURE as route} from '../src/sim/places.ts';
+import {KINGS_MAPPED_FARMLAND_DEPARTURE as route,SITES} from '../src/sim/places.ts';
 
 test('Kings pass is separate from existing Standard and explicit review options',()=>{
  for(const query of ['', '?scenery=standard','?departure=kings-mapped-farmland-pass','?diagnostics']){
@@ -51,4 +51,21 @@ test('all four local chunks are from one pinned pack; receiver is the distinct o
  const cells=KINGS_FIELD_CELLS.map(k=>dir.cells.get(k));
  assert.deepEqual(cells.map(v=>v?.pack),[32,32,32,32]);
  assert.deepEqual(cells.map(v=>[v?.offset,v?.size]),[[37864,1830],[39694,2105],[41799,362],[46902,2239]]);
+});
+
+test('Queens keeps a distinct Standard switch, one original receiver and its three signed source ranges',()=>{
+ const a=sceneryOptions('?stockKingsFieldPass'),b=sceneryOptions('?stockQueensFieldPass');
+ assert.equal(kingsFieldPassRequested(a),false);assert.equal(queensFieldPassRequested(a),true);
+ assert.equal(kingsFieldPassRequested(b),true);assert.equal(queensFieldPassRequested(b),false);
+ for(const q of ['?qa','?scenery=detail','?surveyRelief','?provinceFieldsReview','?custom'])
+   assert.equal(queensFieldPassRequested(sceneryOptions(q)),false);
+ const route=SITES.find(p=>p.id===QUEENS_MAPPED_PASS.id);assert.ok(route);
+ const c=project(route.lon,route.lat);
+ assert.deepEqual(QUEENS_MAPPED_PASS.center,[c.x,c.z]);assert.equal(QUEENS_MAPPED_PASS.tile,'12-13');
+ assert.equal(withinMappedPass({...c,y:80},62,QUEENS_MAPPED_PASS),true);
+ assert.equal(withinMappedPass({...c,x:c.x+1120.1,y:80},62,QUEENS_MAPPED_PASS),false);
+ const raw=gunzipSync(readFileSync(new URL('../public/world/fields-province/v2/index.fcr.gz',import.meta.url)));
+ const dir=readFieldDirectory(Uint8Array.from(raw).buffer);assert.ok(dir);
+ const ranges=QUEENS_MAPPED_PASS.cells.map(k=>dir.cells.get(k));
+ assert.deepEqual(ranges.map(r=>[r?.pack,r?.offset,r?.size]),[[19,15128,1856],[19,23916,1567],[19,21721,2195]]);
 });

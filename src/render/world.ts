@@ -1,4 +1,3 @@
-import {KINGS_FIELD_TILE} from './kings-field-pass.ts';
 import {dalvayGroundPair} from './dalvay-exterior-seat.ts';
 import {PASTURE,pastureTile} from './panmure-pasture/flight.ts';
 import {allowShortOpenArc,allowPanmureOpenArc,allowTryonOpenArc} from '../sim/open-coast-closure.ts';
@@ -1472,10 +1471,10 @@ export class World {
   return !!p&&!!g&&p.lod===112&&g.visible&&!!g.parent&&g.material===p.local&&!p.relief&&!g.userData.localGrade&&!g.userData.coastalSurvey&&
    !this.grades?.has('28-14')&&g.geometry.index?.count===112*112*6;
  }
- /** The accepted pass sees only the ordinary 23-13 N112 landscape. Never
-  * take a coarse, replacement, surveyed or already leased foreign draw. */
- kingsFieldGround(ours:ReadonlyMap<string,THREE.Material>){
-  const id=KINGS_FIELD_TILE,t=this.byId.get(id),g=t?.fine;
+ /** Admit only an original Standard N112 draw for the route's exact tile,
+  * never a coarse, surveyed, replacement or already leased foreign draw. */
+ mappedFieldGround(ours:ReadonlyMap<string,THREE.Material>,id:string){
+  const t=this.byId.get(id),g=t?.fine;
   if(!t||!g||t.lod!==112||!t.seams?.startsWith('112:')||g.userData.subdiv!==112||
      !g.visible||g.parent!==this.scene||t.coarse.visible||t.relief||this.grades?.has(id)||
      g.userData.localGrade||g.userData.coastalSurvey||g.userData.coastalRefinement||

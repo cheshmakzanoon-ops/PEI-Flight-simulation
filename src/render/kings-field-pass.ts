@@ -7,12 +7,18 @@ import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/progr
 
 export const KINGS_FIELD_TILE='23-13';
 export const KINGS_FIELD_CELLS=['41:10','41:11','41:12','42:11'] as const;
+export type MappedPass={id:string;tile:string;center:readonly [number,number];cells:readonly string[]};
+export const KINGS_MAPPED_PASS:MappedPass={id:'kings-mapped-farmland-pass',tile:KINGS_FIELD_TILE,
+ center:[43194.39622103769,11510.405016114737],cells:KINGS_FIELD_CELLS};
+export const QUEENS_MAPPED_PASS:MappedPass={id:'queens-fields',tile:'12-13',
+ center:[-23643.075210807714,15291.056341026648],cells:['-24:14','-23:14','-23:13']};
 export type FieldOwner={id:string;mesh:Mesh;stock:ShaderMaterial};
 type Position={x:number;y:number;z:number};
-export function withinKingsFieldPass(p:Position,agl:number){
+export function withinMappedPass(p:Position,agl:number,route:MappedPass){
  return Number.isFinite(p.y)&&Number.isFinite(agl)&&agl>=0&&agl<415&&
-   Math.hypot(p.x-43194.39622103769,p.z-11510.405016114737)<1120;
+   Math.hypot(p.x-route.center[0],p.z-route.center[1])<1120;
 }
+export function withinKingsFieldPass(p:Position,agl:number){return withinMappedPass(p,agl,KINGS_MAPPED_PASS);}
 /** Preserve the complete Standard surface; introduce relief immediately before its original lighting. */
 export function kingsFieldShader(stock:string){
  const declaration=' void main(){',light=' float light=clamp(dot(n,sun),0.,1.);';
@@ -23,16 +29,16 @@ export function kingsFieldShader(stock:string){
 }
 type Loaded={study:ProvinceFieldStudy;dispose():void};
 type Lease={owner:FieldOwner;authored:ShaderMaterial;source:string;geometry:BufferGeometry};
-async function load(base:string,signal:AbortSignal):Promise<Loaded|undefined>{
+async function load(base:string,signal:AbortSignal,route:MappedPass):Promise<Loaded|undefined>{
  const [source,asset,owners]=await Promise.all([
   FieldShardSource.open(base+'fields-province/v2/',FIELD_DIRECTORY_PIN,fetch,signal),
   loadFieldRelief(base,signal),import('./province-field-owners.ts').then(m=>m.checkedFieldOwners(FIELD_SITE_PINS.owners)).catch(()=>false),
  ]);
  if(!source||!asset||!owners||signal.aborted){asset?.discard();return;}
- const study=provinceFields(source,asset,new Set(KINGS_FIELD_CELLS));
+ const study=provinceFields(source,asset,new Set(route.cells));
  return {study,dispose(){study.stream.dispose();asset.discard();}};
 }
-export class KingsFieldPass {
+export class MappedFieldPass {
  private controller?:AbortController;
  private art?:Loaded;
  private leases:Lease[]=[];
@@ -44,8 +50,9 @@ export class KingsFieldPass {
  private blocked=false;
  private readonly base:string;private readonly renderer:WebGLRenderer;
  private readonly scene:Scene;private readonly camera:Camera;
- constructor(base:string,renderer:WebGLRenderer,scene:Scene,camera:Camera){
-  this.base=base;this.renderer=renderer;this.scene=scene;this.camera=camera;
+  readonly route:MappedPass;
+ constructor(base:string,renderer:WebGLRenderer,scene:Scene,camera:Camera,route:MappedPass=KINGS_MAPPED_PASS){
+  this.base=base;this.renderer=renderer;this.scene=scene;this.camera=camera;this.route=route;
  }
  get state(){return {phase:this.phase,receivers:this.leases.filter(q=>q.owner.mesh.material===q.authored).map(q=>q.owner.id),
   stream:this.art?.study.stream.state};}
@@ -64,14 +71,14 @@ export class KingsFieldPass {
   this.leases=[];this.materials.clear();
  }
  update(flightContext:boolean,airborne:boolean,allowed:()=>Promise<boolean>,eye:Position,agl:number,owners:()=>FieldOwner[]|undefined){
-  if(!withinKingsFieldPass(eye,agl)){this.leave();return;}
+  if(!withinMappedPass(eye,agl,this.route)){this.leave();return;}
   if(!this.controller&&!this.art&&!this.blocked){
    const generation=++this.serial,control=new AbortController();this.controller=control;this.phase='loading';
    let timer:ReturnType<typeof setTimeout>|undefined;
    void allowed().then(ok=>{
     if(!ok||control.signal.aborted)return;
     timer=setTimeout(()=>control.abort(),3300);
-    return load(this.base,control.signal);
+    return load(this.base,control.signal,this.route);
    })
     .then(result=>{
      if(this.serial!==generation||control.signal.aborted){result?.dispose();return;}
@@ -89,7 +96,9 @@ export class KingsFieldPass {
   const matching=owners();
   if(this.leases.length&&(!matching||matching.length!==this.leases.length||matching.some((q,i)=>
       q.mesh!==this.leases[i].owner.mesh||q.mesh.geometry!==this.leases[i].geometry||
-      q.stock!==this.leases[i].owner.stock||q.stock.fragmentShader!==this.leases[i].source)))this.retire();
+      q.stock!==this.leases[i].owner.stock||q.stock.fragmentShader!==this.leases[i].source))){
+   this.retire();this.phase='ready';
+  }
   if(this.proof&&!this.proof()){this.retire();this.blocked=true;this.phase='unavailable';return;}
   if(!matching||!airborne||!this.art.study.stream.state.ready||this.blocked)return;
   if(!this.leases.length)this.prepare(matching);

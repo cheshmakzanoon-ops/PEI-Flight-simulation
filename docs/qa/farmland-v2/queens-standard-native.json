@@ -1,0 +1,96 @@
+{
+  "replayKind": "Pre-merge matched native compiled Standard flight; software WebGL2 Chromium, ordinary neutral control. Source pins and renderer policy mode unchanged in later exact canonical QA.",
+  "actualRenderedWorldTile": "12-13",
+  "viewport": [
+    720,
+    480
+  ],
+  "snapshots": {
+    "t2": {
+      "distanceM": 104.608,
+      "aboveGroundM": 59.39,
+      "draws": 1,
+      "receiver": [
+        "12-13"
+      ],
+      "indexCount": 75264,
+      "strong": 77667,
+      "p95": 7,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t4": {
+      "distanceM": 212.21,
+      "aboveGroundM": 57.338,
+      "draws": 1,
+      "receiver": [
+        "12-13"
+      ],
+      "indexCount": 75264,
+      "strong": 64101,
+      "p95": 8,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t6": {
+      "distanceM": 312.752,
+      "aboveGroundM": 56.689,
+      "draws": 1,
+      "receiver": [
+        "12-13"
+      ],
+      "indexCount": 75264,
+      "strong": 45025,
+      "p95": 7,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    },
+    "t8": {
+      "distanceM": 419.241,
+      "aboveGroundM": 56.844,
+      "draws": 1,
+      "receiver": [
+        "12-13"
+      ],
+      "indexCount": 75264,
+      "strong": 28893,
+      "p95": 7,
+      "exterior": 0,
+      "alpha": 0,
+      "offRestored": true,
+      "liveRestored": true
+    }
+  },
+  "rangeTraffic": [
+    [
+      200,
+      null,
+      115861
+    ],
+    [
+      200,
+      null,
+      150012
+    ],
+    [
+      206,
+      "bytes 15128-16983/34820",
+      1856
+    ],
+    [
+      206,
+      "bytes 23916-25482/34820",
+      1567
+    ]
+  ],
+  "sameSiteStockRequests": 0,
+  "unrelatedDepartureRequests": 0,
+  "injectedIndexFaultPackReads": 0,
+  "noCurrentCropOrHardwareClaim": true
+}
