@@ -1,0 +1,144 @@
+{
+  "scope": "Three r187 same matrix positions for exact frozen V2, forward-facing three existing dressing sections only. Sealed author witness, no source datum or landscape replacement.",
+  "lock": "ad4a12bcbf8c9e120f6ce8408cd6dafdd2a8c9f8d8f3e4d521b3cc718cd636a8",
+  "sourceNew": "71b3c6bdbba59b80e6f471e26afc4d1f0fb41f5c54417526b1e2e177005085f7",
+  "sourceOld": "b54975b49c778d3ed383e09bb9db257c930a7f80a9a011b5c12fdd09c2ea100d",
+  "materials": "b8d30dd1dde0db10f62cb948b0e9309bd8b2440e8904b2d08d5f3f43a8a53f73",
+  "n": 4886,
+  "batches": 7,
+  "bounds": [
+    [
+      -16.34000015258789,
+      0,
+      -23.854999542236328
+    ],
+    [
+      16.020000457763672,
+      30.75,
+      28.547922134399414
+    ]
+  ],
+  "minExactNormalDot": 0.9999999537897711,
+  "changedCasingTriangles": 156,
+  "exactCollarJointVertices": 39,
+  "unchanged": 12344,
+  "localizedDifferent": 1208,
+  "exactSameGlassRays": 4782,
+  "ranges": [
+    [
+      8928,
+      9084
+    ],
+    [
+      9084,
+      9240
+    ],
+    [
+      9240,
+      9396
+    ]
+  ],
+  "verifiedCasingMasks": {
+    "old": [
+      [
+        0,
+        762
+      ]
+    ],
+    "v3": [
+      [
+        0,
+        762
+      ],
+      [
+        8928,
+        9396
+      ]
+    ]
+  },
+  "streams": {
+    "old": {
+      "stone": {
+        "position": "8e30f5dac825245839681517bb55b1cbe7fd466d2b1b7d97f30dbe4adbb773fd",
+        "normal": "8904fc82db07a41c7e8eaec65da62a6f39ab85425da9dfde6f7b56b79b0810e5",
+        "uv": "4268c753caf15ef5dff9f3b062cb644832b1bc2bac399a422af6322a0a71891f"
+      },
+      "freestone": {
+        "position": "bef40a500c7f7df5da3e139ea026a496fd3bce47a7971080db930486c41acffc",
+        "normal": "c2cca7d7cbf6a20157ed65638f4e6b282a95fdf51db0d424229f2d1d30c8773b",
+        "uv": "6e69ca35f241d44c388bab457d4fd95e27f1c7ca77e7473eec367f5996520ae3"
+      },
+      "roof": {
+        "position": "8f73cb8ae7050e4f4f32d1dde6901a9a7a283d81ea610fbabe7dad1e28b502d3",
+        "normal": "3c3d5c1237b8f61d452880fbd71c5ea64084e502f410c911b7447ad42836b479",
+        "uv": "8bc2ca1cad4d7c45ff0ae22d7ef6aebf8a893cebd279c60832bc7920f6e49031"
+      },
+      "copper": {
+        "position": "a506bedf1f60199ff2dbed24ee54e23cd636910a94c66428be1f8be479594e12",
+        "normal": "fa04b565b2c3146177cc0cba1fa9e319096a6367f6279ce69ad75a0b8a7dc62f",
+        "uv": "1fb1f4b6413323eb630cb9307c90fd133555fedf7b26907b11ef7b6159827ad0"
+      },
+      "glass": {
+        "position": "854bd96258689bb2a1f3fefab5f38d252739d8e2409253a99e72f64348829710",
+        "normal": "d101e624cc82a1e04a43ae54c916de586591982f111fbf55f3fa54db043674b2",
+        "uv": "6280a045143acff6496c9b8b12805c62d3f9eae98c26a8fead80871e5dea5338"
+      },
+      "wood": {
+        "position": "ebe79db54162c8faf5e62f218aa7f9a8fa3aadc3558d1b6f16f4aecd0cdaaec7",
+        "normal": "0894894cfaa797b45d6911f844c28a9ffda759f48fddfa60ba420b174ac395c5",
+        "uv": "807f434c0411e17c896d4100932f138872cb45148076b274280b08a1e229f16f"
+      },
+      "metal": {
+        "position": "14c5675f00842990f1e7822b573a5f129053c4ff32cbef5e6f72060e5f890249",
+        "normal": "36f73d320f465cc08c4e1b7a8fc608ac90ae3c679aa750d20f48593638144d78",
+        "uv": "b4891bc35e6bb3217c3ad906c69d8e9478f997bd922336458c9c56ce526297e5"
+      }
+    },
+    "v3": {
+      "stone": {
+        "position": "8e30f5dac825245839681517bb55b1cbe7fd466d2b1b7d97f30dbe4adbb773fd",
+        "normal": "8904fc82db07a41c7e8eaec65da62a6f39ab85425da9dfde6f7b56b79b0810e5",
+        "uv": "4268c753caf15ef5dff9f3b062cb644832b1bc2bac399a422af6322a0a71891f"
+      },
+      "freestone": {
+        "position": "e741fefdb7ce782bcbc1d3e3c5ffcdc55b9b70c32196504251961b8a972fc1b8",
+        "normal": "f7e703a479e6490e23ba0404d8e428c2fb4f7d069bad52cde6f34c8e1e7ae159",
+        "uv": "0aabd92947975baa9994615168cb5713993adfc92c679f2a6e21ba0ecb3277f3"
+      },
+      "roof": {
+        "position": "8f73cb8ae7050e4f4f32d1dde6901a9a7a283d81ea610fbabe7dad1e28b502d3",
+        "normal": "3c3d5c1237b8f61d452880fbd71c5ea64084e502f410c911b7447ad42836b479",
+        "uv": "8bc2ca1cad4d7c45ff0ae22d7ef6aebf8a893cebd279c60832bc7920f6e49031"
+      },
+      "copper": {
+        "position": "a506bedf1f60199ff2dbed24ee54e23cd636910a94c66428be1f8be479594e12",
+        "normal": "fa04b565b2c3146177cc0cba1fa9e319096a6367f6279ce69ad75a0b8a7dc62f",
+        "uv": "1fb1f4b6413323eb630cb9307c90fd133555fedf7b26907b11ef7b6159827ad0"
+      },
+      "glass": {
+        "position": "854bd96258689bb2a1f3fefab5f38d252739d8e2409253a99e72f64348829710",
+        "normal": "d101e624cc82a1e04a43ae54c916de586591982f111fbf55f3fa54db043674b2",
+        "uv": "6280a045143acff6496c9b8b12805c62d3f9eae98c26a8fead80871e5dea5338"
+      },
+      "wood": {
+        "position": "ebe79db54162c8faf5e62f218aa7f9a8fa3aadc3558d1b6f16f4aecd0cdaaec7",
+        "normal": "0894894cfaa797b45d6911f844c28a9ffda759f48fddfa60ba420b174ac395c5",
+        "uv": "807f434c0411e17c896d4100932f138872cb45148076b274280b08a1e229f16f"
+      },
+      "metal": {
+        "position": "14c5675f00842990f1e7822b573a5f129053c4ff32cbef5e6f72060e5f890249",
+        "normal": "36f73d320f465cc08c4e1b7a8fc608ac90ae3c679aa750d20f48593638144d78",
+        "uv": "b4891bc35e6bb3217c3ad906c69d8e9478f997bd922336458c9c56ce526297e5"
+      }
+    },
+    "unrelatedKeys": {
+      "stone": "dfc996013d740fee9c91fe1464e34c9ac09146d9d77b54939199037b138576f9",
+      "freestone": "c553698b08b78a7d8603aca96eda3b2abb8f8103ecb97c03a601cf8e6b17110f",
+      "roof": "e794fb7c64c46d720702be9e6b1c3b18ea08f4e30611931bec659340ac3bc8b2",
+      "copper": "f43ef2df68831bd31a5c52808112dc3cd4afb8fae20b46c615d8ae8a5660805d",
+      "glass": "e66143a15c4d2213e055346593c33598d1464417e85ecbabf452447362d14822",
+      "wood": "95eee11195910d9ea1b5d1a1c43606c8f40567b78968a93ad5ddf910762c71fc",
+      "metal": "dc92b064d7c049666817b41e904758ab07de29bbded33d6eb413b1263ac08ab5"
+    }
+  }
+}

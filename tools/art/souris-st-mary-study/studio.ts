@@ -1,8 +1,9 @@
 import * as T from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {makeDetachedSaintMary,MARY_ROLES,type MaryRole} from './souris-saint-mary-forms.ts';
+import {MARY_ROLES,type MaryRole} from './souris-saint-mary-forms.ts';
 import {makeDetachedMaryFinish} from './souris-saint-mary-finishes.ts';
 import {makeDetachedMaryFinishV2} from './souris-st-mary-finish-v2.ts';
+import {makeDetachedSaintMaryV3B} from './lancets/souris-st-mary-collar-v3b.ts';
 
 const angles = {
   entry: {name:'Southwest entry', direction:[.40,.21,1], look:[0,13,6]},
@@ -36,7 +37,7 @@ function run() {
 
   const mats=(enabled:boolean)=>new Map(MARY_ROLES.map(role=>[role,enabled?makeDetachedMaryFinishV2(role):makeDetachedMaryFinish(role,false)]));
   const shaded=mats(true), flat=mats(false);
-  const church=makeDetachedSaintMary(role=>shaded.get(role)!);
+  const church=makeDetachedSaintMaryV3B(role=>shaded.get(role)!);
   const ground=new T.Mesh(new T.PlaneGeometry(220,220),new T.MeshStandardMaterial({color:'#7e8174',roughness:.95}));
   ground.rotateX(-Math.PI/2);
   ground.position.y=-.035;

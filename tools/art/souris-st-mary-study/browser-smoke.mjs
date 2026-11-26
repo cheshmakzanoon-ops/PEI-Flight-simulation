@@ -17,7 +17,7 @@ try{
   const canvas=page.locator('#display canvas');
   await page.waitForFunction(()=>document.querySelector('#display canvas')?.dataset.orbitReady==='entry');
   const text=await page.locator('#load').textContent();
-  assert.match(text,/^4730 model triangles · 7 model draws$/);
+  assert.match(text,/^4886 model triangles · 7 model draws$/);
   assert.equal(await page.getByRole('button',{name:'Southwest entry'}).getAttribute('aria-pressed'),'true');
   await mkdir(out,{recursive:true});
   const entry=await canvas.screenshot();

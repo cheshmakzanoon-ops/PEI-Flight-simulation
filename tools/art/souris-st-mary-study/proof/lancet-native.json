@@ -1,0 +1,254 @@
+{
+  "scope": "Only original front three layered case profiles added to sealed V2 detached studio. Native r187 GLES, not survey, map/world, player or calibrated material. All seven V2 shaders identical.",
+  "v2": "b54975b49c778d3ed383e09bb9db257c930a7f80a9a011b5c12fdd09c2ea100d",
+  "v3": "71b3c6bdbba59b80e6f471e26afc4d1f0fb41f5c54417526b1e2e177005085f7",
+  "fixedPose": "8afbe1e3ac2b02886d3f26c685559d7b01c6c759c8ff27174fb9b1d45883a892",
+  "lock": "ad4a12bcbf8c9e120f6ce8408cd6dafdd2a8c9f8d8f3e4d521b3cc718cd636a8",
+  "sourceReceipt": "d39c1684db92f37617491a3527b8fd40947202c3f0b7c8d619c6fb5d004cf6e0",
+  "engine": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "depthBits": 24,
+  "programs": {
+    "stone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "cdfa3d9eed0165228d488983984f577bb9edcb236b1130c9b94a9e9472a575d7"
+        }
+      }
+    },
+    "freestone": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "df54a78150fea6574392bfc345c2ac20ed1ae701cd3132ea92ef3175e6b7c152"
+        }
+      }
+    },
+    "roof": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "2067bda1c2ab957066eccd5dc43aa38cbb9888e22e1bd2a42c956786987df73b"
+        }
+      }
+    },
+    "copper": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f0aff23a29ae84d50af8fda611913a3326d9d4f65a6ef84b1c9ce08515daacc9"
+        }
+      }
+    },
+    "glass": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "1724b44079e0eb817a4b7857fb6ee47326ad63a22f56365d9a3faa7c801eb253"
+        }
+      }
+    },
+    "wood": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "8e3108cf31e8ef334ab223781fc1c6c7f4af4633ecd3c8b5616a6a8539653ee5"
+        }
+      }
+    },
+    "metal": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "solid": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "f9575f19d1a1a1f15fdab79bbec6d970b63fc74caa1558aa14f5f0a5ddae4563"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "d6070ea7d9beab53763da147e523b83752be8da317e9ad1bdde62cb9aa02b8cb"
+        }
+      }
+    },
+    "marker": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "205b2cbc691bd2feb79c50a1ee82bd27b4585f3e2ba9191d7fd2748d2e630208"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "9252c4490e38c0b3c45e3a3d19683168fffd0bcc8dc6723545cf17dfa2d4ac48"
+        }
+      }
+    },
+    "stone-v2": {
+      "linked": true,
+      "log": "",
+      "stages": {
+        "vert": {
+          "compiled": true,
+          "log": "",
+          "sha256": "7f0e69a82c78f3ad59f45c15578689d89f45e2cfd5e78fce127168554412c23b"
+        },
+        "frag": {
+          "compiled": true,
+          "log": "",
+          "sha256": "c1ce984e0f0bce754f30701e06dcbb54a68fd896e178160484e2a9902b3687d1"
+        }
+      }
+    }
+  },
+  "oldNew": {
+    "ordinary-t16": {
+      "allChanges": 36,
+      "rgbCodesOver2": 36,
+      "rgbCodesOver5": 36,
+      "exactUnionOfFrontalCasing": 120,
+      "oldStoneNowFreestone": 36,
+      "oldCasingPixelCount": 84,
+      "newCasingPixelCount": 120,
+      "unaffectedAny": 0,
+      "unaffectedMaxCode": 0,
+      "alphaChanges": 0,
+      "silhouetteChanges": 0,
+      "restoredExact": true,
+      "shaV2": "3274aa529aeaf23de3cfc7d77c5fecadc2e011c5d75884552dd83dadfc741dd4",
+      "shaV3": "0c4bdc409c633b3bbfc543351c56f2864e91276dcc9ec35ae6771f7cfb9c4aad"
+    },
+    "ordinary-t18": {
+      "allChanges": 0,
+      "rgbCodesOver2": 0,
+      "rgbCodesOver5": 0,
+      "exactUnionOfFrontalCasing": 0,
+      "oldStoneNowFreestone": 0,
+      "oldCasingPixelCount": 0,
+      "newCasingPixelCount": 0,
+      "unaffectedAny": 0,
+      "unaffectedMaxCode": 0,
+      "alphaChanges": 0,
+      "silhouetteChanges": 0,
+      "restoredExact": true,
+      "shaV2": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+      "shaV3": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+    },
+    "ordinary-t20": {
+      "allChanges": 0,
+      "rgbCodesOver2": 0,
+      "rgbCodesOver5": 0,
+      "exactUnionOfFrontalCasing": 0,
+      "oldStoneNowFreestone": 0,
+      "oldCasingPixelCount": 0,
+      "newCasingPixelCount": 0,
+      "unaffectedAny": 0,
+      "unaffectedMaxCode": 0,
+      "alphaChanges": 0,
+      "silhouetteChanges": 0,
+      "restoredExact": true,
+      "shaV2": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345",
+      "shaV3": "73d14010ac7b6028ca10a9ccb187a16e404d32b71a9cdeb8f8a81eaa51655345"
+    },
+    "studio-entry": {
+      "allChanges": 2804,
+      "rgbCodesOver2": 2804,
+      "rgbCodesOver5": 2804,
+      "exactUnionOfFrontalCasing": 8093,
+      "oldStoneNowFreestone": 2804,
+      "oldCasingPixelCount": 5289,
+      "newCasingPixelCount": 8093,
+      "unaffectedAny": 0,
+      "unaffectedMaxCode": 0,
+      "alphaChanges": 0,
+      "silhouetteChanges": 0,
+      "restoredExact": true,
+      "shaV2": "d76aae4ce51c1dd6998ceb8cce2083052591f802080ed1c45b808f3490056847",
+      "shaV3": "f0df6d9a324a59f00d10d727c94ac207958b476970f81db6de897b3f573f1903"
+    },
+    "studio-oblique": {
+      "allChanges": 1316,
+      "rgbCodesOver2": 1281,
+      "rgbCodesOver5": 1179,
+      "exactUnionOfFrontalCasing": 3990,
+      "oldStoneNowFreestone": 1170,
+      "oldCasingPixelCount": 2820,
+      "newCasingPixelCount": 3990,
+      "unaffectedAny": 0,
+      "unaffectedMaxCode": 0,
+      "alphaChanges": 0,
+      "silhouetteChanges": 0,
+      "restoredExact": true,
+      "shaV2": "47be544283d68952bac543a7eddccdc01e1e5a715b9506822e48ae097ab11e7d",
+      "shaV3": "066f6a1b2b1263cbacf96b577fe9e62447e9d8df021a4c49d0ec06dd2deaaf93"
+    }
+  }
+}
