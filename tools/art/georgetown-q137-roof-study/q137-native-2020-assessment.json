@@ -1,0 +1,272 @@
+{
+  "scope": "Read-only named 1m Government 2020 surface and terrain. Same acquisition, disjoint actual native cells in guarded old/FID common area. Exact slope family local study only, not current, whole shell or game datum.",
+  "sourceCatalogNext": "https://datacube.services.geo.ca/pgstac/api/collections/hrdem-lidar/items/PEI-Prince_Edward_Island_2020-1m",
+  "sourceCatalogPinnedSHA256": "d23d7eb5125ce1c4ee26914aae8c0f39115ef183bb33637628643857a1c476dc",
+  "nominalDate": "2020-09-15T12:00:00Z",
+  "cropXYWH": [
+    165278,
+    52920,
+    31,
+    39
+  ],
+  "georeferenceEPSG": 3979,
+  "nativeAffine": [
+    2261621.0,
+    1.0,
+    0.0,
+    371370.0,
+    0.0,
+    -1.0
+  ],
+  "source": {
+    "dtm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+      "objectETag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+      "objectBytes": 34973844421,
+      "same16KBHeaderSHA256": "93c9b02cf30096650c252e8299b3b0c4672aa8dcf48837bbd0985cffbb3d616b",
+      "windowNativeFloat32SHA256": "c588aa1a2dc8f367fe0453c21ec343567c7bd5e4b5379ea9ec05757961f3b58b",
+      "geoTiffStorageBlockShape": [
+        512,
+        512
+      ],
+      "noData": -32767.0
+    },
+    "dsm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif",
+      "objectETag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+      "objectBytes": 35659211028,
+      "same16KBHeaderSHA256": "a8b4d66c00fe586f3b13b41ed6718de3ef43dddf6c3307e4b04c144db833f7dd",
+      "windowNativeFloat32SHA256": "ac57b022f1d106e2a16e0ff940ae8b98adbe084be0d14f7f1905b0666968317a",
+      "geoTiffStorageBlockShape": [
+        512,
+        512
+      ],
+      "noData": -32767.0
+    }
+  },
+  "coordinateLockSHA256": "fe31d95777b675a0656ed8ab6346513b22ee479a24f22b562c389ab80ce9d490",
+  "fitFamilies": {
+    "southern-broad": {
+      "authorValid": 15,
+      "frozenPredictionSHA256": "d90e7d1ab4ba27805d430bc1862dc54cfb7188d85ee18c70b265aec1c06fe77b",
+      "heldValid": 19,
+      "heldPositiveHAG": 19,
+      "heldDSM_P10MedianP90_M": [
+        17.0466,
+        17.6971,
+        18.1501
+      ],
+      "heldHAG_P10MedianP90_M": [
+        3.9002,
+        4.542,
+        4.9553
+      ],
+      "familyScore": {
+        "flat": {
+          "p": [
+            17.753156661987305
+          ],
+          "author": {
+            "n": 15,
+            "rmse": 0.38768,
+            "signedMedian": 0.0,
+            "absP90": 0.61424
+          },
+          "held": {
+            "n": 19,
+            "rmse": 0.42999,
+            "signedMedian": 0.05608,
+            "absP90": 0.72006
+          }
+        },
+        "plane": {
+          "p": [
+            17.87896083450023,
+            -0.005280261006726339,
+            -0.2234998616418603
+          ],
+          "author": {
+            "n": 15,
+            "rmse": 0.23887,
+            "signedMedian": 0.01394,
+            "absP90": 0.3798
+          },
+          "held": {
+            "n": 19,
+            "rmse": 0.56626,
+            "signedMedian": 0.16868,
+            "absP90": 1.06445
+          }
+        },
+        "ridgeU": {
+          "p": [
+            18.34767094660208,
+            -0.011547795622546488,
+            0.3622588328475633,
+            0.39121381102992453
+          ],
+          "ridgeCross": 0.6766503426139229,
+          "oppositeHeldCellCounts": [
+            10,
+            9
+          ],
+          "author": {
+            "n": 15,
+            "rmse": 0.05834,
+            "signedMedian": 0.006,
+            "absP90": 0.10271
+          },
+          "held": {
+            "n": 19,
+            "rmse": 0.09302,
+            "signedMedian": 0.0077,
+            "absP90": 0.10978
+          }
+        },
+        "ridgeV": {
+          "p": [
+            17.818503733624517,
+            -0.1499999999999908,
+            6.72710660150729e-20,
+            2.58827171183588e-23
+          ],
+          "ridgeCross": 4.367407639163526,
+          "oppositeHeldCellCounts": [
+            8,
+            11
+          ],
+          "author": {
+            "n": 15,
+            "rmse": 0.24533,
+            "signedMedian": 0.00183,
+            "absP90": 0.36191
+          },
+          "held": {
+            "n": 19,
+            "rmse": 0.45765,
+            "signedMedian": 0.20463,
+            "absP90": 0.78719
+          }
+        }
+      },
+      "rigidLocalRoofFamilyAssessment": {
+        "best": "ridgeU",
+        "runner": "flat",
+        "heldGapToRunnerM": 0.61028,
+        "prelockSlopeFamilyPass": true
+      },
+      "status": "LOCAL DATED family only; two-sided pitch rival passed"
+    },
+    "northern-short": {
+      "authorValid": 12,
+      "frozenPredictionSHA256": "f950b3fc7448626a2d715419936c6a104ba8e186a80995475c0f53c58e943609",
+      "heldValid": 8,
+      "heldPositiveHAG": 8,
+      "heldDSM_P10MedianP90_M": [
+        16.9822,
+        17.278,
+        17.5638
+      ],
+      "heldHAG_P10MedianP90_M": [
+        3.6779,
+        3.9688,
+        4.2508
+      ],
+      "familyScore": {
+        "flat": {
+          "p": [
+            17.24565315246582
+          ],
+          "author": {
+            "n": 12,
+            "rmse": 0.35898,
+            "signedMedian": 0.0,
+            "absP90": 0.52839
+          },
+          "held": {
+            "n": 8,
+            "rmse": 0.27338,
+            "signedMedian": -0.0323,
+            "absP90": 0.42816
+          }
+        },
+        "plane": {
+          "p": [
+            17.23191637934029,
+            -0.009924184529217481,
+            0.03724725417279551
+          ],
+          "author": {
+            "n": 12,
+            "rmse": 0.35059,
+            "signedMedian": 0.00912,
+            "absP90": 0.45602
+          },
+          "held": {
+            "n": 8,
+            "rmse": 0.29701,
+            "signedMedian": -0.06446,
+            "absP90": 0.46813
+          }
+        },
+        "ridgeU": {
+          "p": [
+            17.768407153969317,
+            0.021223633672465447,
+            0.28787387996088437,
+            0.3670819985516696
+          ],
+          "ridgeCross": -0.9340405610758589,
+          "oppositeHeldCellCounts": [
+            5,
+            3
+          ],
+          "author": {
+            "n": 12,
+            "rmse": 0.05905,
+            "signedMedian": 0.00147,
+            "absP90": 0.08905
+          },
+          "held": {
+            "n": 8,
+            "rmse": 0.07416,
+            "signedMedian": -0.03426,
+            "absP90": 0.10018
+          }
+        },
+        "ridgeV": {
+          "p": [
+            17.23347616890133,
+            0.03960582857463182,
+            0.005484652651306855,
+            8.206326918428528e-18
+          ],
+          "ridgeCross": -5.5509013557044735,
+          "oppositeHeldCellCounts": [
+            2,
+            6
+          ],
+          "author": {
+            "n": 12,
+            "rmse": 0.35073,
+            "signedMedian": 0.01602,
+            "absP90": 0.44979
+          },
+          "held": {
+            "n": 8,
+            "rmse": 0.2993,
+            "signedMedian": -0.07304,
+            "absP90": 0.47097
+          }
+        }
+      },
+      "rigidLocalRoofFamilyAssessment": {
+        "best": "ridgeU",
+        "runner": "flat",
+        "heldGapToRunnerM": 0.32798,
+        "prelockSlopeFamilyPass": true
+      },
+      "status": "LOCAL DATED family only; two-sided pitch rival passed"
+    }
+  }
+}

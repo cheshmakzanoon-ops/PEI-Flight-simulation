@@ -1,0 +1,116 @@
+{
+  "scope": "Coordinates and prereg frozen candidate predictions only. Entire earlier A/H disjoint by >=1.41 native cell metres, new near-map-notch domain no target heights.",
+  "inputs": {
+    "q137-coordinate-prelock.json": "fe31d95777b675a0656ed8ab6346513b22ee479a24f22b562c389ab80ce9d490",
+    "q137-native-2020-assessment.json": "be7eec23ba17469baacad103aa0d69f149ed469ac920cdc6627afd252fb51af1"
+  },
+  "modelsCarriedNoRefit": {
+    "southern-broad": {
+      "intercept": 18.34767094660208,
+      "uRef": 5.017407639163526,
+      "du": -0.011547795622546488,
+      "ridgeV": 0.6766503426139229,
+      "vPlusFall": 0.3622588328475633,
+      "vMinusFall": 0.39121381102992453
+    },
+    "northern-short": {
+      "intercept": 17.768407153969317,
+      "uRef": -4.900901355704473,
+      "du": 0.021223633672465447,
+      "ridgeV": -0.9340405610758589,
+      "vPlusFall": 0.28787387996088437,
+      "vMinusFall": 0.3670819985516696
+    }
+  },
+  "geolincAndStockStations": [
+    -1.1140025390534964,
+    -1.5887340147017088
+  ],
+  "testedSharpU": -1.3513682768776025,
+  "testedCollarLimitsU": [
+    -2.118734014701709,
+    -0.5840025390534964
+  ],
+  "independentTargetGeometryDomainU": [
+    -2.55,
+    0.15
+  ],
+  "newROI": [
+    [
+      52937,
+      165290,
+      -0.8720157344870109,
+      -1.8566141843836133,
+      2.0,
+      {
+        "sharp": 17.42463273410202,
+        "collar": 17.4416391531251
+      }
+    ],
+    [
+      52937,
+      165291,
+      -0.9027967461221421,
+      -0.8570880319880305,
+      2.0,
+      {
+        "sharp": 17.816016622236187,
+        "collar": 17.819151575276653
+      }
+    ],
+    [
+      52937,
+      165292,
+      -0.9335777577572735,
+      0.14243812040755216,
+      2.0,
+      {
+        "sharp": 18.20740051037036,
+        "collar": 18.05600170935893
+      }
+    ],
+    [
+      52937,
+      165293,
+      -0.9643587693924048,
+      1.141964272803135,
+      2.0,
+      {
+        "sharp": 18.248183081291838,
+        "collar": 18.001873394675282
+      }
+    ],
+    [
+      52937,
+      165294,
+      -0.9951397810275362,
+      2.1414904251987177,
+      2.0,
+      {
+        "sharp": 17.886451356755817,
+        "collar": 17.63985583363845
+      }
+    ],
+    [
+      52938,
+      165290,
+      0.1275104179085719,
+      -1.825833172748482,
+      1.4142135623730951,
+      {
+        "sharp": 17.4251323672439,
+        "collar": 17.4251323672439
+      }
+    ]
+  ],
+  "qualifiedDomainCells": 6,
+  "gate": {
+    "minCount": 10,
+    "minEachSide": 3,
+    "nativeAbsP90AtMostM": 0.58,
+    "nativeAbsMedianAtMostM": 0.25,
+    "clearImprovementOverOtherAbsP90M": 0.16,
+    "allHAGAtLeastM": 1.6,
+    "rule": "Compare precomputed step and continuous interpolation without fitting. Either pass is nominal historical transition behavior only; physical roof plane/closure details are not inferred."
+  }
+}

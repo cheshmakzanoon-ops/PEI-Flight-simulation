@@ -1,0 +1,74 @@
+{
+  "base": "6b9048ba74502dbee342af9b8559308f8f61aed7",
+  "studyState": "held",
+  "sourceOwner": {
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "q11220Wire": "44a3bb73d0752c7c7416ced2240a7ec9d65756cbf1ec4cf1b988f02f2ca9a849",
+    "q137row": "607c15618ba144f92675e55a2b1a83a19a25575cc5d01429e2b9006b78bf279d",
+    "oldVertexCount": 31179,
+    "oldSpan": [
+      9567,
+      9633
+    ],
+    "oldPos": "bf4389b367d1ea4b3db25041e9da0695310ff59be71b089e108a53a0d86d8984"
+  },
+  "sourceReceiptsSHA256": {
+    "q137-native-2020-assessment.json": "be7eec23ba17469baacad103aa0d69f149ed469ac920cdc6627afd252fb51af1",
+    "q137-stock-roof-continuity.json": "47c78712e9947040dbb21d3ed7436d44936b3e25424c7fa1c1cc5c80b2adaf0c",
+    "q137-join-prelock.json": "d840c7e9e586f2f6fa24d4c2ffe33dbae287f3045377d998a9ac171bea251324"
+  },
+  "geometry": {
+    "triangles": {
+      "roof": 82,
+      "bottom witness": 82,
+      "paired unchanged-foot curtain": 48
+    },
+    "exactOldFeetCount": 8,
+    "weldedVert": 108,
+    "closedDirectedEdges": 318,
+    "originalFootprintM2": 168.16850202158093,
+    "hypothesisFootprintM2": 168.1672446206212,
+    "f32InwardSplitMaxM": 7.191757449713594e-05,
+    "actualOutsideOldPlanM2": 0.0,
+    "projectedDatumApproximationMaxM": 8.918238907608864e-06,
+    "lowestAndHighestRoofLocalY_M": [
+      15.127762794494629,
+      17.30681037902832
+    ],
+    "geometricPlaneFootprintSmallestTriArea": 0.03586568683385849,
+    "closedPositiveVolumeM3": 787.3106766002062,
+    "admit": "No runtime. Five uncertainty bands including old perimeter, boundary plan difference, underpowered joint, unknown modern exterior and unfitted physical datum. Verify camera/native scope separately if used.",
+    "exactSourceStageSHA": "e777ccbe3c2d5f1a4a517f15312ff3335a8d35abf122c9ddc3d2c4f6a042b705"
+  },
+  "native": {
+    "time": 25.199748000000042,
+    "error": [],
+    "change": {
+      "strong": 678,
+      "rgb": 678,
+      "alpha": 4,
+      "outside": 0,
+      "oldSupport": 678,
+      "newSupport": 564
+    },
+    "restored": true,
+    "viewport": [
+      720,
+      480
+    ],
+    "stock": {
+      "gl": 0,
+      "draws": 334,
+      "triangles": 384504
+    },
+    "candidate": {
+      "gl": 0,
+      "draws": 335,
+      "triangles": 384612,
+      "index": 31047
+    },
+    "stockChurchIndex": 31113,
+    "alphaGate": "fail: four silhouette pixels revealed different alpha, no exterior RGB change"
+  },
+  "standardExposure": false
+}

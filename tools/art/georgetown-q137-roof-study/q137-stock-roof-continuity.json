@@ -1,0 +1,94 @@
+{
+  "scope": "Original q137 load geometry on unchanged t25 local N112, plus percentage each complete stock roof triangle has spatial historical local-family support. Raw 2020 data and game vertical transfer intentionally not read. Whole replacement permanently held pending newly qualified source/assembly.",
+  "input": {
+    "q137-actual-owner.json": "d38da3043c33feaaebe5320cbf92f29257e8db8da5e1c388bbd99849a7326f4b",
+    "q137-coordinate-prelock.json": "fe31d95777b675a0656ed8ab6346513b22ee479a24f22b562c389ab80ce9d490"
+  },
+  "protected": [
+    9567,
+    9633
+  ],
+  "stockFlatWorldY": 17.30681037902832,
+  "completeRoofTriCount": 6,
+  "originalWallTriCount": 16,
+  "oneCombinedOldPlanProjectedM2": 173.15664755781555,
+  "allDomainProvenAreaM2": {
+    "southern-broad": 58.81933819742558,
+    "northern-short": 29.925676774571695
+  },
+  "qualifiedClearNorthSouthFootprintStillAllowsNoWholeTriangle": [
+    {
+      "start": 9615,
+      "uSpanM": -1.022780515039162,
+      "uSpanMaxM": 10.415292935163352,
+      "areaM2": 56.60012282119465,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.4377958200049253,
+        "northern-short": 0.0
+      }
+    },
+    {
+      "start": 9618,
+      "uSpanM": -1.2629867811679498,
+      "uSpanMaxM": 10.415292935163352,
+      "areaM2": 12.036512211157476,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.1924934756087319,
+        "northern-short": 0.0
+      }
+    },
+    {
+      "start": 9621,
+      "uSpanM": -8.181580260960184,
+      "uSpanMaxM": -1.2051744248087257,
+      "areaM2": 29.214113703280155,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.0,
+        "northern-short": 0.5804294803933584
+      }
+    },
+    {
+      "start": 9624,
+      "uSpanM": -8.006685361685266,
+      "uSpanMaxM": -1.006022091645496,
+      "areaM2": 3.1539740934849276,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.0,
+        "northern-short": 0.0
+      }
+    },
+    {
+      "start": 9627,
+      "uSpanM": -1.2051744248087257,
+      "uSpanMaxM": 10.415292935163352,
+      "areaM2": 45.090378982218624,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.7035445622960615,
+        "northern-short": 0.0
+      }
+    },
+    {
+      "start": 9630,
+      "uSpanM": -8.006685361685266,
+      "uSpanMaxM": -1.022780515039162,
+      "areaM2": 27.061545746479702,
+      "proportionCoveredByQualifiedInteriorDomains": {
+        "southern-broad": 0.0,
+        "northern-short": 0.4792388453756885
+      }
+    }
+  ],
+  "surfaceReceivers": {
+    "authenticN112FacetCount": 3,
+    "originalPlanGameMetricM2": 168.16850202162095,
+    "visualGroundMinAndMaxM": [
+      11.906307107734554,
+      12.449399996620262
+    ],
+    "oldFlatAboveVisualGroundMinAndMaxM": [
+      4.857410382408059,
+      5.400503271293767
+    ]
+  },
+  "decision": "Local historic two-slopes only (report independent). Exact complete old triangles cannot be lifted, dropped, patched or overlaid under that limited support. West/end/step walls, eaves and actual world datum/receiver remain unadmitted."
+}

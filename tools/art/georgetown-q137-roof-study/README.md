@@ -1,0 +1,11 @@
+# Georgetown: dated two-roof study
+
+A Three.js art-workbench asset, not a change to Standard or Expanded scenery. The anonymous q11220/137 block retains its stock geometry in the game. Only the two inner pitched roof cores passed the historical shape comparison. The short transition, side walls and finish are not verified.
+
+The [2020 CanElevation survey](https://datacube.services.geo.ca/pgstac/api/collections/hrdem-lidar/items/PEI-Prince_Edward_Island_2020-1m) provides the 1 m ground and surface rasters under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada). The paired EPSG:3979 window is `[165278,52920,31,39]`. The provincial footprint corroborates location only; the signed stock footprint bounds the reconstruction. The [held tests](q137-native-2020-assessment.json) found opposing slopes in each inner section. Their 90th-percentile held errors were 0.110 m and 0.100 m, versus 0.720 m and 0.428 m for the flat fits. The [join gate](q137-join-prelock.json) had six unused eligible samples, short of ten. Those elevations were not used.
+
+`mesh.json` deduplicates exact Float32 positions without further quantization. Coordinates are virtual, not orthometric. The model retains all eight stock feet and never extends beyond the stock footprint. `georgetownRoofStudy(data)` exposes only fitted cores by default. `context` adds separate groups for the **illustrative** connector and curtains; `closure-proof` also exposes the underside for topology checking. Use different materials per group when inspecting the evidence.
+
+In a fixed 720×480 native WebGL frame during the Georgetown departure, replacing only this block changed 678 RGB pixels, none beyond the old/new depth masks. Stock restored exactly; the nearby St David’s geometry remained independently indexed. Four silhouette pixels changed alpha, so the candidate **failed** the zero-alpha-change gate. Its test material also lacked credible façade detail. Current exterior, connector shape and real-world vertical placement remain unverified. No renderer or collision change is installed.
+
+See the [geometry and render receipt](evidence.json). Run `node --experimental-strip-types --test test/georgetown-q137-roof-study.test.ts` from the checkout root.
