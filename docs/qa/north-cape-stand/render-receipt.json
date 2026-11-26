@@ -1,0 +1,170 @@
+{
+  "purpose": "Opt-in 2020 stand appearance, not today's individual trees or a performance measurement.",
+  "measuredWith": "Three.js r187, headless Chromium WebGL2 SwiftShader, 840×560, neutral-input normal North Cape flight. At each frozen pose the real GPU draw was repeated with the comparison uniform unchanged, zeroed, and restored.",
+  "matchedImageStudy": {
+    "base": "564a7cd3ae3421d5848d951fc4684e17fff2deed",
+    "roleCount": 59,
+    "inputSHA256": "b15a86c81febc967be452e94a58f0b357d8f4db1ba30e40cafa30afb5ee04461",
+    "masks": "Two separate display colors proved the visible old or new coverage; every alpha change belonged to the crown or exposed stock underlay.",
+    "strongRGB": [
+      2754,
+      6139
+    ],
+    "outsideRGBA": [
+      0,
+      0
+    ],
+    "unexplainedAlpha": [
+      0,
+      0
+    ]
+  },
+  "integrated": {
+    "base": "cf958f6894f2b992c61706aff0cd4f5f8e85bbc1",
+    "moduleSHA256": "230d6319a12d14b2b99a3a0997746601474c05a25cb9ad51e455fc41a8416907",
+    "maskDefinition": "Union of two legitimate warm/cold original crown-quad projections, padded by 2 pixels before matching captures.",
+    "fullPoseComparisons": [
+      {
+        "travelMetres": 85.066512,
+        "strong": 2760,
+        "alpha": 607,
+        "changed": 2788,
+        "restored": true,
+        "geometryMaskPixels": 11489,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 1,
+        "totalDrawCalls": 356,
+        "triangles": 381386
+      },
+      {
+        "travelMetres": 224.319945,
+        "strong": 6127,
+        "alpha": 1198,
+        "changed": 6166,
+        "restored": true,
+        "geometryMaskPixels": 17718,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 1,
+        "totalDrawCalls": 356,
+        "triangles": 383518
+      },
+      {
+        "travelMetres": 293.970292,
+        "strong": 6969,
+        "alpha": 3180,
+        "changed": 7824,
+        "restored": true,
+        "geometryMaskPixels": 29447,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 1,
+        "totalDrawCalls": 354,
+        "triangles": 387278
+      },
+      {
+        "travelMetres": 347.55757,
+        "strong": 749,
+        "alpha": 297,
+        "changed": 915,
+        "restored": true,
+        "geometryMaskPixels": 16160,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 1,
+        "totalDrawCalls": 354,
+        "triangles": 387278
+      },
+      {
+        "travelMetres": 395.793157,
+        "strong": 0,
+        "alpha": 0,
+        "changed": 0,
+        "restored": true,
+        "geometryMaskPixels": 866,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 0,
+        "totalDrawCalls": 354,
+        "triangles": 387278
+      },
+      {
+        "travelMetres": 422.593444,
+        "strong": 0,
+        "alpha": 0,
+        "changed": 0,
+        "restored": true,
+        "geometryMaskPixels": 0,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 0,
+        "totalDrawCalls": 354,
+        "triangles": 389478
+      },
+      {
+        "travelMetres": 653.147543,
+        "strong": 0,
+        "alpha": 0,
+        "changed": 0,
+        "restored": true,
+        "geometryMaskPixels": 0,
+        "outsideRGBA": 0,
+        "reviewProgramDraws": 0,
+        "totalDrawCalls": 353,
+        "triangles": 391290
+      }
+    ],
+    "conditions": {
+      "review": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": "not tracked",
+        "drawnMetres": [
+          85.067,
+          224.32,
+          235.034,
+          299.329,
+          374.354
+        ]
+      },
+      "cameras": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": "not tracked",
+        "drawnMetres": [
+          85.067,
+          224.32
+        ],
+        "switchedViews": {
+          "Cockpit": false,
+          "Wide chase": false
+        }
+      },
+      "plain": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": 0,
+        "drawnMetres": []
+      },
+      "veto": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": 0,
+        "drawnMetres": []
+      },
+      "absent-atlas": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": 1,
+        "drawnMetres": [],
+        "controlledFailure": [
+          [
+            "/art/canopy.webp",
+            404
+          ]
+        ]
+      },
+      "absent-stock": {
+        "originalAtlasRequests": 1,
+        "optionalModuleRequests": 0,
+        "drawnMetres": [],
+        "controlledFailure": [
+          [
+            "/art/canopy.webp",
+            404
+          ]
+        ]
+      }
+    }
+  }
+}

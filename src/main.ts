@@ -1,3 +1,5 @@
+import {northCapeStandOption} from './app/north-cape-stand-option.ts';
+import type {NorthCapeStandReview} from './render/north-cape-stand/review.ts';
 import {olearyLinkPrograms} from './render/oleary-railway/program-gate.ts';
 import {olearyIndustrialDry} from './render/oleary-railway/industrial-seat.ts';
 import {standardWharfLoader,standardWharfRequested} from './render/spinnakers-standard.ts';
@@ -121,7 +123,8 @@ import {RegionalWindStream} from './render/regional-wind-stream.ts';
 import './app/style.css';
 bootUI();
 async function run(){
- const options=sceneryOptions(location.search),showBuildingShadows=options.has('buildingShadows');
+ const datedCapeStand=northCapeStandOption(location.search);
+ const options=sceneryOptions(datedCapeStand.stockSearch),showBuildingShadows=options.has('buildingShadows');
  // Keep the same Point Prim approach in Standard and in its stock comparison.
  const pointPrimSites=pointPrimDepartureAvailable(options)?[...STOCK_SITES,POINT_PRIM_DEPARTURE]:STOCK_SITES;
  const SITES=[...pointPrimSites,...REGIONAL_CANOPY_DEPARTURES,KINGS_MAPPED_FARMLAND_DEPARTURE,PRINCE_MAPPED_FARMLAND_DEPARTURE];
@@ -367,6 +370,12 @@ async function run(){
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
    rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'));
+ let datedStandReview:NorthCapeStandReview|undefined;
+ if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')
+  void import('./render/north-cape-stand/review.ts').then(({NorthCapeStandReview})=>{
+   datedStandReview=new NorthCapeStandReview(renderer,scene,camera,world,vegetation,import.meta.env.BASE_URL,terrainSha);
+   window.addEventListener('pagehide',()=>datedStandReview?.dispose(),{once:true});
+  }).catch(()=>{});
  const regionalCanopy=(regionalCanopyRequested(options)||standardRegionalCanopyRequested(options))&&gl.getParameter(gl.SAMPLES)>=2&&regionalBase(terrain,cover,terrainSha)?
   new RegionalCanopies(world,scene,vegetation,forestStream,worldBase,REGIONAL_STANDS):undefined;
  if(crownStream)vegetation.trackCrownHeights();
@@ -927,11 +936,18 @@ async function run(){
    if(eligible||dalvayVisual?.active)dalvayVisual?.update(()=>eligible?world.dalvayWaterReceivers():undefined);
   }
   buildings?.syncTerminalWall();
-  renderer.render(scene,camera);
+  if(datedStandReview){
+   let end:undefined|(()=>void);
+   try{end=datedStandReview.beforeFrame({site:SITES[activeSite].id,mode:ui.mode,view,now});}
+   catch{datedStandReview.dispose();}
+   try{renderer.render(scene,camera);}finally{end?.();}
+  }else renderer.render(scene,camera);
   if(world.tryonRockState==='pending'&&roads&&buildings&&mainland&&world.detailState().loading===0)
    void world.prepareTryonRock(camera);
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);
   if(diagnostic){
+   if(datedStandReview&&new URLSearchParams(location.search).has('diagnostics'))
+    Object.assign(window,{islandAirNorthCapeStandReview:datedStandReview.status});
    if(kingsFields)Object.assign(window,{islandAirKingsFields:{state:kingsFields.state,gain:kingsFields.gain}});
    if(queensFields)Object.assign(window,{islandAirQueensFields:{state:queensFields.state,gain:queensFields.gain}});
    if(princeFields)Object.assign(window,{islandAirPrinceFields:{state:princeFields.state,gain:princeFields.gain}});

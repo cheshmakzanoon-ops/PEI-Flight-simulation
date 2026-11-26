@@ -1,3 +1,4 @@
+import {NORTH_CAPE_STAND_ACTIVATE,NORTH_CAPE_STAND_VETO} from './north-cape-stand-option.ts';
 /**
  * A dispatch shortcut for already independent, validated previews. Standard
  * keeps its settings and URL behavior. This is not a new scenery source.
@@ -55,6 +56,8 @@ export const WOODLAND_SCENERY_FLAGS=['woodland3D','woodlandCrownBase','woodlandB
 
 export function sceneryOptions(search:string){
  const q=new URLSearchParams(search);
+ // The local dated view is ancillary, including when Dispatch shows another site.
+ q.delete(NORTH_CAPE_STAND_ACTIVATE);q.delete(NORTH_CAPE_STAND_VETO);
  if(q.has('stockDuneSand'))q.delete('duneSandDetail');
  if(q.has('stockDuneRelief'))q.delete('duneReliefStudy');
  if(isDetailScenery(search))for(const flag of DETAIL_FLAGS)if(!q.has(flag))q.set(flag,'');
