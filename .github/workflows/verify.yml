@@ -49,7 +49,7 @@ jobs:
           ./node_modules/.bin/vite build tools/art/holman-centre-exterior --base ./ --outDir /tmp/pei-holman-studio-dist --emptyOutDir
       - name: Verify detached Founders’ Food Hall art
         run: |
-          node --experimental-strip-types --test tools/art/founders-hall-exterior/detached.test.mjs
+          node --experimental-strip-types --test tools/art/founders-hall-exterior/detached.test.mjs tools/art/founders-hall-exterior/west-clip.test.mjs
           ./node_modules/.bin/tsc -p tools/art/founders-hall-exterior/tsconfig.json
           ./node_modules/.bin/vite build tools/art/founders-hall-exterior --base ./ --outDir /tmp/pei-founders-studio-dist --emptyOutDir
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

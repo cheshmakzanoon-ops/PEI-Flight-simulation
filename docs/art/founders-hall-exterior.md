@@ -54,3 +54,24 @@ the exposed original scene captured with both building variants hidden.
 The distinction and the unchanged release gate are documented in
 [the actual fixed-frame receipt](../../tools/art/founders-hall-exterior/exact-route-scope.json).
 Realistic façade treatment and precise modern roof heights are not complete.
+
+## Optional narrow gable comparison
+
+The local workbench's **Compare narrow gable** control overlays the
+photographically supported narrower raised brick shape and lower shoulders.
+The comparison loads separately. It checks the existing authored face
+order and exact Float32 position, normal and UV streams before enabling
+a narrowly clipped exchange of the west end. The 1,792 baseline triangles
+stay byte-for-byte intact, and the optional view submits 47 additional
+triangles in the same 17 draw calls. Turning it off restores the unchanged
+baseline. No image or hosted map data is loaded.
+
+The previous geometry-only trial changed 378 pixels outside its strip in
+an oblique view and eight in a higher view. Preserving the old draw payload
+instead produced 10,930, 3,990 and 10,429 strong changes in three scoped
+views and exact equality in the reciprocal view, with zero outside or
+alpha changes. The [portable native receipt](../../tools/art/founders-hall-exterior/gable-review-native.json)
+also records byte-identical dormant and restored images. This is a
+developer inspection of the color draw only; the cap remains an artistic
+interpretation, not current surveyed dimensions, a sealed structural
+volume, a validated new shadow caster or a gameplay option.

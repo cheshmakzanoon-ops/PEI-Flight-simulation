@@ -4,6 +4,7 @@ import {buildFoundersRailShop} from './founders-rail-shop-study.ts';
 const status=document.querySelector<HTMLParagraphElement>('#review-status')!;
 const host=document.querySelector<HTMLElement>('#review-view')!;
 const nav=document.querySelector<HTMLElement>('#poses')!;
+const gable=document.querySelector<HTMLButtonElement>('#gable-preview')!;
 const poses=[
  {name:'Prince Street',eye:[-27,7,-18],target:[2,5,-16],fov:51},
  {name:'Visitor entrance',eye:[-17,5,-35],target:[6,4,-25],fov:46},
@@ -24,6 +25,8 @@ function boot(){
  const camera=new PerspectiveCamera(51,1,.1,500);
  host.append(renderer.domElement);
  let selected=0;
+ let cap:Awaited<ReturnType<typeof import('./founders-west-clip-study.ts')['buildFoundersWestClipStudy']>>|undefined;
+ let comparing=false;
  const buttons=poses.map((pose,i)=>{
   const button=document.createElement('button');button.type='button';button.textContent=pose.name;
   button.addEventListener('click',()=>show(i));nav.append(button);return button;
@@ -37,9 +40,30 @@ function boot(){
   selected=i;
   const p=poses[selected];camera.fov=p.fov;camera.position.set(p.eye[0],p.eye[1],p.eye[2]);camera.lookAt(p.target[0],p.target[1],p.target[2]);
   buttons.forEach((b,j)=>b.setAttribute('aria-pressed',String(j===selected)));
-  status.textContent=p.name+' · '+mesh.triangles.toLocaleString('en-CA')+' triangles in '+mesh.batches+' material batches';
+  const active=comparing&&cap?cap:mesh;
+  status.textContent=p.name+' · '+active.triangles.toLocaleString('en-CA')+' triangles in '+active.batches+' material batches'+
+   (comparing?' · render-only gable check':'');
   draw();
  }
+ gable.addEventListener('click',async()=>{
+  gable.disabled=true;
+  try{
+   if(!cap){
+    const mod=await import('./founders-west-clip-study.ts');
+    cap=await mod.buildFoundersWestClipStudy();if(!cap.verified)throw Error("Unverified original asset");cap.group.scale.z=-1;cap.group.visible=false;
+    const oldHandler=renderer.debug.onShaderError;let linked=true;
+    renderer.debug.onShaderError=()=>{linked=false;};
+    try{await renderer.compileAsync(cap.group,camera,scene);}finally{renderer.debug.onShaderError=oldHandler;}
+    if(!linked)throw Error('Gable shader could not link');
+    scene.add(cap.group);
+   }
+   comparing=!comparing;mesh.group.visible=!comparing;cap.group.visible=comparing;cap.setEnabled(comparing);
+   gable.setAttribute('aria-pressed',String(comparing));show(selected);
+  }catch{
+   comparing=false;mesh.group.visible=true;if(cap){cap.group.visible=false;cap.setEnabled(false);if(!cap.group.parent)cap=undefined;}
+   gable.setAttribute('aria-pressed','false');draw();status.textContent='The render-only gable comparison could not load. The original study is unchanged.';
+  }finally{gable.disabled=false;}
+ });
  const resize=new ResizeObserver(draw);resize.observe(host);
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();status.textContent='Graphics context lost. Reload to inspect the model.';});
  renderer.domElement.addEventListener('webglcontextrestored',()=>show(selected));

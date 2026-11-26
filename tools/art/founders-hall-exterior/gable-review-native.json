@@ -1,0 +1,198 @@
+{
+  "scope": "Four published source V5/V7 detached WebGL2 scenes identical to frozen old-native raw output and camera, portable fixture only. No failed V6 model/import, external sources, actor or image input.",
+  "priorSHA": "055b2c33359e6618d45264dc61f2f7d634fac166255a07590870b20134e84d61",
+  "files": {
+    "west-view-lock.json": "3b5a6444e6765d3016b93543cd7b84c063f5057ebf01330b9d8db690aa0abbe8",
+    "founders-rail-shop-study.ts": "74f5981ad1046c6b8d16881da29f01551da4b5365a4a44b6b681dad3282cbff2",
+    "founders-west-clip-study.ts": "884190037b217ea7a2f0c3a5411c2b36acfe404f25d5504489efcf7d06713e77",
+    "founders-west-clip-fixture.generated.ts": "018396e36a3b2d02dba5a7f591bf23495478bd3c08c94e8018bb9995e9dfa769",
+    "fixed-old-native-hash-fixture.json": "d3f54ce7cdeb9e9ec51a14a754cd20bcfed0f52e53d786108d551e08b690567b",
+    "studio.ts": "3f28a45379e3136038f410076e549160cd7c73b479b6cd1e7d3ac8b4a114bd88",
+    "run-portable.cjs": "071169844badd3fc70a7c317616b5efc5cfbb6e5e963f28831ea0dc14fd21195",
+    "west-clip.test.mjs": "bdeadae98e3bd8ca8a0ccd8f7fb75cf7512e1d59c82b57bb3db63ae15b6b92f8"
+  },
+  "cases": {
+    "west-square": {
+      "allExact": true,
+      "phases": [
+        {
+          "mode": "old",
+          "rawSHA": "95176b516bd9659da5c914bb909097d2635e0f1bff950a277a7a5a8578711e60",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        },
+        {
+          "mode": "on",
+          "rawSHA": "00870572b379d9e01f5771155ef70dc4a4d6f0d200443b5af84ca41b82c76f52",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "off",
+          "rawSHA": "95176b516bd9659da5c914bb909097d2635e0f1bff950a277a7a5a8578711e60",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "on",
+          "rawSHA": "00870572b379d9e01f5771155ef70dc4a4d6f0d200443b5af84ca41b82c76f52",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "old",
+          "rawSHA": "95176b516bd9659da5c914bb909097d2635e0f1bff950a277a7a5a8578711e60",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        }
+      ]
+    },
+    "west-harbour-oblique": {
+      "allExact": true,
+      "phases": [
+        {
+          "mode": "old",
+          "rawSHA": "0f94ce3bab1f3a2abe69d1ded8dd3e8fe13fd7250394f5999d9bff881220332a",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        },
+        {
+          "mode": "on",
+          "rawSHA": "6078ab918340895708aa2683bc8ccfaae6637f1a4ede1aab0efc21d60537fcc7",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "off",
+          "rawSHA": "0f94ce3bab1f3a2abe69d1ded8dd3e8fe13fd7250394f5999d9bff881220332a",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "on",
+          "rawSHA": "6078ab918340895708aa2683bc8ccfaae6637f1a4ede1aab0efc21d60537fcc7",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "old",
+          "rawSHA": "0f94ce3bab1f3a2abe69d1ded8dd3e8fe13fd7250394f5999d9bff881220332a",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        }
+      ]
+    },
+    "west-elevated-strip": {
+      "allExact": true,
+      "phases": [
+        {
+          "mode": "old",
+          "rawSHA": "a3196ea8d128058050eac79d5fd3f339a6d08b84b02e5773d44ef56e54d65d78",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        },
+        {
+          "mode": "on",
+          "rawSHA": "f92d3c137e7a0b896fd23a268e4540cc0f5f48790a77ec12e2759b8147fc806e",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "off",
+          "rawSHA": "a3196ea8d128058050eac79d5fd3f339a6d08b84b02e5773d44ef56e54d65d78",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "on",
+          "rawSHA": "f92d3c137e7a0b896fd23a268e4540cc0f5f48790a77ec12e2759b8147fc806e",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "old",
+          "rawSHA": "a3196ea8d128058050eac79d5fd3f339a6d08b84b02e5773d44ef56e54d65d78",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        }
+      ]
+    },
+    "old-far-east-negative": {
+      "allExact": true,
+      "phases": [
+        {
+          "mode": "old",
+          "rawSHA": "eface75291f7724ee05d03559a7fba8430def08d1148a30da571fa22b0a796d1",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        },
+        {
+          "mode": "on",
+          "rawSHA": "eface75291f7724ee05d03559a7fba8430def08d1148a30da571fa22b0a796d1",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "off",
+          "rawSHA": "eface75291f7724ee05d03559a7fba8430def08d1148a30da571fa22b0a796d1",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "on",
+          "rawSHA": "eface75291f7724ee05d03559a7fba8430def08d1148a30da571fa22b0a796d1",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1839
+        },
+        {
+          "mode": "old",
+          "rawSHA": "eface75291f7724ee05d03559a7fba8430def08d1148a30da571fa22b0a796d1",
+          "seenGL": 0,
+          "matrixExact": true,
+          "draws": 17,
+          "triangles": 1792
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "allPassed": true
+}
