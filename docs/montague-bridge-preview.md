@@ -7,7 +7,8 @@ To preselect the lower approach, use `?montagueFoundationPreview&departure=monta
 The stock app does not load or install the local pack without the flag. Once
 the verified preview loads, choose **Montague · river bridge pass** in Dispatch
 or the map. This starts 620 m northeast of the Main Street span at 64 m above
-the starting surface. The older **Montague River** departure remains the
+the starting surface. In Chase, the slightly offset heading keeps the bridge
+to the left of the aircraft rather than directly behind its fuselage. The older **Montague River** departure remains the
 higher estuary flight. The low pass is not offered when the preview pack or
 its required source files do not authenticate; a saved low-pass link then
 selects the original Montague River departure. Add

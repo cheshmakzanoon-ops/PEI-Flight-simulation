@@ -98,34 +98,51 @@ try{
    receipt[mode]={start:[start.x,start.altitude,start.z],travelled,reads,foundation:d.montagueFoundation,bridge:d.montagueBridge};
    if(mode==='live'){
     assert(start.altitude>60&&start.altitude<68);
-    const distance=Math.hypot(d.x-bridge[0],d.z-bridge[1]);
-    assert(distance>=175&&distance<340,JSON.stringify({distance,travelled}));
-    await page.keyboard.press('p');
-    await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='paused');
-    await page.evaluate(()=>{window.montagueRouteQA.hold=true;});
-    const sample=async(kind)=>{
-     await page.evaluate(k=>{window.montagueRouteQA.ask=k;},kind);
-     await page.waitForFunction(k=>window.montagueRouteQA.frame?.mode===k,kind);
-     const f=await page.evaluate(()=>window.montagueRouteQA.frame);
-     assert.equal(f.err,0);assert.equal(f.owner,true);
-     for(const v of [15210,7500,8922,16488])assert(f.draws.some(k=>k.vertices===v&&k.depth&&k.write),JSON.stringify(f.draws));
-     return {...f,bytes:Buffer.from(f.png.split(',')[1],'base64')};
-    };
-    const on=await sample('normal'),off=await sample('omit'),restored=await sample('restored');
-    assert.deepEqual(restored.bytes,on.bytes,'restoring the scoped draws must restore the frame');
-    assert.deepEqual([on.at.x,on.at.z,on.at.altitude],[off.at.x,off.at.z,off.at.altitude]);
-    const a=PNG.sync.read(on.bytes),b=PNG.sync.read(off.bytes);
-    assert.deepEqual([a.width,a.height],[b.width,b.height]);
-    let changed=0,alpha=0;
-    for(let i=0;i<a.data.length;i+=4){
-     if(Math.max(Math.abs(a.data[i]-b.data[i]),Math.abs(a.data[i+1]-b.data[i+1]),
-      Math.abs(a.data[i+2]-b.data[i+2]))>6)changed++;
-     if(a.data[i+3]!==b.data[i+3])alpha++;
+    assert(Math.abs(start.heading*180/Math.PI-253)<.01);
+    receipt[mode].checkpoints=[];
+    let previous=0;
+    for(const checkpoint of [300,400]){
+     await page.waitForFunction(({start,checkpoint})=>{
+      const d=window.islandAirDiagnostics;
+      return d?.mode==='flight'&&d.camera==='Chase'&&Math.hypot(d.x-start.x,d.z-start.z)>=checkpoint;
+     },{start,checkpoint},{polling:48});
+     await page.keyboard.press('p');
+     await page.waitForFunction(()=>window.islandAirDiagnostics?.mode==='paused');
+     await page.evaluate(()=>{window.montagueRouteQA.hold=true;});
+     const sample=async(kind)=>{
+      await page.evaluate(k=>{window.montagueRouteQA.ask=k;},kind);
+      await page.waitForFunction(k=>window.montagueRouteQA.frame?.mode===k,kind);
+      const f=await page.evaluate(()=>window.montagueRouteQA.frame);
+      assert.equal(f.err,0);assert.equal(f.owner,true);
+      for(const v of [15210,7500,8922,16488])assert(f.draws.some(k=>k.vertices===v&&k.depth&&k.write),JSON.stringify(f.draws));
+      return {...f,bytes:Buffer.from(f.png.split(',')[1],'base64')};
+     };
+     const on=await sample('normal'),off=await sample('omit'),restored=await sample('restored');
+     assert.deepEqual(restored.bytes,on.bytes,'restoring the scoped draws must restore the frame');
+     assert.deepEqual([on.at.x,on.at.z,on.at.altitude],[off.at.x,off.at.z,off.at.altitude]);
+     const distance=Math.hypot(on.at.x-bridge[0],on.at.z-bridge[1]);
+     assert(distance>=175&&distance<350,JSON.stringify({distance,checkpoint}));
+     const a=PNG.sync.read(on.bytes),b=PNG.sync.read(off.bytes);
+     assert.deepEqual([a.width,a.height],[b.width,b.height]);
+     let changed=0,alpha=0;
+     for(let i=0;i<a.data.length;i+=4){
+      if(Math.max(Math.abs(a.data[i]-b.data[i]),Math.abs(a.data[i+1]-b.data[i+1]),
+       Math.abs(a.data[i+2]-b.data[i+2]))>6)changed++;
+      if(a.data[i+3]!==b.data[i+3])alpha++;
+     }
+     const record={checkpoint,distance,travelled:Math.hypot(on.at.x-start.x,on.at.z-start.z),
+      draws:on.draws,strongChangedPixels:changed,alpha,viewport:[a.width,a.height]};
+     receipt[mode].checkpoints.push(record);
+     console.log('Montague bridge scoped GPU view',JSON.stringify(record));
+     await writeFile(out+'/montague-bridge-'+checkpoint+'-normal.png',on.bytes);
+     await writeFile(out+'/montague-bridge-'+checkpoint+'-draw-omitted.png',off.bytes);
+     assert(changed>=(checkpoint===300?250:500)&&changed>previous&&alpha===0,JSON.stringify(record));
+     previous=changed;
+     if(checkpoint!==400){
+      await page.evaluate(()=>{window.montagueRouteQA.hold=false;});
+      await page.keyboard.press('p');
+     }
     }
-    assert(changed>=50&&alpha===0,JSON.stringify({changed,alpha,draws:on.draws}));
-    Object.assign(receipt[mode],{draws:on.draws,strongChangedPixels:changed,alpha,viewport:[a.width,a.height]});
-    await writeFile(out+'/montague-bridge-normal.png',on.bytes);
-    await writeFile(out+'/montague-bridge-draw-omitted.png',off.bytes);
    }
    console.log('Montague bridge pass',mode,receipt[mode]);
   }finally{await page.close();}

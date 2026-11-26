@@ -63,8 +63,8 @@ export const SITES: Site[] = [
 // high-altitude estuary departure unchanged.
 export const MONTAGUE_BRIDGE_DEPARTURE:Site={
  id:'montague-bridge-low',name:'Montague · river bridge pass',region:'Kings County',
- lon:-62.64066788367977,lat:46.16629032720332,heading:245,height:64,
- note:'Start over the river northeast of the Main Street bridge. Virtual sightseeing only, not an aviation or marine route.',
+ lon:-62.64066788367977,lat:46.16629032720332,heading:253,height:64,
+ note:'Start over the river northeast of the Main Street bridge and look to the left of the aircraft. Virtual sightseeing only, not an aviation or marine route.',
 };
 
 // Keep normal stock and conditionally appended route ordinals stable.
