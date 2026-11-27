@@ -1,4 +1,5 @@
 import * as T from 'three';
+import { EAST_SKY_SEAT_POSITIONS } from './cape-tryon-east-sky-seat-data.ts';
 import { opaqueCoverageBlend } from './opaque-coverage-alpha.ts';
 import { olearyLinkPrograms, type OlearyProgramProof } from './oleary-railway/program-gate.ts';
 
@@ -10,6 +11,7 @@ export const CAPE_TRYON_SKY_SEAT = Object.freeze([
  -41.837310791015625,7.029837131500244,15.350818634033203,-47.50859069824219,5.71829080581665,17.43170738220215,-47.50859069824219,7.24971342086792,17.43170738220215,
 ]);
 
+export const CAPE_TRYON_FULL_SKY_SEAT = Object.freeze([...CAPE_TRYON_SKY_SEAT,...EAST_SKY_SEAT_POSITIONS]);
 const origin=[-23443.888671875,0,-3876.2265625] as const;
 const ownMatrix=[1,0,0,0,0,1,0,0,0,0,1,0,...origin,1];
 const matrix16=[1,0,0,0,0,1,0,0,0,0,1,0,-21325.607917033114,0,-5153.832064952882,1];
@@ -87,7 +89,7 @@ export class CapeTryonSkySeat{
      p.count!==2730||su.count!==2730||gp.count!==12769||gu.count!==12769||gi.count!==75264||
      p.itemSize!==3||su.itemSize!==2||gp.itemSize!==3||gu.itemSize!==2||gi.itemSize!==1||gi.normalized||
      !(gi.array instanceof Uint16Array)||[p,su,gp,gu].some(a=>a.normalized||!(a.array instanceof Float32Array))||
-     [...(su.array as Float32Array).subarray(24,36)].some(v=>v!==0))return;
+     [...(su.array as Float32Array).subarray(24,36),...(su.array as Float32Array).subarray(156,180)].some(v=>v!==0))return;
   const bytes=[p,gp,gu,gi];
   return {bytes,ground,groundGeo:g,shoreGeo:sg,key:[ground,g,sg,p,su,gp,gu,gi,p.version,su.version,gp.version,gu.version,gi.version,
      p.array,su.array,gp.array,gu.array,gi.array]};
@@ -152,8 +154,8 @@ export class CapeTryonSkySeat{
      s.vertexShader.split(vertexAnchor).length!==2||s.fragmentShader.split(fragAnchor).length!==2){
     this.phase='stock-shader';return;
    }
-   geom=new T.BufferGeometry();geom.setAttribute('position',new T.Float32BufferAttribute(CAPE_TRYON_SKY_SEAT,3));
-   geom.setAttribute('uv',new T.Float32BufferAttribute(new Float32Array(18),2));geom.computeBoundingSphere();
+   geom=new T.BufferGeometry();geom.setAttribute('position',new T.Float32BufferAttribute(CAPE_TRYON_FULL_SKY_SEAT,3));
+   geom.setAttribute('uv',new T.Float32BufferAttribute(new Float32Array(2*(CAPE_TRYON_FULL_SKY_SEAT.length/3)),2));geom.computeBoundingSphere();
    shader=new T.ShaderMaterial({
     uniforms:{...s.uniforms,[phi]:this.pass},defines:{...s.defines},side:T.DoubleSide,
     depthTest:false,depthWrite:false,transparent:false,blending:T.NoBlending,toneMapped:s.toneMapped,
@@ -193,7 +195,7 @@ export class CapeTryonSkySeat{
     });
     const own=mesh.renderOrder===-9&&mesh.layers.mask===1&&eq(mesh.matrixWorld.elements,ownMatrix)&&
      settledGeometry.attributes.position===seatPosition&&settledGeometry.attributes.uv===seatUV&&
-     !settledGeometry.index&&settledGeometry.groups.length===0&&seatPosition.array.every((v,i)=>v===CAPE_TRYON_SKY_SEAT[i])&&
+     !settledGeometry.index&&settledGeometry.groups.length===0&&seatPosition.array.every((v,i)=>v===CAPE_TRYON_FULL_SKY_SEAT[i])&&
      seatUV.array.every(v=>v===0)&&settledMaterial.vertexShader===seatProgram[0]&&settledMaterial.fragmentShader===seatProgram[1]&&
      settledMaterial.uniforms[phi]===this.pass;
     const allowed=own&&this.ticket===key&&!!this.proof?.()&&!!current&&eq(current.key,key)&&ordinary&&ground===1&&shore===1&&renderer===this.renderer&&scene===this.scene&&camera===this.activeCamera&&geometry===settledGeometry&&
@@ -203,7 +205,7 @@ export class CapeTryonSkySeat{
      b?.object===mesh&&b.geometry===settledGeometry&&b.material===settledMaterial&&b.group===null;
     // The r187 list already exists here. Visibility alone cannot revoke a
     // queued draw. A negative range skips all primitives, even on refusal.
-    settledGeometry.setDrawRange(0,allowed?9:-1);
+    settledGeometry.setDrawRange(0,allowed?CAPE_TRYON_FULL_SKY_SEAT.length/3:-1);
     this.pass.value=Number(allowed);settledMaterial.uniformsNeedUpdate=true;
     this.phase=allowed?'mounted':'stock-render';
    };

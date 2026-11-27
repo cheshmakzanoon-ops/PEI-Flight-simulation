@@ -1,0 +1,755 @@
+{
+  "baseCommit": "8e7b7f0daa2fe85874697dc005f0e1bdfb5649a8",
+  "scope": "Single opt-in draw only; one reproduced stock anchor and two independently measured East source cells.",
+  "sourceSHA256": {
+    "src/render/cape-tryon-sky-seat.ts": "51e69234bd95ff667dc4ec74e3f719d6dd6d81b1c6e614284377d1c2022077cb",
+    "src/render/cape-tryon-east-sky-seat-data.ts": "6ed91ebb465cc05532f5cb60bd17419384dea9bceaf9fdafdb2f475402cd88c4"
+  },
+  "commonLocalAnchor": {
+    "origin": [
+      -23443.888671875,
+      0,
+      -3876.2265625
+    ],
+    "eastFloat32SHA256": "f4502fde11049f350ef1339c31997df595b0f55e5ad1ab48134fbdbedc29c175",
+    "newStraightClearanceMM": 1.9526310566249094,
+    "newStraightLowerMM": 0.24370174463683725,
+    "curvedClearanceMM": 1.962631432377293,
+    "curvedChordToleranceMM": 2.557679622462021
+  },
+  "qualifiedEastLargestPure": {
+    "old": 218,
+    "after": 0
+  },
+  "detachedUnion": {
+    "packetSHA256": "e34b88a5eb043a6d6f0ed63e94bb8abd928d5b5d6b4bc0b8e1060407609e3f8b",
+    "earlyMatchesSimultaneousLate": true,
+    "rawRGBA": {
+      "before": {
+        "colour": "b38e92629547fc5671b6a76a6e70d8d6727d068de0832b5de60748ce66e6a0d1",
+        "first": "4ca2ca910715856dcb575318c1a609da37ba308ba795ded29eacdad932a96d76",
+        "second": "958989be162beb759064db2253a609ee10e06ea91a0fe2313bb97e918b932856"
+      },
+      "after": {
+        "colour": "9e154a1c4c55b70cca2514f6fefeedf386e8cf1af4af072be2e78c83dd8eb23b",
+        "first": "b4e2f53ad797d8b2dbe7583bcad822413802979c1fa5d5c251c797898d66c985",
+        "second": "00edac966dcef89ce432bbddbdb50683c7eb225f59f6040203894f607d07c287"
+      },
+      "rollback": {
+        "colour": "b38e92629547fc5671b6a76a6e70d8d6727d068de0832b5de60748ce66e6a0d1",
+        "first": "4ca2ca910715856dcb575318c1a609da37ba308ba795ded29eacdad932a96d76",
+        "second": "958989be162beb759064db2253a609ee10e06ea91a0fe2313bb97e918b932856"
+      }
+    },
+    "rawAmplitudes": {
+      "old": "fae090e5501ed536c260b2f8b7adf160a3ca1a7500f1d1c4afac326588ec84c2",
+      "new": "301697a07668ba6280c647a925696afcd5b69ef23de45200c2638461625b237a",
+      "candidate": "85d4a281dee909a24b7b6a6b672e85d7d86b6eb20ebdb195ad226bad86f496e1"
+    },
+    "candidatePixels": 386,
+    "outsideProjection": 0,
+    "changedWithoutCandidate": 0,
+    "oldSamples": 815271,
+    "newSamples": 814047,
+    "candidateSamples": 1224,
+    "maxRawConservationError": 1,
+    "maxRawCoverageError": 0.75,
+    "maxExistingPaletteError": 0.75,
+    "sampleErrors": 0,
+    "aperturePureRemoved": 218,
+    "apertureCandidatePixels": 259,
+    "otherColour": {
+      "depthlessOpaque": [
+        {
+          "name": "Mesh",
+          "order": -10,
+          "type": "ShaderMaterial",
+          "depth": false,
+          "depthFunc": 3,
+          "write": false,
+          "blend": 1,
+          "positionCount": 4
+        }
+      ],
+      "transmissive": [],
+      "transparent": [
+        {
+          "name": "Canopy ground shadows",
+          "order": 0,
+          "type": "ShaderMaterial",
+          "depth": true,
+          "depthFunc": 3,
+          "write": false,
+          "blend": 1,
+          "positionCount": 4
+        }
+      ]
+    },
+    "lateProof": {
+      "ok": true,
+      "reason": "every exact canopy instance is outside protection",
+      "n": 1029,
+      "fast": 1029,
+      "gpu": "all issued input words match CPU",
+      "actual": 1
+    },
+    "gpuStates": [
+      {
+        "earlyOwner": true,
+        "immediatelyAfterSky": true,
+        "sameViewport": true,
+        "depthRange": true,
+        "noDepthTest": true,
+        "noWrite": true,
+        "noBlend": true,
+        "targetDefault": true,
+        "noStencil": true,
+        "noScissor": true,
+        "noAlphaCoverage": true,
+        "noSampleCoverage": true,
+        "clearDepthOne": true,
+        "writesAllColours": true
+      },
+      {
+        "earlyOwner": true,
+        "immediatelyAfterSky": true,
+        "sameViewport": true,
+        "depthRange": true,
+        "noDepthTest": true,
+        "noWrite": true,
+        "noBlend": true,
+        "targetDefault": true,
+        "noStencil": true,
+        "noScissor": true,
+        "noAlphaCoverage": true,
+        "noSampleCoverage": true,
+        "clearDepthOne": true,
+        "writesAllColours": true
+      },
+      {
+        "earlyOwner": true,
+        "immediatelyAfterSky": true,
+        "sameViewport": true,
+        "depthRange": true,
+        "noDepthTest": true,
+        "noWrite": true,
+        "noBlend": true,
+        "targetDefault": true,
+        "noStencil": true,
+        "noScissor": true,
+        "noAlphaCoverage": true,
+        "noSampleCoverage": true,
+        "clearDepthOne": true,
+        "writesAllColours": true
+      },
+      {
+        "earlyOwner": true,
+        "immediatelyAfterSky": true,
+        "sameViewport": true,
+        "depthRange": true,
+        "noDepthTest": true,
+        "noWrite": true,
+        "noBlend": true,
+        "targetDefault": true,
+        "noStencil": true,
+        "noScissor": true,
+        "noAlphaCoverage": true,
+        "noSampleCoverage": true,
+        "clearDepthOne": true,
+        "writesAllColours": true
+      },
+      {
+        "earlyOwner": true,
+        "immediatelyAfterSky": true,
+        "sameViewport": true,
+        "depthRange": true,
+        "noDepthTest": true,
+        "noWrite": true,
+        "noBlend": true,
+        "targetDefault": true,
+        "noStencil": true,
+        "noScissor": true,
+        "noAlphaCoverage": true,
+        "noSampleCoverage": true,
+        "clearDepthOne": true,
+        "writesAllColours": true
+      }
+    ],
+    "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+    "groundHashes": [
+      "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+      "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+      "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+    ],
+    "groundMatrix": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      -21325.607917033114,
+      0,
+      -5153.832064952882,
+      1
+    ],
+    "case": "live-rock",
+    "reason": "candidate",
+    "owners": 1,
+    "draws": 5,
+    "lastOpaque": true,
+    "diag": {
+      "water": "stock",
+      "rock": "live",
+      "coast": {
+        "chunks": 1,
+        "refined": 1
+      }
+    },
+    "gl": 0,
+    "camera": {
+      "eye": [
+        -23272.61965014391,
+        37,
+        -3827.902831194347
+      ],
+      "projection": [
+        1.352674454407246,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "matrixWorld": [
+        -0.2249510543438633,
+        1.3877787807814457e-17,
+        -0.9743700647852356,
+        0,
+        -0.08477512026011878,
+        0.9962078701507684,
+        0.019571878666905566,
+        0,
+        0.9706751269783658,
+        0.08700505416163865,
+        -0.22409801073606972,
+        0,
+        -23272.61965014391,
+        37,
+        -3827.902831194347,
+        1
+      ],
+      "view": [
+        -0.22495105434386317,
+        -0.08477512026011878,
+        0.9706751269783659,
+        0,
+        3.122502256758253e-17,
+        0.9962078701507686,
+        0.08700505416163865,
+        0,
+        -0.9743700647852356,
+        0.019571878666905573,
+        -0.22409801073606983,
+        0,
+        -8964.994257266002,
+        -1934.8795710436916,
+        21729.10843725705,
+        1
+      ],
+      "width": 860,
+      "height": 580,
+      "samples": 4
+    },
+    "rollback": true,
+    "rgbPixels": 386,
+    "occupiedRgb": 0,
+    "mixedRgb": 127,
+    "alpha": 0,
+    "inventedSky": 0,
+    "increasedSky": 0,
+    "reducedSky": 386,
+    "pureRemoved": 259,
+    "stats": [
+      [
+        88,
+        223380
+      ],
+      [
+        89,
+        223432
+      ],
+      [
+        88,
+        223380
+      ]
+    ]
+  },
+  "runtimeFixed": {
+    "headland-north": {
+      "case": "live",
+      "state": "mounted",
+      "rgbChanged": 324,
+      "occupiedChanged": 0,
+      "alphaChanged": 0,
+      "removedPure": 231,
+      "increasedSky": 0,
+      "samples": 4,
+      "prefix": [
+        "",
+        "Cape Tryon vertical sky-seat preview"
+      ],
+      "stats": [
+        [
+          70,
+          257476
+        ],
+        [
+          71,
+          257531
+        ],
+        [
+          70,
+          257476
+        ]
+      ],
+      "rollback": true,
+      "errors": [],
+      "gl": 0
+    },
+    "headland-grazing": {
+      "case": "live",
+      "state": "mounted",
+      "rgbChanged": 515,
+      "occupiedChanged": 0,
+      "alphaChanged": 0,
+      "removedPure": 405,
+      "increasedSky": 0,
+      "samples": 4,
+      "prefix": [
+        "",
+        "Cape Tryon vertical sky-seat preview"
+      ],
+      "stats": [
+        [
+          147,
+          245649
+        ],
+        [
+          148,
+          245704
+        ],
+        [
+          147,
+          245649
+        ]
+      ],
+      "rollback": true,
+      "errors": [],
+      "gl": 0
+    },
+    "headland-east": {
+      "case": "live",
+      "state": "mounted",
+      "rgbChanged": 386,
+      "occupiedChanged": 0,
+      "alphaChanged": 0,
+      "removedPure": 259,
+      "increasedSky": 0,
+      "samples": 4,
+      "prefix": [
+        "",
+        "Cape Tryon vertical sky-seat preview"
+      ],
+      "stats": [
+        [
+          88,
+          223380
+        ],
+        [
+          89,
+          223435
+        ],
+        [
+          88,
+          223380
+        ]
+      ],
+      "rollback": true,
+      "errors": [],
+      "gl": 0
+    },
+    "depth-only": {
+      "case": "depth-only",
+      "state": "stock-render",
+      "rgbChanged": 0,
+      "occupiedChanged": 0,
+      "alphaChanged": 0,
+      "removedPure": 0,
+      "increasedSky": 0,
+      "samples": 4,
+      "prefix": [
+        "",
+        "Cape Tryon vertical sky-seat preview"
+      ],
+      "stats": [
+        [
+          89,
+          223382
+        ],
+        [
+          89,
+          223382
+        ],
+        [
+          89,
+          223382
+        ]
+      ],
+      "rollback": true,
+      "errors": [],
+      "gl": 0
+    },
+    "aa0": {
+      "case": "aa0",
+      "state": "stock-render",
+      "rgbChanged": 0,
+      "occupiedChanged": 0,
+      "alphaChanged": 0,
+      "removedPure": 0,
+      "increasedSky": 0,
+      "samples": 0,
+      "prefix": [
+        "",
+        ""
+      ],
+      "stats": [
+        [
+          88,
+          223380
+        ],
+        [
+          88,
+          223380
+        ],
+        [
+          88,
+          223380
+        ]
+      ],
+      "rollback": true,
+      "errors": [],
+      "gl": 0
+    }
+  },
+  "runtimeCompiled": {
+    "active": {
+      "dispatch": "pending",
+      "frames": [
+        {
+          "m": 35,
+          "site": "cape-tryon-coast",
+          "state": "pending",
+          "rock": "live",
+          "altitude": 82.09813506247723,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23189.498315122193,
+          "z": -4304.001389507287
+        },
+        {
+          "m": 95,
+          "site": "cape-tryon-coast",
+          "state": "pending",
+          "rock": "live",
+          "altitude": 82.488235725256,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23216.28686271664,
+          "z": -4253.556823418973
+        },
+        {
+          "m": 160,
+          "site": "cape-tryon-coast",
+          "state": "mounted",
+          "rock": "live",
+          "altitude": 82.96472305976563,
+          "calls": 188,
+          "triangles": 276497,
+          "x": -23247.635639160613,
+          "z": -4194.52598436819
+        },
+        {
+          "m": 230,
+          "site": "cape-tryon-coast",
+          "state": "mounted",
+          "rock": "live",
+          "altitude": 83.44598185630194,
+          "calls": 188,
+          "triangles": 276497,
+          "x": -23279.527394838762,
+          "z": -4134.473768884503
+        },
+        {
+          "m": 320,
+          "site": "cape-tryon-coast",
+          "state": "mounted",
+          "rock": "live",
+          "altitude": 84.10200218371604,
+          "calls": 188,
+          "triangles": 277525,
+          "x": -23322.954244112505,
+          "z": -4052.7026457678626
+        },
+        {
+          "m": 430,
+          "site": "cape-tryon-coast",
+          "state": "mounted",
+          "rock": "live",
+          "altitude": 84.8847523493399,
+          "calls": 188,
+          "triangles": 278209,
+          "x": -23374.438285017637,
+          "z": -3955.762425201238
+        }
+      ],
+      "sourceSubmits": [
+        1,
+        0
+      ],
+      "errors": []
+    },
+    "unrequested": {
+      "dispatch": null,
+      "frames": [
+        {
+          "m": 35,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.08115904376601,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23188.159026430814,
+          "z": -4306.523377596444
+        },
+        {
+          "m": 95,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.50863161246937,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23217.62641642168,
+          "z": -4251.0343763126875
+        },
+        {
+          "m": 160,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.96066883928503,
+          "calls": 187,
+          "triangles": 276446,
+          "x": -23247.367671744116,
+          "z": -4195.030571954277
+        },
+        {
+          "m": 230,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 83.45810540517463,
+          "calls": 187,
+          "triangles": 276446,
+          "x": -23280.331480880785,
+          "z": -4132.959687788254
+        }
+      ],
+      "sourceSubmits": [
+        0,
+        0
+      ],
+      "errors": []
+    },
+    "wet": {
+      "dispatch": null,
+      "frames": [
+        {
+          "m": 35,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.0745144458967,
+          "calls": 188,
+          "triangles": 257082,
+          "x": -23187.623315551453,
+          "z": -4307.532164869546
+        },
+        {
+          "m": 95,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.48415820591588,
+          "calls": 188,
+          "triangles": 257082,
+          "x": -23216.018953405342,
+          "z": -4254.061310363897
+        },
+        {
+          "m": 160,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 82.96877698470117,
+          "calls": 188,
+          "triangles": 276490,
+          "x": -23247.9036070874,
+          "z": -4194.021395898259
+        },
+        {
+          "m": 230,
+          "site": "cape-tryon-coast",
+          "state": null,
+          "rock": "live",
+          "altitude": 83.4419407577181,
+          "calls": 188,
+          "triangles": 276490,
+          "x": -23279.25936715092,
+          "z": -4134.9784608636155
+        }
+      ],
+      "sourceSubmits": [
+        0,
+        0
+      ],
+      "errors": []
+    },
+    "borden": {
+      "dispatch": "pending",
+      "frames": [
+        {
+          "m": 35,
+          "site": "bridge",
+          "state": "pending",
+          "rock": "pending",
+          "altitude": 265.0819075622996,
+          "calls": 136,
+          "triangles": 189011,
+          "x": -39371.6069163426,
+          "z": 28600.01391073415
+        },
+        {
+          "m": 95,
+          "site": "bridge",
+          "state": "pending",
+          "rock": "pending",
+          "altitude": 265.3925275376417,
+          "calls": 136,
+          "triangles": 189011,
+          "x": -39413.44665137752,
+          "z": 28642.99129230104
+        },
+        {
+          "m": 160,
+          "site": "bridge",
+          "state": "pending",
+          "rock": "pending",
+          "altitude": 265.73226367476485,
+          "calls": 135,
+          "triangles": 186087,
+          "x": -39458.459599020134,
+          "z": 28689.227214878527
+        },
+        {
+          "m": 230,
+          "site": "bridge",
+          "state": "pending",
+          "rock": "pending",
+          "altitude": 266.09383156472984,
+          "calls": 135,
+          "triangles": 186087,
+          "x": -39506.64924321649,
+          "z": 28738.725042874237
+        }
+      ],
+      "sourceSubmits": [
+        0,
+        0
+      ],
+      "errors": []
+    },
+    "decline": {
+      "dispatch": "pending",
+      "frames": [
+        {
+          "m": 35,
+          "site": "cape-tryon-coast",
+          "state": "pending",
+          "rock": "live",
+          "altitude": 82.08788902531415,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23188.694739966235,
+          "z": -4305.514585722918
+        },
+        {
+          "m": 95,
+          "site": "cape-tryon-coast",
+          "state": "pending",
+          "rock": "live",
+          "altitude": 82.50863161246937,
+          "calls": 187,
+          "triangles": 257038,
+          "x": -23217.62641642168,
+          "z": -4251.0343763126875
+        },
+        {
+          "m": 160,
+          "site": "cape-tryon-coast",
+          "state": "stock-shader",
+          "rock": "live",
+          "altitude": 82.9444489371416,
+          "calls": 187,
+          "triangles": 276450,
+          "x": -23246.29580717957,
+          "z": -4197.048913462659
+        },
+        {
+          "m": 230,
+          "site": "cape-tryon-coast",
+          "state": "stock-shader",
+          "rock": "live",
+          "altitude": 83.46618799920674,
+          "calls": 187,
+          "triangles": 276450,
+          "x": -23280.86754072181,
+          "z": -4131.950296095824
+        }
+      ],
+      "sourceSubmits": [
+        1,
+        1
+      ],
+      "errors": []
+    }
+  }
+}

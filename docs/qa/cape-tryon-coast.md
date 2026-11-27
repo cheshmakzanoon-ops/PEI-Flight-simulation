@@ -21,8 +21,9 @@ The matched 4× replay retains **279 north, 326 east and 405 grazing** full sky-
 
 A separate [fixed vertical-seat study](cape-tryon-vertical-seat.md) isolates
 one straight cell in the north and grazing views. It is available as a separate
-[opt-in preview](cape-tryon-sky-seat.md), not in the default view, and does
-not address the separate east openings.
+[opt-in preview](cape-tryon-sky-seat.md), not in the default view. The
+[two separate East studies](cape-tryon-east-sky-seat.md) address the largest
+fixed East opening without changing the shoreline mask.
 
 The capture now records the exact matrices and residual component bounds. Add `--owners` to hash the local CPU geometry arrays attached to the actual draw list for ray investigation; that report does not read back resident GPU buffers.
 

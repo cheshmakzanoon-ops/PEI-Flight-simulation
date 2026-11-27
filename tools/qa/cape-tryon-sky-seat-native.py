@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replay the actual opt-in in fixed native scenery, including a queued depth-only refusal."""
+"""Replay the current combined Cape Tryon opt-in and physical renderer fallbacks."""
 import argparse,base64,importlib.util,io,json
 from pathlib import Path
 from urllib.parse import quote
@@ -79,8 +79,8 @@ def capture(a,browser,url):
   print(name,row,flush=True);(a.out/'live-native.json').write_text(json.dumps(out,indent=2)+'\n')
   assert not errors and not row['gl'] and not row['occupiedChanged'] and not row['alphaChanged'] and not row['increasedSky'] and row['rollback'],row
   if a.case in ('live','stock') and name.startswith('headland-'):
-   assert row['state']=='mounted' and row['stats'][1][0]==row['stats'][0][0]+1 and row['stats'][1][1]==row['stats'][0][1]+3,row
-   assert row['removedPure']==dict(zip(('headland-north','headland-grazing','headland-east'),(196,405,0)))[name],row
+   assert row['state']=='mounted' and row['stats'][1][0]==row['stats'][0][0]+1 and row['stats'][1][1]==row['stats'][0][1]+55,row
+   assert row['removedPure']=={'headland-north':231,'headland-grazing':405,'headland-east':259}[name],row
   else:
    assert not row['rgbChanged'] and row['stats'][0]==row['stats'][1],row
    if a.case=='depth-only':assert row['state']=='stock-render' and len(row['prefix'])==2 and row['prefix'][-1]=='Cape Tryon vertical sky-seat preview',row

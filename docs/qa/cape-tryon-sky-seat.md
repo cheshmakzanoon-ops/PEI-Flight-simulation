@@ -1,6 +1,6 @@
 # Cape Tryon cliff-seat preview
 
-This is an **opt-in visual repair** for the north and grazing coastal
+This is an **opt-in visual repair** for documented north, grazing, and east coastal
 views. Open the web build with
 `?departure=cape-tryon-coast&capeTryonSkySeatReview` and begin flight.
 Without that flag, the existing Standard view is unchanged. The sandstone
@@ -8,11 +8,11 @@ and sea remain separate, and the optional water study takes precedence.
 The aircraft, collisions, underlying terrain, shoreline mask and flight
 model are unchanged.
 
-The three-triangle strip is the original
-[measured vertical-seat study](cape-tryon-vertical-seat.md). It extends a
-short straight wall upward to just below the rendered cliff crest, on its
-original signed line. It does not change the wall's footprint or replace
-the surrounding geometry.
+The three-triangle [North vertical-seat study](cape-tryon-vertical-seat.md)
+preserves its original signed line. Two separately measured
+[East strips](cape-tryon-east-sky-seat.md) follow one straight and one
+bowed cell in the existing coverage atlas. They share the same optional
+draw; none of the original wall or surrounding geometry is replaced.
 
 ## Why it renders as background
 
@@ -30,15 +30,16 @@ framebuffer. Rendering is restricted to the aperture and only while the
 registered renderer is active. Unexpected resources, optional water,
 a failed shader, unknown depth-only colour ownership or a different sample count
 leave the existing rendering in place. It links one local shader on
-approach, adds one draw/three triangles when admitted, and does not need
+approach, adds one draw with 55 triangles when admitted, and does not need
 per-frame framebuffer or GPU-buffer readback.
 
 ## Verification
 
-Fixed native captures of the installed preview retained the 257 and 515
-changed RGB pixels in the North and Grazing comparisons, all on pixels
-with original background coverage. The East occupied control had no
-changed pixels. Alpha and stock rollback were identical in all three.
+Fixed native captures of the current preview changed 324 North, 515
+Grazing and 386 East RGB pixels, all on pixels with original background
+coverage. The largest fixed East opening no longer has fully exposed
+sky pixels; smaller openings remain. Alpha and stock rollback were
+identical in all three.
 The fixed views exercise both the operating renderer and exact camera
 matrices; they do not imply the whole province has this scenery detail.
 
@@ -48,6 +49,7 @@ one program with no browser errors. This verifies live admission and
 stability on that route, not a device performance figure. The fixed
 replay is where the visible image improvement was measured.
 
-See the [validation receipt](cape-tryon-sky-seat-validation.json) and the
+See the [original North validation](cape-tryon-sky-seat-validation.json),
+[combined validation](cape-tryon-east-seat-validation.json) and the
 [fixed native](../../tools/qa/cape-tryon-sky-seat-native.py) and
 [compiled flight](../../tools/qa/cape-tryon-sky-seat-flight.py) replays.
