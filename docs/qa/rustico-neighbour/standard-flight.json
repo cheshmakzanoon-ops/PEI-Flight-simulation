@@ -1,0 +1,980 @@
+{
+  "verifiedBase": "35964ab162dd2fbf68c1d734b3cff5bea8b5b388",
+  "source": "q03330/268, original 66 vertices [18351,18417), alternate 183 vertices [18351,18534); one existing draw, unchanged q377 [25128,25140) shifts +117.",
+  "scenery": "North Rustico Harbour ordinary Standard. Stock comparison independently controls roof. Old historic roof study separate.",
+  "qualification": "Actual ordinary aircraft and input, same-scene Chase at fixed diagnostic frame clock, native full 1200x760 4× MSAA. Some unscored transit draws skipped; no device performance claim.",
+  "captures": {
+    "1": {
+      "strong": 126,
+      "any": 192,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 250,
+      "authored": 214,
+      "changedInSilhouetteDifference": 31,
+      "flight": [
+        -6512.64728519557,
+        71.94558175631971,
+        4850.611252739714
+      ],
+      "sha": {
+        "stock": "44b8798cb1cb287e5b7492da6981e343b9e61d922ffbe6059eda28a470e4d9b8",
+        "active": "72190b20badce2db0fff57812c5b1140e962757e1d1a52400309e78dd67acfef",
+        "restored": "44b8798cb1cb287e5b7492da6981e343b9e61d922ffbe6059eda28a470e4d9b8"
+      },
+      "drawCalls": [
+        249,
+        249
+      ],
+      "triangles": [
+        330785,
+        330824
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "120": {
+      "strong": 252,
+      "any": 367,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 551,
+      "authored": 472,
+      "changedInSilhouetteDifference": 73,
+      "flight": [
+        -6704.440230281654,
+        73.27876422865326,
+        4905.409794569796
+      ],
+      "sha": {
+        "stock": "72a21461c3233591433b56c9973facfcbb655628642a1fcf33d00b96be32e0a8",
+        "active": "e869ba6fdb339cd7c580107358587b61de9003338e3ca63fc7ff9a41df9885e7",
+        "restored": "72a21461c3233591433b56c9973facfcbb655628642a1fcf33d00b96be32e0a8"
+      },
+      "drawCalls": [
+        249,
+        249
+      ],
+      "triangles": [
+        332825,
+        332864
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "180": {
+      "strong": 458,
+      "any": 647,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 988,
+      "authored": 850,
+      "changedInSilhouetteDifference": 130,
+      "flight": [
+        -6801.188229016474,
+        74.01739779262986,
+        4933.051549631351
+      ],
+      "sha": {
+        "stock": "8e38e335c077a497fb079a166743016fed415312a8d70bec179b6f71d91d5883",
+        "active": "f098957f4343b1d838db386d1b3bdaf1120080135710cd1d54d0b5739135a4b4",
+        "restored": "8e38e335c077a497fb079a166743016fed415312a8d70bec179b6f71d91d5883"
+      },
+      "drawCalls": [
+        249,
+        249
+      ],
+      "triangles": [
+        333725,
+        333764
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "225": {
+      "strong": 840,
+      "any": 1213,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 1816,
+      "authored": 1553,
+      "changedInSilhouetteDifference": 245,
+      "flight": [
+        -6873.767566647823,
+        74.5741319039692,
+        4953.787779735281
+      ],
+      "sha": {
+        "stock": "0b50117e2c1d4d29ff2836914d97f4dccda31e4b0ba8730de770d9b91224c06f",
+        "active": "eb768dc97e232d0787ba23e6e439c2ef00964402d2dbcd5a928a4fa2106d12f4",
+        "restored": "0b50117e2c1d4d29ff2836914d97f4dccda31e4b0ba8730de770d9b91224c06f"
+      },
+      "drawCalls": [
+        249,
+        249
+      ],
+      "triangles": [
+        334887,
+        334926
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "261": {
+      "strong": 1577,
+      "any": 2418,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 3524,
+      "authored": 3023,
+      "changedInSilhouetteDifference": 480,
+      "flight": [
+        -6931.841323039528,
+        75.02157601459098,
+        4970.37952002063
+      ],
+      "sha": {
+        "stock": "8d9872f4b8f33d2b8e9fed32ccb9d996b49296506aa799f850aed3d5a8d38378",
+        "active": "40f87ed8b57836f605073d49bc40e0adaee5b517dfb2a2b30da61f24c7362928",
+        "restored": "8d9872f4b8f33d2b8e9fed32ccb9d996b49296506aa799f850aed3d5a8d38378"
+      },
+      "drawCalls": [
+        249,
+        249
+      ],
+      "triangles": [
+        335779,
+        335818
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "290": {
+      "strong": 3387,
+      "any": 4811,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 5480,
+      "authored": 4460,
+      "changedInSilhouetteDifference": 977,
+      "flight": [
+        -6978.62911078025,
+        75.38327910214981,
+        4983.746736644829
+      ],
+      "sha": {
+        "stock": "2c511aac79eba926708adb2bc4dc310285ac3ec7eb48522d2d3ab704321a8799",
+        "active": "9e7b2f191c605f9e7041675c052eaaa8af223ff2f82a4a6bad0d15f4e989a96e",
+        "restored": "2c511aac79eba926708adb2bc4dc310285ac3ec7eb48522d2d3ab704321a8799"
+      },
+      "drawCalls": [
+        236,
+        236
+      ],
+      "triangles": [
+        334812,
+        334851
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "321": {
+      "strong": 0,
+      "any": 0,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 0,
+      "authored": 0,
+      "changedInSilhouetteDifference": 0,
+      "flight": [
+        -7028.649311165609,
+        75.77108556384523,
+        4998.037349191138
+      ],
+      "sha": {
+        "stock": "62fac2c87ea83a7856d818873577faa7a7d243b69d188c158f2f0ca7852f6dfe",
+        "active": "62fac2c87ea83a7856d818873577faa7a7d243b69d188c158f2f0ca7852f6dfe",
+        "restored": "62fac2c87ea83a7856d818873577faa7a7d243b69d188c158f2f0ca7852f6dfe"
+      },
+      "drawCalls": [
+        235,
+        235
+      ],
+      "triangles": [
+        340754,
+        340793
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "360": {
+      "strong": 0,
+      "any": 0,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 0,
+      "authored": 0,
+      "changedInSilhouetteDifference": 0,
+      "flight": [
+        -7091.585707094104,
+        76.26053776606692,
+        5016.017940160005
+      ],
+      "sha": {
+        "stock": "1cb23b7ee67f12fa8069835f8e207ac32d5cb701953ae001c85dbc7eca4d11d1",
+        "active": "1cb23b7ee67f12fa8069835f8e207ac32d5cb701953ae001c85dbc7eca4d11d1",
+        "restored": "1cb23b7ee67f12fa8069835f8e207ac32d5cb701953ae001c85dbc7eca4d11d1"
+      },
+      "drawCalls": [
+        235,
+        235
+      ],
+      "triangles": [
+        341982,
+        342021
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    },
+    "420": {
+      "strong": 0,
+      "any": 0,
+      "outside": 0,
+      "projectedPeerOverlap": 0,
+      "old": 0,
+      "authored": 0,
+      "changedInSilhouetteDifference": 0,
+      "flight": [
+        -7188.4263337351,
+        77.01659180473867,
+        5043.684514794222
+      ],
+      "sha": {
+        "stock": "2b3c3d62762dabe25911dfea33ad60aa1eb151e4f1fb58fd04c725f7dc85ae00",
+        "active": "2b3c3d62762dabe25911dfea33ad60aa1eb151e4f1fb58fd04c725f7dc85ae00",
+        "restored": "2b3c3d62762dabe25911dfea33ad60aa1eb151e4f1fb58fd04c725f7dc85ae00"
+      },
+      "drawCalls": [
+        235,
+        235
+      ],
+      "triangles": [
+        343602,
+        343641
+      ],
+      "meshes": {
+        "old": {
+          "vertices": 66,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "fea75dbe67b8d79b8948bea2b12cabd87cbb05c8837a36f9d5d708256704656d"
+        },
+        "q377": {
+          "vertices": 12,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "5006f2884b4a847cb3296b47407b2ae71d5c2831283267ff51d29b161790bcf2"
+        },
+        "authored": {
+          "vertices": 183,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -9622.229436054935,
+            0,
+            3889.8042232580183,
+            1
+          ],
+          "sha": "908a5341ee7739bd54d101e3491cf2001a48468fe071c0cf6528fbdc2f3d1b04"
+        }
+      }
+    }
+  },
+  "compiledControls": {
+    "normal": {
+      "mode": "normal",
+      "q268Active": true,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "roof-stock": {
+      "mode": "roof-stock",
+      "q268Active": false,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "light-stock": {
+      "mode": "light-stock",
+      "q268Active": true,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 0,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "early": {
+      "mode": "early",
+      "q268Active": false,
+      "q377Active": false,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 20,
+      "postBeginOfferWitness": true
+    },
+    "foreign": {
+      "mode": "foreign",
+      "q268Active": false,
+      "q377Active": false,
+      "q03330Requests": 0,
+      "lighthouseGradeRequests": 0,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "wrong-wire": {
+      "mode": "wrong-wire",
+      "q268Active": false,
+      "q377Active": false,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "wrong-meta": {
+      "mode": "wrong-meta",
+      "q268Active": false,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "noaa": {
+      "mode": "noaa",
+      "q268Active": false,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 1,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "detail": {
+      "mode": "detail",
+      "q268Active": false,
+      "q377Active": false,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 0,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    },
+    "legacy": {
+      "mode": "legacy",
+      "q268Active": false,
+      "q377Active": true,
+      "q03330Requests": 1,
+      "lighthouseGradeRequests": 0,
+      "frames": 10,
+      "postBeginOfferWitness": false
+    }
+  },
+  "actualGroundFootingNative": {
+    "261": {
+      "regionAreaM2": 142.3135916367954,
+      "groundAtFootprintRangeM": [
+        1.2104731904381354,
+        1.2910697191842837
+      ],
+      "activeMinusPlainMaxAbsM": 1.0868098792027325e-06,
+      "actualOriginalVbo": "135c632785613cb3aeba2a825ee478bc60f6bf95e564fa307220c588229eb192",
+      "actualActiveVbo": "e82c879596a7f6c016d4a400913f2ec2c592d69652e68df8f4e2919632d4ca59",
+      "sameFlightAndCamera": true
+    },
+    "321": {
+      "regionAreaM2": 142.3135916367954,
+      "groundAtFootprintRangeM": [
+        1.2104731904381354,
+        1.2910697191842837
+      ],
+      "activeMinusPlainMaxAbsM": 1.0868098792027325e-06,
+      "actualOriginalVbo": "135c632785613cb3aeba2a825ee478bc60f6bf95e564fa307220c588229eb192",
+      "actualActiveVbo": "e82c879596a7f6c016d4a400913f2ec2c592d69652e68df8f4e2919632d4ca59",
+      "sameFlightAndCamera": true
+    }
+  },
+  "nativeGameComparisonSHA256": "c212633a5eb59491e29b599940bde55eae701cdda7edc1c18fe2610aec473a82"
+}

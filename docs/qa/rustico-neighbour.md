@@ -1,18 +1,21 @@
 # A measured roof near North Rustico Lighthouse
 
-The [North Rustico lighthouse study](../landmarks/north-rustico.md) now also
-replaces the flat roof of one nearby, unnamed atlas building. The measured
-upper ridge and lower attached roofs are different heights. The original
-mapped outline, building placement and terrain remain in use. The muted
-surface is an original neutral finish: it does not claim actual materials,
-window positions, a named business, or present-day appearance.
+In Standard Dispatch, choose **North Rustico Harbour · coastal pass**.
+Wait for the surveyed roof to be ready, then select **Begin flight**.
+One anonymous harbour building now has its measured upper ridge and
+lower attached roofs instead of the old flat cap. The original mapped
+footprint, outer wall feet, and flight contact stay in use. The colors and
+façade treatment are approximate; this does not identify a tenant or
+claim a contemporary survey.
 
-The option is included with **North Rustico lighthouse** in Standard terrain.
-For a building-only comparison, append `?rusticoMassingReview`; append
-`&legacyRusticoMassing` to a lighthouse bookmark to retain the old roof.
-Alternate inland or adaptive terrain and the experimental building-shadow
-mode retain the stock building. Missing or unverified archive bytes also
-leave the original geometry and material.
+Use `?departure=north-rustico-harbour-low&stockRusticoNeighbourRoof` to
+compare just this roof. The separate [lighthouse and surveyed ground](rustico-standard/)
+and [neighboring pale roof](rustico-harbour-roof.md) keep their own
+settings. The earlier `?rusticoMassingReview` or optional lighthouse
+cohort remains available; older bookmarks may still use
+`&legacyRusticoMassing` to preserve their own original roof.
+
+![Production Standard scenery from the same native camera before and after the measured roof](rustico-neighbour/standard-chase.webp)
 
 ![Matched simulator frames from the same camera: stock flat roof on the left; verified upper and lower slopes on the right](rustico-neighbour-shape.webp)
 
@@ -33,11 +36,25 @@ blocked plane fit was **4.7 cm**; real engine mesh rays were **4.2 cm** against
 the same evaluation cohort. These numbers do not describe the edges,
 façade, interior or every point on the building.
 
-The renderer authenticates the original compressed atlas chunk from a single
-read, then checks the exact ordered footprint and source record. It replaces
-only that building's original batch vertices. The tile retains one draw and
-adds 39 triangles. The other 37,884 vertices and all six of their attributes
-are byte-identical, with tested neutral fallback. See the [check data](rustico-neighbour-check.json).
-No paths, roads, lighting cues, terrain, shoreline or water are part of this update.
+The Standard path verifies the compressed atlas chunk from its existing
+single read, its declared and actual hashes, and the exact ordered
+footprint and row. It changes only that building's original batch and
+retains the original tile material. The tile still uses one draw and adds
+39 triangles. The other 37,884 source vertices and all six of their
+attributes stay exact, including the nearby pale roof. The attached
+wall tops close the measured roof; the original perimeter wall feet are
+not resampled. See the [source and fit checks](rustico-neighbour-check.json)
+and the [ordinary flight receipt](rustico-neighbour/standard-flight.json).
+
+In a matched native carrier check, the existing lighthouse grade changed
+the submitted terrain under this entire 142.31 m² footprint by less than
+0.000002 m relative to its parent, with no intersecting positive grade
+influence. That is a comparison of the current game surfaces, not a
+survey tolerance. The roof changes no paths, roads, lighting, terrain,
+shoreline, water or flight dynamics.
+
+If you start before the signed source and draw are ready, that flight
+keeps its original roof. Unsupported styles or unavailable data do not
+replace it.
 
 Contains information licensed under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada).

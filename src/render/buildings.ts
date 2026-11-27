@@ -35,6 +35,7 @@ import {pinChurchLensArt} from './indian-river/church-lens-custody.ts';
 import {authenticatedOwnerCohort} from './authenticated-owner-cohort.ts';
 import type {ChurchArt} from './indian-river/runtime.ts';
 import {matchesRusticoMassing,emitRusticoMassing,RUSTICO_MASSING_TILE} from './rustico-neighbour.ts';
+import {prepareStandardRusticoNeighbour,standardRusticoNeighbourSource,standardRusticoNeighbourTile} from './rustico-neighbour-standard.ts';
 import * as THREE from 'three';
 import {BEACON_REVIEW} from './beaconsfield-review-spec.ts';
 import {CavendishBarnViews,retireCavendishHouseView} from './cavendish-owner-views.ts';
@@ -240,6 +241,28 @@ export class Buildings {
   const owner=this.meshes.get(OLEARY_ACCESS_ROOF_TILE);
   return !!owner?.visible&&owner.parent===this.scene&&owner.userData.olearyAccessRoofTone===true;
  }
+ private standardRusticoNeighbour=false;
+ private standardRusticoCandidate?:{owner:THREE.Mesh;stock:THREE.BufferGeometry;current:()=>boolean};
+ private standardRusticoView?:{owner:THREE.Mesh;view:NonNullable<ReturnType<typeof prepareStandardRusticoNeighbour>>};
+ enableStandardRusticoNeighbour(){if(!this.rusticoRoof&&!this.shadowedBuildings)this.standardRusticoNeighbour=true;}
+ get standardRusticoNeighbourReady(){return this.standardRusticoView?.view.ready===true;}
+ get standardRusticoNeighbourUnavailable(){
+  return this.standardRusticoNeighbour&&(this.failed.has(RUSTICO_MASSING_TILE)||
+   this.meshes.has(RUSTICO_MASSING_TILE)&&!this.standardRusticoCandidate&&
+   !this.standardRusticoView?.view.ready&&!this.standardRusticoView?.view.active);
+ }
+ get standardRusticoNeighbourActive(){return this.standardRusticoView?.view.active===true;}
+ prepareStandardRusticoNeighbour(){
+  const q=this.standardRusticoCandidate;if(!q)return;
+  this.standardRusticoCandidate=undefined;
+  if(q.owner.geometry!==q.stock||!q.current())return;
+  try{
+   const view=prepareStandardRusticoNeighbour(q.owner,this.scene,q.current);
+   if(view){this.standardRusticoView?.view.dispose();this.standardRusticoView={owner:q.owner,view};}
+  }catch{/** Optional preparation failure must leave the stock arrived draw in place. */}
+ }
+ beginStandardRusticoNeighbour(eligible:boolean){this.standardRusticoView?.view.begin(eligible);}
+ syncStandardRusticoNeighbour(retain:boolean,ground?:()=>boolean){this.standardRusticoView?.view.sync(retain,ground);}
  enableRusticoHarbourRoof(){this.rusticoHarbourRoof=true;}
  /** This is a resident emitted colour, not a visibility/depth report. */
  get rusticoHarbourRoofActive(){
@@ -804,6 +827,8 @@ export class Buildings {
     if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
     if(m===this.standardIndustrial?.owner){this.standardIndustrial.view.dispose();this.standardIndustrial=undefined;}
+    if(m===this.standardRusticoCandidate?.owner)this.standardRusticoCandidate=undefined;
+    if(m===this.standardRusticoView?.owner){this.standardRusticoView.view.dispose();this.standardRusticoView=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.queuedSeacow?.owner)this.queuedSeacow=undefined;
@@ -996,6 +1021,7 @@ export class Buildings {
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
    const harbourRoofCandidate=this.rusticoHarbourRoof&&rusticoHarbourRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
+   const standardRusticoCandidate=this.standardRusticoNeighbour&&standardRusticoNeighbourTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const olearyAccessCandidate=this.olearyAccessRoof&&!this.olearySeat&&olearyAccessRoofTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const foundersWest=this.foundersWestSeed&&foundersWestTile(this.atlasHash,tile)?this.foundersWestSeed:undefined;
    let foundersWire:ArrayBuffer|undefined;
@@ -1029,7 +1055,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch){
+   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -1053,7 +1079,7 @@ export class Buildings {
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
     // Bounded appearances share a single digest of the already-read chunk.
-    if(rusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||olearyRoofCandidate||sourisWestCandidate)try{
+    if(rusticoCandidate||standardRusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||olearyRoofCandidate||sourisWestCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
@@ -1082,6 +1108,17 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church||nativeChurch?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy||!!standardIndustrial,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
+   if(standardRusticoCandidate&&mesh.material===this.mat&&this.mat.vertexShader===buildingV&&this.mat.fragmentShader===buildingF()&&
+    standardRusticoNeighbourSource(this.atlasHash,tile,massingChunk,features)){
+    // Do not allocate the alternate at all until the ordinary route is in
+    // Dispatch. Seal the construction-born owner before retaining its input.
+    const original=this.pinAuthoredOwner(mesh),materialVersion=this.mat.version,
+     frag=this.mat.fragmentShader,before=mesh.onBeforeRender,after=mesh.onAfterRender;
+    this.standardRusticoCandidate={owner:mesh,stock:original.stock,current:()=>
+     this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id)&&original.baseOwner()&&
+     this.mat.version===materialVersion&&this.mat.vertexShader===buildingV&&this.mat.fragmentShader===frag&&
+     mesh.onBeforeRender===before&&mesh.onAfterRender===after};
+   }
    const authoredRidge=this.strictRidgeOwner&&tile.id===KINGS_CROWN_BUILDINGS.tile&&features===this.pinnedKingsCrown;
    if(kingsWire||authoredRidge){
     const proof=this.pinAuthoredOwner(mesh);
