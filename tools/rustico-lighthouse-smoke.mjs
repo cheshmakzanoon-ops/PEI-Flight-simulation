@@ -80,8 +80,21 @@ try{
   await page.waitForFunction(site=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===site,site,{timeout:65000});
   const expected=mode==='standard'?'ready':mode==='corrupt'?'held':null;
   if(expected!==null){
-   let issue,phase;
+   let issue,phase,checkpoint='scene prerequisites',layers;
    try{
+    // The first dispatch frame can precede decode and attachment of the
+    // signed roads/buildings. A software runner may not even issue the
+    // lighthouse request before those invariants are known. Keep a separate
+    // finite deadline for prerequisites, then test the same terminal phase.
+    const prerequisite=await page.waitForFunction(()=>{
+     const d=window.islandAirDiagnostics,c=d?.northRusticoLighthouse;
+     if(c?.layers==='held')return 'held';
+     return d?.mode==='dispatch'&&d.roads&&d.buildings&&c?.layers==='verified'?'verified':null;
+    },null,{timeout:55000,polling:200});
+    layers={value:await prerequisite.jsonValue(),elapsedMs:performance.now()-zero};
+    await prerequisite.dispose();
+    assert.equal(layers.value,'verified','Rustico signed scene prerequisites were refused');
+    checkpoint='lighthouse terminal phase';
     const result=await page.waitForFunction(()=>{
      const p=window.islandAirDiagnostics?.northRusticoLighthouse?.phase;
      return p==='ready'||p==='held'?p:null;
@@ -90,7 +103,8 @@ try{
     assert.equal(phase,expected,`Rustico ${mode} resolved ${phase}; expected ${expected}`);
    }catch(error){issue=error;}
    const pageState=await boundedObservation(page);
-   const readiness={mode,site,expected,phase:phase??null,elapsedMs:performance.now()-zero,pageState,network,errors,
+   const readiness={mode,site,expected,phase:phase??null,checkpoint,layers:layers??null,
+    elapsedMs:performance.now()-zero,pageState,network,errors,
     fault:issue?.message??null};
    await writeFile(join(out,`rustico-readiness-${mode}.json`),JSON.stringify(readiness,null,2)+'\n');
    if(issue){console.error(JSON.stringify(readiness));throw issue;}
