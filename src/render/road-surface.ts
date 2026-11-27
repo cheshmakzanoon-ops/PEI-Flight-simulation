@@ -1,8 +1,19 @@
-import type {MeshStandardMaterial} from 'three';
+import {DoubleSide,MeshStandardMaterial} from 'three';
+import {opaqueCoverageBlend} from './opaque-coverage-alpha.ts';
 import {victoriaPavingGLSL,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
 import type {RoadPavement} from './road-pavement.ts';
 import {northCapeShadowGLSL,type NorthCapeShadow} from './north-cape-shadow.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
+
+/** Keep multisample coverage of the original road shoulder but not its
+ * canvas alpha. Other contexts use the original opaque material state. */
+export function roadRibbonMaterial(preserveSceneAlpha=false){
+ return new MeshStandardMaterial({
+  vertexColors:true,roughness:.98,side:DoubleSide,alphaToCoverage:true,
+  polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2,
+  ...(preserveSceneAlpha?opaqueCoverageBlend:undefined),
+ });
+}
 
 /** World-space surfacing for the registered ribbons. Nothing here implies lane or shoulder survey data. */
 export function addRoadSurface(material:MeshStandardMaterial,casts?:BuildingShadows,pavement?:RoadPavement,seat?:{value:number},victoria=false,cape?:NorthCapeShadow){

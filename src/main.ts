@@ -546,7 +546,7 @@ async function run(){
  const gravelDrySeat=(x:number,y:number,z:number)=>world.surface(x,z).land&&y>=world.visualGroundHeight(x,z)-.012;
  const startRoads=(prepared?:Awaited<typeof montagueRoadJob>)=>Roads.create(scene,terrain,world.buildingShadows,
   terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined,options.has('seatedRoads')?world:undefined,
-  cover.montague||cover.baywalk?world:undefined,prepared,world.capeShadow,gravelSurface?.look);
+  cover.montague||cover.baywalk?world:undefined,prepared,world.capeShadow,gravelSurface?.look,supportsOpaqueCoverage(gl));
  const roadReady=(preRoadJob?preRoadJob.then(startRoads):startRoads()).then(v=>roads=v).catch(e=>{warn('Road',e);});
  if(tryMappedLaneCanopy)void roadReady.then(r=>{
   const lane=mappedLaneCanopy(terrain,cover,terrainSha,r?.sourceGeometrySha256);

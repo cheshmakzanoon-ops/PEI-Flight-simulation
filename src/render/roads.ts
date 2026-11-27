@@ -16,7 +16,7 @@ import {applyGravelPilot,classifiedGravel,gravelAuthority,GRAVEL_INTERNAL_FLAG,G
 import {GRAVEL_DRAW_RANGE,nearestRegisteredGravel,type GravelEye,type GravelSeatGuard} from './aggregate-admission.ts';
 import {matchesVictoriaPaving,VICTORIA_PAVER_FLAG,VICTORIA_PAVER_KIND} from './victoria-pavers.ts';
 import type {NorthCapeShadow} from './north-cape-shadow.ts';
-import {addRoadSurface} from './road-surface.ts';
+import {addRoadSurface,roadRibbonMaterial} from './road-surface.ts';
 import type {BuildingShadows} from './local-building-shadows.ts';
 import {NRN_DIRT_SOURCE_SHA256,NRN_DIRT_SOURCE_COUNT,NRN_DIRT_SOURCE_BITS} from './road-surface-type.generated.ts';
 import type { Terrain } from '../sim/terrain.ts';
@@ -97,11 +97,7 @@ export class Roads {
    return {mesh:m,base:base as THREE.Material};
   }
   get pavementStatus(){return this.pavement.state;}
-  private readonly material = new THREE.MeshStandardMaterial({
-    vertexColors: true, roughness: 0.98, side: THREE.DoubleSide,
-    alphaToCoverage: true,
-    polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
-  });
+  private readonly material:THREE.MeshStandardMaterial;
   private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
   private readonly capeMaterial?:THREE.MeshStandardMaterial;
   private readonly cape?:NorthCapeShadow;
@@ -138,7 +134,8 @@ export class Roads {
   private readonly tiles: Map<string, Tile>;
   private readonly terrain: Terrain;
   readonly sourceGeometrySha256?:string;
-  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]},cape?:NorthCapeShadow,gravelPilot?:GravelPilot,verifiedGravel=false) {
+  private constructor(scene: THREE.Scene, tiles: Map<string, Tile>, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], digest?:string, seated?:World, bridge?:World,previewOwners:readonly string[]=[],court?:{world:World;points:readonly RoadPoint[];owners:string[]},cape?:NorthCapeShadow,gravelPilot?:GravelPilot,verifiedGravel=false,preserveSceneAlpha=false) {
+    this.material=roadRibbonMaterial(preserveSceneAlpha);
     this.verifiedGravelSource=verifiedGravel;
     this.tiles=tiles;this.terrain=terrain;this.previewOwners=previewOwners;this.nearPatches=nearPatches;this.sourceGeometrySha256=digest;
     this.root.name = 'PEI National Road Network';
@@ -181,7 +178,7 @@ export class Roads {
    finally{clearTimeout(timer);}
   }
 
-  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork,cape?:NorthCapeShadow,gravelPilot?:GravelPilot) {
+  static async create(scene: THREE.Scene, terrain: Terrain, casts?:BuildingShadows, nearPatches?:()=>readonly CoastalGrid[], seated?:World,preview?:World,prepared?:PackedRoadNetwork,cape?:NorthCapeShadow,gravelPilot?:GravelPilot,preserveSceneAlpha=false) {
     const {data,roads,digest,montagueVerified}=prepared??await roadNetwork();
     const tiles = new Map<string, Tile>(),dirtBits=digest?await classifiedDirt(data,roads.length,digest):undefined;
     const gravelBits=gravelPilot&&gravelAuthority(roads.length,digest);
@@ -219,7 +216,7 @@ export class Roads {
       }
     }
     return new Roads(scene,tiles,terrain,casts,nearPatches,digest,seated,register?preview:undefined,Array.from(owners),
-     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined,cape,gravelPilot,!!gravelBits);
+     courtRow&&preview?{world:preview,points:courtRow,owners:Array.from(courtOwners)}:undefined,cape,gravelPilot,!!gravelBits,preserveSceneAlpha);
   }
 
   private mesh(tile:Tile,patches:readonly CoastalGrid[]=[],seated=false){

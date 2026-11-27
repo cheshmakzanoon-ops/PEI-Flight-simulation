@@ -1,0 +1,583 @@
+{
+  "base": "2adca7e58e25ba6b44d6ea79f4cdb698f7613a3f",
+  "scope": "Preserve scene alpha for existing mapped road draw; no shader, geometry or takeoff change",
+  "rawData": "direct WebGL readPixels distinguishes shader RGB from browser-unpremultiplied canvas PNG",
+  "visualComparison": {
+    "sha256": "7ce7cbf21e1291595b9e3c2405b6eeec5e9ac0bf3b6bd5f159aa2ca45e103a82",
+    "drawingBuffer": [
+      900,
+      550
+    ],
+    "cropXYWH": [
+      270,
+      280,
+      320,
+      270
+    ],
+    "sameOpaqueBackground": "#243e45"
+  },
+  "isolatedCanvasFixedViews": [
+    {
+      "stock": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "meshes": 24,
+      "rows": 28896,
+      "token": "prince-near",
+      "pose": {
+        "lon": -63.62936,
+        "lat": 46.33953,
+        "east": 0.23863,
+        "south": 0.97111,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 27465,
+      "qualifiedDirtWindow": 549,
+      "strong": 3845,
+      "anyRgb": 4226,
+      "anyAlpha": 4226,
+      "bounds": [
+        248,
+        375,
+        549,
+        521
+      ],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 4226,
+      "newAlphaHoles": 0,
+      "holesClosed": 4226,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 64,
+        "tris": 306077,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 64,
+        "tris": 306077,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 64,
+        "tris": 306077,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "meshes": 24,
+      "rows": 43710,
+      "token": "queens-near",
+      "pose": {
+        "lon": -63.42687,
+        "lat": 46.372505,
+        "east": -0.25305,
+        "south": -0.96745,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 28762,
+      "qualifiedDirtWindow": 647,
+      "strong": 3949,
+      "anyRgb": 4316,
+      "anyAlpha": 4316,
+      "bounds": [
+        238,
+        373,
+        549,
+        527
+      ],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 4316,
+      "newAlphaHoles": 0,
+      "holesClosed": 4316,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "meshes": 15,
+      "rows": 24480,
+      "token": "kings-near",
+      "pose": {
+        "lon": -62.21987,
+        "lat": 46.390265,
+        "east": -0.26363,
+        "south": -0.96463,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 26187,
+      "qualifiedDirtWindow": 138,
+      "strong": 3647,
+      "anyRgb": 3986,
+      "anyAlpha": 3986,
+      "bounds": [
+        295,
+        375,
+        549,
+        525
+      ],
+      "strongOutsideCandidateProjection": 5,
+      "oldAlphaHoles": 3986,
+      "newAlphaHoles": 0,
+      "holesClosed": 3986,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "meshes": 18,
+      "rows": 27102,
+      "token": "paved-near",
+      "pose": {
+        "lon": -62.209985,
+        "lat": 46.368885,
+        "east": -0.25764,
+        "south": -0.96624,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 0,
+      "qualifiedDirtWindow": 0,
+      "strong": 0,
+      "anyRgb": 0,
+      "anyAlpha": 0,
+      "bounds": [],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 0,
+      "newAlphaHoles": 0,
+      "holesClosed": 0,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    }
+  ],
+  "directRGBAFixedViews": [
+    {
+      "stock": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 99,
+        "tris": 267863,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "rawCompare": {
+        "rgb": 0,
+        "alpha": 4226,
+        "regression": 0,
+        "oldHoles": 4226,
+        "newHoles": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 4226,
+        "newHoles": 4226
+      },
+      "meshes": 24,
+      "rows": 28896,
+      "token": "prince-near",
+      "pose": {
+        "lon": -63.62936,
+        "lat": 46.33953,
+        "east": 0.23863,
+        "south": 0.97111,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 27465,
+      "qualifiedDirtWindow": 549,
+      "strong": 3845,
+      "anyRgb": 4226,
+      "anyAlpha": 4226,
+      "bounds": [
+        248,
+        375,
+        549,
+        521
+      ],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 4226,
+      "newAlphaHoles": 0,
+      "holesClosed": 4226,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 29,
+        "tris": 331031,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "rawCompare": {
+        "rgb": 0,
+        "alpha": 3986,
+        "regression": 0,
+        "oldHoles": 3986,
+        "newHoles": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 3986,
+        "newHoles": 3986
+      },
+      "meshes": 15,
+      "rows": 24480,
+      "token": "kings-near",
+      "pose": {
+        "lon": -62.21987,
+        "lat": 46.390265,
+        "east": -0.26363,
+        "south": -0.96463,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 26187,
+      "qualifiedDirtWindow": 138,
+      "strong": 3647,
+      "anyRgb": 3986,
+      "anyAlpha": 3986,
+      "bounds": [
+        295,
+        375,
+        549,
+        525
+      ],
+      "strongOutsideCandidateProjection": 5,
+      "oldAlphaHoles": 3986,
+      "newAlphaHoles": 0,
+      "holesClosed": 3986,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    }
+  ],
+  "entireRoadDrawGroupControls": [
+    {
+      "stock": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 22,
+        "tris": 266300,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "rawCompare": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "meshes": 19,
+      "rows": 27102,
+      "victoria": false,
+      "bridge": null,
+      "token": "paved-near",
+      "pose": {
+        "lon": -62.209985,
+        "lat": 46.368885,
+        "east": -0.25764,
+        "south": -0.96624,
+        "dist": 100,
+        "agl": 12,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 0,
+      "qualifiedDirtWindow": 0,
+      "strong": 0,
+      "anyRgb": 0,
+      "anyAlpha": 0,
+      "bounds": [],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 0,
+      "newAlphaHoles": 0,
+      "holesClosed": 0,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 125,
+        "tris": 537489,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 125,
+        "tris": 537489,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 125,
+        "tris": 537489,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "rawCompare": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "meshes": 19,
+      "rows": 16986,
+      "victoria": true,
+      "bridge": null,
+      "token": "victoria-near",
+      "pose": {
+        "lon": -63.12618,
+        "lat": 46.23431,
+        "east": -0.693,
+        "south": 0.721,
+        "dist": 52,
+        "agl": 8,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 0,
+      "qualifiedDirtWindow": 0,
+      "strong": 0,
+      "anyRgb": 0,
+      "anyAlpha": 0,
+      "bounds": [],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 0,
+      "newAlphaHoles": 0,
+      "holesClosed": 0,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    },
+    {
+      "stock": {
+        "calls": 163,
+        "tris": 379280,
+        "error": 0,
+        "samples": 4
+      },
+      "patch": {
+        "calls": 163,
+        "tris": 379280,
+        "error": 0,
+        "samples": 4
+      },
+      "diag": {
+        "calls": 163,
+        "tris": 379280,
+        "error": 0,
+        "samples": 4
+      },
+      "restored": true,
+      "rawCompare": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "regression": 0,
+        "oldHoles": 0,
+        "newHoles": 0
+      },
+      "meshes": 26,
+      "rows": 33066,
+      "victoria": false,
+      "bridge": "surveyed deck and approaches",
+      "token": "bridge-near",
+      "pose": {
+        "lon": -62.648294657,
+        "lat": 46.164003,
+        "east": 0.492,
+        "south": 0.871,
+        "dist": 52,
+        "agl": 15,
+        "h": 0
+      },
+      "confirmedProjectedDirt": 0,
+      "qualifiedDirtWindow": 0,
+      "strong": 0,
+      "anyRgb": 0,
+      "anyAlpha": 0,
+      "bounds": [],
+      "strongOutsideCandidateProjection": 0,
+      "oldAlphaHoles": 0,
+      "newAlphaHoles": 0,
+      "holesClosed": 0,
+      "newPartialAlpha": 0,
+      "outsideAlpha": 0
+    }
+  ],
+  "ordinaryCompiledFlight": {
+    "departure": "queens-fields",
+    "chaseTravelOverM": 36,
+    "paused": true,
+    "nativeSettings": {
+      "main": {
+        "samples": 4,
+        "alpha": true,
+        "aa": true,
+        "blend": true,
+        "coverage": true,
+        "rgb": [
+          1,
+          0
+        ],
+        "alphaFactors": [
+          0,
+          1
+        ],
+        "drawCalls": 185
+      },
+      "fallback": {
+        "samples": 0,
+        "alpha": true,
+        "aa": false,
+        "blend": false,
+        "coverage": true,
+        "rgb": [
+          770,
+          771
+        ],
+        "alphaFactors": [
+          1,
+          771
+        ],
+        "drawCalls": 185
+      }
+    }
+  },
+  "gates": {
+    "unitTests": 681,
+    "unitPassed": 681,
+    "sourceTypeScript": true,
+    "vite": true,
+    "worldData": true
+  },
+  "witnessSHA256": {
+    "alpha-native-v1/stock-probe.json": "8fe8c936283e5d4974092d568ce7a92e8bdd4362ee5873341610126ed70ade57",
+    "alpha-raw-native-v1/stock-probe.json": "5c453ce5e6a81f2decf122c098639d861b12518c26df875271c57fd9193008d1",
+    "alpha-all-road-controls/stock-probe.json": "8a16c46aa5800a27186354dab1aa37202247ebb5a131b488f29cea1c144500b5",
+    "production-runtime-road-coverage.json": "c6503874feb6348a83ce2fcd07b8c69f707bdae2b202338b301e6190603bd3b4"
+  }
+}

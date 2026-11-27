@@ -23,3 +23,6 @@ Use the same starting source and geometry in both copies (the reported
 comparison was from `9247190` with only the two road-source-file changes).
 Use `--mask road` on the baseline mask capture and `--kind road`
 in the comparison.
+
+The [road-edge compositing check](road-coverage-alpha.md) keeps the
+existing shoulder and coverage mask without leaking canvas transparency.
