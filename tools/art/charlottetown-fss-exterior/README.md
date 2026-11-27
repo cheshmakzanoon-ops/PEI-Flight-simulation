@@ -10,6 +10,12 @@ The neutral review scene shows three close angles and the same model at the appr
 
 The model uses two opaque meshes. The close level has 618 triangles and the mid level has 426. The lower-detail version retains the same main silhouette and broad recesses. The glass uses a subdued original daylight response, not a photograph, transparency or an interior model.
 
+## Why the live seat is still held
+
+An independent historical bare-earth check obtained 694 valid exterior samples from the named 2008 Natural Resources Canada survey. Three of four compass bands disagreed with the simulator's rendered and physical ground beyond predeclared limits. The east discrepancy was about one metre at the median. The result is a hold on the exterior ground datum, not evidence that the current real airport is at any particular height.
+
+The planned 2020 veto was not requested after the 2008 failure. No roof, shaft, or annex heights were read or inferred; no offset was fitted and no raw elevations were exported. The detached visual study is unchanged, and the live model, receiver, and physics stay stock. The [NRCan elevation programme](https://natural-resources.canada.ca/science-data/science-and-technology/canadian-geomatics-canada-centre-mapping-earth-observation/elevation-data) supplies historical ground products under the Open Government Licence – Canada.
+
 ## Open the studio
 
 From the repository root after `npm ci`:
