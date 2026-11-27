@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {appendWestUpperPrivacyScreens,westUpperScreenPaint} from './west-upper-privacy-screens.ts';
 import { project } from '../sim/geo.ts';
 import { LIGHT_STATIONS } from '../sim/lighthouse-sites.ts';
 import type { Terrain } from '../sim/terrain.ts';
@@ -257,7 +258,12 @@ export function addLighthouseScenery(scene:T.Scene,terrain:Terrain){
         if(west)westInn(b,detail);
       });
       if(!west)eastHouse(b,detail);
-      const solids=b.finish(paint);solids.name=s.name+' · painted exterior';group.add(solids);
+      const solids=b.finish(paint);
+      if(west&&detail){
+        const stock=solids.geometry,updated=appendWestUpperPrivacyScreens(stock);
+        if(updated!==stock){solids.geometry=updated;solids.material=westUpperScreenPaint(paint);stock.dispose();}
+      }
+      solids.name=s.name+' · painted exterior';group.add(solids);
       if(panes.pos.length)group.add(panes.finish(glazing));
       station.addLevel(group,detail?0:750,detail?0:.08);
     }

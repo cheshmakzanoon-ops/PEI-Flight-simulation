@@ -5,7 +5,7 @@ Two custom, ground-anchored exteriors replace three generic building extrusions.
 | Station | Position and measured scale | What distinguishes the model |
 | --- | --- | --- |
 | East Point, Kings County | 46°27′09.1″N, 61°58′18.6″W; 19.5 m structure | An eight-sided white shingle tower with a projecting gallery, cross-braced rail, red lantern and gabled casements. The adjacent fog-alarm house has stepped gable volumes and a red roof; small modeled paired horns refer to the museum display. |
-| West Point, Prince County | 46°37′13.1″N, 64°23′12.3″W; 67′8″ (20.62 m) | A square taper with four black horizontal daymarks, a white square gallery, red lantern and attached two-storey inn with long seaward balconies. |
+| West Point, Prince County | 46°37′13.1″N, 64°23′12.3″W; 67′8″ (20.62 m) | A square taper with four black horizontal daymarks, a white square gallery, red lantern and attached two-storey inn with long seaward balconies and five upper privacy screens. |
 
 **Fly the two passes:** choose *East Point · lighthouse pass* or *West Point · lighthouse pass*. Each starts 58 m above the starting surface, roughly 350 m offshore, with the tower to the right of the aircraft’s nose. Exact woodwork, some window positions, inn and museum details, and present-day ground treatment are interpretations. No imagery was used as geometry or texture.
 
@@ -18,4 +18,13 @@ Visual comparisons, not distributed assets:
 - Quintin Soloviev, [East Point aerial, August 2023](https://commons.wikimedia.org/wiki/File:East_Point_Lighthouse_from_above_-_Prince_Edward_Island_-_PEI_(Quintin_Soloviev).png), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - Tangerinehistry, [West Point Lighthouse](https://commons.wikimedia.org/wiki/File:West_Point_Lighthouse.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
-**Render budget.** Each station has two near draws (opaque painted exterior and lantern glazing), one simplified draw beyond 750 m, and an empty LOD at 8.5 km, with hysteresis. Materials are shared by both stations. Original shingle courses fade below pixel resolution. A bounded ground material reconstructs the mown lawn, gravel forecourt and walks on the eastern point and dune-grass/sand transition at the western site. Their fine layout and materials are interpretations, not survey data. Soft station contact and fixed daylight shadows are calculated on the already-masked ground, adding no draws or over-water shadow. The station tests verify exact mesh height at both visible LODs, draw limits, the position and heading of both departures, and exactly three replaced footprints among the shipped building inventory.
+**West Point’s upper balcony.** Five original rounded and stepped screens separate
+the six visible bays on the seaward run, following [the July 2025 visitor
+photographs](https://www.culturedindividual.com/2025/08/i-climbed-up-peis-tallest-lighthouse.html)
+and [the inn’s exterior photos](https://www.westpointlighthouse.ca/). Their
+positions and sizes follow the simulator’s existing deck and windows; they
+are not surveyed room locations. The screens sit on the existing upper
+deck without changing the rail. They fade out before the original switch
+to the simplified distance model.
+
+**Render budget.** Each station has two near draws (opaque painted exterior and lantern glazing), one simplified draw beyond 750 m, and an empty LOD at 8.5 km, with hysteresis. The stations share paint and glazing finishes; West Point’s close opaque batch uses a separate program to fade the screens. Original shingle courses fade below pixel resolution. A bounded ground material reconstructs the mown lawn, gravel forecourt and walks on the eastern point and dune-grass/sand transition at the western site. Their fine layout and materials are interpretations, not survey data. Soft station contact and fixed daylight shadows are calculated on the already-masked ground, adding no draws or over-water shadow. The station tests verify exact mesh height at both visible LODs, draw limits, the position and heading of both departures, and exactly three replaced footprints among the shipped building inventory.
