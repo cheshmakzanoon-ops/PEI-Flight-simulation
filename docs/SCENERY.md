@@ -30,6 +30,8 @@ The [Cape Egmont lighthouse studio](qa/cape-egmont-detached.md) is a separate Pr
 
 **Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces. Standard includes the [original sandstone finish](qa/cape-tryon-stone.md) on the same signed coastal surfaces; choose **Turn off Cape Tryon sandstone** or use `stockCapeTryonRock` to compare. A separate [opt-in cliff-seat preview](qa/cape-tryon-sky-seat.md) reduces specified north, grazing and east openings without changing Standard or the flight surfaces.
 
+Three additional [close-flight field-image joins](qa/inland-close-field-joins.md) remove straight raster tile lines without changing the landform, field boundaries or flight model.
+
 ### Scenery previews
 
 In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/scenery-profile.md). Use **Use standard** to return without losing your departure. For individual comparisons, these flags also work on their own:

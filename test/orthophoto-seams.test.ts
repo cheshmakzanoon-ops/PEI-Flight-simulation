@@ -138,12 +138,14 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
  const ink=['edge-12-16e','edge-22-13s','edge-13-15e'];
  const westExtra=["edge-9-10e", "edge-1-7e"];
- assert.deepEqual(ids.slice(-3-westExtra.length,-westExtra.length),ink);
- assert.deepEqual(ids.slice(-westExtra.length),westExtra);
- assert.equal(standard.diagnostics().length,23+ink.length+westExtra.length);
- const lockOwners=new Set(standard.diagnostics().slice(0,-westExtra.length).flatMap(p=>p.edge.split(' / ')));
+ const next=["edge-17-14s","edge-9-13s","edge-6-10s"];
+ const added=[...westExtra,...next];
+ assert.deepEqual(ids.slice(-3-added.length,-added.length),ink);
+ assert.deepEqual(ids.slice(-added.length),added);
+ assert.equal(standard.diagnostics().length,23+ink.length+added.length);
+ const lockOwners=new Set(standard.diagnostics().slice(0,-added.length).flatMap(p=>p.edge.split(' / ')));
  for(const id of ['20-16','20-17','20-18','20-19'])lockOwners.add(id);
- for(const plan of INLAND_ORTHO_WINDOWS.filter(p=>westExtra.includes(p.name)))for(const key of [plan.first,plan.second]){
+ for(const plan of INLAND_ORTHO_WINDOWS.filter(p=>added.includes(p.name)))for(const key of [plan.first,plan.second]){
   assert(!lockOwners.has(key));lockOwners.add(key);
  }
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);

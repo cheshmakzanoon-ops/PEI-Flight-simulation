@@ -1,0 +1,1318 @@
+{
+  "artOwnerGuardAt9_13": {
+    "changedInsideAnyHull": 0,
+    "claimsOtherLodOrCurrentSurvey": false,
+    "crossBoundaryInnerDonorBuildingIntersection": false,
+    "datedRoadCentrelineDistanceM": 42.217,
+    "nearestExistingBuildingFootprintDistancesM": [
+      3.468,
+      10.36,
+      21.14
+    ],
+    "nominalAreaApproxM": [
+      190.41,
+      22.9
+    ],
+    "passedAreas": "Both 840\u00d7540 4\u00d7 fixed views; actual RGB for the three conservative stock-height building hulls plus 0.75 px raster margin"
+  },
+  "caseScope": "Two matched Native WebGL poses plus high/outside/mirrored controls per patch. Separate real neutral Chase dynamics. The sampler uses existing dated source pixels.",
+  "comparisons": [
+    {
+      "candidateCounts": {
+        "draws": 54,
+        "tris": 409648
+      },
+      "changedAlpha": 0,
+      "changedRgb": 23525,
+      "controlledContrast": {
+        "artP90": 2.9078824281692506,
+        "medianArt": 1.6739901304244995,
+        "medianOld": 15.367812156677246,
+        "oldP90": 25.4030424118042,
+        "samples": 74
+      },
+      "id": "edge-17-14s",
+      "oldCounts": {
+        "draws": 54,
+        "tris": 409648
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 15024
+    },
+    {
+      "candidateCounts": {
+        "draws": 41,
+        "tris": 290761
+      },
+      "changedAlpha": 0,
+      "changedRgb": 28044,
+      "controlledContrast": {
+        "artP90": 3.587536001205444,
+        "medianArt": 1.603351354598999,
+        "medianOld": 14.41092586517334,
+        "oldP90": 23.912479019165037,
+        "samples": 67
+      },
+      "id": "edge-17-14s-reciprocal",
+      "oldCounts": {
+        "draws": 41,
+        "tris": 290761
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 16223
+    },
+    {
+      "candidateCounts": {
+        "draws": 38,
+        "tris": 325236
+      },
+      "changedAlpha": 0,
+      "changedRgb": 23821,
+      "controlledContrast": {
+        "artP90": 3.9630954265594482,
+        "medianArt": 1.8050492405891418,
+        "medianOld": 15.192673206329346,
+        "oldP90": 29.818846702575684,
+        "samples": 76
+      },
+      "id": "edge-9-13s",
+      "oldCounts": {
+        "draws": 38,
+        "tris": 325236
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 14622
+    },
+    {
+      "candidateCounts": {
+        "draws": 45,
+        "tris": 306999
+      },
+      "changedAlpha": 0,
+      "changedRgb": 28741,
+      "controlledContrast": {
+        "artP90": 4.68266363143921,
+        "medianArt": 2.0631566047668457,
+        "medianOld": 16.95778465270996,
+        "oldP90": 46.57368621826173,
+        "samples": 69
+      },
+      "id": "edge-9-13s-reciprocal",
+      "oldCounts": {
+        "draws": 45,
+        "tris": 306999
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 17546
+    },
+    {
+      "candidateCounts": {
+        "draws": 38,
+        "tris": 330144
+      },
+      "changedAlpha": 0,
+      "changedRgb": 22699,
+      "controlledContrast": {
+        "artP90": 4.764437675476073,
+        "medianArt": 2.152191162109375,
+        "medianOld": 18.218276977539062,
+        "oldP90": 44.40937957763672,
+        "samples": 67
+      },
+      "id": "edge-6-10s",
+      "oldCounts": {
+        "draws": 38,
+        "tris": 330144
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 15376
+    },
+    {
+      "candidateCounts": {
+        "draws": 46,
+        "tris": 294169
+      },
+      "changedAlpha": 0,
+      "changedRgb": 28931,
+      "controlledContrast": {
+        "artP90": 5.253769063949585,
+        "medianArt": 2.4027559757232666,
+        "medianOld": 21.171470642089844,
+        "oldP90": 44.33959732055664,
+        "samples": 70
+      },
+      "id": "edge-6-10s-reciprocal",
+      "oldCounts": {
+        "draws": 46,
+        "tris": 294169
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": 0,
+      "strongRgb": 19751
+    }
+  ],
+  "compiledChase": [
+    {
+      "frames": [
+        {
+          "aircraftSignedSide": 90.24320308435199,
+          "alpha": 0,
+          "cameraSignedSide": 109.60828369576484,
+          "changed": 18753,
+          "counts": [
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ]
+          ],
+          "eye": [
+            10777.312728371724,
+            95.38886156423604,
+            21331.26972761967
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            10777.407079579445,
+            91.19373207851498,
+            21311.904647008258
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 48811,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 10328,
+          "travelM": 9.763294286734622
+        },
+        {
+          "aircraftSignedSide": 85.0775251527557,
+          "alpha": 0,
+          "cameraSignedSide": 105.71650623237292,
+          "changed": 20332,
+          "counts": [
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ]
+          ],
+          "eye": [
+            10777.455874948575,
+            95.39893264231239,
+            21327.37795015628
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            10777.597079579446,
+            91.2088670947702,
+            21306.73896907666
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 41005,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 11402,
+          "travelM": 14.93246525439097
+        },
+        {
+          "aircraftSignedSide": 50.06162535318799,
+          "alpha": 0,
+          "cameraSignedSide": 73.01517826442796,
+          "changed": 0,
+          "counts": [
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ]
+          ],
+          "eye": [
+            10778.658558021953,
+            95.55547810889131,
+            21294.676622188334
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            10778.884857357227,
+            91.39204419676099,
+            21271.723069277094
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 49.97203731749022
+        },
+        {
+          "aircraftSignedSide": 21.93077394622742,
+          "alpha": 0,
+          "cameraSignedSide": 45.6544785041915,
+          "changed": 0,
+          "counts": [
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ]
+          ],
+          "eye": [
+            10779.664704533885,
+            95.73355433430396,
+            21267.315922428097
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            10779.919301801674,
+            91.58079481339944,
+            21243.592217870133
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 78.12190190277867
+        },
+        {
+          "aircraftSignedSide": -33.18965424151611,
+          "alpha": 0,
+          "cameraSignedSide": -11.227120284384,
+          "changed": 0,
+          "counts": [
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ],
+            [
+              156,
+              310051
+            ]
+          ],
+          "eye": [
+            10781.75616390408,
+            96.13040756669122,
+            21210.43432363952
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            10781.945968468346,
+            91.96657820749859,
+            21188.47178968239
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 133.27957572291058
+        }
+      ],
+      "window": "edge-17-14s"
+    },
+    {
+      "frames": [
+        {
+          "aircraftSignedSide": 90.24350508370844,
+          "alpha": 0,
+          "cameraSignedSide": 109.60858607669797,
+          "changed": 18900,
+          "counts": [
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ]
+          ],
+          "eye": [
+            -36843.53104338144,
+            86.82831870411684,
+            15470.04925025021
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -36843.43669217371,
+            82.63324428936625,
+            15450.68416925722
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 38626,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 10471,
+          "travelM": 9.76329545338507
+        },
+        {
+          "aircraftSignedSide": 85.07782671247332,
+          "alpha": 0,
+          "cameraSignedSide": 105.71680819989524,
+          "changed": 14408,
+          "counts": [
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ]
+          ],
+          "eye": [
+            -36843.387896804576,
+            86.83850416607379,
+            15466.157472373407
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -36843.24669217369,
+            82.6485514506649,
+            15445.518490885985
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 29977,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 9244,
+          "travelM": 14.932466860383773
+        },
+        {
+          "aircraftSignedSide": 52.93230949024837,
+          "alpha": 0,
+          "cameraSignedSide": 76.15480771623515,
+          "changed": 0,
+          "counts": [
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ]
+          ],
+          "eye": [
+            -36842.30066222884,
+            86.9776998112478,
+            15436.595471889746
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -36842.064469951365,
+            82.8155231564226,
+            15413.37297366376
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 47.09971614994141
+        },
+        {
+          "aircraftSignedSide": 20.208853251800974,
+          "alpha": 0,
+          "cameraSignedSide": 42.985946289050844,
+          "changed": 0,
+          "counts": [
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ]
+          ],
+          "eye": [
+            -36841.08092575667,
+            87.19564307247516,
+            15403.426610462562
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -36840.861136617925,
+            83.03697502512811,
+            15380.649517425312
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 79.84528988558657
+        },
+        {
+          "aircraftSignedSide": -33.76297801135479,
+          "alpha": 0,
+          "cameraSignedSide": -11.819932664046064,
+          "changed": 0,
+          "counts": [
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ],
+            [
+              199,
+              319914
+            ]
+          ],
+          "eye": [
+            -36839.06578176995,
+            87.58306744065052,
+            15348.620731509465
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -36838.876692173304,
+            83.41955180825043,
+            15326.677686162157
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 133.8535910024718
+        }
+      ],
+      "window": "edge-9-13s"
+    },
+    {
+      "frames": [
+        {
+          "aircraftSignedSide": 90.24330297344022,
+          "alpha": 0,
+          "cameraSignedSide": 109.60838396608324,
+          "changed": 18055,
+          "counts": [
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ]
+          ],
+          "eye": [
+            -55731.92662703964,
+            86.83609665775441,
+            -2113.6132911115956
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -55731.83227583191,
+            82.64102219295634,
+            -2132.9783721042386
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 45081,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 11094,
+          "travelM": 9.763295452326679
+        },
+        {
+          "aircraftSignedSide": 85.07762460260483,
+          "alpha": 0,
+          "cameraSignedSide": 105.71660608965612,
+          "changed": 19536,
+          "counts": [
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ]
+          ],
+          "eye": [
+            -55731.78348046278,
+            86.84628201576636,
+            -2117.5050689880227
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -55731.642275831895,
+            82.6563291978226,
+            -2138.144050475074
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 36761,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 12166,
+          "travelM": 14.93246685892593
+        },
+        {
+          "aircraftSignedSide": 52.93210735308912,
+          "alpha": 0,
+          "cameraSignedSide": 75.71291699121502,
+          "changed": 0,
+          "counts": [
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ]
+          ],
+          "eye": [
+            -55730.68000291245,
+            86.98826964206476,
+            -2147.508758086464
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -55730.46005360957,
+            82.82329915619232,
+            -2170.2895677245897
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 47.09971617575587
+        },
+        {
+          "aircraftSignedSide": 21.356895907755188,
+          "alpha": 0,
+          "cameraSignedSide": 43.96442381556926,
+          "changed": 0,
+          "counts": [
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ],
+            [
+              184,
+              321065
+            ]
+          ],
+          "eye": [
+            -55729.51249703589,
+            87.19661449476698,
+            -2179.2572512621095
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -55729.29894249835,
+            83.03669405163023,
+            -2201.8647791699236
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 78.69626910178822
+        },
+        {
+          "aircraftSignedSide": -32.614753685546475,
+          "alpha": 0,
+          "cameraSignedSide": -10.657031743146945,
+          "changed": 0,
+          "counts": [
+            [
+              183,
+              318179
+            ],
+            [
+              183,
+              318179
+            ],
+            [
+              183,
+              318179
+            ],
+            [
+              183,
+              318179
+            ],
+            [
+              183,
+              318179
+            ]
+          ],
+          "eye": [
+            -55727.504127945125,
+            87.58258855617579,
+            -2233.8787068208258
+          ],
+          "glError": 0,
+          "heading": 0,
+          "outside": 0,
+          "planeAxis": "z",
+          "pos": [
+            -55727.31449805373,
+            83.41918165724509,
+            -2255.8364287632253
+          ],
+          "restoreBytes": 0,
+          "roll": 0,
+          "samples": 4,
+          "scope": 0,
+          "size": [
+            840,
+            540
+          ],
+          "strong": 0,
+          "travelM": 132.70438867151339
+        }
+      ],
+      "window": "edge-6-10s"
+    }
+  ],
+  "compiledFallback": [
+    {
+      "alongMeters": 151.567,
+      "cockpitAndPause": true,
+      "corrupted": [],
+      "crossMeters": 5.573,
+      "edge": null,
+      "errors": [],
+      "flightMeters": 151.669,
+      "groundClearance": 58.9,
+      "mode": "stock",
+      "name": "edge-17-14s",
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack",
+        "sentinel-03.pack"
+      ]
+    },
+    {
+      "alongMeters": 151.57,
+      "cockpitAndPause": true,
+      "corrupted": [
+        43608
+      ],
+      "crossMeters": 5.573,
+      "edge": {
+        "bytes": 0,
+        "edge": "17-14 / 17-15",
+        "errors": 0,
+        "gain": 0,
+        "resident": false,
+        "uploads": 0
+      },
+      "errors": [],
+      "flightMeters": 151.672,
+      "groundClearance": 58.827,
+      "mode": "corrupt",
+      "name": "edge-17-14s",
+      "requestedImagery": [
+        "index.json",
+        "sentinel-01.pack",
+        "sentinel-02.pack",
+        "sentinel-03.pack"
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "candidateCounts": {
+        "draws": 21,
+        "err": 0,
+        "tris": 274961
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-17-14s-high",
+      "oldCounts": {
+        "draws": 21,
+        "err": 0,
+        "tris": 274961
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 282195
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-17-14s-outside",
+      "oldCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 282195
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 17,
+        "err": 0,
+        "tris": 267168
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-17-14s-flipped",
+      "oldCounts": {
+        "draws": 17,
+        "err": 0,
+        "tris": 267168
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 20,
+        "err": 0,
+        "tris": 287852
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-9-13s-high",
+      "oldCounts": {
+        "draws": 20,
+        "err": 0,
+        "tris": 287852
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 263229
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-9-13s-outside",
+      "oldCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 263229
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 16,
+        "err": 0,
+        "tris": 236068
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-9-13s-flipped",
+      "oldCounts": {
+        "draws": 16,
+        "err": 0,
+        "tris": 236068
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 21,
+        "err": 0,
+        "tris": 314055
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-6-10s-high",
+      "oldCounts": {
+        "draws": 21,
+        "err": 0,
+        "tris": 314055
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 281351
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-6-10s-outside",
+      "oldCounts": {
+        "draws": 15,
+        "err": 0,
+        "tris": 281351
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    },
+    {
+      "candidateCounts": {
+        "draws": 19,
+        "err": 0,
+        "tris": 372910
+      },
+      "changedAlpha": 0,
+      "changedRgb": 0,
+      "controlledContrast": null,
+      "id": "edge-6-10s-flipped",
+      "oldCounts": {
+        "draws": 19,
+        "err": 0,
+        "tris": 372910
+      },
+      "outsideRegisteredRgb": 0,
+      "restoredExactly": true,
+      "stockSkyPixels": null,
+      "strongRgb": 0
+    }
+  ],
+  "rawReceiptSHA256": {
+    "fallback-receipt.json": "61ade7a459316b9442f3f624d69066d75df9f9678da886c7beb1b9913cdd5dac",
+    "moving-native/receipt.json": "93faaf1c77b010edeb6026f84b4ea36c89257192c2df1ac03c63e605a35a6259",
+    "negative/report.json": "b672493feefc2a7530958f7964d6acc2e7120e095937b08b082d5f674f269b84",
+    "positive/report.json": "e1e8f529992a72500216834e354661685857dc46d9bda98270bb91eaafe4e165",
+    "signed-guard-donors-final.json": "949d955dc832472b423b7f04b15d4bade6980811a5c56b8e21d53157994dc94a"
+  },
+  "releaseParent": "080b5f54fc4082fd78ad6e974daa86487815f6b2",
+  "schema": "field-orthophoto-scoped-flight-v1",
+  "signedInputs": {
+    "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+    "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "scope": "Original source only; no added ground truth or aerial resolution.",
+    "windows": [
+      {
+        "axis": "z",
+        "classes": [
+          30,
+          40
+        ],
+        "coverBox": [
+          2271,
+          1853,
+          6,
+          3
+        ],
+        "donorWireSHA256": [
+          "61c0d9f91d59e88ba1afff69414fcdecde025acfbedf48e3e47784bd1e4d067a",
+          "4b566bbdf99b3c8e84ca42a062fd57f3f635d601748ec89ed4af165d1b5703e0"
+        ],
+        "exactSourceRGBSHA256": "9a7b21b3cf69b1767a0a3041e974be4484734f1b8065f679f5093052ed5015b9",
+        "filteredDonorAlongSpan": [
+          481,
+          503
+        ],
+        "filteredDonorRGBSHA256": "929e5ebfbdcd33756150ea68ac4e5dc4d8b0a8f07bde290a9a3e86fac2db96a3",
+        "medianInnerNeighbourStep": 11.14,
+        "medianNativeStep": 34.344,
+        "minimumCoverCode": 255,
+        "name": "edge-17-14s",
+        "owners": [
+          "17-14",
+          "17-15"
+        ],
+        "window": [
+          482,
+          484,
+          500,
+          502
+        ]
+      },
+      {
+        "axis": "z",
+        "classes": [
+          30,
+          40
+        ],
+        "coverBox": [
+          1271,
+          1730,
+          6,
+          2
+        ],
+        "donorWireSHA256": [
+          "63931f280e9e1175060056653dd5f774e8502bb76b89a49fc331b2e76e2e238a",
+          "e74a121cbd9d741d2aa3d48e7db119928a465faafb1a9eea6f3b9eb271e6c591"
+        ],
+        "exactSourceRGBSHA256": "8e0df646c35cf1c3a6cef39f43fba1b6b2cc5fb730f4c677e7e0fcec02d2e020",
+        "filteredDonorAlongSpan": [
+          599,
+          621
+        ],
+        "filteredDonorRGBSHA256": "2d71a315f2d704cd628643de29c013032cffb9d6b69d5de3bc0510188b785111",
+        "medianInnerNeighbourStep": 11.898,
+        "medianNativeStep": 37.026,
+        "minimumCoverCode": 255,
+        "name": "edge-9-13s",
+        "owners": [
+          "9-13",
+          "9-14"
+        ],
+        "window": [
+          600,
+          602,
+          618,
+          620
+        ]
+      },
+      {
+        "axis": "z",
+        "classes": [
+          30,
+          40
+        ],
+        "coverBox": [
+          874,
+          1359,
+          6,
+          2
+        ],
+        "donorWireSHA256": [
+          "60ce292b64164bb6d502290fe61a9706ae698dc93fb2f7f48d9b0f7d25c941b5",
+          "25dd0e8ab96e8a2afc0eec3bb5295d4aed59a806a8852b83611ba4ebc7a6f500"
+        ],
+        "exactSourceRGBSHA256": "0783699f243648f1d0d5ee0a5b16f9c9472da70f11a03ad506641dcb3b5e10e1",
+        "filteredDonorAlongSpan": [
+          535,
+          557
+        ],
+        "filteredDonorRGBSHA256": "e635841af3a0135c5de728451c64dabba1a7b40400b03b9595eb1e74d37e43f1",
+        "medianInnerNeighbourStep": 11.943,
+        "medianNativeStep": 30.084,
+        "minimumCoverCode": 255,
+        "name": "edge-6-10s",
+        "owners": [
+          "6-10",
+          "6-11"
+        ],
+        "window": [
+          536,
+          538,
+          554,
+          556
+        ]
+      }
+    ]
+  }
+}
