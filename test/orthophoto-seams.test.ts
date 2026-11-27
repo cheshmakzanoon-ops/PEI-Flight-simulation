@@ -137,8 +137,15 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:ids});
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
  const ink=['edge-12-16e','edge-22-13s','edge-13-15e'];
- assert.deepEqual(ids.slice(-3),ink);
- assert.equal(standard.diagnostics().length,23+ink.length);
+ const westExtra=["edge-9-10e", "edge-1-7e"];
+ assert.deepEqual(ids.slice(-3-westExtra.length,-westExtra.length),ink);
+ assert.deepEqual(ids.slice(-westExtra.length),westExtra);
+ assert.equal(standard.diagnostics().length,23+ink.length+westExtra.length);
+ const lockOwners=new Set(standard.diagnostics().slice(0,-westExtra.length).flatMap(p=>p.edge.split(' / ')));
+ for(const id of ['20-16','20-17','20-18','20-19'])lockOwners.add(id);
+ for(const plan of INLAND_ORTHO_WINDOWS.filter(p=>westExtra.includes(p.name)))for(const key of [plan.first,plan.second]){
+  assert(!lockOwners.has(key));lockOwners.add(key);
+ }
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
  assert.equal(all.size,standard.diagnostics().length*2-7);
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};

@@ -30,6 +30,8 @@ test('eastern, western and central joins are admitted by the actual signed cover
   ['edge-12-16e','12-16','13-16'],
   ['edge-22-13s','22-13','22-14'],
   ['edge-13-15e','13-15','14-15'],
+  ['edge-9-10e','9-10','10-10'],
+  ['edge-1-7e','1-7','2-7'],
  ] as const) {
   const plan=INLAND_ORTHO_WINDOWS.find(x=>x.name===name);
   assert.ok(plan && all.includes(name));
