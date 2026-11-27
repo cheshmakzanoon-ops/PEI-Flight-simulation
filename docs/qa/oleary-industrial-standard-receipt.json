@@ -1,0 +1,118 @@
+{
+  "viewport": [
+    660,
+    418
+  ],
+  "profile": "normal Standard, O’Leary railway station pass",
+  "capture": "The matching views render the original, then the measured building only, then the original again, at the same fixed-step Chase pose. The projected triangle scope includes a one-pixel edge guard. The camera and layout were not overridden. Not a device performance benchmark or representation of the current operator.",
+  "samples": {
+    "200": {
+      "poseXZAltGround": [
+        -78581.01645314276,
+        -23198.731670920046,
+        101.93047026892337,
+        30.12
+      ],
+      "pixels": 2161,
+      "strong": 2156,
+      "alpha": 0,
+      "outsideProjectedTriangles": 0,
+      "unchangedRestoration": true,
+      "polygons": [
+        [
+          19,
+          2316
+        ],
+        [
+          1736,
+          935
+        ]
+      ],
+      "draws": [
+        158,
+        160
+      ],
+      "triangles": [
+        325369,
+        327086
+      ],
+      "sha256": {
+        "stock": "8e07f0a3d83b0aa67b323794f0e38eb12a52db139a5ec6bf0244cc1156365e83",
+        "active": "68a2ebcf0ef4d2df12cff15c47b5028f4f23b1b3860a97b5575a26d0229d99ed",
+        "restored": "8e07f0a3d83b0aa67b323794f0e38eb12a52db139a5ec6bf0244cc1156365e83"
+      }
+    },
+    "210": {
+      "poseXZAltGround": [
+        -78613.31824094203,
+        -23159.03701476525,
+        102.30303577455358,
+        30.120000000000005
+      ],
+      "pixels": 3784,
+      "strong": 3774,
+      "alpha": 0,
+      "outsideProjectedTriangles": 0,
+      "unchangedRestoration": true,
+      "polygons": [
+        [
+          19,
+          4004
+        ],
+        [
+          1736,
+          1607
+        ]
+      ],
+      "draws": [
+        157,
+        159
+      ],
+      "triangles": [
+        325333,
+        327050
+      ],
+      "sha256": {
+        "stock": "2825f9e4453c27814f8dadba2f15c7c498d641d35c5bc7d6dd1c51b6e479405f",
+        "active": "ddf9c70313666bd5be2eb33e1081f095717d613a125ea2983e5cba9a3f5bb798",
+        "restored": "2825f9e4453c27814f8dadba2f15c7c498d641d35c5bc7d6dd1c51b6e479405f"
+      }
+    },
+    "230": {
+      "poseXZAltGround": [
+        -78677.92762348904,
+        -23079.641022325675,
+        103.049623823925,
+        31.26891619489497
+      ],
+      "pixels": 0,
+      "strong": 0,
+      "alpha": 0,
+      "outsideProjectedTriangles": 0,
+      "unchangedRestoration": true,
+      "polygons": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "draws": [
+        157,
+        157
+      ],
+      "triangles": [
+        320397,
+        320378
+      ],
+      "sha256": {
+        "stock": "e0fcd547d8ebd4022f6a7b2dc3fc360865132bbece303364c65d8b0f575729c2",
+        "active": "e0fcd547d8ebd4022f6a7b2dc3fc360865132bbece303364c65d8b0f575729c2",
+        "restored": "e0fcd547d8ebd4022f6a7b2dc3fc360865132bbece303364c65d8b0f575729c2"
+      }
+    }
+  }
+}

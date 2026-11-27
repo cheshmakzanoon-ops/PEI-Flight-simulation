@@ -5,6 +5,8 @@ import {nearStandardWharf,standardWharfDraw,standardWharfPositionsAllow,trackWha
 import {OLEARY,OLEARY_INDUSTRIAL,OLEARY_WAREHOUSE,olearyAtlasOwner,type OlearySeat} from './oleary-railway/authority.ts';
 import {OlearySocket} from './oleary-railway/socket.ts';
 import {OlearyCohortSocket,type OlearyCohortStudy} from './oleary-railway/cohort.ts';
+import {StandardIndustrialSession} from './oleary-railway/standard-industrial-session.ts';
+import type {Cover} from '../sim/cover.ts';
 import type {DalvayGlazingSource} from './dalvay-glazing.ts';
 import {DALVAY,dalvayOwner,type DalvaySeat} from './dalvay-exterior-seat.ts';
 import {DalvaySocket} from './dalvay-exterior-socket.ts';
@@ -425,6 +427,23 @@ export class Buildings {
  private georgetownCohort?:{owner:THREE.Mesh;mask:NonNullable<ReturnType<typeof authenticatedOwnerCohort>>};
  private olearyCompoundRoofs=false;
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
+ private standardIndustrialOptions?:{
+  terrainSha:string;cover:Cover;preparing:()=>boolean;flying:()=>boolean;
+  ground:OlearySeat['ground'];link:OlearySeat['link'];
+ };
+ private standardIndustrial?:{owner:THREE.Mesh;view:StandardIndustrialSession};
+ enableStandardIndustrial(seat:NonNullable<Buildings['standardIndustrialOptions']>){this.standardIndustrialOptions=seat;}
+ get standardIndustrialReady(){return this.standardIndustrial?.view.ready===true;}
+ get standardIndustrialDrawn(){return this.standardIndustrial?.view.drawn===true;}
+ prepareStandardIndustrial(){this.standardIndustrial?.view.prepare();}
+ clearStandardIndustrialForFlight(useDispatch:boolean){
+  const q=this.standardIndustrial?.view;
+  if(useDispatch)q?.authorizeDeparture();else q?.stockDeparture();
+ }
+ drawStandardIndustrial(paint:()=>void){
+  const q=this.standardIndustrial?.view;
+  if(q)q.draw(paint);else paint();
+ }
  private dalvaySeat?:DalvaySeat;private dalvay?:DalvaySocket;private dalvayGlass?:DalvayGlazingSource;
  private seacowSeat?:SeacowSeat;
  private queuedSeacow?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;running:boolean;pin:ReturnType<Buildings['pinAuthoredOwner']>};
@@ -705,6 +724,7 @@ export class Buildings {
     if(id===FOUNDERS_WEST.id){this.foundersWest?.dispose();this.foundersWest=undefined;}
     if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
     if(m===this.oleary?.owner){this.oleary.dispose();this.oleary=undefined;}
+    if(m===this.standardIndustrial?.owner){this.standardIndustrial.view.dispose();this.standardIndustrial=undefined;}
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.queuedSeacow?.owner)this.queuedSeacow=undefined;
@@ -905,6 +925,8 @@ export class Buildings {
    const seacow=this.seacowSeat&&seacowOwner(this.atlasHash,tile)?this.seacowSeat:undefined;
    let seacowBytes:ArrayBuffer|undefined;
    const oleary=this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile)?this.olearySeat:undefined;
+   const standardIndustrial=this.standardIndustrialOptions&&!this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile)?
+    this.standardIndustrialOptions:undefined;
    const olearyStudy=oleary?this.olearyStudy:undefined;
    const olearyRoofCandidate=this.olearyCompoundRoofs&&!this.olearySeat&&olearyAtlasOwner(this.atlasHash,tile);
    const dalvay=this.dalvaySeat&&dalvayOwner(this.atlasHash,tile)?this.dalvaySeat:undefined;
@@ -923,7 +945,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||olearyRoofCandidate||tapped||kings){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -936,7 +958,7 @@ export class Buildings {
     if(terminal)terminalBytes=raw;
     if(seacow)seacowBytes=raw;
     if(dalvay)dalvayBytes=raw;
-    if(oleary)olearyBytes=raw;
+    if(oleary||standardIndustrial)olearyBytes=raw;
     if(knight)knightBytes=raw;
     if(tryPointPrim)primBytes=raw;
     if(downtownCheck)downtownVerified=await downtownCheck;
@@ -972,7 +994,7 @@ export class Buildings {
    const church=features===this.pinnedChurch?this.churchArt:undefined;
    const trackWharf=!!this.standardWharf&&downtownVerified&&downtown?.id===SPINNAKERS_TILE&&downtown.sha256===SPINNAKERS_SHELLS.recordBytesHash&&
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
-   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
+   const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy||!!standardIndustrial,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    const authoredRidge=this.strictRidgeOwner&&tile.id===KINGS_CROWN_BUILDINGS.tile&&features===this.pinnedKingsCrown;
@@ -1000,6 +1022,21 @@ export class Buildings {
     if(mask)this.wharfOwner={owner:mesh,mask,started:false,near:false};
    }
    if(terminal&&terminalBytes&&downtownVerified){this.terminalWall?.dispose();this.terminalWall=terminal(mesh,tile.id,terminalBytes,features);}
+   if(standardIndustrial&&olearyBytes&&this.atlasHash){
+    const wire=olearyBytes,atlasHash=this.atlasHash,cover=standardIndustrial.cover,rows=features.length,row192=features[OLEARY_INDUSTRIAL.ordinal];
+    const original=this.pinAuthoredOwner(mesh),before=mesh.onBeforeRender,after=mesh.onAfterRender;
+    const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&mesh.geometry===original.stock&&original.baseOwner()&&
+     mesh.onBeforeRender===before&&mesh.onAfterRender===after;
+    this.standardIndustrial?.view.dispose();
+    const view=new StandardIndustrialSession({current,...standardIndustrial,
+     stage:async(permit,signal)=>{
+      const m=await import('./oleary-railway/industrial-standard-owner.ts');
+      if(!permit()||signal.aborted)return;
+      return m.prepareQ192StandardComparison({...standardIndustrial,scene:this.scene,owner:mesh,atlasHash,tile,wire,rows,row192,
+       terrain:this.t,cover,permit,signal});
+     }});
+    this.standardIndustrial={owner:mesh,view};
+   }
    if(oleary&&olearyBytes){
     this.oleary?.dispose();
     this.oleary=olearyStudy?new OlearyCohortSocket(this.scene,mesh,olearyBytes,features.length,features[OLEARY.ordinal],features[OLEARY_INDUSTRIAL.ordinal],oleary,olearyStudy.warehouse?{...olearyStudy,warehouse:{...olearyStudy.warehouse,row:features[OLEARY_WAREHOUSE.ordinal]}}:olearyStudy,()=>this.meshes.get(tile.id)===mesh&&this.wanted.has(tile.id)):

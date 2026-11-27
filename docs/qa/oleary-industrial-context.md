@@ -1,6 +1,17 @@
 # O’Leary | Railway-side industrial building study
 
-The optional **O’Leary railway station pass** can also show the surveyed shape of the agricultural building beside the station: a low gabled shed and a compact tall head in place of the old office-like block. This is a study of one building’s shape, not a claim to have rebuilt the town or photographed the current site. The default view and the published [station exterior](oleary-station-exterior.md) are unchanged.
+On **O’Leary railway station pass**, Standard can show the surveyed
+shape beside the station: a low gabled agricultural shed and a compact
+tall head rather than the old office-like block. Wait for **Surveyed
+railway-side building ready** in Dispatch before beginning. The route
+can start immediately with the original building if the local asset
+is not ready. This is a reconstruction of a specific measured form,
+not a claim to have rebuilt the town or photographed the current site.
+
+Use `?departure=oleary-railway-low&stockOlearyIndustrial` to see the same
+Standard view with the original building. Both neighboring Standard
+roof treatments remain enabled. The existing optional station, building
+and warehouse profiles also remain available.
 
 Compare the station-only view using `?departure=oleary-railway-low&olearyExteriorStudy`, then enable both with:
 
@@ -20,9 +31,31 @@ Federal source information is licensed under the [Open Government Licence – Ca
 
 The study is two opaque Three.js draws with 1,736 triangles. The whole model stays at least 0.169 m within the original outline; its base follows 398 checked positions on two unchanged native terrain facets. It replaces only 19 stock triangles in building row `q20213/192`. The unrelated station remains an independent 14-triangle ownership span within the same stock draw. No dry-ground classification, roads, trail, flight contact, or other buildings change.
 
-Both studies authenticate the original 32,049-vertex draw, not whichever indexed version is visible. The same mesh can keep either study, both, or the exact stock. Each enabled lane qualifies separately against the unchanged high-resolution ground and only displaces its own stock geometry after its actual WebGL programs link. The earlier station-only/default execution path does not need the industrial study.
+The older optional studies authenticate the original 32,049-vertex draw, not whichever indexed version is visible. The normal Standard path instead authenticates its 32,241-vertex batch with both fitted roofs retained. The same mesh can keep either study, both, or the exact stock. Each enabled lane qualifies separately against the unchanged high-resolution ground and only displaces its own stock geometry after its actual WebGL programs link. The earlier station-only/default execution path does not need the industrial study.
 
-## Native comparison
+## Standard Chase comparison
+
+The normal Standard release consumes the same live signed building
+range used by the ordinary streamer. Just one building in that existing
+draw is indexed out. The q26 and q47 roofs, q150 warehouse and q431
+station retain their exact original vertex streams in the Standard batch.
+A closer/smaller replacement can reveal unchanged background occluded
+by the stock block; a revealed neighboring pixel is not a new model.
+
+At 20 and 21 seconds on two matched neutral Chase views (660 × 418),
+2,156 and 3,774 pixels changed by more than two RGB code values. There
+were no changes in alpha or outside the union of the old and new
+projected triangles, and the original rendered frame returned byte for
+byte. This cost two draws and 1,717 net triangles with both new surfaces
+visible. At 23 seconds both replacement draws were culled and the whole
+image was exact. The model does not change ground contact.
+
+![Matched Standard Chase views, showing the original block and measured shed with a capped head](art/oleary-industrial-standard.webp)
+
+See the [Standard native receipt](oleary-industrial-standard-receipt.json)
+for the poses, scene counts, and image hashes. The normal browser run used the authored lease on the first frame after readiness; a held module released after Begin and a separately missing module both kept the original building with all six ordinary building tiles still loaded.
+
+## Earlier close-view study
 
 Two fixed, reciprocal 42 m cameras test the same scene and lighting with the industrial study toggled off and then restored. Any nonzero RGBA changes are counted, and all pixels outside the pre-registered old/new building envelopes are compared exactly. A thrown live condition and an explicit veto each reproduce the same stock industrial frame without disabling the station.
 

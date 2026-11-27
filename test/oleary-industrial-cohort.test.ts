@@ -366,3 +366,44 @@ test('false warehouse link, changed row and retired issuer all retain authentica
   s.dispose();q.close();
  }
 });
+
+test('the normal streamer preserves the two fitted roofs while leasing only q192',async()=>{
+ const scene=new T.Scene(),grade=nativeGrade(scene),c=j('cover.json');
+ const wire=read('public/world/'+c.file),bytes=new Uint8Array(ab(gunzip(wire)));
+ const cover=new Cover(c.width,c.height,bytes,undefined,sha(wire));
+ let ranges=0,dispatch=true;
+ const pack={read:async(offset:number,size:number)=>{
+  assert.equal(offset,OLEARY.offset);assert.equal(size,OLEARY.bytes);ranges++;return ab(packed);
+ }};
+ const b=new (Buildings as any)(scene,terrain,[tile],pack,idx.sha256);
+ b.enableOlearyAccessRoof();b.enableOlearyCompoundRoofs();
+ b.enableStandardIndustrial({terrainSha:so.sha256,cover,preparing:()=>dispatch,flying:()=>!dispatch,
+  ground:()=>({fine:grade,seams}),link:linked});
+ b.wanted.add(tile.id);await b.load(b.tiles[0]);
+ const owner=b.meshes.get(tile.id) as T.Mesh,stock=owner.geometry;
+ assert(owner.userData.olearyAccessRoofTone);
+ assert.deepEqual(owner.userData.olearyIndustrialTriangles,[13584,13641]);
+ assert.equal(stock.getAttribute('position').count,32241);
+ const peers=[[1770,1872],[3039,3414],[10662,10746],[26535,26577]];
+ assert.equal(ranges,1);b.prepareStandardIndustrial();await until(()=>b.standardIndustrialReady);
+ assert.equal(ranges,1);b.drawStandardIndustrial(()=>assert.equal(owner.geometry,stock));
+ b.clearStandardIndustrialForFlight(true);dispatch=false;
+ const originals=Object.entries(stock.attributes).map(([name,a])=>[name,a,sha(a.array)] as const);
+ const receive=()=>{
+  const alt=owner.geometry,index=alt.index;
+  assert(index&&index.array instanceof Uint16Array);
+  assert.equal(index.count,32184);assert.equal(index.getX(13583),13583);assert.equal(index.getX(13584),13641);
+  for(const [name,attr,digest] of originals){assert.equal(alt.getAttribute(name),attr);assert.equal(sha(attr.array),digest);}
+  for(const [lo,hi] of peers){
+   const k=lo<13584?lo:lo-57;assert.equal(index.getX(k),lo);assert.equal(index.getX(k+hi-lo-1),hi-1);
+  }
+  assert.equal(scene.children.filter(x=>x.name.startsWith('O’Leary q192')).length,1);
+ };
+ b.drawStandardIndustrial(receive);assert(b.standardIndustrialDrawn);assert.equal(owner.geometry,stock);assert(!stock.index);
+ b.drawStandardIndustrial(()=>{receive();owner.geometry.index!.array[0]=1;});
+ assert.equal(owner.geometry,stock);
+ b.drawStandardIndustrial(()=>assert.equal(owner.geometry,stock));assert(!b.standardIndustrialDrawn);
+ assert.equal(scene.children.filter(x=>x.name.startsWith('O’Leary q192')).length,0);
+ b.update(10_000_000,10_000_000);assert.equal(ranges,1);
+ grade.geometry.dispose();(grade.material as T.Material).dispose();
+});

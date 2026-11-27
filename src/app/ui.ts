@@ -21,6 +21,7 @@ export class UI {
  mode:Mode='dispatch';selected=0;previous:Mode='dispatch';private terrain:Terrain; private input:Input;
  private chartImage:HTMLImageElement;private frame=0;private siteNow=0;private camera='Chase';private silent=true;private message='';
  private ridgeState='';
+ private industrialState='';
  constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;},private readonly sites:readonly Site[]=SITES) {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
@@ -47,7 +48,7 @@ export class UI {
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>
   <div class="scrim" id="scrim"></div>
   <section id="dispatch" class="dispatch panel" aria-labelledby="dispatch-title"><span class="eyebrow"><i></i> CANADA &nbsp; / &nbsp; ATLANTIC</span><h1 id="dispatch-title">Prince Edward<br><em>Island</em></h1><p class="standfirst">Free flight across the province, from red sandstone shores to patchwork farmland.</p>
-  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p>
+  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p>
   <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
   <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div>
   <section class="regional-detail" id="cavendish-package" hidden><div><span class="eyebrow">CAVENDISH DETAIL</span><small id="cavendish-package-info">${cavePack.blocked?'Unavailable with the current terrain or shadow options.':cavePack.active?'House, Barn, lake, slope, turf and trail selected.':'House, Barn, lake, slope, turf and trail'}</small></div><button type="button" id="cavendish-package-switch" aria-label="${cavePack.selected?'Turn off Cavendish detail':'Enable Cavendish detail'}" aria-describedby="cavendish-package-info" ${cavePack.blocked&&!cavePack.selected?'disabled':''}>${cavePack.selected?'Turn off':'Enable'}</button></section>
@@ -148,6 +149,13 @@ export class UI {
    s==='unavailable'?'The original ground will be used because the preview data could not be verified.':
    s==='different'?'This preview only opens on the Prince County grassland pass.':'The measured field changes local ground contact.';
   const tip=$('ridge-flight-status');tip.hidden=s!=='stock';tip.textContent=s==='stock'?'Using Standard field ground on this flight.':'';
+ }
+ setOlearyIndustrial(state:'inactive'|'checking'|'ready'){
+  if(this.industrialState===state)return;this.industrialState=state;
+  const note=$('oleary-survey');
+  note.hidden=state==='inactive';
+  note.textContent=state==='ready'?'Surveyed railway-side building ready.':state==='checking'?
+   'Checking the surveyed railway-side building. You can begin now with the original building.':'';
  }
  setKingsRidgeState(state:'pending'|'ready'|'unavailable'|'playing'|'stock'|'different'){
   if(this.ridgeState===state)return;this.ridgeState=state;
