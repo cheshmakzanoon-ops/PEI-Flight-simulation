@@ -1,0 +1,580 @@
+{
+  "scope": "Actual local Standard Dalvay neutral Chase native image matches, plus separate normal controls and a delayed response. The measurements qualify only the existing illustrative V2 model and do not benchmark hardware.",
+  "sourceParent": "a858794e181fd6cb6249e5ad07815f55c1c76672",
+  "asset": {
+    "wireBytes": 504132,
+    "sha256": "35b99bcb553c16a25960f98ea540a6313c315d622e5cc75f9aa27b2512ff6382",
+    "existingExactBuildingAtlas": "q12203/71",
+    "retiredTriangleCount": 37,
+    "sourceRoleVertices": [
+      4533,
+      4644
+    ]
+  },
+  "scopeOfOpticalTest": {
+    "companionWindow": "No fixed camera or altered clock; exact A/B same submitted pose with A/B/A redraw, owner range retained",
+    "artSuppressionOrnaments": "No joining of lake, ground, tree or road study; same original underlying world.",
+    "independentScreenTriangleUnionAtZeroPad": {
+      "approachChangedOnOldAndNewEnvelopes": 2498,
+      "approachOldOnly": 923,
+      "closeChangedOnOldAndNewEnvelopes": 5341,
+      "closeOldOnly": 2093,
+      "noChangedOutsidePriorOrAuthoredUnion": true,
+      "notPerSampleDepthOwnership": true
+    }
+  },
+  "realFlightCaptured": {
+    "approach": {
+      "variantRole": {
+        "tiles": [
+          "q12203"
+        ],
+        "slot71": true,
+        "sourceRange": [
+          4533,
+          4644
+        ]
+      },
+      "changed": 3421,
+      "strong": 3421,
+      "alpha": 0,
+      "restore": 0,
+      "shots": [
+        {
+          "draws": 207,
+          "triangles": 341613,
+          "glError": 0,
+          "sha": "6380256559e2bb7ce4c99b0b755d4d534d5822da8ac198644896176e6b4f5d17"
+        },
+        {
+          "draws": 202,
+          "triangles": 316797,
+          "glError": 0,
+          "sha": "140ba561c5180cec42c85f42dc35f2d5fd09b330f6d7be47423cf2fbcadf822d"
+        },
+        {
+          "draws": 207,
+          "triangles": 341613,
+          "glError": 0
+        }
+      ],
+      "sizes": [
+        1200,
+        760,
+        4
+      ],
+      "sim": [
+        9720.00803563779,
+        116.96523462962357,
+        9133.535082792732
+      ],
+      "eye": [
+        9720.624683908865,
+        121.12916754291736,
+        9111.56891247467
+      ],
+      "view": [
+        -0.9994303647441605,
+        -0.003548196452087532,
+        0.03356123253534249,
+        0,
+        -1.7347234759768063e-18,
+        0.9944577344177401,
+        0.10513712216308567,
+        0,
+        -0.03374827443520539,
+        0.1050772323516041,
+        -0.9938912562317733,
+        0,
+        10022.58720157361,
+        -1043.3855952148701,
+        8716.937355170894,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "existingWater": true,
+      "mode": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "camera": "Chase",
+      "physicsHeading": 3.1782445678816735,
+      "groundY": -0.055
+    },
+    "close": {
+      "variantRole": {
+        "tiles": [
+          "q12203"
+        ],
+        "slot71": true,
+        "sourceRange": [
+          4533,
+          4644
+        ]
+      },
+      "changed": 7434,
+      "strong": 7434,
+      "alpha": 0,
+      "restore": 0,
+      "shots": [
+        {
+          "draws": 207,
+          "triangles": 349785,
+          "glError": 0,
+          "sha": "4fabf4e07e97cc01a454249fc876c1475486db808102665463086e00765a69f9"
+        },
+        {
+          "draws": 202,
+          "triangles": 324969,
+          "glError": 0,
+          "sha": "98bf069d0a2a933bb9abe836dad7ae92f5446f2324a91b1d724f2798d188aaca"
+        },
+        {
+          "draws": 207,
+          "triangles": 349785,
+          "glError": 0
+        }
+      ],
+      "sizes": [
+        1200,
+        760,
+        4
+      ],
+      "sim": [
+        9719.98693354775,
+        117.69320874632945,
+        9237.862595183879
+      ],
+      "eye": [
+        9720.603604393244,
+        121.85704312290171,
+        9215.896901204706
+      ],
+      "view": [
+        -0.9994303223285896,
+        -0.0035483774478888104,
+        0.03356247648280975,
+        0,
+        0,
+        0.9944575811242602,
+        0.10513857210598687,
+        0,
+        -0.03374953051779896,
+        0.10507867700905411,
+        -0.9938910608451287,
+        0,
+        10026.098187283287,
+        -1055.0835435676918,
+        8820.538142391515,
+        1.0000000000000002
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "existingWater": true,
+      "mode": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "camera": "Chase",
+      "physicsHeading": 3.1782445678816735,
+      "groundY": 3.199543709701825
+    },
+    "offscreen": {
+      "variantRole": {
+        "tiles": [
+          "q12203"
+        ],
+        "slot71": true,
+        "sourceRange": [
+          4533,
+          4644
+        ]
+      },
+      "changed": 0,
+      "strong": 0,
+      "alpha": 0,
+      "restore": 0,
+      "shots": [
+        {
+          "draws": 201,
+          "triangles": 342610,
+          "glError": 0,
+          "sha": "9d1db1f1489e3fe8779957f034297c8b7950ba2d5a7203abf6cadba3bdff21d9"
+        },
+        {
+          "draws": 201,
+          "triangles": 342647,
+          "glError": 0,
+          "sha": "9d1db1f1489e3fe8779957f034297c8b7950ba2d5a7203abf6cadba3bdff21d9"
+        },
+        {
+          "draws": 201,
+          "triangles": 342610,
+          "glError": 0
+        }
+      ],
+      "sizes": [
+        1200,
+        760,
+        4
+      ],
+      "sim": [
+        9719.943493818868,
+        119.1546576492953,
+        9446.551315217901
+      ],
+      "eye": [
+        9720.56020218279,
+        123.31834497496233,
+        9424.586933973398
+      ],
+      "view": [
+        -0.9994302361477154,
+        -0.0035487854806528587,
+        0.03356499955806942,
+        0,
+        -8.673617379884026e-19,
+        0.9944571434585757,
+        0.10514271170275848,
+        0,
+        -0.0337520825093933,
+        0.10508280518629913,
+        -0.9938905377255869,
+        0,
+        10033.12121416805,
+        -1078.5006589145887,
+        9027.771151564544,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "existingWater": true,
+      "mode": "flight",
+      "site": "dalvay-lake-coastal-pass",
+      "camera": "Chase",
+      "physicsHeading": 3.1782445678816735,
+      "groundY": 4.885666832775665
+    }
+  },
+  "protectedExterior": {
+    "approach": {
+      "exteriorRgb": 0,
+      "rgb": 3421,
+      "greaterThan2": 3421,
+      "scopePixelsWith3PxAAPad": 4806
+    },
+    "close": {
+      "exteriorRgb": 0,
+      "rgb": 7434,
+      "greaterThan2": 7434,
+      "scopePixelsWith3PxAAPad": 9584
+    },
+    "offscreen": {
+      "exteriorRgb": 0,
+      "rgb": 0
+    }
+  },
+  "nativeAdmissionAndFallbacks": {
+    "cold": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "dalvay-lake-coastal-pass",
+        "art": "stock",
+        "start": [
+          9720.179525145351,
+          null,
+          8081.484494248333
+        ],
+        "samples": 4
+      },
+      "last": {
+        "z": 8107.063941274095,
+        "art": "authored",
+        "water": null
+      },
+      "artRequests": 1,
+      "moduleRequests": 1,
+      "expectedFaults": [],
+      "first": {
+        "z": 8098.343104755915,
+        "art": "authored",
+        "r": {
+          "variantRole": {
+            "tiles": [
+              "q12203"
+            ],
+            "slot71": true,
+            "sourceRange": [
+              4533,
+              4644
+            ]
+          },
+          "changed": 79,
+          "strong": 79,
+          "alpha": 0,
+          "restore": 0,
+          "shots": [
+            {
+              "draws": 207,
+              "triangles": 294201,
+              "glError": 0
+            },
+            {
+              "draws": 202,
+              "triangles": 269385,
+              "glError": 0
+            },
+            {
+              "draws": 207,
+              "triangles": 294201,
+              "glError": 0
+            }
+          ],
+          "sizes": [
+            780,
+            500,
+            4
+          ],
+          "sim": [
+            9720.177705556674,
+            109.97842653940178,
+            8098.343104755915
+          ],
+          "eye": [
+            9720.79378992315,
+            114.16675301300897,
+            8077.248220711353
+          ],
+          "view": [
+            -0.9993991919637631,
+            -0.0037483555428506174,
+            0.03445584033079484,
+            0,
+            -1.3010426069826047e-18,
+            0.9941346784607975,
+            0.10814916126187496,
+            0,
+            -0.034659127256421896,
+            0.10808418437667656,
+            -0.9935373943568765,
+            0,
+            9994.903832858903,
+            -950.0829229576832,
+            7677.762993482751,
+            1
+          ],
+          "projection": [
+            1.285698530935269,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "existingWater": true
+        }
+      }
+    },
+    "missing": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "dalvay-lake-coastal-pass",
+        "art": "stock",
+        "start": [
+          9720.179525145351,
+          null,
+          8081.484494248333
+        ],
+        "samples": 4
+      },
+      "last": {
+        "z": 8250.125742808752,
+        "art": "stock",
+        "water": null
+      },
+      "artRequests": 1,
+      "moduleRequests": 1,
+      "expectedFaults": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "detail": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "dalvay-lake-coastal-pass",
+        "art": "stock",
+        "start": [
+          9720.179525145351,
+          null,
+          8081.484494248333
+        ],
+        "samples": 4
+      },
+      "last": {
+        "z": 8239.073872332774,
+        "art": "stock",
+        "water": null
+      },
+      "artRequests": 0,
+      "moduleRequests": 0,
+      "expectedFaults": []
+    },
+    "stock": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "dalvay-lake-coastal-pass",
+        "art": "stock",
+        "start": [
+          9720.179525145351,
+          null,
+          8081.484494248333
+        ],
+        "samples": 4
+      },
+      "last": {
+        "z": 8237.328877312508,
+        "art": "stock",
+        "water": null
+      },
+      "artRequests": 0,
+      "moduleRequests": 0,
+      "expectedFaults": []
+    },
+    "nosupport": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "dalvay-lake-coastal-pass",
+        "art": "stock",
+        "start": [
+          9720.179525145351,
+          null,
+          8081.484494248333
+        ],
+        "samples": 0
+      },
+      "last": {
+        "z": 8239.655539589656,
+        "art": "stock",
+        "water": null
+      },
+      "artRequests": 0,
+      "moduleRequests": 0,
+      "expectedFaults": []
+    },
+    "foreign": {
+      "initial": {
+        "phase": "dispatch",
+        "site": "queens-coastal-grass",
+        "art": "stock",
+        "start": [
+          15589.738698907184,
+          null,
+          9202.383612920234
+        ],
+        "samples": 4
+      },
+      "last": {
+        "z": 9358.635786306588,
+        "art": "stock",
+        "water": null
+      },
+      "artRequests": 0,
+      "moduleRequests": 0,
+      "expectedFaults": []
+    }
+  },
+  "lateAbortedSource": {
+    "initial": {
+      "phase": "dispatch",
+      "site": "dalvay-lake-coastal-pass",
+      "art": "stock",
+      "start": [
+        9720.179525145351,
+        109.945,
+        8081.484494248333
+      ],
+      "samples": 4
+    },
+    "last": {
+      "z": 8518.978866665975,
+      "art": "stock",
+      "water": null
+    },
+    "artRequests": 1,
+    "moduleRequests": 1,
+    "expectedFaults": [],
+    "failed": [
+      "net::ERR_ABORTED"
+    ],
+    "responses": [],
+    "slowReleaseState": "continued",
+    "camera1000mBoundaryZ": 8480.35
+  },
+  "coldVisualReview": {
+    "boundsPixels": [
+      365,
+      228,
+      380,
+      235
+    ],
+    "changedPixels": 79,
+    "fullFrameMeanAbsoluteRgbCodes": 0.00764,
+    "testedColdApproachOnly": true
+  },
+  "renderPathLimits": "Exact scene ownership and r187 detached linked batch material contracts. No hardware timing or no-hitch claim."
+}

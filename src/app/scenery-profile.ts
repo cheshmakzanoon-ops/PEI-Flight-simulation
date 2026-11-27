@@ -509,6 +509,19 @@ export function olearyWarehouseRequested(q:URLSearchParams){
   olearyIndustrialStudyRequested(q);
 }
 
+export const DALVAY_STANDARD_ROUTE='dalvay-lake-coastal-pass';
+/** Plain local flight may use the already shipped V2. Historical lens
+ * combinations, including independent water-only shots, are unchanged. */
+export function standardDalvayExteriorRequested(q:URLSearchParams){
+ const modes=q.getAll('scenery');
+ return modes.length<=1&&modes.every(v=>v===''||v==='standard')&&q.getAll('departure').length<=1&&
+  standardComparisonQuery(q)&&!['qa','stockDalvayExterior','dalvayExteriorStudy','dalvayGlazingStudy','dalvayWaterOptics'].some(k=>q.has(k));
+}
+export function dalvayDefaultFlight(route:string,mode:string,previous:string){
+ return route===DALVAY_STANDARD_ROUTE&&(mode==='flight'||mode==='paused'||
+  ((mode==='map'||mode==='help'||mode==='credits')&&(previous==='flight'||previous==='paused')));
+}
+
 /** Optional, documentary Queens County manor exterior; never a new lake or terrain owner. */
 export function dalvayExteriorRequested(q:URLSearchParams){
  return q.has('dalvayExteriorStudy')&&!q.has('stockDalvayExterior')&&

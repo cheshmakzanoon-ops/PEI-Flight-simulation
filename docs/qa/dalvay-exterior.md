@@ -4,7 +4,7 @@ Look across Dalvay Lake on the north shore of Prince Edward Island. The hotel ha
 
 ## Fly the comparison
 
-Start **Dalvay Lake coastal pass** with Standard scenery. Append `?departure=dalvay-lake-coastal-pass&dalvayExteriorStudy` to the game address for the manor and the ordinary lake. Append `&stockDalvayExterior` to the same address to restore the original building. The separate [glazing preview](dalvay-glazing.md) adds a subtle glass response and is off by default. The optional lake reflection preview has its own `dalvayWaterOptics` switch and is not required for the building. An ordinary launch without the study, an unsupported scenery profile, unverified data or loss of either original ground tile keeps the existing building.
+Start **Dalvay Lake coastal pass** with Standard scenery. Append `?departure=dalvay-lake-coastal-pass&dalvayExteriorStudy` to the game address for the manor and the ordinary lake. Append `&stockDalvayExterior` to the same address to restore the original building. The separate [glazing preview](dalvay-glazing.md) adds a subtle glass response and is off by default. The optional lake reflection preview has its own `dalvayWaterOptics` switch and is not required for the building. On the [ordinary Standard coastal route](dalvay-exterior/standard-route.md), the same V2 can now qualify without the explicit preview flag. An unsupported scenery profile, unverified data or loss of either original ground tile keeps the existing building.
 
 ## Matched view from the lawn
 

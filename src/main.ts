@@ -92,12 +92,12 @@ import {OCEAN_Y,type Terrain} from './sim/terrain.ts';
 import { addLighthouseScenery } from './render/lighthouses.ts';
 import { addBasilica } from './render/basilica.ts';
 import { basilicaSiteSupports, mountBasilicaStudy } from './render/basilica-study-seat.ts';
-import {DALVAY,dalvaySiteSupports} from './render/dalvay-exterior-seat.ts';
+import {DALVAY,DALVAY_STANDARD_RANGE,dalvaySiteSupports} from './render/dalvay-exterior-seat.ts';
 import {SEACOW,seacowSiteSupports} from './render/seacow-exterior-seat.ts';
 import {seacowDefaultFlight,standardSeacowExteriorRequested,foundersWestRequested,FOUNDERS_WEST_ROUTE,indianRiverLensState,indianRiverLensFlight,indianRiverCanCommit,kingsRidgeLensState,kingsRidgeAirState,princeLandscapeState,PRINCE_LANDSCAPE_ROUTE} from './app/scenery-profile.ts';
 import {FOUNDERS_WEST} from './render/founders-west/authority.ts';
 import {KNIGHT_SEAT,knightGroundSupports} from './render/souris-knight-seat.ts';
-import {olearyExteriorRequested,olearyIndustrialStudyRequested,olearyWarehouseRequested,terminalWallPreviewRequested,dalvayWaterRequested,dalvayExteriorRequested,dalvayGlazingRequested,sourisKnightRequested,seacowExteriorRequested,basilicaExteriorRequested,basilicaYardSunRequested} from './app/scenery-profile.ts';
+import {olearyExteriorRequested,olearyIndustrialStudyRequested,olearyWarehouseRequested,terminalWallPreviewRequested,dalvayWaterRequested,dalvayExteriorRequested,dalvayGlazingRequested,standardDalvayExteriorRequested,dalvayDefaultFlight,sourisKnightRequested,seacowExteriorRequested,basilicaExteriorRequested,basilicaYardSunRequested} from './app/scenery-profile.ts';
 import {regularRoadGround as basilicaGround} from './render/road-contact.ts';
 import { addConfederationBridge } from './render/confederation.ts';
 import {addQuartermasterDocks,loadQuartermasterDocks} from './render/quartermaster-docks.ts';
@@ -632,11 +632,23 @@ async function run(){
     industrial?{station,industrialLink:olearyLinkPrograms(renderer,camera,scene,2,true),
      warehouse:warehouse?{row:undefined,link:olearyLinkPrograms(renderer,camera,scene,4,true)}:undefined}:undefined);
   }
-  if(dalvayExteriorRequested(options)&&dalvaySiteSupports(terrain,terrainSha,cover)){
-   const [x,z]=DALVAY.xz;
+  const explicitDalvay=dalvayExteriorRequested(options);
+  // Use the raw query for new defaults, so profile parsing cannot hide an
+  // incompatible review switch. Current UI route, not the URL, owns admission.
+  const standardDalvay=!explicitDalvay&&standardDalvayExteriorRequested(new URLSearchParams(location.search))&&
+   !showBuildingShadows&&supportsOpaqueCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4;
+  if((explicitDalvay||standardDalvay)&&dalvaySiteSupports(terrain,terrainSha,cover)){
+   const [x,z]=DALVAY.xz,eyeRange=()=>Math.hypot(camera.position.x-x,camera.position.z-z);
+   const standard=standardDalvay?{
+    scope:()=>dalvayDefaultFlight(SITES[activeSite].id,ui.mode,ui.previous)&&f.status==='flying'&&
+     f.y<DALVAY_STANDARD_RANGE.maxY&&Math.hypot(f.x-x,f.z-z)<DALVAY_STANDARD_RANGE.near&&
+     eyeRange()<DALVAY_STANDARD_RANGE.near&&!gl.isContextLost()&&!renderer.getRenderTarget()&&!renderer.xr.isPresenting&&camera.layers.mask===1,
+    early:()=>eyeRange()>DALVAY_STANDARD_RANGE.prepare,
+    link:olearyLinkPrograms(renderer,camera,scene,5,true),
+   }:undefined;
    v.enableDalvayExterior({verifiedCover:async()=>await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded,
-    resident:()=>Math.hypot(camera.position.x-x,camera.position.z-z)<3200&&camera.position.y<435&&world.dalvayGroundReady()},
-    dalvayGlazingRequested(options)&&daylight&&certifiedSky?.texture===sky?
+    resident:()=>eyeRange()<3200&&camera.position.y<435&&world.dalvayGroundReady(),standard},
+    explicitDalvay&&dalvayGlazingRequested(options)&&daylight&&certifiedSky?.texture===sky?
      {verified:certifiedSky,panorama:sky,scene,viewer:camera,engine:renderer,report:active=>{dalvayGlazingActive=active;}}:undefined);
   }
   const explicitSeacow=seacowExteriorRequested(options);

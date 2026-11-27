@@ -1,4 +1,5 @@
 import type {Mesh,BufferAttribute} from 'three';
+import type {OlearyLink} from './oleary-railway/program-gate.ts';
 import type {Terrain} from '../sim/terrain.ts';import type {Cover} from '../sim/cover.ts';
 import {standardLandAtlasMatches} from './meadow-standard.ts';
 export const DALVAY={id:'q12203',ordinal:71,rows:242,offset:2933919,bytes:10736,bounds:[-63.120632,46.41127,-63.06489,46.423054],
@@ -10,7 +11,10 @@ export const DALVAY={id:'q12203',ordinal:71,rows:242,offset:2933919,bytes:10736,
  normal:'d635502240b75ed5296edeb01e28dac7664339725c570b0f216847055e3fec2e'} as const;
 /** All six original full-cohort attributes; no sibling is resampled or rewritten. */
 const originalAttributes={"position":[3,"29f9b0864ca13f49c05afa22768c8da9f8fee5c3f8c1b11c3024213936ce8842"],"uv":[2,"0dd31c16d183b2d752d6dcd45d963b656163f4681e4c3f52344b4f54dcf459fe"],"color":[3,"9afd0395dee8d6b91334f6eeeaec943c9436c3f1de4252e9c83918c820c81c93"],"topFlag":[1,"2807fd5c6a5c812cc0997d81e94b5e9a824c631200ef005f1822f4c60842d3ea"],"facadeStyle":[1,"f9d90d4955ecf71daab59dea5bbb997fce361cff7270366c00960c4192f75b10"],"normal":[3,"d635502240b75ed5296edeb01e28dac7664339725c570b0f216847055e3fec2e"]} as const;
-export type DalvaySeat={resident:()=>boolean;verifiedCover:()=>Promise<boolean>};
+export const DALVAY_STANDARD_RANGE={near:1800,prepare:1000,maxY:435} as const;
+export type DalvaySeat={resident:()=>boolean;verifiedCover:()=>Promise<boolean>;
+ /** Ordinary route only. Never acquire or first replace the owner close to the lens. */
+ standard?:{scope:()=>boolean;early:()=>boolean;link:OlearyLink}};
 export function dalvaySiteSupports(t:Terrain,sha:string|undefined,c:Cover){
  const [x,z]=DALVAY.xz;
  if(!standardLandAtlasMatches(t,sha,c)||t.surveyGrids.some(q=>q.spec.tileX===17&&(q.spec.tileZ===12||q.spec.tileZ===13))||

@@ -10,8 +10,12 @@ export function dalvayDrawCenter(toWorld:typeof project=project){
 }
 const stockCenter=dalvayDrawCenter();
 type Art=NonNullable<Awaited<ReturnType<typeof import('./dalvay-art-packet.ts')['loadDalvay']>>>;
-type Loader=(signal:AbortSignal)=>Promise<Art|undefined>;
-const defaultLoad:Loader=async signal=>(await import('./dalvay-art-packet.ts')).loadDalvay((import.meta.env?.BASE_URL??'/')+'art/',signal);
+type Loader=(signal:AbortSignal,eligible?:()=>boolean)=>Promise<Art|undefined>;
+const defaultLoad:Loader=async(signal,eligible)=>{
+ const m=await import('./dalvay-art-packet.ts');
+ return signal.aborted||eligible?.()===false?undefined:m.loadDalvay((import.meta.env?.BASE_URL??'/')+'art/',signal);
+};
+const routeLeft=Symbol('Dalvay standard route withdrawn');
 /** An exact original streamed owner is always present before, during and on failed
  * admission. An asynchronous or foreign replacement never inherits its omission. */
 export class DalvaySocket{
@@ -19,7 +23,7 @@ export class DalvaySocket{
  private readonly original;private readonly material;private readonly source:()=>Promise<boolean>;private readonly originalRows:()=>boolean;
  private variant?:BufferGeometry;private ownedIndex?:BufferAttribute;
  private readonly load:Loader;private helper?:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
- private art?:Art;private tried=false;private retired=false;private request?:AbortController;
+ private art?:Art;private linked?:()=>boolean;private tried=false;private retired=false;private request?:AbortController;
  constructor(scene:Scene,owner:Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:DalvaySeat,load:Loader=defaultLoad){
   this.scene=scene;this.owner=owner;this.seat=seat;this.original=owner.geometry;this.material=owner.material;this.load=load;
   const attrs=Object.entries(this.original.attributes).map(([name,val])=>{const a=val as BufferAttribute;return {name,a,array:a.array,version:a.version};});
@@ -38,25 +42,41 @@ export class DalvaySocket{
  }
  sync(){
   if(this.retired)return;
-  const ok=this.present()&&this.seat.resident();
-  if(this.helper){this.helper.sync(ok&&this.art?.group.parent===this.scene&&this.art.intact());
-   if(this.helper.visible&&!this.variant){this.variant=this.owner.geometry;this.ownedIndex=this.variant.index!;}return;}
-  if(!ok||this.tried||this.owner.geometry!==this.original)return;
+  const standard=this.seat.standard,scope=!standard||standard.scope(),early=scope&&(!standard||standard.early());
+  if(!scope)this.request?.abort(routeLeft);
+  else if(!early)this.request?.abort();
+  const ok=scope&&this.present()&&this.seat.resident();
+  if(this.helper){
+   this.helper.sync(ok&&(early||this.helper.visible)&&(!standard||this.linked?.()===true)&&
+    this.art?.group.parent===this.scene&&this.art.intact());
+   if(this.helper.visible&&!this.variant){this.variant=this.owner.geometry;this.ownedIndex=this.variant.index!;}
+   return;
+  }
+  if(!ok||!early||this.tried||this.owner.geometry!==this.original)return;
   this.tried=true;void this.prepare();
  }
  private async prepare(){
+  const standard=this.seat.standard;
   const controller=this.request=new AbortController(),signal=controller.signal,timer=setTimeout(()=>controller.abort(),5400);
-  const present=()=>!signal.aborted&&this.present()&&this.owner.geometry===this.original;
+  const present=()=>!signal.aborted&&this.present()&&this.owner.geometry===this.original&&
+   (!standard||(standard.scope()&&standard.early()));
+  let unowned:Art|undefined;
   try{
    if(!await this.source()||!present()||!await this.seat.verifiedCover()||!present())return;
-   if(!this.seat.resident()){this.tried=false;return;} // The source can qualify again only on a later genuine close approach.
-   const art=await this.load(signal);if(!art)return;
-   if(!present()){art.dispose();return;}
-   const helper=authenticatedOwnerVariant(this.owner,art.group,this.owner.userData.beaconTriangles,DALVAY.proof);
-   if(!helper||!art.intact()){helper?.dispose();art.dispose();return;}
-   this.art=art;this.helper=helper;this.scene.add(art.group);this.sync();
+   if(!this.seat.resident()){this.tried=false;return;} // Later genuine early approach only in Standard.
+   const supported=()=>present()&&this.seat.resident();
+   unowned=await this.load(signal,standard?supported:undefined);
+   if(!unowned||!present()||standard&&!this.seat.resident())return;
+   const linked=standard?await standard.link(unowned.group,signal):undefined;
+   if(standard&&(!present()||!this.seat.resident()||linked?.()!==true))return;
+   const helper=authenticatedOwnerVariant(this.owner,unowned.group,this.owner.userData.beaconTriangles,DALVAY.proof);
+   if(!helper||!unowned.intact()){helper?.dispose();return;}
+   this.art=unowned;unowned=undefined;this.linked=linked;this.helper=helper;this.scene.add(this.art.group);this.sync();
   }catch{/** Failed art is never a reason to omit the complete stock mesh. */}
-  finally{clearTimeout(timer);if(this.request===controller)this.request=undefined;}
+  finally{
+   unowned?.dispose();clearTimeout(timer);
+   if(this.request===controller){this.request=undefined;if(signal.reason===routeLeft)this.tried=false;}
+  }
  }
  dispose(){
   if(this.retired)return;this.retired=true;this.request?.abort();this.helper?.dispose();this.art?.dispose();

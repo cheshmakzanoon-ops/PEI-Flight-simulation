@@ -20,7 +20,7 @@
 
 The [Panmure Head lighthouse study](qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
-**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. The separate [manor exterior preview](qa/dalvay-exterior.md) adds its gables, covered veranda and rounded dining room.
+**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. On the [normal Standard route](qa/dalvay-exterior/standard-route.md), the admitted manor replaces the old generic building with gables, a covered veranda and the rounded dining room.
 
 **Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Standard now shows the [authored white octagonal tower, red gallery and glazed lantern](qa/seacow-standard/) on this route. Use `?stockSeacowExterior` to compare the old generic building. The shore and nearby building are unchanged.
 
