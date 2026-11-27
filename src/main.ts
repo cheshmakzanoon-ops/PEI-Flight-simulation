@@ -1168,18 +1168,30 @@ async function run(){
    SITES[activeSite].id==='cysu'&&(ui.mode==='flight'||ui.mode==='paused'||((ui.previous==='flight'||ui.previous==='paused')&&
     (ui.mode==='map'||ui.mode==='help'||ui.mode==='credits'))));
   const endRidge=world.beginKingsRidgeDraw(camera);
-  const activeRiver=standardRiverSeat?.activeCohort,endRiver=activeRiver?.beginDraw();
-  if(activeRiver&&!endRiver)standardRiverSeat?.closeFlight();
-  const endPrince=world.beginPrinceLandscapeDraw(),endCapeSky=world.capeTryonSkySeat?.begin(camera);
-  let endRim:undefined|(()=>void),endBorden:undefined|(()=>void);
-  try{if(datedStandReview){
+  const activeRiver=standardRiverSeat?.activeCohort;
+  let endRiver:undefined|(()=>void),endPrince:undefined|(()=>void),endCapeSky:undefined|(()=>void),
+      endRim:undefined|(()=>void),endBorden:undefined|(()=>void);
+  try{
+   endRiver=activeRiver?.beginDraw();
+   if(activeRiver&&!endRiver)standardRiverSeat?.closeFlight();
+   endPrince=world.beginPrinceLandscapeDraw();
+   endCapeSky=world.capeTryonSkySeat?.begin(camera);
+   if(datedStandReview){
    let end:undefined|(()=>void);
    try{end=datedStandReview.beforeFrame({site:SITES[activeSite].id,mode:ui.mode,view,now});}
    catch{datedStandReview.dispose();}
    try{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);renderer.render(scene,camera);}
    finally{endBorden?.();endBorden=undefined;endRim?.();endRim=undefined;end?.();}
   }else{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);drawWorld();}
-  }finally{endBorden?.();endRim?.();endCapeSky?.();endPrince?.();endRiver?.();endRidge?.();}
+  }finally{
+   try{endBorden?.();}finally{
+    try{endRim?.();}finally{
+     try{endCapeSky?.();}finally{
+      try{endPrince?.();}finally{try{endRiver?.();}finally{endRidge?.();}}
+     }
+    }
+   }
+  }
   if(world.tryonRockState==='pending'&&roads&&buildings&&mainland&&world.detailState().loading===0)
    void world.prepareTryonRock(camera);
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);

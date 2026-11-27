@@ -60,11 +60,12 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape,failAt,industrial=false)=>{
+ const paint=(cape,failAt,industrial=false,river=false)=>{
   const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
    activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined};
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
+  if(river)scope.standardRiverSeat={activeCohort:{beginDraw:()=>begin('river')},closeFlight:()=>calls.push('close river')};
   scope.world={
    beginKingsRidgeDraw:c=>{assert.equal(c,scope.camera);return begin('ridge');},
    beginPrinceLandscapeDraw:()=>begin('prince'),
@@ -82,7 +83,7 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
    assert.equal(scene,scope.scene);assert.equal(camera,scope.camera);calls.push('render');
    if(failAt==='render')throw error;
   }};
-  if(failAt==='rim'||failAt==='borden'||failAt==='render')assert.throws(()=>script.runInNewContext(scope),e=>e===error);
+  if(['prince','rim','borden','render'].includes(failAt))assert.throws(()=>script.runInNewContext(scope),e=>e===error);
   else script.runInNewContext(scope);
   return calls;
  };
@@ -96,6 +97,8 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  assert.deepEqual(paint(false,'borden'),[...lead,'begin rim','begin borden','end rim',...tail]);
  assert.deepEqual(paint(true,'borden'),[...lead,'begin cape','begin rim','begin borden','end rim','end cape',...tail]);
  assert.deepEqual(paint(false,'rim'),[...lead,'begin rim',...tail]);
+ assert.deepEqual(paint(false,'prince',false,true),['begin ridge','begin river','begin prince','end river','end ridge']);
+ assert.deepEqual(paint(false,'render',false,true),['begin ridge','begin river','begin prince',...wholePaint,'end prince','end river','end ridge']);
  assert.deepEqual(paint(true,'rim'),[...lead,'begin cape','begin rim','end cape',...tail]);
  for(const failAt of [undefined,'render']){
   assert.deepEqual(paint(false,failAt,true),[...lead,'begin rim','begin borden','begin industrial','render',
