@@ -1,0 +1,2 @@
+// Exact 2020 source interior patch; no physical roof edge, historic trim or absolute stage-floor inference.
+export const MCLEAN_SUNROOM_INNER={"sourceSHA":"a5ffbcd72e171e0bf87220fa5c56a6fcd0b5c60d2702bfa1dc145341960cd584","sourceFit":"668e9fd4e3ae31d67cbd101ada13c04b2ecc5b777a213332bc26ac978fc9c5cc","vertices":[[0.6,16.425091229004043,-5.28],[4.6,16.361476884468097,-5.28],[4.6,17.239738716614507,-2.38],[0.6,17.303353061150453,-2.38]],"coreAreaM2":11.599999999999998,"absoluteYBasis":"CGVD2013","renderCutY":23.8,"historicalPhotoHasNoSizeAuthority":true} as const;

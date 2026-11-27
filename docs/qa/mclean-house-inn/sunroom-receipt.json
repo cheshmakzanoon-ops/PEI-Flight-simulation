@@ -1,0 +1,47 @@
+{
+  "shots": {
+    "close": {
+      "mode": "near",
+      "calls": 2,
+      "triangles": 526,
+      "error": 0,
+      "samples": 4
+    },
+    "wood": {
+      "mode": "wood",
+      "calls": 1,
+      "triangles": 480,
+      "error": 0,
+      "samples": 4
+    },
+    "restore": {
+      "mode": "near",
+      "calls": 2,
+      "triangles": 526,
+      "error": 0,
+      "samples": 4
+    },
+    "reverse": {
+      "mode": "inside",
+      "calls": 2,
+      "triangles": 526,
+      "error": 0,
+      "samples": 4
+    },
+    "mid": {
+      "mode": "mid",
+      "calls": 2,
+      "triangles": 382,
+      "error": 0,
+      "samples": 4
+    }
+  },
+  "errors": [],
+  "offsite": [],
+  "compare": {
+    "changedPixels": 49936,
+    "changedAlpha": 0,
+    "restoreRGBAExact": true
+  },
+  "pass": true
+}
