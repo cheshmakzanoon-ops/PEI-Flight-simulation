@@ -1,0 +1,30 @@
+[
+  {
+    "lon": -62.98198862542011,
+    "lat": 46.257249568527996,
+    "heading": 190,
+    "agl": 63,
+    "targetLL": [
+      -62.98221484,
+      46.25636364
+    ],
+    "baseDatumStockMetres": [
+      15,
+      20
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-18-15s",
+    "owners": [
+      "18-15",
+      "18-16"
+    ],
+    "axis": "z"
+  }
+]

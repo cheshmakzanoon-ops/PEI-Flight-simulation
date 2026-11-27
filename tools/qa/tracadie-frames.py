@@ -71,6 +71,7 @@ CENTRAL=[
 OUTER=[
  ('edge-5-11s',5,11,'z',336,370,None),
  ('edge-23-17s',23,17,'z',142,176,None),
+ ('edge-18-15s',18,15,'z',476,510,None),
 ]
 EXACT_EDGE_VIEWS=set()
 for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER:

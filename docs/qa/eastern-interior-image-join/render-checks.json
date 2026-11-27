@@ -1,0 +1,318 @@
+{
+  "baseline": "6dc54ff5822bdafb15a96b81c9237d72e226302d",
+  "scope": "Native software GL 840\u00d7540, no hardware timing or ground survey claims.",
+  "fixedTests": {
+    "edge-18-15s": {
+      "edge": "18-15 / 18-16",
+      "heightAGL": 44,
+      "old": {
+        "draws": 40,
+        "tris": 310907
+      },
+      "pixelGate": {
+        "changed": 24120,
+        "over2": 19441,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 64059
+      },
+      "edgeContrast": {
+        "samples": 64,
+        "medianOld": 42.94356346130371,
+        "medianArt": 3.252984642982483,
+        "oldP90": 58.356052780151366,
+        "artP90": 4.804371452331543
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-18-15s-reciprocal": {
+      "edge": "18-15 / 18-16",
+      "heightAGL": 38,
+      "old": {
+        "draws": 52,
+        "tris": 289011
+      },
+      "pixelGate": {
+        "changed": 29381,
+        "over2": 23449,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 77427
+      },
+      "edgeContrast": {
+        "samples": 67,
+        "medianOld": 43.98188400268555,
+        "medianArt": 3.138350486755371,
+        "oldP90": 58.06285552978515,
+        "artP90": 4.970953178405762
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-18-15s-high": {
+      "edge": "18-15 / 18-16",
+      "heightAGL": 550,
+      "old": {
+        "draws": 19,
+        "tris": 280109
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-18-15s-outside": {
+      "edge": "18-15 / 18-16",
+      "heightAGL": 17,
+      "old": {
+        "draws": 17,
+        "tris": 303405
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-18-15s-flipped": {
+      "edge": "18-15 / 18-16",
+      "heightAGL": 17,
+      "old": {
+        "draws": 15,
+        "tris": 269233
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    }
+  },
+  "identicalSkyMarkerPixels": 453600,
+  "finalOnlyPNG": {
+    "forward": {
+      "old": "bacd5d52c1c548309386e402390270c25c5620596db1d80953052bb652defdef",
+      "art": "24ec22f2c70c3028568ede6bfc227695c6484bef936b8b7a0e132564fd20243f",
+      "idA": "f2dd01f781ee218095398fd9d6fbc46753d27af17374ae0250e7614d46942916",
+      "idB": "c51ce07d170de294f3ef0763430a64b2030dada784fd058ad74275f044fb263f"
+    },
+    "-reciprocal": {
+      "old": "8d810f53a41d3e9df4f0f45b5f243dd5bb6926688f5e0c61d003dfd6182c0e16",
+      "art": "309c71d8536839ec36e258937ce171eb3ead8ddc545a0d2bee8cbc293af0c3c6",
+      "idA": "430e658a2c1582b79179bfbac1d911053b093766eb4789bc7ca11ba90c8fcda2",
+      "idB": "0b518a7a237d19be51d22991a2862f29ac7c3b8943161b324c50bcfcdb32fd9c"
+    }
+  },
+  "movingChase": [
+    {
+      "pos": [
+        16733.77163092886,
+        78.40703158958397,
+        26994.14073344069
+      ],
+      "eye": [
+        16737.04300886829,
+        82.60207880751243,
+        26975.03535443305
+      ],
+      "heading": 3.316125578789226,
+      "roll": 0,
+      "size": [
+        840,
+        540
+      ],
+      "samples": 4,
+      "glError": 0,
+      "strong": 11307,
+      "changed": 15332,
+      "outside": 0,
+      "scope": 36501,
+      "alpha": 0,
+      "restoreBytes": 0,
+      "counts": [
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ]
+      ],
+      "travelM": 9.83236910341093
+    },
+    {
+      "pos": [
+        16733.0585425695,
+        78.42242375681435,
+        26999.297402034663
+      ],
+      "eye": [
+        16736.505776326336,
+        82.61232075398463,
+        26978.920345266266
+      ],
+      "heading": 3.316125578789226,
+      "roll": 0,
+      "size": [
+        840,
+        540
+      ],
+      "samples": 4,
+      "glError": 0,
+      "strong": 8147,
+      "changed": 11842,
+      "outside": 0,
+      "scope": 29280,
+      "alpha": 0,
+      "restoreBytes": 0,
+      "counts": [
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ],
+        [
+          165,
+          334452
+        ]
+      ],
+      "travelM": 15.03810881993482
+    },
+    {
+      "pos": [
+        16728.620940166624,
+        78.59034490246276,
+        27031.386789038195
+      ],
+      "eye": [
+        16732.50178959214,
+        82.74879382479216,
+        27007.87435761268
+      ],
+      "heading": 3.316125578789226,
+      "roll": 0,
+      "size": [
+        840,
+        540
+      ],
+      "samples": 4,
+      "glError": 0,
+      "strong": 0,
+      "changed": 0,
+      "outside": 0,
+      "scope": 0,
+      "alpha": 0,
+      "restoreBytes": 0,
+      "counts": [
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ]
+      ],
+      "travelM": 47.43287804796862
+    },
+    {
+      "pos": [
+        16723.865644527512,
+        78.82527280542296,
+        27065.772367714715
+      ],
+      "eye": [
+        16727.61822768048,
+        82.9830576833531,
+        27043.187624831276
+      ],
+      "heading": 3.316125578789226,
+      "roll": 0,
+      "size": [
+        840,
+        540
+      ],
+      "samples": 4,
+      "glError": 0,
+      "strong": 0,
+      "changed": 0,
+      "outside": 0,
+      "scope": 0,
+      "alpha": 0,
+      "restoreBytes": 0,
+      "counts": [
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ],
+        [
+          164,
+          330584
+        ]
+      ],
+      "travelM": 82.14571223803783
+    }
+  ]
+}

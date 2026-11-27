@@ -1,0 +1,26 @@
+[
+  {
+    "name": "edge-18-15s",
+    "mode": "normal",
+    "flightMeters": 152.742,
+    "alongMeters": 152.637,
+    "crossMeters": 5.667,
+    "groundClearance": 61.503,
+    "edge": {
+      "edge": "18-15 / 18-16",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  }
+]
