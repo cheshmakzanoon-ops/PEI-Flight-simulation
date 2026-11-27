@@ -1,0 +1,240 @@
+{
+  "viewport": [
+    660,
+    418
+  ],
+  "profile": "ordinary Standard; no legacy lens or QA URL flag",
+  "renderer": "Chromium WebGL 2, SwiftShader",
+  "method": "Fixed-step neutral Chase. Each scored pair uses the same actual camera, scene and stock terrain shader. The probe brackets only the existing terrain draw to isolate the old and measured geometry; omitted transit submissions do not omit simulation steps. The two color-marker pairs delimit the affected terrain in both submissions; this is not a hardware benchmark.",
+  "positions": {
+    "21": [
+      32075.991345215767,
+      6556.136121800039,
+      126.52405137084928,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      -0.055,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "41": [
+      32090.67004013396,
+      6660.33999003778,
+      127.20807485166067,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      -0.055,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "51": [
+      32098.010876599903,
+      6712.456091110617,
+      127.54883947128637,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      -0.055,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "81": [
+      32120.03883802627,
+      6868.856266915896,
+      128.57915750562174,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      0.560643496252136,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "95": [
+      32130.321058664347,
+      6941.866852017043,
+      129.0647653652447,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      9.765467397609575,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "96": [
+      32131.05555833078,
+      6947.082420288748,
+      129.09956099380642,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      7.251076599879032,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ],
+    "99": [
+      32133.25909990986,
+      6962.729530223222,
+      129.20403181101864,
+      true,
+      [
+        "kings-coast-dry-crown-2020"
+      ],
+      3.249113942592547,
+      {
+        "wanted": 5,
+        "ready": 5,
+        "loading": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    ]
+  },
+  "frames": {
+    "21": {
+      "renderedMeasuredGeometry": true,
+      "change": {
+        "strong": 2427,
+        "alpha": 0,
+        "outside": 0,
+        "covered": 27963,
+        "stockRestored": true
+      },
+      "draws": [
+        208,
+        208
+      ],
+      "triangles": [
+        252172,
+        262196
+      ],
+      "pngSha256": {
+        "stock": "5ff81213273275e56c2a3dfd29d686642324ee770a0fd8db51f369ee2d987c30",
+        "active": "923266f2db62f03b9b3db4cb3d35308c9bca1d6eda2761b7789ce8e6af72ff87",
+        "restored": "5ff81213273275e56c2a3dfd29d686642324ee770a0fd8db51f369ee2d987c30",
+        "oldA": "614a1d663e8cb4781d0880055cb445576e65b2e6acf9bd6afe352e55cc55f8e7",
+        "oldB": "dcb2061d2c7f0db141d895993d2aa7afbfd4d0e2b9394a73c73b3b9376bf1a1a",
+        "newA": "7f0685bb77ca585efd5374dff22eb096cf9a9422ed50ee9f588eb60f02bc75ca",
+        "newB": "e68b7967c929b0c3879db21a127112a60ec98a3f335570d6f4de46ea5aea7176"
+      }
+    },
+    "41": {
+      "renderedMeasuredGeometry": true,
+      "change": {
+        "strong": 5146,
+        "alpha": 0,
+        "outside": 0,
+        "covered": 61063,
+        "stockRestored": true
+      },
+      "draws": [
+        208,
+        208
+      ],
+      "triangles": [
+        255280,
+        265304
+      ],
+      "pngSha256": {
+        "stock": "b773a07c740e20ca188a0615d388c52072e59144b0e7712568a9375c84326410",
+        "active": "86de2ee39ed3533e17aa91b2de6380a18253ae382ff5f4dcac295382bdde58e6",
+        "restored": "b773a07c740e20ca188a0615d388c52072e59144b0e7712568a9375c84326410",
+        "oldA": "fd63b0ebc0053182f57bb2771552b6e4fde18f7e9b147c89c6ada4c473878435",
+        "oldB": "753cf662472078ca821d341b9a61e6bbac76b3bba05828b7369c662b2211384a",
+        "newA": "eeff550c02694ce85a7ddd4e8f9878d77364bcf31a37502f966583ed244a9dac",
+        "newB": "932849972daee9aaab904469883ff7d106aa9dd05bf917d3f03ea9023e606913"
+      }
+    },
+    "51": {
+      "renderedMeasuredGeometry": true,
+      "change": {
+        "strong": 8266,
+        "alpha": 0,
+        "outside": 0,
+        "covered": 57655,
+        "stockRestored": true
+      },
+      "draws": [
+        206,
+        206
+      ],
+      "triangles": [
+        253408,
+        263432
+      ],
+      "pngSha256": {
+        "stock": "d8c16d57577894ad913ea6d1b29fe0423a6c547e8a4d241d23a824a8da805a6c",
+        "active": "a6488c998233121399acdb8a8a9f6d2c23b1f156d967821bc58301f6455665a1",
+        "restored": "d8c16d57577894ad913ea6d1b29fe0423a6c547e8a4d241d23a824a8da805a6c",
+        "oldA": "41e428000c915bd0146a0a58c2b342c19c1ff3707b827d6bc0da4490c2e498ba",
+        "oldB": "5ced0aab8d3da4b5797f004c9a49c5cafc1668201d87be0192510f7e140078dc",
+        "newA": "41e428000c915bd0146a0a58c2b342c19c1ff3707b827d6bc0da4490c2e498ba",
+        "newB": "5ced0aab8d3da4b5797f004c9a49c5cafc1668201d87be0192510f7e140078dc"
+      }
+    },
+    "81": {
+      "renderedMeasuredGeometry": false,
+      "change": {
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0,
+        "covered": 22400,
+        "stockRestored": true
+      },
+      "draws": [
+        205,
+        205
+      ],
+      "triangles": [
+        259480,
+        259480
+      ],
+      "pngSha256": {
+        "stock": "d060f1678857b153a054d484339bee0b30c65ece5d06f013371192a51871a2bf",
+        "active": "d060f1678857b153a054d484339bee0b30c65ece5d06f013371192a51871a2bf",
+        "restored": "d060f1678857b153a054d484339bee0b30c65ece5d06f013371192a51871a2bf",
+        "oldA": "79905ee6a482714ca76b6f6e2cc11a5dd1a810fdc36eb7e16136bf5c53096da3",
+        "oldB": "d45d4fe4e26424959d2fd6e73a5820eea2d944cba2bd6e180c71f9efd7d57567",
+        "newA": "79905ee6a482714ca76b6f6e2cc11a5dd1a810fdc36eb7e16136bf5c53096da3",
+        "newB": "d45d4fe4e26424959d2fd6e73a5820eea2d944cba2bd6e180c71f9efd7d57567"
+      }
+    }
+  }
+}

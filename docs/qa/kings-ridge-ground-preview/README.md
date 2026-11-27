@@ -85,3 +85,12 @@ Both surfaces change the same 24 edge heights in the coarser state
 without moving the remaining vertices or changing any of six contact
 samples. The contact sample at 32,170 m east, 6,936 m south rises by
 9.43 m while the lease is held and restores exactly when it is dropped.
+
+The [Standard Chase pixel receipt](standard-chase-receipt.json) uses
+the normal route, not the older preview switch. At the three approach
+samples, 2,427, 5,146 and 8,266 pixels changed by more than two RGB
+code values at 660 × 418. No alpha or pixels outside the changed
+terrain differed. After the ridge fell out of view, the image was
+identical to stock while surveyed ground contact remained active.
+
+![Same Chase camera: original smooth terrain and the reconstructed dry ridge](standard-chase.webp)
