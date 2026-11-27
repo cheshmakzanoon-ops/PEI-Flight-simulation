@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "poses": {
+    "front": {
+      "rgb": 224,
+      "alpha": 0,
+      "strong": 218,
+      "box": [
+        611,
+        572,
+        677,
+        606
+      ],
+      "restored": true,
+      "draws": 6,
+      "addedBodyTriangles": 80,
+      "addedFrameSubmittedTrianglesIncludingShadow": 160
+    },
+    "oblique": {
+      "rgb": 159,
+      "alpha": 0,
+      "strong": 154,
+      "box": [
+        485,
+        523,
+        522,
+        560
+      ],
+      "restored": true,
+      "draws": 6,
+      "addedBodyTriangles": 80,
+      "addedFrameSubmittedTrianglesIncludingShadow": 160
+    }
+  },
+  "pass": true
+}
