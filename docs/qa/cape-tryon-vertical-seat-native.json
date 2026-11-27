@@ -1,0 +1,2357 @@
+{
+  "sourceCommit": "b2d962f005c1fe8b04151500158cea5fd865f5e5",
+  "scope": "Detached fixed WebGL replay only. No world or flight integration.",
+  "driver": "Chromium headless shell / SwiftShader; not a hardware performance result.",
+  "pureTargetComponents": {
+    "headland-north": {
+      "old": 185,
+      "remaining": 0
+    },
+    "headland-grazing": {
+      "old": 405,
+      "remaining": 0
+    }
+  },
+  "cases": {
+    "rock": {
+      "headland-north": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "13d42ef4e1c9eee34f49801ae91cd77dbb64d6b8d66243cc469d137e9b300512",
+            "first": "954fa4f1f134c051e03bcc590a4805832b9a086074c7fc402fc206b1b2def12f",
+            "second": "6a7cd652e0025cbc95337822931d0786b093691e76b89282cd9be9ee40f067e7"
+          },
+          "after": {
+            "colour": "03a9203035409faf9765e0048531ceada02c8d1aac9c907958c201a230d9b370",
+            "first": "43573f0b210e00f46548f7d94f55fb4d1657063852b39c9881d8c5ae4d67e11f",
+            "second": "6742981677b0233a5fbcb29569276eee114cb55f8f03046a5cb42eab9209b807"
+          },
+          "rollback": {
+            "colour": "13d42ef4e1c9eee34f49801ae91cd77dbb64d6b8d66243cc469d137e9b300512",
+            "first": "954fa4f1f134c051e03bcc590a4805832b9a086074c7fc402fc206b1b2def12f",
+            "second": "6a7cd652e0025cbc95337822931d0786b093691e76b89282cd9be9ee40f067e7"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "fc311cb27c45fc8d1217dfce849a8ce727c593620e9637bf7c79574c8180ed34",
+          "new": "7a360c831fc913b6fce1762a0fedfa25b139d01580b26b0d27105bca4476e7cf",
+          "candidate": "a984f04c7502b041319581c8cdeb84418ed0716c242925d6f9048f52efc18868"
+        },
+        "candidatePixels": 257,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 693372,
+        "newSamples": 692526,
+        "candidateSamples": 846,
+        "maxRawConservationError": 1,
+        "maxRawCoverageError": 0.75,
+        "maxExistingPaletteError": 0.75,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 185,
+        "apertureCandidatePixels": 225,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": true,
+          "reason": "every exact canopy instance is outside protection",
+          "n": 775,
+          "fast": 775,
+          "gpu": "all issued input words match CPU",
+          "actual": 1
+        },
+        "gpuStates": [
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          }
+        ],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "live-rock",
+        "reason": "candidate",
+        "owners": 1,
+        "draws": 5,
+        "lastOpaque": true,
+        "diag": {
+          "water": "stock",
+          "rock": "live",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23385.86964692715,
+            55,
+            -4012.029064379131
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.9063077870366485,
+            -6.938893903907228e-18,
+            -0.422618261740703,
+            0,
+            -0.06269138436320848,
+            0.9889363528682975,
+            0.13444210762322395,
+            0,
+            0.41794256242139044,
+            0.14834045293024445,
+            -0.8962807174881608,
+            0,
+            -23385.86964692715,
+            55,
+            -4012.029064379131,
+            1
+          ],
+          "view": [
+            -0.9063077870366485,
+            -0.06269138436320852,
+            0.4179425624213906,
+            0,
+            6.938893903907233e-18,
+            0.9889363528682976,
+            0.14834045293024453,
+            0,
+            -0.42261826174070327,
+            0.13444210762322398,
+            -0.896280717488161,
+            0,
+            -22890.352516875166,
+            -981.0983988503963,
+            6169.887271373107,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 257,
+        "occupiedRgb": 0,
+        "mixedRgb": 61,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 257,
+        "pureRemoved": 196,
+        "stats": [
+          [
+            70,
+            257476
+          ],
+          [
+            71,
+            257479
+          ],
+          [
+            70,
+            257476
+          ]
+        ]
+      },
+      "headland-grazing": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "a97a74491bad73843e42227cbdacc7adc0342950448a69e72197dbbab88f7a76",
+            "first": "41652fbfb565c6f28559ad056da9d84f0cc4862c28a2449590121ea6478bd71e",
+            "second": "1f4e3d70fca244b7734b0d32ef7bdd409a825e42a6ed95ebf538ea933bf879b4"
+          },
+          "after": {
+            "colour": "51bc8554d7b6f093f743996d16400c97087ee45d750ed80142d8db1e22f248ba",
+            "first": "3c1b94d585ff28d9cd363a553986d5b36730d2ba304475cff65c73fc1d962b8e",
+            "second": "6fc291b3113d9fa7ba30e527eb47e309b050cb226fb6a20571eecb1baaed0671"
+          },
+          "rollback": {
+            "colour": "a97a74491bad73843e42227cbdacc7adc0342950448a69e72197dbbab88f7a76",
+            "first": "41652fbfb565c6f28559ad056da9d84f0cc4862c28a2449590121ea6478bd71e",
+            "second": "1f4e3d70fca244b7734b0d32ef7bdd409a825e42a6ed95ebf538ea933bf879b4"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "5686ec76281e033d4dfa07d2262bb866e55633f58a4db209d0369e05dc5f74da",
+          "new": "235fd24f5bdaee96bebafb31dd9d40aafb2c0296445f7e4a8e7d75296142e3cd",
+          "candidate": "459387f143942cedec2cdf3e88eac78b4713dcce45f797fa538288d9c1ddacb3"
+        },
+        "candidatePixels": 515,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 901438,
+        "newSamples": 899657,
+        "candidateSamples": 1781,
+        "maxRawConservationError": 1,
+        "maxRawCoverageError": 0.75,
+        "maxExistingPaletteError": 0.75,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 405,
+        "apertureCandidatePixels": 464,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": true,
+          "reason": "every exact canopy instance is outside protection",
+          "n": 971,
+          "fast": 971,
+          "gpu": "all issued input words match CPU",
+          "actual": 1
+        },
+        "gpuStates": [
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          }
+        ],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "live-rock",
+        "reason": "candidate",
+        "owners": 1,
+        "draws": 5,
+        "lastOpaque": true,
+        "diag": {
+          "water": "stock",
+          "rock": "live",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23607.800783489,
+            25,
+            -3919.8069969060252
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.7880107536067229,
+            1.734723475976807e-18,
+            0.6156614753256574,
+            0,
+            0.023661792654198675,
+            0.9992611746313143,
+            0.03028571351042933,
+            0,
+            -0.6152066090091642,
+            0.038433122101204475,
+            -0.787428551271161,
+            0,
+            -23607.800783489,
+            25,
+            -3919.8069969060252,
+            1
+          ],
+          "view": [
+            -0.7880107536067228,
+            0.023661792654198672,
+            -0.6152066090091642,
+            0,
+            6.938893903907228e-18,
+            0.9992611746313145,
+            0.03843312210120448,
+            -0.0,
+            0.6156614753256573,
+            0.030285713510429337,
+            -0.7874285512711611,
+            0,
+            -16189.926727687553,
+            652.3355095192351,
+            -17611.20383906296,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 515,
+        "occupiedRgb": 0,
+        "mixedRgb": 110,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 515,
+        "pureRemoved": 405,
+        "stats": [
+          [
+            147,
+            245649
+          ],
+          [
+            148,
+            245652
+          ],
+          [
+            147,
+            245649
+          ]
+        ]
+      },
+      "headland-east": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "956e889860852cd1dafc532553a691f5a5c6546ab405150875ed00aaa5493f68",
+            "first": "80dcbabced636c1af0505c74b592d90cc9c46a4c964ef36aba693cc47771469a",
+            "second": "3e5fad9afa2dad64b2fa2c054c4a75076ffe7c56eacfc016e25a7a388356304f"
+          },
+          "after": {
+            "colour": "956e889860852cd1dafc532553a691f5a5c6546ab405150875ed00aaa5493f68",
+            "first": "80dcbabced636c1af0505c74b592d90cc9c46a4c964ef36aba693cc47771469a",
+            "second": "3e5fad9afa2dad64b2fa2c054c4a75076ffe7c56eacfc016e25a7a388356304f"
+          },
+          "rollback": {
+            "colour": "956e889860852cd1dafc532553a691f5a5c6546ab405150875ed00aaa5493f68",
+            "first": "80dcbabced636c1af0505c74b592d90cc9c46a4c964ef36aba693cc47771469a",
+            "second": "3e5fad9afa2dad64b2fa2c054c4a75076ffe7c56eacfc016e25a7a388356304f"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "d69fbc6254c0757a6a0914af68714ae63372a754b784ebda968456ddd6df6fa9",
+          "new": "d69fbc6254c0757a6a0914af68714ae63372a754b784ebda968456ddd6df6fa9",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 815271,
+        "newSamples": 815271,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": true,
+          "reason": "every exact canopy instance is outside protection",
+          "n": 1029,
+          "fast": 1029,
+          "gpu": "all issued input words match CPU",
+          "actual": 1
+        },
+        "gpuStates": [
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          }
+        ],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "live-rock",
+        "reason": "candidate",
+        "owners": 1,
+        "draws": 5,
+        "lastOpaque": true,
+        "diag": {
+          "water": "stock",
+          "rock": "live",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23272.61965014391,
+            37,
+            -3827.902831194347
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.2249510543438633,
+            1.3877787807814457e-17,
+            -0.9743700647852356,
+            0,
+            -0.08477512026011878,
+            0.9962078701507684,
+            0.019571878666905566,
+            0,
+            0.9706751269783658,
+            0.08700505416163865,
+            -0.22409801073606972,
+            0,
+            -23272.61965014391,
+            37,
+            -3827.902831194347,
+            1
+          ],
+          "view": [
+            -0.22495105434386317,
+            -0.08477512026011878,
+            0.9706751269783659,
+            0,
+            3.122502256758253e-17,
+            0.9962078701507686,
+            0.08700505416163865,
+            0,
+            -0.9743700647852356,
+            0.019571878666905573,
+            -0.22409801073606983,
+            0,
+            -8964.994257266002,
+            -1934.8795710436916,
+            21729.10843725705,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            88,
+            223380
+          ],
+          [
+            89,
+            223383
+          ],
+          [
+            88,
+            223380
+          ]
+        ]
+      }
+    },
+    "stock": {
+      "headland-north": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "7a13ef6fd3cbd9a1324fdb06de2dfb71a75b7ae7bde37bbc4930e2b12c565776",
+            "first": "10670e87323554261535f53b918182f6331b770d4ee7eba17c9a80176526a71a",
+            "second": "19126e25d5e18be9ec767489849134533378a1380c5abf983581ed881291aac2"
+          },
+          "after": {
+            "colour": "1df4b6e15323a4b38f9189e7e6516ca446550bc1f41fca4f5735f154df08df00",
+            "first": "b93718413c3f26a542540541b1dc839a8f712530961027292aab4dcf57170500",
+            "second": "e0c4f5559c47209302d36df4617b5942627ac2d805f26d03211a28685c16385c"
+          },
+          "rollback": {
+            "colour": "7a13ef6fd3cbd9a1324fdb06de2dfb71a75b7ae7bde37bbc4930e2b12c565776",
+            "first": "10670e87323554261535f53b918182f6331b770d4ee7eba17c9a80176526a71a",
+            "second": "19126e25d5e18be9ec767489849134533378a1380c5abf983581ed881291aac2"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "fc311cb27c45fc8d1217dfce849a8ce727c593620e9637bf7c79574c8180ed34",
+          "new": "7a360c831fc913b6fce1762a0fedfa25b139d01580b26b0d27105bca4476e7cf",
+          "candidate": "a984f04c7502b041319581c8cdeb84418ed0716c242925d6f9048f52efc18868"
+        },
+        "candidatePixels": 257,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 693372,
+        "newSamples": 692526,
+        "candidateSamples": 846,
+        "maxRawConservationError": 1,
+        "maxRawCoverageError": 0.75,
+        "maxExistingPaletteError": 0.75,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 185,
+        "apertureCandidatePixels": 225,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": true,
+          "reason": "every exact canopy instance is outside protection",
+          "n": 775,
+          "fast": 775,
+          "gpu": "all issued input words match CPU",
+          "actual": 1
+        },
+        "gpuStates": [
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          }
+        ],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "stock-rock",
+        "reason": "candidate",
+        "owners": 1,
+        "draws": 5,
+        "lastOpaque": true,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23385.86964692715,
+            55,
+            -4012.029064379131
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.9063077870366485,
+            -6.938893903907228e-18,
+            -0.422618261740703,
+            0,
+            -0.06269138436320848,
+            0.9889363528682975,
+            0.13444210762322395,
+            0,
+            0.41794256242139044,
+            0.14834045293024445,
+            -0.8962807174881608,
+            0,
+            -23385.86964692715,
+            55,
+            -4012.029064379131,
+            1
+          ],
+          "view": [
+            -0.9063077870366485,
+            -0.06269138436320852,
+            0.4179425624213906,
+            0,
+            6.938893903907233e-18,
+            0.9889363528682976,
+            0.14834045293024453,
+            0,
+            -0.42261826174070327,
+            0.13444210762322398,
+            -0.896280717488161,
+            0,
+            -22890.352516875166,
+            -981.0983988503963,
+            6169.887271373107,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 257,
+        "occupiedRgb": 0,
+        "mixedRgb": 61,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 257,
+        "pureRemoved": 196,
+        "stats": [
+          [
+            70,
+            257476
+          ],
+          [
+            71,
+            257479
+          ],
+          [
+            70,
+            257476
+          ]
+        ]
+      },
+      "headland-grazing": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "3c583b432576e23f7609c198c76a0ad5c5693a89ae484c2c955178f2831d938b",
+            "first": "5aad21af8640f64d2a62f33bbec4c5dd187c57f20ac4a4d85c91acf8cf23d04d",
+            "second": "a8a3ebf20b6b075a06fac581c7b624529c60cee22e9f2cc54ec747f00b7d8396"
+          },
+          "after": {
+            "colour": "dd7217c78a34643eb4da19267c6034d4168a3962c2e1188d53b553cfc32ff116",
+            "first": "022887e7bd255d793b0933d2896a61990ee0d78cb0796dab5fc47a806b1f9088",
+            "second": "d9d66ca82bc172373c14db323ef7697a16bbfdcfb8cee626a886bf6db4c1e4cc"
+          },
+          "rollback": {
+            "colour": "3c583b432576e23f7609c198c76a0ad5c5693a89ae484c2c955178f2831d938b",
+            "first": "5aad21af8640f64d2a62f33bbec4c5dd187c57f20ac4a4d85c91acf8cf23d04d",
+            "second": "a8a3ebf20b6b075a06fac581c7b624529c60cee22e9f2cc54ec747f00b7d8396"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "0c6a546e33783d25704aced8de815c496108ee709a12c93224e1d885b477150a",
+          "new": "cab0389ae29089c046be340cfa9120c2665bb8cc841cf7e09897f61e06313769",
+          "candidate": "459387f143942cedec2cdf3e88eac78b4713dcce45f797fa538288d9c1ddacb3"
+        },
+        "candidatePixels": 515,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 901438,
+        "newSamples": 899657,
+        "candidateSamples": 1781,
+        "maxRawConservationError": 1,
+        "maxRawCoverageError": 0.75,
+        "maxExistingPaletteError": 0.75,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 405,
+        "apertureCandidatePixels": 464,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": true,
+          "reason": "every exact canopy instance is outside protection",
+          "n": 971,
+          "fast": 971,
+          "gpu": "all issued input words match CPU",
+          "actual": 1
+        },
+        "gpuStates": [
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          },
+          {
+            "lateOwner": true,
+            "sameViewport": true,
+            "depthRange": true,
+            "equal": true,
+            "depth": true,
+            "noWrite": true,
+            "noBlend": true,
+            "targetDefault": true,
+            "noStencil": true,
+            "noScissor": true,
+            "noAlphaCoverage": true,
+            "noSampleCoverage": true,
+            "clearDepthOne": true,
+            "writesAllColours": true
+          }
+        ],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "stock-rock",
+        "reason": "candidate",
+        "owners": 1,
+        "draws": 5,
+        "lastOpaque": true,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23607.800783489,
+            25,
+            -3919.8069969060252
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.7880107536067229,
+            1.734723475976807e-18,
+            0.6156614753256574,
+            0,
+            0.023661792654198675,
+            0.9992611746313143,
+            0.03028571351042933,
+            0,
+            -0.6152066090091642,
+            0.038433122101204475,
+            -0.787428551271161,
+            0,
+            -23607.800783489,
+            25,
+            -3919.8069969060252,
+            1
+          ],
+          "view": [
+            -0.7880107536067228,
+            0.023661792654198672,
+            -0.6152066090091642,
+            0,
+            6.938893903907228e-18,
+            0.9992611746313145,
+            0.03843312210120448,
+            -0.0,
+            0.6156614753256573,
+            0.030285713510429337,
+            -0.7874285512711611,
+            0,
+            -16189.926727687553,
+            652.3355095192351,
+            -17611.20383906296,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 515,
+        "occupiedRgb": 0,
+        "mixedRgb": 110,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 515,
+        "pureRemoved": 405,
+        "stats": [
+          [
+            147,
+            245649
+          ],
+          [
+            148,
+            245652
+          ],
+          [
+            147,
+            245649
+          ]
+        ]
+      },
+      "orby-protected": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "d1535310178dba08e879bd78473b257613135f507dc29f8b206b261147ae2e63",
+            "first": "4747ef91c9ed54a7b5670883c1b49d488ad9633275293c7ecdb52b08a7a57f6f",
+            "second": "e0ba79d3008c5af283386da6ebf5f15c8049348ece39df45dbbc7f807829877f"
+          },
+          "after": {
+            "colour": "d1535310178dba08e879bd78473b257613135f507dc29f8b206b261147ae2e63",
+            "first": "4747ef91c9ed54a7b5670883c1b49d488ad9633275293c7ecdb52b08a7a57f6f",
+            "second": "e0ba79d3008c5af283386da6ebf5f15c8049348ece39df45dbbc7f807829877f"
+          },
+          "rollback": {
+            "colour": "d1535310178dba08e879bd78473b257613135f507dc29f8b206b261147ae2e63",
+            "first": "4747ef91c9ed54a7b5670883c1b49d488ad9633275293c7ecdb52b08a7a57f6f",
+            "second": "e0ba79d3008c5af283386da6ebf5f15c8049348ece39df45dbbc7f807829877f"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "991748c066cd163f58b77d8e64665e82fcd6d47da16a3ca3d8551f9a13db2fa7",
+          "new": "991748c066cd163f58b77d8e64665e82fcd6d47da16a3ca3d8551f9a13db2fa7",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 773140,
+        "newSamples": 773140,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": false,
+          "reason": "candidate not evaluated"
+        },
+        "gpuStates": [],
+        "stockHash": null,
+        "groundHashes": null,
+        "groundMatrix": null,
+        "case": "stock-rock",
+        "reason": "owner-count",
+        "owners": 0,
+        "draws": 0,
+        "lastOpaque": false,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 0
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -9805.015483688023,
+            49,
+            947.1507626342111
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            0.9975640502598242,
+            0,
+            0.069756473744126,
+            0,
+            0.007786687441864474,
+            0.9937502060017911,
+            -0.11135481835143267,
+            0,
+            -0.06932051015318375,
+            0.1116267354686943,
+            0.9913294804456814,
+            0,
+            -9805.015483688023,
+            49,
+            947.1507626342111,
+            1
+          ],
+          "view": [
+            0.9975640502598242,
+            0.007786687441864472,
+            -0.06932051015318375,
+            0,
+            -1.734723475976807e-18,
+            0.9937502060017911,
+            0.11162673546869431,
+            -0.0,
+            0.069756473744126,
+            -0.11135481835143266,
+            0.9913294804456814,
+            0,
+            9715.061061462691,
+            133.12463196458594,
+            -1624.0968588529888,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            12,
+            188235
+          ],
+          [
+            12,
+            188235
+          ],
+          [
+            12,
+            188235
+          ]
+        ]
+      },
+      "panmure-protected": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "a397d4898c8b4784f408e5314ae829155c4f0cb1e98aab2eaada0b1dbf273fd2",
+            "first": "9d12770dfea611abb3ebed98fdd457667c22d7162b137dec18df4eb35aec7b42",
+            "second": "f19cddbe9325d0140e5388bb13004b35c058947c850f635318b546b75cc7203d"
+          },
+          "after": {
+            "colour": "a397d4898c8b4784f408e5314ae829155c4f0cb1e98aab2eaada0b1dbf273fd2",
+            "first": "9d12770dfea611abb3ebed98fdd457667c22d7162b137dec18df4eb35aec7b42",
+            "second": "f19cddbe9325d0140e5388bb13004b35c058947c850f635318b546b75cc7203d"
+          },
+          "rollback": {
+            "colour": "a397d4898c8b4784f408e5314ae829155c4f0cb1e98aab2eaada0b1dbf273fd2",
+            "first": "9d12770dfea611abb3ebed98fdd457667c22d7162b137dec18df4eb35aec7b42",
+            "second": "f19cddbe9325d0140e5388bb13004b35c058947c850f635318b546b75cc7203d"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "d42748001c39ac16f67074e2a21cb94669b6a28f8ca27620d51902672f6fba92",
+          "new": "d42748001c39ac16f67074e2a21cb94669b6a28f8ca27620d51902672f6fba92",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 574022,
+        "newSamples": 574022,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": false,
+          "reason": "candidate not evaluated"
+        },
+        "gpuStates": [],
+        "stockHash": null,
+        "groundHashes": null,
+        "groundMatrix": null,
+        "case": "stock-rock",
+        "reason": "owner-count",
+        "owners": 0,
+        "draws": 0,
+        "lastOpaque": false,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 0
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            56542.99470834686,
+            68,
+            39498.4351567518
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.17364817766693363,
+            0,
+            -0.9848077530122074,
+            0,
+            -0.20308139829606203,
+            0.978506862794664,
+            0.03580872979959855,
+            0,
+            0.9636411448558374,
+            0.20621425620878991,
+            -0.1699159335588818,
+            0,
+            56542.99470834686,
+            68,
+            39498.4351567518,
+            1
+          ],
+          "view": [
+            -0.17364817766693388,
+            -0.20308139829606203,
+            0.9636411448558372,
+            0,
+            -4.8572257327350574e-17,
+            0.9785068627946639,
+            0.2062142562087899,
+            0,
+            -0.984807753012207,
+            0.03580872979959855,
+            -0.1699159335588818,
+            0,
+            48716.95316515463,
+            10001.90317051279,
+            -47789.76523997667,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            192,
+            312806
+          ],
+          [
+            192,
+            312806
+          ],
+          [
+            192,
+            312806
+          ]
+        ]
+      }
+    },
+    "wet-veto": {
+      "headland-north": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "3b498fbf0dcb7c818a04ce8bc0ca350d2e1d846fbf29a0b5004f4064b098e154",
+            "first": "488ac62fd1e139d2d8ecbcc8b8119aa6cd16b2e2e859d410e8f570b7702d8035",
+            "second": "ecd73d14855dd4c54ab94734c16d906d6229adfcb03ec6fb0e4c14097e49ac5b"
+          },
+          "after": {
+            "colour": "3b498fbf0dcb7c818a04ce8bc0ca350d2e1d846fbf29a0b5004f4064b098e154",
+            "first": "488ac62fd1e139d2d8ecbcc8b8119aa6cd16b2e2e859d410e8f570b7702d8035",
+            "second": "ecd73d14855dd4c54ab94734c16d906d6229adfcb03ec6fb0e4c14097e49ac5b"
+          },
+          "rollback": {
+            "colour": "3b498fbf0dcb7c818a04ce8bc0ca350d2e1d846fbf29a0b5004f4064b098e154",
+            "first": "488ac62fd1e139d2d8ecbcc8b8119aa6cd16b2e2e859d410e8f570b7702d8035",
+            "second": "ecd73d14855dd4c54ab94734c16d906d6229adfcb03ec6fb0e4c14097e49ac5b"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "fc311cb27c45fc8d1217dfce849a8ce727c593620e9637bf7c79574c8180ed34",
+          "new": "fc311cb27c45fc8d1217dfce849a8ce727c593620e9637bf7c79574c8180ed34",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 693372,
+        "newSamples": 693372,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            },
+            {
+              "name": "Cape Tryon signed-water depth-gap preview",
+              "order": 10000,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 4,
+              "write": false,
+              "blend": 1,
+              "positionCount": 132
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": false,
+          "reason": "candidate not evaluated"
+        },
+        "gpuStates": [],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "wet-veto",
+        "reason": "wet-owner",
+        "owners": 1,
+        "draws": 0,
+        "lastOpaque": false,
+        "diag": {
+          "water": "live",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23385.86964692715,
+            55,
+            -4012.029064379131
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.9063077870366485,
+            -6.938893903907228e-18,
+            -0.422618261740703,
+            0,
+            -0.06269138436320848,
+            0.9889363528682975,
+            0.13444210762322395,
+            0,
+            0.41794256242139044,
+            0.14834045293024445,
+            -0.8962807174881608,
+            0,
+            -23385.86964692715,
+            55,
+            -4012.029064379131,
+            1
+          ],
+          "view": [
+            -0.9063077870366485,
+            -0.06269138436320852,
+            0.4179425624213906,
+            0,
+            6.938893903907233e-18,
+            0.9889363528682976,
+            0.14834045293024453,
+            0,
+            -0.42261826174070327,
+            0.13444210762322398,
+            -0.896280717488161,
+            0,
+            -22890.352516875166,
+            -981.0983988503963,
+            6169.887271373107,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            71,
+            257520
+          ],
+          [
+            71,
+            257520
+          ],
+          [
+            71,
+            257520
+          ]
+        ]
+      }
+    },
+    "aa0-veto": {
+      "headland-north": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "27598cb92fd42345c2f55d6f7295a332e6dfea1388cd03a420db7c116f479f1b",
+            "first": "e18da7c5a401467246d1260ac1ed4d99f4c3348873f3a5a2bb9db73af85b067e",
+            "second": "ab19d09871d4057afd843e2fd9066988b2d097560c285e9066d571ba1b8e7ba6"
+          },
+          "after": {
+            "colour": "27598cb92fd42345c2f55d6f7295a332e6dfea1388cd03a420db7c116f479f1b",
+            "first": "e18da7c5a401467246d1260ac1ed4d99f4c3348873f3a5a2bb9db73af85b067e",
+            "second": "ab19d09871d4057afd843e2fd9066988b2d097560c285e9066d571ba1b8e7ba6"
+          },
+          "rollback": {
+            "colour": "27598cb92fd42345c2f55d6f7295a332e6dfea1388cd03a420db7c116f479f1b",
+            "first": "e18da7c5a401467246d1260ac1ed4d99f4c3348873f3a5a2bb9db73af85b067e",
+            "second": "ab19d09871d4057afd843e2fd9066988b2d097560c285e9066d571ba1b8e7ba6"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "2fb799cdb0d59e6d53d56f9953c5fb5fb7bb44600641bbbbe812fdd1b0a6c064",
+          "new": "2fb799cdb0d59e6d53d56f9953c5fb5fb7bb44600641bbbbe812fdd1b0a6c064",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 693088,
+        "newSamples": 693088,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": false,
+          "reason": "candidate not evaluated"
+        },
+        "gpuStates": [],
+        "stockHash": "c1ac4eb2b236e5b35a514c05b6b35cc360bf3d2174c48b3b7d0ada14ebf28581",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "aa0-veto",
+        "reason": "sample-count",
+        "owners": 1,
+        "draws": 0,
+        "lastOpaque": false,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": {
+            "chunks": 1,
+            "refined": 1
+          }
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23385.86964692715,
+            55,
+            -4012.029064379131
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.9063077870366485,
+            -6.938893903907228e-18,
+            -0.422618261740703,
+            0,
+            -0.06269138436320848,
+            0.9889363528682975,
+            0.13444210762322395,
+            0,
+            0.41794256242139044,
+            0.14834045293024445,
+            -0.8962807174881608,
+            0,
+            -23385.86964692715,
+            55,
+            -4012.029064379131,
+            1
+          ],
+          "view": [
+            -0.9063077870366485,
+            -0.06269138436320852,
+            0.4179425624213906,
+            0,
+            6.938893903907233e-18,
+            0.9889363528682976,
+            0.14834045293024453,
+            0,
+            -0.42261826174070327,
+            0.13444210762322398,
+            -0.896280717488161,
+            0,
+            -22890.352516875166,
+            -981.0983988503963,
+            6169.887271373107,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 0
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            70,
+            257476
+          ],
+          [
+            70,
+            257476
+          ],
+          [
+            70,
+            257476
+          ]
+        ]
+      }
+    },
+    "stock-coast": {
+      "headland-north": {
+        "packetSHA256": "16e8ee3d741fc636a14ed4a530fa014d5c3d1910abad5b65de0e7bdaad59e683",
+        "rawRGBA": {
+          "before": {
+            "colour": "da13d029e409e9d0a027fe769e773d7f4aa2c2b4ccfea38290e5e454646c1298",
+            "first": "6faf49359056c628aca1ff6e7fd4dd2c4f985e848c822585d51553dbc9c0154d",
+            "second": "515ee682a83eb7285a15855bafb7d71a840f3ad820bd211f99acc4320c0dc3d9"
+          },
+          "after": {
+            "colour": "da13d029e409e9d0a027fe769e773d7f4aa2c2b4ccfea38290e5e454646c1298",
+            "first": "6faf49359056c628aca1ff6e7fd4dd2c4f985e848c822585d51553dbc9c0154d",
+            "second": "515ee682a83eb7285a15855bafb7d71a840f3ad820bd211f99acc4320c0dc3d9"
+          },
+          "rollback": {
+            "colour": "da13d029e409e9d0a027fe769e773d7f4aa2c2b4ccfea38290e5e454646c1298",
+            "first": "6faf49359056c628aca1ff6e7fd4dd2c4f985e848c822585d51553dbc9c0154d",
+            "second": "515ee682a83eb7285a15855bafb7d71a840f3ad820bd211f99acc4320c0dc3d9"
+          }
+        },
+        "rawAmplitudes": {
+          "old": "386d1929c6a29d77b4c3490eb9c02afde06cb7ebecab99934c71f64ab55e6999",
+          "new": "386d1929c6a29d77b4c3490eb9c02afde06cb7ebecab99934c71f64ab55e6999",
+          "candidate": "4e8fa457e4a803772917f2dff3dc17e907066eaa2b842de57b7191a5c3cbfade"
+        },
+        "candidatePixels": 0,
+        "outsideProjection": 0,
+        "changedWithoutCandidate": 0,
+        "oldSamples": 706070,
+        "newSamples": 706070,
+        "candidateSamples": 0,
+        "maxRawConservationError": 0,
+        "maxRawCoverageError": 0.0,
+        "maxExistingPaletteError": 0.0,
+        "sampleErrors": 0,
+        "aperturePureRemoved": 0,
+        "apertureCandidatePixels": 0,
+        "otherColour": {
+          "depthlessOpaque": [
+            {
+              "name": "Mesh",
+              "order": -10,
+              "type": "ShaderMaterial",
+              "depth": false,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ],
+          "transmissive": [],
+          "transparent": [
+            {
+              "name": "Canopy ground shadows",
+              "order": 0,
+              "type": "ShaderMaterial",
+              "depth": true,
+              "depthFunc": 3,
+              "write": false,
+              "blend": 1,
+              "positionCount": 4
+            }
+          ]
+        },
+        "lateProof": {
+          "ok": false,
+          "reason": "candidate not evaluated"
+        },
+        "gpuStates": [],
+        "stockHash": "f5125db01a0896c93c6f0987e340907ef80a8a6c49af3e90ebcb32c5710a3ce0",
+        "groundHashes": [
+          "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+          "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        "groundMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -21325.607917033114,
+          0,
+          -5153.832064952882,
+          1
+        ],
+        "case": "stock-coast",
+        "reason": "stock-coast",
+        "owners": 1,
+        "draws": 0,
+        "lastOpaque": false,
+        "diag": {
+          "water": "stock",
+          "rock": "stock",
+          "coast": null
+        },
+        "gl": 0,
+        "camera": {
+          "eye": [
+            -23385.86964692715,
+            55,
+            -4012.029064379131
+          ],
+          "projection": [
+            1.352674454407246,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ],
+          "matrixWorld": [
+            -0.9063077870366485,
+            -6.938893903907228e-18,
+            -0.422618261740703,
+            0,
+            -0.06269138436320848,
+            0.9889363528682975,
+            0.13444210762322395,
+            0,
+            0.41794256242139044,
+            0.14834045293024445,
+            -0.8962807174881608,
+            0,
+            -23385.86964692715,
+            55,
+            -4012.029064379131,
+            1
+          ],
+          "view": [
+            -0.9063077870366485,
+            -0.06269138436320852,
+            0.4179425624213906,
+            0,
+            6.938893903907233e-18,
+            0.9889363528682976,
+            0.14834045293024453,
+            0,
+            -0.42261826174070327,
+            0.13444210762322398,
+            -0.896280717488161,
+            0,
+            -22890.352516875166,
+            -981.0983988503963,
+            6169.887271373107,
+            1
+          ],
+          "width": 860,
+          "height": 580,
+          "samples": 4
+        },
+        "rollback": true,
+        "rgbPixels": 0,
+        "occupiedRgb": 0,
+        "mixedRgb": 0,
+        "alpha": 0,
+        "inventedSky": 0,
+        "increasedSky": 0,
+        "reducedSky": 0,
+        "pureRemoved": 0,
+        "stats": [
+          [
+            69,
+            256922
+          ],
+          [
+            69,
+            256922
+          ],
+          [
+            69,
+            256922
+          ]
+        ]
+      }
+    }
+  }
+}
