@@ -1,7 +1,6 @@
 # Cape Tryon: one vertical cliff-seat study
 
-**Detached replay only.** The live Cape Tryon departure, collision, terrain,
-coast mask, sea and aircraft have not changed. This study tests one measured
+**This page documents the detached replay.** A separate [opt-in preview](cape-tryon-sky-seat.md) uses the measured strip. Without that flag, the live departure is unchanged; collisions, terrain, coast mask, sea and aircraft remain stock either way. This study tests one measured
 cause of a visible hole in the shipped Cape Tryon coast geometry. It does
 not propose a new surveyed shoreline or a replacement cliff model.
 

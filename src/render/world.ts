@@ -81,6 +81,7 @@ import { allowOrbyZeroArc,matchesOrbyTerrainBounds,ORBY_COVER_SHA } from '../sim
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
+import {CapeTryonSkySeat} from './cape-tryon-sky-seat.ts';
 import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches,tryonRockNear} from './cape-tryon-rock.ts';
 import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import {CAPE_WET_PATCH,capeWetCells,capeWetPatchGateGLSL,capeWetTieGLSL} from './cape-tryon-wet-tie.ts';
@@ -620,6 +621,9 @@ export class World {
  get baywalkActive(){return !!this.northCourt;}
  get baywalkBounds(){return this.northCourt?.signatureBounds;}
  private montagueReviewShore?:{mesh:THREE.Mesh;segments:readonly ShoreSegment[];bounds:ReviewBounds;revision?:string};
+ readonly capeTryonSkySeat?:CapeTryonSkySeat;
+ private tryonSeatEnabled=false;
+ private tryonSeatShore?:THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>;
  private tryonRockStage?:{materials:readonly THREE.ShaderMaterial[];
    owners:readonly {mesh:THREE.Mesh;stock:THREE.Material;authored:THREE.ShaderMaterial}[];
    proof?:OlearyProgramProof;started:boolean;mounted:boolean};
@@ -841,7 +845,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string,summersideRunwayPavement=false,readonly aircraftDepth?:AircraftRunwayDepth,bordenCoast=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string,summersideRunwayPavement=false,readonly aircraftDepth?:AircraftRunwayDepth,bordenCoast=false,tryonSkySeatTerrainSha?:string){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -994,8 +998,23 @@ export class World {
     q.uniforms={...uniforms,tryonRockGain:{value:1},tryonRockAll:{value:all}};
     return q;
    }):undefined;
+   this.tryonSeatEnabled=closeOpenCoast&&!legacyShore&&!capeWetTerrainSha&&
+    tryonRockMatches(tryonSkySeatTerrainSha,T.spec.bounds,cover);
    this.addShoreFaces(make(cliffFrag(false),THREE.DoubleSide),east?make(cliffFrag(true),THREE.DoubleSide):undefined,
       showBasinBank,inletBank,legacyShore,northBank,orbyClosure,closeOpenCoast,tryonRockMaterials);
+   if(this.tryonSeatShore&&this.tryonCoast){
+    const key='12-10',shore=this.tryonSeatShore,stock=shore.material;
+    this.capeTryonSkySeat=new CapeTryonSkySeat(renderer,scene,this.sky,shore,stock,()=>{
+     const tile=this.byId.get(key),p=tile?.fine;
+     return p?.visible&&!tile?.coarse.visible&&p.material===tile?.local&&tile?.seams==='112:112,112,112,112'&&
+       this.nativeRegularGroundStill(key,p.geometry)&&!p.userData.coastalRefinement?p:undefined;
+    },async()=>await verifyDecodedCover(cover)===CAPE_TRYON_COVER_DECODED,()=>{
+     if(shore.material===stock)return true;
+     const stage=this.tryonRockStage,proof=stage?.proof;
+     return !!(stage?.mounted&&proof?.()&&stage.owners.some(q=>q.mesh===shore&&q.stock===stock&&q.authored===shore.material));
+    });
+   }
+
    const nx=WORLD_COLS,nz=WORLD_ROWS,w=(T.right-T.left)/nx,d=(T.bottom-T.top)/nz;
    const protectsFloor=(i:number,j:number)=>{
     if(i<0||i>=nx||j<0||j>=nz)return true;
@@ -1242,6 +1261,8 @@ export class World {
    const m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
    if(boundedStone)stoneOwners.push({mesh:m,stock:material,authored:boundedStone});
    m.name='shore-to-sea surface';if(legacyCulling.has(key))m.userData.stockCull=legacyCulling.get(key);
+   if(this.tryonSeatEnabled&&key==='-2,-1'&&!cuts.has(key)&&!rockGroups.has(key)&&m.material===material)
+    this.tryonSeatShore=m;
    if(key==='-4,2')this.bordenShore=m;
    this.shoreFaces.push(m);this.scene.add(m);
    const remove=cuts.get(key);

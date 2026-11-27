@@ -40,6 +40,14 @@ export function capeTryonRockRequested(q:URLSearchParams){
     q.has(CAPE_TRYON_ROCK_STOCK)||!standardOpenCoastRequested(q))return false;
  return q.has(CAPE_TRYON_ROCK_FLAG)||(!q.has('qa')&&standardComparisonQuery(q));
 }
+/** Opt-in while moving admission and co-owner controls are qualified. */
+export function capeTryonSkySeatRequested(q:URLSearchParams){
+ const comparison=new URLSearchParams(q);comparison.delete('qa');
+ const profiles=q.getAll('scenery');
+ return q.getAll('capeTryonSkySeatReview').length===1&&profiles.length<=1&&
+  profiles.every(v=>!v||v==='standard')&&standardComparisonQuery(comparison)&&
+  standardOpenCoastRequested(q)&&!q.has('capeTryonWaterReview');
+}
 export function capeTryonRockState(search:string){
  const q=sceneryOptions(search),selected=capeTryonRockRequested(q);
  const test=new URLSearchParams(q);test.delete(CAPE_TRYON_ROCK_STOCK);test.set(CAPE_TRYON_ROCK_FLAG,'');
@@ -312,7 +320,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
+ 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','capeTryonSkySeatReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
 /** Standard changes only the existing CYYG 03/21 asphalt; old exact replays stay stock. */
 export function runway03PavementRequested(q:URLSearchParams){
  return q.getAll('scenery').every(v=>!v||v==='standard')&&standardComparisonQuery(q)&&!q.has('qa')&&

@@ -20,8 +20,9 @@ In three matched low views, **9,131** fully exposed sky pixels were covered. Som
 The matched 4× replay retains **279 north, 326 east and 405 grazing** full sky-colour pixels in the same review bands. The largest isolated components are 185, 218 and 405 pixels. The markers identify actual sky rather than white surf or a pale cliff. They do not identify a physical surface or justify filling every remaining component. The current geometry is also not a background-only pass: it changes some already-occupied colour pixels inside the review band. Any later background-only repair needs an independent check that those original samples stay intact.
 
 A separate [fixed vertical-seat study](cape-tryon-vertical-seat.md) isolates
-one straight cell in the north and grazing views. That candidate is not in
-the playable world and does not address the separate east openings.
+one straight cell in the north and grazing views. It is available as a separate
+[opt-in preview](cape-tryon-sky-seat.md), not in the default view, and does
+not address the separate east openings.
 
 The capture now records the exact matrices and residual component bounds. Add `--owners` to hash the local CPU geometry arrays attached to the actual draw list for ray investigation; that report does not read back resident GPU buffers.
 
