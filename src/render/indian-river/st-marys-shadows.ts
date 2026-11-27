@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import {stockShadowFootprint} from './st-marys-hedge-guard.ts';
+export {stockShadowFootprint} from './st-marys-hedge-guard.ts';
 
 type LegacyShade=THREE.Mesh<THREE.InstancedBufferGeometry,THREE.ShaderMaterial>;
 type Point={x:number;y:number;z:number};
@@ -20,12 +22,6 @@ const KEY='stMarysReceiverReplaced',VARY='stMarysShadowReplaced',LIFT=.028;
 const xzKey=(x:number,z:number)=>x+':'+z;
 const STEMS=new Map(ST_MARYS_STEM_XZ.map(([x,z],i)=>[xzKey(x,z),i]));
 const intersects=(a:Box,b:Box)=>Math.min(a.x1,b.x1)>Math.max(a.x0,b.x0)&&Math.min(a.z1,b.z1)>Math.max(a.z0,b.z0);
-export function stockShadowFootprint(s:Pick<Stem,'x'|'z'|'h'|'w'>):Box{
-  // Same arithmetic order as the shipped instanced shadow vertex shader.
-  const f=Math.fround,cx=f(f(.43)*s.h),cz=f(f(.21)*s.h),wx=f(f(s.w*.5)*f(1.42)),wz=f(f(s.w*.5)*f(1.19));
-  const q=(a:number,b:number,c:number)=>f(a+f(b+c));
-  return {x0:q(s.x,cx,-wx),x1:q(s.x,cx,wx),z0:q(s.z,cz,-wz),z1:q(s.z,cz,wz)};
-}
 function halfPlane(p:readonly Point[],key:'x'|'y'|'z',b:number,sign:1|-1):Point[]{
   const r:Point[]=[];
   for(let i=0,j=p.length-1;i<p.length;j=i++){

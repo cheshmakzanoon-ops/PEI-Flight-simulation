@@ -1,0 +1,104 @@
+{
+  "resolution": [
+    900,
+    600
+  ],
+  "mode": "explicit Indian River ground preview, matched stock/preview/restore on the same actual Chase frame, no camera override",
+  "purpose": "Recheck whole-frame alpha on the existing explicit preview after the shared canopy coverage fix. Does not enable or test the unfinished Standard flight transaction.",
+  "frames": {
+    "100": {
+      "report": {
+        "roi": [
+          73,
+          285,
+          1421,
+          878
+        ],
+        "strong": 10401,
+        "alpha": 0,
+        "outside": 0,
+        "restoredExact": true
+      },
+      "roles": {
+        "coveredNew": 6081,
+        "coveredOld": 7505,
+        "artRGB": 7907,
+        "artOutside": 0,
+        "allAlpha": 0,
+        "allAlphaOutsideArt": 0,
+        "artAlpha": 0,
+        "artAlphaOutside": 0,
+        "groundAny": 11210,
+        "groundStrong": 2493,
+        "groundAlpha": 0,
+        "shadowAny": 213,
+        "shadowAlpha": 0,
+        "sunAny": 573,
+        "sunAlpha": 0
+      },
+      "position": [
+        -36232.523542746814,
+        2592.4121417029983,
+        93.13953276402191
+      ],
+      "draws": [
+        241,
+        255
+      ],
+      "triangles": [
+        351490,
+        383044
+      ],
+      "linkedShadowReceivers": 4
+    },
+    "110": {
+      "report": {
+        "roi": [
+          -142,
+          294,
+          2951,
+          1726
+        ],
+        "strong": 20202,
+        "alpha": 0,
+        "outside": 0,
+        "restoredExact": true
+      },
+      "roles": {
+        "coveredNew": 11454,
+        "coveredOld": 13995,
+        "artRGB": 14803,
+        "artOutside": 0,
+        "allAlpha": 0,
+        "allAlphaOutsideArt": 0,
+        "artAlpha": 0,
+        "artAlphaOutside": 0,
+        "groundAny": 16069,
+        "groundStrong": 5483,
+        "groundAlpha": 0,
+        "shadowAny": 603,
+        "shadowAlpha": 0,
+        "sunAny": 1201,
+        "sunAlpha": 0
+      },
+      "position": [
+        -36180.310753005804,
+        2579.2808703229366,
+        93.50651262182285
+      ],
+      "draws": [
+        241,
+        255
+      ],
+      "triangles": [
+        353406,
+        384960
+      ],
+      "linkedShadowReceivers": 4
+    }
+  },
+  "nativeImageSHA256At11s": {
+    "stock": "868efa2e981cbffb7fcc32f4f90555e52d2721e64578b4e30ece6c12164747da",
+    "live": "94d87e18d2ce4e39610fb2c23b7c5a4559fd7472dc5193d63f79c3cd5f64582c"
+  }
+}

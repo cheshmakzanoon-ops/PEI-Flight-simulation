@@ -37,3 +37,15 @@ Every flight step ran. During unscored transit the test reduced WebGL
 submissions in the software renderer; both scored frames were rendered
 at 900 × 600. These are matched image and ownership checks, not frame-rate
 measurements.
+
+## Current native coverage recheck
+
+After the shared canopy draw was changed to preserve destination alpha,
+the same optional route was replayed at 900 × 600. The [recheck
+receipt](current-alpha-replay.json) records zero alpha changes across
+both full frames, including the 11-second spire/hedge overlap. Original
+geometry and masks for the hedge were not changed. Separating the
+artwork, ground, cast and tree-shadow receivers again found zero alpha
+changes in each component, and restoring the preview repeated its
+images byte for byte. This is a validation of the existing preview, not
+activation in Standard.

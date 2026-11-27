@@ -31,10 +31,10 @@ async function readMask(stream:ReadableStream<Uint8Array>|null,bound:number){
  }}finally{void reader.cancel().catch(()=>{});reader.releaseLock();}
 }
 const sha=async(b:ArrayBuffer)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),v=>v.toString(16).padStart(2,'0')).join('');
-export async function loadChurchGroundSun(spec:ChurchSunAsset,base:string,get:typeof fetch=fetch){
- if(!globalThis.crypto?.subtle||spec.rawBytes!==spec.width*spec.height||spec.rawBytes>82944||
+export async function loadChurchGroundSun(spec:ChurchSunAsset,base:string,get:typeof fetch=fetch,ms=1900){
+ if(!globalThis.crypto?.subtle||!Number.isInteger(ms)||ms<0||ms>10_000||spec.rawBytes!==spec.width*spec.height||spec.rawBytes>82944||
     spec.wireBytes<=0||spec.wireBytes>=spec.rawBytes)return;
- const signal=AbortSignal.timeout(1900);
+ const signal=AbortSignal.timeout(ms);
  try{
   const r=await get(base+spec.file,{signal});
   if(r.status!==200){void r.body?.cancel().catch(()=>{});return;}

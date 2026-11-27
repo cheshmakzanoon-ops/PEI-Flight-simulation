@@ -22,13 +22,23 @@ export function prepareChurchArt(){
  const centre=fit.getCenter(new THREE.Vector3()).applyMatrix4(group.matrix);
  const x=S.modelTransform[3],z=S.modelTransform[11];
  const inRange=(camera:THREE.Vector3)=>Math.hypot(camera.x-x,camera.z-z)<3900;
- let gate=false,farActive=false,spanPx=Infinity;
+ const meshes=new Set<THREE.BufferGeometry>(),finishes=new Set<THREE.Material>(),textures=new Set<THREE.Texture>();
+ group.traverse(o=>{
+  if(!(o instanceof THREE.Mesh))return;
+  meshes.add(o.geometry);
+  for(const m of Array.isArray(o.material)?o.material:[o.material]){
+   finishes.add(m);
+   for(const v of Object.values(m))if(v instanceof THREE.Texture)textures.add(v);
+  }
+ });
+ let gate=false,farActive=false,spanPx=Infinity,closed=false;
  return {
   group,inRange,
   setView(camera:THREE.Vector3,world:World,gradeId:string,shadowReady:boolean){
-   gate=inRange(camera)&&shadowReady&&world.groundGradeInstalled(gradeId);
+   gate=!closed&&inRange(camera)&&shadowReady&&world.groundGradeInstalled(gradeId);
   },
   updateDetail(camera:THREE.PerspectiveCamera,deviceHeight:number){
+   if(closed)return;
    const distance=camera.position.distanceTo(centre);
    spanPx=gate?projectedVerticalPixels(samples,camera,deviceHeight,scratch):Infinity;
    farActive=gate&&distance<=ST_MARYS_FAR_LOD.validatedThrough&&useStMarysFar(farActive,distance,spanPx);
@@ -36,6 +46,13 @@ export function prepareChurchArt(){
   },
   get detail(){return gate?{tier:farActive?'far':lod.getCurrentLevel()===0?'hero':'flight',spanPx}:null;},
   active:()=>gate,
+  dispose(){
+   if(closed)return;
+   closed=true;gate=false;group.visible=false;group.removeFromParent();
+   for(const g of meshes)g.dispose();
+   for(const m of finishes)m.dispose();
+   for(const t of textures)t.dispose();
+  },
  };
 }
 export type ChurchArt=ReturnType<typeof prepareChurchArt>;
