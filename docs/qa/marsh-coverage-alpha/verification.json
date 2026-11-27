@@ -1,0 +1,884 @@
+{
+  "base": "da51b4d1481f0b0789f881490c612d0738916c92",
+  "renderer": "Chromium WebGL 2 / SwiftShader; device pixel ratio 1",
+  "viewport": [
+    840,
+    540
+  ],
+  "captureNotes": "Marker pairs change only shader RGB and preserve original fade. Fixed camera, same animation tick for each pair. A separate session can differ in wind ticks. Native raw delta is captured before browser page compositing.",
+  "rawStockAndCandidate": {
+    "tracadie": {
+      "before": {
+        "draws": 50,
+        "tris": 392900,
+        "glError": 0
+      },
+      "after": {
+        "draws": 50,
+        "tris": 392900,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 53442,
+        "nonopaqueBefore": 53442,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 53442,
+        "nonopaqueAfter": 53442,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 152
+      },
+      "pngUndo": true,
+      "offRole": 0,
+      "stage": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 104,
+        "mid": 189,
+        "draws": 2,
+        "triangles": 92429
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          1
+        ]
+      ],
+      "requests": [
+        "tracadie.red.gz"
+      ]
+    },
+    "tracadie-approach": {
+      "before": {
+        "draws": 41,
+        "tris": 330383,
+        "glError": 0
+      },
+      "after": {
+        "draws": 41,
+        "tris": 330383,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 3783,
+        "nonopaqueBefore": 3783,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 157,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 3783,
+        "nonopaqueAfter": 3783,
+        "loss": 0,
+        "minBefore": 157,
+        "minAfter": 157
+      },
+      "pngUndo": true,
+      "offRole": 0,
+      "stage": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 17,
+        "mid": 242,
+        "draws": 2,
+        "triangles": 55852
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          1
+        ]
+      ],
+      "requests": [
+        "tracadie.red.gz"
+      ]
+    },
+    "cascumpec": {
+      "before": {
+        "draws": 37,
+        "tris": 327578,
+        "glError": 0
+      },
+      "after": {
+        "draws": 37,
+        "tris": 327578,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 52223,
+        "nonopaqueBefore": 52223,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 52223,
+        "nonopaqueAfter": 52223,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 152
+      },
+      "pngUndo": true,
+      "offRole": 0,
+      "stage": {
+        "id": "cascumpec",
+        "accepted": 339,
+        "rejected": 1,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          1
+        ]
+      ],
+      "requests": [
+        "cascumpec.red.gz"
+      ]
+    },
+    "morell": {
+      "before": {
+        "draws": 25,
+        "tris": 327927,
+        "glError": 0
+      },
+      "after": {
+        "draws": 25,
+        "tris": 327927,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 59496,
+        "nonopaqueBefore": 59496,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 149,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 59496,
+        "nonopaqueAfter": 59496,
+        "loss": 0,
+        "minBefore": 149,
+        "minAfter": 149
+      },
+      "pngUndo": true,
+      "offRole": 0,
+      "stage": {
+        "id": "morell",
+        "accepted": 338,
+        "rejected": 2,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          1
+        ]
+      ],
+      "requests": [
+        "morell.red.gz"
+      ]
+    },
+    "high": {
+      "before": {
+        "draws": 15,
+        "tris": 229497,
+        "glError": 0
+      },
+      "after": {
+        "draws": 15,
+        "tris": 229497,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "pngUndo": true,
+      "offRole": 0,
+      "stage": null,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [],
+      "requests": []
+    }
+  },
+  "markerRoleStockAndCandidate": {
+    "tracadie": {
+      "before": {
+        "draws": 50,
+        "tris": 392900,
+        "glError": 0
+      },
+      "after": {
+        "draws": 50,
+        "tris": 392900,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 53435,
+        "nonopaqueBefore": 53435,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 53435,
+        "nonopaqueAfter": 53435,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 152
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "offRole": 0,
+      "role": 65632,
+      "stage": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 104,
+        "mid": 189,
+        "draws": 2,
+        "triangles": 92429
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "tracadie.red.gz"
+      ],
+      "markerAlphaDelta": 0,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      }
+    },
+    "tracadie-approach": {
+      "before": {
+        "draws": 41,
+        "tris": 330383,
+        "glError": 0
+      },
+      "after": {
+        "draws": 41,
+        "tris": 330383,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 3785,
+        "nonopaqueBefore": 3785,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 150,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 3785,
+        "nonopaqueAfter": 3785,
+        "loss": 0,
+        "minBefore": 150,
+        "minAfter": 150
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "offRole": 0,
+      "role": 4770,
+      "stage": {
+        "id": "tracadie",
+        "accepted": 340,
+        "rejected": 0,
+        "near": 17,
+        "mid": 242,
+        "draws": 2,
+        "triangles": 55852
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "tracadie.red.gz"
+      ],
+      "markerAlphaDelta": 0,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      }
+    },
+    "cascumpec": {
+      "before": {
+        "draws": 37,
+        "tris": 327578,
+        "glError": 0
+      },
+      "after": {
+        "draws": 37,
+        "tris": 327578,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 52254,
+        "nonopaqueBefore": 52254,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 52254,
+        "nonopaqueAfter": 52254,
+        "loss": 0,
+        "minBefore": 152,
+        "minAfter": 152
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "offRole": 0,
+      "role": 63292,
+      "stage": {
+        "id": "cascumpec",
+        "accepted": 339,
+        "rejected": 1,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "cascumpec.red.gz"
+      ],
+      "markerAlphaDelta": 0,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      }
+    },
+    "morell": {
+      "before": {
+        "draws": 25,
+        "tris": 327927,
+        "glError": 0
+      },
+      "after": {
+        "draws": 25,
+        "tris": 327927,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 59501,
+        "nonopaqueBefore": 59501,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 149,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 59501,
+        "nonopaqueAfter": 59501,
+        "loss": 0,
+        "minBefore": 149,
+        "minAfter": 149
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "offRole": 0,
+      "role": 71713,
+      "stage": {
+        "id": "morell",
+        "accepted": 338,
+        "rejected": 2,
+        "near": 104,
+        "mid": 179,
+        "draws": 2,
+        "triangles": 90499
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "Original cordgrass-inspired leaf and stem optics",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "morell.red.gz"
+      ],
+      "markerAlphaDelta": 0,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      }
+    },
+    "high": {
+      "before": {
+        "draws": 15,
+        "tris": 229497,
+        "glError": 0
+      },
+      "after": {
+        "draws": 15,
+        "tris": 229497,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "offRole": 0,
+      "role": 0,
+      "stage": null,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [],
+      "requests": [],
+      "markerAlphaDelta": 0,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      }
+    }
+  },
+  "compiledDispatch": {
+    "default": {
+      "coverage": [
+        {
+          "samples": 4,
+          "alpha": true,
+          "aa": true,
+          "blend": true,
+          "coverage": true,
+          "color": [
+            1,
+            0
+          ],
+          "a": [
+            0,
+            1
+          ]
+        },
+        {
+          "samples": 4,
+          "alpha": true,
+          "aa": true,
+          "blend": true,
+          "coverage": true,
+          "color": [
+            1,
+            0
+          ],
+          "a": [
+            0,
+            1
+          ]
+        }
+      ],
+      "context": {
+        "samples": 4,
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "marsh": {
+        "id": "tracadie",
+        "state": "ready",
+        "gain": 1
+      },
+      "foliage": {
+        "id": "tracadie",
+        "accepted": 293,
+        "rejected": 1,
+        "near": 0,
+        "mid": 242,
+        "draws": 1,
+        "triangles": 46706
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 26.721120699984375,
+      "requests": [
+        "tracadie.red.gz"
+      ],
+      "paused": true
+    },
+    "rgb-only": {
+      "coverage": [
+        {
+          "samples": 4,
+          "alpha": false,
+          "aa": true,
+          "blend": false,
+          "coverage": true,
+          "color": [
+            770,
+            771
+          ],
+          "a": [
+            1,
+            771
+          ]
+        },
+        {
+          "samples": 4,
+          "alpha": false,
+          "aa": true,
+          "blend": false,
+          "coverage": true,
+          "color": [
+            770,
+            771
+          ],
+          "a": [
+            1,
+            771
+          ]
+        }
+      ],
+      "context": {
+        "samples": 4,
+        "alpha": false,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "marsh": {
+        "id": "tracadie",
+        "state": "ready",
+        "gain": 1
+      },
+      "foliage": {
+        "id": "tracadie",
+        "accepted": 325,
+        "rejected": 2,
+        "near": 0,
+        "mid": 242,
+        "draws": 1,
+        "triangles": 46706
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 27.277864109504147,
+      "requests": [
+        "tracadie.red.gz"
+      ],
+      "paused": true
+    },
+    "no-aa": {
+      "coverage": [],
+      "context": {
+        "samples": 0,
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "marsh": {
+        "id": "tracadie",
+        "state": "ready",
+        "gain": 1
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 27.834609040413344,
+      "requests": [
+        "tracadie.red.gz"
+      ],
+      "paused": true
+    },
+    "stock": {
+      "coverage": [],
+      "context": {
+        "samples": 4,
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 25.60763855370287,
+      "requests": [],
+      "paused": true
+    }
+  },
+  "productionTests": {
+    "tests": 683,
+    "pass": 683,
+    "fail": 0,
+    "typescript": true,
+    "vite": true
+  },
+  "sha256": {
+    "src/main.ts": "a63fab37d643f5d11be8abc0873862fb5ed876e26268f16021693bb85aab1388",
+    "src/render/marsh-foliage/live.ts": "502c427994bbaca919179c7780e62600b36b3d6aa852637dce73571474ac385e",
+    "src/render/marsh-foliage/marsh-material.ts": "b8588933b45795a7b60cf821d9ccaa041499bfc3381155c3a4d29b1f1aabbe95",
+    "src/render/marsh-foliage/blades.ts": "1454e371fb55736a618eb426f443c9d17a4eb0b660be3844395a41d900b9cd6f",
+    "test/marsh-coverage-alpha.test.ts": "951121fec297efe81998b87cd4fb3419a884882272ee675b383dadabf112de7f",
+    "tools/qa/coastal-marsh-alpha.py": "51c36838d13cc3cf5b035d8d48486ffbc8cc609b2a1eaaebebfb63fab477615f",
+    "docs/qa/marsh-coverage-alpha/close.webp": "20289d760df7c9895fe4c41d03cbfaf5e9991342b7a5ff657c50f3cd27d2deec"
+  }
+}

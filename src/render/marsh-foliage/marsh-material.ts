@@ -1,6 +1,7 @@
 import * as T from 'three';
+import {opaqueCoverageBlend} from '../opaque-coverage-alpha.ts';
 
-export type MarshLight={sun:T.Vector3;wind?:T.Vector2;msaa?:boolean};
+export type MarshLight={sun:T.Vector3;wind?:T.Vector2;msaa?:boolean;keepSceneAlpha?:boolean};
 const movement=`
 uniform float marshTime;
 uniform float marshWindStrength;
@@ -29,6 +30,7 @@ export function marshMaterials(controls:MarshLight,cast:boolean){
  const forward=new T.ShaderMaterial({
   name:'Original cordgrass-inspired leaf and stem optics',
   side:T.DoubleSide,alphaToCoverage:msaa,depthWrite:true,transparent:false,
+  ...(msaa&&controls.keepSceneAlpha===true?opaqueCoverageBlend:undefined),
   uniforms,
   vertexShader:`
   attribute vec4 marshBlade;

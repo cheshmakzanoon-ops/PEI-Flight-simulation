@@ -368,9 +368,9 @@ async function run(){
  let dalvayOpticsAdmission:'idle'|'cover'|'module'|'asset'|'ready'|'unavailable'='idle';
  const sourisShoreline=standardSourisShoreline(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)?
    new SourisWetCurtain(scene,()=>verifyDecodedCover(cover)):undefined;
- const marshMSAA=renderer.getContext().getParameter(renderer.getContext().SAMPLES)>=2;
+ const marshMSAA=gl.getParameter(gl.SAMPLES)>=2;
  const foliageModule=marsh&&marshMSAA?await loadAerialModule(()=>import('./render/marsh-foliage/live.ts')):undefined;
- const foliage=foliageModule&&marsh?new foliageModule.LiveMarshFoliage(scene,world,marsh,marshMSAA):undefined;
+ const foliage=foliageModule&&marsh?new foliageModule.LiveMarshFoliage(scene,world,marsh,marshMSAA,supportsOpaqueCoverage(gl)):undefined;
  if(standardMeadow)world.meadowStrength.value=0;
  const pastureBinding=pastureEligible?world.panmurePastureBinding():undefined;
  const panmurePasture=pastureBinding?new PanmurePastureFlight(()=>verifyDecodedCover(cover),async()=>

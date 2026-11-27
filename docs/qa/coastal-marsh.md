@@ -126,3 +126,6 @@ all three output files byte-for-byte with `public/world/coastal-marsh/`.
 The simulator also checks the published Trail, sand, dune-grass, road, building,
 sidewalk, parking, terrain and Cover owners that this scope was
 tested against. A missing or mismatched source leaves the previous rendering.
+
+See the [canvas-opacity replay](marsh-coverage-alpha.md) for a separate
+coverage correction that preserves the original blade geometry and colour.

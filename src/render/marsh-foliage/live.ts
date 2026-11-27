@@ -13,7 +13,7 @@ export class LiveMarshFoliage{
  private stamp='';
  private wasGround=-1;
  private readonly bounds=[0,0,0,0] as [number,number,number,number];
- constructor(private scene:T.Scene,private world:World,private source:MarshStream,private msaa:boolean){}
+ constructor(private scene:T.Scene,private world:World,private source:MarshStream,private msaa:boolean,private keepSceneAlpha=false){}
  private release(){
   this.owner?.patch.dispose();this.owner=undefined;
   this.x=this.z=Infinity;this.stamp='';
@@ -47,7 +47,7 @@ export class LiveMarshFoliage{
    this.release();
    const a=new T.Vector3(Math.round(eye.x/32)*32,0,Math.round(eye.z/32)*32);
    a.y=w.visualGroundHeight(a.x,a.z);
-   const patch=new MarshPatch(a,(x,z,rad,id)=>local.field.permits(x,z,rad,id)&&this.groundSafe(x,z,rad),{sun:w.sun,msaa:this.msaa});
+   const patch=new MarshPatch(a,(x,z,rad,id)=>local.field.permits(x,z,rad,id)&&this.groundSafe(x,z,rad),{sun:w.sun,msaa:this.msaa,keepSceneAlpha:this.keepSceneAlpha});
    this.scene.add(patch.group);
    this.owner={...local,patch,origin:a};
   }
