@@ -1,3 +1,4 @@
+import {inheritedCanopyCoverageBlend,opaqueCanopyCoverageBlend} from './canopy-coverage-alpha.ts';
 import * as THREE from 'three';
 import {WOODLAND_STREAM_TAGS,WoodlandViewRows,woodlandEye,type WoodlandCullGroup,type WoodlandStreams} from './woodland-volume-cull.ts';
 import {branchedCrown} from './woodland-volume-geometry.ts';
@@ -162,6 +163,7 @@ export class WoodlandVolume{
  private prevCount=0;private selected=0;
  private roster=0;
  get rosterVersion(){return this.roster;}
+ private readonly preservedCoverage:boolean;
  private readonly crownLift?: (x:number,z:number,height:number,slot:number)=>number;
  private crownAdmission=new Map<string,number>();
  private changed=0;
@@ -173,14 +175,16 @@ export class WoodlandVolume{
  private barkLast=0;
  get barkState(){return this.barkMap.value?'ready':this.barkStarted?'optional':'waiting';}
  constructor(scene:THREE.Scene,maxInstances:number,crownLift?: (x:number,z:number,height:number,slot:number)=>number,
-  barkLoader?:()=>Promise<THREE.DataTexture|undefined>,useViewCull=true){
+  barkLoader?:()=>Promise<THREE.DataTexture|undefined>,useViewCull=true,preserveCoverage=false){
+  this.preservedCoverage=preserveCoverage;
+  const coverageBlend=preserveCoverage?opaqueCanopyCoverageBlend:undefined;
   this.viewEligible=this.viewEnabled=useViewCull;this.viewScene=scene;
   this.crownLift=crownLift;this.barkLoader=barkLoader;
   const barkDefines=barkLoader?{BARK_SCAN:1}:{};
   const barkUniforms:Record<string,THREE.IUniform>=barkLoader?{barkMap:this.barkMap,barkGain:this.barkGain}:{};
   this.mask=new THREE.InstancedBufferAttribute(new Float32Array(maxInstances),1).setUsage(THREE.DynamicDrawUsage);
   const material=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,
-    alphaToCoverage:true,defines:barkDefines,uniforms:{volumeFade:this.fade,...barkUniforms}});
+    alphaToCoverage:true,...coverageBlend,defines:barkDefines,uniforms:{volumeFade:this.fade,...barkUniforms}});
   this.groups=Array.from({length:4},(_,variant)=>{
    const template=branchedCrown(variant),geometry=new THREE.InstancedBufferGeometry();
    geometry.setIndex(template.index);
@@ -193,7 +197,7 @@ export class WoodlandVolume{
    let activeMaterial=material;
    if(lift){
     geometry.setAttribute('crownLift',lift);
-    activeMaterial=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,alphaToCoverage:true,
+    activeMaterial=new THREE.ShaderMaterial({vertexShader:v,fragmentShader:f,side:THREE.DoubleSide,alphaToCoverage:true,...coverageBlend,
      defines:{BLC_PILOT:1,...barkDefines},uniforms:{volumeFade:this.fade,crownVertical:this.crownVertical,...barkUniforms}});
    }
    const mesh=new THREE.Mesh(geometry,activeMaterial);
@@ -230,7 +234,8 @@ export class WoodlandVolume{
      const m=g.donor,d=g.drawContract,defs=m.defines;
      return g.mesh.geometry===g.geometry&&g.mesh.material===m&&m.vertexShader===v&&m.fragmentShader===f&&
       m.onBeforeCompile===d.compile&&m.uniforms.volumeFade===this.fade&&m.side===THREE.DoubleSide&&m.alphaToCoverage&&
-      !m.transparent&&!m.wireframe&&!m.alphaHash&&m.alphaTest===0&&m.depthWrite&&m.blending===THREE.NormalBlending&&
+      !m.transparent&&!m.wireframe&&!m.alphaHash&&m.alphaTest===0&&m.depthWrite&&
+      (this.preservedCoverage?!!inheritedCanopyCoverageBlend(m):m.blending===THREE.NormalBlending)&&
       g.geometry.getAttribute('position')===d.pos&&(d.pos as THREE.BufferAttribute).version===d.posVersion&&
       defs&&Object.keys(defs).length===d.keys.length&&d.keys.every(k=>defs[k]===d.defines[k]);
     });

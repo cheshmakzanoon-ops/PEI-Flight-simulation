@@ -385,7 +385,7 @@ async function run(){
  const rollingModule=rollingLibrary?await rollingLibrary:undefined;
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
-   rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'),!options.has('woodland3D')&&supportsOpaqueCanopyCoverage(gl));
+   rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'),supportsOpaqueCanopyCoverage(gl));
  let datedStandReview:NorthCapeStandReview|undefined;
  if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')
   void import('./render/north-cape-stand/review.ts').then(({NorthCapeStandReview})=>{
@@ -467,7 +467,7 @@ async function run(){
   ()=>import('./render/woodland-bark.ts').then(m=>m.loadWoodlandBark(import.meta.env.BASE_URL)):undefined;
  if(options.has('woodland3D')&&glCanopy.getParameter(glCanopy.SAMPLES)>=2){
   void import('./render/woodland-volume.ts').then(({WoodlandVolume})=>
-     vegetation.attachVolume(new WoodlandVolume(scene,45000,crownStream?(x,z,h,slot)=>vegetation.crownBaseLift(crownStream,x,z,h,slot):undefined,barkLoader,!options.has('stockWoodlandVolumeCull')),world,scene)).catch(()=>{});
+     vegetation.attachVolume(new WoodlandVolume(scene,45000,crownStream?(x,z,h,slot)=>vegetation.crownBaseLift(crownStream,x,z,h,slot):undefined,barkLoader,!options.has('stockWoodlandVolumeCull'),supportsOpaqueCanopyCoverage(glCanopy)),world,scene)).catch(()=>{});
  }
  let quartermasterDocks:ReturnType<typeof addQuartermasterDocks>;
  void dockPack.then(p=>quartermasterDocks=addQuartermasterDocks(scene,cover,world.sun,p));

@@ -1,0 +1,170 @@
+{
+  "base": "a07938e61917c851a5a5a085f17c02e361336a00",
+  "compiledFlight": {
+    "departure": "queens-woodland-view",
+    "profile": "woodlandView",
+    "controls": {
+      "main": {
+        "coverage": {
+          "volume": {
+            "samples": 4,
+            "alpha": true,
+            "aa": true,
+            "blend": true,
+            "coverage": true,
+            "color": [
+              1,
+              0
+            ],
+            "a": [
+              0,
+              1
+            ]
+          },
+          "transition": {
+            "samples": 4,
+            "alpha": true,
+            "aa": true,
+            "blend": true,
+            "coverage": true,
+            "color": [
+              1,
+              0
+            ],
+            "a": [
+              0,
+              1
+            ]
+          }
+        },
+        "volume": 71,
+        "cull": {
+          "enabled": true,
+          "active": true,
+          "admitted": 71,
+          "submitted": 25,
+          "submittedTriangles": 44412
+        },
+        "camera": "Scenery",
+        "warnings": [],
+        "paused": true
+      },
+      "fallback": {
+        "coverage": {
+          "canopy": {
+            "samples": 0,
+            "alpha": true,
+            "aa": false,
+            "blend": false,
+            "coverage": true,
+            "color": [
+              770,
+              771
+            ],
+            "a": [
+              1,
+              771
+            ]
+          }
+        },
+        "volume": 0,
+        "cull": null,
+        "camera": "Scenery",
+        "warnings": [],
+        "paused": true
+      }
+    },
+    "capability": "Real RGBA canvas; forced 0\u00d7 creates a nonmultisampled context."
+  },
+  "fixedNativeReadback": {
+    "queens": {
+      "stock": {
+        "tris": 468917,
+        "draws": 103,
+        "error": 0,
+        "samples": 4
+      },
+      "candidate": {
+        "tris": 468917,
+        "draws": 103,
+        "error": 0,
+        "samples": 4
+      },
+      "restoreExact": true,
+      "raw": {
+        "rgb": 0,
+        "alpha": 88467,
+        "old": 88467,
+        "newer": 0,
+        "loss": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "old": 88467,
+        "newer": 88467,
+        "loss": 0
+      },
+      "geometry": 72,
+      "sameCullMode": true,
+      "materialCount": 2
+    },
+    "prince": {
+      "stock": {
+        "tris": 499658,
+        "draws": 44,
+        "error": 0,
+        "samples": 4
+      },
+      "candidate": {
+        "tris": 499658,
+        "draws": 44,
+        "error": 0,
+        "samples": 4
+      },
+      "restoreExact": true,
+      "raw": {
+        "rgb": 0,
+        "alpha": 88144,
+        "old": 88144,
+        "newer": 0,
+        "loss": 0
+      },
+      "rawRollback": {
+        "rgb": 0,
+        "alpha": 0,
+        "old": 88144,
+        "newer": 88144,
+        "loss": 0
+      },
+      "geometry": 69,
+      "sameCullMode": true,
+      "materialCount": 2
+    }
+  },
+  "figure": {
+    "capture": [
+      920,
+      580
+    ],
+    "crop": [
+      76,
+      247,
+      410,
+      320
+    ],
+    "sameOpaqueMatte": "#193a3c",
+    "sha256": "88837dad3a131dcc3038f19b817ba931acd3614592d5b146ab0ffa2ae825f860"
+  },
+  "witnessSha256": {
+    "raw": "e7a7cd9570beaa82cb3fdd7bc00e60d43831dc7214eea6e53da6c3931ade38e8",
+    "flight": "15a197b512b0157dc62736ddcde35bfaca9ae51dc778241e59729ffd94a7e313",
+    "independentSourceConstructors": "d8750fc0a335108d897b22af1b13917eddf69132242397da4f82f6a2bebdce68"
+  },
+  "checks": {
+    "unitPassed": 682,
+    "typeScript": true,
+    "viteBuild": true,
+    "signedWorld": true
+  }
+}

@@ -1,4 +1,4 @@
-import {opaqueCanopyCoverageBlend} from './canopy-coverage-alpha.ts';
+import {opaqueCanopyCoverageBlend,inheritedCanopyCoverageBlend} from './canopy-coverage-alpha.ts';
 import type {OpenRoadLane} from './mapped-lane-canopy.ts';
 import type {RollingTreeShadows} from './rolling-tree-shadows.ts';
 import type {ShadowSlotRoster} from './tree-shadow-roster.ts';
@@ -251,7 +251,8 @@ export class Vegetation {
     if(branchWeight>.997)discard;
   `).replace('clamp((a-.30)*3.8,0.,1.)','clamp((a-.30)*3.8,0.,1.)*(1.-branchWeight)');
   this.crown.material=new THREE.ShaderMaterial({vertexShader:vert,fragmentShader:frag,
-    uniforms:{...previous.uniforms,volumeFade:layer.fade},side:THREE.DoubleSide,alphaToCoverage:true});
+    uniforms:{...previous.uniforms,volumeFade:layer.fade},side:THREE.DoubleSide,alphaToCoverage:true,
+    ...inheritedCanopyCoverageBlend(previous)});
   previous.dispose();
   if(world&&scene){
    const oldShadow=this.shade.material as THREE.ShaderMaterial;

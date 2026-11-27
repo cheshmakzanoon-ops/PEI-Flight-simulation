@@ -54,3 +54,6 @@ python tools/qa/woodland-scenery-flight.py --dist dist \
   --out /tmp/pei-woodland-flights --counties prince,queens,kings \
   --chromium /path/to/chromium
 ```
+
+[Near woodland opacity verification](woodland-coverage-alpha.md) covers
+the branch and billboard handoff without changing its shapes or lighting.

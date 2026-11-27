@@ -1,17 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ArrayCamera, Box3, Frustum, Matrix4, OrthographicCamera, PerspectiveCamera, Scene, ShaderMaterial} from 'three';
+import {ArrayCamera, Box3, Frustum, Matrix4, OrthographicCamera, PerspectiveCamera, Scene, ShaderMaterial,ZeroFactor,OneFactor,NormalBlending} from 'three';
 import {WoodlandVolume} from '../src/render/woodland-volume.ts';
+import {inheritedCanopyCoverageBlend} from '../src/render/canopy-coverage-alpha.ts';
 import {woodlandEye} from '../src/render/woodland-volume-cull.ts';
 import {sceneryOptions,standardRegionalWind,standardTracadieOrtho,standardInlandOrtho,standardPrinceSurveyRoof,coastalMarshRequested,standardSourisShoreline} from '../src/app/scenery-profile.ts';
 const N=121,keys=['treeStem','treeShape','treeSpin','crownLift'];
 const fc=new Frustum(),mx=new Matrix4();
-function fixture(stock=false){
+function fixture(stock=false,preserveCoverage=false){
  const sc=new Scene(),p:number[]=[],s:number[]=[];
  // All four templates behind, beside and ahead of this fixed eye; include the outer prefetch ring.
  for(let j=-4;j<=4;j++)for(let i=-4;i<=4;i++){const x=12*i+((3*i+4*j)&3),z=12*j+((i+6*j)&3);
   p.push(x,0,z);s.push(11+(j&3),10+((i+j)&3),((i*3+j+5)&3),.85);}
- const pos=Float32Array.from(p),shapes=Float32Array.from(s),v=new WoodlandVolume(sc,N,()=>.37,undefined,!stock);
+ const pos=Float32Array.from(p),shapes=Float32Array.from(s),v=new WoodlandVolume(sc,N,()=>.37,undefined,!stock,preserveCoverage);
  v.update(pos,shapes,pos.length/3,0,0,15,1);
  return {v,sc,pos,shapes,groups:(v as any).groups as any[]};
 }
@@ -103,4 +104,22 @@ test('foreign scene override or changed donor program/alpha contract fails open 
  m.uniforms.volumeFade={value:fade.value.clone()};full();m.uniforms.volumeFade=fade;comp();
  m.defines={...m.defines,EXTERNAL_SHADOW_PASS:1};full();delete m.defines.EXTERNAL_SHADOW_PASS;comp();
  const attr=groups[0].geometry.getAttribute('position'),alt=attr.clone();groups[0].geometry.setAttribute('position',alt);full();groups[0].geometry.setAttribute('position',attr);comp();
+});
+
+test('opaque alpha woodland keeps actual view compaction only with the exact blend tuple',()=>{
+ const {v,groups}=fixture(false,true),c=eye();
+ const saved=fullRows(groups);
+ for(const g of groups){
+  assert(inheritedCanopyCoverageBlend(g.donor));assert(g.donor.alphaToCoverage);
+  assert(!g.donor.transparent&&g.donor.depthWrite&&g.donor.depthTest);
+ }
+ v.updateView(c);assert(v.viewState.active&&v.viewState.submitted<v.viewState.admitted);
+ rowChecks(groups);assert.deepEqual(fullRows(groups),saved);
+ const material=groups[0].donor;
+ assert.equal(material.blendDstAlpha,OneFactor);
+ material.blendDstAlpha=ZeroFactor;
+ v.updateView(c);assert(!v.viewState.active);assert.equal(v.viewState.submitted,v.viewState.admitted);
+ material.blendDstAlpha=OneFactor;
+ v.updateView(c);assert(v.viewState.active);assert.deepEqual(fullRows(groups),saved);
+ for(const g of fixture().groups)assert.equal(g.donor.blending,NormalBlending);
 });
