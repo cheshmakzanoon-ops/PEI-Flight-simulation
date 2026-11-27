@@ -321,7 +321,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','stockOlearyIndustrial','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','capeTryonSkySeatReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockIndianRiver','stockKingsRidge','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
+ 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','stockOlearyIndustrial','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','capeTryonSkySeatReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockIndianRiver','stockCavendishWater','stockKingsRidge','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
 /** Standard changes only the existing CYYG 03/21 asphalt; old exact replays stay stock. */
 export function runway03PavementRequested(q:URLSearchParams){
  return q.getAll('scenery').every(v=>!v||v==='standard')&&standardComparisonQuery(q)&&!q.has('qa')&&
@@ -344,6 +344,15 @@ export function bordenCoastRequested(q:URLSearchParams){
   !q.has('qa')&&!q.has('legacyShoreArcs')&&!q.has('stockBordenCoast');
 }
 const standardComparisonQuery=(q:URLSearchParams)=>[...q.keys()].every(k=>STANDARD_COMPARISON_KEYS.has(k));
+export const CAVENDISH_STANDARD_WATER_ROUTE='cavendish-dunelands-low';
+/** Ordinary Cavendish owns this dated packet only for its selected flight.
+ * The explicit Cavendish/detail/terrain study URLs remain unchanged. */
+export function standardCavendishWaterRequested(q:URLSearchParams){
+ const mode=q.getAll('scenery');
+ return mode.length<=1&&mode.every(v=>!v||v==='standard')&&q.getAll('departure').length<=1&&
+  standardComparisonQuery(q)&&!['qa','stockCavendishWater','cavendishWaterReview','cavendishDetail'].some(k=>q.has(k));
+}
+
 /** The original house and the independently admitted Barn have distinct spans. */
 export function standardGreenGablesHouseRequested(q:URLSearchParams){
  const local=new URLSearchParams(q);local.delete('stockGreenGablesBarn');

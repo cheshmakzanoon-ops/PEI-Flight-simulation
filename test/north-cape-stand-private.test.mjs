@@ -60,12 +60,15 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape,failAt,industrial=false,river=false)=>{
+ const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false)=>{
   const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
-   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined,standardLakeSeat:undefined};
+   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,
+   f:{},dalvayDefaultFlight:()=>true,lakeFrame:()=>true};
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
   if(river)scope.standardRiverSeat={activeCohort:{beginDraw:()=>begin('river')},closeFlight:()=>calls.push('close river')};
+  if(dune)scope.cavendishSeat={activeCohort:{beginDraw:()=>begin('dune')},closeFlight:()=>calls.push('close dune')};
+  if(lake)scope.standardLakeSeat={beginDraw:()=>begin('lake')};
   scope.world={
    beginKingsRidgeDraw:c=>{assert.equal(c,scope.camera);return begin('ridge');},
    beginPrinceLandscapeDraw:()=>begin('prince'),
@@ -100,6 +103,9 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  assert.deepEqual(paint(false,'prince',false,true),['begin ridge','begin river','begin prince','end river','end ridge']);
  assert.deepEqual(paint(false,'render',false,true),['begin ridge','begin river','begin prince',...wholePaint,'end prince','end river','end ridge']);
  assert.deepEqual(paint(true,'rim'),[...lead,'begin cape','begin rim','end cape',...tail]);
+ // Artificial combined owners exercise reverse restore even though real route IDs are exclusive.
+ assert.deepEqual(paint(false,'render',false,true,true,true),['begin ridge','begin dune','begin river',
+  'begin prince','begin lake',...wholePaint,'end lake','end prince','end river','end dune','end ridge']);
  for(const failAt of [undefined,'render']){
   assert.deepEqual(paint(false,failAt,true),[...lead,'begin rim','begin borden','begin industrial','render',
    'end industrial','end borden','end rim',...tail]);

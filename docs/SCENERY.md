@@ -14,7 +14,7 @@
 
 **A first route:** Begin at Cavendish, hold a shallow bank to follow the shore, and switch to cockpit view with **V**. Open the atlas with **M** and reposition to East Point for a contrasting coast. For a ground departure, select Charlottetown or Summerside and follow the [pilot guide](FLIGHT.md).
 
-**Cavendish scenery in one step:** Select **Cavendish Dunelands · coastal pass**, then **Enable Cavendish detail**. This selects six compatible local studies without changing the other scenery settings. [What the pack enables](qa/cavendish-package.md).
+**Cavendish scenery in one step:** Select **Cavendish Dunelands · coastal pass**, then **Enable Cavendish detail**. This selects six compatible local studies without changing the other scenery settings. [What the pack enables](qa/cavendish-package.md). In Standard, the [verified 2020 Lake of Shining Waters core](qa/cavendish-water.md) is available independently: wait for **Dated freshwater ready** before **Begin flight**. This changes contact inside the signed core only.
 
 **Waterfront approaches:** Choose **Basin Head · low pass**, **Summerside waterfront · low pass**, or **Georgetown harbour · low pass** in the departure menu to start offshore facing the local scenery. [Basin Head and Summerside flight checks](qa/waterfront-departures.md) · [Georgetown exterior and flight check](qa/st-davids-church-study.md). The [Georgetown school wall finish](qa/georgetown-school-walls.md) removes a misleading upper window band on three reference-checked faces.
 
@@ -64,7 +64,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Founders’ Food Hall, Charlottetown | `?stockFoundersWestWall` | Compare Standard’s [three rounded railway-end bays](qa/founders-west-standard/) on **Charlottetown waterfront · low pass**. The roof, neighbouring façades and original geometry are unchanged. |
 | Green Gables House | `?stockGreenGablesHouse` | Compare Standard’s [survey-fitted house exterior](art/green-gables-house.md) on **Cavendish Dunelands · coastal pass**. The explicit `?greenGablesReview` remains available on the other eligible Cavendish passes. |
 | Green Gables grounds | `?stockGreenGablesBarn` | Compare the original massing with Standard’s [survey-fitted Barn and adjoining wing](art/green-gables-barn-review.md). |
-| Cavendish Dunelands | `?cavendishWaterReview` | [Lake of Shining Waters, 2020 freshwater core](qa/cavendish-water.md). Choose **Cavendish Dunelands · coastal pass** for an offshore start. |
+| Cavendish Dunelands | `?departure=cavendish-dunelands-low&stockCavendishWater` | Compare the original ground with the Standard route’s [measured 2020 freshwater core](qa/cavendish-water.md). `&cavendishWaterReview` retains the original explicit study. |
 | Near Green Gables | `?gablesTrailReview` | [Mapped gravel connection](qa/gables-trail.md), with short-scale grain on the existing terrain. |
 | Southwest of Green Gables | `?gablesFairwayReview` | [Source-fenced fairway colour](qa/gables-fairway.md) on the verified open ground, without moving the path or golf boundary. |
 | Southwest of Green Gables | `?gablesGradeReview` | [Survey-supported dry rise](qa/gables-southwest-grade.md), a close-range correction to terrain and contact in one small area. |

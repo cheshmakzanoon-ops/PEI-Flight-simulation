@@ -1,3 +1,5 @@
+import {CAVENDISH_WATER_CORE as CAVENDISH_STANDARD_CORE} from '../sim/cavendish-water-core.generated.ts';
+import {prepareCavendishWaterSeat,type CavendishOwner} from './cavendish-water-seat.ts';
 import {BordenOpaqueScope} from './borden-opaque-scope.ts';
 import {BordenCanopyResident,BordenPropResident} from './borden-canopy-resident.ts';
 import {prepareBordenBackgroundCoast,type BordenBackgroundLease} from './borden-bilinear-background.ts';
@@ -610,6 +612,63 @@ export class World {
  get legacyShoreState(){return this.legacyShore?.state??null;}
  private northCourt?:BaywalkGround;
  private pondMeshes:BowleyWaterMesh[]=[];
+ private cavendishMaterials?: (u:Record<string,THREE.IUniform>)=>readonly [THREE.ShaderMaterial,THREE.ShaderMaterial];
+ private cavendishReceiver():CavendishOwner|undefined{
+  const id='13-11',t=this.byId.get(id),m=t?.fine;
+  if(!t||!m||!m.visible||m.parent!==this.scene||m.material!==t.local||t.coarse.visible||
+     !t.seams?.startsWith('112:')||!this.nativeRegularGroundStill(id,m.geometry)||m.userData.coastalRefinement)return;
+  // The water plane uses only an interior envelope and one original parent
+  // cell of witness on each side. A distant neighbor LOD may resew the rim.
+  const s=CAVENDISH_STANDARD_CORE,x=s.left,z=s.top,r=x+s.width*s.step,b=z+s.height*s.step,
+    dx=t.w/112,dz=t.d/112,edge=24;
+  const firstX=Math.floor((x-edge-t.x0)/dx),firstZ=Math.floor((z-edge-t.z0)/dz);
+  const cx=Math.ceil((r+edge-t.x0)/dx),cz=Math.ceil((b+edge-t.z0)/dz);
+  if(firstX<2||firstZ<2||cx>110||cz>110||
+     !this.sameNativePreviewStock(t,m,{firstX,firstZ,cellsX:cx-firstX,cellsZ:cz-firstZ}))return;
+  return {id,mesh:m as CavendishOwner['mesh'],stock:t.local};
+ }
+ get cavendishWaterReceiverReady(){return !!this.cavendishReceiver()&&!this.hasFreshwaterSource(CAVENDISH_STANDARD_CORE.id);}
+ prepareCavendishWater(pond:BowleyPond,camera:THREE.PerspectiveCamera,link:OlearyLink,signal:AbortSignal,permit:()=>boolean){
+  const materials=this.cavendishMaterials,old=this.pondMeshes,first=this.cavendishReceiver(),t=this.byId.get('13-11');
+  if(!materials||!first||!t||this.hasFreshwaterSource(pond.spec.id))return;
+  // Private, deterministic original parent witness. A genuine neighbor
+  // 56→112 transition may modify rim Y only, not the receipt's interior,
+  // position X/Z, UVs or index. Full scan only at admission/rim epoch.
+  const check=this.patch(t.x0,t.z0,t.w,t.d,112).geometry,g=first.mesh.geometry;
+  const position=g.getAttribute('position'),reference=check.getAttribute('position').array.slice();
+  if(!(position instanceof THREE.BufferAttribute)){check.dispose();return;}
+  try{
+   if(g.index!.array.some((v,k)=>v!==check.index!.array[k])||
+      g.getAttribute('uv').array.some((v,k)=>v!==check.getAttribute('uv').array[k]))return;
+  }finally{check.dispose();}
+  let seen=-1,seam='',good=false;
+  const owner=()=>{
+   const o=this.cavendishReceiver();
+   if(!o||o.mesh!==first.mesh||o.mesh.geometry!==g||g.getAttribute('position')!==position)return;
+   const rim=this.previewRim(t);
+   if(position.version!==seen||t.seams!==seam){
+    if(rim.key!==t.seams)return;
+    for(const [i,y] of rim.edge)reference[i*3+1]=y;
+    good=reference.length===position.array.length&&!position.array.some((v,k)=>v!==reference[k]);
+    seen=position.version;seam=t.seams;
+   }
+   return good?o:undefined;
+  };
+  if(!owner())return;
+  const grid={left:this.terrain.left,top:this.terrain.top,right:this.terrain.right,bottom:this.terrain.bottom,columns:WORLD_COLS,rows:WORLD_ROWS};
+  return prepareCavendishWaterSeat({renderer:this.renderer,scene:this.scene,camera,terrain:this.terrain,source:pond,
+   owner,permit,link,signal,materials,
+   signature:b=>this.visualGroundSignature(b),height:(x,z)=>this.provinceVisualGroundHeight(x,z),
+   current:q=>old.includes(q),
+   install:q=>{
+    if(old!==this.pondMeshes||old.includes(q)||this.hasFreshwaterSource(q.pond.spec.id)||!this.cavendishReceiver()||
+       !admitPondTiles([...old.map(m=>m.pond),q.pond],grid).includes(q.pond))return false;
+    old.push(q);return true;
+   },
+   remove:q=>{const k=old.indexOf(q);if(k>=0)old.splice(k,1);}
+  });
+ }
+
  hasFreshwaterSource(id:string){return this.pondMeshes.some(v=>v.pond.spec.id===id);}
  get bowleyPond(){return this.pondMeshes.find(p=>p.pond.spec.id.startsWith('bowley-'))?.pond.spec.id??null;}
  private freshwaterAt(x:number,z:number){
@@ -963,6 +1022,14 @@ export class World {
    const harbourUniforms=insetUniforms(harbour,'harbour'),basinUniforms=insetUniforms(basin,'basinChannel');
    const montagueUniforms=insetUniforms(montague,'montagueWater');
    const northCourtUniforms=cover.baywalk?baywalkUniforms(cover.baywalk):{};
+   // Standard opt-in is a detached local lease. Keep the explicit
+   // constructor loop below and its whole-tile material rules verbatim.
+   this.cavendishMaterials=surfaceUniforms=>[
+    sceneShader({vertexShader:vertex,fragmentShader:fp+skyFn+bowleyClipGLSL+bowleyWaterGLSL+out,
+     uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide}),
+    sceneShader({vertexShader:vertex,fragmentShader:fp+bowleyShoreGLSL+out,
+     uniforms:{...uniforms,...surfaceUniforms},side:THREE.DoubleSide}),
+   ];
    const pondsWithUniforms=ponds.map(pond=>({pond,surfaceUniforms:{...bowleyUniforms(pond),
      bowleyInverseProjection:skyInverseProjection,bowleyEyeToWorld:skyEyeToWorld,bowleyViewport:bowleyViewport!}}));
    this.nearshoreFoamArmed=(standardNearshore||nearshoreFoam&&nearshoreFoamMatches(cover))&&[-64.47,45.94,-61.93,47.1].every((n,i)=>T.spec.bounds[i]===n);

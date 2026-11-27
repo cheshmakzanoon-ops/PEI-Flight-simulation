@@ -1,11 +1,18 @@
 # Lake of Shining Waters: Cavendish Dunelands freshwater core
 
-In Dispatch, select **Dunelands freshwater** under **Optional scenery
-studies** and apply. You can also use `?cavendishWaterReview` (or
-`&cavendishWaterReview` if the URL already has options). Select
-**Cavendish Dunelands · coastal pass** to start just offshore and cross the
-pond on the approach to Green Gables. The Standard atlas stays unchanged
-without the flag. The study can coexist with the separate Bowley Pond layer.
+In **Standard** scenery, choose **Cavendish Dunelands · coastal pass** and
+wait for **Dated freshwater ready** before **Begin flight**. The approach
+shows the verified open-water core over the original shoreline context.
+The new contact level applies only inside that measured core, and only if
+verification finishes before you begin. The default does not change the
+separate Bowley Pond layer or the nearby House and Barn.
+
+To compare the original terrain, use
+`?departure=cavendish-dunelands-low&stockCavendishWater`. The old
+**Dunelands freshwater** checkbox and `?cavendishWaterReview` still run the
+independent explicit preview. Starting early, an unsigned source, a different
+departure, Detail scenery, or an incompatible WebGL render path leaves the
+ordinary lake stock.
 
 The study is the 2020 open-water core of [Lake of Shining Waters](https://geogratis.gc.ca/services/geoname/en/geonames.json?q=Lake%20of%20Shining%20Waters),
 official feature **BACHN** in the Canadian Geographical Names Database.
@@ -65,7 +72,25 @@ one-metre mask with SciPy, NumPy and pyproj, and use
 `tools/geodata/bake-cavendish-water-core.py --help` for the exact arguments;
 `--verify` checks both the checked-in archive and metadata byte-for-byte.
 
-## Verification
+## Standard flight comparison
+
+![Matched Cavendish Chase view: stock terrain at left, surveyed freshwater core at right](cavendish-standard-chase.webp)
+
+The paired Three.js capture holds the actual plane, camera and scene fixed.
+The [native replay receipt](cavendish-standard-flight.json) records three
+visible samples and two when the lake is out of frame. The close sample
+changed 62,772 pixels by more than two RGB codes with **zero** changes outside
+the independently projected water-and-rim support. There were no alpha
+changes, newly exposed sky or changes to the sky marker contribution. Every
+stock restore was byte-identical. The live view adds the water plane and
+seated bank curtain where they are visible; these counts are not FPS claims.
+
+In the overflight after the lake left the view, the contact probe still read
+1.468 m with water below the plane. At the later dry control it read the
+original 2.12 m terrain. The tests concern only the supported 2020 core, not
+the present shoreline, boardwalk or surrounding wetland.
+
+## Earlier explicit-study verification
 
 The [matched scope check](cavendish-water-scope.json) recorded 39,608
 changed pixels above two RGB codes in the aerial view and zero change in

@@ -20,7 +20,7 @@ function lampRoster(scene:Scene,camera:Camera){
 }
 /** Three r187 WebGL's public detached compile plus its narrowly pinned
  * currentProgram handle. A never-submitted program cannot discard stock. */
-export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:1|2|4|5=5,recheckUnattached=false,timeoutMs?:number):OlearyLink{
+export function olearyLinkPrograms(r:WebGLRenderer,camera:Camera,scene:Scene,draws:1|2|3|4|5=5,recheckUnattached=false,timeoutMs?:number):OlearyLink{
  return async(group,signal)=>{
   try{
    if(REVISION!=='187'||signal.aborted||group.parent||(draws===4?group.children.length!==2:group.children.length!==draws)||typeof r.compile!=='function')return;
