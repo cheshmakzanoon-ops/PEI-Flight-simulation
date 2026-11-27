@@ -1,0 +1,429 @@
+{
+  "scope": "Actual compiled Three.js player, fixed 840x540 cameras. q347 was an independent unmultisampled stock and 4x reference. Same app geometry, source and contacts.",
+  "profile0": {
+    "gap17": {
+      "pose": {
+        "lon": -62.83363477,
+        "lat": 46.20363636,
+        "first": "20-16",
+        "second": "20-17",
+        "edge": 17,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "eyeM": [
+        28154.574468061033,
+        66.24118867497815,
+        32876.00645380942
+      ],
+      "size": [
+        840,
+        540
+      ],
+      "profile": {
+        "alpha": true,
+        "depth": true,
+        "antialias": false,
+        "samples": 0
+      },
+      "pixelGate": {
+        "skyBefore": 13,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 13,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 13
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "stockRestored": true,
+      "draws": 40,
+      "triangles": 297399,
+      "actualDrawnFine": [
+        "20-17"
+      ],
+      "owners": [
+        {
+          "id": "20-16",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-17",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "sha256": {
+        "stock": "c591a157cb314704198276cbcb35b4dbf08a9c4fd239b0eb2c91d6e2ad5ea692",
+        "beforeA": "5d9fc2c6d180ede1a78ff421c449b018663e6b112b72d298ccf9f61459335d31",
+        "beforeB": "10b8b05a7ca6a2dbae6b8e54865ca982e8245b129ed03f20f50920aace730001",
+        "trial": "83052efc79d3a9090b799428c17cb34a1dbc2e67369b389c4bbeaa4af53ac606",
+        "afterA": "83052efc79d3a9090b799428c17cb34a1dbc2e67369b389c4bbeaa4af53ac606",
+        "afterB": "83052efc79d3a9090b799428c17cb34a1dbc2e67369b389c4bbeaa4af53ac606"
+      }
+    },
+    "gap19": {
+      "pose": {
+        "lon": -62.85521484,
+        "lat": 46.09818182,
+        "first": "20-18",
+        "second": "20-19",
+        "edge": 19,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "eyeM": [
+        26498.032333916206,
+        88.01158289606974,
+        44598.44740697662
+      ],
+      "size": [
+        840,
+        540
+      ],
+      "profile": {
+        "alpha": true,
+        "depth": true,
+        "antialias": false,
+        "samples": 0
+      },
+      "pixelGate": {
+        "skyBefore": 17,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 17,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 17
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "stockRestored": true,
+      "draws": 25,
+      "triangles": 308173,
+      "actualDrawnFine": [
+        "20-19"
+      ],
+      "owners": [
+        {
+          "id": "20-18",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-19",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "sha256": {
+        "stock": "eb605f4af7a731f4f7957746825d710b9e62a57cecf9723d21b3551285442b75",
+        "beforeA": "e8dd55393ccc23abde775b618213ed8c4b9b95e8aee734e20cea957780ebde1b",
+        "beforeB": "1c8f08f72564155ca8e779bf96232a71ae330679bdb7b047098f3ac031848f5e",
+        "trial": "6bfa9040151a82a7ecac5cf73a1a80f5789e652e3804e5e87a9654137fe7e111",
+        "afterA": "6bfa9040151a82a7ecac5cf73a1a80f5789e652e3804e5e87a9654137fe7e111",
+        "afterB": "6bfa9040151a82a7ecac5cf73a1a80f5789e652e3804e5e87a9654137fe7e111"
+      }
+    },
+    "clean16": {
+      "pose": {
+        "lon": -62.98221484,
+        "lat": 46.25636364,
+        "first": "18-15",
+        "second": "18-16",
+        "edge": 16,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "eyeM": [
+        16749.183000415585,
+        60.60563692839969,
+        27014.784865614896
+      ],
+      "size": [
+        840,
+        540
+      ],
+      "profile": {
+        "alpha": true,
+        "depth": true,
+        "antialias": false,
+        "samples": 0
+      },
+      "pixelGate": {
+        "skyBefore": 0,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "stockRestored": true,
+      "draws": 40,
+      "triangles": 310907,
+      "actualDrawnFine": [],
+      "owners": [
+        {
+          "id": "18-15",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "18-16",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "sha256": {
+        "stock": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945",
+        "beforeA": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945",
+        "beforeB": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945",
+        "trial": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945",
+        "afterA": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945",
+        "afterB": "4391e73c250cb05b97a91ffdb8c8d49e305656e6bfae0d0abb3f741dc814c945"
+      }
+    },
+    "mixed17": {
+      "pose": {
+        "lon": -62.83363477,
+        "lat": 46.20363636,
+        "first": "20-16",
+        "second": "20-17",
+        "edge": 17,
+        "east": 0.33,
+        "south": -0.94,
+        "dist": 5600,
+        "agl": 420,
+        "h": 0
+      },
+      "eyeM": [
+        29978.114331243924,
+        469.1765352668265,
+        27660.251671577356
+      ],
+      "size": [
+        840,
+        540
+      ],
+      "profile": {
+        "alpha": true,
+        "depth": true,
+        "antialias": false,
+        "samples": 0
+      },
+      "pixelGate": {
+        "skyBefore": 190739,
+        "skyAfter": 190739,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "stockRestored": true,
+      "draws": 44,
+      "triangles": 305996,
+      "actualDrawnFine": [],
+      "owners": [
+        {
+          "id": "20-16",
+          "lod": 112,
+          "seams": "112:112,112,56,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-17",
+          "lod": 56,
+          "seams": "56:56,56,8,8",
+          "gainAfter": 0
+        }
+      ],
+      "sha256": {
+        "stock": "6c5092638b1047e375d02f6d092cefca3405853ced92a0464c9351c418447e8d",
+        "beforeA": "ab56a5790b61779f9a0f9c3d27b13f4c4a5eee5a86843f29ef2b4b1c2d4c59ec",
+        "beforeB": "5d70751e5c1c2bd793fcec1acf2b9be409be10eaad80470545a7baa9beb1f273",
+        "trial": "6c5092638b1047e375d02f6d092cefca3405853ced92a0464c9351c418447e8d",
+        "afterA": "ab56a5790b61779f9a0f9c3d27b13f4c4a5eee5a86843f29ef2b4b1c2d4c59ec",
+        "afterB": "5d70751e5c1c2bd793fcec1acf2b9be409be10eaad80470545a7baa9beb1f273"
+      }
+    },
+    "coarse19": {
+      "pose": {
+        "lon": -62.85521484,
+        "lat": 46.09818182,
+        "first": "20-18",
+        "second": "20-19",
+        "edge": 19,
+        "east": 0.99,
+        "south": 0.1,
+        "dist": 10500,
+        "agl": 760,
+        "h": 0
+      },
+      "eyeM": [
+        36913.4434553428,
+        839.4339230561576,
+        45721.780773413775
+      ],
+      "size": [
+        840,
+        540
+      ],
+      "profile": {
+        "alpha": true,
+        "depth": true,
+        "antialias": false,
+        "samples": 0
+      },
+      "pixelGate": {
+        "skyBefore": 193330,
+        "skyAfter": 193330,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "stockRestored": true,
+      "draws": 188,
+      "triangles": 420707,
+      "actualDrawnFine": [],
+      "owners": [
+        {
+          "id": "20-18",
+          "lod": 56,
+          "seams": "56:8,56,56,8",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-19",
+          "lod": 56,
+          "seams": "56:56,56,8,8",
+          "gainAfter": 0
+        }
+      ],
+      "sha256": {
+        "stock": "fbe6249fac3d949ba8f1e1ad4baddc0947e7ed54bb29915f8227aeda57b285ab",
+        "beforeA": "cd8b37bbd1bf7d173a2e5506f7d3b3e62daf6a180f014cc375108449d3b11d59",
+        "beforeB": "2ed001eb52d6cfd5332942d419301291076552e241b93bcb6c95110286e1d336",
+        "trial": "fbe6249fac3d949ba8f1e1ad4baddc0947e7ed54bb29915f8227aeda57b285ab",
+        "afterA": "cd8b37bbd1bf7d173a2e5506f7d3b3e62daf6a180f014cc375108449d3b11d59",
+        "afterB": "2ed001eb52d6cfd5332942d419301291076552e241b93bcb6c95110286e1d336"
+      }
+    }
+  },
+  "baseline0": {
+    "gap17": {
+      "sha256": {
+        "stock": "c591a157cb314704198276cbcb35b4dbf08a9c4fd239b0eb2c91d6e2ad5ea692",
+        "beforeA": "5d9fc2c6d180ede1a78ff421c449b018663e6b112b72d298ccf9f61459335d31",
+        "beforeB": "10b8b05a7ca6a2dbae6b8e54865ca982e8245b129ed03f20f50920aace730001"
+      },
+      "pixelGate": {
+        "skyBefore": 13,
+        "skyAfter": 13,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      }
+    },
+    "gap19": {
+      "sha256": {
+        "stock": "eb605f4af7a731f4f7957746825d710b9e62a57cecf9723d21b3551285442b75",
+        "beforeA": "e8dd55393ccc23abde775b618213ed8c4b9b95e8aee734e20cea957780ebde1b",
+        "beforeB": "1c8f08f72564155ca8e779bf96232a71ae330679bdb7b047098f3ac031848f5e"
+      },
+      "pixelGate": {
+        "skyBefore": 17,
+        "skyAfter": 17,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      }
+    }
+  },
+  "parity4": {
+    "gap17": {
+      "identicalWithOriginal": true,
+      "sha256": {
+        "stock": "27bc5eba62b24407b7966e455bcf8686bb17abd7b93381746e7e3da180e40e34",
+        "beforeA": "a21c53ddad476833744b92ab11344a32833b16c89b60e5ac38825b1612d540f0",
+        "beforeB": "93a37ac8e10dbaea0c97edd99b15e90740f26b116946a567744732eba01e0334",
+        "trial": "04a275536d4ebb7507db10aec71629fa106f83c7e71674dc710fbd84d6d6c2f5",
+        "afterA": "04a275536d4ebb7507db10aec71629fa106f83c7e71674dc710fbd84d6d6c2f5",
+        "afterB": "04a275536d4ebb7507db10aec71629fa106f83c7e71674dc710fbd84d6d6c2f5"
+      },
+      "pixelGate": {
+        "skyBefore": 52,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 52,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 52
+      }
+    },
+    "gap19": {
+      "identicalWithOriginal": true,
+      "sha256": {
+        "stock": "c8284ffbf72a260324d5bcd1cf5cf635a5f7563ece0299261ebf014dcac42699",
+        "beforeA": "e48c0684bba8da81efef21e01551c8d6948afd76737c51cf089601652fa91ebf",
+        "beforeB": "9e0b34f2b8cc794c2af8a4de885856be007ffa598bcd4a587322ab3002044e5f",
+        "trial": "be4c70adc5819566060db2664eedb69b7d2eebdcf4ff2c163009a63773597ea4",
+        "afterA": "be4c70adc5819566060db2664eedb69b7d2eebdcf4ff2c163009a63773597ea4",
+        "afterB": "be4c70adc5819566060db2664eedb69b7d2eebdcf4ff2c163009a63773597ea4"
+      },
+      "pixelGate": {
+        "skyBefore": 72,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 72,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 72
+      }
+    }
+  }
+}

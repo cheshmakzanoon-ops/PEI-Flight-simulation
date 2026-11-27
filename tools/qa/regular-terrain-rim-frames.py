@@ -84,7 +84,7 @@ def capture(a,browser,url):
         try:
             page.goto(url+'/?diagnostics&qa='+quote(json.dumps(q)),wait_until='domcontentloaded')
             fixed.settle(page,errors)
-            if not a.stock_only and not a.no_msaa and name in {'gap17','gap19'}:
+            if not a.stock_only and name in {'gap17','gap19'}:
                 try:
                     page.wait_for_function("id=>window.islandAirDiagnostics?.regularNorthRim?.source==='verified'&&window.islandAirDiagnostics.regularNorthRim.drawnFine.includes(id)",arg=q['second'],timeout=120000,polling=350)
                 except Exception:
@@ -92,6 +92,7 @@ def capture(a,browser,url):
                     raise
             v=page.evaluate('window.nativeGroundRim()')
             assert not errors and v['samples']==(0 if a.no_msaa else 4) and v['buffersTouched']==0 and v['contactExact'] and v['contactSamples']==50 and v['stock']==v['rollback'],(name,v['owners'],errors)
+            assert v['attributes']['alpha'] is True and v['attributes']['depth'] is True and v['attributes']['antialias'] is (not a.no_msaa),v['attributes']
             assert len(v['owners'])==2 and not any(q['gainAfter'] for q in v['owners'])
             assert v['view']['W']==840 and v['view']['H']==540
             arr={}
@@ -111,10 +112,10 @@ def capture(a,browser,url):
               'strongInsideBytes':int(((C[:,:,:3].max(2)>0)&old).sum())}
             assert metric['skyIntroduced']==metric['alphaChanged']==0,metric
             if name in {'gap17','gap19'}:
-                assert {p['lod'] for p in v['owners']}=={112} and (a.no_msaa or metric['skyBefore']>0)
-                if not a.stock_only and not a.no_msaa:
+                assert {p['lod'] for p in v['owners']}=={112} and metric['skyBefore']>0
+                if not a.stock_only:
                     assert metric['skyAfter']==metric['strongOutsideStockSky']==0 and v['trial']['drawn']==[q['second']],(name,metric,v['trial'])
-            if a.no_msaa or name in {'clean16','mixed17','coarse19'}:
+            if a.stock_only or name in {'clean16','mixed17','coarse19'}:
                 assert np.array_equal(A,B) and not any(v['trial']['z']) and not set(v['trial']['drawn'])&{q['first'],q['second']},(name,v['owners'],metric)
                 if name in {'mixed17','coarse19'}:assert any(p['lod']!=112 for p in v['owners']),(name,v['owners'])
             results[name]={'pose':q,'renderer':'Chromium WebGL 2','pixelGate':metric,**v}

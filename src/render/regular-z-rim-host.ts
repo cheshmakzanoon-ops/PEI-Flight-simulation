@@ -7,7 +7,10 @@ import {standardLandAtlasMatches} from './meadow-standard.ts';
 import {acquireRegularNorthRimClip,patchRegularNorthRimVertex,
  RIM_UNIFORM,STOCK_TERRAIN_VERTEX,type StockTile} from './regular-z-rim-clip-v2.ts';
 
+import {regularNorthRimSampleProfile,type RegularNorthRimSampleProfile} from './regular-z-rim-raster-profile.ts';
+
 const PAIRS=[['20-16','20-17'],['20-18','20-19']] as const;
+
 type GroundTile={
  id:string;lod:number;seams?:string;relief?:unknown;coarse:THREE.Mesh;fine?:THREE.Mesh;local:THREE.ShaderMaterial;
 };
@@ -54,7 +57,8 @@ const candidates=(t:GroundTile)=>[t.fine,t.fine?.geometry,t.seams,
 export class RegularNorthRimDraw {
  private readonly pairs:Pair[]=[];
  private readonly gl:ReturnType<THREE.WebGLRenderer['getContext']>;
- private msaa?:boolean;
+ private sampleProfile?:RegularNorthRimSampleProfile;
+ private profileCaps?:THREE.WebGLRenderer['capabilities'];
  private phase:'cold'|'checking'|'verified'|'stock';
  private active=false;
  private previous:string[]=[];
@@ -148,7 +152,7 @@ export class RegularNorthRimDraw {
   if(this.active||!this.pairs.length)return;
   this.previous=[];
   if(!this.normalCanvas()||!(camera instanceof THREE.PerspectiveCamera)||camera.layers.mask!==1){
-   if(this.gl.isContextLost())this.msaa=undefined;
+   if(this.gl.isContextLost()){this.sampleProfile=undefined;this.profileCaps=undefined;}
    for(const p of this.pairs)this.unbind(p);
    return;
   }
@@ -158,13 +162,20 @@ export class RegularNorthRimDraw {
   }
   // Inspect the real default framebuffer once, on the qualified local path.
   // This is never a query per draw/frame; loss restarts the raster preflight.
-  if(this.msaa===undefined){
-   const a=this.gl.getContextAttributes();
+  const caps=this.renderer.capabilities;
+  if(this.sampleProfile===undefined||this.profileCaps!==caps){
+   // r187 recreates capabilities even if both restore events occurred between
+   // RAFs and getContext() still returns the same WebGL object.
+   this.profileCaps=caps;
    // Three r187 deliberately asks WebGL for alpha:true also when the
    // ordinary renderer constructor's *clear* alpha option is false.
-   this.msaa=!!a&&a.antialias&&a.alpha&&a.depth&&this.gl.getParameter(this.gl.SAMPLES)===4;
+   this.sampleProfile=regularNorthRimSampleProfile(
+    this.gl.getContextAttributes(),()=>this.gl.getParameter(this.gl.SAMPLES));
   }
-  if(!this.msaa)return;
+  if(this.sampleProfile==='unsupported'){
+   for(const p of this.pairs)this.unbind(p);
+   return;
+  }
   if(this.phase==='cold'){
    this.phase='checking';
    const bytes=this.cover.bytes,buffer=bytes.buffer;
@@ -193,7 +204,7 @@ export class RegularNorthRimDraw {
     const priorBefore=object.onBeforeRender,priorAfter=object.onAfterRender;
     const before:THREE.Object3D['onBeforeRender']=(r,sc,cameraArg,g,mat,group)=>{
      this.neutral(p);
-     if(!this.active||!p.bound||!this.normalCanvas(r,sc)||cameraArg!==camera||g!==object.geometry||
+     if(!this.active||!p.bound||!this.normalCanvas(r,sc)||r.capabilities!==caps||cameraArg!==camera||g!==object.geometry||
         mat!==m||group!=null||object!==p.south.fine||camera.layers.mask!==1||
         object.onBeforeRender!==before||object.onAfterRender!==after||!this.coarseOK(p)||!this.stillExact(p)){
       // This callback precedes setProgram. If a foreign wrapper replaced our
@@ -206,7 +217,7 @@ export class RegularNorthRimDraw {
      if(z>0){p.scalar.value=z;m.uniformsNeedUpdate=true;}else this.unbind(p);
     };
     const after:THREE.Object3D['onAfterRender']=(r,sc,cameraArg,g,mat,group)=>{
-     if(p.scalar.value>0&&p.bound&&this.active&&this.normalCanvas(r,sc)&&cameraArg===camera&&g===object.geometry&&
+     if(p.scalar.value>0&&p.bound&&this.active&&this.normalCanvas(r,sc)&&r.capabilities===caps&&cameraArg===camera&&g===object.geometry&&
         mat===m&&group==null&&camera.layers.mask===1&&this.coarseOK(p)&&this.stillExact(p)&&proof.value()===p.scalar.value)
       this.previous.push(p.south.id);
      this.neutral(p);

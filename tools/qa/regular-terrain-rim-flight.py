@@ -4,7 +4,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--dist',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
-p.add_argument('--corridors',type=Path,required=True);p.add_argument('--chromium',required=True);a=p.parse_args()
+p.add_argument('--samples',type=int,choices=(0,4),default=4);p.add_argument('--corridors',type=Path,required=True);p.add_argument('--chromium',required=True);a=p.parse_args()
 class Quiet(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*v):pass
 rows=json.loads(a.corridors.read_text());report={}
@@ -30,11 +30,13 @@ with http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,dir
    k=hit.json_value();hit.dispose()
    page.wait_for_function("""o=>{const d=window.islandAirDiagnostics;
      return d?.mode==='flight'&&Math.hypot(d.x-o[0],d.z-o[1])>=150;}""",arg=O)
+   profile=page.evaluate("()=>{const gl=document.querySelector('#world').getContext('webgl2'),a=gl.getContextAttributes();return {antialias:a.antialias,alpha:a.alpha,depth:a.depth,samples:gl.getParameter(gl.SAMPLES)}}")
+   assert profile=={'antialias':a.samples==4,'alpha':True,'depth':True,'samples':a.samples},profile
    end=page.evaluate('window.islandAirDiagnostics')
    assert not errors and not end['layerWarnings'],(errors,end['layerWarnings'])
    page.keyboard.press('v');page.wait_for_function("window.islandAirDiagnostics?.camera==='Cockpit'")
    page.keyboard.press('p');page.wait_for_function("window.islandAirDiagnostics?.mode==='paused'")
-   report[n]={'actualCompiledPlayer':True,'route':end['site'],'scope':'Private aircraft placement from signed dry corridor, no real navigation use.',
+   report[n]={'actualCompiledPlayer':True,'profile':profile,'route':end['site'],'scope':'Private aircraft placement from signed dry corridor, no real navigation use.',
      'drawOwnerAtMovingChase':k['regularNorthRim'],'travelAtWitnessM':math.hypot(k['x']-O[0],k['z']-O[1]),
      'totalTravelM':math.hypot(end['x']-O[0],end['z']-O[1]),'witnessPose':[k['x'],k['altitude'],k['z'],k['heading']],
      'groundClearanceM':k['altitude']-k['groundY'],'drawsAtWitness':k['drawCalls'],'cockpitAndPause':True,'errors':errors}
