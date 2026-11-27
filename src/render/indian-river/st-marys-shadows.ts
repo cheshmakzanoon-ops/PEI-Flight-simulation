@@ -266,3 +266,7 @@ export class StMarysShadows{
   }
   get count(){return this.ready?4:0;}
 }
+
+// Share the exact recipes with the detached Standard preflight.
+export {KEY as ST_MARYS_SLOT_ATTRIBUTE,receiverVertex as ST_MARYS_RECEIVER_VERTEX,
+ patchShaders as patchStMarysStockSuppression,copyShadowProgram as borrowStMarysShadowMaterial};
