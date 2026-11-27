@@ -67,11 +67,11 @@ jobs:
     name: Browser replay / ${{ matrix.lane }}
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: ${{ (matrix.lane == 'oleary-access-roof' || matrix.lane == 'runway03-pavement') && 19 || 15 }}
+    timeout-minutes: ${{ (matrix.lane == 'oleary-access-roof' || matrix.lane == 'runway03-pavement' || matrix.lane == 'summerside-runway-pavement') && 19 || 15 }}
     strategy:
       fail-fast: false
       matrix:
-        lane: [core, terminal, oleary, indian-river, farmland, cape-stone, cape-water, souris-west, oleary-access-roof, montague-bridge, runway03-pavement, east-point-phase-ii, georgetown-school-walls, rustico-lighthouse, bowley-standard]
+        lane: [core, terminal, oleary, indian-river, farmland, cape-stone, cape-water, souris-west, oleary-access-roof, montague-bridge, runway03-pavement, summerside-runway-pavement, east-point-phase-ii, georgetown-school-walls, rustico-lighthouse, bowley-standard]
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -122,6 +122,7 @@ jobs:
             oleary-access-roof) node tools/oleary-access-roof-smoke.mjs ;;
             montague-bridge) node tools/montague-bridge-pass-smoke.mjs ;;
             runway03-pavement) node tools/cyyg03-pavement-smoke.mjs ;;
+            summerside-runway-pavement) node tools/cysu05-pavement-smoke.mjs ;;
             east-point-phase-ii) node tools/east-point-phase-ii-smoke.mjs ;;
             georgetown-school-walls) node tools/georgetown-school-walls-smoke.mjs ;;
             rustico-lighthouse) node tools/rustico-lighthouse-smoke.mjs ;;

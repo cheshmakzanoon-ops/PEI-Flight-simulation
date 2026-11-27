@@ -11,6 +11,8 @@
 - **Transport.** Real Vite static server returned 206 for 90 detail requests during representative all-county traversal; no missing detail at captured scenes. A separate no-range static server fetched each full pack once and reused it during five cases. Automatic content decoding vs verbatim gzip is handled for .gz layers.
 - **Defects corrected by iteration:** sustained keyboard rotation causing immediate stall after takeoff; merged geometry memory growth; roads disappearing when hosts label a file Content-Encoding: gzip; terrain visibly clipping through the runway; distant water moiré; opaque prop blades in front of pilot; panorama-longitude filtering seam; a bridge terminus previously appearing to end in open water. The canopy pass replaced invalid multiply blending with a tested transparent contact shadow. The low-pass regression check covers a case in which the ocean had drawn over shallow land under trees.
 
+The [Summerside 05/23 close pavement](qa/summerside-runway-pavement.md) keeps runway paint and contact intact during a normal ground roll.
+
 The deterministic suite includes a continuous 182 km West Prince to East Point simulation, and a short-final flare, touchdown and braking on Charlottetown runway 03. The [matched Summerside Hangar 9 baseline](qa/hangar9.md) separates the existing scenery error from flight behavior and its off-screen control.
 
 The [two scoped terrain rim closures](qa/regular-terrain-rim.md) distinguish actual sky gaps from image tile seams and preserve flight contact.

@@ -271,3 +271,13 @@ test('runway 03 comparison cannot move unrelated Standard terrain or bypass the 
   assert.equal(runway03PavementRequested(new URLSearchParams('runway03PavementReview&'+opt)),false);
  }
 });
+test('Summerside close pavement is local to ordinary Standard and its own stock switch',async()=>{
+ const {summersideRunwayPavementRequested,runway03PavementRequested}=await import('../src/app/scenery-profile.ts');
+ for(const query of ['','departure=cysu&diagnostics','scenery=standard&stockRunway03Pavement','stockKingsFieldPass']){
+  assert.equal(summersideRunwayPavementRequested(new URLSearchParams(query)),true,query);
+ }
+ for(const query of ['qa=x','scenery=detail','scenery=standard&scenery=standard','runway03PavementReview','legacyShoreArcs','stockSummersideRunwayPavement']){
+  assert.equal(summersideRunwayPavementRequested(new URLSearchParams(query)),false,query);
+ }
+ assert.equal(runway03PavementRequested(new URLSearchParams('stockSummersideRunwayPavement')),true);
+});

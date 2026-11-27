@@ -2,9 +2,17 @@ import * as THREE from 'three';
 import {RUNWAYS} from '../sim/places.ts';
 export const mainRunwayIndex=RUNWAYS.findIndex(r=>r.id==='CYYG03');
 export const mainRunwaySwatch=[mainRunwayIndex*128+60,1024] as const;
+export const princeRunwayIndex=RUNWAYS.findIndex(r=>r.id==='CYSU05');
+export const princeRunwaySwatch=[princeRunwayIndex*128+60,1024] as const;
 export const runwayAtlasSize=[384,2048] as const;
 export function mainRunwayIntersects(x0:number,z0:number,x1:number,z1:number){
- const r=RUNWAYS[mainRunwayIndex];if(!r)return false;
+ return runwayIntersects(mainRunwayIndex,x0,z0,x1,z1);
+}
+export function princeRunwayIntersects(x0:number,z0:number,x1:number,z1:number){
+ return runwayIntersects(princeRunwayIndex,x0,z0,x1,z1);
+}
+function runwayIntersects(index:number,x0:number,z0:number,x1:number,z1:number){
+ const r=RUNWAYS[index];if(!r)return false;
  const {x,z}=r.p,ex=x+r.dx*r.length,ez=z+r.dz*r.length;
  const hx=Math.abs(r.dz)*r.width*.5,hz=Math.abs(r.dx)*r.width*.5;
  return x0<=Math.max(x,ex)+hx&&x1>=Math.min(x,ex)-hx&&
@@ -30,13 +38,13 @@ export function runwayAtlas(){
   }g.restore();
  }
  const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=4;
- const mainSwatchReady=()=>{
-  if(mainRunwayIndex!==0||RUNWAYS.length!==3)return false;
+ const swatchReady=(index:number,expected:number,swatch:readonly [number,number])=>{
+  if(index!==expected||RUNWAYS.length!==3)return false;
   try{
    // Test both centre rows; Canvas upload flips Y for the GPU texel.
-   const q=g.getImageData(mainRunwaySwatch[0],mainRunwaySwatch[1]-1,1,2).data;
+   const q=g.getImageData(swatch[0],swatch[1]-1,1,2).data;
    return [65,69,70,255,65,69,70,255].every((v,i)=>q[i]===v);
   }catch{return false;}
  };
- return {map:tex,mainSwatchReady,orig:RUNWAYS.map(r=>new THREE.Vector4(r.p.x,r.p.z,r.dx,r.dz)),size:RUNWAYS.map(r=>new THREE.Vector2(r.length,r.width))};
+ return {map:tex,mainSwatchReady:()=>swatchReady(mainRunwayIndex,0,mainRunwaySwatch),princeSwatchReady:()=>swatchReady(princeRunwayIndex,2,princeRunwaySwatch),orig:RUNWAYS.map(r=>new THREE.Vector4(r.p.x,r.p.z,r.dx,r.dz)),size:RUNWAYS.map(r=>new THREE.Vector2(r.length,r.width))};
 }

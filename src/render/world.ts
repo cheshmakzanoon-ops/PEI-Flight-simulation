@@ -89,8 +89,8 @@ import {nearshoreFoamGLSL,nearshoreFoamRouterGLSL,nearshoreFoamMatches} from './
 import {BuildingShadows,buildingShadowGLSL} from './local-building-shadows.ts';
 import { DetailImagery } from './detail.ts';
 import {detailRetryAt} from './detail-retry.ts';
-import {runwayFinishGLSL} from './runway-finish.ts';
-import {runwayAtlas,mainRunwayIndex,mainRunwaySwatch,runwayAtlasSize,mainRunwayIntersects} from './runway-paint.ts';
+import {runwayFinishGLSL,princeRunwayFinishGLSL} from './runway-finish.ts';
+import {runwayAtlas,mainRunwayIndex,mainRunwaySwatch,runwayAtlasSize,mainRunwayIntersects,princeRunwayIndex,princeRunwaySwatch,princeRunwayIntersects} from './runway-paint.ts';
 import { RUNWAYS,runwayAt } from '../sim/places.ts';
 import type { Surface } from '../sim/flight.ts';
 const base = import.meta.env.BASE_URL + 'world/';
@@ -315,11 +315,11 @@ const cliffFrag=(east:boolean,basin=false,baywalk=false,tryonRock=false)=>fp+(ea
  if(use>.001)col=mix(col,tryonStoneColor(p,rockPixel,face),use);
  `:''}
  gl_FragColor=vec4(mist(col,d,p.y),1.);`+out;
-const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false,marsh=false,runway03=false)=>fp+(marsh?marshSurfaceGLSL:'')+runwayFinishGLSL+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
+const landFrag=(east:boolean,bench=false,harbour=false,souris=false,castBuildings=false,showFloor=false,showBasin=false,basin=false,bankSmooth=false,montague=false,baywalkCourt=false,cape=false,bowley=false,meadow=false,fieldPilot=false,provinceFields=false,gablesGravel=false,gablesFairway=false,localTrail=false,dryCoast=false,grassStudy=false,churchSun=false,hogIsland=false,nearGrassNap=false,westDuneAerial=false,duneSandShader='',grassCoastShader='',pastureSlots=false,marsh=false,runway03=false,princeRunway=false)=>fp+(princeRunway?princeRunwayFinishGLSL:'')+(marsh?marshSurfaceGLSL:'')+runwayFinishGLSL+duneSandShader+grassCoastShader+(westDuneAerial?westDuneAerialGLSL:'')+(hogIsland?hogPhotoGLSL:'')+(churchSun?churchSunGLSL:'')+(grassStudy?provinceGrassGLSL:'')+(nearGrassNap?sourceGrassNapGLSL:'')+(dryCoast?drySoilGLSL:'')+(localTrail?gablesTrailGLSL:'')+(gablesFairway?gablesFairwayGLSL:'')+(gablesGravel?gablesGravelGLSL:'')+(provinceFields?provinceFieldOpticsGLSL:'')+(fieldPilot?fieldPilotGLSL:'')+(meadow?meadowGLSL:'')+(bowley?bowleyClipGLSL:'')+lighthouseGroundGLSL+(cape?northCapeShadowGLSL:'')+(baywalkCourt?baywalkLandGLSL+baywalkCourtOpticsGLSL:'')+(montague?montagueBankGLSL:'')+(east?eastSandstoneGLSL:'')+(bench?eastBenchGLSL:'')+(harbour?harbourCoastGLSL:'')+(basin?basinChannelGLSL:'')+(souris?sourisOcclusionGLSL+sourisGroundLightGLSL:'')+(castBuildings?buildingShadowGLSL:'')+(showFloor?forestFloorGLSL:'')+detailBlendGLSL+(showBasin?basinSandGLSL:'')+`
  #ifdef SURVEY_LIGHT
  varying float vSurveyWeight; varying vec3 vSurveyNormal;
  #endif
- uniform sampler2D imageMap,coverMap,detailMap,paintMap; uniform float hasDetail;uniform vec4 detailBox;${runway03?'uniform float runway03PavementLive;':''}
+ uniform sampler2D imageMap,coverMap,detailMap,paintMap; uniform float hasDetail;uniform vec4 detailBox;${runway03?'uniform float runway03PavementLive;':''}${princeRunway?'uniform float summersideRunwayPavementLive;':''}
  uniform vec4 airport[3];uniform vec2 stripSize[3];
  ${showFloor&&montague?'uniform vec4 montagueGroundBounds;':''}
  ${pastureSlots?'/*PASTURE_DECL*/':''}
@@ -470,6 +470,13 @@ ${runway03?`   // Compare actual linear samples against a known original pure as
     vec2 metric=vec2(along*stripSize[i].x,(across-.5)*stripSize[i].y);
     float pix=max(length(terrainDx.xz),length(terrainDy.xz));
     paint=cyygPaving(paint,metric,pix,d);
+   }
+`:''}${princeRunway?`   if(summersideRunwayPavementLive>.5&&i==${princeRunwayIndex}&&d<560.&&
+      all(equal(textureSize(paintMap,0),ivec2(${runwayAtlasSize.join(',')})))&&
+      all(equal(paint,texelFetch(paintMap,ivec2(${princeRunwaySwatch.join(',')}),0).rgb))){
+    vec2 metric=vec2(along*stripSize[i].x,(across-.5)*stripSize[i].y);
+    float pix=max(length(terrainDx.xz),length(terrainDy.xz));
+    paint=cysuPaving(paint,metric,pix,d);
    }
 `:''}   if(i==${CYYG_FINISH_INDEX}){
     vec2 metric=vec2(along*stripSize[i].x,(across-.5)*stripSize[i].y);
@@ -651,6 +658,7 @@ export class World {
  readonly nearshoreMediumPixelGate={value:0};
  readonly nearshoreFoamArmed:boolean;
  readonly runway03PavementLive={value:0};
+ readonly summersideRunwayPavementLive={value:0};
  readonly meadowStrength={value:1};
  readonly gravelStrength={value:0};
  readonly trailStrength={value:0};
@@ -738,7 +746,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string,summersideRunwayPavement=false){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -781,6 +789,7 @@ export class World {
    cm.magFilter=cm.minFilter=THREE.LinearFilter;cm.needsUpdate=true;
    const paint=runwayAtlas();
    this.runway03PavementLive.value=Number(runway03Pavement&&paint.mainSwatchReady());
+   this.summersideRunwayPavementLive.value=Number(summersideRunwayPavement&&paint.princeSwatchReady());
    const ripple=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'art/wind-slopes.webp');ripple.wrapS=ripple.wrapT=THREE.RepeatWrapping;ripple.anisotropy=4;
    const uniforms={...(air?{atmosphericLabGain:air.gain}:{}),detailClock:this.detailClock,detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(1,1)},
        detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},eastRockBounds,rippleMap:{value:ripple},sun:{value:this.sun},clock:this.t,imageMap:{value:img},skyMap:{value:sky},coverMap:{value:cm},detailMap:{value:img},hasDetail:{value:0},detailBox:{value:new THREE.Vector4(0,0,1,1)},paintMap:{value:paint.map},airport:{value:paint.orig},stripSize:{value:paint.size},extent:{value:new THREE.Vector4(T.left,T.top,T.right-T.left,T.bottom-T.top)}};
@@ -966,8 +975,9 @@ export class World {
     const marshHere=!survey&&!rock&&!localHarbour&&!localBasin&&!localMontague&&!sourisLocal&&!pondMaterialFence?
       this.marsh?.uniforms(x0,z0,x0+w,z0+d):undefined;
     const mainRunwayHere=this.runway03PavementLive.value===1&&mainRunwayIntersects(x0,z0,x0+w,z0+d);
-    const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'',pastureEligible&&i===PASTURE.i&&j===PASTURE.j,!!marshHere,mainRunwayHere);
-    const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(mainRunwayHere?{runway03PavementLive:this.runway03PavementLive}:{}),...marshHere,...(tone?{shoreToneGain:this.shoreToneGain}:{}),...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
+    const princeRunwayHere=this.summersideRunwayPavementLive.value===1&&princeRunwayIntersects(x0,z0,x0+w,z0+d);
+    const landFragment=landFrag(rock,useBench,localHarbour,sourisLocal,!!this.buildingShadows,showLocalFloor,!!localSand,localBasin,surveyedBank,localMontague,false,hasCape,bowleyLocal,showMeadow,!!useField,!!provinceHere,localGravel,!!localFairway,localTrail,localRusticoSoil,!!grassHere,!!churchHere,!!hogHere,!!grassHere&&!!grassStudy.nap,!!duneHere,duneSandHere?duneSand?.shader:'',grassCoastHere?grassCoast?.shader:'',pastureEligible&&i===PASTURE.i&&j===PASTURE.j,!!marshHere,mainRunwayHere,princeRunwayHere);
+    const local=sceneShader({defines:{...(grassHere&&grassStudy.nap?{SOURCE_GRASS_NAP_METRIC:1}:{}),...(survey?{SURVEY_LIGHT:1}:{}),...(localBasin&&cover.wharfToe?{BASIN_WHARF_TOE:1}:{})},uniforms:{...uniforms,...(mainRunwayHere?{runway03PavementLive:this.runway03PavementLive}:{}),...(princeRunwayHere?{summersideRunwayPavementLive:this.summersideRunwayPavementLive}:{}),...marshHere,...(tone?{shoreToneGain:this.shoreToneGain}:{}),...churchHere?.uniforms,...hogHere?.uniforms,...duneHere?.uniforms,...duneSandHere,...grassCoastHere,...(localRusticoSoil?coastSoilUniforms:{}),...this.buildingShadows?.uniforms,...(hasCape?this.capeShadow?.uniforms:{}),...meadowUniforms,...localField,...provinceUniforms,...grassUniforms,...localFairway?.uniforms(),...floorUniforms,...benchUniforms,...localSand,...(localHarbour?harbourUniforms:{}),...(localBasin?basinUniforms:{}),...(localMontague?montagueUniforms:{}),...localPond?.surfaceUniforms,...(localGravel?{localGravelStrength:this.gravelStrength}:{}),...(localTrail?{gablesTrailStrength:this.trailStrength}:{}),...(sourisLocal?sourisLighting?.uniforms:{}),hasDetail:{value:0},detailMap:{value:img},detailBox:{value:new THREE.Vector4(i/nx,j/nz,nx,nz)},
      detailReady:{value:DETAIL_NOT_READY},detailSize:{value:new THREE.Vector2(w,d)},
      detailCardinal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)},detailDiagonal:{value:new THREE.Vector4().setScalar(DETAIL_NOT_READY)}},vertexShader:vertex,fragmentShader:smoothShoreTone(landFragment,tone)});
     orthoSeams?.bind(i+'-'+j,local);

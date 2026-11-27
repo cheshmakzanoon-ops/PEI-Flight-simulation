@@ -1,0 +1,124 @@
+{
+  "schema": "pei-cysu-05-23-close-finish-v1",
+  "baseline": "8db0e4f87ee5d13247ba7e7273083fcfd0f2cd99",
+  "browser": "Chrome for Testing 158.0.8127.36 / WebGL2 / SwiftShader",
+  "moving": {
+    "live": [
+      {
+        "checkpoint": 65,
+        "position": [
+          -49293.897446166666,
+          14.47315220093107,
+          7557.60959229586
+        ],
+        "strong": 67750,
+        "support": 202115,
+        "partial": 1169,
+        "paint": 40638,
+        "paintDifference": 0,
+        "exterior": 0,
+        "exteriorStrong": 0,
+        "alpha": 0,
+        "viewport": [
+          830,
+          554
+        ],
+        "gpuDraws": 2,
+        "draws": 169,
+        "triangles": 285258,
+        "outside": []
+      },
+      {
+        "checkpoint": 160,
+        "position": [
+          -49237.80311274221,
+          14.52,
+          7479.872340283682
+        ],
+        "strong": 60423,
+        "support": 188833,
+        "partial": 1025,
+        "paint": 54201,
+        "paintDifference": 0,
+        "exterior": 0,
+        "exteriorStrong": 0,
+        "alpha": 0,
+        "viewport": [
+          830,
+          554
+        ],
+        "gpuDraws": 2,
+        "draws": 169,
+        "triangles": 283838,
+        "outside": []
+      }
+    ],
+    "veto": [
+      {
+        "sources": 0,
+        "draws": 0,
+        "x": -49323.36953869878,
+        "z": 7598.452924315825,
+        "summersideRunwayPavement": false
+      }
+    ],
+    "bad-swatch": [
+      {
+        "sources": 0,
+        "draws": 0,
+        "x": -49323.213592591754,
+        "z": 7598.236809405736,
+        "summersideRunwayPavement": false
+      }
+    ],
+    "charlottetown": [
+      {
+        "checkpoint": 15,
+        "position": [
+          5570.663411769835,
+          48.519999999999996,
+          24455.85984088772
+        ],
+        "passiveProgramDraws": 0,
+        "exactImage": true,
+        "exactSupport": true,
+        "draws": 163,
+        "triangles": 300310
+      }
+    ]
+  },
+  "fixed": {
+    "near05": {
+      "changed": 225896,
+      "over2": 91915,
+      "outside": 0,
+      "max": 12,
+      "scope": 330080,
+      "calls": 44,
+      "triangles": 251726,
+      "paintPixels": 67487,
+      "paintTouched": 0,
+      "motionP99": 4.0,
+      "motionPixels": 184823
+    },
+    "high": {
+      "changed": 0,
+      "over2": 0,
+      "outside": 0,
+      "max": 0,
+      "scope": 37287,
+      "calls": 18,
+      "triangles": 205722
+    }
+  },
+  "frameSha256": {
+    "cysu05-160-filtered.png": "539a3b8f96513e204628e6c321261f4cf032c3e4b868bbf352c2d4e72ba14312",
+    "cysu05-160-stock.png": "d5ba564ecad49b82834b06e9a6fb8b9ee3f1fd503436d6a7258ce017dbff9cba",
+    "cysu05-160-support-hi.png": "75064fedb93f895675c0a72ecee899414a18ccfcd8730ebe72c433185c215741",
+    "cysu05-160-support-lo.png": "d8a6770fed94c9832eab92e70c91f508e62d90963db1163c175f8bcefd250335",
+    "cysu05-65-filtered.png": "8128c1950a3befda60eaa81a8c116feb3128ee22a9c675c0ac87007fdd673a9a",
+    "cysu05-65-stock.png": "5aa1f7a5c669620090a13665d069140e9148bc6bb0efc5158f3a918de5dc35ae",
+    "cysu05-65-support-hi.png": "0b32c410afa45e9896bc7c18fa7e34b26eb5e3f1645a6b5f47aff35a6fe08bfa",
+    "cysu05-65-support-lo.png": "82e01fbbe1378e266dc684d0423551513301f93e128a0bfe3990b2cdbc7317ca"
+  }
+}

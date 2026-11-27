@@ -18,3 +18,18 @@ vec3 cyygPaving(vec3 paint,vec2 metres,float footprint,float d){
  return paint*(1.+quiet);
 }
 `;
+
+/** Original close mineral finish for the currently registered CYSU 05/23
+ * strip. No surveyed wear, joints, or asphalt/concrete divisions are assumed. */
+export const princeRunwayFinishGLSL=/* glsl */`
+vec3 cysuPaving(vec3 paint,vec2 metres,float footprint,float d){
+ if(footprint>=2.4||d>=560.)return paint;
+ float fade=(1.-smoothstep(.32,2.4,footprint))*(1.-smoothstep(225.,560.,d));
+ float rolling=(noise(metres*vec2(.071,.18)+vec2(6.3,28.2))-.5)*.115;
+ float mottling=1.-smoothstep(.10,.54,footprint);
+ if(mottling>.001)rolling+=(noise(metres*vec2(1.82,2.51)+17.4)-.5)*.20*mottling;
+ float grain=1.-smoothstep(.018,.115,footprint);
+ if(grain>.001)rolling+=(noise(metres*19.2+22.9)-.5)*.26*grain;
+ return paint*(1.+fade*rolling);
+}
+`;
