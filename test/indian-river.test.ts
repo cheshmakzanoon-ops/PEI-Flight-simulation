@@ -52,7 +52,15 @@ test('one optional owner uses precisely its original span and returns stock on w
  view.sync(false);assert.equal(old.geometry,stock);assert(!art.visible);
  view.sync(true);old.removeFromParent();view.sync(true);
  assert.equal(old.geometry,stock);assert(!art.visible);
- view.dispose();view.sync(true);assert(!art.visible);assert.equal(old.geometry,stock);
+ const removed=view.alternateForProof();assert(removed);
+ const foreignIndex=n.clone();removed.setIndex(foreignIndex);
+ let disposal=0;
+ removed.addEventListener('dispose',()=>{
+  assert.deepEqual(Object.keys(removed.attributes),[]);
+  assert.equal(removed.index,n);assert.equal(stock.getAttribute('position'),pos);
+  disposal++;
+ });
+ view.dispose();view.dispose();view.sync(true);assert(!art.visible);assert.equal(old.geometry,stock);assert.equal(disposal,1);
 });
 
 test('the ground-only church cast requires the paired raw bytes and black interpolation border',async()=>{

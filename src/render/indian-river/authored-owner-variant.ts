@@ -11,7 +11,7 @@ export function authenticatedOwnerVariant(mesh:Mesh,authored:Group,span:readonly
  const alternate=new BufferGeometry();
  for(const [k,a] of Object.entries(stock.attributes))alternate.setAttribute(k,a);
  alternate.boundingBox=stock.boundingBox;alternate.boundingSphere=stock.boundingSphere;
- alternate.setIndex(new BufferAttribute(idx,1));
+ const ownedIndex=new BufferAttribute(idx,1);alternate.setIndex(ownedIndex);
  let closed=false,show=false;
  authored.visible=false;
  return {
@@ -30,6 +30,10 @@ export function authenticatedOwnerVariant(mesh:Mesh,authored:Group,span:readonly
    if(closed)return;
    closed=true;show=authored.visible=false;
    if(mesh.geometry===alternate)mesh.geometry=stock;
+   // r187 removes every attached attribute from the WebGL buffer cache
+   // on geometry disposal. This view owns only its omission index.
+   for(const name of Object.keys(alternate.attributes))alternate.deleteAttribute(name);
+   alternate.setIndex(ownedIndex);
    alternate.dispose();
   },
  };
