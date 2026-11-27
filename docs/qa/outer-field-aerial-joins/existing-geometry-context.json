@@ -1,0 +1,30 @@
+{
+  "maxReportDistanceM": 400,
+  "scope": "Signed project centerlines and dated AEB footprints only; no inferred absence of fences, drains or current structures.",
+  "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cases": [
+    {
+      "name": "edge-5-11s",
+      "exactStripLonLat": [
+        -64.032693359375,
+        46.467169744318184,
+        -64.030212890625,
+        46.46737571022727
+      ],
+      "roadClippedDistance": 200.377,
+      "buildingClippedDistance": 10.754
+    },
+    {
+      "name": "edge-23-17s",
+      "exactStripLonLat": [
+        -62.62800390625,
+        46.150806107954544,
+        -62.6255234375,
+        46.15101207386364
+      ],
+      "roadClippedDistance": 400,
+      "buildingClippedDistance": 400
+    }
+  ]
+}

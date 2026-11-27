@@ -1,0 +1,71 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "edge-5-11s",
+      "axis": "z",
+      "owners": [
+        "5-11",
+        "5-12"
+      ],
+      "window": [
+        326,
+        328,
+        344,
+        346
+      ],
+      "donorWireSHA256": [
+        "5ac4ac2e425b87ecc80190ca6c6fbb22c4374758d1f58aa552e51f0f43e76097",
+        "19b5e01b0e980eaa60574fc6a317e17f70727bf0fd16580a52425df5252b35c7"
+      ],
+      "exactSourceRGBSHA256": "6f8329eee2d21ed8f2034d9343491a917006046adc113253311b30cd58d648e2",
+      "coverBox": [
+        704,
+        1482,
+        6,
+        3
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 32.793,
+      "medianInnerNeighbourStep": 5.916
+    },
+    {
+      "name": "edge-23-17s",
+      "axis": "z",
+      "owners": [
+        "23-17",
+        "23-18"
+      ],
+      "window": [
+        132,
+        134,
+        150,
+        152
+      ],
+      "donorWireSHA256": [
+        "fbc15f76a8cc3195fafdd08a84cfb287eb232cbb5f917c6ec1f8018d81e01f19",
+        "158079e5bbd8e6b22c5c0876e542e1b055892beee26dabf4ebf001d56eb87e2a"
+      ],
+      "exactSourceRGBSHA256": "ec0c8476d5e84a6e14f545fcc99b586cd384418804aef2060649b3f4d5d5b182",
+      "coverBox": [
+        2969,
+        2224,
+        6,
+        3
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 28.857,
+      "medianInnerNeighbourStep": 12.393
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}

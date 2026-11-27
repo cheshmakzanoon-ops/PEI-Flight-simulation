@@ -1,0 +1,57 @@
+[
+  {
+    "name": "edge-5-11s",
+    "owners": [
+      "5-11",
+      "5-12"
+    ],
+    "axis": "z",
+    "lon": -64.03145312,
+    "lat": 46.46817232540356,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -64.03145312,
+      46.46727273
+    ],
+    "baseDatumStockMetres": [
+      34,
+      42
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "edge-23-17s",
+    "owners": [
+      "23-17",
+      "23-18"
+    ],
+    "axis": "z",
+    "lon": -62.62676367,
+    "lat": 46.15180868540356,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -62.62676367,
+      46.15090909
+    ],
+    "baseDatumStockMetres": [
+      32,
+      33
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  }
+]

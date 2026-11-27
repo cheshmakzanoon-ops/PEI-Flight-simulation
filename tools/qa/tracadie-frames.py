@@ -68,8 +68,12 @@ CENTRAL=[
  ('edge-14-15s',14,15,'z',473,507,None),
  ('edge-15-17s',15,17,'z',343,377,None),
 ]
+OUTER=[
+ ('edge-5-11s',5,11,'z',336,370,None),
+ ('edge-23-17s',23,17,'z',142,176,None),
+]
 EXACT_EDGE_VIEWS=set()
-for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL:
+for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
  for suffix,reverse,high,held in [
    ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
@@ -89,7 +93,7 @@ for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTR
    dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
    agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
   INLAND.append(name+suffix)
-  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL:
+  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER:
    EXACT_EDGE_VIEWS.add(name+suffix)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 

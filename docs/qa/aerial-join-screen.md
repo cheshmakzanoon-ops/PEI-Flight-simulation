@@ -24,6 +24,7 @@ window [already corrected in Standard](inland-aerial-joins.md).
 - [Four eastern windows accepted after native and controllable-flight replay](eastern-aerial-joins.md)
 - [Two western Prince County windows after actual flight and image replays](western-aerial-joins.md)
 - [Two central and southern field joins from the next signed screen](central-aerial-joins.md)
+- [Another west and east field pair with moving Chase checks](outer-field-aerial-joins.md)
 - [Committed source attribution](../WORLD.md)
 
 To reproduce with Python, NumPy and Pillow from a clean checkout:

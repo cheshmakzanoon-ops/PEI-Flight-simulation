@@ -1,0 +1,49 @@
+[
+  {
+    "name": "edge-5-11s",
+    "mode": "normal",
+    "flightMeters": 150.227,
+    "alongMeters": 150.128,
+    "crossMeters": 5.447,
+    "groundClearance": 67.406,
+    "edge": {
+      "edge": "5-11 / 5-12",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-00.pack",
+      "sentinel-01.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "edge-23-17s",
+    "mode": "normal",
+    "flightMeters": 150.81,
+    "alongMeters": 150.711,
+    "crossMeters": 5.468,
+    "groundClearance": 63.807,
+    "edge": {
+      "edge": "23-17 / 23-18",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  }
+]
