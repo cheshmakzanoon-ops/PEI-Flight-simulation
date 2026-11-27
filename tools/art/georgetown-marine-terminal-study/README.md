@@ -20,6 +20,15 @@ Every factory returns a hidden, unmounted mesh. No factory changes the terrain, 
 - **Unresolved approach.** The model reaches original land, but the sampled approach is too narrow to read as a continuous working apron. Its apparent natural depth overlap also obscures 528 and 844 existing 4× raster samples of the plant on those passes. The study leaves both plant geometry and the standard player untouched. A live integration needs a clearer approach, agreed wall/ground treatment, and new native acceptance.
 - **Recheck the source.** Run `node --experimental-strip-types --test test/georgetown-marine-terminal-study.test.ts` from the project root. This checks exact packed geometry, material isolation, hidden scene ownership and the shed’s welded roof and wall seams. It does not rerun the matched flight or qualify visual quality.
 
+## Industrial plant workbench
+
+The stock plant (`q11220/106`) is a single flat-roofed model. The historical evidence instead shows a long lower gabled wing and several stepped upper volumes. The principal study models the largest supported volumes; the assembled workbench joins those volumes to three more supported roof groups through a disjoint plan partition in a single draw. It does not stack mesh layers or replace the original plant in the game.
+
+- `createDetachedGeorgetownPrincipalPlant(sun)`: 168 triangles, about 90.6% of the signed plan.
+- `createDetachedGeorgetownPlantWorkbenchAssembly(sun)`: 240 triangles, about 96.5% of the plan. About 160 m² remain open, notably on the east side. The added shapes improve roofline and end coverage, but do not solve the coastal junction or wall bases.
+- Native matched tests against the principal model changed 450 and 670 RGB pixels at ticks 810 and 900, with no alpha change or changes outside the two models’ verified support. The principal restores exactly. An intentionally incomplete trial still exposes some background; don't use that trial as a full replacement.
+- Run `node --experimental-strip-types --test test/georgetown-industrial-workbench.test.ts` for the packed geometry and rooftop non-overlap checks. The source uses the same 2020 CanElevation edition and 2025 photograph below. The photograph is a qualitative industrial reference, not a survey of the plant or its openings.
+
 ## Sources
 
 - Natural Resources Canada [CanElevation LiDAR Point Clouds](https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947), Prince Edward Island 2020. Scoped point classifications and aggregates in the original metre-based projection, with CGVD2013 vertical control, support the historical deck, roof and landward trials. Contains information licensed under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada). This is not a current survey or a navigation product.
