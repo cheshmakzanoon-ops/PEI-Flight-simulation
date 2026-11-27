@@ -591,7 +591,13 @@ export function seacowExteriorRequested(q:URLSearchParams){
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);
 }
 
-/** This is only the yard, selected urban pavement and sidewalks, never the architecture itself. */
+/** Route-owned Standard lake optics; leave all explicit Dalvay studies independent. */
+export function standardDalvayWaterRequested(q:URLSearchParams){
+ const modes=q.getAll('scenery');
+ return modes.length<=1&&modes.every(v=>v===''||v==='standard')&&q.getAll('departure').length<=1&&
+  standardComparisonQuery(q)&&!['qa','stockDalvayWaterOptics','dalvayWaterOptics',
+   'dalvayExteriorStudy','dalvayGlazingStudy'].some(k=>q.has(k));
+}
 export function dalvayWaterRequested(q:URLSearchParams){
  return q.has('dalvayWaterOptics')&&!q.has('stockDalvayWaterOptics')&&
   q.getAll('scenery').every(mode=>mode===''||mode==='standard')&&standardComparisonQuery(q);

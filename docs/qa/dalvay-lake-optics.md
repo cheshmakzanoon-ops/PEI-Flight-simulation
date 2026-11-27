@@ -1,10 +1,12 @@
-# Dalvay Lake optical preview
+# Dalvay Lake reflections
 
-This optional Three.js preview changes the appearance of the verified interior of Dalvay Lake. It adds directional surface ripples and Fresnel reflection of the simulator's existing sky, without replacing a single terrain triangle. The surrounding cover, shore, buildings and flight model stay as they were. This is not a new water level, a modern shoreline survey, object reflections, or a changed collision surface.
+In **Standard** scenery, choose **Dalvay Lake · coastal pass**. Wait for **Dalvay Lake reflections ready** before pressing **Begin flight**. From the Chase camera, sky reflections and directional ripples become visible on the approach to the lake. The treatment fades in between about 1.2 km and 900 m from the camera, on signed interior water only. No new water elevation, shoreline, collision surface, or object reflections are implied.
 
-- Enable: `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` in Standard scenery.
-- Compare at the same departure: `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics&stockDalvayWaterOptics`. Leaving the option absent keeps the stock renderer and makes no preview asset requests.
-- The option stays off on an unrecognized terrain, an unreadable asset or an unexpected ground material.
+- Compare with `?departure=dalvay-lake-coastal-pass&stockDalvayWaterOptics` for the original water without disabling the detailed manor.
+- `?departure=dalvay-lake-coastal-pass&stockDalvayExterior` keeps the lake treatment available but uses the stock building.
+- `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` retains the older explicit water-only study. Other departures do not request the default lake mask.
+
+Start immediately if you prefer: beginning before readiness, or failing verification, leaves the stock lake for the whole flight. This does not change the aircraft, route or ground contact.
 
 ## What the sources support
 
@@ -16,14 +18,20 @@ A separate attempt to estimate a water elevation found only 48 m² of conservati
 
 ## Asset and rollback
 
-The in-app preview fetches one local 1,091-byte mask only after verifying the exact atlas and both eligible original terrain owners. The opaque `.dlb` suffix prevents servers from implicitly removing the internal gzip encoding before its packed SHA-256 can be verified. The renderer checks both packed and decoded bytes before allocating a texture. If either owner withdraws, both original shader and uniform sets are restored.
+The ordinary departure and explicit study both use the same 1,091-byte mask, fetched only after verifying the exact atlas and both eligible original terrain owners. Standard links a detached shader variant for each of the two original N112 terrain meshes. It borrows their existing lighting and time uniforms and restores both original materials after each draw. It withdraws for the rest of the flight if either original receiver becomes ineligible. The opaque `.dlb` suffix prevents servers from implicitly removing the internal gzip encoding before its packed SHA-256 can be verified. The renderer checks both packed and decoded bytes before allocating a texture. If either owner withdraws, both original shader and uniform sets are restored.
 
 - Packed SHA-256: `149ee965bc52ca42e75f506a5f688dd9b3f2420264ff427c5c23e7496d190f56`
 - Unpacked SHA-256: `104b60f2dfc6d0f299a7fcff0169992f5d9c51a03b7dfbfdb81ad85b871fa139`
 
-## Matched views
+## Standard flight comparison
 
-These are registered Three.js captures from the opposite bank, not photographs. The old manor and surroundings are unchanged in this preview.
+![Matched Standard Chase renders: stock lake at left, reflections at right; the authored manor is present in both](dalvay-lake-optics/standard-chase.webp)
+
+The pictures are two draws from the same live Chase frame, with the authored manor unchanged. The [native flight receipt](dalvay-lake-optics/standard-flight.json) records the same-frame stock, reflection and restored draws, including the original terrain and camera transforms. Three close samples at 900 × 570 changed 30,390, 52,810 and 52,385 pixels by more than two RGB codes. The departure and late sample were byte-identical. The independent pixel projection found no change outside the signed water support, no alpha change, and identical draw and triangle counts; the separate unaltered-clock run checked the lake with the authored manor loaded. These are visual isolation checks, not device performance measurements.
+
+## Original water-only study
+
+These are registered Three.js captures from the older explicit study on the opposite bank, not photographs. The stock manor and surroundings are unchanged in these images.
 
 | Standard terrain | Standard with the lake preview |
 | --- | --- |
@@ -33,7 +41,7 @@ At an extreme grazing terrain edge, multisample interpolation could evaluate ord
 
 Rebuild the opaque mask with `tools/geodata/rebuild-dalvay-lake-optics.py`, using the original [NHN 01CC000 archive](https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nhn_rhn/shp_en/01/nhn_rhn_01cc000_shp_en.zip) and [WorldCover N45W066 COG](https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N45W066_Map.tif). The rebuilder checks source and decoded payload hashes rather than accepting updated source bytes silently.
 
-## Verification
+## Earlier explicit-study verification
 
 [Independent pixel coverage](dalvay-lake-optics/independent-views.json) checks three fixed views against the entire physical source footprint and a two-pixel antialiasing margin. Across the three frames, all 1,160,482 exterior pixels stayed byte-identical. The lake effect redraws the same terrain with the same triangle and draw-call counts. It restores the original shader and uniforms when either eligible tile is no longer present.
 

@@ -1962,14 +1962,26 @@ export class World {
    g.position.x===p.x0+p.w/2&&g.position.z===p.z0+p.d/2;
  }
  /** Visual treatment only; both actual original Dalvay near-ground owners must be present together. */
- dalvayWaterReceivers(){
+ dalvayWaterReceivers(strict=false){
   const out:{id:string;mesh:THREE.Mesh;stock:THREE.ShaderMaterial}[]=[];
   for(const id of ['17-12','17-13']){
    const t=this.byId.get(id),g=t?.fine;
    if(!t||!g||t.lod!==112||g.userData.subdiv!==112||!g.visible||g.parent!==this.scene||t.coarse.visible||t.relief||
       g.userData.localGrade||g.userData.coastalSurvey||this.grades?.has(id)||g.material!==t.local||
       g.geometry.index?.count!==112*112*6)return;
+   if(strict&&(!t.seams?.startsWith('112:')||t.seams.slice(4).split(',')[id==='17-12'?2:0]!=='112'||
+      !this.nativeRegularGroundStill(id,g.geometry)||g.userData.coastalRefinement||!g.matrixAutoUpdate||g.layers.mask!==1||
+      g.position.x!==t.x0+t.w/2||g.position.y!==0||g.position.z!==t.z0+t.d/2||
+      g.quaternion.x!==0||g.quaternion.y!==0||g.quaternion.z!==0||g.quaternion.w!==1||
+      g.scale.x!==1||g.scale.y!==1||g.scale.z!==1||g.geometry.groups.length||g.geometry.drawRange.start!==0||
+      g.geometry.drawRange.count!==Infinity||g.geometry.getAttribute('position')?.count!==113*113||
+      g.geometry.getAttribute('uv')?.count!==113*113))return;
    out.push({id,mesh:g,stock:t.local});
+  }
+  if(strict){
+   const [a,b]=out.map(r=>r.mesh.geometry.getAttribute('position'));
+   // Both N112 sides of the only interior receiver junction must agree.
+   for(let k=0;k<113;k++){const v=112*113+k;if(a.getX(v)!==b.getX(k)||a.getY(v)!==b.getY(k))return;}
   }
   return out;
  }

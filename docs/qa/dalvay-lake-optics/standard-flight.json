@@ -1,0 +1,828 @@
+{
+  "method": "Compiled Three r187, Chromium SwiftShader, actual Standard Departure/Begin/Chase. Each QA pair redraws the same live frame with original, scoped, then original materials and reads native canvas RGBA; not an FPS benchmark.",
+  "samples": 4,
+  "sourceTiles": [
+    "17-12",
+    "17-13"
+  ],
+  "sourceMaskBytes": 1091,
+  "sourceMaskSHA256": "149ee965bc52ca42e75f506a5f688dd9b3f2420264ff427c5c23e7496d190f56",
+  "scopeMethod": "Independent near-plane clipping and closed pixel-square SAT of the literal projected intersections of the signed 4m support cells and original N112 triangles. No raster tolerance in exterior count.",
+  "acceleratedNeutralTraverse": [
+    {
+      "n": 1,
+      "width": 900,
+      "height": 570,
+      "pose": [
+        9720.17903332515,
+        8086.134869018256,
+        109.94820251225353,
+        -0.055
+      ],
+      "manor": false,
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "restored": true,
+      "actualCells": 7507,
+      "projectedWholePixelScope": 1403,
+      "outsideExactPolygonUnion": 0,
+      "stock": {
+        "gl": 0,
+        "draw": 203,
+        "tri": 269513
+      },
+      "measured": {
+        "gl": 0,
+        "draw": 203,
+        "tri": 269513
+      },
+      "restore": {
+        "gl": 0,
+        "draw": 203,
+        "tri": 269513
+      },
+      "pngSHA256": [
+        "07cf21572279980226886b68232b8a3f5d1cdca088f3fba5d49fad25c0e45132",
+        "07cf21572279980226886b68232b8a3f5d1cdca088f3fba5d49fad25c0e45132",
+        "07cf21572279980226886b68232b8a3f5d1cdca088f3fba5d49fad25c0e45132"
+      ],
+      "sameCamera": {
+        "view": [
+          -0.9993283937786557,
+          -0.004190765449916475,
+          0.03640328107075832,
+          0,
+          1.734723475976808e-18,
+          0.9934387745042672,
+          0.11436521023221939,
+          0,
+          -0.03664370870658216,
+          0.11428840184552205,
+          -0.9927715748427852,
+          0,
+          10009.95687131623,
+          -994.8943557113215,
+          7644.09408430857,
+          1
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "near": 0.08
+      },
+      "nativeTerrain": [
+        {
+          "id": "17-12",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            6568.609494547921,
+            1
+          ],
+          "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        },
+        {
+          "id": "17-13",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            12429.830274298314,
+            1
+          ],
+          "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        }
+      ]
+    },
+    {
+      "n": 200,
+      "width": 900,
+      "height": 570,
+      "pose": [
+        9720.008967885511,
+        9128.8726969098,
+        116.93275032642559,
+        -0.055
+      ],
+      "manor": false,
+      "any": 31312,
+      "strong": 30390,
+      "alpha": 0,
+      "restored": true,
+      "actualCells": 7507,
+      "projectedWholePixelScope": 34985,
+      "outsideExactPolygonUnion": 0,
+      "stock": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 316361
+      },
+      "measured": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 316361
+      },
+      "restore": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 316361
+      },
+      "pngSHA256": [
+        "75aafd441511866b840fce7f885dc5f6f62f896fd362989cab5096e972145469",
+        "0d60ee916530d28aa2806a9f300913dbccac3e4a4b778a589b054cedfacc6833",
+        "75aafd441511866b840fce7f885dc5f6f62f896fd362989cab5096e972145469"
+      ],
+      "sameCamera": {
+        "view": [
+          -0.9994302381081976,
+          -0.003549013208245957,
+          0.033564917104616614,
+          0,
+          1.301042606982606e-18,
+          0.9944564109539022,
+          0.10514963962222433,
+          0,
+          -0.03375202445768385,
+          0.10508972936463079,
+          -0.993889807587882,
+          0,
+          10022.463821971622,
+          -1042.9694824234775,
+          8712.259775834977,
+          1
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "near": 0.08
+      },
+      "nativeTerrain": [
+        {
+          "id": "17-12",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            6568.609494547921,
+            1
+          ],
+          "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        },
+        {
+          "id": "17-13",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            12429.830274298314,
+            1
+          ],
+          "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        }
+      ]
+    },
+    {
+      "n": 220,
+      "width": 900,
+      "height": 570,
+      "pose": [
+        9719.987767157354,
+        9233.782519571854,
+        117.66470184181729,
+        3.1731763941076236
+      ],
+      "manor": false,
+      "any": 54146,
+      "strong": 52810,
+      "alpha": 0,
+      "restored": true,
+      "actualCells": 7507,
+      "projectedWholePixelScope": 57212,
+      "outsideExactPolygonUnion": 0,
+      "stock": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 324437
+      },
+      "measured": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 324437
+      },
+      "restore": {
+        "gl": 0,
+        "draw": 202,
+        "tri": 324437
+      },
+      "pngSHA256": [
+        "8bbc6413eab436188b5853e8b77b713b2761c4b03468e51f879b48df26fe85c2",
+        "98f76f47d1a70f89495cdafe353de288c01bfbba0df7a28859d733a74522f1cf",
+        "8bbc6413eab436188b5853e8b77b713b2761c4b03468e51f879b48df26fe85c2"
+      ],
+      "sameCamera": {
+        "view": [
+          -0.9994302371630487,
+          -0.0035489271606231484,
+          0.03356495434557262,
+          0,
+          -2.1684043449710073e-18,
+          0.9944566897326078,
+          0.10514700302939524,
+          0,
+          -0.0337520524444334,
+          0.10508709417465233,
+          -0.9938900852678405,
+          0,
+          10025.983802662915,
+          -1054.6988189513386,
+          8816.454229981397,
+          1
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "near": 0.08
+      },
+      "nativeTerrain": [
+        {
+          "id": "17-12",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            6568.609494547921,
+            1
+          ],
+          "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        },
+        {
+          "id": "17-13",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            12429.830274298314,
+            1
+          ],
+          "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        }
+      ]
+    },
+    {
+      "n": 260,
+      "width": 900,
+      "height": 570,
+      "pose": [
+        9719.944110561488,
+        9443.636394416244,
+        119.13420423914388,
+        4.843065918428848
+      ],
+      "manor": false,
+      "any": 54428,
+      "strong": 52385,
+      "alpha": 0,
+      "restored": true,
+      "actualCells": 7507,
+      "projectedWholePixelScope": 59408,
+      "outsideExactPolygonUnion": 0,
+      "stock": {
+        "gl": 0,
+        "draw": 201,
+        "tri": 349691
+      },
+      "measured": {
+        "gl": 0,
+        "draw": 201,
+        "tri": 349691
+      },
+      "restore": {
+        "gl": 0,
+        "draw": 201,
+        "tri": 349691
+      },
+      "pngSHA256": [
+        "a579ef8d3190487aec862017015879788a3186505b8c1d24eeb815e241b5cad2",
+        "2480f7cb98d4910f5f4f63f8836567616cdf0c5c29ff46ebbfe98860b2f1a366",
+        "a579ef8d3190487aec862017015879788a3186505b8c1d24eeb815e241b5cad2"
+      ],
+      "sameCamera": {
+        "view": [
+          -0.9994302355885218,
+          -0.0035487907940249413,
+          0.03356501564685085,
+          0,
+          0,
+          0.9944571322680236,
+          0.1051428175448003,
+          0,
+          -0.03375209906765945,
+          0.10508291090924066,
+          -0.9938905259853161,
+          0,
+          10033.02359692313,
+          -1078.1749565126056,
+          9024.875915821185,
+          1
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "near": 0.08
+      },
+      "nativeTerrain": [
+        {
+          "id": "17-12",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            6568.609494547921,
+            1
+          ],
+          "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        },
+        {
+          "id": "17-13",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            12429.830274298314,
+            1
+          ],
+          "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        }
+      ]
+    },
+    {
+      "n": 330,
+      "width": 900,
+      "height": 570,
+      "pose": [
+        9719.864595012361,
+        9810.96566715333,
+        121.71792999698538,
+        2.32119253306295
+      ],
+      "manor": false,
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "restored": true,
+      "actualCells": 7507,
+      "projectedWholePixelScope": 0,
+      "outsideExactPolygonUnion": 0,
+      "stock": {
+        "gl": 0,
+        "draw": 197,
+        "tri": 351797
+      },
+      "measured": {
+        "gl": 0,
+        "draw": 197,
+        "tri": 351797
+      },
+      "restore": {
+        "gl": 0,
+        "draw": 197,
+        "tri": 351797
+      },
+      "pngSHA256": [
+        "22273902b67f10571d9d119efd19114dfabc54ae548a2b8d492d1c23893eeb0c",
+        "22273902b67f10571d9d119efd19114dfabc54ae548a2b8d492d1c23893eeb0c",
+        "22273902b67f10571d9d119efd19114dfabc54ae548a2b8d492d1c23893eeb0c"
+      ],
+      "sameCamera": {
+        "view": [
+          -0.9994302335985622,
+          -0.003548638704783375,
+          0.033565090979553285,
+          0,
+          -4.336808689942015e-19,
+          0.9944576280847827,
+          0.10513812792697208,
+          0,
+          -0.03375215799208661,
+          0.10507822375416925,
+          -0.9938910195406464,
+          0,
+          10045.342821979952,
+          -1119.3000231935916,
+          9389.695399876851,
+          1.0000000000000002
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "near": 0.08
+      },
+      "nativeTerrain": [
+        {
+          "id": "17-12",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            6568.609494547921,
+            1
+          ],
+          "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        },
+        {
+          "id": "17-13",
+          "model": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            9139.546250157444,
+            0,
+            12429.830274298314,
+            1
+          ],
+          "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+          "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        }
+      ]
+    }
+  ],
+  "unalteredClockAndAuthoredManor": {
+    "n": 220,
+    "width": 720,
+    "height": 460,
+    "pose": [
+      9719.98764811043,
+      9234.365386421154,
+      117.66877407475202,
+      3.1769429616914597
+    ],
+    "manor": true,
+    "any": 34843,
+    "strong": 33992,
+    "alpha": 0,
+    "restored": true,
+    "actualCells": 7507,
+    "projectedWholePixelScope": 37013,
+    "outsideExactPolygonUnion": 0,
+    "stock": {
+      "gl": 0,
+      "draw": 206,
+      "tri": 347713
+    },
+    "measured": {
+      "gl": 0,
+      "draw": 206,
+      "tri": 347713
+    },
+    "restore": {
+      "gl": 0,
+      "draw": 206,
+      "tri": 347713
+    },
+    "pngSHA256": [
+      "c606f24b2d876a8823ad7c6f8ad14524f3d32ad8a657ddd92d657465f72a3aac",
+      "f8e0a3ceade296a0e2026d2b93eab9428f0c33e1821ee6a318e894ae3ee8ec6b",
+      "c606f24b2d876a8823ad7c6f8ad14524f3d32ad8a657ddd92d657465f72a3aac"
+    ],
+    "sameCamera": {
+      "view": [
+        -0.9994321398909242,
+        -0.003536718873696853,
+        0.03350954151666601,
+        0,
+        0,
+        0.994476375424475,
+        0.1049606532115667,
+        0,
+        -0.03369566371283888,
+        0.10490105024358527,
+        -0.993911651961453,
+        0,
+        10025.49852615184,
+        -1053.1584199293836,
+        8817.678955112315,
+        1
+      ],
+      "proj": [
+        1.281412869165485,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "near": 0.08
+    },
+    "nativeTerrain": [
+      {
+        "id": "17-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          9139.546250157444,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "posSha": "2c1a6a24f572e11e44f17013c13347fdc77bdb8f774936f53ee5afa5587f1e16",
+        "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      {
+        "id": "17-13",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          9139.546250157444,
+          0,
+          12429.830274298314,
+          1
+        ],
+        "posSha": "ad9575ae307825ecd56a1dbdc7b2e5d78fee20031004ec53c0c6f81efec57b59",
+        "idxSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      }
+    ]
+  },
+  "priorFailures": {
+    "excludedFromRelease": true,
+    "preFixXY": {
+      "200": [
+        590,
+        456
+      ],
+      "220": [
+        99,
+        248
+      ]
+    },
+    "position": "outside literal signed projection",
+    "resolution": "Restored the original material-ID ordering during the two replacement draws; same native changed-pixel mask except the known stray coordinate at each repeated pose."
+  },
+  "compiledControls": {
+    "normal": {
+      "maskRequests": 1,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": true
+    },
+    "early": {
+      "maskRequests": 1,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false,
+      "heldVerifiedBodyWasOfferedAfterBegin": true
+    },
+    "stock": {
+      "maskRequests": 0,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false
+    },
+    "noaa": {
+      "maskRequests": 0,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false
+    },
+    "foreign": {
+      "maskRequests": 0,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false
+    },
+    "detail": {
+      "maskRequests": 0,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false
+    },
+    "explicit": {
+      "maskRequests": 1,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": true
+    },
+    "missing": {
+      "maskRequests": 1,
+      "firstFlightFramesChecked": 8,
+      "drawsOptics": false,
+      "synthetic404SettledBeforeBegin": true
+    }
+  }
+}

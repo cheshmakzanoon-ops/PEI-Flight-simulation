@@ -70,3 +70,63 @@ test('Keeps the authored atmosphere and shared sky sampler on the supported Stan
  for(const {stock,mesh} of targets){assert.equal(mesh.material,stock);stock.dispose();mesh.geometry.dispose();}
  sky.dispose();
 });
+
+import {dalvayOpaqueOrder,prepareStandardDalvayOptics} from '../src/render/dalvay-lake-optics.ts';
+import {OpticalDeparture} from '../src/app/optical-departure.ts';
+test('ordinary Dalvay preflights two original geometry owners and brackets only their linked optical materials',async()=>{
+ const t=D.tiles.map(id=>{
+  const shader=new ShaderMaterial({vertexShader:v,uniforms:{skyMap:{value:new Texture()},clock:{value:0}},fragmentShader:
+   'void main(){vec3 terrainDx=vec3(1.);gl_FragColor=vec4(mist(col,d,p.y),1.);}'});
+  return {id,stock:shader,mesh:new Mesh(new BufferGeometry(),shader)};
+ });
+ const source=t.map(x=>x.stock.fragmentShader);
+ const mask=await decodeDalvayOptics(wire.buffer);assert(mask);
+ let linked=true;const seen=new Set<ShaderMaterial>();
+ let sort:ReturnType<typeof dalvayOpaqueOrder>|null=null;
+ const a=await prepareStandardDalvayOptics(mask,()=>t,async g=>{
+  assert.equal(g.children.length,2);assert(!g.parent);
+  g.children.forEach((m,i)=>{
+   assert(m instanceof Mesh&&m.material instanceof ShaderMaterial);
+   assert.equal(m.geometry,t[i].mesh.geometry);assert.notEqual(m.material,t[i].stock);
+   assert.equal(m.material.uniforms.clock,t[i].stock.uniforms.clock);
+   assert.match(m.material.fragmentShader,/if\(eye>=1200\.\)return oldCol/);
+   assert(m.material.fragmentShader.includes('feather*calm*.82*fade'));
+   seen.add(m.material);
+  });
+  return ()=>linked;
+ },new AbortController().signal,next=>{sort=next;});
+ assert(a?.ready());assert(t.every(x=>x.mesh.material===x.stock));
+ const end=a.begin();assert(end&&a.state.active);assert(sort);
+ assert(t.every(x=>seen.has(x.mesh.material)));assert.deepEqual(t.map(x=>x.stock.fragmentShader),source);
+ end();assert.equal(sort,null);assert(!a.state.active);assert(t.every(x=>x.mesh.material===x.stock));
+ linked=false;assert(!a.begin());linked=true;
+ const foreign=new ShaderMaterial();t[0].mesh.material=foreign;assert(!a.begin());
+ a.dispose();assert.equal(t[0].mesh.material,foreign);assert.equal(t[1].mesh.material,t[1].stock);
+ foreign.dispose();t.forEach(x=>{x.mesh.geometry.dispose();x.stock.uniforms.skyMap.value.dispose();x.stock.dispose();});
+});
+
+test('visual-only departures keep early or lost receivers stock rather than admitting them after start',async()=>{
+ const f={},drain=()=>new Promise(r=>setImmediate(r));
+ const s=new OpticalDeparture<object,{ready:()=>boolean;begin:()=>undefined|(()=>void);dispose:()=>void}>(()=>true);
+ let ready=true,destroyed=0,finishes=0;
+ const view={ready:()=>ready,begin:()=>ready?()=>finishes++:undefined,dispose:()=>destroyed++};
+ let pending:AbortSignal|undefined,resolveLate:()=>void=()=>assert.fail();
+ s.prepare(signal=>{pending=signal;return new Promise(resolve=>resolveLate=()=>resolve(view));});
+ assert(!s.beginFlight(f,true));assert(pending?.aborted);resolveLate();await drain();
+ assert.equal(destroyed,1);assert(!s.beginDraw(f,true));
+ s.reset();s.prepare(async()=>view);await drain();assert(s.beginFlight(f,true));s.beginDraw(f,true)?.();assert.equal(finishes,1);
+ ready=false;assert(!s.beginDraw(f,true));assert.equal(destroyed,2);
+ ready=true;assert(!s.beginDraw(f,true));
+});
+
+
+test('Dalvay sorts identical-depth stock draws by the canonical opaque key while shaders are leased',()=>{
+ const row={groupOrder:0,renderOrder:0,materialVariant:0,z:0,id:42,material:{id:12}};
+ const proxy={...row,material:{id:50}},land={...row,id:12,material:{id:23}};
+ const stock=dalvayOpaqueOrder(i=>i.material.id);
+ const scoped=dalvayOpaqueOrder(i=>i.material===proxy.material?row.material.id:i.material.id);
+ assert(stock(row,land)<0&&stock(proxy,land)>0&&scoped(proxy,land)===stock(row,land));
+ for(const [key,num] of [['groupOrder',1],['renderOrder',1],['materialVariant',1],['z',1],['id',43]] as const){
+  const foreign={...row,[key]:num};assert(scoped(proxy,foreign)<0);
+ }
+});

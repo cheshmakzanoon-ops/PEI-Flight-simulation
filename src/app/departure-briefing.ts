@@ -1,4 +1,4 @@
-import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, princeLandscapeState, PRINCE_LANDSCAPE_ROUTE, kingsRidgeLensState, KINGS_RIDGE_ROUTE, indianRiverLensState, INDIAN_RIVER_ROUTE, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
+import { regionalCanopyRequested, standardRegionalCanopyRequested, explicitDuneGrassRequested, sceneryOptions, standardBasinSandRequested, standardDuneGrassRequested, queensFieldPassRequested, princeFieldPassRequested, seacowExteriorRequested, princeLandscapeState, PRINCE_LANDSCAPE_ROUTE, kingsRidgeLensState, KINGS_RIDGE_ROUTE, indianRiverLensState, INDIAN_RIVER_ROUTE, standardSeacowExteriorRequested, SEACOW_ROUTE, dalvayWaterRequested, standardDalvayWaterRequested, olearyExteriorRequested } from './scenery-profile.ts';
 import { pointPrimRequested } from '../render/point-prim/admit.ts';
 import type { Site } from '../sim/places.ts';
 
@@ -22,6 +22,8 @@ export function departureBriefing(site: Site, search: string): string {
   if (site.id === 'dalvay-lake-coastal-pass') {
     return site.note + (dalvayWaterRequested(options) ?
       ' The lake reflection preview is enabled in these scenery settings.' :
+      standardDalvayWaterRequested(options)?
+      ' Lake reflections can appear on this flight after verification.' :
       ' The lake reflection preview is off in these scenery settings.');
   }
   if(site.id===PRINCE_LANDSCAPE_ROUTE&&princeLandscapeState(search).active)

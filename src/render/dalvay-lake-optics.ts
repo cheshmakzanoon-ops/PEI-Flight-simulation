@@ -1,4 +1,5 @@
 import * as T from 'three';
+import type {OlearyLink} from './oleary-railway/program-gate.ts';
 
 export const DALVAY_WATER_VISUAL={
  // Opaque suffix prevents HTTP providers from auto-inflating authenticated gzip.
@@ -96,7 +97,7 @@ const GLSL=`
 export type DalvayReceiver=Readonly<{id:string;mesh:T.Mesh;stock:T.ShaderMaterial}>;
 type Pass={previous:string;installed:string;previousVertex:string;installedVertex:string;uniforms:Record<string,T.IUniform>};
 type Bound=DalvayReceiver&Pass&{version:number};
-function variant(stock:T.ShaderMaterial,texture:T.DataTexture):Pass|undefined{
+function variant(stock:T.ShaderMaterial,texture:T.DataTexture,standard=false):Pass|undefined{
  const source=stock.fragmentShader,vertex=stock.vertexShader,head='void main(){',
   vertexField='varying vec3 p; varying vec2 vuv;',vertexAssign='p=w.xyz;vuv=uv;';
  const end=['gl_FragColor=vec4(mist(col,d,p.y),1.);','gl_FragColor=vec4(peiairSurface(mist(col,d,p.y),col,p,cameraPosition,d),1.);']
@@ -108,7 +109,13 @@ function variant(stock:T.ShaderMaterial,texture:T.DataTexture):Pass|undefined{
  const uniforms:Record<string,T.IUniform>={dlvWaterMask:{value:texture},
    ...(!alreadySky?{dlvSkyMap:stock.uniforms.skyMap}:{}),dlvBox:{value:new T.Vector4(...DALVAY_WATER_VISUAL.world)}};
  if(Object.keys(uniforms).some(key=>key in stock.uniforms))return;
- const code=alreadySky?GLSL.replace('dlvWaterMask,dlvSkyMap','dlvWaterMask').replaceAll('dlvSkyMap','skyMap'):GLSL;
+ const colour=standard?GLSL.replace('  vec2 uv=(w.xz-dlvBox.xy)/dlvBox.zw;',
+  `  float eye=length(cameraPosition-w);
+  if(eye>=1200.)return oldCol;
+  float fade=1.-smoothstep(900.,1200.,eye);
+  vec2 uv=(w.xz-dlvBox.xy)/dlvBox.zw;`)
+   .replace('feather*calm*.82);','feather*calm*.82*fade);'):GLSL;
+ const code=alreadySky?colour.replace('dlvWaterMask,dlvSkyMap','dlvWaterMask').replaceAll('dlvSkyMap','skyMap'):colour;
  const installed=source.replace(head,code+'\n'+head).replace(final,'col=dlvPaint(col,dlvReceiverPos,terrainDx,terrainDy,d,sun,clock);\n'+final);
  // For an MSAA-covered sliver, the ordinary p can be evaluated outside
  // that triangle and extrapolate tens or hundreds of metres at grazing view.
@@ -117,18 +124,20 @@ function variant(stock:T.ShaderMaterial,texture:T.DataTexture):Pass|undefined{
   .replace(vertexAssign,vertexAssign+'dlvReceiverPos=p;');
  return {previous:source,installed,previousVertex:vertex,installedVertex,uniforms};
 }
+function makeMask(body:Uint8Array<ArrayBuffer>){
+ const s=DALVAY_WATER_VISUAL;
+ if(body.length!==s.width*s.height)throw Error('Unexpected Dalvay water mask');
+ const a=new T.DataTexture(body,s.width,s.height,T.RedFormat,T.UnsignedByteType);
+ a.minFilter=a.magFilter=T.LinearFilter;a.generateMipmaps=false;a.flipY=false;a.unpackAlignment=1;a.needsUpdate=true;
+ a.name='Dalvay · signed independent interior visual stencil';
+ return a;
+}
 /** A material on the original terrain only. Neither world collision nor GPU topology is altered. */
 export class DalvayLakeOptics{
  private readonly mask:T.DataTexture;
  private current:Bound[]=[];
  private mounts=0;
- constructor(body:Uint8Array<ArrayBuffer>){
-  const s=DALVAY_WATER_VISUAL;
-  if(body.length!==s.width*s.height)throw Error('Unexpected Dalvay water mask');
-  const a=this.mask=new T.DataTexture(body,s.width,s.height,T.RedFormat,T.UnsignedByteType);
-  a.minFilter=a.magFilter=T.LinearFilter;a.generateMipmaps=false;a.flipY=false;a.unpackAlignment=1;a.needsUpdate=true;
-  a.name='Dalvay · signed independent interior visual stencil';
- }
+ constructor(body:Uint8Array<ArrayBuffer>){this.mask=makeMask(body);}
  get active(){return this.current.length===DALVAY_WATER_VISUAL.tiles.length;}
  get state(){return {active:this.active,visualOnly:true,receivers:this.current.map(t=>t.id),mounts:this.mounts};}
  private withdraw(){
@@ -164,4 +173,100 @@ export class DalvayLakeOptics{
   this.mounts++;
  }
  dispose(){this.withdraw();this.mask.dispose();}
+}
+
+
+type OpaqueItem={groupOrder:number;renderOrder:number;material:{id:number};materialVariant:number;z:number;id:number};
+type OpaqueSort=(a:OpaqueItem,b:OpaqueItem)=>number;
+/** Three r187's opaque ordering, using the original ID for a leased material. */
+export function dalvayOpaqueOrder(id:(item:OpaqueItem)=>number):OpaqueSort{
+ return (a,b)=>{
+  if(a.groupOrder!==b.groupOrder)return a.groupOrder-b.groupOrder;
+  if(a.renderOrder!==b.renderOrder)return a.renderOrder-b.renderOrder;
+  const x=id(a),y=id(b);if(x!==y)return x-y;
+  if(a.materialVariant!==b.materialVariant)return a.materialVariant-b.materialVariant;
+  if(a.z!==b.z)return a.z-b.z;
+  return a.id-b.id;
+ };
+}
+
+/** Both Standard terrain hosts are still the original meshes. Linked
+ * materials borrow the existing texture and timing inputs, and appear
+ * only inside the ordinary render callback. The explicit study above
+ * retains its original independent profile and behaviour. */
+export async function prepareStandardDalvayOptics(body:Uint8Array<ArrayBuffer>,receive:()=>readonly DalvayReceiver[]|undefined,
+ link:OlearyLink,signal:AbortSignal,setOpaqueSort:(sort:OpaqueSort|null)=>void){
+ const ids=DALVAY_WATER_VISUAL.tiles;
+ const initial=receive();
+ if(!initial||signal.aborted||initial.length!==ids.length||!initial.every((q,i)=>q.id===ids[i])||initial[0].stock===initial[1].stock)return;
+ const texture=makeMask(body),group=new T.Group(),owned:T.ShaderMaterial[]=[];
+ let adopted=false,closed=false,drawing=false;
+ try{
+  const targets=initial.map(t=>{
+   const p=variant(t.stock,texture,true);
+   if(!p||t.mesh.material!==t.stock||t.stock.lights||t.stock.transparent||t.stock.uniformsGroups.length||
+      t.stock.onBeforeCompile!==T.ShaderMaterial.prototype.onBeforeCompile||
+      t.stock.customProgramCacheKey!==T.ShaderMaterial.prototype.customProgramCacheKey)throw Error('Different Dalvay receiver');
+   const material=new T.ShaderMaterial().copy(Object.create(t.stock,{uniforms:{value:{}}}) as T.ShaderMaterial);
+   owned.push(material);
+   // Three r187 owns immutable numeric material IDs at runtime; the installed
+   // r183 declaration package doesn't yet describe that sorter field.
+   const stockId:unknown=Object.getOwnPropertyDescriptor(t.stock,'id')?.value;
+   const leasedId:unknown=Object.getOwnPropertyDescriptor(material,'id')?.value;
+   if(typeof stockId!=='number'||typeof leasedId!=='number'||
+      !Number.isSafeInteger(stockId)||!Number.isSafeInteger(leasedId)||stockId===leasedId)throw Error('Invalid opaque order IDs');
+   material.vertexShader=p.installedVertex;material.fragmentShader=p.installed;
+   material.uniforms={...t.stock.uniforms,...p.uniforms};
+   const proxy=new T.Mesh(t.mesh.geometry,material);proxy.position.copy(t.mesh.position);
+   proxy.quaternion.copy(t.mesh.quaternion);proxy.scale.copy(t.mesh.scale);group.add(proxy);
+   const g=t.mesh.geometry;
+   return {t,p,material,stockId,leasedId,stockVersion:t.stock.version,version:material.version,geometry:g,index:g.index,indexVersion:g.index?.version,
+    pos:g.getAttribute('position'),uv:g.getAttribute('uv'),range:[g.drawRange.start,g.drawRange.count],
+    stockUniforms:t.stock.uniforms,keys:Object.entries(t.stock.uniforms),position:t.mesh.position.clone(),
+    rotation:t.mesh.quaternion.clone(),scale:t.mesh.scale.clone()};
+  });
+  const present=()=>{
+   const live=receive();
+   return !signal.aborted&&!closed&&live?.length===targets.length&&targets.every((b,i)=>{
+    const {t,p,material}=b;
+    const g=t.mesh.geometry;
+    return live[i].mesh===t.mesh&&live[i].stock===t.stock&&t.mesh.material===t.stock&&g===b.geometry&&
+     g.index===b.index&&g.index?.version===b.indexVersion&&g.getAttribute('position')===b.pos&&g.getAttribute('uv')===b.uv&&
+     g.drawRange.start===b.range[0]&&g.drawRange.count===b.range[1]&&t.mesh.position.equals(b.position)&&t.mesh.quaternion.equals(b.rotation)&&
+     t.mesh.scale.equals(b.scale)&&t.stock.version===b.stockVersion&&t.stock.fragmentShader===p.previous&&
+     t.stock.vertexShader===p.previousVertex&&t.stock.uniforms===b.stockUniforms&&material.version===b.version&&
+     material.vertexShader===p.installedVertex&&material.fragmentShader===p.installed&&!t.stock.lights&&!material.lights&&
+     Object.keys(t.stock.uniforms).length===b.keys.length&&b.keys.every(([k,v])=>t.stock.uniforms[k]===v&&material.uniforms[k]===v)&&
+     Object.entries(p.uniforms).every(([k,v])=>material.uniforms[k]===v);
+   });
+  };
+  if(!present())return;
+  const program=await link(group,signal);if(!program||!present()||!program())return;
+  const ready=()=>{try{return !drawing&&present()&&program();}catch{return false;}};
+  let frames=0;
+  const [north,south]=targets;
+  const order=dalvayOpaqueOrder(({material:{id}})=>id===north.leasedId?north.stockId:id===south.leasedId?south.stockId:id);
+  const restore=()=>{
+   for(const {t,material} of targets)if(t.mesh.material===material)t.mesh.material=t.stock;
+   if(drawing){drawing=false;setOpaqueSort(null);}
+  };
+  adopted=true;
+  return {
+   ready,
+   get state(){return {active:drawing,visualOnly:true,receivers:drawing?[...ids]:[],frames};},
+   begin(){
+    if(!ready())return;
+    drawing=true;frames++;
+    try{
+     for(const {t,material} of targets)t.mesh.material=material;
+     // Clone IDs would change equal-depth winners far from the optical mask.
+     // A scoped comparator preserves the renderer's original opaque order.
+     setOpaqueSort(order);return restore;
+    }
+    catch{restore();return;}
+   },
+   dispose(){if(!closed){closed=true;restore();owned.forEach(m=>m.dispose());texture.dispose();}},
+  };
+ }catch{return;}
+ finally{if(!adopted){owned.forEach(m=>m.dispose());texture.dispose();}}
 }

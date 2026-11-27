@@ -19,7 +19,8 @@ test('Dalvay coastal dispatch remains a selectable sightseeing start with an exp
  const site=SITES[sceneryDeparture('?departure='+id,ids)];assert.equal(site.id,id);
  assert.equal(site.runway,undefined);
  assert.match(departureBriefing(site,'?dalvayWaterOptics'),/preview is enabled/);
- for(const s of ['', '?dalvayWaterOptics&stockDalvayWaterOptics','?dalvayWaterOptics&scenery=detail'])
+ assert.match(departureBriefing(site,''),/after verification/);
+ for(const s of ['?stockDalvayWaterOptics', '?dalvayWaterOptics&stockDalvayWaterOptics','?dalvayWaterOptics&scenery=detail'])
   assert.match(departureBriefing(site,s),/preview is off/);
 });
 test('Stock dispatch approaches the mapped estate and flies on across the lake without changing flight dynamics',()=>{

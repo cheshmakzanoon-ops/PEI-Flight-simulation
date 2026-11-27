@@ -20,7 +20,7 @@
 
 The [Panmure Head lighthouse study](qa/panmure-detached-exterior.md) is a standalone artist preview, not a replacement for the current scenery. The live [Panmure coastal pass](qa/panmure-pasture.md) includes a separately source-checked 2020 pasture interior, not the studio tower.
 
-**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. The optional [lake reflection preview](qa/dalvay-lake-optics.md) adds wind ripples and sky reflections without changing flight contact or the shoreline. On the [normal Standard route](qa/dalvay-exterior/standard-route.md), the admitted manor replaces the old generic building with gables, a covered veranda and the rounded dining room.
+**Dalvay Lake · coastal pass** starts over the Gulf in Queens County. In Standard, wait for **Dalvay Lake reflections ready** before **Begin flight**. The [lake treatment](qa/dalvay-lake-optics.md) adds sky reflections and wind ripples only to the verified lake interior, without moving the shoreline or changing flight contact. On the [normal Standard route](qa/dalvay-exterior/standard-route.md), the admitted manor replaces the old generic building with gables, a covered veranda and the rounded dining room.
 
 **Seacow Head · coastal pass** starts offshore facing the Bedeque Bay lighthouse. Standard now shows the [authored white octagonal tower, red gallery and glazed lantern](qa/seacow-standard/) on this route. Use `?stockSeacowExterior` to compare the old generic building. The shore and nearby building are unchanged.
 
@@ -50,7 +50,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Montague | `?montagueFoundationPreview&departure=montague-bridge-low` | Fly the [curved Main Street bridge](montague-bridge-preview.md) from a low river approach with the bridge to your left. Landscape view recommended. |
 | Charlottetown · runway 03 | `?stockRunway03Pavement` | Compare Standard’s [filtered asphalt finish](qa/charlottetown-runway-03.md) with the older flat surface. Runway marks, position and controls are unchanged. |
 | Dalvay-by-the-Sea | `?departure=dalvay-lake-coastal-pass&dalvayExteriorStudy` | [Documentary manor exterior](qa/dalvay-exterior.md). The historic footprint and existing surroundings stay in place. |
-| Dalvay Lake | `?departure=dalvay-lake-coastal-pass&dalvayWaterOptics` | [Wind ripples and sky reflections](qa/dalvay-lake-optics.md) on the verified interior. `&stockDalvayWaterOptics` keeps the original lake appearance. |
+| Dalvay Lake | `?departure=dalvay-lake-coastal-pass&stockDalvayWaterOptics` | Compare the original lake with Standard’s [wind ripples and sky reflections](qa/dalvay-lake-optics.md). The explicit `&dalvayWaterOptics` option retains the previous water-only study. |
 | Souris · Knight Point | `?departure=souris-waterfront-pass&sourisKnightExterior` | [Souris East lighthouse](qa/souris-knight-exterior.md), with a tapered white body, red bracketed gallery and domed glazed lantern. The shore and ground are unchanged. |
 | Georgetown | `?stDavidsChurchReview&buildingShadows` | [St. David’s United Church](qa/st-davids-church-study.md): survey-fitted gables and tower, original Gothic sash and a matching shadow caster. Use Standard. |
 | North Rustico Harbour | `?stockRusticoLighthouse` | Compare Standard’s [survey-fitted lighthouse and local seat](landmarks/north-rustico.md) on **North Rustico Harbour · coastal pass**. The explicit `?northRusticoLighthouseStudy` retains the older bundled view. |

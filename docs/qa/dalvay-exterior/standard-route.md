@@ -1,6 +1,6 @@
 # Dalvay manor in Standard flight
 
-Start **Dalvay Lake · coastal pass**. On the supported Standard route, the original green-gabled manor replaces the stock rectangular building on the approach. The independent lake effect remains off unless requested; the road, lawn, water, trees and other buildings keep their existing scene.
+Start **Dalvay Lake · coastal pass**. On the supported Standard route, the original green-gabled manor replaces the stock rectangular building on the approach. The manor comparison below isolates the building. The road, lawn, water, trees and other buildings keep their scene across this comparison. The separate [Standard lake reflections](../dalvay-lake-optics.md) have their own readiness check and stock switch.
 
 ![Same ordinary Chase position and lighting, with the stock building at left and the authored manor at right](standard-route-comparison.webp)
 

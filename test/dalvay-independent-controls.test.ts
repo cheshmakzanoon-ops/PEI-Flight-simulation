@@ -18,7 +18,7 @@ test('coastal dispatch and the manor and lake comparison switches have three ind
   const art=!!(mask&1)&&!(mask&2),water=!!(mask&4)&&!(mask&8);
   assert.equal(dalvayExteriorRequested(q),art,q.toString());assert.equal(dalvayWaterRequested(q),water,q.toString());
   const site=SITES[sceneryDeparture('?'+q,ids)];assert.equal(site.id,id);
-  assert.match(departureBriefing(site,'?'+q),water?/preview is enabled/:/preview is off/);
+  assert.match(departureBriefing(site,'?'+q),water?/preview is enabled/:standardDalvayWaterRequested(q)?/after verification/:/preview is off/);
   assert.equal(standardSourisShoreline(q),true);
   for(const blocker of ['scenery=detail','surveyRelief','otherScene']){
    const foreign=new URLSearchParams(q.toString()+'&'+blocker);
@@ -54,4 +54,14 @@ test('original owner origin uses this engine’s two canonical corner projection
  const x=dalvayDrawCenter((lon,lat)=>{calls.push([lon,lat]);return native[calls.length-1];});
  assert.deepEqual(calls,[[west,north],[east,south]]);assert.deepEqual(x,{x:8231.943729727123,z:9208.361856004321});
  assert.notEqual(x.x,8231.943729727122);
+});
+
+import {standardDalvayWaterRequested,standardDalvayExteriorRequested as ordinaryManor} from '../src/app/scenery-profile.ts';
+test('automatic Dalvay water and manor comparisons are reciprocal, without changing the older explicit presets',()=>{
+ const raw=(f='')=>new URLSearchParams('departure=dalvay-lake-coastal-pass&diagnostics'+f);
+ assert(standardDalvayWaterRequested(raw())&&ordinaryManor(raw()));
+ assert(!standardDalvayWaterRequested(raw('&stockDalvayWaterOptics'))&&ordinaryManor(raw('&stockDalvayWaterOptics')));
+ assert(standardDalvayWaterRequested(raw('&stockDalvayExterior'))&&!ordinaryManor(raw('&stockDalvayExterior')));
+ for(const f of ['&scenery=detail','&qa','&dalvayWaterOptics','&dalvayExteriorStudy','&dalvayGlazingStudy','&departure=other'])
+  assert(!standardDalvayWaterRequested(raw(f)),f);
 });
