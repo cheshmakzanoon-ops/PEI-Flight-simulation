@@ -1,4 +1,4 @@
-import {Group,type BufferGeometry,type Camera,type Mesh,type ShaderMaterial,type Scene,type WebGLRenderer} from 'three';
+import {Group,ShaderMaterial,type BufferGeometry,type Camera,type Mesh,type Scene,type WebGLRenderer} from 'three';
 import {FieldShardSource} from '../sim/field-shards.ts';
 import {FIELD_DIRECTORY_PIN,FIELD_SITE_PINS} from './province-fields.generated.ts';
 import {provinceFieldOpticsGLSL,provinceFields,type ProvinceFieldStudy} from './province-fields.ts';
@@ -28,6 +28,17 @@ export function kingsFieldShader(stock:string){
     stock.split(declaration).length!==2||stock.split(light).length!==2)return;
  return stock.replace(declaration,provinceFieldOpticsGLSL+declaration)
   .replace(light,' paintProvinceFields(col,n,p,d,coast);\n'+light);
+}
+/** Borrow the existing physical scene inputs; never clone their Texture Source.
+ * Three r187's uniform cloning increments shared texture Source revisions,
+ * even if the throwaway uniform set is immediately replaced. */
+export function mappedFieldMaterial(stock:ShaderMaterial,fragment:string,extra:ShaderMaterial['uniforms']){
+ const authored=new ShaderMaterial().copy(Object.create(stock,{uniforms:{value:{}}}) as ShaderMaterial);
+ authored.fragmentShader=fragment;
+ authored.onBeforeCompile=stock.onBeforeCompile;
+ authored.customProgramCacheKey=stock.customProgramCacheKey;
+ authored.uniforms={...stock.uniforms,...extra};
+ return authored;
 }
 type Loaded={study:ProvinceFieldStudy;dispose():void};
 type Lease={owner:FieldOwner;authored:ShaderMaterial;source:string;geometry:BufferGeometry};
@@ -132,11 +143,8 @@ export class MappedFieldPass {
   for(const owner of owners){
    const source=owner.stock.fragmentShader,fragment=kingsFieldShader(source);
    if(!fragment){for(const q of leases)q.authored.dispose();this.blocked=true;this.phase='unavailable';return;}
-   const authored=owner.stock.clone();authored.fragmentShader=fragment;
-   authored.onBeforeCompile=owner.stock.onBeforeCompile;
-   authored.customProgramCacheKey=owner.stock.customProgramCacheKey;
-   authored.uniforms={...owner.stock.uniforms,...art.study.stream.uniforms,
-    provinceFurrowScan:art.study.scan,provinceFieldStrength:art.study.toggle};
+   const authored=mappedFieldMaterial(owner.stock,fragment,{...art.study.stream.uniforms,
+    provinceFurrowScan:art.study.scan,provinceFieldStrength:art.study.toggle});
    const trial=owner.mesh.clone(false);trial.material=authored;group.add(trial);
    leases.push({owner,authored,source,geometry:owner.mesh.geometry});
   }

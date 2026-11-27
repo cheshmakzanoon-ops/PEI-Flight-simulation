@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
+import {DataTexture,ShaderMaterial,Vector4} from 'three';
 import {kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested,sceneryOptions,forestFloorProfile,standardInlandOrtho,standardMeadowRequested,standardOpenRipplesRequested,runway03PavementRequested} from '../src/app/scenery-profile.ts';
-import {KINGS_FIELD_TILE,KINGS_FIELD_CELLS,MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS,kingsFieldShader,withinKingsFieldPass,withinMappedPass} from '../src/render/kings-field-pass.ts';
+import {KINGS_FIELD_TILE,KINGS_FIELD_CELLS,MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS,kingsFieldShader,mappedFieldMaterial,withinKingsFieldPass,withinMappedPass} from '../src/render/kings-field-pass.ts';
 import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {readFieldDirectory} from '../src/sim/field-shards.ts';
@@ -105,4 +106,38 @@ test('a loaded field route cannot compile indefinitely as a candidate terrain ow
  assert.equal(prepares,0);
  assert.equal(pass.state.phase,'unavailable');
  pass.leave();assert.equal(disposed,1);assert.equal(internals.linkAttempts,0);
+});
+
+
+test('linking and retiring field materials does not dirty any shared stock texture source',()=>{
+ const atlas=new DataTexture(new Uint8Array([93,117,118,255]),1,1);
+ const orthos=[new DataTexture(),new DataTexture()];
+ const versions=()=>[atlas,...orthos].map(t=>[t.version,t.source.version]);
+ const stock=new ShaderMaterial({uniforms:{imageMap:{value:atlas},orthoSplit:{value:orthos},detailBox:{value:new Vector4(1,2,3,4)}},
+  defines:{PEI_ROLE:1},toneMapped:false,fragmentShader:'stock',vertexShader:'vertex'});
+ stock.onBeforeCompile=()=>{};stock.customProgramCacheKey=()=>'retained role';
+ const scalar={value:0};
+ const before=versions();
+ for(let i=0;i<5;i++){
+  const borrowed=mappedFieldMaterial(stock,'candidate',{provinceFieldStrength:scalar});
+  assert.notEqual(borrowed.uniforms,stock.uniforms);
+  for(const [k,v] of Object.entries(stock.uniforms))assert.equal(borrowed.uniforms[k],v);
+  assert.equal(borrowed.uniforms.provinceFieldStrength,scalar);
+  assert.equal(borrowed.onBeforeCompile,stock.onBeforeCompile);
+  assert.equal(borrowed.customProgramCacheKey,stock.customProgramCacheKey);
+  assert.equal(borrowed.vertexShader,stock.vertexShader);
+  assert.equal(borrowed.fragmentShader,'candidate');
+  assert.equal(borrowed.toneMapped,stock.toneMapped);
+  assert.deepEqual(borrowed.defines,stock.defines);
+  borrowed.dispose();
+  assert.deepEqual(versions(),before);
+ }
+ assert.equal(stock.fragmentShader,'stock');assert(!stock.uniforms.provinceFieldStrength);
+ // Reproduce the previous failure with a separate original texture.
+ const witness=new DataTexture(),initial=witness.source.version;
+ const control=new ShaderMaterial({uniforms:{imageMap:{value:witness}}});
+ const retired=control.clone();
+ assert(witness.source.version>initial);
+ retired.dispose();control.dispose();witness.dispose();
+ stock.dispose();atlas.dispose();orthos.forEach(t=>t.dispose());
 });
