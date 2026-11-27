@@ -1,0 +1,83 @@
+{
+  "baseRevision": "ce6fe707208b652d77733c231b803361f2d8039a",
+  "gameChanges": false,
+  "path": "Souris Waterfront Pass, real neutral Chase",
+  "realStockFlight": [
+    {
+      "metres": 215,
+      "oldRoofAny": 387,
+      "oldWallAny": 1982,
+      "roofFull": 330,
+      "wallFull": 1859,
+      "restoredRGBA": true
+    },
+    {
+      "metres": 315,
+      "oldRoofAny": 1382,
+      "oldWallAny": 4541,
+      "roofFull": 1290,
+      "wallFull": 4369,
+      "restoredRGBA": true
+    },
+    {
+      "metres": 405,
+      "oldRoofAny": 0,
+      "oldWallAny": 0,
+      "roofFull": 0,
+      "wallFull": 0,
+      "restoredRGBA": true
+    }
+  ],
+  "measuredUpperStudy": [
+    {
+      "phase": "near",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 8,
+      "rgbaPNGsha256": "7034373bfb28ef4c135490d45c246d10874d65d642b8c205a12959ba9da5b24c"
+    },
+    {
+      "phase": "reverse",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 8,
+      "rgbaPNGsha256": "46e356109aa0efa9cc0cabe3b975d286eaeec294d93ec1536da880eabbc5697d"
+    },
+    {
+      "phase": "mid",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 8,
+      "rgbaPNGsha256": "385950f4c695e4201cb15313fd61e1e18f8a0cab0fddcb04640fe8860d6113f8"
+    }
+  ],
+  "closedRoofStudy": [
+    {
+      "phase": "near",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 88,
+      "rgbaPNGsha256": "1ad8c517f90ddb76eb5fa71300647387a262776373bad470ab127f32006c044e"
+    },
+    {
+      "phase": "reverse",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 88,
+      "rgbaPNGsha256": "c38fbe79d939c65e4256b313b19e3be3216663b2979c5722a435c03284f56833"
+    },
+    {
+      "phase": "mid",
+      "samples": 4,
+      "error": 0,
+      "calls": 1,
+      "triangles": 56,
+      "rgbaPNGsha256": "222f2de6d2c3cd489eb9bf56f432b4f4a1477454c172906b0e511a77ee5f2130"
+    }
+  ]
+}
