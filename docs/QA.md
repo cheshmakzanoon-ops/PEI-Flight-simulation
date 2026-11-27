@@ -126,3 +126,6 @@ from commit order.
 For shoreline triage, the [coastal building census](qa/coastal-building-census.md)
 screens all original footprints against coarse Cover. It does not approve
 waterline changes or stock-shell removal.
+
+The [Portside front study](qa/portside-front-study.md) preserves an independently
+verified facade experiment without adding it to the player.

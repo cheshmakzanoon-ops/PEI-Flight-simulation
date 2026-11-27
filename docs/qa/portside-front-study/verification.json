@@ -1,0 +1,214 @@
+{
+  "decision": "HOLD for the player. Archive of one seaward face only; no runtime host or option.",
+  "appearanceSHA256": "f2f47da4eb729725d6cd486289b23ea934d88cfc459745c2f58e7970b8d3d44c",
+  "sourceNativeCaptureSHA256": "a4e5e9752ba835fb42fb97ae4e694784c389491a2658f01b74b1a0fb9e4fde9d",
+  "compiledWarmReceiptSHA256": "c5d057cb396f8c29e8e52eed5a613685b5a9acb46f3759f826b7ea9376c509c8",
+  "compiledFlightReceiptSHA256": "0766f219d3fc5d5e968877c6ba4c7d374169b9f927853d544ff0bebab67a64fb",
+  "imageSHA256": "e6e319495faf914727549e3ce10cca4cdc5b43cc666b8d3e51f94605f71d645d",
+  "viewport": [
+    900,
+    600
+  ],
+  "nativeSamples": 4,
+  "detached": [
+    {
+      "flightPhase": 91,
+      "strongRgbChanged": 3770,
+      "alphaChanged": 0,
+      "oldUndilatedRolePixels": 3781,
+      "protectedShortSidePixels": 638,
+      "conditionChecksPassed": true,
+      "exactRollback": true,
+      "rgbChanged": 3777
+    },
+    {
+      "flightPhase": 111,
+      "strongRgbChanged": 9158,
+      "alphaChanged": 0,
+      "oldUndilatedRolePixels": 9191,
+      "protectedShortSidePixels": 438,
+      "conditionChecksPassed": true,
+      "exactRollback": true,
+      "rgbChanged": 9180
+    },
+    {
+      "flightPhase": 131,
+      "strongRgbChanged": 2816,
+      "alphaChanged": 0,
+      "oldUndilatedRolePixels": 2833,
+      "protectedShortSidePixels": 0,
+      "conditionChecksPassed": true,
+      "exactRollback": true,
+      "rgbChanged": 2827
+    },
+    {
+      "flightPhase": 151,
+      "strongRgbChanged": 0,
+      "alphaChanged": 0,
+      "oldUndilatedRolePixels": 0,
+      "protectedShortSidePixels": 0,
+      "conditionChecksPassed": true,
+      "exactRollback": true,
+      "rgbChanged": 0
+    }
+  ],
+  "compiledWarm": {
+    "changedAB": 0,
+    "changedRestored": 0,
+    "errors": [
+      0,
+      0,
+      0
+    ],
+    "hullDistance": 756.2304825512228,
+    "actualAuthoredProgramDraw": [
+      {
+        "count": 69615,
+        "type": 5125,
+        "offset": 0,
+        "linked": true,
+        "gain": 0
+      }
+    ],
+    "draws": [
+      169,
+      169,
+      169
+    ],
+    "triangles": [
+      265311,
+      265311,
+      265311
+    ]
+  },
+  "compiledSameFrameFlight": [
+    {
+      "phase": 91,
+      "any": 3777,
+      "strong": 3770,
+      "alpha": 0,
+      "restore": 0,
+      "errors": [
+        0,
+        0,
+        0
+      ],
+      "draws": [
+        265,
+        265,
+        265
+      ],
+      "triangles": [
+        404073,
+        404073,
+        404073
+      ],
+      "changedBitsetSha": "33956a4abb23bb02e258d1b2e2f6758cb6540a2aa6d53dbad07408876e261208"
+    },
+    {
+      "phase": 111,
+      "any": 9180,
+      "strong": 9158,
+      "alpha": 0,
+      "restore": 0,
+      "errors": [
+        0,
+        0,
+        0
+      ],
+      "draws": [
+        264,
+        264,
+        264
+      ],
+      "triangles": [
+        412819,
+        412819,
+        412819
+      ],
+      "changedBitsetSha": "4e419c50f98449138d0918b3554ee806375f2c9dab924c3797f295b245ec2e2f"
+    },
+    {
+      "phase": 131,
+      "any": 2827,
+      "strong": 2816,
+      "alpha": 0,
+      "restore": 0,
+      "errors": [
+        0,
+        0,
+        0
+      ],
+      "draws": [
+        255,
+        255,
+        255
+      ],
+      "triangles": [
+        390161,
+        390161,
+        390161
+      ],
+      "changedBitsetSha": "48095dbb767b545428f7a1f642054068352c7f934d58d5d0d8d05f44fd51b615"
+    },
+    {
+      "phase": 151,
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "restore": 0,
+      "errors": [
+        0,
+        0,
+        0
+      ],
+      "draws": [
+        255,
+        255,
+        255
+      ],
+      "triangles": [
+        388269,
+        388269,
+        388269
+      ],
+      "changedBitsetSha": "426020a90d0efab71b689d180a1b3c8c5e296619771fbbf7ed586e963702342e"
+    }
+  ],
+  "negativeCompiledDispatch": {
+    "terminal": {
+      "candidateCompiles": 0,
+      "failedLinks": 0,
+      "neutral": [],
+      "phase": "veto",
+      "active": false,
+      "site": "spinnakers-low",
+      "mode": "dispatch",
+      "sample": 4,
+      "layerWarnings": []
+    },
+    "rollback": {
+      "candidateCompiles": 0,
+      "failedLinks": 0,
+      "neutral": [],
+      "phase": "veto",
+      "active": false,
+      "site": "spinnakers-low",
+      "mode": "dispatch",
+      "sample": 4,
+      "layerWarnings": []
+    },
+    "invalid": {
+      "candidateCompiles": 1,
+      "failedLinks": 1,
+      "neutral": [],
+      "phase": "refused",
+      "active": false,
+      "site": "spinnakers-low",
+      "mode": "dispatch",
+      "sample": 4,
+      "layerWarnings": []
+    }
+  },
+  "limits": "Compiled same-frame observations used a private instrumented copy, not a shipped build. Different cold app starts did not give exact whole-frame RGB equality. The report retains summary and source seals, not the original captures or a new layer."
+}
