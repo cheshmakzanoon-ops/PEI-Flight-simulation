@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {project} from '../src/sim/geo.ts';
 import {OPEN_WATER_WINDOWS,openWaterRippleEnvelope} from '../src/render/open-water-ripples.ts';
-import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,capeTryonRockState,switchCapeTryonRockURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardOpenCoastRequested,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
+import {applyReviewSceneryURL,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,capeTryonRockState,capeTryonRockRequested,bordenCoastRequested,switchCapeTryonRockURL,provinceFieldBlock,sceneryReviewBlock,reviewedScenery,DETAIL_FLAGS,isDetailScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,standardOpenCoastRequested,standardPanmurePastureRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,coastalMarshRequested} from '../src/app/scenery-profile.ts';
 
 test('detailed scenery only combines the documented flags and preserves explicit overrides',()=>{
  const standard=sceneryOptions('?noBasinBank&shoreFoamDetail=&diagnostics');
@@ -228,7 +228,7 @@ test('Summerside owner vetoes keep unrelated Standard scenery active and unknown
 test('Cape Tryon material comparison preserves Standard coastal routing and earlier fallbacks',()=>{
  const base='?departure=cape-tryon-coast&diagnostics';
  const q=(query:string)=>sceneryOptions(query);
- for(const flag of ['capeTryonRockReview','capeTryonWaterReview']){
+ for(const flag of ['capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview']){
   for(const choose of [standardOpenCoastRequested,standardOpenRipplesRequested,standardPanmurePastureRequested,coastalMarshRequested,forestFloorProfile])
    assert.equal(choose(q(base+'&'+flag)),choose(q(base)));
  }
@@ -236,6 +236,18 @@ test('Cape Tryon material comparison preserves Standard coastal routing and earl
  for(const veto of ['scenery=detail','legacyShoreArcs','stockOpenCoast'])
   assert.equal(standardOpenCoastRequested(q(base+'&capeTryonRockReview&'+veto)),false);
 });
+
+test('ordinary Standard admits only the already qualified Cape Tryon material family',()=>{
+ const q=x=>new URLSearchParams(x);
+ for(const x of ['', 'scenery=standard&departure=cape-tryon-coast', 'departure=bridge&diagnostics',
+    'diagnostics&stockBordenCoast','capeTryonRockReview'])
+  assert(capeTryonRockRequested(q(x)),x);
+ for(const x of ['scenery=detail','scenery=standard&scenery=standard','stockCapeTryonRock&capeTryonRockReview',
+    'legacyShoreArcs','qa=still','unknownStudy','stockOpenCoast','buildingShadows'])
+  assert(!capeTryonRockRequested(q(x)),x);
+ assert(bordenProfilesUnaffected(q('stockCapeTryonRock')));
+});
+const bordenProfilesUnaffected=(q:URLSearchParams)=>bordenCoastRequested(q)&&standardOpenCoastRequested(q)&&standardCountyOrtho(q)&&standardOpenRipplesRequested(q);
 
 test('Cape Tryon sandstone switch preserves the departure and unrelated choices',()=>{
  const cape='cape-tryon-coast',original='https://flight.test/?diagnostics&stockRegionalWind&departure=orby-head#flight';
@@ -246,6 +258,8 @@ test('Cape Tryon sandstone switch preserves the departure and unrelated choices'
  assert.deepEqual(capeTryonRockState(enabled.search),{selected:true,blocked:false});
  const restored=new URL(switchCapeTryonRockURL(enabled.href,false,cape));
  assert(!restored.searchParams.has('capeTryonRockReview'));
+ assert(restored.searchParams.has('stockCapeTryonRock'));
+ assert.deepEqual(capeTryonRockState(restored.search),{selected:false,blocked:false});
  assert(restored.searchParams.has('stockRegionalWind'));
  for(const bad of ['scenery=detail','stockOpenCoast','legacyShoreArcs']){
   const blocked='https://flight.test/?'+bad;

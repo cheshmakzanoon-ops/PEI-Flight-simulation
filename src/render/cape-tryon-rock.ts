@@ -10,6 +10,14 @@ export function tryonRockMatches(terrainSha:string|undefined,bounds:readonly num
   cover.sourceSha===ORBY_COVER_SHA&&cover.width===4096&&cover.height===2720;
 }
 
+/** The signed curtain aperture is geometric, not tied to a saved route.
+ * Far stock remains unarmed, without an extra shader link or draw. */
+export function tryonRockNear(x:number,z:number,range:number){
+ if(!Number.isFinite(x)||!Number.isFinite(z)||!Number.isFinite(range)||range<=0)return false;
+ const dx=Math.max(0,-23711.65-x,x+23491.49),dz=Math.max(0,-3858.77-z,z+3789.80);
+ return dx*dx+dz*dz<range*range;
+}
+
 /** Mark exact position spans already selected by the certified Tryon arc.
  * The shore shader never otherwise consumes the existing UV coordinates. */
 export function markTryonRockShoreUV(uv:Float32Array,ranges:readonly (readonly [number,number])[]){

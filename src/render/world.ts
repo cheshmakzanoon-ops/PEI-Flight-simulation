@@ -81,7 +81,7 @@ import { allowOrbyZeroArc,matchesOrbyTerrainBounds,ORBY_COVER_SHA } from '../sim
 import { eastBenchGLSL,loadEastBench,type EastBenchMask } from './east-bench.ts';
 import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type SourisLighting} from './souris-light.ts';
 import { eastSandstoneGLSL } from './east-sandstone.ts';
-import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches} from './cape-tryon-rock.ts';
+import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches,tryonRockNear} from './cape-tryon-rock.ts';
 import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import {CAPE_WET_PATCH,capeWetCells,capeWetPatchGateGLSL,capeWetTieGLSL} from './cape-tryon-wet-tie.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
@@ -1276,10 +1276,14 @@ export class World {
  }
  /** Compile the two exact linked materials without submitting coastline. */
  async prepareTryonRock(camera:THREE.Camera){
-  const s=this.tryonRockStage;if(!s||s.started)return;
+  const s=this.tryonRockStage;if(!s||s.started||!tryonRockNear(camera.position.x,camera.position.z,1800))return;
   s.started=true;this.tryonRockPhase='checking-cover';
-  if(!globalThis.crypto?.subtle||await verifyDecodedCover(this.cover)!==CAPE_TRYON_COVER_DECODED){
-   this.tryonRockPhase='stock-cover';return;
+  const coverOK=!!globalThis.crypto?.subtle&&await verifyDecodedCover(this.cover)===CAPE_TRYON_COVER_DECODED;
+  if(this.tryonRockStage!==s)return;
+  if(!coverOK){this.tryonRockPhase='stock-cover';return;}
+  // Dispatch, map jumps or the ordinary flight can move during the digest.
+  if(!tryonRockNear(camera.position.x,camera.position.z,1800)){
+   s.started=false;this.tryonRockPhase='pending';return;
   }
   this.tryonRockPhase='compiling';
   const probe=new THREE.Group();
@@ -1324,11 +1328,17 @@ export class World {
    !tile.fine.userData.coastalRefinement&&!tile.fine.userData.coastalSurvey&&!tile.fine.userData.localGrade&&!this.grades?.has('12-10');
   s.mesh.visible=regular&&Math.hypot(pos.x-CAPE_WET_PATCH.x,pos.z-CAPE_WET_PATCH.z)<1160;
  }
- private syncTryonRock(){
+ private syncTryonRock(pos:THREE.Vector3){
   const s=this.tryonRockStage;if(!s?.proof)return;
+  const near=tryonRockNear(pos.x,pos.z,1500);
+  if(!near&&!s.mounted)return;
   if(!s.proof()||s.owners.some(q=>q.mesh.material!==(s.mounted?q.authored:q.stock))){
    for(const q of s.owners)if(q.mesh.material===q.authored)q.mesh.material=q.stock;
    s.proof=undefined;s.mounted=false;this.tryonRockPhase='stock-revoked';return;
+  }
+  if(!near){
+   for(const q of s.owners)q.mesh.material=q.stock;
+   s.mounted=false;this.tryonRockPhase='linked';return;
   }
   if(!s.mounted){
    for(const q of s.owners)q.mesh.material=q.authored;
@@ -2092,7 +2102,7 @@ export class World {
   return {height:this.groundHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  }
  update(pos:THREE.Vector3,clock:number){
-  this.syncTryonRock();this.syncCapeWet(pos);
+  this.syncTryonRock(pos);this.syncCapeWet(pos);
   this.t.value=clock;this.detailClock.value=clock;this.lastX=pos.x;this.lastZ=pos.z;
   this.orthoSeams?.advance(clock);
   const grass=this.grassStudy;

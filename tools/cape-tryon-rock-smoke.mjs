@@ -13,7 +13,8 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTA
  args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage','--ignore-gpu-blocklist']});
 try{
  const report={};
- for(const refuse of [false,true]){
+ for(const run of ['active','stock','invalid-link']){
+  const refuse=run==='invalid-link',stock=run==='stock',active=run==='active';
   const page=await browser.newPage({viewport:{width:620,height:413}});
   page.setDefaultTimeout(120000);
   const errors=[],expected=[];
@@ -102,32 +103,28 @@ try{
     }
    });
   },{refuse,targetOwners});
-  const url=new URL('?diagnostics&departure='+site+(refuse?'&capeTryonRockReview':''),base);
+  const url=new URL('?diagnostics&departure='+site+(stock?'&stockCapeTryonRock':''),base);
   assert.equal((await page.goto(url.href,{waitUntil:'domcontentloaded'})).status(),200);
   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site);
-  if(!refuse){
-   const button=page.getByRole('button',{name:'Enable Cape Tryon sandstone'});
-   await button.waitFor();
-   await Promise.all([page.waitForURL(v=>v.searchParams.has('capeTryonRockReview')&&v.searchParams.get('departure')===site),button.click()]);
-   await page.getByRole('button',{name:'Turn off Cape Tryon sandstone'}).waitFor();
-   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===v,site);
-  }
+  await page.getByRole('button',{name:stock?'Enable Cape Tryon sandstone':'Turn off Cape Tryon sandstone'}).waitFor();
+
   const sample=()=>page.evaluate(()=>{
    const d=window.islandAirDiagnostics,s=window.capeStoneQA;
    return {phase:d?.tryonRockState,active:d?.tryonRockPreview,repair:d?.tryonCoast,
     authoredSources:s.compiled,refused:s.refused,drawCalls:d?.drawCalls,mode:d?.mode};
   });
-  console.log('Cape Stone dispatch',refuse?'refused':'normal',await sample());
+  console.log('Cape Stone dispatch',run,await sample());
   try{
-   await page.waitForFunction(rejected=>{
+   await page.waitForFunction(({rejected,stock})=>{
     const d=window.islandAirDiagnostics,s=window.capeStoneQA;
+    if(stock)return d?.tryonRockState==='stock'&&d.roads&&d.buildings&&d.mainland;
     if(d?.tryonRockState?.startsWith('stock-')||d?.tryonRockState?.startsWith('missing-owners'))return true;
     return rejected?s.refused>0&&d?.tryonRockState==='stock-link':d?.tryonRockPreview===true;
-   },refuse,{polling:150,timeout:100000});
-  }finally{console.log('Cape Stone link result',refuse?'refused':'normal',await sample(),errors);}
+   },{rejected:refuse,stock},{polling:150,timeout:100000});
+  }finally{console.log('Cape Stone link result',run,await sample(),errors);}
   const admitted=await sample();
-  assert.equal(admitted.phase,refuse?'stock-link':'live',JSON.stringify(admitted));
-  assert.equal(admitted.active,!refuse);
+  assert.equal(admitted.phase,refuse?'stock-link':stock?'stock':'live',JSON.stringify(admitted));
+  assert.equal(admitted.active,active);
   if(refuse)assert(admitted.refused>0,JSON.stringify(admitted));
   await page.getByRole('button',{name:'Begin flight'}).click();
   await page.waitForFunction(v=>window.islandAirDiagnostics?.mode==='flight'&&window.islandAirDiagnostics.site===v,site);
@@ -150,7 +147,7 @@ try{
    const f=await page.evaluate(()=>window.capeStoneQA.frame);
    assert.equal(f.code,0);
    assert.deepEqual(f.role.map(x=>x.count).sort((a,b)=>a-b),targetOwners);
-   assert.equal(f.diag.tryonRockPreview,!refuse);
+   assert.equal(f.diag.tryonRockPreview,active);
    f.role=f.role.map(({positions,...q})=>{
     assert(positions,'expected an existing direct position buffer');
     return {...q,positionSha256:createHash('sha256').update(Buffer.from(positions,'base64')).digest('hex')};
@@ -170,9 +167,10 @@ try{
   assert.equal(alpha,0);
   const positions=roles=>roles.map(v=>[v.count,v.positionSha256]).sort(([a],[b])=>a-b);
   assert.deepEqual(positions(neutral.role),positions(live.role));assert.deepEqual(positions(live.role),positions(restored.role));
-  if(refuse){
+  if(!active){
    assert.deepEqual(positions(live.role),positions(report.active.owners),'the refused link keeps both actual original position buffers');
-   assert(live.compiled>0&&live.refused>0);
+   if(refuse)assert(live.compiled>0&&live.refused>0);
+   else assert.equal(live.compiled,0);
    assert(live.role.every(q=>!q.authored)&&changedGt2===0);
    assert.deepEqual(a.data,b.data);
   }else{
@@ -182,10 +180,9 @@ try{
    assert(changedGt2>350);
   }
   assert.deepEqual(errors,[]);
-  const run=refuse?'invalid-link':'active';
   report[run]={samePose:spatial(live.diag),owners:live.role,changedGt2,alpha,compiled:live.compiled,refused:live.refused,expectedShaderErrors:expected.length,
    distance:Math.hypot(live.diag.x-start.x,live.diag.z-start.z)};
-  if(!refuse)await writeFile(out+'/cape-stone-previous.png',neutral.bytes);
+  if(active)await writeFile(out+'/cape-stone-previous.png',neutral.bytes);
   await writeFile(out+'/cape-stone-'+run+'.png',live.bytes);
   await page.close();
  }

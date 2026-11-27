@@ -28,7 +28,7 @@ The [Cape Egmont lighthouse studio](qa/cape-egmont-detached.md) is a separate Pr
 
 **Tracadie Bay · marsh pass** starts over one of [three mapped coastal marsh patches](qa/coastal-marsh.md). Get close to see wind-laid grasses; the patch layer is also available at Cascumpec and Morell in Standard.
 
-**Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces. In Standard, select **Enable Cape Tryon sandstone** in Dispatch for the [original cliff finish](qa/cape-tryon-stone.md).
+**Cape Tryon · cliff pass** starts offshore in Queens County. It passes the [repaired headland shoreline](qa/cape-tryon-coast.md), while keeping the original tower and flight surfaces. Standard includes the [original sandstone finish](qa/cape-tryon-stone.md) on the same signed coastal surfaces; choose **Turn off Cape Tryon sandstone** or use `stockCapeTryonRock` to compare.
 
 ### Scenery previews
 

@@ -124,7 +124,7 @@ import {verifyDecodedCover} from './sim/cover-proof.ts';
 import {MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS} from './render/kings-field-pass.ts';
 import {kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested} from './app/scenery-profile.ts';
 import {SourisWetCurtain} from './render/souris-wet-curtain.ts';
-import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested,summersideRunwayPavementRequested,aircraftRunwayCastRequested,bordenCoastRequested} from './app/scenery-profile.ts';
+import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested,summersideRunwayPavementRequested,aircraftRunwayCastRequested,bordenCoastRequested,capeTryonRockRequested} from './app/scenery-profile.ts';
 import {RegionalWindStream} from './render/regional-wind-stream.ts';
 import {RusticoStandardFlight,RUSTICO_LIGHT_ROUTE,standardRusticoLayers} from './render/north-rustico/flight.ts';
 import {standardRusticoLighthouseRequested} from './app/scenery-profile.ts';
@@ -366,7 +366,7 @@ async function run(){
   gl.getParameter(gl.SAMPLES)===4&&renderer.capabilities.maxTextures>=16?
   new AircraftRunwayDepth(renderer,aircraft.root,aircraft.runwayCasters):undefined;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
-   showBuildingShadows,floor,useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles,!!nearshoreStandard,standardOpenCoastRequested(options),pastureEligible,openRipples,marsh,options.has('capeTryonRockReview')?terrainSha:undefined,options.has('capeTryonWaterReview')?terrainSha:undefined,runway03PavementRequested(options),bowleyDefaultCore,
+   showBuildingShadows,floor,useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles,!!nearshoreStandard,standardOpenCoastRequested(options),pastureEligible,openRipples,marsh,capeTryonRockRequested(options)?terrainSha:undefined,options.has('capeTryonWaterReview')?terrainSha:undefined,runway03PavementRequested(options),bowleyDefaultCore,
    standardLandAtlasMatches(terrain,terrainSha,cover)?terrainSha:undefined,summersideRunwayPavementRequested(options),aircraftDepth,bordenCoastRequested(options));
  const dalvayAllowed=dalvayWaterRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)&&renderer.capabilities.maxTextures>=16;
  let dalvayGlazingActive=false;

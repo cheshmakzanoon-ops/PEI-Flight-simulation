@@ -30,17 +30,28 @@ export function cavendishPackageState(search:string){
 }
 
 export const CAPE_TRYON_ROCK_FLAG='capeTryonRockReview';
+export const CAPE_TRYON_ROCK_STOCK='stockCapeTryonRock';
 export const CAPE_TRYON_DEPARTURE='cape-tryon-coast';
+/** Standard admits the existing local sandstone material only in its
+ * unchanged, compatible shoreline family. The older opt-in is still valid. */
+export function capeTryonRockRequested(q:URLSearchParams){
+ const profiles=q.getAll('scenery');
+ if(profiles.length>1||profiles.some(v=>v!==''&&v!=='standard')||
+    q.has(CAPE_TRYON_ROCK_STOCK)||!standardOpenCoastRequested(q))return false;
+ return q.has(CAPE_TRYON_ROCK_FLAG)||(!q.has('qa')&&standardComparisonQuery(q));
+}
 export function capeTryonRockState(search:string){
- const q=sceneryOptions(search),selected=q.has(CAPE_TRYON_ROCK_FLAG);
- const blocked=!standardOpenCoastRequested(q);
- return {selected,blocked};
+ const q=sceneryOptions(search),selected=capeTryonRockRequested(q);
+ const test=new URLSearchParams(q);test.delete(CAPE_TRYON_ROCK_STOCK);test.set(CAPE_TRYON_ROCK_FLAG,'');
+ return {selected,blocked:!capeTryonRockRequested(test)};
 }
 export function switchCapeTryonRockURL(source:string,on:boolean,departureId:string){
  const url=new URL(source);
- if(!on)url.searchParams.delete(CAPE_TRYON_ROCK_FLAG);
- else if(departureId===CAPE_TRYON_DEPARTURE&&!capeTryonRockState(url.search).blocked)
-  url.searchParams.set(CAPE_TRYON_ROCK_FLAG,'');
+ if(!on){
+  url.searchParams.delete(CAPE_TRYON_ROCK_FLAG);url.searchParams.set(CAPE_TRYON_ROCK_STOCK,'');
+ }else if(departureId===CAPE_TRYON_DEPARTURE&&!capeTryonRockState(url.search).blocked){
+  url.searchParams.delete(CAPE_TRYON_ROCK_STOCK);url.searchParams.set(CAPE_TRYON_ROCK_FLAG,'');
+ }
  url.searchParams.set('departure',departureId);
  return url.href;
 }
@@ -301,7 +312,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','capeTryonWaterReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
+ 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass']);
 /** Standard changes only the existing CYYG 03/21 asphalt; old exact replays stay stock. */
 export function runway03PavementRequested(q:URLSearchParams){
  return q.getAll('scenery').every(v=>!v||v==='standard')&&standardComparisonQuery(q)&&!q.has('qa')&&
