@@ -1,0 +1,88 @@
+{
+  "revision": "d6e07eaa45cde63a79596801e9800f88772af2c1",
+  "playableChanges": false,
+  "scope": "Same-camera original detached studio model and arched dormer overlay, not a flight capture.",
+  "compare": {
+    "changed": 9972,
+    "alpha": 0,
+    "left": 5090,
+    "right": 4882,
+    "box": [
+      509,
+      230,
+      788,
+      332
+    ],
+    "sameCamera": true,
+    "restoredRGBA": true,
+    "addedDraws": 1,
+    "addedTriangles": 848
+  },
+  "shots": {
+    "original": {
+      "phase": "plain",
+      "samples": 4,
+      "error": 0,
+      "calls": 5,
+      "triangles": 5106,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "dormerTriangles": 0,
+      "privateOnly": true,
+      "rgbaPNGsha256": "479d554147ba83d2aaa50b56646d60aae919f40a9def52d996d728083b7b9e8e"
+    },
+    "finished": {
+      "phase": "front",
+      "samples": 4,
+      "error": 0,
+      "calls": 6,
+      "triangles": 5954,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "dormerTriangles": 848,
+      "privateOnly": true,
+      "rgbaPNGsha256": "a23eb1a487eeaff7774f7659100ec1423dc45ea1e7c51ff001b382b49f5038b8"
+    },
+    "restored": {
+      "phase": "plain",
+      "samples": 4,
+      "error": 0,
+      "calls": 5,
+      "triangles": 5106,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "dormerTriangles": 0,
+      "privateOnly": true,
+      "rgbaPNGsha256": "479d554147ba83d2aaa50b56646d60aae919f40a9def52d996d728083b7b9e8e"
+    },
+    "oblique": {
+      "phase": "oblique",
+      "samples": 4,
+      "error": 0,
+      "calls": 6,
+      "triangles": 5954,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "dormerTriangles": 848,
+      "privateOnly": true,
+      "rgbaPNGsha256": "3138a7da99d28c82f1cd951425de89818ada4219dd0d09ca15799a0cd89c3eb1"
+    },
+    "mid": {
+      "phase": "mid",
+      "samples": 4,
+      "error": 0,
+      "calls": 6,
+      "triangles": 4554,
+      "lit": true,
+      "bodyTriangles": 1972,
+      "roofTriangles": 56,
+      "dormerTriangles": 496,
+      "privateOnly": true,
+      "rgbaPNGsha256": "cbff11020ad3ef27f48a9dce94d9c47d190cf7db58657cef5d8008db12d86ebc"
+    }
+  }
+}
