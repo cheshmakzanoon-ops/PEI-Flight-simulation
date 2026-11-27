@@ -49,16 +49,20 @@ test('all known scenery predicates see exact stock options with editor key, veto
 });
 test('the actual frame submits once, restoring the Cape, terrain and Borden leases in both paint paths',()=>{
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
+ const dispatch='const submitWorld=()=>renderer.render(scene,camera);';
+ const frame='const rE=new THREE.Euler';
  const start='const endRidge=world.beginKingsRidgeDraw(camera);';
  const boundary="if(world.tryonRockState==='pending'";
+ assert.equal(main.split(dispatch).length,2);
+ assert.equal(main.split(frame).length,2);
  assert.equal(main.split(start).length,2);
  assert.equal(main.split(boundary).length,2);
- const body=main.slice(main.indexOf(start),main.indexOf(boundary));
+ const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape, failAt)=>{
+ const paint=(cape,failAt,industrial=false)=>{
   const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
-   activeSite:0,ui:{mode:'flight'},view:0,now:42};
+   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined};
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
   scope.world={
@@ -71,6 +75,9 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
    beforeFrame:p=>{assert.equal(p.site,'northcape-wind-low');assert.equal(p.mode,'flight');return begin('cape');},
    dispose:()=>calls.push('dispose cape'),
   }:undefined;
+  if(industrial)scope.buildings={drawStandardIndustrial:submit=>{
+   calls.push('begin industrial');try{return submit();}finally{calls.push('end industrial');}
+  }};
   scope.renderer={render:(scene,camera)=>{
    assert.equal(scene,scope.scene);assert.equal(camera,scope.camera);calls.push('render');
    if(failAt==='render')throw error;
@@ -90,6 +97,12 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  assert.deepEqual(paint(true,'borden'),[...lead,'begin cape','begin rim','begin borden','end rim','end cape',...tail]);
  assert.deepEqual(paint(false,'rim'),[...lead,'begin rim',...tail]);
  assert.deepEqual(paint(true,'rim'),[...lead,'begin cape','begin rim','end cape',...tail]);
+ for(const failAt of [undefined,'render']){
+  assert.deepEqual(paint(false,failAt,true),[...lead,'begin rim','begin borden','begin industrial','render',
+   'end industrial','end borden','end rim',...tail]);
+  assert.deepEqual(paint(true,failAt,true),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
+ }
+
 });
 test('angle, distance and lower-lens tapers exactly preserve full passed poses and exact overhead/far/near stock',()=>{
  for(const [meters,ry]of [[413,.175],[654,.267],[290,.384],[469,.242],[490,.30]])assert.equal(capeCardGain(meters,ry),1);
