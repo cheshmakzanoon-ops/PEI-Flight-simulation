@@ -1,0 +1,1185 @@
+{
+  "scope": "Detached original land material and 4x native 1200x760 actual raster comparison, no live patch or collision.",
+  "sourceParent": "015152ca9528f77a74f0e48748df24a494a892b0",
+  "sourceRaster": {
+    "mode": "Detached 2020 dry field relief intake only; first source inspection, no change to terrain/physics/published art.",
+    "centerLL": [
+      -63.05960547,
+      46.30909091
+    ],
+    "localCropEPSG3979": [
+      2384807,
+      311042,
+      265,
+      313
+    ],
+    "zBasis": "CGVD2013",
+    "data": {
+      "dtm": {
+        "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+        "etag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+        "wireBytes": 34973844421,
+        "rawSha256": "de27b769b97fc8db7008f52ba3ea167d0d06b390d8f8dfc7ab68409887635f69",
+        "rasterDimensions": [
+          197442,
+          108635
+        ],
+        "zQuantiles": [
+          23.792028427124023,
+          27.654384231567384,
+          32.0102653503418,
+          35.9744270324707,
+          39.05806350708008
+        ],
+        "nativeAffine": [
+          2261621.0,
+          1.0,
+          0.0,
+          371370.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "dsm": {
+        "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif",
+        "etag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+        "wireBytes": 35659211028,
+        "rawSha256": "d072445ff5b3fb6a4bc3ebf4089ebead30202e6457e1e2ec2599e40c576201cf",
+        "rasterDimensions": [
+          197442,
+          108635
+        ],
+        "zQuantiles": [
+          23.83626937866211,
+          27.740753173828125,
+          32.23384475708008,
+          36.47443389892578,
+          44.723392486572266
+        ],
+        "nativeAffine": [
+          2261621.0,
+          1.0,
+          0.0,
+          371370.0,
+          0.0,
+          -1.0
+        ]
+      }
+    },
+    "heightOfSurfaceOverBareEarthQuantiles": [
+      -0.0001392364501953125,
+      0.02042388916015625,
+      0.045749664306640625,
+      0.31879043579101596,
+      0.7988029479980483,
+      5.11990768432617,
+      7.692407608032227
+    ]
+  },
+  "rawFirstReturnSameAcquisitionCheck": {
+    "scope": "Direct first ground returns cross-check the DTM of same 2020 project in this dated field; not independent epoch, precision or site admission.",
+    "points": 5227,
+    "firstEligibleGroundCount": 289672,
+    "within0.70m": 5197,
+    "inputCohortsNotIndependent": [
+      27675
+    ],
+    "nearestSupportM": [
+      0.0013628716448063848,
+      0.09136277787706996,
+      0.2146594797088949,
+      0.38363298736361895,
+      0.5771761638019896,
+      1.6753964431179136
+    ],
+    "absoluteSourceDTMMinusNearestRawAtMost.7m": [
+      4.455566408267941e-06,
+      0.002111944580077818,
+      0.01141912841796966,
+      0.03238811035156035,
+      0.10551795043945134,
+      0.37395791625976926
+    ],
+    "absoluteCurrentMeshMinusNearestRawAtMost.7m": [
+      0.00010696983621016898,
+      0.1950885237356445,
+      0.8161721489262064,
+      1.7482086117635607,
+      2.0377228098369335,
+      2.171742371467385
+    ],
+    "absoluteCurrentPhysicalMinusNearestRawAtMost.7m": [
+      0.0005081393122630118,
+      0.15341563913931608,
+      0.6273960234523344,
+      1.4402948873419392,
+      1.839016305545316,
+      1.905711539086571
+    ]
+  },
+  "nodalBoundedGrade": {
+    "scope": "Private conservative one-owner grade geometry. Native DTM target only; no game integration/land physics or masks.",
+    "shape": [
+      17,
+      33
+    ],
+    "movedCount": 347,
+    "validatedLoweredM": [
+      -1.49,
+      -1.214,
+      -0.38,
+      -0.04599999999999966,
+      -0.01
+    ],
+    "outerRimExact": true,
+    "sizesXZ": [
+      3.4001288134295464,
+      3.270770524493855
+    ],
+    "signedSupportMapClasses": [
+      40.0
+    ],
+    "addedPiecewiseSlopeMax": 0.15612767896406582,
+    "triangleSlopeNewVisualMax": 0.20396755700905114,
+    "parentNodeDryM": [
+      254.0
+    ],
+    "highSupportCorePoints": 87,
+    "scale": 0.7330002439969477,
+    "sourceMedianAndP90": {
+      "oldVisualOnCore": [
+        0.7660843121195455,
+        1.1815216728605307,
+        1.7092990958104153,
+        2.034592582002375,
+        2.1545315005055166
+      ],
+      "proposedOnCore": [
+        0.31291612682260705,
+        0.4242011310409303,
+        0.5590269724918357,
+        0.667393315457889,
+        0.7235160718835374
+      ]
+    },
+    "surveyNoAbsoluteAccuracyClaim": true,
+    "minZDistanceFromPublishedImagerySeamM": 111.20619783002257,
+    "actualEngineParentHeightConformanceNeeded": true,
+    "roadTreePlantAuthorizationPending": true,
+    "encodedUncompressedSHA": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067"
+  },
+  "oldSewnAndProposedPackedThree": {
+    "scope": "Actual Three.js detached World patch geometry/rays only, no live mount, contact installation or claim elsewhere.",
+    "confirmedExactNorthApronUnderBothNeighbourStates": [
+      {
+        "stockSeams": "112:112,56,56,56",
+        "northNeighbourLOD": 112,
+        "exactNorthApronTriangles": 224,
+        "exactAttrChecks": 1808,
+        "rays": 247,
+        "max": 0
+      },
+      {
+        "stockSeams": "112:56,112,56,56",
+        "northNeighbourLOD": 56,
+        "exactNorthApronTriangles": 224,
+        "exactAttrChecks": 1808,
+        "rays": 247,
+        "max": 0
+      }
+    ],
+    "protectedRays": 110,
+    "maxProtectedF32Delta": 4.707218977273442e-06,
+    "deepCoreRays": 15,
+    "meanDeepCoreChangesM": 1.152703849522181,
+    "minLoweredF32M": -1.4396969082686297,
+    "candidateVSExactGradeMaxM": 1.3906927204487829e-05,
+    "physicsBlendVSGradeInDeepCoreMaxM": 0.007725011427464068,
+    "stockTriangles": 25088,
+    "candidateTriangles": 26198,
+    "geometryPositionSHA": "1eca71ab8375cf56c342c8d991461a47fcc83043958464050624725083926834",
+    "geometryIndexSHA": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99"
+  },
+  "detachedFixed": {
+    "inset2-north-quartered": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 54,
+            "triangles": 244670
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 54,
+            "triangles": 245780
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 54,
+            "triangles": 245780
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 54,
+            "triangles": 244670
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 33682,
+        "strong": 7070,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 7137,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 28482,
+        "strong": 7121,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,56,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "0782847d045e4d79fe9b0cae0fbe13b5c7b118a126fe1d879c837c4475abbdc7",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "072fa109f68764d95d021257f84d0379624ac14223936da8f9303aa6e653672e",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10720.608080542765,
+        84,
+        21215.32610070525
+      ],
+      "view": [
+        -0.9574357383718175,
+        0.08720963563998375,
+        -0.27515683952966563,
+        0,
+        1.3877787807814457e-17,
+        0.9532657814844381,
+        0.30213300026786805,
+        0,
+        0.2886465085332107,
+        0.2892729321979588,
+        -0.9126907273601405,
+        0,
+        4140.563507027269,
+        -7152.0342388747895,
+        22287.50087529109,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ]
+    },
+    "inset2-southwest-quartered": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 64,
+            "triangles": 266662
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 64,
+            "triangles": 267772
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 64,
+            "triangles": 267772
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 64,
+            "triangles": 266662
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 17366,
+        "strong": 5205,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 4612,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 13997,
+        "strong": 5224,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,56,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "0782847d045e4d79fe9b0cae0fbe13b5c7b118a126fe1d879c837c4475abbdc7",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "072fa109f68764d95d021257f84d0379624ac14223936da8f9303aa6e653672e",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10626.608080542765,
+        80,
+        21468.65842909608
+      ],
+      "view": [
+        0.6593592299092113,
+        0.1957195221060966,
+        -0.7259058303940624,
+        0,
+        1.387778780781446e-17,
+        0.9655210886987721,
+        0.26032484952062934,
+        0,
+        0.7518280427953804,
+        -0.17164759230615345,
+        0.6366252415055255,
+        0,
+        -23147.49156872353,
+        1527.9671871690332,
+        -5974.399082205929,
+        1.0000000000000002
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ]
+    },
+    "inset2-facing-away": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 25,
+            "triangles": 235906
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 25,
+            "triangles": 237016
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 25,
+            "triangles": 237016
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 25,
+            "triangles": 235906
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,56,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "0782847d045e4d79fe9b0cae0fbe13b5c7b118a126fe1d879c837c4475abbdc7",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "072fa109f68764d95d021257f84d0379624ac14223936da8f9303aa6e653672e",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10720.608080542765,
+        84,
+        21215.32610070525
+      ],
+      "view": [
+        0.9388035291887743,
+        0.12185543768730296,
+        -0.3221788104279022,
+        0,
+        0,
+        0.935334350483563,
+        0.35376496831299065,
+        0,
+        0.34445309344336317,
+        -0.33211580075559044,
+        0.8780951892054588,
+        0,
+        -17372.229404860886,
+        5661.012540857507,
+        -15204.839285339554,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        -17118.058278509514,
+        443.9861010046086,
+        1445.0940888003156
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ]
+    }
+  },
+  "detachedVirtualMovement": {
+    "t0": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 158,
+            "triangles": 317095
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 158,
+            "triangles": 318205
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 158,
+            "triangles": 318205
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 158,
+            "triangles": 317095
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 51270,
+        "strong": 9362,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 9297,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 44315,
+        "strong": 9384,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,112,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "405774d74a75cbec6685568b5bc05666e18e10d2d2e16e562ab8fac843587a71",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "b96840b9d5b9f4a5589a89d255dd61250d4fdf2c7aaf4b6e8b4d73c04f02f247",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10779.77696943188,
+        72.50125090025197,
+        21469.701006000778
+      ],
+      "view": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0.9934387745042664,
+        0.1143652102322257,
+        0,
+        0,
+        -0.1143652102322257,
+        0.9934387745042664,
+        0,
+        -10779.776969431878,
+        2383.3613153299343,
+        -21337.125077175737,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        10779.77696943188,
+        68.30125090025197,
+        21452.90100600078
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ],
+      "browserMode": "flight",
+      "browserCamera": "Chase"
+    },
+    "t30": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 158,
+            "triangles": 317095
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 158,
+            "triangles": 318205
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 158,
+            "triangles": 318205
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 158,
+            "triangles": 317095
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 68730,
+        "strong": 13787,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 9337,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 62547,
+        "strong": 13801,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,112,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "405774d74a75cbec6685568b5bc05666e18e10d2d2e16e562ab8fac843587a71",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "b96840b9d5b9f4a5589a89d255dd61250d4fdf2c7aaf4b6e8b4d73c04f02f247",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10780.059782077413,
+        72.52018061543096,
+        21462.012142990014
+      ],
+      "view": [
+        0.9999982151617175,
+        0.0002049579803239347,
+        -0.0018782080836828804,
+        0,
+        2.710505431213761e-20,
+        0.9940986067568087,
+        0.10848022881692278,
+        0,
+        0.0018893579277919218,
+        -0.10848003519725748,
+        0.9940968324515587,
+        0,
+        -10820.58996420275,
+        2253.898162883266,
+        -21322.938099744984,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        10780.262524987436,
+        68.33760510212176,
+        21439.69997737992
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ],
+      "browserMode": "flight",
+      "browserCamera": "Chase"
+    },
+    "t300": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 156,
+            "triangles": 310075
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 156,
+            "triangles": 311185
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 156,
+            "triangles": 311185
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 156,
+            "triangles": 310075
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,112,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "405774d74a75cbec6685568b5bc05666e18e10d2d2e16e562ab8fac843587a71",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "b96840b9d5b9f4a5589a89d255dd61250d4fdf2c7aaf4b6e8b4d73c04f02f247",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10785.796213662972,
+        73.562496365727,
+        21306.005923681267
+      ],
+      "view": [
+        0.999995855127051,
+        0.00030303034835128725,
+        -0.0028631977448258985,
+        0,
+        -5.421010862427522e-20,
+        0.9944459516000684,
+        0.10524851232314032,
+        0,
+        0.0028791888993252965,
+        -0.10524807608142867,
+        0.9944418297479446,
+        0,
+        -10847.095523652433,
+        2165.9937821626118,
+        -21164.443991276305,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        10785.983636098563,
+        69.39919906778792,
+        21284.107721260738
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ],
+      "browserMode": "flight",
+      "browserCamera": "Chase"
+    },
+    "t330": {
+      "scans": [
+        {
+          "shown": false,
+          "geometry": {
+            "calls": 156,
+            "triangles": 310075
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 156,
+            "triangles": 311185
+          },
+          "error": 0
+        },
+        {
+          "shown": true,
+          "geometry": {
+            "calls": 156,
+            "triangles": 311185
+          },
+          "error": 0
+        },
+        {
+          "shown": false,
+          "png": null,
+          "geometry": {
+            "calls": 156,
+            "triangles": 310075
+          },
+          "error": 0
+        }
+      ],
+      "rawDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "zeroDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "gradeDifference": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "restored": {
+        "rgb": 0,
+        "strong": 0,
+        "alpha": 0
+      },
+      "newSky": 0,
+      "boundProbe": {
+        "seam": "112:112,112,56,56",
+        "source": "70ebceb7390a284eb770c7bb225c433fbf34d8a568d704e31a76d5d531e53067",
+        "position": "405774d74a75cbec6685568b5bc05666e18e10d2d2e16e562ab8fac843587a71",
+        "uv": "4884fd633572b7ab9eada230da1f56760a85b82db39f6dca6e0595f580c221f6",
+        "index": "aedd20898ea9459cd005e70b8ef288b0bec25202cd73975e05767617f8966b99",
+        "normal32": "44673ffadd3c166b8f6aacce125bb42a0a5b3e623fb2ff0b0f344c4aa6b23fdd",
+        "tessellationP": "b96840b9d5b9f4a5589a89d255dd61250d4fdf2c7aaf4b6e8b4d73c04f02f247",
+        "stockTriangles": 25088,
+        "triangles": 26198,
+        "unchangedRegularTriangles": 25078,
+        "changedPerimeterTriangles": 96
+      },
+      "orthoStart": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "orthoFinal": {
+        "edge": "17-14 / 17-15",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "eye": [
+        10786.358944202138,
+        73.672573369644,
+        21290.69826503499
+      ],
+      "view": [
+        0.9999962546613488,
+        0.0002893397750658482,
+        -0.0027215704601428314,
+        0,
+        5.421010862427522e-20,
+        0.9943961749065949,
+        0.10571777206852627,
+        0,
+        0.0027369076116955833,
+        -0.1057173761196684,
+        0.9943924505561663,
+        0,
+        -10844.589219774969,
+        2174.4161085100814,
+        -21149.74228626422,
+        1
+      ],
+      "projection": [
+        1.270270148564046,
+        0,
+        0,
+        0,
+        0,
+        2.0056897082590197,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004571429617,
+        -1,
+        0,
+        0,
+        -0.16000003657143694,
+        0
+      ],
+      "ground": [
+        10786.595858320787,
+        69.5188835297281,
+        21267.45347353398
+      ],
+      "buffers": [
+        1200,
+        760,
+        4
+      ],
+      "browserMode": "flight",
+      "browserCamera": "Chase"
+    }
+  },
+  "movementNote": "Names t0/t30/t300/t330 identify spatial windows, not exact simulated frames. The normal flight equations ran from a private test spawn, not from an added or published route.",
+  "terrainSilhouette": "No new sky-bearing pixels in dual-sky comparison; this does not measure per-sample coverage changes on pixels already partly sky.",
+  "releaseHold": "Technically isolated; local relief/color shift is too subdued to justify adding this to the normal route. No current departure provides a meaningful close envelope.",
+  "independentFixedAndMovingPixelContainment": "Zero RGB outside the exact projected stock/authored triangle union at 0-pixel reserve in all four positive views, including both stock-vs-zero comparisons. This projection is not per-sample depth ownership. The zero relief control was at most 1 RGB code value anywhere."
+}
