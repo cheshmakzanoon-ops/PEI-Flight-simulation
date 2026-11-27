@@ -47,7 +47,7 @@ test('all known scenery predicates see exact stock options with editor key, veto
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
  assert(main.includes("if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')"));
 });
-test('the actual frame submits once, restoring the Cape and terrain leases in both paint paths',()=>{
+test('the actual frame submits once, restoring the Cape, terrain and Borden leases in both paint paths',()=>{
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
  const start='const endRidge=world.beginKingsRidgeDraw(camera);';
  const boundary="if(world.tryonRockState==='pending'";
@@ -65,6 +65,7 @@ test('the actual frame submits once, restoring the Cape and terrain leases in bo
    beginKingsRidgeDraw:c=>{assert.equal(c,scope.camera);return begin('ridge');},
    beginPrinceLandscapeDraw:()=>begin('prince'),
    beginRegularNorthRimDraw:c=>{assert.equal(c,scope.camera);return begin('rim');},
+   beginBordenShoreArc:c=>{assert.equal(c,scope.camera);return begin('borden');},
   };
   scope.datedStandReview=cape?{
    beforeFrame:p=>{assert.equal(p.site,'northcape-wind-low');assert.equal(p.mode,'flight');return begin('cape');},
@@ -74,16 +75,19 @@ test('the actual frame submits once, restoring the Cape and terrain leases in bo
    assert.equal(scene,scope.scene);assert.equal(camera,scope.camera);calls.push('render');
    if(failAt==='render')throw error;
   }};
-  if(failAt==='rim'||failAt==='render')assert.throws(()=>script.runInNewContext(scope),e=>e===error);
+  if(failAt==='rim'||failAt==='borden'||failAt==='render')assert.throws(()=>script.runInNewContext(scope),e=>e===error);
   else script.runInNewContext(scope);
   return calls;
  };
  const lead=['begin ridge','begin prince'],tail=['end prince','end ridge'];
+ const wholePaint=['begin rim','begin borden','render','end borden','end rim'];
  for(const failAt of [undefined,'render']){
-  assert.deepEqual(paint(false,failAt),[...lead,'begin rim','render','end rim',...tail]);
-  assert.deepEqual(paint(true,failAt),[...lead,'begin cape','begin rim','render','end rim','end cape',...tail]);
+  assert.deepEqual(paint(false,failAt),[...lead,...wholePaint,...tail]);
+  assert.deepEqual(paint(true,failAt),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
  }
- assert.deepEqual(paint(true,'cape'),[...lead,'begin cape','dispose cape','begin rim','render','end rim',...tail]);
+ assert.deepEqual(paint(true,'cape'),[...lead,'begin cape','dispose cape',...wholePaint,...tail]);
+ assert.deepEqual(paint(false,'borden'),[...lead,'begin rim','begin borden','end rim',...tail]);
+ assert.deepEqual(paint(true,'borden'),[...lead,'begin cape','begin rim','begin borden','end rim','end cape',...tail]);
  assert.deepEqual(paint(false,'rim'),[...lead,'begin rim',...tail]);
  assert.deepEqual(paint(true,'rim'),[...lead,'begin cape','begin rim','end cape',...tail]);
 });
