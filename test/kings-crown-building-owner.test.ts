@@ -68,3 +68,27 @@ test('Crown never arms from wrong owner bytes, an unpinned index, missing/ignore
  let stalled=false;const z=serve(()=>new Response(new ReadableStream({cancel(){stalled=true;}},{highWaterMark:0}),{status:206,headers:{'Content-Range':cr}}));
  assert.equal(await Buildings.prepareKingsDryCrown(z.get,25),undefined);assert(stalled);
 });
+
+test('the ordinary streamed owner is qualified lazily without any repeat range and cannot bless an evicted mesh',async()=>{
+ const seed=serve(),prep=await Buildings.prepareKingsDryCrown(seed.get);assert(prep);
+ const spec=JSON.parse(readFileSync(world('terrain.json'),'utf8')),dem=gunzipSync(readFileSync(world('height.bin.gz')));
+ const ter=new Terrain(spec,new Int16Array(dem.buffer,dem.byteOffset,dem.byteLength/2));
+ const {PackedBytes}=await import('../src/sim/packed-bytes.ts');
+ const s=serve(),resident={...prep,pack:new PackedBytes('/world/buildings/tiles.pack',B.packBytes,s.get),
+   kingsCrown:undefined,kingsResidentIndex:Uint8Array.from(index).buffer};
+ const a=await Buildings.create(new T.Scene(),ter,undefined,undefined,undefined,Promise.resolve(resident));
+ const scene=a as unknown as {wanted:Set<string>;tiles:{id:string}[];meshes:Map<string,T.Mesh>;load(tile:{id:string}):Promise<void>};
+ const tile=scene.tiles.find(t=>t.id===B.tile)!;
+ const attach=async()=>{scene.wanted.add(B.tile);await scene.load(tile);const m=scene.meshes.get(B.tile);assert(m);return m;};
+ const load=await attach();assert(!a.kingsRidgeOwnerLive);
+ const p=a.prepareKingsRidgeOwner();assert(p);assert.equal(a.prepareKingsRidgeOwner(),p);assert(await p);
+ assert(a.kingsRidgeOwnerLive);assert.equal(s.seen.length,1);
+ a.update(10_000_000,10_000_000);assert(!a.kingsRidgeOwnerLive);
+ const next=await attach();assert.notEqual(next,load);assert(!a.kingsRidgeOwnerLive);
+ const eviction=a.prepareKingsRidgeOwner();assert(eviction);a.update(11_000_000,11_000_000);
+ assert(!await eviction);assert(!a.kingsRidgeOwnerLive);
+ assert.equal(s.seen.length,2);
+ const changed=await attach();changed.position.y++;
+ assert(!a.prepareKingsRidgeOwner());assert(!a.kingsRidgeOwnerLive);
+ assert.equal(s.seen.length,3);
+});

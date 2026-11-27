@@ -21,8 +21,12 @@ export function kingsDryCrownRequested(options:URLSearchParams){
 // measured geometry. An unknown/missing actor authority is not a safe void.
 export function kingsDryCrownSources(terrain:Terrain,cover:Cover,elevation:string|undefined,
  roads:string|undefined,sidewalks:string|undefined,parking:string|undefined,buildings:boolean,hedges:boolean){
- if(elevation!==S.terrainSha256||cover.sourceSha!==S.coverCompressedSha256||cover.sourceDecodedSha!==S.coverDecodedSha256||
-    roads!==S.roadsSha256||sidewalks!==S.sidewalksSha256||parking!==S.parkingSha256||!buildings||!hedges)return false;
+ return buildings&&kingsDryCrownTerrainSources(terrain,cover,elevation,roads,sidewalks,parking,hedges,cover.sourceDecodedSha);
+}
+export function kingsDryCrownTerrainSources(terrain:Terrain,cover:Cover,elevation:string|undefined,
+ roads:string|undefined,sidewalks:string|undefined,parking:string|undefined,hedges:boolean,decoded:string|undefined){
+ if(elevation!==S.terrainSha256||cover.sourceSha!==S.coverCompressedSha256||decoded!==S.coverDecodedSha256||
+    roads!==S.roadsSha256||sidewalks!==S.sidewalksSha256||parking!==S.parkingSha256||!hedges)return false;
  if(terrain.surveyGrids.some(g=>g.spec.tileX===S.tileX&&g.spec.tileZ===S.tileZ)||cover.waterInsets.some(w=>w.intersects(...S.boundsXZ)))return false;
  const [a,b,c,d]=S.boundsXZ;
  return cover.distance(terrain,(a+c)/2,(b+d)/2)>70;

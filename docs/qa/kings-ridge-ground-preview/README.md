@@ -1,13 +1,20 @@
 # The measured coastal ridge · Kings County
 
-In Standard, select **Kings County · coastal ridge pass** and **Open
-ridge preview**. Dispatch shows when the preview is ready. **Begin
-flight** is never blocked, but if the source has not verified by takeoff
-that flight keeps the original terrain. Choose **Close ridge preview**
-in Dispatch to return to Standard for the next flight. The older Kings
-dry crown study can still be opened as a separate comparison profile.
+In Standard, select **Kings County · coastal ridge pass**. On a supported
+4× antialiased renderer, Dispatch checks the local survey while the
+ordinary world loads. Wait for **Measured terrain is ready** before
+selecting **Begin flight** to use the reconstructed crest. Begin flight
+is never blocked; an early departure, unsupported configuration or
+failed check keeps the original ground for that flight. Direct atlas
+repositioning and the in-flight restart use original ground; return to
+Dispatch for a new clearance.
 
-The preview shows a dry, natural ridge on the original coastal approach.
+Choose **Use original ground** in Dispatch (or add `stockKingsRidge`)
+to compare with the original. The separate
+`?departure=kings-coastal-ridge&kingsRidgeGroundPreview` preview and
+`kingsDryCrownStudy` remain available.
+
+The reconstruction shows a dry, natural ridge on the original coastal approach.
 It reuses the signed [2020 NRCan terrain source](../kings-dry-crown.md)
 and leaves coastline, imagery, runway data, roads, buildings and
 vegetation unchanged. The measured height replaces the original smooth
@@ -18,7 +25,7 @@ aviation guidance.
 
 ## Contact and view
 
-This preview changes local simulator ground contact. The new ground is
+This reconstruction changes local simulator ground contact. The new ground is
 chosen before the first flight step, not partway through the flight or
 when the camera switches. When the entire affected surface is below the
 camera, the renderer can submit the old geometry for that image while
@@ -37,7 +44,7 @@ No new vegetation, pavement, or shoreline reconstruction is included.
 
 ## Matched flight checks
 
-The [native renderer receipt](render-receipt.json) records identical
+The existing [native renderer receipt](render-receipt.json) records identical
 Chase flight poses, 1200 × 760 scored rendering, original shader and draw
 identity, a stock fallback case, and contact at the exact points tested.
 The comparison reduces unscored software-rendered submissions but runs
@@ -53,3 +60,28 @@ was byte-identical. No draw calls were added; the visible terrain
 adds 10,024 triangles. At the late checkpoint the whole image stayed
 stock, and during the subsequent overflight the measured contact was
 still active. All five expected building tiles were loaded throughout.
+
+### Standard admission
+
+The normal path checks the same survey and the exact building index,
+mesh and compressed range already used by the ordinary streamer;
+qualifying the range makes no extra building request. The measured
+world is installed before the first fixed simulation step, not when
+those bytes finish. The aircraft, original building batch and local
+render material are not replaced.
+
+The [Standard admission receipt](standard-admission.json) covers both
+the direct route and selection from Dispatch in Chromium at 420 × 280.
+Standard and the stock control reported identical positions and ground
+heights at all 55 Chase samples. The number of draws did not change;
+the reconstructed mesh added 10,024 triangles to the single existing terrain draw. Both made
+one normal building range request for q12303. A test holding the
+correct survey response until after Begin observed the response become
+valid without changing contact on the already airborne aircraft.
+
+The [terrain regression](../../../tools/qa/kings-ridge-flight-lens.test.ts)
+runs the real Three.js World across four neighbor detail transitions.
+Both surfaces change the same 24 edge heights in the coarser state
+without moving the remaining vertices or changing any of six contact
+samples. The contact sample at 32,170 m east, 6,936 m south rises by
+9.43 m while the lease is held and restores exactly when it is dropped.

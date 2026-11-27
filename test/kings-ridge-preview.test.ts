@@ -52,3 +52,35 @@ test('prepared ridge atlas still streams unrelated signed tiles with a browser-l
  assert.deepEqual(Buffer.from(data),body.subarray(second.offset,second.offset+second.bytes));
  assert.equal(ranges,2,'one signed q12303 read, then one unrelated tile');
 });
+
+import {standardKingsRidgeRequested,switchStandardKingsRidgeURL} from '../src/app/scenery-profile.ts';
+import {KINGS_CROWN_BUILDINGS,kingsCrownResidentBytes,kingsCrownTile} from '../src/render/kings-crown-building-owner.ts';
+test('normal ridge is only eligible in unmodified Standard, and stock isolates this one feature',()=>{
+ assert(standardKingsRidgeRequested(''));
+ assert(standardKingsRidgeRequested('?diagnostics&scenery=standard&departure=kings-coastal-ridge'));
+ assert(standardKingsRidgeRequested('?departure=summerside'),'Dispatch can choose the ridge later');
+ for(const key of ['qa','scenery=detail','scenery=standard&scenery=standard','departure=a&departure=b',
+   'stockKingsRidge','kingsRidgeGroundPreview','kingsDryCrownStudy','customTerrain'])assert(!standardKingsRidgeRequested('?'+key),key);
+ const manual='?departure=kings-coastal-ridge&kingsRidgeGroundPreview&stockKingsRidge';
+ assert(kingsRidgeLensState(manual).active,'veto only owns the new default, not the explicit lens');
+ const stock=switchStandardKingsRidgeURL('https://atlas.invalid/?diagnostics&'+manual.slice(1),true,KINGS_RIDGE_ROUTE);
+ assert(!kingsRidgeLensState(new URL(stock).search).selected);
+ assert(!standardKingsRidgeRequested(new URL(stock).search));
+ assert(standardKingsRidgeRequested(new URL(switchStandardKingsRidgeURL(stock,false,KINGS_RIDGE_ROUTE)).search));
+ assert.equal(switchStandardKingsRidgeURL(stock,false,'charlottetown'),stock);
+});
+
+test('resident authority requires exact stock index and the same compressed owner range and row count',async()=>{
+ const root=new URL('../public/world/buildings/',import.meta.url),p=KINGS_CROWN_BUILDINGS;
+ const index=Uint8Array.from(readFileSync(new URL('index.json',root))).buffer;
+ const tile=JSON.parse(new TextDecoder().decode(index)).tiles.find((t:{id:string})=>t.id===p.tile);
+ const raw=Uint8Array.from(readFileSync(new URL('tiles.pack',root)).subarray(p.offset,p.offset+p.bytes)).buffer;
+ assert(kingsCrownTile(p.atlasSha,tile));
+ assert(!kingsCrownTile(undefined,tile));assert(!kingsCrownTile(p.atlasSha,{...tile,offset:tile.offset+1}));
+ assert(await kingsCrownResidentBytes(index,raw,p.count));
+ assert(!await kingsCrownResidentBytes(index,raw,p.count+1));
+ const editedIndex=index.slice(0),editedRange=raw.slice(0);
+ new Uint8Array(editedIndex)[1]^=1;new Uint8Array(editedRange)[17]^=1;
+ assert(!await kingsCrownResidentBytes(editedIndex,raw,p.count));
+ assert(!await kingsCrownResidentBytes(index,editedRange,p.count));
+});

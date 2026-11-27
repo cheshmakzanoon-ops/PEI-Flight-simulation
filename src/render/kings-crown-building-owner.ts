@@ -7,6 +7,21 @@ export const KINGS_CROWN_BUILDINGS={
 } as const;
 const digest=async(data:ArrayBuffer)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),p=>p.toString(16).padStart(2,'0')).join('');
 
+export function kingsCrownTile(atlas:string|undefined,tile:{id:string;offset:number;bytes:number;count:number}){
+ const p=KINGS_CROWN_BUILDINGS;
+ return atlas===p.atlasSha&&tile.id===p.tile&&tile.offset===p.offset&&tile.bytes===p.bytes&&tile.count===p.count;
+}
+
+/** Certify the same bytes used by the live renderer, not a second request. */
+export async function kingsCrownResidentBytes(index:ArrayBuffer,body:ArrayBuffer,rows:number){
+ const p=KINGS_CROWN_BUILDINGS;
+ if(index.byteLength!==p.indexBytes||body.byteLength!==p.bytes||rows!==p.count||!globalThis.crypto?.subtle)return false;
+ try{
+  const [a,b]=await Promise.all([digest(index),digest(body)]);
+  return a===p.indexSha&&b===p.sha;
+ }catch{return false;}
+}
+
 /** Move the one normal owner range earlier, never buffer an ignored Range or
  * let a later valid response make a fail-closed startup become live. */
 export async function readKingsCrownBuildings<T>(base:string,decode:(b:ArrayBuffer)=>Promise<T[]>,get:typeof fetch=fetch,ms=1450){

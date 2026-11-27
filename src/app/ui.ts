@@ -1,5 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
-import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,standardKingsRidgeRequested,switchStandardKingsRidgeURL,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -28,6 +28,8 @@ export class UI {
   const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
   const basin=basinHeadDispatchState(location.search),river=indianRiverLensState(location.search);
   const ridge=kingsRidgeLensState(location.search),prince=princeLandscapeState(location.search);
+  const normalRidge=standardKingsRidgeRequested(location.search),stockRidge=new URLSearchParams(location.search).has('stockKingsRidge');
+  const ridgeTitle=ridge.selected?'Close ridge preview':normalRidge?'Use original ground':stockRidge?'Use measured ground':'Open ridge preview';
   const selectedReviews=new Set(reviewedScenery(location.search));
   const reviewsWithScope=sceneryOptions(location.search);
   let reviewCount=0;
@@ -67,9 +69,10 @@ export class UI {
   <section class="regional-detail" id="kings-ridge-lens" hidden>
     <div><span class="eyebrow">KINGS COASTAL RIDGE</span><small id="kings-ridge-lens-info">${ridge.active?
       'Preview selected. The measured ridge changes local ground contact.':!ridge.compatible?
-      'Unavailable with the current scenery settings.':'See the 2020 measured ridge. This also changes local ground contact.'}</small></div>
+      'Unavailable with the current scenery settings.':stockRidge?'Original ground selected for this comparison.':
+      'The 2020 measured ridge changes local ground contact when the survey is ready.'}</small></div>
     <button type="button" id="kings-ridge-lens-switch" aria-describedby="kings-ridge-lens-info"
-      ${!ridge.compatible&&!ridge.selected?'disabled':''}>${ridge.selected?'Close ridge preview':'Open ridge preview'}</button>
+      ${!ridge.compatible&&!ridge.selected?'disabled':''}>${ridgeTitle}</button>
   </section>
   <section class="regional-detail" id="prince-landscape-lens" hidden>
     <div><span class="eyebrow">PRINCE GRASSLAND</span><small id="prince-landscape-info">${prince.active?
@@ -96,7 +99,10 @@ export class UI {
    location.assign(switchIndianRiverLens(location.href,!river.selected,this.sites[this.selected].id));
   };
   $('kings-ridge-lens-switch').onclick=()=>{
-   location.assign(switchKingsRidgeLens(location.href,!ridge.selected,this.sites[this.selected].id));
+   const route=this.sites[this.selected].id;
+   const after=ridge.selected?switchKingsRidgeLens(location.href,false,route):location.href;
+   location.assign(ridge.selected||normalRidge||stockRidge?
+    switchStandardKingsRidgeURL(after,!stockRidge||ridge.selected,route):switchKingsRidgeLens(after,true,route));
   };
   $('prince-landscape-switch').onclick=()=>{
    location.assign(switchPrinceLandscape(location.href,!prince.selected,this.sites[this.selected].id));
@@ -151,7 +157,7 @@ export class UI {
    state==='unavailable'?'Measured terrain could not be verified. Begin flight will use Standard ground.':
    state==='different'?'The separate preview is only available on Kings County · coastal ridge pass.':
    'The measured ridge changes local ground contact.';
-  flight.hidden=state!=='stock';flight.textContent=state==='stock'?'Using Standard ridge ground on this flight.':'';
+  flight.hidden=state!=='stock';flight.textContent=state==='stock'?'Using original ridge ground on this flight.':'';
  }
  setWarnings(xs:string[]){const e=$('layer-alert');e.textContent=xs.length?'Scenery unavailable: '+xs.join(', '):'';e.hidden=!xs.length;}
  setSound(on:boolean){this.silent=!on;$('nav-sound').textContent=on?'Sound on':'Sound off';$('nav-sound').setAttribute('aria-label',on?'Mute engine sound':'Enable engine sound');}

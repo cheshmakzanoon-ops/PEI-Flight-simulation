@@ -18,7 +18,7 @@ import {downtownTilePin,downtownWireAllows} from './summerside-roof-source.ts';
 import {crockettAtlasCandidate,crockettExactRow,crockettExactWire} from './souris-east/admit.ts';
 import {SOURCE as SOURIS_EAST} from './souris-east/source.ts';
 import type {SourisEastGround} from './souris-east/ground.ts';
-import {KINGS_CROWN_BUILDINGS,readKingsCrownBuildings} from './kings-crown-building-owner.ts';
+import {KINGS_CROWN_BUILDINGS,kingsCrownResidentBytes,kingsCrownTile,readKingsCrownBuildings} from './kings-crown-building-owner.ts';
 import {ST_DAVIDS as ST_DAVID} from './st-davids/source.generated.ts';
 import {stDavidsAtlasAllows,stDavidsDrawAllows,stDavidsOwnerAllows,stDavidsOwnerBytes} from './st-davids/admit.ts';
 import type {StDavidsArt} from './st-davids/runtime.ts';
@@ -80,7 +80,7 @@ import { PackedBytes } from '../sim/packed-bytes.ts';
 import { roofHeight,splitRoofEdge,splitRoofTriangle,type Triangle } from '../sim/roof-ridge.ts';
 import { lookupRoofFit,supportedRoofAtlas } from '../sim/fitted-roofs.ts';
 type Ring=[number,number][];
-type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[];indianRiver?:Bldg[];kingsCrown?:Bldg[]};
+type PreparedAtlas={atlas:Tile[];pack:PackedBytes;atlasHash?:string;spinnakers?:Bldg[];indianRiver?:Bldg[];kingsCrown?:Bldg[];kingsResidentIndex?:ArrayBuffer};
 interface Bldg {footprint:Ring;holes?:Ring[];height:number;minHeight?:number;}
 type ExteriorRecord={ordinal:number;footprint:readonly (readonly [number,number])[];height:number;minHeight:number};
 function matchesExterior(rows:Bldg[],spec:ExteriorRecord){
@@ -359,7 +359,22 @@ export class Buildings {
  private readonly pinnedKingsCrown?:Bldg[];
  private strictRidgeOwner=false;
  private ridgeOwner?:{mesh:THREE.Mesh;still:()=>boolean};
+ private readonly kingsResidentIndex?:ArrayBuffer;
+ private kingsResident?:{mesh:THREE.Mesh;wire:ArrayBuffer;rows:number;still:()=>boolean;verification?:Promise<boolean>};
  enableStrictRidgeOwner(){this.strictRidgeOwner=true;}
+ /** Called only in eligible Dispatch. No fetch or building replacement. */
+ prepareKingsRidgeOwner(){
+  const q=this.kingsResident,index=this.kingsResidentIndex;
+  if(!q||!index)return;
+  if(q.verification)return q.verification;
+  const key=KINGS_CROWN_BUILDINGS.tile,{mesh,still}=q;
+  const current=()=>this.kingsResident===q&&this.meshes.get(key)===mesh&&this.wanted.has(key);
+  if(!current()||!still())return;
+  return q.verification=kingsCrownResidentBytes(index,q.wire,q.rows).then(ok=>{
+   if(!ok||!current()||!still())return false;
+   this.ridgeOwner={mesh,still};return true;
+  });
+ }
  get kingsRidgeOwnerLive(){
   const q=this.ridgeOwner,key=KINGS_CROWN_BUILDINGS.tile;
   return !!q&&this.meshes.get(key)===q.mesh&&this.wanted.has(key)&&q.still();
@@ -429,7 +444,8 @@ export class Buildings {
   variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
   caster?:THREE.Mesh;neighborsCaster?:THREE.Mesh};
 
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics,kingsResidentIndex?:ArrayBuffer){
+  this.kingsResidentIndex=kingsResidentIndex;
   this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
   this.shadowedBuildings=!!casts;this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
@@ -459,15 +475,16 @@ export class Buildings {
   this.fitted=supportedRoofAtlas(atlasHash);this.farms=farmRoofAtlas(atlasHash);this.homes=homeRoofAtlas(atlasHash);
   this.atlasHash=atlasHash;this.t=t;this.scene=scene;this.pack=pack;this.tiles=atlas.map(a=>{const [w,s,e,n]=a.bounds,p=project(w,n),q=project(e,s);return {...a,x1:p.x,x2:q.x,z1:p.z,z2:q.z};});
  }
- private static async openAtlas(signal?:AbortSignal):Promise<PreparedAtlas>{
+ private static async openAtlas(signal?:AbortSignal,keepKingsIndex=false):Promise<PreparedAtlas>{
   const path=import.meta.env.BASE_URL+'world/buildings/',mf=await fetch(path+'index.json',signal?{signal}:undefined);
   if(!mf.ok)throw Error('Building atlas not available.');
-  const a=(await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
+  const raw=keepKingsIndex?await mf.arrayBuffer():undefined;
+  const a=(raw?JSON.parse(new TextDecoder().decode(raw)):await mf.json()) as {file:string;bytes:number;tiles:Tile[];sha256?:string};
   if(a.file!=='tiles.pack'||!Number.isSafeInteger(a.bytes)||a.bytes<=0||!Array.isArray(a.tiles)||!a.tiles.length||
      a.tiles.some(t=>!Number.isSafeInteger(t.offset)||!Number.isSafeInteger(t.bytes)||t.offset<0||t.bytes<=0||t.bytes>a.bytes-t.offset)){
    throw Error('Invalid building atlas index.');
   }
-  return {atlas:a.tiles,pack:new PackedBytes(path+a.file,a.bytes,(input,init)=>fetch(input,signal?{...init,signal}:init)),atlasHash:a.sha256};
+  return {atlas:a.tiles,pack:new PackedBytes(path+a.file,a.bytes,(input,init)=>fetch(input,signal?{...init,signal}:init)),atlasHash:a.sha256,kingsResidentIndex:raw?.byteLength===KINGS_CROWN_BUILDINGS.indexBytes?raw:undefined};
  }
  private static async decodeChunk(part:ArrayBuffer){
   const result=await new Response(new Blob([part]).stream().pipeThrough(new DecompressionStream('gzip'))).json() as {features:Bldg[]};
@@ -516,9 +533,9 @@ export class Buildings {
   return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,(input,init)=>get(input,init)),
    atlasHash:ready.spec.sha256,kingsCrown:ready.rows};
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics){
-  const ready=(verified?await verified:undefined)??await Buildings.openAtlas();
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics);
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics,keepKingsIndex=false){
+  const ready=(verified?await verified:undefined)??await Buildings.openAtlas(undefined,keepKingsIndex);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics,ready.kingsResidentIndex);
  }
  get townWallReview(){return this.townWallOptics!==undefined&&this.townWallOptics.mode!=='core';}
  get townWallProfile(){return this.townWallOptics===undefined?undefined:this.townWallOptics.mode??'expanded';}
@@ -732,7 +749,10 @@ export class Buildings {
     }
     if(id===TERMINAL_WIRE.id){this.terminalWall?.dispose();this.terminalWall=undefined;}
     if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
-    if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
+    if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);
+    if(this.kingsResident?.mesh===m)this.kingsResident=undefined;
+    if(this.ridgeOwner?.mesh===m)this.ridgeOwner=undefined;
+    if(id===SOURIS_ROOF.sourceTileId&&this.sourisLight)void this.sourisLight.setCaster(false);}
   }
   // Bound decompression and mesh creation to one tile per application frame, with bounded inflight loads.
   if(this.work.length&&this.loading.size<2){const tile=this.work.shift()!;void this.load(tile);}
@@ -898,11 +918,12 @@ export class Buildings {
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
-   let observed:ArrayBuffer|undefined;
+   let observed:ArrayBuffer|undefined,kingsWire:ArrayBuffer|undefined;
+   const kings=!!this.kingsResidentIndex&&kingsCrownTile(this.atlasHash,tile);
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||olearyRoofCandidate||tapped){
+   if(candidate||princeCandidate||rusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||olearyRoofCandidate||tapped||kings){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -911,6 +932,7 @@ export class Buildings {
     if(schoolLink)schoolWire=raw;
     if(foundersWest)foundersWire=raw;
     if(tapped)observed=raw;
+    if(kings)kingsWire=raw;
     if(terminal)terminalBytes=raw;
     if(seacow)seacowBytes=raw;
     if(dalvay)dalvayBytes=raw;
@@ -953,10 +975,12 @@ export class Buildings {
    const mesh=this.generate(features,tile,!!wharf,church?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
-   if(this.strictRidgeOwner&&tile.id===KINGS_CROWN_BUILDINGS.tile&&features===this.pinnedKingsCrown){
+   const authoredRidge=this.strictRidgeOwner&&tile.id===KINGS_CROWN_BUILDINGS.tile&&features===this.pinnedKingsCrown;
+   if(kingsWire||authoredRidge){
     const proof=this.pinAuthoredOwner(mesh);
-    this.ridgeOwner={mesh,still:()=>mesh.geometry===proof.stock&&proof.baseOwner()&&
-     !Array.isArray(mesh.material)&&mesh.material.visible};
+    const still=()=>mesh.geometry===proof.stock&&proof.baseOwner()&&!Array.isArray(mesh.material)&&mesh.material.visible;
+    if(kingsWire)this.kingsResident={mesh,wire:kingsWire,rows:features.length,still};
+    if(authoredRidge)this.ridgeOwner={mesh,still};
    }
    if(foundersWest&&foundersWire&&mesh.material instanceof THREE.ShaderMaterial){
     this.foundersWest?.dispose();
