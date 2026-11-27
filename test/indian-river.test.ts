@@ -79,3 +79,33 @@ test('the ground-only church cast requires the paired raw bytes and black interp
  bytes[bytes.length-1]^=1;
  assert(!(await loadChurchGroundSun(M,'https://fixture.invalid/',async()=>body(bytes))));
 });
+
+import {Scene} from 'three';
+import {Buildings} from '../src/render/buildings.ts';
+import {Terrain} from '../src/sim/terrain.ts';
+import {prepareChurchArt} from '../src/render/indian-river/runtime.ts';
+test('the real ordinary Indian River stream qualifies its loaded mesh with no render or duplicate range',async()=>{
+ const index=Uint8Array.from(read('buildings/index.json')).buffer,atlas=JSON.parse(new TextDecoder().decode(index));
+ const tile=atlas.tiles.find((x:{id:string})=>x.id===S.tile),spec=JSON.parse(read('terrain.json').toString());
+ const height=gunzipSync(read(spec.file)),terrain=new Terrain(spec,new Int16Array(height.buffer,height.byteOffset,height.byteLength/2));
+ const scene=new Scene();let reads=0;
+ const pack={read:async(offset:number,length:number)=>{
+  assert.equal(offset,S.offset);assert.equal(length,S.size);reads++;
+  return Uint8Array.from(read('buildings/tiles.pack').subarray(offset,offset+length)).buffer;
+ }};
+ const ready={atlas:[tile],pack,atlasHash:atlas.sha256,residentProofIndex:index};
+ const buildings=await Buildings.create(scene,terrain,undefined,undefined,undefined,Promise.resolve(ready as any));
+ buildings.enableStandardIndianRiver();
+ const b=buildings as any;b.wanted.add(tile.id);await b.load(b.tiles[0]);
+ const owner=b.meshes.get(tile.id) as Mesh,stock=owner.geometry,art=prepareChurchArt();
+ assert.deepEqual(owner.userData.beaconTriangles,[S.owner.start,S.owner.end]);
+ assert.equal(stock.getAttribute('position').count,S.owner.vertices);
+ assert(buildings.standardIndianRiverSourceReady);assert.equal(reads,1);
+ assert.equal(await buildings.prepareStandardIndianRiver(art,()=>false),false);
+ assert(await buildings.prepareStandardIndianRiver(art,()=>true));assert.equal(reads,1);
+ assert(buildings.indianRiverLensDrawReady&&buildings.indianRiverPrepared);
+ assert.equal(owner.geometry,stock);assert.equal(art.group.parent,scene);assert(!art.group.visible);
+ buildings.dropStandardIndianRiver();
+ assert.equal(art.group.parent,null);assert.equal(owner.geometry,stock);assert.equal(stock.index,null);
+ assert(!buildings.indianRiverLensDrawReady);assert.equal(reads,1);
+});

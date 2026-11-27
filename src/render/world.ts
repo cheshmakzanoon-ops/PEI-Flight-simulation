@@ -23,6 +23,7 @@ import {HOG_WEST_GRADE} from '../sim/hog-west-grade.generated.ts';
 import {hogPhotoGLSL,westDuneAerialGLSL,type HogPhoto,type WestDuneOptics} from './hog-photo.ts';
 import {project} from '../sim/geo.ts';
 import {churchSunGLSL,type ChurchGroundSun} from './indian-river/church-ground-sun.ts';
+import {prepareIndianRiverSunReceiver} from './indian-river/church-ground-sun-receiver.ts';
 import {shortGrassHeightFade,sourceGrassNapGLSL} from './source-grass-nap.ts';
 import {provinceGrassGLSL,type ProvinceGrassStudy} from './province-grass.ts';
 import {DRY_FRAME,drySoilGLSL,makeDrySoilUniforms} from './dry-coast/soil.ts';
@@ -83,7 +84,7 @@ import {sourisLightingForTerrain,sourisOcclusionGLSL,sourisGroundLightGLSL,type 
 import { eastSandstoneGLSL } from './east-sandstone.ts';
 import {CapeTryonSkySeat} from './cape-tryon-sky-seat.ts';
 import {CAPE_TRYON_COVER_DECODED,markTryonRockShoreUV,tryonRockGLSL,tryonRockMatches,tryonRockNear} from './cape-tryon-rock.ts';
-import {olearyLinkPrograms,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
+import {olearyLinkPrograms,type OlearyLink,type OlearyProgramProof} from './oleary-railway/program-gate.ts';
 import {CAPE_WET_PATCH,capeWetCells,capeWetPatchGateGLSL,capeWetTieGLSL} from './cape-tryon-wet-tie.ts';
 import { lighthouseGroundGLSL } from './lighthouse-ground.ts';
 import { loadSouthLake,southLakeGLSL,type SouthLakeMask } from './south-lake.ts';
@@ -674,6 +675,48 @@ export class World {
   `);
   Object.assign(material.uniforms,mask.uniforms);
   material.needsUpdate=true;return true;
+ }
+ private indianRiverSun?:{
+  tile:Patch;mask:ChurchGroundSun;
+  paint:NonNullable<ReturnType<typeof prepareIndianRiverSunReceiver>>;
+  program:OlearyProgramProof;
+ };
+ /** Preflight a detached program against the same native 10-11 mesh and
+  * scene as the flight, without changing the live terrain receiver. */
+ async prepareIndianRiverSun(mask:ChurchGroundSun,link:OlearyLink,signal:AbortSignal){
+  const tile=this.byId.get('10-11'),mesh=tile?.fine;
+  if(!tile||!mesh||!this.nativeRegularGroundStill(tile.id,mesh.geometry)||mesh.material!==tile.local||
+    mesh.parent!==this.scene||this.buildingShadows||this.scene.overrideMaterial||signal.aborted)return false;
+  const old=this.indianRiverSun;
+  if(old?.mask===mask&&this.indianRiverSunReady)return true;
+  const paint=prepareIndianRiverSunReceiver(tile.local,mask);if(!paint)return false;
+  const geometry=mesh.geometry,carrier=new THREE.Mesh(geometry,paint.material),group=new THREE.Group();
+  carrier.position.copy(mesh.position);carrier.quaternion.copy(mesh.quaternion);carrier.scale.copy(mesh.scale);group.add(carrier);
+  let adopted=false;
+  try{
+   const program=await link(group,signal);
+   if(!program||signal.aborted||this.indianRiverSun!==old||tile.fine!==mesh||mesh.geometry!==geometry||
+     mesh.material!==tile.local||mesh.parent!==this.scene||!this.nativeRegularGroundStill(tile.id,geometry)||
+     !paint.intact()||!program())return false;
+   this.indianRiverSun={tile,mask,paint,program};adopted=true;old?.paint.dispose();return true;
+  }catch{return false;}
+  finally{if(!adopted)paint.dispose();}
+ }
+ get indianRiverSunReady(){
+  const q=this.indianRiverSun,t=q?.tile,m=t?.fine;
+  try{return !!q&&!!m&&m.visible&&m.parent===this.scene&&!this.scene.overrideMaterial&&m.material===q.paint.stock&&t?.local===q.paint.stock&&
+   t.lod===112&&!t.coarse.visible&&!t.relief&&q.paint.intact()&&q.program();}
+  catch{return false;}
+ }
+ beginIndianRiverSunDraw(){
+  const q=this.indianRiverSun,stage=this.stagedChurch,mesh=q?.tile.fine;
+  if(!q||q.mask.live.value!==1||!mesh||stage?.candidate!==mesh||stage.owner!==q.tile||!this.indianRiverSunReady)return;
+  mesh.material=q.paint.material;
+  return ()=>{if(mesh.material===q.paint.material)mesh.material=q.paint.stock;};
+ }
+ disposeIndianRiverSun(mask:ChurchGroundSun){
+  const q=this.indianRiverSun;if(!q||q.mask!==mask)return;
+  this.indianRiverSun=undefined;q.paint.dispose();
  }
  private groundVersion=0;
  private reliefPacks?:ReliefPacks;

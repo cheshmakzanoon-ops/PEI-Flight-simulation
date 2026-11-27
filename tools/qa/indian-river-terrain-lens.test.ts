@@ -2,13 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync as file} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
-import {MeshBasicMaterial,Scene} from 'three';
+import {Mesh,MeshBasicMaterial,Scene,ShaderMaterial} from 'three';
 import {registerHooks} from 'node:module';
 import {Terrain} from '../../src/sim/terrain.ts';
 import {Cover} from '../../src/sim/cover.ts';
 import {WORLD_COLS,WORLD_ROWS} from '../../src/sim/coastal-terrain.ts';
 import {INDIAN_RIVER_GRADE as G} from '../../src/sim/indian-river-grade.generated.ts';
 import {loadBoundedGrade} from '../../src/sim/bounded-grade.ts';
+import {loadChurchGroundSun} from '../../src/render/indian-river/church-ground-sun.ts';
+import {CHURCH_SUN_MASK} from '../../src/render/indian-river/church-sun.generated.ts';
 
 const src=new URL('../../src/',import.meta.url).href;
 const hook=registerHooks({load(url,context,next){
@@ -26,7 +28,7 @@ test('the exact generated 10-11 ground remains stock until the sole reversible c
  assert(art);
  const grade=art(terrain,(x,z)=>terrain.atlasElevation(x,z));
  assert(grade);
- const cover=new Cover(c.width,c.height,new Uint8Array(gunzipSync(read(c.file)))),scene=new Scene(),mat=new MeshBasicMaterial();
+ const cover=new Cover(c.width,c.height,new Uint8Array(gunzipSync(read(c.file)))),scene=new Scene(),mat=new ShaderMaterial({fragmentShader:'void main(){col*=.90+.31*light;}',uniforms:{detailReady:{value:0}}});
  const world:any=Object.assign(Object.create(World.prototype),{scene,terrain,cover,mat,byId:new Map(),grades:new Map(),pondMeshes:[],
   groundVersion:0,reliefActive:new Set(),shoreFaces:[]});
  const w=(terrain.right-terrain.left)/WORLD_COLS,d=(terrain.bottom-terrain.top)/WORLD_ROWS,
@@ -49,6 +51,21 @@ test('the exact generated 10-11 ground remains stock until the sole reversible c
  const occupied={grade:{grid:{spec:{id:'foreign'}}}};world.stagedChurch=occupied;
  assert.equal(world.stageIndianRiverLens(grade),undefined);world.dropIndianRiverLens();assert.equal(world.stagedChurch,occupied);
  world.stagedChurch=undefined;
+ const sun=await loadChurchGroundSun(CHURCH_SUN_MASK,'/world/',async url=>
+  new Response(Uint8Array.from(read(String(url).replace('/world/','')))));
+ assert(sun);let linked=true,paint:ShaderMaterial|undefined;
+ const token=new AbortController();
+ const oldSource=mat.fragmentShader,timing=mat.uniforms.detailReady;
+ assert(await world.prepareIndianRiverSun(sun,async group=>{
+  assert(!group.parent&&group.children.length===1);
+  const probe=group.children[0] as Mesh;assert.equal(probe.geometry,original.geometry);
+  assert(probe.position.equals(original.position));
+  paint=probe.material as ShaderMaterial;
+  assert.notEqual(paint,mat);assert.equal(paint.uniforms.detailReady,timing);
+  timing.value=55;return ()=>linked;
+ },token.signal));
+ assert.equal(mat.fragmentShader,oldSource);assert(world.indianRiverSunReady);
+ sun.live.value=1;assert.equal(world.beginIndianRiverSunDraw(),undefined);
  const kept=world.stageIndianRiverLens(grade);assert(kept);
  assert(kept.inChangedSupport(...aim));
  assert.equal(tile.fine,original);assert.equal(world.groundHeight(...aim,true),baseline);
@@ -57,6 +74,12 @@ test('the exact generated 10-11 ground remains stock until the sole reversible c
  assert.equal(world.groundHeight(...aim,true),grade.contactY(...aim,baseline));
  assert.notEqual(world.groundHeight(...aim,true),baseline);
  assert.equal(world.groundHeight(...absent,true),safe);
+ const endSun=world.beginIndianRiverSunDraw();assert(endSun);assert.equal(kept.mesh.material,paint);
+ assert.equal(tile.local,mat);assert.equal(original.material,mat);assert.equal(coarse.material,mat);
+ endSun();assert.equal(kept.mesh.material,mat);
+ linked=false;assert(!world.indianRiverSunReady);assert.equal(world.beginIndianRiverSunDraw(),undefined);linked=true;
+ assert.equal(mat.fragmentShader,oldSource);
+
  const live=kept.mesh,livePos=live.geometry.getAttribute('position'),liveIdx=live.geometry.index!;
  live.geometry.setDrawRange(0,0);
  assert.equal(world.stageIndianRiverLens(grade),undefined);
@@ -75,4 +98,5 @@ test('the exact generated 10-11 ground remains stock until the sole reversible c
  world.dropIndianRiverLens();assert.equal(tile.fine,original);
  assert.equal(original.geometry.getAttribute('position').getY(rim),good);
  assert.equal(world.groundHeight(...aim,true),baseline);assert.equal(original.parent,scene);
+ world.disposeIndianRiverSun(sun);assert(!world.indianRiverSunReady);sun.uniforms.churchSunMask.value.dispose();
 });

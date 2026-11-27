@@ -618,6 +618,7 @@ async function run(){
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate,barnGate,rusticoEnvelopeAllowed,churchCohort?.art,railReview,stDavidsReview,townWallOptics,standardRidge).then(v=>{
   if(localRiverLens)v.enableStrictIndianLens();
   if(ridgePreview)v.enableStrictRidgeOwner();
+  if(standardRidge)v.enableStandardKingsRidge();
   if(rusticoHarbourRoofRequested(options))v.enableRusticoHarbourRoof();
   if(olearyAccessRoofRequested(options))v.enableOlearyAccessRoof();
   if(olearyCompoundRoofsRequested(options)&&supportsOpaqueCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4)

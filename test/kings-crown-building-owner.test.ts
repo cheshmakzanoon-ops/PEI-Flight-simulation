@@ -75,8 +75,9 @@ test('the ordinary streamed owner is qualified lazily without any repeat range a
  const ter=new Terrain(spec,new Int16Array(dem.buffer,dem.byteOffset,dem.byteLength/2));
  const {PackedBytes}=await import('../src/sim/packed-bytes.ts');
  const s=serve(),resident={...prep,pack:new PackedBytes('/world/buildings/tiles.pack',B.packBytes,s.get),
-   kingsCrown:undefined,kingsResidentIndex:Uint8Array.from(index).buffer};
+   kingsCrown:undefined,residentProofIndex:Uint8Array.from(index).buffer};
  const a=await Buildings.create(new T.Scene(),ter,undefined,undefined,undefined,Promise.resolve(resident));
+ a.enableStandardKingsRidge();
  const scene=a as unknown as {wanted:Set<string>;tiles:{id:string}[];meshes:Map<string,T.Mesh>;load(tile:{id:string}):Promise<void>};
  const tile=scene.tiles.find(t=>t.id===B.tile)!;
  const attach=async()=>{scene.wanted.add(B.tile);await scene.load(tile);const m=scene.meshes.get(B.tile);assert(m);return m;};
