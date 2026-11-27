@@ -1,0 +1,110 @@
+{
+  "referenceCommit": "7728861d35321dd3c186a09da9f04dcbda1e3517",
+  "site": "souris-waterfront-pass",
+  "renderer": "Three.js r187, Chromium SwiftShader, WebGL2, 4x MSAA",
+  "scope": "Detached private study; no production owner or independent device acceptance. Directions: neutral Chase. Full stock RGBA restored on all sampled views.",
+  "viewport": [
+    1200,
+    760
+  ],
+  "installedInPlayableBuild": false,
+  "frames": [
+    {
+      "travelM": 180,
+      "samePoseAndProjection": true,
+      "stockPNGsha256": "f4a56ce94cd76a5fa4541c27487eca2684f2da90a6346e21a5fdd7c326750b14",
+      "candidatePNGsha256": "653ddf20a648866f62f43da7041fdf7d2e5b0505de25d5d8cd4721c1001cd60d",
+      "restoredExactRGBA": true,
+      "changedRGB": 520,
+      "fullyOldSkyPixelsChanged": 396,
+      "mixedOldSkyPixelsChanged": 124,
+      "outsideOldSkyMask": 0,
+      "changedAlpha": 0,
+      "boundsInclusiveXYXY": [
+        825,
+        613,
+        987,
+        621
+      ],
+      "drawsDelta": 1,
+      "trianglesDelta": 10,
+      "actualStudyDraws": [
+        {
+          "args": [
+            4,
+            0,
+            30
+          ],
+          "depth": [
+            true,
+            514,
+            false,
+            1,
+            4
+          ],
+          "gain": 1,
+          "blend": false,
+          "linked": true
+        }
+      ],
+      "glError": 0
+    },
+    {
+      "travelM": 215,
+      "samePoseAndProjection": true,
+      "stockPNGsha256": "8b722d6d6123741fd125194783924ded73c8599aa0eb75ac443a1b6ac454400e",
+      "candidatePNGsha256": "120f1cd72962f03823e9685f8e5c183c293018a8f8f290df7b4a998a6ebf79fa",
+      "restoredExactRGBA": true,
+      "changedRGB": 709,
+      "fullyOldSkyPixelsChanged": 563,
+      "mixedOldSkyPixelsChanged": 146,
+      "outsideOldSkyMask": 0,
+      "changedAlpha": 0,
+      "boundsInclusiveXYXY": [
+        861,
+        670,
+        1054,
+        682
+      ],
+      "drawsDelta": 1,
+      "trianglesDelta": 10,
+      "actualStudyDraws": [
+        {
+          "args": [
+            4,
+            0,
+            30
+          ],
+          "depth": [
+            true,
+            514,
+            false,
+            1,
+            4
+          ],
+          "gain": 1,
+          "blend": false,
+          "linked": true
+        }
+      ],
+      "glError": 0
+    },
+    {
+      "travelM": 405,
+      "samePoseAndProjection": true,
+      "stockPNGsha256": "aa1bdbdaaf26094a3bd8b06353654ac8a634f1f2d0a5957a6a2c0c31fbc4dbe8",
+      "candidatePNGsha256": "aa1bdbdaaf26094a3bd8b06353654ac8a634f1f2d0a5957a6a2c0c31fbc4dbe8",
+      "restoredExactRGBA": true,
+      "changedRGB": 0,
+      "fullyOldSkyPixelsChanged": 0,
+      "mixedOldSkyPixelsChanged": 0,
+      "outsideOldSkyMask": 0,
+      "changedAlpha": 0,
+      "boundsInclusiveXYXY": null,
+      "drawsDelta": 0,
+      "trianglesDelta": 0,
+      "actualStudyDraws": [],
+      "glError": 0
+    }
+  ]
+}
