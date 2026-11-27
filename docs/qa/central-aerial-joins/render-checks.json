@@ -1,0 +1,211 @@
+{
+  "baseline": "c4d37950f525d93ab060dfc62787fadea0b1e2ca",
+  "renderer": "Chromium WebGL 2 software, 840\u00d7540 same frame",
+  "mask": "Direct two-colour marker; no derivative buffer accepted.",
+  "cases": {
+    "edge-14-15s": {
+      "edge": "14-15 / 14-16",
+      "heightAGL": 44,
+      "old": {
+        "draws": 33,
+        "tris": 277719
+      },
+      "pixelGate": {
+        "changed": 25712,
+        "over2": 18996,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 68072
+      },
+      "edgeContrast": {
+        "samples": 76,
+        "medianOld": 24.74711036682129,
+        "medianArt": 2.149653673171997,
+        "oldP90": 28.86744213104248,
+        "artP90": 4.2154810428619385
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-14-15s-flipped": {
+      "edge": "14-15 / 14-16",
+      "heightAGL": 17,
+      "old": {
+        "draws": 16,
+        "tris": 285367
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-14-15s-high": {
+      "edge": "14-15 / 14-16",
+      "heightAGL": 550,
+      "old": {
+        "draws": 19,
+        "tris": 248501
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-14-15s-outside": {
+      "edge": "14-15 / 14-16",
+      "heightAGL": 17,
+      "old": {
+        "draws": 13,
+        "tris": 256190
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-14-15s-reciprocal": {
+      "edge": "14-15 / 14-16",
+      "heightAGL": 38,
+      "old": {
+        "draws": 48,
+        "tris": 269852
+      },
+      "pixelGate": {
+        "changed": 29320,
+        "over2": 21584,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 77167
+      },
+      "edgeContrast": {
+        "samples": 71,
+        "medianOld": 24.730812072753906,
+        "medianArt": 2.218390941619873,
+        "oldP90": 29.94718360900879,
+        "artP90": 4.184338092803955
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-15-17s": {
+      "edge": "15-17 / 15-18",
+      "heightAGL": 44,
+      "old": {
+        "draws": 14,
+        "tris": 242224
+      },
+      "pixelGate": {
+        "changed": 25687,
+        "over2": 16269,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 70183
+      },
+      "edgeContrast": {
+        "samples": 75,
+        "medianOld": 18.25750732421875,
+        "medianArt": 2.132011651992798,
+        "oldP90": 22.2509635925293,
+        "artP90": 6.235966205596925
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-15-17s-flipped": {
+      "edge": "15-17 / 15-18",
+      "heightAGL": 17,
+      "old": {
+        "draws": 13,
+        "tris": 264838
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-15-17s-high": {
+      "edge": "15-17 / 15-18",
+      "heightAGL": 550,
+      "old": {
+        "draws": 14,
+        "tris": 245118
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-15-17s-outside": {
+      "edge": "15-17 / 15-18",
+      "heightAGL": 17,
+      "old": {
+        "draws": 13,
+        "tris": 219428
+      },
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "alphaChanges": 0,
+      "exact": true
+    },
+    "edge-15-17s-reciprocal": {
+      "edge": "15-17 / 15-18",
+      "heightAGL": 38,
+      "old": {
+        "draws": 62,
+        "tris": 320163
+      },
+      "pixelGate": {
+        "changed": 27386,
+        "over2": 17539,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 74603
+      },
+      "edgeContrast": {
+        "samples": 72,
+        "medianOld": 15.985856533050537,
+        "medianArt": 2.2295409440994263,
+        "oldP90": 20.12067584991455,
+        "artP90": 4.116466951370239
+      },
+      "alphaChanges": 0,
+      "exact": true
+    }
+  },
+  "sharedOwnerOriginalJoinExactPNG": {
+    "old": "e34a91bd438c793c0b755ac1c85fe109ecb97cb1dfbb242aaafd62272b885999",
+    "art": "3b11696b372430a3b8119a14cb5802e2e7b12ed574d4afc4a06736eb59ccaa25",
+    "idA": "23b1a4b02a70f4db313a2a58c29e8ceb3be6db62856984c79d42ef25d2e83e06",
+    "idB": "b419d05e202b3ce0c3f98b236e0dd53080a654dd8398cd0200c54cfd8354fbb3"
+  }
+}

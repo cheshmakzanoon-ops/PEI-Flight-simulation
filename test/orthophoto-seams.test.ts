@@ -136,9 +136,9 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const base=new T.Texture(),gpu={} as T.WebGLRenderer;
  const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:ids});
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
- assert.equal(standard.diagnostics().length,18);
+ assert.equal(standard.diagnostics().length,20);
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
- assert.equal(all.size,standard.diagnostics().length*2-2);
+ assert.equal(all.size,standard.diagnostics().length*2-3);
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
  for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
   assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);

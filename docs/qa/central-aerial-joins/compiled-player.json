@@ -1,0 +1,93 @@
+[
+  {
+    "name": "edge-14-15s",
+    "mode": "normal",
+    "flightMeters": 153.728,
+    "alongMeters": 153.627,
+    "crossMeters": 5.573,
+    "groundClearance": 63.666,
+    "edge": {
+      "edge": "14-15 / 14-16",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "edge-15-17s",
+    "mode": "normal",
+    "flightMeters": 151.973,
+    "alongMeters": 151.873,
+    "crossMeters": 5.51,
+    "groundClearance": 60.524,
+    "edge": {
+      "edge": "15-17 / 15-18",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "edge-14-15s",
+    "mode": "stock",
+    "flightMeters": 153.724,
+    "alongMeters": 153.622,
+    "crossMeters": 5.573,
+    "groundClearance": 63.652,
+    "edge": null,
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [],
+    "errors": []
+  },
+  {
+    "name": "edge-14-15s",
+    "mode": "corrupt",
+    "flightMeters": 153.145,
+    "alongMeters": 153.045,
+    "crossMeters": 5.552,
+    "groundClearance": 63.651,
+    "edge": {
+      "edge": "14-15 / 14-16",
+      "resident": false,
+      "gain": 0,
+      "bytes": 0,
+      "uploads": 0,
+      "errors": 0
+    },
+    "cockpitAndPause": true,
+    "requestedImagery": [
+      "index.json",
+      "sentinel-02.pack",
+      "sentinel-03.pack"
+    ],
+    "corrupted": [
+      1495036
+    ],
+    "errors": []
+  }
+]

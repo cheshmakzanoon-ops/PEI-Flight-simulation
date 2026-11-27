@@ -64,8 +64,12 @@ WESTERN=[
  ('prince-west-field-edge',2,6,'x',542,576,None),
  ('prince-inland-field-edge',4,7,'z',235,269,None),
 ]
+CENTRAL=[
+ ('edge-14-15s',14,15,'z',473,507,None),
+ ('edge-15-17s',15,17,'z',343,377,None),
+]
 EXACT_EDGE_VIEWS=set()
-for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN:
+for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
  for suffix,reverse,high,held in [
    ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
@@ -85,7 +89,7 @@ for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN:
    dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
    agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
   INLAND.append(name+suffix)
-  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN:
+  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL:
    EXACT_EDGE_VIEWS.add(name+suffix)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 
@@ -101,8 +105,8 @@ def stage(repo,root,deps,void):
   ".replaceAll('orthoRowsGain','orthoRowsGain'+suffix).replaceAll('qaOrthoID','qaOrthoID'+suffix):text;")
  p.write_text(s)
  p=root/'src/main.ts';s=p.read_text()
- s=fixed.once(s,'\n  renderer.render(scene,camera);','''
-  renderer.render(scene,camera);
+ anchor='}else renderer.render(scene,camera);}finally{endPrince?.();endRidge?.();}'
+ s=fixed.once(s,anchor,anchor+'''
   (window as any).seamFrame=()=>{
    const isOwner=(t)=>t.id===qa.first||t.id===qa.second;
    const q=(ortho as any)?.pairs?.find(p=>p.plan.first===qa.first&&p.plan.second===qa.second),u=(world as any).tiles.filter(isOwner)

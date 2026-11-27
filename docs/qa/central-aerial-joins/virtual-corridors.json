@@ -1,0 +1,57 @@
+[
+  {
+    "name": "edge-14-15s",
+    "owners": [
+      "14-15",
+      "14-16"
+    ],
+    "axis": "z",
+    "lon": -63.30008691,
+    "lat": 46.257263235403556,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -63.30008691,
+      46.25636364
+    ],
+    "baseDatumStockMetres": [
+      51,
+      52
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  },
+  {
+    "name": "edge-15-17s",
+    "owners": [
+      "15-17",
+      "15-18"
+    ],
+    "axis": "z",
+    "lon": -63.23683496,
+    "lat": 46.15180868540356,
+    "agl": 63,
+    "heading": 180,
+    "targetLL": [
+      -63.23683496,
+      46.15090909
+    ],
+    "baseDatumStockMetres": [
+      18,
+      22
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private rendered flight QA only; not real navigation or obstacle clearance"
+  }
+]
