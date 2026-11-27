@@ -56,6 +56,11 @@ jobs:
           node --experimental-strip-types --test tools/art/founders-hall-exterior/detached.test.mjs tools/art/founders-hall-exterior/west-clip.test.mjs
           ./node_modules/.bin/tsc -p tools/art/founders-hall-exterior/tsconfig.json
           ./node_modules/.bin/vite build tools/art/founders-hall-exterior --base ./ --outDir /tmp/pei-founders-studio-dist --emptyOutDir
+      - name: Verify the detached Charlottetown Flight Service Station exterior
+        run: |
+          node --experimental-strip-types --test tools/art/charlottetown-fss-exterior/fss-exterior.test.mjs
+          ./node_modules/.bin/tsc -p tools/art/charlottetown-fss-exterior/tsconfig.json
+          ./node_modules/.bin/vite build tools/art/charlottetown-fss-exterior --base ./ --outDir /tmp/pei-fss-studio-dist --emptyOutDir
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: ci-dist-unverified

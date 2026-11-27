@@ -110,6 +110,8 @@ For a low offshore approach in Kings County, choose [Souris · waterfront pass](
 
 ## Detached art and material fixtures
 
+The [Charlottetown Flight Service Station exterior study](../tools/art/charlottetown-fss-exterior/) shows the dark canted cab, pale shaft shoulders and stepped lower annex at both close and flight size. It is not a surveyed replacement and is not mounted in the simulator.
+
 Original Three.js exterior studies for [Province House](qa/province-house-study.md),
 [Summerside City Hall](../tools/art/summerside-cityhall-study/README.md), and the
 [Lefurgey Cultural Centre](../tools/art/lefurgey-study/README.md) remain
