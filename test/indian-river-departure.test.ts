@@ -41,3 +41,16 @@ test('starting early aborts the checked fetch and cannot advance a late result i
  finish(x.q);await drain();assert(!x.seat.beforeStep(x.flight,true,true));
  assert(!x.seat.beforeStep({},true,true));assert.equal(x.ground(),'stock');assert.deepEqual(x.calls,['restore']);
 });
+
+import {INDIAN_RIVER_ROUTE,indianRiverLensState,standardIndianRiverRequested,switchStandardIndianRiverURL,
+ standardKingsRidgeRequested,olearyIndustrialStandardRequested} from '../src/app/scenery-profile.ts';
+test('the Indian River Standard comparison preserves the other ordinary rendering switches',()=>{
+ const url='https://pei.invalid/?diagnostics&departure='+INDIAN_RIVER_ROUTE;
+ const off=new URL(switchStandardIndianRiverURL(url,true,INDIAN_RIVER_ROUTE));
+ assert(standardIndianRiverRequested(new URL(url).search));assert(!standardIndianRiverRequested(off.search));
+ assert(standardKingsRidgeRequested(off.search));assert(olearyIndustrialStandardRequested(off.searchParams));
+ assert.deepEqual([...new URL(switchStandardIndianRiverURL(off.href,false,INDIAN_RIVER_ROUTE)).searchParams],[...new URL(url).searchParams]);
+ for(const mode of ['scenery=detail','qa','departure=a','indianRiverReview','indianRiverGradeLens'])
+  assert(!standardIndianRiverRequested(new URL(url+'&'+mode).search),mode);
+ assert(indianRiverLensState(off.search+'&indianRiverGradeLens').active);
+});

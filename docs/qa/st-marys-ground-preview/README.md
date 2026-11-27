@@ -1,14 +1,21 @@
 # St. Mary’s and the measured ground · Indian River
 
-In Standard, choose **Indian River · country pass** and **Open ground
-preview** in Dispatch. Begin the flight normally. This shows the
-[survey-informed St. Mary’s exterior](../st-marys-indian-river.md) on the
-matching dry ground, with the original trees and correctly seated local
-shadows. It changes simulator ground contact inside the signed 2020
-survey patch. It is not a real-world navigation aid or a current survey.
-Use **Close ground preview** before flying again to restore the regular
-view. The older **St. Mary’s exterior** study in Optional scenery studies is
-still available as a separate profile.
+In Standard, choose **Indian River · country pass** and wait for
+**Surveyed church and ground ready** before beginning. The
+[survey-informed St. Mary’s exterior](../st-marys-indian-river.md) uses
+matching dry ground and trees. The new local cast and four tree shadows
+are fitted to that surface. Starting before verification, using an
+unsupported renderer, or jumping directly from the atlas keeps the
+original scene. Return to Dispatch for a new clearance. This changes
+simulator ground contact inside the signed 2020 survey patch. It is not
+a current survey or a real-world navigation aid.
+
+Use **Use original ground** in Dispatch or `?stockIndianRiver` to make
+the matched Standard comparison. The explicit ground-preview URL and
+the older **St. Mary’s exterior** study in Optional scenery studies
+are still separate profiles.
+
+## Earlier preview proof
 
 ![Matched Standard and local St. Mary’s previews at two neutral Chase approach poses](matched.webp)
 
@@ -48,4 +55,23 @@ geometry and masks for the hedge were not changed. Separating the
 artwork, ground, cast and tree-shadow receivers again found zero alpha
 changes in each component, and restoring the preview repeated its
 images byte for byte. This is a validation of the existing preview, not
-activation in Standard.
+the separate Standard replay.
+
+## Normal Standard replay
+
+The [current Standard receipt](standard-native-replay.json) uses the
+normal Dispatch route and one existing ordinary q03230 building range.
+At 10 and 11 seconds, the new church, grade and shadows changed 10,400
+and 20,202 strong RGB pixels, respectively, at 900 × 600. No pixels
+outside the projected local comparison envelope and no alpha values
+changed. At 15 and 16 seconds the whole image was byte-identical to
+stock. All scene roles remained coupled, including after the vegetation
+stream refreshed. The checked contact point rose by 1.20 m, while the
+separate unmodified ground point returned the exact stock height.
+
+At the two close views the complete reconstruction added 14 draws and
+31,554 triangles. This measures the submitted work in those views, not
+GPU hardware performance. Queries on ordinary routes outside this
+departure do not start the local grade, artwork or sun-mask load.
+
+![Same Chase camera: the original footprint block and the reconstructed church at Indian River](standard-chase.webp)

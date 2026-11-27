@@ -725,8 +725,8 @@ export class Buildings {
    (!(this.strictIndianLens||this.standardChurchArt)||this.indianRiverLensDrawReady));
  }
  get indianRiverActive(){return this.indianVariant?.visible??false;}
- dropStandardIndianRiver(){
-  if(this.standardChurchArt)this.dropIndianRiverOwner();
+ dropStandardIndianRiver(art?:ChurchArt){
+  if(this.standardChurchArt&&(!art||this.standardChurchArt===art))this.dropIndianRiverOwner();
  }
  private dropIndianRiverOwner(){
   this.indianVariant?.dispose();this.indianVariant=undefined;this.indianLensPin=undefined;

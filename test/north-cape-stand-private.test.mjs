@@ -62,7 +62,7 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
  const paint=(cape,failAt,industrial=false)=>{
   const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
-   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined};
+   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined};
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
   scope.world={

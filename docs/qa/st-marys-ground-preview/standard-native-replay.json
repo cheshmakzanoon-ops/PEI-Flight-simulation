@@ -1,0 +1,248 @@
+{
+  "viewport": [
+    900,
+    600
+  ],
+  "profile": "normal Standard Indian River departure, without a preview flag",
+  "procedure": "Neutral Chase; isolated runtime same-camera stock, active and restoration render. The conservative projected test bounds the local combined ground, art and sun/tree shadows. No geometry is forced in frame. The receipt does not establish device FPS.",
+  "replay": {
+    "1": {
+      "art": true,
+      "shadows": 4,
+      "sun": true,
+      "grade": [
+        "st-marys-2020-grade-study"
+      ]
+    },
+    "100": {
+      "art": true,
+      "shadows": 4,
+      "sun": true,
+      "grade": [
+        "st-marys-2020-grade-study"
+      ]
+    },
+    "110": {
+      "art": true,
+      "shadows": 4,
+      "sun": true,
+      "grade": [
+        "st-marys-2020-grade-study"
+      ]
+    },
+    "150": {
+      "art": true,
+      "shadows": 4,
+      "sun": true,
+      "grade": [
+        "st-marys-2020-grade-study"
+      ]
+    },
+    "160": {
+      "art": true,
+      "shadows": 4,
+      "sun": true,
+      "grade": [
+        "st-marys-2020-grade-study"
+      ]
+    }
+  },
+  "case": {
+    "100": {
+      "site": [
+        -36232.523542746814,
+        2592.4121417029983,
+        93.13953276402191,
+        16.380575250662442
+      ],
+      "contact": [
+        21.56952253424026,
+        22.771392979207068
+      ],
+      "quiet": [
+        20.986143349884927,
+        20.986143349884927
+      ],
+      "any": 19051,
+      "strong": 10400,
+      "alpha": 0,
+      "outside": 0,
+      "restored": true,
+      "draws": [
+        241,
+        255
+      ],
+      "triangles": [
+        351490,
+        383044
+      ],
+      "pngSHA256": [
+        "2cc51b43c165b80fecc9c8c85a6ed2cf1734acac97d731bd969844b1669cdd93",
+        "0c465d76be935cf43a546003040c3e2d01c5eadeba798c7782689442b5d9ec2b",
+        "0c465d76be935cf43a546003040c3e2d01c5eadeba798c7782689442b5d9ec2b"
+      ]
+    },
+    "110": {
+      "site": [
+        -36180.310753005804,
+        2579.2808703229366,
+        93.50651262182285,
+        18.19266543472497
+      ],
+      "contact": [
+        21.56952253424026,
+        22.771392979207068
+      ],
+      "quiet": [
+        20.986143349884927,
+        20.986143349884927
+      ],
+      "any": 30699,
+      "strong": 20202,
+      "alpha": 0,
+      "outside": 0,
+      "restored": true,
+      "draws": [
+        241,
+        255
+      ],
+      "triangles": [
+        353406,
+        384960
+      ],
+      "pngSHA256": [
+        "2f689c125365f980f139feef66978740848951bcbdcf0f9265669b40d8d06056",
+        "b5b734faecf4dcd72fdec35b41fdf9a4dc26e1b8b07fdd27843ec4a0fcd9c1da",
+        "b5b734faecf4dcd72fdec35b41fdf9a4dc26e1b8b07fdd27843ec4a0fcd9c1da"
+      ]
+    },
+    "150": {
+      "site": [
+        -35971.409150573425,
+        2526.7422685160973,
+        94.98464370568,
+        24.99949976308037
+      ],
+      "contact": [
+        21.56952253424026,
+        22.771392979207068
+      ],
+      "quiet": [
+        20.986143349884927,
+        20.986143349884927
+      ],
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "outside": 0,
+      "restored": true,
+      "draws": [
+        240,
+        241
+      ],
+      "triangles": [
+        354394,
+        364310
+      ],
+      "pngSHA256": [
+        "10c3a09ae5af60fd3862bfec48b60dc091bea622d88e7d928e362d20948be531",
+        "10c3a09ae5af60fd3862bfec48b60dc091bea622d88e7d928e362d20948be531",
+        "10c3a09ae5af60fd3862bfec48b60dc091bea622d88e7d928e362d20948be531"
+      ]
+    },
+    "160": {
+      "site": [
+        -35919.17264451861,
+        2513.6046423689036,
+        95.35636159799054,
+        25.12
+      ],
+      "contact": [
+        21.56952253424026,
+        22.771392979207068
+      ],
+      "quiet": [
+        20.986143349884927,
+        20.986143349884927
+      ],
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "outside": 0,
+      "restored": true,
+      "draws": [
+        240,
+        241
+      ],
+      "triangles": [
+        354130,
+        364046
+      ],
+      "pngSHA256": [
+        "b1182cafb4d65851ee46e93b666069037d9d669a652b12400564a0240b1cded1",
+        "b1182cafb4d65851ee46e93b666069037d9d669a652b12400564a0240b1cded1",
+        "b1182cafb4d65851ee46e93b666069037d9d669a652b12400564a0240b1cded1"
+      ]
+    }
+  },
+  "stock_controls": {
+    "early": {
+      "frames": 14,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [
+        "/world/indian-river/v1/ground.g11.gz",
+        "/world/indian-river/v1/sun-cast.r8.gz"
+      ],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": true
+    },
+    "corrupt": {
+      "frames": 4,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [
+        "/world/indian-river/v1/ground.g11.gz",
+        "/world/indian-river/v1/sun-cast.r8.gz"
+      ],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": false
+    },
+    "stock": {
+      "frames": 4,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": false
+    },
+    "noaa": {
+      "frames": 4,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": false
+    },
+    "foreign": {
+      "frames": 4,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [],
+      "ordinaryBuildingOwnerRanges": 0,
+      "heldResponseOffered": false
+    },
+    "away": {
+      "frames": 5,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [
+        "/world/indian-river/v1/ground.g11.gz",
+        "/world/indian-river/v1/sun-cast.r8.gz"
+      ],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": true
+    },
+    "detail": {
+      "frames": 5,
+      "sceneRolesAllStock": true,
+      "requestedLocalPackets": [],
+      "ordinaryBuildingOwnerRanges": 1,
+      "heldResponseOffered": false
+    }
+  }
+}

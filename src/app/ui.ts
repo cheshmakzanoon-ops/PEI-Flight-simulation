@@ -1,5 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
-import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,standardKingsRidgeRequested,switchStandardKingsRidgeURL,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,indianRiverLensState,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
+import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,standardKingsRidgeRequested,switchStandardKingsRidgeURL,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,STOCK_INDIAN_RIVER,indianRiverLensState,standardIndianRiverRequested,switchStandardIndianRiverURL,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
 import { geographic, DEG } from '../sim/geo.ts';
@@ -22,12 +22,14 @@ export class UI {
  private chartImage:HTMLImageElement;private frame=0;private siteNow=0;private camera='Chase';private silent=true;private message='';
  private ridgeState='';
  private industrialState='';
+ private riverState='';
  constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;},private readonly sites:readonly Site[]=SITES) {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
   const detail=isDetailScenery(location.search);
   const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
   const basin=basinHeadDispatchState(location.search),river=indianRiverLensState(location.search);
+  const standardRiver=standardIndianRiverRequested(location.search),stockRiver=new URLSearchParams(location.search).has(STOCK_INDIAN_RIVER);
   const ridge=kingsRidgeLensState(location.search),prince=princeLandscapeState(location.search);
   const normalRidge=standardKingsRidgeRequested(location.search),stockRidge=new URLSearchParams(location.search).has('stockKingsRidge');
   const ridgeTitle=ridge.selected?'Close ridge preview':normalRidge?'Use original ground':stockRidge?'Use measured ground':'Open ridge preview';
@@ -63,9 +65,9 @@ export class UI {
   <section class="regional-detail" id="indian-river-lens" hidden>
     <div><span class="eyebrow">ST. MARY’S, INDIAN RIVER</span><small id="indian-river-lens-info">${river.active?
       'Preview selected. Surveyed terrain changes local ground contact.':!river.compatible?
-      'Unavailable with the current scenery settings.':'See the survey-informed exterior and 2020 ground. This changes local ground contact.'}</small></div>
+      'Unavailable with the current scenery settings.':stockRiver?'Original ground selected for this comparison.':'See the survey-informed exterior and 2020 ground. This changes local ground contact.'}</small></div>
     <button type="button" id="indian-river-lens-switch" aria-describedby="indian-river-lens-info"
-      ${!river.compatible&&!river.selected?'disabled':''}>${river.selected?'Close ground preview':'Open ground preview'}</button>
+      ${!river.compatible&&!river.selected?'disabled':''}>${river.selected?'Close ground preview':standardRiver?'Use original ground':stockRiver?'Use measured ground':'Open ground preview'}</button>
   </section>
   <section class="regional-detail" id="kings-ridge-lens" hidden>
     <div><span class="eyebrow">KINGS COASTAL RIDGE</span><small id="kings-ridge-lens-info">${ridge.active?
@@ -97,7 +99,10 @@ export class UI {
    location.assign(switchBasinHeadDispatchURL(location.href,!basin.selected,this.sites[this.selected].id));
   };
   $('indian-river-lens-switch').onclick=()=>{
-   location.assign(switchIndianRiverLens(location.href,!river.selected,this.sites[this.selected].id));
+   const route=this.sites[this.selected].id;
+   const after=river.selected?switchIndianRiverLens(location.href,false,route):location.href;
+   location.assign(river.selected||standardRiver||stockRiver?
+    switchStandardIndianRiverURL(after,!stockRiver||river.selected,route):switchIndianRiverLens(after,true,route));
   };
   $('kings-ridge-lens-switch').onclick=()=>{
    const route=this.sites[this.selected].id;
@@ -149,6 +154,12 @@ export class UI {
    s==='unavailable'?'The original ground will be used because the preview data could not be verified.':
    s==='different'?'This preview only opens on the Prince County grassland pass.':'The measured field changes local ground contact.';
   const tip=$('ridge-flight-status');tip.hidden=s!=='stock';tip.textContent=s==='stock'?'Using Standard field ground on this flight.':'';
+ }
+ setIndianRiverStandard(state:'waiting'|'ready'|'stock'){
+  if(this.riverState===state)return;this.riverState=state;
+  $('indian-river-lens-info').textContent=state==='ready'?'Surveyed church and ground ready. This changes local ground contact.':
+   state==='waiting'?'Checking the surveyed church and ground. Begin now to keep the original terrain for this flight.':
+   'The survey could not be verified. Begin flight will use the original terrain.';
  }
  setOlearyIndustrial(state:'inactive'|'checking'|'ready'){
   if(this.industrialState===state)return;this.industrialState=state;

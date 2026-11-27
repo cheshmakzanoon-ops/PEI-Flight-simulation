@@ -1614,6 +1614,11 @@ export class World {
   }
   return show;
  }
+ retireIndianRiverTerrain(geometry:THREE.BufferGeometry){
+  const q=this.stagedChurch;
+  if(q?.candidate.geometry!==geometry||q.grade.grid.spec!==INDIAN_RIVER_GRADE)return;
+  this.setIndianRiverLens(false);this.dropIndianRiverLens();
+ }
  dropIndianRiverLens(){
   if(this.stagedChurch?.grade.grid.spec===INDIAN_RIVER_GRADE&&this.indianRiverLensSeal?.mesh===this.stagedChurch.candidate)
    this.dropStMarysStage();

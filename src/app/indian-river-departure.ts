@@ -13,17 +13,19 @@ type Pending={ctl:AbortController;timer:ReturnType<typeof setTimeout>};
 /** Separate a selected Dispatch from the lifetime of a genuine flight.
  * A promise resolving after Begin, or a lost owner, cannot rewrite contact
  * under an already airborne aircraft. */
-export class IndianRiverDeparture<Flight extends object>{
+export class IndianRiverDeparture<Flight extends object,Prepared extends RiverCohort=RiverCohort>{
  private job?:Pending;
- private candidate?:RiverCohort;
- private departure?:{flight:Flight;cohort:RiverCohort;active:boolean};
+ private candidate?:Prepared;
+ private departure?:{flight:Flight;cohort:Prepared;active:boolean};
  private attempted=false;
  private failed=false;
  private readonly stillDispatch:()=>boolean;
  constructor(stillDispatch:()=>boolean){this.stillDispatch=stillDispatch;}
  get ready(){try{return this.candidate?.ready()===true;}catch{return false;}}
  get unavailable(){return this.failed;}
- prepare(load:(signal:AbortSignal)=>Promise<RiverCohort|undefined>){
+ get activeCohort(){const d=this.departure;return d?.active?d.cohort:undefined;}
+ get cleared(){return this.departure!==undefined;}
+ prepare(load:(signal:AbortSignal)=>Promise<Prepared|undefined>){
   if(this.attempted||this.job||!this.stillDispatch())return;
   this.attempted=true;this.failed=false;
   const ctl=new AbortController(),p:Pending=this.job={ctl,timer:setTimeout(()=>this.expire(p),12_000)};
@@ -33,8 +35,8 @@ export class IndianRiverDeparture<Flight extends object>{
   if(this.job!==p)return;
   p.ctl.abort();this.job=undefined;this.failed=true;
  }
- private async open(load:(signal:AbortSignal)=>Promise<RiverCohort|undefined>,p:Pending){
-  let result:RiverCohort|undefined;
+ private async open(load:(signal:AbortSignal)=>Promise<Prepared|undefined>,p:Pending){
+  let result:Prepared|undefined;
   try{
    result=await load(p.ctl.signal);
    if(this.job!==p||p.ctl.signal.aborted||!this.stillDispatch())return;
