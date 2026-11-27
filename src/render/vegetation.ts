@@ -104,6 +104,13 @@ export class Vegetation {
  private stems=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*3),3).setUsage(THREE.DynamicDrawUsage);
  private shapes=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
  private hedgeGround=new THREE.InstancedBufferAttribute(new Float32Array(maxTrees*4),4).setUsage(THREE.DynamicDrawUsage);
+ /** Construction-born ordinary shadow pointer, for exact local render custody. */
+ stockBordenCanopyOwners(){
+  if(this.shade.geometry!==this.geom||this.crown.geometry!==this.geom||
+     !(this.shade.material instanceof THREE.ShaderMaterial)||!(this.crown.material instanceof THREE.ShaderMaterial))return;
+  type Stock=THREE.Mesh<THREE.InstancedBufferGeometry,THREE.ShaderMaterial>;
+  return {shadow:this.shade as Stock,crown:this.crown as Stock};
+ }
  crownFillMaterial():THREE.ShaderMaterial{return this.crown.material as THREE.ShaderMaterial;}
  /** Exact ordered GPU inputs within a small signed regional proof box.
   * No default caller; excludes the appended hedge lane and never alters a slot. */

@@ -97,6 +97,12 @@ export class Roads {
    return {mesh:m,base:base as THREE.Material};
   }
   get pavementStatus(){return this.pavement.state;}
+  bordenStockRoads(){
+   if(this.seat)return;
+   const root=this.root,mat=this.material;
+   return {mat,owns:(o:THREE.Object3D,m:THREE.Material)=>o.parent===root&&m===mat&&
+     o instanceof THREE.Mesh&&this.bordenVisible.has(o)};
+  }
   private readonly material:THREE.MeshStandardMaterial;
   private readonly victoriaMaterial?:THREE.MeshStandardMaterial;
   private readonly capeMaterial?:THREE.MeshStandardMaterial;
@@ -108,6 +114,7 @@ export class Roads {
    return this.cape?.intersects(t.x-half,t.z-half,t.x+half,t.z+half)?this.capeMaterial!:this.material;
   }
   private readonly visible = new Map<string, THREE.Mesh>();
+  private readonly bordenVisible=new WeakSet<THREE.Mesh>();
   private readonly madeVariants=new Map<string,Map<string,THREE.BufferGeometry>>();
   private readonly previewBridge?:THREE.Group;
   private readonly previewOwners:readonly string[];
@@ -385,7 +392,7 @@ export class Roads {
       if(current&&current.userData.inlandMode===mode)continue;
       if(!this.nearPatches&&!this.seat){
         const mesh=this.mesh(t);mesh.userData.inlandMode='';
-        this.root.add(mesh);this.visible.set(key,mesh);continue;
+        this.root.add(mesh);this.visible.set(key,mesh);this.bordenVisible.add(mesh);continue;
       }
       // Keep both possible meshes for these few local tiles while visible;
       // when the tile streams out both cached buffers are freed.
@@ -409,7 +416,7 @@ export class Roads {
       if(current){current.geometry=cached;current.userData.inlandMode=mode;}
       else{
         const mesh=new THREE.Mesh(cached,this.tileMaterial(t));mesh.position.set(t.x,0,t.z);
-        mesh.userData.inlandMode=mode;this.root.add(mesh);this.visible.set(key,mesh);
+        mesh.userData.inlandMode=mode;this.root.add(mesh);this.visible.set(key,mesh);this.bordenVisible.add(mesh);
       }
       for(const [stale,geo] of variants)if(stale.includes('|seat:')&&stale!==mode){geo.dispose();variants.delete(stale);}
     }

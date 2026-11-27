@@ -262,6 +262,6 @@ export function createAircraft() {
   const angles=altimeterAngles(feet);
   altitudeHands.forEach((p,i)=>{p.rotation.z=angles[i];});
  }
- return {root,runwayCasters:Object.freeze(runwayCasters),prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),rudderAngle:rudder.angle,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ return {root,runwayCasters:Object.freeze(runwayCasters),prop,shutterDisc:propDisc,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),rudderAngle:rudder.angle,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
  setProp};
 }

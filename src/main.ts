@@ -124,7 +124,7 @@ import {verifyDecodedCover} from './sim/cover-proof.ts';
 import {MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS} from './render/kings-field-pass.ts';
 import {kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested} from './app/scenery-profile.ts';
 import {SourisWetCurtain} from './render/souris-wet-curtain.ts';
-import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested,summersideRunwayPavementRequested,aircraftRunwayCastRequested} from './app/scenery-profile.ts';
+import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested,summersideRunwayPavementRequested,aircraftRunwayCastRequested,bordenCoastRequested} from './app/scenery-profile.ts';
 import {RegionalWindStream} from './render/regional-wind-stream.ts';
 import {RusticoStandardFlight,RUSTICO_LIGHT_ROUTE,standardRusticoLayers} from './render/north-rustico/flight.ts';
 import {standardRusticoLighthouseRequested} from './app/scenery-profile.ts';
@@ -367,7 +367,7 @@ async function run(){
   new AircraftRunwayDepth(renderer,aircraft.root,aircraft.runwayCasters):undefined;
  const world=new World(scene,terrain,img,renderer,cover,sky,bench,southLake,sourisLighting,
    showBuildingShadows,floor,useBasinBank,basinSand??basinSandStandard?.uniforms,bankGround,options.has('montagueReachOptics'),options.has('legacyShoreArcs'),cover.wharfToe&&!options.has('noBasinWharf'),standardBreakers,!!CapeArt,bowley,options.has('meadowTexture'),options.has('cropRowsReview')&&!fieldStudy?cropFields:undefined,fieldStudy,dunelands?[dunelands]:[],groundCohorts.length?groundCohorts:undefined,useGravel,fairway,useTrail,rusticoSoil,grass,churchCohort?.groundSun,hog,hogGround?.optics,duneSand,grassCoast,daylight,orbyClosureRequested(options),ortho,shoreToneRequested(options),tryNearshoreFoam,standardMeadow?.tiles,!!nearshoreStandard,standardOpenCoastRequested(options),pastureEligible,openRipples,marsh,options.has('capeTryonRockReview')?terrainSha:undefined,options.has('capeTryonWaterReview')?terrainSha:undefined,runway03PavementRequested(options),bowleyDefaultCore,
-   standardLandAtlasMatches(terrain,terrainSha,cover)?terrainSha:undefined,summersideRunwayPavementRequested(options),aircraftDepth);
+   standardLandAtlasMatches(terrain,terrainSha,cover)?terrainSha:undefined,summersideRunwayPavementRequested(options),aircraftDepth,bordenCoastRequested(options));
  const dalvayAllowed=dalvayWaterRequested(options)&&standardLandAtlasMatches(terrain,terrainSha,cover)&&renderer.capabilities.maxTextures>=16;
  let dalvayGlazingActive=false;
  let dalvayRequested=false,dalvayVisual:import('./render/dalvay-lake-optics.ts').DalvayLakeOptics|undefined;
@@ -392,6 +392,8 @@ async function run(){
  const vegetation=new Vegetation(scene,terrain,cover,forestHeights,forestStream,hedgeStream,
    (x,z)=>world.visualGroundHeight(x,z),bankGround?(x,z)=>world.basinPlantedGround(x,z):undefined,directionalCanopy?world.sun:undefined,bowley||dunelands?(x,z)=>world.freshwaterContains(x,z):undefined,
    rollingModule?new rollingModule.ShadowSlotRoster():undefined,directionalCanopy&&!options.has('canopyLight'),supportsOpaqueCanopyCoverage(gl));
+ world.registerBordenLateOwners(vegetation.stockBordenCanopyOwners(),aircraft.shutterDisc);
+ world.registerBordenAircraft(aircraft.root);
  let datedStandReview:NorthCapeStandReview|undefined;
  if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')
   void import('./render/north-cape-stand/review.ts').then(({NorthCapeStandReview})=>{
@@ -443,7 +445,7 @@ async function run(){
    const {NorthCapeScenery}=await import('./render/north-cape.ts');
    return ()=>new NorthCapeScenery(scene,world);
   }):undefined;
- addConfederationBridge(scene);
+ world.registerBordenBridge(addConfederationBridge(scene));
  let basilicaExterior:'authored'|'stock'='stock';
  if(basilicaExteriorRequested(options)&&basilicaSiteSupports(terrain,terrainSha,cover)&&
     await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded){
@@ -553,7 +555,7 @@ async function run(){
  const startRoads=(prepared?:Awaited<typeof montagueRoadJob>)=>Roads.create(scene,terrain,world.buildingShadows,
   terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined,options.has('seatedRoads')?world:undefined,
   cover.montague||cover.baywalk?world:undefined,prepared,world.capeShadow,gravelSurface?.look,supportsOpaqueCoverage(gl));
- const roadReady=(preRoadJob?preRoadJob.then(startRoads):startRoads()).then(v=>roads=v).catch(e=>{warn('Road',e);});
+ const roadReady=(preRoadJob?preRoadJob.then(startRoads):startRoads()).then(v=>{roads=v;world.registerBordenRoads(v.bordenStockRoads());return v;}).catch(e=>{warn('Road',e);});
  if(tryMappedLaneCanopy)void roadReady.then(r=>{
   const lane=mappedLaneCanopy(terrain,cover,terrainSha,r?.sourceGeometrySha256);
   if(lane)vegetation.installOpenRoadLane(lane);
@@ -812,6 +814,7 @@ async function run(){
   const dispatch=ui.mode==='dispatch',playing=ui.mode==='flight';
   const retainPointPrim=!dispatch&&!((ui.mode==='map'||ui.mode==='help'||ui.mode==='credits')&&ui.previous==='dispatch');
 
+  world.trackBordenFrame(f.x,f.z);
   world.prepareAdaptiveTerrain(f.x,f.z,f.y,performance.now());
   // Commit verified near geometry before the fixed-step contact sampler.
   if(princePreview){
@@ -1075,15 +1078,15 @@ async function run(){
     (ui.mode==='map'||ui.mode==='help'||ui.mode==='credits'))));
   const endRidge=world.beginKingsRidgeDraw(camera);
   const endPrince=world.beginPrinceLandscapeDraw();
-  let endRim:undefined|(()=>void);
+  let endRim:undefined|(()=>void),endBorden:undefined|(()=>void);
   try{if(datedStandReview){
    let end:undefined|(()=>void);
    try{end=datedStandReview.beforeFrame({site:SITES[activeSite].id,mode:ui.mode,view,now});}
    catch{datedStandReview.dispose();}
-   try{endRim=world.beginRegularNorthRimDraw(camera);renderer.render(scene,camera);}
-   finally{endRim?.();endRim=undefined;end?.();}
-  }else{endRim=world.beginRegularNorthRimDraw(camera);renderer.render(scene,camera);}
-  }finally{endRim?.();endPrince?.();endRidge?.();}
+   try{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);renderer.render(scene,camera);}
+   finally{endBorden?.();endBorden=undefined;endRim?.();endRim=undefined;end?.();}
+  }else{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);renderer.render(scene,camera);}
+  }finally{endBorden?.();endRim?.();endPrince?.();endRidge?.();}
   if(world.tryonRockState==='pending'&&roads&&buildings&&mainland&&world.detailState().loading===0)
    void world.prepareTryonRock(camera);
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);

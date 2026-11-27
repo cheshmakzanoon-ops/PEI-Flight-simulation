@@ -1,3 +1,6 @@
+import {BordenOpaqueScope} from './borden-opaque-scope.ts';
+import {BordenCanopyResident,BordenPropResident} from './borden-canopy-resident.ts';
+import {prepareBordenBackgroundCoast,type BordenBackgroundLease} from './borden-bilinear-background.ts';
 import {PrinceLandscapeLease} from './prince-grassland/lease.ts';
 import {PRINCE_TERRAIN_SLOT,type verifiedPrinceOverview} from './prince-grassland/source.ts';
 import {INDIAN_RIVER_GRADE} from '../sim/indian-river-grade.generated.ts';
@@ -695,6 +698,68 @@ export class World {
  readonly rusticoSoilStrength={value:0};
  private readonly grades=new Map<string,BoundedGrade>();
  private readonly regularNorthRims?:RegularNorthRimDraw;
+ private bordenLease?:BordenBackgroundLease;
+ private bordenCanopy?:BordenCanopyResident;
+ private bordenProp?:BordenPropResident;
+ private bordenRoads?:{mat:THREE.Material;owns:(o:THREE.Object3D,m:THREE.Material)=>boolean};
+ private bordenOpaque?:BordenOpaqueScope;
+ private bordenNearFlight=false;
+ trackBordenFrame(x:number,z:number){
+  if(!this.bordenOpaque)return;
+  const dX=x+38841,dZ=z-27786;
+  this.bordenNearFlight=dX*dX+dZ*dZ<=8200**2;
+  if(!this.bordenNearFlight&&this.bordenTicket)this.clearBordenShoreArc();
+ }
+ registerBordenBridge(bridge:THREE.Group){this.bordenOpaque?.registerBridge(bridge);}
+ registerBordenAircraft(aircraft:THREE.Object3D){this.bordenOpaque?.registerAircraft(aircraft);}
+ registerBordenRoads(roads:typeof this.bordenRoads){
+  if(!this.bordenOpaque||!roads||this.bordenRoads)return;
+  this.bordenRoads=roads;this.bordenOpaque.registerRoad(roads.mat);
+ }
+ registerBordenLateOwners(owners:{shadow:THREE.Mesh<THREE.InstancedBufferGeometry,THREE.ShaderMaterial>;
+  crown:THREE.Mesh<THREE.InstancedBufferGeometry,THREE.ShaderMaterial>}|undefined,
+  disc:THREE.Mesh<THREE.BufferGeometry,THREE.MeshBasicMaterial>){
+  if(!this.bordenAtlasSha||!owners||this.bordenCanopy||this.bordenProp)return;
+  try{
+   const q=new BordenCanopyResident(this.renderer,owners.shadow,owners.crown,()=>this.bordenNearFlight);
+   try{this.bordenProp=new BordenPropResident(this.renderer,disc);}
+   catch(e){q.dispose();throw e;}
+   this.bordenCanopy=q;this.bordenOpaque=new BordenOpaqueScope(this.renderer,(o,m)=>this.bordenRoads?.owns(o,m)===true);
+  }catch{/* Old scenery needs none of these probes. */}
+ }
+
+ private bordenTicket?:readonly unknown[];
+ private bordenShore?:THREE.Mesh;
+ private bordenOcean?:THREE.Mesh;
+ private bordenAtlasSha?:string;
+ private bordenAerialGain?:{value:number};
+ private clearBordenShoreArc(){
+  this.bordenTicket=undefined;this.bordenLease?.dispose();this.bordenLease=undefined;
+ }
+ beginBordenShoreArc(camera:THREE.PerspectiveCamera){
+  const sha=this.bordenAtlasSha,ocean=this.bordenOcean,stockShore=this.bordenShore,pos=camera.position;
+  if(!this.bordenNearFlight||!sha||!ocean||!stockShore||!this.bordenCanopy||!this.bordenProp||!this.bordenOpaque)return;
+  // The exact native owner and current camera frustum, not a fixed nearby
+  // height or distance cutoff, determine whether the preview is relevant.
+  if(Math.hypot(pos.x+38841,pos.z-27786)>7100)return;
+  if(this.bordenAerialGain&&this.bordenAerialGain.value!==1)return;
+  const ground=()=>this.byId.get('9-16'),tile=ground(),fine=tile?.fine;
+  if(!tile||tile.lod!==112||!fine?.visible||tile.coarse.visible||tile.relief){
+   if(this.bordenTicket)this.clearBordenShoreArc();
+   return;
+  }
+  const geometry=fine.geometry,index=geometry.index,p=geometry.getAttribute('position'),caps=this.renderer.capabilities;
+  if(!(p instanceof THREE.BufferAttribute)||!index){if(this.bordenTicket)this.clearBordenShoreArc();return;}
+  const ticket=[fine,geometry,index,index.version,p,p.version,tile.seams,caps];
+  if(!this.bordenTicket||ticket.some((v,i)=>v!==this.bordenTicket?.[i])){
+   this.clearBordenShoreArc();this.bordenTicket=ticket;
+   void prepareBordenBackgroundCoast({scene:this.scene,renderer:this.renderer,terrain:this.terrain,cover:this.cover,
+    terrainSha:sha,ground,stockShore,ocean,stockSky:this.sky,stockAtmosphericGain:this.bordenAerialGain,
+    canopy:this.bordenCanopy,prop:this.bordenProp,opaque:this.bordenOpaque})
+    .then(m=>{if(this.bordenTicket===ticket){this.bordenLease=m;}else m?.dispose();});
+  }
+  return this.bordenLease?.begin(camera);
+ }
  beginRegularNorthRimDraw(camera:THREE.PerspectiveCamera){return this.regularNorthRims?.begin(camera);}
  get regularNorthRimState(){return this.regularNorthRims?.diagnostics();}
  private princeLandscape?:{terrain:Patch;mesh:THREE.Mesh;lease:PrinceLandscapeLease;seams?:string};
@@ -776,7 +841,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string,summersideRunwayPavement=false,readonly aircraftDepth?:AircraftRunwayDepth){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string,summersideRunwayPavement=false,readonly aircraftDepth?:AircraftRunwayDepth,bordenCoast=false){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -785,6 +850,7 @@ export class World {
    const prior=texture.onUpdate;texture.onUpdate=t=>{this.pinnedPastureDetail.add(t);prior?.call(texture,t);};
   }:orthoSeams?.verifiedDetail);
   const air=aerial?.accepts(sky)?aerial:undefined;
+  this.bordenAerialGain=air?.gain;
   const sceneShader=(opt:THREE.ShaderMaterialParameters)=>{
    const m=new THREE.ShaderMaterial(opt);return air?air.bind(m):m;
   };
@@ -875,6 +941,9 @@ export class World {
    oceanMaterial.uniforms={...oceanMaterial.uniforms,sourisWaterTie:this.sourisWaterTie};
    const ocean=new THREE.Mesh(new THREE.PlaneGeometry(650000,650000,160,160),oceanMaterial);
    ocean.rotation.x=-Math.PI/2;ocean.position.y=OCEAN_Y;scene.add(ocean);
+   if(bordenCoast&&closeOpenCoast&&!legacyShore&&regularNorthRimTerrainSha){
+    this.bordenOcean=ocean;this.bordenAtlasSha=regularNorthRimTerrainSha;
+   }
    if(closeOpenCoast&&!legacyShore&&tryonRockMatches(capeWetTerrainSha,T.spec.bounds,cover)&&
      !renderer.capabilities.reversedDepthBuffer){
     const cells=capeWetCells(T,cover);
@@ -1173,6 +1242,7 @@ export class World {
    const m=new THREE.Mesh(g,rockGroups.has(key)?eastMaterial:material);
    if(boundedStone)stoneOwners.push({mesh:m,stock:material,authored:boundedStone});
    m.name='shore-to-sea surface';if(legacyCulling.has(key))m.userData.stockCull=legacyCulling.get(key);
+   if(key==='-4,2')this.bordenShore=m;
    this.shoreFaces.push(m);this.scene.add(m);
    const remove=cuts.get(key);
    if(remove){
