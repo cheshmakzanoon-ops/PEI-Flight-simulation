@@ -10,6 +10,18 @@ const out=process.env.SMOKE_OUTPUT??'artifacts/smoke';
 const site='north-rustico-harbour-low',grade='north-rustico-2020-dry-ground';
 const asset='/world/rustico/v1/lighthouse-ground.g11.gz';
 const extract=[302,433];
+const observedPath=(p)=>p===asset||/^\/world\/(?:cover|roads|sidewalks|parking)[./]/u.test(p)||
+ /^\/world\/buildings\/index\.json$/u.test(p)||/^\/assets\/mount-[^/]+\.js$/u.test(p);
+async function boundedObservation(page) {
+ let timer;
+ try {
+  return await Promise.race([
+   page.evaluate(()=>({clock:performance.now(),ticks:window.rusticoSmoke?.readyTicks??0,
+    transitions:window.rusticoSmoke?.readyTransitions??[] })).catch(()=>null),
+   new Promise(resolve=>{timer=setTimeout(()=>resolve(null),1800);}),
+  ]);
+ }finally{clearTimeout(timer);}
+}
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE,
  args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage']});
@@ -17,20 +29,39 @@ const receipts=[];
 try{
  for(const mode of ['standard','stock','corrupt']){
   const page=await browser.newPage({viewport:{width:840,height:560}});
-  const errors=[],requests=[];
+  const errors=[],requests=[],network=[],tracked=new Map();
+  const zero=performance.now();
   page.on('pageerror',e=>errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error'||/WebGL.*INVALID/.test(m.text()))errors.push(m.text());});
-  page.on('request',r=>{if(new URL(r.url()).pathname.endsWith(asset))requests.push(asset);});
+  page.on('request',r=>{
+   const p=new URL(r.url()).pathname;
+   if(p.endsWith(asset))requests.push(asset);
+   if(!observedPath(p)||network.length>=48)return;
+   const row={path:p,startedMs:performance.now()-zero};network.push(row);tracked.set(r,row);
+  });
+  page.on('response',r=>{const n=tracked.get(r.request());if(n){n.responseMs=performance.now()-zero;n.status=r.status();}});
+  page.on('requestfinished',r=>{const n=tracked.get(r);if(n){n.finishedMs=performance.now()-zero;tracked.delete(r);}});
+  page.on('requestfailed',r=>{const n=tracked.get(r);if(n){n.failedMs=performance.now()-zero;n.error=r.failure()?.errorText;tracked.delete(r);}});
   if(mode==='corrupt')await page.route('**'+asset,r=>r.fulfill({status:200,body:Buffer.alloc(3201)}));
   await page.addInitScript(({grade,extract,mode})=>{
    const raf=window.requestAnimationFrame.bind(window);
-   const q=window.rusticoSmoke={active:false,origin:null,frames:{}};
+   const q=window.rusticoSmoke={active:false,origin:null,frames:{},readyTicks:0,readyTransitions:[]};
+   let lastState;
    const wanted=mode==='corrupt'?[160]:extract;let clock;
    window.requestAnimationFrame=cb=>raf(t=>{
     if(clock!==undefined)t=q.active?clock+99.999:Math.max(clock,t);
     clock=t;
     const previous=window.islandAirDiagnostics;cb(t);
     const d=window.islandAirDiagnostics;
+    if(!q.active&&d&&d!==previous&&d.mode==='dispatch'){
+     q.readyTicks++;
+     const status={controller:d.northRusticoLighthouse??null,roads:!!d.roads,buildings:!!d.buildings,
+      layerWarnings:d.layerWarnings??[]};
+     const key=JSON.stringify(status);
+     if(key!==lastState&&q.readyTransitions.length<32){
+      lastState=key;q.readyTransitions.push({atMs:performance.now(),...status});
+     }
+    }
     if(!q.active||!d||d===previous||d.mode!=='flight'||d.camera!=='Chase')return;
     const metres=Math.hypot(d.x-q.origin[0],d.z-q.origin[1]);
     const at=wanted.find(x=>metres>=x&&!q.frames[x]);if(at===undefined)return;
@@ -47,7 +78,23 @@ try{
   if(mode==='stock')url.searchParams.set('stockRusticoLighthouse','');
   assert((await page.goto(url.href,{waitUntil:'domcontentloaded'})).ok());
   await page.waitForFunction(site=>window.islandAirDiagnostics?.mode==='dispatch'&&window.islandAirDiagnostics.site===site,site,{timeout:65000});
-  if(mode!=='stock')await page.waitForFunction(phase=>window.islandAirDiagnostics.northRusticoLighthouse?.phase===phase,mode==='standard'?'ready':'held',{timeout:22000});
+  const expected=mode==='standard'?'ready':mode==='corrupt'?'held':null;
+  if(expected!==null){
+   let issue,phase;
+   try{
+    const result=await page.waitForFunction(()=>{
+     const p=window.islandAirDiagnostics?.northRusticoLighthouse?.phase;
+     return p==='ready'||p==='held'?p:null;
+    },null,{timeout:22000,polling:200});
+    phase=await result.jsonValue();await result.dispose();
+    assert.equal(phase,expected,`Rustico ${mode} resolved ${phase}; expected ${expected}`);
+   }catch(error){issue=error;}
+   const pageState=await boundedObservation(page);
+   const readiness={mode,site,expected,phase:phase??null,elapsedMs:performance.now()-zero,pageState,network,errors,
+    fault:issue?.message??null};
+   await writeFile(join(out,`rustico-readiness-${mode}.json`),JSON.stringify(readiness,null,2)+'\n');
+   if(issue){console.error(JSON.stringify(readiness));throw issue;}
+  }
   const initial=await page.evaluate(grade=>{
    const d=window.islandAirDiagnostics;return [d.localGroundGrades.includes(grade),!!d.northRusticoLighthouse?.visible];
   },grade);
