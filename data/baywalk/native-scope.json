@@ -15,9 +15,8 @@
     -63.78637,
     46.39061
   ],
-  "nativeCRS": "EPSG:3979",
   "withheldFlag": "Excluded before model fit or scoring.",
-  "retainedCellPhase": "(native E*7 + native N*3) mod 5 == 0; separate from trained stable class2 input.",
+  "retainedCellPhase": "Historical grid CRS unverified. Recorded rule: (E*7 + N*3) mod 5 == 0; separate from trained stable class2 input.",
   "interest": "Court, one wooden connector and exact existing paved NRN alignment only. No occupancy, new street network, tide or bathymetry.",
   "inputField": {
     "dimensions": [
@@ -86,5 +85,9 @@
     ],
     "transferBytes": 38408,
     "decodedSha256": "cddf1eb27ace32d619de4e4bd05c582c117fb3a3eca191b6903dc1cd3c108a13"
-  }
+  },
+  "archiveHorizontalCRS": "EPSG:2961",
+  "archiveHorizontalWktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40",
+  "historicalReceiptCRS": "EPSG:3979",
+  "historicalWorkingCRS": "unverified"
 }

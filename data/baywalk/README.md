@@ -9,3 +9,23 @@ The modern mapped shoreline alone is not sufficient. The complete stock-water/ma
 The northern wood way (OSM **1455214026**) and separately mapped sidewalk node anchor the short connector; published PEI Trails FID 156 independently corroborates the boardwalk's gross path. The rendered deck joins the actual existing Spinnakers’ Landing perimeter, not the nominal centreline endpoint. This 2020 point survey supports the descending grade, but the modeled width, rails, visible timber supports and finish are interpretations. The paved row uses the project's already licensed NRN data, pinned decoded record **2803**, segments 2 and 3. Transition pads meet the existing rendered road sections; no other road lengths, lanes, lines, markings or traffic are inferred.
 
 Development flag: `?spinnakersPreview&northBaywalkPreview`. The court requires the pinned decoded land, elevation and road data, the exact 20,163-byte waterfront building tile and its two registered records, and a compatible deck. An unrelated tile change does not alter those local checks. Baseline and ordinary Spinnakers’ preview remain unchanged when not enabled. Do not use this model for navigation, access, tides, construction, or accessibility conclusions.
+
+
+## Shore-join source check
+
+The pinned archive declares **EPSG:2961 (NAD83(CSRS) / UTM zone 20N)**
+in its [horizontal LAS WKT](survey-archive-horizontal.wkt). The original
+receipt listed EPSG:3979. The historical working/reprojection CRS and
+held-cell grid could not be recovered. Correcting the archive metadata
+does not revalidate the historical score or change the frozen court pack.
+
+A [new bounded check](shore-shoulder-source-check.json) reviewed class-2
+ground and class-9 water in two 12 × 12 m windows centred on the model's
+shore intersections. Withheld and overlap returns were excluded. Near
+these joins, selected ground returns on still-dry stock terrain sit about
+0.74 m below existing game contact on the east side (22 observations)
+and 0.59 m above it on the west (7 observations), as median differences
+after the game's existing 0.12 m lift. These are local comparisons,
+not new grade, a vertical datum correction, or a common render/contact
+surface. The survey is from 2020. No raw returns are included here, and
+the playable route is unchanged.

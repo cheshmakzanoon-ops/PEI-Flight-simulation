@@ -1,0 +1,101 @@
+{
+  "scope": "Public 2020 point observations near two modeled shoreline transitions. No grade/ramp/contact or present-day claim.",
+  "etag": "\"714f958610824492ff993da8801aba8f-3\"",
+  "windows": {
+    "east": {
+      "worldCentre": [
+        -45043.89349358173,
+        12284.985393278914
+      ],
+      "qualifiedRawCount": 965,
+      "classCountsWithoutWithheldOrOverlap": {
+        "2": {
+          "count": 965,
+          "nearestDistanceM": 0.10731196839877168,
+          "nearestObservedHeightM": 0.67,
+          "within2m": 88
+        },
+        "9": {
+          "count": 0,
+          "nearestDistanceM": null,
+          "nearestObservedHeightM": null,
+          "within2m": 0
+        }
+      },
+      "siteScreenWithin2m": {
+        "unchangedOldDry": {
+          "class2Count": 22,
+          "sourceHeightMedianM": 0.626,
+          "medianSourcePlusLiftMinusStockContactM": -0.7382906249811492,
+          "medianSourcePlusLiftMinusNativeVisualM": -0.8085052644569918
+        },
+        "overlappingOldAndCourt": {
+          "class2Count": 21,
+          "sourceHeightMedianM": 1.314,
+          "medianSourcePlusLiftMinusStockContactM": -0.08458597187529104,
+          "medianSourcePlusLiftMinusNativeVisualM": -0.1329064810233329
+        },
+        "restoredDryOnly": {
+          "class2Count": 33,
+          "sourceHeightMedianM": 0.647,
+          "medianSourcePlusLiftMinusStockContactM": -0.7136243135402961,
+          "medianSourcePlusLiftMinusNativeVisualM": -0.7914094909478179
+        }
+      }
+    },
+    "west": {
+      "worldCentre": [
+        -45128.05943194558,
+        12305.12286912982
+      ],
+      "qualifiedRawCount": 834,
+      "classCountsWithoutWithheldOrOverlap": {
+        "2": {
+          "count": 820,
+          "nearestDistanceM": 0.19947551176326814,
+          "nearestObservedHeightM": 1.59,
+          "within2m": 68
+        },
+        "9": {
+          "count": 14,
+          "nearestDistanceM": 5.681468195915647,
+          "nearestObservedHeightM": -0.963,
+          "within2m": 0
+        }
+      },
+      "siteScreenWithin2m": {
+        "unchangedOldDry": {
+          "class2Count": 7,
+          "sourceHeightMedianM": 1.603,
+          "medianSourcePlusLiftMinusStockContactM": 0.589600216807801,
+          "medianSourcePlusLiftMinusNativeVisualM": 0.6029999952316283
+        },
+        "overlappingOldAndCourt": {
+          "class2Count": 34,
+          "sourceHeightMedianM": 1.6095000000000002,
+          "medianSourcePlusLiftMinusStockContactM": 0.5578577787629848,
+          "medianSourcePlusLiftMinusNativeVisualM": 0.6094999952316285
+        },
+        "restoredDryOnly": {
+          "class2Count": 13,
+          "sourceHeightMedianM": 0.8180000000000001,
+          "medianSourcePlusLiftMinusStockContactM": -0.2516424924410622,
+          "medianSourcePlusLiftMinusNativeVisualM": -0.18200000476837153
+        }
+      }
+    }
+  },
+  "archiveHorizontalCRS": "EPSG:2961",
+  "historicalReceiptCRS": "EPSG:3979",
+  "wktSHA256": "6f15a566bdf98f65f06c99fc8877fe2a4b7fe4a2ebeb17238b8923a8ca673a40",
+  "boundedTransfer": {
+    "wire": 1763228,
+    "requests": 15,
+    "requested": 1763228
+  },
+  "siteScreenMethod": "Descriptive only: unwithheld nonoverlap class-2 observations within 2 m, above +0.20 source Z and at least 1.1162 m from observed local class 9; compare source Z plus the existing 0.12 m game lift, not a vertical datum correction. Strict signed masks are continuous at source positions.",
+  "objectBytes": 19976902,
+  "officialSingleObject": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_339000_704000.copc.laz",
+  "windowHalfWidthM": 6,
+  "lasZQuantizationM": 0.001
+}
