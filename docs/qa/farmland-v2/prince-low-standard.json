@@ -1,0 +1,883 @@
+{
+  "method": "Compiled Three r187 Chromium software browser, 4\u00d7 960 \u00d7 640 real selected Prince fields low pass, neutral controls and actual stock aircraft and camera. The matched pair locks the render of the same player state; transit is accelerated between captures.",
+  "scopeMethod": "Project native F32 position/UV/index triangles clipped by the complete bilinear signed 4 m source footprint, tested as closed pixel squares; no expansion. Actual rendered PNGs/RGBA, identical triangle and draw counts and exact restore.",
+  "sourceRanges": {
+    "-51:4": {
+      "pack": 12,
+      "offset": 26755,
+      "bytes": 1431
+    },
+    "-51:5": {
+      "pack": 12,
+      "offset": 28186,
+      "bytes": 1257
+    }
+  },
+  "requests": [
+    {
+      "path": "/world/fields-province/v2/index.fcr.gz",
+      "range": null
+    },
+    {
+      "path": "/world/fields-province/v2/crop-12.pack",
+      "range": "bytes=28186-29442"
+    },
+    {
+      "path": "/world/fields-province/v2/crop-12.pack",
+      "range": "bytes=26755-28185"
+    }
+  ],
+  "frames": {
+    "1": {
+      "stock": {
+        "calls": 206,
+        "tris": 327730,
+        "gl": 0,
+        "sha": "f7518188ba2a41cc89e824d4f87d1d145630c492e2440482579ebb77d553b71d"
+      },
+      "live": {
+        "calls": 206,
+        "tris": 327730,
+        "gl": 0,
+        "sha": "23908faa14a8d490eb2c38271d829d9194eeac12456c057124efbceb96040a85"
+      },
+      "restored": {
+        "calls": 206,
+        "tris": 327730,
+        "gl": 0,
+        "sha": "f7518188ba2a41cc89e824d4f87d1d145630c492e2440482579ebb77d553b71d"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -51489.336823625315,
+          76.62023040549786,
+          5368.051121347411
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8713080418185799,
+          -0.05612318110692945,
+          0.4875166507973964,
+          0,
+          0,
+          0.9934387745042678,
+          0.11436521023221395,
+          0,
+          -0.49073648352478516,
+          -0.09964732737960055,
+          0.8655911932799634,
+          0,
+          47497.371773001585,
+          -2430.9509359449503,
+          20446.608575559552,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -51497.58119654853,
+        5353.413146244859,
+        72.42023040549786,
+        10.460970996491705
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 198023,
+      "strong": 148803,
+      "alpha": 0,
+      "projectedSupportPixels": 222771,
+      "outsidePhysicalSupport": 0
+    },
+    "10": {
+      "stock": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "b6c5887269f56a047baf45cf3e232da7d45066d07548480fa61c94f5bac3a551"
+      },
+      "live": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "12052ca05bcc5c22dcd34309718ca261701ea19d3c7a8db9434a656931708054"
+      },
+      "restored": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "b6c5887269f56a047baf45cf3e232da7d45066d07548480fa61c94f5bac3a551"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -51508.27199733134,
+          76.8097077586029,
+          5332.008085360204
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8724063461299918,
+          -0.05152653664227101,
+          0.48605779826453754,
+          0,
+          -1.3877787807814457e-17,
+          0.994427958115519,
+          0.10541838605385552,
+          0,
+          -0.48878130818610194,
+          -0.09196766899216498,
+          0.8675452614290683,
+          0,
+          47542.32925588285,
+          -2240.052230642438,
+          20402.1417756529,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -51518.842610945394,
+        5312.94214649167,
+        72.64118715233265,
+        11.440075293327022
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 190443,
+      "strong": 157175,
+      "alpha": 0,
+      "projectedSupportPixels": 202485,
+      "outsidePhysicalSupport": 0
+    },
+    "20": {
+      "stock": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "09aa7e32acf924d1a9d972f201f2415424c27b8e43237887d4ea52bc007996f3"
+      },
+      "live": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "97359375504ef1cd1912dae01d33e5b04d977aaf7c23e43fd7ebbd81c55019d0"
+      },
+      "restored": {
+        "calls": 206,
+        "tris": 333874,
+        "gl": 0,
+        "sha": "09aa7e32acf924d1a9d972f201f2415424c27b8e43237887d4ea52bc007996f3"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -51531.89562235009,
+          77.16783813882033,
+          5287.0411546501155
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8724106984628598,
+          -0.051500330434024966,
+          0.48605276377439866,
+          0,
+          1.3877787807814457e-17,
+          0.9944334629374187,
+          0.10536644527691567,
+          0,
+          -0.4887735397988982,
+          -0.09192281411858269,
+          0.867554391976074,
+          0,
+          47541.14287323043,
+          -2244.648231654296,
+          20452.293614707745,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -51542.470890956094,
+        5267.966403625827,
+        73.00446103934614,
+        12.12
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 141166,
+      "strong": 115343,
+      "alpha": 0,
+      "projectedSupportPixels": 157391,
+      "outsidePhysicalSupport": 0
+    },
+    "40": {
+      "stock": {
+        "calls": 206,
+        "tris": 337186,
+        "gl": 0,
+        "sha": "5bc629992c3805d0440a9c5d6383f1fb79c7098a91711fcc24bca771283f035d"
+      },
+      "live": {
+        "calls": 206,
+        "tris": 337186,
+        "gl": 0,
+        "sha": "6ae989b8b39035ea7cc8eb5c7e7195593fe6de971c722286193922ceea2be715"
+      },
+      "restored": {
+        "calls": 206,
+        "tris": 337186,
+        "gl": 0,
+        "sha": "5bc629992c3805d0440a9c5d6383f1fb79c7098a91711fcc24bca771283f035d"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -51579.162685293515,
+          77.90926642079211,
+          5197.071021363932
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8724106765792989,
+          -0.05151491812572106,
+          0.48605125717453923,
+          0,
+          -6.938893903907228e-18,
+          0.9944303010595882,
+          0.10539628235633806,
+          0,
+          -0.4887735788588105,
+          -0.09194884199943572,
+          0.8675516117583512,
+          0,
+          47538.40321836611,
+          -2256.707015785064,
+          20553.178179148235,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -51589.7387138376,
+        5177.994920561789,
+        73.7456529087735,
+        12.396979944331514
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 5043,
+      "strong": 0,
+      "alpha": 0,
+      "projectedSupportPixels": 17843,
+      "outsidePhysicalSupport": 0
+    },
+    "180": {
+      "stock": {
+        "calls": 203,
+        "tris": 324640,
+        "gl": 0,
+        "sha": "9c9e55263a4244af44656587f6b72bee171f7971725299bd05f9403c613fba17"
+      },
+      "live": {
+        "calls": 203,
+        "tris": 324640,
+        "gl": 0,
+        "sha": "9c9e55263a4244af44656587f6b72bee171f7971725299bd05f9403c613fba17"
+      },
+      "restored": {
+        "calls": 203,
+        "tris": 324640,
+        "gl": 0,
+        "sha": "9c9e55263a4244af44656587f6b72bee171f7971725299bd05f9403c613fba17"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -51910.38536147777,
+          83.1637821925709,
+          4566.652911194165
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8724105488118882,
+          -0.05150149363994608,
+          0.4860529091308834,
+          0,
+          6.938893903907228e-18,
+          0.9944332168763872,
+          0.1053687675399127,
+          0,
+          -0.4887738069104565,
+          -0.09192482431712748,
+          0.8675540284919003,
+          0,
+          47519.22811048652,
+          -2336.3744424158403,
+          21260.61282398714,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -51920.96508173475,
+        4547.570255715018,
+        79.00139519074868,
+        12.355253462030413
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "projectedSupportPixels": 0,
+      "outsidePhysicalSupport": 0
+    },
+    "220": {
+      "stock": {
+        "calls": 202,
+        "tris": 326356,
+        "gl": 0,
+        "sha": "e982a38645170ca1302d9c53e8baff94db0e6e4710242f6894d7bd8c146c3b57"
+      },
+      "live": {
+        "calls": 202,
+        "tris": 326356,
+        "gl": 0,
+        "sha": "e982a38645170ca1302d9c53e8baff94db0e6e4710242f6894d7bd8c146c3b57"
+      },
+      "restored": {
+        "calls": 202,
+        "tris": 326356,
+        "gl": 0,
+        "sha": "e982a38645170ca1302d9c53e8baff94db0e6e4710242f6894d7bd8c146c3b57"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -52005.09654779653,
+          84.69328144214263,
+          4386.3982708722915
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.872410528637477,
+          -0.05149911368509023,
+          0.4860531975125028,
+          0,
+          0,
+          0.9944337336242638,
+          0.10536389054181124,
+          0,
+          -0.488773842919686,
+          -0.0919205674468828,
+          0.867554459246084,
+          0,
+          47513.75051053672,
+          -2359.238017289861,
+          21462.88047044286,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -52015.67685096477,
+        4367.314580427776,
+        80.5310895550602,
+        11.12
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": true,
+        "restored": true
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "projectedSupportPixels": 0,
+      "outsidePhysicalSupport": 0
+    },
+    "260": {
+      "stock": {
+        "calls": 204,
+        "tris": 323951,
+        "gl": 0,
+        "sha": "246a142d56b9f4f04a57f60d1cdd648f35a20c978871b7e2aceddc4fb897829e"
+      },
+      "live": {
+        "calls": 204,
+        "tris": 323951,
+        "gl": 0,
+        "sha": "246a142d56b9f4f04a57f60d1cdd648f35a20c978871b7e2aceddc4fb897829e"
+      },
+      "restored": {
+        "calls": 204,
+        "tris": 323951,
+        "gl": 0,
+        "sha": "246a142d56b9f4f04a57f60d1cdd648f35a20c978871b7e2aceddc4fb897829e"
+      },
+      "bound": false,
+      "terrain": {
+        "id": "7-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -51790.76208422366,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "153229c9852ae460f72c87cf63f62093ab63c7f0335a9943e84342d7f90d9307",
+        "uv": "afa97ce1785a6c57e602287961e62fb9bd2697e6cd26ca8177702a84c1cd12d5",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          -52099.828634379955,
+          86.22937683435967,
+          4206.106521899855
+        ],
+        "proj": [
+          1.33712647217268,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          0.8724105128339843,
+          -0.05149738563117136,
+          0.4860534089684989,
+          0,
+          0,
+          0.9944341088599842,
+          0.10536034897364913,
+          0,
+          -0.48877387112727744,
+          -0.09191747608046878,
+          0.867554770890145,
+          0,
+          47508.2731845648,
+          -2382.139704393803,
+          21665.18637723357,
+          1
+        ],
+        "near": 0.08
+      },
+      "height": 640,
+      "width": 960,
+      "flight": [
+        -52110.40939421871,
+        4187.022020631797,
+        82.0673193788783,
+        14.12
+      ],
+      "sharedAerial": {
+        "selectors": [
+          "orthoSharedRows",
+          "orthoRowsGain"
+        ],
+        "kept": false,
+        "restored": true
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "projectedSupportPixels": 0,
+      "outsidePhysicalSupport": 0
+    }
+  },
+  "late": "n180 and n220 actual signed support projects outside the camera; n260 is also physically more than 362.79 m from the two signed supports and no authored draw is bound. At n40 all 5043 changes are at most two RGB codes.",
+  "compiledUnmodifiedPlayerControls": {
+    "normal": {
+      "site": "prince-fields",
+      "fieldRequests": 3,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": true,
+      "expandedOptionStillSelected": false
+    },
+    "early": {
+      "site": "prince-fields",
+      "fieldRequests": 2,
+      "normalRAFFramesChecked": 20,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false,
+      "authenticatedResponseOfferedAfterBeginAtFrame": 10
+    },
+    "bad": {
+      "site": "prince-fields",
+      "fieldRequests": 2,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false
+    },
+    "stock": {
+      "site": "prince-fields",
+      "fieldRequests": 0,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false
+    },
+    "foreign": {
+      "site": "miscouche-woodlot-pass",
+      "fieldRequests": 0,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false
+    },
+    "noaa": {
+      "site": "prince-fields",
+      "fieldRequests": 0,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false
+    },
+    "detail": {
+      "site": "prince-fields",
+      "fieldRequests": 0,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": false
+    },
+    "expanded": {
+      "site": "prince-fields",
+      "fieldRequests": 4,
+      "normalRAFFramesChecked": 10,
+      "scopedDraw": false,
+      "expandedOptionStillSelected": true
+    }
+  },
+  "separateOldWesternAerialControl": {
+    "mode": "Existing QA-only fixed 840 \u00d7 540 western seam camera, not the Prince field aperture.",
+    "actualDonorEdge": {
+      "edge": "7-12 / 8-12",
+      "resident": true,
+      "gain": 1,
+      "bytes": 10240,
+      "uploads": 1,
+      "errors": 0
+    },
+    "matchedOldSeamPixels": {
+      "changed": 25028,
+      "over2": 19386,
+      "outside": 0,
+      "outsideExact": 0,
+      "mask": 68316
+    },
+    "alphaChanges": 0,
+    "exactOldRepeat": true,
+    "newFieldRequests": 0
+  }
+}

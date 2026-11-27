@@ -43,7 +43,7 @@ jobs:
           ./node_modules/.bin/tsc -p tools/art/souris-st-mary-study/tsconfig.json
           ./node_modules/.bin/vite build tools/art/souris-st-mary-study --config tools/art/souris-st-mary-study/vite.config.ts --outDir /tmp/souris-st-mary-studio-dist --emptyOutDir
       - name: Verify native scenery ownership and frame gates
-        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs tools/qa/scenery-frame-invariant.test.mjs tools/qa/indian-river-terrain-lens.test.ts tools/qa/indian-river-shadow-preflight.test.mjs tools/qa/kings-ridge-flight-lens.test.ts tools/qa/prince-landscape-world.test.ts tools/qa/bowley-standard-world.test.ts tools/qa/cavendish-standard-world.test.mjs
+        run: node --disable-warning=ExperimentalWarning --experimental-transform-types --test tools/qa/scenery-owner-preflight.test.mjs tools/qa/scenery-frame-invariant.test.mjs tools/qa/indian-river-terrain-lens.test.ts tools/qa/indian-river-shadow-preflight.test.mjs tools/qa/kings-ridge-flight-lens.test.ts tools/qa/prince-landscape-world.test.ts tools/qa/bowley-standard-world.test.ts tools/qa/cavendish-standard-world.test.mjs test/prince-low-standard-field.test.mjs
       - name: Verify the North Cape stand comparison and its stock fallback
         run: node --no-warnings --experimental-transform-types --import ./test/private-stock-loader.mjs --test test/north-cape-stand-private.test.mjs
       - name: Verify the off-map Holman Centre asset

@@ -187,6 +187,14 @@ export function kingsDunesFieldPassRequested(q:URLSearchParams){
   q.getAll('departure').length<=1&&modes.length<=1&&modes.every(v=>!v||v==='standard');
 }
 
+/** Close Prince low-pass optics. The old three route flags and broad
+ * review still stand on their original contracts and schedule. */
+export function standardPrinceLowFieldRequested(q:URLSearchParams){
+ const modes=q.getAll('scenery');
+ return !q.has('stockPrinceLowFieldPass')&&!q.has('qa')&&standardComparisonQuery(q)&&
+  q.getAll('departure').length<=1&&modes.length<=1&&modes.every(v=>!v||v==='standard');
+}
+
 /** Regional canopy fill keeps the standard billboards and unaltered ground. */
 export function regionalCanopyRequested(q:URLSearchParams){
  return q.has('regionalCanopyStudy')&&!q.has('stockRegionalCanopy')&&!sceneryReviewBlock('regionalCanopyStudy',q);
@@ -327,7 +335,7 @@ export function standardDuneGrassRequested(q:URLSearchParams){
 // Comparison switches exempt only their owning feature. The flag itself
 // cannot move another Standard layer onto its historical reference path.
 const STANDARD_COMPARISON_KEYS=new Set(['departure','scenery','diagnostics','qa',
- 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','stockOlearyIndustrial','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','capeTryonSkySeatReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockIndianRiver','stockCavendishWater','stockKingsRidge','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass','stockKingsDunesFieldPass']);
+ 'stockSpinnakersDeck','stockStationExterior','stockCanopyLight','stockRegionalCanopy','stockOpenRipples','stockForestFloor','stockTracadieOrtho','stockCountyOrtho','stockInlandOrtho','stockConfederationTrail','stockCoastalMarsh','stockPrinceSurveyRoof','stockPrinceRoofContact','stockSourisShoreline','stockRegionalWind','stockEastPointPhaseII','stockRegionalWindLight','stockRegionalWindRotorLight','stockWoodlandVolumeCull','basilicaExteriorStudy','stockBasilicaExterior','basilicaYardSun','stockBasilicaSun','seacowExteriorStudy','stockSeacowExterior','sourisKnightExterior','stockSourisKnight','dalvayWaterOptics','stockDalvayWaterOptics','dalvayExteriorStudy','stockDalvayExterior','dalvayGlazingStudy','stockDalvayGlazing','olearyExteriorStudy','stockOlearyExterior','stockOlearyIndustrial','olearyWarehouseStudy','stockOlearyWarehouse','summersideTerminalWallPreview','stockSummersideTerminalWalls','stockRusticoHarbourRoof','stockRusticoLighthouse','stockGreenGablesHouse','stockFoundersWestWall','olearyAccessRoofReview','stockOlearyAccessRoof','sourisWestWallReview','stockSourisWestFacing','stockGeorgetownSchoolWalls','capeTryonRockReview','stockCapeTryonRock','capeTryonWaterReview','capeTryonSkySeatReview','runway03PavementReview','stockRunway03Pavement','stockSummersideRunwayPavement','stockAircraftRunwayCast','stockBordenCoast','stockIndianRiver','stockCavendishWater','stockKingsRidge','stockKingsFieldPass','stockQueensFieldPass','stockPrinceFieldPass','stockKingsDunesFieldPass','stockPrinceLowFieldPass']);
 /** Standard changes only the existing CYYG 03/21 asphalt; old exact replays stay stock. */
 export function runway03PavementRequested(q:URLSearchParams){
  return q.getAll('scenery').every(v=>!v||v==='standard')&&standardComparisonQuery(q)&&!q.has('qa')&&

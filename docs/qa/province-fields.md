@@ -14,7 +14,26 @@ Choose **Queens County · fields low pass** in Standard Dispatch. This route use
 
 ## Fly the mapped Prince County pass
 
-Choose **Prince County · mapped farmland pass** in Standard Dispatch, not the earlier **Prince County · fields low pass** comparison. The newer route starts 62 m above a separate inland field and keeps signed field support in view over successive close checkpoints. Only one original near terrain draw, `9-13`, receives the treatment and only four signed ranges from `crop-14.pack` are authorized. Compare the identical flight with `?departure=prince-mapped-farmland-pass&stockPrinceFieldPass`. The underlying terrain, aircraft and nearby scenery are unchanged. The [matched native replay](farmland-v2/prince-standard-native.json) records the four close snapshots, the stock and missing-index controls, and the Government of PEI county checks along the departure.
+Choose **Prince County · mapped farmland pass** in Standard Dispatch, which is separate from the earlier **Prince County · fields low pass**. The newer route starts 62 m above a separate inland field and keeps signed field support in view over successive close checkpoints. Only one original near terrain draw, `9-13`, receives the treatment and only four signed ranges from `crop-14.pack` are authorized. Compare the identical flight with `?departure=prince-mapped-farmland-pass&stockPrinceFieldPass`. The underlying terrain, aircraft and nearby scenery are unchanged. The [matched native replay](farmland-v2/prince-standard-native.json) records the four close snapshots, the stock and missing-index controls, and the Government of PEI county checks along the departure.
+
+## Fly the original Prince County fields low pass
+
+Choose **Prince County · fields low pass** and wait for **Mapped field detail
+ready** before **Begin flight**. This is the older departure, not the separate
+mapped farmland pass. The new material shows the signed field interiors from
+the first view without changing terrain, contact, nearby roads or the flight
+path. Starting before readiness keeps the original appearance for that flight.
+Use `?departure=prince-fields&stockPrinceLowFieldPass` for the direct comparison.
+
+![Matched Prince County low pass: original aerial texture at left and close worked-soil detail at right](farmland-v2/prince-low-standard.webp)
+
+The same native Chase poses changed 148,803, 157,175 and 115,343 pixels by
+more than two RGB codes in the first three samples, with no change outside
+the signed projected field support, no alpha change, and byte-identical
+restoration. The later away-facing and out-of-range views stay stock. The pass
+uses only two signed ranges in `crop-12.pack` on original terrain `7-12`;
+it does not replace the underlying aerial image or disable the independent
+western imagery join. See the [native field and imagery receipt](farmland-v2/prince-low-standard.json).
 
 ## Fly inland on the Kings County dry dune pass
 
@@ -22,7 +41,7 @@ Choose **Kings County · dry dune pass** in Standard. The earlier dune and
 wind scenery stays in place. Roughly a minute into a neutral Chase flight,
 close furrows appear on the verified field interiors as you pass inland.
 Use `?departure=kings-sand-dunes&stockKingsDunesFieldPass` to compare the
-original terrain; the other three Standard field routes remain independent.
+original terrain; the other Standard field routes remain independent.
 
 ![Matched Chase flight over inland Kings County: original surface on the left, close furrow relief on the right](farmland-v2/kings-dunes-standard.webp)
 
@@ -92,7 +111,7 @@ The [county census](farmland-v2/county-census.json) assigns sampled points using
 
 ## Streaming and verification
 
-Standard without this optional study does not request its directory or relief image. Selecting the study authenticates a **115,861-byte** index and the shared relief scan at startup. Exact terrain, decoded cover, road, building, walkway, parking and protected-owner identities must match before field streaming is admitted. The new versioned directory does not accept the retired index, whether compressed in transit or already decoded by the host. The historical three-site field mask is not needed for this option. In incompatible survey/adaptive, shadow or North Cape wind modes, the expanded field layer stays out.
+Outside the scoped Standard field routes, the default scenery does not request this study’s directory or relief image. Selecting the study authenticates a **115,861-byte** index and the shared relief scan at startup. Exact terrain, decoded cover, road, building, walkway, parking and protected-owner identities must match before field streaming is admitted. The new versioned directory does not accept the retired index, whether compressed in transit or already decoded by the host. The historical three-site field mask is not needed for this option. In incompatible survey/adaptive, shadow or North Cape wind modes, the expanded field layer stays out.
 
 The 42 packs contain **1,812,413 bytes** across 1,525 sparse 1,024 m tiles. They are not all sent when the feature is selected. At most four tiles occupy the mask array (540,800 bytes), with no increase in terrain triangles. For the cold worst-case four-tile neighbourhood, the measured upper bounds are **14,317 bytes** of exact ranges or **262,747 bytes** if a host returns whole packs. These bytes exclude the index and scan; they are not frame-rate or download-time promises. Edges have two-cell halos; unavailable or corrupt shards do not invent coverage.
 

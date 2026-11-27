@@ -61,8 +61,8 @@ test('the actual frame submits once, restoring the Cape, terrain and Borden leas
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
  const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false)=>{
-  const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
-   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,dunesFields:undefined,
+  const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:field?'kings-sand-dunes':'northcape-wind-low'}],
+   activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,dunesFields:undefined,princeLowFieldSeat:undefined,KINGS_DUNES_MAPPED_PASS:{id:'kings-sand-dunes'},
    f:{},dalvayDefaultFlight:()=>true,lakeFrame:()=>true};
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
