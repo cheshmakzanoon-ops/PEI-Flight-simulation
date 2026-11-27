@@ -73,8 +73,9 @@ OUTER=[
  ('edge-23-17s',23,17,'z',142,176,None),
  ('edge-18-15s',18,15,'z',476,510,None),
 ]
+ADDITIONAL=[('edge-12-16e', 12, 16, 'x', 613, 576, None), ('edge-22-13s', 22, 13, 'z', 73, 107, None), ('edge-13-15e', 13, 15, 'x', 310, 344, None)]
 EXACT_EDGE_VIEWS=set()
-for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER:
+for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
  for suffix,reverse,high,held in [
    ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
@@ -94,7 +95,7 @@ for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTR
    dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
    agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
   INLAND.append(name+suffix)
-  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER:
+  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
    EXACT_EDGE_VIEWS.add(name+suffix)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 
@@ -110,7 +111,29 @@ def stage(repo,root,deps,void):
   ".replaceAll('orthoRowsGain','orthoRowsGain'+suffix).replaceAll('qaOrthoID','qaOrthoID'+suffix):text;")
  p.write_text(s)
  p=root/'src/main.ts';s=p.read_text()
+ w=root/'src/render/world.ts';w.write_text(fixed.once(w.read_text(),
+  'if(skyDiagnostic>.5){gl_FragColor=vec4(1.,0.,1.,1.);return;}',
+  'if(skyDiagnostic>.5){gl_FragColor=skyDiagnostic<1.5?vec4(1.,0.,1.,1.):vec4(0.,1.,0.,1.);return;}'))
+
  s=fixed.after_world_paint(s,'''
+  (window as any).groundEdgeSkyIDs=()=>{
+   const nativeSky=(world as any).sky as THREE.Mesh;
+   const m=(nativeSky.material as THREE.ShaderMaterial).uniforms.skyDiagnostic;
+   const q=(world as any).tiles.filter((t:any)=>t.id===qa.first||t.id===qa.second);
+   const gl=renderer.getContext(),save=()=>{
+     renderer.render(scene,camera);
+     return {image:renderer.domElement.toDataURL('image/png'),
+       draws:renderer.info.render.calls,tris:renderer.info.render.triangles,error:gl.getError()};
+   };
+   const stock=m.value; if(stock!==0)throw Error('Invalid sky test starting point');
+   try{
+    const old=save();m.value=1;const a=save();m.value=2;const b=save();
+    m.value=0;const repeat=save();
+    return {old,a,b,repeat,samples:gl.getParameter(gl.SAMPLES),
+     owners:q.map((p:any)=>({id:p.id,lod:p.lod,grade:p.fine?.userData.localGrade??null,
+       survey:p.fine?.userData.coastalSurvey??null,sz:p.fine?.position.z??null}))};
+   } finally {m.value=stock;}
+  };
   (window as any).seamFrame=()=>{
    const isOwner=(t)=>t.id===qa.first||t.id===qa.second;
    const q=(ortho as any)?.pairs?.find(p=>p.plan.first===qa.first&&p.plan.second===qa.second),u=(world as any).tiles.filter(isOwner)
@@ -176,11 +199,24 @@ def capture(a,browser,url):
    if not a.stock and site!='offsite':
     pg.wait_for_function("edge=>window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge===edge)?.gain===1",arg=edge,polling=250,timeout=120000)
    r=pg.evaluate('window.seamFrame()')
+   if any(site in (r[0],r[0]+'-reciprocal') for r in ADDITIONAL):
+    sky=pg.evaluate('window.groundEdgeSkyIDs()')
+    assert sky['samples']==4 and sky['old']==sky['repeat']
+    assert all( q['error']==0 and [q['draws'],q['tris']]==[sky['old']['draws'],sky['old']['tris']] for q in (sky['a'], sky['b']))
+    def unpack(shot):
+     import io
+     return np.asarray(Image.open(io.BytesIO(base64.b64decode(shot['image'].split(',',1)[1]))).convert('RGBA'))
+    qA,qB=[unpack(sky[x]) for x in ('a','b')]
+    r['stockSkyPixels']=int(np.any(qA[:,:,:3]!=qB[:,:,:3],axis=2).sum())
+
+
+    assert r['stockSkyPixels']==0 and len(sky['owners'])==2 and all(q['lod']==112 and not q['grade'] and not q['survey'] for q in sky['owners']),(site,r['stockSkyPixels'],sky['owners'])
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
             '13-16 / 13-17','14-16 / 15-16','11-11 / 12-11'}
    inlands|={p['first']+' / '+p['second'] for label,p in P.items() if label in EXACT_EDGE_VIEWS}
+   if a.pinned_base:inlands-={P[r[0]]['first']+' / '+P[r[0]]['second'] for r in ADDITIONAL}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')
@@ -231,5 +267,5 @@ p=argparse.ArgumentParser();p.add_argument('--checkout',type=Path,required=True)
 p.add_argument('--deps',type=Path);p.add_argument('--chromium',required=True);p.add_argument('--views')
 p.add_argument('--cohort',choices=['tracadie','counties','inland'],default='tracadie')
 switch=p.add_mutually_exclusive_group();switch.add_argument('--stock',action='store_true');switch.add_argument('--peer-stock',action='store_true')
-p.set_defaults(void_probe=False)
+p.add_argument('--pinned-base',action='store_true');p.set_defaults(void_probe=False)
 fixed.run(p.parse_args())

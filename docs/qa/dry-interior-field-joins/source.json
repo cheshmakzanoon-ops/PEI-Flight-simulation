@@ -1,0 +1,118 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "edge-12-16e",
+      "axis": "x",
+      "owners": [
+        "12-16",
+        "13-16"
+      ],
+      "window": [
+        603,
+        605,
+        621,
+        623
+      ],
+      "donorWireSHA256": [
+        "adaf69a737c54fbe43008e5900da768cb78b00e6709b47d282ef57336540daa4",
+        "38fe57f36c10ef4b4310ccc5633d1b3dcabddb65c237f20350ec63eba30465e9"
+      ],
+      "exactSourceRGBSHA256": "4305eb5cae494c31235c950e3334a527a7c3c2994eab81d465a767b7c2b17091",
+      "coverBox": [
+        1663,
+        2094,
+        2,
+        6
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 33.189,
+      "medianInnerNeighbourStep": 9.072,
+      "filteredDonorAlongSpan": [
+        602,
+        624
+      ],
+      "filteredDonorRGBSHA256": "d995aafb06b70a5636be49667a89907431c28136207bfdb834225ee954d92d68"
+    },
+    {
+      "name": "edge-22-13s",
+      "axis": "z",
+      "owners": [
+        "22-13",
+        "22-14"
+      ],
+      "window": [
+        63,
+        65,
+        81,
+        83
+      ],
+      "donorWireSHA256": [
+        "06da572b3f3898f8b5543cef0bc9e90ba0ee1fda260837b93eed634062163bbb",
+        "b38722b374d874d6e03abcc41732ea25f0c4f85bc786aabdd88f5cb606cad618"
+      ],
+      "exactSourceRGBSHA256": "4bd4654f3a227fd47addcb8ade00b36c5d78ae804d58e9250f286c18870277d3",
+      "coverBox": [
+        2828,
+        1730,
+        6,
+        2
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 29.69,
+      "medianInnerNeighbourStep": 6.024,
+      "filteredDonorAlongSpan": [
+        62,
+        84
+      ],
+      "filteredDonorRGBSHA256": "da77052bbd890ddc43e1082952c856ab9a036ffe519263162439f5f1eb92f375"
+    },
+    {
+      "name": "edge-13-15e",
+      "axis": "x",
+      "owners": [
+        "13-15",
+        "14-15"
+      ],
+      "window": [
+        300,
+        302,
+        318,
+        320
+      ],
+      "donorWireSHA256": [
+        "7e91c374877035781a1faf62c082e7b2e8a474407bc6583c550edf740fbc8e86",
+        "10c9b1f1dc565571bd562f661f4994c590bf25f8eae015738f6a701da846dad4"
+      ],
+      "exactSourceRGBSHA256": "f03e708aa697fbaf6c2747b57f74540055a191122a024018d515f287cac465ce",
+      "coverBox": [
+        1791,
+        1912,
+        2,
+        5
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 53.283,
+      "medianInnerNeighbourStep": 27.296,
+      "filteredDonorAlongSpan": [
+        299,
+        321
+      ],
+      "filteredDonorRGBSHA256": "f47a510a17068956988160e78bfee51b85517bb273f0b3ce07f5e1e2051ded77"
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}

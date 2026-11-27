@@ -1,0 +1,84 @@
+[
+  {
+    "lon": -63.43942771784552,
+    "lat": 46.2058608,
+    "heading": 90,
+    "agl": 63,
+    "targetLL": [
+      -63.438125,
+      46.2058608
+    ],
+    "baseDatumStockMetres": [
+      19,
+      28
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-12-16e",
+    "owners": [
+      "12-16",
+      "13-16"
+    ],
+    "axis": "x"
+  },
+  {
+    "lon": -62.71469629,
+    "lat": 46.36091858459644,
+    "heading": 0,
+    "agl": 63,
+    "targetLL": [
+      -62.71469629,
+      46.36181818
+    ],
+    "baseDatumStockMetres": [
+      31,
+      35
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-22-13s",
+    "owners": [
+      "22-13",
+      "22-14"
+    ],
+    "axis": "z"
+  },
+  {
+    "lon": -63.36005271784552,
+    "lat": 46.28355114,
+    "heading": 90,
+    "agl": 63,
+    "targetLL": [
+      -63.35875,
+      46.28355114
+    ],
+    "baseDatumStockMetres": [
+      40,
+      49
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-13-15e",
+    "owners": [
+      "13-15",
+      "14-15"
+    ],
+    "axis": "x"
+  }
+]

@@ -31,7 +31,7 @@ def cover_axis(a, b, scale):
     return min(math.floor(a*scale), math.floor(a*scale-.5)), max(math.floor(b*scale), math.floor(b*scale-.5)+1)
 
 
-def verify(repo, selected=NAMES):
+def verify(repo, selected=NAMES, guard_donors=False):
     world = repo / 'public/world'
     names = repo / 'src/render/inland-ortho-windows.ts'
     left = names.read_text().split('export const INLAND_ORTHO_WINDOWS=')[1]
@@ -93,6 +93,16 @@ def verify(repo, selected=NAMES):
             donorWireSHA256=[p['nsha'],p['ssha']],exactSourceRGBSHA256=digest(matrix.tobytes()),
             coverBox=p['coverBox'],classes=classes,minimumCoverCode=code,
             medianNativeStep=round(float(np.median(rgb)),3),medianInnerNeighbourStep=round(float(np.median(inner)),3)))
+        if guard_donors:
+            assert lo>=1 and hi<=639
+            a,b=lo-1,hi+1
+            if east:
+                footprint=np.concatenate([first[a:b,-2:],second[a:b,:2]],axis=1)
+            else:
+                footprint=np.concatenate([first[-2:,a:b],second[:2,a:b]],axis=0).transpose(1,0,2)
+            assert footprint.shape==(22,4,3)
+            receipts[-1]['filteredDonorAlongSpan']=[a,b]
+            receipts[-1]['filteredDonorRGBSHA256']=digest(footprint.tobytes())
     return dict(atlas=ATLAS,decodedCover=COVER,windows=receipts,scope='Original source only; no added ground truth or aerial resolution.')
 
 
@@ -100,9 +110,10 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--checkout',type=Path,default=Path.cwd())
     p.add_argument('--out',type=Path)
+    p.add_argument('--guard-donors',action='store_true',help='Also hash the two adjacent along-axis donor rows used by bilinear filtering.')
     p.add_argument('--window',action='append',help='Exact authored window name; repeat to check several')
     args = p.parse_args()
-    report = json.dumps(verify(args.checkout,args.window or NAMES),indent=2)+'\n'
+    report = json.dumps(verify(args.checkout,args.window or NAMES,args.guard_donors),indent=2)+'\n'
     if args.out:
         args.out.write_text(report)
     else:

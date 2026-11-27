@@ -136,9 +136,11 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const base=new T.Texture(),gpu={} as T.WebGLRenderer;
  const legacy=new OrthophotoSeams(gpu,base,'standard'),standard=new OrthophotoSeams(gpu,base,{tracadie:true,counties:true,inland:ids});
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
- assert.equal(standard.diagnostics().length,23);
+ const ink=['edge-12-16e','edge-22-13s','edge-13-15e'];
+ assert.deepEqual(ids.slice(-3),ink);
+ assert.equal(standard.diagnostics().length,23+ink.length);
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
- assert.equal(all.size,standard.diagnostics().length*2-3);
+ assert.equal(all.size,standard.diagnostics().length*2-7);
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
  for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
   assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);
@@ -154,6 +156,32 @@ test('constrained inland windows retain separate source cohorts, historical owne
   assert(a.fragmentShader.includes('smoothstep('+top+'.,'+hi+'.,'+v+')'));
   assert.equal('orthoRowsGain' in fx(legacy,p.first).uniforms,false);
   assert.equal('orthoRowsGain' in fx(new OrthophotoSeams(gpu,base,'study'),p.first).uniforms,false);
+ }
+});
+
+test('new narrow field lanes leave all preexisting owners first and fail to the original sampler',async()=>{
+ const {INLAND_ORTHO_WINDOWS}=await import('../src/render/inland-ortho-windows.ts');
+ const base=new T.Texture(),pairs=[
+  ['12-16','south-central-fields','edge-12-16e'],
+  ['13-16','queens-southwest-fields','edge-12-16e'],
+  ['22-13','kings-central-cropland','edge-22-13s'],
+  ['14-15','edge-14-15s','edge-13-15e'],
+ ] as const;
+ for(const [shared,old,next] of pairs){
+  const picks=INLAND_ORTHO_WINDOWS.filter(p=>p.name===old||p.name===next);
+  assert.deepEqual(picks.map(p=>p.name),[old,next]);
+  assert.equal(picks[0].first===shared?picks[0].nsha:picks[0].ssha,picks[1].first===shared?picks[1].nsha:picks[1].ssha);
+  for(const supported of [true,false]){
+   const r={capabilities:{isWebGL2:true,maxTextures:supported?16:15}} as T.WebGLRenderer;
+   const m=new OrthophotoSeams(r,base,{tracadie:false,counties:false,inland:[old,next]});
+   const a=shader(),before=shader(),after=shader();
+   const peer=(j:number)=>picks[j].first===shared?picks[j].second:picks[j].first;
+   m.bind(shared,a);m.bind(peer(0),before);m.bind(peer(1),after);
+   assert.equal(a.uniforms.orthoRowsGain,before.uniforms.orthoRowsGain);
+   assert.notEqual(a.uniforms.orthoRowsGain,after.uniforms.orthoRowsGain);
+   if(supported)assert.equal(a.uniforms.orthoRowsGainLane2,after.uniforms.orthoRowsGain);
+   else assert.equal(a.uniforms.orthoRowsGainLane2,undefined);
+  }
  }
 });
 

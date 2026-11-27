@@ -1,0 +1,483 @@
+{
+  "scope": "Actual matched 840\u00d7540 player frames; hold one exact camera and scene per comparison.",
+  "regularModelAxis": {
+    "edge-12-16e": {
+      "edge": 13,
+      "exactCanonical": -18279.091796875,
+      "before": -18279.091796875,
+      "after": -18279.091796875,
+      "afterMinusBefore": 0
+    },
+    "edge-22-13s": {
+      "edge": 14,
+      "exactCanonical": 15360.4404296875,
+      "before": 15360.4404296875,
+      "after": 15360.4404296875,
+      "afterMinusBefore": 0
+    },
+    "edge-13-15e": {
+      "edge": 14,
+      "exactCanonical": -12186.0615234375,
+      "before": -12186.0615234375,
+      "after": -12186.0615234375,
+      "afterMinusBefore": 0
+    }
+  },
+  "near": {
+    "edge-12-16e": {
+      "sourceOwners": "12-16 / 13-16",
+      "heightAGLM": 44,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 25004,
+        "over2": 18831,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 67565
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 74,
+        "medianOld": 19.61302375793457,
+        "medianArt": 2.0050830841064453,
+        "oldP90": 29.80682430267334,
+        "artP90": 4.642702722549439
+      },
+      "callsAndTriangles": {
+        "draws": 81,
+        "tris": 337105
+      },
+      "sha256": {
+        "old": "b685f194e17c15851e7412c586a5a4c1e075e813efaf0c7f07682d6132009f67",
+        "art": "c9fb738a76d205f20675c247e4807e33776143908cadef1802b40c802e43dfba",
+        "idA": "23c411a897a967ab127df19fa1c4e9b86a3678b337d792065a39fa67042fe3cc",
+        "idB": "55200145743454bbb491057bf541b27857df006e27b108988d09c22d3e991436"
+      }
+    },
+    "edge-12-16e-reciprocal": {
+      "sourceOwners": "12-16 / 13-16",
+      "heightAGLM": 38,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 30325,
+        "over2": 21727,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 81565
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 69,
+        "medianOld": 19.20279312133789,
+        "medianArt": 1.8655707836151123,
+        "oldP90": 30.0344841003418,
+        "artP90": 4.526469993591308
+      },
+      "callsAndTriangles": {
+        "draws": 31,
+        "tris": 320421
+      },
+      "sha256": {
+        "old": "0b47473553a51c78590b7549147db27d6ad2c4b7d41e58843dff35c408abfb27",
+        "art": "b6b6458e25c84aaea8c8910abf5162e1450bfcbdb989840c5ab386dae4913a5a",
+        "idA": "1a8e06a4a1be217faf29152bc196af7550bfdea15e610ca4f5cf47848640d8f7",
+        "idB": "0940e97a433c5a2c2131028b5ea54282e8f77b123611c98a5d3442060b9dc2e1"
+      }
+    },
+    "edge-22-13s": {
+      "sourceOwners": "22-13 / 22-14",
+      "heightAGLM": 44,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 23990,
+        "over2": 14001,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 67162
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 75,
+        "medianOld": 13.24402141571045,
+        "medianArt": 1.6078698635101318,
+        "oldP90": 20.12931175231934,
+        "artP90": 3.947393703460701
+      },
+      "callsAndTriangles": {
+        "draws": 65,
+        "tris": 341880
+      },
+      "sha256": {
+        "old": "00b5d5b2b6b26db06fea97297c16e1623a69781e416ad170cb4d8986cf596d89",
+        "art": "682b63242360fa39310aa238d82c8b91eaf5dd0529b8174419c9742c3664364d",
+        "idA": "33b39814d4b3cf6ed8256a98f12bb9c11935a9b35d8d19f85bbff1ca4a4eaeb8",
+        "idB": "f8378a2c48a3d42cd990f7215bde5792722a5f15a13570f02f40651223c60960"
+      }
+    },
+    "edge-22-13s-reciprocal": {
+      "sourceOwners": "22-13 / 22-14",
+      "heightAGLM": 38,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 27156,
+        "over2": 17540,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 74872
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 71,
+        "medianOld": 13.302102088928223,
+        "medianArt": 1.5566116571426392,
+        "oldP90": 21.10320472717285,
+        "artP90": 3.7074952125549316
+      },
+      "callsAndTriangles": {
+        "draws": 33,
+        "tris": 335145
+      },
+      "sha256": {
+        "old": "e1db6eb7c4831248c49b2097867448ac174e38b2b1ad54016f4d6fc4fc3a3b70",
+        "art": "e3eca652fdb5ddea23fc95a535828bf883562c659f85da18e73e6eb68688f0f4",
+        "idA": "cd29dfad77803e0d446eb829089f79b6d5b7335fd09c2d7a64f4b7aed2ad302c",
+        "idB": "8a1335910d7a14858a70b4c7681f3e8c4d11388499eb9dcbb09c1a168570a572"
+      }
+    },
+    "edge-13-15e": {
+      "sourceOwners": "13-15 / 14-15",
+      "heightAGLM": 44,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 27364,
+        "over2": 23325,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 71579
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 74,
+        "medianOld": 34.85798454284668,
+        "medianArt": 3.8170955181121826,
+        "oldP90": 46.97157859802247,
+        "artP90": 8.82006893157959
+      },
+      "callsAndTriangles": {
+        "draws": 70,
+        "tris": 316169
+      },
+      "sha256": {
+        "old": "46626d771c1d7baaa1ae401646c2df24e64f5a0cf362d77c632e293ac3143e22",
+        "art": "cebfd46bf6f7432029ca0087bcef3fb9cae59444b728fc5ea9f02e203ee84dab",
+        "idA": "aac7f7abcceca9421ab3d6bda61e81579919d179a13cdcf5e6b6c35521be4720",
+        "idB": "b26b5f69538e312018b667d0eef4bebdb298a4b6201bb6921e0fc5d879962fb8"
+      }
+    },
+    "edge-13-15e-reciprocal": {
+      "sourceOwners": "13-15 / 14-15",
+      "heightAGLM": 38,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 30684,
+        "over2": 25184,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 80485
+      },
+      "markerSky": 0,
+      "stepRGB8": {
+        "samples": 70,
+        "medianOld": 36.97325325012207,
+        "medianArt": 3.9420485496520996,
+        "oldP90": 48.58219528198242,
+        "artP90": 8.585279941558838
+      },
+      "callsAndTriangles": {
+        "draws": 47,
+        "tris": 314549
+      },
+      "sha256": {
+        "old": "a53fe4ee2e78131712dff2f1180adbd96ac34b5139943286f65b3a50f9f0866b",
+        "art": "c0ff2cacc001dbc505946ec3c3945813fbeea4a507f791fca6fc8141da6316ec",
+        "idA": "b73710560d0cf2a6eb216f7b11e4706139004f34e2d7f53f9ef14e5c737faece",
+        "idB": "2425579770b75b99262161d724733bb55b1f97fa208f60ad8c1290f753f7e336"
+      }
+    }
+  },
+  "stockControls": {
+    "edge-12-16e-high": {
+      "sourceOwners": "12-16 / 13-16",
+      "heightAGLM": 550,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 7,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 20,
+        "tris": 294523
+      },
+      "sha256": {
+        "old": "bb6cb4ee0ce540027e340f5ec5b9086cda4e37ce5b180ea325e7811be214b443",
+        "art": "bb6cb4ee0ce540027e340f5ec5b9086cda4e37ce5b180ea325e7811be214b443",
+        "idA": "bb6cb4ee0ce540027e340f5ec5b9086cda4e37ce5b180ea325e7811be214b443",
+        "idB": "bb6cb4ee0ce540027e340f5ec5b9086cda4e37ce5b180ea325e7811be214b443"
+      }
+    },
+    "edge-12-16e-outside": {
+      "sourceOwners": "12-16 / 13-16",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 14,
+        "tris": 288290
+      },
+      "sha256": {
+        "old": "73543f64f16f0fedf71061f9034539c1004d34df1585400635460e554ccc490a",
+        "art": "73543f64f16f0fedf71061f9034539c1004d34df1585400635460e554ccc490a",
+        "idA": "73543f64f16f0fedf71061f9034539c1004d34df1585400635460e554ccc490a",
+        "idB": "73543f64f16f0fedf71061f9034539c1004d34df1585400635460e554ccc490a"
+      }
+    },
+    "edge-12-16e-flipped": {
+      "sourceOwners": "12-16 / 13-16",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 13,
+        "tris": 306500
+      },
+      "sha256": {
+        "old": "31274ae3671092dc054f239e88d86e48e4376d31798bf46472e35bd5886fc471",
+        "art": "31274ae3671092dc054f239e88d86e48e4376d31798bf46472e35bd5886fc471",
+        "idA": "31274ae3671092dc054f239e88d86e48e4376d31798bf46472e35bd5886fc471",
+        "idB": "31274ae3671092dc054f239e88d86e48e4376d31798bf46472e35bd5886fc471"
+      }
+    },
+    "edge-22-13s-high": {
+      "sourceOwners": "22-13 / 22-14",
+      "heightAGLM": 550,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 16,
+        "tris": 321179
+      },
+      "sha256": {
+        "old": "c8678ee5dcd5d8c7c051a77a08679ad632919386e12fdf7b0d6fbc43e03f5ec0",
+        "art": "c8678ee5dcd5d8c7c051a77a08679ad632919386e12fdf7b0d6fbc43e03f5ec0",
+        "idA": "c8678ee5dcd5d8c7c051a77a08679ad632919386e12fdf7b0d6fbc43e03f5ec0",
+        "idB": "c8678ee5dcd5d8c7c051a77a08679ad632919386e12fdf7b0d6fbc43e03f5ec0"
+      }
+    },
+    "edge-22-13s-outside": {
+      "sourceOwners": "22-13 / 22-14",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 13,
+        "tris": 313421
+      },
+      "sha256": {
+        "old": "51970391e88e3c2d225611d6a81df021b307522f6b9d67bba2fdb08ebbcd9c54",
+        "art": "51970391e88e3c2d225611d6a81df021b307522f6b9d67bba2fdb08ebbcd9c54",
+        "idA": "51970391e88e3c2d225611d6a81df021b307522f6b9d67bba2fdb08ebbcd9c54",
+        "idB": "51970391e88e3c2d225611d6a81df021b307522f6b9d67bba2fdb08ebbcd9c54"
+      }
+    },
+    "edge-22-13s-flipped": {
+      "sourceOwners": "22-13 / 22-14",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 13,
+        "tris": 344148
+      },
+      "sha256": {
+        "old": "69975bd6c4656f66a75bc5a3d7c2dcc1f79418bb96efdfd96321dc91524e6a19",
+        "art": "69975bd6c4656f66a75bc5a3d7c2dcc1f79418bb96efdfd96321dc91524e6a19",
+        "idA": "69975bd6c4656f66a75bc5a3d7c2dcc1f79418bb96efdfd96321dc91524e6a19",
+        "idB": "69975bd6c4656f66a75bc5a3d7c2dcc1f79418bb96efdfd96321dc91524e6a19"
+      }
+    },
+    "edge-13-15e-high": {
+      "sourceOwners": "13-15 / 14-15",
+      "heightAGLM": 550,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 18,
+        "tris": 286995
+      },
+      "sha256": {
+        "old": "2edcba5e080410481bc4eb5fe3567342efb0ea07e96903e1e7f3aaefffe5b68e",
+        "art": "2edcba5e080410481bc4eb5fe3567342efb0ea07e96903e1e7f3aaefffe5b68e",
+        "idA": "2edcba5e080410481bc4eb5fe3567342efb0ea07e96903e1e7f3aaefffe5b68e",
+        "idB": "2edcba5e080410481bc4eb5fe3567342efb0ea07e96903e1e7f3aaefffe5b68e"
+      }
+    },
+    "edge-13-15e-outside": {
+      "sourceOwners": "13-15 / 14-15",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 12,
+        "tris": 266754
+      },
+      "sha256": {
+        "old": "3193d1d2516a7cf63088d2ff981945d33fbb66f15797176ea27de9eb39da59d8",
+        "art": "3193d1d2516a7cf63088d2ff981945d33fbb66f15797176ea27de9eb39da59d8",
+        "idA": "3193d1d2516a7cf63088d2ff981945d33fbb66f15797176ea27de9eb39da59d8",
+        "idB": "3193d1d2516a7cf63088d2ff981945d33fbb66f15797176ea27de9eb39da59d8"
+      }
+    },
+    "edge-13-15e-flipped": {
+      "sourceOwners": "13-15 / 14-15",
+      "heightAGLM": 17,
+      "exactRestore": true,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "markerSky": 0,
+      "stepRGB8": null,
+      "callsAndTriangles": {
+        "draws": 12,
+        "tris": 264830
+      },
+      "sha256": {
+        "old": "bf753cfc5caaf91a320cf723c9011bf2a22562d7b0c673b3cf60eabb669b49d3",
+        "art": "bf753cfc5caaf91a320cf723c9011bf2a22562d7b0c673b3cf60eabb669b49d3",
+        "idA": "bf753cfc5caaf91a320cf723c9011bf2a22562d7b0c673b3cf60eabb669b49d3",
+        "idB": "bf753cfc5caaf91a320cf723c9011bf2a22562d7b0c673b3cf60eabb669b49d3"
+      }
+    }
+  },
+  "activeOlderWindows": {
+    "south-central-fields": {
+      "identicalToBaseAllFourFrames": true,
+      "strongRGB8": 21077,
+      "sha256": {
+        "old": "a0dfb75b7d8a0c931aa8fae0f2d98206eda5fec472385a88a02a0f219a695488",
+        "art": "dad85ad7c05efccc26242bae5fda69e6eda1cca3b7dd5faed7f378b6a3bbf8ad",
+        "idA": "28cb78cc25513530fd68fa3f4474ccfbf1e5f53a809fdefae10d9048ee31bb81",
+        "idB": "d08bd53cac1ecf31be5d0e303d97769e4c7d9cdcb3a65bd65508f0b41c69300c"
+      }
+    },
+    "queens-southwest-fields": {
+      "identicalToBaseAllFourFrames": true,
+      "strongRGB8": 21141,
+      "sha256": {
+        "old": "f78f2b01302395f0a1df4ccf6d3f50f6e0efc2e0887128a5c032a08099464fdc",
+        "art": "b90d06e6e144490b37e3d5cf16cbbd5458f40e6a2dde825ce77803fded38a5bf",
+        "idA": "5fc3fdd226d0a55efa759f7303646911d3b0b3c9fd3ccd9d6ef31e704cac892f",
+        "idB": "df067e9f5101318a53534103c2368a3beb4d74e9baab29976312584449110ee1"
+      }
+    },
+    "kings-central-cropland": {
+      "identicalToBaseAllFourFrames": true,
+      "strongRGB8": 18503,
+      "sha256": {
+        "old": "7791e6edc8d565c560fe579e2a7a215ed85020445850f419a92e6cdc0a24a302",
+        "art": "ec9823cf94f7eab20432870bb0eeaea06f4483ebef11da5deb7c19c67087f812",
+        "idA": "d028c34209dffeb4e2ff9cf6d450f6f6f08f851dbe59f313e60416fc747cec75",
+        "idB": "cca2da761e189cebeda31daaa12b85e398445c65fd7870ccd710eeb755720d9b"
+      }
+    },
+    "edge-14-15s": {
+      "identicalToBaseAllFourFrames": true,
+      "strongRGB8": 18996,
+      "sha256": {
+        "old": "a0863efb353c78a6c51e5b778c011dea28f17db1c761393827edf0cb5aee1182",
+        "art": "ba498e393be37d716a7c6696249614adc0a62bd15fe8144b2be8aeb1e4c6da7a",
+        "idA": "671d2c03f19cdd3516325fdb94c268ff3d2345ea23f909d53b77b74ea9cacd13",
+        "idB": "707eec8565aaa15016e171a3ecb525d61fc202b5bca412c314edd5dfd711f6c2"
+      }
+    }
+  }
+}

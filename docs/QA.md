@@ -15,6 +15,8 @@ The deterministic suite includes a continuous 182 km West Prince to East Point s
 
 The [two scoped terrain rim closures](qa/regular-terrain-rim.md) distinguish actual sky gaps from image tile seams and preserve flight contact.
 
+[Three source-licensed field-image joins](qa/dry-interior-field-joins.md) remove hard colour lines without changing the terrain or the four neighbouring active imagery treatments.
+
 ## Release judgement
 
 The province-wide geography, streaming, controls and route-level visual identity pass an exploratory development-build gate. The following remain open for an AAA/photoreal claim:
