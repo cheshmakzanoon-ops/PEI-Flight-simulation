@@ -1,0 +1,56 @@
+{
+  "baseRevision": "f7feb542c6a148e698b86b980ea65df17a286bc3",
+  "historicScope": "principal body and roof only",
+  "playableChanges": false,
+  "note": "Unplaced model; only the upper measured roof is direct surveyed geometry. Local studio adds a ground plane and optional shadow-pass draws.",
+  "studio": [
+    {
+      "phase": "front",
+      "samples": 4,
+      "error": 0,
+      "calls": 5,
+      "triangles": 5106,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "privateOnly": true,
+      "rgbaPNGsha256": "479d554147ba83d2aaa50b56646d60aae919f40a9def52d996d728083b7b9e8e"
+    },
+    {
+      "phase": "oblique",
+      "samples": 4,
+      "error": 0,
+      "calls": 5,
+      "triangles": 5106,
+      "lit": true,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "privateOnly": true,
+      "rgbaPNGsha256": "88525f71a5dc98188ab84b4f0113f0c9191365893695d0b215ab794d4070e567"
+    },
+    {
+      "phase": "mid",
+      "samples": 4,
+      "error": 0,
+      "calls": 5,
+      "triangles": 4058,
+      "lit": true,
+      "bodyTriangles": 1972,
+      "roofTriangles": 56,
+      "privateOnly": true,
+      "rgbaPNGsha256": "9c18798bab2c416bcb366f431e2654a04a53c820af673b391ef9751613a6f3fc"
+    },
+    {
+      "phase": "unshadowed",
+      "samples": 4,
+      "error": 0,
+      "calls": 3,
+      "triangles": 2554,
+      "lit": false,
+      "bodyTriangles": 2464,
+      "roofTriangles": 88,
+      "privateOnly": true,
+      "rgbaPNGsha256": "dc7d0738ff8654bc9296c04d888da4c700950c427ee3c01350be6ae76be942f6"
+    }
+  ]
+}
