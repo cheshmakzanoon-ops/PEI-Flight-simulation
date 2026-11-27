@@ -110,8 +110,7 @@ def stage(repo,root,deps,void):
   ".replaceAll('orthoRowsGain','orthoRowsGain'+suffix).replaceAll('qaOrthoID','qaOrthoID'+suffix):text;")
  p.write_text(s)
  p=root/'src/main.ts';s=p.read_text()
- anchor='}else renderer.render(scene,camera);}finally{endPrince?.();endRidge?.();}'
- s=fixed.once(s,anchor,anchor+'''
+ s=fixed.after_world_paint(s,'''
   (window as any).seamFrame=()=>{
    const isOwner=(t)=>t.id===qa.first||t.id===qa.second;
    const q=(ortho as any)?.pairs?.find(p=>p.plan.first===qa.first&&p.plan.second===qa.second),u=(world as any).tiles.filter(isOwner)
@@ -120,8 +119,11 @@ def stage(repo,root,deps,void):
          .map(([k])=>t.local.uniforms['qaOrthoID'+k.slice('orthoRowsGain'.length)]))
        .filter(Boolean);
    const save=()=>{
-      renderer.render(scene,camera);
-      return {image:renderer.domElement.toDataURL('image/png'),draws:renderer.info.render.calls,tris:renderer.info.render.triangles};
+      const end=(world as any).beginRegularNorthRimDraw?.(camera);
+      try{
+       renderer.render(scene,camera);
+       return {image:renderer.domElement.toDataURL('image/png'),draws:renderer.info.render.calls,tris:renderer.info.render.triangles};
+      }finally{end?.();}
    };
    const gain=q?.gain.value??0;
    if(q)q.gain.value=0;

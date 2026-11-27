@@ -40,6 +40,13 @@ def once(source, before, after):
     return source.replace(before, after)
 
 
+def after_world_paint(text, probe):
+    # The application may add a render lease before this continuation.
+    # Install on the continuation, after all main scene draw cleanup.
+    anchor = "  if(world.tryonRockState==='pending'"
+    return once(text, anchor, '\n' + probe + '\n' + anchor)
+
+
 def stage(repo, root, deps, void_probe):
     for name in ('index.html', 'package.json', 'package-lock.json', 'tsconfig.json'):
         shutil.copy2(repo / name, root / name)

@@ -13,6 +13,8 @@
 
 The deterministic suite includes a continuous 182 km West Prince to East Point simulation, and a short-final flare, touchdown and braking on Charlottetown runway 03. The [matched Summerside Hangar 9 baseline](qa/hangar9.md) separates the existing scenery error from flight behavior and its off-screen control.
 
+The [two scoped terrain rim closures](qa/regular-terrain-rim.md) distinguish actual sky gaps from image tile seams and preserve flight contact.
+
 ## Release judgement
 
 The province-wide geography, streaming, controls and route-level visual identity pass an exploratory development-build gate. The following remain open for an AAA/photoreal claim:

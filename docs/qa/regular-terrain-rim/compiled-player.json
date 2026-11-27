@@ -1,0 +1,48 @@
+{
+  "edge-20-16s": {
+    "actualCompiledPlayer": true,
+    "route": "qa-edge-20-16s",
+    "scope": "Private aircraft placement from signed dry corridor, no real navigation use.",
+    "drawOwnerAtMovingChase": {
+      "source": "verified",
+      "drawnFine": [
+        "20-17"
+      ]
+    },
+    "travelAtWitnessM": 17.199630293218167,
+    "totalTravelM": 151.87147484032965,
+    "witnessPose": [
+      28055.568730369283,
+      71.47442312365887,
+      32991.9623547866,
+      0.959931088596881
+    ],
+    "groundClearanceM": 61.31271960246908,
+    "drawsAtWitness": 199,
+    "cockpitAndPause": true,
+    "errors": []
+  },
+  "edge-20-18s": {
+    "actualCompiledPlayer": true,
+    "route": "qa-edge-20-18s",
+    "scope": "Private aircraft placement from signed dry corridor, no real navigation use.",
+    "drawOwnerAtMovingChase": {
+      "source": "verified",
+      "drawnFine": [
+        "20-19"
+      ]
+    },
+    "travelAtWitnessM": 16.281994516272857,
+    "totalTravelM": 152.76234430780366,
+    "witnessPose": [
+      26520.722705436194,
+      105.52882691123199,
+      44730.42490897226,
+      5.585053606381855
+    ],
+    "groundClearanceM": 63.43642896487183,
+    "drawsAtWitness": 317,
+    "cockpitAndPause": true,
+    "errors": []
+  }
+}

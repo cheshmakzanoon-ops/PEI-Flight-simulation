@@ -28,7 +28,6 @@ def stage(repo,root,deps,void):
            'gl_FragColor=qaPathMarker<.5?qaPathOriginal:vec4(qaPathMarker<1.5?vec3(.97,.02,.62):vec3(.02,.93,.04),'+b+');')
   material.write_text(q)
  main=root/'src/main.ts';s=main.read_text()
- anchor='}else renderer.render(scene,camera);}finally{endPrince?.();endRidge?.();}'
  marker='''
  (window as any).pathAlphaQA=(which:string)=>{
    const group=scene.getObjectByName(which==='walk'?'Mapped PEI sidewalk ribbons':'Main Confederation Trail – mapped stone dust');
@@ -75,7 +74,7 @@ def stage(repo,root,deps,void):
 
  };
  '''
- s=f.once(s,anchor,anchor+'\n'+marker)
+ s=f.after_world_paint(s,marker)
  main.write_text("import {opaqueCoverageBlend} from './render/opaque-coverage-alpha.ts';\n"+s)
 f.stage=stage
 def capture(a,browser,url):

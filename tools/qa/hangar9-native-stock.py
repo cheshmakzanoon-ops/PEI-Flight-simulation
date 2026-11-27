@@ -115,10 +115,8 @@ def prepare(repo,stage,deps,void):
      ('  try{if(datedStandReview){',FRAME+
       "  try{if(!admitHangarFrame){/* Private replay transit. */}else if(datedStandReview){"),
     ]
-    anchor='}else renderer.render(scene,camera);}finally{endPrince?.();endRidge?.();}'
-    instead.append((anchor,anchor+'\n'+DEBUG))
     for old,new in instead:src=fixed.once(src,old,new)
-    main.write_text(src)
+    main.write_text(fixed.after_world_paint(src,DEBUG))
 
 CONTROLLER=r"""
 (last=>{

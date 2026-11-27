@@ -1,0 +1,58 @@
+[
+  {
+    "lon": -62.83470189398629,
+    "lat": 46.20312037327427,
+    "heading": 55,
+    "agl": 63,
+    "targetLL": [
+      -62.83363477,
+      46.20363636
+    ],
+    "baseDatumStockMetres": [
+      7,
+      22
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-20-16s",
+    "owners": [
+      "20-16",
+      "20-17"
+    ],
+    "axis": "z"
+  },
+  {
+    "lon": -62.854377469109984,
+    "lat": 46.09749268994005,
+    "heading": 320,
+    "agl": 63,
+    "targetLL": [
+      -62.85521484,
+      46.09818182
+    ],
+    "baseDatumStockMetres": [
+      39,
+      44
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Virtual private flight QA. Not a real flight clearance.",
+    "name": "edge-20-18s",
+    "owners": [
+      "20-18",
+      "20-19"
+    ],
+    "axis": "z"
+  }
+]

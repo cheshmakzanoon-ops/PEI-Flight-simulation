@@ -8,6 +8,7 @@ import {allowShortOpenArc,allowPanmureOpenArc,allowTryonOpenArc} from '../sim/op
 import {POINT_PRIM} from './point-prim/admit.ts';
 import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
 import {smoothShoreTone} from './shore-tone.ts';
+import {RegularNorthRimDraw} from './regular-z-rim-host.ts';
 import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
 import {kingsRidgeMayDraw} from './kings-ridge-view.ts';
 import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
@@ -655,6 +656,9 @@ export class World {
  readonly trailStrength={value:0};
  readonly rusticoSoilStrength={value:0};
  private readonly grades=new Map<string,BoundedGrade>();
+ private readonly regularNorthRims?:RegularNorthRimDraw;
+ beginRegularNorthRimDraw(camera:THREE.PerspectiveCamera){return this.regularNorthRims?.begin(camera);}
+ get regularNorthRimState(){return this.regularNorthRims?.diagnostics();}
  private princeLandscape?:{terrain:Patch;mesh:THREE.Mesh;lease:PrinceLandscapeLease;seams?:string};
  private princeRejected?:THREE.BufferGeometry;
  get princeLandscapeReady(){return !!this.princeLandscape;}
@@ -734,7 +738,7 @@ export class World {
  /** The actual physical directional light that also supplies regular opaque streets. */
  readonly basilicaDaylight:THREE.DirectionalLight;
  readonly sun=new THREE.Vector3(-.60,.74,-.31).normalize();
- constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false){
+ constructor(readonly scene:THREE.Scene,readonly terrain:Terrain, img:THREE.Texture,readonly renderer:THREE.WebGLRenderer,readonly cover:Cover,sky:THREE.Texture,bench?:EastBenchMask,southLake?:SouthLakeMask,sourisLighting?:SourisLighting,castBuildings=false,showFloor:false|true|'standard'=false,showBasinBank=false,basinSand?:BasinSand,bankGround?:NativeBankSource,montagueOptics=false,legacyShore=false,wharfFacade=false,foamDetail=false,northCapeWind=false,bowley?:BowleyPond,meadow=false,readonly fieldPilot?:FieldPilot,readonly provinceFields?:ProvinceFieldStudy,additionalPonds:readonly BowleyPond[]=[],localGrade?:BoundedGrade|readonly BoundedGrade[],gablesGravel=false,fairway?:GablesFairway,trail=false,rusticoSoil?:BoundedGrade,grassStudy?:ProvinceGrassStudy,churchGroundSun?:ChurchGroundSun,readonly hogPhoto?:HogPhoto,readonly westDuneOptics?:WestDuneOptics,duneSand?:DuneSand,grassCoast?:DuneGrassSurface,aerial?:AerialWorldOptics,orbyClosure=false,readonly orthoSeams?:OrthophotoSeams,shoreTone=false,nearshoreFoam=false,standardMeadow?:ReadonlySet<string>,standardNearshore=false,closeOpenCoast=false,pastureEligible=false,openRipples=false,readonly marsh?:MarshStream,tryonRockTerrainSha?:string,capeWetTerrainSha?:string,runway03Pavement=false,bowleyDefaultCore=false,regularNorthRimTerrainSha?:string){
   this.details=new DetailImagery(pastureEligible?(id,sha,texture)=>{
    orthoSeams?.verifiedDetail(id,sha,texture);
    const image=texture.image as ImageBitmap|undefined;
@@ -974,6 +978,10 @@ export class World {
       sceneShader({uniforms:local.uniforms,vertexShader:vertex,fragmentShader:local.fragmentShader}):local;
     scene.add(coarse);const tile:Patch={id:i+'-'+j,i,j,lod:8,local,status:'idle',coarse,x0,z0,w,d};this.tiles.push(tile);this.byId.set(tile.id,tile);
    }
+   // Capture the already-bound original materials, including ortho fragments.
+   // No shader or geometry change takes place during world construction.
+   if(regularNorthRimTerrainSha)this.regularNorthRims=new RegularNorthRimDraw(
+    scene,renderer,terrain,cover,regularNorthRimTerrainSha,id=>this.byId.get(id),id=>this.grades.has(id));
    if(cover.baywalk){
     const b=cover.baywalk,[uu,vv]=T.uv((b.x0+b.x1)*.5,(b.z0+b.z1)*.5);
     const tile=this.byId.get(Math.floor(uu*nx)+'-'+Math.floor(vv*nz));

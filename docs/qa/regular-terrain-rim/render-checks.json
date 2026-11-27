@@ -1,0 +1,649 @@
+{
+  "baseline": "968150fb493059f25fa67315cb87aafcfa9be446",
+  "browserRenderer": "Chromium/WebGL 2 software, counts not hardware timings.",
+  "runtimeHostSha256": "94d93aa8445227e0116ae0470473fd83643af4fd15c051e0af85f533a0ca5685",
+  "fixedAndFallback": {
+    "clean16": {
+      "pose": {
+        "lon": -62.98221484,
+        "lat": 46.25636364,
+        "first": "18-15",
+        "second": "18-16",
+        "edge": 16,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "pixelGate": {
+        "skyBefore": 0,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "owners": [
+        {
+          "id": "18-15",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "18-16",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "samples": 4,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "view": {
+        "eye": [
+          16749.183000415585,
+          60.60563692839969,
+          27014.784865614896
+        ],
+        "view": [
+          -0.9079593845004543,
+          -0.21107331193731746,
+          0.3620190783444536,
+          0,
+          0,
+          0.8638873975380315,
+          0.5036849852586114,
+          0,
+          -0.41905817746174073,
+          0.4573255091975293,
+          -0.7843746697463302,
+          0,
+          26528.344398248402,
+          -8871.601162349318,
+          15095.663015058934,
+          1
+        ],
+        "projection": [
+          1.2893719553093699,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "W": 840,
+        "H": 540
+      },
+      "trial": {
+        "z": [
+          0,
+          0
+        ],
+        "drawn": [],
+        "calls": 40,
+        "triangles": 310907,
+        "error": 0
+      },
+      "identicalUnconfiguredPngSha256": {
+        "stock": "f161f95672d5bb30fa80aa7f5b5cce884e9d5bdf783c9f9570881843e48aeca1",
+        "beforeA": "f161f95672d5bb30fa80aa7f5b5cce884e9d5bdf783c9f9570881843e48aeca1",
+        "beforeB": "f161f95672d5bb30fa80aa7f5b5cce884e9d5bdf783c9f9570881843e48aeca1"
+      }
+    },
+    "coarse19": {
+      "pose": {
+        "lon": -62.85521484,
+        "lat": 46.09818182,
+        "first": "20-18",
+        "second": "20-19",
+        "edge": 19,
+        "east": 0.99,
+        "south": 0.1,
+        "dist": 10500,
+        "agl": 760,
+        "h": 0
+      },
+      "pixelGate": {
+        "skyBefore": 194324,
+        "skyAfter": 194324,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "owners": [
+        {
+          "id": "20-18",
+          "lod": 56,
+          "seams": "56:8,56,56,8",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-19",
+          "lod": 56,
+          "seams": "56:56,56,8,8",
+          "gainAfter": 0
+        }
+      ],
+      "samples": 4,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "view": {
+        "eye": [
+          36913.4434553428,
+          839.4339230561576,
+          45721.780773413775
+        ],
+        "view": [
+          0.10049870596186837,
+          -0.07549406206547161,
+          0.992068876990325,
+          0,
+          0,
+          0.9971170923513363,
+          0.0758782191463189,
+          0,
+          -0.9949371890224978,
+          -0.007625662834896099,
+          0.10020897747377008,
+          0,
+          41780.546739944635,
+          2298.3907630781837,
+          -41266.10604534398,
+          1
+        ],
+        "projection": [
+          1.2893719553093699,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "W": 840,
+        "H": 540
+      },
+      "trial": {
+        "z": [
+          0,
+          0
+        ],
+        "drawn": [],
+        "calls": 188,
+        "triangles": 420707,
+        "error": 0
+      },
+      "identicalUnconfiguredPngSha256": {
+        "stock": "8b564b94722bc5e4226ce31af3aebfd30be3e149da3e18318d118cd5f2995228",
+        "beforeA": "f2239b09972056027d493f69c84130ab56076acaa4c2f62305bcfb8918d62592",
+        "beforeB": "80a0b3185a07818fe93e40aa20cb80da96e782fe97a84fbf76e2467f8de5a45c"
+      }
+    },
+    "gap17": {
+      "pose": {
+        "lon": -62.83363477,
+        "lat": 46.20363636,
+        "first": "20-16",
+        "second": "20-17",
+        "edge": 17,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "pixelGate": {
+        "skyBefore": 52,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 52,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 52
+      },
+      "owners": [
+        {
+          "id": "20-16",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-17",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "samples": 4,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "view": {
+        "eye": [
+          28154.574468061033,
+          66.24118867497815,
+          32876.00645380942
+        ],
+        "view": [
+          -0.9079593845004544,
+          -0.23160209767004195,
+          0.34924235775803625,
+          0,
+          -2.7755575615628914e-17,
+          0.8333982643493968,
+          0.5526728987198605,
+          0,
+          -0.4190581774617408,
+          0.5018045449517665,
+          -0.7566917751424254,
+          0,
+          39340.16945164671,
+          -10031.876244245006,
+          15007.624004467392,
+          1
+        ],
+        "projection": [
+          1.2893719553093699,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "W": 840,
+        "H": 540
+      },
+      "trial": {
+        "z": [
+          0,
+          0
+        ],
+        "drawn": [
+          "20-17"
+        ],
+        "calls": 40,
+        "triangles": 297399,
+        "error": 0
+      },
+      "identicalUnconfiguredPngSha256": {
+        "stock": "27bc5eba62b24407b7966e455bcf8686bb17abd7b93381746e7e3da180e40e34",
+        "beforeA": "a21c53ddad476833744b92ab11344a32833b16c89b60e5ac38825b1612d540f0",
+        "beforeB": "93a37ac8e10dbaea0c97edd99b15e90740f26b116946a567744732eba01e0334"
+      }
+    },
+    "gap19": {
+      "pose": {
+        "lon": -62.85521484,
+        "lat": 46.09818182,
+        "first": "20-18",
+        "second": "20-19",
+        "edge": 19,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 75,
+        "agl": 44,
+        "h": 0
+      },
+      "pixelGate": {
+        "skyBefore": 72,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 72,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 72
+      },
+      "owners": [
+        {
+          "id": "20-18",
+          "lod": 112,
+          "seams": "112:56,56,112,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-19",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "samples": 4,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "view": {
+        "eye": [
+          26498.032333916206,
+          88.01158289606974,
+          44598.44740697662
+        ],
+        "view": [
+          -0.9079593845004545,
+          -0.22456287316831983,
+          0.35380965517060836,
+          0,
+          -5.5511151231257815e-17,
+          0.8442972221987262,
+          0.535875172579879,
+          0,
+          -0.41905817746174057,
+          0.48655289186470185,
+          -0.7665875862029987,
+          0,
+          42748.481216366614,
+          -15823.33721928949,
+          24766.193241179615,
+          1.0000000000000002
+        ],
+        "projection": [
+          1.2893719553093699,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "W": 840,
+        "H": 540
+      },
+      "trial": {
+        "z": [
+          0,
+          0
+        ],
+        "drawn": [
+          "20-19"
+        ],
+        "calls": 25,
+        "triangles": 308173,
+        "error": 0
+      },
+      "identicalUnconfiguredPngSha256": {
+        "stock": "c8284ffbf72a260324d5bcd1cf5cf635a5f7563ece0299261ebf014dcac42699",
+        "beforeA": "e48c0684bba8da81efef21e01551c8d6948afd76737c51cf089601652fa91ebf",
+        "beforeB": "9e0b34f2b8cc794c2af8a4de885856be007ffa598bcd4a587322ab3002044e5f"
+      }
+    },
+    "mixed17": {
+      "pose": {
+        "lon": -62.83363477,
+        "lat": 46.20363636,
+        "first": "20-16",
+        "second": "20-17",
+        "edge": 17,
+        "east": 0.33,
+        "south": -0.94,
+        "dist": 5600,
+        "agl": 420,
+        "h": 0
+      },
+      "pixelGate": {
+        "skyBefore": 191272,
+        "skyAfter": 191272,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "owners": [
+        {
+          "id": "20-16",
+          "lod": 112,
+          "seams": "112:112,112,56,56",
+          "gainAfter": 0
+        },
+        {
+          "id": "20-17",
+          "lod": 56,
+          "seams": "56:56,56,8,8",
+          "gainAfter": 0
+        }
+      ],
+      "samples": 4,
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "contactExact": true,
+      "contactSamples": 50,
+      "buffersTouched": 0,
+      "view": {
+        "eye": [
+          29978.114331243924,
+          469.1765352668265,
+          27660.251671577356
+        ],
+        "view": [
+          -0.9435449528695717,
+          -0.026688861861434265,
+          0.3301675734636871,
+          0,
+          6.93889390390723e-18,
+          0.9967488328055568,
+          0.08057148565565944,
+          0,
+          -0.33124450473080747,
+          0.07602281863560054,
+          -0.9404773304723196,
+          0,
+          37448.00483947331,
+          -1770.3797078975044,
+          16078.236136032578,
+          1
+        ],
+        "projection": [
+          1.2893719553093699,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "W": 840,
+        "H": 540
+      },
+      "trial": {
+        "z": [
+          0,
+          0
+        ],
+        "drawn": [],
+        "calls": 44,
+        "triangles": 305996,
+        "error": 0
+      },
+      "identicalUnconfiguredPngSha256": {
+        "stock": "2a7adde50a33c7993f4d7cf04acf256125b683a1a0a86192d8d580b4e09d359d",
+        "beforeA": "45bad81024bcc940a8c658a5b9fd972001946b9cb4a431985785382ded52ea6e",
+        "beforeB": "53a80d6b30501c1de50015a1b284158ee97390e85a0ed8339cd4ad4b8fc6231d"
+      }
+    }
+  },
+  "otherSampleCountControl": {
+    "samples": 0,
+    "attributes": {
+      "alpha": true,
+      "antialias": false,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "high-performance",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": false,
+      "xrCompatible": false
+    },
+    "pixelGate": {
+      "skyBefore": 13,
+      "skyAfter": 13,
+      "skyIntroduced": 0,
+      "strongRGB": 0,
+      "strongOutsideStockSky": 0,
+      "alphaChanged": 0,
+      "positiveStrengthOutsideSky": 0,
+      "strongInsideBytes": 0
+    },
+    "owners": [
+      {
+        "id": "20-16",
+        "lod": 112,
+        "seams": "112:56,56,112,56",
+        "gainAfter": 0
+      },
+      {
+        "id": "20-17",
+        "lod": 112,
+        "seams": "112:112,56,56,56",
+        "gainAfter": 0
+      }
+    ],
+    "trial": {
+      "z": [
+        0,
+        0
+      ],
+      "drawn": [],
+      "calls": 40,
+      "triangles": 297399,
+      "error": 0
+    },
+    "contactExact": true,
+    "buffersTouched": 0
+  },
+  "independentFlatTriangleMask": {
+    "edge-20-16s": {
+      "oldSky": 52,
+      "newSky": 0,
+      "oldNew224TriangleMarkerUnionPixels": 87768,
+      "outsideRimTrianglesAndOldSky": 0,
+      "scope": "Separate same-frame native causal test of the identical 111-index raster closure; not the integrated host image."
+    },
+    "edge-20-18s": {
+      "oldSky": 72,
+      "newSky": 0,
+      "oldNew224TriangleMarkerUnionPixels": 100722,
+      "outsideRimTrianglesAndOldSky": 0,
+      "scope": "Separate same-frame native causal test of the identical 111-index raster closure; not the integrated host image."
+    }
+  },
+  "rawBufferRole": "Geometry attributes and contact values are byte/bit-identical across original and corrected draws."
+}
