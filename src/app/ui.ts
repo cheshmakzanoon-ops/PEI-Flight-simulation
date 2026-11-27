@@ -51,7 +51,7 @@ export class UI {
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>
   <div class="scrim" id="scrim"></div>
   <section id="dispatch" class="dispatch panel" aria-labelledby="dispatch-title"><span class="eyebrow"><i></i> CANADA &nbsp; / &nbsp; ATLANTIC</span><h1 id="dispatch-title">Prince Edward<br><em>Island</em></h1><p class="standfirst">Free flight across the province, from red sandstone shores to patchwork farmland.</p>
-  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p><p id="dalvay-water" class="sitenote" role="status" hidden></p><p id="cavendish-freshwater" class="sitenote" role="status" hidden></p><p id="prince-low-field" class="sitenote" role="status" hidden></p>
+  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p><p id="dalvay-water" class="sitenote" role="status" hidden></p><p id="cavendish-freshwater" class="sitenote" role="status" hidden></p><p id="prince-low-field" class="sitenote" role="status" hidden></p><p id="knight-exterior" class="sitenote" role="status" hidden></p>
   <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
   <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div>
   <section class="regional-detail" id="cavendish-package" hidden><div><span class="eyebrow">CAVENDISH DETAIL</span><small id="cavendish-package-info">${cavePack.blocked?'Unavailable with the current terrain or shadow options.':cavePack.active?'House, Barn, lake, slope, turf and trail selected.':'House, Barn, lake, slope, turf and trail'}</small></div><button type="button" id="cavendish-package-switch" aria-label="${cavePack.selected?'Turn off Cavendish detail':'Enable Cavendish detail'}" aria-describedby="cavendish-package-info" ${cavePack.blocked&&!cavePack.selected?'disabled':''}>${cavePack.selected?'Turn off':'Enable'}</button></section>
@@ -179,6 +179,14 @@ export class UI {
   note.textContent=state==='ready'?'Mapped field detail ready. Terrain and flight contact are unchanged.':state==='waiting'?
    'Checking mapped field detail. You can begin now with the original ground appearance.':
    state==='stock'?'This flight will use the original ground appearance.':'';
+ }
+ private knightState='';
+ setKnightExterior(state:'waiting'|'ready'|'stock'|'other'){
+  if(this.knightState===state)return;this.knightState=state;
+  const note=$('knight-exterior');note.hidden=state==='other';
+  note.textContent=state==='ready'?'Knight Point lighthouse ready. Turn east to see it.':state==='waiting'?
+   'Checking the lighthouse. Begin now for the original tower this flight.':
+   state==='stock'?'This flight will use the original tower.':'';
  }
  setIndianRiverStandard(state:'waiting'|'ready'|'stock'){
   if(this.riverState===state)return;this.riverState=state;

@@ -626,6 +626,11 @@ export function dalvayWaterRequested(q:URLSearchParams){
   q.getAll('scenery').every(mode=>mode===''||mode==='standard')&&standardComparisonQuery(q);
 }
 
+export function standardSourisKnightRequested(q:URLSearchParams){
+ const modes=q.getAll('scenery');
+ return !q.has('stockSourisKnight')&&!q.has('sourisKnightExterior')&&!q.has('qa')&&
+  modes.length<=1&&modes.every(v=>!v||v==='standard')&&q.getAll('departure').length<=1&&standardComparisonQuery(q);
+}
 export function sourisKnightRequested(q:URLSearchParams){
  return q.has('sourisKnightExterior')&&!q.has('stockSourisKnight')&&
   q.getAll('scenery').every(v=>v===''||v==='standard')&&standardComparisonQuery(q);

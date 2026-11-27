@@ -1,4 +1,4 @@
-import type {BufferAttribute,Mesh} from 'three';
+import type {BufferAttribute,Group,Mesh} from 'three';
 import type {Terrain} from '../sim/terrain.ts';
 import type {Cover} from '../sim/cover.ts';
 import {standardLandAtlasMatches} from './meadow-standard.ts';
@@ -15,7 +15,11 @@ export const KNIGHT_SEAT={
  normal:'8e166cbd095e33078b36d539c1743151fb1f727a15cd9e55a65d5e5b40a0d709'
 } as const;
 
-export type KnightSeat={floor:(x:number,z:number)=>number;resident:()=>boolean;verifiedCover:()=>Promise<boolean>};
+export const KNIGHT_STANDARD_ROUTE='souris-waterfront-pass';
+export type KnightSeat={floor:(x:number,z:number)=>number;resident:()=>boolean;verifiedCover:()=>Promise<boolean>;
+ standard?:{dispatch:()=>boolean;prepare:()=>boolean;flight:()=>boolean;
+ link:(art:Group,signal:AbortSignal,eligible:()=>boolean)=>Promise<undefined|(()=>boolean)>}};
+
 export function knightGroundSupports(t:Terrain,h:string|undefined,c:Cover){
  const {xz:[x,z],width,face0}=KNIGHT_SEAT;
  if(!standardLandAtlasMatches(t,h,c)||t.surveyGrids.some(g=>g.spec.tileX===28&&g.spec.tileZ===14)||

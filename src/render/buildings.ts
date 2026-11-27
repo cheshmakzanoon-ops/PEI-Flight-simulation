@@ -468,6 +468,8 @@ export class Buildings {
  private queuedSeacow?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;running:boolean;pin:ReturnType<Buildings['pinAuthoredOwner']>};
  private seacow?:{owner:THREE.Mesh;intact:()=>boolean;retire:()=>void;originalMaterial:THREE.Material|THREE.Material[];art:ReturnType<typeof import('./seacow-exterior-art.ts')['makeSeacowExterior']>;view:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private knightSeat?:KnightSeat;
+ private queuedKnight?:{owner:THREE.Mesh;bytes:ArrayBuffer;rows:number;row:unknown;pin:ReturnType<Buildings['pinAuthoredOwner']>;
+  pending?:AbortController;checked:boolean};
  private knight?:{owner:THREE.Mesh;art:THREE.Group;originalMaterial:THREE.Material|THREE.Material[];
   current:()=>boolean;retire:()=>void;variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>};
  private pointPrimEnabled=false;
@@ -654,13 +656,39 @@ export class Buildings {
  }
  enableKnightExterior(seat:KnightSeat){this.knightSeat=seat;}
  get knightExteriorActive(){return this.knight?.variant.visible===true;}
- private syncKnight(){
-  const p=this.knight;if(!p)return;
-  p.variant.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
-   p.art.parent===this.scene&&p.current()&&!this.scene.overrideMaterial&&this.knightSeat?.resident()===true);
+ get knightExteriorUnavailable(){return !this.knight&&this.queuedKnight?.checked===true&&!this.queuedKnight.pending;}
+ get knightExteriorReady(){
+  const p=this.knight,seat=this.knightSeat;
+  return !!(p&&seat?.standard?.dispatch()&&seat.resident()&&p.owner.parent===this.scene&&
+   p.owner.visible&&p.owner.material===p.originalMaterial&&p.art.parent===this.scene&&p.current()&&!this.scene.overrideMaterial);
  }
- private async promoteKnight(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:KnightSeat){
-  const pending=()=>this.meshes.get(KNIGHT_SEAT.id)===owner&&owner.parent===this.scene&&this.wanted.has(KNIGHT_SEAT.id)&&!this.knight;
+ private syncKnight(){
+  const p=this.knight,options=this.knightSeat,standard=options?.standard;
+  if(p){
+   p.variant.sync(p.owner.parent===this.scene&&p.owner.visible&&p.owner.material===p.originalMaterial&&
+    p.art.parent===this.scene&&p.current()&&!this.scene.overrideMaterial&&options?.resident()===true&&
+    (!standard||standard.flight()));
+   return;
+  }
+  const q=this.queuedKnight;
+  if(!standard||!q||!options)return;
+  if(!standard.dispatch()){
+   if(q.pending){q.pending.abort();q.pending=undefined;}
+   q.checked=false;
+   return;
+  }
+  if(q.pending||q.checked||!standard.prepare()||!options.resident())return;
+  const control=new AbortController(),eligible=()=>this.queuedKnight===q&&q.pending===control&&
+   !control.signal.aborted&&standard.dispatch()&&options.resident()&&q.owner.geometry===q.pin.stock&&q.pin.baseOwner();
+  q.pending=control;q.checked=true;
+  const timer=setTimeout(()=>control.abort(),9000);
+  void this.promoteKnight(q.owner,q.bytes,q.rows,q.row,options,eligible,control.signal,q.pin).finally(()=>{
+   clearTimeout(timer);if(q.pending===control)q.pending=undefined;
+  });
+ }
+ private async promoteKnight(owner:THREE.Mesh,raw:ArrayBuffer,rows:number,row:unknown,seat:KnightSeat,
+  eligible=()=>true,signal?:AbortSignal,pin?:ReturnType<Buildings['pinAuthoredOwner']>){
+  const pending=()=>this.meshes.get(KNIGHT_SEAT.id)===owner&&owner.parent===this.scene&&this.wanted.has(KNIGHT_SEAT.id)&&!this.knight&&eligible();
   if(!pending())return;
   try{
    if(!await knightExactOwner(raw,rows,row,owner)||!await seat.verifiedCover()||!pending())return;
@@ -671,14 +699,17 @@ export class Buildings {
     return {m,g,material:m.material,uniformPosition:g.getAttribute('position'),layers:m.layers.mask,
       position:m.position.clone(),quaternion:m.quaternion.clone(),scale:m.scale.clone()};
    });
-   const current=()=>parts.length===4&&art.children.length===4&&art.matrixAutoUpdate&&art.position.equals(p)&&art.quaternion.equals(q)&&art.scale.equals(s)&&
+   const cleanupArt=()=>{for(const part of parts){part.g.dispose();part.material.dispose();}art.removeFromParent();};
+   const program=seat.standard&&signal?await seat.standard.link(art,signal,pending):undefined;
+   if(seat.standard&&(!program||!pending())){cleanupArt();return;}
+   const current=()=> (!seat.standard||program?.()===true&&!!pin?.baseOwner())&&
+    parts.length===4&&art.children.length===4&&art.matrixAutoUpdate&&art.position.equals(p)&&art.quaternion.equals(q)&&art.scale.equals(s)&&
     parts.every(({m,g,material,uniformPosition,layers,position,quaternion,scale},i)=>art.children[i]===m&&m.parent===art&&m.visible&&m.material===material&&material.visible&&
      m.geometry===g&&g.getAttribute('position')===uniformPosition&&m.layers.mask===layers&&!g.index&&g.drawRange.start===0&&g.drawRange.count===Infinity&&
      m.matrixAutoUpdate&&m.position.equals(position)&&m.quaternion.equals(quaternion)&&m.scale.equals(scale));
    const variant=authenticatedOwnerVariant(owner,art,owner.userData.beaconTriangles,KNIGHT_SEAT.proof);
-   const dispose=()=>{for(const part of parts){part.g.dispose();part.material.dispose();}art.removeFromParent();};
-   if(!variant){dispose();return;}
-   this.scene.add(art);this.knight={owner,art,originalMaterial:owner.material,current,variant,retire:()=>{variant.dispose();dispose();}};
+   if(!variant){cleanupArt();return;}
+   this.scene.add(art);this.knight={owner,art,originalMaterial:owner.material,current,variant,retire:()=>{variant.dispose();cleanupArt();}};
    this.syncKnight();
   }catch{/** Optional art never removes the actual original building on failure. */}
  }
@@ -772,6 +803,7 @@ export class Buildings {
     if(m===this.dalvay?.owner){this.dalvay.dispose();this.dalvay=undefined;}
     if(m===this.seacow?.owner){this.seacow.retire();this.seacow=undefined;}
     if(m===this.queuedSeacow?.owner)this.queuedSeacow=undefined;
+    if(m===this.queuedKnight?.owner){this.queuedKnight.pending?.abort();this.queuedKnight=undefined;}
     if(m===this.knight?.owner){this.knight.retire();this.knight=undefined;}
     if(m===this.primStock?.mesh){this.primDraw?.release();this.primStock=undefined;}
     if(m===this.sourisEast?.owner){
@@ -1104,7 +1136,11 @@ export class Buildings {
     if(seacow.prepare)this.queuedSeacow={owner:mesh,bytes:seacowBytes,rows:features.length,row,running:false,pin};
     else void this.promoteSeacow(mesh,seacowBytes,features.length,row,seacow,pin);
    }
-   if(knight&&knightBytes)void this.promoteKnight(mesh,knightBytes,features.length,features[KNIGHT_SEAT.ordinal],knight);
+   if(knight&&knightBytes){
+    const row=features[KNIGHT_SEAT.ordinal];
+    if(knight.standard)this.queuedKnight={owner:mesh,bytes:knightBytes,rows:features.length,row,pin:this.pinAuthoredOwner(mesh),checked:false};
+    else void this.promoteKnight(mesh,knightBytes,features.length,row,knight);
+   }
    if(primBytes&&features[POINT_PRIM.ordinal]){
     this.primStock={mesh,geometry:mesh.geometry,wire:primBytes,count:features.length,row:JSON.stringify(features[POINT_PRIM.ordinal])};
    }

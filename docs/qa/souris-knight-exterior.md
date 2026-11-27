@@ -1,11 +1,33 @@
 # Souris East lighthouse · Knight Point
 
-This optional exterior replaces one five-storey box on Knight Point with an original
-white square tapered tower, open red gallery and domed glazed lantern. It does not
-replace East Point Light, the separate Souris breakwater beacon, the neighboring
-building or the headland. Select Standard and add `?sourisKnightExterior`; add
-`&stockSourisKnight` for the original. From **Souris · waterfront pass**, turn east
-to see Knight Point. This is an exterior study, not real navigation.
+In **Standard** scenery, choose **Souris · waterfront pass** and wait for
+**Knight Point lighthouse ready** before **Begin flight**. The grey
+placeholder on Knight Point is replaced by a white tapered tower, an open
+red gallery and a domed glazed lantern. Starting early keeps the original
+tower for that flight. The old explicit `?sourisKnightExterior` option still
+works independently; `?departure=souris-waterfront-pass&stockSourisKnight`
+keeps the original in Standard. It does not replace East Point Light, the
+breakwater beacon, the neighboring building or the cliff.
+
+## See it from Chase
+
+The waterfront departure starts facing the town. For the recorded turn
+in the simulator, hold **D** just after Begin for about eight simulated
+seconds, release it, and stay in **Chase**. The tower comes into view at about
+16–17 simulated seconds; the manoeuvre is not a real navigation procedure.
+
+![Matched moving Chase view with the original tower at left and the Knight Point lighthouse at right](souris-knight-exterior/standard-chase.webp)
+
+A [native replay](souris-knight-exterior/standard-flight.json) compared the
+same real camera and aircraft frame with each version. The two close views
+changed 3,300 and 5,412 pixels by more than two RGB codes; no RGB changed
+outside the projected old/new tower, alpha was unchanged, and the original
+draw restored byte-for-byte. The existing harbor-water treatment and the
+other building meshes stayed in place. The four authored material batches
+were linked before admission, including the separate single-sided lantern
+glass. These are render checks, not hardware FPS or engineering dimensions.
+
+## Earlier fixed views
 
 **Before, looking southeast across Knight Point:**
 
