@@ -836,6 +836,15 @@ export class World {
 
  private bordenTicket?:readonly unknown[];
  private bordenShore?:THREE.Mesh;
+ private quartermasterShore?:THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>;
+ /** Only in the private same-geometry quay trial. Documented geometry and
+  * this exact original curtain stay owned by the existing renderer. */
+ quartermasterQuayOwners(){
+  const shore=this.quartermasterShore,air=this.bordenAerialGain,t=this.byId.get('16-16'),land=t?.fine;
+  if(!shore||!air||air.value!==1||!land?.visible||t?.coarse.visible||land.material!==t?.local||
+     !t.seams?.startsWith('112:')||!this.nativeRegularGroundStill('16-16',land.geometry))return;
+  return {shore,land,air};
+ }
  private bordenOcean?:THREE.Mesh;
  private bordenAtlasSha?:string;
  private bordenAerialGain?:{value:number};
@@ -1374,6 +1383,8 @@ export class World {
    if(this.tryonSeatEnabled&&key==='-2,-1'&&!cuts.has(key)&&!rockGroups.has(key)&&m.material===material)
     this.tryonSeatShore=m;
    if(key==='-4,2')this.bordenShore=m;
+   if(key==='0,2'&&this.cover.harbour&&!legacyShore&&!cuts.has(key)&&!rockGroups.has(key)&&!boundedStone&&
+      m.material===material)this.quartermasterShore=m;
    this.shoreFaces.push(m);this.scene.add(m);
    const remove=cuts.get(key);
    if(remove){

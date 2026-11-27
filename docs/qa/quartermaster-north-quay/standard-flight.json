@@ -1,0 +1,435 @@
+{
+  "scope": "North quay appearance only, optional same Standard waterfront low pass.",
+  "productPatchSHA256": "3fc286fe8eb61dc38662727a8877c21e8b5540e232a8244ecc5cff4952245a25",
+  "base": "4cc5d89cec2a3f719f1dd723308c3cd8a6e3728e",
+  "native": "Actual normal typed scenery and original controls at software WebGL 1200 × 760 with four samples. Fixed diagnostic replay and some skipped transit draws, not end-user FPS.",
+  "nonindexedOwner": {
+    "xyz": "6ace51bc62629d5451fc332ef5c7515dafbae746a5024326bf7138885f550f34",
+    "uv": "80b169d9b9d9365ba421fbbd30ad56fb7f54709837e442d5b4029935f874597a",
+    "count": 16230,
+    "matrix": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "vertexShader": "a71f9476607f8cb5313693f8558281963fdffa6ec6cbc0c8591010505eba9496",
+    "fragmentShader": "0e92b2fc24304ed5f47942b9581459391582224ee0dc96400a2caa1d98b92c66",
+    "side": 2,
+    "opacity": 1,
+    "transparent": false,
+    "depth": [
+      true,
+      true,
+      3
+    ],
+    "appUniforms": [
+      "airport",
+      "atmosphericLabGain",
+      "clock",
+      "coverMap",
+      "detailBox",
+      "detailCardinal",
+      "detailClock",
+      "detailDiagonal",
+      "detailMap",
+      "detailReady",
+      "detailSize",
+      "eastRockBounds",
+      "extent",
+      "hasDetail",
+      "imageMap",
+      "paintMap",
+      "rippleMap",
+      "skyMap",
+      "stripSize",
+      "sun"
+    ],
+    "radius": 8186.879124388446,
+    "sphere": [
+      5997.827088356018,
+      9.289999656379223,
+      29989.7890625
+    ]
+  },
+  "nativeShoreRoles": [
+    [
+      [
+        12660,
+        12804
+      ]
+    ],
+    [
+      [
+        12528,
+        12594
+      ],
+      [
+        12600,
+        12606
+      ],
+      [
+        13038,
+        13044
+      ]
+    ],
+    [
+      [
+        12930,
+        12942
+      ],
+      [
+        12954,
+        12966
+      ]
+    ]
+  ],
+  "sameTick": {
+    "810": {
+      "strong": 207,
+      "any": 233,
+      "each": [
+        {
+          "strong": 109,
+          "any": 124
+        },
+        {
+          "strong": 80,
+          "any": 89
+        },
+        {
+          "strong": 18,
+          "any": 20
+        }
+      ],
+      "alpha": 0,
+      "outside": 0,
+      "coDock": 0,
+      "max": 45,
+      "original": "ef0a1d4c15bd30b39849fb2065cce16f48ba2bef732c5a65d6358b9f0df35d4b",
+      "authored": "e25266d37da75685446d249778ec5eda2640d4955880e2c66f62a9f268af976d",
+      "neutral": "ef0a1d4c15bd30b39849fb2065cce16f48ba2bef732c5a65d6358b9f0df35d4b",
+      "restored": "ef0a1d4c15bd30b39849fb2065cce16f48ba2bef732c5a65d6358b9f0df35d4b",
+      "draws": 223,
+      "triangles": 521469
+    },
+    "840": {
+      "strong": 359,
+      "any": 403,
+      "each": [
+        {
+          "strong": 197,
+          "any": 218
+        },
+        {
+          "strong": 132,
+          "any": 151
+        },
+        {
+          "strong": 30,
+          "any": 34
+        }
+      ],
+      "alpha": 0,
+      "outside": 0,
+      "coDock": 0,
+      "max": 47,
+      "original": "6fa506aac13ba5b0c019bf3e7afcc8a97a5f85e1c252a2b8812b702be17d9253",
+      "authored": "afcec69d5e2514c67b24fda2a5bcdf8e8022db552cbcf47fe52d9d9bf96b69ee",
+      "neutral": "6fa506aac13ba5b0c019bf3e7afcc8a97a5f85e1c252a2b8812b702be17d9253",
+      "restored": "6fa506aac13ba5b0c019bf3e7afcc8a97a5f85e1c252a2b8812b702be17d9253",
+      "draws": 223,
+      "triangles": 521469
+    },
+    "900": {
+      "strong": 0,
+      "any": 0,
+      "each": [
+        {
+          "strong": 0,
+          "any": 0
+        },
+        {
+          "strong": 0,
+          "any": 0
+        },
+        {
+          "strong": 0,
+          "any": 0
+        }
+      ],
+      "alpha": 0,
+      "outside": 0,
+      "coDock": 0,
+      "max": 0,
+      "original": "073f8337fbf16ee9bf7a74a788fc2d228d3622748a59dc959be9ea54f0845ba2",
+      "authored": "073f8337fbf16ee9bf7a74a788fc2d228d3622748a59dc959be9ea54f0845ba2",
+      "neutral": "073f8337fbf16ee9bf7a74a788fc2d228d3622748a59dc959be9ea54f0845ba2",
+      "restored": "073f8337fbf16ee9bf7a74a788fc2d228d3622748a59dc959be9ea54f0845ba2",
+      "draws": 225,
+      "triangles": 525528
+    }
+  },
+  "conservativePhysicalY": {
+    "810": {
+      "changed": 233,
+      "outsideOriginalSpeculativeFloor": 0,
+      "belowConservativeDryBound": 0,
+      "lowestObservedSourceSupportM": 0.11262633230858396,
+      "exampleDisputed": []
+    },
+    "840": {
+      "changed": 403,
+      "outsideOriginalSpeculativeFloor": 0,
+      "belowConservativeDryBound": 0,
+      "lowestObservedSourceSupportM": 0.09813262469001525,
+      "exampleDisputed": []
+    },
+    "900": {
+      "changed": 0,
+      "outsideOriginalSpeculativeFloor": 0,
+      "belowConservativeDryBound": 0,
+      "lowestObservedSourceSupportM": null,
+      "exampleDisputed": []
+    }
+  },
+  "independentStockShoreAndDockSamples": {
+    "810": {
+      "C110": {
+        "positive": 169,
+        "pure": 137,
+        "samples": 611
+      },
+      "C112": {
+        "positive": 118,
+        "pure": 105,
+        "samples": 445
+      },
+      "C113": {
+        "positive": 24,
+        "pure": 16,
+        "samples": 85
+      },
+      "host": {
+        "positive": 7088,
+        "pure": 3957,
+        "samples": 21632
+      },
+      "dock": {
+        "positive": 5480,
+        "pure": 4016,
+        "samples": 19328
+      },
+      "commonN": 311,
+      "commonDockShore": 0
+    },
+    "840": {
+      "C110": {
+        "positive": 289,
+        "pure": 251,
+        "samples": 1082
+      },
+      "C112": {
+        "positive": 188,
+        "pure": 160,
+        "samples": 690
+      },
+      "C113": {
+        "positive": 44,
+        "pure": 28,
+        "samples": 142
+      },
+      "host": {
+        "positive": 7449,
+        "pure": 4492,
+        "samples": 23864
+      },
+      "dock": {
+        "positive": 3726,
+        "pure": 2864,
+        "samples": 13345
+      },
+      "commonN": 521,
+      "commonDockShore": 0
+    },
+    "900": {
+      "C110": {
+        "positive": 0,
+        "pure": 0,
+        "samples": 0
+      },
+      "C112": {
+        "positive": 0,
+        "pure": 0,
+        "samples": 0
+      },
+      "C113": {
+        "positive": 0,
+        "pure": 0,
+        "samples": 0
+      },
+      "host": {
+        "positive": 4682,
+        "pure": 2011,
+        "samples": 13156
+      },
+      "dock": {
+        "positive": 0,
+        "pure": 0,
+        "samples": 0
+      },
+      "commonN": 0,
+      "commonDockShore": 0
+    }
+  },
+  "controls": {
+    "normal": {
+      "frames": 273,
+      "admitted": true,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "early": {
+      "frames": 273,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "stock": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "foreign": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "noaa": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "detail": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "malformed": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": "quartermaster-coast-v1",
+      "oldDocks": {
+        "id": "quartermaster-floating-docks-v1",
+        "spines": 3,
+        "fingers": 30,
+        "triangles": 540
+      },
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "missing": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": null,
+      "oldDocks": null,
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "missing-stock": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": null,
+      "oldDocks": null,
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    },
+    "corrupt": {
+      "frames": 10,
+      "admitted": false,
+      "oldCover": null,
+      "oldDocks": null,
+      "requests": [
+        "/world/harbour/odbl/v1/quartermaster-docks.json.gz",
+        "/world/harbour/odbl/v1/quartermaster-coast.rg.gz"
+      ]
+    }
+  },
+  "comparisonImageSHA256": "24d5c69cf8f071f584b9d654c2bebb420058d679c129127b17e3aa0e820298db"
+}
