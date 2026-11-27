@@ -1,0 +1,1293 @@
+{
+  "method": "Chromium/SwiftShader, Three r187, 4\u00d7 canvas; same actual neutral Chase camera, source assets and aircraft for each stock/active/restored pair. Fast neutral traversal preselects frames; it does not measure FPS or actual cold wall time.",
+  "scope": "Independent projected union of native F32 position/EBO triangles intersected with all nonzero bilinear mask cells for the two authenticated shards. Closed pixel square SAT without raster dilation. Renderer PNGs preserve the observed opaque canvas alpha.",
+  "wire": {
+    "85:6": {
+      "pack": 41,
+      "offset": 12344,
+      "bytes": 2323
+    },
+    "86:6": {
+      "pack": 41,
+      "offset": 15443,
+      "bytes": 2149
+    }
+  },
+  "network": [
+    {
+      "path": "/world/fields-province/v2/index.fcr.gz",
+      "range": null
+    },
+    {
+      "path": "/world/fields-province/v2/crop-41.pack",
+      "range": "bytes=12344-14666"
+    },
+    {
+      "path": "/world/fields-province/v2/crop-41.pack",
+      "range": "bytes=15443-17591"
+    }
+  ],
+  "controls": {
+    "stock": {
+      "site": "kings-sand-dunes",
+      "frames": 661,
+      "assetRequests": 0,
+      "fieldDrawn": false
+    },
+    "foreign": {
+      "site": "kings-coastal-ridge",
+      "frames": 51,
+      "assetRequests": 0,
+      "fieldDrawn": false
+    },
+    "detail": {
+      "site": "kings-sand-dunes",
+      "frames": 662,
+      "assetRequests": 0,
+      "fieldDrawn": false
+    },
+    "noaa": {
+      "site": "kings-sand-dunes",
+      "frames": 662,
+      "assetRequests": 0,
+      "fieldDrawn": false
+    },
+    "bad": {
+      "site": "kings-sand-dunes",
+      "frames": 712,
+      "assetRequests": 5,
+      "fieldDrawn": false
+    }
+  },
+  "frames": {
+    "440": {
+      "stock": {
+        "calls": 156,
+        "tris": 356604,
+        "gl": 0,
+        "sha": "aa987748b38a9fbd541502740ec63da59701a63c236281cbf44cf366f3d2e66a"
+      },
+      "live": {
+        "calls": 156,
+        "tris": 356604,
+        "gl": 0,
+        "sha": "aa987748b38a9fbd541502740ec63da59701a63c236281cbf44cf366f3d2e66a"
+      },
+      "restored": {
+        "calls": 156,
+        "tris": 356604,
+        "gl": 0,
+        "sha": "aa987748b38a9fbd541502740ec63da59701a63c236281cbf44cf366f3d2e66a"
+      },
+      "wind": {
+        "oldSourceVersion": 2,
+        "static": true,
+        "sharesAllStockUniformsAndWind": false,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 7,
+              "cruise": 3,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 1,
+                "nearCasters": 5,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 1,
+                  "nearRotors": 5,
+                  "sourceSlots": 5,
+                  "offscreenPasses": 185,
+                  "submittedTriangles": 7600,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 44.65009800000036,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 2,
+              "cruise": 5,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": true,
+        "oldFragmentSHA256": "990f434b991f13bdeb5b43c4b54b351010f062673676586a98c1820c3d209e22"
+      },
+      "bound": false,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "cb88b4f1413a75dfa3ef5520d57768356a0154c7525b137488f79c215c4680f9",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          87834.75636465235,
+          78.99286747509811,
+          5439.1247394039
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451551493266,
+          0.00945235110335183,
+          -0.08946452365716571,
+          0,
+          0,
+          0.9944648364089039,
+          0.10506992503191402,
+          0,
+          0.08996248070492834,
+          0.10464388278743769,
+          -0.9904324357878153,
+          0,
+          86989.28290067666,
+          -1477.971716963589,
+          13236.880428244733,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        87836.85637511175,
+        5461.020245752113,
+        74.83157508890966,
+        28.195598956283558
+      ],
+      "state": {
+        "phase": "stock",
+        "receivers": []
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "physicalScopePixels": 0,
+      "exteriorPixels": 0
+    },
+    "520": {
+      "stock": {
+        "calls": 152,
+        "tris": 324466,
+        "gl": 0,
+        "sha": "b56f8ed10f3ca83dd54d25b73aaa0e13df8981af8a147d74c659cd17d676e5dd"
+      },
+      "live": {
+        "calls": 152,
+        "tris": 324466,
+        "gl": 0,
+        "sha": "b56f8ed10f3ca83dd54d25b73aaa0e13df8981af8a147d74c659cd17d676e5dd"
+      },
+      "restored": {
+        "calls": 152,
+        "tris": 324466,
+        "gl": 0,
+        "sha": "b56f8ed10f3ca83dd54d25b73aaa0e13df8981af8a147d74c659cd17d676e5dd"
+      },
+      "wind": {
+        "oldSourceVersion": 2,
+        "static": true,
+        "sharesAllStockUniformsAndWind": true,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 6,
+              "cruise": 4,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 1,
+                "nearCasters": 2,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 1,
+                  "nearRotors": 2,
+                  "sourceSlots": 2,
+                  "offscreenPasses": 265,
+                  "submittedTriangles": 3040,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 52.650098000000476,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 2,
+              "cruise": 5,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": true,
+        "oldFragmentSHA256": "990f434b991f13bdeb5b43c4b54b351010f062673676586a98c1820c3d209e22"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "cb88b4f1413a75dfa3ef5520d57768356a0154c7525b137488f79c215c4680f9",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          87886.3212874937,
+          82.13014287185258,
+          5857.577709463739
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451571006228,
+          0.00945234898274464,
+          -0.08946450215881524,
+          0,
+          -1.734723475976808e-18,
+          0.9944648362337601,
+          0.10506992668961367,
+          0,
+          0.08996245910276271,
+          0.10464388464343818,
+          -0.9904324375538772,
+          0,
+          87002.99396653986,
+          -1525.3674048190203,
+          13655.611541410184,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        87888.42134157817,
+        5879.473714448803,
+        77.96879705897264,
+        22.537942056576977
+      ],
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "physicalScopePixels": 0,
+      "exteriorPixels": 0
+    },
+    "630": {
+      "stock": {
+        "calls": 150,
+        "tris": 322530,
+        "gl": 0,
+        "sha": "7707a7c94ee8d17d36cef9b1a54314be2b54bc8db9934b2dabecfb537854d442"
+      },
+      "live": {
+        "calls": 150,
+        "tris": 322530,
+        "gl": 0,
+        "sha": "c2f261f2ccaf812bbe1e3abde7fda0a29964710a705ff1c758e1d03558ac0ecd"
+      },
+      "restored": {
+        "calls": 150,
+        "tris": 322530,
+        "gl": 0,
+        "sha": "7707a7c94ee8d17d36cef9b1a54314be2b54bc8db9934b2dabecfb537854d442"
+      },
+      "wind": {
+        "oldSourceVersion": 4,
+        "static": false,
+        "sharesAllStockUniformsAndWind": true,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 0,
+              "cruise": 10,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 0,
+                "nearCasters": 0,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 0,
+                  "nearRotors": 0,
+                  "sourceSlots": 0,
+                  "offscreenPasses": 276,
+                  "submittedTriangles": 0,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 53.75009800000049,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 3,
+              "cruise": 4,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": false,
+        "oldFragmentSHA256": "1e074529faa8e10f37f65f2a0e41d8f59493341672e035c3da0b08687a002499"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "cb88b4f1413a75dfa3ef5520d57768356a0154c7525b137488f79c215c4680f9",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          87957.22781224342,
+          86.43410017095697,
+          6433.004902832869
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451589692131,
+          0.009452442977893607,
+          -0.08946447142602414,
+          0,
+          3.469446951953612e-18,
+          0.9944647232896233,
+          0.1050709956766986,
+          0,
+          0.08996243841619801,
+          0.1046449494922831,
+          -0.9904323269259583,
+          0,
+          87021.84642855385,
+          -1590.547817038682,
+          14231.421192394222,
+          0.9999999999999998
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        87959.3279081292,
+        6454.901385609024,
+        82.27263250540229,
+        30.80496672410356
+      ],
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 35927,
+      "strong": 7819,
+      "alpha": 0,
+      "physicalScopePixels": 68627,
+      "exteriorPixels": 0
+    },
+    "680": {
+      "stock": {
+        "calls": 149,
+        "tris": 325334,
+        "gl": 0,
+        "sha": "8a5c5dec39f791cc740a71794f29ac0de5e68a4399dd5b8061cafae526f724a7"
+      },
+      "live": {
+        "calls": 149,
+        "tris": 325334,
+        "gl": 0,
+        "sha": "c290377feab097d0840a8327d784781f27546b96210bf0c217abb075e124f8f8"
+      },
+      "restored": {
+        "calls": 149,
+        "tris": 325334,
+        "gl": 0,
+        "sha": "8a5c5dec39f791cc740a71794f29ac0de5e68a4399dd5b8061cafae526f724a7"
+      },
+      "wind": {
+        "oldSourceVersion": 4,
+        "static": false,
+        "sharesAllStockUniformsAndWind": true,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 0,
+              "cruise": 10,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 0,
+                "nearCasters": 0,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 0,
+                  "nearRotors": 0,
+                  "sourceSlots": 0,
+                  "offscreenPasses": 276,
+                  "submittedTriangles": 0,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 53.75009800000049,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 3,
+              "cruise": 4,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": false,
+        "oldFragmentSHA256": "1e074529faa8e10f37f65f2a0e41d8f59493341672e035c3da0b08687a002499"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "cb88b4f1413a75dfa3ef5520d57768356a0154c7525b137488f79c215c4680f9",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          87989.45942961148,
+          88.38552514485295,
+          6694.578478274325
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451596363483,
+          0.009452507202440605,
+          -0.08946445721355815,
+          0,
+          -1.7347234759768075e-18,
+          0.994464646949842,
+          0.1050717182067848,
+          0,
+          0.08996243103056281,
+          0.1046456691627217,
+          -0.9904322515591654,
+          0,
+          87030.41566330995,
+          -1620.1759236772823,
+          14493.168844869779,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        87991.55954042963,
+        6716.475131728235,
+        84.2239913992683,
+        31.19361746611491
+      ],
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 147710,
+      "strong": 87168,
+      "alpha": 0,
+      "physicalScopePixels": 180262,
+      "exteriorPixels": 0
+    },
+    "720": {
+      "stock": {
+        "calls": 148,
+        "tris": 327854,
+        "gl": 0,
+        "sha": "5125853dea188328783444f43bf6fc59b064bc5d087d40129f158f0f84cf3466"
+      },
+      "live": {
+        "calls": 148,
+        "tris": 327854,
+        "gl": 0,
+        "sha": "4984b035dedd51904c3c0d7aa2520ae047bef625b045fdd8dc0227c957dc09f4"
+      },
+      "restored": {
+        "calls": 148,
+        "tris": 327854,
+        "gl": 0,
+        "sha": "5125853dea188328783444f43bf6fc59b064bc5d087d40129f158f0f84cf3466"
+      },
+      "wind": {
+        "oldSourceVersion": 4,
+        "static": false,
+        "sharesAllStockUniformsAndWind": true,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 0,
+              "cruise": 10,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 0,
+                "nearCasters": 0,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 0,
+                  "nearRotors": 0,
+                  "sourceSlots": 0,
+                  "offscreenPasses": 276,
+                  "submittedTriangles": 0,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 53.75009800000049,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 4,
+              "cruise": 3,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": false,
+        "oldFragmentSHA256": "1e074529faa8e10f37f65f2a0e41d8f59493341672e035c3da0b08687a002499"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "dd7f7e861dd450a037b5de7e9398047b4456cc0fde31a1268a9d273a15e55e23",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          88015.24524111039,
+          89.94418272588788,
+          6903.843254874445
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451601181712,
+          0.00945256463276674,
+          -0.08946444578184604,
+          0,
+          3.469446951953612e-18,
+          0.994464578842222,
+          0.1050723628180206,
+          0,
+          0.0899624256964512,
+          0.10464631121078814,
+          -0.9904321842068667,
+          0,
+          87037.2710286612,
+          -1643.877827904311,
+          14702.5730423956,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        88017.34536271577,
+        6925.740031627103,
+        85.78259312426057,
+        31.846589574802987
+      ],
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 148827,
+      "strong": 96055,
+      "alpha": 0,
+      "physicalScopePixels": 159731,
+      "exteriorPixels": 0
+    },
+    "780": {
+      "stock": {
+        "calls": 148,
+        "tris": 336242,
+        "gl": 0,
+        "sha": "41d02709e12474ab4a7c6e31ce31e9d51fa106cd817fcb62f8ae6cafcec85e61"
+      },
+      "live": {
+        "calls": 148,
+        "tris": 336242,
+        "gl": 0,
+        "sha": "41d02709e12474ab4a7c6e31ce31e9d51fa106cd817fcb62f8ae6cafcec85e61"
+      },
+      "restored": {
+        "calls": 148,
+        "tris": 336242,
+        "gl": 0,
+        "sha": "41d02709e12474ab4a7c6e31ce31e9d51fa106cd817fcb62f8ae6cafcec85e61"
+      },
+      "wind": {
+        "oldSourceVersion": 4,
+        "static": false,
+        "sharesAllStockUniformsAndWind": true,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 0,
+              "cruise": 10,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 0,
+                "nearCasters": 0,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 0,
+                  "nearRotors": 0,
+                  "sourceSlots": 0,
+                  "offscreenPasses": 276,
+                  "submittedTriangles": 0,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 53.75009800000049,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 3,
+              "cruise": 4,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": false,
+        "oldFragmentSHA256": "1e074529faa8e10f37f65f2a0e41d8f59493341672e035c3da0b08687a002499"
+      },
+      "bound": true,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "3c6cefed779abc07e35c327846430c9242eb7de087a4b892a54123791b70e6c2",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          88053.92473825808,
+          92.27781990506061,
+          7217.749334068506
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451607785513,
+          0.009452657957311171,
+          -0.08946442856983183,
+          0,
+          0,
+          0.9944644683335813,
+          0.10507340872936086,
+          0,
+          0.08996241838559288,
+          0.10464735295051378,
+          -0.9904320748030454,
+          0,
+          87047.55404523312,
+          -1679.4290075310453,
+          15016.68856330147,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        88056.02487465205,
+        7239.646279855592,
+        88.11614299142987,
+        33.08211388631841
+      ],
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "physicalScopePixels": 0,
+      "exteriorPixels": 0
+    },
+    "900": {
+      "stock": {
+        "calls": 147,
+        "tris": 315254,
+        "gl": 0,
+        "sha": "cbd772f3e503742bdd0f834be5ee742d96e8b909d54f10a1dc81f8ffa4b4b82c"
+      },
+      "live": {
+        "calls": 147,
+        "tris": 315254,
+        "gl": 0,
+        "sha": "cbd772f3e503742bdd0f834be5ee742d96e8b909d54f10a1dc81f8ffa4b4b82c"
+      },
+      "restored": {
+        "calls": 147,
+        "tris": 315254,
+        "gl": 0,
+        "sha": "cbd772f3e503742bdd0f834be5ee742d96e8b909d54f10a1dc81f8ffa4b4b82c"
+      },
+      "wind": {
+        "oldSourceVersion": 4,
+        "static": false,
+        "sharesAllStockUniformsAndWind": false,
+        "exactOldOwnerAfterDraw": true,
+        "retained": {
+          "phase": "ready",
+          "farms": [
+            {
+              "farm": "east-point-i",
+              "registered": 10,
+              "near": 0,
+              "cruise": 10,
+              "distant": 0,
+              "groundLight": {
+                "phase": "ready",
+                "activeTiles": 0,
+                "nearCasters": 0,
+                "moving": {
+                  "phase": "ready",
+                  "activeTiles": 0,
+                  "nearRotors": 0,
+                  "sourceSlots": 0,
+                  "offscreenPasses": 276,
+                  "submittedTriangles": 0,
+                  "textureSize": [
+                    1256,
+                    876
+                  ],
+                  "lastPhase": 53.75009800000049,
+                  "reason": ""
+                }
+              }
+            },
+            {
+              "farm": "east-point-ii",
+              "registered": 7,
+              "near": 1,
+              "cruise": 6,
+              "distant": 0,
+              "groundLight": null
+            }
+          ],
+          "unavailable": []
+        },
+        "rotorSource": false,
+        "oldFragmentSHA256": "1e074529faa8e10f37f65f2a0e41d8f59493341672e035c3da0b08687a002499"
+      },
+      "bound": false,
+      "terrain": {
+        "id": "30-12",
+        "model": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          88348.94708485286,
+          0,
+          6568.609494547921,
+          1
+        ],
+        "positions": "3c6cefed779abc07e35c327846430c9242eb7de087a4b892a54123791b70e6c2",
+        "uv": "06670aa27c16f37ba20bdf32421cf7a7c26f113e36f659c832565c2814852525",
+        "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "camera": {
+        "eye": [
+          88131.28625503209,
+          96.92872973108577,
+          7845.590324511598
+        ],
+        "proj": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "view": [
+          -0.9959451619575338,
+          0.009452860494777386,
+          -0.08946439404505141,
+          0,
+          -3.469446951953616e-18,
+          0.9944642288457746,
+          0.10507567533058657,
+          0,
+          0.08996240533346112,
+          0.10464961048491825,
+          -0.990431837458779,
+          0,
+          87068.11998593972,
+          -1750.522880143517,
+          15644.949710536825,
+          1
+        ],
+        "near": 0.08
+      },
+      "width": 900,
+      "height": 570,
+      "flight": [
+        88133.38641783764,
+        7867.48757218413,
+        92.76687049154496,
+        29.84444136994149
+      ],
+      "state": {
+        "phase": "linked",
+        "receivers": [],
+        "stream": {
+          "active": true,
+          "ready": 0,
+          "pending": 0,
+          "slots": 4
+        }
+      },
+      "any": 0,
+      "strong": 0,
+      "alpha": 0,
+      "physicalScopePixels": 0,
+      "exteriorPixels": 0
+    }
+  },
+  "lateBounds": {
+    "780": "The entire signed camera-range footprint lies behind the near plane, even with data resident.",
+    "900": "Camera is at least 677.59 m from the two signed row-6 shards, beyond 330 m; no resident field and no material substitution."
+  },
+  "unmodifiedPlayerNaturalReplay": {
+    "viewport": [
+      430,
+      280
+    ],
+    "firstDrawn": {
+      "n": 531,
+      "z": 5697.557811413697,
+      "x": 87866.00447771503,
+      "y": 76.60552987058917,
+      "ground": 20.539384941339563,
+      "site": "kings-sand-dunes",
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 1,
+          "pending": 0,
+          "slots": 4
+        },
+        "drawn": true
+      },
+      "paintMs": 531.4000000059605,
+      "regionalWind": {
+        "phase": "ready",
+        "farms": [
+          {
+            "farm": "east-point-i",
+            "registered": 10,
+            "near": 6,
+            "cruise": 4,
+            "distant": 0,
+            "groundLight": {
+              "phase": "ready",
+              "activeTiles": 1,
+              "nearCasters": 3,
+              "moving": {
+                "phase": "ready",
+                "activeTiles": 1,
+                "nearRotors": 3,
+                "sourceSlots": 3,
+                "offscreenPasses": 250,
+                "submittedTriangles": 4560,
+                "textureSize": [
+                  1256,
+                  876
+                ],
+                "lastPhase": 49.21680000000056,
+                "reason": ""
+              }
+            }
+          },
+          {
+            "farm": "east-point-ii",
+            "registered": 7,
+            "near": 2,
+            "cruise": 5,
+            "distant": 0,
+            "groundLight": null
+          }
+        ],
+        "unavailable": []
+      }
+    },
+    "last": {
+      "n": 783,
+      "z": 6847.8464054117185,
+      "site": "kings-sand-dunes",
+      "state": {
+        "phase": "live",
+        "receivers": [
+          "30-12"
+        ],
+        "stream": {
+          "active": true,
+          "ready": 2,
+          "pending": 0,
+          "slots": 4
+        },
+        "drawn": true
+      },
+      "mode": "flight"
+    },
+    "assetRequests": [
+      {
+        "url": "/world/fields-province/v2/index.fcr.gz"
+      },
+      {
+        "url": "/world/fields-province/v2/crop-41.pack",
+        "range": "bytes=12344-14666"
+      },
+      {
+        "url": "/world/fields-province/v2/crop-41.pack",
+        "range": "bytes=15443-17591"
+      }
+    ],
+    "clock": "Ordinary requestAnimationFrame timestamps; no transit draw skipping or pose injection."
+  }
+}

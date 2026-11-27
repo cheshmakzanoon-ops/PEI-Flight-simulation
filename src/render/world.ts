@@ -2060,12 +2060,18 @@ export class World {
  }
  /** Admit only an original Standard N112 draw for the route's exact tile,
   * never a coarse, surveyed, replacement or already leased foreign draw. */
- mappedFieldGround(ours:ReadonlyMap<string,THREE.Material>,id:string){
+ mappedFieldGround(ours:ReadonlyMap<string,THREE.Material>,id:string,strict=false){
   const t=this.byId.get(id),g=t?.fine;
   if(!t||!g||t.lod!==112||!t.seams?.startsWith('112:')||g.userData.subdiv!==112||
      !g.visible||g.parent!==this.scene||t.coarse.visible||t.relief||this.grades?.has(id)||
      g.userData.localGrade||g.userData.coastalSurvey||g.userData.coastalRefinement||
      g.geometry.index?.count!==112*112*6||(g.material!==t.local&&g.material!==ours.get(id)))return;
+  if(strict&&(!this.nativeRegularGroundStill(id,g.geometry)||g.material!==t.local||
+    !g.matrixAutoUpdate||!g.matrixWorldAutoUpdate||g.layers.mask!==1||g.geometry.groups.length||
+    g.geometry.drawRange.start!==0||g.geometry.drawRange.count!==Infinity||
+    g.position.x!==t.x0+t.w/2||g.position.y!==0||g.position.z!==t.z0+t.d/2||
+    g.quaternion.x!==0||g.quaternion.y!==0||g.quaternion.z!==0||g.quaternion.w!==1||
+    g.scale.x!==1||g.scale.y!==1||g.scale.z!==1))return;
   return [{id,mesh:g,stock:t.local}];
  }
  /** Exact visible original near ground for the optional local mounted church daylight. */

@@ -16,6 +16,31 @@ Choose **Queens County · fields low pass** in Standard Dispatch. This route use
 
 Choose **Prince County · mapped farmland pass** in Standard Dispatch, not the earlier **Prince County · fields low pass** comparison. The newer route starts 62 m above a separate inland field and keeps signed field support in view over successive close checkpoints. Only one original near terrain draw, `9-13`, receives the treatment and only four signed ranges from `crop-14.pack` are authorized. Compare the identical flight with `?departure=prince-mapped-farmland-pass&stockPrinceFieldPass`. The underlying terrain, aircraft and nearby scenery are unchanged. The [matched native replay](farmland-v2/prince-standard-native.json) records the four close snapshots, the stock and missing-index controls, and the Government of PEI county checks along the departure.
 
+## Fly inland on the Kings County dry dune pass
+
+Choose **Kings County · dry dune pass** in Standard. The earlier dune and
+wind scenery stays in place. Roughly a minute into a neutral Chase flight,
+close furrows appear on the verified field interiors as you pass inland.
+Use `?departure=kings-sand-dunes&stockKingsDunesFieldPass` to compare the
+original terrain; the other three Standard field routes remain independent.
+
+![Matched Chase flight over inland Kings County: original surface on the left, close furrow relief on the right](farmland-v2/kings-dunes-standard.webp)
+
+The field pass leases one original terrain draw (`30-12`) and uses two
+authorized range addresses in `crop-41.pack` (4,472 bytes on the verified
+pass when ranges are supported). It borrows the original lighting and image inputs
+and restores the stock material and its draw order after every frame. In the
+early wind-covered control, the existing static and moving turbine
+receivers were present and the whole comparison frame was unchanged.
+
+The [native receipt](farmland-v2/kings-dunes-standard.json) records paired
+900 × 570 Chase views, actual original terrain geometry, authenticated field
+support, and the wind and far controls. At the two closest captures,
+87,168 and 96,055 pixels changed by more than two RGB codes. No RGB changed
+outside the signed projected field support, alpha and rollback were exact,
+and no triangles or draws were added. This is texture relief, not a terrain
+height, collision, current planting, or frame-rate claim.
+
 ## Optional province-wide study
 
 To compare the broader study, choose **Optional scenery studies** in Standard Dispatch, select **Expanded farmland**, and apply. Its direct flag remains `?provinceFieldsReview`; it is separate from the Standard route effect and the three-site `?cropRowsReview`. The province-wide study can be [combined with Ground vegetation](province-land-surfaces.md).

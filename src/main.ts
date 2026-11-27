@@ -1,3 +1,4 @@
+import {kingsDunesFieldPassRequested} from './app/scenery-profile.ts';
 import {CAVENDISH_STANDARD_WATER_ROUTE,standardCavendishWaterRequested} from './app/scenery-profile.ts';
 import type {CavendishWaterSeat} from './render/cavendish-water-seat.ts';
 import {supportsOpaqueCoverage} from './render/opaque-coverage-alpha.ts';
@@ -126,7 +127,7 @@ import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
 import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested,standardNearshoreRequested,standardOpenCoastRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,standardInlandOrtho,coastalMarshRequested} from './app/scenery-profile.ts';
 import {verifyDecodedCover} from './sim/cover-proof.ts';
-import {MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS} from './render/kings-field-pass.ts';
+import {MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS,KINGS_DUNES_MAPPED_PASS} from './render/kings-field-pass.ts';
 import {kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested} from './app/scenery-profile.ts';
 import {SourisWetCurtain} from './render/souris-wet-curtain.ts';
 import {standardRegionalWind,standardSourisShoreline,runway03PavementRequested,summersideRunwayPavementRequested,aircraftRunwayCastRequested,bordenCoastRequested,capeTryonRockRequested,capeTryonSkySeatRequested} from './app/scenery-profile.ts';
@@ -244,7 +245,10 @@ async function run(){
    new MappedFieldPass(worldBase,renderer,scene,camera,QUEENS_MAPPED_PASS):undefined;
  const princeFields=princeFieldPassRequested(options)&&renderer.capabilities.maxTextures>=16?
    new MappedFieldPass(worldBase,renderer,scene,camera,PRINCE_MAPPED_PASS):undefined;
- const routeFields=[kingsFields,queensFields,princeFields].filter(f=>f!==undefined);
+ const dunesFields=kingsDunesFieldPassRequested(new URLSearchParams(location.search))&&
+  supportsOpaqueCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4&&renderer.capabilities.maxTextures>=16?
+  new MappedFieldPass(worldBase,renderer,scene,camera,KINGS_DUNES_MAPPED_PASS):undefined;
+ const routeFields=[kingsFields,queensFields,princeFields,dunesFields].filter(f=>f!==undefined);
  const grassRequested=options.has('sourceGrassStudy')&&!sceneryReviewBlock('sourceGrassStudy',options);
  const grassJob=grassRequested?fetchGrassStudy(worldBase):undefined;
  const fieldsJob=options.has('cropRowsReview')?loadFieldPilot(worldBase):undefined;
@@ -1062,7 +1066,7 @@ async function run(){
    if(selected){
     const p=retainPointPrim?camera.position:groundY;
     fields.update(retainPointPrim,playing&&f.status==='flying',mappedFieldProof,p,
-     p.y-terrain.atlasElevation(p.x,p.z),()=>world.mappedFieldGround(fields.materials,fields.route.tile));
+     p.y-terrain.atlasElevation(p.x,p.z),()=>world.mappedFieldGround(fields.materials,fields.route.tile,fields.route.scoped));
    }else fields.leave();
   }
   sourisShoreline?.update(camera.position);world.sourisWaterTie.value=sourisShoreline?.isActive()?1:0;foliage?.update(camera.position,time,ui.mode!=='crash');rustico?.update(camera.position);
@@ -1238,6 +1242,7 @@ async function run(){
   const endRidge=world.beginKingsRidgeDraw(camera);
   const activeRiver=standardRiverSeat?.activeCohort;
   const activeDunelands=cavendishSeat?.activeCohort;
+  let dunesDrawn=false;
   let endDunelands:undefined|(()=>void);
   let endRiver:undefined|(()=>void),endPrince:undefined|(()=>void),endCapeSky:undefined|(()=>void),
       endLake:undefined|(()=>void),endRim:undefined|(()=>void),endBorden:undefined|(()=>void);
@@ -1255,7 +1260,12 @@ async function run(){
    catch{datedStandReview.dispose();}
    try{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);renderer.render(scene,camera);}
    finally{endBorden?.();endBorden=undefined;endRim?.();endRim=undefined;end?.();}
-  }else{endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);drawWorld();}
+  }else{
+   endRim=world.beginRegularNorthRimDraw(camera);endBorden=world.beginBordenShoreArc(camera);
+   const finishFields=dunesFields?.beginScopedDraw(()=>lakeFrame()?world.mappedFieldGround(dunesFields.materials,dunesFields.route.tile,true):undefined);
+   dunesDrawn=!!finishFields;
+   try{drawWorld();}finally{finishFields?.();}
+  }
   }finally{
    try{endBorden?.();}finally{
     try{endRim?.();}finally{
@@ -1274,6 +1284,7 @@ async function run(){
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);
   if(diagnostic){
    const riverReceiver=endRiver?activeRiver?.shadowInfo():undefined;
+   Object.assign(window,{islandAirKingsDunesFieldState:dunesFields&&{...dunesFields.state,drawn:dunesDrawn}});
    if(datedStandReview&&new URLSearchParams(location.search).has('diagnostics'))
     Object.assign(window,{islandAirNorthCapeStandReview:datedStandReview.status});
    if(kingsFields)Object.assign(window,{islandAirKingsFields:{state:kingsFields.state,gain:kingsFields.gain}});

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {DataTexture,ShaderMaterial,Vector4} from 'three';
-import {kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested,sceneryOptions,forestFloorProfile,standardInlandOrtho,standardMeadowRequested,standardOpenRipplesRequested,runway03PavementRequested} from '../src/app/scenery-profile.ts';
-import {KINGS_FIELD_TILE,KINGS_FIELD_CELLS,MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS,kingsFieldShader,mappedFieldMaterial,withinKingsFieldPass,withinMappedPass} from '../src/render/kings-field-pass.ts';
+import {BufferGeometry,Camera,DataTexture,Mesh,Scene,ShaderMaterial,Vector4} from 'three';
+import {kingsDunesFieldPassRequested,kingsFieldPassRequested,queensFieldPassRequested,princeFieldPassRequested,sceneryOptions,forestFloorProfile,standardInlandOrtho,standardMeadowRequested,standardOpenRipplesRequested,runway03PavementRequested} from '../src/app/scenery-profile.ts';
+import {KINGS_DUNES_MAPPED_PASS,KINGS_FIELD_TILE,KINGS_FIELD_CELLS,MappedFieldPass,QUEENS_MAPPED_PASS,PRINCE_MAPPED_PASS,kingsFieldShader,mappedFieldMaterial,withinKingsFieldPass,withinMappedPass} from '../src/render/kings-field-pass.ts';
 import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {readFieldDirectory} from '../src/sim/field-shards.ts';
@@ -140,4 +140,81 @@ test('linking and retiring field materials does not dirty any shared stock textu
  assert(witness.source.version>initial);
  retired.dispose();control.dispose();witness.dispose();
  stock.dispose();atlas.dispose();orthos.forEach(t=>t.dispose());
+});
+
+
+test('Kings dunes admits only the sought original field route and both bounded authenticated ranges',()=>{
+ const a=sceneryOptions('?departure=kings-sand-dunes'),old=sceneryOptions('?stockKingsFieldPass'),
+  newOnly=sceneryOptions('?stockKingsDunesFieldPass');
+ assert(kingsDunesFieldPassRequested(a));assert(kingsDunesFieldPassRequested(old));
+ assert(!kingsDunesFieldPassRequested(newOnly)&&kingsFieldPassRequested(newOnly));
+ assert(!kingsDunesFieldPassRequested(new URLSearchParams('scenery=detail'))&&
+  !kingsDunesFieldPassRequested(new URLSearchParams('departure=a&departure=b'))&&
+  !kingsDunesFieldPassRequested(new URLSearchParams('provinceFieldsReview')));
+ const route=KINGS_DUNES_MAPPED_PASS,stock=SITES.find(s=>s.id===route.id);
+ assert(stock);assert.equal(route.tile,'30-12');
+ const spawn=project(stock.lon,stock.lat);
+ assert(!withinMappedPass({...spawn,y:50},58,route),'no field resource in the ordinary Dispatch');
+ assert(withinMappedPass({x:87995.72779680874,z:6745.449283850126,y:88},65,route));
+ const raw=gunzipSync(readFileSync(new URL('../public/world/fields-province/v2/index.fcr.gz',import.meta.url)));
+ const dir=readFieldDirectory(Uint8Array.from(raw).buffer);assert(dir);
+ assert.deepEqual(route.cells.map(k=>{const v=dir.cells.get(k);return [v?.pack,v?.offset,v?.size];}),
+  [[41,12344,2323],[41,15443,2149]]);
+});
+
+test('the scoped field can compose the existing bare-main wind shader without changing any wind code',()=>{
+ const LF=String.fromCharCode(10),globals='uniform sampler2D regionalStaticDepth;'+LF;
+ const physical=' float regionalCut=windStaticDirect(p,d,max(length(terrainDx.xz),length(terrainDy.xz)));';
+ const stock=globals+['void main(){',' float light=clamp(dot(n,sun),0.,1.);',physical,'}'].join(LF);
+ assert.equal(kingsFieldShader(stock),undefined);
+ const candidate=kingsFieldShader(stock,true);assert(candidate);
+ assert(candidate.startsWith(globals));
+ assert(candidate.endsWith(physical+LF+'}'));
+ assert.equal(candidate.split('void main(){').length,2);
+ assert.equal(candidate.split('paintProvinceFields(col,n,p,d,coast);').length,2);
+ assert.equal(kingsFieldShader(stock.replace(globals,''),true),undefined);
+ assert.equal(kingsFieldShader(stock.replace(physical,''),true),undefined);
+ assert.equal(kingsFieldShader(stock+stock,true),undefined);
+});
+
+test('scoped ordinary fields restore the original owner and sorter on late failure or absent residency',async()=>{
+ const stock=new ShaderMaterial({vertexShader:'stock vertex',
+  fragmentShader:[' void main(){',' float light=clamp(dot(n,sun),0.,1.);','}'].join(String.fromCharCode(10)),
+  uniforms:{clock:{value:0}}});
+ const g=new BufferGeometry(),mesh=new Mesh(g,stock),scene=new Scene(),cam=new Camera();scene.add(mesh);
+ const texture=new DataTexture(),programs=new WeakMap();
+ const gl={LINK_STATUS:1,isContextLost:()=>false,isProgram:()=>true,getProgramParameter:()=>true};
+ type SortArg=null|((a:unknown,b:unknown)=>number);
+ let sorter:SortArg=null,failSort=false;
+ const r={getContext:()=>gl,getRenderTarget:()=>null,outputColorSpace:'srgb',toneMapping:0,
+  shadowMap:{enabled:false,type:0},localClippingEnabled:false,clippingPlanes:[],
+  properties:{get:(m:ShaderMaterial)=>programs.get(m)},
+  compile(group:{children:Mesh[]}){
+   const expected=new Set();
+   for(const child of group.children){const m=child.material;
+    programs.set(m,{currentProgram:{program:{},isReady:()=>true}});expected.add(m);}
+   return expected;
+  },
+  setOpaqueSort(q:SortArg){sorter=q;if(q&&failSort)throw Error('rejected sorter');},
+ };
+ const pass=new MappedFieldPass('',r as never,scene,cam,KINGS_DUNES_MAPPED_PASS);
+ const stream={state:{ready:1},uniforms:{},update(){}},art={study:{stream,scan:{value:texture},toggle:{value:1}},dispose(){}};
+ Object.assign(pass,{art});
+ const owner=()=>[{id:'30-12',mesh,stock}];
+ const [x,z]=KINGS_DUNES_MAPPED_PASS.center;
+ const apply=(f:boolean,air:boolean)=>pass.update(f,air,async()=>true,{x,y:90,z},64,owner);
+ apply(false,false);await new Promise(r=>setImmediate(r));
+ assert.equal(pass.state.phase,'linked');assert.equal(pass.beginScopedDraw(owner),undefined);
+ apply(true,false);assert.equal(pass.beginScopedDraw(owner),undefined,'pause before first earned draw');
+ apply(true,true);assert.equal(mesh.material,stock);
+ const end=pass.beginScopedDraw(owner);assert(end);assert.notEqual(mesh.material,stock);assert(sorter);
+ assert.throws(()=>{try{throw Error('late render');}finally{end();}},/late render/);
+ assert.equal(mesh.material,stock);assert.equal(sorter,null);
+ apply(true,false);const paused=pass.beginScopedDraw(owner);assert(paused);paused();
+ stream.state.ready=0;assert.equal(pass.beginScopedDraw(owner),undefined);
+ stream.state.ready=1;assert.equal(mesh.material,stock);
+ failSort=true;assert.equal(pass.beginScopedDraw(owner),undefined);assert.equal(mesh.material,stock);assert.equal(sorter,null);
+ failSort=false;
+ stock.uniforms.clock={value:1};assert.equal(pass.beginScopedDraw(owner),undefined,'late stock wrapper replacement');
+ pass.leave();mesh.removeFromParent();g.dispose();stock.dispose();texture.dispose();
 });
