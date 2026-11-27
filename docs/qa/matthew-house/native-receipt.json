@@ -1,0 +1,91 @@
+{
+  "baseCommit": "fa1afccf64b3e64c8eaad7ded385161cb1635590",
+  "playableChange": false,
+  "flightScreen": [
+    1200,
+    760
+  ],
+  "flightPath": "Souris Waterfront Pass, ordinary right rudder, Chase camera",
+  "flightOwnerChecks": [
+    {
+      "frame": 149,
+      "originalTile": "q130331",
+      "verticesByRole": [
+        34155,
+        57,
+        39
+      ],
+      "mainFullPixels": 1145,
+      "mainAnyPixels": 1246,
+      "adjacentFullPixels": 93,
+      "adjacentAnyPixels": 148,
+      "restoredRGBA": true,
+      "glError": 0
+    },
+    {
+      "frame": 180,
+      "originalTile": "q130331",
+      "verticesByRole": [
+        34155,
+        57,
+        39
+      ],
+      "mainFullPixels": 1823,
+      "mainAnyPixels": 1996,
+      "adjacentFullPixels": 192,
+      "adjacentAnyPixels": 244,
+      "restoredRGBA": true,
+      "glError": 0
+    },
+    {
+      "frame": 239,
+      "originalTile": "q130331",
+      "verticesByRole": [
+        34155,
+        57,
+        39
+      ],
+      "mainFullPixels": 0,
+      "mainAnyPixels": 0,
+      "adjacentFullPixels": 0,
+      "adjacentAnyPixels": 0,
+      "restoredRGBA": true,
+      "glError": 0
+    }
+  ],
+  "studio": [
+    {
+      "shot": "front",
+      "sampleCount": 4,
+      "error": 0,
+      "calls": 2,
+      "tris": 2387,
+      "closeTriangles": 2385,
+      "midTriangles": 1221,
+      "scope": "Detached south-elevation study, approximate workshop envelope only. No current engine, tower, land, exact roof, or building footprint.",
+      "rgbaPNGsha256": "b77cca6eba33e1bdd4b3ed5be5716a7792dacc3ca290ec1f8cf7e58376faa62b"
+    },
+    {
+      "shot": "angled",
+      "sampleCount": 4,
+      "error": 0,
+      "calls": 2,
+      "tris": 2387,
+      "closeTriangles": 2385,
+      "midTriangles": 1221,
+      "scope": "Detached south-elevation study, approximate workshop envelope only. No current engine, tower, land, exact roof, or building footprint.",
+      "rgbaPNGsha256": "320c94a5edaea1bbdcc4badcaeb3ef2b05b7636709fa4e180735e1a202271b59"
+    },
+    {
+      "shot": "mid",
+      "sampleCount": 4,
+      "error": 0,
+      "calls": 2,
+      "tris": 1223,
+      "closeTriangles": 2385,
+      "midTriangles": 1221,
+      "scope": "Detached south-elevation study, approximate workshop envelope only. No current engine, tower, land, exact roof, or building footprint.",
+      "rgbaPNGsha256": "ec50d73f3f902061f497420dacdfd42b38838ef225c9de5d0191cc1b80ec8e43"
+    }
+  ]
+}
