@@ -80,3 +80,6 @@ The real flight launch continued with a healthy, missing, corrupt or
 stalled pack. The optional stalled body was aborted. Ground imagery and
 surrounding generic building meshes are unchanged and remain visibly limited.
 [Raw counts and cases](mapped-sidewalks-gate.json).
+
+The [matched canvas-opacity check](path-coverage-alpha.md) measures a
+separate correction to coverage during the original sidewalk fade.

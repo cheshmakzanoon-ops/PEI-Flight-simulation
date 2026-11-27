@@ -542,7 +542,7 @@ async function run(){
    verifyScene:async()=>await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded
   }):undefined;
  const confederationTrail=confederationTrailRequested(options)&&confederationTerrainPins(terrainSha,cover.sourceSha)?
-  new ConfederationTrail(scene,world,worldBase,renderer.getContext().getContextAttributes()?.antialias===true):undefined;
+  new ConfederationTrail(scene,world,worldBase,gl.getContextAttributes()?.antialias===true,undefined,supportsOpaqueCoverage(gl)):undefined;
  const gravelDrySeat=(x:number,y:number,z:number)=>world.surface(x,z).land&&y>=world.visualGroundHeight(x,z)-.012;
  const startRoads=(prepared?:Awaited<typeof montagueRoadJob>)=>Roads.create(scene,terrain,world.buildingShadows,
   terrain.inlandGrids.length?()=>world.nearInlandGrids():undefined,options.has('seatedRoads')?world:undefined,
@@ -760,7 +760,7 @@ async function run(){
  if(cover.sourceSha===SIDEWALKS.pinCoverSha256){
   void Promise.all([mappedSidewalks,roadReady,buildingReady]).then(([paths,street,structures])=>{
    if(paths&&street&&structures&&street.sourceGeometrySha256===SIDEWALKS.pinRoadGeometrySha256&&
-      structures.sourceAtlasSha256===SIDEWALKS.pinBuildingAtlasSha256)sidewalks=new Sidewalks(scene,world,paths);
+      structures.sourceAtlasSha256===SIDEWALKS.pinBuildingAtlasSha256)sidewalks=new Sidewalks(scene,world,paths,supportsOpaqueCoverage(gl));
   });
  }
  if(new URLSearchParams(location.search).has('surveyRelief')&&/^e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384$/.test(SIDEWALKS.sha256)){

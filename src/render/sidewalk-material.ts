@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {opaqueCoverageBlend} from './opaque-coverage-alpha.ts';
 import {concreteSidewalkFinishGLSL} from './concrete-sidewalk-finish.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
@@ -15,8 +16,9 @@ void main(){
 }
 `;
 
-export function sidewalkMaterial(sun:THREE.Vector3,casts?:BuildingShadows){
+export function sidewalkMaterial(sun:THREE.Vector3,casts?:BuildingShadows,preserveSceneAlpha=false){
  return new THREE.ShaderMaterial({vertexShader:vert,side:THREE.FrontSide,alphaToCoverage:true,
+ ...(preserveSceneAlpha?opaqueCoverageBlend:undefined),
  uniforms:{walkSun:{value:sun},walkAltitude:{value:0},...casts?.uniforms},
  fragmentShader:`
  varying vec2 coords;varying vec3 walk;

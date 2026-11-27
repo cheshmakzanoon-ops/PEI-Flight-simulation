@@ -54,3 +54,6 @@ At every positive pose, restoring the route re-created its exact first RGB frame
 ![Real compiled flight, Hunter River, Wide chase mode](art/confederation-trail-flight.webp)
 
 © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See the [world credits](../WORLD.md) for the rest of the atlas.
+
+The [matched canvas-opacity check](path-coverage-alpha.md) measures a
+separate correction to coverage without changing mapped Trail geometry.

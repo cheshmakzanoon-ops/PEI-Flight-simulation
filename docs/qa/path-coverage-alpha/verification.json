@@ -1,0 +1,814 @@
+{
+  "baseline": "ad5d17a72db8ffe5f450fd62ec86c1075249977d",
+  "renderer": "Chromium WebGL 2 / SwiftShader",
+  "viewport": [
+    840,
+    540
+  ],
+  "native": {
+    "queens-trail": {
+      "before": {
+        "draws": 41,
+        "tris": 317490,
+        "glError": 0
+      },
+      "after": {
+        "draws": 41,
+        "tris": 317490,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 1384,
+        "nonopaqueBefore": 1384,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 180,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 1384,
+        "nonopaqueAfter": 1384,
+        "loss": 0,
+        "minBefore": 180,
+        "minAfter": 180
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 6320,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 6,
+        "visible": 6,
+        "pending": 0,
+        "triangles": 620,
+        "active": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          1
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz",
+        "confederation-main.bin.gz"
+      ]
+    },
+    "charlottetown-fade-walk": {
+      "before": {
+        "draws": 63,
+        "tris": 425363,
+        "glError": 0
+      },
+      "after": {
+        "draws": 63,
+        "tris": 425363,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 11019,
+        "nonopaqueBefore": 11019,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 180,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 11019,
+        "nonopaqueAfter": 11019,
+        "loss": 0,
+        "minBefore": 180,
+        "minAfter": 180
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 11019,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 12,
+        "pending": 0,
+        "visible": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz"
+      ]
+    },
+    "summerside-fade-walk": {
+      "before": {
+        "draws": 78,
+        "tris": 365461,
+        "glError": 0
+      },
+      "after": {
+        "draws": 78,
+        "tris": 365461,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 3068,
+        "nonopaqueBefore": 3068,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 205,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 3068,
+        "nonopaqueAfter": 3068,
+        "loss": 0,
+        "minBefore": 205,
+        "minAfter": 205
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 3068,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 9,
+        "pending": 0,
+        "visible": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz"
+      ]
+    },
+    "kings-trail": {
+      "before": {
+        "draws": 50,
+        "tris": 261735,
+        "glError": 0
+      },
+      "after": {
+        "draws": 50,
+        "tris": 261735,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 4992,
+        "nonopaqueBefore": 4992,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 179,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 4992,
+        "nonopaqueAfter": 4992,
+        "loss": 0,
+        "minBefore": 179,
+        "minAfter": 179
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 22799,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 5,
+        "visible": 5,
+        "pending": 0,
+        "triangles": 322,
+        "active": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz",
+        "confederation-main.bin.gz"
+      ]
+    },
+    "prince-trail": {
+      "before": {
+        "draws": 120,
+        "tris": 306106,
+        "glError": 0
+      },
+      "after": {
+        "draws": 120,
+        "tris": 306106,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 5613,
+        "nonopaqueBefore": 5613,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 179,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 5613,
+        "nonopaqueAfter": 5613,
+        "loss": 0,
+        "minBefore": 179,
+        "minAfter": 179
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 26250,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 5,
+        "visible": 5,
+        "pending": 0,
+        "triangles": 462,
+        "active": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz",
+        "confederation-main.bin.gz"
+      ]
+    },
+    "charlottetown-walk": {
+      "before": {
+        "draws": 63,
+        "tris": 430622,
+        "glError": 0
+      },
+      "after": {
+        "draws": 63,
+        "tris": 430622,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 12773,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 13,
+        "pending": 0,
+        "visible": true
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [
+        [
+          "",
+          true,
+          5
+        ]
+      ],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz"
+      ]
+    },
+    "high": {
+      "before": {
+        "draws": 39,
+        "tris": 313046,
+        "glError": 0
+      },
+      "after": {
+        "draws": 39,
+        "tris": 313046,
+        "glError": 0
+      },
+      "delta": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "restore": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "pngUndo": true,
+      "newPngExact": true,
+      "candidateRepeat": {
+        "rgb": 0,
+        "alpha": 0,
+        "nonopaqueBefore": 0,
+        "nonopaqueAfter": 0,
+        "loss": 0,
+        "minBefore": 255,
+        "minAfter": 255
+      },
+      "offRole": 0,
+      "role": 0,
+      "markerAlphaDelta": 0,
+      "stage": {
+        "status": "idle",
+        "attempts": 0,
+        "resident": 0,
+        "visible": 0,
+        "pending": 0,
+        "triangles": 0,
+        "active": false
+      },
+      "attributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "samples": 4,
+      "compat": [],
+      "requests": [
+        "sidewalks.ts",
+        "sidewalks.generated.ts",
+        "sidewalks.bin.gz"
+      ]
+    }
+  },
+  "note": "Queens initial renderer begins with legacy constructor, then applies only the exact blend during a matching draw. Other frames start with the guarded constructor and temporarily apply legacy state; two RGB role markers leave alpha intact. No change to route, perspective, shader output colour, coverage profile or geometry. Native frames are per case matched within one simulation tick. Counts cannot imply device performance.",
+  "compiledOrdinaryFlight": {
+    "trail-native": {
+      "coverage": {
+        "samples": 4,
+        "alpha": true,
+        "aa": true,
+        "blend": true,
+        "coverage": true,
+        "color": [
+          1,
+          0
+        ],
+        "a": [
+          0,
+          1
+        ]
+      },
+      "context": {
+        "samples": 4,
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 3,
+        "visible": 3,
+        "pending": 3,
+        "triangles": 360,
+        "active": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 22.103297512292947,
+      "paused": true
+    },
+    "walk-native": {
+      "coverage": {
+        "samples": 4,
+        "alpha": true,
+        "aa": true,
+        "blend": true,
+        "coverage": true,
+        "color": [
+          1,
+          0
+        ],
+        "a": [
+          0,
+          1
+        ]
+      },
+      "context": {
+        "samples": 4,
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 5,
+        "pending": 0,
+        "visible": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 24.643877714146964,
+      "paused": true
+    },
+    "trail-0x": {
+      "coverage": {
+        "samples": 0,
+        "alpha": true,
+        "aa": false,
+        "blend": false,
+        "coverage": false,
+        "color": [
+          770,
+          771
+        ],
+        "a": [
+          1,
+          771
+        ]
+      },
+      "context": {
+        "samples": 0,
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 5,
+        "visible": 5,
+        "pending": 1,
+        "triangles": 492,
+        "active": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 23.895611755884804,
+      "paused": true
+    },
+    "walk-0x": {
+      "coverage": {
+        "samples": 0,
+        "alpha": true,
+        "aa": false,
+        "blend": false,
+        "coverage": true,
+        "color": [
+          770,
+          771
+        ],
+        "a": [
+          1,
+          771
+        ]
+      },
+      "context": {
+        "samples": 0,
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 5,
+        "pending": 0,
+        "visible": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 21.70984814437921,
+      "paused": true
+    },
+    "trail-rgb-only": {
+      "coverage": {
+        "samples": 4,
+        "alpha": false,
+        "aa": true,
+        "blend": false,
+        "coverage": true,
+        "color": [
+          770,
+          771
+        ],
+        "a": [
+          1,
+          771
+        ]
+      },
+      "context": {
+        "samples": 4,
+        "alpha": false,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "status": "ready",
+        "attempts": 1,
+        "resident": 2,
+        "visible": 2,
+        "pending": 4,
+        "triangles": 232,
+        "active": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 22.103297512292947,
+      "paused": true
+    },
+    "walk-rgb-only": {
+      "coverage": {
+        "samples": 4,
+        "alpha": false,
+        "aa": true,
+        "blend": false,
+        "coverage": true,
+        "color": [
+          770,
+          771
+        ],
+        "a": [
+          1,
+          771
+        ]
+      },
+      "context": {
+        "samples": 4,
+        "alpha": false,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "state": {
+        "id": "mapped-sidewalks-v1",
+        "tiles": 5,
+        "pending": 0,
+        "visible": true
+      },
+      "camera": "Chase",
+      "warnings": [],
+      "travel": 21.70984814437921,
+      "paused": true
+    }
+  },
+  "productionTests": {
+    "tests": 685,
+    "pass": 685,
+    "fail": 0,
+    "typescript": true,
+    "vite": true
+  },
+  "sha256": {
+    "src/main.ts": "79f1842b3e75d84eeafa38c55027309e217d8acae000d63b48986fe9ddfdd758",
+    "src/render/confederation-trail-material.ts": "18d03bf7ca122094ca36a28fa09f8e44f8e7289f2142cb708d1c22bb4368172a",
+    "src/render/confederation-trail.ts": "6de041eefe8ad7518ef375ea81cd75de038ce707e2577d470d0fa0c7b59191fb",
+    "src/render/sidewalk-material.ts": "03efc39319059034066061c81359c94e49ec769d708612f97cb4059264748818",
+    "src/render/sidewalks.ts": "02ca9fbc0e85283e1f20a9a3f88c5ea36d5b73d54a66be53a476be6201b7d965",
+    "test/ground-path-coverage-alpha.test.ts": "0e3165d27ed9d0ae443e8146112c2d9bbe7a5cc6376617adcd99634974d215a1",
+    "tools/qa/path-coverage-alpha.py": "aef4e8490b0a4f6cfe2ed5832f5f56f48948c28fb3d89677e4734caf49610f21",
+    "docs/qa/path-coverage-alpha/hunters-trail.webp": "7970b9a4fcb9712629c12c0be05903c733348e628b1647cbccce39ddd926bb8f",
+    "docs/qa/path-coverage-alpha/city-walks.webp": "e53c056aa3f1c744b1351501fc3f7b5fabefbe9aeb2b9f686043e07a0978b8c1"
+  }
+}

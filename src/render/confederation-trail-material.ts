@@ -1,9 +1,10 @@
 import * as THREE from 'three';
+import {opaqueCoverageBlend} from './opaque-coverage-alpha.ts';
 import {buildingShadowGLSL,type BuildingShadows} from './local-building-shadows.ts';
 
 /** Original rolled-stone dust: no aerial or vendor pixels. Keep sub-centimetre
  * texture out of the distance path instead of letting it alias in a shallow pass. */
-export function confederationMaterial(sun:THREE.Vector3,msaa:boolean,casts?:BuildingShadows){
+export function confederationMaterial(sun:THREE.Vector3,msaa:boolean,casts?:BuildingShadows,preserveSceneAlpha=false){
  return new THREE.ShaderMaterial({
   vertexShader:`
    attribute vec2 trailOptic;
@@ -17,6 +18,7 @@ export function confederationMaterial(sun:THREE.Vector3,msaa:boolean,casts?:Buil
    }
   `,
   side:THREE.FrontSide,alphaToCoverage:msaa,transparent:false,depthWrite:true,
+  ...(msaa&&preserveSceneAlpha?opaqueCoverageBlend:undefined),
   uniforms:{trailSun:{value:sun},trailAGL:{value:0},...casts?.uniforms},
   fragmentShader:`
    varying vec2 strip;varying vec2 optical;varying vec3 wp,wn;

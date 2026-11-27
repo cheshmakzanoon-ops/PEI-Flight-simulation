@@ -203,9 +203,9 @@ export class Sidewalks{
  private readonly grid:Grid;
  private readonly world:World;
  private readonly atlas:WalkTile[];
- constructor(scene:THREE.Scene,world:World,atlas:WalkTile[]){
+ constructor(scene:THREE.Scene,world:World,atlas:WalkTile[],preserveSceneAlpha=false){
   this.world=world;this.atlas=atlas;this.grid=sidewalkGrid(world.terrain);
-  this.mat=sidewalkMaterial(world.sun,world.buildingShadows);
+  this.mat=sidewalkMaterial(world.sun,world.buildingShadows,preserveSceneAlpha);
   this.root.name='Mapped PEI sidewalk ribbons';this.root.visible=false;scene.add(this.root);
  }
  update(x:number,z:number,agl:number){

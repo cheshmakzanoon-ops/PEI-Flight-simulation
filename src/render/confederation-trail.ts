@@ -210,9 +210,9 @@ export class ConfederationTrail{
  private readonly world:World;
  private readonly base:string;
  private readonly request:typeof fetch;
- constructor(scene:THREE.Scene,world:World,base:string,msaa:boolean,request:typeof fetch=fetch){
+ constructor(scene:THREE.Scene,world:World,base:string,msaa:boolean,request:typeof fetch=fetch,preserveSceneAlpha=false){
   this.world=world;this.base=base;this.request=request;
-  this.material=confederationMaterial(world.sun,msaa,world.buildingShadows);
+  this.material=confederationMaterial(world.sun,msaa,world.buildingShadows,preserveSceneAlpha);
   this.coast=landmarks(world.terrain);
   this.group.name='Main Confederation Trail – mapped stone dust';this.group.visible=false;scene.add(this.group);
  }
