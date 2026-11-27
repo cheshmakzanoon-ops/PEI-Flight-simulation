@@ -122,3 +122,7 @@ A new pull request revision still supersedes that pull request's earlier
 in-progress check. Confirm the commit SHA on a successful `main` run
 before selecting its web build artifact; completion order can differ
 from commit order.
+
+For shoreline triage, the [coastal building census](qa/coastal-building-census.md)
+screens all original footprints against coarse Cover. It does not approve
+waterline changes or stock-shell removal.
