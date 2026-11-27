@@ -10,6 +10,7 @@ import { addFlightSurface, deflectionTarget, type SurfaceInput } from './flight-
 
 /** Original high-wing survey aircraft. Local +Y up, -Z forward. All dimensions in metres. */
 export function createAircraft() {
+ const runwayCasters:THREE.Mesh[]=[];
  const root=new THREE.Group(); root.name='Island Air • Survey 01';
  const mat=(color:number,roughness=.55,metalness=.2)=>new THREE.MeshStandardMaterial({color,roughness,metalness,side:THREE.DoubleSide});
  const pearl=mat(0xe2dfcf,.39,.34), ivory=mat(0xf3efe3,.35,.26), teal=mat(0x17606a,.36,.37),
@@ -63,7 +64,7 @@ export function createAircraft() {
    }
    for(const [material,list] of pieces){
     const merged=mergeGeometries(list);
-    if(merged){mesh(merged,material,group);if(merged!==list[0])for(const g of list)g.dispose();}
+    if(merged){const m=mesh(merged,material,group);if(material===rubber)runwayCasters.push(m);if(merged!==list[0])for(const g of list)g.dispose();}
     else for(const g of list)mesh(g,material,group);
    }
    return group;
@@ -84,7 +85,7 @@ export function createAircraft() {
  const rim=arr.length/3;arr.push(...arr.slice(0,sides*3));
  const noseCentre=arr.length/3;arr.push(0,rings[0][2],rings[0][0]);
  for(let j=0;j<sides;j++)ind.push(noseCentre,rim+(j+1)%sides,rim+j);
- const hullG=new THREE.BufferGeometry();hullG.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));hullG.setIndex(ind);hullG.computeVertexNormals();mesh(hullG,pearl);
+ const hullG=new THREE.BufferGeometry();hullG.setAttribute('position',new THREE.Float32BufferAttribute(arr,3));hullG.setIndex(ind);hullG.computeVertexNormals();runwayCasters.push(mesh(hullG,pearl));
  // Follow the same hull cross sections used by the renderer so glazing does not cut through
  // exterior paint. A short standoff represents the thickness of the window frame.
  function skin(z:number){let i=0;while(i<rings.length-2&&z>rings[i+1][0])i++;
@@ -154,7 +155,7 @@ export function createAircraft() {
    for(let s=0;s<sections.length-1;s++)for(let k=0;k<pointCount;k++){const a=s*pointCount+k,b=s*pointCount+(k+1)%pointCount;ix.push(a,a+pointCount,b,b,a+pointCount,b+pointCount);}
    const last=(sections.length-1)*pointCount;for(let k=1;k<pointCount-1;k++)ix.push(last,last+k,last+k+1);
    if(side>0){for(let i=0;i<ix.length;i+=3){const t=ix[i+1];ix[i+1]=ix[i+2];ix[i+2]=t;}}
-   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vs,3));g.setIndex(ix);g.computeVertexNormals();mesh(g,material);
+   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vs,3));g.setIndex(ix);g.computeVertexNormals();runwayCasters.push(mesh(g,material));
  }
  const outlines=[[.03,1.17,-1.22,1.98,.095,-.025],[.80,1.17,-1.25,2.00,.095,-.025],[2.5,1.21,-1.22,1.93,.093,-.025],[4.35,1.28,-1.13,1.70,.085,-.040],[5.64,1.34,-.98,1.32,.083,-.055],[5.97,1.37,-.79,.97,.078,-.06]];
  const controls:{side:number;aileron:ReturnType<typeof addFlightSurface>;elevator:ReturnType<typeof addFlightSurface>}[]=[];
@@ -164,11 +165,12 @@ export function createAircraft() {
   const aileron=addFlightSurface(root,side,outlines.slice(3),ivory,.73,side<0?'Port aileron':'Starboard aileron');
   const elevator=addFlightSurface(root,side,[[.06,.17,3.75,1.32,.08,-.01],[1.28,.20,4.00,1.13,.075,-.01],[2.22,.26,4.27,.75,.07,-.015],[2.33,.27,4.42,.48,.065,-.015]],ivory,.68,side<0?'Port elevator':'Starboard elevator');
   controls.push({side,aileron,elevator});
-  bar([side*.58,-.31,-.80],[side*3.74,1.26,-.50],.058,pearl);
-  bar([side*.55,-.30,.34],[side*3.74,1.26,-.46],.043,pearl);
+  runwayCasters.push(...aileron.casters,...elevator.casters);
+  runwayCasters.push(bar([side*.58,-.31,-.80],[side*3.74,1.26,-.50],.058,pearl));
+  runwayCasters.push(bar([side*.55,-.30,.34],[side*3.74,1.26,-.46],.043,pearl));
   // Spring-steel main gear, axle mount and hydraulic line.
   const mainTop=[side*.53,-.30,.53],mainBend=[side*.95,-.82,.57],axleEnd=[side*1.25,-1.09,.55];
-  bar(mainTop,mainBend,.072,pearl);bar(mainBend,axleEnd,.051,pearl);
+  runwayCasters.push(bar(mainTop,mainBend,.072,pearl),bar(mainBend,axleEnd,.051,pearl));
   bar([side*.58,-.34,.65],[side*.94,-.81,.66],.013,dark);
   bar([side*.94,-.81,.66],[side*1.13,-1.08,.65],.012,dark);
   wheel(...([side*1.25,-1.09,.55,.31,.155] as const));
@@ -177,18 +179,18 @@ export function createAircraft() {
   navLens(side*6.14,1.407,-.51,side<0?0xb92326:0x21985e);
  }
  // Exposed steering strut, bright oleo piston and two-sided wheel fork.
- bar([0,-.24,-2.92],[0,-.79,-2.63],.069,pearl);
- bar([0,-.74,-2.65],[0,-.99,-2.54],.043,alloy);
+ runwayCasters.push(bar([0,-.24,-2.92],[0,-.79,-2.63],.069,pearl));
+ runwayCasters.push(bar([0,-.74,-2.65],[0,-.99,-2.54],.043,alloy));
  for(const side of [-1,1]){
-  bar([0,-.94,-2.55],[side*.084,-1.01,-2.57],.034,brakeSteel);
-  bar([side*.084,-1.01,-2.57],[side*.084,-1.15,-2.53],.032,pearl);
+  runwayCasters.push(bar([0,-.94,-2.55],[side*.084,-1.01,-2.57],.034,brakeSteel));
+  runwayCasters.push(bar([side*.084,-1.01,-2.57],[side*.084,-1.15,-2.53],.032,pearl));
  }
  wheel(0,-1.15,-2.53,.25,.123,true);
  // Separate closed tail and aft control. Colors stay attached across the hinge.
- const rudder=createRudder(root,teal,ochre,pearl);
+ const rudder=createRudder(root,teal,ochre,pearl);runwayCasters.push(...rudder.casters);
  navLens(0,.18,5.52,0xffecd1);
- const {prop,propDisc,spinner,setProp}=makePropeller(SURVEY_AIRFRAME.gearHeightM);
- root.add(spinner,prop,propDisc);
+ const {prop,propDisc,spinner,setProp,spinnerCasters}=makePropeller(SURVEY_AIRFRAME.gearHeightM);
+ root.add(spinner,prop,propDisc);runwayCasters.push(...spinnerCasters);
  // Original cockpit framing and analog gauge deck used in the pilot camera.
  const cockpit=new THREE.Group();root.add(cockpit);
  createCockpitTrim(cockpit);
@@ -260,6 +262,6 @@ export function createAircraft() {
   const angles=altimeterAngles(feet);
   altitudeHands.forEach((p,i)=>{p.rotation.z=angles[i];});
  }
- return {root,prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),rudderAngle:rudder.angle,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
+ return {root,runwayCasters:Object.freeze(runwayCasters),prop,cockpit,needles,setControls,setAltitude,altitudeAngles:()=>altitudeHands.map(p=>p.rotation.z),rudderAngle:rudder.angle,controlAngles:()=>controls.map(c=>[c.aileron.angle(),c.elevator.angle()]),setInterior(on:boolean){if(on===previousInside)return;previousInside=on;for(const child of root.children)child.visible=!on||child===cockpit||child===prop||child===propDisc;cockpit.visible=on;},
  setProp};
 }

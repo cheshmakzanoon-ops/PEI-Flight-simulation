@@ -48,12 +48,13 @@ export function createRudder(root:THREE.Group,teal:THREE.Material,ochre:THREE.Ma
     const g=new THREE.BufferGeometry();
     g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
     g.setIndex(indices);g.computeVertexNormals();
-    const m=new THREE.Mesh(g,material);m.castShadow=cap;m.receiveShadow=true;parent.add(m);
+    const m=new THREE.Mesh(g,material);m.castShadow=cap;m.receiveShadow=true;parent.add(m);return m;
   }
+  const casters:THREE.Mesh[]=[];
   for(const [aft,parent,origin] of [[false,root,new THREE.Vector3()],[true,moving,pivot]] as const){
     const onSide=(p:Section)=>(aft?1:-1)*(p[1]-hinge(p[0]))-GAP;
     const shape=clip(OUTLINE,onSide);
-    part(shape,parent,origin,teal,[-1,1],true);
+    const m=part(shape,parent,origin,teal,[-1,1],true);if(m)casters.push(m);
     for(const [index,raw] of PAINT.entries()){
       // Constrain paint to the six established tail edges before opening the hinge.
       let paint=clip(raw,onSide);
@@ -66,7 +67,7 @@ export function createRudder(root:THREE.Group,teal:THREE.Material,ochre:THREE.Ma
   }
   let angle=0;
   return {
-    angle:()=>angle,
+    angle:()=>angle,casters,
     update(yaw:number,dt:number){
       angle=deflectionAt(angle,rudderDeflection(yaw),dt);
       moving.quaternion.setFromAxisAngle(axis,angle);

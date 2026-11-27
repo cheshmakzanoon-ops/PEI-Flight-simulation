@@ -1,0 +1,695 @@
+{
+  "schema": "pei-cysu-aviation-shadow-v1",
+  "parent": "4764f118420ddefe9e789a12ecedb5c9e85d4fad",
+  "browser": "Chrome for Testing 158.0.8127.36 / WebGL2 / SwiftShader",
+  "renderedOnlyAt": "Summerside 05/23 Standard / signed N112 runway receivers / 4x samples",
+  "releaseModel": {
+    "meshParts": 34,
+    "articulatedParts": 5,
+    "positions": 4676,
+    "triangles": 7184,
+    "mergedDraws": 1,
+    "targetSize": 256,
+    "lightEyeMetres": 23
+  },
+  "chase": {
+    "roll65": {
+      "m": 65.1622600179021,
+      "alt": 1.470729390068609,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 9592,
+      "changed": 10123,
+      "role": 10214,
+      "partial": 218,
+      "outside": 0,
+      "alpha": 0,
+      "max": 7,
+      "diffBright": 0,
+      "calls": 169,
+      "triangles": 285258
+    },
+    "roll160": {
+      "m": 160.02647212661046,
+      "alt": 1.4148336383289966,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 7938,
+      "changed": 8297,
+      "role": 8365,
+      "partial": 225,
+      "outside": 0,
+      "alpha": 0,
+      "max": 10,
+      "diffBright": 0,
+      "calls": 169,
+      "triangles": 283834
+    },
+    "roll980": {
+      "m": 980.1413712641413,
+      "alt": 1.4890302027671147,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 6571,
+      "changed": 6830,
+      "role": 6882,
+      "partial": 140,
+      "outside": 0,
+      "alpha": 0,
+      "max": 10,
+      "diffBright": 0,
+      "calls": 166,
+      "triangles": 267232
+    },
+    "roll1005": {
+      "m": 1005.1998197151189,
+      "alt": 1.318720024194615,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 4904,
+      "changed": 5100,
+      "role": 5131,
+      "partial": 118,
+      "outside": 0,
+      "alpha": 0,
+      "max": 7,
+      "diffBright": 0,
+      "calls": 165,
+      "triangles": 265991
+    },
+    "roll1050": {
+      "m": 1050.5345790487827,
+      "alt": 1.7682119623638552,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 6181,
+      "changed": 6420,
+      "role": 6448,
+      "partial": 59,
+      "outside": 0,
+      "alpha": 0,
+      "max": 10,
+      "diffBright": 0,
+      "calls": 164,
+      "triangles": 262687
+    },
+    "air5": {
+      "m": 1125.5347682045976,
+      "alt": 5.05778419238133,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 10836,
+      "changed": 11254,
+      "role": 11336,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 7,
+      "diffBright": 0,
+      "calls": 164,
+      "triangles": 260443
+    },
+    "fade16": {
+      "m": 1173.2910558409994,
+      "alt": 16.16376365416941,
+      "gain": 0.7161604147356045,
+      "w": 830,
+      "h": 554,
+      "strong": 0,
+      "changed": 0,
+      "role": 0,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 0,
+      "diffBright": 0,
+      "calls": 163,
+      "triangles": 249116
+    },
+    "fade20": {
+      "m": 1185.9496866225647,
+      "alt": 20.06993586691414,
+      "gain": 0.11824339736302047,
+      "w": 830,
+      "h": 554,
+      "strong": 0,
+      "changed": 0,
+      "role": 0,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 0,
+      "diffBright": 0,
+      "calls": 163,
+      "triangles": 249116
+    },
+    "off23": {
+      "m": 1195.1588817622883,
+      "alt": 23.1034165991943,
+      "gain": 0,
+      "w": 830,
+      "h": 554,
+      "strong": 0,
+      "changed": 0,
+      "role": 0,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 0,
+      "diffBright": 0,
+      "calls": 163,
+      "triangles": 249116
+    }
+  },
+  "projection": [
+    {
+      "id": "roll65",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 10123,
+      "strong": 9592,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 6,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        12762,
+        13472,
+        14809
+      ],
+      "dry": 254,
+      "box": [
+        -49297.73165468844,
+        12.93530746279933,
+        7554.975706937012,
+        -49286.70854234736,
+        13.119999885559082,
+        7564.36697442236
+      ],
+      "faces": [
+        [
+          "7-12",
+          5,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          0,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "roll160",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 8297,
+      "strong": 7938,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 4,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        10046,
+        10720,
+        11846
+      ],
+      "dry": 254,
+      "box": [
+        -49242.32812236482,
+        13.094668572306016,
+        7478.040719656334,
+        -49231.1510365462,
+        13.119999885559082,
+        7487.453724854544
+      ],
+      "faces": [
+        [
+          "7-12",
+          2,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          0,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "roll980",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 6830,
+      "strong": 6571,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 30,
+      "whole": 6,
+      "edge": [
+        [
+          455,
+          402,
+          2
+        ],
+        [
+          456,
+          402,
+          5
+        ],
+        [
+          455,
+          403,
+          1
+        ],
+        [
+          456,
+          403,
+          3
+        ],
+        [
+          456,
+          404,
+          1
+        ],
+        [
+          457,
+          404,
+          4
+        ]
+      ],
+      "mask": [
+        7484,
+        8039,
+        9009
+      ],
+      "dry": 254,
+      "box": [
+        -48762.33481791429,
+        14.970031986732947,
+        6813.008656229965,
+        -48751.2407403754,
+        15.09781629866789,
+        6822.417049655364
+      ],
+      "faces": [
+        [
+          "7-12",
+          1,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          0,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "roll1005",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 5100,
+      "strong": 4904,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 1,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        5669,
+        6208,
+        7053
+      ],
+      "dry": 254,
+      "box": [
+        -48747.80156001531,
+        15.264248615828757,
+        6792.604052910042,
+        -48736.69743001526,
+        15.383266157302671,
+        6802.0279678648185
+      ],
+      "faces": [
+        [
+          "7-12",
+          1,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          1,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "roll1050",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 6420,
+      "strong": 6181,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 10,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        6715,
+        7290,
+        8178
+      ],
+      "dry": 254,
+      "box": [
+        -48720.93426034578,
+        15.710142769192258,
+        6756.0373693363,
+        -48709.8269932151,
+        15.821583798275675,
+        6765.469686516555
+      ],
+      "faces": [
+        [
+          "7-12",
+          0,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          1,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "air5",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 11254,
+      "strong": 10836,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 15,
+      "whole": 4,
+      "edge": [
+        [
+          660,
+          471,
+          1
+        ],
+        [
+          544,
+          506,
+          1
+        ],
+        [
+          497,
+          531,
+          1
+        ],
+        [
+          498,
+          531,
+          1
+        ]
+      ],
+      "mask": [
+        11326,
+        12006,
+        13164
+      ],
+      "dry": 254,
+      "box": [
+        -48674.26384360857,
+        16.058796731274132,
+        6698.060527585702,
+        -48662.24047249403,
+        16.145562793215188,
+        6706.168615230567
+      ],
+      "faces": [
+        [
+          "7-12",
+          0,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          2,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "off23",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 0,
+      "strong": 0,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 0,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        0,
+        0,
+        0
+      ],
+      "dry": null,
+      "box": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "faces": []
+    }
+  ],
+  "downwardInspection": {
+    "air5": {
+      "m": 389.40626375502154,
+      "alt": 5.02202164374205,
+      "gain": 1,
+      "w": 830,
+      "h": 554,
+      "strong": 9263,
+      "changed": 9640,
+      "role": 9703,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 7,
+      "diffBright": 0,
+      "calls": 170,
+      "triangles": 282282
+    },
+    "fade16": {
+      "m": 490.6943491964059,
+      "alt": 16.024308944185563,
+      "gain": 0.7371321597181987,
+      "w": 830,
+      "h": 554,
+      "strong": 6582,
+      "changed": 6920,
+      "role": 6984,
+      "partial": 0,
+      "outside": 0,
+      "alpha": 0,
+      "max": 7,
+      "diffBright": 0,
+      "calls": 141,
+      "triangles": 283981
+    }
+  },
+  "inspectionProjection": [
+    {
+      "id": "air5",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 9640,
+      "strong": 9263,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 12,
+      "whole": 0,
+      "edge": [],
+      "mask": [
+        9711,
+        10332,
+        11406
+      ],
+      "dry": 254,
+      "box": [
+        -49103.470672625066,
+        13.119999885559082,
+        7295.98587331297,
+        -49091.47233455909,
+        13.119999885559082,
+        7304.311410285637
+      ],
+      "faces": [
+        [
+          "7-12",
+          2,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          0,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    },
+    {
+      "id": "fade16",
+      "model": "5bda76cd5bffc4b1df54a7f9c1932b9fc48ef149bf42bd3bb9bbc953f2ff10aa",
+      "changed": 6920,
+      "strong": 6582,
+      "alpha": 0,
+      "brighter": 0,
+      "out": 0,
+      "examples": [],
+      "centre": 13,
+      "whole": 1,
+      "edge": [
+        [
+          414,
+          346,
+          1
+        ]
+      ],
+      "mask": [
+        6986,
+        7489,
+        8318
+      ],
+      "dry": 254,
+      "box": [
+        -49031.539999209606,
+        13.119999885559082,
+        7221.289289292175,
+        -49019.49372255337,
+        13.119999885559082,
+        7229.5347182665
+      ],
+      "faces": [
+        [
+          "7-12",
+          1,
+          "0ae7e34ce088c9034f6b92d342969ddbad2a3941f17b7235c01de67cef5e4baf",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ],
+        [
+          "8-12",
+          0,
+          "9b8aee0c1afe6ff88043a1d6c2410a4e8741cfdc20f3d7686646b82db6bc5638",
+          "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+        ]
+      ]
+    }
+  ],
+  "nativeStockControls": {
+    "stock": {
+      "samples": 4,
+      "error": 0,
+      "state": null,
+      "x": -49323.31679130969,
+      "z": 7598.379825362179,
+      "mode": "flight",
+      "site": "cysu",
+      "depthSource": 0,
+      "sources": 0
+    },
+    "zero": {
+      "samples": 0,
+      "error": 0,
+      "state": null,
+      "x": -49323.63146581664,
+      "z": 7598.815910969273,
+      "mode": "flight",
+      "site": "cysu",
+      "depthSource": 0,
+      "sources": 0
+    },
+    "charlottetown": {
+      "samples": 4,
+      "error": 0,
+      "state": {
+        "active": false,
+        "gain": 0,
+        "draws": 0,
+        "triangles": 0,
+        "refreshes": 0
+      },
+      "x": 5570.6353026367,
+      "z": 24456.034735842757,
+      "mode": "flight",
+      "site": "cyyg",
+      "depthSource": 0,
+      "sources": 2
+    }
+  },
+  "rawFrameSHA256": {
+    "air5-active.png": "470d7f2ae1bcbcdba4c244fddc2d13af3ef0264b1071ad34ad38cbb2358f5927",
+    "air5-repeat.png": "38f7d76f96997bb368a2d76497c7fae9a59d8ca7d3412b94aaceacbd81f8a3d5",
+    "air5-stock.png": "38f7d76f96997bb368a2d76497c7fae9a59d8ca7d3412b94aaceacbd81f8a3d5",
+    "fade16-active.png": "cf6b98e4c1bb45009e050f744dd1e39b457cfeec8a28cdb200bcfc9d00025489",
+    "fade16-repeat.png": "cf6b98e4c1bb45009e050f744dd1e39b457cfeec8a28cdb200bcfc9d00025489",
+    "fade16-stock.png": "cf6b98e4c1bb45009e050f744dd1e39b457cfeec8a28cdb200bcfc9d00025489",
+    "fade20-active.png": "363944101c6e0c566ccbe49635b70e2c2debfdfc66c969da2dd4a212dce8a0d4",
+    "fade20-repeat.png": "363944101c6e0c566ccbe49635b70e2c2debfdfc66c969da2dd4a212dce8a0d4",
+    "fade20-stock.png": "363944101c6e0c566ccbe49635b70e2c2debfdfc66c969da2dd4a212dce8a0d4",
+    "off23-active.png": "6be93f240d8e837b665796dcccb552fb8c8d8ea9b44300203c8d281069d50ce0",
+    "off23-repeat.png": "6be93f240d8e837b665796dcccb552fb8c8d8ea9b44300203c8d281069d50ce0",
+    "off23-stock.png": "6be93f240d8e837b665796dcccb552fb8c8d8ea9b44300203c8d281069d50ce0",
+    "roll1005-active.png": "973fd6e5ef9ae2fac23dd0af905449404c629234117befc62281405051920557",
+    "roll1005-repeat.png": "947a29548e9bc3b2578b10b45abc60832e8dc997a993db748412acc2dcbc037e",
+    "roll1005-stock.png": "947a29548e9bc3b2578b10b45abc60832e8dc997a993db748412acc2dcbc037e",
+    "roll1050-active.png": "220a55b4f96ec64a6f02e4cbb407c5260afdc4f7268203c439837ca0471fd7f2",
+    "roll1050-repeat.png": "7f98a4a35ec50b52790a300cb34449a0abe3b5c6d185f8b1b0192821d4a04626",
+    "roll1050-stock.png": "7f98a4a35ec50b52790a300cb34449a0abe3b5c6d185f8b1b0192821d4a04626",
+    "roll160-active.png": "eb8942c46b55d8f374d5a9ef20384e4a6175d7d2fb19da2dd37a1a6f92b0035f",
+    "roll160-repeat.png": "c6badcc57f361b9c21cf8e6b0bfe5b410b04d22833e35a1cdd5e9c65f3c915a7",
+    "roll160-stock.png": "c6badcc57f361b9c21cf8e6b0bfe5b410b04d22833e35a1cdd5e9c65f3c915a7",
+    "roll65-active.png": "cffd244f1b354a4c2d64381bbccb09186c521161ae9bbb63bf1a278f95244c53",
+    "roll65-repeat.png": "cba9def4352e037f3e29e70e6fe14125f450987c4828975963419ff2c5695994",
+    "roll65-stock.png": "cba9def4352e037f3e29e70e6fe14125f450987c4828975963419ff2c5695994",
+    "roll980-active.png": "01cf1ff2f86bb465a4564f84882a83d905936720c94d5cceb19ea4b21620df70",
+    "roll980-repeat.png": "eca52c4f97551b8e6c8415a0734e63b14205bac60ae2bf04c77b48f75a22dee6",
+    "roll980-stock.png": "eca52c4f97551b8e6c8415a0734e63b14205bac60ae2bf04c77b48f75a22dee6"
+  },
+  "runtimeSourceSHA256": "a28e1c8a0272aaa03d9a29e19d4535341093583efac7be980d552de8fb16487e"
+}

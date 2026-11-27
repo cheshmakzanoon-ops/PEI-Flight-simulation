@@ -59,7 +59,7 @@ function part(root:THREE.Group,g:THREE.BufferGeometry,m:THREE.Material){
 /** Produce a cut-front skin and articulated rear skin. Purely visual, not a flight-force model. */
 export function addFlightSurface(root:THREE.Group,side:number,sections:readonly AeroSection[],
   material:THREE.Material,cut:number,name:string){
-  part(root,panel(side,sections,0,cut-GAP),material);
+  const fixed=part(root,panel(side,sections,0,cut-GAP),material);
   const pivot=new THREE.Vector3(...position(side,sections[0],cut,0));
   const tip=new THREE.Vector3(...position(side,sections.at(-1)!,cut,0));
   // Orient both hinges consistently from port to starboard, including sweep
@@ -70,6 +70,6 @@ export function addFlightSurface(root:THREE.Group,side:number,sections:readonly 
   let angle=0;
   return {
     update(target:number,dt:number){angle=deflectionAt(angle,target,dt);moving.quaternion.setFromAxisAngle(hinge,angle);},
-    angle:()=>angle
+    angle:()=>angle,casters:[fixed,moving] as const
   };
 }

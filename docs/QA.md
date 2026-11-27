@@ -13,6 +13,8 @@
 
 The [two western field-image joins](qa/western-field-joins.md) use original neighbouring source texels and keep nearby changes local.
 
+The [Summerside aircraft shadow](qa/summerside-aircraft-shadow.md) follows the original exterior over both runway tiles, with local depth and matched browser evidence.
+
 The [Summerside 05/23 close pavement](qa/summerside-runway-pavement.md) keeps runway paint and contact intact during a normal ground roll.
 
 The deterministic suite includes a continuous 182 km West Prince to East Point simulation, and a short-final flare, touchdown and braking on Charlottetown runway 03. The [matched Summerside Hangar 9 baseline](qa/hangar9.md) separates the existing scenery error from flight behavior and its off-screen control.

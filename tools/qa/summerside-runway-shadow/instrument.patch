@@ -1,0 +1,80 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -890 +890,7 @@
+-   acc+=delta;let n=0;while(acc>=FIXED_STEP&&n++<12){step(f,u,sceneSurface);acc-=FIXED_STEP;}
++   acc+=delta;let n=0;
++   const qa=(window as any).__castAtomic,goal=qa?.gates?.[qa?.next];
++   while(acc>=FIXED_STEP&&n++<12){
++    step(f,u,sceneSurface);acc-=FIXED_STEP;
++    if(goal&&qa.origin&&((goal.m&&Math.hypot(f.x-qa.origin.x,f.z-qa.origin.z)>=goal.m)||
++       (goal.alt&&f.y-world.visualGroundHeight(f.x,f.z)>=goal.alt)))break;
++   }
+@@ -1085 +1091,54 @@
+-  }else{endRim=world.beginRegularNorthRimDraw(camera);renderer.render(scene,camera);}
++
++  }else{
++   endRim=world.beginRegularNorthRimDraw(camera);
++   const q=(window as any).__castAtomic;
++   const alt=f.y-world.visualGroundHeight(f.x,f.z);
++   const m=q?.origin?Math.hypot(f.x-q.origin.x,f.z-q.origin.z):-1;
++   const id=q?.next;
++   const expected=q?.gates?.[id];
++   const ready=aircraftDepth&&q&&expected&&q.frames[id]===undefined&&
++    ui.mode==='flight'&&view===0&&(!expected.m||m>=expected.m)&&(!expected.alt||alt>=expected.alt)&&
++    (expected.active?aircraftDepth.state.active:!aircraftDepth.state.active);
++   if(!ready)renderer.render(scene,camera);
++   else{
++    const live=aircraftDepth.gain.value,mark=aircraftDepth.uniforms.qaAircraftCastView;
++    const gl=renderer.getContext(),canvas=renderer.domElement;
++    const shots:Record<string,unknown>={};
++    const sceneRoot=aircraft.root;
++    const caster=aircraft.runwayCasters.map(m=>{
++     const rows:number[]=[];
++     for(let o:THREE.Object3D=m;o!==sceneRoot&&o.parent;o=o.parent)rows.unshift(o.parent.children.indexOf(o));
++     m.updateWorldMatrix(true,false);
++     return {id:rows.join('.'),matrix:m.matrixWorld.elements.slice()};
++    });
++    const ordinaryRotation=camera.quaternion.clone();
++    if(q.inspection)camera.lookAt(aircraft.root.position.clone().addScaledVector(world.sun,-alt/world.sun.y));
++    camera.updateMatrixWorld(true);
++    const b64=(a:ArrayBufferView)=>(new Uint8Array(a.buffer,a.byteOffset,a.byteLength) as any).toBase64();
++    const receivers=['7-12','8-12'].flatMap(key=>{
++     const tile=(world as any).byId.get(key),mesh=tile?.fine;
++     if(!mesh)return [];
++     mesh.updateWorldMatrix(true,false);
++     return [{id:key,seams:tile.seams,lod:tile.lod,visible:mesh.visible,matrix:mesh.matrixWorld.elements.slice(),
++       p64:b64(mesh.geometry.attributes.position.array),i64:b64(mesh.geometry.index.array)}];
++    });
++    const proof={id,m,alt,view,inspectionLens:!!q.inspection,flightMode:ui.mode,aircraft:sceneRoot.matrixWorld.elements.slice(),receivers,
++     caster,samples:gl.getParameter(gl.SAMPLES),sun:world.sun.toArray(),
++     camera:{position:camera.position.toArray(),projection:camera.projectionMatrix.elements.slice(),
++      view:camera.matrixWorldInverse.elements.slice(),viewport:[canvas.width,canvas.height]},
++     light:{projection:aircraftDepth.uniforms.aircraftCastTransform.value.elements.slice(),
++      origin:aircraftDepth.uniforms.aircraftCastOrigin.value.toArray()},state:aircraftDepth.state};
++    try{
++     for(const [k,gain,mask] of [
++      ['stock',0,0],['active',live,0],['lo',live,1],['hi',live,2],['repeat',0,0],
++     ] as const){
++      aircraftDepth.gain.value=gain;mark.value=mask;renderer.render(scene,camera);
++      shots[k]={image:canvas.toDataURL(),calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,gl:gl.getError()};
++     }
++    }finally{
++     aircraftDepth.gain.value=live;mark.value=0;camera.quaternion.copy(ordinaryRotation);camera.updateMatrixWorld(true);renderer.render(scene,camera);
++    }
++    q.frames[id]={proof,shots};
++    q.next=q.queue.shift()??null;
++   }
++  }
+--- a/src/render/runway-aircraft-depth.ts
++++ b/src/render/runway-aircraft-depth.ts
+@@ -88,0 +89 @@
++ uniform float qaAircraftCastView;
+@@ -137 +138 @@
+- readonly uniforms={aircraftCastLive:this.gain,aircraftCastDepth:{value:this.neutral as T.Texture},aircraftCastTransform:{value:this.view},aircraftCastOrigin:{value:this.origin}};
++ readonly uniforms={qaAircraftCastView:{value:0},aircraftCastLive:this.gain,aircraftCastDepth:{value:this.neutral as T.Texture},aircraftCastTransform:{value:this.view},aircraftCastOrigin:{value:this.origin}};
+--- a/src/render/world.ts
++++ b/src/render/world.ts
+@@ -489,0 +490,3 @@
++    if(qaAircraftCastView>.5&&shadow>0.){
++     gl_FragColor=vec4(0.,step(1.5,qaAircraftCastView),0.,1.);return;
++    }

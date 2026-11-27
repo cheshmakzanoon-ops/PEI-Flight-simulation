@@ -93,7 +93,7 @@ export function makePropeller(gearHeightM:number) {
     spinner.add(m);return m;
   };
   // Rounded ogive, narrow brushed backplate and a taper into the cowling.
-  lathe([[.001,-.475],[.034,-.464],[.086,-.426],[.148,-.361],[.21,-.26],
+  const ogive=lathe([[.001,-.475],[.034,-.464],[.086,-.426],[.148,-.361],[.21,-.26],
     [.25,-.16],[.27,-.07],[.274,-.021],[.274,.017],[.259,.028]],enamel);
   const rim=lathe([[.269,.001],[.278,.005],[.279,.016],[.272,.024],[.261,.029]],brushed);
   // Flush fastening heads and the backplate are rigid, one shared material draw.
@@ -113,5 +113,5 @@ export function makePropeller(gearHeightM:number) {
     discMat.opacity=t;propDisc.visible=t>0;propDisc.rotation.z=prop.rotation.z*.32;
   }
   setProp(0);
-  return {prop,propDisc,spinner,setProp};
+  return {prop,propDisc,spinner,setProp,spinnerCasters:[ogive,rim] as const};
 }
