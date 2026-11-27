@@ -121,5 +121,5 @@ export function buildDetachedIndustrial192(ground:G){
     !p.geo.index&&!p.geo.groups.length&&!Object.keys(p.geo.morphAttributes).length&&Object.keys(p.geo.attributes).length===3&&
     p.geo.drawRange.start===0&&p.geo.drawRange.count===Infinity&&
     p.attrs.every(({name,a,raw,version})=>p.geo.getAttribute(name)===a&&a.array===raw&&a.version===version));},
-  dispose(){if(disposed)return;disposed=true;group.visible=false;group.removeFromParent();for(const q of identity){q.geo.dispose();q.mesh.material.dispose();}}};
+  dispose(){if(disposed)return;disposed=true;group.visible=false;group.removeFromParent();for(const q of identity){q.geo.dispose();q.mat.dispose();}}};
 }

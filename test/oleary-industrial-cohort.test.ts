@@ -112,6 +112,19 @@ test('actual detached native industrial seat stays on signed grade, all six auth
  assert(m.intact());const child=m.group.children[0];child.position.x=1;assert(!m.intact());child.position.x=0;
  child.matrixAutoUpdate=false;assert(!m.intact());child.matrixAutoUpdate=true;assert(m.intact());m.dispose();q.close();
 });
+test('a refused industrial model retires its own material without disposing a replacement owned by another draw',()=>{
+ const q=host(),sample=olearyIndustrialSeat(q.g);assert(sample);
+ const model=buildDetachedIndustrial192(sample);
+ const leaf=model.group.children[0] as T.Mesh<T.BufferGeometry,T.MeshStandardMaterial>;
+ const mine=leaf.material,theirs=new T.MeshStandardMaterial();
+ let mineDisposals=0,theirDisposals=0;
+ mine.addEventListener('dispose',()=>mineDisposals++);
+ theirs.addEventListener('dispose',()=>theirDisposals++);
+ leaf.material=theirs;assert(!model.intact());
+ model.dispose();model.dispose();
+ assert.equal(mineDisposals,1);assert.equal(theirDisposals,0);
+ theirs.dispose();q.close();
+});
 test('station alone, industrial alone, and both keep the immutable whole source; q192 rollback preserves q431 bit-for-bit',async()=>{
  const a=host(true,true),b=host(true,false),c=host(true,true);
  const stationOnly=make(a,{industrialLink:async()=>undefined}),industrialOnly=make(b,{station:false}),both=make(c);
