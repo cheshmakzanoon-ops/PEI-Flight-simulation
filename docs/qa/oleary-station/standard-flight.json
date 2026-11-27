@@ -1,0 +1,858 @@
+{
+  "route": "oleary-railway-low",
+  "version": 1,
+  "base": "d70b41b383b03a154b45b5e1c049ed3e1ee425fa",
+  "purpose": "O’Leary Railway Station q20213/431 on the ordinary Standard departure beside the same surveyed q20213/192 shed.",
+  "limitations": "Software WebGL, 1200 × 760, four samples, fixed visual replay clock with unmodified flight physics and controls. A subset of transit draws were skipped; full world was submitted for each measured scene. Not a hardware FPS test or real-world operating guidance.",
+  "owner": {
+    "tile": "q20213",
+    "sample": 431,
+    "atlas": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "row": "ed1aca976f1b29d77b32c601bc9cae4477f7cf50a2b5133bc04a70d5f9627700",
+    "wire": "288874f91b78271c99fc53fc1776cc540b0a6445f7486701d551dff01452c8b0",
+    "normalOriginalVertices": 32241,
+    "stationSpan": [
+      26535,
+      26577
+    ],
+    "industrialSpan": [
+      13584,
+      13641
+    ],
+    "legacyVertices": 32049,
+    "legacyStationSpan": [
+      26343,
+      26385
+    ],
+    "browserOrigin": [
+      -76193.32178617065,
+      0,
+      -24385.796006883174
+    ],
+    "nodeOrigin": [
+      -76193.32178617064,
+      0,
+      -24385.796006883174
+    ],
+    "nativeAttributes": [
+      [
+        "position",
+        3,
+        32241,
+        "2b7bf5ba37218c6c8ab7948228607be25f95cb91054fa8158c7bf1b3bb7600f9",
+        "c4fbcaa36c92258d263a85e02071c0fb5752b11bf15eb7534a0e946a4bbe630c"
+      ],
+      [
+        "uv",
+        2,
+        32241,
+        "a1f2f29d847b34d05e0aac8f7b07ffda1e1d76ee22c9c8034d8adf4fdefc0fec",
+        "b5116c231ef28bdf9ad70867ce26ebb9adb865f126183ef0df744597a79102d0"
+      ],
+      [
+        "color",
+        3,
+        32241,
+        "a3c4c4000bac888e44d470c55a320e79cbe3262a3c8906daf754a2d9536f0870",
+        "0893230f928a382621b3968c2d1fc4ca09ae156ef8605884becbe6c323ea9a6c"
+      ],
+      [
+        "topFlag",
+        1,
+        32241,
+        "3bbcfea6d2ef1f8043cdc5297f10eb604aefd32347b17162a49ef1291572040b",
+        "e9cae5532e617adec5997f6fb41f73479679b1d5c37339c14a959671274dd9c6"
+      ],
+      [
+        "facadeStyle",
+        1,
+        32241,
+        "06b87b2e8447358ff618e5e06b2150a595d381a727942deefc750b6178a3e629",
+        "094c4931fdb2f2af417c9e0322a9716006e8211fe9017f671ac6e3251300acca"
+      ],
+      [
+        "normal",
+        3,
+        32241,
+        "3ebf97afb61ef4285a364ae51379c53931d7ec78a8a38aceff188d5d41e548b2",
+        "1e1ea9ac58a37f40bb687bda8d01a6c476a972cafd6f7f71845740c95d8710aa"
+      ]
+    ],
+    "nativeExplicitAttributes": [
+      [
+        "position",
+        3,
+        32049,
+        "d12b6d0f4acffd9fe576dddaf2eddbf05b1d7dda2a6c65eecb96b9e04fb75a42",
+        "c4fbcaa36c92258d263a85e02071c0fb5752b11bf15eb7534a0e946a4bbe630c"
+      ],
+      [
+        "uv",
+        2,
+        32049,
+        "5472a9b595817aa9cf0663af5910f64f1a53860e5e49403684cfab6a9bd223e6",
+        "b5116c231ef28bdf9ad70867ce26ebb9adb865f126183ef0df744597a79102d0"
+      ],
+      [
+        "color",
+        3,
+        32049,
+        "5707c1ea535163a444028c157b622ccc6f0a105a043042bc57f1bfbd02e75c69",
+        "0893230f928a382621b3968c2d1fc4ca09ae156ef8605884becbe6c323ea9a6c"
+      ],
+      [
+        "topFlag",
+        1,
+        32049,
+        "1b475c3c932071c2742c6b87e49210dc742392038f9722b51e58ca38778fd6eb",
+        "e9cae5532e617adec5997f6fb41f73479679b1d5c37339c14a959671274dd9c6"
+      ],
+      [
+        "facadeStyle",
+        1,
+        32049,
+        "513aaa75501a7b7f07de04bd9d77d80f7b7fbb67a244ff7f8395edcf84cfa03d",
+        "094c4931fdb2f2af417c9e0322a9716006e8211fe9017f671ac6e3251300acca"
+      ],
+      [
+        "normal",
+        3,
+        32049,
+        "2423e4812fd3f94e84f095022cfdcc97e9ed50ed91417d96e08b0a15e2a21022",
+        "1e1ea9ac58a37f40bb687bda8d01a6c476a972cafd6f7f71845740c95d8710aa"
+      ]
+    ]
+  },
+  "captures": {
+    "1": {
+      "original": 93,
+      "art": 64,
+      "peers": 253,
+      "strong": 49,
+      "any": 49,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -77937.09857356164,
+        94.797580783549,
+        -23990.075758132527
+      ],
+      "sha256": {
+        "stock": "84a75398220c84a0956ea6709afa27abb834c4a10e75b8be75a04c85c3eecaac",
+        "author": "5573b6a3a319e96b06581e8c3f471ed6bf9aab7a0e4bb844783f0a1633260901",
+        "restored": "84a75398220c84a0956ea6709afa27abb834c4a10e75b8be75a04c85c3eecaac"
+      },
+      "draws": {
+        "stock": 159,
+        "author": 164
+      },
+      "triangles": {
+        "stock": 337661,
+        "author": 343769
+      }
+    },
+    "60": {
+      "original": 116,
+      "art": 74,
+      "peers": 295,
+      "strong": 57,
+      "any": 57,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 2,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78000.47561824779,
+        95.37066935216527,
+        -23912.18193156755
+      ],
+      "sha256": {
+        "stock": "48db8cbdf9b2f1cf97352040f4fdda5a80b6d9b5d33e081257043e9616abd7c0",
+        "author": "6e0f144b6d3989c969f5359c7c26bbdc09ab580c90bedc78cdae62b8521269a7",
+        "restored": "48db8cbdf9b2f1cf97352040f4fdda5a80b6d9b5d33e081257043e9616abd7c0"
+      },
+      "draws": {
+        "stock": 162,
+        "author": 167
+      },
+      "triangles": {
+        "stock": 336267,
+        "author": 342375
+      }
+    },
+    "300": {
+      "original": 239,
+      "art": 161,
+      "peers": 678,
+      "strong": 202,
+      "any": 204,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 5,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78258.49830787875,
+        98.24807125868129,
+        -23595.07518128
+      ],
+      "sha256": {
+        "stock": "adad817a96cf13da848bdff736aa41dcd1827fd13f5bfe09d4fb3fc51a1bab30",
+        "author": "c9449fb4d746e08b92455cfc3a30f14d499c6e65bf5efbdf6ef3b6438c18b7ea",
+        "restored": "adad817a96cf13da848bdff736aa41dcd1827fd13f5bfe09d4fb3fc51a1bab30"
+      },
+      "draws": {
+        "stock": 161,
+        "author": 166
+      },
+      "triangles": {
+        "stock": 337637,
+        "author": 343745
+      }
+    },
+    "450": {
+      "original": 549,
+      "art": 369,
+      "peers": 1574,
+      "strong": 474,
+      "any": 476,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 27,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78419.90062696702,
+        100.08094230282369,
+        -23396.724552680345
+      ],
+      "sha256": {
+        "stock": "ea788826e2521d348a9e01a02a653197c5d6a20d752368138f859b0daf4247af",
+        "author": "75f7611f31daa863f8318a8ff98b8e41dc1c058098c8c15b4240cca69b332f58",
+        "restored": "ea788826e2521d348a9e01a02a653197c5d6a20d752368138f859b0daf4247af"
+      },
+      "draws": {
+        "stock": 161,
+        "author": 166
+      },
+      "triangles": {
+        "stock": 336416,
+        "author": 342524
+      }
+    },
+    "540": {
+      "original": 1210,
+      "art": 805,
+      "peers": 3435,
+      "strong": 715,
+      "any": 715,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 58,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78516.77816303249,
+        101.19114695173377,
+        -23277.67259589999
+      ],
+      "sha256": {
+        "stock": "350d9cc88de8be197b47c3db588babe9eb41fc72bf6a47202a600aac4ae48f36",
+        "author": "c62363c5e3e208cd7d990d268a1c7a02672387374d58b527007a4a09232c4144",
+        "restored": "350d9cc88de8be197b47c3db588babe9eb41fc72bf6a47202a600aac4ae48f36"
+      },
+      "draws": {
+        "stock": 160,
+        "author": 165
+      },
+      "triangles": {
+        "stock": 331486,
+        "author": 337594
+      }
+    },
+    "585": {
+      "original": 2100,
+      "art": 1422,
+      "peers": 5987,
+      "strong": 1894,
+      "any": 1894,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 94,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78565.22522451392,
+        101.748522632942,
+        -23218.13707698854
+      ],
+      "sha256": {
+        "stock": "fdafd51161d742b20dec5e74097abcec2423028fd21cfaa956b9f442a401d056",
+        "author": "0c6aff0b81764f78b453fa23c76e722139d247c16f0fd7cd6268f4767d6b96b3",
+        "restored": "fdafd51161d742b20dec5e74097abcec2423028fd21cfaa956b9f442a401d056"
+      },
+      "draws": {
+        "stock": 160,
+        "author": 165
+      },
+      "triangles": {
+        "stock": 326762,
+        "author": 332870
+      }
+    },
+    "630": {
+      "original": 4711,
+      "art": 3233,
+      "peers": 12984,
+      "strong": 4301,
+      "any": 4304,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 137,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78613.67716101489,
+        102.30717828021793,
+        -23158.59595000856
+      ],
+      "sha256": {
+        "stock": "ea63875f7936a6afa15f6ce9c67b1f949cc8b25cf063ac7d241bc7470ad0f7b8",
+        "author": "5e2c3524fbf87e47ac84caa0a6f3644d3637d69bf3ebfecb50311776b09bf7a3",
+        "restored": "ea63875f7936a6afa15f6ce9c67b1f949cc8b25cf063ac7d241bc7470ad0f7b8"
+      },
+      "draws": {
+        "stock": 159,
+        "author": 164
+      },
+      "triangles": {
+        "stock": 326438,
+        "author": 332546
+      }
+    },
+    "675": {
+      "original": 0,
+      "art": 0,
+      "peers": 5946,
+      "strong": 0,
+      "any": 0,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78662.13354002747,
+        102.86695813793855,
+        -23099.04971250359
+      ],
+      "sha256": {
+        "stock": "b7ecfbf431cc4748a0099ef77084d9fb6832d0f8ce22d79aa22bba57d46bf77e",
+        "author": "b7ecfbf431cc4748a0099ef77084d9fb6832d0f8ce22d79aa22bba57d46bf77e",
+        "restored": "b7ecfbf431cc4748a0099ef77084d9fb6832d0f8ce22d79aa22bba57d46bf77e"
+      },
+      "draws": {
+        "stock": 159,
+        "author": 159
+      },
+      "triangles": {
+        "stock": 321486,
+        "author": 321472
+      }
+    },
+    "720": {
+      "original": 0,
+      "art": 0,
+      "peers": 0,
+      "strong": 0,
+      "any": 0,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78710.59397012243,
+        103.42772129316708,
+        -23039.498814761508
+      ],
+      "sha256": {
+        "stock": "21ebed343f8781942fc605c0dccbedb6ed93a756d1661fb7d3269fdad1afd4be",
+        "author": "21ebed343f8781942fc605c0dccbedb6ed93a756d1661fb7d3269fdad1afd4be",
+        "restored": "21ebed343f8781942fc605c0dccbedb6ed93a756d1661fb7d3269fdad1afd4be"
+      },
+      "draws": {
+        "stock": 157,
+        "author": 157
+      },
+      "triangles": {
+        "stock": 320120,
+        "author": 320106
+      }
+    },
+    "765": {
+      "original": 0,
+      "art": 0,
+      "peers": 0,
+      "strong": 0,
+      "any": 0,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": false,
+      "flightXYZ": [
+        -78759.05809703733,
+        103.98934025776266,
+        -22979.943664314436
+      ],
+      "sha256": {
+        "stock": "2bfdcbec0c1db2c036f0eac84d6657c828c56248046ee5543042385fda28cc70",
+        "author": "2bfdcbec0c1db2c036f0eac84d6657c828c56248046ee5543042385fda28cc70",
+        "restored": "2bfdcbec0c1db2c036f0eac84d6657c828c56248046ee5543042385fda28cc70"
+      },
+      "draws": {
+        "stock": 157,
+        "author": 157
+      },
+      "triangles": {
+        "stock": 315580,
+        "author": 315566
+      }
+    },
+    "810": {
+      "original": 0,
+      "art": 0,
+      "peers": 0,
+      "strong": 0,
+      "any": 0,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": true,
+      "flightXYZ": [
+        -78807.52560013933,
+        104.55169968689196,
+        -22920.38463000839
+      ],
+      "sha256": {
+        "stock": "7b859193b5e961e150113dfb0a723476a5e6e51cb87096436ad0b28a4f2fea25",
+        "author": "7b859193b5e961e150113dfb0a723476a5e6e51cb87096436ad0b28a4f2fea25",
+        "restored": "7b859193b5e961e150113dfb0a723476a5e6e51cb87096436ad0b28a4f2fea25"
+      },
+      "draws": {
+        "stock": 157,
+        "author": 157
+      },
+      "triangles": {
+        "stock": 315969,
+        "author": 315969
+      }
+    },
+    "900": {
+      "original": 0,
+      "art": 0,
+      "peers": 0,
+      "strong": 0,
+      "any": 0,
+      "exterior": 0,
+      "q192PixelDeltaOverlap": 0,
+      "alpha": 0,
+      "exteriorExamplesYX": [],
+      "afterLease": true,
+      "flightXYZ": [
+        -78904.46960162767,
+        105.67823243696162,
+        -22801.25621350543
+      ],
+      "sha256": {
+        "stock": "6589471bf90bd96331399dd6f37afcfe9d09a02c53da158bf5474379e59d5fb5",
+        "author": "6589471bf90bd96331399dd6f37afcfe9d09a02c53da158bf5474379e59d5fb5",
+        "restored": "6589471bf90bd96331399dd6f37afcfe9d09a02c53da158bf5474379e59d5fb5"
+      },
+      "draws": {
+        "stock": 155,
+        "author": 155
+      },
+      "triangles": {
+        "stock": 310406,
+        "author": 310406
+      }
+    }
+  },
+  "controls": {
+    "normal": {
+      "frames": 10,
+      "stationPacketRequests": 1,
+      "station": "authored",
+      "surveyedShed": "authored",
+      "samples": 4,
+      "readinessMessage": "O’Leary Railway Station exterior ready."
+    },
+    "missing": {
+      "frames": 10,
+      "stationPacketRequests": 1,
+      "station": "stock",
+      "surveyedShed": "authored",
+      "samples": 4,
+      "readinessMessage": "This flight will use the original station."
+    },
+    "early": {
+      "frames": 20,
+      "stationPacketRequests": 1,
+      "station": "stock",
+      "surveyedShed": "authored",
+      "samples": 4,
+      "readinessMessage": "Checking the railway station exterior. Begin now to keep the original station.",
+      "offerReleasedAfterBegin": true
+    },
+    "stock": {
+      "frames": 10,
+      "stationPacketRequests": 0,
+      "station": "stock",
+      "surveyedShed": "authored",
+      "samples": 4,
+      "readinessMessage": ""
+    },
+    "corrupt": {
+      "frames": 10,
+      "stationPacketRequests": 1,
+      "station": "stock",
+      "surveyedShed": "authored",
+      "samples": 4,
+      "readinessMessage": "This flight will use the original station."
+    },
+    "foreign": {
+      "frames": 10,
+      "stationPacketRequests": 0,
+      "station": "stock",
+      "surveyedShed": "stock",
+      "samples": 4,
+      "readinessMessage": ""
+    },
+    "noaa": {
+      "frames": 10,
+      "stationPacketRequests": 0,
+      "station": "stock",
+      "surveyedShed": "stock",
+      "samples": 0,
+      "readinessMessage": ""
+    },
+    "detail": {
+      "frames": 10,
+      "stationPacketRequests": 0,
+      "station": "stock",
+      "surveyedShed": "stock",
+      "samples": 4,
+      "readinessMessage": ""
+    },
+    "legacy": {
+      "frames": 10,
+      "stationPacketRequests": 1,
+      "station": "authored",
+      "surveyedShed": "stock",
+      "samples": 4,
+      "readinessMessage": ""
+    }
+  },
+  "scopeReview": {
+    "priorProjectionOutcome": "HOLD: projected overlap includes hidden old shell and does not measure native depth.",
+    "nativeDepthMethod": "Opaque red 32 and 224 diagnostic passes on the two existing q192 meshes using cloned original Standard shaders, with red overridden only after lighting, log depth, fog and output transforms; exact neutral image, F32 positions, transform matrices, front face and depth state retained. Per-pixel 0,48,96,144,192 red difference measures 0–4 settled coverage samples. Original materials restored after every marker capture. Independently fixed old q431 nearer/new q431 disjoint across ten expected native squares. At every changed shed pixel its coverage increases and no original fully covered shed pixel changes.",
+    "allowedOriginalOcclusionPixels": [
+      [
+        804,
+        609
+      ],
+      [
+        805,
+        609
+      ],
+      [
+        804,
+        610
+      ],
+      [
+        805,
+        610
+      ],
+      [
+        804,
+        611
+      ],
+      [
+        805,
+        611
+      ],
+      [
+        804,
+        612
+      ],
+      [
+        805,
+        612
+      ],
+      [
+        804,
+        613
+      ],
+      [
+        805,
+        613
+      ]
+    ],
+    "frames": {
+      "585": {
+        "carrierOpaquePixelsStock": 2099,
+        "carrierOpaquePixelsAuthored": 2099,
+        "changedNativeShedPixels": 0,
+        "shedSamplesLost": 0,
+        "reveals": [],
+        "RGBchangeMaskSHA256": "a86ae2dff0c7a9655a9b4fcb50f1b6ad6508ed74471c499ee48d465f04b431dc",
+        "markerWitnessRestoresActualUnmarkedImage": true,
+        "stockCoverageRestored": true
+      },
+      "630": {
+        "carrierOpaquePixelsStock": 4702,
+        "carrierOpaquePixelsAuthored": 4706,
+        "changedNativeShedPixels": 8,
+        "shedSamplesLost": 0,
+        "reveals": [
+          {
+            "x": 804,
+            "y": 609,
+            "stockSamples": 0,
+            "activeSamples": 1,
+            "changedRGB": true
+          },
+          {
+            "x": 805,
+            "y": 609,
+            "stockSamples": 1,
+            "activeSamples": 4,
+            "changedRGB": true
+          },
+          {
+            "x": 804,
+            "y": 610,
+            "stockSamples": 0,
+            "activeSamples": 1,
+            "changedRGB": true
+          },
+          {
+            "x": 805,
+            "y": 610,
+            "stockSamples": 0,
+            "activeSamples": 4,
+            "changedRGB": true
+          },
+          {
+            "x": 804,
+            "y": 611,
+            "stockSamples": 0,
+            "activeSamples": 1,
+            "changedRGB": true
+          },
+          {
+            "x": 805,
+            "y": 611,
+            "stockSamples": 0,
+            "activeSamples": 4,
+            "changedRGB": true
+          },
+          {
+            "x": 804,
+            "y": 612,
+            "stockSamples": 0,
+            "activeSamples": 1,
+            "changedRGB": true
+          },
+          {
+            "x": 805,
+            "y": 612,
+            "stockSamples": 0,
+            "activeSamples": 4,
+            "changedRGB": true
+          }
+        ],
+        "RGBchangeMaskSHA256": "58a0f3eae6234775cde6ebe8dee9aa312a5b8df9adb75e8e5508886e465ce85f",
+        "markerWitnessRestoresActualUnmarkedImage": true,
+        "stockCoverageRestored": true
+      }
+    },
+    "pass": true,
+    "independentContinuousGeometry": {
+      "frame": 630,
+      "cameraHash": "e18fcd51bea752f7aa229ee389023efd538e52fa4f159ad49a413646c081d1b1",
+      "changedMaskSHA256": "58a0f3eae6234775cde6ebe8dee9aa312a5b8df9adb75e8e5508886e465ce85f",
+      "continuousAnalysisSHA256": "6b620131b5980b80cc5fb8c7dc2a42d987f7958fa03dd593b30ca33a7e529b71",
+      "pixels": [
+        {
+          "pixelXY": [
+            804,
+            609
+          ],
+          "peerProjectedAreaPx2": 0.2634927505451401,
+          "leftByOriginalStationPx2": 0.06805841683254243,
+          "excludedByStrictNearStockStationPx2": 0.19543433371268293,
+          "leftByAuthoredStationPx2": 0.2634927505451401,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005596135405732915,
+            0.0006406948956125952
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            805,
+            609
+          ],
+          "peerProjectedAreaPx2": 1,
+          "leftByOriginalStationPx2": 0.38212624425705144,
+          "excludedByStrictNearStockStationPx2": 0.617873755742845,
+          "leftByAuthoredStationPx2": 1,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005596648535963165,
+            0.0006573429453147206
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            804,
+            610
+          ],
+          "peerProjectedAreaPx2": 0.2927528538569959,
+          "leftByOriginalStationPx2": 0,
+          "excludedByStrictNearStockStationPx2": 0.2927528538569959,
+          "leftByAuthoredStationPx2": 0.2927528538569959,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005330517315225158,
+            0.0006412611534581114
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            805,
+            610
+          ],
+          "peerProjectedAreaPx2": 1,
+          "leftByOriginalStationPx2": 0.06965497791617281,
+          "excludedByStrictNearStockStationPx2": 0.9303450220838272,
+          "leftByAuthoredStationPx2": 1,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005331084429679028,
+            0.0006495089012741873
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            804,
+            611
+          ],
+          "peerProjectedAreaPx2": 0.32201295716879486,
+          "leftByOriginalStationPx2": 0,
+          "excludedByStrictNearStockStationPx2": 0.32201295716879486,
+          "leftByAuthoredStationPx2": 0.32201295716879486,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005064899224717367,
+            0.0006384195055306185
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            805,
+            611
+          ],
+          "peerProjectedAreaPx2": 1,
+          "leftByOriginalStationPx2": 0.03402356932610928,
+          "excludedByStrictNearStockStationPx2": 0.9659764306738907,
+          "leftByAuthoredStationPx2": 1,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0005065520323394891,
+            0.0005984373727955601
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            804,
+            612
+          ],
+          "peerProjectedAreaPx2": 0.3512730604805938,
+          "leftByOriginalStationPx2": 0,
+          "excludedByStrictNearStockStationPx2": 0.3512730604805938,
+          "leftByAuthoredStationPx2": 0.3512730604805938,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0004799281134209611,
+            0.0006273301064512737
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            805,
+            612
+          ],
+          "peerProjectedAreaPx2": 1,
+          "leftByOriginalStationPx2": 0.00368628268233806,
+          "excludedByStrictNearStockStationPx2": 0.9963137173176619,
+          "leftByAuthoredStationPx2": 1,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.000488785255611926,
+            0.000605677547731457
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            804,
+            613
+          ],
+          "peerProjectedAreaPx2": 0.21048659275052728,
+          "leftByOriginalStationPx2": 0,
+          "excludedByStrictNearStockStationPx2": 0.2104865927505557,
+          "leftByAuthoredStationPx2": 0.21048659275052728,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.00046523935654411985,
+            0.0006162407090522515
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        },
+        {
+          "pixelXY": [
+            805,
+            613
+          ],
+          "peerProjectedAreaPx2": 0.6913340667623515,
+          "leftByOriginalStationPx2": 0,
+          "excludedByStrictNearStockStationPx2": 0.6913340667623515,
+          "leftByAuthoredStationPx2": 0.6913340667623515,
+          "stockMinusShedReciprocalWMInvRange": [
+            0.0004898415497845837,
+            0.0006100084091357958
+          ],
+          "authoredStationAnyPixelFootprint": false,
+          "oldTopFootprint": true
+        }
+      ]
+    }
+  },
+  "comparisonImageSHA256": "001119929650f795649e36cb6fdbe65f13daf37dc0cc6c6e997b4bf92c8ac789"
+}

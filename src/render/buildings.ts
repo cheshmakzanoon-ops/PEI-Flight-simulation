@@ -448,13 +448,17 @@ export class Buildings {
  private olearySeat?:OlearySeat;private olearyStudy?:OlearyCohortStudy;private oleary?:OlearySocket|OlearyCohortSocket;
  private standardIndustrialOptions?:{
   terrainSha:string;cover:Cover;preparing:()=>boolean;flying:()=>boolean;
-  ground:OlearySeat['ground'];link:OlearySeat['link'];
+  ground:OlearySeat['ground'];link:OlearySeat['link'];stationLink?:OlearySeat['link'];
  };
  private standardIndustrial?:{owner:THREE.Mesh;view:StandardIndustrialSession};
  enableStandardIndustrial(seat:NonNullable<Buildings['standardIndustrialOptions']>){this.standardIndustrialOptions=seat;}
  get standardIndustrialReady(){return this.standardIndustrial?.view.ready===true;}
  get standardIndustrialDrawn(){return this.standardIndustrial?.view.drawn===true;}
+ get standardOlearyStationDrawn(){return this.standardIndustrial?.view.stationDrawn===true;}
+ get standardOlearyStationReady(){return this.standardIndustrial?.view.stationReady===true;}
+ get standardOlearyStationUnavailable(){return this.standardIndustrial?.view.stationUnavailable===true;}
  prepareStandardIndustrial(){this.standardIndustrial?.view.prepare();}
+ leaveOlearyStationDispatch(){this.standardIndustrial?.view.leaveStationDispatch();}
  clearStandardIndustrialForFlight(useDispatch:boolean){
   const q=this.standardIndustrial?.view;
   if(useDispatch)q?.authorizeDeparture();else q?.stockDeparture();
@@ -1106,15 +1110,19 @@ export class Buildings {
    if(standardIndustrial&&olearyBytes&&this.atlasHash){
     const wire=olearyBytes,atlasHash=this.atlasHash,cover=standardIndustrial.cover,rows=features.length,row192=features[OLEARY_INDUSTRIAL.ordinal];
     const original=this.pinAuthoredOwner(mesh),before=mesh.onBeforeRender,after=mesh.onAfterRender;
-    const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&mesh.geometry===original.stock&&original.baseOwner()&&
+    // The lease owns this same scene Mesh during both authorised residual
+    // draws. The view checks the exact original at preparation/entry and
+    // authenticates each replacement index before it submits anything.
+    const current=()=>this.wanted.has(tile.id)&&this.meshes.get(tile.id)===mesh&&original.baseOwner()&&
      mesh.onBeforeRender===before&&mesh.onAfterRender===after;
     this.standardIndustrial?.view.dispose();
     const view=new StandardIndustrialSession({current,...standardIndustrial,
      stage:async(permit,signal)=>{
       const m=await import('./oleary-railway/industrial-standard-owner.ts');
-      if(!permit()||signal.aborted)return;
+      if(!permit()||signal.aborted||mesh.geometry!==original.stock)return;
       return m.prepareQ192StandardComparison({...standardIndustrial,scene:this.scene,owner:mesh,atlasHash,tile,wire,rows,row192,
-       terrain:this.t,cover,permit,signal});
+       terrain:this.t,cover,permit,signal,
+       station:standardIndustrial.stationLink?{row:features[OLEARY.ordinal],link:standardIndustrial.stationLink}:undefined});
      }});
     this.standardIndustrial={owner:mesh,view};
    }

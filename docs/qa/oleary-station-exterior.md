@@ -1,15 +1,19 @@
 # O’Leary Railway Station
 
-This optional exterior replaces one generic building at 513 Main Street in
-O’Leary, Prince County. In Standard scenery, use `?olearyExteriorStudy`
-within the local area. Choose **O’Leary · railway station pass** in Dispatch,
-or open the simulator with `?departure=oleary-railway-low&olearyExteriorStudy`.
-The fictional low pass begins northeast of town, 65 m above the sampled
-simulator start ground. Append `&stockOlearyExterior` for the unchanged
-stock comparison. Neither switch changes the aircraft, the Confederation
-Trail, roads, memorial, adjacent buildings or the original ground and
-collision. This artwork is for virtual sightseeing, not a navigation or
-architectural survey product.
+Choose **O’Leary · railway station pass** in Standard Dispatch. Wait for
+**O’Leary Railway Station exterior ready** and select **Begin flight**. In
+Chase view, fly the default course from the northeast. The original station
+model now replaces the generic shell at 513 Main Street on this flight.
+The separate surveyed railway-side shed, the town’s measured roof changes
+and the original ground, roads, Confederation Trail and flight contact
+stay in place.
+
+Use `?departure=oleary-railway-low&stockOlearyStation` for the former
+station alone without disabling the surveyed shed. The existing explicit
+`?olearyExteriorStudy` and its `&stockOlearyExterior` comparison are
+still available and retain their own legacy behavior. The fictional low
+pass starts 65 m above the sampled simulator ground; it is for virtual
+sightseeing, not real navigation or architectural survey.
 
 ## What the references support
 
@@ -44,8 +48,10 @@ building only, not to derive its roof shape or textures.
 
 ## Scene and comparison envelope
 
-- The 111,961-byte optional packet submits 6,122 triangles in five local
-  opaque materials. The unchanged Standard path keeps all original draws.
+- The existing 111,961-byte packet submits 6,122 triangles in five local
+  opaque materials. The station is the only changed model in the matched
+  Standard comparison. Other departures do not fetch the station packet
+  for this default path.
 - It can replace only 14 stock triangles of q20213/431, after checking the
   packet, the complete native building draw buffers and the matching
   untouched near-terrain tile. All 541 sibling records retain their original
@@ -100,7 +106,43 @@ art and material programs as the production guard; its equivalent active
 roof frame was byte-identical after adding the off-scene link check.
 
 
-## Ordinary flight playback
+## Same ordinary flight, with and without the station
+
+![Matched Standard views of old generic station and the original station model](oleary-station/standard-chase.webp)
+
+The [native comparison receipt](oleary-station/standard-flight.json) uses
+the original simulated route, Chase camera and aircraft inputs. The
+station's original 14 triangles and the modeled station are compared within
+the same rendered tick. The existing surveyed shed remains active in both
+views. The shared building draw keeps the exact six attribute streams
+and removes only the two signed, disjoint source spans while each measured
+model is visible. Restoration returns to the exact original Standard scene.
+
+The initial distance-blind projection check was intentionally held: it
+counted the omitted old shed shell, plus a few pixels where the original
+station was actually nearer than the measured shed. The independent
+four-sample render check distinguishes true occlusion from overlapping
+projections. Replacing the foreground station reveals part of the existing
+shed in that narrow area. The shed loses no visible samples, and the
+fully visible shed pixels, signed geometry, materials and nearby roofs
+remain unchanged. See the original HOLD and the separate depth check in
+the receipt.
+
+If the station packet is still pending when you begin, or if its bytes or
+materials cannot be verified, the original station remains for that flight.
+A missing station does not invalidate a surveyed shed that was ready when
+you began. The paired native frames are visual evidence from software WebGL,
+not a device frame-rate measurement.
+
+To check ownership from a checkout with the normal world assets and
+`npm ci` completed:
+
+```sh
+mkdir -p /tmp/pei-oleary-ownership
+node --experimental-strip-types tools/qa/oleary-standard-station-ownership.cjs /tmp/pei-oleary-ownership
+```
+
+## Earlier explicit-study flight playback
 
 The [compiled player witness](oleary-station/compiled-player.json) uses the
 real dispatch and no substituted camera. It flew from the northeastern

@@ -3,7 +3,9 @@ import type {OlearyNativeSurface} from './authority.ts';
 
 export type IndustrialStandardView={
  intact:()=>boolean;
- compare:<T>(useMeasured:boolean,draw:(measured:boolean)=>T)=>T;
+ compare:<T>(useMeasured:boolean,draw:(measured:boolean,station?:boolean)=>T,station?:boolean)=>T;
+ prepareStation?:(signal:AbortSignal)=>Promise<boolean>;
+ stationIntact?:()=>boolean;
  dispose:()=>void;
 };
 type Conditions={
@@ -25,6 +27,10 @@ export class StandardIndustrialSession{
  private view?:IndustrialStandardView;
  private armed=false;
  private shown=false;
+ private stationPending?:AbortController;
+ private stationChecked?:IndustrialStandardView;
+ private stationArmed=false;
+ private stationShown=false;
  private disposed=false;
  constructor(seat:Conditions){this.seat=seat;}
  private current(){return !this.disposed&&this.seat.current();}
@@ -35,6 +41,33 @@ export class StandardIndustrialSession{
   catch{return false;}
  }
  get drawn(){return this.shown;}
+ get stationDrawn(){return this.stationShown;}
+ get stationUnavailable(){return !!this.view?.prepareStation&&this.stationChecked===this.view&&!this.stationPending&&!this.stationReady;}
+ get stationReady(){
+  try{return this.ready&&this.view?.stationIntact?.()===true;}catch{return false;}
+ }
+ private stageStation(){
+  const view=this.view;
+  if(!view?.prepareStation||this.stationChecked===view||this.stationPending||!this.ready)return;
+  const c=this.stationPending=new AbortController();this.stationChecked=view;
+  const deadline=setTimeout(()=>c.abort(),16000);
+  void Promise.resolve().then(()=>{
+   if(c.signal.aborted||!this.preparing()||this.view!==view)return false;
+   return view.prepareStation?.(c.signal);
+  }).catch(()=>false).finally(()=>{
+   clearTimeout(deadline);
+   if(this.stationPending!==c)return;
+   if(!this.preparing()||this.view!==view)this.stopStationOffer();
+   else this.stationPending=undefined;
+  });
+ }
+ private stopStationOffer(){
+  if(!this.stationPending)return;
+  this.stationPending.abort();this.stationPending=undefined;
+  // Early takeoff never re-arms in flight. A genuine subsequent dispatch
+  // may try again; an exhausted or invalid offer is not retried each frame.
+  this.stationChecked=undefined;
+ }
  private ground(){
   const has=this.seat.ground(),mesh=has?.fine,seams=has?.seams;
   return mesh&&seams?{mesh,geometry:mesh.geometry,seams}:undefined;
@@ -45,7 +78,8 @@ export class StandardIndustrialSession{
  prepare(){
   if(!this.preparing()||this.pending)return;
   const epoch=this.ground();
-  if(!epoch||this.sameEpoch(this.checked,epoch))return;
+  if(!epoch)return;
+  if(this.sameEpoch(this.checked,epoch)){this.stageStation();return;}
   this.dropView();this.checked=epoch;
   const p=this.pending={controller:new AbortController(),epoch};
   void this.verify(p);
@@ -64,31 +98,35 @@ export class StandardIndustrialSession{
    }
   }
  }
+ leaveStationDispatch(){if(!this.preparing())this.stopStationOffer();}
  private cancel(){
   if(!this.pending)return;
   this.pending.controller.abort();this.pending=undefined;this.checked=undefined;
  }
  /** Called synchronously by Begin, before the flight object's first frame. */
  authorizeDeparture(){
-  this.armed=this.ready;this.shown=false;this.cancel();
+  this.stationArmed=this.stationReady;
+  this.armed=this.ready;this.shown=false;this.stationShown=false;this.cancel();this.stopStationOffer();
   return this.armed;
  }
- stockDeparture(){this.armed=false;this.shown=false;this.cancel();}
+ stockDeparture(){this.armed=false;this.shown=false;this.stationArmed=false;this.stationShown=false;this.cancel();this.stopStationOffer();}
  draw<T>(paint:()=>T):T{
-  this.shown=false;
+  this.shown=false;this.stationShown=false;
   const view=this.view;
   if(!this.armed||!view)return paint();
   if(!this.current()||!this.seat.flying()){
-   this.armed=false;return paint();
+   this.armed=false;this.stationArmed=false;return paint();
   }
-  return view.compare(true,measured=>{
-   this.shown=measured;
+  return view.compare(true,(measured,station)=>{
+   this.shown=measured;this.stationShown=station===true&&measured;
    if(!measured)this.armed=false;
+   if(!this.stationShown)this.stationArmed=false;
    return paint();
-  });
+  },this.stationArmed);
  }
  private dropView(){
   const q=this.view;this.view=undefined;this.armed=false;this.shown=false;
+  this.stopStationOffer();this.stationChecked=undefined;this.stationArmed=false;this.stationShown=false;
   q?.dispose();
  }
  dispose(){

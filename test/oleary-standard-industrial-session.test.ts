@@ -64,3 +64,82 @@ test('the Standard industrial veto does not turn off its two roof co-owners',()=
   'stockOlearyAccessRoof','stockOlearyExterior','olearyExteriorStudy','olearyWarehouseStudy','unrelatedReview'])
   assert(!olearyIndustrialStandardRequested(q(s)),s);
 });
+
+function stationFixture(){
+ const mesh=new Mesh(new BufferGeometry()),flags={dispatch:true,flight:false,valid:true,stationValid:true};
+ const asks:{signal:AbortSignal;finish:(ready:boolean)=>void}[]=[];
+ const shown:{shed:boolean;station:boolean}[]=[];
+ let stationReady=false,viewsDisposed=0;
+ const session=new StandardIndustrialSession({current:()=>flags.valid,preparing:()=>flags.dispatch,flying:()=>flags.flight,
+  ground:()=>({fine:mesh,seams:'112:112,112,112,112'}),
+  stage:async(permit,signal)=>({intact:()=>permit()&&!signal.aborted,stationIntact:()=>stationReady&&flags.stationValid,
+   prepareStation(s){return new Promise<boolean>(resolve=>asks.push({signal:s,finish(ready){
+    if(!s.aborted&&ready)stationReady=true;
+    resolve(ready);
+   }}));},
+   compare(shed,paint,station){const a=!!(shed&&permit()),b=!!(a&&station&&stationReady&&flags.stationValid);
+    shown.push({shed:a,station:b});return paint(a,b);},
+   dispose(){viewsDisposed++;}})});
+ return {session,flags,asks,shown,disposed:()=>viewsDisposed,
+  async start(){session.prepare();await flush();assert(session.ready);session.prepare();session.prepare();await flush();},
+  takeoff(){const result=session.authorizeDeparture();flags.dispatch=false;flags.flight=true;return result;}};
+}
+test('a delayed station offer never appears after Begin and cannot disable the cleared shed',async()=>{
+ const f=stationFixture();await f.start();
+ assert.equal(f.asks.length,1);assert(!f.session.stationReady);assert(f.takeoff());
+ assert(f.asks[0].signal.aborted);
+ f.asks[0].finish(true);await flush();
+ assert.equal(f.session.draw(()=>9),9);assert(f.session.drawn);assert(!f.session.stationDrawn);
+ assert.deepEqual(f.shown,[{shed:true,station:false}]);
+ f.session.dispose();assert.equal(f.disposed(),1);
+});
+test('a ready station may draw with the shed, but later station-proof loss cannot re-arm on the same flight',async()=>{
+ const f=stationFixture();await f.start();
+ f.asks[0].finish(true);await flush();
+ assert(f.session.stationReady);assert(f.takeoff());
+ f.session.draw(()=>{});assert(f.session.stationDrawn);
+ f.flags.stationValid=false;f.session.draw(()=>{});assert(f.session.drawn);assert(!f.session.stationDrawn);
+ f.flags.stationValid=true;f.session.draw(()=>{});assert(f.session.drawn);assert(!f.session.stationDrawn);
+ assert.deepEqual(f.shown,[{shed:true,station:true},{shed:true,station:false},{shed:true,station:false}]);
+ f.session.dispose();
+});
+test('a terminal invalid station is not fetched on every Dispatch frame',async()=>{
+ const f=stationFixture();await f.start();f.asks[0].finish(false);await flush();
+ for(let i=0;i<10;i++)f.session.prepare();await flush();
+ assert.equal(f.asks.length,1);assert(!f.session.stationReady);assert(f.takeoff());
+ f.session.draw(()=>{});assert(f.session.drawn);assert(!f.session.stationDrawn);f.session.dispose();
+});
+
+import {olearyStationStandardRequested} from '../src/app/scenery-profile.ts';
+test('the station-only veto protects the composed roof and shed and cannot opt in on a legacy path',()=>{
+ const q=(s:string)=>new URLSearchParams(s);
+ assert(olearyStationStandardRequested(q('departure=oleary-railway-low')));
+ const veto=q('departure=oleary-railway-low&stockOlearyStation');
+ assert(!olearyStationStandardRequested(veto));assert(olearyIndustrialStandardRequested(veto));
+ assert(olearyAccessRoofRequested(veto));assert(olearyCompoundRoofsRequested(veto));
+ for(const flag of ['olearyExteriorStudy','stockOlearyExterior','stockOlearyIndustrial','qa','scenery=detail','departure=a&departure=b'])
+  assert(!olearyStationStandardRequested(q(flag)),flag);
+});
+
+test('on dispatch selection or phase exit, cancel the current station offer and isolate it from a later visit',async()=>{
+ const f=stationFixture();await f.start();
+ f.flags.dispatch=false;f.session.leaveStationDispatch();assert(f.asks[0].signal.aborted);
+ f.asks[0].finish(true);await flush();
+ f.flags.dispatch=true;f.session.prepare();await flush();
+ assert.equal(f.asks.length,2);assert(!f.session.stationReady);
+ f.asks[1].finish(true);await flush();assert(f.session.stationReady);assert(f.takeoff());
+ f.session.draw(()=>{});assert(f.session.drawn);assert(f.session.stationDrawn);f.session.dispose();
+});
+
+test('selection change before the station microtask starts does not consume the next real visit',async()=>{
+ const f=stationFixture();
+ f.session.prepare();await flush();assert(f.session.ready);
+ // The route synchronously changed from the dispatch control, but the next
+ // render has not yet delivered leaveStationDispatch().
+ f.session.prepare();f.flags.dispatch=false;await flush();
+ assert.equal(f.asks.length,0);assert(!f.session.stationUnavailable);
+ f.session.leaveStationDispatch();f.flags.dispatch=true;f.session.prepare();await flush();
+ assert.equal(f.asks.length,1);
+ f.asks[0].finish(true);await flush();assert(f.session.stationReady);
+ f.session.dispose();
+});

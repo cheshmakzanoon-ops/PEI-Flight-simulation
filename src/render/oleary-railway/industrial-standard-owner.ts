@@ -13,11 +13,13 @@ import type {OlearyLink}from'./program-gate.ts';
 import {buildDetachedIndustrial192}from'./industrial-envelope.ts';
 import {FORM}from'./q192-form.generated.ts';
 import {PREVIEW}from'./industrial-standard-custody.generated.ts';
+import {STATION_SCOPE}from'./station-standard-custody.generated.ts';
 
 type Tile=Parameters<typeof olearyAtlasOwner>[1];
 type Input={
  scene:Scene;owner:Mesh;atlasHash:string;tile:Tile;wire:ArrayBuffer;rows:number;row192:unknown;
  terrain:Terrain;terrainSha:string;cover:Cover;
+ station?:{row:unknown;link:OlearyLink};
  /** Actual exact Standard owner residence; never legacy / QA or a placement override. */
  permit:()=>boolean;
  ground:()=>OlearyNativeSurface|undefined;
@@ -40,6 +42,7 @@ const identity=(object:Object3D,origin:readonly[number,number,number])=>
  object.scale.x===1&&object.scale.y===1&&object.scale.z===1;
 const phaseSafe=(f:()=>boolean)=>{try{return f()===true;}catch{return false;}};
 type Model=ReturnType<typeof buildDetachedIndustrial192>;
+type Station=NonNullable<Awaited<ReturnType<typeof import('./packet.ts')['loadOleary']>>>;
 
 /** A valid mask differs from the fully composed original draw by exactly 19
  * triangles. Callers prove source, timing, actual GL state and pixel effects
@@ -129,38 +132,95 @@ export async function prepareQ192StandardComparison(o:Input){
   const mask=authenticatedOwnerCohort(owner,stock),lane=mask?.add(art.group,[start,end],{vertices:n,start,end});
   if(!mask||!lane)return;
   let closed=false,busy=false;
+  const stationCfg=o.station,[stationStart,stationEnd]=STATION_SCOPE.span;
+  const stationSpan=owner.userData.beaconTriangles;
+  const currentStationSpan=()=>owner.userData.beaconTriangles===stationSpan&&Array.isArray(stationSpan)&&
+   stationSpan.length===2&&stationSpan[0]===stationStart&&stationSpan[1]===stationEnd;
+  let station:{art:Station;proof:()=>boolean;lane:typeof lane}|undefined;
+  const stationIntact=()=>!!station&&currentStationSpan()&&station.art.intact()&&!station.art.group.parent&&phaseSafe(station.proof);
   const intact=()=>!closed&&initial()&&liveGround()&&exactArt()&&!art.group.parent&&phaseSafe(link);
-  const matchingResidual=()=>{
+  const matchingResidual=(includeStation=false)=>{
    const geo=owner.geometry,index=geo.index;
    if(geo===stock||!exactAttributes(geo)||!(index instanceof BufferAttribute)||
-    !(index.array instanceof Uint16Array)||index.itemSize!==1||index.count!==n-(end-start)||index.normalized||
+    !(index.array instanceof Uint16Array)||index.itemSize!==1||index.count!==n-(end-start)-(includeStation?stationEnd-stationStart:0)||index.normalized||
     index.array.length!==index.count||index.version!==0)return false;
    const buf=index.array;
-   for(let i=0;i<start;i++)if(buf[i]!==i)return false;
-   for(let i=start;i<buf.length;i++)if(buf[i]!==i+end-start)return false;
+   for(let i=0,k=0;i<buf.length;i++,k++){
+    if(k===start)k=end;
+    if(includeStation&&k===stationStart)k=stationEnd;
+    if(buf[i]!==k)return false;
+   }
    return true;
   };
-  const retire=()=>{try{mask.dispose();}finally{art.dispose();}};
+  const retire=()=>{
+   try{mask.dispose();}finally{try{art.dispose();}finally{station?.art.dispose();station=undefined;}}
+  };
+  const prepareStation=stationCfg&& (async (offer:AbortSignal)=>{
+   let staged:Station|undefined;
+   const permit=()=>!offer.aborted&&!busy&&intact()&&currentStationSpan()&&!station;
+   try{
+    if(!permit())return false;
+    const literal=JSON.stringify(stationCfg.row);
+    if(!literal||literal.length>1400)return false;
+    const [rowPin,...scopes]=await Promise.all([olearySha(enc.encode(literal)),...attrs.map(async({name,a,size})=>{
+     const p=a.array.subarray(stationStart*size,stationEnd*size);
+     return await olearySha(new Uint8Array(p.buffer as ArrayBuffer,p.byteOffset,p.byteLength))===STATION_SCOPE.digests[name as keyof typeof STATION_SCOPE.digests];
+    })]);
+    if(rowPin!==OLEARY.row||!scopes.every(Boolean)||!permit())return false;
+    const m=await import('./packet.ts');if(!permit())return false;
+    staged=await m.loadOleary((import.meta.env?.BASE_URL??'/')+'art/',offer);
+    if(!staged?.intact()||!permit()||staged.group.parent)return false;
+    const proof=await stationCfg.link(staged.group,offer);
+    if(!proof||!permit()||!staged.intact()||staged.group.parent||!phaseSafe(proof))return false;
+    const stationLane=mask.add(staged.group,[stationStart,stationEnd],{vertices:n,start:stationStart,end:stationEnd});
+    if(!stationLane)return false;
+    station={art:staged,proof,lane:stationLane};staged=undefined;
+    return true;
+   }catch{return false;}
+   finally{staged?.dispose();}
+  });
   const view={
-   intact,
+   intact,prepareStation,stationIntact,
    /** The draw callback MUST be synchronous. This is never an automatic
     * per-frame scene hook or an instruction to bypass GL/readback gates. */
-   compare<T>(enabled:boolean,draw:(alternate:boolean)=>T):T{
+   compare<T>(enabled:boolean,draw:(alternate:boolean,station?:boolean)=>T,showStation=false):T{
     if(busy)throw Error('q192 comparison cannot reenter its draw bracket');
     busy=true;
     try{
      if(!enabled||!intact())return draw(false);
+     const next=showStation&&stationIntact()?station:undefined;
      try{scene.add(art.group);lane.sync(art.group.parent===scene&&base());}
      catch{lane.sync(false);art.group.removeFromParent();return draw(false);}
      if(!lane.visible||!matchingResidual()){
       lane.sync(false);art.group.removeFromParent();return draw(false);
      }
-     return draw(true);
+     let attached=false;
+     if(next){
+      try{
+       scene.add(next.art.group);
+       next.lane.sync(next.art.group.parent===scene&&base()&&next.art.intact()&&phaseSafe(next.proof));
+       attached=next.lane.visible&&matchingResidual(true);
+      }catch{attached=false;}
+      if(!attached){
+       next.lane.sync(false);next.art.group.removeFromParent();
+       if(!matchingResidual()){
+        lane.sync(false);art.group.removeFromParent();
+        return draw(false);
+       }
+      }
+     }
+     return draw(true,attached);
     }finally{
-     try{lane.sync(false);}
+     try{station?.lane.sync(false);}
      finally{
-      try{art.group.removeFromParent();}
-      finally{busy=false;if(closed)retire();}
+      try{station?.art.group.removeFromParent();}
+      finally{
+       try{lane.sync(false);}
+       finally{
+        try{art.group.removeFromParent();}
+        finally{busy=false;if(closed)retire();}
+       }
+      }
      }
     }
    },
