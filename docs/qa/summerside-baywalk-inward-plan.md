@@ -40,3 +40,27 @@ shore faces, land-to-court height and coverage, original timber ramp and
 road transitions must be qualified in the active renderer before changing
 the standard route. No photos, textures, grading, new water mask, or
 contact data are emitted by this tool.
+
+## Reproduce the detached height and wet edge
+
+Once the plan is generated, use another **new** output directory:
+
+```sh
+node --experimental-strip-types tools/qa/summerside-baywalk/seat-native.mjs \
+  /tmp/pei-baywalk-inward /tmp/pei-baywalk-seated
+```
+
+The offline fixture contains the original N112 tile's exact position, UV and
+index bytes observed in frame 315 of the normal waterfront Chase replay at
+`4cc5d89`. It contains no screenshots or generated scenery. The command
+authenticates all three streams and uses the original browser-reported
+translation instead of estimating the stock plane. If you already have the
+matching raw replay export, supply its directory as the optional third
+argument. Both inputs must produce the same output bytes.
+
+The bundle seats 29,228 cap vertices and emits 748 wet-side faces along 374
+edges. Each wet side uses the cap's top indices directly. The 961 old-land
+edges generate no wall. The lower edge extends below the game's fixed sea
+plane for rendering only; it says nothing about bathymetry. The outputs are
+not loaded by the game. They do not clear the remaining dry-side, road,
+ramp or contact checks.
