@@ -64,3 +64,30 @@ edges generate no wall. The lower edge extends below the game's fixed sea
 plane for rendering only; it says nothing about bathymetry. The outputs are
 not loaded by the game. They do not clear the remaining dry-side, road,
 ramp or contact checks.
+
+## Check the inherited contact join
+
+```sh
+node --experimental-strip-types tools/qa/summerside-baywalk/stock-contact-connectivity.mjs
+```
+
+The old game uses a weighted height raster for ground contact and a
+triangulated grid for visible terrain. These can differ. This offline
+check finds where the two stock heights could agree over the previously
+recorded survey rectangle. It uses the original DEM, Cover, and the
+verified frame-315 terrain geometry. It does not fit new survey data or
+use the provisional court as a height source.
+
+At two coastline points the existing heights match to numerical precision.
+The tool splits the rectangle at both grid lattices. It conservatively keeps
+any old-dry box that might contain a match, both mesh facets when a box
+crosses their diagonal, and even boxes that only connect at a corner.
+The two checked coastline points still land in separate components,
+at 0.5 m and 0.25 m spacing and with a wider numerical enclosure. Thus
+these two points do not provide a continuous shared-height join under the
+unchanged stock fields. A connected set of possible boxes would be
+inconclusive, not proof of a connection.
+
+This result does not authorize a new grade, modified stock collision, or a
+larger application area. The historical preview and ordinary route are
+unchanged.
