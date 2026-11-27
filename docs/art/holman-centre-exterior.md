@@ -60,3 +60,31 @@ node --experimental-strip-types --test tools/art/holman-centre-exterior/holman-d
 Choose one of the four viewpoints and switch between plain materials,
 the authored finish, and the detailed masonry and glass. This workbench
 does not appear in the game's dispatch menu.
+
+### Ground-only placement is not sufficient
+
+The independent 66-point check was repeated against the exact dated
+[NRCan bare-earth source](https://open.canada.ca/data/en/dataset/957782bf-847c-4644-a757-e383c0057995).
+Then the allowable terrain correction was given a deliberately optimistic
+test: every unprotected point could match the survey exactly, while
+the existing roads, sidewalks, parking and adjacent buildings kept
+their authored support.
+
+| Area | Best possible 90th-percentile height error |
+| --- | ---: |
+| West | 0.465 m |
+| South | 0.611 m |
+| All 66 points | 0.554 m |
+
+All three exceed the original **0.45 m** limit. Sixteen of the eighteen
+south check points are protected, and the best possible south median
+error is still **0.508 m**, beyond the **0.22 m** limit. Shifting the
+building or changing only the unprotected ground would not qualify it.
+Keeping the source-supported model fixed would require a separately
+qualified fit with the existing street surfaces. Holman remains off
+the playable map.
+
+The [numerical bound](holman-centre-ground-bound.json) and
+[reserved fixture](../../tools/qa/data/holman-ground/reserved-controls.json)
+do not fit a grade. Run `node tools/qa/holman-ground-bound.mjs` to
+recheck the lower bound.

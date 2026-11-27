@@ -1,0 +1,158 @@
+{
+  "sourceHeaderSHA256": "93c9b02cf30096650c252e8299b3b0c4672aa8dcf48837bbd0985cffbb3d616b",
+  "independentPointsSHA256": "da2c17c748795223a7bfe143a80c2c9736067d8b93610536f42944ee53dcde72",
+  "coownerMaskSHA256": "7022e285a49e2d5bd23bd201ab7bf4584601905a9bfbaa9c2cd2a50211a8bad0",
+  "tolerancesM": {
+    "absoluteP90": 0.45,
+    "absoluteSignedMedian": 0.22
+  },
+  "method": "Never alter a protected point. Set every other absolute error to zero to give a lower bound on P90. Separately compute the exact possible extrema of signed median by allowing all corrective samples to range beyond the observed envelope, then measure its nearest approach to zero. This is an optimistic feasibility bound, not a fitted terrain patch.",
+  "sides": {
+    "west": {
+      "count": 12,
+      "stockAbsP90M": 0.6014040072723467,
+      "stockSignedMedianM": -0.2759958114017018,
+      "oracle": {
+        "protected-centers": {
+          "immutable": 7,
+          "freelyCorrectable": 5,
+          "lowestPossibleAbsP90M": 0.46500054446377026,
+          "lowestPossibleAbsMedianM": 0.20362624761727455,
+          "signedMedianRangeM": [
+            -0.5041629712189797,
+            -0.20362624761727455
+          ],
+          "passesNecessaryCondition": false
+        },
+        "protected-cells": {
+          "immutable": 10,
+          "freelyCorrectable": 2,
+          "lowestPossibleAbsP90M": 0.46500054446377026,
+          "lowestPossibleAbsMedianM": 0.22021453956252812,
+          "signedMedianRangeM": [
+            -0.2759958114017018,
+            -0.22021453956252812
+          ],
+          "passesNecessaryCondition": false
+        }
+      }
+    },
+    "south": {
+      "count": 18,
+      "stockAbsP90M": 0.6111482155944058,
+      "stockSignedMedianM": 0.5084924758995097,
+      "oracle": {
+        "protected-centers": {
+          "immutable": 16,
+          "freelyCorrectable": 2,
+          "lowestPossibleAbsP90M": 0.6111482155944058,
+          "lowestPossibleAbsMedianM": 0.5084924758995097,
+          "signedMedianRangeM": [
+            0.5084924758995097,
+            0.5539541870056965
+          ],
+          "passesNecessaryCondition": false
+        },
+        "protected-cells": {
+          "immutable": 16,
+          "freelyCorrectable": 2,
+          "lowestPossibleAbsP90M": 0.6111482155944058,
+          "lowestPossibleAbsMedianM": 0.5084924758995097,
+          "signedMedianRangeM": [
+            0.5084924758995097,
+            0.5539541870056965
+          ],
+          "passesNecessaryCondition": false
+        }
+      }
+    },
+    "north": {
+      "count": 18,
+      "stockAbsP90M": 0.39781659563597177,
+      "stockSignedMedianM": -0.1448195479260792,
+      "oracle": {
+        "protected-centers": {
+          "immutable": 16,
+          "freelyCorrectable": 2,
+          "lowestPossibleAbsP90M": 0.39781659563597177,
+          "lowestPossibleAbsMedianM": 0.1448195479260792,
+          "signedMedianRangeM": [
+            -0.22959166833654465,
+            -0.1448195479260792
+          ],
+          "passesNecessaryCondition": true
+        },
+        "protected-cells": {
+          "immutable": 18,
+          "freelyCorrectable": 0,
+          "lowestPossibleAbsP90M": 0.39781659563597177,
+          "lowestPossibleAbsMedianM": 0.1448195479260792,
+          "signedMedianRangeM": [
+            -0.1448195479260792,
+            -0.1448195479260792
+          ],
+          "passesNecessaryCondition": true
+        }
+      }
+    },
+    "east": {
+      "count": 18,
+      "stockAbsP90M": 0.2203138038106286,
+      "stockSignedMedianM": 0.17387572577844868,
+      "oracle": {
+        "protected-centers": {
+          "immutable": 18,
+          "freelyCorrectable": 0,
+          "lowestPossibleAbsP90M": 0.2203138038106286,
+          "lowestPossibleAbsMedianM": 0.17387572577844868,
+          "signedMedianRangeM": [
+            0.17387572577844868,
+            0.17387572577844868
+          ],
+          "passesNecessaryCondition": true
+        },
+        "protected-cells": {
+          "immutable": 18,
+          "freelyCorrectable": 0,
+          "lowestPossibleAbsP90M": 0.2203138038106286,
+          "lowestPossibleAbsMedianM": 0.17387572577844868,
+          "signedMedianRangeM": [
+            0.17387572577844868,
+            0.17387572577844868
+          ],
+          "passesNecessaryCondition": true
+        }
+      }
+    },
+    "pooled": {
+      "count": 66,
+      "stockAbsP90M": 0.5762276805876207,
+      "stockSignedMedianM": 0.05772293362585512,
+      "oracle": {
+        "protected-centers": {
+          "immutable": 57,
+          "freelyCorrectable": 9,
+          "lowestPossibleAbsP90M": 0.5539541870056965,
+          "lowestPossibleAbsMedianM": 0.03935046429752598,
+          "signedMedianRangeM": [
+            0.03935046429752598,
+            0.17786132450188474
+          ],
+          "passesNecessaryCondition": false
+        },
+        "protected-cells": {
+          "immutable": 62,
+          "freelyCorrectable": 4,
+          "lowestPossibleAbsP90M": 0.5539541870056965,
+          "lowestPossibleAbsMedianM": 0.03935046429752598,
+          "signedMedianRangeM": [
+            0.03935046429752598,
+            0.08955605906283237
+          ],
+          "passesNecessaryCondition": false
+        }
+      }
+    }
+  },
+  "conclusion": "HOLD: immutable surroundings alone fail the ground tolerance."
+}
