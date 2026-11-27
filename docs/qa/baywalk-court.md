@@ -10,6 +10,9 @@ The 2020 NRCan point cloud, independent modern OpenStreetMap coast/linework, and
 
 For the separately mapped short concrete connection, add `&baywalkConcrete`. See the [concrete approach notes](baywalk-concrete.md).
 
+The [offline reconstruction check](summerside-baywalk-inward-plan.md) audits a
+conservative ground outline without enabling or changing either flight mode.
+
 ## Check it locally
 
 ```sh
