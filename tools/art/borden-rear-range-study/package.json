@@ -1,0 +1,28 @@
+{
+  "name": "port-borden-rear-range-workbench",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A detached original Three r187 exterior art workbench. No game, photos or georeferenced model.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "studio": "vite studio-v2 --host 127.0.0.1",
+    "build": "tsc -p studio-v2/tsconfig.json && vite build studio-v2 --base ./",
+    "verify:cpu": "node --experimental-strip-types studio-v2/verify-cpu.mjs",
+    "verify:native": "node studio-v2/run-studio.cjs"
+  },
+  "dependencies": {
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.183.1",
+    "typescript": "5.9.3",
+    "vite": "7.3.1"
+  },
+  "optionalDependencies": {
+    "playwright": "1.62.1",
+    "pngjs": "7.0.0"
+  }
+}

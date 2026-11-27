@@ -74,6 +74,7 @@ the original Cavendish coastal overdraw case after two relocations.
 
 ## Coastal terrain and materials
 
+- [Port Borden rear range light](qa/borden-rear-range-study.md): detached original Three.js art and photographic/survey constraints; the live park remains unchanged.
 - [Round Pond coastal alignment](qa/round-pond-shore/): a normal Prince Open Shore flight revealed a dated shoreline mismatch. Geometry and tint stay unchanged pending matched physical data.
 - [East Point cliff relief](qa/coastal-cliff.md): a browser survey census, matched views and asset failure tests.
 - [Access PEI O’Leary membrane tone](qa/oleary-access-roof-tone.md): one signed roof color review and ordinary departure proof.

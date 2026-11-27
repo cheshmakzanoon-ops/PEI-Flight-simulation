@@ -1,0 +1,361 @@
+{
+  "scope": "Relocated original Three.js art workbench, no game map or hardware benchmark.",
+  "rawReceiptSHA256": "b32bc4b3f654d2bd99c7877f0a643905942c6658a1d289b853f3568a38c0e8fc",
+  "browserVersion": "158.0.8127.36",
+  "decision": "TECHNICAL PASS / visual review pending",
+  "localRequestCount": 2,
+  "referenceReceiptSha256": "27e289db562791bcf452a1631c0d13c732ae87d92db15f493be36db8eb369316",
+  "errors": [],
+  "images": {
+    "opening-v1.png": {
+      "bytes": 96738,
+      "sha": "f89fa64d3e8a6708558c1151b44005c73b3556d69519f4927d3cbfea2afc2b65"
+    },
+    "opening-role-v1.png": {
+      "bytes": 13257,
+      "sha": "cf5ffda99bc95fbc88d40d84bb8625b7c71eeb4165301fdc0ee70fb7c62e2281"
+    },
+    "opening-role-v2.png": {
+      "bytes": 13660,
+      "sha": "5c190d5eb5e95eebdfb5559ce02997936760809333cc50743e1c4f1b67d4e578"
+    },
+    "opening-v2.png": {
+      "bytes": 108416,
+      "sha": "ff955db6df9e4fca5eda253758b3d34018f67357c2171f4278f418b4a914c3b0"
+    },
+    "reciprocal-v1.png": {
+      "bytes": 102827,
+      "sha": "b061acf8e6014a3e4fd0ebc4e61104305d7f687193e5bda2d153a7c02b2f5458"
+    },
+    "reciprocal-role-v1.png": {
+      "bytes": 13136,
+      "sha": "66b3e519bc738a205accbf0b4b503c250e00ddd377dfd01a5ba7d70848e8be56"
+    },
+    "reciprocal-role-v2.png": {
+      "bytes": 13183,
+      "sha": "fb20fa6add54c482de98cfc74651d150da345881ea5f819b05d94974976da617"
+    },
+    "reciprocal-v2.png": {
+      "bytes": 112847,
+      "sha": "c8ba80d235b44ef03435dfe707003dabc71293c7083fa0e8d20277bc6abe4221"
+    },
+    "medium-v1.png": {
+      "bytes": 17315,
+      "sha": "deaf28bb861473ba7c8cccefc40fb5a36005536770cfc008a188776e715e8d00"
+    },
+    "medium-role-v1.png": {
+      "bytes": 12140,
+      "sha": "14f824f9797788a392a18e02a9dceff2e3d99b1d14b7c9e7c1b0310d108c88b4"
+    },
+    "medium-role-v2.png": {
+      "bytes": 12426,
+      "sha": "788ba079e5a4c68747560f5781ac8880ff0db51e061327cf6b421c285f6a1745"
+    },
+    "medium-v2.png": {
+      "bytes": 19438,
+      "sha": "29a660576bb738e6282b8dc0a70ab2c4f63ff6d131a76e3bd3e66af31e9d2bb2"
+    },
+    "studio-triptych-v2.png": {
+      "bytes": 211616,
+      "sha": "ad9a81e1358876873b2f86b12a773d7dabc36c20288b350541ac5e032a13066d"
+    }
+  },
+  "proof": [
+    {
+      "id": "opening",
+      "view": [
+        [
+          14.6,
+          12.2,
+          23.4
+        ],
+        [
+          0,
+          6.35,
+          0
+        ]
+      ],
+      "level": "close",
+      "shape": [
+        518,
+        580
+      ],
+      "draws": {
+        "before": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "depthOld": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "depthNext": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        },
+        "after": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        },
+        "rollback": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "finish": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        }
+      },
+      "stats": {
+        "eligible": 65880,
+        "sash": 462,
+        "lanternCount": 6144,
+        "shaftCount": 59729,
+        "changed": 56009,
+        "strong": 14981,
+        "lanternChanged": 6059,
+        "lanternStrong": 6058,
+        "sashStrong": 459,
+        "alpha": 0,
+        "nonOpaque": 0,
+        "outside": 0,
+        "restBytes": 0,
+        "repeatBytes": 0,
+        "protectedSeen": 6112,
+        "protectedChanges": 0,
+        "silhouette": 6,
+        "peak": 152,
+        "meanStockShaftCode": 0.14810369659145198,
+        "categorized": 56002,
+        "example": []
+      },
+      "checks": {
+        "exact": true,
+        "draw": true,
+        "strong": true,
+        "sash": true,
+        "samples": true
+      }
+    },
+    {
+      "id": "reciprocal",
+      "view": [
+        [
+          -15.1,
+          11.5,
+          -23.4
+        ],
+        [
+          0,
+          6.4,
+          0
+        ]
+      ],
+      "level": "close",
+      "shape": [
+        518,
+        580
+      ],
+      "draws": {
+        "before": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "depthOld": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "depthNext": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        },
+        "after": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        },
+        "rollback": {
+          "calls": 1,
+          "tris": 512,
+          "textures": 1,
+          "error": 0
+        },
+        "finish": {
+          "calls": 1,
+          "tris": 740,
+          "textures": 1,
+          "error": 0
+        }
+      },
+      "stats": {
+        "eligible": 66026,
+        "sash": 0,
+        "lanternCount": 6134,
+        "shaftCount": 59879,
+        "changed": 60650,
+        "strong": 18549,
+        "lanternChanged": 6054,
+        "lanternStrong": 6005,
+        "sashStrong": 0,
+        "alpha": 0,
+        "nonOpaque": 0,
+        "outside": 0,
+        "restBytes": 0,
+        "repeatBytes": 0,
+        "protectedSeen": 5673,
+        "protectedChanges": 0,
+        "silhouette": 12,
+        "peak": 127,
+        "meanStockShaftCode": 0.22442748091602382,
+        "categorized": 60637,
+        "example": []
+      },
+      "checks": {
+        "exact": true,
+        "draw": true,
+        "strong": true,
+        "sash": true,
+        "samples": true
+      }
+    },
+    {
+      "id": "medium",
+      "view": [
+        [
+          24.2,
+          20.3,
+          22.3
+        ],
+        [
+          0,
+          6.35,
+          0
+        ]
+      ],
+      "level": "medium",
+      "shape": [
+        518,
+        580
+      ],
+      "draws": {
+        "before": {
+          "calls": 1,
+          "tris": 284,
+          "textures": 1,
+          "error": 0
+        },
+        "depthOld": {
+          "calls": 1,
+          "tris": 284,
+          "textures": 1,
+          "error": 0
+        },
+        "depthNext": {
+          "calls": 1,
+          "tris": 500,
+          "textures": 1,
+          "error": 0
+        },
+        "after": {
+          "calls": 1,
+          "tris": 500,
+          "textures": 1,
+          "error": 0
+        },
+        "rollback": {
+          "calls": 1,
+          "tris": 284,
+          "textures": 1,
+          "error": 0
+        },
+        "finish": {
+          "calls": 1,
+          "tris": 500,
+          "textures": 1,
+          "error": 0
+        }
+      },
+      "stats": {
+        "eligible": 40000,
+        "sash": 410,
+        "lanternCount": 3925,
+        "shaftCount": 36073,
+        "changed": 4969,
+        "strong": 4950,
+        "lanternChanged": 3879,
+        "lanternStrong": 3879,
+        "sashStrong": 410,
+        "alpha": 0,
+        "nonOpaque": 0,
+        "outside": 0,
+        "restBytes": 0,
+        "repeatBytes": 0,
+        "protectedSeen": 5158,
+        "protectedChanges": 0,
+        "silhouette": 1,
+        "peak": 153,
+        "meanStockShaftCode": -0.045206599004067344,
+        "categorized": 4967,
+        "example": []
+      },
+      "checks": {
+        "exact": true,
+        "draw": true,
+        "strong": true,
+        "sash": true,
+        "samples": true
+      }
+    }
+  ],
+  "rawChecks": {
+    "opening": {
+      "baselineSha": "369baa7e8ad9a2a8c42d2bd9535fef5112f2ba56e2f0642969b90453b3e47641",
+      "historicalExact": true,
+      "alpha": 0,
+      "outside": 0,
+      "strong": 14981,
+      "unchangedRole": 6112,
+      "upperSash": 462,
+      "lantern": 6059
+    },
+    "reciprocal": {
+      "baselineSha": "90b41d54dc738476f389bb84337a2a4f83622730b2499f72452f4c3c14c21178",
+      "historicalExact": true,
+      "alpha": 0,
+      "outside": 0,
+      "strong": 18549,
+      "unchangedRole": 5673,
+      "upperSash": 0,
+      "lantern": 6054
+    },
+    "medium": {
+      "baselineSha": "ce88e8e920ebdfbed092241db23ff9a6c6a945956a6f1afff9d7d68140c78cd6",
+      "historicalExact": true,
+      "alpha": 0,
+      "outside": 0,
+      "strong": 4950,
+      "unchangedRole": 5158,
+      "upperSash": 410,
+      "lantern": 3879
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Borden rear range — original exterior study</title>
+<style>
+ *{box-sizing:border-box}
+ :root{color-scheme:dark;--ink:#eef0e8;--muted:#b0bab4;--paper:#17231f;--line:#3b4a41;--key:#dfbb90;}
+ body{margin:0;font-family:system-ui,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;}
+ main{max-width:1770px;margin:auto;padding:40px 42px 32px;}
+ header{display:flex;justify-content:space-between;align-items:end;gap:25px;border-bottom:1px solid var(--line);padding-bottom:21px;}
+ .eyebrow{letter-spacing:.17em;text-transform:uppercase;font-size:11px;color:var(--key);font-weight:700;margin:0 0 10px;}
+ h1{font-size:clamp(32px,4vw,64px);font-weight:480;letter-spacing:-.055em;line-height:.95;margin:0;}
+ header small{color:var(--muted);max-width:285px;font-size:13px;line-height:1.5;}
+ .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:19px;}
+ figure{margin:0;background:#1e2c27;border:1px solid var(--line);border-radius:7px;overflow:hidden;}
+ canvas{display:block;width:100%;height:auto;aspect-ratio:518/580;background:#293832;}
+ figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:4px;padding:12px 13px;color:var(--muted);font-size:12px;}
+ figcaption b{color:var(--ink);font-weight:630;font-size:13px;}
+ footer{font-size:12px;color:var(--muted);line-height:1.45;margin-top:15px;}
+ @media(max-width:860px){main{padding:26px 20px;}header{display:block;}header small{display:block;margin-top:12px;}.grid{grid-template-columns:1fr;}.grid figure{max-width:570px;}}
+</style>
+<main>
+ <header>
+  <div><p class="eyebrow">Marine Rail Park · Detached exterior study · V2</p><h1>Port Borden rear range</h1></div>
+  <small>Built in 1917. Original geometry, not a survey or an in-game placement. The documented overall height is 12.8 m.</small>
+ </header>
+ <div class="grid">
+  <figure><canvas id="opening" width="518" height="580" aria-label="The original close model with the illustrative shuttered lantern opening"></canvas><figcaption><b>01 · Opening side</b><span>Close study</span></figcaption></figure>
+  <figure><canvas id="reciprocal" width="518" height="580" aria-label="Reciprocal close model showing the closed timber shaft"></canvas><figcaption><b>02 · Opposite face</b><span>Close study</span></figcaption></figure>
+  <figure><canvas id="medium" width="518" height="580" aria-label="Reduced-medium rendition of the same historic tower silhouette"></canvas><figcaption><b>03 · Raised oblique</b><span>Reduced geometry</span></figcaption></figure>
+ </div>
+ <footer>Illustrative local axes and opening details. The braced gallery belongs to the tower. The park platform, ramp, terrain and neighboring structures are not modeled.</footer>
+</main>
+<script type="module" src="./src/studio.ts"></script>
+</html>
