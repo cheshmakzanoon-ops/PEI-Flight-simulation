@@ -129,3 +129,7 @@ waterline changes or stock-shell removal.
 
 The [Portside front study](qa/portside-front-study.md) preserves an independently
 verified facade experiment without adding it to the player.
+
+The [Montague warehouse survey hold](qa/montague-warehouse.md) records a
+visible stock model and independently failed roof-shape and ground-datum
+gates. It does not change the simulation.

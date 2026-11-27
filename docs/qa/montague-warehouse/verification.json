@@ -1,0 +1,378 @@
+{
+  "decision": "hold; no player change",
+  "main": "56f15a6e7d583d18476e719617c6d8f373d3e749",
+  "original": {
+    "tile": "q103301",
+    "ordinal": 55,
+    "rowSha256": "f038dca646ad0e7314ab2dc803f74480c7358d1eea93a4aeb49f215e03c52efc",
+    "footprintStockM2": 764.741,
+    "footprintProvincialM2": 944.895,
+    "intersectionM2": 715.344,
+    "modernFID": 74751
+  },
+  "lockedStudy": {
+    "prelockSha256": "71c16546ddc2c31a4b9cce1b512dec345b83f3b7f22ffbfea337d864827e2055",
+    "rasterRosterSha256": "8ce86489e33fdf2f26d56a6de74d7bd839fc53d5051f6848705479d705db2f0c",
+    "groundRosterSha256": "a6414046217601a3073c27db2ffb50015fb4cbc9a9a93390e681d0e6c78a8ffe",
+    "fitSealSha256": "d1aedb872ad18d4b19359baae799024d88ff6226b9e397d47a57e16d4d9da7b7",
+    "fitRasterCells": 118,
+    "roofMetrics": {
+      "flankSlope": [
+        0.04,
+        0.45
+      ],
+      "maxAbsLongitudinalSlope": 0.08,
+      "maxFlankAbsBias": 0.35,
+      "maxFlankP90Abs": 0.75,
+      "maxFlankRmse": 0.5,
+      "minClassifiedStripesEachFlank": 2,
+      "minRmseGainVsBestSimple": 0.2,
+      "minimumEachFlank": {
+        "classifiedHold": 10,
+        "rasterHold": 15
+      },
+      "ridgeV": [
+        5.6,
+        8.0
+      ]
+    },
+    "roofInteriorFit": {
+      "ridgeLocalV": 7.17725744493237,
+      "opposingTransverseSlopes": [
+        0.13850719157860034,
+        -0.12893027034545096
+      ],
+      "scope": "Computed intersection between opposing interior fields; not observed ridge."
+    }
+  },
+  "sourceProvenance": {
+    "fit": {
+      "etag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+      "headerSha256": "a8b4d66c00fe586f3b13b41ed6718de3ef43dddf6c3307e4b04c144db833f7dd",
+      "objectSize": 35659211028,
+      "spans": 35,
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif"
+    },
+    "classifiedHold": {
+      "etag": "\"f81e73668d3b7c1c1b283803715a9ece-7\"",
+      "objectBytes": 52934824,
+      "query2961": [
+        [
+          527378.49,
+          5112369.33,
+          527382.94,
+          5112371.59
+        ],
+        [
+          527372.33,
+          5112367.92,
+          527376.58,
+          5112370.14
+        ],
+        [
+          527381.62,
+          5112355.36,
+          527386.13,
+          5112357.86
+        ],
+        [
+          527375.46,
+          5112353.96,
+          527379.77,
+          5112356.41
+        ]
+      ],
+      "rangeCount": 10,
+      "transferBytes": 2503903,
+      "url": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_427000_679000.copc.laz"
+    },
+    "ground": {
+      "dsm": {
+        "etag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+        "headerSha256": "a8b4d66c00fe586f3b13b41ed6718de3ef43dddf6c3307e4b04c144db833f7dd",
+        "objectSize": 35659211028,
+        "spans": 35,
+        "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif"
+      },
+      "dtm": {
+        "etag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+        "headerSha256": "93c9b02cf30096650c252e8299b3b0c4672aa8dcf48837bbd0985cffbb3d616b",
+        "objectSize": 34973844421,
+        "spans": 35,
+        "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif"
+      }
+    },
+    "dataLicence": "https://open.canada.ca/en/open-government-licence-canada",
+    "caveat": "Same dated survey, not independent acquisition; independent selected samples only."
+  },
+  "rasterHold": {
+    "role": "rasterHold",
+    "prelockSha256": "71c16546ddc2c31a4b9cce1b512dec345b83f3b7f22ffbfea337d864827e2055",
+    "sealSha256": "d1aedb872ad18d4b19359baae799024d88ff6226b9e397d47a57e16d4d9da7b7",
+    "validationSha256": "94656c6a5fc10dd7ceff81448717ff74a8a264409e9a1c9218a168f7cf2f6f60",
+    "stats": {
+      "flat": {
+        "all": {
+          "n": 55,
+          "rmse": 0.1694197378663329,
+          "p90abs": 0.2655371779102385,
+          "bias": 0.041219413886636504
+        },
+        "flankA": {
+          "n": 30,
+          "rmse": 0.19234372274698666,
+          "p90abs": 0.32884835065421464,
+          "bias": 0.116643608222574
+        },
+        "flankB": {
+          "n": 25,
+          "rmse": 0.13693566174276772,
+          "p90abs": 0.23655062853279715,
+          "bias": -0.049289619316488495
+        }
+      },
+      "mono": {
+        "all": {
+          "n": 55,
+          "rmse": 0.1409107920313108,
+          "p90abs": 0.21840226589205686,
+          "bias": 0.02842088280063635
+        },
+        "flankA": {
+          "n": 30,
+          "rmse": 0.131768849089066,
+          "p90abs": 0.21364932580653379,
+          "bias": 0.037709495916082206
+        },
+        "flankB": {
+          "n": 25,
+          "rmse": 0.15115302635293965,
+          "p90abs": 0.22392176576885917,
+          "bias": 0.01727454706210132
+        }
+      },
+      "pair": {
+        "all": {
+          "n": 55,
+          "rmse": 0.018185694416060525,
+          "p90abs": 0.030232690897421578,
+          "bias": 0.009060213838381773
+        },
+        "flankA": {
+          "n": 30,
+          "rmse": 0.01716252335471136,
+          "p90abs": 0.02659866688106636,
+          "bias": 0.0038325910061733025
+        },
+        "flankB": {
+          "n": 25,
+          "rmse": 0.019342187300983346,
+          "p90abs": 0.031090037649757464,
+          "bias": 0.015333361237031938
+        }
+      }
+    },
+    "ridgeLocalV": 7.17725744493237
+  },
+  "classifiedHold": {
+    "role": "classifiedHold",
+    "prelockSha256": "71c16546ddc2c31a4b9cce1b512dec345b83f3b7f22ffbfea337d864827e2055",
+    "sealSha256": "d1aedb872ad18d4b19359baae799024d88ff6226b9e397d47a57e16d4d9da7b7",
+    "validationSha256": "035e1486690521c1639dc88adeb9ed6db5e1aff5a67baaa733a0685cfd3e9b6a",
+    "stats": {
+      "flat": {
+        "all": {
+          "n": 107,
+          "rmse": 0.18108865532432894,
+          "p90abs": 0.2912419434886868,
+          "bias": 0.05937278461018221
+        },
+        "flankA": {
+          "n": 57,
+          "rmse": 0.20649497929186236,
+          "p90abs": 0.3402419434886873,
+          "bias": 0.1290226452430729
+        },
+        "flankB": {
+          "n": 50,
+          "rmse": 0.14685855490103497,
+          "p90abs": 0.21980644520905077,
+          "bias": -0.02002805651131318
+        }
+      },
+      "mono": {
+        "all": {
+          "n": 107,
+          "rmse": 0.1624154454663455,
+          "p90abs": 0.2530317379005318,
+          "bias": 0.05762670082006461
+        },
+        "flankA": {
+          "n": 57,
+          "rmse": 0.14686655136932938,
+          "p90abs": 0.2372035482294521,
+          "bias": 0.060531883384907094
+        },
+        "flankB": {
+          "n": 50,
+          "rmse": 0.17849657969560834,
+          "p90abs": 0.2830313564899715,
+          "bias": 0.05431479269614417
+        }
+      },
+      "pair": {
+        "all": {
+          "n": 107,
+          "rmse": 0.05411947190421895,
+          "p90abs": 0.06745976564354166,
+          "bias": 0.05218396229056053
+        },
+        "flankA": {
+          "n": 57,
+          "rmse": 0.052760766358544854,
+          "p90abs": 0.06702297721973557,
+          "bias": 0.05052342884292951
+        },
+        "flankB": {
+          "n": 50,
+          "rmse": 0.055627930392791125,
+          "p90abs": 0.06784200271687872,
+          "bias": 0.054076970420859884
+        }
+      }
+    },
+    "ridgeLocalV": 7.17725744493237,
+    "alongStripeCoverage": {
+      "flankA": 2,
+      "flankB": 2
+    }
+  },
+  "shapeGate": {
+    "prelockSha256": "71c16546ddc2c31a4b9cce1b512dec345b83f3b7f22ffbfea337d864827e2055",
+    "fitSealSha256": "d1aedb872ad18d4b19359baae799024d88ff6226b9e397d47a57e16d4d9da7b7",
+    "acceptShapeDiagnostic": false,
+    "checks": {
+      "oppositeFlankSlopes": true,
+      "reachableRidge": true,
+      "lowLongitudinalSlope": true,
+      "rasterHoldCoverage": true,
+      "rasterHoldRmse": true,
+      "rasterHoldP90": true,
+      "rasterHoldBias": true,
+      "rasterHoldVsSimple": false,
+      "classifiedHoldCoverage": true,
+      "classifiedHoldRmse": true,
+      "classifiedHoldP90": true,
+      "classifiedHoldBias": true,
+      "classifiedHoldVsSimple": false,
+      "classifiedHoldSpatial": true
+    },
+    "rendererAuthorization": false,
+    "pending": [
+      "ridge and join holdout",
+      "closed identical plan boundary",
+      "historic main / annex isolation",
+      "original low flight A/B"
+    ]
+  },
+  "groundGate": {
+    "prelock": "71c16546ddc2c31a4b9cce1b512dec345b83f3b7f22ffbfea337d864827e2055",
+    "scope": "Exterior support diagnostic only. Not under the footprint, not cadastral base, not authority to move stock ground.",
+    "pairedDsmDtmMaxAbsM": 0.3,
+    "minimumValidPerSide": 6,
+    "maxMedianAbsBiasStockVisualM": 0.45,
+    "maxP90AbsStockVisualM": 0.8,
+    "sameCoordinateEvaluation": true,
+    "interpolateSurveyAcrossRoof": false
+  },
+  "groundResult": {
+    "ground": {
+      "GE": {
+        "eligible": 22,
+        "paired": 22,
+        "bareGate": 21,
+        "p90AbsNativeMinusStockVisualM": 1.5806665970615654,
+        "medianNativeMinusStockVisualM": -1.4795258620046638,
+        "passes": false
+      },
+      "GN": {
+        "eligible": 6,
+        "paired": 6,
+        "bareGate": 6,
+        "p90AbsNativeMinusStockVisualM": 1.4687772333766134,
+        "medianNativeMinusStockVisualM": -1.3725909069273712,
+        "passes": false
+      },
+      "GS": {
+        "eligible": 29,
+        "paired": 29,
+        "bareGate": 23,
+        "p90AbsNativeMinusStockVisualM": 0.9321317081136897,
+        "medianNativeMinusStockVisualM": -0.8389831369658793,
+        "passes": false
+      },
+      "GW": {
+        "eligible": 29,
+        "paired": 29,
+        "bareGate": 14,
+        "p90AbsNativeMinusStockVisualM": 2.462424801629825,
+        "medianNativeMinusStockVisualM": -2.3084519288668304,
+        "passes": false
+      }
+    },
+    "passAllSides": false,
+    "authority": "Diagnostic only; does not imply building base."
+  },
+  "optics": {
+    "route": "montague-bridge-low (existing optional bridge foundation)",
+    "viewport": [
+      1200,
+      760
+    ],
+    "camera": "Chase",
+    "graphics": "Standard",
+    "stockReceiptSha256": "cc5302ca91f4b0fbba1db508c112b36b7a2e2387f3beaf72c4be79fbfc18475c",
+    "exclusiveRoofWallMixed": [
+      [
+        387,
+        1884,
+        7787,
+        137
+      ],
+      [
+        486,
+        4497,
+        14648,
+        207
+      ],
+      [
+        729,
+        0,
+        0,
+        0
+      ]
+    ],
+    "unmodifiedFrameSha256": [
+      "f3f0a8a1020f2dbf2a8e883acaafe6bae8fa870a8f2f40dd162c91f97fa0c135",
+      "0fab8d47f2083da5340853d6a7aa4f8af20b7110d4f177ccc3d444948fa7683f",
+      "e87cf3006a33dfd2a30094e3ceb6c0c31e228909073bf64f41f3c882e48718fc"
+    ],
+    "publishedCropsXYWH": [
+      [
+        125,
+        415,
+        280,
+        175
+      ],
+      [
+        2,
+        470,
+        280,
+        175
+      ]
+    ],
+    "publishedImageSha256": "24ee14fcd05533ddf531a739912848f2e6578ddc95da79ca4a6ffbd006ee5dc0",
+    "restoredExact": true,
+    "outsideAndAlphaDifferences": 0
+  }
+}
