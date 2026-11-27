@@ -4,6 +4,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync as R} from 'node:fs';
+import {Script} from 'node:vm';
+import ts from 'typescript';
 import * as T from 'three';
 import * as profile from '../src/app/scenery-profile.ts';
 import {northCapeStandOption} from '../src/app/north-cape-stand-option.ts';
@@ -44,8 +46,46 @@ test('all known scenery predicates see exact stock options with editor key, veto
  }
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
  assert(main.includes("if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')"));
- assert(main.includes('try{renderer.render(scene,camera);}finally{end?.();}'));
- assert(main.includes('}else renderer.render(scene,camera);'));
+});
+test('the actual frame submits once, restoring the Cape and terrain leases in both paint paths',()=>{
+ const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
+ const start='const endRidge=world.beginKingsRidgeDraw(camera);';
+ const boundary="if(world.tryonRockState==='pending'";
+ assert.equal(main.split(start).length,2);
+ assert.equal(main.split(boundary).length,2);
+ const body=main.slice(main.indexOf(start),main.indexOf(boundary));
+ assert(body.length>0);
+ const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
+ const paint=(cape, failAt)=>{
+  const calls=[],error=new Error(failAt),scope={scene:{},camera:{},SITES:[{id:'northcape-wind-low'}],
+   activeSite:0,ui:{mode:'flight'},view:0,now:42};
+  const finish=name=>()=>{calls.push('end '+name);};
+  const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
+  scope.world={
+   beginKingsRidgeDraw:c=>{assert.equal(c,scope.camera);return begin('ridge');},
+   beginPrinceLandscapeDraw:()=>begin('prince'),
+   beginRegularNorthRimDraw:c=>{assert.equal(c,scope.camera);return begin('rim');},
+  };
+  scope.datedStandReview=cape?{
+   beforeFrame:p=>{assert.equal(p.site,'northcape-wind-low');assert.equal(p.mode,'flight');return begin('cape');},
+   dispose:()=>calls.push('dispose cape'),
+  }:undefined;
+  scope.renderer={render:(scene,camera)=>{
+   assert.equal(scene,scope.scene);assert.equal(camera,scope.camera);calls.push('render');
+   if(failAt==='render')throw error;
+  }};
+  if(failAt==='rim'||failAt==='render')assert.throws(()=>script.runInNewContext(scope),e=>e===error);
+  else script.runInNewContext(scope);
+  return calls;
+ };
+ const lead=['begin ridge','begin prince'],tail=['end prince','end ridge'];
+ for(const failAt of [undefined,'render']){
+  assert.deepEqual(paint(false,failAt),[...lead,'begin rim','render','end rim',...tail]);
+  assert.deepEqual(paint(true,failAt),[...lead,'begin cape','begin rim','render','end rim','end cape',...tail]);
+ }
+ assert.deepEqual(paint(true,'cape'),[...lead,'begin cape','dispose cape','begin rim','render','end rim',...tail]);
+ assert.deepEqual(paint(false,'rim'),[...lead,'begin rim',...tail]);
+ assert.deepEqual(paint(true,'rim'),[...lead,'begin cape','begin rim','end cape',...tail]);
 });
 test('angle, distance and lower-lens tapers exactly preserve full passed poses and exact overhead/far/near stock',()=>{
  for(const [meters,ry]of [[413,.175],[654,.267],[290,.384],[469,.242],[490,.30]])assert.equal(capeCardGain(meters,ry),1);
