@@ -1,0 +1,952 @@
+{
+  "result": "detached PASS, not in-game",
+  "driver": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "version": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "WebGLEquivalentProgram": true,
+  "texture": {
+    "unit": 5,
+    "renderTargetTextureID": 1,
+    "lookupTextureID": 2,
+    "sha256": "b41ba8e2bd29fa007dfbf034d4d58b853f378062183847846b1f6d228f2c7e79",
+    "bytes": 1024,
+    "width": 16,
+    "height": 16,
+    "format": "RG16F internal, RG/HALF_FLOAT source",
+    "filter": "LINEAR",
+    "wrap": "CLAMP_TO_EDGE",
+    "mips": false,
+    "flipY": false,
+    "colorspace": "none",
+    "exactRendererSource": "Three r187 DFGLUTData.getDFGLUT()"
+  },
+  "viewport": [
+    1040,
+    680
+  ],
+  "raster": "4x RGBA8/D24, exact DFG RG16F, NN resolve",
+  "dither": true,
+  "sealedMeshTriangles": 1460,
+  "additionalDraws": 0,
+  "sourceInputsManifestSHA": "39cd4ea8c29a6ecc2dd9ec602310488d8d51c842998cd060ba7e16d4e824fad3",
+  "samplers": {
+    "cladding": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": [],
+      "active": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ]
+    },
+    "trim": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": []
+    },
+    "roof": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": []
+    },
+    "harbourRoof": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": []
+    },
+    "timber": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": []
+    },
+    "door": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": [],
+      "active": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ]
+    },
+    "glass": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": []
+    },
+    "gallery": {
+      "stock": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ],
+      "marker": [],
+      "active": [
+        [
+          "dfgLUT",
+          1,
+          "0x8b5e"
+        ]
+      ]
+    }
+  },
+  "views": {
+    "southern-harbour": {
+      "pose": {
+        "eye": [
+          25,
+          7.85,
+          17.5
+        ],
+        "target": [
+          1.65,
+          4.6,
+          -0.85
+        ],
+        "fov": 41,
+        "far": 340,
+        "view": [
+          0.6178959055133584,
+          -0.0855349404806299,
+          0.7815935157783757,
+          0,
+          6.938893903907228e-18,
+          0.9940650710879808,
+          0.10878710605052337,
+          0,
+          -0.7862599124652273,
+          -0.06721910740126588,
+          0.6142287372391088,
+          0,
+          -1.6878491696924842,
+          -4.488702916502748,
+          -31.142819578640403,
+          1
+        ],
+        "normalView": [
+          0.6178959055133583,
+          -0.0855349404806299,
+          0.7815935157783758,
+          0,
+          0.9940650710879807,
+          0.10878710605052337,
+          -0.7862599124652274,
+          -0.06721910740126588,
+          0.6142287372391089
+        ],
+        "projection": [
+          1.748790976798308,
+          0,
+          0,
+          0,
+          0,
+          2.6746214939268236,
+          0,
+          0,
+          0,
+          0,
+          -1.0014716703458426,
+          -1,
+          0,
+          0,
+          -0.5003679175864606,
+          0
+        ],
+        "clipToWorld": [
+          0.3533274780755131,
+          -7.589978091713381e-16,
+          -0.4496019952622993,
+          1.8974945229283453e-16,
+          -0.03198020380635246,
+          0.37166570049077213,
+          -0.02513219442597713,
+          5.929670384151079e-18,
+          -49.96323529411826,
+          -15.688455882353132,
+          -34.974264705882774,
+          -1.9985294117647308,
+          49.25517119010458,
+          15.602757011596722,
+          34.411506556878955,
+          2.0014705882353185
+        ],
+        "directional": {
+          "direction": [
+            0.04644584606497559,
+            0.7024303350635224,
+            0.7102354593836162
+          ],
+          "color": [
+            2.2,
+            1.8631211093143127,
+            1.5424241622389634
+          ]
+        },
+        "hemi": {
+          "direction": [
+            6.938893903907228e-18,
+            0.9940650710879808,
+            0.10878710605052337
+          ],
+          "skyColor": [
+            1.1368636979190199,
+            1.265389060019154,
+            1.48
+          ],
+          "groundColor": [
+            0.2779747429895472,
+            0.19260198548750504,
+            0.10696233899809009
+          ]
+        }
+      },
+      "seq": "AAZBABZBBAZBBZBAZBZAZAAAABZBAMM",
+      "order": [
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "Z",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "B",
+          "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        ],
+        [
+          "A",
+          "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        ],
+        [
+          "M",
+          "71808f2fa746e9e46defbc8b2056a1fab83e1dad544e8bf036361e9536196bae"
+        ],
+        [
+          "M",
+          "71808f2fa746e9e46defbc8b2056a1fab83e1dad544e8bf036361e9536196bae"
+        ]
+      ],
+      "strongRGBGT3": 40998,
+      "exactRoleUnion": 53219,
+      "fullRole": {
+        "wall": 33774,
+        "doors": 6175,
+        "apron": 10145
+      },
+      "strongByFullRole": {
+        "wall": 24796,
+        "doors": 4021,
+        "apron": 9989
+      },
+      "alphaDiff": 0,
+      "outsideDiff": 0,
+      "coldStockExact": true,
+      "gainZeroExact": true,
+      "firstUnpatchedRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
+      "files": {
+        "stock": {
+          "file": "southern-harbour-stock.png",
+          "PNG": "2262f5fc911191d5eae212c01160223edb5a0bb6ad2cf1d26288747859c2e3ea",
+          "RGBA": "27969888d7c6e15becf8023242979c54ee50c5b8bb3dbbf6cd44030a90e6658f"
+        },
+        "finish": {
+          "file": "southern-harbour-finish.png",
+          "PNG": "8e07ea2af16fb29f5e102368a9e646852cdfc45349213c08fd3967ada7569a61",
+          "RGBA": "838a328d46648bf028c12faa8ad3cfc2c1e3c8f7c51e1562ab63a364d13d2812"
+        },
+        "roles": {
+          "file": "southern-harbour-roles.png",
+          "PNG": "d10d3bc945af546a99511ce9b83dc395659ccf1740461728bf937bbac940a982",
+          "RGBA": "a83c952ae9a72a917be9ed3fa9bc3fa3198bd58e79e2b3c14db8df54dcc158db"
+        }
+      }
+    },
+    "northern-harbour": {
+      "pose": {
+        "eye": [
+          25.3,
+          15.5,
+          -19.7
+        ],
+        "target": [
+          1.8,
+          4.35,
+          -0.75
+        ],
+        "fov": 41,
+        "far": 340,
+        "view": [
+          -0.6277200774699854,
+          -0.26970424900802753,
+          0.730224022070002,
+          0,
+          -5.551115123125779e-17,
+          0.9380617940810552,
+          0.34646799345023516,
+          0,
+          -0.7784391462028839,
+          0.21748491568945208,
+          -0.5888402220521933,
+          0,
+          0.5460667797938165,
+          -3.4319874692710526,
+          -35.445074031277905,
+          1
+        ],
+        "normalView": [
+          -0.6277200774699858,
+          -0.26970424900802764,
+          0.7302240220700025,
+          0,
+          0.9380617940810552,
+          0.34646799345023527,
+          -0.7784391462028846,
+          0.2174849156894521,
+          -0.5888402220521939
+        ],
+        "projection": [
+          1.748790976798308,
+          0,
+          0,
+          0,
+          0,
+          2.6746214939268236,
+          0,
+          0,
+          0,
+          0,
+          -1.0014716703458426,
+          -1,
+          0,
+          0,
+          -0.5003679175864606,
+          0
+        ],
+        "clipToWorld": [
+          -0.3589451717204184,
+          0,
+          -0.4451298963287495,
+          0,
+          -0.1008382866960569,
+          0.35072693321693865,
+          0.0813142779953296,
+          4.7437363073208355e-17,
+          -50.56279411764735,
+          -30.977205882353122,
+          39.37102941176493,
+          -1.9985294117647174,
+          49.906981860283224,
+          30.676326124197008,
+          -38.84013036618333,
+          2.0014705882353057
+        ],
+        "directional": {
+          "direction": [
+            -0.054347989492913876,
+            0.5095725523732231,
+            0.8587095608562403
+          ],
+          "color": [
+            2.2,
+            1.8631211093143127,
+            1.5424241622389634
+          ]
+        },
+        "hemi": {
+          "direction": [
+            -5.551115123125779e-17,
+            0.9380617940810552,
+            0.34646799345023516
+          ],
+          "skyColor": [
+            1.1368636979190199,
+            1.265389060019154,
+            1.48
+          ],
+          "groundColor": [
+            0.2779747429895472,
+            0.19260198548750504,
+            0.10696233899809009
+          ]
+        }
+      },
+      "seq": "AAZBABZBBAZBBZBAZBZAZAAAABZBAMM",
+      "order": [
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "Z",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "B",
+          "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        ],
+        [
+          "A",
+          "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        ],
+        [
+          "M",
+          "611b71263f61898937fce733e2e9b7a76474efc324d6f834bb5c936b6bf1d851"
+        ],
+        [
+          "M",
+          "611b71263f61898937fce733e2e9b7a76474efc324d6f834bb5c936b6bf1d851"
+        ]
+      ],
+      "strongRGBGT3": 49814,
+      "exactRoleUnion": 63109,
+      "fullRole": {
+        "wall": 30831,
+        "doors": 8166,
+        "apron": 19963
+      },
+      "strongByFullRole": {
+        "wall": 22011,
+        "doors": 5800,
+        "apron": 19157
+      },
+      "alphaDiff": 0,
+      "outsideDiff": 0,
+      "coldStockExact": true,
+      "gainZeroExact": true,
+      "firstUnpatchedRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
+      "files": {
+        "stock": {
+          "file": "northern-harbour-stock.png",
+          "PNG": "a10b7eef22ac70e5c9888e3fdf5e6af20ae651c92da9bdb29910367781d6f2cc",
+          "RGBA": "5003dcf29214ef2532ac28fb4c7c5fc5592156c0965aa69566aef42d5b72e7d4"
+        },
+        "finish": {
+          "file": "northern-harbour-finish.png",
+          "PNG": "57135342ea11544af0dc17f5f20bcb0d1676cf40b4e9ecee21aea1d1dd127fe4",
+          "RGBA": "39a4fbf9ebe597cb50659b166d560f6dc3e4f310a516b6e12e959c68c6660d0d"
+        },
+        "roles": {
+          "file": "northern-harbour-roles.png",
+          "PNG": "2129832b12be8b3a78b645291a91b1efca4a4c2f73cad235e790d986978dd990",
+          "RGBA": "2fc0c781f6a1f55b3262edf79f59493bf1af840242d30196f5ba0a59d68bfdcd"
+        }
+      }
+    },
+    "turned-away": {
+      "pose": {
+        "eye": [
+          28,
+          9,
+          16
+        ],
+        "target": [
+          56,
+          9.2,
+          38
+        ],
+        "fov": 48,
+        "far": 340,
+        "view": [
+          -0.6178215519319035,
+          -0.004416334127771291,
+          -0.7863059366183915,
+          0,
+          -4.336808689942017e-19,
+          0.9999842275025028,
+          -0.0056164709758456345,
+          0,
+          0.7863183388224224,
+          -0.0034699768146774414,
+          -0.6178118073430219,
+          0,
+          4.717910032934537,
+          -8.820681062910092,
+          31.95210338158592,
+          0.9999999999999998
+        ],
+        "normalView": [
+          -0.6178215519319035,
+          -0.004416334127771291,
+          -0.7863059366183917,
+          -8.67361737988404e-19,
+          0.999984227502503,
+          -0.005616470975845636,
+          0.7863183388224227,
+          -0.0034699768146774436,
+          -0.6178118073430221
+        ],
+        "projection": [
+          1.468562506014295,
+          0,
+          0,
+          0,
+          0,
+          2.246036773904216,
+          0,
+          0,
+          0,
+          0,
+          -1.0014716703458426,
+          -1,
+          0,
+          0,
+          -0.5003679175864606,
+          0
+        ],
+        "clipToWorld": [
+          -0.4206981653158773,
+          1.0762953349350797e-15,
+          0.5354340285838503,
+          0,
+          -0.0019662786375908323,
+          0.4452216629402122,
+          -0.0015449332152499492,
+          2.627674157556347e-19,
+          -55.95882352941168,
+          -17.98676470588233,
+          -31.976470588235244,
+          -1.9985294117647034,
+          56.82748240720655,
+          18.01885176509347,
+          32.64134121910769,
+          2.0014705882352914
+        ],
+        "directional": {
+          "direction": [
+            -0.04638630875128553,
+            0.7719775069256001,
+            -0.6339550766113997
+          ],
+          "color": [
+            2.2,
+            1.8631211093143127,
+            1.5424241622389634
+          ]
+        },
+        "hemi": {
+          "direction": [
+            -4.336808689942018e-19,
+            0.999984227502503,
+            -0.005616470975845635
+          ],
+          "skyColor": [
+            1.1368636979190199,
+            1.265389060019154,
+            1.48
+          ],
+          "groundColor": [
+            0.2779747429895472,
+            0.19260198548750504,
+            0.10696233899809009
+          ]
+        }
+      },
+      "seq": "AAZBABZBBAZBBZBAZBZAZAAAABZBAMM",
+      "order": [
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "Z",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "B",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "A",
+          "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        ],
+        [
+          "M",
+          "70aedb1d53b64c67c1ea6fbde9fbb119d45739ae81ed86fbf6cf64c2805e3a0e"
+        ],
+        [
+          "M",
+          "70aedb1d53b64c67c1ea6fbde9fbb119d45739ae81ed86fbf6cf64c2805e3a0e"
+        ]
+      ],
+      "strongRGBGT3": 0,
+      "exactRoleUnion": 0,
+      "fullRole": {
+        "wall": 0,
+        "doors": 0,
+        "apron": 0
+      },
+      "strongByFullRole": {
+        "wall": 0,
+        "doors": 0,
+        "apron": 0
+      },
+      "alphaDiff": 0,
+      "outsideDiff": 0,
+      "coldStockExact": true,
+      "gainZeroExact": true,
+      "firstUnpatchedRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
+      "files": {
+        "stock": {
+          "file": "turned-away-stock.png",
+          "PNG": "1f24178ecd1cde44f845e9dcc43d9889ea06bb8272ddb139bc28570e82444be2",
+          "RGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        },
+        "finish": {
+          "file": "turned-away-finish.png",
+          "PNG": "1f24178ecd1cde44f845e9dcc43d9889ea06bb8272ddb139bc28570e82444be2",
+          "RGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e"
+        },
+        "roles": {
+          "file": "turned-away-roles.png",
+          "PNG": "23855d6fd623044d9f53f7f67c99978bca96cf2ba212f807fd2b62d2528ec486",
+          "RGBA": "6250d569023087afddb2920131654d6879f8442748f440e586d53d646db6f3e5"
+        }
+      }
+    }
+  }
+}

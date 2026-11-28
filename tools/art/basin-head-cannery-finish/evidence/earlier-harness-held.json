@@ -1,0 +1,286 @@
+{
+  "status": "Detached same-frame-parameter converged EGL plates only; no terrain or flight, immediate render/restore HOLD",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "rgba8Samples": 4,
+  "depthBits": 24,
+  "authorRoleGeometry": {
+    "triangles": 1460,
+    "litParts": 8,
+    "treated": [
+      2,
+      10,
+      2
+    ],
+    "treatedAreasM2": [
+      59.905989597183876,
+      11.233491736331466,
+      54.9466966928303
+    ]
+  },
+  "drawsIncludingNeutralFloor": 9,
+  "canneryTriangles": 1460,
+  "newTriangles": 0,
+  "newDraws": 0,
+  "additionalTextureFetches": 0,
+  "shaderChanges": [
+    "one long cladding face",
+    "five existing doors",
+    "existing apron top only"
+  ],
+  "viewPoses": {
+    "southern-harbour": {
+      "eye": [
+        25,
+        7.85,
+        17.5
+      ],
+      "target": [
+        1.65,
+        4.6,
+        -0.85
+      ],
+      "FOV": 41,
+      "archivedBaseline": null
+    },
+    "northern-harbour": {
+      "eye": [
+        25.3,
+        15.5,
+        -19.7
+      ],
+      "target": [
+        1.8,
+        4.35,
+        -0.75
+      ],
+      "FOV": 41,
+      "archivedBaseline": null
+    },
+    "turned-away": {
+      "eye": [
+        28,
+        9,
+        16
+      ],
+      "target": [
+        56,
+        9.2,
+        38
+      ],
+      "FOV": 48,
+      "archivedBaseline": null
+    }
+  },
+  "views": {
+    "southern-harbour": {
+      "files": {
+        "stock": {
+          "name": "southern-harbour-stock.png",
+          "sha": "89d54db707cab052e30e0550b01a4930f67dfd3d509bbc064f23db85ae1a9433"
+        },
+        "finish": {
+          "name": "southern-harbour-finish.png",
+          "sha": "d8fdc90e34919896ce6566f8100963843e4e5fa943852189f9c5089da31507ed"
+        },
+        "role": {
+          "name": "southern-harbour-role.png",
+          "sha": "d10d3bc945af546a99511ce9b83dc395659ccf1740461728bf937bbac940a982"
+        }
+      },
+      "fixedRepeatStates": {
+        "stock": {
+          "firstRGBA": "71a9592b5b875a74f2dcc21f5967c81e3ce1cac4b83bca5ed9f619d5276653d0",
+          "stableRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+          "firstVsStablePixels": 198785
+        },
+        "neutral": {
+          "firstRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+          "stableRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+          "firstVsStablePixels": 0
+        },
+        "active": {
+          "firstRGBA": "77cc7bafaee054cd8cb0d7cf355469187a1cefa712874c651eabfd199538da31",
+          "stableRGBA": "0435678a441fe090b735a652876060f66f98a4f442db6319cfaff7c029583c0d",
+          "firstVsStablePixels": 629
+        },
+        "return0": {
+          "firstRGBA": "3ee92959e61cc021140d86f44ee9451deae1855aa19ab51679345b00494e5e90",
+          "stableRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+          "firstVsStablePixels": 613
+        },
+        "marker": {
+          "firstRGBA": "71808f2fa746e9e46defbc8b2056a1fab83e1dad544e8bf036361e9536196bae",
+          "stableRGBA": "71808f2fa746e9e46defbc8b2056a1fab83e1dad544e8bf036361e9536196bae",
+          "firstVsStablePixels": 0
+        }
+      },
+      "immediateRollbackChangedPixels": 613,
+      "sameLinkedNeutralRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+      "restoreRGBA": "548faba6d41b9cde7a3fc83182a3c7404d0292a32aa689fa3e59a98bc50dfd46",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 609,
+      "outsideMaxDeltaRGB": 3,
+      "scopeExteriorPass": false,
+      "pureByRole": {
+        "wall": 33774,
+        "doors": 6175,
+        "apron": 10145
+      },
+      "roleByStrength": {
+        "wall": 25141,
+        "doors": 3377,
+        "apron": 10026
+      },
+      "mixedRolePixels": 3125,
+      "strongRGBGT3": 40694,
+      "roleBox": [
+        387,
+        323,
+        864,
+        538
+      ],
+      "pureRoleLumaDeltaQ10_Q50_Q90": [
+        -22.1404,
+        -2.9278,
+        6.2848
+      ]
+    },
+    "northern-harbour": {
+      "files": {
+        "stock": {
+          "name": "northern-harbour-stock.png",
+          "sha": "6c9d4c97635dfb50bf97bd4f6372629d8f3b554b4b892f1b2ee488fabfddd451"
+        },
+        "finish": {
+          "name": "northern-harbour-finish.png",
+          "sha": "fadc17ef951113bf60f5247bcbc4b0bf8c561f779e7ef7e46fde45409ff150a6"
+        },
+        "role": {
+          "name": "northern-harbour-role.png",
+          "sha": "2129832b12be8b3a78b645291a91b1efca4a4c2f73cad235e790d986978dd990"
+        }
+      },
+      "fixedRepeatStates": {
+        "stock": {
+          "firstRGBA": "6b91ffaf76db24245da5577b6fa1a92da30230dbe1c8b88e81cf1edafe07842e",
+          "stableRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+          "firstVsStablePixels": 194277
+        },
+        "neutral": {
+          "firstRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+          "stableRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+          "firstVsStablePixels": 0
+        },
+        "active": {
+          "firstRGBA": "6e062987fa481e12dacb92d123eda20c834dfb9ff5b2416ce9782eb6f2041804",
+          "stableRGBA": "4224b9d2c764fa478934e0f6b0268647082f750cbe133909d21152e1a46961a6",
+          "firstVsStablePixels": 19
+        },
+        "return0": {
+          "firstRGBA": "1076094007b07701a64b418d81302ac9b9c9e7bd14d993157d3e18a8d44acbbb",
+          "stableRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+          "firstVsStablePixels": 19
+        },
+        "marker": {
+          "firstRGBA": "611b71263f61898937fce733e2e9b7a76474efc324d6f834bb5c936b6bf1d851",
+          "stableRGBA": "611b71263f61898937fce733e2e9b7a76474efc324d6f834bb5c936b6bf1d851",
+          "firstVsStablePixels": 0
+        }
+      },
+      "immediateRollbackChangedPixels": 19,
+      "sameLinkedNeutralRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+      "restoreRGBA": "719e52bf218aa283ab21d95aba25696a8cd889a9776ff932d11050f554e33bd8",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 19,
+      "outsideMaxDeltaRGB": 2,
+      "scopeExteriorPass": false,
+      "pureByRole": {
+        "wall": 30831,
+        "doors": 8166,
+        "apron": 19963
+      },
+      "roleByStrength": {
+        "wall": 22435,
+        "doors": 4985,
+        "apron": 19229
+      },
+      "mixedRolePixels": 4149,
+      "strongRGBGT3": 49511,
+      "roleBox": [
+        163,
+        310,
+        729,
+        583
+      ],
+      "pureRoleLumaDeltaQ10_Q50_Q90": [
+        -22.4894,
+        -5.280799999999999,
+        4.1444
+      ]
+    },
+    "turned-away": {
+      "files": {
+        "stock": {
+          "name": "turned-away-stock.png",
+          "sha": "1f24178ecd1cde44f845e9dcc43d9889ea06bb8272ddb139bc28570e82444be2"
+        },
+        "finish": {
+          "name": "turned-away-finish.png",
+          "sha": "1f24178ecd1cde44f845e9dcc43d9889ea06bb8272ddb139bc28570e82444be2"
+        },
+        "role": {
+          "name": "turned-away-role.png",
+          "sha": "23855d6fd623044d9f53f7f67c99978bca96cf2ba212f807fd2b62d2528ec486"
+        }
+      },
+      "fixedRepeatStates": {
+        "stock": {
+          "firstRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "stableRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "firstVsStablePixels": 0
+        },
+        "neutral": {
+          "firstRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "stableRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "firstVsStablePixels": 0
+        },
+        "active": {
+          "firstRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "stableRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "firstVsStablePixels": 0
+        },
+        "return0": {
+          "firstRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "stableRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+          "firstVsStablePixels": 0
+        },
+        "marker": {
+          "firstRGBA": "70aedb1d53b64c67c1ea6fbde9fbb119d45739ae81ed86fbf6cf64c2805e3a0e",
+          "stableRGBA": "70aedb1d53b64c67c1ea6fbde9fbb119d45739ae81ed86fbf6cf64c2805e3a0e",
+          "firstVsStablePixels": 0
+        }
+      },
+      "immediateRollbackChangedPixels": 0,
+      "sameLinkedNeutralRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+      "restoreRGBA": "b2e275bf98985b0e43a7e402d0296ecd154bd968f862194184f70c21801bd43e",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "outsideMaxDeltaRGB": 0,
+      "scopeExteriorPass": true,
+      "pureByRole": {
+        "wall": 0,
+        "doors": 0,
+        "apron": 0
+      },
+      "roleByStrength": {
+        "wall": 0,
+        "doors": 0,
+        "apron": 0
+      },
+      "mixedRolePixels": 0,
+      "strongRGBGT3": 0,
+      "roleBox": null,
+      "pureRoleLumaDeltaQ10_Q50_Q90": null
+    }
+  }
+}

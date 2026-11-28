@@ -45,10 +45,10 @@ desktop rendering result, not a performance or device-wide guarantee.
 
 [Separate ordinary-flight controls](standard-layer-parity.json) compared
 the original route URL with the normalized preview fixture. Both
-turbine farms (10 and 7 turbines) and the same 35 orthophoto seam entries
-remained present through the three matching travel windows. The
+turbine farms (10 and 7 turbines) and the same 35 orthophoto seam registrations
+remained available, though none were resident on this route. The
 [final ordinary URL proof](plain-url-receipt.json) used no diagnostics
-or QA query, drew the linked fitted program only in flight, preserved
+or QA query, observed the fitted-program draw submissions only in flight, preserved
 the other route’s Dispatch controls and stopped the optional draw
 on Pause. The original material evidence and limitations remain under
 [East Point wall study](../../../tools/art/east-point-ordinary-walls/).
