@@ -43,3 +43,33 @@ lower roof it was 0.217 m over 26 cells; the stock roof is absent at those
 coordinates, so there is no comparative height error. These scores do not
 validate modern eaves, the join, windows, railings, decking or the site shadows.
 The scene requires separate visual and physical review before integration.
+
+## Returned eaves and red fascia
+
+[The detached cornice study](east-fog-cornice-study.ts) adds authored red
+fascia, exposed rakes, and short eave returns to the corrected two-gable
+envelope. The [Canadian Register of Historic Places](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19205)
+identifies the eave returns and trim as character-defining. The red
+finish reuses the simulator's existing station palette. The sections,
+projection, and joints are authored visual dimensions, not a field
+survey. No photograph, texture, or inferred window layout is included.
+
+All four original Float32 streams for the 402-vertex roof and wall
+envelope are unchanged. The study adds 20 closed trim pieces, seated
+through their respective wall plane rather than floating as flat cards.
+Each long board stops at a small butt joint below its own fitted eave.
+The packed trim remains below even the extended roof slopes, and its
+plan projects less than 61 mm beyond the corresponding fitted body
+outline in this detached model, not beyond a surveyed building outline.
+Run the geometry, topology, and scope checks with:
+
+```sh
+node --experimental-strip-types --test test/east-fog-cornice.test.ts
+```
+
+This file is not imported by the flight renderer. The fog house remains
+stock in the live simulator. Close-game comparison, coherent middle- and
+near-distance silhouettes, and the matching ground shadow/contact
+treatment still need qualification before replacing it. The stock window
+geometry does not fit the corrected shell; dated, registered references
+are needed before placing windows on the new model.
