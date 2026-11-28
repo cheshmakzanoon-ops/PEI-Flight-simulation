@@ -61,15 +61,29 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
  const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready',roof=false)=>{
-  const calls=[],error=new Error(failAt),route=field?'kings-sand-dunes':
+ const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready',roof=false,east=false)=>{
+  const calls=[],error=new Error(failAt),route=east?'east-light':field?'kings-sand-dunes':
    quay==='foreign'?'seacow-head-coast':quay||roof?SEAWARD_ROUTE:'northcape-wind-low';
-  const scope={scene:{},camera:{position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
+  const scope={scene:{},camera:{fov:53,zoom:1,position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
    activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,
    standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,dunesFields:undefined,
    princeLowFieldSeat:undefined,KINGS_DUNES_MAPPED_PASS:{id:'kings-sand-dunes'},
    f:{status:'flying'},playing:true,dalvayDefaultFlight:()=>true,lakeFrame:()=>true,cavendishFrame:()=>true,
    QUAY_ROUTE:'harbour-low',quayCandidate:undefined,quaySeat:undefined,quayAdmitted:!!quay};
+  scope.eastWallPreview=undefined;scope.eastWallDrawn=false;scope.eastWallGain={value:0};
+  scope.eastWallRenderer=()=>true;
+  if(east){
+   const owner={};
+   scope.eastWallPreview={owner,frame:(id,draw,supported)=>{
+    assert.equal(id,'east-light');assert.equal(draw,true);assert.equal(supported,true);
+    scope.eastWallGain.value=1;
+   }};
+   scope.buildings={drawEastVillageLocal:(renderer,camera,chosen,draw)=>{
+    assert.equal(renderer,scope.renderer);assert.equal(camera,scope.camera);assert.equal(chosen,owner);
+    assert.equal(scope.eastWallGain.value,1);
+    calls.push('begin east');try{draw();return true;}finally{calls.push('end east');}
+   }};
+  }
   scope.SEAWARD_ROUTE=SEAWARD_ROUTE;
   const roofFrame={route,mode:'flight'};
   scope.seawardFrame=()=>roofFrame;
@@ -129,6 +143,8 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
   }};
   if(['prince','rim','borden','west2','south21','close south21','render','quay'].includes(failAt))assert.throws(()=>script.runInNewContext(scope),e=>e===error);
   else script.runInNewContext(scope);
+  assert.equal(scope.eastWallGain.value,0);
+  assert.equal(scope.eastWallDrawn,!!east&&failAt!=='render');
   if(quay)assert.equal(scope.quayAdmitted,quay!=='refused'&&quay!=='foreign');
   return calls;
  };
@@ -157,6 +173,9 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
    'end industrial','end borden','end rim',...tail]);
   assert.deepEqual(paint(true,failAt,true),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
  }
+ for(const failAt of [undefined,'render'])
+  assert.deepEqual(paint(false,failAt,false,false,false,false,false,undefined,'ready','ready',false,true),
+   [...lead,'begin rim','begin borden','begin east',...submit,'end east','end borden','end rim',...tail]);
  const roofPaint=failAt=>paint(false,failAt,false,false,false,false,false,undefined,'ready','ready',true);
  for(const failAt of [undefined,'render'])assert.deepEqual(roofPaint(failAt),[
   ...lead,'begin rim','begin borden','begin west2','begin south21','begin roof','render',

@@ -424,6 +424,8 @@ export class Buildings {
   return !!q&&this.meshes.get(key)===q.mesh&&this.wanted.has(key)&&q.still();
  }
  private readonly townWallOptics?:TownWallOptics;
+ private readonly eastWallOptics?:TownWallOptics;
+ private readonly eastFittedMaterials=new Map<THREE.ShaderMaterial,THREE.ShaderMaterial>();
  private readonly fittedWallMaterials=new Map<THREE.ShaderMaterial,THREE.ShaderMaterial>();
  private readonly tryStation?:RailwayReview;
  private station?:RailwayVariant;
@@ -511,9 +513,10 @@ export class Buildings {
   variant:NonNullable<ReturnType<typeof authenticatedOwnerVariant>>;
   caster?:THREE.Mesh;neighborsCaster?:THREE.Mesh};
 
- private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics,residentProofIndex?:ArrayBuffer){
+ private constructor(scene:THREE.Scene,t:Terrain,atlas:Tile[],pack:PackedBytes,atlasHash:string|undefined,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:SpinnakersScene,pinnedSpinnakers?:Bldg[],tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,pinnedChurch?:Bldg[],tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,pinnedKingsCrown?:Bldg[],townWallOptics?:TownWallOptics,residentProofIndex?:ArrayBuffer,eastWallOptics?:TownWallOptics){
   this.residentProofIndex=residentProofIndex;
   this.townWallOptics=atlasHash===TOWN_WALL_ATLAS?townWallOptics:undefined;
+  this.eastWallOptics=atlasHash===TOWN_WALL_ATLAS?eastWallOptics:undefined;
   this.shadowedBuildings=!!casts;this.rusticoRoof=rusticoRoof;this.churchArt=churchArt;this.pinnedChurch=pinnedChurch;this.pinnedKingsCrown=pinnedKingsCrown;this.tryStation=tryStation;this.tryStDavids=tryStDavids;
   this.spinnakers=spinnakers;this.pinnedSpinnakers=pinnedSpinnakers;this.tryBeaconsfield=tryBeaconsfield;this.greenGablesGate=greenGablesGate;this.barnGate=barnGate;
   if(this.rusticoRoof&&!casts)this.rusticoNeutralMat=new THREE.ShaderMaterial({
@@ -600,9 +603,9 @@ export class Buildings {
   return {atlas:ready.spec.tiles,pack:new PackedBytes(ready.file,ready.spec.bytes,(input,init)=>get(input,init)),
    atlasHash:ready.spec.sha256,kingsCrown:ready.rows};
  }
- static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics,keepLocalProofIndex=false){
+ static async create(scene:THREE.Scene,terrain:Terrain,sourisLight?:SourisLighting,casts?:BuildingShadows,spinnakers?:Promise<SpinnakersScene|undefined>,verified?:Promise<PreparedAtlas|undefined>,tryBeaconsfield=false,greenGablesGate?:()=>boolean,barnGate?:()=>boolean,rusticoRoof=false,churchArt?:ChurchArt,tryStation?:RailwayReview,tryStDavids?:LocalExteriorReview,townWallOptics?:TownWallOptics,keepLocalProofIndex=false,eastWallOptics?:TownWallOptics){
   const ready=(verified?await verified:undefined)??await Buildings.openAtlas(undefined,keepLocalProofIndex);
-  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics,ready.residentProofIndex);
+  return new Buildings(scene,terrain,ready.atlas,ready.pack,ready.atlasHash,sourisLight,casts,spinnakers?await spinnakers:undefined,ready.spinnakers,tryBeaconsfield,greenGablesGate,barnGate,rusticoRoof,churchArt,ready.indianRiver,tryStation,tryStDavids,ready.kingsCrown,townWallOptics,ready.residentProofIndex,eastWallOptics);
  }
  get townWallReview(){return this.townWallOptics!==undefined&&this.townWallOptics.mode!=='core';}
  get townWallProfile(){return this.townWallOptics===undefined?undefined:this.townWallOptics.mode??'expanded';}
@@ -878,6 +881,7 @@ export class Buildings {
     }
     if(id===TERMINAL_WIRE.id){this.terminalWall?.dispose();this.terminalWall=undefined;}
     if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
+    if(this.eastVillageObserver?.id===id){this.eastVillageObserver.content=undefined;this.eastVillageObserver.mesh=undefined;}
     if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);
     if(this.kingsResident?.mesh===m)this.kingsResident=undefined;
     if(this.ridgeOwner?.mesh===m)this.ridgeOwner=undefined;
@@ -1012,6 +1016,41 @@ export class Buildings {
   };
  }
  private chunkObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
+ // Exact original mesh/material stays in the stock sort. Change only the
+ // authenticated active owner's actual solid submission, never before sorting.
+ drawEastVillageLocal(renderer:THREE.WebGLRenderer,camera:THREE.Camera,owner:THREE.Mesh|undefined,draw:()=>void){
+  const stamp=owner?.userData.eastWallPrivate,a=this.eastVillageObserver;
+  if(!owner||!a||owner!==a.mesh||owner.parent!==this.scene||!owner.visible||!this.wanted.has(a.id)||this.meshes.get(a.id)!==owner||
+   stamp?.id!=='q1333'||owner.material!==stamp.stock||!(stamp.material instanceof THREE.ShaderMaterial)){draw();return false;}
+  const direct=renderer.renderBufferDirect,scene=this.scene,geometry=owner.geometry;
+  let used=false;
+  renderer.renderBufferDirect=(...args)=>{
+   const match=!used&&args[0]===camera&&args[1]===scene&&args[2]===geometry&&args[3]===stamp.stock&&args[4]===owner&&args[5]===null;
+   if(match){
+    used=true;direct.call(renderer,args[0],args[1],geometry,stamp.material,owner,args[5]);
+   }else direct.call(renderer,...args);
+  };
+  try{draw();}finally{renderer.renderBufferDirect=direct;}
+  return used;
+ }
+ private eastVillageObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
+ observeEastVillageChunk(){
+  const a=this.eastVillageObserver={id:'q1333',offset:3260377,size:9073,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
+  return ()=>{
+   const mesh=a.mesh,wire=a.content;
+   if(!mesh||!wire||mesh.parent!==this.scene||!mesh.visible||this.meshes.get(a.id)!==mesh||!this.wanted.has(a.id))return;
+   const geometry=mesh.geometry,attrs=geometry.attributes;
+   const stamp=mesh.userData.eastWallPrivate;
+   if(stamp?.id!==a.id||stamp.offset!==a.offset||stamp.size!==a.size||stamp.stock!==mesh.material||geometry.index)return;
+   const {position,topFlag,townWallFit}=attrs;
+   if(!(position instanceof THREE.BufferAttribute&&topFlag instanceof THREE.BufferAttribute&&townWallFit instanceof THREE.BufferAttribute)||
+      !(position.array instanceof Float32Array&&topFlag.array instanceof Float32Array&&townWallFit.array instanceof Int16Array)||
+      position.itemSize!==3||topFlag.itemSize!==1||townWallFit.itemSize!==3||townWallFit.normalized||
+      mesh.position.x!==89807.85854948164||mesh.position.z!==4457.559458530726||mesh.position.y!==0)return;
+   return {object:mesh,wire,position:position.array,fit:townWallFit.array,roof:topFlag.array,
+    versions:[position.version,townWallFit.version,topFlag.version] as const};
+  };
+ }
  observeSourceChunk(id:string,offset:number,size:number){
   const o=this.chunkObserver={id,offset,size,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
   return ()=>o.mesh&&o.mesh.parent===this.scene&&o.mesh.visible&&this.meshes.get(id)===o.mesh&&this.wanted.has(id)?o.content:undefined;
@@ -1061,6 +1100,7 @@ export class Buildings {
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
+   const eye=this.eastVillageObserver,eastVillageTap=eye&&eye.id===tile.id&&eye.offset===tile.offset&&eye.size===tile.bytes;
    const seawardRoofTap=this.seawardRoofWatch&&!!this.residentProofIndex&&tile.id==='q12000111'&&tile.offset===2066452&&tile.bytes===11843;
    let seawardRoofBytes:ArrayBuffer|undefined;
    let observed:ArrayBuffer|undefined,kingsWire:ArrayBuffer|undefined,churchWire:ArrayBuffer|undefined;
@@ -1069,7 +1109,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch||seawardRoofTap){
+   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||kings||nativeChurch||seawardRoofTap){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -1077,7 +1117,7 @@ export class Buildings {
     features=await Buildings.decodeChunk(raw);
     if(schoolLink)schoolWire=raw;
     if(foundersWest)foundersWire=raw;
-    if(tapped)observed=raw;
+    if(tapped||eastVillageTap)observed=raw;
     if(seawardRoofTap)seawardRoofBytes=raw;
     if(kings)kingsWire=raw;
     if(nativeChurch)churchWire=raw;
@@ -1122,6 +1162,7 @@ export class Buildings {
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
    const mesh=this.generate(features,tile,!!wharf,church||nativeChurch?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy||!!standardIndustrial,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
+   if(eastVillageTap&&eye){eye.content=observed;eye.mesh=mesh;}
    if(seawardRoofBytes&&this.residentProofIndex&&this.atlasHash)
     this.seawardRoofSource={mesh,wire:seawardRoofBytes,index:this.residentProofIndex,rows:features.length,atlas:this.atlasHash};
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
@@ -1425,7 +1466,8 @@ export class Buildings {
   let industrialStart=-1,industrialEnd=-1,beaconStart=-1,beaconEnd=-1,barnStart=-1,barnEnd=-1,actualRustico=false,actualPrince=false;
   const ox=(tile.x1+tile.x2)/2,oz=(tile.z1+tile.z2)/2,P:number[]=[],C:number[]=[],UV:number[]=[],R:number[]=[],F:number[]=[];
   // Record only changed spans; allocate the GPU lane once after emission.
-  const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
+  const tileWall=tile.id==='q1333'&&this.eastWallOptics?this.eastWallOptics:this.townWallOptics;
+  const townSpans=tileWall&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,tileWall.areas)?[] as number[]:undefined;
   let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false,paintedOlearyAccessRoof=false;
   const westWall=this.sourisWestLink?sourisFacingAdmittedEdge(this.atlasHash,tile,massingChunk,features):undefined;
   let westSpan:readonly [number,number]|undefined;
@@ -1574,7 +1616,7 @@ export class Buildings {
     vertex(p,y0,cw,u0,0,0);vertex(p,y2,cw,u0,y2-y0,0);vertex(q,y3,cw,u1,y3-y1,0);
     vertex(p,y0,cw,u0,0,0);vertex(q,y3,cw,u1,y3-y1,0);vertex(q,y1,cw,u1,0,0);
    };
-   const fitWalls=!!townSpans&&facade===0&&rings.length===1&&townFaceRegion(cx,cz,this.townWallOptics?.areas);
+   const fitWalls=!!townSpans&&facade===0&&rings.length===1&&townFaceRegion(cx,cz,tileWall?.areas);
    // One horizontal ordering datum above every actual parent wall foot;
    // sloped stock floor profiles remain unchanged beneath these optics.
    let wallDatum=base;
@@ -1667,17 +1709,20 @@ export class Buildings {
     if(this.sourisWestMat)this.sourisWestPending.set(mesh,attrs);
    }
   }
-  if(townSpans?.length&&this.townWallOptics){
+  if(townSpans?.length&&tileWall){
     const stock=mesh.material;
-    let material=this.fittedWallMaterials.get(stock);
-    if(!material){material=fittedWallMaterial(stock,this.townWallOptics);this.fittedWallMaterials.set(stock,material);}
+    const cache=tileWall.eastSingleScope?this.eastFittedMaterials:this.fittedWallMaterials;
+    let material=cache.get(stock);
+    if(!material){material=fittedWallMaterial(stock,tileWall);cache.set(stock,material);}
     if(material!==stock){
      const data=new Int16Array(P.length);
      for(let i=0;i<townSpans.length;i+=5){
       const start=townSpans[i]*3,end=townSpans[i+1]*3,x=townSpans[i+2],y=townSpans[i+3],z=townSpans[i+4];
       for(let j=start;j<end;j+=3){data[j]=x;data[j+1]=y;data[j+2]=z;}
      }
-     g.setAttribute('townWallFit',new THREE.BufferAttribute(data,3));mesh.material=material;
+     g.setAttribute('townWallFit',new THREE.BufferAttribute(data,3));
+     if(tileWall.eastSingleScope)mesh.userData.eastWallPrivate={stock,id:tile.id,offset:tile.offset,size:tile.bytes,material};
+     else mesh.material=material;
     }
   }
   if(measuredDowntownRoofs)mesh.userData.measuredDowntownRoofs=measuredDowntownRoofs;

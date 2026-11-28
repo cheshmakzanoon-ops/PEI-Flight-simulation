@@ -25,18 +25,21 @@ export class UI {
  private industrialState='';
  private riverState='';
  private lakeState='';
- constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES) {
+ private localSceneryState='';
+ constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES,
+  private readonly scenerySource:{search:string;url:string;reloadFallback?:Readonly<Record<string,string>>}
+    ={search:location.search,url:location.href}) {
   this.terrain=t;this.input=input;
-  this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
-  const detail=isDetailScenery(location.search);
-  const cavePack=cavendishPackageState(location.search),capeRock=capeTryonRockState(location.search);
-  const basin=basinHeadDispatchState(location.search),river=indianRiverLensState(location.search);
-  const standardRiver=standardIndianRiverRequested(location.search),stockRiver=new URLSearchParams(location.search).has(STOCK_INDIAN_RIVER);
-  const ridge=kingsRidgeLensState(location.search),prince=princeLandscapeState(location.search);
-  const normalRidge=standardKingsRidgeRequested(location.search),stockRidge=new URLSearchParams(location.search).has('stockKingsRidge');
+  this.selected=sceneryDeparture(this.scenerySource.search,this.sites.map(x=>x.id));
+  const detail=isDetailScenery(this.scenerySource.search);
+  const cavePack=cavendishPackageState(this.scenerySource.search),capeRock=capeTryonRockState(this.scenerySource.search);
+  const basin=basinHeadDispatchState(this.scenerySource.search),river=indianRiverLensState(this.scenerySource.search);
+  const standardRiver=standardIndianRiverRequested(this.scenerySource.search),stockRiver=new URLSearchParams(this.scenerySource.search).has(STOCK_INDIAN_RIVER);
+  const ridge=kingsRidgeLensState(this.scenerySource.search),prince=princeLandscapeState(this.scenerySource.search);
+  const normalRidge=standardKingsRidgeRequested(this.scenerySource.search),stockRidge=new URLSearchParams(this.scenerySource.search).has('stockKingsRidge');
   const ridgeTitle=ridge.selected?'Close ridge preview':normalRidge?'Use original ground':stockRidge?'Use measured ground':'Open ridge preview';
-  const selectedReviews=new Set(reviewedScenery(location.search));
-  const reviewsWithScope=sceneryOptions(location.search);
+  const selectedReviews=new Set(reviewedScenery(this.scenerySource.search));
+  const reviewsWithScope=sceneryOptions(this.scenerySource.search);
   let reviewCount=0;
   const reviewOptions=SCENERY_REVIEWS.map(item=>{
    const blocked=sceneryReviewBlock(item.flag,reviewsWithScope),saved=selectedReviews.has(item.flag);
@@ -52,7 +55,7 @@ export class UI {
   $('ui').innerHTML=`<header class="bar"><div class="brand"><span class="brandmark">${logo}</span><div><strong>PEI FLIGHT SIM</strong><small>ATLANTIC FLIGHT ATLAS</small></div></div><div class="topnav"><button id="nav-map" title="Flight atlas (M)">Atlas <kbd>M</kbd></button><button id="nav-help" title="Controls (H)">Controls <kbd>H</kbd></button><button id="nav-sound" aria-label="Enable engine sound">Sound off</button><button id="nav-pause" hidden>Pause</button></div></header>
   <div class="scrim" id="scrim"></div>
   <section id="dispatch" class="dispatch panel" aria-labelledby="dispatch-title"><span class="eyebrow"><i></i> CANADA &nbsp; / &nbsp; ATLANTIC</span><h1 id="dispatch-title">Prince Edward<br><em>Island</em></h1><p class="standfirst">Free flight across the province, from red sandstone shores to patchwork farmland.</p>
-  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p><p id="oleary-station" class="sitenote" role="status" hidden></p><p id="dalvay-water" class="sitenote" role="status" hidden></p><p id="cavendish-freshwater" class="sitenote" role="status" hidden></p><p id="prince-low-field" class="sitenote" role="status" hidden></p><p id="knight-exterior" class="sitenote" role="status" hidden></p><p id="rustico-neighbour-roof" class="sitenote" role="status" hidden></p><p id="dispatch-woodland" class="sitenote" role="status" hidden></p>
+  <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p><p id="oleary-station" class="sitenote" role="status" hidden></p><p id="dalvay-water" class="sitenote" role="status" hidden></p><p id="cavendish-freshwater" class="sitenote" role="status" hidden></p><p id="prince-low-field" class="sitenote" role="status" hidden></p><p id="knight-exterior" class="sitenote" role="status" hidden></p><p id="rustico-neighbour-roof" class="sitenote" role="status" hidden></p><p id="dispatch-woodland" class="sitenote" role="status" hidden></p><p id="local-scenery" class="sitenote" role="status" hidden></p>
   <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
   <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div>
   <section class="regional-detail" id="cavendish-package" hidden><div><span class="eyebrow">CAVENDISH DETAIL</span><small id="cavendish-package-info">${cavePack.blocked?'Unavailable with the current terrain or shadow options.':cavePack.active?'House, Barn, lake, slope, turf and trail selected.':'House, Barn, lake, slope, turf and trail'}</small></div><button type="button" id="cavendish-package-switch" aria-label="${cavePack.selected?'Turn off Cavendish detail':'Enable Cavendish detail'}" aria-describedby="cavendish-package-info" ${cavePack.blocked&&!cavePack.selected?'disabled':''}>${cavePack.selected?'Turn off':'Enable'}</button></section>
@@ -95,31 +98,32 @@ export class UI {
   <div id="touch"><div class="pad" id="stick" aria-label="Drag for pitch and roll"><i></i><small>STICK</small></div><div class="touchbuttons"><button id="upPower" aria-label="Increase throttle">PWR +</button><button id="dnPower" aria-label="Reduce throttle">PWR −</button></div></div>
   <footer><span id="layer-alert" hidden role="status"></span><button id="credits">Map credits</button><span>Contains modified Copernicus Sentinel data 2025 · NRCan · Statistics Canada</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a></footer>`;
   this.chartImage=new Image();this.chartImage.src=import.meta.env.BASE_URL+'world/color.webp';
+  const reopenRoute=()=>{const id=this.sites[this.selected].id;return this.scenerySource.reloadFallback?.[id]??id;};
   $('site').onchange=()=>{const next=Number(($('site') as HTMLSelectElement).value);
    if(next!==this.selected)this.setDispatchWoodland('other');
    this.selected=next;this.actions.chooseDeparture?.(this.selected);this.showSite();};
   $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
-   location.assign(switchBasinHeadDispatchURL(location.href,!basin.selected,this.sites[this.selected].id));
+   location.assign(switchBasinHeadDispatchURL(this.scenerySource.url,!basin.selected,reopenRoute()));
   };
   $('indian-river-lens-switch').onclick=()=>{
-   const route=this.sites[this.selected].id;
-   const after=river.selected?switchIndianRiverLens(location.href,false,route):location.href;
+   const route=reopenRoute();
+   const after=river.selected?switchIndianRiverLens(this.scenerySource.url,false,route):this.scenerySource.url;
    location.assign(river.selected||standardRiver||stockRiver?
     switchStandardIndianRiverURL(after,!stockRiver||river.selected,route):switchIndianRiverLens(after,true,route));
   };
   $('kings-ridge-lens-switch').onclick=()=>{
-   const route=this.sites[this.selected].id;
-   const after=ridge.selected?switchKingsRidgeLens(location.href,false,route):location.href;
+   const route=reopenRoute();
+   const after=ridge.selected?switchKingsRidgeLens(this.scenerySource.url,false,route):this.scenerySource.url;
    location.assign(ridge.selected||normalRidge||stockRidge?
     switchStandardKingsRidgeURL(after,!stockRidge||ridge.selected,route):switchKingsRidgeLens(after,true,route));
   };
   $('prince-landscape-switch').onclick=()=>{
-   location.assign(switchPrinceLandscape(location.href,!prince.selected,this.sites[this.selected].id));
+   location.assign(switchPrinceLandscape(this.scenerySource.url,!prince.selected,reopenRoute()));
   };
-  $('cavendish-package-switch').onclick=()=>location.assign(switchCavendishPackageURL(location.href,!cavePack.selected,this.sites[this.selected].id));
-  $('cape-rock-switch').onclick=()=>location.assign(switchCapeTryonRockURL(location.href,!capeRock.selected,this.sites[this.selected].id));
-  $('switch-scenery').onclick=()=>location.assign(switchSceneryURL(location.href,!detail,this.sites[this.selected].id));
+  $('cavendish-package-switch').onclick=()=>location.assign(switchCavendishPackageURL(this.scenerySource.url,!cavePack.selected,reopenRoute()));
+  $('cape-rock-switch').onclick=()=>location.assign(switchCapeTryonRockURL(this.scenerySource.url,!capeRock.selected,reopenRoute()));
+  $('switch-scenery').onclick=()=>location.assign(switchSceneryURL(this.scenerySource.url,!detail,reopenRoute()));
   const choices=[...document.querySelectorAll<HTMLInputElement>('input[name="scenery-review"]')];
   const apply=$<HTMLButtonElement>('apply-scenery-reviews');
   const currentReviews=()=>new Set(choices.filter(i=>i.checked&&(!i.disabled||selectedReviews.has(i.value as ScenicReview))).map(i=>i.value as ScenicReview));
@@ -127,7 +131,7 @@ export class UI {
    const candidate=currentReviews();
    apply.disabled=SCENERY_REVIEWS.every(v=>candidate.has(v.flag)===selectedReviews.has(v.flag));
   };
-  apply.onclick=()=>location.assign(applyReviewSceneryURL(location.href,currentReviews(),this.sites[this.selected].id));
+  apply.onclick=()=>location.assign(applyReviewSceneryURL(this.scenerySource.url,currentReviews(),reopenRoute()));
   $('nav-map').onclick=()=>this.toggle('map');$('nav-help').onclick=()=>this.toggle('help');$('credits').onclick=()=>this.toggle('credits');
   $('nav-pause').onclick=()=>this.actions.pause();$('nav-sound').onclick=()=>this.actions.sound();
   const stick=$('stick'),knob=stick.querySelector('i')!;const stickMove=(e:PointerEvent)=>{
@@ -138,15 +142,23 @@ export class UI {
   for(const [id,delta] of [['upPower',1],['dnPower',-1]] as const){const b=$(id);b.onpointerdown=e=>{b.setPointerCapture(e.pointerId);this.input.touch.power=delta;};b.onlostpointercapture=()=>this.input.touch.power=0;}
   this.showSite();this.set('dispatch');
  }
- showSite(){const s=this.sites[this.selected];if(!dispatchStandPlan(s))this.setDispatchWoodland('other');if(s.id!=='north-rustico-harbour-low')this.setRusticoNeighbourRoof('other');if(s.id!=='dalvay-lake-coastal-pass')this.setDalvayWater('other');if(s.id!=='prince-fields')this.setPrinceLowField('other');$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
-  const basin=basinHeadDispatchState(location.search);
+ showSite(){const s=this.sites[this.selected];if(!dispatchStandPlan(s))this.setDispatchWoodland('other');if(s.id!=='north-rustico-harbour-low')this.setRusticoNeighbourRoof('other');if(s.id!=='dalvay-lake-coastal-pass')this.setDalvayWater('other');if(s.id!=='prince-fields')this.setPrinceLowField('other');$('site-note').textContent=departureBriefing(s,this.scenerySource.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(this.scenerySource.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
+  const basin=basinHeadDispatchState(this.scenerySource.search);
   $('basin-inlet').hidden=basin.detail||(s.id!==BASIN_HEAD_DEPARTURE&&!basin.selected);
-  const river=indianRiverLensState(location.search);
+  const river=indianRiverLensState(this.scenerySource.search);
   $('indian-river-lens').hidden=(!river.selected&&river.detail)||(s.id!==INDIAN_RIVER_ROUTE&&!river.selected);
-  const ridge=kingsRidgeLensState(location.search);
+  const ridge=kingsRidgeLensState(this.scenerySource.search);
   $('kings-ridge-lens').hidden=(!ridge.selected&&ridge.detail)||(s.id!==KINGS_RIDGE_ROUTE&&!ridge.selected);
-  const prince=princeLandscapeState(location.search);
+  const prince=princeLandscapeState(this.scenerySource.search);
   $('prince-landscape-lens').hidden=(!prince.selected&&prince.detail)||(s.id!==PRINCE_LANDSCAPE_ROUTE&&!prince.selected);
+ }
+ /** This status never requests scenery; only an explicitly scoped caller may show it. */
+ setLocalScenery(label:string,state:'waiting'|'ready'|'stock'|'other'){
+  const key=label+'|'+state;if(this.localSceneryState===key)return;this.localSceneryState=key;
+  const note=$('local-scenery');note.hidden=state==='other';
+  note.textContent=state==='ready'?label+' preview ready.':state==='waiting'?
+   'Checking '+label+'. You can begin now with the original appearance.':
+   state==='stock'?'This flight will use the original appearance.':'';
  }
  departure(i:number){this.siteNow=this.selected=i;this.showSite();this.set('flight');}
  setCamera(v:string){this.camera=v;$('telemetry').classList.toggle('cockpit-telemetry',v==='Cockpit');$('view').innerHTML=v+' <kbd>V</kbd>';}

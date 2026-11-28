@@ -1,0 +1,60 @@
+{
+  "scope": "Independent live D policy presence in genuine Chase only, not slot-by-slot matched images or final E UI.",
+  "receipts": {
+    "vanilla": "8bcc1cf055c1e7b3de83d117e70eee92c783f4d9b393255e57c7742f351c59df",
+    "preview": "8305c39d3712b179f4c707b66a4d5228ccd7901c528e16ad97b596a5c35f5314"
+  },
+  "samples": {
+    "0": {
+      "vanillaM": 213.34237797346967,
+      "candidateM": 217.2428700597636,
+      "matchedOrthoEdges": 35,
+      "wind": [
+        [
+          "east-point-i",
+          10
+        ],
+        [
+          "east-point-ii",
+          7
+        ]
+      ],
+      "stockMaterialSubmitted": false,
+      "candidateMaterialSubmitted": true
+    },
+    "1": {
+      "vanillaM": 260.15121141081175,
+      "candidateM": 257.3647946422417,
+      "matchedOrthoEdges": 35,
+      "wind": [
+        [
+          "east-point-i",
+          10
+        ],
+        [
+          "east-point-ii",
+          7
+        ]
+      ],
+      "stockMaterialSubmitted": false,
+      "candidateMaterialSubmitted": true
+    },
+    "2": {
+      "vanillaM": 325.3595014989715,
+      "candidateM": 324.80211709347225,
+      "matchedOrthoEdges": 35,
+      "wind": [
+        [
+          "east-point-i",
+          10
+        ],
+        [
+          "east-point-ii",
+          7
+        ]
+      ],
+      "stockMaterialSubmitted": false,
+      "candidateMaterialSubmitted": true
+    }
+  }
+}

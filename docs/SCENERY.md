@@ -39,6 +39,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Area | Preview flag | What to look for |
 | --- | --- | --- |
 | West Cape, Eastern Kings and Hermanville | `?stockRegionalWind` | Standard includes [74 earlier turbines](qa/regional-wind.md) and [seven Eastern Kings Phase II turbines](qa/east-point-phase-ii.md). Select **Eastern Kings · turbine skyline** to see both local arrays. Use `?stockEastPointPhaseII` to compare without the new turbines. The earlier arrays retain their [moving blade shadows](qa/regional-wind-rotor-light.md). |
+| East Point village | `?departure=east-light&eastPointWallPreview=1` | [Optional close wall finish](qa/east-point-wall-finish/) on twelve existing buildings. Wait for the Dispatch readiness message; Standard remains the default. |
 | North Cape | `?stockNorthCapeWind` | Standard streams [all 16 commercial turbines](qa/north-cape-turbines.md) near the [wind farm low pass](qa/north-cape-departure.md). The flag hides them; `?northCapeWind` retains the older shadow study. |
 | North Cape woodland | `?departure=northcape-wind-low&northCapeStandReview` | [Dated spruce-and-fir appearance comparison](qa/north-cape-stand/). It only shows during the low-pass Chase view. Standard is unchanged unless you opt in. |
 | Summerside | `?spinnakersPreview&northBaywalkPreview&baywalkConcrete` | [Historical Spinnakers’ Landing integration](qa/spinnakers-landing.md), the [surveyed court and ramp](qa/baywalk-court.md), and the [mapped concrete approach](qa/baywalk-concrete.md). |

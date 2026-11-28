@@ -1,0 +1,35 @@
+{
+  "errors": [],
+  "outside": [],
+  "ranges": [
+    {
+      "status": 206,
+      "content": "bytes 3260377-3269449/3844984"
+    },
+    {
+      "status": 206,
+      "content": "bytes 3260377-3269449/3844984"
+    }
+  ],
+  "foreignUI": {
+    "label": "Use original ground",
+    "enabled": true,
+    "clobberedURL": false
+  },
+  "before": {
+    "draws": 0,
+    "diagnostics": false,
+    "globalReadyLight": false
+  },
+  "flight": {
+    "draws": 10,
+    "diagnostics": false,
+    "globalReadyLight": false
+  },
+  "pause": {
+    "draws": 11,
+    "diagnostics": false,
+    "globalReadyLight": false
+  },
+  "status": "PASS plain navigation, real scoped drawn program and pause"
+}

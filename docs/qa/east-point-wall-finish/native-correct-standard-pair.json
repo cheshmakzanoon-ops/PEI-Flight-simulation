@@ -1,0 +1,42 @@
+{
+  "scope": "Independent RGB replay of same-frame corrected Standard flight fixture D, not the final E UI build",
+  "rawAggregateSHA256": "8ff2bb1aad00c617cdada414a653ad6f949f292f8ffb47b458bd686121add343",
+  "phases": {
+    "early": {
+      "travelM": 29.512843678065067,
+      "RGBchanged": 0,
+      "RGBdifferenceMoreThan2": 0,
+      "marked": 0,
+      "outside": 0,
+      "alpha": 0,
+      "restoreBothExact": true,
+      "originalMetadataSHA256": "891eeed05c0fd952aa4be173ae5fbebfcddce41b77c44dba56411a33a525d9d8"
+    },
+    "near": {
+      "travelM": 259.59392629488127,
+      "RGBchanged": 7509,
+      "RGBdifferenceMoreThan2": 6302,
+      "marked": 7639,
+      "outside": 0,
+      "alpha": 0,
+      "restoreBothExact": true,
+      "originalMetadataSHA256": "9c751624bf5e8913478dc091fa49f49b4ef330794bc128bb0c7017d3f9469b5c",
+      "crop": [
+        379,
+        481,
+        990,
+        666
+      ]
+    },
+    "inland": {
+      "travelM": 323.1299687780318,
+      "RGBchanged": 12380,
+      "RGBdifferenceMoreThan2": 10076,
+      "marked": 12763,
+      "outside": 0,
+      "alpha": 0,
+      "restoreBothExact": true,
+      "originalMetadataSHA256": "db6969b4825022fb90e5e173a090c679de858f4520326835fbb7f288106ec7a2"
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import { type ShaderMaterial, type Texture } from 'three';
+import { Material, ShaderMaterial, type Texture } from 'three';
 import { project } from '../sim/geo.ts';
 
 export type TownWallMode='core'|'expanded';
 type WallArea={id:string;p:{x:number;z:number};r:number};
-export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number};mode?:TownWallMode;areas?:readonly WallArea[]}>;
+export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number};mode?:TownWallMode;areas?:readonly WallArea[];eastSingleScope?:boolean}>;
 export const TOWN_WALL_ATLAS='538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557';
 export const TOWN_WALL_MAX_DISTANCE=255;
 /** Extra unnormalized I16 vertex datum: conservative centimetre rounding. */
@@ -128,12 +128,27 @@ export const genericTownWallGLSL=/*glsl*/`
  }
 `;
 
+function borrowEastMaterial(base:ShaderMaterial){
+ // Avoid cloning the shared sky/source textures or changing their upload versions.
+ // This option cannot prepare a different uniform group or unrecognized source hook.
+ if(base.uniformsGroups.length||base.onBeforeCompile!==Material.prototype.onBeforeCompile||
+    base.customProgramCacheKey!==Material.prototype.customProgramCacheKey)return;
+ const m=new ShaderMaterial();
+ Material.prototype.copy.call(m,base);
+ m.defines={...base.defines};m.extensions={...base.extensions};
+ m.glslVersion=base.glslVersion;m.clipping=base.clipping;m.fog=base.fog;m.lights=base.lights;
+ m.defaultAttributeValues={...base.defaultAttributeValues};m.index0AttributeName=base.index0AttributeName;
+ m.uniformsNeedUpdate=base.uniformsNeedUpdate;m.wireframe=base.wireframe;m.wireframeLinewidth=base.wireframeLinewidth;
+ return m;
+}
+
 export function fittedWallMaterial(base:ShaderMaterial,optics:TownWallOptics):ShaderMaterial{
  const oldFrag=base.fragmentShader,oldVert=base.vertexShader;
  const marker=' else if(roof<.5){\n  vec2 grid=uv2d/vec2(2.62,3.08);';
  const stableEnd='  c*=1.-.11*fine*band(uv2d.y*4.5,.0,.18);c*=.81+.19*smoothstep(0.,3.8,uv2d.y);';
  if(!oldFrag.includes(marker)||!oldFrag.includes(stableEnd)||!oldVert.includes('void main(){vec4 p='))return base;
- const m=base.clone();
+ const m=optics.eastSingleScope?borrowEastMaterial(base):base.clone();
+ if(!m)return base;
  m.uniforms={...base.uniforms,townWallGain:optics.gain,townWallSky:{value:optics.panorama}};
  m.vertexShader=oldVert.replace('void main(){vec4 p=',vertexArm+'void main(){townWall=townWallFit*.01;vec4 p=');
  m.fragmentShader=oldFrag.replace(' void main(){',genericTownWallGLSL+'\n void main(){')
@@ -144,5 +159,6 @@ export function fittedWallMaterial(base:ShaderMaterial,optics:TownWallOptics):Sh
    vec3 fitted=townWall.x<0.?tint*.948:townWallColour(tint,n,wp,uv2d,townPixel);
    c=mix(c,fitted,gain);
   }`);
+
  return m;
 }
