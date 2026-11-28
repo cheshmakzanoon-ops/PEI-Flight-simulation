@@ -1,0 +1,7 @@
+{
+  "reason": "Signed original P examination before any fit result shows /220 and /257 already have stock gables; only /84 has a flat cap. Do not label observed ridges an upgrade over the engine's actual forms without testing original triangles.",
+  "stockOwnerWorldOffsetXYZ": [-65486.935865377614, 0, -49563.892638222096],
+  "minSharedCoverageFraction": 0.97,
+  "minHeldP90BenefitOverNativeStockShapeMetres": 0.15,
+  "datumTreatment": "Neither a raw height offset nor arbitrary matched-medial seat approves any game geometry. Estimate an additive-only nuisance offset from training samples per fold for comparing shape on shared native centres; no fitted XYZ shift or scale, no claim of new seat. Retain raw game-v-CGVD separately."
+}

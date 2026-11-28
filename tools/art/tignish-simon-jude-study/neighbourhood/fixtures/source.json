@@ -1,0 +1,35 @@
+{
+  "source": "NRCan CanElevation HRDEM 1m mosaic; PEI 2020 collection; north-first cell-centre crop",
+  "license": "https://open.canada.ca/en/open-government-licence-canada",
+  "dataset": "https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947",
+  "grid": {
+    "originNWEdgeEPSG3979": [
+      2284018,
+      338897
+    ],
+    "vertical": "CGVD2013",
+    "spacingM": 1,
+    "columns": 256,
+    "rows": 256
+  },
+  "pairedSourceETags": {
+    "dtm": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "dsm": "a117346714667913c801489b24ec0356-2829"
+  },
+  "pair": {
+    "dtm": {
+      "archive": "dtm.f32le.gz",
+      "archiveSHA256": "9a0505a1ae448bbb97d016ee05680d526e21899d9bce4c4e471e94e18b936162",
+      "rawSHA256": "84b7998296ea95b0eaf48bb3a183f2b787dbf6be190937ada1d8eb2f9cc26ead",
+      "cropGeoTIFFSHA256": "0823bd2e6792c3cdf0f2493990e5bc8b7fef39ac7486b6e1e2f290069f4a2c93",
+      "rawBytes": 262144
+    },
+    "dsm": {
+      "archive": "dsm.f32le.gz",
+      "archiveSHA256": "9f1f312e4ad98e0c44635e6c1ebeb697b0bf38464b89af1e5b7024b5f28b4319",
+      "rawSHA256": "2208bdfbcba973800fb2ff673a2aeb0442958952a79402494130d19291644ab1",
+      "cropGeoTIFFSHA256": "adf6c6d114d87b75a53d790ee0d00297639f485a01f60d8cd20a953afcd56e94",
+      "rawBytes": 262144
+    }
+  }
+}

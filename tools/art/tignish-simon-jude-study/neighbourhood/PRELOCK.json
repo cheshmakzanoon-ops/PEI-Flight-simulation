@@ -1,0 +1,17 @@
+{
+  "scope": "Detached roof-form screen, not game geometry or setting. Source x/y/z in EPSG:3979/CGVD2013; no terrain or wall change.",
+  "q221232": {"84":[5862,5883],"220":[14292,14304],"257":[15846,15858]},
+  "unfilteredFootprintGuardM": 0.71,
+  "blockM": 3,
+  "folds": 5,
+  "minNativeSamples": 100,
+  "minHeld": 19,
+  "minEachRidgeSideHeld": 4,
+  "maxFoldP90M": 0.8,
+  "maxPooledP90M": 0.55,
+  "maxPooledMedianM": 0.25,
+  "minRidgeP90BenefitOverBetterPlanarModelM": 0.22,
+  "minRidgeFoldBenefitVotes": 4,
+  "maxRidgeAzimuthSpreadDegrees": 12,
+  "maxRidgeNormalOffsetSpreadM": 1.0
+}
