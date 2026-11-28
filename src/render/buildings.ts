@@ -889,7 +889,7 @@ export class Buildings {
     }
     if(id===TERMINAL_WIRE.id){this.terminalWall?.dispose();this.terminalWall=undefined;}
     if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
-    if(this.eastRoofRimObserver?.id===id){this.eastRoofRimObserver.content=undefined;this.eastRoofRimObserver.mesh=undefined;}
+    if(this.opticalOwnerObserver?.id===id){this.opticalOwnerObserver.content=undefined;this.opticalOwnerObserver.mesh=undefined;}
     if(this.eastVillageObserver?.id===id){this.eastVillageObserver.content=undefined;this.eastVillageObserver.mesh=undefined;}
     if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);
     if(this.kingsResident?.mesh===m)this.kingsResident=undefined;
@@ -1071,14 +1071,15 @@ export class Buildings {
     versions:[position.version,townWallFit.version,topFlag.version] as const};
   };
  }
- private eastRoofRimObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
- /** Independently scoped optional East q1333 roof custody. */
- observeEastRimOwner(){
-  const q=this.eastRoofRimObserver={id:'q1333',offset:3260377,size:9073,
-   content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
+ private opticalOwnerObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
+ /** Exact original streamed building leases. The original mesh keeps its stock place in the draw order. */
+ observeEastRimOwner(){return this.observeExactOpticalOwner('q1333',3260377,9073);}
+ observeHangar9Owner(){return this.observeExactOpticalOwner('q0322',1073076,15510);}
+ private observeExactOpticalOwner(id:string,offset:number,size:number){
+  const q=this.opticalOwnerObserver={id,offset,size,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
   return ()=>{
    const wire=q.content,mesh=q.mesh;
-   const current=()=>!!mesh&&!!wire&&this.eastRoofRimObserver===q&&q.mesh===mesh&&q.content===wire&&
+   const current=()=>!!mesh&&!!wire&&this.opticalOwnerObserver===q&&q.mesh===mesh&&q.content===wire&&
     mesh.parent===this.scene&&mesh.visible&&this.meshes.get(q.id)===mesh&&this.wanted.has(q.id);
    if(!current()||!mesh||!wire||!(mesh.material instanceof THREE.ShaderMaterial))return;
    return {wire,mesh:mesh as THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>,current};
@@ -1134,7 +1135,7 @@ export class Buildings {
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
-   const rim=this.eastRoofRimObserver,rimTap=rim&&rim.id===tile.id&&rim.offset===tile.offset&&rim.size===tile.bytes;
+   const rim=this.opticalOwnerObserver,rimTap=rim&&rim.id===tile.id&&rim.offset===tile.offset&&rim.size===tile.bytes;
    const eye=this.eastVillageObserver,eastVillageTap=eye&&eye.id===tile.id&&eye.offset===tile.offset&&eye.size===tile.bytes;
    const seawardRoofTap=this.seawardRoofWatch&&!!this.residentProofIndex&&tile.id==='q12000111'&&tile.offset===2066452&&tile.bytes===11843;
    let seawardRoofBytes:ArrayBuffer|undefined;

@@ -74,6 +74,8 @@ how to enable or compare the individual scenery studies. The opt-in
 **Use detailed preview** profile keeps the same province, departures and
 flight controls. Select **East Point · lighthouse pass** or **Summerside waterfront · low pass**
 in Dispatch to see the optional roof preview for that route.
+At **Summerside runway**, the **Hangar 9 apron finish** offers a separate
+Chase-view comparison of one wall on the takeoff route.
 
 ### Essential controls
 

@@ -73,6 +73,8 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
    QUAY_ROUTE:'harbour-low',quayCandidate:undefined,quaySeat:undefined,quayAdmitted:!!quay};
   // The extracted frame has no query bootstrap. Bind its optional diagnostic
   // exactly as a plain page, or as a ready lighthouse page for the opt-in case.
+  // This frame fixture has no explicit Hangar 9 Dispatch selection.
+  scope.hangar9Apron=undefined;
   scope.diagnostic=light;
   scope.capeLightPreview=light?{state:{phase:'active',solidDraws:1,paneDraws:1}}:undefined;
   scope.capeLightSupported=()=>true;

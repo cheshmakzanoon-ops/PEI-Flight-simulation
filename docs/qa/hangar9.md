@@ -42,10 +42,14 @@ intake is installed. No photography, plans or raw survey points are packaged.
 
 ## Northwest apron wall study
 
-The [detached finish](../../tools/art/hangar9-nw-finish/) removes the
-repeated office-window appearance from **one northwest plane**. It is
-not installed or available as a player option. The unchanged adjacent
-walls still use generic stock finishes.
+The [original finish](../../tools/art/hangar9-nw-finish/) removes the
+repeated office-window appearance from **one northwest plane**. To see
+it in the player, select the **Summerside runway** departure and use
+**Preview** in the Hangar 9 card. Wait for **Hangar 9 apron preview ready**
+before beginning. The finish stays active in Chase view while its exact
+building tile is available. **Use original** restores the stock flight
+from the same departure. Begin before it is ready and that flight stays
+stock. The adjacent walls still use generic finishes.
 
 Left: original over the runway. Right: original Three.js enamel study.
 Both images are unscaled pixel crops of the same flight frame.
@@ -63,6 +67,17 @@ Summerside runway via the actual **Begin flight** button and used a
 repeatable analog input. The paint is an approximation; these captures
 do not establish a reconstructed door, other exterior faces or a
 measured roof. [Native receipt](hangar9/northwest-finish-native.json).
+
+The [player preview receipt](hangar9/player-preview-native.json) separately
+checks the unmodified Dispatch buttons, starting with stock when the preview
+is not ready, and the real optical change on a repeatable takeoff. At roughly
+732 m the preview had already changed 395 pixels on the target face; there is
+no mid-approach distance switch. The same 56- and 58-second windows still
+show 1,059 and 2,075 changes inside that face, with no changes at 64 seconds.
+The rest of those frames and their alpha are unchanged. The corrupt-data
+fallback and the controlled report of unsupported multisampling both keep
+ordinary scenery. These are correctness checks, not frame-rate estimates.
+
 
 ## Replay
 

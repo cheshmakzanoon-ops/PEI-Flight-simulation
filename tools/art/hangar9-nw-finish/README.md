@@ -1,8 +1,9 @@
 # Hangar 9 northwest apron face
 
 This is an original Three.js material study shown in [matched simulator
-captures](../../../docs/qa/hangar9.md#northwest-apron-wall-study). It is not
-enabled in the game. It replaces the generic colour treatment on two
+captures](../../../docs/qa/hangar9.md#northwest-apron-wall-study). The
+standard flight still uses the original scenery unless you choose this
+optional preview in Dispatch. It replaces the generic colour treatment on two
 existing triangles, without moving their wall or changing any other face.
 
 The [operator's listing](https://slemonpark.com/available-properties/900-aerospace-blvd/),

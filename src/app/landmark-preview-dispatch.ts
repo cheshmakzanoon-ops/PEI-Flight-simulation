@@ -1,7 +1,10 @@
+import {HANGAR9_OPTION,HANGAR9_ROUTE,hangar9Consent} from './hangar9-preview-option.ts';
 import {EAST_RIM_OPTION,EAST_RIM_ROUTE,eastRimConsent} from './east-roof-rim-option.ts';
 import {RAIL_SHINGLE_OPTION,RAIL_SHINGLE_ROUTE,railShingleConsent} from './rail-shingle-option.ts';
 
 const CARDS=[
+ {route:HANGAR9_ROUTE,flag:HANGAR9_OPTION,accept:hangar9Consent,title:'Hangar 9 apron finish',
+  description:'Compare a painted apron wall from Chase view. The roof, other faces and runway stay the same.'},
  {route:EAST_RIM_ROUTE,flag:EAST_RIM_OPTION,accept:eastRimConsent,title:'East Point roof forms',
   description:'See two roofs rebuilt from dated elevation data. Nearby scenery and flight controls stay the same.'},
  {route:RAIL_SHINGLE_ROUTE,flag:RAIL_SHINGLE_OPTION,accept:railShingleConsent,title:'Summerside station roof finish',

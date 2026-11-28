@@ -1,0 +1,308 @@
+{
+  "baseline": "f72478fa21d8f99425b83402ad5c5ec10085e992",
+  "scope": "Opt-in original northwest appearance only; no door geometry, terrain, default, or flight changes.",
+  "unmodifiedDispatch": {
+    "receiptSHA256": "2ee14516016bf10f169b599e5e9b0acacc1aced609598e681edf9c8300b2a21b",
+    "verifiedBuild": "8658f21adf996924b5bf3e502edb46d2b4539ca2bd2aeafd1588d0bd014ca3b9",
+    "steps": [
+      {
+        "step": "ready",
+        "sameRoute": "cysu",
+        "phase": "ready",
+        "neighborSurveyAndLight": [
+          true,
+          true
+        ]
+      },
+      {
+        "step": "ordinary takeoff starts",
+        "site": "cysu",
+        "camera": "Chase",
+        "phase": "ready",
+        "drawn": true
+      },
+      {
+        "step": "reverted",
+        "site": "cysu",
+        "phase": null
+      }
+    ],
+    "trustedActions": [
+      {
+        "trusted": true,
+        "id": "landmark-preview-switch",
+        "mode": "dispatch",
+        "site": "cysu",
+        "phase": null
+      },
+      {
+        "trusted": true,
+        "id": "start",
+        "mode": "dispatch",
+        "site": "cysu",
+        "phase": "ready"
+      },
+      {
+        "trusted": true,
+        "id": "site-list",
+        "mode": "paused",
+        "site": "cysu",
+        "phase": "ready"
+      },
+      {
+        "trusted": true,
+        "id": "landmark-preview-switch",
+        "mode": "dispatch",
+        "site": "cysu",
+        "phase": "ready"
+      }
+    ]
+  },
+  "analogRepeatableOpticalReplay": {
+    "receiptSHA256": "54ec5a6eb13037c8321617b8af63c2585fcd937cc5d7bd381b4fb584e8979773",
+    "verifiedBuild": "91c41beb0b8913254d1de9f9e9ff440ff0ad80f1fc8c184d44f674a06e215fdd",
+    "observer": "Numeric 180 ms Playwright polling independent of the flight fixture clock.",
+    "clock": "Normal 90 Hz flight controls exercised with transparent test controller and transit-only draw decimation; not a device speed measurement.",
+    "begin": {
+      "trusted": true,
+      "site": "cysu",
+      "mode": "dispatch",
+      "camera": "Chase",
+      "phase": "ready"
+    },
+    "frames": [
+      {
+        "changes": 395,
+        "exterior": 0,
+        "alpha": 0,
+        "restored": 0,
+        "markerLeak": 0,
+        "mask": 395,
+        "ready": true,
+        "status": "flying",
+        "phase": "ready",
+        "site": "cysu",
+        "camera": "Chase",
+        "pose": [
+          -48173.94029188574,
+          92.94629232957472,
+          6097.370432900994
+        ],
+        "view": [
+          0.8092984846806602,
+          0.05169832359657585,
+          -0.5851181470702227,
+          0,
+          1.3877787807814457e-17,
+          0.9961193716828389,
+          0.08801248410416633,
+          -0.0,
+          0.587397618903573,
+          -0.07122837001848252,
+          0.8061578980639729,
+          0,
+          35405.51600546064,
+          2832.2321091508743,
+          -33111.070446640806,
+          1
+        ],
+        "submitted": 2,
+        "screenSHA256": "cb4cc6b6826019183704380005743bf11c8e67925967d48505baddb6046fdb15",
+        "originalSHA256": "5eea01945649b0bb161c10c0531f830506e9a51587eff508117bd0b0085e1d27",
+        "tick": 4680,
+        "physicalDistanceFromWallStudy": 731.8593154892478,
+        "renderedBeforeRemovedCutoffAtM": 731.8593154892478
+      },
+      {
+        "changes": 1059,
+        "exterior": 0,
+        "alpha": 0,
+        "restored": 0,
+        "markerLeak": 0,
+        "mask": 1059,
+        "ready": true,
+        "status": "flying",
+        "phase": "ready",
+        "site": "cysu",
+        "camera": "Chase",
+        "pose": [
+          -48045.71715596045,
+          108.30311491205661,
+          5931.607182292754
+        ],
+        "view": [
+          0.8092990174111561,
+          0.051565505103464804,
+          -0.5851291302787462,
+          0,
+          6.938893903907228e-18,
+          0.9961393144864392,
+          0.0877864803627915,
+          -0.0,
+          0.5873968849230794,
+          -0.0710455122995909,
+          0.8061745684184979,
+          0,
+          35399.144103666986,
+          2791.0307535859847,
+          -32904.36710256916,
+          1
+        ],
+        "submitted": 2,
+        "screenSHA256": "a0a9333231d966def2303a3b4a01388d6859d936534bcb9a6129e429fbf3639d",
+        "originalSHA256": "398bfceae44e0dd3d6a5088d16160c404df5aa0a1026f0a21db9e9905bbb8ea3",
+        "tick": 5040,
+        "physicalDistanceFromWallStudy": 533.2324171454522,
+        "eyeDeltaM": 7.072458174661733e-07
+      },
+      {
+        "changes": 2075,
+        "exterior": 0,
+        "alpha": 0,
+        "restored": 0,
+        "markerLeak": 0,
+        "mask": 2075,
+        "ready": true,
+        "status": "flying",
+        "phase": "ready",
+        "site": "cysu",
+        "camera": "Chase",
+        "pose": [
+          -47981.44754746475,
+          116.08591559997717,
+          5848.506539558664
+        ],
+        "view": [
+          0.8092992163646052,
+          0.05151696658933647,
+          -0.5851331306165023,
+          0,
+          0,
+          0.9961465896256158,
+          0.08770388803955549,
+          -0.0,
+          0.5873966108104776,
+          -0.07097868786254134,
+          0.8061806543682849,
+          0,
+          35395.954980562965,
+          2771.339361415624,
+          -32800.66863024289,
+          1
+        ],
+        "submitted": 2,
+        "screenSHA256": "e4e76ba7b687bf2c1196dddd97fce6e35e169f91fd53c90d4d095ed3a371d136",
+        "originalSHA256": "d50fabb167f50f042b800ab075de524727052e1cc2b27d8725655542cb5943ef",
+        "tick": 5220,
+        "physicalDistanceFromWallStudy": 437.52518396790725,
+        "eyeDeltaM": 7.113358151400462e-07
+      },
+      {
+        "changes": 0,
+        "exterior": 0,
+        "alpha": 0,
+        "restored": 0,
+        "markerLeak": 0,
+        "mask": 0,
+        "ready": true,
+        "status": "flying",
+        "phase": "ready",
+        "site": "cysu",
+        "camera": "Chase",
+        "pose": [
+          -47788.20579649231,
+          139.70316686532672,
+          5598.604649907231
+        ],
+        "view": [
+          0.8092996268214283,
+          0.05142073743919487,
+          -0.5851410272642881,
+          0,
+          0,
+          0.9961609921491725,
+          0.08754014919096526,
+          -0.0,
+          0.5873960452937157,
+          -0.07084621007214033,
+          0.806192719200389,
+          0,
+          35386.37888704833,
+          2714.7778587788853,
+          -32488.62377338321,
+          1
+        ],
+        "submitted": 2,
+        "screenSHA256": "b1103ba053516971c79807f26bf4d4c6e94cb1493ce7bf2c31a2fd681158f46c",
+        "originalSHA256": "b1103ba053516971c79807f26bf4d4c6e94cb1493ce7bf2c31a2fd681158f46c",
+        "tick": 5760,
+        "physicalDistanceFromWallStudy": 212.22264598095353,
+        "eyeDeltaM": 7.127691787900403e-07
+      }
+    ]
+  },
+  "compiledFallbacks": {
+    "receiptSHA256": "4f292fd7c3f8d6b0a094a54b45251fe8cab49cf05b0231a676a4d74cfa0e0c9e",
+    "cases": [
+      {
+        "case": "controlled unsupported samples",
+        "wire": [],
+        "actualRangeResponses": [
+          {
+            "http": 206,
+            "range": "bytes=1073076-1088585",
+            "contentRange": "bytes 1073076-1088585/3844984"
+          }
+        ],
+        "outside": [],
+        "errors": [],
+        "fellBack": true,
+        "originalRoute": true
+      },
+      {
+        "case": "decodable signed range changed",
+        "wire": [
+          {
+            "actualRange": "bytes=1073076-1088585",
+            "received": 206,
+            "differentCompressedSameDecoded": true,
+            "tamperedSha256": "bba459a11b83796bd5a81175393cd65fa3cf6df1027b2c9a6ea1b13013f82f67"
+          }
+        ],
+        "actualRangeResponses": [
+          {
+            "http": 206,
+            "range": "bytes=1073076-1088585",
+            "contentRange": "bytes 1073076-1088585/3844984"
+          }
+        ],
+        "outside": [],
+        "errors": [],
+        "fellBack": true,
+        "originalRoute": true
+      },
+      {
+        "case": "trusted early Begin then healthy source and fresh selection",
+        "wire": [
+          {
+            "releasedExactRange": true
+          }
+        ],
+        "actualRangeResponses": [
+          {
+            "http": 206,
+            "range": "bytes=1073076-1088585",
+            "contentRange": "bytes 1073076-1088585/3844984"
+          }
+        ],
+        "outside": [],
+        "errors": [],
+        "verifiedHealthyStockAfterNineSeconds": true,
+        "earlyTrusted": true,
+        "realOriginalRangeArrivedAfterBegin": true,
+        "currentFlightRemainedStock": true,
+        "freshDispatchReady": true
+      }
+    ]
+  }
+}

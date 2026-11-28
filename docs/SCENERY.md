@@ -98,6 +98,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Exposed Prince and Kings shores | `?stockOpenCoast` | Compare [local coastline gap repairs](qa/open-coast-closure.md) without disabling the nearshore foam. For Kings County, the [Panmure Head coastal pass](qa/panmure-open-coast.md) also has a repaired headland approach. |
 | Exposed Prince and Kings shores | `?stockNearshoreFoam` | Compare [Standard’s small moving breaker groups](qa/nearshore-foam-study.md) on **Prince County · open shore pass** or **Kings County · coastal ridge pass**. The flag retains the previous water look. |
 | Four offshore areas | `?stockOpenRipples` | Compare [open-water ripple variation](qa/open-water-ripples.md), independent of the coast mask, wave foam and physical sea surface. |
+| Hangar 9, Summerside runway | `?departure=cysu&hangar9ApronPreview=1` | Opt in from Dispatch to compare the [northwest apron wall finish](qa/hangar9.md#northwest-apron-wall-study) in Chase. It does not change the roof, other faces, ground or flight controls. |
 | Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
 | Queens and Kings woodlands | `?stockRegionalCanopy` | Compare [measured canopy infill](qa/regional-canopy.md) on the two **woodland passes** in Standard. |
 | Miscouche woodlot | `?stockMiscouche` | Compare the [bounded canopy infill](qa/miscouche-canopy.md) on **Miscouche · woodland pass** in Standard. |
