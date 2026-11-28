@@ -94,3 +94,7 @@ The terrain comparison fixture `tools/qa/survey-relief-frames.py` uses a
 fixed inspection camera and swaps the same near mesh for one frame. No scene
 elements, lighting, viewing parameters or surface textures change between
 the two renders. Compare normal runtime with the flight test separately.
+
+The [all-departure positioning screen](atlas-route-survey-screen.md)
+describes which short launch corridors pass near the existing signed
+candidates. It is separate from the browser admission and motion checks.

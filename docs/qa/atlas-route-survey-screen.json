@@ -1,0 +1,1274 @@
+{
+  "scope": "Uninstrumented inputs to stock fixed-step dynamics and legacy cover only; no visuals, authenticated optional route append, current topography or live admission claim.",
+  "assumptions": {
+    "startRoster": "Base geography, the ordinary Point Prim offering, declared mapped farmland and regional canopy routes; excludes separately authenticated route appends.",
+    "centreBounds": "Exact signed mask after a one-extra-cell inner moat and the known 8-13 hard safety veto. Uses dry, source-finite cell centres only.",
+    "uncertainty": "18 neutral seconds with one-second position interpolation through existing short-course model; excludes special coastal/inland surveys, dynamics of scenery assets, camera/LOD/stream readiness, and side excursions.",
+    "halfWidthM": 250
+  },
+  "pins": {
+    "terrainSHA": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverSHA": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "reliefIndexSHA": "b459c10444b85a4b7fa33a7a0ccfbf6fa63162e5db4a6344dd08b9b72831dbf0"
+  },
+  "actualTerrainCandidates": {
+    "maskTiles": 199,
+    "signedCells": 52975,
+    "screenedDryCentreCount": 51416,
+    "representedParentCellAreaKm2": 146.381,
+    "approximateTerrainRasterLandKm2": 5724.629
+  },
+  "siteGroups": {
+    "Queens County": {
+      "neutralTracks": 18,
+      "tracksWithAnyCandidate": 3,
+      "tracksFullyBelow175M": 16
+    },
+    "Prince County": {
+      "neutralTracks": 18,
+      "tracksWithAnyCandidate": 5,
+      "tracksFullyBelow175M": 15
+    },
+    "Kings County": {
+      "neutralTracks": 18,
+      "tracksWithAnyCandidate": 6,
+      "tracksFullyBelow175M": 14
+    },
+    "Pituamkek Sandhills": {
+      "neutralTracks": 2,
+      "tracksWithAnyCandidate": 0,
+      "tracksFullyBelow175M": 2
+    }
+  },
+  "screen": [
+    {
+      "route": "basin-head-low",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 99.083,
+      "travelFromSpawnM": 919.165,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.108491451,
+          46.378132597
+        ]
+      },
+      "landSamplesOnCourse": 9,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "bridge",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 269.903,
+      "travelFromSpawnM": 918.24,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.718059867,
+          46.239056499
+        ]
+      },
+      "landSamplesOnCourse": 0,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "cape-tryon-coast",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 85.514,
+      "travelFromSpawnM": 926.23,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.505621206,
+          46.534131919
+        ]
+      },
+      "landSamplesOnCourse": 8,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "cavendish",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 440,
+      "travelFromSpawnM": 973.562,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.414705901,
+          46.48588877
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "cavendish-dunelands-low",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 134.558,
+      "travelFromSpawnM": 954.533,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.386808006,
+          46.496117135
+        ]
+      },
+      "landSamplesOnCourse": 15,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "cavendish-low",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 132.45,
+      "travelFromSpawnM": 972.152,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.413841669,
+          46.498507615
+        ]
+      },
+      "landSamplesOnCourse": 16,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "charlottetown",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 535.114,
+      "travelFromSpawnM": 953.616,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.150146004,
+          46.203627588
+        ]
+      },
+      "landSamplesOnCourse": 18,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "cysu",
+      "region": "Prince County",
+      "excluded": "runway start: no takeoff inputs are simulated"
+    },
+    {
+      "route": "cyyg",
+      "region": "Queens County",
+      "excluded": "runway start: no takeoff inputs are simulated"
+    },
+    {
+      "route": "dalvay-lake-coastal-pass",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 116.262,
+      "travelFromSpawnM": 943.075,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.073374679,
+          46.421645516
+        ]
+      },
+      "landSamplesOnCourse": 0,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "east-light",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 60.113,
+      "travelFromSpawnM": 903.159,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -61.975147355,
+          46.452767108
+        ]
+      },
+      "landSamplesOnCourse": 12,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "eastern-kings-skyline",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 240.167,
+      "travelFromSpawnM": 914.344,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.01507193,
+          46.427473099
+        ]
+      },
+      "landSamplesOnCourse": 4,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "eastpoint",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 390,
+      "travelFromSpawnM": 969.008,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.004001345,
+          46.458793484
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "georgetown-low",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 62.729,
+      "travelFromSpawnM": 906.822,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.533216655,
+          46.182113819
+        ]
+      },
+      "landSamplesOnCourse": 13,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "greenwich-dunes-low",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 181.681,
+      "travelFromSpawnM": 961.479,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.714097445,
+          46.451264973
+        ]
+      },
+      "landSamplesOnCourse": 3,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 1,
+      "candidateTiles": [
+        "22-12"
+      ],
+      "closestSignedCandidate": {
+        "id": "22-12",
+        "col": 15,
+        "row": 43,
+        "metresFromCourse": 241.523
+      }
+    },
+    {
+      "route": "harbour-low",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 121.219,
+      "travelFromSpawnM": 951.859,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.128952124,
+          46.223621323
+        ]
+      },
+      "landSamplesOnCourse": 0,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "hog-island-east-pass",
+      "region": "Pituamkek Sandhills",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 64.714,
+      "travelFromSpawnM": 947.052,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.82221883,
+          46.630059327
+        ]
+      },
+      "landSamplesOnCourse": 7,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "hog-island-west-pass",
+      "region": "Pituamkek Sandhills",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 64.714,
+      "travelFromSpawnM": 947.052,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.843414303,
+          46.640996835
+        ]
+      },
+      "landSamplesOnCourse": 6,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "hunter-river-trail",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 110.831,
+      "travelFromSpawnM": 969.147,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.343718091,
+          46.349095165
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "indian-river-country-pass",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 80,
+      "travelFromSpawnM": 968.844,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.670639551,
+          46.476916362
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 6,
+      "candidateTiles": [
+        "10-11",
+        "9-11"
+      ],
+      "closestSignedCandidate": {
+        "id": "10-11",
+        "col": 5,
+        "row": 95,
+        "metresFromCourse": 170.153
+      }
+    },
+    {
+      "route": "kings-canopy-pass",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 121.891,
+      "travelFromSpawnM": 971.823,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.16960814,
+          46.407372458
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "kings-coastal-grass",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 63.872,
+      "travelFromSpawnM": 947.626,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.160394321,
+          46.364136197
+        ]
+      },
+      "landSamplesOnCourse": 10,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 5,
+      "candidateTiles": [
+        "29-13"
+      ],
+      "closestSignedCandidate": {
+        "id": "29-13",
+        "col": 9,
+        "row": 98,
+        "metresFromCourse": 13.262
+      }
+    },
+    {
+      "route": "kings-coastal-ridge",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 129.881,
+      "travelFromSpawnM": 947.895,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.781192272,
+          46.43637292
+        ]
+      },
+      "landSamplesOnCourse": 11,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "kings-fields",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 84.271,
+      "travelFromSpawnM": 964.255,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.364256962,
+          46.342071204
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 26,
+      "candidateTiles": [
+        "26-14"
+      ],
+      "closestSignedCandidate": {
+        "id": "26-14",
+        "col": 51,
+        "row": 31,
+        "metresFromCourse": 62.045
+      }
+    },
+    {
+      "route": "kings-grassland",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 101.746,
+      "travelFromSpawnM": 960.34,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.62054443,
+          46.211033451
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 20,
+      "candidateTiles": [
+        "23-16"
+      ],
+      "closestSignedCandidate": {
+        "id": "23-16",
+        "col": 32,
+        "row": 94,
+        "metresFromCourse": 3.174
+      }
+    },
+    {
+      "route": "kings-mapped-farmland-pass",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 62,
+      "travelFromSpawnM": 933.861,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.639421901,
+          46.391049673
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 7,
+      "candidateTiles": [
+        "23-13"
+      ],
+      "closestSignedCandidate": {
+        "id": "23-13",
+        "col": 12,
+        "row": 38,
+        "metresFromCourse": 136.893
+      }
+    },
+    {
+      "route": "kings-meadow-low",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 87.178,
+      "travelFromSpawnM": 971.696,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.243700105,
+          46.418942136
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "kings-sand-dunes",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 59.736,
+      "travelFromSpawnM": 947.052,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.058418708,
+          46.46591782
+        ]
+      },
+      "landSamplesOnCourse": 13,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 3,
+      "candidateTiles": [
+        "30-12"
+      ],
+      "closestSignedCandidate": {
+        "id": "30-12",
+        "col": 46,
+        "row": 5,
+        "metresFromCourse": 183.087
+      }
+    },
+    {
+      "route": "kings-woodland-view",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 29.525,
+      "travelFromSpawnM": 935.104,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.1693162,
+          46.410922018
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "miscouche-woodlot-pass",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 96.872,
+      "travelFromSpawnM": 971.59,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.899461938,
+          46.446886088
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "montague",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 360.236,
+      "travelFromSpawnM": 906.004,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.621724257,
+          46.157985522
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "north-rustico-harbour-low",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 78.593,
+      "travelFromSpawnM": 905.975,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.292383353,
+          46.454876133
+        ]
+      },
+      "landSamplesOnCourse": 4,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "northcape",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 380.003,
+      "travelFromSpawnM": 920.35,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -64.028754217,
+          47.014177324
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 3,
+      "candidateTiles": [
+        "5-1"
+      ],
+      "closestSignedCandidate": {
+        "id": "5-1",
+        "col": 63,
+        "row": 72,
+        "metresFromCourse": 5.819
+      }
+    },
+    {
+      "route": "northcape-wind-low",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 122.213,
+      "travelFromSpawnM": 964.887,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.997967289,
+          47.050199037
+        ]
+      },
+      "landSamplesOnCourse": 17,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "oleary-railway-low",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 75.032,
+      "travelFromSpawnM": 920.149,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -64.220328337,
+          46.711546576
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 5,
+      "candidateTiles": [
+        "3-7"
+      ],
+      "closestSignedCandidate": {
+        "id": "3-7",
+        "col": 19,
+        "row": 38,
+        "metresFromCourse": 48.519
+      }
+    },
+    {
+      "route": "panmure-head-coast",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 82.655,
+      "travelFromSpawnM": 904.774,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.464732053,
+          46.144438275
+        ]
+      },
+      "landSamplesOnCourse": 5,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "point-prim-offshore",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 75.189,
+      "travelFromSpawnM": 961.976,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.038335579,
+          46.051185623
+        ]
+      },
+      "landSamplesOnCourse": 9,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-coastal-grass",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 63.177,
+      "travelFromSpawnM": 947.623,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.876529677,
+          46.656324795
+        ]
+      },
+      "landSamplesOnCourse": 12,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-fields",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 66.744,
+      "travelFromSpawnM": 915.375,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.874537041,
+          46.456663244
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-grassland",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 85.011,
+      "travelFromSpawnM": 970.532,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.90261872,
+          46.649580901
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 37,
+      "candidateTiles": [
+        "7-8"
+      ],
+      "closestSignedCandidate": {
+        "id": "7-8",
+        "col": 10,
+        "row": 61,
+        "metresFromCourse": 2.053
+      }
+    },
+    {
+      "route": "prince-mapped-farmland-pass",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 62,
+      "travelFromSpawnM": 952.739,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.681478386,
+          46.377443057
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 24,
+      "candidateTiles": [
+        "9-13"
+      ],
+      "closestSignedCandidate": {
+        "id": "9-13",
+        "col": 100,
+        "row": 67,
+        "metresFromCourse": 42.639
+      }
+    },
+    {
+      "route": "prince-meadow-low",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 67.355,
+      "travelFromSpawnM": 971.464,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.87133623,
+          46.462062622
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-open-shore-pass",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 76.316,
+      "travelFromSpawnM": 909.146,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.985036001,
+          46.924877487
+        ]
+      },
+      "landSamplesOnCourse": 6,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-sand-dunes",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 64.714,
+      "travelFromSpawnM": 947.052,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.941497354,
+          46.700307403
+        ]
+      },
+      "landSamplesOnCourse": 11,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "prince-woodland-view",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 29.645,
+      "travelFromSpawnM": 902.991,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -64.241410406,
+          46.674340047
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "queens-canopy-pass",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 140.061,
+      "travelFromSpawnM": 971.868,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.37609073,
+          46.400572455
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "queens-coastal-grass",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 61.74,
+      "travelFromSpawnM": 947.617,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.995762145,
+          46.41158989
+        ]
+      },
+      "landSamplesOnCourse": 6,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "queens-fields",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 62,
+      "travelFromSpawnM": 958.586,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.50175048,
+          46.366235186
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 11,
+      "candidateTiles": [
+        "12-13"
+      ],
+      "closestSignedCandidate": {
+        "id": "12-13",
+        "col": 20,
+        "row": 101,
+        "metresFromCourse": 105.805
+      }
+    },
+    {
+      "route": "queens-grassland",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 83.208,
+      "travelFromSpawnM": 953.396,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.208752289,
+          46.165664668
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 31,
+      "candidateTiles": [
+        "15-17"
+      ],
+      "closestSignedCandidate": {
+        "id": "15-17",
+        "col": 99,
+        "row": 80,
+        "metresFromCourse": 11.527
+      }
+    },
+    {
+      "route": "queens-meadow-low",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 68.68,
+      "travelFromSpawnM": 971.524,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.351061396,
+          46.253920437
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 2,
+      "candidateTiles": [
+        "14-16"
+      ],
+      "closestSignedCandidate": {
+        "id": "14-16",
+        "col": 10,
+        "row": 8,
+        "metresFromCourse": 173.355
+      }
+    },
+    {
+      "route": "queens-sand-dunes",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 64.714,
+      "travelFromSpawnM": 947.052,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.45792849,
+          46.504735362
+        ]
+      },
+      "landSamplesOnCourse": 5,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "queens-woodland-view",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 65.892,
+      "travelFromSpawnM": 970.119,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.369155997,
+          46.398111787
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "seacow-head-coast",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 84.541,
+      "travelFromSpawnM": 910.739,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.802859254,
+          46.310164611
+        ]
+      },
+      "landSamplesOnCourse": 0,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "souris-waterfront-pass",
+      "region": "Kings County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 100.354,
+      "travelFromSpawnM": 927.062,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.254507412,
+          46.354629833
+        ]
+      },
+      "landSamplesOnCourse": 11,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "spinnakers-low",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 87.753,
+      "travelFromSpawnM": 908.52,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.786856573,
+          46.388765738
+        ]
+      },
+      "landSamplesOnCourse": 3,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "summerside",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 364.061,
+      "travelFromSpawnM": 908.978,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.80975553,
+          46.37972555
+        ]
+      },
+      "landSamplesOnCourse": 0,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "tracadie-marsh",
+      "region": "Queens County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 42.156,
+      "travelFromSpawnM": 902.828,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.978552068,
+          46.414723274
+        ]
+      },
+      "landSamplesOnCourse": 19,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    },
+    {
+      "route": "west-light",
+      "region": "Prince County",
+      "modelSeconds": 18,
+      "modelStatus": "flying",
+      "maxApproximateAGL": 63.539,
+      "travelFromSpawnM": 964.312,
+      "scoutAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -64.383586313,
+          46.622086332
+        ]
+      },
+      "landSamplesOnCourse": 13,
+      "sampleCount": 19,
+      "candidateCentresWithin250M": 0,
+      "candidateTiles": [],
+      "closestSignedCandidate": null
+    }
+  ]
+}

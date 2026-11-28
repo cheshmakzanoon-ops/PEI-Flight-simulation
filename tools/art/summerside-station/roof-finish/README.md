@@ -1,6 +1,6 @@
 # Former Summerside Railway Station · lapped roof finish
 
-Two matched **1:1** native plates: [street quarter](plates/street-quarter-matched.png)
+Two matched, unscaled **detached EGL** plates: [street quarter](plates/street-quarter-matched.png)
 and [harbour quarter](plates/harbour-quarter-matched.png). The left is
 the already shipped authored station, not the generic-box fallback.
 The right changes only the pitched roof surface. The hip, cross gable,
@@ -16,8 +16,7 @@ optical relief and roughness variation. The relief does not displace the
 surface. The pitch-following coordinates use the actual packed face
 normals. The 2017 exterior roof reads dark gray with uneven tone.
 Material type, exact course size, surface condition today, valley and cap
-fittings are **illustrative**, not surveyed. No photo, map imagery,
-mural, sampled texture or photogrammetric landmark was used.
+fittings are **illustrative**, not surveyed. No pixels from the consulted photographs, map imagery or murals are incorporated. The treatment is not photogrammetry.
 
 ## Source and fit
 
@@ -73,7 +72,7 @@ deliberately lower-key. Existing pinpoint light artifacts near a few
 old tiled roof joins were seen in both states; not addressed by a
 material-only change.
 
-The actual existing spinnakers-low Chase q398 captures show the
+The archived in-scene Chase poses on spinnakers-low used a deterministic QA traversal. They show the
 unmodified station unobscured around n360 and n420, ~302m and ~213m
 from the camera to station origin and ~605.469m and ~706.469m neutral
 physical displacement from launch. The archive roof projects to
@@ -128,7 +127,7 @@ node --experimental-transform-types "$roof/qa/export-studio.mjs" /tmp/pei-roof-n
 python "$roof/qa/render-studio.py" /tmp/pei-roof-new-route
 ```
 
-[evidence/detached-egl.json](evidence/detached-egl.json) pins the six
+[evidence/detached-egl.json](evidence/detached-egl.json) pins the five
 lanes at every detached lab pose. The
 [archived-camera receipt](evidence/archived-camera-egl.json) pins the
 separate re-render with the archived real Chase matrices. Neither is a
