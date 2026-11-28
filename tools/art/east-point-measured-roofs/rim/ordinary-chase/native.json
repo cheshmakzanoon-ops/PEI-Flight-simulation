@@ -1,0 +1,576 @@
+{
+  "errors": [],
+  "outside": [],
+  "views": [
+    {
+      "phase": 0,
+      "d": 254.0211236530279,
+      "flight": [
+        94344.40877513742,
+        59.70623767687765,
+        5383.267138741242,
+        5.096361415823441,
+        0
+      ],
+      "changed": 3324,
+      "strong": 2553,
+      "outside": 0,
+      "alpha": 0,
+      "byExclusiveRoof": [
+        2003,
+        550
+      ],
+      "passes": [
+        {
+          "label": "original",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            319807,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidate",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            319885,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRestore",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            319807,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRestore",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            319885,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleDark",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            319807,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleWhite",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            319807,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleDark",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            319885,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleWhite",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            319885,
+            0,
+            0
+          ]
+        }
+      ],
+      "exactRestore": true,
+      "digest": {
+        "original": "81624c47b156f461f0eace7cb9d8e73556fdcefb2df386525b8eba092c964c3b",
+        "candidate": "6f4f621d6091ed5fde3e12c3d3fbce33384689cf001a7740d42c390e485bae92",
+        "originalRestore": "81624c47b156f461f0eace7cb9d8e73556fdcefb2df386525b8eba092c964c3b",
+        "candidateRestore": "6f4f621d6091ed5fde3e12c3d3fbce33384689cf001a7740d42c390e485bae92",
+        "originalRoleDark": "f1d9e155ee8a17f1314720ee90707db3459ff042c1cd39a9276b1717f0ffe55a",
+        "originalRoleWhite": "37551e49b49a9ef2740cfcfe8ff0a06cc7b8d4e56053ad6934ce7db0ece7f856",
+        "candidateRoleDark": "9c6eccf2724f550b266f7070e31205ca0738fdca0ebaa48c5d69481af7fc5eeb",
+        "candidateRoleWhite": "bfea41b312681ff003386df6b9d2f3ddf32cb0bc722a1367212032a35feb791f"
+      },
+      "cropBox": [
+        188,
+        410,
+        498,
+        580
+      ]
+    },
+    {
+      "phase": 1,
+      "d": 281.3286931397696,
+      "flight": [
+        94319.1693703984,
+        59.91133538095129,
+        5372.842370173037,
+        5.096361415823441,
+        0
+      ],
+      "changed": 4979,
+      "strong": 3996,
+      "outside": 0,
+      "alpha": 0,
+      "byExclusiveRoof": [
+        3292,
+        704
+      ],
+      "passes": [
+        {
+          "label": "original",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            321699,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidate",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            321777,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRestore",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            321699,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRestore",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            344,
+            321777,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleDark",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            321699,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleWhite",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            321699,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleDark",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            321777,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleWhite",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            344,
+            321777,
+            0,
+            0
+          ]
+        }
+      ],
+      "exactRestore": true,
+      "digest": {
+        "original": "9aee4f48480d21069d2f202e1ca11453e54d5344f110b199a2f96bdbb7470eda",
+        "candidate": "8e5f250945abc4e0c298e31d82af7070e94c07c4eebd8ea1ed3e4e2149f94196",
+        "originalRestore": "9aee4f48480d21069d2f202e1ca11453e54d5344f110b199a2f96bdbb7470eda",
+        "candidateRestore": "8e5f250945abc4e0c298e31d82af7070e94c07c4eebd8ea1ed3e4e2149f94196",
+        "originalRoleDark": "f41d46278e622390c4bb1663e018963f4e36e6b863c85c83e65a9c7e61b2effd",
+        "originalRoleWhite": "42f0369105369020cb0c305e1d6d08082628903c82e9ef0e492ef0dc0ad913ee",
+        "candidateRoleDark": "13b5f564783799fa62383d864475c4ab107fe8659778e33778fd909a81f8eb0e",
+        "candidateRoleWhite": "a2cf2e180f322ea9d8cf79f9176cad4b1fa6e39b99359bcc03b898bbc0ae5f81"
+      },
+      "cropBox": [
+        140,
+        425,
+        473,
+        642
+      ]
+    },
+    {
+      "phase": 2,
+      "d": 418.4537156423845,
+      "flight": [
+        94192.42955383378,
+        60.94599400770688,
+        5320.49458422392,
+        5.096361415823441,
+        0
+      ],
+      "changed": 0,
+      "strong": 0,
+      "outside": 0,
+      "alpha": 0,
+      "byExclusiveRoof": [
+        0,
+        0
+      ],
+      "passes": [
+        {
+          "label": "original",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            342,
+            320514,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidate",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            342,
+            320592,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRestore",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "249bbedb-48de-4d11-a54e-279fd47941ea",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            342,
+            320514,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRestore",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "5525932130cc7d2aa34bf5b58f83fb48b956fad3f60c6f617b39ca96e857875d",
+              "3f9e34cf6b5792411a4e7452dc984a1870239cf5e75ed07b775ef2bd25745c92"
+            ]
+          },
+          "info": [
+            342,
+            320592,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleDark",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            342,
+            320514,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "originalRoleWhite",
+          "reads": {
+            "count": 11988,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "dc8e7324-d8b7-443d-9308-f7c6d5874c9d",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            342,
+            320514,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleDark",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            342,
+            320592,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "candidateRoleWhite",
+          "reads": {
+            "count": 12222,
+            "mesh": "e5111cfc-2330-41f7-b452-5af80eaecc1b",
+            "geometry": "c8677a70-2762-4f08-8e15-f2a2c204cc3e",
+            "program": [
+              "e7632165007eeac46447926adcaab5f3d3817e606e565cc1735ff9ec3b346474",
+              "e065006f8c3b88a063b4cdc8a5652280ed59bb7be57e47e2063f5b03be85dcee"
+            ]
+          },
+          "info": [
+            342,
+            320592,
+            0,
+            0
+          ]
+        }
+      ],
+      "exactRestore": true,
+      "digest": {
+        "original": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "candidate": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "originalRestore": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "candidateRestore": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "originalRoleDark": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "originalRoleWhite": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "candidateRoleDark": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785",
+        "candidateRoleWhite": "06d0d2e9c20819d797defb532a878a04e6dca596db3fe813d5a36b77bccfa785"
+      }
+    }
+  ],
+  "begin": {
+    "site": "east-light",
+    "mode": "dispatch",
+    "ready": true
+  },
+  "gates": [
+    true,
+    true,
+    true
+  ],
+  "status": "PASS private roof-rim native scope",
+  "finalSource": {
+    "proof": {
+      "queued": 0,
+      "error": "",
+      "ready": true,
+      "certificationPending": false,
+      "observed": {
+        "wanted": true,
+        "failed": false,
+        "ready": true,
+        "loading": false,
+        "observedBytes": 9073,
+        "mesh": "In",
+        "routineObserver": "q1120"
+      }
+    },
+    "site": "east-light",
+    "mode": "flight"
+  }
+}

@@ -51,3 +51,5 @@ node --experimental-strip-types --test "$study/verify-rim.test.mjs"
 node --experimental-strip-types "$study/replacement.mjs" /tmp/east-point-rim.json
 cmp /tmp/east-point-rim.json "$study/seven-lane-proof.json"
 ```
+
+The [normal Chase comparisons](ordinary-chase/) now show both rebuilt roofs in a private flight test, including an unchanged out-of-view frame. The public simulator still uses its original roof geometry.
