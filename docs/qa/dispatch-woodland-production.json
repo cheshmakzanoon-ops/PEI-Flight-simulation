@@ -1,0 +1,46 @@
+{
+  "ready": {
+    "before": {
+      "gate": {
+        "state": "ready",
+        "adjusted": 0
+      },
+      "note": "Survey-based woodland sizes ready."
+    },
+    "start": {
+      "state": "active",
+      "adjusted": 9926
+    },
+    "beforePause": {
+      "state": "active",
+      "adjusted": 9926
+    },
+    "localBrowserClickUntilFlightObservedMsec": 5734.023836001143,
+    "compilerFlightMovedM": 98.85207592296544,
+    "paused": true,
+    "decodedRangeLength": 104976,
+    "decodedSHA": "b97ea5e14d74ddd8cedb900f41d717e592761c63e1131ed8a5895eaebf106171"
+  },
+  "early": {
+    "before": {
+      "gate": {
+        "state": "waiting",
+        "adjusted": 0
+      },
+      "note": "Checking woodland sizes. You can begin now with the original trees."
+    },
+    "start": {
+      "state": "other",
+      "adjusted": 0
+    },
+    "beforePause": {
+      "state": "other",
+      "adjusted": 0
+    },
+    "localBrowserClickUntilFlightObservedMsec": 4032.3074919997453,
+    "compilerFlightMovedM": 95.2590667825574,
+    "paused": true,
+    "decodedRangeLength": 104976,
+    "decodedSHA": "b97ea5e14d74ddd8cedb900f41d717e592761c63e1131ed8a5895eaebf106171"
+  }
+}

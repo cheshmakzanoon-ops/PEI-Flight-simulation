@@ -1,0 +1,1666 @@
+{
+  "ready": {
+    "before": {
+      "q": {
+        "state": "waiting",
+        "adjusted": 0
+      },
+      "site": "kings-meadow-low",
+      "message": "Checking woodland sizes. You can begin now with the original trees."
+    },
+    "end": {
+      "q": {
+        "state": "active",
+        "adjusted": 9926
+      },
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "captures": {
+      "1": {
+        "frame": 1,
+        "route": "kings-meadow-low",
+        "camera": [
+          4.4276340353985224e-16,
+          0.11434300308879043,
+          -0.9934413307511607,
+          0,
+          -3.699172590590679e-17,
+          0.9934413307511607,
+          0.11434300308879043,
+          -0.0,
+          1.0000000000000002,
+          -3.699172590590679e-17,
+          4.4276340353985224e-16,
+          0,
+          -9006.291667561296,
+          -8449.378457358736,
+          72253.27579664008,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72745.51776559287,
+          132.3052411082091,
+          9006.291667561261
+        ],
+        "position": [
+          72762.31776559287,
+          128.1052411082091,
+          9006.291667561261,
+          1.5707963267948966,
+          0.041921578878304645,
+          0,
+          52.00112435211943
+        ],
+        "n": 9926,
+        "instanceCount": 25554,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 5
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 6
+          },
+          "shade": {
+            "count": 45000,
+            "version": 5
+          }
+        },
+        "draws": 153,
+        "triangles": 379347,
+        "stockDraws": 153,
+        "stockTriangles": 379347,
+        "restoredSizes": true,
+        "custody": true,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "bd91d6472cb59ade06727b9dceb5208b75ab3f1483ce151b5a34557d1ac3e6b8",
+        "pixels": {
+          "frameSHA": "08b5e99e9050aa38e188daa6f523d8f4deb10fd81d8147403bd2057d830d896b",
+          "pixels": [
+            760,
+            1200
+          ],
+          "stockSHA": "7fbf28b3b7714cc15332ffd291d8295494a44510b9200e98af0e6c331350547c",
+          "roleMask": 69843,
+          "rgbChanged": 68653,
+          "rgbAbove2": 63208,
+          "rgbOutsideRole": 0,
+          "alphaChanged": 0,
+          "exactRollback": true,
+          "markerNeutralNew": true,
+          "markerNeutralOld": true
+        }
+      },
+      "180": {
+        "frame": 180,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540677127802544,
+          0.10447186941018351,
+          -0.994527687654251,
+          0,
+          1.5890338090490677e-17,
+          0.9945278403098259,
+          0.10447188544615062,
+          -0.0,
+          0.9999998465044732,
+          5.7884498618964616e-05,
+          -0.0005510357657767145,
+          0,
+          -8967.85376485996,
+          -7766.723874455156,
+          72651.62956002534,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          73060.4925147782,
+          134.1704002735131,
+          9008.33560758144
+        ],
+        "position": [
+          73084.13707299302,
+          130.01367099104797,
+          9008.380000894369,
+          1.5707963267948966,
+          0.04000149317161675,
+          0,
+          52.06529820673511
+        ],
+        "n": 9926,
+        "instanceCount": 26939,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 7
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 10
+          },
+          "shade": {
+            "count": 45000,
+            "version": 7
+          }
+        },
+        "draws": 153,
+        "triangles": 384887,
+        "stockDraws": 153,
+        "stockTriangles": 384887,
+        "restoredSizes": true,
+        "custody": true,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "ca34fca6642e562506f492c8ed32951d1b241fb8a4a5c2c71341b93acc82134d",
+        "pixels": {
+          "frameSHA": "c5e68426c80fb9ac001a17e79bc2e9dfea2794c4f8c4764b85758bcf5c4dc713",
+          "pixels": [
+            760,
+            1200
+          ],
+          "stockSHA": "ac67647621801474ec10ffc54692ea3c0168bb34a939351a55587eab4ee4a08c",
+          "roleMask": 472003,
+          "rgbChanged": 467414,
+          "rgbAbove2": 440676,
+          "rgbOutsideRole": 0,
+          "alphaChanged": 0,
+          "exactRollback": true,
+          "markerNeutralNew": true,
+          "markerNeutralOld": true
+        }
+      },
+      "240": {
+        "frame": 240,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540532826577737,
+          0.1044644426008448,
+          -0.9945284677961986,
+          0,
+          -1.4277587358918483e-17,
+          0.994528620443942,
+          0.10446445863483671,
+          -0.0,
+          0.999999846512468,
+          5.787887622772035e-05,
+          -0.0005510218468540819,
+          0,
+          -8968.495012957032,
+          -7778.13936144683,
+          72758.96852367667,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          73168.43545304684,
+          134.85595110542943,
+          9009.035607581365
+        ],
+        "position": [
+          73192.08208698372,
+          130.6996287807794,
+          9009.080000894293,
+          1.5707963267948966,
+          0.040000135457472975,
+          0,
+          52.08154201863905
+        ],
+        "n": 9926,
+        "instanceCount": 27970,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 8
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 13
+          },
+          "shade": {
+            "count": 45000,
+            "version": 8
+          }
+        },
+        "draws": 153,
+        "triangles": 389011,
+        "stockDraws": 153,
+        "stockTriangles": 389011,
+        "restoredSizes": true,
+        "custody": true,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "b6e0b6065aba0869c694606d1457cf16eaf23ec4bb10e030981f8e88457110f6",
+        "pixels": {
+          "frameSHA": "ae112dc0039181919fb04bf4c6a6d5d4febf5505b598594bc033f7a49daf1693",
+          "pixels": [
+            760,
+            1200
+          ],
+          "stockSHA": "fd3ab2f1aed6a7526c050f60b68f924db980ea1e853c8949adba5914f51f1f3f",
+          "roleMask": 469647,
+          "rgbChanged": 467506,
+          "rgbAbove2": 446159,
+          "rgbOutsideRole": 0,
+          "alphaChanged": 0,
+          "exactRollback": true,
+          "markerNeutralNew": true,
+          "markerNeutralOld": true
+        }
+      }
+    },
+    "routeRanges": [
+      [
+        "heights-02.pack",
+        405326,
+        420653
+      ],
+      [
+        "heights-02.pack",
+        398192,
+        405325
+      ],
+      [
+        "heights-03.pack",
+        148037,
+        180072
+      ],
+      [
+        "heights-03.pack",
+        121571,
+        148036
+      ],
+      [
+        "heights-02.pack",
+        249793,
+        250776
+      ],
+      [
+        "heights-02.pack",
+        420654,
+        430736
+      ],
+      [
+        "heights-03.pack",
+        180073,
+        192310
+      ],
+      [
+        "heights-02.pack",
+        381106,
+        398191
+      ],
+      [
+        "heights-04.pack",
+        212212,
+        248768
+      ],
+      [
+        "heights-03.pack",
+        427948,
+        478491
+      ],
+      [
+        "heights-03.pack",
+        478492,
+        530951
+      ],
+      [
+        "heights-05.pack",
+        171504,
+        204874
+      ],
+      [
+        "heights-05.pack",
+        204875,
+        242720
+      ],
+      [
+        "heights-02.pack",
+        439392,
+        444560
+      ],
+      [
+        "heights-02.pack",
+        444561,
+        455873
+      ],
+      [
+        "heights-03.pack",
+        376133,
+        427947
+      ],
+      [
+        "heights-05.pack",
+        127690,
+        171503
+      ],
+      [
+        "heights-06.pack",
+        272933,
+        278534
+      ],
+      [
+        "heights-04.pack",
+        0,
+        49780
+      ],
+      [
+        "heights-06.pack",
+        278535,
+        283884
+      ],
+      [
+        "heights-05.pack",
+        242721,
+        267533
+      ],
+      [
+        "heights-02.pack",
+        437237,
+        439391
+      ],
+      [
+        "heights-02.pack",
+        455874,
+        464051
+      ],
+      [
+        "heights-06.pack",
+        247139,
+        272932
+      ]
+    ]
+  },
+  "early": {
+    "before": {
+      "clickWhileInitialSelectionChangedSameTask": true
+    },
+    "end": {
+      "q": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "captures": {
+      "1": {
+        "frame": 1,
+        "route": "kings-meadow-low",
+        "camera": [
+          4.4276340353985224e-16,
+          0.11434300308879043,
+          -0.9934413307511607,
+          0,
+          -3.699172590590679e-17,
+          0.9934413307511607,
+          0.11434300308879043,
+          -0.0,
+          1.0000000000000002,
+          -3.699172590590679e-17,
+          4.4276340353985224e-16,
+          0,
+          -9006.291667561296,
+          -8449.378457358736,
+          72253.27579664008,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72745.51776559287,
+          132.3052411082091,
+          9006.291667561261
+        ],
+        "position": [
+          72762.31776559287,
+          128.1052411082091,
+          9006.291667561261,
+          1.5707963267948966,
+          0.041921578878304645,
+          0,
+          52.00112435211943
+        ],
+        "n": 0,
+        "instanceCount": 25301,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": false,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 2
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 2
+          },
+          "shade": {
+            "count": 45000,
+            "version": 2
+          }
+        },
+        "draws": 134,
+        "triangles": 194922,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "05b61dabd15dccc2050f2bfc84c7232fca7983787a05e57bb0a2849c34a041cb",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      },
+      "48": {
+        "frame": 48,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540779828887758,
+          0.10443745619538161,
+          -0.9945313020418344,
+          0,
+          -4.2012834183813287e-19,
+          0.9945314547036236,
+          0.10443747222666076,
+          -0.0,
+          0.9999998464987825,
+          5.7866503949378794e-05,
+          -0.0005510479823418244,
+          0,
+          -8966.444524656325,
+          -7737.931560735169,
+          72416.00420204902,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72823.144726652,
+          132.6719038777854,
+          9006.795608348179
+        ],
+        "position": [
+          72846.78394093184,
+          128.51458227800302,
+          9006.840000894535,
+          1.5707963267948966,
+          0.04029321392426069,
+          0,
+          52.02415808947746
+        ],
+        "n": 0,
+        "instanceCount": 25576,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 4
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 4
+          },
+          "shade": {
+            "count": 45000,
+            "version": 4
+          }
+        },
+        "draws": 153,
+        "triangles": 379435,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "c88baca68cd7b07741ee1a339e57a01b5a16c685d2cc192a8b91becacb6c30cc",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      }
+    },
+    "routeRanges": [
+      [
+        "heights-02.pack",
+        405326,
+        420653
+      ],
+      [
+        "heights-02.pack",
+        398192,
+        405325
+      ],
+      [
+        "heights-03.pack",
+        148037,
+        180072
+      ],
+      [
+        "heights-03.pack",
+        121571,
+        148036
+      ],
+      [
+        "heights-02.pack",
+        249793,
+        250776
+      ],
+      [
+        "heights-02.pack",
+        420654,
+        430736
+      ],
+      [
+        "heights-03.pack",
+        180073,
+        192310
+      ],
+      [
+        "heights-03.pack",
+        427948,
+        478491
+      ],
+      [
+        "heights-03.pack",
+        478492,
+        530951
+      ],
+      [
+        "heights-05.pack",
+        171504,
+        204874
+      ],
+      [
+        "heights-05.pack",
+        204875,
+        242720
+      ],
+      [
+        "heights-02.pack",
+        439392,
+        444560
+      ],
+      [
+        "heights-02.pack",
+        444561,
+        455873
+      ],
+      [
+        "heights-03.pack",
+        376133,
+        427947
+      ],
+      [
+        "heights-05.pack",
+        127690,
+        171503
+      ],
+      [
+        "heights-06.pack",
+        272933,
+        278534
+      ],
+      [
+        "heights-04.pack",
+        0,
+        49780
+      ],
+      [
+        "heights-06.pack",
+        278535,
+        283884
+      ],
+      [
+        "heights-05.pack",
+        242721,
+        267533
+      ],
+      [
+        "heights-02.pack",
+        437237,
+        439391
+      ],
+      [
+        "heights-02.pack",
+        455874,
+        464051
+      ],
+      [
+        "heights-06.pack",
+        247139,
+        272932
+      ]
+    ]
+  },
+  "corrupt": {
+    "before": {
+      "q": {
+        "state": "waiting",
+        "adjusted": 0
+      },
+      "site": "kings-meadow-low",
+      "message": "Checking woodland sizes. You can begin now with the original trees."
+    },
+    "end": {
+      "q": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "captures": {
+      "1": {
+        "frame": 1,
+        "route": "kings-meadow-low",
+        "camera": [
+          4.4276340353985224e-16,
+          0.11434300308879043,
+          -0.9934413307511607,
+          0,
+          -3.699172590590679e-17,
+          0.9934413307511607,
+          0.11434300308879043,
+          -0.0,
+          1.0000000000000002,
+          -3.699172590590679e-17,
+          4.4276340353985224e-16,
+          0,
+          -9006.291667561296,
+          -8449.378457358736,
+          72253.27579664008,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72745.51776559287,
+          132.3052411082091,
+          9006.291667561261
+        ],
+        "position": [
+          72762.31776559287,
+          128.1052411082091,
+          9006.291667561261,
+          1.5707963267948966,
+          0.041921578878304645,
+          0,
+          52.00112435211943
+        ],
+        "n": 0,
+        "instanceCount": 25442,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": false,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 3
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 3
+          },
+          "shade": {
+            "count": 45000,
+            "version": 3
+          }
+        },
+        "draws": 153,
+        "triangles": 378899,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "c9f36f6d1d8ec49c71ad77d91405988e828c2c33a28dec2d3223b1e5e2a48198",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      },
+      "48": {
+        "frame": 48,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540779828887758,
+          0.10443745619538161,
+          -0.9945313020418344,
+          0,
+          -4.2012834183813287e-19,
+          0.9945314547036236,
+          0.10443747222666076,
+          -0.0,
+          0.9999998464987825,
+          5.7866503949378794e-05,
+          -0.0005510479823418244,
+          0,
+          -8966.444524656325,
+          -7737.931560735169,
+          72416.00420204902,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72823.144726652,
+          132.6719038777854,
+          9006.795608348179
+        ],
+        "position": [
+          72846.78394093184,
+          128.51458227800302,
+          9006.840000894535,
+          1.5707963267948966,
+          0.04029321392426069,
+          0,
+          52.02415808947746
+        ],
+        "n": 0,
+        "instanceCount": 25548,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": false,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 4
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 4
+          },
+          "shade": {
+            "count": 45000,
+            "version": 4
+          }
+        },
+        "draws": 153,
+        "triangles": 379323,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "d07dcb077665f4ffda5f820f596ad1d7aefd0f76dd2511ebd507b9e396a04475",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      }
+    },
+    "routeRanges": [
+      [
+        "heights-02.pack",
+        405326,
+        420653
+      ],
+      [
+        "heights-02.pack",
+        398192,
+        405325
+      ],
+      [
+        "heights-03.pack",
+        148037,
+        180072
+      ],
+      [
+        "heights-03.pack",
+        121571,
+        148036
+      ],
+      [
+        "heights-02.pack",
+        249793,
+        250776
+      ],
+      [
+        "heights-02.pack",
+        420654,
+        430736
+      ],
+      [
+        "heights-03.pack",
+        180073,
+        192310
+      ],
+      [
+        "heights-02.pack",
+        381106,
+        398191
+      ],
+      [
+        "heights-03.pack",
+        427948,
+        478491
+      ],
+      [
+        "heights-03.pack",
+        478492,
+        530951
+      ],
+      [
+        "heights-05.pack",
+        171504,
+        204874
+      ],
+      [
+        "heights-05.pack",
+        204875,
+        242720
+      ],
+      [
+        "heights-02.pack",
+        439392,
+        444560
+      ],
+      [
+        "heights-02.pack",
+        444561,
+        455873
+      ],
+      [
+        "heights-03.pack",
+        376133,
+        427947
+      ],
+      [
+        "heights-05.pack",
+        127690,
+        171503
+      ],
+      [
+        "heights-06.pack",
+        272933,
+        278534
+      ],
+      [
+        "heights-04.pack",
+        0,
+        49780
+      ],
+      [
+        "heights-06.pack",
+        278535,
+        283884
+      ],
+      [
+        "heights-05.pack",
+        242721,
+        267533
+      ],
+      [
+        "heights-02.pack",
+        437237,
+        439391
+      ],
+      [
+        "heights-02.pack",
+        455874,
+        464051
+      ],
+      [
+        "heights-06.pack",
+        247139,
+        272932
+      ]
+    ]
+  },
+  "stock": {
+    "before": {
+      "q": null,
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "end": {
+      "q": null,
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "captures": {
+      "1": {
+        "frame": 1,
+        "route": "kings-meadow-low",
+        "camera": [
+          4.4276340353985224e-16,
+          0.11434300308879043,
+          -0.9934413307511607,
+          0,
+          -3.699172590590679e-17,
+          0.9934413307511607,
+          0.11434300308879043,
+          -0.0,
+          1.0000000000000002,
+          -3.699172590590679e-17,
+          4.4276340353985224e-16,
+          0,
+          -9006.291667561296,
+          -8449.378457358736,
+          72253.27579664008,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72745.51776559287,
+          132.3052411082091,
+          9006.291667561261
+        ],
+        "position": [
+          72762.31776559287,
+          128.1052411082091,
+          9006.291667561261,
+          1.5707963267948966,
+          0.041921578878304645,
+          0,
+          52.00112435211943
+        ],
+        "n": 0,
+        "instanceCount": 25442,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 3
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 3
+          },
+          "shade": {
+            "count": 45000,
+            "version": 3
+          }
+        },
+        "draws": 152,
+        "triangles": 368507,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "a600fc0db25e3d6db0e954df95b498d422a83c777ebc1a1290967fe574abc77f",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      },
+      "48": {
+        "frame": 48,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540779828887758,
+          0.10443745619538161,
+          -0.9945313020418344,
+          0,
+          -4.2012834183813287e-19,
+          0.9945314547036236,
+          0.10443747222666076,
+          -0.0,
+          0.9999998464987825,
+          5.7866503949378794e-05,
+          -0.0005510479823418244,
+          0,
+          -8966.444524656325,
+          -7737.931560735169,
+          72416.00420204902,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72823.144726652,
+          132.6719038777854,
+          9006.795608348179
+        ],
+        "position": [
+          72846.78394093184,
+          128.51458227800302,
+          9006.840000894535,
+          1.5707963267948966,
+          0.04029321392426069,
+          0,
+          52.02415808947746
+        ],
+        "n": 0,
+        "instanceCount": 25548,
+        "glSamples": 4,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2111,
+            "count": 45000,
+            "version": 4
+          },
+          "shape": {
+            "id": 2112,
+            "count": 45000,
+            "version": 4
+          },
+          "shade": {
+            "count": 45000,
+            "version": 4
+          }
+        },
+        "draws": 153,
+        "triangles": 379323,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "da3e634add86624f10c513496fa7847f963ccda98ad36a47bb22105f42a91312",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      }
+    },
+    "routeRanges": [
+      [
+        "heights-02.pack",
+        405326,
+        420653
+      ],
+      [
+        "heights-02.pack",
+        398192,
+        405325
+      ],
+      [
+        "heights-03.pack",
+        148037,
+        180072
+      ],
+      [
+        "heights-03.pack",
+        121571,
+        148036
+      ],
+      [
+        "heights-02.pack",
+        249793,
+        250776
+      ],
+      [
+        "heights-02.pack",
+        420654,
+        430736
+      ],
+      [
+        "heights-03.pack",
+        180073,
+        192310
+      ],
+      [
+        "heights-04.pack",
+        212212,
+        248768
+      ],
+      [
+        "heights-02.pack",
+        381106,
+        398191
+      ],
+      [
+        "heights-03.pack",
+        427948,
+        478491
+      ],
+      [
+        "heights-03.pack",
+        478492,
+        530951
+      ],
+      [
+        "heights-05.pack",
+        171504,
+        204874
+      ],
+      [
+        "heights-05.pack",
+        204875,
+        242720
+      ],
+      [
+        "heights-02.pack",
+        439392,
+        444560
+      ],
+      [
+        "heights-02.pack",
+        444561,
+        455873
+      ],
+      [
+        "heights-03.pack",
+        376133,
+        427947
+      ],
+      [
+        "heights-05.pack",
+        127690,
+        171503
+      ],
+      [
+        "heights-06.pack",
+        272933,
+        278534
+      ],
+      [
+        "heights-04.pack",
+        0,
+        49780
+      ],
+      [
+        "heights-06.pack",
+        278535,
+        283884
+      ],
+      [
+        "heights-05.pack",
+        242721,
+        267533
+      ],
+      [
+        "heights-02.pack",
+        437237,
+        439391
+      ],
+      [
+        "heights-02.pack",
+        455874,
+        464051
+      ],
+      [
+        "heights-06.pack",
+        247139,
+        272932
+      ]
+    ]
+  },
+  "no-msaa": {
+    "before": {
+      "q": null,
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "end": {
+      "q": null,
+      "site": "kings-meadow-low",
+      "message": ""
+    },
+    "captures": {
+      "1": {
+        "frame": 1,
+        "route": "kings-meadow-low",
+        "camera": [
+          4.4276340353985224e-16,
+          0.11434300308879043,
+          -0.9934413307511607,
+          0,
+          -3.699172590590679e-17,
+          0.9934413307511607,
+          0.11434300308879043,
+          -0.0,
+          1.0000000000000002,
+          -3.699172590590679e-17,
+          4.4276340353985224e-16,
+          0,
+          -9006.291667561296,
+          -8449.378457358736,
+          72253.27579664008,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72745.51776559287,
+          132.3052411082091,
+          9006.291667561261
+        ],
+        "position": [
+          72762.31776559287,
+          128.1052411082091,
+          9006.291667561261,
+          1.5707963267948966,
+          0.041921578878304645,
+          0,
+          52.00112435211943
+        ],
+        "n": 0,
+        "instanceCount": 25442,
+        "glSamples": 0,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2109,
+            "count": 45000,
+            "version": 3
+          },
+          "shape": {
+            "id": 2110,
+            "count": 45000,
+            "version": 3
+          },
+          "shade": {
+            "count": 45000,
+            "version": 3
+          }
+        },
+        "draws": 153,
+        "triangles": 378899,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "cd5bb26008b679987ae1cf6f4d69f1d5f85d10b5bbddbff414435c544aa2f4cd",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      },
+      "48": {
+        "frame": 48,
+        "route": "kings-meadow-low",
+        "camera": [
+          -0.0005540779828887758,
+          0.10443745619538161,
+          -0.9945313020418344,
+          0,
+          -4.2012834183813287e-19,
+          0.9945314547036236,
+          0.10443747222666076,
+          -0.0,
+          0.9999998464987825,
+          5.7866503949378794e-05,
+          -0.0005510479823418244,
+          0,
+          -8966.444524656325,
+          -7737.931560735169,
+          72416.00420204902,
+          1
+        ],
+        "projection": [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "eye": [
+          72823.144726652,
+          132.6719038777854,
+          9006.795608348179
+        ],
+        "position": [
+          72846.78394093184,
+          128.51458227800302,
+          9006.840000894535,
+          1.5707963267948966,
+          0.04029321392426069,
+          0,
+          52.02415808947746
+        ],
+        "n": 0,
+        "instanceCount": 25596,
+        "glSamples": 0,
+        "glAlpha": true,
+        "efiVerified": true,
+        "packetSpec": "Float32LE slot, stemX/Y/Z, oldH/W, signedH/W, variant, lighting; in actual submission order",
+        "ownerAttributeValues": {
+          "stem": {
+            "id": 2109,
+            "count": 45000,
+            "version": 5
+          },
+          "shape": {
+            "id": 2110,
+            "count": 45000,
+            "version": 5
+          },
+          "shade": {
+            "count": 45000,
+            "version": 5
+          }
+        },
+        "draws": 153,
+        "triangles": 379515,
+        "error": 0,
+        "exactCPUSubmittedSlotSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pixels": {
+          "frameSHA": "a6d16d6d190f0c218e80cf799dae1d33447c788090deedd253001e67d24b1a5a",
+          "pixels": [
+            760,
+            1200
+          ]
+        }
+      }
+    },
+    "routeRanges": [
+      [
+        "heights-02.pack",
+        405326,
+        420653
+      ],
+      [
+        "heights-02.pack",
+        398192,
+        405325
+      ],
+      [
+        "heights-03.pack",
+        148037,
+        180072
+      ],
+      [
+        "heights-03.pack",
+        121571,
+        148036
+      ],
+      [
+        "heights-02.pack",
+        249793,
+        250776
+      ],
+      [
+        "heights-02.pack",
+        420654,
+        430736
+      ],
+      [
+        "heights-03.pack",
+        180073,
+        192310
+      ],
+      [
+        "heights-03.pack",
+        427948,
+        478491
+      ],
+      [
+        "heights-03.pack",
+        478492,
+        530951
+      ],
+      [
+        "heights-05.pack",
+        171504,
+        204874
+      ],
+      [
+        "heights-05.pack",
+        204875,
+        242720
+      ],
+      [
+        "heights-02.pack",
+        439392,
+        444560
+      ],
+      [
+        "heights-02.pack",
+        444561,
+        455873
+      ],
+      [
+        "heights-03.pack",
+        376133,
+        427947
+      ],
+      [
+        "heights-05.pack",
+        127690,
+        171503
+      ],
+      [
+        "heights-06.pack",
+        272933,
+        278534
+      ],
+      [
+        "heights-04.pack",
+        0,
+        49780
+      ],
+      [
+        "heights-06.pack",
+        278535,
+        283884
+      ],
+      [
+        "heights-05.pack",
+        242721,
+        267533
+      ],
+      [
+        "heights-02.pack",
+        437237,
+        439391
+      ],
+      [
+        "heights-02.pack",
+        455874,
+        464051
+      ],
+      [
+        "heights-06.pack",
+        247139,
+        272932
+      ]
+    ]
+  }
+}

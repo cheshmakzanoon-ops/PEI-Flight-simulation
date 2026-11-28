@@ -46,6 +46,7 @@ export class ForestStream {
  private packs:PackedBytes[]=[];
  private readonly tiles=new Map<string,Tile>();
  private readonly loaded=new Map<string,Uint8Array>();
+ private readonly verifiedHeight=new WeakSet<Uint8Array>();
  private readonly inflight=new Map<string,Promise<void>>();
  private readonly failed=new Set<string>();
  private missing=false;
@@ -78,6 +79,24 @@ export class ForestStream {
  /** Existing validated drawable height cohort, no new catalogue reads. */
  hasHeightPlan(id:string,sha:string){
   return !this.crown&&!!globalThis.crypto?.subtle&&this.loaded.has(id)&&this.tiles.get(id)?.sha256===sha;
+ }
+ /** Bounded read-only view of already verified immutable decoded bytes.
+  * Does not reschedule the stream or look up any neighboring tile. */
+ captureHeightPlan(id:string,sha256:string){
+  const t=this.tiles.get(id),data=this.loaded.get(id);
+  if(this.crown||!t||t.sha256!==sha256||!data||!this.verifiedHeight.has(data))return;
+  const contains=(x:number,z:number)=>Number.isFinite(x)&&Number.isFinite(z)&&
+   Math.floor((x-nw.x)/dx)===t.i&&Math.floor((z-nw.z)/dz)===t.j;
+  const only={i:t.i,j:t.j,data};
+  return Object.freeze({id,sha256,contains,height:(x:number,z:number,vary:number)=>{
+   if(!contains(x,z)||!Number.isFinite(vary)||vary<0||vary>1)return 0;
+   const h=this.sample(x,z,only);
+   return h>0?clamp(h*.5*(.84+.26*vary),2.6,30):0;
+  }});
+ }
+ heightPlanUnavailable(id:string,sha256:string){
+  return this.crown||this.missing||this.failed.has(id)||
+   this.packs.length>0&&this.tiles.get(id)?.sha256!==sha256;
  }
  get state(){
   const active=Math.floor((this.x-nw.x)/dx)+'-'+Math.floor((this.z-nw.z)/dz);
@@ -122,8 +141,13 @@ export class ForestStream {
    const packed=await this.packs[t.pack].read(t.offset,t.bytes);
    const raw=await (this.crown?decodeCrownChunk(packed):unpackGzip(packed));
    if(raw.byteLength!==rasterBytes)throw Error('Bad woodland tile length');
-   if(globalThis.crypto?.subtle&&await digest(raw)!==t.sha256)throw Error('Bad woodland tile hash');
-   if(this.demand(t)<(this.crown?850:prefetchRadius))this.loaded.set(t.id,new Uint8Array(raw));
+   const verified=!!globalThis.crypto?.subtle;
+   if(verified&&await digest(raw)!==t.sha256)throw Error('Bad woodland tile hash');
+   if(this.demand(t)<(this.crown?850:prefetchRadius)){
+    const bytes=new Uint8Array(raw);
+    if(verified&&!this.crown)this.verifiedHeight.add(bytes);
+    this.loaded.set(t.id,bytes);
+   }
   }catch{this.failed.add(t.id);}
  }
  /** Keep undecoded, outside and unsupported parts on the original visual path. */
@@ -133,10 +157,10 @@ export class ForestStream {
   return h>0?clamp(h*.5*(.84+.26*variation),2.6,30):fallback;
  }
  ratio(x:number,z:number){return this.crown?this.sample(x,z)/128:0;}
- private sample(x:number,z:number){
+ private sample(x:number,z:number,only?:{i:number;j:number;data:Uint8Array}){
   const u=(x-nw.x)/dx,v=(z-nw.z)/dz;
   if(u<0||v<0||u>=cols||v>=rows)return 0;
-  const i=Math.floor(u),j=Math.floor(v),a=this.loaded.get(i+'-'+j);
+  const i=Math.floor(u),j=Math.floor(v),a=only?(i===only.i&&j===only.j?only.data:undefined):this.loaded.get(i+'-'+j);
   if(!a)return 0;
   const wx=border-.5+res*(u-i),wz=border-.5+res*(v-j);
   const bx=Math.floor(wx),bz=Math.floor(wz),f=wx-bx,g=wz-bz;

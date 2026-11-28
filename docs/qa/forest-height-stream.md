@@ -1,5 +1,7 @@
 # Province-wide woodland height streaming
 
+See [mapped woodland heights from the Kings County departure menu](dispatch-woodland.md) for the separately verified manual launch. Other departures keep the existing streaming behavior.
+
 This expands the [three-county pilot](forest-height-pilot.md) to every
 built woodland tile supported by the published provincial inventory. It
 uses estimated large-dominant/co-dominant stand heights to size the

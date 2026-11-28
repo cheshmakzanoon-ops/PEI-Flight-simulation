@@ -18,7 +18,18 @@ import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
 import {TREE_PITCH as pitch,TREE_TILE_SIDE as side,treeRandom as rand} from '../sim/tree-layout.ts';
 import {fillRoofTile} from '../sim/tree-clearance.ts';
+import {DISPATCH_STAND,prepareStandReplacement,type SignedHeightView,type StandReplacement} from './dispatch-stand-height.ts';
 const span=pitch*side,radius=1530,maxTrees=45000;
+type StandPrepared=Readonly<{
+ x:number;z:number;
+ blocks:readonly Readonly<{key:string;patch:StandReplacement}>[];
+ slots:readonly StandSlot[];
+}>;
+type StandSlot=Readonly<{
+ slot:number;x:number;y:number;z:number;oldH:number;oldW:number;
+ height:number;width:number;variant:number;light:number;
+}>;
+const standKey=(x:number,z:number)=>x+':'+z;
 const pars=`
  attribute vec3 stem;attribute vec4 shape;varying vec2 vUV;varying vec3 param;
  #include <common>
@@ -159,6 +170,86 @@ export class Vegetation {
  private hedgeRev=-1;private hedgeApply=0;private lastHedges=0;
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
+ private standOverride?:WeakMap<Float32Array,Float32Array>;
+ // slot, exact X/Z, old H/W, rendered H/W. Reused on natural roster rebuilds.
+ private standLiveSlots:number[]=[];
+ private standScratchSlots:number[]=[];
+ get dispatchStandAdjusted(){return this.standLiveSlots.length/7;}
+ private dispatchStandCustody(){
+  return !this.volume&&!this.churchShadows&&!this.groundedShadow&&!this.rollingSlots&&!this.openLane&&
+   !this.crownByVegetationTile&&this.crown.visible&&this.shade.visible&&
+   this.crown.geometry===this.geom&&this.shade.geometry===this.geom&&this.geom.getAttribute('stem')===this.stems&&
+   this.geom.getAttribute('shape')===this.shapes&&this.geom.getAttribute('hedgeGround')===this.hedgeGround;
+ }
+ /** Only prepares replacement H/W lookups. The active shader, VBO, cache
+  * and every other stock attribute are untouched by asynchronous readiness. */
+ prepareDispatchStand(source:SignedHeightView,x:number,z:number):StandPrepared|false|undefined{
+  if(this.lastX!==x||this.lastZ!==z)return;
+  if(!this.dispatchStandCustody()||source.id!==DISPATCH_STAND.owner||source.sha256!==DISPATCH_STAND.sha256)return false;
+  const blocks:{key:string;patch:StandReplacement}[]=[],changed=new Map<string,readonly number[]>();
+  for(const [key,stock] of this.cache){
+   const patch=prepareStandReplacement(source,stock,x,z,radius);
+   if(patch===false)return false;
+   if(!patch)continue;
+   blocks.push(Object.freeze({key,patch}));
+   const next=patch.alternate;
+   for(let k=0;k<stock.length;k+=8){
+    if(stock[k+3]===next[k+3]&&stock[k+4]===next[k+4])continue;
+    const id=standKey(stock[k],stock[k+2]);
+    if(changed.has(id))return false;
+    changed.set(id,[stock[k+3],stock[k+4],next[k+3],next[k+4],stock[k+5],stock[k+6]]);
+   }
+  }
+  if(!changed.size)return false;
+  const slots:StandSlot[]=[];
+  for(let slot=0;slot<this.hedgeStart;slot++){
+   const px=this.stems.getX(slot),py=this.stems.getY(slot),pz=this.stems.getZ(slot);
+   if(!source.contains(px,pz))continue;
+   const id=standKey(px,pz),row=changed.get(id);
+   if(!row)continue;
+   changed.delete(id);
+   const [oldH,oldW,height,width,variant,light]=row;
+   if(this.shapes.getX(slot)!==oldH||this.shapes.getY(slot)!==oldW||
+     this.shapes.getZ(slot)!==variant||this.shapes.getW(slot)!==light)return false;
+   slots.push(Object.freeze({slot,x:px,y:py,z:pz,oldH,oldW,height,width,variant,light}));
+  }
+  // The fenced original roster is never truncated in this intake. No
+  // late replacement can enter solely because a slot was filtered out.
+  if(!slots.length||changed.size)return false;
+  return Object.freeze({x,z,blocks:Object.freeze(blocks),slots:Object.freeze(slots)});
+ }
+ takeDispatchStand(p:StandPrepared,x:number,z:number){
+  if(this.standOverride||!this.dispatchStandCustody()||x!==p.x||z!==p.z||this.lastX!==x||this.lastZ!==z||
+     !p.slots.length||p.blocks.some(({key,patch})=>this.cache.get(key)!==patch.stock))return false;
+  for(const a of p.slots)if(a.slot>=this.hedgeStart||this.stems.getX(a.slot)!==a.x||this.stems.getY(a.slot)!==a.y||
+    this.stems.getZ(a.slot)!==a.z||this.shapes.getX(a.slot)!==a.oldH||this.shapes.getY(a.slot)!==a.oldW||
+    this.shapes.getZ(a.slot)!==a.variant||this.shapes.getW(a.slot)!==a.light)return false;
+  this.standOverride=new WeakMap(p.blocks.map(({patch})=>[patch.stock,patch.alternate]));
+  for(const a of p.slots){
+   this.shapes.setXY(a.slot,a.height,a.width);
+   this.standLiveSlots.push(a.slot,a.x,a.z,a.oldH,a.oldW,a.height,a.width);
+  }
+  this.markStandUpdate(p.slots[0].slot,p.slots[p.slots.length-1].slot);
+  return true;
+ }
+ private markStandUpdate(first:number,last:number){
+  if(first<=last){
+   this.shapes.addUpdateRange(first*4,(last-first)*4+2);this.shapes.needsUpdate=true;
+   this.forestRevision++;
+  }
+ }
+ clearDispatchStand(){
+  if(!this.standOverride)return;
+  this.standOverride=undefined;
+  const a=this.standLiveSlots;let first=Infinity,last=-Infinity;
+  for(let i=0;i<a.length;i+=7){
+   const slot=a[i];
+   if(slot>=this.hedgeStart||this.stems.getX(slot)!==a[i+1]||this.stems.getZ(slot)!==a[i+2]||
+      this.shapes.getX(slot)!==a[i+5]||this.shapes.getY(slot)!==a[i+6])continue;
+   this.shapes.setXY(slot,a[i+3],a[i+4]);first=Math.min(first,slot);last=Math.max(last,slot);
+  }
+  a.length=0;this.markStandUpdate(first,last);
+ }
  // Optional exact-root leases come only from a mounted, source-qualified
  // world object. No terrain/canopy source, hedge or old cached tile is edited.
  private windLeases?:Map<string,readonly Readonly<{x:number;z:number}>[]>;
@@ -183,7 +274,7 @@ export class Vegetation {
  get openRoadLaneState(){return this.openLane?{eligible:this.openLane.size,removed:this.openLaneRootsRemoved}:null;}
  installOpenRoadLane(lane:OpenRoadLane){
   if(this.openLane||this.rollingSlots||this.volume||this.churchShadows||this.crownUsedAtSlot)return false;
-  this.openLane=lane;
+  this.clearDispatchStand();this.openLane=lane;
   if(!lane.owners.some(key=>this.cache.has(key)))return true;
   // Late authority reaches already-visible rosters. Compact a small set
   // of exact slots in all canopy/shade attributes together; no new cache,
@@ -337,6 +428,9 @@ export class Vegetation {
   const move=Math.hypot(x-this.lastX,z-this.lastZ)>=135,now=performance.now(),hedgeRev=this.hedges?.revision??0;
   if(!move&&!this.windRosterDirty&&(hedgeRev===this.hedgeRev||now-this.hedgeApply<350))return;
   this.windRosterDirty=false;
+  const retiringStand=this.standLiveSlots;
+  this.standLiveSlots=this.standScratchSlots;this.standLiveSlots.length=0;
+  this.standScratchSlots=retiringStand;
   if(move){this.forestStream?.update(x,z);this.hedges?.move(x,z);}
   this.hedgeRev=hedgeRev;this.hedgeApply=now;
   this.lastX=x;this.lastZ=z;let count=0,removed=0,limit=maxTrees;const wanted=new Set<string>();
@@ -345,7 +439,7 @@ export class Vegetation {
    const key=tx+':'+tz,rx=tx*span-x,rz=tz*span-z;
    if(Math.hypot(rx+span*.5,rz+span*.5)>radius+span*.72)continue;
    wanted.add(key);let a=this.cache.get(key);if(!a){a=this.tile(tx,tz);this.cache.set(key,a);}
-   const first=capture?.size??0,heightProof=this.crownByVegetationTile?.get(a);
+   const first=capture?.size??0,heightProof=this.crownByVegetationTile?.get(a),stand=this.standOverride?.get(a);
    const lane=this.openLane?.forOwner(key),wind=this.windTiles?.get(key);
    for(let i=0;i<a.length&&count<limit;i+=8){
     const d=(a[i]-x)**2+(a[i+2]-z)**2;
@@ -355,7 +449,12 @@ export class Vegetation {
     // shadow. The old quota is reserved so other trees/hedges don't leak in.
     if(wind&&wind.some(r=>r.x===a[i]&&r.z===a[i+2])){limit--;continue;}
     const native=this.plantedY?.(a[i],a[i+2]);
-    this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);this.shapes.setXYZW(count,a[i+3],a[i+4],a[i+5],a[i+6]);
+    this.stems.setXYZ(count,a[i],native===undefined?a[i+1]:native-.16,a[i+2]);
+    let h=a[i+3],w=a[i+4];
+    if(stand&&(stand[i+3]!==h||stand[i+4]!==w)){
+     this.standLiveSlots.push(count,a[i],a[i+2],h,w,stand[i+3],stand[i+4]);h=stand[i+3];w=stand[i+4];
+    }
+    this.shapes.setXYZW(count,h,w,a[i+5],a[i+6]);
     if(this.crownUsedAtSlot)this.crownUsedAtSlot[count]=heightProof?.[i/8]??0;
     capture?.append(count,d,a[i],a[i+2]);count++;
    }
@@ -398,6 +497,12 @@ export class Vegetation {
   }
   this.hedgeStart=originalCount;
   this.lastHedges=count-originalCount;
+  // Restore old H/W even in dormant slots this natural rebuild retires.
+  // The submitted prefix was already filled by its normal roster rules.
+  if(retiringStand.length&&retiringStand[retiringStand.length-7]>=count)for(let i=0;i<retiringStand.length;i+=7){
+   const slot=retiringStand[i];if(slot>=count)this.shapes.setXY(slot,retiringStand[i+3],retiringStand[i+4]);
+  }
+  retiringStand.length=0;
   for(const key of this.cache.keys())if(!wanted.has(key))this.cache.delete(key);
   this.forestRevision++;
   this.geom.instanceCount=count;this.stems.clearUpdateRanges();this.stems.addUpdateRange(0,count*3);this.stems.needsUpdate=true;
