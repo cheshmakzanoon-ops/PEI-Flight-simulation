@@ -1,0 +1,64 @@
+{
+  "nativeMovingReceiptSHA256": "4da72905dbbc15dcd1f872a2f62f7cb3be0b4001cb0115ee194d4a09260a47ee",
+  "independentScope": "Native raw RGB sample classifications; no new geometry, no independent aircraft physics estimate.",
+  "productReachedCockpitPause": true,
+  "stages": [
+    {
+      "apertureMetres": 13,
+      "actualChaseAlongMetres": 16.742439146523427,
+      "actualCrossTrackMetres": 0.20987998923177553,
+      "nativeChangedRGB": 6815,
+      "strongRGB": 4478,
+      "exteriorRGB": 0,
+      "alpha": 0,
+      "mask": 19650,
+      "pictureSHA256": {
+        "stock": "6903b2efb6022a902861d396161d5c2d72c1573a1bb7318e0a843d3919e56e39",
+        "joined": "b48c0ef67bb4c1c666b406b6a47712b3fb7df0ca9783826ec3aca6e10ab823c6",
+        "mask-a": "e2244ddb7629de76099fd6691c0009a422ea5e520f03529b1661f6a4e0bd3301",
+        "mask-b": "ba0e84b2ca246699681da2e5198b0a62d70f7708a5cb993fed8c9584251c1149",
+        "restore": "b48c0ef67bb4c1c666b406b6a47712b3fb7df0ca9783826ec3aca6e10ab823c6"
+      },
+      "identicalCounters": true,
+      "exactRollback": true
+    },
+    {
+      "apertureMetres": 41,
+      "actualChaseAlongMetres": 41.85950109179813,
+      "actualCrossTrackMetres": 0.5246999730928676,
+      "nativeChangedRGB": 10561,
+      "strongRGB": 7038,
+      "exteriorRGB": 0,
+      "alpha": 0,
+      "mask": 30779,
+      "pictureSHA256": {
+        "stock": "e53291e7fecc0806a914aa9a064ef878f41528e1281810b0ec3294a9587c52a3",
+        "joined": "b3f4e5768ec35ffca8b816e2141b1ebd42a668a482777e869dbb95fc623417be",
+        "mask-a": "0f3530dafeebe2474cfd7054a366e4181ec5aaa8c5004d324583ce8c5a889968",
+        "mask-b": "b61a07bedf7b6a9790e90a21daa94104a7968bf644ef17731f9eb78a748a62f9",
+        "restore": "b3f4e5768ec35ffca8b816e2141b1ebd42a668a482777e869dbb95fc623417be"
+      },
+      "identicalCounters": true,
+      "exactRollback": true
+    },
+    {
+      "apertureMetres": 341,
+      "actualChaseAlongMetres": 343.4195227938837,
+      "actualCrossTrackMetres": 4.302539779349679,
+      "nativeChangedRGB": 0,
+      "strongRGB": 0,
+      "exteriorRGB": 0,
+      "alpha": 0,
+      "mask": 0,
+      "pictureSHA256": {
+        "stock": "89ae1e79d9f0a0758e64922e4ad2cd95f07bac082ed2d5ae242b70cd0c4c14d7",
+        "joined": "89ae1e79d9f0a0758e64922e4ad2cd95f07bac082ed2d5ae242b70cd0c4c14d7",
+        "mask-a": "89ae1e79d9f0a0758e64922e4ad2cd95f07bac082ed2d5ae242b70cd0c4c14d7",
+        "mask-b": "89ae1e79d9f0a0758e64922e4ad2cd95f07bac082ed2d5ae242b70cd0c4c14d7",
+        "restore": "89ae1e79d9f0a0758e64922e4ad2cd95f07bac082ed2d5ae242b70cd0c4c14d7"
+      },
+      "identicalCounters": true,
+      "exactRollback": true
+    }
+  ]
+}

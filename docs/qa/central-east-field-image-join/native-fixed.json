@@ -1,0 +1,221 @@
+{
+  "sourceReceiptSha256": "8c721fb8cf55d6898c43192c6a1fda7271d7d6f60a9720212b4d9c6c7d1e3067",
+  "width": 840,
+  "height": 540,
+  "fixedMeasuredScope": "Matched native role comparisons. No grade, source-image or terrain modification.",
+  "captures": {
+    "central-east-field-colour-16-14e": {
+      "realSamples": 4,
+      "scope": {
+        "changed": 42889,
+        "over2": 30714,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 114117
+      },
+      "owners": [
+        {
+          "id": "16-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "17-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "stockSkyPixels": 0,
+      "contrast": {
+        "samples": 67,
+        "medianOld": 26.851436614990234,
+        "medianArt": 2.2360713481903076,
+        "oldP90": 59.14008636474609,
+        "artP90": 4.68159589767456
+      },
+      "sameNativeFrameRestore": true,
+      "originalRoleCounts": {
+        "draws": 26,
+        "tris": 279467
+      },
+      "rgbaSHA256": {
+        "old": "8f051c8807a9a0f29418d5c92551c82749cc05df881bf6c9ddfb46ccd5fd479c",
+        "art": "cf6068e7e138562a5b2183851ff8f7f2c004d4d352697a5aa31123f86f448834",
+        "idA": "d4bb249f321455d02bc49853b106c8434a00249389f3a315e997074bacb360a7",
+        "idB": "57bd7f519e06c9201296aec99f41e2a48f2e4cbd325ec464bb4715f8a51072b3"
+      }
+    },
+    "central-east-field-colour-16-14e-reciprocal": {
+      "realSamples": 4,
+      "scope": {
+        "changed": 41704,
+        "over2": 33247,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 109762
+      },
+      "owners": [
+        {
+          "id": "16-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "17-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "stockSkyPixels": 0,
+      "contrast": {
+        "samples": 69,
+        "medianOld": 29.757810592651367,
+        "medianArt": 2.5394928455352783,
+        "oldP90": 58.55106658935548,
+        "artP90": 4.565789604187012
+      },
+      "sameNativeFrameRestore": true,
+      "originalRoleCounts": {
+        "draws": 23,
+        "tris": 290557
+      },
+      "rgbaSHA256": {
+        "old": "0d26473893aee0d1be90717cdef2f333f11a8a0fe60af9ea1bc335c1d26d75fa",
+        "art": "8a8dc5acf503079d67bb4260618428e9538969588a1ed80626fb7a102e146492",
+        "idA": "a483644c3e8d4bfcc041ecee0821e1030fc28150e615abfe728a1e2efdd05c12",
+        "idB": "3c5d3808d51f33c2ce09af89bbdfa45ae01b08c4becd59f265cb83339c37f46b"
+      }
+    },
+    "central-east-field-colour-16-14e-high": {
+      "realSamples": "inherited identical witness setup; no separate sky mask captured",
+      "scope": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "owners": [
+        {
+          "id": "16-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "17-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "stockSkyPixels": null,
+      "contrast": null,
+      "sameNativeFrameRestore": true,
+      "originalRoleCounts": {
+        "draws": 18,
+        "tris": 262281
+      },
+      "rgbaSHA256": {
+        "old": "a30ce979020914639821381dd5aec0d9330f289af38e0dacfa67dd6526bcd012",
+        "art": "a30ce979020914639821381dd5aec0d9330f289af38e0dacfa67dd6526bcd012",
+        "idA": "a30ce979020914639821381dd5aec0d9330f289af38e0dacfa67dd6526bcd012",
+        "idB": "a30ce979020914639821381dd5aec0d9330f289af38e0dacfa67dd6526bcd012"
+      }
+    },
+    "central-east-field-colour-16-14e-outside": {
+      "realSamples": "inherited identical witness setup; no separate sky mask captured",
+      "scope": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "owners": [
+        {
+          "id": "16-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "17-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "stockSkyPixels": null,
+      "contrast": null,
+      "sameNativeFrameRestore": true,
+      "originalRoleCounts": {
+        "draws": 15,
+        "tris": 253807
+      },
+      "rgbaSHA256": {
+        "old": "97500d002ded3146bb57feb31c24a42b2b328357f1583084cf3900c25bac58b5",
+        "art": "97500d002ded3146bb57feb31c24a42b2b328357f1583084cf3900c25bac58b5",
+        "idA": "97500d002ded3146bb57feb31c24a42b2b328357f1583084cf3900c25bac58b5",
+        "idB": "97500d002ded3146bb57feb31c24a42b2b328357f1583084cf3900c25bac58b5"
+      }
+    },
+    "edge-17-14s-existing": {
+      "realSamples": 4,
+      "scope": {
+        "changed": 23525,
+        "over2": 15024,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 64520
+      },
+      "owners": [
+        {
+          "id": "17-14",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        },
+        {
+          "id": "17-15",
+          "loaded": true,
+          "status": "ready",
+          "lod": 112,
+          "n": 1
+        }
+      ],
+      "stockSkyPixels": 0,
+      "contrast": {
+        "samples": 74,
+        "medianOld": 15.367812156677246,
+        "medianArt": 1.6739901304244995,
+        "oldP90": 25.4030424118042,
+        "artP90": 2.9078824281692506
+      },
+      "sameNativeFrameRestore": true,
+      "originalRoleCounts": {
+        "draws": 54,
+        "tris": 409648
+      },
+      "rgbaSHA256": {
+        "old": "f9faaff4da8dbeea67603c83296fc90fc7b7fcb6db066536fbea2dc65123e941",
+        "art": "d0cf55b30b16643aad9b3c27cb1f2cda474132377af68f23c01eef3aa3e9950b",
+        "idA": "a6e5e739908173538636d5d1fb8ed9b8c340b38be321aadd09a52298db588ad9",
+        "idB": "6f8b50404b09a7d14d96ce1880e1c9aa6e5b0df8b460148e3a6f09a2c3847bff"
+      }
+    }
+  }
+}

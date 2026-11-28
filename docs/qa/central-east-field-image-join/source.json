@@ -1,0 +1,44 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "central-east-field-colour-16-14e",
+      "axis": "x",
+      "owners": [
+        "16-14",
+        "17-14"
+      ],
+      "window": [
+        187,
+        189,
+        205,
+        207
+      ],
+      "donorWireSHA256": [
+        "1fabf23f82606871ae96141b9fcff69cdf14311c54b23055314e52733f8870b3",
+        "61c0d9f91d59e88ba1afff69414fcdecde025acfbedf48e3e47784bd1e4d067a"
+      ],
+      "exactSourceRGBSHA256": "cc10846ac65039967df761cfe3ac1f5bf36966ebcdfad1f5d77e198322fce7ca",
+      "coverBox": [
+        2175,
+        1766,
+        2,
+        6
+      ],
+      "classes": [
+        30,
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 37.835,
+      "medianInnerNeighbourStep": 14.747,
+      "filteredDonorAlongSpan": [
+        186,
+        208
+      ],
+      "filteredDonorRGBSHA256": "6a3988183324cf34c48f61cda2d6e74a0b48f9bf7f4f13bec934582cde45d2cc"
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}

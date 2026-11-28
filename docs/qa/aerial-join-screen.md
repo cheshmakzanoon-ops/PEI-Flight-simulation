@@ -29,6 +29,7 @@ window [already corrected in Standard](inland-aerial-joins.md).
 - [A further central field join verified from normal moving Chase](central-field-image-join.md)
 - [A second central strip verified on a longer normal Chase approach](second-central-field-image-join.md)
 - [An east-central field colour join beside an independently repaired terrain rim](east-central-field-image-join.md)
+- [A separate central-eastern field join with a protected shared source tile](central-east-field-image-join.md)
 - [Committed source attribution](../WORLD.md)
 
 To reproduce with Python, NumPy and Pillow from a clean checkout:

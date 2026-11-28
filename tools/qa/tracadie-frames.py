@@ -81,8 +81,12 @@ ADDITIONAL=[
  ('edge-13-12e',13,12,'x',602,563,None),
  ('east-field-colour-20-16s',20,16,'z',394,436,None),
 ]
+POST_Q414=[
+ ('central-east-field-colour-16-14e',16,14,'x',197,242,None),
+ ('edge-17-14s-existing',17,14,'z',492,430,None),
+]
 EXACT_EDGE_VIEWS=set()
-for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
+for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL+POST_Q414:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
  for suffix,reverse,high,held in [
    ('',False,False,None),('-reciprocal',True,False,None),('-high',False,True,None),
@@ -102,11 +106,19 @@ for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTR
    dist=.15 if held is not None else (240 if high else (65 if reverse else 75)),
    agl=17 if held is not None else (550 if high else (38 if reverse else 44)))
   INLAND.append(name+suffix)
-  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
+  if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL+POST_Q414:
    EXACT_EDGE_VIEWS.add(name+suffix)
 STEEP='east-field-colour-20-16s-reciprocal-steep'
 P[STEEP]=dict(P['east-field-colour-20-16s-reciprocal'],dist=56,agl=52)
 INLAND.append(STEEP);EXACT_EDGE_VIEWS.add(STEEP)
+CENTRAL_EAST='central-east-field-colour-16-14e'
+PRIOR_SHARED='edge-17-14s-existing'
+for label in [CENTRAL_EAST,CENTRAL_EAST+'-reciprocal']:
+ P[label].update(dist=54,agl=54)
+# Only the prospectively qualified optical controls enter default capture.
+# The older orthogonal role is explicitly used as a cross-build comparator.
+INLAND=[v for v in INLAND if not v.startswith(PRIOR_SHARED) and v!=CENTRAL_EAST+'-flipped']
+
 # Preserve the earlier separate sky-observation refusal for explicit replay,
 # but don't add its known unrelated horizon satellite to a default run.
 RANK16_OLD_RECIPROCAL='east-field-colour-20-16s-reciprocal'
@@ -248,9 +260,11 @@ def capture(a,browser,url):
  declared_inland={p['first']+' / '+p['second'] for p in plans}
  selections=a.views.split(',') if a.views else GROUPS[a.cohort]
  for site in selections:
-  if site not in GROUPS[a.cohort] and not (a.views and a.cohort=='inland' and site==RANK16_OLD_RECIPROCAL):
+  if site not in GROUPS[a.cohort] and not (a.views and a.cohort=='inland' and site in (RANK16_OLD_RECIPROCAL,PRIOR_SHARED)):
    raise ValueError('Wrong camera for selected cohort: '+site)
   pose=P[site];edge=pose['first']+' / '+pose['second']
+  if site==PRIOR_SHARED and edge not in declared_inland:
+   raise ValueError('The older shared lane is not authored in this checkout')
   own={'counties':'stockCountyOrtho','tracadie':'stockTracadieOrtho','inland':'stockInlandOrtho'}[a.cohort]
   peer={'counties':'stockTracadieOrtho','tracadie':'stockCountyOrtho','inland':'stockCountyOrtho&stockTracadieOrtho'}[a.cohort]
   switch=own if a.stock else peer if a.peer_stock else None
@@ -263,7 +277,7 @@ def capture(a,browser,url):
    if not a.stock and site!='offsite':
     pg.wait_for_function("edge=>window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge===edge)?.gain===1",arg=edge,polling=250,timeout=120000)
    r=pg.evaluate('window.seamFrame()')
-   if site==STEEP or any(site in (r[0],r[0]+'-reciprocal') for r in ADDITIONAL):
+   if site in (STEEP,PRIOR_SHARED,CENTRAL_EAST,CENTRAL_EAST+'-reciprocal') or any(site in (r[0],r[0]+'-reciprocal') for r in ADDITIONAL):
     sky=pg.evaluate('window.groundEdgeSkyIDs()')
     assert sky['samples']==4 and sky['old']==sky['repeat']
     assert all( q['error']==0 and [q['draws'],q['tris']]==[sky['old']['draws'],sky['old']['tris']] for q in (sky['a'], sky['b']))
@@ -313,7 +327,10 @@ def capture(a,browser,url):
             '13-16 / 13-17','14-16 / 15-16','11-11 / 12-11'}
    inlands|={p['first']+' / '+p['second'] for label,p in P.items() if label in EXACT_EDGE_VIEWS}
    inlands|=declared_inland
-   if a.pinned_base:inlands-={P[r[0]]['first']+' / '+P[r[0]]['second'] for r in ADDITIONAL}
+   if site==PRIOR_SHARED or a.pinned_base:
+    # A camera name is not an authored material role. Historical
+    # comparison packs are expected to expose just their signed table.
+    inlands&=declared_inland
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties
    if 'stockTracadieOrtho' in flags:expect.discard('18-12 / 18-13')

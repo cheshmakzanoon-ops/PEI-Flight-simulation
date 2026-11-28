@@ -1,0 +1,36 @@
+[
+  {
+    "lon": -63.122600707016744,
+    "lat": 46.345347500004024,
+    "heading": 80,
+    "agl": 61.0,
+    "targetLL": [
+      -63.120625,
+      46.34558806818182
+    ],
+    "baseDatumStockMetres": [
+      45,
+      50
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 32,
+    "length": 360,
+    "scope": "Private physical terrain-and-cover QA screening only. Neutral stock Chase, not a provided real flight route.",
+    "name": "central-east-field-colour-16-14e",
+    "owners": [
+      "16-14",
+      "17-14"
+    ],
+    "axis": "x",
+    "offsets": [
+      13,
+      41,
+      341
+    ],
+    "preregistration": "The neutral Chase at +13,+41m has at least 500 changed RGB>2 in each; +341m exactly unchanged. No clock, camera, control, physics, imagery or new terrain replacement. Exact runtime same-frame restore, alpha and exterior controls. Score named source role only."
+  }
+]

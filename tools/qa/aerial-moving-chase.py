@@ -54,7 +54,7 @@ def stage(checkout,corridors,root):
     u.forEach((x:any)=>x.value=1);const a=snap();
     u.forEach((x:any)=>x.value=2);const b=snap();
     u.forEach((x:any)=>x.value=0);const restore=snap();
-    return {art,old,a,b,restore:restore.image===art.image,samples:g.getParameter(g.SAMPLES),
+    return {art,old,a,b,restoreSnapshot:restore.image,restore:restore.image===art.image,samples:g.getParameter(g.SAMPLES),
        err:g.getError(),p:[f.x,f.y,f.z],eye:camera.position.toArray()};
    }finally{q.gain.value=1;u.forEach((x:any)=>x.value=0);}
   };
@@ -122,8 +122,9 @@ def run(dist,corridors,chromium,out_dir):
       collected=pg.evaluate('i=>({error:motionQA.error,v:motionQA.frames[i],last:motionQA.last})',i)
       assert not collected['error'] and not errors,(n,collected.get('error'),collected.get('last'),errors)
       v=collected['v']
+      restoredraw=base64.b64decode(v.pop('restoreSnapshot').split(',',1)[1])
       names=('old','art','a','b');result=[pixels(v[k]) for k in names]
-      (old,oldraw),(art,artraw),(ma,_),(mb,_)=result
+      (old,oldraw),(art,artraw),(ma,maraw),(mb,mbraw)=result
       d=np.max(abs(old[:,:,:3]-art[:,:,:3]),axis=2);m=np.any(ma[:,:,:3]!=mb[:,:,:3],axis=2)
       row=dict(n=i,flightAlongM=v['fromLaunch'],flightCrossM=v['cross'],pos=v['p'],eye=v['eye'],samples=v['samples'],
         error=v['err'],changed=int(np.count_nonzero(d)),strong=int(np.count_nonzero(d>2)),
@@ -132,7 +133,7 @@ def run(dist,corridors,chromium,out_dir):
         exactRollback=v['restore'],stockSha256=hashlib.sha256(oldraw).hexdigest(),joinedSha256=hashlib.sha256(artraw).hexdigest())
       out[n].append(row);(out_dir/'report.json').write_text(json.dumps(out,indent=2)+'\n')
       print(n,json.dumps(row),flush=True)
-      for k,blob in [('stock',oldraw),('joined',artraw)]: (out_dir/f'{n}-{i}-{k}.png').write_bytes(blob)
+      for k,blob in [('stock',oldraw),('joined',artraw),('mask-a',maraw),('mask-b',mbraw),('restore',restoredraw)]: (out_dir/f'{n}-{i}-{k}.png').write_bytes(blob)
       assert row['samples']==4 and row['error']==row['alpha']==row['outside']==0 and row['exactRollback'],row
       assert row['render'].count(row['render'][0])==4 and 0<=row['flightCrossM']<15,row
       assert 0<=row['flightAlongM']-q['offsets'][i]<=15,row

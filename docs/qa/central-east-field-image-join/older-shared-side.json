@@ -1,0 +1,14 @@
+{
+  "scope": "Ordinary Four matched native PNGs produced by the same old peer fixed camera on pristine q414 and one-row candidate, with old independent orthogonal lease nonvacuous.",
+  "sharedPair": "17-14 / 17-15",
+  "requestedNewPair": "16-14 / 17-14",
+  "oldPeerStrong": 15024,
+  "exactPNG": {
+    "old": "f9faaff4da8dbeea67603c83296fc90fc7b7fcb6db066536fbea2dc65123e941",
+    "art": "d0cf55b30b16643aad9b3c27cb1f2cda474132377af68f23c01eef3aa3e9950b",
+    "idA": "a6e5e739908173538636d5d1fb8ed9b8c340b38be321aadd09a52298db588ad9",
+    "idB": "6f8b50404b09a7d14d96ce1880e1c9aa6e5b0df8b460148e3a6f09a2c3847bff"
+  },
+  "oldPeerSourceReady": true,
+  "allOtherGeometryUnchanged": true
+}
