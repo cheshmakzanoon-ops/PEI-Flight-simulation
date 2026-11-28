@@ -1,0 +1,127 @@
+{
+  "scope": "Offline full-source exact replacement bytes; no live installation, no model tenant or current survey claims. The old E fit refuses the altered full position/top signature; scoped material must be requalified if enabled with these roof meshes.",
+  "physical": {
+    "beforeVertices": 11988,
+    "afterVertices": 12222,
+    "beforeDraws": 1,
+    "proposedDraws": 1,
+    "originalWorldOrigin": [
+      89807.85854948164,
+      0,
+      4457.559458530726
+    ]
+  },
+  "sources": {
+    "position": "a5e6aaf4801b402f24490ed99e1288ae442c86d033108caa5838e190e281ba2b",
+    "uv": "7ca6ea7fd0c315981c6820515ab8e622f80da5ce6f012b6d0bc0d1c4435fcb05",
+    "color": "bfc91ca08b5ea3734fd7f3e72c06d5e9d3358ae6076e70cbcf6ee8cf27bb820d",
+    "topFlag": "2377a078ba4134ee374350179c76e526d35ca314f4e332c5e9bf0175bbf16aa4",
+    "townWallFit": "2f21446d2d58c325862075c9842671789e43b2e5d65f6734682d6cd4b0cfe2ba",
+    "normal": "825c004eff5dc57eb5b370d95f8a5a6ac9cdaf89d2e524e85024a63b84f772bf",
+    "facadeStyle": "80bd2470617d7fa1dc9f84db6d0354fd6b7f843dbb8bce01786ad1adb289d08c"
+  },
+  "roles": [
+    {
+      "ordinal": 48,
+      "beforeRange": [
+        2970,
+        3036
+      ],
+      "afterRange": [
+        2970,
+        3168
+      ],
+      "stockCap": [
+        3018,
+        3036
+      ],
+      "replacementCap": [
+        3066,
+        3168
+      ],
+      "oldSpanTriangles": 22,
+      "newWallTriangles": 32,
+      "newCapTriangles": 34
+    },
+    {
+      "ordinal": 49,
+      "beforeRange": [
+        3036,
+        3084
+      ],
+      "afterRange": [
+        3168,
+        3318
+      ],
+      "stockCap": [
+        3072,
+        3084
+      ],
+      "replacementCap": [
+        3246,
+        3318
+      ],
+      "oldSpanTriangles": 16,
+      "newWallTriangles": 26,
+      "newCapTriangles": 24
+    }
+  ],
+  "outputs": {
+    "position": {
+      "sha256": "a84144760192869842614fe3ad33d8abe9a7128efe1d921e09f67dbf413f5ba8",
+      "untouchedPrefixMiddleSuffix": [
+        "1b60da9b9c3b38719874ea687eb60c7fd1612b394c7bd4669190020bc2ee53c0",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "a6ac580b62b381855f64bdb96955f74b17fbea5303aef2e17cd37d23b59ea9d6"
+      ]
+    },
+    "uv": {
+      "sha256": "27ad6c4bf9ca88173be4fbbcf620e668e393cf5406049823722816b81030456e",
+      "untouchedPrefixMiddleSuffix": [
+        "5dd5f0614a02607cd43c1e28d6edbfd12c8d0b06fe6e75ea849b1da9f478d962",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "6945122a8b33abc455278b25ebe4fa3a4a7285f31ccf38d53cbf711c9223131c"
+      ]
+    },
+    "color": {
+      "sha256": "c1ab0c9bc9de87703592d438b6045fe561c172d3f783c30cdb26d6ed94d30fb4",
+      "untouchedPrefixMiddleSuffix": [
+        "cfd00c111c417f67d6069fdff8967cc489e591af9050ea4f009fd4de0a5bbcee",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "986e3911bd96636de857663bdeb3fd26e0f39308a267d8baafaa4e0cb77afab6"
+      ]
+    },
+    "topFlag": {
+      "sha256": "600483c70b2ee1d72a4e485db8a0c2ba005a037c212dc85230581a9f397d7e30",
+      "untouchedPrefixMiddleSuffix": [
+        "9b055ea66bed2e176af1f5fd6ba11b30e46725b077c2d905143eb040b6a5fb84",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "0ad8c032e010867227e161082f620c3d6bd36ac9dc29d01d356d86d6bc2bc692"
+      ]
+    },
+    "townWallFit": {
+      "sha256": "a71000fa9eccb642c3ca05b42697b271b378ac1d093b9bf4f742ed02ca3ad66c",
+      "untouchedPrefixMiddleSuffix": [
+        "de89b7c00bd347475861bf37edb0f04af2e2d40b4bd8c975e04b674fa4b8eb5e",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "580ad8a899be3b99c6f6d5b2b9c0de5e33a2bf538f6a850d50b3b728ec867966"
+      ]
+    },
+    "normal": {
+      "sha256": "389e3466c71aeff8c739a36bdef23403f5fef89e44e4212e913dbcf9edf7b1ee",
+      "untouchedPrefixMiddleSuffix": [
+        "2ef48c7ee3e054dff6169abc3e21bb651efedca7206a72fd6e1eb8b83792df16",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "6b6c3fbb008c8bb46355aa8bf4ea15bed706062fdffe7fe4a9467ec468f9f608"
+      ]
+    },
+    "facadeStyle": {
+      "sha256": "7198c26e306bca2f4f48df5c3b759eab66b2fc19835381e6e03a9f4c679924f4",
+      "untouchedPrefixMiddleSuffix": [
+        "5559c3c2c9f629d0fc20b851049ea2dc7be74c8f78a63d33f929a5d521a9ab26",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "4039c3b40f2ae0b0a3d42651b836aaea2f62652c6d06a9e1eb382916be95f2b8"
+      ]
+    }
+  }
+}

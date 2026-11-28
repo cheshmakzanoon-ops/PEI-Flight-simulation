@@ -67,3 +67,7 @@ The original building archive's separate provenance remains unchanged.
 No photographic texture or paint sample is part of the work. Next,
 sample the exact roof roles in two actual moving matched views and
 validate wall-rim and window material custody before any player change.
+
+A [separate signed wall-rim study](rim/) now couples each detached cap
+to its original lower wall, since the new sloped roof would otherwise
+sit behind the old flat cap. It is still not installed.
