@@ -1,6 +1,12 @@
 # Summerside railway roof finish preview
 
-Try the route on a local build by appending
+The [Dispatch browser check](landmark-dispatch-browser.json) selected this
+option by keyboard, observed the existing preview draw in flight, then
+restored the original appearance without changing departure.
+
+In Dispatch, select **Summerside waterfront · low pass** and choose
+**Preview** under **Summerside station roof finish**. Choose **Use original**
+to turn it off. On a local build you can also append
 `?departure=spinnakers-low&railShinglePreview=1` to the simulator URL.
 Wait for **Summerside railway roof finish preview ready.** in Dispatch,
 select **Begin flight**, and keep the camera in Chase. An early Begin

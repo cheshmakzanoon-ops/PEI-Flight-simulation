@@ -762,7 +762,7 @@ async function run(){
      reposition(activeSite);
    }
   }},SITES,
-  {search:standardSearch,url:standardURL.href,reloadFallback:lightOption.route?{'northcape-light-low':'northcape-wind-low'}:undefined});
+  {search:standardSearch,url:standardURL.href,landmarkURL:location.href,reloadFallback:lightOption.route?{'northcape-light-low':'northcape-wind-low'}:undefined});
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});

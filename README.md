@@ -72,7 +72,8 @@ landing behavior. Standard supports keyboard, touch, and browser gamepads.
 The [scenery guide](docs/SCENERY.md) lists what's already in Standard and
 how to enable or compare the individual scenery studies. The opt-in
 **Use detailed preview** profile keeps the same province, departures and
-flight controls.
+flight controls. Select **East Point · lighthouse pass** or **Summerside waterfront · low pass**
+in Dispatch to see the optional roof preview for that route.
 
 ### Essential controls
 

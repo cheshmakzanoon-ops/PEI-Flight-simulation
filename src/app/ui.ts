@@ -1,3 +1,4 @@
+import {landmarkPreviewCard} from './landmark-preview-dispatch.ts';
 import { departureBriefing } from './departure-briefing.ts';
 import {dispatchStandPlan} from '../render/dispatch-stand-height.ts';
 import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,standardKingsRidgeRequested,switchStandardKingsRidgeURL,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,STOCK_INDIAN_RIVER,indianRiverLensState,standardIndianRiverRequested,switchStandardIndianRiverURL,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
@@ -27,7 +28,7 @@ export class UI {
  private lakeState='';
  private localSceneryState='';
  constructor(t:Terrain,input:Input,private actions:{start:(i:number,trustedBegin?:boolean)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES,
-  private readonly scenerySource:{search:string;url:string;reloadFallback?:Readonly<Record<string,string>>}
+  private readonly scenerySource:{search:string;url:string;landmarkURL?:string;reloadFallback?:Readonly<Record<string,string>>}
     ={search:location.search,url:location.href}) {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(this.scenerySource.search,this.sites.map(x=>x.id));
@@ -58,6 +59,10 @@ export class UI {
   <div class="rule"></div><label class="eyebrow" for="site">DEPARTURE POINT</label><select id="site">${opts}</select><p id="site-note" class="sitenote"></p><p id="oleary-survey" class="sitenote" role="status" hidden></p><p id="oleary-station" class="sitenote" role="status" hidden></p><p id="dalvay-water" class="sitenote" role="status" hidden></p><p id="cavendish-freshwater" class="sitenote" role="status" hidden></p><p id="prince-low-field" class="sitenote" role="status" hidden></p><p id="knight-exterior" class="sitenote" role="status" hidden></p><p id="rustico-neighbour-roof" class="sitenote" role="status" hidden></p><p id="dispatch-woodland" class="sitenote" role="status" hidden></p><p id="local-scenery" class="sitenote" role="status" hidden></p>
   <div class="scenery-option"><div><span class="eyebrow">SCENERY</span><p id="scenery-note">${detail?'Detailed preview · more local detail':'Standard atlas'}</p></div>
   <button type="button" id="switch-scenery" class="scenery-switch" aria-describedby="scenery-note" title="Reload the atlas without changing the selected departure">${detail?'Use standard':'Use detailed preview'}</button></div>
+  <section class="regional-detail" id="landmark-preview" aria-labelledby="landmark-preview-title" hidden>
+    <div><span class="eyebrow" id="landmark-preview-title"></span><small id="landmark-preview-info"></small></div>
+    <button type="button" id="landmark-preview-switch" aria-describedby="landmark-preview-info"></button>
+  </section>
   <section class="regional-detail" id="cavendish-package" hidden><div><span class="eyebrow">CAVENDISH DETAIL</span><small id="cavendish-package-info">${cavePack.blocked?'Unavailable with the current terrain or shadow options.':cavePack.active?'House, Barn, lake, slope, turf and trail selected.':'House, Barn, lake, slope, turf and trail'}</small></div><button type="button" id="cavendish-package-switch" aria-label="${cavePack.selected?'Turn off Cavendish detail':'Enable Cavendish detail'}" aria-describedby="cavendish-package-info" ${cavePack.blocked&&!cavePack.selected?'disabled':''}>${cavePack.selected?'Turn off':'Enable'}</button></section>
   <section class="regional-detail" id="cape-rock" hidden><div><span class="eyebrow">CAPE TRYON SANDSTONE</span><small id="cape-rock-info">${capeRock.blocked?'Available in Standard without alternate shoreline studies.':capeRock.selected?'Sandstone in Standard. Cliff geometry is unchanged.':'Original red sandstone finish on the Gulf-facing cliffs.'}</small></div><button type="button" id="cape-rock-switch" aria-label="${capeRock.selected?'Turn off Cape Tryon sandstone':'Enable Cape Tryon sandstone'}" aria-describedby="cape-rock-info" ${capeRock.blocked&&!capeRock.selected?'disabled':''}>${capeRock.selected?'Turn off':'Enable'}</button></section>
   <section class="regional-detail" id="basin-inlet" hidden>
@@ -102,6 +107,10 @@ export class UI {
   $('site').onchange=()=>{const next=Number(($('site') as HTMLSelectElement).value);
    if(next!==this.selected)this.setDispatchWoodland('other');
    this.selected=next;this.actions.chooseDeparture?.(this.selected);this.showSite();};
+  $('landmark-preview-switch').onclick=()=>{
+   const card=this.landmarkCard();
+   if(card?.url&&this.mode==='dispatch')location.assign(card.url);
+  };
   $('start').onclick=e=>this.actions.start(this.selected,e.isTrusted);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
    location.assign(switchBasinHeadDispatchURL(this.scenerySource.url,!basin.selected,reopenRoute()));
@@ -143,6 +152,7 @@ export class UI {
   this.showSite();this.set('dispatch');
  }
  showSite(){const s=this.sites[this.selected];if(!dispatchStandPlan(s))this.setDispatchWoodland('other');if(s.id!=='north-rustico-harbour-low')this.setRusticoNeighbourRoof('other');if(s.id!=='dalvay-lake-coastal-pass')this.setDalvayWater('other');if(s.id!=='prince-fields')this.setPrinceLowField('other');$('site-note').textContent=departureBriefing(s,this.scenerySource.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(this.scenerySource.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
+  this.showLandmarkPreview();
   const basin=basinHeadDispatchState(this.scenerySource.search);
   $('basin-inlet').hidden=basin.detail||(s.id!==BASIN_HEAD_DEPARTURE&&!basin.selected);
   const river=indianRiverLensState(this.scenerySource.search);
@@ -151,6 +161,22 @@ export class UI {
   $('kings-ridge-lens').hidden=(!ridge.selected&&ridge.detail)||(s.id!==KINGS_RIDGE_ROUTE&&!ridge.selected);
   const prince=princeLandscapeState(this.scenerySource.search);
   $('prince-landscape-lens').hidden=(!prince.selected&&prince.detail)||(s.id!==PRINCE_LANDSCAPE_ROUTE&&!prince.selected);
+ }
+ private landmarkCard(){
+  return landmarkPreviewCard(this.scenerySource.landmarkURL??this.scenerySource.url,this.sites[this.selected].id);
+ }
+ private showLandmarkPreview(){
+  const card=this.landmarkCard(),panel=$('landmark-preview');
+  panel.hidden=!card;
+  if(!card)return;
+  $('landmark-preview-title').textContent=card.title;
+  $('landmark-preview-info').textContent=card.status==='selected'?
+    'Selected. Wait for the preview-ready message before beginning.':
+    card.status==='blocked'?'Unavailable with the current scenery settings.':card.description;
+  const button=$<HTMLButtonElement>('landmark-preview-switch');
+  button.disabled=card.status==='blocked';
+  button.textContent=card.status==='selected'?'Use original':'Preview';
+  button.setAttribute('aria-label',(card.status==='selected'?'Turn off ':'Preview ')+card.title);
  }
  /** This status never requests scenery; only an explicitly scoped caller may show it. */
  setLocalScenery(label:string,state:'waiting'|'ready'|'stock'|'other'){

@@ -1,0 +1,27 @@
+{
+  "state": "PASS",
+  "buildHash": "ee37154ba583da173f96502e53c07f25f89e73f7ebad32877f55260fb3e09503",
+  "offsite": [],
+  "errors": [],
+  "routes": [
+    {
+      "site": "east-light",
+      "urlConsent": true,
+      "ownControlOnly": true,
+      "readyText": "East Point roof forms preview ready.",
+      "keyboardEnabled": true,
+      "actualExistingPreviewSubmittedInFlight": true,
+      "keyboardRestoredOriginalSameRoute": true
+    },
+    {
+      "site": "spinnakers-low",
+      "urlConsent": true,
+      "ownControlOnly": true,
+      "readyText": "Summerside railway roof finish preview ready.",
+      "keyboardEnabled": true,
+      "actualExistingPreviewSubmittedInFlight": true,
+      "keyboardRestoredOriginalSameRoute": true
+    }
+  ],
+  "incompatibleDetailBlocked": true
+}

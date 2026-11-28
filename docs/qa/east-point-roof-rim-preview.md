@@ -1,6 +1,12 @@
 # East Point roof forms preview
 
-To try the rebuilt roofs on a local build, append
+The [Dispatch browser check](landmark-dispatch-browser.json) selected this
+option by keyboard, observed the existing preview draw in flight, then
+restored the original appearance without changing departure.
+
+In Dispatch, select **East Point · lighthouse pass** and choose **Preview**
+under **East Point roof forms**. Choose **Use original** to turn it off.
+On a local build you can also append
 `?departure=east-light&eastPointRimPreview=1` to the simulator URL.
 Wait for **East Point roof forms preview ready.** in Dispatch before
 choosing **Begin flight**, then view the approach in Chase. An early
