@@ -1,0 +1,59 @@
+{
+  "scope": "Exact federal native float crop using the published Panmure pasture source pins. Numerical input, not visual coverage or terrain approval.",
+  "bounds": [
+    2434248,
+    316954,
+    2434372,
+    317139
+  ],
+  "horizontalEPSG": 3979,
+  "verticalEPSG": 6647,
+  "geotransform": [
+    2434248,
+    1,
+    0,
+    317139,
+    0,
+    -1
+  ],
+  "source": "Natural Resources Canada, HRDEM mosaic",
+  "licence": "https://open.canada.ca/en/open-government-licence-canada",
+  "bands": {
+    "dtm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+      "sourceETag": "\"eb6a8f985dbf26b24d503d1502ce589b-2727\"",
+      "objectBytes": 731762494131,
+      "header4096SHA256": "2ae33670d39a6d4903392f3eeae142748ee647d2f6f9be0be1eaf0a3cc62c9e5",
+      "pixelOffset": [
+        434248,
+        182861
+      ],
+      "sampleSHA256": "6cf5c849602f9d27717a27287999dc4f4c9414fde5cee09ad515833e862b647e",
+      "width": 124,
+      "height": 185,
+      "sampleRangeM": [
+        6.663959503173828,
+        11.527633666992188
+      ],
+      "file": "dtm.f32"
+    },
+    "dsm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+      "sourceETag": "\"a117346714667913c801489b24ec0356-2829\"",
+      "objectBytes": 759176753930,
+      "header4096SHA256": "2dbd66c68a22ee0d86dbc409b8a2512bfa1f12ad3a01c48e04bb88e0fcc17ba6",
+      "pixelOffset": [
+        434248,
+        182861
+      ],
+      "sampleSHA256": "5ef9ee70792a52bab0a4bf73395faec88594d6ef23950536e3dce9fff94ab693",
+      "width": 124,
+      "height": 185,
+      "sampleRangeM": [
+        6.707925796508789,
+        18.817087173461914
+      ],
+      "file": "dsm.f32"
+    }
+  }
+}

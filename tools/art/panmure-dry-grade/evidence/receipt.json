@@ -1,0 +1,39 @@
+{
+  "scope": "Verified numerical acquisition and detached single-face candidate. Not active terrain, collision, present-day surveyed site, or procedure.",
+  "oldOwner": "25-18",
+  "oldFace": 3185,
+  "stockScholarlyScreen": {
+    "total": 607,
+    "range": [
+      0.5353069494480849,
+      0.9198774274754893
+    ],
+    "median": 0.6834310319578041,
+    "p10": 0.5638851874981476,
+    "p90": 0.8270010517965947,
+    "atLeast45": 607,
+    "atMostMinus45": 0
+  },
+  "strictCoreR8": [
+    136,
+    91,
+    156,
+    118
+  ],
+  "recipientFaceCells": 162,
+  "stockScreenSha256": "1d9955e74a3b31deb4c7f1359e06bb72abb01be471b4c778db893bb758d6986d",
+  "cellSelectionSha256": "4742355e7227c52d85ddde73019aff007168f23bba98566ad83efcfad101ce86",
+  "detachedFaceSha256": "8c0f8ba049ca0cddf19c6d30ebe0f6071f44a144d775f93f6916cdcf1ee99966",
+  "source": {
+    "dtm": {
+      "raw": "6cf5c849602f9d27717a27287999dc4f4c9414fde5cee09ad515833e862b647e",
+      "gzip": "eeb3bffd956d14ad73aeb67ed91b220a261ddb329ca7e350b3a291deee804c81",
+      "bytes": 73892
+    },
+    "dsm": {
+      "raw": "5ef9ee70792a52bab0a4bf73395faec88594d6ef23950536e3dce9fff94ab693",
+      "gzip": "6f85e06a9ab6a1f50ed921f9f0557b2d2f255f9830af22db5a1c2b292a26ec8e",
+      "bytes": 74279
+    }
+  }
+}
