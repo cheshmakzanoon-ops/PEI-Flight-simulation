@@ -1,10 +1,12 @@
-/** Offline fixed snapshots for the exact combined sash/trim study.
+/** Offline fixed snapshots for the exact two- and three-sash/trim studies.
  * No LOD override, installation, live distances or runtime geometry updates. */
 import * as T from 'three';
 import {EAST_FOG_COMBINED_ROLES as R} from './east-fog-combined-surface.ts';
 import type {FogShell} from './east-fog-gable-shell.ts';
 import {studyEastFogCornice} from './east-fog-cornice-study.ts';
 import {eastFogAuthoredSashes} from './east-fog-authored-sashes.ts';
+import {EAST_FOG_DATED_REAR_ROLES as DATED} from './east-fog-dated-rear-ensemble.ts';
+import {eastFogTowerwardSash} from './east-fog-towerward-sash.ts';
 import {FIXED_PROOF_LOD_METRES,solidTuckPlan,stageScale,trimWeight} from './solid-lod-math.ts';
 
 const INSET=.140,eps=2e-6;
@@ -30,25 +32,33 @@ export function buildProofSecondaryFog(combined:T.BufferGeometry,plan:FogShell,d
  requireProof(!(combined instanceof T.InstancedBufferGeometry)&&!Object.keys(combined.morphAttributes).length&&
   !combined.morphTargetsRelative&&!combined.index&&combined.drawRange.start===0&&combined.drawRange.count===Infinity&&
   combined.groups.length===0&&Object.keys(combined.attributes).length===4,'unsupported close detail source layout');
+ const n=combined.getAttribute('position')?.count;
+ if(n!==R.end&&n!==DATED.end)throw Error('unsupported close detail source length');
+ const dated=n===DATED.end;
  const actual=studyEastFogCornice(plan);
- let sash:T.BufferGeometry|undefined,out:T.BufferGeometry|undefined;
+ let sash:T.BufferGeometry|undefined,first:T.BufferGeometry|undefined,out:T.BufferGeometry|undefined;
  try{
   sash=eastFogAuthoredSashes(plan).geometry;
+  if(dated)first=eastFogTowerwardSash(plan).geometry;
   for(const [k,size] of schema){
-   const a=attr(combined,k,R.end,size).array as Float32Array;
+   const a=attr(combined,k,n,size).array as Float32Array;
    const b=attr(actual.bulk,k,402,size).array;
    const w=attr(sash,k,1584,size).array;
    const e=attr(actual.geometry,k,1122,size).array;
    requireProof(equal(a.subarray(R.envelope[0]*size,R.envelope[1]*size),b)&&
     equal(a.subarray(R.sash2[0]*size,R.cornice[0]*size),w)&&
-    equal(a.subarray(R.cornice[0]*size),e.subarray(actual.base*size)),'authored ABI drift: '+k);
+    equal(a.subarray(R.cornice[0]*size,R.end*size),e.subarray(actual.base*size))&&
+    (!first||equal(a.subarray(DATED.towerward[0]*size,DATED.towerward[1]*size),attr(first,k,792,size).array)),
+    'authored ABI drift: '+k);
   }
   const prescribed=solidTuckPlan(plan,actual),scale=stageScale(prescribed,distance)!;
   const move=sashMove(distance),[ox,oz]=plan.originXZ,cc=Math.cos(plan.yaw),ss=Math.sin(plan.yaw);
   out=combined.clone();
-  const pos=attr(out,'position',R.end,3),nor=attr(out,'normal',R.end,3);
+  const pos=attr(out,'position',n,3),nor=attr(out,'normal',n,3);
   if(move!==0){
-   for(let i=R.sash2[0];i<R.cornice[0];i++){
+   const sections:readonly (readonly [number,number])[]=dated?
+    [[R.sash2[0],R.cornice[0]],DATED.towerward]:[[R.sash2[0],R.cornice[0]]];
+   for(const [begin,end] of sections)for(let i=begin;i<end;i++){
     pos.setX(i,pos.getX(i)+cc*move);pos.setZ(i,pos.getZ(i)-ss*move);
    }
   }
@@ -74,11 +84,12 @@ export function buildProofSecondaryFog(combined:T.BufferGeometry,plan:FogShell,d
    return clearance-eps;
   };
   const clearance={sashes:proof(R.sash2[0],R.cornice[0],1),
-   trimTower:proof(R.cornice[0],R.cornice[0]+360,0),trimPoint:proof(R.cornice[0]+360,R.end,1)};
+   trimTower:proof(R.cornice[0],R.cornice[0]+360,0),trimPoint:proof(R.cornice[0]+360,R.end,1),
+   ...(dated?{towerward:proof(...DATED.towerward,1)}:{})};
   if(distance>=600)requireProof(Object.values(clearance).every(v=>v>.003),'far decoration not inside exact opaque shell');
   out.computeBoundingSphere();out.computeBoundingBox();
   const geometry=out;out=undefined;
   return {geometry,distance,sashTranslation:move,trimScale:scale,clearance,
    scope:'fixed offline interior projection only; needs native station LOD and cast comparison'};
- }finally{out?.dispose();sash?.dispose();actual.geometry.dispose();actual.bulk.dispose();}
+ }finally{out?.dispose();sash?.dispose();first?.dispose();actual.geometry.dispose();actual.bulk.dispose();}
 }

@@ -216,3 +216,18 @@ remain outside this source-only checkpoint.
 ```sh
 node --experimental-strip-types --test test/east-fog-{towerward-sash,dated-rear-ensemble}.test.ts
 ```
+
+The [fixed-distance checks](secondary-fog-lod.ts) now also accept the
+three-window packet. The towerward casing, sill and dividers move into
+the same opaque wall as the other two openings. At the fixed 600 m
+check its closest vertex has more than 19 mm of clearance. The older
+8,157 vertex records match the two-window result at every tested
+distance; the additional window passes separate byte checks for
+positions, normals, colors and cladding values. The detached vertex
+program gives the third window its own vertex range and does not
+treat it as cornice. This is not a browser transition test or a change
+to the playable world.
+
+```sh
+node --experimental-strip-types --test test/east-fog-dated-retirement.test.ts
+```
