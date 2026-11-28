@@ -1,0 +1,87 @@
+{
+  "owner": "25-18",
+  "n112": [
+    25,
+    18,
+    112
+  ],
+  "stockCellSize": [
+    54.40206101284025,
+    52.33232839062854
+  ],
+  "stockPlanBounds": [
+    54837.27750094324,
+    38805.32378317509,
+    60930.30833438135,
+    44666.54456292548
+  ],
+  "worldBounds": [
+    -97488.49333500945,
+    -66696.65025233204,
+    97488.49333501,
+    62250.20690217668
+  ],
+  "worldProjection": {
+    "lon": -63.2,
+    "lat": 46.5,
+    "metresPerLon": 76762.59317717304,
+    "metresPerLat": 111161.08375388647
+  },
+  "source": {
+    "terrain": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "cover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "coverCompressed": "46a4f4736a885576fa0529cd0f91bacdbfd47e3bfd719130ba3446c52c245863",
+    "coverShape": [
+      4096,
+      2720
+    ]
+  },
+  "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    57883.79291766229,
+    0,
+    41735.934173050286,
+    1
+  ],
+  "harbourPlan": [
+    null
+  ],
+  "files": {
+    "position": {
+      "name": "position.f32le",
+      "bytes": 153228,
+      "sha": "585c694d35fc234f25dcc4d3df547ee9859d3274bb73830c047acf819edc139b",
+      "components": 3
+    },
+    "normal": {
+      "name": "normal.f32le",
+      "bytes": 153228,
+      "sha": "25c0b802f5de393db35a237c1df4fa7cb66db176d9d923248c40c231bd906f11",
+      "components": 3
+    },
+    "uv": {
+      "name": "uv.f32le",
+      "bytes": 102152,
+      "sha": "921c8110c89ee6188a4970a0ccc6d4b15398b2e2ce02bceeef525b91b84cb959",
+      "components": 2
+    },
+    "index": {
+      "name": "index.u16le",
+      "bytes": 150528,
+      "sha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+      "components": 1
+    }
+  },
+  "role": "CPU reconstruction using current repo exact regular N112 World.patch and pinned source; no actual GPU bytes, no active art."
+}

@@ -60,3 +60,7 @@ repository root with the existing installed dependencies:
 ```sh
 node --experimental-strip-types --test tools/art/panmure-dry-grade/wide/topology.test.mjs
 ```
+
+The [separate compact carrier](../compact/README.md) replaces one intact
+regular-mesh cell instead of trying to sew this open perimeter. It does
+not make this larger cut attachable and is not installed either.

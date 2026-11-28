@@ -1,0 +1,61 @@
+{
+  "outcome": "PLAN_ONLY_SCOPE_PASSES_REQUIRES_NATIVE",
+  "carrierFaceIDs": [
+    3184,
+    3185
+  ],
+  "edgeRemovedInProofOnly": [
+    1607,
+    1719
+  ],
+  "originalOuterEndpointIDs": [
+    1606,
+    1719,
+    1720,
+    1607
+  ],
+  "literalSharedOuterEdgesPairedNoSplitInBothBases": true,
+  "originalInteriorDiagonalIsExactlyCoAffineYUVNormal": true,
+  "preexistingActualV5GeometryNotUsedOrChanged": true,
+  "worldBasisMonotoneAndExactlySamePlanArea": true,
+  "proofVertexCount": 229,
+  "proofTriangles": 452,
+  "minTriangleAltitudesM_LocalWorld": [
+    0.21760416837340102,
+    0.2174222474551719
+  ],
+  "maxContinuousNeutralDeltaM_LocalWorld": [
+    4.932956959180501e-05,
+    4.651983029901885e-07
+  ],
+  "maxContinuousNeutralUVDeltas_LocalWorld": [
+    [
+      3.733117670545738e-08,
+      3.340927745565381e-08
+    ],
+    [
+      2.8486286773876657e-08,
+      2.8216216807486205e-08
+    ]
+  ],
+  "slopeMax_LocalWorld": [
+    0.06050344035119885,
+    0.06052872225863758
+  ],
+  "allProtectedMinimumMarginsExtendedByMeasuredM": 0.5723563443903993,
+  "maxSafeRadiusM": 12.437376792378682,
+  "eligibleStars": 95,
+  "measuredSaturatedCount": 0,
+  "differenceExtentsM": [
+    0.0,
+    0.38213348388671875
+  ],
+  "activeAreaM2": 1189.9622039794922,
+  "connectedAreasAt25cmM2": [
+    183.10382514358207
+  ],
+  "minimumNeededForSeparateTrialM2": 150.0,
+  "noAssetsEmitted": true,
+  "noGameOrContactChange": true,
+  "canMount": false
+}

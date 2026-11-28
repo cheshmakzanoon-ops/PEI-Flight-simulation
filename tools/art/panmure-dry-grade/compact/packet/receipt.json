@@ -1,0 +1,212 @@
+{
+  "stockOldPrefixCount": 12769,
+  "newSubmittedVertices": 12994,
+  "originalIndexCount": 75264,
+  "localReplacementIndexCount": 1356,
+  "newSubmittedIndexCount": 76614,
+  "oldWholeAssetSHA256": {
+    "position": "585c694d35fc234f25dcc4d3df547ee9859d3274bb73830c047acf819edc139b",
+    "normal": "25c0b802f5de393db35a237c1df4fa7cb66db176d9d923248c40c231bd906f11",
+    "uv": "921c8110c89ee6188a4970a0ccc6d4b15398b2e2ce02bceeef525b91b84cb959",
+    "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "fullReconstitutedForQAOnlyVBOHashesNotEmitted": {
+    "nativeNormal": "d1eb33cbcf144612c53fb12ca46e2a513843ed4acb78312922682e3461051b27",
+    "nativeUV": "160550061c3c7de95c78c34887712e0313a9414da16da3df628610e1bd60bab1",
+    "neutralPOS": "47b93a947e05ae5c2d15cd4fc98d1b36ccba635c32267f98461ed9dbb123d434",
+    "activePOS": "3e3e911e6270a704b0787f464b28eedbf1d4e91a7afad729300a9db5166335cf",
+    "commonEBO": "ab81bbfc38298250d661289271ed92d9c1975a5b99ac35ad6a306d4d8b9b6383"
+  },
+  "stockTile": "25-18",
+  "faceIDs": [
+    3184,
+    3185
+  ],
+  "oldIndexRangeHalfOpen": [
+    9552,
+    9558
+  ],
+  "oldLiteralRemovedTriples": [
+    [
+      1606,
+      1719,
+      1607
+    ],
+    [
+      1719,
+      1720,
+      1607
+    ]
+  ],
+  "borrowOriginalVertexIDsInLocalOrder": [
+    1606,
+    1719,
+    1720,
+    1607
+  ],
+  "sharedEdgeOldNeighborIncidence": [
+    {
+      "exactStockEdge": [
+        1606,
+        1719
+      ],
+      "oldCellTriangle": 3184,
+      "exactUnchangedNeighborReversed": [
+        3183,
+        1719,
+        1606
+      ]
+    },
+    {
+      "exactStockEdge": [
+        1719,
+        1720
+      ],
+      "oldCellTriangle": 3185,
+      "exactUnchangedNeighborReversed": [
+        3408,
+        1720,
+        1719
+      ]
+    },
+    {
+      "exactStockEdge": [
+        1720,
+        1607
+      ],
+      "oldCellTriangle": 3185,
+      "exactUnchangedNeighborReversed": [
+        3186,
+        1607,
+        1720
+      ]
+    },
+    {
+      "exactStockEdge": [
+        1607,
+        1606
+      ],
+      "oldCellTriangle": 3184,
+      "exactUnchangedNeighborReversed": [
+        2961,
+        1606,
+        1607
+      ]
+    }
+  ],
+  "modelMatrixColumnMajorOriginalF64": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    57883.79291766229,
+    0,
+    41735.934173050286,
+    1
+  ],
+  "modelMatrixColumnMajorUniformF32": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    57883.79296875,
+    0.0,
+    41735.93359375,
+    1.0
+  ],
+  "parentOriginalActorGeometryAndWorldUnchanged": true,
+  "n112ExactSourceRoyaltiesNone": "Canada CanElevation OGL-C original DTM and existing mapped-signed authority; no new field/photo/provider read.",
+  "prelockedNumericalReceiptSHA256": "244d0adb312988d7564a947aa4d48e90873e0c31daa8ec21a017711a0af48996",
+  "noLiveNativeOpticsMeasured": true,
+  "noContactCodeChanged": true,
+  "notForCollision": true,
+  "canMount": false,
+  "newTrianglesCount": 452,
+  "oldReplacedTrianglesCount": 2,
+  "triangleDelta": 450,
+  "commonP0P1ProjectedTopologyExact": {
+    "local": {
+      "verticesUnique": 229,
+      "directedExteriorEdges": 4,
+      "sewnInternalEdges": 676,
+      "projectionAreaM2": 2846.9856585860252,
+      "exactZeroOverlapsCollapsesSlitsAndTJunctions": true,
+      "narrowSegmentPairTests": 6152,
+      "latticeUnitsPerM": 8192
+    },
+    "world": {
+      "verticesUnique": 229,
+      "directedExteriorEdges": 4,
+      "sewnInternalEdges": 676,
+      "projectionAreaM2": 2846.985153198242,
+      "exactZeroOverlapsCollapsesSlitsAndTJunctions": true,
+      "narrowSegmentPairTests": 6152,
+      "latticeUnitsPerM": 256
+    }
+  },
+  "sameStockActiveNormalAttributeAndUVChannels": true,
+  "mayDifferAlphaOrColourOnActualHardwareNotTested": true,
+  "maxNeutralInterpAbsYMmLocalAndWorld": [
+    0.04932956959180501,
+    0.0004651983029901885
+  ],
+  "maximumSourceInterpretedVisualDifferenceM": 0.38213348388671875,
+  "maximumActiveSlopeMPerMLocalAndWorld": [
+    0.06050344035119885,
+    0.06052872225863758
+  ],
+  "noFullyWeightedMeasurementNodes": true,
+  "inDraftActivePlanM2": 1189.9622039794922,
+  "positiveAreaAboveQuarterMetreM2": 183.10382514358207,
+  "hardBoundaryDomain": "only original regular N112 cell 3184 & 3185 with a fixed four-edge outline; neither stock alternate LOD nor any other local-grade mesh is admitted here",
+  "packetLeaves": {
+    "neutral.p.f32le": {
+      "sha256": "c4d1831036b975351afce95f096a5e2480a2136e19019ab64f8ebccab537e7dc",
+      "bytes": 2748
+    },
+    "active.p.f32le": {
+      "sha256": "76c6187887ee51dd7cd7b3494f29c0198ad7ff47852a51f00365342aa3afe74b",
+      "bytes": 2748
+    },
+    "normal.f32le": {
+      "sha256": "044377fda1827f831cd867107b92ed86806b6dd8698479b591da3440f2a4e9c7",
+      "bytes": 2748
+    },
+    "uv.f32le": {
+      "sha256": "3f7ada2aaa252077d6d3e72f5cd0db4d13fd5b686de1b1655f41e67707625add",
+      "bytes": 1832
+    },
+    "replacement.local.i.u16le": {
+      "sha256": "379963057394328e65d1822062387dbc7c59cd62eb56bf5470dd0fe9256b0228",
+      "bytes": 2712
+    },
+    "replacement.rebased.i.u16le": {
+      "sha256": "e80b37ac087f2e096ee5fc222fbbb1af9c7486e0924b3532508817aa9cfb3329",
+      "bytes": 2712
+    },
+    "old-9552-9558.i.u16le": {
+      "sha256": "64bd0ee680c39748bd1ba7b2bbf6745a56a032ff2f8867d2c24359b135b672d1",
+      "bytes": 12
+    },
+    "active-triangle-role.u8": {
+      "sha256": "2dd776d9476e2d4fde81f0cc8af8402a80a2de1410cfb44df649c051af6be15e",
+      "bytes": 452
+    }
+  }
+}
