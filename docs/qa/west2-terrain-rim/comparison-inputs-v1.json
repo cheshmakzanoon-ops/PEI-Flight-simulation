@@ -1,0 +1,305 @@
+{
+  "kind": "West2 detached V1 matched native RGBA inputs; V2 release evidence pending",
+  "base": "c2cc92562d68fa4d3fa477de85843d175bd96dc7",
+  "detachedV1PatchSha256": "88db2f44e2a69a95f21ed304cc31b37b235b31e311c14ccb95b879372d40de37",
+  "detachedV1HostSha256": "ac4e4c5659b39e2c836792e89dda0c4ca8a9383d12fbbd118d1d2026f13792af",
+  "detachedV2PatchSha256": "5288701fa059cb6ab177cfbab8b0c0c337465b0e17a9ac5163aa7218a3e69307",
+  "ordinaryV2PatchSha256": "0aae9f5a7928a59251f3a6368e172c7dac6cd499716138106071c7fcd986eb53",
+  "fixedV1ReceiptSha256": "80ef384e226fd7f7c893be7253ffbaaf5c9a51b4ff1f89c6677ebbd9d5d3aef4",
+  "comparison": {
+    "filename": "first-fixed-v1.webp",
+    "width": 1020,
+    "height": 330,
+    "sha256": "dc6afe21e384dadb0eeddce0b9ced7beab275a0987cafcd32f8ccc77c0568b35",
+    "losslessEvidence": false
+  },
+  "originalRawFrameSize": [
+    840,
+    540
+  ],
+  "channels": "RGBA8, top-down PNG",
+  "rawFrames": {
+    "west2-afterA.png": {
+      "pngSha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804",
+      "rgbaSha256": "6cef3ca20593d6b24eaebe306aad171b0efbc25279632266aef6af5e2bfd6b02",
+      "bytes": 548844
+    },
+    "west2-afterB.png": {
+      "pngSha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804",
+      "rgbaSha256": "6cef3ca20593d6b24eaebe306aad171b0efbc25279632266aef6af5e2bfd6b02",
+      "bytes": 548844
+    },
+    "west2-beforeA.png": {
+      "pngSha256": "401438928c518fd987cf8e9ba0dcd9c8a3ca05e14332373f3bde0818953f0d5c",
+      "rgbaSha256": "0034995a230980b50b0ad819c71dfe877dbd4611b6e37dac2209028e9cece3e7",
+      "bytes": 549099
+    },
+    "west2-beforeB.png": {
+      "pngSha256": "c88b949706ab361557a37e34083ce64079e7c957d5f56f38333a1a97d51c2b15",
+      "rgbaSha256": "2b7ba887dcbb1f171c559fd71693aca9ef1c4d1e41567c8f30f64b028aed82a9",
+      "bytes": 548968
+    },
+    "west2-mixed-afterA.png": {
+      "pngSha256": "96132095f84e85395c19a46da56bcaca60c56f77b06cec96866133af0aca73b9",
+      "rgbaSha256": "e38a7e4ffdb0b0ad4e10b9889f7e2b2d9e9eaef9d963917a51bb7ddb6f00608c",
+      "bytes": 537182
+    },
+    "west2-mixed-afterB.png": {
+      "pngSha256": "5c9f222362c36c5e89103a922f0812a3fc1f97e943009d3c2a4839c2f9b3b148",
+      "rgbaSha256": "60265e2c3a218aafb61c7b3cdf4193ab927c0f64e91a4ad14227b3d48c2bfdfc",
+      "bytes": 537317
+    },
+    "west2-mixed-beforeA.png": {
+      "pngSha256": "96132095f84e85395c19a46da56bcaca60c56f77b06cec96866133af0aca73b9",
+      "rgbaSha256": "e38a7e4ffdb0b0ad4e10b9889f7e2b2d9e9eaef9d963917a51bb7ddb6f00608c",
+      "bytes": 537182
+    },
+    "west2-mixed-beforeB.png": {
+      "pngSha256": "5c9f222362c36c5e89103a922f0812a3fc1f97e943009d3c2a4839c2f9b3b148",
+      "rgbaSha256": "60265e2c3a218aafb61c7b3cdf4193ab927c0f64e91a4ad14227b3d48c2bfdfc",
+      "bytes": 537317
+    },
+    "west2-mixed-stock.png": {
+      "pngSha256": "d58a856affe26a2579e5ee9d10da83a77132fb8cefc6bdfb72602b72609f9084",
+      "rgbaSha256": "560bee3c97bee7b0274705065f26df17b8ecd861cfa4b21ebc4485208b899693",
+      "bytes": 740080
+    },
+    "west2-mixed-trial.png": {
+      "pngSha256": "d58a856affe26a2579e5ee9d10da83a77132fb8cefc6bdfb72602b72609f9084",
+      "rgbaSha256": "560bee3c97bee7b0274705065f26df17b8ecd861cfa4b21ebc4485208b899693",
+      "bytes": 740080
+    },
+    "west2-outside-afterA.png": {
+      "pngSha256": "d806b71f405448a63134ee99b4b8cac51afa75ec0e57a3be29052fc92c7af8a2",
+      "rgbaSha256": "5c98c1115e61bca96d30e83d7cef612226c4fd1e1048ede5e08bacd1bbab8aae",
+      "bytes": 421168
+    },
+    "west2-outside-afterB.png": {
+      "pngSha256": "fba5cf1f4ad3003884c84186732c3b80cd9d7b456d7cfe8e4347f6f9b1cab77d",
+      "rgbaSha256": "9ce2272b20033b774db883d98dc8e8c2b3df2e72b5157eaba4c13742b2afc958",
+      "bytes": 421088
+    },
+    "west2-outside-beforeA.png": {
+      "pngSha256": "d806b71f405448a63134ee99b4b8cac51afa75ec0e57a3be29052fc92c7af8a2",
+      "rgbaSha256": "5c98c1115e61bca96d30e83d7cef612226c4fd1e1048ede5e08bacd1bbab8aae",
+      "bytes": 421168
+    },
+    "west2-outside-beforeB.png": {
+      "pngSha256": "fba5cf1f4ad3003884c84186732c3b80cd9d7b456d7cfe8e4347f6f9b1cab77d",
+      "rgbaSha256": "9ce2272b20033b774db883d98dc8e8c2b3df2e72b5157eaba4c13742b2afc958",
+      "bytes": 421088
+    },
+    "west2-outside-stock.png": {
+      "pngSha256": "d9b09e30ceee9915e2a7990c877552780db51f515375db3d99ad6cbf10bddddd",
+      "rgbaSha256": "32adf3cdcee319ddef04e0bd430919ac92460c9abcf81cdc965bdbe62f0792d9",
+      "bytes": 421210
+    },
+    "west2-outside-trial.png": {
+      "pngSha256": "d9b09e30ceee9915e2a7990c877552780db51f515375db3d99ad6cbf10bddddd",
+      "rgbaSha256": "32adf3cdcee319ddef04e0bd430919ac92460c9abcf81cdc965bdbe62f0792d9",
+      "bytes": 421210
+    },
+    "west2-reciprocal-afterA.png": {
+      "pngSha256": "ba6b536c4b90696f483fbd4690b0a726e4aa45efbea4256d66f6f190b4b3f2d1",
+      "rgbaSha256": "38ae9f9b56dcc3a691c9d11623b335a428c8ae10afaf87c07a06617cdbfead9c",
+      "bytes": 465485
+    },
+    "west2-reciprocal-afterB.png": {
+      "pngSha256": "ba6b536c4b90696f483fbd4690b0a726e4aa45efbea4256d66f6f190b4b3f2d1",
+      "rgbaSha256": "38ae9f9b56dcc3a691c9d11623b335a428c8ae10afaf87c07a06617cdbfead9c",
+      "bytes": 465485
+    },
+    "west2-reciprocal-beforeA.png": {
+      "pngSha256": "bb49392c7466c64afdeb19fd2da2ffa2e83fc262a7898d32669928526c2848f1",
+      "rgbaSha256": "f46203c00fcb0e9afd84a7a94d459dd441051f6aaa146c2919aa238dc0d8cb62",
+      "bytes": 466316
+    },
+    "west2-reciprocal-beforeB.png": {
+      "pngSha256": "96fbc4bea2727663e67c984639e0c4955a9dce233c0842d1e078c217c9b4ba7b",
+      "rgbaSha256": "fe0e55d497937b1fc96c0ce61573d1489c4b40d2619a7da52d8142b4f8d80cf8",
+      "bytes": 466134
+    },
+    "west2-reciprocal-stock.png": {
+      "pngSha256": "4944898374100af56a3bb290f0e4ff425be56795f7e6cd4bb9ac2e22c6820eac",
+      "rgbaSha256": "2801d3344ea3669338c6bcd1c1884b7faa68166886928b756cffda1004f1a878",
+      "bytes": 466226
+    },
+    "west2-reciprocal-trial.png": {
+      "pngSha256": "ba6b536c4b90696f483fbd4690b0a726e4aa45efbea4256d66f6f190b4b3f2d1",
+      "rgbaSha256": "38ae9f9b56dcc3a691c9d11623b335a428c8ae10afaf87c07a06617cdbfead9c",
+      "bytes": 465485
+    },
+    "west2-stock.png": {
+      "pngSha256": "ff000bba4d0157da82990fb6762aecd0361589a5b00bcbad64edf258061b93cf",
+      "rgbaSha256": "cbbce8391fd7bde349b96d08c65c56e34c619cb75f57bca610d0b76101bc58bd",
+      "bytes": 549151
+    },
+    "west2-trial.png": {
+      "pngSha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804",
+      "rgbaSha256": "6cef3ca20593d6b24eaebe306aad171b0efbc25279632266aef6af5e2bfd6b02",
+      "bytes": 548844
+    }
+  },
+  "v1LocalProjection": {
+    "method": "Pixel centers compared with the projected union of both versions of the five exact north N112 boundary quads, total 10 triangles. Cell inner row reconstructed from original signed quantized DTM, and outer F32 XYZ from the actual saved renderer. Not GPU sample location or new survey.",
+    "direct": {
+      "rgbChangedAll": 3996,
+      "oldSkyStrong": 93,
+      "previouslyOpaqueMax1": 3903,
+      "maxCenterDistanceToUnionPixels": 0.3427806978660195,
+      "outOfOnePixel": 0
+    },
+    "reciprocal": {
+      "rgbChangedAll": 2310,
+      "oldSkyStrong": 134,
+      "previouslyOpaqueMax1": 2176,
+      "maxCenterDistanceToUnionPixels": 0.33166689339673994,
+      "outOfOnePixel": 0
+    }
+  },
+  "v1Native": {
+    "west2": {
+      "pixelGate": {
+        "skyBefore": 93,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 93,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 93,
+        "oldInTarget": 93,
+        "newInTarget": 0,
+        "outsideGuardSkyChanged": 0,
+        "transitionSkyChanged": 0
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "drawn": [
+        "5-1"
+      ],
+      "draws": 43,
+      "triangles": 333978,
+      "contactExact": true,
+      "authorBuffersChanged": 0,
+      "contactSamples": 50
+    },
+    "west2-reciprocal": {
+      "pixelGate": {
+        "skyBefore": 134,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 134,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 134,
+        "oldInTarget": 98,
+        "newInTarget": 0,
+        "outsideGuardSkyChanged": 0,
+        "transitionSkyChanged": 36
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "drawn": [
+        "5-1"
+      ],
+      "draws": 22,
+      "triangles": 299224,
+      "contactExact": true,
+      "authorBuffersChanged": 0,
+      "contactSamples": 50
+    },
+    "west2-outside": {
+      "pixelGate": {
+        "skyBefore": 141,
+        "skyAfter": 141,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0,
+        "outsideWindowSameOwners": true
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "drawn": [
+        "5-1"
+      ],
+      "draws": 22,
+      "triangles": 283760,
+      "contactExact": true,
+      "authorBuffersChanged": 0,
+      "contactSamples": 50
+    },
+    "west2-mixed": {
+      "pixelGate": {
+        "skyBefore": 194608,
+        "skyAfter": 194608,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:112,112,56,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 56,
+          "seams": "56:56,56,8,8",
+          "gainAfter": 0
+        }
+      ],
+      "drawn": [],
+      "draws": 118,
+      "triangles": 322606,
+      "contactExact": true,
+      "authorBuffersChanged": 0,
+      "contactSamples": 50
+    }
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "west2-rim",
+    "owners": [
+      "5-1",
+      "5-2"
+    ],
+    "lon": -64.02374125601338,
+    "lat": 46.99557213383016,
+    "heading": 198,
+    "agl": 61,
+    "targetLL": [
+      -64.02422433035714,
+      46.99454545454545
+    ],
+    "rangeM": [
+      18.119999999999997,
+      19.11990106728126
+    ],
+    "signedCoverMinM": 254,
+    "atlasClasses": [
+      30,
+      40
+    ],
+    "lengthM": 235,
+    "widthM": 30,
+    "scope": "Private virtual QA flight; no information for real navigation."
+  }
+]

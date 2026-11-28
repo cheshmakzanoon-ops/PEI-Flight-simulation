@@ -1,0 +1,31 @@
+{
+  "west2-rim": {
+    "actualCompiledPlayer": true,
+    "profile": {
+      "antialias": true,
+      "alpha": true,
+      "depth": true,
+      "samples": 4
+    },
+    "route": "qa-west2-rim",
+    "scope": "Private aircraft placement from signed dry corridor, no real navigation use.",
+    "drawOwnerAtMovingChase": {
+      "source": "verified",
+      "drawnFine": [
+        "5-1"
+      ]
+    },
+    "travelAtWitnessM": 16.111139221312857,
+    "totalTravelM": 158.85717321044228,
+    "witnessPose": [
+      -63236.923461976214,
+      79.15272496288421,
+      -55072.83923161652,
+      3.4557519189487724
+    ],
+    "groundClearanceM": 61.0327249628842,
+    "drawsAtWitness": 235,
+    "cockpitAndPause": true,
+    "errors": []
+  }
+}

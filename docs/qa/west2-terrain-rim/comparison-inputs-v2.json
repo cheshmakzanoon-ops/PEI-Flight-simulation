@@ -1,0 +1,246 @@
+{
+  "scope": "Exact V2 detached fixed optics and separate ordinary compiled flight custody",
+  "detachedHostSha256": "dca4697500e4fbf312b0bf8fbe736a19b46bea8881eae6214c2969c0fbe71885",
+  "fixedRgba4ReceiptSha256": "8e4bac8487b07e1a16143ac69669e3fe934a7dd12ad11315d5a935f1b52c8dc7",
+  "fixedRgba0ReceiptSha256": "468d3e2b88bfa03f1b969db4dc8af2065442caed60fa11e19dcec2fc70660f74",
+  "actualNative4x": {
+    "west2": {
+      "pose": {
+        "lon": -64.02422433035714,
+        "lat": 46.99454545454545,
+        "first": "5-1",
+        "second": "5-2",
+        "edge": 2,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 64,
+        "agl": 48,
+        "h": 0
+      },
+      "samples": 4,
+      "pixelGate": {
+        "skyBefore": 93,
+        "skyAfter": 0,
+        "skyIntroduced": 0,
+        "strongRGB": 93,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 1,
+        "strongInsideBytes": 93,
+        "oldInTarget": 93,
+        "newInTarget": 0,
+        "outsideGuardSkyChanged": 0,
+        "transitionSkyChanged": 0
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "contactExact": true,
+      "buffersTouched": 0,
+      "contactSamples": 50
+    },
+    "west2-outside": {
+      "pose": {
+        "lon": -64.03131138392857,
+        "lat": 46.99454545454545,
+        "first": "5-1",
+        "second": "5-2",
+        "edge": 2,
+        "east": -0.42,
+        "south": 0.91,
+        "dist": 64,
+        "agl": 48,
+        "h": 0
+      },
+      "samples": 4,
+      "pixelGate": {
+        "skyBefore": 141,
+        "skyAfter": 141,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0,
+        "outsideWindowSameOwners": true
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "contactExact": true,
+      "buffersTouched": 0,
+      "contactSamples": 50
+    }
+  },
+  "actualNative0xStock": {
+    "west2": {
+      "pose": {
+        "lon": -64.02422433035714,
+        "lat": 46.99454545454545,
+        "first": "5-1",
+        "second": "5-2",
+        "edge": 2,
+        "east": 0.42,
+        "south": -0.91,
+        "dist": 64,
+        "agl": 48,
+        "h": 0
+      },
+      "samples": 0,
+      "pixelGate": {
+        "skyBefore": 16,
+        "skyAfter": 16,
+        "skyIntroduced": 0,
+        "strongRGB": 0,
+        "strongOutsideStockSky": 0,
+        "alphaChanged": 0,
+        "positiveStrengthOutsideSky": 0,
+        "strongInsideBytes": 0
+      },
+      "owners": [
+        {
+          "id": "5-1",
+          "lod": 112,
+          "seams": "112:56,56,112,112",
+          "gainAfter": 0
+        },
+        {
+          "id": "5-2",
+          "lod": 112,
+          "seams": "112:112,56,56,56",
+          "gainAfter": 0
+        }
+      ],
+      "contactExact": true,
+      "buffersTouched": 0,
+      "contactSamples": 50
+    }
+  },
+  "exactEncodedPngReproductionFromV1": [
+    {
+      "filename": "west2-stock.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "ff000bba4d0157da82990fb6762aecd0361589a5b00bcbad64edf258061b93cf"
+    },
+    {
+      "filename": "west2-trial.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804"
+    },
+    {
+      "filename": "west2-beforeA.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "401438928c518fd987cf8e9ba0dcd9c8a3ca05e14332373f3bde0818953f0d5c"
+    },
+    {
+      "filename": "west2-beforeB.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "c88b949706ab361557a37e34083ce64079e7c957d5f56f38333a1a97d51c2b15"
+    },
+    {
+      "filename": "west2-afterA.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804"
+    },
+    {
+      "filename": "west2-afterB.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "17502e4bc9c9b6b3d298112fb31d18dee14d40a4a5ad7867479509e24a7e0804"
+    },
+    {
+      "filename": "west2-outside-stock.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "d9b09e30ceee9915e2a7990c877552780db51f515375db3d99ad6cbf10bddddd"
+    },
+    {
+      "filename": "west2-outside-trial.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "d9b09e30ceee9915e2a7990c877552780db51f515375db3d99ad6cbf10bddddd"
+    },
+    {
+      "filename": "west2-outside-beforeA.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "d806b71f405448a63134ee99b4b8cac51afa75ec0e57a3be29052fc92c7af8a2"
+    },
+    {
+      "filename": "west2-outside-beforeB.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "fba5cf1f4ad3003884c84186732c3b80cd9d7b456d7cfe8e4347f6f9b1cab77d"
+    },
+    {
+      "filename": "west2-outside-afterA.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "d806b71f405448a63134ee99b4b8cac51afa75ec0e57a3be29052fc92c7af8a2"
+    },
+    {
+      "filename": "west2-outside-afterB.png",
+      "byteIdenticalV1V2": true,
+      "sha256": "fba5cf1f4ad3003884c84186732c3b80cd9d7b456d7cfe8e4347f6f9b1cab77d"
+    }
+  ],
+  "actual0xOriginalPngInputs": {
+    "west2-afterA.png": {
+      "pngSha256": "b5dff2b3d279ecde512a433dc9b39a4fb6cf881139afa175db9a14507c986682",
+      "rgbaSha256": "cfc3f1fb0180d3775ef75ce69b9ec41e1400042f1447240307a209681c66612c"
+    },
+    "west2-afterB.png": {
+      "pngSha256": "d0e8ce6da0f3774d3c2585e19d590093035253352eaf2bc5ddbfc36eecd91ffd",
+      "rgbaSha256": "57b2253f4d78f10f8a8c73182fd291a5ac8aa4e4c09873cce9e8a5ea687f6431"
+    },
+    "west2-beforeA.png": {
+      "pngSha256": "b5dff2b3d279ecde512a433dc9b39a4fb6cf881139afa175db9a14507c986682",
+      "rgbaSha256": "cfc3f1fb0180d3775ef75ce69b9ec41e1400042f1447240307a209681c66612c"
+    },
+    "west2-beforeB.png": {
+      "pngSha256": "d0e8ce6da0f3774d3c2585e19d590093035253352eaf2bc5ddbfc36eecd91ffd",
+      "rgbaSha256": "57b2253f4d78f10f8a8c73182fd291a5ac8aa4e4c09873cce9e8a5ea687f6431"
+    },
+    "west2-stock.png": {
+      "pngSha256": "21faaf19d2a4c64f1e10fb7e2a62e29058898965514e5659698979bd52e4ac33",
+      "rgbaSha256": "521dcdc8002ae455f02bfcd45e26f45e104a0f00af073114ccd3d567f7a33c99"
+    },
+    "west2-trial.png": {
+      "pngSha256": "21faaf19d2a4c64f1e10fb7e2a62e29058898965514e5659698979bd52e4ac33",
+      "rgbaSha256": "521dcdc8002ae455f02bfcd45e26f45e104a0f00af073114ccd3d567f7a33c99"
+    }
+  },
+  "reciprocalAndSourcePrimedMixed": "Qualified in detached V1; no V2 check asserted in this receipt",
+  "ordinaryMotion": {
+    "receipt": "ordinary-flight.json",
+    "receiptSha256": "e92309b4760920c52bb97da2ab3c3a112745c84a75f760762c9c59034566deda",
+    "camera": "Chase",
+    "motionProof": "Real UI Begin, original controls and browser time; a single private test site appended.",
+    "soleFixtureSourceDifference": "src/sim/places.ts (private virtual departure only)",
+    "fixtureCompiledMainSha256": "72a91878d228729c04a15207d19b9bdfd1fe7bc3a6dc07838d23af6b4d4a752b",
+    "qualifiedOrdinaryMainSha256": "8848460bf1dbdcd3152b6d596334fd46bea62b1cf17db59f6498aa3ba968988d",
+    "phase": "PASS",
+    "northSubmittedAtM": 16.111139221312857,
+    "totalTravelM": 158.85717321044228,
+    "groundClearanceM": 61.0327249628842,
+    "cockpitAndPause": true,
+    "samples": 4,
+    "errors": []
+  }
+}

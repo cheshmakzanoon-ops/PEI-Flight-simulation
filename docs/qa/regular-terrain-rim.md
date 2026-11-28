@@ -1,5 +1,7 @@
 # Close two exposed terrain rims
 
+The separately verified [northwest four-vertex rim closure](west2-terrain-rim.md) does not expand these two eastern draw scopes.
+
 Two near-terrain seams could show dotted sky through the fields. The
 original renderer placed each tile from its own centre; Float32 rounding
 left a **3.90625 mm gap** at these two shared edges. Existing level-of-detail

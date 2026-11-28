@@ -14,6 +14,7 @@ import {POINT_PRIM} from './point-prim/admit.ts';
 import {POINT_PRIM_GRADE} from './point-prim/stamp.ts';
 import {smoothShoreTone} from './shore-tone.ts';
 import {RegularNorthRimDraw} from './regular-z-rim-host.ts';
+import {West2RimDraw} from './west2-rim-host.ts';
 import {KINGS_DRY_CROWN} from '../sim/kings-dry-crown.generated.ts';
 import {kingsRidgeMayDraw} from './kings-ridge-view.ts';
 import {KINGS_CROWN_ZERO_M,KingsCrownMorph,kingsCrownBlendForDistance} from './kings-crown-rolloff.ts';
@@ -804,6 +805,7 @@ export class World {
  readonly rusticoSoilStrength={value:0};
  private readonly grades=new Map<string,BoundedGrade>();
  private readonly regularNorthRims?:RegularNorthRimDraw;
+ private readonly west2Rim?:West2RimDraw;
  private bordenLease?:BordenBackgroundLease;
  private bordenCanopy?:BordenCanopyResident;
  private bordenProp?:BordenPropResident;
@@ -877,6 +879,8 @@ export class World {
  }
  beginRegularNorthRimDraw(camera:THREE.PerspectiveCamera){return this.regularNorthRims?.begin(camera);}
  get regularNorthRimState(){return this.regularNorthRims?.diagnostics();}
+ beginWest2RimDraw(camera:THREE.PerspectiveCamera){return this.west2Rim?.begin(camera);}
+ get west2RimState(){return this.west2Rim?.diagnostics();}
  private princeLandscape?:{terrain:Patch;mesh:THREE.Mesh;lease:PrinceLandscapeLease;seams?:string};
  private princeRejected?:THREE.BufferGeometry;
  get princeLandscapeReady(){return !!this.princeLandscape;}
@@ -1230,6 +1234,8 @@ export class World {
    // No shader or geometry change takes place during world construction.
    if(regularNorthRimTerrainSha)this.regularNorthRims=new RegularNorthRimDraw(
     scene,renderer,terrain,cover,regularNorthRimTerrainSha,id=>this.byId.get(id),id=>this.grades.has(id));
+   if(regularNorthRimTerrainSha)this.west2Rim=new West2RimDraw({scene,renderer,terrain,cover,
+    terrainSha:regularNorthRimTerrainSha,tile:id=>this.byId.get(id),protectedGrade:id=>this.grades.has(id)});
    if(cover.baywalk){
     const b=cover.baywalk,[uu,vv]=T.uv((b.x0+b.x1)*.5,(b.z0+b.z1)*.5);
     const tile=this.byId.get(Math.floor(uu*nx)+'-'+Math.floor(vv*nz));
