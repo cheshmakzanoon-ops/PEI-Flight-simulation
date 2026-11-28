@@ -4,6 +4,24 @@
   "rgba8Samples": 4,
   "depthBits": 24,
   "layout": "q032001/163",
+  "sourceInputsManifestSHA": "deaa93a7e8f859c568641f63e270033ed04e3dd04f475f16722ff1dcb66fdcde",
+  "lightsBinding": {
+    "unit": 5,
+    "resolveTextureID": 1,
+    "lookupTextureID": 2,
+    "sha256": "b41ba8e2bd29fa007dfbf034d4d58b853f378062183847846b1f6d228f2c7e79",
+    "bytes": 1024,
+    "width": 16,
+    "height": 16,
+    "format": "RG16F internal, RG/HALF_FLOAT source",
+    "filter": "LINEAR",
+    "wrap": "CLAMP_TO_EDGE",
+    "mips": false,
+    "flipY": false,
+    "colorspace": "none",
+    "exactRendererSource": "Three r187 DFGLUTData.getDFGLUT()"
+  },
+  "boundStockAlbedoUnit": 0,
   "drawsIncludingNeutralFloor": 11,
   "stationTriangles": 5299,
   "newTriangles": 0,
@@ -75,24 +93,142 @@
       "files": {
         "stock": {
           "name": "street-quarter-stock.png",
-          "sha": "6e48ea2609207c89a892c7eab7c05798539396ffdb8c774c672c1062a935cb84"
+          "sha": "5cc439354e9b213d586c355c5b7ddfc3e5254866488d8c5fd16be664b464eacc"
         },
         "finish": {
           "name": "street-quarter-finish.png",
-          "sha": "0726dac36982303220b2fd5dba6a798802f8835a24987e0707fbe736df438eaa"
+          "sha": "df1f42398760158507880d475230d7f6831f6dde9a7b12e9ddc26dfd8216bb3a"
         },
         "role": {
           "name": "street-quarter-role.png",
           "sha": "280816ba04bcde8170668958e63b59ffbe609612abb19cdaf7179750d0abc063"
         }
       },
-      "sameLinkedNeutralRGBA": "17459b13ea6a3442bff72890b5e413cc35cfef2be0af9af6d171e4ff91e40d09",
-      "restoreRGBA": "17459b13ea6a3442bff72890b5e413cc35cfef2be0af9af6d171e4ff91e40d09",
+      "sameLinkedNeutralRGBA": "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508",
+      "restoreRGBA": "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "Z",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "B",
+          "8e0931c952a5d493ae25ca04792d7fe9aed89c58f217e1f2d5a22fd68535640c"
+        ],
+        [
+          "A",
+          "9912f92e09bfae434aecd5525b92b9b9d013e94f18b5fe498a887d4fc30a6508"
+        ],
+        [
+          "M",
+          "34210ad6c914d398940c54b60ef87c6c00967d29b333761ba8536605447e5eca"
+        ],
+        [
+          "M",
+          "34210ad6c914d398940c54b60ef87c6c00967d29b333761ba8536605447e5eca"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 80753,
       "mixedRoofPixels": 1838,
-      "strongRGBGT3": 54836,
+      "strongRGBGT3": 56033,
       "roofBox": [
         38,
         238,
@@ -100,33 +236,151 @@
         484
       ],
       "pureRoofLumaDeltaQ10_Q50_Q90": [
-        -8.353,
+        -8.1404,
         -1.0,
-        7.068199999999999
+        7.1404
       ]
     },
     "harbour-quarter": {
       "files": {
         "stock": {
           "name": "harbour-quarter-stock.png",
-          "sha": "9d6ee920262427bf12a4a8896ccd878e2c3d8be0fb6069934bb76c0b707bb6f7"
+          "sha": "4cc421b2cc9d506095c53b023159d7bd46973eb2dfffd92ce95a8c03239dd765"
         },
         "finish": {
           "name": "harbour-quarter-finish.png",
-          "sha": "f4ae76f84d9391a1ab1e25f77b547f7666bdb888ea3545cf9d7c6ce9faa0aaf0"
+          "sha": "578aad5fdd1c750c97dbd1381118f1601a61918a595fcaf7a6f7d083582b0de2"
         },
         "role": {
           "name": "harbour-quarter-role.png",
           "sha": "a06c1e39561010841133550d5db71ce792631d87fa3bf4972fbbb00062aa154a"
         }
       },
-      "sameLinkedNeutralRGBA": "a9ca18875a9ea9131f2684be773e5d75b03301d524974412c163f3cae066faff",
-      "restoreRGBA": "a9ca18875a9ea9131f2684be773e5d75b03301d524974412c163f3cae066faff",
+      "sameLinkedNeutralRGBA": "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1",
+      "restoreRGBA": "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "Z",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "B",
+          "6628eee632f0bdd4cc7e217c68dc36211fadf95827762314e52007698ee1283c"
+        ],
+        [
+          "A",
+          "3b9dedc34083a3d804abb76e723642852cf5bb81a8eaaaf9ee91c1b1def00ca1"
+        ],
+        [
+          "M",
+          "0adab1285c04352e7be09f1f886ae16427e17da5380c1a8fa389d617d1f93c9a"
+        ],
+        [
+          "M",
+          "0adab1285c04352e7be09f1f886ae16427e17da5380c1a8fa389d617d1f93c9a"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 122332,
       "mixedRoofPixels": 2314,
-      "strongRGBGT3": 79714,
+      "strongRGBGT3": 83597,
       "roofBox": [
         32,
         225,
@@ -136,31 +390,149 @@
       "pureRoofLumaDeltaQ10_Q50_Q90": [
         -7.1404,
         -1.2126000000000001,
-        6.1404
+        7.068199999999999
       ]
     },
     "flyby-scale": {
       "files": {
         "stock": {
           "name": "flyby-scale-stock.png",
-          "sha": "c4ddd96e0e69c226f982a80315a563a9349442b4bad894ecc7584cb6bafa4086"
+          "sha": "a64122fe90a8ef4b3a78622b2149a82e53eddbdf3f882edaf44394f7db02de93"
         },
         "finish": {
           "name": "flyby-scale-finish.png",
-          "sha": "fa718ba00bc555274b14b7b72ee1651fee78f35bb7097569db2730b26d2d435d"
+          "sha": "e6a158d069400908ac59b142992c8568c075ab626ee7f9bab145a57aeba70ba6"
         },
         "role": {
           "name": "flyby-scale-role.png",
           "sha": "ccd2d02139626736cc03518bf8488ee9e2bd96b437db336b56c2e4938d80a764"
         }
       },
-      "sameLinkedNeutralRGBA": "c350efa9787d0779fe3950e372f33c5e7becd83c36b5fcf4ee9c1773cb64cb98",
-      "restoreRGBA": "c350efa9787d0779fe3950e372f33c5e7becd83c36b5fcf4ee9c1773cb64cb98",
+      "sameLinkedNeutralRGBA": "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281",
+      "restoreRGBA": "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "Z",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "B",
+          "12dbfa116157bfd912b53b54d1852c8e7dee7ce7834bfa01a8863bfe49700402"
+        ],
+        [
+          "A",
+          "eab7cead71d0e2712d3530c568048d1d926a1d309ab1264e017ea9e1d8044281"
+        ],
+        [
+          "M",
+          "0fd97c09e542402f06fa92c34da32cb9ecf77cb7adcb7f56160495b5937126c3"
+        ],
+        [
+          "M",
+          "0fd97c09e542402f06fa92c34da32cb9ecf77cb7adcb7f56160495b5937126c3"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 6736,
       "mixedRoofPixels": 572,
-      "strongRGBGT3": 4609,
+      "strongRGBGT3": 4782,
       "roofBox": [
         412,
         312,
@@ -168,9 +540,9 @@
         395
       ],
       "pureRoofLumaDeltaQ10_Q50_Q90": [
-        -7.1404,
-        -2.0,
-        5.1404
+        -7.068199999999999,
+        -2.2126,
+        6.0682
       ]
     },
     "turned-away": {
@@ -190,6 +562,124 @@
       },
       "sameLinkedNeutralRGBA": "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364",
       "restoreRGBA": "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "Z",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "B",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "A",
+          "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364"
+        ],
+        [
+          "M",
+          "6cd17d8aac587c4b640fde0834bf226613c89289b1eaad61388dbaff54251df8"
+        ],
+        [
+          "M",
+          "6cd17d8aac587c4b640fde0834bf226613c89289b1eaad61388dbaff54251df8"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 0,

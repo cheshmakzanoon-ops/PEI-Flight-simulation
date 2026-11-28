@@ -4,6 +4,24 @@
   "rgba8Samples": 4,
   "depthBits": 24,
   "layout": "q032001/163",
+  "sourceInputsManifestSHA": "499be778e9a68cb0d4f60c239aa825c661203896feea54409ad6d6b69ecf1a55",
+  "lightsBinding": {
+    "unit": 5,
+    "resolveTextureID": 1,
+    "lookupTextureID": 2,
+    "sha256": "b41ba8e2bd29fa007dfbf034d4d58b853f378062183847846b1f6d228f2c7e79",
+    "bytes": 1024,
+    "width": 16,
+    "height": 16,
+    "format": "RG16F internal, RG/HALF_FLOAT source",
+    "filter": "LINEAR",
+    "wrap": "CLAMP_TO_EDGE",
+    "mips": false,
+    "flipY": false,
+    "colorspace": "none",
+    "exactRendererSource": "Three r187 DFGLUTData.getDFGLUT()"
+  },
+  "boundStockAlbedoUnit": 0,
   "drawsIncludingNeutralFloor": 11,
   "stationTriangles": 5299,
   "newTriangles": 0,
@@ -137,24 +155,142 @@
       "files": {
         "stock": {
           "name": "native-aperture-n360-stock.png",
-          "sha": "d404ec91701c3948132d10d9c78be2fc70439264e42d4fd4ca91d9a0e85f93c0"
+          "sha": "9d3cf64bd183325fae8eb17a530ebd227ef89dc3fe4ec7678ec9b5612af5e515"
         },
         "finish": {
           "name": "native-aperture-n360-finish.png",
-          "sha": "55e86f8854852cb1693e34e4e771795a1019845b8dad164531dd3b89c17fa99e"
+          "sha": "e2db3ce0b1a2c32a993951950f18b6802391065e8ec41e0e2a8b9d5f64970448"
         },
         "role": {
           "name": "native-aperture-n360-role.png",
           "sha": "4d134b4883c53028c4f4d726e393ecc8c813ede33414e4510d51beb18765b879"
         }
       },
-      "sameLinkedNeutralRGBA": "a4dd8b0329e4976c787f07cbc2decba59ea329e4372fe1c325615f2f8236a74f",
-      "restoreRGBA": "a4dd8b0329e4976c787f07cbc2decba59ea329e4372fe1c325615f2f8236a74f",
+      "sameLinkedNeutralRGBA": "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3",
+      "restoreRGBA": "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "Z",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "B",
+          "e4a160a76074e58ec02090aa06e89b9cd728a48befc080843422a790b1aadf86"
+        ],
+        [
+          "A",
+          "6a06c1aadf79be9e3fe4c361efb748c111b0c9e3e6512402cdea1f165ecf5bc3"
+        ],
+        [
+          "M",
+          "42d41e49544db437e9f44e53677d02b7e8d82fb6bdc2849eb7af17989c507bf0"
+        ],
+        [
+          "M",
+          "42d41e49544db437e9f44e53677d02b7e8d82fb6bdc2849eb7af17989c507bf0"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 1468,
       "mixedRoofPixels": 281,
-      "strongRGBGT3": 756,
+      "strongRGBGT3": 854,
       "roofBox": [
         770,
         506,
@@ -163,32 +299,150 @@
       ],
       "pureRoofLumaDeltaQ10_Q50_Q90": [
         -5.212599999999999,
-        -1.2126000000000001,
-        2.9278
+        -1.7151999999999998,
+        4.1404
       ]
     },
     "native-aperture-n420": {
       "files": {
         "stock": {
           "name": "native-aperture-n420-stock.png",
-          "sha": "076857067e09f542f2766e7002c2235d0ff61f95b35c9d82b7e5ca276fd5eb17"
+          "sha": "6047a19bf3715a052a81f9b67877e534678b0bfda73beb273a73572ee3812f3c"
         },
         "finish": {
           "name": "native-aperture-n420-finish.png",
-          "sha": "0de6ce2901e241a75adeda854f397d49800629a87e89cb8311198b899a4457ce"
+          "sha": "302f2e0b14fd4931a4cc0d884469db69cecb30c3698a9911cfaa03c5e72634a1"
         },
         "role": {
           "name": "native-aperture-n420-role.png",
           "sha": "2399834f9ec85deb2668bf3e1eb641dd3507ad6d3b78427f314216c353addc4f"
         }
       },
-      "sameLinkedNeutralRGBA": "499273c7c0488ef21311f595970a2d822bd7382108e60de259435f28c1b173d1",
-      "restoreRGBA": "499273c7c0488ef21311f595970a2d822bd7382108e60de259435f28c1b173d1",
+      "sameLinkedNeutralRGBA": "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035",
+      "restoreRGBA": "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035",
+      "sequence": "AAZBABZBBAAAZZBBZAZZAABZBAMM",
+      "steps": [
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "Z",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "B",
+          "f01960d63462db10929a48a5e419e8482fddb60682491ffb0718da55e4834c5f"
+        ],
+        [
+          "A",
+          "a4f9f01a01492f648ed639093bc1cfa502d1ffd5b86ab306618f914b190c1035"
+        ],
+        [
+          "M",
+          "1dd04567fcf6b6681b20ef7944ea3d8490c196a75b056a4ff3adfbd749448536"
+        ],
+        [
+          "M",
+          "1dd04567fcf6b6681b20ef7944ea3d8490c196a75b056a4ff3adfbd749448536"
+        ]
+      ],
+      "coldStockExact": true,
+      "firstStockRollbackExact": true,
+      "firstGainZeroRollbackExact": true,
       "trueWholeFrameAlphaChanges": 0,
       "changedOutsideRole": 0,
       "touchedRoofPixels": 5100,
       "mixedRoofPixels": 514,
-      "strongRGBGT3": 2992,
+      "strongRGBGT3": 3178,
       "roofBox": [
         850,
         616,
@@ -196,9 +450,9 @@
         700
       ],
       "pureRoofLumaDeltaQ10_Q50_Q90": [
-        -5.425199999999999,
-        -1.2126000000000001,
-        4.4252
+        -6.1404,
+        -1.8576,
+        5.1404
       ]
     }
   }

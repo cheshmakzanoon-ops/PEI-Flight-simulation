@@ -43,6 +43,22 @@ fittings are **illustrative**, not surveyed. No pixels from the consulted photog
   The 15 physical joins were independently checked against continuous
   adjacent EBO edges with distinct face normals, not traced from photos.
 
+
+## Detached lighting correction
+
+The first detached plates in commit `267e0a1` omitted Three r187's
+existing `dfgLUT` sampler binding in the raw EGL harness. Those
+programs rendered with an unrelated unit-0 texture at that uniform.
+The plates and image receipts here are re-rendered with the exact
+shipped 16×16 RG16F lookup on independent unit 5; its binary16
+data SHA-256 is
+`b41ba8e2bd29fa007dfbf034d4d58b853f378062183847846b1f6d228f2c7e79`.
+Lookup texels use linear filtering, edge clamp, no mipmaps or colour
+conversion. Original albedo stays on unit 0; the resolve target is
+not sampled. No art, terrain, geometry, input camera, or software
+tolerance changed. This corrects the detached light response, not
+the installed game or a missed real-device benchmark.
+
 ## Actual rendering evidence
 
 The r187 ShaderLib and WebGLProgram generate the original and patched
@@ -55,15 +71,16 @@ the same depth and geometry.
 
 | Matched render | Roof pixel bounding box (upper ends exclusive) | Pixels with any RGB delta >3 | Changes outside old roof | Alpha changes |
 |---|---:|---:|---:|---:|
-| Street quarter | [38,238,836,484] | 54,836 | 0 | 0 |
-| Harbour quarter | [32,225,869,625] | 79,714 | 0 | 0 |
-| Detached flyby-scale | [412,312,636,395] | 4,609 | 0 | 0 |
+| Street quarter | [38,238,836,484] | 56,033 | 0 | 0 |
+| Harbour quarter | [32,225,869,625] | 83,597 | 0 | 0 |
+| Detached flyby-scale | [412,312,636,395] | 4,782 | 0 | 0 |
 | Turned away | none | 0 | 0 | 0 |
-| Archived normal Chase n360, isolated re-render | [770,506,896,544] | 756 | 0 | 0 |
-| Archived normal Chase n420, isolated re-render | [850,616,1062,700] | 2,992 | 0 | 0 |
+| Archived normal Chase n360, isolated re-render | [770,506,896,544] | 854 | 0 | 0 |
+| Archived normal Chase n420, isolated re-render | [850,616,1062,700] | 3,178 | 0 | 0 |
 
-Unpatched versus linked gain zero and restoration were whole-frame byte
-exact. Four focused tests and strict no-emit TypeScript pass. The tests
+Cold repeated stock, linked gain zero and the first unpatched and linked
+rollbacks were whole-frame byte exact across 28 deterministic
+mixed-order captures per view. Four focused tests and strict no-emit TypeScript pass. The tests
 cover authentic asset custody, literal crease attachment, one-word
 faults, refusal of optional shadow mode and restore of borrowed
 resources. At close range the worn surface makes the original slopes
@@ -107,7 +124,7 @@ registered depth roles. Require byte-exact unpatched/gain-zero/restore,
 no RGBA changes outside the old roof coverage, unchanged actual
 terrain/roads/water/aircraft/shadows and protected peer submissions,
 no new requests, and exit, ignored, stock and shadow comparisons. Check
-motion as well as stills. No canonical file or live mount changed.
+motion as well as stills. The original game-owned station remains unchanged; this art study is not installed.
 
 ## Rebuild
 
@@ -120,14 +137,16 @@ browser or imagery download is needed.
 roof=tools/art/summerside-station/roof-finish
 node --experimental-transform-types --test "$roof/qa/rail-roof-finish.test.mjs"
 ./node_modules/.bin/tsc --target ES2022 --module nodenext --moduleResolution nodenext --skipLibCheck --strict --noEmit "$roof/rail-roof-finish.ts"
+lut=$(mktemp -d)
+node "$roof/qa/export-dfg.mjs" "$lut"
 node --experimental-transform-types "$roof/qa/export-studio.mjs" /tmp/pei-roof-new-proof
-python "$roof/qa/render-studio.py" /tmp/pei-roof-new-proof
+python "$roof/qa/render-studio.py" /tmp/pei-roof-new-proof /tmp/pei-roof-new-render "$lut"
 # Optional detached re-render with the archived ordinary lens:
 node --experimental-transform-types "$roof/qa/export-studio.mjs" /tmp/pei-roof-new-route /path/to/baseline.json
-python "$roof/qa/render-studio.py" /tmp/pei-roof-new-route
+python "$roof/qa/render-studio.py" /tmp/pei-roof-new-route /tmp/pei-roof-new-route-render "$lut"
 ```
 
-[evidence/detached-egl.json](evidence/detached-egl.json) pins the five
+[evidence/detached-egl.json](evidence/detached-egl.json) pins the cold and mixed-order
 lanes at every detached lab pose. The
 [archived-camera receipt](evidence/archived-camera-egl.json) pins the
 separate re-render with the archived real Chase matrices. Neither is a

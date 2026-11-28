@@ -1,11 +1,13 @@
 """Resolve true 4x native ES3 plates from emitted Three r187 material programs.
 The backdrop is a neutral studio plane, not Summerside gameplay or real terrain.
 """
-import math, runpy, sys
+import math, runpy, sys, random
 from pathlib import Path
 import numpy as np
 from PIL import Image
 D = Path(sys.argv[1]).resolve()
+OUT=Path(sys.argv[2]).resolve();OUT.mkdir()
+LUT=Path(sys.argv[3] if len(sys.argv)>3 else '.').resolve()
 globals().update(runpy.run_path(str(Path(__file__).with_name('egl_support.py'))))
 M = json.loads((D/'manifest.json').read_text())
 w,h=M['viewport']
@@ -49,6 +51,25 @@ tex=one('glGenTextures');btex(TEX,tex)
 gl('glTexStorage2D',None,U,I,U,I,I)(TEX,1,0x8058,w,h)
 gl('glFramebufferTexture2D',None,U,U,U,U,I)(FBO,0x8ce0,TEX,tex,0)
 assert gl('glCheckFramebufferStatus',U,U)(FBO)==0x8cd5
+
+# r187 MeshStandard's DFG term is live without an envMap. This must
+# not alias the old albedo sampler or the frame resolve. Use the exact
+# shipped DataTexture's opaque binary16 words and sampler law.
+meta=json.loads((LUT/'r187-dfg.json').read_text())
+words=(LUT/'r187-dfg.rg16f').read_bytes()
+assert len(words)==1024 and sha(words)==meta['sha256']=='b41ba8e2bd29fa007dfbf034d4d58b853f378062183847846b1f6d228f2c7e79'
+assert (meta['width'],meta['height'])==(16,16) and meta['filter']=='LINEAR' and meta['wrap']=='CLAMP_TO_EDGE'
+assert meta['mips']==meta['flipY']==False and meta['colorspace']=='none'
+dfg=one('glGenTextures');unit=5
+activate=gl('glActiveTexture',None,U)
+activate(0x84c0+unit);btex(TEX,dfg)
+gl('glPixelStorei',None,U,I)(0x0cf5,1)
+gl('glTexImage2D',None,U,I,I,I,I,I,U,U,V)(TEX,0,0x822f,16,16,0,0x8227,0x140b,C.create_string_buffer(words))
+for key,value in [(0x2800,0x2601),(0x2801,0x2601),(0x2802,0x812f),(0x2803,0x812f)]:
+ gl('glTexParameteri',None,U,U,I)(TEX,key,value)
+ fetch=I();gl('glGetTexParameteriv',None,U,U,P)(TEX,key,C.byref(fetch));assert fetch.value==value
+activate(0x84c0);btex(TEX,0)
+e0('authentic r187 LUT bound independently of resolve')
 
 B=program({'vertex':"""#version 300 es
 void main(){vec2 a=vec2((gl_VertexID&1)*4-1,(gl_VertexID>>1)*4-1); gl_Position=vec4(a,0.,1.);}
@@ -114,6 +135,8 @@ for part in M['exported']:
 e0('geometry and 4 sampler owners linked')
 def rgba():
  bind(0x8ca8,multi);bind(0x8ca9,resolved)
+ gl('glReadBuffer',None,U)(0x8ce0)
+ gl('glDrawBuffers',None,I,C.POINTER(U))(1,(U*1)(0x8ce0))
  gl('glBlitFramebuffer',None,I,I,I,I,I,I,I,I,U,U)(0,0,w,h,0,0,w,h,0x4000,0x2600)
  bind(FBO,resolved)
  dst=C.create_string_buffer(w*h*4)
@@ -123,6 +146,12 @@ def rgba():
 def draw(cv,appearance,gain=0.):
  LOG=2./math.log2(cv.get('far',380.)+1.)
  bind(FBO,multi);viewport(0,0,w,h);depth(1)
+ sv=I();gl('glGetIntegerv',None,U,P)(0x80a9,C.byref(sv));assert sv.value==4
+ gl('glDrawBuffers',None,I,C.POINTER(U))(1,(U*1)(0x8ce0))
+ gl('glColorMask',None,U1,U1,U1,U1)(1,1,1,1)
+ gl('glDisable',None,U)(0x0c11);gl('glDisable',None,U)(0x809e);gl('glDisable',None,U)(0x80a0)
+ gl('glClearDepthf',None,F)(1.);gl('glDepthRangef',None,F,F)(0.,1.)
+ gl('glBindBuffer',None,U,U)(0x88eb,0);gl('glPixelStorei',None,U,I)(0x0d05,1)
  gl('glClearColor',None,F,F,F,F)(.58,.60,.62,1.0);clear(0x4100)
  disable(0x0be2);disable(0x0b44);enable(0x0b71)
  gl('glDepthFunc',None,U)(0x0203)
@@ -135,6 +164,14 @@ def draw(cv,appearance,gain=0.):
  for part,ks,pic in picked:
   mode=appearance if appearance in ks else 'stock'
   p,v=ks[mode];use(p);bvao(v)
+  dfgLoc=number('dfgLUT',p)
+  if mode!='marker':assert dfgLoc>=0,(part['name'],mode)
+  if dfgLoc>=0:
+   activate(0x84c0+unit)
+   b=I();gl('glGetIntegerv',None,U,P)(0x8069,C.byref(b));assert b.value==dfg.value and dfg.value!=tex.value
+   seti(dfgLoc,unit)
+   r=I();gl('glGetUniformiv',None,U,I,P)(p,dfgLoc,C.byref(r));assert r.value==unit
+  activate(0x84c0);btex(TEX,pic)
   mat(p,'viewMatrix',cv['view']);mat(p,'modelMatrix',M['studioModel'])
   mat(p,'modelViewMatrix',cv['modelView']);mat(p,'normalMatrix',cv['normalView'])
   mat(p,'projectionMatrix',cv['projection'])
@@ -151,14 +188,19 @@ def draw(cv,appearance,gain=0.):
   gl('glDrawElements',None,U,I,U,V)(4,part['indices'],0x1403,None)
  return rgba()
 def output(path,arr):
- with (D/path).open('xb') as f:Image.fromarray(arr).save(f,format='PNG')
- return {'name':path,'sha':sha((D/path).read_bytes())}
+ with (OUT/path).open('xb') as f:Image.fromarray(arr).save(f,format='PNG')
+ return {'name':path,'sha':sha((OUT/path).read_bytes())}
 results={}
+sequence='AAZBABZBBA'+''.join(random.Random(90+i).choice('AZB') for i in range(11))+'ABZBAMM'
+states={'A':('stock',0.),'Z':('active',0.),'B':('active',1.),'M':('marker',0.)}
 for name,cv in M['cameras'].items():
- old=draw(cv,'stock'); off=draw(cv,'active',0.)
- new=draw(cv,'active',1.); restored=draw(cv,'active',0.)
- role=draw(cv,'marker')[:,:,0]
- assert np.array_equal(old,off) and np.array_equal(old,restored),name
+ kept={}; steps=[]
+ for i,t in enumerate(sequence):
+  state=draw(cv,*states[t])
+  oldState=kept.setdefault('A' if t=='Z' else t,state)
+  assert np.array_equal(oldState,state),(name,'first/cold/rollback',i,t,int(np.any(oldState!=state,axis=2).sum()))
+  steps.append([t,sha(state.tobytes())])
+ old=off=restored=kept['A'];new=kept['B'];role=kept['M'][:,:,0]
  diff=np.max(np.abs(new[:,:,:3].astype('i2')-old[:,:,:3].astype('i2')),axis=2)
  assert np.array_equal(new[:,:,3],old[:,:,3]) and np.all(old[:,:,3]==255) and not np.any(diff[role==0]),name
  assert set(np.unique(role))<=set([0,64,128,191,255])
@@ -170,13 +212,16 @@ for name,cv in M['cameras'].items():
  mask=role==255
  luma=(new[:,:,:3].astype('f8')-old[:,:,:3].astype('f8'))@np.array([.2126,.7152,.0722])
  results[name]={'files':p,'sameLinkedNeutralRGBA':sha(off.tobytes()),'restoreRGBA':sha(restored.tobytes()),
+  'sequence':sequence,'steps':steps,'coldStockExact':True,'firstStockRollbackExact':True,'firstGainZeroRollbackExact':True,
   'trueWholeFrameAlphaChanges':0,'changedOutsideRole':0,'touchedRoofPixels':int(mask.sum()),
   'mixedRoofPixels':int((scale & ~mask).sum()),'strongRGBGT3':int((diff>3).sum()),
   'roofBox':None if not len(x) else [int(x.min()),int(y.min()),int(x.max())+1,int(y.max())+1],
   'pureRoofLumaDeltaQ10_Q50_Q90':None if not len(x) else [float(i) for i in np.quantile(luma[mask],[.1,.5,.9])]}
  print(name,results[name]['roofBox'],results[name]['strongRGBGT3'],results[name]['pureRoofLumaDeltaQ10_Q50_Q90'],flush=True)
 out={'status':'Detached native EGL, no terrain or flight', 'driver':driver,'rgba8Samples':4,'depthBits':24,
- 'layout':M['layout'],'drawsIncludingNeutralFloor':len(picked)+1,'stationTriangles':sum(q[0]['indices']//3 for q in picked),
+ 'layout':M['layout'],'sourceInputsManifestSHA':sha((D/'manifest.json').read_bytes()),
+ 'lightsBinding':{'unit':unit,'resolveTextureID':int(tex.value),'lookupTextureID':int(dfg.value),**meta},
+ 'boundStockAlbedoUnit':0,'drawsIncludingNeutralFloor':len(picked)+1,'stationTriangles':sum(q[0]['indices']//3 for q in picked),
  'newTriangles':0,'newDraws':0,'additionalTextureFetches':0,'shaderChanges':['one roof material only'],
  'viewPoses':{k:{'eye':v['eye'],'target':v['target'],'FOV':v['fov'],'archivedBaseline':v.get('archivedBaseline')} for k,v in M['cameras'].items()},'views':results}
-with (D/'render-receipt.json').open('x') as f:json.dump(out,f,indent=2);f.write('\n')
+with (OUT/'render-receipt.json').open('x') as f:json.dump(out,f,indent=2);f.write('\n')
