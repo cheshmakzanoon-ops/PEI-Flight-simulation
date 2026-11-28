@@ -1,0 +1,8 @@
+{
+  "scope": "New independent reciprocal fixed camera evidence only; the former low reciprocal whole-frame zero sky and one-component failures remain literal HOLD.",
+  "target": {"signedOwners":["20-16","20-17"],"edge":17,"alongWindow":[384,386,402,404]},
+  "camera": {"east":-0.42,"south":0.91,"distanceM":56,"aboveGroundM":52,"h":0},
+  "rationale": "The same reciprocal horizontal direction and signed source focus, with a steeper depressed lens to retain the investigated seam but exclude the distant horizon from both original and candidate.",
+  "pass": ["whole 4x native sky occupancy exactly zero even in the diagnostic old gain0 draw and also candidate gain1", "20-17 original rim drawn in all brackets", "real source support prism and regular owners exact", "native contrast lower both median and p90 with at least 8 matched samples and >100 strong RGB, alpha0 and literal marker exterior0", "unchanged high/outside controls followed by separate moving gates"],
+  "fail": "Do not publish a new scope if any new exact predicate refuses; do not overwrite original low reciprocal receipts."
+}

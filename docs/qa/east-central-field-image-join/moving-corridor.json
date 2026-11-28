@@ -1,0 +1,36 @@
+[
+  {
+    "lon": -62.83470189398629,
+    "lat": 46.20312037327427,
+    "heading": 55,
+    "agl": 63,
+    "targetLL": [
+      -62.83363477,
+      46.20363636
+    ],
+    "baseDatumStockMetres": [
+      7,
+      22
+    ],
+    "minCover": 255,
+    "grassCroplandClasses": [
+      30,
+      40
+    ],
+    "width": 30,
+    "length": 225,
+    "scope": "Private virtual neutral-control QA, using published 225m terrain-rim corridor start; no operational route or published departure.",
+    "name": "east-field-colour-20-16s",
+    "owners": [
+      "20-16",
+      "20-17"
+    ],
+    "axis": "z",
+    "offsets": [
+      14,
+      40,
+      320
+    ],
+    "preregistration": "Two actual Chase frames after +14m and +40m, \u2265500 changed RGB>2 in each, +320m pixel-exact separately; zero alpha and literal exterior differences, same-frame exact restore. Extend motions only as needed to observe the late draw; no terrain or simulator modifications."
+  }
+]

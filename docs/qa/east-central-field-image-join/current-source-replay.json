@@ -1,0 +1,118 @@
+{
+  "scope": "Exact compiled source family after the independent regional-canopy compatibility restore. Same original fixed pose and stock geometry lease, separate flag-free and stock options.",
+  "productionBase": "9da0e33b0bb69e93cb188b1d3bbb8ad6d9fc80da",
+  "cases": {
+    "enabled": {
+      "exact": true,
+      "stockSwitch": null,
+      "stockSkyPixels": 0,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 22153,
+        "over2": 15508,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 59850
+      },
+      "edgeContrast": {
+        "samples": 77,
+        "medianOld": 18.137041091918945,
+        "medianArt": 2.118093967437744,
+        "oldP90": 28.848621749877932,
+        "artP90": 5.496644115447999
+      },
+      "realRimDrawsAtAllBrackets": {
+        "old": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "a": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "b": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "priorA": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "priorB": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "repeat": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        }
+      },
+      "sourceReportSHA256": "9c6601ce0a5d8dbe6a80003169822efae596dbe49437a27cfa487daafaf84180"
+    },
+    "explicitStock": {
+      "exact": true,
+      "stockSwitch": "stockInlandOrtho",
+      "stockSkyPixels": 0,
+      "alphaChanges": 0,
+      "pixelGate": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "edgeContrast": null,
+      "realRimDrawsAtAllBrackets": {
+        "old": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "a": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "b": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "priorA": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "priorB": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        },
+        "repeat": {
+          "source": "verified",
+          "drawnFine": [
+            "20-17"
+          ]
+        }
+      },
+      "sourceReportSHA256": "72f662af6cefabc767655bc80e6b0df558396e21782127ca94789780ba8583ee"
+    }
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "scope": "Authentic fixed native road/terrain renderer with scoped imagery branch. Original independent terrain-rim owner remains present at all near comparison brackets.",
+  "verifiedSourcePlanSHA256": "f649bfba61c34551dccb6548e68fc14b4b20acd2732e678ba8cc39a1a387f175",
+  "assetSHA256": "fc4494eb9d4373871db567b4419e9e501744edccd68d6d56e3daea46c8ec83c5",
+  "matchedCropXYXY": [
+    0,
+    168,
+    799,
+    407
+  ],
+  "ordinaryForward": {
+    "old": {
+      "draws": 40,
+      "tris": 297399
+    },
+    "art": {
+      "draws": 40,
+      "tris": 297399
+    },
+    "idA": {
+      "draws": 40,
+      "tris": 297399
+    },
+    "idB": {
+      "draws": 40,
+      "tris": 297399
+    },
+    "gain": 1,
+    "exact": true,
+    "slots": [
+      {
+        "id": "20-16",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      },
+      {
+        "id": "20-17",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      }
+    ],
+    "seam": [
+      {
+        "edge": "20-16 / 20-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    ],
+    "stockSkyPixels": 0,
+    "realRimDrawsAtAllBrackets": {
+      "old": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "a": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "b": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "priorA": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "priorB": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "repeat": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      }
+    },
+    "fullTerrainSupportPrism": {
+      "boundsXYZ": [
+        [
+          28027.921833815588,
+          7.595826606750489,
+          32932.63530658926
+        ],
+        [
+          28218.36904736053,
+          21.282855529785156,
+          32955.570700260156
+        ]
+      ],
+      "vertices": 48,
+      "projection": [
+        [
+          833.5998723056506,
+          229.78001794272674
+        ],
+        [
+          861.5515714956084,
+          171.87448594778073
+        ],
+        [
+          743.1149250554548,
+          189.33751523238254
+        ],
+        [
+          762.0202217722988,
+          136.83881863044718
+        ],
+        [
+          -414.5770089978301,
+          630.115185749599
+        ],
+        [
+          -553.5757471949479,
+          554.0868028318604
+        ],
+        [
+          -282.65312345321695,
+          452.65210935807005
+        ],
+        [
+          -367.3254852262753,
+          376.25835780792704
+        ]
+      ],
+      "minimumY": 136.83881863044718
+    },
+    "realRegularRimState": {
+      "source": "verified",
+      "drawnFine": [
+        "20-17"
+      ]
+    },
+    "edge": "20-16 / 20-17",
+    "heightAGL": 44,
+    "stockSwitch": null,
+    "alphaChanges": 0,
+    "pixelGate": {
+      "changed": 22153,
+      "over2": 15508,
+      "outside": 0,
+      "outsideExact": 0,
+      "mask": 59850
+    },
+    "edgeContrast": {
+      "samples": 77,
+      "medianOld": 18.137041091918945,
+      "medianArt": 2.118093967437744,
+      "oldP90": 28.848621749877932,
+      "artP90": 5.496644115447999
+    }
+  },
+  "steepIndependentReciprocal": {
+    "old": {
+      "draws": 32,
+      "tris": 280838
+    },
+    "art": {
+      "draws": 32,
+      "tris": 280838
+    },
+    "idA": {
+      "draws": 32,
+      "tris": 280838
+    },
+    "idB": {
+      "draws": 32,
+      "tris": 280838
+    },
+    "gain": 1,
+    "exact": true,
+    "slots": [
+      {
+        "id": "20-16",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      },
+      {
+        "id": "20-17",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      }
+    ],
+    "seam": [
+      {
+        "edge": "20-16 / 20-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    ],
+    "stockSkyPixels": 0,
+    "realRimDrawsAtAllBrackets": {
+      "old": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "a": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "b": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "priorA": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "priorB": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      },
+      "repeat": {
+        "source": "verified",
+        "drawnFine": [
+          "20-17"
+        ]
+      }
+    },
+    "fullTerrainSupportPrism": {
+      "boundsXYZ": [
+        [
+          28027.921833815588,
+          7.595826606750489,
+          32932.63530658926
+        ],
+        [
+          28218.36904736053,
+          21.282855529785156,
+          32955.570700260156
+        ]
+      ],
+      "vertices": 48,
+      "projection": [
+        [
+          -468.0575915830701,
+          519.7554526705958
+        ],
+        [
+          -633.2092505098605,
+          444.5226288029491
+        ],
+        [
+          -696.3231347835517,
+          802.4319927720964
+        ],
+        [
+          -1011.7629419327384,
+          767.9959185865233
+        ],
+        [
+          797.4991753113294,
+          153.40884783647908
+        ],
+        [
+          827.8878856843435,
+          91.35211526190096
+        ],
+        [
+          908.8907472617466,
+          206.0331725236084
+        ],
+        [
+          955.0819491473442,
+          138.17021153407325
+        ]
+      ],
+      "minimumY": 91.35211526190096
+    },
+    "realRegularRimState": {
+      "source": "verified",
+      "drawnFine": [
+        "20-17"
+      ]
+    },
+    "edge": "20-16 / 20-17",
+    "heightAGL": 52,
+    "stockSwitch": null,
+    "alphaChanges": 0,
+    "pixelGate": {
+      "changed": 41976,
+      "over2": 29625,
+      "outside": 0,
+      "outsideExact": 0,
+      "mask": 112134
+    },
+    "edgeContrast": {
+      "samples": 67,
+      "medianOld": 17.89111328125,
+      "medianArt": 2.0873188972473145,
+      "oldP90": 28.141304397583006,
+      "artP90": 4.281443119049072
+    }
+  },
+  "highControl": {
+    "old": {
+      "draws": 17,
+      "tris": 266410
+    },
+    "art": {
+      "draws": 17,
+      "tris": 266410
+    },
+    "idA": {
+      "draws": 17,
+      "tris": 266410
+    },
+    "idB": {
+      "draws": 17,
+      "tris": 266410
+    },
+    "gain": 1,
+    "exact": true,
+    "slots": [
+      {
+        "id": "20-16",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      },
+      {
+        "id": "20-17",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      }
+    ],
+    "seam": [
+      {
+        "edge": "20-16 / 20-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    ],
+    "edge": "20-16 / 20-17",
+    "heightAGL": 550,
+    "stockSwitch": null,
+    "alphaChanges": 0,
+    "pixelGate": {
+      "changed": 0,
+      "over2": 0,
+      "outside": 0,
+      "outsideExact": 0,
+      "mask": 0
+    }
+  },
+  "outsideControl": {
+    "old": {
+      "draws": 13,
+      "tris": 263420
+    },
+    "art": {
+      "draws": 13,
+      "tris": 263420
+    },
+    "idA": {
+      "draws": 13,
+      "tris": 263420
+    },
+    "idB": {
+      "draws": 13,
+      "tris": 263420
+    },
+    "gain": 1,
+    "exact": true,
+    "slots": [
+      {
+        "id": "20-16",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      },
+      {
+        "id": "20-17",
+        "loaded": true,
+        "status": "ready",
+        "lod": 112,
+        "n": 1
+      }
+    ],
+    "seam": [
+      {
+        "edge": "20-16 / 20-17",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      }
+    ],
+    "edge": "20-16 / 20-17",
+    "heightAGL": 17,
+    "stockSwitch": null,
+    "alphaChanges": 0,
+    "pixelGate": {
+      "changed": 0,
+      "over2": 0,
+      "outside": 0,
+      "outsideExact": 0,
+      "mask": 0
+    }
+  },
+  "earlierLowReciprocalHeld": {
+    "topConnectedSkyPixels": 6323,
+    "allSkyPixels": 6324,
+    "bottomSkyRow": 26,
+    "firstProjectedGroundSeamPixelY": 147.09942812942177,
+    "clearancePixels": 120.09942812942177,
+    "isolatedRasterSampleXY": [
+      282,
+      26
+    ],
+    "unchangedInNativeStockAndArt": true,
+    "scope": "Original strict whole-frame and single-component controls refused a pre-existing isolated distant sample, not accepted. Independent steep pose avoids distant horizon and has strict zero-sky exact."
+  }
+}

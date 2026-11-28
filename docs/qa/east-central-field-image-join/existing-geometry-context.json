@@ -1,0 +1,19 @@
+{
+  "maxReportDistanceM": 400,
+  "scope": "Signed road centreline and dated footprint distance; not verified boundary, hedge or crop conditions.",
+  "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cases": [
+    {
+      "name": "east-field-colour-20-16s",
+      "exactStripLonLat": [
+        -62.834875,
+        46.20353338068182,
+        -62.832394531249996,
+        46.20373934659091
+      ],
+      "roadClippedDistance": 170.773,
+      "buildingClippedDistance": 127.406
+    }
+  ]
+}

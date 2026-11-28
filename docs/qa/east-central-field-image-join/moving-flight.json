@@ -1,0 +1,137 @@
+{
+  "actualChase": [
+    {
+      "n": 0,
+      "flightAlongM": 16.60097696640137,
+      "flightCrossM": 0.42824396051064273,
+      "pos": [
+        28055.074255186297,
+        71.47229973350497,
+        32992.289918989154
+      ],
+      "eye": [
+        28037.689427461253,
+        75.66051386114455,
+        33004.326096465375
+      ],
+      "samples": 4,
+      "error": 0,
+      "changed": 7311,
+      "strong": 4805,
+      "alpha": 0,
+      "outside": 0,
+      "marker": 19902,
+      "render": [
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        }
+      ],
+      "exactRollback": true,
+      "stockSha256": "6e03990ddfa956b0345fb69548e62824153018eef8d0bcbbab8deed285e5dcdb",
+      "joinedSha256": "e8f480db8263d8965265b9952c32632fae531c2e3cdb8b4454b83c4e85c46195"
+    },
+    {
+      "n": 1,
+      "flightAlongM": 40.91276486271346,
+      "flightCrossM": 1.0553154741658162,
+      "pos": [
+        28075.34897938602,
+        71.59104203090973,
+        32978.85891723859
+      ],
+      "eye": [
+        28055.54969143805,
+        75.75242780750945,
+        32992.49457387727
+      ],
+      "samples": 4,
+      "error": 0,
+      "changed": 6324,
+      "strong": 4212,
+      "alpha": 0,
+      "outside": 0,
+      "marker": 17189,
+      "render": [
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        },
+        {
+          "draws": 199,
+          "tris": 332687
+        }
+      ],
+      "exactRollback": true,
+      "stockSha256": "39f541de7e8c0bded532551213024191fb01a388c6db1de1682df87c28fe9b54",
+      "joinedSha256": "4651f6fcd186ce435f78a145c4ef9bb2465f5304a395d7c2df5a116913db97dc"
+    },
+    {
+      "n": 2,
+      "flightAlongM": 322.10344510568774,
+      "flightCrossM": 8.304873948953372,
+      "pos": [
+        28309.845075857153,
+        73.52546222625065,
+        32823.513059574514
+      ],
+      "eye": [
+        28291.689728116296,
+        77.6889309915864,
+        32836.05981102114
+      ],
+      "samples": 4,
+      "error": 0,
+      "changed": 0,
+      "strong": 0,
+      "alpha": 0,
+      "outside": 0,
+      "marker": 0,
+      "render": [
+        {
+          "draws": 199,
+          "tris": 337419
+        },
+        {
+          "draws": 199,
+          "tris": 337419
+        },
+        {
+          "draws": 199,
+          "tris": 337419
+        },
+        {
+          "draws": 199,
+          "tris": 337419
+        }
+      ],
+      "exactRollback": true,
+      "stockSha256": "79d93a3f753be3e32c6713724829edb9bc7627f1850c1e4e083cf2c9b267a2ee",
+      "joinedSha256": "79d93a3f753be3e32c6713724829edb9bc7627f1850c1e4e083cf2c9b267a2ee"
+    }
+  ],
+  "userControls": {
+    "cockpitAndPause": true,
+    "site": "qa-east-field-colour-20-16s"
+  }
+}

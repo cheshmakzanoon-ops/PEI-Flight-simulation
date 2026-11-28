@@ -1,0 +1,43 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "east-field-colour-20-16s",
+      "axis": "z",
+      "owners": [
+        "20-16",
+        "20-17"
+      ],
+      "window": [
+        384,
+        386,
+        402,
+        404
+      ],
+      "donorWireSHA256": [
+        "e648abe93b665ad26dff2d94f762fb6cd4788e87aa5bd7a6aae5617d6d69b765",
+        "724d4f258daba31929cf919f33825b08949e538f02cd77b63361f5cb897e63da"
+      ],
+      "exactSourceRGBSHA256": "9e18b64c0089d587709a3a555c1550d1b1ca58d51adac08ce9268bff4e59063f",
+      "coverBox": [
+        2636,
+        2101,
+        6,
+        2
+      ],
+      "classes": [
+        40
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 35.542,
+      "medianInnerNeighbourStep": 13.269,
+      "filteredDonorAlongSpan": [
+        383,
+        405
+      ],
+      "filteredDonorRGBSHA256": "2f217417ede8cb87445ce68d85d7ed9e4308fdfd3097296ad11da795c0d15c8e"
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}

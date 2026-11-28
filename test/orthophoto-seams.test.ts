@@ -140,16 +140,25 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const westExtra=["edge-9-10e", "edge-1-7e"];
  const next=["edge-17-14s","edge-9-13s","edge-6-10s","edge-12-14s","edge-13-12e"];
  const added=[...westExtra,...next];
- assert.deepEqual(ids.slice(-3-added.length,-added.length),ink);
- assert.deepEqual(ids.slice(-added.length),added);
- assert.equal(standard.diagnostics().length,23+ink.length+added.length);
- const lockOwners=new Set(standard.diagnostics().slice(0,-added.length).flatMap(p=>p.edge.split(' / ')));
+ const newest='east-field-colour-20-16s';
+ assert.equal(ids.at(-1),newest);
+ const historical=ids.slice(0,-1);
+ assert.deepEqual(historical.slice(-3-added.length,-added.length),ink);
+ assert.deepEqual(historical.slice(-added.length),added);
+ assert.equal(standard.diagnostics().length,24+ink.length+added.length);
+ const lockOwners=new Set(standard.diagnostics().slice(0,-added.length-1).flatMap(p=>p.edge.split(' / ')));
  for(const id of ['20-16','20-17','20-18','20-19'])lockOwners.add(id);
  for(const plan of INLAND_ORTHO_WINDOWS.filter(p=>added.includes(p.name)))for(const key of [plan.first,plan.second]){
   assert(!lockOwners.has(key));lockOwners.add(key);
  }
  assert.equal(new Set(INLAND_ORTHO_WINDOWS.map(p=>p.axis)).size,2);
  assert.equal(all.size,standard.diagnostics().length*2-7);
+ const recent=INLAND_ORTHO_WINDOWS.at(-1)!;
+ assert.deepEqual([recent.first,recent.second,recent.axis,recent.edge],['20-16','20-17','z',17]);
+ assert('alongSourceTexels' in recent);assert.deepEqual(recent.alongSourceTexels,[384,386,402,404]);
+ assert(INLAND_ORTHO_WINDOWS.slice(0,-1).every(p=>![p.first,p.second].some(k=>k===recent.first||k===recent.second)));
+ const near=recent.coverBox;cover.bytes[2*(near[1]*4096+near[0])]^=1;
+ assert.deepEqual(inlandSourceWindows(cover),ids.filter(n=>n!=='west'&&n!==newest));
  const fx=(m:OrthophotoSeams,id:string)=>{const a=shader();m.bind(id,a);return a;};
  for(const row of legacy.diagnostics())for(const id of row.edge.split(' / ')){
   assert.equal(fx(legacy,id).fragmentShader,fx(standard,id).fragmentShader);

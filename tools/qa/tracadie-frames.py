@@ -79,6 +79,7 @@ ADDITIONAL=[
  ('edge-13-15e',13,15,'x',310,344,None),
  ('edge-12-14s',12,14,'z',43,80,None),
  ('edge-13-12e',13,12,'x',602,563,None),
+ ('east-field-colour-20-16s',20,16,'z',394,436,None),
 ]
 EXACT_EDGE_VIEWS=set()
 for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
@@ -103,6 +104,13 @@ for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTR
   INLAND.append(name+suffix)
   if (name,x,z,axis,center,outside,north_control) in EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
    EXACT_EDGE_VIEWS.add(name+suffix)
+STEEP='east-field-colour-20-16s-reciprocal-steep'
+P[STEEP]=dict(P['east-field-colour-20-16s-reciprocal'],dist=56,agl=52)
+INLAND.append(STEEP);EXACT_EDGE_VIEWS.add(STEEP)
+# Preserve the earlier separate sky-observation refusal for explicit replay,
+# but don't add its known unrelated horizon satellite to a default run.
+RANK16_OLD_RECIPROCAL='east-field-colour-20-16s-reciprocal'
+INLAND.remove(RANK16_OLD_RECIPROCAL)
 GROUPS={'inland':INLAND,'counties':COUNTIES,'tracadie':TRACADIE}
 
 def stage(repo,root,deps,void):
@@ -127,18 +135,64 @@ def stage(repo,root,deps,void):
    const m=(nativeSky.material as THREE.ShaderMaterial).uniforms.skyDiagnostic;
    const q=(world as any).tiles.filter((t:any)=>t.id===qa.first||t.id===qa.second);
    const gl=renderer.getContext(),save=()=>{
-     renderer.render(scene,camera);
-     return {image:renderer.domElement.toDataURL('image/png'),
+     const cleanup=qa.first==='20-16'&&qa.second==='20-17'?world.beginRegularNorthRimDraw(camera):undefined;
+     let frame;
+     try{
+      renderer.render(scene,camera);
+      frame={image:renderer.domElement.toDataURL('image/png'),
        draws:renderer.info.render.calls,tris:renderer.info.render.triangles,error:gl.getError()};
+     }finally{cleanup?.();}
+     return {...frame,rim:world.regularNorthRimState};
    };
    const stock=m.value; if(stock!==0)throw Error('Invalid sky test starting point');
+   const isRank16=qa.first==='20-16'&&qa.second==='20-17';
+   const pair=(ortho as any)?.pairs?.find(({plan})=>plan.first===qa.first&&plan.second===qa.second);
+   const gain=pair?.gain.value??0;
+   const explicitStock=new URLSearchParams(location.search).has('stockInlandOrtho');
+   let prism=null;
+   if(isRank16){
+    if(q.length!==2||(explicitStock?!!pair:!pair||gain!==1))throw Error('Both signed owners and expected imagery custody required');
+    const n=q.find(t=>t.id==='20-16');
+    const left=n.x0+n.w*384/640-.02,right=n.x0+n.w*404/640+.02;
+    const edge=terrain.top+17*(terrain.bottom-terrain.top)/22;
+    const north=edge-n.d*1.25/640-.02,south=edge+n.d*1.25/640+.02;
+    let low=Infinity,high=-Infinity,vertices=0;
+    for(const tile of q){
+     const body=tile.fine,geom=body?.geometry,pa=geom?.getAttribute('position'),ix=geom?.index;
+     if(tile.lod!==112||tile.relief||!body||!pa||!ix||body.userData.localGrade||body.userData.coastalSurvey)throw Error('Not both genuine original N112 meshes');
+     const pts=[new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3()];
+     for(let k=0;k<ix.count;k+=3){
+      for(let j=0;j<3;j++)pts[j].fromBufferAttribute(pa,ix.getX(k+j)).applyMatrix4(body.matrixWorld);
+      if(Math.max(...pts.map(t=>t.x))<left||Math.min(...pts.map(t=>t.x))>right||
+         Math.max(...pts.map(t=>t.z))<north||Math.min(...pts.map(t=>t.z))>south)continue;
+      vertices+=3;
+      for(const X of pts){low=Math.min(low,X.y);high=Math.max(high,X.y);}
+     }
+    }
+    if(!vertices||!Number.isFinite(low+high))throw Error('No complete terrain prism');
+    low-=.02;high+=.02;
+    const projected=[];
+    for(const x of [left,right])for(const z of [north,south])for(const y of [low,high]){
+     const v=new THREE.Vector4(x,y,z,1).applyMatrix4(camera.matrixWorldInverse).applyMatrix4(camera.projectionMatrix);
+     if(v.w<=.1||v.z+v.w<=0)throw Error('Prism crosses near plane; new qualification needed');
+     projected.push([(v.x/v.w*.5+.5)*innerWidth,(.5-.5*v.y/v.w)*innerHeight]);
+    }
+    prism={boundsXYZ:[[left,low,north],[right,high,south]],vertices,projection:projected,
+           minimumY:Math.min(...projected.map(p=>p[1]))};
+   }
    try{
     const old=save();m.value=1;const a=save();m.value=2;const b=save();
+    let priorA,priorB;
+    if(isRank16){
+     if(pair)pair.gain.value=0;
+     m.value=1;priorA=save();m.value=2;priorB=save();
+     if(pair)pair.gain.value=gain;
+    }
     m.value=0;const repeat=save();
-    return {old,a,b,repeat,samples:gl.getParameter(gl.SAMPLES),
-     owners:q.map((p:any)=>({id:p.id,lod:p.lod,grade:p.fine?.userData.localGrade??null,
+    return {old,a,b,priorA,priorB,repeat,prism,samples:gl.getParameter(gl.SAMPLES),
+     rim:world.regularNorthRimState,owners:q.map((p:any)=>({id:p.id,lod:p.lod,grade:p.fine?.userData.localGrade??null,
        survey:p.fine?.userData.coastalSurvey??null,sz:p.fine?.position.z??null}))};
-   } finally {m.value=stock;}
+   } finally {m.value=stock;if(pair)pair.gain.value=gain;}
   };
   (window as any).seamFrame=()=>{
    const isOwner=(t)=>t.id===qa.first||t.id===qa.second;
@@ -194,7 +248,8 @@ def capture(a,browser,url):
  declared_inland={p['first']+' / '+p['second'] for p in plans}
  selections=a.views.split(',') if a.views else GROUPS[a.cohort]
  for site in selections:
-  if site not in GROUPS[a.cohort]:raise ValueError('Wrong camera for selected cohort: '+site)
+  if site not in GROUPS[a.cohort] and not (a.views and a.cohort=='inland' and site==RANK16_OLD_RECIPROCAL):
+   raise ValueError('Wrong camera for selected cohort: '+site)
   pose=P[site];edge=pose['first']+' / '+pose['second']
   own={'counties':'stockCountyOrtho','tracadie':'stockTracadieOrtho','inland':'stockInlandOrtho'}[a.cohort]
   peer={'counties':'stockTracadieOrtho','tracadie':'stockCountyOrtho','inland':'stockCountyOrtho&stockTracadieOrtho'}[a.cohort]
@@ -208,7 +263,7 @@ def capture(a,browser,url):
    if not a.stock and site!='offsite':
     pg.wait_for_function("edge=>window.islandAirDiagnostics?.orthophotoSeams?.find(p=>p.edge===edge)?.gain===1",arg=edge,polling=250,timeout=120000)
    r=pg.evaluate('window.seamFrame()')
-   if any(site in (r[0],r[0]+'-reciprocal') for r in ADDITIONAL):
+   if site==STEEP or any(site in (r[0],r[0]+'-reciprocal') for r in ADDITIONAL):
     sky=pg.evaluate('window.groundEdgeSkyIDs()')
     assert sky['samples']==4 and sky['old']==sky['repeat']
     assert all( q['error']==0 and [q['draws'],q['tris']]==[sky['old']['draws'],sky['old']['tris']] for q in (sky['a'], sky['b']))
@@ -216,10 +271,42 @@ def capture(a,browser,url):
      import io
      return np.asarray(Image.open(io.BytesIO(base64.b64decode(shot['image'].split(',',1)[1]))).convert('RGBA'))
     qA,qB=[unpack(sky[x]) for x in ('a','b')]
-    r['stockSkyPixels']=int(np.any(qA[:,:,:3]!=qB[:,:,:3],axis=2).sum())
-
-
-    assert r['stockSkyPixels']==0 and len(sky['owners'])==2 and all(q['lod']==112 and not q['grade'] and not q['survey'] for q in sky['owners']),(site,r['stockSkyPixels'],sky['owners'])
+    mask=np.any(qA[:,:,:3]!=qB[:,:,:3],axis=2)
+    r['stockSkyPixels']=int(mask.sum())
+    regional=(pose['first'],pose['second'])==('20-16','20-17')
+    if regional:
+     # The reciprocal pose may see real sky: require all such pixels to form
+     # one transitive top-connected mask and be at least 8 px above the actual
+     # projected source strip. Do not use the effect mask to infer sky safety.
+     from collections import deque
+     assert sky['prism']['vertices']>0 and sky['rim'] is not None
+     assert all(sky[k]['error']==0 for k in ('priorA','priorB'))
+     assert all('20-17' in sky[k]['rim']['drawnFine'] for k in ('old','a','b','priorA','priorB','repeat')),(site,sky['rim'])
+     r['realRimDrawsAtAllBrackets']={k:sky[k]['rim'] for k in ('old','a','b','priorA','priorB','repeat')}
+     priorA,priorB=unpack(sky['priorA']),unpack(sky['priorB'])
+     assert np.array_equal(np.any(priorA[:,:,:3]!=priorB[:,:,:3],axis=2),mask),(site,'changed actual sky coverage')
+     r['fullTerrainSupportPrism']=sky['prism'];r['realRegularRimState']=sky['rim']
+     if site==STEEP:assert not mask.any(),(site,'strict new calibration sees genuine sky',int(mask.sum()))
+     for key in ('a','b','priorA','priorB'):
+      (a.out/f'{site}-native-sky-{key}.png').write_bytes(base64.b64decode(sky[key]['image'].split(',',1)[1]))
+     ys,xs=np.nonzero(mask); top=np.flatnonzero(mask[0])
+     stack=deque([(0,int(top[0]))] if len(top) else []); visited=np.zeros_like(mask)
+     while stack:
+      y,x=stack.popleft()
+      if visited[y,x]:continue
+      visited[y,x]=True
+      for yy,xx in ((y,x-1),(y,x+1),(y-1,x),(y+1,x)):
+       if 0<=yy<mask.shape[0] and 0<=xx<mask.shape[1] and mask[yy,xx] and not visited[yy,xx]:stack.append((yy,xx))
+     if r['stockSkyPixels']:
+      projectedMinY=float(sky['prism']['minimumY'])
+      r['actualNativeHorizon']={'topConnectedSkyPixels':int(visited.sum()),'allSkyPixels':int(mask.sum()),
+        'bottomSkyRow':int(ys.max()),'firstProjectedGroundSeamPixelY':projectedMinY,
+        'clearancePixels':projectedMinY-float(ys.max())-1.}
+      (a.out/f'{site}-horizon-custody.json').write_text(json.dumps(r['actualNativeHorizon'],indent=2)+'\n')
+      assert visited.sum()==mask.sum() and r['actualNativeHorizon']['clearancePixels']>=8.,(site,r['actualNativeHorizon'])
+    else:
+     assert r['stockSkyPixels']==0,(site,r['stockSkyPixels'])
+    assert len(sky['owners'])==2 and all(q['lod']==112 and not q['grade'] and not q['survey'] for q in sky['owners']),(site,sky['owners'])
    expect={'18-12 / 18-13'}|{'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    oldCounties={'27-13 / 27-14','5-2 / 5-3','10-12 / 11-12'}
    inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
