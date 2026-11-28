@@ -5,7 +5,7 @@ to the simulator URL. Leave scenery on Standard, wait for **North Cape lighthous
 preview ready.** in Dispatch, and choose **Begin flight**. Start in Chase to see
 the tower on the approach. Starting before the ready message keeps the ordinary
 scenery for that flight. Return to Dispatch to retry; you do not need to reload
-the page. The original North Cape wind-farm pass remains the default route.
+the page. The ordinary North Cape wind-farm departure is unchanged.
 
 The preview adds an authored octagonal tower with white painted siding, a red
 lantern, a projecting gallery, cross-bracing and separate glazing. It uses the

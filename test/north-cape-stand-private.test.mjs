@@ -64,12 +64,19 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
  const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready',roof=false,east=false)=>{
   const calls=[],error=new Error(failAt),route=east?'east-light':field?'kings-sand-dunes':
    quay==='foreign'?'seacow-head-coast':quay||roof?SEAWARD_ROUTE:'northcape-wind-low';
+  const light=cape==='light-preview';
   const scope={scene:{},camera:{fov:53,zoom:1,position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
    activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,
    standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,dunesFields:undefined,
    princeLowFieldSeat:undefined,KINGS_DUNES_MAPPED_PASS:{id:'kings-sand-dunes'},
    f:{status:'flying'},playing:true,dalvayDefaultFlight:()=>true,lakeFrame:()=>true,cavendishFrame:()=>true,
    QUAY_ROUTE:'harbour-low',quayCandidate:undefined,quaySeat:undefined,quayAdmitted:!!quay};
+  // The extracted frame has no query bootstrap. Bind its optional diagnostic
+  // exactly as a plain page, or as a ready lighthouse page for the opt-in case.
+  scope.diagnostic=light;
+  scope.capeLightPreview=light?{state:{phase:'active',solidDraws:1,paneDraws:1}}:undefined;
+  scope.capeLightSupported=()=>true;
+  scope.window={};
   scope.eastWallPreview=undefined;scope.eastWallDrawn=false;scope.eastWallGain={value:0};
   scope.eastWallRenderer=()=>true;
   if(east){
@@ -130,7 +137,7 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
     return ()=>{restore();if(failAt==='close south21')throw error;};
    },
   };
-  scope.datedStandReview=cape?{
+  scope.datedStandReview=cape===true?{
    beforeFrame:p=>{assert.equal(p.site,'northcape-wind-low');assert.equal(p.mode,'flight');return begin('cape');},
    dispose:()=>calls.push('dispose cape'),
   }:undefined;
@@ -144,6 +151,9 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
   if(['prince','rim','borden','west2','south21','close south21','render','quay'].includes(failAt))assert.throws(()=>script.runInNewContext(scope),e=>e===error);
   else script.runInNewContext(scope);
   assert.equal(scope.eastWallGain.value,0);
+  if(light)assert.equal(JSON.stringify(scope.window.islandAirNorthCapeLightPreview),
+   '{"phase":"active","solidDraws":1,"paneDraws":1,"authorityReady":true}');
+  else assert.equal(Object.keys(scope.window).length,0);
   assert.equal(scope.eastWallDrawn,!!east&&failAt!=='render');
   if(quay)assert.equal(scope.quayAdmitted,quay!=='refused'&&quay!=='foreign');
   return calls;
@@ -156,6 +166,7 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
   assert.deepEqual(paint(false,failAt),[...lead,...wholePaint,...tail]);
   assert.deepEqual(paint(true,failAt),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
  }
+ assert.deepEqual(paint('light-preview',undefined),[...lead,...wholePaint,...tail]);
  assert.deepEqual(paint(true,'cape'),[...lead,'begin cape','dispose cape',...wholePaint,...tail]);
  assert.deepEqual(paint(false,'borden'),[...lead,'begin rim','begin borden','end rim',...tail]);
  assert.deepEqual(paint(true,'borden'),[...lead,'begin cape','begin rim','begin borden','end rim','end cape',...tail]);
