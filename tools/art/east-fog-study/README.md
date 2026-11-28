@@ -173,3 +173,24 @@ trim's separate fractional shadow, facade detail or a live level transition.
 ```sh
 node --experimental-strip-types --test test/east-fog-ground-light-study.test.ts
 ```
+
+## Keep the two distance levels consistent
+
+The [fixed-distance geometry study](secondary-fog-lod.ts) keeps the
+same fitted shell in the near and middle levels. The cornice recedes
+toward its fitted roof pivots and the sashes translate into their own
+wall over 500–640 m. Neither operation changes the shell, exhibit or
+tower. The authored details are fully enclosed by 600 m, before the
+original 690 m inbound and 750 m outbound level switches.
+
+The [detached vertex equation](secondary-fog-vertex-program.ts) uses
+the same shape model. It has linked against the original Three.js shader
+in isolation; no frame timing, middle-distance optics, collision,
+weather, alternate sun or release is implied. The actual figure needs
+both old culling bounds, the original LOD history and a verified
+stock fallback. Trim cast must follow the moving trim, not stay behind
+as a fixed ground mark.
+
+```sh
+node --experimental-strip-types --test test/east-fog-secondary-lod.test.ts
+```
