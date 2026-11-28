@@ -15,3 +15,7 @@
 
 
 ![Eleven separate tested mesh patches and their intentional gaps](art/tignish-partial-roof.webp)
+
+The [unplaced upper spire study](../../tools/art/tignish-simon-jude-study/spire/README.md)
+reconstructs visible structural motifs as original geometry. It does not
+supply a surveyed height, a complete spire inventory, or installation.

@@ -1,0 +1,16 @@
+{
+  "status": "PASS detached geometry and CPU plates",
+  "metric": false,
+  "gameMount": false,
+  "browserExecuted": false,
+  "triangles": 1904,
+  "materialBatches": 2,
+  "files": {
+    "verification.log": "dda16b5b87bb1a3e3d0f1bf2f17e8fa964dafc7578ee7e08866bff7f75d40e08",
+    "three-emitted.json": "e0b2d202c185f39fe4302d3e0546f8b0ca092b9a63bbdd453ec28e6b3a5bf892",
+    "plate-proof.json": "7326f5e7de4cdd0e48cc97633f8bddf0a8eacb81e5ad5257b5d7ecfc10aac71b",
+    "plates/front-flank.png": "d9a4ee51f195a84a2dc65d1952cb7795009bf012bb746bfc34f3db2b11345054",
+    "plates/front-reciprocal.png": "ad7ec3bff9c2e1488537ce7daec25499d99d4e5f69b6eac9490109b6643d9292",
+    "plates/return-unseen.png": "e04e182d502df4262008e50d7d4956a0b79c746614169dc2c6ca3d6afe854472"
+  }
+}

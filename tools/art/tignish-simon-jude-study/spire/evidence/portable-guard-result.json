@@ -1,0 +1,45 @@
+{
+  "status": "portable scoped art proof; no Chrome",
+  "repeatRawShapeAndPlatesByteIdentical": true,
+  "existingDirectoryRefusals": [
+    "proof CLI",
+    "direct CPU renderer"
+  ],
+  "ambiguousEmptyOutRefused": true,
+  "unchanged425TrianglesSHA256": "934e38e9039088416961290a359e9a6b3bd982eae8255e3a0261153607b585f2",
+  "beforeAfterOriginalPlates": [
+    {
+      "plate": "front-flank.png",
+      "changed": 6124,
+      "strongGreaterThan3": 3899,
+      "differenceBoundsXYInclusive": [
+        119,
+        339,
+        265,
+        613
+      ]
+    },
+    {
+      "plate": "front-reciprocal.png",
+      "changed": 6343,
+      "strongGreaterThan3": 3959,
+      "differenceBoundsXYInclusive": [
+        118,
+        334,
+        264,
+        617
+      ]
+    },
+    {
+      "plate": "return-unseen.png",
+      "changed": 2549,
+      "strongGreaterThan3": 1973,
+      "differenceBoundsXYInclusive": [
+        114,
+        342,
+        270,
+        610
+      ]
+    }
+  ]
+}

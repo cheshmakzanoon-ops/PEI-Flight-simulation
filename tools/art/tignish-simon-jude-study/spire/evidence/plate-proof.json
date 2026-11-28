@@ -1,0 +1,74 @@
+{
+  "scope": "CPU plate from original Float32 Three.js submission positions, normals and vertex color. No photo/camera data, game or WebGL/device performance.",
+  "samples": [
+    {
+      "view": "front-flank",
+      "nearTopToSkirtRowWidths": [
+        32,
+        71,
+        156
+      ],
+      "knownRolePixels": {
+        "profile:0:pale reveal": 397,
+        "profile:0:shadowed backstop": 516,
+        "profile:1:pale reveal": 321,
+        "profile:1:shadowed backstop": 343,
+        "profile:3:pale reveal": 0,
+        "profile:3:shadowed backstop": 0
+      }
+    },
+    {
+      "view": "front-reciprocal",
+      "nearTopToSkirtRowWidths": [
+        32,
+        73,
+        166
+      ],
+      "knownRolePixels": {
+        "profile:0:pale reveal": 399,
+        "profile:0:shadowed backstop": 504,
+        "profile:1:pale reveal": 0,
+        "profile:1:shadowed backstop": 0,
+        "profile:3:pale reveal": 319,
+        "profile:3:shadowed backstop": 355
+      }
+    },
+    {
+      "view": "return-unseen",
+      "nearTopToSkirtRowWidths": [
+        32,
+        70,
+        149
+      ],
+      "knownRolePixels": {
+        "profile:0:pale reveal": 0,
+        "profile:0:shadowed backstop": 0,
+        "profile:1:pale reveal": 0,
+        "profile:1:shadowed backstop": 0,
+        "profile:3:pale reveal": 247,
+        "profile:3:shadowed backstop": 221
+      }
+    }
+  ],
+  "triangles": 1904,
+  "batches": [
+    {
+      "material": "sheet",
+      "triangles": 302,
+      "sha256": {
+        "position": "14c8f97464cc8a173ecf13f3c0f7e9f6e453c895bbfbde602ad8e932ad9b9641",
+        "normal": "6e9d952cdc97e9689fe4e46bcebb555a58596399c103919b13e676c61af77b99",
+        "color": "845adc8c368dd5981d84e73f9a1ab3fb43b441fb723b4fbb79dabc2bac00692f"
+      }
+    },
+    {
+      "material": "masonry",
+      "triangles": 1602,
+      "sha256": {
+        "position": "09c25840bdefdb434471ae37a4e6848a72cd66b5193c77fcde9f506d11272e91",
+        "normal": "509faf8060f42c7e36b90027801eafc47ca3343faf6fd8ab50e9144af92cf840",
+        "color": "b00a2d879f1a0f4186b1a831773be4722eb5d6edf3e4196c5cc89408a1b4391d"
+      }
+    }
+  ]
+}
