@@ -1,0 +1,510 @@
+{
+  "scope": "Exact frozen detached recorded ground-only ROI which is a place to test original historic GeoTIFF, not proof of physical sward.",
+  "county": "kings",
+  "route": "kings-grassland",
+  "owner": "23-16",
+  "signedGrassShard": "43:31",
+  "rasterBasis": "Actual existing N112 Three renderer mesh/Float32 transforms in detached selected archived camera. Approx camera follows fixed neutral simulation; no browser movement or foreground co-owner proof.",
+  "requestedSourceRaster": "Copy only original authenticated HRDEM same-meter EPSG:3979 paired DTM/DSM and no satellite imagery. Rectangles are clipped to existing game validated role priority, not intended shape replacements.",
+  "crossStationUnionCoarseBoundingSourceCropPlus4m": {
+    "minCornerENU": [
+      2420021,
+      317719
+    ],
+    "maxCornerENU": [
+      2420276,
+      317997
+    ],
+    "firstNativeCentreSW": [
+      2420021.5,
+      317719.5
+    ],
+    "lastNativeCentreNE": [
+      2420275.5,
+      317996.5
+    ],
+    "columnRowCounts": [
+      255,
+      278
+    ]
+  },
+  "worldOpticalBoundingSourceUnionWGS84": [
+    -62.62288385344494,
+    46.210618375436376,
+    -62.619937789045125,
+    46.2128492813873
+  ],
+  "bothViewsCommonEPSG3979CellCentres": 0,
+  "records": [
+    {
+      "tick": 540,
+      "metersFromLaunch": 319.84955156239397,
+      "fixedROIShiftedZero": true,
+      "actual4xPureROI21pxCenterCount": 66049,
+      "centersWithAllFourSignedGrassGNodesAtLeast128": 65953,
+      "oldRenderableTerrainXZBounds": [
+        44300.931974028266,
+        31919.98508202261,
+        44468.72929511555,
+        32098.28183802874
+      ],
+      "allCoveredBeforeR8ReserveXYBounds": [
+        44300.931974028266,
+        31919.98508202261,
+        44468.72929511555,
+        32098.28183802874
+      ],
+      "oldRenderableTerrainWGS84BoundsLonLat": [
+        -62.622883853444364,
+        46.21124533196262,
+        -62.62069792779826,
+        46.21284928138435
+      ],
+      "sourceEPSG3979BoundsEastNorth": [
+        2420025.0513309375,
+        317757.32300881547,
+        2420171.327063554,
+        317992.67836321046
+      ],
+      "proposedBoundingOriginal1mCropPlus4m": {
+        "minCornerENU": [
+          2420021,
+          317753
+        ],
+        "maxCornerENU": [
+          2420176,
+          317997
+        ],
+        "firstNativeCentreSW": [
+          2420021.5,
+          317753.5
+        ],
+        "lastNativeCentreNE": [
+          2420175.5,
+          317996.5
+        ],
+        "columnRowCounts": [
+          155,
+          244
+        ]
+      },
+      "maxRenderRayRangeM": 286.50937481820193,
+      "submittedOriginalN112FacetCount": 22,
+      "distinctOriginalSourcePixelCentreCellsVisited": 15966,
+      "geographicWitnesses": [
+        {
+          "pxXY": [
+            480,
+            512
+          ],
+          "worldXZ_m": [
+            44415.70204417414,
+            32026.92413547367
+          ],
+          "WGS84_lonLat": [
+            -62.621388723259265,
+            46.2118872625749
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420132.5,
+            317875.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.6213937527144,
+            46.21188427415148
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            512
+          ],
+          "worldXZ_m": [
+            44343.952750483295,
+            32069.71674756093
+          ],
+          "WGS84_lonLat": [
+            -62.6223234141122,
+            46.21150230220349
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420090.5,
+            317802.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.6223191715956,
+            46.211499462662125
+          ]
+        },
+        {
+          "pxXY": [
+            262,
+            562
+          ],
+          "worldXZ_m": [
+            44452.20854031834,
+            31956.99349876063
+          ],
+          "WGS84_lonLat": [
+            -62.620913146619216,
+            46.21251635536845
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420130.5,
+            317955.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.620916741059716,
+            46.21251410612027
+          ]
+        },
+        {
+          "pxXY": [
+            480,
+            552
+          ],
+          "worldXZ_m": [
+            44399.609806545945,
+            31999.152190522174
+          ],
+          "WGS84_lonLat": [
+            -62.62159835971059,
+            46.21213709771516
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420104.5,
+            317892.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62160080252288,
+            46.2121376092214
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            552
+          ],
+          "worldXZ_m": [
+            44337.34589019734,
+            32035.506250732633
+          ],
+          "WGS84_lonLat": [
+            -62.62240948286018,
+            46.2118100582605
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420067.5,
+            317829.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62240788239861,
+            46.211808774839874
+          ]
+        },
+        {
+          "pxXY": [
+            256,
+            591
+          ],
+          "worldXZ_m": [
+            44440.12122277597,
+            31944.2892505816
+          ],
+          "WGS84_lonLat": [
+            -62.62107061026189,
+            46.21263064220112
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420113.5,
+            317961.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62106942554897,
+            46.21263436375939
+          ]
+        },
+        {
+          "pxXY": [
+            480,
+            591
+          ],
+          "worldXZ_m": [
+            44387.312818100145,
+            31977.930027741422
+          ],
+          "WGS84_lonLat": [
+            -62.621758554773535,
+            46.21232801131607
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420083.5,
+            317905.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.621754530895366,
+            46.21232955155054
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            591
+          ],
+          "worldXZ_m": [
+            44332.41666608269,
+            32009.96972016625
+          ],
+          "WGS84_lonLat": [
+            -62.62247369674237,
+            46.2120397837157
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420050.5,
+            317849.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62247318066029,
+            46.21203773468813
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 720,
+      "metersFromLaunch": 426.5358183260989,
+      "fixedROIShiftedZero": true,
+      "actual4xPureROI21pxCenterCount": 64116,
+      "centersWithAllFourSignedGrassGNodesAtLeast128": 63744,
+      "oldRenderableTerrainXZBounds": [
+        44356.808373903245,
+        32013.417240364553,
+        44527.07951702449,
+        32167.975005279353
+      ],
+      "allCoveredBeforeR8ReserveXYBounds": [
+        44356.808373903245,
+        32013.417240364553,
+        44527.07951702449,
+        32167.975005279353
+      ],
+      "oldRenderableTerrainWGS84BoundsLonLat": [
+        -62.62215594161176,
+        46.21061837543344,
+        -62.619937789044556,
+        46.21200876998246
+      ],
+      "sourceEPSG3979BoundsEastNorth": [
+        2420121.9837895045,
+        317723.1345113244,
+        2420271.705070396,
+        317940.0307799617
+      ],
+      "proposedBoundingOriginal1mCropPlus4m": {
+        "minCornerENU": [
+          2420117,
+          317719
+        ],
+        "maxCornerENU": [
+          2420276,
+          317945
+        ],
+        "firstNativeCentreSW": [
+          2420117.5,
+          317719.5
+        ],
+        "lastNativeCentreNE": [
+          2420275.5,
+          317944.5
+        ],
+        "columnRowCounts": [
+          159,
+          226
+        ]
+      },
+      "maxRenderRayRangeM": 277.64616494215363,
+      "submittedOriginalN112FacetCount": 22,
+      "distinctOriginalSourcePixelCentreCellsVisited": 15596,
+      "geographicWitnesses": [
+        {
+          "pxXY": [
+            480,
+            512
+          ],
+          "worldXZ_m": [
+            44473.70231449428,
+            32121.49326586443
+          ],
+          "WGS84_lonLat": [
+            -62.62063314338735,
+            46.21103652302471
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420230.5,
+            317821.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.6206347650986,
+            46.211040304588984
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            512
+          ],
+          "worldXZ_m": [
+            44400.76229486933,
+            32165.851367755087
+          ],
+          "WGS84_lonLat": [
+            -62.62158334603953,
+            46.21063747957899
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420187.5,
+            317745.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62159008299273,
+            46.2106365419925
+          ]
+        },
+        {
+          "pxXY": [
+            256,
+            552
+          ],
+          "worldXZ_m": [
+            44519.89095582222,
+            32055.645093310657
+          ],
+          "WGS84_lonLat": [
+            -62.620031435714175,
+            46.21162889015833
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420239.5,
+            317902.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62002848209724,
+            46.211630224770104
+          ]
+        },
+        {
+          "pxXY": [
+            480,
+            552
+          ],
+          "worldXZ_m": [
+            44456.91613357904,
+            32092.523647836544
+          ],
+          "WGS84_lonLat": [
+            -62.620851819961715,
+            46.21129713237692
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420201.5,
+            317838.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62085299087697,
+            46.211297973988636
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            552
+          ],
+          "worldXZ_m": [
+            44394.05075206651,
+            32131.116864300904
+          ],
+          "WGS84_lonLat": [
+            -62.62167077850533,
+            46.21094994957552
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420164.5,
+            317773.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62167254496409,
+            46.21095361827779
+          ]
+        },
+        {
+          "pxXY": [
+            256,
+            591
+          ],
+          "worldXZ_m": [
+            44499.71215237238,
+            32038.27362682891
+          ],
+          "WGS84_lonLat": [
+            -62.620294308587724,
+            46.211785163072335
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420212.5,
+            317907.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62029924688629,
+            46.211786055160346
+          ]
+        },
+        {
+          "pxXY": [
+            480,
+            591
+          ],
+          "worldXZ_m": [
+            44444.624323571676,
+            32071.31045008407
+          ],
+          "WGS84_lonLat": [
+            -62.62101194756422,
+            46.21148796532885
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420180.5,
+            317851.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.6210067130758,
+            46.211489916876
+          ]
+        },
+        {
+          "pxXY": [
+            704,
+            591
+          ],
+          "worldXZ_m": [
+            44389.06395726834,
+            32105.31127393064
+          ],
+          "WGS84_lonLat": [
+            -62.62173574237109,
+            46.21118209548035
+          ],
+          "requestedNativeCentreEPSG3979_EN_m": [
+            2420147.5,
+            317793.5
+          ],
+          "centreWGS84_lonLat": [
+            -62.62173783814847,
+            46.21118257780393
+          ]
+        }
+      ]
+    }
+  ],
+  "signedPlanRelease": false,
+  "historicalSourceMustRemainIndependentOfCurrentGameTerrain": true
+}

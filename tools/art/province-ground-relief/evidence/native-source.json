@@ -1,0 +1,360 @@
+{
+  "scope": "No warping or overview; nothing authored, placed, or measured as plant height.",
+  "windowsPlanSHA256": "d430a7013376245da647ebff3a33a3b57633feddfb4333d6063997740730ea82",
+  "nativeProjection": "EPSG3979",
+  "nominalOrthometricDatum": "CGVD2013",
+  "gridFromNativeHeaders": [
+    2261621,
+    1,
+    0,
+    371370,
+    0,
+    -1
+  ],
+  "nativeNoDataValue": -32767,
+  "maxRequestedBytes": 18874368,
+  "requestedBytes": 13220695,
+  "boundedRequests": 38,
+  "source": {
+    "dtm": {
+      "publicURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+      "etag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+      "fullOriginalBytes": 34973844421,
+      "ranges": [
+        {
+          "phase": "initial bounded primary IFD",
+          "start": 0,
+          "stop": 8191,
+          "sha256": "cc460f169f0da291f44141df45e2ddda8098bdfa66db86f95895ef992f28fdd5"
+        },
+        {
+          "phase": "tile-offset:43710",
+          "start": 353008,
+          "stop": 353015,
+          "sha256": "d9a4edc4a08e4cee7058c1d63d08a0d9eabc5ee809ce11bcc1f24c7f6f00a962"
+        },
+        {
+          "phase": "tile-size:43710",
+          "start": 835912,
+          "stop": 835915,
+          "sha256": "892b4a09cfd64f794c4bea316a97fcca37f1a779a8aeec55f6486013f060d67e"
+        },
+        {
+          "phase": "native-LZW:43710",
+          "start": 19253542579,
+          "stop": 19254660470,
+          "sha256": "8754c2074570f32e6fc790c2e125732b8deb0614ccd9029cffed59eb423648c6"
+        },
+        {
+          "phase": "tile-offset:60451",
+          "start": 486936,
+          "stop": 486943,
+          "sha256": "9e3af299c2684bbdfb041403804958a8d4e29abcef4809d789fc33ff74a31ae2"
+        },
+        {
+          "phase": "tile-size:60451",
+          "start": 902876,
+          "stop": 902879,
+          "sha256": "39a76c77a70f415a38df2a51e197db071e6f491eccdcef2c5f0757dd177b5fb5"
+        },
+        {
+          "phase": "native-LZW:60451",
+          "start": 32274108838,
+          "stop": 32275192858,
+          "sha256": "7b396c18c76349a3593e0141037a1834c3b18e7b1a06cd73a5314565e14e5629"
+        },
+        {
+          "phase": "tile-offset:60452",
+          "start": 486944,
+          "stop": 486951,
+          "sha256": "1d973d2b5252ffb8f9c11df692c5ca24a2170673ff9162e004088071d85e3fae"
+        },
+        {
+          "phase": "tile-size:60452",
+          "start": 902880,
+          "stop": 902883,
+          "sha256": "fbd16ea9ccbcf12420781a79b9086cb36ec5ae30366de81a48576b7c2a8533ca"
+        },
+        {
+          "phase": "native-LZW:60452",
+          "start": 32275192867,
+          "stop": 32276268860,
+          "sha256": "d19a737e3b61ecd9751c2ed42d25c5d152fb9f5a6f29fa1e61fefc82b519b278"
+        },
+        {
+          "phase": "tile-offset:60837",
+          "start": 490024,
+          "stop": 490031,
+          "sha256": "05405cf7f984dc760783dc18626da1ea67845aa89d16149a9306f3efdee804f9"
+        },
+        {
+          "phase": "tile-size:60837",
+          "start": 904420,
+          "stop": 904423,
+          "sha256": "8307bb806ce005d8cf4291e4e577f62493fd4d43495e4210795771f5dcf69227"
+        },
+        {
+          "phase": "native-LZW:60837",
+          "start": 32496663815,
+          "stop": 32497771528,
+          "sha256": "829532d37927d816539f824094501076f00750a3748f4197b79fe1b191a9c4d2"
+        },
+        {
+          "phase": "tile-offset:60838",
+          "start": 490032,
+          "stop": 490039,
+          "sha256": "15dbe854000e517df66cf778f46f90622feb6282f705b28255ce5244ca0875c0"
+        },
+        {
+          "phase": "tile-size:60838",
+          "start": 904424,
+          "stop": 904427,
+          "sha256": "b3163815260c65d93c5bd45c77f6f5f430ac6a738201d9d1883b51c13d567bf1"
+        },
+        {
+          "phase": "native-LZW:60838",
+          "start": 32497771537,
+          "stop": 32498867498,
+          "sha256": "7fbdc647c8d01fa8d8992df67b6fdce4cbbdf4f9098a9c091b957495790ec858"
+        },
+        {
+          "phase": "tile-offset:40453",
+          "start": 326952,
+          "stop": 326959,
+          "sha256": "328ec958c5c298b330f2fb68495680a05846695695d368aef5559b3a5a29de18"
+        },
+        {
+          "phase": "tile-size:40453",
+          "start": 822884,
+          "stop": 822887,
+          "sha256": "820b8b09d034d6f923eb815da148057edc1440067c9a463b3bc7dfa0a564b79c"
+        },
+        {
+          "phase": "native-LZW:40453",
+          "start": 17033517771,
+          "stop": 17034598677,
+          "sha256": "5407a8e4f8be9f98b7a016571f639aaac37823ae578c69eeb055be3458909abf"
+        }
+      ]
+    },
+    "dsm": {
+      "publicURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif",
+      "etag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+      "fullOriginalBytes": 35659211028,
+      "ranges": [
+        {
+          "phase": "initial bounded primary IFD",
+          "start": 0,
+          "stop": 8191,
+          "sha256": "693f18d1350b63dce2f60f693d492f29efc7b40afe7005a9a411418751b01d51"
+        },
+        {
+          "phase": "tile-offset:43710",
+          "start": 353008,
+          "stop": 353015,
+          "sha256": "4454e4620304b73d0876d6b2e978ce6b43f41bebed6a915f8d0f190932b5d983"
+        },
+        {
+          "phase": "tile-size:43710",
+          "start": 835912,
+          "stop": 835915,
+          "sha256": "aa83267688b4a6daebeeec7d035fe95bcfbd1f047242d4601b4215b7d7e8d93c"
+        },
+        {
+          "phase": "native-LZW:43710",
+          "start": 19631756270,
+          "stop": 19632888286,
+          "sha256": "d8080b18b6f76d5df537b30e2e087f46752f04fba64db63e5604b36a1b495089"
+        },
+        {
+          "phase": "tile-offset:60451",
+          "start": 486936,
+          "stop": 486943,
+          "sha256": "e5a47e6c55f795e9ba98b9db7bde5e5727da54e14444f86225a30fd991e294d9"
+        },
+        {
+          "phase": "tile-size:60451",
+          "start": 902876,
+          "stop": 902879,
+          "sha256": "a6c44123bef3db933a8a4a559f6a2e020e74b6e283ef8453caa5867ed1295e0a"
+        },
+        {
+          "phase": "native-LZW:60451",
+          "start": 32913991059,
+          "stop": 32915110972,
+          "sha256": "920f363d092e7219055e3d5143a2bd2940688cf00e6d74256c9cf49a5fd9cc8c"
+        },
+        {
+          "phase": "tile-offset:60452",
+          "start": 486944,
+          "stop": 486951,
+          "sha256": "b295f2c04eb07200e7f7eda003f0e2dfd0a2d5e4a2069879987c4a030ee25fa7"
+        },
+        {
+          "phase": "tile-size:60452",
+          "start": 902880,
+          "stop": 902883,
+          "sha256": "b9cc65dcf03b0711b31e63f51bb31758275c76181e1ac0dc82aaf3036b341c77"
+        },
+        {
+          "phase": "native-LZW:60452",
+          "start": 32915110981,
+          "stop": 32916197644,
+          "sha256": "3f49d051e320bd1524dbbe78e47a46e26677fbd344affee90da0e3fb46e160d6"
+        },
+        {
+          "phase": "tile-offset:60837",
+          "start": 490024,
+          "stop": 490031,
+          "sha256": "fb9c51fbef59cf8df4a4fa828c4808bf543c30d120f01666ca9f7f17caecc9cd"
+        },
+        {
+          "phase": "tile-size:60837",
+          "start": 904420,
+          "stop": 904423,
+          "sha256": "00331682057cd86afa08fa7b805c2496984e6b202739c0c259cae020b320536e"
+        },
+        {
+          "phase": "native-LZW:60837",
+          "start": 33140456951,
+          "stop": 33141570789,
+          "sha256": "a9a0164ee6f3581a6664e6542e2a4457ee5ff58dfb4e73c848b22da2857b169e"
+        },
+        {
+          "phase": "tile-offset:60838",
+          "start": 490032,
+          "stop": 490039,
+          "sha256": "6251a7e07b00a71e484e864025f338e49a18f271ed8bd91a735643a64606cd7c"
+        },
+        {
+          "phase": "tile-size:60838",
+          "start": 904424,
+          "stop": 904427,
+          "sha256": "b39a2d49e51d2bb237b4a68309c420190809d868bf7cbdf2a0e6a5bcd932cc3e"
+        },
+        {
+          "phase": "native-LZW:60838",
+          "start": 33141570798,
+          "stop": 33142669275,
+          "sha256": "5e2925bf5b855b5bde1e7a68332c9e9375ce63e1bbe3388af8b95e885c61faef"
+        },
+        {
+          "phase": "tile-offset:40453",
+          "start": 326952,
+          "stop": 326959,
+          "sha256": "3c0aa310f4dfaed6ae8cc7f95aac19b97c37ab40bcdaea6b5ccfb237d20f21c2"
+        },
+        {
+          "phase": "tile-size:40453",
+          "start": 822884,
+          "stop": 822887,
+          "sha256": "fb308742dbe510bd0b1a0836539c2d3049b23b40f087b82fff62574f5ae8ff37"
+        },
+        {
+          "phase": "native-LZW:40453",
+          "start": 17364784050,
+          "stop": 17365874814,
+          "sha256": "3e55a31e68df53a10354cde05cce7dafbdee386080a93c9c7b4843baca266736"
+        }
+      ]
+    }
+  },
+  "windows": {
+    "prince": {
+      "xywh": [
+        47345,
+        57924,
+        208,
+        218
+      ],
+      "firstCentreEPSG3979": [
+        2308966.5,
+        313445.5
+      ],
+      "files": {
+        "dtm": {
+          "name": "prince-dtm.f32le",
+          "bytes": 181376,
+          "sha256": "ceb265fe1dd2dc60d081b31f874a41542bac9fd3c66f33ba239c32fe92a93707",
+          "nativeBlockIDs": [
+            43710
+          ]
+        },
+        "dsm": {
+          "name": "prince-dsm.f32le",
+          "bytes": 181376,
+          "sha256": "92ca6a763d5f5fd914e145c7d096e63d415a05109806769b31f512459c9eacb8",
+          "nativeBlockIDs": [
+            43710
+          ]
+        }
+      }
+    },
+    "queens": {
+      "xywh": [
+        120688,
+        80198,
+        275,
+        246
+      ],
+      "firstCentreEPSG3979": [
+        2382309.5,
+        291171.5
+      ],
+      "files": {
+        "dtm": {
+          "name": "queens-dtm.f32le",
+          "bytes": 270600,
+          "sha256": "16e3565fde953da167f8463e4a4ef38a2ef7abb561399d3eecba69d97596e28f",
+          "nativeBlockIDs": [
+            60451,
+            60452,
+            60837,
+            60838
+          ]
+        },
+        "dsm": {
+          "name": "queens-dsm.f32le",
+          "bytes": 270600,
+          "sha256": "99566bb54dba9c97c3a6408f3fb51fa4f4610f9d28f224a859631b68679deeaa",
+          "nativeBlockIDs": [
+            60451,
+            60452,
+            60837,
+            60838
+          ]
+        }
+      }
+    },
+    "kings": {
+      "xywh": [
+        158392,
+        53365,
+        271,
+        294
+      ],
+      "firstCentreEPSG3979": [
+        2420013.5,
+        318004.5
+      ],
+      "files": {
+        "dtm": {
+          "name": "kings-dtm.f32le",
+          "bytes": 318696,
+          "sha256": "37aad200a7f137407c66a619232bfb1174b9b51ff827fa756e60a52fb4a35e73",
+          "nativeBlockIDs": [
+            40453
+          ]
+        },
+        "dsm": {
+          "name": "kings-dsm.f32le",
+          "bytes": 318696,
+          "sha256": "426aa41de64509c2caf418b662d0780276f6261047d5c57811e41c1a8fed13a8",
+          "nativeBlockIDs": [
+            40453
+          ]
+        }
+      }
+    }
+  }
+}

@@ -231,3 +231,5 @@ roof outlines; the pass is not a survey of individual trees.
 - [Optional woodland floor surface](qa/forest-floor-preview.md): exact forest category gating and licensed stock leaf litter, no added geometry.
 
 - [Optional close terrain-seated forest shade](qa/seated-forest-shadow.md): existing canopy shade follows verified ground in low-altitude woodland views, with mapped corridors protected.
+
+The [three-county ground study](../tools/art/province-ground-relief/README.md) compares paired 1 m source data inside six recorded ground apertures. Neither the paired height contrast nor the separate bare-earth shading forecast cleared both stations; no ground material or elevation is installed.

@@ -1,0 +1,130 @@
+{
+  "scope": "Original paired-window bare-earth source only, no use of DSM height as vegetation. CPU tangent-space feasibility for truthful meshless shading; no terrain or collision change.",
+  "lock": "8ce3bffd6b2a8c787aa54e48ce8bdbe729c68262d31b0b54cb6f7fa67ca08d15",
+  "pairSourceSHA": "e73536d3ce0316995f5c59a0ca0d00cce5496a81d18508351744e7d4299a934a",
+  "results": {
+    "prince": {
+      "stockPositionSha": "bbfb75f0eb7987784e30f5c44c55d3ad8fef314d99ef6086a9e3851345c2447d",
+      "privateRayCustodySHA256": "29da0481334e39739e4913594f5ec206f43f21b9e3002e58f402dda59310e6c7",
+      "staticExtraWarning": "Full resolution raw P from current CPU initial mesh; native far seams may differ.",
+      "fullCropEligibleCellCount": 23306,
+      "actualDetachedRayRegistrationStats": [
+        {
+          "tick": 540,
+          "fixedRolePixels": 82575,
+          "supportedPixels": 77074,
+          "uniqueNativeCells": 12046,
+          "eightMetreRegistrationBlocks": 226,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 1.8976067634857116e-05,
+            "p10": 0.19591684535499224,
+            "p50": 1.313526414898094,
+            "p90": 3.7154764597341714,
+            "p100": 8.35835561714795
+          },
+          "p90ShadeCosineAbsDelta": 0.025689033943492423,
+          "normalFeasibilityOnly": true
+        },
+        {
+          "tick": 720,
+          "fixedRolePixels": 22811,
+          "supportedPixels": 6963,
+          "uniqueNativeCells": 802,
+          "eightMetreRegistrationBlocks": 24,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 9.507220963046152e-06,
+            "p10": 0.008171952741722064,
+            "p50": 0.20015499503931128,
+            "p90": 1.4850014916156677,
+            "p100": 2.569908400196112
+          },
+          "p90ShadeCosineAbsDelta": 0.01753607437463884,
+          "normalFeasibilityOnly": false
+        }
+      ],
+      "qualifiedAtBothPhysicalStations": false
+    },
+    "queens": {
+      "stockPositionSha": "024e46ebf86a438e39a33317a90da1542a505f37b127aa482bc869afcaa65339",
+      "privateRayCustodySHA256": "9c8682b6293e79098af9323b18d73a793b8cd00e18bc1f381f1e1d757b3d49d3",
+      "staticExtraWarning": "Full resolution raw P from current CPU initial mesh; native far seams may differ.",
+      "fullCropEligibleCellCount": 18468,
+      "actualDetachedRayRegistrationStats": [
+        {
+          "tick": 540,
+          "fixedRolePixels": 84480,
+          "supportedPixels": 49148,
+          "uniqueNativeCells": 8998,
+          "eightMetreRegistrationBlocks": 194,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 0.0,
+            "p10": 0.005870351060093362,
+            "p50": 0.1515573944755703,
+            "p90": 0.9107928027681987,
+            "p100": 3.2518346251157886
+          },
+          "p90ShadeCosineAbsDelta": 0.007454607077652953,
+          "normalFeasibilityOnly": false
+        },
+        {
+          "tick": 720,
+          "fixedRolePixels": 69855,
+          "supportedPixels": 22003,
+          "uniqueNativeCells": 4288,
+          "eightMetreRegistrationBlocks": 111,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 3.4150945850063763e-06,
+            "p10": 0.0030462046166561075,
+            "p50": 0.08311097092006212,
+            "p90": 1.2385498254949598,
+            "p100": 3.2967257710930324
+          },
+          "p90ShadeCosineAbsDelta": 0.007913062949044295,
+          "normalFeasibilityOnly": false
+        }
+      ],
+      "qualifiedAtBothPhysicalStations": false
+    },
+    "kings": {
+      "stockPositionSha": "1862244744172a8b4e64026a05d1be35ed9d4d4b312bf5cf3e40a3283ff17686",
+      "privateRayCustodySHA256": "5a7de8852033c4b63bb97f42bdbda29adbfbf8d1f947d0d7c3b2c631ac7dd7c0",
+      "staticExtraWarning": "Full resolution raw P from current CPU initial mesh; native far seams may differ.",
+      "fullCropEligibleCellCount": 29383,
+      "actualDetachedRayRegistrationStats": [
+        {
+          "tick": 540,
+          "fixedRolePixels": 65953,
+          "supportedPixels": 42058,
+          "uniqueNativeCells": 9629,
+          "eightMetreRegistrationBlocks": 203,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 5.0509930079323e-06,
+            "p10": 0.01892156148543413,
+            "p50": 0.31267400277557467,
+            "p90": 1.3846100104658985,
+            "p100": 4.0828240890613445
+          },
+          "p90ShadeCosineAbsDelta": 0.01215898922196981,
+          "normalFeasibilityOnly": false
+        },
+        {
+          "tick": 720,
+          "fixedRolePixels": 63744,
+          "supportedPixels": 39212,
+          "uniqueNativeCells": 10680,
+          "eightMetreRegistrationBlocks": 199,
+          "P50ToP90NormalChangeDeg": {
+            "p0": 1.079947731352768e-05,
+            "p10": 0.07047404733624643,
+            "p50": 0.6531950320352562,
+            "p90": 2.5458340061300495,
+            "p100": 9.07033338140977
+          },
+          "p90ShadeCosineAbsDelta": 0.022706769035245582,
+          "normalFeasibilityOnly": true
+        }
+      ],
+      "qualifiedAtBothPhysicalStations": false
+    }
+  }
+}

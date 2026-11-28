@@ -1,0 +1,89 @@
+{
+  "scope": "Fixed detached n540/n720 ray occupancy; no individual foreground, no interpolation claims.",
+  "roles": {
+    "prince": {
+      "actualProjectionSource": "31012a5975ae56991612bfda5d2cf427d06d804dc25df9eb5f5e047b968275ac",
+      "originalPixelsSHA256": "29da0481334e39739e4913594f5ec206f43f21b9e3002e58f402dda59310e6c7",
+      "matrixNotice": "Derived from exact recorded detached old N112 mesh and camera pair; unequal areas between views.",
+      "frames": {
+        "540": {
+          "leaf": "prince-n540.u16le.gz",
+          "bytes": 90688,
+          "contentSHA256": "641ac043f795266c6f7353958880e0a495583cf7f01ae2b334c303c827046280",
+          "archiveSHA256": "e275c6031ed93df58b33b8c9a9d7b020a993ea0d5d6e0b99f5802fb628653caa",
+          "rays": 82575,
+          "independentNativeCells": 13047,
+          "height": 218,
+          "width": 208
+        },
+        "720": {
+          "leaf": "prince-n720.u16le.gz",
+          "bytes": 90688,
+          "contentSHA256": "7e09f32b16e2d76d1aabec14501add72d4349619ef8a4b4ae6ef67c1cb483e0d",
+          "archiveSHA256": "ab6564f63b86d2d3e0a8a4791768db6e19d3a1608ae91cc7a6271c42ea30c79a",
+          "rays": 22811,
+          "independentNativeCells": 2949,
+          "height": 218,
+          "width": 208
+        }
+      },
+      "bothFramesHaveDisjointNativeCells": true
+    },
+    "queens": {
+      "actualProjectionSource": "fd978620e4611171265d675072a8a61036a759d67a2ef2d8914071f95ec8997d",
+      "originalPixelsSHA256": "9c8682b6293e79098af9323b18d73a793b8cd00e18bc1f381f1e1d757b3d49d3",
+      "matrixNotice": "Derived from exact recorded detached old N112 mesh and camera pair; unequal areas between views.",
+      "frames": {
+        "540": {
+          "leaf": "queens-n540.u16le.gz",
+          "bytes": 135300,
+          "contentSHA256": "ca01e5437fc5095ee9607688977832e0ff676dbeb906e8130f7118fef8a858e9",
+          "archiveSHA256": "43b6fc1dddd15540206f7dbef6b49c6732b629a0672c88f98b4b1198092b1ddd",
+          "rays": 84480,
+          "independentNativeCells": 16909,
+          "height": 246,
+          "width": 275
+        },
+        "720": {
+          "leaf": "queens-n720.u16le.gz",
+          "bytes": 135300,
+          "contentSHA256": "5199f368ecba949cc94ce26f2ec0462a1f8a7a553a914277ac73b0bf0f2f99c4",
+          "archiveSHA256": "3fc1b5f946e7ee6e2f5a5d7f59d2cc8855f7a0a001cd4a6d4fa319b6eeb358c0",
+          "rays": 69855,
+          "independentNativeCells": 13078,
+          "height": 246,
+          "width": 275
+        }
+      },
+      "bothFramesHaveDisjointNativeCells": true
+    },
+    "kings": {
+      "actualProjectionSource": "cc6acb78d10943855a933473492271007e3a168a452dc81a17db70408c2ef4ef",
+      "originalPixelsSHA256": "5a7de8852033c4b63bb97f42bdbda29adbfbf8d1f947d0d7c3b2c631ac7dd7c0",
+      "matrixNotice": "Derived from exact recorded detached old N112 mesh and camera pair; unequal areas between views.",
+      "frames": {
+        "540": {
+          "leaf": "kings-n540.u16le.gz",
+          "bytes": 159348,
+          "contentSHA256": "4c68c92b8e57f0f578b2e336d58926856ca00dab10cf53f7641415de7c2f4246",
+          "archiveSHA256": "219a35e7df5e819a76e19428a51ead3bed418355119417b01ad048f3e83efab3",
+          "rays": 65953,
+          "independentNativeCells": 15966,
+          "height": 294,
+          "width": 271
+        },
+        "720": {
+          "leaf": "kings-n720.u16le.gz",
+          "bytes": 159348,
+          "contentSHA256": "2adb68b0e134f524d719c5bc5cdc89ad89430117c93d1d526f3df51909017b8e",
+          "archiveSHA256": "f07873057cf05ca055c29d0cc566a02cefa1484aa73383adfa89dc15a1423169",
+          "rays": 63744,
+          "independentNativeCells": 15596,
+          "height": 294,
+          "width": 271
+        }
+      },
+      "bothFramesHaveDisjointNativeCells": true
+    }
+  }
+}

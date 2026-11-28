@@ -1,0 +1,66 @@
+{
+  "purpose": "Independently archived HRDEM 1m paired input only at three earlier fixed eroded ordinary view placements; +12m halo from actual footprint (previous +4m plus extra 8m); no foreground or optical claim",
+  "prelockBeforeNativeReads": "07fbf08153bde9423686874777b43665ef1fbe828b094b70b31cbfdbe71eee4a",
+  "windows": [
+    {
+      "id": "prince",
+      "route": "prince-grassland",
+      "terrainTile": "7-8",
+      "grassShard": "-53:-17",
+      "xywh": [
+        47345,
+        57924,
+        208,
+        218
+      ],
+      "worldXZBounds": [
+        -54235.94471681946,
+        -16756.090516085293,
+        -53951.91925265823,
+        -16468.759428446945
+      ],
+      "onlyAdmitPrimaryShardInterior": true,
+      "artistROISHA256": "31012a5975ae56991612bfda5d2cf427d06d804dc25df9eb5f5e047b968275ac"
+    },
+    {
+      "id": "queens",
+      "route": "queens-grassland",
+      "terrainTile": "15-17",
+      "grassShard": "-1:36",
+      "xywh": [
+        120688,
+        80198,
+        275,
+        246
+      ],
+      "worldXZBounds": [
+        -923.4556801722696,
+        37065.65160033676,
+        -570.6041833145958,
+        37409.26628436806
+      ],
+      "onlyAdmitPrimaryShardInterior": true,
+      "artistROISHA256": "fd978620e4611171265d675072a8a61036a759d67a2ef2d8914071f95ec8997d"
+    },
+    {
+      "id": "kings",
+      "route": "kings-grassland",
+      "terrainTile": "23-16",
+      "grassShard": "43:31",
+      "xywh": [
+        158392,
+        53365,
+        271,
+        294
+      ],
+      "worldXZBounds": [
+        44233.89966132949,
+        31857.91729790391,
+        44607.43972988642,
+        32242.218338878833
+      ],
+      "onlyAdmitPrimaryShardInterior": true,
+      "artistROISHA256": "cc6acb78d10943855a933473492271007e3a168a452dc81a17db70408c2ef4ef"
+    }
+  ]
+}

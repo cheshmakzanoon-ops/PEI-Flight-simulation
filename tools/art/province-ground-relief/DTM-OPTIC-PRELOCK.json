@@ -1,0 +1,15 @@
+{
+  "scope":"Original paired-window bare-earth source only, no use of DSM height as vegetation. CPU tangent-space feasibility for truthful meshless shading; no terrain or collision change.",
+  "stationTicks":[540,720],
+  "gradeSmoothingKernelMetres":5,
+  "centralGradientHalfSpanMetres":4,
+  "continuousScopeRequiresStrictWholeTapEligibility":true,
+  "partialBoundaryRadiusMetres":31,
+  "sunUnitBeforeNormalization":[-0.6,0.74,-0.31],
+  "minRoleSupportedIndependentRegistrationBlocksEachStation":16,
+  "independentRegistrationBlockSideMetres":8,
+  "minNormalChangeAtP90Degrees":1.5,
+  "minShadeCosineDeltaAtP90":0.017,
+  "maxSourceSlope":0.30,
+  "materialDose":"Graphical feasibility only; do not set sky, palette, micro pattern, source support expansion, displacement or model time."
+}

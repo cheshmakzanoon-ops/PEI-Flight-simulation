@@ -1,0 +1,31 @@
+{
+  "scope": "Producer feasibility for source-supported meadow optical structure only; never assume DSM-DTM is plant height or change any World terrain, physics, imagery or material.",
+  "requireAllSignedGrassTapsG": 250,
+  "minOriginalWetDistanceMetres": 95,
+  "originalCoverClass": 30,
+  "nativeCellWholeCornerPadWorldMetres": 0.82,
+  "hardscapeExtraReserveMetres": {
+    "road": 24,
+    "trail": 18,
+    "sidewalk": 15,
+    "parking": 20,
+    "building": 22
+  },
+  "maxPlausibleNativeSeparationMetres": 0.95,
+  "minPlausibleNativeSeparationMetres": 0.035,
+  "negativeNoRaiseDiagnosticMetres": -0.045,
+  "tallDSMNeighbourRejectMetres": 3,
+  "tallDSMNeighbourReserveNativeCells": 10,
+  "mesoCells": [
+    4,
+    8,
+    12
+  ],
+  "wholeMesoAllNativeCentresRequired": true,
+  "minSupportedAuthorableBlocksPerSiteAt8Metres": 30,
+  "minMesoP90MinusP10Metres": 0.13,
+  "neverInterpretAs": "fieldwork, material reflectance, true plant species/height, canopy occupancy or three-county coverage",
+  "requiredWholeCellAuthorBlockFraction": 0.5,
+  "cropEdgeNoDataUnobservableReserveM": 11,
+  "deferEdgeToExplicitHalo": true
+}

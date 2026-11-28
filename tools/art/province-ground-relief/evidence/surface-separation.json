@@ -1,0 +1,351 @@
+{
+  "scope": "Conservative geographic mid-scale author feasibility only; no art, shader, geology or shape mounted.",
+  "prelock": "07fbf08153bde9423686874777b43665ef1fbe828b094b70b31cbfdbe71eee4a",
+  "plansSHA256": "d430a7013376245da647ebff3a33a3b57633feddfb4333d6063997740730ea82",
+  "sourceReceipt": "e73536d3ce0316995f5c59a0ca0d00cce5496a81d18508351744e7d4299a934a",
+  "nearFieldEvidence": [
+    {
+      "id": "prince",
+      "allCells": 45344,
+      "exactFourTapGrassCorners": 32479,
+      "strictDryClassWhole": 32479,
+      "finiteSignedPairAfterGuards": 28126,
+      "physicsNote": "Interpretation refers only to separations of aligned source surfaces.",
+      "hardscapeVetoBeforeHeightRange": {},
+      "nativeTallVetoBeforeHeightRange": 148,
+      "unclampedSeparationDistributionM": {
+        "p0": 0.0206451416015625,
+        "p10": 0.040642738342285156,
+        "p50": 0.05388641357421875,
+        "p90": 0.07758235931396484,
+        "p100": 2.729644775390625
+      },
+      "strongNegativeSeparationCells": 0,
+      "lowSeparationsBeforeMeso": 27152,
+      "meso": {
+        "4": {
+          "completeBlocks": 1627,
+          "nativeBlockMediansM": {
+            "p0": 0.029179096221923828,
+            "p10": 0.044719791412353514,
+            "p50": 0.05344676971435547,
+            "p90": 0.06686744689941407,
+            "p100": 0.5647969245910645
+          },
+          "p90MinusP10M": 0.022147655487060554,
+          "blocksWithMinimumLowSeparationCoverage": 1625,
+          "connectedActiveBlocksDescending": [
+            1624,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.03533744812011719,
+            "p10": 0.04480438232421875,
+            "p50": 0.0534510612487793,
+            "p90": 0.06687440872192384,
+            "p100": 0.5647969245910645
+          },
+          "activeP90MinusP10M": 0.022070026397705084
+        },
+        "8": {
+          "completeBlocks": 377,
+          "nativeBlockMediansM": {
+            "p0": 0.03742218017578125,
+            "p10": 0.046893882751464847,
+            "p50": 0.05308723449707031,
+            "p90": 0.06196413040161133,
+            "p100": 0.10907602310180664
+          },
+          "p90MinusP10M": 0.01507024765014648,
+          "blocksWithMinimumLowSeparationCoverage": 377,
+          "connectedActiveBlocksDescending": [
+            377
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.03742218017578125,
+            "p10": 0.046893882751464847,
+            "p50": 0.05308723449707031,
+            "p90": 0.06196413040161133,
+            "p100": 0.10907602310180664
+          },
+          "activeP90MinusP10M": 0.01507024765014648
+        },
+        "12": {
+          "completeBlocks": 155,
+          "nativeBlockMediansM": {
+            "p0": 0.04331636428833008,
+            "p10": 0.04791746139526367,
+            "p50": 0.053017616271972656,
+            "p90": 0.060423278808593744,
+            "p100": 0.07153844833374023
+          },
+          "p90MinusP10M": 0.012505817413330074,
+          "blocksWithMinimumLowSeparationCoverage": 155,
+          "connectedActiveBlocksDescending": [
+            155
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.04331636428833008,
+            "p10": 0.04791746139526367,
+            "p50": 0.053017616271972656,
+            "p90": 0.060423278808593744,
+            "p100": 0.07153844833374023
+          },
+          "activeP90MinusP10M": 0.012505817413330074
+        }
+      },
+      "qualifiedNumericalProspectOnly": false
+    },
+    {
+      "id": "queens",
+      "allCells": 67650,
+      "exactFourTapGrassCorners": 56313,
+      "strictDryClassWhole": 56313,
+      "finiteSignedPairAfterGuards": 32589,
+      "physicsNote": "Interpretation refers only to separations of aligned source surfaces.",
+      "hardscapeVetoBeforeHeightRange": {},
+      "nativeTallVetoBeforeHeightRange": 17672,
+      "unclampedSeparationDistributionM": {
+        "p0": -0.008213043212890625,
+        "p10": 0.013740158081054688,
+        "p50": 0.021505355834960938,
+        "p90": 0.03134918212890625,
+        "p100": 1.3877134323120117
+      },
+      "strongNegativeSeparationCells": 0,
+      "lowSeparationsBeforeMeso": 1895,
+      "meso": {
+        "4": {
+          "completeBlocks": 1777,
+          "nativeBlockMediansM": {
+            "p0": 0.010196685791015625,
+            "p10": 0.016449165344238282,
+            "p50": 0.02150583267211914,
+            "p90": 0.028266239166259772,
+            "p100": 0.09080314636230469
+          },
+          "p90MinusP10M": 0.01181707382202149,
+          "blocksWithMinimumLowSeparationCoverage": 71,
+          "connectedActiveBlocksDescending": [
+            10,
+            8,
+            5,
+            4,
+            4,
+            4,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.03132963180541992,
+            "p10": 0.035318851470947266,
+            "p50": 0.04236412048339844,
+            "p90": 0.05677318572998047,
+            "p100": 0.09080314636230469
+          },
+          "activeP90MinusP10M": 0.021454334259033203
+        },
+        "8": {
+          "completeBlocks": 355,
+          "nativeBlockMediansM": {
+            "p0": 0.01456451416015625,
+            "p10": 0.01763744354248047,
+            "p50": 0.02189922332763672,
+            "p90": 0.02656583786010742,
+            "p100": 0.054955482482910156
+          },
+          "p90MinusP10M": 0.008928394317626952,
+          "blocksWithMinimumLowSeparationCoverage": 5,
+          "connectedActiveBlocksDescending": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.03693723678588867,
+            "p10": 0.038623905181884764,
+            "p50": 0.04388236999511719,
+            "p90": 0.050586700439453125,
+            "p100": 0.054955482482910156
+          },
+          "activeP90MinusP10M": 0.01196279525756836
+        },
+        "12": {
+          "completeBlocks": 123,
+          "nativeBlockMediansM": {
+            "p0": 0.016041278839111328,
+            "p10": 0.018160152435302734,
+            "p50": 0.02211284637451172,
+            "p90": 0.025617694854736327,
+            "p100": 0.045046329498291016
+          },
+          "p90MinusP10M": 0.007457542419433593,
+          "blocksWithMinimumLowSeparationCoverage": 1,
+          "connectedActiveBlocksDescending": [
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.045046329498291016,
+            "p10": 0.045046329498291016,
+            "p50": 0.045046329498291016,
+            "p90": 0.045046329498291016,
+            "p100": 0.045046329498291016
+          },
+          "activeP90MinusP10M": 0.0
+        }
+      },
+      "qualifiedNumericalProspectOnly": false
+    },
+    {
+      "id": "kings",
+      "allCells": 79674,
+      "exactFourTapGrassCorners": 53294,
+      "strictDryClassWhole": 53294,
+      "finiteSignedPairAfterGuards": 39999,
+      "physicsNote": "Interpretation refers only to separations of aligned source surfaces.",
+      "hardscapeVetoBeforeHeightRange": {
+        "road": 0
+      },
+      "nativeTallVetoBeforeHeightRange": 8602,
+      "unclampedSeparationDistributionM": {
+        "p0": 0.005672454833984375,
+        "p10": 0.03834724426269531,
+        "p50": 0.08023262023925781,
+        "p90": 0.29090499877929693,
+        "p100": 2.7268524169921875
+      },
+      "strongNegativeSeparationCells": 0,
+      "lowSeparationsBeforeMeso": 35951,
+      "meso": {
+        "4": {
+          "completeBlocks": 2130,
+          "nativeBlockMediansM": {
+            "p0": 0.021933555603027344,
+            "p10": 0.0420191764831543,
+            "p50": 0.07589483261108398,
+            "p90": 0.15968542098999025,
+            "p100": 0.7880706787109375
+          },
+          "p90MinusP10M": 0.11766624450683595,
+          "blocksWithMinimumLowSeparationCoverage": 2051,
+          "connectedActiveBlocksDescending": [
+            2040,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.034244537353515625,
+            "p10": 0.04493522644042969,
+            "p50": 0.07744979858398438,
+            "p90": 0.1639537811279297,
+            "p100": 0.7880706787109375
+          },
+          "activeP90MinusP10M": 0.1190185546875
+        },
+        "8": {
+          "completeBlocks": 418,
+          "nativeBlockMediansM": {
+            "p0": 0.02979564666748047,
+            "p10": 0.0458979606628418,
+            "p50": 0.07608747482299805,
+            "p90": 0.1338517189025879,
+            "p100": 0.7020034790039062
+          },
+          "p90MinusP10M": 0.0879537582397461,
+          "blocksWithMinimumLowSeparationCoverage": 410,
+          "connectedActiveBlocksDescending": [
+            248,
+            149,
+            3,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.035465240478515625,
+            "p10": 0.04726905822753906,
+            "p50": 0.0767374038696289,
+            "p90": 0.13410215377807622,
+            "p100": 0.7020034790039062
+          },
+          "activeP90MinusP10M": 0.08683309555053716
+        },
+        "12": {
+          "completeBlocks": 137,
+          "nativeBlockMediansM": {
+            "p0": 0.033301353454589844,
+            "p10": 0.048211669921875,
+            "p50": 0.07529735565185547,
+            "p90": 0.12472400665283208,
+            "p100": 0.49795055389404297
+          },
+          "p90MinusP10M": 0.07651233673095709,
+          "blocksWithMinimumLowSeparationCoverage": 135,
+          "connectedActiveBlocksDescending": [
+            61,
+            47,
+            17,
+            5,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "predeclaredActiveBlockMediansM": {
+            "p0": 0.03513813018798828,
+            "p10": 0.048699378967285156,
+            "p50": 0.07542228698730469,
+            "p90": 0.1261571884155274,
+            "p100": 0.49795055389404297
+          },
+          "activeP90MinusP10M": 0.07745780944824224
+        }
+      },
+      "qualifiedNumericalProspectOnly": false
+    }
+  ]
+}
