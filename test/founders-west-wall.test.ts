@@ -48,6 +48,18 @@ test('Founders requires the current Standard nonindexed receiver and exact seven
 });
 test('replace only materials; source uniforms shared and failed/withdrawn proof preserves the actual stock and foreign draw',async()=>{
  const seed=stock(),{owner,scene}=seed,camera=new Camera(), geometry=owner.geometry;
+ const sky=seed.stock.uniforms.townWallSky.value as Texture;
+ const borrowedSource=sky.source,sourceVersion=borrowedSource.version,textureVersion=sky.version;
+ assert.equal(scene.environment!.source,borrowedSource);
+ const skyIntact=()=>{
+  assert.equal(sky.source,borrowedSource);
+  assert.equal(borrowedSource.version,sourceVersion);
+  assert.equal(sky.version,textureVersion);
+  assert.equal(scene.environment!.source,borrowedSource);
+ };
+ const authored=patchFoundersWestWall(seed.stock.vertexShader,seed.stock.fragmentShader);
+ assert(authored);
+ const residentImage=borrowedSource.data;
  let enabled=false,linkCalls=0,live=true;
  let unlock:(q:()=>boolean)=>void=()=>{};
  let linkAnswer=new Promise<()=>boolean>(r=>unlock=r);
@@ -56,19 +68,25 @@ test('replace only materials; source uniforms shared and failed/withdrawn proof 
   paint:async(v,f)=>patchFoundersWestWall(v,f),preflight:async(g)=>{linkCalls++;assert.equal(g.children.length,1);return linkAnswer;}});
  const before=owner.onBeforeRender;
  lease.sync();assert.equal(linkCalls,0);assert.equal(owner.material,seed.stock);
- enabled=true;lease.sync();await until(()=>linkCalls===1);assert.equal(owner.material,seed.stock);
+ enabled=true;lease.sync();await until(()=>linkCalls===1);assert.equal(owner.material,seed.stock);skyIntact();
  unlock(()=>live);await until(()=>{lease.sync();return lease.active;});
  assert.equal(owner.geometry,geometry);
  assert.equal(owner.material.uniforms.townWallGain,seed.stock.uniforms.townWallGain);
  assert.equal(owner.material.uniforms.townWallSky,seed.stock.uniforms.townWallSky);
+ skyIntact();
  assert.match(owner.material.vertexShader,/gl_VertexID>=23004/);
+ assert.equal(owner.material.vertexShader,authored.vertexShader);
+ assert.equal(owner.material.fragmentShader,authored.fragmentShader);
+ assert.equal(sky.source.data,residentImage);
+ for(const key of ['side','toneMapped','vertexColors','depthTest','depthWrite','depthFunc','transparent','blending'] as const)
+  assert.equal(owner.material[key],seed.stock[key],key);
  const after=owner.material;enabled=false;lease.sync();
  assert.equal(owner.material,seed.stock);assert.equal(owner.onBeforeRender,before);
  enabled=true;lease.sync();assert.equal(owner.material,after);
  const foreign=new MeshBasicMaterial();owner.material=foreign;lease.sync();
  assert(!lease.active);assert.equal(owner.material,foreign);assert.equal(owner.onBeforeRender,before);
  owner.material=seed.stock;live=false;lease.sync();assert.equal(owner.material,seed.stock);
- lease.dispose();foreign.dispose();
+ lease.dispose();foreign.dispose();skyIntact();
 });
 
 test('a late linked result or source mismatch cannot replace stock when the unit loses its exact lease',async()=>{

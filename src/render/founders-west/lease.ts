@@ -53,7 +53,10 @@ export class FoundersWestLease {
    const p=await s.paint(seal!.vertex,seal!.fragment);
    if(!p){denied=true;return;}
    if(!enter())return;
-   m=s.stock.clone();
+   // The stock sampler is borrowed below. A regular ShaderMaterial clone
+   // first clones its texture and invalidates the shared Texture.Source,
+   // even though that temporary sampler is never used by this material.
+   m=new ShaderMaterial().copy(Object.create(s.stock,{uniforms:{value:{}}}));
    m.vertexShader=p.vertexShader;m.fragmentShader=p.fragmentShader;
    m.uniforms={...seal!.content,foundersWestGain:{value:0}};
    const g=new Group();
