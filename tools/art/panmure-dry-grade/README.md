@@ -70,3 +70,5 @@ cmp "$p/evidence/detached-face.json" "$out/detached-face.json"
 [Selection and source hashes](evidence/receipt.json) distinguish the
 input comparison from the triangle subset. Live position/index
 readback, collisions and motion have not been tested for this variant.
+
+The [wider 20 m transition](wide/) is a separate detached attempt to remove the artificial mound. It has a much gentler checked slope but is not installed either.

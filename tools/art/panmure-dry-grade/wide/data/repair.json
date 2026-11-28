@@ -1,0 +1,93 @@
+{
+  "scope": "Separate detached Panmure V5 topology study; no changes to original positions, measures, peer areas, stock actors, game, collision or renderer.",
+  "stockShaderWorldFloat32ArithmeticReplayed": true,
+  "ordinaryBrowserOrActualSceneRender": false,
+  "originalV4Seal": "5c709c52404133c9df1f8688ecbabd880a25780fba2d6e2be0467609d00aecaf",
+  "beforePosAndNeutralSha256": [
+    "8a0d71888e337159e2e9a762cc84f6e9044762a1b3550d3e6d7bebbf4e04512a",
+    "99a21d6e718c8cfe18faa873bda5c772d9dbad0985114b7e90b0a47b253e407d"
+  ],
+  "indexSHA256": "ecc94261dc2f59860349dc453a55fa3506a8d51b0030d2472324c51943d0808c",
+  "indexBytes": 177048,
+  "indicesU32LE": true,
+  "triangles": 14754,
+  "prestockV4VertexCount": 7699,
+  "referencedV4VertexCount": 7694,
+  "physicallyMeasuredNativeKept": 6798,
+  "fullSourceNodesIncludingClipKept": 666,
+  "byteExactClosedRimEdges": 632,
+  "newAndOldDirectedRimIdentical": true,
+  "indicesOnlySlotReplacementsBeforeDegenerateDrop": {
+    "1702": [
+      876,
+      915,
+      988
+    ],
+    "1707": [
+      953,
+      915,
+      914
+    ],
+    "1708": [
+      914,
+      879,
+      953
+    ],
+    "1776": [
+      988,
+      990,
+      951
+    ],
+    "1777": [
+      988,
+      951,
+      876
+    ],
+    "9498": [
+      5003,
+      5004,
+      5005
+    ],
+    "9499": [
+      5005,
+      4956,
+      5003
+    ]
+  },
+  "originalDerivedCollisionsAliasedToOnlyNativeNeighbor": {
+    "954": 915,
+    "4573": 4522,
+    "4574": 4522,
+    "4576": 4522,
+    "5004": 4953
+  },
+  "removedIdenticallyProjectedTriangleCount": 10,
+  "changedOriginalTriangleStars": 24,
+  "noSignedPlanAreaShiftLocalAndWorld": true,
+  "nonInvertedNoOverlapLocalAndWorld": true,
+  "maxSlopeLocalPerM": 0.1074617091090107,
+  "maxSlopeWorldPerM": 0.10734306835756212,
+  "wholeSlopesBelowSame12Percent": true,
+  "minWorldFlatTriangleAltitudeM": 0.0017469281074217107,
+  "exactNoCrossingProofs": [
+    {
+      "spatialCandidatePairs": 439728,
+      "narrowPairs": 115104,
+      "literalBlockedPairs": []
+    },
+    {
+      "spatialCandidatePairs": 438090,
+      "narrowPairs": 115125,
+      "literalBlockedPairs": []
+    }
+  ],
+  "comparisonContinuousOverlayPieceCount": 48,
+  "affectedOverlayAreaM2": 3.2772427648304046,
+  "continuousHeightChangeVsV4MaxM": {
+    "active": 4.713387315113948e-05,
+    "neutral": 7.425507812186538e-06
+  },
+  "noZeroInDomainNeutralDriftClaim": true,
+  "canMount": false,
+  "disposition": "Geometric detached PASS, world integration HOLD. Neutral interpolation differs up to the stated nonzero bound; no device raster proof, live seat or collider. V3 1.9mm even if reapplied would not be reached."
+}

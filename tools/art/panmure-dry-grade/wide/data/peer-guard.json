@@ -1,0 +1,74 @@
+{
+  "scope": "Before pack: complete native cells left after all prior signed peers, no runtime or general geographic certification.",
+  "baseBroadPolygonAreaM2": 6591.62490326865,
+  "sourceControlledAreaM2": 6300.599744365616,
+  "remainingPolygons": [
+    6495
+  ],
+  "cellVetoCountsByRole": {
+    "EFI": 77,
+    "crown": 77,
+    "road": 265
+  },
+  "additionalPeerReserveM": 0.25,
+  "modelF32PadM": 0.006,
+  "remainingExactConservativePeerMarginsM": {
+    "road": [
+      0.6297307035124611,
+      "15345/1",
+      26.8
+    ],
+    "building": [
+      17.38962607509098,
+      "q1120/102",
+      20
+    ],
+    "lighthouse-locator": [
+      34.09621447566214,
+      "historical reserve",
+      35
+    ],
+    "EFI": [
+      0.324984179293093,
+      "38/72",
+      28
+    ],
+    "crown": [
+      0.324984179293093,
+      "38/72",
+      28
+    ],
+    "hedge+shadow": [
+      444.92465023568496,
+      "17",
+      0
+    ]
+  },
+  "noLocalTrailSidewalkParking": true,
+  "finiteNativeMinOldDryDistanceM": 115.03036504410522,
+  "unambiguousFourSourceClass30": true,
+  "boundaryEdges": 604,
+  "entireDomainClosedByVerifiedDegree3Blend": false,
+  "knownDifferentRawDTMAtBoundaryM": [
+    -0.794226,
+    -0.5045637,
+    0.5162085,
+    0.9503399,
+    1.0968896
+  ],
+  "daysCurrentSurveyNotClaimed": true,
+  "fixedWidthProspect": {
+    "widthM": 20.0,
+    "radiusMaxM": 27.71684416020113,
+    "allFacetsRisePerM": [
+      0.0015866,
+      0.0195174,
+      0.0390593,
+      0.066287,
+      0.1100513
+    ],
+    "peakYDifferenceM": 0.9052162762481339,
+    "largestNegativeYDifferenceM": -0.5119468041987695,
+    "fullNativeNodes": 518
+  }
+}
