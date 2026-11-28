@@ -131,3 +131,24 @@ need joint review. The assembled surface is not in the playable build.
 ```sh
 node --experimental-strip-types --test test/east-fog-combined-surface.test.ts
 ```
+
+## Original roof and siding finish
+
+The [detached material study](east-fog-surface-finish.ts) layers a restrained
+rib rhythm on the corrected roof and subtle variation on the siding.
+The cited August 2023 aerial supports the visual roof rhythm, not an exact
+rib spacing, roof product, current paint color or measured weathering.
+No photo, texture, new material slot, change to shadows, or geometry is
+introduced. The finish belongs only to the corrected walls and roof.
+It blends out from 177 m to 245 m of view-space range.
+
+In a separate ordinary Chase comparison, the building was visible with
+the finish fully off, then showed restrained changes over the roof and
+siding at two closer views. Pixels outside the visible surface and both
+restored views matched the original. This is an isolated material test:
+the live station still uses the old finish, and the assembled geometry
+and corrected terrain lighting need a separate combined review.
+
+```sh
+node --experimental-strip-types --test test/east-fog-surface-finish.test.ts
+```
