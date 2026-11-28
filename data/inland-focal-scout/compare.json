@@ -1,0 +1,225 @@
+{
+  "scope": "Approximate detached bare-earth comparison to a reconstructed regular 112 mesh, without stock local relief, road/building/plant masks or render/collision. These are not live elevations, quality percentages or admission.",
+  "pins": {
+    "terrainSHA": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverSHA": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "intakeSHA": "fa96ab9c4aed4758cc50fb66f431b8385334f083b46b9d2cd9791167ec7f36b7"
+  },
+  "method": "Geotransform unwarped 1 m source pixel centres (local CGVD2013 values) to sim horizontal projection. Use the regular stock 112 Float32 lattice, original facet interpolation, remove 0.12 m visual lift. Keep only base terrain/cover land centres >80 m from approximate coast. Open-ground rule is decoded WorldCover 30/40, not independent proprietary imagery or protected-obstacle scope.",
+  "windows": [
+    {
+      "route": "miscouche-woodlot-pass",
+      "keptNativeCentres": 102400,
+      "omittedForDryScreen": 0,
+      "percentiles": [
+        0,
+        10,
+        50,
+        90,
+        100
+      ],
+      "measuredMinusRegularStockM": [
+        -0.94,
+        -0.3527,
+        -0.0082,
+        0.326,
+        1.1135
+      ],
+      "absoluteSeparationM": [
+        0,
+        0.0311,
+        0.1746,
+        0.4599,
+        1.1135
+      ],
+      "decoded2021Cover": {
+        "10": {
+          "samples": 95476,
+          "signedM": [
+            -0.94,
+            -0.3646,
+            -0.0274,
+            0.27,
+            1.1135
+          ],
+          "absoluteM": [
+            0,
+            0.03,
+            0.1682,
+            0.43,
+            1.1135
+          ]
+        },
+        "30": {
+          "samples": 6924,
+          "signedM": [
+            -0.3294,
+            0.0175,
+            0.3839,
+            0.56,
+            0.7921
+          ],
+          "absoluteM": [
+            0.0002,
+            0.0649,
+            0.3839,
+            0.56,
+            0.7921
+          ]
+        }
+      },
+      "openGroundScreen": []
+    },
+    {
+      "route": "hunter-river-trail",
+      "keptNativeCentres": 102400,
+      "omittedForDryScreen": 0,
+      "percentiles": [
+        0,
+        10,
+        50,
+        90,
+        100
+      ],
+      "measuredMinusRegularStockM": [
+        -6.0577,
+        -3.5653,
+        -0.2243,
+        0.861,
+        2.0359
+      ],
+      "absoluteSeparationM": [
+        0,
+        0.1421,
+        0.7973,
+        3.5652,
+        6.0577
+      ],
+      "decoded2021Cover": {
+        "10": {
+          "samples": 54240,
+          "signedM": [
+            -6.0577,
+            -3.9855,
+            -1.3075,
+            0.5674,
+            1.9326
+          ],
+          "absoluteM": [
+            0,
+            0.2485,
+            1.3339,
+            3.9855,
+            6.0577
+          ]
+        },
+        "30": {
+          "samples": 43429,
+          "signedM": [
+            -5.2552,
+            -1.3032,
+            0.2273,
+            0.9199,
+            2.0359
+          ],
+          "absoluteM": [
+            0,
+            0.0844,
+            0.5429,
+            1.5787,
+            5.2552
+          ]
+        },
+        "40": {
+          "samples": 4731,
+          "signedM": [
+            -0.0165,
+            0.2243,
+            0.8212,
+            1.1172,
+            1.3515
+          ],
+          "absoluteM": [
+            0.0009,
+            0.2243,
+            0.8212,
+            1.1172,
+            1.3515
+          ]
+        }
+      },
+      "openGroundScreen": [
+        {
+          "cell": "14-14/20/26",
+          "dryCentreSamples": 2918,
+          "grassCroplandFraction": 1,
+          "forecastAbsoluteHeightSeparationM": 3.2378
+        },
+        {
+          "cell": "14-14/23/25",
+          "dryCentreSamples": 2865,
+          "grassCroplandFraction": 1,
+          "forecastAbsoluteHeightSeparationM": 1.3488
+        },
+        {
+          "cell": "14-14/18/28",
+          "dryCentreSamples": 2560,
+          "grassCroplandFraction": 1,
+          "forecastAbsoluteHeightSeparationM": 1.192
+        },
+        {
+          "cell": "14-14/19/27",
+          "dryCentreSamples": 2918,
+          "grassCroplandFraction": 1,
+          "forecastAbsoluteHeightSeparationM": 1.174
+        }
+      ]
+    },
+    {
+      "route": "kings-meadow-low",
+      "keptNativeCentres": 102400,
+      "omittedForDryScreen": 0,
+      "percentiles": [
+        0,
+        10,
+        50,
+        90,
+        100
+      ],
+      "measuredMinusRegularStockM": [
+        -2.5275,
+        -0.4281,
+        0.1219,
+        0.5886,
+        2.167
+      ],
+      "absoluteSeparationM": [
+        0,
+        0.0519,
+        0.2844,
+        0.7334,
+        2.5275
+      ],
+      "decoded2021Cover": {
+        "10": {
+          "samples": 102400,
+          "signedM": [
+            -2.5275,
+            -0.4281,
+            0.1219,
+            0.5886,
+            2.167
+          ],
+          "absoluteM": [
+            0,
+            0.0519,
+            0.2844,
+            0.7334,
+            2.5275
+          ]
+        }
+      },
+      "openGroundScreen": []
+    }
+  ]
+}

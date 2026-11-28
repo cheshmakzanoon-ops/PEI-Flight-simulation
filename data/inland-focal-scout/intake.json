@@ -1,0 +1,114 @@
+{
+  "scope": "Three 320 by 320 m exploratory bare-earth windows in exact source registration. Not a world install, foundation, current condition or calibration check.",
+  "source": {
+    "publisher": "Natural Resources Canada",
+    "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "header4096SHA256": "2ae33670d39a6d4903392f3eeae142748ee647d2f6f9be0be1eaf0a3cc62c9e5",
+    "licence": "https://open.canada.ca/en/open-government-licence-canada",
+    "verticalReferenceDocumentation": "https://download-telecharger.services.geo.ca/pub/elevation/dem_mne/HRDEMmosaic_mosaiqueMNEHR/HRDEM_Mosaic_Product_Specification.pdf"
+  },
+  "embeddedVerticalCRS": null,
+  "registration": "EPSG:3979 horizontal and EPSG:6647 vertical (CGVD2013), EPSG:4326 lon/lat for scout anchors only; PixelIsArea",
+  "width": 320,
+  "height": 320,
+  "encoding": "Row-major signed centimetre Int16 LE, gzip",
+  "windows": [
+    {
+      "route": "miscouche-woodlot-pass",
+      "reportedAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.899461938,
+          46.446886088
+        ]
+      },
+      "sourcePixelOffset": [
+        319951,
+        206394
+      ],
+      "geoTransform": [
+        2319951.0,
+        1,
+        0,
+        293606.0,
+        0,
+        -1
+      ],
+      "elevationMetres": [
+        7.456674575805664,
+        11.815813064575195
+      ],
+      "quantizedMaximumErrorM": 0.004999961853027202,
+      "exactNativeFloat32LESha256": "1e2945ffd03c30d995fc09b3e96bb1f6303a1cef015fe03ce0c5e7561463b7ee",
+      "publishedInt16Sha256": "55cc97e8171533f89b08b7f8c07359adbac860ecf5553885e51042dd8308fc96",
+      "file": "miscouche-woodlot-pass.cm.i16.gz",
+      "compressedSHA256": "8f8867902fabd451a84b10646efe5c9a8841f4eb113ce5c3dc9fffc3037ae531",
+      "validSamples": 102400
+    },
+    {
+      "route": "hunter-river-trail",
+      "reportedAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -63.343718091,
+          46.349095165
+        ]
+      },
+      "sourcePixelOffset": [
+        363209,
+        195612
+      ],
+      "geoTransform": [
+        2363209.0,
+        1,
+        0,
+        304388.0,
+        0,
+        -1
+      ],
+      "elevationMetres": [
+        18.608978271484375,
+        42.35358428955078
+      ],
+      "quantizedMaximumErrorM": 0.004999923706055398,
+      "exactNativeFloat32LESha256": "64fc8ab89bcac3ff95b6a283e5a06e1af338c37dd1aa53f0fdd80e43be3d0423",
+      "publishedInt16Sha256": "46a6c20e05c1e9dd47e58ac969672222ad4bdad2f5f632932da0b36beb5a76cf",
+      "file": "hunter-river-trail.cm.i16.gz",
+      "compressedSHA256": "16036065b5e2e5964c9d6c3134db040676ee7d5da04ba0c2a583c68ea1567d23",
+      "validSamples": 102400
+    },
+    {
+      "route": "kings-meadow-low",
+      "reportedAnchor": {
+        "modelSeconds": 12,
+        "wgs84": [
+          -62.243700105,
+          46.418942136
+        ]
+      },
+      "sourcePixelOffset": [
+        434214,
+        147260
+      ],
+      "geoTransform": [
+        2434214.0,
+        1,
+        0,
+        352740.0,
+        0,
+        -1
+      ],
+      "elevationMetres": [
+        53.88910675048828,
+        71.58393096923828
+      ],
+      "quantizedMaximumErrorM": 0.004999847412108238,
+      "exactNativeFloat32LESha256": "5d02224a56ad262f2954527670fb8da3aa4df4b5a1b8ac99ae0ff553cfecc718",
+      "publishedInt16Sha256": "6d3627ce7f374c862690c1179a5ae67533a13893da5cd24bc2acb95b2ae834fd",
+      "file": "kings-meadow-low.cm.i16.gz",
+      "compressedSHA256": "c7b66c24b7f0ee6f46c6484beb0ac12af5be7f9e448e812584c82e4c98d6316c",
+      "validSamples": 102400
+    }
+  ]
+}

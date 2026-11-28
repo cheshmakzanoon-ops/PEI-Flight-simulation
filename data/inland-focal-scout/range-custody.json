@@ -1,0 +1,59 @@
+{
+  "scope": "Requirements seen in GDAL verbose logs, plus separately verified header probe in Python.",
+  "pinnedETag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+  "separateHeaderRangeBytes": "0-4095",
+  "sourceObjectBytes": 731762494131,
+  "rasterRequests": [
+    {
+      "status": 206,
+      "first": 0,
+      "lastInclusive": 65535,
+      "receivedBytes": 65536
+    },
+    {
+      "status": 206,
+      "first": 3145728,
+      "lastInclusive": 3211263,
+      "receivedBytes": 65536
+    },
+    {
+      "status": 206,
+      "first": 361156313088,
+      "lastInclusive": 361158541311,
+      "receivedBytes": 2228224
+    },
+    {
+      "status": 206,
+      "first": 2949120,
+      "lastInclusive": 3014655,
+      "receivedBytes": 65536
+    },
+    {
+      "status": 206,
+      "first": 343930961920,
+      "lastInclusive": 343933190143,
+      "receivedBytes": 2228224
+    },
+    {
+      "status": 206,
+      "first": 2228224,
+      "lastInclusive": 2293759,
+      "receivedBytes": 65536
+    },
+    {
+      "status": 206,
+      "first": 286305187555,
+      "lastInclusive": 286306269616,
+      "receivedBytes": 1082062
+    },
+    {
+      "status": 206,
+      "first": 286767131551,
+      "lastInclusive": 286768166009,
+      "receivedBytes": 1034459
+    }
+  ],
+  "fullGETResponses": 0,
+  "gdalHeadRequests": 1,
+  "totalRasterRangeBytes": 6835113
+}
