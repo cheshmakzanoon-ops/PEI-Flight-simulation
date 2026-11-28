@@ -1,0 +1,30 @@
+{
+  "ambiguousOriginalOverlapCentres": 242,
+  "classCode": 147,
+  "confirmedCount": 190045,
+  "core3x3Count": 84889,
+  "datasetYear": 2025,
+  "fieldOutlinesYear": 2023,
+  "minimumConfidence": 80,
+  "nativeCoreNeighbourhood": [
+    3,
+    3
+  ],
+  "nativeEdgeGuardM": 35.0,
+  "nativeGridMetres": 30,
+  "nativeProjection": "Source GeoTIFF WGS 84 Albers Equal Area",
+  "polygonsWithAtLeast9Connected": 1207,
+  "purpose": "Dated native class/outline overlap scout only, not game eligibility or current appearance.",
+  "sourcePins": {
+    "aci_2025_pe_confidence_v1.tif": "9a44fffc81e511526dfae1f94d417c38f173ff7e38ba8767f887bcab31bb1258",
+    "aci_2025_pe_v1.tif": "d8538b2d567490fa66b9864cb5bb66cff45b6c8cadc654ceb191f49d04d5bd79",
+    "pe-fields-2023.gpkg": "29008797e85fd50d8a7ca8b0a796161ce49b0af4a0a2761ff70bb651cff85602"
+  },
+  "stats": {
+    "holesOrInvalid": 31,
+    "originalPolygons": 51343,
+    "polygonsWithStrictIndependentInterior": 2285,
+    "withinCropCoreBoundingBox": 5553
+  },
+  "uniqueNativeOverlapCentres": 56768
+}

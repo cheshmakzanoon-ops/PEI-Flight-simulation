@@ -67,3 +67,8 @@ A release match is indexed by `a77f319fba8091c2d06b913af5c2cd0ef58a695e1147f45de
 * **Runtime:** `tools/qa/province-fields-player.py`, `province-fields-crossing.py`, `province-fields-corner.py`, `province-fields-frames.py` and `province-land-player.py` exercise the versioned archive in the real player. Use `--help` for required Chromium, checkout/dist and output paths. [Current release evidence](../../../docs/qa/province-fields.md) distinguishes these checks from the retired v1 art boards.
 
 The FCR1 layout is deliberately unchanged: signed X/Z indices, a bounded pack table, immutable range sizes and SHA-256 pins for wire and decoded RG8 data. A 1,024 m tile contains 256 × 256 four-metre samples plus a two-cell border on each side. The shader reads a discrete authored direction from R and filters coverage G. No source photographs, survey point clouds or personal farm data are carried by this format.
+
+## Separate grain-corn scout
+
+The [dated grain-corn source scout](grain-corn.md) reproduces an aggregate AAFC
+evidence screen. It does not change this potato archive or enable new scenery.
