@@ -1,0 +1,19 @@
+{
+  "scope":"Studio-only original detached exterior at physical flight scale; no geography, source/photo pixels, new actual navigation or canonical edits",
+  "frame":[1200,760],
+  "flight":[
+    {"id":"harbour-side-1x","eye":[-101,42,64],"look":[0,6,-4],"fov":53},
+    {"id":"keeper-side-1x","eye":[90,46,-81],"look":[0,6,-4],"fov":53}
+  ],
+  "detail":[
+    {"id":"harbour-structure","eye":[-21,10,14],"look":[0,7,-3],"fov":46},
+    {"id":"keeper-structure","eye":[21,9,-20],"look":[0,7,-3],"fov":47}
+  ],
+  "worldSunAuthored":[-0.60,0.73,-0.31],
+  "workbenchAxes":"Local left/lower long wing; not a claim of exact bearing at registered map coordinate",
+  "hold":[
+    "No glazing aperture, stair geometry or proportions inferred from an unobserved unseen side",
+    "No ranges, parking, road, glass interior replica, beam flashing, fog deck, cliff or terrain alterations",
+    "Flight-scale optical acceptance must remain original art only, no mounted/canonical claim"
+  ]
+}

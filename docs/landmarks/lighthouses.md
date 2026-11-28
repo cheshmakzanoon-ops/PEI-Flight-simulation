@@ -35,3 +35,7 @@ previous balcony, and the right includes the screens. No reference
 photograph or extra camera was used in this comparison.
 
 **Render budget.** Each station has two near draws (opaque painted exterior and lantern glazing), one simplified draw beyond 750 m, and an empty LOD at 8.5 km, with hysteresis. The stations share paint and glazing finishes; West Point’s close opaque batch uses a separate program to fade the screens. Original shingle courses fade below pixel resolution. A bounded ground material reconstructs the mown lawn, gravel forecourt and walks on the eastern point and dune-grass/sand transition at the western site. Their fine layout and materials are interpretations, not survey data. Soft station contact and fixed daylight shadows are calculated on the already-masked ground, adding no draws or over-water shadow. The station tests verify exact mesh height at both visible LODs, draw limits, the position and heading of both departures, and exactly three replaced footprints among the shipped building inventory.
+
+## Detached artwork: Wood Islands
+
+The [Wood Islands Lighthouse studio](../../tools/art/wood-islands-exterior/) contains an original Three.js model of the relocated keeper’s light, with native-size views from two sides. It is not an in-game replacement. The available building outline does not fit the unscaled art, and matching the elevation and boundary of the actual site remains unresolved.

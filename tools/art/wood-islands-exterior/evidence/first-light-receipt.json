@@ -1,0 +1,310 @@
+{
+  "scope": "Original detached physical-scale Wood Islands study; no actual flight/terrain/place claim",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "r187": "187",
+  "frame": [
+    1200,
+    760
+  ],
+  "sampleCount": 4,
+  "presentScale": "literal 1:1 native pixel crops",
+  "modelTriangles": 4160,
+  "sceneDraws": 2,
+  "modelDraws": 1,
+  "artTextureCount": 0,
+  "shaderSHA": {
+    "vertex": "4c590afde04935a109d36985ebe9ffbfc314bf7f06dc1e572721747133572f0a",
+    "fragment": "f66354a5a539d762579b454292f6fe3e0c7930df578150cfdb51a8d22619d702"
+  },
+  "planSHA": "b8433abcc3e576b69b36cf4276ef80ec0f762f5e39a6d70ab3c54b4682292e41",
+  "views": [
+    {
+      "view": {
+        "id": "harbour-side-1x",
+        "eye": [
+          -101,
+          42,
+          64
+        ],
+        "look": [
+          0,
+          6,
+          -4
+        ],
+        "fov": 53,
+        "matrix": [
+          [
+            0.5584850624001637,
+            0.2351963266478193,
+            -0.7954728926916729,
+            0,
+            0,
+            0.9589619203943678,
+            0.28353489244455665,
+            0,
+            0.8295145779767136,
+            -0.1583500020995219,
+            0.5355659079508293,
+            0,
+            3.3180583119068583,
+            -6.387171530764293,
+            -126.5274457533834,
+            1
+          ],
+          [
+            1.2702701485640462,
+            0,
+            0,
+            0,
+            0,
+            2.00568970825902,
+            0,
+            0,
+            0,
+            0,
+            -1.0000640020480656,
+            -1,
+            0,
+            0,
+            -0.16000512016384524,
+            0
+          ]
+        ],
+        "rangeM": 126.96850003051938
+      },
+      "actualModelSilhouettePixels": 6095,
+      "actualBoundsFromRole": [
+        550,
+        321,
+        646,
+        428
+      ],
+      "image": "harbour-side-1x.webp",
+      "imageSHA256": "1d375aa2e002648b9766728e6fd80aae052ccab538f41f4a83fbf42e1a929218",
+      "oneToOneCrop": "harbour-side-1x-crop.webp",
+      "oneToOneCropSHA256": "3fafac3676d8698881053cdb89d32029af98651c8d9d2726a13ef557fbac1753",
+      "markerSHA256": "602cbcd62d032777f948ce7eb5ae976e53e2e535fbdee32d667511438bfdbe49",
+      "exactColorRepeat": true
+    },
+    {
+      "view": {
+        "id": "keeper-side-1x",
+        "eye": [
+          90,
+          46,
+          -81
+        ],
+        "look": [
+          0,
+          6,
+          -4
+        ],
+        "fov": 53,
+        "matrix": [
+          [
+            -0.6500958109420308,
+            -0.24312160132422622,
+            0.7199078576909458,
+            0,
+            -5.5511151231257815e-17,
+            0.9474313736048807,
+            0.3199590478626427,
+            0,
+            -0.75985224655562,
+            0.20800403668850473,
+            -0.6159211671355873,
+            0,
+            -3.0394089862224543,
+            -4.852572094875274,
+            -129.39943793184923,
+            1
+          ],
+          [
+            1.2702701485640462,
+            0,
+            0,
+            0,
+            0,
+            2.00568970825902,
+            0,
+            0,
+            0,
+            0,
+            -1.0000640020480656,
+            -1,
+            0,
+            0,
+            -0.16000512016384524,
+            0
+          ]
+        ],
+        "rangeM": 125.01599897613104
+      },
+      "actualModelSilhouettePixels": 6262,
+      "actualBoundsFromRole": [
+        555,
+        314,
+        651,
+        434
+      ],
+      "image": "keeper-side-1x.webp",
+      "imageSHA256": "b6a6e2a1fcd01efa7f64a37bfd1dbd447eea4b8bf6680c1b8aa20df5966b7e8e",
+      "oneToOneCrop": "keeper-side-1x-crop.webp",
+      "oneToOneCropSHA256": "6a9112523d1c7dbef876132fc8b2ea8e4bf8561fb64348d3e7f7274770dfc530",
+      "markerSHA256": "bc4190e93891ca20711b016d5ae0c0fc3768a114d5a647ec2edee45a0ca39a44",
+      "exactColorRepeat": true
+    },
+    {
+      "view": {
+        "id": "harbour-structure",
+        "eye": [
+          -21,
+          10,
+          14
+        ],
+        "look": [
+          0,
+          7,
+          -3
+        ],
+        "fov": 46,
+        "matrix": [
+          [
+            0.6291982286679646,
+            0.08577424424699555,
+            -0.7724974874165952,
+            0,
+            -6.938893903907228e-18,
+            0.9938920365128057,
+            0.11035678391665645,
+            0,
+            0.7772448707074854,
+            -0.06943629296185354,
+            0.6253551088610533,
+            0,
+            2.331734612122463,
+            -7.165553134475201,
+            -26.08098659896981,
+            1
+          ],
+          [
+            1.4920398316883767,
+            0,
+            0,
+            0,
+            0,
+            2.3558523658237527,
+            0,
+            0,
+            0,
+            0,
+            -1.0000640020480656,
+            -1,
+            0,
+            0,
+            -0.16000512016384524,
+            0
+          ]
+        ],
+        "rangeM": 27.184554438136374
+      },
+      "actualModelSilhouettePixels": 181948,
+      "actualBoundsFromRole": [
+        359,
+        40,
+        829,
+        696
+      ],
+      "image": "harbour-structure.webp",
+      "imageSHA256": "deb4fa6abbc6ec395d0bdfa941ea682064dd00ed91d17dc396b44fafa1416251",
+      "oneToOneCrop": "harbour-structure-crop.webp",
+      "oneToOneCropSHA256": "cee09e17d656baccd33a1a8e3f311058291f084d45e19bc40a99d06de457e63a",
+      "markerSHA256": "45a748f2b10d210869c71ec6d89e32113b1a0be9da4cd45639ab0c426957a3cf",
+      "exactColorRepeat": true
+    },
+    {
+      "view": {
+        "id": "keeper-structure",
+        "eye": [
+          21,
+          9,
+          -20
+        ],
+        "look": [
+          0,
+          7,
+          -3
+        ],
+        "fov": 47,
+        "matrix": [
+          [
+            -0.6291982286679646,
+            -0.05737726334531646,
+            0.7751241440518402,
+            0,
+            -2.0816681711721685e-17,
+            0.9972714819543103,
+            0.0738213470525562,
+            0,
+            -0.7772448707074854,
+            0.04644826080335142,
+            -0.627481449946728,
+            0,
+            -2.331734612122452,
+            -6.841555591270119,
+            -29.49162814749621,
+            1
+          ],
+          [
+            1.4565669465829627,
+            0,
+            0,
+            0,
+            0,
+            2.2998425472362567,
+            0,
+            0,
+            0,
+            0,
+            -1.0000640020480656,
+            -1,
+            0,
+            0,
+            -0.16000512016384524,
+            0
+          ]
+        ],
+        "rangeM": 27.09243436828813
+      },
+      "actualModelSilhouettePixels": 196182,
+      "actualBoundsFromRole": [
+        391,
+        84,
+        960,
+        742
+      ],
+      "image": "keeper-structure.webp",
+      "imageSHA256": "acb2004b7a700e5df8ed993f62ccc74c6e76e2658d9bfe3bba28c1a43fb9f873",
+      "oneToOneCrop": "keeper-structure-crop.webp",
+      "oneToOneCropSHA256": "5688932c9bdfd1fd6d60d4ae88ad0329867c5f71375143e230153594cf14c070",
+      "markerSHA256": "82df293109873ffa5fc8fec1b862687475bc62cf796e165db2ef7ddf41f981d5",
+      "exactColorRepeat": true
+    }
+  ],
+  "actualSubmissionDigests": {
+    "floor": {
+      "position": "79971a1ca1d8e24e1c071e53afa54657e1e8555560c8bfced4389fabc87f4421",
+      "normal": "92309ed4a18b4977af371bc68b756d2057ec2f1da90bca88d6db38f10ce601f0",
+      "uv": "f930f24e45857ae90f00df15ea822defe1e9cb840081a134eb155355265cb28e",
+      "paintRole": "182bcc5667e94ce5dfb57b41e4c7a8e163a71d7ec590e5c6fc011b2d6bc21bf6",
+      "pigment": "6afc2f4a93242fff91e512de640686df99321821e3dd32a64321bedad3a7f535"
+    },
+    "subject": {
+      "position": "fa4a79733380239d0d8ff7338ae492d4611bcf2af66fcb9a246d87d6c2af4a8e",
+      "normal": "bbf55a8993f376744f0566b5521c09b2062a368de12125719c10250f9132dd6c",
+      "uv": "f328a4aa333bbfecf59649d41d8ea9f000b274566cf23ff4e8fbc6448aa5fdaa",
+      "paintRole": "851dafc43c21e902dd5a59ec50df7d166fcdc79b2cee7cf3dcd0eed893fb7db1",
+      "pigment": "e9b83c95d796bf7e3c3ed70733072a1092cefca86af1c4f610b81b2915d3cabf"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "official": {
+    "federalHeritage": "https://www.pc.gc.ca/apps/dfhd/page_fhbro_eng.aspx?id=4673",
+    "canadianLights": "https://notmar.gc.ca/publications/list-lights/atl/atl942-en.php",
+    "societyHistory": "https://peilighthousesociety.ca/index.php/history/lighthouses/wood-islands",
+    "societyDetails": "https://peilighthousesociety.ca/index.php/lighthouses/open-lighthouses/61-wood-islands-lighthouse",
+    "peiRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19722&pid=0",
+    "bounds": "Society approximately 6.3m square at base, 8×4.8m dwelling plan and approximately 7.6m dwelling height; 16.4–16.5m overall; the federal listed light structure height 15.3m is a different descriptive datum, not a seat/absolute elevation. Records 2009 move. Heritage-listed late 20th century equipment does not grant a modern balcony or measurement of any current wall."
+  },
+  "photos": [
+    {"filePage":"https://commons.wikimedia.org/wiki/File:2022-09-10_01_View_of_Wood_Islands_Lighthouse,_Prince_Edward_Island,_Canada.jpg", "date":"2022-09-10","source":"Gordon Leggett", "license":"CC BY 4.0","previewSha256":"be89ab64a7049a871667de2077ded8ecd8ab81805b719e93e46e4f08b1d19bcf","usage":"reference-only, observed road/wing mass and red roof"},
+    {"filePage":"https://commons.wikimedia.org/wiki/File:Wood_Islands_Lighthouse,_Wood_Islands_Provincial_Parks,_Wood_Islands_(471020)_(13488511824).jpg", "date":"2011-09-11","source":"Robert Linsdell (Commons credit; embedded EXIF author Christine Linsdell)", "license":"CC BY 2.0 (verified Flickr/Commons, EXIF separately notes CC BY 4.0)", "previewSha256":"09586b810b3e438dc928047f967f194e5ba1bb0fa85148b08b6134dbc5cd8c9e", "usage":"reference-only, actual gallery/overhead close detail, entrance side and north-end stepped annex"},
+    {"filePage":"https://commons.wikimedia.org/wiki/File:Wood_Islands_Lighthouse_(22100356460).jpg", "date":"2015-10-12","source":"Dennis G. Jarvis (archer10)", "license":"CC BY-SA 2.0", "previewSha256":"7a32d97e8dafce96650bf24f30bc0ff87a7b866b84261a60fa00e33f8ac10705", "usage":"reference-only, three broad-wall sashes and differently placed tower sashes; no pixels, stencil or photo tracing"},
+    {"filePage":"https://commons.wikimedia.org/wiki/File:Wood_Islands_Lighthouse_(48589120342).jpg", "date":"2019-08-18","source":"WabbitWanderer", "license":"CC BY-SA 2.0", "previewSha256":"1536b25ef9e8ad5705f81e9740ea14712c1055d77f2c4097cec9cc34992d24db", "usage":"reference-only, same separate broad-wall cues under overcast; camera coordinate not taken as pose"},
+    {"filePage":"https://commons.wikimedia.org/wiki/File:Wood_Islands,_Prince_Edward_Island.jpg", "date":"2026-10-10","source":"Quintin Soloviev", "license":"CC BY 4.0", "previewSha256":"3b19c251bd53018786d7e0735819743a82b6ecc057280a9154a72144ee1cd8b6", "usage":"reference only; latest distant context, not calibrated roof control or terrain elevations"}
+  ],
+  "licenseScope":"References lawfully viewed separately, not included. Original authored surfaces/geometries from descriptive and observed facts only. No map/street view, donor textures or colours sampled from image pixels."
+}

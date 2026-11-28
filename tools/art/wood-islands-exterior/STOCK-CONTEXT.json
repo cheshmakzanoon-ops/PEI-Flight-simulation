@@ -1,0 +1,145 @@
+{
+  "scope": "Canonical source CPU emitter snapshot, not native submitted scene or live camera. Detached appearance only.",
+  "actualProjectionBasis": [
+    76762.59317717304,
+    111161.08375388647
+  ],
+  "placementHold": [
+    "2020 automatic roof segmentation is not wall/house or roof-component inventory",
+    "0.1 arc-second station locator is not a tower floor pin or measured bearing",
+    "No contemporary post-relocation foundation survey nor preferred native co-owner comparison",
+    "Long untested distance from current registered ordinary departures"
+  ],
+  "owners": {
+    "foldedTile": "21-21",
+    "aeb": "q1010/84",
+    "ownerTileWireSha": "f56d97fcc8657e66c76a04c6aaf058e4b980665b7f4f10a977838760b074a772",
+    "ownerTileWireBytes": 16596,
+    "fullAtlasSha": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+    "original8PointRingSHA256": "39dbf1f64139e2d6e4d2dff75b140b5296e71fae3caf8ee1b9656fe0a6f32bbf",
+    "areaM2": 104.23075439499823,
+    "stationLocatorInsideOldAEB": false,
+    "heightReturnAboveGround": 15.42,
+    "minHeightReturnAboveGround": 2.68,
+    "neighborsByVertexFromOfficialLocator": [
+      [
+        216,
+        45.73110441508836
+      ],
+      [
+        245,
+        116.66118922028723
+      ],
+      [
+        38,
+        362.4063476683416
+      ],
+      [
+        199,
+        375.39158114083375
+      ]
+    ]
+  },
+  "submittedCPU": {
+    "aebTileVertexCount": 19872,
+    "subjectInterval": [
+      5622,
+      5688
+    ],
+    "roofTriangles": 6,
+    "roofDistinctY": [
+      21.526166915893555
+    ],
+    "wallYMinMax": [
+      5.171072959899902,
+      21.526166915893555
+    ],
+    "attributes": {
+      "position": {
+        "count": 19872,
+        "completeSHA256": "e65a22ff777496a623cf7d821212e64535a9e7ab73870154cceccfcda6b374a8",
+        "exact84SHA256": "8f440a45172d83d78ac4055fec6c9a8e6d8f58f6aff128bb119bd4df911cbcb3"
+      },
+      "uv": {
+        "count": 19872,
+        "completeSHA256": "903e82f6a72ce4b600a77b1d4f5c6492fdddcc03f3695f9d69c10f139f6c5368",
+        "exact84SHA256": "766a660953f72b0158d8835c6d0fff10e8ad6e920e82d12fee098a72c32c6148"
+      },
+      "color": {
+        "count": 19872,
+        "completeSHA256": "6cec1456fa3031326f026652c2c58e288969f916865bbbc7e7d2edec85a8fbdf",
+        "exact84SHA256": "f74a28f11bf78afde914a42e9615671bb17e23b26a19def9ec38304df23b1643"
+      },
+      "topFlag": {
+        "count": 19872,
+        "completeSHA256": "ae1f08c9ae5f5d7d31f24296c9b530472fa41490abdaf6aaee78b1c68bb6d835",
+        "exact84SHA256": "b74b676650f8728134c577ea8c092cce37611f8c1c613e27aff1bfeb51ce5528"
+      },
+      "facadeStyle": {
+        "count": 19872,
+        "completeSHA256": "028fd3836fd985ed2bcc0c4bb37dd6869a6b28e3b6afaa97e494b94a599c6692",
+        "exact84SHA256": "efbb03b7a7f6fd3c29391d4d0281e1830a85caadd831c3f04716faca4107a42e"
+      },
+      "normal": {
+        "count": 19872,
+        "completeSHA256": "fa486c693c38c3981785214ffdfa71ae0b023d6f06c17dd802beff02bcfdda89",
+        "exact84SHA256": "66a9ebcf8a105ea76936515e7447d1c0452aecfff919d36677226c39555b2f1b"
+      }
+    },
+    "groundGeometry": {
+      "positionSha": "a0d91d47736aae52d8b59170ae9c6d1485fcf4fb175a93dbffbe040d967365ed",
+      "indexSha": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa",
+      "uvSha": "878725601c8ef6a2b1f8c76e7d0ee78a63f02a71ee873a541fccfbaee367423e"
+    }
+  },
+  "independentPlacementVeto": {
+    "bound": "Any point pair contained by the original roof ring must have distance <= maximum ring diameter. The detached body and eave knowingly exceed that bound even before placement and independently of rotation. No evidence that the complete as-built wall footprint equals this ring.",
+    "oldMaxPlanDiameterM": 15.590805310144667,
+    "presentRoundedLocatorDistanceFromOldPerimeterM": 0.23100144057013944,
+    "detachedLongDimensionM": 16.698999881744385,
+    "detachedY0SupportLongDimensionM": 16.48200035095215,
+    "anyRigidUnscaledContainmentInExactOldRing": false,
+    "roadWidthsAreOnlyComparedToOldRing": true
+  },
+  "ground": {
+    "bboxCoverMinMaxM": [
+      53.11773239521199,
+      67.98718675865496
+    ],
+    "categoricalCover": [
+      30
+    ],
+    "gridProbeCount": 2360,
+    "actualPackedN112Y": [
+      5.783470457833334,
+      6.053688787268979
+    ],
+    "cpuCollisionY": [
+      5.897571926524078,
+      6.3393778805270955
+    ],
+    "visualVsCollisionY": [
+      -0.5142203606982285,
+      0.021652691978608196
+    ],
+    "minimumRoadwearClearanceToWholeOldBoundingCircumcircleM": 12.565822773726538
+  },
+  "nearestPublishedSpawnsNotRecordedApproaches": [
+    {
+      "id": "montague",
+      "distanceM": 25364.570339357055
+    },
+    {
+      "id": "montague-bridge-low",
+      "distanceM": 25384.259434227755
+    },
+    {
+      "id": "georgetown-low",
+      "distanceM": 30480.987748127816
+    },
+    {
+      "id": "kings-grassland",
+      "distanceM": 31006.797412507225
+    }
+  ]
+}
