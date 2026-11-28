@@ -65,3 +65,21 @@ bearing have been inferred. The new pieces follow the shaft's taper and add
 89 opaque triangles to the existing opaque draw. The archived near mesh,
 glazing and middle-distance geometry remain byte-identical when requested.
 Neither the variant nor its photographs ship in the simulator.
+
+### Dated lantern close detail
+
+The optional `dated-exterior` replaces the simple placeholder with an inert
+bull's-eye relief with eight modeled concentric ridges and a closed holder
+seated in the deck. Two illustrative stays connect the gallery rail to the lantern. The [separate 2011 lantern
+close-up by Robert Linsdell](https://commons.wikimedia.org/wiki/File:North_Cape_Lighthouse,_Seacow_Pond_(471249)_(9450749290).jpg)
+shows those construction cues. The example's ridge pitch, curvature,
+axis and exact attachment locations are authored, not surveyed. It retains
+seven existing glazing panels, and the lens and supports join the same opaque
+draw. No lights, flashing, optical simulation, textures or additional draw
+roles are introduced. The baseline, dated façade-only and middle art remain
+available unchanged.
+
+An isolated native 4× comparison using the exact packed art and simple
+test lighting showed the lens relief and stays face-on and obliquely through
+the unchanged glass. It concerns only this detached object, not site
+scale, flight atmosphere or the playable scene.

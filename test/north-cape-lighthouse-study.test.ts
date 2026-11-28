@@ -101,3 +101,48 @@ test('the dated façade keeps the three sashes, vent and entry on three consecut
   }
  }finally{original.dispose();detail.dispose();far.dispose();farDated.dispose();}
 });
+
+test('the optional lantern has a closed Fresnel relief and two seated stays without an emitting or added draw role',()=>{
+ const original=makeNorthCapeDetachedStudy(true,'dated-facade');
+ const detailed=makeNorthCapeDetachedStudy(true,'dated-exterior');
+ const far=makeNorthCapeDetachedStudy(false,'dated-exterior');
+ const unknown=makeNorthCapeDetachedStudy(true,'unknown' as never);
+ try{
+  assert.equal(unknown.triangles,3924);assert.deepEqual(unknown.facadeDetails,[]);
+  assert.equal(unknown.optics,undefined);
+  assert.equal(original.optics,undefined);assert.equal(far.optics,undefined);
+  assert.equal(original.group.children.length,2);assert.equal(detailed.group.children.length,2);
+  assert.equal(detailed.exterior.material.emissive.getHex(),0);
+  assert.equal(detailed.exterior.material.map,null);
+  assert.equal(detailed.panes.material.map,null);
+  for(const key of ['position','normal','color']){
+   const read=(a:typeof original)=>a.panes.geometry.getAttribute(key).array;
+   assert.deepEqual(read(detailed),read(original));
+  }
+  const o=detailed.optics!;
+  assert.equal(o.rings,8);assert.equal(o.stays.length,2);
+  const g=detailed.exterior.geometry.getAttribute('position'),n=detailed.exterior.geometry.getAttribute('normal');
+  const edges=new Map<string,[number,number]>();
+  const vertex=(i:number)=>[g.getX(i),g.getY(i),g.getZ(i)].join(',');
+  for(let i=o.first;i<o.end;i+=3){
+   const ids=[vertex(i),vertex(i+1),vertex(i+2)];
+   assert.equal(new Set(ids).size,3);
+   for(let j=0;j<3;j++){
+    const a=ids[j],b=ids[(j+1)%3],k=a<b?a+'|'+b:b+'|'+a;
+    const [count,balance]=edges.get(k)??[0,0];
+    edges.set(k,[count+1,balance+(a<b?1:-1)]);
+   }
+   assert.ok(Math.abs(Math.hypot(n.getX(i),n.getY(i),n.getZ(i))-1)<1e-6);
+  }
+  assert.ok(Array.from(edges.values()).every(([count,balance])=>count===2&&balance===0),'all directed optical edges pair');
+  const main=Array.from({length:o.end-o.first},(_,i)=>g.getX(o.first+i));
+  assert.ok(Math.min(...main)<-.18&&Math.max(...main)>.38&&Math.max(...main)<.40);
+  for(const {first,end} of o.stays){
+   assert.equal(end-first,36);
+   const ys=Array.from({length:36},(_,j)=>g.getY(first+j));
+   assert.ok(Math.min(...ys)<16.62&&Math.min(...ys)>16.57);
+   assert.ok(Math.max(...ys)>18.15&&Math.max(...ys)<18.20);
+  }
+  assert.ok(detailed.triangles>original.triangles&&detailed.triangles<5050);
+ }finally{original.dispose();detailed.dispose();far.dispose();unknown.dispose();}
+});

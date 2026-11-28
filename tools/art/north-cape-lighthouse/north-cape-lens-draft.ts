@@ -119,7 +119,47 @@ function datedFacade(b:ModelWords):readonly FacadeDetail[]{
  out.push(Object.freeze({kind:'hooded-entry',face:2,first,end:b.vertices}));
  return Object.freeze(out);
 }
-function gallery(b:ModelWords,near:boolean){
+type OpticsRange=Readonly<{first:number;end:number}>;
+function detailedOptics(b:ModelWords,outerRail:number,lantern:number){
+ const first=b.vertices;
+ const center=17.216,n=24,radii=[.050,.101,.153,.204,.248,.292,.335,.380,.422] as const;
+ const golden=new T.Color('#ad8648'),bright=new T.Color('#c1a574'),
+  rib=new T.Color('#816038'),seat=new T.Color('#554834'),shadow=new T.Color('#433c30');
+ function v(r:number,x:number,i:number){
+  const a=(i%n)*2*Math.PI/n;return new T.Vector3(x,center+r*Math.cos(a),r*Math.sin(a));
+ }
+ function annulus(inside:number,outside:number,x0:number,x1:number,c:T.Color,forward=true){
+  for(let i=0;i<n;i++){
+   const a=v(inside,x0,i),q=v(outside,x1,i),Q=v(outside,x1,i+1),A=v(inside,x0,i+1);
+   if(inside===0){if(forward)b.tri(a,q,Q,c);else b.tri(a,Q,q,c);}
+   else if(forward)b.quad(a,q,Q,A,c);else b.quad(a,A,Q,q,c);
+  }
+ }
+ // A dark rear support and front holder conceal the back faces; the tiers
+ // are modeled relief on an inactive historical-looking object, not emission.
+ annulus(0,.440,-.19,-.19,shadow,false);
+ annulus(.422,.440,.125,.103,seat);
+ annulus(.440,.440,.103,-.19,shadow);
+ annulus(0,.050,.385,.372,bright);
+ for(let j=0;j<radii.length-1;j++){
+  const a=radii[j],c=radii[j+1],ax=.372-j*.027,cx=.372-(j+1)*.027,lip=ax+.008;
+  annulus(a,c-.008,ax,lip,j%2?golden:bright);
+  annulus(c-.008,c,lip,cx,rib);
+ }
+ annulus(.422,.422,.372-(radii.length-1)*.027,.125,seat);
+ const end=b.vertices;
+ b.bar(new T.Vector3(-.11,15.710,0),new T.Vector3(-.11,16.825,0),.12,.17,shadow);
+ b.bar(new T.Vector3(-.115,16.65,-.21),new T.Vector3(-.115,16.65,.21),.071,.076,seat);
+ for(const z of [-.24,.24])b.bar(new T.Vector3(-.13,16.65,z*.65),new T.Vector3(-.13,16.94,z),.055,.072,seat);
+ const stays:OpticsRange[]=[];
+ for(const i of [-1,2]){
+  const first=b.vertices;
+  b.bar(p(outerRail,16.60,i),p(lantern+.079,18.159,i),.023,.023,iron);
+  stays.push(Object.freeze({first,end:b.vertices}));
+ }
+ return Object.freeze({first,end,rings:radii.length-1,stays:Object.freeze(stays)});
+}
+function gallery(b:ModelWords,near:boolean,optics:boolean){
  const r=META.deckRadius+.015,lantern=r*.63;
  const posts:{first:number;end:number}[]=[];
  for(let i=0;i<N;i++){
@@ -142,15 +182,15 @@ function gallery(b:ModelWords,near:boolean){
  b.disc(.033,META.finial,shade,true);
  // Lantern backing is illustrative; not a flashing navigational signal.
  b.quad(p(lantern-.028,16.45,5),p(lantern-.028,18.10,5),p(lantern-.028,18.10,6),p(lantern-.028,16.45,6),wine);
- b.collar(.30,16.63,.265,17.40,amber);
- b.disc(.265,17.4,amber,true);
- return {radius:lantern,posts:Object.freeze(posts)};
+ const lens=optics?detailedOptics(b,r,lantern):undefined;
+ if(!lens){b.collar(.30,16.63,.265,17.40,amber);b.disc(.265,17.4,amber,true);}
+ return {radius:lantern,posts:Object.freeze(posts),lens};
 }
-export function makeNorthCapeDetachedStudy(near=true,detail:'baseline'|'dated-facade'='baseline'){
+export function makeNorthCapeDetachedStudy(near=true,detail:'baseline'|'dated-facade'|'dated-exterior'='baseline'){
  const b=new ModelWords(),g=new ModelWords();
- const trimSeats=tower(b,near),deck=gallery(b,near),r=deck.radius-.031;
+ const trimSeats=tower(b,near),deck=gallery(b,near,near&&detail==='dated-exterior'),r=deck.radius-.031;
  for(let i=0;i<N;i++)if(i!==5)g.quad(p(r,16.46,i),p(r,18.095,i),p(r,18.095,i+1),p(r,16.46,i+1),warm);
- const facadeDetails=near&&detail==='dated-facade'?datedFacade(b):Object.freeze([]);
+ const facadeDetails=near&&(detail==='dated-facade'||detail==='dated-exterior')?datedFacade(b):Object.freeze([]);
  const solid=b.finish(),glass=g.finish();
  const paint=new T.MeshStandardMaterial({vertexColors:true,roughness:.76,metalness:.02});
  const glazing=new T.MeshPhysicalMaterial({color:'#8fa6a6',roughness:.21,metalness:.025,
@@ -158,7 +198,7 @@ export function makeNorthCapeDetachedStudy(near=true,detail:'baseline'|'dated-fa
  const exterior=new T.Mesh(solid,paint),panes=new T.Mesh(glass,glazing),group=new T.Group();
  exterior.name='North Cape tower, authored timber and gallery';panes.name='North Cape tower, illustrative lantern glazing';
  group.name='North Cape Light · detached historically guided study';group.add(exterior,panes);
- return {group,exterior,panes,near,trimSeats,facadeDetails,galleryPosts:deck.posts,ringEdges:N,glassFaces:N-1,
+ return {group,exterior,panes,near,trimSeats,facadeDetails,optics:deck.lens,galleryPosts:deck.posts,ringEdges:N,glassFaces:N-1,
   triangles:solid.getAttribute('position').count/3+glass.getAttribute('position').count/3,
   dispose(){solid.dispose();glass.dispose();paint.dispose();glazing.dispose();}};
 }
