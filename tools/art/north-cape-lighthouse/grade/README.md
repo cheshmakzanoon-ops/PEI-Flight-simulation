@@ -92,3 +92,5 @@ The optional `verify-causal-custody.mjs` checker can read a retained
 native capture directory. It verifies the four active programs and
 matrices, exact PNG hashes, and near-frame buffer scope; the raw
 full-scene images are not bundled with this repository study.
+
+The [published-route flight comparison](current-route/) repeats the height-only test on the current lighthouse course, with two positive views and a geometrically confirmed unchanged exit. It is still not installed.
