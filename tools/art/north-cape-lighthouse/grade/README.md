@@ -64,3 +64,31 @@ pipeline. Published inputs are in
 [data/north-cape-lighthouse-study](../../../../data/north-cape-lighthouse-study/)
 and the stock world manifests. Contains information licensed under the
 [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada).
+
+### Isolating measured heights from extra triangles
+
+A follow-up private native comparison uses the **same** replacement
+triangles and identical horizontal centres and UVs in both new passes.
+The neutral version packs every new height back on the old owner’s
+plane. At the two ordinary Chase views, the neutral retessellation
+produced **zero** strong RGB changes from stock. Substituting the
+measured heights produced **354** and **2,531** strong changes against
+that control. At the true exit, the old terrain owner still drew and
+none of the comparisons changed any pixel.
+
+[Packed/native receipts](causal-control.json) record the active
+position/element scope and exact restoration. The selected stock
+program does not consume a normal attribute. These results isolate
+the display effect of the proposed elevation, not contact, materials,
+mapped peer visibility inside the shape, or a finished view. In the
+actual pictures the effect remains subtle. Both the grade and neutral
+versions are still private recaptures, not player terrain.
+
+Use the same reproduction command with an unused destination and
+append `--counterfactual` to get the independently matched original
+neutral position suffix and its rounding check.
+
+The optional `verify-causal-custody.mjs` checker can read a retained
+native capture directory. It verifies the four active programs and
+matrices, exact PNG hashes, and near-frame buffer scope; the raw
+full-scene images are not bundled with this repository study.

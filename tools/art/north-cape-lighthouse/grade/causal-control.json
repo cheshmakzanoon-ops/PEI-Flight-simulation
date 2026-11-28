@@ -1,0 +1,79 @@
+{
+  "scope": "Detached private ordinary route, same triangulation and texture interpolation, not a finished land material or deployed upgrade.",
+  "portable": {
+    "sourceFace": 20152,
+    "preservedOriginalPositionRecords": 12769,
+    "addedPositionRecords": 437,
+    "unchangedIndexBasis": true,
+    "changedOnlyHeightRecords": 357,
+    "maximumNeutralPlaneRoundingM": 2.376981402818501e-7,
+    "maxHeightAboveNeutralM": 0.9685378074645996,
+    "changedShaftOrLandmark": false,
+    "neutralPackedPositionSHA256": "fecc6de06970136ea045038959b703c3347bf3899d6fbddc246aef7aff6527e5",
+    "neutralSuffixSHA256": "d157d3889ca22a0d6bc60c23fad2ccc74d89f34809a11f923bb6062bbd79e860"
+  },
+  "checkedNativeNeutralFullSha": "ada8792f4d471fdd0de1249ec54d1825cd8c21d417ee60269d59a2ca51047ae0",
+  "nativeWinner": "source elevation relative to neutral, no strong retessellation-only changes",
+  "native": {
+    "scope": "Actual original North Cape lighthouse and separate indexed grade tests in the same two ordinary scene cameras. Grade passes keep tower absent and do not modify contact, code shipped to users, water or scenery authorities. Not an aesthetic or release pass.",
+    "phases": {
+      "approach": {
+        "nativeReceipt": "a0957d67a0bb0be39ccecdbbb7721755c9179214aff232bee5ed8455f966a313",
+        "travel": 288.51980066382384,
+        "visible": 614,
+        "solid": 609,
+        "glass": 22,
+        "strong": 614,
+        "projected": 1046,
+        "grade": {
+          "exam": "same-world real localized grade",
+          "changed": 1249,
+          "strong": 351,
+          "unionProjected": 3932,
+          "neutralStrong": 0,
+          "causalStrong": 354,
+          "replacementDraws": 1,
+          "nearSubmittedScopeVerified": false
+        }
+      },
+      "near": {
+        "nativeReceipt": "c69ed6eb8c581fcf13fe33d73322619a9cb8be0795060d51faf8d362ce6a9d2b",
+        "travel": 404.4379562699978,
+        "visible": 2800,
+        "solid": 2783,
+        "glass": 135,
+        "strong": 2800,
+        "projected": 3105,
+        "grade": {
+          "exam": "same-world real localized grade",
+          "changed": 8661,
+          "strong": 2527,
+          "unionProjected": 24702,
+          "neutralStrong": 0,
+          "causalStrong": 2531,
+          "replacementDraws": 1,
+          "nearSubmittedScopeVerified": true
+        }
+      },
+      "exit": {
+        "nativeReceipt": "46fc353f8dac4b3c8f86757282fe52e76b1a3c115555089a43deb6582ea12f44",
+        "travel": 614.0579295645875,
+        "visible": 0,
+        "solid": 0,
+        "glass": 0,
+        "strong": 0,
+        "projected": 0,
+        "grade": {
+          "exam": "same-world real localized grade",
+          "changed": 0,
+          "strong": 0,
+          "unionProjected": 0,
+          "neutralStrong": 0,
+          "causalStrong": 0,
+          "replacementDraws": 1,
+          "nearSubmittedScopeVerified": false
+        }
+      }
+    }
+  }
+}

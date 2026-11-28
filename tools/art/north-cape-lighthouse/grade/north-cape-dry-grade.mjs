@@ -11,7 +11,8 @@ import {PlaneGeometry} from 'three';
 import {gradeFaceProof} from './north-cape-grade-face.mjs';
 import {readNorthCapeGradeExclusions} from './north-cape-grade-exclusions.mjs';
 
-const [repository,destination]=process.argv.slice(2);
+const [repository,destination,...options]=process.argv.slice(2);
+assert.ok(options.length===0||options.length===1&&options[0]==='--counterfactual');
 assert.ok(repository&&destination,'usage: node north-cape-dry-grade.mjs <repository root> <new evidence JSON>');
 const root=resolve(repository),url=p=>pathToFileURL(resolve(root,p));
 const sha=b=>createHash('sha256').update(b).digest('hex');
@@ -220,7 +221,7 @@ const report={
  classificationStock:rows.filter(r=>r.within).reduce((a,r)=>(a[r.code]=(a[r.code]??0)+1,a),{}),
  packedSeat:{face:seat.face,ebo:seatVertices,displayedY:seat.y},
  candidateRectangles:supportFaces.slice(0,8),
- detachedSingleFace:gradeFaceProof({plane,witness:supportFaces[0],rows,coords,D,tx,tz,packedHeight,stockUV:(x,z)=>terrain.uv(x,z),lift:GROUND_LIFT}),
+ detachedSingleFace:gradeFaceProof({plane,witness:supportFaces[0],rows,coords,D,tx,tz,packedHeight,stockUV:(x,z)=>terrain.uv(x,z),lift:GROUND_LIFT,counterfactual:options.length===1}),
  summaries,
 };
 writeFileSync(destination,JSON.stringify(report,null,2)+'\n',{flag:'wx'});

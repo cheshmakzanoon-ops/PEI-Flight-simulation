@@ -1,9 +1,10 @@
 /** A detached one-face replacement, no runtime imports or loader. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {retessellatedNorthCape} from './retessellated-stock.mjs';
 import {Float32BufferAttribute,ShapeUtils,Vector2,Vector3} from 'three';
 
-export function gradeFaceProof({plane,witness,rows,coords,D,tx,tz,packedHeight,stockUV,lift}) {
+export function gradeFaceProof({plane,witness,rows,coords,D,tx,tz,packedHeight,stockUV,lift,counterfactual=false}) {
  assert.deepEqual(witness,{face:20152,window:[201,138,223,156],area:437});
  const {face,window:[c0,r0,c1,r1]}=witness,nx=c1-c0+1,nz=r1-r0+1;
  const previous=plane.index.array,position=plane.attributes.position;
@@ -118,6 +119,10 @@ export function gradeFaceProof({plane,witness,rows,coords,D,tx,tz,packedHeight,s
   positionSHA256:hash(writeback.attributes.position.array),indicesSHA256:hash(writeback.index.array),
   uvSHA256:hash(writeback.attributes.uv.array),normalSHA256:hash(normals.array),
  };
+ if(counterfactual){
+  const n=retessellatedNorthCape({oldPositions:position.array,newPositions:writeback.attributes.position.array,originalIndices:original});
+  result.retessellationControl=n.records;
+ }
  writeback.dispose();
  return result;
 }
