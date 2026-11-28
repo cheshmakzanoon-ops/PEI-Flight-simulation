@@ -1,0 +1,126 @@
+{
+  "600": {
+    "role": 1350,
+    "pure": 1205,
+    "rgbAny": 0,
+    "strong": 0,
+    "maxChannel": 0,
+    "outsideExactDepthRole": 0,
+    "outsideProjection": 0,
+    "alpha": 0,
+    "trueDistanceMinMax": [
+      540.8988610383341,
+      616.4340726114011
+    ],
+    "depression": [
+      10.480048288779537,
+      11.963823910782606
+    ],
+    "dockDraws": 1
+  },
+  "720": {
+    "role": 5574,
+    "pure": 5307,
+    "rgbAny": 5574,
+    "strong": 5515,
+    "maxChannel": 14,
+    "outsideExactDepthRole": 0,
+    "outsideProjection": 0,
+    "alpha": 0,
+    "trueDistanceMinMax": [
+      347.71430563485416,
+      427.2079799923776
+    ],
+    "depression": [
+      15.418121001842682,
+      19.065059146952752
+    ],
+    "dockDraws": 1,
+    "medianRGB": [
+      [
+        103.0,
+        95.0,
+        88.0
+      ],
+      [
+        107.0,
+        102.0,
+        96.0
+      ]
+    ],
+    "luma": [
+      [
+        95.19539999999999,
+        96.19539999999999,
+        96.19539999999999
+      ],
+      [
+        100.6298,
+        102.62979999999999,
+        105.62979999999999
+      ]
+    ]
+  },
+  "780": {
+    "role": 15604,
+    "pure": 15280,
+    "rgbAny": 15604,
+    "strong": 15517,
+    "maxChannel": 16,
+    "outsideExactDepthRole": 0,
+    "outsideProjection": 0,
+    "alpha": 0,
+    "trueDistanceMinMax": [
+      261.7428905455685,
+      342.3388610848313
+    ],
+    "depression": [
+      19.505718689205267,
+      25.89452630218719
+    ],
+    "dockDraws": 1,
+    "medianRGB": [
+      [
+        102.0,
+        94.0,
+        87.0
+      ],
+      [
+        107.0,
+        101.0,
+        95.0
+      ]
+    ],
+    "luma": [
+      [
+        94.19539999999999,
+        95.19539999999999,
+        96.40799999999999
+      ],
+      [
+        99.84240000000001,
+        101.84239999999998,
+        104.84239999999998
+      ]
+    ]
+  },
+  "900": {
+    "role": 0,
+    "pure": 0,
+    "rgbAny": 0,
+    "strong": 0,
+    "maxChannel": 0,
+    "outsideExactDepthRole": 0,
+    "outsideProjection": 0,
+    "alpha": 0,
+    "trueDistanceMinMax": [
+      169.271688696405,
+      237.2999163559247
+    ],
+    "depression": [
+      29.198350892396565,
+      43.148318200072474
+    ],
+    "dockDraws": 1
+  }
+}

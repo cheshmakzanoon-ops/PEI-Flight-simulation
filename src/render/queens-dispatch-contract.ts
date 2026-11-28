@@ -13,8 +13,9 @@ export const QUEENS_DISPATCH_STAND=Object.freeze({
 export function queensDispatchStandProfile(q:URLSearchParams){
  const mode=q.getAll('scenery');
  return q.getAll('departure').length<=1&&q.getAll('diagnostics').length<=1&&
-  mode.length<=1&&mode.every(v=>v===''||v==='standard')&&
-  [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics');
+  // The unrelated charcoal-roof comparison does not own Kings/Queens trees.
+  q.getAll('stockQuartermasterSeawardRoof').length<=1&&mode.length<=1&&mode.every(v=>v===''||v==='standard')&&
+  [...q.keys()].every(k=>k==='departure'||k==='scenery'||k==='diagnostics'||k==='stockQuartermasterSeawardRoof');
 }
 
 export const QUEENS_REGIONAL_ROSTER=1081;

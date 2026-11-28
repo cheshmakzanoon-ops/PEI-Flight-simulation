@@ -1,3 +1,4 @@
+import {SeawardRoofLease,SEAWARD_ROUTE,standardSeawardRoof} from './render/quartermaster-seaward/lease.ts';
 import {standardSourisKnightRequested} from './app/scenery-profile.ts';
 import {kingsDunesFieldPassRequested} from './app/scenery-profile.ts';
 import {CAVENDISH_STANDARD_WATER_ROUTE,standardCavendishWaterRequested} from './app/scenery-profile.ts';
@@ -174,6 +175,15 @@ async function run(){
  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,innerWidth/innerHeight,.08,350000),cameraUp=new THREE.Vector3(0,1,0);
+ const seawardRoof=standardSeawardRoof(new URLSearchParams(location.search))?
+  new SeawardRoofLease(renderer,scene,camera,
+   async()=>await verifyDecodedCover(cover)===CANOPY_FENCE.pins.coverDecoded,
+   olearyLinkPrograms(renderer,camera,scene,1,false,7400),
+   (frame,lon,lat)=>{
+    const route=SITES[activeSite],site=projectSite(lon,lat);
+    return route?.id===SEAWARD_ROUTE&&route.lon===lon&&route.lat===lat&&route.height===115&&route.heading===34&&
+     frame.x===site.x&&frame.z===site.z&&frame.heading===34*Math.PI/180;
+   },()=>seawardFrame()):undefined;
  const woodland=loadForestHeights(import.meta.env.BASE_URL),forestStream=new ForestStream(import.meta.env.BASE_URL),hedgeStream=new HedgeStream(import.meta.env.BASE_URL);
  const gl=renderer.getContext();
  const crownAsked=options.has('woodlandCrownBase')&&!sceneryReviewBlock('woodlandCrownBase',options)&&
@@ -571,7 +581,17 @@ async function run(){
   const p=dispatchStandPlan(SITES[i]);
   return p===QUEENS_DISPATCH_STAND&&!queensDispatchStandProfile(dispatchForestOptions)?undefined:p;
  };
+ const seawardFrame=()=>({route:SITES[activeSite].id,selected:ui.selected===activeSite,mode:ui.mode,view,flight:f,
+  x:f.x,y:f.y,z:f.z,heading:f.heading,status:f.status,
+  peers:!!mainland&&terrainSha===CANOPY_FENCE.pins.terrain&&
+   standardLandAtlasMatches(terrain,terrainSha,cover)&&
+   cover.harbour?.plan.id==='quartermaster-coast-v1'&&
+   cover.harbour.plan.sha256==='f26ba03ce1d4d5a40ef24ce87c903074bf5a7f5f8354816c1f609d8c8621ea8d'&&
+   roads?.sourceGeometrySha256===CANOPY_FENCE.pins.road&&
+   quartermasterDocks?.id==='quartermaster-floating-docks-v1'&&quartermasterDocks.spines===3&&
+   quartermasterDocks.fingers===30&&quartermasterDocks.triangles===540});
  const start=(i:number)=>{
+  const seawardDeparture=!!seawardRoof&&ui.mode==='dispatch'&&i===activeSite&&i===ui.selected;
   buildings?.beginStandardRusticoNeighbour(rusticoNeighbourCover==='ready'&&ui.mode==='dispatch'&&
    i===activeSite&&i===ui.selected&&SITES[i]?.id===RUSTICO_LIGHT_ROUTE&&rusticoNeighbourGround());
   knightCleared=knightStandard&&i===activeSite&&knightDispatch()&&buildings?.knightExteriorReady===true;
@@ -588,6 +608,10 @@ async function run(){
   const quayFromDispatch=i===activeSite&&quayDispatch();
   const standFromDispatch=ui.mode==='dispatch'&&i===activeSite&&i===ui.selected&&!!standRoute(i);
   reposition(i);
+  if(seawardRoof){
+   if(SITES[i]?.id===SEAWARD_ROUTE)seawardRoof.begin(seawardFrame(),seawardDeparture);
+   else seawardRoof.reset();
+  }
   dispatchStand?.begin(i,standFromDispatch,(p,plan)=>dispatchForestRaster()&&plan===standRoute(i)&&vegetation.takeDispatchStand(p,f.x,f.z,plan));
   standardRiverSeat?.begin(f,riverFromDispatch);
   quayAdmitted=quaySeat?.beginFlight(f,quayFromDispatch)===true;
@@ -597,11 +621,12 @@ async function run(){
  ui=new UI(terrain,input,{start,resume:()=>ui.set('flight'),view:cameraCycle,sound:()=>void audio.toggle().then(v=>ui.setSound(v)).catch(()=>{}),pause,restart:()=>start(activeSite),
   engineState:()=>({out:f.engineOut,airborne:f.status==='flying'}),
   practiceFailure:(out:boolean)=>setEngineOut(f,out),
-  chooseDeparture:(i:number)=>{if(ui.mode==='dispatch')dispatchStand?.select(i,standRoute(i)?.route??'');}},SITES);
+  chooseDeparture:(i:number)=>{if(ui.mode==='dispatch'){if(i!==activeSite)seawardRoof?.reset();dispatchStand?.select(i,standRoute(i)?.route??'');}},
+  modeChanged:(before,after)=>{if(before==='dispatch'&&after!=='flight')seawardRoof?.reset();}},SITES);
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
- renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();princeLowFieldSeat?.reset();quaySeat?.reset();buildings?.syncStandardRusticoNeighbour(false);renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
+ renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();seawardRoof?.dispose();princeLowFieldSeat?.reset();quaySeat?.reset();buildings?.syncStandardRusticoNeighbour(false);renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
  const layerWarnings:string[]=[];const warn=(layer:string,e:unknown)=>{layerWarnings.push(layer);ui.setWarnings(layerWarnings);console.warn(layer+' layer unavailable',e);};
  let roads:Roads|undefined,buildings:Buildings|undefined,sidewalks:Sidewalks|undefined,parking:ParkingSurfaces|undefined;
  let basilicaSun:import('./render/basilica-local-sun.ts').BasilicaLocalSun|undefined;
@@ -704,6 +729,7 @@ async function run(){
  const sourisEastRequest=(showBuildingShadows&&!sourisEastShadows)||options.get('scenery')==='detail'||options.has('surveyRelief')||options.has('inlandRelief')?undefined:
   sourisEastGround(world,terrainSha,()=>roads?.sourceGeometrySha256);
  const buildingReady=Buildings.create(scene,terrain,sourisLighting,world.buildingShadows,spinnakers,preBuildingJob,options.has('beaconsfieldReview')&&!sceneryReviewBlock('beaconsfieldReview',options),greenGablesGate,barnGate,rusticoEnvelopeAllowed,churchCohort?.art,railReview,stDavidsReview,townWallOptics,standardRidge||standardRiver).then(v=>{
+  if(seawardRoof)seawardRoof.setObserver(v.observeQuartermasterSeawardRoof());
   if(localRiverLens)v.enableStrictIndianLens();
   if(ridgePreview)v.enableStrictRidgeOwner();
   if(standardRidge)v.enableStandardKingsRidge();
@@ -973,7 +999,10 @@ async function run(){
   const stopWest2=world.beginWest2RimDraw(camera);
   try{
    const stopSouth21=world.beginSouth21RimDraw(camera);
-   try{renderer.render(scene,camera);}finally{stopSouth21?.();}
+   try{
+    if(seawardRoof&&SITES[activeSite].id===SEAWARD_ROUTE)seawardRoof.render(seawardFrame(),()=>renderer.render(scene,camera));
+    else renderer.render(scene,camera);
+   }finally{stopSouth21?.();}
   }finally{stopWest2?.();}
  };
  const drawWorld=()=>buildings&&standardIndustrial?buildings.drawStandardIndustrial(submitWorld):submitWorld();
@@ -1459,7 +1488,7 @@ async function run(){
    if(kingsFields)Object.assign(window,{islandAirKingsFields:{state:kingsFields.state,gain:kingsFields.gain}});
    if(queensFields)Object.assign(window,{islandAirQueensFields:{state:queensFields.state,gain:queensFields.gain}});
    if(princeFields)Object.assign(window,{islandAirPrinceFields:{state:princeFields.state,gain:princeFields.gain}});
-   Object.assign(window,{islandAirDiagnostics:{regularNorthRim:world.regularNorthRimState,west2Rim:world.west2RimState,south21Rim:world.south21RimState,foundersWestWall:buildings?.foundersWestActive??false,georgetownSchoolWallStage:buildings?.georgetownSchoolWallStage,georgetownSchoolWalls:buildings?.georgetownSchoolWallsActive??false,olearyWarehouse150:buildings?.olearyWarehouseActive?'authored':'stock',olearyIndustrial192:buildings?.standardIndustrialDrawn||buildings?.olearyIndustrialActive?'authored':'stock',olearyIndustrialStandard:standardIndustrial,olearyIndustrialReady:buildings?.standardIndustrialReady??false,olearyExterior:buildings?.olearyExteriorActive||buildings?.standardOlearyStationDrawn?'authored':'stock',olearyStationReady:buildings?.standardOlearyStationReady??false,olearyStationUnavailable:buildings?.standardOlearyStationUnavailable??false,dalvayExterior:buildings?.dalvayExteriorActive?'authored':'stock',dalvayGlazing:buildings?.dalvayExteriorActive&&dalvayGlazingActive?'reflected':'stock',dalvayWaterOptics:endLake?{active:true,visualOnly:true,receivers:['17-12','17-13']}:dalvayVisual?.state??null,dalvayWaterAdmission:dalvayOpticsAdmission,dalvayWaterStandard:standardLake,dalvayWaterReady:standardLakeSeat?.ready??false,standardKnight:knightStandard,standardKnightReady:buildings?.knightExteriorReady??false,standardKnightUnavailable:knightDispatch()&&buildings?.knightExteriorUnavailable===true,sourisKnightExterior:buildings?.knightExteriorActive?'authored':'stock',seacowExterior:buildings?.seacowExteriorActive?'authored':'stock',basilicaSun:basilicaSun?.state??null,basilicaExterior,regionalWind:regionalWind?.diagnostics()??null,sourisShoreline:sourisShoreline?.state??null,panmurePasture:panmurePasture?.state??null,standardMeadow:standardMeadow?.state??null,regionalCanopy:regionalCanopy?.state??null,pointPrim:pointPrim?.state??null,hogPhoto:world.hogPhoto?.opacity.value===1,hogWestAerial:world.westDuneOptics?.gain.value===1,duneSand:duneSand?.note()??null,grassCoast:grassCoast?.diagnostics()??null,basinSandStandard:basinSandStandard?.state??null,indianRiver:buildings?.indianRiverActive??false,indianRiverLocalLens:localRiverLens,indianRiverStandard:standardRiver,indianRiverStandardReady:standardRiverSeat?.ready??false,kingsRidgePreview:ridgePreview,kingsRidgeStandard:standardRidge,kingsRidgeAuthority:!!(ridgePreview?crownGround:standardRidgeGround)&&buildings?.kingsRidgeOwnerLive===true,kingsRidgeContact:world.kingsRidgeContactActive,princeLandscape:world.princeLandscapeActive,princeLandscapeReady:world.princeLandscapeReady,indianRiverSun:churchCohort?.groundSun.live.value===1||!!endRiver,indianRiverDetail:churchCohort?.art.detail??standardRiverSeat?.activeCohort?.detail()??null,indianRiverPrepared:buildings?.indianRiverPrepared??false,indianRiverShadowReceivers:endRiver?4:vegetation.stMarysShadowReceivers,indianRiverShadowTriangles:riverReceiver?.triangles??vegetation.stMarysShadowTriangles,indianRiverReceiverState:riverReceiver??null,provinceGrass:grass?.stream.state??null,provinceFields:fieldStudy?.stream.state??null,cropRowsReview:!!world.fieldPilot,beaconsfieldReview:buildings?.beaconsfieldPreviewActive??false,beaconsfieldGrade:!!museumShadow?.live,beaconsfieldGradeShadows:museumShadow?.count??0,beaconsfieldGradeShadowTriangles:museumShadow?.triangles??0,greenGablesReview:buildings?.greenGablesPreviewActive??false,greenGablesBarnReview:buildings?.greenGablesBarnPreviewActive??false,summersideStation:buildings?.summersideStationActive??false,stDavids:buildings?.stDavidsActive??false,stDavidsGroundSun:georgetownGroundSun?.live.value===1,site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
+   Object.assign(window,{islandAirDiagnostics:{seawardRoof:seawardRoof?.state??{phase:'inactive',submitted:false},regularNorthRim:world.regularNorthRimState,west2Rim:world.west2RimState,south21Rim:world.south21RimState,foundersWestWall:buildings?.foundersWestActive??false,georgetownSchoolWallStage:buildings?.georgetownSchoolWallStage,georgetownSchoolWalls:buildings?.georgetownSchoolWallsActive??false,olearyWarehouse150:buildings?.olearyWarehouseActive?'authored':'stock',olearyIndustrial192:buildings?.standardIndustrialDrawn||buildings?.olearyIndustrialActive?'authored':'stock',olearyIndustrialStandard:standardIndustrial,olearyIndustrialReady:buildings?.standardIndustrialReady??false,olearyExterior:buildings?.olearyExteriorActive||buildings?.standardOlearyStationDrawn?'authored':'stock',olearyStationReady:buildings?.standardOlearyStationReady??false,olearyStationUnavailable:buildings?.standardOlearyStationUnavailable??false,dalvayExterior:buildings?.dalvayExteriorActive?'authored':'stock',dalvayGlazing:buildings?.dalvayExteriorActive&&dalvayGlazingActive?'reflected':'stock',dalvayWaterOptics:endLake?{active:true,visualOnly:true,receivers:['17-12','17-13']}:dalvayVisual?.state??null,dalvayWaterAdmission:dalvayOpticsAdmission,dalvayWaterStandard:standardLake,dalvayWaterReady:standardLakeSeat?.ready??false,standardKnight:knightStandard,standardKnightReady:buildings?.knightExteriorReady??false,standardKnightUnavailable:knightDispatch()&&buildings?.knightExteriorUnavailable===true,sourisKnightExterior:buildings?.knightExteriorActive?'authored':'stock',seacowExterior:buildings?.seacowExteriorActive?'authored':'stock',basilicaSun:basilicaSun?.state??null,basilicaExterior,regionalWind:regionalWind?.diagnostics()??null,sourisShoreline:sourisShoreline?.state??null,panmurePasture:panmurePasture?.state??null,standardMeadow:standardMeadow?.state??null,regionalCanopy:regionalCanopy?.state??null,pointPrim:pointPrim?.state??null,hogPhoto:world.hogPhoto?.opacity.value===1,hogWestAerial:world.westDuneOptics?.gain.value===1,duneSand:duneSand?.note()??null,grassCoast:grassCoast?.diagnostics()??null,basinSandStandard:basinSandStandard?.state??null,indianRiver:buildings?.indianRiverActive??false,indianRiverLocalLens:localRiverLens,indianRiverStandard:standardRiver,indianRiverStandardReady:standardRiverSeat?.ready??false,kingsRidgePreview:ridgePreview,kingsRidgeStandard:standardRidge,kingsRidgeAuthority:!!(ridgePreview?crownGround:standardRidgeGround)&&buildings?.kingsRidgeOwnerLive===true,kingsRidgeContact:world.kingsRidgeContactActive,princeLandscape:world.princeLandscapeActive,princeLandscapeReady:world.princeLandscapeReady,indianRiverSun:churchCohort?.groundSun.live.value===1||!!endRiver,indianRiverDetail:churchCohort?.art.detail??standardRiverSeat?.activeCohort?.detail()??null,indianRiverPrepared:buildings?.indianRiverPrepared??false,indianRiverShadowReceivers:endRiver?4:vegetation.stMarysShadowReceivers,indianRiverShadowTriangles:riverReceiver?.triangles??vegetation.stMarysShadowTriangles,indianRiverReceiverState:riverReceiver??null,provinceGrass:grass?.stream.state??null,provinceFields:fieldStudy?.stream.state??null,cropRowsReview:!!world.fieldPilot,beaconsfieldReview:buildings?.beaconsfieldPreviewActive??false,beaconsfieldGrade:!!museumShadow?.live,beaconsfieldGradeShadows:museumShadow?.count??0,beaconsfieldGradeShadowTriangles:museumShadow?.triangles??0,greenGablesReview:buildings?.greenGablesPreviewActive??false,greenGablesBarnReview:buildings?.greenGablesBarnPreviewActive??false,summersideStation:buildings?.summersideStationActive??false,stDavids:buildings?.stDavidsActive??false,stDavidsGroundSun:georgetownGroundSun?.live.value===1,site:SITES[activeSite].id,mode:ui.mode,camera:names[view],x:f.x,z:f.z,altitude:f.y,heading:f.heading,bank:f.bank,speed:f.speed,throttle:f.throttle,engineOut:f.engineOut,
     summersideTerminalWallPreview:buildings?.terminalWallActive??false,summersideTerminalWallDrawn:buildings?.terminalWallDrawn??false,
     legacyShore:world.legacyShoreState,openCoast:world.openCoastState,panmureCoast:world.panmureCoastState,tryonCoast:world.tryonCoastState,tryonRockPreview:world.tryonRockActive,tryonRockState:world.tryonRockState,capeWetState:world.capeWetState,...(world.capeTryonSkySeat?{capeTryonSkySeat:world.capeTryonSkySeat.state}:{}),shoreFoamDetail:standardBreakers,openRipples,princeRoofContact:buildings?.princeRoofContactActive??false,princeSurveyRoof:buildings?.princeSurveyRoofActive??false,townWallStudy:buildings?.townWallReview??false,townWallProfile:buildings?.townWallProfile??null,nearshoreStandard:nearshoreStandard?.state??null,nearshoreFoamStudy:world.nearshoreFoamArmed&&world.nearshoreFoamMode.value>=1.5&&world.nearshoreLocalGain.value>0,canopyLight:directionalCanopy,northCape:(northCape??streamedCape?.art)?.counts??null,adaptiveTerrain:world.adaptiveState,forestFloor:world.floorState,dispatchStandHeight:dispatchStand?{state:dispatchStand.state,adjusted:vegetation.dispatchStandAdjusted}:null,buildingShadows:world.buildingShadows?.state??null,hedgerows:{...hedgeStream.state,visible:vegetation.hedgeCount},woodlandStream:forestStream.state,miscoucheFill:miscoucheArt?.mesh.visible?miscoucheArt.total:0,miscoucheFillGain:miscoucheArt?.gain??0,woodlandVolume:vegetation.volumeCount,woodlandCull:vegetation.woodlandCull,woodlandBark:barkLoader?vegetation.woodlandBark:null,woodlandCrown:crownStream?{...crownStream.state,rosterEligible:vegetation.crownBaseCount}:null,woodlandGroundedShadows:vegetation.groundedShadowCount,rollingForestShadows:vegetation.rollingShadowState,rollingForestPreflight:rollingPreflight,woodlandHeights:forestHeights?.ids??[],mappedLaneCanopy:tryMappedLaneCanopy?vegetation.openRoadLaneState:null,summersideOpenGround:frontageArmed?vegetation.openRoadLaneState:null,aerialPerspective:daylight?.armed&&daylight.gain.value>0,orthophotoSeams:ortho?.diagnostics(),marsh:marsh?.diagnostics(),marshFoliage:foliage?.diagnostics(),rudderAngle:aircraft.rudderAngle(),altitudeAngles:aircraft.altitudeAngles(),controlAngles:aircraft.controlAngles(),inlandSurveys:terrain.inlandGrids.map(g=>g.spec.id),coastalSurveys:terrain.coastalSurveys,coastalRefinements:terrain.coastalRefinements,coastalBenches:world.coastalBenches,shelteredWater:world.shelteredWater,bowleyPond:world.bowleyPond,cavendishWaterCore:world.hasFreshwaterSource(DUNELANDS.id)?DUNELANDS.id:null,standardCavendishWater:standardDunelands,standardCavendishReady:cavendishSeat?.ready??false,standardCavendishUnavailable:cavendishSeat?.unavailable??false,
     ...(quaySeat?{quartermasterQuay:{ready:quaySeat.ready,unavailable:quaySeat.unavailable,

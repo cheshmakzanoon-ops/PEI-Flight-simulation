@@ -822,6 +822,7 @@ export class Buildings {
    const near=this.tiles.filter(t=>d(t)<5300).sort((a,b)=>d(a)-d(b));this.wanted=new Set(near.map(a=>a.id));
    this.work=near.filter(t=>!this.meshes.has(t.id)&&!this.loading.has(t.id)&&!this.failed.has(t.id));
    for(const [id,m] of this.meshes)if(!this.wanted.has(id)){
+    if(this.seawardRoofSource?.mesh===m)this.seawardRoofSource=undefined;
     if(this.ridgeOwner?.mesh===m)this.ridgeOwner=undefined;
     if(id===FOUNDERS_WEST.id){this.foundersWest?.dispose();this.foundersWest=undefined;}
     if(m===this.sourisWestLease?.owner)this.releaseSourisWestFacing();
@@ -999,6 +1000,17 @@ export class Buildings {
  get terminalWallDrawn(){return this.terminalWall?.rendered===true;}
  /** Observe bytes already requested by the ordinary building streamer. An observer
   * cannot start a download or replace a mesh. A reloaded owner has a new identity. */
+ private seawardRoofWatch=false;
+ private seawardRoofSource?:Readonly<{mesh:THREE.Mesh;index:ArrayBuffer;wire:ArrayBuffer;rows:number;atlas:string}>;
+ /** Read only original resident construction input; this is not a new
+  * pack subscription or a replacement for the normal chunk observer. */
+ observeQuartermasterSeawardRoof(){
+  this.seawardRoofWatch=true;
+  return ()=>{
+   const a=this.seawardRoofSource,id='q12000111';
+   return a&&a.mesh.parent===this.scene&&a.mesh.visible&&this.meshes.get(id)===a.mesh&&this.wanted.has(id)?a:undefined;
+  };
+ }
  private chunkObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
  observeSourceChunk(id:string,offset:number,size:number){
   const o=this.chunkObserver={id,offset,size,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
@@ -1049,13 +1061,15 @@ export class Buildings {
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
+   const seawardRoofTap=this.seawardRoofWatch&&!!this.residentProofIndex&&tile.id==='q12000111'&&tile.offset===2066452&&tile.bytes===11843;
+   let seawardRoofBytes:ArrayBuffer|undefined;
    let observed:ArrayBuffer|undefined,kingsWire:ArrayBuffer|undefined,churchWire:ArrayBuffer|undefined;
    const kings=this.standardKingsRidge&&!!this.residentProofIndex&&kingsCrownTile(this.atlasHash,tile);
    const nativeChurch=this.standardIndianRiver&&!!this.residentProofIndex&&indianRiverResidentTile(this.atlasHash,tile);
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch){
+   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch||seawardRoofTap){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -1064,6 +1078,7 @@ export class Buildings {
     if(schoolLink)schoolWire=raw;
     if(foundersWest)foundersWire=raw;
     if(tapped)observed=raw;
+    if(seawardRoofTap)seawardRoofBytes=raw;
     if(kings)kingsWire=raw;
     if(nativeChurch)churchWire=raw;
     if(terminal)terminalBytes=raw;
@@ -1107,6 +1122,8 @@ export class Buildings {
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
    const mesh=this.generate(features,tile,!!wharf,church||nativeChurch?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy||!!standardIndustrial,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
+   if(seawardRoofBytes&&this.residentProofIndex&&this.atlasHash)
+    this.seawardRoofSource={mesh,wire:seawardRoofBytes,index:this.residentProofIndex,rows:features.length,atlas:this.atlasHash};
    this.meshes.set(tile.id,mesh);this.scene.add(mesh);if(wharf)this.scene.add(wharf);
    if(standardRusticoCandidate&&mesh.material===this.mat&&this.mat.vertexShader===buildingV&&this.mat.fragmentShader===buildingF()&&
     standardRusticoNeighbourSource(this.atlasHash,tile,massingChunk,features)){

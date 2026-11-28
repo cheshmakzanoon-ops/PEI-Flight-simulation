@@ -61,7 +61,20 @@ test('actual UI hides old ready state synchronously on both cross-county selecti
  }
  // A mode change must clear the badge before Dispatch becomes visible, not
  // first on a future RAF. Scope this source guard to the actual UI method.
- assert(source.includes("set(mode:Mode){\n  if(mode==='dispatch'&&mode!==this.mode)this.setDispatchWoodland('other');\n  this.mode=mode;"));
+ const start=' set(mode:Mode){',stop='this.input.clear();';
+ const a=source.indexOf(start),z=source.indexOf(stop,a);assert(a>=0&&z>a);
+ const runMode=new Script('(function(mode){'+source.slice(a+start.length,z)+'}).call(ui,next);');
+ for(const [previous,next,events] of [
+  ['paused','dispatch',['badge:paused','transition:paused>dispatch:dispatch']],
+  ['dispatch','help',['transition:dispatch>help:help']],
+  ['dispatch','flight',['transition:dispatch>flight:flight']],
+  ['dispatch','dispatch',[]]
+ ] as const){
+  const seen:string[]=[];
+  const ui={mode:previous,setDispatchWoodland(mark:string){assert.equal(mark,'other');seen.push('badge:'+this.mode);},
+   actions:{modeChanged(from:string,to:string){seen.push('transition:'+from+'>'+to+':'+ui.mode);}}};
+  runMode.runInNewContext({ui,next});assert.equal(ui.mode,next);assert.deepEqual(seen,events);
+ }
 });
 
 const prefix=new URL('../public/world/woodland/stream-v1/',import.meta.url);

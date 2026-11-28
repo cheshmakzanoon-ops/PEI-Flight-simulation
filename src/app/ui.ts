@@ -25,7 +25,7 @@ export class UI {
  private industrialState='';
  private riverState='';
  private lakeState='';
- constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;},private readonly sites:readonly Site[]=SITES) {
+ constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES) {
   this.terrain=t;this.input=input;
   this.selected=sceneryDeparture(location.search,this.sites.map(x=>x.id));
   const detail=isDetailScenery(location.search);
@@ -249,7 +249,7 @@ export class UI {
  close(){this.set(this.previous==='dispatch'?'dispatch':this.previous==='crash'?'crash':this.previous==='paused'?'paused':'flight');}
  set(mode:Mode){
   if(mode==='dispatch'&&mode!==this.mode)this.setDispatchWoodland('other');
-  this.mode=mode;this.input.clear();$('ui').dataset.mode=mode;const flight=mode==='flight',dispatch=mode==='dispatch';
+  const before=this.mode;this.mode=mode;if(before!==mode)this.actions.modeChanged?.(before,mode);this.input.clear();$('ui').dataset.mode=mode;const flight=mode==='flight',dispatch=mode==='dispatch';
   for(const [name,visible] of Object.entries({dispatch,location:dispatch,telemetry:flight,inflight:flight,touch:flight,'nav-pause':flight,scrim:!flight,modal:!dispatch&&!flight}))$(name).hidden=!visible;
   const modal=$('modal');if(dispatch||flight){modal.innerHTML='';return;}
   const closer='<button class="close" id="close" aria-label="Close panel">×</button>';
