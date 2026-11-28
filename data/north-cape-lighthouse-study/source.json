@@ -1,0 +1,58 @@
+{
+  "scope": "Detached 384 m square physical source window. Ground elevations, not shoreline, foundation, or player terrain.",
+  "source": {
+    "publisher": "Natural Resources Canada, CanElevation",
+    "product": "HRDEM Mosaic 1 m DTM",
+    "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "first4096SHA256": "2ae33670d39a6d4903392f3eeae142748ee647d2f6f9be0be1eaf0a3cc62c9e5",
+    "license": "https://open.canada.ca/en/open-government-licence-canada"
+  },
+  "registration": {
+    "projected": "EPSG:3979",
+    "vertical": "EPSG:6647 (CGVD2013)",
+    "pixel": "PixelIsArea, value at cell centre",
+    "geotransform": [
+      2281139.0,
+      1.0,
+      0.0,
+      350642.0,
+      0.0,
+      -1.0
+    ],
+    "sourcePixelOffset": [
+      281139,
+      149358
+    ],
+    "verticalBasis": "https://download-telecharger.services.geo.ca/pub/elevation/dem_mne/HRDEMmosaic_mosaiqueMNEHR/HRDEM_Mosaic_Product_Specification.pdf"
+  },
+  "file": "north-cape-ground.cm.i16.gz",
+  "width": 384,
+  "height": 384,
+  "encoding": "Int16 LE row-major centimetres gzip",
+  "validSamples": 147456,
+  "maxQuantizationM": 0.004999992847442569,
+  "decodedSHA256": "86a65e3c3f326aca699096711f151aeee7e65eb3f7f32068dce2f7d1873339e3",
+  "storedSHA256": "239dccfabd5480a090f04b89fbdbee3ac3bd49203d8b8196329e597936567f32",
+  "sourceFloat32LE": "db37a5f29108c6da29b04ea90c2b5b36778b5b206b3f01e646cee0fcc16d6bf2",
+  "rangeCM": [
+    -121,
+    1097
+  ],
+  "reference": {
+    "name": "Canadian Coast Guard light #1036 reference (locator, not tower-origin survey)",
+    "longitude": -63.99688888888889,
+    "latitude": 47.057694444444444,
+    "projected": [
+      2281331.08911419,
+      350449.386603532
+    ],
+    "row": 192,
+    "column": 192,
+    "heightCM": 551,
+    "centred9x9CellRangeCM": [
+      539,
+      568
+    ]
+  }
+}
