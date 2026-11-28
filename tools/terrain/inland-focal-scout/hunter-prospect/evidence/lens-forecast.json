@@ -1,0 +1,201 @@
+{
+  "scope": "stabilized stock-cover camera lens forecast, not browser visibility or optical output",
+  "size": [
+    1200,
+    760
+  ],
+  "kept": [
+    {
+      "seconds": 0,
+      "travelM": 0,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 1.5601874079191007,
+      "box": [
+        767.213420924531,
+        415.94392428478784,
+        801.9115932729665,
+        421.7380076018742
+      ]
+    },
+    {
+      "seconds": 1,
+      "travelM": 53.76972633458889,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 1.6947449984814371,
+      "box": [
+        783.5791834424816,
+        434.3107550384465,
+        821.8129794605206,
+        441.02794783216484
+      ]
+    },
+    {
+      "seconds": 2,
+      "travelM": 107.55101371975582,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 1.8792382295160919,
+      "box": [
+        804.8716574947977,
+        449.5188161508169,
+        848.1257544091378,
+        457.64201355631286
+      ]
+    },
+    {
+      "seconds": 3,
+      "travelM": 161.34170489987542,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 2.1088139996005544,
+      "box": [
+        831.411465808512,
+        468.4256230054915,
+        881.1613899391677,
+        478.4948043276425
+      ]
+    },
+    {
+      "seconds": 4,
+      "travelM": 215.14211263141598,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 2.4023045919832056,
+      "box": [
+        865.4151338098319,
+        492.6286020274387,
+        923.8778831174507,
+        505.506838689092
+      ]
+    },
+    {
+      "seconds": 5,
+      "travelM": 268.9521308042094,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 2.7942763004610462,
+      "box": [
+        910.5463691677171,
+        524.7045775040526,
+        981.2609680917409,
+        541.8683221996836
+      ]
+    },
+    {
+      "seconds": 6,
+      "travelM": 322.77134854694265,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 3.3339949513989287,
+      "box": [
+        973.3351456720194,
+        569.2323638864353,
+        1062.4286811991028,
+        593.4397655353614
+      ]
+    },
+    {
+      "seconds": 7,
+      "travelM": 376.5992529801124,
+      "centresInsideLens": 418,
+      "movedInsideLens": 340,
+      "projectedVerticalP90px": 4.1231962472728645,
+      "box": [
+        1066.6633357484093,
+        635.202153466959,
+        1186.0330071411427,
+        672.2808523466877
+      ]
+    },
+    {
+      "seconds": 8,
+      "travelM": 430.43531938112886,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 9,
+      "travelM": 484.2790422572661,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 10,
+      "travelM": 538.1299441490215,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 11,
+      "travelM": 591.9875770026739,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 12,
+      "travelM": 645.8515212521535,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 13,
+      "travelM": 699.7213842737925,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 14,
+      "travelM": 753.5967987311607,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 15,
+      "travelM": 807.477420963684,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 16,
+      "travelM": 861.362929461248,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 17,
+      "travelM": 915.2530234325316,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    },
+    {
+      "seconds": 18,
+      "travelM": 969.1474214649397,
+      "centresInsideLens": 0,
+      "movedInsideLens": 0,
+      "projectedVerticalP90px": null,
+      "box": null
+    }
+  ]
+}

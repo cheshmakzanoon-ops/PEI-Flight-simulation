@@ -1,0 +1,98 @@
+{
+  "source": "hunter-river-trail.cm.i16.gz",
+  "sourceCellGeoreferencing": [
+    2363209,
+    1,
+    0,
+    304388,
+    0,
+    -1
+  ],
+  "stockGeometry": {
+    "positions": "3306470cadf91ae429fad360ff5483520ae6b34bb50889be598aa0e22cc2a356",
+    "indices": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "scope": "Strict detached rectangle prospect; no runtime height adjustment or complete real safety proof.",
+  "protectedAtlas": {
+    "pins": {
+      "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "sidewalks": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+      "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+      "index": "fcc2bb4d890eafd08ac41136a3bff7bebeafe2f9c25a066fdcf756ed39badce0"
+    },
+    "chunks": [
+      [
+        "q03132",
+        "6f05a776a6a6479b34a4b714f8e95cd5f2001a9a4cf2f63a040320294fb65c3d"
+      ]
+    ],
+    "mappedRibbons": {
+      "road": 2
+    },
+    "mappedConservativeRectangles": {
+      "building": 3
+    },
+    "buffersM": {
+      "roadHalfWidthPlus": 24,
+      "sidewalkWidthPlus": 15,
+      "areaAabb": 20,
+      "coastGuardLocator": 35
+    }
+  },
+  "trailSHA256": "2848f6ba638caaaa7bcd9d355289aa6712e05148a433f57335eaa4d3639da1ab",
+  "hedgeExactChunk": {
+    "sha256": "cf3ce0db4cc2a294dbf23e9a0f632e57699f3a63572971cbc391bdfff504aa1b",
+    "roots": 10592,
+    "closeBoxes": 229
+  },
+  "forestProof": [
+    {
+      "kind": "stream-v1",
+      "indexSHA": "5878c49f6a6c2cb896606c07be2d2943586edad10f45871116d36ef88d716efe",
+      "rawSHA": "cc4c5fde11c46ef772df219bfa4eee50ec8791de9ca27299535f787a00bbc13e",
+      "packSHA": "6044d0a5eebfbb6f28f0bbe97d2ce4e01581889afac9911e4af89697446e1374"
+    },
+    {
+      "kind": "crown-v1",
+      "indexSHA": "54e8689b87a9dc0009ca79e92635460afb459813100d95f634af4be8cf86655a",
+      "rawSHA": "e387bffd72d8aa14ce0fd57b98344609bea6a3d0b152218b2e518e9f0c340a84",
+      "packSHA": "d1add78912fed43b2c4d707efe2d81731beed710e62e9159406f795f1592bb4a"
+    }
+  ],
+  "comparedRows": 102400,
+  "strictSafeCentreCount": 7382,
+  "prospects": [
+    {
+      "face": 6308,
+      "sign": 1,
+      "window": [
+        42,
+        290,
+        60,
+        311
+      ],
+      "area": 418,
+      "residualM": [
+        0.8551463180692807,
+        1.3515367844403272
+      ],
+      "minCentreToMappedRibbonM": 89.60004473778079
+    },
+    {
+      "face": 6086,
+      "sign": 1,
+      "window": [
+        67,
+        223,
+        80,
+        241
+      ],
+      "area": 266,
+      "residualM": [
+        0.8639457885957924,
+        1.0193135644262625
+      ],
+      "minCentreToMappedRibbonM": 25.252200740936672
+    }
+  ]
+}
