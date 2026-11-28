@@ -1,0 +1,52 @@
+{
+  "scope": "Uninstrumented packaged player; neutral camera. A read-only requestAnimationFrame callback waited for the real first Queens Dispatch frame, then used the original Begin DOM button programmatically. Normal HTTP delivery, no delays or engine/poll override.",
+  "firstArrivedState": {
+    "site": "queens-woodland-view",
+    "mode": "dispatch",
+    "stand": {
+      "state": "waiting",
+      "adjusted": 0
+    },
+    "forest": {
+      "missing": false,
+      "inflight": 2,
+      "resident": 0,
+      "failed": 0,
+      "active": "13-13",
+      "activeReady": false
+    }
+  },
+  "sourceResponse": {
+    "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+    "length": 36557,
+    "contentRange": "bytes 212212-248768/520308",
+    "testDelayMs": 0
+  },
+  "actualBrowserResponse": {
+    "status": 206,
+    "contentRange": "bytes 212212-248768/520308"
+  },
+  "earlyFlight": {
+    "state": "other",
+    "adjusted": 0
+  },
+  "healthyOriginalSourceWhileActive": {
+    "missing": false,
+    "inflight": 2,
+    "resident": 4,
+    "failed": 1,
+    "active": "13-13",
+    "activeReady": true
+  },
+  "postHealthyStand": {
+    "state": "other",
+    "adjusted": 0
+  },
+  "laterStand": {
+    "state": "other",
+    "adjusted": 0
+  },
+  "actualNeutralFlightMetres": 128.6262339650354,
+  "normalCockpitPause": true,
+  "receiptSHA256": "e57596c7a53ca2bc24967cfe399ea42c6b7d38a694d31c7264cbcacb6bb09cc9"
+}

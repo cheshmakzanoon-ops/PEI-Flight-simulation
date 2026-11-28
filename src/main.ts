@@ -5,6 +5,7 @@ import type {CavendishWaterSeat} from './render/cavendish-water-seat.ts';
 import {supportsOpaqueCoverage} from './render/opaque-coverage-alpha.ts';
 import {supportsOpaqueCanopyCoverage} from './render/canopy-coverage-alpha.ts';
 import {DispatchStand,dispatchStandPlan} from './render/dispatch-stand-height.ts';
+import {QUEENS_DISPATCH_STAND,queensDispatchStandProfile} from './render/queens-dispatch-contract.ts';
 import {standardDispatchWoodlandRequested} from './app/scenery-profile.ts';
 import {verifiedPrinceOverview} from './render/prince-grassland/source.ts';
 import {northCapeStandOption} from './app/north-cape-stand-option.ts';
@@ -563,9 +564,13 @@ async function run(){
  const dispatchForestRaster=()=>renderer.getContext()===gl&&!gl.isContextLost()&&
   renderer.getRenderTarget()===null&&!renderer.xr.isPresenting&&!scene.overrideMaterial&&
   supportsOpaqueCanopyCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4;
- const dispatchForestEnabled=standardDispatchWoodlandRequested(new URLSearchParams(location.search))&&
+ const dispatchForestOptions=new URLSearchParams(location.search);
+ const dispatchForestEnabled=standardDispatchWoodlandRequested(dispatchForestOptions)&&
   standardLandAtlasMatches(terrain,terrainSha,cover)&&!!globalThis.crypto?.subtle&&dispatchForestRaster();
- const standRoute=(i:number)=>dispatchStandPlan(SITES[i]);
+ const standRoute=(i:number)=>{
+  const p=dispatchStandPlan(SITES[i]);
+  return p===QUEENS_DISPATCH_STAND&&!queensDispatchStandProfile(dispatchForestOptions)?undefined:p;
+ };
  const start=(i:number)=>{
   buildings?.beginStandardRusticoNeighbour(rusticoNeighbourCover==='ready'&&ui.mode==='dispatch'&&
    i===activeSite&&i===ui.selected&&SITES[i]?.id===RUSTICO_LIGHT_ROUTE&&rusticoNeighbourGround());

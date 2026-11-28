@@ -1,0 +1,448 @@
+{
+  "scope": "Ordinary moving real neutral-control Queens flight in current restored Standard baseline; no clock/camera/input/physics override. New prospective literal opaque/prop MSAA witness; earlier broad aircraft mask rejection remains archived. Only same-frame old/new proof draws.",
+  "view": [
+    900,
+    570
+  ],
+  "authenticatedTargetRange": [
+    {
+      "range": [
+        212212,
+        248768
+      ],
+      "packedSHA256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+      "decodedSHA256": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26"
+    }
+  ],
+  "supplementalRequests": [],
+  "initial": {
+    "start": [
+      -13548.611885132885,
+      11009.481442347704
+    ],
+    "note": "Survey-based woodland sizes ready.",
+    "gate": {
+      "state": "ready",
+      "adjusted": 0
+    },
+    "regional": {
+      "layers": "ready",
+      "cover": "idle",
+      "active": null,
+      "draw": 0,
+      "gain": 0,
+      "stands": [
+        {
+          "id": "0911576",
+          "efi": true,
+          "roster": "idle",
+          "pack": "idle",
+          "requests": 0,
+          "seat": "idle"
+        },
+        {
+          "id": "1900486",
+          "efi": false,
+          "roster": "idle",
+          "pack": "idle",
+          "requests": 0,
+          "seat": "idle"
+        }
+      ]
+    }
+  },
+  "began": {
+    "state": "active",
+    "adjusted": 16226
+  },
+  "controls": true,
+  "preservedQuietStockPeerCount": 1081,
+  "cropXYXY": [
+    255,
+    224,
+    641,
+    556
+  ],
+  "samples": {
+    "28": {
+      "movement": 29.90637373144532,
+      "n": 16226,
+      "quietStockPeerSHA256": "e64150d4465bc880beb71c4599b901b32865594b1a15862a89e95b47fe3b593e",
+      "pixels": {
+        "strongRGB": 48984,
+        "exteriorRGB": 0,
+        "roleWitness": 53819,
+        "alphaChanged": 0,
+        "nativeAirframePixels": 7948,
+        "changedUnderBroadHull": 285,
+        "literalFullyCoveredPixels": 6765,
+        "literalOpaqueChanges": 0,
+        "changedAtPartialCoverage": 224,
+        "changedAtOriginalTransparentRole": 72,
+        "unclassifiedBroadIntersections": 0,
+        "exactOpaqueCoverageOldAndNew": true,
+        "coverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "oldCoverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "transparentRolePixels": 164
+      },
+      "draws": 283,
+      "triangles": 401085,
+      "airframe": {
+        "min": [
+          -13527.99700882835,
+          77.23192774465758,
+          11018.79567920708
+        ],
+        "max": [
+          -13518.535748082022,
+          80.44367742678897,
+          11029.738197259845
+        ],
+        "hullSpan": 7.83443791506741,
+        "overlappingBounds": 0,
+        "candidateMinimumGap": null
+      },
+      "efiVerified": true,
+      "glSamples": 4,
+      "error": 0,
+      "custody": true,
+      "restoredSizes": true,
+      "peerRestored": true,
+      "peerStockBracket": true,
+      "nativeAirframeMarkers": {
+        "brackets": {
+          "opaqueLow": 117,
+          "opaqueHigh": 117,
+          "opaqueNeutral": 117,
+          "withoutTransparent": 117
+        },
+        "restoredDraw": true
+      },
+      "slotPacketSHA256": "5711443f581e3d597d2665606d596b44ceda5c1f5f118b5283f70a95721ec7ee",
+      "allPhotoSHA256": {
+        "candidate": "a510f41d813c3668d4e5731ccb2abf4eeda046bad667e36eb558ce1357478a22",
+        "stock": "1f1abb540527afaedcd9e6f0a4fd2b218cae3a9a2ddc05bb5a63472fc0f9d8b3",
+        "withoutAirframe": "37b38f694d0c6d81986bc5bfad34e9356f41c4f2a1ae19a89396067b6443fd53",
+        "neutralOld": "1f1abb540527afaedcd9e6f0a4fd2b218cae3a9a2ddc05bb5a63472fc0f9d8b3",
+        "neutralNew": "a510f41d813c3668d4e5731ccb2abf4eeda046bad667e36eb558ce1357478a22",
+        "old0": "61a6e8440ce338820bf100654c8e25494a74aca1e9b49b62210fdaf7c8352016",
+        "old1": "73687dc75e272aae654930aa9787c214a71d76300fdb168b5c3e99dc72c2ad90",
+        "new0": "3a6a877b3ab62be688ad3a793b69f931650c8b8dee6795ee3cf6d6e5a3572b47",
+        "new1": "929250fcd26fbe84b83e2d27b52c113bd201f82d1558c379dd9529bb966e2e0e",
+        "restored": "a510f41d813c3668d4e5731ccb2abf4eeda046bad667e36eb558ce1357478a22",
+        "opaqueLow": "0774afd45fdbb83bbd187d70f981cae4f71bbd557070058d1eb4486a8e52d4f2",
+        "opaqueHigh": "9568c2d3abbcf18996bad9ffa83a09057dc244627b8f9aa661630f37ed1f6e1f",
+        "opaqueNeutral": "e15719f743a64c6b0afabd00f3ee93b2a6c2da336728d8b0efe6297d3aeb85bc",
+        "withoutTransparent": "e15719f743a64c6b0afabd00f3ee93b2a6c2da336728d8b0efe6297d3aeb85bc",
+        "oldOpaqueLow": "0d2ad18bd11d9f02fe4372aed46eab90179f212e8181a6b74d490530c2065af2",
+        "oldOpaqueHigh": "e51810a75105d3bfc7f7a89e49a5d8ff8f1a8bed83a4fd9168caa7eefd4ce00c",
+        "oldOpaqueNeutral": "4676652f31eed45ebf56deb2de3106892440028e68e4d843151c31b592981902",
+        "oldWithoutTransparent": "4676652f31eed45ebf56deb2de3106892440028e68e4d843151c31b592981902"
+      },
+      "authenticatedSizes": {
+        "exactAuthenticatedChangedSlots": 16226,
+        "whereAtLeast075m": 13893,
+        "nearestQuietBoxDistanceM": 0.05170359987641859,
+        "sourceHash": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26",
+        "rawPacketHash": "5711443f581e3d597d2665606d596b44ceda5c1f5f118b5283f70a95721ec7ee"
+      }
+    },
+    "95": {
+      "movement": 95.71352639505966,
+      "n": 16226,
+      "quietStockPeerSHA256": "e64150d4465bc880beb71c4599b901b32865594b1a15862a89e95b47fe3b593e",
+      "pixels": {
+        "strongRGB": 104667,
+        "exteriorRGB": 0,
+        "roleWitness": 115737,
+        "alphaChanged": 0,
+        "nativeAirframePixels": 7759,
+        "changedUnderBroadHull": 1182,
+        "literalFullyCoveredPixels": 6552,
+        "literalOpaqueChanges": 0,
+        "changedAtPartialCoverage": 1070,
+        "changedAtOriginalTransparentRole": 162,
+        "unclassifiedBroadIntersections": 0,
+        "exactOpaqueCoverageOldAndNew": true,
+        "coverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "oldCoverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "transparentRolePixels": 162
+      },
+      "draws": 282,
+      "triangles": 397497,
+      "airframe": {
+        "min": [
+          -13470.615103442484,
+          77.6480265171718,
+          11051.012699297491
+        ],
+        "max": [
+          -13461.15406604821,
+          80.86345292927254,
+          11061.955244628016
+        ],
+        "hullSpan": 7.834821154998033,
+        "overlappingBounds": 0,
+        "candidateMinimumGap": null
+      },
+      "efiVerified": true,
+      "glSamples": 4,
+      "error": 0,
+      "custody": true,
+      "restoredSizes": true,
+      "peerRestored": true,
+      "peerStockBracket": true,
+      "nativeAirframeMarkers": {
+        "brackets": {
+          "opaqueLow": 117,
+          "opaqueHigh": 117,
+          "opaqueNeutral": 117,
+          "withoutTransparent": 117
+        },
+        "restoredDraw": true
+      },
+      "slotPacketSHA256": "5711443f581e3d597d2665606d596b44ceda5c1f5f118b5283f70a95721ec7ee",
+      "allPhotoSHA256": {
+        "candidate": "2c8f6ac1baf6927f9759f21f0e565af1d2b0cf346dbbee614fc9f5926e84a373",
+        "stock": "5b2445aeb3bb65cab2c458d61e00af2488b569c06e1435f1e85a828be40462ec",
+        "withoutAirframe": "68019fe590e782ad500f151fc1b4ac0d45b447fc2114e5b7c9a29baad24aedbd",
+        "neutralOld": "5b2445aeb3bb65cab2c458d61e00af2488b569c06e1435f1e85a828be40462ec",
+        "neutralNew": "2c8f6ac1baf6927f9759f21f0e565af1d2b0cf346dbbee614fc9f5926e84a373",
+        "old0": "6b685818e9fec81e0395b5972b17458a4562eaf0120db3558b89d51ee134675b",
+        "old1": "5e503788473dbea40a71fbfb30f60eb6b7a36c244dabb2aa679c439c281f6a0b",
+        "new0": "32dbbf7b8dd5c2011b341835ecce134ac6926d945f5c6a29c82ca688b201c388",
+        "new1": "b145b2a7a001e4be9260aaadf7fda1a1b5211f1052ad650806aaf733f6d7fa77",
+        "restored": "2c8f6ac1baf6927f9759f21f0e565af1d2b0cf346dbbee614fc9f5926e84a373",
+        "opaqueLow": "7a2c2076f403f8c72df2d1ecd82b3555bc2aa8a8acb47af06dfddec4879e2c7d",
+        "opaqueHigh": "8e8517bbceeeade7dcd0deb6c19f52e4bf9eaad18b3dbc7093f5f15980b4173c",
+        "opaqueNeutral": "37c89a5e2062e3767b15359c1cab8db7c23742923b72953cac32585e3ee81ed2",
+        "withoutTransparent": "37c89a5e2062e3767b15359c1cab8db7c23742923b72953cac32585e3ee81ed2",
+        "oldOpaqueLow": "afb765f3d95ad676a8e09f56a4932137dfcfead5a5261ce80386a7533fb6146b",
+        "oldOpaqueHigh": "cad563bc48c3affd89932a2be64514cf4464020fd7f43c2984ca41360e511621",
+        "oldOpaqueNeutral": "f51a3787ba99f84cdefda7898f78d458622945a4596c41715bc294ddbab0e032",
+        "oldWithoutTransparent": "f51a3787ba99f84cdefda7898f78d458622945a4596c41715bc294ddbab0e032"
+      },
+      "authenticatedSizes": {
+        "exactAuthenticatedChangedSlots": 16226,
+        "whereAtLeast075m": 13893,
+        "nearestQuietBoxDistanceM": 0.05170359987641859,
+        "sourceHash": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26",
+        "rawPacketHash": "5711443f581e3d597d2665606d596b44ceda5c1f5f118b5283f70a95721ec7ee"
+      }
+    },
+    "190": {
+      "movement": 195.04481507605504,
+      "n": 15197,
+      "quietStockPeerSHA256": "e64150d4465bc880beb71c4599b901b32865594b1a15862a89e95b47fe3b593e",
+      "pixels": {
+        "strongRGB": 270644,
+        "exteriorRGB": 0,
+        "roleWitness": 279901,
+        "alphaChanged": 0,
+        "nativeAirframePixels": 7761,
+        "changedUnderBroadHull": 1015,
+        "literalFullyCoveredPixels": 6558,
+        "literalOpaqueChanges": 0,
+        "changedAtPartialCoverage": 940,
+        "changedAtOriginalTransparentRole": 112,
+        "unclassifiedBroadIntersections": 0,
+        "exactOpaqueCoverageOldAndNew": true,
+        "coverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "oldCoverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "transparentRolePixels": 158
+      },
+      "draws": 281,
+      "triangles": 397796,
+      "airframe": {
+        "min": [
+          -13384.001304255236,
+          78.32657848282497,
+          11099.641601650808
+        ],
+        "max": [
+          -13374.540310377342,
+          81.54298655442891,
+          11110.584154238208
+        ],
+        "hullSpan": 7.834923176696879,
+        "overlappingBounds": 15,
+        "candidateMinimumGap": 5.132146796423598
+      },
+      "efiVerified": true,
+      "glSamples": 4,
+      "error": 0,
+      "custody": true,
+      "restoredSizes": true,
+      "peerRestored": true,
+      "peerStockBracket": true,
+      "nativeAirframeMarkers": {
+        "brackets": {
+          "opaqueLow": 117,
+          "opaqueHigh": 117,
+          "opaqueNeutral": 117,
+          "withoutTransparent": 117
+        },
+        "restoredDraw": true
+      },
+      "slotPacketSHA256": "c1849a45b581953c8bc0beee97df57f16d2920b2c044edadbd05ea566c5f8a9c",
+      "allPhotoSHA256": {
+        "candidate": "90c0059de2b7627620fc299f67ca264327ef4096ec90bf9bd221122a85abe3af",
+        "stock": "4b48b603c8ace1d9747c3f79ea31510f28b88c6bdc46a6d38f890cc74b7cc192",
+        "withoutAirframe": "ceeedaf11de83000a717f9cbb18d42b170f5d638beba5ab21e5d075374486a5f",
+        "neutralOld": "4b48b603c8ace1d9747c3f79ea31510f28b88c6bdc46a6d38f890cc74b7cc192",
+        "neutralNew": "90c0059de2b7627620fc299f67ca264327ef4096ec90bf9bd221122a85abe3af",
+        "old0": "d7e57a1ac75efc4c54258dc2b27df8b9eb2d2beb42b2985ce8c081f89498318d",
+        "old1": "439e7168de39f0346da042b597a53610a8e8ad5d36432238877cb21fecfecd2d",
+        "new0": "f839acf5d0c57ab4bcfa4d2410ce369c597b4c1d83da8ffadc5e73492c91d585",
+        "new1": "0a526856c5c9bc2686b018a6babd4b4585b2b774254ad5e179fce681335b8c45",
+        "restored": "90c0059de2b7627620fc299f67ca264327ef4096ec90bf9bd221122a85abe3af",
+        "opaqueLow": "0d984e0136fd64a24d0623fb5f42cc1fecd6de9a44d91f8f31aec15912881ef8",
+        "opaqueHigh": "df0cf24b325e21c938ceb85415caa7423bca5a5f7d497a2feefca27b07e6f724",
+        "opaqueNeutral": "b42690fee730ee9e593cdb55c5cdb3130f5ede2f0cc3cf0d557d6c5a6596b00a",
+        "withoutTransparent": "b42690fee730ee9e593cdb55c5cdb3130f5ede2f0cc3cf0d557d6c5a6596b00a",
+        "oldOpaqueLow": "6ef329ff6ba11d38d75a5e460cb235a9d32cf24c30cd9db3922f2b7e3981c085",
+        "oldOpaqueHigh": "801090f59eb06b32c5ccd82f3d3a6cdcc5758059329e621ef7dd6a7ae3263cf4",
+        "oldOpaqueNeutral": "17cfc46e05d3e5a968ec98d3e4a6698bcf1c384428e8832908dcc2702033a2ef",
+        "oldWithoutTransparent": "17cfc46e05d3e5a968ec98d3e4a6698bcf1c384428e8832908dcc2702033a2ef"
+      },
+      "authenticatedSizes": {
+        "exactAuthenticatedChangedSlots": 15197,
+        "whereAtLeast075m": 12993,
+        "nearestQuietBoxDistanceM": 0.05170359987641859,
+        "sourceHash": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26",
+        "rawPacketHash": "c1849a45b581953c8bc0beee97df57f16d2920b2c044edadbd05ea566c5f8a9c"
+      }
+    },
+    "340": {
+      "movement": 343.4939218396339,
+      "n": 14322,
+      "quietStockPeerSHA256": "e64150d4465bc880beb71c4599b901b32865594b1a15862a89e95b47fe3b593e",
+      "pixels": {
+        "strongRGB": 166464,
+        "exteriorRGB": 0,
+        "roleWitness": 188253,
+        "alphaChanged": 0,
+        "nativeAirframePixels": 7761,
+        "changedUnderBroadHull": 1107,
+        "literalFullyCoveredPixels": 6550,
+        "literalOpaqueChanges": 0,
+        "changedAtPartialCoverage": 995,
+        "changedAtOriginalTransparentRole": 163,
+        "unclassifiedBroadIntersections": 0,
+        "exactOpaqueCoverageOldAndNew": true,
+        "coverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "oldCoverageLevels": [
+          0,
+          48,
+          96,
+          144,
+          192
+        ],
+        "transparentRolePixels": 163
+      },
+      "draws": 281,
+      "triangles": 396228,
+      "airframe": {
+        "min": [
+          -13254.558602114435,
+          79.33515706455277,
+          11172.317091978995
+        ],
+        "max": [
+          -13245.097587688686,
+          82.55168121748669,
+          11183.259645423796
+        ],
+        "hullSpan": 7.834935232394802,
+        "overlappingBounds": 11,
+        "candidateMinimumGap": 23.678004097099773
+      },
+      "efiVerified": true,
+      "glSamples": 4,
+      "error": 0,
+      "custody": true,
+      "restoredSizes": true,
+      "peerRestored": true,
+      "peerStockBracket": true,
+      "nativeAirframeMarkers": {
+        "brackets": {
+          "opaqueLow": 117,
+          "opaqueHigh": 117,
+          "opaqueNeutral": 117,
+          "withoutTransparent": 117
+        },
+        "restoredDraw": true
+      },
+      "slotPacketSHA256": "473ff7455e69302f41de476a9c6c71d1940deadc3266078dc068a7bcc73f30e8",
+      "allPhotoSHA256": {
+        "candidate": "b4f872c61228dd4720607eabb0f08dd65889d417311da310e842c1847aaca4e3",
+        "stock": "611c57af8022847154ce68de2a01e8b292b286d929f9a2710d5506bb81bc5564",
+        "withoutAirframe": "3939bc933670c18711891f7f3f3d78648b28a52643723fb3f3d2fb05c03b9d31",
+        "neutralOld": "611c57af8022847154ce68de2a01e8b292b286d929f9a2710d5506bb81bc5564",
+        "neutralNew": "b4f872c61228dd4720607eabb0f08dd65889d417311da310e842c1847aaca4e3",
+        "old0": "f7000b8187c0232dc6a953f5ffd8375a3d86f1cffd074768c81d914654b469f0",
+        "old1": "a2152ddfa60377e3d54c24b2e7d9dde149c0578d3de52dae71ac494757bac0f0",
+        "new0": "04bad41283455b6c0690f5489e83e6d4efadd78d84ee62b21d9338d7136595ac",
+        "new1": "f9295bc22ce9b6ca8e572baaebb63e6070a40428b593e7cd15c1d0eb1fac5e11",
+        "restored": "b4f872c61228dd4720607eabb0f08dd65889d417311da310e842c1847aaca4e3",
+        "opaqueLow": "25bc1da7cff3d00158d96d33cd556747c58f102c7baaac47094254d4fdec140b",
+        "opaqueHigh": "bba11a494887edb2a1ad1ac359a8952b5c6f1a186752a12184d4a1b8ef25000d",
+        "opaqueNeutral": "b5771ae72caf814331f543e8ee3686a4abee98cb9e8a260a85cab37b408bbd09",
+        "withoutTransparent": "b5771ae72caf814331f543e8ee3686a4abee98cb9e8a260a85cab37b408bbd09",
+        "oldOpaqueLow": "0a3d2c4974ff2c7defdda984f81249128d188ddf92c49944630581f095ee12a0",
+        "oldOpaqueHigh": "119aaa78125b622e10c99984c883c1dd69535e00eda4303a5bf73f6f762bd68d",
+        "oldOpaqueNeutral": "923bb282ea55cab25bf43da08ce57a8954e0fd23056b75619a7284366aa912a3",
+        "oldWithoutTransparent": "923bb282ea55cab25bf43da08ce57a8954e0fd23056b75619a7284366aa912a3"
+      },
+      "authenticatedSizes": {
+        "exactAuthenticatedChangedSlots": 14322,
+        "whereAtLeast075m": 12271,
+        "nearestQuietBoxDistanceM": 0.05170359987641859,
+        "sourceHash": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26",
+        "rawPacketHash": "473ff7455e69302f41de476a9c6c71d1940deadc3266078dc068a7bcc73f30e8"
+      }
+    }
+  }
+}

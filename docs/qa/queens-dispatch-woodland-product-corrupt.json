@@ -1,0 +1,90 @@
+{
+  "scope": "Uninstrumented normal player, local test origin changed one gzip trailer byte without changing HTTP length or declaring source identity.",
+  "exactOutOfBandCorruptSHA256": "c5bd68fb7bd2c451f360f08d0c563d5c2e5a2912d49f8cc282ea72d583aa5b87",
+  "range": "bytes 212212-248768/520308",
+  "transport": {
+    "status": 206,
+    "contentRange": "bytes 212212-248768/520308"
+  },
+  "flightMovementM": 125.03603303557348,
+  "normalCockpitPause": true,
+  "observedInputs": {
+    "initial": {
+      "site": "cavendish",
+      "mode": "dispatch",
+      "stand": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 2,
+        "resident": 5,
+        "failed": 0,
+        "active": "13-11",
+        "activeReady": true
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "dispatch": {
+      "site": "queens-woodland-view",
+      "mode": "dispatch",
+      "stand": {
+        "state": "stock",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 2,
+        "resident": 6,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": false
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "begin": {
+      "site": "queens-woodland-view",
+      "mode": "flight",
+      "stand": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": false
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "flight": {
+      "site": "queens-woodland-view",
+      "mode": "flight",
+      "stand": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 15,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": false
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    }
+  },
+  "terminalReceiptSha256": "bb50fc65c01c9472e0a6e556527bce35551fbf47faebd54333aafab584c94b2f"
+}

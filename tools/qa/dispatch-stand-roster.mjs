@@ -16,6 +16,7 @@ import {loadForestHeights} from '../../src/sim/forest-heights.ts';
 import {HedgeStream} from '../../src/sim/hedge-stream.ts';
 import {DISPATCH_STAND,PRINCE_DISPATCH_STAND,exactStandSeed} from '../../src/render/dispatch-stand-height.ts';
 import {treeRandom} from '../../src/sim/tree-layout.ts';
+import {QUEENS_DISPATCH_STAND,QUEENS_REGIONAL_BOX,QUEENS_REGIONAL_ROSTER,queensDispatchAdmits,sameQueensRegionalWords} from '../../src/render/queens-dispatch-contract.ts';
 const path=(x)=>new URL('../../'+x,import.meta.url),pub=path('public/');
 const file=(x)=>fs.readFileSync(new URL(x,pub));
 const H=(data)=>createHash('sha256').update(data).digest('hex'),asAB=(b)=>b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength);
@@ -30,15 +31,17 @@ const t=new Terrain(dims,new Int16Array(asAB(hh))),c=new Cover(coverMeta.width,c
 const surface=(x,z)=>{
  const land=c.distance(t,x,z)>0;return {land,height:t.contactHeight(x,z,land)};
 };
-const prince=process.argv.includes('--prince');
-const victim=prince?PRINCE_DISPATCH_STAND:DISPATCH_STAND,held=prince?['47309','78870']:['478492','530951'];
+const prince=process.argv.includes('--prince'),queens=process.argv.includes('--queens');
+assert(!(prince&&queens));
+const victim=queens?QUEENS_DISPATCH_STAND:prince?PRINCE_DISPATCH_STAND:DISPATCH_STAND,
+ pack=queens?'heights-04.pack':'heights-03.pack',held=queens?['212212','248768']:prince?['47309','78870']:['478492','530951'];
 let deliver,requested=false,hold=new Promise(r=>{deliver=r;});
 const paths=new Map();
 const request=async(input,init)=>{
  const p=new URL(String(input)).pathname.slice(1);assert(!p.includes('..'));
  let a=paths.get(p);if(!a){try{a=file(p);paths.set(p,a);}catch{return new Response(null,{status:404});}}
  const r=/^bytes=(\d+)-(\d+)$/.exec(new Headers(init?.headers).get('range')??'');
- if(p.endsWith('/heights-03.pack')&&r?.[1]===held[0]&&r?.[2]===held[1]){
+ if(p.endsWith('/'+pack)&&r?.[1]===held[0]&&r?.[2]===held[1]){
   requested=true;await hold;
  }
  return r?new Response(a.subarray(+r[1],+r[2]+1),{status:206,headers:{'content-range':`bytes ${r[1]}-${r[2]}/${a.length}`}}):new Response(a);
@@ -62,7 +65,7 @@ const make=()=>new Vegetation(new THREE.Scene(),t,c,pilot,forests,hedges);
 const p=make(),b=make();
 let wallClock=0;Object.defineProperty(performance,'now',{configurable:true,value:()=>wallClock});
 const site=SITES.find(s=>s.id===victim.route);assert(site);
-const seed=spawn(site,surface);assert.equal(site.height,55);
+const seed=spawn(site,surface);assert.equal(site.height,queens?29:55);
 const settle=(s,F=seed)=>s.update(F.x,F.z,F.y);
 settle(p);settle(b);
 assert.equal(forests.captureHeightPlan(victim.owner,victim.sha256),undefined);
@@ -83,6 +86,21 @@ assert.deepEqual(reference(),stock0,'readying may not change any cached/submitte
 assert(!p.takeDispatchStand(prepared,seed.x+.01,seed.z,victim),'wrong spawn may not take');
 assert.equal(p.dispatchStandAdjusted,0);
 assert(!p.takeDispatchStand(prepared,seed.x,seed.z,prince?DISPATCH_STAND:PRINCE_DISPATCH_STAND));
+let regionalAtLaunch,regionalBeforeRollback;
+const captureRegion=v=>v.captureStockCanopy(QUEENS_REGIONAL_BOX,QUEENS_REGIONAL_ROSTER);
+if(queens){
+ const snapshot=captureRegion(p);assert(sameQueensRegionalWords(snapshot,captureRegion(b)));
+ regionalAtLaunch=H(Buffer.from(snapshot));
+ assert.equal(regionalAtLaunch,'e64150d4465bc880beb71c4599b901b32865594b1a15862a89e95b47fe3b593e');
+ let slot=0;
+ const [l,t,r,d]=QUEENS_REGIONAL_BOX;
+ while(!(p.stems.getX(slot)>=l&&p.stems.getX(slot)<=r&&p.stems.getZ(slot)>=t&&p.stems.getZ(slot)<=d))slot++;
+ assert(slot<p.hedgeStart);
+ const old=p.shapes.getX(slot);p.shapes.setX(slot,old+1);
+ assert(!p.takeDispatchStand(prepared,seed.x,seed.z,victim),'unrelated regional companion word drift closed before first H/W write');
+ assert.equal(p.dispatchStandAdjusted,0);p.shapes.setX(slot,old);
+ assert(sameQueensRegionalWords(snapshot,captureRegion(p)));
+}
 assert(p.takeDispatchStand(prepared,seed.x,seed.z,victim));
 assert.equal(p.stems.version,stock0.stemVersion);
 assert.equal(p.hedgeGround.version,stock0.shadeVersion);
@@ -93,6 +111,7 @@ const stamp=(n)=>{
  assert.equal(arraysha(p.stems.array),arraysha(b.stems.array));
  assert.equal(arraysha(p.hedgeGround.array),arraysha(b.hedgeGround.array));
  const X=p.stems.array,base=b.shapes.array,alt=p.shapes.array;
+ if(queens)assert(sameQueensRegionalWords(captureRegion(p),captureRegion(b)),'ordered companion words were preserved');
  let count=0, abs=0, max=0;
  const names=new Set(prepared.slots.map(s=>s.x+':'+s.z));
  for(let i=0;i<p.geom.instanceCount;i++){
@@ -101,6 +120,7 @@ const stamp=(n)=>{
   const x=X[i*3],z=X[i*3+2];
   assert(i<p.hedgeStart&&ready.contains(x,z)&&names.has(x+':'+z));
   const q=exactStandSeed(x,z);assert(q);
+  if(queens)assert(queensDispatchAdmits(x,z)&&queensDispatchAdmits(q.x,q.z));
   const h=ready.height(q.x,q.z,treeRandom(q.i,q.j,35));
   const w=h*(.83+treeRandom(q.i,q.j,9)*.35);
   const d=Math.abs(alt[i*4]-base[i*4]);abs+=d;max=Math.max(d,max);
@@ -123,6 +143,7 @@ for(let i=1;i<=720;i++){
  if([1,90,180,360,540,720].includes(i))counts.push(stamp(i));
 }
 const before=stamp(720);
+if(queens)regionalBeforeRollback=H(Buffer.from(captureRegion(p)));
 p.clearDispatchStand();
 assert.equal(p.dispatchStandAdjusted,0);
 assert.deepEqual(p.shapes.array,b.shapes.array,'same-site Dispatch backdrop restores original from actual ending roster');
@@ -131,4 +152,6 @@ assert.equal(arraysha(p.hedgeGround.array),before.exactOriginalHedgeGroundSHA);
 console.log(JSON.stringify({scope:'CPU receipt for stock Three r187 instancing and real neutral simulation only; no RGBA.',
  sourceOwner:victim.owner,signedDigest:victim.sha256,sourceAvailableOnlyAfterOriginalAllocation:true,
  readyDidNotWrite:true,allAttributesExceptMatchedHeightWidthWereExact:true,sameSiteDispatchRestoreExact:true,
- cloneBlocks:prepared.blocks.length,counts},null,2));
+ cloneBlocks:prepared.blocks.length,counts,...(queens?{
+  regionalPeerSourceWords:QUEENS_REGIONAL_ROSTER*5,regionalAtLaunch,regionalBeforeRollback,
+  regionalChangedAtAnyCheckpoint:0,goodPeerRequiredAndOneWordDriftRejected:true}: {})},null,2));

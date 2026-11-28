@@ -1,0 +1,43 @@
+{
+  "scope": "Original normal Queens bookmark prewarm (not the new manual admission), independently measured existing 364-tree role remains positive.",
+  "authenticatedOriginalTile": [
+    {
+      "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+      "length": 36557,
+      "contentRange": "bytes 212212-248768/520308",
+      "testDelayMs": 0
+    }
+  ],
+  "oldRegionalRequest": [
+    "/world/regional-canopy-v1/0911576-canopy-v2.rcv.gz"
+  ],
+  "oldRegionalAtCapture": {
+    "layers": "ready",
+    "cover": "ready",
+    "active": "0911576",
+    "draw": 364,
+    "gain": 0.5456598485919644,
+    "stands": [
+      {
+        "id": "0911576",
+        "efi": true,
+        "roster": "ready",
+        "pack": "ready",
+        "requests": 1,
+        "seat": "ready"
+      },
+      {
+        "id": "1900486",
+        "efi": false,
+        "roster": "idle",
+        "pack": "idle",
+        "requests": 0,
+        "seat": "idle"
+      }
+    ]
+  },
+  "actualFlightMetres": 128.02786468087197,
+  "normalCockpitPause": true,
+  "manualSizeReplacements": 0,
+  "receiptSHA256": "6f30dccca225843408e40b5c77d7eed8f42653ef03ec77209b98ce571862dfc4"
+}

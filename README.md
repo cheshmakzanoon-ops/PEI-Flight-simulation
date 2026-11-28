@@ -51,6 +51,7 @@ Open the local address printed by Vite. The simulator loads its geographic asset
 | **Eastern Kings · turbine skyline** | Approach the eastern end of the island from the sea. Standard includes [both generations of the Eastern Kings turbines](docs/qa/east-point-phase-ii.md). |
 | **Prince County · mapped farmland pass** | Start in the air over an inland field. The [Standard farmland departures](docs/qa/province-fields.md) show close furrows in Prince, Queens and Kings. |
 | **Prince or Kings County · inland meadow pass** | Select the route in Standard Dispatch and wait for **Survey-based woodland sizes ready** before beginning. See the matched woodland views in [Prince](docs/qa/prince-dispatch-woodland.md) and [Kings](docs/qa/dispatch-woodland.md). |
+| **Queens County · woodland view pass** | Select the low Queens route in Standard Dispatch. The [mapped woodland guide](docs/qa/queens-dispatch-woodland.md) explains how the existing inventory sizes are used when ready. |
 
 Standard combines LiDAR-derived terrain with 245 near-detail imagery
 tiles, 19,465 mapped road segments and 85,866 detected building

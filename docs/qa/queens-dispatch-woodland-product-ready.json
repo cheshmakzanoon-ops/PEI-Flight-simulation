@@ -1,0 +1,113 @@
+{
+  "scope": "Uninstrumented Three.js player; normal East Point Dispatch followed by manual selection of the low Queens County departure. Controlled ordering of the same local signed range, no time, input, scenery, camera or physics override.",
+  "nativeSourceRange": {
+    "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+    "length": 36557,
+    "contentRange": "bytes 212212-248768/520308",
+    "testDelayMs": 281
+  },
+  "browserTransport": {
+    "status": 206,
+    "contentRange": "bytes 212212-248768/520308"
+  },
+  "regionalRequests": [],
+  "flightMovementM": 125.03678275088228,
+  "normalCockpitPause": true,
+  "phase": {
+    "initial": {
+      "site": "eastpoint",
+      "mode": "dispatch",
+      "stand": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 2,
+        "resident": 5,
+        "failed": 0,
+        "active": "30-12",
+        "activeReady": true
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "stockBeforeHealthyBytes": {
+      "site": "queens-woodland-view",
+      "mode": "dispatch",
+      "stand": {
+        "state": "waiting",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 2,
+        "resident": 0,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": false
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "dispatch": {
+      "site": "queens-woodland-view",
+      "mode": "dispatch",
+      "stand": {
+        "state": "ready",
+        "adjusted": 0
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 2,
+        "resident": 2,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "begin": {
+      "site": "queens-woodland-view",
+      "mode": "flight",
+      "stand": {
+        "state": "active",
+        "adjusted": 16226
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    },
+    "flight": {
+      "site": "queens-woodland-view",
+      "mode": "flight",
+      "stand": {
+        "state": "active",
+        "adjusted": 15193
+      },
+      "woodland": {
+        "missing": false,
+        "inflight": 0,
+        "resident": 16,
+        "failed": 1,
+        "active": "13-13",
+        "activeReady": true
+      },
+      "camera": "Chase",
+      "warning": [],
+      "samples": 4
+    }
+  }
+}

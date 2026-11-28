@@ -1,0 +1,94 @@
+{
+  "scope": "Two independent ordinary compiled flights. Explicit stockDispatchWoodland. Same original certified regional authority and count, no pixel equality or fixed fade across independent flights.",
+  "baseline": "q415 without new Queens size handoff",
+  "candidate": "q414 plus exact Queens handoff (q415 Founders lease is restricted to harbour-low)",
+  "preservedExistingRegional": true,
+  "cases": {
+    "baseline": {
+      "actualSourceWarmInCavendish": true,
+      "sourceRange": {
+        "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+        "length": 36557,
+        "contentRange": "bytes 212212-248768/520308",
+        "testDelayMs": 0
+      },
+      "browserRange": {
+        "status": 206,
+        "contentRange": "bytes 212212-248768/520308"
+      },
+      "manualSizingStateAbsent": true,
+      "independentGrove": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "0911576",
+        "draw": 364,
+        "gain": 0.6414237315557433,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "normalCockpitPause": true,
+      "realChaseMetres": 127.42949638260741,
+      "originalQedReceiptSha256": "8daa240a4d9e2f025bd420b63773b7bfae9ea49aba4f755fa4f330efcd8b13b1",
+      "manualSelectionSite": "queens-woodland-view"
+    },
+    "candidate": {
+      "actualSourceWarmInCavendish": true,
+      "sourceRange": {
+        "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+        "length": 36557,
+        "contentRange": "bytes 212212-248768/520308",
+        "testDelayMs": 0
+      },
+      "browserRange": {
+        "status": 206,
+        "contentRange": "bytes 212212-248768/520308"
+      },
+      "manualSizingStateAbsent": true,
+      "independentGrove": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "0911576",
+        "draw": 364,
+        "gain": 0.6398127763172317,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "normalCockpitPause": true,
+      "realChaseMetres": 125.63439739674358,
+      "originalQedReceiptSha256": "b3c6ef80ca3096fc37a39ac6a342d837833b1b0dce1f71cd3e50302c5fbdb8fd",
+      "manualSelectionSite": "queens-woodland-view"
+    }
+  }
+}

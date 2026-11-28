@@ -1,0 +1,47 @@
+{
+  "scope": "Actual local Standard WebGL Dispatch, Cavendish allowed to prefetch original source before choosing low Queens through the menu. No Begin or rendering intervention. Exact CPU cache and live submission words, not GPU buffer readback.",
+  "originalReceiptSha256": "d8e320d8671063b1090b48aafa232507974aba2899e82a318a4757ac8440ca9a",
+  "CavendishVerifiedOwnerBeforeSelecting": {
+    "auth": true,
+    "active": "13-11"
+  },
+  "sourceRequests": [
+    {
+      "range": [
+        212212,
+        248768
+      ],
+      "packedSHA256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+      "decodedSHA256": "ff1d9badde7c036815956fedd778820f7647399baff8afac3f59a7bc46d74c26"
+    }
+  ],
+  "exactCacheAndLiveRows": {
+    "qualified": 16226,
+    "fallbackOnly": 0,
+    "signedOnly": 16226,
+    "both": 0,
+    "neither": 0,
+    "noData": 3213,
+    "notOriginal": 0,
+    "collisions": 0,
+    "liveMismatches": 0
+  },
+  "protectedPeer": {
+    "r": "peer-original-digest",
+    "sha256": "3cf79412600fa645d0fe1cb861ea248243e464a1a0b6003258c097abb0670b7b",
+    "stamp": [
+      -13548.611885132885,
+      11009.481442347704,
+      4
+    ]
+  },
+  "finalDispatchStand": {
+    "state": "stock",
+    "adjusted": 0
+  },
+  "view": [
+    630,
+    420
+  ],
+  "flags": "?diagnostics"
+}

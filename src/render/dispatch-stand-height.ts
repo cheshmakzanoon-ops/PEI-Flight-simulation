@@ -1,8 +1,9 @@
 import {TREE_PITCH,treeRandom} from '../sim/tree-layout.ts';
 import {project} from '../sim/geo.ts';
+import {QUEENS_DISPATCH_STAND} from './queens-dispatch-contract.ts';
 
 /** Each independently audited manual Dispatch aperture uses the existing
- * signed height catalogue; neither one starts or reshapes the stream. */
+ * signed height catalogue without starting or reshaping the stream. */
 export const DISPATCH_STAND=Object.freeze({
  route:'kings-meadow-low',owner:'28-12',
  sha256:'b97ea5e14d74ddd8cedb900f41d717e592761c63e1131ed8a5895eaebf106171',
@@ -13,8 +14,9 @@ export const PRINCE_DISPATCH_STAND=Object.freeze({
  sha256:'0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b',
  lon:-63.87977038384,lat:46.4621004046,heading:90,aboveSurface:55,
 });
-export type DispatchStandPlan=typeof DISPATCH_STAND|typeof PRINCE_DISPATCH_STAND;
-const choosePlan=(id:string)=>id===DISPATCH_STAND.route?DISPATCH_STAND:id===PRINCE_DISPATCH_STAND.route?PRINCE_DISPATCH_STAND:undefined;
+export type DispatchStandPlan=typeof DISPATCH_STAND|typeof PRINCE_DISPATCH_STAND|typeof QUEENS_DISPATCH_STAND;
+const choosePlan=(id:string)=>id===DISPATCH_STAND.route?DISPATCH_STAND:id===PRINCE_DISPATCH_STAND.route?PRINCE_DISPATCH_STAND:
+ id===QUEENS_DISPATCH_STAND.route?QUEENS_DISPATCH_STAND:undefined;
 export function dispatchStandPlan(site:{id:string;lon:number;lat:number;heading:number;height:number}|undefined){
  const p=site&&choosePlan(site.id);
  return p&&site.lon===p.lon&&site.lat===p.lat&&site.heading===p.heading&&site.height===p.aboveSurface?p:undefined;
@@ -25,9 +27,10 @@ export function dispatchStandPlan(site:{id:string;lon:number;lat:number;heading:
 const miscouche=[-54019.6923,5528.4509,-53584.6204,6005.9102] as const;
 export function dispatchStandPlanSeated(p:DispatchStandPlan,x:number,z:number,radius:number){
  if(p===DISPATCH_STAND)return true; // retain the original Kings custody path
- if(p!==PRINCE_DISPATCH_STAND||!Number.isFinite(radius)||radius<=0||radius>1530)return false;
+ if((p!==PRINCE_DISPATCH_STAND&&p!==QUEENS_DISPATCH_STAND)||!Number.isFinite(radius)||radius<=0||radius>1530)return false;
  const spawn=project(p.lon,p.lat);
  if(x!==spawn.x||z!==spawn.z)return false;
+ if(p===QUEENS_DISPATCH_STAND)return true;
  const [west,north,east,south]=miscouche;
  return Math.hypot(Math.max(west-x,x-east,0),Math.max(north-z,z-south,0))>radius;
 }

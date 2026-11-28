@@ -1,0 +1,15 @@
+{
+  "scope": "Uninstrumented package with only WebGL context antialias requested false. Actual samples0, waiting and launch still work normally; no authenticated size replacement in the unqualified renderer.",
+  "receiptSHA256": "361320dbc02085ae447a0e8196b160236ce5c7a39b8dee266ba15ae49e4f1c14",
+  "fourModeGuardedZero": true,
+  "healthyRange": [
+    {
+      "sha256": "6792161ce3b913ef67dd41e23574dd8719a05629221a37e7db1aab57c9332cb2",
+      "length": 36557,
+      "contentRange": "bytes 212212-248768/520308",
+      "testDelayMs": 0
+    }
+  ],
+  "actualMovementM": 128.62464439421368,
+  "normalCockpitPause": true
+}

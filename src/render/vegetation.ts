@@ -19,11 +19,13 @@ import {runwayAt} from '../sim/places.ts';
 import {TREE_PITCH as pitch,TREE_TILE_SIDE as side,treeRandom as rand} from '../sim/tree-layout.ts';
 import {fillRoofTile} from '../sim/tree-clearance.ts';
 import {DISPATCH_STAND,dispatchStandPlanSeated,prepareStandReplacement,type DispatchStandPlan,type SignedHeightView,type StandReplacement} from './dispatch-stand-height.ts';
+import {QUEENS_DISPATCH_STAND,QUEENS_REGIONAL_BOX,QUEENS_REGIONAL_ROSTER,queensDispatchAdmits,queensDispatchHeightView,queensRegionalObserverDisjoint,sameQueensRegionalWords} from './queens-dispatch-contract.ts';
 const span=pitch*side,radius=1530,maxTrees=45000;
 type StandPrepared=Readonly<{
  plan:DispatchStandPlan;x:number;z:number;
  blocks:readonly Readonly<{key:string;patch:StandReplacement}>[];
  slots:readonly StandSlot[];
+ regionStock?:ArrayBuffer;
 }>;
 type StandSlot=Readonly<{
  slot:number;x:number;y:number;z:number;oldH:number;oldW:number;
@@ -72,7 +74,7 @@ export class Vegetation {
  crownFillMaterial():THREE.ShaderMaterial{return this.crown.material as THREE.ShaderMaterial;}
  /** Exact ordered GPU inputs within a small signed regional proof box.
   * No default caller; excludes the appended hedge lane and never alters a slot. */
- get stockCanopyRevision(){return this.forestRevision;}
+ get stockCanopyRevision(){return this.forestRevision-this.quietQueensRevisions;}
  captureStockCanopy(bounds:readonly [number,number,number,number],count:number){
   if(!Number.isSafeInteger(count)||count<1||count>1600||!this.crown.visible)return;
   const a=this.stems.array,b=this.shapes.array,[l,t,r,d]=bounds;
@@ -104,6 +106,9 @@ export class Vegetation {
  }
  private hedgeStart=0;
  private forestRevision=0;
+ // Every full revision not explicitly proven region-disjoint still reaches
+ // the original observer. Future ordinary roster rebuilds need no change.
+ private quietQueensRevisions=0;
  private volume?:WoodlandVolume;
  private crownUsedAtSlot?:Uint8Array;
  private crownByVegetationTile?:WeakMap<Float32Array,Uint8Array>;
@@ -118,6 +123,7 @@ export class Vegetation {
  get hedgeCount(){return this.lastHedges;}
  private lastX=Infinity;private lastZ=Infinity;private cache=new Map<string,Float32Array>();
  private standOverride?:WeakMap<Float32Array,Float32Array>;
+ private standIsQueens=false;
  // slot, exact X/Z, old H/W, rendered H/W. Reused on natural roster rebuilds.
  private standLiveSlots:number[]=[];
  private standScratchSlots:number[]=[];
@@ -133,6 +139,13 @@ export class Vegetation {
  prepareDispatchStand(source:SignedHeightView,x:number,z:number,plan:DispatchStandPlan=DISPATCH_STAND):StandPrepared|false|undefined{
   if(this.lastX!==x||this.lastZ!==z)return;
   if(!this.dispatchStandCustody()||!dispatchStandPlanSeated(plan,x,z,radius)||source.id!==plan.owner||source.sha256!==plan.sha256)return false;
+  let regionStock:ArrayBuffer|undefined;
+  if(plan===QUEENS_DISPATCH_STAND){
+   const q=queensDispatchHeightView(source);
+   regionStock=this.captureStockCanopy(QUEENS_REGIONAL_BOX,QUEENS_REGIONAL_ROSTER);
+   if(!q||!regionStock)return false;
+   source=q;
+  }
   const blocks:{key:string;patch:StandReplacement}[]=[],changed=new Map<string,readonly number[]>();
   for(const [key,stock] of this.cache){
    const patch=prepareStandReplacement(source,stock,x,z,radius);
@@ -163,7 +176,8 @@ export class Vegetation {
   // The fenced original roster is never truncated in this intake. No
   // late replacement can enter solely because a slot was filtered out.
   if(!slots.length||changed.size)return false;
-  return Object.freeze({plan,x,z,blocks:Object.freeze(blocks),slots:Object.freeze(slots)});
+  const claim={plan,x,z,blocks:Object.freeze(blocks),slots:Object.freeze(slots)};
+  return regionStock?Object.freeze({...claim,regionStock}):Object.freeze(claim);
  }
  takeDispatchStand(p:StandPrepared,x:number,z:number,plan:DispatchStandPlan=DISPATCH_STAND){
   if(p.plan!==plan||!dispatchStandPlanSeated(plan,x,z,radius)||this.standOverride||!this.dispatchStandCustody()||x!==p.x||z!==p.z||this.lastX!==x||this.lastZ!==z||
@@ -171,31 +185,40 @@ export class Vegetation {
   for(const a of p.slots)if(a.slot>=this.hedgeStart||this.stems.getX(a.slot)!==a.x||this.stems.getY(a.slot)!==a.y||
     this.stems.getZ(a.slot)!==a.z||this.shapes.getX(a.slot)!==a.oldH||this.shapes.getY(a.slot)!==a.oldW||
     this.shapes.getZ(a.slot)!==a.variant||this.shapes.getW(a.slot)!==a.light)return false;
+  const queens=plan===QUEENS_DISPATCH_STAND;
+  if(queens&&(!queensRegionalObserverDisjoint()||
+    p.slots.some(a=>!queensDispatchAdmits(a.x,a.z))||
+    !sameQueensRegionalWords(p.regionStock,this.captureStockCanopy(QUEENS_REGIONAL_BOX,QUEENS_REGIONAL_ROSTER))))return false;
   this.standOverride=new WeakMap(p.blocks.map(({patch})=>[patch.stock,patch.alternate]));
+  this.standIsQueens=queens;
   for(const a of p.slots){
    this.shapes.setXY(a.slot,a.height,a.width);
    this.standLiveSlots.push(a.slot,a.x,a.z,a.oldH,a.oldW,a.height,a.width);
   }
-  this.markStandUpdate(p.slots[0].slot,p.slots[p.slots.length-1].slot);
+  this.markStandUpdate(p.slots[0].slot,p.slots[p.slots.length-1].slot,queens);
   return true;
  }
- private markStandUpdate(first:number,last:number){
+ private markStandUpdate(first:number,last:number,regionDisjoint:boolean){
   if(first<=last){
    this.shapes.addUpdateRange(first*4,(last-first)*4+2);this.shapes.needsUpdate=true;
    this.forestRevision++;
+   if(regionDisjoint)this.quietQueensRevisions++;
   }
  }
  clearDispatchStand(){
   if(!this.standOverride)return;
   this.standOverride=undefined;
+  let regionDisjoint=this.standIsQueens&&queensRegionalObserverDisjoint();
+  this.standIsQueens=false;
   const a=this.standLiveSlots;let first=Infinity,last=-Infinity;
   for(let i=0;i<a.length;i+=7){
    const slot=a[i];
    if(slot>=this.hedgeStart||this.stems.getX(slot)!==a[i+1]||this.stems.getZ(slot)!==a[i+2]||
       this.shapes.getX(slot)!==a[i+5]||this.shapes.getY(slot)!==a[i+6])continue;
+   if(regionDisjoint&&!queensDispatchAdmits(a[i+1],a[i+2]))regionDisjoint=false;
    this.shapes.setXY(slot,a[i+3],a[i+4]);first=Math.min(first,slot);last=Math.max(last,slot);
   }
-  a.length=0;this.markStandUpdate(first,last);
+  a.length=0;this.markStandUpdate(first,last,regionDisjoint);
  }
  // Optional exact-root leases come only from a mounted, source-qualified
  // world object. No terrain/canopy source, hedge or old cached tile is edited.

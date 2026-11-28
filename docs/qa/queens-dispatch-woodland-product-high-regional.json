@@ -1,0 +1,35 @@
+{
+  "scope": "Original high Queens regional Standard launch, separate from manual low aperture.",
+  "actualFlightMetres": 125.81967465123662,
+  "requestedOriginalLayer": [
+    "/world/regional-canopy-v1/0911576-canopy-v2.rcv.gz"
+  ],
+  "protectedExistingRegional": {
+    "layers": "ready",
+    "cover": "ready",
+    "active": "0911576",
+    "draw": 364,
+    "gain": 1,
+    "stands": [
+      {
+        "id": "0911576",
+        "efi": true,
+        "roster": "ready",
+        "pack": "ready",
+        "requests": 1,
+        "seat": "ready"
+      },
+      {
+        "id": "1900486",
+        "efi": false,
+        "roster": "idle",
+        "pack": "idle",
+        "requests": 0,
+        "seat": "idle"
+      }
+    ]
+  },
+  "manualSizeReplacements": 0,
+  "normalCockpitPause": true,
+  "receiptSHA256": "b4a6be404382a0df0cd3535b917b7ebf0bfbd000b07c426a6deb6653f2bb9f68"
+}
