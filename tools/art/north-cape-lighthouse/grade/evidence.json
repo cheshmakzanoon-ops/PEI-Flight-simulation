@@ -1,0 +1,705 @@
+{
+  "scope": "Offline regular stock 5-0 packed terrain against Federal DTM; not native GPU, exact survey residual, coastline/cover correction, foundation, grade proposal, or artwork.",
+  "rowsNorthFirst": true,
+  "pixelCentres": "EPSG:3979 east and north ±½ m -> GDAL EPSG:4326 [lon lat] -> existing local tangent frame",
+  "stockGeometrySHA256": {
+    "position": "326064733d6c25b7285ea3f66084ed8ddbc740b15079d9d22b57cde4f2e54c3f",
+    "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "sourceVertical": "Both the sharp DTM and the coarse atlas declare CGVD2013 and the same Federal DTM ETag. No vertical bias is fitted.",
+  "renderLiftM": 0.12,
+  "cohort": "Only interior faces of tile 5-0; adjacent tile 6-0 and every face touching stock seam rows are excluded. Dry interior uses current atlas land, 55 m signed mask, DTM at least 2 m and bundled approximate cover class 30 or class 30/40 across nine 1–2 m offsets. The additional mapped-object cohort rejects the documented stock road, sidewalk, parking, building and lighthouse locator buffers across the same nine taps. No exact shoreline or exhaustive obstructions.",
+  "mappedConflictsInStrictGrass": {
+    "building": 7191,
+    "locator": 3871,
+    "road": 3472
+  },
+  "mappedExclusions": {
+    "pins": {
+      "roads": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+      "sidewalks": "e2dce7c86c4b5cd45ea45fb92ed89c2ae504306e4349e1291e627a669630e384",
+      "parking": "071f8b599e27afcda8a1924cb152135f342c47756de1667fea28c0fdbb294303",
+      "index": "fcc2bb4d890eafd08ac41136a3bff7bebeafe2f9c25a066fdcf756ed39badce0"
+    },
+    "chunks": [
+      [
+        "q2232",
+        "546d40a7045ce55492e065c543ce72bdac489416e2c992a52a57fddfac77c899"
+      ]
+    ],
+    "mappedRibbons": {
+      "road": 9
+    },
+    "mappedConservativeRectangles": {
+      "building": 7
+    },
+    "buffersM": {
+      "roadHalfWidthPlus": 24,
+      "sidewalkWidthPlus": 15,
+      "areaAabb": 20,
+      "coastGuardLocator": 35
+    }
+  },
+  "excludedAdjacentTileCells": 455,
+  "excludedStockSeamFaceCells": 6103,
+  "classificationStock": {
+    "0": 49306,
+    "30": 50316,
+    "40": 4538,
+    "50": 6743,
+    "80": 29995
+  },
+  "packedSeat": {
+    "face": 20151,
+    "ebo": [
+      10277,
+      10278,
+      10165
+    ],
+    "displayedY": 5.349913690546074
+  },
+  "candidateRectangles": [
+    {
+      "face": 20152,
+      "window": [
+        201,
+        138,
+        223,
+        156
+      ],
+      "area": 437
+    },
+    {
+      "face": 20373,
+      "window": [
+        160,
+        243,
+        176,
+        266
+      ],
+      "area": 408
+    },
+    {
+      "face": 20153,
+      "window": [
+        234,
+        137,
+        248,
+        161
+      ],
+      "area": 375
+    },
+    {
+      "face": 20597,
+      "window": [
+        187,
+        294,
+        199,
+        313
+      ],
+      "area": 260
+    },
+    {
+      "face": 20596,
+      "window": [
+        169,
+        274,
+        180,
+        291
+      ],
+      "area": 216
+    },
+    {
+      "face": 20820,
+      "window": [
+        197,
+        319,
+        205,
+        337
+      ],
+      "area": 171
+    },
+    {
+      "face": 19927,
+      "window": [
+        154,
+        139,
+        164,
+        153
+      ],
+      "area": 165
+    },
+    {
+      "face": 21044,
+      "window": [
+        206,
+        374,
+        221,
+        381
+      ],
+      "area": 128
+    }
+  ],
+  "detachedSingleFace": {
+    "caveat": "Detached CPU Three.js mesh; no GPU, land material qualification, survey placement, shadows or collision data.",
+    "witness": {
+      "face": 20152,
+      "window": [
+        201,
+        138,
+        223,
+        156
+      ],
+      "area": 437
+    },
+    "originalIndices": [
+      10165,
+      10278,
+      10166
+    ],
+    "addedVertices": 437,
+    "coreSourceVertices": 165,
+    "exactUntouchedStockVertices": 12769,
+    "exactUntouchedStockFaces": 25087,
+    "replacementFaces": 875,
+    "patchFaces": 792,
+    "joinFaces": 83,
+    "projectionAreaM2": 1423.496149734,
+    "projectionAreaMismatchM2": 0,
+    "maximumMappedCentreOffsetM": 0.00013605,
+    "maximumBoundaryHeightErrorM": 2.37e-7,
+    "maximumCoreSourceHeightErrorM": 2.29e-7,
+    "minMaxDisplacementM": [
+      -2.37e-7,
+      0.968537949
+    ],
+    "positionSHA256": "44c301bbd207f2351785a4f4de1c8f4ccf9d5fbfd17a48119a9f0954e3bb5122",
+    "indicesSHA256": "bbec78ee420f5cc7b5a27abe9acaed5db590cdaa4e1d835902872e14d870ce1d",
+    "uvSHA256": "bae2a56230d634fcae922c25730ee9986fc916a9406325ed347c93ce8a5ede2a",
+    "normalSHA256": "b84820dc5411458502495e8633fd4c4636fba1d79ad79df05b3a8ada3c51b7fd"
+  },
+  "summaries": {
+    "all": {
+      "cells": 140898,
+      "sourceMinusPackedDisplayedM": {
+        "0": -5.118663,
+        "1": 4.585889,
+        "0.1": -2.331645,
+        "0.5": -0.726564,
+        "0.9": 1.36949,
+        "0.95": 2.110209,
+        "0.99": 3.166604
+      },
+      "sourceMinusPackedNoRenderLiftM": {
+        "0": -4.998663,
+        "1": 4.705889,
+        "0.1": -2.211645,
+        "0.5": -0.606564,
+        "0.9": 1.48949,
+        "0.95": 2.230209,
+        "0.99": 3.286604
+      },
+      "absoluteDifferenceNoRenderLiftM": {
+        "0": 0.000036,
+        "1": 4.998663,
+        "0.1": 0.184269,
+        "0.5": 0.95,
+        "0.9": 2.584792,
+        "0.95": 3.181298,
+        "0.99": 4.074086
+      },
+      "sourceSlope4mRisePerRun": {
+        "0": 0,
+        "1": 2.707887,
+        "0.1": 0.00559,
+        "0.5": 0.023049,
+        "0.9": 0.113853,
+        "0.95": 0.201525,
+        "0.99": 0.7715
+      },
+      "slopeVectorDifference4mRisePerRun": {
+        "0": 0,
+        "1": 2.662108,
+        "0.1": 0.011823,
+        "0.5": 0.036375,
+        "0.9": 0.104046,
+        "0.95": 0.176293,
+        "0.99": 0.738745
+      },
+      "atLeastHalfMetreHigher": {
+        "componentsOfAtLeast9": 5,
+        "large": [
+          {
+            "count": 32837,
+            "window": [
+              89,
+              86,
+              383,
+              383
+            ],
+            "medianDeltaM": 1.305339
+          },
+          {
+            "count": 1434,
+            "window": [
+              283,
+              256,
+              358,
+              302
+            ],
+            "medianDeltaM": 0.672823
+          },
+          {
+            "count": 856,
+            "window": [
+              258,
+              297,
+              291,
+              332
+            ],
+            "medianDeltaM": 1.761659
+          },
+          {
+            "count": 27,
+            "window": [
+              307,
+              288,
+              312,
+              294
+            ],
+            "medianDeltaM": 0.512651
+          },
+          {
+            "count": 26,
+            "window": [
+              181,
+              184,
+              186,
+              189
+            ],
+            "medianDeltaM": 0.540237
+          }
+        ]
+      },
+      "atLeastHalfMetreLower": {
+        "componentsOfAtLeast9": 4,
+        "large": [
+          {
+            "count": 73105,
+            "window": [
+              0,
+              0,
+              383,
+              383
+            ],
+            "medianDeltaM": -1.17193
+          },
+          {
+            "count": 572,
+            "window": [
+              350,
+              328,
+              377,
+              370
+            ],
+            "medianDeltaM": -0.598504
+          },
+          {
+            "count": 118,
+            "window": [
+              342,
+              365,
+              377,
+              383
+            ],
+            "medianDeltaM": -0.595323
+          },
+          {
+            "count": 55,
+            "window": [
+              244,
+              335,
+              250,
+              344
+            ],
+            "medianDeltaM": -0.534781
+          }
+        ]
+      }
+    },
+    "dryGrass": {
+      "cells": 33876,
+      "sourceMinusPackedDisplayedM": {
+        "0": -1.178761,
+        "1": 4.585889,
+        "0.1": -0.419157,
+        "0.5": 0.148819,
+        "0.9": 0.924665,
+        "0.95": 1.162085,
+        "0.99": 2.086731
+      },
+      "sourceMinusPackedNoRenderLiftM": {
+        "0": -1.058761,
+        "1": 4.705889,
+        "0.1": -0.299157,
+        "0.5": 0.268819,
+        "0.9": 1.044665,
+        "0.95": 1.282085,
+        "0.99": 2.206731
+      },
+      "absoluteDifferenceNoRenderLiftM": {
+        "0": 0.000036,
+        "1": 4.705889,
+        "0.1": 0.065655,
+        "0.5": 0.371275,
+        "0.9": 1.045604,
+        "0.95": 1.282085,
+        "0.99": 2.206731
+      },
+      "sourceSlope4mRisePerRun": {
+        "0": 0,
+        "1": 0.58929,
+        "0.1": 0.009014,
+        "0.5": 0.023585,
+        "0.9": 0.07754,
+        "0.95": 0.116887,
+        "0.99": 0.348613
+      },
+      "slopeVectorDifference4mRisePerRun": {
+        "0": 0.000282,
+        "1": 0.580482,
+        "0.1": 0.009545,
+        "0.5": 0.028173,
+        "0.9": 0.080373,
+        "0.95": 0.116181,
+        "0.99": 0.349066
+      },
+      "atLeastHalfMetreHigher": {
+        "componentsOfAtLeast9": 5,
+        "large": [
+          {
+            "count": 8796,
+            "window": [
+              147,
+              111,
+              293,
+              381
+            ],
+            "medianDeltaM": 0.801968
+          },
+          {
+            "count": 1743,
+            "window": [
+              299,
+              180,
+              370,
+              259
+            ],
+            "medianDeltaM": 0.985475
+          },
+          {
+            "count": 791,
+            "window": [
+              258,
+              298,
+              291,
+              332
+            ],
+            "medianDeltaM": 1.904775
+          },
+          {
+            "count": 423,
+            "window": [
+              286,
+              256,
+              317,
+              282
+            ],
+            "medianDeltaM": 0.597351
+          },
+          {
+            "count": 26,
+            "window": [
+              181,
+              184,
+              186,
+              189
+            ],
+            "medianDeltaM": 0.540237
+          }
+        ]
+      },
+      "atLeastHalfMetreLower": {
+        "componentsOfAtLeast9": 3,
+        "large": [
+          {
+            "count": 569,
+            "window": [
+              350,
+              329,
+              377,
+              370
+            ],
+            "medianDeltaM": -0.598634
+          },
+          {
+            "count": 105,
+            "window": [
+              342,
+              365,
+              372,
+              381
+            ],
+            "medianDeltaM": -0.587813
+          },
+          {
+            "count": 55,
+            "window": [
+              244,
+              335,
+              250,
+              344
+            ],
+            "medianDeltaM": -0.534781
+          }
+        ]
+      }
+    },
+    "dryGrassOrCrop": {
+      "cells": 38738,
+      "sourceMinusPackedDisplayedM": {
+        "0": -1.178761,
+        "1": 4.585889,
+        "0.1": -0.433407,
+        "0.5": 0.073482,
+        "0.9": 0.873138,
+        "0.95": 1.115404,
+        "0.99": 1.866576
+      },
+      "sourceMinusPackedNoRenderLiftM": {
+        "0": -1.058761,
+        "1": 4.705889,
+        "0.1": -0.313407,
+        "0.5": 0.193482,
+        "0.9": 0.993138,
+        "0.95": 1.235404,
+        "0.99": 1.986576
+      },
+      "absoluteDifferenceNoRenderLiftM": {
+        "0": 0.000036,
+        "1": 4.705889,
+        "0.1": 0.062798,
+        "0.5": 0.331436,
+        "0.9": 0.996731,
+        "0.95": 1.235404,
+        "0.99": 1.986576
+      },
+      "sourceSlope4mRisePerRun": {
+        "0": 0,
+        "1": 0.58929,
+        "0.1": 0.009014,
+        "0.5": 0.023049,
+        "0.9": 0.076035,
+        "0.95": 0.116324,
+        "0.99": 0.345009
+      },
+      "slopeVectorDifference4mRisePerRun": {
+        "0": 0.000279,
+        "1": 0.580482,
+        "0.1": 0.009385,
+        "0.5": 0.027647,
+        "0.9": 0.078823,
+        "0.95": 0.115703,
+        "0.99": 0.344503
+      },
+      "atLeastHalfMetreHigher": {
+        "componentsOfAtLeast9": 5,
+        "large": [
+          {
+            "count": 8796,
+            "window": [
+              147,
+              111,
+              293,
+              381
+            ],
+            "medianDeltaM": 0.801968
+          },
+          {
+            "count": 1743,
+            "window": [
+              299,
+              180,
+              370,
+              259
+            ],
+            "medianDeltaM": 0.985475
+          },
+          {
+            "count": 856,
+            "window": [
+              258,
+              297,
+              291,
+              332
+            ],
+            "medianDeltaM": 1.761659
+          },
+          {
+            "count": 458,
+            "window": [
+              283,
+              256,
+              317,
+              282
+            ],
+            "medianDeltaM": 0.590831
+          },
+          {
+            "count": 26,
+            "window": [
+              181,
+              184,
+              186,
+              189
+            ],
+            "medianDeltaM": 0.540237
+          }
+        ]
+      },
+      "atLeastHalfMetreLower": {
+        "componentsOfAtLeast9": 3,
+        "large": [
+          {
+            "count": 569,
+            "window": [
+              350,
+              329,
+              377,
+              370
+            ],
+            "medianDeltaM": -0.598634
+          },
+          {
+            "count": 105,
+            "window": [
+              342,
+              365,
+              372,
+              381
+            ],
+            "medianDeltaM": -0.587813
+          },
+          {
+            "count": 55,
+            "window": [
+              244,
+              335,
+              250,
+              344
+            ],
+            "medianDeltaM": -0.534781
+          }
+        ]
+      }
+    },
+    "dryGrassAwayFromMappedObjects": {
+      "cells": 18213,
+      "sourceMinusPackedDisplayedM": {
+        "0": -1.178761,
+        "1": 1.902631,
+        "0.1": -0.367715,
+        "0.5": 0.089687,
+        "0.9": 0.942624,
+        "0.95": 1.134785,
+        "0.99": 1.587062
+      },
+      "sourceMinusPackedNoRenderLiftM": {
+        "0": -1.058761,
+        "1": 2.022631,
+        "0.1": -0.247715,
+        "0.5": 0.209687,
+        "0.9": 1.062624,
+        "0.95": 1.254785,
+        "0.99": 1.707062
+      },
+      "absoluteDifferenceNoRenderLiftM": {
+        "0": 0.000036,
+        "1": 2.022631,
+        "0.1": 0.048686,
+        "0.5": 0.342867,
+        "0.9": 1.062624,
+        "0.95": 1.254785,
+        "0.99": 1.707062
+      },
+      "sourceSlope4mRisePerRun": {
+        "0": 0,
+        "1": 0.228172,
+        "0.1": 0.009014,
+        "0.5": 0.023585,
+        "0.9": 0.0625,
+        "0.95": 0.0875,
+        "0.99": 0.131577
+      },
+      "slopeVectorDifference4mRisePerRun": {
+        "0": 0.000282,
+        "1": 0.218505,
+        "0.1": 0.009874,
+        "0.5": 0.029035,
+        "0.9": 0.069092,
+        "0.95": 0.090715,
+        "0.99": 0.140157
+      },
+      "atLeastHalfMetreHigher": {
+        "componentsOfAtLeast9": 2,
+        "large": [
+          {
+            "count": 7084,
+            "window": [
+              147,
+              111,
+              271,
+              381
+            ],
+            "medianDeltaM": 0.858476
+          },
+          {
+            "count": 59,
+            "window": [
+              287,
+              259,
+              298,
+              271
+            ],
+            "medianDeltaM": 0.6168
+          }
+        ]
+      },
+      "atLeastHalfMetreLower": {
+        "componentsOfAtLeast9": 2,
+        "large": [
+          {
+            "count": 80,
+            "window": [
+              351,
+              341,
+              362,
+              353
+            ],
+            "medianDeltaM": -0.896016
+          },
+          {
+            "count": 55,
+            "window": [
+              244,
+              335,
+              250,
+              344
+            ],
+            "medianDeltaM": -0.534781
+          }
+        ]
+      }
+    }
+  }
+}

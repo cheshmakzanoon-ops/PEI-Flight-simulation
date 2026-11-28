@@ -83,3 +83,10 @@ An isolated native 4× comparison using the exact packed art and simple
 test lighting showed the lens relief and stays face-on and obliquely through
 the unchanged glass. It concerns only this detached object, not site
 scale, flight atmosphere or the playable scene.
+
+### Source-backed dry-ground relief
+
+The [dry-ground study](grade/) compares the exact decoded Federal 1 m
+DTM with the reconstructed regular stock mesh and tests a detached
+one-triangle replacement outside mapped-object buffers. It does not
+install a ground grade or change lighthouse seating.
