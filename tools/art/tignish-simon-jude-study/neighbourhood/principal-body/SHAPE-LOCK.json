@@ -1,0 +1,20 @@
+{
+  "scope":"Principal interior only; original branch geometry declared before any point elevation was accessed. Never authorize a complete roof, tab, walls or alignment with game Y.",
+  "absoluteNativeDatum":"original unshifted orthometric CGVD2013",
+  "trainCohort":"author only: V/3 floor slabs 0,2,4 from authenticated XY/class preregistration",
+  "holdCohorts":"V/3 floor slabs 1 and 3, separately",
+  "weighting":"one median local position and median unfiltered native C6 first return height per accepted disjoint one metre local cell",
+  "families":["constant","plane","two-sided continuous ridge across U","bounded one-or-two hipped ends continuous with the two sides"],
+  "roofSlopeRangeMPerM":[0.18,1.60],
+  "ridgeUAtV0RangeM":[3.1,9.9],
+  "ridgeHorizontalSkewMax":0.12,
+  "absoluteHeightSearchM":[24,40],
+  "minimumAuthorCellsEachActiveFacet":7,
+  "heldMinCellsPerSlab":25,
+  "heldMinCellsEachRoofSidePerSlab":5,
+  "maxHeldAbsSignedMedianMPerSlab":0.12,
+  "maxHeldAbsP90MPerSlab":0.50,
+  "maxHeldAbsPooledP90M":0.36,
+  "minPooledP90BenefitOverTwoSimpleBaselinesM":0.20,
+  "forbidden":"No hidden Z-based row deletion, datum shift, footprint editing, use of reserved hold data in selection, plan widening, or replacement creation from this result."
+}

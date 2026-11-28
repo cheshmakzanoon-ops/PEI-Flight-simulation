@@ -1,0 +1,88 @@
+{
+  "scope": "No withheld values seen during fit, bounded interior not a complete roof.",
+  "shapeLockSHA256": "423ede3848958f0e6e98999e041307b0931e68f0e56c034e31d30f7dbc71c5c0",
+  "onlyAuthoredDataRead": true,
+  "authorDataSHA256": "0ed83c0b7d6c91f716f0eb2dbe959dc7b5a1afc5d7cb5027e8b41fe10a0a990d",
+  "allAuthorModels": [
+    {
+      "kind": "ridge",
+      "params": [
+        34.0362067332169,
+        6.074958593285753,
+        0.8114704843399467,
+        1.4232600924808014,
+        -0.010546159895394284
+      ],
+      "trainStats": {
+        "signedMedian": 0.04652936791823947,
+        "medianAbs": 0.424901018325027,
+        "p90Abs": 1.2916702689176351,
+        "maxAbs": 2.8366413126910928
+      },
+      "authorFacetCellCounts": [
+        19,
+        49
+      ],
+      "trainScore": 0.8116087185620703
+    },
+    {
+      "kind": "plane",
+      "params": [
+        38.463070021559695,
+        -0.9067697405285918,
+        -0.007726658864933473
+      ],
+      "trainStats": {
+        "signedMedian": -0.0931988453548449,
+        "medianAbs": 0.3002410039951968,
+        "p90Abs": 4.520393873404222,
+        "maxAbs": 7.398242933875114
+      },
+      "authorFacetCellCounts": [
+        68,
+        0,
+        0
+      ],
+      "trainScore": 2.008302151758807
+    },
+    {
+      "kind": "constant",
+      "params": [
+        30.961000000000002
+      ],
+      "trainStats": {
+        "signedMedian": 0.0,
+        "medianAbs": 1.8334999999999972,
+        "p90Abs": 5.858700000000003,
+        "maxAbs": 6.0440000000000005
+      },
+      "authorFacetCellCounts": [
+        68,
+        0,
+        0
+      ],
+      "trainScore": 3.44358
+    }
+  ],
+  "frozenCurvedCandidate": {
+    "kind": "ridge",
+    "params": [
+      34.0362067332169,
+      6.074958593285753,
+      0.8114704843399467,
+      1.4232600924808014,
+      -0.010546159895394284
+    ],
+    "trainStats": {
+      "signedMedian": 0.04652936791823947,
+      "medianAbs": 0.424901018325027,
+      "p90Abs": 1.2916702689176351,
+      "maxAbs": 2.8366413126910928
+    },
+    "authorFacetCellCounts": [
+      19,
+      49
+    ],
+    "trainScore": 0.8116087185620703
+  }
+}

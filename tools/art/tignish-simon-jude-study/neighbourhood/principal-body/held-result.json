@@ -1,0 +1,90 @@
+{
+  "status": "HOLD",
+  "holds": [
+    "held1 residual or coverage",
+    "held3 residual or coverage",
+    "pooled held P90"
+  ],
+  "pooledHeld": {
+    "signedMedian": 0.10871835707534316,
+    "medianAbs": 0.40193718747979545,
+    "p90Abs": 1.2679750226492057,
+    "maxAbs": 2.5200941257972787
+  },
+  "pooledBaseline": {
+    "constant": {
+      "signedMedian": -0.05749999999999744,
+      "medianAbs": 1.8064999999999962,
+      "p90Abs": 5.839700000000002,
+      "maxAbs": 6.047000000000001
+    },
+    "plane": {
+      "signedMedian": -0.07436328515928992,
+      "medianAbs": 0.3707783005150844,
+      "p90Abs": 4.991086227327985,
+      "maxAbs": 7.183063265760534
+    }
+  },
+  "perSlab": [
+    {
+      "slab": "held1",
+      "cells": 30,
+      "heldSideCounts": [
+        9,
+        21
+      ],
+      "candidate": {
+        "signedMedian": 0.14630316772517027,
+        "medianAbs": 0.38521334987272304,
+        "p90Abs": 1.2608861628451218,
+        "maxAbs": 2.5200941257972787
+      },
+      "baselines": {
+        "plane": {
+          "signedMedian": -0.09646966150378589,
+          "medianAbs": 0.35724243169601344,
+          "p90Abs": 5.0037612334380235,
+          "maxAbs": 7.183063265760534
+        },
+        "constant": {
+          "signedMedian": 0.028500000000002856,
+          "medianAbs": 1.449749999999998,
+          "p90Abs": 5.757200000000003,
+          "maxAbs": 6.020500000000002
+        }
+      }
+    },
+    {
+      "slab": "held3",
+      "cells": 29,
+      "heldSideCounts": [
+        8,
+        21
+      ],
+      "candidate": {
+        "signedMedian": 0.10853246615955214,
+        "medianAbs": 0.41810436741313595,
+        "p90Abs": 1.2514234995707205,
+        "maxAbs": 1.5739489656291603
+      },
+      "baselines": {
+        "plane": {
+          "signedMedian": -0.06826283413922951,
+          "medianAbs": 0.3984784132047139,
+          "p90Abs": 3.782783941089496,
+          "maxAbs": 5.24198496464275
+        },
+        "constant": {
+          "signedMedian": -0.06700000000000017,
+          "medianAbs": 1.8120000000000012,
+          "p90Abs": 5.847400000000001,
+          "maxAbs": 6.047000000000001
+        }
+      }
+    }
+  ],
+  "shapeLockSHA256": "423ede3848958f0e6e98999e041307b0931e68f0e56c034e31d30f7dbc71c5c0",
+  "modelSHA256": "32b47ff88ee26d55c0772a1875a7a31461916038520d242831c91fbfdc055e4a",
+  "nativeDatum": "same point acquisition, no horizontal or height offset",
+  "canBuildFullRoofOrWalls": false
+}

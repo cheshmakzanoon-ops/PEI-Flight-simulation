@@ -1,0 +1,41 @@
+{
+  "status": "independent handles match prereg count",
+  "noZAccess": true,
+  "ownerRing3979SHA256": "802a460a8f43b7d82b30854ff0f92bd8a32c561eeb0d4bf7391f03c091009686",
+  "planSHA256": "5d6bde4678294da1b4e94e3769ba4c449ddaee49b50c7da8ad6ef8f014b68087",
+  "origin": [
+    2284125.42481851,
+    338697.283264596
+  ],
+  "u": [
+    0.7924511384604974,
+    0.609935400802955
+  ],
+  "v": [
+    0.609935400802955,
+    -0.7924511384604974
+  ],
+  "cohorts": [
+    {
+      "cohort": "author",
+      "handles": 429,
+      "cells": 68,
+      "blocks": 14,
+      "canonicalRowsSHA256": "47607e19b883dab7d8cc7d1391d169667f0c114287dcee602a2e5bffa120a7d5"
+    },
+    {
+      "cohort": "held1",
+      "handles": 220,
+      "cells": 30,
+      "blocks": 5,
+      "canonicalRowsSHA256": "eded9abf6ee0ec6059df760709313879fd9f81d2e747812cf37a672605f2a652"
+    },
+    {
+      "cohort": "held3",
+      "handles": 200,
+      "cells": 29,
+      "blocks": 5,
+      "canonicalRowsSHA256": "877e377f0e9e96dfa2a4aa24cba49b45e3084898a66b9cfadcb61da4c10545b7"
+    }
+  ]
+}

@@ -63,3 +63,7 @@ they are not photo pixels or a source TIFF. Original outlines use
 [NRCan Automatically Extracted Buildings](https://open.canada.ca/data/en/dataset/7a5cda52-c7df-427f-9ced-26f19a8a64d6).
 Contains information licensed under the
 [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada).
+
+A [separate raw-point test](principal-body/README.md) asks whether a
+simple ridge fits just the principal interior of /84. Both spatially
+held slabs fail. That result does not change the existing cap or walls.

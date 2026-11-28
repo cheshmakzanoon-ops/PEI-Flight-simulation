@@ -1,0 +1,17 @@
+{
+ "scope":"Tignish q221232/84 only; geometry branch principal interior, never a complete cap, apron, main wall, contact or roof end proof",
+ "signedTile":[3765681,13660,"e463fe9b6df51d4d8ca540dc3074496fbee609a680a206e7b5ce0f5fbf9ecb8d"],
+ "nativeCOPC":"09eda22dfaf066c630c39d268007f97fbc5ba6e962c93e35b71c800d7590b686",
+ "principal":[2,3,4,5,6],
+ "originRingIndex":2,
+ "uDirectionTowardRingIndex":3,
+ "vDirectionTowardRingIndex":4,
+ "minInboardM":0.710002,
+ "blocksM":3,
+ "authorSlabs":[0,2,4],
+ "heldSlabs":[1,3],
+ "localCellsM":1,
+ "minEligibleFirstsPerLocalCell":2,
+ "expectedIndependentWitnessCounts":[429,220,200],
+ "note":"Geometry-only preflight; ceiling model families and validation thresholds require a separate pre-Z lock. Source survey dated, not current condition."
+}
