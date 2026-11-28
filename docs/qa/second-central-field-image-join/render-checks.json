@@ -1,0 +1,137 @@
+{
+  "device": "Chromium headless using SwiftShader, 840 × 540; no player hardware performance claim",
+  "fixed": {
+    "edge-13-12e": {
+      "edge": "13-12 / 14-12",
+      "heightAGL": 44,
+      "pixels": {
+        "changed": 23826,
+        "over2": 17181,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 64013
+      },
+      "render": {
+        "draws": 39,
+        "tris": 351520
+      },
+      "alphaChanges": 0,
+      "exactRollback": true,
+      "sourceUpload": {
+        "edge": "13-12 / 14-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "images": {
+        "stock": "5164b356f7180e7801f8dca5df2ff1a7669bd0e7b249ef7170d163200044c4ef",
+        "joined": "fb3ad9865f22c40f1680a5c0ef21a28bea9f9d4b359c6d0822986e54f6b793d1"
+      },
+      "stockSkyPixels": 0,
+      "edgeContrast": {
+        "samples": 74,
+        "medianOld": 19.646904945373535,
+        "medianArt": 2.2775779962539673,
+        "oldP90": 27.52693614959717,
+        "artP90": 5.6982882022857675
+      }
+    },
+    "edge-13-12e-reciprocal": {
+      "edge": "13-12 / 14-12",
+      "heightAGL": 38,
+      "pixels": {
+        "changed": 31581,
+        "over2": 20924,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 85008
+      },
+      "render": {
+        "draws": 73,
+        "tris": 364923
+      },
+      "alphaChanges": 0,
+      "exactRollback": true,
+      "sourceUpload": {
+        "edge": "13-12 / 14-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "images": {
+        "stock": "44ce301b69c7ab47f4a538e9976f886fbbf6bb298dc9600c4cf0bc8bf2abd04d",
+        "joined": "8508b04a08e3e0feef4527ad23dfad02691fb4c963bfbbb986747b5f158dedd1"
+      },
+      "stockSkyPixels": 0,
+      "edgeContrast": {
+        "samples": 68,
+        "medianOld": 20.58097267150879,
+        "medianArt": 2.4955867528915405,
+        "oldP90": 27.747358322143555,
+        "artP90": 5.466300439834597
+      }
+    },
+    "edge-13-12e-high": {
+      "edge": "13-12 / 14-12",
+      "heightAGL": 550,
+      "pixels": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "render": {
+        "draws": 21,
+        "tris": 340832
+      },
+      "alphaChanges": 0,
+      "exactRollback": true,
+      "sourceUpload": {
+        "edge": "13-12 / 14-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "images": {
+        "stock": "6d21f53b3deab966a20aeaaf43b59ddda85ee77b9a1e8fc2e8bae190870477e5",
+        "joined": "6d21f53b3deab966a20aeaaf43b59ddda85ee77b9a1e8fc2e8bae190870477e5"
+      }
+    },
+    "edge-13-12e-outside": {
+      "edge": "13-12 / 14-12",
+      "heightAGL": 17,
+      "pixels": {
+        "changed": 0,
+        "over2": 0,
+        "outside": 0,
+        "outsideExact": 0,
+        "mask": 0
+      },
+      "render": {
+        "draws": 16,
+        "tris": 313326
+      },
+      "alphaChanges": 0,
+      "exactRollback": true,
+      "sourceUpload": {
+        "edge": "13-12 / 14-12",
+        "resident": true,
+        "gain": 1,
+        "bytes": 10240,
+        "uploads": 1,
+        "errors": 0
+      },
+      "images": {
+        "stock": "c7d9ff4d6d904fa67d67ce46f63c6f03875ab68aad99100359e33591cf10ea26",
+        "joined": "c7d9ff4d6d904fa67d67ce46f63c6f03875ab68aad99100359e33591cf10ea26"
+      }
+    }
+  }
+}

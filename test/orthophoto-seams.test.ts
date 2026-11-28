@@ -138,7 +138,7 @@ test('constrained inland windows retain separate source cohorts, historical owne
  const all=new Set(standard.diagnostics().flatMap(p=>p.edge.split(' / ')));
  const ink=['edge-12-16e','edge-22-13s','edge-13-15e'];
  const westExtra=["edge-9-10e", "edge-1-7e"];
- const next=["edge-17-14s","edge-9-13s","edge-6-10s","edge-12-14s"];
+ const next=["edge-17-14s","edge-9-13s","edge-6-10s","edge-12-14s","edge-13-12e"];
  const added=[...westExtra,...next];
  assert.deepEqual(ids.slice(-3-added.length,-added.length),ink);
  assert.deepEqual(ids.slice(-added.length),added);

@@ -78,6 +78,7 @@ ADDITIONAL=[
  ('edge-22-13s',22,13,'z',73,107,None),
  ('edge-13-15e',13,15,'x',310,344,None),
  ('edge-12-14s',12,14,'z',43,80,None),
+ ('edge-13-12e',13,12,'x',602,563,None),
 ]
 EXACT_EDGE_VIEWS=set()
 for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:

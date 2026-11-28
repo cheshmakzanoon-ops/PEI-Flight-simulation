@@ -27,6 +27,7 @@ window [already corrected in Standard](inland-aerial-joins.md).
 - [Another west and east field pair with moving Chase checks](outer-field-aerial-joins.md)
 - [An independently checked oblique flight across an eastern field join](eastern-interior-image-join.md)
 - [A further central field join verified from normal moving Chase](central-field-image-join.md)
+- [A second central strip verified on a longer normal Chase approach](second-central-field-image-join.md)
 - [Committed source attribution](../WORLD.md)
 
 To reproduce with Python, NumPy and Pillow from a clean checkout:

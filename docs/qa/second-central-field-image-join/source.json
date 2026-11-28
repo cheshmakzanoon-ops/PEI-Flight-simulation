@@ -1,0 +1,43 @@
+{
+  "atlas": "a92bad71e77dfb72cf02c7e4934543a86f9ac528f0cee057ddcdb16c724e1207",
+  "decodedCover": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+  "windows": [
+    {
+      "name": "edge-13-12e",
+      "axis": "x",
+      "owners": [
+        "13-12",
+        "14-12"
+      ],
+      "window": [
+        592,
+        594,
+        610,
+        612
+      ],
+      "donorWireSHA256": [
+        "1f84b9483d3a6897cf64eab5b4a89eb6f858e2f621da0ad0ba3bbf24c83a6b17",
+        "f660a9edb0ba10789679b52fd8e3e4cfbf798fdbf65ad931093612dfd8d521f7"
+      ],
+      "exactSourceRGBSHA256": "b249d96065d85ce46f412040f2ab41bab66357ba1f11dca1658234e098741307",
+      "coverBox": [
+        1791,
+        1597,
+        2,
+        6
+      ],
+      "classes": [
+        30
+      ],
+      "minimumCoverCode": 255,
+      "medianNativeStep": 35.18,
+      "medianInnerNeighbourStep": 14.609,
+      "filteredDonorAlongSpan": [
+        591,
+        613
+      ],
+      "filteredDonorRGBSHA256": "78a5392886c23bc3202219aa99c1ca7e4cb56104bf978d2535729698b2c89d91"
+    }
+  ],
+  "scope": "Original source only; no added ground truth or aerial resolution."
+}
