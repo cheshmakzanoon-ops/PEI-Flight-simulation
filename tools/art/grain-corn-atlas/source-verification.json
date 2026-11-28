@@ -1,0 +1,20 @@
+{
+  "status": "Verified source atlas only, no moving view, terrain or runtime",
+  "sourceLayers": 16,
+  "nativeSamples": 4,
+  "levels": [
+    256,
+    128,
+    64,
+    32,
+    16,
+    8,
+    4
+  ],
+  "matchedPairedFiles": 112,
+  "totalRGBAandRGBytes": 8388096,
+  "minimumBaseBorderPx": 23,
+  "rawMipRounding": "nearest even using independent integer block sums",
+  "colourReceiptSHA256": "9c1a3520e63ecbfddae23bd56a67a034b584e638a2ba54945db40cbc21886c42",
+  "depthReceiptSHA256": "f7b1a09ff7e6ba298e8fbe14747a13a7edea8ba1bba5bc190645c252523dd032"
+}

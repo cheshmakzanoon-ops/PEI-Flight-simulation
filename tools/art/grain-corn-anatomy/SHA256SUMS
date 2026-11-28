@@ -9,5 +9,5 @@ b587a5fe9a0aa36fa2f4cfed956fdfbbab40e3c96c0b82fe3f4e4820701e3656  ./egl_support.
 59597be4b2220792e4895040f47bed9b08e8326d3d073d2b995fbf417ac54b38  ./plates/receipt.json
 6111fc92c573c536d1a9c7e1e7911d133d81461d4206d3da03e8ca220eee49b3  ./plates/sheath-and-sail.webp
 39a4d17d376b4db0adcd118e41ee204544c4828ca9ce22cb46aeb19a1d1ee82b  ./render-packet.mjs
-cf7cd6ffa4937dc0f8595c0179d8129abdfbbcbb205e183bc10db16c977513de  ./studio.py
+9b9e5dc6de89b8eec7c42d14112f6a11155d7ac9f088d995f08fbc8b42564286  ./studio.py
 717c56075b522edcac071c73ba4ec07e18911a9182e4bf178edb317f503fe1b1  ./tsconfig.json

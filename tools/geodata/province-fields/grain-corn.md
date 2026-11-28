@@ -49,3 +49,8 @@ The [detached maize anatomy model](../../art/grain-corn-anatomy/)
 provides original blades, sheaths, stems and tassels for future canopy
 work. Its close 4× plates are studio renders; the long-range appearance
 is not approved and the model is not placed in the simulator.
+
+A separate [offline canopy atlas bake](../../art/grain-corn-atlas/)
+turns two authored stands into verified linear colour, coverage, and
+associated depth pages. It is an art source tool, not an enabled
+flight-distance renderer or a change to the real field.

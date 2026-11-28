@@ -51,7 +51,9 @@ def packet(dataPack):
   out[name]=(M,v,geo['index']['count'])
  return out
 assert set(J['geo'])=={'near','near-single'} and set(J['floors'])=={'near'},'near geometry only'
-assert sorted((c['kind'],c['samples']) for c in J['views'])==[('near',4),('near-single',4)],'two locked near views only'
+assert [W,H]==[1200,760],'locked native canvas only'
+assert sorted((c['name'],c['kind'],c['samples']) for c in J['views'])==[
+ ('leaf-architecture','near',4),('sheath-and-sail','near-single',4)],'two locked near views only'
 subject=packet(J['geo']);floors=packet(J['floors'])
 enable(0x0b71)
 for mode in (0x0b44,0x0be2,0x0bd0,0x809e,0x0c11):disable(mode)
