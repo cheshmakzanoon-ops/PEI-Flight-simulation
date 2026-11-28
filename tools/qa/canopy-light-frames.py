@@ -10,19 +10,20 @@ fixed=importlib.util.module_from_spec(sp);sp.loader.exec_module(fixed)
 prep=fixed.stage
 def stage(repo,tmp,deps,_):
  prep(repo,tmp,deps,False)
- p=tmp/'src/render/vegetation.ts';s=p.read_text()
+ p=tmp/'src/render/stock-crown-program.ts';s=p.read_text()
  a="const daylightFragment='varying vec3 cardSun;\\n'+crownF.replace"
  assert s.count(a)==1
  s=s.replace(a,"const daylightFragment='uniform float qaCrownMode; varying vec3 cardSun;\\n'+crownF.replace")
  a='gl_FragColor=vec4(lit,'
  assert s.count(a)==1
  s=s.replace(a,"gl_FragColor=vec4(qaCrownMode>1.5?vec3(1.,0.,1.):mix(c*param.z,lit,qaCrownMode),")
- s=s.replace('...(canopySun?{canopySun:{value:canopySun}}:{})','...(canopySun?{canopySun:{value:canopySun},qaCrownMode:{value:1}}:{})')
  p.write_text(s)
+ p=tmp/'src/render/vegetation.ts'
+ p.write_text(fixed.once(p.read_text(),'...(canopySun?{canopySun:{value:canopySun}}:{})',
+  '...(canopySun?{canopySun:{value:canopySun},qaCrownMode:{value:1}}:{})'))
  p=tmp/'src/main.ts'
  s=p.read_text()
- anchor='  renderer.render(scene,camera);'
- p.write_text(fixed.once(s,anchor,anchor+'''
+ p.write_text(fixed.after_world_paint(s,'''
   (window as any).canopyFrame=()=>{
    const mesh=scene.getObjectByName('Mixed woodland canopies') as THREE.Mesh;
    const material=mesh.material as THREE.ShaderMaterial,u=material.uniforms.qaCrownMode;

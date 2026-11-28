@@ -3,12 +3,15 @@ import A from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import * as T from 'three';
+import {pars as stockCanopyPars} from '../../src/render/stock-crown-program.ts';
 import {prepareStMarysShadowPreflight} from '../../src/render/indian-river/st-marys-shadow-preflight.ts';
 import {ST_MARYS_SLOT_ATTRIBUTE as KEY,ST_MARYS_STEM_XZ,StMarysShadows,buildStMarysReceivers,
  stockShadowFootprint} from '../../src/render/indian-river/st-marys-shadows.ts';
 const raw=readFileSync(new URL('../../src/render/vegetation.ts',import.meta.url),'utf8');
 const literal=k=>raw.match(new RegExp('const '+k+'=(?:pars\\+)?(`[^`]*`);','m'))[1].slice(1,-1);
-const v=literal('pars')+literal('shadowV'),f=literal('shadowF');
+const v=stockCanopyPars+literal('shadowV'),f=literal('shadowF');
+A.equal(createHash('sha256').update(v).digest('hex'),'1f0a1ec8670b21e67d24f6847bfa427b25ea0f0dbdeefb17a0f79afafad8f481');
+A.equal(createHash('sha256').update(f).digest('hex'),'db2362b1e5d3b32f487bd66f0dc30ad0755845b6d3188f35af80d3e43a93b293');
 const sha=a=>createHash('sha256').update(new Uint8Array(a.buffer,a.byteOffset,a.byteLength)).digest('hex');
 const stamp=a=>Object.fromEntries(Object.entries(a.attributes).map(([k,v])=>[k,sha(v.array)]));
 const gradeId='st-marys-2020-grade-study',capacity=45000;
