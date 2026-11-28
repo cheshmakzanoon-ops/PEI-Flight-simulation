@@ -1,0 +1,43 @@
+{
+  "scope": "Detached future-inspection screen. No elevation smoothing, emitter or shoreline approval.",
+  "minimumNativeM": 16.0,
+  "maximumRiseOverOneNativeM": 0.3,
+  "full1mNeighbourRingRequired": true,
+  "audit185Again": 185,
+  "verifiedSourceAndOldCoastFromPriorProbe": true,
+  "allUnambiguousClass30EligibleBeforeLowSlope": 11759,
+  "lowSlopeTotal": 9890,
+  "lowSlopeWithinMotivatingAudit185": 53,
+  "wholeComponentCounts": [
+    9890
+  ],
+  "majorComponents": [
+    {
+      "cells": 9890,
+      "signedStockCoastLowerM": 8.001880576054637,
+      "slopeMax": 0.2959772796750277,
+      "bboxXZ": [
+        -23519.73640067948,
+        -3834.682994215405,
+        -23420.217298675525,
+        -3556.4008868633923
+      ],
+      "interceptsAudit185": 53,
+      "exactTieProspects": 0,
+      "boundaryEdges": 1078,
+      "stockFacetSlopeUpper": 0.38256833267193974,
+      "oneNativeEdgePlanLengthCeilingM": 0.990344266667893,
+      "minimumContinuousSourceMinusOldAlongBoundaryM": 2.354506460687395,
+      "isolatedEntireLockedScope": false,
+      "boundaryDeltaPct": [
+        2.543944,
+        4.903686,
+        8.225355,
+        11.087725,
+        13.063744
+      ],
+      "areaHasPositiveShiftM": true
+    }
+  ],
+  "release": "HOLD: no same-plane closure or shaded coast change."
+}

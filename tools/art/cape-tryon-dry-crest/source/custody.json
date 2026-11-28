@@ -1,0 +1,101 @@
+{
+  "publicOrigin": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+  "sourceObjectBytes": 34973844421,
+  "exactHeaderETag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+  "firstProbeBytesAccountedSeparately": 8192,
+  "consumedBytes": 1788311,
+  "maxBytes": 6291456,
+  "ranges": [
+    {
+      "kind": "head/primary IFD/GeoKeys",
+      "at": 0,
+      "n": 8192,
+      "contentRange": "bytes 0-8191/34973844421",
+      "sha256": "cc460f169f0da291f44141df45e2ddda8098bdfa66db86f95895ef992f28fdd5"
+    },
+    {
+      "kind": "selected native LZW offsets",
+      "at": 331912,
+      "n": 16,
+      "contentRange": "bytes 331912-331927/34973844421",
+      "sha256": "50f43c62a612716d68d40e4de3fc6e2488aeb1fc33b4c7a2ab70d5548f99d0b2"
+    },
+    {
+      "kind": "selected native LZW byte counts",
+      "at": 825364,
+      "n": 8,
+      "contentRange": "bytes 825364-825371/34973844421",
+      "sha256": "f8b389ba0bdc37965c63f20067b584ec6b5e5bf293249f63fd9985c2a207cc21"
+    },
+    {
+      "kind": "selected native LZW offsets",
+      "at": 335000,
+      "n": 16,
+      "contentRange": "bytes 335000-335015/34973844421",
+      "sha256": "83d755f5f94b63e7e75f2f0b39b637c3c1d2340816dee050ebb8f3eefdfcc268"
+    },
+    {
+      "kind": "selected native LZW byte counts",
+      "at": 826908,
+      "n": 8,
+      "contentRange": "bytes 826908-826915/34973844421",
+      "sha256": "6aa5cf65a0a35d4fec8d72d99aac013991e3b4c669d6e4930785676d93454349"
+    },
+    {
+      "kind": "native_1m_tile_41073",
+      "at": 17312787044,
+      "n": 59005,
+      "contentRange": "bytes 17312787044-17312846048/34973844421",
+      "sha256": "187dd7a67b9c9322190c35161716cd8ac686a24de6d9d070d7a5aa2f1b48f18c"
+    },
+    {
+      "kind": "native_1m_tile_41074",
+      "at": 17312846057,
+      "n": 3994,
+      "contentRange": "bytes 17312846057-17312850050/34973844421",
+      "sha256": "c0b01233a109bddc948810c9a3bd50bdc903ddcbd56b636ae05c39785b1a3301"
+    },
+    {
+      "kind": "native_1m_tile_41459",
+      "at": 17546734487,
+      "n": 1063208,
+      "contentRange": "bytes 17546734487-17547797694/34973844421",
+      "sha256": "ecec0f7bc42c7cc3a624f3973ca221e3a1e8954e51bf0e9af1b42e7d48229fde"
+    },
+    {
+      "kind": "native_1m_tile_41460",
+      "at": 17547797703,
+      "n": 645672,
+      "contentRange": "bytes 17547797703-17548443374/34973844421",
+      "sha256": "1d00b297aa814c19fa50a48f9ad5e3b95f35c62ef0dedcbb14392ca4eb82a767"
+    }
+  ],
+  "nativeFullMipIDs": [
+    41073,
+    41074,
+    41459,
+    41460
+  ],
+  "chipXYWH": [
+    80509,
+    54659,
+    516,
+    448
+  ],
+  "crs": 3979,
+  "nativeGrid": [
+    2261621,
+    1,
+    0,
+    371370,
+    0,
+    -1
+  ],
+  "nodata": -32767,
+  "verticalDatum": "CGVD2013 orthometric (published product; not a water datum)",
+  "chipSHA256": "e25dd8e9ce83d801828c560d71804903069b2071088c11381d35c7d6bcd191c2",
+  "chipBytes": 924672,
+  "nativeExact": true,
+  "realTilesNoOverviewOrWarp": true,
+  "scope": "Numeric source only. No current material, wet line, survey of flight terrain, visual art or operation inferred."
+}

@@ -1,0 +1,91 @@
+{
+  "scope": "Dry-only feasibility from authenticated native 2020 ground. No modern coastline, peer edit, geometry mount or grade claim.",
+  "sourceReceiptSHA": "dc17b67ba543d01874aa3d320923d0d84547565d6d419fd2948412863125bceb",
+  "stockPacketSHA": "0beb9254c9636e8a3d19ec37819d079b2367a98c132824057fb273b7931bc5fc",
+  "q461AuditBitwiseLogical": true,
+  "auditMaxPackedMeshError": 2.109879417488969e-05,
+  "auditMaxCoverError": 1.0928147275990341e-11,
+  "coverTexelMetres": [
+    47.60180338623522,
+    47.40693277739291
+  ],
+  "inspectionBox": [
+    -23519.750392,
+    -3852.389037,
+    -23399.750392,
+    -3556.389037
+  ],
+  "minSource": 16.0,
+  "strictOldCoverReserveM": 8.0,
+  "xzF32ConservativeMarginM": 0.004,
+  "wholeOriginalCoastance": "replayed logical old positive+negative exact RG bilinear cover; no source-based classification, no actual top depth claim",
+  "admits": {
+    "0": 13317,
+    "2": 13280,
+    "4": 13167,
+    "6": 13013,
+    "8": 12831,
+    "10": 12572,
+    "12": 12204,
+    "16": 11276,
+    "20": 10238,
+    "25": 8743
+  },
+  "componentSizes": [
+    12831
+  ],
+  "coastReservePct": [
+    8.001881,
+    14.862847,
+    32.021422,
+    47.645714,
+    72.066555
+  ],
+  "sourceOrdinatePct": [
+    16.009691,
+    19.968081,
+    27.838552,
+    31.271328,
+    32.117756
+  ],
+  "actualSourceShiftFromStockM": [
+    -6.702568,
+    4.759677,
+    7.586489,
+    10.135336,
+    13.814051
+  ],
+  "largestTrue1mTriSlopePct": [
+    0.002039,
+    0.036809,
+    0.085192,
+    0.453883,
+    12.600432
+  ],
+  "materialClassesAllPossibleCornerSupport": {
+    "0": 101,
+    "30": 12096,
+    "40": 843,
+    "80": 128
+  },
+  "sourceHighCellAnyStockWetWithinInspection": 0,
+  "samePlaneAttachment": {
+    "edgeCount": 1072,
+    "endpointsWithin20cm": 14,
+    "edgesWithAnyEndpointOutside20cm": 1072,
+    "relativeEndpointPct": [
+      -6.702568,
+      2.331014,
+      6.127939,
+      9.982076,
+      13.814051
+    ],
+    "whollySupportedAgreeing1mCells": 0,
+    "whyComponentStops": {
+      "native nodata or below 16": 454,
+      "protected old coast buffer": 93,
+      "fixed audit boundary": 525
+    },
+    "siteJoinQualified": false
+  }
+}
