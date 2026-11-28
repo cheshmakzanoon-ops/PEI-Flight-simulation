@@ -1,0 +1,84 @@
+{
+  "scope": "Local detached workbench only; no player/main runtime modification.",
+  "build": "d8c62c1d9ebfc34502fbaa806ab4303e071df7aedc83983d06c19589f5af425f",
+  "source": "6ff527f5e9760ea8ccab295dd7a317c6d89593f4e505c4e0b0fe81571a643768",
+  "cases": [
+    {
+      "screen": "desktop",
+      "views": [
+        {
+          "preset": "river",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "e50901d362ff7567f76af6dfe87ea5c18407197cee357b5956c8287bd742a0d6"
+        },
+        {
+          "preset": "gable",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "82ed533bd1a38ed4653ec54897d5363c80dbd56a4644b04ce06c109977a54ff7"
+        },
+        {
+          "preset": "approach",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "7c141f908468f8920cfad86e6b0db193c29d9ecf348426890998fd938c1d8bfa"
+        },
+        {
+          "preset": "flyover",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "2d086ac64295468c3368f4f778983c4e092c6c22559aad26b14744911ec662fe"
+        }
+      ]
+    },
+    {
+      "screen": "compact",
+      "views": [
+        {
+          "preset": "river",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "9b4bb287244b36610c5e31511fe289f5cbe8a7486003522dece5a8ae953c2987"
+        },
+        {
+          "preset": "gable",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "3e71aabfd45def10aae53097d43bfdb5fd8d2c8778d104e62a8278968903f3fe"
+        },
+        {
+          "preset": "approach",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "f24ba6749d4e982e51c4ac24284e31201d01ef51730eab50c9691229ffa61d00"
+        },
+        {
+          "preset": "flyover",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "ffc4730c2ce49c2c7c9804b3d572ae921f41be94fff1ac325ef0b7a59d6ce755"
+        }
+      ]
+    }
+  ],
+  "outside": [],
+  "errors": [],
+  "pass": true
+}

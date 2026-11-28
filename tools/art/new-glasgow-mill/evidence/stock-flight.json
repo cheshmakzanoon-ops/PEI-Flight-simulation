@@ -1,0 +1,56 @@
+{
+  "nativeReceiptSHA256": "c01f161beb4a3e400afa3cf5fcb431e0e633df893548045d9c049a67fbea11a5",
+  "frozenMatrices": true,
+  "sourceRows": [
+    7
+  ],
+  "windows": [
+    {
+      "distanceM": 209.3031104082363,
+      "sameStockArraysAllFrames": true,
+      "wholePixelSupport": 1802,
+      "maxHomogeneousW": 340.64813971606054,
+      "baseRoof": 18.69651985168457,
+      "pairedFinalRgbPixels": 1554,
+      "pureRolePixels": {
+        "7-roof": 223,
+        "7-walls": 1216
+      },
+      "neutralAndRestoreIdentical": true,
+      "alphaChangedPixels": 0,
+      "outsideConservativeProjection": 0
+    },
+    {
+      "distanceM": 365.81539018292654,
+      "sameStockArraysAllFrames": true,
+      "wholePixelSupport": 8224,
+      "maxHomogeneousW": 185.14277879021392,
+      "baseRoof": 18.69651985168457,
+      "pairedFinalRgbPixels": 7472,
+      "pureRolePixels": {
+        "7-roof": 1712,
+        "7-walls": 5515
+      },
+      "neutralAndRestoreIdentical": true,
+      "alphaChangedPixels": 0,
+      "outsideConservativeProjection": 0
+    },
+    {
+      "distanceM": 971.7826374062846,
+      "sameStockArraysAllFrames": true,
+      "wholePixelSupport": 0,
+      "maxHomogeneousW": -416.9718050153492,
+      "baseRoof": 18.69651985168457,
+      "pairedFinalRgbPixels": 0,
+      "pureRolePixels": {
+        "7-roof": 0,
+        "7-walls": 0
+      },
+      "neutralAndRestoreIdentical": true,
+      "alphaChangedPixels": 0,
+      "outsideConservativeProjection": 0
+    }
+  ],
+  "terminalNativePass": true,
+  "pass": true
+}

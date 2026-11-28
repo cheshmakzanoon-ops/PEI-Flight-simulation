@@ -1,0 +1,34 @@
+{
+  "scope": "Independent horizontal pins for a detached model. No vertical claim, donor image or published survey image/geometry.",
+  "historicRegister": "https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=24141&pid=0",
+  "civicPoint": 37050,
+  "provinceFootprintFeature": 61029,
+  "provinceFootprintDate": null,
+  "publishedFootprintGeometrySHA256": "4fc2fa2ab20f83544db51970c2fe1b4356a4cd24325cff7145976d03ce4f1afe",
+  "stockTile": "q03310",
+  "stockRow": 7,
+  "stockRangeSHA256": "5ddee83dce2ad6915fcb83feb98328a174d458fbc0b88761914f44a316c63d15",
+  "intersectionOverUnion": 0.890942563904178,
+  "nativeFootprintAreaM2": 244.58015863224864,
+  "independentFootprintAreaM2": 269.2325015440583,
+  "stockOverlapAreaM2": 242.0896211034269,
+  "datedHeightPairProvenanceSHA256": "11fbf6e1917d0dc15204fc156f5c58397d93a1d54abacab6afaffd05f6a06f7f",
+  "datedHeightPairOpened": false,
+  "datedHeightPairPlannedWindow": [
+    98054,
+    61369,
+    58,
+    59
+  ],
+  "geometryOnlyRoofCapacity": {
+    "aSamples": 48,
+    "hSamples": 49,
+    "aBlocks": 8,
+    "hBlocks": 9,
+    "testedRidgePlans": 8,
+    "eligibleRidgePlans": 0
+  },
+  "authoredMeshSHA256": "6ff527f5e9760ea8ccab295dd7a317c6d89593f4e505c4e0b0fe81571a643768",
+  "detachedFramesReceiptSHA256": "0502ff3e0adce09ffb83946673923e23cd855c42409240964862404f61cad08e",
+  "standaloneApparentScaleReceiptSHA256": "fac7ec79ffaabc3b59e8413eea5de3f00987c5ea130c8b2c3315cb8b42bbb296"
+}
