@@ -60,3 +60,7 @@ can double edges. Do not use these pages without a captured comparison
 to original held-out views, a moving-camera comparison at native pixel
 scale, and local ownership, shadow, draw and cost checks in the player.
 This workbench does not replace the standard game material or field data.
+
+The [small-footprint foliage workbench](../grain-corn-far-proof/)
+tests a separate low-angle page set and genuine detached shader motion.
+That verification is still not a gameplay release.

@@ -1,0 +1,71 @@
+{
+  "scope": "Detached far-only original source synthesis. No game texture, land placement, active flight, shading or runtime performance claim.",
+  "matrix": "Two original weathered clusters, actual source 4x Mesa, linked Three.js r187 transport",
+  "angularPages": 144,
+  "standVariants": 2,
+  "linearAssociatedUploadBytes": 783360,
+  "sourcePageMipExtents": [
+    32,
+    16,
+    8,
+    4
+  ],
+  "angular": {
+    "viewCount": 10,
+    "results": {
+      "16": {
+        "minMaxMass": [
+          0.9936388888888888,
+          1.0108502605113294
+        ],
+        "relativeSymmetricAlphaErrorVsBetterSameViewControl": 0.31430648121838956,
+        "maxDualBackgroundDisplayLumaP90": 6.344898662858437,
+        "maxConservativeIslandAlpha": 0.0,
+        "maxMissingCore": 0.0
+      },
+      "32": {
+        "minMaxMass": [
+          0.9931375876895225,
+          1.0120299940737516
+        ],
+        "relativeSymmetricAlphaErrorVsBetterSameViewControl": 0.44148142114386235,
+        "maxDualBackgroundDisplayLumaP90": 13.573416969777403,
+        "maxConservativeIslandAlpha": 8.696537678207775e-05,
+        "maxMissingCore": 0.0
+      }
+    },
+    "rawSummarySHA256": "4f6d6929a7f1f5b4b5497cce89f6ea87fd1408615c35aa45dbb4c4db54675e63"
+  },
+  "motion": {
+    "linkedFrames": 120,
+    "results": {
+      "20": {
+        "frames": 60,
+        "phasePairs": 56,
+        "nativeMassMinMax": [
+          0.9830570331664162,
+          1.0386264728253072
+        ],
+        "maxBrightP90": 8.998205664665175,
+        "maxDarkP90": 5.978408978885903,
+        "phaseMedianRelativeRMS": 0.5910527319898743,
+        "phaseMaxRelativeRMS": 0.8013453894800369,
+        "phaseMaxResidualCodes": 7.162575567910928
+      },
+      "23": {
+        "frames": 60,
+        "phasePairs": 56,
+        "nativeMassMinMax": [
+          0.983242298057151,
+          1.0304243563455149
+        ],
+        "maxBrightP90": 11.633880234215471,
+        "maxDarkP90": 7.502704656440585,
+        "phaseMedianRelativeRMS": 0.5389933074965034,
+        "phaseMaxRelativeRMS": 0.6839722823049068,
+        "phaseMaxResidualCodes": 8.040196718946385
+      }
+    },
+    "rawSummarySHA256": "e116bb4768cd8537ed77f74c3d72fd2338065852ece4abe23dbbc8a4e25f27f6"
+  }
+}

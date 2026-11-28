@@ -1,0 +1,11 @@
+{
+  "scope": "Detached dense low-angle source atlas, fit only for less than 24px authentic footprint and 10–19° evidence in a future externally verified local flight.",
+  "elevations": [10,14.5,19],
+  "yawCount": 24,
+  "orthographicSpanM": 5.2,
+  "pageBase": 32,
+  "wholeClusterVariants": 2,
+  "mips": [32,16,8,4],
+  "holdout": [[7.4,11.6],[96.8,13.2],[186.2,15.3],[278.7,17.6],[359.1,14.1]],
+  "gates": "No on-map/scenery change. Same independent 32/16 gates as previous route-aware physical study; angular or per-case bright/luma mass not fitted. Bare adjacent associated blend is tested before applying any reprojection or automatic lighting."
+}

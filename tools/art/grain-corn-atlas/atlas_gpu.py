@@ -19,14 +19,16 @@ def level_words(floating):
     return np.asarray(np.clip(np.rint(floating), 0, 255), dtype=np.uint8)
 
 
-def open_capture(J):
+def open_capture(J, expected=None):
     if list(J["frame"]) != [256, 256] or J["three"] != "187":
         raise ValueError("unexpected locked canvas or Three.js version")
     W, H = J["frame"]
     if set(J["renderedOriginalGeometry"]) != {"variant-0", "variant-1"}:
         raise ValueError("exactly two independent cluster geometries are expected")
     gaze = [(c["variant"], c["elevation"], c["az"], c["orthographicSpanM"]) for c in J["cams"]]
-    expected = [(f"variant-{i}", e, a, 5.2) for i in range(2) for e in (25,64) for a in (19,109,199,289)]
+    if expected is None:
+        expected = [(f"variant-{i}", e, a, 5.2) for i in range(2)
+                    for e in (25,64) for a in (19,109,199,289)]
     if gaze != expected:
         raise ValueError("the atlas angle or source projection docket changed")
     R = program(J["shader"])

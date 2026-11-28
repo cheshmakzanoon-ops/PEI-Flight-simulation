@@ -1,0 +1,7 @@
+{
+ "scope":"Detached GPU linear associated texture transport only. Actual two roots occupy no more than 23 device pixels each. No world/focus/alpha-ownership or real game use claim.",
+ "frame":[160,112],"samples":4,
+ "spans":[20,23],"framesPerSweep":15,
+ "sweeps":[{"name":"periodic-yaw-seam","az":[348.4,371.6],"elev":[12.3,14.8]},{"name":"inclination-and-native-edge","az":[118.1,142.8],"elev":[17.1,11.5]}],
+ "requirements":"No atlas angle, position, or mip fitting from the moving truth; align both geometry and candidate to the same native physical extent/centre. Record whole RGB/A and inside/outside. Seek documented stable mass, angular continuity, no visible non-root/ghost or region bleed, and phase change not higher than actual old geometry. Handoff still needs perspective field tests."
+}
