@@ -139,7 +139,7 @@ import { EngineSound } from './app/sound.ts';
 import { UI, bootUI, loadMsg, failUI } from './app/ui.ts';
 import {windmillOmegaRadS} from './sim/windmilling.ts';
 import { spawn, step, setEngineOut, FIXED_STEP } from './sim/flight.ts';
-import { KINGS_MAPPED_FARMLAND_DEPARTURE, PRINCE_MAPPED_FARMLAND_DEPARTURE, MONTAGUE_BRIDGE_DEPARTURE, NEW_GLASGOW_FIELD_EDGE_DEPARTURE, SITES as STOCK_SITES } from './sim/places.ts';
+import { KINGS_MAPPED_FARMLAND_DEPARTURE, PRINCE_MAPPED_FARMLAND_DEPARTURE, MONTAGUE_BRIDGE_DEPARTURE, NEW_GLASGOW_FIELD_EDGE_DEPARTURE, NEW_GLASGOW_RIVER_CLYDE_DEPARTURE, SITES as STOCK_SITES } from './sim/places.ts';
 import { clamp, RAD, geographic } from './sim/geo.ts';
 import {observerView} from './sim/observer-view.ts';
 import {duneSandRequested,standardDuneReliefRequested,shoreFoamDetailRequested,orbyClosureRequested,canopyLightRequested,standardDuneGrassRequested,explicitDuneGrassRequested,standardBasinSandRequested,standardMeadowRequested,standardGravelSurfaceRequested,standardMiscoucheRequested,standardNearshoreRequested,standardOpenCoastRequested,standardOpenRipplesRequested,forestFloorProfile,standardTracadieOrtho,standardCountyOrtho,standardInlandOrtho,coastalMarshRequested} from './app/scenery-profile.ts';
@@ -320,7 +320,7 @@ async function run(){
   northCapeAtlas({...terrain.spec,sha:terrainSha},cover)&&
   await verifyDecodedCover(cover).catch(()=>undefined)===NORTH_CAPE_COVER_DECODED_SHA;
  if(capeLightAtlas&&capeLightModule)SITES.push(capeLightModule.NORTH_CAPE_LIGHT_PREVIEW);
- SITES.push(NEW_GLASGOW_FIELD_EDGE_DEPARTURE);
+ SITES.push(NEW_GLASGOW_FIELD_EDGE_DEPARTURE,NEW_GLASGOW_RIVER_CLYDE_DEPARTURE);
  const daylightModule=await daylightJob;
  const daylight=certifiedSky?daylightModule?.verifiedAerialOptics(certifiedSky):undefined;
  if(daylight)daylight.gain.value=0; // Require both independently loaded horizon meshes.

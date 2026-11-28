@@ -83,6 +83,11 @@ export const NEW_GLASGOW_FIELD_EDGE_DEPARTURE:Site={
  lon:-63.37845781400669,lat:46.40798791295192,heading:225,height:42,
  note:'Start 42 metres above the starting terrain and fly southwest across mapped farm field edges. Virtual sightseeing only, not an aviation route.',
 };
+export const NEW_GLASGOW_RIVER_CLYDE_DEPARTURE:Site={
+ id:'new-glasgow-river-clyde',name:'New Glasgow · River Clyde pass',region:'Queens County',
+ lon:-63.34378054966036,lat:46.407497165085836,heading:285,height:58,
+ note:'Start 58 metres above the starting surface and fly west across the River Clyde. The Mill site is on the right. Virtual sightseeing only, not an aviation route.',
+};
 export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={
  id:'kings-mapped-farmland-pass',name:'Kings County · mapped farmland pass',region:'Kings County',
  lon:-62.63729889216559,lat:46.39645292554363,heading:197.3,height:62,

@@ -5,11 +5,11 @@ import {gunzipSync} from 'node:zlib';
 import {sceneryDeparture} from '../src/app/scenery-profile.ts';
 import {Cover} from '../src/sim/cover.ts';
 import {FIXED_STEP,neutral,spawn,step} from '../src/sim/flight.ts';
-import {NEW_GLASGOW_FIELD_EDGE_DEPARTURE as route,runwayAt,SITES} from '../src/sim/places.ts';
+import {NEW_GLASGOW_FIELD_EDGE_DEPARTURE as route,NEW_GLASGOW_RIVER_CLYDE_DEPARTURE as river,runwayAt,SITES} from '../src/sim/places.ts';
 import {Terrain,type TerrainSpec} from '../src/sim/terrain.ts';
 
 test('New Glasgow has a unique ordinary Dispatch bookmark, without changing the stock default',()=>{
- const catalogue=[...SITES,route],ids=catalogue.map(q=>q.id);
+ const catalogue=[...SITES,route,river],ids=catalogue.map(q=>q.id);
  assert.equal(ids.filter(q=>q==='new-glasgow-field-edge').length,1);
  assert.equal(catalogue[sceneryDeparture('?departure=new-glasgow-field-edge',ids)],route);
  for(const search of ['', '?departure=unknown'])assert.equal(catalogue[sceneryDeparture(search,ids)],SITES[0]);
@@ -18,7 +18,7 @@ test('New Glasgow has a unique ordinary Dispatch bookmark, without changing the 
  assert.deepEqual([route.lon,route.lat,route.heading,route.height],[-63.37845781400669,46.40798791295192,225,42]);
 });
 
-test('the public low pass clears existing terrain through the approach, field edge and exit',()=>{
+function originalSurface(){
  const world=new URL('../public/world/',import.meta.url),read=(name:string)=>readFileSync(new URL(name,world));
  const spec:TerrainSpec&{file:string}=JSON.parse(read('terrain.json').toString());
  const mask:{width:number;height:number;file:string}=JSON.parse(read('cover.json').toString());
@@ -29,6 +29,11 @@ test('the public low pass clears existing terrain through the approach, field ed
   const land=cover.distance(terrain,x,z)>=0;
   return {height:terrain.contactHeight(x,z,land),land,runway:!!runwayAt(x,z)};
  };
+ return surface;
+}
+
+test('the public low pass clears existing terrain through the approach, field edge and exit',()=>{
+ const surface=originalSurface();
  const f=spawn(route,surface),origin={x:f.x,z:f.z},ground=surface(f.x,f.z);
  assert(ground.land&&!ground.runway);
  assert.equal(f.y-ground.height,42);
@@ -41,4 +46,36 @@ test('the public low pass clears existing terrain through the approach, field ed
   if(Math.hypot(f.x-origin.x,f.z-origin.z)>=ranges[clearances.length])clearances.push(clearance);
  }
  assert.equal(clearances.length,ranges.length);
+});
+
+
+test('River Clyde bookmark preserves the standard start and field-edge catalogue order',()=>{
+ const sites=[...SITES,route,river],ids=sites.map(p=>p.id);
+ assert.equal(ids.filter(key=>key===river.id).length,1);
+ assert.equal(sites[sceneryDeparture('?departure=new-glasgow-river-clyde',ids)],river);
+ assert.equal(sites[sceneryDeparture('?departure=new-glasgow-field-edge',ids)],route);
+ assert.equal(sites[sceneryDeparture('',ids)],SITES[0]);
+ assert.equal(river.runway,undefined);
+ assert.deepEqual([river.lon,river.lat,river.heading,river.height],[-63.34378054966036,46.407497165085836,285,58]);
+});
+
+test('the neutral River Clyde departure clears ordinary signed terrain through the Mill view and exit',()=>{
+ const surface=originalSurface(),f=spawn(river,surface);
+ const origin={x:f.x,z:f.z},first=surface(f.x,f.z);
+ assert(first.land&&!first.runway);
+ assert.equal(f.y-first.height,58);
+ let reached=0,seenWater=false,low=Infinity;
+ const bounds=[205,365,970];
+ for(let i=0;i<Math.ceil(24/FIXED_STEP)&&reached<bounds.length;i++){
+  step(f,neutral,surface,FIXED_STEP);
+  const contact=surface(f.x,f.z);
+  const distance=Math.hypot(f.x-origin.x,f.z-origin.z);
+  seenWater||=!contact.land;
+  low=Math.min(low,f.y-contact.height);
+  assert.equal(f.status,'flying');assert(!f.stalled);
+  if(distance>=bounds[reached])reached++;
+ }
+ assert.equal(reached,bounds.length);
+ assert(low>=29,'the published route retains ordinary terrain clearance');
+ assert(seenWater,'the neutral route traverses the stock River Clyde water');
 });

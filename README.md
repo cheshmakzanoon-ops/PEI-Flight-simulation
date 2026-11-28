@@ -50,6 +50,7 @@ Open the local address printed by Vite. The simulator loads its geographic asset
 | **Charlottetown waterfront · low pass** | Start over the harbour, then use the atlas (**M**) to reposition. For a runway start, use Charlottetown or Summerside and follow the [pilot guide](docs/FLIGHT.md). |
 | **Eastern Kings · turbine skyline** | Approach the eastern end of the island from the sea. Standard includes [both generations of the Eastern Kings turbines](docs/qa/east-point-phase-ii.md). |
 | **New Glasgow · field-edge pass** | Start 42 metres above the terrain and fly southwest across mapped farm hedges. See the [route guide](docs/qa/new-glasgow-field-edge.md). |
+| **New Glasgow · River Clyde pass** | Cross the river with the Mill site on your right. Use the [River Clyde route guide](docs/qa/new-glasgow-river-clyde.md). |
 | **Prince County · mapped farmland pass** | Start in the air over an inland field. The [Standard farmland departures](docs/qa/province-fields.md) show close furrows in Prince, Queens and Kings. |
 | **Prince or Kings County · inland meadow pass** | Select the route in Standard Dispatch and wait for **Survey-based woodland sizes ready** before beginning. See the matched woodland views in [Prince](docs/qa/prince-dispatch-woodland.md) and [Kings](docs/qa/dispatch-woodland.md). |
 | **Queens County · woodland view pass** | Select the low Queens route in Standard Dispatch. The [mapped woodland guide](docs/qa/queens-dispatch-woodland.md) explains how the existing inventory sizes are used when ready. |
