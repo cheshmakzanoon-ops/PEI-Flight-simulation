@@ -1,0 +1,219 @@
+{
+  "scope": "Exact source screening only; derived DSM surface and dated atlas, no current roof survey or runtime change.",
+  "worldAtlasSHA": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "wireTileSHA": "bcc9434d46fb77c23f15b94c02f0a7758f3dcfcf61cfa96f6336055347f83279",
+  "packedTile": "q1333",
+  "sourcePins": {
+    "dsm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+      "etag": "a117346714667913c801489b24ec0356-2829",
+      "first4096SHA256": "2dbd66c68a22ee0d86dbc409b8a2512bfa1f12ad3a01c48e04bb88e0fcc17ba6",
+      "localExactF32SHA256": "9d9511d2d2b525008c0061e3ef802b58d51ae5225b4dcb77cb5ab0500d96de44"
+    },
+    "dtm": {
+      "url": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+      "etag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+      "first4096SHA256": "2ae33670d39a6d4903392f3eeae142748ee647d2f6f9be0be1eaf0a3cc62c9e5",
+      "localExactF32SHA256": "b3ce6bb56133403b234cc4ad618069c5a3857b245c9879c80b66958a7ffee0db"
+    }
+  },
+  "registration": {
+    "crs": "EPSG:3979; orthometric heights CGVD2013 documented by mosaic",
+    "grid": [
+      2450629,
+      1,
+      0,
+      366291,
+      0,
+      -1
+    ],
+    "dimensions": [
+      250,
+      227
+    ]
+  },
+  "architectureCondition": "Same inboard 1.5m / four spatial holdouts and paired single-slope / flat controls used by roof-fit-pilot.py. Dataset is independently fixed, not four independent surveys.",
+  "licence": "https://open.canada.ca/en/open-government-licence-canada",
+  "results": [
+    {
+      "exclude": "too few interior pixels",
+      "n": 41,
+      "ordinal": 12,
+      "footprintVertices": 6,
+      "centresInsidePolygon": 94,
+      "stockReportedHeightM": 7.89,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.9572,
+        7.5523
+      ]
+    },
+    {
+      "exclude": "too few interior pixels",
+      "n": 9,
+      "ordinal": 20,
+      "footprintVertices": 8,
+      "centresInsidePolygon": 40,
+      "stockReportedHeightM": 3.32,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        2.5967,
+        3.0395
+      ]
+    },
+    {
+      "exclude": "too few interior pixels",
+      "n": 23,
+      "ordinal": 27,
+      "footprintVertices": 6,
+      "centresInsidePolygon": 74,
+      "stockReportedHeightM": 4.0,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.602,
+        3.8703
+      ]
+    },
+    {
+      "n": 58,
+      "planeCVmed": 0.87,
+      "minHoldoutSide": 1,
+      "flatCVmed": 0.88,
+      "ridgeCVmed": 0.21,
+      "ridgeCVp90": 0.54,
+      "ridgeRepeat": 1.0,
+      "stable": false,
+      "ordinal": 29,
+      "footprintVertices": 6,
+      "centresInsidePolygon": 117,
+      "stockReportedHeightM": 9.08,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        4.5379,
+        8.6559
+      ]
+    },
+    {
+      "n": 68,
+      "planeCVmed": 0.25,
+      "minHoldoutSide": 3,
+      "flatCVmed": 0.24,
+      "ridgeCVmed": 0.03,
+      "ridgeCVp90": 0.24,
+      "ridgeRepeat": 1.0,
+      "stable": false,
+      "ordinal": 33,
+      "footprintVertices": 6,
+      "centresInsidePolygon": 129,
+      "stockReportedHeightM": 5.91,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.7588,
+        5.4627
+      ]
+    },
+    {
+      "n": 88,
+      "planeCVmed": 0.45,
+      "minHoldoutSide": 4,
+      "flatCVmed": 0.47,
+      "ridgeCVmed": 0.07,
+      "ridgeCVp90": 0.33,
+      "ridgeRepeat": 1.0,
+      "stable": true,
+      "ordinal": 48,
+      "footprintVertices": 8,
+      "centresInsidePolygon": 156,
+      "stockReportedHeightM": 6.08,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.9562,
+        5.9959
+      ]
+    },
+    {
+      "n": 68,
+      "planeCVmed": 0.38,
+      "minHoldoutSide": 3,
+      "flatCVmed": 0.35,
+      "ridgeCVmed": 0.08,
+      "ridgeCVp90": 0.15,
+      "ridgeRepeat": 1.0,
+      "stable": true,
+      "ordinal": 49,
+      "footprintVertices": 6,
+      "centresInsidePolygon": 138,
+      "stockReportedHeightM": 7.16,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        4.8855,
+        7.0586
+      ]
+    },
+    {
+      "exclude": "too few interior pixels",
+      "n": 35,
+      "ordinal": 84,
+      "footprintVertices": 4,
+      "centresInsidePolygon": 80,
+      "stockReportedHeightM": 5.0,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.7787,
+        4.8492
+      ]
+    },
+    {
+      "n": 49,
+      "planeCVmed": 0.28,
+      "minHoldoutSide": 1,
+      "flatCVmed": 0.29,
+      "ridgeCVmed": 0.05,
+      "ridgeCVp90": 0.11,
+      "ridgeRepeat": 1.0,
+      "stable": false,
+      "ordinal": 136,
+      "footprintVertices": 4,
+      "centresInsidePolygon": 100,
+      "stockReportedHeightM": 5.35,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        4.1753,
+        5.2123
+      ]
+    },
+    {
+      "exclude": "too few interior pixels",
+      "n": 25,
+      "ordinal": 156,
+      "footprintVertices": 4,
+      "centresInsidePolygon": 64,
+      "stockReportedHeightM": 6.42,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        4.6506,
+        6.1941
+      ]
+    },
+    {
+      "exclude": "too few interior pixels",
+      "n": 30,
+      "ordinal": 162,
+      "footprintVertices": 4,
+      "centresInsidePolygon": 72,
+      "stockReportedHeightM": 4.76,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        3.6321,
+        4.6107
+      ]
+    },
+    {
+      "n": 68,
+      "planeCVmed": 0.41,
+      "minHoldoutSide": 1,
+      "flatCVmed": 0.38,
+      "ridgeCVmed": 0.14,
+      "ridgeCVp90": 0.44,
+      "ridgeRepeat": 1.0,
+      "stable": false,
+      "ordinal": 193,
+      "footprintVertices": 4,
+      "centresInsidePolygon": 129,
+      "stockReportedHeightM": 6.06,
+      "retainedRoofAboveBareEarthMinMaxM": [
+        4.0118,
+        5.6959
+      ]
+    }
+  ]
+}

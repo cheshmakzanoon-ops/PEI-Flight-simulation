@@ -1,0 +1,42 @@
+[
+  {
+    "sourceOrdinal": 48,
+    "worldAnchorXZ": [
+      94220.59459956789,
+      5364.300418711249
+    ],
+    "hypothesizedVerticalOriginM": 19.40897945598729,
+    "projectedAreaM2": 151.53351223553696,
+    "oldPlanTriangles": 6,
+    "roofTriangles": 16,
+    "newTrianglesEachOriginal": [
+      3,
+      3,
+      1,
+      3,
+      3,
+      3
+    ],
+    "roofPositionsSHA256": "4f384599a00ba79badc3b5be98f51f54e92871005bcc8ac5b0747cd3d3dc926b",
+    "normalSHA256": "19c53b9cc232a231e3229b18ba6d357833725c343d6e623088438a21b3742c1c"
+  },
+  {
+    "sourceOrdinal": 49,
+    "worldAnchorXZ": [
+      94091.7102056232,
+      5412.692543838233
+    ],
+    "hypothesizedVerticalOriginM": 22.903770135908292,
+    "projectedAreaM2": 133.48618963133282,
+    "oldPlanTriangles": 4,
+    "roofTriangles": 8,
+    "newTrianglesEachOriginal": [
+      3,
+      1,
+      3,
+      1
+    ],
+    "roofPositionsSHA256": "987c8905cc07e245158c7f7c7738a9c5f4dd97e20a6832012f836e9ed42075eb",
+    "normalSHA256": "a5f11d51a73d9752eebf0e81ce75000b1d2dabbef2814d07b33952b6518d8aea"
+  }
+]
