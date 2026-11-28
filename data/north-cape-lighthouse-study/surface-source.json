@@ -1,0 +1,24 @@
+{
+  "scope": "Detached surface-elevation window for candidate separation, not terrain or structure geometry.",
+  "publisher": "Natural Resources Canada, CanElevation",
+  "product": "HRDEM Mosaic 1 m DSM",
+  "asset": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dsm.tif",
+  "license": "https://open.canada.ca/en/open-government-licence-canada",
+  "etag": "a117346714667913c801489b24ec0356-2829",
+  "first4096SHA256": "2dbd66c68a22ee0d86dbc409b8a2512bfa1f12ad3a01c48e04bb88e0fcc17ba6",
+  "sourceStudyTiffSHA256": "914a736d44c36bd6734786ab4d8d48ee5a26789a14c1c1cff80c55d267995a9f",
+  "groundWindowOffset": [
+    164,
+    168
+  ],
+  "sourcePixelOffset": [
+    281303,
+    149526
+  ],
+  "width": 56,
+  "height": 56,
+  "encoding": "IEEE 754 Float32 LE row-major metres gzip",
+  "file": "north-cape-surface.f32.gz",
+  "storedSHA256": "086b617084b4d3a21a7c9344fb13f1c1085a2aece26a8bd323807db52fa70d13",
+  "decodedSHA256": "dad947a74a94b2d728650bb186e4529222f0db467368ac75623b70b80628e8c1"
+}

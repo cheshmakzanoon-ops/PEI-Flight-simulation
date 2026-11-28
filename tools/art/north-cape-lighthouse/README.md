@@ -30,3 +30,20 @@ Neither asset is imported by the game. Before integration, reconcile
 reference bearing and foundation with the site, photograph the same
 normal flight views, and verify the terrain/roads, turbines and existing
 building roles against stock. The study is not a navigational aid.
+
+### Separating elevated objects from the ground
+
+The adjacent 56 × 56 m **digital surface model** (DSM) stores exact source Float32 samples,
+without imagery. Its origin is offset 164 columns and 168 rows into the ground window
+above; both share the metre grid and vertical datum. Run the surface-candidates test to
+reproduce the comparison. It subtracts the bare-ground model cell by cell and checks
+four-connected components at 9, 12, 15 and 17 m of relief, rejecting unresolved no-data
+and identifying any component truncated by a window edge.
+
+At 12 m the two components contain 32 and 37 cells. The first has peak relief of about
+19.33 m and its centre is 3.18 m from the Coast Guard light locator. The second is about
+17.7 m south of that centre and has peak relief of about 69.28 m. Those distinct signatures
+support separating the likely tower and nearby mast during art placement. The component
+centre is **not** a surveyed foundation, the surface height is **not** a certified tower
+height, and the raster yields neither orientation nor textures. The simulator still uses its
+unchanged player terrain and does not ship either study raster in the playable build.
