@@ -90,3 +90,9 @@ The [dry-ground study](grade/) compares the exact decoded Federal 1 m
 DTM with the reconstructed regular stock mesh and tests a detached
 one-triangle replacement outside mapped-object buffers. It does not
 install a ground grade or change lighthouse seating.
+
+### Apparent size around distance changes
+
+The detached [screen-size study](lod/) compares the exact near and middle
+meshes and proposes pixel-based hysteresis for future renderer testing.
+It does not change the playable simulator.

@@ -1,0 +1,1695 @@
+{
+ "sourceSHA256": "77a1cbc0ae1017c516a33874818de176f312e5c2989983e0fa06b6c7956ef2c0",
+ "prelockSHA256": "c3da4f8cb54cfe7f261967100da9f1bf1fa352a3746201191beafe49af4b82ff",
+ "holds": 34,
+ "rows": [
+  {
+   "viewport": 700,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.016149068322981366,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.028598339536623517,
+   "resolvedDifference": 0.025790151781832162,
+   "resolvedSigned": -0.009672593808942656,
+   "bands": {
+    "lower": -0.005910283224122511,
+    "higher": -0.016328989459009065
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.009790209790209791,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.033426650830473546,
+   "resolvedDifference": 0.028946344793751848,
+   "resolvedSigned": -0.009942229630073138,
+   "bands": {
+    "lower": -0.008628120756727871,
+    "higher": -0.012166106184965126
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00857843137254902,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.030325273157857935,
+   "resolvedDifference": 0.027602040487103612,
+   "resolvedSigned": -0.009980111665127163,
+   "bands": {
+    "lower": -0.006227691606870829,
+    "higher": -0.01661900869127298
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.011034482758620689,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.029860397745985964,
+   "resolvedDifference": 0.025902119514710227,
+   "resolvedSigned": -0.009758592525362823,
+   "bands": {
+    "lower": -0.005453461937635727,
+    "higher": -0.017651331936195835
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012330456226880395,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04112159032941426,
+   "resolvedDifference": 0.028680203581231516,
+   "resolvedSigned": 0.006820465120400738,
+   "bands": {
+    "lower": 0.009830297465541581,
+    "higher": 0.0014953771251515534
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.008403361344537815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.043328001875821094,
+   "resolvedDifference": 0.030002813885286063,
+   "resolvedSigned": 0.006096223928986611,
+   "bands": {
+    "lower": 0.004844058226002841,
+    "higher": 0.008215273580189917
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00851581508515815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04027093129213354,
+   "resolvedDifference": 0.02897375701256672,
+   "resolvedSigned": 0.00843076590022043,
+   "bands": {
+    "lower": 0.010015821632057333,
+    "higher": 0.005626436528508981
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009655172413793104,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04084544053886298,
+   "resolvedDifference": 0.031463742482674986,
+   "resolvedSigned": 0.007628765553981458,
+   "bands": {
+    "lower": 0.008108293111369529,
+    "higher": 0.00681725737994011
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.021013597033374538,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.045804742311867645,
+   "resolvedDifference": 0.028984758254256084,
+   "resolvedSigned": 0.02071252782993851,
+   "bands": {
+    "lower": 0.01985540626316896,
+    "higher": 0.022228973678838488
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.014613778705636743,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05092005718068877,
+   "resolvedDifference": 0.030785246900458654,
+   "resolvedSigned": 0.01793259450289318,
+   "bands": {
+    "lower": 0.010790675200268756,
+    "higher": 0.030018919476565296
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.014015843997562462,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04577491868094481,
+   "resolvedDifference": 0.029587984940366487,
+   "resolvedSigned": 0.022623635601319827,
+   "bands": {
+    "lower": 0.02397503165420629,
+    "higher": 0.020232704123136082
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.015785861358956762,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04396220964844193,
+   "resolvedDifference": 0.032072321243841156,
+   "resolvedSigned": 0.02375463522902572,
+   "bands": {
+    "lower": 0.019785676452779385,
+    "higher": 0.031031059652144005
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012330456226880395,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05145565664167995,
+   "resolvedDifference": 0.029214958996114575,
+   "resolvedSigned": 0.017016875180453462,
+   "bands": {
+    "lower": 0.016045077308163857,
+    "higher": 0.01873620987758123
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.008403361344537815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.057923881180549655,
+   "resolvedDifference": 0.03329076113181232,
+   "resolvedSigned": 0.012485111316105293,
+   "bands": {
+    "lower": 0.0039713101428049576,
+    "higher": 0.026893082532459707
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00851581508515815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05034149259526156,
+   "resolvedDifference": 0.030662023354731054,
+   "resolvedSigned": 0.019660885339530434,
+   "bands": {
+    "lower": 0.02169175960687565,
+    "higher": 0.016067800097304293
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009655172413793104,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.049155457826787555,
+   "resolvedDifference": 0.03404646947171158,
+   "resolvedSigned": 0.02273729568114075,
+   "bands": {
+    "lower": 0.016068197332941982,
+    "higher": 0.03402346211655406
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.015527950310559006,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04969343686327402,
+   "resolvedDifference": 0.030883742482925487,
+   "resolvedSigned": 0.020148943351066886,
+   "bands": {
+    "lower": 0.019076869466618452,
+    "higher": 0.022045689454321803
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.009790209790209791,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05562640479047118,
+   "resolvedDifference": 0.03399242728132016,
+   "resolvedSigned": 0.016834070257836026,
+   "bands": {
+    "lower": 0.008471337854968218,
+    "higher": 0.030986386631920017
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00857843137254902,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04942652473426515,
+   "resolvedDifference": 0.03165575220899454,
+   "resolvedSigned": 0.0223463764465243,
+   "bands": {
+    "lower": 0.023985795590098204,
+    "higher": 0.019445865654047392
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.011034482758620689,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04700283202710341,
+   "resolvedDifference": 0.034007099199454986,
+   "resolvedSigned": 0.023788959648708936,
+   "bands": {
+    "lower": 0.019057251132600046,
+    "higher": 0.032463758594908555
+   },
+   "hold": true
+  },
+  {
+   "viewport": 700,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012330456226880395,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03553106792202601,
+   "resolvedDifference": 0.021374714968329742,
+   "resolvedSigned": 0.01877192147097038,
+   "bands": {
+    "lower": 0.018394173356188735,
+    "higher": 0.019440245058660984
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.008403361344537815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.038573799867144265,
+   "resolvedDifference": 0.021752836411685576,
+   "resolvedSigned": 0.01796402590257283,
+   "bands": {
+    "lower": 0.012906269842532054,
+    "higher": 0.026523305388795677
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00851581508515815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03509745209490206,
+   "resolvedDifference": 0.02203483945355874,
+   "resolvedSigned": 0.020606588107998466,
+   "bands": {
+    "lower": 0.02043228771843235,
+    "higher": 0.02091496572030776
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009655172413793104,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03500943775277743,
+   "resolvedDifference": 0.025376275501080306,
+   "resolvedSigned": 0.02165436600818759,
+   "bands": {
+    "lower": 0.017988097927859492,
+    "higher": 0.027858819682589
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.021000617665225447,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.01933808359608027,
+   "resolvedDifference": 0.011467279523279729,
+   "resolvedSigned": 0.008018046948219872,
+   "bands": {
+    "lower": 0.007981630082222978,
+    "higher": 0.00808247678806053
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.014613778705636743,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.022242053767795367,
+   "resolvedDifference": 0.013992712012229592,
+   "resolvedSigned": 0.008686906925709283,
+   "bands": {
+    "lower": 0.005491227800003547,
+    "higher": 0.014094979292288218
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.014015843997562462,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.02024092600476185,
+   "resolvedDifference": 0.011870578575151329,
+   "resolvedSigned": 0.008991942092283302,
+   "bands": {
+    "lower": 0.008708701385712718,
+    "higher": 0.009493060265446638
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.015785861358956762,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.019083093145722648,
+   "resolvedDifference": 0.011549088161727443,
+   "resolvedSigned": 0.00888661416301441,
+   "bands": {
+    "lower": 0.007599204024423461,
+    "higher": 0.011246866083764491
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012330456226880395,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020330290643355734,
+   "resolvedDifference": 0.01592704455108677,
+   "resolvedSigned": -0.009737057929864654,
+   "bands": {
+    "lower": -0.007325162580623804,
+    "higher": -0.014004257393906159
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.008403361344537815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.022934575114844688,
+   "resolvedDifference": 0.019325560034541257,
+   "resolvedSigned": -0.00993098435144902,
+   "bands": {
+    "lower": -0.011622260789869256,
+    "higher": -0.00706882422489169
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00851581508515815,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020249101875559013,
+   "resolvedDifference": 0.015480253346436755,
+   "resolvedSigned": -0.008604854834555201,
+   "bands": {
+    "lower": -0.006993548845886023,
+    "higher": -0.011455626968354515
+   },
+   "hold": false
+  },
+  {
+   "viewport": 700,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009655172413793104,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.01997721435505392,
+   "resolvedDifference": 0.016809598395210512,
+   "resolvedSigned": -0.009319421906883368,
+   "bands": {
+    "lower": -0.008628193949311722,
+    "higher": -0.010489192296619997
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012205387205387205,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.030088108794887318,
+   "resolvedDifference": 0.026710244181784356,
+   "resolvedSigned": -0.005328991228426926,
+   "bands": {
+    "lower": -0.005606033620310257,
+    "higher": -0.0048315742066363946
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.01433349259436216,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.02901492222916414,
+   "resolvedDifference": 0.026773622557053775,
+   "resolvedSigned": -0.005271637511559482,
+   "bands": {
+    "lower": -0.005410797693923711,
+    "higher": -0.005015883662890092
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00995850622406639,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.028640279049145047,
+   "resolvedDifference": 0.02616640947173245,
+   "resolvedSigned": -0.005404037832497174,
+   "bands": {
+    "lower": -0.004174628067707625,
+    "higher": -0.007611387182914772
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.011304757418747056,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.030667512843648468,
+   "resolvedDifference": 0.028156000788056867,
+   "resolvedSigned": -0.007492998775490664,
+   "bands": {
+    "lower": -0.008191963975627967,
+    "higher": -0.006189523131991365
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.011118103629116844,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.042473643631367096,
+   "resolvedDifference": 0.032977692755866074,
+   "resolvedSigned": 0.0058981070694971395,
+   "bands": {
+    "lower": 0.005766936245818905,
+    "higher": 0.006133618321101239
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.010671093194213896,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.040958517446979925,
+   "resolvedDifference": 0.0361867368844928,
+   "resolvedSigned": 0.009274740268647866,
+   "bands": {
+    "lower": 0.00858812497395535,
+    "higher": 0.010536627837271958
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.0078870900788709,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04107024880927749,
+   "resolvedDifference": 0.0330171402677458,
+   "resolvedSigned": 0.0071384454532303476,
+   "bands": {
+    "lower": 0.007521933994127458,
+    "higher": 0.006449909209346901
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.008882655446470314,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.0421072858165296,
+   "resolvedDifference": 0.032464237179131404,
+   "resolvedSigned": 0.005953675942760731,
+   "bands": {
+    "lower": 0.004941684339002435,
+    "higher": 0.007840903528147819
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.017169179229480736,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04836408634143997,
+   "resolvedDifference": 0.03344690447965724,
+   "resolvedSigned": 0.020519336888371625,
+   "bands": {
+    "lower": 0.01862179446868786,
+    "higher": 0.023926288050985674
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.019020446980504042,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.046276387462288494,
+   "resolvedDifference": 0.037441073408402914,
+   "resolvedSigned": 0.026048503584685065,
+   "bands": {
+    "lower": 0.02184247821197487,
+    "higher": 0.03377849616155785
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.014049586776859505,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.0435005912817787,
+   "resolvedDifference": 0.030446305059846385,
+   "resolvedSigned": 0.02193746812317244,
+   "bands": {
+    "lower": 0.023232619672440624,
+    "higher": 0.019612082386986366
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.01547842401500938,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.04760676380776947,
+   "resolvedDifference": 0.035541070101501926,
+   "resolvedSigned": 0.020434731795980526,
+   "bands": {
+    "lower": 0.01540309185033986,
+    "higher": 0.029818060343256358
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.011118103629116844,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05529013067890279,
+   "resolvedDifference": 0.03659859226500035,
+   "resolvedSigned": 0.01790437290596162,
+   "bands": {
+    "lower": 0.014723317703888263,
+    "higher": 0.023615812927866055
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.010671093194213896,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.05236339214017888,
+   "resolvedDifference": 0.04107277625692185,
+   "resolvedSigned": 0.024496582884232232,
+   "bands": {
+    "lower": 0.018898009435559995,
+    "higher": 0.03478585300611635
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.0078870900788709,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05112166246252445,
+   "resolvedDifference": 0.03467646245952553,
+   "resolvedSigned": 0.02225702779262544,
+   "bands": {
+    "lower": 0.02077196366597858,
+    "higher": 0.02492339292910504
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.008882655446470314,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.054145695889505775,
+   "resolvedDifference": 0.03753719160640704,
+   "resolvedSigned": 0.016834698085912186,
+   "bands": {
+    "lower": 0.010392747721376185,
+    "higher": 0.028848064981938776
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012205387205387205,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05360893072767165,
+   "resolvedDifference": 0.03659352221452028,
+   "resolvedSigned": 0.020829199159793716,
+   "bands": {
+    "lower": 0.017872692694556113,
+    "higher": 0.025962474121415054
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.01433349259436216,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.05019270710033479,
+   "resolvedDifference": 0.04011976873629015,
+   "resolvedSigned": 0.02660064602009732,
+   "bands": {
+    "lower": 0.02155622702282604,
+    "higher": 0.03551026918410892
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.00995850622406639,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.0485382220694184,
+   "resolvedDifference": 0.03413222487294993,
+   "resolvedSigned": 0.023542334203581813,
+   "bands": {
+    "lower": 0.02322805163053868,
+    "higher": 0.024088011638096263
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.011304757418747056,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.051503266421001954,
+   "resolvedDifference": 0.037766145949977646,
+   "resolvedSigned": 0.019546647448734994,
+   "bands": {
+    "lower": 0.014053328691607768,
+    "higher": 0.02939181613033964
+   },
+   "hold": true
+  },
+  {
+   "viewport": 1200,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.011118103629116844,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03762414797800336,
+   "resolvedDifference": 0.024424017965249456,
+   "resolvedSigned": 0.018339319543669543,
+   "bands": {
+    "lower": 0.016688526684695483,
+    "higher": 0.021114056476838707
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.010671093194213896,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.03594328784701623,
+   "resolvedDifference": 0.029386084652641437,
+   "resolvedSigned": 0.021597683221088817,
+   "bands": {
+    "lower": 0.019102784740842555,
+    "higher": 0.02583901063750746
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.0078870900788709,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03530372507746171,
+   "resolvedDifference": 0.023947389347426417,
+   "resolvedSigned": 0.02056357532097803,
+   "bands": {
+    "lower": 0.020024707213766056,
+    "higher": 0.02146933235224921
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.008882655446470314,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.036748179712994475,
+   "resolvedDifference": 0.024897968502176623,
+   "resolvedSigned": 0.018012951284966452,
+   "bands": {
+    "lower": 0.015388966757735913,
+    "higher": 0.022539324594439122
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.017169179229480736,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020817708867140523,
+   "resolvedDifference": 0.014067774948861345,
+   "resolvedSigned": 0.008913320090376774,
+   "bands": {
+    "lower": 0.007812056263854358,
+    "higher": 0.010825404536426686
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.019020446980504042,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.01987518562159931,
+   "resolvedDifference": 0.014881208296892698,
+   "resolvedSigned": 0.01086582451630183,
+   "bands": {
+    "lower": 0.008736158956002741,
+    "higher": 0.014627311739687239
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.014049586776859505,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.018776283782052913,
+   "resolvedDifference": 0.012690886244137308,
+   "resolvedSigned": 0.00896289978362828,
+   "bands": {
+    "lower": 0.009716573658440128,
+    "higher": 0.007654323165823092
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.01547842401500938,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.021171188321603973,
+   "resolvedDifference": 0.014721095681817302,
+   "resolvedSigned": 0.009811338188802855,
+   "bands": {
+    "lower": 0.007488621472612206,
+    "higher": 0.013974129186651025
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.011118103629116844,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.021569517060758252,
+   "resolvedDifference": 0.019512013118511737,
+   "resolvedSigned": -0.010182480586369764,
+   "bands": {
+    "lower": -0.010437437464517828,
+    "higher": -0.009724717100603922
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.010671093194213896,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.02021588259806195,
+   "resolvedDifference": 0.017902931281014636,
+   "resolvedSigned": -0.007992214806905125,
+   "bands": {
+    "lower": -0.008405437145471154,
+    "higher": -0.007232779157648639
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.0078870900788709,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020683459833910657,
+   "resolvedDifference": 0.019058172427367626,
+   "resolvedSigned": -0.00987782275671717,
+   "bands": {
+    "lower": -0.00989108164349635,
+    "higher": -0.009854017028181821
+   },
+   "hold": false
+  },
+  {
+   "viewport": 1200,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.008882655446470314,
+   "boundsDeltaPx": 0.25,
+   "meanCommonDiffuseLumaDelta": 0.02181808611095948,
+   "resolvedDifference": 0.019434970789993594,
+   "resolvedSigned": -0.010163216391982675,
+   "bands": {
+    "lower": -0.01177786987544009,
+    "higher": -0.007152105841751281
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.013769810340348142,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03058404394513268,
+   "resolvedDifference": 0.028576340004788012,
+   "resolvedSigned": -0.005968342901285989,
+   "bands": {
+    "lower": -0.007190540046726573,
+    "higher": -0.0036272328762167044
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 0,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.012334801762114538,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03192144344727037,
+   "resolvedDifference": 0.028421866201847525,
+   "resolvedSigned": -0.007955505039926121,
+   "bands": {
+    "lower": -0.00817076369336403,
+    "higher": -0.00755232216523289
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.009353578063937471,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.030886576915246176,
+   "resolvedDifference": 0.027876331740698847,
+   "resolvedSigned": -0.005857587820554005,
+   "bands": {
+    "lower": -0.007156928745438078,
+    "higher": -0.0033835003060487113
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 0,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.00993113446901051,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.031576359744153876,
+   "resolvedDifference": 0.027611704832089193,
+   "resolvedSigned": -0.0076702439907202075,
+   "bands": {
+    "lower": -0.00766272607951514,
+    "higher": -0.00768457500895486
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012528399870172022,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04295296813958476,
+   "resolvedDifference": 0.03717960783299242,
+   "resolvedSigned": 0.005948457580681299,
+   "bands": {
+    "lower": 0.005056809100714411,
+    "higher": 0.00766243911107701
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 45,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.011902137976636544,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04258262251742722,
+   "resolvedDifference": 0.03219701844599079,
+   "resolvedSigned": 0.005547397042073632,
+   "bands": {
+    "lower": 0.005006759732398695,
+    "higher": 0.006544197081786793
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.008584790825805625,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04155927513034766,
+   "resolvedDifference": 0.03228336071773268,
+   "resolvedSigned": 0.006574049524985905,
+   "bands": {
+    "lower": 0.0060403564705696034,
+    "higher": 0.0075833465938820385
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 45,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009357319019294937,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.041738865509000196,
+   "resolvedDifference": 0.03040195942141443,
+   "resolvedSigned": 0.005869585288492444,
+   "bands": {
+    "lower": 0.006175480602664843,
+    "higher": 0.005286472345851309
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.017661900756938603,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04879284779878698,
+   "resolvedDifference": 0.039962901072072225,
+   "resolvedSigned": 0.019791274058933498,
+   "bands": {
+    "lower": 0.017746804802978775,
+    "higher": 0.02370744052104396
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 90,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.017387492694330802,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04810703238236343,
+   "resolvedDifference": 0.032874193598181826,
+   "resolvedSigned": 0.01923572772655753,
+   "bands": {
+    "lower": 0.017787205991276513,
+    "higher": 0.02194883192914738
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.01453062264992671,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04597813729191494,
+   "resolvedDifference": 0.03398618713678182,
+   "resolvedSigned": 0.02066133455787778,
+   "bands": {
+    "lower": 0.019390112258189852,
+    "higher": 0.02308188112851644
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 90,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.014574314574314575,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.04675332851746948,
+   "resolvedDifference": 0.03066352020890931,
+   "resolvedSigned": 0.021146081381435963,
+   "bands": {
+    "lower": 0.02094603506607333,
+    "higher": 0.02152741967009599
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012528399870172022,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05595110689094812,
+   "resolvedDifference": 0.04551990974465185,
+   "resolvedSigned": 0.016346818341369553,
+   "bands": {
+    "lower": 0.01361004649267903,
+    "higher": 0.0216076094568736
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 135,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.011901263590949163,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.054976278154027315,
+   "resolvedDifference": 0.03651761243823903,
+   "resolvedSigned": 0.016366356652422805,
+   "bands": {
+    "lower": 0.01364478208532145,
+    "higher": 0.02138425976051592
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.008584790825805625,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05340310810550423,
+   "resolvedDifference": 0.03646005778221339,
+   "resolvedSigned": 0.018699999953157444,
+   "bands": {
+    "lower": 0.015652880323840154,
+    "higher": 0.024462579932410546
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 135,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009357319019294937,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.053094849651745,
+   "resolvedDifference": 0.03218869307863182,
+   "resolvedSigned": 0.01831110932745464,
+   "bands": {
+    "lower": 0.017782046790181645,
+    "higher": 0.01931963478913128
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.013769810340348142,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05283490148150901,
+   "resolvedDifference": 0.0426275735405718,
+   "resolvedSigned": 0.018817036233082573,
+   "bands": {
+    "lower": 0.01689741885981086,
+    "higher": 0.022309584229938128
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 180,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.012334801762114538,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05257702931273045,
+   "resolvedDifference": 0.03570472940120245,
+   "resolvedSigned": 0.019101632790201807,
+   "bands": {
+    "lower": 0.016928917095924947,
+    "higher": 0.02303083511854924
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.009353578063937471,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.050722814435882384,
+   "resolvedDifference": 0.037083353824456496,
+   "resolvedSigned": 0.021173720121902027,
+   "bands": {
+    "lower": 0.0187363350387001,
+    "higher": 0.02554528820661259
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 180,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.00993113446901051,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.05041756320159174,
+   "resolvedDifference": 0.032946554725933774,
+   "resolvedSigned": 0.020837064115478445,
+   "bands": {
+    "lower": 0.02058069844758248,
+    "higher": 0.021309163911452902
+   },
+   "hold": true
+  },
+  {
+   "viewport": 2160,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012004412432677957,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03796135100573708,
+   "resolvedDifference": 0.030418335213230875,
+   "resolvedSigned": 0.017882612957213214,
+   "bands": {
+    "lower": 0.016139121898417177,
+    "higher": 0.020972056396903915
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 225,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.011902137976636544,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03752230553740662,
+   "resolvedDifference": 0.023895935443668737,
+   "resolvedSigned": 0.01741575835444848,
+   "bands": {
+    "lower": 0.016092759696376288,
+    "higher": 0.019711550143456113
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.008584790825805625,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03619436428452526,
+   "resolvedDifference": 0.024845197226365218,
+   "resolvedSigned": 0.01859922240911986,
+   "bands": {
+    "lower": 0.017594459273093357,
+    "higher": 0.02037835713405851
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 225,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009357319019294937,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.03605877249834203,
+   "resolvedDifference": 0.020988629091238935,
+   "resolvedSigned": 0.018141146879034672,
+   "bands": {
+    "lower": 0.018420562824996267,
+    "higher": 0.01764710709052287
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.017661900756938603,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020984989900658745,
+   "resolvedDifference": 0.0162097638094022,
+   "resolvedSigned": 0.009464873092449349,
+   "bands": {
+    "lower": 0.007964335150333719,
+    "higher": 0.0121949488132216
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 270,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.017387492694330802,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020691721350212102,
+   "resolvedDifference": 0.013712976174940434,
+   "resolvedSigned": 0.008770516761889077,
+   "bands": {
+    "lower": 0.007868817010617047,
+    "higher": 0.010401176848480645
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.01453062264992671,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020048098298736088,
+   "resolvedDifference": 0.013978952344641273,
+   "resolvedSigned": 0.008955861836005835,
+   "bands": {
+    "lower": 0.008705947919933954,
+    "higher": 0.009404094537089602
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 270,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.014574314574314575,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.020559951870730637,
+   "resolvedDifference": 0.013405574900014986,
+   "resolvedSigned": 0.009199105872732585,
+   "bands": {
+    "lower": 0.009062256570010117,
+    "higher": 0.009451115154727161
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.012528399870172022,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.021753658934121387,
+   "resolvedDifference": 0.021147625734880004,
+   "resolvedSigned": -0.0095520786349139,
+   "bands": {
+    "lower": -0.011161806264708207,
+    "higher": -0.006457761212270431
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 315,
+   "cameraY": 45,
+   "rangeM": 780,
+   "silhouetteXor": 0.011901263590949163,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.021551209896677616,
+   "resolvedDifference": 0.019783491936993473,
+   "resolvedSigned": -0.009608762464021469,
+   "bands": {
+    "lower": -0.010993940824564891,
+    "higher": -0.007054839861769529
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 733.2,
+   "silhouetteXor": 0.008584790825805625,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.021260799833693722,
+   "resolvedDifference": 0.01923304371848789,
+   "resolvedSigned": -0.009608735522453525,
+   "bands": {
+    "lower": -0.01086234062945251,
+    "higher": -0.007237972122822785
+   },
+   "hold": false
+  },
+  {
+   "viewport": 2160,
+   "bearing": 315,
+   "cameraY": 90,
+   "rangeM": 780,
+   "silhouetteXor": 0.009357319019294937,
+   "boundsDeltaPx": 0.0,
+   "meanCommonDiffuseLumaDelta": 0.02128762092027523,
+   "resolvedDifference": 0.01837517827885656,
+   "resolvedSigned": -0.010035364941420072,
+   "bands": {
+    "lower": -0.010662197502201539,
+    "higher": -0.008840465372430406
+   },
+   "hold": false
+  }
+ ],
+ "finalCut": [
+  {
+   "viewport": 700,
+   "bearing": 0,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 45,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 90,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 135,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 180,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 225,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 270,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 700,
+   "bearing": 315,
+   "screenHeightPx": 2.5,
+   "preExitCoveredPixelArea": 1.875
+  },
+  {
+   "viewport": 1200,
+   "bearing": 0,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 45,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 90,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 135,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 180,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 225,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 270,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 1200,
+   "bearing": 315,
+   "screenHeightPx": 4.25,
+   "preExitCoveredPixelArea": 5.625
+  },
+  {
+   "viewport": 2160,
+   "bearing": 0,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 45,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 90,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 135,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 180,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 225,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 270,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  },
+  {
+   "viewport": 2160,
+   "bearing": 315,
+   "screenHeightPx": 7.75,
+   "preExitCoveredPixelArea": 18.375
+  }
+ ],
+ "maxTransition": {
+  "silhouetteXor": 0.021013597033374538,
+  "boundsDeltaPx": 0.25,
+  "meanCommonDiffuseLumaDelta": 0.057923881180549655
+ },
+ "notNative": true
+}

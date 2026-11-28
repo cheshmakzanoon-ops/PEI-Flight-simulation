@@ -1,0 +1,7 @@
+{
+ "authority":"Exact local playable-B near and middle geometry. Bearings use authored local axes, not geographic yaw.",
+ "cameraHeightM":[45,90],"bearingsDeg":[0,45,90,135,180,225,270,315],
+ "transitionDistanceM":[733.2,780],"removeDistanceM":5200,"viewportHeightPx":[700,1200,2160],"verticalFOVDeg":53,
+ "prospectiveHolds":{"silhouetteXor":0.07,"boundsDeltaPx":1,"meanCommonDiffuseLumaDelta":0.045},
+ "limits":"Independent 4x4 subpixel and diffuse proxy, not the actual GPU sample pattern, camera history, landscape, aircraft, environment, glazing, or release."
+}
