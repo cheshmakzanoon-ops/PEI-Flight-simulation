@@ -1,0 +1,56 @@
+{
+  "scope": "Exact emitted stock roof RGB versus proposed original swatch on the same world, owner, alpha and flight.",
+  "receiptSHA256": "41a447a8d2a09377395f777e67cdaa8992705961a43b13f5bd73dbe797cd37e3",
+  "buildSHA256": "5728ffbdad96ec93b73aaf5f611e70df78eab4171ff35a81c533e3d129e641cf",
+  "imageRows": [
+    {
+      "travelM": 446.8896703486468,
+      "stockVisiblePureRoofPixels": 49,
+      "scopedPixelsChangedStrong": 98,
+      "pureRoofPixelsChangedStrong": 49,
+      "pureRoofLumaDeltaMedian": 101.0224,
+      "pureRoofChromaDeltaMedian": -12.0,
+      "anyChangePixels": 98,
+      "conservativeProjectedRoofPixels": 179,
+      "outsideConservativeProjectedRoof": 0,
+      "changedPureWallsOr11": 0,
+      "changedAlpha": 0,
+      "neutralAndRestoredStockIdentical": true,
+      "restoredProductIdentical": true,
+      "pass": true
+    },
+    {
+      "travelM": 560.2670427494393,
+      "stockVisiblePureRoofPixels": 186,
+      "scopedPixelsChangedStrong": 264,
+      "pureRoofPixelsChangedStrong": 186,
+      "pureRoofLumaDeltaMedian": 101.8098,
+      "pureRoofChromaDeltaMedian": -12.0,
+      "anyChangePixels": 264,
+      "conservativeProjectedRoofPixels": 392,
+      "outsideConservativeProjectedRoof": 0,
+      "changedPureWallsOr11": 0,
+      "changedAlpha": 0,
+      "neutralAndRestoredStockIdentical": true,
+      "restoredProductIdentical": true,
+      "pass": true
+    },
+    {
+      "travelM": 713.373332030324,
+      "stockVisiblePureRoofPixels": 0,
+      "scopedPixelsChangedStrong": 0,
+      "pureRoofPixelsChangedStrong": 0,
+      "pureRoofLumaDeltaMedian": null,
+      "pureRoofChromaDeltaMedian": null,
+      "anyChangePixels": 0,
+      "conservativeProjectedRoofPixels": 0,
+      "outsideConservativeProjectedRoof": 0,
+      "changedPureWallsOr11": 0,
+      "changedAlpha": 0,
+      "neutralAndRestoredStockIdentical": true,
+      "restoredProductIdentical": true,
+      "pass": true
+    }
+  ],
+  "pass": true
+}

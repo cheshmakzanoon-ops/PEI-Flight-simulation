@@ -1,0 +1,72 @@
+{
+  "scope": "Fresh ordinary app, uninstrumented real WebGL Dispatch checks; no render modifications.",
+  "manifest": "0f026fb2f867967aedb7e4f37efb680ef4a865d62ec7645a86faf4261544fb86",
+  "site": "new-glasgow-field-edge",
+  "cases": [
+    {
+      "veto": false,
+      "outside": [],
+      "errors": [],
+      "sourceRange": [
+        [
+          206,
+          "bytes 1153102-1160684/3844984"
+        ]
+      ],
+      "dispatch": {
+        "site": "new-glasgow-field-edge",
+        "mode": "dispatch",
+        "x": -13698.88457588271,
+        "z": 10228.163314721842,
+        "heading": 3.9269908169872414,
+        "altitude": 117.25175813230578,
+        "camera": "Chase",
+        "roads": true,
+        "buildings": true,
+        "mainland": true,
+        "hedgerows": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 3287
+        },
+        "newGlasgowRoofTone": true
+      }
+    },
+    {
+      "veto": true,
+      "outside": [],
+      "errors": [],
+      "sourceRange": [
+        [
+          206,
+          "bytes 1153102-1160684/3844984"
+        ]
+      ],
+      "dispatch": {
+        "site": "new-glasgow-field-edge",
+        "mode": "dispatch",
+        "x": -13698.88457588271,
+        "z": 10228.163314721842,
+        "heading": 3.9269908169872414,
+        "altitude": 117.25175813230578,
+        "camera": "Chase",
+        "roads": true,
+        "buildings": true,
+        "mainland": true,
+        "hedgerows": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 3287
+        },
+        "newGlasgowRoofTone": false
+      }
+    }
+  ],
+  "pass": true
+}

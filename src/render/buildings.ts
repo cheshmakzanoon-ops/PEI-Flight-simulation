@@ -43,6 +43,7 @@ import {GREEN_GABLES_BARN} from './green-gables-barn-spec.ts';
 import {GREEN_GABLES_REVIEW} from './green-gables-review-spec.ts';
 import {matchesHangar4,emitHangar4,hangar4GLSL} from './hangar4.ts';
 import {readRoofTone} from './roof-tone.ts';
+import {NEW_GLASGOW_ROOF_ROW,NEW_GLASGOW_ROOF_TILE,NEW_GLASGOW_ROOF_TONE,newGlasgowRoofAllows,newGlasgowRoofAtlasAllows} from './new-glasgow-roof-tone.ts';
 import {RUSTICO_HARBOUR_ROOF_ROW,RUSTICO_HARBOUR_ROOF_TILE,RUSTICO_HARBOUR_ROOF_TONE,rusticoHarbourRoofAllows,rusticoHarbourRoofAtlasAllows} from './rustico-harbour-roof.ts';
 import {OLEARY_ACCESS_ROOF_COLOR,OLEARY_ACCESS_ROOF_TILE,olearyAccessRoofTile,olearyAccessRoofOrdinal} from './oleary-access-roof-tone.ts';
 import {readNeutralRoof,neutralRoofHeight,neutralRoofTriangles,neutralRoofEdge} from './neutral-roof.ts';
@@ -234,6 +235,13 @@ export class Buildings {
  private readonly waterStreetMat?:THREE.ShaderMaterial;
  private readonly rusticoNeutralMat?:THREE.ShaderMaterial;
  private readonly rusticoRoof:boolean;
+ private newGlasgowRoofTone=false;
+ enableNewGlasgowRoofTone(){this.newGlasgowRoofTone=true;}
+ /** Resident daytime finish, not a visibility claim. */
+ get newGlasgowRoofToneActive(){
+  const owner=this.meshes.get(NEW_GLASGOW_ROOF_TILE);
+  return !!owner?.visible&&owner.parent===this.scene&&owner.userData.newGlasgowRoofTone===true;
+ }
  private rusticoHarbourRoof=false;
  private olearyAccessRoof=false;
  enableOlearyAccessRoof(){this.olearyAccessRoof=true;}
@@ -1096,6 +1104,7 @@ export class Buildings {
    const candidate=pinned&&this.atlasHash===pinned.pack&&tile.offset===pinned.offset&&
     tile.bytes===pinned.bytes&&!!globalThis.crypto?.subtle;
    const rusticoCandidate=this.rusticoRoof&&tile.id===RUSTICO_MASSING_TILE&&!!globalThis.crypto?.subtle;
+   const newGlasgowRoofCandidate=this.newGlasgowRoofTone&&newGlasgowRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const harbourRoofCandidate=this.rusticoHarbourRoof&&rusticoHarbourRoofAtlasAllows(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const standardRusticoCandidate=this.standardRusticoNeighbour&&standardRusticoNeighbourTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
    const olearyAccessCandidate=this.olearyAccessRoof&&!this.olearySeat&&olearyAccessRoofTile(this.atlasHash,tile)&&!!globalThis.crypto?.subtle;
@@ -1135,7 +1144,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||rimTap||kings||nativeChurch||seawardRoofTap){
+   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||newGlasgowRoofCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||rimTap||kings||nativeChurch||seawardRoofTap){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -1160,7 +1169,7 @@ export class Buildings {
     if(tryStation&&railOwnerAllows(features))stationBytes=raw;
     if(tryStDavids&&stDavidsOwnerAllows(features))stDavidsBytes=raw;
     // Bounded appearances share a single digest of the already-read chunk.
-    if(rusticoCandidate||standardRusticoCandidate||princeCandidate||harbourRoofCandidate||olearyAccessCandidate||olearyRoofCandidate||sourisWestCandidate)try{
+    if(rusticoCandidate||standardRusticoCandidate||princeCandidate||newGlasgowRoofCandidate||harbourRoofCandidate||olearyAccessCandidate||olearyRoofCandidate||sourisWestCandidate)try{
      const digest=await crypto.subtle.digest('SHA-256',raw);
      massingChunk=Array.from(new Uint8Array(digest),c=>c.toString(16).padStart(2,'0')).join('');
     }catch{/** A crypto failure is stock geometry, not a missing streamed tile. */}
@@ -1495,9 +1504,10 @@ export class Buildings {
   // Record only changed spans; allocate the GPU lane once after emission.
   const tileWall=tile.id==='q1333'&&this.eastWallOptics?this.eastWallOptics:this.townWallOptics;
   const townSpans=tileWall&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,tileWall.areas)?[] as number[]:undefined;
-  let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false,paintedOlearyAccessRoof=false;
+  let facade=0,measuredDowntownRoofs=0,measuredWaterRoof=false,paintedHarbourRoof=false,paintedOlearyAccessRoof=false,paintedNewGlasgowRoof=false;
   const westWall=this.sourisWestLink?sourisFacingAdmittedEdge(this.atlasHash,tile,massingChunk,features):undefined;
   let westSpan:readonly [number,number]|undefined;
+  const newGlasgowRoofRow=this.newGlasgowRoofTone&&newGlasgowRoofAllows(this.atlasHash,tile,massingChunk,features)?NEW_GLASGOW_ROOF_ROW:-1;
   const harbourRoofRow=this.rusticoHarbourRoof&&rusticoHarbourRoofAllows(this.atlasHash,tile,massingChunk,features)?RUSTICO_HARBOUR_ROOF_ROW:-1;
   const olearyAccessRow=this.olearyAccessRoof&&!this.olearySeat?olearyAccessRoofOrdinal(this.atlasHash,tile,massingChunk,features):undefined;
   const vertex=(p:Pt,y:number,c:THREE.Color,u:number,v:number,r:number)=>{P.push(p.x-ox,y,p.z-oz);C.push(c.r,c.g,c.b);UV.push(u,v);R.push(r);F.push(facade);};
@@ -1689,8 +1699,11 @@ export class Buildings {
    // documentary tone. No opacity, role, new triangle or optical shader.
    const membrane=i===olearyAccessRow&&!observed&&!synthGable&&!fit&&!neutral&&facade===0;
    if(membrane)paintedOlearyAccessRoof=true;
+   // Only the unclassified flat stock cap receives the illustrative swatch.
+   const paleFieldRoof=i===newGlasgowRoofRow&&rings.length===1&&!observed&&!synthGable&&!fit&&!neutral&&!compound&&facade===0;
+   if(paleFieldRoof)paintedNewGlasgowRoof=true;
    const roofColor=observed?new THREE.Color().setRGB(...observed):pale?new THREE.Color(RUSTICO_HARBOUR_ROOF_TONE):
-    membrane?new THREE.Color(OLEARY_ACCESS_ROOF_COLOR):cr;
+    membrane?new THREE.Color(OLEARY_ACCESS_ROOF_COLOR):paleFieldRoof?new THREE.Color(NEW_GLASGOW_ROOF_TONE):cr;
    if(pale)paintedHarbourRoof=true;
    const roofVert=(p:Pt,y:number)=>vertex(p,y,roofColor,p.x-ox,p.z-oz,1);
    if(synthGable&&!fit&&!neutral&&!compound){
@@ -1758,6 +1771,7 @@ export class Buildings {
   if(actualRustico)mesh.userData.rusticoMassing=true;
   if(paintedHarbourRoof)mesh.userData.rusticoHarbourRoofTone=true;
   if(paintedOlearyAccessRoof)mesh.userData.olearyAccessRoofTone=true;
+  if(paintedNewGlasgowRoof)mesh.userData.newGlasgowRoofTone=true;
   if(markBarn&&barnStart>=0&&barnEnd>barnStart)mesh.userData.barnTriangles=[barnStart,barnEnd];
   if(exteriorOrdinal!==undefined&&beaconStart>=0&&beaconEnd>beaconStart)mesh.userData.beaconTriangles=[beaconStart,beaconEnd];
   if(wharfSpans)mesh.userData.spinnakersSpans=wharfSpans;

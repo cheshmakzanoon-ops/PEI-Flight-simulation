@@ -508,6 +508,22 @@ export function standardRusticoNeighbourRequested(q:URLSearchParams){
   profiles.length<=1&&profiles.every(v=>!v||v==='standard')&&standardComparisonQuery(q);
 }
 
+export const NEW_GLASGOW_ROOF_STOCK='stockNewGlasgowRoofTone';
+/** Own only this comparison flag. Other previews still receive each original
+ * component, including literal consent text, duplicates and unknown tokens. */
+export function withoutNewGlasgowRoofStock(search:string){
+ if(!new URLSearchParams(search).has(NEW_GLASGOW_ROOF_STOCK))return search;
+ const lead=search.startsWith('?'),body=lead?search.slice(1):search;
+ const kept=body.split('&').filter(k=>!new URLSearchParams('&'+k).has(NEW_GLASGOW_ROOF_STOCK)).join('&');
+ return lead&&kept?'?'+kept:kept;
+}
+/** One dated broad rooftop colour cue. Standard only; no other scenery consent. */
+export function newGlasgowRoofToneRequested(q:URLSearchParams){
+ const profile=q.getAll('scenery');
+ return !q.has(NEW_GLASGOW_ROOF_STOCK)&&!q.has('qa')&&q.getAll('departure').length<=1&&
+  profile.length<=1&&profile.every(v=>!v||v==='standard')&&standardComparisonQuery(q);
+}
+
 /** Compare just the dated q377 broad roof tone in Standard. Explicit Rustico
  * choices are local exceptions, not new compatibility rules for other layers. */
 export function rusticoHarbourRoofRequested(q:URLSearchParams){
