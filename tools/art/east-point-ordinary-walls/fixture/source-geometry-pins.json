@@ -1,0 +1,68 @@
+{
+  "scope": "CPU comparator: exact original wall geometry preserved; no native or photoreal claim.",
+  "coast": [
+    "east-cliff-v1"
+  ],
+  "owner": "bcc9434d46fb77c23f15b94c02f0a7758f3dcfcf61cfa96f6336055347f83279",
+  "vertices": 11988,
+  "fitBytes": 71928,
+  "pinnedRoles": [
+    {
+      "ordinal": 12,
+      "triangles": 12
+    },
+    {
+      "ordinal": 20,
+      "triangles": 16
+    },
+    {
+      "ordinal": 27,
+      "triangles": 12
+    },
+    {
+      "ordinal": 29,
+      "triangles": 12
+    },
+    {
+      "ordinal": 33,
+      "triangles": 12
+    },
+    {
+      "ordinal": 48,
+      "triangles": 16
+    },
+    {
+      "ordinal": 49,
+      "triangles": 12
+    },
+    {
+      "ordinal": 84,
+      "triangles": 10
+    },
+    {
+      "ordinal": 136,
+      "triangles": 10
+    },
+    {
+      "ordinal": 156,
+      "triangles": 10
+    },
+    {
+      "ordinal": 162,
+      "triangles": 10
+    },
+    {
+      "ordinal": 193,
+      "triangles": 10
+    }
+  ],
+  "markedVertices": 426,
+  "positionHash": "a5e6aaf4801b402f24490ed99e1288ae442c86d033108caa5838e190e281ba2b",
+  "fitHash": "2f21446d2d58c325862075c9842671789e43b2e5d65f6734682d6cd4b0cfe2ba",
+  "topHash": "2377a078ba4134ee374350179c76e526d35ca314f4e332c5e9bf0175bbf16aa4",
+  "ownerPos": [
+    89807.85854948164,
+    0,
+    4457.559458530726
+  ]
+}

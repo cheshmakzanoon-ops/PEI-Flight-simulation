@@ -1,0 +1,26 @@
+{
+  "nativeRoute": "d473f5978a4a84853085efe4431131d2b9655542e3ec5e5aa27d5543895d6d6f",
+  "scope": "Stock real route and exact q1333 building draw; approximate wall art, no terrain, roof, other chunks, mapped apertures, or deployment.",
+  "phases": {
+    "negative": {
+      "visible": 0,
+      "rgb": 0,
+      "strong": 0
+    },
+    "approach": {
+      "visible": 4479,
+      "rgb": 4318,
+      "strong": 3337
+    },
+    "close": {
+      "visible": 7798,
+      "rgb": 7671,
+      "strong": 6382
+    },
+    "inland": {
+      "visible": 12372,
+      "rgb": 12017,
+      "strong": 9736
+    }
+  }
+}

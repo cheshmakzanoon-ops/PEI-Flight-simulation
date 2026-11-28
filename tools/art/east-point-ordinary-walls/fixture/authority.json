@@ -1,0 +1,31 @@
+{
+  "scope": "Private A/B fixture only",
+  "baseAlreadyVerified": "5b53a72c2abd837912e72a11c85868b8dc088b9b",
+  "files": [
+    {
+      "path": "src/main.ts",
+      "stock": "1189f01f4b3ea54a16b537555e3b70f91034e7a5917bb3ca434686f5f54edf1a",
+      "fixture": "bb47f0dc48dffdbd172cad1b1559891ab7b5e9aebfc87ad9b517c8946b809783"
+    },
+    {
+      "path": "src/render/buildings.ts",
+      "stock": "dd36a71e9095f26a3f3091054f0dc1c0e9b439d943bf257d954151781ef53fcc",
+      "fixture": "f2d90c26d3d2c0dfecd65e8e680d47c76045e98c4c9ee19e2442b077de4b96d6"
+    },
+    {
+      "path": "src/render/east-village-native.ts",
+      "stock": null,
+      "fixture": "98028b9638d381a26672a14d1725977043085eb9af8c3c5dc79c5e39492f271c"
+    },
+    {
+      "path": "src/render/town-wall-optics.ts",
+      "stock": "ceec44888d5e84c207d34774ce81378994424c0a4e457284c048c339546541e7",
+      "fixture": "591cc48e0c64c64ffe23aeb6c9435137fab03cba874af9554f48502a5d0371a8"
+    },
+    {
+      "path": "vite.config.ts",
+      "stock": "7d89d44230f9ae041dfb0f1b73b0009e15ee1d4c793cf64ba629838c3afa4d05",
+      "fixture": "33af5120f9f2cc94c25a4a0a8911c04d86f9b3c9bee2b5e4caf2443d4b5aff54"
+    }
+  ]
+}

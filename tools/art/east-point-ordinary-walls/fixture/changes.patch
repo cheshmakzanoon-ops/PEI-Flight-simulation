@@ -1,0 +1,229 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -0,0 +1 @@
++import { createEastVillageNative, EAST_VILLAGE_REFERENCE } from './render/east-village-native.ts';
+@@ -735,0 +737,5 @@
++ const eastWallPrivate=(window as Window&{peiEastNativeWallKey?:string}).peiEastNativeWallKey==='q434-east-village-native-c'
++   &&location.search==='?departure=east-light&diagnostics';
++ const eastWallGain={value:0},eastWallMarker={value:-1};
++ const eastWallHarness=eastWallPrivate?createEastVillageNative(renderer,scene,camera,eastWallGain,eastWallMarker):undefined;
++ if(eastWallHarness)Object.assign(window,{peiEastVillageNative:eastWallHarness});
+@@ -737 +743 @@
+- const townWallOptics=wallMode?{panorama:sky,gain:{value:1},mode:wallMode,areas:wallMode==='core'?TOWN_WALL_CORE_AREAS:undefined}:undefined;
++ const townWallOptics=eastWallPrivate?{panorama:sky,gain:eastWallGain,areas:EAST_VILLAGE_REFERENCE,eastPrivateMarker:eastWallMarker}:wallMode?{panorama:sky,gain:{value:1},mode:wallMode,areas:wallMode==='core'?TOWN_WALL_CORE_AREAS:undefined}:undefined;
+@@ -742,0 +749 @@
++  if(eastWallHarness)eastWallHarness.observe(v.observeEastVillageChunk());
+@@ -1475 +1482,5 @@
+-    try{drawWorld();}finally{endQuay?.();}
++    try{
++     if(eastWallHarness)eastWallHarness.frame({route,mode:ui.mode,view,x:f.x,y:f.y,z:f.z,head:f.heading,roll:f.bank,
++      ready:!!roads&&!!buildings&&!!mainland,status:f.status},drawWorld);
++     else drawWorld();
++    }finally{endQuay?.();}
+--- a/src/render/buildings.ts
++++ b/src/render/buildings.ts
+@@ -880,0 +881 @@
++    if(this.eastVillageObserver?.id===id){this.eastVillageObserver.content=undefined;this.eastVillageObserver.mesh=undefined;}
+@@ -1014,0 +1016,5 @@
++ private eastVillageObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
++ observeEastVillageChunk(){
++  const a=this.eastVillageObserver={id:'q1333',offset:3260377,size:9073,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
++  return ()=>a.mesh&&a.mesh.parent===this.scene&&a.mesh.visible&&this.meshes.get(a.id)===a.mesh&&this.wanted.has(a.id)?a.content:undefined;
++ }
+@@ -1063,0 +1070 @@
++   const eye=this.eastVillageObserver,eastVillageTap=eye&&eye.id===tile.id&&eye.offset===tile.offset&&eye.size===tile.bytes;
+@@ -1072 +1079 @@
+-   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||kings||nativeChurch||seawardRoofTap){
++   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||kings||nativeChurch||seawardRoofTap){
+@@ -1080 +1087 @@
+-    if(tapped)observed=raw;
++    if(tapped||eastVillageTap)observed=raw;
+@@ -1124,0 +1132 @@
++   if(eastVillageTap&&eye){eye.content=observed;eye.mesh=mesh;}
+@@ -1428 +1436 @@
+-  const townSpans=this.townWallOptics&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
++  const townSpans=this.townWallOptics&&(!this.townWallOptics.eastPrivateMarker||tile.id==='q1333')&&townTileRegion(tile.x1,tile.z1,tile.x2,tile.z2,this.townWallOptics.areas)?[] as number[]:undefined;
+@@ -1680,0 +1689 @@
++     if(this.townWallOptics.eastPrivateMarker)mesh.userData.eastWallPrivate={stock,id:tile.id,offset:tile.offset,size:tile.bytes};
+--- /dev/null
++++ b/src/render/east-village-native.ts
+@@ -0,0 +1,163 @@
++/** Local-only scene comparison. Not a building reconstruction or product option. */
++import * as T from 'three';
++import { project } from '../sim/geo.ts';
++
++const key='q434-east-village-native-c', w=1200,h=760;
++const site=project(-61.9718333333,46.4525277778);
++const spawn=project(-61.9679,46.4507);
++const ownerSHA='bcc9434d46fb77c23f15b94c02f0a7758f3dcfcf61cfa96f6336055347f83279';
++export const EAST_VILLAGE_REFERENCE=[{id:'east-point-ordinary-shells',p:site,r:278}] as const;
++type Frame={route:string;mode:string;view:number;x:number;y:number;z:number;head:number;roll:number;ready:boolean;status:string};
++type Direct=T.WebGLRenderer['renderBufferDirect'];type Item=Parameters<Direct>;
++const marks=[['negative',28,43],['approach',213,227],['close',257,271],['inland',321,335]] as const;
++function need(x:unknown,why:string):asserts x{if(!x)throw Error(why);}
++const equal=(a:ArrayLike<unknown>,b:ArrayLike<unknown>)=>a.length===b.length&&Array.prototype.every.call(a,(v:unknown,i)=>v===b[i]);
++function as64(bytes:Uint8Array){
++ let s='';for(let i=0;i<bytes.length;i+=0x8000)s+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(s);
++}
++export function createEastVillageNative(renderer:T.WebGLRenderer,scene:T.Scene,camera:T.PerspectiveCamera,
++ gain:{value:number},marker:{value:number}){
++ const gl=renderer.getContext() as WebGL2RenderingContext,raw=renderer.renderBufferDirect;
++ let read:(()=>ArrayBuffer|undefined)|undefined,wire:ArrayBuffer|undefined,auth='pending',error='',n=0;
++ const reports:unknown[]=[];
++ let status='waiting';
++ const candidate=(f:Frame)=>f.route==='east-light'&&f.mode==='flight'&&f.view===0&&f.ready&&f.status==='flying'&&
++  Math.abs(f.head-292*Math.PI/180)<1e-10&&Math.abs(f.roll)<1e-10&&f.y>50&&f.y<74;
++ function probe(id:string,d:number,f:Frame,submit:()=>void){
++  need(renderer.getRenderTarget()===null&&renderer.renderBufferDirect===raw&&!renderer.xr.isPresenting&&!scene.overrideMaterial&&
++   !gl.isContextLost()&&!gl.isEnabled(gl.SCISSOR_TEST)&&gl.drawingBufferWidth===w&&gl.drawingBufferHeight===h&&
++   equal(gl.getParameter(gl.VIEWPORT),[0,0,w,h])&&gl.getParameter(gl.SAMPLES)===4&&gl.getParameter(gl.ALPHA_BITS)===8&&
++   gl.getParameter(gl.DEPTH_BITS)===24,'original native lens unsupported');
++  need(camera.fov===53&&camera.zoom===1&&camera.aspect===w/h,'original projection unsupported');
++  const owners=scene.children.filter(o=>o instanceof T.Mesh&&o.userData.eastWallPrivate) as T.Mesh[];
++  need(owners.length===1,'one exact resident village tile required');
++  const owner=owners[0],stamp=owner.userData.eastWallPrivate;
++  need(stamp?.id==='q1333'&&stamp.offset===3260377&&stamp.size===9073&&stamp.stock instanceof T.ShaderMaterial&&
++   owner.material instanceof T.ShaderMaterial&&!owner.geometry.index,'expected stock atlas draw');
++  const material=owner.material;
++  const p=owner.geometry.getAttribute('position'),fit=owner.geometry.getAttribute('townWallFit'),
++  topo=owner.geometry.getAttribute('topFlag');
++  need(p instanceof T.BufferAttribute&&fit instanceof T.BufferAttribute&&topo instanceof T.BufferAttribute&&
++   p.array instanceof Float32Array&&topo.array instanceof Float32Array&&fit.array instanceof Int16Array&&fit.itemSize===3&&p.count===fit.count&&fit.count===topo.count,'original and patch packed lanes');
++  need(p.count===11988&&fit.array.byteLength===71928&&fit.array.some((v,i)=>i%3===0&&v>0),'staged wall lane exceeded area or byte cap');
++  const fitAttribute=fit,position=p,topFlag=topo;
++  const vertices=p.count,programs=new Set<WebGLProgram>();
++  const area=Array.from({length:fit.count},(_,i)=>Math.abs(fit.getX(i))>15);
++  need(area.every((v,i)=>!v||topo.getX(i)===0),'patch reached a measured roof');
++  need(area.filter(Boolean).length===426,'expected signed marked vertex count');
++  const packed=(a:T.BufferAttribute)=>new Uint8Array(a.array.buffer,a.array.byteOffset,a.array.byteLength);
++  function capture(pass:string,stock:boolean,g:number,m:number){
++   gain.value=g;marker.value=m;
++   const list:Item[]=[];let target=0;
++   let vertexShader:string[]=[],modelView:number[]=[];
++   renderer.renderBufferDirect=(...a)=>{
++    list.push(a);
++    if(a[4]!==owner){raw.call(renderer,...a);return;}
++    need(++target===1&&a[0]===camera&&a[1]===scene&&a[2]===owner.geometry&&a[3]===material&&!a[5],'resident owner draw changed');
++    const actual=stock?stamp.stock:material;
++    const calls=renderer.info.render.calls,tri=renderer.info.render.triangles;
++    raw.call(renderer,a[0],a[1],a[2],actual,a[4],a[5]);
++    need(renderer.info.render.calls===calls+1&&renderer.info.render.triangles===tri+vertices/3,'actual exact owner draw count');
++    const native=gl.getParameter(gl.CURRENT_PROGRAM) as WebGLProgram;
++    need(gl.getProgramParameter(native,gl.LINK_STATUS)&&gl.getParameter(gl.DEPTH_WRITEMASK)&&gl.isEnabled(gl.DEPTH_TEST),'no original opaque owner render');
++    function binding(name:string,lane:T.BufferAttribute,type:number){
++     const a=gl.getAttribLocation(native,name);
++     need(a>=0&&gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_ENABLED)&&
++      gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_TYPE)===type&&gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_SIZE)===lane.itemSize&&
++      !gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_NORMALIZED)&&gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_DIVISOR)===0&&
++      [0,lane.itemSize*lane.array.BYTES_PER_ELEMENT].includes(gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_STRIDE))&&
++      gl.getVertexAttribOffset(a,gl.VERTEX_ATTRIB_ARRAY_POINTER)===0,'invalid native '+name);
++     const gpu=gl.getVertexAttrib(a,gl.VERTEX_ATTRIB_ARRAY_BUFFER_BINDING) as WebGLBuffer;
++     const bytes=new Uint8Array(lane.array.byteLength),old=gl.getParameter(gl.COPY_READ_BUFFER_BINDING);
++     need(gpu,'native lane buffer absent '+name);
++     try{gl.bindBuffer(gl.COPY_READ_BUFFER,gpu);gl.getBufferSubData(gl.COPY_READ_BUFFER,0,bytes);
++      need(equal(bytes,packed(lane)),'actual native words changed '+name);
++     }finally{gl.bindBuffer(gl.COPY_READ_BUFFER,old);}
++    }
++    if(stock||g===1&&m===-1){binding('position',position,gl.FLOAT);binding('topFlag',topFlag,gl.FLOAT);}
++    const loc=gl.getAttribLocation(native,'townWallFit');
++    if(stock)need(loc<0,'stock owner unexpectedly declared experimental data');
++    else{
++     programs.add(native);
++     for(const [field,value] of [['townWallGain',g],['eastWallNativeMarker',m]] as const){
++      const u=gl.getUniformLocation(native,field);need(u&&gl.getUniform(native,u)===value,'wrong native '+field);
++     }
++     need(loc>=0&&gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_TYPE)===gl.SHORT&&
++      gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_SIZE)===3&&!gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_NORMALIZED)&&
++      gl.getVertexAttrib(loc,gl.VERTEX_ATTRIB_ARRAY_DIVISOR)===0&&gl.getVertexAttribOffset(loc,gl.VERTEX_ATTRIB_ARRAY_POINTER)===0,
++      'wrong native signed short fitted wall lane');
++     if(m===-1&&g===1)binding('townWallFit',fitAttribute,gl.SHORT);
++    }
++    vertexShader=(gl.getAttachedShaders(native)??[]).map(q=>gl.getShaderSource(q)??'');
++    modelView=owner.modelViewMatrix.elements.slice();
++    for(const [field,values] of [['modelViewMatrix',modelView],['projectionMatrix',camera.projectionMatrix.elements]] as const){
++     // This stock shader uses separate viewMatrix/modelMatrix, not modelViewMatrix.
++     const u=gl.getUniformLocation(native,field);
++     if(field==='projectionMatrix'||u)need(u&&equal(gl.getUniform(native,u),Float32Array.from(values)),'unexpected native matrix');
++    }
++    const vm=gl.getUniformLocation(native,'viewMatrix'),mm=gl.getUniformLocation(native,'modelMatrix');
++    need(vm&&mm&&equal(gl.getUniform(native,vm),Float32Array.from(camera.matrixWorldInverse.elements))&&
++     equal(gl.getUniform(native,mm),Float32Array.from(owner.matrixWorld.elements)),'wrong native world or view matrix');
++   };
++   try{submit();}finally{renderer.renderBufferDirect=raw;gain.value=0;marker.value=-1;}
++   need(target===1&&vertexShader.length===2,'actual signed owner not submitted: '+pass);
++   const rgba=new Uint8Array(w*h*4);gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,rgba);
++   need(gl.getError()===gl.NO_ERROR,'readback error');
++   const stats=[renderer.info.render.calls,renderer.info.render.triangles,renderer.info.render.lines,renderer.info.render.points];
++   return {list,rgba,png:renderer.domElement.toDataURL('image/png'),stats,vertexShader,modelView};
++  }
++  const base=capture('stock',true,0,-1);
++  const neutral=capture('neutral',false,0,-1);
++  const fitted=capture('fitted',false,1,-1);
++  const black=capture('mask-dark',false,1,0);
++  const white=capture('mask-light',false,1,1);
++  const restore=capture('rollback',true,0,-1);
++  const all={base,neutral,fitted,black,white,restore};
++  need(programs.size===1,'stock-neutral and mask were not one linked program');
++  for(const k of Object.values(all)){
++   need(equal(k.stats,base.stats)&&equal(k.modelView,base.modelView)&&k.list.length===base.list.length&&
++    k.list.every((x,i)=>equal(x,base.list[i])),'unrelated world submission changed');
++  }
++  need(equal(neutral.rgba,base.rgba)&&equal(restore.rgba,base.rgba),'original stock visual rollback changed');
++  const states=Object.values(all).map(x=>x.rgba);
++  let rgb=0,strong=0,visible=0,outer=0,alpha=0;
++  for(let j=0;j<base.rgba.length;j+=4){
++   const a=fitted.rgba,b=base.rgba,u=white.rgba,v=black.rgba;
++   const changed=Math.max(Math.abs(a[j]-b[j]),Math.abs(a[j+1]-b[j+1]),Math.abs(a[j+2]-b[j+2]));
++   const mark=Math.max(u[j]-v[j],u[j+1]-v[j+1],u[j+2]-v[j+2])>0;
++   if(mark)visible++;
++   if(changed){rgb++;if(changed>2)strong++;if(!mark)outer++;}
++   if(states.some(x=>x[j+3]!==b[j+3]))alpha++;
++  }
++  const scores={rgb,strong,visible,outer,alpha};
++  const packedData=id==='close'?{position:as64(packed(p)),wallFit:as64(packed(fit)),topFlag:as64(packed(topo))}:undefined;
++  reports.push({key,id,d,f,build:{wire:ownerSHA,vertices,fitVertices:area.filter(Boolean).length,bytes:fit.array.byteLength},
++   scores,passes:Object.fromEntries(Object.entries(all).map(([k,v])=>[k,{png:v.png,stats:v.stats,shaders:v.vertexShader,modelView:v.modelView}])),
++   packedData,projection:camera.projectionMatrix.elements.slice(),eye:camera.position.toArray()});
++  need(!alpha&&!outer,'fitted authored detail touched the exterior');
++  if(id==='negative')need(!rgb&&!visible,'far original view changed');
++  else need(strong>=24,'insufficient actual fitting pixels');
++ }
++ return {
++  observe(r:()=>ArrayBuffer|undefined){read=r;},
++  state:()=>({key,auth,status,n,queued:reports.length,error}),
++  take:()=>reports.shift(),
++  frame(f:Frame,submit:()=>void){
++   if(auth==='pending'){
++    const w=read?.();
++    if(w&&w.byteLength===9073){
++     auth='checking';void crypto.subtle.digest('SHA-256',w).then(v=>{
++      if(Array.from(new Uint8Array(v),x=>x.toString(16).padStart(2,'0')).join('')===ownerSHA){auth='verified';wire=w;}else auth='held';
++     }).catch(()=>auth='held');
++    }
++   }
++   if(status==='complete'||status==='held'||f.mode!=='flight'){submit();return;}
++   status='active';const d=Math.hypot(f.x-spawn.x,f.z-spawn.z),p=marks[n];
++   if(d<p[1]){submit();return;}
++   try{
++    need(auth==='verified'&&read?.()===wire&&candidate(f)&&d<=p[2],'missed signed ordinary route checkpoint '+p[0]);
++    probe(p[0],d,f,submit);n++;if(n===marks.length)status='complete';
++   }catch(e){status='held';error=String(e);gain.value=0;marker.value=-1;submit();}
++  }
++ };
++}
+--- a/src/render/town-wall-optics.ts
++++ b/src/render/town-wall-optics.ts
+@@ -6 +6 @@
+-export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number};mode?:TownWallMode;areas?:readonly WallArea[]}>;
++export type TownWallOptics=Readonly<{panorama:Texture;gain:{value:number};mode?:TownWallMode;areas?:readonly WallArea[];eastPrivateMarker?:{value:number}}>;
+@@ -146,0 +147,6 @@
++ if(optics.eastPrivateMarker){
++  m.uniforms.eastWallNativeMarker=optics.eastPrivateMarker;
++  m.fragmentShader=m.fragmentShader.replace('void main(){','uniform float eastWallNativeMarker;\nvoid main(){')
++   .replace('#include <colorspace_fragment>',`#include <colorspace_fragment>
++   if(eastWallNativeMarker>=0.&&roof<.5&&abs(townWall.x)>.15&&d<255.&&facade<.5)gl_FragColor.rgb=vec3(eastWallNativeMarker);`);
++ }
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -4,0 +5 @@
++  copyPublicDir:false,
