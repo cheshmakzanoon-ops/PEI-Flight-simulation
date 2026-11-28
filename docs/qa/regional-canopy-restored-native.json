@@ -1,0 +1,192 @@
+{
+  "scope": "Native browser, real ordinary flight with untouched input/clock/camera/world. Same-frame diagnostics temporarily isolate one original supplemental stand at two gains.",
+  "queens": {
+    "id": "0911576",
+    "counts": 364,
+    "profile": {
+      "samples": 4,
+      "alpha": true
+    },
+    "exactStockRestored": true,
+    "exactNaturalRestored": true,
+    "camera": [
+      -14101.858091973718,
+      175.79931751923988,
+      11048.79134321759
+    ],
+    "aircraft": [
+      -14079.736645142473,
+      171.63028888597117,
+      11048.82588346891
+    ],
+    "clock": 48441.3,
+    "movementM": 69.49449805859285,
+    "stock": {
+      "draws": 254,
+      "tris": 413596,
+      "error": 0,
+      "sha256": "d8645946639569dfd965023787933441382bde31d11a3a178fcb58953806fced"
+    },
+    "bands": {
+      "partial": {
+        "actualGain": 0.55,
+        "markerPixels": 8806,
+        "rgbPixels": 8784,
+        "rgbPixelsAbove2": 8355,
+        "rgbOutsideMarker": 0,
+        "outsideAbove2": 0,
+        "alphaDifferent": 0,
+        "markerAlphaDifferent": 0,
+        "art": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "96f458335bf5ae9958b0c1e9fed1aee67cec84360d7c021a2e9bbc200da7a689"
+        },
+        "roleA": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "7b82aac151496734da5a5be2b24c39f34cba9510b7f77c24dbef84f263771b66"
+        },
+        "roleB": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "e38ca4462bcd0ebfadb7b4819f9cb6b48c35d32dde8dbabda6c4b6ed1ce52d73"
+        }
+      },
+      "full": {
+        "actualGain": 1,
+        "markerPixels": 9576,
+        "rgbPixels": 9565,
+        "rgbPixelsAbove2": 9356,
+        "rgbOutsideMarker": 0,
+        "outsideAbove2": 0,
+        "alphaDifferent": 0,
+        "markerAlphaDifferent": 0,
+        "art": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "bef2bd82407c9623524635a4a9e9e747d9313bf59d820df90035a6328d4292d5"
+        },
+        "roleA": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "82a6c0e4340fe97ab1fff4461baf1114c1612fe1e6622f8af149952c42c3627c"
+        },
+        "roleB": {
+          "draws": 255,
+          "tris": 414324,
+          "error": 0,
+          "sha256": "9a5e43b2dacd0e54ce1f91ed159f4360a1d15f63960bbe7d92853b8e2c95b5b9"
+        }
+      }
+    },
+    "controls": true
+  },
+  "kings": {
+    "id": "1900486",
+    "counts": 201,
+    "profile": {
+      "samples": 4,
+      "alpha": true
+    },
+    "exactStockRestored": true,
+    "exactNaturalRestored": true,
+    "camera": [
+      78500.1136485619,
+      164.60081764788188,
+      10292.825607639805
+    ],
+    "aircraft": [
+      78522.232131569,
+      160.43163085544865,
+      10292.860130182076
+    ],
+    "clock": 38137.2,
+    "movementM": 67.09503352946237,
+    "stock": {
+      "draws": 152,
+      "tris": 406842,
+      "error": 0,
+      "sha256": "f8fd5b8500a50841d39e750e93531d7a93eef3427d041d21600de00f852f97e1"
+    },
+    "bands": {
+      "partial": {
+        "actualGain": 0.55,
+        "markerPixels": 2265,
+        "rgbPixels": 2257,
+        "rgbPixelsAbove2": 2183,
+        "rgbOutsideMarker": 0,
+        "outsideAbove2": 0,
+        "alphaDifferent": 0,
+        "markerAlphaDifferent": 0,
+        "art": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "6119a9a3d60adb44baa28ac2ef83122a16ad6587d084516579b2a19459b7030e"
+        },
+        "roleA": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "ba32c4370eb38106e3d962bded55cee0bef65fbab9e9b1f8dd5735a23a73a6cf"
+        },
+        "roleB": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "f5f43635379664de855d151577e387f6b99fe21ac9e2068b8cde6ab2ead65b9f"
+        }
+      },
+      "full": {
+        "actualGain": 1,
+        "markerPixels": 2555,
+        "rgbPixels": 2550,
+        "rgbPixelsAbove2": 2490,
+        "rgbOutsideMarker": 0,
+        "outsideAbove2": 0,
+        "alphaDifferent": 0,
+        "markerAlphaDifferent": 0,
+        "art": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "38fe713baf462af308bd4caccc2f8d61feb45d1259456e6922306c0c1f80f748"
+        },
+        "roleA": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "4ab019a7f14579d4e2ba51e1b8fa3ae84eba171d8c1e8da9aa75f36fdc7b58e0"
+        },
+        "roleB": {
+          "draws": 153,
+          "tris": 407244,
+          "error": 0,
+          "sha256": "e09d87a4d885d5a7372bd3edc314a289d7dc820a33c51704961570c54b6cbb04"
+        }
+      }
+    },
+    "controls": true
+  },
+  "displayCropsXYXY": {
+    "queens": [
+      0,
+      294,
+      636,
+      432
+    ],
+    "kings": [
+      127,
+      289,
+      425,
+      411
+    ]
+  },
+  "comparisonSHA256": "aa3c38846746ed40f2636e6e01b760f3ad76b1be7feaedc40f5ca02273f79b70"
+}

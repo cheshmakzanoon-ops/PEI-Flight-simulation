@@ -62,6 +62,64 @@ inferred crowns at right.
 
 ![Kings woodland view, original and canopy study](regional-canopy-kings.webp)
 
+## Compatibility with Standard's close foliage
+
+The two existing regional stands use the current Standard leaf material.
+The older supplemental shader check could authenticate, download and
+prepare a stand but then reject the newer leaf declaration before drawing
+it. This repair recognizes only the exact stock shader pair with its
+registered sun, canopy sampler and alpha-preserving multisampled blend.
+The old explicit and unlit variants keep their previous behavior.
+
+The original inference, crown dimensions, geographic bounds, vegetation
+and terrain tests, and dated resource files do not change. The new
+compatible clone borrows the existing canopy sampler rather than
+cloning the stock texture, and keeps the original regional
+opacity fade. `?stockRegionalCanopy` still shows the old stock landscape
+without the supplemental packs.
+
+| Ordinary Standard flight | Existing regional crowns restored | Moving Chase checkpoint |
+| --- | ---: | ---: |
+| Queens · woodland pass | 364 | 95.856 m |
+| Kings · woodland pass | 201 | 95.254 m |
+
+Both renderer checks used the regular departure and controls, at
+full regional opacity, with one exact original resource request each.
+These are existing inferred crowns, not new mapped trees or measured
+coverage across either county.
+
+![Paired unchanged camera views before and after the existing regional crowns were restored](regional-canopy-standard-restored.webp)
+
+The [same-frame native capture](regional-canopy-restored-native.json)
+tested each original stand in an actual moving Chase flight, at partial
+visibility (0.55) and full visibility. The camera, ground, old scene
+and aircraft were held at the same actual frame for each pair.
+
+| Regular Standard grove | Partial RGB changes above 2 codes | Full RGB changes above 2 codes |
+| --- | ---: | ---: |
+| Queens 0911576 | 8,355 | 9,356 |
+| Kings 1900486 | 2,183 | 2,490 |
+
+Both partial and full comparisons had zero alpha changes and zero changed
+RGB outside the native role witness. Stock and the natural in-flight
+state restored exactly. The original single instanced draw adds 728
+triangles in Queens or 402 in Kings; these are draw counts, not
+performance measurements.
+
+The [regular product flights](regional-canopy-restored-ordinary.json)
+used the uninstrumented package. The stock control moved about 99 m
+without loading or drawing the supplemental layer.
+
+The [compatibility controls](regional-canopy-restored-controls.json)
+also exercised the old explicit mode in both counties, keeping its
+original results. Detail and altered land cover made no supplemental
+requests. A corrupt pack was rejected without drawing a substitute.
+On the separate low Queens woodland-view start, the normal manual
+selection made no supplemental request. The bookmarked history kept
+its verified source and could draw the restored regional crowns at
+partial visibility, using the existing altitude fade. Neither
+low start was given a new manual height handoff in this change.
+
 ## Runtime boundaries
 
 This is a canopy layer seen from above, not new near-ground tree

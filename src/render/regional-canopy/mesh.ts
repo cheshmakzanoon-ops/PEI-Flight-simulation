@@ -1,5 +1,6 @@
-import {keepSupplementalCanopyLegacyBlend} from '../canopy-coverage-alpha.ts';
+import {inheritedCanopyCoverageBlend,keepSupplementalCanopyLegacyBlend} from '../canopy-coverage-alpha.ts';
 import * as T from 'three';
+import {STOCK_LEAF_CROWN_PROGRAM} from '../stock-crown-program.ts';
 import type {CanopyRow} from './assets.ts';
 import type {RegionalStand} from './spec.ts';
 export type CanopySeat=(x:number,z:number,h:number,w:number)=>number|undefined;
@@ -10,11 +11,15 @@ export function createRegionalCanopy(scene:T.Scene,base:T.ShaderMaterial,s:Regio
  const total=rows.length;
  const keys=Object.keys(base.uniforms);
  const sun=base.uniforms.canopySun?.value;
- const directional=keys.length===2&&keys.includes('canopySun')&&sun?.isVector3===true&&
-    [sun.x,sun.y,sun.z].every(Number.isFinite)&&Math.abs(sun.lengthSq()-1)<.01&&
-    base.vertexShader.includes('uniform vec3 canopySun; varying vec3 cardSun;')&&
+ const legacyPair=base.vertexShader.includes('uniform vec3 canopySun; varying vec3 cardSun;')&&
     base.fragmentShader.includes('varying vec3 cardSun;');
- if(total!==s.count||!base.isShaderMaterial||!base.alphaToCoverage||base.transparent||!base.depthTest||!base.depthWrite||
+ const leafPair=base.vertexShader===STOCK_LEAF_CROWN_PROGRAM.vertexShader&&
+    base.fragmentShader===STOCK_LEAF_CROWN_PROGRAM.fragmentShader;
+ const directional=keys.length===2&&keys.includes('canopySun')&&sun?.isVector3===true&&
+    [sun.x,sun.y,sun.z].every(Number.isFinite)&&Math.abs(sun.lengthSq()-1)<.01&&(legacyPair||leafPair);
+ // The newly restored exact Standard leaf cohort only runs when the live
+ // stock pass demonstrably preserves opaque scene alpha with MSAA coverage.
+ if((leafPair&&(!directional||!inheritedCanopyCoverageBlend(base)))||total!==s.count||!base.isShaderMaterial||!base.alphaToCoverage||base.transparent||!base.depthTest||!base.depthWrite||
     base.side!==T.DoubleSide||(keys.length!==1&&!directional)||!base.uniforms.canopy?.value?.isTexture||
     base.fragmentShader.split(anchor).length!==2)return;
  const stems=new Float32Array(total*3),shapes=new Float32Array(total*4),bound=new T.Box3();
@@ -32,8 +37,11 @@ export function createRegionalCanopy(scene:T.Scene,base:T.ShaderMaterial,s:Regio
   bound.expandByPoint(new T.Vector3(x-r,stems[i*3+1]+.47*h-vertical-.025,z-r));
   bound.expandByPoint(new T.Vector3(x+r,stems[i*3+1]+.65*h+vertical+.025,z+r));
  }
- const mat=base.clone();
- keepSupplementalCanopyLegacyBlend(mat);
+ // The original legacy paths retain their last reviewed behavior. For
+ // the newly compatible stock program, copy parameters without cloning a
+ // throw-away copy of the stock texture and invalidating its shared Source.
+ const mat=leafPair?new T.ShaderMaterial().copy(Object.create(base,{uniforms:{value:{}}})):base.clone();
+ if(!leafPair)keepSupplementalCanopyLegacyBlend(mat);
  // Share the existing owned sampler object; no new texture or atlas upload.
  mat.uniforms={...base.uniforms,regionalCanopyAlpha:{value:0}};
  mat.fragmentShader='uniform float regionalCanopyAlpha;\n'+base.fragmentShader.replace(anchor,anchor+'*regionalCanopyAlpha');

@@ -97,3 +97,48 @@ test('signed crown mesh borrows the original sampler and only the registered dir
  assert.equal(pass.mesh.material.uniforms.canopy,texture);
  pass.dispose();assert.equal(scene.children.length,0);
 });
+
+test('the exact Standard near-leaf shader seats the existing Queens and Kings crowns; altered peers fail closed',async()=>{
+ const {Scene,ShaderMaterial,Texture,Vector3,DoubleSide}=await import('three');
+ const {STOCK_LEAF_CROWN_PROGRAM}=await import('../src/render/stock-crown-program.ts');
+ const {inheritedCanopyCoverageBlend,opaqueCanopyCoverageBlend}=await import('../src/render/canopy-coverage-alpha.ts');
+ const {createRegionalCanopy}=await import('../src/render/regional-canopy/mesh.ts');
+ const alpha='clamp((a-.30)*3.8,0.,1.)';
+ const {createHash}=await import('node:crypto');
+ const sha=(s:string)=>createHash('sha256').update(s).digest('hex');
+ assert.equal(sha(STOCK_LEAF_CROWN_PROGRAM.vertexShader),'7cdc5727c9ddd750358ff213f6f2f6c9e07cfb3f927eb0ac2744d799795f0176');
+ assert.equal(sha(STOCK_LEAF_CROWN_PROGRAM.fragmentShader),'0b87f025c69132184c76a824fe86163d202cce3b3f0f50d54c0350f1ad2fc2d8');
+ assert(!STOCK_LEAF_CROWN_PROGRAM.vertexShader.includes('uniform vec3 canopySun; varying vec3 cardSun;'));
+ for(const spec of REGIONAL_STANDS){
+  const packed=readFileSync(new URL('../public/world/regional-canopy-v1/'+spec.file,import.meta.url));
+  const rows=decodeRegionalCanopy(bytes(gunzipSync(packed)),spec);assert(rows);
+  const scene=new Scene(),sampler={value:new Texture()},sun={value:new Vector3(.5,.8,.4).normalize()};
+  const base=new ShaderMaterial({side:DoubleSide,alphaToCoverage:true,uniforms:{canopy:sampler,canopySun:sun},...opaqueCanopyCoverageBlend,...STOCK_LEAF_CROWN_PROGRAM});
+  const seat=(x:number,z:number)=>x===rows[0][0]&&z===rows[0][1]?spec.seats[0]:spec.seats[1];
+  const originalSourceVersion=sampler.value.source.version;
+  const shape=createRegionalCanopy(scene,base,spec,rows,seat);assert(shape);
+  assert.equal(sampler.value.source.version,originalSourceVersion);
+  assert.equal(shape.total,spec.count);assert(!shape.mesh.visible);
+  assert.equal(inheritedCanopyCoverageBlend(shape.mesh.material),opaqueCanopyCoverageBlend);
+  assert.equal(shape.mesh.material.uniforms.canopy,sampler);
+  assert.equal(shape.mesh.material.uniforms.canopySun,sun);
+  assert.equal(shape.mesh.material.vertexShader,STOCK_LEAF_CROWN_PROGRAM.vertexShader);
+  assert.equal(shape.mesh.material.fragmentShader,'uniform float regionalCanopyAlpha;\n'+STOCK_LEAF_CROWN_PROGRAM.fragmentShader.replace(alpha,alpha+'*regionalCanopyAlpha'));
+  assert.equal(base.fragmentShader,STOCK_LEAF_CROWN_PROGRAM.fragmentShader);
+  assert(!Object.hasOwn(base.uniforms,'regionalCanopyAlpha'));
+  shape.gainTo(1);assert(shape.mesh.visible);shape.dispose();assert.equal(scene.children.length,0);
+  // Same declarations and varying names, but not the exact live program.
+  for(const [key,value] of [['vertexShader',base.vertexShader],['fragmentShader',base.fragmentShader]] as const){
+   base[key]=value+'/* different program */';
+   assert.equal(createRegionalCanopy(scene,base,spec,rows,seat),undefined);
+   base[key]=value;
+  }
+  assert.equal(createRegionalCanopy(scene,base,spec,rows,()=>undefined),undefined);
+  const noOpaque=new ShaderMaterial({side:DoubleSide,alphaToCoverage:true,uniforms:{canopy:sampler,canopySun:sun},...STOCK_LEAF_CROWN_PROGRAM});
+  assert.equal(createRegionalCanopy(scene,noOpaque,spec,rows,seat),undefined);noOpaque.dispose();
+  const noSun=new ShaderMaterial({side:DoubleSide,alphaToCoverage:true,uniforms:{canopy:sampler},...opaqueCanopyCoverageBlend,...STOCK_LEAF_CROWN_PROGRAM});
+  assert.equal(createRegionalCanopy(scene,noSun,spec,rows,seat),undefined);noSun.dispose();
+  assert.equal(scene.children.length,0);
+  base.dispose();sampler.value.dispose();
+ }
+});

@@ -1,0 +1,260 @@
+{
+  "scope": "Actual compiled candidate, independent legacy and failure controls, and both lower Queens launch paths; no scene/time/camera overrides.",
+  "rawReceiptSHA256": {
+    "extra-negatives": "e6242a820f93a3d81d52c550b83ffcbd35d3abe248bc828b685b87c9e05ba7da",
+    "extra-legacy": "4421a48a33fd52e741ecc928a9726e00f77317bf9261160998c7e5918248c42d",
+    "extra-low": "49728f5e6603bb99718ff2878a6a63b60669d86d4a796353262e68a3ee161fdd"
+  },
+  "legacyExplicit": [
+    {
+      "mode": "queens",
+      "site": "queens-canopy-pass",
+      "distanceM": 100.052,
+      "packRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "0911576",
+        "draw": 364,
+        "gain": 1,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    },
+    {
+      "mode": "kings",
+      "site": "kings-canopy-pass",
+      "distanceM": 97.053,
+      "packRequests": [
+        "1900486-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": "1900486",
+        "draw": 201,
+        "gain": 1,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": true,
+            "roster": "ready",
+            "pack": "ready",
+            "requests": 1,
+            "seat": "ready"
+          }
+        ]
+      },
+      "console": []
+    }
+  ],
+  "negative": [
+    {
+      "mode": "detail",
+      "site": "queens-canopy-pass",
+      "distanceM": 98.852,
+      "packRequests": [],
+      "state": {},
+      "console": []
+    },
+    {
+      "mode": "wrong-cover",
+      "site": "queens-canopy-pass",
+      "distanceM": 97.656,
+      "packRequests": [],
+      "state": {},
+      "console": []
+    },
+    {
+      "mode": "corrupt-pack",
+      "site": "queens-canopy-pass",
+      "distanceM": 95.855,
+      "packRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "state": {
+        "layers": "ready",
+        "cover": "ready",
+        "active": null,
+        "draw": 0,
+        "gain": 0,
+        "stands": [
+          {
+            "id": "0911576",
+            "efi": true,
+            "roster": "ready",
+            "pack": "failed",
+            "requests": 1,
+            "seat": "idle"
+          },
+          {
+            "id": "1900486",
+            "efi": false,
+            "roster": "idle",
+            "pack": "idle",
+            "requests": 0,
+            "seat": "idle"
+          }
+        ]
+      },
+      "console": []
+    }
+  ],
+  "lowQueens": {
+    "manual": {
+      "site": "queens-woodland-view",
+      "regionalRequests": [],
+      "samples": {
+        "30": {
+          "distanceM": 33.498,
+          "active": null,
+          "draw": 0,
+          "gain": 0,
+          "sourceReady": true,
+          "roster": "waiting",
+          "pack": "idle",
+          "seat": "idle",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "90": {
+          "distanceM": 95.119,
+          "active": null,
+          "draw": 0,
+          "gain": 0,
+          "sourceReady": true,
+          "roster": "waiting",
+          "pack": "idle",
+          "seat": "idle",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "190": {
+          "distanceM": 195.051,
+          "active": null,
+          "draw": 0,
+          "gain": 0,
+          "sourceReady": true,
+          "roster": "waiting",
+          "pack": "idle",
+          "seat": "idle",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "340": {
+          "distanceM": 340.511,
+          "active": null,
+          "draw": 0,
+          "gain": 0,
+          "sourceReady": true,
+          "roster": "waiting",
+          "pack": "idle",
+          "seat": "idle",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        }
+      },
+      "controls": true
+    },
+    "bookmark": {
+      "site": "queens-woodland-view",
+      "regionalRequests": [
+        "0911576-canopy-v2.rcv.gz"
+      ],
+      "samples": {
+        "30": {
+          "distanceM": 34.095,
+          "active": "0911576",
+          "draw": 364,
+          "gain": 0.5571887812708246,
+          "sourceReady": true,
+          "roster": "ready",
+          "pack": "ready",
+          "seat": "ready",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "90": {
+          "distanceM": 93.922,
+          "active": "0911576",
+          "draw": 364,
+          "gain": 0.6088705279901307,
+          "sourceReady": true,
+          "roster": "ready",
+          "pack": "ready",
+          "seat": "ready",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "190": {
+          "distanceM": 190.861,
+          "active": "0911576",
+          "draw": 364,
+          "gain": 0.6951791403125782,
+          "sourceReady": true,
+          "roster": "ready",
+          "pack": "ready",
+          "seat": "ready",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        },
+        "340": {
+          "distanceM": 344.7,
+          "active": "0911576",
+          "draw": 364,
+          "gain": 0.8185376425802842,
+          "sourceReady": true,
+          "roster": "ready",
+          "pack": "ready",
+          "seat": "ready",
+          "stand": {
+            "state": "other",
+            "adjusted": 0
+          }
+        }
+      },
+      "controls": true
+    }
+  }
+}

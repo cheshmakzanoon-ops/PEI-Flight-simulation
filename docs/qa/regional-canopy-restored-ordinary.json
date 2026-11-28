@@ -1,0 +1,78 @@
+[
+  {
+    "mode": "queens",
+    "site": "queens-canopy-pass",
+    "distanceM": 95.856,
+    "packRequests": [
+      "0911576-canopy-v2.rcv.gz"
+    ],
+    "state": {
+      "layers": "ready",
+      "cover": "ready",
+      "active": "0911576",
+      "draw": 364,
+      "gain": 1,
+      "stands": [
+        {
+          "id": "0911576",
+          "efi": true,
+          "roster": "ready",
+          "pack": "ready",
+          "requests": 1,
+          "seat": "ready"
+        },
+        {
+          "id": "1900486",
+          "efi": false,
+          "roster": "idle",
+          "pack": "idle",
+          "requests": 0,
+          "seat": "idle"
+        }
+      ]
+    },
+    "console": []
+  },
+  {
+    "mode": "kings",
+    "site": "kings-canopy-pass",
+    "distanceM": 95.254,
+    "packRequests": [
+      "1900486-canopy-v2.rcv.gz"
+    ],
+    "state": {
+      "layers": "ready",
+      "cover": "ready",
+      "active": "1900486",
+      "draw": 201,
+      "gain": 1,
+      "stands": [
+        {
+          "id": "0911576",
+          "efi": false,
+          "roster": "idle",
+          "pack": "idle",
+          "requests": 0,
+          "seat": "idle"
+        },
+        {
+          "id": "1900486",
+          "efi": true,
+          "roster": "ready",
+          "pack": "ready",
+          "requests": 1,
+          "seat": "ready"
+        }
+      ]
+    },
+    "console": []
+  },
+  {
+    "mode": "stock",
+    "site": "queens-canopy-pass",
+    "distanceM": 98.852,
+    "packRequests": [],
+    "state": {},
+    "console": []
+  }
+]
