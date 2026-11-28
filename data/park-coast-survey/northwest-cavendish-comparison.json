@@ -1,0 +1,1131 @@
+{
+  "scope": "Compare two independent historical logs on their shared 2D spatial footprint, and separately report the decoded stock coastline screen. Do not infer a present shoreline, tidal or legal position, geology at sample resolution, or erosion rate.",
+  "pins": {
+    "terrainSHA": "661f78b0ede8782741231e4b58196c138a8a3d5d8076da5cfce4106c350f925d",
+    "coverSHA": "e5055290c88d844b7ec655d33b1336e5ce446cd6a460f7fddd28c81b7d989ea9",
+    "parkSHA": "a865506fbfd7d6911175e06169e0f2d6cbf87ec5bece86283ca303742a131c2b",
+    "canCoastSHA": "7fdab30b8be882a36c518e1684c9c56983f1fe4ce5ffab61bfc4a7e974c7115f"
+  },
+  "ground": {
+    "rows": 60,
+    "percentiles": [
+      0,
+      10,
+      50,
+      90,
+      100
+    ],
+    "nearestClippedHistoricalClassifierM": [
+      57.7287,
+      58.6491,
+      59.7916,
+      61.2868,
+      62.062
+    ],
+    "stockApproximateSignedCoastM": [
+      52.2994,
+      53.8759,
+      60.3167,
+      65.3262,
+      65.956
+    ],
+    "under25mBetweenHistoricalRecords": {
+      "count": 0,
+      "agreedBroadTill": 0
+    },
+    "samples": [
+      {
+        "line": 135,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.0005,
+        "stockSignedApproximateCoastM": 63.517,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 136,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.3759,
+        "stockSignedApproximateCoastM": 64.1866,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 137,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.2852,
+        "stockSignedApproximateCoastM": 63.218,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 138,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.9031,
+        "stockSignedApproximateCoastM": 62.6125,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 139,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.065,
+        "stockSignedApproximateCoastM": 61.6332,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 140,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.0414,
+        "stockSignedApproximateCoastM": 59.5618,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 141,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.2784,
+        "stockSignedApproximateCoastM": 57.7138,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 142,
+        "q": 76706,
+        "fromHistoricalClassifierM": 57.7287,
+        "stockSignedApproximateCoastM": 55.9707,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 143,
+        "q": 76706,
+        "fromHistoricalClassifierM": 57.9962,
+        "stockSignedApproximateCoastM": 54.9845,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 144,
+        "q": 76706,
+        "fromHistoricalClassifierM": 57.8456,
+        "stockSignedApproximateCoastM": 53.1757,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 145,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.3896,
+        "stockSignedApproximateCoastM": 52.2994,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 223,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.5745,
+        "stockSignedApproximateCoastM": 53.4666,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 224,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.7253,
+        "stockSignedApproximateCoastM": 54.3088,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 225,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.6737,
+        "stockSignedApproximateCoastM": 55.8974,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 226,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.9485,
+        "stockSignedApproximateCoastM": 57.3337,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 227,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.1709,
+        "stockSignedApproximateCoastM": 58.6552,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 228,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.8014,
+        "stockSignedApproximateCoastM": 60.3478,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 229,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.2868,
+        "stockSignedApproximateCoastM": 62.887,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 230,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.2046,
+        "stockSignedApproximateCoastM": 62.9635,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 231,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.2267,
+        "stockSignedApproximateCoastM": 64.174,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 232,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.6939,
+        "stockSignedApproximateCoastM": 65.3933,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 233,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.9523,
+        "stockSignedApproximateCoastM": 65.3262,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 408,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.5137,
+        "stockSignedApproximateCoastM": 52.934,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 409,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.2869,
+        "stockSignedApproximateCoastM": 53.3905,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 410,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.0446,
+        "stockSignedApproximateCoastM": 53.8759,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 411,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.9103,
+        "stockSignedApproximateCoastM": 54.5349,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 412,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.6491,
+        "stockSignedApproximateCoastM": 55.1072,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 413,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.7954,
+        "stockSignedApproximateCoastM": 56.0542,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 414,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.8402,
+        "stockSignedApproximateCoastM": 56.7495,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 415,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.9537,
+        "stockSignedApproximateCoastM": 57.4277,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 416,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.1548,
+        "stockSignedApproximateCoastM": 58.2355,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 417,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.3111,
+        "stockSignedApproximateCoastM": 58.9656,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 418,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.1231,
+        "stockSignedApproximateCoastM": 60.314,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 419,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.0622,
+        "stockSignedApproximateCoastM": 60.9074,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 420,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.0264,
+        "stockSignedApproximateCoastM": 62.447,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 421,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.2764,
+        "stockSignedApproximateCoastM": 62.3213,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 422,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.2114,
+        "stockSignedApproximateCoastM": 62.8616,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 423,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.1936,
+        "stockSignedApproximateCoastM": 63.3982,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 424,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.5907,
+        "stockSignedApproximateCoastM": 64.3529,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 425,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.8624,
+        "stockSignedApproximateCoastM": 65.2299,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 426,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.6922,
+        "stockSignedApproximateCoastM": 65.4114,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 427,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.4358,
+        "stockSignedApproximateCoastM": 64.9581,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 428,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.9188,
+        "stockSignedApproximateCoastM": 65.2324,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 429,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.0473,
+        "stockSignedApproximateCoastM": 65.1641,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 648,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.5735,
+        "stockSignedApproximateCoastM": 65.8005,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 649,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.3833,
+        "stockSignedApproximateCoastM": 65.8669,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 650,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.2053,
+        "stockSignedApproximateCoastM": 65.956,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 651,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.9226,
+        "stockSignedApproximateCoastM": 65.9556,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 652,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.6678,
+        "stockSignedApproximateCoastM": 64.9489,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 653,
+        "q": 76706,
+        "fromHistoricalClassifierM": 62.062,
+        "stockSignedApproximateCoastM": 64.5491,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 654,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.5917,
+        "stockSignedApproximateCoastM": 63.4352,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 655,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.3995,
+        "stockSignedApproximateCoastM": 61.4891,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 656,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.0334,
+        "stockSignedApproximateCoastM": 60.3167,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 657,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.7916,
+        "stockSignedApproximateCoastM": 59.2887,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 658,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.3229,
+        "stockSignedApproximateCoastM": 58.0076,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 659,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.3938,
+        "stockSignedApproximateCoastM": 57.3067,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 660,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.442,
+        "stockSignedApproximateCoastM": 56.3815,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 661,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.3226,
+        "stockSignedApproximateCoastM": 55.2921,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 662,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.2764,
+        "stockSignedApproximateCoastM": 54.1939,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 663,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.2699,
+        "stockSignedApproximateCoastM": 54.1388,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      }
+    ]
+  },
+  "remote": {
+    "rows": 58,
+    "percentiles": [
+      0,
+      10,
+      50,
+      90,
+      100
+    ],
+    "nearestClippedHistoricalClassifierM": [
+      57.3593,
+      58.3527,
+      64.7891,
+      90.2667,
+      102.3276
+    ],
+    "stockApproximateSignedCoastM": [
+      53.341,
+      54.5558,
+      64.9582,
+      90.3437,
+      105.0894
+    ],
+    "under25mBetweenHistoricalRecords": {
+      "count": 0,
+      "agreedBroadTill": 0
+    },
+    "samples": [
+      {
+        "line": 955,
+        "q": 76706,
+        "fromHistoricalClassifierM": 85.4073,
+        "stockSignedApproximateCoastM": 90.3437,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 956,
+        "q": 76706,
+        "fromHistoricalClassifierM": 90.1848,
+        "stockSignedApproximateCoastM": 94.8615,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 957,
+        "q": 76706,
+        "fromHistoricalClassifierM": 82.3903,
+        "stockSignedApproximateCoastM": 82.4069,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 958,
+        "q": 76706,
+        "fromHistoricalClassifierM": 90.144,
+        "stockSignedApproximateCoastM": 89.5057,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 959,
+        "q": 76706,
+        "fromHistoricalClassifierM": 80.5093,
+        "stockSignedApproximateCoastM": 75.7744,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 960,
+        "q": 76706,
+        "fromHistoricalClassifierM": 83.6021,
+        "stockSignedApproximateCoastM": 78.5415,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 961,
+        "q": 76706,
+        "fromHistoricalClassifierM": 81.35,
+        "stockSignedApproximateCoastM": 75.3149,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 962,
+        "q": 76706,
+        "fromHistoricalClassifierM": 83.0443,
+        "stockSignedApproximateCoastM": 76.9004,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 963,
+        "q": 76706,
+        "fromHistoricalClassifierM": 70.757,
+        "stockSignedApproximateCoastM": 64.5197,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 964,
+        "q": 76706,
+        "fromHistoricalClassifierM": 71.9524,
+        "stockSignedApproximateCoastM": 65.7003,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 965,
+        "q": 76706,
+        "fromHistoricalClassifierM": 66.8592,
+        "stockSignedApproximateCoastM": 60.9503,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 966,
+        "q": 76706,
+        "fromHistoricalClassifierM": 68.045,
+        "stockSignedApproximateCoastM": 62.1565,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 967,
+        "q": 76706,
+        "fromHistoricalClassifierM": 66.2254,
+        "stockSignedApproximateCoastM": 63.5197,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 968,
+        "q": 76706,
+        "fromHistoricalClassifierM": 69.8455,
+        "stockSignedApproximateCoastM": 67.1958,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 969,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.8415,
+        "stockSignedApproximateCoastM": 62.2983,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 970,
+        "q": 76706,
+        "fromHistoricalClassifierM": 63.3664,
+        "stockSignedApproximateCoastM": 63.8468,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 971,
+        "q": 76706,
+        "fromHistoricalClassifierM": 63.573,
+        "stockSignedApproximateCoastM": 65.9679,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 972,
+        "q": 76706,
+        "fromHistoricalClassifierM": 67.9901,
+        "stockSignedApproximateCoastM": 70.3396,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 973,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.748,
+        "stockSignedApproximateCoastM": 65.7317,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 974,
+        "q": 76706,
+        "fromHistoricalClassifierM": 63.4614,
+        "stockSignedApproximateCoastM": 67.3655,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 975,
+        "q": 76706,
+        "fromHistoricalClassifierM": 63.0636,
+        "stockSignedApproximateCoastM": 65.6295,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 976,
+        "q": 76706,
+        "fromHistoricalClassifierM": 64.2683,
+        "stockSignedApproximateCoastM": 66.7566,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 977,
+        "q": 76706,
+        "fromHistoricalClassifierM": 60.0929,
+        "stockSignedApproximateCoastM": 58.3586,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 978,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.8515,
+        "stockSignedApproximateCoastM": 58.1228,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 979,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.1393,
+        "stockSignedApproximateCoastM": 53.9587,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 980,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.7297,
+        "stockSignedApproximateCoastM": 54.5309,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 981,
+        "q": 76706,
+        "fromHistoricalClassifierM": 62.2274,
+        "stockSignedApproximateCoastM": 55.7027,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 982,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.0443,
+        "stockSignedApproximateCoastM": 54.5558,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 983,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.5515,
+        "stockSignedApproximateCoastM": 53.8016,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 984,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.0768,
+        "stockSignedApproximateCoastM": 53.341,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 985,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.7527,
+        "stockSignedApproximateCoastM": 55.2738,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 986,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.8934,
+        "stockSignedApproximateCoastM": 54.4419,
+        "stockCover": 30,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 987,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.2714,
+        "stockSignedApproximateCoastM": 55.3637,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 988,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.1258,
+        "stockSignedApproximateCoastM": 55.2226,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 989,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.327,
+        "stockSignedApproximateCoastM": 56.9253,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 990,
+        "q": 76706,
+        "fromHistoricalClassifierM": 57.3593,
+        "stockSignedApproximateCoastM": 55.9896,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 991,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.3527,
+        "stockSignedApproximateCoastM": 58.4256,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 992,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.0046,
+        "stockSignedApproximateCoastM": 58.0906,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 993,
+        "q": 76706,
+        "fromHistoricalClassifierM": 58.6734,
+        "stockSignedApproximateCoastM": 60.202,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 994,
+        "q": 76706,
+        "fromHistoricalClassifierM": 59.62,
+        "stockSignedApproximateCoastM": 61.1068,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 995,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.2989,
+        "stockSignedApproximateCoastM": 60.4637,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 996,
+        "q": 76706,
+        "fromHistoricalClassifierM": 61.0986,
+        "stockSignedApproximateCoastM": 60.2677,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 997,
+        "q": 76706,
+        "fromHistoricalClassifierM": 63.8418,
+        "stockSignedApproximateCoastM": 61.446,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 998,
+        "q": 76706,
+        "fromHistoricalClassifierM": 64.7891,
+        "stockSignedApproximateCoastM": 62.3545,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 999,
+        "q": 76706,
+        "fromHistoricalClassifierM": 69.3026,
+        "stockSignedApproximateCoastM": 64.9582,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1000,
+        "q": 76706,
+        "fromHistoricalClassifierM": 71.8597,
+        "stockSignedApproximateCoastM": 67.3362,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1001,
+        "q": 76706,
+        "fromHistoricalClassifierM": 74.2721,
+        "stockSignedApproximateCoastM": 69.0425,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1002,
+        "q": 76706,
+        "fromHistoricalClassifierM": 76.1372,
+        "stockSignedApproximateCoastM": 70.8452,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1003,
+        "q": 76706,
+        "fromHistoricalClassifierM": 78.4916,
+        "stockSignedApproximateCoastM": 73.1786,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1004,
+        "q": 76706,
+        "fromHistoricalClassifierM": 79.9063,
+        "stockSignedApproximateCoastM": 74.5605,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1005,
+        "q": 76706,
+        "fromHistoricalClassifierM": 92.8404,
+        "stockSignedApproximateCoastM": 88.7844,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1006,
+        "q": 76706,
+        "fromHistoricalClassifierM": 90.2667,
+        "stockSignedApproximateCoastM": 86.4341,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1007,
+        "q": 76706,
+        "fromHistoricalClassifierM": 88.7899,
+        "stockSignedApproximateCoastM": 88.6972,
+        "stockCover": 80,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1008,
+        "q": 76706,
+        "fromHistoricalClassifierM": 96.7372,
+        "stockSignedApproximateCoastM": 95.998,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1009,
+        "q": 76706,
+        "fromHistoricalClassifierM": 93.8539,
+        "stockSignedApproximateCoastM": 95.9139,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1010,
+        "q": 76706,
+        "fromHistoricalClassifierM": 98.5625,
+        "stockSignedApproximateCoastM": 100.414,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1011,
+        "q": 76706,
+        "fromHistoricalClassifierM": 95.8552,
+        "stockSignedApproximateCoastM": 98.9821,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      },
+      {
+        "line": 1012,
+        "q": 76706,
+        "fromHistoricalClassifierM": 102.3276,
+        "stockSignedApproximateCoastM": 105.0894,
+        "stockCover": 60,
+        "sourceClass": "Till",
+        "classifier": "Thick and continuous till"
+      }
+    ]
+  }
+}

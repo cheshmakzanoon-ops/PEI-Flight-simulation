@@ -1,0 +1,2017 @@
+{
+  "scope": "Historical independent point-level substrate check in the exact Q447 NW Cavendish rectangle. No shoreline reconstruction, vertical field, color or current condition.",
+  "publisher": "Parks Canada",
+  "license": "https://open.canada.ca/en/open-government-licence-canada",
+  "record": "https://open.canada.ca/data/en/dataset/12e17685-405d-4f7e-8c46-404323daf70d",
+  "declaredSource": "Nad83 CSRS PEI Double Stereographic",
+  "normalizedProjection": "EPSG:2954 to EPSG:4326; source realization not specified",
+  "boundsWGS84": [
+    -63.458,
+    46.474,
+    -63.398,
+    46.513
+  ],
+  "resources": {
+    "ground": {
+      "id": "922a4f59-0e48-4fca-a8a1-fc326aef0f62",
+      "sha256": "097f60f49446bfd6e416ea7c0bb43eea620ba8b4e517db02aaa628b6c607064a"
+    },
+    "remote": {
+      "id": "bb427057-8e4a-48f8-937c-fca6bfe5ead1",
+      "sha256": "40f5652d83aa8c5ad0bb4e6c644a44f7eb38a465c067a3c562916c4a07dcde2b"
+    },
+    "dictionary": {
+      "id": "ded19511-30b3-47fd-8d55-d4ae7baf1ed7",
+      "sha256": "cbde973215ffafb2238c8b67e68c4f36e9d71c8840f6891403c22ff8dfcd26d0"
+    }
+  },
+  "counts": {
+    "ground": {
+      "sourceRows": 753,
+      "explicitEmptyIntersections": 0,
+      "regionalObserverOrPlaceAndMaterial": {
+        "PEINP/Sandstone": 132,
+        "PEINP/Till": 143,
+        "Surveyor/Sandstone": 237,
+        "Surveyor/Till": 241
+      },
+      "keptByClass": {
+        "Till": 60
+      },
+      "keptByYear": {
+        "2008": 11,
+        "2009": 33,
+        "2010": 16
+      }
+    },
+    "remote": {
+      "sourceRows": 1537,
+      "explicitEmptyIntersections": 19,
+      "regionalObserverOrPlaceAndMaterial": {
+        "Brackley/Till": 164,
+        "Cavendish/Sandstone": 952,
+        "Cavendish/Till": 144,
+        "Stanhope/Till": 258
+      },
+      "keptByClass": {
+        "Till": 58
+      },
+      "keptByYear": {
+        "2010": 29,
+        "2012": 29
+      }
+    }
+  },
+  "points": {
+    "ground": [
+      {
+        "csvLine": 135,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 1,
+        "originalEN": [
+          "368579.358",
+          "716924.357"
+        ],
+        "wgs84": [
+          -63.4093543664,
+          46.5019220571
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 136,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 2,
+        "originalEN": [
+          "368583.586",
+          "716923.274"
+        ],
+        "wgs84": [
+          -63.4092992105,
+          46.5019125126
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 137,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 3,
+        "originalEN": [
+          "368588.473",
+          "716922.554"
+        ],
+        "wgs84": [
+          -63.4092354939,
+          46.5019062646
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 138,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 4,
+        "originalEN": [
+          "368593.665",
+          "716921.065"
+        ],
+        "wgs84": [
+          -63.4091677515,
+          46.5018931127
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 139,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 5,
+        "originalEN": [
+          "368598.588",
+          "716920.083"
+        ],
+        "wgs84": [
+          -63.4091035482,
+          46.5018845093
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 140,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 6,
+        "originalEN": [
+          "368603.473",
+          "716920.309"
+        ],
+        "wgs84": [
+          -63.4090399219,
+          46.5018867715
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 141,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 7,
+        "originalEN": [
+          "368608.435",
+          "716920.258"
+        ],
+        "wgs84": [
+          -63.4089752736,
+          46.5018865453
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 142,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 8,
+        "originalEN": [
+          "368613.782",
+          "716919.927"
+        ],
+        "wgs84": [
+          -63.4089055906,
+          46.5018838181
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 143,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 9,
+        "originalEN": [
+          "368618.311",
+          "716919.097"
+        ],
+        "wgs84": [
+          -63.4088465306,
+          46.5018765635
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 144,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 10,
+        "originalEN": [
+          "368623.77",
+          "716918.79"
+        ],
+        "wgs84": [
+          -63.4087753901,
+          46.5018740574
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 145,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2008,
+        "sample": 11,
+        "originalEN": [
+          "368628.407",
+          "716917.855"
+        ],
+        "wgs84": [
+          -63.408714916,
+          46.5018658632
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 223,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 1,
+        "originalEN": [
+          "368628.3295",
+          "716916.6725"
+        ],
+        "wgs84": [
+          -63.4087158455,
+          46.5018552216
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 224,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 2,
+        "originalEN": [
+          "368622.8046",
+          "716917.9883"
+        ],
+        "wgs84": [
+          -63.4087879129,
+          46.5018668
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 225,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 3,
+        "originalEN": [
+          "368617.3688",
+          "716918.5028"
+        ],
+        "wgs84": [
+          -63.4088587652,
+          46.5018711738
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 226,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 4,
+        "originalEN": [
+          "368612.7233",
+          "716918.8663"
+        ],
+        "wgs84": [
+          -63.4089193113,
+          46.5018742262
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 227,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 5,
+        "originalEN": [
+          "368607.9059",
+          "716919.4412"
+        ],
+        "wgs84": [
+          -63.4089821113,
+          46.5018791724
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 228,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 6,
+        "originalEN": [
+          "368603.1032",
+          "716919.6"
+        ],
+        "wgs84": [
+          -63.4090446915,
+          46.5018803758
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 229,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 7,
+        "originalEN": [
+          "368598.0564",
+          "716918.9328"
+        ],
+        "wgs84": [
+          -63.4091103957,
+          46.501874137
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 230,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 8,
+        "originalEN": [
+          "368593.3569",
+          "716920.8106"
+        ],
+        "wgs84": [
+          -63.4091717482,
+          46.5018908097
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 231,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 9,
+        "originalEN": [
+          "368588.1408",
+          "716921.6548"
+        ],
+        "wgs84": [
+          -63.4092397607,
+          46.5018981596
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 232,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 10,
+        "originalEN": [
+          "368583.0973",
+          "716922.0192"
+        ],
+        "wgs84": [
+          -63.409305492,
+          46.5019012013
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 233,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 11,
+        "originalEN": [
+          "368578.7554",
+          "716922.4786"
+        ],
+        "wgs84": [
+          -63.4093620894,
+          46.5019051304
+        ],
+        "observerOrPlace": "PEINP"
+      },
+      {
+        "csvLine": 408,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 194,
+        "originalEN": [
+          "368629.9178",
+          "716916.6002"
+        ],
+        "wgs84": [
+          -63.4086951482,
+          46.5018546456
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 409,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 195,
+        "originalEN": [
+          "368627.6556",
+          "716917.0177"
+        ],
+        "wgs84": [
+          -63.4087246484,
+          46.5018582955
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 410,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 196,
+        "originalEN": [
+          "368625.2592",
+          "716917.4619"
+        ],
+        "wgs84": [
+          -63.4087558988,
+          46.5018621794
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 411,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 197,
+        "originalEN": [
+          "368622.6411",
+          "716917.8164"
+        ],
+        "wgs84": [
+          -63.4087900313,
+          46.5018652459
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 412,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 198,
+        "originalEN": [
+          "368619.9213",
+          "716918.3067"
+        ],
+        "wgs84": [
+          -63.4088254981,
+          46.5018695293
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 413,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 199,
+        "originalEN": [
+          "368617.225",
+          "716918.3948"
+        ],
+        "wgs84": [
+          -63.4088606313,
+          46.5018701955
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 414,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 200,
+        "originalEN": [
+          "368614.7828",
+          "716918.6484"
+        ],
+        "wgs84": [
+          -63.4088924654,
+          46.5018723625
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 415,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 201,
+        "originalEN": [
+          "368612.3319",
+          "716918.9261"
+        ],
+        "wgs84": [
+          -63.4089244145,
+          46.5018747459
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 416,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 202,
+        "originalEN": [
+          "368609.6491",
+          "716919.1679"
+        ],
+        "wgs84": [
+          -63.4089593824,
+          46.5018767954
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 417,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 203,
+        "originalEN": [
+          "368607.1226",
+          "716919.4293"
+        ],
+        "wgs84": [
+          -63.4089923153,
+          46.5018790286
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 418,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 204,
+        "originalEN": [
+          "368604.5287",
+          "716919.0371"
+        ],
+        "wgs84": [
+          -63.4090260819,
+          46.5018753787
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 419,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 205,
+        "originalEN": [
+          "368601.7234",
+          "716919.5649"
+        ],
+        "wgs84": [
+          -63.4090626651,
+          46.5018799954
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 420,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 206,
+        "originalEN": [
+          "368598.9191",
+          "716919.0534"
+        ],
+        "wgs84": [
+          -63.4090991647,
+          46.5018752624
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 421,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 207,
+        "originalEN": [
+          "368596.4484",
+          "716920.2242"
+        ],
+        "wgs84": [
+          -63.4091314324,
+          46.5018856793
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 422,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 208,
+        "originalEN": [
+          "368593.8298",
+          "716920.7251"
+        ],
+        "wgs84": [
+          -63.4091655814,
+          46.5018900627
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 423,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 209,
+        "originalEN": [
+          "368591.4102",
+          "716921.1452"
+        ],
+        "wgs84": [
+          -63.4091971324,
+          46.5018937285
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 424,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 210,
+        "originalEN": [
+          "368588.8505",
+          "716921.1679"
+        ],
+        "wgs84": [
+          -63.4092304817,
+          46.5018938127
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 425,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 211,
+        "originalEN": [
+          "368586.115",
+          "716921.347"
+        ],
+        "wgs84": [
+          -63.4092661319,
+          46.5018952956
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 426,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 212,
+        "originalEN": [
+          "368583.3767",
+          "716921.9745"
+        ],
+        "wgs84": [
+          -63.409301849,
+          46.5019008122
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 427,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 213,
+        "originalEN": [
+          "368580.4331",
+          "716922.7235"
+        ],
+        "wgs84": [
+          -63.409340249,
+          46.5019074123
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 428,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 214,
+        "originalEN": [
+          "368577.9087",
+          "716922.6533"
+        ],
+        "wgs84": [
+          -63.4093731321,
+          46.5019066623
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 429,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2009,
+        "sample": 215,
+        "originalEN": [
+          "368575.3261",
+          "716922.9521"
+        ],
+        "wgs84": [
+          -63.4094067984,
+          46.5019092292
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 648,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 521,
+        "originalEN": [
+          "368577.146",
+          "716922.1163"
+        ],
+        "wgs84": [
+          -63.409383032,
+          46.5019017956
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 649,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 522,
+        "originalEN": [
+          "368580.5892",
+          "716921.7371"
+        ],
+        "wgs84": [
+          -63.4093381483,
+          46.5018985458
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 650,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 523,
+        "originalEN": [
+          "368584.3352",
+          "716921.2951"
+        ],
+        "wgs84": [
+          -63.4092893155,
+          46.5018947452
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 651,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 524,
+        "originalEN": [
+          "368587.2879",
+          "716920.0774"
+        ],
+        "wgs84": [
+          -63.4092507651,
+          46.501883929
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 652,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 525,
+        "originalEN": [
+          "368590.6432",
+          "716919.7783"
+        ],
+        "wgs84": [
+          -63.4092070321,
+          46.5018813956
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 653,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 526,
+        "originalEN": [
+          "368593.9619",
+          "716918.8273"
+        ],
+        "wgs84": [
+          -63.4091637316,
+          46.5018729959
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 654,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 527,
+        "originalEN": [
+          "368596.9017",
+          "716918.8156"
+        ],
+        "wgs84": [
+          -63.4091254312,
+          46.5018730285
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 655,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 528,
+        "originalEN": [
+          "368600.5546",
+          "716919.4172"
+        ],
+        "wgs84": [
+          -63.4090778821,
+          46.5018786119
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 656,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 529,
+        "originalEN": [
+          "368604.1611",
+          "716919.1891"
+        ],
+        "wgs84": [
+          -63.4090308813,
+          46.5018767289
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 657,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 530,
+        "originalEN": [
+          "368607.6416",
+          "716918.856"
+        ],
+        "wgs84": [
+          -63.4089855148,
+          46.5018738954
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 658,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 531,
+        "originalEN": [
+          "368611.3189",
+          "716918.7201"
+        ],
+        "wgs84": [
+          -63.4089375979,
+          46.5018728452
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 659,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 532,
+        "originalEN": [
+          "368614.6508",
+          "716918.1081"
+        ],
+        "wgs84": [
+          -63.4088941485,
+          46.5018674957
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 660,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 533,
+        "originalEN": [
+          "368618.1934",
+          "716917.6561"
+        ],
+        "wgs84": [
+          -63.4088479649,
+          46.5018635954
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 661,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 534,
+        "originalEN": [
+          "368621.4331",
+          "716917.504"
+        ],
+        "wgs84": [
+          -63.4088057479,
+          46.5018623789
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 662,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 535,
+        "originalEN": [
+          "368624.9409",
+          "716917.256"
+        ],
+        "wgs84": [
+          -63.4087600316,
+          46.5018603121
+        ],
+        "observerOrPlace": "Surveyor"
+      },
+      {
+        "csvLine": 663,
+        "substrate": "Till",
+        "transect": "t5",
+        "year": 2010,
+        "sample": 536,
+        "originalEN": [
+          "368628.3269",
+          "716915.9749"
+        ],
+        "wgs84": [
+          -63.408715832,
+          46.5018489457
+        ],
+        "observerOrPlace": "Surveyor"
+      }
+    ],
+    "remote": [
+      {
+        "csvLine": 955,
+        "substrate": "Till",
+        "transect": "2",
+        "year": 2010,
+        "sample": 1,
+        "originalEN": [
+          "368396.3854",
+          "716923.1209"
+        ],
+        "wgs84": [
+          -63.4117380444,
+          46.501902328
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 956,
+        "substrate": "Till",
+        "transect": "2",
+        "year": 2012,
+        "sample": 2,
+        "originalEN": [
+          "368396.7522",
+          "716918.3261"
+        ],
+        "wgs84": [
+          -63.4117329381,
+          46.5018592104
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 957,
+        "substrate": "Till",
+        "transect": "3",
+        "year": 2010,
+        "sample": 3,
+        "originalEN": [
+          "368416.2711",
+          "716925.3786"
+        ],
+        "wgs84": [
+          -63.4114791283,
+          46.5019235767
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 958,
+        "substrate": "Till",
+        "transect": "3",
+        "year": 2012,
+        "sample": 4,
+        "originalEN": [
+          "368416.8664",
+          "716917.5967"
+        ],
+        "wgs84": [
+          -63.4114708413,
+          46.5018535974
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 959,
+        "substrate": "Till",
+        "transect": "4",
+        "year": 2010,
+        "sample": 5,
+        "originalEN": [
+          "368436.2567",
+          "716926.3315"
+        ],
+        "wgs84": [
+          -63.4112188214,
+          46.5019330914
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 960,
+        "substrate": "Till",
+        "transect": "4",
+        "year": 2012,
+        "sample": 6,
+        "originalEN": [
+          "368436.4996",
+          "716923.1561"
+        ],
+        "wgs84": [
+          -63.4112154402,
+          46.5019045363
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 961,
+        "substrate": "Till",
+        "transect": "5",
+        "year": 2010,
+        "sample": 7,
+        "originalEN": [
+          "368456.3018",
+          "716922.1485"
+        ],
+        "wgs84": [
+          -63.410957389,
+          46.5018964047
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 962,
+        "substrate": "Till",
+        "transect": "5",
+        "year": 2012,
+        "sample": 8,
+        "originalEN": [
+          "368456.4032",
+          "716920.4142"
+        ],
+        "wgs84": [
+          -63.4109559496,
+          46.5018808074
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 963,
+        "substrate": "Till",
+        "transect": "6",
+        "year": 2010,
+        "sample": 9,
+        "originalEN": [
+          "368475.178",
+          "716929.7497"
+        ],
+        "wgs84": [
+          -63.4107119885,
+          46.5019656753
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 964,
+        "substrate": "Till",
+        "transect": "6",
+        "year": 2012,
+        "sample": 10,
+        "originalEN": [
+          "368475.1794",
+          "716928.5378"
+        ],
+        "wgs84": [
+          -63.4107118877,
+          46.5019547728
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 965,
+        "substrate": "Till",
+        "transect": "7",
+        "year": 2010,
+        "sample": 11,
+        "originalEN": [
+          "368494.5493",
+          "716930.482"
+        ],
+        "wgs84": [
+          -63.4104596694,
+          46.5019731747
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 966,
+        "substrate": "Till",
+        "transect": "7",
+        "year": 2012,
+        "sample": 12,
+        "originalEN": [
+          "368494.4825",
+          "716929.2911"
+        ],
+        "wgs84": [
+          -63.4104604585,
+          46.501962458
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 967,
+        "substrate": "Till",
+        "transect": "8",
+        "year": 2010,
+        "sample": 13,
+        "originalEN": [
+          "368514.3098",
+          "716927.8411"
+        ],
+        "wgs84": [
+          -63.41020205,
+          46.5019503459
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 968,
+        "substrate": "Till",
+        "transect": "8",
+        "year": 2012,
+        "sample": 14,
+        "originalEN": [
+          "368514.0678",
+          "716924.2118"
+        ],
+        "wgs84": [
+          -63.4102049557,
+          46.5019176847
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 969,
+        "substrate": "Till",
+        "transect": "9",
+        "year": 2010,
+        "sample": 15,
+        "originalEN": [
+          "368534.4276",
+          "716928.9423"
+        ],
+        "wgs84": [
+          -63.4099400306,
+          46.501961198
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 970,
+        "substrate": "Till",
+        "transect": "9",
+        "year": 2012,
+        "sample": 16,
+        "originalEN": [
+          "368534.3256",
+          "716927.4135"
+        ],
+        "wgs84": [
+          -63.4099412554,
+          46.5019474398
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 971,
+        "substrate": "Till",
+        "transect": "10",
+        "year": 2010,
+        "sample": 17,
+        "originalEN": [
+          "368554.1366",
+          "716923.9125"
+        ],
+        "wgs84": [
+          -63.40968292,
+          46.5019168746
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 972,
+        "substrate": "Till",
+        "transect": "10",
+        "year": 2012,
+        "sample": 18,
+        "originalEN": [
+          "368553.8414",
+          "716919.484"
+        ],
+        "wgs84": [
+          -63.4096864647,
+          46.5018770211
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 973,
+        "substrate": "Till",
+        "transect": "11",
+        "year": 2010,
+        "sample": 19,
+        "originalEN": [
+          "368573.9343",
+          "716922.4731"
+        ],
+        "wgs84": [
+          -63.4094248982,
+          46.5019048547
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 974,
+        "substrate": "Till",
+        "transect": "11",
+        "year": 2012,
+        "sample": 20,
+        "originalEN": [
+          "368573.7998",
+          "716920.7586"
+        ],
+        "wgs84": [
+          -63.409426534,
+          46.5018894245
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 975,
+        "substrate": "Till",
+        "transect": "12",
+        "year": 2010,
+        "sample": 21,
+        "originalEN": [
+          "368593.2461",
+          "716917.9309"
+        ],
+        "wgs84": [
+          -63.4091729961,
+          46.5018648981
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 976,
+        "substrate": "Till",
+        "transect": "12",
+        "year": 2012,
+        "sample": 22,
+        "originalEN": [
+          "368593.1226",
+          "716916.7303"
+        ],
+        "wgs84": [
+          -63.4091745235,
+          46.5018540915
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 977,
+        "substrate": "Till",
+        "transect": "13",
+        "year": 2010,
+        "sample": 23,
+        "originalEN": [
+          "368612.9853",
+          "716917.6627"
+        ],
+        "wgs84": [
+          -63.4089158163,
+          46.5018634107
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 978,
+        "substrate": "Till",
+        "transect": "13",
+        "year": 2012,
+        "sample": 24,
+        "originalEN": [
+          "368613.0159",
+          "716917.9024"
+        ],
+        "wgs84": [
+          -63.4089154339,
+          46.5018655685
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 979,
+        "substrate": "Till",
+        "transect": "14",
+        "year": 2010,
+        "sample": 25,
+        "originalEN": [
+          "368632.7666",
+          "716914.7299"
+        ],
+        "wgs84": [
+          -63.4086579073,
+          46.5018379534
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 980,
+        "substrate": "Till",
+        "transect": "14",
+        "year": 2012,
+        "sample": 26,
+        "originalEN": [
+          "368632.6916",
+          "716914.1438"
+        ],
+        "wgs84": [
+          -63.4086588447,
+          46.5018326772
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 981,
+        "substrate": "Till",
+        "transect": "15",
+        "year": 2010,
+        "sample": 27,
+        "originalEN": [
+          "368652.706",
+          "716911.9648"
+        ],
+        "wgs84": [
+          -63.4083979502,
+          46.5018140116
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 982,
+        "substrate": "Till",
+        "transect": "15",
+        "year": 2012,
+        "sample": 28,
+        "originalEN": [
+          "368652.8457",
+          "716913.1403"
+        ],
+        "wgs84": [
+          -63.4083962099,
+          46.5018245932
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 983,
+        "substrate": "Till",
+        "transect": "16",
+        "year": 2010,
+        "sample": 29,
+        "originalEN": [
+          "368673.202",
+          "716912.9301"
+        ],
+        "wgs84": [
+          -63.4081309947,
+          46.5018236546
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 984,
+        "substrate": "Till",
+        "transect": "16",
+        "year": 2012,
+        "sample": 30,
+        "originalEN": [
+          "368673.2474",
+          "716913.4027"
+        ],
+        "wgs84": [
+          -63.4081304352,
+          46.5018279083
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 985,
+        "substrate": "Till",
+        "transect": "17",
+        "year": 2010,
+        "sample": 31,
+        "originalEN": [
+          "368693.3604",
+          "716911.0367"
+        ],
+        "wgs84": [
+          -63.4078682438,
+          46.5018075638
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 986,
+        "substrate": "Till",
+        "transect": "17",
+        "year": 2012,
+        "sample": 32,
+        "originalEN": [
+          "368693.4234",
+          "716911.8937"
+        ],
+        "wgs84": [
+          -63.407867481,
+          46.5018152765
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 987,
+        "substrate": "Till",
+        "transect": "18",
+        "year": 2010,
+        "sample": 33,
+        "originalEN": [
+          "368713.4214",
+          "716910.8399"
+        ],
+        "wgs84": [
+          -63.4076068767,
+          46.5018067308
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 988,
+        "substrate": "Till",
+        "transect": "18",
+        "year": 2012,
+        "sample": 34,
+        "originalEN": [
+          "368713.4317",
+          "716910.9852"
+        ],
+        "wgs84": [
+          -63.4076067524,
+          46.5018080384
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 989,
+        "substrate": "Till",
+        "transect": "19",
+        "year": 2010,
+        "sample": 35,
+        "originalEN": [
+          "368733.1595",
+          "716909.1281"
+        ],
+        "wgs84": [
+          -63.407349614,
+          46.5017922529
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 990,
+        "substrate": "Till",
+        "transect": "19",
+        "year": 2012,
+        "sample": 36,
+        "originalEN": [
+          "368733.2461",
+          "716910.0919"
+        ],
+        "wgs84": [
+          -63.4073485509,
+          46.5018009274
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 991,
+        "substrate": "Till",
+        "transect": "20",
+        "year": 2010,
+        "sample": 37,
+        "originalEN": [
+          "368752.4747",
+          "716907.4817"
+        ],
+        "wgs84": [
+          -63.4070978653,
+          46.501778343
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 992,
+        "substrate": "Till",
+        "transect": "20",
+        "year": 2012,
+        "sample": 38,
+        "originalEN": [
+          "368752.5258",
+          "716907.8267"
+        ],
+        "wgs84": [
+          -63.4070972229,
+          46.5017814491
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 993,
+        "substrate": "Till",
+        "transect": "21",
+        "year": 2010,
+        "sample": 39,
+        "originalEN": [
+          "368771.6439",
+          "716905.5517"
+        ],
+        "wgs84": [
+          -63.4068479996,
+          46.5017618744
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 994,
+        "substrate": "Till",
+        "transect": "21",
+        "year": 2012,
+        "sample": 40,
+        "originalEN": [
+          "368771.4226",
+          "716904.6204"
+        ],
+        "wgs84": [
+          -63.4068508198,
+          46.5017534859
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 995,
+        "substrate": "Till",
+        "transect": "22",
+        "year": 2010,
+        "sample": 41,
+        "originalEN": [
+          "368790.4918",
+          "716901.2589"
+        ],
+        "wgs84": [
+          -63.4066021606,
+          46.5017241341
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 996,
+        "substrate": "Till",
+        "transect": "22",
+        "year": 2012,
+        "sample": 42,
+        "originalEN": [
+          "368790.5543",
+          "716901.451"
+        ],
+        "wgs84": [
+          -63.4066013593,
+          46.5017258652
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 997,
+        "substrate": "Till",
+        "transect": "23",
+        "year": 2010,
+        "sample": 43,
+        "originalEN": [
+          "368808.8766",
+          "716895.2281"
+        ],
+        "wgs84": [
+          -63.4063622379,
+          46.5016707364
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 998,
+        "substrate": "Till",
+        "transect": "23",
+        "year": 2012,
+        "sample": 44,
+        "originalEN": [
+          "368808.4932",
+          "716894.3361"
+        ],
+        "wgs84": [
+          -63.4063671727,
+          46.5016626939
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 999,
+        "substrate": "Till",
+        "transect": "24",
+        "year": 2010,
+        "sample": 45,
+        "originalEN": [
+          "368826.6036",
+          "716886.3519"
+        ],
+        "wgs84": [
+          -63.4061306937,
+          46.5015917097
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1000,
+        "substrate": "Till",
+        "transect": "24",
+        "year": 2012,
+        "sample": 46,
+        "originalEN": [
+          "368825.4958",
+          "716883.958"
+        ],
+        "wgs84": [
+          -63.4061449646,
+          46.5015701222
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1001,
+        "substrate": "Till",
+        "transect": "25",
+        "year": 2010,
+        "sample": 47,
+        "originalEN": [
+          "368844.7528",
+          "716877.8966"
+        ],
+        "wgs84": [
+          -63.4058936781,
+          46.5015164887
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1002,
+        "substrate": "Till",
+        "transect": "25",
+        "year": 2012,
+        "sample": 48,
+        "originalEN": [
+          "368843.9509",
+          "716876.1493"
+        ],
+        "wgs84": [
+          -63.4059040074,
+          46.5015007324
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1003,
+        "substrate": "Till",
+        "transect": "26",
+        "year": 2010,
+        "sample": 49,
+        "originalEN": [
+          "368863.2356",
+          "716870.1419"
+        ],
+        "wgs84": [
+          -63.4056523642,
+          46.5014475855
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1004,
+        "substrate": "Till",
+        "transect": "26",
+        "year": 2012,
+        "sample": 50,
+        "originalEN": [
+          "368862.6347",
+          "716868.8152"
+        ],
+        "wgs84": [
+          -63.4056601033,
+          46.5014356223
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1005,
+        "substrate": "Till",
+        "transect": "27",
+        "year": 2010,
+        "sample": 51,
+        "originalEN": [
+          "368877.4809",
+          "716852.8759"
+        ],
+        "wgs84": [
+          -63.4054656164,
+          46.5012929194
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1006,
+        "substrate": "Till",
+        "transect": "27",
+        "year": 2012,
+        "sample": 52,
+        "originalEN": [
+          "368878.5577",
+          "716855.2925"
+        ],
+        "wgs84": [
+          -63.4054517507,
+          46.5013147096
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1007,
+        "substrate": "Till",
+        "transect": "28",
+        "year": 2010,
+        "sample": 53,
+        "originalEN": [
+          "368899.6116",
+          "716852.8515"
+        ],
+        "wgs84": [
+          -63.4051772997,
+          46.5012937279
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1008,
+        "substrate": "Till",
+        "transect": "28",
+        "year": 2012,
+        "sample": 54,
+        "originalEN": [
+          "368896.53",
+          "716845.3435"
+        ],
+        "wgs84": [
+          -63.4052169414,
+          46.5012260414
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1009,
+        "substrate": "Till",
+        "transect": "29",
+        "year": 2010,
+        "sample": 55,
+        "originalEN": [
+          "368918.7501",
+          "716845.2787"
+        ],
+        "wgs84": [
+          -63.4049274577,
+          46.50122649
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1010,
+        "substrate": "Till",
+        "transect": "29",
+        "year": 2012,
+        "sample": 56,
+        "originalEN": [
+          "368917.3037",
+          "716840.6797"
+        ],
+        "wgs84": [
+          -63.404945992,
+          46.5011850494
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1011,
+        "substrate": "Till",
+        "transect": "30",
+        "year": 2010,
+        "sample": 57,
+        "originalEN": [
+          "368938.9724",
+          "716841.4824"
+        ],
+        "wgs84": [
+          -63.4046637503,
+          46.5011932759
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      },
+      {
+        "csvLine": 1012,
+        "substrate": "Till",
+        "transect": "30",
+        "year": 2012,
+        "sample": 58,
+        "originalEN": [
+          "368937.5165",
+          "716835.1137"
+        ],
+        "wgs84": [
+          -63.4046822897,
+          46.5011359143
+        ],
+        "observerOrPlace": "Cavendish",
+        "recordIntervalYears": 2
+      }
+    ]
+  }
+}
