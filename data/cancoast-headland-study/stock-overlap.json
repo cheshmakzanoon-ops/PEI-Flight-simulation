@@ -1,0 +1,103 @@
+{
+  "scope": "Replay of historical federal material attributes against current stock decoded atlas. No color, erosion forecast, cross-shore boundary, survey alignment or sea-level changes.",
+  "geometrySHA256": "7fdab30b8be882a36c518e1684c9c56983f1fe4ce5ffab61bfc4a7e974c7115f",
+  "method": "Historical polyline in lon/lat -> simulator metre tangent scale; midpoints at at most 5 m. Compare bundled stock approximate signed distance (positive=dry). ±36 m along the tangent-derived left/right to inventory conservative stock sign agreements only.",
+  "outputs": {
+    "Prince-North-Cape": {
+      "Sand and gravel": {
+        "sourceCount": 1,
+        "approxGeometryLengthM": 3817.636,
+        "samples": 806,
+        "stockSignedDistanceFromHistoricalTraceM": [
+          -11.9325,
+          -3.8245,
+          0.2895,
+          4.9953,
+          11.5783
+        ],
+        "stockCoverCountsAlongHistoricalTrace": {
+          "0": 282,
+          "10": 24,
+          "30": 27,
+          "60": 8,
+          "80": 465
+        },
+        "clearOpposedStockWetDryPairs36M": 806,
+        "medianCurrentCoarseDryGroundM": 3.920039067974138,
+        "exactTerrainLandFlagsInDryPairs": 805
+      }
+    },
+    "Queens-Cavendish": {
+      "Thick and continuous till": {
+        "sourceCount": 2,
+        "approxGeometryLengthM": 17500.299,
+        "samples": 3640,
+        "stockSignedDistanceFromHistoricalTraceM": [
+          -174.9202,
+          -5.701,
+          0.3593,
+          5.6998,
+          172.3801
+        ],
+        "stockCoverCountsAlongHistoricalTrace": {
+          "0": 1250,
+          "10": 246,
+          "30": 416,
+          "40": 5,
+          "60": 153,
+          "80": 1485,
+          "90": 85
+        },
+        "clearOpposedStockWetDryPairs36M": 3327,
+        "medianCurrentCoarseDryGroundM": 1.496029410214118,
+        "exactTerrainLandFlagsInDryPairs": 3326
+      }
+    },
+    "Kings-East-Point": {
+      "Sand, gravel, and pockets of finer sediment": {
+        "sourceCount": 1,
+        "approxGeometryLengthM": 587.226,
+        "samples": 125,
+        "stockSignedDistanceFromHistoricalTraceM": [
+          -5.0201,
+          -3.1607,
+          -0.0133,
+          3.8053,
+          6.0339
+        ],
+        "stockCoverCountsAlongHistoricalTrace": {
+          "0": 55,
+          "30": 12,
+          "40": 11,
+          "60": 5,
+          "80": 42
+        },
+        "clearOpposedStockWetDryPairs36M": 125,
+        "medianCurrentCoarseDryGroundM": 1.5082023619076452,
+        "exactTerrainLandFlagsInDryPairs": 125
+      },
+      "sedimentary rocks": {
+        "sourceCount": 1,
+        "approxGeometryLengthM": 3041.009,
+        "samples": 632,
+        "stockSignedDistanceFromHistoricalTraceM": [
+          -8.2855,
+          -4.5939,
+          0.8159,
+          4.7973,
+          9.508
+        ],
+        "stockCoverCountsAlongHistoricalTrace": {
+          "0": 270,
+          "10": 64,
+          "30": 109,
+          "60": 35,
+          "80": 154
+        },
+        "clearOpposedStockWetDryPairs36M": 632,
+        "medianCurrentCoarseDryGroundM": 3.6259394046805937,
+        "exactTerrainLandFlagsInDryPairs": 632
+      }
+    }
+  }
+}

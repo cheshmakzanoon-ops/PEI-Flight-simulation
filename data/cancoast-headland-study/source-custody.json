@@ -1,0 +1,25 @@
+{
+  "sourceTitle": "CanCoast - Coastal Materials Version 2.0",
+  "referenceDOI": "https://doi.org/10.4095/314669",
+  "contributors": [
+    "G. K. Manson",
+    "N. J. Couture",
+    "T. S. James"
+  ],
+  "organization": "Geological Survey of Canada, Natural Resources Canada",
+  "exactXmlMetadataSHA256": "b5d3dc2df9c4c87b2f1cf8cab96caa4a457d3317bcf880cc9fc30d44f79ca1fb",
+  "projectionSHA256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+  "companionIndexSHA256": "332104193222643c7004fe785a9817b83f4746077252ef7e0f8e536f501848a2",
+  "exactAttributeSHA256": "810685711a117e2e17c4bd3bd836e235e19c8055dc21a9a2edd26ac9aebc2e95",
+  "datasetCatalogueDates": [
+    "2010-12-31",
+    "2011-12-31"
+  ],
+  "publishedLayerDate": "2019-05-01",
+  "sourceLicence": "https://open.canada.ca/en/open-government-licence-canada",
+  "description": "Historical textual coastal materials generalized to a common line, manually extended from source geology. This does not establish survey dates for the individual selected segments.",
+  "extraction": [
+    "Actual CRC-checked original material member stream, no national archive import.",
+    "Three rectangular historical prospects, not a national sample or official new release."
+  ]
+}

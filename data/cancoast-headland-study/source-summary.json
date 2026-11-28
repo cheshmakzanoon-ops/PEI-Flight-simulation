@@ -1,0 +1,53 @@
+{
+  "scope": "Historical national textual material classification for three rectangular reach prospects. Neither current substrate boundary nor scene/water authority.",
+  "publisher": "Natural Resources Canada, Geological Survey of Canada",
+  "catalogue": "https://open.canada.ca/data/en/dataset/73714ed4-a795-a7ae-7e93-36100ce7c242",
+  "license": "https://open.canada.ca/en/open-government-licence-canada",
+  "sourceETag": "\"0x8DB570AB981AF92\"",
+  "component": "CANCOAST_MATERIAL_V2/CANCOAST_MATERIAL_V2.shp",
+  "zlibCRC32": "0x1ee4e0b8",
+  "originalComponentBytes": 258743364,
+  "recordCount": 168326,
+  "summary": {
+    "Prince-North-Cape": {
+      "bboxWgs84": [
+        -64.01,
+        47.045,
+        -63.984,
+        47.07
+      ],
+      "recordsTouched": 1,
+      "pieceCount": 88,
+      "metresByClass": {
+        "Sand and gravel": 3803.962
+      }
+    },
+    "Queens-Cavendish": {
+      "bboxWgs84": [
+        -63.458,
+        46.474,
+        -63.398,
+        46.513
+      ],
+      "recordsTouched": 2,
+      "pieceCount": 271,
+      "metresByClass": {
+        "Thick and continuous till": 17467.721
+      }
+    },
+    "Kings-East-Point": {
+      "bboxWgs84": [
+        -61.987,
+        46.425,
+        -61.94,
+        46.475
+      ],
+      "recordsTouched": 2,
+      "pieceCount": 58,
+      "metresByClass": {
+        "Sand, gravel, and pockets of finer sediment": 587.039,
+        "sedimentary rocks": 3037.697
+      }
+    }
+  }
+}
