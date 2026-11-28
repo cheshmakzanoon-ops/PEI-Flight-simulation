@@ -1,0 +1,45 @@
+{
+  "phases": {
+    "approach": {
+      "changed": 921,
+      "strong": 921,
+      "solid": 915,
+      "glass": 49,
+      "exterior": 0,
+      "alpha": 0,
+      "travel": 287.96598223222827,
+      "scopedProjected": 1099,
+      "actualSceneMetaSHA256": "c7bdb3e371e94e051dce08738c074a34f4a86dc1662a7b2bfce64a40f0026923"
+    },
+    "near": {
+      "changed": 3302,
+      "strong": 3302,
+      "solid": 3291,
+      "glass": 159,
+      "exterior": 0,
+      "alpha": 0,
+      "travel": 408.34658865035453,
+      "scopedProjected": 3645,
+      "actualSceneMetaSHA256": "4810dfb05696dbb488cc61c061b3b4bcb3f8e339f07c15ad8c36842a754b1d33"
+    },
+    "exit": {
+      "changed": 0,
+      "strong": 0,
+      "solid": 0,
+      "glass": 0,
+      "exterior": 0,
+      "alpha": 0,
+      "travel": 612.4003903097109,
+      "scopedProjected": 0,
+      "actualSceneMetaSHA256": "79a9527b91e0155ab863d1b4563e85619b16a8eceeb5ef91232ab0ff3e2052df"
+    }
+  },
+  "begin": {
+    "site": "northcape-light-low",
+    "mode": "dispatch",
+    "phase": "ready"
+  },
+  "status": "PASS private true product-route same-frame scope; not a release or LOD cut proof",
+  "errors": [],
+  "outside": []
+}

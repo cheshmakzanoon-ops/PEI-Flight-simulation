@@ -102,3 +102,9 @@ It does not change the playable simulator.
 The [separate visitor-centre frontage study](../north-cape-visitor/)
 identifies the nearby stock building and reproduces a red-roof studio
 interpretation. It is not a whole surveyed shell or a game placement.
+
+### Ordinary flight optics
+
+The [matched private flight evidence](ordinary-route/) shows the original
+and candidate lighthouse at the same live Chase frames. It keeps the ground
+and other scenery intact and shows precisely what remains unverified.

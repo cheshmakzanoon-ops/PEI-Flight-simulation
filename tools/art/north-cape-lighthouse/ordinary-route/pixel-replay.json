@@ -1,0 +1,41 @@
+{
+  "approach": {
+    "travel": 287.96598223222827,
+    "changed": 921,
+    "strong": 921,
+    "solid": 915,
+    "glass": 49,
+    "exterior": 0,
+    "alpha": 0,
+    "crop": [
+      726,
+      345,
+      826,
+      462
+    ]
+  },
+  "near": {
+    "travel": 408.34658865035453,
+    "changed": 3302,
+    "strong": 3302,
+    "solid": 3291,
+    "glass": 159,
+    "exterior": 0,
+    "alpha": 0,
+    "crop": [
+      907,
+      432,
+      1030,
+      594
+    ]
+  },
+  "exit": {
+    "travel": 612.4003903097109,
+    "changed": 0,
+    "strong": 0,
+    "solid": 0,
+    "glass": 0,
+    "exterior": 0,
+    "alpha": 0
+  }
+}

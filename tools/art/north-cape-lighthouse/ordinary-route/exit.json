@@ -1,0 +1,157 @@
+{
+  "id": "exit",
+  "d": 612.4003903097109,
+  "f": {
+    "x": -61254.34163856925,
+    "z": -61904.7272403739,
+    "alt": 61.42975613985657,
+    "heading": 4.71238898038469,
+    "bank": 0,
+    "mode": "flight",
+    "view": 0,
+    "route": "northcape-light-low"
+  },
+  "basis": [
+    [
+      -0.0005319480705490182,
+      -0.10546744090196675,
+      0.9944226143551042,
+      0,
+      7.508100044462117e-18,
+      0.9944227550503959,
+      0.10546745582396484,
+      0,
+      -0.9999998585156149,
+      5.610320963127162e-05,
+      -0.0005289812658590943,
+      0,
+      -61937.32557643153,
+      -6519.797450730781,
+      60851.40736013215,
+      1
+    ],
+    [
+      1.299984070167883,
+      0,
+      0,
+      0,
+      0,
+      2.0056897082590197,
+      0,
+      0,
+      0,
+      0,
+      -1.0000004571429617,
+      -1,
+      0,
+      0,
+      -0.16000003657143694,
+      0
+    ]
+  ],
+  "anchor": [
+    -61171.94124825946,
+    5.209488561540124,
+    -61997.00112926205
+  ],
+  "scores": {
+    "changed": 0,
+    "strong": 0,
+    "solid": 0,
+    "glass": 0,
+    "exterior": 0,
+    "alpha": 0
+  },
+  "reports": {
+    "stock": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "game": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "solidBlack": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "solidWhite": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "paneBlack": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "paneWhite": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "stockRestore": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    },
+    "gameRestore": {
+      "visible": [],
+      "stats": [
+        141,
+        257641,
+        0,
+        0
+      ],
+      "ground": 1
+    }
+  },
+  "sha": {
+    "stock": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "game": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "solidBlack": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "solidWhite": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "paneBlack": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "paneWhite": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "stockRestore": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5",
+    "gameRestore": "922ae8acdc7706dfbe8c835abd999c13622144e70bcc707d4756e26ebab300b5"
+  }
+}
