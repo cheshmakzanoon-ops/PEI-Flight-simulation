@@ -231,3 +231,28 @@ to the playable world.
 ```sh
 node --experimental-strip-types --test test/east-fog-dated-retirement.test.ts
 ```
+
+## Detached rear sash closure
+
+The original gradual inset remains useful as an art study, but it did not
+guarantee a clean distant view. In a real matched Chase flight at 687.33 m,
+four RGB pixels from the two-sash suffix and five from the three-sash suffix
+were still visible after the old inset. The excess stayed inside the
+original sash regions and did not affect trim, ground, or peer draws.
+
+`sash-distance-closure.ts` leaves the existing body and trim equations
+unchanged. Each authenticated window shrinks continuously towards its own
+interior anchor starting at 500 m. At 600 m and beyond, the three positions
+of each retiring triangle are explicitly identical. That removes its
+raster area without a fragment discard, alpha crossfade or a draw-role
+change. At or below 500 m, the authored sashes are unchanged. The doubled
+ease is for geometric continuity, not a claim that intermediate
+silhouettes are already qualified.
+
+In an isolated GPU position readback using the exact prior 8,949-vertex
+input, all original values matched at 499 and 500 m. At 535 and 565 m only
+the three sash ranges moved. At 600, 640 and the failing 687.33 m distance,
+those ranges read back the same exact three interior anchors; all other
+positions retained their input values. This is a geometry-only check.
+A complete ordinary-flight repeat, with separate distant and partial
+apertures, is still needed. No product scenery is installed.
