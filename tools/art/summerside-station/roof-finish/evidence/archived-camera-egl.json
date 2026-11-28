@@ -1,0 +1,205 @@
+{
+  "status": "Detached native EGL, no terrain or flight",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "rgba8Samples": 4,
+  "depthBits": 24,
+  "layout": "q032001/163",
+  "drawsIncludingNeutralFloor": 11,
+  "stationTriangles": 5299,
+  "newTriangles": 0,
+  "newDraws": 0,
+  "additionalTextureFetches": 0,
+  "shaderChanges": [
+    "one roof material only"
+  ],
+  "viewPoses": {
+    "native-aperture-n360": {
+      "eye": [
+        143.30069143720175,
+        87.15455832675508,
+        251.42464245947485
+      ],
+      "target": null,
+      "FOV": 53,
+      "archivedBaseline": {
+        "frame": 360,
+        "ordinarySite": "spinnakers-low",
+        "archivedFramePNG": "fcbecf806a655a2d399a6424e4d7b68d0699c2e23a4dda57c902d7d434e41c54",
+        "archiveReceipt": "cc00b41fcd6bb835a8ee3da101d4497b8fc15740cea2d53a37f5a1580e609c6d",
+        "roofBounds": [
+          770,
+          506,
+          897,
+          544
+        ],
+        "exactWorldViewProjection": [
+          [
+            0.6958803815402809,
+            -0.07540345053114698,
+            0.7141882204540692,
+            0,
+            0,
+            0.9944726788932878,
+            0.1049956710288948,
+            0,
+            -0.7181577087154,
+            -0.07306442761566512,
+            0.6920340272196462,
+            0,
+            40228.518900107214,
+            -2580.8053290062826,
+            23583.694514707655,
+            1
+          ],
+          [
+            1.270270148564046,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ]
+        ]
+      }
+    },
+    "native-aperture-n420": {
+      "eye": [
+        72.14850782128633,
+        87.9008487550267,
+        179.74416009433116
+      ],
+      "target": null,
+      "FOV": 53,
+      "archivedBaseline": {
+        "frame": 420,
+        "ordinarySite": "spinnakers-low",
+        "archivedFramePNG": "4b7ae1aa6e723fc9f1aacd8401beb37d2f40b879cf59fbd2e94445b4a1b841a9",
+        "archiveReceipt": "cc00b41fcd6bb835a8ee3da101d4497b8fc15740cea2d53a37f5a1580e609c6d",
+        "roofBounds": [
+          849,
+          615,
+          1062,
+          700
+        ],
+        "exactWorldViewProjection": [
+          [
+            0.6958803627551154,
+            -0.07540022015874964,
+            0.7141885798105575,
+            0,
+            -6.938893903907228e-18,
+            0.9944731540739329,
+            0.1049911702298999,
+            0,
+            -0.7181577269178471,
+            -0.07306129362566682,
+            0.6920343392071923,
+            0,
+            40226.5537946057,
+            -2592.0428289301535,
+            23684.05031947831,
+            1
+          ],
+          [
+            1.270270148564046,
+            0,
+            0,
+            0,
+            0,
+            2.0056897082590197,
+            0,
+            0,
+            0,
+            0,
+            -1.0000004571429617,
+            -1,
+            0,
+            0,
+            -0.16000003657143694,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "views": {
+    "native-aperture-n360": {
+      "files": {
+        "stock": {
+          "name": "native-aperture-n360-stock.png",
+          "sha": "d404ec91701c3948132d10d9c78be2fc70439264e42d4fd4ca91d9a0e85f93c0"
+        },
+        "finish": {
+          "name": "native-aperture-n360-finish.png",
+          "sha": "55e86f8854852cb1693e34e4e771795a1019845b8dad164531dd3b89c17fa99e"
+        },
+        "role": {
+          "name": "native-aperture-n360-role.png",
+          "sha": "4d134b4883c53028c4f4d726e393ecc8c813ede33414e4510d51beb18765b879"
+        }
+      },
+      "sameLinkedNeutralRGBA": "a4dd8b0329e4976c787f07cbc2decba59ea329e4372fe1c325615f2f8236a74f",
+      "restoreRGBA": "a4dd8b0329e4976c787f07cbc2decba59ea329e4372fe1c325615f2f8236a74f",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 1468,
+      "mixedRoofPixels": 281,
+      "strongRGBGT3": 756,
+      "roofBox": [
+        770,
+        506,
+        896,
+        544
+      ],
+      "pureRoofLumaDeltaQ10_Q50_Q90": [
+        -5.212599999999999,
+        -1.2126000000000001,
+        2.9278
+      ]
+    },
+    "native-aperture-n420": {
+      "files": {
+        "stock": {
+          "name": "native-aperture-n420-stock.png",
+          "sha": "076857067e09f542f2766e7002c2235d0ff61f95b35c9d82b7e5ca276fd5eb17"
+        },
+        "finish": {
+          "name": "native-aperture-n420-finish.png",
+          "sha": "0de6ce2901e241a75adeda854f397d49800629a87e89cb8311198b899a4457ce"
+        },
+        "role": {
+          "name": "native-aperture-n420-role.png",
+          "sha": "2399834f9ec85deb2668bf3e1eb641dd3507ad6d3b78427f314216c353addc4f"
+        }
+      },
+      "sameLinkedNeutralRGBA": "499273c7c0488ef21311f595970a2d822bd7382108e60de259435f28c1b173d1",
+      "restoreRGBA": "499273c7c0488ef21311f595970a2d822bd7382108e60de259435f28c1b173d1",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 5100,
+      "mixedRoofPixels": 514,
+      "strongRGBGT3": 2992,
+      "roofBox": [
+        850,
+        616,
+        1062,
+        700
+      ],
+      "pureRoofLumaDeltaQ10_Q50_Q90": [
+        -5.425199999999999,
+        -1.2126000000000001,
+        4.4252
+      ]
+    }
+  }
+}

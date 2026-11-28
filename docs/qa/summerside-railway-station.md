@@ -103,3 +103,10 @@ python tools/qa/summerside-station-standard-flight.py --dist dist \
 python tools/qa/summerside-station-flight.py --dist dist \
   --out /tmp/pei-station-flight --chromium /path/to/chromium
 ```
+
+### Optional roof material study
+
+The [detached lapped roof finish](../../tools/art/summerside-station/roof-finish/) keeps
+the existing roof geometry and texture ownership. View the matched studio plates
+and archived-lens comparisons there. Neither constitutes a change to the playable
+Standard station.

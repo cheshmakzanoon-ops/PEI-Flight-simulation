@@ -1,0 +1,202 @@
+{
+  "status": "Detached native EGL, no terrain or flight",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "rgba8Samples": 4,
+  "depthBits": 24,
+  "layout": "q032001/163",
+  "drawsIncludingNeutralFloor": 11,
+  "stationTriangles": 5299,
+  "newTriangles": 0,
+  "newDraws": 0,
+  "additionalTextureFetches": 0,
+  "shaderChanges": [
+    "one roof material only"
+  ],
+  "viewPoses": {
+    "street-quarter": {
+      "eye": [
+        -31.8,
+        13.6,
+        32.5
+      ],
+      "target": [
+        4.3,
+        4.45,
+        -1.7
+      ],
+      "FOV": 40,
+      "archivedBaseline": null
+    },
+    "harbour-quarter": {
+      "eye": [
+        34.7,
+        24.6,
+        -33.8
+      ],
+      "target": [
+        4.1,
+        4.1,
+        -1.7
+      ],
+      "FOV": 41,
+      "archivedBaseline": null
+    },
+    "flyby-scale": {
+      "eye": [
+        78.8,
+        63.5,
+        -101.5
+      ],
+      "target": [
+        4.1,
+        4.15,
+        -1.8
+      ],
+      "FOV": 53,
+      "archivedBaseline": null
+    },
+    "turned-away": {
+      "eye": [
+        35,
+        18,
+        -36.3
+      ],
+      "target": [
+        77.1,
+        19.4,
+        -64.7
+      ],
+      "FOV": 53,
+      "archivedBaseline": null
+    }
+  },
+  "views": {
+    "street-quarter": {
+      "files": {
+        "stock": {
+          "name": "street-quarter-stock.png",
+          "sha": "6e48ea2609207c89a892c7eab7c05798539396ffdb8c774c672c1062a935cb84"
+        },
+        "finish": {
+          "name": "street-quarter-finish.png",
+          "sha": "0726dac36982303220b2fd5dba6a798802f8835a24987e0707fbe736df438eaa"
+        },
+        "role": {
+          "name": "street-quarter-role.png",
+          "sha": "280816ba04bcde8170668958e63b59ffbe609612abb19cdaf7179750d0abc063"
+        }
+      },
+      "sameLinkedNeutralRGBA": "17459b13ea6a3442bff72890b5e413cc35cfef2be0af9af6d171e4ff91e40d09",
+      "restoreRGBA": "17459b13ea6a3442bff72890b5e413cc35cfef2be0af9af6d171e4ff91e40d09",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 80753,
+      "mixedRoofPixels": 1838,
+      "strongRGBGT3": 54836,
+      "roofBox": [
+        38,
+        238,
+        836,
+        484
+      ],
+      "pureRoofLumaDeltaQ10_Q50_Q90": [
+        -8.353,
+        -1.0,
+        7.068199999999999
+      ]
+    },
+    "harbour-quarter": {
+      "files": {
+        "stock": {
+          "name": "harbour-quarter-stock.png",
+          "sha": "9d6ee920262427bf12a4a8896ccd878e2c3d8be0fb6069934bb76c0b707bb6f7"
+        },
+        "finish": {
+          "name": "harbour-quarter-finish.png",
+          "sha": "f4ae76f84d9391a1ab1e25f77b547f7666bdb888ea3545cf9d7c6ce9faa0aaf0"
+        },
+        "role": {
+          "name": "harbour-quarter-role.png",
+          "sha": "a06c1e39561010841133550d5db71ce792631d87fa3bf4972fbbb00062aa154a"
+        }
+      },
+      "sameLinkedNeutralRGBA": "a9ca18875a9ea9131f2684be773e5d75b03301d524974412c163f3cae066faff",
+      "restoreRGBA": "a9ca18875a9ea9131f2684be773e5d75b03301d524974412c163f3cae066faff",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 122332,
+      "mixedRoofPixels": 2314,
+      "strongRGBGT3": 79714,
+      "roofBox": [
+        32,
+        225,
+        869,
+        625
+      ],
+      "pureRoofLumaDeltaQ10_Q50_Q90": [
+        -7.1404,
+        -1.2126000000000001,
+        6.1404
+      ]
+    },
+    "flyby-scale": {
+      "files": {
+        "stock": {
+          "name": "flyby-scale-stock.png",
+          "sha": "c4ddd96e0e69c226f982a80315a563a9349442b4bad894ecc7584cb6bafa4086"
+        },
+        "finish": {
+          "name": "flyby-scale-finish.png",
+          "sha": "fa718ba00bc555274b14b7b72ee1651fee78f35bb7097569db2730b26d2d435d"
+        },
+        "role": {
+          "name": "flyby-scale-role.png",
+          "sha": "ccd2d02139626736cc03518bf8488ee9e2bd96b437db336b56c2e4938d80a764"
+        }
+      },
+      "sameLinkedNeutralRGBA": "c350efa9787d0779fe3950e372f33c5e7becd83c36b5fcf4ee9c1773cb64cb98",
+      "restoreRGBA": "c350efa9787d0779fe3950e372f33c5e7becd83c36b5fcf4ee9c1773cb64cb98",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 6736,
+      "mixedRoofPixels": 572,
+      "strongRGBGT3": 4609,
+      "roofBox": [
+        412,
+        312,
+        636,
+        395
+      ],
+      "pureRoofLumaDeltaQ10_Q50_Q90": [
+        -7.1404,
+        -2.0,
+        5.1404
+      ]
+    },
+    "turned-away": {
+      "files": {
+        "stock": {
+          "name": "turned-away-stock.png",
+          "sha": "1e644c0acf9077a31c5ad3f592d470d54a2cf9e096cd2a3e3c384f4076840cf0"
+        },
+        "finish": {
+          "name": "turned-away-finish.png",
+          "sha": "1e644c0acf9077a31c5ad3f592d470d54a2cf9e096cd2a3e3c384f4076840cf0"
+        },
+        "role": {
+          "name": "turned-away-role.png",
+          "sha": "9e6466f93f83b16f538fae816f3962b3acece5de13f7c758a088ed573a02cc0e"
+        }
+      },
+      "sameLinkedNeutralRGBA": "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364",
+      "restoreRGBA": "1849c77b27175fa8dfd32831b17cfea9876e9d92989f8a45fe68fe63b36cc364",
+      "trueWholeFrameAlphaChanges": 0,
+      "changedOutsideRole": 0,
+      "touchedRoofPixels": 0,
+      "mixedRoofPixels": 0,
+      "strongRGBGT3": 0,
+      "roofBox": null,
+      "pureRoofLumaDeltaQ10_Q50_Q90": null
+    }
+  }
+}
