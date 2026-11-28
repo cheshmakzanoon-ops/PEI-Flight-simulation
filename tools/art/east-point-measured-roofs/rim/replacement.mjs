@@ -112,5 +112,21 @@ const out={scope:'Offline full-source exact replacement bytes; no live installat
  physical:{beforeVertices:11988,afterVertices:result.topFlag.length,beforeDraws:1,proposedDraws:1,originalWorldOrigin:expected.normalizingCenter},
  sources:expected.full,roles:rooms,outputs:Object.fromEntries(Object.entries(final).map(([k,q])=>[k,{sha256:sha(bytes(q.array)),untouchedPrefixMiddleSuffix:q.guards}])),
 };
-if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(out,null,2)+'\n',{flag:'wx'});
+if(process.argv[2]==='--preview-wire'){
+ const dest=process.argv[3];assert.ok(dest&&process.argv.length===4);
+ const oldRows=[rooms[0].beforeRange[0],rooms.at(-1).beforeRange[1]];
+ const newRows=[rooms[0].afterRange[0],rooms.at(-1).afterRange[1]];
+ for(let i=1;i<rooms.length;i++){
+  assert.equal(rooms[i-1].beforeRange[1],rooms[i].beforeRange[0]);
+  assert.equal(rooms[i-1].afterRange[1],rooms[i].afterRange[0]);
+ }
+ const lane=Object.fromEntries(Object.entries(fields).map(([key,[,size]])=>{
+  const v=final[key].array;
+  const inserted=bytes(v.subarray(newRows[0]*size,newRows[1]*size)).toString('base64');
+  return [key,{size,pin:expected.full[key],newProof:sha(bytes(v)),inserted}];
+ }));
+ const view={owner:expected.normalizingCenter,oldRows,newRows,
+  sourceVertices:out.physical.beforeVertices,nextVertices:out.physical.afterVertices,sourceWire:expected.wire,lane};
+ writeFileSync(dest,'export const eastRoofRimWire='+JSON.stringify(view,null,1)+' as const;\n',{flag:'wx'});
+}else if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(out,null,2)+'\n',{flag:'wx'});
 else console.log(JSON.stringify(out,null,2));

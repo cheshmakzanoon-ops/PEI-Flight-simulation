@@ -4,7 +4,8 @@ Left: existing stock flat roofs. Right: the two roofs rebuilt from the
 admitted 1 m height samples with the attached upper-wall changes.
 These are unscaled, lossless crops from the same ordinary Chase frames
 after the actual **East Point · lighthouse pass** launch in a private
-test build. The changes are **not installed** in the public game.
+test build. Standard still uses the original roofs. A separate [explicit
+roof-form option](../../../../../docs/qa/east-point-roof-rim-preview.md) can now show this geometry.
 
 **Approach at 254.021 m travel**
 

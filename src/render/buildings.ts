@@ -881,6 +881,7 @@ export class Buildings {
     }
     if(id===TERMINAL_WIRE.id){this.terminalWall?.dispose();this.terminalWall=undefined;}
     if(this.chunkObserver?.id===id){this.chunkObserver.content=undefined;this.chunkObserver.mesh=undefined;}
+    if(this.eastRoofRimObserver?.id===id){this.eastRoofRimObserver.content=undefined;this.eastRoofRimObserver.mesh=undefined;}
     if(this.eastVillageObserver?.id===id){this.eastVillageObserver.content=undefined;this.eastVillageObserver.mesh=undefined;}
     if(id===SPINNAKERS_TILE&&this.spinnakers?.assembled)this.scene.remove(this.spinnakers.assembled);m.geometry.dispose();this.meshes.delete(id);
     if(this.kingsResident?.mesh===m)this.kingsResident=undefined;
@@ -1051,6 +1052,19 @@ export class Buildings {
     versions:[position.version,townWallFit.version,topFlag.version] as const};
   };
  }
+ private eastRoofRimObserver?:{id:string;offset:number;size:number;content?:ArrayBuffer;mesh?:THREE.Mesh};
+ /** Independently scoped optional East q1333 roof custody. */
+ observeEastRimOwner(){
+  const q=this.eastRoofRimObserver={id:'q1333',offset:3260377,size:9073,
+   content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
+  return ()=>{
+   const wire=q.content,mesh=q.mesh;
+   const current=()=>!!mesh&&!!wire&&this.eastRoofRimObserver===q&&q.mesh===mesh&&q.content===wire&&
+    mesh.parent===this.scene&&mesh.visible&&this.meshes.get(q.id)===mesh&&this.wanted.has(q.id);
+   if(!current()||!mesh||!wire||!(mesh.material instanceof THREE.ShaderMaterial))return;
+   return {wire,mesh:mesh as THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>,current};
+  };
+ }
  observeSourceChunk(id:string,offset:number,size:number){
   const o=this.chunkObserver={id,offset,size,content:undefined as ArrayBuffer|undefined,mesh:undefined as THREE.Mesh|undefined};
   return ()=>o.mesh&&o.mesh.parent===this.scene&&o.mesh.visible&&this.meshes.get(id)===o.mesh&&this.wanted.has(id)?o.content:undefined;
@@ -1100,6 +1114,7 @@ export class Buildings {
    let downtownVerified=false;
    let features:Bldg[],ownerBytes:ArrayBuffer|undefined,barnBytes:ArrayBuffer|undefined,stationBytes:ArrayBuffer|undefined,stDavidsBytes:ArrayBuffer|undefined,massingChunk:string|undefined;
    const observer=this.chunkObserver,tapped=observer&&observer.id===tile.id&&observer.offset===tile.offset&&observer.size===tile.bytes;
+   const rim=this.eastRoofRimObserver,rimTap=rim&&rim.id===tile.id&&rim.offset===tile.offset&&rim.size===tile.bytes;
    const eye=this.eastVillageObserver,eastVillageTap=eye&&eye.id===tile.id&&eye.offset===tile.offset&&eye.size===tile.bytes;
    const seawardRoofTap=this.seawardRoofWatch&&!!this.residentProofIndex&&tile.id==='q12000111'&&tile.offset===2066452&&tile.bytes===11843;
    let seawardRoofBytes:ArrayBuffer|undefined;
@@ -1109,7 +1124,7 @@ export class Buildings {
    let primBytes:ArrayBuffer|undefined;
    const terminal=this.terminalWallFactory&&!this.spinnakers&&downtown?.id===TERMINAL_WIRE.id?this.terminalWallFactory:undefined;
    let terminalBytes:ArrayBuffer|undefined;
-   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||kings||nativeChurch||seawardRoofTap){
+   if(candidate||princeCandidate||rusticoCandidate||standardRusticoCandidate||harbourRoofCandidate||olearyAccessCandidate||sourisWestCandidate||foundersWest||tryStation||tryStDavids||schoolLink||east||downtown||tryPointPrim||seacow||knight||dalvay||oleary||standardIndustrial||olearyRoofCandidate||tapped||eastVillageTap||rimTap||kings||nativeChurch||seawardRoofTap){
     const raw=await this.pack.read(tile.offset,tile.bytes);
     // Only the signed downtown chunk needs this check, with no duplicate
     // download and an unchanged stock decoder on a crypto or pin failure.
@@ -1117,7 +1132,7 @@ export class Buildings {
     features=await Buildings.decodeChunk(raw);
     if(schoolLink)schoolWire=raw;
     if(foundersWest)foundersWire=raw;
-    if(tapped||eastVillageTap)observed=raw;
+    if(tapped||eastVillageTap||rimTap)observed=raw;
     if(seawardRoofTap)seawardRoofBytes=raw;
     if(kings)kingsWire=raw;
     if(nativeChurch)churchWire=raw;
@@ -1162,6 +1177,7 @@ export class Buildings {
     matchesSpinnakersShells(this.atlasHash,tile.id,features);
    const mesh=this.generate(features,tile,!!wharf,church||nativeChurch?CHURCH.ordinal:ownerBytes?spec?.ordinal:stationBytes?RAIL.ordinal:stDavidsBytes?ST_DAVID.ordinal:eastBytes?SOURIS_EAST.ordinal:primBytes?POINT_PRIM.ordinal:seacowBytes?SEACOW.ordinal:knightBytes?KNIGHT_SEAT.ordinal:dalvayBytes?DALVAY.ordinal:olearyBytes&&(!olearyStudy||olearyStudy.station)?OLEARY.ordinal:undefined,!!barnBytes,massingChunk,downtownVerified,trackWharf,!!olearyStudy||!!standardIndustrial,!!olearyStudy?.warehouse);
    if(tapped&&observer){observer.content=observed;observer.mesh=mesh;}
+   if(rimTap&&rim){rim.content=observed;rim.mesh=mesh;}
    if(eastVillageTap&&eye){eye.content=observed;eye.mesh=mesh;}
    if(seawardRoofBytes&&this.residentProofIndex&&this.atlasHash)
     this.seawardRoofSource={mesh,wire:seawardRoofBytes,index:this.residentProofIndex,rows:features.length,atlas:this.atlasHash};

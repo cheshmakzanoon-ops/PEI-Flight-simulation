@@ -62,7 +62,7 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
  const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready',roof=false,east=false)=>{
-  const calls=[],error=new Error(failAt),route=cape==='basin-finish'?'basin-head-low':east?'east-light':field?'kings-sand-dunes':
+  const calls=[],error=new Error(failAt),route=cape==='east-rim-preview'?'east-light':cape==='basin-finish'?'basin-head-low':east?'east-light':field?'kings-sand-dunes':
    quay==='foreign'?'seacow-head-coast':quay||roof?SEAWARD_ROUTE:'northcape-wind-low';
   const light=cape==='light-preview',basin=cape==='basin-finish';
   const scope={scene:{},camera:{fov:53,zoom:1,position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
@@ -77,6 +77,14 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
   scope.capeLightPreview=light?{state:{phase:'active',solidDraws:1,paneDraws:1}}:undefined;
   scope.capeLightSupported=()=>true;
   scope.window={};
+  const rimFrame={route,mode:'flight'};
+  scope.eastRimFrame=()=>rimFrame;
+  scope.eastRim=cape==='east-rim-preview'?{
+   draw:(q,run)=>{
+    assert.equal(q,rimFrame);calls.push('begin east rims');
+    try{return run();}finally{calls.push('end east rims');}
+   },
+  }:undefined;
   scope.eastWallPreview=undefined;scope.eastWallDrawn=false;scope.eastWallGain={value:0};
   scope.eastWallRenderer=()=>true;
   if(east){
@@ -174,6 +182,8 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
   assert.deepEqual(paint(false,failAt),[...lead,...wholePaint,...tail]);
   assert.deepEqual(paint(true,failAt),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
  }
+ assert.deepEqual(paint('east-rim-preview',undefined),[...lead,
+  'begin rim','begin borden','begin east rims',...submit,'end east rims','end borden','end rim',...tail]);
  assert.deepEqual(paint('light-preview',undefined),[...lead,...wholePaint,...tail]);
  assert.deepEqual(paint('basin-finish',undefined),[...lead,'begin rim','begin borden',
   'begin west2','begin south21','begin basin','render','end basin','end south21','end west2',
