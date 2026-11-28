@@ -1,0 +1,549 @@
+{
+  "scope": "Stock geometry screen only, not alpha/depth visibility, image match or player-ready art.",
+  "tries": 96,
+  "plans": 50,
+  "selected": [
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37845781400669,
+        "lat": 46.40798791295192,
+        "heading": 225,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 42,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.43946728179372,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15662.774627369368
+          },
+          "last": {
+            "distance": 261.5945839896457,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20272.65416183716
+          },
+          "min": 28,
+          "length": 56
+        },
+        {
+          "first": {
+            "distance": 345.4461185097023,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 52331.18180178899
+          },
+          "last": {
+            "distance": 376.61275834459644,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 74865.94858187946
+          },
+          "min": 27,
+          "length": 56
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37693288785619,
+        "lat": 46.40269391351034,
+        "heading": 292.5,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 39.317997387152744,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.08655849219934,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 14851.919126063323
+          },
+          "last": {
+            "distance": 261.85640716851105,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 19111.240322403773
+          },
+          "min": 28,
+          "length": 58
+        },
+        {
+          "first": {
+            "distance": 345.47678340320306,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 46122.08373877679
+          },
+          "last": {
+            "distance": 376.70049268936094,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 68191.655762566
+          },
+          "min": 27,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.380740027271145,
+        "lat": 46.40904095491375,
+        "heading": 202.5,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 38.022192552855955,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.16866762022795,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 14416.9668556531
+          },
+          "last": {
+            "distance": 261.75240447379815,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 18411.96219013343
+          },
+          "min": 28,
+          "length": 56
+        },
+        {
+          "first": {
+            "distance": 345.034073662861,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 42966.73881121573
+          },
+          "last": {
+            "distance": 376.62921375607203,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 69515.12233312722
+          },
+          "min": 27,
+          "length": 56
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37845781400669,
+        "lat": 46.40798791295192,
+        "heading": 225,
+        "height": 34,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 34,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.4374127897471,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15671.732805374168
+          },
+          "last": {
+            "distance": 261.59187186082426,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20262.133809148807
+          },
+          "min": 28,
+          "length": 56
+        },
+        {
+          "first": {
+            "distance": 345.4412353703691,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 54662.84591886169
+          },
+          "last": {
+            "distance": 376.60692843333146,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 87394.08583593777
+          },
+          "min": 27,
+          "length": 56
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37693288785619,
+        "lat": 46.40269391351034,
+        "heading": 292.5,
+        "height": 34,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 31.355329206190056,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.0844445863485,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 14859.1005833704
+          },
+          "last": {
+            "distance": 261.8536038819764,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 19098.803126830255
+          },
+          "min": 28,
+          "length": 58
+        },
+        {
+          "first": {
+            "distance": 345.4717559411469,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 45749.384041427664
+          },
+          "last": {
+            "distance": 376.69449209424414,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 66857.60649474722
+          },
+          "min": 27,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.380740027271145,
+        "lat": 46.40904095491375,
+        "heading": 202.5,
+        "height": 34,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 30.033983469507433,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.16668013889714,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 14406.597232612734
+          },
+          "last": {
+            "distance": 261.7497687138032,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 18376.763218449993
+          },
+          "min": 28,
+          "length": 56
+        },
+        {
+          "first": {
+            "distance": 345.0293394732501,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 42612.934650365794
+          },
+          "last": {
+            "distance": 376.6235449144665,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 68152.91505563892
+          },
+          "min": 27,
+          "length": 56
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.3763974050026,
+        "lat": 46.404552918896925,
+        "heading": 270,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 42,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.0390044912434,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15943.835520711838
+          },
+          "last": {
+            "distance": 261.8029212437853,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20872.893440122014
+          },
+          "min": 28,
+          "length": 58
+        },
+        {
+          "first": {
+            "distance": 345.4083382020593,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 55600.73606257166
+          },
+          "last": {
+            "distance": 376.62668939886373,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 85630.27419355325
+          },
+          "min": 27,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 2
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37693288785619,
+        "lat": 46.40641192428352,
+        "heading": 247.5,
+        "height": 34,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 34,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.24030854006216,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15945.609254569103
+          },
+          "last": {
+            "distance": 261.6259442892675,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20719.619891765793
+          },
+          "min": 28,
+          "length": 57
+        },
+        {
+          "first": {
+            "distance": 345.14993282416185,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 53331.39817001329
+          },
+          "last": {
+            "distance": 376.54709477343187,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 78519.85367544489
+          },
+          "min": 27,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 2
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.3763974050026,
+        "lat": 46.404552918896925,
+        "heading": 270,
+        "height": 34,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 34,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.0368838808448,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15958.06513381302
+          },
+          "last": {
+            "distance": 261.80010864532585,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20862.736715947245
+          },
+          "min": 28,
+          "length": 58
+        },
+        {
+          "first": {
+            "distance": 345.40329270361747,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 58391.905744961885
+          },
+          "last": {
+            "distance": 376.62066686079464,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 97448.6279929083
+          },
+          "min": 27,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 2
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.37693288785619,
+        "lat": 46.40641192428352,
+        "heading": 247.5,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 42,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.24240876675887,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 15901.080189985727
+          },
+          "last": {
+            "distance": 261.62872137799485,
+            "projectedConservativeRoots": 28,
+            "summedQuadBoxesNotUniquePx": 20675.472994318905
+          },
+          "min": 28,
+          "length": 57
+        },
+        {
+          "first": {
+            "distance": 345.1549175817297,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 53597.759489355034
+          },
+          "last": {
+            "distance": 376.5530526067017,
+            "projectedConservativeRoots": 26,
+            "summedQuadBoxesNotUniquePx": 64238.33435600876
+          },
+          "min": 26,
+          "length": 57
+        }
+      ],
+      "lateExpectedRoots": 2
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.38612413546562,
+        "lat": 46.40904095491375,
+        "heading": 157.5,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 28.45157716050275,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.10866965046935,
+            "projectedConservativeRoots": 26,
+            "summedQuadBoxesNotUniquePx": 11046.33014249574
+          },
+          "last": {
+            "distance": 261.98321369741154,
+            "projectedConservativeRoots": 26,
+            "summedQuadBoxesNotUniquePx": 13619.42415723497
+          },
+          "min": 26,
+          "length": 55
+        },
+        {
+          "first": {
+            "distance": 345.22542375967595,
+            "projectedConservativeRoots": 24,
+            "summedQuadBoxesNotUniquePx": 26411.679417227573
+          },
+          "last": {
+            "distance": 376.52009420810043,
+            "projectedConservativeRoots": 24,
+            "summedQuadBoxesNotUniquePx": 37005.13805928332
+          },
+          "min": 24,
+          "length": 54
+        }
+      ],
+      "lateExpectedRoots": 0
+    },
+    {
+      "site": {
+        "id": "private-queens-field-edge-reciprocal",
+        "name": "New Glasgow · alternate test pass",
+        "region": "Queens County",
+        "lon": -63.38343208136838,
+        "lat": 46.40941073407617,
+        "heading": 180,
+        "height": 42,
+        "note": "Private non-navigational artwork test."
+      },
+      "minGroundM": 27.98374233983128,
+      "minDryM": 254,
+      "stats": [
+        {
+          "first": {
+            "distance": 230.02816680826115,
+            "projectedConservativeRoots": 27,
+            "summedQuadBoxesNotUniquePx": 12451.454775466487
+          },
+          "last": {
+            "distance": 261.48853000051196,
+            "projectedConservativeRoots": 26,
+            "summedQuadBoxesNotUniquePx": 15484.070325980982
+          },
+          "min": 26,
+          "length": 55
+        },
+        {
+          "first": {
+            "distance": 345.397531002665,
+            "projectedConservativeRoots": 26,
+            "summedQuadBoxesNotUniquePx": 33368.27744733717
+          },
+          "last": {
+            "distance": 376.86862442314583,
+            "projectedConservativeRoots": 24,
+            "summedQuadBoxesNotUniquePx": 48226.6184594892
+          },
+          "min": 24,
+          "length": 55
+        }
+      ],
+      "lateExpectedRoots": 0
+    }
+  ],
+  "subjectsSHA256": "fa1ece47ae443d81f313faf4ec11a647aa4baf3cb20d4531479e47234ec81cc1",
+  "prelockSHA256": "cbf4496cab145a4090b1cafdd68b001289cea810ebfcc1eead7ae40339858f76"
+}

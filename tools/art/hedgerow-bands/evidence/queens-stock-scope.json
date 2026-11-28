@@ -1,0 +1,61 @@
+{
+  "scope": "Actual source-linked CPU/GPU geometry and 4\u00d7 stock draw; canopy alpha, depth visibility and original art are unsolved.",
+  "harnessReceiptSHA256": "aeeb3c428d6852180a4383d7351c22e1f5d3e6c3bb119967af95aca7f6190dd4",
+  "nativeShaderFamilyBothMatches": true,
+  "signedReturnedLeaves": [
+    {
+      "tile": "13-13",
+      "bytes": 36988,
+      "decodedSHA256": "9997992a58abdf0e8ed95d5394f983f18abab0c5269adb3df97826052460311d",
+      "exactRange": "bytes 31289-68276/504933"
+    },
+    {
+      "tile": "13-12",
+      "bytes": 54530,
+      "decodedSHA256": "199147d0003390e4b4cb2f7c9d3e86becb91c9158e4ad3317abd8ea5067be558",
+      "exactRange": "bytes 275965-330494/532044"
+    },
+    {
+      "tile": "14-13",
+      "bytes": 79934,
+      "decodedSHA256": "ef60dff7aca59ca8d10d534e6df508254e39212f4ba101a1a7c36e2f5e245523",
+      "exactRange": "bytes 68277-148210/504933"
+    },
+    {
+      "tile": "14-12",
+      "bytes": 53047,
+      "decodedSHA256": "7e87edf3dd56fe742c7d6477ccb9017900318ec9253ff5c46b11ed98ca5548e1",
+      "exactRange": "bytes 330495-383541/532044"
+    }
+  ],
+  "sites": [
+    {
+      "flightDistanceM": 253.00491863519883,
+      "actualSubmittedHedges": 3060,
+      "allInstancesLocatedInExactRequestedAtlas": true,
+      "primaryDatedPolygon": 52617,
+      "actualRootPositionsInPrimary": 112,
+      "quadsWithMoreThanOneProjectedPixel": 65,
+      "conservativeSumOfQuadAreasPxNotUniqueVisiblePixels": 239851.52557506226,
+      "rootHedgeHeightsMinMaxM": [
+        3.25,
+        16.0
+      ],
+      "exactCentreMarginAllowsFullWidthCrownPlus1m": 2
+    },
+    {
+      "flightDistanceM": 342.7780257006838,
+      "actualSubmittedHedges": 2956,
+      "allInstancesLocatedInExactRequestedAtlas": true,
+      "primaryDatedPolygon": 52617,
+      "actualRootPositionsInPrimary": 112,
+      "quadsWithMoreThanOneProjectedPixel": 44,
+      "conservativeSumOfQuadAreasPxNotUniqueVisiblePixels": 325342.6921983115,
+      "rootHedgeHeightsMinMaxM": [
+        3.25,
+        16.0
+      ],
+      "exactCentreMarginAllowsFullWidthCrownPlus1m": 2
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "scope":"Private alternate ordinary flight forecast only, based on current stock geometry, not any authored crowns or pixel result.",
+  "bboxSourceOnly":"Exact 28 permitted native-uploaded existing Queens stem and shape records within signed CLUI OID52617.",
+  "startDistances":[360,460,540],
+  "startAGL":[34,42],
+  "headingBinDegrees":22.5,
+  "checkForwardDistances":[230,345],
+  "exitCheckForwardDistance":710,
+  "requireSixPointNoChangeToStandardFlight":true,
+  "minAglEntireRoute":20,
+  "minOldSignedDryContact":35,
+  "minForecastProjectedCandidateRootsBothStations":16,
+  "minDistinctRootAtLaterRenderGate":7,
+  "viewAspect":1.5789473684210527,
+  "minCandidateAreaPerForehypothesisPx":6,
+  "doNotChangeAnyQualityGate":"This only proposes safe physical test approaches. Their visibility depends on native alpha/shadows and needs actual same-frame proof. Original Queens thin-aperture negative preserved."
+}

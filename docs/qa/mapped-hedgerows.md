@@ -91,3 +91,7 @@ The two original 10 m WorldCover tiles can be downloaded from the same
 sources listed in [the cover manifest](../../public/world/cover.json).
 The native forest TIFF and the two cover TIFFs are pinned; the raw
 survey materials are not bundled or streamed to players.
+
+A separate [hedgerow band workshop](../../tools/art/hedgerow-bands/README.md)
+records three model styles and a native readback of the original New
+Glasgow pair. The revised models remain uninstalled.

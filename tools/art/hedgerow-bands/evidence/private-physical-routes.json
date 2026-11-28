@@ -1,0 +1,365 @@
+{
+  "scope": "Separate private simulated departure path forward across exact 2020 plan outline. Uses ordinary flight/contact neutral input; no camera forcing or canopy/peer visibility claims.",
+  "startingRangeMetres": 420,
+  "originalFixedAngleInfluenceOnly": true,
+  "noChangeToMain": true,
+  "examples": {
+    "prince": {
+      "departure": {
+        "id": "private-prince-field-edge",
+        "name": "Freetown field-edge witness",
+        "region": "Prince County",
+        "lon": -63.620105244894674,
+        "lat": 46.357795762257325,
+        "heading": 329.33107335028507,
+        "height": 36,
+        "note": "Private simulated field-edge QA departure."
+      },
+      "layoutPhysical": true,
+      "protectionMin": [
+        30.68032736968774,
+        254
+      ],
+      "stations": [
+        {
+          "d": 0,
+          "age": 0,
+          "position": [
+            -32248.368005446293,
+            61.39292065455071,
+            15807.577181871065
+          ],
+          "heading": 5.747911559089427,
+          "ground": 25.392920654550707,
+          "agl": 36,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 31.6433661653524
+        },
+        {
+          "d": 250.50187190445658,
+          "age": 4.9333333333333185,
+          "position": [
+            -32369.913554032606,
+            63.09586288081236,
+            15588.538675104586
+          ],
+          "heading": 5.747911559089427,
+          "ground": 29.634437507490134,
+          "agl": 33.46142537332223,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 28.501631446712
+        },
+        {
+          "d": 340.25300989603636,
+          "age": 6.699999999999979,
+          "position": [
+            -32413.46265033952,
+            63.75915069875477,
+            15510.061015972653
+          ],
+          "heading": 5.747911559089427,
+          "ground": 31.549299828011154,
+          "agl": 32.20985087074362,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 52.2139050335659
+        },
+        {
+          "d": 440.1888111723378,
+          "age": 8.66666666666664,
+          "position": [
+            -32461.954160051424,
+            64.50183867834117,
+            15422.678306785272
+          ],
+          "heading": 5.747911559089427,
+          "ground": 33.56799042925683,
+          "agl": 30.933848249084342,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 19.1816634368411
+        },
+        {
+          "d": 580.2492340462037,
+          "age": 11.422222222222185,
+          "position": [
+            -32529.91614043632,
+            65.54974293510982,
+            15300.211612192905
+          ],
+          "heading": 5.747911559089427,
+          "ground": 34.134330659776076,
+          "agl": 31.415412275333743,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 1.4579025143334154
+        },
+        {
+          "d": 710.1774049869472,
+          "age": 13.977777777777732,
+          "position": [
+            -32592.962452193624,
+            66.52799172206257,
+            15186.604868619585
+          ],
+          "heading": 5.747911559089427,
+          "ground": 32.3201612047884,
+          "agl": 34.20783051727417,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 34.07174426397974
+        },
+        {
+          "d": 920.3779733963243,
+          "age": 18.111111111111388,
+          "position": [
+            -32694.961520584075,
+            68.12037281742555,
+            15002.810230418656
+          ],
+          "heading": 5.747911559089427,
+          "ground": 32.031457107854216,
+          "agl": 36.08891570957133,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 93.47741608288605
+        }
+      ],
+      "closest": 0,
+      "complete": true
+    },
+    "queens": {
+      "departure": {
+        "id": "private-queens-field-edge",
+        "name": "New Glasgow field-edge witness",
+        "region": "Queens County",
+        "lon": -63.38078591824347,
+        "lat": 46.40268991842457,
+        "heading": 294.2539197243166,
+        "height": 42,
+        "note": "Private simulated field-edge QA departure."
+      },
+      "layoutPhysical": true,
+      "protectionMin": [
+        20.079529167206232,
+        254
+      ],
+      "stations": [
+        {
+          "d": 0,
+          "age": 0,
+          "position": [
+            -13877.595894284805,
+            91.88244561240035,
+            10817.094128103823
+          ],
+          "heading": 5.13569973608841,
+          "ground": 49.882445612400346,
+          "agl": 42,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 254.96832902654646
+        },
+        {
+          "d": 250.21733636917023,
+          "age": 4.988888888888874,
+          "position": [
+            -14104.772360179593,
+            93.53355613731993,
+            10712.215299147563
+          ],
+          "heading": 5.135699736088409,
+          "ground": 58.78574690377547,
+          "agl": 34.747809233544466,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 85.11566254984653
+        },
+        {
+          "d": 340.54734414475564,
+          "age": 6.788888888888867,
+          "position": [
+            -14186.784668264845,
+            94.18133618661126,
+            10674.353819680568
+          ],
+          "heading": 5.135699736088409,
+          "ground": 56.02863965497533,
+          "agl": 38.15269653163593,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 11.500999963597307
+        },
+        {
+          "d": 440.383902826511,
+          "age": 8.77777777777775,
+          "position": [
+            -14277.42825808646,
+            94.90222911529526,
+            10632.507934889134
+          ],
+          "heading": 5.135699736088409,
+          "ground": 60.60573350589349,
+          "agl": 34.29649560940177,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 10.915928025385691
+        },
+        {
+          "d": 580.4204801586118,
+          "age": 11.56666666666663,
+          "position": [
+            -14404.570404331695,
+            95.92158208153705,
+            10573.812810390371
+          ],
+          "heading": 5.135699736088409,
+          "ground": 68.3902197070089,
+          "agl": 27.531362374528157,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 99.28925410337625
+        },
+        {
+          "d": 710.4523794894434,
+          "age": 14.155555555555509,
+          "position": [
+            -14522.62923907201,
+            96.8752825681264,
+            10519.31137569052
+          ],
+          "heading": 5.135699736088409,
+          "ground": 74.58533957255895,
+          "agl": 22.289942995567444,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 182.90829647104133
+        },
+        {
+          "d": 920.352016231298,
+          "age": 18.333333333333645,
+          "position": [
+            -14713.20199907476,
+            98.4261321059074,
+            10431.334784187471
+          ],
+          "heading": 5.135699736088409,
+          "ground": 77.78695443971161,
+          "agl": 20.639177666195792,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 365.12463410024384
+        }
+      ],
+      "closest": 0,
+      "complete": true
+    },
+    "kings": {
+      "departure": {
+        "id": "private-kings-field-edge",
+        "name": "St Peters field-edge witness",
+        "region": "Kings County",
+        "lon": -62.6345578826741,
+        "lat": 46.407524417771704,
+        "heading": 314.19307054489764,
+        "height": 39,
+        "note": "Private simulated field-edge QA departure."
+      },
+      "layoutPhysical": true,
+      "protectionMin": [
+        27.41954104139034,
+        254
+      ],
+      "stations": [
+        {
+          "d": 0,
+          "age": 0,
+          "position": [
+            43404.803217527486,
+            52.30009784299285,
+            10279.68594126904
+          ],
+          "heading": 5.483703567959278,
+          "ground": 13.30009784299285,
+          "agl": 39,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 232.10232022967926
+        },
+        {
+          "d": 250.47616600389614,
+          "age": 4.966666666666652,
+          "position": [
+            43228.970397708355,
+            54.03704998255763,
+            10101.301162741092
+          ],
+          "heading": 5.483703567959278,
+          "ground": 22.181339814755567,
+          "agl": 31.855710167802066,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 77.36769206858814
+        },
+        {
+          "d": 340.1754241496423,
+          "age": 6.744444444444423,
+          "position": [
+            43166.00137982448,
+            54.712864581246706,
+            10037.41955584783
+          ],
+          "heading": 5.483703567959278,
+          "ground": 24.76613160219578,
+          "agl": 29.946732979050925,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 37.099631500281504
+        },
+        {
+          "d": 440.55022233915815,
+          "age": 8.733333333333306,
+          "position": [
+            43095.53775633026,
+            55.473138434413244,
+            9965.935446586482
+          ],
+          "heading": 5.483703567959278,
+          "ground": 27.285859470531815,
+          "agl": 28.18727896388143,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 0
+        },
+        {
+          "d": 580.2141299539535,
+          "age": 11.499999999999963,
+          "position": [
+            42997.49242491082,
+            56.53776758607317,
+            9866.471281780525
+          ],
+          "heading": 5.483703567959278,
+          "ground": 28.8650713008775,
+          "agl": 27.672696285195673,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 0
+        },
+        {
+          "d": 710.3753912514189,
+          "age": 14.077777777777731,
+          "position": [
+            42906.117543057975,
+            57.535888766440706,
+            9773.775084917354
+          ],
+          "heading": 5.483703567959278,
+          "ground": 29.684184015635648,
+          "agl": 27.85170475080506,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 98.77173823208544
+        },
+        {
+          "d": 920.2586890747851,
+          "age": 18.23333333333363,
+          "position": [
+            42758.77594142014,
+            59.15467272629726,
+            9624.304515423777
+          ],
+          "heading": 5.483703567959278,
+          "ground": 23.461676275878855,
+          "agl": 35.692996450418406,
+          "clearOldDryMetres": 254,
+          "planDistanceFromSignedHedge": 297.9832951595095
+        }
+      ],
+      "closest": 0,
+      "complete": true
+    }
+  }
+}

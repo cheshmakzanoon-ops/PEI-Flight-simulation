@@ -1,0 +1,54 @@
+{
+  "scope": "bounded OGL-PEI CLUI dated hedgerow outline reference; no candidate vegetation or photos",
+  "dataset": "https://gis.princeedwardisland.ca/server/rest/services/Hosted/CLUI2020_OpenData/FeatureServer/0/query",
+  "sourceRecords": {
+    "prince": {
+      "ringCount": 6,
+      "boxWGS84": [
+        -63.62889608517722,
+        46.35704558836548,
+        -63.61689608517722,
+        46.365045588365476
+      ],
+      "nativeSpatial": {
+        "latestWkid": 2954,
+        "wkid": 2291
+      },
+      "idSHA256": "c4ee1bd6beab4dc31f732ebd55964f45f12f156bc4fffe28c7a20f802ed2a104",
+      "rawBytes": 17220,
+      "rawSHA256": "f26d36fdfdddde84bd822ca89dc90a1f573d59abe4707440088ded116f683405"
+    },
+    "queens": {
+      "ringCount": 13,
+      "boxWGS84": [
+        -63.39177439297236,
+        46.4002419734208,
+        -63.37977439297236,
+        46.40824197342079
+      ],
+      "nativeSpatial": {
+        "latestWkid": 2954,
+        "wkid": 2291
+      },
+      "idSHA256": "b212cbd230d2aa0a2493bae198fa601cfe5186f31ae0aa1d4b6adf02bf2f8d12",
+      "rawBytes": 25869,
+      "rawSHA256": "6b8099dee6640c73b41a0b7a850f727bfb74d3aa408df37cba077b60f5c6bc70"
+    },
+    "kings": {
+      "ringCount": 5,
+      "boxWGS84": [
+        -62.644480859392814,
+        46.40615818954952,
+        -62.632480859392814,
+        46.41415818954952
+      ],
+      "nativeSpatial": {
+        "latestWkid": 2954,
+        "wkid": 2291
+      },
+      "idSHA256": "890f6c35c0a37035a34b1123b86ecef8561dbc8b15d44942045e59e4b0694678",
+      "rawBytes": 10958,
+      "rawSHA256": "851dbf771b9f5c2163b29cf0fde25485f99b27c8b5549f7027e1fed54f8ddbdd"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "county": "kings",
+  "scope": "Original authenticated mapped rows in detached orthogonal renderer; known ground ray and actual r187 programs/texture, no live scene, intervening stock forest/roads/structures/flight or sky proof",
+  "renderer": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "rgba8D24Four": [
+    4,
+    8,
+    24
+  ],
+  "noCrownAdded": true,
+  "trianglesAddedVisual": 57066,
+  "allocatedTypedArraySubmissionBytes": 103926,
+  "counts": 57,
+  "artDraws": 4,
+  "records": [
+    {
+      "name": "archived-fixed-recipe",
+      "actualDrawScopeMatches": true,
+      "restoreExact": true,
+      "allRGBPixels": 9373,
+      "strongRGBPixels": 9004,
+      "alphaChange": 0,
+      "exterior": 0,
+      "oldVisible": 7385,
+      "artVisible": 7871,
+      "overlap": 5877,
+      "photometricBoundOnSharedVisibleOnly": 1.0485295544986897,
+      "artOcclusionScope": {
+        "name": "archived-fixed-recipe",
+        "eye": [
+          43268.57418295277,
+          58.82692022761381,
+          10147.241046543704
+        ],
+        "center": [
+          43103.66535162545,
+          29.99023627792849,
+          9986.913016086588
+        ],
+        "view": [
+          0.6970783932918134,
+          -0.0891962700106631,
+          0.7114251464643969,
+          0,
+          -6.938893903907228e-18,
+          0.9922317826753392,
+          0.12440293183409462,
+          0,
+          -0.716994918814425,
+          -0.08671859584370167,
+          0.6916633368403973,
+          0,
+          -22886.06790112335,
+          4680.979981116161,
+          -37808.14456873615,
+          1
+        ],
+        "projection": [
+          1.2535560676618878,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "logDepthFC": 0.10859532238103015
+      },
+      "shapeXORRelativeUnion": 0.3733873547286491
+    },
+    {
+      "name": "detached-reciprocal",
+      "actualDrawScopeMatches": true,
+      "restoreExact": true,
+      "allRGBPixels": 7994,
+      "strongRGBPixels": 7828,
+      "alphaChange": 0,
+      "exterior": 0,
+      "oldVisible": 7347,
+      "artVisible": 5032,
+      "overlap": 4382,
+      "photometricBoundOnSharedVisibleOnly": 1.0053467358177832,
+      "artOcclusionScope": {
+        "name": "detached-reciprocal",
+        "eye": [
+          43037.0644902778,
+          52.14705981133466,
+          9877.531457916342
+        ],
+        "center": [
+          43103.66535162545,
+          29.99023627792849,
+          9986.913016086588
+        ],
+        "view": [
+          -0.8541264710342346,
+          0.08866224139393104,
+          -0.5124519279206678,
+          0,
+          -1.3877787807814457e-17,
+          0.9853606376229598,
+          0.17048288425315372,
+          0,
+          0.520065353084211,
+          0.14561394429888405,
+          -0.8416226041089417,
+          0,
+          31622.134131492083,
+          -5305.4525763525535,
+          30358.690236706563,
+          1
+        ],
+        "projection": [
+          1.2535560676618878,
+          0,
+          0,
+          0,
+          0,
+          2.00568970825902,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ],
+        "logDepthFC": 0.10859532238103015
+      },
+      "shapeXORRelativeUnion": 0.45204451669376017
+    }
+  ]
+}

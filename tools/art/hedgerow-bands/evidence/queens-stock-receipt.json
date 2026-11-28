@@ -1,0 +1,262 @@
+{
+  "state": "PASS exact linked standard hedge custody at two physical steps; no depth-pixel visibility or artist claim",
+  "sealedBuild": "a71ca60c9dd22af44490f6eb17872ed49070706a88de0dba273f4629f721a8d2",
+  "site": "private-queens-field-edge",
+  "windows": [
+    {
+      "covered": 0,
+      "d": 253.00491863519883,
+      "site": "private-queens-field-edge",
+      "view": 0,
+      "oldMode": "flight",
+      "originalPrefix": 22460,
+      "instances": 25520,
+      "hedgeCount": 3060,
+      "elementCount": 6,
+      "viewMatrix": [
+        0.4114200472831726,
+        -0.09616956114768982,
+        0.9063580632209778,
+        0,
+        6.938893903907228e-18,
+        0.9944179058074951,
+        0.10551319271326065,
+        0,
+        -0.9114458560943604,
+        -0.04341024160385132,
+        0.4091234505176544,
+        0,
+        15566.5966796875,
+        -986.601806640625,
+        8372.189453125,
+        1
+      ],
+      "projection": [
+        1.2702701091766357,
+        0,
+        0,
+        0,
+        0,
+        2.0056896209716797,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004768371582,
+        -1,
+        0,
+        0,
+        -0.1600000411272049,
+        0
+      ],
+      "eye": [
+        -14087.4921875,
+        97.71810150146484,
+        10720.0224609375
+      ],
+      "viewport": [
+        0,
+        0,
+        1200,
+        760
+      ],
+      "samples": 4,
+      "shadow": {
+        "instances": 25520,
+        "count": 6,
+        "ground": {
+          "name": "0-old-shadow-floor.f32le",
+          "sha256": "842159cf0c8b055cbcf6ac632211b2757745c051cf8bd68bd90f98d364afbe19"
+        }
+      },
+      "captureState": {
+        "mode": "flight",
+        "camera": "Chase",
+        "site": "private-queens-field-edge",
+        "hedges": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 3060
+        },
+        "roads": true,
+        "buildings": true
+      },
+      "fullStem": {
+        "name": "0-fullStem.f32le",
+        "sha256": "1c17e87bddbbf7570266060cc50c76043847024ae347a879486309be66534d2e"
+      },
+      "fullShape": {
+        "name": "0-fullShape.f32le",
+        "sha256": "1707500da72509cbc84f89b3f6c0fea112b31917f6a34713a485a4acb1be5b91"
+      },
+      "shaderSHA256": [
+        "2257efbf67bcd9ec7741695d013559a7ddf1bb719ca852cad5c5c96c7ba9b653",
+        "7601f40db88c1124c633fa712a9511809cf30da5aa215c943e8e03dd344ad55a"
+      ]
+    },
+    {
+      "covered": 1,
+      "d": 342.7780257006838,
+      "site": "private-queens-field-edge",
+      "view": 0,
+      "oldMode": "flight",
+      "originalPrefix": 22711,
+      "instances": 25667,
+      "hedgeCount": 2956,
+      "elementCount": 6,
+      "viewMatrix": [
+        0.4114200174808502,
+        -0.09616537392139435,
+        0.906358540058136,
+        0,
+        -6.938893903907228e-18,
+        0.9944183826446533,
+        0.10550859570503235,
+        0,
+        -0.9114458560943604,
+        -0.0434083491563797,
+        0.40912362933158875,
+        0,
+        15565.833984375,
+        -996.6746215820312,
+        8461.3935546875,
+        1
+      ],
+      "projection": [
+        1.2702701091766357,
+        0,
+        0,
+        0,
+        0,
+        2.0056896209716797,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004768371582,
+        -1,
+        0,
+        0,
+        -0.1600000411272049,
+        0
+      ],
+      "eye": [
+        -14168.998046875,
+        98.36177825927734,
+        10682.3955078125
+      ],
+      "viewport": [
+        0,
+        0,
+        1200,
+        760
+      ],
+      "samples": 4,
+      "shadow": {
+        "instances": 25667,
+        "count": 6,
+        "ground": {
+          "name": "1-old-shadow-floor.f32le",
+          "sha256": "125f1211a0cfbc34762d090edcd3eed608b92dcbb8607b23182f1505a29e3af2"
+        }
+      },
+      "captureState": {
+        "mode": "flight",
+        "camera": "Chase",
+        "site": "private-queens-field-edge",
+        "hedges": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 2956
+        },
+        "roads": true,
+        "buildings": true
+      },
+      "fullStem": {
+        "name": "1-fullStem.f32le",
+        "sha256": "56de94eaf20eef2699337cac1f1eca0402c64a8ebe451d199970c9122c18c5fe"
+      },
+      "fullShape": {
+        "name": "1-fullShape.f32le",
+        "sha256": "f5664252e66149ce53663d41a5ab2add2c7347e4e09d2c169e7676eb0bbd5334"
+      },
+      "shaderSHA256": [
+        "2257efbf67bcd9ec7741695d013559a7ddf1bb719ca852cad5c5c96c7ba9b653",
+        "7601f40db88c1124c633fa712a9511809cf30da5aa215c943e8e03dd344ad55a"
+      ]
+    }
+  ],
+  "ranges": [
+    {
+      "leaf": "index.json",
+      "status": 200,
+      "range": null,
+      "contentRange": null,
+      "length": "33000"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933",
+      "length": "36988"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044",
+      "length": "54530"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933",
+      "length": "36988"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044",
+      "length": "54530"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=68277-148210",
+      "contentRange": "bytes 68277-148210/504933",
+      "length": "79934"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=330495-383541",
+      "contentRange": "bytes 330495-383541/532044",
+      "length": "53047"
+    }
+  ],
+  "outside": [],
+  "errors": [],
+  "begin": {
+    "site": "private-queens-field-edge",
+    "x": -13877.595894284806,
+    "z": 10817.094128103823,
+    "mode": "dispatch",
+    "mainland": true,
+    "roads": true,
+    "buildings": true
+  },
+  "final": {
+    "error": "",
+    "covered": 2,
+    "queued": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "scope":"Canopy form only on already-existing signed hedgerow placements. Never approve new stems, geometry outside verified dated outline, ground/collision, species or modern height.",
+  "requireOneCurrentMapOwnerPerDeparture":true,
+  "comparison":"Same ordinary unforced 4x 1200x760 Chase frame, old default, old neutral prepared, fenced volume, restored stock.",
+  "nativeSourceMatricesAndInstanceWords":true,
+  "knownSourceLayouts":[
+    {"route":"private-prince-field-edge","clui":17487,"physicalStartDistanceM":[440,580]},
+    {"route":"private-queens-field-edge","clui":52617,"physicalStartDistanceM":[250,340]},
+    {"route":"private-kings-field-edge","clui":88010,"physicalStartDistanceM":[340,440]}
+  ],
+  "preserveTrueOldForestPrefix":true,
+  "preserveActualShadowDrawAndSampleBytes":true,
+  "requireStrictSignedPlanDepthRole":true,
+  "lastVisibleSupport":"Independent same-depth final RGB marker for old and new role, plus clip-space support of actual submitted buffers (do not count summed quads as pixels), both nonvacuous.",
+  "requireExact":{"stockVersusNeutral":true,"stockAfterRestore":true,"sameSourceGroundAndContact":true,"alphaOutside":true,"colourOutsideActualOldNewRoleUnion":true},
+  "visibilityPrechecks":{"maxArtAdditionalDraws":2,"maxArtAdditionalTris":180000,"minimumDistinctOldSourceRootsActuallySeenEach":7,"primaryPixelMassRatioRecommended":[0.78,1.2],"interiorLinearLuminanceMedianRatioRecommended":[0.85,1.16]},
+  "artStop":"At 1x reject repeated solid balls, unnatural artificial light seams, closed corridors opened by swaps, artificial filling of signed corridor gaps, or disruption of actual branch/canopy distribution. Huge optical colour changes alone fail.",
+  "evidenceLabel":"This is an acceptance prelock for future live rendering. Technical results or positive roots alone do not approve art. Not a current scenery deployment."
+}
