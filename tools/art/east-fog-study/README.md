@@ -152,3 +152,24 @@ and corrected terrain lighting need a separate combined review.
 ```sh
 node --experimental-strip-types --test test/east-fog-surface-finish.test.ts
 ```
+
+## Fitted ground contact and cast
+
+The [detached receiver study](east-fog-ground-light-study.ts) checks the
+existing East Point terrain receiver source, then substitutes two optional
+terms. Contact follows the fitted wings; the cast comes from finite rays
+against the [closed bulk geometry](east-fog-static-caster.glsl) in the
+simulator's existing daylight direction. Both terms retain their original
+behavior when disabled. West Point, the tower and the yard material are
+not modeled by these new terms.
+
+An isolated ordinary-flight comparison with the corrected bulk measured
+contact and cast separately and together. The new shadow removed the old
+dark patch outside the fitted structure and added shade along the corrected
+footprint. Neither a terrain change nor a whole-site survey is implied.
+This source remains outside the playable renderer. It does not include the
+trim's separate fractional shadow, facade detail or a live level transition.
+
+```sh
+node --experimental-strip-types --test test/east-fog-ground-light-study.test.ts
+```
