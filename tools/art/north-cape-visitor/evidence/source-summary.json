@@ -1,0 +1,124 @@
+{
+  "scope": "Public digest and aggregate receipt only. Archived original diagnostic and reference files are not redistributed. CPU stock reconstruction and schematic geometric exposure are not GPU role ownership or exact new pose.",
+  "hashes": {
+    "exactStockOwnerCpuReplay": "dedeece7de797a45fa9170aed1407faf3e72ffac9e68713e532605501d7349a2",
+    "archivedRegistrationReceipt": "62d0cc6727ad0fdcbaf86cdd9d89a5ca36980fe9be1a0e163fffcc71b8d2b188",
+    "detachedDsmFits": "7780d4f1f062825f0239743d3303422dcc553404313d3cd2019d75f13a114899"
+  },
+  "stock": {
+    "tile": "q2232",
+    "ordinal": 2,
+    "rows": 16,
+    "rangeOffset": 3842247,
+    "rangeLength": 787,
+    "rangeSha": "546d40a7045ce55492e065c543ce72bdac489416e2c992a52a57fddfac77c899",
+    "siblingsSeparate": [
+      4,
+      5,
+      9,
+      10,
+      13,
+      14
+    ],
+    "nativeSpan": [
+      96,
+      216
+    ],
+    "stockTriangles": 40,
+    "stockFlatY": 13.526140213012695,
+    "planSquareMetres": 611.8491,
+    "planCRS": "EPSG:3979"
+  },
+  "federalRasterSources": {
+    "dtm": "b1a65934cf3c5212d9be72066908fb9f9be94a41de1f8dc33411b932e1795e90",
+    "dsm": "914a736d44c36bd6734786ab4d8d48ee5a26789a14c1c1cff80c55d267995a9f",
+    "verticalDatum": "CGVD2013",
+    "sceneDatumChanges": false,
+    "erodedSourceCentres": 527,
+    "maskInteriorReserveM": 0.8,
+    "minNoDataClaim": false,
+    "groundMedianM": 5.682,
+    "dsmPeakM": 13.695
+  },
+  "interiorSameAcquisitionFit": [
+    {
+      "name": "V-rising",
+      "V": [
+        -9.25,
+        -3.4
+      ],
+      "stage": "split selected declared before this fit, not blind acquisition",
+      "a": 18,
+      "h": 18,
+      "coefY_m_per_U_V_and_intercept": [
+        -0.0109853488557098,
+        0.24673148996413063,
+        13.68758047688029
+      ],
+      "pitchFromBothDeg": 13.873053053759694,
+      "supportU": [
+        -8.212162122684804,
+        -2.134192781161598
+      ],
+      "supportV": [
+        -9.118252203299386,
+        -3.4091133654459185
+      ],
+      "heldAbsP90": 0.2160176066256302,
+      "heldWithin03": 17,
+      "flatStockAbsP90": 1.843269729614258,
+      "heldAbsMax": 0.41917407668079676,
+      "passes": true
+    },
+    {
+      "name": "V-falling",
+      "V": [
+        4.55,
+        9.65
+      ],
+      "stage": "split selected declared before this fit, not blind acquisition",
+      "a": 18,
+      "h": 15,
+      "coefY_m_per_U_V_and_intercept": [
+        -0.001795501819285553,
+        -0.3068586792694685,
+        14.242201148670155
+      ],
+      "pitchFromBothDeg": 17.059361316606605,
+      "supportU": [
+        -8.288182445767388,
+        -2.006792771638667
+      ],
+      "supportV": [
+        4.62703897904985,
+        9.522496486481257
+      ],
+      "heldAbsP90": 0.07769242369385942,
+      "heldWithin03": 15,
+      "flatStockAbsP90": 1.9333688735961914,
+      "heldAbsMax": 0.12136274950780823,
+      "passes": true
+    }
+  ],
+  "chase": {
+    "approach": [
+      285.737,
+      6529,
+      2047
+    ],
+    "nearOnlyClippedRoof": [
+      404.445,
+      3455,
+      3455
+    ],
+    "exit": [
+      612.958,
+      0,
+      0
+    ]
+  },
+  "limitations": [
+    "No independently measured full shape, plane joins, foundation, ordinals other than /2, geographic yaw or present material assignment.",
+    "Visual references and private flight captures omitted. No runtime placement."
+  ]
+}

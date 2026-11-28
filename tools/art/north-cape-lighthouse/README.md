@@ -96,3 +96,9 @@ install a ground grade or change lighthouse seating.
 The detached [screen-size study](lod/) compares the exact near and middle
 meshes and proposes pixel-based hysteresis for future renderer testing.
 It does not change the playable simulator.
+
+### Nearby interpretive centre
+
+The [separate visitor-centre frontage study](../north-cape-visitor/)
+identifies the nearby stock building and reproduces a red-roof studio
+interpretation. It is not a whole surveyed shell or a game placement.

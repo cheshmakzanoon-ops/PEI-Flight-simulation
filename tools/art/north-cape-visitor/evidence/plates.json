@@ -1,0 +1,29 @@
+{
+  "front": {
+    "originalPNG": "c9f0b14c2789ad471c2c8f61da6d152ab658782f4c65a896324181fb2baad577",
+    "portableLosslessWebPSHA256": "4dd86407a8bcbbb8e7762932b3f5edf76ffb1c38fa2143378bd730c4f9adf53d",
+    "decodedRgbaSHA256": "4b4184c2a415a52388af8752b97b283b8623c71ddd88491f194292365ebdcec0",
+    "size": [
+      1080,
+      700
+    ]
+  },
+  "porch": {
+    "originalPNG": "fa9690a2c2ec38ea2c16cde0f204f54ef6d8369e930386822d7eab32b44680fc",
+    "portableLosslessWebPSHA256": "7bc14e5c6bcc3010ab3788a7c2d1531939091ed397328bee4da0aa64463ff2be",
+    "decodedRgbaSHA256": "3e9dceb8f0622b57506873bd9feda9723c891b852acbabca7bb1a2a19c42d29a",
+    "size": [
+      1080,
+      700
+    ]
+  },
+  "visibleScale": {
+    "originalPNG": "d457a61d888e3398f3769e0b5f6b1cdd35bfd42b7d888c33dd55eb50967afbd7",
+    "portableLosslessWebPSHA256": "133bc11ba4c27a45c48ac8caa533911d5d0367a3b717510c98eb19a3664a84d1",
+    "decodedRgbaSHA256": "6e1003fe0a8049c5b552a4bc39631cd85dfb1897be176c4a13e0cd918688f55c",
+    "size": [
+      1080,
+      700
+    ]
+  }
+}

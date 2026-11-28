@@ -1,0 +1,51 @@
+{
+  "scope": "Isolated native 4x ES3 with same exact raw GLSL and literal generated Three.js mesh, neutral synthetic floor only, no player/camera/physics/source-map comparison.",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "views": {
+    "front": {
+      "gpuArtPositiveRGBGT3": 192301,
+      "bbox": [
+        75,
+        238,
+        962,
+        537
+      ],
+      "alphaUnchanged": true,
+      "studioRestoreExact": true,
+      "noStagingTerrain": true,
+      "activeRGBA": "4b4184c2a415a52388af8752b97b283b8623c71ddd88491f194292365ebdcec0",
+      "exactPNGSHA": "c9f0b14c2789ad471c2c8f61da6d152ab658782f4c65a896324181fb2baad577"
+    },
+    "porch": {
+      "gpuArtPositiveRGBGT3": 187622,
+      "bbox": [
+        204,
+        203,
+        972,
+        591
+      ],
+      "alphaUnchanged": true,
+      "studioRestoreExact": true,
+      "noStagingTerrain": true,
+      "activeRGBA": "3e9dceb8f0622b57506873bd9feda9723c891b852acbabca7bb1a2a19c42d29a",
+      "exactPNGSHA": "fa9690a2c2ec38ea2c16cde0f204f54ef6d8369e930386822d7eab32b44680fc"
+    },
+    "visibleScale": {
+      "gpuArtPositiveRGBGT3": 4892,
+      "bbox": [
+        488,
+        322,
+        610,
+        380
+      ],
+      "alphaUnchanged": true,
+      "studioRestoreExact": true,
+      "noStagingTerrain": true,
+      "activeRGBA": "6e1003fe0a8049c5b552a4bc39631cd85dfb1897be176c4a13e0cd918688f55c",
+      "exactPNGSHA": "d457a61d888e3398f3769e0b5f6b1cdd35bfd42b7d888c33dd55eb50967afbd7"
+    }
+  },
+  "triangleCount": 1240,
+  "geometryDraws": 1,
+  "analyticTextureReads": 0
+}
