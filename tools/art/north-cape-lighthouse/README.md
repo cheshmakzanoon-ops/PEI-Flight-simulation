@@ -50,9 +50,14 @@ unchanged player terrain and does not ship either study raster in the playable b
 
 ### Dated near façade
 
-The optional detached `dated-facade` variant keeps the three sashes but adds the
-small hooded vent below them and the entry canopy on the adjoining face. The
-vent and adjacent canopy are visible in the 2011 view. The [provincial heritage
+The optional detached `dated-facade` variant keeps one documented three-sash stack but adds the
+small vent-like hood and the entry canopy. The corner in the
+[2015 Dennis G. Jarvis view](https://commons.wikimedia.org/wiki/File:North_Cape_Lighthouse_(22264028516).jpg)
+puts the hood on the face next to the sash row; the other corner in the
+2011 view puts the entry on the next face after the hood. These are
+relative face assignments from visible edges, not exact aperture offsets.
+The listed camera positions are not reliable enough to set a compass
+bearing for any wall. The [provincial heritage
 statement](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19725&pid=0)
 records removal of ground-floor windows; the [Lighthouse Society account](https://peilighthousesociety.ca/index.php/lighthouses/public-lighthouses/28-north-cape-lighthouse)
 identifies the replacement vent. No fourth sash, steps, fences or compass

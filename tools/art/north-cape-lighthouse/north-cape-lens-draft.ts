@@ -15,7 +15,8 @@ const towerR=(y:number)=>R+(META.topRadius-R)*(y/META.bodyTop);
 // +X is the center of the unassigned study face, not an azimuth.
 export const studyFaceXAtHeight=(y:number)=>towerR(y)*Math.cos(Math.PI/8);
 type TrimSeat=Readonly<{height:number;first:number;end:number}>;
-type FacadeDetail=Readonly<{kind:'vent'|'hooded-entry';face:0|1;first:number;end:number}>;
+type StudyFace=0|1|2;
+type FacadeDetail=Readonly<{kind:'vent'|'hooded-entry';face:StudyFace;first:number;end:number}>;
 class ModelWords {
  private pos:number[]=[];private colour:number[]=[];
  tri(a:V,b:V,c:V,k:T.Color){for(const q of [a,b,c]){this.pos.push(q.x,q.y,q.z);this.colour.push(k.r,k.g,k.b);}}
@@ -39,7 +40,7 @@ class ModelWords {
   g.dispose();
  }
  get vertices(){return this.pos.length/3;}
- faceVolume(y:number,height:number,span:number,back:number,front:number,c:T.Color,center=0,face:0|1=0){
+ faceVolume(y:number,height:number,span:number,back:number,front:number,c:T.Color,center=0,face:StudyFace=0){
   const lo=y-height/2,hi=y+height/2,z=span/2;
   const point=(yy:number,zz:number,off:number)=>facePoint(face,yy,center+zz,off);
   const a=[point(lo,-z,front),point(hi,-z,front),point(hi,z,front),point(lo,z,front)];
@@ -89,31 +90,33 @@ function tower(b:ModelWords,near:boolean){
  }
  return Object.freeze(seats);
 }
-function facePoint(face:0|1,y:number,tangent:number,offset:number){
- const x=studyFaceXAtHeight(y)+offset,c=face===0?1:Math.SQRT1_2,s=face===0?0:Math.SQRT1_2;
+function facePoint(face:StudyFace,y:number,tangent:number,offset:number){
+ const x=studyFaceXAtHeight(y)+offset;
+ const c=face===0?1:face===1?Math.SQRT1_2:0,s=face===0?0:face===1?Math.SQRT1_2:1;
  return new T.Vector3(c*x-s*tangent,y,s*x+c*tangent);
 }
 /** Visible in the dated views, but neither face is assigned a geographic bearing. */
 function datedFacade(b:ModelWords):readonly FacadeDetail[]{
  const out:FacadeDetail[]=[];
  let first=b.vertices;
- // Small raised pale hood, with the dark line below it instead of a fourth sash.
- b.faceVolume(4.20,.27,.33,-.028,.085,iron,.90,0);
- b.faceVolume(4.25,.21,.39,-.029,.125,seam,.90,0);
- out.push(Object.freeze({kind:'vent',face:0,first,end:b.vertices}));
+ // The two photographic arrises place vent between the row of sashes
+ // and the door. No geographic rotation or measured offsets are assigned.
+ b.faceVolume(4.20,.27,.33,-.028,.085,iron,-.24,1);
+ b.faceVolume(4.25,.21,.39,-.029,.125,seam,-.24,1);
+ out.push(Object.freeze({kind:'vent',face:1,first,end:b.vertices}));
  first=b.vertices;
- b.faceVolume(1.17,1.84,1.08,-.055,.066,shade,0,1);
- b.faceVolume(1.17,1.67,.85,.065,.080,seam,0,1);
- b.faceVolume(.255,.083,1.09,-.022,.162,iron,0,1);
+ b.faceVolume(1.17,1.84,1.08,-.055,.066,shade,0,2);
+ b.faceVolume(1.17,1.67,.85,.065,.080,seam,0,2);
+ b.faceVolume(.255,.083,1.09,-.022,.162,iron,0,2);
  for(const t of [-.50,.50]){
-  const lower=facePoint(1,2.105,t,-.043),ridge=facePoint(1,2.425,0,-.043);
-  const lip=facePoint(1,2.079,t,.38),peak=facePoint(1,2.399,0,.38);
+  const lower=facePoint(2,2.105,t,-.043),ridge=facePoint(2,2.425,0,-.043);
+  const lip=facePoint(2,2.079,t,.38),peak=facePoint(2,2.399,0,.38);
   if(t>0)b.quad(lower,lip,peak,ridge,wine);else b.quad(ridge,peak,lip,lower,wine);
   b.bar(lip,peak,.043,.043,seam);
  }
  // Front hood gable fills its silhouette; never a projecting false dormer.
- b.tri(facePoint(1,2.079,-.50,.379),facePoint(1,2.399,0,.379),facePoint(1,2.079,.50,.379),shade);
- out.push(Object.freeze({kind:'hooded-entry',face:1,first,end:b.vertices}));
+ b.tri(facePoint(2,2.079,-.50,.379),facePoint(2,2.399,0,.379),facePoint(2,2.079,.50,.379),shade);
+ out.push(Object.freeze({kind:'hooded-entry',face:2,first,end:b.vertices}));
  return Object.freeze(out);
 }
 function gallery(b:ModelWords,near:boolean){
