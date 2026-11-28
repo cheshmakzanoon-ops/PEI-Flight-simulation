@@ -107,11 +107,11 @@ export class UI {
   $('site').onchange=()=>{const next=Number(($('site') as HTMLSelectElement).value);
    if(next!==this.selected)this.setDispatchWoodland('other');
    this.selected=next;this.actions.chooseDeparture?.(this.selected);this.showSite();};
+  $('start').onclick=e=>this.actions.start(this.selected,e.isTrusted);$('view').onclick=()=>this.actions.view();
   $('landmark-preview-switch').onclick=()=>{
    const card=this.landmarkCard();
    if(card?.url&&this.mode==='dispatch')location.assign(card.url);
   };
-  $('start').onclick=e=>this.actions.start(this.selected,e.isTrusted);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
    location.assign(switchBasinHeadDispatchURL(this.scenerySource.url,!basin.selected,reopenRoute()));
   };
