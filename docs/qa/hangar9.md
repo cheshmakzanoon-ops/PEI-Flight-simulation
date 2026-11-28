@@ -40,6 +40,30 @@ but the one-metre data did not have enough independent positions for a complete
 roof test, particularly on the southwest wing and its join. No roof from that
 intake is installed. No photography, plans or raw survey points are packaged.
 
+## Northwest apron wall study
+
+The [detached finish](../../tools/art/hangar9-nw-finish/) removes the
+repeated office-window appearance from **one northwest plane**. It is
+not installed or available as a player option. The unchanged adjacent
+walls still use generic stock finishes.
+
+Left: original over the runway. Right: original Three.js enamel study.
+Both images are unscaled pixel crops of the same flight frame.
+
+| 56 seconds | 58 seconds |
+| --- | --- |
+| ![Original office-window pattern beside the matte Northwest wall at 56 seconds](hangar9/northwest-finish-56s.png) | ![Same in-flight comparison at 58 seconds](hangar9/northwest-finish-58s.png) |
+
+In the matched 4× Chromium test, all colour changes were confined to
+the authenticated northwest face (1,059 and 2,075 pixels). The late
+Chase view at 64 seconds was unchanged. Alpha and the full stock image
+were restored exactly; the southwest wall, roof, neighbouring q47 and
+flight controls were unchanged. The test began from the ordinary
+Summerside runway via the actual **Begin flight** button and used a
+repeatable analog input. The paint is an approximation; these captures
+do not establish a reconstructed door, other exterior faces or a
+measured roof. [Native receipt](hangar9/northwest-finish-native.json).
+
 ## Replay
 
 With local project dependencies, Python Playwright and Chromium:
