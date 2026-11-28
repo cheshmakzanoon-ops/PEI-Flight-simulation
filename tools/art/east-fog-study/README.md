@@ -73,3 +73,39 @@ near-distance silhouettes, and the matching ground shadow/contact
 treatment still need qualification before replacing it. The stock window
 geometry does not fit the corrected shell; dated, registered references
 are needed before placing windows on the new model.
+
+## Two authored rear-wall sash windows
+
+The [detached sash study](east-fog-authored-sashes.ts) adds two of the
+three openings visible in period photographs of the high rear wall.
+It does not add a complete window inventory, adapt the opposite
+entrance face, or reuse the original simulator's window locations.
+
+- F. Pound’s 2009 rear elevation and contrasting north elevation in
+  the [Canadian Register image gallery](https://www.historicplaces.ca/en/rep-reg/image-image.aspx?id=19205)
+  establish the wall’s orientation and the visible casing/plinth layout.
+- Cosmos Mariner’s [July 2019 photo](https://www.hmdb.org/PhotoFullSize.asp?PhotoID=496662),
+  [Peg Frizzell's close photograph published in 2020](https://fanningsparks.com/beacons-of-light/),
+  and the cited August 2023 aerial corroborate the high rear wall and
+  visible openings. The deck and railing partly obstruct the lower
+  photograph edges. The historic red surround and pale upper lights
+  are authored interpretations, not claims about today’s paint.
+
+The two authored center fractions are 0.28 and 0.715 along the high rear
+wall, starting from its join with the lower wing. This is normalized
+placement from dated visual references, not a survey. The model uses an
+illustrative plinth datum and authored thickness, not a foundation or
+ground derived from the photos. The upper and lower divisions have
+recessed opaque panes separated by a raised meeting rail; no transparent
+sort, cutout, new shader, or photo texture is involved.
+
+Run the standalone geometry study checks from the project root:
+
+```sh
+node --experimental-strip-types --test test/east-fog-authored-sashes.test.ts
+```
+
+This source is not imported by the game. It changes no building, ground,
+collision, coastline or light in the playable build. Native trim/sash
+visibility, shadow/contact and consistent distance-level integration are
+separate work.
