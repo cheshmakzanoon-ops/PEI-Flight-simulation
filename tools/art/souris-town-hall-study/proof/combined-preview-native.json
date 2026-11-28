@@ -1,0 +1,86 @@
+{
+  "scope": "Detached combined art canvas only, not flight simulator, rear placement, current floor or whole-building accuracy. Browser controls are reported separately.",
+  "threeRevision": 187,
+  "sourceReceiptSHA256": "48182fdc2dc1528288666436ecbc64d94f66c3e1b4dd45e893d60be1df130c67",
+  "candidateSealSha256": "f76624b28f1dee740f0daddd886e03bbaa764dd9f9def89f02ef6a45a8a2a2a4",
+  "roleWitnessPrelockSHA256": "cc32f4ea5fe49d651b9edb8ea3749fe90228261335b0abc8012394689ea8e1da",
+  "nativeCanvas": [
+    620,
+    460
+  ],
+  "actualNativeCases": 18,
+  "fourExistingQueryCanvasesExact": true,
+  "threeUnsupportedOptionsNoRendererOrMaterials": true,
+  "sameOriginalWorkerSHA256": "f09595c815bc0b76fee8886708a97a09ae2fe355bb98a60e241008dd72f4a7fa",
+  "transparentDisposalRepeatedSafe": true,
+  "reviewAngles": {
+    "entry": {
+      "canvasSha256": "47b30160ba69cb48f8d995237b3dd0e0e49a356463975f0f1333fa7df4b079a5",
+      "paints": 13,
+      "trianglesIncludingReviewFloor": 5290,
+      "rendererCleanup": {
+        "textureDeletes": 12,
+        "bufferDeletes": 54,
+        "againUnchanged": true,
+        "once": 1,
+        "detached": true,
+        "released": true
+      }
+    },
+    "rear": {
+      "canvasSha256": "893dff593904ab6e143165623404ad3297372e558993745fc5450385c5506030",
+      "paints": 13,
+      "trianglesIncludingReviewFloor": 5310,
+      "rendererCleanup": {
+        "textureDeletes": 12,
+        "bufferDeletes": 56,
+        "againUnchanged": true,
+        "once": 1,
+        "detached": true,
+        "released": true
+      }
+    }
+  },
+  "matchedWholeCanvasChanges": {
+    "entry": {
+      "rgbChanged": 800,
+      "rgbChangedAbove2": 759,
+      "alphaChanged": 0,
+      "bboxXYInclusive": [
+        109,
+        95,
+        122,
+        304
+      ]
+    },
+    "rear": {
+      "rgbChanged": 462,
+      "rgbChangedAbove2": 462,
+      "alphaChanged": 0,
+      "bboxXYInclusive": [
+        441,
+        230,
+        463,
+        266
+      ]
+    }
+  },
+  "roleWitness": {
+    "west": {
+      "robustProjectedCenters": 886,
+      "nativeExactToExistingRoleView": 886,
+      "rgbDifferenceAbove2VersusOldRoleAbsent": 885
+    },
+    "east": {
+      "robustProjectedCenters": 685,
+      "nativeExactToExistingRoleView": 685,
+      "rgbDifferenceAbove2VersusOldRoleAbsent": 681
+    },
+    "rearMeasuredCore": {
+      "robustProjectedCenters": 751,
+      "nativeExactToExistingRoleView": 751,
+      "rgbDifferenceAbove2VersusOldRoleAbsent": 749
+    }
+  },
+  "renderContactSheetSHA256": "e0fdc153af2cb21463d5ca5fa50f604d096e923e5d6a299e9b6b990228248e6a"
+}

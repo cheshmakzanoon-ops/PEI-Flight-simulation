@@ -1,0 +1,51 @@
+{
+  "phase": "DETACHED COMPOSITION ONLY. No new measured surfaces, placement or renderer activation.",
+  "three": "187",
+  "inheritedScope": {
+    "oldMainRoofHeldRays": 95,
+    "rearLowHeldRays": 20,
+    "oldRearCoreP90M": 2.3898281593199155,
+    "authoredRearCoreP90M": 0.15562495544920416,
+    "lowerCorePlanAreaM2": 12.448106667001916,
+    "cutsAndClosure": "unchanged previous lower-rear option",
+    "entryRunRises": [
+      9,
+      8
+    ],
+    "entrySillAndDryContact": "unchanged previous optional studio; no terrain emitted by this assembly",
+    "withheld": "upper east, unsupported extent/finish of rear wood addition, treads as construction data, whole placement"
+  },
+  "emittedCompound": {
+    "bodyAndRearMeshes": 9,
+    "actualStairMeshes": 3,
+    "bodyAndRearFacets": 4456,
+    "standaloneEntriesFacets": 852,
+    "totalFacets": 5308,
+    "sourceAddedFacetsVersusTwoUnchangedModuleOutputs": 0,
+    "newTextureMaps": 0,
+    "frontGroupIdentity": "same matrix, no shift"
+  },
+  "separation": {
+    "foremostEntryV": -3.3299999237060547,
+    "rearmostEntryV": 0.3190000057220459,
+    "currentCoreForemostV": 9.349766391452905,
+    "computedForemostRearDifferenceV": 6.360435485839844,
+    "entryToClosestDifferingTypedFaceSeparationM": 6.041435480117798,
+    "fullFrontByteMultisetExactThroughV": 6,
+    "exactFrontFaces": 3977,
+    "equivalentFrontBytes": 524964,
+    "differentDefaultToRearRemovedTypedFaces": 136,
+    "differentDefaultToRearAddedTypedFaces": 230
+  },
+  "custody": {
+    "proofDefaultMeshSha": "58a6ab8daeea7c30f0113be7b2e3828d746a9964d0f373679c80509953d1d2e0",
+    "actualNeutralSha": "75f627478d768100308e69c10342c98af8942f28fed4fc510d1d64f6dc2ade03",
+    "exactCompoundHallAndStandaloneRearSha": "ca1b925ded7c1b8ac3644407e545428fa267535a37daf1212dd06e35a6a7601f",
+    "exactCompoundAndStandaloneEntrySha": "662bd46307ee17ecf45b9dad374f3e0a0754cf98c43d32e37c8efe2bf9532698",
+    "allReleasesOwnedOnce": [
+      12,
+      10
+    ],
+    "unrelatedMaterialReleases": 0
+  }
+}

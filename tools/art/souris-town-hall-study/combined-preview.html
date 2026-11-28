@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Souris Town Hall | Detached combined study</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#172d31;color:#edf4f4}
+body{margin:0;height:100vh;height:100dvh;display:grid;grid-template-rows:auto minmax(180px,1fr)}
+#brief{min-width:0;padding:12px 18px;background:#172d31;border-bottom:1px solid #708a8e}
+#study-bar{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap}
+#brief strong{font-size:16px;font-weight:650}
+p{font-size:12px;margin:6px 0 0;line-height:1.42;color:#d1e0e2}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav[hidden]{display:none}
+a{display:inline-block;padding:4px 8px;color:#fff;border:1px solid #9fb7b9;border-radius:4px;font-size:12px;text-decoration:none}
+a[aria-current=page]{background:#466266}a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#preview-stage{position:relative;min-width:0;overflow:hidden;background:#7e9cb7}
+canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block}
+@media(max-width:420px){#brief{padding:10px 12px}#study-bar{column-gap:8px}}
+</style>
+</head>
+<body>
+<aside id="brief" aria-label="Detached study controls">
+<div id="study-bar">
+<strong>Souris Town Hall</strong>
+<nav aria-label="Study angles" hidden id="angles"><a id="show-entry">Front entries</a><a id="show-rear">Lower rear</a></nav>
+</div>
+<p id="scope">Detached study. This view does not change the flight simulator.</p>
+<p role="status" id="status">Checking the explicit study choice…</p>
+</aside>
+<main id="preview-stage" aria-label="Detached 3D study"></main>
+<script type="module" src="/src/combined-preview.ts"></script>
+</body>
+</html>

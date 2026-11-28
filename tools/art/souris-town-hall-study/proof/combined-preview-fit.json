@@ -1,0 +1,62 @@
+{
+  "scope": "Actual tested detached preview controls and camera viewport only. Not live scenery, site placement or hardware benchmarks.",
+  "sourceReceiptSHA256": "1f72955aeaeb1ce603bd409aa5484ba658f8d1a2fed303726527d73b979b7891",
+  "wholeCanonicalCanvasRGBAExactBeforeAfterRail": true,
+  "controlRailDoesNotOverlayArt": true,
+  "keyboardAngleRoundTrip": true,
+  "resizeAfterReleaseNoReattachment": true,
+  "invalidChoiceNoRenderer": true,
+  "angles": {
+    "entry": {
+      "canonicalCanvasSha256": "47b30160ba69cb48f8d995237b3dd0e0e49a356463975f0f1333fa7df4b079a5",
+      "canonicalBacking": [
+        620,
+        460
+      ],
+      "formerlyCoveredLandmarks": 4,
+      "landmarksMeasured": 4,
+      "positionMeasuredCSS": {
+        "headerBottom": 115.09375,
+        "canvasTop": 115.546875
+      },
+      "portraitViewport": [
+        360,
+        620
+      ],
+      "portraitBacking": [
+        360,
+        267
+      ],
+      "visibleOriginalStudyRoleCenters": {
+        "west": 886,
+        "east": 685
+      },
+      "fullPageWebPSHA256": "a7220d1a5339f629d0ca04ea20fa171ee7df21dbc20b77f839ab4f14b7e25a02"
+    },
+    "rear": {
+      "canonicalCanvasSha256": "893dff593904ab6e143165623404ad3297372e558993745fc5450385c5506030",
+      "canonicalBacking": [
+        620,
+        460
+      ],
+      "formerlyCoveredLandmarks": 3,
+      "landmarksMeasured": 3,
+      "positionMeasuredCSS": {
+        "headerBottom": 115.09375,
+        "canvasTop": 115.546875
+      },
+      "portraitViewport": [
+        360,
+        620
+      ],
+      "portraitBacking": [
+        360,
+        267
+      ],
+      "visibleOriginalStudyRoleCenters": {
+        "rearMeasuredCore": 751
+      },
+      "fullPageWebPSHA256": "68876de303dde3d8f261829de38503ce2001ee151567d7cf81743a08340c9a4d"
+    }
+  }
+}

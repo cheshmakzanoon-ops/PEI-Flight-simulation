@@ -122,6 +122,43 @@ not evidence that the map ships this asset.
 
 ![Matched test-only Souris street renders: body only on the left, steps on the right](proof/entrance-souris-context.webp)
 
+## Review both studies together
+
+The separate combined viewer shows the two existing entrance stair studies
+and the measured 12.45 m² lower-rear roof in their original metre frame.
+It adds no surfaces, source imagery, textures or live simulator asset.
+The entry angle uses the original local study floor; the rear angle uses
+a neutral studio floor. Neither is evidence of whole-building placement.
+The upper-east roof feature and actual rear enclosure remain unresolved.
+
+Run from the repository root:
+
+```sh
+node_modules/.bin/vite --config tools/art/souris-town-hall-study/combined-vite.config.ts --host 127.0.0.1
+```
+
+Open `/combined-preview.html?study=lower-rear-and-steps` on that local
+server and switch between **Front entries** and **Lower rear**. The
+standard studio viewer and its previous URLs remain separate.
+
+![Matched studio framing of the existing entry stairs and the measured local rear roof](proof/combined-preview-native.webp)
+
+The [geometry receipt](proof/combined-geometry.json) replays the two
+unchanged mesh assemblies. In the [native render check](proof/combined-preview-native.json),
+each of the four existing viewer choices produced the same canvas
+before and after the separate viewer was added. Each study surface group
+matched its original standalone view at all tested interior points.
+Both texture sizes and the blocked-worker matte fallback were exercised.
+
+The [separate controls test](proof/combined-preview-fit.json) verifies
+that the new top rail doesn't cover the stage. At 620 × 460 the two
+art canvases remained pixel-identical. At a 360 px browser width, the
+unstretched viewport retained all front stair and rear roof witness
+points. The test also switched angles both ways with the keyboard.
+
+[Full entry viewer](proof/combined-entry-control-rail.webp) ·
+[Full rear viewer](proof/combined-rear-control-rail.webp)
+
 ## Work on the asset
 
 From the repository root with its locked npm dependencies already installed:
