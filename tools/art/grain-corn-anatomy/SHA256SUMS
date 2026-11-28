@@ -1,0 +1,13 @@
+56952a54593b13533c18bf11961807130a15a237923876fbfcc0cfabebedbec6  ./CORN-ART-PRELOCK.json
+b42f353bbc77a6ec57fda2b2375871e3e6b6736390e497b1a2047c9e4f07cc6b  ./README.md
+36f56e2ebfe74b53fb9033f7de16a86caaafe078a6dc5d5ef5bef8c548cd423a  ./TESTS.txt
+edcd001cf43a9d1c0b623b4afaca67f2860058cc36090ebcd1ee8e0ba7e24516  ./art.test.mjs
+68216af1be38026a569e53ae59813fd632a03722aea7b6ccb07b6d5cc2c9d43c  ./corn-stalk.ts
+7b2eff030d63acf6bce0e126b27d87c40ce1260c29a1a80998f156e443e76778  ./corn-study.ts
+b587a5fe9a0aa36fa2f4cfed956fdfbbab40e3c96c0b82fe3f4e4820701e3656  ./egl_support.py
+71f60ed1643cedcfd8da21ad4f744df4add9ee340a282018384f6bc48540b42d  ./plates/leaf-architecture.webp
+59597be4b2220792e4895040f47bed9b08e8326d3d073d2b995fbf417ac54b38  ./plates/receipt.json
+6111fc92c573c536d1a9c7e1e7911d133d81461d4206d3da03e8ca220eee49b3  ./plates/sheath-and-sail.webp
+39a4d17d376b4db0adcd118e41ee204544c4828ca9ce22cb46aeb19a1d1ee82b  ./render-packet.mjs
+cf7cd6ffa4937dc0f8595c0179d8129abdfbbcbb205e183bc10db16c977513de  ./studio.py
+717c56075b522edcac071c73ba4ec07e18911a9182e4bf178edb317f503fe1b1  ./tsconfig.json

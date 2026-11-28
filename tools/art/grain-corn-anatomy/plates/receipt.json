@@ -1,0 +1,150 @@
+{
+  "scope": "Detached original anatomy only, no gameplay",
+  "driver": "OpenGL ES 3.2 Mesa 25.0.7-2+deb13u1",
+  "three": "187",
+  "frame": [
+    1200,
+    760
+  ],
+  "groupsPerAsset": 0,
+  "drawsPerAsset": 1,
+  "fixtureOnlyFloorAddsOneDraw": true,
+  "downloadedTextureCount": 0,
+  "shaderHashes": {
+    "vertex": "a171d9c872c95c9f2f56ac5f60b0021ac39610d8010a12214fe83c903d9e4d68",
+    "fragment": "eeea45bcbd088ecb34d69ca3aa739e6856fbf8c53c53cb10e95e2fd58ea4a7ff"
+  },
+  "geometry": {
+    "near": {
+      "attributes": {
+        "position": {
+          "sha": "7df31276caa250b36ac54e3124ee25745c53e94cbe3dbd38f256decc3ffde1a7",
+          "bytes": 43200
+        },
+        "uv": {
+          "sha": "97c9d5e1dce1311619fbd8ae39fa6f90fa5fbdc3886f4ff276b37640e59fd258",
+          "bytes": 28800
+        },
+        "pigment": {
+          "sha": "542198d602c3d0c1e6d0d0a84fbd5bca9b291c7f9d581daf2420a4e2da489633",
+          "bytes": 10800
+        },
+        "cornRole": {
+          "sha": "cfc44dcb88f6f3215fff9d7c0154bf6d93917823e6d9f713433b5d0a9d2563c0",
+          "bytes": 3600
+        },
+        "normal": {
+          "sha": "96333b3fdec3c234efa06f74013de46f9602ae8e3334ca8c0e7595a06b021bd0",
+          "bytes": 43200
+        }
+      },
+      "indices": {
+        "count": 17424,
+        "sha": "4834ee7c6e62d9fe6dcae2d0b843961824b19366ededfc95060b8d869d57aa40",
+        "bytes": 34848
+      }
+    },
+    "near-single": {
+      "attributes": {
+        "position": {
+          "sha": "7823ec0a9b2f5f2843bc29c49d20783d25c6e25a8258794ebcad3f9a79415112",
+          "bytes": 14400
+        },
+        "uv": {
+          "sha": "6552f6573a049eceacb344e0a4563bc53f2730646430687c99dfd7d6def1e54e",
+          "bytes": 9600
+        },
+        "pigment": {
+          "sha": "a10ceac4f7219ef0861f3a004980e1d3537b873ca26863776155f8565c9d47d1",
+          "bytes": 3600
+        },
+        "cornRole": {
+          "sha": "d84fb18920692204c03f6f01953772179afc705e061a378daaae2fbd9bb0e956",
+          "bytes": 1200
+        },
+        "normal": {
+          "sha": "d3a37f7208fe356a063b131d77fa40f1de56144734cafd3d2fd754a0cfcdb4fd",
+          "bytes": 14400
+        }
+      },
+      "indices": {
+        "count": 5808,
+        "sha": "521eb411caea985e5aaa6fb63edbbf8e79102652cf1bcbbb50c8610c4327bd5e",
+        "bytes": 11616
+      }
+    }
+  },
+  "artBasis": null,
+  "budget": {
+    "trianglesSingle": 1936,
+    "trianglesTriple": 5808
+  },
+  "cameraLock": "56952a54593b13533c18bf11961807130a15a237923876fbfcc0cfabebedbec6",
+  "interiorLock": null,
+  "views": [
+    {
+      "view": {
+        "name": "leaf-architecture",
+        "kind": "near",
+        "eye": [
+          3.65,
+          2.32,
+          4.08
+        ],
+        "aim": [
+          0.03,
+          1.17,
+          0.04
+        ],
+        "fov": 42,
+        "samples": 4,
+        "rangeM": 5.94569592226175
+      },
+      "bbox": [
+        423,
+        141,
+        870,
+        624
+      ],
+      "rolePixels": 30482,
+      "pureRolePixels": 25169,
+      "plate": "leaf-architecture.webp",
+      "plateSha": "71f60ed1643cedcfd8da21ad4f744df4add9ee340a282018384f6bc48540b42d",
+      "rgba": "92d4659c1ec4d92c91e405abe359e61dca6dafa7f9f56d18cda4e603567fb965",
+      "repeatByteExact": true,
+      "outsideRoleRgbaChanges": 0
+    },
+    {
+      "view": {
+        "name": "sheath-and-sail",
+        "kind": "near-single",
+        "eye": [
+          1.6,
+          1.35,
+          -2.58
+        ],
+        "aim": [
+          0,
+          1.16,
+          0
+        ],
+        "fov": 51,
+        "samples": 4,
+        "rangeM": 3.322484010495762
+      },
+      "bbox": [
+        346,
+        55,
+        885,
+        678
+      ],
+      "rolePixels": 24619,
+      "pureRolePixels": 19875,
+      "plate": "sheath-and-sail.webp",
+      "plateSha": "6111fc92c573c536d1a9c7e1e7911d133d81461d4206d3da03e8ca220eee49b3",
+      "rgba": "5a0945049b1f79ee0ce82e7404937bf42b60948cc68c458973b4e965cf4ea366",
+      "repeatByteExact": true,
+      "outsideRoleRgbaChanges": 0
+    }
+  ]
+}

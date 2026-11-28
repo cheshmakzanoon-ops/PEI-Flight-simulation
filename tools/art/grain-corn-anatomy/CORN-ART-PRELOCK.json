@@ -1,0 +1,41 @@
+{
+  "scope": "Detached original performance-oriented plant study; no fixed PEI height or route seat",
+  "frame": [
+    1200,
+    760
+  ],
+  "cameras": [
+    {
+      "name": "leaf-architecture",
+      "kind": "near",
+      "eye": [
+        3.65,
+        2.32,
+        4.08
+      ],
+      "aim": [
+        0.03,
+        1.17,
+        0.04
+      ],
+      "fov": 42,
+      "samples": 4
+    },
+    {
+      "name": "sheath-and-sail",
+      "kind": "near-single",
+      "eye": [
+        1.6,
+        1.35,
+        -2.58
+      ],
+      "aim": [
+        0.0,
+        1.16,
+        0.0
+      ],
+      "fov": 51,
+      "samples": 4
+    }
+  ]
+}

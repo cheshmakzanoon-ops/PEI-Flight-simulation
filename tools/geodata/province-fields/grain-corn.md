@@ -44,3 +44,8 @@ The first [stock Cape Tryon flight check](../../../docs/qa/grain-corn/cape-tryon
 identifies the portion of the original near ground that is visible to the
 pilot. The [geometry admission helpers](corn-seat/) verify that a future
 canopy’s roots and swept leaf tips can stay on its signed receiver.
+
+The [detached maize anatomy model](../../art/grain-corn-anatomy/)
+provides original blades, sheaths, stems and tassels for future canopy
+work. Its close 4× plates are studio renders; the long-range appearance
+is not approved and the model is not placed in the simulator.
