@@ -15,6 +15,7 @@ const towerR=(y:number)=>R+(META.topRadius-R)*(y/META.bodyTop);
 // +X is the center of the unassigned study face, not an azimuth.
 export const studyFaceXAtHeight=(y:number)=>towerR(y)*Math.cos(Math.PI/8);
 type TrimSeat=Readonly<{height:number;first:number;end:number}>;
+type FacadeDetail=Readonly<{kind:'vent'|'hooded-entry';face:0|1;first:number;end:number}>;
 class ModelWords {
  private pos:number[]=[];private colour:number[]=[];
  tri(a:V,b:V,c:V,k:T.Color){for(const q of [a,b,c]){this.pos.push(q.x,q.y,q.z);this.colour.push(k.r,k.g,k.b);}}
@@ -38,9 +39,9 @@ class ModelWords {
   g.dispose();
  }
  get vertices(){return this.pos.length/3;}
- faceVolume(y:number,height:number,span:number,back:number,front:number,c:T.Color){
+ faceVolume(y:number,height:number,span:number,back:number,front:number,c:T.Color,center=0,face:0|1=0){
   const lo=y-height/2,hi=y+height/2,z=span/2;
-  const point=(yy:number,zz:number,off:number)=>new T.Vector3(studyFaceXAtHeight(yy)+off,yy,zz);
+  const point=(yy:number,zz:number,off:number)=>facePoint(face,yy,center+zz,off);
   const a=[point(lo,-z,front),point(hi,-z,front),point(hi,z,front),point(lo,z,front)];
   const b=[point(lo,-z,back),point(hi,-z,back),point(hi,z,back),point(lo,z,back)];
   this.quad(a[0],a[1],a[2],a[3],c);this.quad(b[3],b[2],b[1],b[0],c);
@@ -88,6 +89,33 @@ function tower(b:ModelWords,near:boolean){
  }
  return Object.freeze(seats);
 }
+function facePoint(face:0|1,y:number,tangent:number,offset:number){
+ const x=studyFaceXAtHeight(y)+offset,c=face===0?1:Math.SQRT1_2,s=face===0?0:Math.SQRT1_2;
+ return new T.Vector3(c*x-s*tangent,y,s*x+c*tangent);
+}
+/** Visible in the dated views, but neither face is assigned a geographic bearing. */
+function datedFacade(b:ModelWords):readonly FacadeDetail[]{
+ const out:FacadeDetail[]=[];
+ let first=b.vertices;
+ // Small raised pale hood, with the dark line below it instead of a fourth sash.
+ b.faceVolume(4.20,.27,.33,-.028,.085,iron,.90,0);
+ b.faceVolume(4.25,.21,.39,-.029,.125,seam,.90,0);
+ out.push(Object.freeze({kind:'vent',face:0,first,end:b.vertices}));
+ first=b.vertices;
+ b.faceVolume(1.17,1.84,1.08,-.055,.066,shade,0,1);
+ b.faceVolume(1.17,1.67,.85,.065,.080,seam,0,1);
+ b.faceVolume(.255,.083,1.09,-.022,.162,iron,0,1);
+ for(const t of [-.50,.50]){
+  const lower=facePoint(1,2.105,t,-.043),ridge=facePoint(1,2.425,0,-.043);
+  const lip=facePoint(1,2.079,t,.38),peak=facePoint(1,2.399,0,.38);
+  if(t>0)b.quad(lower,lip,peak,ridge,wine);else b.quad(ridge,peak,lip,lower,wine);
+  b.bar(lip,peak,.043,.043,seam);
+ }
+ // Front hood gable fills its silhouette; never a projecting false dormer.
+ b.tri(facePoint(1,2.079,-.50,.379),facePoint(1,2.399,0,.379),facePoint(1,2.079,.50,.379),shade);
+ out.push(Object.freeze({kind:'hooded-entry',face:1,first,end:b.vertices}));
+ return Object.freeze(out);
+}
 function gallery(b:ModelWords,near:boolean){
  const r=META.deckRadius+.015,lantern=r*.63;
  const posts:{first:number;end:number}[]=[];
@@ -115,10 +143,11 @@ function gallery(b:ModelWords,near:boolean){
  b.disc(.265,17.4,amber,true);
  return {radius:lantern,posts:Object.freeze(posts)};
 }
-export function makeNorthCapeDetachedStudy(near=true){
+export function makeNorthCapeDetachedStudy(near=true,detail:'baseline'|'dated-facade'='baseline'){
  const b=new ModelWords(),g=new ModelWords();
  const trimSeats=tower(b,near),deck=gallery(b,near),r=deck.radius-.031;
  for(let i=0;i<N;i++)if(i!==5)g.quad(p(r,16.46,i),p(r,18.095,i),p(r,18.095,i+1),p(r,16.46,i+1),warm);
+ const facadeDetails=near&&detail==='dated-facade'?datedFacade(b):Object.freeze([]);
  const solid=b.finish(),glass=g.finish();
  const paint=new T.MeshStandardMaterial({vertexColors:true,roughness:.76,metalness:.02});
  const glazing=new T.MeshPhysicalMaterial({color:'#8fa6a6',roughness:.21,metalness:.025,
@@ -126,7 +155,7 @@ export function makeNorthCapeDetachedStudy(near=true){
  const exterior=new T.Mesh(solid,paint),panes=new T.Mesh(glass,glazing),group=new T.Group();
  exterior.name='North Cape tower, authored timber and gallery';panes.name='North Cape tower, illustrative lantern glazing';
  group.name='North Cape Light · detached historically guided study';group.add(exterior,panes);
- return {group,exterior,panes,near,trimSeats,galleryPosts:deck.posts,ringEdges:N,glassFaces:N-1,
+ return {group,exterior,panes,near,trimSeats,facadeDetails,galleryPosts:deck.posts,ringEdges:N,glassFaces:N-1,
   triangles:solid.getAttribute('position').count/3+glass.getAttribute('position').count/3,
   dispose(){solid.dispose();glass.dispose();paint.dispose();glazing.dispose();}};
 }

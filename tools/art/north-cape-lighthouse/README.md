@@ -47,3 +47,16 @@ support separating the likely tower and nearby mast during art placement. The co
 centre is **not** a surveyed foundation, the surface height is **not** a certified tower
 height, and the raster yields neither orientation nor textures. The simulator still uses its
 unchanged player terrain and does not ship either study raster in the playable build.
+
+### Dated near façade
+
+The optional detached `dated-facade` variant keeps the three sashes but adds the
+small hooded vent below them and the entry canopy on the adjoining face. The
+vent and adjacent canopy are visible in the 2011 view. The [provincial heritage
+statement](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=19725&pid=0)
+records removal of ground-floor windows; the [Lighthouse Society account](https://peilighthousesociety.ca/index.php/lighthouses/public-lighthouses/28-north-cape-lighthouse)
+identifies the replacement vent. No fourth sash, steps, fences or compass
+bearing have been inferred. The new pieces follow the shaft's taper and add
+89 opaque triangles to the existing opaque draw. The archived near mesh,
+glazing and middle-distance geometry remain byte-identical when requested.
+Neither the variant nor its photographs ship in the simulator.

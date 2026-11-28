@@ -63,3 +63,41 @@ test('each representative opening follows the sloped face and the casing backs r
   }
  }finally{detailed.dispose();coarse.dispose();}
 });
+
+test('the dated façade adds only seated window-face vent and adjacent entry geometry at near distance',()=>{
+ const original=makeNorthCapeDetachedStudy();
+ const detail=makeNorthCapeDetachedStudy(true,'dated-facade');
+ const far=makeNorthCapeDetachedStudy(false),farDated=makeNorthCapeDetachedStudy(false,'dated-facade');
+ const components=['position','normal','color'] as const;
+ try{
+  assert.deepEqual(original.facadeDetails,[]);assert.deepEqual(farDated.facadeDetails,[]);
+  for(const key of components){
+   const before=original.exterior.geometry.attributes[key].array;
+   const after=detail.exterior.geometry.attributes[key].array;
+   assert.deepEqual(after.slice(0,before.length),before);
+   assert.deepEqual(detail.panes.geometry.attributes[key].array,original.panes.geometry.attributes[key].array);
+   assert.deepEqual(farDated.exterior.geometry.attributes[key].array,far.exterior.geometry.attributes[key].array);
+   assert.deepEqual(farDated.panes.geometry.attributes[key].array,far.panes.geometry.attributes[key].array);
+  }
+  assert.equal(detail.exterior.material.map,null);
+  assert.deepEqual(detail.facadeDetails.map(f=>[f.kind,f.face,f.end-f.first]),[['vent',0,72],['hooded-entry',1,195]]);
+  assert.equal(detail.triangles-original.triangles,89);
+  assert.equal(detail.group.children.length,2);
+  const p=detail.exterior.geometry.attributes.position,n=detail.exterior.geometry.attributes.normal;
+  for(const f of detail.facadeDetails){
+   const d=[],y=[],z=[],c=f.face===0?1:Math.SQRT1_2,s=f.face===0?0:Math.SQRT1_2;
+   for(let i=f.first;i<f.end;i++){
+    y.push(p.getY(i));z.push(-s*p.getX(i)+c*p.getZ(i));
+    d.push(c*p.getX(i)+s*p.getZ(i)-studyFaceXAtHeight(p.getY(i)));
+   }
+   assert.ok(Math.min(...d)<-.02&&Math.max(...d)>.08);
+   if(f.kind==='hooded-entry'){
+    assert.ok(Math.min(...y)>.21&&Math.max(...y)<2.47&&Math.max(...d)<.42);
+    for(const i of [f.first+108,f.first+150])assert.ok(n.getY(i)>.65,'roof planes face the sky');
+   }else{
+    assert.ok(Math.min(...z)>.70&&Math.max(...z)<1.1);
+    assert.ok(Math.min(...y)>4.06&&Math.max(...y)<4.37);
+   }
+  }
+ }finally{original.dispose();detail.dispose();far.dispose();farDated.dispose();}
+});
