@@ -1,0 +1,232 @@
+{
+  "scope": "coordinate feasibility only; no exterior edges split, no geometry or runtime changed",
+  "sources": {
+    "position": "585c694d35fc234f25dcc4d3df547ee9859d3274bb73830c047acf819edc139b",
+    "normal": "25c0b802f5de393db35a237c1df4fa7cb66db176d9d923248c40c231bd906f11",
+    "uv": "921c8110c89ee6188a4970a0ccc6d4b15398b2e2ce02bceeef525b91b84cb959",
+    "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+  },
+  "edges": [
+    {
+      "stockEdge": [
+        1494,
+        1607
+      ],
+      "owningFaces": [
+        2961,
+        2962
+      ],
+      "candidateCommonGrid": 13396,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 52.332275390625
+    },
+    {
+      "stockEdge": [
+        1495,
+        1607
+      ],
+      "owningFaces": [
+        2962,
+        2963
+      ],
+      "candidateCommonGrid": 0,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 75.48670219131894
+    },
+    {
+      "stockEdge": [
+        1606,
+        1607
+      ],
+      "owningFaces": [
+        2961,
+        3184
+      ],
+      "candidateCommonGrid": 13926,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 54.402099609375
+    },
+    {
+      "stockEdge": [
+        1607,
+        1608
+      ],
+      "owningFaces": [
+        2963,
+        3186
+      ],
+      "candidateCommonGrid": 13926,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 54.4019775390625
+    },
+    {
+      "stockEdge": [
+        1607,
+        1719
+      ],
+      "owningFaces": [
+        3184,
+        3185
+      ],
+      "candidateCommonGrid": 0,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 75.48679016535658
+    },
+    {
+      "stockEdge": [
+        1607,
+        1720
+      ],
+      "owningFaces": [
+        3185,
+        3186
+      ],
+      "candidateCommonGrid": 13396,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 52.332275390625
+    },
+    {
+      "stockEdge": [
+        1608,
+        1720
+      ],
+      "owningFaces": [
+        3186,
+        3187
+      ],
+      "candidateCommonGrid": 0,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 75.48670219131894
+    },
+    {
+      "stockEdge": [
+        1719,
+        1720
+      ],
+      "owningFaces": [
+        3185,
+        3408
+      ],
+      "candidateCommonGrid": 13926,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 54.402099609375
+    },
+    {
+      "stockEdge": [
+        1720,
+        1721
+      ],
+      "owningFaces": [
+        3187,
+        3410
+      ],
+      "candidateCommonGrid": 13926,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 54.4019775390625
+    },
+    {
+      "stockEdge": [
+        1720,
+        1832
+      ],
+      "owningFaces": [
+        3408,
+        3409
+      ],
+      "candidateCommonGrid": 0,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 75.48679016535658
+    },
+    {
+      "stockEdge": [
+        1720,
+        1833
+      ],
+      "owningFaces": [
+        3409,
+        3410
+      ],
+      "candidateCommonGrid": 13396,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 52.332275390625
+    },
+    {
+      "stockEdge": [
+        1832,
+        1833
+      ],
+      "owningFaces": [
+        3409,
+        3632
+      ],
+      "candidateCommonGrid": 13926,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 54.402099609375
+    },
+    {
+      "stockEdge": [
+        1833,
+        1945
+      ],
+      "owningFaces": [
+        3632,
+        3633
+      ],
+      "candidateCommonGrid": 0,
+      "exactLocalAllChannels": 0,
+      "exactLocalAndGPU": 0,
+      "lowestExactInternalT": null,
+      "highestExactInternalT": null,
+      "exactQuarterFractionsPresent": [],
+      "maximumUnsplitLengthMetres": 75.48687479236305
+    }
+  ]
+}

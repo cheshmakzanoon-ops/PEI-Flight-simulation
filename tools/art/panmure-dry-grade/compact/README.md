@@ -66,3 +66,7 @@ are separate acceptance steps before any game-facing change.
 
 Contains information licensed under the [Open Government Licence –
 Canada](https://open.canada.ca/en/open-government-licence-canada).
+
+The [first actual Chase comparison](native-flight/README.md) passed the
+near and exit checks but missed the approach contrast gate. The terrain
+option remains uninstalled.

@@ -1,0 +1,182 @@
+{
+  "outcome": "HOLD: the approach is too weak; the close geometry signal and the literal exit were verified",
+  "sourceCheckout": "282722539d5bc6d57f1159a24ee431eb3e59b2a3",
+  "exactPrivateBuildManifest": "fee825355cd151ff004576767e3eb31384a450baec1e63a9ae0c27486a390dce",
+  "untrustedOrForcedFlight": false,
+  "clipAndOpticalScores": {
+    "scope": "Independent uploaded geometry/projected sample guard; no simulation release or individual roof/water/sky mask.",
+    "wholeSquareAndRoundingReservePx": 0.95,
+    "views": [
+      {
+        "phase": "approach",
+        "d": 560.5120175735454,
+        "fullFrameStockRestoreExact": true,
+        "alphaDifferences": 0,
+        "clippedTriangleCountsOriginalNeutralActive": [
+          2,
+          452,
+          452
+        ],
+        "clippedChangingTrianglesCountsNeutralActive": [
+          214,
+          214
+        ],
+        "wholeCellAndActiveProjectedPixels": [
+          3361,
+          1679
+        ],
+        "changed": 213,
+        "strong": 0,
+        "neutralStrong": 0,
+        "causalStrong": 0,
+        "exteriorRGB_StockActive_StockNeutral_NeutralActive": [
+          0,
+          0,
+          0
+        ],
+        "passes": false
+      },
+      {
+        "phase": "near",
+        "d": 682.3216472541383,
+        "fullFrameStockRestoreExact": true,
+        "alphaDifferences": 0,
+        "clippedTriangleCountsOriginalNeutralActive": [
+          2,
+          452,
+          452
+        ],
+        "clippedChangingTrianglesCountsNeutralActive": [
+          214,
+          214
+        ],
+        "wholeCellAndActiveProjectedPixels": [
+          12194,
+          6133
+        ],
+        "changed": 3462,
+        "strong": 184,
+        "neutralStrong": 0,
+        "causalStrong": 187,
+        "exteriorRGB_StockActive_StockNeutral_NeutralActive": [
+          0,
+          0,
+          0
+        ],
+        "passes": true
+      },
+      {
+        "phase": "exit",
+        "d": 1031.6814135054371,
+        "fullFrameStockRestoreExact": true,
+        "alphaDifferences": 0,
+        "clippedTriangleCountsOriginalNeutralActive": [
+          0,
+          0,
+          0
+        ],
+        "clippedChangingTrianglesCountsNeutralActive": [
+          0,
+          0
+        ],
+        "wholeCellAndActiveProjectedPixels": [
+          0,
+          0
+        ],
+        "changed": 0,
+        "strong": 0,
+        "neutralStrong": 0,
+        "causalStrong": 0,
+        "exteriorRGB_StockActive_StockNeutral_NeutralActive": [
+          0,
+          0,
+          0
+        ],
+        "passes": true
+      }
+    ],
+    "allDeclaredProofsPassed": false
+  },
+  "fullFramesHash": [
+    {
+      "phase": "approach",
+      "traveledM": 560.5120175735454,
+      "png": {
+        "grade-stock": {
+          "file": "approach-grade-stock.png",
+          "sha256": "d9692e2b1f80acbfe578e286b079d47e5bce081cdcff9e4f9772d3378d77ec94"
+        },
+        "grade-neutral": {
+          "file": "approach-grade-neutral.png",
+          "sha256": "049b5453612652d4f9ae265dd4d9dd13d96098add62b43bb7e5569a900fe9986"
+        },
+        "grade-art": {
+          "file": "approach-grade-art.png",
+          "sha256": "5f10791a13d726b6beb2cae1d56a0718c134a75353ea3dbb59575aa89b799e39"
+        },
+        "grade-restore": {
+          "file": "approach-grade-restore.png",
+          "sha256": "d9692e2b1f80acbfe578e286b079d47e5bce081cdcff9e4f9772d3378d77ec94"
+        }
+      }
+    },
+    {
+      "phase": "near",
+      "traveledM": 682.3216472541383,
+      "png": {
+        "grade-stock": {
+          "file": "near-grade-stock.png",
+          "sha256": "3d538c3a9dc6983b46f8a9ef3b0edc953e52cd714272a4a7b4786dff3380ceb5"
+        },
+        "grade-neutral": {
+          "file": "near-grade-neutral.png",
+          "sha256": "398a3eea6d0016465846d99b495907e8b7b8db015dc8eb87db5a0a35621e8d72"
+        },
+        "grade-art": {
+          "file": "near-grade-art.png",
+          "sha256": "4b2dde5898a38b528f3de1a18208f7a1da3c40b1de83bff464c9dad385e5b519"
+        },
+        "grade-restore": {
+          "file": "near-grade-restore.png",
+          "sha256": "3d538c3a9dc6983b46f8a9ef3b0edc953e52cd714272a4a7b4786dff3380ceb5"
+        }
+      }
+    },
+    {
+      "phase": "exit",
+      "traveledM": 1031.6814135054371,
+      "png": {
+        "grade-stock": {
+          "file": "exit-grade-stock.png",
+          "sha256": "c0299e4c97148022231b84e64258dac5b4c7f6c89055707c77aac1bee71e5800"
+        },
+        "grade-neutral": {
+          "file": "exit-grade-neutral.png",
+          "sha256": "c0299e4c97148022231b84e64258dac5b4c7f6c89055707c77aac1bee71e5800"
+        },
+        "grade-art": {
+          "file": "exit-grade-art.png",
+          "sha256": "c0299e4c97148022231b84e64258dac5b4c7f6c89055707c77aac1bee71e5800"
+        },
+        "grade-restore": {
+          "file": "exit-grade-restore.png",
+          "sha256": "c0299e4c97148022231b84e64258dac5b4c7f6c89055707c77aac1bee71e5800"
+        }
+      }
+    }
+  ],
+  "nearUnresampledCrop": {
+    "boxXYExclusiveMaxPx": [
+      485,
+      509,
+      761,
+      629
+    ],
+    "left": "stock",
+    "right": "raised",
+    "widthWithFivePixelDivider": 557,
+    "height": 120,
+    "sha256": "9706c0cc72de4500fc989c235fd50a24207426535cff202fb4daa8414bbc6450"
+  },
+  "unit": "8-bit maximum absolute RGB-channel difference per pixel; strong means >2"
+}
