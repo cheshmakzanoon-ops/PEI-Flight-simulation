@@ -39,7 +39,10 @@ A 2020 native 1 m elevation pair is available, but its registered
 two-slope split did not have enough independent blocks across both
 slopes. No height ordinates were opened and no measured roof or
 foundation is fitted. The detached model does not replace the stock
-scene, river, adjacent buildings, shore, ground, or flight controls.
+scene, river, adjacent buildings, shore, ground, or flight controls. The separate
+[raw LiDAR pass screen](lidar-eligibility/README.md) also found only one
+usable acquisition group over the roof core, so it did not open elevation
+values or fit the roof.
 
 ![Original Three.js reconstruction from across the river](mill-river-side.webp)
 

@@ -1,0 +1,67 @@
+{
+  "scope": "Only XY and screening flags of the exact 197 roof-core half-metre cells. No actual Z layer selection, access, fitting, readout or export. No placements.",
+  "metadataSHA256": "7a3170a211d71f28e0ccb56fd8ee04dbb7779481ce5902ce397587e78c329330",
+  "orderedPrimarySourceRanges": [
+    [
+      4017123,
+      4099608,
+      14732
+    ],
+    [
+      28780922,
+      29046186,
+      41011
+    ],
+    [
+      47081323,
+      47462570,
+      49928
+    ],
+    [
+      55308110,
+      56076991,
+      86456
+    ],
+    [
+      56809735,
+      57221708,
+      36116
+    ]
+  ],
+  "selectedSourceRows": 228243,
+  "cellSHA256": "b82b17674b6b9d865cb5ed64c132ac54d344ab5d54d334b33ead451b8d939c10",
+  "sourceGroups": "Nonzero native PointSourceID plus coherent disjoint plausible local GPS week-time; labels alone are not verified flights.",
+  "additivePointTransportBytes": 1909855,
+  "passesGeoAuthorityStillRequired": true,
+  "axes": {
+    "origin": [
+      2359704.830168697,
+      309974.1102274133
+    ],
+    "V": [
+      0.9949568696725756,
+      -0.10030367636008926
+    ],
+    "U": [
+      0.10030367636008926,
+      0.9949568696725756
+    ]
+  },
+  "ridgeOptions": [
+    -4.78,
+    -4.38,
+    -3.98,
+    -3.58,
+    -3.18,
+    -2.78,
+    -2.38,
+    -1.98
+  ],
+  "countThresholds": {
+    "cellsPerFlank": 14,
+    "blocksPerFlank": 6,
+    "cellsPerBlock": 2
+  },
+  "timeWindowSecondLimit": 30,
+  "timeGapSecondMin": 10
+}

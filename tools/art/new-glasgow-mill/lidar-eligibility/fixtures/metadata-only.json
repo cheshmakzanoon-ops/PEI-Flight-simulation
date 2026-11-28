@@ -1,0 +1,80 @@
+{
+  "tileURL": "https://canelevation-lidar-point-clouds.s3-ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_373000_706000.copc.laz",
+  "hardCapBytes": 13089,
+  "originalFileBytes": 57235056,
+  "etag": "\"8652076b4b4eb63c907739411bcc930f-7\"",
+  "metadataRanges": [
+    {
+      "range": [
+        0,
+        374
+      ],
+      "role": "LAS 1.4 fixed header",
+      "sha256": "42c3618beb0a49d93017db3d53caf09366fc2e87c7e5b966f524c92898f2c99b"
+    },
+    {
+      "range": [
+        375,
+        1376
+      ],
+      "role": "VLR bytes before the first compressed point file offset",
+      "sha256": "31f8e02763e4a69f15e955577fee4aad34b3d8d01a618c46de0b1e24d5d551f0"
+    },
+    {
+      "range": [
+        57223344,
+        57235055
+      ],
+      "role": "COPC root hierarchy entries, not point records",
+      "sha256": "d8414919e4792f37b5c41af68fba5145ee927cc2d49291642a6248dd413ce13b"
+    }
+  ],
+  "projection": {
+    "name": "NAD83(CSRS) / UTM zone 20N",
+    "horizontalEPSG": 2961,
+    "verticalName": null,
+    "verticalEPSG": null,
+    "checkedMetreAxes": [
+      "east",
+      "north"
+    ]
+  },
+  "exactStockOutlineBoxInNativeMeters": [
+    473097.88746632065,
+    5139603.89413829,
+    473120.7415882159,
+    5139624.581876142
+  ],
+  "noPointSamplesDecoded": true,
+  "meta": {
+    "centre": [
+      473509.6563028722,
+      5139476.756675543,
+      498.22250000018255
+    ],
+    "halfsize": 499.83350000018254,
+    "spacingM": 6.800455782315408,
+    "rootOffset": 57223344,
+    "rootBytes": 11712
+  },
+  "VLRs": [
+    [
+      "copc",
+      1,
+      160
+    ],
+    [
+      "laszip encoded",
+      22204,
+      40
+    ],
+    [
+      "LASF_Projection",
+      2112,
+      640
+    ]
+  ],
+  "rootEntries": 366,
+  "roofXYMatchesRootEntries": 7,
+  "intersectionHierarchyPages": 0
+}

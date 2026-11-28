@@ -1,0 +1,14 @@
+{
+  "sourceURL": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/Metadata_PointCloud_NRCAN.gdb.zip",
+  "catalogSHA256": "0ebb52174e65525b4606c8122fac66a5196c8802cc5b468dd3ea961bce99c4b9",
+  "project": "Prince_Edward_Island_2020",
+  "organization": "Government of Prince Edward Island",
+  "projectExtentDates": [
+    "2020-07-15",
+    "2020-09-15"
+  ],
+  "reportedClassSet": "1,2,6,7,9,17,18",
+  "reportedMeanAggregateDensityPerSquareM": "8.899",
+  "catalogVerticalReference": "CGVD2013",
+  "tileWKTContainsVerticalReference": false
+}

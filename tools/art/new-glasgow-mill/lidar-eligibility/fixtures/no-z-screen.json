@@ -1,0 +1,77 @@
+{
+  "scope": "Only XY and screening flags of the exact 197 roof-core half-metre cells. No actual Z layer selection, access, fitting, readout or export. No placements.",
+  "prelockSHA256": "c01121712bd1cdf3b15e50f8e18cb3fb36b1c4358603f11f4a977c03fbf45ad4",
+  "ranges": [
+    {
+      "range": [
+        4017123,
+        4099608
+      ],
+      "encodedSHA256": "ebecb9ba7b65cc03e5222dff52a317bdfee692ba0d3d58ffaed541b33f646c56",
+      "decompressedRecords": 14732
+    },
+    {
+      "range": [
+        28780922,
+        29046186
+      ],
+      "encodedSHA256": "c9256e61cf097903f91b9a27a09f742694785cbca8f514281a1c8c9428d466a7",
+      "decompressedRecords": 41011
+    },
+    {
+      "range": [
+        47081323,
+        47462570
+      ],
+      "encodedSHA256": "6089eb8a65195ef172bf246e88c920b8c9907ce5975c9f20db527cf92b6807d9",
+      "decompressedRecords": 49928
+    },
+    {
+      "range": [
+        55308110,
+        56076991
+      ],
+      "encodedSHA256": "5f45124dd4e6996d828e0a3c237188062c67abe695fd0f5eaa5d2884b0a0ef69",
+      "decompressedRecords": 86456
+    },
+    {
+      "range": [
+        56809735,
+        57221708
+      ],
+      "encodedSHA256": "c62a39445a37ebc219ba7a1f5fff9414f3288dbb6aca176a4984dc1fa8b1024c",
+      "decompressedRecords": 36116
+    }
+  ],
+  "pointBytes": 1909855,
+  "retainedInsideExactMask": 313,
+  "summaryClassBySource": [
+    [
+      50911,
+      6,
+      313
+    ]
+  ],
+  "duplicateDifferentXY": 0,
+  "perCandidateSource": {
+    "50911": {
+      "validFirstPulseRows": 313,
+      "buildingClassRows": 313,
+      "cellsWithTwoDistinctXY": 94,
+      "localGPSSpanSeconds": 0.2249079942703247,
+      "eligibleRidgeOptionsSupportOnly": [
+        -4.78,
+        -4.38,
+        -3.98,
+        -3.58,
+        -3.18,
+        -2.78,
+        -2.38,
+        -1.98
+      ]
+    }
+  },
+  "potentialIndependentFamilies": [],
+  "verticalDataOpened": false,
+  "decision": "HOLD: no independently qualified pair of acquisition groups"
+}
