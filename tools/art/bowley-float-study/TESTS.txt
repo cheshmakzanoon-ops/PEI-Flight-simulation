@@ -1,0 +1,14 @@
+strict TypeScript PASS
+✔ only the two nominal 2015 sections; local deck datum and authored module bounds (39.031622ms)
+✔ indexed Float32 geometry, opaque state, exact directed positional closure per real member (41.22469ms)
+✔ authored joinery is seated: planks/frame, posts/fascia, cables/posts and casing/sills (13.400511ms)
+✔ one original mipmapped lookup, actual byte/triangle budgets, exact deterministic words (26.910306ms)
+✔ dispose is local, idempotent and does not need an installed scene (24.023262ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 357.479524

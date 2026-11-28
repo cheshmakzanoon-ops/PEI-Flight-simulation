@@ -1,0 +1,11 @@
+{
+  "kind": "detached local hero lenses, not source or game placement",
+  "frame": [980, 660],
+  "view": [
+    {"name": "walkway-and-open-rail", "eye": [3.64, 2.68, -6.03], "aim": [0, 0.45, 0.0], "fov": 47},
+    {"name": "reciprocal-framing", "eye": [-4.90, 1.82, 4.35], "aim": [0.0, 0.32, -0.12], "fov": 46},
+    {"name": "scale-only", "eye": [56, 45, -80], "aim": [0, 0.42, 0], "fov": 53}
+  ],
+  "Raster": "Mesa EGL, GLES3, viewport 4× MSAA; exact exported original material source, no context or route switch",
+  "scope": "Not a Bowley contour, terrain/shore/land seat, physical waterline, alignment, factory floating provenance or current section inventory."
+}

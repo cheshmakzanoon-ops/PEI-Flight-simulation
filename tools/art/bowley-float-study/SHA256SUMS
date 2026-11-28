@@ -1,0 +1,15 @@
+2402fcbbba54a4f46fc9b5e5615576c34cc99659f429ba13c4e9c8c0be6378ce  ./LIGHT-COMPARE.json
+faad1993138c84d46a1132acc01333baebd24efc01833583031ce89d228ae477  ./README.md
+a04fe88cedf558eb59f8d5df41b7acdf4e20efc2430dd272c463430f119d76f6  ./STUDIO-PRELOCK.json
+b3bb1df4dca1ae52032f51324997feb7a452b459985cdfe5a02d8ac9348dee8e  ./TESTS.txt
+a49b3835337ea6bc77ea0bd46c93d81dfd7e6f08de3fb016dd200d6090c1a30a  ./bowley-float-concept.ts
+b2a0765377343543b1e478839954e812c46da46c775d2b97d913a623318fd067  ./concept.test.mjs
+b587a5fe9a0aa36fa2f4cfed956fdfbbab40e3c96c0b82fe3f4e4820701e3656  ./egl_support.py
+94608a9ea939ce2c36317a0d72b624aab0a30abe0c8aa02f4c2c302fca1d6c1a  ./plates/receipt.json
+879b5574b86ce8a03f39181db2871612c0b1016e42e4f8ebeb9c6b26399f45a9  ./plates/reciprocal-framing.webp
+99bebc2fca93c11c50512c716b01424be59c0815ebf4036b730f4a67812ae312  ./plates/scale-only-1x.png
+589bf159654582123d2c7ac7456cdc941a9c4d30bdc48e8131f26d8ff1736c02  ./plates/scale-only.webp
+548e2aaae9e027163dac526b2cb21e7399cc081881bbfcae24815fcb0d00ff25  ./plates/walkway-and-open-rail.webp
+3f928448d2471b3d3a77e62924c9ff5ff6f3ee88048fdaf5874d05288019ec41  ./render-packet.mjs
+58f4cc6e66e3b6609d130f4fdbaa027901cca5e16bfad5fd010b78ad1deff702  ./studio.py
+57ad033bf6dc4dc8db3476747c283e915b254f34efa8f72b2281a37ec239615c  ./tsconfig.json

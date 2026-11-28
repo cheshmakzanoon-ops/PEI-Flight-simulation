@@ -1,0 +1,28 @@
+{
+  "scope": "Only isolated art, not a mounted material",
+  "geometrySame": true,
+  "textureSame": true,
+  "views": [
+    {
+      "view": "walkway-and-open-rail.webp",
+      "rolePixels": 104436,
+      "strongRgb": 3430,
+      "exactNeutral": true,
+      "exactRepeat": true
+    },
+    {
+      "view": "reciprocal-framing.webp",
+      "rolePixels": 128648,
+      "strongRgb": 6946,
+      "exactNeutral": true,
+      "exactRepeat": true
+    },
+    {
+      "view": "scale-only.webp",
+      "rolePixels": 411,
+      "strongRgb": 30,
+      "exactNeutral": true,
+      "exactRepeat": true
+    }
+  ]
+}

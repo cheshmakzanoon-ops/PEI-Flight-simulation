@@ -112,6 +112,7 @@ CI verifies the data, flight regressions, production build, and a Chromium smoke
 
 The [Souris Town Hall exterior study](tools/art/souris-town-hall-study/) records the original frontage asset and its open verification issues. It is not enabled in the simulator. The [Quintin Court Fish House study](tools/art/north-rustico-fish-house-study/) compares two reference periods in original Three.js models; waterfront placement remains unverified.
 The [New Glasgow Christian Church study](docs/qa/new-glasgow-church-study.md) compares an original 2012 frontage model with the existing stock building at native pixel scale.
+The [Bowley Pond timber float study](tools/art/bowley-float-study/) shows one original boardwalk section. It is not placed in the simulator because the present water and bank alignment is unverified.
 
 | Charlottetown Harbour | Confederation Bridge |
 | --- | --- |
