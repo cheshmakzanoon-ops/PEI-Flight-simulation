@@ -109,3 +109,25 @@ This source is not imported by the game. It changes no building, ground,
 collision, coastline or light in the playable build. Native trim/sash
 visibility, shadow/contact and consistent distance-level integration are
 separate work.
+
+## Assemble the authored exterior
+
+The [detached assembly](east-fog-combined-surface.ts) keeps the corrected
+opaque envelope, tower and outdoor exhibits in their existing packed
+slots. It appends the two current sash studies and the solid cornice as
+separate spans of the same geometry. Its check preserves the exact
+stored envelope position, normal, color and cladding words, and does
+not accept an indexed or grouped replacement draw.
+
+Separate native normal-camera trials found each window visible at both
+near checkpoints without touching other scene pixels. The trim also
+passed its two closer checks; at the earlier checkpoint, it changed
+partial coverage but did not cover an entire pixel. Both studies
+returned to the original scene with bit-exact images. The assembly
+does not reuse those results as proof for the combined render. Ground
+contact, the cast shadow, and the middle-distance transition still
+need joint review. The assembled surface is not in the playable build.
+
+```sh
+node --experimental-strip-types --test test/east-fog-combined-surface.test.ts
+```
