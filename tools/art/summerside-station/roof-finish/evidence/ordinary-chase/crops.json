@@ -1,0 +1,40 @@
+{
+  "receipt": "5db0ddb98c73c1d840f4e86c964743bb924caca5b780b724c73cf439e7e240da",
+  "padding": 16,
+  "divider": 6,
+  "photoscale": 1,
+  "phases": {
+    "toward": {
+      "box": [
+        752,
+        488,
+        909,
+        557
+      ],
+      "files": {
+        "pair": "toward-paired.png",
+        "scope": "toward-scope.png"
+      },
+      "sha256": {
+        "pair": "cfa418e22307b6529d29fe70699563cd3a2c653c69176054480186f2e9ef89ed",
+        "scope": "e4a7dcff745c3f513c48a64cc416a235a6ecc705afca5763644bbc881cb32586"
+      }
+    },
+    "close": {
+      "box": [
+        830,
+        594,
+        1070,
+        708
+      ],
+      "files": {
+        "pair": "close-paired.png",
+        "scope": "close-scope.png"
+      },
+      "sha256": {
+        "pair": "10b4c432ef2e748efe85b813a9dbe90462c42f20645276a9147f8b5a604c7916",
+        "scope": "fddc36936f0f4a24f299d009862596fda253e179e3c3c3a2112c986fe92db4c2"
+      }
+    }
+  }
+}

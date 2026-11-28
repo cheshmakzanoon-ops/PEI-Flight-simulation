@@ -1,0 +1,442 @@
+{
+  "phases": {
+    "toward": {
+      "id": "toward",
+      "travel": 600.9806225201197,
+      "frame": {
+        "route": "spinnakers-low",
+        "view": 0,
+        "x": -45045.47034746977,
+        "y": 86.16867362386387,
+        "z": 12368.10659810749,
+        "heading": 5.480333851262195,
+        "bank": 0,
+        "flying": true
+      },
+      "viewport": [
+        1200,
+        760
+      ],
+      "view": [
+        [
+          0.6958238564756675,
+          -0.07573203665236865,
+          0.7142085265409636,
+          0,
+          -1.3877787807814457e-17,
+          0.9944251184066925,
+          0.10544517002611319,
+          0,
+          -0.7182124760537997,
+          -0.07337126485430252,
+          0.6919447208660169,
+          0,
+          40226.711401359644,
+          -2591.4533791928407,
+          23582.62937510095,
+          1
+        ],
+        [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ]
+      ],
+      "stats": [
+        264,
+        410083,
+        0,
+        0
+      ],
+      "depthRaster": [
+        515,
+        2305,
+        1029
+      ],
+      "peerDraws": 263,
+      "shaderPrefix": {
+        "mode": "cache-label-only",
+        "stock": [
+          "stucco",
+          "stucco"
+        ],
+        "marker": [
+          "roof",
+          "roof"
+        ],
+        "insertionCounts": [
+          1,
+          1
+        ],
+        "firstVS": {
+          "offset": 689,
+          "line": 26,
+          "codeUnits": [
+            19848,
+            19846
+          ],
+          "stock": "aterial\n#define SHADER_NAME stucco\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_MODE_REFLECTION\n#define MAP_UV uv\n#de",
+          "marker": "aterial\n#define SHADER_NAME roof\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_MODE_REFLECTION\n#define MAP_UV uv\n#defi"
+        },
+        "firstStrippedFS": {
+          "offset": 1085,
+          "line": 35,
+          "codeUnits": [
+            82641,
+            82639
+          ],
+          "stock": "aterial\n#define SHADER_NAME stucco\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_TYPE_PMREM\n#define ENVMAP_MODE_REFLEC",
+          "marker": "aterial\n#define SHADER_NAME roof\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_TYPE_PMREM\n#define ENVMAP_MODE_REFLECTI"
+        }
+      },
+      "gpu": {
+        "positionNormalUvColorAndIndexSame": true,
+        "drawnIndices": 804,
+        "borrowedMapAndDfgSame": true,
+        "textureVersionsUnchanged": true
+      },
+      "scores": {
+        "marked": 1700,
+        "strong": 932,
+        "changed": 1644,
+        "exterior": 0,
+        "alpha": 0
+      },
+      "matrices": [
+        [
+          0.9967206885196447,
+          0,
+          0.05729931397084442,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.0571839232963498,
+          0,
+          0.9987319578550995,
+          0,
+          -45175.3362165919,
+          3.2,
+          12129.712159973358,
+          1
+        ],
+        [
+          0.6523889511516374,
+          -0.0796878108564685,
+          0.7515143721318803,
+          0,
+          -1.3877787807814457e-17,
+          0.9944251184066925,
+          0.10544517002611319,
+          0,
+          -0.757091690401645,
+          -0.06894757202323722,
+          0.6502260601986999,
+          0,
+          80.92413331143325,
+          -57.02332417178377,
+          -288.55322088179673,
+          1
+        ],
+        [
+          0.6547005562979761,
+          -0.07993290469673726,
+          0.7538257864059495,
+          -1.3895387646683567e-17,
+          0.9944251184066923,
+          0.10544517002611316,
+          -0.7566858783702285,
+          -0.06887850509882565,
+          0.6495747085581368
+        ]
+      ],
+      "hashes": {
+        "original": "9d0c80f38d6b91ebf454358c8637e279c03e282ca7df4d638ef7771d9f45bdac",
+        "neutral": "9d0c80f38d6b91ebf454358c8637e279c03e282ca7df4d638ef7771d9f45bdac",
+        "finish": "431007de5086303a8fd6cc9602e095c1277708cb93b0f3775fb33f4f344e5534",
+        "originalRestore": "9d0c80f38d6b91ebf454358c8637e279c03e282ca7df4d638ef7771d9f45bdac",
+        "finishRestore": "431007de5086303a8fd6cc9602e095c1277708cb93b0f3775fb33f4f344e5534",
+        "neutralRestore": "9d0c80f38d6b91ebf454358c8637e279c03e282ca7df4d638ef7771d9f45bdac",
+        "roleNeutral": "9d0c80f38d6b91ebf454358c8637e279c03e282ca7df4d638ef7771d9f45bdac",
+        "roleBlack": "2f9676d48e41e6622da66c9b881ed9e544486d1d0d345b0e9a01eafb6d2c35bd",
+        "roleWhite": "3ef67c90465467ba82b9afe222326497923a347416205b06e2a79a2ce898c4a7"
+      },
+      "programHashes": {
+        "original": [
+          "dea247365ce4eb8a78844ee6809e54304a5297ad3d17918f078d3981c3647bba",
+          "b1df7dbeeef4d9d29474ad91bdab29e5fe56a973057685d4fc70087dc498afe7"
+        ],
+        "neutral": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "finish": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "originalRestore": [
+          "dea247365ce4eb8a78844ee6809e54304a5297ad3d17918f078d3981c3647bba",
+          "b1df7dbeeef4d9d29474ad91bdab29e5fe56a973057685d4fc70087dc498afe7"
+        ],
+        "finishRestore": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "neutralRestore": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "roleNeutral": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ],
+        "roleBlack": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ],
+        "roleWhite": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ]
+      }
+    },
+    "close": {
+      "id": "close",
+      "travel": 701.9796301831946,
+      "frame": {
+        "route": "spinnakers-low",
+        "view": 0,
+        "x": -45116.62279739842,
+        "y": 86.91503524152567,
+        "z": 12296.425858567121,
+        "heading": 5.480333851262195,
+        "bank": 0,
+        "flying": true
+      },
+      "viewport": [
+        1200,
+        760
+      ],
+      "view": [
+        [
+          0.6958238845304109,
+          -0.07572867311634984,
+          0.7142088558573372,
+          -0.0,
+          -6.938893903907228e-18,
+          0.9944256145621826,
+          0.10544049081176232,
+          0,
+          -0.7182124488735974,
+          -0.07336801190343353,
+          0.691945094001199,
+          0,
+          40224.7399028566,
+          -2602.7315093155626,
+          23682.977139431416,
+          1
+        ],
+        [
+          1.270270148564046,
+          0,
+          0,
+          0,
+          0,
+          2.0056897082590197,
+          0,
+          0,
+          0,
+          0,
+          -1.0000004571429617,
+          -1,
+          0,
+          0,
+          -0.16000003657143694,
+          0
+        ]
+      ],
+      "stats": [
+        256,
+        390082,
+        0,
+        0
+      ],
+      "depthRaster": [
+        515,
+        2305,
+        1029
+      ],
+      "peerDraws": 255,
+      "shaderPrefix": {
+        "mode": "cache-label-only",
+        "stock": [
+          "stucco",
+          "stucco"
+        ],
+        "marker": [
+          "roof",
+          "roof"
+        ],
+        "insertionCounts": [
+          1,
+          1
+        ],
+        "firstVS": {
+          "offset": 689,
+          "line": 26,
+          "codeUnits": [
+            19848,
+            19846
+          ],
+          "stock": "aterial\n#define SHADER_NAME stucco\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_MODE_REFLECTION\n#define MAP_UV uv\n#de",
+          "marker": "aterial\n#define SHADER_NAME roof\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_MODE_REFLECTION\n#define MAP_UV uv\n#defi"
+        },
+        "firstStrippedFS": {
+          "offset": 1085,
+          "line": 35,
+          "codeUnits": [
+            82641,
+            82639
+          ],
+          "stock": "aterial\n#define SHADER_NAME stucco\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_TYPE_PMREM\n#define ENVMAP_MODE_REFLEC",
+          "marker": "aterial\n#define SHADER_NAME roof\n#define STANDARD \n#define USE_MAP\n#define USE_ENVMAP\n#define ENVMAP_TYPE_PMREM\n#define ENVMAP_MODE_REFLECTI"
+        }
+      },
+      "gpu": {
+        "positionNormalUvColorAndIndexSame": true,
+        "drawnIndices": 804,
+        "borrowedMapAndDfgSame": true,
+        "textureVersionsUnchanged": true
+      },
+      "scores": {
+        "marked": 5375,
+        "strong": 3244,
+        "changed": 5183,
+        "exterior": 0,
+        "alpha": 0
+      },
+      "matrices": [
+        [
+          0.9967206885196447,
+          0,
+          0.05729931397084442,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.0571839232963498,
+          0,
+          0.9987319578550995,
+          0,
+          -45175.3362165919,
+          3.2,
+          12129.712159973358,
+          1
+        ],
+        [
+          0.6523889806717876,
+          -0.07968427195867882,
+          0.7515147217487129,
+          0,
+          -6.938893903907228e-18,
+          0.9944256145621826,
+          0.10544049081176232,
+          0,
+          -0.7570916648601886,
+          -0.06894451553743272,
+          0.6502264140291286,
+          0,
+          78.95169711394556,
+          -68.41394421962286,
+          -188.2158224803643,
+          1
+        ],
+        [
+          0.6547005859089206,
+          -0.0799293549131902,
+          0.75382613708624,
+          6.947693823341783e-18,
+          0.9944256145621827,
+          0.10544049081176232,
+          -0.7566858528543575,
+          -0.06887545167625016,
+          0.6495750620478187
+        ]
+      ],
+      "hashes": {
+        "original": "ecadb620261e158d1e5a669d2245643fdee65233b398e92aadff70834f6c8aa2",
+        "neutral": "ecadb620261e158d1e5a669d2245643fdee65233b398e92aadff70834f6c8aa2",
+        "finish": "59a6b687b2cb19f46f25dc37fc549209511737f60ba8c921829d94a205963162",
+        "originalRestore": "ecadb620261e158d1e5a669d2245643fdee65233b398e92aadff70834f6c8aa2",
+        "finishRestore": "59a6b687b2cb19f46f25dc37fc549209511737f60ba8c921829d94a205963162",
+        "neutralRestore": "ecadb620261e158d1e5a669d2245643fdee65233b398e92aadff70834f6c8aa2",
+        "roleNeutral": "ecadb620261e158d1e5a669d2245643fdee65233b398e92aadff70834f6c8aa2",
+        "roleBlack": "4a10688afa0abc21acd547420316b9e6ea292b81b3f1df517a1ebff1ab11f697",
+        "roleWhite": "34698d0be1e454909198c1fafce02f4407614f27f90664629a0b4704511a7f91"
+      },
+      "programHashes": {
+        "original": [
+          "dea247365ce4eb8a78844ee6809e54304a5297ad3d17918f078d3981c3647bba",
+          "b1df7dbeeef4d9d29474ad91bdab29e5fe56a973057685d4fc70087dc498afe7"
+        ],
+        "neutral": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "finish": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "originalRestore": [
+          "dea247365ce4eb8a78844ee6809e54304a5297ad3d17918f078d3981c3647bba",
+          "b1df7dbeeef4d9d29474ad91bdab29e5fe56a973057685d4fc70087dc498afe7"
+        ],
+        "finishRestore": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "neutralRestore": [
+          "eff5d3c55f0d416f3ec8b3d90ad060847e17145f37b52d0d23ebd959a6a282ec",
+          "466815388122181d229e9df8090fca090aae7cf3eb24d185eb757ba1d114d01b"
+        ],
+        "roleNeutral": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ],
+        "roleBlack": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ],
+        "roleWhite": [
+          "1a9a7e4a93055f136881da1e92ade1cda2111044277209f0872792006f0ae1c3",
+          "97d1f43482475b154d94d473c78b596c832b6af16412bdceb1ed559e5043478b"
+        ]
+      }
+    }
+  },
+  "errors": [],
+  "outside": [],
+  "begin": {
+    "route": "spinnakers-low",
+    "mode": "dispatch",
+    "station": true,
+    "ready": true,
+    "range": true
+  },
+  "status": "PASS private actual original sorted roof, one linked neutral/finish program, RGB-only stock depth marker and immediate rollbacks"
+}

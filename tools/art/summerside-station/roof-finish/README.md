@@ -100,7 +100,14 @@ translation to local coordinates. They are not in-game after images.
 The neutral render does not validate the actual aircraft, shoreline,
 city occlusion, ground, or moving peers.
 
-## Ready for private player QA, not installed
+## Ordinary player-frame comparison
+
+The [two exact Chase comparisons](evidence/ordinary-chase/) now show the
+finish on the real station in flight, not the isolated renders above.
+Native paired results changed only the roof and restored exact stock.
+The finish is still not installed in the public simulator.
+
+## Integration constraints
 
 The single module exports
 `prepareRailRoofFinish(verifiedStandardRailArtwork.group)`. Only
