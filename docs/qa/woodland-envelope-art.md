@@ -46,3 +46,22 @@ changes, frame rate, or a playable province-wide tree update. Each county still
 needs an ordinary flight comparison against its unmodified world. The
 Queens regional canopy must remain unchanged in both the data and
 scene; neither a screenshot nor an approximate shadow suffices.
+
+## Leaf lighting study
+
+The separate [leaf radiance draft](../../tools/art/woodland-envelope/leaf-radiance-study.ts)
+uses the original branch height to give the upper crown a softer light.
+It filters the existing random leaf tint and leaves wood, silhouettes,
+alpha, shadows and all geometry unchanged in the source. The draft
+only accepts the exact original shader and supplies an off-by-default
+comparison value. It is not installed by the simulator.
+
+At two recorded Queens cameras, an isolated four-sample branch comparison
+kept the original triangles and changed only branch color. The selected
+version lifted the height-weighted highlights while reducing adjacent-pixel
+variation relative to the unadjusted branches. A simpler brighter
+version increased grain and was set aside. These were isolated draws
+with the original camera and branch data, not gameplay screenshots
+or a hardware performance benchmark. The same-frame full-world test
+must still preserve wood, aircraft, sky, land, and rollback before
+this can be considered for Standard.
