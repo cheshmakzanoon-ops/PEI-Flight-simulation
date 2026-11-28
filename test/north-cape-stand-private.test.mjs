@@ -9,6 +9,7 @@ import ts from 'typescript';
 import * as T from 'three';
 import * as profile from '../src/app/scenery-profile.ts';
 import {northCapeStandOption} from '../src/app/north-cape-stand-option.ts';
+import {SEAWARD_ROUTE} from '../src/render/quartermaster-seaward/lease.ts';
 import {capeCardGain,capeTilt,capeCrownShaders,CAPE_DISPLAY,CAPE_LIVE} from '../src/render/north-cape-stand/appearance.ts';
 import {CAPE_ROWS,CAPE_TYPED_ROWS_SHA} from '../src/render/north-cape-stand/roles.private.ts';
 import {markPublishedCapeRows,newCapeCrownMaterial} from '../src/render/north-cape-stand/review.ts';
@@ -60,15 +61,27 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
  const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready')=>{
+ const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready',roof=false)=>{
   const calls=[],error=new Error(failAt),route=field?'kings-sand-dunes':
-   quay==='foreign'?'seacow-head-coast':quay?'harbour-low':'northcape-wind-low';
+   quay==='foreign'?'seacow-head-coast':quay||roof?SEAWARD_ROUTE:'northcape-wind-low';
   const scope={scene:{},camera:{position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
    activeSite:0,ui:{mode:'flight'},view:0,now:42,standardIndustrial:industrial,buildings:undefined,
    standardRiverSeat:undefined,standardLakeSeat:undefined,cavendishSeat:undefined,dunesFields:undefined,
    princeLowFieldSeat:undefined,KINGS_DUNES_MAPPED_PASS:{id:'kings-sand-dunes'},
    f:{status:'flying'},playing:true,dalvayDefaultFlight:()=>true,lakeFrame:()=>true,cavendishFrame:()=>true,
    QUAY_ROUTE:'harbour-low',quayCandidate:undefined,quaySeat:undefined,quayAdmitted:!!quay};
+  scope.SEAWARD_ROUTE=SEAWARD_ROUTE;
+  const roofFrame={route,mode:'flight'};
+  scope.seawardFrame=()=>roofFrame;
+  // The old explicit north-quay comparison is outside ordinary roof admission.
+  // Other ordinary sites have a lease object but must never call it.
+  scope.seawardRoof=quay?undefined:{
+   render:(f,submit)=>{
+    assert(roof,'the roof lease must not run on an unrelated ordinary departure');
+    assert.equal(f,roofFrame);assert.equal(f.route,SEAWARD_ROUTE);
+    calls.push('begin roof');try{return submit();}finally{calls.push('end roof');}
+   },
+  };
   const finish=name=>()=>{calls.push('end '+name);};
   const begin=name=>{calls.push('begin '+name);if(failAt===name)throw error;return finish(name);};
   if(river)scope.standardRiverSeat={activeCohort:{beginDraw:()=>begin('river')},closeFlight:()=>calls.push('close river')};
@@ -144,6 +157,11 @@ test('the actual frame submits once, restoring the Cape, all terrain leases and 
    'end industrial','end borden','end rim',...tail]);
   assert.deepEqual(paint(true,failAt,true),[...lead,'begin cape',...wholePaint,'end cape',...tail]);
  }
+ const roofPaint=failAt=>paint(false,failAt,false,false,false,false,false,undefined,'ready','ready',true);
+ for(const failAt of [undefined,'render'])assert.deepEqual(roofPaint(failAt),[
+  ...lead,'begin rim','begin borden','begin west2','begin south21','begin roof','render',
+  'end roof','end south21','end west2','end borden','end rim',...tail
+ ]);
  const quayPaint=(kind,failAt)=>paint(false,failAt,false,false,false,false,false,kind);
  const shoreLead=[...lead,'begin rim','begin borden'],shoreTail=['end borden','end rim',...tail];
  for(const failAt of [undefined,'render'])
