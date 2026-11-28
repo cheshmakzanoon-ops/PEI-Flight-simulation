@@ -28,3 +28,10 @@ python tools/art/tignish-simon-jude-study/nave/render-views.py --out /tmp/tignis
 
 The emitter recovers each full-precision absolute position using the Three.js group’s transform, after preserving precision in local Float32 vertex buffers. Its exact geometry hash is `69c713ca0575d306ac292c29e2514aad8a742fc08f5796f3e3d66cc54eed5835`. Open `/tools/art/tignish-simon-jude-study/nave/` with the repo dev server running. The viewer colours only roles, with the sampling holes left open. The [four browser repeats](studio-gate.json) are identical within their browser session. It does not affect the current flight application.
 [Two separate, native-return-checked side joins](side-joins.md) are available as detached evidence. They do not change this original eleven-window mesh or clear any whole-church release gate.
+
+### Weathered nave surface
+
+The [detached finish study](finish/) applies original mipped albedo,
+normal and roughness maps to the four main side patches without
+moving any of the measured geometry. The stills are isolated studio
+comparisons; the underlying roof gaps and stock game are unchanged.

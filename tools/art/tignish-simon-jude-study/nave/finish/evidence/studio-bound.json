@@ -1,0 +1,201 @@
+{
+  "scope": "Private native Three.js isolated studio; no game installation, photoreal or measured present finish claim.",
+  "results": {
+    "south": {
+      "rawCaptureSHA256": "60f8521e321642b7cb08f6fb73160fcb0fb1ef3cd7b9522577332c9484f41b7f",
+      "view": "south",
+      "nativeSamples": 4,
+      "drawCounts": [
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ]
+      ],
+      "census": {
+        "visible": 438253,
+        "changed": 438253,
+        "strong": 437236,
+        "exterior": 0,
+        "alpha": 0,
+        "restore": 0
+      },
+      "exactSourcesSHA256": {
+        "stock": "bd8f320d38009d4dc54e049e9804f0cf66de3dbde8af9e3c35d7607b21c675f6",
+        "finished": "fcab1d17a2d48d66c384230eff3ccc765590d42cc536158c3afbd68efb6ca04f",
+        "black-role": "837b9ca90f72afa6898048625ae04da8366dbb0f7cf1fb3d87bb653adb7db21e",
+        "white-role": "3753ef1cf38c332829d36fa9ff8d097d8393e7477c034b977fe0e9785f4a30fd",
+        "restore": "bd8f320d38009d4dc54e049e9804f0cf66de3dbde8af9e3c35d7607b21c675f6"
+      },
+      "sameCamera": true,
+      "limitations": "Source report is detached stock-v-finish texture stack, not moving GPU role or split individual channel validation.",
+      "plates": {
+        "stock": {
+          "webp": "ff46d7c23936e21b9dc79b9f3f369529cf063f52726717b8644be17491ee5f6a",
+          "rgba": "0097f2517fe5f9e420156b08444a466ce21c1baff1d18e573c0716ef5f2dab62"
+        },
+        "finished": {
+          "webp": "e0c479c3e8fb742c981589a6c77b63fa292c3ebe22dbed00b08709014f5c4c41",
+          "rgba": "16b56305b0e9d31385e0e77674f682fabea6b150ac2363c2b49b8351db5e8287"
+        }
+      }
+    },
+    "north": {
+      "rawCaptureSHA256": "c0b6bfcbd8571bc28e4905f357f4a01d7acd2729b2c101104396b7b3dcad0946",
+      "view": "north",
+      "nativeSamples": 4,
+      "drawCounts": [
+        [
+          12,
+          48
+        ],
+        [
+          12,
+          48
+        ],
+        [
+          12,
+          48
+        ],
+        [
+          12,
+          48
+        ],
+        [
+          12,
+          48
+        ]
+      ],
+      "census": {
+        "visible": 463462,
+        "changed": 463462,
+        "strong": 461284,
+        "exterior": 0,
+        "alpha": 0,
+        "restore": 0
+      },
+      "exactSourcesSHA256": {
+        "stock": "9f07ea3f92b0532c249693b63644d0b72fcfd64b85b48bddc9527a1f8d98e86d",
+        "finished": "1a229d66ec3bdb161dded99d8b7a8b0f0478fdc212cc8f0a770911a5be5f62fd",
+        "black-role": "32aeedf8c5e6ba598333ceb58c485b46e1c5886a0f7bd01cebbdb55522424c8f",
+        "white-role": "682f38ffaa36a41762809687aad23737ece9099b4908c6a499e9dbb565cafa54",
+        "restore": "9f07ea3f92b0532c249693b63644d0b72fcfd64b85b48bddc9527a1f8d98e86d"
+      },
+      "sameCamera": true,
+      "limitations": "Source report is detached stock-v-finish texture stack, not moving GPU role or split individual channel validation."
+    },
+    "middle": {
+      "rawCaptureSHA256": "ad0bd0cf610443a700196fefd4f4a1896d235faf390602095e7e9cc3fe13deb0",
+      "view": "middle",
+      "nativeSamples": 4,
+      "drawCounts": [
+        [
+          17,
+          58
+        ],
+        [
+          17,
+          58
+        ],
+        [
+          17,
+          58
+        ],
+        [
+          17,
+          58
+        ],
+        [
+          17,
+          58
+        ]
+      ],
+      "census": {
+        "visible": 63941,
+        "changed": 63941,
+        "strong": 63376,
+        "exterior": 0,
+        "alpha": 0,
+        "restore": 0
+      },
+      "exactSourcesSHA256": {
+        "stock": "431582c1c11276e395d6594dc0b6ba09b2b43b00e17a956403a7a8ab023c22a0",
+        "finished": "f67d912fe4c12f63f6a06ecd2424840413dcbfaf2959b0c4c50cda29ddcaadf0",
+        "black-role": "4cbcba528b93c599253b2875a1b80519f1886a584737b2fa249ab73c661ac531",
+        "white-role": "f5f846babd31932146044fa8d897dcbcba7dba71f7cca669020c8ff69c848b7e",
+        "restore": "431582c1c11276e395d6594dc0b6ba09b2b43b00e17a956403a7a8ab023c22a0"
+      },
+      "sameCamera": true,
+      "limitations": "Source report is detached stock-v-finish texture stack, not moving GPU role or split individual channel validation.",
+      "plates": {
+        "stock": {
+          "webp": "444b980453ce43cbbd1bb619b4512ba5de971d7286ac9ad1c355966abbc934bd",
+          "rgba": "86d01f978ddc46c81246067b802fd345ad8711b1c2a58b0e02b13cd7214644b3"
+        },
+        "finished": {
+          "webp": "ebb0da37e93b41c008646ed5064d76dc59789a1ab7c14db8b3d0459991fa4c4e",
+          "rgba": "3a84c36d1f283cd8c6e991294aebcbf9987a4b2da0373794919f47b9143c230e"
+        }
+      }
+    },
+    "overcast": {
+      "rawCaptureSHA256": "ce1749fcf02d690133b15e492c2b2b65488299e54784be61d16db89acfe16874",
+      "view": "overcast",
+      "nativeSamples": 4,
+      "drawCounts": [
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ],
+        [
+          15,
+          46
+        ]
+      ],
+      "census": {
+        "visible": 345526,
+        "changed": 345526,
+        "strong": 344542,
+        "exterior": 0,
+        "alpha": 0,
+        "restore": 0
+      },
+      "exactSourcesSHA256": {
+        "stock": "80ef5fcf363bf9d830ccf8f9de2c197965a48ede7b3e193c13e23165a598f23f",
+        "finished": "319e8839b0c207a13ee653fe40740584ef379180835b01d88781afcb8ce715ee",
+        "black-role": "6c008a3811e3178247bd007b4394909a1a62c95557283b5125240f5b4b97ecc9",
+        "white-role": "276761b71f1143447c837da414c70a59d8b997942bbbae4e59d39a5a6429b115",
+        "restore": "80ef5fcf363bf9d830ccf8f9de2c197965a48ede7b3e193c13e23165a598f23f"
+      },
+      "sameCamera": true,
+      "limitations": "Source report is detached stock-v-finish texture stack, not moving GPU role or split individual channel validation."
+    }
+  }
+}
