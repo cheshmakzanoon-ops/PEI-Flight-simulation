@@ -1,0 +1,10 @@
+{
+  "frame": [984, 600], "samples": 4,
+  "role": "Detached historical front and independently authored photographed flank only; not the game, not a calibrated historical lens",
+  "view": [
+    {"name":"northwest-front","eye":[14,5.5,-34],"aim":[0.7,5.44,-8.0],"fov":32.4,"purpose":"Whole white front, tower at viewer right, recess/apex read on same left flank as source"},
+    {"name":"windowed-flank","eye":[23,7.7,-23.8],"aim":[0.8,5.34,-7.45],"fov":36.9,"purpose":"Separate closer observation of four photographed side bays and tower junction"},
+    {"name":"scale-only","eye":[74,24,-158],"aim":[0.7,5.3,-8],"fov":33.6,"purpose":"Representative 50–85px height, actual unscaled pixels. Independent approximate northwestern lens, not River Clyde flight or co-owner context"}
+  ],
+  "criteria":["No bytes in art from the photographer or any raster","At 1x front, tower right, four observed flank lights and slender spire remain legible","Near reveal backs genuinely behind the wall, spire cap non-floating","At scale-only, core remains distinctive without claiming the small iron ornament is legible","No conclusion about current unseen rear, height or site contact"]
+}

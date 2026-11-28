@@ -1,0 +1,58 @@
+{
+  "nativeMetersPerPx": 0.5971642834779395,
+  "planSHA": "9245f4fb0891f4bfde8983eb36e6aacf74c793256c8f807f6efa6b8d6755dddb",
+  "summary": {
+    "mappedOnly": [
+      {
+        "medianChroma": 23.5,
+        "quantilesLuma": [
+          73.4596,
+          74.7404,
+          76.74040000000001
+        ],
+        "rows": 78
+      },
+      {
+        "medianChroma": 26.0,
+        "quantilesLuma": [
+          72.4596,
+          75.604,
+          77.7364
+        ],
+        "rows": 71
+      }
+    ],
+    "overlap": [
+      {
+        "medianChroma": 13.0,
+        "quantilesLuma": [
+          89.73519999999999,
+          125.22579999999999,
+          142.05732
+        ],
+        "rows": 257
+      },
+      {
+        "medianChroma": 15.0,
+        "quantilesLuma": [
+          90.73759999999999,
+          124.26129999999999,
+          140.86759999999998
+        ],
+        "rows": 274
+      }
+    ]
+  },
+  "wire": [
+    {
+      "bytes": 9915,
+      "imageUrl": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer/tile/18/92829/84944",
+      "sha256": "b16675e809f807a26b419ddce7a8b1c5250441c94b81cf230114232467ec2b41"
+    },
+    {
+      "bytes": 10127,
+      "imageUrl": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer/tile/18/92830/84944",
+      "sha256": "856f0f88c899747b01d7f14da3afb96ea2ae461d1823ab75c8cafae3c360a61e"
+    }
+  ]
+}

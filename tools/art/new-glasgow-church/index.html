@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Detached Three.js study of the photographed 2012 frontage of New Glasgow Christian Church, Prince Edward Island.">
+  <title>New Glasgow Christian Church | PEI Flight Sim workbench</title>
+  <link rel="stylesheet" href="../new-glasgow-mill/workbench.css">
+</head>
+<body>
+  <main class="workbench">
+    <aside>
+      <p class="eyebrow"><span aria-hidden="true">●</span> PEI FLIGHT SIM / SCENERY WORKBENCH</p>
+      <h1>New Glasgow <span>Christian Church</span></h1>
+      <p>Inspect the northwest gable, pointed window recesses and swept spire as they were photographed in 2012.</p>
+      <fieldset>
+        <legend>VIEW</legend>
+        <button type="button" data-view="front" aria-pressed="true">Northwest frontage</button>
+        <button type="button" data-view="flank" aria-pressed="false">Windowed side</button>
+        <button type="button" data-view="scale" aria-pressed="false">Distance study</button>
+      </fieldset>
+      <p class="fine">Original, interpretive geometry on a neutral stage. These viewpoints are for inspection, not a recreation of the photographer’s camera or a simulator replay.</p>
+      <a href="./plates/northwest-front.webp">View the still image <span aria-hidden="true">↗</span></a>
+    </aside>
+    <section id="viewport" aria-label="Model inspection">
+      <canvas id="church" role="img" aria-label="Three.js church model, northwest frontage"></canvas>
+      <p id="status" aria-live="polite">Preparing the model…</p>
+      <noscript>This local workbench requires JavaScript and WebGL.</noscript>
+    </section>
+  </main>
+  <script type="module" src="./workbench.ts"></script>
+</body>
+</html>

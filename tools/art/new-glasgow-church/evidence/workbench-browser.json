@@ -1,0 +1,68 @@
+{
+  "scope": "Local detached workbench only; no player/main runtime modification.",
+  "build": "06ae2d94683ba3b35e567ec53279ebf80cb06671c70edc0616ad0b80556e9b12",
+  "source": "fa6731fd4ef52d63cbb2655d4bd1e7b75e356756d0efec4cce82ab7d913acdd6",
+  "cases": [
+    {
+      "screen": "desktop",
+      "views": [
+        {
+          "preset": "front",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "272bde4c9da6d2cb168adf6c470a2bfb8d2f8b6413582cbc30f486453f6d64a8"
+        },
+        {
+          "preset": "flank",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "2e02a6b85759886c69a70bec4a48fa7792fdbaabc284205f4f37a3ea28613100"
+        },
+        {
+          "preset": "scale",
+          "viewport": [
+            870,
+            760
+          ],
+          "visualSHA256": "669558fc4c86a2fc90abc1873ce93a4886749d5f0312e5a33c1db2fd50de1f99"
+        }
+      ]
+    },
+    {
+      "screen": "compact",
+      "views": [
+        {
+          "preset": "front",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "d2a8982399bb05dbe6ca7584c33157c871dfae5b95cc47de0627f0705c21342e"
+        },
+        {
+          "preset": "flank",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "3e88ed3861f70669bb1f64ee79203a5123c319a9a289710d447c3f0c2add35ac"
+        },
+        {
+          "preset": "scale",
+          "viewport": [
+            390,
+            524
+          ],
+          "visualSHA256": "383e042660c80a26ad74d32b42b822e43370baa850f98996a6f4b67a6ac35cfc"
+        }
+      ]
+    }
+  ],
+  "outside": [],
+  "errors": [],
+  "pass": true
+}

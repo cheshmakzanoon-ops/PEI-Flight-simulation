@@ -1,0 +1,40 @@
+{
+  "identity": {
+    "name": "New Glasgow Christian Church",
+    "publicIdentity": "https://ngcc.ca/visit/",
+    "operatorHistory": "https://ngcc.ca/ourroots/",
+    "addressOnly": "617 Route 258, New Glasgow, PEI",
+    "mappedPlan": {
+      "datasetProvider": "Province of Prince Edward Island (GeoLinc)",
+      "civicPointObjectId": 37944,
+      "buildingFootprintObjectId": 60860,
+      "role": "Horizontal identity comparator; footprint record has null source/date. No change chronology, wall/eave placement or vertical authority.",
+      "stockOwner": "q03310/90",
+      "stockIndexRange": [1183973,16120],
+      "stockCompressedChunkSha256": "5ddee83dce2ad6915fcb83feb98328a174d458fbc0b88761914f44a316c63d15",
+      "stockAtlasSha256": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+      "oldMappedAreaM2": 189.97476785769686,
+      "comparatorAreaM2": 307.08555212058127,
+      "intersectM2": 189.89087488256337,
+      "comparatorIoU": 0.6181958456948506,
+      "liveFullEnvelope": "HOLD"
+    }
+  },
+  "visualObservationOnly": {
+    "photographer": "Carter W. Jeffery",
+    "visitDateStatedByPhotographer": "2012-02-18",
+    "page": "https://peiheritagebuildings.blogspot.com/2012/02/new-glasgow-winter-wonderland-today.html",
+    "exterior": {
+      "originalFile": "018.JPG",
+      "dimensions": [800,520],
+      "sha256": "733036503f5fe73330264798b67308516b4d11793c8c412af52d61b7e694802c"
+    },
+    "thistleDetail": {
+      "originalFile": "019.JPG",
+      "dimensions": [629,800],
+      "sha256": "87ded8492f37a869dba12194da0c7ac3e27338cd376dbcbd38df7a91b8cf687b"
+    },
+    "rights": "Reference observation only. No photo bytes, textures, relief traces, signs or logos distributed. Closed-frame dimensions, roof pigment, material aging and panel patterns are original interpretation.",
+    "limit": "One photographed oblique covers the frontage and one flank; the separate thistle detail is by the same photographer. First-party address/history is independent textual support, not a second dated visual side."
+  }
+}
