@@ -4,6 +4,8 @@
 
 ![Matched views of the original Kent Street gable model with plain and detailed finishes](kent-gable-comparison.webp)
 
+The [Kent Street lower frontage study](KENT-LOWER-STUDY.md) now adds the dated street-level openings to a separate detached copy. World placement remains on hold.
+
 ## Evidence
 
 - The [Canadian Register of Historic Places entry](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=1662) identifies the inn. Its Kent-side photograph, credited to C. Stewart / Province of Prince Edward Island, shows the gable, eave returns, trim and siding. The [operator’s gallery](https://georgetownhistoricinn.com/the-inn/) and [Tourism PEI listing](https://www.tourismpei.com/where-to-stay/georgetown-inn-restaurant) corroborate the broad palette.
