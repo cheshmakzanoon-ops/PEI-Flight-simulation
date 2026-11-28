@@ -4,6 +4,8 @@
 
 With the project dependencies installed, run `npm run dev` and open `/tools/art/orwell-clarke-store-study/`. The six fixed cameras show a dappled and evenly lit front, the entrance, glass and sash, Island sandstone and the short shingle return. Neither the atlas nor the flight application imports this study.
 
+The separate [2018 bench study](BENCH-STUDY.md) adds a dated, movable detail under the right display. It does not alter this storefront or the playable world.
+
 ## What the evidence supports
 
 | Source | In the study | Boundary |
