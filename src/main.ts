@@ -1,3 +1,4 @@
+import {northCapeLightOption} from './app/north-cape-light-option.ts';
 import { eastPointWallOption, makeEastPointWallPreview } from './render/east-wall-preview.ts';
 import {SeawardRoofLease,SEAWARD_ROUTE,standardSeawardRoof} from './render/quartermaster-seaward/lease.ts';
 import {standardSourisKnightRequested} from './app/scenery-profile.ts';
@@ -149,7 +150,11 @@ import {bowleyCoreRequested} from './app/scenery-profile.ts';
 import './app/style.css';
 bootUI();
 async function run(){
- const eastWallOption=eastPointWallOption(location.search),standardSearch=eastWallOption.stockSearch;
+ const rawScenerySearch=location.search;
+ const eastWallOption=eastPointWallOption(rawScenerySearch),lightOption=northCapeLightOption(rawScenerySearch);
+ // Decide requests independently on the original query. Only the stock
+ // projection is passed through both owner-specific removals.
+ const standardSearch=northCapeLightOption(eastWallOption.stockSearch).standardSearch;
  const standardURL=new URL(location.href);
  if(standardSearch!==location.search)standardURL.search=standardSearch;
  const datedCapeStand=northCapeStandOption(standardSearch);
@@ -296,6 +301,14 @@ async function run(){
  // Append only after the pinned road, cover and terrain have admitted the
  // same local foundation. The original province-wide route ordinals stay fixed.
  if(cover.montague)SITES.push(MONTAGUE_BRIDGE_DEPARTURE);
+ // The candidate is an explicit preview, not an implicit province-wide
+ // product or independent flight-control setting.
+ const capeLightModule=lightOption.route?
+  await import('./render/north-cape-light-preview.ts').catch(()=>undefined):undefined;
+ const capeLightAtlas=!!capeLightModule&&lightOption.route&&
+  northCapeAtlas({...terrain.spec,sha:terrainSha},cover)&&
+  await verifyDecodedCover(cover).catch(()=>undefined)===NORTH_CAPE_COVER_DECODED_SHA;
+ if(capeLightAtlas&&capeLightModule)SITES.push(capeLightModule.NORTH_CAPE_LIGHT_PREVIEW);
  const daylightModule=await daylightJob;
  const daylight=certifiedSky?daylightModule?.verifiedAerialOptics(certifiedSky):undefined;
  if(daylight)daylight.gain.value=0; // Require both independently loaded horizon meshes.
@@ -594,9 +607,20 @@ async function run(){
    roads?.sourceGeometrySha256===CANOPY_FENCE.pins.road&&
    quartermasterDocks?.id==='quartermaster-floating-docks-v1'&&quartermasterDocks.spines===3&&
    quartermasterDocks.fingers===30&&quartermasterDocks.triangles===540});
+ const capeLightPreview=capeLightAtlas&&capeLightModule&&lightOption.visible?
+  capeLightModule.createNorthCapeLightPreview(scene,world,terrainSha):undefined;
+ const capeLightRoute=(i:number)=>!!capeLightModule&&SITES[i]?.id===capeLightModule.NORTH_CAPE_LIGHT_PREVIEW.id;
+ const capeLightSupported=()=>renderer.getContext()===gl&&!gl.isContextLost()&&
+  renderer.getRenderTarget()===null&&!renderer.xr.isPresenting&&!scene.overrideMaterial&&
+  gl.getParameter(gl.SAMPLES)===4&&supportsOpaqueCoverage(gl)&&!!mainland&&
+  roads?.sourceGeometrySha256===CANOPY_FENCE.pins.road&&buildings?.sourceAtlasSha256===CANOPY_FENCE.pins.buildings;
  let eastWallDrawn=false;
  let eastWallPreview:ReturnType<typeof makeEastPointWallPreview<THREE.Mesh>>|undefined;
  const start=(i:number)=>{
+  if(capeLightPreview){
+   const wanted=capeLightRoute(i);
+   capeLightPreview.begin(wanted,ui.mode==='dispatch'&&i===ui.selected&&i===activeSite,wanted&&capeLightSupported());
+  }
   eastWallPreview?.begin(SITES[i]?.id??'',ui.mode==='dispatch'&&i===activeSite&&i===ui.selected,eastWallRenderer());
   forestStream.clearDispatchHeightRecovery();
   const seawardDeparture=!!seawardRoof&&ui.mode==='dispatch'&&i===activeSite&&i===ui.selected;
@@ -641,7 +665,7 @@ async function run(){
    }
   },
   modeChanged:(before,after)=>{if(before==='dispatch'&&after!=='flight')seawardRoof?.reset();}},SITES,
-  {search:standardSearch,url:standardURL.href});
+  {search:standardSearch,url:standardURL.href,reloadFallback:lightOption.route?{'northcape-light-low':'northcape-wind-low'}:undefined});
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
@@ -1055,6 +1079,7 @@ async function run(){
   const u=input.poll(pause);
   if(ui.mode==='dispatch'&&(ui.selected!==activeSite||oldMode!=='dispatch')){
    eastWallPreview?.freshDispatch();
+   capeLightPreview?.freshDispatch();
    standardRiverSeat?.resetDispatch();standardLakeSeat?.reset();cavendishSeat?.resetDispatch();princeLowFieldSeat?.reset();
    quaySeat?.reset();quayAdmitted=false;quayCandidate=undefined;
   }
@@ -1470,6 +1495,16 @@ async function run(){
   if(aircraftDepth)world.prepareAircraftRunwayCast(aircraft.root.position,camera,
    SITES[activeSite].id==='cysu'&&(ui.mode==='flight'||ui.mode==='paused'||((ui.previous==='flight'||ui.previous==='paused')&&
     (ui.mode==='map'||ui.mode==='help'||ui.mode==='credits'))));
+  if(capeLightPreview){
+   const currentCape=capeLightRoute(activeSite),wanted=currentCape&&ui.selected===activeSite;
+   if(dispatch){
+    const supported=wanted&&capeLightSupported();
+    capeLightPreview.dispatch(wanted,supported);
+    const state=capeLightPreview.phase;
+    ui.setLocalScenery('North Cape lighthouse',!wanted?'other':state==='ready'?'ready':state==='held'?'stock':'waiting');
+   }
+   else capeLightPreview.update(currentCape,currentCape&&capeLightSupported());
+  }
   const endRidge=world.beginKingsRidgeDraw(camera);
   const activeRiver=standardRiverSeat?.activeCohort;
   const activeDunelands=cavendishSeat?.activeCohort;
@@ -1534,6 +1569,7 @@ async function run(){
     }
    }
   }
+  if(diagnostic&&capeLightPreview)Object.assign(window,{islandAirNorthCapeLightPreview:{...capeLightPreview.state,authorityReady:capeLightSupported()}});
   if(world.tryonRockState==='pending'&&roads&&buildings&&mainland&&world.detailState().loading===0)
    void world.prepareTryonRock(camera);
   if(world.capeWetState==='pending')void world.prepareCapeWet(camera);

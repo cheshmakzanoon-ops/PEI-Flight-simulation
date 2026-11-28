@@ -26,10 +26,11 @@ Contains information licensed under the
 The raster does not establish a shoreline, foundation, collision surface,
 or the current condition of the entire station.
 
-Neither asset is imported by the game. Before integration, reconcile
-reference bearing and foundation with the site, photograph the same
-normal flight views, and verify the terrain/roads, turbines and existing
-building roles against stock. The study is not a navigational aid.
+The baseline exterior and lantern glazing are available in the
+[explicit North Cape low-pass preview](../../../docs/qa/north-cape-lighthouse-preview.md).
+The verified stock ground seats the model; its art bearing and foundation are
+not survey measurements. The two HRDEM study rasters and the dated alternate
+details are not loaded by the playable preview. This is not a navigational aid.
 
 ### Separating elevated objects from the ground
 
