@@ -1,0 +1,425 @@
+{
+  "state": "PASS exact linked standard hedge custody at two entered steps and physical exit; independent marker image score pending",
+  "sealedBuild": "989ea1fda95a014b42c0984c3beb2f4faa84c370ea8248fd2ee744c580658f1f",
+  "site": "private-queens-field-edge-reciprocal",
+  "windows": [
+    {
+      "covered": 0,
+      "d": 233.27161247602712,
+      "site": "private-queens-field-edge-reciprocal",
+      "view": 0,
+      "oldMode": "flight",
+      "originalPrefix": 20710,
+      "instances": 23987,
+      "hedgeCount": 3277,
+      "elementCount": 6,
+      "viewMatrix": [
+        -0.7088446617126465,
+        -0.07422386854887009,
+        0.7014485597610474,
+        0,
+        0,
+        0.994448184967041,
+        0.10522766411304474,
+        0,
+        -0.7053645849227905,
+        0.07459007203578949,
+        -0.7049092650413513,
+        0,
+        -2489.19384765625,
+        -1924.114990234375,
+        17016.125,
+        1
+      ],
+      "projection": [
+        1.2702701091766357,
+        0,
+        0,
+        0,
+        0,
+        2.0056896209716797,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004768371582,
+        -1,
+        0,
+        0,
+        -0.1600000411272049,
+        0
+      ],
+      "eye": [
+        -13843.203125,
+        122.86546325683594,
+        10382.5546875
+      ],
+      "viewport": [
+        0,
+        0,
+        1200,
+        760
+      ],
+      "samples": 4,
+      "shadow": {
+        "instances": 23987,
+        "count": 6,
+        "ground": {
+          "name": "0-old-shadow-floor.f32le",
+          "sha256": "6ef31cc1f85a29b3a6064f97f099d6227268f95406b1e11a38ff333bad082d35"
+        }
+      },
+      "markerRoleCount": 28,
+      "captureState": {
+        "mode": "flight",
+        "camera": "Chase",
+        "site": "private-queens-field-edge-reciprocal",
+        "hedges": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 3277
+        },
+        "roads": true,
+        "buildings": true
+      },
+      "fullStem": {
+        "name": "0-fullStem.f32le",
+        "sha256": "f8af7d9e2e9bc4ff514fd4427427a296094bc160adc693b506aeb59e377a81fb"
+      },
+      "fullShape": {
+        "name": "0-fullShape.f32le",
+        "sha256": "012348e96a8cbd23ede67ca8b2c4cc5e227e7bd6c96ceddff112135f747a1f2c"
+      },
+      "shaderSHA256": [
+        "2257efbf67bcd9ec7741695d013559a7ddf1bb719ca852cad5c5c96c7ba9b653",
+        "7601f40db88c1124c633fa712a9511809cf30da5aa215c943e8e03dd344ad55a"
+      ],
+      "png": {
+        "stock": {
+          "name": "0-stock.png",
+          "sha256": "86a1239be7aa155cf21c274059b744ecf1f8b574e75afa575bae2b34885e1b1d"
+        },
+        "markA": {
+          "name": "0-markA.png",
+          "sha256": "f23233759873ba3dc5b127a209ca9435ae657cb9198d791ae038a4023177771a"
+        },
+        "markB": {
+          "name": "0-markB.png",
+          "sha256": "fc57f8ce022aeb4b1ad39a51ff05e590cb232f0d4b01bbfff52aef50d8c18bac"
+        },
+        "neutral": {
+          "name": "0-neutral.png",
+          "sha256": "86a1239be7aa155cf21c274059b744ecf1f8b574e75afa575bae2b34885e1b1d"
+        },
+        "restore": {
+          "name": "0-restore.png",
+          "sha256": "86a1239be7aa155cf21c274059b744ecf1f8b574e75afa575bae2b34885e1b1d"
+        }
+      }
+    },
+    {
+      "covered": 1,
+      "d": 347.7126845351082,
+      "site": "private-queens-field-edge-reciprocal",
+      "view": 0,
+      "oldMode": "flight",
+      "originalPrefix": 21083,
+      "instances": 24229,
+      "hedgeCount": 3146,
+      "elementCount": 6,
+      "viewMatrix": [
+        -0.708811342716217,
+        -0.07435137778520584,
+        0.7014687061309814,
+        0,
+        -2.7755575615628914e-17,
+        0.9944295287132263,
+        0.10540343075990677,
+        0,
+        -0.7053980827331543,
+        0.0747111514210701,
+        -0.7048629522323608,
+        0,
+        -2485.08740234375,
+        -1939.97802734375,
+        17129.685546875,
+        1
+      ],
+      "projection": [
+        1.2702701091766357,
+        0,
+        0,
+        0,
+        0,
+        2.0056896209716797,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004768371582,
+        -1,
+        0,
+        0,
+        -0.1600000411272049,
+        0
+      ],
+      "eye": [
+        -13921.6357421875,
+        123.64383697509766,
+        10466.04296875
+      ],
+      "viewport": [
+        0,
+        0,
+        1200,
+        760
+      ],
+      "samples": 4,
+      "shadow": {
+        "instances": 24229,
+        "count": 6,
+        "ground": {
+          "name": "1-old-shadow-floor.f32le",
+          "sha256": "d7a7c952518a342ec134ae68c7be5ca7f4db8150b04c12e25e718592490c635b"
+        }
+      },
+      "markerRoleCount": 28,
+      "captureState": {
+        "mode": "flight",
+        "camera": "Chase",
+        "site": "private-queens-field-edge-reciprocal",
+        "hedges": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 3146
+        },
+        "roads": true,
+        "buildings": true
+      },
+      "fullStem": {
+        "name": "1-fullStem.f32le",
+        "sha256": "feb3a2fcfb33285bf7e41cf9f33d5a7c60683c473a73b812a81e58c1a0d8d9ef"
+      },
+      "fullShape": {
+        "name": "1-fullShape.f32le",
+        "sha256": "a37c1578d69a1097e7ffc4de45ceadb1acf17139bcd783f120ba1c7f3f162df2"
+      },
+      "shaderSHA256": [
+        "2257efbf67bcd9ec7741695d013559a7ddf1bb719ca852cad5c5c96c7ba9b653",
+        "7601f40db88c1124c633fa712a9511809cf30da5aa215c943e8e03dd344ad55a"
+      ],
+      "png": {
+        "stock": {
+          "name": "1-stock.png",
+          "sha256": "8869133ec75a724c5f8f285e718a127f8f35debc1a65d99b1f474de0ea38856e"
+        },
+        "markA": {
+          "name": "1-markA.png",
+          "sha256": "3aaf4bf165c9393f19905454a49d8b2613f1bdb7a0caea6e57b8448744ad3807"
+        },
+        "markB": {
+          "name": "1-markB.png",
+          "sha256": "03fc960105637155cd1356425c1aa6a914a42e9afb75c0e9e233d8fdcbcaeedf"
+        },
+        "neutral": {
+          "name": "1-neutral.png",
+          "sha256": "8869133ec75a724c5f8f285e718a127f8f35debc1a65d99b1f474de0ea38856e"
+        },
+        "restore": {
+          "name": "1-restore.png",
+          "sha256": "8869133ec75a724c5f8f285e718a127f8f35debc1a65d99b1f474de0ea38856e"
+        }
+      }
+    },
+    {
+      "covered": 2,
+      "d": 712.8061829861052,
+      "site": "private-queens-field-edge-reciprocal",
+      "view": 0,
+      "oldMode": "flight",
+      "originalPrefix": 23022,
+      "instances": 25932,
+      "hedgeCount": 2910,
+      "elementCount": 6,
+      "viewMatrix": [
+        -0.708813488483429,
+        -0.07432769984006882,
+        0.7014690637588501,
+        0,
+        -6.938893903907228e-18,
+        0.9944330453872681,
+        0.1053701788187027,
+        0,
+        -0.7053959369659424,
+        0.07468780130147934,
+        -0.7048675417900085,
+        0,
+        -2474.63623046875,
+        -1980.3699951171875,
+        17492.37890625,
+        1
+      ],
+      "projection": [
+        1.2702701091766357,
+        0,
+        0,
+        0,
+        0,
+        2.0056896209716797,
+        0,
+        0,
+        0,
+        0,
+        -1.0000004768371582,
+        -1,
+        0,
+        0,
+        -0.1600000411272049,
+        0
+      ],
+      "eye": [
+        -14171.615234375,
+        126.17021179199219,
+        10732.1220703125
+      ],
+      "viewport": [
+        0,
+        0,
+        1200,
+        760
+      ],
+      "samples": 4,
+      "shadow": {
+        "instances": 25932,
+        "count": 6,
+        "ground": {
+          "name": "2-old-shadow-floor.f32le",
+          "sha256": "d5ef8b4ff3479e3ffd2c6a8b5c02031e4f440b29696948d5e73635a92427594a"
+        }
+      },
+      "markerRoleCount": 28,
+      "captureState": {
+        "mode": "flight",
+        "camera": "Chase",
+        "site": "private-queens-field-edge-reciprocal",
+        "hedges": {
+          "revision": 4,
+          "loaded": 4,
+          "loading": 0,
+          "failed": 0,
+          "missing": false,
+          "visible": 2910
+        },
+        "roads": true,
+        "buildings": true
+      },
+      "fullStem": {
+        "name": "2-fullStem.f32le",
+        "sha256": "9f5921b1f56539abba28bf93760842252e2e3c2d8f6fc10554afe646522ba059"
+      },
+      "fullShape": {
+        "name": "2-fullShape.f32le",
+        "sha256": "c37a1dfce19767a4794a7ca6f1010da6821788cc89dea08cb892c884a13a7a10"
+      },
+      "shaderSHA256": [
+        "2257efbf67bcd9ec7741695d013559a7ddf1bb719ca852cad5c5c96c7ba9b653",
+        "7601f40db88c1124c633fa712a9511809cf30da5aa215c943e8e03dd344ad55a"
+      ],
+      "png": {
+        "stock": {
+          "name": "2-stock.png",
+          "sha256": "e521e1b636c93b4d3a71171c5c48915754293e2e81e2c411c79e0df319e6dc08"
+        },
+        "markA": {
+          "name": "2-markA.png",
+          "sha256": "e521e1b636c93b4d3a71171c5c48915754293e2e81e2c411c79e0df319e6dc08"
+        },
+        "markB": {
+          "name": "2-markB.png",
+          "sha256": "e521e1b636c93b4d3a71171c5c48915754293e2e81e2c411c79e0df319e6dc08"
+        },
+        "neutral": {
+          "name": "2-neutral.png",
+          "sha256": "e521e1b636c93b4d3a71171c5c48915754293e2e81e2c411c79e0df319e6dc08"
+        },
+        "restore": {
+          "name": "2-restore.png",
+          "sha256": "e521e1b636c93b4d3a71171c5c48915754293e2e81e2c411c79e0df319e6dc08"
+        }
+      }
+    }
+  ],
+  "ranges": [
+    {
+      "leaf": "index.json",
+      "status": 200,
+      "range": null,
+      "contentRange": null,
+      "length": "33000"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933",
+      "length": "36988"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044",
+      "length": "54530"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933",
+      "length": "36988"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044",
+      "length": "54530"
+    },
+    {
+      "leaf": "hedge-02.pack",
+      "status": 206,
+      "range": "bytes=68277-148210",
+      "contentRange": "bytes 68277-148210/504933",
+      "length": "79934"
+    },
+    {
+      "leaf": "hedge-01.pack",
+      "status": 206,
+      "range": "bytes=330495-383541",
+      "contentRange": "bytes 330495-383541/532044",
+      "length": "53047"
+    }
+  ],
+  "outside": [],
+  "errors": [],
+  "begin": {
+    "site": "private-queens-field-edge-reciprocal",
+    "x": -13698.88457588271,
+    "z": 10228.163314721842,
+    "mode": "dispatch",
+    "mainland": true,
+    "roads": true,
+    "buildings": true
+  },
+  "final": {
+    "error": "",
+    "covered": 3,
+    "queued": 0
+  }
+}

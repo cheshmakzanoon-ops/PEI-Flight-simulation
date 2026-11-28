@@ -51,11 +51,24 @@ Those checks are not a count of depth-visible leaves.
 
 Only seven and four of the 28 legal roots project in the original
 frame pair. The [prospective alternate course](evidence/course-result.json)
-uses only the stock geometry to screen physical routes. It predicts
-at least 27 of 28 projected roots in each of two new viewing windows
-and none at the far exit. The new course still needs native
-depth-retained visibility proof; it does not waive any image or
-quality gate. Neither test row is in the playable Dispatch.
+uses only the stock geometry to screen physical routes. The selected
+course passed a second real-flight stock check using a private test row.
+
+| Distance from start | Projected original crowns | Visible stock role pixels |
+| ---: | ---: | ---: |
+| 233.272 m | 28 | 1,956 |
+| 347.713 m | 27 | 10,370 |
+| 712.806 m | 0 | 0 |
+
+The [role score](evidence/queens-depth-retained-role.json) and
+[native receipt](evidence/queens-depth-retained-receipt.json) distinguish
+submitted geometry from visible foliage. The diagnostic changed only the
+final RGB of the 28 identified old crowns, keeping the real depth and
+alpha tests. Both marked frames were identical to stock at the exit;
+the neutral and restored frames matched stock at every station, with no
+exterior or alpha changes. This constrains where a future comparison
+will be visible; no new coverage, new tree or live material is accepted.
+The instrumented test rows are not in playable Dispatch.
 
 ## Repeat the original readback
 

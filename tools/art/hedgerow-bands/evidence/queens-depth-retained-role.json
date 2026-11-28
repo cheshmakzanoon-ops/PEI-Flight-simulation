@@ -1,0 +1,66 @@
+{
+  "scope": "Paired final RGB changes of actual old crown in current actual ordinary private flight. Does not show a new crown, individual stem visibility, ground or runtime change.",
+  "flightReceiptSHA256": "7363a9e877b92daa3232ca70ee779da6bd74f78d296f152ee4e1766b03345961",
+  "results": [
+    {
+      "d": 233.27161247602712,
+      "stockDepthRetainedMarkedPixels": 1956,
+      "wholePixelQuadSupport": 10126,
+      "projectedDistinctStockQuadsBeforeAlpha": 28,
+      "stockNeutralAndRestoreExact": true,
+      "outsideBetweenMarks": 0,
+      "outsideAnyMarkedVsStock": 0,
+      "alphaChangedPixels": 0,
+      "passes": true
+    },
+    {
+      "d": 347.7126845351082,
+      "stockDepthRetainedMarkedPixels": 10370,
+      "wholePixelQuadSupport": 33499,
+      "projectedDistinctStockQuadsBeforeAlpha": 27,
+      "stockNeutralAndRestoreExact": true,
+      "outsideBetweenMarks": 0,
+      "outsideAnyMarkedVsStock": 0,
+      "alphaChangedPixels": 0,
+      "passes": true
+    },
+    {
+      "d": 712.8061829861052,
+      "stockDepthRetainedMarkedPixels": 0,
+      "wholePixelQuadSupport": 0,
+      "projectedDistinctStockQuadsBeforeAlpha": 0,
+      "stockNeutralAndRestoreExact": true,
+      "outsideBetweenMarks": 0,
+      "outsideAnyMarkedVsStock": 0,
+      "alphaChangedPixels": 0,
+      "passes": true
+    }
+  ],
+  "allPassed": true,
+  "signedOwnerRanges": [
+    {
+      "tile": "13-13",
+      "bytes": 36988,
+      "decodedSHA256": "9997992a58abdf0e8ed95d5394f983f18abab0c5269adb3df97826052460311d",
+      "exactRange": "bytes 31289-68276/504933"
+    },
+    {
+      "tile": "13-12",
+      "bytes": 54530,
+      "decodedSHA256": "199147d0003390e4b4cb2f7c9d3e86becb91c9158e4ad3317abd8ea5067be558",
+      "exactRange": "bytes 275965-330494/532044"
+    },
+    {
+      "tile": "14-13",
+      "bytes": 79934,
+      "decodedSHA256": "ef60dff7aca59ca8d10d534e6df508254e39212f4ba101a1a7c36e2f5e245523",
+      "exactRange": "bytes 68277-148210/504933"
+    },
+    {
+      "tile": "14-12",
+      "bytes": 53047,
+      "decodedSHA256": "7e87edf3dd56fe742c7d6477ccb9017900318ec9253ff5c46b11ed98ca5548e1",
+      "exactRange": "bytes 330495-383541/532044"
+    }
+  ]
+}
