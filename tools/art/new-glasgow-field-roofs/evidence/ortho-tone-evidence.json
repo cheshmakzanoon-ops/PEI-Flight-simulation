@@ -1,0 +1,67 @@
+{
+  "prelockSHA256": "eca5be4606975f629c6deea2be93087c1a928ac073df79642b6cf45335a16f27",
+  "tiles": {
+    "92835/84914": {
+      "uri": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer/tile/18/92835/84914",
+      "sha256": "9fe1bfb26a2835f403b1a4930774073efb890722eb6425d73f818d252564f000",
+      "bytes": 13165
+    },
+    "92836/84914": {
+      "uri": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer/tile/18/92836/84914",
+      "sha256": "0f7501b9ce1d5a628eaaa7da33836bb884460e80875f73148b02a232cab1bde2",
+      "bytes": 11065
+    }
+  },
+  "results": {
+    "11": {
+      "groups": [
+        {
+          "samples": 352,
+          "Y10_50_90": [
+            111.604,
+            128.314,
+            212.55286
+          ],
+          "C50": 18.0,
+          "categorical": "mixed/indeterminate"
+        },
+        {
+          "samples": 344,
+          "Y10_50_90": [
+            91.49896,
+            126.6696,
+            207.86759999999998
+          ],
+          "C50": 20.0,
+          "categorical": "mixed/indeterminate"
+        }
+      ],
+      "stableOnly": "mixed/indeterminate"
+    },
+    "13": {
+      "groups": [
+        {
+          "samples": 193,
+          "Y10_50_90": [
+            180.44439999999997,
+            215.2258,
+            239.1536
+          ],
+          "C50": 10.0,
+          "categorical": "bright low-chroma"
+        },
+        {
+          "samples": 187,
+          "Y10_50_90": [
+            180.2258,
+            209.0946,
+            244.5536
+          ],
+          "C50": 10.0,
+          "categorical": "bright low-chroma"
+        }
+      ],
+      "stableOnly": "bright low-chroma"
+    }
+  }
+}

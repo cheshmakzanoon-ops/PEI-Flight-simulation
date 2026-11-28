@@ -1,0 +1,90 @@
+{
+  "AOnlyParameterWords": [
+    70.89854819767078,
+    0.11732439981111352,
+    -0.20822476754956284
+  ],
+  "AOnlySelectedShape": {
+    "id": "plane",
+    "penaltyM": 0.1,
+    "type": "plane"
+  },
+  "HAncillaryRelativeDifference": {
+    "gate": true,
+    "ordinaryBorrowedGroundNotRelocated": true,
+    "over1p6fraction": 1.0,
+    "relativeMedianM": 6.38616943359375,
+    "relativeMinM": 5.5735321044921875,
+    "sameFileNotTreeOrWallIdentity": true
+  },
+  "HEachStripeImprovementM": {
+    "1": -0.8457960446675614,
+    "3": 0.008117463853624163,
+    "5": -0.3816535384566669
+  },
+  "HOnlyAConstantComparator": {
+    "P90M": 0.5999137878417969,
+    "count": 28,
+    "maxM": 0.746063232421875,
+    "meanEqualBlockM": 0.3610427573875144,
+    "medianM": 0.36144256591796875,
+    "stripeMAE": {
+      "1": 0.4005729675292969,
+      "3": 0.3552127414279514,
+      "5": 0.32734256320529515
+    }
+  },
+  "HOnlyFixedCandidate": {
+    "P90M": 1.3737181663513185,
+    "count": 28,
+    "maxM": 1.612450281778976,
+    "meanEqualBlockM": 0.7674867971443825,
+    "medianM": 0.6546947161356584,
+    "stripeMAE": {
+      "1": 1.2463690121968583,
+      "3": 0.34709527757432723,
+      "5": 0.708996101661962
+    }
+  },
+  "HOnlyFlankIntegrity": {
+    "pass": true,
+    "signedTwoFacesComparison": null
+  },
+  "HOnlyOldFlatStock": {
+    "P90M": 0.5556645350752148,
+    "count": 28,
+    "maxM": 0.7046956019697461,
+    "meanEqualBlockM": 0.2613702914266972,
+    "medianM": 0.239567856282207,
+    "stripeMAE": {
+      "1": 0.2931955536783164,
+      "3": 0.275969728307615,
+      "5": 0.21494559229416016
+    }
+  },
+  "fixedAHash": "f65c32b9c464a05c0f9b045b5205af123d9436f35fee1c8fe8a303fceede6ba0",
+  "maskedInvalidH": 0,
+  "noOtherRoleRead": true,
+  "owner": "q03301/11",
+  "reasonGates": {
+    "AAcceptedShape": true,
+    "HAboveDtm": true,
+    "HComparativeEveryStripeAtLeastPoint08": false,
+    "HEqualBlockMae": false,
+    "HFairConstantImprovementAtLeastPoint25And30Pct": false,
+    "HFiniteData": true,
+    "HFlanks": true,
+    "HMax": false,
+    "HMedian": false,
+    "HOldFixedStockImprovementPoint25": false,
+    "HP90": false
+  },
+  "scope": "Single fixed H query against exact A seal, no refit or alternate H ranking",
+  "sourceDatum": "NRCan CanElevation PEI 2020, CGVD2013, no live transform",
+  "stripesH": {
+    "1": 10,
+    "3": 9,
+    "5": 9
+  },
+  "terminal": "HOLD roof model"
+}

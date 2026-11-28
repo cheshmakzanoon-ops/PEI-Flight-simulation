@@ -1,0 +1,102 @@
+{
+  "plan": {
+    "scope": "Entire signed q03301/11 and margin; disjoint from signed q03301/13. Numerical only, not survey of wall/eave/material or runtime authority.",
+    "tile": "q03301",
+    "ordinal": 11,
+    "nativeEdgesEPSG3979": [
+      2357472,
+      307960,
+      2357512,
+      308000
+    ],
+    "xywh": [
+      95851,
+      63370,
+      40,
+      40
+    ],
+    "orthometricDatum": "CGVD2013",
+    "resolutionMetres": 1,
+    "oldStockSHA256": "9969b088cf8db9455f2cca6a238d9ec1195e93d2db2096d0a69af0296969a202",
+    "signedOldSourceBlockID": 47665,
+    "oldCompressedDigests": {
+      "dtm": "aae376e7db6ba4962c16c5cc3a149f398e720f2d048071d703506657f213d3c6",
+      "dsm": "88b2ea512ab78ddb97d29f47481a7d6f1b031a0f5c3b4348ba64d60ee63cce8a"
+    }
+  },
+  "planSHA256": "019c603c7d025500a22ab866cc54135b98109e7f3861cd3fc24acfb23fd6bdcb",
+  "boundedRequests": 8,
+  "packetBytes": 2181633,
+  "firstCentre": [
+    2357472.5,
+    307999.5
+  ],
+  "files": {
+    "dtm": {
+      "name": "q03301-11-dtm.f32le",
+      "sha256": "0e7b9e030d6da9c0f00e32c81c5c1ff379522c0c785cc508cc8135f3acc12e58",
+      "bytes": 6400,
+      "publicURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dtm.tif",
+      "etag": "\"9e5249deef1137ddcce504d6f4bca1a9-131\"",
+      "ranges": [
+        {
+          "phase": "initial bounded primary IFD",
+          "start": 0,
+          "stop": 8191,
+          "sha256": "cc460f169f0da291f44141df45e2ddda8098bdfa66db86f95895ef992f28fdd5"
+        },
+        {
+          "phase": "tile-offset:47665",
+          "start": 384648,
+          "stop": 384655,
+          "sha256": "1d10986997ec31db50e43023923e51f64851c10c54aa285a34c6d609889a8a6f"
+        },
+        {
+          "phase": "tile-size:47665",
+          "start": 851732,
+          "stop": 851735,
+          "sha256": "b65c93061d59a6791717a57519d8ede21c6cd03c7b6e0b58e063799266528d8a"
+        },
+        {
+          "phase": "native-LZW:47665",
+          "start": 22560530588,
+          "stop": 22561605776,
+          "sha256": "aae376e7db6ba4962c16c5cc3a149f398e720f2d048071d703506657f213d3c6"
+        }
+      ]
+    },
+    "dsm": {
+      "name": "q03301-11-dsm.f32le",
+      "sha256": "d795fc9f1cfeaff5dcd2828146a8f1781edf7501c377c12e33b10093f9428121",
+      "bytes": 6400,
+      "publicURL": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-lidar/PEI-Prince_Edward_Island_2020-1m-dsm.tif",
+      "etag": "\"42e6d17ec9152bd7a5347d13d196dccd-133\"",
+      "ranges": [
+        {
+          "phase": "initial bounded primary IFD",
+          "start": 0,
+          "stop": 8191,
+          "sha256": "693f18d1350b63dce2f60f693d492f29efc7b40afe7005a9a411418751b01d51"
+        },
+        {
+          "phase": "tile-offset:47665",
+          "start": 384648,
+          "stop": 384655,
+          "sha256": "b2813f9247a92d338f471977643966cbf31df47750d4ab9f58ee60556ea61947"
+        },
+        {
+          "phase": "tile-size:47665",
+          "start": 851732,
+          "stop": 851735,
+          "sha256": "cbe3f8e5b36de3a1c0791d90e2dd93860b8837ce43b45c0e4caae74944623dc9"
+        },
+        {
+          "phase": "native-LZW:47665",
+          "start": 23019791588,
+          "stop": 23020881623,
+          "sha256": "88b2ea512ab78ddb97d29f47481a7d6f1b031a0f5c3b4348ba64d60ee63cce8a"
+        }
+      ]
+    }
+  }
+}
