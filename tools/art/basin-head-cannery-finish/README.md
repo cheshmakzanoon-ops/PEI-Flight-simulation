@@ -3,7 +3,8 @@
 The existing **Basin Head · low pass** can show the Cannery when the
 separate **Open inlet preview** is selected. This detached study improves
 the appearance of its long wall, original five red doors and inner
-working apron. It is not installed in that route.
+working apron. The separate [explicit finish option](../../../docs/qa/basin-cannery-finish-preview.md)
+uses these materials; the original inlet option still opens without them.
 
 | Original material vs the detached finish |
 | --- |

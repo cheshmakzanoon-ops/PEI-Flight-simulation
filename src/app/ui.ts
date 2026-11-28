@@ -26,7 +26,7 @@ export class UI {
  private riverState='';
  private lakeState='';
  private localSceneryState='';
- constructor(t:Terrain,input:Input,private actions:{start:(i:number)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES,
+ constructor(t:Terrain,input:Input,private actions:{start:(i:number,trustedBegin?:boolean)=>void;resume:()=>void;view:()=>void;sound:()=>void;pause:()=>void;restart:()=>void;engineState:()=>{out:boolean;airborne:boolean};practiceFailure:(out:boolean)=>void;chooseDeparture?:(i:number)=>void;modeChanged?:(from:Mode,to:Mode)=>void;},private readonly sites:readonly Site[]=SITES,
   private readonly scenerySource:{search:string;url:string;reloadFallback?:Readonly<Record<string,string>>}
     ={search:location.search,url:location.href}) {
   this.terrain=t;this.input=input;
@@ -102,7 +102,7 @@ export class UI {
   $('site').onchange=()=>{const next=Number(($('site') as HTMLSelectElement).value);
    if(next!==this.selected)this.setDispatchWoodland('other');
    this.selected=next;this.actions.chooseDeparture?.(this.selected);this.showSite();};
-  $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
+  $('start').onclick=e=>this.actions.start(this.selected,e.isTrusted);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
    location.assign(switchBasinHeadDispatchURL(this.scenerySource.url,!basin.selected,reopenRoute()));
   };
