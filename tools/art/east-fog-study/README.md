@@ -194,3 +194,25 @@ as a fixed ground mark.
 ```sh
 node --experimental-strip-types --test test/east-fog-secondary-lod.test.ts
 ```
+
+## The towerward opening in the dated rear wall
+
+The [towerward sash](east-fog-towerward-sash.ts) models the opening nearest
+the seam with the low wing. It is the third opening accounted for in this
+study, and the **first** in order from the tower. The 2009 and 2023 rear
+views place its center at roughly 0.132 and 0.122 of the high wall length;
+the authored choice is 0.127. Width, thickness and casing color are
+interpretations. The pale 2023 surrounds do not verify a current red finish.
+
+The [dated rear ensemble](east-fog-dated-rear-ensemble.ts) appends this
+sash without moving or recoloring either of the previously tested
+windows, the cornice or the host shell. The association holds for this
+one rear face only. No doorway, north-side or modern whole-façade claim
+is implied. At the existing simulated sun, each ray through the added
+sash also intersects the opaque high shell. Other sun and renderer
+conditions, near/middle handoff and an actual new moving comparison
+remain outside this source-only checkpoint.
+
+```sh
+node --experimental-strip-types --test test/east-fog-{towerward-sash,dated-rear-ensemble}.test.ts
+```
