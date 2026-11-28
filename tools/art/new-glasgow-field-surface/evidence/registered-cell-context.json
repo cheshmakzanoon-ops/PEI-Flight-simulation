@@ -1,0 +1,41 @@
+{
+  "nominalEPSG3979AreaM2": 2914.339112840593,
+  "soil": {
+    "sourceSHA256": "7a757965cfa94f7ff15e0d13f6657b51a7eb165169c2e4a0b01a7a33bd4cc2e0",
+    "hits": [
+      {
+        "areaM2": 2914.3391,
+        "fraction": 0.999999999994887,
+        "attributes": {
+          "objectid": 56216,
+          "mapunitnom": "Ch/DD",
+          "soil_code1": "CTW",
+          "modifier1": "D",
+          "extent1": "100",
+          "draintype": "Well",
+          "date": "19880301"
+        }
+      }
+    ]
+  },
+  "clui": {
+    "sourceSHA256": "83b7ab3082f9e05a70077a8a6bb46ac8d61e330464f064e62f42f611e5bc5cae",
+    "hits": [
+      {
+        "areaM2": 2914.3391,
+        "fraction": 0.999999999994887,
+        "attributes": {
+          "objectid": 52521,
+          "landuse": "AGR",
+          "subuse": " ",
+          "covertype": " ",
+          "height": 0.0,
+          "crown": 0.0,
+          "year_": "2020",
+          "cover": " ",
+          "county": "QUEENS"
+        }
+      }
+    ]
+  }
+}

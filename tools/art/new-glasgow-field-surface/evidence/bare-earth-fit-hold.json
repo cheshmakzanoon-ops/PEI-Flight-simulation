@@ -1,0 +1,78 @@
+{
+  "scope": "verified transferred dated DEM and positioned role reads only, not a full datum/source comparison",
+  "role": "A",
+  "state": "HOLD",
+  "modelFamily": "fixed-XZ-six-term-v1 + fixed 3m-15m smoothstep",
+  "rawAddressManifest": "446a3235ab42b0128ed60b8f83891c7ff2ddec894a9b2ace2d072670b0812be0",
+  "calibration": "same nominal CGVD2013 + renderer .12m, no fitted datum",
+  "openedOnlyOwnRole": true,
+  "byteAddressRoleContentsDigest": "bb3bcd532eac7209863e1f0c7f19f8c0c4ca33d69a4cca11559b19138f2be682",
+  "otherRolesOpened": false,
+  "count": {
+    "blocks": 21,
+    "samples": 647,
+    "blockHalves": {
+      "0-0": 11,
+      "1-0": 9,
+      "1-1": 8,
+      "0-1": 10
+    }
+  },
+  "prelockedGates": {
+    "coreEnoughBlocks": true,
+    "visualGeomErrorImprovesBoth": true,
+    "renderP90Sufficient": false,
+    "shapeSeparatesFromAffine": false,
+    "meaningfulPhysicalArea": true,
+    "notNearSurfaceFakery": false,
+    "smoothTaperSlope": false,
+    "candidatePhysicalSlope": false,
+    "realBothProjectionPotential": true
+  },
+  "fitDiagnostics": {
+    "coreIndependentBlocks": 15,
+    "coreSamples": 360,
+    "oldMAE": 0.7018144475362676,
+    "renderTaperMAE": 0.19543546576117254,
+    "improveM": 0.5063789817750951,
+    "improveRatio": 0.7215282950539814,
+    "renderP90": 0.5691073575467129,
+    "affineFitOnlyMAE": 0.08822221870816657,
+    "quadraticFitOnlyMAE": 0.0607614346253221,
+    "shapeImprovementM": 0.02746078408284447,
+    "shapePredictionsDiffAbsP90": 0.20144718988707666
+  },
+  "planNumerics": {
+    "areaAblationM2": 828.0,
+    "sampledAbsPeak": 1.3072655815792447,
+    "sampledDeltaSlopeMax": 0.20648697298297508,
+    "sampledCandidateSlopeMax": 0.28274777172276594,
+    "projections": [
+      {
+        "m": 446.8896703486468,
+        "pxP90": 2.378148554686771,
+        "projectedCount": 828
+      },
+      {
+        "m": 560.2670427494393,
+        "pxP90": 3.5285504624537705,
+        "projectedCount": 828
+      }
+    ]
+  },
+  "fit": {
+    "quadratic": [
+      57.50160952763126,
+      -1.948711853964023,
+      0.3584316689237704,
+      -0.014493358698447256,
+      -0.6152837776207666,
+      0.13197567932569676
+    ],
+    "affine": [
+      57.54319129911906,
+      -1.9929722825624008,
+      0.3811477383019781
+    ]
+  }
+}

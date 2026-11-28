@@ -1,0 +1,101 @@
+{
+  "prelockSHA256": "4166617f1d39ffa2edb2a6c7af17316c1c662fa2fac85965416e5aacabda945f",
+  "sourceFiles": {
+    "92836/84915": {
+      "bytes": 8841,
+      "sha256": "fd4de8616e63fee29d835fc95af28c3cf505aed448b8f3d9421adce39f2e45d7",
+      "uri": "https://tiles.arcgis.com/tiles/fRRBCludvuolCm5B/arcgis/rest/services/Ortho_2020_3857/MapServer/tile/18/92836/84915"
+    }
+  },
+  "results": [
+    {
+      "checkerHalf": 0,
+      "observedPixelCenters": 5300,
+      "displayLumaP10_50_90": [
+        144.1886,
+        151.396,
+        156.396
+      ],
+      "bands": [
+        {
+          "bandMetres": [
+            1.25,
+            3.0
+          ],
+          "P90MinusP10Relative": 0.020806590315125873,
+          "gradientEastNorth": [
+            0.31169705097998296,
+            0.31872063211388957
+          ]
+        },
+        {
+          "bandMetres": [
+            3.0,
+            6.0
+          ],
+          "P90MinusP10Relative": 0.011854394609572855,
+          "gradientEastNorth": [
+            0.07246846599617059,
+            0.07198905413984824
+          ]
+        },
+        {
+          "bandMetres": [
+            6.0,
+            11.0
+          ],
+          "P90MinusP10Relative": 0.013287765521926941,
+          "gradientEastNorth": [
+            0.0392229695652614,
+            0.03311954570550275
+          ]
+        }
+      ]
+    },
+    {
+      "checkerHalf": 1,
+      "observedPixelCenters": 5305,
+      "displayLumaP10_50_90": [
+        144.333,
+        151.686,
+        156.396
+      ],
+      "bands": [
+        {
+          "bandMetres": [
+            1.25,
+            3.0
+          ],
+          "P90MinusP10Relative": 0.01976544255439037,
+          "gradientEastNorth": [
+            0.28493252080357095,
+            0.3335617459542185
+          ]
+        },
+        {
+          "bandMetres": [
+            3.0,
+            6.0
+          ],
+          "P90MinusP10Relative": 0.011512367466296906,
+          "gradientEastNorth": [
+            0.07101517008896964,
+            0.07536249013994337
+          ]
+        },
+        {
+          "bandMetres": [
+            6.0,
+            11.0
+          ],
+          "P90MinusP10Relative": 0.013561079992177942,
+          "gradientEastNorth": [
+            0.03936222896989878,
+            0.03373429230487334
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "One 2020 image; crops, paths, bare soil exposure and current colours cannot be inferred. All game texture remains independently authored."
+}

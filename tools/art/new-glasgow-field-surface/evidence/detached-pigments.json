@@ -1,0 +1,106 @@
+{
+  "scope": "Same-object isolated analytic dry ground with exact submitted P,N,UV,EBO and actual unchanged camera. Does not replay root full scene, source fog companion, or prove actual full scene comparison of this candidate. Real stock native markers independently qualify spatial support.",
+  "sourceMode": "additional authored pigment only, no image modification, no slope, no shader handoff installed",
+  "actualOldReceiptSHA256": "5d8089b827c0f0911b97f9417b56162f2de4c63f0d0b6a4c6889032e8cfdca97",
+  "raster": [
+    4,
+    8,
+    24
+  ],
+  "art": {
+    "dims": 128,
+    "sha256": "dbd87dc1e7ae3df088e46f03d3bd50147f93b43e6c9704e64477735885af85f4",
+    "audit": [
+      0.022,
+      0.019,
+      0.032
+    ]
+  },
+  "newGpuTexelsBytes": 43690,
+  "reachedTextureReads": 1,
+  "meshUnchanged": true,
+  "drawCount": 1,
+  "baselineAsReproducedFrom": "r187 source-level standard dry interior with mature exact resident packed q13-13 Sentinel tile and unchanged Meadow; no scene compositing",
+  "samples": [
+    {
+      "id": 0,
+      "m": 445.7560631557211,
+      "actualGroundFirstHit": 3309,
+      "renderCandidateDomain": 2022,
+      "changedAny": 1046,
+      "strongRgb": 0,
+      "maxRgb": 2,
+      "alphaDelta": 0,
+      "exteriorEGL": 0,
+      "exteriorAgainstActualOldRole": 0,
+      "actualNativeRoleTightPass": true,
+      "gainZeroExact": true,
+      "restoreExact": true,
+      "oldReferenceMatchedPureCore": 1716,
+      "medYShiftCodes": 0.0,
+      "meanYShiftCodes": 0.00241864801864798,
+      "p99AbsYShift": 1.0000000000000284,
+      "p90RelativeAbsY": 0.01311787060396765,
+      "exactCrop": [
+        634,
+        391,
+        881,
+        505
+      ],
+      "contextMedianY": 74.27,
+      "EGLMedianY": 74.27,
+      "contextBaselineAbsP90Code": 0.0,
+      "opticsNonNoiseEffectRMS": 0.33565375943483977
+    },
+    {
+      "id": 1,
+      "m": 563.1018792472597,
+      "actualGroundFirstHit": 11112,
+      "renderCandidateDomain": 7353,
+      "changedAny": 5387,
+      "strongRgb": 730,
+      "maxRgb": 6,
+      "alphaDelta": 0,
+      "exteriorEGL": 0,
+      "exteriorAgainstActualOldRole": 0,
+      "actualNativeRoleTightPass": true,
+      "gainZeroExact": true,
+      "restoreExact": true,
+      "oldReferenceMatchedPureCore": 6819,
+      "medYShiftCodes": 0.0,
+      "meanYShiftCodes": -0.008933597301657124,
+      "p99AbsYShift": 3.212600000000009,
+      "p90RelativeAbsY": 0.029390050654775596,
+      "exactCrop": [
+        683,
+        450,
+        1015,
+        609
+      ],
+      "contextMedianY": 73.4104,
+      "EGLMedianY": 73.4104,
+      "contextBaselineAbsP90Code": 0.0,
+      "opticsNonNoiseEffectRMS": 1.1415922244556465
+    },
+    {
+      "id": 2,
+      "m": 861.4191275154616,
+      "actualGroundFirstHit": 0,
+      "renderCandidateDomain": 0,
+      "changedAny": 0,
+      "strongRgb": 0,
+      "maxRgb": 0,
+      "alphaDelta": 0,
+      "exteriorEGL": 0,
+      "exteriorAgainstActualOldRole": 0,
+      "actualNativeRoleTightPass": true,
+      "gainZeroExact": true,
+      "restoreExact": true,
+      "oldReferenceMatchedPureCore": 0,
+      "medYShiftCodes": null,
+      "meanYShiftCodes": null,
+      "p99AbsYShift": null,
+      "p90RelativeAbsY": null
+    }
+  ]
+}

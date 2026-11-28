@@ -1,0 +1,46 @@
+{
+  "scope": "Original native stock N112 cover only, no change to terrain/material/physics.",
+  "nativeReceiptSHA256": "5d8089b827c0f0911b97f9417b56162f2de4c63f0d0b6a4c6889032e8cfdca97",
+  "windows": [
+    {
+      "travelM": 445.7560631557211,
+      "visibleOriginalGroundRolePixels": 3309,
+      "pureRolePixels": 3308,
+      "conservativeOriginalSupportPixels": 3730,
+      "alphaDelta": 0,
+      "outside": 0,
+      "identicalNeutralAndRollback": true,
+      "maxClipW64": 384.06681545713695,
+      "maxClipW32": 384.0667724609375,
+      "indexSliceSHA256": "ef8cc21541eda3da644eda3320d3c9a01c58a5371087eef4f5280d4ff30226a3",
+      "pass": true
+    },
+    {
+      "travelM": 563.1018792472597,
+      "visibleOriginalGroundRolePixels": 11112,
+      "pureRolePixels": 11112,
+      "conservativeOriginalSupportPixels": 11790,
+      "alphaDelta": 0,
+      "outside": 0,
+      "identicalNeutralAndRollback": true,
+      "maxClipW64": 267.48551178631624,
+      "maxClipW32": 267.4849853515625,
+      "indexSliceSHA256": "ef8cc21541eda3da644eda3320d3c9a01c58a5371087eef4f5280d4ff30226a3",
+      "pass": true
+    },
+    {
+      "travelM": 861.4191275154616,
+      "visibleOriginalGroundRolePixels": 0,
+      "pureRolePixels": 0,
+      "conservativeOriginalSupportPixels": 0,
+      "alphaDelta": 0,
+      "outside": 0,
+      "identicalNeutralAndRollback": true,
+      "maxClipW64": -28.79615586791124,
+      "maxClipW32": -28.794921875,
+      "indexSliceSHA256": "ef8cc21541eda3da644eda3320d3c9a01c58a5371087eef4f5280d4ff30226a3",
+      "pass": true
+    }
+  ],
+  "pass": true
+}
