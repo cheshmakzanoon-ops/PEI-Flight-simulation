@@ -1,0 +1,176 @@
+{
+  "state": "HOLD Prince grain-corn receiver: stock final RGB resolves non-integer in both positives; no change made.",
+  "unmodifiedStockAttempt": {
+    "nativeReceiptSHA256": "d6045691db977394c5edf912f0d46e22f09e08645292c123ac152663d4844e93",
+    "windowsCaptured": 0,
+    "distanceBeforeTimeoutM": 2514.0269441127366,
+    "state": "HOLD TimeoutError('Page.wait_for_function: Timeout 35000ms exceeded.')"
+  },
+  "separateViewportAttempt": {
+    "nativeReceiptSHA256": "e4b87c1833fe617b238a33d51329e1a43cae1cd02719078bbea014417bacee09",
+    "prelockSHA256": "950cf7fb3a06616ca8fd037c1b7fcec2fc42a0b1808efa939d9c58a654cfdc40",
+    "fullViewCondition": "native 1200x760, DPR 1, 4x, original canvas and WebGL context",
+    "firstFullResolutionAfterResizeDistancesM": [
+      3027.495873093,
+      3039.9510582649455,
+      3053.5385611714237
+    ],
+    "positiveSamples": [
+      {
+        "distanceM": 3409.0879318026423,
+        "actualUnchangedNativeOwner": "7-11",
+        "sampleAudit": {
+          "state": "HOLD nonconforming native sample evidence",
+          "markedSampleHistogram0to4": [
+            867557,
+            88,
+            61,
+            97,
+            44055
+          ],
+          "unquantizedPixels": 142,
+          "nativeAlphaChanges": 0,
+          "changedZeroCasePixels": 0,
+          "nonliteralFullCasePixels": 17,
+          "unquantizedComponents": [
+            {
+              "pixels": 75,
+              "boxXYXY": [
+                590,
+                391,
+                617,
+                398
+              ]
+            },
+            {
+              "pixels": 67,
+              "boxXYXY": [
+                573,
+                410,
+                582,
+                421
+              ]
+            }
+          ],
+          "fractionalDiagnosticOnly": {
+            "minMaxProjectedSamples": [
+              0.8570617297972628,
+              3.9703560679198135
+            ],
+            "codeResidualP90": 0.6927915649194546
+          },
+          "frameSHA256": [
+            "51733301b1a0f134ec6acc71be160084ae889659f4970ffc31030324dfc35f95",
+            "e905a56d6e0fde9fbbc159c0c9657b133f73f4728598a9809fbd7bb95d6ebc4f",
+            "acc4426a83fe79cc44770d427401ce413fd5f68d132513383ab133d3c6e88038"
+          ]
+        }
+      },
+      {
+        "distanceM": 3461.7424177314233,
+        "actualUnchangedNativeOwner": "7-11",
+        "sampleAudit": {
+          "state": "HOLD nonconforming native sample evidence",
+          "markedSampleHistogram0to4": [
+            856237,
+            133,
+            88,
+            141,
+            55217
+          ],
+          "unquantizedPixels": 184,
+          "nativeAlphaChanges": 0,
+          "changedZeroCasePixels": 0,
+          "nonliteralFullCasePixels": 22,
+          "unquantizedComponents": [
+            {
+              "pixels": 91,
+              "boxXYXY": [
+                574,
+                410,
+                582,
+                432
+              ]
+            },
+            {
+              "pixels": 82,
+              "boxXYXY": [
+                589,
+                391,
+                617,
+                398
+              ]
+            },
+            {
+              "pixels": 11,
+              "boxXYXY": [
+                625,
+                410,
+                631,
+                412
+              ]
+            }
+          ],
+          "fractionalDiagnosticOnly": {
+            "minMaxProjectedSamples": [
+              0.9054460787097507,
+              3.9703560679198135
+            ],
+            "codeResidualP90": 0.6893558218335387
+          },
+          "frameSHA256": [
+            "a52d36d9c5fce260f1f97e66c81ed75fb6158ee0117c3353a2656accf9287725",
+            "4be2437b2328e251691298928c5ee6f16008049b3efc71c5e703730c9fe89475",
+            "ecfca28d2abd912cb57eec2c1d9b22181bdc06fa5ad2b829e5dc1912337a4acb"
+          ]
+        }
+      }
+    ],
+    "late": {
+      "distanceM": 4629.845802733844,
+      "nativeAlphaAndRgbAllExactOriginal": true,
+      "upperConservativeSignedSupportEyeWIncludingReserve": -417.40177449887994,
+      "sameOriginalNearNativeDraw": true,
+      "originalStockPngDigest": "ac97e191a325099f00c6ce8ca131f8b77f2f6ea139e2e08c6f8d46728b357581"
+    }
+  },
+  "sourceGeometricDiagnosis": "Refused components fit the original propeller shutter disc projection. Actual GL contributing draw not identified.",
+  "candidateCutNotAdmitted": {
+    "status": "HOLD prospective disjoint region too sparse; no new native proof",
+    "minimumOriginalNonzeroFraction": 0.8,
+    "cellCentresIn": 4134,
+    "removedWholeTexels": 1059,
+    "retained": 3075,
+    "retainedFraction": 0.7438316400580551,
+    "bothPhysicalPhaseForecasts": [
+      {
+        "travelM": 3409.0879318026423,
+        "wholeNativeRoleCellsPossiblyIntersecting": 1045,
+        "expandedStaticPropRectXYXY": [
+          565.2260642409035,
+          383.11464105637646,
+          640.0144823571391,
+          456.5360579690337
+        ]
+      },
+      {
+        "travelM": 3461.7424177314233,
+        "wholeNativeRoleCellsPossiblyIntersecting": 984,
+        "expandedStaticPropRectXYXY": [
+          565.1932970702359,
+          383.01378955498933,
+          639.8132532108349,
+          456.27704374830375
+        ]
+      }
+    ],
+    "sourceRoleInputSha": "75878a8ebc571ad109d066c9f6e9531113365e2089e92248dbe74b0e9dd704cc",
+    "subsetShaNoAdoption": "e64e140fbea38833cf8c920d04cfd93bd21c52513230d2d9c8e9717c19731f77"
+  },
+  "publicImageOriginalUnscaledCropXYXY": [
+    558,
+    379,
+    648,
+    445
+  ]
+}

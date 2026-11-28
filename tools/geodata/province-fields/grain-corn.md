@@ -54,3 +54,8 @@ A separate [offline canopy atlas bake](../../art/grain-corn-atlas/)
 turns two authored stands into verified linear colour, coverage, and
 associated depth pages. It is an art source tool, not an enabled
 flight-distance renderer or a change to the real field.
+
+The [Prince County native receiver check](../../../docs/qa/grain-corn/prince-grain-corn-hold.md)
+is held. It reached both full-resolution positive views and the exact
+late control, but the original near-aircraft composition prevented
+unambiguous native sample ownership in the two positives.
