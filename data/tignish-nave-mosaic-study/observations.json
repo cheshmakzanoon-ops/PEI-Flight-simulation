@@ -291,7 +291,7 @@
     "bareGroundWindowTiffSHA256": "0823bd2e6792c3cdf0f2493990e5bc8b7fef39ac7486b6e1e2f290069f4a2c93"
   },
   "nativeReturns": {
-    "scope": "Exact same July–September 2020 acquisition, newly held horizontal masks; repeatable diagnostics not a survey, not current site.",
+    "scope": "Same exact tile in the published PEI 2020 collection as the prior fit; new spatial holdout masks. GPS week-time cannot establish a calendar date. Not a new survey or current site.",
     "sourceSHA256": "09eda22dfaf066c630c39d268007f97fbc5ba6e962c93e35b71c800d7590b686",
     "CRS": "EPSG:2961 raw horizontal; transformed into the frozen local UV basis; original orthometric Z",
     "results": {
@@ -492,7 +492,7 @@
     },
     "prelockSHA256": "c10e908497b1a04e2fc50eef33f9ea2fa3e82434b6ee0bf5e27365652d18e634",
     "tighteningSHA256": "fb2cc8913e70d764c3bc73e37f14bfd28b7817e78e95305c8f729e6cecb1e2cb",
-    "source": {"asset": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_321000_767000.copc.laz", "tile": "pei_2020_321000_767000", "provider": "Government of Prince Edward Island", "length": 69119327, "etag": "044bef1d399373f9938f83f620da7645-9", "return": "unique XY and laser pulse, native classified building, first return", "sameAcquisition": true},
+    "source": {"asset": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_321000_767000.copc.laz", "tile": "pei_2020_321000_767000", "provider": "Government of Prince Edward Island", "length": 69119327, "etag": "044bef1d399373f9938f83f620da7645-9", "return": "unique XY and laser pulse, native classified building, first return", "sameSourceTileAsPriorFit": true},
     "croppedSourceReturnCount": 100124,
     "cropHalfSpanMetres": 55
   }

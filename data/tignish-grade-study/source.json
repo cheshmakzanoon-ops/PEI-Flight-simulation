@@ -1,0 +1,111 @@
+{
+  "scope": "Detached surveyed grade samples surrounding Tignish church; no building foundation or terrain/contact install.",
+  "collection": "CanElevation, Prince Edward Island 2020 collection; the native source uses GPS week-time and does not itself resolve the calendar week.",
+  "source": {
+    "bareEarth": "https://canelevation-dem.s3.ca-central-1.amazonaws.com/hrdem-mosaic-1m/10_3-mosaic-1m-dtm.tif",
+    "eTag": "eb6a8f985dbf26b24d503d1502ce589b-2727",
+    "nativeControl": "https://canelevation-lidar-point-clouds.s3.ca-central-1.amazonaws.com/pointclouds_nuagespoints/PEI/Prince_Edward_Island_2020/pei_2020_321000_767000.copc.laz",
+    "nativeControlETag": "044bef1d399373f9938f83f620da7645-9",
+    "nativeSourceSHA256": "09eda22dfaf066c630c39d268007f97fbc5ba6e962c93e35b71c800d7590b686",
+    "license": "https://open.canada.ca/en/open-government-licence-canada",
+    "archived256mCropTiffSHA256": "0823bd2e6792c3cdf0f2493990e5bc8b7fef39ac7486b6e1e2f290069f4a2c93",
+    "archived256mCropNorthWestEdgeEPSG3979": [
+      2284018,
+      338897
+    ]
+  },
+  "registration": {
+    "lattice": "EPSG:3979, north-first 1m with samples at each cell centre",
+    "heightDatum": "CGVD2013 metres",
+    "width": 96,
+    "height": 96,
+    "northWestPixelEdge": [
+      2284098,
+      338817
+    ],
+    "worldXZAtFirstSample": [
+      -64174.409261538094,
+      -50513.956572702205
+    ],
+    "worldXZForColumn": [
+      0.8838188922748154,
+      0.4638614881371395
+    ],
+    "worldXZForRow": [
+      -0.4678056080084889,
+      0.876367319204727
+    ],
+    "maxLocalRegistrationM": 0.00043391151570086785
+  },
+  "height": {
+    "file": "grade.f32.gz",
+    "storedSHA256": "d97e332510d09ea68224f90b0eba5122cee91563dfe672b0337de637bef03367",
+    "decodedSHA256": "e6ec7f8f6e349c66e9df531cdc1aaeaa7ee8005bf901e7cc341e46f1f8638af9",
+    "bytes": 36864
+  },
+  "checkRows": {
+    "file": "grade-first-returns.f32.gz",
+    "storedSHA256": "6bb9b360d0049cd310b7f3a6a4e92dacc2002172a61ec03351ab04934743cd5d",
+    "decodedSHA256": "1d29c6ed965c7329a77f8410c8a608186a3e2ff8fa79c530728827f0fbf469f4",
+    "bytes": 15492
+  },
+  "checkOrder": [
+    "east outer lawn",
+    "south outer verge",
+    "west outer lawn"
+  ],
+  "pointFilters": "Distinct native unflagged Class 2 first ground returns, unique horizontal pair and GPS pulse value; no numeric-height filtering.",
+  "checks": {
+    "east outer lawn": {
+      "first": 440,
+      "signedMedian": 9.983441850636154e-05,
+      "p90Abs": 0.013497230435677923,
+      "maxAbs": 0.03137155132571934
+    },
+    "south outer verge": {
+      "first": 406,
+      "signedMedian": -0.001766101169778267,
+      "p90Abs": 0.01508788682622253,
+      "maxAbs": 0.03969080961542204
+    },
+    "west outer lawn": {
+      "first": 445,
+      "signedMedian": 0.002159511834179284,
+      "p90Abs": 0.018006835478445286,
+      "maxAbs": 0.04655738589644898
+    }
+  },
+  "controlWindowsUVMetres": {
+    "east outer lawn": {
+      "u": [
+        28,
+        36
+      ],
+      "v": [
+        -7,
+        8
+      ]
+    },
+    "south outer verge": {
+      "u": [
+        -13,
+        12
+      ],
+      "v": [
+        -21,
+        -16
+      ]
+    },
+    "west outer lawn": {
+      "u": [
+        -25.1,
+        -19.5
+      ],
+      "v": [
+        -9,
+        10
+      ]
+    }
+  },
+  "controlFrame": "The existing Tignish nave recipe local UV frame; these are distinct new test windows, not the original site-seating controls."
+}

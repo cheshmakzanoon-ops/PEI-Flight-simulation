@@ -14,7 +14,7 @@ const sha=(d:Buffer)=>createHash('sha256').update(d).digest('hex');
 
 test('calibration is recovered from 182 non-overlapping earlier rows, not tuned in either new strip',()=>{
  assert.equal(sha(raw),g.basis.digestOfFrozenRoof);
- assert.equal(sha(file('data/tignish-nave-mosaic-study/observations.json')),'f550e074bdc72afc31439b0ce80ae455a32ded43820030bc99d2b01c947374cc');
+ assert.equal(sha(file('data/tignish-nave-mosaic-study/observations.json')),'c08ea096bb235d3b12ad3d0ddee0eb7bd50d7b2e6ef52af61f2a101b6f84b158');
  assert.equal(g.calibration.length,g.basis.comparisonAnchorCount);assert.equal(g.calibration.length,182);
  assert.deepEqual(g.source.sampling.geotransform,[2284018,1,0,338897,0,-1]);
  assert.deepEqual(g.source.sampling.parentOffset,[284018,161103]);

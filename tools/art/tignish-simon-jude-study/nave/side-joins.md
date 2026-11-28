@@ -15,8 +15,9 @@ crown, shoulders, tower, spire, exterior wall and grade gaps remain open.
 The [source and comparison records](../../../../data/tignish-nave-mosaic-study/observations.json)
 identify the exact [Natural Resources Canada CanElevation](https://open.canada.ca/data/en/dataset/7069387e-9986-4297-9f55-0288e9676947)
 point cloud, data coordinate bases and raw first-return method. Checks
-used new, frozen horizontal windows in the **same 2020 acquisition**,
-not a separate survey or present-day verification. Only unique
+used new, frozen horizontal windows in the **same tile from the PEI
+2020 collection** as the earlier fit. Its GPS-week values do not date
+individual returns. This was not a separate survey or present-day verification. Only unique
 classified building first returns were counted. The mesh comparison
 uses the source orthometric heights directly, without a height offset.
 
