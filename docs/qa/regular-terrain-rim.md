@@ -1,6 +1,6 @@
 # Close two exposed terrain rims
 
-The separately verified [northwest four-vertex rim closure](west2-terrain-rim.md) does not expand these two eastern draw scopes.
+The separately verified [northwest four-vertex rim closure](west2-terrain-rim.md) does not expand these two eastern draw scopes. The [southeast four-vertex rim closure](south21-terrain-rim.md) has its own signed owner pair and render checks.
 
 Two near-terrain seams could show dotted sky through the fields. The
 original renderer placed each tile from its own centre; Float32 rounding

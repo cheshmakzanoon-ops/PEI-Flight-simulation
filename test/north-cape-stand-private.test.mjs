@@ -47,7 +47,7 @@ test('all known scenery predicates see exact stock options with editor key, veto
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
  assert(main.includes("if(datedCapeStand.requested&&directionalCanopy&&capeMode==='ordinary')"));
 });
-test('the actual frame submits once, restoring the Cape, both terrain leases and shoreline in both paint paths',()=>{
+test('the actual frame submits once, restoring the Cape, all terrain leases and shoreline in both paint paths',()=>{
  const main=R(new URL('../src/main.ts',import.meta.url),'utf8');
  const dispatch='const submitWorld=';
  const frame='const rE=new THREE.Euler';
@@ -60,7 +60,7 @@ test('the actual frame submits once, restoring the Cape, both terrain leases and
  const body=main.slice(main.indexOf(dispatch),main.indexOf(frame))+main.slice(main.indexOf(start),main.indexOf(boundary));
  assert(body.length>0);
  const script=new Script(ts.transpile('(()=>{'+body+'})()', {target:ts.ScriptTarget.ES2022}));
- const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready')=>{
+ const paint=(cape,failAt,industrial=false,river=false,dune=false,lake=false,field=false,quay,west='ready',south='ready')=>{
   const calls=[],error=new Error(failAt),route=field?'kings-sand-dunes':
    quay==='foreign'?'seacow-head-coast':quay?'harbour-low':'northcape-wind-low';
   const scope={scene:{},camera:{position:{x:quay==='distant'?3000:5950,y:120,z:29811}},SITES:[{id:route}],
@@ -96,6 +96,12 @@ test('the actual frame submits once, restoring the Cape, both terrain leases and
     if(west==='refused'){calls.push('refuse west2');return;}
     return begin('west2');
    },
+   beginSouth21RimDraw:c=>{
+    assert.equal(c,scope.camera);
+    if(south==='refused'){calls.push('refuse south21');return;}
+    const restore=begin('south21');
+    return ()=>{restore();if(failAt==='close south21')throw error;};
+   },
   };
   scope.datedStandReview=cape?{
    beforeFrame:p=>{assert.equal(p.site,'northcape-wind-low');assert.equal(p.mode,'flight');return begin('cape');},
@@ -108,13 +114,14 @@ test('the actual frame submits once, restoring the Cape, both terrain leases and
    assert.equal(scene,scope.scene);assert.equal(camera,scope.camera);calls.push('render');
    if(failAt==='render')throw error;
   }};
-  if(['prince','rim','borden','west2','render','quay'].includes(failAt))assert.throws(()=>script.runInNewContext(scope),e=>e===error);
+  if(['prince','rim','borden','west2','south21','close south21','render','quay'].includes(failAt))assert.throws(()=>script.runInNewContext(scope),e=>e===error);
   else script.runInNewContext(scope);
   if(quay)assert.equal(scope.quayAdmitted,quay!=='refused'&&quay!=='foreign');
   return calls;
  };
  const lead=['begin ridge','begin prince'],tail=['end prince','end ridge'];
- const submit=['begin west2','render','end west2'];
+ const southSubmit=['begin south21','render','end south21'];
+ const submit=['begin west2',...southSubmit,'end west2'];
  const wholePaint=['begin rim','begin borden',...submit,'end borden','end rim'];
  for(const failAt of [undefined,'render']){
   assert.deepEqual(paint(false,failAt),[...lead,...wholePaint,...tail]);
@@ -152,8 +159,16 @@ test('the actual frame submits once, restoring the Cape, both terrain leases and
   const l=[...lead,...opener,'begin rim','begin borden'];
   const t=['end borden','end rim',...closer,...tail];
   for(const failAt of [undefined,'render'])assert.deepEqual(
-   paint(cape,failAt,false,false,false,false,false,undefined,'refused'),[...l,'refuse west2','render',...t]);
+   paint(cape,failAt,false,false,false,false,false,undefined,'refused'),[...l,'refuse west2',...southSubmit,...t]);
   assert.deepEqual(paint(cape,'west2'),[...l,'begin west2',...t]);
+  for(const failAt of [undefined,'render']){
+   assert.deepEqual(paint(cape,failAt,false,false,false,false,false,undefined,'ready','refused'),
+    [...l,'begin west2','refuse south21','render','end west2',...t]);
+   assert.deepEqual(paint(cape,failAt,false,false,false,false,false,undefined,'refused','refused'),
+    [...l,'refuse west2','refuse south21','render',...t]);
+  }
+  assert.deepEqual(paint(cape,'south21'),[...l,'begin west2','begin south21','end west2',...t]);
+  assert.deepEqual(paint(cape,'close south21'),[...l,...submit,...t]);
  }
 });
 test('angle, distance and lower-lens tapers exactly preserve full passed poses and exact overhead/far/near stock',()=>{

@@ -1,0 +1,313 @@
+{
+  "status": "Actual detached fixed 4\u00d7/0\u00d7 controls and separate ordinary compiled flight complete.",
+  "base": "4ba4f2c20dbca1d92a428c95bb5eb0cb04585c51",
+  "expectedHostSHA256": "3033c376a8ad9d99a4498464a42b77fdc3a6b0a0ff1245fc4a6791b9ccf09ab9",
+  "detachedPatchSHA256": "3ddbe7b8a0474c27fa83bfaebc0c651ddfe1b9433a8c1fe736a3ffb32cd4d4dd",
+  "ordinaryProposalPatchSHA256": "1bb2133c78d59187464610c211fac0c1c70e76b397b400d71bb5e91ea985a317",
+  "receiverWorldHook": "beginSouth21RimDraw",
+  "originalNativeSnapshotSHA256": "6a63b7821ff6215a1650288c14e7bf88de6e02e6654160e673f8e35c5a9b59f3",
+  "portablePrimaryReceiptSHA256": "6a63b7821ff6215a1650288c14e7bf88de6e02e6654160e673f8e35c5a9b59f3",
+  "fourVertexIDs": [
+    37,
+    38,
+    39,
+    40
+  ],
+  "unchangedDonor": "24-20",
+  "activeActor": "24-21",
+  "oldPackedZ": 56388.98828125,
+  "pairedPackedZ": 56388.984375,
+  "sourceReceiptSHA256": "f9d13817aa4e7483c2375c9aa76972fe95ba28f795676d6cf1803265cb2dc76a",
+  "positiveVetoesComplete": {
+    "south21": {
+      "pairedSkyBeforeAfter": [
+        209,
+        0
+      ],
+      "strongChangedOldSkyOnly": 209,
+      "maxPreviouslyOpaqueRgbStep": 1,
+      "boundsPreserved": true,
+      "contactSamplesExact": 50,
+      "arraysUnchanged": true,
+      "twoNativeOwners": [
+        "24-20",
+        "24-21"
+      ],
+      "actualSubmitted": [
+        "24-21"
+      ],
+      "fullNativeSamples": 4
+    },
+    "south21-reciprocal": {
+      "pairedSkyBeforeAfter": [
+        159,
+        18
+      ],
+      "strongChangedOldSkyOnly": 141,
+      "maxPreviouslyOpaqueRgbStep": 1,
+      "boundsPreserved": true,
+      "contactSamplesExact": 50,
+      "arraysUnchanged": true,
+      "twoNativeOwners": [
+        "24-20",
+        "24-21"
+      ],
+      "actualSubmitted": [
+        "24-21"
+      ],
+      "fullNativeSamples": 4
+    },
+    "south21-outside": {
+      "pairedSkyBeforeAfter": [
+        79,
+        79
+      ],
+      "strongChangedOldSkyOnly": 0,
+      "maxPreviouslyOpaqueRgbStep": 0,
+      "boundsPreserved": true,
+      "contactSamplesExact": 50,
+      "arraysUnchanged": true,
+      "twoNativeOwners": [
+        "24-20",
+        "24-21"
+      ],
+      "actualSubmitted": [
+        "24-21"
+      ],
+      "fullNativeSamples": 4
+    }
+  },
+  "encodedAndDecodedComparisonInputs": {
+    "south21-stock.png": {
+      "pngSHA256": "04fa646ba4b4f723c60bcc4a52b426690de2c4012175415908b8d13ee7bc4e6a",
+      "decodedRGBASHA256": "23b7a4dafb7401f0795481bdd8d7b55525f584f2c5669f94746c3b7ee87fbb06",
+      "fileBytes": 451839
+    },
+    "south21-trial.png": {
+      "pngSHA256": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172",
+      "decodedRGBASHA256": "e4a71a57c8bde51e9c0a3e3736ee4f877807d0155694eff7d06ab8763256f1c7",
+      "fileBytes": 450850
+    },
+    "south21-beforeA.png": {
+      "pngSHA256": "e368a1f47e3f82b25b55716419d8902aa36337a58e170c6bcb15ad8dfd1fea7a",
+      "decodedRGBASHA256": "1175a15f2689f094e18f54ef0954d90e2f5358e9876154522783abfe68793613",
+      "fileBytes": 451868
+    },
+    "south21-beforeB.png": {
+      "pngSHA256": "8e137d7596c7cc09a68da38ab309de7af877ae213767a02b602629f2093bb631",
+      "decodedRGBASHA256": "8eab5e1fcc97f82a3cceb1a205df327b4b62a252763eae7d64f10b873aa9c6be",
+      "fileBytes": 451874
+    },
+    "south21-afterA.png": {
+      "pngSHA256": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172",
+      "decodedRGBASHA256": "e4a71a57c8bde51e9c0a3e3736ee4f877807d0155694eff7d06ab8763256f1c7",
+      "fileBytes": 450850
+    },
+    "south21-afterB.png": {
+      "pngSHA256": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172",
+      "decodedRGBASHA256": "e4a71a57c8bde51e9c0a3e3736ee4f877807d0155694eff7d06ab8763256f1c7",
+      "fileBytes": 450850
+    },
+    "south21-reciprocal-stock.png": {
+      "pngSHA256": "2866490aaaf12accf0468d50844a75866f4f917b9a408b6f12d112adcf4dc22b",
+      "decodedRGBASHA256": "6f2ac3fd55dd06eea717f503420fb195d27a11f3932172432718f53f340eff37",
+      "fileBytes": 436062
+    },
+    "south21-reciprocal-trial.png": {
+      "pngSHA256": "61b0c8c28f05368bc0551e7a4535bebf1528fe3cebbe8dd21145a2104bea2513",
+      "decodedRGBASHA256": "25f152c89b86c3d3873fc1b32daa813afd22151d1f8998bb90b8f4e3303159ef",
+      "fileBytes": 435268
+    },
+    "south21-reciprocal-beforeA.png": {
+      "pngSHA256": "e08e6ebf415859185be47a11875d394d8699ba05cbebaf24e615893c6b893eb1",
+      "decodedRGBASHA256": "0773f50664b60d45045731b96fd892c203db7e0132d957bce1d40ad7e5f0ae11",
+      "fileBytes": 436025
+    },
+    "south21-reciprocal-beforeB.png": {
+      "pngSHA256": "c93c281a8e2212c8ace6a4a3df4b1f1589a82cdd44ca4e4deae0a55370b29299",
+      "decodedRGBASHA256": "4ff0af510d8cd73f5f62fb54605ab9c339275bd0e0037c3008e20ecb9566ba26",
+      "fileBytes": 436042
+    },
+    "south21-reciprocal-afterA.png": {
+      "pngSHA256": "bfeba5b8c8b707b1c2002a7a7a8bd65f16b731e347c24c1c0e87910f26d8ae0a",
+      "decodedRGBASHA256": "80eb8fdf0e1417e0d57ee3755d36848d3264592bce90807f59572200549d15a2",
+      "fileBytes": 435254
+    },
+    "south21-reciprocal-afterB.png": {
+      "pngSHA256": "0e1c18d2352c714f93eb8ca83fb2aa13c236b93ef5b1b76ee593d7efe3cb7f98",
+      "decodedRGBASHA256": "003be73a71b5dab96ad155d2aa3efcf98d1aedb763560630a43767301e9b7a27",
+      "fileBytes": 435258
+    },
+    "south21-outside-stock.png": {
+      "pngSHA256": "0539e2e51b1091210ea64503a86e52ff2f599c6bb8bc3b69d9a4039cb4aae6f5",
+      "decodedRGBASHA256": "6d681739ab814be5af7f8ee3ff289cf21fc9006bde1cf8f995afda902a7f682a",
+      "fileBytes": 559978
+    },
+    "south21-outside-trial.png": {
+      "pngSHA256": "0539e2e51b1091210ea64503a86e52ff2f599c6bb8bc3b69d9a4039cb4aae6f5",
+      "decodedRGBASHA256": "6d681739ab814be5af7f8ee3ff289cf21fc9006bde1cf8f995afda902a7f682a",
+      "fileBytes": 559978
+    },
+    "south21-outside-beforeA.png": {
+      "pngSHA256": "b1370d86a11a162a9f0822b8f4e1d5fc9c02de9f29447e2f1de4a4361921284f",
+      "decodedRGBASHA256": "353e95207c13372dbcbf8a558f31276aa38f1f131c8c9cb12addbf1617f5b5f9",
+      "fileBytes": 559967
+    },
+    "south21-outside-beforeB.png": {
+      "pngSHA256": "54049805bc07c11a8e638df88f6291d6beb3ce665a08b372895e06044651af46",
+      "decodedRGBASHA256": "6f8783889cd41a4b1a4b9faaa8ad4355b364be88cbfb390003799a88d9e3f783",
+      "fileBytes": 560014
+    },
+    "south21-outside-afterA.png": {
+      "pngSHA256": "b1370d86a11a162a9f0822b8f4e1d5fc9c02de9f29447e2f1de4a4361921284f",
+      "decodedRGBASHA256": "353e95207c13372dbcbf8a558f31276aa38f1f131c8c9cb12addbf1617f5b5f9",
+      "fileBytes": 559967
+    },
+    "south21-outside-afterB.png": {
+      "pngSHA256": "54049805bc07c11a8e638df88f6291d6beb3ce665a08b372895e06044651af46",
+      "decodedRGBASHA256": "6f8783889cd41a4b1a4b9faaa8ad4355b364be88cbfb390003799a88d9e3f783",
+      "fileBytes": 560014
+    },
+    "south21-mixed-stock.png": {
+      "pngSHA256": "b46f2df6377f85e5931fd4fc14ce0299e035b06b46be6076ea478b5b903b7600",
+      "decodedRGBASHA256": "5568ad41ef40d83fc29ba4d1dafd8826531c36939e2ab85f5478f3b410df8b3a",
+      "fileBytes": 728736
+    },
+    "south21-mixed-trial.png": {
+      "pngSHA256": "b46f2df6377f85e5931fd4fc14ce0299e035b06b46be6076ea478b5b903b7600",
+      "decodedRGBASHA256": "5568ad41ef40d83fc29ba4d1dafd8826531c36939e2ab85f5478f3b410df8b3a",
+      "fileBytes": 728736
+    },
+    "south21-mixed-beforeA.png": {
+      "pngSHA256": "730d6792e0d2796594d5339c0f689d4badf3d6a6855f733b5208548fee4a45cf",
+      "decodedRGBASHA256": "a8a977c68dadd0b87fe41d11f80a3847f54aa1b88fdc897a375dff623815dc1e",
+      "fileBytes": 523649
+    },
+    "south21-mixed-beforeB.png": {
+      "pngSHA256": "396c98be8edb082749be84d133486df781535fd62903a3c1f90bf5664e2dfb69",
+      "decodedRGBASHA256": "c3a46761dd1aef64fb718bcbef878aa73cf0c719fe51b11a37196e17852f4f51",
+      "fileBytes": 523659
+    },
+    "south21-mixed-afterA.png": {
+      "pngSHA256": "730d6792e0d2796594d5339c0f689d4badf3d6a6855f733b5208548fee4a45cf",
+      "decodedRGBASHA256": "a8a977c68dadd0b87fe41d11f80a3847f54aa1b88fdc897a375dff623815dc1e",
+      "fileBytes": 523649
+    },
+    "south21-mixed-afterB.png": {
+      "pngSHA256": "396c98be8edb082749be84d133486df781535fd62903a3c1f90bf5664e2dfb69",
+      "decodedRGBASHA256": "c3a46761dd1aef64fb718bcbef878aa73cf0c719fe51b11a37196e17852f4f51",
+      "fileBytes": 523659
+    }
+  },
+  "rgbaComparisonInputsPrivateFolder": "../raw-fixed, unaltered renderer outputs, no generated or interpolated screenshot",
+  "sameOwnerK30ControlExactWindows": [
+    29,
+    30
+  ],
+  "reciprocalOldAndNewTaperPixelsExact": 18,
+  "poweredSourcePrimedMixed": {
+    "fixedName": "south21-mixed",
+    "priorActualDraw": {
+      "state": {
+        "source": "verified",
+        "drawnFine": [
+          "24-21"
+        ]
+      },
+      "error": 0,
+      "draws": 15,
+      "triangles": 283485
+    },
+    "trialDraw": [],
+    "lods": [
+      112,
+      56
+    ],
+    "stockAndTrialSkyContributions": [
+      196104,
+      196104
+    ],
+    "fullSceneAndRoleFramesByteIdentical": true
+  },
+  "actualRgba0Stock": {
+    "fixedName": "south21",
+    "actualSamples": 0,
+    "nativeProfile": {
+      "alpha": true,
+      "antialias": false,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "high-performance",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": false,
+      "xrCompatible": false
+    },
+    "trialDraw": [],
+    "stockAndTrialSkyContributions": [
+      53,
+      53
+    ],
+    "fullSceneAndRoleFramesByteIdentical": true
+  },
+  "ordinaryMotion": {
+    "receipt": "ordinary-flight.json",
+    "sha256": "49866f732faa2afc7662c8867a4dcee48ed633d95fa982ac2ff57cdb561069f6",
+    "pass": true,
+    "actor": {
+      "source": "verified",
+      "drawnFine": [
+        "24-21"
+      ]
+    },
+    "actualDefaultProfile": {
+      "antialias": true,
+      "alpha": true,
+      "depth": true,
+      "samples": 4
+    },
+    "motionControl": "actual Begin, Chase, Cockpit and Pause (no camera or clock override)",
+    "soleTestFixtureSourceDifference": "src/sim/places.ts (appended private virtual departure only)",
+    "sameRuntimeInstalledAppBundleSha256": "86a4312b80c2f75f13d5429bb43eb269d800fe4ee30d04e36d028972fcd23f25",
+    "privateFixtureBundleSha256": "6d8939b5acb8c6d303808a78b188ec05019e10585f5d20d69acfb609dbcd6466",
+    "distanceAtActualDrawM": 17.837463121364568,
+    "totalTravelM": 154.25199556235364,
+    "groundClearanceAtWitnessM": 61.03892628385627,
+    "errors": []
+  },
+  "portableRgba4ReceiptSHA256": "39c5e52a4858e078b99c0c42df345adfe1ef87f08dac879df1f520222e50f5c2",
+  "portableRgba0ReceiptSHA256": "51865dfdb1ee46a22332d28f7e389b32ee9217d4d44164900f689ba49f73d301",
+  "encodedAndDecodedRgba0ComparisonInputs": {
+    "south21-stock.png": {
+      "pngSHA256": "f6da6b5f5e7f500377880baf772a9ed86bb65c07414cb831edc26e8f0fce1c12",
+      "decodedRGBASHA256": "e3068e176f931a39cd3364188b276fa1f66ae72a34e5d7aad59f8b9fbbabade6",
+      "fileBytes": 455218
+    },
+    "south21-trial.png": {
+      "pngSHA256": "f6da6b5f5e7f500377880baf772a9ed86bb65c07414cb831edc26e8f0fce1c12",
+      "decodedRGBASHA256": "e3068e176f931a39cd3364188b276fa1f66ae72a34e5d7aad59f8b9fbbabade6",
+      "fileBytes": 455218
+    },
+    "south21-beforeA.png": {
+      "pngSHA256": "7b930c70a33215c7053ece8217f2bd61655cd73e18d38ef6b0e73b060ce5ebad",
+      "decodedRGBASHA256": "12463805f121f5dcbaa78a450d893aff1e2cd9758880614897b74e0d78839686",
+      "fileBytes": 455204
+    },
+    "south21-beforeB.png": {
+      "pngSHA256": "123dccf1929d969feb3931b510ed165eb80542574f0ede0a4d434724a9d9adb0",
+      "decodedRGBASHA256": "0634063daa83754ae42b0a6b7236b818a7c6d4b525f48d22c4795433cfd33cf6",
+      "fileBytes": 455211
+    },
+    "south21-afterA.png": {
+      "pngSHA256": "7b930c70a33215c7053ece8217f2bd61655cd73e18d38ef6b0e73b060ce5ebad",
+      "decodedRGBASHA256": "12463805f121f5dcbaa78a450d893aff1e2cd9758880614897b74e0d78839686",
+      "fileBytes": 455204
+    },
+    "south21-afterB.png": {
+      "pngSHA256": "123dccf1929d969feb3931b510ed165eb80542574f0ede0a4d434724a9d9adb0",
+      "decodedRGBASHA256": "0634063daa83754ae42b0a6b7236b818a7c6d4b525f48d22c4795433cfd33cf6",
+      "fileBytes": 455211
+    }
+  }
+}

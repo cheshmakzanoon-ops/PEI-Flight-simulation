@@ -1,0 +1,28 @@
+[
+  {
+    "name": "south21-rim",
+    "owners": [
+      "24-20",
+      "24-21"
+    ],
+    "lon": -62.53687741565623,
+    "lat": 45.99375395201198,
+    "heading": 198,
+    "agl": 61,
+    "targetLL": [
+      -62.53736049,
+      45.99272727272727
+    ],
+    "rangeM": [
+      23.119999999999997,
+      25.12
+    ],
+    "signedCoverMinM": 254,
+    "atlasClasses": [
+      40
+    ],
+    "lengthM": 200,
+    "widthM": 30,
+    "scope": "Private virtual QA flight; no information for real navigation."
+  }
+]

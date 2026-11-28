@@ -1,0 +1,60 @@
+{
+  "scope": "Independent read-only exact fixed renders and projected physical support, not GPU per-sample proof.",
+  "mixedAndOffWindowExact": {
+    "south21-outside": {
+      "skyOld": 79,
+      "skyNew": 79,
+      "allRgbaIdentical": true,
+      "oldNewMarkerPNGsExact": true
+    },
+    "south21-mixed": {
+      "skyOld": 196104,
+      "skyNew": 196104,
+      "allRgbaIdentical": true,
+      "oldNewMarkerPNGsExact": true
+    }
+  },
+  "positive": {
+    "south21": {
+      "skyOld": 209,
+      "skyNew": 0,
+      "totalRgbChanged": 6171,
+      "strongOldSky": 209,
+      "maxOldOpaque8bitRgbStep": 1,
+      "incidentOriginalTriangles": 9,
+      "nonEmptyOldNewClippedPolygons": 18,
+      "allChangedCentersWithin1pxOfActualOldNewIncidentUnion": true,
+      "maxSuchDistancePx": 0.3524153078871538,
+      "alphaChanged": 0,
+      "rgbaPngSha256s": {
+        "stock": "04fa646ba4b4f723c60bcc4a52b426690de2c4012175415908b8d13ee7bc4e6a",
+        "trial": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172",
+        "beforeA": "e368a1f47e3f82b25b55716419d8902aa36337a58e170c6bcb15ad8dfd1fea7a",
+        "beforeB": "8e137d7596c7cc09a68da38ab309de7af877ae213767a02b602629f2093bb631",
+        "afterA": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172",
+        "afterB": "cf47f03e126289c03d574df65bbd124fd52ac4907e37a63bf3dbbb2484dc6172"
+      }
+    },
+    "south21-reciprocal": {
+      "skyOld": 159,
+      "skyNew": 18,
+      "totalRgbChanged": 5734,
+      "strongOldSky": 141,
+      "maxOldOpaque8bitRgbStep": 1,
+      "incidentOriginalTriangles": 9,
+      "nonEmptyOldNewClippedPolygons": 18,
+      "allChangedCentersWithin1pxOfActualOldNewIncidentUnion": true,
+      "maxSuchDistancePx": 0.35602072791202233,
+      "alphaChanged": 0,
+      "rgbaPngSha256s": {
+        "stock": "2866490aaaf12accf0468d50844a75866f4f917b9a408b6f12d112adcf4dc22b",
+        "trial": "61b0c8c28f05368bc0551e7a4535bebf1528fe3cebbe8dd21145a2104bea2513",
+        "beforeA": "e08e6ebf415859185be47a11875d394d8699ba05cbebaf24e615893c6b893eb1",
+        "beforeB": "c93c281a8e2212c8ace6a4a3df4b1f1589a82cdd44ca4e4deae0a55370b29299",
+        "afterA": "bfeba5b8c8b707b1c2002a7a7a8bd65f16b731e347c24c1c0e87910f26d8ae0a",
+        "afterB": "0e1c18d2352c714f93eb8ca83fb2aa13c236b93ef5b1b76ee593d7efe3cb7f98"
+      }
+    }
+  },
+  "nativeReceiptSha256": "39c5e52a4858e078b99c0c42df345adfe1ef87f08dac879df1f520222e50f5c2"
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "Independent read-only exact fixed renders and projected physical support, not GPU per-sample proof.",
+  "mixedAndOffWindowExact": {
+    "south21": {
+      "skyOld": 53,
+      "skyNew": 53,
+      "allRgbaIdentical": true,
+      "oldNewMarkerPNGsExact": true
+    }
+  },
+  "positive": {},
+  "nativeReceiptSha256": "51865dfdb1ee46a22332d28f7e389b32ee9217d4d44164900f689ba49f73d301"
+}

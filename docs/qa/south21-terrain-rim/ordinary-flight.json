@@ -1,0 +1,31 @@
+{
+  "south21-rim": {
+    "actualCompiledPlayer": true,
+    "profile": {
+      "antialias": true,
+      "alpha": true,
+      "depth": true,
+      "samples": 4
+    },
+    "route": "qa-south21-rim",
+    "scope": "Private aircraft placement from signed dry corridor, no real navigation use.",
+    "drawOwnerAtMovingChase": {
+      "source": "verified",
+      "drawnFine": [
+        "24-21"
+      ]
+    },
+    "travelAtWitnessM": 17.837463121364568,
+    "totalTravelM": 154.25199556235364,
+    "witnessPose": [
+      50898.12824094968,
+      84.15892628385627,
+      56292.01601952283,
+      3.4557519189487724
+    ],
+    "groundClearanceM": 61.03892628385627,
+    "drawsAtWitness": 134,
+    "cockpitAndPause": true,
+    "errors": []
+  }
+}
