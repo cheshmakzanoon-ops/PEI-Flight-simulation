@@ -1,0 +1,192 @@
+{
+  "scope": "Actual paired native optical evidence only. Terrain mount, visual realism and gameplay not enabled.",
+  "status": "HOLD authored coverage and visual field continuity",
+  "runtimeBuildManifestSHA256": "8bf3e6aa4e635264a2954117a382326e1686b2388ac497b1f5708540001ffdac",
+  "fullLocalCaptureReceiptSHA256": "c0f83a5708ee9ae559d698566b78e5868ee8a3cc9a2274ef17d10a95bea5bf54",
+  "separatePairedProfileSHA256": "49ad352273a4c88a996deee9b7e6695c06a48c145a8525c0ff63e303e51dc178",
+  "browserErrors": [],
+  "externalRequests": [],
+  "profile": {
+    "purpose": "Actual default-target C vs literal weathered original R, on exact same ten flight-stable full-strength roots. Diagnostic only, no player mounting or field optics promotion.",
+    "phasesM": [
+      [
+        974,
+        982
+      ],
+      [
+        1017,
+        1024
+      ],
+      [
+        1850,
+        1864
+      ]
+    ],
+    "maskSha256": "dbc2092e575a32296f4c977840e488b652f9560cabd386595d97ebe6a0cb965e",
+    "strictProbeIntegerPerPixel": true,
+    "entireStockAlphaAndNoSignalRestoreMustMatch": true,
+    "requiresSameActualOriginalRootOrderAndShaders": true,
+    "protectedStockPeersNoOutsideSigned3DAperture": true,
+    "minReferencePossiblyAffectedPixels": 50,
+    "relativeCoverageMassAcceptableBothActualPositives": [
+      0.85,
+      1.15
+    ],
+    "a2cCapabilityControl": "separate actual D24/A133 native 4x plane calibration, every 0\u20134 class; no change to real authored alpha",
+    "caveat": "No forced k4 for physics of thin leaves in this distinct direct-reference assay. Prior C-alone strict full-sample guard is unchanged. Require physically measured relative total mass and nonvacuous direct-source support.",
+    "cannotRetuneFromCapturedImages": true,
+    "selection": "First natural advancing frame within predeclared physical band observing exact full strength for every fixed member; if none, refuse without cropping or reselection.",
+    "sourceSignalSeparation": "For literal shared sample f=k/4, native authored minus same-mask marker plus f*literalRGB; both marker reconstructions agree within one code. Report common k>=2 weighted luma and support, never rely on a uniform original pixel approximation."
+  },
+  "windows": [
+    {
+      "distanceTravelledM": 978.3085387605818,
+      "referenceIndices": [
+        21,
+        30,
+        39,
+        57,
+        66,
+        75,
+        93,
+        102,
+        120,
+        147
+      ],
+      "frameSHA256": {
+        "original": "a67fd34a0576226ae1ac61ef8db119553ba6c5ad138bdb4acb07abf1164f7b94",
+        "authored": "d298c787189e4547c12c7c21e37e8cb36eaca2d2d1dae3ccb3b2ca0a1e9b4c52",
+        "reference": "27bf9380be4f7738b283fdf0b4bc93c5981e9ed2909b15be89a8b6bae5a606a1",
+        "referenceCrimson": "e9349bea1e6cd42d087605baace37422d20f35760c1938cfc7a4e84047bdd2dc",
+        "referenceCyan": "991f9eba26e2bc2c9c337b215b015b595da3622d61dec0fc8bb08f82773b0a98",
+        "crimson": "950254eebde377a834e28e7fadda47a80b3295423c0dd661b36ce682d9329809",
+        "cyan": "76c064e54be56f58bb92870c708c03d8c459a8a306661db975c1721c3b8e346c",
+        "discard": "a67fd34a0576226ae1ac61ef8db119553ba6c5ad138bdb4acb07abf1164f7b94",
+        "repeat": "d298c787189e4547c12c7c21e37e8cb36eaca2d2d1dae3ccb3b2ca0a1e9b4c52",
+        "restore": "a67fd34a0576226ae1ac61ef8db119553ba6c5ad138bdb4acb07abf1164f7b94"
+      },
+      "metrics": {
+        "phase": 0,
+        "rawMarkerCoverageC": [
+          911660,
+          248,
+          92,
+          0,
+          0
+        ],
+        "rawMarkerCoverageR": [
+          911626,
+          189,
+          129,
+          47,
+          9
+        ],
+        "literalDirectRatios": 0.6923076923076923,
+        "standOnlyAverageDisplayRGB_C": [
+          125.95370370370371,
+          122.24074074074075,
+          66.74537037037037
+        ],
+        "standOnlyAverageDisplayRGB_R": [
+          110.96794871794872,
+          107.83653846153847,
+          59.01923076923077
+        ],
+        "sharedStrongSamplePixels": 64,
+        "jointWeightedMeanLumaError": 20.278205729166665,
+        "directDisplayLuminanceAbsoluteP90Codes": 24.267200000000003,
+        "halfopenBoundsAndA8RestoresExact": true,
+        "nonvacuousR": true,
+        "verdict": "HOLD C/R authored mass differs"
+      },
+      "nativeSamplesC": 432,
+      "nativeSamplesR": 624,
+      "unalteredNativeCropSHA256": "970cca21e14ef0b5503e4e87573a1743befb49737dc09c6157e8df7012edc3a9"
+    },
+    {
+      "distanceTravelledM": 1017.7986875604311,
+      "referenceIndices": [
+        21,
+        30,
+        39,
+        57,
+        66,
+        75,
+        93,
+        102,
+        120,
+        147
+      ],
+      "frameSHA256": {
+        "original": "5c70337662e1006761e34078c092bd2d18baa2dd82bb23d6f041d446166cd59b",
+        "authored": "c0771618aec93e132ca30b19f0095412ceef035a849860084de1aa5a2f23855b",
+        "reference": "870d6805ad0a8aead349e6b43f36ffa83d4f5a24b19cf2f83130cadea45f760c",
+        "referenceCrimson": "33900a4c5b0e9bf0b3763b6778b898e1a4cabfa97f2f548109cbe013e0e4d61b",
+        "referenceCyan": "cab69d0c11cc96ee24dff6b2ea65b2bc2175c613b18f5b754d2581e0a866fc8f",
+        "crimson": "fa39261eeff231973251898c15d64de25fb71394d716972ee836e519a207c9e3",
+        "cyan": "c25ce11d0ffd5bf54a6543dfb9cbf630f438b75c4b41188d398d1a18ca353399",
+        "discard": "5c70337662e1006761e34078c092bd2d18baa2dd82bb23d6f041d446166cd59b",
+        "repeat": "c0771618aec93e132ca30b19f0095412ceef035a849860084de1aa5a2f23855b",
+        "restore": "5c70337662e1006761e34078c092bd2d18baa2dd82bb23d6f041d446166cd59b"
+      },
+      "metrics": {
+        "phase": 1,
+        "rawMarkerCoverageC": [
+          911508,
+          341,
+          151,
+          0,
+          0
+        ],
+        "rawMarkerCoverageR": [
+          911468,
+          254,
+          172,
+          86,
+          20
+        ],
+        "literalDirectRatios": 0.686965811965812,
+        "standOnlyAverageDisplayRGB_C": [
+          127.97278382581649,
+          124.17340590979782,
+          67.79160186625194
+        ],
+        "standOnlyAverageDisplayRGB_R": [
+          113.77564102564102,
+          110.12820512820512,
+          60.8974358974359
+        ],
+        "sharedStrongSamplePixels": 106,
+        "jointWeightedMeanLumaError": 19.300040880503143,
+        "directDisplayLuminanceAbsoluteP90Codes": 25.98028,
+        "halfopenBoundsAndA8RestoresExact": true,
+        "nonvacuousR": true,
+        "verdict": "HOLD C/R authored mass differs"
+      },
+      "nativeSamplesC": 643,
+      "nativeSamplesR": 936,
+      "unalteredNativeCropSHA256": "92a0ebe5d5acf77d12aa2aea9f89a6bc5904804176c2226b5e95023511622a29"
+    },
+    {
+      "distanceTravelledM": 1854.2821686652655,
+      "referenceIndices": [],
+      "frameSHA256": {
+        "original": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "authored": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "reference": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "referenceCrimson": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "referenceCyan": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "crimson": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "cyan": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "discard": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "repeat": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9",
+        "restore": "67f5743383795f0161d7158681fb02b31d00cdfff884a099c35b34af49db70a9"
+      },
+      "metrics": {
+        "phase": 2,
+        "wholeSignedWorldMaxLateW": -568.2576048466642,
+        "fullyOriginal": true
+      }
+    }
+  ]
+}
