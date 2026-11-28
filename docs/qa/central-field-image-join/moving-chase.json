@@ -1,0 +1,136 @@
+{
+  "frames": {
+    "edge-12-14s": [
+      {
+        "n": 0,
+        "flightAlongM": 16.183796605623442,
+        "flightCrossM": 0.6010391622414106,
+        "pos": [
+          -23932.841122605394,
+          155.554178625978,
+          21055.514206286203
+        ],
+        "eye": [
+          -23929.343118137163,
+          159.74367173517086,
+          21034.770008149222
+        ],
+        "samples": 4,
+        "error": 0,
+        "changed": 3965,
+        "strong": 2056,
+        "alpha": 0,
+        "outside": 0,
+        "marker": 11350,
+        "render": [
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          }
+        ],
+        "exactRollback": true,
+        "stockSha256": "f8bfd53130445831fdf810796f500b2fe64ec100e68b36cdba31b4edf16af326",
+        "joinedSha256": "7ffd33b2347b65b952eb7f2995ab8446038f6550b0d98729e53c326be7a3a525"
+      },
+      {
+        "n": 1,
+        "flightAlongM": 40.46300713256525,
+        "flightCrossM": 1.5025979055942145,
+        "pos": [
+          -23936.16930122834,
+          155.66283350231654,
+          21079.581115082994
+        ],
+        "eye": [
+          -23932.314096564467,
+          159.82930664281938,
+          21056.254093031017
+        ],
+        "samples": 4,
+        "error": 0,
+        "changed": 5602,
+        "strong": 2984,
+        "alpha": 0,
+        "outside": 0,
+        "marker": 16059,
+        "render": [
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          },
+          {
+            "draws": 161,
+            "tris": 379753
+          }
+        ],
+        "exactRollback": true,
+        "stockSha256": "aadd3e945ed6586a561afcd9b181aba7247ccd3768509339813db49658e2e2b0",
+        "joinedSha256": "5c83594f0dec2712e73efc29af23b0acbb2274ffee2846b868c8a7fa0a616a13"
+      },
+      {
+        "n": 2,
+        "flightAlongM": 325.04940933076296,
+        "flightCrossM": 12.06371461347495,
+        "pos": [
+          -23975.186541744457,
+          157.4336298342747,
+          21361.67792904008
+        ],
+        "eye": [
+          -23971.564602328166,
+          161.60132703574803,
+          21340.039193817647
+        ],
+        "samples": 4,
+        "error": 0,
+        "changed": 0,
+        "strong": 0,
+        "alpha": 0,
+        "outside": 0,
+        "marker": 0,
+        "render": [
+          {
+            "draws": 160,
+            "tris": 373493
+          },
+          {
+            "draws": 160,
+            "tris": 373493
+          },
+          {
+            "draws": 160,
+            "tris": 373493
+          },
+          {
+            "draws": 160,
+            "tris": 373493
+          }
+        ],
+        "exactRollback": true,
+        "stockSha256": "eba0e12f8a8eb29d97433389724ea97264f3680f9ca705c078dcde14f2dc10cc",
+        "joinedSha256": "eba0e12f8a8eb29d97433389724ea97264f3680f9ca705c078dcde14f2dc10cc"
+      }
+    ]
+  },
+  "entrypoint": "Compiled isolated build; normal Dispatch Begin, Chase, Cockpit and Pause controls passed"
+}

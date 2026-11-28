@@ -73,7 +73,12 @@ OUTER=[
  ('edge-23-17s',23,17,'z',142,176,None),
  ('edge-18-15s',18,15,'z',476,510,None),
 ]
-ADDITIONAL=[('edge-12-16e', 12, 16, 'x', 613, 576, None), ('edge-22-13s', 22, 13, 'z', 73, 107, None), ('edge-13-15e', 13, 15, 'x', 310, 344, None)]
+ADDITIONAL=[
+ ('edge-12-16e',12,16,'x',613,576,None),
+ ('edge-22-13s',22,13,'z',73,107,None),
+ ('edge-13-15e',13,15,'x',310,344,None),
+ ('edge-12-14s',12,14,'z',43,80,None),
+]
 EXACT_EDGE_VIEWS=set()
 for name,x,z,axis,center,outside,north_control in EXPANDED+EASTERN+WESTERN+CENTRAL+OUTER+ADDITIONAL:
  first,second=f'{x}-{z}',f'{x+(axis=="x")}-{z+(axis=="z")}'
@@ -183,6 +188,9 @@ fixed.stage=stage
 
 def capture(a,browser,url):
  results={}
+ inline=Path(a.checkout)/'src/render/inland-ortho-windows.ts'
+ plans=json.loads(inline.read_text().split('INLAND_ORTHO_WINDOWS=')[1].split(' as const;')[0])
+ declared_inland={p['first']+' / '+p['second'] for p in plans}
  selections=a.views.split(',') if a.views else GROUPS[a.cohort]
  for site in selections:
   if site not in GROUPS[a.cohort]:raise ValueError('Wrong camera for selected cohort: '+site)
@@ -216,6 +224,7 @@ def capture(a,browser,url):
    inlands={'7-12 / 8-12','10-11 / 11-11','11-16 / 12-16','6-9 / 7-9','21-16 / 21-17',
             '13-16 / 13-17','14-16 / 15-16','11-11 / 12-11'}
    inlands|={p['first']+' / '+p['second'] for label,p in P.items() if label in EXACT_EDGE_VIEWS}
+   inlands|=declared_inland
    if a.pinned_base:inlands-={P[r[0]]['first']+' / '+P[r[0]]['second'] for r in ADDITIONAL}
    expect|=inlands;flags=(switch or '').split('&')
    if 'stockCountyOrtho' in flags:expect-=oldCounties

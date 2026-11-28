@@ -1,0 +1,19 @@
+{
+  "maxReportDistanceM": 400,
+  "scope": "Signed road centreline and dated footprint distance; not verified boundary, hedge or crop conditions.",
+  "NRN": "72528a1b26b68ee345e5047f30f2c9b49a3c18edeaccaf3e759ead296d3276c1",
+  "AEB": "538bcf3cb372be782e6f29d1c9226ca9d05cea9f3a0ac173b9844cc5174fe557",
+  "cases": [
+    {
+      "name": "edge-12-14s",
+      "exactStripLonLat": [
+        -63.5134072265625,
+        46.30898792613637,
+        -63.5109267578125,
+        46.30919389204546
+      ],
+      "roadClippedDistance": 400.0,
+      "buildingClippedDistance": 400.0
+    }
+  ]
+}

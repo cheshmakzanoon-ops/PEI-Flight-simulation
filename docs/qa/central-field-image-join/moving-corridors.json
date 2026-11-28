@@ -1,0 +1,32 @@
+[
+  {
+    "name": "edge-12-14s",
+    "lon": -63.511748493027206,
+    "lat": 46.31072987777681,
+    "heading": 190,
+    "agl": 60,
+    "targetLL": [
+      -63.51216699,
+      46.30909091
+    ],
+    "axis": "z",
+    "owners": [
+      "12-14",
+      "12-15"
+    ],
+    "minSignedDistanceM": 254,
+    "colliderElevationRange": [
+      95.0295767573493,
+      109.9105536801409
+    ],
+    "width": 30,
+    "length": 355,
+    "scope": "Private virtual acceptance route; not evaluated for use in real navigation.",
+    "offsets": [
+      14,
+      40,
+      320
+    ],
+    "preregistration": "Two real Chase frames +14m and +40m, each >=500 pixels max-RGB delta >2; +320m exact late, all literal marker exterior and alpha zero, same-RAF restore."
+  }
+]
