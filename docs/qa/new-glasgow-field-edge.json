@@ -1,0 +1,122 @@
+{
+  "state": "PASS public Dispatch and stock flight through three scenery checkpoints",
+  "sealedBuild": "876bc5b25cac65e55561ce53b21c34151454690b8e0fc4e4a5fa075db53a356c",
+  "site": "new-glasgow-field-edge",
+  "begin": {
+    "site": "new-glasgow-field-edge",
+    "mode": "dispatch",
+    "camera": "Chase",
+    "x": -13698.88457588271,
+    "z": 10228.163314721842,
+    "altitude": 117.25175813230578,
+    "heading": 3.9269908169872414,
+    "speed": 52,
+    "roads": true,
+    "buildings": true,
+    "mainland": true,
+    "hedgerows": {
+      "revision": 4,
+      "loaded": 4,
+      "loading": 0,
+      "failed": 0,
+      "missing": false,
+      "visible": 3287
+    }
+  },
+  "windows": [
+    {
+      "d": 233.27161247602712,
+      "site": "new-glasgow-field-edge",
+      "mode": "flight",
+      "camera": "Chase",
+      "x": -13858.602098741461,
+      "z": 10398.180837580605,
+      "altitude": 118.70026785094431,
+      "heading": 3.9269908169872423,
+      "speed": 52.051142322282374,
+      "roads": true,
+      "buildings": true,
+      "mainland": true,
+      "hedgerows": {
+        "revision": 4,
+        "loaded": 4,
+        "loading": 0,
+        "failed": 0,
+        "missing": false,
+        "visible": 3277
+      }
+    },
+    {
+      "d": 348.84597342002616,
+      "site": "new-glasgow-field-edge",
+      "mode": "flight",
+      "camera": "Chase",
+      "x": -13937.735719838045,
+      "z": 10482.41445867717,
+      "altitude": 119.48590449410004,
+      "heading": 3.9269908169872423,
+      "speed": 52.07040071718726,
+      "roads": true,
+      "buildings": true,
+      "mainland": true,
+      "hedgerows": {
+        "revision": 4,
+        "loaded": 4,
+        "loading": 0,
+        "failed": 0,
+        "missing": false,
+        "visible": 3145
+      }
+    },
+    {
+      "d": 711.1047395659305,
+      "site": "new-glasgow-field-edge",
+      "mode": "flight",
+      "camera": "Chase",
+      "x": -14185.77928573531,
+      "z": 10746.433024574426,
+      "altitude": 121.9935669917419,
+      "heading": 3.9269908169872423,
+      "speed": 52.11563080014392,
+      "roads": true,
+      "buildings": true,
+      "mainland": true,
+      "hedgerows": {
+        "revision": 4,
+        "loaded": 4,
+        "loading": 0,
+        "failed": 0,
+        "missing": false,
+        "visible": 2896
+      }
+    }
+  ],
+  "hedge206": [
+    {
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933"
+    },
+    {
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044"
+    },
+    {
+      "range": "bytes=275965-330494",
+      "contentRange": "bytes 275965-330494/532044"
+    },
+    {
+      "range": "bytes=31289-68276",
+      "contentRange": "bytes 31289-68276/504933"
+    },
+    {
+      "range": "bytes=68277-148210",
+      "contentRange": "bytes 68277-148210/504933"
+    },
+    {
+      "range": "bytes=330495-383541",
+      "contentRange": "bytes 330495-383541/532044"
+    }
+  ],
+  "outside": [],
+  "errors": []
+}

@@ -77,6 +77,12 @@ export const PRINCE_MAPPED_FARMLAND_DEPARTURE:Site={
  lon:-63.68388151653852,lat:46.38290866227233,heading:165,height:62,
  note:'Begin 62 metres above a mapped inland field. Virtual sightseeing only.',
 };
+// Append to Dispatch after existing routes to preserve their order.
+export const NEW_GLASGOW_FIELD_EDGE_DEPARTURE:Site={
+ id:'new-glasgow-field-edge',name:'New Glasgow · field-edge pass',region:'Queens County',
+ lon:-63.37845781400669,lat:46.40798791295192,heading:225,height:42,
+ note:'Start 42 metres above the starting terrain and fly southwest across mapped farm field edges. Virtual sightseeing only, not an aviation route.',
+};
 export const KINGS_MAPPED_FARMLAND_DEPARTURE:Site={
  id:'kings-mapped-farmland-pass',name:'Kings County · mapped farmland pass',region:'Kings County',
  lon:-62.63729889216559,lat:46.39645292554363,heading:197.3,height:62,
