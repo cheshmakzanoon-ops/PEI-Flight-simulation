@@ -57,3 +57,9 @@ foliage and road occlusion, correct in-world alpha and depth, distance
 transition, lighting, or frame cost at field scale. Any future pilot
 preview must stay inside a verified crop receiver, prove a placed
 sub-24-pixel bound using the actual view, and fail back to stock.
+
+The separate [native Cape Tryon hold](../../../docs/qa/grain-corn/cape-far-native-hold.md)
+records what happened when a first constrained patch reached genuine
+flight: linked output and restoration were measurable, but the result
+looked like a separate swatch and failed the original full-sample rule.
+No in-flight treatment is enabled.

@@ -1,0 +1,65 @@
+{
+  "result": "HOLD for visual scene and zero full authored samples, no gameplay change",
+  "nativeReceiptSHA256": "c3fc57793b5fa6827194602c2713946d6ba6b4a375a9b1f575ffe28ea86004a1",
+  "separateSamplerCalibrationReceiptSHA256": "180b424215ff76d1a87a282a29740743cf0dc28d61c2b764bb4eb2d3ccd9c271",
+  "probeTarget": "actual unretimed trusted Cape Tryon Chase, default attachment 1200x760/DPR1/A8/D24/4x",
+  "originalTemporalTextureSourceScope": "same original weathered two source variants with actual world sun, no crop date condition",
+  "originalGroundTile": "12-10 ordinary native N112",
+  "runtimeTexture": {
+    "residentBytesVerified": 783360,
+    "nativePageLevelsVerified": 576,
+    "sourceBindExact": true
+  },
+  "rootedAuthorPatch": {
+    "independentRoots": 264,
+    "notWholeRealField": true
+  },
+  "nativePositives": [
+    {
+      "travelM": 974.3023973513457,
+      "changedRGBAbove2": 2944,
+      "authoredCueMedianDisplayLumaCodes": 18.4493,
+      "literalSampleHistogram0to4": [
+        909056,
+        1479,
+        1463,
+        2,
+        0
+      ],
+      "nativeRGBAAlphaExact": true,
+      "nativeStockDiscardRepeatRestoreExact": true,
+      "originalNativeOwnerProved": true
+    },
+    {
+      "travelM": 1017.7986875604311,
+      "changedRGBAbove2": 5290,
+      "authoredCueMedianDisplayLumaCodes": 28.332999999999995,
+      "literalSampleHistogram0to4": [
+        906710,
+        1925,
+        3254,
+        111,
+        0
+      ],
+      "nativeRGBAAlphaExact": true,
+      "nativeStockDiscardRepeatRestoreExact": true,
+      "originalNativeOwnerProved": true
+    }
+  ],
+  "late": {
+    "actualTravelM": 1850.8460150490046,
+    "allExactOriginal": true,
+    "upperFullSignedEnvelopeClipWIncludingMargin": -564.9774888859838
+  },
+  "archiveContactSheet": {
+    "noScaling": true,
+    "extentFromFullNativeFrameXYXY": [
+      140,
+      431,
+      409,
+      523
+    ],
+    "rowOrder": "first, second",
+    "columns": "original, authored"
+  }
+}
