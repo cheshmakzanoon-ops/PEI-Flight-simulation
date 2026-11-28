@@ -1,0 +1,97 @@
+{
+  "status": "PASS: two visible stock ground apertures and one off-camera control; no canopy or scenery enabled",
+  "baselineCommit": "3b75855cdf014bbe97e5cc1e2c6f5bc6934f1fe4",
+  "departure": "cape-tryon-coast",
+  "camera": "Chase",
+  "renderer": "Three.js r187, SwiftShader WebGL2, D24/A8 4x, dpr 1, 1200x760",
+  "shippedCollisionPhysicsTerrainUnchanged": true,
+  "stockFrameNativeUnscaledCropXYXY": [
+    0,
+    410,
+    720,
+    760
+  ],
+  "stockSourcePNGSHA256": "cb8f98dad2f1c99e590d588efb5a60530909b11ac010907346b11e71587e1085",
+  "prelockSHA256": "f06b90ae4a2816b5facc615e9b5efd93121c83da5942356b13b5b14cd330a9b7",
+  "signedDerivedSupportSHA256": "2a1ab8e60b60696c2b6136db8062ace0f38f4184b3d6fdb3ef87781d4fe2ff61",
+  "testBuildManifestSHA256": "fa20693e81b99f6df2717dea7fbfb959a7e16c82d9ebcc1bc5d45564355a336c",
+  "independentReceiptSHA256": "d1d7536c061bf2c6b4438a84777fd65e705c6c46d9b738056b5f8054c87d6c75",
+  "independentScorerSHA256": "08d29266306edfbd178077f1fc9b42cd840fc1c738b0ddfb559ea972e040d18d",
+  "instrumentToleranceM": 0.05,
+  "projectedRoundoffGatePx": 0.75,
+  "methodsNote": "The first replay refused three entirely offscreen polygons at the same numerical precision cap. A second checker excluded only polygons proven wholly offscreen in homogeneous coordinates before applying the unchanged cap to the unchanged screenshots.",
+  "phases": [
+    {
+      "phase": 0,
+      "travelM": 978.3085387605819,
+      "oldGeometrySHA256": {
+        "position": "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+        "uv": "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+        "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "renderedSupport": 169806,
+      "pixelsByMarkedSampleCount": [
+        764323,
+        0,
+        0,
+        0,
+        147677
+      ],
+      "supportWInterval": [
+        81.01233285173528,
+        312.87688820758194
+      ],
+      "maxTransformErrorPx": 0.2916680522940646,
+      "sameAlpha": true,
+      "sameNeutralRestore": true
+    },
+    {
+      "phase": 1,
+      "travelM": 1021.8050381189382,
+      "oldGeometrySHA256": {
+        "position": "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+        "uv": "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+        "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "renderedSupport": 145018,
+      "pixelsByMarkedSampleCount": [
+        786889,
+        0,
+        0,
+        0,
+        125111
+      ],
+      "supportWInterval": [
+        38.05672946566291,
+        269.93945396947464
+      ],
+      "maxTransformErrorPx": 0.34958814263528626,
+      "sameAlpha": true,
+      "sameNeutralRestore": true
+    },
+    {
+      "phase": 2,
+      "travelM": 1854.2821686652655,
+      "oldGeometrySHA256": {
+        "position": "d8bd47c513d2d4797a004d5d488a5e591ff48f4d91f71a07532f7d9e4807234a",
+        "uv": "9528113580bec53f9f64caae69f51aef5aa52aeb8bed78842dc87d8796353d5e",
+        "index": "33871cac1ee31a2c5e4cb22b35de67f6cf10e53758d3c0784b83790caee5fffa"
+      },
+      "renderedSupport": 0,
+      "pixelsByMarkedSampleCount": [
+        912000,
+        0,
+        0,
+        0,
+        0
+      ],
+      "supportWInterval": [
+        -788.8672172762194,
+        -557.0030056244078
+      ],
+      "maxTransformErrorPx": 0.0,
+      "sameAlpha": true,
+      "sameNeutralRestore": true
+    }
+  ]
+}

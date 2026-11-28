@@ -39,3 +39,8 @@ runtime support lattice. The source says nothing about row angle, variety,
 stalk height, harvest date, site-specific colour, or material. Simulator
 terrain/ownership, existing crop and grass overlap, and genuine in-flight pixel
 tests are separate gates before any new scene treatment can be offered.
+
+The first [stock Cape Tryon flight check](../../../docs/qa/grain-corn/cape-tryon-stock.md)
+identifies the portion of the original near ground that is visible to the
+pilot. The [geometry admission helpers](corn-seat/) verify that a future
+canopy’s roots and swept leaf tips can stay on its signed receiver.
