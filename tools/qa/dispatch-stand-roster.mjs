@@ -14,7 +14,7 @@ import {spawn,neutral,step} from '../../src/sim/flight.ts';
 import {ForestStream} from '../../src/sim/forest-stream.ts';
 import {loadForestHeights} from '../../src/sim/forest-heights.ts';
 import {HedgeStream} from '../../src/sim/hedge-stream.ts';
-import {DISPATCH_STAND,exactStandSeed} from '../../src/render/dispatch-stand-height.ts';
+import {DISPATCH_STAND,PRINCE_DISPATCH_STAND,exactStandSeed} from '../../src/render/dispatch-stand-height.ts';
 import {treeRandom} from '../../src/sim/tree-layout.ts';
 const path=(x)=>new URL('../../'+x,import.meta.url),pub=path('public/');
 const file=(x)=>fs.readFileSync(new URL(x,pub));
@@ -30,14 +30,15 @@ const t=new Terrain(dims,new Int16Array(asAB(hh))),c=new Cover(coverMeta.width,c
 const surface=(x,z)=>{
  const land=c.distance(t,x,z)>0;return {land,height:t.contactHeight(x,z,land)};
 };
-const victim=DISPATCH_STAND;
+const prince=process.argv.includes('--prince');
+const victim=prince?PRINCE_DISPATCH_STAND:DISPATCH_STAND,held=prince?['47309','78870']:['478492','530951'];
 let deliver,requested=false,hold=new Promise(r=>{deliver=r;});
 const paths=new Map();
 const request=async(input,init)=>{
  const p=new URL(String(input)).pathname.slice(1);assert(!p.includes('..'));
  let a=paths.get(p);if(!a){try{a=file(p);paths.set(p,a);}catch{return new Response(null,{status:404});}}
  const r=/^bytes=(\d+)-(\d+)$/.exec(new Headers(init?.headers).get('range')??'');
- if(p.endsWith('/heights-03.pack')&&r?.[1]==='478492'&&r?.[2]==='530951'){
+ if(p.endsWith('/heights-03.pack')&&r?.[1]===held[0]&&r?.[2]===held[1]){
   requested=true;await hold;
  }
  return r?new Response(a.subarray(+r[1],+r[2]+1),{status:206,headers:{'content-range':`bytes ${r[1]}-${r[2]}/${a.length}`}}):new Response(a);
@@ -75,13 +76,14 @@ const ready=await (async()=>{
   await new Promise(r=>setTimeout(r,15));
  }
 })();
-assert(requested&&ready,'signed q28-12 local response must participate');
-const prepared=p.prepareDispatchStand(ready,seed.x,seed.z);
+assert(requested&&ready,'signed local source response must participate');
+const prepared=p.prepareDispatchStand(ready,seed.x,seed.z,victim);
 assert(prepared&&prepared.slots.length>1000);
 assert.deepEqual(reference(),stock0,'readying may not change any cached/submitted data');
-assert(!p.takeDispatchStand(prepared,seed.x+.01,seed.z),'wrong spawn may not take');
+assert(!p.takeDispatchStand(prepared,seed.x+.01,seed.z,victim),'wrong spawn may not take');
 assert.equal(p.dispatchStandAdjusted,0);
-assert(p.takeDispatchStand(prepared,seed.x,seed.z));
+assert(!p.takeDispatchStand(prepared,seed.x,seed.z,prince?DISPATCH_STAND:PRINCE_DISPATCH_STAND));
+assert(p.takeDispatchStand(prepared,seed.x,seed.z,victim));
 assert.equal(p.stems.version,stock0.stemVersion);
 assert.equal(p.hedgeGround.version,stock0.shadeVersion);
 assert.equal(p.geom.instanceCount,stock0.count);

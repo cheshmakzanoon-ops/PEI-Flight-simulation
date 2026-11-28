@@ -1,4 +1,5 @@
 import { departureBriefing } from './departure-briefing.ts';
+import {dispatchStandPlan} from '../render/dispatch-stand-height.ts';
 import {PRINCE_LANDSCAPE_ROUTE,princeLandscapeState,switchPrinceLandscape,KINGS_RIDGE_ROUTE,kingsRidgeLensState,standardKingsRidgeRequested,switchStandardKingsRidgeURL,switchKingsRidgeLens,INDIAN_RIVER_ROUTE,STOCK_INDIAN_RIVER,indianRiverLensState,standardIndianRiverRequested,switchStandardIndianRiverURL,switchIndianRiverLens,BASIN_HEAD_DEPARTURE,basinHeadDispatchState,switchBasinHeadDispatchURL,SCENERY_REVIEWS,CAVENDISH_PACKAGE_FLAGS,cavendishPackageState,switchCavendishPackageURL,CAPE_TRYON_DEPARTURE,capeTryonRockState,switchCapeTryonRockURL,applyReviewSceneryURL,isDetailScenery,sceneryReviewBlock,reviewedScenery,sceneryDeparture,sceneryOptions,switchSceneryURL,type ScenicReview} from './scenery-profile.ts';
 import { equivalentAirspeed } from '../sim/aerodynamics.ts';
 import { SITES, type Site } from '../sim/places.ts';
@@ -94,8 +95,9 @@ export class UI {
   <div id="touch"><div class="pad" id="stick" aria-label="Drag for pitch and roll"><i></i><small>STICK</small></div><div class="touchbuttons"><button id="upPower" aria-label="Increase throttle">PWR +</button><button id="dnPower" aria-label="Reduce throttle">PWR −</button></div></div>
   <footer><span id="layer-alert" hidden role="status"></span><button id="credits">Map credits</button><span>Contains modified Copernicus Sentinel data 2025 · NRCan · Statistics Canada</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a></footer>`;
   this.chartImage=new Image();this.chartImage.src=import.meta.env.BASE_URL+'world/color.webp';
-  $('site').onchange=()=>{this.selected=Number(($('site') as HTMLSelectElement).value);
-   this.actions.chooseDeparture?.(this.selected);this.showSite();};
+  $('site').onchange=()=>{const next=Number(($('site') as HTMLSelectElement).value);
+   if(next!==this.selected)this.setDispatchWoodland('other');
+   this.selected=next;this.actions.chooseDeparture?.(this.selected);this.showSite();};
   $('start').onclick=()=>this.actions.start(this.selected);$('view').onclick=()=>this.actions.view();
   $('basin-inlet-switch').onclick=()=>{
    location.assign(switchBasinHeadDispatchURL(location.href,!basin.selected,this.sites[this.selected].id));
@@ -136,7 +138,7 @@ export class UI {
   for(const [id,delta] of [['upPower',1],['dnPower',-1]] as const){const b=$(id);b.onpointerdown=e=>{b.setPointerCapture(e.pointerId);this.input.touch.power=delta;};b.onlostpointercapture=()=>this.input.touch.power=0;}
   this.showSite();this.set('dispatch');
  }
- showSite(){const s=this.sites[this.selected];if(s.id!=='kings-meadow-low')this.setDispatchWoodland('other');if(s.id!=='north-rustico-harbour-low')this.setRusticoNeighbourRoof('other');if(s.id!=='dalvay-lake-coastal-pass')this.setDalvayWater('other');if(s.id!=='prince-fields')this.setPrinceLowField('other');$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
+ showSite(){const s=this.sites[this.selected];if(!dispatchStandPlan(s))this.setDispatchWoodland('other');if(s.id!=='north-rustico-harbour-low')this.setRusticoNeighbourRoof('other');if(s.id!=='dalvay-lake-coastal-pass')this.setDalvayWater('other');if(s.id!=='prince-fields')this.setPrinceLowField('other');$('site-note').textContent=departureBriefing(s,location.search);$('loc-name').textContent=s.name;$('loc-county').textContent=s.region;($('site') as HTMLSelectElement).value=''+this.selected;$('cavendish-package').hidden=s.id!=='cavendish-dunelands-low'&&!cavendishPackageState(location.search).selected;$('cape-rock').hidden=s.id!==CAPE_TRYON_DEPARTURE;
   const basin=basinHeadDispatchState(location.search);
   $('basin-inlet').hidden=basin.detail||(s.id!==BASIN_HEAD_DEPARTURE&&!basin.selected);
   const river=indianRiverLensState(location.search);
@@ -246,6 +248,7 @@ export class UI {
  }
  close(){this.set(this.previous==='dispatch'?'dispatch':this.previous==='crash'?'crash':this.previous==='paused'?'paused':'flight');}
  set(mode:Mode){
+  if(mode==='dispatch'&&mode!==this.mode)this.setDispatchWoodland('other');
   this.mode=mode;this.input.clear();$('ui').dataset.mode=mode;const flight=mode==='flight',dispatch=mode==='dispatch';
   for(const [name,visible] of Object.entries({dispatch,location:dispatch,telemetry:flight,inflight:flight,touch:flight,'nav-pause':flight,scrim:!flight,modal:!dispatch&&!flight}))$(name).hidden=!visible;
   const modal=$('modal');if(dispatch||flight){modal.innerHTML='';return;}

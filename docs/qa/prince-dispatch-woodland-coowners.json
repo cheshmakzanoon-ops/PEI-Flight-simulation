@@ -1,0 +1,66 @@
+{
+  "status": "ordinary route custody and established Kings/Miscouche coexistence passed",
+  "candidateSourceSealSha256": "41e1eb22e507f8c1421ab19171948eb570e2405be42007b38a55a7e60f4e46ee",
+  "sourceReceipts": {
+    "routeCustody": "6174e3b5853835c5e427be95893f63ddaa55a713c4455864c4f07b20bc1781dc",
+    "kings": "853ec47945afd8e28caae335c52adfd4f90a43f9dd61b7614b7b9ce4deb9c823",
+    "miscouche": "cedc59f49732a4cd1eb4185c462a0dc6f4f90a0edaa59d9af4357ced58f6a517"
+  },
+  "runnerHashes": {
+    "routeCustody": "f89df584f42ebf29206e93141917bce53764bdefa9ac2ad960b253881a605c3f",
+    "kings": "245275da5fe398d488aa33f926e0f0e6f2a3f8097d2f45dac6ecce21983899f1",
+    "miscouche": "094bc57d2059986cfc30c268d1d6a4eedf389c2bfedc988fb6e07e5b213ee384"
+  },
+  "ordinaryRouteCases": {
+    "prince-to-kings": {
+      "previousReadyRoute": "prince-meadow-low",
+      "actualOrdinaryFlight": "kings-meadow-low",
+      "staleReadyClearedBeforeBegin": true,
+      "resizedSlotsWhenBeginWasImmediate": 0,
+      "movedM": 35.94065279494426
+    },
+    "kings-to-prince": {
+      "previousReadyRoute": "kings-meadow-low",
+      "actualOrdinaryFlight": "prince-meadow-low",
+      "staleReadyClearedBeforeBegin": true,
+      "resizedSlotsWhenBeginWasImmediate": 0,
+      "movedM": 32.347668189973085
+    },
+    "pause-return-to-departures": {
+      "flightPreviouslyHadResizedSlots": 12984,
+      "movedBeforeReturnM": 34.743861398227665,
+      "staleReadyClearedSynchronously": true,
+      "restoredDispatchResizedSlots": 0
+    },
+    "direct-bookmark": {
+      "newManualClaimUsed": false,
+      "originalSignedSourceReadyAndRetained": true,
+      "movedM": 34.1445914958651
+    }
+  },
+  "unchangedKings": {
+    "route": "kings-meadow-low",
+    "heightOwner": "28-12",
+    "decodedSha256": "b97ea5e14d74ddd8cedb900f41d717e592761c63e1131ed8a5895eaebf106171",
+    "launchAdjusted": 9926,
+    "assertedAdjustedAtMoved": 9926,
+    "movedM": 97.05447044324193,
+    "beforePauseAdjusted": 9926,
+    "pauseReached": true
+  },
+  "unaffectedMiscouche": [
+    {
+      "mode": "ordinary",
+      "site": "miscouche-woodlot-pass",
+      "dispatchStandHeight": {
+        "state": "other",
+        "adjusted": 0
+      },
+      "motionM": 279.854,
+      "count": 215,
+      "gain": 1,
+      "assets": 1
+    }
+  ],
+  "scope": "Independent real compiled game sessions, no camera or clock rewrite. Diagnostics prove visible cohort counts and flight controls, not a raw pixel comparison across different moving sessions."
+}

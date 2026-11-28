@@ -1,12 +1,36 @@
 import {TREE_PITCH,treeRandom} from '../sim/tree-layout.ts';
+import {project} from '../sim/geo.ts';
 
-/** First audited manual Dispatch aperture. The currently signed stock height
- * stream already requests this catalogue and range; do not start a loader here. */
+/** Each independently audited manual Dispatch aperture uses the existing
+ * signed height catalogue; neither one starts or reshapes the stream. */
 export const DISPATCH_STAND=Object.freeze({
  route:'kings-meadow-low',owner:'28-12',
  sha256:'b97ea5e14d74ddd8cedb900f41d717e592761c63e1131ed8a5895eaebf106171',
  lon:-62.25213570748,lat:46.41897991908,heading:90,aboveSurface:55,
 });
+export const PRINCE_DISPATCH_STAND=Object.freeze({
+ route:'prince-meadow-low',owner:'7-12',
+ sha256:'0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b',
+ lon:-63.87977038384,lat:46.4621004046,heading:90,aboveSurface:55,
+});
+export type DispatchStandPlan=typeof DISPATCH_STAND|typeof PRINCE_DISPATCH_STAND;
+const choosePlan=(id:string)=>id===DISPATCH_STAND.route?DISPATCH_STAND:id===PRINCE_DISPATCH_STAND.route?PRINCE_DISPATCH_STAND:undefined;
+export function dispatchStandPlan(site:{id:string;lon:number;lat:number;heading:number;height:number}|undefined){
+ const p=site&&choosePlan(site.id);
+ return p&&site.lon===p.lon&&site.lat===p.lat&&site.heading===p.heading&&site.height===p.aboveSurface?p:undefined;
+}
+// The exact original 1282-root Miscouche footprint (its separate attached
+// density layer) shares 7-12's source, not the Prince aperture. Keep era/plan
+// matches strict so a wider prepared roster cannot replace any of its roots.
+const miscouche=[-54019.6923,5528.4509,-53584.6204,6005.9102] as const;
+export function dispatchStandPlanSeated(p:DispatchStandPlan,x:number,z:number,radius:number){
+ if(p===DISPATCH_STAND)return true; // retain the original Kings custody path
+ if(p!==PRINCE_DISPATCH_STAND||!Number.isFinite(radius)||radius<=0||radius>1530)return false;
+ const spawn=project(p.lon,p.lat);
+ if(x!==spawn.x||z!==spawn.z)return false;
+ const [west,north,east,south]=miscouche;
+ return Math.hypot(Math.max(west-x,x-east,0),Math.max(north-z,z-south,0))>radius;
+}
 export type SignedHeightView=Readonly<{
  id:string;sha256:string;
  contains(x:number,z:number):boolean;
@@ -58,26 +82,29 @@ type State='other'|'waiting'|'ready'|'stock'|'active';
 export class DispatchStand<T> {
  private selection:number;
  private pending?:T;
+ private plan?:DispatchStandPlan;
  private mode:State='other';
  constructor(initialSelection:number){this.selection=initialSelection;}
  select(i:number,route:string){
   if(i===this.selection)return;
   this.selection=i;this.pending=undefined;
-  this.mode=route===DISPATCH_STAND.route?'waiting':'other';
+  this.plan=choosePlan(route);
+  this.mode=this.plan?'waiting':'other';
  }
- prepare(i:number,attempt:()=>T|false|undefined){
-  if(i!==this.selection||this.mode!=='waiting')return;
+ prepare(i:number,attempt:(plan:DispatchStandPlan)=>T|false|undefined){
+  const plan=this.plan;
+  if(i!==this.selection||this.mode!=='waiting'||!plan)return;
   let answer:T|false|undefined;
-  try{answer=attempt();}catch{answer=false;}
+  try{answer=attempt(plan);}catch{answer=false;}
   if(answer===false)this.mode='stock';
   else if(answer!==undefined){this.pending=answer;this.mode='ready';}
  }
- begin(i:number,fromDispatch:boolean,take:(claim:T)=>boolean){
-  const pending=i===this.selection&&fromDispatch&&this.mode==='ready'?this.pending:undefined;
+ begin(i:number,fromDispatch:boolean,take:(claim:T,plan:DispatchStandPlan)=>boolean){
+  const plan=this.plan,pending=i===this.selection&&fromDispatch&&this.mode==='ready'?this.pending:undefined;
   this.leave(i);
-  this.mode=pending!==undefined&&take(pending)?'active':'other';
+  this.mode=plan&&pending!==undefined&&take(pending,plan)?'active':'other';
   return this.mode==='active';
  }
- leave(i:number){this.selection=i;this.pending=undefined;this.mode='other';}
+ leave(i:number){this.selection=i;this.pending=undefined;this.plan=undefined;this.mode='other';}
  get state(){return this.mode;}
 }

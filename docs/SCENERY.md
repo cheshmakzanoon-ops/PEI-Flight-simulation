@@ -95,6 +95,7 @@ In Dispatch, choose **Use detailed preview** to enable the [curated profile](qa/
 | Charlottetown, Summerside and Souris | `?townWallStudy` | [Expanded town façades](qa/town-wall-study.md) extends Standard’s existing close-wall treatment to wider areas. |
 | Queens and Kings woodlands | `?stockRegionalCanopy` | Compare [measured canopy infill](qa/regional-canopy.md) on the two **woodland passes** in Standard. |
 | Miscouche woodlot | `?stockMiscouche` | Compare the [bounded canopy infill](qa/miscouche-canopy.md) on **Miscouche · woodland pass** in Standard. |
+| Prince County · inland meadow pass | Select it in Standard Dispatch | After **Survey-based woodland sizes ready**, Begin uses [mapped stand heights for the existing trees](qa/prince-dispatch-woodland.md) in one supported inland tile. Starting earlier keeps the original launch appearance. |
 | Kings County · inland meadow pass | Select it in Standard Dispatch | After **Survey-based woodland sizes ready**, Begin uses [measured stand heights for the existing trees](qa/dispatch-woodland.md). Starting earlier keeps the original launch appearance. |
 | Standard woodland | `?stockCanopyLight` | Compare [directional tree-crown lighting](qa/canopy-light-preview.md) with the original diffuse canopy. |
 | Qualified coastal grass | `?stockDuneGrass` | Compare [Standard’s close coastal grass material](qa/coastal-grass-surface.md) with the original diffuse ground. |

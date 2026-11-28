@@ -18,10 +18,10 @@ import {insideLighthouseYard} from '../sim/lighthouse-sites.ts';
 import {runwayAt} from '../sim/places.ts';
 import {TREE_PITCH as pitch,TREE_TILE_SIDE as side,treeRandom as rand} from '../sim/tree-layout.ts';
 import {fillRoofTile} from '../sim/tree-clearance.ts';
-import {DISPATCH_STAND,prepareStandReplacement,type SignedHeightView,type StandReplacement} from './dispatch-stand-height.ts';
+import {DISPATCH_STAND,dispatchStandPlanSeated,prepareStandReplacement,type DispatchStandPlan,type SignedHeightView,type StandReplacement} from './dispatch-stand-height.ts';
 const span=pitch*side,radius=1530,maxTrees=45000;
 type StandPrepared=Readonly<{
- x:number;z:number;
+ plan:DispatchStandPlan;x:number;z:number;
  blocks:readonly Readonly<{key:string;patch:StandReplacement}>[];
  slots:readonly StandSlot[];
 }>;
@@ -183,9 +183,9 @@ export class Vegetation {
  }
  /** Only prepares replacement H/W lookups. The active shader, VBO, cache
   * and every other stock attribute are untouched by asynchronous readiness. */
- prepareDispatchStand(source:SignedHeightView,x:number,z:number):StandPrepared|false|undefined{
+ prepareDispatchStand(source:SignedHeightView,x:number,z:number,plan:DispatchStandPlan=DISPATCH_STAND):StandPrepared|false|undefined{
   if(this.lastX!==x||this.lastZ!==z)return;
-  if(!this.dispatchStandCustody()||source.id!==DISPATCH_STAND.owner||source.sha256!==DISPATCH_STAND.sha256)return false;
+  if(!this.dispatchStandCustody()||!dispatchStandPlanSeated(plan,x,z,radius)||source.id!==plan.owner||source.sha256!==plan.sha256)return false;
   const blocks:{key:string;patch:StandReplacement}[]=[],changed=new Map<string,readonly number[]>();
   for(const [key,stock] of this.cache){
    const patch=prepareStandReplacement(source,stock,x,z,radius);
@@ -216,10 +216,10 @@ export class Vegetation {
   // The fenced original roster is never truncated in this intake. No
   // late replacement can enter solely because a slot was filtered out.
   if(!slots.length||changed.size)return false;
-  return Object.freeze({x,z,blocks:Object.freeze(blocks),slots:Object.freeze(slots)});
+  return Object.freeze({plan,x,z,blocks:Object.freeze(blocks),slots:Object.freeze(slots)});
  }
- takeDispatchStand(p:StandPrepared,x:number,z:number){
-  if(this.standOverride||!this.dispatchStandCustody()||x!==p.x||z!==p.z||this.lastX!==x||this.lastZ!==z||
+ takeDispatchStand(p:StandPrepared,x:number,z:number,plan:DispatchStandPlan=DISPATCH_STAND){
+  if(p.plan!==plan||!dispatchStandPlanSeated(plan,x,z,radius)||this.standOverride||!this.dispatchStandCustody()||x!==p.x||z!==p.z||this.lastX!==x||this.lastZ!==z||
      !p.slots.length||p.blocks.some(({key,patch})=>this.cache.get(key)!==patch.stock))return false;
   for(const a of p.slots)if(a.slot>=this.hedgeStart||this.stems.getX(a.slot)!==a.x||this.stems.getY(a.slot)!==a.y||
     this.stems.getZ(a.slot)!==a.z||this.shapes.getX(a.slot)!==a.oldH||this.shapes.getY(a.slot)!==a.oldW||

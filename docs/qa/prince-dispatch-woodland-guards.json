@@ -1,0 +1,112 @@
+{
+  "status": "four native negative controls passed; launch and route regressions recorded separately",
+  "candidateSourceSealSha256": "41e1eb22e507f8c1421ab19171948eb570e2405be42007b38a55a7e60f4e46ee",
+  "originalNativeReceiptSha256": "cc11d1e06a3bdf0c0d211403eb7df0bb426133d10156f4b985333d17293580a0",
+  "nativeControlRunnerSha256": "6f4a7d6656234c2a03bdda4d6d71da566bdbcf2c02167c75b9da5c9afaf70e2e",
+  "nativeControlLogSha256": "c41b2771538db985e45fc83c9ce60e5d2d0f11399ab9f2f242c2779bfe3e6f96",
+  "route": "prince-meadow-low",
+  "sourceRange": "heights-03.pack bytes 47309-78870/530952",
+  "controlInterpretation": "Actual Chase renders from separate test sessions; compare source admission and submitted replacement slots, not pixel equality cross-run.",
+  "cases": {
+    "early": {
+      "setup": "Immediate selection + Begin in one task, healthy target range released after first captured flight frame",
+      "targetRangeRequests": 1,
+      "displacementBetweenCapturesM": 84.46679679122228,
+      "capture": {
+        "1": {
+          "publishedSourceVerified": false,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "d241efc62979d2df45e94a68eedae43c31b7bf208bde6d6755524198d5de1463"
+        },
+        "48": {
+          "publishedSourceVerified": true,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "c90d84e242e6f7c8709b7ea3b43fb95125858a669d48e48d1668f659fc858849"
+        }
+      }
+    },
+    "corrupt": {
+      "setup": "Single-byte bit change in otherwise original target range; original sizes reported at Begin",
+      "targetRangeRequests": 1,
+      "displacementBetweenCapturesM": 84.46679679122228,
+      "capture": {
+        "1": {
+          "publishedSourceVerified": false,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "1afefca49954e20ad7e815274ded7dc8374ac6284cd5d97a2e1126660f14c5c2"
+        },
+        "48": {
+          "publishedSourceVerified": false,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "50ff3959866b5a848a89e9e340c29b41a60eb8305c26adff4491ea07833bc498"
+        }
+      }
+    },
+    "stock": {
+      "setup": "Explicit previous menu behavior: ?stockDispatchWoodland",
+      "targetRangeRequests": 1,
+      "displacementBetweenCapturesM": 84.46679679122228,
+      "capture": {
+        "1": {
+          "publishedSourceVerified": true,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "a3e5b40c517e4abb32c2157740461546221b7c95918a5c4939775b2304a475ea"
+        },
+        "48": {
+          "publishedSourceVerified": true,
+          "resizedOriginalSlots": 0,
+          "glSamples": 4,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "52cba4026a7e41cf7f8d35f3775a0978279af9eb864ec7bb199898b4bd3ba0f3"
+        }
+      }
+    },
+    "no-msaa": {
+      "setup": "Actual zero-sample default framebuffer; standard original fallback",
+      "targetRangeRequests": 1,
+      "displacementBetweenCapturesM": 84.46679679122228,
+      "capture": {
+        "1": {
+          "publishedSourceVerified": true,
+          "resizedOriginalSlots": 0,
+          "glSamples": 0,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "13d19a433715b05548685c1abcef1813cab9f84441e2d61a54af3f78a6629396"
+        },
+        "48": {
+          "publishedSourceVerified": true,
+          "resizedOriginalSlots": 0,
+          "glSamples": 0,
+          "glAlpha": true,
+          "glError": 0,
+          "cpuReplacementPacketSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rgbaPngSha256": "c304484bf663103375b439bed55ac4e06ba51c32541c82aec5ee4396424428ef"
+        }
+      }
+    }
+  }
+}

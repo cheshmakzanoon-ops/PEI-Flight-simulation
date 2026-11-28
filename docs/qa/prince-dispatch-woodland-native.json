@@ -1,0 +1,182 @@
+{
+  "status": "matched native evidence complete; pending independent product controls",
+  "baseCommit": "fddfeaf2bf36bfff9722e525a71780035edbe214",
+  "candidateSourceSealSha256": "41e1eb22e507f8c1421ab19171948eb570e2405be42007b38a55a7e60f4e46ee",
+  "candidatePatchSha256": "3a32fd3dbc20a40401d5529b294f3a1f812cb718edc7ab888b472b184b287412",
+  "nativeReceiptSha256": "50b626ec5e132fc3f141bd9127553ba1ba061141345a3b87b3c71773d8348be6",
+  "route": "prince-meadow-low",
+  "view": "Chase",
+  "method": "Ordinary spawn, neutral flight model; paced diagnostic frame callbacks. Each pair uses one real frame/camera with only the eligible existing instance height and width exchanged. Full 1200\u00d7760 RGBA; old/new role support from separate literal gray-endpoint draws. Uninstrumented normal timing is a separate gate.",
+  "source": {
+    "owner": "7-12",
+    "producer": "Prince Edward Island Enhanced Forest Inventory 2020",
+    "pack": "heights-03.pack",
+    "directorySha256": "5878c49f6a6c2cb896606c07be2d2943586edad10f45871116d36ef88d716efe",
+    "httpRangeQA": "bytes 47309-78870/530952",
+    "wireBytes": 31562,
+    "wireSha256": "c541961bf48163c9adc944e38d0201000d43840ac4277d9b15f3ae73af8f0485",
+    "decodedBytes": 104976,
+    "decodedSha256": "0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b"
+  },
+  "stockBaseline": {
+    "exactFallbackRoleSummarySha256": "fef0dbbce2b06643381c9e15b9d5bda9942b4f713baa31d692144abf5bdd774b",
+    "matchingOriginalSlots": 14915,
+    "supportedExactOriginalManual": 12984,
+    "supportedExactSignedBookmark": 12984,
+    "originalNoDataBoth": 1931,
+    "heightDifferentAtLeast0_75m": 11005,
+    "comparisonLimit": "Separate real sessions, no cross-run pixel equality claim"
+  },
+  "frames": {
+    "1": {
+      "viewportWidthHeight": [
+        1200,
+        760
+      ],
+      "resizedOriginalSubmittedSlots": 12958,
+      "allSubmittedSlots": 19806,
+      "travelAfterFirstMatchedFrameM": 0.0,
+      "glSamples": 4,
+      "glAlpha": true,
+      "glError": 0,
+      "drawCallsBoth": 317,
+      "trianglesBoth": 375822,
+      "oldNeutralRgbaExact": true,
+      "candidateNeutralRgbaExact": true,
+      "rollbackRgbaExact": true,
+      "sameOriginalAttributeOwnersAndRestoredDimensions": true,
+      "oldRolePixels": 86730,
+      "newRolePixels": 72919,
+      "unionRolePixels": 88201,
+      "anyRgbDifferent": 86431,
+      "over2RgbDifferent": 79557,
+      "rgbDifferentOutsideUnion": 0,
+      "alphaDifferent": 0,
+      "rawPngSha256": {
+        "stock": "2753d8b7afdacb91ea9168a952685c99fca6d9e74db764cecacefe12bd41e531",
+        "candidate": "1d8a47274eede58b63e4c03138004b0e5c08035685fc0fe2b1d303d9e8cef264",
+        "old0": "fca14ea2d63ebe57f0464c8e4d4c9b5e3449f245be37f851eb68285148868f72",
+        "old1": "d86b1f529344ae4129a4ef588de11bd982ac459662123efa375a7a348cd118ed",
+        "new0": "cc80b599b7229c4c4962223e66c286df3decb6215542ad9edf98e8bc7b1151b6",
+        "new1": "d303f4384e3323f3190d2ade6cf9a4ba1c40465a73fbf8b2ce750bc17c95c8c3",
+        "neutralOld": "2753d8b7afdacb91ea9168a952685c99fca6d9e74db764cecacefe12bd41e531",
+        "neutralNew": "1d8a47274eede58b63e4c03138004b0e5c08035685fc0fe2b1d303d9e8cef264",
+        "restored": "1d8a47274eede58b63e4c03138004b0e5c08035685fc0fe2b1d303d9e8cef264"
+      },
+      "cpuSubmittedSlotsSha256": "ed2cc39c491b3202218165ee9c37ebe740731857e37e5a4518da914291abe19e"
+    },
+    "180": {
+      "viewportWidthHeight": [
+        1200,
+        760
+      ],
+      "resizedOriginalSubmittedSlots": 10048,
+      "allSubmittedSlots": 17180,
+      "travelAfterFirstMatchedFrameM": 321.79814437786604,
+      "glSamples": 4,
+      "glAlpha": true,
+      "glError": 0,
+      "drawCallsBoth": 316,
+      "trianglesBoth": 367113,
+      "oldNeutralRgbaExact": true,
+      "candidateNeutralRgbaExact": true,
+      "rollbackRgbaExact": true,
+      "sameOriginalAttributeOwnersAndRestoredDimensions": true,
+      "oldRolePixels": 353271,
+      "newRolePixels": 291465,
+      "unionRolePixels": 358880,
+      "anyRgbDifferent": 347870,
+      "over2RgbDifferent": 312978,
+      "rgbDifferentOutsideUnion": 0,
+      "alphaDifferent": 0,
+      "rawPngSha256": {
+        "stock": "e2215473a8255dd4ca7cc8e402f044e0f510156fdf191199d53b40e16da46ede",
+        "candidate": "7e90f2efb7e0f1d136a1b0b546b8a603477f42a0aa6aef740a05413ea65b2c7f",
+        "old0": "bcce5cabe7a284d228821421a7588654d498b17c99209946d9af634cc3326060",
+        "old1": "683f43879f0cf3a37146d3782ca66928eef8fdc78a1e3eb294db53385688279d",
+        "new0": "b38cd28f3b9662fa8572f5349ea7bf76743315bfa55e0b4e401fb977d695e375",
+        "new1": "62812d1b0a2f10c8594c5f6f82c42c4f34f9badd67aa1f7b963cf8e6f410fda9",
+        "neutralOld": "e2215473a8255dd4ca7cc8e402f044e0f510156fdf191199d53b40e16da46ede",
+        "neutralNew": "7e90f2efb7e0f1d136a1b0b546b8a603477f42a0aa6aef740a05413ea65b2c7f",
+        "restored": "7e90f2efb7e0f1d136a1b0b546b8a603477f42a0aa6aef740a05413ea65b2c7f"
+      },
+      "cpuSubmittedSlotsSha256": "21b89d8594d42d8afee509d45040c89832152f16439eefcb025cb9f073102111"
+    },
+    "240": {
+      "viewportWidthHeight": [
+        1200,
+        760
+      ],
+      "resizedOriginalSubmittedSlots": 8711,
+      "allSubmittedSlots": 15968,
+      "travelAfterFirstMatchedFrameM": 429.7228442539635,
+      "glSamples": 4,
+      "glAlpha": true,
+      "glError": 0,
+      "drawCallsBoth": 315,
+      "trianglesBoth": 360214,
+      "oldNeutralRgbaExact": true,
+      "candidateNeutralRgbaExact": true,
+      "rollbackRgbaExact": true,
+      "sameOriginalAttributeOwnersAndRestoredDimensions": true,
+      "oldRolePixels": 424567,
+      "newRolePixels": 418586,
+      "unionRolePixels": 437321,
+      "anyRgbDifferent": 427628,
+      "over2RgbDifferent": 387728,
+      "rgbDifferentOutsideUnion": 0,
+      "alphaDifferent": 0,
+      "rawPngSha256": {
+        "stock": "0653e989152f769c38eb1c642013b730c7c28f425d2bd11751c1244f06c5d3df",
+        "candidate": "f5ed5695e166c8b8c94170c96d76834489f76d9dd973c9c683f19222197e5f3f",
+        "old0": "7a61da1e03566e0cae23b2c55a0a15332acab092291dec828223e371e81324fd",
+        "old1": "2adf5dfd5eb261cfc5ec019c7bc29dea662f49f43f81aee4527a2a7a82e6346d",
+        "new0": "6688bbad6729087906a2e47faeb5ebb7f426c0bffff6fbf5628c4f03af5c3510",
+        "new1": "b1065e3aa7705f52706b45ed1b79b1e6dfcb0184622d620f438b3202eb34b2fd",
+        "neutralOld": "0653e989152f769c38eb1c642013b730c7c28f425d2bd11751c1244f06c5d3df",
+        "neutralNew": "f5ed5695e166c8b8c94170c96d76834489f76d9dd973c9c683f19222197e5f3f",
+        "restored": "f5ed5695e166c8b8c94170c96d76834489f76d9dd973c9c683f19222197e5f3f"
+      },
+      "cpuSubmittedSlotsSha256": "b98a46cc23953776f60e7db7c0a3933070a49dcfe1c80b6bbfe4dd7cce042d2a"
+    }
+  },
+  "comparison": {
+    "file": "prince-dispatch-woodland-comparison.webp",
+    "sha256": "91335d3469a05305bb67365d1c9f7ffef71d70b6e236b25b74282fb55b6ed55e",
+    "frame": 180,
+    "sourceCropXyWh": [
+      300,
+      310,
+      600,
+      440
+    ],
+    "canvasWidthHeight": [
+      1208,
+      482
+    ],
+    "bothPanelsDecodedRgbaExact": true,
+    "panels": {
+      "stock": {
+        "decodedRgbaSha256": "13547e36228ca036ab748901d6b0ed0a43b6fdb3a208c1b79fd39dd6d88319a4",
+        "destinationXy": [
+          0,
+          42
+        ]
+      },
+      "candidate": {
+        "decodedRgbaSha256": "f690032137dc431686f1788b630d86ded9e70a0f59ace4cda7af8a135f83cd16",
+        "destinationXy": [
+          608,
+          42
+        ]
+      }
+    }
+  },
+  "pending": [
+    "early/healthy-late/corrupt/stock/real 0x",
+    "route switch and unchanged bookmark",
+    "existing Kings regression",
+    "nonvacuous Miscouche regression",
+    "uninstrumented ordinary real Begin/Chase/Pause"
+  ]
+}

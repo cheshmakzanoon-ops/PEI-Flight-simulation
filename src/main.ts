@@ -4,7 +4,7 @@ import {CAVENDISH_STANDARD_WATER_ROUTE,standardCavendishWaterRequested} from './
 import type {CavendishWaterSeat} from './render/cavendish-water-seat.ts';
 import {supportsOpaqueCoverage} from './render/opaque-coverage-alpha.ts';
 import {supportsOpaqueCanopyCoverage} from './render/canopy-coverage-alpha.ts';
-import {DISPATCH_STAND,DispatchStand} from './render/dispatch-stand-height.ts';
+import {DispatchStand,dispatchStandPlan} from './render/dispatch-stand-height.ts';
 import {standardDispatchWoodlandRequested} from './app/scenery-profile.ts';
 import {verifiedPrinceOverview} from './render/prince-grassland/source.ts';
 import {northCapeStandOption} from './app/north-cape-stand-option.ts';
@@ -565,11 +565,7 @@ async function run(){
   supportsOpaqueCanopyCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4;
  const dispatchForestEnabled=standardDispatchWoodlandRequested(new URLSearchParams(location.search))&&
   standardLandAtlasMatches(terrain,terrainSha,cover)&&!!globalThis.crypto?.subtle&&dispatchForestRaster();
- const standRoute=(i:number)=>{
-  const site=SITES[i];
-  return site?.id===DISPATCH_STAND.route&&site.lon===DISPATCH_STAND.lon&&site.lat===DISPATCH_STAND.lat&&
-   site.heading===DISPATCH_STAND.heading&&site.height===DISPATCH_STAND.aboveSurface?site.id:'';
- };
+ const standRoute=(i:number)=>dispatchStandPlan(SITES[i]);
  const start=(i:number)=>{
   buildings?.beginStandardRusticoNeighbour(rusticoNeighbourCover==='ready'&&ui.mode==='dispatch'&&
    i===activeSite&&i===ui.selected&&SITES[i]?.id===RUSTICO_LIGHT_ROUTE&&rusticoNeighbourGround());
@@ -587,7 +583,7 @@ async function run(){
   const quayFromDispatch=i===activeSite&&quayDispatch();
   const standFromDispatch=ui.mode==='dispatch'&&i===activeSite&&i===ui.selected&&!!standRoute(i);
   reposition(i);
-  dispatchStand?.begin(i,standFromDispatch,p=>dispatchForestRaster()&&vegetation.takeDispatchStand(p,f.x,f.z));
+  dispatchStand?.begin(i,standFromDispatch,(p,plan)=>dispatchForestRaster()&&plan===standRoute(i)&&vegetation.takeDispatchStand(p,f.x,f.z,plan));
   standardRiverSeat?.begin(f,riverFromDispatch);
   quayAdmitted=quaySeat?.beginFlight(f,quayFromDispatch)===true;
   standardLakeSeat?.beginFlight(f,lakeFromDispatch);cavendishSeat?.begin(f,cavendishFromDispatch);
@@ -596,7 +592,7 @@ async function run(){
  ui=new UI(terrain,input,{start,resume:()=>ui.set('flight'),view:cameraCycle,sound:()=>void audio.toggle().then(v=>ui.setSound(v)).catch(()=>{}),pause,restart:()=>start(activeSite),
   engineState:()=>({out:f.engineOut,airborne:f.status==='flying'}),
   practiceFailure:(out:boolean)=>setEngineOut(f,out),
-  chooseDeparture:(i:number)=>{if(ui.mode==='dispatch')dispatchStand?.select(i,standRoute(i));}},SITES);
+  chooseDeparture:(i:number)=>{if(ui.mode==='dispatch')dispatchStand?.select(i,standRoute(i)?.route??'');}},SITES);
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
@@ -1244,17 +1240,17 @@ async function run(){
   confederationTrail?.update(camera.position.x,camera.position.z,eyeAGL,ui.mode==='flight'||ui.mode==='paused');
   sidewalks?.update(camera.position.x,camera.position.z,eyeAGL);parking?.update(camera.position.x,camera.position.z,eyeAGL);if(!retainChurch&&!museumAsked&&!riverRosterRefreshed)vegetation.update(f.x,f.z,f.y);cruiseCrownPrefetch(f.x,f.z,eyeAGL);vegetation.updateVolume(camera.position.x,camera.position.z,eyeAGL);
   if(dispatch&&dispatchStand&&ui.selected===activeSite){
-   dispatchStand.prepare(activeSite,()=>{
-    if(!dispatchForestRaster())return false;
+   dispatchStand.prepare(activeSite,plan=>{
+    if(!dispatchForestRaster()||plan!==standRoute(activeSite))return false;
     if(dispatchForestCover==='cold'){
      dispatchForestCover='pending';
      void verifyDecodedCover(cover).then(h=>{dispatchForestCover=h===CANOPY_FENCE.pins.coverDecoded?'good':'bad';},
        ()=>{dispatchForestCover='bad';});
     }
-    if(dispatchForestCover==='bad'||forestStream.heightPlanUnavailable(DISPATCH_STAND.owner,DISPATCH_STAND.sha256))return false;
+    if(dispatchForestCover==='bad'||forestStream.heightPlanUnavailable(plan.owner,plan.sha256))return false;
     if(dispatchForestCover!=='good')return;
-    const view=forestStream.captureHeightPlan(DISPATCH_STAND.owner,DISPATCH_STAND.sha256);
-    return view?vegetation.prepareDispatchStand(view,f.x,f.z):undefined;
+    const view=forestStream.captureHeightPlan(plan.owner,plan.sha256);
+    return view?vegetation.prepareDispatchStand(view,f.x,f.z,plan):undefined;
    });
    const state=dispatchStand.state;
    ui.setDispatchWoodland(state==='active'?'other':state);

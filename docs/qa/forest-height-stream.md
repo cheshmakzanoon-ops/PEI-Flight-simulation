@@ -1,6 +1,6 @@
 # Province-wide woodland height streaming
 
-See [mapped woodland heights from the Kings County departure menu](dispatch-woodland.md) for the separately verified manual launch. Other departures keep the existing streaming behavior.
+See the separately verified Standard meadow starts in [Prince County](prince-dispatch-woodland.md) and [Kings County](dispatch-woodland.md) for mapped heights from the departure menu. Other departures keep the existing streaming behavior.
 
 This expands the [three-county pilot](forest-height-pilot.md) to every
 built woodland tile supported by the published provincial inventory. It

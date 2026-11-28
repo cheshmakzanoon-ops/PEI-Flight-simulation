@@ -1,0 +1,42 @@
+{
+  "status": "ordinary production launch ready and early passed; route and co-owner regression receipts are separate",
+  "candidateSourceSealSha256": "41e1eb22e507f8c1421ab19171948eb570e2405be42007b38a55a7e60f4e46ee",
+  "route": "prince-meadow-low",
+  "mode": "packaged uninstrumented application: ordinary renderer and game clock, real selected departure/Begin/Chase/Pause. Only the test server controls delivery of the existing range in the early case.",
+  "timingLimit": "Wall time until a software-rendered fixture observed flight includes test-driver waits. Not application start latency, hardware performance, or frame rate.",
+  "sessions": {
+    "ready": {
+      "archivedReceiptSha256": "6d0daafe21be80ce52ba0d1e941e1f5255e69c6e3873588e6a809fabc0d1aca3",
+      "fixtureRunnerSha256": "6cdad5f2fc1823a90f0e3ae77a042b6d7aedba2a35d9e098e7d00299cb1b9ebf",
+      "ordinaryChasePngSha256": "759462d591e436173adeceb1ba0daa9c6f36d1c44207c8d934b7da5d3b3bde94",
+      "readyAtBegin": true,
+      "decodedHeightTileSha256": "0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b",
+      "decodedBytes": 104976,
+      "verifiedByDistanceCheck": true,
+      "targetRangeResponseCount": 1,
+      "adjustedAtFirstFlightObservation": 12984,
+      "ordinaryDisplacementMAtAssertion": 96.45273603599138,
+      "adjustedAtDisplacementAssertion": 12984,
+      "adjustedAtLaterPrePauseSample": 11406,
+      "pauseReached": true,
+      "localDriverClickToObservedFlightMs": 12100.460786999975
+    },
+    "early": {
+      "archivedReceiptSha256": "afe9ee34c65088cb52f4aca58b53133b6ad66d946d6e47f9c7f0a53f8639a569",
+      "fixtureRunnerSha256": "22e425f99d1acfcc26f0c7209131f7dcb591e05f68affd436f6abcef3617455a",
+      "ordinaryChasePngSha256": "70c3770535770cb1fb1e5f3e055300d2385de9b3539b5f7b3c269b2ce7204865",
+      "readyAtBegin": false,
+      "verifiedAtFirstFlightObservation": false,
+      "decodedHeightTileSha256": "0590eb96ff84ec82282e722c90cbfb83d4dabb3222f4acb3b471ccd4077f222b",
+      "decodedBytes": 104976,
+      "verifiedByDistanceCheck": true,
+      "targetRangeResponseCount": 1,
+      "adjustedAtFirstFlightObservation": 0,
+      "ordinaryDisplacementMAtAssertion": 97.0536481205308,
+      "adjustedAtDisplacementAssertion": 0,
+      "adjustedAtLaterPrePauseSample": 0,
+      "pauseReached": true,
+      "localDriverClickToObservedFlightMs": 19432.62763000166
+    }
+  }
+}
