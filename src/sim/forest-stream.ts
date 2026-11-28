@@ -50,6 +50,7 @@ export class ForestStream {
  private readonly inflight=new Map<string,Promise<void>>();
  private readonly failed=new Set<string>();
  private missing=false;
+ private dispatchRecovery?:{readonly id:string;readonly sha:string;readonly permit:()=>boolean;used:boolean};
  private readonly catalogue:Promise<void>;
  private readonly crown:boolean;
  private x=Infinity;private z=Infinity;
@@ -75,6 +76,17 @@ export class ForestStream {
     }
    }catch{this.missing=true;}
   })();
+ }
+ /** One retry consideration for a newly selected, signed height cohort.
+  * The owner supplies the live Dispatch capability, not a longer global timer. */
+ setDispatchHeightRecovery(id:string,sha:string,permit:()=>boolean){
+  if(this.crown)return;
+  this.dispatchRecovery={id,sha,permit,used:false};
+ }
+ clearDispatchHeightRecovery(){this.dispatchRecovery=undefined;}
+ private canRecover(job:NonNullable<ForestStream['dispatchRecovery']>,t:Tile){
+  return this.dispatchRecovery===job&&!this.crown&&job.id===t.id&&job.sha===t.sha256&&
+   !!globalThis.crypto?.subtle&&this.demand(t)<prefetchRadius&&job.permit();
  }
  /** Existing validated drawable height cohort, no new catalogue reads. */
  hasHeightPlan(id:string,sha:string){
@@ -138,11 +150,22 @@ export class ForestStream {
  }
  private async load(t:Tile){
   try{
-   const packed=await this.packs[t.pack].read(t.offset,t.bytes);
+   const pack=this.packs[t.pack];
+   let packed:ArrayBuffer,recovered:typeof this.dispatchRecovery;
+   try{packed=await pack.read(t.offset,t.bytes);}
+   catch(error){
+    const job=this.dispatchRecovery;
+    if(!(error instanceof DOMException)||error.name!=='TimeoutError'||!job||job.used||!this.canRecover(job,t))throw error;
+    job.used=true;recovered=job;
+    packed=await pack.read(t.offset,t.bytes);
+   }
    const raw=await (this.crown?decodeCrownChunk(packed):unpackGzip(packed));
    if(raw.byteLength!==rasterBytes)throw Error('Bad woodland tile length');
    const verified=!!globalThis.crypto?.subtle;
    if(verified&&await digest(raw)!==t.sha256)throw Error('Bad woodland tile hash');
+   // A request already handed to the browser can finish after Dispatch.
+   // Preserve the original timeout's stock outcome in that case.
+   if(recovered&&!this.canRecover(recovered,t)){this.failed.add(t.id);return;}
    if(this.demand(t)<(this.crown?850:prefetchRadius)){
     const bytes=new Uint8Array(raw);
     if(verified&&!this.crown)this.verifiedHeight.add(bytes);

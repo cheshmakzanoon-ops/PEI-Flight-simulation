@@ -591,6 +591,7 @@ async function run(){
    quartermasterDocks?.id==='quartermaster-floating-docks-v1'&&quartermasterDocks.spines===3&&
    quartermasterDocks.fingers===30&&quartermasterDocks.triangles===540});
  const start=(i:number)=>{
+  forestStream.clearDispatchHeightRecovery();
   const seawardDeparture=!!seawardRoof&&ui.mode==='dispatch'&&i===activeSite&&i===ui.selected;
   buildings?.beginStandardRusticoNeighbour(rusticoNeighbourCover==='ready'&&ui.mode==='dispatch'&&
    i===activeSite&&i===ui.selected&&SITES[i]?.id===RUSTICO_LIGHT_ROUTE&&rusticoNeighbourGround());
@@ -621,7 +622,17 @@ async function run(){
  ui=new UI(terrain,input,{start,resume:()=>ui.set('flight'),view:cameraCycle,sound:()=>void audio.toggle().then(v=>ui.setSound(v)).catch(()=>{}),pause,restart:()=>start(activeSite),
   engineState:()=>({out:f.engineOut,airborne:f.status==='flying'}),
   practiceFailure:(out:boolean)=>setEngineOut(f,out),
-  chooseDeparture:(i:number)=>{if(ui.mode==='dispatch'){if(i!==activeSite)seawardRoof?.reset();dispatchStand?.select(i,standRoute(i)?.route??'');}},
+  chooseDeparture:(i:number)=>{
+   if(ui.mode!=='dispatch')return;
+   if(i!==activeSite)seawardRoof?.reset();
+   const plan=standRoute(i);
+   dispatchStand?.select(i,plan?.route??'');
+   forestStream.clearDispatchHeightRecovery();
+   if(dispatchStand?.state==='waiting'&&plan===QUEENS_DISPATCH_STAND){
+    forestStream.setDispatchHeightRecovery(plan.owner,plan.sha256,
+     ()=>ui.mode==='dispatch'&&ui.selected===i&&activeSite===i&&dispatchStand?.state==='waiting'&&dispatchForestRaster());
+   }
+  },
   modeChanged:(before,after)=>{if(before==='dispatch'&&after!=='flight')seawardRoof?.reset();}},SITES);
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);

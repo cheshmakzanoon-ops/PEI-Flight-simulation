@@ -29,3 +29,14 @@ npm test
 To rebuild after a deliberate change to a source atlas, the metre projection, runway checks, vegetation grid or seed algorithm, run the same baker without `--check`. Review the regenerated source hashes, counts and mask changes. The full-atlas regression reproduces the actual parcel, decodes it, and checks every emitted runtime mask bit. Existing coastline, vegetation and roofing limitations still apply; see [World data and attribution](WORLD.md).
 
 Sources: [Natural Resources Canada Automatically Extracted Buildings, PEI 2020](https://open.canada.ca/data/en/dataset/7a5cda52-c7df-427f-9ced-26f19a8a64d6) under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada); [ESA WorldCover 2021 v200](https://doi.org/10.5281/zenodo.7254221), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), including modified Copernicus Sentinel data (2021). The generator operates on the project's already attributed terrain, shoreline and land-cover inputs.
+
+### Manually selected Queens woodland view
+
+The normal Queens woodland departure can recover once from a timeout while
+loading its exact signed height tile. The original transfer deadline,
+range, decoded length, digest and vegetation protection checks stay in
+place. The recovery does not apply to normal flight streaming, neighboring
+tiles or crown data. If a pilot starts before the data is verified, that
+flight keeps the stock woodland; valid bytes arriving afterward cannot
+activate it. A second timeout, an invalid range or a mismatched digest
+also leaves the stock woodland.
