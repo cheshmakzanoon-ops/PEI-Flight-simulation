@@ -4,8 +4,7 @@ Stock roof on the left, experimental lapped finish on the right. These
 are native-size crops of normal **Summerside waterfront · low pass**
 frames in a private browser build. The aircraft flew normally after the
 actual **Begin flight** click; each pair changed only the roof material
-at the original sorted draw, not the camera or simulation. The finish is
-not installed in the public game.
+at the original sorted draw, not the camera or simulation. The finish is now also available in a separate [optional Chase preview](../../../../../../docs/qa/summerside-rail-roof-preview.md). Standard remains unchanged.
 
 **Approach**
 
@@ -21,9 +20,7 @@ not installed in the public game.
 | 701.980 m | 5,375 | 3,244 | 0 | 0 |
 
 The whole-frame test verified identical stock, neutral and restored
-frames and identical candidate/restored frames. The original 804
-indices and the actual position, normal, UV and colour buffers were
-unchanged. There were 263 and 255 other equivalent draw submissions
+frames and identical candidate/restored frames. The original 804 indices matched exactly. The native position, normal, UV and colour buffers kept the same handles and layouts; this was not a payload readback for those four buffers. There were 263 and 255 other equivalent draw submissions
 in the respective comparisons. The original map and DFG lookup kept
 the same distinct bound GL handles; this is not an additional texel or
 texture-format readback. The diagnostic coverage draws changed final

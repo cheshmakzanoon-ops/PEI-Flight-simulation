@@ -1,5 +1,7 @@
 import {EAST_RIM_ROUTE,eastRimConsent,eastRimStockSearch} from './app/east-roof-rim-option.ts';
 import type {EastRimOwner,EastRimPreview} from './render/east-roof-rim-preview.ts';
+import {RAIL_SHINGLE_ROUTE,railShingleConsent,railShingleStockSearch} from './app/rail-shingle-option.ts';
+import type {RailShinglePreview} from './render/rail-shingle-preview.ts';
 import {northCapeLightOption} from './app/north-cape-light-option.ts';
 import { eastPointWallOption, makeEastPointWallPreview } from './render/east-wall-preview.ts';
 import {BASIN_CANNERY_ROUTE,basinCanneryFinishConsent,withoutBasinCanneryToken} from './app/basin-cannery-option.ts';
@@ -160,7 +162,8 @@ async function run(){
  // Decide consent independently on the original query. Only the stock
  // projection is passed through the owner-specific removals.
  const eastRimAsked=eastRimConsent(rawScenerySearch);
- const standardSearch=eastRimStockSearch(withoutBasinCanneryToken(northCapeLightOption(eastWallOption.stockSearch).standardSearch));
+ const railShingleAsked=railShingleConsent(rawScenerySearch);
+ const standardSearch=railShingleStockSearch(eastRimStockSearch(withoutBasinCanneryToken(northCapeLightOption(eastWallOption.stockSearch).standardSearch)));
  const standardURL=new URL(location.href);
  if(standardSearch!==location.search)standardURL.search=standardSearch;
  const datedCapeStand=northCapeStandOption(standardSearch);
@@ -657,6 +660,21 @@ async function run(){
   }else eastRimUnavailable=true;
  }
  const resetEastRim=()=>{eastRim?.reset();eastRimEarly=false;ui.setLocalScenery(eastRimLabel,'other');};
+ const railFrame=()=>({route:SITES[activeSite].id,selected:ui.selected===activeSite,mode:ui.mode,view,flight:f,
+  x:f.x,z:f.z,heading:f.heading,time:f.time,status:f.status});
+ const railLabel='Summerside railway roof finish';
+ let railShingle:RailShinglePreview|undefined,railEarly=false,railUnavailable=false;
+ if(railShingleAsked){
+  if(supportsOpaqueCoverage(gl)&&gl.getParameter(gl.SAMPLES)===4){
+   void import('./render/rail-shingle-preview.ts').then(m=>{
+    if(gl.isContextLost()){railUnavailable=true;return;}
+    railShingle=new m.RailShinglePreview(renderer,scene,camera,()=>buildings?.ordinaryStationRoofOwner(),
+     olearyLinkPrograms(renderer,camera,scene,1,true,12000),railFrame);
+    if(railEarly)railShingle.begin(railFrame(),false);
+   }).catch(()=>{railUnavailable=true;});
+  }else railUnavailable=true;
+ }
+ const resetRailShingle=()=>{railShingle?.reset();railEarly=false;ui.setLocalScenery(railLabel,'other');};
  let eastWallDrawn=false;
  let eastWallPreview:ReturnType<typeof makeEastPointWallPreview<THREE.Mesh>>|undefined;
  const start=(i:number,trustedBegin=false)=>{
@@ -666,6 +684,9 @@ async function run(){
   const basinFromDispatch=basinFinishAsked&&trustedBegin&&ui.mode==='dispatch'&&i===ui.selected&&i===activeSite&&
    SITES[i]?.id===BASIN_CANNERY_ROUTE;
   if(basinFinishAsked&&SITES[i]?.id===BASIN_CANNERY_ROUTE&&!basinFinish)basinFinishEarly=true;
+  const railFromDispatch=railShingleAsked&&trustedBegin&&ui.mode==='dispatch'&&i===ui.selected&&i===activeSite&&
+   SITES[i]?.id===RAIL_SHINGLE_ROUTE;
+  if(railShingleAsked&&SITES[i]?.id===RAIL_SHINGLE_ROUTE&&!railShingle)railEarly=true;
   if(capeLightPreview){
    const wanted=capeLightRoute(i);
    capeLightPreview.begin(wanted,ui.mode==='dispatch'&&i===ui.selected&&i===activeSite,wanted&&capeLightSupported());
@@ -691,6 +712,7 @@ async function run(){
   reposition(i);
   basinFinish?.begin(basinFrame(),basinFromDispatch);
   eastRim?.begin(eastRimFrame(),eastRimFromDispatch);
+  railShingle?.begin(railFrame(),railFromDispatch);
   if(seawardRoof){
    if(SITES[i]?.id===SEAWARD_ROUTE)seawardRoof.begin(seawardFrame(),seawardDeparture);
    else seawardRoof.reset();
@@ -707,7 +729,7 @@ async function run(){
   chooseDeparture:(i:number)=>{
    if(ui.mode!=='dispatch')return;
    if(i!==activeSite){
-    seawardRoof?.reset();if(basinFinishAsked)resetBasinFinish();if(eastRimAsked)resetEastRim();
+    seawardRoof?.reset();if(basinFinishAsked)resetBasinFinish();if(eastRimAsked)resetEastRim();if(railShingleAsked)resetRailShingle();
    }
    const plan=standRoute(i);
    dispatchStand?.select(i,plan?.route??'');
@@ -731,12 +753,17 @@ async function run(){
     if(after==='dispatch'&&ui.selected===activeSite&&SITES[activeSite]?.id===EAST_RIM_ROUTE&&f.time>0)
      reposition(activeSite);
    }
+   if(railShingleAsked&&(after==='dispatch'||before==='dispatch'&&after!=='flight')){
+    resetRailShingle();
+    if(after==='dispatch'&&ui.selected===activeSite&&SITES[activeSite]?.id===RAIL_SHINGLE_ROUTE&&f.time>0)
+     reposition(activeSite);
+   }
   }},SITES,
   {search:standardSearch,url:standardURL.href,reloadFallback:lightOption.route?{'northcape-light-low':'northcape-wind-low'}:undefined});
  if(dispatchForestEnabled)dispatchStand=new DispatchStand(ui.selected);
  const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();snap=true;};resize();window.addEventListener('resize',resize);
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&ui.mode==='flight')ui.set('paused');acc=0;last=performance.now();input.clear();});
- renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();seawardRoof?.dispose();basinFinish?.dispose();eastRim?.dispose();princeLowFieldSeat?.reset();quaySeat?.reset();buildings?.syncStandardRusticoNeighbour(false);renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
+ renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();seawardRoof?.dispose();basinFinish?.dispose();eastRim?.dispose();railShingle?.dispose();princeLowFieldSeat?.reset();quaySeat?.reset();buildings?.syncStandardRusticoNeighbour(false);renderer.setAnimationLoop(null);failUI('Your browser lost the graphics context. Reload to restart the atlas; other GPU-heavy tabs can use the same memory.');});
  const layerWarnings:string[]=[];const warn=(layer:string,e:unknown)=>{layerWarnings.push(layer);ui.setWarnings(layerWarnings);console.warn(layer+' layer unavailable',e);};
  let roads:Roads|undefined,buildings:Buildings|undefined,sidewalks:Sidewalks|undefined,parking:ParkingSurfaces|undefined;
  let basilicaSun:import('./render/basilica-local-sun.ts').BasilicaLocalSun|undefined;
@@ -1136,6 +1163,7 @@ async function run(){
    try{
     if(seawardRoof&&SITES[activeSite].id===SEAWARD_ROUTE)seawardRoof.render(seawardFrame(),()=>renderer.render(scene,camera));
     else if(basinFinish)basinFinish.render(basinFrame(),()=>renderer.render(scene,camera));
+    else if(railShingle)railShingle.render(railFrame(),()=>renderer.render(scene,camera));
     else renderer.render(scene,camera);
    }finally{stopSouth21?.();}
   }finally{stopWest2?.();}
@@ -1163,6 +1191,10 @@ async function run(){
   if(eastRimAsked&&dispatch){
    const onSite=SITES[activeSite].id===EAST_RIM_ROUTE&&ui.selected===activeSite,phase=eastRim?.dispatchPhase;
    ui.setLocalScenery(eastRimLabel,!onSite?'other':phase==='ready'?'ready':eastRimUnavailable||phase==='held'?'stock':'waiting');
+  }
+  if(railShingleAsked&&dispatch){
+   const onSite=SITES[activeSite].id===RAIL_SHINGLE_ROUTE&&ui.selected===activeSite,phase=railShingle?.dispatchPhase;
+   ui.setLocalScenery(railLabel,!onSite?'other':phase==='ready'?'ready':railUnavailable||phase==='held'?'stock':'waiting');
   }
   if(eastWallOption.requested&&dispatch){
    const route=SITES[activeSite].id,east=route==='east-light'&&ui.selected===activeSite;
@@ -1661,6 +1693,10 @@ async function run(){
    if(basinFinishAsked)Object.assign(window,{islandAirBasinCanneryFinish:basinFinish?.state??{
     phase:basinFinishUnavailable||basinFinishEarly?'held':'waiting',submitted:0,
     reason:basinFinishUnavailable?'original inlet source unavailable':basinFinishEarly?'Begin before module was ready':'',
+   }});
+   if(railShingleAsked)Object.assign(window,{islandAirRailShinglePreview:railShingle?.state??{
+    phase:railUnavailable||railEarly?'held':'waiting',submitted:0,
+    reason:railUnavailable?'ordinary renderer unavailable':railEarly?'Begin before optional module':'',
    }});
    const riverReceiver=endRiver?activeRiver?.shadowInfo():undefined;
    Object.assign(window,{islandAirKingsDunesFieldState:dunesFields&&{...dunesFields.state,drawn:dunesDrawn}});

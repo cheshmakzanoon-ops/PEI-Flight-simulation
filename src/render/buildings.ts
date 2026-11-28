@@ -909,6 +909,17 @@ export class Buildings {
    }else add(m);
   }
  }
+ /** Only an already authenticated authored Standard station is eligible. */
+ ordinaryStationRoofOwner(){
+  const q=this.station,request=this.tryStation;
+  if(!q||!request?.standard||request.shadows)return;
+  const base=q.stockForProof?.();
+  if(!base||base.getAttribute('position').count!==RAIL.vertices+12)return;
+  const current=()=>this.station===q&&this.wanted.has(RAIL.tile)&&this.meshes.get(RAIL.tile)===q.owner&&
+   q.owner.parent===this.scene&&q.art.group.parent===this.scene&&q.variant?.visible===true&&
+   q.stockForProof?.()===base;
+  return current()?{group:q.art.group,current}:undefined;
+ }
  get summersideStationActive(){return this.station?.variant?.visible??false;}
  private syncStation(x:number,z:number){
   const request=this.tryStation,s=this.station,queued=this.pendingStandardRail;

@@ -105,7 +105,7 @@ city occlusion, ground, or moving peers.
 The [two exact Chase comparisons](evidence/ordinary-chase/) now show the
 finish on the real station in flight, not the isolated renders above.
 Native paired results changed only the roof and restored exact stock.
-The finish is still not installed in the public simulator.
+The [explicit chase preview](../../../../docs/qa/summerside-rail-roof-preview.md) can show the finish without changing Standard.
 
 ## Integration constraints
 
@@ -131,7 +131,7 @@ registered depth roles. Require byte-exact unpatched/gain-zero/restore,
 no RGBA changes outside the old roof coverage, unchanged actual
 terrain/roads/water/aircraft/shadows and protected peer submissions,
 no new requests, and exit, ignored, stock and shadow comparisons. Check
-motion as well as stills. The original game-owned station remains unchanged; this art study is not installed.
+motion as well as stills. The original game-owned station and its Standard finish remain unchanged by the separate option.
 
 ## Rebuild
 
@@ -157,5 +157,4 @@ python "$roof/qa/render-studio.py" /tmp/pei-roof-new-route /tmp/pei-roof-new-rou
 lanes at every detached lab pose. The
 [archived-camera receipt](evidence/archived-camera-egl.json) pins the
 separate re-render with the archived real Chase matrices. Neither is a
-matched live gameplay frame. The candidate source remains outside the
-game import graph.
+matched live gameplay frame. The detached lab files remain outside the game import graph.
